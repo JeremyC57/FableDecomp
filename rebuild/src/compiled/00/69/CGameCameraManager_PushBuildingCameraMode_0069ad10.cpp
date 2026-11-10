@@ -16,10 +16,12 @@
 // Shape: the def pointer local's dtor is the null-tested inline ReleaseTemporary (DecRef / GetRefCount on the
 // ref-count base at +4, landed 0x00702630 model); ObservedThingInBuilding = true is the last statement (VC duplicates
 // it per epilogue and shares the constant 1 with the dead-bit test).
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
 
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CPlayer {
 public:
-    void RemoveMode(long mode);                     // 0x00634190
+    void RemoveMode(EPlayerMode mode);                     // 0x00634190
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -92,7 +94,7 @@ public:
 
 void CGameCameraManager::PushBuildingCameraMode()
 {
-    CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().RemoveMode(0x2f);
+    CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().RemoveMode((EPlayerMode)(0x2f));
     if (PObservedThing.GetPItem()) {
         CThingBuilding* building = GetPBuildingThingOccupying(PObservedThing.GetPItem());
         if (building) {

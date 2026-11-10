@@ -12,6 +12,7 @@
 // Shape: the save test is an inline IsSaving() (mode 1 or 3; the plain condition lays the load path first); each name is built
 // into a named local before the element assignment (RHS first); the name vector's destructor is inline (element destructor
 // loop over a by-value range, then the member re-read for free).
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 class CThing;
 class CCharStringData;
@@ -48,7 +49,7 @@ class CDefString { public:
     long ID;
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString id);               // 0x009D49B0
+    CCharString GetString(long id) const;               // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefinitionManager { public:
@@ -111,7 +112,7 @@ void CTCHeroAttachableAppearanceModifiers::OnSerialise(CPersistContext& context,
         CModifierVector& hair = AppearanceModifiers[0];
         std::vector<CCharString, std::allocator<CCharString> > names(hair.size());
         for (unsigned long i = 0; i < hair.size(); ++i) {
-            CCharString name = GDefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(hair[i].DefIndex));
+            CCharString name = GDefStringTable.GetString((GetDefinitionManager().GetDefNameFromGlobalIndex(hair[i].DefIndex)).ID);
             names[i] = name;
         }
         context.TransferVector("HairModifierNames", names);

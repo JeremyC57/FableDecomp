@@ -5,11 +5,13 @@
 // Layout from engine/CGameScriptInterface.h: PlayerManager +0x14.
 // Shape: the mode is a named local (`push eax` re-uses the compared register instead of an immediate 1Eh); the player lives
 // in esi across the two calls.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include "engine/CGameScriptInterface.h"
 
 class CPlayer { public:
     long GetCurrentMode();                          // 0x00633BE0 EPlayerMode
-    void RemoveMode(long mode);                     // 0x00634190
+    void RemoveMode(EPlayerMode mode);                     // 0x00634190
 };
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -26,5 +28,5 @@ void CGameScriptInterface_Methods::HeroStopDigging()
     CPlayer* player = &PlayerManager->GetMainPlayer();
     long mode = player->GetCurrentMode();
     if (mode == 0x1e)
-        player->RemoveMode(mode);
+        player->RemoveMode((EPlayerMode)(mode));
 }

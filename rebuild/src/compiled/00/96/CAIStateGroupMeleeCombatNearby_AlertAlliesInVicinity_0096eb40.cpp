@@ -21,6 +21,8 @@
 //   CAIStateGroup_MeleeCombatNearby::Archer +0x1c; the world's message-event manager at +0x60.
 // Label: catalog "Combat_ProcessMeleeAttackMessage" -> Ego_r.pdb ?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby@@AAE_NXZ
 //   (between AttackEnemy 0x0096EA50 and MoveToEnemyCreatureCombatPosition 0x0096EC10; its one caller is Update 0x0096EE90).
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class CTCBase;
 #include "engine/C3DVector.h"
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -49,8 +51,7 @@ class CMessageEventFilter_IsOfType { public:
 };
 class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(CMessageEventFilter_IsOfType* filter);   // 0x004AB8B0
-    CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to,
-                              float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 class CWorld {
 public:
@@ -102,7 +103,7 @@ bool CAIStateGroup_MeleeCombatNearby::AlertAlliesInVicinity()
     }
     CThingCreatureBase* creature = GetCreature();
     CMessageEventManager* messages = GetWorld().MessageEventManager;
-    messages->AddMessage(0xc, g_AlertAlliesMessageDelay, creature->PeekPos(), creature, PEnemy.GetPItem(),
+    messages->AddMessage((EMessageEventType)(0xc), g_AlertAlliesMessageDelay, creature->PeekPos(), creature, PEnemy.GetPItem(),
                          0.0f, 36.0f, 0);
     return true;
 }

@@ -23,6 +23,7 @@
 //   slot. defaultIndex is declared before initialIndex (store order and slots), the copy constructor reads the source object
 //   once, the loop value *it is a local (ebp), and the final index is the `initialIndex < 0 ? defaultIndex : initialIndex`
 //   ternary stored through the chain `CameraListIndex = InitialModeCameraListIndex = ...` (+0x118 first).
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
 class CCharString {
@@ -37,7 +38,7 @@ public:
 };
 class CDefStringTable {
 public:
-    CCharString GetString(CDefString name);            // 0x009D49B0
+    CCharString GetString(long name) const;            // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
@@ -218,7 +219,7 @@ void CGameCameraManager::InitManualCameraList()
     CGameDefinitionManager* defManager = World->DefinitionManager;
     long currentMode = -1;
     if (CameraListIndex != CameraList.end()) {
-        CCharString name = GDefStringTable.GetString((*CameraListIndex)->GetDefName());
+        CCharString name = GDefStringTable.GetString(((*CameraListIndex)->GetDefName()).Index);
         currentMode = defManager->GetDefGlobalIndexFromName(name);
     }
     CameraList.clear();

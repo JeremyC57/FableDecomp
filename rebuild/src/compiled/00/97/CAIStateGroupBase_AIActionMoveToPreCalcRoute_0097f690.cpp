@@ -10,6 +10,10 @@
 // ABVCAIFilterBase@1@_N@Z` and AIAction_MoveToPos(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*,
 // bool, float). These parameter types (a reference, an enum, a bool) give retail's register assignment (speed ebx,
 // anim edi, extra ebp) and the loop result's spill into the dead condition slot. All-`long` parameters permute them.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+class CThing;
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 #include "engine/C3DVector.h"
 
 #include "engine/CThing.h"
@@ -25,8 +29,9 @@ class CAIStateGroupBase
     };
     virtual void v00();
     unsigned char _pad04[0x10];
-    long AIAction_MoveToPos(long mode, C3DVector pos, bool& speed, EMovementType anim, bool extra,
-                            bool b1, const CThing* target, bool b3, float f);          // 0x0097EC00
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat mode, C3DVector pos, bool& speed, EMovementType anim, bool extra, bool b1, const CThing* target, bool b3, float f);          // 0x0097EC00
+    public:
     C3DVector SetUpPreCalcNav(const CThing& routeThing);                                // 0x0097F5B0
     long AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim,
                                      const CAIFilterBase& condition, bool extra);
@@ -38,7 +43,7 @@ long CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bo
     long result;
     do
     {
-        result = AIAction_MoveToPos(2, routeThing.GetPos(), speed, anim, extra, true, 0, true, 0.0f);
+        result = AIAction_MoveToPos((EAIActionRepeat)(2), routeThing.GetPos(), speed, (EMovementType)(anim), extra, true, 0, true, 0.0f);
         if (!condition.IsStillValid())
             return AI_ACTION_ABORTED;
     } while (result == AI_ACTION_RUNNING);
@@ -47,7 +52,7 @@ long CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bo
     C3DVector destination = SetUpPreCalcNav(routeThing);
     do
     {
-        result = AIAction_MoveToPos(2, destination, speed, anim, extra, true, 0, true, 0.0f);
+        result = AIAction_MoveToPos((EAIActionRepeat)(2), destination, speed, (EMovementType)(anim), extra, true, 0, true, 0.0f);
         if (!condition.IsStillValid())
             return AI_ACTION_ABORTED;
     } while (result == AI_ACTION_RUNNING);

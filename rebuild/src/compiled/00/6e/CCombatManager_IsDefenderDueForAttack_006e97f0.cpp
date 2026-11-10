@@ -18,6 +18,7 @@
 // Layout: the retail CCombatantInfo of the landed rows (0x006E86A0, 0x006E9E40): Parent +0, CurrentSequence +0x24,
 // CombatSequences +0x28, DefenderInfo.Attackers {header +0x34, count +0x38}, PAttackPattern +0x64,
 // AttackPatternIndex +0x68; CAttackPatternDef::AttackPattern +0x3c; CCombatManager::Combatants +0x10.
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 #include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
@@ -28,7 +29,7 @@ class CDefString { public:
     long m_index;
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);        // 0x009D49B0
+    CCharString GetString(long name) const;        // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
@@ -155,7 +156,7 @@ bool CCombatManager::IsDefenderDueForAttack(const CCombatantInfo& info) const
 {
     if (!NCreatureMode::IsAbleToBeAttacked(*info.Parent)) {
         {
-            CCharString name = GDefStringTable.GetString(info.Parent->GetDefName());
+            CCharString name = GDefStringTable.GetString((info.Parent->GetDefName()).m_index);
             CCharString message = name + " - not attack - based on : mode";
             CombatTrace(message);
         }
@@ -163,7 +164,7 @@ bool CCombatManager::IsDefenderDueForAttack(const CCombatantInfo& info) const
     }
     if (IsAnotherAttackerAttacking(info)) {
         {
-            CCharString name = GDefStringTable.GetString(info.Parent->GetDefName());
+            CCharString name = GDefStringTable.GetString((info.Parent->GetDefName()).m_index);
             CCharString message = name + " - not attack - based on : other attackers";
             CombatTrace(message);
         }
@@ -171,7 +172,7 @@ bool CCombatManager::IsDefenderDueForAttack(const CCombatantInfo& info) const
     }
     if (info.PAttackPattern->AttackPattern[info.AttackPatternIndex] <= 0) {
         {
-            CCharString name = GDefStringTable.GetString(info.Parent->GetDefName());
+            CCharString name = GDefStringTable.GetString((info.Parent->GetDefName()).m_index);
             CCharString message = name + " - not attack - based on : attack patterns";
             CombatTrace(message);
         }

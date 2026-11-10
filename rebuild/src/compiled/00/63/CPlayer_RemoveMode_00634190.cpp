@@ -10,7 +10,10 @@
 // DisallowModeChanges +0x215.
 // Shape: the trace string is built in full (the output call is compiled out of the release build); the STLport list
 // pop_back / erase(--rit.base()) are inline node unlinks released with free.
-typedef long EPlayerMode;
+// Leaf: ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z (EPlayerMode is an enum), was
+//   ?RemoveMode@CPlayer@@QAEXJ@Z through `typedef long EPlayerMode`.
+enum EPlayerMode;                                       // MS forward enum (the player-mode enum, engine/EPlayerMode.h)
 class CCharString {
 public:
     void* PStringData;

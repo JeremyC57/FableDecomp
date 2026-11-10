@@ -33,6 +33,11 @@ public:
     unsigned char       _pad_0x0c[0x4];                      // +0x0c
     unsigned char       _pad_0x10[0x4];                      // +0x10
     CMainGameComponent* Component;                           // +0x14
+#ifdef FABLE_RETAIL_CAIBRAIN_FORCERESET
+    // Opt-in (agentNF5, 2026-11-10, row 0x006D5AB0 CThingAICreature::ForceAIReset): Ego_r.pdb / FableWin.pdb ?ForceReset@CAIBrain@@QAEXXZ,
+    // out of line at 0x0088BB60 (ForceAIReset tail-jumps to it with the PBrain item in ecx). Declaration only; no layout change.
+    void ForceReset();                                                   // 0x0088BB60
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
 private:
     // Both original PDBs: reference, private, +18; native 0090bbf7.

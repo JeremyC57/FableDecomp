@@ -4,7 +4,7 @@
 // Callees: the combatant map's find 0x006F0250 (twice), CCombatManager::IncrementDefenderAttackPattern 0x006E8600,
 //          IsCreatureOnRotatingCombatRing 0x006E9700 (catalogued "CCombatWheel_ValidateSequencePosition"; name from
 //          the Ego_r CCombatManager predicates), CThingCreatureBase::GetCombatTypeDef 0x00666D10, CDefClassBase::
-//          GetSubDef<T> 0x006F0F60 (same-TU stand-in below), CWorld::GetPRandomSeed 0x0049D810, `__fastcall` GFROR13
+//          GetSubDef<T> 0x006F0F60 (same-TU stand-in below), CWorld::GetWorldSeed 0x0049D810, `__fastcall` GFROR13
 //          0x00497890, SetAttackerRingAsRotating 0x006E9D90, CCombatSequenceBase::Stop 0x008B0640, the sequence's
 //          virtual slot 7 (+0x1c, IsMeleeSequence), the sub-def's virtual slot 1 on release. Floats 1.0f 0x0122DED8,
 //          -1.0f 0x0122DEE0.
@@ -18,6 +18,7 @@
 // Layout: CCombatManager / CCombatantInfo as the landed 0x006E9D90 and 0x006E97F0 (World +0x20, Combatants +0x10,
 // Attacked +4, CurrentSequence +0x24, CombatSequences +0x28); the ring-rotation sub-def's chance +0x2c and speed
 // +0x40 (descriptive names).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
@@ -142,7 +143,7 @@ __declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_Comb
 }
 #pragma auto_inline(on)
 class CWorld { public:
-    unsigned long* GetPRandomSeed();        // 0x0049D810
+    unsigned long* GetWorldSeed() const;        // 0x0049D810
 };
 class CCombatManager { public:
     virtual void v00();
@@ -172,10 +173,10 @@ void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
                 CDefPointer<CRingRotationDef> rotation;
                 if (!IsCreatureOnRotatingCombatRing(creature)) {
                     if (creature.GetCombatTypeDef()->GetSubDef(rotation)) {
-                        long roll = WorldRandom(*World->GetPRandomSeed()) % 100;
+                        long roll = WorldRandom(*World->GetWorldSeed()) % 100;
                         if (roll <= rotation->RotationChance) {
                             float speed = rotation->RotationSpeed;
-                            float direction = (WorldRandom(*World->GetPRandomSeed()) & 1) == 0 ? 1.0f : -1.0f;
+                            float direction = (WorldRandom(*World->GetWorldSeed()) & 1) == 0 ? 1.0f : -1.0f;
                             SetAttackerRingAsRotating(creature, direction * speed);
                         }
                     }

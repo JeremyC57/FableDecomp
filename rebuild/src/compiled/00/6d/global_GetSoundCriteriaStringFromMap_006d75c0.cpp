@@ -14,6 +14,7 @@
 // inline `CDefString::GetString()` forwarding to the table: that is what makes VC7.1 re-`lea` the temporary for
 // operator= (calling the table directly passes GetString's returned eax instead). operator--'s body sits above under
 // `#pragma auto_inline(off)` (retail calls it). Kept by a file-scope pointer (anonymous namespace).
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 class CCharString {
 public:
     void* PStringData;
@@ -25,14 +26,14 @@ class CDefString;
 
 class CDefStringTable {
 public:
-    CCharString GetString(CDefString name);                 // 0x009D49B0
+    CCharString GetString(long name) const;                 // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 
 class CDefString {
 public:
     long Index;
-    CCharString GetString() const { return GDefStringTable.GetString(*this); }
+    CCharString GetString() const { return GDefStringTable.GetString((*this).Index); }
 };
 
 namespace std {

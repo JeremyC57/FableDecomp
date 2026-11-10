@@ -29,6 +29,8 @@
 //   def index are read into locals before Create (retail reads them ahead of the mode's virtual call); the body's physics
 //   TC goes through an inline accessor (keeps the object in edi across the inner call); the physics TC and the world are
 //   locals ahead of AddMessage; each entity-events component is fetched before its `new` event.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 #define VF(n) virtual void v##n();
 #include "engine/C3DVector.h"
@@ -116,7 +118,7 @@ struct CEventDied {
 };
 class CMessageEvent;
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 class CWorld { public:
     unsigned char _pad[0x60];
@@ -283,7 +285,7 @@ void CThingCreatureBase::OnDie()
     CThing* killer = ((CThing*)PLastAttackedByCreature.GetPItem());
     CTCPhysicsBase* physics = PhysicsTC;
     CWorld* world = &GetWorld();
-    world->MessageEventManager->AddMessage(9, CMainGameComponent::GetConstantFPS(), physics->Position, killer, this, 0.0f, 0.0f, 0);
+    world->MessageEventManager->AddMessage((EMessageEventType)(9), CMainGameComponent::GetConstantFPS(), physics->Position, killer, this, 0.0f, 0.0f, 0);
     if (killer && !killer->Dead) {
         if (killer->HasTC(0x42)) {
             CTCEntityEvents* events = (CTCEntityEvents*)killer->GetTC(0x42);

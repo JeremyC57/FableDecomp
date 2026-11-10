@@ -1,5 +1,8 @@
-// CDefinitionManager::GetDef<T>(long, CDefPointer&) -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
+// CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) const -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00669640, oracle length 108 bytes.
+// Name: ??$GetDef@VCCombatTypeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z (FableWin.pdb 0x01DA9AA0 and
+// the native caller binding, rows/00664d40/NAMING_EVIDENCE.md; every Ego_r.pdb GetDef<T> instantiation is const with a CDefPointer<const T>*).
+// Leaf: GetDef
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
@@ -49,7 +52,7 @@ template <class T> class CDefPointer { public:
         if (m_p)
             m_p->ReleaseTemporary();
     }
-    CDefPointer& operator=(const CDefPointer& other)   // inlined by the speed TU
+    template <class U> CDefPointer& operator=(const CDefPointer<U>& other)   // SetDynamicCast<U>: release code is the plain assignment
     {
         if (m_p != other.m_p) {
             if (m_p) {
@@ -66,17 +69,19 @@ template <class T> class CDefPointer { public:
 
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef_00669640(long index, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;
 };
+class CCombatTypeDef;
 
-bool CDefinitionManager::GetDef_00669640(long index, CDefPointer<const CDefClassBase>& out)
+template <class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     if (index <= 0)
         return false;
     CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
     if (def.m_p) {
-        out = def;
+        *out = def;
         return true;
     }
     return false;
 }
+template bool CDefinitionManager::GetDef<CCombatTypeDef>(long index, CDefPointer<const CCombatTypeDef>* out) const;

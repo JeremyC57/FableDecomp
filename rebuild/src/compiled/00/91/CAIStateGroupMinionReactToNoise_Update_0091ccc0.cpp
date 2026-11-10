@@ -10,6 +10,9 @@
 // landed MoveToCuriosityProximity do/while, by-value C3DVector copied memberwise into the argument block.
 // Engine header names (NoisePosition +0x14, InvestigatingNoise +0x20, FoundNoiseMaker +0x21); the header flattens
 // the base, so the class is modelled locally.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 class CThing;
 #include "engine/C3DVector.h"
 
@@ -32,7 +35,9 @@ class CAIStateGroupBase { public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    public:
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
                                      bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
 public:
@@ -56,7 +61,7 @@ void CAIStateGroup_MinionReactToNoise::Update()
         }
         PBrain->Yield();
     }
-    if (AIAction_LookAtPos(1, NoisePosition, 0x23, 0.05f) == 2) {
+    if (AIAction_LookAtPos((EAIActionRepeat)(1), NoisePosition, 0x23, 0.05f) == 2) {
         bool reached;
         long result;
         do {

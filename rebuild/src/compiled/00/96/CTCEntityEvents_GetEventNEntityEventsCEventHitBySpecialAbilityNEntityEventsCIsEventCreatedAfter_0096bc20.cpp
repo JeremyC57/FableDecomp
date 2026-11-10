@@ -1,6 +1,5 @@
 // CTCEntityEvents::GetEvent(TEvent** out, const TFilter& filter) const [TEvent = NEntityEvents::CEventHitBySpecialAbility, TFilter = NEntityEvents::CIsEventCreatedAfter] -- the newest event of type 0x1b (CEventHitBySpecialAbility) created after the filter's frame
 // Grade: RELOCATION_MATCH (137v137) -- retry12, model from chunk 337: the real STLport reverse_iterator (copy base, decrement the copy, compare base()); same template as 0x0095D920
-// Leaf: GetEvent
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096BC20, 137 bytes (+ int3 padding to 144) (`ret 8`, bool in al).
 // Callees: GetType (vtable slot 1), the count block DeleteFunc, operator delete 0x00BFE9BC.
@@ -9,6 +8,11 @@
 // the counted pointer, the event base and the filters are local models (CEventBase from Ego_r.pdb).
 // Shape: the loop copies each counted pointer (count ++ / -- with the DeleteFunc + operator delete release on
 // both exits); rend() is re-read through `this` every iteration; *out is stored before the copy is released.
+// Leaf: ??$GetEvent@VCEventHitBySpecialAbility@NEntityEvents@@VCIsEventCreatedAfter@2@@CTCEntityEvents@@
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ??$GetEvent@..@CTCEntityEvents@@QBE_N..@Z: the member template is
+//   CTCEntityEvents's own (declared by the new header opt-in FABLE_RETAIL_CTCENTITYEVENTS_GETEVENT_DECL), was the derived stand-in
+//   CTCEntityEventsMethods. Row debt kept: the local event-list model over the flattened layout.
+#define FABLE_RETAIL_CTCENTITYEVENTS_GETEVENT_DECL
 #include "engine/CTCEntityEvents.h"
 
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
@@ -72,16 +76,14 @@ namespace NEntityEvents {
 class CEventHitBySpecialAbility : public CEventBase { public: enum { EventType = 0x1b }; };
 }
 
-struct CTCEntityEventsMethods : CTCEntityEvents {
-    const CEventList& GetEvents() const { return *(const CEventList*)Events; }
-    template <class TEvent, class TFilter> bool GetEvent(TEvent** out, const TFilter& filter) const;
-};
+// the event list over the flattened layout
+static inline const CEventList& GetEventList(const CTCEntityEvents& events) { return *(const CEventList*)events.Events; }
 
 // The newest event of TEvent's type that passes the filter: stored to *out, true; false when none.
 template <class TEvent, class TFilter>
-bool CTCEntityEventsMethods::GetEvent(TEvent** out, const TFilter& filter) const
+bool CTCEntityEvents::GetEvent(TEvent** out, const TFilter& filter) const
 {
-    for (CEventList::reverse_iterator it = GetEvents().rbegin(); it != GetEvents().rend(); ++it)
+    for (CEventList::reverse_iterator it = GetEventList(*this).rbegin(); it != GetEventList(*this).rend(); ++it)
     {
         CCountedPointer<CEventBase> event = *it;
         if (event->GetType() == TEvent::EventType && filter(*(TEvent*)event.Data))
@@ -93,4 +95,4 @@ bool CTCEntityEventsMethods::GetEvent(TEvent** out, const TFilter& filter) const
     return false;
 }
 
-template bool CTCEntityEventsMethods::GetEvent<NEntityEvents::CEventHitBySpecialAbility, NEntityEvents::CIsEventCreatedAfter >(NEntityEvents::CEventHitBySpecialAbility**, const NEntityEvents::CIsEventCreatedAfter&) const;
+template bool CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBySpecialAbility, NEntityEvents::CIsEventCreatedAfter >(NEntityEvents::CEventHitBySpecialAbility**, const NEntityEvents::CIsEventCreatedAfter&) const;

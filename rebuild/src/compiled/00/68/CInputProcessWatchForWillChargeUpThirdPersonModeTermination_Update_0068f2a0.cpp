@@ -10,6 +10,8 @@
 // Shape: the component is a null-initialised local assigned only when present (the zero preloaded in ecx; a ternary
 // materialises it in eax) and handed to the test unchecked; the
 // timer decrement is `--QuitModeTimer < 0` (`dec [edi+28h] ; jns`).
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include "fable_compiler.h"
 class CProcessedInput;
 struct CTCBase_Retail;
@@ -51,7 +53,7 @@ class CASuspendableProcess { public:
 class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
-    void RemoveMode(long mode);                    // 0x00634190
+    void RemoveMode(EPlayerMode mode);                    // 0x00634190
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -82,6 +84,6 @@ void CInputProcessWatchForWillChargeUpThirdPersonModeTermination::Update(CProces
             return;
         }
         if (--QuitModeTimer < 0)
-            MyPlayer->RemoveMode(0x23);
+            MyPlayer->RemoveMode((EPlayerMode)(0x23));
     }
 }

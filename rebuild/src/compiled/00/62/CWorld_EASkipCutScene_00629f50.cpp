@@ -25,6 +25,9 @@
 //   position is a zero C3DVector temporary.
 // Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+class CMessageEvent;
 #define CSubtitleRenderer CSubtitleRendererDonor
 #include "engine/CSubtitleRenderer.h"
 #undef CSubtitleRenderer
@@ -63,7 +66,7 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 class CMessageEventManager { public:
-    void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 class CWorld { public:
     unsigned char         _pad00[0x60];
@@ -79,7 +82,7 @@ void CWorld::EASkipCutScene(const CGameEvent* event)
         CSoundInit init;
         init.GainFaderBits = 0x8010;
         PSoundManager->Get2DEmitter().PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
-        PMessageEventManager->AddMessage(0x32, CMainGameComponent::GetConstantFPS(), C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
+        PMessageEventManager->AddMessage((EMessageEventType)(0x32), CMainGameComponent::GetConstantFPS(), C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
         subtitles.Clear(false);
         subtitles.CutsceneSkipped = true;
         subtitles.CutsceneSkippable = false;

@@ -3,10 +3,11 @@
 // Leaf: OnInitialActivate
 // Callees: the CTCBase accessor @ 0x00686D60 (`[g_pMainGameComponent]+0x1c`; its virtual slot 9 returns a bool -- the object
 // is not identified, the manifest's "CViewBase::GetDisplayEngine" is propagated), CTCBase::GetWorld @ 0x00686A70
-// (`+0x24`, as the landed 0x00943AE0 family), CWorld::GetPRandomSeed @ 0x0049D810, GFFloatRandom(float, unsigned long*)
+// (`+0x24`, as the landed 0x00943AE0 family), CWorld::GetWorldSeed @ 0x0049D810, GFFloatRandom(float, unsigned long*)
 // @ 0x004978A0 (`__fastcall`: the seed in ecx, the float on the stack), CThing::Kill(bool) @ 0x004C9B80. Float pool
 // 0x0122F59C = 0.5f. Ego_r.pdb: `?OnInitialActivate@CTCAmbientBird@@UAEXXZ`.
 // Shape: `fcomp [0.5] ; fnstsw ax ; test ah,41h ; jne` is the `> 0.5f` test; the two conditions are nested ifs.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 struct CGameSubsystem {                        // the main game component's member at +0x1c (unidentified)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -14,7 +15,7 @@ struct CGameSubsystem {                        // the main game component's memb
 };
 
 class CWorld { public:
-    unsigned long* GetPRandomSeed();           // 0x0049D810
+    unsigned long* GetWorldSeed() const;           // 0x0049D810
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
@@ -40,7 +41,7 @@ struct CTCAmbientBird : CTCBase {
 void CTCAmbientBird::OnInitialActivate()
 {
     if (!GetSubsystem()->IsSuppressed()) {
-        if (GFFloatRandom(1.0f, GetWorld().GetPRandomSeed()) > 0.5f)
+        if (GFFloatRandom(1.0f, GetWorld().GetWorldSeed()) > 0.5f)
             ParentThing->Kill(false);
     }
 }

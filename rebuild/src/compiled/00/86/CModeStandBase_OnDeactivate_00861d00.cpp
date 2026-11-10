@@ -1,38 +1,36 @@
-// CModeStandBase::OnDeactivate -- release six counted animation entries and clear the inherited Active flag.
-// Retail 0x00861D00,252 bytes. Actual generated header supplies all six pointer pairs.
-// PDB CModeBase::Active is +0x18, in flattened inherited padding. CCPPointerInfo is refs0/callback4/data8.
-// Callback ABI is native fastcall: ecx=data, no stack argument. Scalar block delete is 0x00BFE9BC.
-#include "fable_compiler.h"
+// CModeStandBase::OnDeactivate() -- leaving the stand mode: release the six cached locomotion animations (stand, slow walk, walk, jog,
+// run, sprint) and mark the mode inactive
+// Leaf: ?OnDeactivate@CModeStandBase@@UAEXXZ
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00861D00, 252 bytes: six expanded CCountedPointer releases (count decrement, DeleteFunc(Data) and
+//   operator delete 0x00BFE9BC at zero, then Info = 0, Data = 0) over +0x38..+0x60, then `mov byte ptr [esi+18h],0` (CModeBase::Active).
+// Identity (two sources): Ego_r.pdb / FableWin.pdb ?OnDeactivate@CModeStandBase@@UAEXXZ (public virtual, CModeBase slot 6); the landed
+//   NCreatureMode::CModeDrained::OnDeactivate 0x008DA7A0 calls it by name (`CModeStandBase::OnDeactivate()`), and engine/CModeStandBase.h
+//   (retail) declares it under FABLE_RETAIL_CMODESTANDBASE_DEACTIVATE with the six CCountedPointer members at +0x38..+0x60.
+// Name fix (agentNF5 2026-11-10): was the derived stand-in `CModeStandBaseNative::OnDeactivate` (?OnDeactivate@CModeStandBaseNative@@QAEXXZ)
+//   over the flattened layout; now the shared retail headers (CCountedPointer::ReleaseData is the expanded release).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_PARENTTHING
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CMODESTANDBASE_DEACTIVATE
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CTCCreatureModeManager.h"
 #include "engine/CModeStandBase.h"
-#ifndef _MSC_VER
-#define __fastcall
-#define __forceinline inline
-#endif
-class CCPPointerInfo { public: unsigned long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
-FABLE_STATIC_ASSERT(sizeof(CCPPointerInfo)==12);
-FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,DeleteFunc)==4);
-FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,Data)==8);
-void operator delete(void*) throw(); // 0x00BFE9BC
-struct CModeStandBaseNative : CModeStandBase {
-    FABLE_FORCEINLINE void Reset(CAnimEntryLite*& data,CCPPointerInfo*& info) {
-        if(info) {
-            --info->RefCount;
-            if(info->RefCount==0) {
-                info->DeleteFunc(info->Data);
-                operator delete(info);
-            }
-        }
-        info=0;
-        data=0;
-    }
-    void OnDeactivate();
-};
-void CModeStandBaseNative::OnDeactivate(){
-    Reset(PStandAnimation_Data,PStandAnimation_Info);
-    Reset(PSlowWalkAnimation_Data,PSlowWalkAnimation_Info);
-    Reset(PWalkAnimation_Data,PWalkAnimation_Info);
-    Reset(PJogAnimation_Data,PJogAnimation_Info);
-    Reset(PRunAnimation_Data,PRunAnimation_Info);
-    Reset(PSprintAnimation_Data,PSprintAnimation_Info);
-    _pad_0x18[0]=0;
+void CModeStandBase::OnDeactivate()
+{
+    PStandAnimation.ReleaseData();
+    PSlowWalkAnimation.ReleaseData();
+    PWalkAnimation.ReleaseData();
+    PJogAnimation.ReleaseData();
+    PRunAnimation.ReleaseData();
+    PSprintAnimation.ReleaseData();
+    Active = false;
 }

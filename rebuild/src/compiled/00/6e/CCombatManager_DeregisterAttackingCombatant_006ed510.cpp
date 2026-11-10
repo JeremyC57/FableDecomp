@@ -23,6 +23,7 @@
 // Layout: local model (no engine header for CCombatManager): RegisteredCombatSequences +0x04 (12 bytes), Combatants +0x10;
 //   map node value CCombatantInfo at +0x18 (retail 0x70 bytes: AttackerInfo +0x04, DefenderInfo +0x34); retail CThing
 //   UniqueID +0x18, component bits +0x20, interface map +0x44, def +0x70, dead flag +0x91 bit 0, combat flags +0x15c.
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 #include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
@@ -37,7 +38,7 @@ class CDefString { public:
     long m_index;
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);        // 0x009D49B0
+    CCharString GetString(long name) const;        // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
@@ -262,7 +263,7 @@ FABLE_FORCEINLINE void TraceDeregister(CCharString attackerName, const CCharStri
 }
 FABLE_FORCEINLINE void TraceDeregister(const CThing* attacker, CCharString attackedName, const CCombatantInfo& attackedInfo)
 {
-    TraceDeregister(GDefStringTable.GetString(attacker->GetDefName()), attackedName, attackedInfo);
+    TraceDeregister(GDefStringTable.GetString((attacker->GetDefName()).m_index), attackedName, attackedInfo);
 }
 class CCombatManager {
 public:
@@ -289,7 +290,7 @@ void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
                 IncrementDefenderAttackPattern(attackedInfo);
         }
     }
-    TraceDeregister(attacker, GDefStringTable.GetString(info.AttackerInfo.Attacked->GetDefName()), attackedInfo);
+    TraceDeregister(attacker, GDefStringTable.GetString((info.AttackerInfo.Attacked->GetDefName()).m_index), attackedInfo);
     attackedInfo.DefenderInfo.Attackers.erase(attacker->GetUID());
     if (attackedInfo.DefenderInfo.Attackers.size() == 0) {
         DeregisterAttackedCombatant(attacked);

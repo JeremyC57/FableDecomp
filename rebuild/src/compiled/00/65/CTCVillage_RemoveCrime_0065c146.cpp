@@ -17,6 +17,7 @@
 //        home, the handle's argument slot -- the handle itself lives on in ebx); the witness chain is a `for (;;)` that
 //        removes each deed found for the ORIGINAL handle; `this` is spilled to [ebp-4]; the set erase takes the handle
 //        parameter by address.
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -48,7 +49,7 @@ private: public:
 };
 
 class CTCHeroOpinionDeedLog { public:
-    class COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+    const class COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
     long FindWitnessDeed(long handle);          // 0x006C5710
     void RemoveDeedStillSearchingForWitnesses(long handle);   // 0x006C5920
     void RemoveDeed(long handle);               // 0x006C59E0

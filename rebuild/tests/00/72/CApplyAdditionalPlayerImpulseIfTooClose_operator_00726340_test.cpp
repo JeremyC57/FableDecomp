@@ -1,3 +1,10 @@
+// Portable copy of the landed test (agentNF5): the calling-convention keywords compile away on a non-MSVC host; the body is unchanged.
+#if !defined(_MSC_VER)
+#define __fastcall
+#define __thiscall
+#define __cdecl
+#define __stdcall
+#endif
 // Behaviour test for 00726340: src/00726340.cpp copied verbatim, out-of-line callees stubbed below.
 #include "fable_compiler.h"
 #include <cstdio>

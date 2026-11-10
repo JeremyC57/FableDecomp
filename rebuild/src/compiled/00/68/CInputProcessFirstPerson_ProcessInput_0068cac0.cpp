@@ -7,6 +7,8 @@
 // (MyPlayer +0x18), CProcessedInput::SetHandled @ 0x00A0D390. Float constant 0x0129BA3C = 0.0001f.
 // Shape: `!(len > eps)` (not `len <= eps`, which adds a `jnp`); `x*x + y*y` in one expression squares y first; the length test and the action tests both end
 // in one shared `jne` to the exit; the event rides in esi, `this` in edi.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include <math.h>
 #pragma intrinsic(sqrt)
 class CInputEvent;
@@ -24,7 +26,7 @@ public:
 };
 class CPlayer {
 public:
-    void RemoveMode(long mode);                    // 0x00634190
+    void RemoveMode(EPlayerMode mode);                    // 0x00634190
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -55,6 +57,6 @@ void CInputProcessFirstPerson::ProcessInput(const CInputEvent& event, CProcessed
             || IsEventGameAction(0x13, event))
             return;
     }
-    MyPlayer->RemoveMode(0x10);
+    MyPlayer->RemoveMode((EPlayerMode)(0x10));
     processed.SetHandled();
 }

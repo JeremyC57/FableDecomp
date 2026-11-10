@@ -2,6 +2,9 @@
 // (walking the STLport list in reverse); nothing when no event of that type passes; the counted-pointer copies leave the counts unchanged.
 #include <cstdio>
 #include <cstdlib>
+#ifndef _MSC_VER
+#define __fastcall
+#endif
 class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 static int g_deleted = 0;
 void __fastcall KillEvent(void*) { ++g_deleted; }

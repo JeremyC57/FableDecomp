@@ -7,7 +7,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 173 = bit 13 of the bitset dword at +0x34),
 //          CTCBoss::GetBossPhase @ 0x007AED10 (manifest "CWorld::DrawGetEnvironment" is propagated), CAIStateGroupBase::
 //          GetPWorld @ 0x008FCFC0 (manifest "CPlayer::GetCurrentMode" propagated), CWorld::GetFrame @ 0x0049D870 (static,
-//          manifest "GFGetPreMainMemoryUsed"), CWorld::GetPRandomSeed @ 0x0049D810 (manifest "CVertexBufferWin32::DoSizeof"),
+//          manifest "GFGetPreMainMemoryUsed"), CWorld::GetWorldSeed @ 0x0049D810 (manifest "CVertexBufferWin32::DoSizeof"),
 //          GFROR13 @ 0x00497890, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0,
 //          CThingCreatureBase::GetCombatTypeDef @ 0x00666D10, the jump-position finder @ 0x0096A3C0 (manifest
 //          "FindValidCombatPositions"); data: the frame rate @ 0x01375550 (long), 10.0f @ 0x01237F0C.
@@ -20,6 +20,7 @@
 // Layout: engine/CAIStateGroup_WhisperPotionCombat.h is 4 bytes high after TrapThings (PDB vector 16 vs retail 12):
 //          retail PTarget +0x14 (CIntelligentPointer<CThing>, PDB `_pad`), TrapThings +0x1c, FrameLastRun +0x28,
 //          Jump_to_pos +0x2c. CCombatTypeDef +0x6c is a float range (PDB offsets are vector-shifted; descriptive name).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
@@ -80,7 +81,7 @@ class CTCBoss { public:                                // interface 173
 
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 long __fastcall GFROR13(unsigned long value);  // 0x00497890
 class CMainGameComponent {
@@ -132,7 +133,7 @@ FABLE_FORCEINLINE bool CAIStateGroup_WhisperPotionCombat::RestampAndCheckRange()
 {
     FrameLastRun = GetPWorld()->GetFrame();
     long rate = CMainGameComponent::GetConstantFPS();
-    unsigned long* seed = GetPWorld()->GetPRandomSeed();
+    unsigned long* seed = GetPWorld()->GetWorldSeed();
     FrameLastRun += WorldRandomRange(*seed, rate * 5);
     CThing* creature = PBrain->PCreature;
     const C3DVector* targetPos = &PTarget.GetPItem()->GetPos();

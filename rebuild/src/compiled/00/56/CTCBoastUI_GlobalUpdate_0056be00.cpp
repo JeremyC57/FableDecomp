@@ -14,6 +14,8 @@
 // CGameCameraManager::PushCameraMode 0x006987A0, memmove 0x00BFEAE6, free 0x00BFEA14, CTCBoastUI::Activate 0x0056AD40.
 // Layout: retail CTCBoastUI with the 12-byte STLport map/vector (Active +0x18, Components +0x1c, Quitting +0x28,
 // AllowedToOpen +0x29, ActivationRequested +0x2a), as the landed 0x0056AC10 / 0x0056A880 model it.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* p);                                        // 0x00BFEA14
 void* operator new(unsigned int size);                                        // 0x00BFEA1A
@@ -118,7 +120,7 @@ struct SListNode { SListNode* Next; SListNode* Prev; };
 extern SListNode* g_BoastList;                         // 0x013B8A98 (STLport list head node)
 
 struct CComponent { virtual ~CComponent(); };
-class CPlayer { public: void RemoveMode(long mode); };        // 0x00634190
+class CPlayer { public: void RemoveMode(EPlayerMode mode); };        // 0x00634190
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
@@ -207,7 +209,7 @@ void CTCBoastUI::GlobalUpdate(long)
         Active = false;
         Quitting = false;
         ActivationRequested = false;
-        GetPlayerManager().GetMainPlayer().RemoveMode(0x20);
+        GetPlayerManager().GetMainPlayer().RemoveMode((EPlayerMode)(0x20));
     }
     if (ActivationRequested) {
         if (Active) {

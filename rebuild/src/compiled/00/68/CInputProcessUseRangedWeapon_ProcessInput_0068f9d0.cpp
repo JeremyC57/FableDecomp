@@ -14,6 +14,8 @@
 //   test is the out-parameter form inside one && chain. The carrying component is a NAMED local: that lets the two lookup-key
 //   temporaries share one stack slot (first half: the 4-byte frame word; second half: the dead `event` slot) -- chaining
 //   `GetConstInterface(0x46)->GetThingInPrimarySlot()` gives each key its own slot (8-byte frame).
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include "fable_compiler.h"
 class CInputEvent;
 class CProcessedInput;
@@ -99,7 +101,7 @@ class CPlayer { public:
     unsigned char           _pad3c[0x218 - 0x3c];
     bool                    InRangedWeaponMode;    // +0x218 (descriptive)
     CThing* GetCharacter() const { return PCharacter.GetPItem(); }
-    void RemoveMode(long mode);                    // 0x00634190
+    void RemoveMode(EPlayerMode mode);                    // 0x00634190
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {
@@ -140,6 +142,6 @@ void CInputProcessUseRangedWeapon::ProcessInput(const CInputEvent& event, CProce
         CTCHeroRangedAttacks* rangedAttacks = hero->GetInterface<CTCHeroRangedAttacks>(0x81);
         rangedAttacks->CancelAimingWeapon();
         rangedAttacks->ResetProjectileWeaponMode();
-        hero->GetPlayer().RemoveMode(0x22);
+        hero->GetPlayer().RemoveMode((EPlayerMode)(0x22));
     }
 }

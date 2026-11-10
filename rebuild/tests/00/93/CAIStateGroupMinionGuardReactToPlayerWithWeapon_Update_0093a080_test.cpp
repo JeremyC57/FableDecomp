@@ -1,3 +1,13 @@
+// Portable copy of the landed test (agentNF5): the calling-convention keywords compile away on a non-MSVC host; the body is unchanged.
+#if !defined(_MSC_VER)
+#define __fastcall
+#define __thiscall
+#define __cdecl
+#define __stdcall
+#define __declspec(x)
+#endif
+// Address of a temporary that lives to the end of the full expression (MSVC accepts `&T(...)` directly; g++ needs the helper).
+template <class T> T* TempAddr(const T& t) { return const_cast<T*>(&t); }
 // Behaviour test for CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update (0x0093A080): model and body verbatim,
 // every callee stubbed; exercises the dead/unarmed exits, the look-at abort, the admonishing watch loop, the warning
 // path (message, four-second watch with the follow move, the just-warning return, the criminal declaration) and the
@@ -143,7 +153,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                 }
                 if (justWarning)
                     return;
-                AIAction_PerformActionAndWait(&CCreatureAction_DeclarePlayerACriminal(GetCreature(), PPlayer.GetPItem()), false);
+                AIAction_PerformActionAndWait(TempAddr(CCreatureAction_DeclarePlayerACriminal(GetCreature(), PPlayer.GetPItem())), false);
             } else {
                 long result;
                 do {

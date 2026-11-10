@@ -14,10 +14,12 @@
 // (+0x48 of the camera set def) and the definition manager (World +0x10) are read before the
 // zeroed CDefPointer local is declared, so VC sinks its zero store below the pushes; the local's
 // inline destructor releases after the flag store (no null store).
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include "fable_compiler.h"
 static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CPlayer { public:
-    void RemoveMode(long mode);                     // 0x00634190
+    void RemoveMode(EPlayerMode mode);                     // 0x00634190
 };
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -107,7 +109,7 @@ __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPoin
 
 void CGameCameraManager::AddMeleeFlourishAbility()
 {
-    g_pGame_013b86a0->PlayerManager->GetMainPlayer().RemoveMode(0x2f);
+    g_pGame_013b86a0->PlayerManager->GetMainPlayer().RemoveMode((EPlayerMode)(0x2f));
     long index = PCameraManagerSet->MeleeCameraManager;
     CDefPointer<const CCameraManagerDef> def;
     World->DefinitionManager->GetDef(index, &def);

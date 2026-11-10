@@ -15,6 +15,8 @@
 // names are scoped named CCharStrings with the appearance read into a local after the ctor; the coin flip is
 // `long side = r & 1; bool b = side == 1;` (cmp/sete); MoveAndFace is written in each arm (the common arg-push prefix is
 // hoisted by VC7.1) and GFRandom is called inside each talk arm (hoisted too); the look speed is 0.0027777f (0x3B360A13).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+enum EAIActionRepeat;                         // MS forward enum
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -100,7 +102,9 @@ public:
     public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    public:
 };
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     CThing* GetRandomFreeSeatInBuilding(CThing* building);   // 0x009431E0
@@ -179,7 +183,7 @@ void CAIStateGroup_WorkAtSchool::Update()
             CThing* pupil = GetRandomFreeSeatInBuilding(((CThing*)school.GetPItem()));
             if (!pupil)
                 break;
-            while (AIAction_LookAtPos(2, pupil->GetPos(), 0x11, 0.0027777f) == 4)
+            while (AIAction_LookAtPos((EAIActionRepeat)(2), pupil->GetPos(), 0x11, 0.0027777f) == 4)
                 ;
             bool ok;
             if (atBoard)

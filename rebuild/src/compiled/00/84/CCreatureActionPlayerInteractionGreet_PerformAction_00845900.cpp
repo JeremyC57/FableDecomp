@@ -10,6 +10,8 @@
 // Shape: the landed CCreatureAction_GiveItemToThing 0x00842F70 message model (creature fetched twice into named locals, the manager
 // into a third before the arguments); IS_THING_ALIVE on both pointers; `this` spills to the frame (`mov [esp+0Ch],ebp`) because ebp
 // walks on to &PTarget; the `new` null test selects 0 for AddEvent (the landed ShowItemToThing shape).
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 class C3DVector;
 class CTCBase;
@@ -79,7 +81,7 @@ class CTCEntityEvents { public:
 };
 class CMessageEvent;
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long flags, const C3DVector& position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
 };
 class CWorld { public:
     unsigned char _pad[0x60];
@@ -108,6 +110,6 @@ void CCreatureAction_PlayerInteractionGreet::PerformAction()
         CThing* pCreatureThing = PCreature.GetPItem();
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;
-        pManager->AddMessage(0x14, 0x10, &pCreature->PeekPos(), pCreatureThing, PTarget.GetPItem(), 0.0f, 0.0f, 0);
+        pManager->AddMessage((EMessageEventType)(0x14), 0x10, pCreature->PeekPos(), pCreatureThing, PTarget.GetPItem(), 0.0f, 0.0f, 0);
     }
 }

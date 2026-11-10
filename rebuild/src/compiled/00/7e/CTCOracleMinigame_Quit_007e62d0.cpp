@@ -24,6 +24,8 @@
 //          CPlayerGui: subtitles +0x18, a showing-info flag +0xf8, the quest-info drawer +0x1c8.
 // Shape: the inline list clear re-reads the sentinel after every free; the frame rate and the def are named locals read
 //          before the world frame call; the scoreboard is the unset-out-pointer GetInterface.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 extern "C" void free(void* p);                  // 0x00BFEA14
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -38,7 +40,7 @@ class CTCHeroOnlineScoreboard { public:
 };
 class CPlayer { public:
     long GetCurrentMode();                      // 0x00633BE0
-    void RemoveMode(long mode);                 // 0x00634190
+    void RemoveMode(EPlayerMode mode);                 // 0x00634190
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -136,7 +138,7 @@ void CTCOracleMinigame::Quit()
     Stage = 5;
     CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() == 0x29)
-        player->RemoveMode(0x29);
+        player->RemoveMode((EPlayerMode)(0x29));
     InputsPending.clear();
     long framesPerSecond = CMainGameComponent::GetConstantFPS();
     COracleMinigameDef* def = PDef;

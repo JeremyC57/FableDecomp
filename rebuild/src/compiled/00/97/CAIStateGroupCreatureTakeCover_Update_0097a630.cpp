@@ -12,12 +12,13 @@
 //   GetHiddenCoverPos 0x00970930, CanSeeTarget 0x00970790, RefreshCoverList 0x009710D0, IsStillRunnable 0x00979E90,
 //   AttackTargetThing 0x00979F70, MoveFromCoverToFiringPosition 0x0097A1B0, CThing::GetPos 0x004C73D0,
 //   CCreatureAction_ProjectileCrouch 0x008B8310 / ~CCombatActionBase 0x0062E900, AIAction_PerformActionAndWait 0x0097DB70,
-//   CAIStateGroupBase::GetWorld 0x008FCFC0 / CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890, IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> > 0x006961F0 (__fastcall, ICF-folded),
+//   CAIStateGroupBase::GetWorld 0x008FCFC0 / CWorld::GetWorldSeed 0x0049D810, GFROR13 0x00497890, IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> > 0x006961F0 (__fastcall, ICF-folded),
 //   CIntelligentPointer<const CThing>(CThing*) 0x0056C860 / (const CIntelligentPointer<CThingCreatureBase>&) 0x0091F990 / dtor
 //   0x00A01C10, CCharString 0x0099EBF0 / ~ 0x0099EAE0, CCreatureAction_PlayAnimation 0x008424F0 / ~ 0x00693EF0,
 //   AIAction_PerformActionTargetFaceAndWait 0x0097DCB0, Terminate 0x008FCF40. Constant 1.8f @ 0x01298868.
 // Layout: Ego_r.pdb CAIStateGroup_CreatureUseCoverBase (byte-packed): PTargetThing +0x14, PCoverThing +0x1f, cover list
 //   begin/end +0x28/+0x2c, failure count +0x48 (engine/CAIStateGroup_CreatureTakeCover.h flattens the base; local model).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
@@ -85,7 +86,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
                                   bool useAnimationMovement, bool usePhysics, bool cameraUpdate, long c, long d);   // 0x008424F0
 };
 class CWorld { public:
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -134,7 +135,7 @@ struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase
     bool MoveFromCoverToFiringPosition(C3DVector& pos, const CIntelligentPointerConstThing& cover);   // 0x0097A1B0
     FABLE_FORCEINLINE unsigned long Random()
     {
-        unsigned long* seed = GetWorld().GetPRandomSeed();
+        unsigned long* seed = GetWorld().GetWorldSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;
         return *seed = GFROR13(*seed);
     }

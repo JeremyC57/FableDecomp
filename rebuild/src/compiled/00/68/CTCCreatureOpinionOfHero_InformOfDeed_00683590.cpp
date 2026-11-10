@@ -11,6 +11,7 @@
 // Shape: the deed log is the unchecked out-parameter GetInterface (the absent arm reads the never-written local's home, the
 // `deedHandle` slot, into edi); the effects def is a CDefPointer temporary returned into the dead handle slot (the handle lives
 // on in ebx), its object read through the returned pointer, and released after the call by a null-tested dtor calling the def's inline ReleaseTemporary() over its ref-count base at +4.
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -76,7 +77,7 @@ class COpinionDeed { public:
     long Type;                                          // +0x00 EOpinionDeedType
 };
 class CTCHeroOpinionDeedLog { public:
-    COpinionDeed* GetDeedFromHandle(long handle);       // 0x006C58F0
+    const COpinionDeed* GetDeedFromHandle(long handle) const;       // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 class CTCBase
@@ -99,7 +100,7 @@ void CTCCreatureOpinionOfHero::InformOfDeed(long deedHandle, bool flag)
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);
-        COpinionDeed* deed = log->GetDeedFromHandle(deedHandle);
+        COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(deedHandle);
         if (deed)
             InformOfDeed(deed->Type, deedHandle, log->GetDeedEffectsDef(deed->Type).Object, flag);
     }

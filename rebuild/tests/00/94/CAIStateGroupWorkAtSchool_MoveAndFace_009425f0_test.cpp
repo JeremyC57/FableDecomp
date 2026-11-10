@@ -1,3 +1,13 @@
+// Portable copy of the landed test (agentNF5): the calling-convention keywords compile away on a non-MSVC host; the body is unchanged.
+#if !defined(_MSC_VER)
+#define __fastcall
+#define __thiscall
+#define __cdecl
+#define __stdcall
+#define __declspec(x)
+#endif
+// Address of a temporary that lives to the end of the full expression (MSVC accepts `&T(...)` directly; g++ needs the helper).
+template <class T> T* TempAddr(const T& t) { return const_cast<T*>(&t); }
 // Behaviour test for 009425f0: src/009425f0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CAIStateGroup_WorkAtSchool::MoveAndFace(C3DVector pos, float radius, C3DVector facePos)
 #include <cstdio>

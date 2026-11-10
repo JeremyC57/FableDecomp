@@ -1,3 +1,13 @@
+// Portable copy of the landed test (agentNF5): the calling-convention keywords compile away on a non-MSVC host; the body is unchanged.
+#if !defined(_MSC_VER)
+#define __fastcall
+#define __thiscall
+#define __cdecl
+#define __stdcall
+#define __declspec(x)
+#endif
+// Address of a temporary that lives to the end of the full expression (MSVC accepts `&T(...)` directly; g++ needs the helper).
+template <class T> T* TempAddr(const T& t) { return const_cast<T*>(&t); }
 // Behaviour test for 00449d90: src/00449d90.cpp copied verbatim (with its same-TU GetDef stand-in), the remaining callees stubbed
 // so calls and arguments are observable. CPlayerManager::InitPlayerCharacter(bool)
 #include <cstdio>

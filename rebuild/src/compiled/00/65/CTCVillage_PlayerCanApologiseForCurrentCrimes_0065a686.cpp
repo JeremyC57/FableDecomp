@@ -21,6 +21,7 @@
 // Shape: frame-pointer size TU (`push 51h ; pop edi` key, `and [ebp-8],0` construction flags); the refusal test is a named
 //        bool over `!(def->CrimeSeverity & 8) || age > limit` -- the effects-def temporary gets the construction flag
 //        bit and its conditional destructor, the bool its frame byte; the deed log is assigned only when present.
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -107,7 +108,7 @@ class COpinionDeed { public:
     long FrameHappened;                         // +0x14
 };
 class CTCHeroOpinionDeedLog { public:
-    COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+    const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 
@@ -148,7 +149,7 @@ bool CTCVillage::PlayerCanApologiseForCurrentCrimes(long seconds)
         long now = CWorld::GetFrame();
         SNode* end = PlayersCrimes;
         for (SNode* it = end->_M_left; it != end; it = Successor(it)) {
-            COpinionDeed* deed = log->GetDeedFromHandle(it->_M_value_field);
+            COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(it->_M_value_field);
             if (deed) {
                 bool refused = !(log->GetDeedEffectsDef(deed->DeedType).Object->CrimeSeverity & 8)
                                || now - deed->FrameHappened > CMainGameComponent::GetConstantFPS() * seconds;

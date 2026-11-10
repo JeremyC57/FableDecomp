@@ -11,6 +11,8 @@
 // the +0x30 word; mode manager = 0x31, bit 17 of the +0x24 word), map +0x44.
 // Shape: HasTC + GetTC with the ranged-attacks component in a named local (esi); the mode manager is the unchecked out-parameter
 // GetInterface (the absent arm reads the lookup key's frame word); RemoveMode's argument is pushed before GetPlayer runs.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -18,7 +20,7 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer { public:
-    void RemoveMode(long mode);                         // 0x00634190
+    void RemoveMode(EPlayerMode mode);                         // 0x00634190
 };
 
 class CTCHeroRangedAttacks { public:
@@ -47,7 +49,7 @@ void CTCCombat::SetBlocking()
         CTCHeroRangedAttacks* ranged = (CTCHeroRangedAttacks*)((CTCHeroRangedAttacks*)&ParentThing->GetTC(TCI_HERO_RANGED_ATTACKS));
         ranged->CancelAimingWeapon();
         ranged->ResetProjectileWeaponMode();
-        ParentThing->GetPlayer().RemoveMode(0x22);
+        ParentThing->GetPlayer().RemoveMode((EPlayerMode)(0x22));
     }
     CTCCreatureModeManager* modes;
     ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);

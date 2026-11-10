@@ -6,7 +6,7 @@
 //   LowerBound const @ 0x004365B0 (inlined GetInterface for type 0x46 = CTCCarrying, bit 6 of the presence word +0x28),
 //   CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, AddMode @ 0x0073AE10 (x3), RemoveMode @ 0x0073ABA0, the front
 //   mode's virtual slots 8 (+0x20, a bool "may be replaced by an idle mode" test) and 1 (+0x04, GetType),
-//   CTCBase::GetWorld @ 0x00686A70, CWorld::GetPRandomSeed @ 0x0049D810, GFRandom(range, seed) @ 0x004CDAE0 (__fastcall),
+//   CTCBase::GetWorld @ 0x00686A70, CWorld::GetWorldSeed @ 0x0049D810, GFRandom(range, seed) @ 0x004CDAE0 (__fastcall),
 //   the defs' virtual slot 1 (+0x04, delete at the last reference).
 // Layout: CTCCreatureModeManager (Ego_r.pdb): PModes (list<CCountedPointer<CModeBase>>, retail 4-byte head) +0x0c;
 //   CThing PDef +0x70, interface map +0x44; CCreatureModeDef (Ego_r.pdb 0x44): InitialCreatureMode +0x2c,
@@ -18,6 +18,7 @@
 //   same-TU stand-in body (out slot written inline, under auto_inline(off)): with only a declaration VC7.1 treats the
 //   out pointer's address as escaping and gives the GetInterface key its own frame word (`sub esp,8`, this/holder swap
 //   edi<->ebx); with the stand-in the key reuses the out pointer's `push ecx` word as in retail.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -97,7 +98,7 @@ class CThing { public:
     }
 };
 class CWorld { public:
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
 
@@ -147,7 +148,7 @@ void CTCCreatureModeManager::SetupInitialMode()
             if (FrontMode()->CanBeReplacedByIdleMode() && def->AvailableIdleModes_first != def->AvailableIdleModes_last) {
                 RemoveMode(FrontMode()->GetType());
                 unsigned long count = def->AvailableIdleModes_last - def->AvailableIdleModes_first;
-                AddMode(def->AvailableIdleModes_first[GFRandom(count, GetWorld().GetPRandomSeed())]);
+                AddMode(def->AvailableIdleModes_first[GFRandom(count, GetWorld().GetWorldSeed())]);
             }
             if (def->InitialCreatureMode)
                 AddMode(def->InitialCreatureMode);

@@ -13,6 +13,7 @@
 // copies it into the named local and destroys it: no NRVO through the inline); the trace is the whole operator+
 // chain handed to an inline no-op. The attacked creature's record is the inline GetCombatantInfo (find, `->value`).
 // Layout: the landed CCombatManager model (Combatants +0x10).
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_STATEACCESS
@@ -24,7 +25,7 @@ class CDefString { public:
     long m_index;
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);        // 0x009D49B0
+    CCharString GetString(long name) const;        // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
@@ -36,7 +37,7 @@ class CThingCreatureBase { public:
 };
 inline CCharString GetDefNameString(const CThingCreatureBase& thing)
 {
-    CCharString name = GDefStringTable.GetString(((CThing*)&thing)->GetDefName());
+    CCharString name = GDefStringTable.GetString((((CThing*)&thing)->GetDefName()).m_index);
     return name;
 }
 struct CCombatantInfo {

@@ -25,6 +25,9 @@
 //   `mov eax,1` serves both the CSoundInit stores and the `answer == 1` compare.
 // Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+class CMessageEvent;
 #include "fable_compiler.h"
 #define CSubtitleRenderer CSubtitleRendererDonor
 #include "engine/CSubtitleRenderer.h"
@@ -60,7 +63,7 @@ public:
 };
 class CMessageEventManager {
 public:
-    void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 class CMemoryBuffer {
 public:
@@ -95,7 +98,7 @@ void CWorld::EAAnswerQuestion(const CGameEvent* event)
     CMemoryBuffer buffer;
     event->GetData(buffer);
     long answer = buffer.ReadLong();
-    PMessageEventManager->AddMessage(0x10, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, answer);
+    PMessageEventManager->AddMessage((EMessageEventType)(0x10), 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, answer);
     CSubtitleRenderer& subtitles = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer;
     if (subtitles.DisplayingText) {
         const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();

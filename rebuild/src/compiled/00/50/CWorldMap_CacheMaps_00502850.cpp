@@ -12,11 +12,13 @@
 //   Used +0x24, Loading +0x27, LoadedOnPlayerProximity +0x28), PLevelLoader data +0xbc; region-loading flag byte
 //   0x013756F6 (landed name g_bRegionLoadingEnabled).
 // Note: the "unload" branch tests Maps[loadType].Loading -- retail indexes the map array with the load type there.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+class CMessageEvent;
 #include "engine/C3DVector.h"
 class CThing;
 class CMessageEventManager { public:
-    void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1,
-                     float value2, long data);          // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);          // 0x00687540
 };
 class CWorld { public:
     unsigned char         _pad00[0x60];
@@ -69,7 +71,7 @@ void CWorldMap::CacheMaps(ELoadType loadType)
             long distance = GetMinPlayerDistanceFromMap(i);
             if (IsMapLoaded(i)) {
                 if (distance >= 0x40 && !Maps[loadType].Loading) {
-                    World->PMessageEventManager->AddMessage(0x25, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, i);
+                    World->PMessageEventManager->AddMessage((EMessageEventType)(0x25), 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, i);
                     UnloadLevel(i);
                 }
             }

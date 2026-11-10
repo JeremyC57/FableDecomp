@@ -27,6 +27,11 @@
 //        manager are named locals read before the argument pushes (ebp, and the spilled `push ecx` word); the unchecked
 //        GetInterface (end/hit choice as one ternary, so the component lands in ecx) and the stats out pointer each sit
 //        in their own `{}` block so they share that single frame word.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+class CMessageEvent;
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
@@ -77,7 +82,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 };
 
 class CMessageEventManager { public:
-    void* AddMessage(long type, unsigned long distance, C3DVector* pos, CThing* source, CThing* extra, float a, float b, long c);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long distance, const C3DVector& pos, CThing* source, CThing* extra, float a, float b, long c);   // 0x00687540
 };
 class CWorld { public:
     unsigned char _pad[0x60];
@@ -92,7 +97,7 @@ class CTCHeroStats { public:
     void SetMoney(long money, bool notify);     // 0x0057A774
 };
 class CPlayer { public:
-    void RemoveMode(long mode);                 // 0x00634190
+    void RemoveMode(EPlayerMode mode);                 // 0x00634190
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -180,11 +185,11 @@ void CTCTavernGame::LeaveGame()
         CThing* gameMaster = PGameMaster.Get();
         long framesPerSecond = CMainGameComponent::GetConstantFPS();
         CMessageEventManager* messages = GetWorld().m_pMessages;
-        messages->AddMessage(0x40, framesPerSecond * 5, (C3DVector*)&gameMaster->GetPos(),
+        messages->AddMessage((EMessageEventType)(0x40), framesPerSecond * 5, *((C3DVector*)&gameMaster->GetPos()),
                                        PGameMaster.Get(), 0, 0.0f, 0.0f, 0);
     }
     CPlayer* player = &CMainGameComponent::Get()->PlayerManager->GetMainPlayer();
-    player->RemoveMode(0x1a);
+    player->RemoveMode((EPlayerMode)(0x1a));
     CThing* hero = player->GetPControlledCreature();
     hero->SetVisible(true);
     hero->SetInLimbo(false);

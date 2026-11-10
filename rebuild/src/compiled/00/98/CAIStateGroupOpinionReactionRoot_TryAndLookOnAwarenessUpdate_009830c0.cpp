@@ -9,6 +9,9 @@
 // is built in its argument slot (`sub esp,0Ch ; mov ecx,esp` + three dword moves) from the returned position,
 // then the repeat mode. `xor ecx,ecx ; cmp eax,2 ; sete cl ; mov al,cl` is a plain `return r == 2;`.
 // The pointer member is unaligned at +0x6b (engine header, pack 1), so the class is modelled packed.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 class CThing;
 
 #include "engine/C3DVector.h"
@@ -26,7 +29,9 @@ class CBaseObjectPointer;
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
+    public:
 };
 
 class CTCTalk;
@@ -44,5 +49,5 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
 bool CAIStateGroup_OpinionReactionRoot::TryAndLookOnAwarenessUpdate()
 {
     CThingPos* pThing = ThingReactingTo.Get();   // fetched before the literal pushes (a named local)
-    return AIAction_LookAtPos(1, pThing->GetPos(), 0x21, 0.0027777f) == 2;
+    return AIAction_LookAtPos((EAIActionRepeat)(1), pThing->GetPos(), 0x21, 0.0027777f) == 2;
 }

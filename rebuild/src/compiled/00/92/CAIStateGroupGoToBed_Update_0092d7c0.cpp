@@ -12,6 +12,11 @@
 // (ebx flag mask 3 / 0xF); the name goes through an inline (name, filter) wrapper (landed 0x00970610).
 // Layout: Ego_r.pdb CAIStateGroup_GoToBed PBed +0x14, BedPos +0x3c, Rhset +0x48 (Up, Forward +0x54); CTCSleep
 // IsReadyToSleep +0x0c.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+enum EMovementType;                           // MS forward enum
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 #include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
@@ -114,9 +119,12 @@ class CAIStateGroupBase { public:
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     bool CreatureHasAnim(const CCharString& name, const CAnimFilterBase& filter) const { return GetCreature()->HasAnim(name, filter); }
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* arrived, long movement, bool a, bool b,
-                            CThing* avoid, bool c, float speed);   // 0x0097EC00
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long lookFlags, float tolerance);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& arrived, EMovementType movement, bool a, bool b, const CThing* avoid, bool c, float speed);   // 0x0097EC00
+    public:
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long lookFlags, float tolerance);   // 0x0097D580
+    public:
     void Terminate();                                  // 0x008FCF40
 };
 
@@ -151,10 +159,10 @@ void CAIStateGroup_GoToBed::Update()
             arrived = false;
             long result;
             do {
-                result = AIAction_MoveToPos(2, BedPos, &arrived, movement, true, true, 0, true, 0.0f);
+                result = AIAction_MoveToPos((EAIActionRepeat)(2), BedPos, arrived, (EMovementType)(movement), true, true, 0, true, 0.0f);
             } while (result == 4);
             if (result == 2 && PBed.GetPItem() != 0 && !(PBed.GetPItem()->m_flags91 & 1)
-                && AIAction_LookAtPos(1, GetCreature()->PeekPos() + Rhset.Forward, 0x11, 0.01f) == 2
+                && AIAction_LookAtPos((EAIActionRepeat)(1), GetCreature()->PeekPos() + Rhset.Forward, 0x11, 0.01f) == 2
                 && GetCreature()->HasTC(0xd4))
                 GetCreature()->GetTC<CTCSleep>(0xd4)->IsReadyToSleep = true;
         }

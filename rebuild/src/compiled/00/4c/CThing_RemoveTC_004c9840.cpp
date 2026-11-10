@@ -1,5 +1,5 @@
 // CThing::RemoveTC(long type) -- deferred removal of a thing component: find the TC of `type`; unless already flagged, flag it, clear its presence bit, queue {this, tc} on the global pending-removal list and notify the TC
-// Leaf: RemoveTC
+// Leaf: ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9840, 224 bytes incl. padding (ret 4). Manifest label "CBaseObject::OnPropertyChanged"
 //          is propagated; the body is CThing::RemoveTC(long) (GOTCHAS wave 25 chunks 140/163).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, the TC's virtual slot 21 (+0x54, interface type),
@@ -12,6 +12,8 @@
 // Shape: the inline find (lower bound, then end unless the key matches; `type` re-read from its slot); push_back = insert(end(), v)
 //          with the end iterator built in its by-value slot (user copy ctor) and the returned iterator in the dead `type` slot;
 //          the node value is {CIntelligentPointer<CThing>, CTCBase*} built from a CIntelligentPointer(this) temporary.
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z (the interface-type enum), was (long).
+enum ETCInterfaceType;                                       // MS forward enum (CThing::RemoveTC 0x004C9840 takes it)
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
@@ -70,11 +72,11 @@ struct CTCBitset {
     CTCBitset& reset(unsigned int pos);         // 0x004CC0D0
 };
 struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+    struct SEntry { ETCInterfaceType type; CTCBase* component; };
     SEntry* first;                              // +0x00
     SEntry* last;                               // +0x04
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-    SEntry* find(const long& type)
+    SEntry* LowerBound(const ETCInterfaceType* type);   // 0x0040F020
+    SEntry* find(const ETCInterfaceType& type)
     {
         SEntry* it = LowerBound(&type);
         if (it == last || type < it->type)
@@ -86,7 +88,7 @@ struct CInterfaceMap {
 #pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
 // the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const ETCInterfaceType* type)
 {
     SEntry* it = first;
     int len = int(last - first);
@@ -108,10 +110,10 @@ class CThing { public:
     unsigned char _pad04[0x1c];
     CTCBitset     m_presentBits;                // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    void RemoveTC(long type);
+    void RemoveTC(ETCInterfaceType type);
 };
 
-void CThing::RemoveTC(long type)
+void CThing::RemoveTC(ETCInterfaceType type)
 {
     CInterfaceMap::SEntry* it = m_interfaces.find(type);
     if (it == m_interfaces.end())

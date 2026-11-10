@@ -7,7 +7,7 @@
 //          bitset::test byte), CBaseIntelligentPointer ctor/GetPItem/SetPItem @ 0x00A01B10/0x00A01B50/0x00A01B90,
 //          CThing::GetPos @ 0x004C73D0, CTCCreatureNavigation::GetNearbyWanderPosition @ 0x006CB6E0,
 //          CAIStateGroupBase::AIAction_LookAtThing @ 0x0097D6F0 (CIntelligentPointer<const CThing> by value, vtable
-//          0x01237F1C), CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetPRandomSeed @ 0x0049D810, GFROR13 @ 0x00497890,
+//          0x01237F1C), CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetWorldSeed @ 0x0049D810, GFROR13 @ 0x00497890,
 //          virtual CAIStateGroup_HoverMovementBase::AIAction_MoveToPosAndFacePos (slot 22, 0x0091D7F0),
 //          CAIStateGroupBase::Terminate @ 0x008FCF40.
 // Shape: the navigation out pointer shares its home with the lookup key (written only on a hit); the loop counter is
@@ -15,6 +15,7 @@
 // Layout: the generated engine/CAIStateGroup_HoverWanderAroundThing.h spells the vptr as a data member, so the class is
 //          modelled locally with a polymorphic base (PBrain +0x04, PThing intelligent pointer +0x1c as in the header):
 //          the function makes a virtual call through slot 22.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
@@ -54,7 +55,7 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 class CWorld { public:
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
@@ -82,7 +83,7 @@ class CAIStateGroupBase { public:
     CWorld* GetPWorld();                        // 0x008FCFC0
     unsigned long Random(unsigned long range)
     {
-        unsigned long* seed = GetPWorld()->GetPRandomSeed();
+        unsigned long* seed = GetPWorld()->GetWorldSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;
         *seed = GFROR13(*seed);
         return *seed % range;

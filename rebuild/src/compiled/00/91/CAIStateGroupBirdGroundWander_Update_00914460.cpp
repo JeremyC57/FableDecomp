@@ -15,6 +15,9 @@
 //          every exit breaks to the one Terminate call.
 // Layout: CAIStateGroupBase per engine/CAIStateGroupBase.h (PBrain +4); creature bitset +0x20, interface map +0x44.
 //          No engine header exists for CAIStateGroup_BirdGroundWander (the PDB header lists it without members).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+enum EMovementType;                           // MS forward enum
+enum EAIActionRepeat;                         // MS forward enum
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -126,8 +129,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long movement, bool a, bool b,
-        CThing* avoid, bool c, float speed);    protected: // 0x0097EC00
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& reached, EMovementType movement, bool a, bool b, const CThing* avoid, bool c, float speed);    protected: // 0x0097EC00
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool stopWhenReplaced); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
@@ -150,7 +153,7 @@ void CAIStateGroup_BirdGroundWander::Update()
         bool reached = false;
         long result;
         do {
-            result = AIAction_MoveToPos(2, target, &reached, 3, true, true, 0, true, 0.0f);
+            result = AIAction_MoveToPos((EAIActionRepeat)(2), target, reached, (EMovementType)(3), true, true, 0, true, 0.0f);
         } while (result == 4);
         if (result != 2)
             break;

@@ -16,6 +16,8 @@
 //          `IsOfType(0x1f) && IsOriginatedByThing(home)` bound by pointers; every exit returns InvestigatingNoise.
 // Layout: engine/CAIStateGroup_MinionReactToNoise.h (NoisePosition +0x14, InvestigatingNoise +0x20, FoundNoiseMaker
 //          +0x21, FrameOfLastInteraction +0x24); PBrain is the first dword at +0x04.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 #include "engine/CAIStateGroup_MinionReactToNoise.h"
 
@@ -102,8 +104,7 @@ class CMessageEvent;
 class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CFilter_Bind2<CMessageEventFilter_IsOfType,
                                          CMessageEventFilter_IsOriginatedByThing>& filter);   // 0x008D46D0
-    CMessageEvent* AddMessage(long type, unsigned long duration, const C3DVector* pos, CThing* from, CThing* about,
-                              float a, float b, long c);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long duration, const C3DVector& pos, CThing* from, CThing* about, float a, float b, long c);   // 0x00687540
 };
 class CWorld { public:
     unsigned char _pad[0x60];
@@ -166,7 +167,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
                     NoisePosition() = noisePos;
                     CThingAICreature* creature = GetCreature();
                     long fps2 = CMainGameComponent::GetConstantFPS();
-                    messages->AddMessage(0x1f, (unsigned long)((float)fps2 * 2.0f), &NoisePosition(),
+                    messages->AddMessage((EMessageEventType)(0x1f), (unsigned long)((float)fps2 * 2.0f), NoisePosition(),
                         creature, creature->PHome.GetPItem(), 0.0f, 0.0f, 0);
                     InvestigatingNoise = true;
                     FoundNoiseMaker = false;

@@ -11,6 +11,8 @@
 // argument instead, the temporary's stores are hoisted above the index calls).
 // Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #define CQuestManager CQuestManagerDonor
 #include "engine/CQuestManager.h"
 #undef CQuestManager
@@ -32,7 +34,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 
 class CMessageEvent;
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 
 class CWorld { public:
@@ -48,5 +50,5 @@ class CQuestManager : public CQuestManagerDonor {
 void CQuestManager::SetExpressionPerformed(const CCharString& expression)
 {
     long expressionIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(expression);
-    World->PMessageEventManager->AddMessage(0x2a, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, expressionIndex);
+    World->PMessageEventManager->AddMessage((EMessageEventType)(0x2a), 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, expressionIndex);
 }

@@ -10,6 +10,9 @@
 // `__forceinline` here (plain inline emits it out of line next to the two IsStopping calls).
 // Model: local (engine/CAIStateGroupBase.h and engine/CAIBrain.h carry the vptr as a plain word, and the brain
 // call here is virtual); PDB member names kept.
+// Leaf: ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ (protected;
+//   the action-status enum is EAIActionReturn), was ?AIAction_DoNothing@CAIStateGroupBase@@QAE?AW4EAIActionResult@@XZ.
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -47,18 +50,17 @@ class CAIBrain { public:
     CThingAICreature* Creature;                 // +0x18
 };
 
-enum EAIActionResult { AI_ACTION_FINISHED = 1, AI_ACTION_CONTINUE = 4 };
+enum EAIActionReturn { AI_ACTION_FINISHED = 1, AI_ACTION_CONTINUE = 4 };
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
-public:
-    EAIActionResult AIAction_DoNothing();
+    EAIActionReturn AIAction_DoNothing();         // protected (Ego_r / FableWin: IAE)
 };
 
-EAIActionResult CAIStateGroupBase::AIAction_DoNothing()
+EAIActionReturn CAIStateGroupBase::AIAction_DoNothing()
 {
     if (IsStopping())
         return AI_ACTION_FINISHED;

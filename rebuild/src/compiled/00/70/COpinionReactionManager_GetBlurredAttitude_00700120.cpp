@@ -1,5 +1,5 @@
 // COpinionReactionManager::GetBlurredAttitude(EOpinionAttitudeType attitude) const -- pick one of the attitude's "blurred" alternatives at random with the world generator; the attitude itself when it has none
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00700120, length 95 bytes (`ret 4`). Callees: CWorld::GetPRandomSeed
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00700120, length 95 bytes (`ret 4`). Callees: CWorld::GetWorldSeed
 // @ 0x0049D810 (`[world+8] + 1613Ch`; the manifest's "CVertexBufferWin32::DoSizeof" is propagated), GFROR13 @ 0x00497890
 // (__fastcall, one step of the world random generator as in the landed 0x006E8730).
 // Layout: PDef (the def object pointer) at +0, World at +4 (PDB). COpinionReactionManagerDef::AttitudeBlur
@@ -12,6 +12,7 @@
 // (the nonzero arm falls through; an `if (range == 0) return 0;` helper lays the zero arm first), with the element
 // read duplicated into both arms of the guard.
 // Leaf: GetBlurredAttitude
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
@@ -49,7 +50,7 @@ class COpinionReactionManagerDef { public:
 };
 
 class CWorld { public:
-    unsigned long* GetPRandomSeed();               // 0x0049D810
+    unsigned long* GetWorldSeed() const;               // 0x0049D810
 };
 
 class COpinionReactionManager {
@@ -65,7 +66,7 @@ EOpinionAttitudeType COpinionReactionManager::GetBlurredAttitude(EOpinionAttitud
     const CAttitudeVector& blurred = PDef->AttitudeBlur[attitude].Attitudes;
     if (blurred.size() > 0) {
         unsigned long count = blurred.size();
-        unsigned long* seed = World->GetPRandomSeed();
+        unsigned long* seed = World->GetWorldSeed();
         return blurred[WorldRandomRange(*seed, count)];
     }
     return attitude;

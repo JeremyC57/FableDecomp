@@ -3,6 +3,8 @@
 // Callees: UpdatePosition @ 0x00B91840 (`__fastcall`: the primitive in ecx, the flags at +0x5c in edx; a sibling jump). Shape: the end pointer is read once
 // (the mask is a local, so nothing aliases it) and kept in edi; `cmp [ecx+30h],esi ; je` skips the store and the call. The chunk label
 // "ClearAllChildPrimitives" belongs to the sibling @ 0x00BC6580, which inlines this after clearing the vector.
+// Leaf: ?UpdateRenderLayerMask@CEngineInternalPrimitiveGroup@@AAEXXZ
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?UpdateRenderLayerMask@CEngineInternalPrimitiveGroup@@AAEXXZ (private), was public (QAE).
 class CEngineInternalPrimitiveBase;
 class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
@@ -46,7 +48,9 @@ struct CEngineInternalPrimitiveGroup : CEngineInternalPrimitiveBase {   // engin
     unsigned char       _pad48[8];
     CRetailHandleVector Primitives;                // +0x50
     unsigned long       PrimitiveFlags;            // +0x5c
-    void UpdateRenderLayerMask();
+private:
+    void UpdateRenderLayerMask();                  // private (Ego_r / FableWin: AAE)
+public:
 };
 
 void CEngineInternalPrimitiveGroup::UpdateRenderLayerMask()

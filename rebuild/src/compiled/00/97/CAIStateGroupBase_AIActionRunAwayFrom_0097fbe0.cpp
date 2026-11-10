@@ -12,6 +12,7 @@
 // brain's creature at +0x18; the threat's flag byte at +0x6c (bit 3) and dead bit at +0x91 (retail CThing).
 // Shape: the found flag of the inlined navigation lookup is written through the bool that MoveToPos later fills (one
 // frame byte); the 2D personal-space test compares a named distance against a named squared radius.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -104,8 +105,8 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
-    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& moving, EMovementType anim, bool b1,
-                                       bool b2, const CThing* target, bool b3, float f);   protected: // 0x0097EC00
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& moving, EMovementType anim, bool b1, bool b2, const CThing* target, bool b3, float f);   protected: // 0x0097EC00
     EAIActionReturn AIAction_DoNothing(); public:       // 0x0097E200
     EAIActionReturn AIAction_RunAwayFrom(CIntelligentPointerConstThing threat, CCreatureActionBase* action);
 };
@@ -126,7 +127,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConst
         C3DVector dest;
         EAIActionReturn result;
         if (nav->GetNearbyDirectedPosition(creature->GetPos(), 5.0f, away, 0.25277778f, &dest)) {
-            result = AIAction_MoveToPos(AI_ACTION_REPEAT_POLL, dest, moving, MOVEMENT_RUN, true, true, 0, true, 0.0f);
+            result = AIAction_MoveToPos((EAIActionRepeat)(AI_ACTION_REPEAT_POLL), dest, moving, (EMovementType)(MOVEMENT_RUN), true, true, 0, true, 0.0f);
         } else {
             const CThing* threatThing = ((CThing*)enemy.GetPItem());
             CThingCreatureBase* me = GetCreature();
@@ -139,7 +140,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConst
             float radiusSquared = radius * radius;
             if (distanceSquared < radiusSquared
                 && nav->GetNearbyWanderPosition(((CThing*)enemy.GetPItem())->GetPos(), 5.0f, &dest, false)) {
-                    result = AIAction_MoveToPos(AI_ACTION_REPEAT_UNTIL_DONE, dest, moving, MOVEMENT_RUN, true, true, 0, true, 0.0f);
+                    result = AIAction_MoveToPos((EAIActionRepeat)(AI_ACTION_REPEAT_UNTIL_DONE), dest, moving, (EMovementType)(MOVEMENT_RUN), true, true, 0, true, 0.0f);
                 if (result == AI_ACTION_DONE)
                     continue;
                 return result;

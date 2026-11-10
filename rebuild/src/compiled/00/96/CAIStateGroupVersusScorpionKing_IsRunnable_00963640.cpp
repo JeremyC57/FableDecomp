@@ -11,7 +11,7 @@
 //          CThingFilter_HasScriptName, CThing> @ 0x0056D050, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
 //          @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10 (temporary vtables 0x01238C6C CIntelligentPointer<CThing>,
 //          0x0123E7D8 CIntelligentPointer<CThingCreatureBase>), CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (manifest
-//          "CPlayer::GetCurrentMode" is wrong), CWorld::GetPRandomSeed @ 0x0049D810, GFROR13 @ 0x00497890; the def's
+//          "CPlayer::GetCurrentMode" is wrong), CWorld::GetWorldSeed @ 0x0049D810, GFROR13 @ 0x00497890; the def's
 //          virtual slot 1 on the last release.
 // Layout: engine/CAIStateGroup_VersusScorpionKing.h (packed: GoClockwise +0x1c, PArenaCentreThing +0x1d) with the
 //          generated header's flattened base modelled as the landed CAIStateGroupBase and PEnemy (+0x14, the base's
@@ -23,6 +23,7 @@
 //          is a ternary `missing ? enemy : centre`; GetPFirstThing gets a same-TU noinline stand-in that does not let
 //          the out-pointer's address escape -- with an external declaration VC keeps the out slot alive across the IP
 //          temporaries and the frame words shift by 4 (out +0x18 / temps +0x10 instead of retail's shared +0x14).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -157,7 +158,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return 0;
 }
 class CWorld { public:
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -203,7 +204,7 @@ bool CAIStateGroup_VersusScorpionKing::IsRunnable()
             }
             CThing* target = missing ? enemy : centre;
             PArenaCentreThing = CIntelligentPointerThing(target);
-            unsigned long* seed = GetPWorld()->GetPRandomSeed();
+            unsigned long* seed = GetPWorld()->GetWorldSeed();
             GoClockwise = WorldRandomRange(*seed, 100) > 50;
             PEnemy = CIntelligentPointerCreature(enemy);
             return true;

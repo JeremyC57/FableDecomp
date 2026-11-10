@@ -5,6 +5,9 @@
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the +0x91 dead test through CThing::IsDead() const (Ego_r.pdb
 //   ?IsDead@CThing@@QBE_NXZ, a bool accessor) instead of a direct bit test; the bool accessor keeps retail's register
 //   choice / test-and-branch shape.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -68,7 +71,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     void Terminate();                           // 0x008FCF40
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    public:
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool b);        // 0x0097DB70
     long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long a, bool b, bool c, bool d, bool e, long f);   // 0x0097EC00
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float prox, bool* reached, long a, bool b, bool c, bool d, long e, bool f, float g);   // 0x0097E890
@@ -149,7 +154,7 @@ void CAIStateGroup_StealStealableItem::Update()
         Terminate();
         return;
     }
-    result = AIAction_LookAtPos(1, ((CThing*)(GetCreature()))->GetPos() + facing, 0x21, 0.0027777f);
+    result = AIAction_LookAtPos((EAIActionRepeat)(1), ((CThing*)(GetCreature()))->GetPos() + facing, 0x21, 0.0027777f);
     if (!IS_THING_ALIVE(PStealableItem)) {
         Terminate();
         return;

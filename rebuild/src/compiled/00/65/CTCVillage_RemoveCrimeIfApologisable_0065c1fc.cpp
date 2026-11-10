@@ -20,6 +20,7 @@
 //        destructor (the clear of its pointer is elided before the return).
 // Layout (supersedes any local-model note above): engine/CTCVillage.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 #define CTCVillage CTCVillageDonor
 #include "engine/CTCVillage.h"
@@ -114,7 +115,7 @@ class COpinionDeed { public:
     bool          IsStillHappening;             // +0x21
 };
 class CTCHeroOpinionDeedLog { public:
-    COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+    const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 
@@ -134,7 +135,7 @@ void CTCVillage::RemoveCrimeIfApologisable(long deedHandle)
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);
-        COpinionDeed* deed = log->GetDeedFromHandle(deedHandle);
+        COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(deedHandle);
         if (deed) {
             CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(deed->DeedType);
             if (!deed->IsStillHappening && effects.Object->CanApologise)

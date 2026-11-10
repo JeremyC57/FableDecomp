@@ -1,107 +1,53 @@
-// CTCInventoryAbilities::GetPrioritisedAbilityDefs(vector<CDefPointer<const CHeroAbilityDef>>* defs) -- for an adult hero, lists the received abilities' defs in order, keeps them up to the last received one and pads that list with null defs to a whole palette row
+// CTCInventoryAbilities::GetPrioritisedAbilityDefs(std::vector<CDefPointer<const CHeroAbilityDef> >& defs) const -- for an adult
+// hero, lists the received abilities' defs in order, keeps them up to the last received one and pads with null defs to a whole
+// number of rows of assignable special-move buttons.
 // Retail 0x005F4B30, 277 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
-// Callees: CThingCreatureBase::IsChild 0x00661F70 (on ParentThing), GetAbilityPDef(EHeroAbility) const 0x005EDFD9
-// (CDefPointer by value), vector<CDefPointer<const CHeroAbilityDef>>::push_back(const value_type&) 0x005FA3A5,
-// GetNumAssignableSpecialMoveButtons() const 0x005EDCF0 (manifest "_Dest_val<...>" is propagated), vector::operator= 0x005F9F5A,
-// ~vector 0x005F9F14 (manifest "CActiveFile::OnReadFinished" is a byte twin).
-// Shape: one appended def per ReceivedAbilityOrder slot (the by-value def temporary is released inside its null
-// test through the ref-count base's DecRef()/GetRefCount() pair -- `dec [eax] ; cmp [eax],ebx` with the shared zero
-// register -- and zeroed), remembering the last non-empty slot; a local vector copies the defs up to it and is padded
-// with null-def temporaries (dtor folded away) while its size is not a multiple of the row width (the bound re-read
-// every pass), then assigned back.
+// Name: Ego_r.pdb + FableWin.pdb ?GetPrioritisedAbilityDefs@CTCInventoryAbilities@@QBEXAAV?$vector@V?$CDefPointer@$$CBVCHeroAbilityDef
+// @@@@V?$allocator@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@@std@@@Z (engine/CTCInventoryAbilities.h PRIORITISED).
+// Callees: CThingCreatureBase::IsChild() const 0x00661F70 (Ego_r.pdb ?IsChild@CThingCreatureBase@@QBE_NXZ, on ParentThing),
+// GetAbilityPDef(EHeroAbility) const 0x005EDFD9 (CDefPointer by value), vector<CDefPointer<const CHeroAbilityDef> >::push_back
+// 0x005FA3A5, GetNumAssignableSpecialMoveButtons() const 0x005EDCF0, vector::operator= 0x005F9F5A, ~vector 0x005F9F14 (all out
+// of line in this TU; STLport's push_back body is visible here and VC7.1 still calls it, and with the body visible it knows the
+// null-def padding temporary is never captured, so that temporary's release folds away as in retail).
+// Shape: one appended def per ReceivedAbilityOrder slot (the by-value def temporary is released inside its null test and zeroed),
+// remembering the last non-empty slot; a local vector copies the defs up to it and is padded with null-def temporaries while its
+// size is not a multiple of the row width (the bound re-read every pass), then assigned back.
 // Layout (retail; Ego_r.pdb names): ParentThing +0x04, ReceivedAbilityOrder vector<EHeroAbility> +0x154.
-#include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYABILITIES
+#define FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
+#define FABLE_RETAIL_CTCINVENTORYABILITIES_BUTTONS
+#define FABLE_RETAIL_CTCINVENTORYABILITIES_PRIORITISED
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CTCInventoryAbilities.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-
 class CThingCreatureBase { public:
-    bool IsChild();                                  // 0x00661F70
-};
-struct CRefCountedBase {
-    virtual void v00();
-    virtual void Destroy() const;                    // slot 1
-    mutable long RefCount;                           // +0x04
-    void DecRef() const { --RefCount; }
-    long GetRefCount() const { return RefCount; }
-    void Release() const
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-class CHeroAbilityDef : public CRefCountedBase { public:};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    CDefPointer(const CDefPointer& other);
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        if (Object) {
-            Object->Release();
-            Object = 0;
-        }
-    }
-};
-typedef CDefPointer<const CHeroAbilityDef> CAbilityDefPointer;
-struct CAbilityDefVector {                           // vector<CDefPointer<const CHeroAbilityDef>> (12 bytes)
-    CAbilityDefPointer* _M_start;
-    CAbilityDefPointer* _M_finish;
-    CAbilityDefPointer* _M_end_of_storage;
-    CAbilityDefVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CAbilityDefVector();                            // 0x005F9F14
-    CAbilityDefVector& operator=(const CAbilityDefVector& other);   // 0x005F9F5A
-    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    CAbilityDefPointer& operator[](unsigned long n) { return *(_M_start + n); }
-    void push_back(const CAbilityDefPointer& value);  // 0x005FA3A5
-};
-void* FindRef_CAbilityDefVector_push_back_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
-// VC7.1 knows the caller's address-taken local does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) void CAbilityDefVector::push_back(const CAbilityDefPointer& value)
-{
-    void* p = FindRef_CAbilityDefVector_push_back_0();
-    if (!p)
-        return;
-    if (*(void**)&value != p)
-        return;
-}
-#pragma auto_inline(on)
-enum EHeroAbility { ABILITY_NULL = 0, EHeroAbility_Force32 = 0x7fffffff };
-struct CAbilityOrderVector {                         // vector<EHeroAbility>
-    EHeroAbility* _M_start;
-    EHeroAbility* _M_finish;
-    EHeroAbility* _M_end_of_storage;
-    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    EHeroAbility& operator[](unsigned long n) { return *(_M_start + n); }
+    bool IsChild() const;                            // 0x00661F70
 };
 
-class CTCInventoryAbilities { public:
-    void* __vftable;
-    CThingCreatureBase* ParentThing;                 // +0x04
-    unsigned char _pad_0x008[0x154 - 0x008];
-    CAbilityOrderVector ReceivedAbilityOrder;        // +0x154
-    CAbilityDefPointer GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
-    long GetNumAssignableSpecialMoveButtons() const;                               // 0x005EDCF0
-    void GetPrioritisedAbilityDefs(CAbilityDefVector* defs);
-};
-
-void CTCInventoryAbilities::GetPrioritisedAbilityDefs(CAbilityDefVector* defs)
+void CTCInventoryAbilities::GetPrioritisedAbilityDefs(std::vector<CDefPointer<const CHeroAbilityDef> >& defs) const
 {
-    if (ParentThing->IsChild())
+    if (((const CThingCreatureBase*)ParentThing)->IsChild())
         return;
     long lastReceived = -1;
     for (unsigned long i = 0; i < ReceivedAbilityOrder.size(); ++i) {
-        defs->push_back(GetAbilityPDef(ReceivedAbilityOrder[i]));
-        if (ReceivedAbilityOrder[i] != ABILITY_NULL)
+        defs.push_back(GetAbilityPDef(ReceivedAbilityOrder[i]));
+        if (ReceivedAbilityOrder[i] != HERO_ABILITY_NULL)
             lastReceived = i;
     }
-    CAbilityDefVector prioritised;
+    std::vector<CDefPointer<const CHeroAbilityDef> > prioritised;
     long j;
     for (j = 0; j <= lastReceived; ++j)
-        prioritised.push_back((*defs)[j]);
+        prioritised.push_back(defs[j]);
     for (unsigned long k = 0; k < prioritised.size() % GetNumAssignableSpecialMoveButtons(); ++k)
-        prioritised.push_back(CAbilityDefPointer());
-    *defs = prioritised;
+        prioritised.push_back(CDefPointer<const CHeroAbilityDef>());
+    defs = prioritised;
 }

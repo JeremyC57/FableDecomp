@@ -14,7 +14,14 @@
 
 class CSubDefClassBase : public CDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CSUBDEFCLASSBASE_CTOR_INLINE
+    // Opt-in (agentNF5, 2026-11-10, row 0x00F336F0 CConversation::CConversation): that TU expands this ctor (its vtable store is
+    // dead under CConversation's and drops out) around an out-of-line CDefClassBase ctor call (0x0042D9E0; pair with
+    // FABLE_RETAIL_DEF_CLASS_BASE_CTOR_DECL). The out-of-line copy is 0x0044C0C0.
+    CSubDefClassBase() { }
+#else
     CSubDefClassBase();                                                  // 0x0044C0C0
+#endif
     virtual ~CSubDefClassBase() { }                                      // slot 0  0x0044F620 (scalar deleting; inline dtor)
 };
 FABLE_STATIC_ASSERT(sizeof(CSubDefClassBase) == 0x25);

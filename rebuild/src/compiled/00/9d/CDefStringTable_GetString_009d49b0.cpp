@@ -6,6 +6,9 @@
 // into esi before the test and the result pointer only inside each branch; the text pointer is a named local so the
 // PeekData call precedes the `push -1` of the constructor (a bare argument expression pushes the -1 first). PDB CDefStringTable: StringStream at
 // +16 (retail +0xc, the map before it is 12 bytes).
+// Leaf: ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (const; class key V),
+//   was ?GetString@CDefStringTable@@QAE?AVCCharString@@J@Z. Row debt kept: local CCharString / stream models.
 class CCharString { public:
     void* PStringData;                             // +0
     CCharString();                                 // 0x0099E4B0
@@ -15,13 +18,13 @@ class CCharString { public:
 class CMemoryDataOutputStream { public: void const* PeekData() const; private:                              // 0x00995E70
 };
 
-struct CDefStringTable {
+class CDefStringTable { public:
     unsigned char           StringMap[0xc];        // +0x00 map<CCharString, long>
     CMemoryDataOutputStream StringStream;          // +0x0c
-    CCharString GetString(long index);
+    CCharString GetString(long index) const;
 };
 
-CCharString CDefStringTable::GetString(long index)
+CCharString CDefStringTable::GetString(long index) const
 {
     if (index == -1)
         return CCharString();

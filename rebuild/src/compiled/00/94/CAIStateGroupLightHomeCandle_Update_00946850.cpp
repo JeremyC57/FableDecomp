@@ -12,6 +12,10 @@
 // component is the uninitialised out-parameter GetTC (the absent branch reads the key slot); the candle position is a
 // frame C3DVector (user copy ctor); the pointer clear goes through a named null CIntelligentPointer.
 // Layout: Ego_r.pdb CAIStateGroup_LightHomeCandle (0x1c): PCandle +0x14; retail CCreatureAction_UseObject is 0xe0 bytes.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+enum EMovementType;                           // MS forward enum
+enum EAIActionRepeat;                         // MS forward enum
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
@@ -78,9 +82,11 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* arrived, long movement, bool a, bool b,
-                            CThing* avoid, bool c, float speed);   // 0x0097EC00
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long lookFlags, float tolerance);   protected: // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& arrived, EMovementType movement, bool a, bool b, const CThing* avoid, bool c, float speed);   // 0x0097EC00
+    public:
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long lookFlags, float tolerance);   protected: // 0x0097D580
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
@@ -119,7 +125,7 @@ void CAIStateGroup_LightHomeCandle::Update()
             Terminate();
             return;
         }
-        result = AIAction_MoveToPos(2, pos, &arrived, 3, true, true, 0, true, 0.0f);
+        result = AIAction_MoveToPos((EAIActionRepeat)(2), pos, arrived, (EMovementType)(3), true, true, 0, true, 0.0f);
     } while (result == 4);
     if (result != 2 || PCandle.GetPItem() == 0 || !IsCandleInNeedOfChanging(PCandle.GetPItem())) {
         ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
@@ -133,7 +139,7 @@ void CAIStateGroup_LightHomeCandle::Update()
             Terminate();
             return;
         }
-        result = AIAction_LookAtPos(2, candlePos, 0x11, 0.0027777f);
+        result = AIAction_LookAtPos((EAIActionRepeat)(2), candlePos, 0x11, 0.0027777f);
     } while (result == 4);
     if (result != 2 || PCandle.GetPItem() == 0 || !IsCandleInNeedOfChanging(PCandle.GetPItem())) {
         ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);

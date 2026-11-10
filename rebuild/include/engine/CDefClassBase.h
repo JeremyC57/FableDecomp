@@ -67,6 +67,15 @@ private:
     friend class CParentDefClassBase;
     CDefClassBase() : PDefManager(0), Setup(0), Template(0), DefaultValsApplied(0) { }
 public:
+#elif defined(FABLE_RETAIL_DEF_CLASS_BASE_CTOR_DECL)
+    // Opt-in (agentNF5, 2026-11-10, row 0x00F336F0 CConversation::CConversation): FableWin.pdb ??0CDefClassBase@@AAE@XZ (private)
+    // out of line at 0x0042D9E0 (CResource::CResource 0x009FBEC0, the three flag bits cleared, the CDefClassBase vtable 0x01230BCC,
+    // PDefManager 0). The CConversation TU calls it there and expands CSubDefClassBase's ctor around it (see
+    // FABLE_RETAIL_CSUBDEFCLASSBASE_CTOR_INLINE). Declaration only; the derived def reaching it is a friend.
+private:
+    friend class CSubDefClassBase;
+    CDefClassBase();                                                     // 0x0042D9E0
+public:
 #endif
     virtual ~CDefClassBase() { }                                         // slot 0  0x0042DAB0 (scalar deleting; the dtor is inline)
     virtual bool UnloadResource();                                       // slot 2  0x009ACE90

@@ -15,6 +15,7 @@
 // result unused; `this` is spilled to a frame word and re-read for the pending list. IsCrime tests `Type > 9` first (retail
 // lays the 2..9 arm second); the linked handle is swapped in BEFORE the first decriminalise call (`first = handle; handle =
 // linked; Decriminalise(first)`), which keeps the deed log in ebx and the list sentinel in ebp (no extra frame word).
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -42,7 +43,7 @@ class COpinionDeed { public:
     long          LinkedHandle;                     // +0x24
 };
 class CTCHeroOpinionDeedLog { public:
-    COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+    const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
     void DecriminaliseDeed(long handle);            // 0x006C59A0
 };
 
@@ -69,7 +70,7 @@ FABLE_FORCEINLINE void DecriminaliseList(CTCHeroOpinionDeedLog* log, CLongList& 
     SListNode* end = deeds._M_node;
     for (SListNode* it = end->_M_next; it != end; it = it->_M_next) {
         long handle = it->_M_data;
-        COpinionDeed* deed = log->GetDeedFromHandle(handle);
+        COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(handle);
         if (deed && IsCrime(deed)) {
             if (deed->Type == 0x35) {
                 long linked = deed->LinkedHandle;

@@ -11,6 +11,11 @@
 // frame words); the turn speed literal is 0.0027777f (not 1.0f/360.0f); the look-at runs twice; `return r == 2;` (full-register bool).
 // Leaf: WalkTo@CAIStateGroup_EatAtTable
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+enum EMovementType;                           // MS forward enum
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 #include <math.h>
 class CThing;
 
@@ -35,9 +40,12 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                              // +0x04
     unsigned char _pad[0x0c];                      // +0x08..+0x13
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long movementType, bool a, bool b,
-                            CThing* leader, bool c, float d);   // 0x0097EC00
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& reached, EMovementType movementType, bool a, bool b, const CThing* leader, bool c, float d);   // 0x0097EC00
+    public:
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
+    public:
 };
 
 struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
@@ -52,7 +60,7 @@ bool CAIStateGroup_EatAtTable::WalkTo(C3DVector pos, CRightHandedSet axes)
     bool reached;
     long result;
     do {
-        result = AIAction_MoveToPos(2, pos, &reached, movementType, true, true, 0, true, 0.0f);
+        result = AIAction_MoveToPos((EAIActionRepeat)(2), pos, reached, (EMovementType)(movementType), true, true, 0, true, 0.0f);
     } while (result == 4);
     if (result != 2)
         return false;
@@ -61,7 +69,7 @@ bool CAIStateGroup_EatAtTable::WalkTo(C3DVector pos, CRightHandedSet axes)
     float z = pos.Z + axes.Forward.Z;
     long i = 0;
     do {
-        result = AIAction_LookAtPos(2, C3DVector(x, y, z), 0x11, 0.0027777f);
+        result = AIAction_LookAtPos((EAIActionRepeat)(2), C3DVector(x, y, z), 0x11, 0.0027777f);
     } while (result == 4 || ++i < 2);
     return result == 2;
 }

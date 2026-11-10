@@ -1,3 +1,10 @@
+// Portable copy of the landed test (agentNF5): the calling-convention keywords compile away on a non-MSVC host; the body is unchanged.
+#if !defined(_MSC_VER)
+#define __fastcall
+#define __thiscall
+#define __cdecl
+#define __stdcall
+#endif
 // Behaviour test for 00700120: src/00700120.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. COpinionReactionManager::GetBlurredAttitude(EOpinionAttitudeType attitude) const
 #include <cstdio>

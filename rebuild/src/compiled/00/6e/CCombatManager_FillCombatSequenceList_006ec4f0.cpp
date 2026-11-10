@@ -16,6 +16,7 @@
 // Layout: retail CCombatManager: RegisteredCombatSequences map +0x04 (12 bytes), Combatants +0x10, World +0x20;
 //          CCombatTypeDef: CombatSequence vector<CCharString> +0x50, CombatSequenceDef vector<long> +0x5c (PDB +0x58/+0x68);
 //          CCombatSequenceGeneric::Def +0x28 (retail 0x2c bytes); map node value {CCharString +0x10, creator +0x14}.
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 #include <string.h>
 struct __false_type { __false_type() {} };
 inline void* operator new(size_t, void* where) { return where; }
@@ -50,7 +51,7 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 class CDefString { public: long m_index; };
-class CDefStringTable { public: CCharString GetString(CDefString name); };   // 0x009D49B0
+class CDefStringTable { public: CCharString GetString(long name) const; };   // 0x009D49B0
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}
 
@@ -207,7 +208,7 @@ void CCombatManager::FillCombatSequenceList(CThingCreatureBase& attacker, CThing
         return;
     const CCombatTypeDef* def = attacker.GetCombatTypeDef();
     if (def->CombatSequence.first == def->CombatSequence.last && def->CombatSequenceDef.first == def->CombatSequenceDef.last) {
-        CCharString name = GDefStringTable.GetString(((CThing*)&attacker)->GetDefName());
+        CCharString name = GDefStringTable.GetString((((CThing*)&attacker)->GetDefName()).m_index);
         CCharString message = "WARNING : No combat sequences registered for this combat type - in creature " + name;
         CombatTrace(message);
     }

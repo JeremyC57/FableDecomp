@@ -1,5 +1,9 @@
-// CDefinitionManager::GetDef<T>(const CCharString&, CDefPointer&) -- GetPDefFromInstantiationName @ 0x009ADA40 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
+// CDefinitionManager::GetDef<T>(const CCharString&, CDefPointer<const T>*) const -- GetPDefFromInstantiationName @ 0x009ADA40 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00669770, oracle length 104 bytes.
+// Name: ??$GetDef@VCCombatTypeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z (FableWin.pdb
+// 0x01DAAAE0 and the native caller binding, rows/00664d40/NAMING_EVIDENCE.md); callee Ego_r.pdb + FableWin.pdb
+// ?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z (the const overload).
+// Leaf: GetDef
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
@@ -42,7 +46,8 @@ struct CDefBase : CDefVirtual, CRefCounted {
     }
 };
 
-struct CDefPointer {
+class CDefClassBase;
+template <class T> class CDefPointer { public:
     CDefBase* m_p;
     CDefPointer() { }
     ~CDefPointer()
@@ -50,7 +55,7 @@ struct CDefPointer {
         if (m_p)
             m_p->ReleaseTemporary();
     }
-    CDefPointer& operator=(const CDefPointer& other)   // inlined by the speed TU
+    template <class U> CDefPointer& operator=(const CDefPointer<U>& other)   // SetDynamicCast<U>: release code is the plain assignment
     {
         if (m_p != other.m_p) {
             if (m_p) {
@@ -66,16 +71,18 @@ struct CDefPointer {
 };
 
 class CDefinitionManager { public:
-    CDefPointer GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
-    bool GetDef_00669770(const CCharString& name, CDefPointer& out);
+    CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString& name) const;   // 0x009ADA40 (hidden result pointer)
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;
 };
+class CCombatTypeDef;
 
-bool CDefinitionManager::GetDef_00669770(const CCharString& name, CDefPointer& out)
+template <class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<const T>* out) const
 {
-    CDefPointer def = GetPDefFromInstantiationName(name);
+    CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
     if (def.m_p) {
-        out = def;
+        *out = def;
         return true;
     }
     return false;
 }
+template bool CDefinitionManager::GetDef<CCombatTypeDef>(const CCharString& name, CDefPointer<const CCombatTypeDef>* out) const;

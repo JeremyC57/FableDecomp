@@ -4,6 +4,8 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -101,7 +103,7 @@ class CTCSoundPlayer { public: public:
 };   // interface 0x10, 0x0066BD00
 class CMessageEvent;
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long flags, const C3DVector& position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
 };
 class CWorld { public: unsigned char _pad00[0x60]; CMessageEventManager* PMessageEventManager; };   // +0x60
 class CMainGameComponent {
@@ -164,7 +166,7 @@ void CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility ability, bool from
             CThing* parent = ParentThing;
             long frames = CMainGameComponent::GetConstantFPS();
             CMessageEventManager* messages = GetWorld().PMessageEventManager;
-            messages->AddMessage(0x44, frames, &parent->GetPos(), 0, 0, 0.0f, 0.0f, ability);
+            messages->AddMessage((EMessageEventType)(0x44), frames, parent->GetPos(), 0, 0, 0.0f, 0.0f, ability);
             stats->ModifyStaminaBy(cost);
             ++stats->AbilityUseCounts[ability];
             if (ability != 0xb && ability != 5 && ability != 0x12 && ability != 0x13) {

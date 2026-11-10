@@ -20,6 +20,7 @@
 // Layout: retail CTCVillage PlayersCrimes (set<long>: header, count, compare) +0x64, IsEnemyBecauseOfCrime +0x7c,
 // AmountOfFineAlreadyPaid +0xa0 (PDB +0x12C; retail lists are 4 bytes) -- the landed CTCVillage local model.
 // Opt: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -51,7 +52,7 @@ private: public:
 };
 
 class CTCHeroOpinionDeedLog { public:
-    class COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+    const class COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
 };
 
 struct _Rb_tree_node_base {

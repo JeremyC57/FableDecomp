@@ -6,7 +6,7 @@
 //   stand-in), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in), CCreatureActionBase::GetPWorld 0x00692940, CWorld virtual
 //   slot 12 (+0x30, world map), NCreatureHiding::GetValidPositions 0x0074A5D0 (__fastcall), CThing::GetPos 0x004C73D0,
 //   STLport remove_if<C3DVector*, pred> 0x008AC060 / 0x008C34A0 (__fastcall, 16-byte predicate by value), STLport __copy
-//   <C3DVector> 0x0074CA20 (same-TU stand-in), CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890,
+//   <C3DVector> 0x0074CA20 (same-TU stand-in), CWorld::GetWorldSeed 0x0049D810, GFROR13 0x00497890,
 //   CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620, free 0x00BFEA14 (vector storage), def release via slot 1.
 // Layout: CJackOfBladesBattleDef::RushAwayDistance retail +0x7c (PDB +0x80); CTCBoss (interface 0xAD) PhaseStartPos +0x22
 //   (packed); CWorld thing-search tools +0x20; navigation is interface 7.
@@ -17,6 +17,7 @@
 //   takes `positions.end()` captured right after the size test (retail's edi survives the calls); the second erase is the
 //   plain expression form; `while (!found && size)` with if/else (no break) keeps retail's top-tested loop and the
 //   `mov bl,1` / `mov bl,[found]` exits.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 #include <stdlib.h>
 #include "engine/C3DVector.h"
@@ -78,7 +79,7 @@ class CWorld { public:
     virtual const CWorldMap& GetWorldMap();             // slot 12 (+0x30)
     unsigned char      _pad04[0x20 - 0x04];
     CThingSearchTools* PThingSearchTools;               // +0x20
-    unsigned long* GetPRandomSeed();                    // 0x0049D810
+    unsigned long* GetWorldSeed() const;                    // 0x0049D810
 };
 
 class CTCBase;
@@ -235,7 +236,7 @@ bool CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DV
     PCreature.GetPItem()->GetInterface(&navigation, 7);
     while (!found && positions.size() != 0) {
         unsigned long count = positions.size();
-        unsigned long random = GFRandom(GetPWorld()->GetPRandomSeed());
+        unsigned long random = GFRandom(GetPWorld()->GetWorldSeed());
         unsigned long index = count ? random % count : 0;
         CThing* self = PCreature.GetPItem();
         if (navigation->IsAbleToNavigateFromPosToPos(self->GetPos(), positions[index], 0.0f)) {

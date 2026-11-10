@@ -1,33 +1,26 @@
-#include <cstdio>
-
-static void* g_freed = 0;
- void operator delete[](void* p) { g_freed = p; }
-
-class CThingComponentSet { public:
-    void* buf;
-    char flag;
+// Behaviour test for CThingComponentSet::~CThingComponentSet (0x00450BA0): the Entries small vector frees its storage and is
+// left empty (Start 0, Size 0).
+#include <stdio.h>
+#include <stdlib.h>
+static void* g_freed;
+static void FreeBlock(void* p) { g_freed = p; free(p); }
+template <class T, int N> struct SmallVector {
+    T* Start; signed char Size;
+    void Release() { FreeBlock(Start); Start = 0; Size = 0; }
 };
-
-void CThingComponentSet_dtor(CThingComponentSet* self)
-{
-    operator delete[](self->buf);
-    self->buf = 0;
-    self->flag = 0;
-}
-
-static int g_marker = 4660;
-
+struct Entry { int Id; };
+struct ComponentSet {
+    SmallVector<Entry, 8> Entries;
+    void Destroy() { Entries.Release(); }
+};
 int main()
 {
-    void* ptr = (void*)(&g_marker);
-    CThingComponentSet obj;
-    obj.buf = ptr;
-    obj.flag = 1;
-    CThingComponentSet_dtor(&obj);
-    if (g_freed == ptr && obj.buf == 0 && obj.flag == 0) {
-        std::printf("CThingComponentSet_00450ba0_TEST PASS\n");
-        return 0;
-    }
-    std::printf("CThingComponentSet_00450ba0_TEST FAIL\n");
-    return 1;
+    ComponentSet set;
+    set.Entries.Start = (Entry*)malloc(8 * sizeof(Entry));
+    set.Entries.Size = 3;
+    Entry* block = set.Entries.Start;
+    set.Destroy();
+    if (g_freed != (void*)block || set.Entries.Start != 0 || set.Entries.Size != 0) { printf("00450ba0_TEST FAIL\n"); return 1; }
+    printf("00450ba0_TEST PASS\n");
+    return 0;
 }

@@ -19,6 +19,8 @@
 // Layout: retail CTCInventoryBase as the landed siblings (Components +0x0C, FirstRenderFrame +0x18, LastRenderTime +0x50,
 //   InventoryOpen +0x58), NHeroInformationScreens::CBase at +0x130; CTCInventoryMap AccumFadeTime +0x140 and QuestToBeDropped
 //   +0x1A4 (Ego_r.pdb +0x15C / +0x1DC with 16-byte containers; retail STLport containers are 12 bytes).
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 double __fastcall GFGetTime();                                 // 0x009E1BC0
 
 struct CViewport;
@@ -136,7 +138,7 @@ class CGameEvent : public CMemoryBuffer { public:
 };
 class CPlayer { public:
     long GetCurrentMode();                                     // 0x00633BE0
-    void RemoveMode(long mode);                                // 0x00634190
+    void RemoveMode(EPlayerMode mode);                                // 0x00634190
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -165,7 +167,7 @@ void CTCInventoryMap::DrawPreparePrimitivesForRendering(const CEnginePrimitivePr
 {
     if (QuestToBeDropped > 0) {
         CPlayer* player = &CMainGameComponent::Get()->PlayerManager->GetPlayer(0);
-        player->RemoveMode(player->GetCurrentMode());
+        player->RemoveMode((EPlayerMode)(player->GetCurrentMode()));
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->Close();
         CGameEvent event(9);
         event.AddUBYTE(0);

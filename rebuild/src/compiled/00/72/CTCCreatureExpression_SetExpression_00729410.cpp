@@ -2,7 +2,7 @@
 //
 // Retail 0x00729410, 134 bytes (`ret 8`). Callees: CDefClassBase::GetSubDef<CCreatureExpressionDef>
 // (CDefPointer<const CCreatureExpressionDef>*) @ 0x00485815 (label "GetSubDef<CAbilityDef>",
-// propagated), CTCBase::GetWorld @ 0x00686A70, CWorld::GetPRandomSeed @ 0x0049D810 (label
+// propagated), CTCBase::GetWorld @ 0x00686A70, CWorld::GetWorldSeed @ 0x0049D810 (label
 // "CVertexBufferWin32::DoSizeof", propagated), the def's expression map FindRandomElement(long,
 // unsigned long*) @ 0x0086F510, CTCCreatureExpression::ForcePrimaryExpression(long, float) @ 0x007293A0,
 // the def's virtual slot 1 (release at zero).
@@ -11,6 +11,7 @@
 // Shape: the type-0 block uses the front node as a pointer local (AnimIndex == 0 -> MaxWeight = 1.0f,
 // else Primary = false); the sub-def out pointer starts null; its object is read once (ebp) and released
 // at the end without a null test.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CExpressionState {
@@ -78,7 +79,7 @@ class CThing { public:
 };
 
 class CWorld { public:
-    unsigned long* GetPRandomSeed();                // 0x0049D810
+    unsigned long* GetWorldSeed() const;                // 0x0049D810
 };
 
 class CTCBase
@@ -111,7 +112,7 @@ void CTCCreatureExpression::SetExpression(long expressionType, float maxWeight)
     CDefPointer<CCreatureExpressionDef> def;
     ParentThing->PDef_Object->GetSubDef(&def);
     CExpressionMap* expressions = def->Expressions;
-    long anim = expressions->FindRandomElement(expressionType, GetWorld().GetPRandomSeed());
+    long anim = expressions->FindRandomElement(expressionType, GetWorld().GetWorldSeed());
     if (anim)
         ForcePrimaryExpression(anim, maxWeight);
 }

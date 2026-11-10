@@ -1,6 +1,10 @@
 #ifndef FABLE_ENGINE_CTCSCRIPTEDCONTROL_H
 #define FABLE_ENGINE_CTCSCRIPTEDCONTROL_H
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONLIST
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#endif
 // TPI0x21fc6 original base and fields; two donor list12 become STLport list4.
 // Native004c70f0 reads Locked+18 before its continuation predicate.
 // Retail opt-in (chunk 765, rows 0x007128F0 / 0x00712A70 / 0x007122B0, the scripted-control actions' OnActivate):
@@ -17,7 +21,17 @@ class CThingCreatureBase;
 class CTCScriptedControl : public CTCBase {
 private:
     unsigned char PScriptHandleImp[8]; // CIntelligentPointer<CScriptGameResourceObjectScriptedThing>.
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONLIST
+    // Opt-in (agentNF5, 2026-11-10, row 0x007137D0 AddAction; needs FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE, FABLE_RETAIL_STLP_LIST
+    // and engine/CCountedPointer.h): the member typed as Ego_r.pdb has it, STLport list<CCountedPointer<CActionBase> > (4 bytes,
+    // +0x14). Same layout as the byte array below.
+public:
+    class CActionBase;
+private:
+    std::list<CCountedPointer<CActionBase> > PActionList;
+#else
     unsigned char PActionList[4]; // std::list<CCountedPointer<CActionBase> >.
+#endif
     bool Locked;unsigned char _pad_0x19[3];unsigned char ScriptAIPriority[4]; // EScriptAIPriority follows aligned at+1c.
     unsigned char AttitudeTags[4]; // std::list<std::pair<long,EConversationAttitude> >.
 public:

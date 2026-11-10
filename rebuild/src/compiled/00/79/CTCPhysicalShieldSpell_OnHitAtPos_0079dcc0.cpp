@@ -1,7 +1,7 @@
 // CTCPhysicalShieldSpell::OnHitAtPos(const C3DVector& position) -- a hit on the shield spawns one of the two PHYSICAL_HIT special effects (a coin toss on the world's random seed) at the hit position, when the shield def's special-effects sub-def maps that name
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079DCC0, 178 bytes (`ret 4`; PDB ?OnHitAtPos@CTCPhysicalShieldSpell@@UAEXABVC3DVector@@@Z).
-// Callees: CCharString() @ 0x0099E4B0, CTCBase::GetWorld() @ 0x00686A70, CWorld::GetPRandomSeed() @ 0x0049D810, GFFloatRandom
+// Callees: CCharString() @ 0x0099E4B0, CTCBase::GetWorld() @ 0x00686A70, CWorld::GetWorldSeed() @ 0x0049D810, GFFloatRandom
 //   @ 0x004978A0 (`__fastcall`, the float on the stack, the seed in ecx), CCharString::operator=(const char*) @ 0x0099EFE0
 //   ("PHYSICAL_HIT1" @ 0x0126C524 / "PHYSICAL_HIT2" @ 0x0126C514), CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580,
 //   CSpecialEffectsDef::GetEffectFromString @ 0x00669D30, CTCSpecialAbilities::CreateParticleEffect(long, const C3DVector&)
@@ -9,6 +9,7 @@
 // Shape: if/else of the two operator= calls tail-merges into `push A / jmp / push B / call`; the out-slot def and the zero
 //   effect type follow the landed 0x008EC320. Tried: `&&` condition, nested if, the call through the slot member, a holder
 //   whose destructor releases. Next: lane gap: register choice for the out-slot def copy (chunk 161 0x69A8B0 family).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #include "engine/C3DVector.h"
@@ -20,7 +21,7 @@ class CCharString { public:
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 class CWorld { public:
-    unsigned long* GetPRandomSeed();                    // 0x0049D810
+    unsigned long* GetWorldSeed() const;                    // 0x0049D810
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 struct CDefVirtual {
@@ -84,7 +85,7 @@ class CTCPhysicalShieldSpell : public CTCBase { public:
 void CTCPhysicalShieldSpell::OnHitAtPos(const C3DVector& position)
 {
     CCharString effectName;
-    if (GFFloatRandom(1.0f, GetWorld().GetPRandomSeed()) < 0.5f)
+    if (GFFloatRandom(1.0f, GetWorld().GetWorldSeed()) < 0.5f)
         effectName = "PHYSICAL_HIT1";
     else
         effectName = "PHYSICAL_HIT2";

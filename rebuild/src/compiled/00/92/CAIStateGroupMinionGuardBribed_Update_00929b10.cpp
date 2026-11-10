@@ -15,6 +15,8 @@
 // interface map +0x44; interface 0x10 = sound component, 0x23 = CTCVillageMember; village bribe frame +0xA8).
 // Shape: the random delays are a static CWorld random called through GetPWorld() (the discarded call); the in-loop sound lookup
 // inlines the vector-map lower_bound, the after-loop one calls it.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+enum EAIActionRepeat;                         // MS forward enum
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -144,7 +146,8 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
     void Terminate();                           // 0x008FCF40
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   protected: // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float turnSpeed);   protected: // 0x0097D580
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
 struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
@@ -161,7 +164,7 @@ void CAIStateGroup_MinionGuardBribed::Update()
         C3DVector heroPos = ((CThing*)hero.GetPItem())->GetPos();
         const C3DVector& here = GetCreature()->GetPos();
         C3DVector lookPos = here * 2.0f - heroPos;
-        if (AIAction_LookAtPos(1, lookPos, 0x11, 0.0027777f) != 2)
+        if (AIAction_LookAtPos((EAIActionRepeat)(1), lookPos, 0x11, 0.0027777f) != 2)
             break;
         if (AIAction_DoNothing() != 4)
             break;

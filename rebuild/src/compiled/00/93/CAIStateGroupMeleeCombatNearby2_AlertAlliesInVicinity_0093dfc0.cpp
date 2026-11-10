@@ -17,6 +17,8 @@
 //   compare, `LineOfSight || Smelt`, the !Find guard, then AddMessage(0xC, lifespan, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
 //   PEnemy.GetPItem(), 0.0f, 36.0f, 0) with the creature in a named local. Tried: nested ifs (best), one && chain,
 //   #pragma optimize("s"), a `bool` result local -- all keep the duplicated early-exit tail.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 class CTCBase;
 class C3DVector;
@@ -73,8 +75,7 @@ class CMessageEventFilter_IsOfType { public:
 };
 class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& filter);   // 0x004AB8B0
-    CMessageEvent* AddMessage(long type, unsigned long lifespan, const C3DVector& pos, CThing* originator, CThing* target,
-                              float sightRadius, float hearingRadius, long extraData);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long lifespan, const C3DVector& pos, CThing* originator, CThing* target, float sightRadius, float hearingRadius, long extraData);   // 0x00687540
 };
 class CWorld {
 public:
@@ -123,7 +124,7 @@ bool CAIStateGroup_MeleeCombatNearby2::AlertAlliesInVicinity()
     if (PeekWorld().GetPMessageManager()->FindMostRecentMessage(CMessageEventFilter_IsOfType(0xc)))
         return true;
     CThing* creature = PBrain->PCreature;
-    GetWorld().GetPMessageManager()->AddMessage(0xc, g_scaled_013bb714, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
+    GetWorld().GetPMessageManager()->AddMessage((EMessageEventType)(0xc), g_scaled_013bb714, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
                                                   PEnemy.GetPItem(), 0.0f, 36.0f, 0);
     return true;
 }

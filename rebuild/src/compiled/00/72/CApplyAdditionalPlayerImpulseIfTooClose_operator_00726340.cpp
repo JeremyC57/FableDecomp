@@ -4,6 +4,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fabs, sqrt)
@@ -99,7 +100,7 @@ bool __fastcall IsPhysicsPushableByHero(const CThing& thing);   // 0x0085FD70
 }
 
 class CWorld { public:
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -155,7 +156,7 @@ void CApplyAdditionalPlayerImpulseIfTooClose::operator()(CThingCreatureBase* oth
             }
             CWorld* world = CMainGameComponent::Get()->World;
             float sign = (CWorld::GetFrame() % 2 == 0) ? -1.0f : 1.0f;
-            float angle = GFFloatRandom(45.0f, world->GetPRandomSeed()) * sign;
+            float angle = GFFloatRandom(45.0f, world->GetWorldSeed()) * sign;
             float turns = angle * (1.0f / 360.0f);
             offset.RotateXY(turns * sign);
             other->PhysicsTC->AddAdditionalImpulse(offset);

@@ -13,6 +13,7 @@
 // Globals: g_DoorOpenAnimName 0x013BAD34, g_DoorCloseAnimName 0x013BAD38 (CCharString).
 // Model: the landed CTCDoor::Open (0x00730C00): engine/CTCDoor.h (+0x04 ParentThing, +0x10 CurrentOpen, +0x20 PDef);
 // CDoorDef TriggerType +0x28, open/close events +0x30/+0x34; CThing type byte +0x10, event sink +0x60, PBaseDef +0x70.
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 #include "fable_compiler.h"
 #include "engine/CTCDoor.h"
 
@@ -34,7 +35,7 @@ class CDefString { public:
     CDefString() {}
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);                    // 0x009D49B0
+    CCharString GetString(long name) const;                    // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                       // 0x013CA828
 class CAnimationEntry { public: long AnimIndex; };
@@ -203,7 +204,7 @@ class CThing { public:
     CDefString GetDefName() const;              // 0x004C7CC0
     CCharString GetDefNameString() const
     {
-        CCharString name = GDefStringTable.GetString(GetDefName());
+        CCharString name = GDefStringTable.GetString((GetDefName()).Index);
         return name;
     }
     FABLE_FORCEINLINE bool HasTC(long interfaceType) const

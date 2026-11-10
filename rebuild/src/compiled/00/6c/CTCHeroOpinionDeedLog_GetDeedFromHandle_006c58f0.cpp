@@ -10,6 +10,9 @@
 // color/parent/left/right words and the key).
 // Layout: OpinionDeedMap +0x0C (PDB, unchanged: it is the first member after CTCBase); local model because the
 // PDB map is 16 bytes and every later member sits lower in retail.
+// Leaf: ?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z (const pointer
+//   result), was ?GetDeedFromHandle@CTCHeroOpinionDeedLog_Retail@@QBEPAVCOpinionDeed@@J@Z (a `_Retail` stand-in class name).
 
 class COpinionDeed;
 
@@ -37,15 +40,15 @@ struct COpinionDeedMap {                      // retail map<long, COpinionDeed*>
     COpinionDeedIterator end() const { return COpinionDeedIterator(m_pHeader); }
 };
 
-struct CTCHeroOpinionDeedLog_Retail {
+struct CTCHeroOpinionDeedLog {
     void*           __vftable;                // +0x00
     unsigned char   _pad_0x04[0x8];           // +0x04 CTCBase
     COpinionDeedMap OpinionDeedMap;           // +0x0C
 
-    COpinionDeed* GetDeedFromHandle(long handle) const;
+    const COpinionDeed* GetDeedFromHandle(long handle) const;
 };
 
-COpinionDeed* CTCHeroOpinionDeedLog_Retail::GetDeedFromHandle(long handle) const
+const COpinionDeed* CTCHeroOpinionDeedLog::GetDeedFromHandle(long handle) const
 {
     COpinionDeedIterator it = OpinionDeedMap.find(handle);
     if (it == OpinionDeedMap.end())

@@ -10,6 +10,7 @@
 // Shape: the name is a named CCharString local in its own block (the inline StartsWith as the test); STLport push_back inline. The
 //   read-only same-TU _M_insert_overflow body (GOTCHAS 00a26d40 rule) lets VC7.1 keep the pushed-pointer temporary and the tag in retail's
 //   slots and home the name in the dead `out` argument slot (frame 0xC).
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
 
 class CCharStringData { public: char* PData; unsigned long StringLength; };
@@ -21,7 +22,7 @@ class CCharString { public:
     bool StartsWith(const CCharString& prefix) const { return strncmp(*this, prefix, prefix.GetLength()) == 0; }
 };
 class CDefStringTable { public:
-    CCharString GetString(long id);                     // 0x009D49B0
+    CCharString GetString(long id) const;                     // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 

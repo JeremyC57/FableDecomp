@@ -12,6 +12,11 @@
 // Notes: each `bool reached` lives in its own scope (retail packs it into the dead `route` argument slot); the
 //   final branch is written inverted (`result != 2 || !filter()` first) so the route-failure return cross-jumps to
 //   the same tail retail picks; retry loops use `if (r == 4) continue; break;`.
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+enum EMovementType;                           // MS forward enum
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -81,9 +86,12 @@ class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool& reached, long movement, bool a, bool b,
-        const CThing* thing, bool c, float speed);    // 0x0097EC00
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& reached, EMovementType movement, bool a, bool b, const CThing* thing, bool c, float speed);    // 0x0097EC00
+    public:
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    public:
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float proximity, bool& reached, long movement,
         bool a, bool b, bool c, const CThing* thing, bool d, float speed);         // 0x0097E890
     long AIAction_MoveToPreCalcRoute(const CThing& route, bool& reached, long movement, const CAIFilterBase& filter, bool a);   // 0x0097F690
@@ -149,7 +157,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
             return 3;
         }
         bool reached;
-        result = AIAction_MoveToPos(2, pos, reached, 3, true, true, avoid, true, speed);
+        result = AIAction_MoveToPos((EAIActionRepeat)(2), pos, reached, (EMovementType)(3), true, true, avoid, true, speed);
         if (result == 4)
             continue;
         break;
@@ -171,7 +179,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
             ((CTCUserActionPointBase*)point)->SetActionPointAsFree(index);
             return 3;
         }
-        result = AIAction_LookAtPos(2, lookPos, 0x11, 0.01f);
+        result = AIAction_LookAtPos((EAIActionRepeat)(2), lookPos, 0x11, 0.01f);
         if (result == 4)
             continue;
         break;

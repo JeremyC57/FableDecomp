@@ -18,9 +18,9 @@ struct COpinionDeedMap {
     }
     COpinionDeedIterator end() const { return COpinionDeedIterator(m_pHeader); }
 };
-struct CTCHeroOpinionDeedLog_Retail {
+struct CTCHeroOpinionDeedLog {
     COpinionDeedMap OpinionDeedMap;
-    COpinionDeed* GetDeedFromHandle(long handle) const
+    const COpinionDeed* GetDeedFromHandle(long handle) const
     {
         COpinionDeedIterator it = OpinionDeedMap.find(handle);
         if (it == OpinionDeedMap.end())
@@ -34,7 +34,7 @@ int main()
     SOpinionDeedNode head, n1, n2;
     head.Next = &n1; n1.Next = &n2; n2.Next = &head;
     n1.Key = 3; n1.Value = &d1; n2.Key = 9; n2.Value = &d2; head.Key = -1; head.Value = 0;
-    CTCHeroOpinionDeedLog_Retail log; log.OpinionDeedMap.m_pHeader = &head;
+    CTCHeroOpinionDeedLog log; log.OpinionDeedMap.m_pHeader = &head;
     if (log.GetDeedFromHandle(3) != &d1 || log.GetDeedFromHandle(9) != &d2 || log.GetDeedFromHandle(5) != 0) {
         std::printf("006c58f0_TEST FAIL\n"); return 1;
     }

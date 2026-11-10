@@ -4,13 +4,14 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F270, 878 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70,
 //   CTCBase::GetWorldMap @ 0x00686D30, NCreatureHiding::GetValidPositions @ 0x0074A5D0 (__fastcall),
-//   CWorldMap::GetHeightZBelowPos @ 0x0063E480, CTCNymph::GetRandomFlightHeight @ 0x0080F130, CWorld::GetPRandomSeed
+//   CWorldMap::GetHeightZBelowPos @ 0x0063E480, CTCNymph::GetRandomFlightHeight @ 0x0080F130, CWorld::GetWorldSeed
 //   @ 0x0049D810, GFROR13 @ 0x00497890 (__fastcall), CWorld::GetWorldFrame @ 0x0049D870, free @ 0x00BFEA14 (vector storage).
 // Layout: as the landed CTCNymph::OnInitialActivate 0x0080FD90 (FlightSpline.ControlPoints +0x2C, HasSpline +0x5C,
 //   LastTargetTick +0x54); PTarget +0x68; CNymphDef CircleRange +0x34 (Ego_r.pdb); CWorld PThingSearchTools +0x20.
 // Shape: the effect position is a ternary of two GetPos calls (VC merges the call); the def pointer is a named local
 //   so it is held in edi across the GetWorld call; the search tools are a named reference; the first positions.size() is
 //   written twice (no named count) so the inlined random range keeps its zero test as retail.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 #include <stdlib.h>
 #define CTCBase CTCBaseLayout
@@ -202,7 +203,7 @@ class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* PThingSearchTools;                   // +0x20
     static long __fastcall GetFrame();                            // 0x0049D870
-    unsigned long* GetPRandomSeed();                        // 0x0049D810
+    unsigned long* GetWorldSeed() const;                        // 0x0049D810
 };
 class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector& pos) const;   // 0x0063E480
@@ -304,12 +305,12 @@ void CTCNymph::PickNewTargetPos()
     point.Z = GetWorldMap().GetHeightZBelowPos(point) + GetRandomFlightHeight();
     FlightSpline.ControlPoints[2] = point;
     if (positions.size() != 0) {
-        point = positions[WorldRandomRange(*GetWorld().GetPRandomSeed(), positions.size())];
+        point = positions[WorldRandomRange(*GetWorld().GetWorldSeed(), positions.size())];
         if (targetPos.Z > point.Z)
             point.Z = targetPos.Z;
         point.Z = GetWorldMap().GetHeightZBelowPos(point) + GetRandomFlightHeight();
         FlightSpline.ControlPoints[3] = point;
-        point = positions[WorldRandomRange(*GetWorld().GetPRandomSeed(), positions.size())];
+        point = positions[WorldRandomRange(*GetWorld().GetWorldSeed(), positions.size())];
         if (targetPos.Z > point.Z)
             point.Z = targetPos.Z;
         point.Z = GetWorldMap().GetHeightZBelowPos(point) + GetRandomFlightHeight();

@@ -2,6 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068F250, length 80 bytes.
 // Leaf: ?Update@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z
 // Shape: `test byte ptr [eax+91h],1`, `dec dword ptr [esi+28h] ; jns`, `ret 4`.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 struct CThing_Retail {
     unsigned char _pad[0x91];
     unsigned char m_91_0 : 1;                      // +0x91 bit 0
@@ -10,7 +12,7 @@ struct CThing_Retail {
 class CThingPlayerCreature : public CThing_Retail { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
-    void RemoveMode(long mode);                    // 0x00634190
+    void RemoveMode(EPlayerMode mode);                    // 0x00634190
 };
 bool __fastcall IsThingToKeepStrafing_0068eb20(CThing_Retail* thing);   // 0x0068EB20
 class CProcessedInput;
@@ -32,8 +34,8 @@ void CInputProcessWatchForRangedWeaponThirdPersonModeTermination::Update(CProces
             return;
         }
         if (--m_countdown < 0) {
-            m_pPlayer->RemoveMode(0x22);
-            m_pPlayer->RemoveMode(0x2e);
+            m_pPlayer->RemoveMode((EPlayerMode)(0x22));
+            m_pPlayer->RemoveMode((EPlayerMode)(0x2e));
         }
     }
 }

@@ -15,8 +15,11 @@
 //   lea eax, [eax+esi+4]      ; eax = (char*)base + index + 4
 //   pop esi
 //   ret 4
+// Leaf: ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z
+// Name fix (agentNF5 2026-11-10): Ego_r.pdb / FableWin.pdb ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z (const, const char* result),
+//   was ?GetStringAsCharArray@CDefStringTable@@QAEPADJ@Z; the -1 answer is the empty literal "" (??_C@_00CNPNBAHC@?$AA@ 0x0122D70E),
+//   was the stand-in extern C DAT_0122d70e.
 
-extern "C" char DAT_0122d70e;
 
 class CMemoryDataOutputStream
 {
@@ -31,16 +34,16 @@ public:
     char pad0[0xc];
     CMemoryDataOutputStream m_stream;
 
-    char *GetStringAsCharArray(long index);
+    const char *GetStringAsCharArray(long index) const;
 };
 
-char *CDefStringTable::GetStringAsCharArray(long index)
+const char *CDefStringTable::GetStringAsCharArray(long index) const
 {
     if (index == -1)
     {
-        return &DAT_0122d70e;
+        return "";
     }
 
-    void *base = ((void*)m_stream.PeekData());
-    return (char *)base + index + 4;
+    const void *base = m_stream.PeekData();
+    return (const char *)base + index + 4;
 }

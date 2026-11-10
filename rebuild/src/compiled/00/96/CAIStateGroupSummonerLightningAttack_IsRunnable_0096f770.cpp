@@ -6,6 +6,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -75,7 +76,7 @@ class CGameCameraManager { public:
 class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
     static long __fastcall GetFrame();                // 0x0049D870
 };
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
@@ -168,7 +169,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                     return true;
                 }
                 if (CWorld::GetFrame() > NextFrameForPreemptiveUse) {
-                    unsigned long* seed = GetPWorld()->GetPRandomSeed();
+                    unsigned long* seed = GetPWorld()->GetWorldSeed();
                     unsigned long next = *seed * 0x24A1U + 0x24DFU;
                     *seed = next;
                     unsigned long rotated = GFROR13(next);

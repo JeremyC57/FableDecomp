@@ -17,6 +17,8 @@
 // Layout: CAIStateGroup_MinionKidGroupTag members as the landed Cleanup 0x009347B0 (InitiatedTag +0x14, PTCGroupTag +0x18,
 // InitialTagPos +0x1c, FrameLastPlayedIn +0x2c); world definition manager +0x10, message manager +0x60.
 // Shape: the distance is sqrt(dz*dz + dy*dy + dx*dx) of component locals; InitialTagPos takes the implicit operator=.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
@@ -117,8 +119,7 @@ class CMessageEventManager { public:
     const CMessageEvent* FindMostRecentMessage(const CInvitationFilter& filter) const;      // 0x00934E50
     const CMessageEvent* FindMostRecentMessage(const COwnMessageFilter& filter) const;      // 0x0090E090
     void RemoveMessage(const CMessageEvent* message);                                      // 0x00493B5B
-    void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
-                    float range, float radius, long data);                                 // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long lifetime, const C3DVector& pos, CThing* from, CThing* to, float range, float radius, long data);                                 // 0x00687540
 };
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
@@ -239,7 +240,7 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
         CThingAICreature* creature = GetCreature();
         long fps = CMainGameComponent::GetConstantFPS();
         CMessageEventManager* manager = GetPWorld()->PMessageEventManager;
-        manager->AddMessage(0x2e, (long)(fps * 4.0f), &creature->PeekPos(), creature, 0, 8.0f, 8.0f, 0);
+        manager->AddMessage((EMessageEventType)(0x2e), (long)(fps * 4.0f), creature->PeekPos(), creature, 0, 8.0f, 8.0f, 0);
     }
     return false;
 }

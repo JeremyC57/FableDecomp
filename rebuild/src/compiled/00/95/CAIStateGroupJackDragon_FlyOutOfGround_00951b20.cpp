@@ -3,12 +3,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00951B20, length 553 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill @ 0x004C9B80, SetHeadTurning @ 0x00950BB0,
 // WaitForAnimLoop @ 0x00950950, CAIStateGroupBase::IsStopping @ 0x008FD010, Terminate @ 0x008FCF40, C3DVector::RotateAboutZ
-// @ 0x00A14040, CThing::GetPos @ 0x004C73D0, GetPWorld @ 0x008FCFC0, CWorld::GetPRandomSeed @ 0x0049D810, GFROR13
+// @ 0x00A14040, CThing::GetPos @ 0x004C73D0, GetPWorld @ 0x008FCFC0, CWorld::GetWorldSeed @ 0x0049D810, GFROR13
 // @ 0x00497890 (`__fastcall`), vector<C3DVector>::push_back @ 0x0066E630, CCreatureAction_DragonTakeOffIntoFlying ctor
 // @ 0x009533E0 / dtor @ 0x00953470, AIAction_PerformActionAndWait @ 0x0097DB70, ChooseHoverOrStrafeState @ 0x0094FFF0,
 // free @ 0x00BFEA14.
 // Layout: Ego_r.pdb CAIStateGroup_JackDragon (packed): PEnemy +0x14, PInvisibleBodgeCreature +0x44, CurrentState +0x5c,
 // GoLeft +0x60, PreviousFlightPos +0x65, DragonPosOutOfGround1/2/3Left/3Right/4Left/4Right +0x72/+0x7e/+0x8a/+0x96/+0xa2/+0xae.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include <stdlib.h>
 #pragma pack(push, 1)
 class C3DVector { public:
@@ -53,7 +54,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 }
 long __fastcall GFROR13(unsigned long);      // 0x00497890
 class CWorld { public:
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 inline long WorldRandomRange(unsigned long* seed, unsigned long range)
 {
@@ -137,7 +138,7 @@ void CAIStateGroup_JackDragon::FlyOutOfGround()
     up.RotateAboutZ(GetCreature()->GetPhysicsTC()->GetHeading());
     GetCreature()->GetPos();
     CVector3DList route;
-    if (WorldRandomRange(GetPWorld()->GetPRandomSeed(), 100) > 50)
+    if (WorldRandomRange(GetPWorld()->GetWorldSeed(), 100) > 50)
         GoLeft = 1;
     else
         GoLeft = 0;

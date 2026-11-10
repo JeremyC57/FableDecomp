@@ -4,12 +4,13 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A1870, 676 bytes (+ int3 padding), `ret 4` (the bool is unused).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; the caster physics' right-handed set (virtual +0x120);
 //   operator new 0x00BFEA1A; CLightningBeam(CThing*, CThing*) 0x007A0630; the counted-pointer deleter 0x007A4120;
-//   CTCBase::GetWorld 0x00686A70; CWorld::GetPRandomSeed 0x0049D810; GFFloatRandom(float, unsigned long*) 0x004978A0
+//   CTCBase::GetWorld 0x00686A70; CWorld::GetWorldSeed 0x0049D810; GFFloatRandom(float, unsigned long*) 0x004978A0
 //   (`__fastcall`); C3DVector::Rotate(const C3DVector&, float) 0x00A13C60; CThing::GetPos 0x004C73D0;
 //   CLightningBeam::Activate 0x007A1380; malloc 0x00BFEA0E (list node); operator delete 0x00BFE9BC. 1/360 0x01238E00.
 // Layout (retail CTCWillLightning, as the landed InitialiseBeams 0x007A16F0): m_lspDef +0x28, m_lbBeams +0x68,
 //   m_cbpPlayer +0x70, BeamsInitialised +0x95, m_fAreaEffect +0x9c, m_fActivationTime +0xa8, m_fDeActivationTime +0xac,
 //   m_fTemporaryBeamLife +0xc0; def angle ranges +0xcc / +0xd4; CLightningBeam (0x7c, landed ctor 0x007A0630).
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
@@ -58,7 +59,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CWorld { public:
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 
 void operator delete(void* p);                  // 0x00BFE9BC
@@ -194,7 +195,7 @@ class CTCWillLightning : public CTCBase { public:
     long  m_nMinSubBeams;                       // +0xb8
     long  m_nMaxSubBeams;                       // +0xbc
     float m_fTemporaryBeamLife;                 // +0xc0
-    float GetRandomInRange(CFloatRange range) { return GFFloatRandom(range.Max - range.Min, GetWorld().GetPRandomSeed()) + range.Min; }
+    float GetRandomInRange(CFloatRange range) { return GFFloatRandom(range.Max - range.Min, GetWorld().GetWorldSeed()) + range.Min; }
     bool IsRightHanded() const
     {
         switch (WeaponState) {

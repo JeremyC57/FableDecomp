@@ -26,6 +26,12 @@ FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);
 #pragma pack(push, 1)
 class CTCEntityEvents {
 public:
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_GETEVENT_DECL
+    // Opt-in (agentNF5 name-fix wave, rows 0x0096BAC0 / 0x0096BC20): Ego_r.pdb / FableWin.pdb
+    // ??$GetEvent@..@CTCEntityEvents@@QBE_NPAPAV..@ABV..@@Z, the public const member template (the retail branch above declares the
+    // same); the row defines it over the flattened layout below. Declaration only: no layout change.
+    template<class E,class F> bool GetEvent(E**,const F&)const;
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          sub;                                       // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08

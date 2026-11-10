@@ -1,3 +1,13 @@
+// Portable copy of the landed test (agentNF5): the calling-convention keywords compile away on a non-MSVC host; the body is unchanged.
+#if !defined(_MSC_VER)
+#define __fastcall
+#define __thiscall
+#define __cdecl
+#define __stdcall
+#define __declspec(x)
+#endif
+// Address of a temporary that lives to the end of the full expression (MSVC accepts `&T(...)` directly; g++ needs the helper).
+template <class T> T* TempAddr(const T& t) { return const_cast<T*>(&t); }
 // Behaviour test for 00914460: src/00914460.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CAIStateGroup_BirdGroundWander::Update()
 #include "fable_compiler.h"
@@ -166,8 +176,8 @@ void CAIStateGroup_BirdGroundWander::Update()
         bool failed;
         {
             CCharString animation("ST_IDLE");
-            failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), animation,
-                CSoundPair(), false, true, false, 0, 0), false) != 2;
+            failed = AIAction_PerformActionAndWait(TempAddr(CCreatureAction_PlayAnimation(GetCreature(), animation,
+                CSoundPair(), false, true, false, 0, 0)), false) != 2;
         }
         if (failed)
             break;

@@ -13,6 +13,9 @@
 // edi and its count release is inline at each exit (null test only where the def was never dereferenced); the def class is
 // held in a local before the call; the look loop uses `== 4 continue; break` so it is not rotated.
 // Layout: CCreatureNavigationDef AvoidDynamicObstacles +0x34 (Ego_r.pdb), count at +4; CThing PhysicsTC +0x70 (retail).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 #include "engine/C3DVector.h"
 class CCreatureNavigationDef { public:
     virtual void v00();
@@ -81,7 +84,9 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float proximity, bool& arrived, long movement,
                                      bool a, bool b, bool avoidDynamicObstacles, const CThing* ignore, bool c, float d);   // 0x0097E890
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
+    public:
 };
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBase {
     long FrameToLook;                           // +0x14
@@ -115,7 +120,7 @@ void CAIStateGroup_LookAtInterestingThings::Update()
                     return;
                 }
                 CThing* target = thing.GetPItem();
-                if (AIAction_LookAtPos(2, target->GetPos(), 0x11, 0.0027777f) == 4)
+                if (AIAction_LookAtPos((EAIActionRepeat)(2), target->GetPos(), 0x11, 0.0027777f) == 4)
                     continue;
                 break;
             }

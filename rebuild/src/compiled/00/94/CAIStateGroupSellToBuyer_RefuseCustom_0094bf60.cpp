@@ -13,14 +13,15 @@
 // Label: catalog "make_pair<C3DVector_const_,int>" -> Ego_r.pdb ?RefuseCustom@CAIStateGroup_SellToBuyer@@AAEXXZ;
 //   0x008FCFC0 is GetPWorld (not CPlayer::GetCurrentMode).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class CThing;
 
 #include "engine/C3DVector.h"
 
 class CMessageEvent;
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to,
-                              float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 
 class CWorld { public:
@@ -72,5 +73,5 @@ void CAIStateGroup_SellToBuyer::RefuseCustom()
     CThing* creature = GetCreature();
     C3DVector position(0.0f, 0.0f, 0.0f);
     CMessageEventManager* messages = GetPWorld()->MessageEventManager;
-    messages->AddMessage(0x10, 1000, position, creature, PBuyer.GetPItem(), 0.0f, 0.0f, 0);
+    messages->AddMessage((EMessageEventType)(0x10), 1000, position, creature, PBuyer.GetPItem(), 0.0f, 0.0f, 0);
 }

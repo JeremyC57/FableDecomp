@@ -17,6 +17,9 @@
 // Shape: the admonishing watch loop is placed at the end; the frame window compare is unsigned. In IsWithinWarningTime
 //         the world pointer is fetched into a local BEFORE CMainGameComponent::GetConstantFPS() is read (retail calls GetPThingWorld, then
 //         loads the global into ebx; a frames-per-second local read first puts the load ahead of the call).
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+class CMessageEvent;
 #include "fable_compiler.h"
 class CMainGameComponent {
 protected:
@@ -53,8 +56,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {    // the MoveToThin
 };
 FABLE_FORCEINLINE bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !((CThing*)thing.GetPItem())->IsDead(); }
 class CMessageEventManager { public:
-    void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
-                    float range, float radius, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long lifetime, const C3DVector& pos, CThing* from, CThing* to, float range, float radius, long data);   // 0x00687540
 };
 class CWorld { public:
     unsigned char _pad[0x60];
@@ -123,7 +125,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                 CThingPlayerCreature* player = PPlayer.GetPItem();
                 CThingAICreature* creature = GetCreature();
                 CMessageEventManager* manager = GetWorld().PMessageEventManager;
-                manager->AddMessage(0x1b, 300, &creature->PeekPos(), creature, player, 0.0f, 0.0f, WarningCount);
+                manager->AddMessage((EMessageEventType)(0x1b), 300, creature->PeekPos(), creature, player, 0.0f, 0.0f, WarningCount);
                 bool justWarning = false;
                 if (WarningCount == 1 || WarningCount == 2)
                     justWarning = true;

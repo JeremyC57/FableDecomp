@@ -12,6 +12,7 @@
 //          spilled across the calls (its home doubles as the hero log lookup miss slot).
 // Layout: engine/CAIStateGroup_MinionReactToCrime.h (OpinionDeedHandle +0x14, AllowDuplicateReactToCrime +0x19);
 //          PBrain is the first dword at +0x04; the deed's +0x00 type / +0x04 / +0x24 handle are descriptive.
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 #include "engine/CAIStateGroup_MinionReactToCrime.h"
 
@@ -63,7 +64,7 @@ class CTCCreatureOpinionOfHero { public:               // interface 0x4f
                                      bool flag);   // 0x006610C7
 };
 class CTCHeroOpinionDeedLog { public:                  // interface 0x51
-    COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+    const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
     void RemoveDeed(long data);                 // 0x006C59E0 (descriptive)
 };
 class CTCVillage { public:

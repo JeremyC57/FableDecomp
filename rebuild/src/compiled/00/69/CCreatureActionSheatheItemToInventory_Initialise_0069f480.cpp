@@ -9,9 +9,11 @@
 // Shape: the out-parameter GetInterface as the if condition; the component rides in esi (re-used after `this` is dead) for both of its calls,
 // &PCreature in edi. The PlayerMode argument is pushed before the creature/player chain (a chained call evaluates its argument first).
 // No usable engine header layout (retail CCreatureActionBase is 0xa8 bytes); modelled like the landed _ForEnflame relative 0x0069F750.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CTCBase;
 class CPlayer { public:
-    void RemoveMode(long mode);             // 0x00634190 (EPlayerMode by value)
+    void RemoveMode(EPlayerMode mode);             // 0x00634190 (EPlayerMode by value)
 };
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -48,6 +50,6 @@ void CCreatureAction_SheatheItemToInventory::Initialise()
     if (PCreature.Get()->GetTC(TCI_HERO_RANGED_ATTACKS, &pRanged)) {
         pRanged->CancelAimingWeapon();
         pRanged->ResetProjectileWeaponMode();
-        PCreature.Get()->GetPlayer().RemoveMode(0x22);
+        PCreature.Get()->GetPlayer().RemoveMode((EPlayerMode)(0x22));
     }
 }

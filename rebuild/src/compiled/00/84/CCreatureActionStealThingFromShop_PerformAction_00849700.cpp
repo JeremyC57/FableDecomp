@@ -26,6 +26,9 @@
 // Names: GetCreature() is a descriptive inline (the PDB's CCreatureActionBase::GetPCreature returns `const CThingCreatureBase*`;
 //   a CIntelligentPointer<T>::GetPItem template layer changes the register allocation here, so the casts are spelled out as
 //   in the landed sibling); GetCheckedTC / GetTC / GetInterface / CreateThingAt are the fleet's descriptive inline helpers.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+class CMessageEvent;
 #include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
@@ -142,8 +145,7 @@ class CPlayerGui { public:
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 class CMessageEventManager { public:
-    void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to,
-                     float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 class CWorld { public:
     unsigned char         _pad[0x60];
@@ -198,7 +200,7 @@ void CCreatureAction_StealThingFromShop::PerformAction()
         CThing* owner = (CThing*)owned->POwner.GetPItem();
         CThing* thief = GetCreature();
         CMessageEventManager* manager = GetWorld().PMessageEventManager;
-        manager->AddMessage(0x1c, 0x32, thief->GetPos(), GetCreature(), owner, 0.0f, 0.0f, 0);
+        manager->AddMessage((EMessageEventType)(0x1c), 0x32, thief->GetPos(), GetCreature(), owner, 0.0f, 0.0f, 0);
         ((CThingCreatureBase*)GetCreature())->MakeNoise("SIMPLE_NOISE");
     }
 }

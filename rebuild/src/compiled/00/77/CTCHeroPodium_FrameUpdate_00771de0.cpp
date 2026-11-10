@@ -14,6 +14,8 @@
 // manager (world +0x60) is a named local in edi; the type-0x23 filter and the resize value share the frame word.
 // Layout: retail CTCHeroPodium NumberOfCrowdOccupants +0x0C, CrowdOccupation +0x10 (as the landed
 // OnInitialActivate 0x00771BD0); CWorld PMessageEventManager +0x60.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "engine/C3DVector.h"
 
 extern const float g_podiumRadiusSquared_0126a88c;   // 0x0126A88C (1.0f)
@@ -30,8 +32,7 @@ class CMessageEventFilter_IsOfType { public:
 };
 class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& filter);   // 0x004AB8B0
-    CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to,
-                              float value1, float value2, long data);   // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
     void RemoveMessage(const CMessageEvent* message);   // 0x00493B5B
 };
 class CWorld {
@@ -81,7 +82,7 @@ void CTCHeroPodium::FrameUpdate()
             if (message == 0) {
                 CrowdOccupation.resize(8, 0);
                 NumberOfCrowdOccupants = 0;
-                messages->AddMessage(0x23, 0x249F0, podiumPos, podium, 0, 0.0f, 0.0f, 0);
+                messages->AddMessage((EMessageEventType)(0x23), 0x249F0, podiumPos, podium, 0, 0.0f, 0.0f, 0);
             }
         } else if (message) {
             messages->RemoveMessage(message);

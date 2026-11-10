@@ -1,12 +1,13 @@
 // CTCNymph::GetRandomFlightHeight() const -- a random height between the def's MinHeight and MaxHeight (1000 steps)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080F130, length 93 bytes.
-// Callees: CTCBase::GetWorld() @ 0x00686A70, CWorld::GetPRandomSeed() @ 0x0049D810 (label "CVertexBufferWin32::DoSizeof"
+// Callees: CTCBase::GetWorld() @ 0x00686A70, CWorld::GetWorldSeed() @ 0x0049D810 (label "CVertexBufferWin32::DoSizeof"
 // is propagated), GFROR13 @ 0x00497890 (__fastcall). Constants: 0.001f @ 0x01266300, 2^32 @ 0x0122DCB4.
 // CNymphDef: MaxHeight +0x2c, MinHeight +0x30.
 // Shape: one inlined world-random step (`seed = seed * 0x24A1 + 0x24DF ; seed = GFROR13(seed)`) then `% 1000` (unsigned
 // `div`), converted as an unsigned long (`fild ; jge ; fadd 2^32`). The step `(max - min) * 0.001f` must be a NAMED float
 // local: written inline (literal or extern constant, either operand order) VC7.1 multiplies by r first and by the
 // constant last.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
@@ -19,7 +20,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 }
 
 class CWorld { public:
-    unsigned long* GetPRandomSeed();                // 0x0049D810
+    unsigned long* GetWorldSeed() const;                // 0x0049D810
 };
 
 class CNymphDef { public:
@@ -42,7 +43,7 @@ class CTCNymph : public CTCBase { public:
 
 float CTCNymph::GetRandomFlightHeight() const
 {
-    unsigned long* seed = GetWorld().GetPRandomSeed();
+    unsigned long* seed = GetWorld().GetWorldSeed();
     unsigned long r = WorldRandomRange(*seed, 1000);
     float step = (PDef->MaxHeight - PDef->MinHeight) * 0.001f;
     return step * (float)r + PDef->MinHeight;

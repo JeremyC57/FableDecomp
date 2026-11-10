@@ -22,6 +22,8 @@
 // Shape: the atmos pointer is a CCountedPointer member with an inline Clear() and the handle vector an inline clear()
 // over erase(begin(), end()) (open-coded forms schedule the environment load and the vector words differently).
 // Opt: /O2 (16-aligned entry).
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
@@ -29,7 +31,7 @@ class CCPPointerInfo { public:
 };
 class CPlayer {
 public:
-    void RemoveMode(long mode);                         // 0x00634190 (EPlayerMode)
+    void RemoveMode(EPlayerMode mode);                         // 0x00634190 (EPlayerMode)
     void PrepareForLoad();                              // 0x00487550
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -161,7 +163,7 @@ public:
 
 void CWorld::PrepareForLoad()
 {
-    PlayerManager->GetMainPlayer().RemoveMode(0x2b);
+    PlayerManager->GetMainPlayer().RemoveMode((EPlayerMode)(0x2b));
     PlayerManager->GetMainPlayer().PrepareForLoad();
     g_pPlayerGui->GetPHeroInfoScreensManager()->Close();
     g_pPlayerGui->PrepareForLoad();

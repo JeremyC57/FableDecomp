@@ -17,6 +17,7 @@
 // name's destructor are shared.
 // Retry 10b: the same-TU GetDef<CPlayerDef> body (operator=-shaped out assignment) plus the definition manager read through
 //   an inline GetDefinitionManager() accessor give retail's register use and frame packing.
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 class CCharString { public:
     void* PStringData;
@@ -28,7 +29,7 @@ class CDefString { public:                                     // a definition-s
     long m_index;
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);             // 0x009D49B0
+    CCharString GetString(long name) const;             // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 
@@ -102,7 +103,7 @@ void CPlayerManager::InitPlayerCharacter(bool fromSave)
     bool found = GetDefinitionManager()->GetDef(index, &out);
     CDefHolder<const CPlayerDef> playerDef(out.Object);
     if (found) {
-        CCharString characterName = GDefStringTable.GetString(GetDefinitionManager()->GetDefNameFromGlobalIndex(playerDef->CharacterDef));
+        CCharString characterName = GDefStringTable.GetString((GetDefinitionManager()->GetDefNameFromGlobalIndex(playerDef->CharacterDef)).m_index);
         GetPlayer(MainPlayer)->InitCharacterAs(characterName);
     } else {
         CCharString characterName("CREATURE_HERO", -1);

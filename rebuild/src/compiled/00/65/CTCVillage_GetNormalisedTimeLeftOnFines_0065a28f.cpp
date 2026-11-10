@@ -25,6 +25,7 @@
 //   go through a manager getter whose result is discarded (static members reached through `GetX()->`); the time left is
 //   `knowledge - GetWorld()->GetFramesSince(FramePlayerLastSeenByGuard)` (an inline static, so the getter call precedes
 //   the field load); the effects def is a named local released after the comparison.
+// Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -125,7 +126,7 @@ class COpinionDeed { public:
     long DeedType;
 };
 class CTCHeroOpinionDeedLog { public:
-    COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+    const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 
@@ -180,7 +181,7 @@ float CTCVillage::GetNormalisedTimeLeftOnFines()
                 log = (CTCHeroOpinionDeedLog*)hero->GetTC(0x51);
             SNode* end = PlayersCrimes;
             for (SNode* it = end->_M_left; it != end; it = Successor(it)) {
-                COpinionDeed* deed = log->GetDeedFromHandle(it->_M_value_field);
+                COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(it->_M_value_field);
                 if (deed) {
                     CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(deed->DeedType);
                     long knowledge = effects->KnowledgeLifeInSeconds * GetDefinitionManager()->FramesPerSecond();

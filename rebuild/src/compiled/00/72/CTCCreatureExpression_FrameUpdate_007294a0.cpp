@@ -7,13 +7,14 @@
 // (direction, by reference), the thing's +0x60 object virtual slot 70 (+0x118, a C3DVector by value), LowerBound
 // @ 0x0040F020 (inlined HasTC + GetTC, CTCHeroStats = 4), CTCHeroStats::GetMoralityPercentage @ 0x0057A690,
 // CTCCreatureExpression::SetExpression @ 0x00729410 (out of line at the first four sites; the last site is the inline
-// copy: GetSubDef @ 0x00485815, GetPRandomSeed @ 0x0049D810, FindRandomElement @ 0x0086F510, ForcePrimaryExpression
+// copy: GetSubDef @ 0x00485815, GetWorldSeed @ 0x0049D810, FindRandomElement @ 0x0086F510, ForcePrimaryExpression
 // @ 0x007293A0). Constants: 0.8f @ 0x01254DA8, 0.45f @ 0x0125D1E0, 0.55f @ 0x0126663C, 1/0.45 @ 0x01266640.
 // Layout: as the landed SetExpression 0x00729410; CThing UniqueID (unsigned __int64) +0x18, +0x60 object, def +0x70.
 // Shape: retail calls SetExpression out of line at four sites and expands it inline at the last (VC7.1's inline-once
 // band): the lane does not reproduce that choice for a plain inline member, so the last site goes through a __forceinline
 // copy of the landed body (SetExpressionInline). The id is a named local read before the frame call; the camera through an
 // inline accessor; the dot product accumulates Z, Y, X in statements; the morality weights are named float locals.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -116,7 +117,7 @@ class CWorld { public:
     unsigned char _pad00[0x18];
     CCamera* Camera;                                // +0x18
     CCamera* GetCamera() { return Camera; }
-    unsigned long* GetPRandomSeed();                // 0x0049D810
+    unsigned long* GetWorldSeed() const;                // 0x0049D810
 
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -165,7 +166,7 @@ FABLE_FORCEINLINE void CTCCreatureExpression::SetExpressionInline(long expressio
     CDefPointer<CCreatureExpressionDef> def;
     ParentThing->PDef_Object->GetSubDef(&def);
     CExpressionMap* expressions = def->Expressions;
-    long anim = expressions->FindRandomElement(expressionType, GetWorld().GetPRandomSeed());
+    long anim = expressions->FindRandomElement(expressionType, GetWorld().GetWorldSeed());
     if (anim)
         ForcePrimaryExpression(anim, maxWeight);
 }

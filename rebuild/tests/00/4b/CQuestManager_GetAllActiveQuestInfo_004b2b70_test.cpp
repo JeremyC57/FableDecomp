@@ -1,3 +1,14 @@
+// Portable copy of the landed test (agentNF5): the calling-convention keywords compile away on a non-MSVC host; the body is unchanged.
+#if !defined(_MSC_VER)
+#define __fastcall
+#define __thiscall
+#define __cdecl
+#define __stdcall
+#define __declspec(x)
+#endif
+// Address of a temporary that lives to the end of the full expression (MSVC accepts `&T(...)` directly; g++ needs the helper).
+template <class T> T* TempAddr(const T& t) { return const_cast<T*>(&t); }
+#include <stddef.h>
 // Behaviour test for 004b2b70: src/004b2b70.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CQuestManager::GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vector<CCharString>& defNames)
 #include "fable_compiler.h"
@@ -27,7 +38,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 struct __false_type { __false_type() {} };             // empty tag with a user constructor (no byte store)
-inline void* operator new(unsigned int, void* where) { return where; }
+inline void* operator new(size_t, void* where) { return where; }
 
 template <class T> struct vector {                     // STLport vector (12 bytes)
     T* _M_start;

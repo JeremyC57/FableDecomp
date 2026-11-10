@@ -1,25 +1,24 @@
-// CResource::SetResourceSize(unsigned long)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009FBF20, oracle length 46 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
-//
-// Retail bytes:  mov eax,[ecx+8] ; test eax,eax ; je N ; mov edx,[ecx+14h] ; push esi ; mov esi,[eax+24h] ; sub esi,edx ; mov edx,[esp+8] ; mov [eax+24h],esi ; mov eax,[ecx+8] ; add [eax+24h],edx ; mov [ecx+14h],edx ; pop esi ; ret 4 ; N: mov eax,[esp+4] ; mov [ecx+14h],eax ; ret 4
-// engine/CResource.h (PDB): +0x08 ResourceList, +0x14 ResourceSize; engine/CResourceList.h:
-// +0x24 AllocatedMemory. Re-sizing a resource that sits in a list moves the list's allocated
-// total from the old size to the new one; the resource then records the new size either way.
+// CResource::SetResourceSize(unsigned long) -- re-size a resource: when it sits in a resource list, move the list's allocated total from
+// the old size to the new one; record the new size either way
+// Leaf: ?SetResourceSize@CResource@@QAEXK@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009FBF20, 46 bytes (`ret 4`).
+// Identity (two sources): Ego_r.pdb / FableWin.pdb ?SetResourceSize@CResource@@QAEXK@Z; engine/CResource.h (retail, ResourceList +0x08,
+//   ResourceSize +0x14) names it at 0x009FBF20 and CResourceList.h AllocatedMemory +0x24 is the word adjusted here.
+// Name fix (agentNF5 2026-11-10): was the derived stand-in `CResource_Methods::SetResourceSize`; now the shared retail CResource
+//   (FABLE_RETAIL_DEF_CLASS_BASE + FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS + FABLE_RETAIL_CGRAPHICINFOFRAME_FREE declare it);
+//   CResourceList stays the default flattened layout (the retail branch keeps AllocatedMemory private).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
 #include "engine/CResource.h"
 #include "engine/CResourceList.h"
-
-struct CResource_Methods : CResource {
-    void SetResourceSize(unsigned long size);
-};
-
-void CResource_Methods::SetResourceSize(unsigned long size)
+void CResource::SetResourceSize(unsigned long size)
 {
-    CResourceList* list = this->ResourceList;
+    CResourceList* list = ResourceList;
     if (list) {
-        list->AllocatedMemory -= this->ResourceSize;
-        this->ResourceList->AllocatedMemory += size;
+        list->AllocatedMemory -= ResourceSize;
+        ResourceList->AllocatedMemory += size;
     }
-    this->ResourceSize = size;
+    ResourceSize = size;
 }

@@ -19,6 +19,8 @@
 // +0x10, Quitting +0x1c). The interface-0x11 component carries two STLport sets at +0x1fc / +0x208 ({header, count}).
 // Shape: Components.clear() as the STLport erase(begin(), end()) with a trivial pointer copy; the list clear and the two
 // set clears are the inlined STLport bodies; the front-end counted result is released with the DecRef/GetRefCount pair.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include "fable_compiler.h"
 #include <string.h>
 #include <stdlib.h>
@@ -139,7 +141,7 @@ namespace NUISystem { class CManager { public:
     virtual CCountedRef GetScreenData();                    // +0xa8
 }; }
 
-class CPlayer { public: void RemoveMode(long mode); };             // 0x00634190
+class CPlayer { public: void RemoveMode(EPlayerMode mode); };             // 0x00634190
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
@@ -213,7 +215,7 @@ void CTCQuickAccessMenu::GlobalUpdate(bool)
         NUISystem::CManager::GetInstance()->ResetInput();
         Active = false;
         Quitting = false;
-        GetPlayerManager().GetMainPlayer().RemoveMode(0x24);
+        GetPlayerManager().GetMainPlayer().RemoveMode((EPlayerMode)(0x24));
         CTC11* tc = 0;
         ParentThing->GetInterface(0x11, &tc);
         tc->m_setA.clear();

@@ -10,6 +10,8 @@
 // Shape: the &PCreature address stays in edi (named by the compiler, not the source); the component rides in esi for its two
 // calls; the player chain pushes 0x22 before evaluating its object expression (natural VC argument-first order). Retail
 // CCreatureActionBase is 0xa8 bytes (the PDB build is larger), so `this` is modelled locally.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -17,7 +19,7 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer { public:
-    void RemoveMode(long mode);             // 0x00634190 (EPlayerMode)
+    void RemoveMode(EPlayerMode mode);             // 0x00634190 (EPlayerMode)
 };
 
 class CTCHeroRangedAttacks { public:
@@ -50,6 +52,6 @@ void CCreatureAction_UnsheatheItemFromInventory::Initialise()
     if (PCreature.Get()->GetTC(TCI_HERO_RANGED_ATTACKS, &ranged)) {
         ranged->CancelAimingWeapon();
         ranged->ResetProjectileWeaponMode();
-        PCreature.Get()->GetPlayer().RemoveMode(0x22);
+        PCreature.Get()->GetPlayer().RemoveMode((EPlayerMode)(0x22));
     }
 }

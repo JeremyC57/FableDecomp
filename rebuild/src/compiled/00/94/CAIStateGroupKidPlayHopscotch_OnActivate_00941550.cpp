@@ -12,6 +12,8 @@
 // makes the world call after the pushes); the arguments go right to left (0, 0.0f, 0.0f, GetPItem(), creature,
 // marker->GetPosition(), 9999999, 0x18). No engine header for this class; the layout is local (pack(1) for the
 // unaligned pointer), names descriptive.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class C3DVector;
 
 #include "engine/CThing.h"
@@ -19,8 +21,7 @@ class C3DVector;
 class CMessageEvent;
 
 class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long distance, C3DVector* pos, CThing* source, CThing* extra,
-                              float a, float b, long c);     // 0x00687540
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long distance, const C3DVector& pos, CThing* source, CThing* extra, float a, float b, long c);     // 0x00687540
 };
 
 class CWorld { public:
@@ -62,5 +63,5 @@ void CAIStateGroup_KidPlayHopscotch::OnActivate()
     CThing* creature = PBrain->Creature;
     CThing* marker = m_pMarker.GetPItem();
     CMessageEventManager* messages = GetPWorld()->m_pMessageManager;
-    messages->AddMessage(0x18, 9999999, (C3DVector*)&marker->GetPos(), creature, m_pMarker.GetPItem(), 0.0f, 0.0f, 0);
+    messages->AddMessage((EMessageEventType)(0x18), 9999999, *((C3DVector*)&marker->GetPos()), creature, m_pMarker.GetPItem(), 0.0f, 0.0f, 0);
 }

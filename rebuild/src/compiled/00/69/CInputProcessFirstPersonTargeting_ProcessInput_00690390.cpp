@@ -4,12 +4,14 @@
 // @ 0x00687CF0 (forwards to CGamePlayerInterface::IsEventGameAction @ 0x00445BD0 through +0x24), CPlayer::RemoveMode(long) @ 0x00634190
 // (MyPlayer +0x18), CProcessedInput::SetHandled @ 0x00A0D390 (NoGameEvents = 0, Type = 2).
 // Shape: the event reference rides in edi for both predicate calls, nested ifs share the single exit, `ret 8`.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CInputEvent;
 class CProcessedInput { public:
     void SetHandled();                              // 0x00A0D390
 };
 class CPlayer { public:
-    void RemoveMode(long mode);                     // 0x00634190
+    void RemoveMode(EPlayerMode mode);                     // 0x00634190
 };
 struct CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
     virtual void v00();
@@ -30,7 +32,7 @@ void CInputProcessFirstPersonTargeting::ProcessInput(const CInputEvent& event, C
 {
     if (IsEventButtonHeld(event)) {
         if (!IsEventGameAction(10, event)) {
-            MyPlayer->RemoveMode(0x16);
+            MyPlayer->RemoveMode((EPlayerMode)(0x16));
             processed.SetHandled();
         }
     }

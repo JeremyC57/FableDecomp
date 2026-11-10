@@ -19,6 +19,8 @@
 // Shape: the sound ids are read into locals (edi); the empty prompts are implicit const char* conversions (default length
 //        -1), so the second temporary lands in the dead `caught` slot; the zero vector and the world are named locals,
 //        which builds the vector and calls GetWorld before the message arguments are pushed.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 #include "fable_compiler.h"
 class CBaseObject;
 class CBaseIntelligentPointer {
@@ -44,7 +46,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThingPlayerCreature;
 class CPlayer {
 public:
-    void RemoveMode(long mode);                         // 0x00634190
+    void RemoveMode(EPlayerMode mode);                         // 0x00634190
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
@@ -163,6 +165,6 @@ void CTCFishing::FinishFishing(bool caught)
         Stage = 0;
         StageInitialised = false;
     }
-    hero->GetPlayer().RemoveMode(0x1d);
+    hero->GetPlayer().RemoveMode((EPlayerMode)(0x1d));
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetButton1OverrideText("");
 }

@@ -4,6 +4,12 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009385F0; SW2 sweep (advisor/009385f0/probe/r1.cpp).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
+class CThing;
+enum EMovementType;                           // MS forward enum
+enum EAIActionRepeat;                         // MS forward enum
+enum EAIActionReturn;                         // MS forward enum
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -46,9 +52,12 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long movement, bool a, bool b,
-        CThing* thing, bool c, float speed);    // 0x0097EC00
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& reached, EMovementType movement, bool a, bool b, const CThing* thing, bool c, float speed);    // 0x0097EC00
+    public:
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    public:
 };
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     CIntelligentPointerThingObject PSeat;       // +0x14
@@ -79,7 +88,7 @@ bool CAIStateGroup_UsesSeat::MoveToSeat(long movement)
         do {
             if (((CThing*)PSeat.GetPItem()) == 0 || !IsSeatValid())
                 return false;
-            result = AIAction_MoveToPos(2, SeatPos, &reached, movement, true, true, 0, true, 0.0f);
+            result = AIAction_MoveToPos((EAIActionRepeat)(2), SeatPos, reached, (EMovementType)(movement), true, true, 0, true, 0.0f);
         } while (result == 4);
     }
     if (result != 2)
@@ -91,7 +100,7 @@ bool CAIStateGroup_UsesSeat::MoveToSeat(long movement)
     do {
         if (((CThing*)PSeat.GetPItem()) == 0 || !IsSeatValid())
             return false;
-        result = AIAction_LookAtPos(2, lookPos, 0x11, 0.0027777f);
+        result = AIAction_LookAtPos((EAIActionRepeat)(2), lookPos, 0x11, 0.0027777f);
     } while (result == 4);
     if (result != 2)
         return false;

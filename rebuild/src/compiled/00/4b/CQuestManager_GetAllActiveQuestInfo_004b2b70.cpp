@@ -13,6 +13,7 @@
 // first argument's word as the stale value); STLport push_back with a placement copy under VC's null test and a
 // `__false_type` tag with a user ctor; the key, the tag and the def-name temporary all reuse the dead argument
 // slots; `this` is parked in the entry frame word for the head re-read.
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
@@ -58,7 +59,7 @@ class CDefString { public:                                    // a definition-st
     long m_index;
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);            // 0x009D49B0
+    CCharString GetString(long name) const;            // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
@@ -136,7 +137,7 @@ void CQuestManager::GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vect
         if (tc) {
             scriptNames.push_back(tc->ScriptQuestName);
             {
-                CCharString name = GDefStringTable.GetString(card->GetDefName());
+                CCharString name = GDefStringTable.GetString((card->GetDefName()).m_index);
                 scriptNames.push_back(name);
             }
         }

@@ -6,13 +6,14 @@
 //
 // Retail 0x0074A260, 630 bytes (`ret 8`, 8-aligned frame).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (CTCCreatureNavigation 7), CTCBase::GetWorld @ 0x00686A70, CWorld::
-// GetPRandomSeed @ 0x0049D810, GFROR13 @ 0x00497890 (__fastcall), the physics' slot 70 (+0x118, the forward vector by value),
+// GetWorldSeed @ 0x0049D810, GFROR13 @ 0x00497890 (__fastcall), the physics' slot 70 (+0x118, the forward vector by value),
 // C3DVector::RotateXY @ 0x00A14040, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CWorld slot 12 (+0x30, the
 // world map), CWorldMap::IsPosInMap @ 0x004FC5B0 / IsPosPassable @ 0x004FCBD0 / GetHeightZBelowPos @ 0x0063E480,
 // CTCShapeManager::IsPosInAnyShape @ 0x00760870, CTCCreatureNavigation::IsAbleToNavigateFromPosToPos @ 0x006CB620.
 // Constants: 1.5f 0x0125AADC, 0.01f 0x01230A5C, 2^32 0x0122DCB4, 0.2f 0x012305A0, 1.0f 0x0122DED8, 0.5f 0x0122F59C.
 // Layout: CTCCreatureGenerator GenParams.GenerationRadius +0x28, PExclusionArea +0xa4 (retail; PDB +0x38 / +0xc0);
 // CThing bitset +0x20, map +0x44, PhysicsTC +0x60.
+// Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
@@ -41,7 +42,7 @@ class CWorldMap { public:
 class CWorld { public:
     VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10) VF(11)
     virtual const CWorldMap& GetWorldMap();                  // slot 12 (+0x30)
-    unsigned long* GetPRandomSeed();                         // 0x0049D810
+    unsigned long* GetWorldSeed() const;                         // 0x0049D810
 };
 class CTCPhysicsBase { public:
     VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18)
@@ -100,8 +101,8 @@ bool CTCCreatureGenerator::GetUndeadGenerationPoint(CThing* creature, C3DVector*
     if (creature->HasTC(7))
         navigation = creature->GetTCConst<CTCCreatureNavigation>(7);
     for (int attempt = 0; attempt < 3; ++attempt) {
-        float distance = ((GenerationRadius - 1.5f) * 0.01f) * (float)(GFRandom(GetWorld().GetPRandomSeed()) % 100) + 1.5f;
-        float angle = (float)(GFRandom(GetWorld().GetPRandomSeed()) % 10) * 0.2f - 1.0f;
+        float distance = ((GenerationRadius - 1.5f) * 0.01f) * (float)(GFRandom(GetWorld().GetWorldSeed()) % 100) + 1.5f;
+        float angle = (float)(GFRandom(GetWorld().GetWorldSeed()) % 10) * 0.2f - 1.0f;
         *out = distance * creature->PhysicsTC->GetForward();
         out->RotateXY(angle * angle * 0.5f);
         const C3DVector& position = creature->GetPos();

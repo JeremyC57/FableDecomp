@@ -12,6 +12,8 @@
 // keeps the third result's setne and the dead `mov al` reload (both arms tail-merge into the one Terminate call).
 // Layout: the state group is local (the engine header flattens the base); PThingCreature +0x2c (CIntelligentPointer<CThingCreatureBase>);
 // CCreatureAction_PlayAnimation from the landed 0x008424F0 model (sizeof 0xb4).
+// Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+enum EAIActionRepeat;                         // MS forward enum
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
@@ -47,7 +49,8 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   protected: // 0x0097D580
+    protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float turnSpeed);   protected: // 0x0097D580
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:        // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
@@ -63,7 +66,7 @@ void CAIStateGroup_KidReactToBlockage::Update()
 {
     if (IS_THING_ALIVE(PThingCreature.Get())) {
         CThing* thing = PThingCreature.Get();
-        if (AIAction_LookAtPos(1, thing->GetPos(), 1, 0.013888889f) == 1) {
+        if (AIAction_LookAtPos((EAIActionRepeat)(1), thing->GetPos(), 1, 0.013888889f) == 1) {
             Terminate();
             return;
         }

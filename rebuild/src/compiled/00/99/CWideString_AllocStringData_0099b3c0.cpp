@@ -14,6 +14,10 @@
 // tag temporary is homed in the dead `text` argument slot (`lea edx,[esp+0Ch]`); traits::length is the open-coded
 // word scan. The two arms tail-merge into one call and the `NoRefs = 1` store; the `?:` form gives retail's block
 // order (the if/return form places the (text, length) arm last and jumps back).
+// Leaf: ?AllocStringData@CWideString@@IAEPAVCWideStringData@@PBGJ@Z
+// Name fix (agentNF5 2026-11-10): AllocStringData is protected in both PDBs (IAE; engine fable_string.h declares it protected), was
+//   public (QAE). The text type stays `unsigned short` (G), the retail spelling: owner decision 2026-10-29 (FINDINGS_LOG, GOTCHAS:
+//   retail shares one STLport uninitialized_fill_n 0x005123A0 between vector<unsigned short> and the wide string, so no /Zc:wchar_t).
 #include "fable_compiler.h"
 struct forward_iterator_tag {
     forward_iterator_tag() { }
@@ -58,9 +62,9 @@ class CWideStringData { public:                      // 16 bytes
 };
 
 class CWideString {
-public:
+protected:
+    CWideStringData* AllocStringData(const unsigned short* text, long length);   // protected (Ego_r / FableWin: IAE)
     CWideStringData* PStringData;             // +0x00
-    CWideStringData* AllocStringData(const unsigned short* text, long length);
 };
 
 CWideStringData* CWideString::AllocStringData(const unsigned short* text, long length)
