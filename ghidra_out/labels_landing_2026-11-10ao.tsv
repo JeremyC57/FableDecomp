@@ -1,0 +1,18 @@
+address	name	evidence
+00507650	CWorldMap::LoadWorldFromBinaryFile	Ego_r.pdb / FableWin.pdb ?LoadWorldFromBinaryFile@CWorldMap@@QAEXAAVCWideString@@@Z; RELOCATION_MATCH
+004FC9C0	CWorldMap::SetMapPlacement	Ego_r.pdb / FableWin.pdb ?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z; called (Area, index) from 0x00507650 (byte-matched)
+004FB4F0	CMapInfo::LoadBinary	Ego_r.pdb / FableWin.pdb ?LoadBinary@CMapInfo@@QAEXAAVCDataInputStream@@@Z; per-map call in 0x00507650 (byte-matched)
+006BC510	CRegion::LoadBinary	Ego_r.pdb / FableWin.pdb ?LoadBinary@CRegion@@QAEXAAVCDataInputStream@@@Z; per-region call in 0x00507650 (byte-matched)
+006403A0	CEngineManager::AddMap	Ego_r.pdb / FableWin.pdb ?AddMap@CEngineManager@@QAEXJ@Z; called per map from 0x00507650 (byte-matched)
+00640560	CEngineManager::AddChangedArea	Ego_r.pdb / FableWin.pdb ?AddChangedArea@CEngineManager@@QAEXABVC2DBoxI@@@Z; 0x004FEB70
+00436FB0	CTBaseSingleton<CEngineManager>::Get	Ego_r.pdb / FableWin.pdb ?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ; body expanded in 0x00507650 (byte-matched)
+004361E0	CCountedPointer<CEngineManager>::DeleteData	FableWin.pdb ?DeleteData@?$CCountedPointer@VCEngineManager@@@@SIXPAX@Z; the deleter the expanded Get's Reset stores (0x00507650, byte-matched)
+013BA854	CTBaseSingleton<CEngineManager>::PClass	Ego_r.pdb / FableWin.pdb `dynamic initializer for 'CTBaseSingleton<CEngineManager>::PClass''; the CCountedPointer the expanded Get tests (0x00507650)
+00B3F5E0	CEngineMap::PeekMapNormal	Ego_r.pdb / FableWin.pdb ?PeekMapNormal@CEngineMap@@QBE?AVC3DVector@@JJ@Z; four calls in 0x00B3FC40 (instruction-matched)
+00B412A0	CEngineMap::PeekHasWater	Ego_r.pdb / FableWin.pdb ?PeekHasWater@CEngineMap@@QBE_NJJ@Z; centre test of 0x00B41770
+00B40BD0	CEngineMap::PeekWaterDepth	Ego_r.pdb / FableWin.pdb ?PeekWaterDepth@CEngineMap@@QBEMJJ@Z; averaging loop of 0x00B41770
+00B43720	CEngineMap::PeekThemeId	Ego_r.pdb / FableWin.pdb ?PeekThemeId@CEngineMap@@QBEJJJJ@Z; virtual slot 6 call; DIFFER(320v324) one block placement
+00B43870	CEngineMap::PeekThemeBlend	Ego_r.pdb / FableWin.pdb ?PeekThemeBlend@CEngineMap@@QBEEJJJ@Z; virtual slot 7 call; DIFFER(320v324)
+00B439C0	CEngineMap::PeekLandscapeHeight	Ego_r.pdb / FableWin.pdb ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z; slot 5 + 1/128 quantise; DIFFER(352v356)
+00B3FC40	CEngineMap::PeekInterpolatedMapNormal	Ego_r.pdb / FableWin.pdb ?PeekInterpolatedMapNormal@CEngineMap@@QBE?AVC3DVector@@MM@Z; DIFFER(528v528) frame only
+00B41770	CEngineMap::PeekInterpolatedWaterHeight	Ego_r.pdb / FableWin.pdb ?PeekInterpolatedWaterHeight@CEngineMap@@QBEMJJJ@Z; DIFFER(402v777)

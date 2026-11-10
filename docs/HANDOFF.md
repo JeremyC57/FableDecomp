@@ -37,6 +37,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - **2026-11-10 Codex pass 18 handed out:** 40 parked near misses reserved in `pending/2026-11-10_codex_pass18/RESERVED.tsv` (package carries current headers and naming data).
 - **2026-11-10 landing am:** chunk 1012b landed CWorld::AutoLoadRegionLeaving / AutoLoadRespawn (one if/else-if/else LoadGameState chain); 3 parked, 7 not started; EAOpenHeroInformationScreen extent 1872 -> 891 (`pending/2026-11-10_linux_hand1012b/`).
 - **2026-11-10 landing an:** sound-manager naming (owner made-up-name rule): CASoundManager.h names all 54 slots (52 real from the Anniversary 360 PDB publics + TLC second sources, 2 descriptive), 40 rows respelled / renamed and rechecked, CloseInventory 0x0056F30B and OpenPCInventory 0x0058F649 landed; 4 held rows parked (`pending/2026-11-10_linux_handSND/`).
+- **2026-11-10 landing ao:** chunk 1013b landed CWorldMap::LoadWorldFromBinaryFile 0x00507650 (new CTBaseSingleton.h / CEngineManager.h); 12 parked, the three CEngineMap peeks one block placement off (`pending/2026-11-10_linux_hand1013b/`).
 - **Resumed 2026-11-05 late** (the user: "continue where the last claude chat left off"). Done since the pause:
   - lane: the older a013f3ec-... scratch survived with the whole lane (game SHA-1 checked, prime recheck 5/5); the 40effb6c-...
     scratch is gone, and with it the phase 1-5 plan tools (hdrmig5 ...). Only the copies in `naming/2026-11-04_vendor_v2/scripts/`

@@ -1,0 +1,14 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+004feb70	272	CWorldMap::?HeightAreaChanged@CWorldMap@@UAEXPBVC2DBoxI@@@Z	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013/differ/004feb70.cpp		004fe630 004fe7f0 004fea30 004fec80 004fede0 004feec0
+0063ab90	582	CWorldMap::GetThemeFaceNormalAt	parked	x87-order	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013/differ/0063ab90.cpp		0063aa50 0063aab0 0063ab10 0063adf0 0063ae70 0063aee0
+0063b3f0	864	CWorldMap::CreateLineSegment	parked	x87-order	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013/differ/0063b3f0.cpp		0063ae70 0063aee0 0063b0f0 0063b750 0063b7f0 0063b890
+0063d0a0	1024	CWorldMap::FindGroundCollisionPointWithinCell	parked	x87-order	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013/differ/0063d0a0.cpp	00a42170	0063bbc0 0063bf20 0063c230 0063d8a0 0063d960
+0063d4a0	1024	CWorldMap::FindThemeCollisionPointWithinCell	parked	x87-order	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013/differ/0063d4a0.cpp	00a42170	0063bf20 0063c230 0063d8a0 0063d960 0063db30
+00507650	880	CWorldMap::CWorldMap::LoadFromFile	parked	incomplete-model	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/00507650.cpp		00506f30 00507610 005079c0
+00500540	2416	CWorldMap::LoadRegion	unworked		rebuild/candidates/manual/pending/2026-11-08_linux_hand850/differ/00500540.cpp	006e0880	004ff920 00500230 005003e0 00500eb0 00501150 00501450
+00507070	1440	CWorldMap::BuildStaticMapGenerationVisibilityInfo	unworked		rebuild/candidates/manual/pending/2026-11-08_linux_hand855/differ/00507070.cpp		00506d40 00506e30 00506f30 00507610 005079c0
+00b43720	336	CEngineMap::PeekThemeId	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand536/differ/00b43720.cpp		00b433c0 00b434c0 00b43620 00b43b30
+00b43870	336	CEngineMap::PeekThemeBlend	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand536/differ/00b43870.cpp		00b434c0 00b43620 00b43b30 00b43b90
+00b439c0	368	CEngineMap::PeekLandscapeHeight	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand530/differ/00b439c0.cpp		00b43620 00b43b30 00b43b90 00b43bb0
+00b3fc40	816	CEngineMap::PeekInterpolatedMapNormal	unworked			00b3f5e0	00b3ef40 00b3efa0 00b3ff70 00b40000 00b40070
+00b41770	784	CEngineMap::PeekInterpolatedWaterHeight	unworked			00b40260 00b40bd0 00b412a0 00b439c0	00b41c30 00b41db0

@@ -24,7 +24,22 @@ public:
     virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineWorldMap@@UBEKXZ (chunk 731)
     long GetMapCount() const { return MapList.size(); }
     CEngineMap* GetMap(long index) const { return MapList[index]; }
-    short*           Map;                                    // +0x0c
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_GETMAPXY
+    // Retail opt-in (chunk 1013b): FableWin.pdb ?GetMap@CEngineWorldMap@@QBEPAVCEngineMap@@JJ@Z, inline in retail: the map that
+    // owns world cell (x, y) from the 32x32-cell index grid Map (0 or less = none), NULL off the grid. Expanded in
+    // CEngineMap::PeekThemeId 0x00B43720 (`test edx,edx ; jl` .. `shl ebp,5 ; cmp` .. `movsx eax,word [edx+eax*2] ; test ; jle`
+    // .. `mov eax,[edx+eax*4]`) and its two siblings.
+    CEngineMap* GetMap(long x, long y) const
+    {
+        if (x < 0 || y < 0 || x >= MapArrayWidth * 32 || y >= MapArrayHeight * 32)
+            return 0;
+        long index = Map[(y >> 5) * MapArrayWidth + (x >> 5)];
+        if (index <= 0)
+            return 0;
+        return GetMap(index);
+    }
+#endif
+    short*         Map;                                    // +0x0c
     long             MapArrayWidth;                          // +0x10
     long             MapArrayHeight;                         // +0x14
     long             MapOffsetX;                             // +0x18

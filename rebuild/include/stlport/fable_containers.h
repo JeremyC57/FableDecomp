@@ -103,6 +103,18 @@ inline void fill(unsigned char* first,unsigned char* last,const unsigned char& v
 template<class Size> inline unsigned char* fill_n(unsigned char* first,Size n,const unsigned char& value) {
     fill(first,first+n,value);return first+n;
 }
+#ifdef FABLE_RETAIL_STLP_FILL_CHAR
+// Retail opt-in (chunk 1013b, row 0x00507650 CWorldMap::LoadWorldFromBinaryFile): STLport 4.6 _algobase.h's plain-char fill /
+// fill_n overloads (memset), next to the unsigned char pair above. vector<char>(n) then fills through an inline memset as retail
+// does (0x005076A4 `shr ecx,2 ; rep stosd ; and ecx,3 ; rep stosb`) and VC7.1 expands the constructor; the generic loop made it
+// too costly to inline (an out-of-line ??0?$vector@DV?$allocator@D@std@@@std@@QAE@I@Z call).
+inline void fill(char* first,char* last,const char& value) {
+    char tmp=value;memset(first,(unsigned char)tmp,last-first);
+}
+template<class Size> inline char* fill_n(char* first,Size n,const char& value) {
+    fill(first,first+n,value);return first+n;
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_FILL_LOCAL_ITERATOR
 template<class I,class T> inline void fill(I begin,I last,const T& x) { I first=begin; for(;first!=last;++first) *first=x; }
 #else

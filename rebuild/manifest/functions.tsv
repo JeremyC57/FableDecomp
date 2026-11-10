@@ -8349,7 +8349,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00506f30	AddLevelFromFile	CWorldMap	__thiscall	long	3	CWorldMap *,C2DCoordI *,CCharString *	1	yes	accepted									
 00507070	BuildStaticMapGenerationVisibilityInfo	CWorldMap	unknown	undefined	0		0	yes	review-low									
 00507610	DeleteAllRegions	CWorldMap	__thiscall	void	1	CWorldMap *	1	yes	accepted									
-00507650	CWorldMap::LoadFromFile	CWorldMap	unknown	undefined	0		0	yes	accepted									
+00507650	LoadWorldFromBinaryFile	CWorldMap	unknown	undefined	0		0	yes	accepted									
 005079c0	LoadGameState	CWorldMap	unknown	undefined	0		0	yes	accepted									
 00507c30	CWorldMap::LoadFromFile	CWorldMap	__thiscall	void	3	CWorldMap *,CAFile &,long	1	yes	accepted									
 00509a20	GetMapNavigationAreaUpdateInfo	CWorldMap	unknown	undefined	0		0	yes	accepted									

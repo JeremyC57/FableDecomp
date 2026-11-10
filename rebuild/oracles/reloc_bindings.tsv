@@ -39189,3 +39189,9 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?CaptureBackBufferToTexture@CTCInventoryBase@NInventory@@QAEXXZ	005bc6ed	0058f649
 ?HasScreenshots@CTCInventory@@QAE_NXZ	00581b33	0058f649
 ?OpenInventoryShortcut@CTCInventory@@QAEXJ@Z	0058e99f	0058f649
+?DeleteData@?$CCountedPointer@VCEngineManager@@@@SIXPAX@Z	004361e0	00507650
+?LoadBinary@CMapInfo@@QAEXAAVCDataInputStream@@@Z	004fb4f0	00507650
+?LoadBinary@CRegion@@QAEXAAVCDataInputStream@@@Z	006bc510	00507650
+?PClass@?$CTBaseSingleton@VCEngineManager@@@@0V?$CCountedPointer@VCEngineManager@@@@A	013ba854	00507650
+?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z	004fc9c0	00507650
+?resize@?$vector@VCMapInfo@@V?$allocator@VCMapInfo@@@std@@@std@@QAEXI@Z	0051be20	00507650

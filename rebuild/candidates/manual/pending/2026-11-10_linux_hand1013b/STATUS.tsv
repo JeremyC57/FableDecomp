@@ -1,0 +1,14 @@
+address	name	grade	grades_used	note
+00507650	CWorldMap::LoadWorldFromBinaryFile	RELOCATION_MATCH	1	src/ + test/; shared headers: new CTBaseSingleton.h / CEngineManager.h, CRegion / CMapInfo LOADBINARY, CWorldMap LOADWORLDFROMBINARY, STLport FILL_CHAR (vector<char>(n) inline)
+0063ab90	CWorldMap::GetThemeFaceNormalAt	DIFFER(582v582)	2	differ/; 1 + 1 this chunk: x87 pops and frame fixed; one store scheduled after the second _ftol
+00b43720	CEngineMap::PeekThemeId	DIFFER(320v324)	1	differ/; rebased on shared CEngineMap PEEK / CEngineWorldMap GETMAPXY / CIDrawMap DRAW; one reload-block placement (2 long jl)
+00b43870	CEngineMap::PeekThemeBlend	DIFFER(320v324)	1	differ/; same shape and residue as 0x00B43720
+00b439c0	CEngineMap::PeekLandscapeHeight	DIFFER(352v356)	1	differ/; same shape and residue as 0x00B43720; Retail-asm GFFloatToLongNear
+00b3fc40	CEngineMap::PeekInterpolatedMapNormal	DIFFER(528v528)	2	differ/; frame-slot assignment only (0x60 v 0x54); g2 was a re-run of the same file; Retail-asm GFFloatToLongFloor
+00b41770	CEngineMap::PeekInterpolatedWaterHeight	DIFFER(402v777)	1	differ/; same-TU PeekLandscapeHeight not expanded (forced-inline probe: 26 hunks)
+004feb70	CWorldMap::HeightAreaChanged	DIFFER(260v261)	2	differ/; 1 + 1 this chunk: rebased on shared CEngineManager.h; register choice (c2prio diagnosis in NOTES)
+0063b3f0	CWorldMap::CreateLineSegment	DIFFER(836v856)	1	differ/ = prior, not regraded; probe lead in NOTES (end.Y compare gives retail's call structure)
+0063d0a0	CWorldMap::FindGroundCollisionPointWithinCell	DIFFER(1017v1017)	1	differ/ = prior, not regraded (x87 scheduling)
+0063d4a0	CWorldMap::FindThemeCollisionPointWithinCell	DIFFER(1017v1017)	1	differ/ = prior, not regraded (twin of 0x0063D0A0)
+00500540	CWorldMap::LoadRegion	DIFFER(2396v2412)	0	differ/ = prior (chunk 850), not worked; local padded models are header debt
+00507070	CWorldMap::BuildStaticMapGenerationVisibilityInfo	DIFFER(1628v1432)	0	differ/ = prior (chunk 855), not worked; local padded models are header debt

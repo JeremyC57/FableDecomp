@@ -7,6 +7,9 @@
 #include "engine/CDefPointer.h"
 #include "stlport/fable_map.h"
 class CRegionDef;
+#ifdef FABLE_RETAIL_CREGION_LOADBINARY
+class CDataInputStream;
+#endif
 // Original names and complete native 0x58 extent; Codex pass 13 typed the members (Ego_r TPI: vector<long> Maps / VisMaps,
 // CDefPointer<const CRegionDef> PDef, map<CCharString,C2DVector> MiniMapRegionExitTextOffsets), same offsets.
 class CRegion {
@@ -25,6 +28,16 @@ protected: C2DVector NameGraphicOffset;
 protected: bool AppearOnWorldMap;
 protected: bool CreatureGenerationEnabled;
 protected: bool SoundThemesEnabled;
+#ifdef FABLE_RETAIL_CREGION_LOADBINARY
+    // Retail opt-in (chunk 1013b, row 0x00507650 CWorldMap::LoadWorldFromBinaryFile): Ego_r.pdb ??0CRegion@@QAE@XZ (retail 0x006BC410),
+    // ??0CRegion@@QAE@ABV0@@Z, ??1CRegion@@QAE@XZ (0x0051A110) and ?LoadBinary@CRegion@@QAEXAAVCDataInputStream@@@Z (0x006BC510), all out
+    // of line in retail (the loader's inline vector<CRegion>::resize calls the constructor / destructor on its default temporary).
+public:
+    CRegion();
+    CRegion(const CRegion& other);
+    ~CRegion();
+    void LoadBinary(CDataInputStream& stream);
+#endif
 public: const CCharString& GetName() const { return Name; }
     // Codex pass 13 (rows 0x004FD040 / 0x00501450): Ego_r / FableWin accessors; GetDisplayName, GetWorldMapOffset and
     // GetNameGraphicOffset out of line, the rest inline in retail.

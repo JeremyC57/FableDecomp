@@ -169,6 +169,14 @@ public:
     static CWideString __fastcall GetThingFilenameFromLevelFilename(const CWideString& levelFilename);   // 0x004FAFF0
 #endif
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LOADWORLDFROMBINARY
+    // Retail opt-in (chunk 1013b, row 0x00507650): Ego_r.pdb / FableWin.pdb ?LoadWorldFromBinaryFile@CWorldMap@@QAEXAAVCWideString@@@Z
+    // and the protected ?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z (retail 0x004FC9C0).
+    void LoadWorldFromBinaryFile(CWideString& filename);
+protected:
+    void SetMapPlacement(const C2DBoxI& area, long map);
+public:
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_THEMEFACENORMAL
     // Nested opt-in (chunk 1013, row 0x0063AB90): Ego_r.pdb / FableWin.pdb ?GetThemeFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z and
     // ?GetThemeSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z (retail 0x0063A7E0). Declarations only.

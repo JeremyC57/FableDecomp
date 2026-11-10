@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00507650   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCEngineManager@@@@SIXPAX@Z -> 004361e0 labelled 'sub_004361e0'
+00507650   RELOCATION_MATCH PASS   LoadWorldFromBinaryFile
+
+WINS: 1
+  00507650 RELOCATION_MATCH CWorldMap::?LoadWorldFromBinaryFile@CWorldMap@@QAEXAAVCWideString@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_LoadWorldFromBinaryFile_00507650

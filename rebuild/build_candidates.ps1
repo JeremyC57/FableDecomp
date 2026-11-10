@@ -391258,6 +391258,13 @@ $catalog = @(
         TestSource = '00/58/CTCInventory_OpenPCInventory_0058f649_test.cpp'
         PassPattern = '0058f649_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00507650'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_LoadWorldFromBinaryFile_00507650.cpp'
+        TestSource = '00/50/CWorldMap_LoadWorldFromBinaryFile_00507650_test.cpp'
+        PassPattern = '00507650_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

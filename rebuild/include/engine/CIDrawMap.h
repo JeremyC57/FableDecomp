@@ -5,9 +5,31 @@
 // CIDrawMap@0). Ego_r.pdb ??_GCIDrawMap@@UAEPAXI@Z (virtual dtor) is the only member modelled; the Draw* virtuals
 // (?DrawGetEngineThemeAt@CIDrawMap@@UBEJJJJ@Z ...) are not yet placed, so no virtual call goes through this model.
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CIDRAWMAP_DRAW
+class C3DVector;
+class C2DExtentsI;
+#endif
 class CIDrawMap {
 public:
     virtual ~CIDrawMap();
+#ifdef FABLE_RETAIL_CIDRAWMAP_DRAW
+    // Retail opt-in (chunk 1013b, CEngineMap::PeekThemeId / PeekThemeBlend / PeekLandscapeHeight 0x00B43720 / 0x00B43870 /
+    // 0x00B439C0): the interface's virtual slots 1..9 in retail order. CIDrawMap's own vtable 0x01272494 has bodies in slots 0,
+    // 6, 7, 9 (the rest pure); CMap's 0x0127252C slot addresses 1..9 put Ego_r's CMap overrides (DrawGetHeightMapSizeX/Y,
+    // DrawGetSeaLevel, DrawGetHeightMapExtents, DrawGetEngineThemeAt/BlendAt, DrawGetSizeZAt, DrawBlockGetSizeZAt) in the
+    // order X 1, Y 2, Extents 3, SizeZAt 4, BlockGetSizeZAt 5, Theme 6, Blend 7, SeaLevel 8; slot 9 is
+    // ?DrawFindLastUnblockedPosition@CIDrawMap@@UBE_NPBVC3DVector@@0PAV2@@Z. Callers: `call [eax+14h]` (Block size Z),
+    // `call [eax+18h]` (theme), `call [eax+1Ch]` (blend).
+    virtual long DrawGetHeightMapSizeX() const = 0;                                        // slot 1
+    virtual long DrawGetHeightMapSizeY() const = 0;                                        // slot 2
+    virtual C2DExtentsI DrawGetHeightMapExtents() const = 0;                               // slot 3
+    virtual float DrawGetSizeZAt(const C3DVector* pos, float scale) const = 0;             // slot 4
+    virtual float DrawBlockGetSizeZAt(unsigned long x, unsigned long y, float scale) const = 0; // slot 5
+    virtual long DrawGetEngineThemeAt(long x, long y, long layer) const;                   // slot 6
+    virtual unsigned char DrawGetEngineBlendAt(long x, long y, long layer) const;          // slot 7
+    virtual float DrawGetSeaLevel(float scale) const = 0;                                  // slot 8
+    virtual bool DrawFindLastUnblockedPosition(const C3DVector* from, const C3DVector* to, C3DVector* out) const; // slot 9
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CIDrawMap) == 0x4);
 #else // FABLE_RETAIL_CIDRAWMAP
