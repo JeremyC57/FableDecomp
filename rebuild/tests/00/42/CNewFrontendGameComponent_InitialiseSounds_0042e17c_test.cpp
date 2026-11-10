@@ -34,7 +34,7 @@ public:
 class CSoundManagerLH {
 public:
     CSoundManagerLH() : mask(0), volume(0), fade(-1), enabled(false), volumeCalls(0) {}
-    virtual void SetGroupVolume(unsigned long groupMask, float v, float fadeTime) { mask = groupMask; volume = v; fade = fadeTime; ++volumeCalls; }
+    virtual void SetGainFader(unsigned long groupMask, float v, float fadeTime) { mask = groupMask; volume = v; fade = fadeTime; ++volumeCalls; }
     void SetEnabled(bool e) { enabled = e; }
     unsigned long mask; float volume; float fade; bool enabled; int volumeCalls;
 };
@@ -49,7 +49,7 @@ void CNewFrontendGameComponent::InitialiseSounds()
     if (g_pSoundSystem) {
         PSampleBank.Reset(new CSoundBankLH(g_pSoundSystem));
         PSampleBank->Load(L"data\\sound\\frontend.lug");
-        g_pSoundSystem->SetGroupVolume(0x8000, 1.0f, 0.0f);
+        g_pSoundSystem->SetGainFader(0x8000, 1.0f, 0.0f);
         g_pSoundSystem->SetEnabled(true);
     }
 }

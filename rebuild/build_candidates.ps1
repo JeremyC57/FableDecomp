@@ -35551,8 +35551,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009915c0'
         Module = 'CASoundManager'
-        Source = '00/99/CCreatureActionBase_GetAnimStartFrame_009915c0.cpp'
-        TestSource = '00/99/CCreatureActionBase_GetAnimStartFrame_009915c0_test.cpp'
+        Source = '00/99/CASoundManager_CanAllocateEmitter_009915c0.cpp'
+        TestSource = '00/99/CASoundManager_CanAllocateEmitter_009915c0_test.cpp'
         PassPattern = '009915c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -43904,9 +43904,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00991600'
-        Module = 'CWorld'
-        Source = '00/99/CWorld_SetMiniMapEnabled_00991600.cpp'
-        TestSource = '00/99/CWorld_SetMiniMapEnabled_00991600_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_EnableSound_00991600.cpp'
+        TestSource = '00/99/CASoundManager_EnableSound_00991600_test.cpp'
         PassPattern = '00991600_TEST PASS'
     }
     [pscustomobject]@{
@@ -63769,10 +63769,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009915e0'
-        Module = 'CWorld'
-        Source = '00/99/CWorld_SetMiniMapEnabled_009915e0.cpp'
-        TestSource = '00/99/CWorld_SetMiniMapEnabled_009915e0_test.cpp'
-        PassPattern = 'BEHAVIOR_OK'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_EnableMusic_009915e0.cpp'
+        TestSource = '00/99/CASoundManager_EnableMusic_009915e0_test.cpp'
+        PassPattern = '009915e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0099ef70'
@@ -105115,31 +105115,31 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00993690'
-        Module = '_gapscan'
-        Source = '00/99/gapscan_sub00993690_00993690.cpp'
-        TestSource = '00/99/gapscan_sub00993690_00993690_test.cpp'
-        PassPattern = 'PASS_00993690'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_SetExclusiveMode_00993690.cpp'
+        TestSource = '00/99/CASoundManager_SetExclusiveMode_00993690_test.cpp'
+        PassPattern = '00993690_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009936a0'
-        Module = '_gapscan'
-        Source = '00/99/gapscan_sub009936a0_009936a0.cpp'
-        TestSource = '00/99/gapscan_sub009936a0_009936a0_test.cpp'
-        PassPattern = 'PASS_009936a0'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_GetExclusiveMode_009936a0.cpp'
+        TestSource = '00/99/CASoundManager_GetExclusiveMode_009936a0_test.cpp'
+        PassPattern = '009936a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009936b0'
-        Module = '_gapscan'
-        Source = '00/99/gapscan_sub009936b0_009936b0.cpp'
-        TestSource = '00/99/gapscan_sub009936b0_009936b0_test.cpp'
-        PassPattern = 'PASS_009936b0'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_SetHeadRelativePosition_009936b0.cpp'
+        TestSource = '00/99/CASoundManager_SetHeadRelativePosition_009936b0_test.cpp'
+        PassPattern = '009936b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009936c0'
-        Module = '_gapscan'
-        Source = '00/99/gapscan_sub009936c0_009936c0.cpp'
-        TestSource = '00/99/gapscan_sub009936c0_009936c0_test.cpp'
-        PassPattern = 'PASS_009936c0'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_SetHeadroomBits_009936c0.cpp'
+        TestSource = '00/99/CASoundManager_SetHeadroomBits_009936c0_test.cpp'
+        PassPattern = '009936c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009a52b0'
@@ -199433,9 +199433,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3ebf0'
-        Module = 'CEngineManager_00a3ebf0'
-        Source = '00/a3/CEngineManager00a3ebf0_RemoveMap_00a3ebf0.cpp'
-        TestSource = '00/a3/CEngineManager00a3ebf0_RemoveMap_00a3ebf0_test.cpp'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_StopSound_00a3ebf0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_StopSound_00a3ebf0_test.cpp'
         PassPattern = '00a3ebf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -199811,9 +199811,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3e800'
-        Module = 'CNamedOwner_00a3e800'
-        Source = '00/a3/CNamedOwner00a3e800_SetNamedValue_00a3e800.cpp'
-        TestSource = '00/a3/CNamedOwner00a3e800_SetNamedValue_00a3e800_test.cpp'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_ExtractMetaData_00a3e800.cpp'
+        TestSource = '00/a3/CSoundManagerLH_ExtractMetaData_00a3e800_test.cpp'
         PassPattern = '00a3e800_TEST PASS'
     }
     [pscustomobject]@{
@@ -205754,9 +205754,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3eb20'
-        Module = 'CListOwner_00a3eb20'
-        Source = '00/a3/CListOwner00a3eb20_ResetAll_00a3eb20.cpp'
-        TestSource = '00/a3/CListOwner00a3eb20_ResetAll_00a3eb20_test.cpp'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_Update_00a3eb20.cpp'
+        TestSource = '00/a3/CSoundManagerLH_Update_00a3eb20_test.cpp'
         PassPattern = '00a3eb20_TEST PASS'
     }
     [pscustomobject]@{
@@ -206034,9 +206034,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3ec30'
-        Module = 'CHandlerList_00a3ec30'
-        Source = '00/a3/CHandlerList00a3ec30_Dispatch_00a3ec30.cpp'
-        TestSource = '00/a3/CHandlerList00a3ec30_Dispatch_00a3ec30_test.cpp'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_IsSoundPlaying_00a3ec30.cpp'
+        TestSource = '00/a3/CSoundManagerLH_IsSoundPlaying_00a3ec30_test.cpp'
         PassPattern = '00a3ec30_TEST PASS'
     }
     [pscustomobject]@{
@@ -210011,50 +210011,50 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3e430'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc1_00a3e430.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc1_00a3e430_test.cpp'
+        Source = '00/a3/CSoundManagerLH_CreateSoundBank_00a3e430.cpp'
+        TestSource = '00/a3/CSoundManagerLH_CreateSoundBank_00a3e430_test.cpp'
         PassPattern = '00a3e430_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3e480'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc49_00a3e480.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc49_00a3e480_test.cpp'
+        Source = '00/a3/CSoundManagerLH_GetMusicOffset_00a3e480.cpp'
+        TestSource = '00/a3/CSoundManagerLH_GetMusicOffset_00a3e480_test.cpp'
         PassPattern = '00a3e480_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3ec70'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc6_00a3ec70.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc6_00a3ec70_test.cpp'
+        Source = '00/a3/CSoundManagerLH_CanAllocateEmitter_00a3ec70.cpp'
+        TestSource = '00/a3/CSoundManagerLH_CanAllocateEmitter_00a3ec70_test.cpp'
         PassPattern = '00a3ec70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3ec90'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc10_00a3ec90.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc10_00a3ec90_test.cpp'
+        Source = '00/a3/CSoundManagerLH_GetNoFreeEmitters_00a3ec90.cpp'
+        TestSource = '00/a3/CSoundManagerLH_GetNoFreeEmitters_00a3ec90_test.cpp'
         PassPattern = '00a3ec90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3ed90'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc38_00a3ed90.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc38_00a3ed90_test.cpp'
+        Source = '00/a3/CSoundManagerLH_AddAtmos2Map_00a3ed90.cpp'
+        TestSource = '00/a3/CSoundManagerLH_AddAtmos2Map_00a3ed90_test.cpp'
         PassPattern = '00a3ed90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3eed0'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc40_00a3eed0.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc40_00a3eed0_test.cpp'
+        Source = '00/a3/CSoundManagerLH_SetChannelGain_00a3eed0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_SetChannelGain_00a3eed0_test.cpp'
         PassPattern = '00a3eed0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a41800'
         Module = 'CSoundManagerLH'
-        Source = '00/a4/CSoundManagerLH_vfunc52_00a41800.cpp'
-        TestSource = '00/a4/CSoundManagerLH_vfunc52_00a41800_test.cpp'
+        Source = '00/a4/CSoundManagerLH_SetHeadRelativePosition_00a41800.cpp'
+        TestSource = '00/a4/CSoundManagerLH_SetHeadRelativePosition_00a41800_test.cpp'
         PassPattern = '00a41800_TEST PASS'
     }
     [pscustomobject]@{
@@ -213882,9 +213882,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00991620'
-        Module = 'CTCDParticleEmitter'
-        Source = '00/99/CTCDParticleEmitter_func00991620_00991620.cpp'
-        TestSource = '00/99/CTCDParticleEmitter_func00991620_00991620_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_EnableAtmos_00991620.cpp'
+        TestSource = '00/99/CASoundManager_EnableAtmos_00991620_test.cpp'
         PassPattern = '00991620_TEST PASS'
     }
     [pscustomobject]@{
@@ -216929,8 +216929,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3eb60'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc5_00a3eb60.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc5_00a3eb60_test.cpp'
+        Source = '00/a3/CSoundManagerLH_DestroyPEmitter_00a3eb60.cpp'
+        TestSource = '00/a3/CSoundManagerLH_DestroyPEmitter_00a3eb60_test.cpp'
         PassPattern = '00a3eb60_TEST PASS'
     }
     [pscustomobject]@{
@@ -219568,8 +219568,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3e3e0'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc2_00a3e3e0.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc2_00a3e3e0_test.cpp'
+        Source = '00/a3/CSoundManagerLH_SetEnableAtmos_00a3e3e0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_SetEnableAtmos_00a3e3e0_test.cpp'
         PassPattern = '00a3e3e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -230265,8 +230265,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3e4b0'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc17_00a3e4b0.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc17_00a3e4b0_test.cpp'
+        Source = '00/a3/CSoundManagerLH_PlayMusic_00a3e4b0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_PlayMusic_00a3e4b0_test.cpp'
         PassPattern = '00a3e4b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -265945,29 +265945,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3e330'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc53_00a3e330.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc53_00a3e330_test.cpp'
+        Source = '00/a3/CSoundManagerLH_SetHeadroomBits_00a3e330.cpp'
+        TestSource = '00/a3/CSoundManagerLH_SetHeadroomBits_00a3e330_test.cpp'
         PassPattern = '00a3e330_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3e350'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc7_00a3e350.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc7_00a3e350_test.cpp'
+        Source = '00/a3/CSoundManagerLH_SetOutputConfigurationToHeadphones_00a3e350.cpp'
+        TestSource = '00/a3/CSoundManagerLH_SetOutputConfigurationToHeadphones_00a3e350_test.cpp'
         PassPattern = '00a3e350_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3e380'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc8_00a3e380.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc8_00a3e380_test.cpp'
+        Source = '00/a3/CSoundManagerLH_IsOutputConfigurationSetToHeadphones_00a3e380.cpp'
+        TestSource = '00/a3/CSoundManagerLH_IsOutputConfigurationSetToHeadphones_00a3e380_test.cpp'
         PassPattern = '00a3e380_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3e3c0'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc50_00a3e3c0.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc50_00a3e3c0_test.cpp'
+        Source = '00/a3/CSoundManagerLH_FreezeAtmosMaps_00a3e3c0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_FreezeAtmosMaps_00a3e3c0_test.cpp'
         PassPattern = '00a3e3c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -300151,8 +300151,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3ecb0'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_vfunc4_00a3ecb0.cpp'
-        TestSource = '00/a3/CSoundManagerLH_vfunc4_00a3ecb0_test.cpp'
+        Source = '00/a3/CSoundManagerLH_Create3DEmitter_00a3ecb0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_Create3DEmitter_00a3ecb0_test.cpp'
         PassPattern = '00a3ecb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -347463,8 +347463,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00991670'
         Module = 'CASoundManager'
-        Source = '00/99/CASoundManager_FlushLoadingQueue00991670_00991670.cpp'
-        TestSource = '00/99/CASoundManager_FlushLoadingQueue00991670_00991670_test.cpp'
+        Source = '00/99/CASoundManager_Update_00991670.cpp'
+        TestSource = '00/99/CASoundManager_Update_00991670_test.cpp'
         PassPattern = '00991670_TEST PASS'
     }
     [pscustomobject]@{
@@ -347752,8 +347752,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3e420'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_GetNextEmitterID00a3e420_00a3e420.cpp'
-        TestSource = '00/a3/CSoundManagerLH_GetNextEmitterID00a3e420_00a3e420_test.cpp'
+        Source = '00/a3/CSoundManagerLH_AllocateSampleID_00a3e420.cpp'
+        TestSource = '00/a3/CSoundManagerLH_AllocateSampleID_00a3e420_test.cpp'
         PassPattern = '00a3e420_TEST PASS'
     }
     [pscustomobject]@{
@@ -361174,8 +361174,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3f140'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_AddBank_00a3f140.cpp'
-        TestSource = '00/a3/CSoundManagerLH_AddBank_00a3f140_test.cpp'
+        Source = '00/a3/CSoundManagerLH_NewAtmos_00a3f140.cpp'
+        TestSource = '00/a3/CSoundManagerLH_NewAtmos_00a3f140_test.cpp'
         PassPattern = '00a3f140_TEST PASS'
     }
     [pscustomobject]@{
@@ -382005,8 +382005,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a3f250'
         Module = 'CSoundManagerLH'
-        Source = '00/a3/CSoundManagerLH_AddSound_00a3f250.cpp'
-        TestSource = '00/a3/CSoundManagerLH_AddSound_00a3f250_test.cpp'
+        Source = '00/a3/CSoundManagerLH_NewChannel_00a3f250.cpp'
+        TestSource = '00/a3/CSoundManagerLH_NewChannel_00a3f250_test.cpp'
         PassPattern = '00a3f250_TEST PASS'
     }
     [pscustomobject]@{
@@ -391243,6 +391243,20 @@ $catalog = @(
         TestSource = '00/4a/CWorld_AutoLoadRespawn_004a5e90_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '004a5e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056f30b'
+        Module = 'CTCInventoryExperience'
+        Source = '00/56/CTCInventoryExperience_CloseInventory_0056f30b.cpp'
+        TestSource = '00/56/CTCInventoryExperience_CloseInventory_0056f30b_test.cpp'
+        PassPattern = '0056f30b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058f649'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OpenPCInventory_0058f649.cpp'
+        TestSource = '00/58/CTCInventory_OpenPCInventory_0058f649_test.cpp'
+        PassPattern = '0058f649_TEST PASS'
     }
 )
 

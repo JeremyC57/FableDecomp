@@ -86,6 +86,15 @@ public:
     void SetAbilityToButton(EHeroAbility ability, long button, bool flag);                                       // 0x005F6423
     long GetNumAssignableSpecialMoveButtons() const;                                                             // 0x005EDCF0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_PRIORITISED
+    // Opt-in (agentSND, 2026-11-10, rows 0x005F64DD / 0x005F6793 CycleAssignedAbilities / CycleAssignedExpressions): Ego_r.pdb +
+    // FableWin.pdb spellings, out of line in retail: ?GetPrioritisedAbilityDefs@CTCInventoryAbilities@@QBEXAAV?$vector@V?$CDefPointer@
+    // $$CBVCHeroAbilityDef@@@@..@std@@@Z 0x005F4B30, ?GetPrioritisedExpressionDefs@..@@QBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+    // 0x005EED8C, ?SetExpressionToButton@..@@QAEXJJ@Z 0x005F66D9 (all landed).
+    void GetPrioritisedAbilityDefs(std::vector<CDefPointer<const CHeroAbilityDef> >& defs) const;               // 0x005F4B30
+    void GetPrioritisedExpressionDefs(std::vector<long>& defs) const;                                            // 0x005EED8C
+    void SetExpressionToButton(long expression, long button);                                                    // 0x005F66D9
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
     // Opt-in (chunk 1008): the expression item-list builders, FableWin.pdb spellings (out of line in retail):
     // ?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@...@std@@PAVCList@NUISystem@@PAVCComponent@5@

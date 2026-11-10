@@ -14,7 +14,7 @@
 //   0x006BBF20; CPlayerManager::GetMainPlayer() 0x00449970; CPlayer::GetPControlledCreature() const 0x00487DC0;
 //   CVectorMap<ETCInterfaceType, CTCBase*, ...>::LowerBound 0x0040F020; CTCRegionDisplay::SetCurrentAreaName 0x00639BA0;
 //   NProgressDisplay::StopProgress(bool, bool) 0x009E9F20 (__fastcall); CUserProfileManager::Get 0x0040D2A0;
-//   the sound manager's SetGroupVolume (slot 46, +0xB8) on the object at 0x013B8394.
+//   the sound manager's SetGainFader (slot 46, +0xB8) on the object at 0x013B8394.
 // Inlined: CWorld::SetAsPaused(bool) (Ego_r.pdb `?SetAsPaused@CWorld@@IAEX_N@Z`: store only on change),
 //   CMainGameComponent::GetDisplayEngine() (scoped_ptr PDisplayEngine +0x28), CThing::GetTC<CTCRegionDisplay> (its
 //   out-of-line copy is 0x004ACAB0; interface 0x8E, bit 14 of the bitset word +0x30; the result is used unchecked, so a
@@ -165,7 +165,7 @@ class CSoundManagerLH { public:                             // the object at 0x0
     virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
     virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
     virtual void v045();
-    virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
+    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                     // 0x013B8394
@@ -243,9 +243,9 @@ void CWorld::UpdateSaveGameLoad()
         Component->GetDisplayEngine().EndScreenFadeOut();
         DisplayMiniMapOnRegionLoad = true;
         if (((CSoundManagerLH*)PSoundManager)) {
-            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
         }
         SetAsPaused(false);
         SaveGameLoadStatus = 0;

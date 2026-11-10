@@ -1,0 +1,70 @@
+address	name	evidence
+0x00A3E430	CSoundManagerLH::CreateSoundBank	CSoundManagerLH vtable 0x0129D2C4 slot 1 (+0x4); name real -- SLOTS.tsv
+0x00A3E3E0	CSoundManagerLH::SetEnableAtmos	CSoundManagerLH vtable 0x0129D2C4 slot 2 (+0x8); name real -- SLOTS.tsv
+0x00A3EB20	CSoundManagerLH::Update	CSoundManagerLH vtable 0x0129D2C4 slot 3 (+0xC); name real -- SLOTS.tsv
+0x00991670	CASoundManager::Update	CASoundManager vtable 0x0129A574 slot 3 (+0xC) base body; SLOTS.tsv
+0x00A3ECB0	CSoundManagerLH::Create3DEmitter	CSoundManagerLH vtable 0x0129D2C4 slot 4 (+0x10); name real -- SLOTS.tsv
+0x00A3EB60	CSoundManagerLH::DestroyPEmitter	CSoundManagerLH vtable 0x0129D2C4 slot 5 (+0x14); name real -- SLOTS.tsv
+0x00A3EC70	CSoundManagerLH::CanAllocateEmitter	CSoundManagerLH vtable 0x0129D2C4 slot 6 (+0x18); name real -- SLOTS.tsv
+0x009915C0	CASoundManager::CanAllocateEmitter	CASoundManager vtable 0x0129A574 slot 6 (+0x18) base body; SLOTS.tsv
+0x00A3E350	CSoundManagerLH::SetOutputConfigurationToHeadphones	CSoundManagerLH vtable 0x0129D2C4 slot 7 (+0x1C); name real -- SLOTS.tsv
+0x00A3E380	CSoundManagerLH::IsOutputConfigurationSetToHeadphones	CSoundManagerLH vtable 0x0129D2C4 slot 8 (+0x20); name real -- SLOTS.tsv
+0x00A3E3A0	CSoundManagerLH::Get2DEmitter	CSoundManagerLH vtable 0x0129D2C4 slot 9 (+0x24); name descriptive -- SLOTS.tsv
+0x00A3EC90	CSoundManagerLH::GetNoFreeEmitters	CSoundManagerLH vtable 0x0129D2C4 slot 10 (+0x28); name real -- SLOTS.tsv
+0x00A3E3B0	CSoundManagerLH::GetReceiver	CSoundManagerLH vtable 0x0129D2C4 slot 11 (+0x2C); name real -- SLOTS.tsv
+0x00993690	CASoundManager::SetExclusiveMode	CASoundManager vtable 0x0129A574 slot 12 (+0x30) base body; SLOTS.tsv
+0x009936A0	CASoundManager::GetExclusiveMode	CASoundManager vtable 0x0129A574 slot 13 (+0x34) base body; SLOTS.tsv
+0x00A3EBF0	CSoundManagerLH::StopSound	CSoundManagerLH vtable 0x0129D2C4 slot 14 (+0x38); name real -- SLOTS.tsv
+0x00A3EC30	CSoundManagerLH::IsSoundPlaying	CSoundManagerLH vtable 0x0129D2C4 slot 15 (+0x3C); name real -- SLOTS.tsv
+0x00A3EBC0	CSoundManagerLH::StopAllSounds	CSoundManagerLH vtable 0x0129D2C4 slot 16 (+0x40); name real -- SLOTS.tsv
+0x00A3E4B0	CSoundManagerLH::PlayMusic	CSoundManagerLH vtable 0x0129D2C4 slot 17 (+0x44); name real -- SLOTS.tsv
+0x00A3E520	CSoundManagerLH::StopMusic	CSoundManagerLH vtable 0x0129D2C4 slot 18 (+0x48); name real -- SLOTS.tsv
+0x00A3E560	CSoundManagerLH::SetOutputPCMBufferCount	CSoundManagerLH vtable 0x0129D2C4 slot 19 (+0x4C); name real -- SLOTS.tsv
+0x00A3E580	CSoundManagerLH::SetOutputPCMBufferSampleSize	CSoundManagerLH vtable 0x0129D2C4 slot 20 (+0x50); name real -- SLOTS.tsv
+0x00A3E5A0	CSoundManagerLH::SetOutputPCMPreloadBufferCount	CSoundManagerLH vtable 0x0129D2C4 slot 21 (+0x54); name real -- SLOTS.tsv
+0x00A3E5C0	CSoundManagerLH::SetDiskByteGranularity	CSoundManagerLH vtable 0x0129D2C4 slot 22 (+0x58); name real -- SLOTS.tsv
+0x00A3E5E0	CSoundManagerLH::SetDiskFrontBufferCount	CSoundManagerLH vtable 0x0129D2C4 slot 23 (+0x5C); name real -- SLOTS.tsv
+0x00A3E600	CSoundManagerLH::SetDiskBackBufferCount	CSoundManagerLH vtable 0x0129D2C4 slot 24 (+0x60); name real -- SLOTS.tsv
+0x00A3E620	CSoundManagerLH::SetAtmosMapBlendTime	CSoundManagerLH vtable 0x0129D2C4 slot 25 (+0x64); name real -- SLOTS.tsv
+0x00A3E640	CSoundManagerLH::SetDistanceModelRolloff	CSoundManagerLH vtable 0x0129D2C4 slot 26 (+0x68); name real -- SLOTS.tsv
+0x00A3E660	CSoundManagerLH::SetAtmosSFXDampingDistance	CSoundManagerLH vtable 0x0129D2C4 slot 27 (+0x6C); name real -- SLOTS.tsv
+0x00A3E680	CSoundManagerLH::SetAtmosSFXDampingWeight	CSoundManagerLH vtable 0x0129D2C4 slot 28 (+0x70); name real -- SLOTS.tsv
+0x00A3E6A0	CSoundManagerLH::SetReverbParameters	CSoundManagerLH vtable 0x0129D2C4 slot 29 (+0x74); name real -- SLOTS.tsv
+0x00A3E760	CSoundManagerLH::SetReverbLevel	CSoundManagerLH vtable 0x0129D2C4 slot 30 (+0x78); name real -- SLOTS.tsv
+0x00A3E780	CSoundManagerLH::SetReverbTailWaitTimeMS	CSoundManagerLH vtable 0x0129D2C4 slot 31 (+0x7C); name real -- SLOTS.tsv
+0x00A3E7A0	CSoundManagerLH::SetReverbFadeUpTimeMS	CSoundManagerLH vtable 0x0129D2C4 slot 32 (+0x80); name real -- SLOTS.tsv
+0x00A3E7C0	CSoundManagerLH::SetReverbFadeDownTimeMS	CSoundManagerLH vtable 0x0129D2C4 slot 33 (+0x84); name real -- SLOTS.tsv
+0x00A3E7E0	CSoundManagerLH::SetHRTFHemisphereMirroring	CSoundManagerLH vtable 0x0129D2C4 slot 34 (+0x88); name real -- SLOTS.tsv
+0x00A3E830	CSoundManagerLH::SetMonitorAllowedPostStopTailDurationMS	CSoundManagerLH vtable 0x0129D2C4 slot 35 (+0x8C); name real -- SLOTS.tsv
+0x00A3E850	CSoundManagerLH::InitAtmos	CSoundManagerLH vtable 0x0129D2C4 slot 36 (+0x90); name real -- SLOTS.tsv
+0x00A3F140	CSoundManagerLH::NewAtmos	CSoundManagerLH vtable 0x0129D2C4 slot 37 (+0x94); name real -- SLOTS.tsv
+0x00A3ED90	CSoundManagerLH::AddAtmos2Map	CSoundManagerLH vtable 0x0129D2C4 slot 38 (+0x98); name real -- SLOTS.tsv
+0x00A3F250	CSoundManagerLH::NewChannel	CSoundManagerLH vtable 0x0129D2C4 slot 39 (+0x9C); name real -- SLOTS.tsv
+0x00A3EED0	CSoundManagerLH::SetChannelGain	CSoundManagerLH vtable 0x0129D2C4 slot 40 (+0xA0); name real -- SLOTS.tsv
+0x00A3F340	CSoundManagerLH::DeleteAllAtmoses	CSoundManagerLH vtable 0x0129D2C4 slot 41 (+0xA4); name real -- SLOTS.tsv
+0x00A3E920	CSoundManagerLH::StopAllAtmos	CSoundManagerLH vtable 0x0129D2C4 slot 42 (+0xA8); name real (position inferred) -- SLOTS.tsv
+0x00A3EAE0	CSoundManagerLH::SendLibCommand	CSoundManagerLH vtable 0x0129D2C4 slot 43 (+0xAC); name real -- SLOTS.tsv
+0x00A3E540	CSoundManagerLH::SetPlatform2DGain	CSoundManagerLH vtable 0x0129D2C4 slot 44 (+0xB0); name real -- SLOTS.tsv
+0x00A3E980	CSoundManagerLH::SetPitchFader	CSoundManagerLH vtable 0x0129D2C4 slot 45 (+0xB4); name real -- SLOTS.tsv
+0x00A3E9D0	CSoundManagerLH::SetGainFader	CSoundManagerLH vtable 0x0129D2C4 slot 46 (+0xB8); name real -- SLOTS.tsv
+0x00A3EA20	CSoundManagerLH::GetGainFader	CSoundManagerLH vtable 0x0129D2C4 slot 47 (+0xBC); name real -- SLOTS.tsv
+0x00A3EA80	CSoundManagerLH::GetInstantGainFader	CSoundManagerLH vtable 0x0129D2C4 slot 48 (+0xC0); name real -- SLOTS.tsv
+0x00A3E480	CSoundManagerLH::GetMusicOffset	CSoundManagerLH vtable 0x0129D2C4 slot 49 (+0xC4); name real -- SLOTS.tsv
+0x00A3E3C0	CSoundManagerLH::FreezeAtmosMaps	CSoundManagerLH vtable 0x0129D2C4 slot 50 (+0xC8); name real -- SLOTS.tsv
+0x00A3E800	CSoundManagerLH::ExtractMetaData	CSoundManagerLH vtable 0x0129D2C4 slot 51 (+0xCC); name descriptive -- SLOTS.tsv
+0x00A41800	CSoundManagerLH::SetHeadRelativePosition	CSoundManagerLH vtable 0x0129D2C4 slot 52 (+0xD0); name real -- SLOTS.tsv
+0x009936B0	CASoundManager::SetHeadRelativePosition	CASoundManager vtable 0x0129A574 slot 52 (+0xD0) base body; SLOTS.tsv
+0x00A3E330	CSoundManagerLH::SetHeadroomBits	CSoundManagerLH vtable 0x0129D2C4 slot 53 (+0xD4); name real -- SLOTS.tsv
+0x009936C0	CASoundManager::SetHeadroomBits	CASoundManager vtable 0x0129A574 slot 53 (+0xD4) base body; SLOTS.tsv
+0x009915E0	CASoundManager::EnableMusic	Anniversary 360 PDB ?EnableMusic@CASoundManager@@QAAX_N@Z (lib_sound_manager_base.cpp, with EnableSound / EnableAtmos in that order) + body: flag +0x25, StopMusic(0) (slot 18) on disable
+0x00991600	CASoundManager::EnableSound	Anniversary 360 PDB ?EnableSound@CASoundManager@@QAAX_N@Z + body: flag +0x24, StopAllSounds (slot 16) on disable; TLC caller CGameScriptInterface::EnableSounds 0x0088F620
+0x00991620	CASoundManager::EnableAtmos	Anniversary 360 PDB ?EnableAtmos@CASoundManager@@QAAX_N@Z + body: flag +0x26, SetEnableAtmos (slot 2) on change
+0x00A3E420	CSoundManagerLH::AllocateSampleID	Anniversary 360 PDB ?AllocateSampleID@CSoundManagerUN@@QBAKXZ + body (increments the sample-id counter; the emitter play paths return it as the sample handle)
+0x0129E684	CASoundEmitter::`vftable'	RTTI .?AVCASoundEmitter@@ : CBaseClass, 25 slots (engine/CASoundEmitter.h)
+0x0129E6EC	CSoundEmitterLH::`vftable'	RTTI .?AVCSoundEmitterLH@@ : CASoundEmitter
+0x005ACEDA	CTCInventoryTrade::ConstructActualInventoryPC	FableWin.pdb ?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ; only caller OpenInventoryPC 0x005AE86B (chunk 1009 NOTES)
+0x005A94BD	CTCInventoryTrade::OpenInventory	Ego_r.pdb / FableWin.pdb ?OpenInventory@CTCInventoryTrade@@UAEXXZ; vtable 0x01253034 slot 30
+0x005F64DD	CTCInventoryAbilities::CycleAssignedAbilities	Ego_r.pdb / FableWin.pdb ?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z; caller ResetAssignedAbilities 0x005F694D
+0x005F6793	CTCInventoryAbilities::CycleAssignedExpressions	Ego_r.pdb / FableWin.pdb ?CycleAssignedExpressions@CTCInventoryAbilities@@QAEX_N@Z
+0x005A04F7	CTCInventoryTrade::ConstructNormalShopList	Ego_r.pdb / FableWin.pdb ?ConstructNormalShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@..@std@@0@Z; the console twin of ConstructNormalShopListPC 0x005A6769, called by OpenInventory 0x005A996F with (buyable, sellable)
+0x005EED8C	CTCInventoryAbilities::GetPrioritisedExpressionDefs	Ego_r.pdb + FableWin.pdb ?GetPrioritisedExpressionDefs@CTCInventoryAbilities@@QBEXAAV?$vector@J..@std@@@Z; landed row

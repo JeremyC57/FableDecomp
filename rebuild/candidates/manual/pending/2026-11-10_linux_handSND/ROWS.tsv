@@ -1,0 +1,7 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+0056f30b	396	CTCInventoryExperience::CloseInventory	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand762/differ/0056f30b.cpp		0056f177 0056f26f 0056f2bd 0056f497 0056f4a1 0056f4b0
+0058f649	883	CTCInventory::OpenPCInventory	parked	register-tie	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007/differ/0058f649.cpp		0058e99f 0058ef79 00590198
+005f64dd	508	CTCInventoryAbilities::CycleAssignedAbilities	parked	register-tie	rebuild/candidates/manual/pending/2026-10-21_linux_hand270/differ/005f64dd.cpp		005f519f 005f6423 005f66d9 005f694d
+005f6793	442	CTCInventoryAbilities::CycleAssignedExpressions	parked	register-tie	rebuild/candidates/manual/pending/2026-10-21_linux_hand270/differ/005f6793.cpp		005f6423 005f66d9 005f694d 005f6a6f 005f6b47
+005a94bd	1482	CTCInventoryTrade::OpenInventory	unworked			005a04f7 005a29f4	005a887d 005a8a5d 005a8c66 005a9a87
+005aceda	1067	CTCInventoryTrade::OpenInventory	parked	register-tie	rebuild/candidates/manual/pending/2026-10-22_linux_hand913/differ/005aceda.cpp	005a6769	005ac0ee 005ac0fe 005ae6af

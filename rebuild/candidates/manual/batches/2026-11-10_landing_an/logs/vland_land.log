@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0056f30b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0056f30b   RELOCATION_MATCH PASS   CloseInventory
+0058f649   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0058f649   WARN RELOC_NAME: ?CaptureBackBufferToTexture@CTCInventoryBase@NInventory@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+0058f649   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0058f649   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0058f649   RELOCATION_MATCH PASS   OpenPCInventory
+
+WINS: 2
+  0056f30b RELOCATION_MATCH CTCInventoryExperience::?CloseInventory@CTCInventoryExperience@@UAEXXZ
+  0058f649 RELOCATION_MATCH CTCInventory::?OpenPCInventory@CTCInventory@@QAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryExperience_CloseInventory_0056f30b
+  CTCInventory_OpenPCInventory_0058f649

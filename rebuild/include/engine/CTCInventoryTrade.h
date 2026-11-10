@@ -42,8 +42,18 @@ public:
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
     virtual void RemoveItemFromInventory(long itemDefIndex, long count);           // slot 79 0x0059C747 (UAEXJJ@Z override)
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_OPENINVENTORY
+    // Opt-in (agentSND, 2026-11-10, row 0x005A94BD): Ego_r.pdb / FableWin.pdb ?OpenInventory@CTCInventoryTrade@@UAEXXZ, the override in
+    // CTCInventoryTrade vtable 0x01253034 slot 30 (slot 31 CloseInventory 0x0059F304, slot 86 OpenInventoryPC 0x005AE86B).
+    virtual void OpenInventory();                                                  // slot 30 0x005A94BD
+#endif
 private:
     void ConstructActualSpecialInventoryPC();                                      // 0x005A8C66 (private: AAEXXZ)
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_ACTUALINVENTORYPC
+    // Opt-in (agentSND, 2026-11-10, row 0x005ACEDA): FableWin.pdb ?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ (private), out of
+    // line at 0x005ACEDA; its only caller is OpenInventoryPC 0x005AE86B (chunk 1009 NOTES: the landed caller's ConstructTradeScreenPC).
+    void ConstructActualInventoryPC();                                             // 0x005ACEDA
+#endif
     // The private PC helpers (Ego_r.pdb AAE..): the menu branch (category entry) an item def belongs to in the open trade menu, with
     // its EItem_Menu_Type through the reference; the item's EItem_Menu_Type; the per-category subtitle refresh; the sell-actions list
     // rebuild; the entry amounts / availabilities refresh (its pair<ulong,ulong> result is the (amount, available) totals).

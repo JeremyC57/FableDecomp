@@ -7666,9 +7666,6 @@ __imp__CoInitialize@4	01440644	00a3bc70
 ??_7CSharedData@C3DAnimationBlendState@@6B@	0129d1f8	00a3d330
 ??_7CAllocator@@6B@	0129d264	00a3e290
 ??0CSoundBankLH@@QAE@PAUCSoundManagerLH@@@Z	00a0bac0	00a3e430
-?Prepare@CListOwner_00a3eb20@@QAEXXZ	00991670	00a3eb20
-?Find@CSoundManagerLH@@QAEPAUCSoundBankEntry_00a3ed90@@J@Z	00a3ed30	00a3ed90
-?Lookup@CSoundManagerLH@@QAEPAUCSoundEntry_00a3eed0@@JJ@Z	00a3ee50	00a3eed0
 @FableBaseDtor_00a3fd40@4	0099eae0	00a3fd40
 @FableMemberDtor_00a3fd40@4	0099eae0	00a3fd40
 ?InsertionSort_00a415d0@@YIXPAUSElement12@@0USCompare@@@Z	00a415d0	00a418f0
@@ -34733,8 +34730,6 @@ _optionSafe	013d28d0	0099dcb0
 ?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z	00a3b9d0	006286f0
 ?Play@CMovieSubtitles@@QAEXM_N@Z	009bd910	006286f0
 ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z	009da9f0	006286f0
-?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z	009915e0	006286f0
-?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z	00991620	006286f0
 ?SetVolume@CVideoSys@@QAEXM@Z	00a3b920	006286f0
 ?Stop@CVideoSys@@QAE_NXZ	00a3b1f0	006286f0
 ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ	009a6460	006286f0
@@ -39187,3 +39182,10 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?insert_unique@?$_Rb_tree@PAVCBankFileAsyncData@@PAV1@U?$_Identity@PAVCBankFileAsyncData@@@std@@U?$less@PAVCBankFileAsyncData@@@3@V?$allocator@PAVCBankFileAsyncData@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@std@@_N@2@ABQAVCBankFileAsyncData@@@Z	009d7cf0	009d5d30
 ?AutoSaveRegionLeaving@CWorld@@QAE_NXZ	004a0180	004a34f0
 ?GetDebugSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a1a0	004a34f0
+?EnableAtmos@CASoundManager@@QAEX_N@Z	00991620	006286f0
+?EnableMusic@CASoundManager@@QAEX_N@Z	009915e0	006286f0
+?Update@CASoundManager@@UAEXXZ	00991670	00a3eb20
+?OnCloseMenus@CManager@NUISystem@@SIXXZ	0041d165	0056f30b
+?CaptureBackBufferToTexture@CTCInventoryBase@NInventory@@QAEXXZ	005bc6ed	0058f649
+?HasScreenshots@CTCInventory@@QAE_NXZ	00581b33	0058f649
+?OpenInventoryShortcut@CTCInventory@@QAEXJ@Z	0058e99f	0058f649

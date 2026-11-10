@@ -1,7 +1,6 @@
 #pragma optimize("t",on)
 // GFPlayFullScreenXBoxMovie(const CCharString& file_name, unsigned long flags, unsigned long width, unsigned long height, unsigned long buffer_size, const NGameText::CDataBank* text_bank, CIEngine* engine, bool display_subtitles, float no_skip_duration, bool (__fastcall* pcallback)(), CXMVPlayerBuffers* pbuffers, CWideString* perror_message) -- play a full-screen movie through CVideoSys (PC): cancel the hero's bullet time, optionally fade the sound groups / pause two sound-manager flags, open the .wmv twin of the movie path, then copy each decoded frame into a texture and draw it letterboxed until the movie completes, a skip key is pressed or the system quits; restore the sound state
 // Leaf: ?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z
-// Flags: default
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006286F0, 1864 bytes, __fastcall `ret 28h`, no EH frame (the /O2 default TU).
 // Identity: Ego_r.pdb + FableWin.pdb ?GFPlayFullScreenXBoxMovie@@YI_N...@Z (Ego_r module release\movie_player_helper.obj,
 //   whose local set names file_path, dimensions, time_start, renderTargetDim, event, clear_black, border, lparam1/2, dst_box,
@@ -10,7 +9,7 @@
 //   engine, display_subtitles, no_skip_duration, pcallback and pbuffers are not read.
 // Headers (overlay, FABLE_RETAIL_* branches; see HEADER_NEEDS.md): CVideoSys / CMovieSubtitles / CTextureRenderer,
 //   CSystemManager / CInputManager / CInputEvent / CInputEventScanInfo, CDisplayManager / CRenderManager(2D/Core),
-//   CUserProfileManager, CASoundManager (slot 46 + the two bool setters; descriptive names), CTexture / CPixelFormat,
+//   CUserProfileManager, CASoundManager (slot 46 SetGainFader + EnableMusic / EnableAtmos: Anniversary 360 PDB names, opt-in FABLE_RETAIL_CASOUNDMANAGER_ENABLE_NAMES), CTexture / CPixelFormat,
 //   C2DBoxF / CUVBox / CRGBColour / C2DExtentsI, CAFile, CWideString, CMainGameComponent, the CThing chain + CTCBulletTime.
 // Shape: the bullet-time cancel is CThing::GetTC<CTCBulletTime> (HasTC bit 0x92 at +0x30, then the 0x0040F020 lower bound);
 //   the profile getters are expanded (UseNewProfileValues ? <X>NewProfile : <X>); `flags & 0x10` / `flags & 2` are the
@@ -42,6 +41,7 @@
 #define FABLE_RETAIL_CTEXTURE
 #define FABLE_RETAIL_CPIXELFORMAT
 #define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CASOUNDMANAGER_ENABLE_NAMES
 #include "fable_string.h"
 #include "fable_game.h"
 #include "fable_user_profile.h"
@@ -101,14 +101,14 @@ bool __fastcall GFPlayFullScreenXBoxMovie(const CCharString& file_name, unsigned
     }
 
     if ((flags & 0x10) && PSoundManager) {
-        PSoundManager->SetGroupVolume(8, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-        PSoundManager->SetGroupVolume(0x10, 0.0f, 500.0f);
-        PSoundManager->SetGroupVolume(0x40, 0.0f, 500.0f);
-        PSoundManager->SetGroupVolume(0x80, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(8, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x10, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(0x40, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(0x80, 0.0f, 500.0f);
     }
     if (flags & 2) {
-        PSoundManager->SetEnabled25_009915e0(false);
-        PSoundManager->SetEnabled26_00991620(false);
+        PSoundManager->EnableMusic(false);
+        PSoundManager->EnableAtmos(false);
     }
 
     CWideString file_path = CAFile::ConvertPathToFullPath(file_name.ToWideString());
@@ -192,14 +192,14 @@ finished:
     delete video;
 
     if ((flags & 0x10) && PSoundManager) {
-        PSoundManager->SetGroupVolume(8, 0.0f, 0.0f);
-        PSoundManager->SetGroupVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        PSoundManager->SetGroupVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-        PSoundManager->SetGroupVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        PSoundManager->SetGainFader(8, 0.0f, 0.0f);
+        PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
     }
     if (flags & 2) {
-        PSoundManager->SetEnabled25_009915e0(true);
-        PSoundManager->SetEnabled26_00991620(true);
+        PSoundManager->EnableMusic(true);
+        PSoundManager->EnableAtmos(true);
     }
     return true;
     }

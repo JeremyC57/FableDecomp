@@ -67,6 +67,14 @@ inline C2DBoxF::C2DBoxF(const C2DVector& top_left,const C2DExtentsF& extents):TL
 #endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CORNERS)
 #include "engine/C2DVector.h"
+#ifdef FABLE_RETAIL_C2DBOXF_CORNERS_FORCEINLINE
+// Nested opt-in (agentSND, 2026-11-10, row 0x005A94BD CTCInventoryTrade::OpenInventory): the size TU of the trade screen expands the
+// corners constructor in place (0x005A95E1..0x005A9600: the two C2DVector corners copied as dwords into the frame box, no call),
+// which a plain `inline` does not give under optimize("s") (the call stays out of line); forced inline as engine/CDefPointer.h.
+#include "fable_compiler.h"
+FABLE_FORCEINLINE C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
+#else
 inline C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
+#endif
 #endif
 #endif

@@ -22,7 +22,7 @@ static unsigned long g_masks[8];
 class CSoundManagerLH {
 public:
     virtual ~CSoundManagerLH() { }
-    virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime)   // stub for 0x00A3E9D0
+    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime)   // stub for 0x00A3E9D0
     {
         CHECK(volume == 0.0f && fadeTime == 0.0f);
         g_masks[g_volumeCalls++ & 7] = groupMask;
@@ -97,9 +97,9 @@ public:
             }
         }
         if (g_pSoundSystem != 0) {
-            g_pSoundSystem->SetGroupVolume(0x10, 0.0f, 0.0f);
-            g_pSoundSystem->SetGroupVolume(0x80, 0.0f, 0.0f);
-            g_pSoundSystem->SetGroupVolume(0x40, 0.0f, 0.0f);
+            g_pSoundSystem->SetGainFader(0x10, 0.0f, 0.0f);
+            g_pSoundSystem->SetGainFader(0x80, 0.0f, 0.0f);
+            g_pSoundSystem->SetGainFader(0x40, 0.0f, 0.0f);
         }
     }
 };

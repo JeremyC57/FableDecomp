@@ -119,7 +119,7 @@ struct CSoundSystem {
     virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035();
     virtual void s036(); virtual void s037(); virtual void s038(); virtual void s039(); virtual void s040(); virtual void s041();
     virtual void s042(); virtual void s043(); virtual void s044(); virtual void s045();
-    virtual void SetGroupVolume(long groupMask, float volume, float fadeTime); // slot 46 (+0xB8)
+    virtual void SetGainFader(long groupMask, float volume, float fadeTime); // slot 46 (+0xB8)
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                    // 0x013B8394
@@ -246,9 +246,9 @@ void CTCInventory::CloseInventory()
     CWorld* world = (&GetWorld());
     world->LastInventoryCloseFrame = CWorld::GetFrame();
     if (((CSoundSystem*)PSoundManager)) {
-        ((CSoundSystem*)PSoundManager)->SetGroupVolume(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->SetGroupVolume(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->SetGroupVolume(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        ((CSoundSystem*)PSoundManager)->SetGainFader(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        ((CSoundSystem*)PSoundManager)->SetGainFader(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        ((CSoundSystem*)PSoundManager)->SetGainFader(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
     }
     NUISystem::CManager::GetInstance()->SetCurrentStyle(NUISystem::CManager::GetInstance()->GetStyleDef()->Style, true);
     CMainGameComponent::Get()->PDisplayEngine->PRenderer->SetPaused(false, false);

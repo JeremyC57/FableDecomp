@@ -20,7 +20,7 @@ struct Profile { bool UseNew; bool Sub, SubNew; float Sound, Music, Dialogue, So
 static Profile g_profile;
 
 struct SoundManager { float vol[256]; bool e25, e26;
-    void SetGroupVolume(unsigned long g, float v, float fade) { char b[64]; sprintf(b, "vol%lx=%g/%g", g, v, fade); Log(b); vol[g] = v; }
+    void SetGainFader(unsigned long g, float v, float fade) { char b[64]; sprintf(b, "vol%lx=%g/%g", g, v, fade); Log(b); vol[g] = v; }
     void SetEnabled25(bool b) { e25 = b; Log(b ? "e25=1" : "e25=0"); }
     void SetEnabled26(bool b) { e26 = b; Log(b ? "e26=1" : "e26=0"); } };
 static SoundManager g_sound; static SoundManager* PSoundManager = 0;
@@ -58,10 +58,10 @@ static bool PlayMovie(const char* file, unsigned long flags, int* text_bank, cha
         }
     }
     if ((flags & 0x10) && PSoundManager) {
-        PSoundManager->SetGroupVolume(8, g_profile.GetDialogueVolume(), 0.0f);
-        PSoundManager->SetGroupVolume(0x10, 0.0f, 500.0f);
-        PSoundManager->SetGroupVolume(0x40, 0.0f, 500.0f);
-        PSoundManager->SetGroupVolume(0x80, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(8, g_profile.GetDialogueVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x10, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(0x40, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(0x80, 0.0f, 500.0f);
     }
     if (flags & 2) { PSoundManager->SetEnabled25(false); PSoundManager->SetEnabled26(false); }
     char path[256]; strcpy(path, file);
@@ -87,10 +87,10 @@ finished:
         video->Close();
         delete video;
         if ((flags & 0x10) && PSoundManager) {
-            PSoundManager->SetGroupVolume(8, 0.0f, 0.0f);
-            PSoundManager->SetGroupVolume(0x10, g_profile.GetSoundVolume(), 0.0f);
-            PSoundManager->SetGroupVolume(0x40, g_profile.GetDialogueVolume(), 0.0f);
-            PSoundManager->SetGroupVolume(0x80, g_profile.GetSoundVolume(), 0.0f);
+            PSoundManager->SetGainFader(8, 0.0f, 0.0f);
+            PSoundManager->SetGainFader(0x10, g_profile.GetSoundVolume(), 0.0f);
+            PSoundManager->SetGainFader(0x40, g_profile.GetDialogueVolume(), 0.0f);
+            PSoundManager->SetGainFader(0x80, g_profile.GetSoundVolume(), 0.0f);
         }
         if (flags & 2) { PSoundManager->SetEnabled25(true); PSoundManager->SetEnabled26(true); }
         return true;

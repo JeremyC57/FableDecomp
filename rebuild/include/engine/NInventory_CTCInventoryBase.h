@@ -8,6 +8,10 @@ namespace NUISystem { class CComponent; }
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ANIMBOX
 #include "engine/C2DBoxF.h"
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_PDEF
+#include "engine/CDefPointer.h"
+class CInventoryDef;
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
 // chunk 770 (row 0x005BF969 RemoveAllConfiscatedItems): ConfiscatedItems typed as its Ego_r.pdb vector<NInventory::CItem>
 // (STLport 12 bytes at retail +0xAC; erase(first, last) out of line at 0x005C1ECC) and NInventory::CItem (Ego_r.pdb 0x14 bytes:
@@ -278,8 +282,18 @@ protected:
  unsigned char OldIntervalDesc[8];
  bool OldIntervalDescInitialised;
  unsigned char _pad_after_OldIntervalDescInitialised[3];
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_PDEF
+ // Opt-in (agentSND, 2026-11-10, row 0x005A94BD CTCInventoryTrade::OpenInventory): PDef typed as its Ego_r.pdb
+ // CDefPointer<const CInventoryDef> (+0x68 retail, +0x70 PDB) and Ego_r.pdb / FableWin.pdb
+ // ?GetPDef@CTCInventoryBase@NInventory@@IBE?AV?$CDefPointer@$$CBVCInventoryDef@@@@XZ (protected const, by value), inline in retail:
+ // 0x005A95CD / 0x005A95D7 copy the word at +0x68 twice with `inc [def+4]` for SetInventoryAnimRenderBox's two corners.
+ CDefPointer<const CInventoryDef> GetPDef() const { return PDef; }
+private:
+ CDefPointer<const CInventoryDef> PDef;
+#else
 private:
  unsigned char PDef[4];
+#endif
  long GlobalDefIndex,SelectedCategoryIndex;
  const CGraphicDataBank* GraphicManager;
  unsigned char SerialisedItems[8],SerialisedSelectedItems[8];

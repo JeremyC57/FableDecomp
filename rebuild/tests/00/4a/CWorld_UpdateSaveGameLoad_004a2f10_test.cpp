@@ -78,7 +78,7 @@ class CUserProfileManager { public:
     float GetDialogueVolume() const { return UseNewProfileValues ? DialogueVolumeNewProfile : DialogueVolume; }
 };
 class CSoundManagerLH { public:
-    virtual void SetGroupVolume(unsigned int groupMask, float volume, float)
+    virtual void SetGainFader(unsigned int groupMask, float volume, float)
     { if (g_volumeCalls < 3) { g_groups[g_volumeCalls] = groupMask; g_volumes[g_volumeCalls] = volume; } g_volumeCalls++; }
 };
 CSoundManagerLH* g_pSoundSystem = 0;
@@ -134,9 +134,9 @@ class CWorld { public:
             Component->GetDisplayEngine().EndScreenFadeOut();
             DisplayMiniMapOnRegionLoad = true;
             if (g_pSoundSystem) {
-                g_pSoundSystem->SetGroupVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-                g_pSoundSystem->SetGroupVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-                g_pSoundSystem->SetGroupVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+                g_pSoundSystem->SetGainFader(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+                g_pSoundSystem->SetGainFader(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+                g_pSoundSystem->SetGainFader(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
             }
             SetAsPaused(false);
             SaveGameLoadStatus = 0;

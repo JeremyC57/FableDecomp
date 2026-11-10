@@ -746,7 +746,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041e5f2	GetInstance	NUISystem::CManager	__fastcall	CFrontEndManager *	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CFrontEndManager_GetInstance_0041e5f2.cpp
 0041e61b	AddChild	NUISystem::CSpellContainerList	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CSpellContainerList_AddChild_0041e61b.cpp
 0041e641	~CManager	NUISystem::CManager	__thiscall	void	1	CManager *	1	yes	accepted									
-0041e6d3	NUISystem::CManager::vfunc_14	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041e6d3	Action	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00427216	CreateTickSlider	CManager	__thiscall	CComponent *	12	CManager *,CWideString *,C2DCoordI *,long,long,CRGBFloatColour *,float,float,bool,bool,CRGBFloatColour *,float	1	yes	accepted									
 00427dc9	CreateLevelSlider	NUISystem::CManager	__thiscall	CComponent *	6	CManager *,CWideString *,C2DCoordI *,long,long,CRGBColour *	1	yes	accepted									
 00427f31	CreateStaticSlider	NUISystem::CManager	__thiscall	CComponent *	4	CManager *,CWideString *,float,C2DCoordI *	1	yes	accepted									
@@ -33246,12 +33246,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009913d0	operator[]	std::map<unsigned long, CFileObject*>	unknown	undefined	0		0	yes	accepted									
 00991450	`scalar_deleting_destructor'	CThreadedFile	__thiscall	void *	2	CThreadedFile *,uint	1	yes	accepted									
 009914e0	CalcFromPathname	CCRC	unknown	undefined	0		0	yes	accepted									
-009915c0	vfunc_6	CASoundManager	__thiscall	long	1	CCreatureActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CCreatureActionBase_GetAnimStartFrame_009915c0.cpp
-009915e0	SetMiniMapEnabled	CWorld	__thiscall	void	2	CWorld *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWorld_SetMiniMapEnabled_009915e0.cpp
-00991600	SetMiniMapEnabled	CWorld	__thiscall	void	2	CWorld *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWorld_SetMiniMapEnabled_00991600.cpp
-00991620	func_00991620	CTCDParticleEmitter	__thiscall	void	1	CTCDParticleEmitter *	1	yes	accepted									
+009915c0	CanAllocateEmitter	CASoundManager	__thiscall	long	1	CCreatureActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CCreatureActionBase_GetAnimStartFrame_009915c0.cpp
+009915e0	EnableMusic	CASoundManager	__thiscall	void	2	CWorld *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWorld_SetMiniMapEnabled_009915e0.cpp
+00991600	EnableSound	CASoundManager	__thiscall	void	2	CWorld *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWorld_SetMiniMapEnabled_00991600.cpp
+00991620	EnableAtmos	CASoundManager	__thiscall	void	1	CTCDParticleEmitter *	1	yes	accepted									
 00991640	func_00991640	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
-00991670	FlushLoadingQueue_00991670	CASoundManager	unknown	undefined	0		0	yes	accepted									
+00991670	Update	CASoundManager	unknown	undefined	0		0	yes	accepted									
 00991690	FindFirstSymbolWithVal	CSymbolMap	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
 009916f0	FindFirstSymbolWithVal	CSymbolMap	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
 00991720	ElemLoop0x24_00991720	_global	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
@@ -33299,10 +33299,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00993310	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00993420	__insertion_sort	std	unknown	undefined	0		0	yes	accepted									
 009934c0	__partial_sort	std	unknown	undefined	0		0	yes	accepted									
-00993690	vfunc_12	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-009936a0	vfunc_13	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-009936b0	vfunc_52	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-009936c0	vfunc_53	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00993690	SetExclusiveMode	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+009936a0	GetExclusiveMode	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+009936b0	SetHeadRelativePosition	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+009936c0	SetHeadroomBits	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 009936e0	push_back	std::vector<CSoundBankEntry>	unknown	undefined	0		0	yes	accepted									
 00993730	FinalInsertionSort_SElement36_00993730	_global	__fastcall	void	3	pair<unsigned_long,CSoundPair> *,pair<unsigned_long,CSoundPair> *,CKeyPairCompareLess<unsigned_long,CSoundPair>	1	yes	accepted									
 009937b0	`scalar deleting destructor'	CASoundManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CLandscapeBackgroundPatch_vectordeletingdestructor_009937b0.cpp
@@ -36854,34 +36854,34 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3e0d0	TransferIn	CPersistTraits<CDefIndex>	__thiscall	void	4	CPersistTraits<CDefIndex> *,CPersistContext *,CStringParser *,CDefIndex *	1	yes	accepted									
 00a3e180	TransferOut	CPersistTraits<CDefIndex>	__thiscall	void	4	CPersistTraits<CDefIndex> *,CPersistContext *,CCharString *,CDefIndex *	1	yes	accepted									
 00a3e290	`scalar deleting destructor'	LHA::CAllocator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3e330	vfunc_53	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3e350	vfunc_7	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
-00a3e380	vfunc_8	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
-00a3e3c0	vfunc_50	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
-00a3e3e0	vfunc_2	CSoundManagerLH	__thiscall	long	1	CThingPhysical *	1	yes	accepted									
-00a3e420	GetNextEmitterID_00a3e420	CSoundManagerLH	__thiscall	void	1	CGameScriptThing *	1	yes	accepted									
-00a3e430	vfunc_1	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3e480	vfunc_49	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3e4b0	vfunc_17	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3e330	SetHeadroomBits	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3e350	SetOutputConfigurationToHeadphones	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
+00a3e380	IsOutputConfigurationSetToHeadphones	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
+00a3e3c0	FreezeAtmosMaps	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
+00a3e3e0	SetEnableAtmos	CSoundManagerLH	__thiscall	long	1	CThingPhysical *	1	yes	accepted									
+00a3e420	AllocateSampleID	CSoundManagerLH	__thiscall	void	1	CGameScriptThing *	1	yes	accepted									
+00a3e430	CreateSoundBank	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3e480	GetMusicOffset	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3e4b0	PlayMusic	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3e520	CSoundManagerLH::vfunc_18	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3e800	SetNamedValue	CNamedOwner_00a3e800	__thiscall	void	2	CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *	1	yes	accepted									
+00a3e800	ExtractMetaData	CSoundManagerLH	__thiscall	void	2	CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *	1	yes	accepted									
 00a3e830	CSoundManagerLH::vfunc_35	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3eb20	ResetAll	CListOwner_00a3eb20	__thiscall	void	1	CNavigatorManager *	1	yes	accepted									
-00a3eb60	vfunc_5	CSoundManagerLH	__thiscall	void	2	CTCTextureDecal *,long	1	yes	accepted									
+00a3eb20	Update	CSoundManagerLH	__thiscall	void	1	CNavigatorManager *	1	yes	accepted									
+00a3eb60	DestroyPEmitter	CSoundManagerLH	__thiscall	void	2	CTCTextureDecal *,long	1	yes	accepted									
 00a3ebc0	StopAllSounds	CSoundManagerLH	__thiscall	void	1	CNavigatorManager *	1	yes	accepted									
-00a3ebf0	RemoveMap	CEngineManager_00a3ebf0	__thiscall	void	2	CEngineManager *,long	1	yes	accepted									
-00a3ec30	Dispatch	CHandlerList_00a3ec30	__thiscall	CMessageEvent *	2	CMessageEventManager *,CMessageEventFilter_IsOfType *	1	yes	accepted									
-00a3ec70	vfunc_6	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3ec90	vfunc_10	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3ecb0	vfunc_4	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
+00a3ebf0	StopSound	CSoundManagerLH	__thiscall	void	2	CEngineManager *,long	1	yes	accepted									
+00a3ec30	IsSoundPlaying	CSoundManagerLH	__thiscall	CMessageEvent *	2	CMessageEventManager *,CMessageEventFilter_IsOfType *	1	yes	accepted									
+00a3ec70	CanAllocateEmitter	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3ec90	GetNoFreeEmitters	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3ecb0	Create3DEmitter	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
 00a3ed30	FindByName	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
-00a3ed90	vfunc_38	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3ed90	AddAtmos2Map	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3ede0	~CSoundManagerLH	CSoundManagerLH	__thiscall	void	1	CIconText *	1	yes	accepted									
 00a3ee50	FindByNamePair	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
-00a3eed0	vfunc_40	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3eed0	SetChannelGain	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3ef00	CSoundManagerLH	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
-00a3f140	AddBank	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
-00a3f250	AddSound	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3f140	NewAtmos	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
+00a3f250	NewChannel	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3f340	CParticleMorphs_CommitChanges	_global	unknown	undefined	0		0	yes	accepted									
 00a3f470	Dtor_CCharStringBase_00a3f470	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a3f470.cpp
 00a3f700	ScalarDeletingDtor_00a3f700	_global	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CEngineSubPrimitiveText_scalardeletingdestructor_00a3f700.cpp
@@ -36942,7 +36942,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a415d0	__insertion_sort	std	__thiscall	void	3	vector<std::pair<long,CMusicManager::CRegisteredMusicEntry>,std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted									
 00a41630	__pop_heap	std	__fastcall	void	6	CTestQuest *,CTestQuest *,CTestQuest *,CTestQuest *,CTestQuestNameCompare,int *	1	yes	accepted									
 00a416e0	__make_heap	std	unknown	undefined	0		0	yes	accepted									
-00a41800	vfunc_52	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a41800	SetHeadRelativePosition	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a41840	push_back	std::vector<std::pair<std::pair<CCharString, CCharString>, CSoundBankLH *>, std::allocator<std::pair<std::pair<CCharString, CCharString>, CSoundBankLH *>>>	unknown	undefined	0		0	yes	accepted									
 00a418a0	push_back	std::vector	unknown	undefined	0		0	yes	accepted									
 00a418f0	FinalInsertionSort_SElement12_00a418f0	_global	__fastcall	void	3	pair<unsigned_long,CSoundPair> *,pair<unsigned_long,CSoundPair> *,CKeyPairCompareLess<unsigned_long,CSoundPair>	1	yes	accepted									

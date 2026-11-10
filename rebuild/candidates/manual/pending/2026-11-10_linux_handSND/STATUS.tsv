@@ -1,0 +1,7 @@
+address	name	grade	grades_used	note
+0x0056F30B	CTCInventoryExperience::CloseInventory	RELOCATION_MATCH	1	src/ + test/; Get2DEmitter().StopSpecificSample + SetGainFader on the overlay headers (was held on Virtual09_00a3e3a0 / SetGroupVolume)
+0x0058F649	CTCInventory::OpenPCInventory	RELOCATION_MATCH	1	src/ + test/; SetGainFader on the overlay header
+0x005F64DD	CTCInventoryAbilities::CycleAssignedAbilities	DIFFER(512v508)	9	differ/; shared headers; head now matches (same-TU GetPrioritisedAbilityDefs stand-in); assign-loop register residue (button edi vs iterator)
+0x005F6793	CTCInventoryAbilities::CycleAssignedExpressions	DIFFER(445v442)	5	differ/; shared headers; this/web register naming swapped (edi/ebx) + early-return free not tail-merged
+0x005A94BD	CTCInventoryTrade::OpenInventory	DIFFER(1488v1482)	3	differ/; identity settled (vtable slot 30); shared headers; esi/edi naming + C2DBoxF temp frame packing (0x44 vs 0x40)
+0x005ACEDA	CTCInventoryTrade::ConstructActualInventoryPC	DIFFER(1113v1067)	2	differ/; identity settled (FableWin.pdb, only caller OpenInventoryPC); shared headers; push shrink-wrap / this reload / tail cross-jump residue

@@ -4,7 +4,7 @@
 //   `?Cancel@CRedefinerList@NUISystem@@SIXXZ`: static __fastcall, no arguments).
 // Callees: the active list's virtual OnDeactivate (slot 141, +0x234; CRedefinerList's own is the landed 0x00556580),
 //   CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0 (three times), CUserProfileManager::Load 0x0040D350 (landed), the
-//   sound manager's SetGroupVolume (slot 46, +0xb8, 0x00A3E9D0) three times.
+//   sound manager's SetGainFader (slot 46, +0xb8, 0x00A3E9D0) three times.
 // Callers: NUISystem::CMenuEntry slot 156 0x0053DDD0 (call 0x0053DDED), CTCInventory::ClosePCInventory 0x00587847
 //   (0x00587850) and DeleteMenuComponents 0x00587A41 (0x00587A4A).
 // Data: CRedefinerList::s_pActiveList 0x013B8AC4 (as the landed `??_G` 0x00557360), the sound manager g_pSoundSystem
@@ -33,7 +33,7 @@ public:
     virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
     virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
     virtual void v045();
-    virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xb8) 0x00A3E9D0
+    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xb8) 0x00A3E9D0
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                 // 0x013B8394
@@ -85,9 +85,9 @@ void __fastcall CRedefinerList::Cancel()
         CUserProfileManager::Get().Load();
         CUserProfileManager::Get().ApplyVideoValuesOnLoad = true;
         if (((CSoundManagerLH*)PSoundManager) != 0) {
-            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x10, 0.0f, 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x80, 0.0f, 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x40, 0.0f, 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x10, 0.0f, 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x80, 0.0f, 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x40, 0.0f, 0.0f);
         }
     }
 }

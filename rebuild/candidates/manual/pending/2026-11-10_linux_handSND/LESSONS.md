@@ -1,0 +1,7 @@
+- Sound slot names: the Fable Anniversary PC exe's CASoundManager / CSoundManagerUN / CSoundEmitterUN RTTI vtables align with TLC's slot for slot (with a few inserted Anniversary slots), and the 360 PDB publics then give real names; confirm each with a TLC PDB-named caller or a ConsoleAudio_* stub (agentSND SLOTS.tsv).
+- A same-TU stand-in body for an earlier callee that fills a local by reference and keeps no pointer to it makes VC7.1 keep the local's words in registers across later calls (0x005F64DD: vector end in edi across GetNumAssignableSpecialMoveButtons, retail 0x005F651F).
+- `if (CDefPointer<T>(*it).Get())` tests a by-value def copy without a flag byte; `!...IsNull()` homes the result in a flag before the temporary's release (0x005F64DD, 528 -> 510 bytes).
+- C2DBoxF(const C2DVector&, const C2DVector&) stays out of line under optimize("s") unless forced; retail expands it in the trade TU (0x005A95E1): FABLE_RETAIL_C2DBOXF_CORNERS_FORCEINLINE.
+- An elaborated `class C2DVector` parameter in C2DBoxF.h trips C2511 in VC7.1 when C2DVector.h is not included first; include engine/C2DVector.h before headers that pull C2DBoxF.h (0x005A94BD).
+- A `// Flags: none` / `// Flags: default` line makes gall.sh / q.py pass a bogus flag; delete the line instead.
+- The verifier's FABLE_ROOT default (`D:\Documents\FableTLC`) becomes a literal directory under the cwd when verify_and_land is imported without wine/env.sh sourced; source env.sh in any helper.

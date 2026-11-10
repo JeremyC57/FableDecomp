@@ -14,8 +14,8 @@
 //   0x0049DBE0), __ftol2 0x00BFEA70, CThingSearchTools::GetAllThingsInRoughArea<const CThingBuilding,
 //   vector<const CThingBuilding*>, CThingFilter_None> 0x006B2720 (landed), CThingBuilding::IsPointInside 0x0082D000,
 //   CThingBuilding::GetReverbSettings 0x0082D8C0, free 0x00BFEA14 (vector storage), CGameDefinitionManager::Get 0x0044C6B0,
-//   CASoundManager slot 46 SetGroupVolume (+0xB8, the landed CNewFrontendGameComponent::InitialiseSounds model; no PDB
-//   symbol; slot name descriptive) on g_pSoundManager 0x013B8394 (labels DB spelling), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
+//   CASoundManager slot 46 SetGainFader (+0xB8, the landed CNewFrontendGameComponent::InitialiseSounds model; no PDB
+//   symbol in Ego_r / FableWin; name from the Fable Anniversary 360 PDB, agentSND 2026-11-10) on g_pSoundManager 0x013B8394 (labels DB spelling), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   CDefinitionManager::GetNumberOfDefsOfType 0x009AD3B0 (landed), CDefinitionManager::GetDef<CSoundThemeDef> 0x006B25E0.
 // Layout (local models; the shared headers differ from retail):
 //   CAtmosProcess: retail InsideBuilding +0x14, ReverbType +0x18, ReverbLevel +0x1c (Ego_r +0x10/+0x14/+0x18; retail keeps
@@ -239,7 +239,7 @@ class CASoundManager { public:                            // RTTI base of CSound
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
+    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
 };
 extern CASoundManager* PSoundManager;                     // 0x013B8394 (labels DB: g_pSoundManager, CASoundManager*)
 
@@ -293,15 +293,15 @@ void CAtmosProcess::UpdateInsideBuildings()
     if (wasInside != InsideBuilding) {
         float gain = CGameDefinitionManager::Get().PGlobalDef->SoundGainLowerValueWhenInsideOutside;
         if (InsideBuilding != 0) {
-            PSoundManager->SetGroupVolume(0x800, 1.0f, 1000.0f);
-            PSoundManager->SetGroupVolume(0x1000, 0.0f, 1000.0f);
-            PSoundManager->SetGroupVolume(0x2000, 1.0f, 1000.0f);
-            PSoundManager->SetGroupVolume(0x4000, gain, 1000.0f);
+            PSoundManager->SetGainFader(0x800, 1.0f, 1000.0f);
+            PSoundManager->SetGainFader(0x1000, 0.0f, 1000.0f);
+            PSoundManager->SetGainFader(0x2000, 1.0f, 1000.0f);
+            PSoundManager->SetGainFader(0x4000, gain, 1000.0f);
         } else {
-            PSoundManager->SetGroupVolume(0x1000, 1.0f, 1000.0f);
-            PSoundManager->SetGroupVolume(0x800, 0.0f, 1000.0f);
-            PSoundManager->SetGroupVolume(0x4000, 1.0f, 1000.0f);
-            PSoundManager->SetGroupVolume(0x2000, gain, 1000.0f);
+            PSoundManager->SetGainFader(0x1000, 1.0f, 1000.0f);
+            PSoundManager->SetGainFader(0x800, 0.0f, 1000.0f);
+            PSoundManager->SetGainFader(0x4000, 1.0f, 1000.0f);
+            PSoundManager->SetGainFader(0x2000, gain, 1000.0f);
         }
         long count;
         {

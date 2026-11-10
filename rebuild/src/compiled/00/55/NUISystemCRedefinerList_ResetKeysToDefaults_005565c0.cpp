@@ -5,7 +5,7 @@
 // Callees: CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CUserProfileManager::ResetAssignedInputsWASD 0x00408820 /
 //   ResetAssignedInputs 0x004085F0, CScrollableList::HideList(float) 0x005559D0 (0.1f), the accept button's CObserver
 //   slots 2 IsObservingEvent / 3 ObserveEvent (event 0x19) and its component slots 14 GetColour (CRGBColour by hidden
-//   pointer into the `push ecx` frame word) / 13 SetColour, the sound manager's SetGroupVolume (slot 46) three times.
+//   pointer into the `push ecx` frame word) / 13 SetColour, the sound manager's SetGainFader (slot 46) three times.
 // Callers: one call at 0x00423080.
 // Data: CRedefinerList::s_pActiveList 0x013B8AC4, the sound manager 0x013B8394 (as Cancel 0x00556470).
 // Layout: CRedefinerList IsActivated +0x17c, Selecting +0x17d, FadeTime +0x180, PAcceptButton +0x18c (landed
@@ -33,7 +33,7 @@ public:
     virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
     virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
     virtual void v045();
-    virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xb8) 0x00A3E9D0
+    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xb8) 0x00A3E9D0
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                 // 0x013B8394
@@ -103,9 +103,9 @@ void __fastcall CRedefinerList::ResetKeysToDefaults(bool wasd)
         }
     }
     if (((CSoundManagerLH*)PSoundManager) != 0) {
-        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x10, 0.0f, 0.0f);
-        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x80, 0.0f, 0.0f);
-        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x40, 0.0f, 0.0f);
+        ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x10, 0.0f, 0.0f);
+        ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x80, 0.0f, 0.0f);
+        ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x40, 0.0f, 0.0f);
     }
 }
 }

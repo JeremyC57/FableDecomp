@@ -68,7 +68,6 @@
 #define FABLE_RETAIL_CSURFACE
 #define FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
 #define FABLE_RETAIL_CSURFACE_BITMAP
-#define FABLE_RETAIL_CASOUNDMANAGER_SLOT9
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA
 #define FABLE_RETAIL_CACTION_ISVALID
@@ -503,14 +502,6 @@ public:
     void OnPlayerSelectedClan(CWideString, NUISystem::CComponent*);  // 0x005625F0
     void OnOkClicked();                                              // 0x0055EE20
 };
-// The object CSoundManagerLH's slot 9 returns (its +0x44); its slot 9 stops a playing sample (descriptive, as the parked 0x005E78F0).
-class CASoundSampleOwner_Unproven {
-public:
-    virtual void CUnprovenSlot0(); virtual void CUnprovenSlot1(); virtual void CUnprovenSlot2(); virtual void CUnprovenSlot3();
-    virtual void CUnprovenSlot4(); virtual void CUnprovenSlot5(); virtual void CUnprovenSlot6(); virtual void CUnprovenSlot7();
-    virtual void CUnprovenSlot8();
-    virtual void StopSample(unsigned long handle);                   // slot 9 (+0x24)
-};
 CWideString __fastcall GFIntToWideString(long);                      // 0x00405F00
 class CWorld {
 public:
@@ -556,9 +547,9 @@ public:
 // After an option change: silence the effect / music sound groups (0x10, 0x80, 0x40) until the menus reapply the volumes.
 #define SILENCE_SOUND_GROUPS() \
     if (PSoundManager) { \
-        PSoundManager->SetGroupVolume(0x10, 0.0f, 0.0f); \
-        PSoundManager->SetGroupVolume(0x80, 0.0f, 0.0f); \
-        PSoundManager->SetGroupVolume(0x40, 0.0f, 0.0f); \
+        PSoundManager->SetGainFader(0x10, 0.0f, 0.0f); \
+        PSoundManager->SetGainFader(0x80, 0.0f, 0.0f); \
+        PSoundManager->SetGainFader(0x40, 0.0f, 0.0f); \
     }
 // Open / close one of the hero's inventory screens through its thing component.
 #define OPEN_INVENTORY(type) { \
@@ -3115,7 +3106,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 std::map<CCharString, unsigned long>& handles = experience->TutorialSoundHandles;
                 for (std::map<CCharString, unsigned long>::iterator it = handles.begin(); it != handles.end(); ++it)
                     if (PSoundManager)
-                        PSoundManager->Virtual09_00a3e3a0()->StopSample(it->second);
+                        PSoundManager->Get2DEmitter().StopSpecificSample(it->second);
                 handles[sound] = PlaySample(sound, 4);
             }
         }

@@ -125,7 +125,7 @@ class CUserProfileManager { public:
 };
 struct CSoundSystem {
     virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07(); virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11(); virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15(); virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19(); virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23(); virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27(); virtual void s28(); virtual void s29(); virtual void s30(); virtual void s31(); virtual void s32(); virtual void s33(); virtual void s34(); virtual void s35(); virtual void s36(); virtual void s37(); virtual void s38(); virtual void s39(); virtual void s40(); virtual void s41(); virtual void s42(); virtual void s43(); virtual void s44(); virtual void s45(); 
-    virtual void SetGroupVolume(long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8)
+    virtual void SetGainFader(long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8)
 };
 extern CSoundSystem* g_pSoundSystem;                        // 0x013B8394
 struct CRenderer {
@@ -201,9 +201,9 @@ void CTCInventory::ClosePCInventory(bool closeInGameMenu)
     NUISystem::CManager::GetInstance()->ShowMousePointer_slot29();
     g_InventoryCamera.Reset();
     if (g_pSoundSystem) {
-        g_pSoundSystem->SetGroupVolume(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-        g_pSoundSystem->SetGroupVolume(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        g_pSoundSystem->SetGroupVolume(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        g_pSoundSystem->SetGainFader(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        g_pSoundSystem->SetGainFader(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        g_pSoundSystem->SetGainFader(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
     }
     ClearQuestPersistentFlags();
     StartGameRendering();
@@ -245,7 +245,7 @@ CUserProfileManager& __fastcall CUserProfileManager::Get() { return *g_profile; 
 SS(s00) SS(s01) SS(s02) SS(s03) SS(s04) SS(s05) SS(s06) SS(s07) SS(s08) SS(s09) SS(s10) SS(s11) SS(s12) SS(s13) SS(s14) SS(s15)
 SS(s16) SS(s17) SS(s18) SS(s19) SS(s20) SS(s21) SS(s22) SS(s23) SS(s24) SS(s25) SS(s26) SS(s27) SS(s28) SS(s29) SS(s30) SS(s31)
 SS(s32) SS(s33) SS(s34) SS(s35) SS(s36) SS(s37) SS(s38) SS(s39) SS(s40) SS(s41) SS(s42) SS(s43) SS(s44) SS(s45)
-void CSoundSystem::SetGroupVolume(long mask, float v, float fade) { if (g_nvol < 4) { g_volMask[g_nvol] = mask; g_vol[g_nvol] = v; g_fade[g_nvol] = fade; } g_nvol++; L("vol"); }
+void CSoundSystem::SetGainFader(long mask, float v, float fade) { if (g_nvol < 4) { g_volMask[g_nvol] = mask; g_vol[g_nvol] = v; g_fade[g_nvol] = fade; } g_nvol++; L("vol"); }
 CSoundSystem* g_pSoundSystem;
 #define RS(n) void CRenderer::n() {}
 RS(r00) RS(r01) RS(r02) RS(r03) RS(r04) RS(r05) RS(r06) RS(r07) RS(r08) RS(r09) RS(r10) RS(r11) RS(r12) RS(r13) RS(r14) RS(r15)

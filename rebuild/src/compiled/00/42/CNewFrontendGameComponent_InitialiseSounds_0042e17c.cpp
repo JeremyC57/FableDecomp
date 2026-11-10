@@ -10,7 +10,7 @@
 // CCountedPointer<CASoundBank>::Reset(CASoundBank*) @ 0x0042FD6F (out of line; the catalog's vector<CCharString> instance label is
 // propagated from an identical body), CWideString::CWideString(const wchar_t*) @ 0x0099B6B0 / ~CWideString @ 0x0099B510, the bank's
 // slot 1 (+0x04, CSoundBankLH 0x00A0B630: loads the bank file), the sound manager's (0x013B8394, CSoundManagerLH vtable 0x0129D2C4)
-// slot 46 (+0xB8 = 0x00A3E9D0: walks the set bits of the mask) and its non-virtual enable setter @ 0x00991600 (bool at +0x24,
+// slot 46 SetGainFader (+0xB8 = 0x00A3E9D0: walks the set bits of the mask; Anniversary 360 PDB name, agentSND) and its non-virtual enable setter @ 0x00991600 (bool at +0x24,
 // slot 16 called on disable; the catalog's "CWorld::SetMiniMapEnabled" is a propagated label). String: L"data\\sound\\frontend.lug" 0x01230C54.
 // Pragmas: #pragma optimize("y", off) + #pragma optimize("s", on) -- the CNewFrontendGameComponent TU (frame pointer, `pop ecx` after new).
 // Shape: `PSampleBank.Reset(new CSoundBankLH(g_pSoundSystem))` is VC7.1's null-tested new expression; `esi` becomes &PSampleBank
@@ -50,7 +50,7 @@ public:
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
+    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
     void SetEnabled(bool enabled);                       // 0x00991600
 };
 class CASoundManager;
@@ -70,7 +70,7 @@ void CNewFrontendGameComponent::InitialiseSounds()
     if (((CSoundManagerLH*)PSoundManager)) {
         PSampleBank.Reset(new CSoundBankLH(((CSoundManagerLH*)PSoundManager)));
         PSampleBank->Load(L"data\\sound\\frontend.lug");
-        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x8000, 1.0f, 0.0f);
+        ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x8000, 1.0f, 0.0f);
         ((CSoundManagerLH*)PSoundManager)->SetEnabled(true);
     }
 }
