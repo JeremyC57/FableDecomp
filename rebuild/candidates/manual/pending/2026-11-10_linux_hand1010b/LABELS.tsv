@@ -1,0 +1,21 @@
+address	name	evidence
+0089b5b0	?StartScriptingEntity@CGameScriptInterface@@UAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@W4EScriptAIPriority@@@Z	vtable 0x01260F0C slot 8; Ego_r/FableWin
+00896390	?OpenChest@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z	vtable slot; Ego_r/FableWin
+008a8c60	?EntitySetAsSittingOnFloor@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z	vtable slot 493; Ego_r/FableWin
+00896b60	?KickOffQuestStartScreen@CGameScriptInterface@@UBEXABVCCharString@@_N1@Z	vtable slot; Ego_r/FableWin
+009039d0	??0CScriptGameResourceObjectScriptedThing@@QAE@AAVCGameScriptInterface@@AAVCThing@@JW4EScriptAIPriority@@@Z	PDB name sets; `push 28h; call new` then this ctor in StartScriptingEntity with (this, thing, CurrentScriptID, priority)
+006d5ad0	?GetCurrentStateGroupScriptPriority@CThingAICreature@@QBE?AW4EScriptAIPriority@@XZ	Ego_r; body forwards [ecx+1A8h] to CAIBrain 0x0088B760; already labelled 2026-11-04x
+008ab380	??0?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@PAVCModeSitBase@NCreatureMode@@@Z	FableWin; stores DeleteData 0x008AA810; called on `new CModeSitFloor` result 0x008A8D79
+008ab3d0	??1?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@XZ	FableWin; default dtor body; scope end 0x008A8DC4
+008aa810	?DeleteData@?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@SIXPAX@Z	FableWin; the deleter 0x008AB380 stores in the count block
+008ac3c0	??0CModeSitFloor@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@@Z	Ego_r/FableWin; `new(38h)` = sizeof CModeSitFloor; (thing, group string)
+008ab9d0	??0CCreatureAction_SitDown@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@V?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@@Z	Ego_r/FableWin (already bound)
+008abaa0	??1CCreatureAction_SitDown@@UAE@XZ	Ego_r/FableWin (already bound)
+00860150	??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z	Ego_r/FableWin (already bound)
+0062e900	??1CCombatActionBase@@UAE@XZ	called on the GetUpFromSitting temporary (implicit derived dtor); already bound
+00662ef0	?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z	Ego_r/FableWin
+0073a6e0	?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ	Ego_r/FableWin; TCI_ENTITY_MODE_MANAGER component, result's slot 1 GetType compared with MODE_SIT_FLOOR 10
+0127261c	??_7CAnimFilterAnyGroup@@6B@	RTTI rebuild/manifest/rtti-vtables.tsv
+00415dd0	?GetString@CDefString@@QBE?AVCCharString@@XZ	already bound (FableWin donor order)
+004b2fe0	?OnQuestStartScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z	see NAME_FIXES.tsv
+004a0cd0	?AutoSaveQuestStart@CWorld@@QAE_NXZ	Ego_r/FableWin (already bound with a void return; PDB says bool)

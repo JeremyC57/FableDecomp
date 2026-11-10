@@ -390850,6 +390850,27 @@ $catalog = @(
         TestSource = '00/60/CTCInventoryMap_FrameUpdate_006061b0_test.cpp'
         PassPattern = '006061b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00896390'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_OpenChest_00896390.cpp'
+        TestSource = '00/89/CGameScriptInterface_OpenChest_00896390_test.cpp'
+        PassPattern = '00896390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089b5b0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_StartScriptingEntity_0089b5b0.cpp'
+        TestSource = '00/89/CGameScriptInterface_StartScriptingEntity_0089b5b0_test.cpp'
+        PassPattern = '0089b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a8c60'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_EntitySetAsSittingOnFloor_008a8c60.cpp'
+        TestSource = '00/8a/CGameScriptInterface_EntitySetAsSittingOnFloor_008a8c60_test.cpp'
+        PassPattern = '008a8c60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

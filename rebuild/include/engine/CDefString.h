@@ -25,7 +25,13 @@ public:
  CDefString():TablePos(-1){}
 #endif
  CDefString(const CCharString&);
-#ifdef FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
+ // Per-TU inline opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): that TU expands the
+ // conversion forwarder and calls GetString 0x00415DD0 out of line for an implicit conversion temporary (0x008A8D51..0x008A8D5E:
+ // `lea edx,<tmp> ; push edx ; lea ecx,[ebp+8] ; call 0x00415DD0 ; lea eax,<tmp>`), where VC7.1's plain-inline heuristic
+ // calls the forwarder's own COMDAT (??B 0x00415D70). Same body; GetString is declared only under this opt-in (below).
+ FABLE_FORCEINLINE operator CCharString()const{return GetString();}
+#elif defined(FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION)
  // Per-TU visibility opt-in (Codex pass 13, like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): the NScript TUs of 0x00EC5DE0 /
  // 0x00ECB0E0 call the out-of-line conversion 0x00415D70 (??BCDefString@@QBE?AVCCharString@@XZ) instead of expanding it.
  operator CCharString() const;
@@ -37,7 +43,12 @@ public:
  // 0x00415DD0 (AddThingToVillage 0x0065B951..0x0065B95C, the conversion temporary at [ebp-4]).
  operator CCharString()const{return GetString();}
 #endif
-#ifdef FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING
+#if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
+#if defined(_MSC_VER)
+ __declspec(noinline)
+#endif
+ CCharString GetString()const{return GDefStringTable.GetString(TablePos);}   // 0x00415DD0, called (not expanded) in that TU
+#elif defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING)
  // Per-TU inline opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): that TU expands GetString in place inside a conditional
  // full expression (0x00703F4B..0x00703F58: `mov ecx,[eax] ; push ecx ; push <result> ; mov ecx,offset GDefStringTable ; call
  // CDefStringTable::GetString 0x009D49B0`) where VC7.1's plain-inline heuristic calls the out-of-line copy 0x00415DD0. Same body.

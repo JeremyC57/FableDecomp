@@ -114,6 +114,13 @@ public:
     // Declaration only; the retail body is the #else one (0x004291DE: Data zeroed before Info).
     ~CCountedPointer();
 #else
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_DTOR) && defined(_MSC_VER)
+    // Per-TU opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): retail CALLS this destructor's
+    // same-TU COMDAT (0x008AB3D0 ??1?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@XZ, the body below) yet packs the counted
+    // pointer into the frame slot of an earlier temporary and copies it without re-reading Info (0x008A8D8C..0x008A8DA2): the
+    // body is visible to c2 (it does not keep the address) but not expanded. Pair with FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR.
+    __declspec(noinline)
+#endif
     ~CCountedPointer()
     {
         if (Info) {

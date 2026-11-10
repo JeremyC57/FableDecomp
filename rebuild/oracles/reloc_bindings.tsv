@@ -39137,3 +39137,9 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z	0061e6d0	005fddd0
 ?UpdateRegionsCorrespondances@CTCInventoryMap@@AAEXJJ@Z	005fc0c0	006061b0
 ?UpdateVisitedRegions@CTCInventoryMap@@IAEXJJ@Z	00605ce0	006061b0
+??0CCreatureAction_OpenChest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z	007ee7e0	00896390
+?GetOpenAnimNameForCreature@CTCChest@@QBE?AVCCharString@@XZ	00750240	00896390
+??0CScriptGameResourceObjectScriptedThing@@QAE@AAVCGameScriptInterface@@AAVCThing@@JW4EScriptAIPriority@@@Z	009039d0	0089b5b0
+?CreateNullHandle@CScriptGameResourceObjectScriptedThing@@SI?AVCScriptGameResourceObjectScriptedThingBase@@AAVCGameScriptInterface@@@Z	00903810	0089b5b0
+?GetCurrentStateGroupScriptPriority@CThingAICreature@@QBE?AW4EScriptAIPriority@@XZ	006d5ad0	0089b5b0
+??0CModeSitFloor@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@@Z	008ac3c0	008a8c60

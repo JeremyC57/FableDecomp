@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00896390   WARN RELOC_NAME: ?GetOpenAnimNameForCreature@CTCChest@@QBE?AVCCharString@@XZ -> 00750240 labelled 'CTCChest::GetOpenAnimationForCreature'
+00896390   RELOCATION_MATCH PASS   OpenChest
+0089b5b0   RELOCATION_MATCH PASS   StartScriptingEntity
+008a8c60   RELOCATION_MATCH PASS   EntitySetAsSittingOnFloor
+
+WINS: 3
+  00896390 RELOCATION_MATCH CGameScriptInterface::?OpenChest@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+  0089b5b0 RELOCATION_MATCH CGameScriptInterface::?StartScriptingEntity@CGameScriptInterface@@UAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@W4EScriptAIPriority@@@Z
+  008a8c60 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsSittingOnFloor@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_OpenChest_00896390
+  CGameScriptInterface_StartScriptingEntity_0089b5b0
+  CGameScriptInterface_EntitySetAsSittingOnFloor_008a8c60

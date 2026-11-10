@@ -13,6 +13,13 @@
 class CThingBuilding;
 #endif
 class C3DVector; class CThingAICreatureInit; class CBrainDef;
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SCRIPTPRIORITY
+#if defined(_MSC_VER)
+enum EScriptAIPriority;                                                  // chunk 1010b: MS forward enum
+#else
+enum EScriptAIPriority { };
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_DEBUGRENDER
 #include "stlport/fable_containers.h"
 #include "engine/CCountedPointer.h"
@@ -38,6 +45,12 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SCRIPTPRIORITY
+    // Nested opt-in (chunk 1010b, row 0x0089B5B0 StartScriptingEntity): Ego_r.pdb
+    // ?GetCurrentStateGroupScriptPriority@CThingAICreature@@QBE?AW4EScriptAIPriority@@XZ, out of line in retail at 0x006D5AD0
+    // (`mov ecx,[ecx+1A8h] ; jmp 0x0088B760` = CAIBrain::GetCurrentStateGroupScriptPriority; landing 2026-11-04x label). Declaration only.
+    EScriptAIPriority GetCurrentStateGroupScriptPriority() const;        // 0x006D5AD0
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_INFORMATION
     // Nested opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb
     // ?GetHasInformation@CThingAICreature@@QBE_NXZ, out of line at 0x008300D0 (`mov al,[ecx+1C8h] ; shr al,2 ; and al,1`: bit 2 of

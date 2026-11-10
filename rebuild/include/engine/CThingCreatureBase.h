@@ -142,6 +142,12 @@ public:
     const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
     const CCreatureActionBase* PeekPCurrentAction() const { return PCurrentAction.Data; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMFILTER
+    // Retail opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): Ego_r.pdb / FableWin.pdb
+    // ?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z (const,
+    // returns a reference), out of line in retail at 0x00662EF0. Declaration only: no layout change.
+    const class CAnimationEntry& GetRandomAnimFromNameWithFilter(const CCharString& name, const class CAnimFilterBase& filter) const;   // 0x00662EF0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
     // Retail opt-in (chunk 802, row 0x008EACB0 NCreatureMode::CModeHoverBase::OnActivate): Ego_r.pdb
     // ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (out of line in retail at 0x006622A0) and

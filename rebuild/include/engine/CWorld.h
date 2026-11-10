@@ -121,6 +121,11 @@ public:
     // ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z, out of line in retail at 0x0049EAF0 (landed). Declaration only.
     void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);   // 0x0049EAF0
 #endif
+#ifdef FABLE_RETAIL_CWORLD_AUTOSAVEQUESTSTART
+    // Nested opt-in (chunk 1010b, row 0x00896B60 CGameScriptInterface::KickOffQuestStartScreen): Ego_r.pdb / FableWin.pdb
+    // ?AutoSaveQuestStart@CWorld@@QAE_NXZ, out of line in retail at 0x004A0CD0 (`mov ecx,[edi+4] ; call` 0x00896BDE). Declaration only.
+    bool AutoSaveQuestStart();                                           // 0x004A0CD0
+#endif
     bool EventIsWorldEvent(const CGameEvent* event) const;   // 0x0049D8C0 ?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z
     void Unload();                                           // 0x0049E270 ?Unload@CWorld@@QAEXXZ
     // Retail opt-in addition (Codex pass 11 consolidation 2): inline accessors (FableWin.pdb only, expanded by Ego_r and retail):

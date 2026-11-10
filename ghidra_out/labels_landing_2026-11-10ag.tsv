@@ -1,0 +1,4 @@
+address	name	evidence
+00896390	?OpenChest@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z	RELOCATION_MATCH chunk 1010b; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json
+0089b5b0	?StartScriptingEntity@CGameScriptInterface@@UAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@W4EScriptAIPriority@@@Z	RELOCATION_MATCH chunk 1010b; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json
+008a8c60	?EntitySetAsSittingOnFloor@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z	RELOCATION_MATCH chunk 1010b; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json

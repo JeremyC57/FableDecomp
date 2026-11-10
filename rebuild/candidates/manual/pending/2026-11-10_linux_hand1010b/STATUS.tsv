@@ -1,0 +1,12 @@
+address	name	grade	grades_used	note
+0089b5b0	?StartScriptingEntity@CGameScriptInterface@@UAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@W4EScriptAIPriority@@@Z	RELOCATION_MATCH	1	shared-header rebase (retail CScriptGameResourceObjectScriptedThing opt-in) + inline GetCurrentScriptID() accessor moves c2's rotation pointer so the null-handle release reloads Info into eax
+00896390	?OpenChest@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z	RELOCATION_MATCH	1	natural nested form: positive tests, if (useHero) {...} else { Open(); return true; }, one final return false
+008a8c60	?EntitySetAsSittingOnFloor@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z	RELOCATION_MATCH	2	shared-header rebase (3 new headers), uninitialised mode-manager pointer, implicit GroupName conversion (forwarder forced inline, GetString called), visible noinline CCountedPointer<CModeSitBase> ctor+dtor
+00896b60	?KickOffQuestStartScreen@CGameScriptInterface@@UBEXABVCCharString@@_N1@Z	DIFFER(437v445)	1	parked: exit-block placement only (instructions identical); 24+ probes; differ/ on shared headers
+008a93a0	?EntityWillTeleportToArea@CGameScriptInterface@@UBE_NABVCScriptThing@@VC3DVector@@MM@Z	DIFFER(618v620)	1	parked: this/thing ebx tie; c2prio: thing -11 v this -20, thing's two refs in the found block (+24) decide it
+008a9880	?ScreenFilterFadeTo@CGameScriptInterface@@UBEPAXMMMMMABVCRGBFloatColour@@ABV?$vector@UCScreenFilterSThingByPass@@V?$allocator@UCScreenFilterSThingByPass@@@std@@@std@@@Z	DIFFER(347v363)	1	parked: const-0 piece copy-prefers the loop offset temp (edi, retail ebx) + missing loop-head align block
+0089c910	CanThingBe_Sensed_ByOtherThing	not worked	0	local-model prior unchanged (session time went to the six closer rows)
+0089ce70	?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z	not worked	0	local-model prior unchanged
+008a7a70	?TeleportAllFollowersToHeroPosition@CGameScriptInterface@@UBEXXZ	not worked	0	local-model prior unchanged
+008a8260	?GetHeroSummonedCreaturesList@CGameScriptInterface@@UBE_NAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z	not worked	0	local-model prior unchanged
+0088edc0	CameraDoConversation	not worked	0	no prior

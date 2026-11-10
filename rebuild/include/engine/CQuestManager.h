@@ -52,6 +52,14 @@ private:
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
 public:
+#ifdef FABLE_RETAIL_CQUESTMANAGER_STARTSCREEN
+    // Nested opt-in (chunk 1010b, row 0x00896B60 CGameScriptInterface::KickOffQuestStartScreen): Ego_r.pdb / FableWin.pdb
+    // ?OnQuestStartScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z, out of line in retail at 0x004B2FE0 (`ret 4`, returns
+    // `mov al,1` / false; adds the quest name to the between-start-and-finish-screens list once; called by
+    // KickOffQuestStartScreen 0x00896BD9 and the quest completion UI 0x005E7619). The landed row and catalog call it
+    // AddActivatedQuestName, a name in neither PDB (NAME_FIXES.tsv). Declaration only: no layout change.
+    bool OnQuestStartScreenDisplayed(const CCharString& questName);      // 0x004B2FE0
+#endif
     // Chunk 732 (row 0x004B05C0 TransferBoasts): the nested boast record. Ego_r.pdb layout CBoast (32 bytes): ID +0, Cost +4,
     // Reward +8, ScriptName +0xC, Text +0x10, Title +0x14, Evil +0x18, Failed +0x19, Completed +0x1A, GroupIndex +0x1C; nested
     // in CQuestManager (Ego_r ??0CBoast@CQuestManager@@QAE@ABV01@@Z, `V` key). The default constructor is inline in retail

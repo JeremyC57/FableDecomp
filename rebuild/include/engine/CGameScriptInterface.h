@@ -31,6 +31,12 @@ public:
     CGameScriptInterface(CMainGameComponent&, const CGameDefinitionManager&, CWorld&, CPlayerManager&, CDisplayEngine&); // 0x006E7740
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?WorldUpdate@CGameScriptInterface@@QAEX_N@Z, retail 0x006E75C0.
     void WorldUpdate(bool fullUpdate);                                   // 0x006E75C0
+#ifdef FABLE_RETAIL_CGAMESCRIPTINTERFACE_GETCURRENTSCRIPTID
+    // Retail opt-in (chunk 1010b, row 0x0089B5B0 StartScriptingEntity): FableWin.pdb ?GetCurrentScriptID@CGameScriptInterface@@QBEJXZ
+    // (debug build only: inline in the release build, no retail out-of-line copy); the body reads CurrentScriptID +0x28
+    // (`mov eax,[edi+28h]` 0x0089B6BD). Body only: no layout change.
+    long GetCurrentScriptID() const { return CurrentScriptID; }
+#endif
     virtual ~CGameScriptInterface();                                     // slot 0  0x006E7D50 (vector deleting)
 public:
     virtual void Error(const CCharString&, const CCharString&, const CCharString&, unsigned long) const; //   1 0x0088DE00

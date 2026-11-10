@@ -22,6 +22,12 @@ private:
     unsigned char AttitudeTags[4]; // std::list<std::pair<long,EConversationAttitude> >.
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SCRIPTED_CONTROL; } bool IsActive() const;
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ISLOCKED
+    // Retail opt-in (chunk 1010b, row 0x0089B5B0 CGameScriptInterface::StartScriptingEntity): Ego_r.pdb / FableWin.pdb
+    // ?IsLocked@CTCScriptedControl@@QBE_NXZ, inline in retail (`mov al,[esi+18h] ; test al,al` re-read every loop pass,
+    // 0x0089B65E / 0x0089B687). Body only: no layout change.
+    bool IsLocked() const { return Locked; }
+#endif
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE
     class CActionBase;
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_CREATURE

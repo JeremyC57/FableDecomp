@@ -6,6 +6,33 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_SITDOWN
+// Retail opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): the retail class instead of the flat
+// layout below. RTTI .?AVCCreatureAction_SitDown@@ : CCreatureActionBase (ghidra_out/rtti_bases.tsv), retail vtable slots 0 scalar
+// deleting dtor 0x008AC330, 3 PerformAction 0x00848FD0, 11 Clone 0x008AE2A0 (rebuild/manifest/rtti-vtables.tsv). Ctor Ego_r.pdb /
+// FableWin.pdb ??0CCreatureAction_SitDown@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@V?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@@Z
+// (retail 0x008AB9D0; the sit mode by value), the dtor ??1CCreatureAction_SitDown@@UAE@XZ out of line at 0x008ABAA0 (0x008A8DBB).
+// PSitMode (CCountedPointer<NCreatureMode::CModeSitBase>) +0xA8 on the retail 0xA8 CCreatureActionBase; size 0xB0. Needs
+// FABLE_RETAIL_CCREATUREACTIONBASE and engine/CCountedPointer.h.
+#include "rebuild_abi.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCountedPointer.h"
+class CThingCreatureBase;
+class CAnimationEntry;
+namespace NCreatureMode { class CModeSitBase; }
+class CCreatureAction_SitDown : public CCreatureActionBase {
+public:
+    CCreatureAction_SitDown(CThingCreatureBase& creature, const CAnimationEntry& animation,
+                            CCountedPointer<NCreatureMode::CModeSitBase> sitMode);   // 0x008AB9D0
+    virtual ~CCreatureAction_SitDown();                                  // 0x008ABAA0
+    virtual void PerformAction();                                        // slot 3  0x00848FD0
+protected:
+    virtual CCreatureActionBase* Clone() const;                          // slot 11 0x008AE2A0
+private:
+    CCountedPointer<NCreatureMode::CModeSitBase> PSitMode;               // +0xa8
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SitDown) == 0xb0);
+#else // flattened layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -59,4 +86,5 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SitDown, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SitDown, PSitMode_Data) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SitDown, PSitMode_Info) == 0xac);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_SITDOWN
 #endif // FABLE_ENGINE_CCREATUREACTION_SITDOWN_H
