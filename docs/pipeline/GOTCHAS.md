@@ -2686,3 +2686,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - An implicit `const char*` -> CCharString argument builds the temporary before any other argument is pushed (retail order); an explicit `CCharString("...")` argument does not (0x00663990, 0x006A16A0).
 - For `R*x + F*y + U*z + P` with member operator+, VC7.1 evaluates the right operand first; running `+=` statements give retail's operand order (0x005EABC0).
 - The CThing type-flag test `(~flags & mask) == 0` gives retail's `not eax ; test al,mask`; `(flags & mask) == mask` gives `and/cmp` (0x00934E50).
+- Some retail calls skip loading `ecx` for a member callee (0x00733D1C -> CTCBase::PeekWorld 0x00686A80) or pass arguments in non-standard registers (libpk 0x00C1C460's callees): link-time code generation residue no plain C++ declaration reproduces -- park, do not fake it.
+- A visible `__declspec(noinline)` CArray::push_back / vector::reserve tells VC7.1 the callee never captures the local array, which keeps its start in a callee-saved register (0x00AE3920).

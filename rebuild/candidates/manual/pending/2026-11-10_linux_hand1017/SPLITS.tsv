@@ -1,0 +1,2 @@
+address	length	name	evidence
+0081ea50	391	CMap::GetGroundSizeZAt	the body ends with `ret 4` at 0x0081EBD4 (0x187 bytes) and int3 padding; 0x0081EBE0 starts the C2DCoordI overload (mov ecx,[ecx+1A7Ch] ...), which the 832-byte catalog extent swallowed

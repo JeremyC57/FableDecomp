@@ -1,0 +1,5 @@
+- VC7.1: a visible but `__declspec(noinline)` CArray<T>::push_back / vector::reserve body (instead of a bare declaration) tells c2 the callee never captures the local array, so its start stays in a callee-saved register across the inline destructor's free calls and the groups/bone colouring flips to retail's (0x00AE3920 CParticleProgram::RemapBoneIndices, `mov ebx,[esp+1Ch]` ... `push ebx` at 0x00AE39EC..0x00AE3A1D; opt-in FABLE_RETAIL_CARRAY_PUSHBACK_NOINLINE).
+- 0x0081EA50 CMap::GetGroundSizeZAt(const C3DVector&) is 391 bytes (ret 4 at 0x0081EBD4); the catalog's 832 swallows the C2DCoordI overload at 0x0081EBE0 (SPLITS.tsv).
+- CActiveQuest::GetName() returns QuestName at +0x30 (Regions +0x10, MarkerPosition +0x1C, PScriptData +0x28) - 0x004B2CA0.
+- 0x00733D1C calls CTCBase::PeekWorld 0x00686A80 without loading ecx (LTCG dropped the unused `this`): a plain C++ member call always loads ecx, so this row cannot reach retail without an approved spelling.
+- 0x008365F0 / 0x006A3E00 / 0x004B2CA0 / 0x0081EA50 / 0x00733CF0 / 0x00C1C460 catalog labels were propagated and wrong; settle by caller + PDB name set before authoring.

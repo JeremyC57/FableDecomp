@@ -1,0 +1,15 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+004b2ca0	832	WorldMap_BuildLoadSectionsList	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand473/differ/004b2ca0.cpp	0099f570 0099f600	004b2ad0 004b2b70 004b2fe0 004b3060 004b3260
+00c1c460	448	ParticleMorphs_UpdateEditor	unworked			00c1bf00 00c1c330	00c1c280 00c1c3f0 00c1c620 00c1c6a0 00c1c700
+0081ea50	832	Terrain_InterpolateHeightAtPosition	unworked		rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0081ea50.cpp		0081e960 0081e9c0 0081e9f0 0081ed90 0081ee00 0081ee60
+00409730	1088	CUserProfileManager::VerifySignature	unworked				00409140 004091c0 0040a740
+00446ef0	1184	CGamePlayerInterface::SetControlScheme	unworked				00446b90 00446be0 00447390 004473a0 00447660
+00a5cb90	848	CMatrix4x4::AlignedTransformTransposedAssumeW	unworked				00a5c9b0 00a5cab0 00a5cb00 00a5cee0 00a5d000 00a5d4d0
+00659800	1074	CTCVillage::CalculateSecuritySweepTasks	unworked				0065935e 006594bb 00659c32 00659c7e 00659ea9
+00409b70	1120	CUserProfileManager::SetDefaultValuesForNewProfile	unworked		rebuild/candidates/manual/pending/2026-11-03_linux_hand733/differ/00409b70.cpp		004091c0 0040a740
+00b68070	1152	CEngineLandscapeRenderer::LoadForegroundTextures	unworked			009fde80	00b67920 00b67ec0 00b684f0 00b68610 00b687d0
+008365f0	128	CTCInventoryAbilities_PreloadDeadAnimation	unworked		rebuild/candidates/manual/pending/2026-10-31_codex_parked50/differ/008365f0.cpp		008364c0 00836540 00836580 00836670 00836680 00836740
+00ae3920	272	CParticleProgram::RemapBoneIndices	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand587/differ/00ae3920.cpp		00ae3550 00ae3670 00ae37d0 00ae3a30 00ae3a60
+006a3e00	288	Heap_SiftDown	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand476/differ/006a3e00.cpp		006a3cd0 006a3d30 006a3da0 006a3f20 006a3f80 006a3fa0
+00733cf0	288	TCCombat_ApplyBlockResponse	unworked		rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/00733cf0.cpp	00738a80	00733950 007339e0 00733e10 00733ee0 00733f70
+00a4d330	1088	C3DAnimation2::CalcLocalBoneTransformation	unworked				00a4cd70 00a4cdd0 00a4dea0

@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+008365f0	??$for_each@PBU?$pair@KVCAnimationEntry@@@std@@VCDeadCreatureAnimPreloader@@@std@@YI?AVCDeadCreatureAnimPreloader@@PBU?$pair@KVCAnimationEntry@@@0@0V1@@Z	DIFFER(119v119)	1	register rotation only (4 lines): strcmp-intrinsic zero edx vs eax, BankIndex eax vs ecx; catalog name wrong
+006a3e00	??$__introsort_loop@PAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@U12@HV?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@std@@YIXPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@0@00HV?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@Z	DIFFER(277v277)	1	first/last ebx<->edi colouring (c2prio first 248 > last 244); catalog 'Heap_SiftDown' wrong
+0081ea50	?GetGroundSizeZAt@CMap@@IBEMABVC3DVector@@@Z	DIFFER(382v391)	3	extent is 391 (SPLITS.tsv); HeightMap ebx cache + arg-slot homing (frame 0xC v 0x10); catalog name wrong
+00ae3920	?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z	DIFFER(270v270)	5	scheduling only (4 lines): key store / map-header load order
+004b2ca0	?GetActiveQuestSectionNames@CQuestManager@@QBEXAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z	DIFFER(856v832)	2	ours builds an and esp,-8 aligned frame (only with both insert loops present); catalog name wrong
+00409b70	?SetDefaultValuesForNewProfile@CUserProfileManager@@QAEXXZ	DIFFER(1089v1105)	2	prior needs its chunk-733 overlay (SRC_FAIL on committed headers); deferred non-null-def arm layout
+00733cf0	?UpdateGetHitCounterAttack@CTCCombat@@QAEXABVCThingCreatureBase@@@Z	DIFFER(285v288)	1	prior local model; LTCG this-less call to CTCBase::PeekWorld 0x00686A80 (ecx not loaded) has no plain-C++ spelling; catalog name wrong
+00409730	?VerifySignature@CUserProfileManager@@SI_NABVCWideString@@@Z	NOT_ATTEMPTED	0	1088 bytes, /GS cookie + inlined stream reads; not reached (budget spent on near rows)
+00446ef0	?SetControlScheme@CGamePlayerInterface@@QAEXJ@Z	NOT_ATTEMPTED	0	1184 bytes: four vector erases + counted pointer + input-control new/vtable loop; not reached
+00a5cb90	?AlignedTransformTransposedAssumeW@CMatrix4x4@@QBEXPBVC4DVector@@PAV2@KM@Z	PARKED	0	hand SSE inline-asm kernel (movaps/shufps, aligned frame): retail_asm, needs a shared helper per ASM_RULES, out of chunk scope
+00659800	?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ	NOT_ATTEMPTED	0	1074 bytes, ebp frame, x87 distance math, calls into odd-address CTCVillage helpers; not reached
+00b68070	?LoadForegroundTextures@CEngineLandscapeRenderer@@AAE_N_N@Z	NOT_ATTEMPTED	0	1152 bytes x87-heavy; not reached
+00a4d330	?CalcLocalBoneTransformation@C3DAnimation2@@QBEXAAVC3DKeyframe@@KM@Z	NOT_ATTEMPTED	0	1088 bytes x87-heavy keyframe interpolation; not reached
+00c1c460	libpk_c1c460	PARKED	0	libpk audio code (not ParticleMorphs): lock 0x0143BAFC, callees 0xC1BF00/0xC1BFB0/0xC1C330/0xC1C3F0/0xC1BFF0 use private LTCG register conventions no C++ declaration reproduces; catalog name wrong
