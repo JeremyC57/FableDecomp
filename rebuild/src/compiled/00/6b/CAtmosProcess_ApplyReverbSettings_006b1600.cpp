@@ -3,7 +3,7 @@
 // Leaf: ?ApplyReverbSettings@CAtmosProcess@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1600, length 165 bytes (+ int3 padding), thiscall, plain `ret`.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CDefinitionManager::Get @ 0x0044C6B0,
-//   CDefinitionManager::GetDef<const CSoundDef>(const CCharString&, CDefPointer&) @ 0x004196B2, memmove @ 0x00BFEAE6
+//   CDefinitionManager::GetDef<CSoundDef>(const CCharString&, CDefPointer<const CSoundDef>*) const @ 0x004196B2, memmove @ 0x00BFEAE6
 //   (MSVCR71 import), the sound system's virtual slots 29 (+0x74, the reverb parameters) and 30 (+0x78, the reverb
 //   level and a zero; both names descriptive), the def's virtual Destroy (slot 1).
 // Globals: g_pSoundSystem @ 0x013B8394 (the landed CAtmosProcess ctor 0x006B1960 / CMusicManager ctor names);
@@ -79,7 +79,8 @@ public:
 
 class CDefinitionManager {
 public:
-    template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out);   // 0x004196B2 for T = const CSoundDef
+    // Ego_r.pdb: ??$GetDef@VCSoundDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundDef@@@@@Z (const, out by pointer)
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x004196B2 for T = CSoundDef
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 
@@ -112,7 +113,7 @@ void CAtmosProcess::ApplyReverbSettings()
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
-            CGameDefinitionManager::Get().GetDef(name, soundDef);
+            CGameDefinitionManager::Get().GetDef(name, &soundDef);
         }
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
         CReverbParameters params;

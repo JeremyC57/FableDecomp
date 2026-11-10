@@ -13,7 +13,10 @@ class CEnginePrimitiveHandle { public: void* __vftable; void* Data; };
 struct CEngine_01436e80 {
     void UpdatePrimitive(CEnginePrimitiveHandle* handle, const CAddPrimitiveDesc& desc);   // 0x00B32000
 };
-extern CEngine_01436e80* g_pEngine_01436e80;      // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CEngine_01436e80 view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 inline bool IsInBlock(const char* p, const char* base, unsigned long size)
 {
     return p && p >= base && p < base + size;
@@ -40,5 +43,5 @@ void CLocalDetailPrimitiveMeshZSpriteBatch::RelocateData(void* block, char* oldB
         Rebase(m_pVertexBlock, oldBase, newBase);
     else if (IsInBlock(m_pIndexBlock, oldBase, size))
         Rebase(m_pIndexBlock, oldBase, newBase);
-    g_pEngine_01436e80->UpdatePrimitive(&m_handle, SetupPrimitiveDesc());
+    ((CEngine_01436e80*)g_pEnginePrimitiveRenderer)->UpdatePrimitive(&m_handle, SetupPrimitiveDesc());
 }

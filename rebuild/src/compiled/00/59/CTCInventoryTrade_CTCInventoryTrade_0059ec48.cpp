@@ -38,7 +38,11 @@ struct CComponentVector {                                     // vector<NUISyste
     void clear() { erase(begin(), end()); }
 };
 struct CPrimitiveHandleVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; ~CPrimitiveHandleVector(); };   // 0x00440C40
-struct CLongList { void* _M_node; ~CLongList(); };                                                              // 0x0042AB73
+namespace std {                                    // STLport 4.6 list<long>: only its base destructor is out of line
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class _List_base { public: void* _M_node; ~_List_base(); };   // ~ 0x0042AB73 for long
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> { };
+}
 struct CComponentPairMap { void* _M_header; unsigned long _M_node_count; long _M_key_compare; ~CComponentPairMap(); };     // 0x005B211F
 struct CComponentListMap { void* _M_header; unsigned long _M_node_count; long _M_key_compare; ~CComponentListMap(); };     // 0x005B2160
 struct CLongLongMap { void* _M_header; unsigned long _M_node_count; long _M_key_compare; ~CLongLongMap(); };               // 0x004DD2B1
@@ -64,7 +68,7 @@ public:
 class CTCInventoryTrade : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     CPrimitiveHandleVector TradeAnimPrimitiveHandles;         // +0x134
-    CLongList              NotInStock;                        // +0x140
+    std::list<long>        NotInStock;                        // +0x140
     CComponentPairMap      ItemsToBuy;                        // +0x144
     CComponentPairMap      ItemsToSell;                       // +0x150
     bool  IsShoppingValid;                                    // +0x15c

@@ -13,7 +13,7 @@
 //   `?RenderClothPrimitive@CEngineClothRenderer@@QAEXABVCParticleSimulation@@ABVC3DClothPrimitive@@ABVC3DPrimitive2@@ABVCEngineSubPrimitiveMeshBase@@AAVCEngineInternalPrimitiveMeshBase@@ABVCMatrix3x4@@W4ERenderPassType@@_N@Z`).
 // Globals: 0x01436E80 the engine primitive renderer (CEnginePrimitiveRenderer: BlockOnLoad +0x04 from
 //   CEnginePrimitiveRendererSharedData, ClothRenderer +0x2F0 = PDB +0x2F4 less the 8-byte shorter retail CArray/map members);
-//   spelling g_pPrimitiveRenderer_01436e80 is descriptive (the bound CEnginePrimitiveRenderer* spelling; see NOTES).
+//   spelling g_pEnginePrimitiveRenderer is descriptive (the bound CEnginePrimitiveRenderer* spelling; see NOTES).
 //   g_EngineInterpolationInfo 0x0143B8E0 (CEngineInterpolationInfo, the landed FrameStart 0x00B32660 spelling):
 //   InterpolationSetList[set].WFInterpolate is the fixup 0x0143B934 (+0x4C list, +8 WFInterpolate, 12-byte sets).
 // Layout: CEngineClothSimulationMeshBase (landed 0x00B81180 model): ParticleSims +0x0C (CArray of 8-byte counted
@@ -118,7 +118,7 @@ class CEnginePrimitiveRenderer { public:
     unsigned char _pad05[0x2f0 - 5];
     CCountedPointer<CEngineClothRenderer> ClothRenderer;   // +0x2f0
 };
-extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e80;   // 0x01436E80
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 class CEngineInterpolationInfoSet { public:
     float GTPredictedRenderAt;
     float GTPredictedTimeSinceLastRenderFrame;
@@ -188,9 +188,9 @@ void CEngineClothSimulationStaticMesh::Render(const C3DPrimitive2& primitive, co
             centre.X * owner->ObjectTransform.E12 + centre.Y * owner->ObjectTransform.E22 + centre.Z * owner->ObjectTransform.E32 + owner->ObjectTransform.E42,
             centre.X * owner->ObjectTransform.E13 + centre.Y * owner->ObjectTransform.E23 + centre.Z * owner->ObjectTransform.E33 + owner->ObjectTransform.E43));
         CParticleProgram* program = clothPrimitive->ParticleProgram.Get();
-        C4DVector* buffer = g_pPrimitiveRenderer_01436e80->ClothRenderer->GetPositionBuffer(program->GetVertexPositionCount());
+        C4DVector* buffer = g_pEnginePrimitiveRenderer->ClothRenderer->GetPositionBuffer(program->GetVertexPositionCount());
         program->PrepareForRendering(buffer, *simulation, g_EngineInterpolationInfo.InterpolationSetList[owner->InterpolationSet].WFInterpolate, fade);
-        g_pPrimitiveRenderer_01436e80->ClothRenderer->RenderClothPrimitive(*simulation, *clothPrimitive, primitive, subPrimitive, *owner,
-            subPrimitive.GetOwner()->ObjectTransform, passType, g_pPrimitiveRenderer_01436e80->BlockOnLoad);
+        g_pEnginePrimitiveRenderer->ClothRenderer->RenderClothPrimitive(*simulation, *clothPrimitive, primitive, subPrimitive, *owner,
+            subPrimitive.GetOwner()->ObjectTransform, passType, g_pEnginePrimitiveRenderer->BlockOnLoad);
     }
 }

@@ -50,7 +50,7 @@ class CEnginePrimitiveRendererSharedData { public:
 };
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData { public: };
 extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData;   // 0x01436E78
-extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e80;              // 0x01436E80
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 class CEnginePrimitiveManagerMeshBase : public CEnginePrimitiveManagerMeshBaseHeader { public:   // engine/CEnginePrimitiveManagerMeshBase.h layout
     static FABLE_FORCEINLINE unsigned long __fastcall GetAppropriateLOD(const C3DMeshInfo* meshInfo, float distance, float radius, float errorTolerance)
     {
@@ -83,8 +83,8 @@ bool CEngineInternalPrimitiveAnimatedMesh::SetupMesh(float distance, float radiu
     long frame = g_pEngine_01436ea4->CurrentRenderFrame;
     if (!RenderInfo.Mesh || RenderInfo.RenderFrame != frame) {
         unsigned long lod = CEnginePrimitiveManagerMeshBase::GetAppropriateLOD(MeshInfo, distance, radius, g_pPrimitiveRendererSharedData->CharacterLODErrorTolerance);
-        if (g_pPrimitiveRenderer_01436e80->LODForced != -1)
-            lod = g_pPrimitiveRenderer_01436e80->LODForced;
+        if (g_pEnginePrimitiveRenderer->LODForced != -1)
+            lod = g_pEnginePrimitiveRenderer->LODForced;
         CCountedPointer<const C3DMesh2> mesh;
         if (!MeshInfo->GetMesh(mesh, lod, 0))
             return false;

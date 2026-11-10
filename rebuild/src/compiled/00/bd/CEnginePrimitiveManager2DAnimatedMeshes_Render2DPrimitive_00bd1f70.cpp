@@ -147,7 +147,7 @@ class CEnginePrimitiveRenderer { public:
     unsigned char        _pad005[0x2f0 - 5];
     CSimulationSettings* Simulation;               // +0x2f0
 };
-extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e80;   // 0x01436E80
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 
 struct CBase {
     virtual void v00();
@@ -199,11 +199,11 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
     CMatrix3x4 transform = mesh.GetLODTransform(g_LODTable_0143b934[mesh.LODIndex].Distance, true);
     bool urgent = (mesh.Flags >> 7) & 1;
     C3DMeshInfo* info = mesh.MeshInfo;
-    if (!g_pPrimitiveRenderer_01436e80->Loading) {
+    if (!g_pEnginePrimitiveRenderer->Loading) {
         info->BeginLoading(0, false, false);
         info->SetLoadPriority(urgent ? 2 : 1);
     }
-    if (!urgent && !g_pPrimitiveRenderer_01436e80->Loading) {
+    if (!urgent && !g_pEnginePrimitiveRenderer->Loading) {
         C3DMeshInfo* current = mesh.MeshInfo;
         if (!current->IsLoaded())
             return;
@@ -255,7 +255,7 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
             flags |= 0x180;
         long list = (material.Flags & 1) ? 0x10 : 0xf;
         bool simulated;
-        if (subMesh->SimulationStart != subMesh->SimulationEnd && g_pPrimitiveRenderer_01436e80->Simulation->Enabled &&
+        if (subMesh->SimulationStart != subMesh->SimulationEnd && g_pEnginePrimitiveRenderer->Simulation->Enabled &&
             mesh.IsSimulationRunning(i))
             simulated = true;
         else

@@ -23,7 +23,9 @@ void __cdecl operator delete(void* block);    // 0x00BFE9BC
 class CWideString {
 public:
     CWideStringData* PStringData;             // +0x00
-    CWideStringData* AllocStringData(const unsigned short* text, long length);   // 0x0099B3C0
+protected:
+    CWideStringData* AllocStringData(const unsigned short* text, long length);   // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
+public:
     void UnassignString()                     // 0x0099B4D0, inlined
     {
         CWideStringData* data = PStringData;

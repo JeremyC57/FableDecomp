@@ -10,7 +10,7 @@
 //   but for the class.
 // Callees: CResource::ListRemove 0x009FBFB0 / ListInsert 0x009FBF90, CFrameData::BeginLoading 0x009FDE80, CFrameData::CFrameData(
 //   const CGraphicInfoFrame*) 0x009FE380 (operator new 0x00BFEA1A, 0x44 bytes), CGraphicInfoFrame::InternalGetFrameForcedLoading
-//   0x009FF6B0; globals 0x01436E80 (g_pPrimitiveRenderer_01436e80, BlockOnLoad +4) and 0x01436E98 (the CEngineResourceManager
+//   0x009FF6B0; globals 0x01436E80 (((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer), BlockOnLoad +4) and 0x01436E98 (the CEngineResourceManager
 //   singleton: retail +0x2ADC is SatRGBATexture -- Ego_r 14876 / engine header +0x2d0c, retail = header - 0x230 as the landed
 //   BuildHWStipplePatterns 0x00B3C4B0 pins HWInverseStipplePatterns at +0x2AB4; the mask's "blank" is the all-ones texture).
 // Shape: as the Reflection differ (STLport-style vector member for the double size computation; `flags = 0; if (BlockOnLoad ||
@@ -193,7 +193,10 @@ class C3DMeshMaterial { public:                              // Ego_r.pdb, 0x30 
     unsigned long  ReflectionMapBankIndex;             // +0x18
 };
 struct CEnginePrimitiveRendererSharedData { void* _pad00; bool BlockOnLoad; };   // +0x04
-extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRenderer_01436e80;       // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CEnginePrimitiveRendererSharedData view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 
 
 struct IDirect3DTexture9;
@@ -249,6 +252,6 @@ const CTexture* __fastcall CEnginePrimitiveManagerMeshBase::Get2DAlphaMaskTextur
     if (bankIndex == 0)
         return &g_pEngineResourceManager_01436e98->SatRGBATexture;
     CGraphicInfoFrame* frame = fullBank->GetGraphicInfo(bankIndex) ? fullBank->GetGraphicInfo(bankIndex)->Frames : 0;
-    unsigned long flags = (g_pPrimitiveRenderer_01436e80->BlockOnLoad || force) ? 0x11 : 0;
+    unsigned long flags = (((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer)->BlockOnLoad || force) ? 0x11 : 0;
     return frame->GetTexture(mipmap, flags);
 }

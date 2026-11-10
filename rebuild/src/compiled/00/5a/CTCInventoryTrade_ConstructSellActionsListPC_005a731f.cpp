@@ -14,7 +14,7 @@
 //   CDataBank::GetTextBySymbol 0x009C95E0 (text bank at CMainGameComponent::Get() +0x14), IntToWideString 0x00405F00 (`__fastcall`),
 //   CWideString operator+ 0x0099BE70 (`__fastcall`), CWideString 0x0099B6B0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   operator new 0x00BFEA1A, CAction 0x0042BE50, CCountedPointer<CAction> 0x0042AA29 / ~ 0x00429160, param-list push_back 0x0042B646
-//   (same-TU noinline stand-in), CTCShop::HasDefaultStockItem 0x007723D0, ItemSellLists operator[] 0x005B3167.
+//   (same-TU noinline stand-in), CTCShop::IsValidStockItem 0x007723D0, ItemSellLists operator[] 0x005B3167.
 // Shape: the AddSellItemToList 0x0059ED42 TU conventions; the hero's tab presence test is a bare statement (its result is
 //   dropped, so only the bitset call survives); the shop pointer is zero-initialised in memory and the lookup key reuses its
 //   slot; the three literal addresses of the repeated entry construction are CSE'd into ebx/edi/esi by VC; the item count is
@@ -66,7 +66,7 @@ class CThing { public:
     }
 };
 class CTCShop { public:                                        // interface type 0x53
-    bool HasDefaultStockItem(long defIndex);            // 0x007723D0
+    bool IsValidStockItem(long defIndex) const;            // 0x007723D0
 };
 class CPlayer { public: CThing* GetControlledCreature(); };  // 0x00487DD0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
@@ -240,7 +240,7 @@ bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defI
         entry->AddPressedAction(action);
         list->AddEntry(entry);
     }
-    if (count != 0 && shop->HasDefaultStockItem(defIndex)) {
+    if (count != 0 && shop->IsValidStockItem(defIndex)) {
         CComponentBase* listObject = actionsList.Data;
         ItemSellLists[parent] = listObject;
         if (addAsChild)

@@ -8,7 +8,7 @@
 //   label "AddSellItemToList" is propagated from 0x0059ED42). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CManager::GetInstance 0x0041E5F2, CTCInventoryBase::GetTradingThing 0x005BC4C4 (catalog
 //   "CWorld::DrawGetEnvironment" is propagated), std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline
-//   GetInterface, type 0x53 = CTCShop), CTCShop::HasDefaultStockItem(long) 0x007723D0 (catalog "_atexit" is propagated; it is
+//   GetInterface, type 0x53 = CTCShop), CTCShop::IsValidStockItem(long) 0x007723D0 (catalog "_atexit" is propagated; it is
 //   `FindDefaultStockItem(def) != 0`, 0x00772250), CManager::CreateMenuEntryComponent 0x00428494, CCountedPointer<CComponent>
 //   Reset 0x00429C6F / dtor 0x004291DE, CWideString 0x0099B6B0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   ItemsToSell insert(const value_type&) 0x005B2872 (pair<iterator,bool> by hidden pointer), operator new 0x00BFEA1A,
@@ -34,7 +34,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCShop { public:                                        // interface type 0x53
-    bool HasDefaultStockItem(long defIndex);            // 0x007723D0
+    bool IsValidStockItem(long defIndex) const;            // 0x007723D0
 };
 namespace NUISystem {
 class CActionParam { public:
@@ -193,7 +193,7 @@ bool CTCInventoryTrade::AddSellItemToListPC(CComponent* owner, long defIndex, lo
     CCountedPointer<CComponent> entry;
     CTCShop* shop = 0;
     GetTradingThing()->GetTC(TCI_SHOP, &shop);
-    if (shop->HasDefaultStockItem(defIndex)) {
+    if (shop->IsValidStockItem(defIndex)) {
         entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "PC_MENU_ENTRY_BRANCH_TEMPLATE",
                                                  0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     } else {

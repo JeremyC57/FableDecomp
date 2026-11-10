@@ -9,12 +9,12 @@ struct SSpendInfoVector {
     ExperienceSpendInfo* begin() { return _M_start; }
     ExperienceSpendInfo& operator[](long n) { return *(begin() + n); }
 };
-struct CTCHeroExperience_Calls {
+struct CTCHeroExperience {
     long spends; long spentCategory; long spentAmount; long forced;
     void SpendExperience(EHeroExperienceStatCategory category, long amount) { ++spends; spentCategory = (long)category; spentAmount = amount; }
     void ForceSpendableExperienceTo(long amount) { forced = amount; }
 };
-struct CTCInventoryAbilities_Calls {
+struct CTCInventoryAbilities {
     bool available[4]; long cost[4]; long category[4]; long upgrades; long costCalls;
     bool IsAbilityAvailable(EHeroAbility ability) { return available[(long)ability]; }
     long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b) { ++costCalls; return levels == 1 && b ? cost[(long)ability] : -999; }
@@ -24,9 +24,9 @@ struct CTCInventoryAbilities_Calls {
 class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool; SSpendInfoVector ExperienceSpendValuesStats; SSpendInfoVector ExperienceSpendValuesAbility;
-    CTCHeroExperience_Calls* hero; CTCInventoryAbilities_Calls* abilities; long externals; long externalAbility; long externalAmount;
-    CTCHeroExperience_Calls* GetTCHeroExperience() { return hero; }
-    CTCInventoryAbilities_Calls* GetTCInventoryAbilities() { return abilities; }
+    CTCHeroExperience* hero; CTCInventoryAbilities* abilities; long externals; long externalAbility; long externalAmount;
+    CTCHeroExperience* GetTCHeroExperience() { return hero; }
+    CTCInventoryAbilities* GetTCInventoryAbilities() { return abilities; }
     void UpdateExternalExperienceSpendAbility(EHeroAbility ability, long amount) { ++externals; externalAbility = (long)ability; externalAmount = amount; }
     void SpendExperienceOnAbility(EHeroAbility ability);
 };
@@ -50,8 +50,8 @@ int main()
 {
     ExperienceSpendInfo pool[4], ability[4];
     pool[3].currentSpend = 777;
-    CTCHeroExperience_Calls hero; hero.spends = 0; hero.forced = -1; hero.spentCategory = -1; hero.spentAmount = -1;
-    CTCInventoryAbilities_Calls abilities; abilities.upgrades = 0; abilities.costCalls = 0;
+    CTCHeroExperience hero; hero.spends = 0; hero.forced = -1; hero.spentCategory = -1; hero.spentAmount = -1;
+    CTCInventoryAbilities abilities; abilities.upgrades = 0; abilities.costCalls = 0;
     abilities.available[0] = true; abilities.available[1] = true; abilities.available[2] = false; abilities.available[3] = true;
     abilities.cost[0] = 100; abilities.cost[1] = 200; abilities.cost[2] = 300; abilities.cost[3] = 0;
     abilities.category[0] = 2; abilities.category[1] = 1; abilities.category[2] = 1; abilities.category[3] = 3;

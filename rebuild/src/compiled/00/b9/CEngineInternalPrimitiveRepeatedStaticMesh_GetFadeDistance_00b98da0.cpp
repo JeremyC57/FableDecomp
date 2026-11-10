@@ -7,7 +7,10 @@ struct SViewRecord_01436e80 {
     unsigned char _pad[0x88];
     float m_fadeDistanceScale;                     // +0x88
 };
-extern SViewRecord_01436e80* g_pViewRecord_01436e80;   // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local SViewRecord_01436e80 view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 
 class CEngineFadeDistance { public:
     float FadeBeginDistance;
@@ -24,7 +27,7 @@ class CEngineInternalPrimitiveRepeatedStaticMesh { public:
 
 CEngineFadeDistance CEngineInternalPrimitiveRepeatedStaticMesh::GetFadeDistance() const
 {
-    float scale = g_pViewRecord_01436e80->m_fadeDistanceScale;
+    float scale = ((SViewRecord_01436e80*)g_pEnginePrimitiveRenderer)->m_fadeDistanceScale;
     CEngineFadeDistance distance(FadeDistance_FadeBeginDistance * scale, FadeDistance_MaxDrawDistance * scale);
     return distance;
 }

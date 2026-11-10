@@ -45,7 +45,7 @@ enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 enum EHeroExperienceStatCategory { EHeroExperienceStatCategory_Force32 = 0x7fffffff };
 class CTCInventoryAbilities { public:
     EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility ability) const;   // 0x005EDEEB
-    bool IsAbilityAvailable(EHeroAbility ability);                          // 0x005EDF08
+    bool IsAbilityAvailable(EHeroAbility ability) const;                    // 0x005EDF08
 };
 
 class CTCInventoryExperience { public:

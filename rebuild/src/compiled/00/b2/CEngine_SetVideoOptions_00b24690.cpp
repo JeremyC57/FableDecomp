@@ -76,7 +76,10 @@ extern CEngineScreenEffectColourFilter* g_pColourFilter;          // 0x01436E40
 extern CShaderBankStateBlock*           g_pShaderBankStateBlock;  // 0x01436E44
 extern CEngineVideoOptionsListener*     g_pVideoOptionsListener;  // 0x01436E54
 extern CEngineVideoOptionsSink*         g_pVideoOptionsSink;      // 0x01436E58
-extern CEngineMeshDetailManager*        g_pMeshDetailManager;     // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CEngineMeshDetailManager view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 extern CEngineLocalDetailGenerator*     g_pLocalDetailGenerator;  // 0x01436E88
 extern CEngineResourceManager*          g_pResourceManager;       // 0x01436E98
 extern CEngine*                         g_pEngine_01436ea4;                // 0x01436EA4
@@ -110,7 +113,7 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     g_pVideoOptionsListener->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pResourceManager->ResizeHiresTextureMemory(g_pEngine_01436ea4->PEngineVideoOptionsDefs[VideoOptions.TextureDetail]->HiresTextureMemory);
     CEngineVideoOptionsDef* meshDef = g_pEngine_01436ea4->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
-    g_pMeshDetailManager->SetMeshDetail(VideoOptions.MeshDetail, meshDef);
+    ((CEngineMeshDetailManager*)g_pEnginePrimitiveRenderer)->SetMeshDetail(VideoOptions.MeshDetail, meshDef);
     if (g_pLocalDetailGenerator)
         g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(meshDef);
     g_pVideoOptionsSink->OnVideoOptionsChanged();

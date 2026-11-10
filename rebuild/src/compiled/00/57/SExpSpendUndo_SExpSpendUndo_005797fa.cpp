@@ -6,16 +6,12 @@
 //   followed by nine longs (Levels, General .. aWill). Callers: CTCInventoryExperience::BuyAbility 0x005785B3 / BuyStat
 //   0x005786B5 (their SExpSpendUndo locals), the pair<const EHeroTrainableStatType / EHeroAbility, SExpSpendUndo>
 //   scalar deleting destructors 0x005799DE / 0x005799FD and the four `add ecx,4 ; jmp` pair destructors after this body.
-//   Each list member's destructor is std::list<long>::~list 0x0042AB73. The earlier generated CAggregate_005797fa name
+//   Each list member's destructor is the inline ~list, which calls _List_base<long, allocator<long> >::~_List_base 0x0042AB73
+//   out of line (Codex name fix 2026-11-10; it was bound as ~list). The earlier generated CAggregate_005797fa name
 //   (one of 13 bodies of this shape) and the manifest's "_Dest_val<...CMacro>" were propagated.
-namespace std {
-template <class _Tp> class allocator;
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* _M_node;                              // +0x00 the sentinel node (STLport _List_base)
-    ~list();                                    // 0x0042AB73 for long
-};
-}
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 struct SExpSpendUndo {
     std::list<long> Generals;                   // +0x00

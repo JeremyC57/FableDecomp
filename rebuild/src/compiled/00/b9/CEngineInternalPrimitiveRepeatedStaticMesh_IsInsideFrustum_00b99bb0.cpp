@@ -11,7 +11,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B99BB0, 475 bytes, `ret 8`. Ego_r.pdb:
 //   ?IsInsideFrustum@CEngineInternalPrimitiveRepeatedStaticMesh@@UAE_NABVCEngineCamera@@_N@Z (virtual); the virtual is a
 //   __fastcall free function, as the landed siblings 0x00B9DC60 / 0x00BAA4E0.
-// Globals: g_pEnginePrimitiveRendererSharedData 0x01436E80 (Ego_r CEnginePrimitiveRendererSharedData
+// Globals: ((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer) 0x01436E80 (Ego_r CEnginePrimitiveRendererSharedData
 //   RepeatedMeshDrawDistanceFactor +0x88; the landed 0x00BAA4E0 binding), g_SSEAvailable 0x013D2880 (landed 0x00BF7DF0), 0.0f @0x0122DEDC.
 // Layout: engine/CEngineInternalPrimitiveRepeatedStaticMesh.h (BoundingBox +0x58; the base's CEngineFadeDistance
 //   MaxDrawDistance word +0x18), engine/CEngineCamera.h (CameraDesc +0x14: WorldPosition at camera +0x54; FrustrumPlanes +0x1c0).
@@ -68,7 +68,10 @@ struct CEnginePrimitiveRendererSharedData {        // Ego_r.pdb (only the draw-d
     float DrawDistanceMaximum;                     // +0x84
     float RepeatedMeshDrawDistanceFactor;          // +0x88
 };
-extern CEnginePrimitiveRendererSharedData* g_pEnginePrimitiveRendererSharedData;   // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CEnginePrimitiveRendererSharedData view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 
 static FABLE_FORCEINLINE const C3DBoundingBox& Box(const CEngineInternalPrimitiveRepeatedStaticMesh* self) { return *(const C3DBoundingBox*)self->BoundingBox; }
 static FABLE_FORCEINLINE float MaxDrawDistance(const CEngineInternalPrimitiveRepeatedStaticMesh* self) { return *(const float*)self->_pad_0x18; }
@@ -77,7 +80,7 @@ static FABLE_FORCEINLINE const CPlane* Planes(const CEngineCamera& c) { return (
 
 bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveRepeatedStaticMesh* self, int /*edx*/, const CEngineCamera& camera, bool ignoreFrustum)
 {
-    float maxDistance = g_pEnginePrimitiveRendererSharedData->RepeatedMeshDrawDistanceFactor * MaxDrawDistance(self);
+    float maxDistance = ((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer)->RepeatedMeshDrawDistanceFactor * MaxDrawDistance(self);
 
     if (Box(self).CalcShortestDistanceToPoint(CameraPosition(camera)) > maxDistance)
         return false;

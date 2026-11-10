@@ -38428,9 +38428,9 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007723d0'
         Module = 'CTCShop'
-        Source = '00/77/global_atexit_007723d0.cpp'
-        TestSource = '00/77/global_atexit_007723d0_test.cpp'
-        PassPattern = 'ATEXIT_007723d0_OK'
+        Source = '00/77/CTCShop_IsValidStockItem_007723d0.cpp'
+        TestSource = '00/77/CTCShop_IsValidStockItem_007723d0_test.cpp'
+        PassPattern = '007723d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007d2900'
@@ -69594,9 +69594,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042ab73'
-        Module = 'std::list<long>'
-        Source = '00/42/stdlistlong_list_0042ab73.cpp'
-        TestSource = '00/42/stdlistlong_list_0042ab73_test.cpp'
+        Module = 'std::_List_base<long, std::allocator<long>>'
+        Source = '00/42/stdListbaselongstdallocatorlong_Listbase_0042ab73.cpp'
+        TestSource = '00/42/stdListbaselongstdallocatorlong_Listbase_0042ab73_test.cpp'
         PassPattern = '0042ab73_TEST PASS'
     }
     [pscustomobject]@{
@@ -84162,9 +84162,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f900a'
-        Module = 'std'
-        Source = '00/5f/std_list_T_005f900a_dtor_005f900a.cpp'
-        TestSource = '00/5f/std_list_T_005f900a_dtor_005f900a_test.cpp'
+        Module = 'std::_List_base<CWideString, std::allocator<CWideString>>'
+        Source = '00/5f/stdListbaseCWideStringstdallocatorCWideString_Listbase_005f900a.cpp'
+        TestSource = '00/5f/stdListbaseCWideStringstdallocatorCWideString_Listbase_005f900a_test.cpp'
         PassPattern = '005f900a_TEST PASS'
     }
     [pscustomobject]@{
@@ -125577,10 +125577,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042ab58'
-        Module = '_global'
-        Source = '00/42/stdlist_list_0042ab58.cpp'
-        TestSource = '00/42/stdlist_list_0042ab58_test.cpp'
-        PassPattern = 'CIRCULARINIT_0042ab58_PASS'
+        Module = 'std::_List_base<long, std::allocator<long>>'
+        Source = '00/42/stdListbaselongstdallocatorlong_Listbase_0042ab58.cpp'
+        TestSource = '00/42/stdListbaselongstdallocatorlong_Listbase_0042ab58_test.cpp'
+        PassPattern = '0042ab58_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042abaf'
@@ -202793,9 +202793,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005797a4'
-        Module = 'CHeroExperienceDef'
-        Source = '00/57/CHeroExperienceDef_CHeroExperienceDef_005797a4.cpp'
-        TestSource = '00/57/CHeroExperienceDef_CHeroExperienceDef_005797a4_test.cpp'
+        Module = 'SExpSpendUndo'
+        Source = '00/57/SExpSpendUndo_SExpSpendUndo_005797a4.cpp'
+        TestSource = '00/57/SExpSpendUndo_SExpSpendUndo_005797a4_test.cpp'
         PassPattern = '005797a4_TEST PASS'
     }
     [pscustomobject]@{
@@ -259324,9 +259324,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429c6f'
-        Module = '_global'
-        Source = '00/42/CCountedPointerCPolymorphicData00429C6F_Reset_00429c6f.cpp'
-        TestSource = '00/42/CCountedPointerCPolymorphicData00429C6F_Reset_00429c6f_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CComponent>'
+        Source = '00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f_test.cpp'
         PassPattern = '00429c6f_TEST PASS'
     }
     [pscustomobject]@{
@@ -272691,9 +272691,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac8540'
-        Module = 'COptimisedPrimitive'
-        Source = '00/ac/COptimisedPrimitive_PaintSegments_00ac8540.cpp'
-        TestSource = '00/ac/COptimisedPrimitive_PaintSegments_00ac8540_test.cpp'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_PaintSegments_00ac8540.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_PaintSegments_00ac8540_test.cpp'
         PassPattern = '00ac8540_TEST PASS'
     }
     [pscustomobject]@{
@@ -279639,9 +279639,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00991840'
-        Module = 'CSoundBankRegistry'
-        Source = '00/99/CSoundBankRegistry_GetBank_00991840.cpp'
-        TestSource = '00/99/CSoundBankRegistry_GetBank_00991840_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_GetBank_00991840.cpp'
+        TestSource = '00/99/CASoundManager_GetBank_00991840_test.cpp'
         PassPattern = '00991840_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,10 +1,13 @@
-// COptimisedPrimitive::PaintSegments() -- split the faces into connected segments: every existing face not yet in a segment seeds a new segment number and is flood-filled from a fresh work list
-// Leaf: PaintSegments
+// QuadricOptimiserInternals::COptimisedPrimitive::PaintSegments() -- split the faces into connected segments: every existing face not yet in a segment seeds a new segment number and is flood-filled from a fresh work list
+// Leaf: ?PaintSegments@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXXZ
+// Identity (2026-11-10, with the Codex _List_base<long> name fix): Ego_r.pdb ?PaintSegments@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXXZ
+//   (private) and ?PaintSegment@..@@AAEXKJAAV?$list@JV?$allocator@J@std@@@std@@@Z: the work list is a list<long>, whose destructor's
+//   out-of-line part is ~_List_base<long, allocator<long> > 0x0042AB73.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC8540, length 133 bytes (padded to 144).
 // Callees: malloc @ 0x00BFEA0E (the work list's head node), COptimisedPrimitive::PaintSegment(unsigned long face, long segment,
-//          list<unsigned long>& work) @ 0x00AC8170 (manifest "PaintSegments_AddSegmentLink"), list<unsigned long>::~list
-//          @ 0x0042AB73 (manifest "CActiveFile::OnReadFinished" is propagated: it clears the nodes and frees the head).
+//          list<long>& work) @ 0x00AC8170 (private), _List_base<long, allocator<long> >::~_List_base @ 0x0042AB73 (clears the
+//          nodes and frees the head; manifest "CActiveFile::OnReadFinished" was propagated).
 // Layout: retail COptimisedPrimitive: Faces (12-byte vector of 0x48-byte COptimisedFace) +0x1c, SegmentCount +0x40
 // (PDB +0x54 with 16-byte CArrays and multimap). COptimisedFace: Exists +0x3c, Segment +0x44.
 // Shape: the face count is hoisted into a signed local before the loop (`jl`); the work list is a block-scoped STLport
@@ -29,23 +32,33 @@ template <class T> struct CRetailVector {   // retail std::vector (12 bytes)
     unsigned long size() const { return m_last - m_first; }
     T& operator[](unsigned long n) { return m_first[n]; }
 };
-struct SIndexNode {
+struct SIndexNode {                         // STLport _List_node<long>
     SIndexNode*   m_next;
     SIndexNode*   m_prev;
-    unsigned long m_data;
+    long          m_data;
 };
-struct CIndexWorkList {                     // STLport list<unsigned long> (4 bytes: the head node)
+namespace std {                             // STLport 4.6 list<long> (4 bytes: the head node)
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc> class _List_base;
+template <> class _List_base<long, allocator<long> > {
+public:
     SIndexNode* m_node;
-    CIndexWorkList()
+    _List_base(const allocator<long>&)
     {
         SIndexNode* head = (SIndexNode*)malloc(sizeof(SIndexNode));
         head->m_next = head;
         head->m_prev = head;
         m_node = head;
     }
-    ~CIndexWorkList();                      // 0x0042AB73
+    ~_List_base();                          // 0x0042AB73
 };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
+public:
+    explicit list(const _Alloc& a = _Alloc()) : _List_base<_Tp, _Alloc>(a) { }
+};
+}
 
+namespace QuadricOptimiserInternals {
 class COptimisedPrimitive {
 public:
     long                          MaterialIndex;        // +0x00
@@ -55,15 +68,18 @@ public:
     unsigned char                 Edges[0xc];           // +0x28
     unsigned char                 VertexPairContractions[0xc];  // +0x34
     long                          SegmentCount;         // +0x40
-    void PaintSegment(unsigned long face, long segment, CIndexWorkList& work);   // 0x00AC8170
+private:
+    void PaintSegment(unsigned long face, long segment, std::list<long>& work);   // 0x00AC8170
     void PaintSegments();
 };
+}
+using namespace QuadricOptimiserInternals;
 
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 // R&D I-3 sweep: same-TU auto_inline(off) bodies for the list dtor and PaintSegment (the work list is only used inside
 // them) give retail's PaintSegments register and slot choices.
 #pragma auto_inline(off)
-CIndexWorkList::~CIndexWorkList()
+std::_List_base<long, std::allocator<long> >::~_List_base()
 {
     SIndexNode* node = m_node->m_next;
     while (node != m_node) {
@@ -73,7 +89,7 @@ CIndexWorkList::~CIndexWorkList()
     }
     free(m_node);
 }
-void COptimisedPrimitive::PaintSegment(unsigned long face, long segment, CIndexWorkList& work)
+void COptimisedPrimitive::PaintSegment(unsigned long face, long segment, std::list<long>& work)
 {
     if (work.m_node->m_next == work.m_node)
         Faces[face].Segment = segment;
@@ -88,7 +104,7 @@ void COptimisedPrimitive::PaintSegments()
         COptimisedFace& face = Faces[i];
         if (face.Exists && face.Segment == -1)
         {
-            CIndexWorkList work;
+            std::list<long> work;
             PaintSegment(i, SegmentCount, work);
             SegmentCount++;
         }

@@ -9,8 +9,8 @@ struct CVectorMapTags {
 };
 class CASoundBank { public: int id; };
 static CASoundBank g_bank;
-struct CSoundBankRegistry { CASoundBank* GetBank(long id) { ++g_lookups; g_lastId = id; return &g_bank; } };
-static CSoundBankRegistry g_registry; static CSoundBankRegistry* g_pSoundBankRegistry = &g_registry;
+struct CASoundManager { CASoundBank* GetBank(long id) { ++g_lookups; g_lastId = id; return &g_bank; } };
+static CASoundManager g_registry; static CASoundManager* g_pSoundBankRegistry = &g_registry;
 class CSubtitledMessage {
 public:
     CASoundBank* PSpeechBank; long SpeechIndex; bool Speech3D; CWideString Text; CCharString Narrator;

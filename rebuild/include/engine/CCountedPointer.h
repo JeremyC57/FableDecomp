@@ -98,6 +98,12 @@ public:
         if (Info)
             ++Info->RefCount;
     }
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY
+    // Per-TU opt-in (Codex name fix 2026-11-10, ~CCountedPointer<NUISystem::CComponent> 0x004291DE): where retail calls the
+    // destructor COMDAT from a speed-optimised TU (0x00429E16, the map pair destructor) the body above would be expanded.
+    // Declaration only; the retail body is the #else one (0x004291DE: Data zeroed before Info).
+    ~CCountedPointer();
+#else
     ~CCountedPointer()
     {
         if (Info) {
@@ -110,6 +116,7 @@ public:
         Data = 0;
         Info = 0;
     }
+#endif
     CCountedPointer& operator=(const CCountedPointer& other)
     {
         ShareData(other.Data, other.Info);
@@ -149,6 +156,19 @@ public:
                 ++info->RefCount;
         }
     }
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CALLS_DTOR
+    // Per-TU opt-in (Codex name fix 2026-11-10, row 0x00429C6F Reset<NUISystem::CComponent>, size TU): retail's out-of-line Reset
+    // calls 0x004291DE, the Data-first release body that Ego_r.pdb names ??1?$CCountedPointer@VCComponent@NUISystem@@@@ (the
+    // only out-of-line release that PDB has for this T: no ReleaseData). The release is spelled as that destructor; the
+    // original spelling of the call is unproven.
+    void Reset(T* data)
+    {
+        this->~CCountedPointer();
+        Data = data;
+        if (data)
+            Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+    }
+#else
     void Reset(T* data)
     {
         ReleaseData();
@@ -156,6 +176,7 @@ public:
         if (data)
             Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
     }
+#endif
     template <class U> void SetStaticCast(const CCountedPointer<U>& other)   // FableWin.pdb ??$SetStaticCast@..@?$CCountedPointer@..@@QAEXABV?$CCountedPointer@..@@@Z (63)
     {
         ShareData(static_cast<T*>(other.Data), other.Info);              // landed 0x00A32620 (C3DMeshFile::GetRoot) expands it

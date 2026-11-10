@@ -1,4 +1,4 @@
-// Behaviour test for std::list<long>::~list (0x0042AB73): clear, then free the sentinel when present.
+// Behaviour test for std::_List_base<long, std::allocator<long> >::~_List_base (0x0042AB73; model spelled as the list): clear, then free the sentinel when present.
 #include <cstdio>
 #include <cstdlib>
 static int g_cleared = 0; static void* g_freed = 0;

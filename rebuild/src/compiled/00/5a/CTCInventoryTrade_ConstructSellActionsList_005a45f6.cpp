@@ -14,7 +14,7 @@
 //   CDataBank::GetTextBySymbol 0x009C95E0 (text bank at CMainGameComponent::Get() +0x14), IntToWideString 0x00405F00 (`__fastcall`),
 //   CWideString operator+ 0x0099BE70 (`__fastcall`), CWideString 0x0099B6B0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   operator new 0x00BFEA1A, CAction 0x0042BE50, CCountedPointer<CAction> 0x0042AA29 / ~ 0x00429160, param-list push_back 0x0042B646
-//   (same-TU noinline stand-in), CTCShop::HasDefaultStockItem 0x007723D0, ItemSellLists operator[] 0x005B3167.
+//   (same-TU noinline stand-in), CTCShop::IsValidStockItem 0x007723D0, ItemSellLists operator[] 0x005B3167.
 // Shape: the AddSellItemToList 0x0059ED42 TU conventions; the hero's tab presence test is a bare statement (its result is
 //   dropped, so only the bitset call survives); the shop pointer is zero-initialised in memory and the lookup key reuses its
 //   slot; the three literal addresses of the repeated entry construction are CSE'd into ebx/edi/esi by VC; the item count is
@@ -66,7 +66,7 @@ class CThing { public:
     }
 };
 class CTCShop { public:                                        // interface type 0x53
-    bool HasDefaultStockItem(long defIndex);            // 0x007723D0
+    bool IsValidStockItem(long defIndex) const;            // 0x007723D0
 };
 class CPlayer { public: CThing* GetControlledCreature(); };  // 0x00487DD0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
@@ -115,6 +115,7 @@ class CAction { public:
     bool             Valid;
     CAction();                                          // 0x0042BE50
 };
+class CComponent;                                       // the counted pointers hold NUISystem::CComponent (Ego_r.pdb)
 struct CComponentBase {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -128,8 +129,8 @@ struct CComponentBase {
     virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
     virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
     virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058();
-    virtual void AddChildAtEnd(const CCountedPointer<CComponentBase>& child);   // slot 59 (+0xEC)
-    virtual void AddChild(const CCountedPointer<CComponentBase>& child);        // slot 60 (+0xF0)
+    virtual void AddChildAtEnd(const CCountedPointer<CComponent>& child);   // slot 59 (+0xEC)
+    virtual void AddChild(const CCountedPointer<CComponent>& child);        // slot 60 (+0xF0)
     virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
     virtual void AddPressedAction(const CCountedPointer<CAction>& action);     // slot 66 (+0x108)
     virtual void v067(); virtual void v068(); virtual void v069();
@@ -150,7 +151,7 @@ struct CComponentBase {
     virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143(); virtual void v144();
     virtual void v145(); virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149();
     virtual void v150(); virtual void v151();
-    virtual void AddEntry(const CCountedPointer<CComponentBase>& entry);        // slot 152 (+0x260)
+    virtual void AddEntry(const CCountedPointer<CComponent>& entry);        // slot 152 (+0x260)
     virtual void v153(); virtual void v154(); virtual void v155();
     virtual void SetItemCount(long count);                                      // slot 156 (+0x270)
     virtual void v157();
@@ -187,7 +188,7 @@ class CTCInventoryTrade { public:
 bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defIndex, unsigned long count, bool addAsChild)
 {
     CManager* fe = CManager::GetInstance();
-    CCountedPointer<CComponentBase> actionsList(CManager::GetInstance()->CreateComponent("UI_LIST_SELL_ACTIONS", false));
+    CCountedPointer<CComponent> actionsList(CManager::GetInstance()->CreateComponent("UI_LIST_SELL_ACTIONS", false));
     CComponentBase* list = actionsList.Data;
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetControlledCreature();
     CDataBank* bank = CMainGameComponent::Get()->TextBank;
@@ -195,7 +196,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
     GetTradingThing()->GetInterface(&shop, 0x53);
     hero->m_present.test(CTCInventoryItem::GetInventoryCategory(defIndex));
     CWideString sellText = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL");
-    CCountedPointer<CComponentBase> sellEntry(fe->CreateMenuEntryComponent(sellText, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
+    CCountedPointer<CComponent> sellEntry(fe->CreateMenuEntryComponent(sellText, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CCountedPointer<CAction> sellAction(new CAction);
     sellAction->ActionType = 0x25;
@@ -212,7 +213,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
     list->AddEntry(sellEntry);
     if (count > 10) {
         CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + GFIntToWideString(10);
-        CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
+        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x52;
@@ -222,7 +223,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
     }
     if (count > 50) {
         CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + GFIntToWideString(50);
-        CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
+        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x52;
@@ -232,7 +233,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
     }
     if (count > 1) {
         CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL_ALL") + CWideString(L" (") + GFIntToWideString(count) + CWideString(L")");
-        CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
+        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x52;
@@ -240,7 +241,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
         entry->AddPressedAction(action);
         list->AddEntry(entry);
     }
-    if (count != 0 && shop->HasDefaultStockItem(defIndex)) {
+    if (count != 0 && shop->IsValidStockItem(defIndex)) {
         CComponentBase* listObject = actionsList.Data;
         ItemSellLists[parent] = listObject;
         if (addAsChild)

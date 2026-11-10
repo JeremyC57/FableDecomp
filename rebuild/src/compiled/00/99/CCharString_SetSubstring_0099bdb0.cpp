@@ -1,5 +1,8 @@
 extern "C" long g_charStringRefTrace; // 0x013bca20
-// Leaf: SetSubstring
+// Leaf: ?SetSubstring@CWideString@@
+// Name debt: retail 0x0099BDB0 is ?GetSubString@CWideString@@QBE?AV1@KK@Z (Ego_r / FableWin; fable_string.h FABLE_RETAIL_CWIDESTRING_SUBSTRING).
+//   This stand-in keeps the return pointer as an explicit parameter; the real by-value spelling (a named local copied out) grades
+//   195v179 / 198v179 because the local is given a frame slot where retail keeps its storage in esi (queued land1011m).
 extern "C" unsigned short g_emptyWideStringData; // 0x00129a8e0 (empty wide-string storage code unit)
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
@@ -11,25 +14,25 @@ class CWideStringData
     long refCount; // offset +0xC
 };
 
-class CCharString
+class CWideString
 { public:
     CWideStringData* storage;
-
-    CWideStringData* AllocStringData(unsigned short* s, long n);
+    CWideString* SetSubstring(CWideString* retVal, unsigned long start, unsigned long len);
+protected:
+    CWideStringData* AllocStringData(const unsigned short* s, long n);   // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
     void UnassignString_0099b4d0();
-    CCharString* SetSubstring(CCharString* retVal, unsigned long start, unsigned long len);
 };
 
 // Real implementations live at 0x0099b3c0 (AllocStringData) / 0x0099b4d0 (UnassignString);
 // they are separate retail functions and are intentionally left undefined here (external
 // callees only) so this translation unit authors ONLY SetSubstring itself.
 
-// CCharString SetSubstring(CCharString* this, ulong start, ulong len)
+// CWideString SetSubstring(CWideString* this, ulong start, ulong len)
 // Hidden-return-pointer thiscall: ecx = this, [esp+4]=retptr, [esp+8]=start, [esp+0xc]=len
-CCharString* CCharString::SetSubstring(CCharString* retVal, unsigned long start, unsigned long len)
+CWideString* CWideString::SetSubstring(CWideString* retVal, unsigned long start, unsigned long len)
 {
     CWideStringData* newStorage = 0;
-    CCharString localTmp;
+    CWideString localTmp;
 
     ++g_charStringRefTrace;
 

@@ -14,6 +14,8 @@
 // an implicit `const char*` conversion (its temporary lands in the dead `lists` slot), FindChild's argument is built in its slot.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class A, class B> struct pair {
     A first;
@@ -39,12 +41,7 @@ namespace N_0042bed4 { struct CAction {                                // retail
     CAction();                                  // 0x0042BED4
     CAction(const CAction& other);              // 0x0042CD84
 }; } using N_0042bed4::CAction;
-struct CComponentPointer {                      // CCountedPointer<NUISystem::CComponent>
-    CComponent* m_pObject;
-    void*       m_pCount;
-    CComponentPointer(CComponent* object);      // 0x00429C15
-    ~CComponentPointer();                       // 0x004291DE
-};
+typedef CCountedPointer<CComponent> CComponentPointer;   // (T*) ctor 0x00429C15 (called), ~CCountedPointer 0x004291DE
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ

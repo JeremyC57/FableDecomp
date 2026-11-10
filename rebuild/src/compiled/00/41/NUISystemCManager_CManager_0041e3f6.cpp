@@ -66,11 +66,23 @@ extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 void __fastcall SetIsUsingRelativeCoords(bool relative);   // 0x004299A8
 
+namespace std {                                    // STLport 4.6 list<long>: its base constructor / destructor are out of line
+template <class _Tp> class allocator { public: allocator() { } };   // empty; a user constructor (the temporary is not zero-filled)
+template <class _Tp, class _Alloc> class _List_base {
+public:
+    void* _M_node;
+    _List_base(const _Alloc&);                     // 0x0042AB58 for long
+    ~_List_base();                                 // 0x0042AB73 for long
+};
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
+public:
+    explicit list(const _Alloc& a = _Alloc()) : _List_base<_Tp, _Alloc>(a) { }
+};
+}
 namespace NUISystem {
 enum EInputType { EIT_KEYBOARD = 0, EIT_PAD = 1 };
 struct SAllocator { SAllocator() { } };
 struct CKeyMap { unsigned char _d[0xc]; CKeyMap(); };                                   // 0x0042BF67
-struct CLongList { void* _M_node; CLongList(const SAllocator& a = SAllocator()); };     // 0x0042AB58
 struct CActionParamList { void* _M_node; CActionParamList(const SAllocator& a = SAllocator()); };   // 0x0042AB01
 struct CLayerMap { unsigned char _d[0xc]; CLayerMap(); };                               // 0x0042BF85
 struct CChildrenMap { unsigned char _d[0xc]; CChildrenMap(); };                         // 0x0042D28B
@@ -96,7 +108,7 @@ class CManager : public CManagerBase { public:
     void*            PInventoryClothing;        // +0x50
     void*            PInventoryTrade;           // +0x54
     void*            PPlayer;                   // +0x58
-    CLongList        ThingActionParams;         // +0x5c
+    std::list<long>  ThingActionParams;         // +0x5c
     CActionParamList UIActionParams;            // +0x60
     void*            m_pDefinitionManager;      // +0x64
     unsigned long    NumberAugmentations;       // +0x68

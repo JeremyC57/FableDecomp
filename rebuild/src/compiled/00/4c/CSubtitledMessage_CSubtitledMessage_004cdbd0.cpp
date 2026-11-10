@@ -23,7 +23,7 @@ struct CVectorMapTags {                            // CVectorMap<float, T, CKeyP
     CVectorMapTags() : m_pFirst(0), m_pLast(0), m_pEnd(0), Dirty(false) {}
 };
 class CASoundBank;
-struct CSoundBankRegistry {
+class CASoundManager { public:
     CASoundBank* GetBank(long id);                 // 0x00991840
 };
 class CASoundManager;
@@ -44,5 +44,5 @@ public:
 CSubtitledMessage::CSubtitledMessage(const CWideString& text)
     : PSpeechBank(0), SpeechIndex(0), Speech3D(true), Text(text), Narrator("UNKNOWN")
 {
-    PSpeechBank = ((CSoundBankRegistry*)PSoundManager)->GetBank(1);
+    PSpeechBank = ((CASoundManager*)PSoundManager)->GetBank(1);
 }

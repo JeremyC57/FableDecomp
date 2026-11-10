@@ -5,7 +5,7 @@
 // Identity: Ego_r.pdb ??RCIsPointFinalLinkInTriangleWithMatchingCirculation@NShape@@QBE_NABVC3DVector@@@Z; its seven
 //   callers are the STLport __find_if 0x00763F50 over the shape's points. The catalog's "Polygon_TestPointInside" is an
 //   autoname.
-// Callees: C3DVector::Normalise() @ 0x00A14440 (twice). Pool: 0.0f @ 0x0122DEDC.
+// Callees: C3DVector::AccurateNormalise() @ 0x00A14440 (twice). Pool: 0.0f @ 0x0122DEDC.
 // Shape: both links are flattened to the XY plane through the inline C3DVector(x, y, z) constructor (arguments
 //   evaluated right to left: the zero Z stored as an immediate, then Y, then X) and normalised in place; the result is
 //   link1.Cross(UpDirection).Dot(link2) > 0 with C3DVector's inline Cross/Dot, every intermediate kept on the x87 stack.

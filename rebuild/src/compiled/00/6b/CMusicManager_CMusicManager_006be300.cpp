@@ -1,7 +1,7 @@
 // CMusicManager::CMusicManager() -- constructor: clear the music state, the sound def pointer, the registered-music map and the current/pending IDs, look up the "MAIN_SOUND_SETUP" sound def, register the music table and start unpaused
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BE300, length 115 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get() @ 0x0044C6B0 (static __fastcall singleton),
-// CDefinitionManager::GetDef<CSoundDef>(const CCharString&, CDefPointer&) @ 0x004196B2 (manifest: a byte-identical GetDef instantiation),
+// CDefinitionManager::GetDef<CSoundDef>(const CCharString&, CDefPointer<const CSoundDef>*) const @ 0x004196B2 (manifest: a byte-identical GetDef instantiation),
 // CCharString::~CCharString() @ 0x0099EAE0, CMusicManager::RegisterMusic() @ 0x006BE080. String literal @ 0x0122EF98 "MAIN_SOUND_SETUP".
 // Label correction: the manifest's "CEngine::CEngine" is a propagated name; the only caller is CWorld::PostInit (0x004A6767, after a
 // null-checked allocation) and the member pattern is the PDB CMusicManager (0x44 bytes): CurrentState (CState: five longs + Paused/Danger
@@ -9,7 +9,7 @@
 // +0x2c, PendingMusicID +0x30, PPendingFadeTimes +0x34, PendingLoopCount +0x38 (left unset), Paused +0x3c (retail = PDB - 4).
 // Shape: one `push ecx` frame word for the CCharString local; the member zeroes come from ebx in declaration order (the CDefPointer
 // address is kept in edi for the GetDef out argument); the GetDef arguments are pushed BEFORE the singleton call (the chained
-// `Get().GetDef(name, PSoundDef)`); RegisterMusic runs on `this` after the string is destroyed, and Paused is a body assignment after it.
+// `Get().GetDef(name, &PSoundDef)`); RegisterMusic runs on `this` after the string is destroyed, and Paused is a body assignment after it.
 // Leaf: ??0CMusicManager
 class CCharString {
 public:
@@ -26,11 +26,12 @@ class CDefPointer { public:
     CDefPointer() : Object(0) {}
 };
 
-struct CDefinitionManager_Calls {
-    template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out);   // 0x004196B2 for T = const CSoundDef
+class CDefinitionManager { public:
+    // Ego_r.pdb: ??$GetDef@VCSoundDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundDef@@@@@Z (const, out by pointer)
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x004196B2 for T = CSoundDef
 };
 
-class CGameDefinitionManager : public CDefinitionManager_Calls { public:
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
@@ -93,7 +94,7 @@ CMusicManager::CMusicManager()
 {
     {
         CCharString name("MAIN_SOUND_SETUP", -1);
-        CGameDefinitionManager::Get().GetDef(name, PSoundDef);
+        CGameDefinitionManager::Get().GetDef(name, &PSoundDef);
     }
     RegisterMusic();
     Paused = false;

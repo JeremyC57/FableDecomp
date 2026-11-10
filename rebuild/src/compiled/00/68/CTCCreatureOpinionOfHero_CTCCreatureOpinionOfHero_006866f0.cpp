@@ -44,10 +44,11 @@ struct CLongList {                                     // STLport list<long> (re
             free(_M_node);
     }
 };
-struct CPendingDeedList {                              // list<long> (out-of-line copy)
-    void* _M_node;
-    ~CPendingDeedList();                               // 0x0042AB73
-};
+namespace std {                                    // STLport 4.6 list<long>: only its base destructor is out of line
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class _List_base { public: void* _M_node; ~_List_base(); };   // ~ 0x0042AB73 for long
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> { };
+}
 struct CTransientOffsetList {                          // list<COpinionTransientOffset>
     void* _M_node;
     ~CTransientOffsetList();                           // 0x00450DAB
@@ -107,7 +108,7 @@ struct __declspec(novtable) CTCCreatureOpinionOfHero : CTCBase {   // vtable 0x0
     SPodVector<unsigned long> ReactionMask;            // +0x30
     SPodVector<unsigned long> DeedMask;                // +0x3c
     COpinionSet             RelativeOpinion;           // +0x48
-    CPendingDeedList        PendingDeeds;              // +0x54
+    std::list<long>        PendingDeeds;              // +0x54
     long                    LastFrameAppliedDeedEffect[92];   // +0x58
     CLongList               KnownDeeds[92];            // +0x1c8
     CTransientOffsetList    TransientOffsets;          // +0x338

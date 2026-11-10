@@ -1,5 +1,5 @@
 // NUISystem::CManager::ClearBastardChild() -- release every component of the bastard-child map (and the current bastard child), then clear the map
-// Retail 0x0041DED2, 62 bytes (vtable 0x01230134 slot 37). Callees: CCountedPointer<CComponent>::ReleaseData 0x004291DE (on
+// Retail 0x0041DED2, 62 bytes (vtable 0x01230134 slot 37). Callees: CCountedPointer<CComponent>::~CCountedPointer 0x004291DE (on
 // each node value at +0x14 and on BastardChild +0x80), STLport _Rb_tree increment 0x004292C0 (cdecl), map clear 0x0042C02F
 // (tail jump). The end node is re-read every iteration (member). Name: Ego_r.pdb ?ClearBastardChild@CManager@NUISystem@@UAEXXZ.
 #pragma optimize("s", on)
@@ -8,13 +8,12 @@
 // RightStickForce +0x94.
 #include "fable_string.h"
 class C2DVector { public: float X, Y; };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
+// 0x004291DE is the destructor body (Data zeroed before Info; ReleaseData zeroes Info first and is never out of line in retail),
+// so the release of each value is an explicit destructor call on the counted pointer.
 namespace NUISystem {
 class CComponent;
-struct CComponentPointer {                 // CCountedPointer<NUISystem::CComponent>
- CComponent* Data; CCPPointerInfo* Info;
- void ReleaseData();                       // 0x004291DE
-};
+typedef CCountedPointer<CComponent> CComponentPointer;
 // STLport map<CCharString, CCountedPointer<CComponent>>: header-node pointer + count; begin() = header->_M_left.
 struct CRbNodeBase { long Color; CRbNodeBase* Parent; CRbNodeBase* Left; CRbNodeBase* Right; };
 CRbNodeBase* __cdecl Rb_tree_increment(CRbNodeBase* node);   // 0x004292C0 _Rb_global<bool>::_M_increment
@@ -45,8 +44,8 @@ class CManager { public:
 void CManager::ClearBastardChild()
 {
  for (CBastardIterator it = BastardChildren.begin(); it != BastardChildren.end(); ++it) {
-  it->Value.ReleaseData();
-  BastardChild.ReleaseData();
+  it->Value.~CCountedPointer();
+  BastardChild.~CCountedPointer();
  }
  BastardChildren.clear();
 }

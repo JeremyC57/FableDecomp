@@ -12,6 +12,7 @@
 // base at +4 (the landed 0x00545720 model: `mov esi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec esi`); the warning goes into a
 // counted-pointer local (inline {count, destroy, object} release, block re-read from its frame word) and is used through it
 // for the parent/initialise calls; HideComponent re-reads the member and builds the C2DVector in the argument area.
+#include "engine/CCountedPointer.h"                 // global-scope template (Ego_r.pdb ??1?$CCountedPointer@VCComponent@NUISystem@@@@)
 namespace NUISystem {
 
 struct C2DVector {
@@ -21,7 +22,6 @@ struct C2DVector {
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 
-#include "engine/CCountedPointer.h"
 
 struct CRefCounted {
     long m_count;

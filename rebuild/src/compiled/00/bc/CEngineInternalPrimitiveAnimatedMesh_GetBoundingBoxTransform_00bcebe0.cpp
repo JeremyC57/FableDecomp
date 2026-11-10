@@ -54,7 +54,10 @@ struct CEngineRenderGlobals {
     unsigned char _pad[0x23c];
     float         AnimatedBoundsMargin;                 // +0x23c
 };
-extern CEngineRenderGlobals* g_pEngineRender_01436e80;  // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CEngineRenderGlobals view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 struct SInterpolationTime { float Time; float m_4; float m_8; };   // 12-byte records
 extern SInterpolationTime g_interpolationTimes[];       // 0x0143B934
 
@@ -78,7 +81,7 @@ public:
 
 bool CEngineInternalPrimitiveAnimatedMesh::GetBoundingBoxTransform(CMatrix3x4& transform)
 {
-    float size = ((MeshInfo->GetBoundingSphere().Radius + MeshInfo->GetBoundingSphere().GetPos().GetMagnitude()) * Scale + g_pEngineRender_01436e80->AnimatedBoundsMargin) / Scale;
+    float size = ((MeshInfo->GetBoundingSphere().Radius + MeshInfo->GetBoundingSphere().GetPos().GetMagnitude()) * Scale + ((CEngineRenderGlobals*)g_pEnginePrimitiveRenderer)->AnimatedBoundsMargin) / Scale;
     transform.E12 = transform.E13 = transform.E21 = transform.E23 = transform.E31 = transform.E32 =
         transform.E41 = transform.E42 = transform.E43 = 0.0f;
     transform.E11 = transform.E22 = transform.E33 = size;

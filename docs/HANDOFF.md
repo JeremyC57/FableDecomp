@@ -7,6 +7,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
+- **2026-11-10 codex20nf:** Codex pass 15 name fixes applied to 71 landed rows (all RELOCATION_MATCH + tests); see `rebuild/candidates/manual/naming/2026-11-10_codex20nf/README.md`. Open: fixes [5]-[10] + the missed-binder sweep + the three Codex-parked rows (0x0064FDB4, 0x00651273, 0x00E5E350), handed to an agent (`$S/w22/agentNF/`); chunks 900 and 1001 landing next.
 - **Resumed 2026-11-05 late** (the user: "continue where the last claude chat left off"). Done since the pause:
   - lane: the older a013f3ec-... scratch survived with the whole lane (game SHA-1 checked, prime recheck 5/5); the 40effb6c-...
     scratch is gone, and with it the phase 1-5 plan tools (hdrmig5 ...). Only the copies in `naming/2026-11-04_vendor_v2/scripts/`

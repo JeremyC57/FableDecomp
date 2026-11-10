@@ -18,7 +18,10 @@ struct SViewRecord_01436e80 {
     unsigned char _pad[0x88];
     float         m_fadeDistanceScale;                   // +0x88
 };
-extern SViewRecord_01436e80* g_pViewRecord_01436e80;     // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local SViewRecord_01436e80 view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 struct SEngineShaderRegisters_01436e98 {
     unsigned char _pad[0x3030];
     long          m_objectMatrixRegister;                // +0x3030
@@ -43,7 +46,7 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UploadShaderConstants(
     CEngineInternalPrimitiveRepeatedStaticMesh& primitive, const C4DVector* offsets, const C4DVector* matrices, long count)
 {
     g_pShaderRenderManager->SetUserVertexShaderConstant(
-        1, primitive.AlphaTransformMult / g_pViewRecord_01436e80->m_fadeDistanceScale, 0.0f, 0.0f,
+        1, primitive.AlphaTransformMult / ((SViewRecord_01436e80*)g_pEnginePrimitiveRenderer)->m_fadeDistanceScale, 0.0f, 0.0f,
         primitive.AlphaTransformOffset);
     g_pShaderRenderManager->SetUserVertexShaderConstant(2, 1.0f, -1.0f, 1.0f, 0.0f);
     g_pShaderRenderManager->SetVSConstants(g_pEngine_01436e98->m_objectMatrixRegister, matrices, count);

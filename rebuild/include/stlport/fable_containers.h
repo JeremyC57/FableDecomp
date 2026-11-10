@@ -603,10 +603,19 @@ template<class _InputIterator> inline ptrdiff_t distance(const _InputIterator& f
 #endif
 template<class _Tp,class _Alloc> class _List_base {
 public:
+#ifdef FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+    // Per-TU opt-in (Codex name fix 2026-11-10, list<long>): retail calls the _List_base constructor and destructor COMDATs
+    // out of line (??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z 0x0042AB58, ??1.. 0x0042AB73) from the
+    // owning classes' constructors and destructors (NUISystem::CAction 0x0042BE50, CTCInventoryTrade 0x0059EB0C, ...).
+    // Declarations only; the bodies are the #else ones.
+    _List_base(const _Alloc&);
+    ~_List_base();
+#else
     _List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
         _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
     }
     ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
+#endif
     _STLP_alloc_proxy<_List_node<_Tp>*,_List_node<_Tp>,allocator<_List_node<_Tp> > > _M_node;
 #ifdef FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
     // Per-TU opt-in (chunk 801, row 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering): STLport 4.6 _list.c

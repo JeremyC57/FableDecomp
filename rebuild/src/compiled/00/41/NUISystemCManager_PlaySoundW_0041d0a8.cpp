@@ -42,12 +42,12 @@ public:
     virtual unsigned long PlaySoundEvent(CASoundBank& bank, const CCharString& name, bool loop, CSoundInit& init, bool attached);   // slot 4 (+0x10)
     virtual unsigned long PlaySoundEvent(CASoundBank& bank, long index, bool loop, CSoundInit& init, bool attached);               // slot 3 (+0x0c)
 };
-class CSoundSystem {
+class CASoundManager {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual CSoundPlayer* GetSoundPlayer();              // slot 9 (+0x24)
-    CASoundBank* GetBank(long id);                       // 0x00991840 (CSoundBankRegistry::GetBank)
+    CASoundBank* GetBank(long id);                       // 0x00991840 (CASoundManager::GetBank)
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                     // 0x013B8394
@@ -67,7 +67,7 @@ public:
 };
 void CManager::PlaySoundW(CCharString& symbol, long bankId)
 {
-    CSoundSystem* soundSystem = ((CSoundSystem*)PSoundManager);
+    CASoundManager* soundSystem = ((CASoundManager*)PSoundManager);
     if (soundSystem)
     {
         CSoundInit init;
@@ -82,7 +82,7 @@ void CManager::PlaySoundW(CCharString& symbol, long bankId)
         {
             CASoundBank* bank = soundSystem->GetBank(bankId);
             if (bank)
-                ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(*bank, symbol, true, init, false);
+                ((CASoundManager*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(*bank, symbol, true, init, false);
         }
     }
 }

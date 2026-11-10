@@ -11,7 +11,10 @@ struct SViewRecord_01436e80 {
     float m_drawDistanceScale;                     // +0x7c
 };
 extern SRenderSettings_01436e20* g_pRenderSettings_01436e20;   // 0x01436E20
-extern SViewRecord_01436e80*     g_pViewRecord_01436e80;       // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local SViewRecord_01436e80 view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 
 class CEngine { public:
     static float GetPrimitiveDrawDistanceFactor();
@@ -19,5 +22,5 @@ class CEngine { public:
 
 float CEngine::GetPrimitiveDrawDistanceFactor()
 {
-    return (g_pRenderSettings_01436e20->m_distanceBias + 1.0f) * g_pViewRecord_01436e80->m_drawDistanceScale;
+    return (g_pRenderSettings_01436e20->m_distanceBias + 1.0f) * ((SViewRecord_01436e80*)g_pEnginePrimitiveRenderer)->m_drawDistanceScale;
 }

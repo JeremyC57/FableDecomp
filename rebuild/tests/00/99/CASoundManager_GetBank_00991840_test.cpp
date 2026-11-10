@@ -18,7 +18,7 @@ struct CBankMap {
         return it;
     }
 };
-struct CSoundBankRegistry {
+struct CASoundManager {
     CBankMap Banks;
     CASoundBank* GetBank(long id)
     {
@@ -32,7 +32,7 @@ int main()
 {
     CASoundBank a, b; a.id = 1; b.id = 2;
     SEntry e[2]; e[0].first = 10; e[0].second = &a; e[1].first = 20; e[1].second = &b;
-    CSoundBankRegistry r; r.Banks._M_start = e; r.Banks._M_finish = e + 2;
+    CASoundManager r; r.Banks._M_start = e; r.Banks._M_finish = e + 2;
     if (r.GetBank(10) != &a || r.GetBank(20) != &b || r.GetBank(15) != 0 || r.GetBank(5) != 0 || r.GetBank(25) != 0)
     { std::printf("00991840_TEST FAIL\n"); return 1; }
     std::printf("00991840_TEST PASS\n");

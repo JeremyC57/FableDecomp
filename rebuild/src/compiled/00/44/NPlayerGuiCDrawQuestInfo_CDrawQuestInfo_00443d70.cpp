@@ -53,7 +53,8 @@ template <class T> struct _List_node {
     _List_node* _M_prev;
     T           _M_data;
 };
-template <class T> struct _List_base {             // STLport list: the sentinel node pointer (alloc proxy)
+template <class T> class allocator;
+template <class T, class _Alloc> struct _List_base {   // STLport list: the sentinel node pointer (alloc proxy)
     _List_node<T>* _M_node;
     void clear();                                   // out of line: 0x00441140 (list<CCountedPointer<CQuestInfoElement> >)
     ~_List_base()
@@ -63,8 +64,8 @@ template <class T> struct _List_base {             // STLport list: the sentinel
             free(_M_node);
     }
 };
-template <> _List_base<long>::~_List_base();        // 0x0042AB73
-template <class T> struct list : _List_base<T> { };
+template <> _List_base<long, allocator<long> >::~_List_base();   // 0x0042AB73 (Codex name fix 2026-11-10: STLport's two-parameter base)
+template <class T, class _Alloc = allocator<T> > struct list : _List_base<T, _Alloc> { };
 }
 struct CQuestInfoElement;
 #include "engine/CCountedPointer.h"

@@ -26,6 +26,19 @@ class CWideString { public:
     CWideString();                                 // 0x0099AED0
 };
 
+namespace std {                                    // STLport 4.6 list<long>: its base constructor / destructor are out of line
+template <class _Tp> class allocator { public: allocator() { } };   // empty; a user constructor (the temporary is not zero-filled)
+template <class _Tp, class _Alloc> class _List_base {
+public:
+    void* _M_node;
+    _List_base(const _Alloc&);                     // 0x0042AB58 for long
+    ~_List_base();                                 // 0x0042AB73 for long
+};
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
+public:
+    explicit list(const _Alloc& a = _Alloc()) : _List_base<_Tp, _Alloc>(a) { }
+};
+}
 namespace NPlayerGui {
 
 template <class P> struct CAllocProxy {      // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor
@@ -46,10 +59,6 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     void clear() { erase(begin(), end()); }
 };
 
-struct CRetailLongList {                           // VC6 Dinkumware list<long>: one sentinel pointer
-    void* head;
-    explicit CRetailLongList(const SAllocator& allocator = SAllocator());   // 0x0042AB58
-};
 
 struct CRetailElementList {                        // VC6 Dinkumware list<CCountedPointer<CQuestInfoElement>>: one sentinel pointer
     void* head;
@@ -71,7 +80,7 @@ class CDrawQuestInfo : public CDrawBase { public:                // vtable 0x012
     bool                MiniMode;                  // +0x34
     long                FramesUntilMiniMode;       // +0x38
     long                MiniGameElementIndex;      // +0x3c
-    CRetailLongList     OracleSymbols;             // +0x40
+    std::list<long>     OracleSymbols;             // +0x40
     CRetailHandleVector OraclePrimitiveHandles;    // +0x44
     CWideString         Name;                      // +0x50
     CWideString         Text;                      // +0x54

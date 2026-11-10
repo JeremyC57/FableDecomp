@@ -36,7 +36,10 @@ struct CEnginePrimitiveRendererSharedData {        // Ego_r.pdb (only the z-spri
     float MinimumZSpriteAsMeshDistance;            // +0x90
     float MaximumZSpriteAsMeshDistance;            // +0x94
 };
-extern CEnginePrimitiveRendererSharedData* g_pEnginePrimitiveRendererSharedData;   // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CEnginePrimitiveRendererSharedData view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 
 struct CEngineCameraDesc {                         // Ego_r.pdb, 0x6c bytes (CEngineCamera::CameraDesc +0x14)
     float     Window[4];                           // +0x00 C2DBoxF
@@ -80,7 +83,7 @@ static FABLE_FORCEINLINE float FadeFar(const CEngineInternalPrimitiveRepeatedZSp
 bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveRepeatedZSprite* self, int, const CEngineCamera& camera, bool ignoreFrustum)
 {
     float dist = (Sphere(self).Center - CameraPosition(camera)).GetMagnitude();
-    if (dist - Sphere(self).Radius > g_pEnginePrimitiveRendererSharedData->ZSpriteDrawDistanceFactor * FadeFar(self)) return false;
+    if (dist - Sphere(self).Radius > ((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer)->ZSpriteDrawDistanceFactor * FadeFar(self)) return false;
     if (dist + Sphere(self).Radius < static_cast<const CEngineInternalPrimitiveRepeatedZSprite_Methods*>(self)->GetTransitionFade().FadeBeginDistance) return false;
     if (ignoreFrustum) return true;
     return IsSphereInFrustum(camera, Sphere(self).Center, Sphere(self).Radius);

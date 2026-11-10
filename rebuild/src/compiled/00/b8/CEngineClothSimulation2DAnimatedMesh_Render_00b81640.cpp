@@ -17,7 +17,7 @@
 //   retail's x87 term order; the same sum written out in a C3DVector constructor schedules the X term first),
 //   CParticleProgram::GetVertexPositionCount() = InitialSimulation.GetParticleCount() + NonSimCount (Size read first),
 //   CEngineClothSimulationAnimatedMesh::GetOwner().
-// Globals: 0x01436E80 the engine primitive renderer (BlockOnLoad +0x04, ClothRenderer +0x2F0; spelling g_pPrimitiveRenderer_01436e80
+// Globals: 0x01436E80 the engine primitive renderer (BlockOnLoad +0x04, ClothRenderer +0x2F0; spelling g_pEnginePrimitiveRenderer
 //   is descriptive, see NOTES); the camera 0x01436EA0 and simulation manager 0x01436E68 inside CalculateFadeOut.
 // Layout: CEngineClothSimulationMeshBase (Ego_r.pdb names, landed 0x00B81180 offsets): ParticleSims +0x0C (CArray of counted
 //   pointers), MeshInfo +0xA8, Owner +0xB0. The animation manager is the owner's C3DMeshInfo::GetAnimationManager() (FableWin.pdb
@@ -139,7 +139,7 @@ class CEnginePrimitiveRenderer { public:
     unsigned char _pad05[0x2f0 - 5];
     CCountedPointer<CEngineClothRenderer> ClothRenderer;   // +0x2f0
 };
-extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e80;   // 0x01436E80
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 
 class CEngineSimulationManager : public CEngineSimulationManagerLayout { };
 extern CEngineSimulationManager* g_pEngineSimulationManager;       // 0x01436E68
@@ -201,10 +201,10 @@ void CEngineClothSimulation2DAnimatedMesh::Render(const C3DPrimitive2& primitive
         C3DVector centre = MeshInfo->BoundingSphere.Center;
         float fade = CalculateFadeOut(transform * centre);
         CParticleProgram* program = clothPrimitive->ParticleProgram.Get();
-        C4DVector* buffer = g_pPrimitiveRenderer_01436e80->ClothRenderer->GetPositionBuffer(program->GetVertexPositionCount());
+        C4DVector* buffer = g_pEnginePrimitiveRenderer->ClothRenderer->GetPositionBuffer(program->GetVertexPositionCount());
         program->PrepareForRendering(buffer, *simulation, blend, fade, blendState1, blendState2, blend, GetOwner()->MeshInfo->GetAnimationManager(),
             GetOwner()->GetBoneScalings(mesh), GetOwner()->GetBoneTransformations(), mesh);
-        g_pPrimitiveRenderer_01436e80->ClothRenderer->Render2DClothPrimitive(*simulation, *clothPrimitive, primitive, subPrimitive, *Owner,
-            transform, passType, g_pPrimitiveRenderer_01436e80->BlockOnLoad);
+        g_pEnginePrimitiveRenderer->ClothRenderer->Render2DClothPrimitive(*simulation, *clothPrimitive, primitive, subPrimitive, *Owner,
+            transform, passType, g_pEnginePrimitiveRenderer->BlockOnLoad);
     }
 }

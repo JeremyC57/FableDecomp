@@ -95,7 +95,10 @@ struct CLocalDetailRenderer : CEnginePrimitiveRenderer {
  CEnginePrimitiveHandle AddRepeatedZSprite(const CAddPrimitiveDesc&); // 0x00B32FF0
  void UpdateRepeatedStaticMesh(CEnginePrimitiveHandle&,const CAddMeshDesc&); // 0x00B31FE0
 };
-extern CLocalDetailRenderer* g_PrimitiveRenderer; // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CLocalDetailRenderer view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 struct CLocalDetailPrimitiveRepeatedMesh : CLocalDetailPrimitiveBase {
  float MaxObjectScale; long ObjectCount,SubSectionsCount;
  CSubsectionElement* SubSections; C4DVector *ObjectMatricies,*ObjectOffsets;

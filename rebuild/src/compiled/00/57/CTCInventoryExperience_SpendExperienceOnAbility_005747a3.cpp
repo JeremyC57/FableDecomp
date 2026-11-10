@@ -28,14 +28,14 @@ struct SSpendInfoVector {
     ExperienceSpendInfo* begin() { return _M_start; }
     ExperienceSpendInfo& operator[](long n) { return *(begin() + n); }   // STLport: *(begin() + n)
 };
-struct CTCHeroExperience_Calls {
+class CTCHeroExperience { public:
     void SpendExperience(EHeroExperienceStatCategory category, long amount);   // 0x006D6590
     void ForceSpendableExperienceTo(long amount);                              // 0x006D6470
 };
-struct CTCInventoryAbilities_Calls {
-    bool IsAbilityAvailable(EHeroAbility ability);                                       // 0x005EDF08
-    long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b);   // 0x005EE77C
-    EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility ability);                // 0x005EDEEB
+class CTCInventoryAbilities { public:
+    bool IsAbilityAvailable(EHeroAbility ability) const;                                 // 0x005EDF08
+    long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b) const;   // 0x005EE77C
+    EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility ability) const;          // 0x005EDEEB
     void UpgradeAbility(EHeroAbility ability);                                           // 0x005EEEE6
 };
 class CTCInventoryExperience { public:
@@ -43,8 +43,10 @@ class CTCInventoryExperience { public:
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
     SSpendInfoVector ExperienceSpendValuesStats;    // +0x1EC
     SSpendInfoVector ExperienceSpendValuesAbility;  // +0x1F8
-    CTCHeroExperience_Calls* GetTCHeroExperience();                                 // 0x0056FF3D
-    CTCInventoryAbilities_Calls* GetTCInventoryAbilities();                         // 0x0056FFC5
+private:
+    CTCHeroExperience* GetTCHeroExperience();                                       // 0x0056FF3D (private: Ego_r AAE)
+    CTCInventoryAbilities* GetTCInventoryAbilities();                               // 0x0056FFC5 (private: Ego_r AAE)
+public:
     void UpdateExternalExperienceSpendAbility(EHeroAbility ability, long amount);   // 0x00572689
     void SpendExperienceOnAbility(EHeroAbility ability);
 };

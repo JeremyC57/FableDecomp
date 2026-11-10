@@ -19,11 +19,11 @@ class CThingCreatureBase { public:
 };
 struct CRefCountedBase {
     virtual void v00();
-    virtual void Destroy();                          // slot 1
-    long RefCount;                                   // +0x04
-    void DecRef() { --RefCount; }
+    virtual void Destroy() const;                    // slot 1
+    mutable long RefCount;                           // +0x04
+    void DecRef() const { --RefCount; }
     long GetRefCount() const { return RefCount; }
-    void Release()
+    void Release() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -43,7 +43,7 @@ template<class T> class CDefPointer { public:
         }
     }
 };
-typedef CDefPointer<CHeroAbilityDef> CAbilityDefPointer;
+typedef CDefPointer<const CHeroAbilityDef> CAbilityDefPointer;
 struct CAbilityDefVector {                           // vector<CDefPointer<const CHeroAbilityDef>> (12 bytes)
     CAbilityDefPointer* _M_start;
     CAbilityDefPointer* _M_finish;

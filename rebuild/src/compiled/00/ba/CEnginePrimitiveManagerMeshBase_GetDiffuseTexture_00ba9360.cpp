@@ -10,7 +10,7 @@
 // Callees: CGraphicDataBank::GetBlankTexture(ETextureType) 0x009FD150 (type 0), CEnginePrimitiveManagerMeshBase::GetComposedTexture
 //   0x00BEBED0 (private static __fastcall: long& index, surfaces, mipmap, bump, bank), CResource::ListRemove 0x009FBFB0 / ListInsert
 //   0x009FBF90, CFrameData::BeginLoading 0x009FDE80, CFrameData::CFrameData(const CGraphicInfoFrame*) 0x009FE380 (operator new
-//   0x00BFEA1A, 0x44 bytes), CGraphicInfoFrame::InternalGetFrameForcedLoading 0x009FF6B0; global 0x01436E80 (g_pPrimitiveRenderer_01436e80, BlockOnLoad +4).
+//   0x00BFEA1A, 0x44 bytes), CGraphicInfoFrame::InternalGetFrameForcedLoading 0x009FF6B0; global 0x01436E80 (((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer), BlockOnLoad +4).
 // Shape: as the parked GetReflectionTexture 0x00BA9830 model (2026-10-27_linux_hand683: STLport-style vector member for the double
 //   size computation), `long index` address-taken for GetComposedTexture (so the index lives in a stack home and is reloaded after
 //   the call), `if (surfaces) { t = GetComposedTexture(..); if (t) return t; }`, `flags = 0; if (BlockOnLoad || force) flags = 0x11;`, the frame body inlined
@@ -196,7 +196,10 @@ class C3DMeshMaterial { public:                              // Ego_r.pdb, 0x30 
     unsigned long  ReflectionMapBankIndex;             // +0x18
 };
 struct CEnginePrimitiveRendererSharedData { void* _pad00; bool BlockOnLoad; };   // +0x04
-extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRenderer_01436e80;       // 0x01436E80
+class CEnginePrimitiveRenderer;
+extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
+// The members read here are modelled by the local CEnginePrimitiveRendererSharedData view of that object (name debt: the shared
+// engine/CEnginePrimitiveRenderer.h retail branch).
 
 
 class CCompositeSurfaceInfo;
@@ -262,7 +265,7 @@ const CTexture* __fastcall CEnginePrimitiveManagerMeshBase::GetDiffuseTexture(co
     }
     CGraphicInfoFrame* frame = fullBank->GetGraphicInfo(index) ? fullBank->GetGraphicInfo(index)->Frames : 0;
     unsigned long flags = 0;
-    if (g_pPrimitiveRenderer_01436e80->BlockOnLoad || force)
+    if (((CEnginePrimitiveRendererSharedData*)g_pEnginePrimitiveRenderer)->BlockOnLoad || force)
         flags = 0x11;
     const CTexture* texture;
     if (frame && frame->GetTexture(mipmap, flags, texture))

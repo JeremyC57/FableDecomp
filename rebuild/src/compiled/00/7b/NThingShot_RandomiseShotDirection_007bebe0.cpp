@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BEBE0, 288 bytes, `__fastcall` (hidden result pointer in ecx, direction in edx,
 //   accuracy + seed on the stack, `ret 8`). PDB: ?RandomiseShotDirection@NThingShot@@YI?AVC3DVector@@ABV2@JPAK@Z.
 // Callees: GFROR13 0x00497890 and GFFloatRandom 0x004978A0 (both __fastcall), C3DVector::Rotate 0x00A13C60,
-//   C3DVector::Normalise 0x00A14440. Constants: 0.0 0x0122DEDC, 1/48 0x0126E19C, 1/144 0x0126E170.
+//   C3DVector::AccurateNormalise 0x00A14440. Constants: 0.0 0x0122DEDC, 1/48 0x0126E19C, 1/144 0x0126E170.
 // Shape: the inline GFRandom (0x24A1/0x24DF LCG + GFROR13, `% 100` as an unsigned div) is compared signed with the
 //   accuracy; the perpendicular axis is direction x (Y, -X, 0) inlined (the -X held in st(1), the 0.0 products kept
 //   because VC cannot fold x*0), built in the inline cross product's result temporary and copied into a named local;

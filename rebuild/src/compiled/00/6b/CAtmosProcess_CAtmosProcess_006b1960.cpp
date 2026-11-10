@@ -8,7 +8,7 @@
 //   CWorld's init code at 0x004A65B3.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CCharString(const char*, long) @ 0x0099EBF0 /
 //   ~CCharString @ 0x0099EAE0, CDefinitionManager::Get @ 0x0044C6B0 (static `__fastcall`), CDefinitionManager::
-//   GetDef<const CSoundDef> @ 0x004196B2, the sound system's virtual slot 36 (+0x90: atmos map, damping min, damping
+//   GetDef<CSoundDef> (const, out by pointer) @ 0x004196B2, the sound system's virtual slot 36 (+0x90: atmos map, damping min, damping
 //   range, flags 0x8010; name unproven), a CAtmosProcess theme loader @ 0x006B16B0 (name unproven) and ApplyReverbSettings @ 0x006B1600,
 //   the def's virtual Destroy (slot 1).
 // Globals: g_pSoundSystem @ 0x013B8394; literal "MAIN_SOUND_SETUP" @ 0x0122EF98.
@@ -18,7 +18,7 @@
 //   +0x18, ReverbLevel +0x1c. Retail CSoundDef AtmosListenerDampingMin +0x78, AtmosListenerDampingRange +0x7c (PDB
 //   +0x90/+0x94: five 12-byte vectors over a 0x3c base).
 // Shape: all members in the initialiser list (one zero register); the def lookup is the landed CMusicManager ctor's
-//   block-scoped "MAIN_SOUND_SETUP" string with the chained `Get().GetDef(name, def)`; the def is released by hand
+//   block-scoped "MAIN_SOUND_SETUP" string with the chained `Get().GetDef(name, &def)`; the def is released by hand
 //   without a null test after the two loaders.
 class CCharString { public:
     void* PStringData;
@@ -42,7 +42,8 @@ class CSoundDef : public CDefPointeeBase { public:
 };
 
 class CDefinitionManager { public:
-    template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out);   // 0x004196B2 for T = const CSoundDef
+    // Ego_r.pdb: ??$GetDef@VCSoundDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundDef@@@@@Z (const, out by pointer)
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x004196B2 for T = CSoundDef
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 
@@ -97,7 +98,7 @@ CAtmosProcess::CAtmosProcess()
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
-            CGameDefinitionManager::Get().GetDef(name, soundDef);
+            CGameDefinitionManager::Get().GetDef(name, &soundDef);
         }
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
         ((CSoundSystem*)PSoundManager)->SetAtmosMap_slot36(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);

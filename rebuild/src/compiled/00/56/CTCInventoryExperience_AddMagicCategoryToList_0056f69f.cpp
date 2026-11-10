@@ -29,14 +29,9 @@ public:
 namespace NUISystem {
 class CComponent;
 }
-struct SCountBlock;
-struct CComponentPointer {                            // CCountedPointer<NUISystem::CComponent>
-    NUISystem::CComponent* m_pObject;
-    SCountBlock*           m_pCount;
-    CComponentPointer(NUISystem::CComponent* object); // 0x00429C15
-    ~CComponentPointer();                             // 0x004291DE
-    NUISystem::CComponent* operator->() const { return m_pObject; }
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#include "engine/CCountedPointer.h"
+typedef CCountedPointer<NUISystem::CComponent> CComponentPointer;   // (T*) ctor 0x00429C15 (called), ~CCountedPointer 0x004291DE
 
 #define V10(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3(); virtual void n##4(); \
     virtual void n##5(); virtual void n##6(); virtual void n##7(); virtual void n##8(); virtual void n##9();
@@ -95,7 +90,7 @@ void CTCInventoryExperience::AddMagicCategoryToList(NUISystem::CList* list, CWid
     descriptionPointer->SetText(icon.ToWideString(), true, true);
     entry->AddChild(descriptionPointer);
     if (pTextViewport)
-        pTextViewport->AddViewportChild(descriptionPointer.m_pObject);
+        pTextViewport->AddViewportChild(descriptionPointer.Data);
     CComponentPointer subtitlePointer(frontEnd->CreateComponent("UI_ONE_OFF_SUBTITLE", false));
     subtitlePointer->SetText(description, true, true);
     entry->AddChild(subtitlePointer);

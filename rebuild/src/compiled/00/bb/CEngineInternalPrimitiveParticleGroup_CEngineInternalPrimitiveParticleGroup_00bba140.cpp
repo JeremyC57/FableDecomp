@@ -39,10 +39,11 @@ struct CIteratorArray {                                     // CArray<CPrimitive
     }
 };
 
-struct CIdList {                                            // STLport list<long>
-    void* m_pNode;
-    ~CIdList();                                             // 0x0042AB73
-};
+namespace std {                                    // STLport 4.6 list<long>: only its base destructor is out of line
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class _List_base { public: void* _M_node; ~_List_base(); };   // ~ 0x0042AB73 for long
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> { };
+}
 
 class CIVCountedPointeeBase { public:                              // vtable 0x012354D0
     virtual void v00();
@@ -53,7 +54,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveParticleGroup : CIVCountedPo
     unsigned char        _pad04[0x48 - 0x04];
     CPrimitiveHandleList Primitives;                        // +0x48
     CIteratorArray       PrimitiveIDToIterator;             // +0x4c
-    CIdList              FreePrimitiveIDs;                  // +0x58
+    std::list<long>      FreePrimitiveIDs;                  // +0x58
     virtual void v01();
     ~CEngineInternalPrimitiveParticleGroup();
 };

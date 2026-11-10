@@ -1,0 +1,9 @@
+address	name	evidence
+00429c6f	CCountedPointer<NUISystem::CComponent>::Reset	codex20nf 2026-11-10: Ego_r ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z + landed caller 0x00596A68 binding; release call is ~CCountedPointer 0x004291DE
+0042ab58	std::_List_base<long,std::allocator<long> >::_List_base	codex20nf 2026-11-10: STLport 4.6 _List_base(const allocator&) body (sentinel malloc, self-linked) + list<long> owners by Ego_r layout (CAction, CTCInventoryTrade::NotInStock, SExpSpendUndo)
+0042ab73	std::_List_base<long,std::allocator<long> >::~_List_base	codex20nf 2026-11-10: STLport 4.6 ~_List_base (clear + deallocate; ~list empty inline) + list<long> owners (SExpSpendUndo, CTCInventoryTrade::NotInStock)
+005797a4	SExpSpendUndo::SExpSpendUndo	codex20nf 2026-11-10: Ego_r ??0SExpSpendUndo@@QAE@XZ; layout 4 list<long> + 9 longs (struct_layouts_egor); body ends where the landed ~SExpSpendUndo 0x005797FA starts
+005f900a	std::_List_base<CWideString,std::allocator<CWideString> >::~_List_base	codex20nf 2026-11-10: STLport ~_List_base body + the landed CTCInventoryAbilities::ConstructScreen 0x005F519F list<CWideString> local
+00ac8540	QuadricOptimiserInternals::COptimisedPrimitive::PaintSegments	codex20nf 2026-11-10: Ego_r ?PaintSegments@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXXZ + sole callee PaintSegment 0x00AC8170 (Ego_r, landed)
+007723d0	CTCShop::IsValidStockItem	codex20nf 2026-11-10: Ego_r + FableWin ?IsValidStockItem@CTCShop@@QBE_NJ@Z; 19-byte wrapper of FindDefaultStockItem
+00991840	CASoundManager::GetBank	codex20nf 2026-11-10: RTTI vtable 0x0129A574 (CSoundManagerLH : CASoundManager) owns the +0x30 bank table; method name descriptive (Codex pass 15)

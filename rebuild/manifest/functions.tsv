@@ -890,8 +890,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042ab01	Std_DoubleLinkedList_CreateNode	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AB01_global_Std_DoubleLinkedList_CreateNode.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_StdDoubleLinkedListCreateNode_0042ab01.cpp
 0042ab1c	~list	std::list<T_0042ab1c>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CActiveFile_OnReadFinished_0042ab1c.cpp
 0042ab33	insert	std::list<long>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AB33_global_LinkedList_Insert_Before.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_LinkedListInsertBefore_0042ab33.cpp
-0042ab58	StdList_Ctor_0042ab58	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\stdlist_list_0042ab58.cpp
-0042ab73	~list	std::list<long, std::allocator<long>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CActiveFile_OnReadFinished_0042ab73.cpp
+0042ab58	_List_base	std::_List_base<long, std::allocator<long>>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\stdlist_list_0042ab58.cpp
+0042ab73	~_List_base	std::_List_base<long, std::allocator<long>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CActiveFile_OnReadFinished_0042ab73.cpp
 0042ab8a	insert	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AB8A_global_Std_List_Insert.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_StdListInsert_0042ab8a.cpp
 0042abaf	list	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\stdlist_list_0042abaf.cpp
 0042abca	~list	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CActiveFile_OnReadFinished_0042abca.cpp
@@ -10572,7 +10572,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005796d1	_M_allocate_and_copy	std::vector<CComponent*>	unknown	undefined	0		0	yes	accepted									
 005796fe	_M_insert	std::_Rb_tree<CUnprovenKey_005794a1,CUnprovenValue_005794a1,CUnprovenKeyOfValue_005794a1,std::less<CUnprovenKey_005794a1>,std::allocator<CUnprovenValue_005794a1> >	unknown	undefined	0		0	yes	accepted									
 00579786	Insert	CRetailList_00579786	__thiscall	bool	4	CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong	1	yes	accepted									
-005797a4	CHeroExperienceDef	CHeroExperienceDef	__thiscall	undefined	1	CHeroExperienceDef *	0	yes	accepted									
+005797a4	SExpSpendUndo	SExpSpendUndo	__thiscall	undefined	1	CHeroExperienceDef *	0	yes	accepted									
 005797fa	~SExpSpendUndo	SExpSpendUndo	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 00579842	map	std::map<T_00579842>	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CDisplayManager_CopyBackBufferToTexture_00579842.cpp
 0057986e	CopyBackBufferToTexture	CDisplayManager	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\global_CopyBackBufferToTexture_0057986e.cpp
@@ -12763,7 +12763,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005f8f89	erase	std::vector<EHeroAbility, std::allocator<EHeroAbility>>	unknown	undefined	0		0	yes	accepted									
 005f8fbc	Render_InitializeNode_24Byte_Var3	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\global_RenderInitializeNode24ByteVar3_005f8fbc.cpp
 005f8fe6	~list	std::list<T_005f8fe6>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\CActiveFile_OnReadFinished_005f8fe6.cpp
-005f900a	~list	std::list<T_005f900a>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\CActiveFile_OnReadFinished_005f900a.cpp
+005f900a	~_List_base	std::_List_base<CWideString, std::allocator<CWideString>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\CActiveFile_OnReadFinished_005f900a.cpp
 005f9074	operator=	std::vector	__thiscall	vector<unsigned_int,class_std::allocator<unsigned_int>_> *	2	vector<unsigned_int,std::allocator<unsigned_int>_> *,vector<unsigned_int,class_std::allocator<unsigned_int>_> *	1	yes	accepted									
 005f911d	Forward_CForwarder_005f911d	_unattributed	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
 005f9132	UninitCopy_CElement8_005f8578_005f9132	_global	__fastcall	CArray<CRandomAppearanceMorph::CBodyPartMesh> *	5	CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -20858,7 +20858,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00772120	RemoveShopper	CTCShop	__thiscall	void	2	CTCShop *,CThingCreatureBase *	1	yes	accepted									
 007721a0	IsPermanentlyStocked	CTCShop	__thiscall	bool	1	CTCShop *	1	yes	accepted									
 00772250	FindDefaultStockItem	CTCShop	__thiscall	CShopItem *	2	CTCShop *,long	1	yes	accepted									
-007723d0	HasDefaultStockItem	CTCShop	__cdecl	int	1	_func_4879 *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\global_atexit_007723d0.cpp
+007723d0	IsValidStockItem	CTCShop	__cdecl	int	1	_func_4879 *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\global_atexit_007723d0.cpp
 007723f0	IsShopKeeperNearerThan	CTCShop	__thiscall	bool	2	CTCShop *,float	1	yes	accepted									
 00772490	IsBarberShop	CTCShop	__thiscall	bool	1	CTCShop *	1	yes	accepted									
 00772510	IsTattooShop	CTCShop	__thiscall	bool	1	CTCShop *	1	yes	accepted									
@@ -33210,7 +33210,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00991720	ElemLoop0x24_00991720	_global	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
 00991750	OnDie	CThing	__thiscall	void	1	CThing *	1	yes	accepted									
 009917e0	FindFirstSymbolWithVal	CSymbolMap	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
-00991840	GetBank	CSoundBankRegistry	unknown	undefined	0		0	yes	accepted									
+00991840	GetBank	CASoundManager	unknown	undefined	0		0	yes	accepted									
 00991880	~CASoundManager	CASoundManager	__thiscall	void	1	CBankFileEntryUpdateData *	1	yes	accepted									
 009918f0	ClearBanks	CASoundManager	unknown	undefined	0		0	yes	accepted									
 00991910	CASoundManager	CASoundManager	unknown	undefined	0		0	yes	accepted									
@@ -39574,7 +39574,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac8170	PaintSegment	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac82a0	ComputeSubContractionCost	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	float	3	COptimisedPrimitive *,CSubContraction *,C3DVector *	1	yes	accepted									
 00ac8360	IsIllegal	QuadricOptimiserInternals::CVertexPairContraction	unknown	undefined	0		0	yes	accepted									
-00ac8540	PaintSegments	COptimisedPrimitive	__thiscall	void	1	COptimisedPrimitive *	1	yes	accepted									
+00ac8540	PaintSegments	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void	1	COptimisedPrimitive *	1	yes	accepted									
 00ac85d0	CollapseSegments	COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,float	1	yes	accepted									
 00ac8680	CollapseSegments	QuadricOptimiserInternals::COptimisedMesh	unknown	undefined	0		0			discovered	gapscan							
 00ac8720	InterpolateGroups	QuadricOptimiserInternals::COptimisedVertex	unknown	undefined	0		0	yes	accepted									

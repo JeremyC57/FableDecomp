@@ -18,10 +18,13 @@ class CMeshDataBank;
 struct SMember10 { void* a; void* b; ~SMember10(); };            // 0x00419108
 struct SMember18 { void* a; void* b; ~SMember18(); };            // 0x0042918C
 struct SMember24 { unsigned char _d[0x38]; ~SMember24(); };       // 0x0042B796
-struct SMember5c { void* a; ~SMember5c(); };                      // 0x0042AB73
+namespace NUISystem { class CComponent; }
+namespace std {                                                   // STLport 4.6 list<long> base: only the out-of-line destructor is called
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc> class _List_base { public: void* _M_node; ~_List_base(); };   // ~_List_base 0x0042AB73
+}
 struct SMember60 { unsigned char _d[0x10]; ~SMember60(); };       // 0x0042AB1C
 struct SMember70 { unsigned char _d[0x10]; ~SMember70(); };       // 0x0042B7D7
-struct SMember80 { unsigned char _d[0x8]; ~SMember80(); };        // 0x004291DE
 struct SMember88 { unsigned char _d[0x14]; ~SMember88(); };       // 0x0042CE63
 namespace NUISystem {
 struct __declspec(novtable) CManagerBase {
@@ -36,10 +39,10 @@ class CManager : public CManagerBase { public:
     SMember18     PMeshBank;                       // +0x18
     unsigned char _pad20[4];
     SMember24     m_24;                            // +0x24
-    SMember5c     m_5c;                            // +0x5c
+    std::_List_base<long, std::allocator<long> > m_5c;   // +0x5c std::list<long> (~_List_base 0x0042AB73)
     SMember60     m_60;                            // +0x60
     SMember70     m_70;                            // +0x70
-    SMember80     m_80;                            // +0x80
+    CCountedPointer<CComponent> m_80;              // +0x80 (~CCountedPointer 0x004291DE)
     SMember88     m_88;                            // +0x88
     bool          m_errorMessageShowing;           // +0x9c
     void ClearErrorMessage();                      // 0x0041CE6A

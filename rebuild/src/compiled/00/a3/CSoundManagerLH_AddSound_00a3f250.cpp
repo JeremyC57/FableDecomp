@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3F250, 235 bytes (+ int3 padding), `ret 14h`. Vtable 0x0129D2C4 (CSoundManagerLH,
 //   rtti-vtables.tsv) slot 39. Descriptive name: the audio layer is absent from both PDBs (as the landed siblings
 //   AddBank 0x00A3F140 slot 37, FindByName 0x00A3ED30, FindByNamePair 0x00A3EE50); the catalog has no label.
-// Callees: CSoundManagerLH::FindByNamePair 0x00A3EE50, CSoundManagerLH::FindByName 0x00A3ED30, CSoundBankRegistry::GetBank
+// Callees: CSoundManagerLH::FindByNamePair 0x00A3EE50, CSoundManagerLH::FindByName 0x00A3ED30, CASoundManager::GetBank
 //   0x00991840 (on this), the bank's slot 1 (+4), pair<CCharString, CCharString>(const CCharString&, const CCharString&)
 //   0x0076DD40 (out of line), CCharString(const CCharString&) 0x0099EC30, vector<pair<pair<..>, ..> >::push_back 0x00A41840,
 //   ~CCharString 0x0099EAE0, CVectorMap<pair<CCharString, CCharString>, ..>::Sort 0x00A42100 (out of line).
@@ -72,13 +72,13 @@ public:
     virtual void v00();
     virtual CSoundBankLH* StartSound(long sampleId, long a, long b);   // slot 1 (+0x04); the object filed in the pair map
 };
-class CSoundBankRegistry {                                  // landed 0x00991840 owner; called on this unadjusted
+class CASoundManager {                                  // landed 0x00991840 owner; called on this unadjusted
 public:
     virtual void v00();
     CASoundBank* GetBank(long id);                          // 0x00991840
 };
 
-class CSoundManagerLH : public CSoundBankRegistry {         // vtable 0x0129D2C4
+class CSoundManagerLH : public CASoundManager {         // vtable 0x0129D2C4
 public:
     unsigned char _04[0x54 - 0x04];                         // +0x04
     CVectorMap<std::pair<CCharString, CCharString>, CSoundBankLH*> NamePairMap;   // +0x54

@@ -78,7 +78,9 @@ class CTCContainerRewardHero { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CContainerItemVector ContainerItems;                // +0x0c
-    C3DVector GeneratePopoutVectorFromVars(long index, long perRing, long ring, float speed) const;   // 0x0074E140
+private:
+    C3DVector GeneratePopoutVectorFromVars(long index, long perRing, long ring, float speed) const;   // 0x0074E140 (private: Ego_r ABE)
+public:
     CThingObject* CreateNewObject(long defIndex, const C3DVector& pos, const C3DVector& velocity,
                                   const CCharString& name);                                       // 0x0074E560
     void ReleaseItems(float speed);

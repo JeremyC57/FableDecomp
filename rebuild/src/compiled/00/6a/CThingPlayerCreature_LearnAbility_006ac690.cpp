@@ -22,11 +22,11 @@ class CCharString { public:
 };
 class CDefPointeeBase { public:
     virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long m_refCount;                                    // +0x04
-    void DecRef() { --m_refCount; }
+    virtual void Destroy() const;                       // slot 1
+    mutable long m_refCount;                            // +0x04
+    void DecRef() const { --m_refCount; }
     long GetRefCount() const { return m_refCount; }
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -62,8 +62,8 @@ class CTCInventoryItem { public:
     void RemoveFromInventory();                                         // 0x005D8E20
 };
 class CTCInventoryAbilities { public:
-    bool IsAbilityAvailable(EHeroAbility ability);                      // 0x005EDF08
-    CDefPointer<CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability);  // 0x005EDFD9
+    bool IsAbilityAvailable(EHeroAbility ability) const;                // 0x005EDF08
+    CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
     void SetAbilityAsAvailable(EHeroAbility ability, bool available, bool a);   // 0x005F6BD6
 };
 class CRightHandedSet;
@@ -137,7 +137,7 @@ bool CThingPlayerCreature::LearnAbility(EHeroAbility ability, bool learn, long q
     if (GetInterface(&abilities, 0x6f)) {
         if (learn) {
             if (!abilities->IsAbilityAvailable(ability)) {
-                CDefPointer<CHeroAbilityDef> def = abilities->GetAbilityPDef(ability);
+                CDefPointer<const CHeroAbilityDef> def = abilities->GetAbilityPDef(ability);
                 CThing* item;
                 {
                     CCharString name("");
@@ -161,7 +161,7 @@ bool CThingPlayerCreature::LearnAbility(EHeroAbility ability, bool learn, long q
         } else {
             if (abilities->IsAbilityAvailable(ability)) {
                 abilities->SetAbilityAsAvailable(ability, false, true);
-                CDefPointer<CHeroAbilityDef> def = abilities->GetAbilityPDef(ability);
+                CDefPointer<const CHeroAbilityDef> def = abilities->GetAbilityPDef(ability);
                 if (HasTC(0x11)) {
                     CTCBase* inventory = GetTC(0x11);
                     CThing* item = FindThing(inventory, def->InventoryObject);
