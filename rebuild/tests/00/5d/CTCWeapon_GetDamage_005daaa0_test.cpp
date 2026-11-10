@@ -1,10 +1,10 @@
 #include <cstdio>
 struct CAug { float m; float Get() const { return m; } };
 class CThing { public: unsigned int bits[9]; CAug* aug; bool GetInterface(CAug** o, long t) { if (bits[t >> 5] & (1u << (t & 31))) { *o = aug; return true; } return false; } };
-class CWeaponDef { public: long RefCount; float AnimationSpeed; };
+class CWeaponDef { public: long RefCount; float Damage; };
 class CTCWeapon { public:
     CThing* ParentThing; CWeaponDef* def;
-    float Get() const { ++def->RefCount; float speed = def->AnimationSpeed; --def->RefCount; CAug* a; if (ParentThing->GetInterface(&a, 0xbf)) return speed * a->Get(); return speed; }
+    float Get() const { ++def->RefCount; float damage = def->Damage; --def->RefCount; CAug* a; if (ParentThing->GetInterface(&a, 0xbf)) return damage * a->Get(); return damage; }
 };
 int main()
 {

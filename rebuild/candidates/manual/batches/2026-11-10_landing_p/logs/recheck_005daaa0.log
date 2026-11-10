@@ -1,0 +1,12 @@
+addr       parity           behav  name
+005daaa0   WARN SHARED_HEADER_AVAILABLE CThing
+005daaa0   WARN SHARED_HEADER_AVAILABLE CWeaponDef
+005daaa0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005daaa0   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+  WARN leaf '005daaa0' matches no symbol in 005daaa0.obj; graded the largest function
+  WARN leaf '005daaa0' matches no symbol in 005daaa0.obj; graded the largest function
+005daaa0   WARN STANDIN_LEAF ?GetDamage@CTCWeapon@@QBEMXZ (catalog CTCWeapon::GetAnimationSpeedValue; names another function)
+005daaa0   RELOCATION_MATCH PASS   005daaa0
+
+WINS: 1
+  005daaa0 RELOCATION_MATCH m::005daaa0

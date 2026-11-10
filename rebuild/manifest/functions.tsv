@@ -12184,7 +12184,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005daa00	IsMeleeWeapon	CTCWeapon	__thiscall	bool	1	CTCWeapon *	1	yes	accepted									
 005daa40	IsProjectileWeapon	CTCWeapon	__thiscall	bool	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCWeapon_IsProjectileWeapon_005daa40.cpp
 005daa70	IsProjectile	CTCWeapon	__thiscall	bool	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCWeapon_IsMeleeWeapon_005daa70.cpp
-005daaa0	GetAnimationSpeedValue	CTCWeapon	__thiscall	float	1	CTCWeapon *	1	yes	accepted									
+005daaa0	GetDamage	CTCWeapon	__thiscall	float	1	CTCWeapon *	1	yes	accepted									
 005dab10	IsUsableBy	CTCWeapon	__thiscall	bool	2	CTCWeapon *,CThing *	1	yes	accepted									
 005dabe0	GetAnimationGroupName	CTCWeapon	__thiscall	CCharString *	1	CTCWeapon *	1	yes	accepted									
 005dac50	SetProjectileWeaponLoaded	CTCWeapon	__thiscall	void	3	CTCWeapon *,bool,CThing *	1	yes	accepted									

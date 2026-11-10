@@ -68,3 +68,5 @@ CComponent: 0x0C FindChild, 0xEC AddChild, 0xF8 SetDeletion, 0x14C SetName, 0x17
   same object (+0x1d4) as a `CEAXDevice` -- one retail object, two local names; a shared engine/CCodaSystem.h should settle it.
 - CVectorMap ASSIGN comment wrong (see hdr/README.md). CEnginePrimitiveHandle.h fails to compile in the CTCInventoryWeapons TU.
 - NAME_FIXES.tsv: 0x006313A0 (landed as CTavernTableDef::operator=) and 0x00432EE9 (landed under five vector-wrapper names).
+
+- 2026-11-10 later: 0x005C8459 landed at RELOCATION_MATCH by agentSCR (batch `2026-11-10_landing_p`, source `pending/2026-11-10_linux_handSCR/`); its parked draft was removed from differ/.

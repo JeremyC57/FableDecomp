@@ -1,0 +1,4 @@
+address	name	grade	notes
+005c8459	CTCInventoryWeapons::ConstructScreen	RELOCATION_MATCH	src+test done; graded with FABLE_HDR_OVERLAY=hdr (needs CDefPointer POINTEE opt-in, CWeaponDef.h, CTCInventoryWeapons.h)
+005c9a95	CTCInventoryWeapons::ConstructScreenPC	RELOCATION_MATCH	src+test done; same TU devices and overlay as 005c8459
+005b8743	CTCInventoryClothing::ConstructScreenPC	PARKED	not compiled: flow skeleton in differ/005b8743.cpp; needs a retail CTCInventoryClothing header (CBase members, ConstructScreenPC / ConstructClothingListPC decls), six unnamed helpers and agentNF set/map spellings (NOTES.md)

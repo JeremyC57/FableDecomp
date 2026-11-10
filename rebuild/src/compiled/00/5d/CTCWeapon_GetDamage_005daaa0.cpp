@@ -1,11 +1,13 @@
-// CTCWeapon::GetAnimationSpeedValue() -- the weapon def's animation speed, scaled by the parent's object augmentations
+// CTCWeapon::GetDamage() -- the weapon def's Damage (+0x44), scaled by the parent's object-augmentation damage multiplier
+// Leaf: ?GetDamage@CTCWeapon@@QBEMXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DAAA0, 109 bytes (+3 int3). __fastcall, float in st(0).
-// Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0; CTCObjectAugmentations speed multiplier getter
+// Name: Ego_r.pdb ?GetDamage@CTCWeapon@@QBEMXZ (127 bytes; GetAnimationSpeedValue is 34) and the CWeaponDef layout (Damage +0x44, AnimationSpeedVal +0x40, the field 0x005DA850 reads); was the propagated label GetAnimationSpeedValue.
+// Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0; CTCObjectAugmentations damage multiplier getter
 //          0x00766140 (catalog "GetDamageMultiplier"; which multiplier is not verified); def release via vtable slot 1.
-// Shape: the def speed (+0x44) is read through a by-value GetWeaponDef() into a float local (dword copy to [esp+4]);
+// Shape: the def Damage (+0x44) is read through a by-value GetWeaponDef() into a float local (dword copy to [esp+4]);
 //        interface 0xBF (CTCObjectAugmentations, bit 31 of CThing bitset word 5 at +0x34 -> `jns`) looked up with the
-//        inline GetInterface; `speed * mult` gives `call ; fmul [speed]`.
+//        inline GetInterface; `damage * mult` gives `call ; fmul [damage]`.
 // Layout: CTCWeapon ParentThing +0x04, WeaponDef +0x0C; retail CThing interface bitset +0x20, interface map +0x44.
 #include "fable_compiler.h"
 class CTCBase;
@@ -39,7 +41,7 @@ class CWeaponDef { public:
     long RefCount;                               // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
     unsigned char _pad_0x08[0x44 - 0x08];
-    float AnimationSpeed;                        // +0x44
+    float Damage;                                // +0x44 (Ego_r CWeaponDef::Damage; +0x40 is AnimationSpeedVal)
 };
 template <class T> class CDefPointer { public:
     T* Object;
@@ -57,13 +59,13 @@ class CTCWeapon { public:
     unsigned char _pad_0x08[4];
     CDefPointer<CWeaponDef> WeaponDef;           // +0x0c
     FABLE_FORCEINLINE CDefPointer<CWeaponDef> GetWeaponDef() const { return WeaponDef; }
-    float GetAnimationSpeedValue() const;
+    float GetDamage() const;
 };
-float CTCWeapon::GetAnimationSpeedValue() const
+float CTCWeapon::GetDamage() const
 {
-    float speed = GetWeaponDef()->AnimationSpeed;
+    float damage = GetWeaponDef()->Damage;
     CTCObjectAugmentations* augmentations;
     if (ParentThing->GetInterface(&augmentations, 0xbf))
-        return speed * augmentations->GetDamageMultiplier();
-    return speed;
+        return damage * augmentations->GetDamageMultiplier();
+    return damage;
 }

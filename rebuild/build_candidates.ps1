@@ -233082,8 +233082,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005daaa0'
         Module = 'CTCWeapon'
-        Source = '00/5d/CTCWeapon_GetAnimationSpeedValue_005daaa0.cpp'
-        TestSource = '00/5d/CTCWeapon_GetAnimationSpeedValue_005daaa0_test.cpp'
+        Source = '00/5d/CTCWeapon_GetDamage_005daaa0.cpp'
+        TestSource = '00/5d/CTCWeapon_GetDamage_005daaa0_test.cpp'
         PassPattern = '005daaa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -389741,6 +389741,20 @@ $catalog = @(
         Source = '00/f2/CCutsceneDef_operator_00f2a000.cpp'
         TestSource = '00/f2/CCutsceneDef_operator_00f2a000_test.cpp'
         PassPattern = '00f2a000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c8459'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructScreen_005c8459.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructScreen_005c8459_test.cpp'
+        PassPattern = '005c8459_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c9a95'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructScreenPC_005c9a95.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructScreenPC_005c9a95_test.cpp'
+        PassPattern = '005c9a95_TEST PASS'
     }
 )
 

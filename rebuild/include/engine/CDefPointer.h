@@ -102,6 +102,23 @@ public:
             Object = 0;
         }
     }
+#elif defined(FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE)
+    // Nested opt-in (agentSCR, rows 0x005C8459 / 0x005C9A95 CTCInventoryWeapons::ConstructScreen(PC); proven on 0x005C3180
+    // GetActiveProjectileWeaponDamage too): the count is dropped through the pointee's own inline FableWin.pdb
+    // ?Release@CIVCountedPointeeBase@@QBEJXZ on a fresh read of Object, the cached pointer only names the Delete target. Same bytes
+    // as the in-place form for every release (`dec dword ptr [ecx+4] ; jne` / the temporary's `add eax,4 ; dec [eax] ; cmp [eax],0`),
+    // but c2 then keeps a may-alias edge between a load through the def and the decrement: retail's
+    // `mov eax,[esi+54h] ; dec dword ptr [esi+4] ; mov [ebp-8],eax` (0x005C3214, 0x005C8FAF: `damage = shot->HitThingDamage` before
+    // the shot def's release); the in-place form schedules the decrement first. Same semantics.
+    FABLE_DEFPTR_INLINE void Release()
+    {
+        if (Object) {
+            CDefPointeeBase* object = Object;
+            if (Object->Release() == 0)
+                object->Delete();
+            Object = 0;
+        }
+    }
 #else
     FABLE_DEFPTR_INLINE void Release()
     {

@@ -56,6 +56,12 @@ public:
     static bool __fastcall IsBuyable(long defIndex);                                  // 0x005D9B30
     static CWideString __fastcall GetDescription(long defIndex);                      // 0x005D95C0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISAUGMENTATION
+    // Nested opt-in (chunk 900, rows 0x005C8459 / 0x005C9A95 CTCInventoryWeapons::ConstructScreen(PC)): Ego_r.pdb
+    // ?IsAugmentation@CTCInventoryItem@@SI_NJ@Z, the static `__fastcall` def-index test, out of line in retail at 0x005D9870 (both
+    // screens call it, index in ecx, for the inventory items that are not weapons). Declaration only.
+    static bool __fastcall IsAugmentation(long defIndex);                             // 0x005D9870
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
     // Retail opt-in (chunk 867, row 0x005A8C66 CTCInventoryTrade::ConstructActualSpecialInventoryPC): the static card-def lookups,
     // Ego_r.pdb ?GetHairCardDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCHairCardDef@@@@J@Z (landed 0x005D9A10) and

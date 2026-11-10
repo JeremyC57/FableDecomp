@@ -10,6 +10,9 @@
 #endif
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCWEAPON_DAMAGE
+#include "engine/EWeaponClass.h"
+#endif
 class CThing;
 class CTCWeapon : public CTCBase {
 public:
@@ -21,6 +24,13 @@ public:
     // Nested opt-in (chunk 775, row 0x005DACF0): Ego_r.pdb (0x0063AAB0) / FableWin.pdb
     // ?IsAbleToBeUsedToBlock@CTCWeapon@@QBE_NABVCThing@@PBV2@1@Z; one caller (CTCCombat, 0x00735039).
     bool IsAbleToBeUsedToBlock(const CThing& blocker, const CThing* attacker, const CThing* attackerWeapon) const;   // 0x005DACF0
+#endif
+#ifdef FABLE_RETAIL_CTCWEAPON_DAMAGE
+    // Nested opt-in (chunk 900, rows 0x005C8459 / 0x005C9A95 CTCInventoryWeapons::ConstructScreen(PC)): Ego_r.pdb
+    // ?GetDamage@CTCWeapon@@QBEMXZ (0x005DAAA0, the active melee weapon's damage) and ?IsMeleeWeaponClass@CTCWeapon@@SI_NW4EWeaponClass@@@Z
+    // (0x005DA510, static `__fastcall`, the weapon def's Class +0x2c in ecx), both out of line in retail. Declarations only.
+    float GetDamage() const;                                 // 0x005DAAA0
+    static bool __fastcall IsMeleeWeaponClass(EWeaponClass weaponClass);   // 0x005DA510
 #endif
 #ifdef FABLE_RETAIL_CTCWEAPON_LOADING
     // Retail opt-in (chunk 796, row 0x008E9B70 NCreatureMode::CModeStrafe::AnimUpdate): Ego_r.pdb ?IsAnalogueLoading@CTCWeapon@@QBE_NXZ and

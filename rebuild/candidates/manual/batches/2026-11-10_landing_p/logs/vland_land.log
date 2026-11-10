@@ -1,0 +1,14 @@
+addr       parity           behav  name
+005c8459   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005c8459   WARN RELOC_NAME: ?GetDamage@CTCWeapon@@QBEMXZ -> 005daaa0 labelled 'CTCWeapon::GetAnimationSpeedValue'
+005c8459   RELOCATION_MATCH PASS   ConstructScreen
+005c9a95   WARN RELOC_NAME: ?GetDamage@CTCWeapon@@QBEMXZ -> 005daaa0 labelled 'CTCWeapon::GetAnimationSpeedValue'
+005c9a95   RELOCATION_MATCH PASS   ConstructScreenPC
+
+WINS: 2
+  005c8459 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005c9a95 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryWeapons_ConstructScreen_005c8459
+  CTCInventoryWeapons_ConstructScreenPC_005c9a95

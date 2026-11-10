@@ -1,0 +1,11 @@
+# agentSCR lessons (2026-11-10)
+- VC7.1 decides capture from same-TU callee bodies: defining the CDefClassBase::GetSubDef<T> / CDefinitionManager::GetDef<T> templates in the TU (under `#pragma auto_inline(off)`) un-captures the CDefPointer locals and turns `add eax,4; dec [eax]` releases into retail's in-place `dec [ecx+4]; jne`.
+- MSVC-only noinline stand-in bodies for unlanded same-TU callees (ConstructAugEntry / ConstructWeaponItemEntries) fix register choice, spills and the frame the same way; an EMPTY stand-in is folded together with its calls, so give each a call to a never-defined `void StandInBody();`.
+- FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR (visible noinline CCountedPointer(T*) ctor) took the frame from 0xE4 to retail's 0xE0.
+- New CDefPointer opt-in FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE (`CDefPointeeBase* object = Object; if (Object->Release() == 0) object->Delete();`) keeps the may-alias edge so a following member load stays before the `dec [reg+4]` (0x005C3214 / 0x005C8FAF); it also matches 0x005C3180.
+- `v.size() > 0` on a vector<pair<long,long>> gives retail's `sub; sar 3; je`; `!v.empty()` / `v.size() != 0` give a mask test.
+- Passing a string literal implicitly to a `const CCharString&` parameter (`SetValue("TEXT_GUI_MENU_MELEE", true, true)`) builds the temporary before the vtable load; an explicit `CCharString(...)` argument loads the vtable first.
+- Reassigning a CCountedPointer<CComponent> from a raw pointer must be spelled `.Reset(p)` to get the call to 0x00429C6F; `= p` builds a temporary.
+- PeekTC through a `const CTCWeapon*` binds the const ComponentMap LowerBound 0x004365B0; the non-const spelling binds 0x0040F020.
+- Same-TU out-of-line functions that retail expanded (GetActiveMeleeWeaponDamage / GetActiveProjectileWeaponDamage) stay calls even declared `inline`; write the block out at the call site.
+- CWeaponDef offsets: Ego_r offsets past CObjectAugmentationParticleSet are 12 bytes too large for retail (STLport vs Dinkumware containers); Shot is +0xA0 in retail, not Ego_r's +0xAC.
