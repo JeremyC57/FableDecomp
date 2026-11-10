@@ -112,4 +112,49 @@ protected:
     CDataOutputStream* PSaveStream;
 };
 FABLE_STATIC_ASSERT(sizeof(CPersistContext)==44);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOROFSUBCOMPONENTS
+// Retail opt-in (chunk 1015): the shared body of the member template
+// ??$TransferVectorOfSubComponents@V<T>@@@CPersistContext@@QAEXAAV?$vector@V<T>@@V?$allocator@V<T>@@@std@@@std@@@Z (Ego_r.pdb /
+// FableWin.pdb name sets; TLC's release persist macro drops the name argument, so the retail instances take the vector only,
+// `ret 4`, and check the pooled empty key 0x0122D70E). One body for every element def: a binary load reads the count with the
+// inline CDataInputStream::ReadSLONG, resizes (STLport's inline resize(n) = resize(n, _Tp())) and, for a non-empty vector,
+// transfers each element; any other mode writes size() and transfers each element (CDefClassBase::Transfer, vtable slot 18,
+// +0x48). A switch with only `case MODE_LOAD_BINARY` and a `default` gives retail's `mov eax,[ecx+18h] ; sub eax,2` (/Os `dec eax ;
+// dec eax`) `; je` (an `if` compares the member in memory). The `count > 0` test ahead of the load loop is retail's: the loop
+// guard repeats it, so it emits no code, but its extra block lowers the register priority of `this` (c2prio: 29 -> 27 in
+// 0x004ECF6E), which is what gives every size-optimised instance retail's inline-read registers (`lea edx,[eax+4] ; xor eax,eax`,
+// then the chunk pointer in eax: 0x004ECFCE, 0x00476089, 0x004794C7 ...); without it `this` is coloured first and the read
+// comes out `add eax,4 ; xor edx,edx` (the 13 parked rows of retry 535). Instances reproduced with it: 0x00472A8D, 0x00476024,
+// 0x0047652B, 0x004769D0, 0x00478AE5, 0x00479466, 0x004798AB, 0x00479EF4, 0x0047A2F5, 0x004ECF6E, 0x004ED953, 0x004EDE2B,
+// 0x004F9C07, 0x004FA0A9, 0x0067D6B0. Needs the retail stream models (FABLE_RETAIL_CDATAINPUTSTREAM,
+// FABLE_RETAIL_CMEMORYDATAINPUTSTREAM, FABLE_RETAIL_CDATAOUTPUTSTREAM) and the element's retail def model; the includer
+// instantiates it explicitly.
+#if !defined(FABLE_RETAIL_CMEMORYDATAINPUTSTREAM) || !defined(FABLE_RETAIL_CDATAINPUTSTREAM) || !defined(FABLE_RETAIL_CDATAOUTPUTSTREAM)
+#error FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOROFSUBCOMPONENTS needs the retail stream models
+#endif
+#include "engine/CMemoryDataInputStream.h"
+#include "engine/CDataOutputStream.h"
+#include "stlport/fable_containers.h"
+template<class T> void CPersistContext::TransferVectorOfSubComponents(std::vector<T,std::allocator<T> >& value)
+{
+    CheckCRC("");
+    switch (Mode) {
+    case MODE_LOAD_BINARY: {
+        long count = PLoadStream->ReadSLONG();
+        value.resize(count);
+        if (count > 0)
+            for (long i = 0; i < count; ++i)
+                value[i].Transfer(*this);
+        break;
+    }
+    default: {
+        long count = value.size();
+        PSaveStream->WriteSLONG(count);
+        for (long i = 0; i < count; ++i)
+            value[i].Transfer(*this);
+        break;
+    }
+    }
+}
+#endif
 #endif

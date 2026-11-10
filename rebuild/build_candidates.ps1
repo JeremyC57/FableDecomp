@@ -391570,6 +391570,107 @@ $catalog = @(
         TestSource = '00/cb/global_GetSquaredDistanceBetweenThings_00cbe583_test.cpp'
         PassPattern = '00cbe583_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00476024'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCQuickAccessItemBut_00476024.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCQuickAccessItemBut_00476024_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS40'
+        PassPattern = '00476024_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047652b'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCAbilityButtonGuiDe_0047652b.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCAbilityButtonGuiDe_0047652b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS40'
+        PassPattern = '0047652b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004769d0'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCLensFlareElementDe_004769d0.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCLensFlareElementDe_004769d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS40'
+        PassPattern = '004769d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00478ae5'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCAbilityTrackLevelD_00478ae5.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCAbilityTrackLevelD_00478ae5_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS40'
+        PassPattern = '00478ae5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00479466'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCOpinionDeedReactio_00479466.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCOpinionDeedReactio_00479466_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS30'
+        PassPattern = '00479466_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004798ab'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCEngineLocalDetailL_004798ab.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCEngineLocalDetailL_004798ab_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS30'
+        PassPattern = '004798ab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00479ef4'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCAppearanceModifier_00479ef4.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCAppearanceModifier_00479ef4_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS40'
+        PassPattern = '00479ef4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047a2f5'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCAbilityTrackDef_0047a2f5.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCAbilityTrackDef_0047a2f5_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS30'
+        PassPattern = '0047a2f5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ecf6e'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferVectorOfSubComponentsCShopItemDef_004ecf6e.cpp'
+        TestSource = '00/4e/CPersistContext_TransferVectorOfSubComponentsCShopItemDef_004ecf6e_test.cpp'
+        PassPattern = '004ecf6e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ed953'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferVectorOfSubComponentsCPrizeScoreDef_004ed953.cpp'
+        TestSource = '00/4e/CPersistContext_TransferVectorOfSubComponentsCPrizeScoreDef_004ed953_test.cpp'
+        PassPattern = '004ed953_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ede2b'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferVectorOfSubComponentsCMultiStaticMeshEnt_004ede2b.cpp'
+        TestSource = '00/4e/CPersistContext_TransferVectorOfSubComponentsCMultiStaticMeshEnt_004ede2b_test.cpp'
+        PassPattern = '004ede2b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f9c07'
+        Module = 'CPersistContext'
+        Source = '00/4f/CPersistContext_TransferVectorOfSubComponentsCCardPositionsDef_004f9c07.cpp'
+        TestSource = '00/4f/CPersistContext_TransferVectorOfSubComponentsCCardPositionsDef_004f9c07_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS30'
+        PassPattern = '004f9c07_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fa0a9'
+        Module = 'CPersistContext'
+        Source = '00/4f/CPersistContext_TransferVectorOfSubComponentsCCardDef_004fa0a9.cpp'
+        TestSource = '00/4f/CPersistContext_TransferVectorOfSubComponentsCCardDef_004fa0a9_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS40'
+        PassPattern = '004fa0a9_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -8128,7 +8128,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ecdac	GFSerialiseMapBinaryIn<float, EOpinionAttitudeType, std::less<EOpinionAttitudeType>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004ece60	insert	CRetailTree_longkey_ins004ecee6	unknown	undefined	0		0	yes	accepted									
 004ecee6	Insert	CRetailTree_longkey_buy004e9ab1	unknown	undefined	0		0	yes	accepted									
-004ecf6e	TransferVectorOfSubComponents<CAbilityButtonGuiDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *	1	yes	accepted									
+004ecf6e	TransferVectorOfSubComponents<CShopItemDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *	1	yes	accepted									
 004ed04d	resize	CShopItemDefVector	__thiscall	void	3	CPersistContext *,char *,CAnimationSet *	1	yes	accepted									
 004ed07d	push_back	CArray<std::pair<unsigned_long,CSoundPair>_>	__thiscall	void	2	CArray<std::pair<unsigned_long,CSoundPair>_> *,pair<unsigned_long,CSoundPair> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CArraystdpairunsignedlong_pushback_004ed07d.cpp
 004ed0c6	erase	std::vector<CShopItemDef, std::allocator<CShopItemDef>>	unknown	undefined	0		0	yes	accepted									
@@ -8139,7 +8139,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ed437	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 004ed459	Transfer	CAnimatingObjectDef	__thiscall	void	2	CAnimatingObjectDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CAnimatingObjectDef_Transfer_004ed459.cpp
 004ed472	Transfer	CTavernGameDef	__fastcall	void	0		1	yes	accepted									
-004ed953	TransferVectorOfSubComponents<CAbilityButtonGuiDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *	1	yes	accepted									
+004ed953	TransferVectorOfSubComponents<CPrizeScoreDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *	1	yes	accepted									
 004eda32	resize	std::vector<CPrizeScoreDef>	__thiscall	void	1	WaypointData *	1	yes	accepted									
 004eda6c	resize	CArray<SElement48>	__thiscall	void	2	CArray<std::pair<unsigned_long,CSoundPair>_> *,pair<unsigned_long,CSoundPair> *	1	yes	accepted									
 004edab7	erase	std::vector<CPrizeScoreDef, std::allocator<CPrizeScoreDef>>	unknown	undefined	0		0	yes	accepted									
@@ -8150,7 +8150,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004edd13	_M_insert_overflow	std::vector<CPrizeScoreDef,std::allocator<CPrizeScoreDef> >	unknown	undefined	0		0	yes	accepted									
 004eddf9	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 004ede1b	Transfer	CMultiStaticMeshDef	__thiscall	void	2	CMultiStaticMeshDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CMultiStaticMeshDef_Transfer_004ede1b.cpp
-004ede2b	TransferVectorOfSubComponents<CAbilityButtonGuiDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *	1	yes	accepted									
+004ede2b	TransferVectorOfSubComponents<CMultiStaticMeshEntryDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *	1	yes	accepted									
 004edf0a	resize	std::vector<CMultiStaticMeshEntryDef>	__thiscall	void	1	WaypointData *	1	yes	accepted									
 004edf44	resize	std::vector<CMultiStaticMeshEntryDef, std::allocator<CMultiStaticMeshEntryDef>>	__thiscall	void	2	CArray<std::pair<unsigned_long,CSoundPair>_> *,pair<unsigned_long,CSoundPair> *	1	yes	accepted									
 004edf8c	erase	std::vector	unknown	undefined	0		0	yes	accepted									

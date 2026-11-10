@@ -1,0 +1,56 @@
+addr       parity           behav  name
+00476024   WARN RELOC_NAME: ?resize@?$vector@VCQuickAccessItemButtonGuiDef@@V?$allocator@VCQuickAccessItemButtonGuiDef@@@std@@@std@@QAEXIABVCQuickAccessItemButtonGuiDef@@@Z -> 00476123 labelled 'CArray<std::pair<unsigned_long,CSoundPair>_>::push_back'
+00476024   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00476024   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CQuickAccessItemButtonGuiDef>
+0047652b   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+0047652b   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CAbilityButtonGuiDef>
+004769d0   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+004769d0   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CLensFlareElementDef>
+00478ae5   WARN RELOC_NAME: ?resize@?$vector@VCAbilityTrackLevelDef@@V?$allocator@VCAbilityTrackLevelDef@@@std@@@std@@QAEXIABVCAbilityTrackLevelDef@@@Z -> 00478be4 labelled 'CArray<std::pair<unsigned_long,CSoundPair>_>::push_back'
+00478ae5   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00478ae5   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CAbilityTrackLevelDef>
+00479466   WARN RELOC_NAME: ??1COpinionDeedReactionDef@@UAE@XZ -> 0047955b labelled '_global::Dtor_OnDieBase_0047955b'
+00479466   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<COpinionDeedReactionDef>
+004798ab   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CEngineLocalDetailLayerDef>
+00479ef4   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00479ef4   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CAppearanceModifierScalingDef>
+0047a2f5   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CAbilityTrackDef>
+004ecf6e   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CShopItemDef>
+004ed953   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CPrizeScoreDef>
+004ede2b   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CMultiStaticMeshEntryDef>
+004f9c07   WARN RELOC_NAME: ?resize@?$vector@VCCardPositionsDef@@V?$allocator@VCCardPositionsDef@@@std@@@std@@QAEXIABVCCardPositionsDef@@@Z -> 004f9d32 labelled 'CArray<std::pair<unsigned_long,CSoundPair>_>::push_back'
+004f9c07   WARN RELOC_CONFLICT: ??1CCardPositionsDef@@UAE@XZ -> 004f9cfc here, 00c10940 in landed 00c109b0
+004f9c07   WARN RELOC_NAME: ??1CCardPositionsDef@@UAE@XZ -> 004f9cfc labelled '_global::Dtor_OnDieBase_004f9cfc'
+004f9c07   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CCardPositionsDef>
+004fa0a9   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+004fa0a9   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CCardDef>
+
+WINS: 13
+  00476024 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCQuickAccessItemButtonGuiDef@@@CPersistContext@@QAEXAAV?$vector@VCQuickAccessItemButtonGuiDef@@V?$allocator@VCQuickAccessItemButtonGuiDef@@@std@@@std@@@Z
+  0047652b RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCAbilityButtonGuiDef@@@CPersistContext@@QAEXAAV?$vector@VCAbilityButtonGuiDef@@V?$allocator@VCAbilityButtonGuiDef@@@std@@@std@@@Z
+  004769d0 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCLensFlareElementDef@@@CPersistContext@@QAEXAAV?$vector@VCLensFlareElementDef@@V?$allocator@VCLensFlareElementDef@@@std@@@std@@@Z
+  00478ae5 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCAbilityTrackLevelDef@@@CPersistContext@@QAEXAAV?$vector@VCAbilityTrackLevelDef@@V?$allocator@VCAbilityTrackLevelDef@@@std@@@std@@@Z
+  00479466 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCOpinionDeedReactionDef@@@CPersistContext@@QAEXAAV?$vector@VCOpinionDeedReactionDef@@V?$allocator@VCOpinionDeedReactionDef@@@std@@@std@@@Z
+  004798ab RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCEngineLocalDetailLayerDef@@@CPersistContext@@QAEXAAV?$vector@VCEngineLocalDetailLayerDef@@V?$allocator@VCEngineLocalDetailLayerDef@@@std@@@std@@@Z
+  00479ef4 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCAppearanceModifierScalingDef@@@CPersistContext@@QAEXAAV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+  0047a2f5 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCAbilityTrackDef@@@CPersistContext@@QAEXAAV?$vector@VCAbilityTrackDef@@V?$allocator@VCAbilityTrackDef@@@std@@@std@@@Z
+  004ecf6e RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCShopItemDef@@@CPersistContext@@QAEXAAV?$vector@VCShopItemDef@@V?$allocator@VCShopItemDef@@@std@@@std@@@Z
+  004ed953 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCPrizeScoreDef@@@CPersistContext@@QAEXAAV?$vector@VCPrizeScoreDef@@V?$allocator@VCPrizeScoreDef@@@std@@@std@@@Z
+  004ede2b RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCMultiStaticMeshEntryDef@@@CPersistContext@@QAEXAAV?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@@Z
+  004f9c07 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCCardPositionsDef@@@CPersistContext@@QAEXAAV?$vector@VCCardPositionsDef@@V?$allocator@VCCardPositionsDef@@@std@@@std@@@Z
+  004fa0a9 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCCardDef@@@CPersistContext@@QAEXAAV?$vector@VCCardDef@@V?$allocator@VCCardDef@@@std@@@std@@@Z
+
+LANDED 13 wins into src/compiled + tests + catalog + oracle
+  CPersistContext_TransferVectorOfSubComponentsCQuickAccessItemBut_00476024
+  CPersistContext_TransferVectorOfSubComponentsCAbilityButtonGuiDe_0047652b
+  CPersistContext_TransferVectorOfSubComponentsCLensFlareElementDe_004769d0
+  CPersistContext_TransferVectorOfSubComponentsCAbilityTrackLevelD_00478ae5
+  CPersistContext_TransferVectorOfSubComponentsCOpinionDeedReactio_00479466
+  CPersistContext_TransferVectorOfSubComponentsCEngineLocalDetailL_004798ab
+  CPersistContext_TransferVectorOfSubComponentsCAppearanceModifier_00479ef4
+  CPersistContext_TransferVectorOfSubComponentsCAbilityTrackDef_0047a2f5
+  CPersistContext_TransferVectorOfSubComponentsCShopItemDef_004ecf6e
+  CPersistContext_TransferVectorOfSubComponentsCPrizeScoreDef_004ed953
+  CPersistContext_TransferVectorOfSubComponentsCMultiStaticMeshEnt_004ede2b
+  CPersistContext_TransferVectorOfSubComponentsCCardPositionsDef_004f9c07
+  CPersistContext_TransferVectorOfSubComponentsCCardDef_004fa0a9

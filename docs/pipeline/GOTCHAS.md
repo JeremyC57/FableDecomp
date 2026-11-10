@@ -2682,3 +2682,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Two helpers each expanded twice can exceed VC7.1's default inline budget: try `/d2inlT` before FABLE_FORCEINLINE (0x009FA620 GFGetTopBit / GFGetNextPowerOfTwo expand at T180, not T160).
 - A scaled value written back into a parameter moves temporaries; a named float local keeps retail's schedule (0x00B84720).
 - The PDBs spell CWideString's `const wchar_t*` as `PB_W` (native wchar_t), not `PBG`: rows that bind the string core need `/Zc:wchar_t` (0x0099BA70, 0x007E5570, 0x00A0CDD0); 0x0099BA70 also needs `/GS`. Landed `PBG` spellings are queued (land1011aq).
+- `/d2inlS<N>` is the size-mode inline budget (default 9): a call site inlines only when its cost is below N. STLport `vector<T>::resize(n)` costs 39 with an implicit element ctor and 29 with out-of-line ctor/dtor (the TransferVectorOfSubComponents rows: /d2inlS40 / /d2inlS30).
