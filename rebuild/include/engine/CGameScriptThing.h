@@ -30,6 +30,11 @@ public:
     // (vtable 0x012852CC slot 12; returns ThingUID +0x18 in edx:eax).
     virtual FableNScriptUInt64 GetPThingUniqueID() const;                // 12 0x008CFF20
 #endif
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_CREATENULLTHING
+    // Chunk 1010 (rows 0x008930F0 ...): Ego_r.pdb ?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ, static __fastcall,
+    // out of line in retail at 0x008CFF40 (the caller passes the hidden result pointer in ecx). Declaration only: no layout change.
+    static CScriptThing __fastcall CreateNullThing();                    // 0x008CFF40
+#endif
     CIntelligentPointer<CThing> PThing;                                  // +0x0c
     long                        ScriptCounter;                           // +0x14
     unsigned __int64            ThingUID;                                // +0x18

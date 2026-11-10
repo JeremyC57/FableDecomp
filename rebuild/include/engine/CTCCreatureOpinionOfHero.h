@@ -110,6 +110,12 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }   // Ego_r ?StatGetInterfaceType@..@@SI?AW4ETCInterfaceType@@XZ (inline; vtable slot 21 returns 0x4F)
     bool KnowsOfDeed(long handle, EOpinionDeedType type, bool flag) const;                                // 0x00681AE0
     void InformOfDeed(EOpinionDeedType type, long handle, const COpinionDeedEffectsDef& def, bool flag);  // 0x00682810
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM_HANDLE
+    // Nested opt-in (chunk 1010, row 0x0089FEB0 CGameScriptInterface::AddCrimeCommitted): Ego_r.pdb / FableWin.pdb
+    // ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJ_N@Z, the (handle, flag) overload, out of line in retail at 0x00683590 (the row pushes
+    // `push 0 ; push handle` after KnowsOfDeed 0x00681AE0 returned false). Declaration only.
+    void InformOfDeed(long handle, bool flag);                                                            // 0x00683590
+#endif
 #endif
     long                                      LastOpinionReactionFrame;      // +0x0c
     float                                     NumberOfTimesHit;              // +0x10

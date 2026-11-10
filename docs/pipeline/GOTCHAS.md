@@ -2656,3 +2656,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A port of a landed twin inherits its local models: check the twin before copying (0x0059CB90 / 0x005A45F6 are local-model rows with an invented map operator[] stand-in; their ports went back for shared headers).
 - Comparing a fresh read of `arr[slot]` instead of the loaded local stops c2 computing `&arr[slot]` once and reusing it across both arms (0x005F11A9: 358 -> 373 of 375 bytes).
 - A constant 0 with a byte-sized use may only be coloured to a byte register (eax/ebx/ecx/edx), which can block retail's zero-in-edi colouring (0x005F6BD6, c2prio).
+- In a function that already expands a forceinline GetTC, `if (!hero || hero->IsDead())` pushed a temporary's implicit destructor out of line; the inline `IS_THING_ALIVE` template (same test) kept it inline (0x0089DA70 / 0x00897FA0).
+- An agent overlay can add a forward declaration outside its `#ifdef` (hdrcheck2 then shows `default=DIFF`): move it under the opt-in before landing (CEnvironmentSpellEffectInterpolator.h, chunk 1010).

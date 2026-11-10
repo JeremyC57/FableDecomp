@@ -110,6 +110,12 @@ public:
     // (the caller passes the position and the strength out-word by address, `this` the const world map). Declaration only.
     long GetStrongestEngineThemeAt(const C3DVector& pos, long& strength) const;   // 0x0063ADF0
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_MAPNUMBERFROMSCRIPTNAME
+    // Chunk 1010 (row 0x008930F0 CGameScriptInterface::GetThingWithScriptName): Ego_r.pdb / FableWin.pdb
+    // ?GetMapNumberFromScriptName@CWorldMap@@QBEJABVCCharString@@@Z, out of line in retail at 0x004FB880 (called on PeekWorldMap()).
+    // Declaration only.
+    long GetMapNumberFromScriptName(const CCharString& script_name) const;   // 0x004FB880
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_HEIGHTZ
     // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
     // (retail 0x0063E480). Declaration only.

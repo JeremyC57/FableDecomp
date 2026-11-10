@@ -390758,6 +390758,41 @@ $catalog = @(
         TestSource = '00/5a/CTCInventoryTrade_ConstructBuyActionsListPC_005a79e6_test.cpp'
         PassPattern = '005a79e6_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008930f0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetThingWithScriptName_008930f0.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetThingWithScriptName_008930f0_test.cpp'
+        PassPattern = '008930f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00895190'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GiveThingItemInSlot_00895190.cpp'
+        TestSource = '00/89/CGameScriptInterface_GiveThingItemInSlot_00895190_test.cpp'
+        PassPattern = '00895190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00897fa0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_MakeHeroCarryItemInHand_00897fa0.cpp'
+        TestSource = '00/89/CGameScriptInterface_MakeHeroCarryItemInHand_00897fa0_test.cpp'
+        PassPattern = '00897fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089da70'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_EntitySetAlpha_0089da70.cpp'
+        TestSource = '00/89/CGameScriptInterface_EntitySetAlpha_0089da70_test.cpp'
+        PassPattern = '0089da70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089feb0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_AddCrimeCommitted_0089feb0.cpp'
+        TestSource = '00/89/CGameScriptInterface_AddCrimeCommitted_0089feb0_test.cpp'
+        PassPattern = '0089feb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -15,6 +15,11 @@ private:
         GiveHeroStatChangesOnBeingHit:1,GiveHeroStatChangesOnBeingHitOverrideSet:1;
 public:
     virtual void OnHit(CHitParameters&);
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_STATTYPEFLAGS
+    // Chunk 1010 (row 0x008930F0, via the CThingSearchTools GetPFirstThing body): FableWin.pdb ?StatGetTypeFlags@CThingGameObject@@SIKXZ
+    // (static fastcall, inline in retail: the landed GetPFirstThing<..,CThingGameObject> 0x008ABDF0 tests the +0x6C flags against 7).
+    static unsigned long __fastcall StatGetTypeFlags() { return 7; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_COMBOMULTIPLIER
     // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb ?SetAddToComboMultiplierOnHit@CThingGameObject@@QAEX_N@Z,
     // out of line in retail (0x008389A0, `push 0 ; call`). Declaration only: no layout change.

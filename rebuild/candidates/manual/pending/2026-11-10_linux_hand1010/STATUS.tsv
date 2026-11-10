@@ -1,0 +1,17 @@
+address	name	grade	grades_used	note
+0089da70	CGameScriptInterface::EntitySetAlpha	RELOCATION_MATCH	7	IS_THING_ALIVE(carried[i]) + re-read carried[i] (c2prio-guided)
+008930f0	CGameScriptInterface::GetThingWithScriptName	RELOCATION_MATCH	10	shared headers + same-TU GetPFirstThing body + two separate null-return ifs
+00897fa0	CGameScriptInterface::MakeHeroCarryItemInHand	RELOCATION_MATCH	1	shared-header rebase
+00895190	CGameScriptInterface::GiveThingItemInSlot	RELOCATION_MATCH	1	shared-header rebase
+0089feb0	CGameScriptInterface::AddCrimeCommitted	RELOCATION_MATCH	1	shared-header rebase (CTHING_GETTC_EXPANDED, STLP_LIST_SIZE_DISTANCE, cached end iterator, criminal via if)
+00896390	CGameScriptInterface::OpenChest	DIFFER(711v711)	1	block order: Open arm v shared false tail (shared-header rebase from local 709v711 nd=105)
+008a9880	CGameScriptInterface::ScreenFilterFadeTo	DIFFER(347v363)	1	register pair (const-0 piece edi v ebx, destroy-loop end) + missing loop-head alignment block; 8 loop-spelling probes
+00896b60	CGameScriptInterface::KickOffQuestStartScreen	DIFFER(437v445)	0	epilogue cross-jump; 15 probes unchanged; rebase blocked (no CTCQuestCompletionUI / CScriptRunner headers)
+008a8c60	CGameScriptInterface::EntitySetAsSittingOnFloor	DIFFER(472v472)	0	frame-slot packing of the name / filter temporaries; 5 probes unchanged
+008a93a0	CGameScriptInterface::EntityWillTeleportToArea	DIFFER(618v620)	0	this/thing ebx swap (c2prio thing -11 v this -20); 5 probes unchanged
+0089b5b0	CGameScriptInterface::StartScriptingEntity	DIFFER(2 lines)	0	inline ~CCountedPointer Info reload register (ecx/edx v eax); rebase blocked (flat CScriptGameResourceObjectScriptedThing.h)
+0089c910	CGameScriptInterface::CanThingBe_Sensed_ByOtherThing	not worked	0	prior DIFFER(1136v1016) unchanged (no time this pass)
+0089ce70	CGameScriptInterface::IsThingAwareOfOtherThingInAnyWay	not worked	0	prior DIFFER(610v616) x87 order unchanged
+008a7a70	CGameScriptInterface::TeleportAllFollowersToHeroPosition	not worked	0	prior DIFFER(738v738) unchanged
+008a8260	CGameScriptInterface::GetHeroSummonedCreaturesList	not worked	0	prior DIFFER(473v466) unchanged
+0088edc0	CGameScriptInterface::CameraDoConversation	not worked	0	1568 bytes, no draft

@@ -6,6 +6,29 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_OPENCHEST
+// Retail opt-in (chunk 1010, row 0x00896390 CGameScriptInterface::OpenChest): the retail class, RTTI vtable 0x0127173C, on the
+// retail CCreatureActionBase (0xA8 bytes; Ego_r.pdb's base is 0xB4, so Ego_r's PChest +0xB4 is retail +0xA8: the landed ctor
+// 0x007EE7E0 stores it there). Ctor FableWin.pdb ??0CCreatureAction_OpenChest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z
+// (0x007EE7E0, `ret 0Ch`). The dtor is the implicit one: callers expand ~CIntelligentPointer (0x00A01C10) then ~CCreatureActionBase
+// (0x00693EF0), which is what OpenChest's temporary shows (0x008964AA..0x008964BC). Needs FABLE_RETAIL_CCREATUREACTIONBASE and
+// FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CCreatureActionBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CThingCreatureBase;
+class CCharString;
+class CCreatureAction_OpenChest : public CCreatureActionBase {
+public:
+    CCreatureAction_OpenChest(CThingCreatureBase& creature, CThing& chest, const CCharString& animation);   // 0x007EE7E0
+    virtual void PerformAction();                                        // 0x008448E0 ?PerformAction@CCreatureAction_OpenChest@@
+    virtual void FinishAction();                                         // 0x00842B60
+    virtual CCreatureActionBase* Clone() const;                          // 0x007EEA50
+private:
+    CIntelligentPointer<CThing> PChest;                                  // +0xa8
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_OpenChest) == 0xb0);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -54,4 +77,5 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_OpenChest) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_OpenChest, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_OpenChest, PChest) == 0xa8);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_OPENCHEST
 #endif // FABLE_ENGINE_CCREATUREACTION_OPENCHEST_H

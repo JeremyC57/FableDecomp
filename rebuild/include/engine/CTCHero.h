@@ -14,10 +14,19 @@
 #include "engine/ETCInterfaceType.h"
 #endif
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCHERO_TUTORIAL
+#include "engine/fable_nscript_forward.h"
+#endif
 class CTCHero : public CTCBase {
 public:
     void ProcessPendingTutorials();                                      // 0x006C9FC0
     virtual void FrameUpdate();                                          // slot 9 0x006C9FD0
+#ifdef FABLE_RETAIL_CTCHERO_TUTORIAL
+    // Opt-in (chunk 1010, row 0x00896390 CGameScriptInterface::OpenChest): FableWin.pdb ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z,
+    // out of line in retail at 0x006C9FA0 (`push 0 ; push 21h ; mov ecx,eax ; call 0x006C9FA0`). The enum comes from
+    // engine/fable_nscript_forward.h (included here). Declaration only: no layout change.
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0
+#endif
 #ifdef FABLE_RETAIL_CTCHERO_TITLE
     // Retail opt-in (chunk 867, row 0x005AF64E CTCInventoryTrade::BuyItem): the hero component as the trade screen reaches it.
     // Ego_r.pdb ?StatGetInterfaceType@CTCHero@@SI?AW4ETCInterfaceType@@XZ (inline: TCI_HERO = 41, the `push 29h` of the inline

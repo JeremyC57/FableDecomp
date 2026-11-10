@@ -73,6 +73,31 @@ public:
     template<class T,class Container,class Filter>
     void GetAllThings(const Filter&,Container&)const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTTHING
+    // Chunk 1010 (row 0x008930F0 CGameScriptInterface::GetThingWithScriptName): GetPFirstThing<Filter,T>, out of line in retail
+    // (Ego_r.pdb / FableWin.pdb ??$GetPFirstThing@V?$CFilter_Bind2@VCThingFilter_HasScriptName@@VCThingFilter_InMap@@@@VCThingGameObject@@
+    // @CThingSearchTools@@QBE_NABV?$CFilter_Bind2@...@@PAPAVCThingGameObject@@@Z = retail 0x008ABDF0). Declaration only.
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FIRSTTHING_BODY
+    // The GetPFirstThing body (landed 0x008ABDF0 shape: PeekClassList 0x0049C770, the THING_TYPE mask test with T::StatGetTypeFlags,
+    // the scan test, the filter on the thing), a same-TU noinline body like GetAllThings below: the caller then knows the filter
+    // temporaries and the out pointer are not captured. Needs FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY (PeekClassList) and
+    // T::StatGetTypeFlags at the point of instantiation.
+    template<class Filter,class T> __declspec(noinline) bool GetPFirstThing(const Filter& filter,T** out) const {
+        const std::list<CClass*>& things=PeekClassList();
+        for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
+            T* thing=static_cast<T*>(*it);
+            unsigned long mask=T::StatGetTypeFlags();
+            if((thing->GetTypeFlags()&mask)==mask && thing->IsIncludedInThingScans() && filter(*thing)) {
+                *out=thing;
+                return true;
+            }
+        }
+        return false;
+    }
+#else
+    template<class Filter,class T> bool GetPFirstThing(const Filter& filter,T** out) const;
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH
     // Retail opt-in (Codex2026-11-10): both original PDBs and native00942390.
     template<class Filter,class Compare,class T> bool GetPBestThingInRoughArea(const C2DBoxI&,const Filter&,const Compare&,T**)const;

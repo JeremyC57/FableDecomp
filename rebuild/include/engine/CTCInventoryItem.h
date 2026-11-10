@@ -90,6 +90,14 @@ public:
     // line at 0x005D96A0 (landed row; returns the def's graphic by value: hidden result in ecx, the def index in edx).
     static CEngineGraphic __fastcall GetEngineGraphic(long defIndex);                 // 0x005D96A0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_INVENTORYACCESS
+    // Nested opt-in (chunk 1010, row 0x00897FA0 CGameScriptInterface::MakeHeroCarryItemInHand): Ego_r.pdb / FableWin.pdb
+    // ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ (out of line, 0x005D9030: ecx = the item, the inventory TC
+    // interface of the item's def) and ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ (out of line, 0x005D8E90).
+    // Declarations only: no layout change.
+    ETCInterfaceType GetInventoryType() const;                                        // 0x005D9030
+    const CThing* GetInventoryOwner() const;                                          // 0x005D8E90
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_ADDTOINVENTORY
     // Nested opt-in (chunk 1003, row 0x005B3AEF CTCInventoryClothing::OnInitialActivate): Ego_r.pdb / FableWin.pdb
     // ?AddToInventory@CTCInventoryItem@@QAE_NAAVCTCInventoryBase@NInventory@@_N1J11@Z (the inventory by reference; out of line at

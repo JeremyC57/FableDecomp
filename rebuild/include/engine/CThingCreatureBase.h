@@ -91,6 +91,11 @@ public:
     }
     virtual void OnHit(CHitParameters&);
     bool SetCurrentAction(const CCreatureActionBase&);
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FINISHACTION
+    // Nested opt-in (chunk 1010, row 0x00896390 CGameScriptInterface::OpenChest): FableWin.pdb ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ,
+    // out of line in retail at 0x00662650 (`mov ecx,ebp ; call 0x00662650` before the open-chest SetCurrentAction). Declaration only.
+    void FinishCurrentAction();                                          // 0x00662650
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
     void AddQueuedAction(const CCreatureActionBase&);
 #endif

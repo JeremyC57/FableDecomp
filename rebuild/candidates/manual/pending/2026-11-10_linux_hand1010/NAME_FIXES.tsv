@@ -1,0 +1,15 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x006A2220	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb	GetCarriedThings / GetAllItems / CollectCarrySlots / CRetailVector local forms
+0x00703210	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb	?CreateThingObject@@YI... / ?CreateObject@@YI... (free functions)
+0x006A1230	?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z	FableWin.pdb + Ego_r.pdb	?IsCarrySlotEmpty@CTCCarrying@@QAE_NJ@Z / ?HasItemWithID@CTCInventory@@QAE_NJ@Z
+0x005D9030	?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ	FableWin.pdb + Ego_r.pdb	QBEJXZ / QAEJXZ variants
+0x005D8E90	?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ	FableWin.pdb + Ego_r.pdb	QAEPAVCThing@@XZ
+0x004C9B80	?Kill@CThing@@QAEX_N@Z	FableWin.pdb + Ego_r.pdb	CThing_0066fb50 and similar placeholders
+0x009AD410	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	FableWin.pdb + Ego_r.pdb	?GetDefGlobalIndexFromName@DefinitionMethods... / ?count@Thing / ?ThemeCount
+0x00487DC0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	FableWin.pdb + Ego_r.pdb	?GetHeroThing@CPlayerView / GetHeroCreature
+0x004FB880	?GetMapNumberFromScriptName@CWorldMap@@QBEJABVCCharString@@@Z	FableWin.pdb + Ego_r.pdb	CWorldMap_Retail QAE form
+0x0065F17B	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	STLport 4.6 list::size on CTCVillage::VillagePeople (AddCrimeCommitted)	?size@CFollowerList@@QBEJXZ
+0x00750240	?GetOpenAnimNameForCreature@CTCChest@@QBE?AVCCharString@@XZ	FableWin.pdb	CTCChest::GetOpenAnimationForCreature (landed row name 00750240), CTCChest::GetOpenAnimName (prior)
+0x00750540	?Open@CTCChest@@QAEXXZ	FableWin.pdb + landed CTCChest_Open_00750540	CTCChest::Close (OpenChest prior draft)
+0x007EE540	?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ	FableWin.pdb + Ego_r.pdb (header CTCVillageMember.h)	IS_THING_ALIVE_PHYSICAL (OpenChest prior draft)
+0x006B85D0	?ScreenFilterFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMABVCRGBFloatColour@@ABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@@Z	FableWin.pdb + Ego_r.pdb	landed local-model spelling of the 0x006B85D0 leaf (vector of a local pass-through record)

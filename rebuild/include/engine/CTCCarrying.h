@@ -35,6 +35,19 @@ public:
     bool IsCarryingThing(long slot) const;
     CThing* GetCarriedThing(long slot) const;
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_SLOTFREE
+    // Opt-in (chunk 1010, row 0x00897FA0 CGameScriptInterface::MakeHeroCarryItemInHand): Ego_r.pdb / FableWin.pdb
+    // ?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z, out of line in retail at 0x006A1230 (landed row; the slot map lookup, false when the slot
+    // is absent). Declaration only.
+    bool IsCarrySlotFree(long slot) const;                   // 0x006A1230
+#endif
+#ifdef FABLE_RETAIL_CTCCARRYING_SLOTACCESS
+    // Opt-in (chunk 1010, row 0x00895190 CGameScriptInterface::GiveThingItemInSlot): Ego_r.pdb / FableWin.pdb
+    // ?IsSlotPrimarySlot@CTCCarrying@@QBE_NJ@Z (out of line at 0x006A1330) and ?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z
+    // (0x006A16A0; the caller tests and kills the returned thing). Declarations only.
+    bool IsSlotPrimarySlot(long slot) const;                 // 0x006A1330
+    CThing* RemoveThingInCarrySlot(long slot, bool immediately);   // 0x006A16A0
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYING_CARRYSLOT
     // Retail opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): Ego_r.pdb
     // ?GetThingInCarrySlot@CTCCarrying@@QBEPAVCThing@@J@Z (Ego_r 0x006C5E80), out of line in retail at 0x006A11F0 (also called by the

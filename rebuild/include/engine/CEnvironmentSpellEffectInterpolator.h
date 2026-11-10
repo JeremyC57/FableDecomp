@@ -11,9 +11,22 @@
 #include "engine/NScreenEffect_CScreenEffectPriorityStack.h"
 class CEnvironment;
 class CEnvironmentSpellEffectInterface;
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADETO
+class CRGBFloatColour;
+#endif
 class CEnvironmentSpellEffectInterpolator {
 public:
     void ScreenFilterSetFlags(const NScreenEffect::CScreenEffectPriorityStack::ThingGraphicArgPassers& things, void* handle);  // 0x006B83E0
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADETO
+    // Opt-in (chunk 1010, row 0x008A9880 CGameScriptInterface::ScreenFilterFadeTo): Ego_r.pdb
+    // ?ScreenFilterFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMABVCRGBFloatColour@@ABV?$vector@
+    // UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@...@std@@@std@@@Z = retail 0x006B85D0 (102 bytes;
+    // the script interface pushes the eight arguments and `push 1` for the priority). Needs FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_ARGPASSER
+    // (the enum). Declaration only.
+    void* ScreenFilterFadeTo(float time, NScreenEffect::ScreenEffectPriority priority, float alpha, float saturation, float contrast,
+                             float brightness, const CRGBFloatColour& tint,
+                             const NScreenEffect::CScreenEffectPriorityStack::ThingGraphicArgPassers& things);   // 0x006B85D0
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADEOUT
     // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause): Ego_r.pdb / FableWin.pdb
     // ?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z = retail 0x006B83F0 (the PDB-named forwarder

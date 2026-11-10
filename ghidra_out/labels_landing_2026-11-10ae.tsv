@@ -1,0 +1,6 @@
+address	name	evidence
+008930f0	?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@0@Z	RELOCATION_MATCH chunk 1010; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json
+00895190	?GiveThingItemInSlot@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@1@Z	RELOCATION_MATCH chunk 1010; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json
+00897fa0	?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z	RELOCATION_MATCH chunk 1010; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json
+0089da70	?EntitySetAlpha@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z	RELOCATION_MATCH chunk 1010; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json
+0089feb0	?AddCrimeCommitted@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECrime@@_NPBV2@3W4EOpinionPostDeedType@@@Z	RELOCATION_MATCH chunk 1010; Ego_r.pdb / FableWin.pdb + refs/fse_api_manifest.json

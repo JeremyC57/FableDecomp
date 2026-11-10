@@ -1,0 +1,33 @@
+address	name	evidence
+0x0089DA70	?EntitySetAlpha@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH (chunk 1010)
+0x008930F0	?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@0@Z	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH (chunk 1010)
+0x00897FA0	?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH (chunk 1010)
+0x00895190	?GiveThingItemInSlot@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@1@Z	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH (chunk 1010)
+0x0089FEB0	?AddCrimeCommitted@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECrime@@_NPBV2@3W4EOpinionPostDeedType@@@Z	Ego_r.pdb + FableWin.pdb; `ret 18h`; RELOCATION_MATCH (chunk 1010)
+0x00896390	?OpenChest@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z	FableWin.pdb + engine/CGameScriptInterface.h vtable; FSE manifest OpenChest(spChest, optional bool)
+0x006A2220	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb; EntitySetAlpha relocation
+0x00703210	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb; GiveThingItemInSlot relocation (fastcall static)
+0x006A1230	?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z	FableWin.pdb + Ego_r.pdb; MakeHeroCarryItemInHand / GiveThingItemInSlot relocation
+0x006A1330	?IsSlotPrimarySlot@CTCCarrying@@QBE_NJ@Z	FableWin.pdb + Ego_r.pdb; GiveThingItemInSlot relocation
+0x006A16A0	?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z	FableWin.pdb + Ego_r.pdb; GiveThingItemInSlot relocation
+0x005D9030	?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ	FableWin.pdb + Ego_r.pdb; MakeHeroCarryItemInHand relocation
+0x005D8E90	?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ	FableWin.pdb + Ego_r.pdb; MakeHeroCarryItemInHand relocation
+0x004C9B80	?Kill@CThing@@QAEX_N@Z	FableWin.pdb + Ego_r.pdb; GiveThingItemInSlot relocation
+0x009AD410	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	FableWin.pdb + Ego_r.pdb; GiveThingItemInSlot relocation
+0x00487DC0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	FableWin.pdb + Ego_r.pdb; five matched rows' relocation
+0x004C73D0	?GetPos@CThing@@QBEABVC3DVector@@XZ	Ego_r.pdb; AddCrimeCommitted / OpenChest
+0x008CFF40	?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ	FableWin.pdb; GetThingWithScriptName relocation
+0x004FB880	?GetMapNumberFromScriptName@CWorldMap@@QBEJABVCCharString@@@Z	FableWin.pdb + Ego_r.pdb; GetThingWithScriptName relocation
+0x008ABDF0	??$GetPFirstThing@V?$CFilter_Bind2@VCThingFilter_HasScriptName@@VCThingFilter_InMap@@@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasScriptName@@VCThingFilter_InMap@@@@PAPAVCThingGameObject@@@Z	FableWin.pdb template instance; GetThingWithScriptName (same-TU body)
+0x006A7E30	??RCThingFilter_HasScriptName@@QBE_NABVCThing@@@Z	Ego_r.pdb CThingFilter_HasScriptName (member Name); GetPFirstThing body
+0x0065F17B	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	STLport 4.6 list::size (distance form), CTCVillage::VillagePeople; AddCrimeCommitted relocation
+0x00683590	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJ_N@Z	FableWin.pdb; AddCrimeCommitted relocation
+0x00681AE0	?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z	header CTCCreatureOpinionOfHero.h + AddCrimeCommitted relocation
+0x006C6990	?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	Ego_r.pdb + FableWin.pdb; AddCrimeCommitted relocation
+0x00750240	?GetOpenAnimNameForCreature@CTCChest@@QBE?AVCCharString@@XZ	FableWin.pdb; OpenChest call site
+0x00750540	?Open@CTCChest@@QAEXXZ	FableWin.pdb + landed CTCChest_Open_00750540; OpenChest(chest, false) arm
+0x007EE7E0	??0CCreatureAction_OpenChest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z	FableWin.pdb; vtable 0x0127173C; OpenChest temporary
+0x00662650	?FinishCurrentAction@CThingCreatureBase@@QAEXXZ	FableWin.pdb; OpenChest
+0x006C9FA0	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	FableWin.pdb; OpenChest (category 0x21)
+0x0040DCE0	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	FableWin.pdb template; OpenChest owner test (out of line)
+0x006B85D0	?ScreenFilterFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMABVCRGBFloatColour@@ABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@@Z	FableWin.pdb + Ego_r.pdb; CGameScriptInterface::ScreenFilterFadeTo call

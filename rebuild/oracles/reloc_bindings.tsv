@@ -39124,3 +39124,8 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??A?$map@PAVCComponent@NUISystem@@PAV12@U?$less@PAVCComponent@NUISystem@@@std@@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABQAV23@@Z	005b3167	005a3e47
 ?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z	005bf30d	005a3e47
 ?IsItemAffordable@CTCInventoryTrade@@QAE_NJJ@Z	0059da10	005a3e47
+??$GetPFirstThing@V?$CFilter_Bind2@VCThingFilter_HasScriptName@@VCThingFilter_InMap@@@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasScriptName@@VCThingFilter_InMap@@@@PAPAVCThingGameObject@@@Z	008abdf0	008930f0
+?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z	006a1230	00895190
+?IsSlotPrimarySlot@CTCCarrying@@QBE_NJ@Z	006a1330	00895190
+?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ	005d8e90	00897fa0
+?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	0065f17b	0089feb0

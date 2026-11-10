@@ -1,0 +1,24 @@
+addr       parity           behav  name
+008930f0   RELOCATION_MATCH PASS   GetThingWithScriptName
+00895190   RELOCATION_MATCH PASS   GiveThingItemInSlot
+00897fa0   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+00897fa0   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00897fa0   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00897fa0   RELOCATION_MATCH PASS   MakeHeroCarryItemInHand
+0089da70   RELOCATION_MATCH PASS   EntitySetAlpha
+0089feb0   WARN RELOC_NAME: ?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ -> 0065f17b labelled 'CBasicString<char>::CalcStringLength'
+0089feb0   RELOCATION_MATCH PASS   AddCrimeCommitted
+
+WINS: 5
+  008930f0 RELOCATION_MATCH CGameScriptInterface::?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@0@Z
+  00895190 RELOCATION_MATCH CGameScriptInterface::?GiveThingItemInSlot@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@1@Z
+  00897fa0 RELOCATION_MATCH CGameScriptInterface::?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z
+  0089da70 RELOCATION_MATCH CGameScriptInterface::?EntitySetAlpha@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+  0089feb0 RELOCATION_MATCH CGameScriptInterface::?AddCrimeCommitted@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECrime@@_NPBV2@3W4EOpinionPostDeedType@@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_GetThingWithScriptName_008930f0
+  CGameScriptInterface_GiveThingItemInSlot_00895190
+  CGameScriptInterface_MakeHeroCarryItemInHand_00897fa0
+  CGameScriptInterface_EntitySetAlpha_0089da70
+  CGameScriptInterface_AddCrimeCommitted_0089feb0
