@@ -1,0 +1,24 @@
+address	name	evidence
+007cf9a0	?ProcessInput@CTCTavernGameShoveHaPenny@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z	vtable 0x0126F2F4 slot 28 + Ego_r/FableWin name sets
+006deee0	?GlobalUpdate@CTCTrophy@@UAEX_N@Z	vtable 0x0125FC54 slot 26 = CTCBase slot 26 GlobalUpdate(bool) + Ego_r/FableWin name sets (catalog vfunc_26)
+006de8c0	?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z	Ego_r/FableWin name sets; sole caller CCreatureActionShowTrophy::PerformAction 0x008455C0
+00665860	?UpdateAnimation@CThingCreatureBase@@IAEXM@Z	Ego_r/FableWin name sets; Ego_r donor order UpdateAnimation / UpdateAnimationBulletTime = retail 0x00665860 / 0x00665DE0
+00665de0	?UpdateAnimationBulletTime@CThingCreatureBase@@IAEXXZ	unlisted 8-byte forwarder after 0x00665860 (`push 0 ; call 0x00665860 ; ret`); Ego_r donor order + PDB name sets
+00687d80	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@AAM@Z	Ego_r.pdb + FableWin.pdb name sets; body 0x00687D80 calls MyPlayer->GetNumber 0x00487510 then CGamePlayerInterface::IsGameActionEventInQueue(action,type,long,float&) 0x00445CB0 (ret 0Ch: three args, the float& pushed first); called by 0x007CF9A0 with (81,2,&time)
+008ef910	?UpdateCoinSounds@CTCTavernGameCoinBase@@QAEX_N@Z	Ego_r.pdb name set (bool parameter); caller 0x007CF9A0 pushes 1 (0x007CFEF8); the body forwards the dword to Coin::UpdateSound(bool) 0x008EF400
+008ef400	?UpdateSound@Coin@@QAEX_N@Z	Ego_r.pdb ?UpdateSound@Coin@@QAEX_N@Z (class Coin, bool); Ego_r donor order Coin::Update 0x00914A10 / ctor 0x00914AF0 / UpdateSound 0x00914D50; UpdateCoinSounds forwards its bool
+006dee80	?UpdateGainedWitnessSounds@CTCTrophy@@AAEXXZ	Ego_r.pdb + FableWin.pdb: private (AAE); called only from CTCTrophy members (GlobalUpdate 0x006DEEF4, FrameUpdate)
+006dd7e0	?StartDialogBox@CTCTrophy@@AAEXVCWideString@@K000@Z	Ego_r.pdb + FableWin.pdb: private (AAE)
+006ddcd0	?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb: private (AAE); body = the inline copy expanded in 0x006DE8C0 at 0x006DED90
+006a0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	Ego_r.pdb + FableWin.pdb (references); engine/CCreatureAction_UnsheatheItemFromInventory.h already declares it so
+008302d0	?SetStateGroupEnabled@CThingAICreature@@QAEXABVCCharString@@_N@Z	Ego_r.pdb 0x005370F0 / FableWin.pdb 0x01D763D0; body `mov ecx,[ecx+1A8h] ; jmp 0x0088B9E0` = the PBrain forwarder to CAIBrain::SetStateGroupEnabled (same signature in both PDBs); callers pass ("SG_OPINION_REACTION_ROOT", true)
+0070c0e0	?IsMainAnimFinished@CAnimateThing@@QBE_NXZ	FableWin.pdb public QBE (IsAnimationFinished is private ABE in both PDBs, so CThingCreatureBase cannot call it); body: no anim index / first index <= 0 / MainAnimSet Finished bit
+00668a80	?IsFinished@CAnimSet@@QBE_NXZ	Ego_r.pdb + FableWin.pdb; body: Anims empty or the Finished bit (+0x51 & 2) of the CAnimSet at the animator's +0 (MainAnimSet); a COMDAT of the creature TU called by 0x00665B5A
+005b33f4	??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z	Ego_r.pdb ctor + ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z in both PDBs (the body zeroes Frame and forwards its 7 arguments to Init 0x0070C050)
+00751bc0	?IsInsideAnimationRange@CTCLook@@QBE_NXZ	Ego_r.pdb + FableWin.pdb (const)
+006cb6a0	?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ	Ego_r.pdb + FableWin.pdb; called on the TCI_NAVIGATION (7) component at 0x00665A9F
+006655a0	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ	Ego_r.pdb + FableWin.pdb
+0071aab0	?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z	Ego_r.pdb + FableWin.pdb (nested CTCEmoteIcon::EEmotePriority)
+00864700	?IsAwareOfThingIndirectly@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	Ego_r.pdb + FableWin.pdb; the landed row 0x00864700's own leaf
+006df860	??1CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAE@XZ	Ego_r.pdb + FableWin.pdb; body destroys +0xBC (CIntelligentPointer) and +0xB8 (CCharString) then jumps to ~CCreatureAction_UnsheatheItemFromInventory 0x005CC091; GlobalUpdate destroys its action temporary with it
+0065f17b	?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ	reloc_bindings already binds it; GlobalUpdate calls it on CTCTrophy::AvailableWitnesses (+0x34) for the play-game witness count

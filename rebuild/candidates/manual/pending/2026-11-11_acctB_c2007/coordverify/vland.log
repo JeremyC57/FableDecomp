@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00665860   WARN RELOC_NAME: ?IsMainAnimFinished@CAnimateThing@@QBE_NXZ -> 0070c0e0 labelled 'CAnimateThing::IsAnimationFinished'
+00665860   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00665860   WARN RELOC_NAME: ?IsFinished@CAnimSet@@QBE_NXZ -> 00668a80 labelled 'CAnimateThing::IsAnimationFinished'
+00665860   RELOCATION_MATCH PASS   UpdateAnimation
+006de8c0   RELOCATION_MATCH PASS   OnShowTrophyPerformAction
+006deee0   WARN RELOC_NAME: ??1CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAE@XZ -> 006df860 labelled '_unattributed::~CAggregate_006df860'
+006deee0   WARN RELOC_NAME: ?size@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEIXZ -> 0065f17b labelled 'CBasicString<char>::CalcStringLength'
+006deee0   RELOCATION_MATCH PASS   GlobalUpdate
+007cf9a0   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007cf9a0   WARN RELOC_NAME: ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z -> 00687d00 labelled 'CInputProcessGameBase::GetEventGameActionVector'
+007cf9a0   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 4
+  00665860 RELOCATION_MATCH CThingCreatureBase::?UpdateAnimation@CThingCreatureBase@@IAEXM@Z
+  006de8c0 RELOCATION_MATCH CTCTrophy::?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z
+  006deee0 RELOCATION_MATCH CTCTrophy::?GlobalUpdate@CTCTrophy@@UAEX_N@Z
+  007cf9a0 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?ProcessInput@CTCTavernGameShoveHaPenny@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z
