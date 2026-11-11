@@ -224,3 +224,5 @@ address	pool	module	name	length	class	action	new_length	evidence
 00691d70	chunk1022	CInputProcessCreatureMovement	ProcessInput	624	OVERLONG	split	528	code ends `ret 8` at 0x00691F59, then two switch tables (0x00691F5C, 0x00691F64); next function 0x00691F80 (chunk 1022 SPLITS.tsv)
 0078c210	chunk1022	CTCBerserk	CTCBerserk	688	OVERLONG	split	602	`ret 4` at 0x0078C467; next function 0x0078C470 (60 bytes, the TC 0x31 PeekTC getter) (chunk 1022 SPLITS.tsv)
 004ca019	chunk1022	CThing	ConstructFromParams	439	PHANTOM	skip	0	9 bytes inside the landed CThing::ConstructFromParams 0x004CA010 (437 bytes); not a function start (chunk 1022)
+007cb8b0	chunk1023	CTCHeroReceiveItems	OnSerialise	608	OVERLONG	split	508	the catalog's 608 bytes also cover two separate functions 0x007CBAB0 and 0x007CBAE0 (chunk 1023 SPLITS.tsv)
+0074b77c	chunk1023	CTCCreatureGenerator	SpawnInArea	388	PHANTOM	skip	0	interior of the landed 0x0074B770 CTCCreatureGenerator::InitialiseCreatureGenerator; not a function start (chunk 1023)

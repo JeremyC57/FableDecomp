@@ -100,6 +100,13 @@ public:
     CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
     virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
     virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ (chunk 731)
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_BLENDTABLES
+    // Retail opt-in (chunk 1023, row 0x00B67270): Ego_r.pdb ?BuildBlendingTables@CEngineLandscapeRenderer@@AAEXXZ (private; the
+    // five 128x128 ForegroundBlendTables). Declaration only.
+private:
+    void BuildBlendingTables();                                          // 0x00B67270
+public:
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_ZSORT
     // Nested opt-in (chunk 1016, row 0x00B67E30): Ego_r.pdb / FableWin.pdb
     // ?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAVCLandscapeBackgroundPatch@@@Z (out of line at 0x00B67E30; the

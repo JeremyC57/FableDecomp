@@ -29,7 +29,28 @@ public:
     unsigned char _pad_0x25[0x6c - 0x25];
 #endif
     std::vector<CDefString> DialogueVoices;                              // +0x6c
+#ifdef FABLE_RETAIL_CCREATUREDEF_SCREENINVENTORIES
+    // Nested opt-in (chunk 1023, row 0x0061A6A0 CTCInventoryQuests::OnCreate): Ego_r.pdb CCreatureDef Inventory .. InGameMenuScreen
+    // (thirteen longs, Ego_r +0x88..+0xB8) at retail +0x78..+0xA8, right behind DialogueVoices (0x10 lower, as DialogueVoices).
+    // Retail reads QuestsScreenInventory +0xA4 (0x0061A705), WeaponsInventory +0x80 (CTCInventoryWeapons::OnCreate 0x005C3057) and
+    // MapScreenInventory +0x8C (CTCInventoryMap::OnCreate 0x00602E30) off GetSubDef<CCreatureDef>. No layout change.
+    long Inventory;                                                      // +0x78
+    long ClothingInventory;                                              // +0x7c
+    long WeaponsInventory;                                               // +0x80
+    long HeroAbilitiesScreenInventory;                                   // +0x84
+    long QuestCardScreenInventory;                                       // +0x88
+    long MapScreenInventory;                                             // +0x8c
+    long StatsScreenInventory;                                           // +0x90
+    long MagicScreenInventory;                                           // +0x94
+    long ExperienceScreenInventory;                                      // +0x98
+    long TradeScreenInventory;                                           // +0x9c
+    long AugmentScreenInventory;                                         // +0xa0
+    long QuestsScreenInventory;                                          // +0xa4
+    long InGameMenuScreen;                                               // +0xa8
+    unsigned char _pad_0xac[0xc8 - 0xac];
+#else
     unsigned char _pad_0x78[0xc8 - 0x78];
+#endif
 #else
     unsigned char _pad_0x25[0xa3];
 #endif

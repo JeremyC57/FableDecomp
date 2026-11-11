@@ -1,0 +1,2 @@
+address	length	name	evidence
+007cb8b0	508	CTCHeroReceiveItems::OnSerialise	body ends `ret 8` at 0x007CBAA9 (+4 int3); coverage.tsv size 508; 0x007CBAB0 / 0x007CBAE0 are separate functions (own prologues after int3 padding)

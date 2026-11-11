@@ -1,0 +1,16 @@
+006e3ec0	1	DIFFER(305v526) first compile: resize/ctor not inlined?
+006e3ec0	2	DIFFER(305v526) if/else ctor: still called
+006e3ec0	3	DIFFER(520v526) /d2inlT150 diagnostic: ctor inlined
+006e3ec0	4	DIFFER(520v526) /d2inlT100 + frame*(-1/release): ctor+erase both inline
+006e3ec0	5	DIFFER(520v526) /d2inlT80: erase still inline with ctor
+006e3ec0	6	RELOCATION_MATCH FABLE_FORCEINLINE CResponseTimes(float,float) (scan: default/T75 ctor+erase called, T77 erase inline ctor called, T80/T100 both inline)
+007cb8b0	1	DIFFER(508v594) = oracle over-cut; compare first 508
+007cb8b0	2	RELOCATION_MATCH (split 508, tools/gsplit.py)
+0061a6a0	1	DIFFER(512v508) header-backed first draft
+0061a6a0	2	DIFFER(484v508) same-TU GetSubDef<CCreatureDef> body + do-while: only the switch temps differ (push eax vs lea re-take)
+0061a6a0	3	RELOCATION_MATCH named block-scoped CWideString per case (implicit literal conversion, address re-taken)
+00b67270	1	DIFFER(518v518) first header-backed draft
+00b67270	2	DIFFER(518v518) C3DVector normal hoisted out of the loops, X before Y: worse (frame 0xC4); reverted
+00b67270	3	DIFFER(518v518) Y read from (y-64)/64 in the inner loop (no Y^2 hoist; frame 0xB4), X before Y, byte fill indexed in-loop (memset guard first); left: pitch/bits order, row/column offset slots
+00b67270	4	RELOCATION_MATCH texel index y*pitch + x*bpp + b (VC7.1 strength-reduces to the row/column induction slots that reuse this / texture-pointer slots), PMem read before Pitch
+00c1c460	1	DIFFER(445v445) same-TU statics BuildListenerMatrices / TransformHelperPoint / TransformPointThroughMirroredFrame (/Gr: callee-pop private conventions), if/else assignment into listener_space, coda assigned from Copy(); left: i/slot in ebx/edi (retail edi/ebx) + listener_space copy schedule

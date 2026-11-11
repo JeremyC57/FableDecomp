@@ -39201,3 +39201,11 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?g_AlertAlliesMessageDelay@@3KA	013bc3a4	0096eb40
 ??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThingCreatureBase@@PBVCThing@@@Z	008d5110	0097ef60
 ?GetSubDef@CDefClassBase@@QBE_NPAPAVCAICreatureWillPowerIndicatorDef@@@Z	006696b0	0097ef60
+?resize@?$vector@VCQuestCardItem@@V?$allocator@VCQuestCardItem@@@std@@@std@@QAEXI@Z	006253d0	0061a6a0
+?_M_fill_insert@?$vector@VCResponseTimes@NSpeechGainManager@@V?$allocator@VCResponseTimes@NSpeechGainManager@@@std@@@std@@QAEXPAVCResponseTimes@NSpeechGainManager@@IABV34@@Z	006e5240	006e3ec0
+?clear@?$_List_base@VCActiveDialogueInfo@NSpeechGainManager@@V?$allocator@VCActiveDialogueInfo@NSpeechGainManager@@@std@@@std@@QAEXXZ	006e4b90	006e3ec0
+?erase@?$vector@VCResponseTimes@NSpeechGainManager@@V?$allocator@VCResponseTimes@NSpeechGainManager@@@std@@@std@@QAEPAVCResponseTimes@NSpeechGainManager@@PAV34@0@Z	006e4ea0	006e3ec0
+?g_ActiveDialogue@NSpeechGainManager@@3V?$list@VCActiveDialogueInfo@NSpeechGainManager@@V?$allocator@VCActiveDialogueInfo@NSpeechGainManager@@@std@@@std@@A	013baba0	006e3ec0
+?g_LayerSpeakerCounts@NSpeechGainManager@@3V?$vector@GV?$allocator@G@std@@@std@@A	013bab94	006e3ec0
+?g_ResponseTimes@NSpeechGainManager@@3V?$vector@VCResponseTimes@NSpeechGainManager@@V?$allocator@VCResponseTimes@NSpeechGainManager@@@std@@@std@@A	013baba4	006e3ec0
+?GetMappingDirectionBlend@CEngineLandscapeMeshBuilder@@QAEMW4LANDSCAPE_TEXTURE_MAPPING_DIRECTION@@ABVC3DVector@@@Z	00be2b70	00b67270

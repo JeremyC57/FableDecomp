@@ -14,9 +14,25 @@
 class CThing;
 namespace NUISystem { class CComponent; class CList; }
 enum QuestScreenType { };
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS
+#include "engine/CQuestCardItem.h"
+class CEnginePrimitiveHandle;
+#endif
 class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_INVENTORY_QUESTS; }
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS
+    // Retail opt-in (chunk 1023, row 0x0061A6A0): the slot-4 override ?OnCreate@CTCInventoryQuests@@UAEXXZ (vtable 0x012585B4) and the
+    // first members after the NHeroInformationScreens::CBase subobject (+0x130), Ego_r.pdb names and order at the retail offsets the
+    // landed ~CTCInventoryQuests 0x0061A500 and OnCreate read (12-byte STLport vectors): the members past QuestCardCount are not
+    // modelled yet (no sizeof; retail operator new(0x188) in Alloc 0x004D30A8).
+    virtual void OnCreate();                                                                       //  4 0x0061A6A0
+    std::vector<CEnginePrimitiveHandle> InventoryQuestCardSelectPrimitiveHandles;                  // +0x134
+    std::vector<CQuestCardItem> QuestCardItemList;                                                 // +0x140
+    bool IsGuildValid;                                                                             // +0x14c
+    bool InventoryScreen;                                                                          // +0x14d
+    long QuestCardCount;                                                                           // +0x150
+#endif
     // Ego_r.pdb / FableWin.pdb ?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z
     void ConstructQuestList(const std::vector<CThing*>& quests, NUISystem::CList* list, QuestScreenType type,
                             NUISystem::CList* parent);                                                     // 0x0061B610

@@ -10,6 +10,13 @@
 #include "rebuild_abi.h"
 
 class CCharStringData;
+#ifdef FABLE_RETAIL_CGLOBALDEF_DIALOGUELAYERS
+// Retail opt-in (chunk 1023, row 0x006E3EC0 NSpeechGainManager::Initialise): DialogueLayers typed as its PDB type, the STLport
+// vector<NSpeechGainManager::CDialogueLayerDef> (12 bytes, 0x40-byte elements: retail reads +0x28/+0x2C of elements 0..2 at
+// +0x28/+0x68/+0xA8 off its start). No layout change.
+#include "stlport/fable_containers.h"
+#include "engine/NSpeechGainManager.h"
+#endif
 
 #pragma pack(push, 1)
 class CGlobalDef {
@@ -77,7 +84,11 @@ public:
     unsigned char    TrackGraphic_Type;                      // +0xf3 CEngineGraphic::Type
     unsigned char    ConversationCameras[0xc];               // +0xf4 map<long,CCharString,std::less<long>,std::allocator<std::pair<long_const_,CCharString>_>_>
     unsigned char    PermittedAINarrators[0xc];              // +0x100 vector<CCharString,std::allocator<CCharString>_>
+#ifdef FABLE_RETAIL_CGLOBALDEF_DIALOGUELAYERS
+    std::vector<NSpeechGainManager::CDialogueLayerDef> DialogueLayers;   // +0x10c
+#else
     unsigned char    DialogueLayers[0xc];                    // +0x10c vector<NSpeechGainManager::CDialogueLayerDef,std::allocator<NSpeechGainManager::CDialogueLayerDef>_>
+#endif
     long             OpinionDebugIndicatorIcon;              // +0x118
     long             WifeLoveIndicatorIcon;                  // +0x11c
     long             WifeEngagedIndicatorIcon;               // +0x120

@@ -1,0 +1,8 @@
+address	name	grade	grades_used	note
+006e3ec0	?Initialise@NSpeechGainManager@@YIXABVCWorld@@@Z	RELOCATION_MATCH	6	FABLE_FORCEINLINE CResponseTimes(float,float) (inline-budget split vs vector::erase, threshold scan in line 3); GlobalDef / DialogueLayers / new NSpeechGainManager.h overlay
+007cb8b0	?OnSerialise@CTCHeroReceiveItems@@MAEXAAVCPersistContext@@_N@Z	RELOCATION_MATCH	2	split row: 508 bytes (SPLITS.tsv; the catalog 608 spans 0x007CBAB0 / 0x007CBAE0 too); graded at 508 with tools/gsplit.py (gall.sh/q.py compare against the 608-byte catalog bytes)
+0061a6a0	?OnCreate@CTCInventoryQuests@@UAEXXZ	RELOCATION_MATCH	3	same-TU GetSubDef<CCreatureDef> body, do-while item loop, block-scoped `CWideString text = L"..."` per case
+00b67270	?BuildBlendingTables@CEngineLandscapeRenderer@@AAEXXZ	RELOCATION_MATCH	4	texel index y*pitch + x*bpp + b (compiler strength reduction = retail slots), normal.Y as the inner expression, PMem before Pitch; GFFloatToLongFloor retail-asm helper
+00417747	?UpdateForcedTickSpeed@CMainGameComponent@@QAEXXZ	DIFFER(600v596)	0	parked with diagnosis (differ/): retail `fld [m] ; fld1 ; fdivrp st(1)` reciprocal; no VC7.1 C++ spelling found in 20+ micro probes (prior grades 7 of 10 used by chunk 1022)
+0074b77c	(not a function)	NOT_A_FUNCTION	0	interior of the landed 0x0074B770 CTCCreatureGenerator::InitialiseCreatureGenerator (GOTCHAS boundary note 0x74B77C -> 0x74B770); drop the row
+00c1c460	?UpdateSourcePositions@CUnprovenSoundWorld_00c1c460@@QAEXXZ	DIFFER(445v445)	1	parked with c2prio diagnosis (differ/): i / slot register swap (slot priority 44 > i 34) + one 3-dword copy schedule; same length, frame and slots

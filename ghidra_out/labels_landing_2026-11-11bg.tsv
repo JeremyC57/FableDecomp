@@ -1,0 +1,12 @@
+address	name	evidence
+006E3EC0	?Initialise@NSpeechGainManager@@YIXABVCWorld@@@Z	chunk 1023: Ego_r.pdb + FableWin.pdb name sets; only caller 0x004A76C0; body reads CWorld +0x10 -> global def DialogueLayers; RELOCATION_MATCH
+006E4EA0	?erase@?$vector@VCResponseTimes@NSpeechGainManager@@V?$allocator@VCResponseTimes@NSpeechGainManager@@@std@@@std@@QAEPAVCResponseTimes@NSpeechGainManager@@PAV34@0@Z	chunk 1023: called from the inline resize at 0x006E3F4x of the matched 0x006E3EC0 (relocation binds to this symbol in our object)
+006E5240	?_M_fill_insert@?$vector@VCResponseTimes@NSpeechGainManager@@V?$allocator@VCResponseTimes@NSpeechGainManager@@@std@@@std@@QAEXPAVCResponseTimes@NSpeechGainManager@@IABV34@@Z	chunk 1023: inline resize grow path of the matched 0x006E3EC0; its own callees are the CResponseTimes copy helpers in reloc_bindings
+005149F0	?_M_fill_insert@?$vector@GV?$allocator@G@std@@@std@@QAEXPAGIABG@Z	chunk 1023: shared COMDAT called at 0x006E3F06 by g_LayerSpeakerCounts.resize(3, 0) in the matched 0x006E3EC0
+007CB8B0	?OnSerialise@CTCHeroReceiveItems@@MAEXAAVCPersistContext@@_N@Z	chunk 1023: vtable 0x0126EBFC (RTTI CTCHeroReceiveItems) slot 1; Ego_r.pdb protected virtual; literal "PickedUpItems" 0x0126ECEC; RELOCATION_MATCH at 508
+0061A6A0	?OnCreate@CTCInventoryQuests@@UAEXXZ	chunk 1023: vtable 0x012585B4 (RTTI CTCInventoryQuests) slot 4; Ego_r.pdb / FableWin.pdb; RELOCATION_MATCH
+00B67270	?BuildBlendingTables@CEngineLandscapeRenderer@@AAEXXZ	chunk 1023: Ego_r.pdb private method; fills ForegroundBlendTables[5] (+0x5BC); RELOCATION_MATCH
+00BE2B70	?GetMappingDirectionBlend@CEngineLandscapeMeshBuilder@@QAEMW4LANDSCAPE_TEXTURE_MAPPING_DIRECTION@@ABVC3DVector@@@Z	chunk 1023: Ego_r.pdb name set; called at 0x00B673B8 on MeshBuilder (+0x10) with (direction, normal), result scaled by 255
+0066EB11	?RegisterScreen@CManager@NHeroInformationScreens@@QAEXPBVCBase@@@Z	chunk 1023: called at the head of the matched 0x0061A6A0 with the CTCInventoryQuests CBase conversion; Ego_r.pdb name set
+00C1BF00	BuildListenerMatrices	chunk 1023: descriptive (no libpk PDB): builds the listener frame from position / top x front, columns right / top / front, translation -axis.position (DotProduct 0x00C256A0), then InvertMatrix3x4 0x00C1D1C0; only caller 0x00C1C4DD
+00C1C330	TransformPointThroughMirroredFrame_00c1c330	chunk 1023: descriptive (landed parked retry1 spelling kept): point through a, depth mirrored (z<0 -> -z), then through b; only caller 0x00C1C590

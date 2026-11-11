@@ -21,6 +21,11 @@ class CManager {
 public:
     const CBase* GetCurrentScreen();                    // 0x0066E7BD
     void SelectScreenOfType(EScreenType type);          // 0x0066E799
+#ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER
+    // Retail opt-in (chunk 1023, row 0x0061A6A0): Ego_r.pdb / FableWin.pdb ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXPBVCBase@2@@Z,
+    // out of line at 0x0066EB11 (every inventory screen's OnCreate registers itself; the landed bound spelling). Declaration only.
+    void RegisterScreen(const CBase* screen);           // 0x0066EB11
+#endif
 #ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
     // Retail opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the inline ~CManager (Ego_r.pdb ??1CManager@NHeroInformationScreens@@QAE@XZ,
     // non-virtual; boost::checked_delete then operator delete, no vtable store) frees three STLport vectors at +0x1C, +0x10, +0x04 in that

@@ -392116,6 +392116,34 @@ $catalog = @(
         TestSource = '00/a0/CHandleBasedMemoryPool_PartialDefragment_00a02df0_test.cpp'
         PassPattern = '00a02df0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0061a6a0'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_OnCreate_0061a6a0.cpp'
+        TestSource = '00/61/CTCInventoryQuests_OnCreate_0061a6a0_test.cpp'
+        PassPattern = '0061a6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e3ec0'
+        Module = 'NSpeechGainManager'
+        Source = '00/6e/NSpeechGainManager_Initialise_006e3ec0.cpp'
+        TestSource = '00/6e/NSpeechGainManager_Initialise_006e3ec0_test.cpp'
+        PassPattern = '006e3ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cb8b0'
+        Module = 'CTCHeroReceiveItems'
+        Source = '00/7c/CTCHeroReceiveItems_OnSerialise_007cb8b0.cpp'
+        TestSource = '00/7c/CTCHeroReceiveItems_OnSerialise_007cb8b0_test.cpp'
+        PassPattern = '007cb8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b67270'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_BuildBlendingTables_00b67270.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_BuildBlendingTables_00b67270_test.cpp'
+        PassPattern = '00b67270_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

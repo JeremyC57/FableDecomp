@@ -1,0 +1,11 @@
+# Chunk 1023 lessons (GOTCHAS-ready)
+- 0x006E3EC0: an inline constructor that retail expands while the same TU's inline vector::resize still CALLS erase is an inline-budget split no /d2inlT value reproduces (T77 flips erase first); FABLE_FORCEINLINE on the constructor + an `// Inline-budget:` note matches.
+- 0x006E3EC0: `frame * (-1.0f / release)` keeps retail's `fld -1.0 ; fdiv st(1) ; fmul frame`; `-1.0f / release * frame` reassociates to `frame / release * -1`.
+- 0x007CB8B0: catalog lengths can span several functions (608 = 508 + two more after int3 padding); grade the real extent from Fable.exe and record it in SPLITS.tsv.
+- 0x0061A6A0: a same-TU body of a template accessor (CDefClassBase::GetSubDef<CCreatureDef>) that does not capture its out-argument lets VC7.1 keep the def pointer in a register and drop retail's absent null re-test.
+- 0x0061A6A0: a counted loop that retail enters without an aligned loop head is a do-while (a `for` in a speed TU gets the `lea` padding).
+- 0x0061A6A0: `CWideString text = L"..."` (block-scoped, copy-initialised) re-takes the temporary's address with `lea`; an explicit `CWideString(L"...")` argument pushes eax instead.
+- 0x00B67270: a texel index written as `y * pitch + x * bpp + b` is strength-reduced by VC7.1 into two induction slots that reuse dead locals (this / texture pointer, ebp-8 / ebp-4) exactly as retail; named row / column offset locals get their own slots and a bigger frame.
+- 0x00B67270: a named outer-loop float copied into a vector member lets VC7.1 hoist member*member out of the inner loop (extra slot, frame +4); writing the member from the invariant expression in the inner loop keeps retail's in-loop `fld Y ; fmul Y` (VC7.1 still hoists the expression itself).
+- 0x00B67270: a `for b < n: p[b] = v` byte fill becomes VC7.1's inline memset (`test n ; jle ; rep stosd ; rep stosb`); the address is computed after the guard only when the index expression is inside the loop.
+- 0x00417747: no VC7.1 spelling of `1 / m` gives `fld [m] ; fld1 ; fdivrp st(1)` (1.0f/1.0/1.0L/float(1)/helpers/pow(m,-1)/flags all give `fld1 ; fdiv [m]` or `fdivr [1.0]`); only a loop-carried register float (std::_Pow_int's result) does.

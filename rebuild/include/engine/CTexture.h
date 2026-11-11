@@ -27,6 +27,13 @@ public:
     // PD3DTexture and the +4 bitfield word in place) and Initialise (called out of line by 0x009A3640).
     CTexture() : PD3DTexture(0), ByteLength(0), AllocationSource(0) { }
     bool Initialise(const C2DExtentsI&,long,const CPixelFormat&,unsigned long,ESurfacePool,bool,bool);
+#ifdef FABLE_RETAIL_CTEXTURE_LOCK
+    // Retail opt-in (chunk 1023, row 0x00B67270 CEngineLandscapeRenderer::BuildBlendingTables): Ego_r.pdb / FableWin.pdb
+    // ?Lock@CTexture@@QAE?AVCSurfaceLockedRect@@KK@Z (0x009FA450: hidden result, `push 0 ; push 0`) and ?Unlock@CTexture@@QAEXK@Z
+    // (0x009F9DE0, `push 0`), out of line in retail (the landed bound spellings). Declarations only.
+    class CSurfaceLockedRect Lock(unsigned long level, unsigned long flags);   // 0x009FA450
+    void Unlock(unsigned long level);                                    // 0x009F9DE0
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_SIZED
     // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb
     // ??0CTexture@@QAE@ABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@@Z, inline in retail (0x00AB95A2: the +4 word's top

@@ -17503,7 +17503,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e3b30	PlayAISpeech	CTCTalk	__thiscall	ESpeechPlaybackResult	6	CTCTalk *,ulong,bool,EDialogueLayer,bool,bool	1	yes	accepted									
 006e3b60	PlayAISpeech	CTCTalk	__thiscall	ESpeechPlaybackResult	6	CTCTalk *,ulong,bool,EDialogueLayer,bool,bool	1	yes	accepted									
 006e3b90	CThingCreatureBase_UpdatePhonemeAnimation	_global	unknown	undefined	0		0	yes	accepted									
-006e3ec0	CWorld_InitGuiTreePane	_global	unknown	undefined	0		0	yes	accepted									
+006e3ec0	Initialise	NSpeechGainManager	unknown	undefined	0		0	yes	accepted									
 006e40d0	GetInterfaceType	CTCTalk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006e40e0	GetClassTypeName	CTCTalk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 006e4100	vfunc_23	CTCTalk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -22593,7 +22593,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007cabd0	AddItemToInventory	CTCHeroReceiveItems	unknown	undefined	0		0	yes	accepted									
 007cacb0	GlobalUpdate	CTCHeroReceiveItems	__thiscall	void	2	CTCHeroReceiveItems *,bool	1	yes	accepted									
 007cb850	SetItemAsPickedUp	CTCHeroReceiveItems	unknown	undefined	0		0	yes	accepted									
-007cb8b0	Save_TransferPickedUpItems	_global	unknown	undefined	0		0	yes	accepted									
+007cb8b0	OnSerialise	CTCHeroReceiveItems	unknown	undefined	0		0	yes	accepted									
 007cbb10	list	std::list<T_0xc_007cbb10>	unknown	undefined	0		0	yes	accepted									
 007cbb80	clear	std::_List_base<std::pair<CIntelligentPointer<CThingObject>, bool>, std::allocator<std::pair<CIntelligentPointer<CThingObject>, bool>>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 007cbbc0	insert	std::list<std::pair<CIntelligentPointer<CThingObject>, bool>, std::allocator<std::pair<CIntelligentPointer<CThingObject>, bool>>>	unknown	undefined	0		0	yes	accepted									

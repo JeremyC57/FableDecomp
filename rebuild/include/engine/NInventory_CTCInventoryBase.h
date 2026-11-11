@@ -75,6 +75,16 @@ class CCategory;
 class CTCInventoryBase : public CTCBase {
 public:
  long GetBoughtPrice(long) const; // original const member, native005bead5
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONCREATE
+ // Retail opt-in (chunk 1023, row 0x0061A6A0 CTCInventoryQuests::OnCreate): Ego_r.pdb / FableWin.pdb
+ // ?OnCreate@CTCInventoryBase@NInventory@@UAEXXZ (the CTCBase slot-4 override, out of line at 0x005C0121; the derived screens call it
+ // qualified) and the protected ?SetPDef@CTCInventoryBase@NInventory@@IAEXJ@Z (0x005BDB4D, the inventory def by global index; the
+ // landed callers' bound spelling). Declarations only: no layout or vtable change.
+ virtual void OnCreate();                                                                   //  4 0x005C0121
+protected:
+ void SetPDef(long inventory_def_index);                                                    // 0x005BDB4D
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ISOPEN
  // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): Ego_r.pdb / FableWin.pdb
  // ?IsInventoryOpen@CTCInventoryBase@NInventory@@QBE_NXZ, inline in retail (the caller tests InventoryOpen +0x58 in place:

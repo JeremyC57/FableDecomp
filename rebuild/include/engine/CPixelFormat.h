@@ -14,6 +14,12 @@ public:
  CPixelFormat(long r,long g,long b,long a) { Initialise(r,g,b,a,false); }
  void Initialise(long,long,long,long,bool);                     // 0x009E3790 ?Initialise@CPixelFormat@@QAEXJJJJ_N@Z (Ego_r + FableWin)
  void Initialise(_D3DFORMAT);
+#if defined(FABLE_RETAIL_CPIXELFORMAT_BYTECOLOURDEPTH_OUTOFLINE) && !defined(FABLE_RETAIL_CPIXELFORMAT_CONVERT)
+ // Retail opt-in (chunk 1023, row 0x00B67270 CEngineLandscapeRenderer::BuildBlendingTables): Ego_r.pdb / FableWin.pdb
+ // ?GetByteColourDepth@CPixelFormat@@QBEKXZ called out of line at 0x009E3800 in that TU (`lea ecx,[ebp-0Ch] ; call` at 0x00B67294;
+ // the landed bound spelling). Declaration only; the FABLE_RETAIL_CPIXELFORMAT_CONVERT branch keeps the inline body.
+ unsigned long GetByteColourDepth() const;                      // 0x009E3800
+#endif
 #ifdef FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
  unsigned long GetColourDepth()const;
 #endif

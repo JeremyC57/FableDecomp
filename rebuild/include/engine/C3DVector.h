@@ -140,7 +140,14 @@ public:
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{return X*other.X+Y*other.Y+Z*other.Z;}
 #endif
 #endif
-#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_X_GROUP
+#if defined(FABLE_RETAIL_C3DVECTOR_LIBPK_OUTOFLINE)
+    // Retail opt-in (chunk 1023, row 0x00C1C460, the libpk listener-space update): the audio library's TUs call the vector members
+    // out of line -- FableWin.pdb ?Cross@C3DVector@@QBE?BV1@ABV1@@Z at 0x00C25860 (landed), the dot product 0x00C256A0 (landed
+    // descriptive DotProduct) and the field-by-field copy 0x00C1BFF0 (landed descriptive Copy). Declarations only.
+    const C3DVector Cross(const C3DVector& other) const;                 // 0x00C25860
+    float DotProduct(const C3DVector& other) const;                      // 0x00C256A0
+    C3DVector Copy() const;                                              // 0x00C1BFF0
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_X_GROUP)
     // Cross expression grouping retains native00697d79..b2 scheduling.
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
 #elif defined(FABLE_RETAIL_C3DVECTOR_CYLINDER_CROSS_GROUPED)
@@ -212,6 +219,12 @@ public:
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z (0x00B81930),
     // out of line in retail at 0x00A14040 (395 bytes, the sin/cos rotation about Z). A declaration only.
     void RotateXY(float angle);                                          // 0x00A14040
+#ifdef FABLE_RETAIL_C3DVECTOR_ACCURATENORMALISE
+    // Retail opt-in (chunk 1023, row 0x00B67270 CEngineLandscapeRenderer::BuildBlendingTables): Ego_r.pdb / FableWin.pdb
+    // ?AccurateNormalise@C3DVector@@QAEAAV1@XZ, out of line in retail at 0x00A14440 (the landed bound spelling; called with ecx = the
+    // vector at 0x00B673A9). Declaration only.
+    C3DVector& AccurateNormalise();                                      // 0x00A14440
+#endif
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0

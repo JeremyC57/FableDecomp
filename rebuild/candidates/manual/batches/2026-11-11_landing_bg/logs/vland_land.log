@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0061a6a0   RELOCATION_MATCH PASS   OnCreate
+006e3ec0   RELOCATION_MATCH PASS   Initialise
+007cb8b0   RELOCATION_MATCH PASS   OnSerialise
+00b67270   WARN RELOC_NAME: ?GetMappingDirectionBlend@CEngineLandscapeMeshBuilder@@QAEMW4LANDSCAPE_TEXTURE_MAPPING_DIRECTION@@ABVC3DVector@@@Z -> 00be2b70 labelled 'BuildBlendingTables_ComputeBlendFactor'
+00b67270   RELOCATION_MATCH PASS   BuildBlendingTables
+
+WINS: 4
+  0061a6a0 RELOCATION_MATCH CTCInventoryQuests::?OnCreate@CTCInventoryQuests@@UAEXXZ
+  006e3ec0 RELOCATION_MATCH NSpeechGainManager::?Initialise@NSpeechGainManager@@YIXABVCWorld@@@Z
+  007cb8b0 RELOCATION_MATCH CTCHeroReceiveItems::?OnSerialise@CTCHeroReceiveItems@@MAEXAAVCPersistContext@@_N@Z
+  00b67270 RELOCATION_MATCH CEngineLandscapeRenderer::?BuildBlendingTables@CEngineLandscapeRenderer@@AAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryQuests_OnCreate_0061a6a0
+  NSpeechGainManager_Initialise_006e3ec0
+  CTCHeroReceiveItems_OnSerialise_007cb8b0
+  CEngineLandscapeRenderer_BuildBlendingTables_00b67270
