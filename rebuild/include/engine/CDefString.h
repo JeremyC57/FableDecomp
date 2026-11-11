@@ -16,6 +16,9 @@ class CWideString;
 #include "fable_definition_table.h"
 class CDefString {
 public:
+#ifdef FABLE_RETAIL_EXPRESSION_FRAME
+ bool operator!=(const char*)const;
+#endif
 #ifdef FABLE_RETAIL_CDEFSTRING_DEFAULTCTOR_OUTOFLINE
  // Opt-in (2026-11-05, row 0x007E37C0): the out-of-line COMDAT of the default ctor (Ego_r.pdb / FableWin.pdb ??0CDefString@@QAE@XZ;
  // `mov eax,ecx ; mov [eax],-1 ; ret`), called by the NScript TUs that build CPersistContext::Transfer<CDefString> defaults

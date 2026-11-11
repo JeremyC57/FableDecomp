@@ -1,0 +1,28 @@
+{
+  "address": "00a55f90",
+  "strategy": "final_merged_overlay",
+  "leaf": "?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z",
+  "flags": [],
+  "source_sha256": "c3a54bf9ff48979a90f085570251e64d35acc025c3ea63e210bf10a2faba3bc8",
+  "status": "DIFFER",
+  "assigned_extent": 259,
+  "extent_override": null,
+  "compile_seconds": 0.22731590270996094,
+  "emitted_leaf": "?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z",
+  "object_size": 259,
+  "retail_size": 259,
+  "first_difference": 58,
+  "strict_instruction_ratio": 0.9222222222222223,
+  "strict_instruction_counts": [
+    90,
+    90
+  ],
+  "strict_hunks": 7,
+  "loose_instruction_ratio": 0.9222222222222223,
+  "loose_instruction_counts": [
+    90,
+    90
+  ],
+  "loose_hunks": 7,
+  "audit": "Final leaf bytes, relocation names/offsets/types and all previously emitted text helper bodies identical to separately audited selected object. Exact compiled symbol recorded; object table was inspected."
+}

@@ -28,7 +28,7 @@ class CDisplayEngine;                               // agentNF14: PeekDisplayEng
 namespace NGameText { class CDataBank; }
 class CFontBank;
 #endif
-#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT)||defined(FABLE_RETAIL_STEALTH_DRAW)
 #include "engine/CCountedPointer.h"
 class CFontBank;
 #endif
@@ -101,7 +101,11 @@ protected:
     unsigned long NoRenderFramesSinceLastGameUpdate; // +0x16138
     unsigned long WorldSeed;                        // +0x1613C
     unsigned long LocalSeed;                        // +0x16140
-    unsigned char PDebugFont[8];                    // +0x16144 CCountedPointer<CFontBank>
+#ifdef FABLE_RETAIL_STEALTH_DRAW
+    CCountedPointer<CFontBank> PDebugFont;
+#else
+    unsigned char PDebugFont[8];
+#endif                    // +0x16144 CCountedPointer<CFontBank>
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
     // Retail opt-in (Codex2026-11-10): both PDB field names/types, FableWin01ae1860.
     CCountedPointer<CFontBank> PCutSceneMainFont;
@@ -165,6 +169,9 @@ protected:
     void AddEventPackageSetToSave(const CGameEventPackageSet* event_package_set);   // 0x004161A7
 public:
 #endif
+#ifdef FABLE_RETAIL_STEALTH_DRAW
+    const CFontBank& PeekDebugFont()const{return *PDebugFont;}
+#endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SAMPLEBANK_WORLDSEED
     // Opt-in (chunk 1024, row 0x006B3B80 CEnvironment::LightingFlash): Ego_r.pdb ?GetSampleBank@CMainGameComponent@@QBEAAVCASoundBank@@XZ
@@ -174,6 +181,9 @@ public:
     unsigned long* GetWorldSeed() const { return const_cast<unsigned long*>(&WorldSeed); }
 #endif
     static long __fastcall GetConstantFPS() { return ConstantFPS; }
+#ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
+    CASoundBank& GetSampleBank() const {return *PSampleBank;} // Both original PDBs; FableWin01b50310.
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT
     // Retail opt-in (chunk 728, row 0x0074B770): Ego_r.pdb (0x00415162) / FableWin.pdb
     // ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ, out of line in retail (the jmp thunk 0x00415FBC

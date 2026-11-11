@@ -14,6 +14,11 @@ public:
         struct { float E11,E12,E13,E14,E21,E22,E23,E24,E31,E32,E33,E34,E41,E42,E43,E44; };
         float Data[4][4];
     };
+#ifdef FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS
+    // Retail opt-in (Codex pass20): both original TPI overloads; FableWin02e8e480.
+    float& operator()(int row,int column) { return Data[row][column]; }
+    const float operator()(int row,int column) const { return Data[row][column]; }
+#endif
     float SetInverseOfUniformScaleRotationTranslation(const CMatrix4x4&);
     FABLE_FORCEINLINE void TransformTransposedAssumeW(const C4DVector& src,C4DVector& dest,float w) const {
         C4DVector vect=src;

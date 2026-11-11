@@ -22,17 +22,34 @@ enum EEngineGraphicType { };
 class CPersistContext;
 class CDegradableDef : public CSubDefClassBase {
 public:
-    class CIsHealth1GTHealth2 {
+    class CIsHealth1GTHealth2
+#ifdef FABLE_RETAIL_CDEGRADABLEDEF_ORIGINAL_FUNCTORS
+      : public std::binary_function<CDegradableInfo,CDegradableInfo,bool>
+#endif
+    {
     public:
         bool operator()(const CDegradableInfo& info1, const CDegradableInfo& info2) const;
     };
-    class CSetEngineGraphicType {
+    class CSetEngineGraphicType
+#ifdef FABLE_RETAIL_CDEGRADABLEDEF_ORIGINAL_FUNCTORS
+      : public std::unary_function<CDegradableInfo,void>
+#endif
+    {
     public:
         CSetEngineGraphicType(EEngineGraphicType graphicType) : GraphicType(graphicType) { }
         void operator()(CDegradableInfo& info) const { info.EngineGraphic.Type = (unsigned char)GraphicType; }
     private:
         EEngineGraphicType GraphicType;
     };
+#ifdef FABLE_RETAIL_CDEGRADABLEDEF_ORIGINAL_FUNCTORS
+    // Retail opt-in (Codex pass20): full original owner declarations and functor bases from both TPI records.
+    CDegradableDef();
+    CDegradableDef(const CDegradableDef&);
+    virtual ~CDegradableDef();
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    static CCharString FABLE_FASTCALL StatGetTypeName();
+    CDegradableDef& operator=(const CDegradableDef&);
+#endif
     virtual void Transfer(CPersistContext&);                 // slot 18
     virtual void Copy(const CDefClassBase*);                 // slot 19
     virtual unsigned long GetSizeofClass();                  // slot 20

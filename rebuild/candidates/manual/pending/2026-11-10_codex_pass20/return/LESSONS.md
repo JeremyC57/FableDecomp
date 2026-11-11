@@ -1,0 +1,56 @@
+# Pass20 findings
+
+- 0076efa0: a loop counter followed by its explicit initial guard changed the native inline decisions and stack allocation; grouping the FPS division completed the x87 ordering. The final raw mismatch was a virtual call to IsStrikeEventActive at slot0x38, not IsStrikeAction at0x3c. Compare raw virtual displacements even when a display diff normalizes call operands.
+- 007677e0: restore the whole original destruction chain, complete particle records and real copy semantics, then measure the remaining inline budget. Selected /d2inlT59 preserves all six separately matched helper bodies. Document narrowly justified inline controls in the headers.
+- 0057dc22: a visible complete GetOutstandingFineAndFramesLeft body fixes frame escape information; an exactly typed ceil function pointer retains the original float overload instead of a wrong SDK intrinsic binding.
+- 0064619f: the genuine visible C2DBoxF corner constructor solves the final allocation/capture residue; do not replace real constructors with stand-ins.
+- 00744fb0: parentheses on the genuine GetSoundRadius return expression alter scheduler tuples without changing semantics, delaying the spill to the native point.
+- 007f5ae0: original unary_function bases fix non-POD construction and register roles; running X*X then +=Y*Y in the genuine magnitude helper settles x87 ordering.
+- 00813010: the original STLport map/converting-pair/ownership chain restores the native frame and four complete helpers without budget flags.
+- 00924b90: implicit derived destructors reproduce native base-destructor calls; manually empty destructor bodies introduced extra vtable stores.
+- 0085cde0: full original owner, coordinate types, reference member and real nested cell helpers resolve the old synthetic model's width/branch residues.
+- 00ab5030: original scalar mouse_x/mouse_y locals and the actual full shared owner resolve the old invented-coordinate model in one source strategy.
+- Integration: preserve row-specific source and visibility policies under their existing guards. Preprocessing equality plus whole-object helper/relocation comparison checks more than leaf-only masking.
+
+## Per-row selected strategy index
+
+- 00405220: a02_original_output_lifetime_ctor_return. Matched; none. Detailed source strategies and rejected variants: rows/00405220/PROBES.md.
+- 004b2280: a01b_full_stats_dependency. Matched; none. Detailed source strategies and rejected variants: rows/004b2280/PROBES.md.
+- 004b2890: selected_default_preserved. Not solved; 569/569,189/189 instructions;4hunks: quest/list arguments use ecx/eax instead of edx/ecx, interface key address uses edx instead of eax. All20external operands correct;141byte GetAcceptedBoastsForScript and72byte list clear helpers exact.. Detailed source strategies and rejected variants: rows/004b2890/PROBES.md.
+- 0057dc22: main_review_final_names. Matched; none. Detailed source strategies and rejected variants: rows/0057dc22/PROBES.md.
+- 005f64dd: selected_original_helper_locals. Matched; none. Detailed source strategies and rejected variants: rows/005f64dd/PROBES.md.
+- 0062bef0: a02_nested_original_checks. Matched; none. Detailed source strategies and rejected variants: rows/0062bef0/PROBES.md.
+- 00641ae0: a01b_original_complete_graph. Matched; none. Detailed source strategies and rejected variants: rows/00641ae0/PROBES.md.
+- 0064619f: a14b_box_corners_include_dependency. Matched; none. Detailed source strategies and rejected variants: rows/0064619f/PROBES.md.
+- 0065be6c: s17_selected_budget_evidence. Matched; none. Detailed source strategies and rejected variants: rows/0065be6c/PROBES.md.
+- 0067e290: a01_original_functor_bases. Not solved; 10 strict instruction hunks; enum EAX/EDX swap begins+5b, then bool temporary rotation and sort operand order; same273bytes/102instructions. Detailed source strategies and rejected variants: rows/0067e290/PROBES.md.
+- 006d18a0: s04_scoped_portable_headers. Matched; none within original1330-byte code; assigned1344 includes14 int3 alignment bytes. Detailed source strategies and rejected variants: rows/006d18a0/PROBES.md.
+- 0071ad20: selected_budget_evidence. Matched; none. Detailed source strategies and rejected variants: rows/0071ad20/PROBES.md.
+- 00744fb0: s08_minimal_selected_headers. Matched; none. Detailed source strategies and rejected variants: rows/00744fb0/PROBES.md.
+- 007471f0: s16_original_public_base_ctor. Matched; none. Detailed source strategies and rejected variants: rows/007471f0/PROBES.md.
+- 00752f30: s01_original_shared_frames. Matched; none. Detailed source strategies and rejected variants: rows/00752f30/PROBES.md.
+- 007677e0: s38_complete_original_destruction_chain. Matched; none within1467-byte code; assigned1472 includes five int3 padding bytes. Detailed source strategies and rejected variants: rows/007677e0/PROBES.md.
+- 0076efa0: a12_proven_strike_event_active. Matched; none within corrected function; assigned1888 includes24unrelated following helper entries/padding. Detailed source strategies and rejected variants: rows/0076efa0/PROBES.md.
+- 00785620: s07_preserved_default_headers. Matched; none within1301-byte code; assigned1312 includes11 int3 padding bytes. Detailed source strategies and rejected variants: rows/00785620/PROBES.md.
+- 0078a390: s07_named_buildup_numerator. Matched; none. Detailed source strategies and rejected variants: rows/0078a390/PROBES.md.
+- 0078faf0: s14_final_evidence_comment. Matched; none. Detailed source strategies and rejected variants: rows/0078faf0/PROBES.md.
+- 00794e60: s02_original_nested_aliases_and_sound_local. Matched; none. Detailed source strategies and rejected variants: rows/00794e60/PROBES.md.
+- 007f5ae0: p02_default_budget. Matched; none. Detailed source strategies and rejected variants: rows/007f5ae0/PROBES.md.
+- 007f6200: a11_both_filter_regions. Not solved; parent/owner spill14/18 inverted; comparator store/call scheduling, filter temporaries and later parent caching;36 strict hunks. Detailed source strategies and rejected variants: rows/007f6200/PROBES.md.
+- 00813010: s01_full_shared_owner_insert_chain. Matched; none. Detailed source strategies and rejected variants: rows/00813010/PROBES.md.
+- 00815420: s09_cached_early_return. Matched; none. Detailed source strategies and rejected variants: rows/00815420/PROBES.md.
+- 00846bc0: s03_named_original_getstring_temporary. Matched; none. Detailed source strategies and rejected variants: rows/00846bc0/PROBES.md.
+- 0085cde0: s01b_original_set_declaration_include. Matched; none. Detailed source strategies and rejected variants: rows/0085cde0/PROBES.md.
+- 008bf800: s03_final_budget_boundary. Matched; none. Detailed source strategies and rejected variants: rows/008bf800/PROBES.md.
+- 008daa80: s01c_complete_dependencies. Matched; none. Detailed source strategies and rejected variants: rows/008daa80/PROBES.md.
+- 00910df0: s03_original_owner_size_checks. Matched; none. Detailed source strategies and rejected variants: rows/00910df0/PROBES.md.
+- 00919240: s02_visible_original_getcreature. Not solved; entry only: Creature load before filter179 initialization/vector zero stores; all subsequent instructions/operands and17branches exact. Detailed source strategies and rejected variants: rows/00919240/PROBES.md.
+- 00924b90: s03_portable_enum_declarations. Matched; none; anonymous namespace TU hash compiler-specific and normalized only for symbol selection. Detailed source strategies and rejected variants: rows/00924b90/PROBES.md.
+- 00934e50: Original pointer/type-check chain and early-return predicate guard with minimal inline expansion budget. Matched; none. Detailed source strategies and rejected variants: rows/00934e50/PROBES.md.
+- 00956e70: s01b_real_resource_list_dependency. Matched; none. Detailed source strategies and rejected variants: rows/00956e70/PROBES.md.
+- 00a55f90: a01b_callconv_dependency. Not solved; xy/xz commutative loads reversed; terminal three zero stores have different interleaving with final x87 subtract/store/pop. Detailed source strategies and rejected variants: rows/00a55f90/PROBES.md.
+- 00aa39a0: Original shared GFSqr/GetPosition/matrix-accessor chain plus minimum inline expansion budget. Matched; none. Detailed source strategies and rejected variants: rows/00aa39a0/PROBES.md.
+- 00ab5030: a01b_sdk_dependency. Matched; none. Detailed source strategies and rejected variants: rows/00ab5030/PROBES.md.
+- 00bcf4f0: selected_documented. Not solved; one adjacent independent load/store pair swapped at tail: retail loads StartPosition.Z before EndPosition.Y store; ours stores Y before loading Z.101/101instructions,99.01%strict,2hunks.. Detailed source strategies and rejected variants: rows/00bcf4f0/PROBES.md.
+- 00c3d470: final_layout_assertions. Matched; none. Detailed source strategies and rejected variants: rows/00c3d470/PROBES.md.
+- 00c3db80: a01_original_sdk_factory. Matched; none. Detailed source strategies and rejected variants: rows/00c3db80/PROBES.md.

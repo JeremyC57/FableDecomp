@@ -24,6 +24,9 @@ class CGameDefinitionManager;class CWorld;
 // Original Ego_r TPI0x221c9; native factories and calls prove vtable slots40-42.
 // Complete native sizea8 after the three retail container reductions.
 class CCreatureActionBase : public CBaseObject {
+#ifdef FABLE_RETAIL_EXPRESSION_FRAME
+public:bool HasPerformedAction()const;
+#endif
 public:
     static CCountedPointer<CCreatureActionBase> __fastcall GetPActionFromEnum(EActionRegisteredType,CThingCreatureBase&);
     // RegisterActionEventTypes 0x006932B0 (Ego_r 0x00519CE0 / FableWin 0x01DB27E0 ?RegisterActionEventTypes@CCreatureActionBase@@SIXXZ).

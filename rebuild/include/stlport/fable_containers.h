@@ -163,16 +163,31 @@ inline void _Destroy(char*,char*) { }
 // Inline-budget: retain the actual nontrivial range destructor COMDAT call.
 template<class I> __declspec(noinline) void __destroy_aux(I first,I last,const __false_type&) {
 #else
+#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+// Original native 0076a2a0 takes its range in ecx/edx and the tag on the stack.
+template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
+#else
 template<class I> inline void __destroy_aux(I first,I last,const __false_type&) {
+#endif
 #endif
     for(;first!=last;++first) _Destroy(&*first);
 }
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
+#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+// Inline-budget: native helpers expand this original destruction dispatch wrapper.
+template<class I,class T> FABLE_FORCEINLINE void __destroy(I first,I last,T*) {
+#else
 template<class I,class T> inline void __destroy(I first,I last,T*) {
+#endif
     typedef typename __type_traits<T>::has_trivial_destructor Trivial;
     __destroy_aux(first,last,Trivial());
 }
+#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+// Inline-budget: native helpers expand this original destruction dispatch wrapper.
+template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
+#else
 template<class I> inline void _Destroy(I first,I last) {
+#endif
     __destroy(first,last,(typename iterator_traits<I>::value_type*)0);
 }
 // _uninitialized.h
@@ -195,7 +210,12 @@ template<class I,class O> O __uninitialized_copy(I first,I last,O result,const _
 }
 #pragma auto_inline(on)
 #else
+#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+// Native 00769930/007698c0 take first/last in ecx/edx and result/tag on the stack.
+template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
+#else
 template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
+#endif
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
 #endif

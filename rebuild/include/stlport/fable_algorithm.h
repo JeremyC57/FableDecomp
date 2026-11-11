@@ -30,6 +30,14 @@ template <class It, class F> inline F FABLE_FASTCALL for_each(It first, It last,
 #else
 template <class It, class F> F FABLE_FASTCALL for_each(It first, It last, F f);   // 0x0043F360 (SGI, /Gr)
 #endif
+#ifdef FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+// Retail opt-in (Codex pass20): STLport4.6 _algobase.h category dispatch;
+// native004b8e40 searches CCharString pointers, first/last in ecx/edx.
+template<class It,class T> It FABLE_FASTCALL __find(It first,It last,const T& value,const random_access_iterator_tag&);
+template<class It,class T> inline It find(It first,It last,const T& value) {
+    return __find(first,last,value,random_access_iterator_tag());
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_FIND
 // Retail opt-in (chunk 1008b, row 0x005F6BD6 CTCInventoryAbilities::SetAbilityAsAvailable): STLport 4.6 _algobase.h
 // `find(_InputIter __first, _InputIter __last, const _Tp& __val)`, the forwarder to the category-dispatched __find (landed

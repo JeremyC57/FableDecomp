@@ -34,6 +34,9 @@ class CMeleeCombatAbilityDef;
 namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
+#endif
     CThing* GetPWeapon() const;                                         // 0x007BEFF0
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT
     // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb

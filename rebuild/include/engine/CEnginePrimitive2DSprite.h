@@ -74,9 +74,17 @@ public:
     CEnginePrimitive2DSprite(unsigned __int64,const C2DBoxF&,EEngine2DLayer,unsigned long,unsigned long,
         EEnginePrimitiveBlendMode,EEngineInterpolationSet,float,float,unsigned char,unsigned char,unsigned char,unsigned char,
         unsigned long,const C2DVector&,const C2DVector&);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_CRIME_CTOR
+    // Retail opt-in (Codex pass20): original FW01a663fc; all fields and input reads retained.
+    CEnginePrimitive2DSprite(unsigned __int64 id,const C2DVector&pos,EEngine2DLayer layer,unsigned long bank,unsigned long frame,
+        EEnginePrimitiveBlendMode blend,EEngineInterpolationSet interpolation,float start_angle,float end_angle,
+        unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,unsigned long flags,const C2DVector&uv_start,const C2DVector&uv_end)
+    :CEnginePrimitive((EEnginePrimitiveType)34,id,interpolation),ClipBox(pos,pos),Layer(layer),BankIndex(bank),Frame(frame),StartAngle(start_angle),EndAngle(end_angle),BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(true),Flags(flags),Texture(0),UVOffsetsStart(uv_start),UVOffsetsEnd(uv_end){}
+#else
     CEnginePrimitive2DSprite(unsigned __int64,const C2DVector&,EEngine2DLayer,unsigned long,unsigned long,
         EEnginePrimitiveBlendMode,EEngineInterpolationSet,float,float,unsigned char,unsigned char,unsigned char,unsigned char,
         unsigned long,const C2DVector&,const C2DVector&);
+#endif
 #else
     CEnginePrimitive2DSprite(unsigned __int64, const C2DBoxF&, long, unsigned long, unsigned long, long, long, float, float,
                              unsigned char, unsigned char, unsigned char, unsigned char, unsigned long,

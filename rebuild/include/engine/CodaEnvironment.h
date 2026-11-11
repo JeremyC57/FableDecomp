@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass20): SDK CodeView and native00c3d470; PROCESS branch only, default preserved.
 #ifndef FABLE_CODA_ENVIRONMENT_H
 #define FABLE_CODA_ENVIRONMENT_H
 // GameCODA2.10 public structures and original SDK COFF types.
@@ -37,6 +38,9 @@ typedef struct _CENVIRONMENT                        /* Environment parameters   
     int     iAirAbsorptionHF;                       /* Air absorption in mB/unit                    */
 }
 CENVIRONMENT;
+#ifdef FABLE_RETAIL_CCODACONTEXT_PROCESS
+#include "engine/CCodaObject.h"
+#else
 class CCodaObject:public CCodaObjectBase {
 public:
  virtual ~CCodaObject();
@@ -44,10 +48,20 @@ private:
  CCodaObject* m_pPrev;
  CCodaObject* m_pNext;
 };
+#endif
 class CSalReverb;
 class CCodaEnvironment:public CCodaObject {
 public:
  virtual ~CCodaEnvironment();
+#ifdef FABLE_RETAIL_CCODACONTEXT_PROCESS
+ void Commit();
+ void Process();
+ static unsigned int GetSourceCommit(){return m_ffSourceCommit;}
+ static void ClearSourceCommit(){m_ffSourceCommit=0;}
+private:
+ static unsigned int m_ffSourceCommit;
+public:
+#endif
  const CENVIRONMENT& GetParams()const{return m_Params;}
  unsigned int GetCommit()const{return m_ffCommit;}
 private:

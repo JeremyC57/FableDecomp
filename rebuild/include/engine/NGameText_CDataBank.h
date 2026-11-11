@@ -18,6 +18,11 @@
 #endif
 #include "engine/CBankFile.h"
 namespace NGameText {
+#ifdef FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING_LONGS
+// Both originals and native009c7b70/009c7b80: references, namespace, fastcall.
+bool FABLE_FASTCALL ConstructString(CWideString&,long);
+bool FABLE_FASTCALL ConstructString(CWideString&,long,long);
+#endif
 class CDataBankTextEntry;
 class CTextEntry : public CIVCountedPointeeBase {
 public:

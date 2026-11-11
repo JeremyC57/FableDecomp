@@ -33,11 +33,25 @@ public:
         return ret;
     }
 #endif
+#ifdef FABLE_RETAIL_CMESSAGEEVENT_ORIGINATOR_ORIGINAL
+    // Retail opt-in (Codex pass20): original02b65020 body and local symbols, both complete PDB owners.
+    template<class T> T* GetPOriginator()const {
+        T* ret=0;
+        if(POriginator!=0){
+            unsigned long things_flags=POriginator->GetTypeFlags();
+            unsigned long cast_to_flags=T::StatGetTypeFlags();
+            unsigned long xored=things_flags^cast_to_flags;
+            if(!(xored&cast_to_flags))ret=GFDebugPDynamicCast(POriginator.Get(),(T*)0);
+        }
+        return ret;
+    }
+#else
     template<class T> T* GetPOriginator() const {
         if (POriginator.GetPItem() && (~static_cast<CThing*>(POriginator.GetPItem())->GetTypeFlags() & T::StatGetTypeFlags()) == 0)
             return static_cast<T*>(static_cast<CThing*>(POriginator.GetPItem()));
         return 0;
     }
+#endif
     EMessageEventType Type;                                              // +0x08
     C3DVector Pos;                                                       // +0x0c
     float SightRadius;                                                   // +0x18

@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass20): SDK CodeView and native00c3d470; PROCESS branch only, default preserved.
 #ifndef FABLE_CCODACONTEXT_H
 #define FABLE_CCODACONTEXT_H
 #ifdef FABLE_RETAIL_CCODACONTEXT_SETERROR
@@ -14,6 +15,9 @@ typedef struct _CRESOURCEDESC {                         // CODA.h (SDK 2.10 Prog
     int nEnvironments;
 } CRESOURCEDESC;
 class CSalPlatform;
+#ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
+class CCodaSource;
+#endif
 class CCoda2DSource;
 class CCoda3DSource;
 class CCodaListener;
@@ -21,6 +25,14 @@ class CCodaEnvironment;
 class CCodaEAX;
 class CCodaObject;
 class CCodaObjectList : public CCodaObjectBase { public: // SDK 2.10 CodeView, 20 bytes
+#ifdef FABLE_RETAIL_CCODACONTEXT_PROCESS
+    CCodaObject* GetObjects()const{return m_pObjects;}
+#endif
+#ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
+    CCodaObject* GetFree() const;
+    void RemoveFree();
+    void Add(CCodaObject*);
+#endif
     int GetNumFree() const { return m_nFree; }
 private:
     CCodaObject* m_pObjects;                             // +0x04
@@ -38,7 +50,16 @@ class CCodaContext : public CCodaObjectBase { public:
 class CCodaContext : public CCodaObject { public:
 #endif
 #ifdef FABLE_RETAIL_CCODACONTEXT_SETERROR
+#ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
+    void SetError(int error);
+    CCoda3DSource* Create3DSource(unsigned int ffCaps);
+    void ReleaseSource(CCodaSource*);
+#else
     void SetError(int);
+#endif
+#ifdef FABLE_RETAIL_CCODACONTEXT_PROCESS
+    void Process();
+#endif
 #endif
     CRESOURCEDESC* GetResourceCounts(CRESOURCEDESC* pResourceDesc) const;   // descriptive name: absent from SDK 2.10
 private:
@@ -73,4 +94,12 @@ private:
 #endif
 // // SDK release size 0xa8; no tail member used here.
 };
+#ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
+// Retail opt-in (Codex pass20): SDK SetError reads the process-wide latch, then calls this context's callback.
+extern int CODA_Error;
+extern CCodaContext CODA;
+inline void CCodaContext::SetError(int error) {
+ if(CODA_Error==0) { CODA_Error=error; if(m_pfnErrorCallback)m_pfnErrorCallback(error); }
+}
+#endif
 #endif

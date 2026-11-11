@@ -8,9 +8,15 @@
 #ifdef FABLE_RETAIL_C2DBOXI
 #include "engine/C2DExtentsI.h"
 #endif
-class C2DBoxI { public: long TLX,TLY,BRX,BRY; C2DBoxI() {}
+class C2DBoxI { public:
+#ifdef FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
+ bool ContainsPoint(const C2DCoordI&)const;
+#endif
+ long TLX,TLY,BRX,BRY; C2DBoxI() {}
 // Original Ego_r TPI0xb186; centre/radius arithmetic is native0074a685 onward.
-#ifdef FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS
+#ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
+C2DBoxI(const C2DCoordI&,long); // Original both PDBs; native00434740.
+#elif defined(FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS)
 // Retail opt-in (Codex2026-11-10): FableWin01addbb0 has direct four field initialization.
 C2DBoxI(const C2DCoordI& p,long radius):TLX(p.X-radius),TLY(p.Y-radius),BRX(p.X+radius),BRY(p.Y+radius){}
 #else

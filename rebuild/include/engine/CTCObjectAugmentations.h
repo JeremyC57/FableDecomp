@@ -1,3 +1,115 @@
+#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+#ifndef FABLE_ENGINE_CTCOBJECTAUGMENTATIONS_H
+#define FABLE_ENGINE_CTCOBJECTAUGMENTATIONS_H
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CObjectAugmentationsDef.h"
+#include "engine/CObjectAugmentationSoundSet.h"
+#include "engine/ParticleAndEndPoints.h"
+#include "engine/AttackParticleAndEndPoints.h"
+class CThingBaseDef;
+// Layout: complete original Ego_r/FableWin member records; native STLport containers are twelve bytes.
+class CTCObjectAugmentations:public CTCBase{
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
+ virtual ETCInterfaceType GetInterfaceType() const;
+ static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
+ static CCharString FABLE_FASTCALL StatGetClassTypeName();
+ virtual CCharString GetClassTypeName() const;
+ CTCObjectAugmentations(const CTCObjectAugmentations & p0);
+ CTCObjectAugmentations(CThing & p0);
+ virtual ~CTCObjectAugmentations();
+ virtual bool IsComponentSerialisable() const;
+ virtual void OnSerialise(CPersistContext & p0, bool p1);
+ virtual void OnInitialActivate();
+ virtual void OnSetInLimbo(bool p0);
+ virtual bool HasFrameUpdate() const;
+ virtual void FrameUpdate();
+ void AttachAugmentationToSlot(long p0, long p1);
+ void AttachAugmentationToSlot(CThing & p0, long p1);
+ void RemoveAugmentationFromSlot(long p0);
+ long GetFreeSlot() const;
+ void GetAugmentations(std::vector<long,std::allocator<long> > & p0) const;
+ long GetNumberOfSlots() const;
+ long GetMaximumNumberOfSlots() const;
+ long GetCostToUpgradeNumberOfSlots() const;
+ void AddNewSlot();
+ CWideString GetAugmentationNameInSlot(long p0) const;
+ void CopyAugmentationDataFromThing(const CThing & p0);
+ bool HasAugmentationOfType(EObjectAugmentationType p0) const;
+ bool HasCombinationOfAugmentations(const std::vector<enum EObjectAugmentationType,std::allocator<enum EObjectAugmentationType> > & p0, EObjectAugmentationType p1) const;
+ bool HasCombinationOfAugmentations(EObjectAugmentationType p0) const;
+ float GetDamageMultiplier() const;
+ long GetHealthToAddThisFrame() const;
+ long GetStaminaToAddThisFrame() const;
+ float GetExperienceMultiplier() const;
+ bool HasAugmentationInSlot(long p0) const;
+ CDefPointer<CThingBaseDef const > GetAugmentationInSlot(long p0) const;
+ void FireCombatAugEffect();
+ void StopCombatAugEffect();
+ long GetOnHitExplodingEffect() const;
+ void StopTrailEffect();
+ static float FABLE_FASTCALL GetDamageMultiplierFromAugmentationSet(const std::vector<long,std::allocator<long> > & p0);
+ static CWideString FABLE_FASTCALL GetAugmentationName(long p0);
+private:
+ void AttachAugmentationParticles();
+ void SetupAugmentationSounds();
+ void ClearAllParticleEffects();
+ void ClearAllSounds();
+ void AttemptToStartParticle(CIntelligentPointer<CThing> & p0, long p1, long p2, const CCharString & p3, const CCharString & p4);
+ void UpdateParticleAttachment(CIntelligentPointer<CThing> p0, const CCharString & p1, const CCharString & p2);
+ CDefPointer<CObjectAugmentationsDef const > PDef;
+ bool LoadedFromSaveGame;
+ std::vector<CDefPointer<CThingBaseDef const >,std::allocator<CDefPointer<CThingBaseDef const > > > Augmentations;
+ std::map<enum EObjectAugmentationType,CObjectAugmentationSoundSet,std::less<enum EObjectAugmentationType>,std::allocator<std::pair<enum EObjectAugmentationType const ,CObjectAugmentationSoundSet> > > InitSounds;
+ std::map<enum EObjectAugmentationType,CObjectAugmentationSoundSet,std::less<enum EObjectAugmentationType>,std::allocator<std::pair<enum EObjectAugmentationType const ,CObjectAugmentationSoundSet> > > LoopingSounds;
+ std::vector<std::vector<ParticleAndEndPoints,std::allocator<ParticleAndEndPoints> >,std::allocator<std::vector<ParticleAndEndPoints,std::allocator<ParticleAndEndPoints> > > > ParticleEffects;
+ std::vector<std::vector<AttackParticleAndEndPoints,std::allocator<AttackParticleAndEndPoints> >,std::allocator<std::vector<AttackParticleAndEndPoints,std::allocator<AttackParticleAndEndPoints> > > > AttackParticleEffects;
+ std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > CurrentRunningAugEffect;
+ long CurrentRunningAugEffectIndex;
+ long CurPeriod;
+ bool InStrikeAction;
+ CIntelligentPointer<CThing> ProjectileTrailEffect;
+public:
+ CTCObjectAugmentations & operator=(const CTCObjectAugmentations & p0);
+};
+#include "engine/CThingBaseDef.h"
+#include "engine/CAugmentationDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+inline bool CTCObjectAugmentations::HasAugmentationOfType(EObjectAugmentationType type)const{
+ for(long c1=0;c1<Augmentations.size();++c1){
+  if(Augmentations[c1].Get()){
+   CDefPointer<const CAugmentationDef>paugmentation_def;
+   Augmentations[c1]->GetSubDef(&paugmentation_def);
+   if(paugmentation_def->Type==type)return true;
+  }
+ }
+ return false;
+}
+inline bool CTCObjectAugmentations::HasCombinationOfAugmentations(EObjectAugmentationType types)const{
+ unsigned long result=0;
+ for(long c1=0;c1<Augmentations.size();++c1){
+  if(Augmentations[c1].Get()){
+   CDefPointer<const CAugmentationDef>paugmentation_def;
+   Augmentations[c1]->GetSubDef(&paugmentation_def);
+   result|=paugmentation_def->Type;
+  }
+ }
+ return (result&types)==types;
+}
+FABLE_STATIC_ASSERT(sizeof(CTCObjectAugmentations)==112);
+// Inline-budget: native 00767b8c calls this exact original destructor at 0076b0e0.
+// Explicit instantiation adds no new specialization or function body.
+// Inline-budget: native periodic-vector destruction expands this exact generic range body.
+#ifdef _MSC_VER
+template FABLE_FORCEINLINE void FABLE_FASTCALL std::__destroy_aux<ParticleAndEndPoints*>(ParticleAndEndPoints*,ParticleAndEndPoints*,const std::__false_type&);
+template __declspec(noinline) std::vector<ParticleAndEndPoints>::~vector();
+#else
+template std::vector<ParticleAndEndPoints>::~vector();
+#endif
+
+#endif
+#else
 #ifndef FABLE_ENGINE_CTCOBJECTAUGMENTATIONS_H
 #define FABLE_ENGINE_CTCOBJECTAUGMENTATIONS_H
 // New shared header (chunk 1002, CTCInventoryWeapons rows 0x005C4671 / 0x005CB2B0): the retail CTCObjectAugmentations over
@@ -48,3 +160,5 @@ public:
 #endif
 };
 #endif // FABLE_ENGINE_CTCOBJECTAUGMENTATIONS_H
+
+#endif

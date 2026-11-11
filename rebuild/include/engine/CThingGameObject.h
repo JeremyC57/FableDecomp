@@ -7,7 +7,24 @@
 #include "engine/C3DVector.h"
 #include "engine/CCountedPointer.h"
 class CHitParameters;
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#endif
 class CThingGameObject : public CThingPhysical {
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+public:
+ virtual bool DrawIsTargeted() const;
+ virtual bool IsUsingTriggerRadius() const;
+ virtual float GetTriggerRadius() const;
+ virtual void SetTriggerRadius(float p0);
+ virtual bool IsCover() const;
+ virtual void OnHit(CHitParameters & p0);
+ virtual bool IsGameObject() const;
+ virtual bool IsIndestructible() const;
+ virtual void ForceAnim(const CCharString & p0, bool p1);
+ virtual void ForceAnim(long p0, bool p1);
+ virtual long GetMaterialOnHitByMelee() const;
+#endif
+
 protected:
     CIntelligentPointer<CThing> PThingStandingOn;
 private:
@@ -20,7 +37,9 @@ public:
     // and default-constructs PThingStandingOn, 0x0083D481..0x0083D499). Body only: no layout change.
     CThingGameObject(unsigned long type) : CThingPhysical(type) { }
 #endif
+#ifndef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
     virtual void OnHit(CHitParameters&);
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONCREATE
     // Retail opt-in (agentNF9, row 0x0082D6F0 CThingBuilding::OnCreate, which calls it by name): Ego_r.pdb / FableWin.pdb
     // ?OnCreate@CThingGameObject@@MAE_NXZ (protected virtual, CThingGameObject vtable 0x01244F7C slot 8 = 0x00838A40). Declaration only.

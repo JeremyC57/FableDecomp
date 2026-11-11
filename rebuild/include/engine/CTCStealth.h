@@ -5,7 +5,13 @@
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
 class CStealthDef; class CCreatureActionBase;
-namespace NStealth { enum EDangerStatus; class CDangerStatus {
+namespace NStealth {
+#if defined(_MSC_VER)||!defined(FABLE_RETAIL_STEALTH_DRAW)
+enum EDangerStatus;
+#else
+enum EDangerStatus{};
+#endif
+class CDangerStatus {
 public:
  CDangerStatus(NStealth::EDangerStatus p0);
  NStealth::EDangerStatus DangerStatus;
@@ -30,11 +36,23 @@ public:
  virtual void OnSetInLimbo(bool p0);
  bool IsAbleToSneak() const;
  bool IsAvailableToPerformStealthAttack(const CThing & p0) const;
+#ifdef FABLE_RETAIL_STEALTH_DRAW
+ bool IsViewable() const{return Viewable;}
+#else
  bool IsViewable() const;
+#endif
+#ifdef FABLE_RETAIL_STEALTH_DRAW
+ bool IsSmellable() const{return Smellable;}
+#else
  bool IsSmellable() const;
+#endif
+#ifdef FABLE_RETAIL_STEALTH_DRAW
+ bool IsHearable() const{return Hearable;}
+#else
  bool IsHearable() const;
+#endif
  bool IsPerceptible() const;
- #ifdef FABLE_RETAIL_CTCSTEALTH_SNEAKTOGGLE
+ #if defined(FABLE_RETAIL_CTCSTEALTH_SNEAKTOGGLE) || defined(FABLE_RETAIL_STEALTH_DRAW)
  // Retail opt-in (agent1022, row 0x00691D70 CInputProcessCreatureMovement::ProcessInput): Ego_r.pdb / FableWin.pdb
  // ?IsSneaking@CTCStealth@@QBE_NXZ and ?SetSneakingToggleSet@CTCStealth@@QAEX_N@Z expanded in place in retail
  // (0x00691F36 `mov cl,[eax+0Fh] ; test cl,cl ; sete cl ; mov [eax+10h],cl`). Bodies only, no layout change.

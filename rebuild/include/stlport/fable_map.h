@@ -156,7 +156,12 @@ private:
     // visible body lets VC7.1 hoist above it. Declaration only; same function.
     template<class Key> _Rb_tree_node<V>* _M_find(const Key& key)const;
 #else
+#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+    // Inline-budget: native 00769fe0 expands the original search inside find.
+    template<class Key> FABLE_FORCEINLINE _Rb_tree_node<V>* _M_find(const Key& key)const {
+#else
     template<class Key> _Rb_tree_node<V>* _M_find(const Key& key)const {
+#endif
         _Link_type y=this->_M_header._M_data;
         _Link_type x=_M_root();
         while(x!=0) {
@@ -201,7 +206,12 @@ public:
     // ??$find@W4EDamageAttribute@@@ member template) but the TU sees its body, so the caller keeps the found node in ebx across the
     // next call and reads `[ebx+14h]` (0x006D87D5..0x006D87F7); the declaration-only template re-reads the result slot and
     // precomputes &second (125 v 124 bytes). Same body as FABLE_RETAIL_STLP_TREE_CONSTFIND, member-template spelling.
+#if defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) && defined(_MSC_VER)
+    // Inline-budget: native 00769fe0 returns the original hidden iterator result.
+    template<class KT> __declspec(noinline) const_iterator find(const KT& key) const { return const_iterator(_M_find(key)); }
+#else
     template<class KT> const_iterator find(const KT& key) const { return const_iterator(_M_find(key)); }
+#endif
 #elif defined(FABLE_RETAIL_STLP_TREE_CONSTFIND)
     // Retail opt-in (chunk 846, row 0x0051FD80 via CEntityRuntimePersistence::IsEntityPersistedAsDead): STLport 4.6 _tree.h
     // `const_iterator find(const _KT& __k) const { return const_iterator(_M_find(__k)); }` -- the const twin calls the out-of-line

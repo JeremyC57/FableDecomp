@@ -130,6 +130,9 @@ public:
     // Retail opt-in (chunk 706): member functions only, the layout is unchanged on both paths. Ego_r.pdb and FableWin.pdb both
     // list ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ; retail 0x004874D0 (called from CTCTargetingPlayer::GetPTargetedThing
     // 0x00802610 on CThing::PeekPlayer's const CPlayer&).
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    long GetNumber()const{return Number;}
+#endif
     bool IsFirstPersonTargeting() const;                         // 0x004874D0
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): FableWin.pdb ?IsZTargeting@CPlayer@@QBE_NXZ (0x01AD0350;
     // no Ego_r.pdb copy, expanded in retail: GetPlayer then a byte read of +0x20A at 0x006AAD4D / 0x006AADEF) reads ZTargeting.

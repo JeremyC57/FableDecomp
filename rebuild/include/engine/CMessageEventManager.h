@@ -16,6 +16,17 @@ public:
  // ??$FindMostRecentMessage@<filter>@CMessageEventManager@@QBEPBVCMessageEvent@@ABV<filter>@@Z (one COMDAT per filter type in retail:
  // 0x00934E50, 0x00939C60, 0x00939CB0, ...). Body: the landed family K034/K035 walk (0x00939CB0) -- the first (newest) queued message
  // the filter accepts, else null. Needs the complete CMessageEvent (engine/CMessageEvent.h, FABLE_RETAIL_CMESSAGEEVENT) at instantiation.
+#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_ORIGINAL_LOCAL
+ // Original donor02b69940 uses a const event reference.
+ template<class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter_func) const {
+  for (std::list<CMessageEvent>::const_iterator it = Messages.begin(); it != Messages.end(); ++it) {
+   const CMessageEvent& event = *it;
+   if (filter_func(event))
+    return &event;
+  }
+  return 0;
+ }
+#else
  template<class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const {
   for (std::list<CMessageEvent>::const_iterator it = Messages.begin(); it != Messages.end(); ++it) {
    const CMessageEvent* message = &*it;
@@ -24,6 +35,7 @@ public:
   }
   return 0;
  }
+#endif
 #endif
 private:
  const CWorld& World;

@@ -13830,7 +13830,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00645f2e	DrawChangeText	NPlayerGui::CStatBar	__thiscall	void	4	CStatBar *,C2DVector *,CWideString *,CRGBColour *	1	yes	accepted									
 00645f8d	ClearGraphics	NPlayerGui::CStatBar	__thiscall	void	2	C3DPrimitive2 *,CArray<bool> *	1	yes	accepted									
 00646010	DrawStatBarOnLeft	NPlayerGui::CCrimeStatBar	__thiscall	void	8	CCrimeStatBar *,CEnginePrimitivePrepareInfo *,CGraphicDataBank *,C2DVector *,C2DVector *,CRGBColour *,uchar,bool	1	yes	accepted									
-0064619f	DrawStatBox	CCrimeStatBar	__thiscall	void	11	CCrimeStatBar *,CEnginePrimitivePrepareInfo *,CGraphicDataBank *,C2DVector *,long,long,long,CWideString *,uchar,bool,bool	1	yes	accepted									
+0064619f	DrawStatBox	NPlayerGui::CCrimeStatBar	__thiscall	void	11	CCrimeStatBar *,CEnginePrimitivePrepareInfo *,CGraphicDataBank *,C2DVector *,long,long,long,CWideString *,uchar,bool,bool	1	yes	accepted									
 0064639c	RemoveThing	CPlayerGuiThingList_0064639c	__thiscall	void	2	CTCBoastingCrowdControl *,CThing *	1	yes	accepted									
 006463f0	DetachTarget	CRenderTarget	__thiscall	void	1	CRenderTarget *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\CRenderTarget_DetachTarget_006463f0.cpp
 006463ff	Update	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar	__thiscall	bool	1	CQuestInfoElementBar *	1	yes	accepted									
@@ -25084,7 +25084,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00846410	PerformAction	CCreatureAction_Undress	__thiscall	void	1	CCreatureAction_Undress *	1	yes	accepted									
 00846660	PerformAction	CCreatureAction_Talk	__thiscall	void	1	CCreatureAction_Talk *	1	yes	accepted									
 00846710	?Initialise@CCreatureAction_PerformExpression@@UAEXXZ	CCreatureAction_PerformExpression	__thiscall	void	1	CCreatureAction_PerformExpression *	1	yes	accepted									
-00846bc0	CCreatureAction_PerformExpression::FrameUpdate	CCreatureAction_PerformExpression	__thiscall	void	1	CCreatureAction_PerformExpression *	1	yes	accepted									
+00846bc0	FrameUpdate	CCreatureAction_PerformExpression	__thiscall	void	1	CCreatureAction_PerformExpression *	1	yes	accepted									
 00846dd0	CCreatureAction_PerformExpression::FinishAction	CCreatureAction_PerformExpression	__thiscall	void	1	CCreatureAction_PerformExpression *	1	yes	accepted									
 00847470	PerformAction	CCreatureAction_PerformExpressionExtended	__thiscall	void	1	CCreatureAction_PerformExpressionExtended *	1	yes	accepted									
 00847520	CCreatureAction_PerformExpressionExtended::FinishAction	CCreatureAction_PerformExpressionExtended	__thiscall	void	1	CCreatureAction_PerformExpressionExtended *	1	yes	accepted									
@@ -28425,7 +28425,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008bf500	CCreatureAction_GenericFireProjectileWeapon::FinishAction	CCreatureAction_GenericFireProjectileWeapon	__thiscall	void	1	CCreatureAction_GenericFireProjectileWeapon *	1	yes	accepted									
 008bf6a0	FinishAction	CCreatureAction_GenericLoadProjectileWeapon	__thiscall	void	1	CCreatureAction_GenericLoadProjectileWeapon *	1	yes	accepted									
 008bf740	Initialise	CCreatureAction_GenericAimProjectileWeapon	__thiscall	void	1	CCreatureAction_GenericAimProjectileWeapon *	1	yes	accepted									
-008bf800	CCreatureAction_GenericLeaderCommand::Initialise	CCreatureAction_GenericLeaderCommand	__thiscall	void	1	CCreatureAction_GenericLeaderCommand *	1	yes	accepted									
+008bf800	Initialise	CCreatureAction_GenericLeaderCommand	__thiscall	void	1	CCreatureAction_GenericLeaderCommand *	1	yes	accepted									
 008bfa40	CCreatureAction_GenericFireProjectileWeapon	CCreatureAction_GenericFireProjectileWeapon	__thiscall	undefined	1	C3DAnimFileHelpersChunk *	0	yes	accepted									
 008bfa60	CCreatureAction_GenericFireProjectileWeapon	CCreatureAction_GenericFireProjectileWeapon	__thiscall	undefined	3	CCombatAction_GenericResponseToDrain *,CThingCreatureBase *,CThing *	0	yes	accepted									
 008bfaa0	CCreatureAction_GenericLoadProjectileWeapon	CCreatureAction_GenericLoadProjectileWeapon	__thiscall	undefined	1	C3DAnimFileHelpersChunk *	0	yes	accepted									
@@ -29281,7 +29281,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008da7a0	OnDeactivate	NCreatureMode::CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
 008da890	FrameUpdate	NCreatureMode::CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
 008da990	ResumeForCutscene	NCreatureMode::CModeThunderLightningStorm	__thiscall	void	1	CTCPhysicalShieldSpell *	1	yes	accepted									
-008daa80	CreateSkyBeam	CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
+008daa80	CreateSkyBeam	NCreatureMode::CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
 008dacb0	CreateHandGlow	NCreatureMode::CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
 008dae10	OnActivate	NCreatureMode::CModeSummonerLightningOrb	__thiscall	void	1	CModeSummonerLightningOrb *	1	yes	accepted									
 008db030	CModeGuildmasterPowerUpHeal	NCreatureMode::CModeGuildmasterPowerUpHeal	__thiscall	undefined	3	CModeGuildmasterPowerUpHeal *,CThing *,float	0	yes	accepted									
@@ -31126,7 +31126,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00910cf0	FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatorAlive, CMessageEventFilter_CanBeSeenOrHeard>>	CMessageEventManager	__thiscall	CMessageEvent *	2	CMessageEventManager *,CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_HasExtraData,CMessageEventFilter_OccuredBetween> *	1	yes	accepted									
 00910d50	FindYellForHelpEvent	CAIStateGroup_MinionGuardHeardYellForHelp	__thiscall	CMessageEvent *	1	CAIStateGroup_MinionGuardHeardYellForHelp *	1	yes	accepted									
 00910da0	IsRunnable	CAIStateGroup_MinionGuardHeardYellForHelp	__thiscall	bool	1	CAIStateGroup_MinionGuardHeardYellForHelp *	1	yes	accepted									
-00910df0	?Update@CAIStateGroup_MinionGuardHeardYellForHelp@@UAEXXZ	CAIStateGroup_MinionGuardHeardYellForHelp	__thiscall	void	1	CAIStateGroup_MinionGuardHeardYellForHelp *	1	yes	accepted									
+00910df0	Update	CAIStateGroup_MinionGuardHeardYellForHelp	__thiscall	void	1	CAIStateGroup_MinionGuardHeardYellForHelp *	1	yes	accepted									
 00910ff0	Clone	CCreatureAction_DeclarePlayerACriminal	__thiscall	CCreatureActionBase *	1	CCreatureAction_DeclarePlayerACriminal *	1	yes	accepted									
 00911020	CCreatureAction_DeclarePlayerACriminal	CCreatureAction_DeclarePlayerACriminal	__thiscall	undefined	2	CCreatureAction_PickUpJug *,CCreatureAction_PickUpJug *	0	yes	accepted									
 009110f0	CCreatureAction_OrderSecuritySweep	CCreatureAction_OrderSecuritySweep	__thiscall	undefined	2	CCreatureAction_AlertToPlayer *,CThingAICreature *	0	yes	accepted									
@@ -31466,7 +31466,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00924930	FinishAction	CCreatureAction_KrakenHighAttackLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924a90	FinishAction	CCreatureAction_KrakenHighAttackInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924b40	FinishAction	CCreatureAction_KrakenRoarInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00924b90	?A0x29922355::CCreatureAction_KrakenRoarLoop::vfunc_4	?A0x29922355::CCreatureAction_KrakenRoarLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00924b90	FinishAction	`anonymous namespace'::CCreatureAction_KrakenRoarLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924c70	Update	CAIStateGroup_KrakenAttack	__thiscall	void	1	CAIStateGroup_KrakenAttack *	1	yes	accepted									
 009250f0	Update	CAIStateGroup_KrakenTentacleIdle	__thiscall	void	1	CAIStateGroup_KrakenTentacleIdle *	1	yes	accepted									
 00925170	Update	CAIStateGroup_KrakenTentacleRise	__thiscall	void	1	CAIStateGroup_KrakenTentacleRise *	1	yes	accepted									
@@ -32304,7 +32304,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00956ce0	IsRunnable	CAIStateGroup_BriarRoseWillUse	__thiscall	bool	1	CAIStateGroup_BriarRoseWillUse *	1	yes	accepted									
 00956d90	OnActivate	CAIStateGroup_BriarRoseWillUse	__thiscall	void	1	CAIStateGroup_BriarRoseWillUse *	1	yes	accepted									
 00956e00	Cleanup	CAIStateGroup_BriarRoseWillUse	__thiscall	void	1	CAIStateGroup_BriarRoseWillUse *	1	yes	accepted									
-00956e70	CAIStateGroup_BriarRose::Update	CAIStateGroup_BriarRose	__thiscall	void	1	CAIStateGroup_BriarRose *	1	yes	accepted									
+00956e70	Update	CAIStateGroup_BriarRose	__thiscall	void	1	CAIStateGroup_BriarRose *	1	yes	accepted									
 00956fe0	Update	CAIStateGroup_BriarRoseWillUse	__thiscall	void	1	CAIStateGroup_BriarRoseWillUse *	1	yes	accepted									
 00957170	CCreatureAction_BriarRoseShotFarInto	CCreatureAction_BriarRoseShotFarInto	__thiscall	undefined	3	CCreatureAction_BriarRoseShotFarInto *,CThingCreatureBase *,CThingCreatureBase *	0	yes	accepted									
 009571f0	IsToFaceTarget	CCreatureAction_BriarRoseShotFarInto	__thiscall	bool	1	CCreatureAction_BriarRoseShotFarInto *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CCreatureActionBriarRoseShotFarInto_IsToFaceTarget_009571f0.cpp
@@ -38787,7 +38787,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aa2110	CalcBlendedBoneTransformation	C3DAnimationManager	__thiscall	void	8	C3DAnimationManager *,C3DAnimationBlendState *,C3DAnimationBlendState *,float,C3DMesh2 *,ulong,CMatrix3x4 *,C3DVector *	1	yes	accepted									
 00aa3390	CalculateSlerpWeights	CQuaternion	unknown	undefined	0		0	yes	accepted									
 00aa3560	SetSlerpFromIdentity	CQuaternion	unknown	undefined	0		0	yes	accepted									
-00aa39a0	ToMatrix	CQuaternion	__thiscall	void	3	CQuaternion *,CMatrix3x4 *,C3DVector *	1	yes	accepted									
+00aa39a0	ToMatrix	C3DKeyframe	__thiscall	void	3	CQuaternion *,CMatrix3x4 *,C3DVector *	1	yes	accepted									
 00aa3af0	ToMatrix	C3DKeyframe	unknown	undefined	0		0	yes	accepted									
 00aa3c50	BlendWith	C3DKeyframe	__thiscall	CRightHandedSet	3	CRightHandedSet *,CRightHandedSet *,float	1	yes	accepted									
 00aa4150	`scalar deleting destructor'	C3DAnimationManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aa4150.cpp
@@ -46269,7 +46269,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3d410	SetFloatA0	CLibpkStateA4	unknown	undefined	0		0			discovered	gapscan							
 00c3d440	SetDefaultStateCallback	CVtable_012B5870	unknown	undefined	0		0			discovered	gapscan							
 00c3d460	OnPostViewportChanged	CShaderRenderManager	__thiscall	void	1	CShaderRenderManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CShaderRenderManager_OnPostViewportChanged_00c3d460.cpp
-00c3d470	CCombatRenderer::UpdateRenderState	CCombatRenderer	unknown	undefined	0		0	yes	accepted									
+00c3d470	Process	CCodaContext	unknown	undefined	0		0	yes	accepted									
 00c3d610	DiscardEvent	CAudioSystem	unknown	undefined	0		0	yes	accepted									
 00c3d660	DiscardMorphEvent	CAudioEventManager_00c3d660	unknown	undefined	0		0	yes	accepted									
 00c3d6a0	DiscardScreenEvent	CAudioEventManager_00c3d6a0	unknown	undefined	0		0	yes	accepted									
@@ -46283,7 +46283,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3d9a0	`vector deleting destructor'	CMorphAction_00c3dcd0	unknown	undefined	0		0			discovered	gapscan							
 00c3da00	AddChildPrimitiveWithSettings	CEnginePrimitive	unknown	undefined	0		0	yes	accepted									
 00c3da60	CreateEnvironmentCombatAction	CCombatActionManager	unknown	undefined	0		0	yes	accepted									
-00c3db80	CTCHeroStats::CreateIceTrollIcicleAction	CTCHeroStats	unknown	undefined	0		0	yes	accepted									
+00c3db80	Create3DSource	CCodaContext	unknown	undefined	0		0	yes	accepted									
 00c3dcd0	CreateCharacterMorphAction	CTCHeroStats::CTCHeroStats	unknown	undefined	0		0	yes	accepted									
 00c3dde0	CreateListenerState	CAudioSystem	unknown	undefined	0		0	yes	accepted									
 00c3df10	CreateSoundBankResizeAction	CTCHeroStats::CTCHeroStats	unknown	undefined	0		0	yes	accepted									

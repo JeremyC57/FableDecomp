@@ -14,6 +14,14 @@
 class CThingCreatureBase;class C3DVector;
 class CTCSpecialAbilities:public CTCBase {
 public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&);
+#ifdef FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SPECIAL_ABILITIES;}
+ void UnLockAbilitiyMutex(){AbilityMutexLock=false;CurrentAbility=(EHeroAbility)0;}
+ static void FABLE_FASTCALL FadeOrKillEffect(CIntelligentPointer<CThing>&);
+#endif
+#ifdef FABLE_RETAIL_DIVINE_FINALCLEANUP
+ static void FABLE_FASTCALL FadeOrKillEffect(CIntelligentPointer<CThing>&);
+#endif
 private:class CUndeadFollower;bool AbilityMutexLock,UsingBed;EHeroAbility CurrentAbility;
  std::list<CUndeadFollower> UndeadFollowers;CThingCreatureBase& Creature;std::vector<bool> AbilityAvailability;
 };

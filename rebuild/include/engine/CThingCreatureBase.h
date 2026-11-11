@@ -21,7 +21,40 @@ enum ESex;
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CREATURETYPE
 #include "engine/ECreatureType.h"
 #endif
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+class CCreatureAbilityDef;class CSoundPair;
+#endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+public: CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
+#endif
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+protected:
+ virtual unsigned long GetPhonemeAnim(const CCharString & p0) const;
+ virtual bool SetActionForMelee(const CCreatureAbilityDef & p0);
+public:
+ virtual bool AnimExists(const CCharString & p0, bool p1) const;
+ virtual bool IsNewAttackerGreaterThreat(const CThingCreatureBase & p0, const CThingCreatureBase & p1) const;
+ virtual bool IsWillable() const;
+ virtual bool IsControlled() const = 0;
+ virtual bool IsPlayerCharacter() const = 0;
+ virtual float GetMaxPushingSpeed(const C3DVector & p0) const = 0;
+ virtual float GetMaxWalkingSpeed(const C3DVector & p0) const = 0;
+ virtual float GetMaxJoggingSpeed(const C3DVector & p0) const = 0;
+ virtual float GetMaxRunningSpeed(const C3DVector & p0) const = 0;
+ virtual float GetMaxSprintingSpeed(const C3DVector & p0) const = 0;
+ virtual float GetMaxFlyingSpeed(const C3DVector & p0) const = 0;
+ virtual float GetMaxHoverSpeedSlow(const C3DVector & p0) const = 0;
+ virtual float GetMaxHoverSpeedMedium(const C3DVector & p0) const = 0;
+ virtual float GetMaxHoverSpeedFast(const C3DVector & p0) const = 0;
+ virtual float GetMaxAcceleration() const = 0;
+ virtual bool IsToUnsheatheItemsAfterCutscenes() const = 0;
+ virtual CSoundPair GetSoundPair(const CCharString & p0) const;
+#endif
+
+#ifdef FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
+public:bool IsThingInFOV(const CThing&,bool)const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHEALTH
 public:
  void SetHealth(float health){Health=health;}
@@ -119,8 +152,15 @@ public:
     // on the striking creature). The enum stays the opaque 4-byte member; the body reads it as its long value. No layout change.
     long GetLastActionHandedness() const { return *reinterpret_cast<const long*>(PreviousActionHandedness); }
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CHILD
+    // Both original PDBs: public const IsChild; donor GetPrioritisedAbilityDefs and native00661f70.
+    bool IsChild()const;
+#endif
     bool IsInMelee()const;bool IsInMeleeAsAttacker()const;
     bool IsUnderInfluenceOfEpicSpell() const { return UnderInfluenceOfEpicSpell; }
+#ifdef FABLE_RETAIL_DIVINE_FINALCLEANUP
+    void SetUnderInfluenceOfEpicSpell(bool value){UnderInfluenceOfEpicSpell=value;} // Both original PDBs; native0078fc48.
+#endif
     bool AutoPlaceNearBuilding(const CThingBuilding*,float);
     static void CheckRetailLayout() {
         FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase,PDef)==0xe0);

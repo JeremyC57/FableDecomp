@@ -1,5 +1,61 @@
 #ifndef FABLE_ENGINE_CTCTARGETINGBASE_H
 #define FABLE_ENGINE_CTCTARGETINGBASE_H
+#if defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_FIRE_RANGED_WEAPON)
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+class CTargetingDef;class CThingCreatureBase;
+#ifdef _MSC_VER
+enum ETargetingType;
+#else
+enum ETargetingType {};
+#endif
+enum ECreatureInteractionType{CREATURE_INTERACTION_NULL=0,CREATURE_INTERACTION_CONVERSATION=1,CREATURE_INTERACTION_TAG=2,CREATURE_INTERACTION_MULTI_TAG=4,CREATURE_INTERACTION_PURCHASING=8};
+class CTCTargetingBase:public CTCBase{
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_TARGETING;}
+ virtual ETCInterfaceType GetInterfaceType() const;
+ CTCTargetingBase(const CTCTargetingBase & p0);
+ CTCTargetingBase(CThing & p0);
+ virtual void OnInitialActivate();
+ virtual void BulletTimeFrameUpdate();
+ virtual CThing * GetPBestThingForMeleeAttack() const;
+ virtual CThingCreatureBase * GetPBestEnemyCreatureForAttack() const;
+ virtual CThing * GetPBestThingForProjectileTargetingLock() const;
+ virtual CThingCreatureBase * GetPBestCreatureForInteractionTypeWithinRangeLimit(ECreatureInteractionType p0, float p1, float p2) const;
+ virtual CThingCreatureBase * GetPBestCreatureForInteractionType(ECreatureInteractionType p0) const;
+ CThing * GetPNearestInterestingThing() const;
+ void SetScriptOverrideIgnoreEverything(bool p0);
+ CThing * GetPScriptOverrideInterestingThing() const;
+ void SetPScriptOverrideInterestingThing(CThing * p0);
+ CThing * GetPScriptOverrideRangedTarget() const;
+ void SetPScriptOverrideRangedTarget(CThing * p0);
+ virtual CThing * GetPTargetedThing() const;
+ virtual void SetPTargetedThing(CThing * p0);
+ virtual CThing * GetPProjectileTargetedThing() const;
+ virtual CThing * GetPTargetLockedThing() const;
+ virtual bool GetTargetedPos(C3DVector & p0, float p1) const;
+ bool IsTargetedThingOfType(ETargetingType p0) const;
+ virtual bool IsTargetedThingInRange(unsigned long p0) const;
+ void SetLookAtCamera(bool p0);
+ bool IsLookingAtCamera() const;
+protected:
+ virtual void UpdateNearestInterestingThing();
+ void SetPNearestInterestingThing(CThing * p0);
+ const CTargetingDef & GetTargetingDef() const;
+ bool ScriptOverrideIgnoreEverything;
+ CIntelligentPointer<CThing> PNearestInterestingThing;
+ CIntelligentPointer<CThing> PScriptOverrideInterestingThing;
+ CIntelligentPointer<CThing> PScriptOverrideRangedTarget;
+ CIntelligentPointer<CThing> PTargetedThing;
+ CDefPointer<CTargetingDef const > PTargetingDef;
+ bool LookAtCamera;
+public:
+ virtual ~CTCTargetingBase();
+ CTCTargetingBase & operator=(const CTCTargetingBase & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CTCTargetingBase)==56);
+#else
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"
 class CTargetingDef;class CThingCreatureBase;
@@ -40,7 +96,11 @@ public: bool IsLookingAtCamera() const { return LookAtCamera; }
 // Declaration only; no layout change.
 public: bool IsTargetedThingOfType(ETargetingType type) const;           // 0x007F5A70
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+protected: const CTargetingDef& GetTargetingDef()const{return *PTargetingDef;}
+#endif
 protected:bool ScriptOverrideIgnoreEverything;unsigned char PNearestInterestingThing[8],PScriptOverrideInterestingThing[8],PScriptOverrideRangedTarget[8],PTargetedThing[8];CDefPointer<const CTargetingDef> PTargetingDef;bool LookAtCamera;
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargetingBase)==56);
+#endif
 #endif

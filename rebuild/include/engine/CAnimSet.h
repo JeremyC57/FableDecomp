@@ -7,6 +7,11 @@ template<class T,class L>inline void FABLE_FASTCALL GFLimitLower(T& value,const 
 class CAnimateThing;
 class CTransitionBlendAlpha{public:float CurrentAlpha,LastAlpha;CTransitionBlendAlpha(float a,float b):CurrentAlpha(a),LastAlpha(b){}};
 class CAnimSet{friend class CAnimateThing;public:
+#ifdef FABLE_RETAIL_LOOK_HEAD_ANIM
+ // Layout: original complete data retained; native percentage pair1c/20 after retail vectors.
+ CAnimFrameInfo GetFrame()const{return CAnimFrameInfo(CurrentPercentageComplete,LastPercentageComplete);}
+ void SetFrame(const CAnimFrameInfo& frame){CurrentPercentageComplete=frame.Current;LastPercentageComplete=frame.Last;}
+#endif
  CAnimSet(){}
  CAnimSet(const CAnimSet&);
  bool IsOwnedByMainAnim()const{return OwnedByMainAnim;}

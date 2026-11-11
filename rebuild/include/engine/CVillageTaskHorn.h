@@ -19,7 +19,11 @@ class CVillageTaskHorn : public CVillageTaskBase {
     CIntelligentPointer<const CThing> CreatureAssignedToTask;
 public:
     CVillageTaskHorn(const CVillageTaskHorn &);
+#ifdef FABLE_RETAIL_HORN_TASKS
+    CVillageTaskHorn(CThing &horn):PHorn(&horn){}
+#else
     CVillageTaskHorn(CThing &);
+#endif
     virtual void AssignCreatureToTask(const CThing &);
     virtual bool IsCreatureAssignedToTask(const CThing &) const;
     virtual EVillageTaskType GetTaskType() const;
@@ -29,7 +33,11 @@ public:
     virtual void RemoveThingFromTask(const CThing &,bool &);
     bool IsBetterThan(const CVillageTaskHorn *,const CThing &) const;
     bool IsCreatureMoreAppropriateForTask(const CThing &) const;
+#ifdef FABLE_RETAIL_HORN_TASKS
+    CThing * GetHorn() const{return PHorn.Get();}
+#else
     CThing * GetHorn() const;
+#endif
     virtual ~CVillageTaskHorn();
     CVillageTaskHorn & operator=(const CVillageTaskHorn &);
 };

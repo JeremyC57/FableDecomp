@@ -1,7 +1,23 @@
 #ifndef FABLE_ENGINE_CANIMINIT_H
 #define FABLE_ENGINE_CANIMINIT_H
 #include "engine/EAnimUpdateMode.h"
-#ifdef FABLE_RETAIL_CANIMINIT_CTORS
+#ifdef FABLE_RETAIL_LOOK_HEAD_ANIM
+// Layout: original Ego1f467/FW21078,44 bytes; complete fields retained.
+class CAnimFrameInfo {public:
+ float Current,Last;
+ CAnimFrameInfo():Current(0.0f),Last(0.0f){}
+ CAnimFrameInfo(float value):Current(value),Last(value){}
+ CAnimFrameInfo(float current,float last):Current(current),Last(last){}
+};
+class CAnimInit {public:
+ CAnimInit(){}
+ CAnimInit(unsigned char type,unsigned long type_flags,long anim,EAnimUpdateMode mode,bool looping,unsigned long flags,long priority)
+ {Init(type,type_flags,anim,mode,looping,flags,priority);}
+ void Init(unsigned char,unsigned long,long,EAnimUpdateMode,bool,unsigned long,long);
+ void Clear();
+ EAnimUpdateMode UpdateMode;unsigned char Type;bool Looping;long Anim;float Speed,Alpha,LastAlpha;CAnimFrameInfo Frame;unsigned long Flags,TypeFlags;long Priority;
+};
+#elif defined(FABLE_RETAIL_CANIMINIT_CTORS)
 // Retail opt-in (chunk 1006, row 0x005B3E4E CTCInventoryClothing::GlobalUpdate): the inline constructors of both classes (FableWin.pdb
 // ??0CAnimFrameInfo@@QAE@XZ / ??0CAnimFrameInfo@@QAE@MM@Z, ??0CAnimInit@@QAE@XZ, ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z: the
 // constructors only build Frame (retail `fldz ; fstp [init+18h] ; fldz ; fstp [init+1Ch]` at 0x005B3FE5), the argument one then calls Init) and the out-of-line ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z

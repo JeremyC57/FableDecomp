@@ -1,3 +1,79 @@
+#ifdef FABLE_RETAIL_MAP_VALIDATE
+#ifndef FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
+#define FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
+#include "engine/CBaseClassNonCopyable.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/C2DBoxI.h"
+#include "engine/C2DExtentsI.h"
+class CTCMapwho;class C2DVector;
+namespace NThingMap {
+class CThingMapManager;class CThingMapCell;
+// Layout: original 0x2423e, complete record.
+class CMapwhoNode{
+public:
+ CTCMapwho * PMapwho;
+ NThingMap::CMapwhoNode * PNext;
+ NThingMap::CMapwhoNode * PPrevious;
+ NThingMap::CThingMapCell * PCell;
+ CMapwhoNode();
+};
+// Layout: original 0x24263, complete record.
+class CThingMapCell{
+public:
+ CThingMapCell();
+ void Clear();
+ const NThingMap::CMapwhoNode * GetPFirstNode() const{return PFirstNode;}
+ NThingMap::CMapwhoNode * PFirstNode;
+};
+// Layout: original 0x243aa, complete record.
+class CMapwhoLevelInfo{
+public:
+ long Size;
+ C2DExtentsI Extents;
+ long ScaleShift;
+ long NoThings;
+ CMapwhoLevelInfo(const NThingMap::CMapwhoLevelInfo & p0);
+ CMapwhoLevelInfo();
+};
+// Layout: complete original Ego24288/FW262d0; native52 after two vector reductions.
+class CThingMap:public CBaseClassNonCopyable{
+public:
+ CThingMap(const NThingMap::CThingMap & p0);
+ CThingMap(NThingMap::CThingMapManager & p0, const C2DBoxI & p1);
+ virtual ~CThingMap();
+ void GetAllThings(std::set<CTCMapwho *,std::less<CTCMapwho *>,std::allocator<CTCMapwho *> > & p0);
+ long GetNoThingsInMapwhoLevel(long p0) const;
+ void Validate();
+ long GetMemoryFootprint() const;
+ const NThingMap::CThingMapCell & PeekCell(unsigned char p0, unsigned long p1, unsigned long p2) const;
+ NThingMap::CThingMapCell & GetCell(unsigned char p0,unsigned long p1,unsigned long p2){return Cells[p0][MapwhoLevelInfo[p0].Extents.X*p2+p1];}
+ const C2DBoxI & GetArea() const;
+ const C2DExtentsI & GetLayerExtents(long p0) const;
+ void Clear();
+ void DebugDraw(const C2DVector & p0, long p1);
+protected:
+ std::vector<NThingMap::CMapwhoLevelInfo,std::allocator<NThingMap::CMapwhoLevelInfo> > MapwhoLevelInfo;
+ NThingMap::CThingMapManager & Manager;
+ std::vector<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> >,std::allocator<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> > > > Cells;
+ C2DBoxI Area;
+ long NoThings;
+ void InitMapwhoLevels();
+ void ValidateCell(const NThingMap::CThingMapCell & cell) const {
+ for(const CMapwhoNode* ploop_node1=cell.GetPFirstNode();ploop_node1;ploop_node1=ploop_node1->PNext) {
+  long c1=0;
+  for(const CMapwhoNode* ploop_node2=ploop_node1->PNext;ploop_node2;ploop_node2=ploop_node2->PNext)++c1;
+ }
+ }
+public:
+ CThingMap & operator=(const NThingMap::CThingMap & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CThingMap)==52);
+extern long MaxLayers;
+}
+#endif
+
+#else
 #ifndef FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
 #define FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
 // NThingMap::CThingMap (chunk 768, for the CThingSearchTools rough-area body FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY).
@@ -63,4 +139,6 @@ extern long SearchCount_013b89a8;                            // 0x013B89A8 the r
 extern long SearchWork_013b89ac;                             // 0x013B89AC (landed spelling)
 extern unsigned long SearchID_013b89b0;                      // 0x013B89B0 the search stamp (landed spelling)
 #endif
+#endif
+
 #endif

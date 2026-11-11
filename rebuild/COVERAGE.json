@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T06:11:43+00:00",
+  "generated_at": "2026-11-11T06:56:53+00:00",
   "catalog_functions": 49568,
   "manifest_rows": 57097,
   "modules": 3433,
@@ -33,14 +33,14 @@
   "engine_headers_generated": 957,
   "candidate_integrity_pass": 1066,
   "candidate_host_syntax_pass": 575,
-  "landed_catalog_rows": 55653,
+  "landed_catalog_rows": 55687,
   "landed_known_functions": 57835,
   "landed_original_functions": 49567,
-  "landed_known": 55653,
-  "landed_original": 47618,
-  "landed_genuine_known": 55652,
-  "landed_genuine_original": 47617,
-  "landed_genuine": 54971,
+  "landed_known": 55687,
+  "landed_original": 47650,
+  "landed_genuine_known": 55686,
+  "landed_genuine_original": 47649,
+  "landed_genuine": 55005,
   "landed_retail_asm": 231,
   "landed_toolchain_library": 450,
   "landed_asm_bake": 1,
@@ -48,23 +48,23 @@
   "landed_vendor_library": 9,
   "landed_vendor_source": 602,
   "landed_missing_source": 0,
-  "landed_matched_bytes": 7010034,
-  "landed_matched_bytes_genuine": 7009555,
-  "landed_unlanded_bytes_estimate": 3143268,
+  "landed_matched_bytes": 7027730,
+  "landed_matched_bytes_genuine": 7027251,
+  "landed_unlanded_bytes_estimate": 3124777,
   "landed_split": {
     "game": {
       "known": 52339,
-      "landed": 50280,
-      "landed_genuine": 50279,
-      "matched_bytes_genuine": 6398574,
-      "unlanded_bytes_estimate": 3087518
+      "landed": 50312,
+      "landed_genuine": 50311,
+      "matched_bytes_genuine": 6415527,
+      "unlanded_bytes_estimate": 3069779
     },
     "lionhead_library": {
       "known": 4239,
-      "landed": 4124,
-      "landed_genuine": 4124,
-      "matched_bytes_genuine": 421939,
-      "unlanded_bytes_estimate": 54343
+      "landed": 4126,
+      "landed_genuine": 4126,
+      "matched_bytes_genuine": 422682,
+      "unlanded_bytes_estimate": 53591
     },
     "third_party": {
       "known": 814,

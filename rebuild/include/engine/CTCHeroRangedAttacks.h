@@ -1,5 +1,78 @@
 #ifndef FABLE_ENGINE_CTCHERORANGEDATTACKS_H
 #define FABLE_ENGINE_CTCHERORANGEDATTACKS_H
+#ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CMainGameComponent.h"
+class CHeroCombatDef;class CThingCreatureBase;
+class CTCHeroRangedAttacks:public CTCBase{
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_HERO_RANGED_ATTACKS;}
+ virtual ETCInterfaceType GetInterfaceType() const;
+ static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
+ static CCharString FABLE_FASTCALL StatGetClassTypeName();
+ virtual CCharString GetClassTypeName() const;
+ CTCHeroRangedAttacks(const CTCHeroRangedAttacks & p0);
+ CTCHeroRangedAttacks(CThing & p0);
+ virtual void OnCreate();
+ virtual void FrameUpdate();
+ virtual bool HasFrameUpdate() const;
+ void AttemptToLoadRangedWeapon();
+ void AttemptToFireRangedWeapon();
+ void ContinueAimingRangedWeapon();
+ void CancelAimingWeapon();
+ void SetButtonPressure(float p0);
+ void SetProjectileTargetingLock(float p0);
+ void SetProjectileTargetingZoomDelta(float p0);
+ void ResetProjectileTargetingZoomParameter();
+ void IncrementProjectileWeaponMode();
+ void ResetProjectileWeaponMode();
+ void SetBowDrawbackSoundID(unsigned long p0);
+ bool IsAimingRangedWeapon() const;
+ bool IsLoadingRangedWeapon() const;
+ bool IsInProcessOfFiringRangedWeapon() const;
+ bool IsProjectileTargetingZLock() const;
+ float GetProjectileTargetingZLockPressure() const;
+ bool IsUsingProjectileTargetingAnalogueZoom() const;
+ float GetProjectileTargetingZoomParameter() const;
+ float GetProjectileWeaponFirstPersonTargetingModeZoomFOV() const;
+ bool IsToUseFirstPersonTargetingMode() const;
+ bool IsAtMaxPullBack() const;
+ float GetShotBuildupTime()const{double time=AimingTimer;return time/CMainGameComponent::GetConstantFPS();}
+ float GetPullBackAmount() const;
+ float GetShotAccuracyFraction() const;
+ static void FABLE_FASTCALL StatRegisterClass();
+private:
+ bool InitialiseAiming();
+ void LoadRangedWeapon();
+ void FireRangedWeapon();
+ bool IsAbleToUseRangedWeapon() const;
+ CThingCreatureBase * PParentCreature;
+ CDefPointer<CHeroCombatDef const > PHeroCombatDef;
+ bool FireCycleInProgress;
+ bool Aiming;
+ bool FireQueued;
+ bool Loading;
+ long AimingTimer;
+ long PullBackTimer;
+ float PullBackAmount;
+ float Accuracy;
+ float DamageMultiplier;
+ bool Decapitate;
+ long ButtonReleaseCancelTimer;
+ float ButtonPressure;
+ float LastButtonPressure;
+ float ProjectileWeaponZLockPressure;
+ float ProjectileWeaponZoomParameter;
+ long ProjectileWeaponFirstPersonZoomModeIndex;
+ unsigned long BowDrawbackSoundID;
+ static float AccuracyOverride;
+public:
+ virtual ~CTCHeroRangedAttacks();
+ CTCHeroRangedAttacks & operator=(const CTCHeroRangedAttacks & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CTCHeroRangedAttacks)==76);
+#else
 #ifdef FABLE_RETAIL_CTCHERORANGEDATTACKS
 // Retail opt-in (chunk 777, row 0x00803540): the polymorphic retail class (vtable 0x0126BAF4, CTCHeroRangedAttacks : CTCBase) with
 // the Ego_r.pdb members at their retail offsets (no containers: the PDB offsets hold, as the landed ctor 0x00789BB0 shows) and the
@@ -115,4 +188,5 @@ FABLE_STATIC_ASSERT(offsetof(CTCHeroRangedAttacks, ProjectileWeaponFirstPersonZo
 FABLE_STATIC_ASSERT(offsetof(CTCHeroRangedAttacks, BowDrawbackSoundID) == 0x48);
 
 #endif // FABLE_RETAIL_CTCHERORANGEDATTACKS
+#endif
 #endif // FABLE_ENGINE_CTCHERORANGEDATTACKS_H

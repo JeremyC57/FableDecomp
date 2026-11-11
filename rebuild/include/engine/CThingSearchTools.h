@@ -41,7 +41,11 @@ public:
     // GetPFirstLeafThing<Filter,T>: out of line in retail (Ego_r 0x005457E0 ??$GetPFirstLeafThing@V?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@
     // VCThingFilter_PosInContainmentVolume@@@@VCThingBuilding@@...; 0x00666EF0 calls it). A same-TU noinline body (EXTRA_RULES chunk 422):
     // AutoPlaceNearBuilding 0x00666EF0 matches only with the body visible (the filter temporaries are then known uncaptured).
-    template<class Filter,class T> __declspec(noinline) bool GetPFirstLeafThing(const Filter& filter,T** out) const {
+    template<class Filter,class T>
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    bool GetPFirstLeafThing(const Filter& filter,T** out) const {
         const std::list<CClass*>& things=PeekTypeList(T::StatGetType());
         for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
             T* thing=static_cast<T*>(*it);

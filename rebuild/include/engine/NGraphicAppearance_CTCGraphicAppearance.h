@@ -10,6 +10,10 @@
 #endif
 #include "engine/CTCBase.h"
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FLARE
+#include "engine/NGraphicAppearance_CPrimitive.h"
+class CEnginePrimitive;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_LIGHTINGCHANNEL
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
 #endif
@@ -24,14 +28,18 @@ class CCharString; class CRGBColour;
 class CCharString; class CRightHandedSet;
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
-#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETMAINGRAPHIC
-// agentNF9: with the SETMAINGRAPHIC opt-in the members use the shared engine/CEngineGraphic.h (same 14-byte packed layout) instead of
-// the quarantine header's copy, so a row can include both this header and a def header that embeds CEngineGraphic.
+#if defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETMAINGRAPHIC) || defined(FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE)
+// agentNF9 (SETMAINGRAPHIC) / Codex pass 20 (CTCWEAPONTRAIL_UPDATE): the members use the shared engine/CEngineGraphic.h (same 14-byte
+// packed layout) instead of the quarantine header's copy, so a row can include both this header and a def header that embeds CEngineGraphic.
 #include "engine/CEngineGraphic.h"
 #else
 #define FABLE_RETAIL_CENGINEGRAPHIC
-#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_STATIC_FOCAL
+#include "engine/CEngineGraphic.h"
+#else
 #include "engine/_quarantine/CTCGraphicAppearance.h"
+#endif
+#endif
 #include "engine/CRGBColour.h"
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
 #include "stlport/fable_map.h"
@@ -60,6 +68,11 @@ class CAGraphicAppearanceComponent;
 enum EAppearanceMeshEffectPriority;                          // MS forward enum (chunk 867: the row passes the value 3)
 #endif
 class CTCGraphicAppearance : public CTCBase {
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_STATIC_FOCAL
+public:
+    // Both original PDBs and native004c11f0: const owner, output reference.
+    bool GetStaticFocalPosIfLoaded(C3DVector&) const;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 protected:
  class CMeshEffectPriorityEntry;
@@ -107,6 +120,12 @@ protected:
     bool GetAnims(C3DAnimationInterpolator&)const;
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FLARE
+    // Retail opt-in (Codex pass20): both PDBs and donor0222b060 call sequence.
+    float GetFadeDistance() const;
+    CPrimitive* AddPersistentPrimitive(const CPrimitive&);
+    void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
+#endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_WASRENDERED
     // Opt-in (chunk 1024, row 0x006E2ED0): Ego_r.pdb / FableWin.pdb ?WasRenderedLastFrame@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ,
@@ -153,8 +172,15 @@ public:
     const CEnginePrimitiveThemeChannelDesc& PeekLightingChannel() const { return LightingChannel; }
     void SetLightingChannel(const CEnginePrimitiveThemeChannelDesc& channel, bool update_primitives, bool update_children);   // 0x004BFB40
 private:
+#if !defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT) || !defined(FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE)
     unsigned char LayoutMeshEffectsToComponents[0x40 - 0x0C];       // +0x0C .. +0x3F (opaque)
     CEnginePrimitiveThemeChannelDesc LightingChannel;               // +0x40
+#endif
+#ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
+public:
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_GRAPHIC_APPEARANCE_NEW;}
+    void SetAsChanged(unsigned long); // Original both PDBs, native004bf9e0.
+#endif
 public:
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_TINT

@@ -10,6 +10,10 @@
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
+// Retail opt-in (Codex pass20): both PDBs name these vectors; native reads434/438 and43c/440.
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+#include "engine/C2DVector.h"
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
 #include "engine/C2DVector.h"
 #endif
@@ -308,10 +312,18 @@ public:
     long             CrimeWarningGraphic;                    // +0x428
     long             CrimeCriminalGraphic;                   // +0x42c
     long             CrimeBarGraphic;                        // +0x430
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+    C2DVector CrimeBarIconOffset;
+#else
     float            CrimeBarIconOffset_X;                   // +0x434 C2DVector::X
     float            CrimeBarIconOffset_Y;                   // +0x438 C2DVector::Y
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+    C2DVector CrimeBarBorderOffset;
+#else
     float            CrimeBarBorderOffset_X;                 // +0x43c C2DVector::X
     float            CrimeBarBorderOffset_Y;                 // +0x440 C2DVector::Y
+#endif
     unsigned char    CrosshairOffsets[0xc];                  // +0x444 vector<C2DVector,std::allocator<C2DVector>_>
     unsigned char    CrosshairGraphics[0xc];                 // +0x450 vector<long,std::allocator<long>_>
     unsigned char    CrosshairGreenGraphics[0xc];            // +0x45c vector<long,std::allocator<long>_>
@@ -956,10 +968,18 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeTextAlertColour) == 0x424);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeWarningGraphic) == 0x428);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeCriminalGraphic) == 0x42c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarGraphic) == 0x430);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarIconOffset) == 0x434);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarIconOffset_X) == 0x434);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarIconOffset_Y) == 0x438);
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_CRIME
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarBorderOffset) == 0x43c);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarBorderOffset_X) == 0x43c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrimeBarBorderOffset_Y) == 0x440);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairOffsets) == 0x444);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairGraphics) == 0x450);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, CrosshairGreenGraphics) == 0x45c);

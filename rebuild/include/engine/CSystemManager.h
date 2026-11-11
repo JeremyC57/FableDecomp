@@ -61,7 +61,14 @@ private:
  bool (__fastcall* ErrorFunc)(ESystemCode);
  bool (__fastcall* IMEMessageFunc)(HWND,unsigned int,unsigned int,long,long&);
  bool (__fastcall* MessageFilter)(tagMSG*);
-public:CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
+public:
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_MOUSE
+// Original PDB names plus debug01870df0 and native009a4fc0..009a5000; default layout unchanged.
+ HWND GetApplicationWinHandle()const{return ApplicationWinHandle;}
+ bool IsMouseButton0Pressed(); bool IsMouseButton1Pressed(); bool IsMouseButton2Pressed();
+ bool IsMouseButton3Pressed(); bool IsMouseButton4Pressed();
+#endif
+CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
 #ifdef FABLE_RETAIL_CSYSTEMMANAGER
 // Ego_r.pdb + FableWin.pdb ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ (0x009A6460; GFPlayFullScreenXBoxMovie loops
 // until it returns 2). FableWin.pdb ?GetInputManager@CSystemManager@@QAEPAVCInputManager@@XZ is inline in the release

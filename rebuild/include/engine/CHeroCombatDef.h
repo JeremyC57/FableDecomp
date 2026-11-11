@@ -1,5 +1,69 @@
 #ifndef FABLE_ENGINE_CHEROCOMBATDEF_H
 #define FABLE_ENGINE_CHEROCOMBATDEF_H
+#ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
+#include "engine/CParentDefClassBase.h"
+#include "engine/CFloatRange.h"
+#include "engine/CHeroAbilityStatWeight.h"
+#include "engine/CHeroAbilityStatPackage.h"
+#include "stlport/fable_containers.h"
+class CHeroCombatDef:public CParentDefClassBase {
+public:
+ virtual void Copy(const CDefClassBase * p0);
+ virtual unsigned long GetSizeofClass();
+ static CDefClassBase * FABLE_FASTCALL Alloc();
+ static CCharString FABLE_FASTCALL StatGetTypeName();
+ CFloatRange RangedAccuracySecondsForMaximumWithSkill;
+ CFloatRange RangedAccuracyPercentFractionWithBuildup;
+ CFloatRange RangedAccuracyPercentWithStats;
+ CHeroAbilityStatWeight RangedAccuracyWeighting;
+ CFloatRange RangedAccuracyShakeyCursor;
+ CHeroAbilityStatWeight RangedAccuracyShakeyCursorWeighting;
+ float RangedAccuracyShakeFractionOfRadius;
+ CHeroAbilityStatWeight RangedDamageMultiplierWeighting;
+ float RangedDamageMultiplierSpeedWithStatParameter;
+ float RangedDamageMultiplierSpeedWithDistance;
+ float RangedDamageMultiplierSpeedNominalBuildup;
+ float RangedDamageMultiplierScaleNominalBuildup;
+ float RangedDamageMultiplierSpeedSuperBuildup;
+ float RangedDamageMultiplierScaleSuperBuildup;
+ CHeroAbilityStatWeight RangedWeaponReloadSpeedWeighting;
+ CFloatRange MeleeDamageMultiplierWithStats;
+ CHeroAbilityStatWeight MeleeDamageWeighting;
+ CFloatRange HitDamageMultiplierWithStats;
+ CHeroAbilityStatWeight HitDamageWeighting;
+ bool MeleeFlourishValidOnMultiplierLevelIncrease;
+ long MeleeFlourishNumMultiplierLevelsPerFlourish;
+ bool MeleeFlourishAllowBreakingOfRotation;
+ float MeleeFlourishSecondsForAvailibility;
+ bool MeleeFlourishOneShot;
+ bool MeleeFlourishUsable;
+ bool MeleeCombatPlayStrikeSounds;
+ float TargetingPressureFractionThresholdForToggle;
+ float MaxAngleToTurnToShootAtTargetInThirdPersonBowMode;
+ long MeleeStrikeNumFramesPauseOnHeroStrike;
+ CFloatRange MeleeStrikeAnimationSpeedFractionWithStats;
+ CHeroAbilityStatWeight MeleeStrikeAnimationSpeedWeighting;
+ float AutoBlockSkillThreshold;
+ float AutoBlockStrengthThreshold;
+ float MeleeRecoilMaintainHandednessSkillThreshold;
+ float MeleeRecoilMaintainHandednessStrengthThreshold;
+ float MeleeRecoilMaintainComboChainSkillThreshold;
+ float MeleeRecoilMaintainComboChainStrengthThreshold;
+ std::vector<long,std::allocator<long> > DefaultCombatAbilities;
+ std::vector<float,std::allocator<float> > ProjectileWeaponFirstPersonModeMaxFOVValues;
+ bool ProjectileTargetingAcquireTargetTag;
+ bool ProjectileTargetingAcquireTargetsAuto;
+ bool ProjectileTargetingUseAnalogueZoom;
+ float ProjectileWeaponAnalogueZoomControlWeight;
+ CHeroAbilityStatPackage HeavyWeapons;
+ virtual void Transfer(CPersistContext & p0);
+ CHeroCombatDef(const CHeroCombatDef & p0);
+ CHeroCombatDef();
+ virtual ~CHeroCombatDef();
+ CHeroCombatDef & operator=(const CHeroCombatDef & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CHeroCombatDef)==328);
+#else
 #include "engine/CParentDefClassBase.h"
 // Raw TPI0x14e2c CParentDefClassBase; original MeleeStrikeNumFramesPauseOnHeroStrike
 // is donor108, nativeec after retail weight/container reductions; native00667feb/00668055.
@@ -62,5 +126,6 @@ FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,RangedAccuracyShakeyCursor)==0x60);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,RangedAccuracyShakeFractionOfRadius)==0x74);
 #endif
 
+#endif
 #endif
 

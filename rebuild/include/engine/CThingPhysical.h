@@ -7,7 +7,28 @@
 #include "engine/C3DVector.h"
 #include "engine/CCountedPointer.h"
 class C2DLineF;
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+class CMaterialDef;
+#endif
 class CThingPhysical : public CThing {
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+public:
+ virtual bool IsSolidToThing(const CThingPhysical * p0) const;
+ virtual bool IsAffectedByDamage() const;
+ virtual unsigned long GetProperties() const;
+ virtual bool IsCrop() const;
+ virtual bool IsHidden() const;
+ virtual bool IsTargetedByPlayer(long p0) const;
+ virtual void SetTargetedByPlayer(long p0);
+ virtual void ClearTargetedByPlayer(long p0);
+ virtual bool IsFragile() const;
+ virtual bool CanBlockNavigatingCreature() const;
+ virtual bool CanBlockUpperLevelNavigatingCreature() const;
+ virtual bool UseHighDetailQuadTree() const;
+ virtual CDefPointer<CMaterialDef const > PeekPMaterial() const;
+ virtual void ModifyHealth(float p0, bool p1);
+#endif
+
 #ifdef FABLE_ONHIT_TEST_ACCESS
     friend class COnHitFixture;
 #endif

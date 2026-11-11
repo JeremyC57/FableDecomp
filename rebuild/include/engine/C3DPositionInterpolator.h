@@ -6,7 +6,13 @@
 #ifdef FABLE_RETAIL_C3DPOSITIONINTERPOLATOR
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_C3DPOSITIONINTERPOLATOR_BASE
+#include "engine/CBaseClass.h"
+// Original Ego_r base CBaseClass and native interpolation object's vtable/dtor graph; fields unchanged.
+class C3DPositionInterpolator:public CBaseClass {
+#else
 class C3DPositionInterpolator {
+#endif
 public:
  C3DPositionInterpolator();
  C3DPositionInterpolator(const C3DVector& startPosition,const C3DVector& endPosition);

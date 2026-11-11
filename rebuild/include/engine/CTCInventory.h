@@ -1,3 +1,213 @@
+#ifdef FABLE_RETAIL_EXPRESSION_FRAME
+#ifndef FABLE_ENGINE_CTCINVENTORY_RETAIL_H
+#define FABLE_ENGINE_CTCINVENTORY_RETAIL_H
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/NHeroInformationScreens_CBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/CRightHandedSet.h"
+#include "stlport/fable_containers.h"
+class CInventoryItemDef;class CFadeInFadeOutBase;class CEnginePrimitiveHandle;class CEnginePrimitivePrepareInfo;class CPersistContext;class CCharString;class CWideString;
+namespace NUISystem{class CComponent;class CList;class CEditBox;}
+#ifdef _MSC_VER
+enum EContextSensitiveOpinionExpression;
+#else
+enum EContextSensitiveOpinionExpression{};
+#endif
+// Layout: complete original Ego20fbd/FW22e6d; native552 after genuine container reductions.
+class CTCInventory:public NInventory::CTCInventoryBase,public NHeroInformationScreens::CBase{
+public:class CContextSensitiveItem;
+#ifdef _MSC_VER
+enum CURRENT_OPEN_MENU;
+#else
+enum CURRENT_OPEN_MENU{};
+#endif
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_INVENTORY;}
+ virtual ETCInterfaceType GetInterfaceType() const;
+ static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
+ static CCharString FABLE_FASTCALL StatGetClassTypeName();
+ virtual CCharString GetClassTypeName() const;
+ static const CCharString & FABLE_FASTCALL GetItemDescriptionString();
+ static const CCharString & FABLE_FASTCALL GetItemNameTableString();
+ static const CCharString & FABLE_FASTCALL GetItemIconString();
+ CTCInventory(const CTCInventory & p0);
+ CTCInventory(CThing & p0);
+ virtual ~CTCInventory();
+ virtual void OnKill();
+ virtual void Copy(const CTCBase & p0);
+ virtual void OnCreate();
+ virtual void InitialActivate();
+ virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0);
+ virtual void OnItemSelected(long p0, bool & p1);
+ virtual void OnItemSelectedInHand(CThing & p0, bool & p1);
+ virtual void OnItemHighlighted(long p0);
+ virtual void OpenInventory();
+ virtual void CloseInventory();
+ virtual void GlobalUpdate(bool p0);
+ virtual bool IsComponentSerialisable() const;
+ virtual void OnSerialise(CPersistContext & p0, bool p1);
+ virtual void OnChangeCategory();
+ virtual void GetItemDescription(CWideString & p0, long p1, bool p2) const;
+ virtual const std::vector<long,std::allocator<long> > & GetInitialItems() const;
+ void OpenQuickAccessMenu();
+ void ForceContextSensitiveUpdate();
+ bool IsButtonHeldForExpression(const CCharString & p0) const;
+ CDefPointer<CInventoryItemDef const > GetQuickAccessItemDef(long p0) const;
+ long GetQuickAccessItem(long p0) const;
+ void SetHighlightedItemAsQuickAccessItem(long p0);
+ void SetThingAsQuickAccessItem(long p0, long p1, bool p2);
+ bool IsQuickAccessItemUsable(long p0) const;
+ void UseQuickAccessItem(long p0);
+ long GetQuickAccessItemGraphicIndex(long p0) const;
+ long GetQuickAccessItemButtonIndex(long p0) const;
+ long GetQuickAccessIndexFromButtonIndex(long p0) const;
+ long GetQuickAccessNextFreeSlot(long p0) const;
+ long GetQuickAccessItemCount() const;
+ void RemoveQuickAccessItem(long p0);
+ void UseQuickAccessExpressionInCutscene(long p0);
+ void UpdateContextSensitiveItems();
+ void UpdateContextSensitiveItemFades(const CEnginePrimitivePrepareInfo & p0);
+ void UseContextSensitiveItem(long p0);
+ long GetContextSensitiveItemGraphicIndex(long p0) const;
+ float GetContextSensitiveFadeAlpha(long p0) const;
+ long GetContextSensitiveItemButtonIndex(long p0) const;
+ bool AddContextSensitivePreferredItem(const CCharString & p0, long p1, long p2);
+ bool RemoveContextSensitivePreferredItem(const CCharString & p0);
+ static long FABLE_FASTCALL GetContextSensitivePreferredItemPriority(long p0);
+ static long FABLE_FASTCALL GetContextSensitivePreferredItemButtonIndex(long p0);
+ bool IsContextSensitiveOpinionExpressionAvailable() const;
+ virtual CWideString GetScreenName() const;
+ virtual EPlayerMode GetPlayerMode() const;
+ virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+ virtual void ProcessButtonAReleased();
+ virtual void ProcessButtonBReleased();
+ virtual void ProcessButtonXReleased();
+ virtual void ProcessButtonYReleased();
+ virtual void ProcessDPadUpReleased();
+ virtual void ProcessDPadDownReleased();
+ virtual void ProcessDPadLeftReleased();
+ virtual void ProcessDPadRightReleased();
+ virtual void ProcessInventoryInputLeft();
+ virtual void ProcessInventoryInputRight();
+ bool GetQuickAccessAssign() const;
+ void SetQuickAccessAssign(bool p0);
+ bool GetQuickAccessRemove() const;
+ void SetQuickAccessRemove(bool p0);
+ NUISystem::CComponent * GetItemsListUIComponent(NUISystem::CComponent * p0);
+ void GetStyleCardsListUIComponent(long p0, long p1, long p2, NUISystem::CComponent * p3);
+ void ConstructStyleEntry(NUISystem::CComponent * p0, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > & p1, const CCharString & p2, NUISystem::CComponent * p3);
+ NUISystem::CComponent * GetItemsListUIComponentPC(NUISystem::CComponent * p0);
+ void GetStyleCardsListUIComponentPC(long p0, long p1, long p2, NUISystem::CComponent * p3);
+ void ConstructStyleEntryPC(NUISystem::CComponent * p0, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > & p1, NUISystem::CComponent * p2, const CCharString & p3, NUISystem::CComponent * p4);
+ long GetThingToAssign();
+ void SetThingToAssign(long p0);
+ void SetThingSlotToSwap(long p0);
+ long GetThingSlotToSwap();
+ void SetComponentSlotToSwap(NUISystem::CComponent * p0);
+ NUISystem::CComponent * GetComponentSlotToSwap();
+ void AssignThingPC(long p0, unsigned long p1, NUISystem::CComponent * p2);
+ void AssignThingSwappingPC(long p0, unsigned long p1, long p2, NUISystem::CComponent * p3, NUISystem::CComponent * p4);
+ void UnAssignThingPC(unsigned long p0, NUISystem::CComponent * p1);
+ void RevertVideoChanges();
+ virtual void AddCloseInventoryEvent();
+ void ResetPrimitiveHandles();
+ virtual NUISystem::CComponent * ConstructScreen(NUISystem::CComponent * p0);
+ void ConstructStyleCardsScreen(long p0, long p1, long p2, NUISystem::CComponent * p3);
+ virtual NUISystem::CComponent * ConstructScreenPC(NUISystem::CComponent * p0);
+ void ConstructStyleCardsScreenPC(long p0, long p1, long p2, NUISystem::CComponent * p3);
+ void ConstructItemDescription(CWideString & p0, long p1);
+ void ConstructItemCategoryList(CWideString & p0, NUISystem::CList * p1, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > & p2, NUISystem::CComponent * p3, const CCharString & p4, const CCharString & p5, bool p6);
+ void ContructItemLists(std::map<long,long,std::less<long>,std::allocator<std::pair<long const ,long> > > & p0, NUISystem::CList * p1, NUISystem::CComponent * p2, CCountedPointer<NUISystem::CComponent> & p3);
+ void ConstructItemEntry(long p0, long p1, NUISystem::CList * p2, NUISystem::CComponent * p3, CCountedPointer<NUISystem::CComponent> & p4);
+ void ConstructItemCategoryListPC(CWideString & p0, NUISystem::CList * p1, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > & p2, NUISystem::CComponent * p3, const CCharString & p4, const CCharString & p5, bool p6);
+ void ContructItemListsPC(std::map<long,long,std::less<long>,std::allocator<std::pair<long const ,long> > > & p0, NUISystem::CList * p1, NUISystem::CComponent * p2, CCountedPointer<NUISystem::CComponent> & p3);
+ void ConstructItemEntryPC(long p0, long p1, NUISystem::CList * p2, NUISystem::CComponent * p3, CCountedPointer<NUISystem::CComponent> & p4);
+ std::map<long,NUISystem::CComponent *,std::less<long>,std::allocator<std::pair<long const ,NUISystem::CComponent *> > > & GetItemsMenuEntries();
+ std::map<long,NUISystem::CComponent *,std::less<long>,std::allocator<std::pair<long const ,NUISystem::CComponent *> > > & GetAssignedIcons();
+ const std::vector<long,std::allocator<long> > & GetQuickAccessItems() const;
+ std::vector<long,std::allocator<long> > & GetQuickAccessItems();
+ long GetCSOpinionExpressionCount(EContextSensitiveOpinionExpression p0) const;
+ long GetLastOpinionExpression(EContextSensitiveOpinionExpression p0) const;
+ long GetLastButOneOpinionExpression(EContextSensitiveOpinionExpression p0) const;
+ virtual void RemoveItemFromInventory(long p0, long p1);
+ void OpenPCInventory();
+ void ClosePCInventory(bool p0);
+ void OpenPCMapMenu();
+ void ClosePCMapMenu();
+ void OpenPCSkillsMenu();
+ void ClosePCSkillsMenu();
+ void OpenPCInventoryMenu();
+ void ClosePCInventoryMenu();
+ void OpenPCOptionsMenu();
+ void ClosePCOptionsMenu();
+ void OpenPCPhotojournal();
+ bool HasScreenshots();
+ void ClosePCPhotojournal();
+ void OpenPCScoreboard();
+ void ClosePCScoreboard();
+ void OpenPCStatusMenu();
+ void ClosePCStatusMenu();
+ void DeleteMenuComponents();
+ void StartGameRendering();
+ void RenderGrayedScreen(float p0);
+ void CreateEditBoxActions(NUISystem::CComponent * p0, const CCharString & p1, const CCharString & p2, const CWideString & p3, bool p4, const CWideString & p5);
+ void DeactivateAllEditBoxes(bool p0);
+ void SetEditBoxValues();
+ NUISystem::CComponent * GetMousePointer();
+ bool IsQuitMenuReceivingInput() const;
+ bool IsSaveMenuReceivingInput() const;
+ bool IsLoadMenuReceivingInput() const;
+ CTCInventory::CURRENT_OPEN_MENU GetCurrentOpenMenu();
+ void OpenInventoryShortcut(long p0);
+ void SetScreenToShortcut(long p0);
+ long GetScreenToShortcut() const;
+ void AdjustVideoOptionsSliders();
+ void AdjustAudioOptionsSliders();
+ void AdjustGameplayOptionsSliders();
+protected:
+ virtual void OnItemAdded(long p0, bool p1, bool p2);
+private:
+ CCountedPointer<NUISystem::CComponent> CreateMenuDesc(const CCharString & p0);
+ CCountedPointer<NUISystem::CComponent> CreateMenuDescPC(const CCharString & p0);
+ long ThingToAssign;
+ long ThingSlotToSwap;
+ NUISystem::CComponent * PComponentSlotToSwap;
+ long ScreenToShortcut;
+ std::list<NUISystem::CEditBox *,std::allocator<NUISystem::CEditBox *> > EditBoxes;
+ std::vector<long,std::allocator<long> > QuickAccessItems;
+ std::vector<long,std::allocator<long> > ContextSensitiveItems;
+ std::vector<CFadeInFadeOutBase,std::allocator<CFadeInFadeOutBase> > ContextSensitiveFadeTimes;
+ static std::vector<CTCInventory::CContextSensitiveItem,std::allocator<CTCInventory::CContextSensitiveItem> > ContextSensitivePreferredItems;
+ std::vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle> > InventoryMainPrimitiveHandles;
+ std::vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle> > QuickAccessPrimitiveHandles;
+ std::vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle> > QuickAccessUnusableIconPrimitiveHandles;
+ CRightHandedSet OldObjectRHSet;
+ float OldRotationAngle;
+ CRightHandedSet CurrentObjectRHSet;
+ float CurrentRotationAngle;
+ long ItemRHSetsApplyTo;
+ bool EnableQuickAccessAssign;
+ bool EnableQuickAccessRemove;
+ bool QuickAccessFlashState;
+ long QuickAccessFlashTimer;
+ bool ContextSensitiveUpdate;
+ std::vector<long,std::allocator<long> > NumberOfCSOpinionExpressions;
+ std::vector<long,std::allocator<long> > LastCSOpinionExpression;
+ std::vector<long,std::allocator<long> > LastButOneCSOpinionExpression;
+ std::map<long,NUISystem::CComponent *,std::less<long>,std::allocator<std::pair<long const ,NUISystem::CComponent *> > > ItemsMenuEntries;
+ std::map<long,NUISystem::CComponent *,std::less<long>,std::allocator<std::pair<long const ,NUISystem::CComponent *> > > AssignedIcons;
+ NUISystem::CComponent * PMouse_Pointer;
+ NUISystem::CComponent * PTop_Level_List;
+ CTCInventory::CURRENT_OPEN_MENU CurrentOpenMenu;
+ float AccumFadeTime;
+public:
+ CTCInventory & operator=(const CTCInventory & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CTCInventory)==552);
+#endif
+#else
 #ifdef FABLE_RETAIL_CTCINVENTORY
 #ifndef FABLE_ENGINE_CTCINVENTORY_RETAIL_H
 #define FABLE_ENGINE_CTCINVENTORY_RETAIL_H
@@ -311,3 +521,5 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventory, AccumFadeTime) == 0x220);
 
 #endif // FABLE_ENGINE_CTCINVENTORY_H
 #endif // FABLE_RETAIL_CTCINVENTORY
+
+#endif

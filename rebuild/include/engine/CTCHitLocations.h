@@ -1,5 +1,46 @@
 #ifndef FABLE_ENGINE_CTCHITLOCATIONS_H
 #define FABLE_ENGINE_CTCHITLOCATIONS_H
+#ifdef FABLE_RETAIL_HITLOCATIONS_BOUND
+#include "engine/CTCBase.h"
+#include "engine/NHitLocations_CHitLocation.h"
+#include "engine/CDefPointer.h"
+#include "stlport/fable_containers.h"
+class CHitLocationsDef;
+class CTCHitLocations:public CTCBase {
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_HIT_LOCATIONS;}
+ virtual ETCInterfaceType GetInterfaceType() const;
+ static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
+ static CCharString FABLE_FASTCALL StatGetClassTypeName();
+ virtual CCharString GetClassTypeName() const;
+ CTCHitLocations(const CTCHitLocations & p0);
+ CTCHitLocations(CThing & p0);
+ virtual void OnInitialActivate();
+ NHitLocations::CHitLocation * GetPPhysicsFirstHitLocationIntersectionWithFiniteLine(const C3DVector & p0, const C3DVector & p1, C3DVector & p2, C3DVector & p3, float p4);
+ const NHitLocations::CHitLocation * GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector & p0, const C3DVector & p1, C3DVector & p2, C3DVector & p3, float p4) const;
+ NHitLocations::CHitLocation * GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector & p0, const C3DVector & p1, C3DVector & p2, C3DVector & p3, float p4);
+ const NHitLocations::CHitLocation * GetPCombatFirstHitLocationIntersectionWithTriangle(const std::vector<C3DVector,std::allocator<C3DVector> > & p0, C3DVector & p1, C3DVector & p2, float p3) const;
+ NHitLocations::CHitLocation * GetPCombatFirstHitLocationIntersectionWithTriangle(const std::vector<C3DVector,std::allocator<C3DVector> > & p0, C3DVector & p1, C3DVector & p2, float p3);
+ const NHitLocations::CHitLocation * GetPCombatFirstHitLocationPosInside(const C3DVector & p0) const;
+ NHitLocations::CHitLocation * GetPCombatFirstHitLocationPosInside(const C3DVector & p0);
+ void SetPDefaultHitLocation(NHitLocations::CHitLocation * p0);
+ const NHitLocations::CHitLocation * GetPDefaultHitLocation() const;
+ NHitLocations::CHitLocation * GetPDefaultHitLocation();
+ NHitLocations::CHitLocation * GetPHitLocationWithDefName(const CCharString & p0);
+ void GetBoundingSphere(C3DVector & p0, float & p1, bool p2) const;
+private:
+ std::vector<std::pair<NHitLocations::CHitLocation,long>,std::allocator<std::pair<NHitLocations::CHitLocation,long> > > HitLocations;
+ NHitLocations::CHitLocation * PDefaultHitLocation;
+ CDefPointer<CHitLocationsDef const > PDef;
+ mutable C3DVector BoundingSphereOffsetFromPos;
+ mutable float BoundingSphereRadius;
+ mutable bool CachedBoundingSphere;
+public:
+ virtual ~CTCHitLocations();
+ CTCHitLocations & operator=(const CTCHitLocations & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CTCHitLocations)==52);
+#else
 // New header (chunk 724 round 3, row 0x008771A0). CTCHitLocations : CTCBase (RTTI vtable 0x012434E4). Ego_r TPI size 0x38 with a
 // Dinkumware vector; retail STLport vector is 0xC: HitLocations +0x0C, PDefaultHitLocation +0x18, PDef +0x1C,
 // BoundingSphereOffsetFromPos +0x20, BoundingSphereRadius +0x2C, CachedBoundingSphere +0x30 (sizeof 0x34).
@@ -28,4 +69,5 @@ private:
     bool CachedBoundingSphere;                                        // +0x30
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHitLocations) == 0x34);
+#endif
 #endif

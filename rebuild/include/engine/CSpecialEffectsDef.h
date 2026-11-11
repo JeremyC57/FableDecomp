@@ -1,5 +1,35 @@
 #ifndef FABLE_ENGINE_CSPECIALEFFECTSDEF_H
 #define FABLE_ENGINE_CSPECIALEFFECTSDEF_H
+#ifdef FABLE_RETAIL_SKYBEAM_ORIGINAL
+#include "engine/CSubDefClassBase.h"
+#include "fable_string.h"
+#include "stlport/fable_map.h"
+class CSpecialEffectsStringMap {public:std::map<unsigned long,long> ContainmentMap;};
+class CSpecialEffectsDef:public CSubDefClassBase {
+public:
+ virtual void Copy(const CDefClassBase * p0);
+ virtual unsigned long GetSizeofClass();
+ static CDefClassBase * FABLE_FASTCALL Alloc();
+ static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CSpecialEffectsDef",-1);}
+ CSpecialEffectsStringMap SpecialEffectsMap;
+ virtual void Transfer(CPersistContext & p0);
+ bool GetEffectFromString(const CCharString & p0, long & p1) const;
+ CSpecialEffectsDef(const CSpecialEffectsDef & p0);
+ CSpecialEffectsDef();
+ virtual ~CSpecialEffectsDef();
+ CSpecialEffectsDef & operator=(const CSpecialEffectsDef & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CSpecialEffectsDef)==52);
+class CCRC{public:static unsigned long FABLE_FASTCALL Calc(unsigned long,const void*,unsigned long);};
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+inline bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name,long& effect)const {
+ std::map<unsigned long,long>::const_iterator it=SpecialEffectsMap.ContainmentMap.find(CCRC::Calc(0,name.GetAsCharArray(),name.GetLength()));
+ if(it!=SpecialEffectsMap.ContainmentMap.end()){effect=it->second;return true;}
+ return false;
+}
+#else
 #include "engine/CSubDefClassBase.h"
 class CCharString;
 #include "stlport/fable_map.h"
@@ -35,5 +65,6 @@ inline __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const C
     }
     return false;
 }
+#endif
 #endif
 #endif

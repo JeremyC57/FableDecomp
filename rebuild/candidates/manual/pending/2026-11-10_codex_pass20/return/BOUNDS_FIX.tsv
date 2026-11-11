@@ -1,0 +1,6 @@
+address	name	evidence
+0x006D18A0	CTCWife::Marry	real length 1330 (assigned 1344): 14 trailing alignment bytes (Codex pass 20)
+0x00785620	CTCVolumeContainmentTracker::Update	real length 1301 (assigned 1312): 11 trailing alignment bytes
+0x007677E0	CTCObjectAugmentations::AttachAugmentationParticles	real length 1467 (assigned 1472): 5 trailing alignment bytes
+0x0076EFA0	CTCWeaponTrail::UpdateWeaponTrails	real length 1312 (assigned 1888): the following span holds 24 other entry points plus padding
+0x007F6200	CTCTargetingBase (parked row)	real length 1458 (assigned 1472): 14 trailing alignment bytes

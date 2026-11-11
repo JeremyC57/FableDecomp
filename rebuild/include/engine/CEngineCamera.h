@@ -19,6 +19,15 @@ public:
  // Opt-in (chunk 1020, row 0x00BCF4F0 CEngineInternalPrimitive2DAnimatedMesh::Initialise): FableWin.pdb
  // ?TransformScreenXYLinearZToView@CEngineCamera@@QBEXAAVC3DVector@@@Z, ?TransformViewToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z and
  // ?TransformScreenXYLinearZToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z (debug-only COMDATs: expanded in release, 0x00BCF5A5..0x00BCF65A).
+#ifdef FABLE_RETAIL_CENGINECAMERA_MESH2D_ORIGINAL
+ // Original donor02e79bb0 and native00bcf54d: depth times input, then projection scale/divisor.
+ void TransformDistScreenToViewHorizontal(float z,float& distance)const{const float scaled=OneOverHalfWindowWidth*distance*z;distance=scaled/HomogenousViewScaleX;}
+ void TransformScreenXYLinearZToView(C3DVector& point)const{
+  point.X=(point.X-WindowCenterX)*OneOverHalfWindowWidth*point.Z;
+  point.Y=(WindowCenterY-point.Y)*OneOverHalfWindowHeight*point.Z;}
+ void TransformViewToWorld(C3DVector& point)const{InverseViewTransform.TransformPoint(point);}
+ void TransformScreenXYLinearZToWorld(C3DVector& point)const{TransformScreenXYLinearZToView(point);TransformViewToWorld(point);}
+#else
  FABLE_FORCEINLINE void TransformScreenXYLinearZToView(C3DVector& point)const{
   point.X=(point.X-WindowCenterX)*OneOverHalfWindowWidth*point.Z;
   point.Y=(WindowCenterY-point.Y)*OneOverHalfWindowHeight*point.Z;}
@@ -28,6 +37,7 @@ public:
  // to view space at depth z, in place through the reference (0x00BCF54D..0x00BCF566: `fld [cam+0C0h] ; fmul [dist] ; fmul z ;
  // fdiv [cam+0D4h] ; fstp [dist]`).
  void TransformDistScreenToViewHorizontal(float z,float& distance)const{distance=OneOverHalfWindowWidth*distance*z/HomogenousViewScaleX;}
+#endif
 #endif
 private:
  const CCamera* GameCamera;

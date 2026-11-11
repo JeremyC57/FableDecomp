@@ -60,6 +60,10 @@ public:
     // Original Ego_r complete nested type2c092 and FableWin donor020ed41c.
     class CActiveQuest {
     public:long GetID()const{return ID;}
+#ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
+        // Retail opt-in (Codex pass20): both PDBs and native004b29d4 use QuestName+0x30.
+        const CCharString& GetName()const{return QuestName;}
+#endif
     private:
         long ID;
         const CScriptInfo* PScriptInfo;
@@ -86,7 +90,12 @@ public:
     // (TransferBoasts 0x004B094A..0x004B0978: ScriptName, Text, Title, then Failed / Completed / GroupIndex zeroed; ID, Cost,
     // Reward and Evil left alone); the copy constructor is out of line (0x004B73A0).
     class CBoast {
+#ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
+    // Original Ego_r full CBoast: data private, public accessors; native node payload32 bytes.
+    private:
+#else
     public:
+#endif
         long        ID;                                      // +0x00
         long        Cost;                                    // +0x04
         long        Reward;                                  // +0x08
@@ -97,6 +106,9 @@ public:
         bool        Failed;                                  // +0x19
         bool        Completed;                               // +0x1a
         long        GroupIndex;                              // +0x1c
+#ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
+    public:
+#endif
         CBoast() : Failed(false), Completed(false), GroupIndex(0) {}   // FableWin ??0CBoast@CQuestManager@@QAE@XZ (inline in retail)
         CBoast(const CBoast& other);                         // 0x004B73A0 ??0CBoast@CQuestManager@@QAE@ABV01@@Z
         // FableWin.pdb accessors (no Ego_r copy: inline in retail; TransferBoasts expands them). SetScriptName takes the
@@ -122,6 +134,20 @@ public:
     CBoast* GetBoast(long,CCharString);
     void RemoveBoast(long,CCharString);
     void SetBoastAsMade(long,CCharString);
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
+    // Retail opt-in (Codex pass20): Ego_r/FableWin leaves and donor01c4c490/01c589f0.
+    void PostBoastTransfer();
+#ifdef FABLE_RETAIL_CQUESTMANAGER_FAILUREBOOKKEEP
+    // Retail opt-in (Codex pass20): both original PDB types and donor01c57120.
+    class CQuestCard {public:CCharString DefName,ScriptName;bool Replayable;long FeatIndex;};
+    void RemoveAvailableQuestCardType(const CCharString&);
+    void SetQuestCardsNeedUpdating(bool value){QuestCardsNeedUpdating=value;}
+    bool OnQuestFinishScreenDisplayed(const CCharString&);
+    CThing* GetActiveQuestCardFromScriptName(const CCharString&)const;
+    void RemoveActiveQuestCardAndMakeAvailableAgain(const CCharString&,bool);
+#endif
+    void GetAcceptedBoastsForScript(const CCharString&,std::list<CBoast>&)const;
 #endif
     const std::list<CIntelligentPointer<CThing> >& GetActiveQuestCards() const { return ActiveQuestCards; }
     const std::list<CIntelligentPointer<CThing> >& GetCompletedQuestCards() const { return CompletedQuestCards; }
@@ -244,6 +270,21 @@ private:
     std::vector<CCharString> CreatureGenerationDisabledQuests;   // +0x40
     std::vector<CCharString> BetweenStartAndEndScreenQuests; // +0x4c (Ego_r vector<CCharString>)
     std::list<CQuestCard> AvailableQuestCardTypes;           // +0x58
+#elif defined(FABLE_RETAIL_CQUESTMANAGER_POSTBOAST)
+private:
+    // Full original owner retained. Unused composite objects stay opaque at their native sizes.
+    CCountedPointer<class CGameScriptThingManager> PGameScriptThingManager;
+    unsigned char RuntimeQuestPersistence[0x20]; // NQuestManager::CRuntimeQuestPersistence
+    std::vector<CCharString> RegisteredQuestNames;
+    std::list<CCountedPointer<CActiveQuest> > ActiveQuests;
+    std::list<std::pair<CCharString,unsigned long> > PendingQuestsToDeactivate;
+    std::vector<CCharString> CreatureGenerationDisabledQuests;
+    std::vector<CCharString> BetweenStartAndEndScreenQuests;
+#ifdef FABLE_RETAIL_CQUESTMANAGER_FAILUREBOOKKEEP
+    std::list<CQuestCard> AvailableQuestCardTypes;
+#else
+    unsigned char AvailableQuestCardTypes[4]; // std::list<CQuestCard>
+#endif
 #elif defined(FABLE_RETAIL_CQUESTMANAGER_BOASTUI)
 private:
     unsigned char _pad_0x04[0x2c - 0x04];                    // +0x04 PGameScriptThingManager, RuntimeQuestPersistence
@@ -276,8 +317,24 @@ private:
 #else
 #ifdef FABLE_RETAIL_CQUESTMANAGER_BOASTMADE
     unsigned char _pad_0x74[8];
+#ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
+    // Original PDB reference, native receiver+0x7c; same storage as the old pointer branch.
+    class CWorld& World;
+#else
     class CWorld* World;
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_POSTBOAST
+    unsigned char _pad_0x80[8];
+    CActiveQuest* PQuestCurrentlyRunning;
+#ifdef FABLE_RETAIL_CQUESTMANAGER_FAILUREBOOKKEEP
+    bool DayActive,NightActive,WorldDestructed,QuestCardsNeedUpdating;
+    unsigned char _pad_0x90[0xb4-0x90];
+#else
+    unsigned char _pad_0x8c[0xb4-0x8c];
+#endif
+#else
     unsigned char _pad_0x80[0xb4-0x80];
+#endif
 #else
 #ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
     unsigned char _pad_0x74[0x88-0x74];

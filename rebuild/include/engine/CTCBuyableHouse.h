@@ -11,6 +11,9 @@ class CBuyableHouseDef;
 class CTCBuyableHouse : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BUYABLE_HOUSE; }
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void SetWifeLivingHere(CThing*);
+#endif
     bool GetOwnedByPlayer() const { return OwnedByPlayer; }
     bool GetRented() const { return Rented; }
 private:

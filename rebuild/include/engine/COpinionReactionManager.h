@@ -12,9 +12,21 @@
 #include "engine/CDefPointer.h"
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+enum EOpinionAttitudeType;enum EOpinionReactionType;class CTCOpinionSource;
+#endif
 class CThing; class CWorld; class CThingAICreature; class CReactionMatch; class COpinionReactionManagerDef;
 class COpinionReactionManager {
 public:
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing&)const;
+    EOpinionAttitudeType GetAttitudeType(const CThing& thing,const CTCOpinionSource* source)const {
+        return source?(EOpinionAttitudeType)GetAttitudeOrReactionType(thing,true,AttitudeMask,source):GetThingAttitudeToPlayer(thing);
+    }
+private:
+    EOpinionReactionType GetAttitudeOrReactionType(const CThing&,bool,const bool*,const CTCOpinionSource*)const;
+public:
+#endif
     void SetThingOpinionSource(CThing* thing);                           // 0x00700770
 private:
     CDefPointer<const COpinionReactionManagerDef> PDef;                  // +0x000

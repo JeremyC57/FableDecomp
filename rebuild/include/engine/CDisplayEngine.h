@@ -15,6 +15,9 @@
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES
 class CGameEventPackage;
 #endif
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+class CRGBColour;
+#endif
 class CCPPointerInfo;
 class CDisplayViewManager;
 class CGameDefinitionManager;
@@ -28,6 +31,9 @@ class CWorld;
 #pragma pack(push, 1)
 class CDisplayEngine {
 public:
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void StartScreenFadeOut(float,float,CRGBColour,float);
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES
     // Retail opt-in (Codex pass 17): both PDBs/native00434A60/00434F60.
     void ConfirmFeedbackGameEventPackage(const CGameEventPackage*);

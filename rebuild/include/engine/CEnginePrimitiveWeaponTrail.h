@@ -9,6 +9,11 @@ public:
     enum EWeaponTrailType { WEAPON_TRAIL_TYPE_WEAPON, WEAPON_TRAIL_TYPE_PROJECTILE, WEAPON_TRAIL_TYPE_CREATURE, WEAPON_TRAIL_TYPE_TRAP };
     class CWeaponTrailEntry {
     public:
+#ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
+        // Original constructor: native0076de20, both PDB signatures and member order.
+        CWeaponTrailEntry(const C3DVector& top,const C3DVector& bottom,float time):Top(top),Bottom(bottom),CreationTime(time){}
+        CWeaponTrailEntry(){}
+#endif
         C3DVector Top;
         C3DVector Bottom;
         float CreationTime;

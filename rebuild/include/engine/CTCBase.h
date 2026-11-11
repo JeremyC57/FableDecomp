@@ -137,6 +137,9 @@ public:
 #endif
     // Retail opt-in addition (chunk 728): the public inline parent accessors, FableWin.pdb only (?GetParentThing@CTCBase@@QAEAAVCThing@@XZ
     // 0x01AA5F60 / ?GetParentThing@CTCBase@@QBEABVCThing@@XZ 0x01C91790; inline in Ego_r and retail, which read ParentThing +0x04 in place).
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void AddToGlobalTCs();
+#endif
     CThing& GetParentThing() { return *ParentThing; }
     const CThing& GetParentThing() const { return *ParentThing; }
 protected:

@@ -21,6 +21,9 @@ public:
     // Retail opt-in (Codex pass19): FableWin GetPFaction and original+24 field.
     const CFaction* GetPFaction() const { return PFaction; }
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    static bool FABLE_FASTCALL AreThingsEnemies(const CThing&,const CThing&);
+#endif
     void SetFaction(const CCharString& faction);
 protected:
     virtual void OnSerialise(CPersistContext&,bool);

@@ -8,6 +8,10 @@
 #endif
 class CThing;
 class CAnimateThing {public:
+#ifdef FABLE_RETAIL_LOOK_HEAD_ANIM
+ CAnimSet* GetFirstCombinationAnimFromType(long);
+ void AddCombinationAnim(const CAnimInit&,long,long,bool,bool);
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
  // Retail opt-in (Codex pass17): both PDBs; donor1E964F0 called in actual helper.
  bool AnimsCanBeIgnored()const;

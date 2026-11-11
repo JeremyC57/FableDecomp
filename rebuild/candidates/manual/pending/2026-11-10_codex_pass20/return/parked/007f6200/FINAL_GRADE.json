@@ -1,0 +1,28 @@
+{
+  "address": "007f6200",
+  "strategy": "final_merged_overlay",
+  "leaf": "?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@@QAEX_N@Z",
+  "flags": [],
+  "source_sha256": "1edb9dd630c105741ba55a76719737799c043e62de190bd379d86dada79c6606",
+  "status": "DIFFER",
+  "assigned_extent": 1472,
+  "extent_override": 1458,
+  "compile_seconds": 0.7336113452911377,
+  "emitted_leaf": "?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@@QAEX_N@Z",
+  "object_size": 1458,
+  "retail_size": 1458,
+  "first_difference": 31,
+  "strict_instruction_ratio": 0.8641975308641975,
+  "strict_instruction_counts": [
+    446,
+    445
+  ],
+  "strict_hunks": 36,
+  "loose_instruction_ratio": 0.9562289562289562,
+  "loose_instruction_counts": [
+    446,
+    445
+  ],
+  "loose_hunks": 22,
+  "audit": "Final leaf bytes, relocation names/offsets/types and all previously emitted text helper bodies identical to separately audited selected object. Exact compiled symbol recorded; object table was inspected."
+}

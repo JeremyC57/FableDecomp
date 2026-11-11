@@ -15,6 +15,9 @@ class CTCShop;                                                           // chun
 #endif
 class CTCShopKeeper : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void DetachFromShop();
+#endif
     CThingCreatureBase* GetCustomer() const;                             // 0x00798D80
 #ifdef FABLE_RETAIL_CTCSHOPKEEPER_SHOP
     // Retail opt-in (chunk 795, row 0x0092FAB0): the interface key (TCI_SHOP_KEEPER, the row's inline GetTC key 0x90) and Ego_r.pdb

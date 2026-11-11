@@ -17,6 +17,9 @@
 class CPersistContext;
 #endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_MARRIAGE
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+class CThingBuilding;
+#endif
 class CThingAICreature;
 enum EMarriageState;                                         // MS forward enum (the row defines the enumerators it uses)
 #endif
@@ -24,6 +27,17 @@ class CTCHeroStats : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
+#ifdef FABLE_RETAIL_CTCHEROSTATS_CRIME_REPORT
+    // Both original PDB types and native0057d9fd/0057daf5/0057dc22.
+    void UpdateOutstandingCrimes(const CCharString&);
+    void GetOutstandingFineAndFramesLeft(const CCharString&,long&,long&);
+    void GetCrimeReport(const CCharString&,CWideString&,bool);
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_FAILEDQUEST
+    // Original FW01c5c050/70; Ego typed NumFailedAQuest, native+b8.
+    long GetNumFailedAQuest()const{return NumFailedAQuest;}
+    void SetNumFailedAQuest(long value){NumFailedAQuest=value;}
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_FOLLOWER_LIMIT
     // Original FableWin01e6e164/01e69a40 and native006d4f2a/0057ab14.
     long GetRenownLevel()const{return RenownLevel;}
@@ -72,6 +86,9 @@ public:
     // (private; retail 0x0057BC6E, called by CTCWife). Declaration only: no layout change.
 private:
     friend class CTCWife;
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void AddNewMarriage(const CThingAICreature*,const CThingBuilding*,EMarriageState);
+#endif
     void SetMarriageState(const CThingAICreature* wife, EMarriageState state);   // 0x0057BC6E
 public:
 #endif

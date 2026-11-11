@@ -1,5 +1,137 @@
 #ifndef FABLE_ENGINE_CCOMBATACTIONBASE_H
 #define FABLE_ENGINE_CCOMBATACTIONBASE_H
+#if defined(FABLE_RETAIL_LEADER_INITIALISE) || defined(FABLE_RETAIL_KRAKEN_ROAR) || defined(FABLE_RETAIL_BRIAR_ROSE)
+#include "engine/CCreatureActionBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CIntelligentPointer.h"
+class CCombatManager;class CMeshDataBank;class CMeleeCombatAbilityDef;class CThingGameObject;
+class CCombatActionBase:public CCreatureActionBase {
+public:class CStrikeEvent;
+public:
+ CCombatActionBase(const CCombatActionBase & p0);
+protected:
+ CCombatActionBase(long p0);
+public:
+ CCombatActionBase(CThingCreatureBase & p0, long p1, const CSoundPair & p2);
+ CCombatActionBase(CThingCreatureBase & p0, CThing & p1, long p2, const CSoundPair & p3);
+ static CCountedPointer<CCombatActionBase> FABLE_FASTCALL GetPCombatActionFromEnum(EActionRegisteredType p0, CThingCreatureBase & p1, CThingCreatureBase & p2);
+ virtual void FrameUpdate();
+ virtual void UpdateActionRunningTime();
+ virtual float GetFrameUpdateTime() const;
+ virtual void PerformAction();
+ virtual void Initialise();
+ virtual long GetAnimationIndex() const;
+ virtual float GetTotalTimeSeconds() const;
+ virtual long GetAnimationTransitionInTime() const;
+ virtual long GetAnimDelayTime() const;
+ virtual bool AllowsCombinationAnims() const;
+ virtual bool IsActionReadyForInterruption() const;
+ virtual bool IsActionReadyForInterruptionByMovement(const C3DVector & p0) const;
+ virtual unsigned long GetAnimExtraFlags() const;
+ virtual void OnBlowBlocked(bool p0);
+ float GetAnimMovementDistance() const;
+ virtual C3DVector GetNextPos() const;
+ bool IsThingInStruckThingList(const CThingGameObject & p0) const;
+ virtual bool IsStrikeAction() const;
+ virtual bool IsStrikeEvent(long p0) const;
+ virtual bool IsStrikeEventActive() const;
+ virtual bool IsStrikeEventFinishedBeingActive() const;
+ virtual bool IsToUseRotationInAnimation() const;
+ virtual bool IsToAlignWithGroundNormal() const;
+ virtual bool IsToFaceTarget() const;
+ virtual bool IsToFaceTargetAtStart() const;
+ virtual C3DVector GetActionMovementVector() const;
+ virtual bool IsToPerformActionOnStrike() const;
+ virtual bool IsToHitProneThings() const;
+ virtual float GetIsToFaceTargetCone() const;
+ virtual float GetIsToFaceTargetMinDist() const;
+ CThing * GetWeaponUsedInStrikeAction() const;
+ virtual CCharString GetStrikeEventHelperName() const;
+ void SetCombatAnimation(const std::vector<CAnimationEntry const *,std::allocator<CAnimationEntry const *> > & p0);
+ void SetCombatAnimation(const CCharString & p0);
+ const CThing * GetTarget() const;
+ void SetTarget(CThing & p0);
+ virtual float GetDamageMultiplier() const;
+protected:
+ virtual CCreatureActionBase * Clone() const;
+ const CMeshDataBank * PeekMeshBank() const;
+ void UpdateFacingDirection();
+ void InitialiseActionTimes();
+ CCombatManager & GetCombatManager();
+ const CCombatManager & GetCombatManager() const;
+ void PerformPossibleDamageAction(float p0);
+ void ProcessPossibleCreatureStrikeEvent(float p0, const std::pair<C3DVector,C3DVector> & p1, const std::pair<C3DVector,C3DVector> & p2, CThingGameObject & p3);
+ void ProcessPossibleObjectStrikeEvent(float p0, const std::pair<C3DVector,C3DVector> & p1, const std::pair<C3DVector,C3DVector> & p2, CThingGameObject & p3);
+ void ProcessPossibleShotStrikeEvent(float p0, const std::pair<C3DVector,C3DVector> & p1, const std::pair<C3DVector,C3DVector> & p2, CThingGameObject & p3);
+ void ProcessPossibleProneThingsStrikeEvent(float p0, const std::pair<C3DVector,C3DVector> & p1, const std::pair<C3DVector,C3DVector> & p2, CThingGameObject & p3);
+ void SetForcedMoveToPos(const C3DVector & p0);
+ void ProcessStrikeEvents();
+ bool IsStrikeActionHitThing() const;
+ bool IsStrikeActionHitCreature() const;
+ virtual void UpdateActionMoveToPos();
+ virtual bool IsVitalStrike() const;
+ virtual bool IsKnockdownStrike() const;
+ virtual bool IsBlockCounter() const;
+ virtual bool IsMeleeFlourish() const;
+ virtual bool IsDecapitatingAttack() const;
+ virtual bool IsBlockable() const;
+ virtual bool IsUsingAnimationMovement() const;
+ virtual bool IsMovementUsingPhysics() const;
+ virtual void InitialiseActionMovement();
+ virtual void FinishAction();
+ static CSoundPair FABLE_FASTCALL GetSoundPair(const CThingCreatureBase & p0, const CCharString & p1);
+ float GetTimeThroughCurrentAnimation() const;
+ float GetLastTimeThroughCurrentAnimation() const;
+ void ClearCombatActionVariables();
+ void SetUpCombatAnimationNotes();
+ void SetupCombatStrikeEvents();
+ void SetupCombatInterrupts();
+ void ProcessPlayerControl();
+ virtual CTCWeaponTrail * GetWeaponTrailUsedInStrikeAction(long & p0) const;
+ virtual bool IsActionWithStrikeEventHelperName() const;
+ CCombatActionBase::CStrikeEvent * GetPActiveStrikeEvent();
+ const CCombatActionBase::CStrikeEvent * GetPActiveStrikeEvent() const;
+ long GetLastStrikeEventEndTime() const;
+ void SetupCombatAnimation();
+ void ResetMeleeCombatAbilityEffects();
+ void SetPMeleeAbility(CDefPointer<CMeleeCombatAbilityDef const > p0);
+ CDefPointer<CMeleeCombatAbilityDef const > GetPMeleeAbility() const;
+ virtual void OnAnimationLoaded();
+ CIntelligentPointer<CThing> PTarget;
+ CIntelligentPointer<CThing const > PCameraPoint;
+ CDefPointer<CMeleeCombatAbilityDef const > PMeleeAbilityDef;
+ std::list<CCountedPointer<CCombatActionBase::CStrikeEvent>,std::allocator<CCountedPointer<CCombatActionBase::CStrikeEvent> > > StrikeEvents;
+ long LastStrikeEventEndTime;
+ float StrikeEventInterruptTime;
+ float StrikeEventResetComboTime;
+ long MovementEventInterruptFrame;
+ float StrikeSpeedVariationStartTime;
+ float StrikeSpeedVariationEndTime;
+ bool HasStrikeEventInterrupt;
+ bool HasStrikeEventResetCombo;
+ bool HasMovementEventInterrupt;
+ bool StrikeEventInterruptActive;
+ bool MovementEventInterruptActive;
+ bool PreferredFinalPosSet;
+ bool HasPerformAction;
+ bool SentMissedEvent;
+ bool HasResetMeleeCombatAbilityEffects;
+ long LastAnimStage;
+ bool HitThing;
+ bool HitCreature;
+ long FrameUpdatePauseFrames;
+ std::vector<CAnimationEntry const *,std::allocator<CAnimationEntry const *> > CombatAnimations;
+ long ActiveStrikeEventIndex;
+ CIntelligentPointer<CThing> LastWeaponUsedInStrike;
+private:
+ C3DVector PreferredMovementVector;
+public:
+ virtual ~CCombatActionBase();
+ CCombatActionBase & operator=(const CCombatActionBase & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CCombatActionBase)==276);
+#else
 #include "engine/CCreatureActionBase.h"
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
 // Retail opt-in (chunk 796, row 0x00951FB0 CAIStateGroup_JackDragon::UpdateHover): Ego_r.pdb
@@ -80,4 +212,5 @@ protected: unsigned char _pad_0xa8[0x6c];
 };
 #endif
 FABLE_STATIC_ASSERT(sizeof(CCombatActionBase)==0x114);
+#endif
 #endif

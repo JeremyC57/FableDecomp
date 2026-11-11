@@ -1,0 +1,35 @@
+address	name	evidence
+00405220	TransferIMEColour	Codex pass 20: leaf ?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z
+004B2280	CQuestManager::SetQuestAsFailed	Codex pass 20: leaf ?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z
+0057DC22	CTCHeroStats::GetCrimeReport	Codex pass 20: leaf ?GetCrimeReport@CTCHeroStats@@QAEXABVCCharString@@AAVCWideString@@_N@Z
+005F64DD	CTCInventoryAbilities::CycleAssignedAbilities	Codex pass 20: leaf ?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z
+0062BEF0	CWorld::EAUseProjectileWeapon	Codex pass 20: leaf ?EAUseProjectileWeapon@CWorld@@QAEXPBVCGameEvent@@@Z
+00641AE0	CTCLight::DrawFlare	Codex pass 20: leaf ?DrawFlare@CTCLight@@IAEXJABVC3DVector@@AAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@4@@Z
+0064619F	NPlayerGui::CCrimeStatBar::DrawStatBox	Codex pass 20: leaf ?DrawStatBox@CCrimeStatBar@NPlayerGui@@MAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@JJJABVCWideString@@E_N4@Z
+0065BE6C	CTCVillage::UpdateHornTasks	Codex pass 20: leaf ?UpdateHornTasks@CTCVillage@@AAEXXZ
+006D18A0	CTCWife::Marry	Codex pass 20: leaf ?Marry@CTCWife@@QAEX_N@Z
+0071AD20	CTCEmoteIcon::DrawEmoteTypeIcon	Codex pass 20: leaf ?DrawEmoteTypeIcon@CTCEmoteIcon@@AAEXABVCEnginePrimitivePrepareInfo@@@Z
+00744FB0	CTCPerceiveThing::UpdateHearing	Codex pass 20: leaf ?UpdateHearing@CTCPerceiveThing@@AAEXXZ
+007471F0	CTCStealth::DrawPreparePrimitivesForRendering	Codex pass 20: leaf ?DrawPreparePrimitivesForRendering@CTCStealth@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+00752F30	CTCLook::UpdateHeadCreatureAnim	Codex pass 20: leaf ?UpdateHeadCreatureAnim@CTCLook@@AAEXABVCCharString@@W4ECreatureAnim@@PAVCAnimateThing@@@Z
+007677E0	CTCObjectAugmentations::AttachAugmentationParticles	Codex pass 20: leaf ?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ
+0076EFA0	CTCWeaponTrail::UpdateWeaponTrails	Codex pass 20: leaf ?UpdateWeaponTrails@CTCWeaponTrail@@QAEXXZ
+00785620	CTCVolumeContainmentTracker::Update	Codex pass 20: leaf ?Update@CTCVolumeContainmentTracker@@QAEXXZ
+0078A390	CTCHeroRangedAttacks::FireRangedWeapon	Codex pass 20: leaf ?FireRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ
+0078FAF0	CTCDivineWrath::FinalCleanup	Codex pass 20: leaf ?FinalCleanup@CTCDivineWrath@@AAEXXZ
+00794E60	CTCUnholyPower::CancelForCutscene	Codex pass 20: leaf ?CancelForCutscene@CTCUnholyPower@@QAEXXZ
+007F5AE0	CTCTargetingBase::UpdateNearestInterestingThing	Codex pass 20: leaf ?UpdateNearestInterestingThing@CTCTargetingBase@@MAEXXZ
+00813010	CTCCreatureGroup::AddNewMember	Codex pass 20: leaf ?AddNewMember@CTCCreatureGroup@@UAE_NPBVCThingAICreature@@@Z
+00815420	CTCHitLocations::GetBoundingSphere	Codex pass 20: leaf ?GetBoundingSphere@CTCHitLocations@@QBEXAAVC3DVector@@AAM_N@Z
+00846BC0	CCreatureAction_PerformExpression::FrameUpdate	Codex pass 20: leaf ?FrameUpdate@CCreatureAction_PerformExpression@@UAEXXZ
+0085CDE0	NThingMap::CThingMap::Validate	Codex pass 20: leaf ?Validate@CThingMap@NThingMap@@QAEXXZ
+008BF800	CCreatureAction_GenericLeaderCommand::Initialise	Codex pass 20: leaf ?Initialise@CCreatureAction_GenericLeaderCommand@@UAEXXZ
+008DAA80	NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam	Codex pass 20: leaf ?CreateSkyBeam@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ
+00910DF0	CAIStateGroup_MinionGuardHeardYellForHelp::Update	Codex pass 20: leaf ?Update@CAIStateGroup_MinionGuardHeardYellForHelp@@UAEXXZ
+00924B90	`anonymous namespace'::CCreatureAction_KrakenRoarLoop::FinishAction	Codex pass 20: leaf ?FinishAction@CCreatureAction_KrakenRoarLoop@?A0xe2035276@@UAEXXZ
+00934E50	CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>,CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee>_>_>	Codex pass 20: leaf ??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsNot@@@@V?$CMessageEventFilter_
+00956E70	CAIStateGroup_BriarRose::Update	Codex pass 20: leaf ?Update@CAIStateGroup_BriarRose@@UAEXXZ
+00AA39A0	C3DKeyframe::ToMatrix	Codex pass 20: leaf ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+00AB5030	CMouseDX::ResetNonExclusiveMouse	Codex pass 20: leaf ?ResetNonExclusiveMouse@CMouseDX@@IAEXXZ
+00C3D470	CCodaContext::Process	Codex pass 20: leaf ?Process@CCodaContext@@QAEXXZ
+00C3DB80	CCodaContext::Create3DSource	Codex pass 20: leaf ?Create3DSource@CCodaContext@@QAEPAVCCoda3DSource@@I@Z

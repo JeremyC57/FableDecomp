@@ -1,0 +1,28 @@
+{
+  "address": "0067e290",
+  "strategy": "final_merged_overlay",
+  "leaf": "?Transfer@CDegradableDef@@UAEXAAVCPersistContext@@@Z",
+  "flags": [],
+  "source_sha256": "4ac8ef0fad8b8dfd6271b34f83a93e61f993259eb2abb6d3f5a46490dbe0f00b",
+  "status": "DIFFER",
+  "assigned_extent": 273,
+  "extent_override": null,
+  "compile_seconds": 0.48404717445373535,
+  "emitted_leaf": "?Transfer@CDegradableDef@@UAEXAAVCPersistContext@@@Z",
+  "object_size": 273,
+  "retail_size": 273,
+  "first_difference": 92,
+  "strict_instruction_ratio": 0.8823529411764706,
+  "strict_instruction_counts": [
+    102,
+    102
+  ],
+  "strict_hunks": 10,
+  "loose_instruction_ratio": 0.9803921568627451,
+  "loose_instruction_counts": [
+    102,
+    102
+  ],
+  "loose_hunks": 4,
+  "audit": "Final leaf bytes, relocation names/offsets/types and all previously emitted text helper bodies identical to separately audited selected object. Exact compiled symbol recorded; object table was inspected."
+}

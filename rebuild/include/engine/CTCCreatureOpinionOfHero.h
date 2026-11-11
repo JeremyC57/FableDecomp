@@ -30,6 +30,9 @@
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS
 #include "stlport/fable_containers.h"
 #endif
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+enum EOpinion;
+#endif
 class COpinionOfHeroDef;
 class COpinionPersonalityDef;
 class COpinionDeedEffectsDef;
@@ -83,6 +86,17 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;                   // 21 0x00686680
     virtual CCharString GetClassTypeName() const;                        // 22 0x00686690
     virtual bool IsComponentSerialisable() const;                        // 23 0x006866C0
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void AdjustOpinionTransient(EOpinion,float,long,long,float,bool);
+    void SetOpinionReactionMask(const CCharString&);
+    void SetOpinionDeedMask(const CCharString&);
+    void SetPersonalityOverride(const CCharString&,bool);
+    void SetForcedAttitude(EOpinionAttitudeType attitude){ForcedAttitude=attitude;}
+private:
+    friend class CTCWife;
+    void ClearAllKnownDeeds();
+public:
+#endif
     bool IsWillingToAttackHeroOnOpinion() const;                         // 0x006817F0
     bool IsFactionEnemyToHeroOverriddenOnOpinion() const;                // 0x00681850
     bool IsWillingToStartFollowingHero() const;                          // 0x006818A0

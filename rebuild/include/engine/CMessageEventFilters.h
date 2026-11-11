@@ -15,12 +15,12 @@
 #include "engine/C3DVector.h"
 class CThing; class CThingAICreature;
 class CMessageEventFilter_IsOfType
-#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
+#if defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT) || defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_ORIGINAL_GUARD) || defined(FABLE_RETAIL_YELLFORHELP_UPDATE)
  : public std::unary_function<CMessageEvent,bool>
 #endif
 {
 public:
-#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
+#if defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT) || defined(FABLE_RETAIL_YELLFORHELP_UPDATE)
     CMessageEventFilter_IsOfType(EMessageEventType type):Type(type){}
 #endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
@@ -62,17 +62,44 @@ private:
 #endif
 };
 #endif
-template<class T> class CMessageEventFilter_ThingSearchFilter {
+#ifdef FABLE_RETAIL_YELLFORHELP_UPDATE
+class CMessageEventFilter_IsOriginatorAlive:public std::unary_function<CMessageEvent,bool>{
+public:
+ bool operator()(const CMessageEvent & p0) const;
+};
+class CMessageEventFilter_CanBeSeenOrHeard:public std::unary_function<CMessageEvent,bool>{
+public:
+ CMessageEventFilter_CanBeSeenOrHeard(const CThingAICreature & p0):Creature(p0){}
+ bool operator()(const CMessageEvent & p0) const;
+private:
+ const CThingAICreature & Creature;
+};
+#endif
+template<class T> class CMessageEventFilter_ThingSearchFilter
+#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_ORIGINAL_GUARD
+ : public std::unary_function<CMessageEvent,bool>
+#endif
+{
 public:
     CMessageEventFilter_ThingSearchFilter(const T& filter) : Filter(&filter) { }
     bool operator()(const CMessageEvent& event) const {
         CThingAICreature* thing = event.GetPOriginator<CThingAICreature>();
+#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_ORIGINAL_GUARD
+        // Original02b69e10 returns false on the null originator before applying the bound predicate.
+        if(!thing)return false;
+        return (*Filter)(*thing);
+#else
         return thing && (*Filter)(*thing);
+#endif
     }
 private:
     const T* Filter;                                                     // +0x00
 };
-class CThingFilter_In2DRange {
+class CThingFilter_In2DRange
+#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_ORIGINAL_GUARD
+ : public std::unary_function<CThing,bool>
+#endif
+{
 public:
     bool operator()(const CThing& thing) const;                          // 0x006A76B0
 private:

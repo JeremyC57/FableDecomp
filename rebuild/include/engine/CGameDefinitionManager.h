@@ -8,7 +8,7 @@
 #ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_HEROSTATSDEF
 class CHeroStatsDef;
 #endif
-#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_GLOBALDEF
+#if defined(FABLE_RETAIL_CGAMEDEFINITIONMANAGER_GLOBALDEF) || defined(FABLE_RETAIL_CGAMEDEFINITIONMANAGER_GLOBAL)
 class CGlobalDef;
 #endif
 class CGameDefinitionManager : public CDefinitionManager {
@@ -20,6 +20,10 @@ public:
 #ifndef FABLE_RETAIL_CGAMEDEFINITIONMANAGER
     template<class T> bool GetDef(long,CDefPointer<T>&) const;
 #endif // retail: no CGameDefinitionManager::GetDef in Ego_r.pdb / FableWin.pdb; callers reach CDefinitionManager::GetDef(long,CDefPointer<const T>*) (0x008EDFF0)
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_GLOBAL
+    // Original FW01aa0c60 returns *CDefPointer<const CGlobalDef> at donor118/nativeD0.
+    const CGlobalDef& PeekGlobalDef()const{return *PGlobalDef;}
+#endif
 #ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_HEROSTATSDEF
     // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): the hero-stats definition the native ctor zeroes in the d0..dc block,
     // read at +0xDC by CTCHeroStats::ApplyPenaltyForDeath 0x0057DE14 (landed) and by OnHit (`mov edx,[eax+0DCh]` off PeekDefinitionManager).
@@ -52,7 +56,13 @@ private:
     unsigned char _pad_0xd4[12];
 #else
 private:
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_GLOBAL
+    // PGlobalDef is descriptive: both original manager records are forward-only.
+    CDefPointer<const CGlobalDef> PGlobalDef;
+    unsigned char _pad_0xd4[12];
+#else
     unsigned char _pad_0xd0[16];
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CGameDefinitionManager)==0xe0);

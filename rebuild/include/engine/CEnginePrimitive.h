@@ -12,9 +12,21 @@
 enum EEnginePrimitiveType;
 enum EEngineInterpolationSet;
 class CEnginePrimitive {
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR
+public:
+    // Retail opt-in (Codex pass20): exact original public3-argument ctor; id is unused.
+    CEnginePrimitive(EEnginePrimitiveType type,unsigned __int64,EEngineInterpolationSet interpolation_set)
+        :Type(type),InterpolationSet(interpolation_set){}
+#else
 protected:
+#ifdef FABLE_RETAIL_STEALTH_DRAW
+public:
+    CEnginePrimitive(EEnginePrimitiveType type,unsigned __int64 id,EEngineInterpolationSet interpolation_set):Type(type),InterpolationSet(interpolation_set){}
+protected:
+#endif
     CEnginePrimitive(EEnginePrimitiveType type, EEngineInterpolationSet interpolation_set)
         : Type(type), InterpolationSet(interpolation_set) { }
+#endif
 public:
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
     EEnginePrimitiveType GetType()const{return Type;}

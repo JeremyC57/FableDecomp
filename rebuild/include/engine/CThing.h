@@ -44,6 +44,9 @@ namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
 template<class From,class To> inline To __fastcall GFDebugPDynamicCast(From value,To) { return static_cast<To>(value); }
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+class CPersistContext;class CMemoryDataInputStream;class CInterpolationInfo;class CThingInfo;class CEditEngineDrawInfo;class CThingDrawInformation;class CThingPhysicalDebugInfo;class CEnginePrimitivePrepareInfo;enum ECollideType;
+#endif
 class CThing : public CClass {
 #ifdef FABLE_ONHIT_TEST_ACCESS
     friend class COnHitFixture;
@@ -114,7 +117,55 @@ public:
     CTCDriverBase& GetTCDriver() { return *PTCDriver; }
     const CTCDriverBase& GetTCDriver() const { return *PTCDriver; }
 #endif
-#ifdef FABLE_RETAIL_CTHING_LOADSINGLE
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+public:class CSerialiseInfo;
+public:
+ virtual bool SerialiseGameState(CPersistContext & p0);
+ virtual bool ConstructFromLevelScript(const char * p0);
+ virtual bool ConstructAlreadyExistingThingFromLevelScript(const char * p0);
+ virtual bool ConstructFromGameStateScript(const char * p0);
+ virtual void CopyGameState(const CThing & p0);
+ virtual bool OnCreate();
+ virtual void InitialActivate();
+ virtual void OnInitialActivate();
+protected:
+ virtual void OnDie();
+ virtual void OnKill();
+ virtual bool PreOnKill();
+ virtual void OnSetInLimbo(bool p0);
+ virtual void CreateFromDef(const CThingBaseDef & p0);
+public:
+ virtual void ConstructFromBinarySave(CMemoryDataInputStream & p0, const CThing::CSerialiseInfo & p1);
+ virtual bool IsToBePlacedInMap() const;
+ virtual bool ValidateThing(CCharString & p0) const;
+ virtual bool WorldUpdate();
+ virtual void WorldUpdateBulletTime();
+ virtual bool RenderUpdate(const CInterpolationInfo * p0);
+ virtual bool IsEntitySerialisable() const;
+ virtual unsigned long GetChecksum() const;
+ virtual void GetInfo(CThingInfo * p0) const;
+ virtual bool DrawGetEditDrawInfo(float p0, CEditEngineDrawInfo * p1) const;
+ virtual void DrawUpdate(const CInterpolationInfo * p0);
+ virtual bool DrawIsDrawable() const;
+ virtual void SetAsDrawable(bool p0);
+ virtual bool DrawIsEditDrawable() const;
+ virtual bool DrawIsInDrawList() const;
+ virtual unsigned long DrawGetPhysicsMesh() const;
+ virtual bool DrawIsShowingFacingDirection() const;
+ virtual bool DrawIsDisplayingInformation() const;
+ virtual bool DrawGetThingDisplayInformation(CThingDrawInformation * p0) const;
+ virtual bool DrawGetPhysicsDebugInfo(CThingPhysicalDebugInfo & p0) const;
+ virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0);
+ virtual void SetThingStandingOn(CThing * p0);
+ virtual const CThing * GetThingStandingOn() const;
+ virtual CThing * GetThingStandingOn();
+ virtual long GetFloorMaterial() const;
+ virtual void OnCollision(ECollideType p0, const C3DVector & p1, const C3DVector & p2, CThing * p3);
+ virtual void OnNonKillingLevelUnload();
+ virtual void OnLevelUnload();
+ virtual bool IsFrameUpdated() const;
+ virtual void SetPositionUsingBrain();
+#elif defined(FABLE_RETAIL_CTHING_LOADSINGLE)
     // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): the CThing virtuals of vtable 0x01239ABC slots 3..16 in
     // retail slot order (catalog / rtti-vtables: 3 SerialiseGameState 0x004CD1A0, 4 ConstructFromLevelScript 0x004CAA00, 8 OnCreate
     // 0x004C9560, 9 InitialActivate 0x004C9690, 10 OnInitialActivate 0x004C97B0, 11 OnDie 0x004C7D50, 12 OnKill 0x004C7CF0,
@@ -192,6 +243,9 @@ public:
     // Declaration only: no layout change.
     void SetCutscenePauseBehaviour(ECutsceneBehaviour behaviour);         // 0x004C78A0
 #endif
+#ifdef FABLE_RETAIL_HEARING
+    long GetWorldFrameCreatedAt()const{return WorldFrameCreatedAt;}
+#endif
     unsigned __int64 GetUniqueID() const { return UniqueID; }
     long GetCurrentMapNumber() const { return CurrentMapNumber; }
     bool IsLevelLess() const;
@@ -211,7 +265,12 @@ public:
     // +0x91 run in place, `or al,2 ; mov [ecx],al` at 0x005B3C33). Body unproven beyond that store. No layout change.
     void SetAsCreatedByOwnerThingCreation(bool created) { CreatedByOwnerThingCreation = created; }
 #endif
+#ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
+    // Native0076efeb and0076f1d6 materialise the component-presence boolean.
+    bool HasTC(ETCInterfaceType type) const { const bool& found=UsingComponents.test(type); return found; }
+#else
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
+#endif
     // GetTC<T> / PeekTC<T>: __forceinline (owner decision 2026-11-01, EXTRA_RULES): Ego_r.pdb (the release build) has no
     // ??$GetTC@ / ??$PeekTC@ instantiation (FableWin.pdb, debug: 267 / 159), Fable.exe has no out-of-line copy, and plain
     // `inline` leaves calls under VC7.1's budget (0x00667450 ReactToGenericStrike: GetTC<CTCDExplosion> and

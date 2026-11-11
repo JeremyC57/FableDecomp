@@ -20,6 +20,10 @@ class CThingSearchTools;                                        // chunk 765
 class CEnginePrimitivePrepareInfo;                              // chunk 734: PreparePrimitivesForEngine's parameter
 #endif
 class CThingManager : public CClassFactory {
+#ifdef FABLE_RETAIL_STEALTH_DRAW
+private:static bool DrawPerceptionDebug;
+public:bool IsDrawingPerceptionDebug()const{return DrawPerceptionDebug;}
+#endif
 public:
     CThingManager(const CMainGameComponent&,const CGameDefinitionManager&,CWorld&,CPlayerManager&,CNavigatorManager&,unsigned long*,unsigned long,unsigned long,unsigned long);
     virtual ~CThingManager();

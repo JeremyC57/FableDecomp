@@ -35,6 +35,9 @@
 #include "engine/CDefPointer.h"
 #include "engine/ETCInterfaceType.h"
 #include "stlport/fable_map.h"
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+class CThingBuilding;
+#endif
 class CHeroMarriageDef;
 class CThingPlayerCreature;
 enum EOpinionAttitudeType;                                   // MS forward enum (the row defines the enumerators it uses)
@@ -57,7 +60,13 @@ public:
     bool IsAttractedToHero() const;                          // 0x006CFE80 ?IsAttractedToHero@CTCWife@@QBE_NXZ
     // Chunk 728 round 2: the non-virtual members GlobalUpdate / FrameUpdate call, Ego_r.pdb spellings (FableWin.pdb agrees where
     // it lists them), retail addresses from the manifest's CTCWife run (same source order as Ego_r 0x00703AA0..0x00707290).
-    void SendPauseEvent(bool pause);                         // 0x006CEBF0 ?SendPauseEvent@CTCWife@@QAEX_N@Z
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void Marry(bool instant_with_no_cutscene);
+    void ClearAllAppearanceChangedNoticed(){for(long i=0;i<16;++i)FrameNoticedChangeInAppearance[i]=0;}
+    void SendPauseEvent(bool pause);
+#else
+    void SendPauseEvent(bool pause);
+#endif                         // 0x006CEBF0 ?SendPauseEvent@CTCWife@@QAEX_N@Z
     void InitWifeAtEndOfMarriageFrescoStartFadeIn();         // 0x006CF3B0 ?InitWifeAtEndOfMarriageFrescoStartFadeIn@CTCWife@@QAEXXZ
     void InitWifeAtEndOfMarriageFrescoEndFadeIn();           // 0x006CF480 ?InitWifeAtEndOfMarriageFrescoEndFadeIn@CTCWife@@QAEXXZ
     bool IsCourtableAndNotBlockingIt() const;                // 0x006CF810 ?IsCourtableAndNotBlockingIt@CTCWife@@QBE_NXZ
@@ -132,6 +141,9 @@ public:
     // initializer/atexit destructor for 'CTCWife::CourtingAdviceGroupNames'"; 0x0121E210 builds four 4-byte elements at
     // 0x013BAB30..3C). Static members leave the instance layout unchanged.
 private:
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    CThingBuilding* FindMaritalHome()const;
+#endif
     float GetNumHoursMarriedFor() const;                     // 0x006CEC90 ?GetNumHoursMarriedFor@CTCWife@@ABEMXZ
     void FindAppropriateGift();                              // 0x006CF530 ?FindAppropriateGift@CTCWife@@AAEXXZ
     void SetAttractionIcon(bool show, float value, unsigned char type);   // 0x006CFC90 ?SetAttractionIcon@CTCWife@@AAEX_NME@Z

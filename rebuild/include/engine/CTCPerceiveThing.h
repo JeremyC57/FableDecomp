@@ -34,8 +34,13 @@ public:
  bool IsPlayerLineOfSight() const;
  bool IsPlayerExtendedLineOfSight() const;
  bool IsPlayerIgnoreFOVLineOfSight() const;
+#ifdef FABLE_RETAIL_HEARING
+ bool IsAwareOfThing()const{return AwarenessTimer!=0.0f;}
+ bool IsAwarenessOfThingDirect()const{return DirectAwareness;}
+#else
  bool IsAwareOfThing() const;
  bool IsAwarenessOfThingDirect() const;
+#endif
  bool IsDrawingPerceptionIndicator() const;
  long GetFramesSinceDirectlyPerceivedThing() const;
  void SetThingLineOfSight(bool p0);
@@ -49,7 +54,11 @@ public:
  void SetThingToPerceive(const CThing * p0);
  void SetAsDirectlyAwareOfPerceivedThing() { if(GetPerceivedThing()) { DirectAwareness=true; FramesSinceDirectlyPerceivedThing=0; SetLastAwareInfo(); } }
  void SetAsIndirectlyAwareOfPerceivedThing();
+#ifdef FABLE_RETAIL_HEARING
+ float GetSoundRadius()const{return (SoundRadius);}
+#else
  float GetSoundRadius() const;
+#endif
  float GetSmellRadius() const { return SmellRadius; }
  float GetSightRadius() const;
  float GetExtendedSightRadius() const;
@@ -147,6 +156,10 @@ public:
     void SetGiveUpChaseRadius(float radius);                             // 0x007444D0
     void ResetPerceptionVariables();                                     // 0x00744DB0
 #endif
+#endif
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PERCEIVE_THING;}
+    float GetExtendedSightRadius()const;
 #endif
     const CThing* GetPerceivedThing() const;                             // 0x007446A0
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS

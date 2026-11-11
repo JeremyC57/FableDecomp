@@ -63,7 +63,11 @@ public:
     // Chunk 754 (row 0x00945BD0 `PCookingPot = pot;`): FableWin.pdb ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z, inline in
     // retail: the item read into a local, then SetPItem (0x00A01B50 then 0x00A01B90; the destination is formed after the read,
     // rows 0x00943C20 / 0x00945BD0), not the implicit member-wise copy of PData.
+    #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    CIntelligentPointer& operator=(const CIntelligentPointer& other){SetPointer(other.GetPointer());return *this;}
+#else
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
+#endif
     // Chunk 755 row 0x00729F60 (OnInitialActivate, 0x0072A061..0x0072A06E) also uses this form; some TUs keep an out-of-line
     // copy (0x004A9760).
 #endif
@@ -94,7 +98,11 @@ private:
 #if defined(FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE)
     T* GetPointer()const{return static_cast<T*>(GetPItem());}
 #endif
+    #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    void SetPointer(T* pointer){SetPItem(pointer);}
+#else
     void SetPointer(const T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
+#endif
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
@@ -105,6 +113,10 @@ template<class T> inline bool FABLE_FASTCALL operator==(const CIntelligentPointe
 template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointer<T>& pointer,int) {
     return pointer.Get()!=0;
 }
+#endif
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+// Original FableWin025370d0 calls GetPItem then compares the raw object.
+template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointer<T>& pointer,const CBaseObject* item){return pointer.GetPItem()!=item;}
 #endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE
 // Retail opt-in (chunk 867, row 0x0064BFBA): the free comparison of a raw item with an intelligent pointer, FableWin.pdb

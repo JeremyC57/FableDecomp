@@ -11,6 +11,9 @@ class C3DVector; class CThing; enum ECombatZone;
 #endif
 class CCombatManager:public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_LEADER_INITIALISE
+ CombatDialogueManager& GetCombatDialogueManager(){return DialogueManager;}
+#endif
  void RegisterCombatant(CThingCreatureBase&,CThingCreatureBase&,bool);
  void DeregisterCombatant(CThingCreatureBase&);
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATANTINFO_INLINE

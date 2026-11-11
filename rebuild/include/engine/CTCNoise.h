@@ -1,3 +1,42 @@
+#ifdef FABLE_RETAIL_HEARING
+#ifndef FABLE_ENGINE_CTCNOISE_H
+#define FABLE_ENGINE_CTCNOISE_H
+#include "engine/CTCBase.h"
+#include "engine/CTCNoiseDef.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+// Layout: complete original 0x28463, both PDBs; size80.
+class CTCNoise:public CTCBase{
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
+ virtual ETCInterfaceType GetInterfaceType() const;
+ static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
+ static CCharString FABLE_FASTCALL StatGetClassTypeName();
+ virtual CCharString GetClassTypeName() const;
+ CTCNoise(const CTCNoise & p0);
+ CTCNoise(CThing & p0);
+ virtual void OnCreate();
+ virtual void FrameUpdate();
+ virtual bool HasFrameUpdate() const;
+ void SetCreator(const CThing & p0);
+ const CThing * GetCreator() const;
+ void SetDistanceCanBeHeardFrom(float p0);
+ float GetDistanceCanBeHeardFrom() const;
+private:
+ const CTCNoiseDef & GetDefinition() const;
+ void CreateOnceOnlyNoise();
+ void CreateContinuousNoise();
+ CTCNoiseDef Definition;
+ long LifeTimer;
+ float DistanceCanBeHeardFrom;
+ CIntelligentPointer<CThing const > Creator;
+public:
+ virtual ~CTCNoise();
+ CTCNoise & operator=(const CTCNoise & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CTCNoise)==80);
+#endif
+#else
 #ifndef FABLE_ENGINE_CTCNOISE_H
 #define FABLE_ENGINE_CTCNOISE_H
 // CTCNoise (new, chunk 765): RTTI .?AVCTCNoise@@, single base CTCBase at +0 (ghidra_out/rtti_bases.tsv). Ego_r.pdb members
@@ -19,4 +58,6 @@ protected:
     float DistanceCanBeHeardFrom;                                        // +0x44
     CIntelligentPointer<const CThing> Creator;                           // +0x48
 };
+#endif
+
 #endif

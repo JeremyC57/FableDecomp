@@ -15,6 +15,12 @@ public:
     // interface 0x10 = TCI_SOUND_PLAYER inline). A declaration with its body only: no layout change.
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SOUND_PLAYER; }
 #endif
+#ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
+    unsigned long PlayAttachedSample(const class CSoundPair&,const class CSoundInit&,bool,bool,bool);
+#endif
+#ifdef FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE
+    void StopAttachedSound(unsigned long); // Both original PDBs; native0066add0.
+#endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE
     // Opt-in (agentNF12, 2026-11-11, rows 0x0083DDC0 / 0x0083DF20): Ego_r.pdb / FableWin.pdb

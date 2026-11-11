@@ -18,6 +18,9 @@
 #include "engine/NUISystem_CComponent.h"
 #include "stlport/fable_containers.h"
 #endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST
+#include "fable_string.h"
+#endif
 class CCharString;
 class CWideString;
 class CTCQuestCompletionUI : public CTCBase {
@@ -33,6 +36,10 @@ public:
     virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&);
 #endif
     void Activate(CompletionType completion, const CCharString& scriptName, bool b1, const CWideString& summary, bool b2);   // 0x005E4740
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST
+    // Retail opt-in (Codex pass20): original PDB accessor; native004b2a6b assigns ScriptName+0x50.
+    void SetScriptName(const CCharString& script_name){ScriptName=script_name;}
+#endif
     void SaveInitialValues(const CCharString& scriptName);                                                                    // 0x005E4860
     bool IsActive() const { return Active; }                             // FableWin ?IsActive@CTCQuestCompletionUI@@QBE_NXZ
     bool IsQuitting() const { return Quitting; }                         // FableWin ?IsQuitting@CTCQuestCompletionUI@@QBE_NXZ
@@ -61,7 +68,11 @@ private:
     unsigned char QuestObjective[0x4];                                   // +0x40 CWideString
     unsigned char _pad_0x44[0x4];                                        // +0x44
     double        LastRenderTime;                                        // +0x48
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST
+    CCharString ScriptName;
+#else
     unsigned char ScriptName[0x4];                                       // +0x50 CCharString
+#endif
     unsigned char FailureReason[0x4];                                    // +0x54 CWideString
     long          GoldReward;                                            // +0x58
     long          RenownReward;                                          // +0x5c

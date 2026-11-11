@@ -11,6 +11,9 @@
 #define FABLE_VECTOR_INLINE inline
 #endif
 #include <math.h>
+#if defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+inline float FABLE_FASTCALL GFFastSqrt(float value){return sqrt(value);}
+#endif
 #include "engine/C2DCoordI.h"
 #if defined(FABLE_RETAIL_C3DVECTOR_ADD2D) || defined(FABLE_RETAIL_C3DVECTOR_TO2D)
 #include "engine/C2DVector.h"
@@ -50,9 +53,16 @@ inline float FABLE_FASTCALL GFRoot(float n){return sqrt(n);}
 // Original CTCBoss PhaseStartPos+22 independently confirms embedded alignment1.
 #pragma pack(push,1)
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+// Original FableWin01d9faf0 calls the float sqrt overload.
+inline float FABLE_FASTCALL GFFastSqrt(float n){return sqrt(n);}
+#endif
 class C3DVector {
 public:
     float X,Y,Z;
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    float GetMagnitude2D()const{return GFFastSqrt(X*X+Y*Y);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_NOT_EQUAL
     // Retail opt-in (Codex 2026-11-09): PDB inequality and native per-axis epsilon tests in 00e5e350.
     bool operator!=(const C3DVector& v) const {
@@ -78,7 +88,11 @@ public:
 #endif
     C3DVector() {}
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
+    #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+    C3DVector(const C3DVector& other){X=other.X;Y=other.Y;Z=other.Z;}
+#else
     C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}
+#endif
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
 #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
@@ -170,6 +184,10 @@ public:
     FABLE_VECTOR_INLINE float GetMagnitude()const{return GFRoot(X*X+Y*Y+Z*Z);}
 #else
     FABLE_VECTOR_INLINE float GetMagnitude()const{return (float)sqrt(GetSquaredMagnitude());}
+#endif
+#if defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+    // Original FableWin01d9faa0 GetMagnitude2D, calls single-precision sqrt helper.
+    inline float GetMagnitude2D()const {float squared=X*X;squared+=Y*Y;return GFFastSqrt(squared);}
 #endif
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
 #ifdef FABLE_RETAIL_C3DVECTOR

@@ -29,7 +29,18 @@ class CAIBrain; class CEnginePrimitivePrepareInfo;   // chunk 801
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_MESSAGERANGE
 class CMessageEvent;                                                     // chunk 765
 #endif
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+class CEngineGraphic;
+#endif
 class CThingAICreature : public CThingCreatureBase {
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+protected:
+ virtual const CEngineGraphic * GetCurrentGraphic() const;
+public:
+ virtual bool FeelsGravity() const;
+ virtual float GetFOV() const;
+#endif
+
 public:
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_ANIMEXISTS
     // Retail opt-in (agentNF9, row 0x00830F20): Ego_r.pdb / FableWin.pdb ?AnimExists@CThingAICreature@@MBE_NABVCCharString@@_N@Z (protected
@@ -110,6 +121,10 @@ public:
     // Nested opt-in (chunk 760, row 0x00946400 CAIStateGroup_PrepareMeal::IsRunnable): Ego_r.pdb HomeBuilding
     // (CIntelligentPointer<CThingBuilding>, retail +0x168: `lea ecx,[eax+168h] ; call 0x00A01B50`) and FableWin.pdb
     // ?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ (inline in retail). Needs FABLE_RETAIL_CINTELLIGENTPOINTER.
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void SetHomeBuilding(CThingBuilding*);
+    void SetWorkBuilding(CThingBuilding* thing){WorkBuilding=thing;}
+#endif
     CThingBuilding* GetHomeBuilding() const;                            // body in the includer once CThingBuilding is complete
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_SAVE
     // Retail opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb / FableWin.pdb ?Save@CThingAICreature@@UAEXAAVCCharString@@@Z

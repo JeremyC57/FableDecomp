@@ -1,3 +1,59 @@
+#ifdef FABLE_RETAIL_EXPRESSION_FRAME
+#ifndef FABLE_ENGINE_CEXPRESSIONDEF_H
+#define FABLE_ENGINE_CEXPRESSIONDEF_H
+#include "engine/CDefString.h"
+#include "engine/CParentDefClassBase.h"
+#include "engine/CDefIndex.h"
+#include "engine/EOpinionDeedType.h"
+class CPersistContext;
+#ifdef _MSC_VER
+enum EGameEventType;
+enum EExpressionInventoryType;
+#else
+enum EGameEventType{};
+enum EExpressionInventoryType{};
+#endif
+// Layout: complete original Ego18cf1/FW19641; native144 from smaller parent base.
+class CExpressionDef:public CParentDefClassBase{
+public:
+ virtual void Copy(const CDefClassBase * p0);
+ virtual unsigned long GetSizeofClass();
+ static CDefClassBase * FABLE_FASTCALL Alloc();
+ static CCharString FABLE_FASTCALL StatGetTypeName();
+ CDefString Animation;
+ CDefString AnimationInto;
+ CDefString AnimationLoop;
+ CDefString AnimationOutOf;
+ CDefString AnimationToOther;
+ CDefString AnimationToOtherInto;
+ CDefString AnimationToOtherLoop;
+ CDefString AnimationToOtherOutOf;
+ float SpriteDuration;
+ long SpriteGraphic;
+ CDefString SpriteOverrideText;
+ CDefString SoundCriteria;
+ CDefString LoopSoundCriteria;
+ CDefIndex DummyObject;
+ EGameEventType GameEventType;
+ CDefString ScriptName;
+ bool ScriptLoadResources;
+ bool DeactivateScriptAtEnd;
+ bool PerformAfterScript;
+ EOpinionDeedType OpinionDeedType;
+ bool Extendable;
+ bool SheatheWeapons;
+ bool ReplaceHeldItemWhenDone;
+ unsigned long TextTag;
+ EExpressionInventoryType ExpressionType;
+ virtual void Transfer(CPersistContext & p0);
+ CExpressionDef(const CExpressionDef & p0);
+ CExpressionDef();
+ virtual ~CExpressionDef();
+ CExpressionDef & operator=(const CExpressionDef & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CExpressionDef)==144);
+#endif
+#else
 #ifndef FABLE_ENGINE_CEXPRESSIONDEF_H
 #define FABLE_ENGINE_CEXPRESSIONDEF_H
 // CExpressionDef (new shared header, chunk 867, row 0x005F59C7 CTCInventoryAbilities::ConstructPCExpressionsList): the expression
@@ -61,3 +117,5 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CExpressionDef) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, ExpressionType) == 0x8c);
 #endif // FABLE_ENGINE_CEXPRESSIONDEF_H
+
+#endif

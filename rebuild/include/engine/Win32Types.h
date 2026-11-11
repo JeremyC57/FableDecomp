@@ -38,4 +38,12 @@ extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SE
 FABLE_STATIC_ASSERT(sizeof(GUID) == 0x10);
 FABLE_STATIC_ASSERT(sizeof(RTL_CRITICAL_SECTION) == 0x18);
 
+#ifdef FABLE_RETAIL_WIN32_MOUSE
+// Platform SDK windef.h/winuser.h, original PDB tags and native IAT entries014403a8/01440304/01440338.
+typedef struct tagPOINT {long x,y;} POINT;
+typedef struct tagRECT {long left,top,right,bottom;} RECT;
+extern "C" __declspec(dllimport) int __stdcall GetCursorPos(POINT*);
+extern "C" __declspec(dllimport) int __stdcall ClientToScreen(HWND,POINT*);
+extern "C" __declspec(dllimport) int __stdcall GetClientRect(HWND,RECT*);
+#endif
 #endif // FABLE_ENGINE_WIN32_TYPES_H

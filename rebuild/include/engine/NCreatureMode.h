@@ -1,6 +1,11 @@
 #ifndef FABLE_ENGINE_NCREATUREMODE_H
 #define FABLE_ENGINE_NCREATUREMODE_H
 // Original Ego_r TPI enum0x191c7; native OnHit compares DAZED67 and SLEEP_BED13.
+#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+#include "fable_compiler.h"
+class CThing;
+namespace NCreatureMode {bool FABLE_FASTCALL IsIncapacitated(const CThing&);}
+#endif
 namespace NCreatureMode { enum EMode {
     MODE_NULL=0,
     MODE_STAND=1,
@@ -110,5 +115,9 @@ bool __fastcall IsKnockedDown(const CThing& thing);                     // 0x008
 bool __fastcall IsUnderground(const CThing& thing);                     // 0x0085F120
 bool __fastcall IsToEvadeAllHits(const CThing& thing);                  // 0x0085FA00
 }
+#endif
+#ifdef FABLE_RETAIL_FIRE_RANGED_WEAPON
+class CThing;
+namespace NCreatureMode{bool FABLE_FASTCALL IsValidRangedWeaponTargetForShooter(const CThing&,const CThing&,float);}
 #endif
 #endif

@@ -1,0 +1,146 @@
+addr       parity           behav  name
+00405220   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00405220   RELOCATION_MATCH PASS   TransferIMEColour
+004b2280   RELOCATION_MATCH PASS   SetQuestAsFailed
+0057dc22   RELOCATION_MATCH PASS   GetCrimeReport
+005f64dd   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005f64dd   WARN RELOC_NAME: ??1?$vector@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@@std@@QAE@XZ -> 005f9f14 labelled '_global::StdList_Dtor_005f9f14'
+005f64dd   RELOCATION_MATCH PASS   CycleAssignedAbilities
+0062bef0   RELOCATION_MATCH PASS   EAUseProjectileWeapon
+00641ae0   WARN RELOC_NAME: ??1CPrimitive@NGraphicAppearance@@QAE@XZ -> 004c4160 labelled 'SPrimitiveHandleHolder_004c4160::~SPrimitiveHandleHolder_004c4160'
+00641ae0   RELOCATION_MATCH PASS   DrawFlare
+0064619f   RELOCATION_MATCH PASS   DrawStatBox
+0065be6c   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065be6c   WARN RELOC_NAME: ??0CIsHornTaskWithThisHorn@@QAE@V?$CIntelligentPointer@VCThing@@@@@Z -> 0065f0fa labelled 'CTCActionUseBuyHouse::OnCreate'
+0065be6c   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@VCIsHornTaskWithThisHorn@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@0@U10@0VCIsHornTaskWithThisHorn@@@Z -> 0065ffca labelled 'std::find_if<std::_List_iterator<CCountedPointer<CVillageTaskHorn>, std::_Nonconst_traits<CCountedPointer<CVillageTaskHorn>>>, CIsHornTaskWithThisHorn>'
+0065be6c   WARN RELOC_NAME: ?push_back@?$list@V?$CCountedPointer@VCVillageTaskHorn@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCVillageTaskHorn@@@@@Z -> 00660539 labelled 'UpdateHornTasks_LuaClosure'
+0065be6c   RELOCATION_MATCH PASS   UpdateHornTasks
+006d18a0   WARN RELOC_NAME: ?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z -> 00512210 labelled '_unattributed::AssignTarget_00512210'
+006d18a0   WARN RELOC_NAME: ?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z -> 006d3c40 labelled '_unattributed::AssignTarget_006d3c40'
+006d18a0   WARN RELOC_NAME: ?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z -> 00682140 labelled 'CTCCreatureOpinionOfHero::ApplyOpinionTransientOffset'
+006d18a0   RELOCATION_MATCH PASS   Marry
+0071ad20   RELOCATION_MATCH PASS   DrawEmoteTypeIcon
+00744fb0   WARN RELOC_NAME: ?ReactToAlerts@CTCPerceiveThing@@AAEXXZ -> 00744d00 labelled 'CTCPerceiveAlert::FindAlertEvent'
+00744fb0   RELOCATION_MATCH PASS   UpdateHearing
+007471f0   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+00752f30   RELOCATION_MATCH PASS   UpdateHeadCreatureAnim
+007677e0   RELOCATION_MATCH PASS   AttachAugmentationParticles
+0076efa0   WARN RELOC_NAME: ?IsOpen@CTCTrapBase@@QBE_NXZ -> 00787c1b labelled '_unattributed::GetTarget_00787c1b'
+0076efa0   RELOCATION_MATCH PASS   UpdateWeaponTrails
+00785620   WARN RELOC_NAME: ?CalculateBlendedLightingChannel@CTCVolumeContainmentTracker@@AAEXAAVCEnginePrimitiveThemeChannelDesc@@@Z -> 00785160 labelled 'CTCPhysicsBase_Update_CustomerInteraction'
+00785620   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00785620   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00785620   RELOCATION_MATCH PASS   Update
+0078a390   RELOCATION_MATCH PASS   FireRangedWeapon
+0078faf0   RELOCATION_MATCH PASS   FinalCleanup
+00794e60   RELOCATION_MATCH PASS   CancelForCutscene
+007f5ae0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007f5ae0   RELOCATION_MATCH PASS   UpdateNearestInterestingThing
+00813010   WARN RELOC_NAME: ??$?0_KVCGroupMemberData@@@?$pair@$$CB_KVCGroupMemberData@@@std@@QAE@ABU?$pair@_KVCGroupMemberData@@@1@@Z -> 008132d0 labelled 'SGroupMemberPair_008132d0::SGroupMemberPair_008132d0'
+00813010   RELOCATION_MATCH PASS   AddNewMember
+00815420   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00815420   RELOCATION_MATCH PASS   GetBoundingSphere
+00846bc0   RELOCATION_MATCH PASS   FrameUpdate
+0085cde0   RELOCATION_MATCH PASS   Validate
+008bf800   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Const_traits@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@std@@QAEAAU01@XZ -> 006ef790 labelled 'CRetailTreeIterator::Increment'
+008bf800   RELOCATION_MATCH PASS   Initialise
+008daa80   RELOCATION_MATCH PASS   CreateSkyBeam
+00910df0   RELOCATION_MATCH PASS   Update
+  WARN leaf '?FinishAction@CCreatureAction_KrakenRoarLoop@?A0xe2035276@@UAEXXZ' matches no symbol in 00924b90.obj; graded the largest function
+  WARN leaf '?FinishAction@CCreatureAction_KrakenRoarLoop@?A0xe2035276@@UAEXXZ' matches no symbol in 00924b90.obj; graded the largest function
+00924b90   RELOCATION_MATCH PASS   FinishAction
+00934e50   RELOCATION_MATCH PASS   FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>,CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee>_>_>
+00956e70   RELOCATION_MATCH PASS   Update
+00aa39a0   RELOCATION_MATCH PASS   ToMatrix
+00ab5030   WARN RELOC_NAME: ?IsMouseButton0Pressed@CSystemManager@@QAE_NXZ -> 009a4fc0 labelled '_global::GetMember_byte0xdd_009a4fc0'
+00ab5030   WARN RELOC_NAME: ?IsMouseButton1Pressed@CSystemManager@@QAE_NXZ -> 009a4fd0 labelled '_global::GetMember_byte0xde_009a4fd0'
+00ab5030   WARN RELOC_NAME: ?IsMouseButton2Pressed@CSystemManager@@QAE_NXZ -> 009a4fe0 labelled '_global::GetMember_byte0xdf_009a4fe0'
+00ab5030   WARN RELOC_NAME: ?IsMouseButton3Pressed@CSystemManager@@QAE_NXZ -> 009a4ff0 labelled '_global::GetMember_byte0xe0_009a4ff0'
+00ab5030   WARN RELOC_NAME: ?IsMouseButton4Pressed@CSystemManager@@QAE_NXZ -> 009a5000 labelled '_global::GetMember_byte0xe1_009a5000'
+00ab5030   RELOCATION_MATCH PASS   ResetNonExclusiveMouse
+00c3d470   WARN RELOC_NAME: ?Commit@CCodaListener@@QAEXXZ -> 00c40590 labelled 'AudioLib_NormalizeOrientationFrame_00c40590'
+00c3d470   WARN RELOC_NAME: ?ReadyToProcess@CSalPlatform@@QAE_NXZ -> 00c3e760 labelled 'CAudioDevice_00c3e760::BeginFrame'
+00c3d470   WARN RELOC_NAME: ?Commit@CCoda3DSource@@QAEXABVCCodaObjectList@@0I@Z -> 00c41fb0 labelled 'CCombatant::ComputeDerivedCombatStats'
+00c3d470   WARN RELOC_NAME: ?Process@CCodaSource@@QAEX_J@Z -> 00c43a10 labelled 'CAudioObject::Update'
+00c3d470   WARN RELOC_NAME: ?ProcessXtc@CSalPlatform@@QAEXXZ -> 00c3e800 labelled 'CAudioDevice_00c3e800::UpdateMeters'
+00c3d470   WARN RELOC_NAME: ?Commit@CCodaEnvironment@@QAEXXZ -> 00c40d10 labelled 'NormalizeVectorPair'
+00c3d470   WARN RELOC_NAME: ?Process@CCodaEnvironment@@QAEXXZ -> 00c40e20 labelled 'CScriptThing::func_00c40e20'
+00c3d470   WARN RELOC_NAME: ?ProcessOutput@CSalPlatform@@QAEHXZ -> 00c3e890 labelled 'CAudioDevice_00c3e760::RenderFrame'
+00c3d470   RELOCATION_MATCH PASS   Process
+00c3db80   WARN RELOC_NAME: ?ReleaseSource@CCodaContext@@QAEXPAVCCodaSource@@@Z -> 00c3d610 labelled 'CAudioSystem::DiscardEvent'
+00c3db80   WARN RELOC_NAME: ?RemoveFree@CCodaObjectList@@QAEXXZ -> 00c3ca30 labelled 'CNodePool::PopFree'
+00c3db80   WARN RELOC_NAME: ?Add@CCodaObjectList@@QAEXPAVCCodaObject@@@Z -> 00c3c9b0 labelled 'CNodePool::PushActive'
+00c3db80   WARN RELOC_NAME: ??0CCodaSource@@QAE@XZ -> 00c42d60 labelled 'CIcicleData::CIcicleData'
+00c3db80   RELOCATION_MATCH PASS   Create3DSource
+
+WINS: 34
+  00405220 RELOCATION_MATCH _global::?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z
+  004b2280 RELOCATION_MATCH CQuestManager::?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z
+  0057dc22 RELOCATION_MATCH CTCHeroStats::?GetCrimeReport@CTCHeroStats@@QAEXABVCCharString@@AAVCWideString@@_N@Z
+  005f64dd RELOCATION_MATCH CTCInventoryAbilities::?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z
+  0062bef0 RELOCATION_MATCH CWorld::?EAUseProjectileWeapon@CWorld@@QAEXPBVCGameEvent@@@Z
+  00641ae0 RELOCATION_MATCH CTCLight::?DrawFlare@CTCLight@@IAEXJABVC3DVector@@AAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@4@@Z
+  0064619f RELOCATION_MATCH NPlayerGui::CCrimeStatBar::?DrawStatBox@CCrimeStatBar@NPlayerGui@@MAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@JJJABVCWideString@@E_N4@Z
+  0065be6c RELOCATION_MATCH CTCVillage::?UpdateHornTasks@CTCVillage@@AAEXXZ
+  006d18a0 RELOCATION_MATCH CTCWife::?Marry@CTCWife@@QAEX_N@Z
+  0071ad20 RELOCATION_MATCH CTCEmoteIcon::?DrawEmoteTypeIcon@CTCEmoteIcon@@AAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00744fb0 RELOCATION_MATCH CTCPerceiveThing::?UpdateHearing@CTCPerceiveThing@@AAEXXZ
+  007471f0 RELOCATION_MATCH CTCStealth::?DrawPreparePrimitivesForRendering@CTCStealth@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00752f30 RELOCATION_MATCH CTCLook::?UpdateHeadCreatureAnim@CTCLook@@AAEXABVCCharString@@W4ECreatureAnim@@PAVCAnimateThing@@@Z
+  007677e0 RELOCATION_MATCH CTCObjectAugmentations::?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ
+  0076efa0 RELOCATION_MATCH CTCWeaponTrail::?UpdateWeaponTrails@CTCWeaponTrail@@QAEXXZ
+  00785620 RELOCATION_MATCH CTCVolumeContainmentTracker::?Update@CTCVolumeContainmentTracker@@QAEXXZ
+  0078a390 RELOCATION_MATCH CTCHeroRangedAttacks::?FireRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ
+  0078faf0 RELOCATION_MATCH CTCDivineWrath::?FinalCleanup@CTCDivineWrath@@AAEXXZ
+  00794e60 RELOCATION_MATCH CTCUnholyPower::?CancelForCutscene@CTCUnholyPower@@QAEXXZ
+  007f5ae0 RELOCATION_MATCH CTCTargetingBase::?UpdateNearestInterestingThing@CTCTargetingBase@@MAEXXZ
+  00813010 RELOCATION_MATCH CTCCreatureGroup::?AddNewMember@CTCCreatureGroup@@UAE_NPBVCThingAICreature@@@Z
+  00815420 RELOCATION_MATCH CTCHitLocations::?GetBoundingSphere@CTCHitLocations@@QBEXAAVC3DVector@@AAM_N@Z
+  00846bc0 RELOCATION_MATCH CCreatureAction_PerformExpression::?FrameUpdate@CCreatureAction_PerformExpression@@UAEXXZ
+  0085cde0 RELOCATION_MATCH NThingMap::CThingMap::?Validate@CThingMap@NThingMap@@QAEXXZ
+  008bf800 RELOCATION_MATCH CCreatureAction_GenericLeaderCommand::?Initialise@CCreatureAction_GenericLeaderCommand@@UAEXXZ
+  008daa80 RELOCATION_MATCH NCreatureMode::CModeThunderLightningStorm::?CreateSkyBeam@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ
+  00910df0 RELOCATION_MATCH CAIStateGroup_MinionGuardHeardYellForHelp::?Update@CAIStateGroup_MinionGuardHeardYellForHelp@@UAEXXZ
+  00924b90 RELOCATION_MATCH `anonymous namespace'::CCreatureAction_KrakenRoarLoop::?FinishAction@CCreatureAction_KrakenRoarLoop@?A0xe2035276@@UAEXXZ
+  00934e50 RELOCATION_MATCH CMessageEventManager::??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsNot@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsNot@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@Z
+  00956e70 RELOCATION_MATCH CAIStateGroup_BriarRose::?Update@CAIStateGroup_BriarRose@@UAEXXZ
+  00aa39a0 RELOCATION_MATCH C3DKeyframe::?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+  00ab5030 RELOCATION_MATCH CMouseDX::?ResetNonExclusiveMouse@CMouseDX@@IAEXXZ
+  00c3d470 RELOCATION_MATCH CCodaContext::?Process@CCodaContext@@QAEXXZ
+  00c3db80 RELOCATION_MATCH CCodaContext::?Create3DSource@CCodaContext@@QAEPAVCCoda3DSource@@I@Z
+
+LANDED 34 wins into src/compiled + tests + catalog + oracle
+  global_TransferIMEColour_00405220
+  CQuestManager_SetQuestAsFailed_004b2280
+  CTCHeroStats_GetCrimeReport_0057dc22
+  CTCInventoryAbilities_CycleAssignedAbilities_005f64dd
+  CWorld_EAUseProjectileWeapon_0062bef0
+  CTCLight_DrawFlare_00641ae0
+  NPlayerGuiCCrimeStatBar_DrawStatBox_0064619f
+  CTCVillage_UpdateHornTasks_0065be6c
+  CTCWife_Marry_006d18a0
+  CTCEmoteIcon_DrawEmoteTypeIcon_0071ad20
+  CTCPerceiveThing_UpdateHearing_00744fb0
+  CTCStealth_DrawPreparePrimitivesForRendering_007471f0
+  CTCLook_UpdateHeadCreatureAnim_00752f30
+  CTCObjectAugmentations_AttachAugmentationParticles_007677e0
+  CTCWeaponTrail_UpdateWeaponTrails_0076efa0
+  CTCVolumeContainmentTracker_Update_00785620
+  CTCHeroRangedAttacks_FireRangedWeapon_0078a390
+  CTCDivineWrath_FinalCleanup_0078faf0
+  CTCUnholyPower_CancelForCutscene_00794e60
+  CTCTargetingBase_UpdateNearestInterestingThing_007f5ae0
+  CTCCreatureGroup_AddNewMember_00813010
+  CTCHitLocations_GetBoundingSphere_00815420
+  CCreatureActionPerformExpression_FrameUpdate_00846bc0
+  NThingMapCThingMap_Validate_0085cde0
+  CCreatureActionGenericLeaderCommand_Initialise_008bf800
+  NCreatureModeCModeThunderLightningStorm_CreateSkyBeam_008daa80
+  CAIStateGroupMinionGuardHeardYellForHelp_Update_00910df0
+  anonymousnamespaceCCreatureActionKrakenRoarLoop_FinishAction_00924b90
+  CMessageEventManager_FindMostRecentMessageCFilterBind3CMessageEventFi_00934e50
+  CAIStateGroupBriarRose_Update_00956e70
+  C3DKeyframe_ToMatrix_00aa39a0
+  CMouseDX_ResetNonExclusiveMouse_00ab5030
+  CCodaContext_Process_00c3d470
+  CCodaContext_Create3DSource_00c3db80

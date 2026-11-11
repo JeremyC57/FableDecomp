@@ -27,6 +27,12 @@ class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class
 class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 #pragma pack(push, 1)
 class CTCVillage : public CTCBase {
+#ifdef FABLE_RETAIL_HEARING
+public:long GetFrameBribeEnds()const{return FrameBribeEnds;}
+#endif
+#ifdef FABLE_RETAIL_HORN_TASKS
+private:void UpdateHornTasks();void RemoveThingFromAllTasks(const CThing&);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCVILLAGE_TCI
     // Original FableWin01901440; native00488684 type34.
@@ -38,6 +44,9 @@ public:
 #ifdef FABLE_RETAIL_CTCVILLAGE_TORCHTASK
     bool SetTorchTaskAsAcceptedByThing(CVillageTaskTorch&,const CThing&);
     void SetTorchTaskAsCompleted(CIntelligentPointer<CVillageTaskTorch>);
+#endif
+#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+    void DetachFromDummyVillager(CThing*);
 #endif
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
     bool IsHeroCriminal();                                   // 0x0065BFCE ?IsHeroCriminal@CTCVillage@@QAE_NXZ (Ego_r; chunk 755 row 0x0091EA70)

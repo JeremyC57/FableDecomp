@@ -1,3 +1,42 @@
+#ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
+#ifndef FABLE_ENGINE_COBJECTAUGMENTATIONSDEF_H
+#define FABLE_ENGINE_COBJECTAUGMENTATIONSDEF_H
+#include "engine/CSubDefClassBase.h"
+#include "engine/CObjectAugmentationParticleSet.h"
+#include "engine/EObjectAugmentationType.h"
+#include "stlport/fable_map.h"
+class CPersistContext;
+// Layout: complete original Ego_r/FableWin member records; native STLport containers are twelve bytes.
+class CObjectAugmentationsDef:public CSubDefClassBase{
+public:
+ virtual void Copy(const CDefClassBase * p0);
+ virtual unsigned long GetSizeofClass();
+ static CDefClassBase * FABLE_FASTCALL Alloc();
+ static CCharString FABLE_FASTCALL StatGetTypeName();
+ long NumberOfSlots;
+ long MaximumNumberOfSlots;
+ std::map<enum EObjectAugmentationType,CObjectAugmentationParticleSet,std::less<enum EObjectAugmentationType>,std::allocator<std::pair<enum EObjectAugmentationType const ,CObjectAugmentationParticleSet> > > AugmentationParticles;
+ unsigned long EmptySlotName;
+ std::vector<long,std::allocator<long> > InitialAugmentations;
+ std::vector<long,std::allocator<long> > SlotUpgradeCosts;
+ std::map<enum EObjectAugmentationType,CDefString,std::less<enum EObjectAugmentationType>,std::allocator<std::pair<enum EObjectAugmentationType const ,CDefString> > > InitSounds;
+ std::map<enum EObjectAugmentationType,CDefString,std::less<enum EObjectAugmentationType>,std::allocator<std::pair<enum EObjectAugmentationType const ,CDefString> > > LoopingSounds;
+ long FireProjectileTrailEffect;
+ long LightningProjectileTrailEffect;
+ long FireAndLightningProjectileTrailEffect;
+ long FireProjectileOnHitEffect;
+ long LightningProjectileOnHitEffect;
+ long FireAndLightningProjectileOnHitEffect;
+ CCharString WeaponTrailAttachmentPoint;
+ virtual void Transfer(CPersistContext & p0);
+ CObjectAugmentationsDef(const CObjectAugmentationsDef & p0);
+ CObjectAugmentationsDef();
+ virtual ~CObjectAugmentationsDef();
+ CObjectAugmentationsDef & operator=(const CObjectAugmentationsDef & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CObjectAugmentationsDef)==140);
+#endif
+#else
 #ifndef FABLE_ENGINE_COBJECTAUGMENTATIONSDEF_H
 #define FABLE_ENGINE_COBJECTAUGMENTATIONSDEF_H
 // CObjectAugmentationsDef (new retail-model header, chunk 1002): RTTI .?AVCObjectAugmentationsDef@@ : CSubDefClassBase : CDefClassBase
@@ -28,3 +67,5 @@ FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, NumberOfSlots) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, InitialAugmentations) == 0x40);
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 #endif // FABLE_ENGINE_COBJECTAUGMENTATIONSDEF_H
+
+#endif

@@ -31,6 +31,10 @@ class CWideString;
 
 class CTCQuestCard : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCQUESTCARD_FAILURE
+    // Original FW01c5b450 and native004b23ea, true Finished member+0x10.
+    void SetAsFinished(bool value){Finished=value;}
+#endif
     CTCQuestCard(CThing& thing);                                         // 0x007026A0 ??0CTCQuestCard@@QAE@AAVCThing@@@Z
     virtual void OnSerialise(CPersistContext& context, bool loading);   //  1 0x00702720 (public: FableWin UAE)
     virtual ETCInterfaceType GetInterfaceType() const;                   // 21 0x007029F0

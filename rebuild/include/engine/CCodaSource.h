@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass20): SDK CodeView and native00c3d470; PROCESS branch only, default preserved.
 #ifndef FABLE_CCODASOURCE_H
 #define FABLE_CCODASOURCE_H
 #include "engine/CODA_PlatformTypes.h"
@@ -5,10 +6,20 @@
 #include "engine/CCodaBufferQueue.h"
 // Layout: native+0c caps,+10 status,+50 voice,+54 queue,+78 buffer;
 // SDK release object agrees, debug adds only the base diagnostic word.
+class CCoda3DSource;
 class CCodaSource:public CCodaObject {
 public:
+#ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
+ CCodaSource();
+#endif
  virtual ~CCodaSource();
+#ifndef FABLE_RETAIL_CCODACONTEXT_PROCESS
  virtual bool IsSource()const;
+#else
+ void Process(CREFTIME);
+ bool IsPlaying()const{return (m_ffStatus&0x217)!=0;}
+ CCoda3DSource* Get3D()const;
+#endif
  virtual bool Is3D()const;
  virtual bool IsCreated()const;
  virtual bool Create(unsigned int);

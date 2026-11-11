@@ -1,3 +1,97 @@
+#ifdef FABLE_RETAIL_EXPRESSION_FRAME
+#ifndef FABLE_ENGINE_CGAMEPLAYERINTERFACE_H
+#define FABLE_ENGINE_CGAMEPLAYERINTERFACE_H
+#include "engine/CInputProcessManager.h"
+#include "engine/CSavedInputEvent.h"
+#include "engine/CDiskFileWin32.h"
+#include "engine/CDefPointer.h"
+#include "engine/CVectorMap.h"
+#include "engine/CCountedPointer.h"
+#include "engine/EGameAction.h"
+class CMainGameComponent;class CPlayerManager;class CControlsDef;class CInputTypeBase;class CActionInputControl;class CWideString;
+#ifdef _MSC_VER
+enum EInputButtonEventType;
+enum EXboxControllerButton;
+enum EMouseButtonControl;
+#else
+enum EInputButtonEventType{};
+enum EXboxControllerButton{};
+enum EMouseButtonControl{};
+#endif
+// Layout: complete original Ego19ec6/FW1a8b6; native2200 after four container reductions.
+class CGamePlayerInterface:public CInputProcessManager{
+public:
+ CGamePlayerInterface(const CGamePlayerInterface & p0);
+ CGamePlayerInterface(const CMainGameComponent & p0, const CPlayerManager & p1);
+ virtual ~CGamePlayerInterface();
+ virtual bool GetGameEvent(CGameEvent & p0) const;
+ void SuspendAllInputProcesses();
+ void ResumeAllInputProcesses();
+ void SetControlScheme(long p0);
+ void ReapplyControlScheme();
+ void Update();
+ static bool FABLE_FASTCALL GetActionName(const CActionInputControl & p0, CWideString & p1, bool p2);
+ bool IsControlInputSharedBetweenGameActions(const std::vector<enum EGameAction,std::allocator<enum EGameAction> > & p0) const;
+ bool IsEventGameAction(EGameAction p0, const CInputEvent & p1) const;
+ bool GetControlMovementFromGameActionEvent(EGameAction p0, const CInputEvent & p1, C2DVector & p2) const;
+ float GetButtonPressureForEvent(const CInputEvent & p0) const;
+ C2DVector GetMouseMovement(const CInputEvent & p0) const;
+ float GetMouseWheelMovement(const CInputEvent & p0) const;
+ bool IsGameActionEventInQueue(EGameAction p0, EInputButtonEventType p1, long p2, float & p3) const;
+ bool IsGameActionEventInQueue(EGameAction p0, EInputButtonEventType p1, long p2) const;
+ bool IsButtonForGameEvent(EXboxControllerButton p0, EGameAction p1) const;
+ bool IsMouseButtonForGameEvent(EMouseButtonControl p0, EGameAction p1) const;
+ bool IsEventAssignableSpecialMoveButton(const CInputEvent & p0) const;
+ bool IsAssignableSpecialMoveButtonInQueue(long p0, EInputButtonEventType p1, long p2) const;
+ long GetAssignableSpecialMoveIndexForButton(EXboxControllerButton p0) const;
+ long GetAssignableSpecialMoveIndexForMouseButton(EMouseButtonControl p0) const;
+ long GetAssignableSpecialMoveIndexForEvent(const CInputEvent & p0) const;
+ long GetNumberOfAssignableSpecialMoveButtons() const;
+ bool IsEventQuickAccessItemButton(const CInputEvent & p0, long & p1) const;
+ bool IsOtherQuickAccessItemButtonHeld(long p0, long p1) const;
+ bool IsQuickAccessEventInQueue(long p0, EInputButtonEventType p1, long p2) const;
+ long GetNumberOfQuickAccessItemButtons() const;
+ bool IsEventContextSensitiveItemButton(const CInputEvent & p0, long & p1) const;
+ bool IsOtherContextSensitiveItemButtonHeld(long p0, long p1) const;
+ bool IsContextSensitiveEventInQueue(long p0, EInputButtonEventType p1, long p2) const;
+ long GetNumberOfContextSensitiveItemButtons() const;
+ bool IsToggleZTarget() const;
+ bool IsToggleSneak() const;
+ bool IsToggleSpells() const;
+ bool IsToggleExpressionShift() const;
+ bool IsRequireAttackButtonHeldForFlourish() const;
+private:
+ long GetFrame();
+ bool GetInputProcessEvent(CProcessedInput & p0) const;
+ bool LoadPacketEvent(CInputEvent & p0);
+ void SavePacketEvent(const CInputEvent & p0);
+ void LoadInitialInfo();
+ void SaveInitialInfo();
+ bool GetInputProcessEventFromUpdate(CProcessedInput & p0) const;
+ const CMainGameComponent & Component;
+ const CPlayerManager & PlayerManager;
+ bool PacketSave;
+ bool PacketLoad;
+ CDiskFileWin32 PacketFile;
+ bool InputEventIsLoaded;
+ CSavedInputEvent LoadedInputEvent;
+ bool Suspended;
+ CDefPointer<CControlsDef const > PControlsDef;
+ long ControlsDefIndex;
+ CVectorMap<enum EGameAction,CCountedPointer<CInputTypeBase const >,CKeyPairCompareLess<enum EGameAction,CCountedPointer<CInputTypeBase const > > > Controls;
+ std::vector<CCountedPointer<CInputTypeBase const >,std::allocator<CCountedPointer<CInputTypeBase const > > > AssignableSpecialMoveButtons;
+ std::vector<CCountedPointer<CInputTypeBase const >,std::allocator<CCountedPointer<CInputTypeBase const > > > QuickAccessItemButtons;
+ std::vector<CCountedPointer<CInputTypeBase const >,std::allocator<CCountedPointer<CInputTypeBase const > > > ContextSensitiveItemButtons;
+ long CurrentQueuedProcessedInputNo;
+ CProcessedInput CurrentProcessedInput;
+ long CurrentEventInProcessedInput;
+ bool HasCalledInputUpdateThisFrame;
+public:
+ CGamePlayerInterface & operator=(const CGamePlayerInterface & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CGamePlayerInterface)==2200);
+#endif
+#else
 #ifndef FABLE_ENGINE_CGAMEPLAYERINTERFACE_H
 #define FABLE_ENGINE_CGAMEPLAYERINTERFACE_H
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
@@ -536,3 +630,5 @@ FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, CurrentEventInProcessedInput)
 FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, HasCalledInputUpdateThisFrame) == 0x894);
 
 #endif // FABLE_ENGINE_CGAMEPLAYERINTERFACE_H
+
+#endif
