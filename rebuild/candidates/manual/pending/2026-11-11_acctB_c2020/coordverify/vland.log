@@ -1,0 +1,11 @@
+addr       parity           behav  name
+006414a0   WARN RELOC_NAME: ??1CPrimitive@NGraphicAppearance@@QAE@XZ -> 004c4160 labelled 'SPrimitiveHandleHolder_004c4160::~SPrimitiveHandleHolder_004c4160'
+006414a0   RELOCATION_MATCH PASS   DrawLight
+00949ab0   WARN RELOC_NAME: ?GetObjectWithScriptName@CAIStateGroup_GoToPub@@IAEPAVCThingObject@@ABVCCharString@@@Z -> 00947eb0 labelled 'CAIStateGroup_GoToPub_FindMarkerByName'
+00949ab0   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCThingBuilding@@@@QAEAAV0@ABV0@@Z -> 0050f3d0 labelled '_global::CIntelligentPointer_Assign_0050f3d0'
+00949ab0   WARN RELOC_NAME: ??1?$_List_base@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+00949ab0   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 2
+  006414a0 RELOCATION_MATCH CTCLight::?DrawLight@CTCLight@@IAEXJABVC3DVector@@AAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@4@@Z
+  00949ab0 RELOCATION_MATCH CAIStateGroup_GoToPub::?IsRunnable@CAIStateGroup_GoToPub@@MAE_NXZ

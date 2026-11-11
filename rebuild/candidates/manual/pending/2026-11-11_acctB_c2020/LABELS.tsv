@@ -1,0 +1,15 @@
+address	name	evidence
+00949ab0	?IsRunnable@CAIStateGroup_GoToPub@@MAE_NXZ	Ego_r.pdb 0x0096E2D0 + FableWin.pdb 0x02BBAE60 (protected virtual); vtable 0x0128BEC4 slot 11; RELOCATION_MATCH
+009482a0	?GetSeat@CAIStateGroup_GoToPub@@IAE_NPAVCThing@@PBVCCharString@@@Z	both PDB name sets (protected); `ret 8`, (table, seat name) body; called at 0x00949C89 and expanded in IsRunnable; the same-TU body here is byte-identical to retail
+00947eb0	?GetObjectWithScriptName@CAIStateGroup_GoToPub@@IAEPAVCThingObject@@ABVCCharString@@@Z	both PDB name sets; takes the scratchpad table name (const CCharString&), returns the CThingObject PTable is set to (0x00949BA6)
+00947fb0	?IsStaffed@CAIStateGroup_GoToPub@@IAE_NXZ	both PDB name sets; landed row 0x00947FB0; called at 0x00949D6F
+009486d0	?FreeSeat@CAIStateGroup_GoToPub@@IAEXXZ	both PDB name sets (protected IAE); body frees PTable seat at ActionPointIndex (0x009486D0..)
+009490d0	?GetBar@CAIStateGroup_GoToPub@@IAE_NXZ	both PDB name sets; landed row 0x009490D0
+00658c0a	?IsTavernTime@CTCVillage@@QBE_NXZ	both PDB name sets; landed row 0x00658C0A
+00658e38	?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z	FableWin.pdb name set + landed row 0x00658E38 (same spelling)
+0050f380	??0?$CIntelligentPointer@VCThingBuilding@@@@QAE@PAVCThingBuilding@@@Z	both PDB name sets; body (base ctor, vtable 0x01244344, SetPItem)
+0050f3d0	??4?$CIntelligentPointer@VCThingBuilding@@@@QAEAAV0@ABV0@@Z	FableWin.pdb name set; body GetPItem(other) + SetPItem
+0065f8ca	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	FableWin.pdb name set; body = the IS_THING_ALIVE template (GetPItem, null, Dead bit)
+006414a0	?DrawLight@CTCLight@@IAEXJABVC3DVector@@AAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@4@@Z	both PDB name sets (protected); RELOCATION_MATCH; called from OnAppearanceDraw 0x00641CA6 / 0x00641E09
+004c4160	??1CPrimitive@NGraphicAppearance@@QAE@XZ	both PDB name sets; the CPrimitive temporary of AddPersistentPrimitive (0x00641519, as DrawFlare)
+013ba85c	g_LightsDrawnThisFrame (descriptive)	no data-symbol name in either PDB name set; ++ after each DrawLight SetPrimitiveGraphics, zeroed by the display engine each frame (0x004355BB)
