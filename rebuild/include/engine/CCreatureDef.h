@@ -8,7 +8,14 @@
 #include "engine/CDefString.h"
 #include "stlport/fable_containers.h"
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#include "engine/CCountedPointer.h"
+class CCreatureStatsDef;
+#endif
 class CCreatureDef : public CSubDefClassBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:const CCreatureStatsDef& GetStatsDef()const{return *PStats;}
+#endif
 public:
 #ifdef FABLE_RETAIL_CCREATUREDEF_DIALOGUEVOICES
     // Nested opt-in (chunk 760, row 0x006E2C00 CTCTalk::OnCreate): Ego_r.pdb CCreatureDef DialogueVoices
@@ -65,7 +72,15 @@ public:
     unsigned char _pad_0x78[0xc8 - 0x78];
 #endif
 #else
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+protected:
+    unsigned char _pad_0x25[0x40-0x25];
+    CCountedPointer<CCreatureStatsDef> PStats;
+public:
+    unsigned char _pad_0x48[0xc8-0x48];
+#else
     unsigned char _pad_0x25[0xa3];
+#endif
 #endif
     bool Short,FlashOnHit,PickPocketable,ChildThatCanRegionFollow;
     bool AllowedInProtectedTowns,UseActualHitPosForHitEffects;

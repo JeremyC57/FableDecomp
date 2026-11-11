@@ -7,6 +7,11 @@
 #include "stlport/fable_containers.h"
 class CSpecialAbilitiesBerserkDef;
 class CTCBerserk:public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_BERSERK;}
+void IncreaseBerserkDamageToMeMultiplier();
+#endif
 public:void PlayHitEffectAtPos(const C3DVector& pos)const;
 #ifdef FABLE_RETAIL_CTCBERSERK_CTOR
  // Nested opt-in (agent1022, row 0x0078C210): Ego_r.pdb / FableWin.pdb ??0CTCBerserk@@QAE@AAVCThing@@@Z (retail 0x0078C210, `ret 4`,

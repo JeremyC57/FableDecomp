@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_NGRAPHICAPPEARANCE_CTCGRAPHICAPPEARANCE_H
 #define FABLE_ENGINE_NGRAPHICAPPEARANCE_CTCGRAPHICAPPEARANCE_H
 // New shared header (chunk 732, row 0x006AA2E0 CThingPlayerCreature::DrawPreparePrimitivesForRendering): the retail
@@ -72,6 +73,10 @@ class CTCGraphicAppearance : public CTCBase {
 public:
     // Both original PDBs and native004c11f0: const owner, output reference.
     bool GetStaticFocalPosIfLoaded(C3DVector&) const;
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    C3DVector GetCameraFocalPos(float)const;
+    C3DVector GetStaticCameraFocalPos()const{return GetCameraFocalPos(1.0f);}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 protected:

@@ -14,7 +14,7 @@
 // Contract: the includer defines CCountedPointer<T> before the include (PImp is by value; its inline bodies are the row's).
 // Per-site expansion (wave 8, scripts/mbexp.py + mbsites.py): retail destroys a MovieBase three ways, often mixed in one
 //   function: fully expanded, expanded with a call to the PImp dtor 0x006E7AB0, or a call to this dtor 0x006E7B80. With the
-//   implicit dtor and a plain inline (not __forceinline) CCountedPointer release, VC7.1 itself gives the retail mix in 15 of
+//   implicit dtor and a plain inline (not FABLE_FORCEINLINE) CCountedPointer release, VC7.1 itself gives the retail mix in 15 of
 //   the 24 rows that forced it with #pragma inline_depth (byte-identical; 14 kept, wave 8 family MBX). unproven: why the
 //   single-site rows that call 0x006E7AB0 (e.g. 0x00DF2D30) are not expanded: VC7.1 expands them fully (385 v 349 bytes).
 // unproven: SetImplementation (both PDBs: ?SetImplementation@CScriptGameResourceObjectMovieBase@@QAEXPAV1@@Z). Candidate
@@ -24,6 +24,7 @@
 #error engine/CScriptGameResourceObjectMovieBase.h is the retail CBaseObject-family model: define FABLE_RETAIL_BASE_OBJECT first
 #else
 #include "rebuild_abi.h"
+#include "fable_compiler.h"
 #include "engine/CScriptGameResourceObjectBase.h"
 template <class T> class CCountedPointer;
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase {
@@ -41,18 +42,21 @@ public:
     // Per-TU opt-in (chunk 797, like FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR): retail expands the ctor (`call 0x0099A380;
     // mov [esi],0x01260EF4; zero +8/+C`) and the dtor (PImp release 0x006E7AB0, GROBase vtable store, ~CBaseObject 0x0099A430) at every site
     // of CBH_GangDeputy2::Main 0x00D18DF0, where VC7.1's own choice for the implicit pair in that 3.3 KB body is the COMDAT call.
-    __forceinline CScriptGameResourceObjectMovieBase() { }
-    __forceinline virtual ~CScriptGameResourceObjectMovieBase() { }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectMovieBase() { }
 #endif
 #if defined(FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_FORCEINLINE_CTOR) && defined(_MSC_VER)
     // Per-TU opt-in (chunk 800, rows 0x00D2ED20 CEndGameScythe::Main / 0x00D0A830 CBanditKing::Main): the ctor forced inline
     // (`call 0x0099A380; mov [esi],0x01260EF4; zero +8/+C` at every site of both rows) and the dtor left compiler-generated, so
     // that where VC7.1 expands it there is no MovieBase vtable reset (retail's expansions are `call 0x006E7AB0` ; GROBase vtable
-    // store ; `call 0x0099A430`, which the user-declared __forceinline dtor of FABLE_..._FORCEINLINE adds a vtable store to).
-    __forceinline CScriptGameResourceObjectMovieBase() { }
+    // store ; `call 0x0099A430`, which the user-declared FABLE_FORCEINLINE dtor of FABLE_..._FORCEINLINE adds a vtable store to).
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { }
 #endif
     void Release();                                                      // 0x00CF8850
     void SetImplementation(CScriptGameResourceObjectMovieBase*);         // unproven: candidate 0x008AB970
+#ifdef FABLE_RETAIL_CSCRIPTRESOURCE_ORIGINAL_ACCESS
+private: // Both original full class records: PImp is private.
+#endif
     CCountedPointer<CScriptGameResourceObjectMovieBase> PImp;            // +0x08
 };
 FABLE_STATIC_ASSERT(sizeof(CScriptGameResourceObjectMovieBase) == 0x10);

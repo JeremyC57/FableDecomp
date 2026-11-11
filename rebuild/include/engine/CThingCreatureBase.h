@@ -25,6 +25,11 @@ enum ESex;
 class CCreatureAbilityDef;class CSoundPair;
 #endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Evidence: both original PDB type records and donor OnHit/helper disassembly.
+public:
+void PerformBlockedReaction(CThingCreatureBase*,bool);
+#endif
 #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
 public: CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
 #endif
@@ -76,6 +81,9 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
 public:
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ const CCombatTypeDef& GetCombatTypeDef()const;
+#endif
  CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const;
  long GetCombatType()const;
 #endif

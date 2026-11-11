@@ -214,6 +214,12 @@ public:
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING
     // Both raw donors: public non-virtual SetAsMoving(bool), native006b0130.
     void SetAsMoving(bool);
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+void SetVelocity(const C3DVector& value){Velocity=value;SetAsMoving(true);}
+bool IsMoving()const{return Moving;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_COLLISION_RESPONSE
     float GetFriction() const {return PhysicsDef->Friction;}

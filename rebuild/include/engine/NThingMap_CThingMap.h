@@ -1,7 +1,11 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifdef FABLE_RETAIL_MAP_VALIDATE
 #ifndef FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
 #define FABLE_ENGINE_NTHINGMAP_CTHINGMAP_H
 #include "engine/CBaseClassNonCopyable.h"
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#include "engine/CRGBColour.h"
+#endif
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
 #include "engine/C2DBoxI.h"
@@ -46,10 +50,18 @@ public:
  long GetNoThingsInMapwhoLevel(long p0) const;
  void Validate();
  long GetMemoryFootprint() const;
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+ const NThingMap::CThingMapCell & PeekCell(unsigned char p0, unsigned long p1, unsigned long p2) const{return Cells[p0][MapwhoLevelInfo[p0].Extents.X*p2+p1];}
+#else
  const NThingMap::CThingMapCell & PeekCell(unsigned char p0, unsigned long p1, unsigned long p2) const;
+#endif
  NThingMap::CThingMapCell & GetCell(unsigned char p0,unsigned long p1,unsigned long p2){return Cells[p0][MapwhoLevelInfo[p0].Extents.X*p2+p1];}
  const C2DBoxI & GetArea() const;
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+ const C2DExtentsI & GetLayerExtents(long p0) const{return MapwhoLevelInfo[p0].Extents;}
+#else
  const C2DExtentsI & GetLayerExtents(long p0) const;
+#endif
  void Clear();
  void DebugDraw(const C2DVector & p0, long p1);
 protected:
@@ -69,6 +81,10 @@ public:
  CThingMap & operator=(const NThingMap::CThingMap & p0);
 };
 FABLE_STATIC_ASSERT(sizeof(CThingMap)==52);
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+class CLayerInfo {public:long Size,ScaleShift;CRGBColour UsedColour,UnusedColour;};
+extern const CLayerInfo LayerInfo[];
+#endif
 extern long MaxLayers;
 }
 #endif

@@ -68,6 +68,22 @@ public:
         virtual void Main();                                             // 0x00CF3D20
     };
 };
+#ifdef FABLE_RETAIL_CQ_ARENAHOLDINGSCRIPTSCRIPT_FANMARKER
+// Retail opt-in (chunk 812): Ego_r.pdb CFanMarker (28 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18); vtable
+// 0x012C657C (stored by the Alloc 0x00CF4DF0): 0 scalar deleting dtor 0x00CF4EA0, 1 Main 0x00CF4EC0, 2 CEntityScriptBase::Init
+// 0x00CDEBB0 (not overridden), 3 GetParentScript 0x00CF4E90, 4-6 the CEntityScriptBase defaults. Ego_r.pdb / FableWin.pdb
+// ?Main@CFanMarker@CQ_ArenaHoldingScriptScript@NScript@@EAEXXZ (private). Declarations only.
+class CQ_ArenaHoldingScriptScript::CFanMarker : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_ArenaHoldingScriptScript&, CScriptDataBase*, const CScriptThing&); // 0x00CF4DF0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00CF4E90
+protected:
+    CQ_ArenaHoldingScriptScript& ParentClass;                            // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    virtual void Main();                                                 // 0x00CF4EC0
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_ArenaHoldingScriptScript) == 0x50);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_ArenaHoldingScriptScript::COakvaleFan) == 0x1c);

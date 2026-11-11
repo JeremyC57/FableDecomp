@@ -10,8 +10,17 @@
 // CurrentFilePackageIndex +0x58, TimeStamp +0x5C, PackageFile +0x60, NoUpdates +0x7C at STLport sizes; only the total is
 // read back by retail code here) are kept opaque.
 #include "engine/CBaseClass.h"
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#include "engine/CCountedPointer.h"
+#include "engine/CJoystick.h"
+#include "stlport/fable_containers.h"
+#endif
 class CInputEvent; class CInputEventScanInfo;
 class CInputManager : public CBaseClass {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+CJoystick& GetJoystick(long n){return *PJoysticks[n];}
+#endif
 public:
     virtual ~CInputManager();                                            // slot 0
     virtual bool SetExclusiveMode(bool);                                 // slot 1 (+0x04) ?SetExclusiveMode@CInputManager@@UAE_N_N@Z
@@ -23,7 +32,12 @@ public:
     // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.
     void EventScanEnd(CInputEventScanInfo&) const;                       // 0x009F4AC0
 #endif
-#ifdef FABLE_RETAIL_CINPUTMANAGER_EVENTFLAGS
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+protected:
+    unsigned char _pad_0x04[0x2c-4];
+    std::vector<CCountedPointer<CJoystick> > PJoysticks;
+    unsigned char _pad_0x38[0x80-0x38];
+#elif defined(FABLE_RETAIL_CINPUTMANAGER_EVENTFLAGS)
     // Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): FableWin.pdb ?IsLoadingEvents@CInputManager@@QBE_NXZ
     // (0x018A6700) / ?IsSavingEvents@CInputManager@@QBE_NXZ (0x018A6720), inline in retail (Update tests PInputManager's bytes +0x38
     // and +0x39 in place, 0x0041842D / 0x00418432): the Ego_r.pdb members Loading +0x38 / Saving +0x39. Same layout as the pad.

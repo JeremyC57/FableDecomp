@@ -54,5 +54,29 @@ public:
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingMeleeScript) == 0x58);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster) == 0x20);
 
+#ifdef FABLE_RETAIL_CQ_GUILDTRAININGMELEESCRIPT_MELEEOPPONENT
+// Retail opt-in (chunk 828; drafted by chunk 810): nested CMeleeOpponent (Ego_r.pdb, 36 bytes = the retail Alloc new size 0x24):
+// CEntityScriptBase (0x14), ParentClass +0x14 (the original PDB reference), PMasterData +0x18, BadHit +0x1c, RepeatMelee +0x20. Entity
+// vtable 0x012D0328 (stored by the landed Alloc 0x00D566A0): 0 ??_E 0x00D56770, 1 Main 0x00D56790, 2 Init 0x00D56750,
+// 3 GetParentScript 0x00D56740. Names: Ego_r.pdb / FableWin.pdb ?<Name>@CMeleeOpponent@CQ_GuildTrainingMeleeScript@NScript@@.
+// Checked against retail: Main 0x00D56790 reads ParentClass at [esi+0x14] and its +0x48 / +0x4c / +0x50 / +0x53 / +0x54 / +0x55.
+class NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent : public CEntityScriptBase {
+public:
+    typedef CQ_GuildTrainingMeleeScript TParentClass;
+    CMeleeOpponent(CQ_GuildTrainingMeleeScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_GuildTrainingMeleeScript&, CScriptDataBase*, const CScriptThing&); // 0x00D566A0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D56740
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_GuildTrainingMeleeScript& ParentClass;                            // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    long BadHit;                                                         // +0x1c
+    bool RepeatMelee;                                                    // +0x20
+    virtual void Init();                                                 // 0x00D56750
+    virtual void Main();                                                 // 0x00D56790
+};
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent) == 0x24);
+#endif // FABLE_RETAIL_CQ_GUILDTRAININGMELEESCRIPT_MELEEOPPONENT
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_GUILDTRAININGMELEESCRIPT_H

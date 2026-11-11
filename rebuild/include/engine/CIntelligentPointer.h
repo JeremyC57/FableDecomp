@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CINTELLIGENTPOINTER_H
 #define FABLE_ENGINE_CINTELLIGENTPOINTER_H
 #include "rebuild_abi.h"
@@ -63,7 +64,7 @@ public:
     // Chunk 754 (row 0x00945BD0 `PCookingPot = pot;`): FableWin.pdb ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z, inline in
     // retail: the item read into a local, then SetPItem (0x00A01B50 then 0x00A01B90; the destination is formed after the read,
     // rows 0x00943C20 / 0x00945BD0), not the implicit member-wise copy of PData.
-    #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+#if (defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_ORIGINAL_CHAIN))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)))
     CIntelligentPointer& operator=(const CIntelligentPointer& other){SetPointer(other.GetPointer());return *this;}
 #else
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
@@ -101,7 +102,11 @@ private:
     #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
     void SetPointer(T* pointer){SetPItem(pointer);}
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    void SetPointer(T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
+#else
     void SetPointer(const T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
+#endif
 #endif
 };
 #pragma pack(pop)
@@ -114,7 +119,7 @@ template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointe
     return pointer.Get()!=0;
 }
 #endif
-#ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+#if (defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_RAW_NOT_EQUAL))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)))
 // Original FableWin025370d0 calls GetPItem then compares the raw object.
 template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointer<T>& pointer,const CBaseObject* item){return pointer.GetPItem()!=item;}
 #endif
@@ -140,6 +145,10 @@ public:
     T* operator->() const { return Get(); }
 };
 FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
+#endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+// Original FableWin02179d3e: compare the two base GetPItem results.
+template<class T> inline bool FABLE_FASTCALL operator==(const CIntelligentPointer<T>& first,const CIntelligentPointer<T>& second){return first.GetPItem()==second.GetPItem();}
 #endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_EQUAL_RAW
 // FableWin01cfe990, exact free comparison: pointer first, raw base item second.

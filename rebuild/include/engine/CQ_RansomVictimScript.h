@@ -158,6 +158,10 @@ public:
     };
     class CVictim : public CEntityScriptBase {
     public:
+#ifdef FABLE_RETAIL_CQ_RANSOMVICTIMSCRIPT_VICTIM_ORIGINAL_DECLS
+        typedef CQ_RansomVictimScript TParentClass;
+        CVictim(CQ_RansomVictimScript&,CScriptDataBase*,const CScriptThing&);
+#endif
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_RansomVictimScript&,CScriptDataBase*,const CScriptThing&);
         virtual CScriptBase* GetParentScript() const;
         CQ_SunnyvaleMasterData* GetMasterData();

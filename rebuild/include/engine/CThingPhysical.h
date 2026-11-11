@@ -62,6 +62,11 @@ public:
     bool IsToRespondToHits() const { return RespondToHits; }
     bool IsKillable() const { return Killable; }
     bool IsDamageable() const { return Damageable; }
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Evidence: both original PDB type records and donor OnHit/helper disassembly.
+public:
+bool IsToNegateAllHits()const{return NegateAllHits;}
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_EVADEALLHITS
     // Nested opt-in (chunk 1016, row 0x0085FA00 NCreatureMode::IsToEvadeAllHits): FableWin.pdb ?IsToEvadeAllHits@CThingPhysical@@QBE_NXZ,
     // inline in retail (`test byte ptr [thing+0BCh],8`, bit 3 of the +0xBC flag run). Body only: no layout change.

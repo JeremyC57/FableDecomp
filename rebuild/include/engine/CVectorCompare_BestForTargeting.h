@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CVECTORCOMPARE_BESTFORTARGETING_H
 #define FABLE_ENGINE_CVECTORCOMPARE_BESTFORTARGETING_H
 // CVectorCompare_BestForTargeting (Ego_r.pdb, 0x2c bytes, class key V): the first-person targeting score of a candidate
@@ -10,6 +11,12 @@
 
 class CVectorCompare_BestForTargeting {
 public:
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    // Original copy constructor is compiler-generated (__that).
+    CVectorCompare_BestForTargeting(const C3DVector& pos,const C3DVector& line,float angle,float dist,float short_factor,float short_falloff):AnchorPos(pos),PreferredLine(line),AngleCompare(angle),SqrDistCompare(dist),OverrideShortDistanceFactor(short_factor),OverrideShortDistanceFalloff(short_falloff),CompareInXYPlane(false){}
+    void SetAsTargetCompareInXYPlane(){CompareInXYPlane=true;}
+private:
+#endif
     C3DVector AnchorPos;                                   // +0x00
     C3DVector PreferredLine;                               // +0x0c
     float     AngleCompare;                                // +0x18
@@ -17,6 +24,9 @@ public:
     float     OverrideShortDistanceFactor;                 // +0x20
     float     OverrideShortDistanceFalloff;                // +0x24
     bool      CompareInXYPlane;                            // +0x28
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+public:
+#endif
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 #ifdef FABLE_RETAIL_CVECTORCOMPARE_BESTFORTARGETING
     // Per-TU opt-in (chunk 892, rows 0x00807250 / 0x00808AA0, the first-person targeting sort TU): operator() as retail expands

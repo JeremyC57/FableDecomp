@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCTARGETINGBASE_H
 #define FABLE_ENGINE_CTCTARGETINGBASE_H
 #if defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_FIRE_RANGED_WEAPON)
@@ -42,7 +43,11 @@ public:
 protected:
  virtual void UpdateNearestInterestingThing();
  void SetPNearestInterestingThing(CThing * p0);
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+ const CTargetingDef & GetTargetingDef() const{return *PTargetingDef;}
+#else
  const CTargetingDef & GetTargetingDef() const;
+#endif
  bool ScriptOverrideIgnoreEverything;
  CIntelligentPointer<CThing> PNearestInterestingThing;
  CIntelligentPointer<CThing> PScriptOverrideInterestingThing;

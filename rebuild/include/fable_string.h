@@ -150,6 +150,10 @@ public:
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
     bool operator!=(const wchar_t* other) const;
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    // Both original PDBs; native0099b0f0, called at005e50a2.
+    bool operator!=(const CWideString& other) const;
+#endif
 
     static CWideString FABLE_FASTCALL CreateFromCharString(
         const CCharString& text);
@@ -197,7 +201,11 @@ public:
     static CWideString NullString;                             // 0x013BCA24
 #endif
 
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+protected: // Both original TPI records: this conversion constructor is protected.
+#else
 private:
+#endif
     explicit CWideString(const CCharString& text);
 #ifndef FABLE_RETAIL_CWIDESTRING
     void UnassignString();

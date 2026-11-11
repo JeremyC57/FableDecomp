@@ -25,6 +25,17 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x004E3165
 public:
 #endif
+#if defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION) || defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+// Retail opt-in (Codex pass21): both original PDB types and donor OnHit/026FD4F0.
+public:
+static CThing* FABLE_FASTCALL Create(long,const C3DVector&);
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+void SetThingAsImmune(CThing&);
+#endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+void SetSpecificThingToHit(CThing&);
+#endif
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDExplosion)==0x78);
 #endif

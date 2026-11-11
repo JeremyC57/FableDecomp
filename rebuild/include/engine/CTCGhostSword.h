@@ -25,6 +25,10 @@
 #include "engine/CIntelligentPointer.h"
 class CSpecialAbilitiesGhostSwordDef; class CThingAICreature;
 class CTCGhostSword : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static bool FABLE_FASTCALL IsThingGhostSword(const CThing*);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
     // Retail opt-in (Codex pass18): original Ego_r30739 public methods, native vtable126e494 slot9.

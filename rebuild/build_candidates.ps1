@@ -392905,6 +392905,194 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteDeath_00edc980_test.cpp'
         PassPattern = '00edc980_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005e4be0'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_GetQuestDescription_005e4be0.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_GetQuestDescription_005e4be0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT60 /d2inlS48'
+        PassPattern = '005e4be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c1000'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/7c/NThingShotCTCShotDefinitionBase_OnCollisionProper_007c1000.cpp'
+        TestSource = '00/7c/NThingShotCTCShotDefinitionBase_OnCollisionProper_007c1000_test.cpp'
+        PassPattern = '007c1000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00804020'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/80/CTCTargetingPlayer_UpdateTargetList_00804020.cpp'
+        TestSource = '00/80/CTCTargetingPlayer_UpdateTargetList_00804020_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT68'
+        PassPattern = '00804020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b13530'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_DatabaseSerialise_00b13530.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_DatabaseSerialise_00b13530_test.cpp'
+        PassPattern = '00b13530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1b200'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangLeader'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d1b200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2d930'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d2d930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3e2e0'
+        Module = 'NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest'
+        Source = '00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_Main_00d3e2e0.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_Main_00d3e2e0_test.cpp'
+        PassPattern = '00d3e2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d56790'
+        Module = 'NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent'
+        Source = '00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Main_00d56790.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Main_00d56790_test.cpp'
+        PassPattern = '00d56790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d62480'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_Main_00d62480.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_Main_00d62480_test.cpp'
+        PassPattern = '00d62480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d706e0'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_Guard'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Main_00d706e0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Main_00d706e0_test.cpp'
+        PassPattern = '00d706e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daf080'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_Main_00daf080.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_Main_00daf080_test.cpp'
+        PassPattern = '00daf080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db5330'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_Main_00db5330.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_Main_00db5330_test.cpp'
+        PassPattern = '00db5330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbb310'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Bully'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_Main_00dbb310.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_Main_00dbb310_test.cpp'
+        PassPattern = '00dbb310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddf090'
+        Module = 'NScript::CQ_PrisonWardenGameScript::CPrisonWarden'
+        Source = '00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_Main_00ddf090.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_Main_00ddf090_test.cpp'
+        PassPattern = '00ddf090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de2610'
+        Module = 'NScript::CQ_RansomVictimScript::CVictimsFatherGuard'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Main_00de2610.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Main_00de2610_test.cpp'
+        PassPattern = '00de2610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de6c20'
+        Module = 'NScript::CQ_RansomVictimScript::CVictim'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictim_Main_00de6c20.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictim_Main_00de6c20_test.cpp'
+        PassPattern = '00de6c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2ff00'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Buddy'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASBuddy_Main_00e2ff00.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASBuddy_Main_00e2ff00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT66'
+        PassPattern = '00e2ff00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7c8e0'
+        Module = 'NScript::CV_FishermanScript::CFisherman'
+        Source = '00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0_test.cpp'
+        PassPattern = '00e7c8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e90be0'
+        Module = 'NScript::CV_GuildMasterScript::CGuildMasterGameFlow'
+        Source = '00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Main_00e90be0.cpp'
+        TestSource = '00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Main_00e90be0_test.cpp'
+        PassPattern = '00e90be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebcf70'
+        Module = 'NScript::CV_OracleScript::CVO_OracleMarker'
+        Source = '00/eb/NScriptCVOracleScriptCVOOracleMarker_Main_00ebcf70.cpp'
+        TestSource = '00/eb/NScriptCVOracleScriptCVOOracleMarker_Main_00ebcf70_test.cpp'
+        PassPattern = '00ebcf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec68a0'
+        Module = 'NScript::CV_SickChildScript::CSickChildsSister'
+        Source = '00/ec/NScriptCVSickChildScriptCSickChildsSister_Main_00ec68a0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCSickChildsSister_Main_00ec68a0_test.cpp'
+        PassPattern = '00ec68a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec8300'
+        Module = 'NScript::CV_SickChildScript::CManInLove'
+        Source = '00/ec/NScriptCVSickChildScriptCManInLove_Main_00ec8300.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCManInLove_Main_00ec8300_test.cpp'
+        PassPattern = '00ec8300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec9d30'
+        Module = 'NScript::CV_SickChildScript::CMansLover'
+        Source = '00/ec/NScriptCVSickChildScriptCMansLover_Main_00ec9d30.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCMansLover_Main_00ec9d30_test.cpp'
+        PassPattern = '00ec9d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecf7f0'
+        Module = 'NScript::CV_SickChildScript::CWomanToAttract'
+        Source = '00/ec/NScriptCVSickChildScriptCWomanToAttract_Main_00ecf7f0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCWomanToAttract_Main_00ecf7f0_test.cpp'
+        PassPattern = '00ecf7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed5f50'
+        Module = 'NScript::CV_SwordInTheStoneScript::CSwordCrowd'
+        Source = '00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50_test.cpp'
+        PassPattern = '00ed5f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afcc30'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT1537 /d2inlS15'
+        PassPattern = '00afcc30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -28,13 +28,24 @@ class CGameScriptInterfaceBase;
 
 template <class T> class CLevelScriptBase : public CScriptBase {
 public:
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game) : Game(&game), MasterScriptData((T*)data) {}
+    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game) :
+#ifdef FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+        Game(game), MasterScriptData(*(T*)data)
+#else
+        Game(&game), MasterScriptData((T*)data)
+#endif
+        {}
 #ifndef FABLE_RETAIL_CLEVELSCRIPTBASE
     virtual ~CLevelScriptBase();
 #endif
     T* GetMasterData();
+#ifdef FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+    CGameScriptInterfaceBase& Game; // Original public reference, retail40.
+    T& MasterScriptData; // Original public reference, retail44.
+#else
     CGameScriptInterfaceBase* Game;                                      // +0x40
     T*                        MasterScriptData;                          // +0x44
+#endif
 };
 
 #endif // FABLE_RETAIL_NSCRIPT

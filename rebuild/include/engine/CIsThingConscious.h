@@ -25,6 +25,9 @@ public:
     virtual bool operator()() const;                                     // slot 0  0x00CDDAB0
     virtual CPredicateBase* Clone() const;                               // slot 1  0x00CDDAE0
     virtual ~CIsThingConscious();                                        // slot 2  0x00CDDB10 (scalar deleting); 0x00EF7AB0
+#ifdef FABLE_RETAIL_CISTHINGCONSCIOUS_ORIGINAL_ACCESS
+private:
+#endif
     CScriptThing Thing;                                                  // +0x04
 };
 }

@@ -1,0 +1,9 @@
+# CEngine::SetDefaultRenderStates
+
+The original Ego_r and FableWin name sets both contain the private, non-virtual thiscall symbol `?SetDefaultRenderStates@CEngine@@AAEXXZ`. The named donor at 02C9B640 has the same sequence of render-state setter operations, the two eight-stage loops, lighting defaults, shader constants and conditional wireframe selection. Native row 00B24850 is 4344 bytes. The selected real-compiler object emits that exact leaf.
+
+The original global symbols are `NEngineInternal::GPDisplayManager` and `NEngineInternal::GPLightingManager`, with types CDisplayManager* and CEngineLightingManager*. Both original PDB PUBLIC32 and typed GDATA32 records are saved in `evidence/00b24850/PDB_GLOBAL_SEARCH.json`. Named donor loads at 02C9B918 and 02C9B8E6 use their respective donor addresses 04AC7FFC and 04AC8080. Corresponding native loads reference 01436E1C and 01436E9C. The two inherited incorrect spellings are reported in the adjacent NAME_FIXES.tsv; they are not used in the selected C++.
+
+The shared CRenderStateManager model provides the original CStateInfo, bookmark, dirty-list and D3D-table members. FableWin's private `SetRenderState(unsigned long,CStateInfo&)` is at donor 018BF760. Its original parameter name is state_info. The source retains one shared stage index as a reconstruction choice; the donor uses separate n locals. Attempts to reproduce those local scopes are retained in the history and did not improve the emitted code.
+
+This is a near match: three commutative-operand/destination instructions still differ. Its full caller and inline setter behavior fixture passes VC7.1 and g++03, including all 126 modified state entries, eight stages, capture bookkeeping and external manager call order. This document does not claim a completed exact-byte relocation audit.

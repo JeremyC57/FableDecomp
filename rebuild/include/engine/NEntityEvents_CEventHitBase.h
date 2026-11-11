@@ -9,15 +9,28 @@
 #include "engine/CCountedPointer.h"
 #include "engine/CHitParameters.h"
 class CThing;
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+#include "engine/NEntityEvents_EEventType.h"
+class CTCEntityEvents;
+#endif
 #ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS
 class CTCEntityEvents;
 #endif
 namespace NEntityEvents {
-#ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3
+#if defined(FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3) && !defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION)
 // agentFAM05 (2026-11-11): the event type GetType returns (mangled W4EEventType@NEntityEvents@@; the enumerators are not in the name sets, so the
-// rows write the retail values as casts).
+// rows write the retail values as casts). Under the Codex pass 21 opt-in the full enum comes from engine/NEntityEvents_EEventType.h instead.
 enum EEventType { };
 #endif // FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+class CEventBase {public:
+ CEventBase():WorldFrame(0){} virtual ~CEventBase(){}
+ virtual EEventType GetType()const=0;
+ virtual void OnAdd(const CTCEntityEvents&);
+ virtual long GetLifeTime()const;virtual bool IsReadyToDie()const;
+protected:long WorldFrame;
+};
+#else
 class CEventBase {
 public:
     virtual ~CEventBase();                               // slot 0
@@ -36,6 +49,7 @@ public:
     virtual long GetLifeTime() const;                    // slot 3, 0x00810E60
 #endif // FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3
 };
+#endif
 class CEventHitBase : public CEventBase {
 public:
     virtual ~CEventHitBase();                            // slot 0

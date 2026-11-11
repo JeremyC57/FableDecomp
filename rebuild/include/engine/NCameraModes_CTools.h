@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_NCAMERAMODES_CTOOLS_H
 #define FABLE_ENGINE_NCAMERAMODES_CTOOLS_H
 // New header (chunk 724 round 3). NCameraModes::CTools, the camera helper owned by CGameCameraManager (Ego_r.pdb
@@ -30,7 +31,12 @@ public:
     {return (current_val*weight+new_val)/(weight+1.0f);}
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    enum ELOSTest { TEST_THINGS=1,TEST_LANDSCAPE=2,TEST_THEMES=4,TEST_CREATURES=8,TEST_PASSABILITY=16,TEST_ALL_BUT_CREATURES=7,TEST_ALL=15 };
+    bool IsLineOfSight(const C3DVector&,const C3DVector&,C3DVector&,C3DVector&,float&,const CThing**,ELOSTest,bool)const;
+#else
     enum ELOSTest { };
+#endif
     bool GetThingPointIntersectionFromTo(const std::vector<const CThing*>&, const C3DVector&, const C3DVector&, C3DVector&,
         C3DVector&, const CThing**, bool, ELOSTest) const;           // 0x008771A0
     // chunk 724c: the thing-vector IsLineOfSight overload, Ego_r ?IsLineOfSight@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@...

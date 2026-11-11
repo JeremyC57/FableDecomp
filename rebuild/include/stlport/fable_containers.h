@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_STLPORT_CONTAINERS_H
 #define FABLE_STLPORT_CONTAINERS_H
 // STLport 4.6.2 excerpts: stl/type_traits.h, _iterator_base.h, _algobase.h, _construct.h, _uninitialized.h,
@@ -144,10 +145,18 @@ template<class I,class O,class D> inline O __fastcall __copy(I first,I last,O re
 inline void* __copy_trivial(const void* first,const void* last,void* result) {
     return last==first?result:(char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
 }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
+#else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
+#endif
     return __copy(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
 }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#endif
     return (Output)__copy_trivial(first,last,result);
 }
 template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T* result,const __true_type&) {
@@ -169,9 +178,15 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 }
 #endif
 // _construct.h
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class T,class U> inline void FABLE_FASTCALL _Construct(T* p,const U& v) { new(p) T(v); }
+template<class T> inline void FABLE_FASTCALL _Destroy(T* p) { p->~T(); }
+inline void FABLE_FASTCALL _Destroy(char*,char*) { }
+#else
 template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }
 inline void _Destroy(char*,char*) { }
+#endif
 #ifdef FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
 // Retail opt-in (NF19, 2026-11-11): the nontrivial range destroy as the out-of-line /Gr COMDAT the caller only calls --
 // first/last in ecx/edx, the tag by reference on the stack (e.g. 0x006F2300 std::__destroy_aux<CCountedPointer<
@@ -187,18 +202,30 @@ template<class I> __declspec(noinline) void __destroy_aux(I first,I last,const _
 // Original native 0076a2a0 takes its range in ecx/edx and the tag on the stack.
 template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
+#else
 template<class I> inline void __destroy_aux(I first,I last,const __false_type&) {
+#endif
 #endif
 #endif
     for(;first!=last;++first) _Destroy(&*first);
 }
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I> inline void FABLE_FASTCALL __destroy_aux(I,I,const __true_type&) { }
+#else
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
+#endif
 #ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I,class T> FABLE_FORCEINLINE void __destroy(I first,I last,T*) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I,class T> inline void FABLE_FASTCALL __destroy(I first,I last,T*) {
+#else
 template<class I,class T> inline void __destroy(I first,I last,T*) {
+#endif
 #endif
     typedef typename __type_traits<T>::has_trivial_destructor Trivial;
     __destroy_aux(first,last,Trivial());
@@ -207,7 +234,11 @@ template<class I,class T> inline void __destroy(I first,I last,T*) {
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I> inline void FABLE_FASTCALL _Destroy(I first,I last) {
+#else
 template<class I> inline void _Destroy(I first,I last) {
+#endif
 #endif
     __destroy(first,last,(typename iterator_traits<I>::value_type*)0);
 }
@@ -235,12 +266,20 @@ template<class I,class O> O __uninitialized_copy(I first,I last,O result,const _
 // Native 00769930/007698c0 take first/last in ecx/edx and result/tag on the stack.
 template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
+#else
 template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
+#endif
 #endif
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class T> inline T* FABLE_FASTCALL __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
+#else
 template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
+#endif
     return (T*)__copy_trivial(first,last,result);
 }
 #ifdef FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
@@ -355,7 +394,11 @@ public:
     // (0x008A838C `mov ebp,[esp+18h] ; mov edi,[esp+14h]`, never reloaded).
     vector(const vector& x);
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    FABLE_FORCEINLINE vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
+#else
     vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
+#endif
         this->_M_finish=__uninitialized_copy((const _Tp*)x._M_start,(const _Tp*)x._M_finish,this->_M_start,typename __type_traits<_Tp>::is_POD_type());
     }
 #endif

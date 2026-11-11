@@ -12,10 +12,17 @@
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCombatAbility.h"
 #include "engine/CCombatAbilityData.h"
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#include "engine/ECombatAbilityDataType.h"
+#endif
 #include "engine/EUnsheatheWeaponType.h"
 #include "stlport/fable_map.h"
 class CCombatManager;class CThingCreatureBase;class CCombatTypeDef;class CMeleeCombatAbilityDef;
 class CTCCombat:public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void SetStruck(const NHitLocations::CHitLocation&,CHitParameters&);void OnHit(const CThing&);
+#endif
 public:
  static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_COMBAT; }
  bool IsAbleToBeKnockedDown() const;
@@ -42,6 +49,10 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
  CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const{return PCombatTypeDef;}
+#endif
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ // Both original PDBs; donor named accessor and native stores to +7c.
+ void SetShotTypeOverride(long type){ShotOverrideType=type;}
 #endif
  void SetCombatType(const CDefPointer<const CCombatTypeDef>&);
 private:

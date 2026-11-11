@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCTARGETED_H
 #define FABLE_ENGINE_CTCTARGETED_H
 #ifdef FABLE_RETAIL_CTCTARGETED
@@ -17,6 +18,11 @@ enum ETargetingType;                                                     // MS f
 class CTCTargeted : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TARGETED; }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    long GetNumTargetPoints()const;
+    C3DVector GetTargetPoint(long,float)const;
+    bool IsValidTargetWithoutLOS()const{return ValidTargetWithoutLOS;}
+#endif
     unsigned long GetTargetingFlags() const { return TargetingFlags; }
     bool IsZTargetable() const { if (TargetingFlags & 4) return true; return false; }   // two-return form: only it folds to `test byte ptr [eax+0Ch],4` under VC7.1 (the `!= 0` / `?:` forms emit shr/test)
     // Chunk 755 (row 0x00729F60 CTCActionUseScriptedHook::OnInitialActivate): FableWin.pdb ?SetTargetable@CTCTargeted@@QAEX_N@Z (inline in

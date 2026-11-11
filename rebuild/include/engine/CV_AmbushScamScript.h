@@ -128,10 +128,16 @@ public:
         bool BuddyHeroApproachComplete;                      // +0x1c
         bool BuddyHeroApproachSpeechComplete;                // +0x1d
         bool BuddyFollowSpeechComplete;                      // +0x1e
-        // C3DVector BuddyStartPos follows (Ego_r dump: offset 31, size 44); natural alignment gives +0x20 with the same
-        // 0x2C size, so the offset waits for a CAS_Buddy row to prove it.
+#ifdef FABLE_RETAIL_CV_AMBUSHSCAMSCRIPT_BUDDY
+        // Retail opt-in (Codex pass21): original BuddyStartPos at +0x1f; native E30A use.
+        // Uses the existing packed C3DVector model to retain its genuine 1-byte alignment.
+        C3DVector BuddyStartPos;
+#endif
     };
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_AmbushScamScript) == 0x94);
+#ifdef FABLE_RETAIL_CV_AMBUSHSCAMSCRIPT_BUDDY
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_AmbushScamScript::CAS_Buddy) == 0x2c);
+#endif
 #endif

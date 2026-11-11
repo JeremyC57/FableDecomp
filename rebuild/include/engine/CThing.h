@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTHING_H
 #define FABLE_ENGINE_CTHING_H
 #include "fable_compiler.h"
@@ -44,6 +45,10 @@ namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
 template<class From,class To> inline To __fastcall GFDebugPDynamicCast(From value,To) { return static_cast<To>(value); }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+// Original donor024CFED8 instantiates this checked cast; debug checks vanish in retail.
+template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
+#endif
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 class CPersistContext;class CMemoryDataInputStream;class CInterpolationInfo;class CThingInfo;class CEditEngineDrawInfo;class CThingDrawInformation;class CThingPhysicalDebugInfo;class CEnginePrimitivePrepareInfo;enum ECollideType;
 #endif
@@ -283,7 +288,17 @@ public:
     // Native0076efeb and0076f1d6 materialise the component-presence boolean.
     bool HasTC(ETCInterfaceType type) const { const bool& found=UsingComponents.test(type); return found; }
 #else
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    FABLE_FORCEINLINE
+#endif
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    // Original FableWin donor024db630: presence, GetTC, exact class-name equality.
+    template<class T> FABLE_FORCEINLINE bool HasTC()const {
+        if(!HasTC(T::StatGetInterfaceType()))return false;
+        return GetTC(T::StatGetInterfaceType()).GetClassTypeName()==T::StatGetClassTypeName();
+    }
+#endif
 #endif
     // GetTC<T> / PeekTC<T>: __forceinline (owner decision 2026-11-01, EXTRA_RULES): Ego_r.pdb (the release build) has no
     // ??$GetTC@ / ??$PeekTC@ instantiation (FableWin.pdb, debug: 267 / 159), Fable.exe has no out-of-line copy, and plain
@@ -523,6 +538,10 @@ public:
     static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }
     static const CThingManager* __fastcall PeekPCurrentThingManager() { return PCurrentThingManager; }
 protected:
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    // Both original PDBs protected member; donor01ceeb10 forwards this exact static accessor.
+    CThingManager& GetThingManager(){return *GetPCurrentThingManager();}
+#endif
     CThingSearchTools& GetThingSearchTools();                    // 0x004C7A50
     const CThingSearchTools& PeekThingSearchTools() const;       // 0x004C7A60
     void CheckUID() const;                                       // 0x004C7BC0

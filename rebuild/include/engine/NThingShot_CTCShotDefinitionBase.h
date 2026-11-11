@@ -17,7 +17,11 @@
 #include "engine/CDefPointer.h"
 #include "engine/EHeroExperienceStatCategory.h"
 class CMeleeCombatAbilityDef;
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+namespace NHitLocations{class CHitLocation;}
+#else
 class CHitLocation;
+#endif
 #endif
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
@@ -33,6 +37,10 @@ class CMeleeCombatAbilityDef;
 #endif
 namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
@@ -59,14 +67,26 @@ public:
 public:
     virtual bool GetStatToModifyOnHit(EHeroExperienceStatCategory& category); // slot30
     virtual float GetShotDamage() const; // slot31
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+public:virtual long GetWeaponTrailGraphic()const;
+protected:
+ virtual void InitMovement();virtual void InitAttachedEffects();virtual void UpdateMovement();virtual void UpdateFacingDirection();
+ virtual void UpdateCollision(bool&);virtual void UpdateEffects();virtual void UpdateCreatureAwarenessOfMe();virtual void OnSubShotTrigger();virtual void OnPassingTarget();
+ virtual bool IsNegatedHit()const;virtual bool IsCreateParticleEffectOnHit()const;
+ void OnCollisionProper(bool& killed_me);
+#else
 protected:
     virtual void UpdateFacingDirection(); // slot32
     virtual void InitMovement(); // slot33
+#endif
     C3DVector GetShootAtPos() const; // 007bedd0, Ego_r protected const IBE
 #endif
 protected:
     CIntelligentPointer<CThing> PEffect;                                // +0x0c
     std::vector<CIntelligentPointer<const CThing> > HitThingsList;      // +0x14
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+private:
+#endif
     CIntelligentPointer<const CThing> PTargetThing;                     // +0x20
     CIntelligentPointer<CThing> PShooter;                               // +0x28
     CIntelligentPointer<CThing> PWeapon;                                // +0x30
@@ -88,7 +108,11 @@ protected:
     C3DVector BestCollisionNormal; //7c
     CIntelligentPointer<CThing> PBestCollisionThing; //88
     ECollideType BestCollisionType; //90
-    CHitLocation* PBestCollisionHitLocation; //94
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+    NHitLocations::CHitLocation* PBestCollisionHitLocation;
+#else
+    CHitLocation* PBestCollisionHitLocation;
+#endif //94
     bool MultiArrowShotType; //98
 #endif
 #ifdef FABLE_RETAIL_NTHINGSHOT_CTCSHOTDEFINITIONBASE_VSLOTS

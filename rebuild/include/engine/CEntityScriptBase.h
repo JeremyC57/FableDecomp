@@ -24,7 +24,13 @@ class CGameScriptInterfaceBase;
 
 class CEntityScriptBase {
 public:
-    CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me) : Game(&game), Me(me) {}
+    CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me) :
+#ifdef FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+        Game(game),
+#else
+        Game(&game),
+#endif
+        Me(me) {}
     virtual ~CEntityScriptBase();                                        // slot 0  0x00CDEBF0 (scalar deleting); 0x00F35B40
     virtual void Main() = 0;                                             // slot 1
     virtual void Init();                                                 // slot 2  0x00CDEBB0
@@ -34,7 +40,12 @@ public:
     virtual void OnInterrupted();                                        // slot 6  0x00CDEBE0
     void SetPredicate(const NScript::CPredicateBase&);                   // 0x00F35B10
     bool IsActiveThreadTerminating() const;                              // 0x00F35B30
+#ifdef FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+protected:
+    CGameScriptInterfaceBase& Game; // Both original PDBs: protected reference at4, not pointer.
+#else
     CGameScriptInterfaceBase* Game;                                      // +0x04
+#endif
     CScriptThing              Me;                                        // +0x08
 };
 FABLE_STATIC_ASSERT(sizeof(CEntityScriptBase) == 0x14);

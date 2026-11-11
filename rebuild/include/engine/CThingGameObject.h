@@ -7,9 +7,22 @@
 #include "engine/C3DVector.h"
 #include "engine/CCountedPointer.h"
 class CHitParameters;
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+namespace NHitLocations{class CHitLocation;}
+#endif
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 #endif
 class CThingGameObject : public CThingPhysical {
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+void GetShotHitParameters(NHitLocations::CHitLocation*,CThing&,const C3DVector&,CHitParameters&)const;
+#endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Evidence: both original PDB type records and donor OnHit/helper disassembly.
+public:
+bool IsGivingHeroStatChangesOnBeingHit()const;bool IsAddToComboMultiplierOnHit()const;
+#endif
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 public:
  virtual bool DrawIsTargeted() const;

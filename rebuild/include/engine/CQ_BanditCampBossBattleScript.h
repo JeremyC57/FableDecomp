@@ -76,6 +76,26 @@ public:
     long AngryBanditNeeded;                                              // +0x68
     bool BanditsNeededForCutscene;                                       // +0x6c
     bool PubGameChatted;                                                 // +0x6d
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_GATE2GUARD1
+    // Retail opt-in (Codex pass 21): both original PDBs, size 0x20; native
+    // Alloc 00D071F0 and vtable 012C8E80 prove Main slot 1, Init slot 2.
+    void OpenGate(float, CCharString); // 00D0EBC0, both PDB signatures and thread target.
+    class CGate2Guard1 : public CEntityScriptBase {
+    public:
+        typedef CQ_BanditCampBossBattleScript TParentClass;
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+        CQ_SunnyvaleMasterData* GetMasterData();
+    private:
+        virtual void Main();
+        virtual void Init();
+    protected:
+        CQ_BanditCampBossBattleScript& ParentClass; // +0x14
+        CQ_SunnyvaleMasterData* PMasterData; // +0x18
+    private:
+        long AIState; // +0x1c
+    };
+#endif
     class CGate3Guard : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D07340
@@ -173,6 +193,28 @@ public:
         bool GivenPass;                                                  // +0x1c
     };
 #endif
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CAMPHOSTAGEGUARD
+    // Retail opt-in (chunk 812): Ego_r.pdb CCampHostageGuard (32 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18,
+    //   DropPass +0x1c); vtable 0x012C9130 (stored by the landed Alloc 0x00D08E50): 0 scalar deleting dtor 0x00D08FF0, 1 Main 0x00D09010,
+    //   2 Init 0x00D08F00, 3 GetParentScript 0x00D08EF0, 4 CEntityScriptBase::OnPersist 0x00CDEBC0, 5 OnPredicateFail 0x00D08FB0,
+    //   6 CEntityScriptBase::OnInterrupted 0x00CDEBE0. Ego_r.pdb / FableWin.pdb ?Main@ / ?Init@ / ?OnPredicateFail@CCampHostageGuard@
+    //   CQ_BanditCampBossBattleScript@NScript@@EAEXXZ (private). Declarations only; existing includers do not define the macro.
+    class CCampHostageGuard : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D08E50
+        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00D08EF0
+    private:
+        virtual void Main();                                             // slot 1 0x00D09010
+        virtual void Init();                                             // slot 2 0x00D08F00
+        virtual void OnPredicateFail();                                  // slot 5 0x00D08FB0
+    protected:
+        NScript::CQ_BanditCampBossBattleScript & ParentClass;            // +0x14
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
+    private:
+        bool DropPass;                                                   // +0x1c
+    };
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript) == 0x70);
@@ -190,5 +232,8 @@ FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostage)
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CBCGameMaster) == 0x24);
 #endif
 
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CAMPHOSTAGEGUARD
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard) == 0x20);
+#endif
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_BANDITCAMPBOSSBATTLESCRIPT_H

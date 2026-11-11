@@ -70,6 +70,11 @@ public:
     long           NoEventScansRunning;                      // +0xd14
 };
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Original nested type has natural alignment and sizeof20 in both PDBs.
+class CJoystick::CInitRumble {public:CInitRumble(float,float,float,float,bool);float MaxLevel,Smoothness,AttackTime,DecayTime;bool Cumulative;};
+FABLE_STATIC_ASSERT(sizeof(CJoystick::CInitRumble)==20);
+#endif
 
 FABLE_STATIC_ASSERT(sizeof(CJoystick) == 0xd18);
 #ifndef FABLE_RETAIL_CJOYSTICK

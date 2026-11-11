@@ -1,10 +1,22 @@
 #ifndef FABLE_ENGINE_CINVENTORYITEMDEF_H
 #define FABLE_ENGINE_CINVENTORYITEMDEF_H
-#ifdef FABLE_RETAIL_CLOTHING_DEFS
+#if defined(FABLE_RETAIL_CLOTHING_DEFS) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
 #include "engine/CSubDefClassBase.h"
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+#include "engine/CEngineGraphic.h"
+#endif
 class CInventoryItemDef:public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    // Original FW01dfbfa0 and native005badeb type-name literal.
+    static CCharString FABLE_FASTCALL StatGetTypeName();
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    // Original Graphic member; native005e51f5 Type+32,005e51fb BankIndex+25.
+    CEngineGraphic Graphic;
+#else
     unsigned char Graphic[0xf];                              // +0x25 CEngineGraphic
+#endif
     unsigned long ItemDescription;                           // +0x34
     unsigned long ItemDetails;                               // +0x38
     long          InventoryCategory;                         // +0x3c

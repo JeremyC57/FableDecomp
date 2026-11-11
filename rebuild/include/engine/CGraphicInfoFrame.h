@@ -10,6 +10,10 @@ class CGraphicInfo;class CGraphicDataBank;class CBankFileAsyncData;
 class CGraphicInfoFrame : public CBaseClass {
 public:
     class CFrameData;
+#ifdef FABLE_RETAIL_CGRAPHICINFO_SPRITE
+    unsigned long GetWidth()const;
+    unsigned long GetHeight()const;
+#endif
     bool GetTexture(const CTexture**,unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture() const; // native009fd3f0
     void TouchFrame(unsigned long) const;

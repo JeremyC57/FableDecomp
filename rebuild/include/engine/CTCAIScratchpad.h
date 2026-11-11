@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCAISCRATCHPAD_H
 #define FABLE_ENGINE_CTCAISCRATCHPAD_H
 #include "engine/CTCBase.h"
@@ -8,6 +9,10 @@
 class CAIScratchpadDef;
 class CTCAIScratchpad:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+ static float GlobalTargetingDistanceOffset;
+ static float __fastcall GetGlobalTargetingDistanceOffset(){return GlobalTargetingDistanceOffset;}
+#endif
 #ifdef FABLE_RETAIL_CTCAISCRATCHPAD_BETTING
  // Both PDB original static names and FableWin getters02ac3ed0/3f50/3f90; native013bae1d/20/24.
  static bool BettingActive;

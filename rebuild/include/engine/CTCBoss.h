@@ -15,6 +15,10 @@ public:
  virtual void FrameUpdate();
  long GetBossPhase()const;
  void SetNextBossPhase(long,bool);
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ bool IsReadyForPhaseChange()const;
+#endif
+
  bool HasBossDef()const{return !PBossDef.IsNull();}
  const CBossDef& GetBossDef()const{return *PBossDef;}
 #ifdef FABLE_RETAIL_CTCBOSS_EFFECTS

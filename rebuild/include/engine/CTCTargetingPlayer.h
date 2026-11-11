@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCTARGETINGPLAYER_H
 #define FABLE_ENGINE_CTCTARGETINGPLAYER_H
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER
@@ -14,18 +15,48 @@
 #include "engine/CTCTargetingBase.h"
 #include "engine/C3DVector.h"
 #include "engine/C2DVector.h"
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#include "engine/NPlayerTargeting.h"
+#endif
 class CTCTargetingPlayer : public CTCTargetingBase {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+public:
+    // Original public overrides in both complete PDB types; existing base slots.
+    virtual CThing* GetPTargetedThing()const;
+    virtual void SetPTargetedThing(CThing*);
+    virtual CThing* GetPTargetLockedThing()const;
+    enum ETargetNextThingMethod { TARGET_NEXT_NULL=0,TARGET_NEXT_NEXT=1,TARGET_NEXT_LEFT=2,TARGET_NEXT_RIGHT=3 };
+    typedef std::vector<NPlayerTargeting::CTargetPoint> TTargetPointList;
+#endif
 protected:
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    void UpdateTargetList();
+    float GetFOVToBeInToBeTargetable()const;
+#endif
     void UpdateTargetedPositionRandomWalk();                    // 0x00803540
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+private:
+    static bool PlayerTargetingLineOfSightTest,PlayerTargetingBuildingVolumeTest;
+#endif
     long          ZLockTargetSelectionTimer;                    // +0x38
     bool          TargetNextThing;                              // +0x3c
     bool          ForcedToHaveNoTarget;                         // +0x3d
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    ETargetNextThingMethod TargetNextThingMethod;                   // +0x40 ETargetNextThingMethod
+#else
     unsigned char TargetNextThingMethod[0x4];                   // +0x40 ETargetNextThingMethod
+#endif
     long          FrameSetAsTargetNextThing;                    // +0x44
     float         MaxTargetingDistance;                         // +0x48
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    NPlayerTargeting::CTargetPoint TargetedPoint;                          // +0x4c NPlayerTargeting::CTargetPoint
+    TTargetPointList Targets;                                 // +0x68 vector<NPlayerTargeting::CTargetPoint>
+    TTargetPointList RejectedTargetPoints;                    // +0x74 vector<NPlayerTargeting::CTargetPoint>
+#else
     unsigned char TargetedPoint[0x1c];                          // +0x4c NPlayerTargeting::CTargetPoint
     unsigned char Targets[0xc];                                 // +0x68 vector<NPlayerTargeting::CTargetPoint>
     unsigned char RejectedTargetPoints[0xc];                    // +0x74 vector<NPlayerTargeting::CTargetPoint>
+#endif
     long          CurrentZTargetIndex;                          // +0x80
     C3DVector     TargetedPos;                                  // +0x84
     C3DVector     OldTargetedPos;                               // +0x90
@@ -35,6 +66,12 @@ protected:
     C2DVector     DeltaTargetedPosOffset;                       // +0xbc
     C2DVector     DesiredTargetedPosOffset;                     // +0xc4
     C2DVector     TargetedPosOffsetSecondOrder;                 // +0xcc
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    CIntelligentPointer<CThing> PLastThreatenedThing;                    // +0xd4 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PProjectileTargetedThing;                // +0xdc CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PTargetLockedThing;                      // +0xe4 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PTargetOnlyThing;                        // +0xec CIntelligentPointer<CThing>
+#else
     unsigned char PLastThreatenedThing[0x8];                    // +0xd4 CIntelligentPointer<CThing>
 #ifndef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3 // agentFAM05 (2026-11-11)
     unsigned char PProjectileTargetedThing[0x8];                // +0xdc CIntelligentPointer<CThing>
@@ -46,6 +83,7 @@ protected:
     CIntelligentPointer<CThing> PTargetLockedThing;             // +0xe4
 #endif // FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
     unsigned char PTargetOnlyThing[0x8];                        // +0xec CIntelligentPointer<CThing>
+#endif
     bool          LockedOntoEnemy;                              // +0xf4
 public:
     static void CheckRetailLayout() {
@@ -106,12 +144,22 @@ public:
     bool          TargetNextThing;                           // +0x3c
     bool          ForcedToHaveNoTarget;                      // +0x3d
     unsigned char _pad_0x3e[0x2];                            // +0x3e
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    ETargetNextThingMethod TargetNextThingMethod;                // +0x40 ETargetNextThingMethod
+#else
     unsigned char TargetNextThingMethod[0x4];                // +0x40 ETargetNextThingMethod
+#endif
     long          FrameSetAsTargetNextThing;                 // +0x44
     float         MaxTargetingDistance;                      // +0x48
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    NPlayerTargeting::CTargetPoint TargetedPoint;                       // +0x4c CTargetPoint
+    TTargetPointList Targets;                              // +0x68 vector<NPlayerTargeting::CTargetPoint,std::allocator<NPlayerTargeting::CTargetPoint>_>
+    TTargetPointList RejectedTargetPoints;                 // +0x74 vector<NPlayerTargeting::CTargetPoint,std::allocator<NPlayerTargeting::CTargetPoint>_>
+#else
     unsigned char TargetedPoint[0x1c];                       // +0x4c CTargetPoint
     unsigned char Targets[0xc];                              // +0x68 vector<NPlayerTargeting::CTargetPoint,std::allocator<NPlayerTargeting::CTargetPoint>_>
     unsigned char RejectedTargetPoints[0xc];                 // +0x74 vector<NPlayerTargeting::CTargetPoint,std::allocator<NPlayerTargeting::CTargetPoint>_>
+#endif
     long          CurrentZTargetIndex;                       // +0x80
     float         TargetedPos_X;                             // +0x84 C3DVector::X
     float         TargetedPos_Y;                             // +0x88 C3DVector::Y
@@ -133,10 +181,17 @@ public:
     float         DesiredTargetedPosOffset_Y;                // +0xc8 C2DVector::Y
     float         TargetedPosOffsetSecondOrder_X;            // +0xcc C2DVector::X
     float         TargetedPosOffsetSecondOrder_Y;            // +0xd0 C2DVector::Y
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    CIntelligentPointer<CThing> PLastThreatenedThing;                 // +0xd4 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PProjectileTargetedThing;             // +0xdc CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PTargetLockedThing;                   // +0xe4 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PTargetOnlyThing;                     // +0xec CIntelligentPointer<CThing>
+#else
     unsigned char PLastThreatenedThing[0x8];                 // +0xd4 CIntelligentPointer<CThing>
     unsigned char PProjectileTargetedThing[0x8];             // +0xdc CIntelligentPointer<CThing>
     unsigned char PTargetLockedThing[0x8];                   // +0xe4 CIntelligentPointer<CThing>
     unsigned char PTargetOnlyThing[0x8];                     // +0xec CIntelligentPointer<CThing>
+#endif
     bool          LockedOntoEnemy;                           // +0xf4
     unsigned char _pad_0xf5[0x3];                            // +0xf5
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS

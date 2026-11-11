@@ -9,7 +9,11 @@
 class CPerceivedThingDef;
 class CTCPerceiveThing: public CTCBase {
 public:
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PERCEIVE_THING;}
+#else
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
+#endif
  virtual ETCInterfaceType GetInterfaceType() const;
  static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
  static CCharString FABLE_FASTCALL StatGetClassTypeName();
@@ -129,6 +133,11 @@ FABLE_STATIC_ASSERT(sizeof(CTCPerceiveThing)==0x58);
 class CPerceivedThingDef;
 #endif
 class CTCPerceiveThing : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PERCEIVE_THING;}
+void OnHit(const CThing&);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS
     virtual ETCInterfaceType GetInterfaceType() const;

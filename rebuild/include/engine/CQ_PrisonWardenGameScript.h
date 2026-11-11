@@ -45,6 +45,10 @@ class CScriptDataBase;
 namespace NScript {
 class CQ_PrisonWardenGameScript::CPrisonWarden : public CEntityScriptBase {
 public:
+#ifdef FABLE_RETAIL_CQ_PRISONWARDENGAMESCRIPT_MASTER_ACCESSOR
+    // Retail opt-in (Codex pass 21): Ego_r FF14 and FableWin100CE public member; donor0387C0E0 returns PMasterData at+18.
+    CQ_SunnyvaleMasterData* GetMasterData() { return PMasterData; }
+#endif
     static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonWardenGameScript&, CScriptDataBase*, const CScriptThing&); // 0x00DDE630
     virtual CScriptBase* GetParentScript() const;                        // 0x00DDE6D0
 private:

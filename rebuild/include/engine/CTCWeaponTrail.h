@@ -42,6 +42,11 @@ public: CTCWeaponTrail & operator=(const CTCWeaponTrail & p0);
 #else
 public:
     void SetLastProjectileWeaponTrailPoint(const C3DVector& point);
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+bool GetLastProjectileWeaponTrailPoints(std::vector<std::pair<C3DVector,C3DVector> >&)const;
+#endif
 #endif
 private:
     long NoTrails;

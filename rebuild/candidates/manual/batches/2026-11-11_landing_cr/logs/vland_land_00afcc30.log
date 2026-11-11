@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00afcc30   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00afcc30   RELOCATION_MATCH PASS   PreparePrimitives
+
+WINS: 1
+  00afcc30 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?PreparePrimitives@CPSCRenderSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30

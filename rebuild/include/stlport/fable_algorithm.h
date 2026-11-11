@@ -1,3 +1,31 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+/*
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Copyright (c) 1996,1997
+ * Silicon Graphics Computer Systems, Inc.
+ *
+ * Copyright (c) 1997
+ * Moscow Center for SPARC Technology
+ *
+ * Copyright (c) 1999 
+ * Boris Fomitchev
+ *
+ * This material is provided "as is", with absolutely no warranty expressed
+ * or implied. Any use is at your own risk.
+ *
+ * Permission to use or copy this software for any purpose is hereby granted 
+ * without fee, provided the above notices are retained on all copies.
+ * Permission to modify the code and to distribute modified code is granted,
+ * provided the above notices are retained, and a notice that the code was
+ * modified is included with the above copyright notice.
+ *
+ */
+// STLport4.6.2 excerpts adapted only for project names and native fastcall.
+#endif
 #ifndef FABLE_STLPORT_ALGORITHM_H
 #define FABLE_STLPORT_ALGORITHM_H
 // STLport 4.x (SGI) for_each + mem_fun_ref, as the landed NPlayerGui::CDrawMiniMap::ClearPrimitives 0x00644660 and
@@ -33,8 +61,28 @@ template <class It, class F> F FABLE_FASTCALL for_each(It first, It last, F f); 
 #ifdef FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
 // Retail opt-in (Codex pass20): STLport4.6 _algobase.h category dispatch;
 // native004b8e40 searches CCharString pointers, first/last in ecx/edx.
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+// Original STLport4.6.2 _algobase.c:98-139; tag never escapes the complete body.
+template<class It,class T> inline It FABLE_FASTCALL __find(It first,It last,const T& value,const random_access_iterator_tag&){
+ typename iterator_traits<It>::difference_type trip_count=(last-first)>>2;
+ for(;trip_count>0;--trip_count){
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+ }
+ switch(last-first){
+ case 3:if(*first==value)return first;++first;
+ case 2:if(*first==value)return first;++first;
+ case 1:if(*first==value)return first;++first;
+ case 0:default:return last;
+ }
+}
+template<class It,class T> inline It FABLE_FASTCALL find(It first,It last,const T& value) {
+#else
 template<class It,class T> It FABLE_FASTCALL __find(It first,It last,const T& value,const random_access_iterator_tag&);
 template<class It,class T> inline It find(It first,It last,const T& value) {
+#endif
     return __find(first,last,value,random_access_iterator_tag());
 }
 #endif

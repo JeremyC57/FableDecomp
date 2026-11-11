@@ -17,5 +17,13 @@ public:
     float GetLowestY() const { return (float)Min<double>(Point1.Y, Point2.Y); }
     float GetHighestY() const { return (float)Max<double>(Point1.Y, Point2.Y); }
     bool IntersectsWith(const C2DBoxF& box) const;                       // 0x00A57BD0
+#ifdef FABLE_RETAIL_C2DLINEF_SQUAREDDIST
+    // Retail opt-in (chunk 875, row 0x00A1E5C0 CNavigatorAStar::CalculateAndMoveToPosProximity): Ego_r.pdb / FableWin.pdb
+    // ??0C2DLineF@@QAE@ABVC2DVector@@0@Z (inline in retail: the two end points copied member-wise into the frame, 0x00A1F330..
+    // 0x00A1F358) and ?GetSquaredDist@C2DLineF@@QAEMABVC2DVector@@@Z (non-const, out of line at 0x00A57770: `push ecx ;
+    // lea ecx,[esp+88h] ; call 0x00A57770` at 0x00A1F397). Declarations only for the out-of-line member: no layout change.
+    C2DLineF(const C2DVector& point1, const C2DVector& point2) : Point1(point1), Point2(point2) { }
+    float GetSquaredDist(const C2DVector& point);                        // 0x00A57770
+#endif
 };
 #endif // FABLE_ENGINE_C2DLINEF_H

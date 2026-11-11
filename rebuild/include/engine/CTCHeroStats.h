@@ -23,7 +23,13 @@ class CThingBuilding;
 class CThingAICreature;
 enum EMarriageState;                                         // MS forward enum (the row defines the enumerators it uses)
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+namespace NHeroStatModifierEvent {class CBase;}
+#endif
 class CTCHeroStats : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:void InformOfEvent(const NHeroStatModifierEvent::CBase&);
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;

@@ -20,6 +20,10 @@ public:CParticleEmitter();virtual ~CParticleEmitter();
  bool IsDead() const { return Dead; }
  void Kill();                                                          // 0x00AEE8C0
 #endif
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_UPDATE
+ bool IsEmitter2D()const{return Emitter2D;}
+ void Update();
+#endif
  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
 #ifdef FABLE_RETAIL_CPARTICLEEMITTER_INTERPOLATE
  // Retail opt-in (chunk Q3, row 0x007CCF50 CTCMultiStrike::ApplyEffectOnWeapon): Ego_r.pdb / FableWin.pdb

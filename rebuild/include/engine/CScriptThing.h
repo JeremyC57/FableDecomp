@@ -113,6 +113,9 @@ public:
     bool operator==(const CScriptThing&) const;                          // 0x008AAE20
     bool operator!=(const CScriptThing&) const;                          // 0x008AAE40
     void SetImplementation(CCountedPointer<CScriptThing>);               // Ego_r.pdb / FableWin.pdb
+#ifdef FABLE_RETAIL_CSCRIPTTHING_ORIGINAL_ACCESS
+private: // Both original PDBs: CScriptThing::PImp is private, +4.
+#endif
     CCountedPointer<CScriptThing> PImp;                                  // +0x04 (Data +0x04, Info +0x08)
     static CCharString NullString;                                       // 0x0143E8EC
 protected:

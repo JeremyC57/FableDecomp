@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTHINGSEARCHTOOLS_H
 #define FABLE_ENGINE_CTHINGSEARCHTOOLS_H
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS
@@ -10,7 +11,7 @@ namespace NThingMap { class CThingMap;class CThingMapManager; }
 class CThingSearchTools {
 protected:
     const std::list<CClass*>& PeekTypeList(long)const;
-#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY)
+#if (defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY)))
     // Chunk 756 (row 0x0049C700): Ego_r.pdb ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z
     // (protected const, out of line in retail at 0x0049C700).
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap& map,const C2DBoxI& area)const;
@@ -174,7 +175,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -220,7 +225,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -291,7 +300,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -328,7 +341,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -372,7 +389,11 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area,const Filte
    C2DBoxI cells(local.TLX>>shift,local.TLY>>shift,((local.BRX-1)>>shift)+1,((local.BRY-1)>>shift)+1);
    if(cells.BRX-cells.TLX==0||cells.BRY-cells.TLY==0)continue;
    for(long y=cells.TLY;y<cells.BRY;++y){
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
     for(long x=cells.TLX;x<cells.BRX;++x,++cell){
      for(const NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext){
       CTCMapwho* who=node->PMapwho;

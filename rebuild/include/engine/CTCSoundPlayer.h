@@ -8,6 +8,10 @@ class CThingSoundEmitter;
 #include "engine/ETCInterfaceType.h"
 #endif
 class CTCSoundPlayer : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void PlayCollisionSound(const C3DVector&,const CDefPointer<const CMaterialDef>&,const CDefPointer<const CMaterialDef>&);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER
     // Retail opt-in (chunk 751, row 0x007E0D00 CTCEffectOnDie::OnDie): FableWin.pdb ?StatGetInterfaceType@CTCSoundPlayer@@SI?AW4ETCInterfaceType@@XZ

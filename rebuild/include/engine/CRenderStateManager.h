@@ -191,7 +191,12 @@ public:
     FABLE_FORCEINLINE void SetDitherEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.DitherEnable); }
     FABLE_FORCEINLINE void SetLightingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.LightingEnable); }
     FABLE_FORCEINLINE void SetTextureMaxAnisotropy(long stage, long anisotropy) { SetRenderState(anisotropy, DeviceState.TextureMaxAnisotropy[stage]); }
+    #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_DEFAULT_TRANSFORM
+    // Retail opt-in (Codex pass 21): original setter signature and fields from FableWin; native00b25426 inline site.
+    FABLE_FORCEINLINE void SetTextureTransformMode(long stage, TEXTURE_TRANSFORM_MODE mode) { SetRenderState(D3DTextureTransformModeTable[mode], (DeviceState.TextureTransformMode[stage])); }
+#else
     FABLE_FORCEINLINE void SetTextureTransformMode(long stage, TEXTURE_TRANSFORM_MODE mode) { SetRenderState(D3DTextureTransformModeTable[mode], DeviceState.TextureTransformMode[stage]); }
+#endif
     // ?SetTextureMipmapLODBias@CRenderStateManager@@QAEXJM@Z: the float's bits are the D3D value (0x00B705DE: the bias is copied
     // to a stack slot and reloaded as a dword).
     FABLE_FORCEINLINE void SetTextureMipmapLODBias(long stage, float bias) { SetRenderState(*(unsigned long*)&bias, DeviceState.TextureMipmapLODBias[stage]); }
@@ -318,6 +323,22 @@ private:
     static _D3DRENDERSTATETYPE D3DTextureCoordWrapStageTable[8];
     // ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z: skip an unchanged value; otherwise bookmark the old value once per
     // capture block (the state's mask bit), store the new one and queue the state for RealiseRenderState.
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_EARLY_RETURN
+    FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state_info)
+    {
+        if (state_info.DesiredState == value) return;
+        {
+            if ((state_info.BookmarkMask & CurrentBookmarkMask) == 0) {
+                state_info.BookmarkMask |= CurrentBookmarkMask;
+                StateStack[StateStackSize].State = &state_info;
+                StateStack[StateStackSize].Value = state_info.DesiredState;
+                ++StateStackSize;
+            }
+            state_info.DesiredState = value;
+            AddStateToUpdateList(state_info);
+        }
+    }
+#else
     FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state)
     {
         if (state.DesiredState != value) {
@@ -331,6 +352,7 @@ private:
             AddStateToUpdateList(state);
         }
     }
+#endif
     // ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
     FABLE_FORCEINLINE void AddStateToUpdateList(CStateInfo& state)
     {

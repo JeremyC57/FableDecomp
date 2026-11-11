@@ -27,6 +27,10 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     CRightHandedSet(){}
     void Set(const C3DVector& up,const C3DVector& forward){Up=up;Forward=forward;}
 #endif
+#ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE
+    // Both PDB names and donor01D0D780 prove signature, up then forward copies.
+    void Init(const C3DVector& up,const C3DVector& forward){Up=up;Forward=forward;}
+#endif
     void SetForward(const C3DVector& forward) { Forward = forward; }
     void SetUp(const C3DVector& up) { Up = up; }
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_ROTATE

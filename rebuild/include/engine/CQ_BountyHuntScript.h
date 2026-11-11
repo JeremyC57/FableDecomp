@@ -40,6 +40,11 @@ public:
 #ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_HOSTAGE2
     class CBH_Hostage2;                                                  // Alloc 0x00D16290
 #endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGLEADER // Retail opt-in (Codex pass 21): original PDB/native leader owner and watchers; rebased hand810 model.
+    void WatchForLeaderGruntsKilled();                                   // 0x00D1C9E0
+    void WatchForLeaderChargeGruntsKilled();                             // 0x00D1CAC0
+    class CBH_GangLeader;                                                // Alloc 0x00D16380
+#endif
     bool QuestFailed;
     bool QuestSucceeded;
     bool QuestOver;
@@ -181,4 +186,38 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_Hostage2) == 0x1c);
 #endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGLEADER // Retail opt-in (Codex pass 21): original PDB/native leader owner and watchers; rebased hand810 model.
+// Opt-in (chunk 810): the CBH_GangLeader entity script (Ego_r.pdb CBH_GangLeader, 44 bytes: ParentClass +0x14, PMasterData +0x18,
+// hitCount +0x1c, stage1Done..stage4Done +0x20..+0x23, HealthInitial +0x24, HealthCurrent +0x28) and the two watch threads its
+// Main 0x00D1B200 spawns (Ego_r.pdb + FableWin.pdb ?WatchForLeaderGruntsKilled@ / ?WatchForLeaderChargeGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ;
+// functor stores 0x00D1B955 / 0x00D1BEB9, thread names "WatchForLeaderGruntsKilled" / "WatchForLeaderChargeGruntsKilled").
+// Entity vtable 0x012CA5C4 stored by the landed Alloc 0x00D16380: Main 0x00D1B200, Init 0x00D16DC0, GetParentScript 0x00D16420,
+// OnPersist 0x00D179B0, OnPredicateFail 0x00D16430.
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_BountyHuntScript::CBH_GangLeader : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D16380
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D16420
+private:
+    virtual void Main();                                                 // 0x00D1B200
+    virtual void Init();                                                 // 0x00D16DC0
+    virtual void OnPersist(CPersistContext&);                            // 0x00D179B0
+    virtual void OnPredicateFail();                                      // 0x00D16430
+protected:
+    CQ_BountyHuntScript& ParentClass;                                    // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    long hitCount;                                                       // +0x1c
+    bool stage1Done;                                                     // +0x20
+    bool stage2Done;                                                     // +0x21
+    bool stage3Done;                                                     // +0x22
+    bool stage4Done;                                                     // +0x23
+    float HealthInitial;                                                 // +0x24
+    float HealthCurrent;                                                 // +0x28
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_GangLeader) == 0x2c);
+#endif
+
 #endif

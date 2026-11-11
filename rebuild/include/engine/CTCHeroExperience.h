@@ -29,6 +29,15 @@ class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHe
 class CHitParameters;
 #endif
 class CTCHeroExperience:public CTCBase{
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+void AddExperience(long);
+#endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void AddSuccessfulBlockParry();void SetAsHit();void AddSuccessfulStrikeWithHitParams(const CHitParameters&);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_TOTALSTAT
  // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb

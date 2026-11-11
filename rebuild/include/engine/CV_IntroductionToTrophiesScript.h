@@ -11,8 +11,7 @@
 // 3 GetParentScript 0x00E9DA70, 5 0x00E9DA80). Main / Init private (Ego_r.pdb / FableWin.pdb
 // ?Main@CBriarRose@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ).
 // Retail methods: the Ego_r.pdb name set ?<Name>@CV_IntroductionToTrophiesScript@NScript@@...; addresses from the landed rows.
-// BriarRoseOpinion: the PDB names the nested enum (W4) but no enumerators; the retail values are 0 / 1 / 2 (LOUD / MEDIUM / QUIET
-// opinion sources).
+// Both original PDB enum records prove all three original BriarRoseOpinion enumerators; row PDB_OPINION_ENUM.json.
 #ifdef FABLE_RETAIL_NSCRIPT
 #include "rebuild_abi.h"
 #include "fable_string.h"
@@ -26,7 +25,11 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_IntroductionToTrophiesScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_CV_INTRODUCTIONTOTROPHIESSCRIPT_ORIGINAL_OPINION_ENUM
+    enum BriarRoseOpinion { BRIAR_ROSE_OPINION_LOUD=0, BRIAR_ROSE_OPINION_MEDIUM=1, BRIAR_ROSE_OPINION_QUIET=2 };
+#else
     enum BriarRoseOpinion { };
+#endif
     virtual void RegisterMain();                                         // 0x00E9C410
     virtual void Main();                                                 // 0x00E9C4B0
     virtual void Init();                                                 // 0x00E9C3B0

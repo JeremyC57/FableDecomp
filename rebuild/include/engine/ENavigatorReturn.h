@@ -1,0 +1,5 @@
+#ifndef FABLE_ENGINE_ENAVIGATORRETURN_H
+#define FABLE_ENGINE_ENAVIGATORRETURN_H
+// Both original PDB enum records; native returns0/1/2.
+enum ENavigatorReturn { NAV_REACHED_TARGET=0,NAV_CANNOT_REACH_TARGET=1,NAV_MOVING_TO_TARGET=2 };
+#endif

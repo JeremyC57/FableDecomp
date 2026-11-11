@@ -21,21 +21,37 @@ class CThing;
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
 class CSpecialAbilitiesMultiStrikeDef;
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+namespace NHitLocations {class CHitLocation;}
+#else
 class CHitLocation;
 #endif
+#endif
 class CTCMultiStrike : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+bool IsStrikeStarted()const{return StrikeStarted;}
+void StartMultiHit(const CHitParameters&,CThing*);
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_MULTI_STRIKE; }
     void ApplyEffectOnWeapon(CThing* weapon);                // 0x007CCF50
     void RemoveEffectOnWeapon(CThing* weapon);               // 0x007CC9E0
 #ifdef FABLE_RETAIL_CTCMULTISTRIKE_MEMBERS
     CTCMultiStrike(CThing& thing);                           // 0x007CD390
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+private:
+#endif
     CDefPointer<const CSpecialAbilitiesMultiStrikeDef> PDef;                 // +0x0C
     long SpellLevel;                                                         // +0x10
     bool StrikeStarted;                                                      // +0x14
     long DelayTimer;                                                         // +0x18
     long NumHits;                                                            // +0x1C
-    CHitLocation* PHitLocation;                                              // +0x20
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    NHitLocations::CHitLocation* PHitLocation;
+#else
+    CHitLocation* PHitLocation;
+#endif                                              // +0x20
     CIntelligentPointer<CThing> PWeapon;                                     // +0x24
     C3DVector PointOfHit;                                                    // +0x2C
     C3DVector HitDirection;                                                  // +0x38

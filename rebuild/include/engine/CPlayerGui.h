@@ -56,6 +56,10 @@ namespace NHeroInformationScreens { class CManager; }
 // bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
 // (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void AddDamageChange(float,bool);
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_CTOR
     // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): the first five members with their Ego_r.pdb names and
     // types (struct_layouts_egor.tsv: World +4, PlayerManager +8, InputInterface +0xC, Component +0x10, Graphics +0x14) and the

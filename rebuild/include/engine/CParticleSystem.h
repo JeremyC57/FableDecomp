@@ -3,6 +3,10 @@
 #include "fable_compiler.h"
 #include "engine/CBaseClass.h"
 #include "engine/CParticleEmitter.h"
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
+#include "engine/CParticleUpdateParameters.h"
+#include "engine/CComponentInstance.h"
+#endif
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM
 #include "engine/CMatrix3x4.h"
 #include "engine/C2DVector.h"
@@ -11,6 +15,9 @@ class CIEngine;
 namespace NParticleEngine {
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM
 class CParticle;
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
+class CDecal;
+#endif
 #endif
 // Layout: native ctor00af4e10 and original TPI complete fields; size0x70.
 class CParticleSystem:public CBaseClass {
@@ -48,13 +55,39 @@ public:CParticleSystem();virtual ~CParticleSystem();
  void ReadBinary(CDataInputStream&);
  bool IsEnabled() const { return Enabled; }
 #endif
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
+ // PDB accessors, donor02F3F4C0 and native AF5330/AF5380/AF22C0.
+ const CParticleEmitter& GetParentEmitter()const{return *PParentEmitter;}
+ typedef std::list<CParticle*>::iterator ParticleIterator;
+ void ClearParticle(ParticleIterator&);
+ std::list<CParticle*>& GetParticleList(){return Particles;}
+ void SetGlobalAlpha(const float alpha){GlobalAlpha=alpha;}
+ void SetNormalisedTime(bool enabled,float value){NormalisedTimeEnabled=enabled;NormalisedTime=value;}
+ void GetInverseSystemTransform(CMatrix3x4&)const;
+ std::list<CParticle*>::iterator DeleteParticle(std::list<CParticle*>::iterator&);
+ CDecal* AllocateDecal();
+ void TransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
+ void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
+ void InverseTransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformPoint(v);}}
+#endif
 protected:
  const CParticleEmitter* PParentEmitter;CIEngine* PEngine;
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
+ CVectorMap<EPSCType,CComponentInstance,CKeyPairCompareLess<EPSCType,CComponentInstance> > Components;
+ std::list<CParticle*> Particles;std::list<CDecal*> Decals;
+ CParticleUpdateParameters<unsigned long,unsigned long> UpdateParameters;
+#else
  unsigned char Components[16],Particles[4],Decals[4],UpdateParameters[36];
+#endif
  long NoActiveParticles,NoActiveDecals;
  bool Initialised:1,Enabled:1,Dead:1,NormalisedTimeEnabled:1,UseAllAttractors:1,Visible:1,StayWithEmitter:1,ScaleParticles:1;
  float GlobalAlpha,FadeAlpha,NormalisedTime;
- unsigned char Scale[12];CCharString Name;
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_UPDATE
+ C3DVector Scale;
+#else
+ unsigned char Scale[12];
+#endif
+ CCharString Name;
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CParticleSystem)==0x70);

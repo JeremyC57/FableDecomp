@@ -32,6 +32,11 @@ FABLE_STATIC_ASSERT(sizeof(CThingNoise)==152);
 // Retail opt-in (Codex pass 12): original PDB sole base and full native allocation.
 // No own members; native allocation527380.
 class CThingNoise:public CThing {
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+static CThingNoise* FABLE_FASTCALL Create(long,const C3DVector&,float);void SetCreator(const CThing&);
+#endif
 
 public: static CClass* __fastcall Alloc();
 };

@@ -131,6 +131,11 @@ class CObjectAugmentationsDef;
 class CThingBaseDef;
 #endif
 class CTCObjectAugmentations : public CTCBase {
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+long GetOnHitExplodingEffect()const;void StopTrailEffect();
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_OBJECT_AUGMENTATIONS; }
     long GetFreeSlot() const;                                        // 0x00765D50

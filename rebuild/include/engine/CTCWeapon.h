@@ -18,6 +18,10 @@
 #endif
 class CThing;
 class CTCWeapon : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+long GetExplosionType()const;void IncrementNumThingsKilled(CThing*);
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_WEAPON; }
 #ifdef FABLE_RETAIL_CTCWEAPON_SETLOADED

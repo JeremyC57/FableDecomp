@@ -5,6 +5,9 @@
 #include "engine/CDefPointer.h"
 namespace NHitLocations { class CHitLocation; }
 class CMaterialDef;class CThing;
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+class CArmourDef;class CThingGameObject;
+#endif
 // Original Ego_r TPI0x2af3a; native OnHit proves offsets0,1,2,e,1a..28,48,50,58.
 // STLport replaces both 16-byte donor containers with12-byte containers: native sizeof60.
 #ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
@@ -38,6 +41,18 @@ public:
 #ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
     const std::map<EDamageAttribute,float>& GetDamageMap()const{return DamageMap;}
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Evidence: both original PDB type records and donor OnHit/helper disassembly.
+public:
+void SetHitLocation(NHitLocations::CHitLocation& location);
+void SetPHitMaterialDef(CDefPointer<const CMaterialDef> material);
+void SetHitNegated(bool value){HitNegated=value;}
+void SetToCauseRecoil(bool value){CauseRecoil=value;}
+bool IsToCauseRecoil()const{return CauseRecoil;}
+void SetAsModifiedByArmour(const CThing&,CDefPointer<const CArmourDef>&);
+float GetDamageToThing(const CThingGameObject&)const;
+bool IsLightningStrike()const;bool IsDivineWrathStrike()const;bool IsUnholyPowerStrike()const;
+#endif
     const C3DVector& GetHitPosition() const { return *reinterpret_cast<const C3DVector*>(Position); }
     const C3DVector& GetHitDirection() const { return *reinterpret_cast<const C3DVector*>(Direction); }
     CThing* GetPThingHitting() const { return PThingHitting.Get(); }
@@ -52,6 +67,12 @@ public:
     bool IsBlockCounter() const { return BlockCounter; }
     bool IsBlocked() const { return Blocked; }
     bool IsHitNegated() const { return HitNegated; }
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+void SetHitNegated(bool value){HitNegated=value;}
+void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
+#endif
     bool IsMoveBackOnHit() const { return MoveBack; }
     bool IsCreateDustParticleEffectOnHit() const { return CreateDustParticleEffectOnHit; }
 #ifdef FABLE_RETAIL_CHITPARAMETERS_EFFECTONHIT
