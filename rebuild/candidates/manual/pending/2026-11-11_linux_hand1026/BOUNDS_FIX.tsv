@@ -1,0 +1,2 @@
+address	name	evidence
+0x00C400D0	LookupDirectionFilterPair	real length 256: code 175 bytes (last ret 0x00C4017F) + jump table 0x00C40180 (4 dwords) + byte index table 0x00C40190 (64 bytes); next function 0x00C401D0

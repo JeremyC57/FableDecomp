@@ -5,11 +5,18 @@ class CASoundBank;
 #ifdef FABLE_RETAIL_CTCTALK
 namespace NSpeechGainManager { enum EDialogueLayer; }                    // MS forward enum (the row defines the enumerators it uses)
 #endif
+#ifdef FABLE_RETAIL_CTCTALK_CONVERSATION
+enum EConversationAttitude;                                              // MS forward enum (Ego_r.pdb; enumerators in no name set on disk)
+#endif
 // TPI0x23414 full original fields and base; no container-width changes here.
 class CTCTalk : public CTCBase {
 private:
     long SpeechSample,SampleStartedFrame,SampleDurationFrames;
+#ifdef FABLE_RETAIL_CTCTALK_CONVERSATION
+    EConversationAttitude Attitude;                                       // +0x18 (Ego_r.pdb type)
+#else
     unsigned char Attitude[4]; // EConversationAttitude.
+#endif
     float MimeStartTime,SampleLoadedTime;CASoundBank* PSpeechBank;
     unsigned long SampleID;long LastTextIndex;CCharString LastNarrator;
     bool IsPureAISpeaker,LipSynching,UseLipSynching;CCharString DialogueVoice;
@@ -30,6 +37,18 @@ public:
 #endif
 #endif
     void StopCurrentSpeech();
+#ifdef FABLE_RETAIL_CTCTALK_CONVERSATION
+    // Retail opt-in (chunk 1026, row 0x00716B30 CActionTalkBase::SetUpTextAndSpeech): FableWin.pdb
+    // ?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@AAVCASoundBank@@J_NABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@11@Z
+    // (0x006E3580: the caller pushes seven words), ?PlayRandomLipMovement@CTCTalk@@QAEXXZ (0x006E2A50, the silent-line call),
+    // ?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ (0x006E2840) and the inline ?SetAttitude@CTCTalk@@QAEXW4EConversationAttitude@@@Z
+    // (expanded: `mov [edi+18h],ecx` at 0x00716D38). Needs FABLE_RETAIL_CTCTALK.
+    ESpeechPlaybackResult PlaySpeech(CASoundBank& bank, long sample, bool b, const CCharString& narrator,
+                                     NSpeechGainManager::EDialogueLayer layer, bool in2D, bool c);   // 0x006E3580
+    void PlayRandomLipMovement();                                        // 0x006E2A50
+    float GetCurrentSpeechDuration() const;                              // 0x006E2840
+    void SetAttitude(EConversationAttitude attitude) { Attitude = attitude; }
+#endif
 #ifdef FABLE_RETAIL_CTCTALK_LIPSYNC
     // Opt-in (chunk 1024, row 0x006E2ED0): Ego_r.pdb / FableWin.pdb private members ?GetSpeechBank@CTCTalk@@ABEABVCASoundBank@@XZ
     // (inline in retail: `mov eax,[esi+24h] ; test eax,eax ; jne` else CTCBase::PeekSampleBank 0x00686D70), ?GetPLipSyncBank@CTCTalk@@ABEPBVCLipSyncDataBank@@XZ

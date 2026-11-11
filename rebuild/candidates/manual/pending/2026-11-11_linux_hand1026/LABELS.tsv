@@ -1,0 +1,13 @@
+address	name	evidence
+006bd9b0	?InternalUpdate@CMusicManager@@IAEXABVCState@1@_N@Z	FableWin.pdb + Ego_r.pdb CMusicManager name set (only member taking const CState&, bool); 8 callers are the landed CState setters (0x006BDE50.. 0x006BE030) passing a modified copy of CurrentState; ret 8
+006bd760	?GetActiveSet@CState@CMusicManager@@QBEJXZ	FableWin.pdb name set; body = UI/cinematic/override/map-cell/region priority chain; called by InternalUpdate on the new and current states (0x006BDB5D...)
+006bd780	?GetDanger@CState@CMusicManager@@QBE_NXZ	FableWin.pdb; landed spelling confirmed (called 3x by 0x006BD9B0)
+006bd900	?PlayMusic@CMusicManager@@IAEXJABVCFadeTimes@1@J@Z	FableWin/Ego_r; InternalUpdate pushes (music id, fade times, loop count)
+006bd7e0	CMusicManager::CState::HasAnyOverride	descriptive (in no name set): `UI || cinematic || override` (mov eax,1); out-of-line COMDAT beside 0x006BD7B0/C0/D0 (HasUIOverride / HasCinematicOverride / HasOverride, descriptive)
+0137fae8	MusicFadeTimes	descriptive: five CMusicManager::CFadeTimes {2100,2000},{1200,100},{1500,1500},{400,400},{0,0} indexed by danger change / cinematic
+00c400d0	LookupDirectionFilterPair	descriptive (libpk, no PDB): the landed caller 0x00C6D150 spelling; returns the 0x34-byte filter record pair for (azimuth, elevation) of the mode's table
+00c43b30	CAudioObject::AttachConfiguredBackend	descriptive (libpk): the spelling of both landed callers 0x00C418C0 / 0x00C448A0
+00716b30	?SetUpTextAndSpeech@CActionTalkBase@NTCScriptedControl@@AAEXXZ	Ego_r.pdb (donor 0x0072AFB0, before Update 0x0072B280 = retail 0x00716DE0); private
+006e3580	?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@AAVCASoundBank@@J_NABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@11@Z	FableWin.pdb; the 7-word call at 0x00716C5A (bank, index, false, narrator, layer 0, SoundIn2D, true)
+006e2840	?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ	FableWin.pdb; body `fild [ecx+14h] ; fidiv ConstantFPS`, float result
+00697ae0	?IsUsingScriptedCameraMode@CGameCameraManager@@QBE_NXZ	FableWin.pdb 0x021F6280 / Ego_r 0x006BE7A0; called on GetCameraManager()'s result at 0x00716D90

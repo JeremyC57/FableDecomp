@@ -1,0 +1,8 @@
+address	name	grade	grades_used	note
+006bd9b0	CMusicManager::InternalUpdate	RELOCATION_MATCH	4	new hdr/engine/CMusicManager.h + CSoundDef MUSICSETENTRIES opt-in; lever: inline CState::HasAnyOverride() (0x006BD7E0)
+00c400d0	LookupDirectionFilterPair	RELOCATION_MATCH	4	extent 256 (code 175 + jump table + byte table; SPLITS.tsv, grade with QLEN=256); lever: named index + &filters[index] per arm
+00c43b30	CAudioObject::AttachConfiguredBackend	RELOCATION_MATCH	3	lever: manager local + one function-scope voice + per-block result
+00716b30	NTCScriptedControl::CActionTalkBase::SetUpTextAndSpeech	RELOCATION_MATCH	5	Retail-asm GFFloatToLongCeil x2; overlays CTCTalk/CTCBase/CGameCameraManager; lever: inline GetNarrator()
+00802b60	`anonymous namespace'::GetTargetingRangeForTarget	DIFFER(410v424)	4	parked: c2prio diagnosis (def 37 > map 30 / target 28 under every spelling, 3 more probes this chunk); differ = chunk 1025 g4
+007c0ad0	NThingShot::CreateShot	DIFFER(936v938)	5	parked: block-order lever needs a repo fable_string.h opt-in (overlay impossible: #pragma once, SRC_FAIL g5); shot/shot_def c2prio swap
+0062fe60	NUISystem::CUIDef::CUIDef	DIFFER(821v817)	6	parked with c2prio: PositionOffset member-wise stores fixed (829->821); left: zero copies of the vector/box assignments are x87 _real@0 moves rewritten to integer moves after colouring (not allocator candidates)

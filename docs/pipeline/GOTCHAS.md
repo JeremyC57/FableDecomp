@@ -2774,3 +2774,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (agentNF12, 2026-11-11) A same-TU inline body of a callee that also has an out-of-line copy (CThingPhysicalSwitch::PeekDefinition) reproduces retail's "first call expanded, second call made" split on its own.
 - (agentNF12, 2026-11-11) CGameDefinitionManager hides CDefinitionManager::GetDef unless FABLE_RETAIL_CGAMEDEFINITIONMANAGER is defined (C2664 otherwise); GETDEF_*_BODY need no complete def type.
 - (agentNF12, 2026-11-11) A retail GetTC laid out `cmp [eax],key ; jg` with the component loaded first matches no PDB-named CThing template body; park such rows (0x005B37F7 / 0x005CD767 TCI_SKELETAL_MORPH).
+- (chunk 1026, 2026-11-11) When retail has an out-of-line COMDAT for a predicate (0x006BD7E0 `UI || cinematic || override`), call it as an inline accessor; an open-coded `||` at the call site expands differently (0x006BD9B0).
+- (chunk 1026, 2026-11-11) A switch whose jump table and byte index table sit inside the function extent needs a BOUNDS_FIX / QLEN for the full extent (0x00C400D0: 175 code bytes of 256).
+- (chunk 1026, 2026-11-11) x87 `_real@0` zero copies are rewritten after register colouring, so c2 allocator priority cannot steer them (0x0062FE60).
+- (chunk 1026, 2026-11-11) fable_string.h is `#pragma once` and also reached through rebuild/include, so FABLE_HDR_OVERLAY cannot override it; a CCharString change must be a repo opt-in.

@@ -1,0 +1,8 @@
+address	name	evidence
+006BD9B0	CMusicManager::InternalUpdate	chunk 1026: FableWin + Ego_r name set (?InternalUpdate@CMusicManager@@IAEXABVCState@1@_N@Z); was propagated CMusicManager_CopyAssign
+006BD760	CMusicManager::CState::GetActiveSet	chunk 1026: FableWin.pdb ?GetActiveSet@CState@CMusicManager@@QBEJXZ; landed as free function CMusicManager_IsDangerMusicEnabled (queued)
+006BD7E0	CMusicManager::CState::HasAnyOverride	chunk 1026: descriptive (UI || cinematic || override), in no name set
+0137FAE8	MusicFadeTimes	chunk 1026: descriptive, five CMusicManager::CFadeTimes
+00C400D0	LookupDirectionFilterPair	chunk 1026: descriptive (libpk), landed caller 0x00C6D150 spelling; was Animation_ComputeFrameOffset
+00C43B30	CAudioObject::AttachConfiguredBackend	chunk 1026: descriptive (libpk), landed callers 0x00C418C0 / 0x00C448A0; was propagated CShaderConstantRange_ValidateAndLoad
+00716B30	NTCScriptedControl::CActionTalkBase::SetUpTextAndSpeech	chunk 1026: Ego_r.pdb, private

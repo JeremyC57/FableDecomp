@@ -16743,7 +16743,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006bd890	sub_006bd890	_global	unknown	undefined	0		0			discovered	gapscan							
 006bd8a0	UpdateCurrentMusicOffset	CMusicManager	unknown	undefined	0		0	yes	accepted									
 006bd900	PlayMusic	CMusicManager	unknown	undefined	0		0	yes	accepted									
-006bd9b0	CMusicManager_CopyAssign	_global	unknown	undefined	0		0	yes	accepted									
+006bd9b0	InternalUpdate	CMusicManager	__thiscall	void	0		0	yes	accepted									
 006bdc60	Environment_UpdateMusicForRegion	_global	unknown	undefined	0		0	yes	accepted									
 006bde50	EnableDangerMusic	CMusicManager	__thiscall	void	2	CGameEvent *,uchar	1	yes	accepted									
 006bdea0	SetOverridingMusicSet	CMusicManager	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted									
@@ -18555,7 +18555,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00715a70	SetUpCamera	NTCScriptedControl::CActionTalkBase	__thiscall	void	2	CActionTalkBase *,CCameraTag *	1	yes	accepted									
 00716790	CActionFireProjectileWeapon	NTCScriptedControl::CActionFireProjectileWeapon	__thiscall	undefined	2	CTCTargeted *,CThing *	0	yes	accepted									
 007167e0	InitialiseDefaultCameraTags	NTCScriptedControl::CActionTalkBase	unknown	undefined	0		0	yes	accepted									
-00716b30	SetUpTextAndSpeech	CActionTalkBase	__thiscall	void	1	CActionTalkBase *	1	yes	accepted									
+00716b30	SetUpTextAndSpeech	NTCScriptedControl::CActionTalkBase	__thiscall	void	1	CActionTalkBase *	1	yes	accepted									
 00716de0	Update	NTCScriptedControl::CActionTalkBase	__thiscall	void	1	CActionTalkBase *	1	yes	accepted									
 007173d0	Update	NTCScriptedControl::CActionTalkToThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00717450	Update	NTCScriptedControl::CActionOverheadTalkToThing	__thiscall	void	1	CActionOverheadTalkToThing *	1	yes	accepted									
@@ -46368,7 +46368,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3fd20	Init	CUnknownSystem1D8	unknown	undefined	0		0	yes	accepted									
 00c3ff70	RoundHalfDownToLong	_global	__fastcall	long	1	float	1	yes	accepted									
 00c3ff90	LookupAzimuthElevation	_global	unknown	undefined	0		0	yes	accepted									
-00c400d0	Animation_ComputeFrameOffset	_global	unknown	undefined	0		0	yes	accepted									
+00c400d0	LookupDirectionFilterPair	_global	__cdecl	void	0		0	yes	accepted									
 00c402e0	Normalise	CPKVector3_00c402e0	unknown	undefined	0		0	yes	accepted									
 00c40370	SetCrossProduct	C3DVector	__thiscall	C3DVector	1	CRightHandedSet *	1	yes	accepted									
 00c40410	Init	CVtable_012B5A80	__thiscall	void	1	CTCWife *	1	yes	accepted									
@@ -46487,7 +46487,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c43910	CanPlay	CAudioObject	unknown	undefined	0		0	yes	accepted									
 00c43980	Stop	CAudioObject	unknown	undefined	0		0	yes	accepted									
 00c43a10	Update	CAudioObject	unknown	undefined	0		0	yes	accepted									
-00c43b30	CShaderConstantRange_ValidateAndLoad	_global	unknown	undefined	0		0	yes	accepted									
+00c43b30	AttachConfiguredBackend	CAudioObject	__thiscall	long	0		0	yes	accepted									
 00c43d30	CanUseBuffer	CAudioObject	unknown	undefined	0		0	yes	accepted									
 00c43de0	AcquireVoice	CAudioObject	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c4\0x00C43DE0_global_DrawAutoPickups_SelectAndDrawPrimitive.cpp				
 00c43e20	SetBuffer	CAudioObject	unknown	undefined	0		0	yes	accepted									

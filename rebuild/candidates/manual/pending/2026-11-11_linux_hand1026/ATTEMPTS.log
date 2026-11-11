@@ -1,0 +1,25 @@
+02:21 006bd9b0 006bd9b0.cpp DIFFER(671v676) g1 natural draft
+02:22 006bd9b0 006bd9b0.cpp DIFFER(671v676) g2 GetSoundDef per use
+02:25 00c400d0 00c400d0.cpp DIFFER(256v256) g1 natural switch (leaf typo, largest symbol = the row)
+02:25 00c400d0 00c400d0.cpp DIFFER(256v256) g2 leaf fixed
+02:25 00c400d0 00c400d0.cpp DIFFER(252v256) g3 filters += index
+02:26 00c400d0 00c400d0.cpp RELOCATION_MATCH g4 named index, element addresses per arm
+02:28 00c43b30 00c43b30.cpp DIFFER(435v505) g1 natural draft
+02:29 00c43b30 00c43b30.cpp DIFFER(505v505) g2 manager local, per-block voice/result, software error last
+02:29 00c43b30 00c43b30.cpp RELOCATION_MATCH g3 one function-scope voice
+02:31 006bd9b0 006bd9b0.cpp DIFFER(661v676) g3 normal arm skips play via flag
+02:31 006bd9b0 006bd9b0.cpp RELOCATION_MATCH g4 CState::HasAnyOverride inline tests
+02:37 0062fe60 0062fe60.cpp DIFFER(829v817) g4 prior g3 source under current repo headers
+02:38 0062fe60 0062fe60.cpp DIFFER(793v817) g5 member-wise PositionOffset, one zero C2DVector for Min/Max/Step/Dimensions
+02:38 0062fe60 0062fe60.cpp DIFFER(821v817) g6 g4 + member-wise PositionOffset
+02:38 007c0ad0 007c0ad0.cpp DIFFER(936v938) g4 prior g3 source under current repo headers
+02:39 007c0ad0 007c0ad0.cpp SRC_FAIL g5 operator== null arm returns strcmp
+02:45 00716b30 00716b30.cpp DIFFER(684v681) g1 first draft shared headers (leaf access IAE v AAE; largest symbol graded)
+02:45 00716b30 00716b30.cpp DIFFER(682v681) g2 leaf fixed, double gesture delay
+02:45 00716b30 00716b30.cpp DIFFER(682v681) g3 CArray operator[] default _M_start form
+02:46 00716b30 00716b30.cpp DIFFER(682v681) g4 message pointer local
+02:46 00716b30 00716b30.cpp RELOCATION_MATCH g5 GetNarrator inline accessor
+02:50 00802b60 (probe) c2prio only, not a grade: prior g4 source -- def prio 37 > map 30 > target 28, targeter -3 takes ebp (retail: memory)
+02:52 00802b60 (probe) c2prio only, not a grade: def scoped to the main block with an early `return range;` -- def still 37
+02:55 00802b60 (probe) c2prio only, not a grade: def as a `const CDefPointer<..>&` bound temporary ($S1) -- still 37
+02:56 0062fe60 (probe) c2prio only, not a grade: g6 source -- the zero copies are not allocator candidates (_real@00000000 x87 refs 19, rewritten to integer moves after colouring); only this/const 0/call temps are coloured

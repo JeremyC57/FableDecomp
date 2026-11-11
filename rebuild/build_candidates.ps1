@@ -392200,6 +392200,34 @@ $catalog = @(
         TestSource = '00/80/global_GetTargetingRangeForTargetType_008028d0_test.cpp'
         PassPattern = '008028d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006bd9b0'
+        Module = 'CMusicManager'
+        Source = '00/6b/CMusicManager_InternalUpdate_006bd9b0.cpp'
+        TestSource = '00/6b/CMusicManager_InternalUpdate_006bd9b0_test.cpp'
+        PassPattern = '006bd9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00716b30'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_SetUpTextAndSpeech_00716b30.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_SetUpTextAndSpeech_00716b30_test.cpp'
+        PassPattern = '00716b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c400d0'
+        Module = '_global'
+        Source = '00/c4/global_LookupDirectionFilterPair_00c400d0.cpp'
+        TestSource = '00/c4/global_LookupDirectionFilterPair_00c400d0_test.cpp'
+        PassPattern = '00c400d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c43b30'
+        Module = 'CAudioObject'
+        Source = '00/c4/CAudioObject_AttachConfiguredBackend_00c43b30.cpp'
+        TestSource = '00/c4/CAudioObject_AttachConfiguredBackend_00c43b30_test.cpp'
+        PassPattern = '00c43b30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

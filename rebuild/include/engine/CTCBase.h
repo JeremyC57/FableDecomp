@@ -59,8 +59,17 @@ class CWorldMap;
 namespace NTCMessages { class CMessageBase; }
 enum ETCInterfaceType;                                                   // MS forward enum (the row defines the enumerators it uses)
 
+#ifdef FABLE_RETAIL_CTCBASE_TALKACTION_FRIEND
+namespace NTCScriptedControl { class CActionTalkBase; }
+#endif
 class CTCBase : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CTCBASE_TALKACTION_FRIEND
+    // Retail opt-in (chunk 1026, row 0x00716B30): the talk action's private GetCameraManager (Ego_r.pdb
+    // ?GetCameraManager@CActionTalkBase@NTCScriptedControl@@ABEAAVCGameCameraManager@@XZ, expanded in retail: `mov ecx,[esi+4] ;
+    // call 0x00686A70`) calls the protected CTCBase::GetWorld on its script component; the original access grant is unknown.
+    friend class NTCScriptedControl::CActionTalkBase;
+#endif
     CTCBase(CThing&);                                                    // 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?UpdateGlobalTCs@CTCBase@@SIX_N@Z (public static
     // __fastcall), retail 0x00686DC0 (landed): walks the static GlobalUpdateTCs list with `paused` in cl.

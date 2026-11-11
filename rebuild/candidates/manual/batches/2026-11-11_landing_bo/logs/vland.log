@@ -1,0 +1,21 @@
+addr       parity           behav  name
+006bd9b0   WARN RELOC_NAME: ?GetActiveSet@CState@CMusicManager@@QBEJXZ -> 006bd760 labelled 'CMusicManager::IsDangerMusicEnabled'
+006bd9b0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006bd9b0   RELOCATION_MATCH PASS   InternalUpdate
+00716b30   WARN RELOC_NAME: ?PlayRandomLipMovement@CTCTalk@@QAEXXZ -> 006e2a50 labelled 'CTCTalk::SetUpSpeechSample'
+00716b30   RELOCATION_MATCH PASS   SetUpTextAndSpeech
+00c400d0   RELOCATION_MATCH PASS   LookupDirectionFilterPair
+00c43b30   WARN RELOC_NAME: ?GetDesc@CSoundBuffer@@QBEPBUSBufferDesc@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c43b30   RELOCATION_MATCH PASS   AttachConfiguredBackend
+
+WINS: 4
+  006bd9b0 RELOCATION_MATCH CMusicManager::?InternalUpdate@CMusicManager@@IAEXABVCState@1@_N@Z
+  00716b30 RELOCATION_MATCH NTCScriptedControl::CActionTalkBase::?SetUpTextAndSpeech@CActionTalkBase@NTCScriptedControl@@AAEXXZ
+  00c400d0 RELOCATION_MATCH _global::?LookupDirectionFilterPair@@YAXJMMPAPBUSDirectionFilter@@0@Z
+  00c43b30 RELOCATION_MATCH CAudioObject::?AttachConfiguredBackend@CAudioObject@@QAEJPAUCSoundBuffer@@KPBUSVoiceCaps@@1PAPAVCVoice@@@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CMusicManager_InternalUpdate_006bd9b0
+  NTCScriptedControlCActionTalkBase_SetUpTextAndSpeech_00716b30
+  global_LookupDirectionFilterPair_00c400d0
+  CAudioObject_AttachConfiguredBackend_00c43b30

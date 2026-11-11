@@ -97,6 +97,11 @@ template <class T> class CCountedPointer;
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_SCRIPTEDMODE
+    // Retail opt-in (chunk 1026, row 0x00716B30): FableWin.pdb ?IsUsingScriptedCameraMode@CGameCameraManager@@QBE_NXZ, out of line at
+    // 0x00697AE0 (landed). A declaration only.
+    bool IsUsingScriptedCameraMode() const;                                // 0x00697AE0
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD
     const CWorld& GetWorld()const { return World; }
 #endif
