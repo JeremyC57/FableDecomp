@@ -3,3 +3,19 @@
 10:12 008f61a0 008f61a0.cpp DIFFER(518v530) two-var loops
 10:20 00cdd6b0 00cdd6b0.cpp DIFFER(1236v1012) dup-A
 10:20 00cdd6b0 00cdd6b0.cpp DIFFER(1006v1012) flag
+10:52 00cdd6b0 00cdd6b0_b.cpp ERROR inline-helper-twice
+10:52 00cdd6b0 00cdd6b0_b.cpp DIFFER(788v1012) inline-helper-twice-retry
+10:53 00cdd6b0 00cdd6b0_c.cpp RELOCATION_MATCH goto-done
+11:00 0076eb00 0076eb00.cpp SRC_FAIL first
+11:00 0076eb00 0076eb00.cpp DIFFER(1139v1080) first-b
+11:01 0076eb00 0076eb00.cpp RELOCATION_MATCH T65
+11:06 008e20f0 008e20f0.cpp SRC_FAIL first
+11:06 008e20f0 008e20f0.cpp SRC_FAIL first-b
+11:06 008e20f0 008e20f0.cpp DIFFER(1011v1019) first-c
+11:07 008e20f0 008e20f0.cpp RELOCATION_MATCH vmap-ctor
+11:07 008e24f0 008e24f0.cpp RELOCATION_MATCH first
+11:10 008f61a0 008f61a0_b.cpp DIFFER(509v530) no-named-sizes
+11:14 007ccf50 007ccf50.cpp DIFFER(1032v1088) first
+11:15 007ccf50 007ccf50.cpp DIFFER(1032v1088) case0
+11:15 007ccf50 007ccf50.cpp DIFFER(1064v1088) case0-separate
+11:16 007ccf50 007ccf50.cpp DIFFER(1068v1088) separate-ifs

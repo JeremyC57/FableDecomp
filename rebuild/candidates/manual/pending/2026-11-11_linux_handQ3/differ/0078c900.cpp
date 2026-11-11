@@ -1,0 +1,2 @@
+// CTCBerserk::InitAbility @ 0x0078C900 (catalog row, 1152 bytes) -- no source: not reached
+// Grade: NOT_REACHED (0 grades) -- read only (Q3): CTCBerserk::InitAbility -- three `GetSubDef(&p) && p->GetEffectFromString(CCharString(lit), out)` conditional temporaries (flag bits 1/2/4 at [esp+10h]), particle emitter Create/Attach, sound-player switch (jump table 0x0078CD70, 4 cases); callee names need the CTCBerserk TU headers.

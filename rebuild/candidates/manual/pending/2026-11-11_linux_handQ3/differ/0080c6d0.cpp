@@ -1,0 +1,2 @@
+// CTCDExplosion::UpdateDynamicHitThings @ 0x0080C6D0 (catalog row, 842 bytes) -- no source: not reached
+// Grade: NOT_REACHED (0 grades) -- read only (Q3): UpdateDynamicHitThings -- three _ftol (0x00BFEA70) grid bounds, two thing-search rects (0x0080EC50), a filter search through GetWorld (0x00686D80 / 0x0080ECC0) into a list, set find 0x0080D970, CExplosion damage record (0x00789238 / 0x00868CA0 / 0x00789358) and an intelligent-pointer vector push_back; ebp-aligned frame.

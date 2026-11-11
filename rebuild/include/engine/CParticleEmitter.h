@@ -21,6 +21,17 @@ public:CParticleEmitter();virtual ~CParticleEmitter();
  void Kill();                                                          // 0x00AEE8C0
 #endif
  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_INTERPOLATE
+ // Retail opt-in (chunk Q3, row 0x007CCF50 CTCMultiStrike::ApplyEffectOnWeapon): Ego_r.pdb / FableWin.pdb
+ // ?GetApproximateTotalSplineLength@CParticleEmitter@NParticleEngine@@QAEMXZ (out of line, retail 0x00AED050: sums the spline length of
+ // every particle system with flag 2), ?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z (0x00AED600), and the inline
+ // ?Sleep@..@@QAEXXZ (WaitingToSleep = true, `or byte ptr [edi+41h],2` at 0x007CD24D; the landed 0x006E0690 model spells the same body)
+ // and ?SetAlwaysUpdate@..@@QAEX_N@Z (`or al,10h` on +0x44 at 0x007CD2C6). No layout change.
+ float GetApproximateTotalSplineLength();                              // 0x00AED050
+ void InterpolateTo(const CParticleEmitter& other, float t);           // 0x00AED600
+ void Sleep() { WaitingToSleep = true; }
+ void SetAlwaysUpdate(bool always) { AlwaysUpdate = always; }
+#endif
  // Chunk 742 (0x00AEFAA0): FableWin.pdb / Ego_r.pdb ?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z.
  void ReadBinary(CDataInputStream&);
 protected:

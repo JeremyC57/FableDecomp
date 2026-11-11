@@ -1,0 +1,13 @@
+address	name	evidence
+00CDD6B0	?Main@CGlobal_TeleportToHeroGuildScript@NScript@@UAEXXZ	chunk Q3 (landing ce): FableWin.pdb/Ego_r.pdb spelling + quest name string "Global_TeleportToHeroGuild" (DeactivateQuestLater arg); RELOCATION_MATCH
+0076EB00	?InitialiseTrails@CTCWeaponTrail@@AAEXXZ	chunk Q3 (landing ce): Ego_r.pdb + "weapon_pos_" helper-name strings; RELOCATION_MATCH
+008E20F0	?FrameUpdate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ	chunk Q3 (landing ce): Ego_r.pdb + ShieldFollowersRelease action vtable 0x01286B04 built at the end; RELOCATION_MATCH
+008E24F0	?FrameUpdate@CModeGuildmasterPowerUpSpeed@NCreatureMode@@UAEXXZ	chunk Q3 (landing ce): Ego_r.pdb + SpeedUpFollowersRelease action vtable 0x01286C4C; RELOCATION_MATCH
+007CCF50	?ApplyEffectOnWeapon@CTCMultiStrike@@QAEXPAVCThing@@@Z	chunk Q3 (landing ce): Ego_r.pdb/FableWin.pdb + WEAPON_EFFECT_SHORT/LONG_LEVELn strings + landed caller
+004BE3E0	?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z	chunk Q3 (landing ce): Ego_r.pdb + call from matched 0x0076EB00 (reloc check 0 mismatches)
+004BE170	?HasHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z	chunk Q3 (landing ce): Ego_r.pdb + Base/Tip helper tests in matched 0x0076EB00
+004BDA30	?GetAllHelperPointNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	chunk Q3 (landing ce): Ego_r.pdb + vector<CCharString> out-arg in matched 0x0076EB00
+004BDE90	?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	chunk Q3 (landing ce): Ego_r.pdb + (name, 1.0f)==2 test in matched 0x0076EB00
+007AEEC0	?CountLivingHelpers@CTCBoss@@QAEJXZ	chunk Q3 (landing ce): Ego_r.pdb + call from matched 0x008E20F0/0x008E24F0
+00AED050	?GetApproximateTotalSplineLength@CParticleEmitter@NParticleEngine@@QAEMXZ	chunk Q3 (landing ce): Ego_r.pdb + body sums per-system spline lengths; called twice by 0x007CCF50
+00AED600	?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z	chunk Q3 (landing ce): Ego_r.pdb + (emitter, 2*t) call in 0x007CCF50 (DIFFER row; callee targets bind)

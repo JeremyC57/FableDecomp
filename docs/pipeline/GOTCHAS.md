@@ -2968,3 +2968,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (agentFAM02, 2026-11-11) Landed STLport binders are a good first source but ~1% carry a wrong class key / back-reference; take the instantiation's own symbol when the binder names none.
 - (agentFAM02, 2026-11-11) A def class's header that declares `virtual ~T();` makes `p->~T()` a direct call; retail's virtual call through slot 0 needs the implicit dtor.
 - (agentFAM02, 2026-11-11) Landed behaviour tests for this family are self-contained models; they stay valid under any rename (but spell `__fastcall`, so x86-64 g++ prefails).
+- (chunk Q3, 2026-11-11) A script Main whose two branches end in the same recall tail: retail emits the tail once and jumps to it -- spell the second path with `goto done;` (0x00CDD80B, NScript::CGlobal_TeleportToHeroGuildScript::Main); duplicating the code or an inline helper both miss (1006v1012 / 788v1012).
+- (chunk Q3, 2026-11-11) 0x0076EB00 CTCWeaponTrail::InitialiseTrails: retail keeps the four literal push_backs inline but calls the loop push_back -- /d2inlT65 (band T65..T67) reproduces the split.
+- (chunk Q3, 2026-11-11) CParticleUpdateParameters locals need FABLE_RETAIL_CVECTORMAP_CTOR (the ctor zeroes the Dirty bytes, stores at 0x008E2337); without it 1011v1019.
+- (chunk Q3, 2026-11-11) CModeGuildmasterPowerUpSpeed::FrameUpdate (0x008E24F0) is CModeGuildmasterPowerUpShield::FrameUpdate (0x008E20F0) plus `CTCBoss* boss; ParentThing.GetTC(&boss);` right after `--Timer;` -- author one, clone the other first try.
+- (chunk Q3, 2026-11-11) VC7.1 3-case switch with `case 0:` folded into `default:` emits a dec chain; give `case 0:` its own body to get retail's jump table (0x007CCF50, table 0x007CD380).

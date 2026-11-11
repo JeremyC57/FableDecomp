@@ -38940,3 +38940,9 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ??4SVectorA@@QAEAAU0@ABU0@@Z	00a80ee0	00a85870
 ??4SVectorB@@QAEAAU0@ABU0@@Z	00a83d70	00a85870
 ??4SVectorC@@QAEAAU0@ABU0@@Z	00a84940	00a85870
+?GetAllHelperPointNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	004bda30	0076eb00
+?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	004bde90	0076eb00
+?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z	00440f00	0076eb00
+?push_back@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@V1@@2@@Z	007706a0	0076eb00
+?resize@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEXI@Z	00770d60	0076eb00
+?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCharString@@@Z	007e73c0	00cdd6b0

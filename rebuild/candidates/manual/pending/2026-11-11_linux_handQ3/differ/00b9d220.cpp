@@ -1,0 +1,2 @@
+// CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform @ 0x00B9D220 (catalog row, 1071 bytes) -- no source: not reached
+// Grade: NOT_REACHED (0 grades) -- read only (Q3): x87 matrix build (Interpolate 0x00A23190 then the inlined CMatrix3x4 product / object-matrix about the sphere centre, 249 x87 ops); sibling of the landed 0x00BCF670 (which calls CalcObjectMatrix2D out of line) -- needs the inline CMatrix3x4 operators retail expanded here.

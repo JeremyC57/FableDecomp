@@ -127,6 +127,18 @@ public:
     void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
 #endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPERNAMES
+    // Retail opt-in (chunk Q3, row 0x0076EB00 CTCWeaponTrail::InitialiseTrails): Ego_r.pdb / FableWin.pdb spellings of the four
+    // out-of-line helper-point queries the row calls (declarations only, no layout change):
+    // ?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z 0x004BE3E0,
+    // ?HasHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z 0x004BE170,
+    // ?GetAllHelperPointNames@...@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z 0x004BDA30,
+    // ?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z 0x004BDE90.
+    bool IsResourcesLoaded(bool) const;
+    bool HasHelperPoint(const CCharString&) const;
+    void GetAllHelperPointNames(std::vector<CCharString>&) const;
+    long GetNoHelperPoints(const CCharString&, float) const;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_WASRENDERED
     // Opt-in (chunk 1024, row 0x006E2ED0): Ego_r.pdb / FableWin.pdb ?WasRenderedLastFrame@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ,
     // out of line in retail at 0x004BD200 (landed). Declaration only.

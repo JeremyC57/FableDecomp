@@ -392741,6 +392741,35 @@ $catalog = @(
         TestSource = '00/8e/NCreatureModeCModeScorpionKingVulnerable_FrameUpdate_008e0a10_test.cpp'
         PassPattern = '008e0a10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0076eb00'
+        Module = 'CTCWeaponTrail'
+        Source = '00/76/CTCWeaponTrail_InitialiseTrails_0076eb00.cpp'
+        TestSource = '00/76/CTCWeaponTrail_InitialiseTrails_0076eb00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT65'
+        PassPattern = '0076eb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e20f0'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpShield'
+        Source = '00/8e/NCreatureModeCModeGuildmasterPowerUpShield_FrameUpdate_008e20f0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeGuildmasterPowerUpShield_FrameUpdate_008e20f0_test.cpp'
+        PassPattern = '008e20f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e24f0'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpSpeed'
+        Source = '00/8e/NCreatureModeCModeGuildmasterPowerUpSpeed_FrameUpdate_008e24f0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeGuildmasterPowerUpSpeed_FrameUpdate_008e24f0_test.cpp'
+        PassPattern = '008e24f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdd6b0'
+        Module = 'NScript::CGlobal_TeleportToHeroGuildScript'
+        Source = '00/cd/NScriptCGlobalTeleportToHeroGuildScript_Main_00cdd6b0.cpp'
+        TestSource = '00/cd/NScriptCGlobalTeleportToHeroGuildScript_Main_00cdd6b0_test.cpp'
+        PassPattern = '00cdd6b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -51,7 +51,13 @@ public:
  C3DVector GetEmitterPosition() const;
  void EnterTimelineEnd();
  bool IsAlwaysUpdating() const;
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_GETPEMITTER_INLINE
+ // Retail opt-in (chunk Q3, row 0x007CCF50): Ego_r.pdb ?GetPEmitter@CTCDParticleEmitter@@QBEPAVCParticleEmitter@NParticleEngine@@XZ is
+ // inline in retail (no out-of-line copy is bound; 0x007CD239 `lea ecx,[ebp+14h] ; call GetPItem` reads PEmitter in place).
+ NParticleEngine::CParticleEmitter * GetPEmitter() const { return PEmitter.Get(); }
+#else
  NParticleEngine::CParticleEmitter * GetPEmitter() const;
+#endif
  const CThing * PeekPThingAttachedTo() const;
 protected:
  void ClearAttachments();

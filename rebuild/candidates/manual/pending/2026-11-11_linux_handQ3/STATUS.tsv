@@ -1,0 +1,46 @@
+address	name	grade	grades_used	note
+0x008F61A0	CHeightMap::Resize	DIFFER(518v530)	4	4 grades (Q3 resume: +1 inline sizeX + 1 / sizeY + 1 spelling, 509v530 worse; the named-locals source here is still the best). Loop structure matches with the two-variable for loops (newX/oldX, newY/oldY) and std::max(0L
+0x006E3B90	CThingCreatureBase_UpdatePhonemeAnimation	NOT_REACHED	0	not read this pass
+0x0080C6D0	CTCDExplosion::UpdateDynamicHitThings	NOT_REACHED	0	read only (Q3): UpdateDynamicHitThings -- three _ftol (0x00BFEA70) grid bounds, two thing-search rects (0x0080EC50), a filter search through GetWorld (0x00686D80 / 0x0080ECC0) into a list, set find 0x0080D970, CExplosion
+0x007348C0	CTCCombat::IsToBlock	NOT_REACHED	0	not read this pass
+0x008F8F50	LHNetworkLib::LSocket::Send	NOT_REACHED	0	970 bytes with its catch funclet (SPLITS.tsv, from Q1); not read this pass.
+0x004199C0	HeroAbility_StringToID	NOT_A_FUNCTION	0	0x004199C0 is mid-instruction inside the function 0x00419880..0x00419C9A (1051 bytes; HERO_ABILITY_* name -> id ladder returning 1..0x11): the catalog start is wrong. The body is the two-chain keyword ladder behind one n
+0x008DFB00	NCreatureMode::CModeSummonerLightningOrb::FrameUpdate (catalog vfunc_3)	NOT_REACHED	0	read only (Q3): CModeSummonerLightningOrb::FrameUpdate -- acos (0x00BFEBA2) angle, RotateXY (0x00A13C60), physics virtuals, then a summoner action chosen by a ray test (0x00877C40) built as one of two CCombatAction ctors
+0x00CDD6B0	NScript::CGlobal_TeleportToHeroGuildScript::Main	RELOCATION_MATCH	5	goto shares the recall tail (0x00CDD80B); test PASS
+0x008E20F0	NCreatureMode::CModeGuildmasterPowerUpShield::FrameUpdate	RELOCATION_MATCH	4	needs FABLE_RETAIL_CVECTORMAP_CTOR for the CParticleUpdateParameters locals; test PASS
+0x008E24F0	NCreatureMode::CModeGuildmasterPowerUpSpeed::FrameUpdate	RELOCATION_MATCH	1	Shield twin + boss GetTC right after --Timer; test PASS
+0x00B4EF80	CEngineShadowRenderer::UpdateSpotLightShadowSpace	NOT_REACHED	0	not read this pass
+0x006CDDF0	CGroundNavigatorExternalInterface::IsMovementBlockedAt	NOT_REACHED	0	not read this pass
+0x00A6A670	CPreallocTexturePool::ResizePool	NOT_REACHED	0	read only (Q3): texture-pool resize -- two refcount-counting passes, `new CPreallocTexture` (0x4C, vtable 0x0129DC24) expanded ctor twice, vector<CIVCountedPointer> resize via 0x00A6B080 / 0x00A6BCD0, CCountedPointer rel
+0x00745840	CTCPerceiveThing::vfunc_11 (catalog)	NOT_REACHED	0	read only (Q3): CTCPerceiveThing debug draw (vfunc_11) -- by-value CCharString parameter, three DrawLine branches through the debug renderer (+0x34, slot 0x5C), Sprintf float text (0x009A08B0); needs the debug-draw API n
+0x00B9D220	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	NOT_REACHED	0	read only (Q3): x87 matrix build (Interpolate 0x00A23190 then the inlined CMatrix3x4 product / object-matrix about the sphere centre, 249 x87 ops); sibling of the landed 0x00BCF670 (which calls CalcObjectMatrix2D out of 
+0x00497FD0	CProgressDisplay::DisplayCenteredText	NOT_REACHED	0	not read this pass
+0x0076EB00	CTCWeaponTrail::InitialiseTrails	RELOCATION_MATCH	3	Flags /d2inlT65 (band T65..T67); test PASS
+0x00A6CC10	CPhysicsMesh::GetMeshDataFromFileData	NOT_REACHED	0	read only (Q3): /GS row (cookie 0x0139C8A8, check 0x00BFE9F9) over the physics-mesh file reader with refcounted CCountedPointer chunks (0x00A32620, 0x00A9B030, 0x00ABA980...); unnamed reader API -- park.
+0x00A4D330	C3DAnimation2::CalcLocalBoneTransformation	NOT_REACHED	0	not read this pass
+0x007CCF50	CTCMultiStrike::ApplyEffectOnWeapon	DIFFER(1068v1088)	4	4 grades; jump table now matches (explicit case 0 body) and the two GetEffectFromString tests are separate ifs; residue: retail keeps weapon in esi/zero in edi, zeroes effectsDef/longs at [esp+28]/[esp+2c]/[esp+24] (ours
+0x00C604E0	CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface	NOT_REACHED	0	read only (Q3): 208 member stores + five rep movsd struct copies, no calls; store order is pure scheduling over the nested EAX settings structs -- needs the PDB class + nested structs first (header debt).
+0x008F12D0	CTCTavernGameCardBase::ProcessInput	NOT_REACHED	0	read only (Q3): ProcessInput -- 7-way state switch (byte table 0x008F1710), input queries 0x00687A90 / 0x00687CF0 / 0x00687D00, card-def CCountedPointer releases, inline CRightHandedSet cross products and two clamps; the
+0x00621F70	CTCInventoryQuests::TakeQuest	NOT_REACHED	0	read only (Q3): TakeQuest -- quest-card vector walk (GetPItem, +0x8C id), CTCQuestCard GetTC (0x6C), map erase + rebalance walk, atan2 (fpatan) facing, x87 wrap to [0,2pi) with fmod 0xBFEB28; large, no shared CTCInventor
+0x007B5E50	CTCWaterWader::FrameUpdate	NOT_REACHED	0	read only: an ebp-framed size-TU function (`#pragma optimize("s", on)` candidates: `push ebp ; mov ebp,esp`): water-ripple emitter create / attach / release around three CIntelligentPointer<CThing> temporaries (0x00A01B1
+0x00541A00	CIconText::FitInWindow	NOT_REACHED	0	not read this pass
+0x00A4CEC0	C3DAnimation2::CalcLocalTransformations	NOT_REACHED	0	not read this pass
+0x00B640E0	CEngineSkyRenderer::RenderMoon	NOT_REACHED	0	not read this pass
+0x00B68070	CEngineLandscapeRenderer::LoadForegroundTextures	NOT_REACHED	0	read only (Q3): LoadForegroundTextures -- ebp frame with the GFFloatToLong ceil idiom twice (fistp / fild / compare, 0x00B681B8, 0x00B681F5): retail_asm helper rows (engine/GFFloatToLong*.h + Retail-asm line) -- not atte
+0x0097A1B0	CAIStateGroup_CreatureTakeCover::MoveFromCoverToFiringPosition	NOT_REACHED	0	read only (Q3): MoveFromCoverToFiringPosition -- fsin/fcos arc search loop with LOS test (0x006B0850 / 0x00A12450), then a CCombatAction move (0x0097B3F0 / 0x0097DB70) or a CAIAction (0x0097F3A0) loop; 128 x87 ops.
+0x0078C900	CTCBerserk::InitAbility	NOT_REACHED	0	read only (Q3): CTCBerserk::InitAbility -- three `GetSubDef(&p) && p->GetEffectFromString(CCharString(lit), out)` conditional temporaries (flag bits 1/2/4 at [esp+10h]), particle emitter Create/Attach, sound-player switc
+0x007D3F80	CTCTavernGameCoinGolf::OnInitialActivate	NOT_REACHED	0	not read this pass
+0x00BA4C10	CEnginePrimitiveManagerStaticMeshesBase::PreloadPrimitive	NOT_REACHED	0	not read this pass
+0x00BD2360	CEnginePrimitiveManagerAnimatedMeshesBase::PreloadPrimitive	NOT_REACHED	0	not read this pass
+0x00A17AF0	CPhysicsMesh::GetSphereIntersectionFromToUsingSegmentation	NOT_REACHED	0	not read this pass
+0x00A182C0	CPhysicsMesh::GetSphereIntersectionFromToUsingFullCollision	NOT_REACHED	0	not read this pass
+0x00446EF0	CGamePlayerInterface::SetControlScheme	NOT_REACHED	0	read only: four vector erase(begin, end) expansions (0x00448300 / 0x00448860), CCountedPointer assignment, a 0x1C-byte action-binding loop with `new` of nine small polymorphic input classes (vtables 0x012317A8..0x012318A
+0x007D2FF0	CTCTavernGameCoinGolf::FrameUpdate	NOT_REACHED	0	not read this pass
+0x00A53C50	C3DAnimation2::CalcLocalBoneTransformation	NOT_REACHED	0	true extent 1055 bytes (SPLITS.tsv): the row runs on through eight small `ret 4` functions; quaternion slerp with the table-driven acos / sin and fistp rounding (shared GFFloatToLong helpers needed). Not authored.
+0x00B8C830	CEngineEnvironment::FrameStart	NOT_REACHED	0	not read this pass
+0x008E5880	CTCPhysicsStandard::PerformStepBasedMovement	NOT_REACHED	0	not read this pass
+0x00973900	CAIStateGroup_JackOfBladesBase::SummonPillarsOld	NOT_REACHED	0	not read this pass
+0x00785160	CTCPhysicsBase_Update_CustomerInteraction	NOT_REACHED	0	not read this pass
+0x008637D0	CThingBodyReorienter::CheckForNewBodyReorientationAngle	NOT_REACHED	0	not read this pass
+0x00605CE0	CTCInventoryMap::UpdateVisitedRegions	NOT_REACHED	0	read only (Q3): UpdateVisitedRegions -- list<CRegion> built through 0x006178F0, find (0x0050E540) / push_back loops, CCountedPointer<C...Def> from GetDef (0x0041E5F2 / 0x0041DB1D) twice, AddRegion 0x00603000; long, needs
+0x00B63C00	CEngineSkyRenderer::RenderSun	NOT_REACHED	0	not read this pass

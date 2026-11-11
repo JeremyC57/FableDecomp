@@ -29343,8 +29343,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e1670	FrameUpdate	NCreatureMode::CModeCreatureIsProjectile	__thiscall	void	1	CModeCreatureIsProjectile *	1	yes	accepted									
 008e16a0	FrameUpdate	CModeScreamerSuperAttack	__thiscall	void	1	CModeScreamerSuperAttack *	1	yes	accepted									
 008e18d0	UpdateLightningBeams	NCreatureMode::CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
-008e20f0	NCreatureMode::CModeGuildmasterPowerUpShield::vfunc_3	NCreatureMode::CModeGuildmasterPowerUpShield	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008e24f0	NCreatureMode::CModeGuildmasterPowerUpSpeed::vfunc_3	NCreatureMode::CModeGuildmasterPowerUpSpeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008e20f0	FrameUpdate	NCreatureMode::CModeGuildmasterPowerUpShield	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008e24f0	FrameUpdate	NCreatureMode::CModeGuildmasterPowerUpSpeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e28f0	NCreatureMode::CModeThunderLightningStorm::vfunc_3	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e2a90	CGetBestIciclePointForTarget	CGetBestIciclePointForTarget	__thiscall	undefined	3	CGetBestIciclePointForTarget *,CThing *,float	0	yes	accepted									
 008e2b60	GetBestPosition	CGetBestIciclePointForTarget	__thiscall	bool	2	CGetBestIciclePointForTarget *,C3DVector *	1	yes	accepted									
