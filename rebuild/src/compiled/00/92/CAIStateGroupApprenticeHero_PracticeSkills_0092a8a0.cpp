@@ -5,6 +5,7 @@
 //   and destroys carried objects (0x008FD0A0 / DestroyItem 0x008FD1B0) instead of unsheathing, and looks with the shared
 //   g_LookAtTurnSpeed 0x0138CBA8. Literals "OBJECT_IRON_LONGSWORD" 0x01291A50, "OBJECT_YEW_LONGBOW" 0x01291AF0,
 //   "CARRY_SLOT_RIGHT_HAND" 0x01265440, "CARRY_SLOT_LEFT_HAND" 0x01265428.
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "fable_compiler.h"
 class CThing;
 class CCharString { public:
@@ -14,17 +15,18 @@ class CCharString { public:
     const CCharString& operator=(const char* text);            // 0x0099EFE0
     bool operator!=(const char* text) const;             // 0x0099E960
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject* item);          // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem((CBaseObject*)item); }
 };
 class CThingCreatureBase;
 class CCombatManager { public:

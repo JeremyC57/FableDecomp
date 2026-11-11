@@ -8,6 +8,7 @@
 //   _M_header._M_data) clear(); else while (__first != __last) erase(__first++);` -- clear() inline (`if (_M_node_count != 0)
 //   { _M_erase(_M_root()); _M_leftmost() = _M_header; _M_root() = 0; _M_rightmost() = _M_header; _M_node_count = 0; }`),
 //   _M_increment inline in the post-increment, erase(iterator) as in family M063 with a trivial value destructor.
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private (mangled AAE, the landed _M_erase row's own spelling, queue land1011da); was public (QAE).
 extern "C" void __cdecl free(void*);                      // 0x00BFEA14
 class CThing;
 namespace std {
@@ -69,7 +70,9 @@ public:
     _Base_ptr& _M_root() const { return _M_header._M_data->_M_parent; }
     _Base_ptr& _M_leftmost() const { return _M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return _M_header._M_data->_M_right; }
+private:                                                  // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);                        // 0x005278A0
+public:
     void clear()
     {
         if (_M_node_count != 0) {

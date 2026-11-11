@@ -9,6 +9,7 @@
 // opinion source keeps its def stack as a vector {first +0xc, last +0x10}.
 // Shape: HasTC test then an inline pointer-returning GetTC into a named local (`mov esi,[eax+4]`); the RemoveTC
 // call is shared by the "not popping" and the "stack now empty" paths (`!popOneDef || (pop, empty)`).
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 class CTCBase;
 class CTCOpinionSource { public:
     unsigned char _pad00[0xc];
@@ -23,11 +24,12 @@ class CTCOpinionSource { public:
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                          // +0x04
     void* GetPItem() const;                 // 0x00A01B50
-    void SetPItem(void* item);              // 0x00A01B90
+    void SetPItem(CBaseObject* item);              // 0x00A01B90
 };
 
 enum { TC_OPINION_SOURCE = 0x50 };
@@ -48,5 +50,5 @@ void COpinionReactionManager::ClearOpinionSource(CThing* thing, bool popOneDef)
             thing->RemoveTC((ETCInterfaceType)(TC_OPINION_SOURCE));
     }
     if (thing == ExclusiveOpinionSource.GetPItem())
-        ExclusiveOpinionSource.SetPItem(0);
+        ExclusiveOpinionSource.SetPItem((CBaseObject*)0);
 }

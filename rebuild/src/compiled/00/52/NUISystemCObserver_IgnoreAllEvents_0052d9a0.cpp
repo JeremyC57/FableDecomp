@@ -6,6 +6,7 @@
 // Shape (family M119, representative 0x0052D9A0): STLport 4.6 map/set `clear()` inline -- `if (_M_node_count != 0) {
 //   _M_erase(_M_root()); _M_leftmost() = _M_header; _M_root() = 0; _M_rightmost() = _M_header; _M_node_count = 0; }`.
 // Header debt: the owning class is modelled locally (no shared header declares its methods / the container member).
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private (mangled AAE, the landed _M_erase row's own spelling, queue land1011da); was public (QAE).
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp> struct less { };
@@ -28,7 +29,9 @@ public:
     _Base_ptr& _M_root() const { return _M_header._M_data->_M_parent; }
     _Base_ptr& _M_leftmost() const { return _M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return _M_header._M_data->_M_right; }
+private:                                                  // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);
+public:
     void clear()
     {
         if (_M_node_count != 0) {

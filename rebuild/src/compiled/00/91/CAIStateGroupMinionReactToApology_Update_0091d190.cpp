@@ -4,6 +4,7 @@
 // Retail0x0091D190,270 bytes. GetApology91D0A0; player manager8FCF90,main player449970,CPlayer::GetPControlledCreature 487DC0;
 // RTTI pointers1237f1c/123e7d8 slot0 deleting dtors48a4f0/4d6915, genuine virtual base destructor.
 // intelligent pointer ctor/set A01B10/A01B90; speech981EA0; terminate8FCF40.
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #define CAIStateGroupBase CAIStateGroupBaseLayout
 #include "engine/CAIStateGroupBase.h"
 #undef CAIStateGroupBase
@@ -33,9 +34,10 @@ struct CTCEntityEventsMethods : CTCEntityEvents { bool GetApology(const CEventAp
 class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 struct CPlayerManagerMethods : CPlayerManager { };   // only the (invented) GetPPlayerManager return type; GetMainPlayer is engine/CPlayerManager.h's 0x00449970
-struct CBaseIntelligentPointer { void* Handle; CBaseIntelligentPointer(); virtual ~CBaseIntelligentPointer(); void SetPItem(CThing*); CThing* GetPItem() const; };
-struct CIntelligentConstThing : CBaseIntelligentPointer { CIntelligentConstThing(CThing* p) { SetPItem(p); } CIntelligentConstThing(const CIntelligentConstThing& p) { SetPItem(p.GetPItem()); } };
-struct CIntelligentCreature : CBaseIntelligentPointer { CIntelligentCreature(CThing* p) { SetPItem(p); } CIntelligentCreature(const CIntelligentCreature& p) { SetPItem(p.GetPItem()); } };
+class CBaseObject;
+struct CBaseIntelligentPointer { void* Handle; CBaseIntelligentPointer(); virtual ~CBaseIntelligentPointer(); void SetPItem(CBaseObject* item); CThing* GetPItem() const; };
+struct CIntelligentConstThing : CBaseIntelligentPointer { CIntelligentConstThing(CThing* p) { SetPItem((CBaseObject*)p); } CIntelligentConstThing(const CIntelligentConstThing& p) { SetPItem((CBaseObject*)p.GetPItem()); } };
+struct CIntelligentCreature : CBaseIntelligentPointer { CIntelligentCreature(CThing* p) { SetPItem((CBaseObject*)p); } CIntelligentCreature(const CIntelligentCreature& p) { SetPItem((CBaseObject*)p.GetPItem()); } };
 extern CCharString g_ApologyAccepted; // 0x13BB684
 extern CCharString g_ApologyRejected; // 0x13BB688
 struct CAIStateGroup_MinionReactToApology : CAIStateGroupBase {

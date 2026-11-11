@@ -14,6 +14,7 @@
 //          slots can be declared; the group's CIntelligentPointer<CThingBuilding> at +0x14 (descriptive);
 //          retail CThingAICreature WorkBuilding +0x170 (landed 0x00830360).
 // Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 
 #include "fable_compiler.h"
 class CTCBase;
@@ -27,18 +28,19 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 // key's address does not escape, so the three lookup keys share the building temporary's frame slot as in retail.
 // (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject* item);                // 0x00A01B90
 };
 struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
-    CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
-    CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem(other.CBaseIntelligentPointer::GetPItem()); return *this; }
+    CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem((CBaseObject*)(other.CBaseIntelligentPointer::GetPItem())); return *this; }
     CThingBuilding* GetPItem() const { return (CThingBuilding*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CThing { public:

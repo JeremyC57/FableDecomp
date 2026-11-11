@@ -1,0 +1,40 @@
+tag	address	status	binders_respelled	note
+land1011cx	0x00749880	done	0	self row renamed from the _unattributed::AssignTarget_00749880 stand-in; no other landed binder
+land1011cy	0x0063AB10	done	3	3 binders (0x00723A10 self rename + 0x006AFF00, 0x008751D0) via engine/CWorldMap.h
+land1011cz	0x00658D5D	rejected	5	the address is IsSociableTime, not IsCurfewTime (REJECTED.tsv); the 5 binders were respelled to the proven ?IsSociableTime@CTCVillage@@QBE_NXZ
+land1011cz	0x00810FC0	partial	5	5 binders respelled; gaps: 0x008D1890/0x008D29C0/0x008D2BB0/0x008D2D90/0x008D2F80 (local std::pair clashes with the header chain; cl hang) and 0x00733020 (identity doubtful)
+land1011da	0x005278A0	done	3	self row respelled to the queue symbol; binders: 0x00528440, 0x00528D30, 0x00528EF0
+land1011da	0x0056CB00	done	2	self row respelled to the queue symbol; binders: 0x0056CFD0, 0x0056D3D0
+land1011da	0x006F0DD0	done	2	self row respelled to the queue symbol; binders: 0x006F1CB0, 0x006F2520
+land1011da	0x00834FD0	done	3	self row respelled to the queue symbol; binders: 0x00835140, 0x008353F0, 0x00835440
+land1011da	0x0098FD80	done	3	self row respelled to the queue symbol; binders: 0x00990120, 0x00990580, 0x009906E0
+land1011da	0x009C1E00	done	3	self row respelled to the queue symbol; binders: 0x009C05C0, 0x009C22E0, 0x009C2720
+land1011da	0x00ADAE00	done	2	self row respelled to the queue symbol; binders: 0x00ADB200, 0x00ADB5E0
+land1011da	0x00B3E6E0	done	2	self row respelled to the queue symbol; binders: 0x00B3E750, 0x00B3E8D0
+land1011da	0x00F25B70	done	0	self row renamed; binders already bind the PDB spelling
+land1011da	0x00F26E20	done	0	self row renamed; binders already bind the PDB spelling
+land1011da	0x00F26F70	done	0	self row renamed; binders already bind the PDB spelling
+land1011da	0x004C2950	done	0	self row respelled to the queue symbol
+land1011da	0x0052DCA0	done	1	self row respelled to the queue symbol; binders: 0x0052D9A0
+land1011da	0x00534C60	done	0	self row respelled to the queue symbol
+land1011da	0x0056D440	done	0	self row respelled to the queue symbol
+land1011da	0x005E8C00	done	0	self row respelled to the queue symbol
+land1011da	0x00623560	done	1	self row respelled to the queue symbol; binders: 0x0061A500
+land1011da	0x00630A10	done	0	self row respelled to the queue symbol
+land1011da	0x00776AA0	done	0	self row respelled to the queue symbol
+land1011da	0x009C1DC0	done	0	self row respelled to the queue symbol
+land1011da	0x00B95EE0	done	0	self row respelled to the queue symbol
+land1011da	0x0070ADB0	done	0	self row already spells the queue symbol; landed binders already match
+land1011da	0x004C4490	done	0	self row respelled to the queue symbol
+land1011da	0x00696900	done	0	self row respelled to the queue symbol
+land1011da	0x00869BB0	done	0	self row respelled to the queue symbol
+land1011da	0x0098FD40	done	0	self row and binders already spell the queue symbol
+land1011da	0x009B40F0	done	0	self row respelled to the queue symbol
+land1011da	0x009EF6E0	done	2	self row respelled to the queue symbol; binders: 0x009ECF30, 0x009ED190
+land1011da	0x00B98350	done	0	self row respelled to the queue symbol; 0x00B97580 inner call now binds the landed 5-arg spelling
+land1011da	0x004855A3	done	0	self row renamed (std::_List_base<NUISystem::CList*>::clear); its binders are the GPreviousSelected stand-ins (see 0x013B8A98)
+land1011da	0x013B8A98	partial	0	binders 0x0047D78B, 0x0047E07F, 0x0053C9BC, 0x0057770A, 0x005778CA, 0x00587847, 0x00587A41, 0x00589D30, 0x0059C8AE, 0x0059E2C7, 0x0059F304 reach it through stand-in globals with local NUISystem models that clash with NUISystem_CList.h
+land1011da	0x013BAE04	done	0	only busy rows 0x007899C0 / 0x0078A390 bind it, and they already spell it correctly
+land1011da	0x00A01C10	partial	16	16 binders respelled via engine/CIntelligentPointer.h; left: CBaseIntelligentPointerCtor stand-ins, namespaced models, non-template local CIntelligentPointer rows and address-suffixed stand-ins (NOTES.md)
+land1011da	0x00A01B90	partial	19	19 binders respelled (parameter retyped to CBaseObject*); left: 0x00883180 (landed source DIFFERs unchanged), CBaseIntelligentPointerCtor stand-ins, namespaced models (NOTES.md)
+land1011da	0x004AD520	partial	0	self row already correct; the binders reach it through stand-in vector classes (gap)

@@ -14,6 +14,7 @@
 // Label correction: the catalog's `_Uninit_copy<_Vector_const_iterator<_Vector_val<unsigned int,allocator<unsigned int> > >,
 // unsigned int*,allocator<unsigned int> >` is a Dinkumware name propagated over all 40 rows of this chunk; retail's STL
 // is STLport 4.x and the `ret 4` (no destination), the element stride and the inline destructor calls name this body.
+// Name fix (agentNF23): the ParticleEffect member's destructor binds the PDB spelling ??1CBaseIntelligentPointer@@UAE@XZ (virtual; Ego_r.pdb / FableWin.pdb) through engine/CIntelligentPointer.h, replacing the namespaced local model (??1CBaseIntelligentPointer@FableDestroy_0076bdd0@@QAE@XZ).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 struct __false_type { __false_type() { } };
 namespace FableDestroy_0076bdd0 {
@@ -22,13 +23,10 @@ class CCharString { public:                                    // 4 bytes: the s
     void* m_pData;
     ~CCharString();                                     // 0x0099EAE0 (out of line)
 };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"                 // CBaseIntelligentPointer: vptr + PData, virtual ~ @ 0x00A01C10
 namespace FableDestroy_0076bdd0 {
 class CThing;
-struct CBaseIntelligentPointer {                        // 8 bytes: vtable + item
-    virtual void v00();
-    CThing* PItem;                                      // +0x04
-    ~CBaseIntelligentPointer();                         // 0x00A01C10 (out of line)
-};
 template <class T>
 inline void DestroyRange(T* first, T* last)             // STLport _Destroy(first, last) -> __destroy_aux, inlined
 {

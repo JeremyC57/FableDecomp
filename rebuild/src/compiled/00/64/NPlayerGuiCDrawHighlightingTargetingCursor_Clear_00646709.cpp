@@ -1,3 +1,4 @@
+// Name fix (agentNF23): the temporary's destructor binds the PDB spelling ??1CBaseIntelligentPointer@@UAE@XZ (virtual; Ego_r.pdb / FableWin.pdb) through engine/CIntelligentPointer.h (CTOR/ASSIGN_OUTOFLINE opt-ins of chunk 867), replacing the local non-virtual model.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawHighlightingTargetingCursor::Clear() -- drop the highlight mesh effect from the targeted thing's graphic appearance (when the thing is alive and has one), release the intelligent pointer and reset the cursor type
@@ -21,19 +22,10 @@ class CBaseObject { public:
     CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; }   // inline: the pointer lands in ecx directly
 };
 
-struct CBaseIntelligentPointer {
-    void* m_pItem;
-    void* m_pInfo;
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
-
-template <class T> class CIntelligentPointer;
-template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
-    CIntelligentPointer(CThing* thing);     // 0x004A96F0
-    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE     // CIntelligentPointer<CThing>(CThing*) 0x004A96F0
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_OUTOFLINE   // operator= 0x004A9760
+#include "engine/CIntelligentPointer.h"                    // CBaseIntelligentPointer: vptr + PData, virtual ~ @ 0x00A01C10
 
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340 = IS_THING_ALIVE<CIntelligentPointer<CThing> > (Ego_r/FableWin ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z)
 

@@ -93,6 +93,12 @@ public:
     virtual bool IsAffectedByWind() const;  // slot 50, 0x00724C20
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_FLUSHONGROUND
+    // agentNF23 (2026-11-11, name-fix queue land1011cy): the override at 0x00723A10, Ego_r.pdb 0x0073A6D0 / FableWin.pdb 0x02527020
+    // ?SetRHSetAsFlushOnGround@CTCPhysicsStandard@@UAEXXZ (CTCPhysicsBase declares the slot). Declaration only (no layout change).
+public:
+    virtual void SetRHSetAsFlushOnGround();
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsStandard) == 0x88);
 #else // flattened Ego_r layout (the landed default)

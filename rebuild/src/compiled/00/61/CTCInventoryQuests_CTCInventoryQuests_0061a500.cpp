@@ -13,6 +13,7 @@
 //   destructors of CEnginePrimitiveHandle / CIntelligentPointer<CThing> are virtual calls through slot 0.
 // Label correction: catalogued as "CEngine::OnPreDeviceReset".
 // No engine/ header exists for CTCInventoryQuests (header debt); the local view carries the PDB names at retail offsets.
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private (mangled AAE, the landed _M_erase row's own spelling, queue land1011da); was public (QAE).
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 class CThing;
@@ -119,7 +120,9 @@ public:
     _Link_type& _M_root() const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
     _Link_type& _M_leftmost() const { return (_Link_type&)this->_M_header._M_data->_M_left; }
     _Link_type& _M_rightmost() const { return (_Link_type&)this->_M_header._M_data->_M_right; }
+private:                                                  // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);                            // 0x00623560
+public:
     void clear()
     {
         if (_M_node_count != 0) {

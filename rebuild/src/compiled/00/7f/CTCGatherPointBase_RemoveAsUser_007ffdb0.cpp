@@ -19,16 +19,18 @@
 //   `--_M_finish; _Destroy(_M_finish)` -- the explicit destructor call goes through the vtable with flag 0). Both empty
 //   tag temporaries are homed in the dead `user` argument slot only when the two inline calls are separate statements
 //   (`erase(remove(...))` nests remove's scope in erase's, so the second tag gets a new frame word: `sub esp,0Ch`).
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();         // 0x00A01C10 (slot 0)
     const CThing* PItem;                        // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject* item);          // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 typedef CIntelligentPointerConstThing CPtr;
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

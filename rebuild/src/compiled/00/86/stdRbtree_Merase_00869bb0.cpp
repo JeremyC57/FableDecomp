@@ -1,10 +1,11 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (multimap<CDefPointer<const CArmourDef>, float, CCompareDefPointer<const CArmourDef, float> >) STLport 4.6 recursive subtree release: erase the right subtree, release the counted def/effect pointer, free the node, continue left
-// Leaf: ?_M_erase@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@Z
+// Leaf: ?_M_erase@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00869BB0, 75 bytes, thiscall `ret 4`; recursive; speed TU.
 // Identity (proven): CHitParameters::SetAsModifiedByArmour 0x00869020 erases its local tree with it (bound ?_M_erase@CArmourMap@@...): the key at node +0x10 is the released def pointer and the mapped value is trivial -- Ego_r.pdb multimap<CDefPointer<const CArmourDef>, float, CCompareDefPointer<const CArmourDef, float> >.
 // Callees: itself (right subtree), the pointee's vtable slot 1 (Destroy) on its last reference, free 0x00BFEA14.
 // Shape (family M090, representative 0x004C4490): the landed STLport 4.6 `_tree.c` _M_erase model (0x00AD5240); the value's
 //   implicit destructor is the intrusive pointer's `if (p) { if (--p->RefCount == 0) p->Destroy(); p = 0; }` at node +0x10.
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private, so VC7.1 mangles it AAE (the queue's spelling, agentFAM07's binders); was public (QAE).
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 class CArmourDef {
 public:
@@ -80,6 +81,7 @@ public:
 
     static _Link_type& _S_left(_Base_ptr __x) { return (_Link_type&)(__x->_M_left); }
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
+private:                                            // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);
 };
 

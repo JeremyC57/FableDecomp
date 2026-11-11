@@ -7,7 +7,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: type 0xD3 = CTCIdleScheduler, bit 19 of the dword
 // at +0x38, the preference test is skipped without it; type 0x23 = CTCVillager, bit 3 of +0x24), CTCIdleScheduler::
 // IsPreferredIdle @ 0x00801BE0, GFGetPVillageInterface @ 0x007EE540 (twice), the village time test @ 0x00658D5D
-// (manifest "CTCVillage::IsCurfewTime" is propagated; the landed curfew test is 0x00658DB3), CAIStateGroupBase::GetPWorld
+// (CTCVillage::IsSociableTime; manifest "CTCVillage::IsCurfewTime" is propagated; the landed curfew test is 0x00658DB3), CAIStateGroupBase::GetPWorld
 // @ 0x008FCFC0 (result dropped), GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CWorld::GetFrame @ 0x0049D870,
 // CAIStateGroup_MinionSitOnSeatBase::IsRunnable @ 0x0090F9C0 (qualified base call, tail result).
 // Shape: the seed step is the landed free inline `WorldRandomRange(unsigned long& seed, unsigned long range)` (0x009284B0:
@@ -17,6 +17,7 @@
 // `*seed % range` or `rotated % range` (with or without the zero test) sinks the div past the call.
 // FrameToStopSitting +0x40 (engine header name); the header flattens the bases, so the class is modelled locally.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF23): 0x00658D5D is ?IsSociableTime@CTCVillage@@QBE_NXZ (Ego_r 0x0069A63D / FableWin name sets; donor order IsNightTime / IsSociableTime / IsCurfewTime = retail 0x00658D07 / 0x00658D5D / 0x00658DB3, and the body reads CVillageDef SociableStartTime +0xD4 / SociableFinishTime +0xD8, retail STLport offsets of Ego_r 244 / 248); was IsSitOutsideTime() (in neither PDB).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -87,7 +88,7 @@ class CTCIdleScheduler { public:
 };
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsSitOutsideTime();                    // 0x00658D5D
+    bool IsSociableTime() const;                // 0x00658D5D
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
@@ -112,7 +113,7 @@ bool CAIStateGroup_MinionSitOutside::IsRunnable()
     CTCVillager* villager;
     if (PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER, &villager)) {
         if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
-            if (!((CTCVillageMember*)villager)->GetPVillage()->IsSitOutsideTime())
+            if (!((CTCVillageMember*)villager)->GetPVillage()->IsSociableTime())
                 return false;
         }
     }

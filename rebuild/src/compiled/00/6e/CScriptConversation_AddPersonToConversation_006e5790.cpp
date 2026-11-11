@@ -18,19 +18,21 @@
 // same-TU noinline stand-ins (both take addresses by const reference) that forward to the retail addresses. Without
 // them the tag gets its own frame word. The pushed element is a temporary CIntelligentPointer built as in the landed
 // CThingGameObject::OnCreate (base constructor, derived vtable, SetPItem), destroyed through the base.
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                                  // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
 struct random_access_iterator_tag {

@@ -16,6 +16,7 @@
 // then the animation action as an address-of-temporary (as the landed 0x009574D0) and `== 2` returned after the dtors.
 // Leaf: LookAtMap@CAIStateGroup_ApprenticeHero
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 class CThing;
 class CThingCreatureBase;
 
@@ -27,14 +28,15 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                               // +0x04
     CBaseIntelligentPointer();                     // 0x00A01B10
-    void SetPItem(CThing* item);                   // 0x00A01B90
+    void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
-    CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
 class CTCPhysicsBase { public:

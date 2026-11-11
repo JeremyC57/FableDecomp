@@ -12,20 +12,22 @@
 // Shape: `v.erase(remove(v.begin(), v.end(), CIntelligentPointer<const CThing>(0)), v.end())` with STLport's inline remove (find with the
 // iterator tag, then remove_copy from the element after the hit); erase's `end()` is read first (ebx). The world and the UID are named
 // locals in retail order (GetWorld call, UID load, frame call); the inline expression reorders the loads and the later registers.
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "engine/CThing.h"
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     const CThing* PItem;                        // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject* item);          // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 typedef CIntelligentPointerConstThing CPtr;
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
