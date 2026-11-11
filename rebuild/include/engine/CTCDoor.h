@@ -23,6 +23,11 @@ enum EDoorTriggerType;                                                   // MS f
 
 class CTCDoor : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCDOOR_CTOR
+    // Nested opt-in (agentNF10, row 0x00730630): Ego_r.pdb / FableWin.pdb ??0CTCDoor@@QAE@AAVCThing@@@Z, out of line in retail at
+    // 0x00730630 (CTCBase ctor 0x00686800, the vptr 0x01266DE4, the member zeroing, then GetSubDef<CDoorDef> 0x00655D28 into PDef).
+    CTCDoor(CThing& thing);                                              // 0x00730630
+#endif
     virtual void Copy(const CTCBase&);                                   // 12 0x007305A0
 #ifdef FABLE_RETAIL_CTCDOOR_VANDALISM
     // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): Ego_r.pdb ?PostVandalismCrimeIfDestroyed@CTCDoor@@QBE_NXZ, out of line in

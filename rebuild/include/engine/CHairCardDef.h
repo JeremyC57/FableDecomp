@@ -11,6 +11,12 @@
 #include "engine/CSubDefClassBase.h"
 class CHairCardDef : public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CHAIRCARDDEF_TYPENAME
+    // Nested opt-in (agentNF10, row 0x005D9A10 CTCInventoryItem::GetHairCardDef): FableWin.pdb ?StatGetTypeName@CHairCardDef@@SI?AVCCharString@@XZ
+    // (inline in Ego_r.pdb and retail: GetSubDef<CHairCardDef> 0x005DA180 builds the type name in place), the class-name literal every
+    // def's StatGetTypeName returns. Lets the row use the shared GetSubDef body (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY). Needs fable_string.h.
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CHairCardDef", -1); }
+#endif
     long          HairObject;                                // +0x28 (the hair object def's global index)
 };
 FABLE_STATIC_ASSERT(sizeof(CHairCardDef) == 0x2c);

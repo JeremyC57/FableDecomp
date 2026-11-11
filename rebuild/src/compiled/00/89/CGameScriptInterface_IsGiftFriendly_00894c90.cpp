@@ -1,204 +1,47 @@
 // CGameScriptInterface::IsGiftFriendly(const CCharString& defName) const -- true when the named def has a gift sub-def of type 0 (friendly)
+// Leaf: ?IsGiftFriendly@CGameScriptInterface@@UBE_NABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00894C90, length 158 bytes.
-// Callees: CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410 (on DefinitionManager +0x10), CGameDefinitionManager::Get @ 0x0044C6B0 (static), CDefinitionManager::GetDef<T> @ 0x0042AF3C,
-// CDefClassBase::GetSubDef<CGiftDef> @ 0x006D3EF0, the defs' virtual slot 1 (destroy) when a release drops the count to zero.
-// Shape: both defs are zeroed CDefPointer locals released by their null-tested destructors (the gift def's test is dropped on the success
-// path after `return giftDef->m_giftType == 0` dereferenced it, GOTCHAS null-test rule); with the same-TU GetDef/GetSubDef stand-ins the
-// class def stays in esi and both out slots share the dead argument word; the result is formed `test edx,edx ; push ebx ; sete bl`.
-// Leaf: IsGiftFriendly
-// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
-#include "fable_compiler.h"
-#include <string.h>
-struct CThing_Retail;
+// Identity: CGameScriptInterface vtable 0x01260F0C (engine/CGameScriptInterface.h: IsGiftRomantic / IsGiftFriendly / IsGiftOffensive are
+// slots 679 / 680 / 681); twins 0x00894BF0:IsGiftRomantic , 0x00894D30:IsGiftOffensive.
+// Callees: CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410 (on DefinitionManager +0x10), CGameDefinitionManager::Get @ 0x0044C6B0
+// (static), CDefinitionManager::GetDef<CThingBaseDef> @ 0x0042AF3C, CDefClassBase::GetSubDef<CGiftDef> @ 0x006D3EF0, the defs' virtual
+// slot 1 when a release drops the count to zero.
+// Shape: plain member code over the shared headers (the noinline GetDef / GetSubDef bodies keep the handles' addresses unescaped, so
+// the class def stays in esi and both handles share the dead argument word); the gift def's release after `Type == 0` drops its null
+// test, as retail.
+// Name fix (agentNF10 2026-11-11): moved off the local CCharString / CDefPointerSlot / CDefClass_Retail / CGiftDef_Retail /
+// CGameDefinitionManager_Retail / CDefinitionManager stand-ins (and their same-TU stand-in bodies) onto the shared headers (new
+// engine/CGiftDef.h; CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT). 0x0042AF3C binds GetDef<CThingBaseDef> (was
+// ?GetDef@CGameDefinitionManager_Retail@@QAE_NJPAU?$CDefPointerSlot@UCDefClass_Retail@@@@@Z), 0x006D3EF0
+// ??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z (FableWin.pdb), the gift type is the PDB member
+// CGiftDef::Type (was m_giftType).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CCountedPointer.h"
-#include "engine/CScriptThing.h"
-// CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
-#pragma pack(push, 1)
-struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
-    char*         PData;                    // +0x00
-    unsigned long StringLength;             // +0x04
-    unsigned long DataLength : 31;          // +0x08
-    bool          UseFastExtend : 1;        // +0x0c
-    bool operator==(const char* text) const;    // 0x004115A0
-};
-class CCharStringData { public:                    // 17 bytes
-    CBasicStringChar Data;                  // +0x00
-    long             NoRefs;                // +0x0d
-};
-#pragma pack(pop)
-class CCharString {
-public:
-    CCharStringData* PStringData;           // +0x00
-    CCharString(const char* text, long length);         // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool operator==(const char* text) const
-    {
-        if (PStringData == 0)
-            return strcmp(text, "") == 0;
-        return PStringData->Data == text;
-    }
-    bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
-};
-struct CDefObject_Retail {                          // a counted def object (count at +4, virtual slot 1 destroys)
-    virtual void v000();
-    virtual void Destroy();                         // slot 1 (+0x04)
-    long m_refCount;                                // +0x04
-};
-struct CGiftDef_Retail : CDefObject_Retail {
-    unsigned char _pad08[0x20];
-    long          m_giftType;                       // +0x28 (0 friendly, 1 romantic, 2 offensive)
-};
-inline void ReleaseDef(CDefObject_Retail* def)    // the counted release, written by hand at each exit
-{
-    --def->m_refCount;
-    if (def->m_refCount == 0)
-        def->Destroy();
-}
-template<class T> struct CDefPointerSlot {          // CDefPointer<T>: zeroed, released by its destructor (null-tested)
-    T* Object;
-    CDefPointerSlot() : Object(0) { }
-    ~CDefPointerSlot()
-    {
-        if (Object) {
-            if (--Object->m_refCount == 0)
-                Object->Destroy();
-        }
-    }
-    T* operator->() const { return Object; }
-};
-struct CDefClass_Retail : CDefObject_Retail {
-    bool GetSubDef(CDefPointerSlot<CGiftDef_Retail>* out);   // 0x006D3EF0 CDefClassBase::GetSubDef<CGiftDef>
-};
-void* FindDef_CDefClass_Retail_GetSubDef_2();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClass_Retail::GetSubDef(CDefPointerSlot<CGiftDef_Retail>* out)
-{
-    void* def = FindDef_CDefClass_Retail_GetSubDef_2();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-struct CGameDefinitionManager_Retail {
-    bool GetDef(long index, CDefPointerSlot<CDefClass_Retail>* out);   // 0x0042AF3C CDefinitionManager::GetDef<T>
-};
-class CGameDefinitionManager : public CGameDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
-void* FindDef_CGameDefinitionManager_Retail_GetDef_1();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager_Retail::GetDef(long index, CDefPointerSlot<CDefClass_Retail>* out)
-{
-    void* def = FindDef_CGameDefinitionManager_Retail_GetDef_1();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-struct CDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
-};
-struct CThing_Retail;
-struct CBase {
-    CBase();                                        // 0x0099A2D0
-    virtual ~CBase();
-};
-struct CTCBase_Retail;
-struct CInterfaceMap_Retail {                       // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBase_Retail* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
-};
-struct CThing_Retail {
-    virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
-    virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
-    virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023();
-    virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029(); virtual void t030(); virtual void t031();
-    virtual void t032(); virtual void t033(); virtual void t034(); virtual void t035(); virtual void t036(); virtual void t037(); virtual void t038(); virtual void t039();
-    virtual void t040(); virtual void t041(); virtual void t042(); virtual void t043(); virtual void t044(); virtual void t045(); virtual void t046(); virtual void t047();
-    virtual void t048(); virtual void t049(); virtual void t050(); virtual void t051(); virtual void t052(); virtual void t053(); virtual void t054(); virtual void t055();
-    virtual void t056(); virtual void t057(); virtual void t058(); virtual void t059(); virtual void t060(); virtual void t061(); virtual void t062(); virtual void t063();
-    virtual void t064(); virtual void t065(); virtual void t066(); virtual void t067(); virtual void t068(); virtual void t069(); virtual void t070(); virtual void t071();
-    virtual void t072(); virtual void t073(); virtual void t074(); virtual void t075(); virtual void t076();
-    virtual bool IsPlayer();   // slot 77 (+0x134)
-    unsigned char         _pad04[0xc];              // +0x04 .. +0x10
-    unsigned char         m_type;                   // +0x10
-    unsigned char         _pad11[0xf];
-    unsigned long         m_presentBits[9];         // +0x20 std::bitset of the interface types present
-    CInterfaceMap_Retail  m_interfaces;             // +0x44 the sorted {type, component} map
-    unsigned char         _pad4c[0x20];
-    unsigned char         m_flags;                  // +0x6c (bit 2 = game object, bit 3 = creature)
-    unsigned char         _pad6d[0x24];
-    unsigned char         m_dead : 1;               // +0x91 bit 0
-    unsigned char         m_91_1 : 7;
-    unsigned char         _pad92[0x2a];
-    unsigned char         m_bc_0 : 1;               // +0xbc
-    unsigned char         m_givesHeroStatChangesOnHit : 1;   // bit 1
-    unsigned char         m_bc_2 : 6;
-    unsigned char         _padbd[0x10c];
-    unsigned char         m_1c9_0 : 3;              // +0x1c9
-    unsigned char         m_marryable : 1;          //        bit 3
-    unsigned char         m_marryableToHero : 1;    //        bit 4
-    unsigned char         m_1c9_5 : 3;
-    CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
-    CTCBase_Retail* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
-    void RemoveTC(long interfaceType);              // 0x004C9840 (the label "CBaseObject::OnPropertyChanged" is propagated)
-    void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
-    void SheatheAllWeapons();                       // 0x006647F0 (CThingCreatureBase)
-    void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
-    void UnsheatheMeleeWeapon();                    // 0x00666820 (CThingCreatureBase)
-    void SetAsGivingHeroStatChangesOnBeingHit(bool giving);   // 0x008389C0 (CThingGameObject)
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap_Retail* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap_Retail::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
-            return true;
-        }
-        return false;
-    }
-    unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
-class CThingPlayerCreature : public CThing_Retail { };
-class CPlayer { public:
-    CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0 (label propagated)
-    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0 (label propagated)
-};
-// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
-//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
-//   GetMainPlayerNumber 0x00449700).
-#include "engine/CPlayerManager.h"
-class CWorld;
-struct CDefinitionManager_Retail;
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                    World;               // +0x04 (engine/CGameScriptInterface.h)
-    void*                      Component;           // +0x08
-    void*                      DisplayEngine;       // +0x0c
-    CDefinitionManager_Retail* DefinitionManager;   // +0x10
-    CPlayerManager*     PlayerManager;       // +0x14
-    bool IsGiftFriendly(const CCharString& defName) const;
-};
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CGiftDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CGameScriptInterface.h"
 
-bool CGameScriptInterface::IsGiftFriendly(const CCharString& defName) const
+bool CGameScriptInterface::IsGiftFriendly(const CCharString& def_name) const
 {
-    long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
-    CDefPointerSlot<CDefClass_Retail> defClass;
-    if (CGameDefinitionManager::Get().GetDef(index, &defClass)) {
-        CDefPointerSlot<CGiftDef_Retail> giftDef;
-        if (defClass->GetSubDef(&giftDef))
-            return giftDef->m_giftType == 0;
+    long index = DefinitionManager->GetDefGlobalIndexFromName(def_name);
+    CDefPointer<const CThingBaseDef> def;
+    if (CGameDefinitionManager::Get().GetDef(index, &def)) {
+        CDefPointer<const CGiftDef> gift_def;
+        if (def->GetSubDef(&gift_def))
+            return gift_def->Type == 0;
     }
     return false;
 }

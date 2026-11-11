@@ -83,6 +83,18 @@ private:
                                            unsigned long);                                                 // 0x005C47D5
     void SetupActiveWeaponsOnCarrier();                                                                  // 0x005CA68E
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_ITEMDESCRIPTION
+    // Retail opt-in (agentNF10, rows 0x005C7913 / 0x005C7B10 / 0x005C7D0D / 0x005C7F07): Ego_r.pdb
+    // ?GetItemDescription@CTCInventoryWeapons@@UBEXAAVCWideString@@J_N@Z (the override of NInventory::CTCInventoryBase slot 78, vtable
+    // 0x01253FF4), ?GetItemDescriptionNoDamageNorWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@J_N@Z,
+    // ?GetItemDescriptionWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z and ?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z
+    // (the four byte-twins; the last three `ret 0Ch` / `ret 8`). Declarations only: no layout change.
+public:
+    virtual void GetItemDescription(CWideString& text, long itemDefIndex, bool pc) const;               // slot 78 0x005C7913
+    void GetItemDescriptionNoDamageNorWeight(CWideString& text, long itemDefIndex, bool pc) const;       // 0x005C7B10
+    void GetItemDescriptionWeight(CWideString& text, long itemDefIndex) const;                           // 0x005C7D0D
+    void GetItemDescriptionDamage(CWideString& text, long itemDefIndex) const;                           // 0x005C7F07
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_ACTIVEMELEE
     // Retail opt-in (chunk 1024, row 0x007CD390 CTCMultiStrike::CTCMultiStrike): FableWin.pdb
     // ?GetActiveMeleeWeapon@CTCInventoryWeapons@@QBEPAVCThing@@XZ (inline in retail: lea ecx,[eax+134h] then GetPItem 0x00A01B50, 0x007CD469) and

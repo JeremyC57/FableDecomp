@@ -1,0 +1,11 @@
+address	old_symbol	new_symbol	evidence
+0x007661C0	?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@J@std@@@Z	?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@JV?$allocator@J@std@@@std@@@Z	Ego_r.pdb / FableWin.pdb (STLport vector<long, allocator<long>> spelled in full); grade DIFFER with the short spelling
+0x00768010	?OnInitialActivate@CTCObjectAugmentations@@QAEXXZ	?OnInitialActivate@CTCObjectAugmentations@@UAEXXZ	Ego_r.pdb / FableWin.pdb virtual (CTCBase slot); vtable entry
+0x00730630	??0CTCDoor (leaf; old model took CThing*)	??0CTCDoor@@QAE@AAVCThing@@@Z	Ego_r.pdb / FableWin.pdb ctor takes CThing&
+0x007E3040	OnCreate (leaf)	?OnCreate@CTCCameraCollision@@UAEXXZ	Ego_r.pdb / FableWin.pdb; vtable slot 4
+0x007EAC10	OnCreate (leaf)	?OnCreate@CTCActionUseBase@@UAEXXZ	Ego_r.pdb / FableWin.pdb; vtable slot 4
+0x008EC870	OnCreate (leaf)	?OnCreate@CTCDegradableBase@@MAEXXZ	Ego_r.pdb protected virtual; vtable 0x0126A6A4 slot 4
+0x007E0910	OnCreate (leaf)	?OnCreate@CTCHeroSpecialMovement@@UAEXXZ	Ego_r.pdb / FableWin.pdb; vtable 0x0126FE3C slot 4
+0x005C7913	GetItemDescription (leaf)	?GetItemDescription@CTCInventoryWeapons@@UBEXAAVCWideString@@J_N@Z	Ego_r.pdb; overrides CTCInventoryBase slot 78 (vtable 0x01253FF4)
+member	CHeroSpecialMovementDef::SprintDurationSeconds (landed local model)	TotalTimeToSprintSeconds	Ego_r.pdb CHeroSpecialMovementDef +0x28 (struct_layouts_egor.tsv); retail fmul [eax+28h] 0x007E0970
+member	CGiftDef::m_giftType (landed local model)	Type	Ego_r.pdb CGiftDef +0x28 (struct_layouts_egor.tsv); retail mov edx,[ecx+28h] 0x00894C3C

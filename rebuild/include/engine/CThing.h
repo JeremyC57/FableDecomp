@@ -37,6 +37,9 @@ class CPersistContext; class CMemoryDataInputStream;            // chunk 846: th
 #ifdef FABLE_RETAIL_CTHING_STATEACCESS
 class CScriptThing; class CDefString;                           // plan phase 6: GetScriptThing / GetDefName return types
 #endif
+#ifdef FABLE_RETAIL_CTHING_CUTSCENEPAUSE
+#include "engine/ECutsceneBehaviour.h"                          // agentNF10: SetCutscenePauseBehaviour's parameter type
+#endif
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
@@ -183,6 +186,12 @@ public:
     bool HasBaseDef() const { return !PBaseDef.IsNull(); }
 #endif
     unsigned long GetDefGlobalIndex()const{return DefGlobalIndex;}
+#ifdef FABLE_RETAIL_CTHING_CUTSCENEPAUSE
+    // Retail opt-in (agentNF10, row 0x00730630 CTCDoor::CTCDoor): Ego_r.pdb / FableWin.pdb ?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z,
+    // out of line in retail at 0x004C78A0 (the door ctor pushes 2 = CUTSCENE_BEHAVIOUR_NOT_PAUSED with ecx = ParentThing, 0x00730692).
+    // Declaration only: no layout change.
+    void SetCutscenePauseBehaviour(ECutsceneBehaviour behaviour);         // 0x004C78A0
+#endif
     unsigned __int64 GetUniqueID() const { return UniqueID; }
     long GetCurrentMapNumber() const { return CurrentMapNumber; }
     bool IsLevelLess() const;

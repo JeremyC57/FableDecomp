@@ -16,6 +16,12 @@ class CTCActionUseBase : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ON_ACTION_USE; }
     bool IsUsable() const { return Usable; }                             // PLACEHOLDER accessor name (inline member read in the row)
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_ONCREATE
+    // Retail opt-in (agentNF10, row 0x007EAC10): Ego_r.pdb / FableWin.pdb ?OnCreate@CTCActionUseBase@@UAEXXZ (CTCBase slot 4; the body
+    // calls CTCBase::OnCreate 0x00686850, then GetDef<CThingBaseDef> 0x0042AF3C and GetSubDef<CActionUseDef> 0x007EAE40 into
+    // PActionUseDef, `add esi,0Ch ; push esi`). Declaration only: no layout change.
+    virtual void OnCreate();                                             // slot 4 0x007EAC10
+#endif
 private:
     CDefPointer<const CActionUseDef> PActionUseDef;                      // +0x0c
     bool Usable;                                                         // +0x10

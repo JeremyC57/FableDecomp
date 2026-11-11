@@ -47,7 +47,20 @@ public:
     long AugmentScreenInventory;                                         // +0xa0
     long QuestsScreenInventory;                                          // +0xa4
     long InGameMenuScreen;                                               // +0xa8
+#ifdef FABLE_RETAIL_CCREATUREDEF_RESPAWNWAIT
+    // Nested opt-in (agentNF10, row 0x0072F170 CTCDummyVillager::SetupFromData): Ego_r.pdb CCreatureDef CreatureGroup .. RespawnWaitInFramesMax
+    // (Ego_r +0xBC..+0xD4) at retail +0xAC..+0xC4, 0x10 lower as the screen inventories above. Retail reads RespawnWaitInDaysMin
+    // +0xB8 / RespawnWaitInDaysMax +0xBC off GetSubDef<CCreatureDef> 0x00485815 (0x0072F23E..). No layout change.
+    unsigned long CreatureGroup;                                         // +0xac
+    CDefString BattleCrySound;                                           // +0xb0
+    long OpinionSourceDef;                                               // +0xb4
+    long RespawnWaitInDaysMin;                                           // +0xb8
+    long RespawnWaitInDaysMax;                                           // +0xbc
+    long RespawnWaitInFramesMin;                                         // +0xc0
+    long RespawnWaitInFramesMax;                                         // +0xc4
+#else
     unsigned char _pad_0xac[0xc8 - 0xac];
+#endif
 #else
     unsigned char _pad_0x78[0xc8 - 0x78];
 #endif

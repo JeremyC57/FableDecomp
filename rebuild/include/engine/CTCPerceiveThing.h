@@ -136,6 +136,17 @@ public:
     bool IsAwareOfThing() const { return AwarenessTimer!=0.0f; }
     bool IsThingLineOfSight() const { return LineOfSight; }
     bool IsAwarenessOfThingDirect() const;
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_RADII
+    // Nested opt-in (agentNF10, row 0x00744ED0 OnCreate): Ego_r.pdb / FableWin.pdb ?SetSoundRadius / SetSmellRadius / SetSightRadius /
+    // SetExtendedSightRadius / SetGiveUpChaseRadius@CTCPerceiveThing@@QAEXM@Z (landed 0x00744470 / 0x007444A0 / 0x00744540 / 0x00744500 /
+    // 0x007444D0) and ?ResetPerceptionVariables@CTCPerceiveThing@@QAEXXZ (0x00744DB0). Declarations only: no layout change.
+    void SetSoundRadius(float radius);                                   // 0x00744470
+    void SetSmellRadius(float radius);                                   // 0x007444A0
+    void SetSightRadius(float radius);                                   // 0x00744540
+    void SetExtendedSightRadius(float radius);                           // 0x00744500
+    void SetGiveUpChaseRadius(float radius);                             // 0x007444D0
+    void ResetPerceptionVariables();                                     // 0x00744DB0
+#endif
 #endif
     const CThing* GetPerceivedThing() const;                             // 0x007446A0
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS

@@ -1,0 +1,15 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x004C78A0	?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z	Ego_r.pdb + FableWin.pdb; door ctor pushes 2 (CUTSCENE_BEHAVIOUR_NOT_PAUSED) 0x00730692	?SetCutscenePauseBehaviour@CThing@@QAEXJ@Z; ?SetCutscenePauseBehaviour@CThing_Retail@@QAEXJ@Z
+0x00655D28	??$GetSubDef@VCDoorDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCDoorDef@@@@@Z	FableWin.pdb template instantiation; shared GetSubDef body	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCDoorDef@@@@@Z
+0x00739BC0	?_M_insert_overflow@?$vector@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@std@@@std@@IAEXPAV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@ABV3@ABU__false_type@2@I_N@Z	STLport 4.5 vector::_M_insert_overflow (FableWin.pdb instantiation shape); push_back in 0x00736640 binds it; Ghidra label 'std::vector_insert_CCountedPointer' (chk WARN RELOC_NAME)	CDefPointerVector _M_insert_overflow variants; std::vector_insert_CCountedPointer
+0x00737F80	??$GetDef@VCMeleeCombatAbilityDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	FableWin.pdb template; shared GetDef body	?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z; ?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z
+0x00736590	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private)	?UpdateUsableMeleeCombatAbilities@CTCCombat@@QAEXXZ; CTCCombat_Methods spelling
+0x005D97F0	?IsWeapon@CTCInventoryItem@@SI_NJ@Z	Ego_r.pdb + FableWin.pdb static	?IsWeaponItem@@YI_NJ@Z; ?IsAugmentation@@YI_NJ@Z
+0x005DA510	?IsMeleeWeaponClass@CTCWeapon@@SI_NW4EWeaponClass@@@Z	Ego_r.pdb + FableWin.pdb static	?IsMeleeWeaponClass@@YI_NJ@Z
+0x004CC340	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	FableWin.pdb template function	several free/non-template spellings in landed CTCInventoryWeapons rows
+0x005BC6B3	?GetItemDescription@CTCInventoryBase@NInventory@@UBEXAAVCWideString@@J_N@Z	Ego_r.pdb virtual const	?GetItemDescription@CTCInventoryBase@NInventory@@QBEXAAVCWideString@@J_N@Z
+0x007661C0	?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@JV?$allocator@J@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb	?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@J@std@@@Z
+0x00686850	?OnCreate@CTCBase@@UAEXXZ	Ego_r.pdb + FableWin.pdb; CTCBase vtable slot 4	CTCBase_Calls spelling
+0x006D3EF0	??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z	FableWin.pdb template; shared GetSubDef body	local-model spellings in landed IsGift* rows
+0x00746100	??$GetSubDef@VCPerceivedThingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCPerceivedThingDef@@@@@Z	FableWin.pdb template; shared GetSubDef body	local-model spelling in landed 0x00744ED0
+0x0042B248	??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z	FableWin.pdb template; shared GetSubDef body	?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z

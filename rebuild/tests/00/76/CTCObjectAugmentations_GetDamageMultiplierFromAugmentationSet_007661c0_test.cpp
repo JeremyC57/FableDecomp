@@ -1,97 +1,74 @@
-// Behaviour test for 0x007661C0 CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet: the product of the
-// DamageMultiplier of each augmentation def named by a positive index (1.0 with none); zero / negative indices are
-// skipped, and every def reference taken is released again.
+// Behaviour test for 007661c0: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations) -- product of the DamageMultiplier of every augmentation def named by a positive def index (1.0 with none)
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
+static int fails = 0;
+#define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
+class CDefPointeeBase { public:
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
+};
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
+    CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
+};
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
+    {
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
+    }
+};
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
+        return false;
+    }
+};
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
 #ifndef _MSC_VER
 #define __fastcall
-#define __declspec(x)
 #endif
-class CDefClassBase { public:
-    virtual void Destroy() const;
-    virtual void Release() const;                // slot 1
-    mutable long RefCount;                       // +0x04
-    void ReleaseReference() const
-    {
-        if (--RefCount == 0)
-            Release();
-    }
+class CAugmentationDef : public CDefClassBase { public: enum { Slot = 1 }; unsigned long Name; float DamageMultiplier; };
+template <class T> class CSlots { public:
+    T Data[4]; unsigned int Count;
+    unsigned int size() const { return Count; }
+    T& operator[](unsigned int i) { return Data[i]; }
+    const T& operator[](unsigned int i) const { return Data[i]; }
 };
-
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object)
-            Object->ReleaseReference();
-    }
-    T* operator->() const { return Object; }
-};
-
-class CAugmentationDef : public CDefClassBase { public:
-    unsigned char _pad08[0x28 - 0x08];
-    unsigned long Name;                          // +0x28
-    long  Type;                                  // +0x2c
-    unsigned long InventoryGraphic;              // +0x30
-    float DamageMultiplier;                      // +0x34
-    float ExperienceMultiplier;                  // +0x38
-};
-
-void* FindDef_GetSubDef_007661c0();              // stand-in callees of the stand-in bodies below
-void* FindDef_GetDef_007661c0(long index);
-
-class CThingBaseDef : public CDefClassBase { public:
-    bool GetSubDef(CDefPointer<const CAugmentationDef>* out) const;   // 0x0042B248 (GetSubDef<CAugmentationDef>)
-};
-
-class CDefinitionManager {
-public:
-    bool GetDef(long index, CDefPointer<const CThingBaseDef>* out) const;   // 0x0042AF3C (GetDef<CThingBaseDef>)
-};
-
-class CGameDefinitionManager : public CDefinitionManager {
-public:
-    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-};
-
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<const CAugmentationDef>* out) const
-{
-    void* def = FindDef_GetSubDef_007661c0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const CThingBaseDef>* out) const
-{
-    void* def = FindDef_GetDef_007661c0(index);
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-
-namespace std {
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    const T* begin() const { return _M_start; }
-    const T* end() const { return _M_finish; }
-    unsigned int size() const { return (unsigned int)(end() - begin()); }
-    const T& operator[](unsigned int n) const { return *(begin() + n); }
-};
-}
-
-class CTCObjectAugmentations {
-public:
+namespace std { template <class T> class vector : public CSlots<T> { }; }
+class CObjectAugmentationsDef : public CDefClassBase { public: enum { Slot = 2 }; std::vector<long> InitialAugmentations; };
+class CTCObjectAugmentations { public:
+    CDefPointer<const CObjectAugmentationsDef> PDef; bool LoadedFromSaveGame;
+    CSlots<CDefPointer<const CThingBaseDef> > Augmentations; int Particles, Sounds;
+    void AttachAugmentationParticles() { ++Particles; }
+    void SetupAugmentationSounds() { ++Sounds; }
+    long GetFreeSlot() const;
+    void OnInitialActivate();
     static float __fastcall GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations);
 };
-
+// ---- row body (verbatim) ----
 float __fastcall CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations)
 {
     float multiplier = 1.0f;
@@ -106,55 +83,18 @@ float __fastcall CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(
     }
     return multiplier;
 }
-
-
-struct TThingDef : CThingBaseDef { };
-static CAugmentationDef g_aug[4];
-static TThingDef g_thing[4];
-static int g_released = 0;
-static long g_lastSubDefFor = -1;
-static long g_current = -1;
-void CDefClassBase::Destroy() const { }
-void CDefClassBase::Release() const { ++g_released; }
-static CGameDefinitionManager g_mgr;
-CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return g_mgr; }
-void* FindDef_GetDef_007661c0(long index)
-{
-    if (index < 1 || index > 3) return 0;
-    g_current = index;
-    ++g_thing[index].RefCount;
-    return &g_thing[index];
-}
-void* FindDef_GetSubDef_007661c0()
-{
-    g_lastSubDefFor = g_current;
-    ++g_aug[g_current].RefCount;
-    return &g_aug[g_current];
-}
-
+// ---- harness ----
 int main()
 {
-    g_aug[1].DamageMultiplier = 2.0f;
-    g_aug[2].DamageMultiplier = 0.5f;
-    g_aug[3].DamageMultiplier = 3.0f;
-    for (unsigned int k = 0; k < 4; ++k) { g_aug[k].RefCount = 0; g_thing[k].RefCount = 0; }
-    long data[6] = { 1, 0, 3, -2, 2, 3 };
-    std::vector<long> v;
-    v._M_start = data; v._M_finish = data + 6; v._M_end_of_storage = data + 6;
-
-    int ok = 1;
-    float m = CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(v);
-    if (fabs(m - 2.0f * 3.0f * 0.5f * 3.0f) > 1e-5f) ok = 0;
-    if (g_released != 8) ok = 0;                        // 4 thing defs + 4 augmentation defs back to zero
-    for (unsigned int k = 0; k < 4; ++k)
-        if (g_aug[k].RefCount != 0 || g_thing[k].RefCount != 0) ok = 0;
-    v._M_finish = data;                                 // empty set
-    if (fabs(CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(v) - 1.0f) > 1e-6f) ok = 0;
-    long negatives[2] = { 0, -5 };
-    v._M_start = negatives; v._M_finish = negatives + 2;
-    if (fabs(CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(v) - 1.0f) > 1e-6f) ok = 0;
-    if (g_released != 8) ok = 0;
-
-    printf(ok ? "007661c0_TEST PASS\n" : "007661c0_TEST FAIL\n");
-    return ok ? 0 : 1;
+    ResetManager();
+    CThingBaseDef a, b; CAugmentationDef aa, ab; a.Sub[1] = &aa; b.Sub[1] = &ab; aa.DamageMultiplier = 2.0f; ab.DamageMultiplier = 1.5f;
+    g_manager.Table[3] = &a; g_manager.Table[4] = &b;
+    std::vector<long> set; set.Count = 0;
+    CHECK(CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(set) == 1.0f);
+    set.Count = 4; set[0] = 3; set[1] = 0; set[2] = 4; set[3] = -1;
+    float m = CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(set);
+    CHECK(m > 2.999f && m < 3.001f && g_manager.Calls == 2);
+    CHECK(a.Refs == 1 && b.Refs == 1 && aa.Refs == 1 && ab.Refs == 1 && aa.Deleted == 0);
+    if (fails == 0) printf("007661c0_TEST PASS\n");
+    return fails;
 }

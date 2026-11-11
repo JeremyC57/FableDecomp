@@ -1,82 +1,102 @@
-// Behaviour test for 0x00765F90 CTCObjectAugmentations::GetAugmentationName: def index -> thing def -> augmentation
-// sub-def; a non-zero Name is looked up in the text bank (entry text returned), a zero Name gives the missing-name
-// string; every counted reference taken is released (def, sub-def, group entry).
-#include <cstdio>
-
-static int WideEqual(const wchar_t* a, const wchar_t* b)
-{
-    while (*a && *a == *b) { ++a; ++b; }
-    return *a == *b;
-}
-
-class CWideString { public:
-    const wchar_t* Text;
-    explicit CWideString(const wchar_t* t) : Text(t) { }
-    CWideString(const CWideString& o) : Text(o.Text) { }
-};
-static CWideString gMissing(L"Missing augmentation name!");
-
-struct CCounted {
-    long RefCount;
-    int Releases;
-    CCounted() : RefCount(1), Releases(0) { }
-    void ReleaseReference() { if (--RefCount == 0) ++Releases; }
-};
-class CAugmentationDef : public CCounted { public: unsigned long Name; };
-class CThingBaseDef : public CCounted { public:
-    CAugmentationDef* Sub;
-    bool GetSubDef(CAugmentationDef** out) const { ++Sub->RefCount; *out = Sub; return true; }
+// Behaviour test for 00765f90: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CTCObjectAugmentations::GetAugmentationName(long defIndex) -- the display name of an augmentation def (its Name text from the game text bank), or "Missing augmentation name!" when the def has no text
+#include <stdio.h>
+#include <string.h>
+static int fails = 0;
+#define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
+class CDefPointeeBase { public:
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) Object->ReleaseReference(); }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
 };
-
-static CThingBaseDef* gDefs[4];
-bool GetDef(long index, CDefPointer<CThingBaseDef>* out) { ++gDefs[index]->RefCount; out->Object = gDefs[index]; return true; }
-
-struct CGroupEntry : CCounted {
-    const wchar_t* Text;
-    CWideString GetText() const { return CWideString(Text); }
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
+    {
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
+    }
 };
-static CGroupEntry gEntries[8];
-static unsigned long gLastLookup = 0;
-struct CEntryPtr {                               // returned as a temporary: VC7.1 has no NRVO
-    CGroupEntry* Object;
-    explicit CEntryPtr(CGroupEntry* o) : Object(o) { }
-    ~CEntryPtr() { if (Object) { Object->ReleaseReference(); Object = 0; } }
-    CGroupEntry* operator->() const { return Object; }
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
+        return false;
+    }
 };
-CEntryPtr GetPGroupEntry(unsigned long index, bool) { gLastLookup = index; ++gEntries[index].RefCount; return CEntryPtr(&gEntries[index]); }
-
-CWideString GetAugmentationName(long defIndex)
-{
-    CDefPointer<CThingBaseDef> def;
-    GetDef(defIndex, &def);
-    CDefPointer<CAugmentationDef> augmentation;
-    def.Object->GetSubDef(&augmentation.Object);
-    if (augmentation.Object->Name > 0)
-        return GetPGroupEntry(augmentation.Object->Name, true)->GetText();
-    return gMissing;
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+class CAugmentationDef : public CDefClassBase { public: enum { Slot = 1 }; unsigned long Name; float DamageMultiplier; };
+class CWideString { public: unsigned long Id; CWideString(unsigned long id) : Id(id) { } };
+static int g_entryReleases = 0;
+namespace NGameText {
+class CTextEntry { public: unsigned long Id; CWideString GetText() const { return CWideString(Id); } };
+template <class T> class CEntryPointer { public:
+    T* Object; CEntryPointer(T* o) : Object(o) { } ~CEntryPointer() { ++g_entryReleases; }
+    T* operator->() const { return Object; }
+};
+class CDataBank { public:
+    mutable CTextEntry Entry; mutable bool LastLoad;
+    CEntryPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool load) const { Entry.Id = id * 10; LastLoad = load; return CEntryPointer<const CTextEntry>(&Entry); }
+};
 }
+static NGameText::CDataBank g_bank;
+class CMainGameComponent { public:
+    static CMainGameComponent* __fastcall Get() { static CMainGameComponent c; return &c; }
+    const NGameText::CDataBank& GetTextBank() const { return g_bank; }
+};
+CWideString g_CWideString_013bad98(999);
+class CTCObjectAugmentations { public:
+    static CWideString __fastcall GetAugmentationName(long augmentation_def_index);
+};
+// ---- row body (verbatim) ----
+extern CWideString g_CWideString_013bad98;       // 0x013BAD98 L"Missing augmentation name!"
 
+CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long augmentation_def_index)
+{
+    CDefPointer<const CThingBaseDef> def;
+    CGameDefinitionManager::Get().GetDef(augmentation_def_index, &def);
+    CDefPointer<const CAugmentationDef> augmentation;
+    def->GetSubDef(&augmentation);
+    if (augmentation->Name > 0)
+        return CMainGameComponent::Get()->GetTextBank().GetPTextEntry(augmentation->Name, true)->GetText();
+    return g_CWideString_013bad98;
+}
+// ---- harness ----
 int main()
 {
-    CAugmentationDef fire; fire.Name = 5;
-    CAugmentationDef blank; blank.Name = 0;
-    CThingBaseDef d1; d1.Sub = &fire;
-    CThingBaseDef d2; d2.Sub = &blank;
-    gDefs[1] = &d1; gDefs[2] = &d2;
-    gEntries[5].Text = L"Fire Augmentation";
-    int ok = 1;
-    CWideString a = GetAugmentationName(1);
-    if (!WideEqual(a.Text, L"Fire Augmentation") || gLastLookup != 5) ok = 0;
-    if (d1.RefCount != 1 || fire.RefCount != 1 || gEntries[5].RefCount != 1) ok = 0;   // all references returned
-    CWideString b = GetAugmentationName(2);
-    if (!WideEqual(b.Text, L"Missing augmentation name!") || gLastLookup != 5) ok = 0;
-    if (d2.RefCount != 1 || blank.RefCount != 1) ok = 0;
-    if (!ok) { std::printf("00765f90_TEST FAIL\n"); return 1; }
-    std::printf("00765f90_TEST PASS\n");
-    return 0;
+    ResetManager();
+    CThingBaseDef named, unnamed; CAugmentationDef an, au; an.Name = 7; au.Name = 0; named.Sub[1] = &an; unnamed.Sub[1] = &au;
+    g_manager.Table[3] = &named; g_manager.Table[4] = &unnamed;
+    CWideString a = CTCObjectAugmentations::GetAugmentationName(3);
+    CHECK(a.Id == 70 && g_bank.LastLoad && g_entryReleases == 1 && g_manager.LastIndex == 3);
+    CWideString b = CTCObjectAugmentations::GetAugmentationName(4);
+    CHECK(b.Id == 999 && g_entryReleases == 1);
+    CHECK(named.Refs == 1 && unnamed.Refs == 1 && an.Refs == 1 && au.Refs == 1);
+    if (fails == 0) printf("00765f90_TEST PASS\n");
+    return fails;
 }

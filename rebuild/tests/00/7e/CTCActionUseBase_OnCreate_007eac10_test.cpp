@@ -1,148 +1,100 @@
-// Behaviour test for 007eac10: src/007eac10.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
-// declared callees stubbed below so calls and arguments are observable. CTCActionUseBase::OnCreate()
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 007eac10: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CTCActionUseBase::OnCreate() -- run the base hook, look the parent thing's def up by its global index and fetch its action-use sub-def into PActionUseDef
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CTCActionUseBase::OnCreate() -- run the base hook, look the parent thing's def up by its global index and fetch its action-use sub-def into PActionUseDef
-// Leaf: OnCreate
-//        `this` through the release (`mov esi,[esp+8] ; mov ecx,esi ; call ; test esi,esi ; dec [esi+4]`) and stores
-//        the null initialiser after the argument pushes; the lane re-reads the address-taken frame slot after the
-//        call (and uses the DecRef/GetRefCount release shape) and stores the zero first -- the GOTCHAS 24k "CDefPointer
-//        local re-read from its slot" gap, same as CTCCameraCollision slot 4 0x007E3040. A probe that copies the
-//        object into a raw local and releases it by hand gives 83v81 (edi instead of esi, zero store still early).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007EAC10, length 81 bytes (+ int3 padding).
-// Callees: CTCBase's slot-4 hook @ 0x00686850 (an empty body called non-virtually; manifest "$E2"),
-// CTCBase_Calls::GetDefinitionManager() @ 0x006869D0 (the manifest label is a propagated _Cons_val),
-// CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) @ 0x0042AF3C, CDefClassBase::GetSubDef<
-// CActionUseDef>(CDefPointer<T>*) const @ 0x007EAE40, and the thing def's virtual slot 1 (`call [eax+4]`)
-// when the local pointer drops the last count.
-//
-// Layout: CThing::DefGlobalIndex is the ushort at +0x8c in retail (`movzx` widens it to the long index);
-// CTCActionUseBase::PActionUseDef (CDefPointer<CActionUseDef>) is +0x0c.
-// Shape: the same body as CTCCameraCollision's slot 4 (0x007E3040): a local CDefPointer in the `push ecx`
-// slot whose null store is scheduled right before the GetDef call, the sub-def lookup through the
-// pointer's raw `operator->` (the object loaded into esi once and reused by the destructor), and the
-// destructor's null-tested release on a local copy (`dec [esi+4] ; jne ; call [eax+4]`, no null store).
-// Header note: engine/CDefClassBase.h, CActionUseDef.h and CDefinitionManager.h hold layouts only, so the
-// def classes are modelled locally with a _Retail suffix.
-template <class T> class CDefPointer;
-struct CActionUseDef_Retail;
-
-struct CDefClassBase_Retail
-{
-    virtual void v00();
-    virtual void Destroy();                         // slot 1 (+0x04)
-    long m_refCount;                                // +0x04
-    bool GetSubDef(CDefPointer<CActionUseDef_Retail>* out) const;   // GetSubDef<CActionUseDef> @ 0x007EAE40
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
+class CDefPointeeBase { public:
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
 };
-void* FindDef_CDefClassBase_Retail_GetSubDef_1();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase_Retail::GetSubDef(CDefPointer<CActionUseDef_Retail>* out) const
-{
-    void* def = FindDef_CDefClassBase_Retail_GetSubDef_1();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-template <class T>
-class CDefPointer
-{ public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer()
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
+    CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
+};
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
     {
-        T* object = Object;
-        if (object != 0)
-        {
-            if (--object->m_refCount == 0)
-                object->Destroy();
-        }
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
     }
-    T* operator->() const { return Object; }
 };
-
-struct CThingDef : CDefClassBase_Retail {};
-struct CActionUseDef_Retail : CDefClassBase_Retail {};
-
-struct CDefinitionManager_Retail
-{
-    bool GetDef(long globalIndex, CDefPointer<CThingDef>* out);   // GetDef<T> @ 0x0042AF3C
-};
-void* FindDef_CDefinitionManager_Retail_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager_Retail::GetDef(long globalIndex, CDefPointer<CThingDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_Retail_GetDef_0();
-    if (!def)
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
         return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThing
-{ public:
-    unsigned char  _pad_0x00[0x8c];
-    unsigned short DefGlobalIndex;                  // +0x8c
+    }
 };
-
-#pragma pack(push, 1)
-struct CTCBase_Calls                                   // engine/CTCBase.h layout (the header holds the layout only)
-{
-    void*   __vftable;                              // +0x00
-    CThing* ParentThing;                            // +0x04
-    bool    ToBeRemoved;                            // +0x08
-    bool    IsInGlobalUpdateTCs;                    // +0x09
-    unsigned char _pad_0x0a[0x2];                   // +0x0a
-    void OnCreate();                                // 0x00686850 (empty)
-    CDefinitionManager_Retail* GetDefinitionManager() const;   // 0x006869D0
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
+enum ECutsceneBehaviour { CUTSCENE_BEHAVIOUR_DEFAULT = 0, CUTSCENE_BEHAVIOUR_PAUSED = 1, CUTSCENE_BEHAVIOUR_NOT_PAUSED = 2 };
+class CThing { public:
+    unsigned short DefGlobalIndex; long CutscenePause;
+    CDefPointer<const CThingBaseDef> PBaseDef;
+    unsigned long GetDefGlobalIndex() const { return DefGlobalIndex; }
+    const CThingBaseDef& PeekBaseDef() const { return *PBaseDef; }
+    CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
+    void SetCutscenePauseBehaviour(ECutsceneBehaviour b) { CutscenePause = b; }
+    const CGameDefinitionManager& PeekDefinitionManager() const { return g_manager; }
 };
-
-class CTCActionUseBase : public CTCBase_Calls
-{ public:
-    CDefPointer<CActionUseDef_Retail> PActionUseDef;       // +0x0c
-    bool                       Usable;              // +0x10
+class CTCBase { public:
+    CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; int BaseCalls;
+    CTCBase(CThing& thing) : ParentThing(&thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false), BaseCalls(0) { }
+    void OnCreate() { ++BaseCalls; }
+    void OnInitialActivate() { ++BaseCalls; }
+    const CGameDefinitionManager& GetDefinitionManager() const { return g_manager; }
+};
+class CActionUseDef : public CDefClassBase { public: enum { Slot = 4 }; };
+class CTCActionUseBase : public CTCBase { public:
+    CDefPointer<const CActionUseDef> PActionUseDef;
+    CTCActionUseBase(CThing& thing) : CTCBase(thing) { }
     void OnCreate();
 };
-#pragma pack(pop)
-
+// ---- row body (verbatim) ----
 void CTCActionUseBase::OnCreate()
 {
-    CTCBase_Calls::OnCreate();
+    CTCBase::OnCreate();
     CThing* thing = ParentThing;
-    CDefPointer<CThingDef> thingDef;
-    GetDefinitionManager()->GetDef(thing->DefGlobalIndex, &thingDef);
-    thingDef->GetSubDef(&PActionUseDef);
+    CDefPointer<const CThingBaseDef> def;
+    GetDefinitionManager().GetDef(thing->GetDefGlobalIndex(), &def);
+    def->GetSubDef(&PActionUseDef);
 }
-
-// ---- stubs and driver ----
-static void* g_def = 0; static void* g_sub = 0; static int g_destroyed = 0, g_baseCreate = 0;
-void* FindDef_CDefClassBase_Retail_GetSubDef_1() { return g_sub; }
-void* FindDef_CDefinitionManager_Retail_GetDef_0() { return g_def; }
-void CDefClassBase_Retail::v00() {}
-void CDefClassBase_Retail::Destroy() { ++g_destroyed; }
-void CTCBase_Calls::OnCreate() { ++g_baseCreate; }
-static CDefinitionManager_Retail g_mgr;
-CDefinitionManager_Retail* CTCBase_Calls::GetDefinitionManager() const { return &g_mgr; }
+// ---- harness ----
 int main()
 {
-    CThingDef td; td.m_refCount = 2; CActionUseDef_Retail ad; ad.m_refCount = 1;
-    g_def = &td; g_sub = &ad;
-    static CThing thing; memset(&thing, 0, sizeof(thing));
-    CTCActionUseBase a; memset(&a, 0, sizeof(a)); a.ParentThing = &thing;
-    a.OnCreate(); CHECK(g_baseCreate == 1); CHECK(a.PActionUseDef.Object == &ad); CHECK(td.m_refCount == 1); CHECK(g_destroyed == 0);
-    a.PActionUseDef.Object = 0;
-    td.m_refCount = 1; a.OnCreate(); CHECK(td.m_refCount == 0); CHECK(g_destroyed == 1); CHECK(a.PActionUseDef.Object == &ad);
-    a.PActionUseDef.Object = 0;
-    if (fails == 0) printf("007eac10_TEST PASS\n"); else printf("007eac10_TEST FAIL\n");
+    ResetManager();
+    CThingBaseDef thingDef, bare; CActionUseDef sub; thingDef.Sub[4] = &sub; g_manager.Table[6] = &thingDef; g_manager.Table[7] = &bare;
+    CThing thing; memset(&thing, 0, sizeof(thing)); thing.DefGlobalIndex = 6;
+    {
+        CTCActionUseBase c(thing);
+        c.OnCreate();
+        CHECK(c.BaseCalls == 1 && c.PActionUseDef.Object == &sub && sub.Refs == 2 && thingDef.Refs == 1 && g_manager.LastIndex == 6);
+        thing.DefGlobalIndex = 7;
+        CTCActionUseBase d(thing);
+        d.OnCreate();                                        // no sub-def: the member stays null
+        CHECK(d.BaseCalls == 1 && d.PActionUseDef.IsNull() && bare.Refs == 1);
+    }
+    CHECK(sub.Refs == 1 && sub.Deleted == 0);
+    if (fails == 0) printf("007eac10_TEST PASS\n");
     return fails;
 }

@@ -1,164 +1,91 @@
-// Behaviour test for 00768120: src/00768120.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
-// declared callees stubbed below so calls and arguments are observable. CTCObjectAugmentations::AttachAugmentationToSlot(long defIndex, long slot)
-#include "fable_compiler.h"
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 00768120: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CTCObjectAugmentations::AttachAugmentationToSlot(long defIndex, long slot) -- fetch the thing def for the global index; when it carries an augmentation sub-def, store it in the slot; then re-attach the augmentation particles and sounds
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CTCObjectAugmentations::AttachAugmentationToSlot(long defIndex, long slot) -- fetch the thing def for the global index; when it carries an augmentation sub-def, store it in the slot; then re-attach the augmentation particles and sounds
-// Leaf: AttachAugmentationToSlot
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00768120, 166 bytes (`ret 8`; PDB ?AttachAugmentationToSlot@CTCObjectAugmentations@@QAEXJJ@Z).
-// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CGameDefinitionManager::GetDef<T> @ 0x0042AF3C, CDefClassBase::
-//   GetSubDef<CAugmentationDef> @ 0x0042B248, AttachAugmentationParticles() @ 0x007677E0, SetupAugmentationSounds() @ 0x00766C00
-//   (manifest "CTCObjectAugmentations_UpdateParticleMorphs"; the body looks sounds up through CDefStringTable::GetString), the
-//   def release through vtable slot 1.
-// Tried: RAII out pointer + holder (extra zero store), plain out slot + holder + entry reference, non-const def types.
-//   Next: the augmentation slot as a plain CDefSlot released by hand at the end (`if (p) { if (--p->m_refCount == 0) ... }`
-//   on a pointer local read after SetupAugmentationSounds); lane gap otherwise (callee-saved colouring, chunk 161 0x69A8B0 family).
-void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy() const;                       // slot 1
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
+class CDefPointeeBase { public:
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
 };
-struct CDefBase : CDefVirtual {
-    mutable long m_refCount;                            // +0x04
-};
-template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
-{
-    if (def && --def->m_refCount == 0)
-        def->Destroy();
-}
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
-    FABLE_FORCEINLINE ~CDefPointer() { T* object = Object; ReleaseDef(object); }
-    CDefPointer& operator=(T* object)
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
+};
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
     {
-        if (Object != object) {
-            if (Object) {
-                ReleaseDef(Object);
-                Object = 0;
-            }
-            Object = object;
-            if (object)
-                ++object->m_refCount;
-        }
-        return *this;
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
     }
 };
-template <class T> struct CDefHolder {                  // owns the reference GetDef handed over
-    T* Object;
-    FABLE_FORCEINLINE ~CDefHolder() { ReleaseDef(Object); }
-};
-class CAugmentationDef : public CDefBase { public: };
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0042B248 (T = const CAugmentationDef)
-};
-void* FindDef_s7r_0();
-#pragma auto_inline(off)
-// Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
-// CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out) const
-{
-    void* def = FindDef_s7r_0();
-    if (!def)
-        return false;
-    void* old = *(void**)&out;
-    if (old != def) {
-        if (old)
-            ReleaseDef_s7(old);
-        *(void**)&out = def;
-    }
-    return true;
-}
-#pragma auto_inline(on)
-class CThingBaseDef : public CDefClassBase { public: };
 class CGameDefinitionManager { public:
-    template <class T> bool GetDef(long index, CDefPointer<T>& out) const;   // 0x0042AF3C (T = const CThingBaseDef)
-};
-void* FindDef_s7r_1();
-#pragma auto_inline(off)
-// Same-TU body of GetDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
-// CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CGameDefinitionManager::GetDef(long p0, CDefPointer<T>& out) const
-{
-    void* def = FindDef_s7r_1();
-    if (!def)
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
         return false;
-    void* old = *(void**)&out;
-    if (old != def) {
-        if (old)
-            ReleaseDef_s7(old);
-        *(void**)&out = def;
     }
-    return true;
-}
-#pragma auto_inline(on)
-template <class T> struct vector {                      // STLport vector, 12 bytes
-    T* _M_start; T* _M_finish; T* _M_end_of_storage;
-    T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-class CThing;
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
+class CAugmentationDef : public CDefClassBase { public: enum { Slot = 1 }; unsigned long Name; float DamageMultiplier; };
+class CObjectAugmentationsDef : public CDefClassBase { public: enum { Slot = 2 }; };
+template <class T> class CSlots { public:
+    T Data[4]; unsigned int Count;
+    unsigned int size() const { return Count; }
+    T& operator[](unsigned int i) { return Data[i]; }
+    const T& operator[](unsigned int i) const { return Data[i]; }
+};
 class CTCObjectAugmentations { public:
-    virtual void v00();
-    CThing*       ParentThing;                          // +0x04 (CTCBase)
-    bool          ToBeRemoved;                          // +0x08
-    bool          IsInGlobalUpdateTCs;                  // +0x09
-    unsigned char _pad0a[2];
-    CDefPointer<const CDefBase> PDef;                   // +0x0c
-    bool          LoadedFromSaveGame;                   // +0x10
-    vector< CDefPointer<const CThingBaseDef> > Augmentations;   // +0x14
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
-    void AttachAugmentationParticles();                 // 0x007677E0
-    void SetupAugmentationSounds();                     // 0x00766C00
-    void AttachAugmentationToSlot(long defIndex, long slot);
+    CSlots<CDefPointer<const CThingBaseDef> > Augmentations; int Particles, Sounds;
+    const CGameDefinitionManager& GetDefinitionManager() const { return g_manager; }
+    void AttachAugmentationParticles() { ++Particles; }
+    void SetupAugmentationSounds() { ++Sounds; }
+    void AttachAugmentationToSlot(long augmentation_def_index, long slot);
 };
-
-void CTCObjectAugmentations::AttachAugmentationToSlot(long defIndex, long slot)
+// ---- row body (verbatim) ----
+void CTCObjectAugmentations::AttachAugmentationToSlot(long augmentation_def_index, long slot)
 {
-    CDefPointer<const CThingBaseDef> fetched;
-    GetDefinitionManager().GetDef(defIndex, fetched);
-    CDefHolder<const CThingBaseDef> thingDef = { fetched.Object };
-    fetched.Object = 0;
+    CDefPointer<const CThingBaseDef> def;
+    GetDefinitionManager().GetDef(augmentation_def_index, &def);
     CDefPointer<const CAugmentationDef> augmentation;
-    if (thingDef.Object->GetSubDef(augmentation))
-        Augmentations[slot] = thingDef.Object;
+    if (def->GetSubDef(&augmentation))
+        Augmentations[slot] = def;
     AttachAugmentationParticles();
     SetupAugmentationSounds();
 }
-
-// ---- stubs and driver ----
-static void* g_defs[2]; static int g_find0 = 0, g_find1 = 0, g_release = 0, g_destroy = 0, g_mgr = 0, g_particles = 0, g_sounds = 0;
-static CGameDefinitionManager g_manager;
-void* FindDef_s7r_0() { ++g_find0; return g_defs[0]; }
-void* FindDef_s7r_1() { ++g_find1; return g_defs[1]; }
-void ReleaseDef_s7(void*) { ++g_release; }
-void CDefVirtual::v00() {}
-void CDefVirtual::Destroy() const { ++g_destroy; }
-void CTCObjectAugmentations::v00() {}
-const CGameDefinitionManager& CTCObjectAugmentations::GetDefinitionManager() const { ++g_mgr; return g_manager; }
-void CTCObjectAugmentations::AttachAugmentationParticles() { ++g_particles; CHECK(g_particles == g_sounds + 1); }
-void CTCObjectAugmentations::SetupAugmentationSounds() { ++g_sounds; }
+// ---- harness ----
 int main()
 {
-    static CThingBaseDef thingDef; thingDef.m_refCount = 1;
-    static CAugmentationDef aug; aug.m_refCount = 3;
-    static CThingBaseDef old; old.m_refCount = 2;
-    CDefPointer<const CThingBaseDef> slots[3]; slots[0].Object = 0; slots[1].Object = &old; slots[2].Object = 0;
-    static unsigned char raw[sizeof(CTCObjectAugmentations)]; CTCObjectAugmentations& t = *(CTCObjectAugmentations*)raw;
-    t.Augmentations._M_start = slots; t.Augmentations._M_finish = slots + 3; t.Augmentations._M_end_of_storage = slots + 3;
-    g_defs[1] = &thingDef; g_defs[0] = &aug;
-    t.AttachAugmentationToSlot(12, 1);
-    CHECK(g_mgr == 1 && g_find1 == 1 && g_find0 == 1); CHECK(slots[1].Object == &thingDef && old.m_refCount == 1 && thingDef.m_refCount == 1);   // slot took a reference (+1), the holder dropped the fetched one (-1)
-    CHECK(aug.m_refCount == 2 && g_particles == 1 && g_sounds == 1 && g_destroy == 0);
-    // no augmentation sub-def: the slot is left alone, the thing def's last reference is dropped
-    static CThingBaseDef other; other.m_refCount = 1; g_defs[1] = &other; g_defs[0] = 0;
-    t.AttachAugmentationToSlot(13, 2); CHECK(slots[2].Object == 0 && other.m_refCount == 0 && g_destroy == 1 && g_particles == 2 && g_sounds == 2);
-    // the same def again into its slot: operator= is a no-op on equal pointers
-    g_defs[1] = &thingDef; g_defs[0] = &aug; thingDef.m_refCount = 2; t.AttachAugmentationToSlot(12, 1); CHECK(slots[1].Object == &thingDef && thingDef.m_refCount == 1);
-    CHECK(g_release == 0);
-    slots[0].Object = slots[1].Object = slots[2].Object = 0;
-    if (fails == 0) printf("00768120_TEST PASS\n"); else printf("00768120_TEST FAIL\n");
+    ResetManager();
+    CThingBaseDef plain, augmented; CAugmentationDef aug; augmented.Sub[1] = &aug;
+    g_manager.Table[3] = &plain; g_manager.Table[5] = &augmented;
+    CTCObjectAugmentations c; c.Augmentations.Count = 4; c.Particles = c.Sounds = 0;
+    c.AttachAugmentationToSlot(3, 1);                          // no augmentation sub-def: slot left empty
+    CHECK(c.Augmentations[1].IsNull() && c.Particles == 1 && c.Sounds == 1 && plain.Refs == 1 && g_manager.LastIndex == 3);
+    c.AttachAugmentationToSlot(5, 2);                          // stored: the slot holds one more reference
+    CHECK(c.Augmentations[2].Object == &augmented && augmented.Refs == 2 && aug.Refs == 1 && c.Particles == 2 && c.Sounds == 2);
+    c.AttachAugmentationToSlot(5, 2);                          // same def again: unchanged
+    CHECK(augmented.Refs == 2 && aug.Deleted == 0);
+    if (fails == 0) printf("00768120_TEST PASS\n");
     return fails;
 }

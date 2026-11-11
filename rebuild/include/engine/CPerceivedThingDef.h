@@ -8,6 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CPERCEIVEDTHINGDEF
+// Retail opt-in (agentNF10, row 0x00744ED0 CTCPerceiveThing::OnCreate): RTTI .?AVCPerceivedThingDef@@ : CSubDefClassBase : CDefClassBase
+// (ghidra_out/rtti_bases.tsv), so that CDefPointer<const CPerceivedThingDef> dereferences; the Ego_r.pdb members at the same offsets
+// after the 0x25-byte packed base (no containers). Retail reads GiveUpChaseRadius +0x2C, SightRadius +0x30, ExtendedSightRadius +0x34,
+// SoundRadius +0x38, SmellRadius +0x3C off CTCPerceiveThing::PDef (0x00744F14..0x00744F4F). Needs FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+#ifdef _MSC_VER
+enum EPerceivedThingType;                                    // MS forward enum (enumerators not modelled)
+#else
+enum EPerceivedThingType { };
+#endif
+class CPerceivedThingDef : public CSubDefClassBase {
+public:
+    unsigned char _pad_0x25[0x3];                            // +0x25
+    float         FieldOfView;                               // +0x28
+    float         GiveUpChaseRadius;                         // +0x2c
+    float         SightRadius;                               // +0x30
+    float         ExtendedSightRadius;                       // +0x34
+    float         SoundRadius;                               // +0x38
+    float         SmellRadius;                               // +0x3c
+    EPerceivedThingType Type;                                // +0x40
+    float         AwarenessTimer;                            // +0x44
+    float         DayTimeVisibilityMultiplier;               // +0x48
+    float         NightTimeVisibilityMultiplier;             // +0x4c
+};
+FABLE_STATIC_ASSERT(sizeof(CPerceivedThingDef) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CPerceivedThingDef, SightRadius) == 0x30);
+#else
 #pragma pack(push, 1)
 class CPerceivedThingDef {
 public:
@@ -46,5 +74,6 @@ FABLE_STATIC_ASSERT(offsetof(CPerceivedThingDef, Type) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CPerceivedThingDef, AwarenessTimer) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CPerceivedThingDef, DayTimeVisibilityMultiplier) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CPerceivedThingDef, NightTimeVisibilityMultiplier) == 0x4c);
+#endif // FABLE_RETAIL_CPERCEIVEDTHINGDEF
 
 #endif // FABLE_ENGINE_CPERCEIVEDTHINGDEF_H

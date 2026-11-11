@@ -1,0 +1,7 @@
+- Include engine/CDefClassBase.h before CThing / defmgr headers, or the shared GetDef/GetSubDef bodies see an incomplete CDefClassBase.
+- A retail eax/edx role swap in a component ctor/OnCreate closes with a named `CThing* parent = ParentThing;` local.
+- Same-retail-TU small callees (GetFreeSlot, perceive setters) defined in the row make /O2 auto-inline them as retail did.
+- A self-symbol leaf mismatch (vector<long> vs vector<long, allocator<long>>) grades DIFFER even when the bytes match; use the full PDB spelling.
+- STLport push_back on a CDefPointer vector binds _M_insert_overflow only with the real allocator template in the leaf.
+- Test fixtures: a def-handle conversion from GetPDefFromGlobalIndex is easiest as a proxy with a templated conversion operator.
+- Several NF9 "left" rows were already correct: check bindings with CHKALL=--all before rewriting a row.

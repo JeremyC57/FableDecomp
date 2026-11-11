@@ -1,74 +1,84 @@
-// Behaviour test for 00736640: body copied from src/00736640.cpp (CTCCombat::AddMeleeFlourishAbility), callees stubbed.
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 00736640: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CTCCombat::AddMeleeFlourishAbility(long defIndex) -- looks up a melee combat ability def, appends it to AbilityList and recomputes the usable abilities
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-static int g_destroyed = 0;
-class CMeleeCombatAbilityDef { public: virtual void Destroy() { ++g_destroyed; } long RefCount; };
-struct CDefPointer {
-    CMeleeCombatAbilityDef* Object;
-    CDefPointer() : Object(0) {}
-    CDefPointer(const CDefPointer& other) { CMeleeCombatAbilityDef* object = other.Object; Object = object; if (object) ++object->RefCount; }
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
+class CDefPointeeBase { public:
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
 };
-static CMeleeCombatAbilityDef g_def; static bool g_found = true; static int g_getDef = 0; static long g_getDefIndex = 0;
-class CDefinitionManager { public:
-    bool GetDef_00737f80(long defIndex, CDefPointer* def) { ++g_getDef; g_getDefIndex = defIndex; if (!g_found) return false; def->Object = &g_def; ++g_def.RefCount; return true; }
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
+    CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
 };
-struct __false_type { __false_type() {} };
-inline void* operator new(unsigned int, void* where) { return where; }
-static int g_overflow = 0;
-struct CDefPointerVector {
-    CDefPointer* _M_start; CDefPointer* _M_finish; CDefPointer* _M_end_of_storage;
-    void _M_insert_overflow(CDefPointer* pos, const CDefPointer& x, const __false_type&, unsigned int fillLen, bool atEnd)
-    { ++g_overflow; CHECK(pos == _M_finish && fillLen == 1 && atEnd); new (_M_finish) CDefPointer(x); ++_M_finish; ++_M_end_of_storage; }
-    void push_back(const CDefPointer& x)
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
     {
-        if (_M_finish != _M_end_of_storage) {
-            if (_M_finish)
-                new (_M_finish) CDefPointer(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
     }
 };
-static CDefinitionManager g_manager; static int g_update = 0;
-class CTCCombat { public:
-    void* __vftable; unsigned char _pad_0x04[0x28]; CDefPointerVector AbilityList;
-    CDefinitionManager* GetDefinitionManager() { return &g_manager; }
-    void UpdateUsableMeleeCombatAbilities() { ++g_update; }
-    void AddMeleeFlourishAbility(long defIndex);
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
+        return false;
+    }
 };
-void CTCCombat::AddMeleeFlourishAbility(long defIndex)
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
+class CMeleeCombatAbilityDef : public CDefClassBase { public: enum { Slot = 5 }; };
+template <class T> class CList8 { public:
+    T Data[8]; unsigned int Count; CList8() : Count(0) { }
+    void push_back(const T& v) { Data[Count++] = v; }
+};
+class CTCCombat { public:
+    CList8<CDefPointer<const CMeleeCombatAbilityDef> > AbilityList; int Updates;
+    const CGameDefinitionManager& GetDefinitionManager() const { return g_manager; }
+    void UpdateUsableMeleeCombatAbilities() { ++Updates; }
+    void AddMeleeFlourishAbility(long def_index);
+};
+// ---- row body (verbatim) ----
+void CTCCombat::AddMeleeFlourishAbility(long def_index)
 {
-    CDefPointer def;
-    GetDefinitionManager()->GetDef_00737f80(defIndex, &def);
-    CMeleeCombatAbilityDef* object = def.Object;
+    CDefPointer<const CMeleeCombatAbilityDef> def;
+    GetDefinitionManager().GetDef(def_index, &def);
     AbilityList.push_back(def);
     UpdateUsableMeleeCombatAbilities();
-    if (object) {
-        if (--object->RefCount == 0)
-            object->Destroy();
-    }
 }
+// ---- harness ----
 int main()
 {
-    g_def.RefCount = 1;
-    unsigned char storage[sizeof(CDefPointer) * 4]; memset(storage, 0, sizeof storage);
-    CTCCombat tc; memset(&tc, 0, sizeof tc);
-    tc.AbilityList._M_start = (CDefPointer*)storage; tc.AbilityList._M_finish = tc.AbilityList._M_start; tc.AbilityList._M_end_of_storage = tc.AbilityList._M_start + 1;
-    tc.AddMeleeFlourishAbility(42);
-    CHECK(g_getDef == 1 && g_getDefIndex == 42 && g_update == 1 && g_overflow == 0);
-    CHECK(tc.AbilityList._M_finish - tc.AbilityList._M_start == 1 && tc.AbilityList._M_start[0].Object == &g_def);
-    CHECK(g_def.RefCount == 2 && g_destroyed == 0);              // the local released, the vector's copy keeps one
-    tc.AddMeleeFlourishAbility(43);                                // vector full: overflow path
-    CHECK(g_overflow == 1 && g_update == 2 && g_def.RefCount == 3);
-    g_found = false; tc.AddMeleeFlourishAbility(44);               // def not found: null pushed, no release
-    CHECK(g_update == 3 && tc.AbilityList._M_start[2].Object == 0 && g_def.RefCount == 3 && g_destroyed == 0);
-    g_found = true; g_def.RefCount = 0; tc.AbilityList._M_finish = tc.AbilityList._M_start; tc.AbilityList._M_end_of_storage = tc.AbilityList._M_start;
-    g_overflow = 0;
-    // a def whose only reference was the lookup: with the vector copy counted it survives; simulate the count reaching zero on release
-    tc.AddMeleeFlourishAbility(45);
-    CHECK(g_def.RefCount == 1 && g_destroyed == 0 && g_overflow == 1);
-    if (fails == 0) printf("00736640_TEST PASS\n"); else printf("00736640_TEST FAIL (%d)\n", fails);
+    ResetManager();
+    CMeleeCombatAbilityDef a; g_manager.Table[5] = &a;
+    {
+        CTCCombat c; c.Updates = 0;
+        c.AddMeleeFlourishAbility(5);
+        CHECK(c.AbilityList.Count == 1 && c.AbilityList.Data[0].Object == &a && a.Refs == 2 && c.Updates == 1 && g_manager.LastIndex == 5);
+        c.AddMeleeFlourishAbility(9);                          // unknown def: a null entry is still appended
+        CHECK(c.AbilityList.Count == 2 && c.AbilityList.Data[1].IsNull() && c.Updates == 2);
+    }
+    CHECK(a.Refs == 1 && a.Deleted == 0);
+    if (fails == 0) printf("00736640_TEST PASS\n");
     return fails;
 }

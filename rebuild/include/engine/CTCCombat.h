@@ -24,6 +24,15 @@ public:
  // (retail 0x00736640, landed). Declaration only.
  void AddMeleeFlourishAbility(long def_index);                           // 0x00736640
 #endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_ABILITYLIST
+ // Nested opt-in (agentNF10, rows 0x00736640 AddMeleeFlourishAbility / 0x007366C0 RemoveMeleeFlourishAbility): Ego_r.pdb / FableWin.pdb
+ // ?RemoveMeleeFlourishAbility@CTCCombat@@QAEXJ@Z (retail 0x007366C0) and the private ?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ
+ // (out of line at 0x00736590; both rows call it after editing AbilityList +0x2C). Declarations only: no layout change.
+ void RemoveMeleeFlourishAbility(long def_index);                        // 0x007366C0
+private:
+ void UpdateUsableMeleeCombatAbilities();                                // 0x00736590
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_BLOCKING
  // Nested opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): Ego_r.pdb 0x0074B380 / FableWin.pdb 0x024FD6A0 ?IsBlocking@CTCCombat@@QBE_NXZ
  // and Ego_r.pdb 0x0074BFF0 / FableWin.pdb 0x024FD420 ?UnsetBlocking@CTCCombat@@QAEXXZ, out of line in retail at 0x007331E0 (reads

@@ -21,146 +21,50 @@
 //   dereferenced) and the thing def release (null-tested).
 // Layout: CAugmentationDef Name (text index) +0x28 (as the landed 0x00766140 model); def reference count +4, release
 //   slot 1; CGroupEntry: vptr, IVRefCount +4 (second base), Delete slot 1.
-#include "fable_compiler.h"
-class CWideString { public:
-    void* PStringData;
-    CWideString(const CWideString& other);       // 0x0099B720
-};
+// Name fix (agentNF10 2026-11-11): moved off the local CWideString / CDefClassBase / CDefPointer / CThingBaseDef / CDefinitionManager /
+// CIVCountedPointer / NGameText / CMainGameComponent / CTCObjectAugmentations stand-ins (and the same-TU GetDef / GetSubDef stand-in
+// bodies) onto the shared headers. 0x0042AF3C binds ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+// (was the non-template ?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z) and 0x0042B248 binds
+// GetSubDef<CAugmentationDef> (was ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z). The text bank comes
+// through the inline CMainGameComponent::GetTextBank() (+0x14). g_CWideString_013bad98 keeps its established spelling (no name proven).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CAUGMENTATIONDEF
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_INNER
+#define FABLE_RETAIL_SCOPED_PTR
+#include "fable_string.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAugmentationDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
+#include "engine/CTCObjectAugmentations.h"
 
 extern CWideString g_CWideString_013bad98;       // 0x013BAD98 L"Missing augmentation name!"
 
-class CDefClassBase { public:
-    virtual void Destroy() const;
-    virtual void Release() const;                // slot 1
-    mutable long RefCount;                       // +0x04
-    void ReleaseReference() const
-    {
-        if (--RefCount == 0)
-            Release();
-    }
-};
-
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object)
-            Object->ReleaseReference();
-    }
-    T* operator->() const { return Object; }
-};
-
-class CAugmentationDef : public CDefClassBase { public:
-    unsigned char _pad08[0x28 - 0x08];
-    unsigned long Name;                          // +0x28
-    long  Type;                                  // +0x2c
-    unsigned long InventoryGraphic;              // +0x30
-    float DamageMultiplier;                      // +0x34
-    float ExperienceMultiplier;                  // +0x38
-};
-
-void* FindDef_GetSubDef_00765f90();              // stand-in callees of the stand-in bodies below
-void* FindDef_GetDef_00765f90(long index);
-
-class CThingBaseDef : public CDefClassBase { public:
-    bool GetSubDef(CDefPointer<const CAugmentationDef>* out) const;   // 0x0042B248 (GetSubDef<CAugmentationDef>)
-};
-
-class CDefinitionManager {
-public:
-    bool GetDef(long index, CDefPointer<const CThingBaseDef>* out) const;   // 0x0042AF3C (GetDef<CThingBaseDef>)
-};
-
-class CGameDefinitionManager : public CDefinitionManager {
-public:
-    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-};
-
-// Stand-in bodies (both are out of line in retail): they write the out slot only, so VC7.1 knows the def pointers'
-// addresses do not escape the calls (the landed 0x00766140 / 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<const CAugmentationDef>* out) const
-{
-    void* def = FindDef_GetSubDef_00765f90();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const CThingBaseDef>* out) const
-{
-    void* def = FindDef_GetDef_00765f90(index);
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-struct CIVCountedPointeeVirtual {
-    virtual void Destroy(int flags) const;             // slot 0
-    virtual void Delete() const;                       // slot 1
-};
-struct CIVRefCounted {                           // second base: the count at +4 behind the vptr
-    mutable unsigned long IVRefCount;
-    FABLE_FORCEINLINE void DecRef() const { --IVRefCount; }
-    FABLE_FORCEINLINE unsigned long GetRefCount() const { return IVRefCount; }
-};
-class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
-    FABLE_FORCEINLINE void ReleaseTemporary() const
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Delete();
-    }
-};
-template <class T> class CIVCountedPointer { public:
-    T* Object;
-    ~CIVCountedPointer()
-    {
-        if (Object) {
-            Object->ReleaseTemporary();
-            Object = 0;
-        }
-    }
-    T* operator->() const { return Object; }
-};
-
-namespace NGameText {
-class CTextEntry : public CIVCountedPointeeBase { public:
-    CWideString GetText() const;                 // 0x009C7A40
-};
-class CDataBank { public:
-    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
-};
-}
-
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad00[0x14];
-    NGameText::CDataBank* TextBank;              // +0x14
-};
-
-class CTCObjectAugmentations {
-public:
-    static CWideString __fastcall GetAugmentationName(long defIndex);
-};
-
-CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long defIndex)
+CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long augmentation_def_index)
 {
     CDefPointer<const CThingBaseDef> def;
-    CGameDefinitionManager::Get().GetDef(defIndex, &def);
+    CGameDefinitionManager::Get().GetDef(augmentation_def_index, &def);
     CDefPointer<const CAugmentationDef> augmentation;
     def->GetSubDef(&augmentation);
-    if (augmentation->Name > 0) {
-        NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
-        return bank->GetPTextEntry(augmentation->Name, true)->GetText();
-    }
+    if (augmentation->Name > 0)
+        return CMainGameComponent::Get()->GetTextBank().GetPTextEntry(augmentation->Name, true)->GetText();
     return g_CWideString_013bad98;
 }

@@ -1,145 +1,113 @@
-// Behaviour test for 0x00768010 CTCObjectAugmentations::OnInitialActivate: on a fresh object each positive initial
-// augmentation def goes into the next free slot (non-positive entries are skipped and leave the slot free; when no
-// slot is free nothing is placed); a save-loaded object places nothing. Particles and sounds are set up either way.
+// Behaviour test for 00768010: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CTCObjectAugmentations::OnInitialActivate() -- on a fresh (not save-loaded) object, put each of the def's initial augmentations into a free slot; then attach the augmentation particles and set up the sounds
 #include <stdio.h>
 #include <string.h>
+static int fails = 0;
+#define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
+class CDefPointeeBase { public:
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
+};
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
+    CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
+};
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
+    {
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
+    }
+};
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
+        return false;
+    }
+};
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-class CThing;
-
-class CDefClassBase { public:
-    virtual void Destroy() const;
-    virtual void Release() const;                // slot 1
-    mutable long RefCount;                       // +0x04
+class CAugmentationDef : public CDefClassBase { public: enum { Slot = 1 }; unsigned long Name; float DamageMultiplier; };
+template <class T> class CSlots { public:
+    T Data[4]; unsigned int Count;
+    unsigned int size() const { return Count; }
+    T& operator[](unsigned int i) { return Data[i]; }
+    const T& operator[](unsigned int i) const { return Data[i]; }
 };
-
-template <class T> class CDefPointer { public:
-    T* Object;
-    T* operator->() const { return Object; }
-};
-
-class CThingBaseDef : public CDefClassBase { public:
-};
-
-class CDefinitionManager {
-public:
-    bool GetDef(long index, CDefPointer<const CThingBaseDef>* out) const;   // 0x0042AF3C (GetDef<CThingBaseDef>)
-};
-
-class CGameDefinitionManager : public CDefinitionManager {
-public:
-    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-};
-
-namespace std {
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    const T* begin() const { return _M_start; }
-    const T* end() const { return _M_finish; }
-    unsigned int size() const { return (unsigned int)(end() - begin()); }
-    T& operator[](unsigned int n) { return *(begin() + n); }
-    const T& operator[](unsigned int n) const { return *(begin() + n); }
-};
-}
-
-class CObjectAugmentationsDef : public CDefClassBase { public:
-    unsigned char _pad08[0x28 - 0x08];
-    long NumberOfSlots;                          // +0x28
-    long MaximumNumberOfSlots;                   // +0x2C
-    unsigned char AugmentationParticles[0x0c];   // +0x30 map<EObjectAugmentationType, CObjectAugmentationParticleSet>
-    unsigned long EmptySlotName;                 // +0x3C
-    std::vector<long> InitialAugmentations;     // +0x40
-    const std::vector<long>& GetInitialAugmentations() const { return InitialAugmentations; }
-};
-
-class CTCObjectAugmentations {
-public:
-    virtual void v00();
-    CThing* ParentThing;                                             // +0x04 (CTCBase)
-    bool ToBeRemoved;                                                // +0x08
-    bool IsInGlobalUpdateTCs;                                        // +0x09
-    CDefPointer<const CObjectAugmentationsDef> PDef;                 // +0x0C
-    bool LoadedFromSaveGame;                                         // +0x10
-    std::vector<CDefPointer<const CThingBaseDef> > Augmentations;  // +0x14
-    long GetFreeSlot() const
-    {
-        for (unsigned int i = 0; i < Augmentations.size(); ++i) {
-            if (Augmentations[i].Object == 0)
-                return i;
-        }
-        return -1;
-    }
-    void AttachAugmentationParticles();                              // 0x007677E0
-    void SetupAugmentationSounds();                                  // 0x00766C00
+namespace std { template <class T> class vector : public CSlots<T> { }; }
+class CObjectAugmentationsDef : public CDefClassBase { public: enum { Slot = 2 }; std::vector<long> InitialAugmentations; };
+class CTCObjectAugmentations { public:
+    CDefPointer<const CObjectAugmentationsDef> PDef; bool LoadedFromSaveGame;
+    CSlots<CDefPointer<const CThingBaseDef> > Augmentations; int Particles, Sounds;
+    void AttachAugmentationParticles() { ++Particles; }
+    void SetupAugmentationSounds() { ++Sounds; }
+    long GetFreeSlot() const;
     void OnInitialActivate();
+    static float __fastcall GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations);
 };
+// ---- row body (verbatim) ----
+long CTCObjectAugmentations::GetFreeSlot() const
+{
+    for (unsigned int i = 0; i < Augmentations.size(); ++i) {
+        if (Augmentations[i].IsNull())
+            return i;
+    }
+    return -1;
+}
 
 void CTCObjectAugmentations::OnInitialActivate()
 {
     if (!LoadedFromSaveGame) {
-        for (unsigned int i = 0; i < PDef->GetInitialAugmentations().size(); ++i) {
+        for (unsigned int i = 0; i < PDef->InitialAugmentations.size(); ++i) {
             long slot = GetFreeSlot();
             if (slot >= 0) {
-                if (PDef->GetInitialAugmentations()[i] > 0)
-                    CGameDefinitionManager::Get().GetDef(PDef->GetInitialAugmentations()[i], &Augmentations[slot]);
+                if (PDef->InitialAugmentations[i] > 0)
+                    CGameDefinitionManager::Get().GetDef(PDef->InitialAugmentations[i], &Augmentations[slot]);
             }
         }
     }
     AttachAugmentationParticles();
     SetupAugmentationSounds();
 }
-
-
-static CThingBaseDef g_defs[16];
-static int g_getDef = 0, g_particles = 0, g_sounds = 0;
-void CDefClassBase::Destroy() const { }
-void CDefClassBase::Release() const { }
-void CTCObjectAugmentations::v00() { }
-static CGameDefinitionManager g_mgr;
-CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return g_mgr; }
-bool CDefinitionManager::GetDef(long index, CDefPointer<const CThingBaseDef>* out) const
-{ ++g_getDef; out->Object = &g_defs[index]; return true; }
-void CTCObjectAugmentations::AttachAugmentationParticles() { ++g_particles; }
-void CTCObjectAugmentations::SetupAugmentationSounds() { ++g_sounds; }
-
+// ---- harness ----
 int main()
 {
-    static CObjectAugmentationsDef def;
-    long initial[5] = { 5, 0, 7, -1, 9 };
-    def.InitialAugmentations._M_start = initial;
-    def.InitialAugmentations._M_finish = initial + 5;
-    def.InitialAugmentations._M_end_of_storage = initial + 5;
-    CDefPointer<const CThingBaseDef> slots[4];
-    for (unsigned int k = 0; k < 4; ++k) slots[k].Object = 0;
-    slots[1].Object = &g_defs[1];                       // already filled
-
-    CTCObjectAugmentations t;
-    t.PDef.Object = &def;
-    t.LoadedFromSaveGame = false;
-    t.Augmentations._M_start = slots;
-    t.Augmentations._M_finish = slots + 4;
-    t.Augmentations._M_end_of_storage = slots + 4;
-
-    int ok = 1;
-    t.OnInitialActivate();
-    if (g_getDef != 3 || g_particles != 1 || g_sounds != 1) ok = 0;
-    if (slots[0].Object != &g_defs[5] || slots[1].Object != &g_defs[1] || slots[2].Object != &g_defs[7]
-        || slots[3].Object != &g_defs[9]) ok = 0;
-
-    t.OnInitialActivate();                              // every slot full: nothing more is placed
-    if (g_getDef != 3 || g_particles != 2 || g_sounds != 2) ok = 0;
-
-    slots[2].Object = 0;
-    t.LoadedFromSaveGame = true;                        // save-loaded: no placement even with a free slot
-    t.OnInitialActivate();
-    if (g_getDef != 3 || slots[2].Object != 0 || g_particles != 3 || g_sounds != 3) ok = 0;
-
-    printf(ok ? "00768010_TEST PASS\n" : "00768010_TEST FAIL\n");
-    return ok ? 0 : 1;
+    ResetManager();
+    CThingBaseDef a, b; g_manager.Table[3] = &a; g_manager.Table[4] = &b;
+    CObjectAugmentationsDef def; def.InitialAugmentations.Count = 3;
+    def.InitialAugmentations[0] = 3; def.InitialAugmentations[1] = 0; def.InitialAugmentations[2] = 4;
+    CTCObjectAugmentations c; c.PDef.Set(&def); c.LoadedFromSaveGame = false; c.Augmentations.Count = 2; c.Particles = c.Sounds = 0;
+    c.OnInitialActivate();
+    CHECK(c.Augmentations[0].Object == &a && c.Augmentations[1].Object == &b && a.Refs == 2 && b.Refs == 2);
+    CHECK(c.Particles == 1 && c.Sounds == 1 && g_manager.Calls == 2);
+    c.OnInitialActivate();                                     // no free slot left: nothing placed
+    CHECK(g_manager.Calls == 2 && c.Particles == 2 && c.Sounds == 2);
+    CTCObjectAugmentations d; d.PDef.Set(&def); d.LoadedFromSaveGame = true; d.Augmentations.Count = 2; d.Particles = d.Sounds = 0;
+    d.OnInitialActivate();
+    CHECK(d.Augmentations[0].IsNull() && d.Particles == 1 && d.Sounds == 1 && g_manager.Calls == 2);
+    if (fails == 0) printf("00768010_TEST PASS\n");
+    return fails;
 }

@@ -6,14 +6,28 @@
 // Methods: Ego_r.pdb / FableWin.pdb spellings; retail addresses from the catalog (both called out of line by 0x008771A0).
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCCAMERACOLLISION_ONCREATE
+#include "engine/CDefPointer.h"
+class CCameraCollisionDef;
+#endif
 class CPhysicsMeshObject;
 class CTCCameraCollision : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CAMERA_COLLISION; }
     bool HasCameraPhysicsMeshObject() const;                          // 0x007E3010 ?HasCameraPhysicsMeshObject@CTCCameraCollision@@QBE_NXZ
     CPhysicsMeshObject GetCameraPhysicsMeshObject() const;            // 0x007E30A0 ?GetCameraPhysicsMeshObject@CTCCameraCollision@@QBE?AVCPhysicsMeshObject@@XZ
+#ifdef FABLE_RETAIL_CTCCAMERACOLLISION_ONCREATE
+    // Retail opt-in (agentNF10, row 0x007E3040): Ego_r.pdb / FableWin.pdb ?OnCreate@CTCCameraCollision@@UAEXXZ (CTCBase slot 4; the
+    // body calls CTCBase::OnCreate 0x00686850, then GetDef<CThingBaseDef> 0x0042AF3C and GetSubDef<CCameraCollisionDef> 0x007E3290 into
+    // CameraCollisionDef, `add esi,0Ch ; push esi`), with the member typed as the Ego_r CDefPointer<const CCameraCollisionDef> (same 4
+    // bytes). Needs FABLE_RETAIL_DEF_CLASS_BASE.
+    virtual void OnCreate();                                          // slot 4 0x007E3040
+private:
+    CDefPointer<const CCameraCollisionDef> CameraCollisionDef;        // +0x0C
+#else
 private:
     unsigned char CameraCollisionDef[4];                              // +0x0C CDefPointer<const CCameraCollisionDef>
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCameraCollision) == 0x10);
 #endif

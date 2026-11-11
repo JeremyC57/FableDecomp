@@ -2755,3 +2755,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 1024, 2026-11-11) A named CCharString before the call orders the sample-bank read after its constructor (0x006B3D70).
 - (chunk 1024, 2026-11-11) FABLE_RETAIL_CARRAY (operator[] through begin()) gives the `[edi+eax]` operand order (0x006B3DF3).
 - (chunk 1024, 2026-11-11) An early `if (v.empty()) return false;` keeps the vector-dtor + return-false block inline; `if (!empty()) {...}` moves it to the end (0x006E3081).
+- (agentNF10, 2026-11-11) Include engine/CDefClassBase.h before CThing / defmgr headers, or the shared GetDef/GetSubDef bodies see an incomplete CDefClassBase.
+- (agentNF10, 2026-11-11) A retail eax/edx role swap in a component ctor/OnCreate closes with a named `CThing* parent = ParentThing;` local.
+- (agentNF10, 2026-11-11) Same-retail-TU small callees (GetFreeSlot, perceive setters) defined in the row make /O2 auto-inline them as retail did.
+- (agentNF10, 2026-11-11) A self-symbol leaf mismatch (vector<long> vs vector<long, allocator<long>>) grades DIFFER even when the bytes match; use the full PDB spelling.
+- (agentNF10, 2026-11-11) STLport push_back on a CDefPointer vector binds _M_insert_overflow only with the real allocator template in the leaf.

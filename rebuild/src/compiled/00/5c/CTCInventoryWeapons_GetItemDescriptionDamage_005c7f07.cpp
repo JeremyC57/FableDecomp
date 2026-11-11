@@ -1,216 +1,97 @@
 // CTCInventoryWeapons::GetItemDescriptionDamage(CWideString& description, long defIndex) const -- for a weapon item: the live active melee weapon's damage and the live active ranged weapon's damage (its ability def's damage def value times the object-augmentations damage multiplier), then ConstructWeaponDescriptionDamage with the one matching the item's weapon class; other items go to the base description
-// Leaf: GetItemDescriptionDamage
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed; map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C7F07, 506 bytes, `ret 8`; called @ 0x005AA665. Ego_r.pdb: ?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z.
-//   Frame-pointer size TU: optimize("y",off) + ("s",on) (`fldz ; fstp`, `leave`). One of four byte-twins (0x005C7913,
-//   0x005C7B10, 0x005C7D0D, 0x005C7F07) that differ only in the final Construct* callee and the bool argument.
-// Callees: IsWeaponItem @ 0x005D97F0 (manifest "IsAugmentation", `__fastcall`), IS_THING_ALIVE @ 0x004CC340, GetPItem
-//   @ 0x00A01B50, bitset::test @ 0x00410DE0 + CVectorMap::LowerBound @ 0x004365B0 (inline GetInterface 0x48 weapon,
-//   0xBF object augmentations), CTCWeapon damage getter @ 0x005DAAA0, CDefClassBase::GetSubDef @ 0x0042B1A6,
-//   CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex @ 0x009AD9E0 (hidden result) /
-//   GetDef @ 0x0042AF3C, CTCObjectAugmentations::GetDamageMultiplier @ 0x00766140, IsMeleeWeaponClass @ 0x005DA510,
-//   ConstructWeaponDescriptionDamage @ 0x005C7452, CTCInventoryBase::GetItemDescription @ 0x005BC6B3.
-// Shape: the def pointers are hand-released (`dec [reg+4] ; jne`, no null test once dereferenced); the GetPDefFromGlobalIndex
-//   temporary is copied through an inline AddRef(const&) and released with the nulling forced-inline dtor; GetSubDef and GetDef
-//   get same-TU noinline stand-ins (they only write the out slot) so the ability def is read once for its release; the
-//   final def lookups sit in their own block so they reuse the ranged block's frame words.
-// Layout: retail PActiveMeleeWeapon +0x134 / PActiveRangedWeapon +0x141 (packed, as the landed AugmentWeapon 0x005C44FA);
-//   CThing PDef +0x70; ability def damage-def index +0xA0, damage def value +0x54, weapon def class +0x2C (retail offsets).
-#include "fable_compiler.h"
+// Leaf: ?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C7F07, 506 bytes, `ret 8`; Ego_r.pdb ?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z.
+//   Frame-pointer size TU: optimize("y",off) + ("s",on) (`fldz ; fstp`, `leave`). One of four byte-twins (0x005C7913 GetItemDescription, 0x005C7B10 GetItemDescriptionNoDamageNorWeight, 0x005C7D0D GetItemDescriptionWeight) that
+//   differ only in the final Construct* callee and its arguments.
+// Callees: CTCInventoryItem::IsWeapon @ 0x005D97F0 (static __fastcall), IS_THING_ALIVE<CIntelligentPointer<CThing> > @ 0x004CC340,
+//   GetPItem @ 0x00A01B50, the expanded CThing::PeekTC (bitset::test 0x00410DE0, const CVectorMap::LowerBound 0x004365B0) for
+//   CTCWeapon (0x48) and CTCObjectAugmentations (0xBF), CTCWeapon::GetDamage @ 0x005DAAA0, GetSubDef<CWeaponDef> @ 0x0042B1A6,
+//   CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex @ 0x009AD9E0 (hidden result) /
+//   GetDef<CThingBaseDef> @ 0x0042AF3C, CTCObjectAugmentations::GetDamageMultiplier @ 0x00766140, CTCWeapon::IsMeleeWeaponClass @
+//   0x005DA510, ConstructWeaponDescriptionDamage @ 0x005C7452, NInventory::CTCInventoryBase::GetItemDescription @ 0x005BC6B3 (called qualified).
+// Shape: the active-weapon damage blocks as written out in ConstructScreen 0x005C8459 / RefreshWeaponDescriptions 0x005CACB9 (the melee
+//   weapon pointer uninitialised: PeekTC leaves it unchanged on a miss; the ranged shot def adopted from GetPDefFromGlobalIndex's
+//   temporary); the def lookups through the headers' noinline GetDef / GetSubDef bodies.
+// Layout: engine/CTCInventoryWeapons.h (PActiveMeleeWeapon +0x134, PActiveRangedWeapon +0x141); CWeaponDef Shot +0xA0, Class +0x2C;
+//   CThingShotDef HitThingDamage +0x54; CThing PBaseDef +0x70.
+// Name fix (agentNF10 2026-11-11): moved off the local CDefPointeeBase / CDefPointer / CWeaponDef / CAbilityDef / CDamageDef /
+//   CDefClassBase / CDefinitionManager / CThing / CBaseIntelligentPointer / CTCInventoryBase stand-ins (and their same-TU GetDef /
+//   GetSubDef stand-in bodies) onto the shared headers (CTCInventoryWeapons.h FABLE_RETAIL_CTCINVENTORYWEAPONS_ITEMDESCRIPTION,
+//   CTCObjectAugmentations.h FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_DAMAGEMULTIPLIER). 0x0042AF3C binds GetDef<CThingBaseDef> (was
+//   ?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@VCDefClassBase@@@@@Z), 0x006869D0 the PDB const GetDefinitionManager (was
+//   ?GetDefinitionManager@CTCInventoryBase@NInventory@@QBEPAVCDefinitionManager@@XZ), 0x0042B1A6 GetSubDef<CWeaponDef>, 0x005D97F0
+//   ?IsWeapon@CTCInventoryItem@@SI_NJ@Z (was ?IsWeaponItem@@YI_NJ@Z), 0x005DA510 ?IsMeleeWeaponClass@CTCWeapon@@SI_NW4EWeaponClass@@@Z
+//   (was ?IsMeleeWeaponClass@@YI_NJ@Z), 0x004CC340 the IS_THING_ALIVE template, 0x005BC6B3 the PDB virtual UBE base spelling.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-
-class CWideString;
-class CDefPointeeBase { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long m_refCount;                            // +0x04
-    void Release()
-    {
-        if (--m_refCount == 0)
-            Destroy();
-    }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-};
-class CWeaponDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x2c - 0x08];
-    long WeaponClass;                           // +0x2c
-};
-class CAbilityDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0xa0 - 0x08];
-    long DamageDefIndex;                        // +0xa0
-};
-struct CDamageDef : CDefPointeeBase {
-    unsigned char _pad08[0x54 - 0x08];
-    float Damage;                               // +0x54
-};
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CAbilityDef>* out);   // 0x0042B1A6
-};
-struct CDefBasePointer {                        // CDefPointer<CDefClassBase>: GetPDefFromGlobalIndex's by-value result
-    CDefPointeeBase* Object;
-    FABLE_FORCEINLINE ~CDefBasePointer()
-    {
-        if (Object) {
-            CDefPointeeBase* p = Object;
-            --p->m_refCount;
-            if (p->m_refCount == 0)
-                p->Destroy();
-            Object = 0;
-        }
-    }
-};
-FABLE_FORCEINLINE CDefPointeeBase* AddRef(const CDefBasePointer& pointer)
-{
-    CDefPointeeBase* object = pointer.Object;
-    if (object)
-        ++object->m_refCount;
-    return object;
-}
-class CDefinitionManager { public:
-    CDefBasePointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
-    bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
-};
-
-void* FindSubDef(const CDefClassBase* def);     // stand-in callee of the stand-in bodies below
-void* FindDef(long index);
-// Stand-in bodies (out of line in retail): they write only the out slot, so VC7.1 knows the def pointers' addresses do
-// not escape the calls.
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAbilityDef>* out)
-{
-    void* def = FindSubDef(this);
-    if (!def)
-        return false;
-    out->Object = (CAbilityDef*)def;
-    return true;
-}
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDefClassBase>* out)
-{
-    void* def = FindDef(index);
-    if (!def)
-        return false;
-    out->Object = (CDefClassBase*)def;
-    return true;
-}
-#pragma auto_inline(on)
-
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> present;                                  // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad54[0x1c];
-    CDefPointer<CDefClassBase> PDef;                        // +0x70
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (present.test(interfaceType)) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((void*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
-            return true;
-        }
-        return false;
-    }
-    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
-    {
-        T* component;
-        GetInterface(&component, wanted);
-        return component;
-    }
-};
-#pragma pack(push, 1)
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: 
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-#pragma pack(pop)
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
+#define FABLE_RETAIL_CTCINVENTORYWEAPONS_METHODS
+#define FABLE_RETAIL_CTCINVENTORYWEAPONS_ITEMDESCRIPTION
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_CTCWEAPON_DAMAGE
+#define FABLE_RETAIL_CTCINVENTORYITEM
+#define FABLE_RETAIL_CTCINVENTORYITEM_KINDS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_DAMAGEMULTIPLIER
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CTCInventoryWeapons.h"
+#include "engine/CTCWeapon.h"
+#include "engine/CTCInventoryItem.h"
+#include "engine/CTCObjectAugmentations.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CWeaponDef.h"
+#include "engine/CThingShotDef.h"
 
-bool __fastcall IsWeaponItem(long defIndex);                // 0x005D97F0
-bool __fastcall IsMeleeWeaponClass(long weaponClass);       // 0x005DA510
-class CTCWeapon { public: float GetDamage() const; };              // 0x005DAAA0
-class CTCObjectAugmentations { public: float GetDamageMultiplier() const; };   // 0x00766140
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);          // 0x004CC340
 
-namespace NInventory {
-class CTCInventoryBase { public:
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04
-    unsigned char _pad08[0x134 - 0x08];
-    CDefinitionManager* GetDefinitionManager() const;       // 0x006869D0 (CTCBase)
-    void GetItemDescription(CWideString& description, long defIndex, bool flag) const;   // 0x005BC6B3 (virtual; called qualified)
-};
-}
-class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
-    CIntelligentPointer<CThing> PActiveMeleeWeapon;         // +0x134
-    long          ActiveMeleeWeaponDefIndex;                // +0x13C
-    bool          MeleeWeaponCarriedOnLoad;                 // +0x140
-    CIntelligentPointer<CThing> PActiveRangedWeapon;        // +0x141 (packed in retail)
-    void ConstructWeaponDescriptionDamage(CWideString& description, long defIndex, float damage) const;   // 0x005C7452
-    void GetItemDescriptionDamage(CWideString& description, long defIndex) const;
-};
-
-void CTCInventoryWeapons::GetItemDescriptionDamage(CWideString& description, long defIndex) const
+void CTCInventoryWeapons::GetItemDescriptionDamage(CWideString& text, long item_def_index) const
 {
-    if (IsWeaponItem(defIndex)) {
-        float meleeDamage = 0.0f;
-        float rangedDamage = 0.0f;
-        if (IS_THING_ALIVE(PActiveMeleeWeapon))
-            meleeDamage = PActiveMeleeWeapon.GetPItem()->GetTC<CTCWeapon>(0x48)->GetDamage();
-        const CIntelligentPointer<CThing>& ranged = PActiveRangedWeapon;
-        if (IS_THING_ALIVE(ranged)) {
-            CDefPointer<CAbilityDef> ability;
-            ability.Object = 0;
-            CDefClassBase* thingDef = ranged.GetPItem()->PDef.Object;
-            if (thingDef)
-                ++thingDef->m_refCount;
-            thingDef->GetSubDef(&ability);
-            if (thingDef && --thingDef->m_refCount == 0)
-                thingDef->Destroy();
-            CDefPointeeBase* damageDef = AddRef(GetDefinitionManager()->GetPDefFromGlobalIndex(ability.Object->DamageDefIndex));
-            rangedDamage = ((CDamageDef*)damageDef)->Damage;
-            CTCObjectAugmentations* augmentations;
-            if (ranged.GetPItem()->GetInterface(&augmentations, 0xbf))
-                rangedDamage *= augmentations->GetDamageMultiplier();
-            if (--damageDef->m_refCount == 0)
-                damageDef->Destroy();
-            ability.Object->Release();
+    if (CTCInventoryItem::IsWeapon(item_def_index)) {
+        float melee_damage = 0.0f;
+        float ranged_damage = 0.0f;
+        if (IS_THING_ALIVE(PActiveMeleeWeapon)) {
+            const CTCWeapon* weapon;
+            static_cast<CThing*>(PActiveMeleeWeapon.GetPItem())->PeekTC(&weapon);
+            melee_damage = weapon->GetDamage();
         }
-        {
-        CDefPointer<CDefClassBase> def;
-        def.Object = 0;
-        GetDefinitionManager()->GetDef(defIndex, &def);
-        CDefClassBase* thingDef = def.Object;
-        CDefPointer<CAbilityDef> weapon;
-        weapon.Object = 0;
-        thingDef->GetSubDef(&weapon);
-        CWeaponDef* weaponDef = (CWeaponDef*)weapon.Object;
-        ConstructWeaponDescriptionDamage(description, defIndex, IsMeleeWeaponClass(weaponDef->WeaponClass) ? meleeDamage : rangedDamage);
-        if (--weaponDef->m_refCount == 0)
-            weaponDef->Destroy();
-        if (thingDef && --thingDef->m_refCount == 0)
-            thingDef->Destroy();
+        if (IS_THING_ALIVE(PActiveRangedWeapon)) {
+            CDefPointer<const CWeaponDef> weapon_def;
+            static_cast<CThing*>(PActiveRangedWeapon.GetPItem())->GetPBaseDef()->GetSubDef(&weapon_def);
+            CDefPointer<const CThingShotDef> shot(GetDefinitionManager().GetPDefFromGlobalIndex(weapon_def->Shot));
+            ranged_damage = shot->HitThingDamage;
+            const CTCObjectAugmentations* augmentations;
+            if (static_cast<CThing*>(PActiveRangedWeapon.GetPItem())->PeekTC(&augmentations))
+                ranged_damage *= augmentations->GetDamageMultiplier();
         }
-    } else {
-        NInventory::CTCInventoryBase::GetItemDescription(description, defIndex, false);
-    }
+        CDefPointer<const CThingBaseDef> def;
+        GetDefinitionManager().GetDef(item_def_index, &def);
+        CDefPointer<const CWeaponDef> weapon_def;
+        def->GetSubDef(&weapon_def);
+        float damage = CTCWeapon::IsMeleeWeaponClass(weapon_def->Class) ? melee_damage : ranged_damage;
+        ConstructWeaponDescriptionDamage(text, item_def_index, damage);
+    } else
+        NInventory::CTCInventoryBase::GetItemDescription(text, item_def_index, false);
 }

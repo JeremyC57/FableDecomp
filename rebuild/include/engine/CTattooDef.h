@@ -8,6 +8,12 @@
 #include "engine/CDefClassBase.h"
 class CTattooDef : public CDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CTATTOODEF_TYPENAME
+    // Nested opt-in (agentNF10, row 0x005D9AA0 CTCInventoryItem::GetTattooCardDef): FableWin.pdb ?StatGetTypeName@CTattooDef@@SI?AVCCharString@@XZ
+    // (inline in Ego_r.pdb and retail: GetSubDef<CTattooDef> 0x005B1EFC builds the type name in place), the class-name literal every
+    // def's StatGetTypeName returns. Lets the row use the shared GetSubDef body (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY). Needs fable_string.h.
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CTattooDef", -1); }
+#endif
     bool IsInvalidCustomTattoo() const;                                  // 0x00581765
 };
 #else

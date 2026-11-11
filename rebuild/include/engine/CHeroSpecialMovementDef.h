@@ -8,6 +8,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CHEROSPECIALMOVEMENTDEF
+// Retail opt-in (agentNF10, row 0x007E0910 CTCHeroSpecialMovement::OnCreate): RTTI .?AVCHeroSpecialMovementDef@@ : CSubDefClassBase :
+// CDefClassBase (ghidra_out/rtti_bases.tsv), so that CDefPointer<const CHeroSpecialMovementDef> dereferences; the Ego_r.pdb members
+// at the same offsets after the 0x25-byte packed base (no containers). Retail reads TotalTimeToSprintSeconds `fmul dword ptr [eax+28h]`
+// (0x007E0970) off the handle GetSubDef<CHeroSpecialMovementDef> 0x007E0A40 filled. Needs FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CHeroSpecialMovementDef : public CSubDefClassBase {
+public:
+    unsigned char _pad_0x25[0x3];                                // +0x25
+    float TotalTimeToSprintSeconds;                              // +0x28
+    float MinimumNumberOfSecondsLeftToBeAllowedToSprint;         // +0x2c
+    float TotalTimeToFullyRestoreSprintBarSeconds;               // +0x30
+    float NoSecondsToRunBeforeSprintStarts;                      // +0x34
+};
+FABLE_STATIC_ASSERT(sizeof(CHeroSpecialMovementDef) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, TotalTimeToSprintSeconds) == 0x28);
+#else
 #pragma pack(push, 1)
 class CHeroSpecialMovementDef {
 public:
@@ -34,5 +51,6 @@ FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, TotalTimeToSprintSeconds) 
 FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, MinimumNumberOfSecondsLeftToBeAllowedToSprint) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, TotalTimeToFullyRestoreSprintBarSeconds) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, NoSecondsToRunBeforeSprintStarts) == 0x34);
+#endif // FABLE_RETAIL_CHEROSPECIALMOVEMENTDEF
 
 #endif // FABLE_ENGINE_CHEROSPECIALMOVEMENTDEF_H

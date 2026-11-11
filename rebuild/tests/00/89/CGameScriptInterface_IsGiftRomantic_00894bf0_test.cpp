@@ -1,96 +1,85 @@
-// Behaviour test for 00894bf0: body copied from src/00894bf0.cpp (CGameScriptInterface::IsGiftRomantic), callees stubbed.
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 00894bf0: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CGameScriptInterface::IsGiftRomantic(const CCharString& defName) const -- true when the named def has a gift sub-def of type 1 (romantic)
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-class CCharString {
-public:
-    void* PStringData;
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
+class CDefPointeeBase { public:
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
 };
-static int g_destroyed = 0;
-struct CDefObject_Retail {
-    virtual void v000() {}
-    virtual void Destroy() { ++g_destroyed; }
-    long m_refCount;
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
+    CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
 };
-struct CGiftDef_Retail : CDefObject_Retail {
-    unsigned char _pad08[0x20];
-    long          m_giftType;
-};
-template<class T> struct CDefPointerSlot {
-    T* Object;
-    CDefPointerSlot() : Object(0) { }
-    ~CDefPointerSlot()
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
     {
-        if (Object) {
-            if (--Object->m_refCount == 0)
-                Object->Destroy();
-        }
-    }
-    T* operator->() const { return Object; }
-};
-static CGiftDef_Retail* g_gift = 0; static int g_getSubDef = 0;
-struct CDefClass_Retail : CDefObject_Retail {
-    bool GetSubDef(CDefPointerSlot<CGiftDef_Retail>* out)
-    {
-        ++g_getSubDef;
-        if (!g_gift) return false;
-        ++g_gift->m_refCount; out->Object = g_gift; return true;
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
     }
 };
-static CDefClass_Retail* g_class = 0; static int g_getDef = 0; static long g_getDefIndex = -1;
-struct CGameDefinitionManager_Retail {
-    bool GetDef(long index, CDefPointerSlot<CDefClass_Retail>* out)
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
     {
-        ++g_getDef; g_getDefIndex = index;
-        if (!g_class) return false;
-        ++g_class->m_refCount; out->Object = g_class; return true;
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
+        return false;
     }
 };
-class CGameDefinitionManager : public CGameDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
-static CGameDefinitionManager_Retail g_gameDefs;
-CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return (CGameDefinitionManager&)(g_gameDefs); }
-static int g_nameLookups = 0; static const void* g_lookedUp = 0;
-struct CDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name) { ++g_nameLookups; g_lookedUp = name.PStringData; return 606; }
-};
-static CDefinitionManager_Retail g_defs;
-class CWorld;
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
+enum EGiftType { GIFT_0, GIFT_1, GIFT_2 };
+class CGiftDef : public CDefClassBase { public: enum { Slot = 7 }; EGiftType Type; };
+class CCharString { public: long Index; CCharString(long i) : Index(i) { } };
+class CNameLookup { public: long GetDefGlobalIndexFromName(const CCharString& n) const { return n.Index; } };
 class CGameScriptInterface { public:
-    virtual void v000() {}
-    CWorld*                    World;
-    void*                      Component;
-    void*                      DisplayEngine;
-    CDefinitionManager_Retail* DefinitionManager;
-    void*                      PlayerManager;
-    bool IsGiftRomantic(const CCharString& defName) const;
+    CNameLookup* DefinitionManager;
+    bool IsGiftRomantic(const CCharString& def_name) const;
+    bool IsGiftFriendly(const CCharString& def_name) const;
+    bool IsGiftOffensive(const CCharString& def_name) const;
 };
-bool CGameScriptInterface::IsGiftRomantic(const CCharString& defName) const
+// ---- row body (verbatim) ----
+bool CGameScriptInterface::IsGiftRomantic(const CCharString& def_name) const
 {
-    long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
-    CDefPointerSlot<CDefClass_Retail> defClass;
-    if (CGameDefinitionManager::Get().GetDef(index, &defClass)) {
-        CDefPointerSlot<CGiftDef_Retail> giftDef;
-        if (defClass->GetSubDef(&giftDef))
-            return giftDef->m_giftType == 1;
+    long index = DefinitionManager->GetDefGlobalIndexFromName(def_name);
+    CDefPointer<const CThingBaseDef> def;
+    if (CGameDefinitionManager::Get().GetDef(index, &def)) {
+        CDefPointer<const CGiftDef> gift_def;
+        if (def->GetSubDef(&gift_def))
+            return gift_def->Type == 1;
     }
     return false;
 }
+// ---- harness ----
 int main()
 {
-    static CDefClass_Retail classDef; static CGiftDef_Retail gift; classDef.m_refCount = 1; gift.m_refCount = 1;
-    CGameScriptInterface gsi; memset(&gsi, 0, sizeof(gsi)); gsi.DefinitionManager = &g_defs;
-    CCharString name = { (void*)"OBJECT_GIFT" };
-    // unknown def: false, no sub-def lookup
-    g_class = 0; CHECK(!gsi.IsGiftRomantic(name)); CHECK(g_nameLookups == 1 && g_lookedUp == name.PStringData && g_getDef == 1 && g_getDefIndex == 606 && g_getSubDef == 0);
-    // def without a gift sub-def: false, the class def released
-    g_class = &classDef; g_gift = 0; CHECK(!gsi.IsGiftRomantic(name)); CHECK(g_getSubDef == 1 && classDef.m_refCount == 1 && g_destroyed == 0);
-    // gift of the matching type: true; both defs released
-    g_gift = &gift; gift.m_giftType = 1; CHECK(gsi.IsGiftRomantic(name)); CHECK(classDef.m_refCount == 1 && gift.m_refCount == 1 && g_destroyed == 0);
-    // gift of another type: false
-    gift.m_giftType = 1 + 1; CHECK(!gsi.IsGiftRomantic(name)); CHECK(gift.m_refCount == 1);
-    // defs held only by the lookups are destroyed
-    classDef.m_refCount = 0; gift.m_refCount = 0; gift.m_giftType = 1; CHECK(gsi.IsGiftRomantic(name)); CHECK(g_destroyed == 2);
-    if (fails == 0) printf("00894bf0_TEST PASS\n"); else printf("00894bf0_TEST FAIL\n");
+    ResetManager();
+    CThingBaseDef d0, d1, d2, plain; CGiftDef g0, g1, g2; g0.Type = GIFT_0; g1.Type = GIFT_1; g2.Type = GIFT_2;
+    d0.Sub[7] = &g0; d1.Sub[7] = &g1; d2.Sub[7] = &g2;
+    g_manager.Table[1] = &d0; g_manager.Table[2] = &d1; g_manager.Table[3] = &d2; g_manager.Table[4] = &plain;
+    CNameLookup names; CGameScriptInterface gsi; gsi.DefinitionManager = &names;
+    CHECK(gsi.IsGiftRomantic(CCharString(1)) == (1 == 0) && gsi.IsGiftRomantic(CCharString(2)) == (1 == 1) && gsi.IsGiftRomantic(CCharString(3)) == (1 == 2));
+    CHECK(!gsi.IsGiftRomantic(CCharString(4)) && !gsi.IsGiftRomantic(CCharString(9)));
+    CHECK(d0.Refs == 1 && d1.Refs == 1 && d2.Refs == 1 && plain.Refs == 1 && g0.Refs == 1 && g1.Refs == 1 && g2.Refs == 1);
+    if (fails == 0) printf("00894bf0_TEST PASS\n");
     return fails;
 }

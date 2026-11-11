@@ -1,149 +1,94 @@
 // CTCPerceiveThing::OnCreate() -- fetch the parent's thing def, take its CPerceivedThingDef sub-def into PDef, reset the perception state, load the four radii from the def (keeping ExtendedSightRadius >= SightRadius), the give-up-chase radius, and clear DirectAwareness
-// Leaf: OnCreate
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00744ED0, 157 bytes. Vtable 0x012688CC slot 4 (catalog "vfunc_4"; slot 4 is the CTC OnCreate).
-// Callees: CTCBase::GetDefinitionManager @ 0x006869D0 (`mov ecx,[ecx+4] ; jmp CThing::GetDefinitionManager 0x004C7990`; catalog
-//   "_Cons_val<...>"), CDefinitionManager::GetDef<CThingDef>(long, CDefPointer&) @ 0x0042AF3C (catalog
-//   "GetDef<CSpecialAbilitiesDrunkennessDef>", one body of the shared template), CDefClassBase::GetSubDef<CPerceivedThingDef>
-//   @ 0x00746100 (catalog "GetSubDef<CAICreatureWillPowerIndicatorDef>"), CTCPerceiveThing::ResetPerceptionVariables @ 0x00744DB0.
-// Shape: the GetDef arguments (the parent's 16-bit def index at +0x8c, &def) are pushed before the manager call; the local def
-//   pointer's zero store lands after the pushes; the four radius setters (landed 0x00744540 SetSightRadius, 0x00744470
-//   SetSoundRadius, 0x007444A0 SetSmellRadius, 0x00744500 SetExtendedSightRadius) are inlined with the -1 "use the def" argument,
-//   so only their def arms remain; the def is read once into ecx; the local def pointer (a CDefPointer<CThingDef> in the original) is taken into a
-//   register once and released by hand at the end, as the GetSubDef OnCreate rows of earlier chunks.
-// Layout: CTCPerceiveThing (engine/CTCPerceiveThing.h): DirectAwareness +0x30, PDef +0x34, SoundRadius +0x3c, SightRadius +0x40,
-//   ExtendedSightRadius +0x44, SmellRadius +0x48, GiveUpChaseRadius +0x4c. CPerceivedThingDef: GiveUpChaseRadius +0x2c,
-//   SightRadius +0x30, ExtendedSightRadius +0x34, SoundRadius +0x38, SmellRadius +0x3c (offsets from the landed setters).
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long RefCount;                              // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
-struct CThingDef;
-struct CThingDefOut {                           // the GetDef out CDefPointer<CThingDef>, released by hand by the caller
-    CThingDef* Object;
-    CThingDefOut() : Object(0) {}
-};
-class CPerceivedThingDef : public CDefClassBase { public:
-    unsigned char _pad08[0x24];
-    float GiveUpChaseRadius;                    // +0x2c
-    float SightRadius;                          // +0x30
-    float ExtendedSightRadius;                  // +0x34
-    float SoundRadius;                          // +0x38
-    float SmellRadius;                          // +0x3c
-};
-struct CThingDef : CDefClassBase {
-    bool GetSubDef(CDefPointer<CPerceivedThingDef>* out);   // 0x00746100 (GetSubDef<CPerceivedThingDef>)
-};
-void* FindDef_CThingDef_GetSubDef_1();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<CPerceivedThingDef>* out)
+// Leaf: ?OnCreate@CTCPerceiveThing@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00744ED0, 157 bytes (plain `ret`); CTCBase slot 4 override (Ego_r.pdb / FableWin.pdb
+// ?OnCreate@CTCPerceiveThing@@UAEXXZ).
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetDef<CThingBaseDef> @ 0x0042AF3C,
+// CDefClassBase::GetSubDef<CPerceivedThingDef> @ 0x00746100, CTCPerceiveThing::ResetPerceptionVariables @ 0x00744DB0; the four radius
+// setters (SetSightRadius 0x00744540, SetSoundRadius 0x00744470, SetSmellRadius 0x007444A0, SetExtendedSightRadius 0x00744500, all in
+// this retail TU) are expanded with radius -1 (take the def's value).
+// Shape: the setters' bodies are the landed rows' (same retail TU), defined above OnCreate so that VC7.1 expands them as retail does;
+// GiveUpChaseRadius is read from the def in place.
+// Layout: engine/CTCPerceiveThing.h (FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS): DirectAwareness +0x30, PDef +0x34, SoundRadius +0x3c,
+// SightRadius +0x40, ExtendedSightRadius +0x44, SmellRadius +0x48, GiveUpChaseRadius +0x4c; CPerceivedThingDef GiveUpChaseRadius +0x2c,
+// SightRadius +0x30, ExtendedSightRadius +0x34, SoundRadius +0x38, SmellRadius +0x3c (engine/CPerceivedThingDef.h).
+// Name fix (agentNF10 2026-11-11): moved off the local CDefClassBase / CThingDef / CThingDefOut / CDefinitionManager / CTCPerceiveThing
+// stand-ins onto the shared headers (CTCPerceiveThing.h FABLE_RETAIL_CTCPERCEIVETHING_RADII, CPerceivedThingDef.h
+// FABLE_RETAIL_CPERCEIVEDTHINGDEF). 0x0042AF3C binds GetDef<CThingBaseDef> (was ?GetDef@CDefinitionManager@@QAE_NJPAUCThingDefOut@@@Z),
+// 0x006869D0 the PDB const GetDefinitionManager, 0x00746100 ??$GetSubDef@VCPerceivedThingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCPerceivedThingDef@@@@@Z;
+// the PDB-less GetDef() accessor is gone (PDef is read in place).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CPERCEIVEDTHINGDEF
+#define FABLE_RETAIL_CTCPERCEIVETHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS
+#define FABLE_RETAIL_CTCPERCEIVETHING_RADII
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CPerceivedThingDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CTCPerceiveThing.h"
+
+void CTCPerceiveThing::SetSoundRadius(float radius)
 {
-    void* def = FindDef_CThingDef_GetSubDef_1();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
+    if (radius != -1.0f)
+        SoundRadius = radius;
+    else
+        SoundRadius = PDef->SoundRadius;
 }
-#pragma auto_inline(on)
-class CDefinitionManager { public:
-    bool GetDef(long globalIndex, CThingDefOut* out);   // 0x0042AF3C
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CThingDefOut* out)
+
+void CTCPerceiveThing::SetSmellRadius(float radius)
 {
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
+    if (radius != -1.0f)
+        SmellRadius = radius;
+    else
+        SmellRadius = PDef->SmellRadius;
 }
-#pragma auto_inline(on)
-class CThing { public:
-    unsigned char  _pad00[0x8c];
-    unsigned short DefGlobalIndex;              // +0x8c
-};
-class CTCPerceiveThing { public:
-    void*     __vftable;                        // +0x00 (CTCBase)
-    CThing*   ParentThing;                      // +0x04
-    bool      ToBeRemoved;                      // +0x08
-    bool      IsInGlobalUpdateTCs;              // +0x09
-    unsigned char _pad0a[0x26];                 // +0x0a PerceivedThing .. SearchingForThingToPerceive
-    bool      DirectAwareness;                  // +0x30
-    unsigned char _pad31[3];
-    CDefPointer<CPerceivedThingDef> PDef;       // +0x34
-    long      UpdateOffset;                     // +0x38
-    float     SoundRadius;                      // +0x3c
-    float     SightRadius;                      // +0x40
-    float     ExtendedSightRadius;              // +0x44
-    float     SmellRadius;                      // +0x48
-    float     GiveUpChaseRadius;                // +0x4c
-    CDefinitionManager* GetDefinitionManager(); // 0x006869D0 (CTCBase)
-    const CPerceivedThingDef* GetDef() const { return PDef.Object; }
-    void ResetPerceptionVariables();            // 0x00744DB0
-    void SetSightRadius(float radius)
-    {
-        if (radius != -1.0f) {
-            SightRadius = radius;
-            return;
-        }
-        SightRadius = GetDef()->SightRadius;
-        if (SightRadius > ExtendedSightRadius)
-            ExtendedSightRadius = SightRadius;
+
+void CTCPerceiveThing::SetSightRadius(float radius)
+{
+    if (radius != -1.0f) {
+        SightRadius = radius;
+        return;
     }
-    void SetSoundRadius(float radius)
-    {
-        if (radius != -1.0f) {
-            SoundRadius = radius;
-            return;
-        }
-        SoundRadius = GetDef()->SoundRadius;
+    SightRadius = PDef->SightRadius;
+    if (SightRadius > ExtendedSightRadius)
+        ExtendedSightRadius = SightRadius;
+}
+
+void CTCPerceiveThing::SetExtendedSightRadius(float radius)
+{
+    if (radius != -1.0f) {
+        ExtendedSightRadius = radius;
+        return;
     }
-    void SetSmellRadius(float radius)
-    {
-        if (radius != -1.0f) {
-            SmellRadius = radius;
-            return;
-        }
-        SmellRadius = GetDef()->SmellRadius;
-    }
-    void SetExtendedSightRadius(float radius)
-    {
-        if (radius != -1.0f) {
-            ExtendedSightRadius = radius;
-            return;
-        }
-        ExtendedSightRadius = GetDef()->ExtendedSightRadius;
-        if (ExtendedSightRadius < SightRadius)
-            ExtendedSightRadius = SightRadius;
-    }
-    void OnCreate();
-};
+    ExtendedSightRadius = PDef->ExtendedSightRadius;
+    if (ExtendedSightRadius < SightRadius)
+        ExtendedSightRadius = SightRadius;
+}
 
 void CTCPerceiveThing::OnCreate()
 {
-    CThingDefOut thingDef;
     CThing* thing = ParentThing;
-    GetDefinitionManager()->GetDef(thing->DefGlobalIndex, &thingDef);
-    CThingDef* def = thingDef.Object;
+    CDefPointer<const CThingBaseDef> def;
+    GetDefinitionManager().GetDef(thing->GetDefGlobalIndex(), &def);
     def->GetSubDef(&PDef);
     ResetPerceptionVariables();
     SetSightRadius(-1.0f);
     SetSoundRadius(-1.0f);
     SetSmellRadius(-1.0f);
     SetExtendedSightRadius(-1.0f);
-    GiveUpChaseRadius = GetDef()->GiveUpChaseRadius;
+    GiveUpChaseRadius = PDef->GiveUpChaseRadius;
     DirectAwareness = false;
-    if (def && --def->RefCount == 0)
-        def->Destroy();
 }
