@@ -1,0 +1,4 @@
+00725500 CTCPhysicsControlled::PerformImpulseBasedMovement RELOCATION_MATCH flags= []
+00912ba0 CAIStateGroup_FlyingThingBase::CalculatePrettyPath RELOCATION_MATCH flags= []
+009609b0 CAIStateGroup_DeedReactionRoot::IsRunnable RELOCATION_MATCH flags= []
+009fed30 CGraphicDataBank::LoadGraphicFrame RELOCATION_MATCH flags= []

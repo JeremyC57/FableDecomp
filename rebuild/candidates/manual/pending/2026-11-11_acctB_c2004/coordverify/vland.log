@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00725500   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00725500   RELOCATION_MATCH PASS   PerformImpulseBasedMovement
+00912ba0   RELOCATION_MATCH PASS   CalculatePrettyPath
+009609b0   WARN RELOC_CONFLICT: ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ -> 00744950 here, 007448f0 in landed 00864620
+009609b0   RELOCATION_MATCH PASS   IsRunnable
+009fed30   RELOCATION_MATCH PASS   LoadGraphicFrame
+
+WINS: 4
+  00725500 RELOCATION_MATCH CTCPhysicsControlled::?PerformImpulseBasedMovement@CTCPhysicsControlled@@QAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@AAVC3DVector@@@Z
+  00912ba0 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::?CalculatePrettyPath@CAIStateGroup_FlyingThingBase@@IAE_NAAV?$deque@VCBezierCurve@@V?$allocator@VCBezierCurve@@@std@@@std@@ABVC3DVector@@@Z
+  009609b0 RELOCATION_MATCH CAIStateGroup_DeedReactionRoot::?IsRunnable@CAIStateGroup_DeedReactionRoot@@UAE_NXZ
+  009fed30 RELOCATION_MATCH CGraphicDataBank::?LoadGraphicFrame@CGraphicDataBank@@AAE_NAAVCGraphicFrame@@AAVCManagedTexture@@AAVCBankFileAsyncData@@PAVCGraphicInfo@@_NKW4ETextureType@1@4@Z

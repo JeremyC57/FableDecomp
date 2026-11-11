@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+00725500	RELOCATION_MATCH	1324v1324	PASS	pass1: 10 variants + 1 comment-only confirmation of the final file	vland RELOCATION_MATCH PASS (WARN RELOC_NAME DELTA_NOTIONAL_ZERO labelled EPSILON); levers measured with c2prio + fragment/layout probes
+00912ba0	RELOCATION_MATCH	1314v1314	PASS	pass1: 4	visible noinline STLport _M_push_back_aux_v body (overlay opt-in)
+009609b0	RELOCATION_MATCH	1352v1352	PASS	pass1: 6	retail_asm via shared GFFloatToLongCeil helper; visible GetPBestThingInRoughArea body; WARN RELOC_CONFLICT on landed 00864620 (NAME_FIXES)
+009fed30	RELOCATION_MATCH	1206v1206	PASS	pass1: 3	true length 1206 confirmed (0x009FF1E6..EF int3 pad, 0x009FF1F0 separate 48-byte caller)
