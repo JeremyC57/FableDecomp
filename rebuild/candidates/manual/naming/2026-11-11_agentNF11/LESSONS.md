@@ -1,0 +1,10 @@
+- Whether the GetAnim entry is read before or after the CCharString/filter temporaries die is set by `long anim = ...GetAnim(...).BankIndex;` versus binding `const CAnimationEntry&`.
+- Use `GetPBaseDef().Get()` when retail adds and drops a reference before GetSubDef; use `PeekBaseDef()` when it reads the slot in place.
+- A GetTC that leaves the out pointer unset when the component is absent (FABLE_RETAIL_CTHING_GETTC_EXPANDED) matches retail's dead-slot read.
+- Taking `const CAnimationSet& animations = appearance->Animation;` before std::for_each keeps the release null test retail has.
+- A by-value CIVCountedPointer argument is built in the argument area only when the class has a user copy ctor (FABLE_RETAIL_CIVCOUNTEDPOINTER).
+- A same-TU inline body (opt-in after the class) makes VC7.1 auto-inline a small getter retail inlined; a declaration alone leaves a call.
+- `!IsDead()` and `IsAlive()` compile differently; follow the retail test polarity.
+- Staging `CThing* thing = ParentThing;` before `thing->PeekBaseDef()` fixes register allocation in component methods.
+- Ego_r.pdb function order against retail addresses proves names for unlabelled neighbours (GetCombatType, GetRandomCombatAnimationFromName, CAnimateThing::Init).
+- Avoid the word "register" even in row comments; purity greps are text-based.

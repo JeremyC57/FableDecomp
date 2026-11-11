@@ -1,39 +1,56 @@
-// CGameScriptThing::IsSummonedCreature -- check summon TC or ghostly-sword definition fallback
-// Leaf: IsSummonedCreature
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Retail008D08A0 length191. PointerA01B50; component lowerbound4365B0; definition manager accessor4C7990; index9AD410; narrowstring ctor99EBF0,dtor99EAE0. Literal125D2A4 GHOSTLY_SWORD.
-// CGameScriptThing::MsgPerformedFlourish -- query entity events within current script frame interval
-// Leaf: MsgPerformedFlourish
-#include "fable_compiler.h"
-#include "engine/CGameScriptThing.h"
-#include "engine/CTCEntityEvents.h"
-#include "engine/CQuestManager.h"
-#define CThing CThingDonorLayout
-#include "engine/_quarantine/CThing.h"
-#undef CThing
-struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; //004365B0
-// Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
-struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x40];unsigned short DefinitionID;unsigned char LifecycleBeforeFlags[3];unsigned char LifeFlags;};
-#include "engine/CTCBase.h"
-#include "engine/CDefinitionManager.h"
-#include "fable_string.h"
-struct IntelligentInfo{CThingNative* Object;long References;};
-class CBaseObject;
+// CGameScriptThing::IsSummonedCreature() const -- a live thing that is a summoned creature: its summonable-creature component says it was summoned, or it is the GHOSTLY_SWORD def
+// Leaf: ?IsSummonedCreature@CGameScriptThing@@UBE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008D08A0, 191 bytes, plain `ret`. Vtable 0x012852CC slot 65 (.?AVCGameScriptThing@@);
+//   Ego_r.pdb / FableWin.pdb ?IsSummonedCreature@CGameScriptThing@@UBE_NXZ (the CScriptThing slot-65 override).
+// Callees (PDB spellings): CBaseIntelligentPointer::GetPItem 0x00A01B50 (CIntelligentPointer<CThing>::Get, read afresh at every use),
+//   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0 (the forced-inline PeekTC<const CTCSummonableCreature>,
+//   TCI_SUMMONABLE_CREATURE 0xA0), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CThing::PeekDefinitionManager
+//   0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410.
+// Literal: "GHOSTLY_SWORD" 0x0125D2A4.
+// Layout: CGameScriptThing PThing +0x0C; CThing Dead bit +0x91, DefGlobalIndex +0x8C (ushort); CTCSummonableCreature HasBeenSummoned +0x10.
+// Name fix (agentNF11 2026-11-11): moved off the local PointerView / CThingNative / ThingMethods / SummonableCreature stand-ins onto the
+// shared headers (new engine/CTCSummonableCreature.h). 0x004C7990 binds ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+// (was a local GetDefinitionManager), 0x009AD410 the PDB const GetDefGlobalIndexFromName; the row's own symbol is the PDB virtual
+// const override (was CGameScriptThingMethods).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CGAMESCRIPTTHING
+#define FABLE_RETAIL_CGAMESCRIPTTHING_QUERIES
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CTCSummonableCreature.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
-struct PointerView{void*VTable;IntelligentInfo* Info;}; //00A01B50
-struct DefinitionManagerMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
-struct ThingMethods:CThingNative{DefinitionManagerMethods* GetDefinitionManager()const;FABLE_FORCEINLINE long GetDefinitionID()const{return (unsigned short)DefinitionID;}}; //004C7990
-// PDB CTCSummonableCreature HasBeenSummoned+10; no generated class header exists.
-struct SummonableCreature:CTCBase{unsigned long SummonState;bool HasBeenSummoned;FABLE_FORCEINLINE bool GetHasBeenSummoned()const{return HasBeenSummoned;}};
-static FABLE_FORCEINLINE bool PeekSummon(CThingNative*thing,const SummonableCreature**out){if(thing->UsingComponents[5]&1){long key=160;ComponentMap*map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;*out=static_cast<const SummonableCreature*>((it==end||it->Type>160?end:it)->Component);return true;}return false;}
-struct CGameScriptThingMethods:CGameScriptThing{bool IsSummonedCreature()const;};
-bool CGameScriptThingMethods::IsSummonedCreature()const{
- const PointerView* p=reinterpret_cast<const PointerView*>(PThing);
- if(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())&&!(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags&1)){
- const SummonableCreature* tc;if(PeekSummon(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()),&tc)&&tc->GetHasBeenSummoned())return true;
- long id;{CCharString name("GHOSTLY_SWORD",-1);id=static_cast<ThingMethods*>(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()))->GetDefinitionManager()->GetDefGlobalIndexFromName(name);}
- if(id>0&&static_cast<ThingMethods*>(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()))->GetDefinitionID()==id)return true;
- }return false;
+#include "engine/CGameScriptThing.h"
+
+bool CGameScriptThing::IsSummonedCreature() const
+{
+    if (PThing.Get() && !PThing.Get()->IsDead()) {
+        const CTCSummonableCreature* summonable;
+        if (PThing.Get()->PeekTC(&summonable) && summonable->GetHasBeenSummoned())
+            return true;
+        long ghostly_sword = PThing.Get()->PeekDefinitionManager().GetDefGlobalIndexFromName("GHOSTLY_SWORD");
+        if (ghostly_sword > 0 && PThing.Get()->GetDefGlobalIndex() == ghostly_sword)
+            return true;
+    }
+    return false;
 }

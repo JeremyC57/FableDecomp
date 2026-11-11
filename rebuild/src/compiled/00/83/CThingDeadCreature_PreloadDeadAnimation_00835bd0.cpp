@@ -1,105 +1,54 @@
-// CThingDeadCreature::PreloadDeadAnimation() -- run the "preload dead animation" functor over every entry of the appearance definition's animation set, resolving the matching entries through the world's main mesh bank
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00835BD0, length 75 bytes (+ int3 padding).
-// Callees: CThing::PeekWorld() const @ 0x004C7AB0 (`[g_main]+0x24`), CDefClassBase::GetSubDef<CAppearanceDef>(CDefPointer&)
-// @ 0x0042B0A2 (landed), the SGI `for_each<const SAnimationSetEntry*, CPreloadDeadAnimation>` @ 0x008365F0 (a /Gr TU:
-// __fastcall with the hidden result in ecx, `first` in edx, `last` and the by-value functor on the stack; manifest
-// "CTCInventoryAbilities_PreloadDeadAnimation" is a propagated name), the def's virtual slot 1 (+4) at count zero.
-// Layout (retail, local model): PBaseDef at +0x70 (landed CTCLook::OnCreate 0x00753040); CWorld's main mesh bank at +0x3c
-// (landed CThingCreatureBase::GetAnimDuration 0x006627F0); the appearance definition's animation set vector at +0x34
-// (first) / +0x38 (last); a counted definition holds its count at +4.
-// Shape: the bank is a named local taken first (edi); the def pointer is zero-initialised in the `push ecx` slot, loaded
-// ONCE into esi, and released through it by hand (a CDefPointer destructor re-reads the address-taken slot in the lane);
-// the functor (a 4-byte class with a user constructor: returned through the hidden pointer, passed by value as a plain
-// `push edi`) comes back into the def pointer's dead frame slot.
-class CMeshDataBank;
-struct SAnimationSetEntry;
-
-class CDefPointeeBase { public:                        // a counted definition object
-    virtual void v000();
-    virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
-    long m_refCount;                            // +4
-    void ReleaseDef()
-    {
-        if (--m_refCount == 0)
-            DestroyDef();
-    }
-};
-
-template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) { }
-    ~CDefPointer() { if (m_pObject) m_pObject->ReleaseDef(); }
-};
-
-class CAnimationSet { public:                          // vector<SAnimationSetEntry>: begin, end, end of storage
-    SAnimationSetEntry* m_first;
-    SAnimationSetEntry* m_last;
-    SAnimationSetEntry* m_end;
-};
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char       _pad08[0x2c];
-    CAnimationSet       m_anims;                // +0x34
-};
-
-class CDefClassBase { public:
-    CAppearanceDef* FindAppearanceDef();        // stand-in callee of the stand-in body below
-    bool GetSubDef(CDefPointer<CAppearanceDef>& out);       // 0x0042B0A2
-};
-// Stand-in GetSubDef body (the real one is 0x0042B0A2): it writes `out` only inline, so VC7.1 knows the def pointer's
-// address does not escape (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& out)
-{
-    CAppearanceDef* def = FindAppearanceDef();
-    if (!def)
-        return false;
-    ++def->m_refCount;
-    out.m_pObject = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CWorld { public:
-    unsigned char  _pad00[0x3c];
-    CMeshDataBank* PMainMeshBank;               // +0x3c
-};
-
-struct CPreloadDeadAnimation {                  // the per-entry functor: holds the mesh bank
-    CMeshDataBank* m_bank;
-    CPreloadDeadAnimation(CMeshDataBank* bank) : m_bank(bank) { }
-};
-
-void PreloadEntry(CMeshDataBank* bank, SAnimationSetEntry* entry);   // stand-in callees of the stand-in body below
-SAnimationSetEntry* NextEntry(SAnimationSetEntry* entry);
-// Stand-in for_each body (the real one is 0x008365F0): compiled above the caller so VC7.1 knows nothing escapes it.
-#pragma auto_inline(off)
-__declspec(noinline) CPreloadDeadAnimation __fastcall ForEachAnimation(SAnimationSetEntry* first, SAnimationSetEntry* last,
-                                                  CPreloadDeadAnimation preload)      // 0x008365F0 (for_each)
-{
-    for (; first != last; first = NextEntry(first))
-        PreloadEntry(preload.m_bank, first);
-    return preload;
-}
-#pragma auto_inline(on)
-
-class CThing { public:
-    unsigned char  _pad00[0x70];
-    CDefClassBase* PBaseDef;                    // +0x70
-protected:
-    const CWorld& PeekWorld() const;            // 0x004C7AB0
-public:
-};
-
-class CThingDeadCreature : public CThing { public:
-    void PreloadDeadAnimation();
-};
+// CThingDeadCreature::PreloadDeadAnimation() -- run the dead-creature animation preloader over every entry of the appearance definition's animation set, resolving the matching entries through the world's main mesh bank
+// Leaf: ?PreloadDeadAnimation@CThingDeadCreature@@IAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00835BD0, 75 bytes (+ int3 padding), plain `ret`. Ego_r.pdb / FableWin.pdb
+//   ?PreloadDeadAnimation@CThingDeadCreature@@IAEXXZ (protected; one caller, OnCreate 0x00835FD0).
+// Callees (PDB spellings): CThing::PeekWorld() const 0x004C7AB0 (the mesh bank through the inline CWorld::PeekMeshBank, +0x3C),
+//   CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, std::for_each<const pair<unsigned long,CAnimationEntry>*,
+//   CDeadCreatureAnimPreloader> 0x008365F0 (landed; /Gr __fastcall: hidden result in ecx, first in edx, last and the by-value
+//   functor on the stack), the def's virtual release.
+// Layout: CThing PBaseDef +0x70; CWorld PMainMeshBank +0x3C; CAppearanceDef Animation +0x34 (Anims start +0x34 / finish +0x38).
+// Shape: the bank is read first; the functor is built from the bank (Ego_r ??0CDeadCreatureAnimPreloader@@QAE@ABVCMeshDataBank@@@Z,
+//   inline) and its returned copy lands in the dead out-handle slot.
+// Name fix (agentNF11 2026-11-11): moved off the local CThing / CDefPointer / CAppearanceDef / CAnimationSet stand-ins (and the same-TU
+// stand-in GetSubDef and for_each bodies) onto the shared headers (new engine/CDeadCreatureAnimPreloader.h). 0x0042B0A2 binds
+// GetSubDef<CAppearanceDef> (was ?GetSubDef@CDefClassBase@@QAE_NAAV?$CDefPointer@VCAppearanceDef@@@@@Z), 0x008365F0 the landed
+// for_each spelling (was ?ForEachAnimation@@YI?AUCPreloadDeadAnimation@@PAUSAnimationSetEntry@@0U1@@Z), 0x004C7AB0 PeekWorld; the
+// row's own symbol is the PDB protected IAEXXZ.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGDEADCREATURE_ANIMATION
+#define FABLE_RETAIL_CANIMATIONSET_ANIMS
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_MESH_BANK
+#define FABLE_RETAIL_CWORLD_PEEKMESHBANK
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_algorithm.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CThingDeadCreature.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CWorld.h"
+#include "engine/CDeadCreatureAnimPreloader.h"
 
 void CThingDeadCreature::PreloadDeadAnimation()
 {
-    CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-    CDefPointer<CAppearanceDef> def;
-    PBaseDef->GetSubDef(def);
-    const CAnimationSet& anims = def.m_pObject->m_anims;
-    ForEachAnimation(anims.m_first, anims.m_last, CPreloadDeadAnimation(bank));
-
+    const CMeshDataBank& mesh_bank = *PeekWorld().PeekMeshBank();
+    CDefPointer<const CAppearanceDef> appearance;
+    PBaseDef->GetSubDef(&appearance);
+    const CAnimationSet& animations = appearance->Animation;
+    std::for_each(animations.Anims.begin(), animations.Anims.end(), CDeadCreatureAnimPreloader(mesh_bank));
 }

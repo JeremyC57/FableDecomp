@@ -42,6 +42,13 @@ public:
     // landed row 0x006A9A00), called out of line. Declaration only: no layout change.
     void InitialiseMovementSpeeds();                                                       // 0x006A9A00 QAE
 #endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CONSTRUCT
+    // Nested opt-in (agentNF11, row 0x006A9DD0): Ego_r.pdb / FableWin.pdb
+    // ?ConstructFromParams@CThingPlayerCreature@@IAE_NJABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z (protected non-virtual, `ret 10h`).
+    // Declaration only (CThingPlayerCreatureInit forward-declared).
+protected:
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, const class CThingPlayerCreatureInit& init);   // 0x006A9DD0
+#endif
 protected:
     void SetPlayerCreatureActionForMelee(ECombatZone zone, const C3DVector& direction, CThing* target,
                                          const CCreatureAbilityDef& ability);              // 0x006AA720 IAE

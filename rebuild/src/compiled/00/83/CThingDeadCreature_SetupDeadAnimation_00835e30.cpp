@@ -1,190 +1,85 @@
-// CThingDeadCreature::SetupDeadAnimation() -- start the corpse's "STANDARD_DEAD" animation: a random one passing the creature's animation filter (else of any group) from its appearance def, played as the main animation and immediately finished, then a zero-time frame update, a frame-updated mark and a graphic appearance update
-// Leaf: ?SetupDeadAnimation@CThingDeadCreature
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
-//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00835E30, length 392 bytes, plain `ret`.
-//   Name from Ego_r.pdb `?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ`.
-// Callees: LowerBound @ 0x0040F020 (component 0x5A CTCAnimationComplex, read uninitialised when absent, as the landed
-//   CTCBed GetAnimationComplex model), CTCAnimationComplex::GetAnimation @ 0x0070B460, CDefClassBase::GetSubDef
-//   <CAppearanceDef> @ 0x0042B0A2, the animation set's has-animation test @ 0x005DC2E0 and random pick @ 0x005DCC00,
-//   CThing::GetRandomSeed @ 0x004C7AE0, the animate thing's reset @ 0x0070EC30 (name unproven),
-//   CAnimationEntry::GetAnimateThingFlags @ 0x005DC390, CAnimInit::Set @ 0x0070C050, CAnimateThing::SetMainAnim
-//   @ 0x0070D580, CAnimateThing::SetAsFinished @ 0x0070BE80, CAnimateThing::UpdateFrameLogic(const CAnimFrameTime&)
-//   @ 0x0070E8B0, CThing::SetAsFrameUpdated @ 0x004C7C40, CThing::UpdateGraphicAppearance(long) @ 0x004C7590, the def's
-//   virtual slot 1 on the last release. The name is the static CCharString @ 0x013BAF40 "STANDARD_DEAD".
-// Identity: CAnimFilterNoGroup (vtable 0x0122FFDC) destroyed through the CAnimFilterBase store 0x0122FFCC.
-// Layout (retail): CThing bitset +0x20 (0x5A = bit 26 of +0x28), map +0x44, PBaseDef +0x70; CThingDeadCreature
-//   PAnimFilter +0xd0 (Ego_r.pdb +0xe8, CThingPhysical 0x18 lower; CCountedPointer object word); CAppearanceDef
-//   Animation +0x34; CAnimInit 0x2c bytes (the landed CTCBed model).
-// Shape: the filter is reached through the counted pointer's inline operator* (a raw pointer member rotates eax/edx);
-//   the zero frame time is three floats (immediate stores after the push); the entry's index is read before the reset.
-// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
-#include "fable_compiler.h"
-class CTCBase;
-class CCharString { public: void* PStringData; };
-extern CCharString g_CCharString_013baf40;              // "STANDARD_DEAD"
+// CThingDeadCreature::SetupDeadAnimation() -- start the corpse's "STANDARD_DEAD" animation: a random one passing the creature's animation filter (else of any group) from its appearance def, played as the main animation and immediately finished, then a zero-time animation update, a frame-updated mark and a rendered-this-frame mark
+// Leaf: ?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00835E30, 392 bytes, plain `ret`. Ego_r.pdb / FableWin.pdb
+//   ?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ (protected; one caller, OnCreate 0x00835FD0).
+// Callees (PDB spellings): CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (the forced-inline GetTC<CTCAnimationComplex>,
+//   TCI_ANIMATION 0x5A; the absent arm passes the unset out-pointer), CTCAnimationComplex::GetAnimation 0x0070B460,
+//   CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, CAnimationSet::AnimExists 0x005DC2E0 / GetRandomAnim 0x005DCC00,
+//   CThing::GetPWorldSeed 0x004C7AE0, CAnimateThing::ClearAllAnims 0x0070EC30, CAnimationEntry::GetAnimateThingFlags 0x005DC390,
+//   CAnimInit::Init 0x0070C050 (the inline argument constructor), CAnimateThing::SetMainAnim 0x0070D580 / SetAsFinished 0x0070BE80 /
+//   Update 0x0070E8B0, CThing::SetAsFrameUpdated 0x004C7C40 / SetAsRenderedThisFrame 0x004C7590, the def's virtual release.
+// Globals: the static CCharString "STANDARD_DEAD" @ 0x013BAF40 (its dynamic initializer is landed at 0x0121F570).
+// Filter temporary: CAnimFilterNoGroup (vtable 0x0122FFDC; base CAnimFilterBase 0x0122FFCC).
+// Layout: CThing bitset +0x20, map +0x44, PBaseDef +0x70; CThingDeadCreature PAnimFilter +0xD0 (CCountedPointer<CAnimFilterBase>, read
+//   through its inline operator*); CAppearanceDef Animation +0x34.
+// Shape: the entry's bank index is read before ClearAllAnims; the zero-time CAnimateThingUpdate is a temporary (three zero stores
+//   after the push).
+// Name fix (agentNF11 2026-11-11): moved off the local CThing / CDefPointer / CAppearanceDef / CAnimationSet / CAnimInit / CAnimateThing /
+// CThingDeadCreature stand-ins (and a same-TU stand-in GetSubDef body) onto the shared headers. 0x0042B0A2 binds GetSubDef<CAppearanceDef>
+// (was ?GetSubDef@CDefClassBase@@QAE_NAAV?$CDefPointer@VCAppearanceDef@@@@@Z), 0x005DCC00 GetRandomAnim (was GetRandomAnimation returning a
+// pointer), 0x004C7AE0 GetPWorldSeed (was GetRandomSeed), 0x0070EC30 ClearAllAnims (was Reset), 0x0070C050 CAnimInit::Init (was Set),
+// 0x0070E8B0 CAnimateThing::Update(const CAnimateThingUpdate&) (was UpdateFrameLogic(const CAnimFrameTime&)); the row's own symbol is
+// the PDB protected IAEXXZ.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGDEADCREATURE_ANIMATION
+#define FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
+#define FABLE_RETAIL_CANIMATIONSET_ANIMS
+#define FABLE_RETAIL_CANIMATIONENTRY_ACCESSORS
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CANIMINIT_CTORS
+#define FABLE_RETAIL_CANIMATETHING_MAINANIM
+#define FABLE_RETAIL_CANIMATETHING_CLEARALLANIMS
+#define FABLE_RETAIL_CANIMATETHING_SETASFINISHED
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CThingDeadCreature.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CTCAnimationComplex.h"
+#include "engine/CAnimInit.h"
+#include "engine/CAnimateThing.h"
 
-class CAnimationEntry { public:
-    long AnimIndex;                                     // +0x00
-    unsigned long GetAnimateThingFlags() const;         // 0x005DC390
-};
-class CAnimFilterBase { public:                                // vtable 0x0122FFCC
-    virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
-    virtual CAnimFilterBase* Clone() const;
-    ~CAnimFilterBase() {}
-};
-struct CAnimFilterNoGroup : CAnimFilterBase {           // vtable 0x0122FFDC
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
-};
-class CAnimationSet { public:
-    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
-    CAnimationEntry* GetRandomAnimation(const CCharString& name, unsigned long* seed, const CAnimFilterBase& filter,
-                                        long exclude) const;                             // 0x005DCC00
-};
-
-class CDefPointeeBase { public:
-    virtual void v000();
-    virtual void DestroyDef();                          // slot 1 (+4)
-    long m_refCount;                                    // +4
-    void ReleaseDef()
-    {
-        if (--m_refCount == 0)
-            DestroyDef();
-    }
-};
-template<class T> class CDefPointer { public:
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) { }
-    ~CDefPointer() { if (m_pObject) m_pObject->ReleaseDef(); }
-};
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x2c];
-    CAnimationSet Animation;                            // +0x34
-};
-class CDefClassBase { public:
-    CAppearanceDef* FindAppearanceDef();                // stand-in callee of the stand-in body below
-    bool GetSubDef(CDefPointer<CAppearanceDef>& out);   // 0x0042B0A2
-};
-// Same-TU stand-in for GetSubDef<CAppearanceDef> (the landed 0x00835BD0 idiom): it only writes the out slot, so VC7.1
-// knows the def pointer does not escape and reloads it from the slot after a clobber.
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& out)
-{
-    CAppearanceDef* def = FindAppearanceDef();
-    if (!def)
-        return false;
-    ++def->m_refCount;
-    out.m_pObject = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-struct CBlendPair {
-    float m_first;
-    float m_second;
-    CBlendPair() : m_first(0.0f), m_second(0.0f) { }
-};
-class CAnimInit { public:                                      // 0x2c bytes
-    long          Mode;                                 // +0x00
-    unsigned char AnimType;                             // +0x04
-    bool          Flag05;                               // +0x05
-    long          AnimIndex;                            // +0x08
-    float         Scales[3];                            // +0x0c
-    CBlendPair    Blend;                                // +0x18
-    unsigned long Flags;                                // +0x20
-    long          Arg24;                                // +0x24
-    long          Percent;                              // +0x28
-    void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x0070C050
-    CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
-    {
-        Set(animType, arg24, animIndex, mode, flag05, flags, percent);
-    }
-};
-struct CAnimFrameTime {
-    float Frame;
-    float SubFrame;
-    float Extra;
-    CAnimFrameTime() : Frame(0.0f), SubFrame(0.0f), Extra(0.0f) { }
-};
-class CAnimateThing { public:
-    void SetAsFinished();                               // 0x0070BE80
-    void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
-    void UpdateFrameLogic(const CAnimFrameTime& time);  // 0x0070E8B0
-    void Reset();                                       // 0x0070EC30
-};
-class CTCAnimationComplex { public:
-    CAnimateThing& GetAnimation();                      // 0x0070B460
-};
-
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_presentBits[9];                    // +0x20
-    CInterfaceMap  m_interfaces;                        // +0x44
-    unsigned char  _pad54[0x1c];
-    CDefClassBase* PBaseDef;                            // +0x70
-    void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
-    unsigned long* GetRandomSeed();                     // 0x004C7AE0
-    void SetAsFrameUpdated();                           // 0x004C7C40
-    FABLE_FORCEINLINE bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> FABLE_FORCEINLINE T* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex()
-    {
-        CTCAnimationComplex* complex;
-        if (HasTC(0x5a))
-            complex = GetTC<CTCAnimationComplex>(0x5a);
-        return complex;
-    }
-};
-
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    T& operator*() const { return *m_pObject; }
-};
-class CThingDeadCreature : public CThing { public:
-    unsigned char    _pad74[0xd0 - 0x74];
-    CCountedPointer<CAnimFilterBase> PAnimFilter;       // +0xd0
-    void SetupDeadAnimation();
-};
+extern CCharString g_CCharString_013baf40;                   // 0x013BAF40 ("STANDARD_DEAD")
 
 void CThingDeadCreature::SetupDeadAnimation()
 {
-    CAnimateThing& animate = GetAnimationComplex()->GetAnimation();
-    CDefPointer<CAppearanceDef> def;
-    PBaseDef->GetSubDef(def);
-    const CAnimationSet& animations = def.m_pObject->Animation;
-    const CAnimationEntry* entry;
+    CTCAnimationComplex* complex;
+    GetTC(&complex);
+    CAnimateThing& animation = complex->GetAnimation();
+    CDefPointer<const CAppearanceDef> appearance;
+    PBaseDef->GetSubDef(&appearance);
+    const CAnimationSet& animations = appearance->Animation;
+    const CAnimationEntry* entry = 0;
     if (animations.AnimExists(g_CCharString_013baf40, *PAnimFilter))
-        entry = animations.GetRandomAnimation(g_CCharString_013baf40, GetRandomSeed(), *PAnimFilter, -1);
+        entry = &animations.GetRandomAnim(g_CCharString_013baf40, *GetPWorldSeed(), *PAnimFilter, -1);
     else if (animations.AnimExists(g_CCharString_013baf40, CAnimFilterNoGroup()))
-        entry = animations.GetRandomAnimation(g_CCharString_013baf40, GetRandomSeed(), CAnimFilterNoGroup(), -1);
-    else
-        entry = 0;
+        entry = &animations.GetRandomAnim(g_CCharString_013baf40, *GetPWorldSeed(), CAnimFilterNoGroup(), -1);
     if (entry) {
-        long animIndex = entry->AnimIndex;
-        animate.Reset();
-        CAnimInit init(2, 0, animIndex, 1, true, entry->GetAnimateThingFlags(), 100);
-        animate.SetMainAnim(init, 5, 0);
-        animate.SetAsFinished();
+        long anim = entry->BankIndex;
+        animation.ClearAllAnims();
+        CAnimInit init(2, 0, anim, ANIM_UPDATE_FROM_SPEED, true, entry->GetAnimateThingFlags(), 100);
+        animation.SetMainAnim(init, 5, 0);
+        animation.SetAsFinished();
     }
-    animate.UpdateFrameLogic(CAnimFrameTime());
+    animation.Update(CAnimateThingUpdate());
     SetAsFrameUpdated();
     SetAsRenderedThisFrame(2);
 }

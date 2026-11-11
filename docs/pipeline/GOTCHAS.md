@@ -2766,3 +2766,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 1025, 2026-11-11) 0x007BF1EB: a raise-only clamp `pos.Z = h; if (pos.Z < h + 0.2f) pos.Z = h + 0.2f;` (store then conditional store); std::max gives the reference lea-select, a value ternary an x87 select.
 - (chunk 1025, 2026-11-11) 0x00802AA4: STLport std::max operand order is visible (`fst [tmp] ; fcomp [range]`): write `std::max(newValue, range)` where retail compares the new value against the running max.
 - (chunk 1025, 2026-11-11) 0x007C0BB2: two `else if (str == "LIT")` tests share one string-data register (esi, no second null test after the out-of-line CBasicString<char>::operator==(const char*) call) only when that template member's body is in the TU (explicit specialization, as landed 0x00871290); declaration-only reloads and re-tests.
+- (agentNF11, 2026-11-11) Whether the GetAnim entry is read before or after the CCharString/filter temporaries die is set by `long anim = ...GetAnim(...).BankIndex;` versus binding `const CAnimationEntry&`.
+- (agentNF11, 2026-11-11) Use `GetPBaseDef().Get()` when retail adds and drops a reference before GetSubDef; use `PeekBaseDef()` when it reads the slot in place.
+- (agentNF11, 2026-11-11) A GetTC that leaves the out pointer unset when the component is absent (FABLE_RETAIL_CTHING_GETTC_EXPANDED) matches retail's dead-slot read.
+- (agentNF11, 2026-11-11) Taking `const CAnimationSet& animations = appearance->Animation;` before std::for_each keeps the release null test retail has.

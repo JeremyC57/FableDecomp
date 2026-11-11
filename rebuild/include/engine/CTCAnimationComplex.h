@@ -18,6 +18,11 @@ public:
  virtual void GetInterpolatedMeshAnim(C3DAnimationBlendState&,float)const;
  virtual void GetMeshAnims(C3DAnimationBlendState&,C3DAnimationBlendState&)const;
  const CAnimateThing& PeekAnimation()const;
+#ifdef FABLE_RETAIL_CTCANIMATIONCOMPLEX_ONCREATE
+ // Nested opt-in (agentNF11, row 0x0070B4D0): Ego_r.pdb / FableWin.pdb ?OnCreate@CTCAnimationComplex@@UAEXXZ, the CTCBase slot 4
+ // override (vtable 0x012650A4 slot 4 = 0x0070B4D0). No vtable change (an override).
+ virtual void OnCreate();
+#endif
 protected:
  CAnimateThing* PAnimation;
 };

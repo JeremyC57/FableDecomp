@@ -1,0 +1,2 @@
+address	name	evidence
+00667B30	CThingCreatureBase::GetRandomCombatAnimationFromName	agentNF11: Ego_r + FableWin PDBs (QBE, returns const CAnimationEntry&); was descriptive GetAppropriateCombatAnimation (landing bm)

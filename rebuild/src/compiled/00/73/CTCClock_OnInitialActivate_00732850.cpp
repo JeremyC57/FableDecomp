@@ -1,141 +1,63 @@
 // CTCClock::OnInitialActivate() -- reset the last-updated time to 0.5 and start the clock's "CLOCKHAND_TURN" appearance animation as the main animation (type 0, looping, mode 1, percent 100)
-// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00732850, 247 bytes (+ int3 padding), plain `ret`.
-// Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined lookup of CTCAnimationComplex,
-//   interface 0x5a), CTCAnimationComplex::GetAnimation @ 0x0070B460, CDefClassBase::GetSubDef<CAppearanceDef> @ 0x0042B0A2
-//   (byte-twin label GetSubDef<CAbilityDef>), CAnimationSet::GetAnimation(const CCharString&, long, const CAnimFilterBase&)
-//   @ 0x005DC340, CAnimInit::Set @ 0x0070C050, CAnimateThing::SetMainAnim(const CAnimInit&) @ 0x0070D920 (the one-argument
-//   overload forwarding (init, 1, 0) to 0x0070D580; manifest "operator_delete" is propagated), the defs' virtual slot 1.
+// Leaf: ?OnInitialActivate@CTCClock@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00732850, 247 bytes (+ int3 padding), plain `ret`. Vtable 0x01267044 slot 6
+//   (.?AVCTCClock@@); Ego_r.pdb / FableWin.pdb ?OnInitialActivate@CTCClock@@UAEXXZ.
+// Callees (PDB spellings): CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (the forced-inline GetTC<CTCAnimationComplex>,
+//   TCI_ANIMATION 0x5A), CTCAnimationComplex::GetAnimation 0x0070B460, CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2,
+//   CAnimationSet::GetAnim 0x005DC340, CAnimInit::Init 0x0070C050 (the inline argument constructor), CAnimateThing::Init(const CAnimInit&)
+//   0x0070D920 (Ego_r.pdb / FableWin.pdb ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z: Ego_r donor order SetMainAnim 0x00577F00 / Init
+//   0x00578140 = retail SetMainAnim 0x0070D580 / 0x0070D920, whose body forwards (init, 1, 0) to SetMainAnim), the def's virtual
+//   release (slot 1).
 // Globals: the static CCharString "CLOCKHAND_TURN" @ 0x013BAD3C (its dynamic initializer is landed at 0x0121ED40).
 // Filter temporary: CAnimFilterNoGroup (vtable 0x0122FFDC; base CAnimFilterBase 0x0122FFCC).
-// Layout: Ego_r.pdb CTCClock (0x14): PDef +0x0c, LastTimeUpdated +0x10; retail CThing PBaseDef +0x70; CAppearanceDef
-//   Animation +0x34.
-// Shape: the landed CTCAnimationComplex::OnCreate 0x0070B4D0 block: the base def through a by-value counted temporary read
-//   through .Object (the add-ref and the release share one null test, both count stores kept), the raw pointer then asks
-//   for the appearance sub-def (def in esi for the release at the end); the animation component through the landed
-//   CTCCupboard 0x00749B40 GetTCIfPresent accessor, fetched first.
-#include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-};
-extern CCharString g_ClockHandTurnName;         // 0x013BAD3C ("CLOCKHAND_TURN")
-class CAnimationEntry { public:
-    long AnimIndex;                             // +0x00
-};
-class CAnimFilterBase { public:                        // vtable 0x0122FFCC
-    virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
-    virtual CAnimFilterBase* Clone() const;
-    ~CAnimFilterBase() {}
-};
-struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
-};
-class CAnimationSet { public:
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
-class CAnimInit;
-class CAnimateThing { public:
-    void SetMainAnim(const CAnimInit& init);    // 0x0070D920
-};
-struct CBlendPair {
-    float m_first;
-    float m_second;
-    CBlendPair() : m_first(0.0f), m_second(0.0f) { }
-};
-class CAnimInit { public:                              // 0x2c bytes
-    long          Mode;                         // +0x00
-    unsigned char AnimType;                     // +0x04
-    bool          Flag05;                       // +0x05
-    long          AnimIndex;                    // +0x08
-    float         Scales[3];                    // +0x0c
-    CBlendPair    Blend;                        // +0x18
-    unsigned long Flags;                        // +0x20
-    long          Arg24;                        // +0x24
-    long          Percent;                      // +0x28
-    void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x0070C050
-    CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
-    {
-        Set(animType, arg24, animIndex, mode, flag05, flags, percent);
-    }
-};
-class CDefPointeeBase { public:
-    virtual void Destroy0();
-    virtual void Destroy();                     // slot 1 (+0x04)
-    long RefCount;                              // +0x04
-    void AddRef() { ++RefCount; }
-    void Release() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-template <class T> struct CCountedDefPointer {  // the by-value CDefPointer<T> copy: add-ref on copy, release on destruction
-    T* Object;
-    CCountedDefPointer(T* object) : Object(object) { if (Object) Object->AddRef(); }
-    ~CCountedDefPointer() { if (Object) Object->Release(); }
-};
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x34 - 0x08];
-    CAnimationSet Animation;                    // +0x34
-};
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
-};
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x1c];
-    CThingBaseDef* PBaseDef;                    // +0x70
-    CCountedDefPointer<CThingBaseDef> GetBaseDef() const { return CCountedDefPointer<CThingBaseDef>(PBaseDef); }
-    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
-    {
-        CTCBase* tc;                            // deliberately unset when absent (retail reads a dead slot)
-        if (HasTC(interfaceType))
-            tc = GetTC(interfaceType);
-        return tc;
-    }
-};
-class CTCAnimationComplex { public:
-    CAnimateThing& GetAnimation();              // 0x0070B460
-};
-class CClockDef;
-class CTCClock { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04 (CTCBase)
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    const CClockDef* PDef;                      // +0x0c CDefPointer<CClockDef const>
-    float   LastTimeUpdated;                    // +0x10
-    void OnInitialActivate();
-};
+// Layout: engine/CTCClock.h (Ego_r.pdb, 0x14): PDef +0x0c, LastTimeUpdated +0x10; CThing PBaseDef +0x70; CAppearanceDef Animation +0x34.
+// Shape: the base def read through a by-value GetPBaseDef() temporary that dies before the sub-def call (retail adds and drops the
+//   reference, both count stores kept, then calls GetSubDef on the raw pointer); the absent-component branch passes the unset
+//   out-pointer (retail `mov ecx,[esp+10h]`).
+// Name fix (agentNF11 2026-11-11): moved off the local CDefPointer / CThingBaseDef / CAppearanceDef / CAnimationSet / CAnimInit /
+// CAnimateThing / CThing / CTCClock stand-ins onto the shared headers (new engine/CTCClock.h). 0x0042B0A2 binds GetSubDef<CAppearanceDef>
+// (was ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAppearanceDef@@@@@Z), 0x005DC340 GetAnim (was GetAnimation returning a pointer),
+// 0x0070C050 CAnimInit::Init (was Set), 0x0070D920 CAnimateThing::Init (was a one-argument SetMainAnim); the row's own symbol is the
+// PDB public virtual UAEXXZ.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CANIMINIT_CTORS
+#define FABLE_RETAIL_CANIMATETHING_INIT
+#define FABLE_RETAIL_CANIMFILTER
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CDefPointer.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CTCAnimationComplex.h"
+#include "engine/CAnimInit.h"
+#include "engine/CAnimateThing.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CTCClock.h"
+
+extern CCharString g_ClockHandTurnName;                      // 0x013BAD3C ("CLOCKHAND_TURN")
 
 void CTCClock::OnInitialActivate()
 {
     LastTimeUpdated = 0.5f;
-    CAnimateThing& animation = ((CTCAnimationComplex*)ParentThing->GetTCIfPresent(0x5a))->GetAnimation();
-    const CThingBaseDef* baseDef = ParentThing->GetBaseDef().Object;
-    CDefPointer<CAppearanceDef> out;
-    baseDef->GetSubDef(&out);
-    CAppearanceDef* def = out.Object;
-    const CAnimationEntry* entry = def->Animation.GetAnimation(g_ClockHandTurnName, 0, CAnimFilterNoGroup());
-    CAnimInit init(0, 0, entry->AnimIndex, 1, true, 0, 100);
-    animation.SetMainAnim(init);
-    if (def) {
-        if (--def->RefCount == 0)
-            def->Destroy();
-    }
+    CTCAnimationComplex* complex;
+    ParentThing->GetTC(&complex);
+    CAnimateThing& animation = complex->GetAnimation();
+    const CThingBaseDef* base_def = ParentThing->GetPBaseDef().Get();
+    CDefPointer<const CAppearanceDef> appearance;
+    base_def->GetSubDef(&appearance);
+    const CAnimationEntry& entry = appearance->Animation.GetAnim(g_ClockHandTurnName, 0, CAnimFilterNoGroup());
+    CAnimInit init(0, 0, entry.BankIndex, ANIM_UPDATE_FROM_SPEED, true, 0, 100);
+    animation.Init(init);
 }

@@ -1,0 +1,15 @@
+kind	target_or_class	rows_changed	grades	binders_left
+target	0x0042B0A2 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	9 (004c04c0 00667b30 006a9dd0 0070b4d0 00732850 0077d230 007f8f30 00835bd0 00835e30)	all RELOCATION_MATCH (BIND OK x9), GXX + VC71 tests PASS	004bfd10 (parked: residue) 005b37f7 005cd767 00779d20 007306c0 00730c00 00730dd0 007310c0 007502d0 0078809b 00788406 007884f5
+target	0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ	3 (00890f40 0089e080 008d08a0)	all RELOCATION_MATCH (BIND OK x3), GXX + VC71 tests PASS	00664a50 00665510 006a9ef0 0082d3b0 00832e60 008338d0 00833a70 00836260 0083cc10 0083ddc0 0083df20 008cb780 008d1130
+target	0x0042AF3C GetDef<CThingBaseDef>	0	-	unchanged from NF10 STATUS.tsv (not reached)
+target	0x006869D0 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ	0	-	unchanged from NF10 STATUS.tsv (not reached)
+class	CTCClock	1 (00732850)	RELOCATION_MATCH	-
+class	CTCCreatureHive	1 (0077d230)	RELOCATION_MATCH	-
+class	CTCAnimationComplex	1 (0070b4d0)	RELOCATION_MATCH	-
+class	CTCAnimatingObject	1 (007f8f30)	RELOCATION_MATCH	-
+class	CThingCreatureBase	1 (00667b30)	RELOCATION_MATCH	-
+class	CThingDeadCreature	2 (00835bd0 00835e30)	RELOCATION_MATCH x2	-
+class	CThingPlayerCreature	1 (006a9dd0)	RELOCATION_MATCH	-
+class	NGraphicAppearance::CTCGraphicAppearance	1 (004c04c0)	RELOCATION_MATCH	004bfd10 CatchMessage parked
+class	CGameScriptThing	1 (008d08a0)	RELOCATION_MATCH	008d1130
+class	CGameScriptInterface	2 (00890f40 0089e080)	RELOCATION_MATCH x2	-

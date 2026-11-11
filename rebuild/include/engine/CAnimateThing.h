@@ -24,6 +24,22 @@ class CAnimateThing {public:
  void Update(const CAnimateThingUpdate& update);                       // 0x0070E8B0
 #endif
  void GetAllCombinationAnims(std::vector<CAnimSet*>&);
+#ifdef FABLE_RETAIL_CANIMATETHING_CLEARALLANIMS
+ // Retail opt-in (agentNF11, row 0x0070B4D0): Ego_r.pdb / FableWin.pdb ?ClearAllAnims@CAnimateThing@@QAEXXZ, out of line at 0x0070EC30
+ // (landed with that leaf). Declaration only.
+ void ClearAllAnims();                                                 // 0x0070EC30
+#endif
+#ifdef FABLE_RETAIL_CANIMATETHING_SETASFINISHED
+ // Retail opt-in (agentNF11, row 0x00835E30): Ego_r.pdb / FableWin.pdb ?SetAsFinished@CAnimateThing@@QAEXXZ, out of line at 0x0070BE80
+ // (landed with that leaf). Declaration only.
+ void SetAsFinished();                                                 // 0x0070BE80
+#endif
+#ifdef FABLE_RETAIL_CANIMATETHING_INIT
+ // Retail opt-in (agentNF11, rows 0x00732850 / ...): Ego_r.pdb / FableWin.pdb ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z, out of line at
+ // 0x0070D920 (Ego_r donor order SetMainAnim 0x00577F00 / Init 0x00578140 = retail SetMainAnim 0x0070D580 / Init 0x0070D920; the body
+ // forwards (init, 1, 0) to SetMainAnim). Declaration only.
+ void Init(const CAnimInit& init);                                     // 0x0070D920
+#endif
  void ClearUseAnimFromFile(){AnimFromFileInfo.Active=false;}
 private:
  CCompleteAnimation CurrentAnim;

@@ -1,0 +1,12 @@
+address	old_symbol	new_symbol	evidence
+0x00667B30	CThingCreatureBase::GetAppropriateCombatAnimation (descriptive; QAE, returned a pointer)	?GetRandomCombatAnimationFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@@Z	Ego_r.pdb order 0x00542250 GetRandomCombatAnimationFromName / 0x00542380 GetPrefferedCombatDistance = retail 0x00667B30 / 0x00667C00; FableWin.pdb has the same spelling; body returns *candidates[GetAppropriateCombatAnimationFromList(...)] by reference
+0x008D08A0	CGameScriptThingMethods::IsSummonedCreature (leaf IsSummonedCreature)	?IsSummonedCreature@CGameScriptThing@@UBE_NXZ	Ego_r.pdb / FableWin.pdb CGameScriptThing virtual; vtable slot 65
+0x0089E080	CGameScriptInterfaceMethods::EntitySetCombatType	?EntitySetCombatType@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z	Ego_r.pdb / FableWin.pdb CGameScriptInterface virtual
+0x00890F40	free-function model CGameScriptInterface_EntityResetCombatTypeToDefault (__fastcall, local structs)	?EntityResetCombatTypeToDefault@CGameScriptInterface@@UBEXABVCScriptThing@@@Z	Ego_r.pdb / FableWin.pdb CGameScriptInterface virtual; row rewritten on shared headers
+
+# leaf-only respellings (class::name unchanged)
+0x00732850	?OnInitialActivate@CTCClock@@QAEXXZ	?OnInitialActivate@CTCClock@@UAEXXZ	CTCBase virtual in Ego_r.pdb / FableWin.pdb
+0x0070B4D0	OnCreate (leaf)	?OnCreate@CTCAnimationComplex@@UAEXXZ	Ego_r.pdb / FableWin.pdb; vtable 0x012650A4 slot 4
+0x00835BD0	PreloadDeadAnimation (leaf)	?PreloadDeadAnimation@CThingDeadCreature@@IAEXXZ	Ego_r.pdb / FableWin.pdb (protected)
+0x00835E30	?SetupDeadAnimation@CThingDeadCreature (partial leaf)	?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ	Ego_r.pdb / FableWin.pdb (protected)
+0x006A9DD0	ConstructFromParams (leaf; pointer params)	?ConstructFromParams@CThingPlayerCreature@@IAE_NJABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z	Ego_r.pdb / FableWin.pdb (reference params, protected)

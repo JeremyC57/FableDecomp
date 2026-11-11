@@ -33,6 +33,17 @@ public:
 };
 class CEngineMeshEffectOutline : public CEngineMeshEffectOutlineBase {
 };
+#ifdef FABLE_RETAIL_CENGINEMESHEFFECT_OUTLINESMOOTH
+// Nested opt-in (agentNF11, row 0x004C04C0 CTCGraphicAppearance::SetAsHighlighted): the smooth outline effect (RTTI
+// .?AVCEngineMeshEffectOutlineSmooth@@; `new` 0x1C bytes = the outline base). Ego_r.pdb / FableWin.pdb constructor
+// ??0CEngineMeshEffectOutlineSmooth@@QAE@MMABVCRGBColour@@EJJ@Z (out of line at 0x004C3000, landed: the two widths, the colour, the
+// stencil byte and the two texture alpha values as long). Declaration only.
+class CEngineMeshEffectOutlineSmooth : public CEngineMeshEffectOutlineBase {
+public:
+    CEngineMeshEffectOutlineSmooth(float widthWorldSpace, float widthScreenSpace, const CRGBColour& colour, unsigned char stencilBit,
+                                   long textureAlphaRef, long textureAlphaBias);   // 0x004C3000
+};
+#endif
 FABLE_STATIC_ASSERT(sizeof(CEngineMeshEffect) == 0xc);
 FABLE_STATIC_ASSERT(sizeof(CEngineMeshEffectOutlineBase) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CEngineMeshEffectOutlineBase, StencilBit) == 0x18);

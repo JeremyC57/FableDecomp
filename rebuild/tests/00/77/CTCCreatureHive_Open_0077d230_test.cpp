@@ -1,209 +1,167 @@
-// Behaviour test for 0077d230: src/0077d230.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
-// and arguments are observable. CTCCreatureHive::Open()
-#include "fable_compiler.h"
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0077d230: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CTCCreatureHive::Open() -- play the hive's "OPEN_UP" appearance animation as the main animation (type 6, mode 1, not looping, percent 100) and start animating
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CTCCreatureHive::Open() -- play the hive's "OPEN_UP" appearance animation as the main animation (type 6, mode 1, not looping, percent 100) and start animating
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0077D230, 243 bytes (+ int3 padding), plain `ret`.
-// Callees: CDefClassBase::GetSubDef<CAppearanceDef> @ 0x0042B0A2 (byte-twin label GetSubDef<CAbilityDef>), CCharString(const
-//   char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CAnimationSet::GetAnimation(const CCharString&, long, const
-//   CAnimFilterBase&) @ 0x005DC340, CAnimInit::Set @ 0x0070C050, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
-//   @ 0x0040F020 (inlined lookup of CTCAnimationComplex, interface 0x5a), CTCAnimationComplex::GetAnimation @ 0x0070B460,
-//   CAnimateThing::SetMainAnim(const CAnimInit&, long, long) @ 0x0070D580, the def's virtual Destroy (slot 1).
-// Literal: "OPEN_UP" @ 0x0126AF84. Filter temporary: CAnimFilterNoGroup (vtable 0x0122FFDC; base CAnimFilterBase 0x0122FFCC).
-// Layout: Ego_r.pdb CTCCreatureHive (0x10): Animating +0x0c; retail CThing PBaseDef +0x70; CAppearanceDef Animation +0x34.
-// Shape: the landed CTCAnimationComplex::OnCreate 0x0070B4D0 animation block (out CDefPointer zeroed in the call's frame
-//   word, the def read after the name is built and kept in ebx for the release at the end) with the base def read
-//   straight from the thing; the animation component comes from the landed CTCCupboard 0x00749B40 GetTCIfPresent
-//   accessor (unset when absent: the absent arm reads the key's frame word); Animating is set after SetMainAnim.
-//   The CDefPointer releases its def in an inline destructor (so the out word stays live to the end and the
-//   inlined key reuses the dead name word, as in retail), and the animation reference is taken into its own
-//   local before SetMainAnim's arguments are pushed (retail calls GetAnimation first).
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    ~CCharString();                                            // 0x0099EAE0
-};
-class CAnimationEntry { public:
-    long AnimIndex;                             // +0x00
-};
-class CAnimFilterBase { public:                        // vtable 0x0122FFCC
-    virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
-    virtual CAnimFilterBase* Clone() const;
-    ~CAnimFilterBase() {}
-};
-struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
-};
-class CAnimationSet { public:
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
-class CAnimInit;
-class CAnimateThing { public:
-    void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
-};
-struct CBlendPair {
-    float m_first;
-    float m_second;
-    CBlendPair() : m_first(0.0f), m_second(0.0f) { }
-};
-class CAnimInit { public:                              // 0x2c bytes
-    long          Mode;                         // +0x00
-    unsigned char AnimType;                     // +0x04
-    bool          Flag05;                       // +0x05
-    long          AnimIndex;                    // +0x08
-    float         Scales[3];                    // +0x0c
-    CBlendPair    Blend;                        // +0x18
-    unsigned long Flags;                        // +0x20
-    long          Arg24;                        // +0x24
-    long          Percent;                      // +0x28
-    void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x0070C050
-    CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
-    {
-        Set(animType, arg24, animIndex, mode, flag05, flags, percent);
-    }
-};
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
 class CDefPointeeBase { public:
-    virtual void Destroy0();
-    virtual void Destroy();                     // slot 1 (+0x04)
-    long RefCount;                              // +0x04
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
 };
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x34 - 0x08];
-    CAnimationSet Animation;                    // +0x34
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
+    {
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
+    }
 };
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
-};
-void* FindDef_CThingBaseDef_GetSubDef();       // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 / 0x00744ED0 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAppearanceDef>* out) const
-{
-    void* def = FindDef_CThingBaseDef_GetSubDef();
-    if (!def)
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
         return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
+    }
+};
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
+// Fixture models of the animation interfaces: CCharString (a name), the appearance def's animation set (named entries; GetAnim
+// returns the index-th entry with that name, recording the filter kind), the animation request (CAnimInit's argument constructor
+// records its arguments), the animator (Init / SetMainAnim / ClearAllAnims recorded), the animation component, and a CThing with a
+// component table indexed by interface type, a base def handle and a definition index.
+class CCharString { public:
+    const char* Text;
+    CCharString(const char* text = "", long = -1) : Text(text) { }
+    bool operator==(const CCharString& o) const { return strcmp(Text, o.Text) == 0; }
+};
+enum EAnimUpdateMode { ANIM_UPDATE_NONE = 0, ANIM_UPDATE_FROM_SPEED = 1, ANIM_UPDATE_FROM_DIST = 2 };
+class CAnimationEntry { public:
+    long BankIndex; const char* Name; unsigned long Flags; long TransitionTime;
+    unsigned long GetAnimateThingFlags() const { return Flags; }
+    long GetTransitionTime() const { return TransitionTime; }
+};
+class CAnimFilterBase { public: int Kind; CAnimFilterBase(int kind = 0) : Kind(kind) { } };
+class CAnimFilterNoGroup : public CAnimFilterBase { public: CAnimFilterNoGroup() : CAnimFilterBase(1) { } };
+static int g_lastFilterKind = -1;
+class CAnimationSet { public:
+    CAnimationEntry Entries[8]; int Count;
+    const CAnimationEntry& GetAnim(const CCharString& name, long index, const CAnimFilterBase& filter) const
+    {
+        g_lastFilterKind = filter.Kind;
+        for (int i = 0; i < Count; ++i)
+            if (strcmp(Entries[i].Name, name.Text) == 0 && index-- == 0) return Entries[i];
+        return Entries[0];
+    }
+    bool AnimExists(const CCharString& name, const CAnimFilterBase&) const
+    {
+        for (int i = 0; i < Count; ++i) if (strcmp(Entries[i].Name, name.Text) == 0) return true;
+        return false;
+    }
+};
+class CAppearanceDef : public CDefClassBase { public: enum { Slot = 1 }; CAnimationSet Animation; };
+class CAnimFrameInfo { public: float Current, Last; CAnimFrameInfo() : Current(0), Last(0) { } };
+class CAnimInit { public:
+    unsigned char Type; unsigned long TypeFlags; long Anim; EAnimUpdateMode UpdateMode; bool Looping; unsigned long Flags; long Priority;
+    CAnimFrameInfo Frame;
+    CAnimInit() { }
+    CAnimInit(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority)
+        : Type(type), TypeFlags(typeFlags), Anim(anim), UpdateMode(updateMode), Looping(looping), Flags(flags), Priority(priority) { }
+};
+class CAnimateThing { public:
+    CAnimInit Last; int Inits; int MainAnims; int Clears; long Arg1, Arg2;
+    void Init(const CAnimInit& init) { Last = init; ++Inits; }
+    void SetMainAnim(const CAnimInit& init, long a, long b) { Last = init; ++MainAnims; Arg1 = a; Arg2 = b; }
+    void ClearAllAnims() { ++Clears; }
+};
+enum ETCInterfaceType { TCI_ANIMATION = 90 };
 class CTCBase;
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
 class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
-    CThingBaseDef* PBaseDef;                    // +0x70
-    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
-    {
-        long type = interfaceType;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (it == map->last || interfaceType < it->type ? map->last : it)->component;
-    }
-    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
-    {
-        CTCBase* tc;                            // deliberately unset when absent (retail reads a dead slot)
-        if (HasTC(interfaceType))
-            tc = GetTC(interfaceType);
-        return tc;
-    }
+    CTCBase* Components[128];
+    unsigned short DefGlobalIndex;
+    CDefPointer<const CThingBaseDef> PBaseDef;
+    bool HasTC(ETCInterfaceType type) const { return Components[type] != 0; }
+    template <class T> bool GetTC(T** out) { if (!Components[T::StatGetInterfaceType()]) return false; *out = (T*)Components[T::StatGetInterfaceType()]; return true; }
+    template <class T> bool PeekTC(const T** out) const { if (!Components[T::StatGetInterfaceType()]) return false; *out = (const T*)Components[T::StatGetInterfaceType()]; return true; }
+    unsigned long GetDefGlobalIndex() const { return DefGlobalIndex; }
+    CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
+    const CThingBaseDef& PeekBaseDef() const { return *PBaseDef; }
+    const CGameDefinitionManager& PeekDefinitionManager() const { return g_manager; }
 };
-class CTCAnimationComplex { public:
-    CAnimateThing& GetAnimation();              // 0x0070B460
+class CTCBase { public:
+    CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
+    CTCBase(CThing& thing) : ParentThing(&thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
+    const CGameDefinitionManager& GetDefinitionManager() const { return g_manager; }
 };
-class CTCCreatureHive { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04 (CTCBase)
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-    unsigned char _pad0a[2];
-    bool    Animating;                          // +0x0c
+class CTCAnimationComplex : public CTCBase { public:
+    CAnimateThing Animator;
+    CTCAnimationComplex(CThing& thing) : CTCBase(thing) { memset(&Animator, 0, sizeof(Animator)); }
+    static ETCInterfaceType StatGetInterfaceType() { return TCI_ANIMATION; }
+    CAnimateThing& GetAnimation() { return Animator; }
+};
+class CTCCreatureHive : public CTCBase { public:
+    bool Animating;
+    CTCCreatureHive(CThing& thing) : CTCBase(thing), Animating(false) { }
     void Open();
 };
-
+// ---- row body (verbatim) ----
 void CTCCreatureHive::Open()
 {
-    CDefPointer<CAppearanceDef> out;
-    ParentThing->PBaseDef->GetSubDef(&out);
-    long animIndex;
-    {
-        CCharString name("OPEN_UP");
-        CAnimFilterNoGroup filter;
-        animIndex = out.Object->Animation.GetAnimation(name, 0, filter)->AnimIndex;
-    }
-    CAnimInit init(6, 0, animIndex, 1, false, 0, 100);
-    CAnimateThing& anim = ((CTCAnimationComplex*)ParentThing->GetTCIfPresent(0x5a))->GetAnimation();
-    anim.SetMainAnim(init, 1, 0);
+    CDefPointer<const CAppearanceDef> appearance;
+    ParentThing->PeekBaseDef().GetSubDef(&appearance);
+    long anim = appearance->Animation.GetAnim("OPEN_UP", 0, CAnimFilterNoGroup()).BankIndex;
+    CAnimInit init(6, 0, anim, ANIM_UPDATE_FROM_SPEED, false, 0, 100);
+    CTCAnimationComplex* complex;
+    ParentThing->GetTC(&complex);
+    CAnimateThing& animation = complex->GetAnimation();
+    animation.SetMainAnim(init, 1, 0);
     Animating = true;
 }
-
-// ---- stubs and driver ----
-static const char* g_name; static int g_nameDtors = 0;
-CCharString::CCharString(const char* text, long) { PStringData = (void*)text; g_name = text; }
-CCharString::~CCharString() { ++g_nameDtors; }
-bool CAnimFilterBase::Accept(const CAnimationEntry*) const { return true; }
-CAnimFilterBase* CAnimFilterBase::Clone() const { return 0; }
-static int g_noGroupTag;
-bool CAnimFilterNoGroup::Accept(const CAnimationEntry*) const { return true; }
-CAnimFilterBase* CAnimFilterNoGroup::Clone() const { return (CAnimFilterBase*)&g_noGroupTag; }
-static CAnimationEntry g_entry = { 77 };
-static const CAnimationSet* g_set; static long g_index = -5; static bool g_filterIsNoGroup = false;
-const CAnimationEntry* CAnimationSet::GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const
-{ g_set = this; g_index = index; g_filterIsNoGroup = filter.Clone() == (CAnimFilterBase*)&g_noGroupTag && strcmp((const char*)name.PStringData, "OPEN_UP") == 0; return &g_entry; }
-static long g_set_args[7]; static int g_setCalls = 0;
-void CAnimInit::Set(long a, long b, long c, long d, bool e, unsigned long f, long g)
-{ ++g_setCalls; g_set_args[0]=a; g_set_args[1]=b; g_set_args[2]=c; g_set_args[3]=d; g_set_args[4]=e; g_set_args[5]=(long)f; g_set_args[6]=g; }
-static CAnimateThing g_animThing; static const CAnimateThing* g_mainThis; static const CAnimInit* g_mainInit; static long g_mainMode = -1, g_mainDelay = -1; static int g_mainCalls = 0;
-void CAnimateThing::SetMainAnim(const CAnimInit& init, long mode, long delay) { ++g_mainCalls; g_mainThis = this; g_mainInit = &init; g_mainMode = mode; g_mainDelay = delay; }
-struct CTestDef : CAppearanceDef { };
-static int g_destroys = 0;
-void CDefPointeeBase::Destroy0() { }
-void CDefPointeeBase::Destroy() { ++g_destroys; }
-static CTestDef g_def;
-void* FindDef_CThingBaseDef_GetSubDef() { return &g_def; }
-static CInterfaceMap::SEntry g_entries[2];
-static const long* g_lbKey;
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { g_lbKey = type; CHECK(*type == 0x5a); return &g_entries[0]; }
-static CTCAnimationComplex g_tcAnim;
-CAnimateThing& CTCAnimationComplex::GetAnimation() { CHECK(this == &g_tcAnim); return g_animThing; }
-void CTCCreatureHive::v00() { }
+// ---- harness ----
+// shared harness setup: a thing with a base def whose appearance sub-def has DEFAULT / named entries, and an animation component
+static CThingBaseDef thingDef; static CAppearanceDef app; static CThing thing;
+static void SetupThing(const char* name, long bank)
+{
+    ResetManager();
+    memset(&app.Animation, 0, sizeof(app.Animation)); app.Refs = 1; app.Deleted = 0;
+    thingDef.Refs = 1; thingDef.Deleted = 0; thingDef.Sub[1] = &app;
+    CAnimationEntry e0 = { 3, "DEFAULT", 0x10, 7 }, e1 = { bank, name, 0x20, 9 };
+    app.Animation.Entries[0] = e0; app.Animation.Entries[1] = e1; app.Animation.Count = 2;
+    memset(&thing, 0, sizeof(thing)); thing.PBaseDef.Object = &thingDef;
+}
 int main()
 {
-    static CThing thing; static CThingBaseDef baseDef;
-    thing.PBaseDef = &baseDef;
-    thing.m_presentBits[0x5a >> 5] = 1UL << (0x5a & 31);
-    g_entries[0].type = 0x5a; g_entries[0].component = (CTCBase*)&g_tcAnim;
-    thing.m_interfaces.first = &g_entries[0]; thing.m_interfaces.last = &g_entries[1];
-    static CTCCreatureHive hive; hive.ParentThing = &thing; hive.Animating = false;
-    g_def.RefCount = 2;
+    SetupThing("OPEN_UP", 21);
+    CTCAnimationComplex complex(thing); thing.Components[TCI_ANIMATION] = &complex;
+    CTCCreatureHive hive(thing);
     hive.Open();
-    CHECK(g_name != 0 && strcmp(g_name, "OPEN_UP") == 0 && g_nameDtors == 1);
-    CHECK(g_set == &g_def.Animation && g_index == 0 && g_filterIsNoGroup);
-    CHECK(g_setCalls == 1 && g_set_args[0] == 6 && g_set_args[1] == 0 && g_set_args[2] == 77 && g_set_args[3] == 1 && g_set_args[4] == 0 && g_set_args[5] == 0 && g_set_args[6] == 100);
-    CHECK(g_mainCalls == 1 && g_mainThis == &g_animThing && g_mainMode == 1 && g_mainDelay == 0 && g_mainInit != 0);
-    CHECK(hive.Animating == true);
-    CHECK(g_def.RefCount == 1 && g_destroys == 0);
-    hive.Animating = false;
-    hive.Open();
-    CHECK(g_def.RefCount == 0 && g_destroys == 1 && hive.Animating && g_mainCalls == 2 && g_nameDtors == 2);
+    CHECK(hive.Animating);
+    CHECK(complex.Animator.MainAnims == 1 && complex.Animator.Arg1 == 1 && complex.Animator.Arg2 == 0);
+    CHECK(complex.Animator.Last.Anim == 21 && complex.Animator.Last.Type == 6 && !complex.Animator.Last.Looping);
+    CHECK(complex.Animator.Last.UpdateMode == ANIM_UPDATE_FROM_SPEED && complex.Animator.Last.Priority == 100);
+    CHECK(g_lastFilterKind == 1 && app.Refs == 1 && app.Deleted == 0 && thingDef.Refs == 1);
+    thing.PBaseDef.Object = 0;
     if (fails == 0) printf("0077d230_TEST PASS\n");
     return fails;
 }

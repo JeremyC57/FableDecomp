@@ -1,100 +1,96 @@
-// Behaviour test for 00835bd0: body copied from src/00835bd0.cpp (CThingDeadCreature::PreloadDeadAnimation), callees stubbed.
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 00835bd0: the row body verbatim over fixture models of the shared-header interfaces it calls.
+// CThingDeadCreature::PreloadDeadAnimation() -- run the dead-creature animation preloader over every entry of the appearance definition's animation set, resolving the matching entries through the world's main mesh bank
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-class CMeshDataBank { public: int id; };
-struct SAnimationSetEntry { int id; };
-static int g_destroyed = 0;
+// Fixture models of the shared-header interfaces: a counted def (Refs counts references, Delete counted), the counted CDefPointer
+// handle (copy / assignment add-ref, release on destruction), the definition manager's GetDef<T> (fills the handle with an add-ref,
+// returns whether found) and CDefClassBase::GetSubDef<T> (the sub-def table of the def, by a type slot of T).
 class CDefPointeeBase { public:
-    virtual void v000() {}
-    virtual void DestroyDef() { ++g_destroyed; }
-    long m_refCount;
-    void ReleaseDef()
+    long Refs; int Deleted; CDefPointeeBase* Sub[8];
+    CDefPointeeBase() : Refs(1), Deleted(0) { memset(Sub, 0, sizeof(Sub)); }
+    void Delete() { ++Deleted; }
+};
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
+    CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { Release(); }
+    CDefPointer& operator=(const CDefPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->Refs; } return *this; }
+    void Release() { if (Object) { if (--Object->Refs == 0) Object->Delete(); Object = 0; } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    T* Get() const { return static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (p) ++p->Refs; Release(); Object = p; }
+};
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const
     {
-        if (--m_refCount == 0)
-            DestroyDef();
+        CDefPointeeBase* p = Sub[T::Slot];
+        if (!p) return false;
+        out->Set(p); return true;
     }
 };
-template<class T> class CDefPointer { public:
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) { }
-    ~CDefPointer() { if (m_pObject) m_pObject->ReleaseDef(); }
-};
-class CAnimationSet { public:
-    SAnimationSetEntry* m_first;
-    SAnimationSetEntry* m_last;
-    SAnimationSetEntry* m_end;
-};
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char       _pad08[0x2c];
-    CAnimationSet       m_anims;
-};
-static CAppearanceDef* g_appearance = 0; static int g_getSubDef = 0;
-class CDefClassBase { public:
-    CAppearanceDef* FindAppearanceDef() { ++g_getSubDef; return g_appearance; }
-    bool GetSubDef(CDefPointer<CAppearanceDef>& out);
-};
-bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& out)
-{
-    CAppearanceDef* def = FindAppearanceDef();
-    if (!def)
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    static CGameDefinitionManager& Get();
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
         return false;
-    ++def->m_refCount;
-    out.m_pObject = def;
-    return true;
-}
-class CWorld { public:
-    unsigned char  _pad00[0x3c];
-    CMeshDataBank* PMainMeshBank;
+    }
 };
-struct CPreloadDeadAnimation {
-    CMeshDataBank* m_bank;
-    CPreloadDeadAnimation(CMeshDataBank* bank) : m_bank(bank) { }
-};
-static int g_preloaded = 0; static CMeshDataBank* g_preloadBank = 0; static SAnimationSetEntry* g_lastEntry = 0;
-static void PreloadEntry(CMeshDataBank* bank, SAnimationSetEntry* entry) { ++g_preloaded; g_preloadBank = bank; g_lastEntry = entry; }
-static SAnimationSetEntry* NextEntry(SAnimationSetEntry* entry) { return entry + 1; }
-CPreloadDeadAnimation __fastcall ForEachAnimation(SAnimationSetEntry* first, SAnimationSetEntry* last, CPreloadDeadAnimation preload)
-{
-    for (; first != last; first = NextEntry(first))
-        PreloadEntry(preload.m_bank, first);
-    return preload;
-}
+static CGameDefinitionManager g_manager;
+CGameDefinitionManager& CGameDefinitionManager::Get() { return g_manager; }
+static void ResetManager() { memset(&g_manager, 0, sizeof(g_manager)); }
+class CThingBaseDef : public CDefClassBase { public: enum { Slot = 0 }; };
+#include <vector>
+#include <utility>
+#include <algorithm>
+class CAnimationEntry { public: long BankIndex; const char* Name; };
+class CAnimationSet { public: typedef std::vector<std::pair<unsigned long, CAnimationEntry> > TAnimMap; TAnimMap Anims; };
+class CAppearanceDef : public CDefClassBase { public: enum { Slot = 1 }; CAnimationSet Animation; };
+class CMeshDataBank { public: std::vector<long> Loaded; };
+class CWorld { public: CMeshDataBank* Bank; const CMeshDataBank* PeekMeshBank() const { return Bank; } };
 static CWorld g_world;
+class CDeadCreatureAnimPreloader { public:
+    CDeadCreatureAnimPreloader(const CMeshDataBank& mesh_bank) : MeshBank(&mesh_bank) {}
+    void operator()(const std::pair<unsigned long, CAnimationEntry>& entry) const
+    {
+        if (strcmp(entry.second.Name, "STANDARD_DEAD") == 0) const_cast<CMeshDataBank*>(MeshBank)->Loaded.push_back(entry.second.BankIndex);
+    }
+    const CMeshDataBank* MeshBank;
+};
 class CThing { public:
-    unsigned char  _pad00[0x70];
-    CDefClassBase* PBaseDef;
+    CDefPointer<const CThingBaseDef> PBaseDef;
     const CWorld& PeekWorld() const { return g_world; }
 };
-class CThingDeadCreature : public CThing { public:
-    void PreloadDeadAnimation();
-};
+class CThingDeadCreature : public CThing { public: void PreloadDeadAnimation(); };
+// ---- row body (verbatim) ----
 void CThingDeadCreature::PreloadDeadAnimation()
 {
-    CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-    CDefPointer<CAppearanceDef> def;
-    PBaseDef->GetSubDef(def);
-    const CAnimationSet& anims = def.m_pObject->m_anims;
-    ForEachAnimation(anims.m_first, anims.m_last, CPreloadDeadAnimation(bank));
+    const CMeshDataBank& mesh_bank = *PeekWorld().PeekMeshBank();
+    CDefPointer<const CAppearanceDef> appearance;
+    PBaseDef->GetSubDef(&appearance);
+    const CAnimationSet& animations = appearance->Animation;
+    std::for_each(animations.Anims.begin(), animations.Anims.end(), CDeadCreatureAnimPreloader(mesh_bank));
 }
+// ---- harness ----
 int main()
 {
-    static CMeshDataBank bank; static CAppearanceDef appearance; static SAnimationSetEntry entries[3]; static CDefClassBase baseDef;
-    g_world.PMainMeshBank = &bank; appearance.m_refCount = 1; appearance.m_anims.m_first = entries; appearance.m_anims.m_last = entries + 3; appearance.m_anims.m_end = entries + 3;
-    g_appearance = &appearance;
-    CThingDeadCreature creature; memset(&creature, 0, sizeof(creature)); creature.PBaseDef = &baseDef;
-    // 1: three entries preloaded with the main mesh bank; the temporary reference is released, the def survives
-    creature.PreloadDeadAnimation();
-    CHECK(g_getSubDef == 1); CHECK(g_preloaded == 3 && g_preloadBank == &bank && g_lastEntry == entries + 2); CHECK(appearance.m_refCount == 1 && g_destroyed == 0);
-    // 2: a def held only by the temporary is destroyed on release
-    appearance.m_refCount = 0; g_preloaded = 0;
-    creature.PreloadDeadAnimation();
-    CHECK(g_preloaded == 3 && g_destroyed == 1 && appearance.m_refCount == 0);
-    // 3: an empty animation set preloads nothing
-    appearance.m_refCount = 1; appearance.m_anims.m_last = entries; g_preloaded = 0;
-    creature.PreloadDeadAnimation();
-    CHECK(g_preloaded == 0 && appearance.m_refCount == 1);
-    if (fails == 0) printf("00835bd0_TEST PASS\n"); else printf("00835bd0_TEST FAIL\n");
+    ResetManager();
+    CThingBaseDef thingDef; CAppearanceDef app; thingDef.Sub[1] = &app;
+    const char* names[4] = { "DEFAULT", "STANDARD_DEAD", "WALK", "STANDARD_DEAD" };
+    for (int i = 0; i < 4; ++i) { CAnimationEntry e = { 40 + i, names[i] }; app.Animation.Anims.push_back(std::make_pair((unsigned long)i, e)); }
+    CMeshDataBank bank; g_world.Bank = &bank;
+    CThingDeadCreature corpse; corpse.PBaseDef.Object = &thingDef;
+    corpse.PreloadDeadAnimation();
+    CHECK(bank.Loaded.size() == 2 && bank.Loaded[0] == 41 && bank.Loaded[1] == 43);
+    CHECK(app.Refs == 1 && app.Deleted == 0 && thingDef.Refs == 1);
+    corpse.PBaseDef.Object = 0;
+    if (fails == 0) printf("00835bd0_TEST PASS\n");
     return fails;
 }

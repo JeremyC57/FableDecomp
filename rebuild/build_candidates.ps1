@@ -7013,7 +7013,7 @@ $catalog = @(
         Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_EntityResetCombatTypeToDefault_00890f40.cpp'
         TestSource = '00/89/CGameScriptInterface_EntityResetCombatTypeToDefault_00890f40_test.cpp'
-        PassPattern = 'FSE2_00890f40_TEST PASS'
+        PassPattern = '00890f40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00899c10'
@@ -249983,8 +249983,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00667b30'
         Module = 'CThingCreatureBase'
-        Source = '00/66/CThingCreatureBase_GetAppropriateCombatAnimation_00667b30.cpp'
-        TestSource = '00/66/CThingCreatureBase_GetAppropriateCombatAnimation_00667b30_test.cpp'
+        Source = '00/66/CThingCreatureBase_GetRandomCombatAnimationFromName_00667b30.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetRandomCombatAnimationFromName_00667b30_test.cpp'
         PassPattern = '00667b30_TEST PASS'
     }
     [pscustomobject]@{

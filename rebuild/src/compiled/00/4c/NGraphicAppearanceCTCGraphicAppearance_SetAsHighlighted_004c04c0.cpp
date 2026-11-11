@@ -1,92 +1,59 @@
-// NGraphicAppearance::CTCGraphicAppearance::SetAsHighlighted(float, float, const CRGBColour&, bool, bool, EAppearanceMeshEffectPriority, void*) -- build a highlight mesh effect (its two mode bytes from the thing's appearance sub-def, else 0x80/0) and install it through SetPMeshEffect
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004C04C0, length 155 bytes (+5 int3 padding), `ret 1Ch`.
-// FableWin.pdb: ?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z
-// Callees: CDefClassBase::GetSubDef<...> @ 0x0042B0A2 (manifest "GetSubDef<CAbilityDef>", propagated label; the sub-def carries
-// two mode bytes at +0x54/+0x55), operator new @ 0x00BFEA1A, the highlight mesh-effect ctor @ 0x004C3000 (manifest label
-// "CEnginePrimitive2DText", propagated; six arguments), CTCGraphicAppearance::SetPMeshEffect @ 0x004C0240.
-// Shape: the sub-def pointer starts null in the `push ecx` frame word and shares the zero register with the second mode
-// value; GetSubDef is a same-TU noinline stand-in body that fills it through `T**` (writes only the out slot), so it is
-// read into ebp right after the call and released by hand at the end (null test, `dec [ebp+4] ; jne`, slot 1). The parent
-// thing is read into a local first (the def is staged in eax, `mov ecx,eax` after the out push). The counted pointer
-// argument is built in the argument area (declared copy ctor) from the raw `new` result.
-// Layout: CTCBase ParentThing +0x04; the thing's def CDefPointer +0x70.
-class CRGBColour { public: unsigned char B, G, R, A; };
-
-class CDefPointeeBase { public:
-    virtual void Destroy();                     // slot 0
-    virtual void Delete();                      // slot 1: `call [eax+4]`
-    long m_refCount;                            // +0x04
-};
-template <class T>
-class CDefPointer { public:
-    CDefPointeeBase* Object;
-    CDefPointer() : Object(0) {}
-    T* operator->() const { return (T*)Object; }
-};
-struct CHighlightDef : CDefPointeeBase {
-    unsigned char _pad08[0x54 - 0x08];
-    unsigned char HighlightMode;                // +0x54
-    unsigned char HighlightExtra;               // +0x55
-};
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CHighlightDef** out);   // 0x0042B0A2
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CHighlightDef** out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    *out = (CHighlightDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CThing { public:
-    unsigned char _pad00[0x70];
-    CDefPointer<CDefClassBase> PDef;            // +0x70
-};
-
-class CEngineMeshEffect { public:
-    virtual void v00();
-    long m_refCount;
-    unsigned char _pad08[0x1c - 0x08];
-    CEngineMeshEffect(float a, float b, const CRGBColour& colour, bool flag, long mode, long extra);   // 0x004C3000
-};
-template <class T>
-class CIVCountedPointer { public:
-    T* Data;
-    CIVCountedPointer(T* p) : Data(p) {}
-    CIVCountedPointer(const CIVCountedPointer& o);
-};
-enum EAppearanceMeshEffectPriority { MESH_EFFECT_PRIORITY_DEFAULT };
+// NGraphicAppearance::CTCGraphicAppearance::SetAsHighlighted(float, float, const CRGBColour&, bool, bool, EAppearanceMeshEffectPriority, void*) -- build a smooth-outline mesh effect (its texture alpha values from the thing's appearance def, else 0x80 / 0) and install it through SetPMeshEffect
+// Leaf: ?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004C04C0, 155 bytes (+5 int3 padding), `ret 1Ch`. FableWin.pdb
+//   ?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z.
+// Callees (PDB spellings): CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2 (on the base def read in place), operator new 0x00BFEA1A,
+//   CEngineMeshEffectOutlineSmooth::CEngineMeshEffectOutlineSmooth(float, float, const CRGBColour&, unsigned char, long, long) 0x004C3000
+//   (Ego_r.pdb / FableWin.pdb ??0CEngineMeshEffectOutlineSmooth@@QAE@MMABVCRGBColour@@EJJ@Z), CTCGraphicAppearance::SetPMeshEffect
+//   0x004C0240, the def's virtual release.
+// Layout: CThing PBaseDef +0x70; CAppearanceDef OutlineEffectAlphaRef +0x54 / OutlineEffectAlphaBias +0x55 (Ego_r.pdb, after the 0x20-byte
+//   Animation at +0x34; `movzx esi,byte ptr [ebp+54h]`, `movzx edi,byte ptr [ebp+55h]`).
+// Shape: the parent thing is read into a local first (the def staged in eax, `mov ecx,eax` after the out push); the effect handle is the adopting CIVCountedPointer(T*) built in the argument area (`push ecx ; mov ecx,esp ; mov [ecx],eax`).
+// Name fix (agentNF11 2026-11-11): moved off the local CThing / CDefClassBase / CHighlightDef / CEngineMeshEffect stand-ins (and a
+// same-TU stand-in GetSubDef body) onto the shared headers. 0x0042B0A2 binds GetSubDef<CAppearanceDef> (the two bytes are the appearance
+// def's OutlineEffectAlphaRef / OutlineEffectAlphaBias; was a CHighlightDef stand-in), 0x004C3000 binds the PDB
+// CEngineMeshEffectOutlineSmooth constructor (was ??0CEngineMeshEffect@@QAE@MMABVCRGBColour@@_NJJ@Z).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CENGINEMESHEFFECT
+#define FABLE_RETAIL_CENGINEMESHEFFECT_OUTLINESMOOTH
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_FROM_RAW
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MESHEFFECT
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CEngineMeshEffect.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
 
 namespace NGraphicAppearance {
-class CTCGraphicAppearance {
-public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    void SetPMeshEffect(CIVCountedPointer<CEngineMeshEffect> effect, bool a, bool b, bool c,
-                        EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C0240
-    void SetAsHighlighted(float a, float b, const CRGBColour& colour, bool p4, bool p5,
-                          EAppearanceMeshEffectPriority priority, void* owner);
-};
 
-void CTCGraphicAppearance::SetAsHighlighted(float a, float b, const CRGBColour& colour, bool p4, bool p5,
+void CTCGraphicAppearance::SetAsHighlighted(float widthWorldSpace, float widthScreenSpace, const CRGBColour& colour, bool p4, bool p5,
                                             EAppearanceMeshEffectPriority priority, void* owner)
 {
     CThing* thing = ParentThing;
-    CDefClassBase* thingDef = thing->PDef.operator->();
-    CHighlightDef* def = 0;
-    long mode = 0x80;
-    long extra = 0;
-    if (thingDef->GetSubDef(&def)) {
-        mode = def->HighlightMode;
-        extra = def->HighlightExtra;
+    const CThingBaseDef& base_def = thing->PeekBaseDef();
+    CDefPointer<const CAppearanceDef> appearance;
+    long alphaRef = 0x80;
+    long alphaBias = 0;
+    if (base_def.GetSubDef(&appearance)) {
+        alphaRef = appearance->OutlineEffectAlphaRef;
+        alphaBias = appearance->OutlineEffectAlphaBias;
     }
-    SetPMeshEffect(CIVCountedPointer<CEngineMeshEffect>(new CEngineMeshEffect(a, b, colour, false, mode, extra)),
+    SetPMeshEffect(CIVCountedPointer<CEngineMeshEffect>(new CEngineMeshEffectOutlineSmooth(widthWorldSpace, widthScreenSpace, colour, 0,
+                                                                                          alphaRef, alphaBias)),
                    p4, p5, false, priority, owner);
-    if (def && --def->m_refCount == 0)
-        def->Delete();
 }
+
 }

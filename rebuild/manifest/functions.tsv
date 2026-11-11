@@ -14702,7 +14702,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00666ef0	AutoPlaceNearBuilding	CThingCreatureBase	__thiscall	bool	3	CThingCreatureBase *,CThingBuilding *,float	1	yes	accepted									
 00667310	OnCollision	CThingCreatureBase	__thiscall	void	5	CThingCreatureBase *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 00667450	ReactToGenericStrike	CThingCreatureBase	__thiscall	void	2	CThingCreatureBase *,CHitParameters *	1	yes	accepted									
-00667b30	GetAppropriateCombatAnimation	CThingCreatureBase	__thiscall	CAnimationSet *	1	CThingCreatureBase *	1	yes	accepted									
+00667b30	GetRandomCombatAnimationFromName	CThingCreatureBase	__thiscall	CAnimationSet *	1	CThingCreatureBase *	1	yes	accepted									
 00667c00	GetPrefferedCombatDistance	CThingCreatureBase	__thiscall	float	1	CThingCreatureBase *	1	yes	accepted									
 00667d30	OnHit	CThingCreatureBase	__thiscall	void	2	CThingCreatureBase *,CHitParameters *	1	yes	accepted									
 006684e0	CIVCountedPointer_Release_006684e0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006684e0.cpp

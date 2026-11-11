@@ -45,6 +45,10 @@ class C3DAnimationInterpolator;class C3DMeshObject;
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
 class CCharString;
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MESHEFFECT
+#include "engine/CIVCountedPointer.h"
+class CEngineMeshEffect;
+#endif
 namespace NGraphicAppearance {
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 class CPrimitive; class CAGraphicAppearanceComponent;
@@ -117,6 +121,12 @@ public:
     void SetAsHighlighted(float widthWorldSpace, float widthScreenSpace, const CRGBColour& colour, bool, bool,
                           EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C04C0
     void ClearMeshEffect(void* owner);                        // 0x004BFFC0
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MESHEFFECT
+    // Nested opt-in (agentNF11, row 0x004C04C0 SetAsHighlighted; needs FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT): FableWin.pdb
+    // ?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@2@PAX@Z
+    // (out of line at 0x004C0240, landed: the effect by value, three bools, the priority and the owner key). Declaration only.
+    void SetPMeshEffect(CIVCountedPointer<CEngineMeshEffect> effect, bool, bool, bool, EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C0240
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
     void UnregisterComponent(CAGraphicAppearanceComponent& component);   // 0x004C0000

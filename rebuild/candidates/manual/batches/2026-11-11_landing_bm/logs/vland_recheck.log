@@ -1,0 +1,32 @@
+addr       parity           behav  name
+004c04c0   RELOCATION_MATCH PASS   004c04c0
+00667b30   RELOCATION_MATCH PASS   00667b30
+006a9dd0   RELOCATION_MATCH PASS   006a9dd0
+0070b4d0   RELOCATION_MATCH PASS   0070b4d0
+00732850   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+00732850   RELOCATION_MATCH PASS   00732850
+0077d230   RELOCATION_MATCH PASS   0077d230
+007f8f30   RELOCATION_MATCH PASS   007f8f30
+00835bd0   WARN RELOC_NAME: ?PeekWorld@CThing@@IBEABVCWorld@@XZ -> 004c7ab0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7ab0'
+00835bd0   WARN RELOC_NAME: ??$for_each@PBU?$pair@KVCAnimationEntry@@@std@@VCDeadCreatureAnimPreloader@@@std@@YI?AVCDeadCreatureAnimPreloader@@PBU?$pair@KVCAnimationEntry@@@0@0V1@@Z -> 008365f0 labelled 'std::for_each<std::pair<unsigned long, CAnimationEntry> const *, CDeadCreatureAnimPreloader>'
+00835bd0   RELOCATION_MATCH PASS   00835bd0
+00835e30   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00835e30   RELOCATION_MATCH PASS   00835e30
+00890f40   WARN RELOC_NAME: ?GetCombatType@CThingCreatureBase@@QBEJXZ -> 00662170 labelled '_global::GetMember_dword0xe0_deref0x124_00662170'
+00890f40   RELOCATION_MATCH PASS   00890f40
+0089e080   RELOCATION_MATCH PASS   0089e080
+008d08a0   RELOCATION_MATCH PASS   008d08a0
+
+WINS: 12
+  004c04c0 RELOCATION_MATCH m::?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z
+  00667b30 RELOCATION_MATCH m::?GetRandomCombatAnimationFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@@Z
+  006a9dd0 RELOCATION_MATCH m::?ConstructFromParams@CThingPlayerCreature@@IAE_NJABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z
+  0070b4d0 RELOCATION_MATCH m::?OnCreate@CTCAnimationComplex@@UAEXXZ
+  00732850 RELOCATION_MATCH m::?OnInitialActivate@CTCClock@@UAEXXZ
+  0077d230 RELOCATION_MATCH m::?Open@CTCCreatureHive@@QAEXXZ
+  007f8f30 RELOCATION_MATCH m::?PlayDefaultAnimation@CTCAnimatingObject@@QAEXXZ
+  00835bd0 RELOCATION_MATCH m::?PreloadDeadAnimation@CThingDeadCreature@@IAEXXZ
+  00835e30 RELOCATION_MATCH m::?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ
+  00890f40 RELOCATION_MATCH m::?EntityResetCombatTypeToDefault@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089e080 RELOCATION_MATCH m::?EntitySetCombatType@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  008d08a0 RELOCATION_MATCH m::?IsSummonedCreature@CGameScriptThing@@UBE_NXZ

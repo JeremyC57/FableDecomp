@@ -1,0 +1,11 @@
+??0CEngineMeshEffectOutlineSmooth@@QAE@MMABVCRGBColour@@EJJ@Z	004c3000	004c04c0
+?GetAppropriateCombatAnimationFromList@CThingCreatureBase@@QBEJABV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z	00666b50	00667b30
+?ConstructFromParams@CThingCreatureBase@@IAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z	00662880	006a9dd0
+??_7CAnimFilterNoGroup@@6B@	0122ffdc	0070b4d0
+?ClearAllAnims@CAnimateThing@@QAEXXZ	0070ec30	0070b4d0
+?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z	0070d920	00732850
+?g_ClockHandTurnName@@3VCCharString@@A	013bad3c	00732850
+??$for_each@PBU?$pair@KVCAnimationEntry@@@std@@VCDeadCreatureAnimPreloader@@@std@@YI?AVCDeadCreatureAnimPreloader@@PBU?$pair@KVCAnimationEntry@@@0@0V1@@Z	008365f0	00835bd0
+?SetAsFinished@CAnimateThing@@QAEXXZ	0070be80	00835e30
+?GetCombatType@CThingCreatureBase@@QBEJXZ	00662170	00890f40
+?SetCombatType@CTCCombat@@QAEXABV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z	007355f0	0089e080

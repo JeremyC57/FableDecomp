@@ -35,6 +35,11 @@ public:
     // out of line in retail at 0x008CFF40 (the caller passes the hidden result pointer in ecx). Declaration only: no layout change.
     static CScriptThing __fastcall CreateNullThing();                    // 0x008CFF40
 #endif
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_QUERIES
+    // Nested opt-in (agentNF11, row 0x008D08A0): the CScriptThing override Ego_r.pdb / FableWin.pdb ?IsSummonedCreature@CGameScriptThing@@UBE_NXZ
+    // (vtable 0x012852CC slot 65). Declaration only (an override: no vtable change).
+    virtual bool IsSummonedCreature() const;                             // 65 0x008D08A0
+#endif
     CIntelligentPointer<CThing> PThing;                                  // +0x0c
     long                        ScriptCounter;                           // +0x14
     unsigned __int64            ThingUID;                                // +0x18
