@@ -1,0 +1,5 @@
+addr       parity           behav  name
+005fe090   RELOCATION_MATCH PASS   ConstructQuestsScreen
+
+WINS: 1
+  005fe090 RELOCATION_MATCH CTCInventoryMap::?ConstructQuestsScreen@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
