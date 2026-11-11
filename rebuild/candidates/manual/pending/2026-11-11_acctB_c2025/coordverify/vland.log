@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00600b60   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z -> 00617a90 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingBuilding const *, std::allocator<CThingBuilding const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+00600b60   RELOCATION_MATCH PASS   ConstructRegionDescriptionBuyableBuildings
+00605570   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIRegionInfo@CTCInventoryMap@@ABV34@ABU__false_type@2@I_N@Z -> 00618420 labelled 'std::std::vector_insert_40byte'
+00605570   RELOCATION_MATCH PASS   ConstructRegionDescription
+
+WINS: 2
+  00600b60 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescriptionBuyableBuildings@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z
+  00605570 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z
