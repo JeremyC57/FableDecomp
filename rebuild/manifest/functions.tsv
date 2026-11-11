@@ -15316,7 +15316,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00681e30	SetOpinionReactionMask	CTCCreatureOpinionOfHero	__thiscall	void	2	CTCCreatureOpinionOfHero *,CCharString *	1	yes	accepted									
 00681e60	SetPersonalityOverride	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 006820e0	SetPersonalityOverride	CTCCreatureOpinionOfHero	__thiscall	void	3	CTCCreatureOpinionOfHero *,CCharString *,bool	1	yes	accepted									
-00682140	ApplyOpinionTransientOffset	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
+00682140	AdjustOpinionTransient	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 006821e0	SetOpinionDeedMask	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 006822e0	SetOpinionDeedMask	CTCCreatureOpinionOfHero	__thiscall	void	2	CTCCreatureOpinionOfHero *,CCharString *	1	yes	accepted									
 00682310	ClearPersonalityOverride	CTCCreatureOpinionOfHero	__thiscall	void	1	CTCCreatureOpinionOfHero *	1	yes	accepted									
@@ -16372,7 +16372,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006af080	`scalar_deleting_destructor'	CTCRegionFollower	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CEngineSubPrimitiveText_scalardeletingdestructor_006af080.cpp
 006af180	operator()	CMessageEventFilter_OccuredBetween	__thiscall	bool	2	CMessageEventFilter_OccuredBetween *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterOccuredBetween_operator_006af180.cpp
 006af1a0	operator()	CMessageEventFilter_HasExtraData	__thiscall	bool	2	CMessageEventFilter_HasExtraData *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterHasExtraData_operator_006af1a0.cpp
-006af1c0	operator()	CMessageEventFilter_HasExtraData	__thiscall	bool	2	CMessageEventFilter_HasExtraData *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterHasExtraData_operator_006af1c0.cpp
+006af1c0	operator()	CMessageEventFilter_IsOfType	__thiscall	bool	2	CMessageEventFilter_HasExtraData *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterHasExtraData_operator_006af1c0.cpp
 006af1e0	operator()	CMessageEventFilter_IsOriginatedByThing	__thiscall	bool	2	CMessageEventFilter_IsOriginatedByThing *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterIsOriginatedByThing_operator_006af1e0.cpp
 006af200	operator()	CMessageEventFilter_IsOriginatedByThing	__thiscall	bool	2	CMessageEventFilter_IsOriginatedByThing *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterIsOriginatedByThing_operator_006af200.cpp
 006af220	operator	CDistanceFilter_006af220	__thiscall	bool	2	CMessageEventFilter_CanBeSeenOrHeard *,CMessageEvent *	1	yes	accepted									
@@ -17158,7 +17158,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006d3b20	uninitialized_fill_n<std::pair<CCharString,long>*,unsigned int,std::pair<CCharString,long> >	std	__thiscall	__uint64 *	4	vector<unsigned___int64,std::allocator<unsigned___int64>_> *,__uint64 *,uint,__uint64 *	1	yes	accepted									
 006d3b50	__copy<std::pair<CCharString, long> *, std::pair<CCharString, long> *, int>	std	__fastcall	CLipSyncPhoneme *	4	CLipSyncPhoneme *,CLipSyncPhoneme *,CLipSyncPhoneme *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 006d3b90	TransferBinaryIn	CPersistTraits<std::pair<CCharString,long> >	__thiscall	void	3	CPersistTraits<std::pair<CCharString,long>_> *,CMemoryDataInputStream *,pair<CCharString,long> *	1	yes	accepted									
-006d3c40	AssignTarget_006d3c40	_unattributed	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
+006d3c40	SetWifeLivingHere	CTCBuyableHouse	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 006d3ca0	Remove_006d3ca0	_unattributed	unknown	undefined	0		0	yes	accepted									
 006d3d00	GetSubDef<CHeroMarriageDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 006d3dc0	GetSubDef<CWifeDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
@@ -38472,7 +38472,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a8e040	`scalar_deleting_destructor'	C3DMeshStripifier	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\CThingSwitch_vectordeletingdestructor_00a8e040.cpp
 00a8e160	CVertexBufferWin32	CVertexBufferWin32	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted									
 00a8e5c0	CalculateTextureChangeFlags	C3DPrimitive2	__thiscall	void	2	C3DPrimitive2 *,C3DMesh2 *	1	yes	accepted									
-00a8e6c0	SaveBinary	CBaseBlock	__thiscall	void	2	CBaseBlock *,CDataOutputStream *	1	yes	accepted									
+00a8e6c0	SaveBinary	N3DPrimitive::CBaseBlock	__thiscall	void	2	CBaseBlock *,CDataOutputStream *	1	yes	accepted									
 00a8e710	SaveBinary	CStaticBlock	__thiscall	void	2	CStaticBlock *,CDataOutputStream *	1	yes	accepted									
 00a8e770	SaveBinary	CAnimatedBlock	__thiscall	void	2	CAnimatedBlock *,CDataOutputStream *	1	yes	accepted									
 00a8e870	RelocateData	C3DPrimitive2	__thiscall	void	5	C3DPrimitive2 *,long,void *,void *,long	1	yes	accepted									
@@ -38788,7 +38788,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aa3390	CalculateSlerpWeights	CQuaternion	unknown	undefined	0		0	yes	accepted									
 00aa3560	SetSlerpFromIdentity	CQuaternion	unknown	undefined	0		0	yes	accepted									
 00aa39a0	ToMatrix	C3DKeyframe	__thiscall	void	3	CQuaternion *,CMatrix3x4 *,C3DVector *	1	yes	accepted									
-00aa3af0	ToMatrix	C3DKeyframe	unknown	undefined	0		0	yes	accepted									
+00aa3af0	ToMatrixTransposed	C3DKeyframe	unknown	undefined	0		0	yes	accepted									
 00aa3c50	BlendWith	C3DKeyframe	__thiscall	CRightHandedSet	3	CRightHandedSet *,CRightHandedSet *,float	1	yes	accepted									
 00aa4150	`scalar deleting destructor'	C3DAnimationManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aa4150.cpp
 00aa4170	~C3DAnimationManager	C3DAnimationManager	__thiscall	void	1	C3DAnimationManager *	1	yes	accepted									

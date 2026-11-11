@@ -4,7 +4,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CD767, 745 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CThing::GetPos 0x004C73D0, the thing-create helper 0x00835A20 (`__fastcall` def index / position, stack bool),
-//   CThing::AddAndCopyTC 0x004C9F60, CThing::AddTC(const CCharString&, bool, bool) 0x004C9D60, bitset test 0x00410DE0,
+//   CThing::AddAndCopyTC 0x004C9F60, CThing::AddTC(const CCharString&, bool, const CTCParamsBase*) 0x004C9D60, bitset test 0x00410DE0,
 //   LowerBound 0x0040F020 (non-const), CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, animation-set lookup 0x005DC340
 //   (CAnimFilterNoGroup temporary, vtables 0x0122FFDC / 0x0122FFCC), CAnimationEntry::GetAnimateThingFlags 0x005DC390,
 //   CAnimInit::Set 0x0070C050, CTCAnimationComplex::GetAnimation 0x0070B460, CAnimateThing::SetMainAnim 0x0070D580,
@@ -121,7 +121,7 @@ class CThing { public:
     CDefClassBase* PBaseDef;                            // +0x70
     const C3DVector& GetPos() const;               // 0x004C73D0
     void AddAndCopyTC(const CTCBase& tc, bool b);       // 0x004C9F60 (Ego_r.pdb, by reference)
-    void AddTC(const CCharString& name, bool a, bool b);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const class CTCParamsBase* params);   // 0x004C9D60 (Ego_r.pdb; name fix NF21)
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)
     {
         if (m_present.test(kind)) {
@@ -172,7 +172,7 @@ void CTCInventoryStats::InitialiseMannequin()
         ParentThing->GetInterface(&tc5c, 0x5c);
         Mannequin->AddAndCopyTC(*tc5c, false);
     }
-    Mannequin->AddTC("CTCAnimationComplex", false, false);
+    Mannequin->AddTC("CTCAnimationComplex", false, 0);
     CTCAnimationComplex* complex;
     Mannequin->GetInterface(&complex, 0x5a);
     CDefPointer<CAppearanceDef> appearance;

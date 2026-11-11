@@ -18,13 +18,15 @@ public:
     unsigned long ThemeChannelDesc;
 };
 
+enum EEnginePrimitiveBlendMode; enum EEngineInterpolationSet; enum EEnginePrimitiveBlendOp;   // PDB enums, forward-declared as in the shared engine headers
 class CEnginePrimitiveSprite : public CEnginePrimitive {   // PDB, 72 bytes
 public:
     unsigned char _body[72 - 12];
     CEnginePrimitiveSprite(const C3DVector& position, unsigned long bankIndex, unsigned long frame, unsigned short flags,
-                           float angle, float sizeX, float sizeY, long blendMode,
+                           float angle, float sizeX, float sizeY, EEnginePrimitiveBlendMode blendMode,
                            unsigned char alpha, unsigned char red, unsigned char green, unsigned char blue,
-                           float fadeStart, long interpolationSet, long blendOp);   // 0x006558CE
+                           float fadeStart, EEngineInterpolationSet interpolationSet,
+                           EEnginePrimitiveBlendOp blendOp);   // 0x006558CE (Ego_r.pdb / FableWin.pdb enum parameters; name fix NF21)
 };
 
 class CEnginePrimitiveFlareSprite : public CEnginePrimitive {   // PDB, 68 bytes
@@ -66,8 +68,8 @@ void CEngineInternalPrimitiveFlareSprite::Update(const CEnginePrimitive& primiti
 {
     const CEnginePrimitiveFlareSprite& flare = static_cast<const CEnginePrimitiveFlareSprite&>(primitive);
     EnginePrimitiveFlags = flags;
-    CEnginePrimitiveSprite sprite(flare.WorldPos, flare.BankIndex, flare.Frame, 0, flare.Angle, flare.SizeX, flare.SizeY, 4,
-                                  flare.Alpha, 0xff, 0xff, 0xff, 0.0f, 0, 0);
+    CEnginePrimitiveSprite sprite(flare.WorldPos, flare.BankIndex, flare.Frame, 0, flare.Angle, flare.SizeX, flare.SizeY, (EEnginePrimitiveBlendMode)4,
+                                  flare.Alpha, 0xff, 0xff, 0xff, 0.0f, (EEngineInterpolationSet)0, (EEnginePrimitiveBlendOp)0);
     CEngineInternalPrimitiveSprite::Update(sprite, flags);
     LightSourceRadius = flare.LightSourceRadius;
     MinLightScale = flare.MinScale;

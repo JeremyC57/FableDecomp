@@ -34746,8 +34746,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006a76a0'
         Module = 'CThingFilter_IsNot'
-        Source = '00/6a/CThingFilterIsNot_opcall_006a76a0.cpp'
-        TestSource = '00/6a/CThingFilterIsNot_opcall_006a76a0_test.cpp'
+        Source = '00/6a/CThingFilterIsNot_operator_006a76a0.cpp'
+        TestSource = '00/6a/CThingFilterIsNot_operator_006a76a0_test.cpp'
         PassPattern = '006a76a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -35424,9 +35424,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006af1c0'
-        Module = 'CMessageEventFilter_HasExtraData'
-        Source = '00/6a/CMessageEventFilterHasExtraData_operator_006af1c0.cpp'
-        TestSource = '00/6a/CMessageEventFilterHasExtraData_operator_006af1c0_test.cpp'
+        Module = 'CMessageEventFilter_IsOfType'
+        Source = '00/6a/CMessageEventFilterIsOfType_operator_006af1c0.cpp'
+        TestSource = '00/6a/CMessageEventFilterIsOfType_operator_006af1c0_test.cpp'
         PassPattern = '006af1c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155720,9 +155720,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006d3c40'
-        Module = '_unattributed'
-        Source = '00/6d/unattributed_AssignTarget006d3c40_006d3c40.cpp'
-        TestSource = '00/6d/unattributed_AssignTarget006d3c40_006d3c40_test.cpp'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6d/CTCBuyableHouse_SetWifeLivingHere_006d3c40.cpp'
+        TestSource = '00/6d/CTCBuyableHouse_SetWifeLivingHere_006d3c40_test.cpp'
         PassPattern = '006d3c40_TEST PASS'
     }
     [pscustomobject]@{
@@ -191610,9 +191610,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a8e6c0'
-        Module = 'CBaseBlock'
-        Source = '00/a8/CBaseBlock_SaveBinary_00a8e6c0.cpp'
-        TestSource = '00/a8/CBaseBlock_SaveBinary_00a8e6c0_test.cpp'
+        Module = 'N3DPrimitive::CBaseBlock'
+        Source = '00/a8/N3DPrimitiveCBaseBlock_SaveBinary_00a8e6c0.cpp'
+        TestSource = '00/a8/N3DPrimitiveCBaseBlock_SaveBinary_00a8e6c0_test.cpp'
         PassPattern = '00a8e6c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -292071,8 +292071,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00682140'
         Module = 'CTCCreatureOpinionOfHero'
-        Source = '00/68/CTCCreatureOpinionOfHero_ApplyOpinionTransientOffset_00682140.cpp'
-        TestSource = '00/68/CTCCreatureOpinionOfHero_ApplyOpinionTransientOffset_00682140_test.cpp'
+        Source = '00/68/CTCCreatureOpinionOfHero_AdjustOpinionTransient_00682140.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_AdjustOpinionTransient_00682140_test.cpp'
         PassPattern = '00682140_TEST PASS'
     }
     [pscustomobject]@{
@@ -370649,8 +370649,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aa3af0'
         Module = 'C3DKeyframe'
-        Source = '00/aa/C3DKeyframe_ToMatrix_00aa3af0.cpp'
-        TestSource = '00/aa/C3DKeyframe_ToMatrix_00aa3af0_test.cpp'
+        Source = '00/aa/C3DKeyframe_ToMatrixTransposed_00aa3af0.cpp'
+        TestSource = '00/aa/C3DKeyframe_ToMatrixTransposed_00aa3af0_test.cpp'
         PassPattern = '00aa3af0_TEST PASS'
     }
     [pscustomobject]@{

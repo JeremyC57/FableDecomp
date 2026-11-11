@@ -157,11 +157,12 @@ struct CWorldMap_Retail {
 struct CCombatManager_Retail {
     void CreatureUnsheathWeapon(CThing_Retail* creature, long mode);   // 0x006EBDD0
 };
-struct CMessageEvent_Retail;
 #include "engine/C3DVector.h"
-struct CMessageEventManager_Retail {
-    CMessageEvent_Retail* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): shared header (the
+//   CMessageEventManager_Retail / CMessageEvent_Retail stand-ins dropped).
+#include "rebuild_abi.h"
+#include "engine/CMessageEventManager.h"
 class CWorld { public:
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005(); virtual void w006(); virtual void w007();
     virtual void w008(); virtual void w009(); virtual void w010(); virtual void w011();
@@ -170,7 +171,7 @@ class CWorld { public:
     unsigned char                _pad04[0x48];
     CCombatManager_Retail*       m_pCombatManager;  // +0x4c
     unsigned char                _pad50[0x10];
-    CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
+    CMessageEventManager*        PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
     unsigned char                _pad64[0x70];
     bool                         m_creatureGeneratorsEnabled;   // +0xd4 (global switch)
 };
@@ -186,7 +187,7 @@ void CGameScriptInterface::EntitySetAsPickPocketed(const CScriptThing& thing) co
     if (thing.IsValid()) {
         GiveHeroItemsFromContainer(thing, false);
         C3DVector position(0.0f, 0.0f, 0.0f);
-        CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
-        messages->AddMessage(0x45, 0x32, position, 0, 0, 0.0f, 0.0f, (long)thing.GetThing());
+        CMessageEventManager* messages = World->PMessageEventManager_Data;
+        messages->AddMessage(MESSAGE_EVENT_HERO_PICKED_POCKET, 0x32, position, 0, 0, 0.0f, 0.0f, (long)thing.GetThing());
     }
 }

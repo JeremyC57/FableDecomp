@@ -1,12 +1,16 @@
-// C3DKeyframe::ToMatrix(CMatrix4x4& m, bool applyScaling) const -- keyframe (quaternion + position) to a 4x4 matrix: the inline quaternion-to-matrix with the position as the translation column and a 0,0,0,1 last row; this build does not read applyScaling
-// Leaf: ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+// C3DKeyframe::ToMatrixTransposed(CMatrix4x4& m, bool applyScaling) const -- keyframe (quaternion + position) to a 4x4 matrix: the inline quaternion-to-matrix with the position as the translation column and a 0,0,0,1 last row; this build does not read applyScaling
+// Leaf: ?ToMatrixTransposed@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AA3AF0, 346 bytes, thiscall `ret 8` (matrix reference + bool, the bool unread).
 // Identity: FableWin.pdb names exactly two 4x4 conversions, ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z and
 //   the inline ?ToMatrix@CQuaternion@@QBEXAAVCMatrix4x4@@ABVC3DVector@@@Z; this body reads the 48-byte keyframe (Rotation +0,
 //   Position +0x10) through `this`, takes two stack arguments and inlines the quaternion conversion -- the 4x4 twin of the
 //   landed C3DKeyframe::ToMatrix(CMatrix3x4&, bool) 0x00A52450 without its scaling block. No callers in the retail image.
-// Callees: none (CQuaternion::ToMatrix is inlined).
+// Name (naming agent NF21, 2026-11-11): FableWin.pdb lists the 4x4 pair twice in donor order: ?ToMatrix@C3DKeyframe@@ 0x0337FD30 +
+//   ?ToMatrix@CQuaternion@@ 0x0337FD70 (translation in the bottom row, the landed 0x00AA39A0), then ?ToMatrixTransposed@C3DKeyframe@@
+//   QBEXAAVCMatrix4x4@@_N@Z 0x03382B40 + ?ToMatrixTransposed@CQuaternion@@QBEXAAVCMatrix4x4@@ABVC3DVector@@@Z 0x03382B80. This body
+//   writes the position down the last column (E14/E24/E34) with a 0,0,0,1 bottom row, the transpose of 0x00AA39A0: it is ToMatrixTransposed.
+// Callees: none (CQuaternion::ToMatrixTransposed is inlined).
 // Globals: 0.0f 0x0122DEDC, 2.0f 0x0122DCDC, 1.0f 0x0122DED8.
 // Layout: Ego_r.pdb C3DKeyframe and CMatrix4x4 (anonymous union over E11..E44); no shared engine headers exist for them.
 // Shape: the inline 4x4 conversion writes every element through the FableWin inline accessor
@@ -26,7 +30,7 @@ class CMatrix4x4 { public:
 };
 class CQuaternion { public:
     float X, Y, Z, W;
-    FABLE_FORCEINLINE void ToMatrix(CMatrix4x4& m, const C3DVector& pos) const
+    FABLE_FORCEINLINE void ToMatrixTransposed(CMatrix4x4& m, const C3DVector& pos) const
     {
         float x = X, y = Y, z = Z, w = W;
         float n = w * w + z * z + y * y + x * x;
@@ -57,9 +61,9 @@ class C3DKeyframe { public:
     CQuaternion Rotation;
     C4DVector Position;
     C4DVector Scaling;
-    void ToMatrix(CMatrix4x4& m, bool applyScaling) const;
+    void ToMatrixTransposed(CMatrix4x4& m, bool applyScaling) const;
 };
-void C3DKeyframe::ToMatrix(CMatrix4x4& m, bool applyScaling) const
+void C3DKeyframe::ToMatrixTransposed(CMatrix4x4& m, bool applyScaling) const
 {
-    Rotation.ToMatrix(m, C3DVector(Position.X, Position.Y, Position.Z));
+    Rotation.ToMatrixTransposed(m, C3DVector(Position.X, Position.Y, Position.Z));
 }

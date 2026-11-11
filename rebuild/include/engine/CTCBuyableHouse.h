@@ -7,11 +7,14 @@
 // ?GetOwnedByPlayer@CTCBuyableHouse@@QBE_NXZ / ?GetRented@CTCBuyableHouse@@QBE_NXZ. The rest stays opaque (sizeof 0x4C as below).
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE
+#include "engine/CIntelligentPointer.h"
+#endif
 class CBuyableHouseDef;
 class CTCBuyableHouse : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BUYABLE_HOUSE; }
-#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+#if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE)
     void SetWifeLivingHere(CThing*);
 #endif
     bool GetOwnedByPlayer() const { return OwnedByPlayer; }
@@ -21,7 +24,16 @@ private:
     bool IsScripted;                                         // +0x10
     bool OwnedByPlayer;                                      // +0x11
     bool Rented;                                             // +0x12
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE
+    // Retail opt-in (naming agent NF21, row 0x006D3C40 SetWifeLivingHere): FableWin.pdb ?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z
+    // and ?GetWifeLivingHere@CTCBuyableHouse@@QBEPAVCThing@@XZ; Ego_r.pdb member CIntelligentPointer<CThing> WifeLivingHere +0x38 (the
+    // pointer the row assigns). Needs FABLE_RETAIL_CINTELLIGENTPOINTER (byte-packed pointer). No layout change.
+    unsigned char _pad_0x13[0x38 - 0x13];                    // +0x13 DaySomeoneWillMoveIn .. FrameToNextCheckIfWeNeedToCreateAnything (opaque)
+    CIntelligentPointer<CThing> WifeLivingHere;              // +0x38
+    unsigned char _pad_0x40[0x4c - 0x40];                    // +0x40 InitiallySetupDressLevel .. IsResidential (opaque)
+#else
     unsigned char _pad_0x13[0x4c - 0x13];                    // +0x13 DaySomeoneWillMoveIn .. IsResidential (opaque)
+#endif
 #ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
     // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;

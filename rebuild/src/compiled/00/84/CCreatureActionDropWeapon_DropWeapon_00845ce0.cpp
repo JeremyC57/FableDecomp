@@ -153,7 +153,7 @@ public:
     unsigned char   m_flags91;                        // +0x91 bit 0: dead
     void SetInLimbo(bool inLimbo);                    // 0x004C8CF0
     void Kill(bool immediately);                      // 0x004C9B80
-    CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const class CTCParamsBase* params);   // 0x004C9D60 (Ego_r.pdb; name fix NF21)
     FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));

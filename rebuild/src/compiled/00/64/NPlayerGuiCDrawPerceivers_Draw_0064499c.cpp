@@ -19,10 +19,6 @@ class C2DVector { public:
     C2DVector operator+(const C2DVector& o) const { return C2DVector(X + o.X, Y + o.Y); }
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct C2DCoordF {
-    float X, Y;
-    C2DCoordF(const C2DVector& v) : X(v.X), Y(v.Y) {}
-};
 C2DVector __fastcall GFAnchorToTopRight(const C2DVector& in);         // 0x00643CA1
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);  // 0x009E21D0
 class CWideString {
@@ -41,11 +37,15 @@ class CRGBColour { public:
 };
 enum EEngine2DLayer { ENGINE_2D_LAYER_TEXT = 0x43 };
 class CEnginePrimitiveHandle { public: unsigned long Data[2]; };
+// Name fix (naming agent NF21, 2026-11-11): the position constructor 0x00493AC2 takes const C2DVector& and the PDB enums
+//   (Ego_r.pdb 0x0049C7E3 / FableWin.pdb 0x01A663FC ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KK
+//   W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z); enums forward-declared as in the shared engine headers.
+enum EEnginePrimitiveBlendMode; enum EEngineInterpolationSet;
 class CEnginePrimitive2DSprite {
 public:
     unsigned char _body[0x54];
-    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DCoordF& pos, long layer, unsigned long graphic, unsigned long b, long blend,
-                             long interpolation, float scaleX, float scaleY, unsigned char alpha, unsigned char red, unsigned char green,
+    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DVector& pos, EEngine2DLayer layer, unsigned long graphic, unsigned long b,
+                             EEnginePrimitiveBlendMode blend, EEngineInterpolationSet interpolation, float scaleX, float scaleY, unsigned char alpha, unsigned char red, unsigned char green,
                              unsigned char blue, unsigned long e, const C2DVector& uv0, const C2DVector& uv1);   // 0x00493AC2
 };
 class CEnginePrimitiveRenderer {
@@ -154,10 +154,10 @@ void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
         back = def->FriendlyBackGraphic;
     else if (Allegiance == 2)
         back = def->EnemyBackGraphic;
-    CEnginePrimitive2DSprite backSprite(0, pos, 0x45, back, 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(alpha), 0xff, 0xff, 0xff, 2,
+    CEnginePrimitive2DSprite backSprite(0, C2DVector(pos.X, pos.Y), (EEngine2DLayer)0x45, back, 0, (EEnginePrimitiveBlendMode)2, (EEngineInterpolationSet)0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(alpha), 0xff, 0xff, 0xff, 2,
                                         C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
     info->Renderer->AddPrimitive(&Handles.Start[0], backSprite, 0xc0);
-    CEnginePrimitive2DSprite eyeSprite(0, pos, 0x44, def->PerceiverFrames.Start[frame], 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(alpha), 0xff,
+    CEnginePrimitive2DSprite eyeSprite(0, C2DVector(pos.X, pos.Y), (EEngine2DLayer)0x44, def->PerceiverFrames.Start[frame], 0, (EEnginePrimitiveBlendMode)2, (EEngineInterpolationSet)0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(alpha), 0xff,
                                        0xff, 0xff, 2, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
     info->Renderer->AddPrimitive(&Handles.Start[1], eyeSprite, 0xc0);
     if (ThingCount > 0) {

@@ -2,7 +2,7 @@
 // Leaf: Transfer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0077CE00, 448 bytes (virtual, `ret 4`).
 // Callees: CPersistContext::CheckCRC 0x00404500 (x8, the empty key "" 0x0122D70E);
-//   CPersistTraits<bool>::TransferBinaryIn 0x00403EB0 / CDataOutputStream::WriteBool 0x00993E30;
+//   CPersistTraits<bool>::TransferBinaryIn 0x00403EB0 / CDataOutputStream::WriteEBOOL 0x00993E30;
 //   CPersistTraits<long>::TransferBinaryIn 0x0040FE60 / CDataOutputStream::WriteSLONG 0x00993EB0;
 //   CPersistTraits<float>::TransferBinaryIn 0x0040EFB0 / CDataOutputStream::WriteFloat 0x00993EE0.
 // Shape: eight inline CPersistContext::Transfer<T> calls (the landed COverheadDisplayDef::Transfer 0x007B7D20 template):
@@ -13,7 +13,7 @@
 
 class CMemoryDataInputStream;
 class CDataOutputStream { public:
-    void WriteBool(bool value);                         // 0x00993E30
+    void WriteEBOOL(bool value);                        // 0x00993E30 ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z (Ego_r.pdb; name fix NF21)
     void WriteSLONG(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };
@@ -21,7 +21,7 @@ template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream& stream, bool& value);   // 0x00403EB0
-    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteEBOOL(value); }
 };
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}

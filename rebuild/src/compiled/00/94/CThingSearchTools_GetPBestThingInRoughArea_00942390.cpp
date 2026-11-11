@@ -33,7 +33,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
 class CThingCreatureBase : public CThing { public: enum { TypeMask = 0xf }; };
 class CThingFilter_IsNot { public:
-    bool operator()(const CThing* thing) const;   // 0x006A76A0
+    bool operator()(const CThing& thing) const;   // 0x006A76A0 Ego_r/FableWin ??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z
 };
 class CIsVeryCloseMotionlessCreature { public:
     bool operator()(const CThing* thing) const;   // 0x00942270
@@ -42,7 +42,7 @@ class CIsVeryCloseMotionlessCreature { public:
 template <class F1, class F2> class CFilter_Bind2 { public:
     const F1& Filter1;
     const F2& Filter2;
-    bool operator()(const CThing* thing) const { return Filter1(thing) && Filter2(thing); }
+    bool operator()(const CThing* thing) const { return Filter1(*thing) && Filter2(thing); }
 };
 class CThingCompare_Nearest { public:
     CThingCreatureBase* operator()(CThingCreatureBase* best, CThingCreatureBase* candidate) const;   // 0x00782560

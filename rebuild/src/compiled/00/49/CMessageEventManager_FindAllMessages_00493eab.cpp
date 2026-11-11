@@ -16,7 +16,7 @@ struct CMessageList {                              // list<CMessageEvent>: one s
 
 class CMessageEventFilter_IsOfType { public:
     long Type;
-    bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF1C0 Ego_r/FableWin ??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
 };
 
 struct SMessagePtrNode {
@@ -43,7 +43,7 @@ class CMessageEventManager { public:
     template<class TFilter> long FindAllMessages(const TFilter& filter, CMessagePtrList& found)
     {
         for (SMessageNode* node = Messages.m_pHead->m_pNext; node != Messages.m_pHead; node = node->m_pNext) {
-            if (filter(node->GetEvent()))
+            if (filter(*node->GetEvent()))
                 found.push_back(node->GetEvent());
         }
         return Distance(found.m_pHead->m_pNext, found.m_pHead);

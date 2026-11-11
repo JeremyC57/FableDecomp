@@ -2,7 +2,7 @@
 class CThing;
 class CTCEnemy {
 public:
-    static bool __fastcall AreThingsEnemies(CThing* thing1, CThing* thing2);
+    static bool __fastcall AreThingsEnemies(const CThing& thing1, const CThing& thing2);   // Ego_r/FableWin ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (0x0076D2F0)
 };
 struct CScriptThingVTbl {
     unsigned char pad_0000[0x2C];
@@ -21,7 +21,7 @@ bool CGameScriptInterface::AreEntitiesEnemies(const CScriptThing& entity1, const
         if (entity2.vftable->HasThing(&entity2)) {
             CThing* t2 = entity2.vftable->GetThing(&entity2);
             CThing* t1 = entity1.vftable->GetThing(&entity1);
-            return CTCEnemy::AreThingsEnemies(t1, t2);
+            return CTCEnemy::AreThingsEnemies(*t1, *t2);
         }
     }
     return false;

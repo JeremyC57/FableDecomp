@@ -4,10 +4,10 @@
 // Nearby landed CWorldMap sources establish retail Maps at +0x20, CMapInfo size 0x48, World at +0x08, and
 // the message-event pointer at CWorld +0x60. This local retail model avoids using the conflicting PDB offsets.
 class CThing;
-class CMessageEventManager { public:
-    void* AddMessage(long type, unsigned long id, class C3DVector* pos, CThing* a, CThing* b,
-                     float f1, float f2, long map); // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): shared header.
+#include "rebuild_abi.h"
+#include "engine/CMessageEventManager.h"
 #include "engine/CWorld.h"
 #include "engine/C3DVector.h"
 class CMapInfo { public: unsigned char bytes[0x48]; };
@@ -40,7 +40,7 @@ void CWorldMap_Methods::UnloadAllMapsExceptPlayerPos()
             C3DVector pos;
             pos.X = 0.0f; pos.Y = 0.0f; pos.Z = 0.0f;
             CMessageEventManager* manager = World->PMessageEventManager_Data;
-            manager->AddMessage(0x25, 0x32, &pos, 0, 0, 0.0f, 0.0f, i);
+            manager->AddMessage(MESSAGE_EVENT_LEVEL_UNLOADED, 0x32, pos, 0, 0, 0.0f, 0.0f, i);
             UnloadLevel(i);
         }
     }

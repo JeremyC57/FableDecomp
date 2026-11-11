@@ -1,0 +1,88 @@
+address	change	grade	test	grades_used	note
+0048f230	binders: respelled binds to 00493ac2	RELOCATION_MATCH	PASS	2	
+00493eab	binders: respelled binds to 006af1c0	RELOCATION_MATCH	PASS	2	
+004ab8b0	binders: respelled binds to 006af1c0	RELOCATION_MATCH	PASS	2	
+004af300	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+004b2490	binders: respelled binds to 004b0c80	RELOCATION_MATCH	PASS	2	
+004feec0	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+004ff390	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	4	
+005b37f7	binders: respelled binds to 004c9d60	RELOCATION_MATCH	PASS	2	
+005cd767	binders: respelled binds to 004c9d60	RELOCATION_MATCH	PASS	2	
+006178f0	binders: respelled binds to 006af180,006af1c0	RELOCATION_MATCH	PASS	2	
+006345c0	self+binders: respelled binds to 00633bf0,00633cb0	RELOCATION_MATCH	PASS	2	
+0064499c	binders: respelled binds to 00493ac2	RELOCATION_MATCH	PASS	4	
+00645292	binders: respelled binds to 00493ac2	RELOCATION_MATCH	PASS	2	
+006558ce	self	MATCH	PASS	2	
+006622a0	self	MATCH	PASS	2	
+006702e0	binders: respelled binds to 006622a0	RELOCATION_MATCH	PASS	2	
+00681610	self	MATCH	PASS	2	
+00681a70	self	RELOCATION_MATCH	PASS	5	
+00682140	self+binders: respelled binds to 00681610	RELOCATION_MATCH	PASS	2	
+006909a0	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+00694020	binders: respelled binds to 004c9d60	RELOCATION_MATCH	PASS	2	
+006a76a0	self	MATCH	PASS	3	
+006a76b0	self	MATCH	PASS	2	
+006af1c0	self	MATCH	PASS	4	
+006cfaa0	self	RELOCATION_MATCH	PASS	2	
+006cfc90	self	RELOCATION_MATCH	PASS	2	
+006cfda0	binders: respelled binds to 00682140,006cfc90	RELOCATION_MATCH	PASS	2	
+006cfec0	binders: respelled binds to 006cfaa0	RELOCATION_MATCH	PASS	2	
+006cff10	binders: respelled binds to 006cfc90,006d3c40	RELOCATION_MATCH	PASS	2	
+006d0180	binders: respelled binds to 00682140	RELOCATION_MATCH	PASS	2	
+006d03e0	self+binders: respelled binds to 006cfc90	RELOCATION_MATCH	PASS	2	
+006d0800	self+binders: respelled binds to 006cfc90	RELOCATION_MATCH	PASS	2	
+006d3c40	self+binders: respelled binds to 01238c6c	RELOCATION_MATCH	PASS	2	
+006e7820	binders: respelled binds to 006af1c0	RELOCATION_MATCH	PASS	2	
+00700940	binders: respelled binds to 00686a70	RELOCATION_MATCH	PASS	2	
+00706950	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+00713ee0	binders: respelled binds to 006622a0	RELOCATION_MATCH	PASS	2	
+00714900	binders: respelled binds to 006622a0	RELOCATION_MATCH	PASS	2	
+0072b160	binders: respelled binds to 007c7890	RELOCATION_MATCH	PASS	2	
+0072c790	binders: respelled binds to 0062e900,006644f0	RELOCATION_MATCH	PASS	2	
+00746260	binders: respelled binds to 006af1c0,006af220	RELOCATION_MATCH	PASS	2	
+00752300	binders: respelled binds to 00449970	RELOCATION_MATCH	PASS	2	
+00753ba0	binders: respelled binds to 00752f30,013bace4,013bace8	RELOCATION_MATCH	PASS	2	
+0077ce00	binders: respelled binds to 00993e30	RELOCATION_MATCH	PASS	2	
+00787e12	binders: respelled binds to 00a01c10	RELOCATION_MATCH	PASS	2	
+0078e900	self	RELOCATION_MATCH	PASS	2	
+0078f820	binders: respelled binds to 0078e900	RELOCATION_MATCH	PASS	2	
+00793e00	self	RELOCATION_MATCH	PASS	2	
+00794d90	binders: respelled binds to 00793e00	RELOCATION_MATCH	PASS	2	
+007b0950	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+007be0f9	binders: respelled binds to 004c9d60	RELOCATION_MATCH	PASS	2	
+007c9180	binders: respelled binds to 0062e900,006644f0	RELOCATION_MATCH	PASS	2	
+007e5b90	binders: respelled binds to 006644f0	RELOCATION_MATCH	PASS	3	
+007e92d0	binders: respelled binds to 00686d20	RELOCATION_MATCH	PASS	2	
+007ed2c0	binders: respelled binds to 006622a0,006644f0	RELOCATION_MATCH	PASS	2	
+007f24e0	binders: respelled binds to 00815420	RELOCATION_MATCH	PASS	2	
+008023e0	self+binders: respelled binds to 007f5ae0	RELOCATION_MATCH	PASS	2	
+00842f70	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+00845ce0	binders: respelled binds to 004c9d60	RELOCATION_MATCH	PASS	2	
+0088e6f0	binders: respelled binds to 0076d2f0	RELOCATION_MATCH	PASS	2	
+00890470	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+008904e0	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+0089a390	binders: respelled binds to 00687540	RELOCATION_MATCH	PASS	2	
+0090e090	binders: respelled binds to 006a76b0,006af1c0,006af200	RELOCATION_MATCH	PASS	2	
+0090e2e0	binders: respelled binds to 006a76b0,0090c900	RELOCATION_MATCH	PASS	2	
+0090e4a0	binders: respelled binds to 006a76b0,0090c900	RELOCATION_MATCH	PASS	2	
+00914aa0	binders: respelled binds to 006a76a0	RELOCATION_MATCH	PASS	2	
+00914b20	binders: respelled binds to 006a76a0	RELOCATION_MATCH	PASS	2	
+00919440	binders: respelled binds to 00919240	RELOCATION_MATCH	PASS	2	
+00919510	binders: respelled binds to 00919240	RELOCATION_MATCH	PASS	2	
+009195d0	binders: respelled binds to 00919240	RELOCATION_MATCH	PASS	2	
+0091a5b0	self+binders: respelled binds to 006af1c0,006af1e0,006af200	RELOCATION_MATCH	PASS	3	made the instance const (QBEPBV, Ego_r.pdb 0x0093E080) after the final pass; regraded
+00924b40	binders: respelled binds to 006644f0	RELOCATION_MATCH	PASS	2	
+00942390	binders: respelled binds to 006a76a0	RELOCATION_MATCH	PASS	2	
+00968bc0	binders: respelled binds to 006622a0,00662650	RELOCATION_MATCH	PASS	2	
+0096eb40	binders: respelled binds to 007446a0	RELOCATION_MATCH	PASS	2	
+0097a630	binders: respelled binds to 007446a0	RELOCATION_MATCH	PASS	2	
+0097ccd0	binders: respelled binds to 007446a0	RELOCATION_MATCH	PASS	2	
+0097d360	binders: respelled binds to 006af1c0	RELOCATION_MATCH	PASS	2	
+00986e30	binders: respelled binds to 006a76a0,006a76b0	RELOCATION_MATCH	PASS	2	
+00993e30	self	MATCH	PASS	2	
+00a8e6c0	self+binders: respelled binds to 00993e30,00993e50,00993ea0	RELOCATION_MATCH	PASS	3	
+00aa3af0	self	RELOCATION_MATCH	PASS	2	
+00ab5710	binders: respelled binds to 00ab5030	RELOCATION_MATCH	PASS	2	
+00aedaf0	binders: respelled binds to 00993e30,00993e50,00993ea0,00993eb0,00993ee0,00995ae0	RELOCATION_MATCH	PASS	2	
+00b094b0	binders: respelled binds to 006558ce	RELOCATION_MATCH	PASS	2	
+00bcdfb0	binders: respelled binds to 006558ce	RELOCATION_MATCH	PASS	2	

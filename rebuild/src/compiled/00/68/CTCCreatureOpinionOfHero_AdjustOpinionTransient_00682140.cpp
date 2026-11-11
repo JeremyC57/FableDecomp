@@ -1,5 +1,5 @@
-// CTCCreatureOpinionOfHero::ApplyOpinionTransientOffset(EOpinion opinion, float peakOffset, long framesToRunIn, long framesToRunOut, float finalOffset, bool ignorePersonality) -- queue a transient opinion offset, scaled by the creature's personality traits for that opinion unless told to ignore them or it has no personality def
-// Leaf: ?ApplyOpinionTransientOffset@CTCCreatureOpinionOfHero@@
+// CTCCreatureOpinionOfHero::AdjustOpinionTransient(EOpinion opinion, float peakOffset, long framesToRunIn, long framesToRunOut, float finalOffset, bool ignorePersonality) -- queue a transient opinion offset, scaled by the creature's personality traits for that opinion unless told to ignore them or it has no personality def
+// Leaf: ?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z
 //
 // Retail 0x00682140, 160 bytes, thiscall `ret 18h`.
 // Callees: COpinionTransientOffset::COpinionTransientOffset(EOpinion, float, long, long, float) @ 0x00681610 (landed),
@@ -19,8 +19,12 @@
 //   VC7.1 evaluates the traits argument first); the def pointer assigned inside the condition gets edi and `this` ebx
 //   (a local initialised before the `if` swaps them).  Both temporaries share the 0x30 frame; each arm has its own
 //   epilogue.
-// Name: catalog / landed callers "ApplyOpinionTransientOffset" (not in the PDB name sets; descriptive).
-typedef long EOpinion;
+// Name (naming agent NF21, 2026-11-11): Ego_r.pdb and FableWin.pdb both spell ?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@
+//   QAEXW4EOpinion@@MJJM_N@Z, the only CTCCreatureOpinionOfHero member taking (EOpinion, float, long, long, float, bool); the
+//   landed callers (CTCWife OnHeroViolence 0x006CFDA0, Divorce 0x006D0180, Marry 0x006D18A0) push exactly those six arguments.
+//   The catalog's "ApplyOpinionTransientOffset" was descriptive. EOpinion is the PDB enum (the COpinionTransientOffset ctor
+//   0x00681610 is ??0COpinionTransientOffset@@QAE@W4EOpinion@@MJJM@Z in Ego_r.pdb).
+enum EOpinion;                                              // MS forward enum (Ego_r.pdb)
 
 class COpinionPersonalityTraits {                           // 36 bytes (Ego_r.pdb)
 public:
@@ -77,13 +81,13 @@ public:
     CDefPointer<COpinionPersonalityDef>  PPersonalityDef;   // +0x20
     unsigned char                        _pad24[0x338 - 0x24];
     std::list<COpinionTransientOffset>   TransientOffsets;  // +0x338
-    void ApplyOpinionTransientOffset(EOpinion opinion, float peakOffset, long framesToRunIn, long framesToRunOut,
-                                     float finalOffset, bool ignorePersonality);
+    void AdjustOpinionTransient(EOpinion opinion, float peakOffset, long framesToRunIn, long framesToRunOut,
+                                float finalOffset, bool ignorePersonality);
 };
 
-void CTCCreatureOpinionOfHero::ApplyOpinionTransientOffset(EOpinion opinion, float peakOffset, long framesToRunIn,
-                                                           long framesToRunOut, float finalOffset,
-                                                           bool ignorePersonality)
+void CTCCreatureOpinionOfHero::AdjustOpinionTransient(EOpinion opinion, float peakOffset, long framesToRunIn,
+                                                      long framesToRunOut, float finalOffset,
+                                                      bool ignorePersonality)
 {
     const COpinionPersonalityDef* personality;
     if (!ignorePersonality && (personality = PPersonalityDef) != 0) {

@@ -30,13 +30,13 @@ struct CMessageList {
 };
 
 class CMessageEventFilter_IsOfType { public:
-    bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF1C0 Ego_r/FableWin ??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
 };
 class CMessageEventFilter_IsOriginatedByThing { public:
-    bool operator()(CMessageEvent* event) const;   // 0x006AF200
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF200 Ego_r/FableWin ??RCMessageEventFilter_IsOriginatedByThing@@QBE_NABVCMessageEvent@@@Z
 };
 class CThingFilter_In2DRange { public:
-    bool operator()(CThing* thing) const;          // 0x006A76B0
+    bool operator()(const CThing& thing) const;    // 0x006A76B0 Ego_r/FableWin ??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z
 };
 
 inline const CBaseIntelligentPointer& GetOriginator(CMessageEvent* event)   // POriginator at +0x48
@@ -52,7 +52,7 @@ template <class F> class CMessageEventFilter_ThingSearchFilter { public:
         if (originator.GetPItem() && !(~originator.GetPItem()->m_flags6c & 0x1f)) {   // all five low bits set: `not eax ; test al,1Fh`
             CThing* thing = (CThing*)originator.GetPItem();
             if (thing)
-                return (*m_pFilter)(thing);
+                return (*m_pFilter)(*thing);
         }
         return false;
     }
@@ -62,7 +62,7 @@ template <class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
-    bool operator()(CMessageEvent* event) const { return (*m_pFirst)(event) && (*m_pSecond)(event) && (*m_pThird)(event); }
+    bool operator()(CMessageEvent* event) const { return (*m_pFirst)(*event) && (*m_pSecond)(*event) && (*m_pThird)(event); }
 };
 
 class CWorld;

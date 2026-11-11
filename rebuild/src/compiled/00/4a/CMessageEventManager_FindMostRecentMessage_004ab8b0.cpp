@@ -14,7 +14,7 @@ struct CMessageList {                              // list<CMessageEvent>: one s
 
 class CMessageEventFilter_IsOfType { public:
     long Type;
-    bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF1C0 Ego_r/FableWin ??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
 };
 
 class CWorld;
@@ -25,7 +25,7 @@ class CMessageEventManager { public:
     {
         for (SMessageNode* node = Messages.m_pHead->m_pNext; node != Messages.m_pHead; node = node->m_pNext) {
             CMessageEvent* event = node->GetEvent();   // a local: retail keeps node + 8 in a register and returns it
-            if (filter(event))
+            if (filter(*event))
                 return event;
         }
         return 0;

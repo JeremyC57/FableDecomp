@@ -26,16 +26,16 @@ struct CMessageList {
 };
 
 class CMessageEventFilter_IsOfType { public:
-    bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF1C0 Ego_r/FableWin ??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
 };
 class CMessageEventFilter_OccuredBetween { public:
-    bool operator()(CMessageEvent* event) const;   // 0x006AF180
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF180 Ego_r/FableWin ??RCMessageEventFilter_OccuredBetween@@QBE_NABVCMessageEvent@@@Z
 };
 
 template <class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
-    bool operator()(CMessageEvent* event) const { return (*m_pFirst)(event) && (*m_pSecond)(event); }
+    bool operator()(CMessageEvent* event) const { return (*m_pFirst)(*event) && (*m_pSecond)(*event); }
 };
 
 struct SMessagePtrNode {

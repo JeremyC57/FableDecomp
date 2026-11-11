@@ -53,7 +53,9 @@ extern CThingList g_ScriptedHookThings;     // 0x013BAEF8 (CTCAvoidRegionExit st
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                    // +0x04
-    const CWorldMap& PeekWorldMap() const;  // 0x00686D20
+protected:
+    const CWorldMap& PeekWorldMap() const;  // 0x00686D20 Ego_r/FableWin ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (protected)
+public:
     CThingSearchTools* GetThingSearchTools() const;   // 0x00686D90
 };
 

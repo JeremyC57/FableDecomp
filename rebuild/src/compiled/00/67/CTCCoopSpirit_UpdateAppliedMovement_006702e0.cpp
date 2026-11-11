@@ -68,8 +68,12 @@ class CThing { public:
         return tc;
     }
 };
-class CThingPlayerCreature : public CThing { public:
-    bool IsPerformingAnyAction();                           // 0x006622A0
+// Name fix (naming agent NF21, 2026-11-11): IsPerformingAnyAction is the inherited const CThingCreatureBase member
+//   ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb; RTTI base CThingCreatureBase).
+class CThingCreatureBase : public CThing { public:
+    bool IsPerformingAnyAction() const;                     // 0x006622A0
+};
+class CThingPlayerCreature : public CThingCreatureBase { public:
     float GetCurrentRelativeMovementAngleXY() const;        // 0x006A9640
 };
 class CTCPhysicsBase { public:

@@ -73,7 +73,7 @@ private: public:
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
-    CTCBase* AddTC(const CCharString& name, bool flag, void* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool flag, const class CTCParamsBase* params);   // 0x004C9D60 (Ego_r.pdb; name fix NF21)
     void SetAttackedByCreature(CThing* attacker);       // 0x006624F0
     void Kill(bool flag);                               // 0x004C9B80
 };

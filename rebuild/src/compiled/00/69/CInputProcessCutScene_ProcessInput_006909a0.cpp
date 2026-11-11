@@ -40,10 +40,10 @@ public:
 };
 #include "engine/C3DVector.h"
 class CThing;
-class CMessageEvent;
-class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): shared header.
+#include "rebuild_abi.h"
+#include "engine/CMessageEventManager.h"
 class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60
@@ -89,7 +89,7 @@ void CInputProcessCutScene::ProcessInput(const CInputEvent& event, CProcessedInp
     }
     if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().CutsceneActionMode) {
         if (event.GetDeviceType() == 3 && event.GetType() == 4)
-            World->PMessageEventManager->AddMessage(0x4b, 0x32, &C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
+            World->PMessageEventManager->AddMessage(MESSAGE_EVENT_ACTION_MODE_BUTTON_PRESSED, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
     } else if (IsEventGameAction(0x16, event))
-        World->PMessageEventManager->AddMessage(0x4b, 0x32, &C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
+        World->PMessageEventManager->AddMessage(MESSAGE_EVENT_ACTION_MODE_BUTTON_PRESSED, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
 }

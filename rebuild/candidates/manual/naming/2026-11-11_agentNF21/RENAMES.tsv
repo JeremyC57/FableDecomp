@@ -1,0 +1,117 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+006345c0	CPlayer	AddMode	?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z	CPlayer::AddMode	?AddMode@CPlayer@@QAEXJ_N@Z	Ego_r.pdb / FableWin.pdb ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (enum EPlayerMode parameter)
+006558ce	CEnginePrimitiveSprite	CEnginePrimitiveSprite	??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMW4EEnginePrimitiveBlendMode@@EEEEMW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z	CEnginePrimitiveSprite::CEnginePrimitiveSprite	??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMJEEEEMJJ@Z	Ego_r.pdb 0x005452F0 / FableWin.pdb 0x01D8E9A0 (enum parameters)
+006622a0	CThingCreatureBase	IsPerformingAnyAction	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	CThingCreatureBase::IsPerformingAnyAction	?IsPerformingAnyAction@CThingCreatureBase@@QAEHXZ	Ego_r.pdb / FableWin.pdb ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (const, bool)
+00681610	COpinionTransientOffset	COpinionTransientOffset	??0COpinionTransientOffset@@QAE@W4EOpinion@@MJJM@Z	COpinionTransientOffset::COpinionTransientOffset	??0COpinionTransientOffset@@QAE@JMJJM@Z	Ego_r.pdb 0x0058F680 / FableWin.pdb 0x01F49A10 (EOpinion first parameter)
+00681a70	CTCCreatureOpinionOfHero	ClearAllKnownDeeds	?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@AAEXXZ	CTCCreatureOpinionOfHero::ClearAllKnownDeeds	?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	Ego_r.pdb / FableWin.pdb private (AAE)
+00682140	CTCCreatureOpinionOfHero	AdjustOpinionTransient	?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z	CTCCreatureOpinionOfHero::ApplyOpinionTransientOffset	?ApplyOpinionTransientOffset@CTCCreatureOpinionOfHero@@QAEXJMJJM_N@Z	Ego_r.pdb / FableWin.pdb ?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z; body builds COpinionTransientOffset
+006a76a0	CThingFilter_IsNot	operator()	??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z	CThingFilter_IsNot::operator()	?op@S@@QAE_NPAX@Z	Ego_r.pdb / FableWin.pdb ??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z; body compares &Thing != &thing
+006a76b0	CThingFilter_In2DRange	operator()	??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z	CThingFilter_In2DRange::operator()	??RCThingFilter_In2DRange@@QBE_NPAVCThing@@@Z	Ego_r.pdb / FableWin.pdb const CThing& parameter
+006af1c0	CMessageEventFilter_IsOfType	operator()	??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z	CMessageEventFilter_HasExtraData::operator()	?op@S@@QAEHPAUE@@@Z	Ego_r.pdb / FableWin.pdb; body compares CMessageEvent::Type (+0x08) = IsOfType (HasExtraData would read +0x3C)
+006cfaa0	CTCWife	FindMaritalHome	?FindMaritalHome@CTCWife@@ABEPAVCThingBuilding@@XZ	CTCWife::FindMaritalHome	?FindMaritalHome@CTCWife@@QBEPAVCThingBuilding@@XZ	Ego_r.pdb / FableWin.pdb private const (ABE)
+006cfc90	CTCWife	SetAttractionIcon	?SetAttractionIcon@CTCWife@@AAEX_NME@Z	CTCWife::SetAttractionIcon	?SetAttractionIcon@CTCWife@@QAEX_NME@Z	Ego_r.pdb / FableWin.pdb private (AAE)
+006d03e0	CTCWife	InitWifeNonpersistentState	?InitWifeNonpersistentState@CTCWife@@QAEXXZ	CTCWife::InitWifeNonpersistentState	?InitWifeNonpersistentState@CTCWife_State@@QAEXXZ	Ego_r.pdb / FableWin.pdb CTCWife member (was CTCWife_State stand-in)
+006d0800	CTCWife	OnInitialActivate	?OnInitialActivate@CTCWife@@UAEXXZ	CTCWife::OnInitialActivate	?OnInitialActivate@CTCWife_State@@QAEXXZ	Ego_r.pdb / FableWin.pdb ?OnInitialActivate@CTCWife@@UAEXXZ (public virtual; was CTCWife_State stand-in)
+006d3c40	CTCBuyableHouse	SetWifeLivingHere	?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z	_unattributed::AssignTarget_006d3c40	?AssignTarget_006d3c40@CClass_006d3c40@@QAEXPAVCBaseObject@@@Z	FableWin.pdb 0x0248B580 ?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z; Ego_r.pdb member WifeLivingHere +0x38 is the pointer the body assigns
+0078e900	CTCDivineWrath	ResetCreatureHitState	?ResetCreatureHitState@CTCDivineWrath@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	CTCDivineWrath::ResetCreatureHitState	?ResetCreatureHitState@CTCDivineWrath@@QAEXUCIntelligentPointerCreature@@@Z	Ego_r.pdb / FableWin.pdb private, CIntelligentPointer<CThingCreatureBase> by value
+00793e00	CTCUnholyPower	ResetCreatureHitState	?ResetCreatureHitState@CTCUnholyPower@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	CTCUnholyPower::ResetCreatureHitState	?ResetCreatureHitState@CTCUnholyPower@@QAEXUCIntelligentPointerCreature@@@Z	Ego_r.pdb / FableWin.pdb private, CIntelligentPointer<CThingCreatureBase> by value
+008023e0	CTCTargetingPlayer	UpdateNearestInterestingThing	?UpdateNearestInterestingThing@CTCTargetingPlayer@@MAEXXZ	CTCTargetingPlayer::UpdateNearestInterestingThing	?UpdateNearestInterestingThing@CTCTargetingPlayer@@UAEXXZ	Ego_r.pdb / FableWin.pdb protected virtual (MAE)
+0091a5b0	CMessageEventManager	FindMostRecentMessage	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	CMessageEventManager::FindMostRecentMessage	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@VCMessageEventFilter_OccuredBetween@@@@@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@VCMessageEventFilter_OccuredBetween@@@@@Z	Ego_r.pdb 0x0093E080 / FableWin.pdb 0x02BC5800 Bind3<IsOfType,IsOriginatedByThing,IsTargettedAtThing> const instance; filter bodies 0x006AF200 (+0x20 OriginatorUID) / 0x006AF1E0 (+0x28 TargetUID)
+00993e30	CDataOutputStream	WriteEBOOL	?WriteEBOOL@CDataOutputStream@@QAEX_N@Z	CDataOutputStream::WriteEBOOL	?WriteEBOOL@CDataOutputStream_Methods@@QAEX_N@Z	Ego_r.pdb 0x00AFBE70 / FableWin.pdb; shared header names 0x00993E30 (was CDataOutputStream_Methods stand-in)
+00a8e6c0	N3DPrimitive::CBaseBlock	SaveBinary	?SaveBinary@CBaseBlock@N3DPrimitive@@QAEXAAVCDataOutputStream@@@Z	CBaseBlock::SaveBinary	?SaveBinary@CBaseBlock@@QAEXAAUCDataOutputStream_Calls@@@Z	Ego_r.pdb 0x00BD0F70 / FableWin.pdb 0x032FECF0 ?SaveBinary@CBaseBlock@N3DPrimitive@@QAEXAAVCDataOutputStream@@@Z
+00aa3af0	C3DKeyframe	ToMatrixTransposed	?ToMatrixTransposed@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z	C3DKeyframe::ToMatrix	?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z	FableWin.pdb 0x03382B40 (ToMatrix) / 0x03382B80 (ToMatrixTransposed); retail body puts the translation in the last column = transposed
+# Section 2
+address	old_symbol	new_symbol
+00449970	?GetMainPlayer@CPlayerManager@@QAEPAVCPlayer@@XZ	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00493ac2	??0CEnginePrimitive2DSprite@@QAE@_KABUC2DCoordF@@JKKJJMMEEEEKABVC2DVector@@2@Z	??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z
+00493ac2	??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@JKKJJMMEEEEK11@Z	??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z
+004b0c80	?GetActiveQuestCardFromScriptName@CQuestManager@@QAEPAVCThing@@ABVCCharString@@@Z	?GetActiveQuestCardFromScriptName@CQuestManager@@QBEPAVCThing@@ABVCCharString@@@Z
+004c9d60	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@JJ@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+004c9d60	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPAX@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+004c9d60	?AddTC@CThing@@QAEXABVCCharString@@_N1@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0062e900	??1CCreatureActionBase@N_0062e900@@UAE@XZ	??1CCombatActionBase@@UAE@XZ
+0062e900	??1CCreatureAction_CastWillEnflameSpell@@UAE@XZ	??1CCombatActionBase@@UAE@XZ
+00633bf0	?UnInitActiveMode@CPlayer@@QAEXJ@Z	?UnInitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z
+00633cb0	?InitActiveMode@CPlayer@@QAEXJ@Z	?InitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z
+006345c0	?AddMode@CPlayer@@QAEXJ_N@Z	?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z
+006558ce	??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMJEEEEMJJ@Z	??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMW4EEnginePrimitiveBlendMode@@EEEEMW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z
+006558ce	??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMJEEEEMJJ@Z	??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMW4EEnginePrimitiveBlendMode@@EEEEMW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z
+006622a0	?IsPerformingAnyAction@CThing@@QAE_NXZ	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ
+006622a0	?IsPerformingAnyAction@CThingAICreature@@QAE_NXZ	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ
+006622a0	?IsPerformingAnyAction@CThingCreature@@QAE_NXZ	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ
+006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QAEHXZ	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ
+006622a0	?IsPerformingAnyAction@CThingPlayerCreature@@QAE_NXZ	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ
+00662650	?FinishCurrentAction@CThingCreature@@QAEXXZ	?FinishCurrentAction@CThingCreatureBase@@QAEXXZ
+006644f0	?SetCurrentAction@CThingAICreature@@QAE_NPAVCCreatureActionBase@@@Z	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+006644f0	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+006644f0	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@N_0062e900@@@Z	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+006644f0	?SetCurrentAction@CThingCreatureBase@@QAE_NPAVCCombatActionBase@@@Z	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+00681610	??0COpinionTransientOffset@@QAE@JMJJM@Z	??0COpinionTransientOffset@@QAE@W4EOpinion@@MJJM@Z
+00681610	??0COpinionTransientOffset@@QAE@JMJJM@Z	??0COpinionTransientOffset@@QAE@W4EOpinion@@MJJM@Z
+00681a70	?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@AAEXXZ
+00682140	?ApplyOpinionTransientOffset@CTCCreatureOpinionOfHero@@QAEXJMJJM_N@Z	?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z
+00682140	?ApplyOpinionTransientOffset@CTCCreatureOpinionOfHero@@QAEXJMJJM_N@Z	?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z
+00686a70	?GetWorld@CTCBase@@QAEPAVCWorld@@XZ	?GetWorld@CTCBase@@IBEAAVCWorld@@XZ
+00686d20	?PeekWorldMap@CTCBase@@QBEABVCWorldMap@@XZ	?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ
+00687540	?AddMessage@CMessageEventManager@@QAEPAUCMessageEvent_Retail@@JKABVC3DVector@@PAUCThing_Retail@@1MMJ@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+00687540	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@JKABVC3DVector@@PAVCThing@@1MMJ@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+00687540	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@JKPBVC3DVector@@PAVCThing@@1MMJ@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+00687540	?AddMessage@CMessageEventManager@@QAEPAXJKPAUC3DVector@@PAUCThing@@1MMJ@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+00687540	?AddMessage@CMessageEventManager@@QAEPAXJKPAVC3DVector@@PAVCThing@@1MMJ@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+00687540	?AddMessage@CMessageEventManager@@QAEPAXW4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MM2@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+00687540	?AddMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@JKABVC3DVector@@PAUCThing_Retail@@1MMJ@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+00687540	?AddMessage@CMessageManager@@QAEXJJABVC3DVector@@JJJJPBVCThing@@@Z	?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+006a76a0	??RCThingFilter_IsNot@@QBE_NPBVCThing@@@Z	??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z
+006a76a0	?op@S@@QAE_NPAX@Z	??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z
+006a76b0	??RCThingFilter_In2DRange@@QBE_NPAVCThing@@@Z	??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z
+006a76b0	??RCThingFilter_In2DRange@@QBE_NPAVCThing@@@Z	??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z
+006a76b0	??RCThingFilter_In2DRange@@QBE_NPBVCThing@@@Z	??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z
+006af180	??RCMessageEventFilter_OccuredBetween@@QBE_NPAVCMessageEvent@@@Z	??RCMessageEventFilter_OccuredBetween@@QBE_NABVCMessageEvent@@@Z
+006af1c0	??RCMessageEventFilter_IsOfType@@QBE_NPAVCMessageEvent@@@Z	??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
+006af1c0	?op@S@@QAEHPAUE@@@Z	??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
+006af1e0	??RCMessageEventFilter_OccuredBetween@@QBE_NPAVCMessageEvent@@@Z	??RCMessageEventFilter_IsTargettedAtThing@@QBE_NABVCMessageEvent@@@Z
+006af200	??RCMessageEventFilter_HasExtraData@@QBE_NPAVCMessageEvent@@@Z	??RCMessageEventFilter_IsOriginatedByThing@@QBE_NABVCMessageEvent@@@Z
+006af200	??RCMessageEventFilter_IsOriginatedByThing@@QBE_NPAVCMessageEvent@@@Z	??RCMessageEventFilter_IsOriginatedByThing@@QBE_NABVCMessageEvent@@@Z
+006af220	??RCMessageEventFilter_CanBeSeenOrHeard@@QBE_NPAVCMessageEvent@@@Z	??RCMessageEventFilter_CanBeSeenOrHeard@@QBE_NABVCMessageEvent@@@Z
+006cfaa0	?FindMaritalHome@CTCWife@@QBEPAVCThingBuilding@@XZ	?FindMaritalHome@CTCWife@@ABEPAVCThingBuilding@@XZ
+006cfaa0	?FindMaritalHome@CTCWife@@QBEPAVCThingBuilding@@XZ	?FindMaritalHome@CTCWife@@ABEPAVCThingBuilding@@XZ
+006cfc90	?SetAttractionIcon@CTCWife@@QAEX_NME@Z	?SetAttractionIcon@CTCWife@@AAEX_NME@Z
+006cfc90	?SetAttractionIcon@CTCWife@@QAEX_NME@Z	?SetAttractionIcon@CTCWife@@AAEX_NME@Z
+006cfc90	?SetAttractionIcon@CTCWife_State@@QAEX_NME@Z	?SetAttractionIcon@CTCWife@@AAEX_NME@Z
+006d03e0	?InitWifeNonpersistentState@CTCWife_State@@QAEXXZ	?InitWifeNonpersistentState@CTCWife@@QAEXXZ
+006d0800	?OnInitialActivate@CTCWife_State@@QAEXXZ	?OnInitialActivate@CTCWife@@UAEXXZ
+006d3c40	?AssignTarget_006d3c40@CClass_006d3c40@@QAEXPAVCBaseObject@@@Z	?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z
+006d3c40	?SetOccupant@CTCBuyableHouse@@QAEXPAVCThing@@@Z	?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z
+007446a0	?GetPerceivedThing@CTCPerceiveThing@@QAEPAVCThing@@XZ	?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
+007446a0	?GetPerceivedThing@CTCPerceiveThing@@QBEPAVCThing@@XZ	?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
+00752f30	?UpdateHeadCreatureAnim@CTCLook@@QAEXPAJJAAVCAnimateThing@@@Z	?UpdateHeadCreatureAnim@CTCLook@@AAEXABVCCharString@@W4ECreatureAnim@@PAVCAnimateThing@@@Z
+0076d2f0	?AreThingsEnemies@CTCEnemy@@SI_NPAVCThing@@0@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z
+0078e900	?ResetCreatureHitState@CTCDivineWrath@@QAEXUCIntelligentPointerCreature@@@Z	?ResetCreatureHitState@CTCDivineWrath@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
+0078e900	?ResetCreatureHitState@CTCDivineWrath@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	?ResetCreatureHitState@CTCDivineWrath@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
+00793e00	?ResetCreatureHitState@CTCUnholyPower@@QAEXUCIntelligentPointerCreature@@@Z	?ResetCreatureHitState@CTCUnholyPower@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
+00793e00	?ResetCreatureHitState@CTCUnholyPower@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	?ResetCreatureHitState@CTCUnholyPower@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
+007c7890	?IsTurncoated@CTCTurncoat@@QAE_NXZ	?IsTurncoated@CTCTurncoat@@QBE_NXZ
+007f5ae0	?UpdateNearestInterestingThing@CTCTargetingBase@@UAEXXZ	?UpdateNearestInterestingThing@CTCTargetingBase@@MAEXXZ
+008023e0	?UpdateNearestInterestingThing@CTCTargetingPlayer@@UAEXXZ	?UpdateNearestInterestingThing@CTCTargetingPlayer@@MAEXXZ
+00815420	?GetBoundingSphere@CTCHitLocations@@QAEXPAVC3DVector@@PAM_N@Z	?GetBoundingSphere@CTCHitLocations@@QBEXAAVC3DVector@@AAM_N@Z
+0090c900	??RCThingFilter_IsValidGossipee@@QBE_NPAVCThingAICreature@@@Z	??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z
+00919240	?FindInterestingThing@CAIStateGroup_LookAtInterestingThings@@QAEPAVCThing@@XZ	?FindInterestingThing@CAIStateGroup_LookAtInterestingThings@@AAEPAVCThing@@XZ
+0091a5b0	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@VCMessageEventFilter_OccuredBetween@@@@@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@VCMessageEventFilter_OccuredBetween@@@@@Z	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z
+00993e30	?WriteBool@CDataOutputStream@@QAEX_N@Z	?WriteEBOOL@CDataOutputStream@@QAEX_N@Z
+00993e30	?WriteBool@CDataOutputStream_Calls@@QAEX_N@Z	?WriteEBOOL@CDataOutputStream@@QAEX_N@Z
+00993e30	?WriteEBOOL@CDataOutputStream_Methods@@QAEX_N@Z	?WriteEBOOL@CDataOutputStream@@QAEX_N@Z
+00993e30	?WriteEBOOL@CDataOutputStream_Methods@@QAEX_N@Z	?WriteEBOOL@CDataOutputStream@@QAEX_N@Z
+00993e50	?WriteByte@CDataOutputStream_Calls@@QAEXE@Z	?WriteUBYTE@CDataOutputStream@@QAEXE@Z
+00993e50	?WriteUBYTE@CDataOutputStream_Methods@@QAEXE@Z	?WriteUBYTE@CDataOutputStream@@QAEXE@Z
+00993ea0	?WriteULong@CDataOutputStream_Calls@@QAEXK@Z	?WriteULONG@CDataOutputStream@@QAEXK@Z
+00993ea0	?WriteULong@CDataOutputStream_Methods@@QAEXK@Z	?WriteULONG@CDataOutputStream@@QAEXK@Z
+00993eb0	?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z	?WriteSLONG@CDataOutputStream@@QAEXJ@Z
+00993ee0	?WriteFloat@CDataOutputStream_Methods@@QAEXM@Z	?WriteFloat@CDataOutputStream@@QAEXM@Z
+00995ae0	?WriteNullTerminatedString@CDataOutputStream_Methods@@QAEXABVCCharString@@@Z	?WriteNullTerminatedString@CDataOutputStream@@QAEXABVCCharString@@@Z
+00a01c10	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ
+00a8e6c0	?SaveBinary@CBaseBlock@@QAEXAAUCDataOutputStream_Calls@@@Z	?SaveBinary@CBaseBlock@N3DPrimitive@@QAEXAAVCDataOutputStream@@@Z
+00aa3af0	?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z	?ToMatrixTransposed@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+00ab5030	?ResetNonExclusiveMouse@CMouseDX@@QAEXXZ	?ResetNonExclusiveMouse@CMouseDX@@IAEXXZ
+01238c6c	??_7CIntelligentPointer@@6B@	??_7?$CIntelligentPointer@VCThing@@@@6B@
+013bace4	?g_lookHeadAnimHorizontal@@3JA	?g_CCharString_013bace4@@3VCCharString@@A
+013bace8	?g_lookHeadAnimVertical@@3JA	?g_CCharString_013bace8@@3VCCharString@@A

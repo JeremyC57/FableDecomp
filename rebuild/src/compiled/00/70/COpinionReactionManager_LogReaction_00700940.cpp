@@ -17,11 +17,14 @@ class CThing;
 class CWorld { public:
     static long __fastcall GetFrame();            // 0x0049D870
 };
+class COpinionReactionManager;
 class CTCBase { public:
     virtual void v00();
-    CWorld* GetWorld();                     // 0x00686A70
+protected:
+    CWorld& GetWorld() const;               // 0x00686A70 Ego_r/FableWin ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (protected)
 };
 class CTCCreatureOpinionOfHero : public CTCBase { public:
+    friend class COpinionReactionManager;   // retail reaches the protected GetWorld through the opinion component
     unsigned char _pad04[8];
     long LastOpinionReactionFrame;          // +0x0c
 };
@@ -78,6 +81,6 @@ void COpinionReactionManager::LogReaction(long reaction, CThing* creature, bool 
     if (!fromScript)
     {
         CTCCreatureOpinionOfHero* opinion = creature->GetOpinionOfHeroTC();
-        opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetFrame();
+        opinion->LastOpinionReactionFrame = opinion->GetWorld().GetFrame();
     }
 }

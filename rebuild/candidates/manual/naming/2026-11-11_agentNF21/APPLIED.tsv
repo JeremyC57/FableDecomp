@@ -1,0 +1,177 @@
+address	status	binders_respelled	note
+00403eb0	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 5 binder(s) still on stand-in/other spellings: 0045df5e 0045e37f 0045ec72 004675f6 007adbf0
+00404500	partial	0	6 binder(s) still on stand-in/other spellings: 00451e11 0045228f 004522f4 00452b4d 004568bc 00456903
+00405220	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed; 1 binder(s) still on stand-in/other spellings: 00405350
+00405a60	partial	0	1 binder(s) still on stand-in/other spellings: 00405350
+0040dce0	partial	0	11 binder(s) still on stand-in/other spellings: 0047db73 005840a6 005907ab 006463ff 0065b2c4 0065b349 0065bffa 0065c45a ...; IS_THING_ALIVE binders all use local stand-ins; not done
+0040f020	partial	0	3 binder(s) still on stand-in/other spellings: 008af850 00927c80 00935160; CVectorMap LowerBound stand-in instances; not done
+00410de0	partial	0	2 binder(s) still on stand-in/other spellings: 0047db73 006594bb
+00415dd0	partial	0	3 binder(s) still on stand-in/other spellings: 005c0e81 005c3a95 008e7040
+0041c930	done	0	verified; no landed binder or self row needed a change
+0042b1a6	done	0	verified; no landed binder or self row needed a change
+004365b0	partial	0	9 binder(s) still on stand-in/other spellings: 0074b770 00783850 0085b160 0085b5b0 008e7040 0090fae0 00935160 0093b8b0 ...; CVectorMap LowerBound stand-in instances (local CVectorMap models); not done
+00449970	partial	1	6 binder(s) still on stand-in/other spellings: 0065b0b4 0082a960 0082b630 0088df80 008902b0 008d74b0
+004874d0	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 00890670
+00487510	partial	0	3 binder(s) still on stand-in/other spellings: 004c7ca0 00687c90 00687cb0
+00487dc0	done	0	verified; no landed binder or self row needed a change
+00493ac2	done	3	
+0049c370	partial	0	11 binder(s) still on stand-in/other spellings: 0049c450 005185f0 00518900 00746560 00747890 00778b30 0080a550 0080ec50 ...; STLport vector<const CThing*> insert_overflow stand-ins; not done
+0049d850	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+004a9730	partial	0	4 binder(s) still on stand-in/other spellings: 005c2086 0065f0fa 00788d68 007c9180
+004af7a0	done	0	verified; no landed binder or self row needed a change
+004b0160	partial	0	2 binder(s) still on stand-in/other spellings: 00892f80 00892fd0
+004b0c80	partial	1	2 binder(s) still on stand-in/other spellings: 004b1340 00896a30
+004b73a0	partial	0	5 binder(s) still on stand-in/other spellings: 004b1720 004b1960 004b19f0 0056cb40 0056cb60
+004b8c00	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 8 binder(s) still on stand-in/other spellings: 004aff80 004b1960 004b19f0 004b4770 004b49e0 004b9af0 004ba590 005e4430
+004b8e40	partial	0	6 binder(s) still on stand-in/other spellings: 004b0160 004b2fe0 004b3810 004b3a20 00aebaf0 00aebc90
+004b9250	partial	0	1 binder(s) still on stand-in/other spellings: 004b02f0
+004c11f0	partial	0	1 binder(s) still on stand-in/other spellings: 0071ab20
+004c73d0	partial	0	8 binder(s) still on stand-in/other spellings: 00744730 00871d30 008f7950 008f7bd0 00927c80 00935160 00957f20 009863e0
+004c7a80	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+004c9d60	done	5	
+004fc600	done	0	verified; no landed binder or self row needed a change
+005812df	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 3 binder(s) still on stand-in/other spellings: 0057d990 0057d9fd 0057daf5
+005da980	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 00715110
+005daa40	partial	0	1 binder(s) still on stand-in/other spellings: 00715110
+005e4740	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed; 1 binder(s) still on stand-in/other spellings: 00896d20
+005f4b30	partial	0	1 binder(s) still on stand-in/other spellings: 0064db2b
+005f9f14	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 0064db2b
+005fa3a5	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 005f4c45
+0062e900	partial	2	2 binder(s) still on stand-in/other spellings: 00961880 009627c0
+00634160	partial	0	1 binder(s) still on stand-in/other spellings: 008913c0
+00634190	partial	0	4 binder(s) still on stand-in/other spellings: 00487120 00487150 004887c0 006e7630
+006345c0	partial	0	self row respelled (RENAMES section 1); 6 binder(s) still on stand-in/other spellings: 00487140 00487170 004887c0 00636e50 006e7630 0088df80
+006558ce	done	2	self row respelled (RENAMES section 1)
+0065be6c	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+0065edba	done	0	verified; no landed binder or self row needed a change
+0065f0fa	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+00661f70	partial	0	1 binder(s) still on stand-in/other spellings: 008902b0
+006622a0	partial	5	self row respelled (RENAMES section 1); 4 binder(s) still on stand-in/other spellings: 00713510 00715560 00961880 009627c0
+006644f0	partial	5	2 binder(s) still on stand-in/other spellings: 00713510 00715560
+00668b60	partial	0	7 binder(s) still on stand-in/other spellings: 0078e820 00793d20 0080fad0 0091eb60 00921440 0094bca0 0096c2e0
+00669d30	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 2 binder(s) still on stand-in/other spellings: 007a09b0 007c6aa0
+0066bd00	partial	0	4 binder(s) still on stand-in/other spellings: 0078ebf0 007940f0 0079ce80 0079de00
+00681a70	done	0	self row respelled (RENAMES section 1)
+00682140	done	2	self row respelled (RENAMES section 1)
+006869d0	done	0	verified; no landed binder or self row needed a change
+00686a70	partial	1	2 binder(s) still on stand-in/other spellings: 006a23e0 00960760
+00686d20	partial	1	2 binder(s) still on stand-in/other spellings: 00723a10 007e00d0
+00686d60	partial	0	1 binder(s) still on stand-in/other spellings: 005dab10
+00686d90	partial	0	2 binder(s) still on stand-in/other spellings: 00799900 007e92d0
+00687540	done	10	
+006925a0	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 10 binder(s) still on stand-in/other spellings: 0069f670 0069fc40 00842b60 00848ae0 00858130 00858400 008b69d0 008b93b0 ...
+006a1440	partial	0	4 binder(s) still on stand-in/other spellings: 00715110 0072c790 008d9530 0095d310
+006a76a0	partial	4	self row respelled (RENAMES section 1); 1 binder(s) still on stand-in/other spellings: 007f6df0
+006a76b0	done	4	self row respelled (RENAMES section 1)
+006af1c0	done	8	self row respelled (RENAMES section 1)
+006bb390	partial	0	9 binder(s) still on stand-in/other spellings: 0088fe40 00918880 0092c4e0 0092c520 0092c560 0092d600 00946690 00957f20 ...
+006c5630	partial	0	2 binder(s) still on stand-in/other spellings: 0095fed0 00960760
+006cfaa0	done	1	self row respelled (RENAMES section 1)
+006cfc90	done	4	self row respelled (RENAMES section 1)
+006d3c40	done	1	self row respelled (RENAMES section 1)
+006e0880	partial	0	2 binder(s) still on stand-in/other spellings: 008f7950 008f7bd0
+006e0be0	partial	0	1 binder(s) still on stand-in/other spellings: 008f7bd0
+006ef790	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 3 binder(s) still on stand-in/other spellings: 006e97f0 008e7040 00979910
+00705170	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 008d0730
+0070c050	partial	0	2 binder(s) still on stand-in/other spellings: 005b33f4 007502d0
+0070c4e0	partial	0	3 binder(s) still on stand-in/other spellings: 008d70a0 008d88a0 008e97b0
+007446a0	partial	3	9 binder(s) still on stand-in/other spellings: 0089cd70 0089d0e0 008dcb60 0091db50 00935160 0093b8b0 0093c4e0 009577e0 ...
+00744d00	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+007463e0	partial	0	1 binder(s) still on stand-in/other spellings: 00747890
+007471f0	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00752510	done	0	verified; no landed binder or self row needed a change
+00752f30	partial	1	row busy (BUSY.txt / RESERVED): self row not checked or changed
+007677e0	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+0076d2f0	partial	1	9 binder(s) still on stand-in/other spellings: 0064a1ae 006a7550 006a7600 0072b160 007f9e70 00807b70 0082b630 009098e0 ...
+0076fc60	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 0076fe10
+0078e900	done	1	self row respelled (RENAMES section 1)
+00793e00	done	1	self row respelled (RENAMES section 1)
+007c7890	partial	1	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 008a19b0
+007f5ae0	partial	1	row busy (BUSY.txt / RESERVED): self row not checked or changed
+007f5d20	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+007f6df0	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 007f7040
+00812790	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 6 binder(s) still on stand-in/other spellings: 00812e20 00812eb0 00812f20 00812f70 00813100 008138e0
+00813010	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00813280	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+008132d0	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+008136a0	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+00815420	partial	1	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00846bc0	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00856b10	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+0085cde0	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+0085f0c0	partial	0	6 binder(s) still on stand-in/other spellings: 006622d0 006a73f0 006ebdd0 00745730 008b0780 0091db50
+0085f8d0	partial	0	2 binder(s) still on stand-in/other spellings: 007c9180 008e9460
+008fcfc0	done	0	verified; no landed binder or self row needed a change
+00910cf0	partial	0	2 binder(s) still on stand-in/other spellings: 00910d50 00910da0
+00919240	partial	3	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00919780	done	0	verified; no landed binder or self row needed a change
+00924b90	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00925920	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 00924b40
+009259b0	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+00934e50	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed; 1 binder(s) still on stand-in/other spellings: 00934920
+00956a70	done	0	verified; no landed binder or self row needed a change
+00956e70	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00957210	done	0	verified; no landed binder or self row needed a change
+00993e30	done	3	self row respelled (RENAMES section 1)
+00993eb0	partial	1	12 binder(s) still on stand-in/other spellings: 004522f4 0046c2d2 0047931e 005db1e0 005db210 005db240 005db330 005db440 ...
+0099a2d0	partial	0	4 binder(s) still on stand-in/other spellings: 00404720 00891610 00891d50 008f7bd0
+0099aed0	partial	0	2 binder(s) still on stand-in/other spellings: 005b15c2 009994a0
+0099b510	partial	0	1 binder(s) still on stand-in/other spellings: 009994a0
+0099b7d0	done	0	verified; no landed binder or self row needed a change
+0099bf30	partial	0	1 binder(s) still on stand-in/other spellings: 0049ef50; claim holds (PBG: the project wchar_t is unsigned short); 0049ef50 binds PB_W, a native-wchar_t compile of that row, not a respell
+0099eae0	partial	0	6 binder(s) still on stand-in/other spellings: 005dcf70 006e11f0 008af850 01228ec4 01228ece 012297f0; CCharString family (stand-in string classes, thunks 01228ec4/01228ece); not done
+0099ebf0	partial	0	1 binder(s) still on stand-in/other spellings: 006e11f0
+0099ec30	partial	0	2 binder(s) still on stand-in/other spellings: 005dcf70 008d9530
+0099efb0	partial	0	self row still on a stand-in spelling (not rewritten in this pass)
+009a4ec0	partial	0	4 binder(s) still on stand-in/other spellings: 004022b0 00405650 0054ed90 00ab5390
+009bedc0	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 2 binder(s) still on stand-in/other spellings: 00405650 0040f0e0
+009c7b70	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 2 binder(s) still on stand-in/other spellings: 0072e710 0072e940
+009c7b80	partial	0	self row still on a stand-in spelling (not rewritten in this pass); 1 binder(s) still on stand-in/other spellings: 004a0370
+009d49b0	partial	0	2 binder(s) still on stand-in/other spellings: 005dcf70 008af850
+009f2f90	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed; 1 binder(s) still on stand-in/other spellings: 009bf350
+00a01920	partial	0	1 binder(s) still on stand-in/other spellings: 008af850
+00a01b10	partial	0	2 binder(s) still on stand-in/other spellings: 006a23e0 008d74b0
+00a01b50	partial	0	13 binder(s) still on stand-in/other spellings: 005be119 0065c45a 006a23e0 00752300 00807b70 008c0900 008d74b0 008f3100 ...; GetPItem stand-in binders need per-row pointer-type rewrites (the shared CIntelligentPointer<T> header already binds the PDB spelling); not done
+00a01b90	partial	0	9 binder(s) still on stand-in/other spellings: 006a23e0 007c21a0 00807b70 008c0900 008d74b0 008f3100 008f3630 009352c0 ...; SetPItem stand-in binders (pointer-type variants); not done
+00a01c10	partial	1	5 binder(s) still on stand-in/other spellings: 0065f0fa 006a23e0 00713510 008d74b0 00957f20
+00aa39a0	partial	0	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00aa3af0	done	0	self row respelled (RENAMES section 1)
+00ab5030	partial	1	row busy (BUSY.txt / RESERVED): self row not checked or changed
+00c3c360	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3c9a0	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3c9b0	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3ca30	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3d470	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3d610	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3db80	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3e760	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3e800	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c3e890	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c40590	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c40d10	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c40e20	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c41fb0	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c42d60	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+00c43a10	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+0122d70e	partial	0	2 binder(s) still on stand-in/other spellings: 004522f4 006ab300; empty-string literal binders use local literals; not done
+0122f598	partial	0	1 binder(s) still on stand-in/other spellings: 00550190
+012b5ab0	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+013750b0	partial	0	4 binder(s) still on stand-in/other spellings: 00404c00 00404d20 00404e10 00405020
+01375550	partial	0	2 binder(s) still on stand-in/other spellings: 006e11f0 0093b8b0
+013828a0	partial	0	1 binder(s) still on stand-in/other spellings: 0076e4d0
+0139c988	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+013b86a0	partial	0	45 binder(s) still on stand-in/other spellings: 004069e0 00406a80 00406c20 004083e0 004175e5 0041cf47 0047db73 0048de44 ...; 45 binders of the PMainGameComponent static, mostly stand-in globals; family too large for this pass
+013b8790	partial	0	12 binder(s) still on stand-in/other spellings: 004175e5 0047db73 0048f230 004a0220 004b3a20 00645ce9 00646010 00646a46 ...; 12 binders of CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, stand-in globals; not respelled in this pass
+013b8a80	partial	0	1 binder(s) still on stand-in/other spellings: 006aa2e0
+013b8b10	partial	0	2 binder(s) still on stand-in/other spellings: 0121a7ca 01228ed8
+013b8b38	partial	0	2 binder(s) still on stand-in/other spellings: 0121a87b 01228ec4; verified (PDB dynamic-initializer order after CrimeText); binders are the anonymous-namespace data rows 0121a87b / thunk 01228ec4; not respelled
+013b8b3c	partial	0	2 binder(s) still on stand-in/other spellings: 0121a898 01228ece; verified (PDB dynamic-initializer order); binders are data row 0121a898 / thunk 01228ece; not respelled
+013ba848	done	0	verified; no landed binder or self row needed a change
+013bac98	partial	0	3 binder(s) still on stand-in/other spellings: 0082d000 0121e940 012297f0
+013bae04	partial	0	1 binder(s) still on stand-in/other spellings: 007899c0
+013ca828	partial	0	3 binder(s) still on stand-in/other spellings: 005dcb00 005dcf70 008af850
+01436e7c	partial	0	8 binder(s) still on stand-in/other spellings: 00b23eb0 00b26360 00b324a0 00b9e950 00bd1f70 00be0cd0 00be0de0 00be1ba0; NEngineInternal::GPPrimitiveRenderer2D is not in the local PDB name sets (data globals not dumped); Codex cites raw PDB globals; unverifiable here, not respelled
+01436ea0	partial	0	43 binder(s) still on stand-in/other spellings: 00b23b50 00b23b80 00b24150 00b242a0 00b24400 00b26360 00b2f7c0 00b32660 ...; 43 binders of NEngineInternal::GPCamera; the data-global name is not in the local PDB name sets (Codex cites raw PDB globals); not respelled
+0143bb48	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+0143bb58	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied
+0143bc28	partial	0	GameCODA/SAL name: the GameCODA SDK 2.10 CodeView is not on this machine, so the claim cannot be checked against two sources here; nothing applied

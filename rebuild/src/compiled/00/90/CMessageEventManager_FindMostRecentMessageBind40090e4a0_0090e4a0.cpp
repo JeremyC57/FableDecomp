@@ -42,13 +42,13 @@ class CMessageEventFilter_IsOfType { public:
     bool operator()(const CMessageEvent& message) const;   // 0x006AF1C0
 };
 class CThingFilter_IsValidGossipee { public:
-    bool operator()(CThingAICreature* creature) const;     // 0x0090C900
+    bool operator()(const CThingAICreature& creature) const;   // 0x0090C900 Ego_r/FableWin ??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z
 };
 class CThingFilter_In2DRange { public:
-    bool operator()(CThing* thing) const;                  // 0x006A76B0
+    bool operator()(const CThing& thing) const;            // 0x006A76B0 Ego_r/FableWin ??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z
 };
 class CThingFilter_IsNavLineOfSightToThing { public:
-    bool operator()(CThing* thing) const;                  // 0x006A7640
+    bool operator()(const CThing& thing) const;            // 0x006A7640 Ego_r/FableWin ??RCThingFilter_IsNavLineOfSightToThing@@QBE_NABVCThing@@@Z
 };
 template <class F> class CMessageEventFilter_ThingSearchFilter { public:
     F* Filter;
@@ -57,7 +57,7 @@ template <class F> class CMessageEventFilter_ThingSearchFilter { public:
         CThingAICreature* creature = message.POriginator.GetTypedPItem<CThingAICreature>();
         if (!creature)
             return false;
-        return (*Filter)(creature);
+        return (*Filter)(*creature);
     }
 };
 template <> class CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing> { public:

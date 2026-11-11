@@ -1,5 +1,5 @@
 // CTCTargetingPlayer::UpdateNearestInterestingThing() -- the player's nearest interesting thing is its targeted thing; without one, the base scan runs
-// Leaf: ?UpdateNearestInterestingThing@CTCTargetingPlayer
+// Leaf: ?UpdateNearestInterestingThing@CTCTargetingPlayer@@MAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008023E0, length 50 bytes. Vtable 0x0124280C (CTCTargetingPlayer) slot 39
 // (catalogued "vfunc_39"; CTCTargetingAI's slot 39 is CTCTargetingBase::UpdateNearestInterestingThing 0x007F5AE0).
 // Callees: CTCTargetingBase::SetPNearestInterestingThing(CThing*) @ 0x007F5810 (manifest "CVillageTaskCarryCrate::
@@ -19,14 +19,15 @@ class CTCTargetingBase { public:
     virtual void v30(); virtual void v31(); virtual void v32();
     virtual CThing* GetPTargetedThing();     // slot 33 (+0x84)
     virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38();
-    virtual void UpdateNearestInterestingThing();   // slot 39 (+0x9c), base body 0x007F5AE0
 protected:
+    virtual void UpdateNearestInterestingThing();   // slot 39 (+0x9c), base body 0x007F5AE0 Ego_r ?UpdateNearestInterestingThing@CTCTargetingBase@@MAEXXZ (protected)
     void SetPNearestInterestingThing(CThing* thing);   // 0x007F5810
 public:
 };
 
-class CTCTargetingPlayer : public CTCTargetingBase { public:
-    virtual void UpdateNearestInterestingThing();
+class CTCTargetingPlayer : public CTCTargetingBase {
+protected:
+    virtual void UpdateNearestInterestingThing();   // Ego_r ?UpdateNearestInterestingThing@CTCTargetingPlayer@@MAEXXZ (protected)
 };
 
 void CTCTargetingPlayer::UpdateNearestInterestingThing()

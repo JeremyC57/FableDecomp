@@ -64,11 +64,11 @@ public:
 class CGameDefinitionManager : public CDefinitionManager { };
 
 #include "engine/C3DVector.h"
-struct CThing_Retail;
-struct CMessageEvent_Retail;
-class CMessageEventManager { public:
-    CMessageEvent_Retail* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): shared header (CThing_Retail /
+//   CMessageEvent_Retail stand-ins dropped).
+#include "rebuild_abi.h"
+#include "engine/CMessageEventManager.h"
 class CWorld { public:
     unsigned char _pad00[0x60];
     CMessageEventManager* MessageEventManager;      // +0x60
@@ -180,17 +180,17 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(long
             if (appearance->BodyAreasCovered & 0x10) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
                 CWorld* world = &GetWorld();
-                world->MessageEventManager->AddMessage(0x39, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
+                world->MessageEventManager->AddMessage(MESSAGE_EVENT_HAIR_TYPE_CHANGED, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
             }
             if (appearance->BodyAreasCovered & 0x80) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
                 CWorld* world = &GetWorld();
-                world->MessageEventManager->AddMessage(0x3a, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
+                world->MessageEventManager->AddMessage(MESSAGE_EVENT_BEARD_TYPE_CHANGED, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
             }
             if (appearance->BodyAreasCovered & 0x100) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
                 CWorld* world = &GetWorld();
-                world->MessageEventManager->AddMessage(0x3b, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
+                world->MessageEventManager->AddMessage(MESSAGE_EVENT_MOUSTACHE_TYPE_CHANGED, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
             }
         }
     }

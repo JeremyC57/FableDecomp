@@ -20,7 +20,14 @@
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
 #include "fable_compiler.h"
 class CTCBase;
-class CCombatActionBase;
+// Name fix (naming agent NF21, 2026-11-11): CThingCreatureBase::SetCurrentAction 0x006644F0 takes a const CCreatureActionBase&
+//   (?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z, Ego_r.pdb 0x006644F0 / FableWin.pdb); the combat
+//   action converts to its base.
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -66,7 +73,7 @@ class CThingCreatureBase : public CThing {
 public:
     bool IsInMeleeAsAttacker() const;               // 0x00662410
     bool IsPerformingAnyAction() const;               // 0x006622A0
-    bool SetCurrentAction(CCombatActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 class CTCCarrying { public:
@@ -127,7 +134,7 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
             CCombatActionBase* action = GetWorld().GetPCombatManager()->GetNextActionForCreature(creature);
             if (creature->IsInMeleeAsAttacker()) {
                 bool performed = false;
-                if (action && !creature->IsPerformingAnyAction() && creature->SetCurrentAction(action))
+                if (action && !creature->IsPerformingAnyAction() && creature->SetCurrentAction(*action))
                     performed = true;
                 CWorld* world = (&GetWorld());
                 world->PCombatManager->SetCreatureAsAttemptedToPerformedAction(creature, performed);

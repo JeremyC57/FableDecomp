@@ -161,7 +161,9 @@ class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007E
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
     long FrameToLook;                           // +0x14 (engine header)
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
-    CThing* FindInterestingThing();             // 0x00919240
+private:
+    CThing* FindInterestingThing();             // 0x00919240 Ego_r/FableWin ?FindInterestingThing@CAIStateGroup_LookAtInterestingThings@@AAEPAVCThing@@XZ (private)
+public:
     virtual bool InitCreaturePosition();
     // the creature is a NAMED local read before the argument pushes (it rides in esi across the calls)
     FABLE_FORCEINLINE bool PlaceNearInterestingThing()

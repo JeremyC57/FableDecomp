@@ -71,7 +71,6 @@ class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
     float GetCurrentSpeed() const;              // 0x00661CD0
     float GetSneakSpeedTowards(const C3DVector& pos);   // 0x00664CB0
-    bool IsPerformingAnyAction();               // 0x006622A0
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -98,6 +97,11 @@ class CThing { public:
         }
         return false;
     }
+};
+// Name fix (naming agent NF21, 2026-11-11): 0x006622A0 is ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb /
+//   FableWin.pdb), reached through the scripted creature (CThingCreatureBase derives from CThing).
+class CThingCreatureBase : public CThing { public:
+    bool IsPerformingAnyAction() const;         // 0x006622A0
 };
 class CTCStealth { public: char _pad[0xf]; bool Sneaking; };   // interface 0x36
 class CNavigationInput { public:
@@ -231,7 +235,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
     CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, false);
     nav->SetNavigationTarget(input);
     nav->Active = true;
-    if (!PTCScript->ParentThing->IsPerformingAnyAction() && output.Status == 2
+    if (!static_cast<CThingCreatureBase*>(PTCScript->ParentThing)->IsPerformingAnyAction() && output.Status == 2
         && output.Offset.Y * output.Offset.Y + output.Offset.Z * output.Offset.Z + output.Offset.X * output.Offset.X > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         C3DVector lookPos = output.Offset + PTCScript->ParentThing->PPhysics->Position;
         CTCLook* look;

@@ -75,7 +75,7 @@ class CPlayer { public:
     CBaseIntelligentPointer PCharacter;              // +0x34
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                        // 0x00449970
+    CPlayer& GetMainPlayer();                        // 0x00449970 Ego_r/FableWin ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
 };
 class CLookDef { public:
     unsigned char _pad00[0x3c];
@@ -117,7 +117,7 @@ void CTCLook::ImplementBodySettings()
             newAngle += 1.0f;
     }
     if (ParentThing->ThingType == 2) {
-        CPlayer* player = GetPlayerManager().GetMainPlayer();
+        CPlayer* player = &GetPlayerManager().GetMainPlayer();
         CThing* character = player->PCharacter.GetPItem();
         if (character && !(character->Flags91 & 1) && (character->Flags178 & 1)) {
             CThingPlacement* placement = ParentThing->PPlacement;

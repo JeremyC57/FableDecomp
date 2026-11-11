@@ -29,11 +29,13 @@ class CEnginePrimitive { public:
     long InterpolationSet;                          // +0x04
     unsigned char ThemeChannelDesc[4];              // +0x08
 };
+enum EEnginePrimitiveBlendMode; enum EEngineInterpolationSet; enum EEnginePrimitiveBlendOp;   // PDB enums, forward-declared as in the shared engine headers
 struct CEnginePrimitiveSprite : CEnginePrimitive {  // 0x48 bytes
     unsigned char _body[0x48 - 0x0c];
     CEnginePrimitiveSprite(const C3DVector& worldPos, unsigned long bankIndex, unsigned long frame, unsigned short flags,
-                           float angle, float sizeX, float sizeY, long blendMode, unsigned char a, unsigned char r,
-                           unsigned char g, unsigned char b, float fadeStart, long interpolationSet, long blendOp);   // 0x006558CE
+                           float angle, float sizeX, float sizeY, EEnginePrimitiveBlendMode blendMode, unsigned char a, unsigned char r,
+                           unsigned char g, unsigned char b, float fadeStart, EEngineInterpolationSet interpolationSet,
+                           EEnginePrimitiveBlendOp blendOp);   // 0x006558CE (Ego_r.pdb / FableWin.pdb enum parameters; name fix NF21)
 };
 struct CEnginePrimitiveSpriteTrail : CEnginePrimitive {   // retail 0x80 bytes
     void*          Trail;                           // +0x0c (STLport list head)
@@ -153,7 +155,7 @@ bool CPSCSingleSprite::Initialise(CIEngine* engine, CParticleSystem& system, con
                     if (NoCrossedSprites > 0) {
                         C3DVector zero(0.0f, 0.0f, 0.0f);
                         do {
-                            long id = engine->CreateChildPrimitive(parent, CEnginePrimitiveSprite(zero, SpriteBankIndex, 0, 0, 0.0f, 1.0f, 1.0f, blendMode, 0, 0, blendOp, 0xff, 0.0f, 0, 0), 0);
+                            long id = engine->CreateChildPrimitive(parent, CEnginePrimitiveSprite(zero, SpriteBankIndex, 0, 0, 0.0f, 1.0f, 1.0f, (EEnginePrimitiveBlendMode)blendMode, 0, 0, blendOp, 0xff, 0.0f, (EEngineInterpolationSet)0, (EEnginePrimitiveBlendOp)0), 0);
                             if (PrimIDList.size() <= (unsigned int)i)
                                 PrimIDList.resize(i + 1);
                             PrimIDList[i] = id;
@@ -161,7 +163,7 @@ bool CPSCSingleSprite::Initialise(CIEngine* engine, CParticleSystem& system, con
                     }
                     index = NoCrossedSprites;
                 } else {
-                    long id = engine->CreateChildPrimitive(parent, CEnginePrimitiveSprite(C3DVector(0.0f, 0.0f, 0.0f), SpriteBankIndex, 0, 0, 0.0f, 1.0f, 1.0f, blendMode, 0, 0, blendOp, 0xff, 0.0f, 0, 0), 0);
+                    long id = engine->CreateChildPrimitive(parent, CEnginePrimitiveSprite(C3DVector(0.0f, 0.0f, 0.0f), SpriteBankIndex, 0, 0, 0.0f, 1.0f, 1.0f, (EEnginePrimitiveBlendMode)blendMode, 0, 0, blendOp, 0xff, 0.0f, (EEngineInterpolationSet)0, (EEnginePrimitiveBlendOp)0), 0);
                     if (PrimIDList.size() <= 0)
                         PrimIDList.resize(1);
                     PrimIDList[0] = id;

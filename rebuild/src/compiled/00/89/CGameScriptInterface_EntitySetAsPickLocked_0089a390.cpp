@@ -10,8 +10,8 @@
 // (TC 0x42: UsingComponents bit test, Components lower_bound 0x0040F020): events->AddEvent(new
 // NEntityEvents::CEventItemUsed(*hero)) (operator new 0x10, ctor 0x006A0750, AddEvent 0x008113C0; a null new passes 0).
 // Names: OpenDoor / JamDoor are the RTTI vtable's PDB names for slots 425 / 429; AddMessage / CEventItemUsed(CThing&) /
-// CTCEntityEvents::AddEvent are Ego_r.pdb symbols. The message type 0x46 is not named. Ego_r.pdb's AddMessage ends
-// (CThing*, CThing*, float, float, long); retail passes the door as that last dword, so it is declared CThing* here.
+// CTCEntityEvents::AddEvent are Ego_r.pdb symbols. The message type 0x46 is MESSAGE_EVENT_HERO_PICKED_LOCK. Ego_r.pdb's AddMessage ends
+// (CThing*, CThing*, float, float, long); retail passes the door as that last dword.
 // Layout: CGameScriptInterface World +0x04, PlayerManager +0x14; CWorld PMessageEventManager +0x60 (engine/CWorld.h);
 // CThing retail UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0 (as 0x00897AA0).
 // Opt: /O2 (16-aligned entry).
@@ -47,12 +47,10 @@ class CTCEntityEvents {
 public:
     void AddEvent(NEntityEvents::CEventBase* event);     // 0x008113C0
 };
-enum EMessageEventType { MESSAGE_EVENT_0x46 = 0x46 };
-class CMessageEventManager {
-public:
-    void* AddMessage(EMessageEventType type, unsigned long duration, const C3DVector& pos, CThing* from, CThing* to,
-                     float a, float b, CThing* extra);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb), type 0x46 the PDB enum's
+//   MESSAGE_EVENT_HERO_PICKED_LOCK: shared header; the door goes in the long data dword.
+#include "engine/CMessageEventManager.h"
 class CWorld {
 public:
     unsigned char         _pad00[0x60];
@@ -87,7 +85,7 @@ void CGameScriptInterface::EntitySetAsPickLocked(const CScriptThing& thing) cons
     OpenDoor(thing);
     JamDoor(thing);
     CThing* door = thing.GetThing();
-    World->PMessageEventManager->AddMessage(MESSAGE_EVENT_0x46, 50, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, door);
+    World->PMessageEventManager->AddMessage(MESSAGE_EVENT_HERO_PICKED_LOCK, 50, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, (long)door);
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCEntityEvents* events;
     if (hero && !hero->IsDead() && door->GetTC(TCI_ENTITY_EVENTS, &events))

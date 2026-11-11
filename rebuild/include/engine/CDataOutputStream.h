@@ -20,6 +20,11 @@ public:
     void Write(const class CMemoryDataOutputStream& stream);  // 0x00995EB0
 #endif
     void WriteEBOOL(bool value);                             // 0x00993E30 ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z
+#ifdef FABLE_RETAIL_CDATAOUTPUTSTREAM_WRITEUBYTE
+    // Nested opt-in (naming agent NF21, 2026-11-11, row 0x00A8E6C0): Ego_r.pdb 0x00AFBE90 / FableWin.pdb 0x03082760
+    // ?WriteUBYTE@CDataOutputStream@@QAEXE@Z, retail 0x00993E50 (between WriteEBOOL and WriteUWORD as in Ego_r). Declaration only.
+    void WriteUBYTE(unsigned char value);                    // 0x00993E50
+#endif
     void WriteUWORD(unsigned short value);                   // 0x00993E80 ?WriteUWORD@CDataOutputStream@@QAEXG@Z
     void WriteSWORD(short value);                            // 0x00993E90 ?WriteSWORD@CDataOutputStream@@QAEXF@Z
     void WriteULONG(unsigned long value);                    // 0x00993EA0 ?WriteULONG@CDataOutputStream@@QAEXK@Z
