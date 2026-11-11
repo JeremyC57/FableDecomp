@@ -1,0 +1,257 @@
+addr       parity           behav  name
+0043119e   RELOCATION_MATCH FAIL   0043119e
+00431242   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@KKU?$less@K@std@@@@YIXAAVCDataOutputStream@@ABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431277 labelled '_global::WriteState_00431277'
+00431242   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@KKU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 004312b4 labelled 'GFSerialiseMapBinaryIn<unsigned long, unsigned long, std::less<unsigned long>>'
+00431242   RELOCATION_MATCH FAIL   00431242
+00431493   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z -> 004314c8 labelled 'GFSerialiseMapBinaryOut<long, CCharString, std::less<CCharString>>'
+00431493   RELOCATION_MATCH FAIL   00431493
+0043314a   RELOCATION_MATCH FAIL   0043314a
+00451e59   RELOCATION_MATCH PASS   00451e59
+00451efd   RELOCATION_MATCH PASS   00451efd
+00451fa1   RELOCATION_MATCH PASS   00451fa1
+00452045   RELOCATION_MATCH PASS   00452045
+00452086   RELOCATION_MATCH PASS   00452086
+004521b2   RELOCATION_MATCH PASS   004521b2
+004526f7   RELOCATION_MATCH PASS   004526f7
+0045290a   RELOCATION_MATCH PASS   0045290a
+00452a60   RELOCATION_MATCH PASS   00452a60
+00452d4d   RELOCATION_MATCH FAIL   00452d4d
+00452e01   RELOCATION_MATCH FAIL   00452e01
+00454cfa   RELOCATION_MATCH PASS   00454cfa
+00454e5b   RELOCATION_MATCH PASS   00454e5b
+00455008   RELOCATION_MATCH FAIL   00455008
+004555f8   RELOCATION_MATCH PASS   004555f8
+00455712   RELOCATION_MATCH PASS   00455712
+004557b6   RELOCATION_MATCH PASS   004557b6
+00456ad9   RELOCATION_MATCH PASS   00456ad9
+00456b7d   RELOCATION_MATCH PASS   00456b7d
+00456c21   RELOCATION_MATCH PASS   00456c21
+004586eb   RELOCATION_MATCH FAIL   004586eb
+0045878f   RELOCATION_MATCH FAIL   0045878f
+00459042   RELOCATION_MATCH FAIL   00459042
+00459363   RELOCATION_MATCH FAIL   00459363
+0045990b   RELOCATION_MATCH FAIL   0045990b
+004599af   RELOCATION_MATCH FAIL   004599af
+0045da65   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4ETargetingType@@U?$less@W4ETargetingType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4ETargetingType@@MU?$less@W4ETargetingType@@@std@@V?$allocator@U?$pair@$$CBW4ETargetingType@@M@std@@@3@@std@@@Z -> 0045da9a labelled '_global::WriteState_0045da9a'
+0045da65   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4ETargetingType@@U?$less@W4ETargetingType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4ETargetingType@@MU?$less@W4ETargetingType@@@std@@V?$allocator@U?$pair@$$CBW4ETargetingType@@M@std@@@3@@std@@@Z -> 0045dadb labelled 'GFSerialiseMapBinaryIn<float, ETargetingType, std::less<ETargetingType>>'
+0045da65   RELOCATION_MATCH FAIL   0045da65
+0045dee9   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@_NW4EOpinionReactionType@@U?$less@W4EOpinionReactionType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EOpinionReactionType@@_NU?$less@W4EOpinionReactionType@@@std@@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@@std@@@Z -> 0045df1e labelled 'GFSerialiseMapBinaryOut<bool, EOpinionReactionType, std::less<EOpinionReactionType>>'
+0045dee9   RELOCATION_MATCH FAIL   0045dee9
+0045e30a   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@_NW4EOpinionDeedType@@U?$less@W4EOpinionDeedType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EOpinionDeedType@@_NU?$less@W4EOpinionDeedType@@@std@@V?$allocator@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@@std@@@Z -> 0045e33f labelled 'GFSerialiseMapBinaryOut<bool, EOpinionDeedType, std::less<EOpinionDeedType>>'
+0045e30a   RELOCATION_MATCH FAIL   0045e30a
+0045ebfd   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@_NW4EOpinionAttitudeType@@U?$less@W4EOpinionAttitudeType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EOpinionAttitudeType@@_NU?$less@W4EOpinionAttitudeType@@@std@@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@@std@@@Z -> 0045ec32 labelled 'GFSerialiseMapBinaryOut<bool, EOpinionAttitudeType, std::less<EOpinionAttitudeType>>'
+0045ebfd   RELOCATION_MATCH FAIL   0045ebfd
+0045f2ea   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EOpinion@@U?$less@W4EOpinion@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EOpinion@@MU?$less@W4EOpinion@@@std@@V?$allocator@U?$pair@$$CBW4EOpinion@@M@std@@@3@@std@@@Z -> 0045f31f labelled '_global::WriteState_0045f31f'
+0045f2ea   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EOpinion@@U?$less@W4EOpinion@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EOpinion@@MU?$less@W4EOpinion@@@std@@V?$allocator@U?$pair@$$CBW4EOpinion@@M@std@@@3@@std@@@Z -> 0045f360 labelled 'GFSerialiseMapBinaryIn<float, EOpinion, std::less<EOpinion>>'
+0045f2ea   RELOCATION_MATCH FAIL   0045f2ea
+00461660   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EObjectAugmentationType@@MU?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@@Z -> 00461695 labelled '_global::WriteState_00461695'
+00461660   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EObjectAugmentationType@@MU?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@@Z -> 004616d6 labelled 'GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>'
+00461660   RELOCATION_MATCH FAIL   00461660
+00461894   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EDamageAttribute@@U?$less@W4EDamageAttribute@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@@Z -> 004618c9 labelled '_global::WriteState_004618c9'
+00461894   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EDamageAttribute@@U?$less@W4EDamageAttribute@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@@Z -> 0046190a labelled 'GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>'
+00461894   RELOCATION_MATCH FAIL   00461894
+00463ca6   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EHeroTrainableStatType@@JU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@@Z -> 00463cdb labelled '_global::WriteState_00463cdb'
+00463ca6   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EHeroTrainableStatType@@JU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@@Z -> 00463d18 labelled 'GFSerialiseMapBinaryIn<long, EHeroTrainableStatType, std::less<EHeroTrainableStatType>>'
+00463ca6   RELOCATION_MATCH FAIL   00463ca6
+004645ab   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@KW4EWorldMapNameGraphic@@U?$less@W4EWorldMapNameGraphic@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EWorldMapNameGraphic@@KU?$less@W4EWorldMapNameGraphic@@@std@@V?$allocator@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@3@@std@@@Z -> 004645e0 labelled '_global::WriteState_004645e0'
+004645ab   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@KW4EWorldMapNameGraphic@@U?$less@W4EWorldMapNameGraphic@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EWorldMapNameGraphic@@KU?$less@W4EWorldMapNameGraphic@@@std@@V?$allocator@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@3@@std@@@Z -> 0046461d labelled 'GFSerialiseMapBinaryIn<unsigned long, EWorldMapNameGraphic, std::less<EWorldMapNameGraphic>>'
+004645ab   RELOCATION_MATCH FAIL   004645ab
+00466813   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EHeroTrainableStatType@@MU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@@Z -> 00466848 labelled '_global::WriteState_00466848'
+00466813   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EHeroTrainableStatType@@MU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@@Z -> 00466889 labelled 'GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>'
+00466813   RELOCATION_MATCH FAIL   00466813
+00468e10   RELOCATION_MATCH FAIL   00468e10
+004692d4   RELOCATION_MATCH FAIL   004692d4
+00469b8a   RELOCATION_MATCH FAIL   00469b8a
+0046aff4   WARN SHARED_HEADER_AVAILABLE CDefString
+0046aff4   RELOCATION_MATCH PASS   0046aff4
+0046c760   RELOCATION_MATCH FAIL   0046c760
+0046c804   RELOCATION_MATCH FAIL   0046c804
+0046c8a8   RELOCATION_MATCH FAIL   0046c8a8
+0046c94c   RELOCATION_MATCH FAIL   0046c94c
+0046c9f0   RELOCATION_MATCH FAIL   0046c9f0
+0046f252   RELOCATION_MATCH FAIL   0046f252
+0046f2f6   RELOCATION_MATCH FAIL   0046f2f6
+0046f39a   RELOCATION_MATCH FAIL   0046f39a
+0046f8da   RELOCATION_MATCH FAIL   0046f8da
+0046f97e   RELOCATION_MATCH FAIL   0046f97e
+0046fa22   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JW4ECombatCreatureType@@U?$less@W4ECombatCreatureType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4ECombatCreatureType@@JU?$less@W4ECombatCreatureType@@@std@@V?$allocator@U?$pair@$$CBW4ECombatCreatureType@@J@std@@@3@@std@@@Z -> 0046fa57 labelled '_global::WriteState_0046fa57'
+0046fa22   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JW4ECombatCreatureType@@U?$less@W4ECombatCreatureType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4ECombatCreatureType@@JU?$less@W4ECombatCreatureType@@@std@@V?$allocator@U?$pair@$$CBW4ECombatCreatureType@@J@std@@@3@@std@@@Z -> 0046fa94 labelled 'GFSerialiseMapBinaryIn<long, ECombatCreatureType, std::less<ECombatCreatureType>>'
+0046fa22   RELOCATION_MATCH FAIL   0046fa22
+0046fcf8   RELOCATION_MATCH FAIL   0046fcf8
+0046fd9c   RELOCATION_MATCH FAIL   0046fd9c
+00472841   RELOCATION_MATCH PASS   00472841
+00473593   RELOCATION_MATCH FAIL   00473593
+004735d6   RELOCATION_MATCH FAIL   004735d6
+00479187   RELOCATION_MATCH FAIL   00479187
+0047922b   RELOCATION_MATCH PASS   0047922b
+004ddbd0   RELOCATION_MATCH FAIL   004ddbd0
+004dddac   RELOCATION_MATCH FAIL   004dddac
+004ddecb   RELOCATION_MATCH FAIL   004ddecb
+004de019   RELOCATION_MATCH FAIL   004de019
+004de566   RELOCATION_MATCH FAIL   004de566
+004dedda   RELOCATION_MATCH FAIL   004dedda
+004e44ae   RELOCATION_MATCH FAIL   004e44ae
+004e504a   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MJU?$less@J@std@@@@YIXAAVCDataOutputStream@@ABV?$map@JMU?$less@J@std@@V?$allocator@U?$pair@$$CBJM@std@@@2@@std@@@Z -> 004e507f labelled '_global::WriteState_004e507f'
+004e504a   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MJU?$less@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@JMU?$less@J@std@@V?$allocator@U?$pair@$$CBJM@std@@@2@@std@@@Z -> 004e50c0 labelled 'GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>'
+004e504a   RELOCATION_MATCH FAIL   004e504a
+004e527e   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JJU?$less@J@std@@@@YIXAAVCDataOutputStream@@ABV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@@Z -> 004e52b3 labelled '_global::WriteState_004e52b3'
+004e527e   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JJU?$less@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@@Z -> 004e52f0 labelled 'GFSerialiseMapBinaryIn<long, long, std::less<long>>'
+004e527e   RELOCATION_MATCH FAIL   004e527e
+004e5601   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JW4EClothingSuitPart@@U?$less@W4EClothingSuitPart@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EClothingSuitPart@@JU?$less@W4EClothingSuitPart@@@std@@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@J@std@@@3@@std@@@Z -> 004e5636 labelled '_global::WriteState_004e5636'
+004e5601   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JW4EClothingSuitPart@@U?$less@W4EClothingSuitPart@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EClothingSuitPart@@JU?$less@W4EClothingSuitPart@@@std@@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@J@std@@@3@@std@@@Z -> 004e5673 labelled 'GFSerialiseMapBinaryIn<long, EClothingSuitPart, std::less<EClothingSuitPart>>'
+004e5601   RELOCATION_MATCH FAIL   004e5601
+004e5da4   RELOCATION_MATCH FAIL   004e5da4
+004e5e48   RELOCATION_MATCH FAIL   004e5e48
+004e6258   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JW4EIdleStateGroup@@U?$less@W4EIdleStateGroup@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EIdleStateGroup@@JU?$less@W4EIdleStateGroup@@@std@@V?$allocator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@@std@@@Z -> 004e628d labelled '_global::WriteState_004e628d'
+004e6258   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JW4EIdleStateGroup@@U?$less@W4EIdleStateGroup@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EIdleStateGroup@@JU?$less@W4EIdleStateGroup@@@std@@V?$allocator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@@std@@@Z -> 004e62ca labelled 'GFSerialiseMapBinaryIn<long, EIdleStateGroup, std::less<EIdleStateGroup>>'
+004e6258   RELOCATION_MATCH FAIL   004e6258
+004e678b   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EQuakeStrength@@U?$less@W4EQuakeStrength@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EQuakeStrength@@MU?$less@W4EQuakeStrength@@@std@@V?$allocator@U?$pair@$$CBW4EQuakeStrength@@M@std@@@3@@std@@@Z -> 004e67c0 labelled '_global::WriteState_004e67c0'
+004e678b   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EQuakeStrength@@U?$less@W4EQuakeStrength@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EQuakeStrength@@MU?$less@W4EQuakeStrength@@@std@@V?$allocator@U?$pair@$$CBW4EQuakeStrength@@M@std@@@3@@std@@@Z -> 004e6801 labelled 'GFSerialiseMapBinaryIn<float, EQuakeStrength, std::less<EQuakeStrength>>'
+004e678b   RELOCATION_MATCH FAIL   004e678b
+004e6a26   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EQuakeLength@@U?$less@W4EQuakeLength@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EQuakeLength@@MU?$less@W4EQuakeLength@@@std@@V?$allocator@U?$pair@$$CBW4EQuakeLength@@M@std@@@3@@std@@@Z -> 004e6a5b labelled '_global::WriteState_004e6a5b'
+004e6a26   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EQuakeLength@@U?$less@W4EQuakeLength@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EQuakeLength@@MU?$less@W4EQuakeLength@@@std@@V?$allocator@U?$pair@$$CBW4EQuakeLength@@M@std@@@3@@std@@@Z -> 004e6a9c labelled 'GFSerialiseMapBinaryIn<float, EQuakeLength, std::less<EQuakeLength>>'
+004e6a26   RELOCATION_MATCH FAIL   004e6a26
+004e7a2d   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JW4EQuestCardPrerequisite@@U?$less@W4EQuestCardPrerequisite@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EQuestCardPrerequisite@@JU?$less@W4EQuestCardPrerequisite@@@std@@V?$allocator@U?$pair@$$CBW4EQuestCardPrerequisite@@J@std@@@3@@std@@@Z -> 004e7a62 labelled '_global::WriteState_004e7a62'
+004e7a2d   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JW4EQuestCardPrerequisite@@U?$less@W4EQuestCardPrerequisite@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EQuestCardPrerequisite@@JU?$less@W4EQuestCardPrerequisite@@@std@@V?$allocator@U?$pair@$$CBW4EQuestCardPrerequisite@@J@std@@@3@@std@@@Z -> 004e7a9f labelled 'GFSerialiseMapBinaryIn<long, EQuestCardPrerequisite, std::less<EQuestCardPrerequisite>>'
+004e7a2d   RELOCATION_MATCH FAIL   004e7a2d
+004e850a   RELOCATION_MATCH FAIL   004e850a
+004e8ee8   RELOCATION_MATCH FAIL   004e8ee8
+004e8f8c   RELOCATION_MATCH FAIL   004e8f8c
+004e90da   RELOCATION_MATCH FAIL   004e90da
+004e9321   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JW4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EObjectAugmentationType@@JU?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@@std@@@Z -> 004e9356 labelled '_global::WriteState_004e9356'
+004e9321   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JW4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EObjectAugmentationType@@JU?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@@std@@@Z -> 004e9393 labelled 'GFSerialiseMapBinaryIn<long, EObjectAugmentationType, std::less<EObjectAugmentationType>>'
+004e9321   RELOCATION_MATCH FAIL   004e9321
+004ec5fa   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@VCDefString@@W4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EObjectAugmentationType@@VCDefString@@U?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCDefString@@@std@@@4@@std@@@Z -> 004ec62f labelled '_global::WriteState_004ec62f'
+004ec5fa   RELOCATION_MATCH FAIL   004ec5fa
+004ec825   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@VCObjectAugmentationParticleSet@@W4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@U?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@4@@std@@@Z -> 004ec8c2 labelled 'GFSerialiseMapBinaryIn<CObjectAugmentationParticleSet, EObjectAugmentationType, std::less<EObjectAugmentationType>>'
+004ec825   RELOCATION_MATCH FAIL   004ec825
+004ecd36   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EOpinionAttitudeType@@U?$less@W4EOpinionAttitudeType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EOpinionAttitudeType@@MU?$less@W4EOpinionAttitudeType@@@std@@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@@std@@@Z -> 004ecd6b labelled '_global::WriteState_004ecd6b'
+004ecd36   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EOpinionAttitudeType@@U?$less@W4EOpinionAttitudeType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EOpinionAttitudeType@@MU?$less@W4EOpinionAttitudeType@@@std@@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@@std@@@Z -> 004ecdac labelled 'GFSerialiseMapBinaryIn<float, EOpinionAttitudeType, std::less<EOpinionAttitudeType>>'
+004ecd36   RELOCATION_MATCH FAIL   004ecd36
+004f9b63   RELOCATION_MATCH FAIL   004f9b63
+00612d30   RELOCATION_MATCH PASS   00612d30
+00632b30   RELOCATION_MATCH PASS   00632b30
+006724b0   RELOCATION_MATCH FAIL   006724b0
+00689130   WARN RELOC_NAME: ?SetAsPerformedEvent@ProcessedInput@NativeInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00689130   RELOCATION_MATCH PASS   00689130
+006d3a30   RELOCATION_MATCH PASS   006d3a30
+00756540   RELOCATION_MATCH PASS   00756540
+007ad270   RELOCATION_MATCH PASS   007ad270
+00857b70   WARN SHARED_HEADER_AVAILABLE C3DVector
+00857b70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+  WARN leaf '00857b70' matches no symbol in 00857b70.obj; graded the largest function
+  WARN leaf '00857b70' matches no symbol in 00857b70.obj; graded the largest function
+00857b70   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00857b70   WARN RELOC_NAME: ?ResetComboChainPos@CCombatComponent@@QAEXXZ -> 00733210 labelled 'CWADFile::Close'
+00857b70   RELOCATION_MATCH PASS   00857b70
+  WARN leaf '00859d80' matches no symbol in 00859d80.obj; graded the largest function
+  WARN leaf '00859d80' matches no symbol in 00859d80.obj; graded the largest function
+00859d80   RELOCATION_MATCH PASS   00859d80
+  WARN leaf '00895ed0' matches no symbol in 00895ed0.obj; graded the largest function
+  WARN leaf '00895ed0' matches no symbol in 00895ed0.obj; graded the largest function
+00895ed0   RELOCATION_MATCH PASS   00895ed0
+00896e60   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896e60   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+  WARN leaf '00896e60' matches no symbol in 00896e60.obj; graded the largest function
+  WARN leaf '00896e60' matches no symbol in 00896e60.obj; graded the largest function
+00896e60   RELOCATION_MATCH FAIL   00896e60
+00896f60   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '00896f60' matches no symbol in 00896f60.obj; graded the largest function
+  WARN leaf '00896f60' matches no symbol in 00896f60.obj; graded the largest function
+00896f60   RELOCATION_MATCH PASS   00896f60
+00896fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '00896fd0' matches no symbol in 00896fd0.obj; graded the largest function
+  WARN leaf '00896fd0' matches no symbol in 00896fd0.obj; graded the largest function
+00896fd0   RELOCATION_MATCH PASS   00896fd0
+008986d0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+  WARN leaf '008986d0' matches no symbol in 008986d0.obj; graded the largest function
+  WARN leaf '008986d0' matches no symbol in 008986d0.obj; graded the largest function
+008986d0   RELOCATION_MATCH PASS   008986d0
+00898840   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+  WARN leaf '00898840' matches no symbol in 00898840.obj; graded the largest function
+  WARN leaf '00898840' matches no symbol in 00898840.obj; graded the largest function
+00898840   RELOCATION_MATCH PASS   00898840
+00898940   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+  WARN leaf '00898940' matches no symbol in 00898940.obj; graded the largest function
+  WARN leaf '00898940' matches no symbol in 00898940.obj; graded the largest function
+00898940   RELOCATION_MATCH PASS   00898940
+00898b30   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+00898b30   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons
+00898b30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898b30   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+  WARN leaf '00898b30' matches no symbol in 00898b30.obj; graded the largest function
+  WARN leaf '00898b30' matches no symbol in 00898b30.obj; graded the largest function
+00898b30   RELOCATION_MATCH FAIL   00898b30
+00899d50   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '00899d50' matches no symbol in 00899d50.obj; graded the largest function
+  WARN leaf '00899d50' matches no symbol in 00899d50.obj; graded the largest function
+00899d50   RELOCATION_MATCH PASS   00899d50
+00899db0   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '00899db0' matches no symbol in 00899db0.obj; graded the largest function
+  WARN leaf '00899db0' matches no symbol in 00899db0.obj; graded the largest function
+00899db0   RELOCATION_MATCH PASS   00899db0
+0089a070   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '0089a070' matches no symbol in 0089a070.obj; graded the largest function
+  WARN leaf '0089a070' matches no symbol in 0089a070.obj; graded the largest function
+0089a070   RELOCATION_MATCH PASS   0089a070
+0089a0e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '0089a0e0' matches no symbol in 0089a0e0.obj; graded the largest function
+  WARN leaf '0089a0e0' matches no symbol in 0089a0e0.obj; graded the largest function
+0089a0e0   RELOCATION_MATCH PASS   0089a0e0
+0089b390   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '0089b390' matches no symbol in 0089b390.obj; graded the largest function
+  WARN leaf '0089b390' matches no symbol in 0089b390.obj; graded the largest function
+0089b390   WARN RELOC_NAME: ?DoRemove@@YIXPAX@Z -> 005b40e6 labelled 'CTCInventoryClothing::RemoveAllClothing'
+0089b390   RELOCATION_MATCH PASS   0089b390
+0089dff0   WARN SHARED_HEADER_AVAILABLE CThing
+0089dff0   RELOCATION_MATCH PASS   0089dff0
+0089e4c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '0089e4c0' matches no symbol in 0089e4c0.obj; graded the largest function
+  WARN leaf '0089e4c0' matches no symbol in 0089e4c0.obj; graded the largest function
+0089e4c0   WARN RELOC_NAME: ?d@AstmTarget@@QAEXPAXM_NHH@Z -> 00639ba0 labelled 'CTCRegionDisplay::SetCurrentAreaName'
+0089e4c0   RELOCATION_MATCH PASS   0089e4c0
+008a7980   RELOCATION_MATCH PASS   008a7980
+
+WINS: 42
+  00451e59 RELOCATION_MATCH m::??$Transfer@W4EInventoryActionType@@@CPersistContext@@QAEXAAW4EInventoryActionType@@@Z
+  00451efd RELOCATION_MATCH m::??$Transfer@W4ETCInterfaceType@@@CPersistContext@@QAEXAAW4ETCInterfaceType@@@Z
+  00451fa1 RELOCATION_MATCH m::??$Transfer@W4EInventoryObjectOrientation@@@CPersistContext@@QAEXAAW4EInventoryObjectOrientation@@@Z
+  00452045 RELOCATION_MATCH m::??$Transfer@W4ETutorialCategory@@@CPersistContext@@QAEXAAW4ETutorialCategory@@@Z
+  00452086 RELOCATION_MATCH m::??$Transfer@W4EUIInventoryCategory@@@CPersistContext@@QAEXAAW4EUIInventoryCategory@@@Z
+  004521b2 RELOCATION_MATCH m::??$Transfer@W4ENoiseType@@@CPersistContext@@QAEXAAW4ENoiseType@@@Z
+  004526f7 RELOCATION_MATCH m::??$Transfer@W4EContextSensitiveType@@@CPersistContext@@QAEXAAW4EContextSensitiveType@@@Z
+  0045290a RELOCATION_MATCH m::??$Transfer@W4EHeroTitle@@@CPersistContext@@QAEXAAW4EHeroTitle@@@Z
+  00452a60 RELOCATION_MATCH m::??$Transfer@W4ECompositeBlendType@@@CPersistContext@@QAEXAAW4ECompositeBlendType@@@Z
+  00454cfa RELOCATION_MATCH m::??$Transfer@W4EReverbEnvironmentType@@@CPersistContext@@QAEXAAW4EReverbEnvironmentType@@@Z
+  00454e5b RELOCATION_MATCH m::??$Transfer@W4ESwitchTriggerType@@@CPersistContext@@QAEXAAW4ESwitchTriggerType@@@Z
+  004555f8 RELOCATION_MATCH m::??$Transfer@W4EInventoryCategoryIdentifier@NInventory@@@CPersistContext@@QAEXAAW4EInventoryCategoryIdentifier@NInventory@@@Z
+  00455712 RELOCATION_MATCH m::??$Transfer@W4EMessageEventType@@@CPersistContext@@QAEXAAW4EMessageEventType@@@Z
+  004557b6 RELOCATION_MATCH m::??$Transfer@W4EReactionSpeechType@@@CPersistContext@@QAEXAAW4EReactionSpeechType@@@Z
+  00456ad9 RELOCATION_MATCH m::??$Transfer@W4EGameEventType@@@CPersistContext@@QAEXAAW4EGameEventType@@@Z
+  00456b7d RELOCATION_MATCH m::??$Transfer@W4EOpinionDeedType@@@CPersistContext@@QAEXAAW4EOpinionDeedType@@@Z
+  00456c21 RELOCATION_MATCH m::??$Transfer@W4EExpressionInventoryType@@@CPersistContext@@QAEXAAW4EExpressionInventoryType@@@Z
+  0046aff4 RELOCATION_MATCH m::GFSerialiseVectorBinaryOut
+  00472841 RELOCATION_MATCH m::GFSerialiseMapBinaryOut
+  0047922b RELOCATION_MATCH m::??$Transfer@W4ECrimeSeverity@@@CPersistContext@@QAEXAAW4ECrimeSeverity@@@Z
+  00612d30 RELOCATION_MATCH m::??$GFSerialiseVectorBinaryOut@
+  00632b30 RELOCATION_MATCH m::GFSerialiseMapBinaryOut
+  00689130 RELOCATION_MATCH m::ProcessInput
+  006d3a30 RELOCATION_MATCH m::GFSerialiseVectorBinaryOut
+  00756540 RELOCATION_MATCH m::GFSerialiseMapBinaryOut
+  007ad270 RELOCATION_MATCH m::GFSerialiseMapBinaryOut
+  00857b70 RELOCATION_MATCH m::00857b70
+  00859d80 RELOCATION_MATCH m::00859d80
+  00895ed0 RELOCATION_MATCH m::00895ed0
+  00896f60 RELOCATION_MATCH m::00896f60
+  00896fd0 RELOCATION_MATCH m::00896fd0
+  008986d0 RELOCATION_MATCH m::008986d0
+  00898840 RELOCATION_MATCH m::00898840
+  00898940 RELOCATION_MATCH m::00898940
+  00899d50 RELOCATION_MATCH m::00899d50
+  00899db0 RELOCATION_MATCH m::00899db0
+  0089a070 RELOCATION_MATCH m::0089a070
+  0089a0e0 RELOCATION_MATCH m::0089a0e0
+  0089b390 RELOCATION_MATCH m::0089b390
+  0089dff0 RELOCATION_MATCH m::?CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing@@YIXPAX0PAUCEntityWrap@@1E@Z
+  0089e4c0 RELOCATION_MATCH m::0089e4c0
+  008a7980 RELOCATION_MATCH m::EntityStopFollowing

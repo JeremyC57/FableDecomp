@@ -12,10 +12,8 @@ class CCharString { public:
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
-    void WriteNullTerminatedString(const CCharString& text);   // 0x00995AE0
-};
+// agentNF17: the methods-only CDataOutputStream adapter is dropped; its members are CDataOutputStream's own (engine/CDataOutputStream.h,
+//   Ego_r.pdb ?WriteSLONG@CDataOutputStream@@QAEXJ@Z 0x00993EB0 / ?WriteEBOOL@ 0x00993E30 / ?WriteNullTerminatedString@ 0x00995AE0).
 namespace std {
 template <class T1, class T2> struct pair {
     T1 first;
@@ -37,19 +35,19 @@ template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CNamedLong> {
     CNamedLong DefaultVal;
     CPersistTraits() : DefaultVal("", 0) { }
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const CNamedLong* value) const
+    void TransferBinaryOut(CDataOutputStream& stream, const CNamedLong* value) const
     {
         stream.WriteNullTerminatedString(value->first);
-        stream.WriteLong(value->second);
+        stream.WriteSLONG(value->second);
     }
 };
 template <class T>
-void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std::vector<T>& value)
+void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream& stream, std::vector<T>& value)
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }
-template void __fastcall GFSerialiseVectorBinaryOut<CNamedLong>(CDataOutputStreamWriter& stream, std::vector<CNamedLong>& value);
+template void __fastcall GFSerialiseVectorBinaryOut<CNamedLong>(CDataOutputStream& stream, std::vector<CNamedLong>& value);

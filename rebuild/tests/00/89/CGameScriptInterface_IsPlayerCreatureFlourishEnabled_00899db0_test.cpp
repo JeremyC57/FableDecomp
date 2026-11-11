@@ -2,25 +2,25 @@
 
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
-struct CKeyPair
-{
-    ETCInterfaceType m_Key;
-    void*            m_Value;
+class CTCBase;
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;
+    value_type* _M_finish;
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020 (the row's callee, mocked here)
 };
-
-struct CVectorMap
-{
-    CKeyPair* m_pBegin;
-    CKeyPair* m_pEnd;
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
-};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+typedef CInterfaceMap::value_type CKeyPairEntry;
 
 struct CThingOverlay
 {
     unsigned char m_Pad00[0x24];
     unsigned int  m_Flags24;
     unsigned char m_Pad28[0x1c];
-    CVectorMap    m_InterfaceMap44;
+    CInterfaceMap m_InterfaceMap44;
     unsigned char m_Pad4C[0x45];
     unsigned char m_Flags91;
 };
@@ -36,9 +36,9 @@ static void* g_resolveA_in = 0;
 static void* g_flourish_iface = 0;
 static bool g_flourish_result = false;
 static unsigned long g_flourish_calls = 0;
-static CKeyPair* g_lower_bound_result = 0;
+static CKeyPairEntry* g_lower_bound_result = 0;
 static ETCInterfaceType g_observed_key = ETC_DUMMY;
-static CVectorMap* g_observed_map = 0;
+static CInterfaceMap* g_observed_map = 0;
 
 class CPlayer;
 class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970, called by the row
@@ -64,10 +64,10 @@ extern "C" bool __fastcall Sub_IsMeleeFlourishValid(void* iface)
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x30;
 
-CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey)
+CKeyPairEntry* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
     g_observed_map = this;
-    g_observed_key = *pKey;
+    g_observed_key = key;
     return g_lower_bound_result;
 }
 
@@ -95,12 +95,12 @@ int main()
 {
     CGameScriptInterface gsi = {};
     CThingOverlay thing = {};
-    CKeyPair foundEntry = {};
-    CKeyPair greaterEntry = {};
-    CKeyPair endEntry = {};
+    CKeyPairEntry foundEntry = {};
+    CKeyPairEntry greaterEntry = {};
+    CKeyPairEntry endEntry = {};
 
     gsi.m_Field14 = (void*)0x1234;
-    thing.m_InterfaceMap44.m_pEnd = &endEntry;
+    thing.m_InterfaceMap44._M_finish = &endEntry;
 
     ResetObservations();
     g_thing = 0;
@@ -126,8 +126,8 @@ int main()
 
     ResetObservations();
     thing.m_Flags24 = 0x10000;
-    foundEntry.m_Key = (ETCInterfaceType)0x30;
-    foundEntry.m_Value = (void*)0x30300000;
+    foundEntry.first = (ETCInterfaceType)0x30;
+    foundEntry.second = (CTCBase*)((void*)0x30300000);
     g_lower_bound_result = &foundEntry;
     g_flourish_result = true;
     if (!CGameScriptInterface_IsPlayerCreatureFlourishEnabled(&gsi) ||
@@ -138,8 +138,8 @@ int main()
         return Fail("valid flourish");
 
     ResetObservations();
-    foundEntry.m_Key = (ETCInterfaceType)0x30;
-    foundEntry.m_Value = (void*)0x30300000;
+    foundEntry.first = (ETCInterfaceType)0x30;
+    foundEntry.second = (CTCBase*)((void*)0x30300000);
     g_lower_bound_result = &foundEntry;
     g_flourish_result = false;
     if (CGameScriptInterface_IsPlayerCreatureFlourishEnabled(&gsi) ||
@@ -147,9 +147,9 @@ int main()
         return Fail("callee false propagation");
 
     ResetObservations();
-    greaterEntry.m_Key = (ETCInterfaceType)0x31;
-    greaterEntry.m_Value = (void*)0x31;
-    endEntry.m_Value = (void*)0xEEEE;
+    greaterEntry.first = (ETCInterfaceType)0x31;
+    greaterEntry.second = (CTCBase*)((void*)0x31);
+    endEntry.second = (CTCBase*)((void*)0xEEEE);
     g_lower_bound_result = &greaterEntry;
     g_flourish_result = true;
     if (!CGameScriptInterface_IsPlayerCreatureFlourishEnabled(&gsi) ||

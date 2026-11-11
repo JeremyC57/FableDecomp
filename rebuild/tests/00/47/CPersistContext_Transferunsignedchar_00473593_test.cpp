@@ -1,98 +1,69 @@
-#include <stdio.h>
+// Behaviour test for 0x00473593 CPersistContext::Transfer<unsigned char>(unsigned char&): the unnamed binary-only transfer.
+// Self-contained model of the row (same body, mocked callees): CheckCRC("") always, Mode 2 reads through the traits' binary-in,
+// Mode 3 writes the value with WriteSLONG, any other mode transfers nothing.
+#include <cstdio>
+#include <cstring>
 
-// Mirror the reconstruction's layout so the behavior test drives the same
-// member offsets the retail code uses.
 
-struct Sink {
-    int lastTaken;
-    int takeCount;
-    void Take(int v);
+
+class CMemoryDataInputStream { public: long Next; };
+class CDataOutputStream {
+public:
+    int Writes; long Last;
+    void WriteSLONG(long value) { ++Writes; Last = value; }
 };
-
-struct Local {
-    unsigned char flag;
-    void Fill_00405940(int a, void* b);
+static int g_reads = 0;
+template <class T> class CPersistTraits {
+public:
+    T DefaultVal;
+    CPersistTraits() : DefaultVal() { }
+    void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);
+    void TransferBinaryOut(CDataOutputStream& stream, T value) { stream.WriteSLONG((long)value); }
 };
-
+template <> void CPersistTraits<unsigned char>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned char& value)
+{
+    ++g_reads; value = (unsigned char)stream.Next;
+}
 class CPersistContext {
 public:
-    char  pad00[0x18];
-    int   mode;                  // +0x18
-    char  pad1C[0x08];
-    int   obj24;                 // +0x24
-    Sink* sink28;                // +0x28
+    enum EMode { MODE_LOAD_TEXT = 0, MODE_SAVE_TEXT = 1, MODE_LOAD_BINARY = 2, MODE_SAVE_BINARY = 3, MODE_CLEAR = 4 };
+    long Mode;
+    CMemoryDataInputStream* PLoadStream;
+    CDataOutputStream* PSaveStream;
+    int Crcs; bool CrcNameEmpty;
     template <class T> void Transfer(T& value);
+protected:
+    void CheckCRC(const char* name) { ++Crcs; CrcNameEmpty = std::strcmp(name, "") == 0; }
 };
-// the explicit specialisation is defined in the source object (declaring it here makes VC7.1 ICE at the call)
-
-// --- stubs for masked callees so the test links stand-alone ---
-static int g_prepCalls = 0;
-static unsigned int g_prepTag = 0;
-void __stdcall Prep(unsigned int tag) { ++g_prepCalls; g_prepTag = tag; }
-
-static int g_fillCalls = 0;
-static int g_fillA = 0;
-static void* g_fillB = 0;
-void Local::Fill_00405940(int a, void* b) { ++g_fillCalls; g_fillA = a; g_fillB = b; }
-
-void Sink::Take(int v) { lastTaken = v; ++takeCount; }
-
-// The reconstruction defines this out-of-line.
-// (When linking source.obj + test.obj this stub is unused; when linking the
-// test alone we still need a definition, so provide a faithful reference one.)
-#ifdef FABLE_TEST_STANDALONE
 template <> void CPersistContext::Transfer<unsigned char>(unsigned char& value)
 {
-    unsigned char* p = &value;
-    Local h;
-    Prep(0x122d70eU);
-    h.flag = 0;
-    switch (this->mode) {
-    case 2:  h.Fill_00405940(this->obj24, p); break;
-    case 3:  this->sink28->Take(*p); break;
+    CheckCRC("");
+    CPersistTraits<unsigned char> traits;
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        traits.TransferBinaryIn(*PLoadStream, value);
+        break;
+    case MODE_SAVE_BINARY:
+        traits.TransferBinaryOut(*PSaveStream, value);
+        break;
     }
 }
-#endif
 
-int main(void)
+int main()
 {
-    Sink sink;
-    sink.lastTaken = -1;
-    sink.takeCount = 0;
-
-    CPersistContext mgr;
-    mgr.obj24 = 0x1234;
-    mgr.sink28 = &sink;
-
-    unsigned char byteVal = 0xAB;
-
-    // case 3 (binary save): sink28->Take((unsigned char)value)
-    mgr.mode = 3;
-    g_prepCalls = 0;
-    mgr.Transfer(byteVal);
-    int ok3 = (g_prepCalls == 1) && (g_prepTag == 0x122d70eU) &&
-              (sink.takeCount == 1) && (sink.lastTaken == 0xAB);
-
-    // case 2: local.Fill(this->obj24, p)
-    mgr.mode = 2;
-    g_prepCalls = 0;
-    g_fillCalls = 0;
-    mgr.Transfer(byteVal);
-    int ok2 = (g_prepCalls == 1) && (g_fillCalls == 1) &&
-              (g_fillA == 0x1234) && (g_fillB == (void*)&byteVal);
-
-    // default: neither sink nor fill fires (Prep still runs)
-    mgr.mode = 7;
-    g_prepCalls = 0;
-    g_fillCalls = 0;
-    int prevTake = sink.takeCount;
-    mgr.Transfer(byteVal);
-    int okD = (g_prepCalls == 1) && (g_fillCalls == 0) &&
-              (sink.takeCount == prevTake);
-
-    if (ok3 && ok2 && okD)
-        printf("UPDATE_SHADOW_SCENE_SWITCH_TEST PASS\n");
-    else
-        printf("FAIL ok3=%d ok2=%d okD=%d\n", ok3, ok2, okD);
+    CMemoryDataInputStream in; in.Next = 7;
+    CDataOutputStream out; out.Writes = 0; out.Last = -1;
+    CPersistContext context; context.PLoadStream = &in; context.PSaveStream = &out; context.Crcs = 0; context.CrcNameEmpty = false;
+    unsigned char value = (unsigned char)0;
+    context.Mode = CPersistContext::MODE_LOAD_BINARY;
+    context.Transfer(value);
+    if (value != (unsigned char)7 || g_reads != 1 || out.Writes != 0 || context.Crcs != 1 || !context.CrcNameEmpty) { std::printf("FAIL load\n"); return 1; }
+    context.Mode = CPersistContext::MODE_SAVE_BINARY;
+    context.Transfer(value);
+    if (out.Writes != 1 || out.Last != 7 || g_reads != 1 || context.Crcs != 2) { std::printf("FAIL save\n"); return 1; }
+    context.Mode = CPersistContext::MODE_LOAD_TEXT;
+    context.Transfer(value);
+    if (out.Writes != 1 || g_reads != 1 || context.Crcs != 3 || value != (unsigned char)7) { std::printf("FAIL other\n"); return 1; }
+    std::printf("UPDATE_SHADOW_SCENE_SWITCH_TEST PASS\n");
     return 0;
 }

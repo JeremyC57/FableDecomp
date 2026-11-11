@@ -1,12 +1,19 @@
 // CGameScriptInterface::RemoveHeroClothing @ 0089b390
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct Node { int key; void* val; };
-
-struct Vec {
-    Node* begin;   // +0x00
-    Node* end;     // +0x04
-    Node* lower_bound(int* key); // __fastcall, key pushed as stack arg
+// agentNF17: the Node / Vec stand-ins are the explicit specialisation CVectorMap<ETCInterfaceType, CTCBase*> (the landed 0x0074EE90
+//   idiom) and its std::pair value_type; 0x0040F020 is its LowerBound (NF14 / established spelling).
+class CTCBase;
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CPlayer;
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -29,20 +36,20 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 
 void __fastcall CGameScriptInterface_RemoveHeroClothing(CGameScriptInterface* self)
 {
-    int key;
+    ETCInterfaceType key;
     CPlayer* h = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     HeroData* d = h->GetPControlledCreature();
     if (!d) return;
     if (d->flag91 & 1) return;
     if (!(d->flags20 & 0x40000)) return;
-    Vec* vec = (Vec*)((char*)d + 0x44);
-    key = 0x12;
-    Node* it = vec->lower_bound(&key);
-    Node* end = vec->end;
-    if (it != end && it->key <= 0x12) {
+    CInterfaceMap* vec = (CInterfaceMap*)((char*)d + 0x44);
+    key = (ETCInterfaceType)0x12;
+    CInterfaceMap::value_type* it = vec->LowerBound(key);
+    CInterfaceMap::value_type* end = vec->_M_finish;
+    if (it != end && it->first <= 0x12) {
         // keep it
     } else {
         it = end;
     }
-    DoRemove(it->val);
+    DoRemove(it->second);
 }

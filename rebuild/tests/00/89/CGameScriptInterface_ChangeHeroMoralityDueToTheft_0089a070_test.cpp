@@ -11,25 +11,25 @@ public:
     long          m_Morality;
 };
 
-struct CKeyPair
-{
-    ETCInterfaceType        m_Key;
-    CGSITheftMoralityStats* m_Value;
+class CTCBase;
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;
+    value_type* _M_finish;
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020 (the row's callee, mocked here)
 };
-
-struct CVectorMap
-{
-    CKeyPair* m_pBegin;
-    CKeyPair* m_pEnd;
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
-};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+typedef CInterfaceMap::value_type CKeyPairEntry;
 
 struct CThingOverlay
 {
     unsigned char m_Pad00[0x20];
     unsigned char m_Flags20;
     unsigned char m_Pad21[0x23];
-    CVectorMap    m_InterfaceMap44;
+    CInterfaceMap m_InterfaceMap44;
     unsigned char m_Pad4C[0x45];
     unsigned char m_Flags91;
 };
@@ -61,8 +61,8 @@ static unsigned long g_definition_calls = 0;
 static CGSITheftMoralityStats* g_set_stats = 0;
 static long g_set_value = 0;
 static unsigned long g_set_calls = 0;
-static CKeyPair* g_lower_bound_result = 0;
-static CVectorMap* g_observed_map = 0;
+static CKeyPairEntry* g_lower_bound_result = 0;
+static CInterfaceMap* g_observed_map = 0;
 static ETCInterfaceType g_observed_key = ETC_DUMMY;
 
 class CPlayer;
@@ -87,10 +87,10 @@ CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() {
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
 
-CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey)
+CKeyPairEntry* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
     g_observed_map = this;
-    g_observed_key = *pKey;
+    g_observed_key = key;
     return g_lower_bound_result;
 }
 
@@ -129,15 +129,15 @@ int main()
     CThingOverlay hero = {};
     CGSITheftMoralityStats foundStats = {};
     CGSITheftMoralityStats endStats = {};
-    CKeyPair foundEntry = {};
-    CKeyPair greaterEntry = {};
-    CKeyPair endEntry = {};
+    CKeyPairEntry foundEntry = {};
+    CKeyPairEntry greaterEntry = {};
+    CKeyPairEntry endEntry = {};
 
     gsi.m_Field14 = (void*)0x1234;
     g_definition_manager.m_Definition = &g_definition;
-    hero.m_InterfaceMap44.m_pEnd = &endEntry;
-    foundEntry.m_Value = &foundStats;
-    endEntry.m_Value = &endStats;
+    hero.m_InterfaceMap44._M_finish = &endEntry;
+    foundEntry.second = (CTCBase*)(&foundStats);
+    endEntry.second = (CTCBase*)(&endStats);
 
     ResetObservations();
     g_thing = 0;
@@ -164,7 +164,7 @@ int main()
 
     ResetObservations();
     hero.m_Flags20 = 0x10;
-    foundEntry.m_Key = (ETCInterfaceType)4;
+    foundEntry.first = (ETCInterfaceType)4;
     foundStats.m_Morality = 30;
     g_definition.m_Change = -7;
     g_lower_bound_result = &foundEntry;
@@ -178,8 +178,8 @@ int main()
         return Fail("exact HeroStats theft change");
 
     ResetObservations();
-    greaterEntry.m_Key = (ETCInterfaceType)5;
-    greaterEntry.m_Value = &foundStats;
+    greaterEntry.first = (ETCInterfaceType)5;
+    greaterEntry.second = (CTCBase*)(&foundStats);
     endStats.m_Morality = 10;
     g_definition.m_Change = -3;
     g_lower_bound_result = &greaterEntry;

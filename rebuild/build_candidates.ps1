@@ -4098,44 +4098,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00451e59'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00451e59.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00451e59_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEInventoryActionType_00451e59.cpp'
+        TestSource = '00/45/CPersistContext_TransferEInventoryActionType_00451e59_test.cpp'
         PassPattern = 'CEngineLightingManager_00451e59_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00451efd'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00451efd.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00451efd_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferETCInterfaceType_00451efd.cpp'
+        TestSource = '00/45/CPersistContext_TransferETCInterfaceType_00451efd_test.cpp'
         PassPattern = 'CEngineLightingManager_00451efd_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00451fa1'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00451fa1.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00451fa1_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEInventoryObjectOrientation_00451fa1.cpp'
+        TestSource = '00/45/CPersistContext_TransferEInventoryObjectOrientation_00451fa1_test.cpp'
         PassPattern = 'CEngineLightingManager_00451fa1_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00452045'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00452045.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00452045_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferETutorialCategory_00452045.cpp'
+        TestSource = '00/45/CPersistContext_TransferETutorialCategory_00452045_test.cpp'
         PassPattern = 'CEngineLightingManager_00452045_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00452086'
-        Module = 'CEngineLightingManager'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00452086.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00452086_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEUIInventoryCategory_00452086.cpp'
+        TestSource = '00/45/CPersistContext_TransferEUIInventoryCategory_00452086_test.cpp'
         PassPattern = 'CEngineLightingManager_00452086_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004521b2'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_004521b2.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_004521b2_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferENoiseType_004521b2.cpp'
+        TestSource = '00/45/CPersistContext_TransferENoiseType_004521b2_test.cpp'
         PassPattern = 'CEngineLightingManager_004521b2_TEST PASS'
     }
     [pscustomobject]@{
@@ -4147,23 +4147,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004526f7'
-        Module = 'CEngineLightingManager'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_004526f7.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_004526f7_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEContextSensitiveType_004526f7.cpp'
+        TestSource = '00/45/CPersistContext_TransferEContextSensitiveType_004526f7_test.cpp'
         PassPattern = 'CEngineLightingManager_004526f7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0045290a'
-        Module = 'CEngineLightingManager'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_0045290a.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_0045290a_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEHeroTitle_0045290a.cpp'
+        TestSource = '00/45/CPersistContext_TransferEHeroTitle_0045290a_test.cpp'
         PassPattern = 'CEngineLightingManager_0045290a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00452a60'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00452a60.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00452a60_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferECompositeBlendType_00452a60.cpp'
+        TestSource = '00/45/CPersistContext_TransferECompositeBlendType_00452a60_test.cpp'
         PassPattern = 'CEngineLightingManager_00452a60_TEST PASS'
     }
     [pscustomobject]@{
@@ -4931,9 +4931,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00454cfa'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00454cfa.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00454cfa_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEReverbEnvironmentType_00454cfa.cpp'
+        TestSource = '00/45/CPersistContext_TransferEReverbEnvironmentType_00454cfa_test.cpp'
         PassPattern = 'CEngineLightingManager_00454cfa_TEST PASS'
     }
     [pscustomobject]@{
@@ -4945,30 +4945,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004555f8'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_004555f8.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_004555f8_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferNInventoryEInventoryCategoryIdentifier_004555f8.cpp'
+        TestSource = '00/45/CPersistContext_TransferNInventoryEInventoryCategoryIdentifier_004555f8_test.cpp'
         PassPattern = 'CEngineLightingManager_004555f8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00455712'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00455712.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00455712_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEMessageEventType_00455712.cpp'
+        TestSource = '00/45/CPersistContext_TransferEMessageEventType_00455712_test.cpp'
         PassPattern = 'CEngineLightingManager_00455712_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004557b6'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_004557b6.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_004557b6_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEReactionSpeechType_004557b6.cpp'
+        TestSource = '00/45/CPersistContext_TransferEReactionSpeechType_004557b6_test.cpp'
         PassPattern = 'CEngineLightingManager_004557b6_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00456ad9'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00456ad9.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00456ad9_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEGameEventType_00456ad9.cpp'
+        TestSource = '00/45/CPersistContext_TransferEGameEventType_00456ad9_test.cpp'
         PassPattern = 'CEngineLightingManager_00456ad9_TEST PASS'
     }
     [pscustomobject]@{
@@ -4980,9 +4980,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00456c21'
-        Module = 'CEngineLightingManager'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00456c21.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00456c21_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEExpressionInventoryType_00456c21.cpp'
+        TestSource = '00/45/CPersistContext_TransferEExpressionInventoryType_00456c21_test.cpp'
         PassPattern = 'CEngineLightingManager_00456c21_TEST PASS'
     }
     [pscustomobject]@{
@@ -31357,9 +31357,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00479187'
-        Module = 'CEngineLightingManager'
-        Source = '00/47/CEngineLightingManager_UpdateShadowScene_00479187.cpp'
-        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_00479187_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferNSpeechGainManagerEDialogueLayer_00479187.cpp'
+        TestSource = '00/47/CPersistContext_TransferNSpeechGainManagerEDialogueLayer_00479187_test.cpp'
         PassPattern = 'UPDATE_SHADOW_SCENE_479187_TEST PASS'
     }
     [pscustomobject]@{
@@ -31462,9 +31462,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0047922b'
-        Module = '_global'
-        Source = '00/47/CEngineLightingManager_UpdateShadowScene_0047922b.cpp'
-        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_0047922b_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferECrimeSeverity_0047922b.cpp'
+        TestSource = '00/47/CPersistContext_TransferECrimeSeverity_0047922b_test.cpp'
         PassPattern = 'CEngineLightingManager_0047922b_TEST PASS'
     }
     [pscustomobject]@{
@@ -65386,9 +65386,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006724b0'
-        Module = 'CEnginePrimitiveRenderer2D'
-        Source = '00/67/CEnginePrimitiveRenderer2D_AddPrimitive_006724b0.cpp'
-        TestSource = '00/67/CEnginePrimitiveRenderer2D_AddPrimitive_006724b0_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/67/CPersistContext_TransferVectorENavigatorType_006724b0.cpp'
+        TestSource = '00/67/CPersistContext_TransferVectorENavigatorType_006724b0_test.cpp'
         PassPattern = 'PARITY_OK_006724b0'
     }
     [pscustomobject]@{
@@ -88936,9 +88936,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00452e01'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00452e01.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00452e01_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEHeroAbility_00452e01.cpp'
+        TestSource = '00/45/CPersistContext_TransferEHeroAbility_00452e01_test.cpp'
         PassPattern = 'PASS_00452e01'
     }
     [pscustomobject]@{
@@ -88950,233 +88950,233 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004586eb'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_004586eb.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_004586eb_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEActionRegisteredType_004586eb.cpp'
+        TestSource = '00/45/CPersistContext_TransferEActionRegisteredType_004586eb_test.cpp'
         PassPattern = 'PASS_004586eb'
     }
     [pscustomobject]@{
         Address = '0045878f'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_0045878f.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_0045878f_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEHitLocationCodelet_0045878f.cpp'
+        TestSource = '00/45/CPersistContext_TransferEHitLocationCodelet_0045878f_test.cpp'
         PassPattern = 'PASS_0045878f'
     }
     [pscustomobject]@{
         Address = '00459042'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00459042.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00459042_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEDamageAttribute_00459042.cpp'
+        TestSource = '00/45/CPersistContext_TransferEDamageAttribute_00459042_test.cpp'
         PassPattern = 'PASS_00459042'
     }
     [pscustomobject]@{
         Address = '00459363'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00459363.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00459363_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferECreatureAbility_00459363.cpp'
+        TestSource = '00/45/CPersistContext_TransferECreatureAbility_00459363_test.cpp'
         PassPattern = 'PASS_00459363'
     }
     [pscustomobject]@{
         Address = '0045990b'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_0045990b.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_0045990b_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEMinimapThemeType_0045990b.cpp'
+        TestSource = '00/45/CPersistContext_TransferEMinimapThemeType_0045990b_test.cpp'
         PassPattern = 'PASS_0045990b'
     }
     [pscustomobject]@{
         Address = '004599af'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_004599af.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_004599af_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEWaterType_004599af.cpp'
+        TestSource = '00/45/CPersistContext_TransferEWaterType_004599af_test.cpp'
         PassPattern = 'PASS_004599af'
     }
     [pscustomobject]@{
         Address = '00468e10'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_00468e10.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_00468e10_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferNInventoryEInventoryIdentifier_00468e10.cpp'
+        TestSource = '00/46/CPersistContext_TransferNInventoryEInventoryIdentifier_00468e10_test.cpp'
         PassPattern = 'PASS_00468e10'
     }
     [pscustomobject]@{
         Address = '00469b8a'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_00469b8a.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_00469b8a_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferEHeroExperienceStatCategory_00469b8a.cpp'
+        TestSource = '00/46/CPersistContext_TransferEHeroExperienceStatCategory_00469b8a_test.cpp'
         PassPattern = 'PASS_00469b8a'
     }
     [pscustomobject]@{
         Address = '0046c760'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046c760.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046c760_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferECombatSequenceType_0046c760.cpp'
+        TestSource = '00/46/CPersistContext_TransferECombatSequenceType_0046c760_test.cpp'
         PassPattern = 'PASS_0046c760'
     }
     [pscustomobject]@{
         Address = '0046c804'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046c804.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046c804_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferECombatSequenceInterruptionType_0046c804.cpp'
+        TestSource = '00/46/CPersistContext_TransferECombatSequenceInterruptionType_0046c804_test.cpp'
         PassPattern = 'PASS_0046c804'
     }
     [pscustomobject]@{
         Address = '0046c8a8'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046c8a8.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046c8a8_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferECombatSequenceIsValidType_0046c8a8.cpp'
+        TestSource = '00/46/CPersistContext_TransferECombatSequenceIsValidType_0046c8a8_test.cpp'
         PassPattern = 'PASS_0046c8a8'
     }
     [pscustomobject]@{
         Address = '0046c94c'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046c94c.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046c94c_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferECombatSequenceOnStartModuleType_0046c94c.cpp'
+        TestSource = '00/46/CPersistContext_TransferECombatSequenceOnStartModuleType_0046c94c_test.cpp'
         PassPattern = 'PASS_0046c94c'
     }
     [pscustomobject]@{
         Address = '0046c9f0'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046c9f0.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046c9f0_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferECombatSequenceOnStopModuleType_0046c9f0.cpp'
+        TestSource = '00/46/CPersistContext_TransferECombatSequenceOnStopModuleType_0046c9f0_test.cpp'
         PassPattern = 'PASS_0046c9f0'
     }
     [pscustomobject]@{
         Address = '0046f252'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046f252.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046f252_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferEControllerType_0046f252.cpp'
+        TestSource = '00/46/CPersistContext_TransferEControllerType_0046f252_test.cpp'
         PassPattern = 'PASS_0046f252'
     }
     [pscustomobject]@{
         Address = '0046f2f6'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046f2f6.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046f2f6_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferEXboxControllerButton_0046f2f6.cpp'
+        TestSource = '00/46/CPersistContext_TransferEXboxControllerButton_0046f2f6_test.cpp'
         PassPattern = 'PASS_0046f2f6'
     }
     [pscustomobject]@{
         Address = '0046f39a'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046f39a.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046f39a_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferEMouseButtonControl_0046f39a.cpp'
+        TestSource = '00/46/CPersistContext_TransferEMouseButtonControl_0046f39a_test.cpp'
         PassPattern = 'PASS_0046f39a'
     }
     [pscustomobject]@{
         Address = '0046f8da'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046f8da.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046f8da_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferECombatCreatureType_0046f8da.cpp'
+        TestSource = '00/46/CPersistContext_TransferECombatCreatureType_0046f8da_test.cpp'
         PassPattern = 'PASS_0046f8da'
     }
     [pscustomobject]@{
         Address = '0046f97e'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046f97e.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046f97e_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferECombatStrikeRecoilStyle_0046f97e.cpp'
+        TestSource = '00/46/CPersistContext_TransferECombatStrikeRecoilStyle_0046f97e_test.cpp'
         PassPattern = 'PASS_0046f97e'
     }
     [pscustomobject]@{
         Address = '0046fcf8'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046fcf8.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046fcf8_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferEClothingSuitPart_0046fcf8.cpp'
+        TestSource = '00/46/CPersistContext_TransferEClothingSuitPart_0046fcf8_test.cpp'
         PassPattern = 'PASS_0046fcf8'
     }
     [pscustomobject]@{
         Address = '0046fd9c'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046fd9c.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046fd9c_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferEHeroAttachableAppearanceModifierType_0046fd9c.cpp'
+        TestSource = '00/46/CPersistContext_TransferEHeroAttachableAppearanceModifierType_0046fd9c_test.cpp'
         PassPattern = 'PASS_0046fd9c'
     }
     [pscustomobject]@{
         Address = '004ddbd0'
-        Module = '_global'
-        Source = '00/4d/CEngineLightingManager_UpdateShadowScene_004ddbd0.cpp'
-        TestSource = '00/4d/CEngineLightingManager_UpdateShadowScene_004ddbd0_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4d/CPersistContext_TransferEDoorTriggerType_004ddbd0.cpp'
+        TestSource = '00/4d/CPersistContext_TransferEDoorTriggerType_004ddbd0_test.cpp'
         PassPattern = 'PASS_004ddbd0'
     }
     [pscustomobject]@{
         Address = '004dddac'
-        Module = '_global'
-        Source = '00/4d/CEngineLightingManager_UpdateShadowScene_004dddac.cpp'
-        TestSource = '00/4d/CEngineLightingManager_UpdateShadowScene_004dddac_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4d/CPersistContext_TransferEPointLightChannelEffect_004dddac.cpp'
+        TestSource = '00/4d/CPersistContext_TransferEPointLightChannelEffect_004dddac_test.cpp'
         PassPattern = 'PASS_004dddac'
     }
     [pscustomobject]@{
         Address = '004ddecb'
-        Module = '_global'
-        Source = '00/4d/CEngineLightingManager_UpdateShadowScene_004ddecb.cpp'
-        TestSource = '00/4d/CEngineLightingManager_UpdateShadowScene_004ddecb_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4d/CPersistContext_TransferEHeroTrainingStatus_004ddecb.cpp'
+        TestSource = '00/4d/CPersistContext_TransferEHeroTrainingStatus_004ddecb_test.cpp'
         PassPattern = 'PASS_004ddecb'
     }
     [pscustomobject]@{
         Address = '004de019'
-        Module = '_global'
-        Source = '00/4d/CEngineLightingManager_UpdateShadowScene_004de019.cpp'
-        TestSource = '00/4d/CEngineLightingManager_UpdateShadowScene_004de019_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4d/CPersistContext_TransferEPerceivedThingType_004de019.cpp'
+        TestSource = '00/4d/CPersistContext_TransferEPerceivedThingType_004de019_test.cpp'
         PassPattern = 'PASS_004de019'
     }
     [pscustomobject]@{
         Address = '004de566'
-        Module = '_global'
-        Source = '00/4d/CEngineLightingManager_UpdateShadowScene_004de566.cpp'
-        TestSource = '00/4d/CEngineLightingManager_UpdateShadowScene_004de566_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4d/CPersistContext_TransferEGiftType_004de566.cpp'
+        TestSource = '00/4d/CPersistContext_TransferEGiftType_004de566_test.cpp'
         PassPattern = 'PASS_004de566'
     }
     [pscustomobject]@{
         Address = '004dedda'
-        Module = '_global'
-        Source = '00/4d/CEngineLightingManager_UpdateShadowScene_004dedda.cpp'
-        TestSource = '00/4d/CEngineLightingManager_UpdateShadowScene_004dedda_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4d/CPersistContext_TransferEWallMountEffects_004dedda.cpp'
+        TestSource = '00/4d/CPersistContext_TransferEWallMountEffects_004dedda_test.cpp'
         PassPattern = 'PASS_004dedda'
     }
     [pscustomobject]@{
         Address = '004e44ae'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e44ae.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e44ae_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferEClockHandType_004e44ae.cpp'
+        TestSource = '00/4e/CPersistContext_TransferEClockHandType_004e44ae_test.cpp'
         PassPattern = 'PASS_004e44ae'
     }
     [pscustomobject]@{
         Address = '004e5da4'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e5da4.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e5da4_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferETrapTriggerType_004e5da4.cpp'
+        TestSource = '00/4e/CPersistContext_TransferETrapTriggerType_004e5da4_test.cpp'
         PassPattern = 'PASS_004e5da4'
     }
     [pscustomobject]@{
         Address = '004e5e48'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e5e48.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e5e48_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferETrapType_004e5e48.cpp'
+        TestSource = '00/4e/CPersistContext_TransferETrapType_004e5e48_test.cpp'
         PassPattern = 'PASS_004e5e48'
     }
     [pscustomobject]@{
         Address = '004e850a'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e850a.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e850a_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferEVillageStanceToHero_004e850a.cpp'
+        TestSource = '00/4e/CPersistContext_TransferEVillageStanceToHero_004e850a_test.cpp'
         PassPattern = 'PASS_004e850a'
     }
     [pscustomobject]@{
         Address = '004e8ee8'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e8ee8.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e8ee8_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferEWeaponType_004e8ee8.cpp'
+        TestSource = '00/4e/CPersistContext_TransferEWeaponType_004e8ee8_test.cpp'
         PassPattern = 'PASS_004e8ee8'
     }
     [pscustomobject]@{
         Address = '004e8f8c'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e8f8c.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e8f8c_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferEWeaponClass_004e8f8c.cpp'
+        TestSource = '00/4e/CPersistContext_TransferEWeaponClass_004e8f8c_test.cpp'
         PassPattern = 'PASS_004e8f8c'
     }
     [pscustomobject]@{
         Address = '004f9b63'
-        Module = '_global'
-        Source = '00/4f/CEngineLightingManager_UpdateShadowScene_004f9b63.cpp'
-        TestSource = '00/4f/CEngineLightingManager_UpdateShadowScene_004f9b63_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4f/CPersistContext_TransferETavernGameControlType_004f9b63.cpp'
+        TestSource = '00/4f/CPersistContext_TransferETavernGameControlType_004f9b63_test.cpp'
         PassPattern = 'PASS_004f9b63'
     }
     [pscustomobject]@{
@@ -89797,170 +89797,170 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045da65'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_0045da65.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_0045da65_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferMapfloatETargetingType_0045da65.cpp'
+        TestSource = '00/45/CPersistContext_TransferMapfloatETargetingType_0045da65_test.cpp'
         PassPattern = 'PASS_0045da65'
     }
     [pscustomobject]@{
         Address = '0045dee9'
-        Module = '_global'
-        Source = '00/45/CPersistContext_Transfer_0045dee9.cpp'
-        TestSource = '00/45/CPersistContext_Transfer_0045dee9_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferMapboolEOpinionReactionType_0045dee9.cpp'
+        TestSource = '00/45/CPersistContext_TransferMapboolEOpinionReactionType_0045dee9_test.cpp'
         PassPattern = 'PASS_0045dee9'
     }
     [pscustomobject]@{
         Address = '0045e30a'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_0045e30a.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_0045e30a_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferMapboolEOpinionDeedType_0045e30a.cpp'
+        TestSource = '00/45/CPersistContext_TransferMapboolEOpinionDeedType_0045e30a_test.cpp'
         PassPattern = 'PASS_0045e30a'
     }
     [pscustomobject]@{
         Address = '0045ebfd'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_0045ebfd.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_0045ebfd_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferMapboolEOpinionAttitudeType_0045ebfd.cpp'
+        TestSource = '00/45/CPersistContext_TransferMapboolEOpinionAttitudeType_0045ebfd_test.cpp'
         PassPattern = 'PASS_0045ebfd'
     }
     [pscustomobject]@{
         Address = '0045f2ea'
-        Module = '_global'
-        Source = '00/45/CPersistContext_Transfer_0045f2ea.cpp'
-        TestSource = '00/45/CPersistContext_Transfer_0045f2ea_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferMapfloatEOpinion_0045f2ea.cpp'
+        TestSource = '00/45/CPersistContext_TransferMapfloatEOpinion_0045f2ea_test.cpp'
         PassPattern = 'PASS_0045f2ea'
     }
     [pscustomobject]@{
         Address = '00461660'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_00461660.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_00461660_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMapfloatEObjectAugmentationType_00461660.cpp'
+        TestSource = '00/46/CPersistContext_TransferMapfloatEObjectAugmentationType_00461660_test.cpp'
         PassPattern = 'PASS_00461660'
     }
     [pscustomobject]@{
         Address = '00461894'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_00461894.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_00461894_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMapfloatEDamageAttribute_00461894.cpp'
+        TestSource = '00/46/CPersistContext_TransferMapfloatEDamageAttribute_00461894_test.cpp'
         PassPattern = 'PASS_00461894'
     }
     [pscustomobject]@{
         Address = '00463ca6'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_00463ca6.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_00463ca6_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMaplongEHeroTrainableStatType_00463ca6.cpp'
+        TestSource = '00/46/CPersistContext_TransferMaplongEHeroTrainableStatType_00463ca6_test.cpp'
         PassPattern = 'PASS_00463ca6'
     }
     [pscustomobject]@{
         Address = '004645ab'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_004645ab.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_004645ab_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMapunsignedlongEWorldMapNameGraphic_004645ab.cpp'
+        TestSource = '00/46/CPersistContext_TransferMapunsignedlongEWorldMapNameGraphic_004645ab_test.cpp'
         PassPattern = 'PASS_004645ab'
     }
     [pscustomobject]@{
         Address = '00466813'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_00466813.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_00466813_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMapfloatEHeroTrainableStatType_00466813.cpp'
+        TestSource = '00/46/CPersistContext_TransferMapfloatEHeroTrainableStatType_00466813_test.cpp'
         PassPattern = 'PASS_00466813'
     }
     [pscustomobject]@{
         Address = '004692d4'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_004692d4.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_004692d4_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMapCBlendedParticleEffectSetlong_004692d4.cpp'
+        TestSource = '00/46/CPersistContext_TransferMapCBlendedParticleEffectSetlong_004692d4_test.cpp'
         PassPattern = 'PASS_004692d4'
     }
     [pscustomobject]@{
         Address = '0046fa22'
-        Module = '_global'
-        Source = '00/46/CEngineLightingManager_UpdateShadowScene_0046fa22.cpp'
-        TestSource = '00/46/CEngineLightingManager_UpdateShadowScene_0046fa22_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMaplongECombatCreatureType_0046fa22.cpp'
+        TestSource = '00/46/CPersistContext_TransferMaplongECombatCreatureType_0046fa22_test.cpp'
         PassPattern = 'PASS_0046fa22'
     }
     [pscustomobject]@{
         Address = '004e504a'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e504a.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e504a_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMapfloatlong_004e504a.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMapfloatlong_004e504a_test.cpp'
         PassPattern = 'PASS_004e504a'
     }
     [pscustomobject]@{
         Address = '004e527e'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e527e.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e527e_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMaplonglong_004e527e.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMaplonglong_004e527e_test.cpp'
         PassPattern = 'PASS_004e527e'
     }
     [pscustomobject]@{
         Address = '004e5601'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e5601.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e5601_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMaplongEClothingSuitPart_004e5601.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMaplongEClothingSuitPart_004e5601_test.cpp'
         PassPattern = 'PASS_004e5601'
     }
     [pscustomobject]@{
         Address = '004e6258'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e6258.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e6258_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMaplongEIdleStateGroup_004e6258.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMaplongEIdleStateGroup_004e6258_test.cpp'
         PassPattern = 'PASS_004e6258'
     }
     [pscustomobject]@{
         Address = '004e678b'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e678b.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e678b_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMapfloatEQuakeStrength_004e678b.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMapfloatEQuakeStrength_004e678b_test.cpp'
         PassPattern = 'PASS_004e678b'
     }
     [pscustomobject]@{
         Address = '004e6a26'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e6a26.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e6a26_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMapfloatEQuakeLength_004e6a26.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMapfloatEQuakeLength_004e6a26_test.cpp'
         PassPattern = 'PASS_004e6a26'
     }
     [pscustomobject]@{
         Address = '004e7a2d'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e7a2d.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e7a2d_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMaplongEQuestCardPrerequisite_004e7a2d.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMaplongEQuestCardPrerequisite_004e7a2d_test.cpp'
         PassPattern = 'PASS_004e7a2d'
     }
     [pscustomobject]@{
         Address = '004e90da'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e90da.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e90da_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMapCWeaponTrailGraphicSetEObjectAugmentationType_004e90da.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMapCWeaponTrailGraphicSetEObjectAugmentationType_004e90da_test.cpp'
         PassPattern = 'PASS_004e90da'
     }
     [pscustomobject]@{
         Address = '004e9321'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004e9321.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004e9321_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMaplongEObjectAugmentationType_004e9321.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMaplongEObjectAugmentationType_004e9321_test.cpp'
         PassPattern = 'PASS_004e9321'
     }
     [pscustomobject]@{
         Address = '004ec5fa'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004ec5fa.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004ec5fa_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMapCDefStringEObjectAugmentationType_004ec5fa.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMapCDefStringEObjectAugmentationType_004ec5fa_test.cpp'
         PassPattern = 'PASS_004ec5fa'
     }
     [pscustomobject]@{
         Address = '004ec825'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004ec825.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004ec825_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMapCObjectAugmentationParticleSetEObjectAugmentationType_004ec825.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMapCObjectAugmentationParticleSetEObjectAugmentationType_004ec825_test.cpp'
         PassPattern = 'PASS_004ec825'
     }
     [pscustomobject]@{
         Address = '004ecd36'
-        Module = '_global'
-        Source = '00/4e/CEngineLightingManager_UpdateShadowScene_004ecd36.cpp'
-        TestSource = '00/4e/CEngineLightingManager_UpdateShadowScene_004ecd36_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferMapfloatEOpinionAttitudeType_004ecd36.cpp'
+        TestSource = '00/4e/CPersistContext_TransferMapfloatEOpinionAttitudeType_004ecd36_test.cpp'
         PassPattern = 'PASS_004ecd36'
     }
     [pscustomobject]@{
@@ -92885,9 +92885,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0043119e'
-        Module = 'CEngineLightingManager'
-        Source = '00/43/CEngineLightingManager_UpdateShadowScene_0043119e.cpp'
-        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_0043119e_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/43/CPersistContext_TransferEMusicSetType_0043119e.cpp'
+        TestSource = '00/43/CPersistContext_TransferEMusicSetType_0043119e_test.cpp'
         PassPattern = 'PASS_0043119e'
     }
     [pscustomobject]@{
@@ -93025,16 +93025,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00431242'
-        Module = '_global'
-        Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431242.cpp'
-        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431242_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/43/CPersistContext_TransferMapunsignedlongunsignedlong_00431242.cpp'
+        TestSource = '00/43/CPersistContext_TransferMapunsignedlongunsignedlong_00431242_test.cpp'
         PassPattern = 'PASS_00431242'
     }
     [pscustomobject]@{
         Address = '00431493'
-        Module = '_global'
-        Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431493.cpp'
-        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431493_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/43/CPersistContext_TransferMaplongCCharString_00431493.cpp'
+        TestSource = '00/43/CPersistContext_TransferMaplongCCharString_00431493_test.cpp'
         PassPattern = 'PASS_00431493'
     }
     [pscustomobject]@{
@@ -94427,9 +94427,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00452d4d'
-        Module = 'CEngineLightingManager'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00452d4d.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00452d4d_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEObjectAugmentationType_00452d4d.cpp'
+        TestSource = '00/45/CPersistContext_TransferEObjectAugmentationType_00452d4d_test.cpp'
         PassPattern = 'PASS_00452d4d'
     }
     [pscustomobject]@{

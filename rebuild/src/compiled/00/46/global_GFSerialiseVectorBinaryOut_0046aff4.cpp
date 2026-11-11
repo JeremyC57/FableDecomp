@@ -13,22 +13,13 @@
 //   the vector is STLport's three words.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
-#define CDataOutputStream CDataOutputStreamLayout
-#include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
+#include "engine/CDataOutputStream.h"   // WriteULONG 0x00993EA0 / WriteSLONG 0x00993EB0 / WriteUHUGE 0x00993EC0 declared there
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteULONG(unsigned long);   // 0x00993EA0
-};
-
-struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
-};
+// agentNF17: the methods-only CDataOutputStream adapter is dropped; its members are CDataOutputStream's own (engine/CDataOutputStream.h,
+//   Ego_r.pdb ?WriteSLONG@CDataOutputStream@@QAEXJ@Z 0x00993EB0 / ?WriteEBOOL@ 0x00993E30 / ?WriteNullTerminatedString@ 0x00995AE0).
 class CDefString { public:
     long TablePos;                                          // +0x00 def-string table index
-    void TransferBinaryOut(CDataOutputStreamWriter& stream) const { stream.WriteSLONG(TablePos); }
+    void TransferBinaryOut(CDataOutputStream& stream) const { stream.WriteSLONG(TablePos); }
 };
 class CAtmosBankEntry { public:
     unsigned long ID;                                       // +0x00
@@ -47,14 +38,14 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CAtmosBankEntry> {
-    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream, const CAtmosBankEntry* value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStream& stream, const CAtmosBankEntry* value) const
     {
         stream.WriteULONG(value->ID);
         value->Filename.TransferBinaryOut(stream);
     }
 };
 template <class T>
-void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std::vector<T>& value)
+void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream& stream, std::vector<T>& value)
 {
     CPersistTraits<T> traits;
     long count = value.size();
@@ -62,4 +53,4 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }
-template void __fastcall GFSerialiseVectorBinaryOut<CAtmosBankEntry>(CDataOutputStreamWriter& stream, std::vector<CAtmosBankEntry>& value);
+template void __fastcall GFSerialiseVectorBinaryOut<CAtmosBankEntry>(CDataOutputStream& stream, std::vector<CAtmosBankEntry>& value);

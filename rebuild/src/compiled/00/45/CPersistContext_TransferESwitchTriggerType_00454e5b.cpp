@@ -1,46 +1,38 @@
-// CPersistContext::Transfer<ESwitchTriggerType>(ESwitchTriggerType&) -- one-argument transfer helper (member template; see the landed 0x00431061 Transfer<float>):
-//   CheckCRC("") (the empty key 0x0122D70E), then the binary load (mode 2) / save (mode 3) switch.
-//   namepass OWN12: one name for 0x00454E5B -- callers CThingMarkerDef::Transfer +0x80 / CThingSwitchDef::Transfer +0x70 = Ego_r TriggerType (ESwitchTriggerType); Ego_r has ??$Transfer@W4ESwitchTriggerType@@; the catalog label
-//   "CEngineLightingManager::UpdateShadowScene" was propagated.
+// CPersistContext::Transfer<ESwitchTriggerType>(ESwitchTriggerType& value) -- unnamed binary-only enum transfer: CRC check, then load (Mode 2) or save (Mode 3)
 // Leaf: ??$Transfer@W4ESwitchTriggerType@@@CPersistContext@@QAEXAAW4ESwitchTriggerType@@@Z
-class CDataOutputStream { public:
-public:
-    void WriteSLONG(long);   // 0x00993EB0
-};
-
-struct Local {
-    int x;
-    void Fill(int a, int* b);
-};
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00454E5B, 65 bytes, `ret 4`; ecx = the context, one pushed field address.
+// Identity (T = ESwitchTriggerType): CThingMarkerDef::Transfer +0x80 / CThingSwitchDef::Transfer +0x70 = Ego_r TriggerType (ESwitchTriggerType) (row already named; respelled onto the shared header).
+//   Ego_r.pdb / FableWin.pdb name ??$Transfer@W4ESwitchTriggerType@@@CPersistContext@@... (the named three-argument form) for this T; the retail binary-in instance
+//   CPersistTraits<ESwitchTriggerType>::TransferBinaryIn is 0x00454E9C. The one-argument parameter list is the established descriptive
+//   spelling of the unnamed retail-only transfer family (engine/CPersistContext.h `Transfer(T&)`; landed 0x00431020 / 0x00431061 /
+//   0x00431143): no PDB carries it (descriptive, NOTES).
+// Body: CheckCRC("") (0x00404500, the pooled empty literal 0x0122D70E); a CPersistTraits<T> (DefaultVal zeroed, `and [ebp-4],0`);
+//   Mode 2: traits.TransferBinaryIn(*PLoadStream, value) (0x00454E9C); Mode 3: the traits' inline TransferBinaryOut =
+//   PSaveStream->WriteSLONG(value) (0x00993EB0).
+// Shape: size TU with frame pointers (`optimize("s", on)` + `("y", off)`).
+#include "fable_compiler.h"
+#pragma optimize("s", on)
+#pragma optimize("y", off)
+#define FABLE_RETAIL_CPERSISTCONTEXT
+#define FABLE_RETAIL_CPERSISTTRAITS
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#include "engine/CDataOutputStream.h"
+#include "engine/CPersistContext.h"
+#include "engine/CPersistTraits.h"
 
 enum ESwitchTriggerType { };
 
-class CPersistContext {
-public:
-    char pad[0x18];
-    int mode;      // +0x18
-    char pad2[0x08];
-    int obj24;     // +0x24
-    CDataOutputStream* sink28;  // +0x28
-    template <class T> void Transfer(T& value);
-};
-
-extern void __stdcall Prep(unsigned int tag);   // push 0x122d70e; call
-
-#pragma optimize("y", off)
-#pragma optimize("s", on)
-template <> void CPersistContext::Transfer<ESwitchTriggerType>(ESwitchTriggerType& value_)
+template <> void CPersistContext::Transfer<ESwitchTriggerType>(ESwitchTriggerType& value)
 {
-    int* p = (int*)&value_;
-    Local h;
-    Prep(0x122d70eU);
-    h.x = 0;
-    switch (this->mode) {
-    case 2:
-        h.Fill(this->obj24, p);
+    CheckCRC("");
+    CPersistTraits<ESwitchTriggerType> traits;
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        traits.TransferBinaryIn(*PLoadStream, value);
         break;
-    case 3:
-        this->sink28->WriteSLONG(*p);
+    case MODE_SAVE_BINARY:
+        traits.TransferBinaryOut(*PSaveStream, value);
         break;
     }
 }

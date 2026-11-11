@@ -7,7 +7,20 @@
 #include "fable_string.h"
 #include "engine/CTCBuyableHouse.h"
 #include "engine/C3DVector.h"
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020
+// agentNF17: the ComponentEntry / ComponentMap stand-ins are the explicit specialisation CVectorMap<ETCInterfaceType, CTCBase*> (the
+//   landed 0x0074EE90 idiom) and its std::pair value_type; 0x0040F020 is its LowerBound (NF14 / established spelling).
+class CTCBase;
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type *_M_start,*_M_finish,*_M_end_of_storage;                     // the STLport vector
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
+typedef ComponentMap::value_type ComponentEntry;
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();}; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
@@ -118,7 +131,7 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct HeroStatsRetail{unsigned char BeforeCounts[0xe0];long NumberOfShopsOwned,NumberOfHousesOwned;};
 struct BuyableHouseMethods:CTCBuyableHouse{void SetOwnedByPlayer(bool);void SetRented(bool);}; //006C17B0,006C1150
 // Real CThing component lookup; result is deliberately unspecified when HasTC is false, as in native.
-template<int Key,class T> FABLE_FORCEINLINE T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[Key>>5]&(1u<<(Key&31))){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
+template<int Key,class T> FABLE_FORCEINLINE T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[Key>>5]&(1u<<(Key&31))){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)Key);ComponentEntry* end=map->_M_finish;result=(T*)((it==end||it->first>Key?end:it)->second);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetHouseOwnedByPlayer(const ScriptMethods&,bool,bool)const;};
 void CGameScriptInterfaceMethods::SetHouseOwnedByPlayer(const ScriptMethods& script,bool owned,bool rented)const{
  CThingNative* thing=script.GetPThing();if(thing&&!(thing->DeletedFlags&1)&&(thing->UsingComponents[6]&0x200000)){

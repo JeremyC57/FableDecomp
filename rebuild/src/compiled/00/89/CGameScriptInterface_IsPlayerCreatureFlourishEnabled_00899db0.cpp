@@ -1,26 +1,26 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
-struct CKeyPair
-{
-    ETCInterfaceType m_Key;   // 0x00
-    void*            m_Value; // 0x04
+// agentNF16: the stand-in key-pair and map structs (CKeyPair, a non-template CVectorMap) are the explicit specialisation CVectorMap<ETCInterfaceType, CTCBase*> (the
+//   landed 0x0074EE90 idiom) and its std::pair value_type; 0x0040F020 is its LowerBound (NF14 / established spelling).
+class CTCBase;
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
-
-struct CVectorMap
-{
-    CKeyPair* m_pBegin; // 0x00
-    CKeyPair* m_pEnd;   // 0x04
-
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
-};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CThingOverlay
 {
     unsigned char m_Pad00[0x24];
     unsigned int  m_Flags24;       // 0x24
     unsigned char m_Pad28[0x1c];
-    CVectorMap    m_InterfaceMap44; // 0x44
+    CInterfaceMap m_InterfaceMap44; // 0x44
     unsigned char m_Pad4C[0x45];
     unsigned char m_Flags91;        // 0x91
 };
@@ -46,14 +46,14 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureFlourishEnabled(
         (pThing->m_Flags91 & 0x01) == 0 &&
         (pThing->m_Flags24 & 0x10000) != 0)
     {
-        CVectorMap* pMap = &pThing->m_InterfaceMap44;
+        CInterfaceMap* pMap = &pThing->m_InterfaceMap44;
         ETCInterfaceType key = kTargetType;
-        CKeyPair* pEntry = pMap->LowerBound(&key);
-        CKeyPair* pEnd = pMap->m_pEnd;
-        if (pEntry == pEnd || (int)pEntry->m_Key > 0x30)
+        CInterfaceMap::value_type* pEntry = pMap->LowerBound(key);
+        CInterfaceMap::value_type* pEnd = pMap->_M_finish;
+        if (pEntry == pEnd || (int)pEntry->first > 0x30)
             pEntry = pEnd;
 
-        return Sub_IsMeleeFlourishValid(pEntry->m_Value);
+        return Sub_IsMeleeFlourishValid(pEntry->second);
     }
     return false;
 }

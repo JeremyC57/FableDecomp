@@ -26,14 +26,26 @@ public:
 extern const float DELTA_NOTIONAL_ZERO;              //0x0129BA3C
 #include "engine/CTCCombat.h"
 struct CCombatComponent:CTCCombat {void ResetComboChainPos();}; //0x00733210
-struct InterfaceEntry {long Type;CCombatComponent* Component;};
-struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* key);}; //0040F020
+// agentNF17: the InterfaceEntry / InterfaceMap stand-ins are the explicit specialisation CVectorMap<ETCInterfaceType, CTCBase*> (the
+//   landed 0x0074EE90 idiom) and its std::pair value_type; 0x0040F020 is its LowerBound (NF14 / established spelling).
+class CTCBase;
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > InterfaceMap;
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeRelativeAcceleration[0x174];C3DVector RelativeMovementAcceleration;
     float GetCurrentRelativeMovementAngleXY()const; //0x006A9640
     FABLE_FORCEINLINE bool GetInterface(CCombatComponent** out,long type){
-        if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);
-            if(p==map->Last || type<p->Type)p=map->Last;*out=p->Component;return true;}return false;
+        if(PresentBits[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=(ETCInterfaceType)type;InterfaceMap* map=&Interfaces;InterfaceMap::value_type* p=map->LowerBound(key);
+            if(p==map->_M_finish || type<p->first)p=map->_M_finish;*out=(CCombatComponent*)p->second;return true;}return false;
     }
 };
 bool FABLE_FASTCALL IsThingCarryingMeleeWeapon(Creature* creature); //006A15A0

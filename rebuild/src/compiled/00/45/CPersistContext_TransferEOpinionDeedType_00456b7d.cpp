@@ -1,38 +1,38 @@
-// CPersistContext::Transfer<EOpinionDeedType>(EOpinionDeedType&) -- one-argument transfer helper (member template; see the landed 0x00431061 Transfer<float>):
-//   CheckCRC("") (0x00404500, the empty key 0x0122D70E), then the binary load (mode 2) / save (mode 3) switch.
-//   namepass: one name for 0x00456B7D -- its callers call CPersistContext::Transfer<T>; the catalog label
-//   "CEngineLightingManager::UpdateShadowScene" / Transfer*_xxx was propagated or descriptive.
-#pragma optimize("s",on)
+// CPersistContext::Transfer<EOpinionDeedType>(EOpinionDeedType& value) -- unnamed binary-only enum transfer: CRC check, then load (Mode 2) or save (Mode 3)
 // Leaf: ??$Transfer@W4EOpinionDeedType@@@CPersistContext@@QAEXAAW4EOpinionDeedType@@@Z
-struct CTarget2 { void Draw(void* a, void* b); };
-struct CTarget3 { void Draw(void* a); };
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00456B7D, 65 bytes, `ret 4`; ecx = the context, one pushed field address.
+// Identity (T = EOpinionDeedType): CExpressionDef::Transfer +0x80 = Ego_r OpinionDeedType +0x84; CKickableDef +0x44/+0x4C (EOpinionDeedType) (row already named; respelled onto the shared header).
+//   Ego_r.pdb / FableWin.pdb name ??$Transfer@W4EOpinionDeedType@@@CPersistContext@@... (the named three-argument form) for this T; the retail binary-in instance
+//   CPersistTraits<EOpinionDeedType>::TransferBinaryIn is 0x00456BBE. The one-argument parameter list is the established descriptive
+//   spelling of the unnamed retail-only transfer family (engine/CPersistContext.h `Transfer(T&)`; landed 0x00431020 / 0x00431061 /
+//   0x00431143): no PDB carries it (descriptive, NOTES).
+// Body: CheckCRC("") (0x00404500, the pooled empty literal 0x0122D70E); a CPersistTraits<T> (DefaultVal zeroed, `and [ebp-4],0`);
+//   Mode 2: traits.TransferBinaryIn(*PLoadStream, value) (0x00456BBE); Mode 3: the traits' inline TransferBinaryOut =
+//   PSaveStream->WriteSLONG(value) (0x00993EB0).
+// Shape: size TU with frame pointers (`optimize("s", on)` + `("y", off)`).
+#include "fable_compiler.h"
+#pragma optimize("s", on)
+#pragma optimize("y", off)
+#define FABLE_RETAIL_CPERSISTCONTEXT
+#define FABLE_RETAIL_CPERSISTTRAITS
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#include "engine/CDataOutputStream.h"
+#include "engine/CPersistContext.h"
+#include "engine/CPersistTraits.h"
 
 enum EOpinionDeedType { };
-class CPersistContext { public:
-    char pad[0x18];
-    int mode;        // +0x18
-    char pad2[0x24 - 0x1c];
-    void* obj24;     // +0x24
-    void* obj28;     // +0x28
-    void Enter(void* d);   // thiscall member, void
-    template <class T> void Transfer(T& value);
-};
 
-extern int g_descObj;
-
-template <> void CPersistContext::Transfer<EOpinionDeedType>(EOpinionDeedType& value_)
+template <> void CPersistContext::Transfer<EOpinionDeedType>(EOpinionDeedType& value)
 {
-    CPersistContext* self = this;
-    void** param = (void**)&value_;
-    int st;
-    self->Enter(&g_descObj);
-    st = 0;
-    switch (self->mode) {
-    case 2:
-        ((CTarget2*)&st)->Draw(self->obj24, param);
+    CheckCRC("");
+    CPersistTraits<EOpinionDeedType> traits;
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        traits.TransferBinaryIn(*PLoadStream, value);
         break;
-    case 3:
-        ((CTarget3*)self->obj28)->Draw(*param);
+    case MODE_SAVE_BINARY:
+        traits.TransferBinaryOut(*PSaveStream, value);
         break;
     }
 }

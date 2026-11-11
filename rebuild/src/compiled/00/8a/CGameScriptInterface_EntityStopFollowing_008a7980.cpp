@@ -13,7 +13,20 @@
 #undef CThing
 
 #include "engine/C3DVector.h"
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+// agentNF17: the ComponentEntry / ComponentMap stand-ins are the explicit specialisation CVectorMap<ETCInterfaceType, CTCBase*> (the
+//   landed 0x0074EE90 idiom) and its std::pair value_type; 0x0040F020 is its LowerBound (NF14 / established spelling).
+class CTCBase;
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type *_M_start,*_M_finish;                     // the STLport vector
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
+typedef ComponentMap::value_type ComponentEntry;
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;void ForceAIReset();}; //004C73D0,004C7E50
 FABLE_STATIC_ASSERT(offsetof(CThingNative,UsingComponents)==0x20);
@@ -126,7 +139,7 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct CTCFollowedNative:CTCBase{bool IsFollower(const CThingNative*)const;void RemoveFollower(CThingNative&);}; //006D4D70,006D5180; native first list +0c is Followers, second +10 is AIFollowers
 struct EventTypeFilter{long Type;EventTypeFilter(long t):Type(t){}};
 struct EventListMethods{void RemoveIf(const long*);}; //008AC890 actual byvalue CConvFilterToCP stores pointer to predicate
-template<long key> FABLE_FORCEINLINE void* GetComponent(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;return (it==end||it->Type>key?end:it)->Component;}
+template<long key> FABLE_FORCEINLINE void* GetComponent(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)key);ComponentEntry* end=map->_M_finish;return (it==end||it->first>key?end:it)->second;}
 FABLE_FORCEINLINE void RemoveFollowEvents(CTCEntityEvents* events){const long type=3;reinterpret_cast<EventListMethods*>(events->Events)->RemoveIf(&type);}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityStopFollowing(const ScriptMethods&)const;};
-void CGameScriptInterfaceMethods::EntityStopFollowing(const ScriptMethods& script)const{if(script.IsAlive()){CThingNative* thing=script.GetPThing();CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->LifeFlags&1)&&(hero->UsingComponents[5]&0x10000000)){long key=188;ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;CTCFollowedNative* followed=static_cast<CTCFollowedNative*>((it==end||it->Type>188?end:it)->Component);if(followed->IsFollower(thing)){followed->RemoveFollower(*thing);thing->ForceAIReset();if(thing->UsingComponents[2]&4){key=66;ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;CTCEntityEvents* events=static_cast<CTCEntityEvents*>((it==end||it->Type>66?end:it)->Component);key=3;reinterpret_cast<EventListMethods*>(events->Events)->RemoveIf(&key);}}}}}
+void CGameScriptInterfaceMethods::EntityStopFollowing(const ScriptMethods& script)const{if(script.IsAlive()){CThingNative* thing=script.GetPThing();CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->LifeFlags&1)&&(hero->UsingComponents[5]&0x10000000)){ETCInterfaceType key=(ETCInterfaceType)188;ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->_M_finish;CTCFollowedNative* followed=(CTCFollowedNative*)((it==end||it->first>188?end:it)->second);if(followed->IsFollower(thing)){followed->RemoveFollower(*thing);thing->ForceAIReset();if(thing->UsingComponents[2]&4){key=(ETCInterfaceType)66;ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->_M_finish;CTCEntityEvents* events=(CTCEntityEvents*)((it==end||it->first>66?end:it)->second);key=(ETCInterfaceType)3;reinterpret_cast<EventListMethods*>(events->Events)->RemoveIf((const long*)&key);}}}}}

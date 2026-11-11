@@ -1163,15 +1163,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004310a7	Transfer<CWideString>	CPersistContext	unknown	undefined	0		0	yes	accepted									
 00431102	Transfer<long>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_00431102.cpp
 00431143	Transfer<CCharString>	CPersistContext	unknown	undefined	0		0	yes	accepted									
-0043119e	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_0043119e.cpp
+0043119e	Transfer<EMusicSetType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_0043119e.cpp
 004311df	TransferBinaryIn_004311df	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-00431242	PersistTransfer_00431242	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_00431242.cpp
+00431242	TransferMap<unsigned long, unsigned long>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_00431242.cpp
 00431277	WriteState_00431277	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00431277_global_UpdateShadowScene_WriteState.cpp				
 004312b4	GFSerialiseMapBinaryIn<unsigned long, unsigned long, std::less<unsigned long>>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 00431363	insert	CRetailTree_ulongkey_ins004313e9	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00431363_global_BinaryTree_Insert_With_Position.cpp				
 004313e9	Insert	CRetailTree_ulongkey_buy00431471	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x004313E9_global_std_set_insert_uint_via_FUN.cpp				
 00431471	RbTree_CreateNode_sz0x18_00431471	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00431471_global_TreeNode_AllocData.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\global_TreeNodeAllocData_00431471.cpp
-00431493	PersistTransfer_00431493	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_00431493.cpp
+00431493	TransferMap<long, CCharString>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_00431493.cpp
 004314c8	GFSerialiseMapBinaryOut<long, CCharString, std::less<CCharString>>	_global	unknown	undefined	0		0	yes	accepted									
 0043151d	GFSerialiseMapBinaryIn	_global	__fastcall	void	2	CMemoryDataInputStream *,map<CCharString,std::pair<long,long>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,std::pair<long,long>_>_>_> *	1	yes	accepted									
 00431606	insert_unique	std::_Rb_tree	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00431606_global_Map_InsertStringKeyNode.cpp				
@@ -2203,18 +2203,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00451ca2	Transfer	CThingMultiArrowShotDef	__fastcall	void	0		1	yes	accepted									
 00451d28	Transfer	CInventoryItemDef	__fastcall	void	0		1	yes	accepted									
 00451e11	Transfer<CEngineGraphic>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00451e11.cpp
-00451e59	PersistTransfer_00451e59	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00451e59.cpp
+00451e59	Transfer<EInventoryActionType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00451e59.cpp
 00451e9a	TransferBinaryIn_00451e9a	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-00451efd	PersistTransfer_00451efd	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00451efd.cpp
+00451efd	Transfer<ETCInterfaceType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00451efd.cpp
 00451f3e	TransferBinaryIn_00451f3e	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-00451fa1	PersistTransfer_00451fa1	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00451fa1.cpp
+00451fa1	Transfer<EInventoryObjectOrientation>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00451fa1.cpp
 00451fe2	TransferBinaryIn_00451fe2	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-00452045	PersistTransfer_00452045	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452045.cpp
-00452086	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452086.cpp
+00452045	Transfer<ETutorialCategory>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452045.cpp
+00452086	Transfer<EUIInventoryCategory>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452086.cpp
 004520c7	TransferBinaryIn_004520c7	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0045212a	Transfer	CPhysicsDef	__fastcall	void	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CPhysicsDef_TransferCPhysicsDefUAEXAAVCPersistContextZ_0045212a.cpp
 00452184	Transfer	CTCNoiseDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CTCNoiseDef_TransferCTCNoiseDefUAEXAAVCPersistContextZ_00452184.cpp
-004521b2	PersistTransfer_004521b2	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004521b2.cpp
+004521b2	Transfer<ENoiseType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004521b2.cpp
 004521f3	TransferBinaryIn_004521f3	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00452256	Transfer	CCarrySlotDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCarrySlotDef_TransferCCarrySlotDefUAEXAAVCPersistContextZ_00452256.cpp
 0045228f	Transfer<CDefString>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045228f.cpp
@@ -2231,14 +2231,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045266b	GetSizeofClass	CHitLocationsDef	__thiscall	ulong	1	CHitLocationsDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CHitLocationsDef_GetSizeofClass_0045266b.cpp
 0045266f	Transfer	CCoopSpiritDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCoopSpiritDef_TransferCCoopSpiritDefUAEXAAVCPersistContextZ_0045266f.cpp
 004526b3	Transfer	CContextSensitiveItemDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CContextSensitiveItemDef_TransferCContextSensitiveItemDefUAEXAAVCPersistC_004526b3.cpp
-004526f7	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004526f7.cpp
+004526f7	Transfer<EContextSensitiveType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004526f7.cpp
 00452738	TransferBinaryIn_00452738	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0045279b	Transfer	CBonusItemDef	__fastcall	void	0		1	yes	accepted									
 00452884	Transfer	CHeroTitleDef	__fastcall	void	0		1	yes	accepted									
-0045290a	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045290a.cpp
+0045290a	Transfer<EHeroTitle>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045290a.cpp
 0045294b	TransferBinaryIn_0045294b	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004529ae	Transfer	CTattooDef	__fastcall	void	0		1	yes	accepted									
-00452a60	PersistTransfer_00452a60	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452a60.cpp
+00452a60	Transfer<ECompositeBlendType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452a60.cpp
 00452aa1	TransferBinaryIn_00452aa1	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00452b04	Transfer	CHairCardDef	__thiscall	void	2	CHairCardDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CHairCardDef_Transfer_00452b04.cpp
 00452b14	Transfer	CCombatAbilityAttackBase	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCombatAbilityAttackBase_TransferCCombatAbilityAttackBaseUAEXAAVCPersistC_00452b14.cpp
@@ -2249,10 +2249,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00452c94	Transfer	CDragonActionNapalmDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CDragonActionNapalmDef_TransferCDragonActionNapalmDefUAEXAAVCPersistCon_00452c94.cpp
 00452ccd	Transfer	CDragonActionHoverDef	__thiscall	void	2	CDragonActionHoverDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CDragonActionHoverDef_Transfer_00452ccd.cpp
 00452cdd	Transfer	CAugmentationDef	__fastcall	void	0		1	yes	accepted									
-00452d4d	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452d4d.cpp
+00452d4d	Transfer<EObjectAugmentationType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452d4d.cpp
 00452d8e	TransferBinaryIn_00452d8e	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00452df1	Transfer	CAbilityDef	__thiscall	void	2	CAbilityDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CAbilityDef_Transfer_00452df1.cpp
-00452e01	PersistTransfer_00452e01	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452e01.cpp
+00452e01	Transfer<EHeroAbility>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00452e01.cpp
 00452e42	TransferBinaryIn_00452e42	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00452ea5	Transfer	CJackDragonDef	__fastcall	void	0		1	yes	accepted									
 00452f8e	Transfer	CBriarRoseDef	__fastcall	void	0		1	yes	accepted									
@@ -2408,7 +2408,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00454b5f	CThingBuildingDef	CThingBuildingDef	__thiscall	undefined	1	CSimVoice *	0	yes	accepted									
 00454b88	GetSizeofClass	CThingBuildingDef	__thiscall	ulong	1	CThingBuildingDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CThingBuildingDef_GetSizeofClass_00454b88.cpp
 00454b8e	Transfer	CThingBuildingDef	__thiscall	void	2	CThingBuildingDef *,CPersistContext *	1	yes	accepted									
-00454cfa	PersistTransfer_00454cfa	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00454cfa.cpp
+00454cfa	Transfer<EReverbEnvironmentType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00454cfa.cpp
 00454d3b	TransferBinaryIn_00454d3b	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00454d9e	CThingHolySiteDef	CThingHolySiteDef	__thiscall	undefined	1	CSimVoice *	0	yes	accepted									
 00454dc5	GetSizeofClass	CThingHolySiteDef	__thiscall	ulong	1	CThingHolySiteDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CThingHolySiteDef_GetSizeofClass_00454dc5.cpp
@@ -2436,15 +2436,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00455572	CInventoryCategoryDef	CInventoryCategoryDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00455584	GetSizeofClass	CInventoryCategoryDef	__thiscall	ulong	1	CInventoryCategoryDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CInventoryCategoryDef_GetSizeofClass_00455584.cpp
 00455588	Transfer	CInventoryCategoryDef	__fastcall	void	0		1	yes	accepted									
-004555f8	PersistTransfer_004555f8	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004555f8.cpp
+004555f8	Transfer<NInventory::EInventoryCategoryIdentifier>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004555f8.cpp
 00455639	TransferBinaryIn_00455639	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0045569c	`scalar_deleting_destructor'	CInventoryCategoryDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_0045569c.cpp
 004556b8	CMessageEventDef	CMessageEventDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004556ca	GetSizeofClass	CMessageEventDef	__thiscall	ulong	1	CMessageEventDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CMessageEventDef_GetSizeofClass_004556ca.cpp
 004556ce	Transfer	CMessageEventDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CMessageEventDef_TransferCMessageEventDefUAEXAAVCPersistContextZ_004556ce.cpp
-00455712	PersistTransfer_00455712	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00455712.cpp
+00455712	Transfer<EMessageEventType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00455712.cpp
 00455753	TransferBinaryIn_00455753	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-004557b6	PersistTransfer_004557b6	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004557b6.cpp
+004557b6	Transfer<EReactionSpeechType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004557b6.cpp
 004557f7	TransferBinaryIn_004557f7	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0045585a	`scalar_deleting_destructor'	CMessageEventDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_0045585a.cpp
 00455876	CSkyDef	CSkyDef	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
@@ -2533,11 +2533,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00456964	CExpressionDef	CExpressionDef	__thiscall	undefined	1	CExpressionDef *	0	yes	accepted									
 004569a1	GetSizeofClass	CExpressionDef	__thiscall	ulong	1	CExpressionDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CExpressionDef_GetSizeofClass_004569a1.cpp
 004569a7	Transfer	CExpressionDef	__fastcall	void	0		1	yes	accepted									
-00456ad9	PersistTransfer_00456ad9	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00456ad9.cpp
+00456ad9	Transfer<EGameEventType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00456ad9.cpp
 00456b1a	TransferBinaryIn_00456b1a	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00456b7d	Transfer<EOpinionDeedType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00456b7d.cpp
 00456bbe	TransferBinaryIn_00456bbe	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-00456c21	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00456c21.cpp
+00456c21	Transfer<EExpressionInventoryType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00456c21.cpp
 00456c62	TransferBinaryIn_00456c62	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00456cc5	`scalar_deleting_destructor'	CExpressionDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00456cc5.cpp
 00456ce1	COpinionReactionMaskDef	COpinionReactionMaskDef	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
@@ -2677,9 +2677,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004585e0	CHitLocationDef	CHitLocationDef	__thiscall	undefined	1	CCarriedReadableDef *	0	yes	accepted									
 004585fa	GetSizeofClass	CHitLocationDef	__thiscall	ulong	1	CHitLocationDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CHitLocationDef_GetSizeofClass_004585fa.cpp
 004585fe	Transfer	CHitLocationDef	__fastcall	void	0		1	yes	accepted									
-004586eb	PersistTransfer_004586eb	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004586eb.cpp
+004586eb	Transfer<EActionRegisteredType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004586eb.cpp
 0045872c	TransferBinaryIn_0045872c	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0045878f	PersistTransfer_0045878f	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045878f.cpp
+0045878f	Transfer<EHitLocationCodelet>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045878f.cpp
 004587d0	TransferBinaryIn_004587d0	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00458833	Transfer<CPhysicalPrimitiveInit>	CPersistContext	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x00458833_global_CPhysicalPrimitiveInit_Transfer.cpp				
 0045887f	`scalar_deleting_destructor'	CHitLocationDef	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineSubPrimitiveText_scalardeletingdestructor_0045887f.cpp
@@ -2712,7 +2712,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00458d6f	Transfer	CThingShotDef	__fastcall	void	0		1	yes	accepted									
 00458f2b	Transfer<CFloatRange>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted									
 00458f89	TransferBinaryIn	CPersistTraits<CFloatRange>	__thiscall	void	3	CPersistTraits<CFloatRange> *,CMemoryDataInputStream *,CFloatRange *	1	yes	accepted									
-00459042	PersistTransfer_00459042	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00459042.cpp
+00459042	Transfer<EDamageAttribute>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00459042.cpp
 00459083	TransferBinaryIn_00459083	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004590e6	`scalar_deleting_destructor'	CThingShotDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004590e6.cpp
 00459102	CThingObjectDef	CThingObjectDef	__thiscall	undefined	1	CSimVoice *	0	yes	accepted									
@@ -2723,7 +2723,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045933d	CCreatureAbilityDef	CCreatureAbilityDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0045934f	GetSizeofClass	CCreatureAbilityDef	__thiscall	ulong	1	CCreatureAbilityDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCreatureAbilityDef_GetSizeofClass_0045934f.cpp
 00459353	Transfer	CCreatureAbilityDef	__thiscall	void	2	CCreatureAbilityDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCreatureAbilityDef_Transfer_00459353.cpp
-00459363	PersistTransfer_00459363	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00459363.cpp
+00459363	Transfer<ECreatureAbility>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00459363.cpp
 004593a4	TransferBinaryIn_004593a4	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00459407	`scalar_deleting_destructor'	CCreatureAbilityDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00459407.cpp
 0045943c	`scalar_deleting_destructor'	CThingHolySiteDef	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CAssoc_scalardeletingdestructor_0045943c.cpp
@@ -2755,9 +2755,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00459783	CEngineThemeDef	CEngineThemeDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00459795	GetSizeofClass	CEngineThemeDef	__thiscall	ulong	1	CEngineThemeDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineThemeDef_GetSizeofClass_00459795.cpp
 0045979b	Transfer	CEngineThemeDef	__thiscall	void	2	CEngineThemeDef *,CPersistContext *	1	yes	accepted									
-0045990b	PersistTransfer_0045990b	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045990b.cpp
+0045990b	Transfer<EMinimapThemeType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045990b.cpp
 0045994c	TransferBinaryIn_0045994c	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-004599af	PersistTransfer_004599af	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004599af.cpp
+004599af	Transfer<EWaterType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004599af.cpp
 004599f0	TransferBinaryIn_004599f0	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00459a53	`scalar_deleting_destructor'	CEngineThemeDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00459a53.cpp
 00459a6f	CBrainDef	CBrainDef	__thiscall	undefined	1	CBossDef *	0	yes	accepted									
@@ -2860,7 +2860,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045d871	_M_copy	std::_Rb_tree<ETargetingType, std::pair<ETargetingType const, float>, std::_Select1st<std::pair<ETargetingType const, float>>, std::less<ETargetingType>, std::allocator<std::pair<ETargetingType const, float>>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045D871_global_TreeNode_CloneDeep.cpp				
 0045d901	_M_create_node	std::_Rb_tree<ETargetingType, std::pair<ETargetingType const, float>, std::_Select1st<std::pair<ETargetingType const, float>>, std::less<ETargetingType>, std::allocator<std::pair<ETargetingType const, float>>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045D901_global_TreeNode_AllocData.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_TreeNodeAllocData_0045d901.cpp
 0045d923	Transfer	CTargetingDef	__fastcall	void	0		1	yes	accepted									
-0045da65	PersistTransfer_0045da65	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045da65.cpp
+0045da65	TransferMap<float, ETargetingType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045da65.cpp
 0045da9a	WriteState_0045da9a	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045DA9A_global_UpdateShadowScene_WriteMapData.cpp				
 0045dadb	GFSerialiseMapBinaryIn<float, ETargetingType, std::less<ETargetingType>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 0045db8f	TransferBinaryIn_0045db8f	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -2873,7 +2873,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045de2f	RbTree_CreateNode_sz0x18_0045de2f	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045DE2F_global_TreeNode_AllocData_Byte.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_TreeNodeAllocDataByte_0045de2f.cpp
 0045de67	Transfer	COpinionReactionMaskDef	__thiscall	void	2	COpinionReactionMaskDef *,CPersistContext &	1	yes	accepted									
 0045deba	Map_EraseNode	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045DEBA_global_Map_EraseNode.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_MapEraseNode_0045deba.cpp
-0045dee9	PersistTransfer_0045dee9	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045dee9.cpp
+0045dee9	TransferMap<bool, EOpinionReactionType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045dee9.cpp
 0045df1e	GFSerialiseMapBinaryOut<bool, EOpinionReactionType, std::less<EOpinionReactionType>>	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045DF1E_global_Save_WriteMemoryAllocatorAreas.cpp				
 0045df5e	GFSerialiseMapBinaryIn	_global	__fastcall	void	2	CMemoryDataInputStream *,map<EOpinionAttitudeType,bool,std::less<EOpinionAttitudeType>,std::allocator<std::pair<EOpinionAttitudeType_const_,bool>_>_> *	1	yes	accepted									
 0045e011	TransferBinaryIn_0045e011	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -2885,7 +2885,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045e221	Copy	CRetailTree_0045e2b1	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045E221_global_TreeNode_CloneDeep.cpp				
 0045e2b1	RbTree_CreateNode_sz0x18_0045e2b1	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045E2B1_global_TreeNode_AllocData_Byte.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_TreeNodeAllocDataByte_0045e2b1.cpp
 0045e2e9	Transfer	COpinionDeedMaskDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\COpinionDeedMaskDef_TransferCOpinionDeedMaskDefUAEXAAVCPersistContex_0045e2e9.cpp
-0045e30a	PersistTransfer_0045e30a	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045e30a.cpp
+0045e30a	TransferMap<bool, EOpinionDeedType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045e30a.cpp
 0045e33f	GFSerialiseMapBinaryOut<bool, EOpinionDeedType, std::less<EOpinionDeedType>>	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045E33F_global_UpdateShadowScene_WriteMapDataWithBool.cpp				
 0045e37f	GFSerialiseMapBinaryIn	_global	__fastcall	void	2	CMemoryDataInputStream *,map<EOpinionAttitudeType,bool,std::less<EOpinionAttitudeType>,std::allocator<std::pair<EOpinionAttitudeType_const_,bool>_>_> *	1	yes	accepted									
 0045e42e	insert	CRetailTree_longkey_ins0045e4b4	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045E42E_global_RBTree_InsertWithFind3.cpp				
@@ -2902,7 +2902,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045e808	Transfer<COpinionPersonalityTraits*>	CPersistContext	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045E808_global_COpinionPersonalityDef_TransferArray.cpp				
 0045e863	TransferBinaryOut	COpinionPersonalityTraits	__thiscall	void	2	COpinionPersonalityTraits *,CDataOutputStream *	1	yes	accepted									
 0045e8ed	TransferBinaryIn	COpinionPersonalityTraits	__thiscall	void	2	COpinionPersonalityTraits *,CMemoryDataInputStream *	1	yes	accepted									
-0045ebfd	PersistTransfer_0045ebfd	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045ebfd.cpp
+0045ebfd	TransferMap<bool, EOpinionAttitudeType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045ebfd.cpp
 0045ec32	GFSerialiseMapBinaryOut<bool, EOpinionAttitudeType, std::less<EOpinionAttitudeType>>	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045EC32_global_unknown.cpp				
 0045ec72	GFSerialiseMapBinaryIn	_global	__fastcall	void	2	CMemoryDataInputStream *,map<EOpinionAttitudeType,bool,std::less<EOpinionAttitudeType>,std::allocator<std::pair<EOpinionAttitudeType_const_,bool>_>_> *	1	yes	accepted									
 0045ed25	TransferBinaryIn_0045ed25	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -2917,7 +2917,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045f0ad	Copy	CRetailTree_0045f13d	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045F0AD_global_TreeNode_CloneDeep.cpp				
 0045f13d	RbTree_CreateNode_sz0x18_0045f13d	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045F13D_global_TreeNode_AllocData.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_TreeNodeAllocData_0045f13d.cpp
 0045f178	Transfer	COpinionSourceDef	__thiscall	void	2	COpinionSourceDef *,CPersistContext &	1	yes	accepted									
-0045f2ea	PersistTransfer_0045f2ea	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045f2ea.cpp
+0045f2ea	TransferMap<float, EOpinion>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045f2ea.cpp
 0045f31f	WriteState_0045f31f	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045F31F_global_Shadow_WriteAllocatorDataVariant.cpp				
 0045f360	GFSerialiseMapBinaryIn<float, EOpinion, std::less<EOpinion>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 0045f414	TransferBinaryIn_0045f414	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -3004,12 +3004,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00461533	Copy	CRetailTree_004615c3	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00461533_global_Tree_Clone_Recursive.cpp				
 004615c3	RbTree_CreateNode_sz0x18_004615c3	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004615C3_global_TreeNode_AllocData.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_TreeNodeAllocData_004615c3.cpp
 004615fb	Transfer	CArmourDef	__fastcall	void	0		1	yes	accepted									
-00461660	PersistTransfer_00461660	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00461660.cpp
+00461660	TransferMap<float, EObjectAugmentationType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00461660.cpp
 00461695	WriteState_00461695	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00461695_global_SerializeAllocationAreas.cpp				
 004616d6	GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 00461786	insert	CRetailTree_longkey_ins0046180c	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00461786_global_RBTree_LowerBound.cpp				
 0046180c	Insert	CRetailTree_longkey_buy0046149e	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x0046180C_global_RBTree_Insert_Internal.cpp				
-00461894	PersistTransfer_00461894	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00461894.cpp
+00461894	TransferMap<float, EDamageAttribute>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00461894.cpp
 004618c9	WriteState_004618c9	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004618C9_global_SerializeAllocationAreas.cpp				
 0046190a	GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 004619ba	insert	CRetailTree_longkey_ins00461a40	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004619BA_global_RBTree_LowerBound.cpp				
@@ -3101,7 +3101,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00463ba2	operator=	CEntitySoundDef	unknown	undefined	0		0	yes	accepted									
 00463bdb	Copy	CCombatAbilityBlockUnarmedAttackDef	__thiscall	void	2	CCombatAbilityBlockUnarmedAttackDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CCombatAbilityBlockUnarmedAttackDef_Copy_00463bdb.cpp
 00463bff	Transfer	CMeleeCombatAbilityDef	__fastcall	void	0		1	yes	accepted									
-00463ca6	PersistTransfer_00463ca6	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00463ca6.cpp
+00463ca6	TransferMap<long, EHeroTrainableStatType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00463ca6.cpp
 00463cdb	WriteState_00463cdb	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00463CDB_global_SerializeAllocationAreas.cpp				
 00463d18	GFSerialiseMapBinaryIn<long, EHeroTrainableStatType, std::less<EHeroTrainableStatType>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 00463dcb	TransferBinaryIn_00463dcb	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -3127,7 +3127,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00464531	Copy	CThingPhysicalSwitchDef	__thiscall	void	2	CThingPhysicalSwitchDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_Copy_00464531.cpp
 00464536	operator=	CThingBaseDef	unknown	undefined	0		0	yes	accepted									
 0046457d	Transfer	NUISystem::CUILocaleGraphicsDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
-004645ab	PersistTransfer_004645ab	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_004645ab.cpp
+004645ab	TransferMap<unsigned long, EWorldMapNameGraphic>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_004645ab.cpp
 004645e0	WriteState_004645e0	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004645E0_global_SerializeAllocationAreas.cpp				
 0046461d	GFSerialiseMapBinaryIn<unsigned long, EWorldMapNameGraphic, std::less<EWorldMapNameGraphic>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004646d0	TransferBinaryIn_004646d0	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -3187,7 +3187,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0046656a	vfunc_19	NSpeechGainManager::CDialogueLayerDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0046656f	_M_allocate_and_copy	std::vector<NSpeechGainManager::CDialogueLayerDef>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x0046656F_global_unknown.cpp				
 004665b6	Transfer	CHeroCombatDef	__fastcall	void	0		1	yes	accepted									
-00466813	PersistTransfer_00466813	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00466813.cpp
+00466813	TransferMap<float, EHeroTrainableStatType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00466813.cpp
 00466848	WriteState_00466848	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00466848_global_LinkedList_TransferBinaryMetadata.cpp				
 00466889	GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 00466939	insert	CRetailTree_longkey_ins004669bf	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00466939_global_RBTree_LowerBound.cpp				
@@ -3225,7 +3225,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0046780e	__uninitialized_copy<bool *, bool *>	std	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x0046780E_global_Vector_CopyRange.cpp				
 00467831	_M_insert_overflow	std::vector<bool>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00467831_global_VectorInsert_ExpandWithFill.cpp				
 004678e2	?Transfer@CInventoryDef@@UAEXAAVCPersistContext@@@Z	CInventoryDef	__fastcall	void	0		1	yes	accepted									
-00468e10	PersistTransfer_00468e10	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00468e10.cpp
+00468e10	Transfer<NInventory::EInventoryIdentifier>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00468e10.cpp
 00468e51	TransferBinaryIn_00468e51	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00468eb4	TransferBinary_00468eb4	CPersistContext	__thiscall	void	1	CCreatureAction_FireMissileWeapon *	1	yes	accepted									
 00468ee2	GFSerialiseVectorBinaryOut<C2DVector>	_global	__fastcall	void	2	CDataOutputStream *,vector<C2DVector,std::allocator<C2DVector>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_GFSerialiseVectorBinaryOutC2DVector_00468ee2.cpp
@@ -3236,7 +3236,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00469149	UninitFillN_00469149	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 0046916b	_M_insert_overflow	std::vector<CRGBColour>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x0046916B_global_Vector_Reallocate.cpp				
 0046923d	Transfer	CMaterialDef	__fastcall	void	0		1	yes	accepted									
-004692d4	PersistTransfer_004692d4	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_004692d4.cpp
+004692d4	TransferMap<CBlendedParticleEffectSet, long>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_004692d4.cpp
 00469309	GFSerialiseMapBinaryOut	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00469309_global_Serialization_WriteParticleEffect.cpp				
 00469345	TransferBinaryOut	CBlendedParticleEffectSet	__thiscall	void	2	CBlendedParticleEffectSet *,CDataOutputStream *	1	yes	accepted									
 00469381	GFSerialiseMapBinaryIn	_global	__fastcall	void	2	CMemoryDataInputStream *,map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CDefString>_>_> *	1	yes	accepted									
@@ -3255,7 +3255,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004699c9	FillN_dword_004699c9	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_Fillnunsignedlongunsignedintunsignedlong_004699c9.cpp
 004699e4	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004699E4_global_Vector_Reallocate.cpp				
 00469ab3	Transfer	CHeroAbilityDef	__fastcall	void	0		1	yes	accepted									
-00469b8a	PersistTransfer_00469b8a	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00469b8a.cpp
+00469b8a	Transfer<EHeroExperienceStatCategory>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00469b8a.cpp
 00469bcb	TransferBinaryIn_00469bcb	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 00469c2e	Transfer	CTextureReplacementDef	__thiscall	void	2	CTextureReplacementDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CTextureReplacementDef_Transfer_00469c2e.cpp
 00469c3e	TransferBinary_00469c3e	CPersistContext	__thiscall	void	1	CCreatureAction_FireMissileWeapon *	1	yes	accepted									
@@ -3345,15 +3345,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0046c5f8	vector_insert_reallocate_8byte	std::std	unknown	undefined	0		0	yes	accepted									
 0046c6e0	Transfer	CHitLocationsDef	__thiscall	void	2	CHitLocationsDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CHitLocationsDef_Transfer_0046c6e0.cpp
 0046c6f0	Transfer	CCombatSequenceDef	__fastcall	void	0		1	yes	accepted									
-0046c760	PersistTransfer_0046c760	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c760.cpp
+0046c760	Transfer<ECombatSequenceType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c760.cpp
 0046c7a1	TransferBinaryIn_0046c7a1	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046c804	PersistTransfer_0046c804	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c804.cpp
+0046c804	Transfer<ECombatSequenceInterruptionType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c804.cpp
 0046c845	TransferBinaryIn_0046c845	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046c8a8	PersistTransfer_0046c8a8	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c8a8.cpp
+0046c8a8	Transfer<ECombatSequenceIsValidType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c8a8.cpp
 0046c8e9	TransferBinaryIn_0046c8e9	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046c94c	PersistTransfer_0046c94c	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c94c.cpp
+0046c94c	Transfer<ECombatSequenceOnStartModuleType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c94c.cpp
 0046c98d	TransferBinaryIn_0046c98d	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046c9f0	PersistTransfer_0046c9f0	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c9f0.cpp
+0046c9f0	Transfer<ECombatSequenceOnStopModuleType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046c9f0.cpp
 0046ca31	TransferBinaryIn_0046ca31	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0046ca94	TransferBinary_0046ca94	CPersistContext	__thiscall	void	1	CCreatureAction_FireMissileWeapon *	1	yes	accepted									
 0046cac2	GFSerialiseVectorBinaryOut<float>	_global	__fastcall	void	2	CDataOutputStream *,vector<float,std::allocator<float>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_GFSerialiseVectorBinaryOutfloat_0046cac2.cpp
@@ -3388,11 +3388,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0046f1b4	CAbilityButtonGuiDef	CAbilityButtonGuiDef	__thiscall	undefined	2	CAbilityButtonGuiDef *,CAbilityButtonGuiDef *	0	yes	accepted									
 0046f1ff	GetSizeofClass	CAbilityButtonGuiDef	__thiscall	ulong	1	CAbilityButtonGuiDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CAbilityButtonGuiDef_GetSizeofClass_0046f1ff.cpp
 0046f203	Transfer	CAbilityButtonGuiDef	__fastcall	void	0		1	yes	accepted									
-0046f252	PersistTransfer_0046f252	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f252.cpp
+0046f252	Transfer<EControllerType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f252.cpp
 0046f293	TransferBinaryIn_0046f293	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046f2f6	PersistTransfer_0046f2f6	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f2f6.cpp
+0046f2f6	Transfer<EXboxControllerButton>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f2f6.cpp
 0046f337	TransferBinaryIn_0046f337	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046f39a	PersistTransfer_0046f39a	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f39a.cpp
+0046f39a	Transfer<EMouseButtonControl>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f39a.cpp
 0046f3db	TransferBinaryIn_0046f3db	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0046f43e	operator=	CAbilityButtonGuiDef	__thiscall	CAbilityButtonGuiDef *	2	CAbilityButtonGuiDef *,CAbilityButtonGuiDef *	1	yes	accepted									
 0046f483	`scalar_deleting_destructor'	CAbilityButtonGuiDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_vectordeletingdestructor_0046f483.cpp
@@ -3410,19 +3410,19 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0046f77c	Copy	CLensFlareElementDef	__thiscall	CAreaOfEffectAttackDef *	2	CAreaOfEffectAttackDef *,CAreaOfEffectAttackDef *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_CopyCLensFlareElementDefUAEXPBVCDefClassBaseZ_0046f77c.cpp
 0046f781	_M_allocate_and_copy<CLensFlareElementDef const *>	std::vector<CLensFlareElementDef, std::allocator<CLensFlareElementDef>>	unknown	undefined	0		0	yes	accepted									
 0046f7c8	Transfer	CCombatTypeDef	__fastcall	void	0		1	yes	accepted									
-0046f8da	PersistTransfer_0046f8da	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f8da.cpp
+0046f8da	Transfer<ECombatCreatureType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f8da.cpp
 0046f91b	TransferBinaryIn_0046f91b	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046f97e	PersistTransfer_0046f97e	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f97e.cpp
+0046f97e	Transfer<ECombatStrikeRecoilStyle>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046f97e.cpp
 0046f9bf	TransferBinaryIn_0046f9bf	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046fa22	PersistTransfer_0046fa22	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046fa22.cpp
+0046fa22	TransferMap<long, ECombatCreatureType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046fa22.cpp
 0046fa57	WriteState_0046fa57	_global	unknown	undefined	0		0	yes	accepted									
 0046fa94	GFSerialiseMapBinaryIn<long, ECombatCreatureType, std::less<ECombatCreatureType>>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 0046fb43	insert	CRetailTree_longkey_ins0046fbc9	unknown	undefined	0		0	yes	accepted									
 0046fbc9	Insert	CRetailTree_longkey_buy0045c4d2	unknown	undefined	0		0	yes	accepted									
 0046fc51	Transfer	CAppearanceModifierDef	__fastcall	void	0		1	yes	accepted									
-0046fcf8	PersistTransfer_0046fcf8	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046fcf8.cpp
+0046fcf8	Transfer<EClothingSuitPart>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046fcf8.cpp
 0046fd39	TransferBinaryIn_0046fd39	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0046fd9c	PersistTransfer_0046fd9c	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046fd9c.cpp
+0046fd9c	Transfer<EHeroAttachableAppearanceModifierType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_0046fd9c.cpp
 0046fddd	TransferBinaryIn_0046fddd	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0046fe40	Transfer<CAppearanceModifierGraphics>	CPersistContext	unknown	undefined	0		0	yes	accepted									
 0046fe8a	TransferBinaryOut	CPODVector_0046fe8a	__thiscall	void	3	CPersistTraits<NGraphicAppearance::CReplaceableMeshes> *,CDataOutputStream *,CReplaceableMeshes *	1	yes	accepted									
@@ -3681,9 +3681,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00478dd6	_M_insert_overflow	std::vector<CAbilityTrackLevelDef>	unknown	undefined	0		0	yes	accepted									
 00478ebc	UninitFillN_CElement72_004787f6_00478ebc	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 00478ee2	Transfer	COpinionDeedEffectsDef	__thiscall	void	2	COpinionDeedEffectsDef *,CPersistContext *	1	yes	accepted									
-00479187	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CEngineLightingManager_UpdateShadowScene_00479187.cpp
+00479187	Transfer<NSpeechGainManager::EDialogueLayer>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CEngineLightingManager_UpdateShadowScene_00479187.cpp
 004791c8	TransferBinaryIn_004791c8	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-0047922b	PersistTransfer_0047922b	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CEngineLightingManager_UpdateShadowScene_0047922b.cpp
+0047922b	Transfer<ECrimeSeverity>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CEngineLightingManager_UpdateShadowScene_0047922b.cpp
 0047926c	TransferBinaryIn_0047926c	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004792cf	Transfer<std::list<COpinionTransientOffset> >	CPersistContext	unknown	undefined	0		0	yes	accepted									
 0047931e	TransferBinaryOut	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_>	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CDataOutputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryOut_0047931e.cpp
@@ -7041,19 +7041,19 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ddb56	Transfer	CBuyHouseDef	__thiscall	void	2	CBuyHouseDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CBuyHouseDef_Transfer_004ddb56.cpp
 004ddb66	Transfer	CWifeDef	__thiscall	void	2	CWifeDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CWifeDef_Transfer_004ddb66.cpp
 004ddb76	Transfer	CDoorDef	__fastcall	void	0		1	yes	accepted									
-004ddbd0	PersistTransfer_004ddbd0	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004ddbd0.cpp
+004ddbd0	Transfer<EDoorTriggerType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004ddbd0.cpp
 004ddc11	TransferBinaryIn_004ddc11	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004ddc74	Transfer	CKickableDef	__fastcall	void	0		1	yes	accepted									
 004ddcfa	Transfer	CLightDef	__fastcall	void	0		1	yes	accepted									
-004dddac	PersistTransfer_004dddac	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004dddac.cpp
+004dddac	Transfer<EPointLightChannelEffect>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004dddac.cpp
 004ddded	TransferBinaryIn_004ddded	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004dde50	Transfer	CSpotLightDef	__fastcall	void	0		1	yes	accepted									
 004ddeaa	Transfer	CHeroDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CHeroDef_TransferCHeroDefUAEXAAVCPersistContextZ_004ddeaa.cpp
-004ddecb	PersistTransfer_004ddecb	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004ddecb.cpp
+004ddecb	Transfer<EHeroTrainingStatus>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004ddecb.cpp
 004ddf0c	TransferBinaryIn_004ddf0c	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004ddf6f	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 004ddf9e	Transfer	CPerceivedThingDef	__fastcall	void	0		1	yes	accepted									
-004de019	PersistTransfer_004de019	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004de019.cpp
+004de019	Transfer<EPerceivedThingType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004de019.cpp
 004de05a	TransferBinaryIn_004de05a	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004de0bd	Transfer	CStealthDef	__fastcall	void	0		1	yes	accepted									
 004de122	Transfer	CTrophyDef	__fastcall	void	0		1	yes	accepted									
@@ -7072,7 +7072,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004de4b2	Transfer	CStockItemDef	__fastcall	void	0		1	yes	accepted									
 004de50c	Transfer	CTimeAppearanceFadeDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTimeAppearanceFadeDef_TransferCTimeAppearanceFadeDefUAEXAAVCPersistCon_004de50c.cpp
 004de545	Transfer	CGiftDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CGiftDef_TransferCGiftDefUAEXAAVCPersistContextZ_004de545.cpp
-004de566	PersistTransfer_004de566	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004de566.cpp
+004de566	Transfer<EGiftType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004de566.cpp
 004de5a7	TransferBinaryIn_004de5a7	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004de60a	~CTCActivationReceptorBase	CTCActivationReceptorBase	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCInventoryItem_OnDie_004de60a.cpp
 004de623	CTCActivationReceptorCreatureGenerator	CTCActivationReceptorCreatureGenerator	__thiscall	undefined	2	CTCShotDefinitionNymphFun *,CThing *	0	yes	accepted									
@@ -7157,7 +7157,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ded96	GetInterfaceType	CTCParticleAttachmentTracker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004ded9c	GetClassTypeName	CTCParticleAttachmentTracker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004dedac	Transfer	CWallMountEffectsDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CWallMountEffectsDef_TransferCWallMountEffectsDefUAEXAAVCPersistConte_004dedac.cpp
-004dedda	PersistTransfer_004dedda	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004dedda.cpp
+004dedda	Transfer<EWallMountEffects>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEngineLightingManager_UpdateShadowScene_004dedda.cpp
 004dee1b	TransferBinaryIn_004dee1b	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004dee7e	Transfer	CFishDef	__fastcall	void	0		1	yes	accepted									
 004def0f	Transfer	CTeleporterDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTeleporterDef_TransferCTeleporterDefUAEXAAVCPersistContextZ_004def0f.cpp
@@ -7701,7 +7701,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e444b	Copy	CClockDef	__thiscall	void	2	CClockDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CClockDef_Copy_004e444b.cpp
 004e4450	operator=	CClockDef	unknown	undefined	0		0	yes	accepted									
 004e448d	Transfer	CClockDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
-004e44ae	PersistTransfer_004e44ae	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e44ae.cpp
+004e44ae	Transfer<EClockHandType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e44ae.cpp
 004e44ef	TransferBinaryIn_004e44ef	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004e4552	`scalar_deleting_destructor'	CClockDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e4552.cpp
 004e457e	Copy	CMazeBattleDef	__thiscall	void	2	CMazeBattleDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CMazeBattleDef_Copy_004e457e.cpp
@@ -7745,12 +7745,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e4f5f	Copy	CRetailTree_004e4fef	unknown	undefined	0		0	yes	accepted									
 004e4fef	RbTree_CreateNode_sz0x18_004e4fef	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_TreeNodeAllocData_004e4fef.cpp
 004e5011	Transfer	CExperienceDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted									
-004e504a	PersistTransfer_004e504a	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e504a.cpp
+004e504a	TransferMap<float, long>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e504a.cpp
 004e507f	WriteState_004e507f	_global	unknown	undefined	0		0	yes	accepted									
 004e50c0	GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 004e5170	insert	CRetailTree_longkey_ins004e51f6	unknown	undefined	0		0	yes	accepted									
 004e51f6	Insert	CRetailTree_longkey_buy004e4fef	unknown	undefined	0		0	yes	accepted									
-004e527e	PersistTransfer_004e527e	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e527e.cpp
+004e527e	TransferMap<long, long>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e527e.cpp
 004e52b3	WriteState_004e52b3	_global	unknown	undefined	0		0	yes	accepted									
 004e52f0	GFSerialiseMapBinaryIn<long, long, std::less<long>>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 004e539f	insert_unique	std::_Rb_tree<...>	unknown	undefined	0		0	yes	accepted									
@@ -7760,7 +7760,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e553f	Copy	CRetailTree_004e55cf	unknown	undefined	0		0	yes	accepted									
 004e55cf	RbTree_CreateNode_sz0x18_004e55cf	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_TreeNodeAllocData_004e55cf.cpp
 004e55f1	Transfer	CHeroSuitDef	__thiscall	void	2	CHeroSuitDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CHeroSuitDef_Transfer_004e55f1.cpp
-004e5601	PersistTransfer_004e5601	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e5601.cpp
+004e5601	TransferMap<long, EClothingSuitPart>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e5601.cpp
 004e5636	WriteState_004e5636	_global	unknown	undefined	0		0	yes	accepted									
 004e5673	GFSerialiseMapBinaryIn<long, EClothingSuitPart, std::less<EClothingSuitPart>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004e5726	insert	CRetailTree_longkey_ins004e57ac	unknown	undefined	0		0	yes	accepted									
@@ -7783,9 +7783,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e5c84	Copy	CTrapDef	__thiscall	void	2	CTrapDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CTrapDef_Copy_004e5c84.cpp
 004e5c89	operator=	CTrapDef	unknown	undefined	0		0	yes	accepted									
 004e5d08	Transfer	CTrapDef	__fastcall	void	0		1	yes	accepted									
-004e5da4	PersistTransfer_004e5da4	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e5da4.cpp
+004e5da4	Transfer<ETrapTriggerType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e5da4.cpp
 004e5de5	TransferBinaryIn_004e5de5	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-004e5e48	PersistTransfer_004e5e48	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e5e48.cpp
+004e5e48	Transfer<ETrapType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e5e48.cpp
 004e5e89	TransferBinaryIn_004e5e89	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004e5eec	`scalar_deleting_destructor'	CTrapDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e5eec.cpp
 004e5f18	CTCCreatureGroupTag	CTCCreatureGroupTag	__thiscall	undefined	2	CTCCreatureGroupTag *,CThing *	0	yes	accepted									
@@ -7800,7 +7800,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e6180	Copy	CRetailTree_004e6210	unknown	undefined	0		0	yes	accepted									
 004e6210	RbTree_CreateNode_sz0x18_004e6210	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_TreeNodeAllocData_004e6210.cpp
 004e6248	Transfer	CIdleSchedulerDef	__thiscall	void	2	CIdleSchedulerDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CIdleSchedulerDef_Transfer_004e6248.cpp
-004e6258	PersistTransfer_004e6258	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e6258.cpp
+004e6258	TransferMap<long, EIdleStateGroup>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e6258.cpp
 004e628d	WriteState_004e628d	_global	unknown	undefined	0		0	yes	accepted									
 004e62ca	GFSerialiseMapBinaryIn<long, EIdleStateGroup, std::less<EIdleStateGroup>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004e637d	TransferBinaryIn_004e637d	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -7815,13 +7815,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e66b8	Copy	CRetailTree_004e6748	unknown	undefined	0		0	yes	accepted									
 004e6748	RbTree_CreateNode_sz0x18_004e6748	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_TreeNodeAllocData_004e6748.cpp
 004e676a	Transfer	CRumbleDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
-004e678b	PersistTransfer_004e678b	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e678b.cpp
+004e678b	TransferMap<float, EQuakeStrength>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e678b.cpp
 004e67c0	WriteState_004e67c0	_global	unknown	undefined	0		0	yes	accepted									
 004e6801	GFSerialiseMapBinaryIn<float, EQuakeStrength, std::less<EQuakeStrength>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004e68b5	TransferBinaryIn_004e68b5	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004e6918	insert	CRetailTree_longkey_ins004e699e	unknown	undefined	0		0	yes	accepted									
 004e699e	Insert	CRetailTree_longkey_buy004e6623	unknown	undefined	0		0	yes	accepted									
-004e6a26	PersistTransfer_004e6a26	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e6a26.cpp
+004e6a26	TransferMap<float, EQuakeLength>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e6a26.cpp
 004e6a5b	WriteState_004e6a5b	_global	unknown	undefined	0		0	yes	accepted									
 004e6a9c	GFSerialiseMapBinaryIn<float, EQuakeLength, std::less<EQuakeLength>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004e6b50	TransferBinaryIn_004e6b50	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -7891,7 +7891,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e793c	CNavigationLayer	CNavigationLayer	__thiscall	undefined	1	CNavigationLayer *	0	yes	accepted									
 004e794c	FreeMember0_004e794c	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CActiveFile_OnReadFinished_004e794c.cpp
 004e795a	Transfer	CQuestCardDef	__fastcall	void	0		1	yes	accepted									
-004e7a2d	PersistTransfer_004e7a2d	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e7a2d.cpp
+004e7a2d	TransferMap<long, EQuestCardPrerequisite>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e7a2d.cpp
 004e7a62	WriteState_004e7a62	_global	unknown	undefined	0		0	yes	accepted									
 004e7a9f	GFSerialiseMapBinaryIn<long, EQuestCardPrerequisite, std::less<EQuestCardPrerequisite>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004e7b52	TransferBinaryIn_004e7b52	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
@@ -7935,7 +7935,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e8212	RbTree_Clear_004e8212	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CTCCarryable_OnKill_004e8212.cpp
 004e823b	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 004e82c7	Transfer	CVillageDef	__fastcall	void	0		1	yes	accepted									
-004e850a	PersistTransfer_004e850a	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e850a.cpp
+004e850a	Transfer<EVillageStanceToHero>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e850a.cpp
 004e854b	TransferBinaryIn_004e854b	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004e85ae	TransferBinary_004e85ae	CPersistContext	__thiscall	void	1	CCreatureAction_FireMissileWeapon *	1	yes	accepted									
 004e85dc	GFSerialiseVectorBinaryOut<float>	_global	__fastcall	void	2	CDataOutputStream *,vector<float,std::allocator<float>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_GFSerialiseVectorBinaryOutfloat_004e85dc.cpp
@@ -7957,17 +7957,17 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e8bff	FillN_dword_004e8bff	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_Fillnunsignedlongunsignedintunsignedlong_004e8bff.cpp
 004e8c1a	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 004e8ce9	Transfer	CWeaponDef	__fastcall	void	0		1	yes	accepted									
-004e8ee8	PersistTransfer_004e8ee8	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e8ee8.cpp
+004e8ee8	Transfer<EWeaponType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e8ee8.cpp
 004e8f29	TransferBinaryIn_004e8f29	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
-004e8f8c	PersistTransfer_004e8f8c	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e8f8c.cpp
+004e8f8c	Transfer<EWeaponClass>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e8f8c.cpp
 004e8fcd	TransferBytePair_004e8fcd	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted									
 004e9021	TransferBinaryIn	CPersistTraits<CWeaponTrailGraphicSet>	__thiscall	void	3	CPersistTraits<CWeaponTrailGraphicSet> *,CMemoryDataInputStream *,CWeaponTrailGraphicSet *	1	yes	accepted									
-004e90da	PersistTransfer_004e90da	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e90da.cpp
+004e90da	TransferMap<CWeaponTrailGraphicSet, EObjectAugmentationType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e90da.cpp
 004e910f	GFSerialiseMapBinaryOut	_global	unknown	undefined	0		0	yes	accepted									
 004e9156	GFSerialiseMapBinaryIn	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004e9213	insert	CRetailTree_longkey_ins004e9299	unknown	undefined	0		0	yes	accepted									
 004e9299	Insert	CRetailTree_longkey_buy004e4bee	unknown	undefined	0		0	yes	accepted									
-004e9321	PersistTransfer_004e9321	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e9321.cpp
+004e9321	TransferMap<long, EObjectAugmentationType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e9321.cpp
 004e9356	WriteState_004e9356	_global	unknown	undefined	0		0	yes	accepted									
 004e9393	GFSerialiseMapBinaryIn<long, EObjectAugmentationType, std::less<EObjectAugmentationType>>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
 004e9442	insert	CRetailTree_longkey_ins004e94c8	unknown	undefined	0		0	yes	accepted									
@@ -8109,12 +8109,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ec4f2	_Vector_base	std::_Vector_base	unknown	undefined	0		0	yes	accepted									
 004ec526	Alloc	CObjectAugmentationsDef	unknown	undefined	0		0			discovered	gapscan							
 004ec53f	Transfer	CObjectAugmentationsDef	__fastcall	void	0		1	yes	accepted									
-004ec5fa	PersistTransfer_004ec5fa	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004ec5fa.cpp
+004ec5fa	TransferMap<CDefString, EObjectAugmentationType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004ec5fa.cpp
 004ec62f	WriteState_004ec62f	_global	unknown	undefined	0		0	yes	accepted									
 004ec66c	GFSerialiseMapBinaryIn	_global	__fastcall	void	2	CMemoryDataInputStream *,map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CDefString>_>_> *	1	yes	accepted									
 004ec717	insert	CRetailTree_longkey_ins004ec79d	unknown	undefined	0		0	yes	accepted									
 004ec79d	Insert	CRetailTree_longkey_buy004ec31c	unknown	undefined	0		0	yes	accepted									
-004ec825	PersistTransfer_004ec825	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004ec825.cpp
+004ec825	TransferMap<CObjectAugmentationParticleSet, EObjectAugmentationType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004ec825.cpp
 004ec85a	GFSerialiseMapBinaryOut	_global	unknown	undefined	0		0	yes	accepted									
 004ec8c2	GFSerialiseMapBinaryIn<CObjectAugmentationParticleSet, EObjectAugmentationType, std::less<EObjectAugmentationType>>	_global	__fastcall	void	2	CMemoryDataInputStream *,map<long,CCharString,std::less<long>,std::allocator<std::pair<long_const_,CCharString>_>_> *	1	yes	accepted									
 004ec9b5	pair	std::pair<EObjectAugmentationType, CObjectAugmentationParticleSet>	__thiscall	undefined	1	CSoundInit *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CSoundInit_CSoundInit_004ec9b5.cpp
@@ -8123,7 +8123,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ecae1	`scalar_deleting_destructor'	CObjectAugmentationsDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004ecae1.cpp
 004ecafd	~CObjectAugmentationsDef	CObjectAugmentationsDef	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 004ecb4d	Transfer	CShopDef	__fastcall	void	0		1	yes	accepted									
-004ecd36	PersistTransfer_004ecd36	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004ecd36.cpp
+004ecd36	TransferMap<float, EOpinionAttitudeType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004ecd36.cpp
 004ecd6b	WriteState_004ecd6b	_global	unknown	undefined	0		0	yes	accepted									
 004ecdac	GFSerialiseMapBinaryIn<float, EOpinionAttitudeType, std::less<EOpinionAttitudeType>>	_global	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
 004ece60	insert	CRetailTree_longkey_ins004ecee6	unknown	undefined	0		0	yes	accepted									
@@ -8184,7 +8184,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004f99de	Copy	CRetailTree_004f9a6e	unknown	undefined	0		0	yes	accepted									
 004f9a6e	RbTree_CreateNode_sz0x18_004f9a6e	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\global_TreeNodeAllocate24Byte_004f9a6e.cpp
 004f9a90	Transfer	CTavernGameCardBaseDef	__fastcall	void	0		1	yes	accepted									
-004f9b63	PersistTransfer_004f9b63	_global	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CEngineLightingManager_UpdateShadowScene_004f9b63.cpp
+004f9b63	Transfer<ETavernGameControlType>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CEngineLightingManager_UpdateShadowScene_004f9b63.cpp
 004f9ba4	TransferBinaryIn_004f9ba4	_unattributed	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004f9c07	TransferVectorOfSubComponents<CCardPositionsDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *	1	yes	accepted									
 004f9cfc	~CCardPositionsDef	CCardPositionsDef	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CTCInventoryItem_OnDie_004f9cfc.cpp
@@ -15000,7 +15000,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00672390	__adjust_heap	std	__fastcall	void	4	ENavigatorType *,int,int,ENavigatorType *	1	yes	accepted									
 00672410	make_heap	std	unknown	undefined	0		0	yes	accepted									
 00672460	sort_heap<ENavigatorType *, std::less<ENavigatorType>>	std	__fastcall	void	2	long *,long *	1	yes	accepted									
-006724b0	AddPrimitive	CEnginePrimitiveRenderer2D	__thiscall	void	2	CEnginePrimitiveRenderer2D *,CEngineInternalPrimitiveBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\67\CEnginePrimitiveRenderer2D_AddPrimitive_006724b0.cpp
+006724b0	TransferVector<ENavigatorType>	CPersistContext	__thiscall	void	2	CEnginePrimitiveRenderer2D *,CEngineInternalPrimitiveBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\67\CEnginePrimitiveRenderer2D_AddPrimitive_006724b0.cpp
 006724f0	GFSerialiseVectorBinaryOut<ENavigatorType>	_global	__fastcall	void	2	CDataOutputStream *,vector<float,std::allocator<float>_> *	1	yes	accepted									
 00672530	GFSerialiseVectorBinaryIn<ENavigatorType>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CRGBColour,std::allocator<CRGBColour>_> *	1	yes	accepted									
 006725d0	TransferBinaryIn_006725d0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									

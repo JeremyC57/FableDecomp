@@ -15,10 +15,8 @@
 #include "engine/CDataOutputStream.h"
 
 class CCharString;
-struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                                     // 0x00993EB0
-    void WriteNullTerminatedString(const CCharString& text);        // 0x00995AE0
-};
+// agentNF17: the methods-only CDataOutputStream adapter is dropped; its members are CDataOutputStream's own (engine/CDataOutputStream.h,
+//   Ego_r.pdb ?WriteSLONG@CDataOutputStream@@QAEXJ@Z 0x00993EB0 / ?WriteEBOOL@ 0x00993E30 / ?WriteNullTerminatedString@ 0x00995AE0).
 
 namespace std {
 template <class T1, class T2> struct pair {
@@ -66,14 +64,14 @@ public:
     ~CCharString();                                   // 0x0099EAE0
 };
 template <> struct CPersistTraits<unsigned long> {
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const unsigned long& value) const { stream.WriteSLONG(value); }
+    void TransferBinaryOut(CDataOutputStream& stream, const unsigned long& value) const { stream.WriteSLONG(value); }
 };
 template <> struct CPersistTraits<CCharString> {
     CCharString DefaultVal;
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const CCharString& value) const { stream.WriteNullTerminatedString(value); }
+    void TransferBinaryOut(CDataOutputStream& stream, const CCharString& value) const { stream.WriteNullTerminatedString(value); }
 };
 template <class V, class K, class C>
-void __fastcall GFSerialiseMapBinaryOut(CDataOutputStreamWriter& stream, const std::map<K, V, C>& value)
+void __fastcall GFSerialiseMapBinaryOut(CDataOutputStream& stream, const std::map<K, V, C>& value)
 {
     CPersistTraits<K> keyTraits;
     CPersistTraits<V> valueTraits;
@@ -84,4 +82,4 @@ void __fastcall GFSerialiseMapBinaryOut(CDataOutputStreamWriter& stream, const s
     }
 }
 template void __fastcall GFSerialiseMapBinaryOut<CCharString, unsigned long, std::less<unsigned long> >(
-    CDataOutputStreamWriter& stream, const std::map<unsigned long, CCharString, std::less<unsigned long> >& value);
+    CDataOutputStream& stream, const std::map<unsigned long, CCharString, std::less<unsigned long> >& value);

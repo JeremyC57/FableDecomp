@@ -1,67 +1,38 @@
-// CPersistContext::Transfer<ELightingChannel>(ELightingChannel&) -- one-argument transfer helper (member template; see the landed 0x00431061 Transfer<float>):
-//   CheckCRC("") (the empty key 0x0122D70E), then the binary load (mode 2) / save (mode 3) switch.
-//   namepass OWN12: one name for 0x004735D6 -- caller CAppearanceDef::Transfer +0x58 = Ego_r LightingChannel (ELightingChannel); Ego_r has ??$Transfer@W4ELightingChannel@@; the catalog label
-//   "CEngineLightingManager::UpdateShadowScene" was propagated.
+// CPersistContext::Transfer<ELightingChannel>(ELightingChannel& value) -- unnamed binary-only enum transfer: CRC check, then load (Mode 2) or save (Mode 3)
 // Leaf: ??$Transfer@W4ELightingChannel@@@CPersistContext@@QAEXAAW4ELightingChannel@@@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004735D6, 65 bytes, `ret 4`; ecx = the context, one pushed field address.
+// Identity (T = ELightingChannel): CMultiStaticMeshEntryDef +0x34 / CAppearanceDef +0x58 = Ego_r LightingChannel (ELightingChannel) (row already named; respelled onto the shared header).
+//   Ego_r.pdb / FableWin.pdb name ??$Transfer@W4ELightingChannel@@@CPersistContext@@... (the named three-argument form) for this T; the retail binary-in instance
+//   CPersistTraits<ELightingChannel>::TransferBinaryIn is 0x00473617. The one-argument parameter list is the established descriptive
+//   spelling of the unnamed retail-only transfer family (engine/CPersistContext.h `Transfer(T&)`; landed 0x00431020 / 0x00431061 /
+//   0x00431143): no PDB carries it (descriptive, NOTES).
+// Body: CheckCRC("") (0x00404500, the pooled empty literal 0x0122D70E); a CPersistTraits<T> (DefaultVal zeroed, `and [ebp-4],0`);
+//   Mode 2: traits.TransferBinaryIn(*PLoadStream, value) (0x00473617); Mode 3: the traits' inline TransferBinaryOut =
+//   PSaveStream->WriteSLONG(value) (0x00993EB0).
+// Shape: size TU with frame pointers (`optimize("s", on)` + `("y", off)`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-
-// 0x004735D6 (thiscall, ret 4)
-//
-// Genuine C++ decompilation.  Byte-identical (mod the two relocation-masked
-// call rel32 operands) to the already-landed matching sibling at 0x00479187 --
-// same 65-byte body, only the two masked call targets differ.
-//
-// Retail idiom:
-//   push ebp / mov ebp,esp / push ecx        -> frame + one 4-byte local [ebp-4]
-//   push esi / push 0x122d70e / mov esi,ecx / call <profiler>
-//   and [ebp-4],0                            -> zero-init stack guard AFTER the call
-//   switch (esi->mode @ +0x18)  (dec;dec;je / dec;jne):
-//     case 2 -> guard.Apply(esi->p24, arg)     near local __fastcall, this=lea [ebp-4]
-//     case 3 -> ((ShadowSink*)esi->p28)->Push(*(void**)arg)   __fastcall, one stack arg
-//   pop esi / leave / ret 4
-
-extern "C" void __stdcall Profile_Enter(int marker);
-
-// Stack guard sub-object (4 bytes, zero-initialised).  Its out-of-line
-// __fastcall member takes two stack args: this=lea [ebp-4], push arg, push p24.
-struct ShadowGuard {
-    void* slot;
-    void Apply(void* a, void* b);
-};
-
-// __fastcall sink reached through esi->p28; single stack argument (*arg).
-struct ShadowSink {
-    void Push(void* v);
-};
+#define FABLE_RETAIL_CPERSISTCONTEXT
+#define FABLE_RETAIL_CPERSISTTRAITS
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#include "engine/CDataOutputStream.h"
+#include "engine/CPersistContext.h"
+#include "engine/CPersistTraits.h"
 
 enum ELightingChannel { };
 
-class CPersistContext { public:
-    char   pad0[0x18];
-    int    mode;              /* +0x18 */
-    char   pad1[0x24 - 0x1c];
-    void*  p24;               /* +0x24 */
-    ShadowSink* p28;          /* +0x28 */
-
-    template <class T> void Transfer(T& value);
-};
-
-template <> void CPersistContext::Transfer<ELightingChannel>(ELightingChannel& value_)
+template <> void CPersistContext::Transfer<ELightingChannel>(ELightingChannel& value)
 {
-    void* arg = &value_;
-    ShadowGuard guard;
-
-    Profile_Enter(0x122d70e);
-
-    guard.slot = 0;
-
-    switch (this->mode) {
-    case 2:
-        guard.Apply(this->p24, arg);
+    CheckCRC("");
+    CPersistTraits<ELightingChannel> traits;
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        traits.TransferBinaryIn(*PLoadStream, value);
         break;
-    case 3:
-        this->p28->Push(*(void**)arg);
+    case MODE_SAVE_BINARY:
+        traits.TransferBinaryOut(*PSaveStream, value);
         break;
     }
 }

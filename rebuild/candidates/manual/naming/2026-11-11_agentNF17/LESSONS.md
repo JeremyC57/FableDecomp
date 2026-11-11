@@ -1,0 +1,11 @@
+# agentNF17 lessons (one line each)
+
+- The 94 "CheckCRC binders" are the unnamed one-argument binary transfers (`CheckCRC("")` + Mode 2/3 only, `ret 4`): no PDB carries them, the named PDB forms take `const char*` first; spell them as the header's `Transfer(T&)` / `TransferMap(map&)` / `TransferVector(vector&)` and mark the parameter list descriptive.
+- Identify T for a one-argument transfer from the CALLER's field offset, calibrated against the known instances in the same def Transfer (ulong 0x00431020, long 0x00431102, float 0x00431061, bool 0x0043314A, CCharString 0x00431143, CWideString 0x004310A7, CDefString 0x0045228F, C2DVector 0x004568BC): retail def offsets run 4..0x1C below Ego_r (CDef base 4 smaller, STLport containers smaller), so a naive Ego_r offset lookup is wrong (CTrapDef, CMessageEventDef, CCombatSequenceDef all shift).
+- A landed caller's existing binding is a free cross-check of a calibrated T (CCombatSequenceDef / CAbilityButtonGuiDef / CDoorDef / CTrapDef / CTavernGameCardBaseDef callers already bound the right enum).
+- The named three-argument transfers carry their T in RTTI: the text wrapper vtable's COL -> type descriptor is `.?AV?$CPersistContext_TransferableComponent@<T>@@` (0x0124F2F4 proved 0x00580371 / 0x004DDF0C are EHeroTrainingStatus, not the landed CDefIndex).
+- VC7.1 rejects `CPersistTraits<NS::E>` value-initialisation (`DefaultVal()`, C2065) unless the enum name is visible unqualified: add `using NS::E;` after the namespace declaration.
+- A row's traits binary-in that is NOT adjacent to it (0x0040FEF0 for Transfer<ETutorialCategory> 0x00452045) was first instantiated by an earlier TU; follow it to find a mis-typed sibling (0x00412D20 is GFSerialiseVectorBinaryIn<ETutorialCategory>, not <unsigned long>).
+- `sub eax,2 ; je` (one-case switch + default) instead of `dec eax ; dec eax ; je` marks a speed TU: drop `optimize("s", on)` (0x006724B0).
+- A behaviour test that declares the row's OLD symbol and links the row object turns LINK_FAIL after a rename: give it a self-contained model under the new names (keep the catalog PassPattern).
+- Methods-only `CDataOutputStreamWriter` / layout-rename adapters exist only to declare members the default `engine/CDataOutputStream.h` branch already has: drop them and the row's own GFSerialise*Out symbol becomes the PDB `AAVCDataOutputStream@@` form.

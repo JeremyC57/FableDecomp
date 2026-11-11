@@ -9,19 +9,10 @@
 //   `lea esp,[esp]`, no pragma): the stream in ebp, the vector in ebx, the count in esi, the index in edi, the element
 //   re-addressed through `begin()` each pass (`*(begin() + i)`).
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; the vector is STLport's three words.
-#define CDataOutputStream CDataOutputStreamLayout
-#include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
+#include "engine/CDataOutputStream.h"   // WriteULONG 0x00993EA0 / WriteSLONG 0x00993EB0 / WriteUHUGE 0x00993EC0 declared there
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
-};
-
-struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
-};
+// agentNF17: the methods-only CDataOutputStream adapter is dropped; its members are CDataOutputStream's own (engine/CDataOutputStream.h,
+//   Ego_r.pdb ?WriteSLONG@CDataOutputStream@@QAEXJ@Z 0x00993EB0 / ?WriteEBOOL@ 0x00993E30 / ?WriteNullTerminatedString@ 0x00995AE0).
 namespace std {
 template <class T> class vector {
 public:
@@ -35,10 +26,10 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<unsigned __int64> {
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const unsigned __int64* value) const { stream.WriteUHUGE(*value); }
+    void TransferBinaryOut(CDataOutputStream& stream, const unsigned __int64* value) const { stream.WriteUHUGE(*value); }
 };
 template <class T>
-void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std::vector<T>& value)
+void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream& stream, std::vector<T>& value)
 {
     CPersistTraits<T> traits;
     long count = value.size();
@@ -46,5 +37,5 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }
-template void __fastcall GFSerialiseVectorBinaryOut<unsigned __int64>(CDataOutputStreamWriter& stream,
+template void __fastcall GFSerialiseVectorBinaryOut<unsigned __int64>(CDataOutputStream& stream,
                                                                        std::vector<unsigned __int64>& value);
