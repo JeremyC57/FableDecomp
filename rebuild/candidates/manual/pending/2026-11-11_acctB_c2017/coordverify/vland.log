@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00951430   RELOCATION_MATCH PASS   IntoGroundSwoop
+00974110   WARN RELOC_NAME: ??$__find_if@PAVC3DVector@@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@0V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@ABUrandom_access_iterator_tag@0@@Z -> 008aac50 labelled 'std::__find_if<C3DVector *, std::unary_negate<CVectorFilter_FurtherFromPointThan>>'
+00974110   WARN RELOC_NAME: ??$remove_copy_if@PAVC3DVector@@PAV1@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@00V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@@Z -> 008ab710 labelled 'std::remove_copy_if<C3DVector *, C3DVector *, std::unary_negate<CVectorFilter_FurtherFromPointThan>>'
+00974110   RELOCATION_MATCH PASS   Summon
+
+WINS: 2
+  00951430 RELOCATION_MATCH CAIStateGroup_JackDragon::?IntoGroundSwoop@CAIStateGroup_JackDragon@@AAEXXZ
+  00974110 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z

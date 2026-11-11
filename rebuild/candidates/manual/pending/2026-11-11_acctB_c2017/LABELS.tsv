@@ -1,0 +1,11 @@
+address	name	evidence
+00951430	?IntoGroundSwoop@CAIStateGroup_JackDragon@@AAEXXZ	Ego_r.pdb name set (donor 0x00975F70 between IntoGround 0x00975BE0 and FlyOutOfGround 0x009764A0 = retail 0x00951B20 landed); retail body uses the IntoGround/OutOfGround member positions and DragonBurninateInto
+00974110	?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z	Ego_r.pdb name set (donor 0x009992F0 after SummonPillars 0x00998F40); `ret 8` = (long, bool); body summons a CCreatureGenerationFamilyDef's creatures
+00950c30	?StartFlying@CAIStateGroup_JackDragon@@AAEXAAVCThingCreatureBase@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@V?$CCountedPointer@VCCreatureActionBase@@@@@Z	Ego_r.pdb (donor 0x00975720 after SetHeadTurning 0x00975690 = retail 0x00950BB0 landed); call pushes 8-byte null CCountedPointer, &PreviousFlightPos, &route, creature
+0094fff0	?ChooseHoverOrStrafeState@CAIStateGroup_JackDragon@@AAE?AW4EDragonState@1@XZ	Ego_r.pdb (donor 0x009749C0 after StayIdleAndTurnToFace); result stored to CurrentState +0x5C
+009537b0	??0CCreatureAction_DragonBurninateInto@@QAE@AAVCThingCreatureBase@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@MM22@Z	Ego_r.pdb + FableWin.pdb ctor; vtable 0x01294374 RTTI CCreatureAction_DragonBurninateInto; 7 args (`ret 1Ch`)
+00a14040	?RotateXY@C3DVector@@QAEXM@Z	Ego_r.pdb / FableWin.pdb name (engine/C3DVector.h, bound by 0x00857B70); IntoGroundSwoop rotates the marker offsets with it
+0097d8b0	?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z	Ego_r.pdb (donor 0x00848680, right before AIAction_PerformActionAndWait as retail 0x0097D8B0 / 0x0097DB70)
+0074d220	??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z	FableWin.pdb template spelling; Summon passes a CDefPointer<const CCreatureGenerationFamilyDef>* and reads Creatures
+007af310	?SetHelperCreature@CTCBoss@@QAEXAAVCThingAICreature@@@Z	Ego_r.pdb (0x007B0CE0); already bound with this spelling
+0123e7d8	??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@	RTTI CIntelligentPointer vtable stored by the expanded SetScriptTargetOverride temporary (CTCTargetingAI::PScriptTargetOverride is CIntelligentPointer<CThingCreatureBase>, Ego_r TPI)

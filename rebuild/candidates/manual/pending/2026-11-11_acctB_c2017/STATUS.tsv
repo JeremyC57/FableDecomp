@@ -1,0 +1,4 @@
+address	grade	bytes	test	grades_used	notes
+00951430	RELOCATION_MATCH	1765v1765	PASS	pass1: 3 to match + 1 re-grade after comment edits (+2 gall.sh verification runs)	visible noinline DragonBurninateInto ctor 0x009537B0 + C3DVector(0,0,8) exit point; ~8 fragment probes + 2 c2 frame-packer traces on top
+00974110	RELOCATION_MATCH	1631v1631	PASS	pass1: 4 to match + 1 re-grade after comment edits (+2 gall.sh verification runs)	body inside if(GetDef); FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY; one-expression GFFastSqrt 2D distance (1 fragment probe)
+0092da20	NOT_ATTEMPTED	-	-	0	session working budget; extent verified (int3 before, ret at 0x0092E129); decoded outline in NOTES.md
