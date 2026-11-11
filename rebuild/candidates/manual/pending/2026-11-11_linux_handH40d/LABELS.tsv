@@ -1,0 +1,4 @@
+address	name	evidence
+0x00E6BC50	?Main@CCOE_AcolyteEvil@CV_ChapelOfEvilScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name sets (ghidra_out/egor_pdb_names.tsv, fablewin_pdb_names.tsv); slot 1 of the entity vtable 0x012E8468 stored by Alloc 0x00E6A500; RELOCATION_MATCH (chunk H40d)
+0x00D0EE70	?CheckForFirstAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	both PDB name sets list it next to CheckForSecondAreaMassacre; the body 0x00D0EE70..0x00D0F63F reads pGlobalScriptDef +0xE78 (the field in front of BAC_EnemiesToKillInSecondArea +0xE7C that 0x00D0F640 reads) and has the same kill-count loops; parked in chunks 839 / 844 under this name
+0x00C4F600	CEAXManager::SetEAXProperty	NOT a PDB name (neither name set has a CEAXManager symbol): descriptive, from chunk 878 -- the landed CEAXManager::QueueCommit 0x00C51A20 declares and calls it (carried from H40c)

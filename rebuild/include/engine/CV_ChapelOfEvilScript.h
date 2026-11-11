@@ -86,6 +86,32 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_ChapelOfEvilScript) == 0x90);
+#ifdef FABLE_RETAIL_CV_CHAPELOFEVILSCRIPT_ACOLYTEEVIL
+// Retail opt-in (chunk 814): the COE_AcolyteEvil entity script. Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets equal
+// retail's: CEntityScriptBase is 0x14 in both): CCOE_AcolyteEvil 32 bytes (ParentClass +0x14 CV_ChapelOfEvilScript*,
+// PMasterData +0x18, AcolytePrayerTimer +0x1c); the landed Init 0x00E6AAC0 and Main 0x00E6BC50 use these offsets. Entity vtable
+// 0x012E8468 (0 scalar deleting dtor 0x00E6A5D0, 1 Main 0x00E6BC50, 2 Init 0x00E6AAC0, 3 GetParentScript 0x00E6A5A0, 4 OnPersist
+// 0x00E6A5B0, 5 OnPredicateFail 0x00E6A5C0) that Alloc 0x00E6A500 stores (Ego_r.pdb and FableWin.pdb
+// ?Main@CCOE_AcolyteEvil@CV_ChapelOfEvilScript@NScript@@EAEXXZ); modelled on chunk 811's CTOL_AcolyteGood twin.
+#include "engine/CTimer.h"
+namespace NScript {
+class CV_ChapelOfEvilScript::CCOE_AcolyteEvil : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_ChapelOfEvilScript&, CScriptDataBase*, const CScriptThing&); // 0x00E6A500
+    virtual CScriptBase* GetParentScript() const;                        // 0x00E6A5A0
+private:
+    virtual void Main();                                                 // 0x00E6BC50
+    virtual void Init();                                                 // 0x00E6AAC0
+    virtual void OnPersist(CPersistContext&);                            // 0x00E6A5B0
+    virtual void OnPredicateFail();                                      // 0x00E6A5C0
+protected:
+    CV_ChapelOfEvilScript* ParentClass;                                  // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    CTimer AcolytePrayerTimer;                                           // +0x1c
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_CHAPELOFEVILSCRIPT_H

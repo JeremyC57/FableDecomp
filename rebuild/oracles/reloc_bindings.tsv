@@ -39146,3 +39146,5 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?ReleaseSource@CCodaContext@@QAEXPAVCCodaSource@@@Z	00c3d610	00c3db80
 ?RemoveFree@CCodaObjectList@@QAEXXZ	00c3ca30	00c3db80
 ?g_SalCaps@@3U_CCAPS@@A	0139c988	00c3db80
+?GetMethodOfTorture@CV_ChapelOfEvilScript@NScript@@QAEXXZ	00e6da40	00e6bc50
+?TortureVictim@CV_ChapelOfEvilScript@NScript@@QAEXAAVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@1@Z	00e6da80	00e6bc50

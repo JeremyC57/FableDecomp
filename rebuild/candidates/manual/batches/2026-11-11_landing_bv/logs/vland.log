@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00e6bc50   WARN RELOC_NAME: ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac2d0 labelled 'CUnprovenContainer_009ac2d0::CUnprovenContainer_009ac2d0'
+00e6bc50   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e6bc50   WARN RELOC_NAME: ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac310 labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+00e6bc50   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e6bc50 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil::?Main@CCOE_AcolyteEvil@CV_ChapelOfEvilScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_Main_00e6bc50

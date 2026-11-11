@@ -392562,6 +392562,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c3db80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e6bc50'
+        Module = 'NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil'
+        Source = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_Main_00e6bc50.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_Main_00e6bc50_test.cpp'
+        PassPattern = '00e6bc50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

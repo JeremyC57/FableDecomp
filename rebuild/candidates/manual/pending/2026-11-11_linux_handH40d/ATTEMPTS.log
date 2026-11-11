@@ -1,0 +1,2 @@
+2026-11-11_06:19:59 00e6bc50 e6_g1.cpp flags=[] RELOCATION_MATCH (masked diff 0) -- loop-top block-local reference (K 2->3)
+2026-11-11_06:43:48 00d13580 d13.cpp flags=[] DIFFER(6831v6917) masked diff lines 280 hunks 72
