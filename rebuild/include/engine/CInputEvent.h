@@ -10,6 +10,10 @@
 #if defined(FABLE_RETAIL_CINPUTEVENT_ACCESSORS) || defined(FABLE_RETAIL_CINPUTEVENT_JOYSTICK_SETTERS)
 class C2DVector;
 #endif
+#ifdef FABLE_RETAIL_CINPUTEVENT_MOUSE_SETTERS
+class C2DVector;
+class C3DVector;
+#endif
 enum EInputKey { };
 enum EInputDeviceType { };
 enum EInputEventType { };
@@ -52,6 +56,17 @@ public:
     void SetAsJoystickButtonReleased(long button, float pressure, const C2DVector& position, double time);   // 0x00A04110
     void SetAsJoystickPosition(const C2DVector& position, double time);                                     // 0x00A04030
     void SetAsJoystickPosition2(const C2DVector& position, double time);                                    // 0x00A04060
+#endif
+#ifdef FABLE_RETAIL_CINPUTEVENT_MOUSE_SETTERS
+    // Retail opt-in (chunk Q6, row 0x00A66FD0 CMouse::ProcessMaintainedEventsFromEvent): the mouse accessor and held-button setters,
+    // declarations only (no layout change); Ego_r.pdb spellings ?GetMousePos@CInputEvent@@QBE?AVC2DVector@@XZ and
+    // ?SetAs{Left,Right,Middle}MouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z / ?SetAsExtraMouseButtonHeld@...NNJ@Z.
+    C2DVector GetMousePos() const;                                                                                       // 0x00A04380
+    void SetAsLeftMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime);   // 0x00A03D10
+    void SetAsRightMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime);  // 0x00A03E70 (stores type 0xB)
+    void SetAsMiddleMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime); // 0x00A03DC0 (stores type 8)
+    void SetAsExtraMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime,
+                                   long button);                                                                          // 0x00A03F20
 #endif
     UInputEventData  Data;                                               // +0x00
     EInputDeviceType DeviceType;                                         // +0x20

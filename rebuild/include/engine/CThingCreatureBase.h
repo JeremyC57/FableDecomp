@@ -55,6 +55,11 @@ public:
 #ifdef FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
 public:bool IsThingInFOV(const CThing&,bool)const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEIGHTZBELOW
+// Retail opt-in (chunk Q6, row 0x00912840): Ego_r.pdb / FableWin.pdb ?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z
+// (public const), out of line in retail (0x00666D40). Declaration only.
+public:float GetHeightZBelowAt(const C3DVector& pos,bool,bool)const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHEALTH
 public:
  void SetHealth(float health){Health=health;}

@@ -3027,3 +3027,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (agentFAM04, 2026-11-11) One Wine cl hang (120 s timeout, no output) cleared on regrade with a fuller prologue; always run cl under timeout.
 - (agentFAM04, 2026-11-11) Catalog tests that are 32-bit source snapshots cannot run on a 64-bit g++ host; record them, do not rewrite them.
 - (agentFAM04, 2026-11-11) Group rows by shape and generate specs from a short table; 30-50 rows per bulk grade kept every row under 3 grades.
+- (landing ci, 2026-11-11) A RELOCATION_MATCH masks callee names, so a swapped enum pair still matches. Treat vland's RELOC_NAME warnings that swap two siblings as a real naming bug, and settle it from what each callee body stores (0x00A66FD0: Middle/Right mouse buttons).

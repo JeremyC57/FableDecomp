@@ -22,6 +22,16 @@
 #define FABLE_STLP_FASTCALL
 #endif
 #endif
+#if (defined(FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_ERASE_NOINLINE)) && !defined(FABLE_STLP_NOINLINE)
+// Opt-ins (chunk Q6, row 0x00A66FD0): the visible-but-out-of-line list insert(iterator) / push_back() / erase(iterator) below.
+#ifdef _MSC_VER
+#define FABLE_STLP_NOINLINE __declspec(noinline)
+#define FABLE_STLP_FASTCALL __fastcall
+#else
+#define FABLE_STLP_NOINLINE
+#define FABLE_STLP_FASTCALL
+#endif
+#endif
 namespace std {
 // Owner decision 2026-11-03 (D2, "faithfully recreate what retail did"): the dispatch tags carry an empty user constructor, so a
 // tag temporary (push_back's _IsPODType() argument, the __destroy / __uninitialized_* dispatch) is never zero-filled -- retail passes
@@ -395,6 +405,12 @@ public:
     void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
     _Tp& operator[](size_type n) { return *(begin()+n); }
     const _Tp& operator[](size_type n) const { return *(begin()+n); }
+#if defined(FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (chunk Q6, row 0x00542780 NUISystem::CIconText::AddIcon): the STLport push_back body below, visible but kept out
+    // of line, as the retail TU calls it (push_back<CEmbeddedIcon> 0x00543C90, whose body calls _M_insert_overflow 0x00543B70).
+    // Unlike the declaration-only FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE, c2 then knows push_back keeps no address of the value.
+    __declspec(noinline)
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
     // Per-TU opt-in (chunk 760, row 0x0086BE40 CRandomAppearanceMorph::GetRandomBodyParts; like
     // FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN): STLport's push_back is one inline body, which VC7.1
@@ -844,6 +860,15 @@ public:
     iterator insert(iterator position);
     void push_back() { insert(end()); }
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT_NOINLINE
+    // Per-TU opt-in (chunk Q6, row 0x00A66FD0 CMouse::ProcessMaintainedEventsFromEvent): STLport 4.6 _list.h `iterator
+    // insert(iterator __pos) { return insert(__pos, _Tp()); }` and `void push_back() { insert(end()); }`, bodies visible but kept
+    // out of line, as the retail TU calls them (list<CMaintainedEvent>::insert 0x009E4A20: the default value built in the frame,
+    // the node copy-constructed and linked, the value destroyed; push_back 0x009E4AA0). VC7.1 then knows neither keeps the list's
+    // nor the iterator's address.
+    FABLE_STLP_NOINLINE iterator insert(iterator position) { return insert(position,_Tp()); }
+    FABLE_STLP_NOINLINE void push_back() { insert(end()); }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST
     // Retail branch (chunk 726): STLport 4.6 _list.h size() / front() / push_front(). size() is distance(begin(), end())
     // with the input-iterator __distance loop inlined (NUISystem::CList::ChangeState 0x0053A0A1 counts the
@@ -865,6 +890,12 @@ public:
     const _Tp& back() const { const_iterator tmp=end(); return *(--tmp); }
     // chunk 749 (row 0x00549440 CTextSlider::ProcessEvent): STLport 4.6 _list.h erase(iterator) and pop_front() (`erase(begin())`);
     // retail calls the list<NUISystem::CList*> instances out of line (pop_front 0x0053C7D9 -> erase 0x0053C7B9).
+#ifdef FABLE_RETAIL_STLP_LIST_ERASE_NOINLINE
+    // Per-TU opt-in (chunk Q6, row 0x00A66FD0): the same body, kept out of line as the retail TU calls it
+    // (list<CMaintainedEvent>::erase 0x009E47E0: unlink, the element's virtual destructor, free; iterator by value, result by
+    // hidden pointer).
+    FABLE_STLP_NOINLINE
+#endif
     iterator erase(iterator position) {
         _List_node_base* next_node=position._M_node->_M_next;
         _List_node_base* prev_node=position._M_node->_M_prev;

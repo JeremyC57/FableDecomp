@@ -38979,3 +38979,11 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0073ac50	008df9c0
 ?GetNumberMySummonLimit@CTCAISummon@@QBEJXZ	007fde60	008df9c0
 ??0CCreatureAction_BriarRoseForcePush@@QAE@AAVCThingCreatureBase@@0@Z	008e8c50	008e8830
+?GetMousePos@CInputEvent@@QBE?AVC2DVector@@XZ	00a04380	00a66fd0
+?SetAsExtraMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NNJ@Z	00a03f20	00a66fd0
+?SetAsLeftMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z	00a03d10	00a66fd0
+?SetAsMiddleMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z	00a03dc0	00a66fd0
+?SetAsRightMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z	00a03e70	00a66fd0
+?erase@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAE?AU?$_List_iterator@VCMaintainedEvent@@U?$_Nonconst_traits@VCMaintainedEvent@@@std@@@2@U32@@Z	009e47e0	00a66fd0
+?insert@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAE?AU?$_List_iterator@VCMaintainedEvent@@U?$_Nonconst_traits@VCMaintainedEvent@@@std@@@2@U32@@Z	009e4a20	00a66fd0
+?push_back@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ	009e4aa0	00a66fd0

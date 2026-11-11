@@ -392777,6 +392777,20 @@ $catalog = @(
         TestSource = '00/e4/NScriptCVBordelloScriptCMagicman_Main_00e40e80_test.cpp'
         PassPattern = '00e40e80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00912840'
+        Module = 'CAIStateGroup_FlyingThingBase'
+        Source = '00/91/CAIStateGroupFlyingThingBase_AddRandomBezierCurveToPath_00912840.cpp'
+        TestSource = '00/91/CAIStateGroupFlyingThingBase_AddRandomBezierCurveToPath_00912840_test.cpp'
+        PassPattern = '00912840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66fd0'
+        Module = 'CMouse'
+        Source = '00/a6/CMouse_ProcessMaintainedEventsFromEvent_00a66fd0.cpp'
+        TestSource = '00/a6/CMouse_ProcessMaintainedEventsFromEvent_00a66fd0_test.cpp'
+        PassPattern = '00a66fd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
