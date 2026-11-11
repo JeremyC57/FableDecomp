@@ -21,6 +21,14 @@ class CTCActionUseBase : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ON_ACTION_USE; }
     bool IsUsable() const { return Usable; }                             // PLACEHOLDER accessor name (inline member read in the row)
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_DTOR
+    // Retail opt-in (agentNF20, 2026-11-11, the CTCActionUse* / CTCCarriedActionUse* scalar deleting destructors 0x004DBF76..0x004DCF8B):
+    // Ego_r.pdb ??0CTCActionUseBase@@QAE@AAVCThing@@@Z and FableWin.pdb ??1CTCActionUseBase@@UAE@XZ. The destructor is 0x004DA967 (it
+    // releases PActionUseDef +0x0C, then tail-jumps ~CTCBase 0x00686830); every derived class's implicit destructor reaches it directly.
+    // Declarations only: no layout change.
+    CTCActionUseBase(CThing& thing);
+    virtual ~CTCActionUseBase();                                         // slot 0 0x004DA967
+#endif
 #ifdef FABLE_RETAIL_CTCACTIONUSEBASE_ONCREATE
     // Retail opt-in (agentNF10, row 0x007EAC10): Ego_r.pdb / FableWin.pdb ?OnCreate@CTCActionUseBase@@UAEXXZ (CTCBase slot 4; the body
     // calls CTCBase::OnCreate 0x00686850, then GetDef<CThingBaseDef> 0x0042AF3C and GetSubDef<CActionUseDef> 0x007EAE40 into

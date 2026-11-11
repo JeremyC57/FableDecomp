@@ -1,11 +1,17 @@
-// Getter that materialises a temporary, fills it through an out-param member
-// call, and returns one word of it. __fastcall this=ecx, no args.
-struct Rect { int width; int height; };
-struct T {
-    Rect* GetRect(Rect* out);
-    int Get();
-};
-int T::Get() {
-    Rect r;
-    return this->GetRect(&r)->height;
+// CSurface::GetHeight() const -- the surface's height (GetDimensions().Y), the out-of-line copy of the header inline
+// Leaf: ?GetHeight@CSurface@@QBEKXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00415BF0, thiscall, plain `ret`: `sub esp,8 ; lea eax,[esp] ; push eax ;
+//   call 0x009F2F90 ; mov eax,[eax+4] ; add esp,8`.
+// Name (agentNF20, 2026-11-11): Ego_r.pdb + FableWin.pdb ?GetHeight@CSurface@@QBEKXZ; it calls ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
+//   0x009F2F90 (was the stand-in T::GetRect / Get). engine/CSurface.h: FABLE_RETAIL_CSURFACE_BITMAP +
+//   opt-in FABLE_RETAIL_CSURFACE_SIZE_OUTOFLINE (declaration only).
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_BITMAP
+#define FABLE_RETAIL_CSURFACE_SIZE_OUTOFLINE
+#include "engine/C2DExtentsI.h"
+#include "engine/CSurface.h"
+
+unsigned long CSurface::GetHeight() const
+{
+    return GetDimensions().Y;
 }

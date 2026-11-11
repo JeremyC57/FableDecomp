@@ -6,15 +6,17 @@
 // the body and its only caller belong to NParticleEngine::CParticleEmitter (graphics/particle layer -- owner note: replacement work).
 // Callees: ~CCharString 0x0099EAE0 (Name), CBaseClass::~CBaseClass 0x0099A2E0 (the two interpolators and the handle's base),
 // the handle's persistent primitive virtual slots 3 (last-handle notification) and 1 (destroy), SUpdateParameters dtor 0x006E2500,
-// the `__fastcall` _Destroy_range<CCountedPointer<CParticleSystem>> 0x00AF0D80 (first in ecx, last in edx, the empty allocator
-// tag in the high byte of the `push ecx` slot), free 0x00BFEA14, CBaseObject::~CBaseObject 0x0099A430 (vtable 0x0129A7D8).
+// the `__fastcall` std::__destroy_aux<CCountedPointer<NParticleEngine::CParticleSystem>*> 0x00AF0D80 (first in ecx, last in edx, the
+// std::__false_type tag in the high byte of the `push ecx` slot), free 0x00BFEA14, CBaseObject::~CBaseObject 0x0099A430 (vtable 0x0129A7D8).
 // Shape: the emitter's own body is empty, so its vtable is never re-stored; the CEnginePrimitiveHandle (vtable 0x0122F598) inline
 // destructor is the landed CEngineSceneGridCell 0x00B93660 model; the STLport vector dtor is inline (as CParticleSystem 0x00AF5900).
 // Layout (retail; Ego_r.pdb CParticleEmitter is 0xc larger from +0x18: the editor's vector and update parameters are wider):
 // ParticleSystems +0x08, UpdateParameters +0x14, PrimitiveGroupHandle +0x38, OrientationInterpolator +0x60,
 // PositionInterpolator +0x94, Transform/InverseTransform/EndTransform +0xb0, Name +0x140.
 #include "fable_compiler.h"
-extern "C" void __cdecl free(void* block);         // 0x00BFEA14
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+#include "stlport/fable_containers.h"                 // std::__destroy_aux (declaration-only /Gr COMDAT), std::__false_type
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
@@ -66,20 +68,15 @@ class CCharString { public:
 
 namespace NParticleEngine {
 
-struct SScalarTag {
-    SScalarTag() { }
-};
-
-struct CParticleSystemPointer;                     // CCountedPointer<NParticleEngine::CParticleSystem>
-void __fastcall _Destroy_range(CParticleSystemPointer* first, CParticleSystemPointer* last, const SScalarTag& tag);   // 0x00AF0D80
+class CParticleSystem;
 
 struct SParticleSystemVector {                     // std::vector<CCountedPointer<CParticleSystem>> (retail 12 bytes)
-    CParticleSystemPointer* _M_start;
-    CParticleSystemPointer* _M_finish;
-    CParticleSystemPointer* _M_end_of_storage;
+    CCountedPointer<CParticleSystem>* _M_start;
+    CCountedPointer<CParticleSystem>* _M_finish;
+    CCountedPointer<CParticleSystem>* _M_end_of_storage;
     ~SParticleSystemVector()
     {
-        _Destroy_range(_M_start, _M_finish, SScalarTag());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());   // 0x00AF0D80
         if (_M_start)
             free(_M_start);
     }

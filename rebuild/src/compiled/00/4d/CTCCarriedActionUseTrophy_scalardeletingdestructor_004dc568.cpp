@@ -1,29 +1,38 @@
-// CTCCarriedActionUseTrophy::`scalar deleting destructor' @ 0x004DC568 (retail, 38 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
-// stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
-// +0x14 C3DAnimationBlendState (~ @ 0x004DA967), then +0x0 C3DAnimationBlendState (~ @ 0x004DA967), and frees the block with operator delete
-// (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
-// retail labels); the class itself is not attributed, so it is named by address.
+// CTCCarriedActionUseTrophy::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CTCCarriedActionUseTrophy (the member PTCCarriedActionUseWallMount +0x14, then the base: both reach ~CTCActionUseBase 0x004DA967), then operator delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCTCCarriedActionUseTrophy@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004DC568, 38 bytes, thiscall, `ret 4`; slot 0 of the CTCCarriedActionUseTrophy vtable 0x0123FEF4 (rtti-vtables.tsv).
+// Names (agentNF20, 2026-11-11; was a free __fastcall stand-in calling a *_Destruct / C3DAnimationBlendState stand-in): the destructor it
+//   calls is ??1CTCActionUseBase@@UAE@XZ 0x004DA967 (FableWin.pdb; shared engine/CTCActionUseBase.h, opt-in FABLE_RETAIL_CTCACTIONUSEBASE_DTOR),
+//   operator delete 0x00BFE9BC. Hierarchy (ghidra_out/rtti_bases.tsv): CTCCarriedActionUseTrophy : CTCCarriedActionUseBase : CTCActionUseBase.
+// Shape: VC7.1 emits the deleting destructor with the vtable, i.e. in a TU that constructs the class: MakeOne is that construction.
+//   No class between it and CTCActionUseBase adds a member with a destructor (Trophy's own member aside); local models: no engine header.
 #pragma optimize("s", on)
-class C3DAnimationBlendState { public:             // label C3DAnimationBlendState::~C3DAnimationBlendState
-    void* _vptr;                            // (layout beyond the first word not modelled)
-    ~C3DAnimationBlendState();              // 0x004DA967 (releases the counted object at +0xc)
-};
-void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCACTIONUSEBASE_DTOR
+#include "engine/CTCActionUseBase.h"
 
-#pragma pack(push, 1)
-struct CObject_004dc568 {
-    C3DAnimationBlendState Member0;
-    unsigned char _pad14[0x10];
-    C3DAnimationBlendState Member14;            // +0x14
+class CTCCarriedActionUseBase : public CTCActionUseBase {                  // RTTI base of CTCCarriedActionUseTrophy (local model: no engine header)
+public:
+    CTCCarriedActionUseBase(CThing& thing);
 };
-#pragma pack(pop)
 
-void* __fastcall CTCCarriedActionUseTrophy_CompositeScalarDeletingDestructor(void* trophy, int, unsigned int flags)
+class CTCCarriedActionUseWallMount : public CTCCarriedActionUseBase {   // Ego_r.pdb member type of Trophy (20 bytes)
+public:
+    CTCCarriedActionUseWallMount(CThing& thing) : CTCCarriedActionUseBase(thing) { }
+    virtual ETCInterfaceType GetInterfaceType() const;                   // CTCBase slot 21 (declared: the vtable is emitted here)
+    virtual CCharString GetClassTypeName() const;                        // CTCBase slot 22
+};
+
+class CTCCarriedActionUseTrophy : public CTCCarriedActionUseBase {
+public:
+    CTCCarriedActionUseTrophy(CThing& thing) : CTCCarriedActionUseBase(thing), PTCCarriedActionUseWallMount(thing) { }
+    virtual ETCInterfaceType GetInterfaceType() const;                   // CTCBase slot 21 (declared: the vtable is emitted here)
+    virtual CCharString GetClassTypeName() const;                        // CTCBase slot 22
+    CTCCarriedActionUseWallMount PTCCarriedActionUseWallMount;          // +0x14 (Ego_r.pdb; its implicit dtor runs ~CTCActionUseBase first)
+};
+
+void* MakeOne(CThing& thing)
 {
-    CObject_004dc568* object = static_cast<CObject_004dc568*>(trophy);
-    object->Member14.~C3DAnimationBlendState();
-    object->Member0.~C3DAnimationBlendState();
-    if (flags & 1)
-        operator delete(object);
-    return trophy;
+    return new CTCCarriedActionUseTrophy(thing);
 }

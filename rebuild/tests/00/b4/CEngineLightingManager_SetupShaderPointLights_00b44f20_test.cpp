@@ -28,7 +28,7 @@ struct CShaderPointLight : CShaderLight {
 };
 
 class CShaderRenderManager { public:
-    void InitialiseLight(unsigned long index, CShaderLight* light) { CShaderPointLight* p = (CShaderPointLight*)light; inits[index] = *p; ++nInit; }
+    void InitialiseLight(unsigned long index, const CShaderLight& light) { const CShaderPointLight* p = (const CShaderPointLight*)&light; inits[index] = *p; ++nInit; }
     void ResetLight(unsigned long index) { resets[nReset++] = index; }
     CShaderPointLight inits[10]; long nInit; unsigned long resets[10]; long nReset;
     CShaderRenderManager() : nInit(0), nReset(0) {}
@@ -73,7 +73,7 @@ void CEngineLightingManager::SetupShaderPointLights(const CEngineLocalLightArray
             attenuation.Attenuation2 = element.AttenuationDistSquared;
             attenuation.AttenuationBase = element.AttenuationConstant;
             CShaderPointLight light(element.WorldPos, element.Colour, 1.0f, attenuation);
-            g_pShaderRenderManager->InitialiseLight(i + 1, &light);
+            g_pShaderRenderManager->InitialiseLight(i + 1, light);
         } while (++i < lights->LightCount);
     }
     for (long j = lights->LightCount; j < ShaderPointLightsEnabledCount; ++j)

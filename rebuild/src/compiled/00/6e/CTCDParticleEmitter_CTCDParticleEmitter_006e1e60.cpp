@@ -17,13 +17,12 @@
 // reverse declaration order and the base destructor is tail-jumped.
 struct CParticleCreationParameters;
 
-struct CTCBase_Calls {
-    void*         __vftable;                                // +0x00
-    void*         ParentThing;                              // +0x04
-    bool          ToBeRemoved;                              // +0x08
-    bool          IsInGlobalUpdateTCs;                      // +0x09
-    ~CTCBase_Calls();                                       // 0x00686830
-};
+// agentNF20 (2026-11-11): the base is the shared retail CTCBase model (engine/CTCBase.h, FABLE_RETAIL_CTCBASE: vptr +0x00, ParentThing
+// +0x04, ToBeRemoved +0x08, IsInGlobalUpdateTCs +0x09, size 0x0C), so the tail binds ??1CTCBase@@UAE@XZ 0x00686830 (was the
+// CTCBase_Calls stand-in). Its destructor is virtual, so this class's own one is the implicit ??1 (no vptr store, as retail),
+// emitted by DestroyOne below.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
 class CCharString { public:
     void* m_pStringData;
@@ -44,7 +43,7 @@ struct SCountedBlock {
 
 #include "engine/CCountedPointer.h"
 
-class CTCDParticleEmitter : public CTCBase_Calls { public:
+class CTCDParticleEmitter : public CTCBase { public:
     CCharString         EmitterName;                        // +0x0c
     long                ParticleTypeID;                     // +0x10
     CIntelligentPointer PEmitter;                           // +0x14 CIntelligentPointer<NParticleEngine::CParticleEmitter>
@@ -58,9 +57,10 @@ class CTCDParticleEmitter : public CTCBase_Calls { public:
     CCountedPointer<CParticleCreationParameters> PCreationParameters;   // +0x3c
     unsigned char       Flags44;                            // +0x44 WaitingForParticleToLoad .. Moving
     unsigned char       Flags45;                            // +0x45 AttachedToThing, AlwaysUpdate, Asleep
-    ~CTCDParticleEmitter();
 };
 
-CTCDParticleEmitter::~CTCDParticleEmitter()
+// Emission helper: destroying the object by name is what makes VC7.1 emit the out-of-line implicit ??1.
+void DestroyOne(CTCDParticleEmitter* object)
 {
+    object->CTCDParticleEmitter::~CTCDParticleEmitter();
 }

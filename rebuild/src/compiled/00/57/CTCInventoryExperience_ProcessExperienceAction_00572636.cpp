@@ -15,9 +15,15 @@
 #undef CTCInventoryExperience
 #pragma optimize("s", on)
 
-struct CCategory {
-    long GetCategoryIdentifier();       // 0x005BD1B3
+// agentNF20 (2026-11-11): NInventory::CCategory::GetCategoryIdentifier is the Ego_r.pdb spelling
+//   ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ (const, the namespace enum; enumerators not in the name sets).
+namespace NInventory {
+enum EInventoryCategoryIdentifier { };
+class CCategory { public:
+    EInventoryCategoryIdentifier GetCategoryIdentifier() const;   // 0x005BD1B3
 };
+}
+using NInventory::CCategory;
 
 class CTCInventoryExperience : public CTCInventoryExperienceDonor {
  public:

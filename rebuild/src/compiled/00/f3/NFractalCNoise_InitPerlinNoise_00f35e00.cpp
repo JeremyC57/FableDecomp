@@ -1,5 +1,5 @@
-// CNoise::InitPerlinNoise() -- build the Perlin tables from the noise's own seed: identity permutation with random unit gradients, a Fisher-Yates shuffle of the permutation, then both tables duplicated into their upper halves for wrap-free lookups
-// Leaf: InitPerlinNoise
+// NFractal::CNoise::InitPerlinNoise() -- build the Perlin tables from the noise's own seed: identity permutation with random unit gradients, a Fisher-Yates shuffle of the permutation, then both tables duplicated into their upper halves for wrap-free lookups
+// Leaf: ?InitPerlinNoise@CNoise@NFractal@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F35E00, 204 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees: GFFloatRandom(float range, unsigned long* seed) 0x004978A0 (__fastcall: seed in ecx, range on the stack; as landed
 //   COrbitState::Initialise 0x00B161A0), C2DVector::Normalise() 0x00A14540, GFROR13(unsigned long) 0x00497890 (__fastcall); 1.0f
@@ -10,20 +10,13 @@
 //   and a 0..255 pick; the duplication copies P then G2 per index.
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 long __fastcall GFROR13(unsigned long value);                       // 0x00497890
-class C2DVector { public:
-    float X, Y;
-    C2DVector& Normalise();                        // 0x00A14540
-};
-class CNoise {
-public:
-    CNoise();
-    void InitPerlinNoise();
-    long          P[512];                          // +0x0000
-    C2DVector     G2[512];                         // +0x0800
-    unsigned long Seed;                            // +0x1800
-};
+// Name (agentNF20, 2026-11-11): Ego_r.pdb / FableWin.pdb ?InitPerlinNoise@CNoise@NFractal@@AAEXXZ (private, namespace NFractal);
+//   the class is the shared engine/NFractal_CNoise.h (same object as PerlinNoise 0x00F35C60).
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DVECTOR_NORMALISE
+#include "engine/NFractal_CNoise.h"
 
-void CNoise::InitPerlinNoise()
+void NFractal::CNoise::InitPerlinNoise()
 {
     unsigned long i;
     for (i = 0; i < 256; ++i) {

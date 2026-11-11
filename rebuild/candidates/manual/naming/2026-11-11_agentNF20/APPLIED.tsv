@@ -1,0 +1,53 @@
+tag	address	status	binders_respelled	note
+land1011cb	0072d360	partial	0	not reworked (NF19 settled the reason): self-rename + 0x0072CBA0; left 0x007C9180 (passes CIntelligentPointer<const CThing> through the converting ctor 0x004A9730; argument type conflict, needs re-authoring)
+land1011cd	00450a58	partial	0	not reworked (NF19 settled the reason): left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450a74	partial	0	not reworked (NF19 settled the reason): left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450a90	partial	0	not reworked (NF19 settled the reason): left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450ab2	partial	0	not reworked (NF19 settled the reason): left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450aea	partial	0	not reworked (NF19 settled the reason): 0x00471CC5 respelled; left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450b1b	partial	0	not reworked (NF19 settled the reason): 0x00472EDA respelled; left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	005c0e1b	partial	0	not reworked (NF19 settled the reason): 0x005C2831 respelled; left 0x005C1140 (FableUmove_construct stand-in, element modelled as a local struct)
+land1011cd	005c10cc	partial	0	not reworked (NF19 settled the reason): left 0x005C1F42 (CInvItem stand-in derived from engine/CItem.h; target wants const NInventory::CItem*) and 0x005C140E (UninitCopy stand-in on SElement20)
+land1011cd	005f9379	partial	0	not reworked (NF19 settled the reason): left 0x005F9A29 (FableUmove_construct stand-in)
+land1011cd	00612860	partial	0	not reworked (NF19 settled the reason): left 0x0065571A (FableUmove_construct stand-in)
+land1011cd	00696790	partial	0	not reworked (NF19 settled the reason): 0x00693EF0 respelled; left 0x00694020 (Destroy_range on a local CActionEventPointer with SRandomTag)
+land1011cd	006f2300	partial	0	not reworked (NF19 settled the reason): 3 respelled (one via a new fable_containers.h opt-in); left 0x006ED510 (local CSequencePointer whose members .Object/.Count are used)
+land1011cd	0085db50	partial	0	not reworked (NF19 settled the reason): left 0x0085E570 (namespace N0085e570 stand-in Element, not CTextureManagerPoolInfo)
+land1011cd	009f6750	partial	0	not reworked (NF19 settled the reason): 0x009F5C80 respelled; left 0x00A5FFD0 (local CJoystickPointer with members + Move_00a5fda0 stand-in)
+land1011cd	00ab2bd0	partial	0	not reworked (NF19 settled the reason): left 0x00AB34C0: it destroys CCountedPointer<CBindingTarget>, the address name is the CBoneInfo instance (ICF); respelling to CBoneInfo would be wrong
+land1011cf	00644627	partial	0	not reworked (NF19 settled the reason): no correct symbol settled (slot 0 scalar deleting destructor shared by 23 NPlayerGui::CDraw* vtables); 5 binders left
+land1011ch	0052c7e0	partial	0	not reworked (NF19 settled the reason): left 0x0054BA20 / 0x00555220 (CChangingStateComponent outside NUISystem) and forwarders 0x005419D0 0x00543ED0 0x0054ECA0 0x00550C50 0x005367F3 (stand-in classes)
+land1011ch	00533bc0	partial	0	not reworked (NF19 settled the reason): left 0x0053B321 0x00541120 0x00541230 (RemoveChild stand-ins on unproven classes)
+land1011ch	00686870	partial	0	not reworked (NF19 settled the reason): left 0x004DC83E 0x007B2A90 0x0076C830 (stand-in classes, no proven CTCBase model)
+land1011ch	00861d00	partial	0	not reworked (NF19 settled the reason): left 10 binders in namespace NCreatureMode stand-ins (no shared CModeStandBase header)
+FAM05	00412a50	partial	0	not reworked (NF19 settled the reason): left 0x00412D20: COMDAT-folded resize (other element types keep their own spelling; needs per-row element proof)
+FAM05	00442770	partial	0	not reworked (NF19 settled the reason): left 5: COMDAT-folded resize (other element types)
+FAM05	004428f0	partial	0	not reworked (NF19 settled the reason): left 19: COMDAT-folded resize (int/long/unsigned long spellings)
+FAM05	00464931	partial	0	not reworked (NF19 settled the reason): left 7: COMDAT-folded resize
+FAM05	005ea000	partial	0	not reworked (NF19 settled the reason): 30 respelled; left 0x007CF530 (CoinBase) 0x007D5AD0 0x007D7520 (CardBase) 0x007D62D0 (CardPairs): GetDef declared on the wrong local class, needs a CTCTavernGame model
+FAM05	004c9840	partial	0	not reworked (NF19 settled the reason): 3 respelled; left 11 stand-ins (local CThing models without the enum overload)
+FAM05	004c9b80	partial	0	not reworked (NF19 settled the reason): binds correctly in every changed row; left 6 stand-ins (0x0066FB50 0x008C5370 0x008D7730 0x008D79A0 0x008D79F0 0x008DF310)
+FAM05	005ea650	partial	0	not reworked (NF19 settled the reason): left 0x007D83C0 (tavern stand-in class)
+FAM05	008ef170	partial	0	not reworked (NF19 settled the reason): left 0x007D2900 (FableEndCut stand-in)
+FAM05	00a01b50	partial	0	not reworked (NF19 settled the reason): 26 changed rows bind it correctly (2 respelled here: 0x00847C90 0x008D90B0); ~90 namespaced stand-ins not started
+FAM05	00af7d80	done	1	0x00AF8170: all 10 NParticleEngine::CPSC*::Alloc calls SAPAV -> SIPAV (Ego_r + FableWin both list SIPAV for all 10); NF19 settled the other binder
+land1011cm	00989830	done	1	0x00B44F20 InitialiseLight -> const CShaderLight& via engine/CShaderRenderManager.h; test updated
+land1011cn	00af0d80	done	1	self row reverted to the CParticleSystem element type (FAM02's rename was wrong) + 0x00AF10E0 (~CParticleEmitter). 0x00AF0FA0 keeps ??$__destroy_aux@PAV?$CCountedPointer@VCGuiVarTransferBase@@@@...: it is a vector<CCountedPointer<CGuiVarTransferBase> > member, the COMDAT-folded twin, so its spelling is right for its own instance
+land1011co	00f35e00	done	1	self row InitPerlinNoise -> NFractal::CNoise AAE + 0x00F36BA0 (itself renamed to ??0CNoise@NFractal@@QAE@XZ)
+land1011co	009f2f90	partial	3	self row GetDimensions on shared CSurface + 0x00415BD0 / 0x00415BF0 (renamed CSurface::GetWidth/GetHeight) + 0x004167DA; left 0x009BF350 (BlitRenderTargetSurfaceToTexture: deep CSurface_Methods stand-ins). 0x00B7AD20 already binds right
+land1011co	009f33e0	partial	2	0x009F4330 / 0x009F4360 (renamed Swizzle/Unswizzle) now bind ?Lock@CSurface@@; left 0x009F3470 0x009F3520 0x009F3FF0 (own names are CSurface_Methods stand-ins with in-TU noinline Lock bodies; CPixelFormat CONVERT vs BYTECOLOURDEPTH_OUTOFLINE opt-ins conflict) and 0x00B4F420 (SurfaceNative stand-in)
+land1011cp	0071ea10	done	1	0x00721150 on the STLport std templates (only binder)
+land1011cp	005930f3	partial	2	0x00593965 / 0x00593E3E (renamed std::__push_heap / std::__adjust_heap over std::pair<long,CDefPointer<const CContextSensitiveItemDef> >) now bind the std::pair dtor; left 0x00594697 and 0x005938D5 (ICF: their element type differs, they keep their own spelling until re-authored)
+land1011cp	005f8736	partial	2	0x005F3BCF (std::pair replaces the SAbilityEntry stand-in) + 0x005F9A7D (renamed std::__destroy_aux); left 0x005F8D31 (ICF AutoTinyScalarDestructor stand-in)
+land1011cp	004db47d	done	2	0x007F5620 / 0x004DCE88 renamed to ??_GCTCSoundAtmosphere / ??_GCTCSoundAtmosphereVillage
+land1011cp	004dc600	partial	0	0x004DC5E4 left: engine/CTCInventoryItem.h has only an out-of-line ctor, so no TU can emit the vtable / ??_G without a header ctor opt-in
+land1011cp	004dc916	partial	0	0x004DC8FA left: engine/CTCInterestingToVillagers.h has only an out-of-line ctor (same as 0x004DC600)
+land1011cp	004dcda4	done	1	0x004DCD88 renamed ??_GCTCCarriedActionUseRead
+land1011cp	004da967	partial	34	34 slot-0 ??_G rows renamed ??_G<Class>@@UAEPAXI@Z and binding ??1CTCActionUseBase@@UAE@XZ (header opt-in FABLE_RETAIL_CTCACTIONUSEBASE_DTOR); left 0x004DBF76 (??_GCTCActionUseBase itself: its vtable only emits with an inline CTCActionUseBase ctor). 0x004DC03D already binds right (the queue lists it among the wrong spellings)
+land1011cp	005814e5	partial	0	0x005814C9 left: engine/CTCHeroStats.h has only an out-of-line ctor (same as 0x004DC600)
+land1011cp	005bd1b3	done	5	0x0056E632 0x0056E674 0x00572636 0x0059B740 0x005AEBFE -> NInventory::CCategory::GetCategoryIdentifier QBE?AW4EInventoryCategoryIdentifier@2@
+land1011cp	005e4430	done	1	0x005E4740: CompletionType nested in CTCQuestCompletionUI (W4CompletionType@1@); its own leaf changes too
+land1011cp	00a42980	partial	2	0x00A42AC0 / 0x00A42FC0 respelled (AAE, CLipSyncDataBank&); the self row 0x00A42980 is left: a rewrite needs CLipSyncDataBank modelled as a CBankFileAsync : CBankFile derivative, and the shared CLipSyncDataBank.h is a flattened layout with no base (header job first)
+land1011cp	00a3c1a0	done	1	0x00A3C310: Foo -> private MakeOwnCopyOfData
+land1011cp	00686830	partial	5	0x004DBF56 (renamed CTCTargeted::~CTCTargeted) 0x006E1E60 0x004DDF6F (renamed CTCUserActionPointBase::~) 0x004DE6ED 0x004E0AE8 (implicit dtors on the shared headers); 0x004DCBCE / 0x005DAE40 already respelled in the repo (reloc_bindings.tsv is stale); left 0x004E5C71 (engine/CTCCreatureGroup.h declares a user virtual dtor but retail stores no vptr) and 0x006B14F0 (CSharedOwner stand-in over CBase_00686830; same CTCPhysicsBase.h user-dtor problem)
+land1011cp	00a42980	partial	0	duplicate of the entry above (same address and symbol); counted there

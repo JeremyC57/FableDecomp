@@ -1,0 +1,4 @@
+tag	address	claim	reason
+# none: every claim in QUEUE.tsv held against two sources (PDB name sets + callee body / vtable slot / binding evidence).
+# Queue slip (not a rejection): land1011cp 0x004DA967 lists ??1CTCActionUseBase@@UAE@XZ (first binder 0x004DC03D) among the wrong spellings; it is the correct spelling and 0x004DC03D was left as is.
+# Queue slip: land1011cp 0x00A42980 appears twice (lines 49 and 52, the second with no wrong spellings).

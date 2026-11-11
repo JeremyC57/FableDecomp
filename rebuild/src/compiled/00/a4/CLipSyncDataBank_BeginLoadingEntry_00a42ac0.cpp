@@ -4,12 +4,16 @@
 // (on the record: `lea ecx,[eax+edi*8]`, arguments pushed right to left: the bank, then the index). Shape: the record address is formed once for the
 // null test and the call (a reference local); the index stays in edi. The chunk label "CEditWorldMap::IsMapChangeable" is propagated (the callees are
 // the lip-sync bank's); the entries live at +0x164 of the retail layout (first word of a CArray).
+// agentNF20 (2026-11-11): BeginLoading is Ego_r.pdb / FableWin.pdb ?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z
+//   (private: the bank is the friend that calls it; unsigned long index, the bank by reference).
 class CLipSyncDataBank;
 
 class CLipSyncDataBankEntry { public:                     // 8 bytes: the counted object pointer and a word
     void* m_pObject;
     long  m_state;
-    void BeginLoading(unsigned long index, CLipSyncDataBank* bank);   // 0x00A42980
+private:
+    friend class CLipSyncDataBank;
+    void BeginLoading(unsigned long index, CLipSyncDataBank& bank);   // 0x00A42980
 };
 
 class CLipSyncDataBank { public:
@@ -25,6 +29,6 @@ void CLipSyncDataBank::BeginLoadingEntry(unsigned long index)
     if (EntryExists(index)) {
         CLipSyncDataBankEntry& entry = m_pEntries[index];
         if (entry.m_pObject == 0)
-            entry.BeginLoading(index, this);
+            entry.BeginLoading(index, *this);
     }
 }

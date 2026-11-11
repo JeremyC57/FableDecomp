@@ -38267,8 +38267,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004de6ed'
         Module = 'CTCCreatureItemLevitationBase'
-        Source = '00/4d/std_Destval_004de6ed.cpp'
-        TestSource = '00/4d/std_Destval_004de6ed_test.cpp'
+        Source = '00/4d/CTCCreatureItemLevitationBase_CTCCreatureItemLevitationBase_004de6ed.cpp'
+        TestSource = '00/4d/CTCCreatureItemLevitationBase_CTCCreatureItemLevitationBase_004de6ed_test.cpp'
         PassPattern = 'DESTVAL_004de6ed_OK'
     }
     [pscustomobject]@{
@@ -38281,8 +38281,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004e0ae8'
         Module = 'CTCGatherPointBase'
-        Source = '00/4e/std_Destval_004e0ae8.cpp'
-        TestSource = '00/4e/std_Destval_004e0ae8_test.cpp'
+        Source = '00/4e/CTCGatherPointBase_CTCGatherPointBase_004e0ae8.cpp'
+        TestSource = '00/4e/CTCGatherPointBase_CTCGatherPointBase_004e0ae8_test.cpp'
         PassPattern = 'DESTVAL_004e0ae8_OK'
     }
     [pscustomobject]@{
@@ -47707,9 +47707,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f9a7d'
-        Module = '_global'
-        Source = '00/5f/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005f9a7d.cpp'
-        TestSource = '00/5f/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005f9a7d_test.cpp'
+        Module = 'std'
+        Source = '00/5f/std_destroyaux_005f9a7d.cpp'
+        TestSource = '00/5f/std_destroyaux_005f9a7d_test.cpp'
         PassPattern = 'DESTROY_RANGE_OK'
     }
     [pscustomobject]@{
@@ -63382,9 +63382,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dbf56'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dbf56.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dbf56_test.cpp'
+        Module = 'CTCTargeted'
+        Source = '00/4d/CTCTargeted_CTCTargeted_004dbf56.cpp'
+        TestSource = '00/4d/CTCTargeted_CTCTargeted_004dbf56_test.cpp'
         PassPattern = 'BLENDSTATE_DTOR_OK'
     }
     [pscustomobject]@{
@@ -171054,8 +171054,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00af0d80'
         Module = 'std'
-        Source = '00/af/std_destroyauxCCountedPointerCGuiVarTransferBase_00af0d80.cpp'
-        TestSource = '00/af/std_destroyauxCCountedPointerCGuiVarTransferBase_00af0d80_test.cpp'
+        Source = '00/af/std_destroyaux_00af0d80.cpp'
+        TestSource = '00/af/std_destroyaux_00af0d80_test.cpp'
         PassPattern = '00af0d80_TEST PASS'
     }
     [pscustomobject]@{
@@ -206300,9 +206300,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f36ba0'
-        Module = 'CNoise'
-        Source = '00/f3/CNoise_CNoise_00f36ba0.cpp'
-        TestSource = '00/f3/CNoise_CNoise_00f36ba0_test.cpp'
+        Module = 'NFractal::CNoise'
+        Source = '00/f3/NFractalCNoise_CNoise_00f36ba0.cpp'
+        TestSource = '00/f3/NFractalCNoise_CNoise_00f36ba0_test.cpp'
         PassPattern = '00f36ba0_TEST PASS'
     }
     [pscustomobject]@{
@@ -206884,9 +206884,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004ddf6f'
-        Module = 'CPatchTesselationEdgeStrip'
-        Source = '00/4d/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004ddf6f.cpp'
-        TestSource = '00/4d/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004ddf6f_test.cpp'
+        Module = 'CTCUserActionPointBase'
+        Source = '00/4d/CTCUserActionPointBase_CTCUserActionPointBase_004ddf6f.cpp'
+        TestSource = '00/4d/CTCUserActionPointBase_CTCUserActionPointBase_004ddf6f_test.cpp'
         PassPattern = '004ddf6f_TEST PASS'
     }
     [pscustomobject]@{
@@ -210543,8 +210543,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009f4360'
         Module = 'CSurface'
-        Source = '00/9f/CSurface_Swizzle_009f4360.cpp'
-        TestSource = '00/9f/CSurface_Swizzle_009f4360_test.cpp'
+        Source = '00/9f/CSurface_Unswizzle_009f4360.cpp'
+        TestSource = '00/9f/CSurface_Unswizzle_009f4360_test.cpp'
         PassPattern = '009f4360_TEST PASS'
     }
     [pscustomobject]@{
@@ -241648,9 +241648,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f35e00'
-        Module = 'CNoise'
-        Source = '00/f3/CNoise_InitPerlinNoise_00f35e00.cpp'
-        TestSource = '00/f3/CNoise_InitPerlinNoise_00f35e00_test.cpp'
+        Module = 'NFractal::CNoise'
+        Source = '00/f3/NFractalCNoise_InitPerlinNoise_00f35e00.cpp'
+        TestSource = '00/f3/NFractalCNoise_InitPerlinNoise_00f35e00_test.cpp'
         PassPattern = '00f35e00_TEST PASS'
     }
     [pscustomobject]@{
@@ -281873,9 +281873,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00593e3e'
-        Module = '_global'
-        Source = '00/59/global_Adjustheap_00593e3e.cpp'
-        TestSource = '00/59/global_Adjustheap_00593e3e_test.cpp'
+        Module = 'std'
+        Source = '00/59/std_adjustheap_00593e3e.cpp'
+        TestSource = '00/59/std_adjustheap_00593e3e_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00593e3e_TEST PASS'
     }
@@ -286086,8 +286086,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00593965'
         Module = 'std'
-        Source = '00/59/std_Pushheap_00593965.cpp'
-        TestSource = '00/59/std_Pushheap_00593965_test.cpp'
+        Source = '00/59/std_pushheap_00593965.cpp'
+        TestSource = '00/59/std_pushheap_00593965_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00593965_TEST PASS'
     }

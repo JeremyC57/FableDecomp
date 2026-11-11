@@ -57,10 +57,14 @@ struct CLipSyncEntryData : CResource {
     }
 };
 
+// agentNF20 (2026-11-11): BeginLoading is Ego_r.pdb / FableWin.pdb ?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z
+//   (private: the bank is the friend that calls it; unsigned long index, the bank by reference).
 class CLipSyncDataBankEntry { public:
     CLipSyncEntryData* Data;               // +0 CIVCountedPointer<CData>
     float Duration;                        // +4
-    void BeginLoading(long index, CLipSyncDataBank* bank);   // 0x00A42980
+private:
+    friend class CLipSyncDataBank;
+    void BeginLoading(unsigned long index, CLipSyncDataBank& bank);   // 0x00A42980
 };
 
 #include "engine/CArray.h"
@@ -79,7 +83,7 @@ CCountedPointer<const CLipSyncData> CLipSyncDataBank::GetLipSyncData(long index)
     if (EntryExists(index)) {
         CLipSyncDataBankEntry& slot = Entries[index];
         if (slot.Data == 0)
-            slot.BeginLoading(index, this);
+            slot.BeginLoading(index, *this);
     }
     if (entry->Data->LipSync.Data == 0)
         entry->Data->BuildLipSync();

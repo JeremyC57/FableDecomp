@@ -3125,3 +3125,10 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (Codex pass 21, 2026-11-11) Grade the single combined header overlay against every selected row. Equivalent default declarations still violate the requirement to preserve the original default tokens; restore their exact original grouping.
 - (Codex pass 21, 2026-11-11) Decode actual COFF relocations and self-section jump-table entries; disassembling table data as instructions produces false branch mismatches.
 - (Codex pass 21, 2026-11-11) Original local-static identifiers/types can be proved while their native lexical scope ordinal remains unknown. Explicitly qualify the proposed emitted ordinal rather than claiming its recovery.
+- (agentNF20, 2026-11-11) A ??_G row emits only when the TU sees the vtable: a local derived class with an inline ctor, built in a helper, does it, but the class must declare CTCBase's pure virtuals.
+- (agentNF20, 2026-11-11) An implicit dtor (no user dtor + `o->T::~T()` helper) is the way to get retail's no-vptr-store shape; a declared virtual dtor stores the vptr.
+- (agentNF20, 2026-11-11) COMDAT/ICF: a binder whose element type differs from the address's catalog instance keeps its own spelling; never respell it to the catalog name.
+- (agentNF20, 2026-11-11) reloc_bindings.tsv and old object indexes go stale; grep rebuild/src/compiled before counting a binder as left.
+- (agentNF20, 2026-11-11) Old tests that link stand-in symbols LINK_FAIL after a self-rename; rewrite the test to call the row's real symbol.
+- (agentNF20, 2026-11-11) Do not name a helper script after a stdlib module (dis.py shadowed capstone's import of `dis`).
+- (agentNF20, 2026-11-11) Running an --orig grade writes into the same output folder; regrade the row afterwards.

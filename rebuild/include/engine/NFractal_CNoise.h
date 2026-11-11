@@ -11,6 +11,11 @@
 namespace NFractal {
 class CNoise {
 public:
+#ifdef FABLE_RETAIL_NFRACTAL_CNOISE_CTOR
+    // Retail opt-in (agentNF20, 2026-11-11, row 0x00F36BA0): Ego_r.pdb / FableWin.pdb ??0CNoise@NFractal@@QAE@XZ; retail 0x00F36BA0
+    // stores Seed = 0 (immediate) and calls InitPerlinNoise 0x00F35E00, plain `ret` (no argument: not the (long) overload ??0..QAE@J@Z).
+    CNoise();                                                            // 0x00F36BA0
+#endif
     float PerlinNoise(const C2DVector& position) const;                  // 0x00F35C60
 private:
     void InitPerlinNoise();                                              // 0x00F35E00

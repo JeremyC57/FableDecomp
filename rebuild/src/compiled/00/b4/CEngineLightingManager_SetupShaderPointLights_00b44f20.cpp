@@ -4,7 +4,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B44F20, 189 bytes (+ int3 padding), `ret 4`.
 // Callees: CShaderPointLight::CShaderPointLight(const C3DVector&, const CRGBFloatColour&, float, const CShaderLightAttenuation&)
-//   0x00B49320 (landed; vtable 0x012A2114), CShaderRenderManager::InitialiseLight(unsigned long, CShaderLight*) 0x00989830 and
+//   0x00B49320 (landed; vtable 0x012A2114), CShaderRenderManager::InitialiseLight(unsigned long, const CShaderLight&) 0x00989830 (Ego_r/FableWin spelling; engine/CShaderRenderManager.h) and
 //   ResetLight(unsigned long) 0x00988640 (on the global manager 0x01436E14), CBaseClassNonCopyable::~CBaseClassNonCopyable
 //   0x0099A300 (the light's base).
 // Layout: engine/CEngineLightingManager.h carries the PDB offsets (ShaderPointLightsEnabledCount +0xa4,
@@ -15,7 +15,9 @@
 //   register after the count test); the point light is a loop-scoped local (its implicit dtor only calls the base dtor); the reset loop
 //   reuses `j + 1` as the next index.
 #include "engine/C3DVector.h"
-class CRGBFloatColour { public: float R, G, B, A; };
+#include "engine/CRGBFloatColour.h"
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CShaderRenderManager.h"
 class CShaderLightAttenuation { public:
     float Attenuation0;                                // +0x00
     float Attenuation1;                                // +0x04
@@ -23,14 +25,9 @@ class CShaderLightAttenuation { public:
     float AttenuationBase;                             // +0x0c
 };
 
-struct CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
-public:
-};
 class CShaderLight : public CBaseClassNonCopyable { public:
 };
-struct CShaderPointLight : CShaderLight {              // vtable 0x012A2114, 0x40 bytes
+class CShaderPointLight : public CShaderLight { public:   // vtable 0x012A2114, 0x40 bytes
     C3DVector               Direction;                 // +0x04
     C3DVector               Position;                  // +0x10
     CRGBFloatColour         Colour;                    // +0x1c
@@ -40,10 +37,6 @@ struct CShaderPointLight : CShaderLight {              // vtable 0x012A2114, 0x4
                       const CShaderLightAttenuation& attenuation);   // 0x00B49320
 };
 
-class CShaderRenderManager { public:
-    void InitialiseLight(unsigned long index, CShaderLight* light);   // 0x00989830
-    void ResetLight(unsigned long index);              // 0x00988640
-};
 extern CShaderRenderManager* g_pShaderRenderManager;   // 0x01436E14
 
 class CEngineLocalLightElement { public:                      // 0x34 bytes
@@ -84,7 +77,7 @@ void CEngineLightingManager::SetupShaderPointLights(const CEngineLocalLightArray
             attenuation.Attenuation2 = element.AttenuationDistSquared;
             attenuation.AttenuationBase = element.AttenuationConstant;
             CShaderPointLight light(element.WorldPos, element.Colour, 1.0f, attenuation);
-            g_pShaderRenderManager->InitialiseLight(i + 1, &light);
+            g_pShaderRenderManager->InitialiseLight(i + 1, light);
         } while (++i < lights->LightCount);
     }
     for (long j = lights->LightCount; j < ShaderPointLightsEnabledCount; ++j)
