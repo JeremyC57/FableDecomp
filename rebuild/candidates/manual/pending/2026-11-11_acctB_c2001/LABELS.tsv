@@ -1,0 +1,14 @@
+address	name	evidence
+007891f2	?BulletTimeFrameUpdate@CTCTrapBase@@UAEXXZ	CTCTrapBase vtable 0x0126B7FC slot 10 (CTCBase slot 10 = BulletTimeFrameUpdate); Ego_r.pdb + FableWin.pdb name; body tail-calls slot 9 FrameUpdate (catalog vfunc_10)
+00aed600	?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z	Ego_r.pdb + FableWin.pdb; ret 8; calls CParticleSystem::InterpolateTo per system; caller CreateInterpolatedEmitter 0x00AEB674
+00af4100	?InterpolateTo@CParticleSystem@NParticleEngine@@QAEXABV12@M@Z	Ego_r.pdb + FableWin.pdb; sole caller 0x00AED623 (emitter InterpolateTo, per-system pair)
+00af4900	?DatabaseSerialise@CParticleSystem@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	Ego_r.pdb + FableWin.pdb; both callers in landed CParticleEmitter::DatabaseSerialise 0x00AEF1F0 bind it; catalog "SerializeComponents" is wrong
+00a9eb90	?BlendAnimations@C3DAnimationManager@@AAEXPAVC3DKeyframe@@PBV2@KM@Z	Ego_r.pdb (private); ret 10h; landed CombineBaseAnimations / CombineBlendedBaseAnimations bind it
+00b3c5d0	?SetupAlphaStippleTexture@CEngineResourceManager@@AAEX_N@Z	Ego_r.pdb + FableWin.pdb (private, bool); ret 4; PDB order BuildAlphaStippleTexture 0x00B3BE10 / BuildHWStipplePatterns 0x00B3C4B0 / this
+0049b7f0	?resize@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@QAEXI@Z	Ego_r.pdb + FableWin.pdb vector<CTexture>::resize(size_type); 0x00B3C665 `push 4 ; call` on DitherTextureList; body builds a CTexture() temp (Uninitialise 0x009F9F70)
+00464931	?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z	STLport 4.6 vector<unsigned long>::resize(size_type, const T&) (PDBs: Dinkumware by-value QAEXIK@Z); bound by landed 0x004648A1; 0x00B3C8CA push &zero, 0x2000
+009f3470	?CopyFromMemoryAutoSwizzle@CSurface@@QAEXPAXJ@Z	Ego_r.pdb; called on the GetSurfaceLevel(0) temporary with (data, 0x80)
+009ba390	?ReadLineAsString@CStringParser@@QAE?AVCCharString@@XZ	Ego_r.pdb; thiscall with hidden result (0x00AF4ACF)
+00994f60	?ReadWhiteSpace@CDataInputStream@@QAE?AVCCharString@@XZ	Ego_r.pdb; hidden-result call whose value is dropped (0x00AF4B09)
+00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	Ego_r.pdb + FableWin.pdb protected static fastcall; body = signed char compare loop (landed as strcmp_signed); expanded in 0x00AF4900
+013bc9fc	?m_errorCallback@CAFile@@0P6IXXZA	FableWin.pdb ?SetErrorCallback@CAFile@@SIXP6IXXZ@Z + ?DoErrorCallback@CAFile@@SIXXZ (debug COMDAT 0x02DD7C60 right after this TU's stipple bodies); 0x00B3C988 `mov eax,[13BC9FC] ; test ; call eax` = inline DoErrorCallback

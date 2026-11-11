@@ -1,0 +1,11 @@
+addr       parity           behav  name
+007891f2   MATCH            PASS   BulletTimeFrameUpdate
+00aed600   RELOCATION_MATCH PASS   InterpolateTo
+00af4900   RELOCATION_MATCH PASS   DatabaseSerialise
+00b3c5d0   RELOCATION_MATCH PASS   SetupAlphaStippleTexture
+
+WINS: 4
+  007891f2 MATCH CTCTrapBase::?BulletTimeFrameUpdate@CTCTrapBase@@UAEXXZ
+  00aed600 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z
+  00af4900 RELOCATION_MATCH NParticleEngine::CParticleSystem::?DatabaseSerialise@CParticleSystem@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00b3c5d0 RELOCATION_MATCH CEngineResourceManager::?SetupAlphaStippleTexture@CEngineResourceManager@@AAEX_N@Z
