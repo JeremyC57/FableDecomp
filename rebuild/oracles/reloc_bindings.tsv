@@ -26279,8 +26279,6 @@ _kRadiansPerHz	012bed78	00c6c000
 ??$uninitialized_fill_n@PAVCAbilityTrackDef@@IV1@@std@@YIPAVCAbilityTrackDef@@PAV1@IABV1@@Z	0047a6e7	0047a4a2
 ??1CAbilityTrackDef@@UAE@XZ	00478722	0047a4a2
 ?_M_insert_overflow@?$vector@VCAbilityTrackDef@@V?$allocator@VCAbilityTrackDef@@@std@@@std@@IAEXPAVCAbilityTrackDef@@ABV3@ABU__false_type@2@I_N@Z	0047a5ff	0047a4a2
-?clear@CUnprovenList_013b8a98@@QAEXXZ	004855a3	0048573d
-?g_CUnprovenList_013b8a98@@3VCUnprovenList_013b8a98@@A	013b8a98	0048573d
 ??$fill_n@PAPAVCComponent@NUISystem@@IPAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@IABQAV12@@Z	0048514c	00485dbc
 ?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z	00436ac0	0048d400
 ?_M_destroy_nodes@?$_Deque_base@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@IAEXPAPAVC2DVector@@0@Z	0048c820	0048d520
@@ -26518,10 +26516,7 @@ _kRadiansPerHz	012bed78	00c6c000
 ?Alloc@CHitSwitch@CHitSwitchTestScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00efb7e0	00efb740
 ??_7?$CEntityScriptBinding@VCGuildSealTriggerTestScript@NScript@@@@6B@	012f6c04	00efbca0
 ?Alloc@CGuildSealTrigger@CGuildSealTriggerTestScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00efbd40	00efbca0
-??1CUnprovenMember_00f25b40@@QAE@XZ	00f25b70	00f25b40
 ??1CUnprovenMember_00f25cb0@@QAE@XZ	00f25ce0	00f25cb0
-??1CUnprovenMember_00f26df0@@QAE@XZ	00f26e20	00f26df0
-??1CUnprovenMember_00f26f40@@QAE@XZ	00f26f70	00f26f40
 ??$__copy_backward@PAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@PAV12@H@std@@YIPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@0@PAV10@00ABUrandom_access_iterator_tag@0@PAH@Z	00517430	00518f60
 ??$fill@PAVCMapInfo@@V1@@std@@YIXPAVCMapInfo@@0ABV1@@Z	00515090	0051a6d0
 ??$uninitialized_fill_n@PAVCMapInfo@@IV1@@std@@YIPAVCMapInfo@@PAV1@IABV1@@Z	00514db0	0051a6d0
@@ -26596,7 +26591,6 @@ _kRadiansPerHz	012bed78	00c6c000
 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__false_type@2@I_N@Z	0066e370	0075bb00
 ??$__insertion_sort@PAJU?$less@J@std@@@std@@YIXPAJ0U?$less@J@0@@Z	00777920	00778540
 ??$__unguarded_insertion_sort_aux@PAJJU?$less@J@std@@@std@@YIXPAJ00U?$less@J@0@@Z	00776df0	00778540
-?g_UnprovenFloat_013bae04@@3MA	013bae04	007899c0
 ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV01@@Z	007acea0	007ae1d0
 ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@std@@QAEAAU01@XZ	007ac720	007ae870
 ?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@2@0@Z	007ae1d0	007ae870
@@ -38832,3 +38826,6 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z	00875f00	00876ca0
 ?GetFastTrack@CTCSleep@@QAE_NXZ	0092c3b0	0092e130
 ?IsRunnable@CAIStateGroup_GoToBed@@UAE_NXZ	0092d6f0	0092e130
+?clear@?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ	004855a3	0048573d
+?_M_erase@?$_Rb_tree@PAVCMenuEntry@NUISystem@@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@U?$_Select1st@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@U?$less@PAVCMenuEntry@NUISystem@@@4@V?$allocator@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@2@@Z	0056cb00	0056d7b0
+?_M_erase@?$_Rb_tree@W4ESurfaceMultisampleType@@W41@U?$_Identity@W4ESurfaceMultisampleType@@@std@@U?$less@W4ESurfaceMultisampleType@@@3@V?$allocator@W4ESurfaceMultisampleType@@@3@@std@@AAEXPAU?$_Rb_tree_node@W4ESurfaceMultisampleType@@@2@@Z	009c1e00	009c2c10

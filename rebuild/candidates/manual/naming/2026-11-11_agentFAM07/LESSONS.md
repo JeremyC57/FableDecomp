@@ -1,0 +1,12 @@
+# agentFAM07 lessons
+- A container ctor's type is cheapest from the 66-byte dtor at ctor+0x40: its _M_erase target, then whoever else calls that erase.
+- An unnamed def-class sdd: find its slot-0 vtable dword in .rdata, then the landed ctor that stores that vtable.
+- In K050 sdds the class's dtor is compiler-generated (no own vptr store); a header that declares it needs an IMPLICIT_DTOR opt-in.
+- `new T` only emits ??_G when T's ctor is inline in the TU; an out-of-line declared ctor needs an `inline T::T() {}` emitter.
+- A `static` emitter function does not make VC7.1 emit the implicit container dtor COMDAT; use an external one.
+- engine/CArenaRoundDef.h / CHeroSoulsRoundDef.h pull CDefString.h: define FABLE_RETAIL_CCHARSTRING + FABLE_RETAIL_CDEFSTRINGTABLE or Wine cl hangs.
+- Syntax-check with host g++ (-fsyntax-only, -D__cdecl= -D__fastcall= "-D__int64=long long") before a Wine grade; it catches #error/abstract-class traps for free.
+- vector<T> of an abstract T fails at declaration instantiation; give the class its pure-virtual overrides first.
+- The grade-log status column breaks on names with spaces (`scalar deleting destructor'); parse the grade word, not field 3.
+- Landed STLport container tests fail 64-bit g++ (`__cdecl`, operator new(unsigned int)); a prelude-only test copy fixes them.
+- In Ego_r layouts `schar` is `signed char` (mangled C), distinct from `char` (D): it blocks set<char> spellings.
