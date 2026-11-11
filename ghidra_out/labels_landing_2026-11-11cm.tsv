@@ -9,4 +9,3 @@ address	name	evidence
 00989830	?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z	chunk Q8 (landing cm): Ego_r.pdb + FableWin.pdb (see NAME_FIXES.tsv)
 00ADD690	?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z	chunk Q8 (landing cm): Ego_r.pdb 0x00BF9FD0 + FableWin.pdb 0x0338AD30
 00A443A0	?GFGetShortestDistance2DSquaredBetweenPointAndLine@@YIMABVC2DVector@@00AAM@Z	landing cm respell: Ego_r.pdb 0x00B99AC0 + FableWin.pdb 0x0320C970, the only PDB function of this signature; 3D twin 0x00A442E0 directly before it
-009F5690	??0CInputEventPackage@@QAE@AAVCAFile@@@Z	chunk Q8: body is the constructor (fills this from the file); Ego_d / FableWin.pdb; catalog label Save was wrong
