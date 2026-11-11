@@ -1,0 +1,5 @@
+address	grade	bytes	test	grades_used	notes
+00745120	RELOCATION_MATCH	1538v1538	PASS	pass1: 5 (u1 1470, u2 1554, u3 1538 frame order, u4 RELOCATION_MATCH, src confirm); pass2/3: 0	matched; vland WIN (warnings: RELOC_CONFLICT GetExtendedSightRadius = known landed 0x00864620 misbinding, RELOC_NAME label-only)
+00952890	RELOCATION_MATCH	1509v1509	PASS	pass1: 6 (j1 1505 exit-copy owner, j2/j3 1505, j4 1505, j5 RELOCATION_MATCH, src confirm); pass2/3: 0	matched; vland WIN (warning: RELOC_NAME label-only 0x009531A0)
+0097fea0	SKIP	-	-	0	NOT ATTEMPTED (session budget ran out after the two matches); not a fragment: extent 0x0097FEA0..0x0098049C verified (int3 before and after, ret 14h last); decoded outline in NOTES.md
+007a0d90	SKIP	-	-	0	NOT ATTEMPTED (session budget ran out after the two matches); not a fragment: extent 0x007A0D90..0x007A137C verified (int3 before and after, ret 20h last)

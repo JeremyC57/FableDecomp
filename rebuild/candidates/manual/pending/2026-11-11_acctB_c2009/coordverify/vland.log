@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00745120   WARN RELOC_CONFLICT: ?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ -> 00744950 here, 007448f0 in landed 00864620
+00745120   WARN RELOC_NAME: ?RemovePerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z -> 00437900 labelled '_global::Forward_RemoveThing_via0x1b8_00437900'
+00745120   WARN RELOC_NAME: ?IsInMelee@CTCCombat@@QBE_NXZ -> 00733190 labelled '_global::Forward_GetAlignment_via0x24_00733190'
+00745120   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00745120   RELOCATION_MATCH PASS   UpdateLineOfSight
+00952890   WARN RELOC_NAME: ??1CCreatureAction_DragonRearUpFull@@UAE@XZ -> 009531a0 labelled '_global::Dtor_CCombatActionBaseBase_009531a0'
+00952890   RELOCATION_MATCH PASS   UpdateGround
+
+WINS: 2
+  00745120 RELOCATION_MATCH CTCPerceiveThing::?UpdateLineOfSight@CTCPerceiveThing@@AAEXXZ
+  00952890 RELOCATION_MATCH CAIStateGroup_JackDragon::?UpdateGround@CAIStateGroup_JackDragon@@AAEXXZ
