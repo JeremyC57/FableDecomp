@@ -1,0 +1,24 @@
+address	name	grade	grades_used_H40j	note
+0x00F0FB70	NScript::CQ_ArenaScript::Main	DIFFER(18320v18144)	2	895 masked lines kept (draft); dropping the unused cast map is worse (1647)
+0x00E40E80	NScript::CV_BordelloScript::CMagicman::Main	RELOCATION_MATCH	4	src/00e40e80.cpp + test: implicit STB dtor (no OUTOFLINE_DTOR) + shared enum / text headers; 220 -> 0
+0x00E20600	NScript::CQR_EscortTraderScript::CTraderToEscort::Main	DIFFER(14478v14510)	3	355 kept (draft); without NOVTABLE 370, split pragmas 360; And members v temporaries split of ~CIsThingAlive is the blocker
+0x00502E90	CWorldMap::PopulateRegionWithVillagers	SRC_FAIL	1	SRC_FAIL on HEAD: hand879 opt-ins missing from HEAD (11 errors, listed on line 3); draft untouched otherwise
+0x006096E0	CTCInventoryMap::ConstructLogbookListPC	DIFFER(12864v12832)	5	rebased onto HEAD (was SRC_FAIL): renamed opt-ins + hdr CHeroLogBook.h / CTCInventoryItem.h blocks; 902 lines, 32 bytes from HEAD models
+0x0061E6D0	CTCInventoryQuests::ConstructQuestListPC	DIFFER(12357v12356)	3	1295 kept; `&& true` neutral
+0x00E4B5B0	NScript::CV_BanditTollScript::CTollBandit::Main	DIFFER(10610v10594)	4	697 -> 591: answer = 0, call_timer at function scope
+0x00E3BB70	NScript::CV_BordelloScript::CMadame::Main	DIFFER(10053v10149)	8	595 -> 198: in-body inline_depth(0) round the chit-chat movie and its scope end
+0x00E50FD0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main	DIFFER(9850v9885)	1	99 (baseline regrade only; no new idea tried)
+0x00D973D0	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main	DIFFER(9997v9821)	5	1170 -> 190: bare Release calls, Nymph loop break, loop-bottom continue
+0x00603000	CTCInventoryMap::CreateMiniMapMarkers	TIMEOUT(900 s)	1	the draft on HEAD runs past `timeout 900` with no output, 3 times (2 logged grades + 1 direct q.py run, rc=124). Earlier passes graded it DIFFER(9852v9571), 2215 lines. Draft untouched. Next: compile it once outside the grade wrapper with a longer limit (or /Bt timing) to find what makes c1 / c2 stall on HEAD headers, likely a header opt-in that now recurses
+0x00E5FD40	NScript::CV_BodyGuardScript::CBodyGuard::Main	DIFFER(9471v9381)	4	1057 -> 163: inline ~CScriptThing + main loop && true
+0x0078FD60	CTCDivineWrath::FrameUpdate	SRC_FAIL	1	>100 errors on HEAD (declaration debt listed on line 3); draft untouched
+0x00E33EA0	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main	DIFFER(9303v9228)	8	323 kept (best 324 variants); inline_depth(1) predicate ctor; CSpawnedFunc1 specialization moves the frame
+0x00C4F600	PropertySerializer_GetPropertyTypeCode	DIFFER(9204v9204)	1	85 (baseline regrade only; no new idea tried)
+0x00B10B10	NParticleEngine::CPSCEmitterGeneric::GenerateParticle	DIFFER(4380v4276)	2	788 unchanged; removed the forbidden Flags: none line
+0x00D0F640	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre	DIFFER(2131v2101)	1	108 unchanged; STB dtor drop neutral
+0x00CF68C0	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::Main	DIFFER(8150v8070)	5	1472 -> 864: second loop form + MOVIEBASE_FORCEINLINE_CTOR (specialization moved first)
+0x00507C30	CWorldMap::CWorldMap::LoadFromFile	DIFFER(7661v7661)	1	2 (baseline regrade only; exit reload order, see prevI)
+0x00DB97A0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Main	DIFFER(6859v7013)	9	248 -> 125: outro break + post-loop T, loop if(T||false)return
+0x00D13580	NScript::CQ_BountyHuntScript::Main	DIFFER(6843v6917)	5	280 -> 119: lookout loop form
+0x00B03CA0	NParticleEngine::CPSCRenderMesh::PreparePrimitives	DIFFER(6601v6515)	1	1022 (baseline regrade only); removed the forbidden Flags: none line
+0x00DF6010	NScript::CQ_TraderConflictEvilScript::Main	DIFFER(6247v6493)	2	1486 kept (draft); inline ~CScriptThing worse (1892)

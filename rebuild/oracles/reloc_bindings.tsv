@@ -38946,3 +38946,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?push_back@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@V1@@2@@Z	007706a0	0076eb00
 ?resize@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEXI@Z	00770d60	0076eb00
 ?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCharString@@@Z	007e73c0	00cdd6b0
+?IsHeroWearingBeard@CV_BordelloScript@NScript@@QAE_NXZ	00e44a40	00e40e80
+?IsHeroWearingTash@CV_BordelloScript@NScript@@QAE_NXZ	00e44cc0	00e40e80
+?WatchForHeroLeavingRegionWithBeer@CV_BordelloScript@NScript@@QAEXXZ	00e44980	00e40e80

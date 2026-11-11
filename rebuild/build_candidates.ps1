@@ -392770,6 +392770,13 @@ $catalog = @(
         TestSource = '00/cd/NScriptCGlobalTeleportToHeroGuildScript_Main_00cdd6b0_test.cpp'
         PassPattern = '00cdd6b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e40e80'
+        Module = 'NScript::CV_BordelloScript::CMagicman'
+        Source = '00/e4/NScriptCVBordelloScriptCMagicman_Main_00e40e80.cpp'
+        TestSource = '00/e4/NScriptCVBordelloScriptCMagicman_Main_00e40e80_test.cpp'
+        PassPattern = '00e40e80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

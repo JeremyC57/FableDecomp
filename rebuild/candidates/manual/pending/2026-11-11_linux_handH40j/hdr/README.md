@@ -142,3 +142,12 @@ The bindings are by Ego_r.pdb name + argument shape at the call sites of 0x00507
 
 Still declared in the differ row itself (header debt): CGenericException (throw info 0x013692F8), NProfileTimer::StartProfile / EndProfile
 0x009D8240 / 0x009D8250, the levels-directory helper 0x0041A060, the three mode flags 0x013B8618 / 0x01375459 / 0x013B8609, 0x00438570.
+
+## Chunk H40j additions (row 0x006096E0 CTCInventoryMap::ConstructLogbookListPC, the hand883 opt-ins rebased onto HEAD)
+
+| header | opt-in | adds |
+|---|---|---|
+| engine/CHeroLogBook.h | `FABLE_RETAIL_CHEROLOGBOOK_LOGBOOKSCREEN` | the inline CHeroLogBookEntry accessors GetAbbreviatedName / GetContent (Ego_r.pdb + FableWin.pdb `QBEABVCWideString@@XZ`) and `friend class CTCInventoryMap` (LogEntries map copied in place, 0x00609706) |
+| engine/CTCInventoryItem.h | `FABLE_RETAIL_CTCINVENTORYITEM_STARTINGRIGHTHANDEDSET` | static `__fastcall` GetStartingRightHandedSet(long) 0x005D9730 (Ego_r.pdb ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z) |
+
+Both are HEAD's file plus one added `#ifdef` block. The other hand883 opt-ins already exist in HEAD under new names, and the row now uses those names: UIDETAILS became CTCINVENTORYITEM_DETAILS + _ENGINEGRAPHIC + _STATICENGINEGRAPHIC (with CENGINEGRAPHIC_CTOR).
