@@ -106,6 +106,13 @@ class CIVCountedPointeeBase;
 #pragma pack(push, 1)
 class C3DAnimationInfo {
 public:
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_LOADING
+    // Retail opt-in (agentNF9, the CThingCreatureBase preload rows 0x00663140 / 0x006631C0 / 0x00663610): Ego_r.pdb / FableWin.pdb
+    // ?TouchAnimation@C3DAnimationInfo@@QBEXXZ (out of line at 0x00A26A50) and ?BeginLoading@C3DAnimationInfo@@QBEX_N@Z (0x00A26730),
+    // public const, as the retail model above declares them. Declarations only, in the generated layout: no layout change.
+    void TouchAnimation() const;                                         // 0x00A26A50
+    void BeginLoading(bool) const;                                       // 0x00A26730
+#endif
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     unsigned char          _pad_0x08[0x4];                   // +0x08

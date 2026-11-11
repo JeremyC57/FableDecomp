@@ -24,7 +24,13 @@ class CCharString; class CRGBColour;
 class CCharString; class CRightHandedSet;
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETMAINGRAPHIC
+// agentNF9: with the SETMAINGRAPHIC opt-in the members use the shared engine/CEngineGraphic.h (same 14-byte packed layout) instead of
+// the quarantine header's copy, so a row can include both this header and a def header that embeds CEngineGraphic.
+#include "engine/CEngineGraphic.h"
+#else
 #define FABLE_RETAIL_CENGINEGRAPHIC
+#endif
 #include "engine/_quarantine/CTCGraphicAppearance.h"
 #include "engine/CRGBColour.h"
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
@@ -71,6 +77,16 @@ protected:
 public:
  const CEngineGraphic& GetMainGraphic()const{return MainGraphic;}
  float GetScale()const{return Scale;}
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETMAINGRAPHIC
+ // Nested opt-in (agentNF9, row 0x0082D6F0 CThingBuilding::OnCreate): Ego_r.pdb / FableWin.pdb
+ // ?SetMainGraphic@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEngineGraphic@@@Z, inline in retail (the 14-byte copy into +0x44,
+ // `lea eax,[ebx+44h]` then three dwords and a word, 0x0082D72A), and ?SetScale@..@@QAEXM@Z (out of line at 0x004BFA50; declared
+ // here unless FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SCALE already does). No layout change.
+ void SetMainGraphic(const CEngineGraphic& graphic){MainGraphic=graphic;}
+#ifndef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SCALE
+ void SetScale(float scale);                                // 0x004BFA50
+#endif
+#endif
 #endif
 public:
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL

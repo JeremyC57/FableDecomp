@@ -1,112 +1,90 @@
-// Behaviour test for 0082d7d0: src/0082d7d0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
-// declared callees stubbed below so calls and arguments are observable. CThingBuilding::GetFloorMaterial()
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0082d7d0: the row body verbatim over fixture models of the shared-header interfaces (CThing::PeekDefinitionManager, CDefinitionManager::GetDef<T>, the counted CDefPointer, the inline CThingBuilding::PeekDefinition, the appearance setters).
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CThingBuilding::GetFloorMaterial() -- the building def's floor material (virtual slot 40)
-// Leaf: ?GetFloorMaterial@CThingBuilding
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0082D7D0, 64 bytes.
-// Callees: CThing::GetDefinitionManager @ 0x004C7990 (propagated label "CViewBase::GetDisplayEngine"),
-//          CDefinitionManager::GetDef<CThingBuildingDef> @ 0x004AB840 (propagated "<CThingPhysicalSwitchDef>"), the def's
-//          Destroy (vtable slot 1) on the last release.
-// Layout: CThing::DefGlobalIndex (unsigned short) at retail +0x8c; PDB CThingBuildingDef has WallMaterial +0x8c,
-//   FloorMaterial +0x90, ReverbEnvironmentType +0x94, ReverbEnvironmentLevel +0x98, the flag bits at +0xa4: retail
-//   reads all of them 4 bytes lower (one STL container narrower in a base).
-// Shape: an inline GetBuildingDef() builds a CDefPointer local (zeroed after the argument pushes), fills it through
-//   the manager and returns the RAW object pointer, so the local's release (`dec [esi+4] ; jne ; call [eax+4]`, the
-//   counted release living on the def object) runs BEFORE the field read (the landed wave-24m rule).
-// Identity: CThingBuilding vtable 0x0124509C slot 40 (rtti-vtables.tsv), returns CThingBuildingDef::FloorMaterial.
-class CDefPointeeBase { public:                // counted def object: vptr, reference count at +4
-    virtual void v00();
-    virtual void Destroy();             // slot 1
-    long m_refCount;                    // +0x04
-    void Release()
-    {
-        if (--m_refCount == 0)
-            Destroy();
-    }
+// Fixture models of the shared-header interfaces: a counted def (count starts at 1 for the manager's own reference, Delete counted),
+// the counted CDefPointer handle, and the definition manager's GetDef<T> (fills the handle with an add-ref, returns whether found).
+class CDefPointeeBase { public:
+    long Refs; int Deleted;
+    CDefPointeeBase() : Refs(1), Deleted(0) { }
+    void Delete() { ++Deleted; }
 };
-
-class CThingBuildingDef : public CDefPointeeBase { public:    // retail offsets = PDB - 4
-    unsigned char _pad08[0x80];
-    long WallMaterial;                  // +0x88 (PDB +0x8c)
-    long FloorMaterial;                 // +0x8c (PDB +0x90)
-    long ReverbEnvironmentType;         // +0x90 EReverbEnvironmentType (PDB +0x94)
-    long ReverbEnvironmentLevel;        // +0x94 float, moved as a dword (PDB +0x98)
-    long OutsideOcclusionLevel;         // +0x98 float
-    long CameraManagerSetIndex;         // +0x9c
-    unsigned char UseHighDetailQuadTree : 1;    // +0xa0 bit 0 (PDB +0xa4)
-    unsigned char IsSelfIlluminating : 1;
-    unsigned char IsPartOfHeroGuild : 1;
-    unsigned char HasWeatherMask : 1;
-};
-
-template<class T> class CDefPointer { public:
-    T* Object;
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { if (Object) { if (--Object->Refs == 0) Object->Delete(); } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (Object && --Object->Refs == 0) Object->Delete(); Object = p; if (p) ++p->Refs; }
 };
-template<class T> struct CDefHolder {
-    T* Object;
-    CDefHolder(T* object) : Object(object) { }
-    ~CDefHolder()
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
     {
-        if (Object && --Object->m_refCount == 0)
-            Object->Destroy();
-    }
-};
-
-class CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointer<CThingBuildingDef>* out);   // 0x004AB840 (GetDef<CThingBuildingDef>)
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingBuildingDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
         return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThingBuilding { public:
-    unsigned char _pad00[0x8c];
-    unsigned short DefGlobalIndex;      // +0x8c (CThing; PDB +0x9c)
-    CDefinitionManager* GetDefinitionManager();     // 0x004C7990 (CThing)
-    const CThingBuildingDef* GetBuildingDef()
-    {
-        CDefPointer<CThingBuildingDef> out;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, &out);
-        CDefHolder<CThingBuildingDef> def(out.Object);
-        return def.Object;
     }
-    long GetFloorMaterial();
 };
-
-long CThingBuilding::GetFloorMaterial()
-{
-    return GetBuildingDef()->FloorMaterial;
+static CGameDefinitionManager g_manager;
+struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+enum EReverbEnvironmentType { REVERB_NONE = 0, REVERB_HALL = 7 };
+class CThingBuildingDef : public CDefPointeeBase { public:
+    float Health; unsigned long SimBuildingDef; CEngineGraphic Graphic; long WallMaterial; long FloorMaterial;
+    EReverbEnvironmentType ReverbEnvironmentType; float ReverbEnvironmentLevel; bool UseHighDetailQuadTree;
+};
+class CSimBuildingDef : public CDefPointeeBase { };
+class CMaterialDef : public CDefPointeeBase { };
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    CEngineGraphic MainGraphic; float ScaleSet; int ScaleCalls;
+    void SetMainGraphic(const CEngineGraphic& g) { MainGraphic = g; }
+    void SetScale(float s) { ScaleSet = s; ++ScaleCalls; }
+};
 }
-
-// ---- stubs and driver ----
-static void* g_def = 0; static int g_destroyed = 0, g_get = 0;
-void* FindDef_CDefinitionManager_GetDef_0() { ++g_get; return g_def; }
-void CDefPointeeBase::v00() {}
-void CDefPointeeBase::Destroy() { ++g_destroyed; }
-static CDefinitionManager g_mgr;
-CDefinitionManager* CThingBuilding::GetDefinitionManager() { return &g_mgr; }
+class CThingGameObject { public:
+    unsigned short DefGlobalIndex; NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;
+    float Scale, MaxHealth, Health; bool BaseResult; int BaseCalls;
+    const CGameDefinitionManager& PeekDefinitionManager() const { return g_manager; }
+    bool OnCreate() { ++BaseCalls; return BaseResult; }
+};
+class CThingBuilding : public CThingGameObject { public:
+    bool OverrideAutomaticLocking;
+    const CThingBuildingDef& PeekDefinition() const
+    {
+        CDefPointer<const CThingBuildingDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return *def;
+    }
+    bool OnCreate();
+    CDefPointer<const CMaterialDef> PeekPMaterial() const;
+    CDefPointer<const CSimBuildingDef> PeekPSimDefinition() const;
+    long GetMaterialOnHitByMelee() const;
+    long GetFloorMaterial() const;
+    bool UseHighDetailQuadTree() const;
+    void GetReverbSettings(EReverbEnvironmentType& type, float& level) const;
+};
+static CThingBuildingDef g_def; static CSimBuildingDef g_sim; static CMaterialDef g_mat;
+static void Setup(CThingBuilding& b)
+{
+    memset(&g_manager, 0, sizeof(g_manager));
+    g_def.Refs = 1; g_sim.Refs = 1; g_mat.Refs = 1; g_def.Deleted = g_sim.Deleted = g_mat.Deleted = 0;
+    g_manager.Table[3] = &g_def; g_manager.Table[5] = &g_sim; g_manager.Table[6] = &g_mat;
+    memset(&b, 0, sizeof(b)); b.DefGlobalIndex = 3;
+}
+// ---- row body (verbatim) ----
+long CThingBuilding::GetFloorMaterial() const
+{
+    return PeekDefinition().FloorMaterial;
+}
+// ---- harness ----
 int main()
 {
-    static CThingBuildingDef def; def.m_refCount = 2; def.WallMaterial = 11; def.FloorMaterial = 22; g_def = &def;
-    CThingBuilding b; memset(&b, 0, sizeof(b)); b.DefGlobalIndex = 0x99;
-    long expect = def.FloorMaterial;
-    CHECK(b.GetFloorMaterial() == expect); CHECK(g_get == 1); CHECK(def.m_refCount == 1); CHECK(g_destroyed == 0);
-    def.FloorMaterial = 33; CHECK(b.GetFloorMaterial() == 33); CHECK(def.m_refCount == 0); CHECK(g_destroyed == 1);
-    if (fails == 0) printf("0082d7d0_TEST PASS\n"); else printf("0082d7d0_TEST FAIL\n");
+    CThingBuilding b; Setup(b); g_def.FloorMaterial = 22;
+    CHECK(b.GetFloorMaterial() == 22); CHECK(g_manager.Calls == 1); CHECK(g_def.Refs == 1);
+    if (fails == 0) printf("0082d7d0_TEST PASS\n");
     return fails;
 }

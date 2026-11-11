@@ -1,56 +1,54 @@
-// CThingHolySite::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, bool playerStart) -- base CThingGameObject construction with an empty script name; on success fetches the holy-site def by index and records PlayerStart
-// Leaf: ?ConstructFromParams@CThingHolySite
+// CThingHolySite::ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, bool playerStart) -- base CThingGameObject construction with an empty script name; on success fetches the holy-site def by index and records PlayerStart
+// Leaf: ?ConstructFromParams@CThingHolySite@@IAE_NJABVC3DVector@@J_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083BAB0, length 131 bytes (`ret 10h`, + int3 padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E), CThingGameObject::ConstructFromParams @ 0x008388D0
-// (landed; eight arguments), CCharString::~CCharString @ 0x0099EAE0, CThing::GetDefinitionManager() @ 0x004C7990,
-// CDefinitionManager::GetDef<CThingHolySiteDef> @ 0x0083BD10 (manifest label names a propagated CThingPhysicalSwitchDef instantiation).
-// Layout: as the landed sibling CThingHolySite::ConstructFromLevelScript 0x0083BBA0: CThing def index word at +0x8c, Def
-// (CDefPointer<const CThingHolySiteDef>) at retail +0xd0 (PDB +0xe8), PlayerStart byte at retail +0xd4 (PDB +0xec).
-// Shape: the empty name is a named CCharString local in its own block (`lea eax ; push eax`) whose call result goes to a
-// bool local (bl) tested after the dtor; base arguments a4 = 1, creators 0, final flag true; `playerStart != 0` gives
-// `test al,al ; setne al`.
-class C3DVector;
-struct CThingPhysicalArg;
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-class CThingHolySiteDef { public:
-    unsigned char _pad00[0x7e];
-    unsigned char PlayerStart;                         // +0x7e
-};
-struct CDefPointerHolySiteDef {
-    CThingHolySiteDef* m_pDef;
-    CThingHolySiteDef* operator->() const { return m_pDef; }
-};
-class CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointerHolySiteDef& out);   // 0x0083BD10
-};
-class CThingGameObject { public:
-    virtual void v00();
-    unsigned char  _pad04[0x88];
-    unsigned short m_defIndex;                         // +0x8c
-    unsigned char  _pad8e[0x42];
-    CDefinitionManager* GetDefinitionManager();        // 0x004C7990
-    bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName,
-                             CThingPhysicalArg* creator, CThingPhysicalArg* originalCreator, bool a8);   // 0x008388D0
-};
-class CThingHolySite : public CThingGameObject { public:
-    CDefPointerHolySiteDef Def;                        // +0xd0
-    unsigned char          PlayerStart;                // +0xd4
-    bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, bool playerStart);
-};
+// Identity: Ego_r.pdb / FableWin.pdb ?ConstructFromParams@CThingHolySite@@IAE_NJABVC3DVector@@J_N@Z (protected; Create pushes the bool,
+//   player, position and def index).
+// Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 ("" 0x0122D70E), CThingGameObject::ConstructFromParams 0x008388D0
+//   (eight arguments), CCharString::~CCharString 0x0099EAE0, CThing::PeekDefinitionManager 0x004C7990,
+//   CDefinitionManager::GetDef<CThingHolySiteDef> 0x0083BD10.
+// Layout: CThing DefGlobalIndex +0x8C; CThingHolySite Def (CDefPointer<const CThingHolySiteDef>) +0xD0 (Ego_r +0xE8), PlayerStart +0xD4.
+// Shape: the empty name is a named CCharString local in its own block whose call result goes to a bool local (bl) tested after the
+//   dtor; base arguments flags = 1, creators 0, final flag true; `playerStart != 0` gives `test al,al ; setne al`.
+// Name fix (agentNF9 2026-11-11): moved off the local CThingGameObject / CThingHolySite / CDefinitionManager models onto the shared
+//   headers; 0x004C7990 binds ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ, 0x0083BD10
+//   ??$GetDef@VCThingHolySiteDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingHolySiteDef@@@@@Z (was
+//   ?GetDef@CDefinitionManager@@QAE_NJAAUCDefPointerHolySiteDef@@@Z), 0x008388D0 the PDB
+//   ?ConstructFromParams@CThingGameObject@@IAE_NJABVC3DVector@@JKABVCCharString@@PAVCThingPhysical@@2_N@Z; the row's own symbol is the
+//   PDB's protected `const C3DVector&` form (was ?ConstructFromParams@CThingHolySite@@QAE_NJPBVC3DVector@@J_N@Z).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CTHINGHOLYSITE_DEFINITION
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHINGGAMEOBJECT_LEVELSCRIPT
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingHolySite.h"
 
-bool CThingHolySite::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, bool playerStart)
+bool CThingHolySite::ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, bool playerStart)
 {
     bool ok;
     {
         CCharString name("");
-        ok = CThingGameObject::ConstructFromParams(defIndex, pos, a3, 1, name, 0, 0, true);
+        ok = CThingGameObject::ConstructFromParams(defIndex, position, playerNumber, 1, name, 0, 0, true);
     }
     if (ok) {
-        GetDefinitionManager()->GetDef(m_defIndex, Def);
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &Def);
         PlayerStart = playerStart != 0;
         return true;
     }

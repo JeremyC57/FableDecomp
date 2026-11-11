@@ -31,6 +31,13 @@ class CMessageEvent;                                                     // chun
 #endif
 class CThingAICreature : public CThingCreatureBase {
 public:
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_ANIMEXISTS
+    // Retail opt-in (agentNF9, row 0x00830F20): Ego_r.pdb / FableWin.pdb ?AnimExists@CThingAICreature@@MBE_NABVCCharString@@_N@Z (protected
+    // const virtual, the override of CThingCreatureBase's slot 73: CThingAICreature vtable 0x0127293C slot 73 = 0x00830F20). Declaration only.
+protected:
+    virtual bool AnimExists(const CCharString& name, bool useModeFilterOnly) const;   // 0x00830F20
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_DRAINED
     void SuspendAI(bool suspend,void* suspender);
     void ForceAIReset();

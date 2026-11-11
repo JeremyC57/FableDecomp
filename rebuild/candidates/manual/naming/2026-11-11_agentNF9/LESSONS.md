@@ -1,0 +1,9 @@
+- With the class's def handle typed `CDefPointer<const XDef>` and GETDEF_GLOBAL_BODY / GETSUBDEF_BODY on, plain member C++ matched 27 of 28 CThing rows on the first grade (no stand-in bodies, holders or hand releases).
+- An inline `PeekDefinition() const { CDefPointer<const T> def; PeekDefinitionManager().GetDef(DefGlobalIndex,&def); return *def; }` in the shared header reproduces retail's release-before-read exactly.
+- PeekDefinition is out of line in retail for some classes (CThingDeadCreature 0x00835B90, CThingPhysicalSwitch 0x0083D900, CThingSwitch 0x0083C1E0) and expanded for others (CThingBuilding, CThingObject, CThingMarker, CThingVillage): check for an out-of-line copy before writing it inline.
+- All GetDef<T> bodies are byte-identical (98 bytes), so catalog labels on them mean nothing; FableWin.pdb's per-TU COMDAT run, matched against retail's COMDAT run, proves T.
+- A uchar member assigned from a bool def field needs `!= 0` to get retail's `test al,al ; setne` (CThingHolySite PlayerStart).
+- `const CCharString&` passed straight through has the same bytes as a `long` argument; the PDB signature decides (PreloadAnimation).
+- Def classes after CThingBaseDef sit at Ego_r offset - 4; their sizeof asserts need FABLE_RETAIL_CTHINGBASEDEF (the opaque base is 1-aligned).
+- A const PDB getter that caches into a member needs that member `mutable` (CThingVillage::CurrentGraphic); no layout or mangling effect.
+- A fixed binder can surface RELOC_CONFLICT on another landed row that binds the same wrong spelling (0x0072F170): list it in NAME_FIXES.

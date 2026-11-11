@@ -1,102 +1,62 @@
-// CThingBuilding::OnCreate() -- hands the def's graphic record and the building's scale to the graphic appearance component, clears its +0xD4 bit 0, runs the game-object creation and, when that succeeds, seeds health and maximum health from the def
-// Leaf: OnCreate
+// CThingBuilding::OnCreate() -- gives the graphic appearance the def's graphic and the building's scale, clears OverrideAutomaticLocking, runs the game-object creation and, when that succeeds, seeds health and maximum health from the def
+// Leaf: ?OnCreate@CThingBuilding@@MAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082D6F0, 218 bytes (+6 int3). `ret`, bool in al. CThingBuilding vtable 0x0124509C slot 8 (+0x20).
-//         Catalog name CThingBuilding::vfunc_8 (CThing::OnCreate 0x004C9560 is slot 8).
-// Callees: CThing::GetDefinitionManager() const 0x004C7990, CDefinitionManager::GetDef(long, CDefPointer<const CThingBuildingDef>*)
-//          0x004AB840 (x2; manifest "GetDef<CThingPhysicalSwitchDef>" propagated), CDefClassBase virtual slot 1 (Delete), CTCGraphic
-//          Appearance::SetScale(float) 0x004BFA50, CThingGameObject::OnCreate() 0x00838A40.
-// Shape: the appearance pointer is loaded into ebx before the first PeekPDef (inlined: zeroed holder, GetDef, release, raw read);
-//        the 14-byte graphic record is copied as three dwords and a word through `add edi,78h`; the def's max health is read
-//        after the second PeekPDef and stored to Health then MaxHealth (`fst` / `fstp`, `MaxHealth = Health = ...`); the
-//        success path is the `if (OnCreateGameObject()) { ... }` block so the false return is laid out last.
-//        GetDef gets a same-TU `auto_inline(off)` stand-in body that writes only the out slot: VC7.1 then knows the holder
-//        does not escape and keeps the def in edi from the call through the release to the member reads, as retail.
-// Layout: CThing PTCGraphicAppearance +0x64, DefGlobalIndex +0x8C; CThingPhysical Scale +0x9C, MaxHealth +0xB0, Health +0xB4
-//         (Ego_r.pdb +0xC8/+0xCC); the +0xD4 flag byte (descriptive); CTCGraphicAppearance::Graphic +0x44; CThingBuildingDef
-//         MaxHealth +0x50 and Graphic +0x78 (PDB +0x7C, def classes pack to 1).
-#include "fable_compiler.h"
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Delete();                           // slot 1 (+0x04)
-    long RefCount;                                   // +0x04
-};
-#pragma pack(push, 1)
-class CEngineGraphic { public:                              // 14 bytes
-    long  Bank;
-    long  Index;
-    long  Flags;
-    short Lod;
-};
-class CThingBuildingDef : public CDefClassBase { public:
-    unsigned char  _pad08[0x50 - 0x08];
-    float          MaxHealth;                        // +0x50 (CThingPhysicalDef)
-    unsigned char  _pad54[0x78 - 0x54];
-    CEngineGraphic Graphic;                          // +0x78
-};
-#pragma pack(pop)
-struct CDefPointer {                                 // CDefPointer<const CThingBuildingDef>
-    CThingBuildingDef* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        CDefClassBase* old = Object;                  // released through the unpacked base (the def classes pack to 1)
-        if (old) {
-            if (--old->RefCount == 0)
-                old->Delete();
-        }
-    }
-};
-class CDefinitionManager { public:
-    bool GetDef_004ab840(long index, CDefPointer* out);       // 0x004AB840
-};
-void* FindDef_CDefinitionManager_GetDef(long index);   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef_004ab840(long index, CDefPointer* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef(index);
-    if (!def)
-        return false;
-    out->Object = (CThingBuildingDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-struct CTCGraphicAppearance {
-    unsigned char  _pad00[0x44];
-    CEngineGraphic Graphic;                          // +0x44
-    void SetScale(float scale);                      // 0x004BFA50
-};
-class CThingBuilding { public:
-    unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
-    unsigned char         _pad68[0x8c - 0x68];
-    unsigned short        DefGlobalIndex;            // +0x8c
-    unsigned char         _pad8e[0x9c - 0x8e];
-    float                 Scale;                     // +0x9c
-    unsigned char         _pada0[0xb0 - 0xa0];
-    float                 MaxHealth;                 // +0xb0
-    float                 Health;                    // +0xb4
-    unsigned char         _padb8[0xd4 - 0xb8];
-    unsigned char         m_flagD4 : 1;              // +0xd4 bit 0 (descriptive)
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    FABLE_FORCEINLINE const CThingBuildingDef* PeekPDef() const
-    {
-        CDefPointer def;
-        GetDefinitionManager()->GetDef_004ab840(DefGlobalIndex, &def);
-        return def.Object;
-    }
-    bool OnCreateGameObject();                       // 0x00838A40 CThingGameObject::OnCreate (called non-virtually)
-    bool OnCreate();
-};
+// Identity: Ego_r.pdb ?OnCreate@CThingBuilding@@MAE_NXZ (protected virtual; CThing::OnCreate 0x004C9560 is slot 8), donor order
+//   GetMaterialOnHitByMelee / OnCreate / GetFloorMaterial = retail 0x0082D6B0 / 0x0082D6F0 / 0x0082D7D0.
+// Callees: CThing::PeekDefinitionManager 0x004C7990 (x2), CDefinitionManager::GetDef<CThingBuildingDef> 0x004AB840 (x2), CDefClassBase
+//   virtual slot 1 (Delete), NGraphicAppearance::CTCGraphicAppearance::SetScale(float) 0x004BFA50, CThingGameObject::OnCreate() 0x00838A40.
+// Shape: the appearance pointer is loaded into ebx before the first PeekDefinition (inline: zeroed holder, GetDef, release, raw read);
+//   the inline SetMainGraphic copies the 14-byte graphic record as three dwords and a word through `add edi,78h`; the def's Health is
+//   read after the second PeekDefinition and stored to Health then MaxHealth (`fst` / `fstp`, `MaxHealth = Health = ...`); the
+//   success path is the `if (CThingGameObject::OnCreate()) { ... }` block so the false return is laid out last.
+// Layout: CThing PTCGraphicAppearance +0x64, DefGlobalIndex +0x8C; CThingPhysical Scale +0x9C, MaxHealth +0xB0, Health +0xB4;
+//   CThingBuilding::OverrideAutomaticLocking bit 0 of +0xD4 (Ego_r bool:1); CTCGraphicAppearance::MainGraphic +0x44; CThingBaseDef
+//   Health +0x50 and CThingBuildingDef Graphic +0x78 (Ego_r +0x7C).
+// Name fix (agentNF9 2026-11-11): moved off the local models (a same-TU stand-in GetDef_004ab840 body, a padded CThingBuilding with a
+//   descriptive m_flagD4) onto the shared headers; 0x004C7990 binds ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ,
+//   0x004AB840 ??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z, 0x004BFA50
+//   ?SetScale@CTCGraphicAppearance@NGraphicAppearance@@QAEXM@Z, 0x00838A40 ?OnCreate@CThingGameObject@@MAE_NXZ (were
+//   ?GetDefinitionManager@CThingBuilding@@QBEPAVCDefinitionManager@@XZ, ?GetDef_004ab840@..., ?SetScale@CTCGraphicAppearance@@QAEXM@Z,
+//   ?OnCreateGameObject@CThingBuilding@@QAE_NXZ); the row's own symbol is the protected virtual (was public non-virtual QAE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CTHINGBUILDING
+#define FABLE_RETAIL_CTHINGBUILDINGDEF
+#define FABLE_RETAIL_CTHINGBUILDING_DEFINITION
+#define FABLE_RETAIL_CTHINGBUILDING_PEEKSIMDEF
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHINGGAMEOBJECT_ONCREATE
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETMAINGRAPHIC
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingBuilding.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+
 bool CThingBuilding::OnCreate()
 {
-    CTCGraphicAppearance* appearance = PTCGraphicAppearance;
-    appearance->Graphic = PeekPDef()->Graphic;
+    NGraphicAppearance::CTCGraphicAppearance* appearance = PTCGraphicAppearance;
+    appearance->SetMainGraphic(PeekDefinition().Graphic);
     appearance->SetScale(Scale);
-    m_flagD4 = false;
-    if (OnCreateGameObject()) {
-        MaxHealth = Health = PeekPDef()->MaxHealth;
+    OverrideAutomaticLocking = false;
+    if (CThingGameObject::OnCreate()) {
+        MaxHealth = Health = PeekDefinition().Health;
         return true;
     }
     return false;

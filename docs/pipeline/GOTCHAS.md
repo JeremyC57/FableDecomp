@@ -2744,3 +2744,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (agentNF8, 2026-11-11) Retail re-reads ParentThing before a second GetDefGlobalIndex call; a `CThing* thing = ParentThing;` local reproduces it (007ee370, DIFFER 84v86 -> match).
 - (agentNF8, 2026-11-11) Including CDefString.h without FABLE_RETAIL_CDEFSTRINGTABLE trips an #error that shows up as a cl hang/timeout on the Wine lane; define it first.
 - (agentNF8, 2026-11-11) CThingSwitch-style "return a CDefPointer" rows need engine/CThingBaseDef.h included; otherwise static_cast to an incomplete CDefClassBase fails.
+- (agentNF9, 2026-11-11) With the class's def handle typed `CDefPointer<const XDef>` and GETDEF_GLOBAL_BODY / GETSUBDEF_BODY on, plain member C++ matched 27 of 28 CThing rows on the first grade (no stand-in bodies, holders or hand releases).
+- (agentNF9, 2026-11-11) An inline `PeekDefinition() const { CDefPointer<const T> def; PeekDefinitionManager().GetDef(DefGlobalIndex,&def); return *def; }` in the shared header reproduces retail's release-before-read exactly.
+- (agentNF9, 2026-11-11) PeekDefinition is out of line in retail for some classes (CThingDeadCreature 0x00835B90, CThingPhysicalSwitch 0x0083D900, CThingSwitch 0x0083C1E0) and expanded for others (CThingBuilding, CThingObject, CThingMarker, CThingVillage): check for an out-of-line copy before writing it inline.
+- (agentNF9, 2026-11-11) All GetDef<T> bodies are byte-identical (98 bytes), so catalog labels on them mean nothing; FableWin.pdb's per-TU COMDAT run, matched against retail's COMDAT run, proves T.
+- (agentNF9, 2026-11-11) A uchar member assigned from a bool def field needs `!= 0` to get retail's `test al,al ; setne` (CThingHolySite PlayerStart).

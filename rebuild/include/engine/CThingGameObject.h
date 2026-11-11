@@ -21,6 +21,13 @@ public:
     CThingGameObject(unsigned long type) : CThingPhysical(type) { }
 #endif
     virtual void OnHit(CHitParameters&);
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONCREATE
+    // Retail opt-in (agentNF9, row 0x0082D6F0 CThingBuilding::OnCreate, which calls it by name): Ego_r.pdb / FableWin.pdb
+    // ?OnCreate@CThingGameObject@@MAE_NXZ (protected virtual, CThingGameObject vtable 0x01244F7C slot 8 = 0x00838A40). Declaration only.
+protected:
+    virtual bool OnCreate();                                             // 0x00838A40
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_STATTYPEFLAGS
     // Chunk 1010 (row 0x008930F0, via the CThingSearchTools GetPFirstThing body): FableWin.pdb ?StatGetTypeFlags@CThingGameObject@@SIKXZ
     // (static fastcall, inline in retail: the landed GetPFirstThing<..,CThingGameObject> 0x008ABDF0 tests the +0x6C flags against 7).

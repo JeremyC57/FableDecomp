@@ -55,6 +55,12 @@ public:
     // Chunk 724 round 3 (row 0x008771A0): Ego_r.pdb ?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ,
     // out of line at retail 0x006A5AB0 (catalog name; `mov ecx,edi ; call` in CTools::GetThingPointIntersectionFromTo).
     bool IsThingAbleToComeBetweenCameraAndObservedThing() const;   // 0x006A5AB0
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_SERIALISE
+    // Retail opt-in (agentNF9, row 0x007030C0 CThingObject::SerialiseGameState, which calls it by name): Ego_r.pdb / FableWin.pdb
+    // ?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z (public virtual, CThingPhysical vtable 0x01244E84 slot 3 =
+    // 0x006A5AF0). Declaration only (CPersistContext forward-declared).
+    virtual bool SerialiseGameState(class CPersistContext& context);   // 0x006A5AF0
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_LEVELSCRIPT
     // Nested opt-in (chunk 771, row 0x006A5D90): Ego_r.pdb ?ConstructFromLevelScript@CThingPhysical@@UAE_NPBD@Z (public virtual
     // override of CThing's, FABLE_RETAIL_CTHING_LEVELSCRIPT; vtable entry 0x00E44E94 file offset). A declaration only.

@@ -9,6 +9,13 @@
 // caller-size penalty ((sz/2)*N/9000, N = tuples so far) gives no single N that splits retail's set (probe/inl traces, WORKLOG S4);
 // and FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR: the CCountedPointer(T*) body visible but __declspec(noinline) (retail calls
 // 0x00429C15 / 0x0042AA29 / 0x0041C030 at every site; a declaration-only ctor exposes the object, frame 0x808 v 0x800).
+// Name fix (agentNF9 2026-11-11): the def lookups bind the instantiations retail calls: the UI_ACTION_TYPE_AUGMENT weapon def (0x0041E880)
+//   and the augmentation-slot def (0x004248BD) call 0x0042AF3C = GetDef<CThingBaseDef>, the UI_ACTION_LOAD_WEAPON_DESC def (0x00423647)
+//   calls 0x0042B144 = ??$GetDef@VCDefClassBase@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (the landed text had the
+//   two types swapped). Evidence: FableWin.pdb keeps this TU's COMDAT run in source order (GetDef<CThingBaseDef>, GetSubDef<CObjectAugmentationsDef>,
+//   .., GetDef<CThingObjectDef>, GetSubDef<CAppearanceDef>, the CViewport cast of LOAD_WEAPON_DESC, GetDef<CDefClassBase>, GetSubDef<CWeaponDef>,
+//   .., GetSubDef<CAugmentationDef>), the same order as retail 0x0042AF3C / 0x0042AF9E / 0x0042B040 / 0x0042B0A2 / 0x0042B144 / 0x0042B1A6 /
+//   0x0042B248; 0x0042B144 has no other caller in Fable.exe.
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
@@ -608,7 +615,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
             action->UIActionParams.size() > 0 && UIActionParams.size() > 0) {
             bool augmented = false;
             if (CTCInventoryItem::IsAugmentation(action->ThingActionParams.back())) {
-                CDefPointer<const CDefClassBase> weaponDef;
+                CDefPointer<const CThingBaseDef> weaponDef;
                 CDefPointer<const CObjectAugmentationsDef> augmentationsDef;
                 if (CGameDefinitionManager::Get().GetDef(ThingActionParams.back(), &weaponDef) &&
                     weaponDef->GetSubDef(&augmentationsDef)) {
@@ -2165,7 +2172,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 } else {
                     container.Reset(CreateComponent("UI_TEXT_CONTAINER_DESCRIPTION_TEMPLATE_ONE_OFF", false));
                 }
-                CDefPointer<const CThingBaseDef> def;
+                CDefPointer<const CDefClassBase> def;
                 CGameDefinitionManager::Get().GetDef(weapon, &def);
                 CDefPointer<const CWeaponDef> weaponDef;
                 def->GetSubDef(&weaponDef);
@@ -2460,7 +2467,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
 #pragma inline_depth(0) // inline budget: retail 0x0042488D calls vector::operator[] out of line
                         if (slots[i] > 0) {
 #pragma inline_depth()
-                            CDefPointer<const CDefClassBase> augmentationDef;
+                            CDefPointer<const CThingBaseDef> augmentationDef;
 #pragma inline_depth(0) // inline budget: retail 0x004248A8 calls vector::operator[] out of line
                             if (CGameDefinitionManager::Get().GetDef(slots[i], &augmentationDef)) {
 #pragma inline_depth()

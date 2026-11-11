@@ -33,6 +33,11 @@ public:
     unsigned long GetAnimateThingFlags() const;                // 0x005DC390
     long GetTransitionTime() const;                            // 0x005DC1D0
 #endif
+#ifdef FABLE_RETAIL_CANIMATIONENTRY_GETFLAGS
+    // Retail opt-in (agentNF9, row 0x00663140 CThingCreatureBase::PreloadAnims): Ego_r.pdb / FableWin.pdb ?GetFlags@CAnimationEntry@@QBEJXZ
+    // (public const, out of line at 0x005DC210; the row tests `& 4` on its result). Declaration only.
+    long GetFlags() const;                                     // 0x005DC210
+#endif
     long                                   BankIndex;     // +0x00
     CDefString                             AnimName;      // +0x04
     CDefString                             GroupName;     // +0x08

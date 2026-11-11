@@ -12,6 +12,14 @@ protected:
     bool StartedDecay; // +e8, ctor835c73
     unsigned char _pad_0xe9[7];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_PEEKDEFINITION
+    // Retail opt-in (agentNF9, row 0x00835B90): Ego_r.pdb ?PeekDefinition@CThingDeadCreature@@IBEABVCThingCreatureDef@@XZ (protected
+    // const, returns a reference), out of line in retail at 0x00835B90 (called by OnCreate 0x00835FD0 and WorldUpdate 0x00836260).
+    // Declaration only (CThingCreatureDef forward-declared).
+protected:
+    const class CThingCreatureDef& PeekDefinition() const;               // 0x00835B90
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingDeadCreature)==0xf0);
 #endif

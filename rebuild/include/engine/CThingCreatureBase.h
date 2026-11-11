@@ -172,6 +172,23 @@ public:
     // called by name from the CThingAICreature override. Declaration only: no layout change.
     virtual bool ConstructFromLevelScript(const char* script);          // 0x00662930
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMEXISTS
+    // Retail opt-in (agentNF9, row 0x00662CC0): Ego_r.pdb / FableWin.pdb ?AnimExists@CThingCreatureBase@@UBE_NABVCCharString@@_N@Z
+    // (public const virtual, vtable slot 73; CThingAICreature overrides it at 0x00830F20). Declaration only: no layout change.
+    virtual bool AnimExists(const CCharString& name, bool useModeFilterOnly) const;   // 0x00662CC0
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CONSTRUCT
+    // Retail opt-in (agentNF9, rows 0x00662880 / 0x006628E0): Ego_r.pdb / FableWin.pdb
+    // ?ConstructFromParams@CThingCreatureBase@@IAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z (protected, 0x00662880; it
+    // forwards to CThingGameObject's eight-argument form) and ?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z (public
+    // virtual, CThingCreatureBase vtable slot 3 = 0x006628E0; Ego_r donor order ConstructFromParams / SerialiseGameState /
+    // ConstructFromLevelScript = retail 0x00662880 / 0x006628E0 / 0x00662930). Declarations only: no layout change.
+protected:
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, CThingPhysical* creator,
+                             CThingPhysical* originalCreator, const CCharString& scriptName, bool flag);   // 0x00662880
+public:
+    virtual bool SerialiseGameState(class CPersistContext& context);    // 0x006628E0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMATION
     // Retail opt-in (chunk 796, row 0x008E9B70 NCreatureMode::CModeStrafe::AnimUpdate): Ego_r.pdb
     // ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (const, returns a reference; out of line in retail at

@@ -23,6 +23,12 @@ public:
     bool AnimExists(const CCharString&,const CAnimFilterBase&)const;
 #endif
     const CAnimationEntry& GetAnim(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
+#ifdef FABLE_RETAIL_CANIMATIONSET_GETNOANIMS
+    // Retail opt-in (agentNF9, rows 0x006631C0 / 0x00663610): Ego_r.pdb / FableWin.pdb
+    // ?GetNoAnims@CAnimationSet@@QBEJABVCCharString@@ABVCAnimFilterBase@@@Z (public const, out of line at 0x005DC290: Ego_r donor order
+    // GetNoAnims / AnimExists / GetAnim = 0x0063BC30 / 0x0063BCC0 / 0x0063BD40, retail GetAnim is 0x005DC340). Declaration only.
+    long GetNoAnims(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x005DC290
+#endif
 #ifdef FABLE_RETAIL_CANIMATIONSET_QUERIES
     // Retail opt-in (agentNF8, rows 0x00662C10 / 0x00662FA0): Ego_r.pdb
     // ?GetAnimsWithNameStartingWith@CAnimationSet@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@..@std@@ABVCAnimFilterBase@@@Z (0x005DCB00)

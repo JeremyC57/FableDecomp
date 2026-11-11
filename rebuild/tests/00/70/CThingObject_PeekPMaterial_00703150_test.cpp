@@ -1,91 +1,135 @@
-// Behaviour test for 00703150: src/00703150.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
-// declared callees stubbed below so calls and arguments are observable. CThingObject::PeekPMaterial() const
-#include "fable_compiler.h"
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 00703150: the row body verbatim over fixture models of the shared-header interfaces (CThing::PeekDefinitionManager, CDefinitionManager::GetDef<T>, the counted CDefPointer, the base-class calls the row makes by name).
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CThingObject::PeekPMaterial() const -- returns the object's material def (looked up by the object def's material index), or a null def pointer when the def has none
-// Leaf: ?PeekPMaterial@CThingObject
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00703150, length 104 bytes (`ret 4`, + int3 padding). CThingObject vtable 0x01264DCC
-// slot 58 (the catalog's "vfunc_58"; Ego_r.pdb has ?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer...).
-// Callees: CThing::GetDefinitionManager() @ 0x004C7990, CDefinitionManager::GetDef<CMaterialDef> @ 0x0066C340 (manifest label names a
-// propagated CThingPhysicalSwitchDef instantiation), the def's slot 1 (Destroy) on release.
-// Layout (retail, local model): CThingObject PDef at retail +0xd0 (PDB +0xe8); the object def's material index at +0x84.
-// Shape: returned by value through the hidden pointer; the hit arm builds a zeroed CDefPointer local, fills it through GetDef
-// and returns it by copy (VC7.1 has no NRVO: the copy ctor's add-ref and the local's release merge into
-// `inc ; mov eax,edx ; dec eax`), the miss arm returns a default-constructed (null) pointer.
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
+// Fixture models of the shared-header interfaces: a counted def (count starts at 1 for the manager's own reference, Delete counted),
+// the counted CDefPointer handle, and the definition manager's GetDef<T> (fills the handle with an add-ref, returns whether found).
 class CDefPointeeBase { public:
-    virtual void v00();
-    virtual void Destroy() const;               // slot 1
-    mutable long m_refCount;                    // +0x04
+    long Refs; int Deleted;
+    CDefPointeeBase() : Refs(1), Deleted(0) { }
+    void Delete() { ++Deleted; }
 };
-class CMaterialDef : public CDefPointeeBase { public:};
 template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
-    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
+    CDefPointeeBase* Object;
+    CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { if (Object) { if (--Object->Refs == 0) Object->Delete(); } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (Object && --Object->Refs == 0) Object->Delete(); Object = p; if (p) ++p->Refs; }
 };
-class CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointer<const CMaterialDef>* out);   // 0x0066C340
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<const CMaterialDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
         return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-class CThingObjectDef { public:
-    unsigned char _pad00[0x84];
-    long          MaterialIndex;                // +0x84
+    }
 };
-class CThingObject { public:
-    virtual void v00();
-    unsigned char    _pad04[0xd0 - 0x04];
-    CThingObjectDef* PDef;                      // +0xd0 (CDefPointer<const CThingObjectDef>)
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
+static CGameDefinitionManager g_manager;
+struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) { } };
+class CPersistContext { public: long Mode; bool IsSaving() const { return Mode == 1 || Mode == 3; } };
+class CThingObjectDef : public CDefPointeeBase { public: float Health; long Material; };
+class CThingHolySiteDef : public CDefPointeeBase { public: bool PlayerStart; };
+class CThingCreatureDef : public CDefPointeeBase { public: };
+class CThingPhysicalSwitchDef : public CDefPointeeBase { public: };
+class CThingMarkerDef : public CDefPointeeBase { public: CEngineGraphic Graphic; unsigned long Properties; };
+class CThingVillageDef : public CDefPointeeBase { public: CEngineGraphic Graphic; };
+class CAppearanceDef : public CDefPointeeBase { public: CEngineGraphic Graphic; };
+class CMaterialDef : public CDefPointeeBase { };
+static CAppearanceDef* g_appearance = 0;
+class CThingBaseDef : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const { if (!g_appearance) return false; out->Set(g_appearance); return true; }
+};
+class CThing { public:
+    CDefPointer<const CThingBaseDef> PBaseDef;
+    unsigned short DefGlobalIndex; float MaxHealth, Health; bool BaseResult; int BaseCalls; long LastDef; const char* LastScript;
+    long LastPlayer; unsigned long LastFlags; const char* LastName; CThing* LastCreator; CThing* LastOriginal; bool LastFlag;
+    const CGameDefinitionManager& PeekDefinitionManager() const { return g_manager; }
+};
+typedef CThing CThingPhysicalBase;
+class CThingPhysical : public CThing { public:
+    bool SerialiseGameState(CPersistContext&) { ++BaseCalls; return BaseResult; }
+};
+class CThingGameObject : public CThingPhysical { public:
+    bool ConstructFromLevelScript(const char* s) { ++BaseCalls; LastScript = s; return BaseResult; }
+    bool ConstructFromParams(long d, const C3DVector&, long player, unsigned long flags, const CCharString& name, CThingPhysical* creator,
+                             CThingPhysical* original, bool flag)
+    {
+        ++BaseCalls; LastDef = d; LastPlayer = player; LastFlags = flags; LastName = name.Text; LastCreator = creator; LastOriginal = original;
+        LastFlag = flag; DefGlobalIndex = (unsigned short)d; return BaseResult;
+    }
+};
+class CThingObject : public CThingGameObject { public:
+    CDefPointer<const CThingObjectDef> PDef;
+    const CThingObjectDef& PeekDefinition() const { return *PDef; }
+    bool SerialiseGameState(CPersistContext& context);
+    bool ConstructFromLevelScript(const char* script);
     CDefPointer<const CMaterialDef> PeekPMaterial() const;
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, unsigned long flags, const CCharString& scriptName);
 };
-
+class CThingHolySite : public CThingGameObject { public:
+    CDefPointer<const CThingHolySiteDef> Def; unsigned char PlayerStart;
+    const CThingHolySiteDef& PeekDefinition() const { return *Def; }
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, bool playerStart);
+    bool SerialiseGameState(CPersistContext& context);
+    bool ConstructFromLevelScript(const char* script);
+};
+class CThingCreatureBase : public CThingGameObject { public:
+    CDefPointer<const CThingCreatureDef> PDef;
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, CThingPhysical* creator,
+                             CThingPhysical* originalCreator, const CCharString& scriptName, bool flag);
+    bool SerialiseGameState(CPersistContext& context);
+    bool ConstructFromLevelScript(const char* script);
+};
+class CThingDeadCreature : public CThingGameObject { public: const CThingCreatureDef& PeekDefinition() const; };
+class CThingPhysicalSwitch : public CThingGameObject { public: const CThingPhysicalSwitchDef& PeekDefinition() const; };
+class CThingMarker : public CThingGameObject { public:
+    CDefPointer<const CThingMarkerDef> PeekDefinition() const
+    {
+        CDefPointer<const CThingMarkerDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return def;
+    }
+    CEngineGraphic GetCurrentGraphic() const;
+    unsigned long GetProperties() const;
+};
+class CThingVillage : public CThingGameObject { public:
+    mutable CEngineGraphic CurrentGraphic;
+    CDefPointer<const CThingVillageDef> PeekDefinition() const
+    {
+        CDefPointer<const CThingVillageDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return def;
+    }
+    const CEngineGraphic* GetCurrentGraphic() const;
+};
+static void Reset() { memset(&g_manager, 0, sizeof(g_manager)); g_appearance = 0; }
+template <class T> static void Zero(T& t) { memset(&t, 0, sizeof(t)); }
+// ---- row body (verbatim) ----
 CDefPointer<const CMaterialDef> CThingObject::PeekPMaterial() const
 {
-    if (PDef->MaterialIndex) {
+    if (PeekDefinition().Material) {
         CDefPointer<const CMaterialDef> material;
-        CThingObjectDef* def = PDef;
-        GetDefinitionManager()->GetDef(def->MaterialIndex, &material);
+        PeekDefinitionManager().GetDef(PeekDefinition().Material, &material);
         return material;
     }
     return CDefPointer<const CMaterialDef>();
 }
-
-// ---- stubs and driver ----
-static void* g_def = 0; static int g_destroyed = 0;
-void* FindDef_CDefinitionManager_GetDef_0() { return g_def; }
-void CDefPointeeBase::v00() {}
-void CDefPointeeBase::Destroy() const { ++g_destroyed; }
-static CDefinitionManager g_mgr;
-CDefinitionManager* CThingObject::GetDefinitionManager() const { return &g_mgr; }
-void CThingObject::v00() {}
+// ---- harness ----
 int main()
 {
-    CMaterialDef mat; mat.m_refCount = 1; g_def = &mat;
-    CThingObjectDef od; memset(&od, 0, sizeof(od));
-    CThingObject o; memset(o._pad04, 0, sizeof(o._pad04)); o.PDef = &od;
-    { CDefPointer<const CMaterialDef> p = o.PeekPMaterial(); CHECK(p.Object == 0); }
-    od.MaterialIndex = 4;
-    { CDefPointer<const CMaterialDef> p = o.PeekPMaterial(); CHECK(p.Object == &mat); CHECK(mat.m_refCount == 1); }
-    CHECK(mat.m_refCount == 0); CHECK(g_destroyed == 1);
-    g_def = 0; { CDefPointer<const CMaterialDef> p = o.PeekPMaterial(); CHECK(p.Object == 0); }
-    if (fails == 0) printf("00703150_TEST PASS\n"); else printf("00703150_TEST FAIL\n");
+    Reset(); CThingObjectDef def; CMaterialDef mat; g_manager.Table[6] = &mat;
+    CThingObject o; Zero(o); o.PDef.Set(&def); def.Material = 6;
+    { CDefPointer<const CMaterialDef> p = o.PeekPMaterial(); CHECK(p.Object == &mat); CHECK(mat.Refs == 2); CHECK(g_manager.LastIndex == 6); }
+    CHECK(mat.Refs == 1); def.Material = 0; g_manager.Calls = 0;
+    { CDefPointer<const CMaterialDef> p = o.PeekPMaterial(); CHECK(p.Object == 0); CHECK(g_manager.Calls == 0); }
+    o.PDef.Object = 0;
+    if (fails == 0) printf("00703150_TEST PASS\n");
     return fails;
 }

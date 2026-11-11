@@ -1,120 +1,74 @@
 // CThingCreatureBase::PreloadBasicAnimations() -- start loading every walk and run animation of the creature's appearance animation set, and every animation whose name starts with "TURNING_"
-// Leaf: PreloadBasicAnimations
-// Callees: CDefClassBase::GetSubDef<CAppearanceDef> @ 0x0042B0A2 (same-TU stand-in below), CThing::GetWorld @ 0x004C7AB0,
-// CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CAnimationSet::GetNumberOfAnimations(const CCharString&,
-// const CAnimFilterBase&) @ 0x005DC290, CAnimationSet::GetAnimation(const CCharString&, long, const CAnimFilterBase&) @ 0x005DC340,
-// CAnimationSet::GetAnimsWithNameStartingWith @ 0x005DCB00, CMeshBank::GetAnimation(long, bool) @ 0x00A242C0,
-// C3DAnimationInfo::BeginLoading @ 0x00A26730, free @ 0x00BFEA14.
+// Leaf: ?PreloadBasicAnimations@CThingCreatureBase@@QAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00663610.
+// Identity: Ego_r.pdb ?PreloadBasicAnimations@CThingCreatureBase@@QAEXXZ (Ego_r 0x0053E560, the last of the appearance-animation run
+//   0x0053D8E0.. = retail 0x00662A00..0x00663610).
+// Callees: CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, CThing::PeekWorld 0x004C7AB0, CCharString(const char*, long) 0x0099EBF0,
+//   ~CCharString 0x0099EAE0, CAnimationSet::GetNoAnims 0x005DC290, CAnimationSet::GetAnim 0x005DC340,
+//   CAnimationSet::GetAnimsWithNameStartingWith 0x005DCB00, CMeshDataBank::PeekAnimation 0x00A242C0, C3DAnimationInfo::BeginLoading
+//   0x00A26730, free 0x00BFEA14 (the vector's storage).
 // Strings: 0x0125A990 "ST_WALK", 0x0125A998 "ST_RUN", 0x0125AB08 "TURNING_". CAnimFilterNoGroup vtable 0x0122FFDC.
-// Layout (retail, landed 0x006631C0 / 0x00662C10 models): PBaseDef +0x70; CWorld main mesh bank +0x3c; CAppearanceDef
-// animation set +0x34; def count +4, virtual Destroy slot 1.
-// Shape: GetSubDef's same-TU stand-in only writes the out slot (the def slot does not escape: the release is `dec dword ptr
-// [ecx+4] ; jne`), the def released by hand through a const local; a CAnimFilterNoGroup temporary per call; the three names are
-// named locals of the success block; the prefix vector is indexed through a reference-returning `*(begin() + i)` operator[]
-// (the value-returning one swaps ecx/edx for eax/ecx in the loop and the release).
-extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length); // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
-class C3DAnimationInfo { public:
-    void BeginLoading();                        // 0x00A26730
-};
-struct CMeshBank {
-    C3DAnimationInfo* GetAnimation(long index, bool immediately);   // 0x00A242C0
-};
-class CWorld { public:
-    unsigned char _pad[0x3c];
-    CMeshBank* PMainMeshBank;                   // +0x3c
-};
-class CAnimationEntry { public:
-    long AnimIndex;                             // +0x00
-};
-struct __declspec(novtable) CAnimFilterBase {
-    virtual void v000();
-    virtual void v001();
-    virtual void v002();
-};
-struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
-    CAnimFilterNoGroup() { }
-    virtual void v000();
-    virtual void v001();
-    virtual void v002();
-};
-struct CAnimationEntryVector {                  // std::vector<const CAnimationEntry*>
-    const CAnimationEntry** first;
-    const CAnimationEntry** last;
-    const CAnimationEntry** end;
-    CAnimationEntryVector() : first(0), last(0), end(0) { }
-    ~CAnimationEntryVector() { if (first) free(first); }
-    unsigned long size() const { return (unsigned long)(last - first); }
-    const CAnimationEntry** begin() const { return first; }
-    const CAnimationEntry* const& operator[](unsigned long i) const { return *(begin() + i); }
-};
-class CAnimationSet { public:
-    long GetNumberOfAnimations(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC290
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-    void GetAnimsWithNameStartingWith(const CCharString& prefix, CAnimationEntryVector& anims, const CAnimFilterBase& filter) const;   // 0x005DCB00
-};
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long RefCount;                              // +0x04
-};
-class CAppearanceDef : public CDefClassBase { public:
-    unsigned char _pad08[0x34 - 0x08];
-    CAnimationSet Animation;                    // +0x34
-};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    T* operator->() const { return Object; }
-};
-class CThingBaseDef { public:
-    bool GetSubDef(CDefPointer<const CAppearanceDef>* out) const;     // 0x0042B0A2
-};
-void* FindDef_3610();
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<const CAppearanceDef>* out) const
-{
-    void* def = FindDef_3610();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThingCreatureBase { public:
-    unsigned char _pad00[0x70];
-    const CThingBaseDef* PBaseDef;              // +0x70
-    CWorld* GetWorld();                         // 0x004C7AB0
-    void PreloadBasicAnimations();
-};
+// Name fix (agentNF9 2026-11-11): moved off the local CThingCreatureBase / CWorld / CMeshBank / CAnimationSet / CAnimFilter models (a
+//   same-TU stand-in GetSubDef body) onto the shared headers; the callees bind their PDB spellings: 0x004C7AB0
+//   ?PeekWorld@CThing@@IBEABVCWorld@@XZ (was ?GetWorld@CThing@@..), 0x00A242C0 ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z
+//   (was ?GetAnimation@CMeshBank@@QAEPAVC3DAnimationInfo@@J_N@Z), 0x00A26730 ?BeginLoading@C3DAnimationInfo@@QBEX_N@Z, 0x005DC290
+//   ?GetNoAnims@CAnimationSet@@QBEJABVCCharString@@ABVCAnimFilterBase@@@Z (was ?GetNumberOfAnimations@..), 0x005DC340
+//   ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (was ?GetAnimation@..), 0x0042B0A2 the PDB
+//   GetSubDef<CAppearanceDef>.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
+#define FABLE_RETAIL_CANIMATIONSET_GETNOANIMS
+#define FABLE_RETAIL_CANIMATIONSET_QUERIES
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_MESH_BANK
+#define FABLE_RETAIL_CWORLD_PEEKMESHBANK
+#define FABLE_RETAIL_CMESHDATABANK_PEEKANIMATION
+#define FABLE_RETAIL_C3DANIMATIONINFO_LOADING
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CWorld.h"
+#include "engine/CMeshDataBank.h"
+#include "engine/C3DAnimationInfo.h"
 
 void CThingCreatureBase::PreloadBasicAnimations()
 {
-    CDefPointer<const CAppearanceDef> def;
-    if (PBaseDef->GetSubDef(&def)) {
-        CMeshBank* bank = GetWorld()->PMainMeshBank;
-        const CAnimationSet* set = &def->Animation;
+    CDefPointer<const CAppearanceDef> appearance;
+    if (PBaseDef->GetSubDef(&appearance)) {
+        const CMeshDataBank* bank = PeekWorld().PeekMeshBank();
+        const CAnimationSet& set = appearance->Animation;
         CCharString walk("ST_WALK", -1);
-        long count = set->GetNumberOfAnimations(walk, CAnimFilterNoGroup());
+        long count = set.GetNoAnims(walk, CAnimFilterNoGroup());
         for (long i = 0; i < count; ++i)
-            bank->GetAnimation(set->GetAnimation(walk, i, CAnimFilterNoGroup())->AnimIndex, false)->BeginLoading();
+            bank->PeekAnimation(set.GetAnim(walk, i, CAnimFilterNoGroup()).BankIndex)->BeginLoading(false);
         CCharString run("ST_RUN", -1);
-        count = set->GetNumberOfAnimations(run, CAnimFilterNoGroup());
+        count = set.GetNoAnims(run, CAnimFilterNoGroup());
         for (long i = 0; i < count; ++i)
-            bank->GetAnimation(set->GetAnimation(run, i, CAnimFilterNoGroup())->AnimIndex, false)->BeginLoading();
+            bank->PeekAnimation(set.GetAnim(run, i, CAnimFilterNoGroup()).BankIndex)->BeginLoading(false);
         CCharString turning("TURNING_", -1);
-        CAnimationEntryVector anims;
-        set->GetAnimsWithNameStartingWith(turning, anims, CAnimFilterNoGroup());
+        std::vector<const CAnimationEntry*> anims;
+        set.GetAnimsWithNameStartingWith(turning, anims, CAnimFilterNoGroup());
         for (unsigned long i = 0; i < anims.size(); ++i)
-            bank->GetAnimation(anims[i]->AnimIndex, false)->BeginLoading();
+            bank->PeekAnimation(anims[i]->BankIndex)->BeginLoading(false);
     }
-    const CDefClassBase* object = def.Object;
-    if (object && --const_cast<CDefClassBase*>(object)->RefCount == 0)
-        const_cast<CDefClassBase*>(object)->Destroy();
 }

@@ -1,115 +1,49 @@
-// CThingMarker::GetCurrentGraphic() const -- the marker's current map graphic: the state sub-def's graphic when it has one, else the village def's own graphic; returned by value (hidden result pointer)
+// CThingMarker::GetCurrentGraphic() const -- the marker's current graphic: the base def's appearance sub-def graphic when it names a bank, else the marker def's own graphic; returned by value (hidden result pointer)
+// Leaf: ?GetCurrentGraphic@CThingMarker@@IBE?AVCEngineGraphic@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083D190, length 231 bytes (`ret 4`; 240 with padding).
-// Callees: CDefClassBase::GetSubDef<T> @ 0x0042B0A2 (on the base def, out pointer), CThing::GetDefinitionManager
-// @ 0x004C7990 (manifest "CViewBase::GetDisplayEngine" is propagated), CDefinitionManager::GetDef<T>(long,
-// CDefPointer<T>*) @ 0x0083B970, the defs' virtual Destroy (slot 1, +4).
-// Identity: the catalog label CThingVillage::GetCurrentGraphic is propagated from the twin 0x0083B520; the only caller
-// is 0x0083D31E inside the CThingMarker virtual at 0x0083D2E0 (manifest CThingMarker::vfunc_36), so this is the marker's.
-// Layout: retail CThing PBaseDef +0x70, DefGlobalIndex (ushort) +0x8c (Ego_r.pdb - 0x10); CThingVillage
-// CurrentGraphic +0xd0 (PDB 0xe8 - 0x18); CEngineGraphic is 14 packed bytes {BankIndex, AnimStep, RenderSizeX,
-// AdditiveAlpha, Type}; the state sub-def holds one at +0x25 (unaligned), the village def at +0x70 (descriptive).
-// Shape: the sub-def out pointer is copied into a scoped releasing holder right after the call and each exit returns
-// the graphic straight into the hidden result before the holders release (the dereference drops the null test on the
-// first exit); the village def is read through a by-value counted copy
-// (`.Object`: add-ref and release share one null test, both count stores kept, as the landed 0x0070B4D0); BankIndex
-// is tested unsigned (`> 0` -> `jbe`).
-// GetSubDef and GetDef get same-TU `auto_inline(off)` stand-in bodies that write only the out slot: VC7.1 then knows
-// neither out pointer escapes, keeps the state def in edi and the village def in esi, and shares one frame word
-// between both out pointers (the twin 0x0083B520 recipe).
-#pragma pack(push, 1)
-class CEngineGraphic { public:                                     // 14 bytes
-    unsigned long BankIndex;                                // +0x00
-    float         AnimStep;                                 // +0x04
-    float         RenderSizeX;                              // +0x08
-    bool          AdditiveAlpha;                            // +0x0c
-    unsigned char Type;                                     // +0x0d
-};
-#pragma pack(pop)
+// Identity: Ego_r.pdb ?GetCurrentGraphic@CThingMarker@@IBE?AVCEngineGraphic@@XZ (protected const, by value); the only caller is 0x0083D31E
+//   inside the CThingMarker virtual 0x0083D2E0. The catalog label CThingVillage::GetCurrentGraphic is propagated from the twin 0x0083B520.
+// Callees: CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2 (on the base def), CThing::PeekDefinitionManager 0x004C7990,
+//   CDefinitionManager::GetDef<CThingMarkerDef> 0x0083D630, the defs' Delete (slot 1).
+// Layout: CThing PBaseDef +0x70, DefGlobalIndex +0x8C; CAppearanceDef::Graphic +0x25 (packed); CThingMarkerDef::Graphic +0x70;
+//   CEngineGraphic is 14 packed bytes; BankIndex is unsigned (`> 0` -> `jbe`).
+// Name fix (agentNF9 2026-11-11): moved off the local models (descriptive CVillageStateDef / CThingVillageDef stand-ins, same-TU stand-in
+//   GetSubDef / GetDef bodies) onto the shared headers; 0x0042B0A2 binds
+//   ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z (was
+//   ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@UCVillageStateDef@@@@@Z), 0x0083D630 the PDB GetDef<CThingMarkerDef>, 0x004C7990
+//   ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ; the row's own symbol is the protected const PDB spelling.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHINGMARKER_DEFINITION
+#define FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CThingMarker.h"
 
-class CDefPointeeBase { public:
-    virtual void Destroy0();
-    virtual void Destroy();                                 // slot 1 (+0x04)
-    long RefCount;                                          // +0x04
-    void AddRef() { ++RefCount; }
-    void Release() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-template <class T> struct CCountedDefPointer {              // the by-value CDefPointer<T> copy
-    T* Object;
-    CCountedDefPointer(T* object) : Object(object) { if (Object) Object->AddRef(); }
-    ~CCountedDefPointer() { if (Object) Object->Release(); }
-};
-
-#pragma pack(push, 1)
-struct CVillageStateDef : CDefPointeeBase {                 // the base def's graphic sub-def (descriptive)
-    unsigned char  _pad08[0x25 - 0x08];
-    CEngineGraphic Graphic;                                 // +0x25
-};
-#pragma pack(pop)
-class CThingVillageDef : public CDefPointeeBase { public:
-    unsigned char  _pad08[0x70 - 0x08];
-    CEngineGraphic Graphic;                                 // +0x70 (descriptive)
-};
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CVillageStateDef>* out) const;   // 0x0042B0A2
-};
-class CDefinitionManager { public:
-    bool GetDef_0083d630(long index, CDefPointer<CThingVillageDef>* out);   // 0x0083B970
-};
-
-void* FindSubDef_CThingBaseDef_GetSubDef(const CThingBaseDef* def);       // stand-in callees of the stand-in bodies below
-void* FindDef_CDefinitionManager_GetDef(long index);
-// Stand-in bodies (the real ones are out of line in retail): they write the out slot only, so VC7.1 knows the def
-// pointers' addresses do not escape the calls (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CVillageStateDef>* out) const
+CEngineGraphic CThingMarker::GetCurrentGraphic() const
 {
-    void* def = FindSubDef_CThingBaseDef_GetSubDef(this);
-    if (!def)
-        return false;
-    out->Object = (CVillageStateDef*)def;
-    return true;
-}
-__declspec(noinline) bool CDefinitionManager::GetDef_0083d630(long index, CDefPointer<CThingVillageDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef(index);
-    if (!def)
-        return false;
-    out->Object = (CThingVillageDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThing { public:
-    unsigned char  _pad00[0x70];
-    CThingBaseDef* PBaseDef;                                // +0x70
-    unsigned char  _pad74[0x8c - 0x74];
-    unsigned short DefGlobalIndex;                          // +0x8c
-    CDefinitionManager* GetDefinitionManager();            // 0x004C7990
-};
-
-class CThingMarker : public CThing { public:
-    CEngineGraphic GetCurrentGraphic();
-};
-
-template <class T> struct CHeldDef {                       // a def reference held for the rest of the scope
-    T* Object;
-    CHeldDef(T* object) : Object(object) { }
-    ~CHeldDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
-};
-
-CEngineGraphic CThingMarker::GetCurrentGraphic()
-{
-    CDefPointer<CVillageStateDef> out;
-    bool found = PBaseDef->GetSubDef(&out);
-    CHeldDef<CVillageStateDef> state(out.Object);
-    if (found && state.Object->Graphic.BankIndex > 0)
-        return state.Object->Graphic;
-    CDefPointer<CThingVillageDef> defOut;
-    GetDefinitionManager()->GetDef_0083d630(DefGlobalIndex, &defOut);
-    CHeldDef<CThingVillageDef> def(CCountedDefPointer<CThingVillageDef>(defOut.Object).Object);
-    return def.Object->Graphic;
+    CDefPointer<const CAppearanceDef> appearance;
+    if (PBaseDef->GetSubDef(&appearance) && appearance->Graphic.BankIndex > 0)
+        return appearance->Graphic;
+    return PeekDefinition()->Graphic;
 }

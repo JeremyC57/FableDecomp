@@ -6,6 +6,15 @@
 #include "engine/CDefPointer.h"
 class CSimBuildingDef;
 #endif
+#ifdef FABLE_RETAIL_CTHINGBUILDING_DEFINITION
+// Retail opt-in (agentNF9): the definition accessors and the virtual overrides of rows 0x0082D3B0..0x0082D8C0. Needs
+// FABLE_RETAIL_CTHINGBUILDINGDEF, FABLE_RETAIL_CTHING_MOREACCESS (CThing::PeekDefinitionManager) and the CGameDefinitionManager
+// chain (FABLE_RETAIL_CDEFINITIONMANAGER, FABLE_RETAIL_CGAMEDEFINITIONMANAGER, FABLE_RETAIL_CRESOURCELIST, FABLE_RETAIL_CRESOURCE).
+#include "engine/CDefPointer.h"
+#include "engine/CThingBuildingDef.h"
+#include "engine/CGameDefinitionManager.h"
+class CCameraManagerSetDef; class CMaterialDef; class CEngineGraphic;
+#endif
 class CThingBuilding : public CThingGameObject {
 protected:
     long ForceOpenCount;
@@ -32,6 +41,32 @@ public:
     CDefPointer<const CSimBuildingDef> PeekPSimDefinition() const;
 #endif
     bool IsPointInside(const C3DVector&) const;
+#ifdef FABLE_RETAIL_CTHINGBUILDING_DEFINITION
+    // Retail opt-in (agentNF9). Spellings: Ego_r.pdb / FableWin.pdb name sets, all `@CThingBuilding@@`; Ego_r donor order
+    // PeekDefinition 0x00558D00, PeekPSimDefinition, PeekPCameraManagerSetDefinition, GetCurrentGraphic, PeekPMaterial,
+    // GetMaterialOnHitByMelee, OnCreate, GetFloorMaterial, UseHighDetailQuadTree, GetReverbSettings = retail 0x0082D2D0, 0x0082D3B0,
+    // -, 0x0082D5C0, 0x0082D6B0, 0x0082D6F0, 0x0082D7D0, 0x0082D870, 0x0082D8C0; the virtuals are vtable 0x0124509C slots 8 (OnCreate),
+    // 40 (GetFloorMaterial, CThing ?GetFloorMaterial@CThing@@UBEJXZ), 57 (UseHighDetailQuadTree, CThingPhysical's), 58 (PeekPMaterial,
+    // CThingPhysical's) and 70 (GetMaterialOnHitByMelee, CThingGameObject's) (rebuild/manifest/rtti-vtables.tsv). Declarations only,
+    // except PeekDefinition: ?PeekDefinition@CThingBuilding@@IBEABVCThingBuildingDef@@XZ has no out-of-line copy in Fable.exe (the
+    // rows expand it: the counted handle is filled and released before the member read).
+protected:
+    const CThingBuildingDef& PeekDefinition() const
+    {
+        CDefPointer<const CThingBuildingDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return *def;
+    }
+    const CEngineGraphic* GetCurrentGraphic() const;                     // ?GetCurrentGraphic@CThingBuilding@@IBEPBVCEngineGraphic@@XZ
+    virtual bool OnCreate();                                             // 0x0082D6F0 ?OnCreate@CThingBuilding@@MAE_NXZ
+    virtual CDefPointer<const CMaterialDef> PeekPMaterial() const;       // 0x0082D5C0 ?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+public:
+    CDefPointer<const CCameraManagerSetDef> PeekPCameraManagerSetDefinition() const;   // 0x0082D3B0
+    virtual long GetMaterialOnHitByMelee() const;                        // 0x0082D6B0 ?GetMaterialOnHitByMelee@CThingBuilding@@UBEJXZ
+    virtual long GetFloorMaterial() const;                               // 0x0082D7D0 ?GetFloorMaterial@CThingBuilding@@UBEJXZ
+    virtual bool UseHighDetailQuadTree() const;                          // 0x0082D870 ?UseHighDetailQuadTree@CThingBuilding@@UBE_NXZ
+    void GetReverbSettings(EReverbEnvironmentType& type, float& level) const;   // 0x0082D8C0 ?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z
+#endif
 #ifdef FABLE_RETAIL_CTHINGBUILDING
     void SetOverrideAutomaticLocking(bool value) { OverrideAutomaticLocking = value; }   // FableWin ?SetOverrideAutomaticLocking@CThingBuilding@@QAEX_N@Z (inline)
     void LockAllDoors(bool lock, bool immediately);                  // 0x0082DB00 ?LockAllDoors@CThingBuilding@@QAEX_N0@Z (Ego_r / FableWin)

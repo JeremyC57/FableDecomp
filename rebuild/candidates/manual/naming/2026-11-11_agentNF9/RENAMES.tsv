@@ -1,0 +1,5 @@
+address	module	name
+0x0082D6B0	CThingBuilding	GetMaterialOnHitByMelee
+0x0082D870	CThingBuilding	UseHighDetailQuadTree
+0x0082D8C0	CThingBuilding	GetReverbSettings
+0x0083D900	CThingPhysicalSwitch	PeekDefinition

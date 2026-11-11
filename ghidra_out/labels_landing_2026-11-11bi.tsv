@@ -1,0 +1,7 @@
+address	name	evidence
+0082D6B0	CThingBuilding::GetMaterialOnHitByMelee	agentNF9 rename; PDB names; RELOCATION_MATCH recheck (landing bi)
+0082D870	CThingBuilding::UseHighDetailQuadTree	agentNF9 rename; PDB names; RELOCATION_MATCH recheck (landing bi)
+0082D8C0	CThingBuilding::GetReverbSettings	agentNF9 rename; PDB names; RELOCATION_MATCH recheck (landing bi)
+0083D900	CThingPhysicalSwitch::PeekDefinition	agentNF9 rename; PDB names; RELOCATION_MATCH recheck (landing bi)
+0083E0D0	GetDef<CThingPhysicalSwitchDef>	agentNF9: only callers 0x0083D900 + CThingPhysicalSwitch TriggerMe/UntriggerMe
+0042B144	GetDef<CDefClassBase>	agentNF9: FableWin UI-file instantiation order + single caller

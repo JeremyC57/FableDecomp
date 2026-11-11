@@ -1,74 +1,44 @@
 // CThingDeadCreature::PeekDefinition() const -- the creature definition of this dead creature, fetched through a temporary counted def pointer
+// Leaf: ?PeekDefinition@CThingDeadCreature@@IBEABVCThingCreatureDef@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00835B90, length 60 bytes (+ int3 padding).
-// Callees: the thing's definition-manager accessor @ 0x004C7990 (`[g_main]+0x20`, `this` unused),
-// CDefinitionManager::GetDef<CThingCreatureDef>(long, CDefPointer&) @ 0x00513160, the def's virtual slot 1 (+4) when the
-// temporary drops the last reference.
-// Layout (retail, local model): CThing's definition global index (unsigned short) at +0x8c; a counted definition holds
-// its count at +4 behind the vptr.
-// Shape: Ego_r.pdb `?PeekDefinition@CThingDeadCreature@@IBEABVCThingCreatureDef@@XZ` returns a const reference; the
-// CDefPointer temporary is zero-initialised in the `push ecx` slot, the arguments are pushed before the accessor runs
-// (a chained call), the def is kept in esi across the inline release and returned.
-struct CDefVirtual {                            // the definition's vptr
-    virtual void v000();
-    virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
-};
-
-struct CRefCounted {                            // second base: the count sits at +4 behind the vptr
-    long m_refCount;
-};
-
-class CDefPointeeBase : public CDefVirtual, public CRefCounted { public:
-    void ReleaseDef()
-    {
-        if (--m_refCount == 0)
-            DestroyDef();
-    }
-};
-
-template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) { }
-    ~CDefPointer()
-    {
-        if (m_pObject)
-            m_pObject->ReleaseDef();
-    }
-    T& operator*() const { return *m_pObject; }
-};
-
-class CThingCreatureDef : public CDefPointeeBase { public:
-};
-
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);   // 0x00513160 (GetDef<CThingCreatureDef>)
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingCreatureDef>& out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThing { public:
-    unsigned char  _pad00[0x8c];
-    unsigned short m_defGlobalIndex;            // +0x8c
-    CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
-};
-
-class CThingDeadCreature : public CThing { public:
-    const CThingCreatureDef& PeekDefinition() const;
-};
+// Identity: Ego_r.pdb ?PeekDefinition@CThingDeadCreature@@IBEABVCThingCreatureDef@@XZ (protected const); out of line in retail, called by
+//   OnCreate 0x00835FD0 and WorldUpdate 0x00836260.
+// Callees: CThing::PeekDefinitionManager 0x004C7990, CDefinitionManager::GetDef<CThingCreatureDef> 0x00513160, the def's Delete
+//   (slot 1) when the temporary drops the last reference.
+// Shape: the handle is zero-initialised in the `push ecx` slot, the arguments are pushed before the accessor runs, the def is kept in
+//   esi across the inline release and returned.
+// Name fix (agentNF9 2026-11-11): moved off the local CThing / CThingDeadCreature / CDefinitionManager / CDefPointer models (a same-TU
+//   stand-in GetDef body) onto the shared headers; 0x004C7990 binds ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ,
+//   0x00513160 ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z (was
+//   ?GetDef@CDefinitionManager@@QAE_NJAAV?$CDefPointer@VCThingCreatureDef@@@@@Z); the row's own symbol is the protected PDB spelling.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CTHINGDEADCREATURE_PEEKDEFINITION
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureDef.h"
+#include "engine/CThingDeadCreature.h"
+#include "engine/CGameDefinitionManager.h"
 
 const CThingCreatureDef& CThingDeadCreature::PeekDefinition() const
 {
-    CDefPointer<CThingCreatureDef> def;
-    GetDefinitionManager()->GetDef(m_defGlobalIndex, def);
+    CDefPointer<const CThingCreatureDef> def;
+    PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
     return *def;
 }

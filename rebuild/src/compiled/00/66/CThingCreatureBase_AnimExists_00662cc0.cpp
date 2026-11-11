@@ -1,95 +1,55 @@
-// CThingCreatureBase::AnimExists(const CCharString& name, bool useModeFilterOnly) const -- vtable slot 73: whether the appearance animation set has an animation called `name` passing the current creature mode's filter, else (unless restricted to the mode filter) one of any group
+// CThingCreatureBase::AnimExists(const CCharString& name, bool useModeFilterOnly) const -- whether the appearance animation set has an animation called `name` passing the current creature mode's filter, else (unless restricted to the mode filter) one of any group
 // Leaf: ?AnimExists@CThingCreatureBase@@UBE_NABVCCharString@@_N@Z
-// Identity (sweep3; was CThingPlayerCreature::vfunc_73): Ego_r.pdb / FableWin.pdb ?AnimExists@CThingCreatureBase@@UBE_NABVCCharString@@_N@Z,
-//   the public virtual whose (const CCharString&, bool) -> bool signature this body has; CThingPlayerCreature has no AnimExists
-//   in either PDB, so its slot 73 is the inherited base body, while the override ?AnimExists@CThingAICreature@@MBE... is slot 73
-//   of the CThingAICreature vtable 0x0127293C (0x00830F20, the same lookup written differently); the body sits in the
-//   CThingCreatureBase run next to GetRandomAnimFromNameWithFilter 0x00662EF0 (Ego_r ?...@CThingCreatureBase@@QBE...), which
-//   calls the same CAnimationSet::AnimExists 0x005DC2E0 (Ego_r ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00662CC0, length 181 bytes, `ret 8`, bool in al; slot 73 of vtable
-//   0x012457FC = CThingPlayerCreature (rtti-vtables.tsv; inherited from CThingCreatureBase).
-// Callees: CThingBaseDef::GetSubDef<CAppearanceDef> @ 0x0042B0A2, CTCCreatureModeManager::GetCurrentMode @ 0x0073A6E0,
-//   the mode's virtual slot 4 (+0x10, its animation filter; name unproven), the animation set's "has a matching
-//   animation" test @ 0x005DC2E0 (as in GetRandomAnimFromNameWithFilter 0x00662EF0), the def's virtual Destroy (slot 1).
-// Identity: the fallback filter is CAnimFilterNoGroup (vtable 0x0122FFDC) destroyed through the CAnimFilterBase store
-//   0x0122FFCC (the landed CTCAnimationComplex::OnCreate model).
-// Layout: retail CThing PBaseDef +0x70; retail CThingCreatureBase PTCModeManager +0x134 (PDB +0x158); CAppearanceDef
-//   Animation +0x34.
-// Shape: the sub-def out pointer is the zeroed `push ecx` word; the mode is fetched before the def is copied out of it
-//   into a small holder whose destructor releases it (null-tested, inline at every return); the fallback filter
-//   temporary lands in the dead flag slot and the result rides in bl across the release;
-//   the restricted `return false` is written last (its block is laid out last).
-// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
-class CCharString;
-class CAnimationEntry;
-class CAnimFilterBase {                         // vtable 0x0122FFCC
-public:
-    virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
-    virtual CAnimFilterBase* Clone() const;
-    ~CAnimFilterBase() {}
-};
-class CAnimFilterNoGroup : public CAnimFilterBase {   // vtable 0x0122FFDC
-public:
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
-};
-class CAnimationSet {
-public:
-    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
-};
-
-class CDefPointeeBase { public:
-    virtual void Destroy0();
-    virtual void Destroy();                     // slot 1 (+0x04)
-    long RefCount;                              // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-template <class T> struct CHeldDef {            // the def copied out of the escaped out pointer, released at scope end
-    T* Object;
-    CHeldDef(T* object) : Object(object) { }
-    ~CHeldDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-};
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x34 - 0x08];
-    CAnimationSet Animation;                    // +0x34
-};
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
-};
-
-
-class CTCCreatureModeManager { public:
-    class CModeBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual const CAnimFilterBase& GetAnimFilter_slot4();       // slot 4 (+0x10)
-};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
-    CModeBase& GetCurrentMode() const;        // 0x0073A6E0
-};
-
-class CThingCreatureBase {
-public:
-    // vptr +0x00 (AnimExists is vtable slot 73)
-    unsigned char _pad04[0x70 - 4];
-    CThingBaseDef* PBaseDef;                    // +0x70 CDefPointer<CThingBaseDef const>::Object
-    unsigned char _pad74[0x134 - 0x74];
-    CTCCreatureModeManager* PTCModeManager;     // +0x134
-    virtual bool AnimExists(const CCharString& name, bool useModeFilterOnly) const;   // slot 73
-};
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00662CC0, length 181 bytes, `ret 8`, bool in al; vtable slot 73 (CThingPlayerCreature
+//   vtable 0x012457FC inherits it).
+// Identity: Ego_r.pdb / FableWin.pdb ?AnimExists@CThingCreatureBase@@UBE_NABVCCharString@@_N@Z (public const virtual).
+// Callees: CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, CTCCreatureModeManager::GetCurrentMode 0x0073A6E0, the mode's
+//   GetAnimFilter (CModeBase virtual slot 4, +0x10), CAnimationSet::AnimExists 0x005DC2E0, the def's Delete (slot 1).
+// Identity: the fallback filter is a CAnimFilterNoGroup temporary (vtable 0x0122FFDC).
+// Layout: CThing PBaseDef +0x70; CThingCreatureBase PTCModeManager +0x134 (Ego_r +0x158); CAppearanceDef Animation +0x34.
+// Name fix (agentNF9 2026-11-11): moved off the local CThingCreatureBase / CTCCreatureModeManager / CAnimationSet / CAppearanceDef models
+//   (a same-TU stand-in GetSubDef body, a CHeldDef holder, the descriptive GetAnimFilter_slot4) onto the shared headers; 0x0042B0A2 binds
+//   ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z, the mode filter is
+//   CTCCreatureModeManager::CModeBase::GetAnimFilter (engine/CTCCreatureModeManager.h FABLE_RETAIL_CMODEBASE_VIRTUALS, slot 4).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
+#define FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMEXISTS
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CTCCreatureModeManager.h"
 
 bool CThingCreatureBase::AnimExists(const CCharString& name, bool useModeFilterOnly) const
 {
-    CDefPointer<CAppearanceDef> out;
-    PBaseDef->GetSubDef(&out);
-    CTCCreatureModeManager::CModeBase* mode = &PTCModeManager->GetCurrentMode();
-    CHeldDef<CAppearanceDef> def(out.Object);
-    CAnimationSet& animations = def->Animation;
-    if (animations.AnimExists(name, mode->GetAnimFilter_slot4()))
+    CDefPointer<const CAppearanceDef> appearance;
+    PBaseDef->GetSubDef(&appearance);
+    const CTCCreatureModeManager::CModeBase& mode = PTCModeManager->GetCurrentMode();
+    const CAnimationSet& set = appearance->Animation;
+    if (set.AnimExists(name, mode.GetAnimFilter()))
         return true;
     if (!useModeFilterOnly)
-        return animations.AnimExists(name, CAnimFilterNoGroup());
+        return set.AnimExists(name, CAnimFilterNoGroup());
     return false;
 }

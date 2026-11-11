@@ -24593,12 +24593,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0082d2d0	PeekPSimDefinition	CThingBuilding	__thiscall	CDefPointer<CMaterialDef_const_>	1	CThingBuilding *	1	yes	accepted									
 0082d3b0	PeekPCameraManagerSetDefinition	CThingBuilding	__thiscall	CDefPointer<CCameraManagerSetDef_const_>	1	CThingBuilding *	1	yes	accepted									
 0082d5c0	PeekPMaterial	CThingBuilding	__thiscall	CDefPointer<CMaterialDef_const_>	1	CThingBuilding *	1	yes	accepted									
-0082d6b0	GetMaterial	CThingBuilding	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0082d6b0	GetMaterialOnHitByMelee	CThingBuilding	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0082d6f0	OnCreate	CThingBuilding	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0082d7d0	GetFloorMaterial	CThingBuilding	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0082d810	WorldUpdate	CThingBuilding	__thiscall	bool	1	CThingBuilding *	1	yes	accepted									
-0082d870	UsesHighDetailQuadTree	CThingBuilding	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0082d8c0	GetReverbEnvironment	CThingBuilding	__thiscall	long	1	CThingBuilding *	1	yes	accepted									
+0082d870	UseHighDetailQuadTree	CThingBuilding	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0082d8c0	GetReverbSettings	CThingBuilding	__thiscall	long	1	CThingBuilding *	1	yes	accepted									
 0082d920	Create	CThingBuilding	__fastcall	CThingBuilding *	4	long,C3DVector *,long,CCharString *	1	yes	accepted									
 0082d9c0	IsDoorBlockedBy	CThingBuilding	__thiscall	bool	2	CThingBuilding *,CThing *	1	yes	accepted									
 0082db00	LockAllDoors	CThingBuilding	__thiscall	void	3	CThingBuilding *,bool,bool	1	yes	accepted									
@@ -24923,7 +24923,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083d700	WorldUpdate	CThingPhysicalSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0083d710	DrawGetEditDrawInfo	CThingPhysicalSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0083d800	Save	CThingPhysicalSwitch	unknown	undefined	0		0	yes	accepted									
-0083d900	PeekDefinition	CThingDeadCreature	__thiscall	CThingCreatureDef *	1	CThingDeadCreature *	1	yes	accepted									
+0083d900	PeekDefinition	CThingPhysicalSwitch	__thiscall	CThingCreatureDef *	1	CThingDeadCreature *	1	yes	accepted									
 0083d940	SerialiseGameState	CThingPhysicalSwitch	__thiscall	bool	2	CThingPhysicalSwitch *,CPersistContext *	1	yes	accepted									
 0083d990	ConstructFromLevelScript	CThingPhysicalSwitch	__thiscall	bool	2	CThingPhysicalSwitch *,char *	1	yes	accepted									
 0083db60	GetCurrentGraphic	CThingPhysicalSwitch	__thiscall	CEngineGraphic *	1	CThingPhysicalSwitch *	1	yes	accepted									

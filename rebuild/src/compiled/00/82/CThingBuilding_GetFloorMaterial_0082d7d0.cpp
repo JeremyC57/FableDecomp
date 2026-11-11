@@ -1,87 +1,43 @@
-// CThingBuilding::GetFloorMaterial() -- the building def's floor material (virtual slot 40)
-// Leaf: ?GetFloorMaterial@CThingBuilding
+// CThingBuilding::GetFloorMaterial() const -- the building def's floor material
+// Leaf: ?GetFloorMaterial@CThingBuilding@@UBEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082D7D0, 64 bytes.
-// Callees: CThing::GetDefinitionManager @ 0x004C7990 (propagated label "CViewBase::GetDisplayEngine"),
-//          CDefinitionManager::GetDef<CThingBuildingDef> @ 0x004AB840 (propagated "<CThingPhysicalSwitchDef>"), the def's
-//          Destroy (vtable slot 1) on the last release.
-// Layout: CThing::DefGlobalIndex (unsigned short) at retail +0x8c; PDB CThingBuildingDef has WallMaterial +0x8c,
-//   FloorMaterial +0x90, ReverbEnvironmentType +0x94, ReverbEnvironmentLevel +0x98, the flag bits at +0xa4: retail
-//   reads all of them 4 bytes lower (one STL container narrower in a base).
-// Shape: an inline GetBuildingDef() builds a CDefPointer local (zeroed after the argument pushes), fills it through
-//   the manager and returns the RAW object pointer, so the local's release (`dec [esi+4] ; jne ; call [eax+4]`, the
-//   counted release living on the def object) runs BEFORE the field read (the landed wave-24m rule).
-// Identity: CThingBuilding vtable 0x0124509C slot 40 (rtti-vtables.tsv), returns CThingBuildingDef::FloorMaterial.
-class CDefPointeeBase { public:                // counted def object: vptr, reference count at +4
-    virtual void v00();
-    virtual void Destroy();             // slot 1
-    long m_refCount;                    // +0x04
-    void Release()
-    {
-        if (--m_refCount == 0)
-            Destroy();
-    }
-};
+// Identity: CThingBuilding vtable 0x0124509C slot 40 (CThing's ?GetFloorMaterial@CThing@@UBEJXZ slot); Ego_r.pdb
+//   ?GetFloorMaterial@CThingBuilding@@UBEJXZ, donor order OnCreate / GetFloorMaterial = retail 0x0082D6F0 / 0x0082D7D0.
+// Callees: CThing::PeekDefinitionManager 0x004C7990, CDefinitionManager::GetDef<CThingBuildingDef> 0x004AB840, the def's Delete
+//   (vtable slot 1) on the last release.
+// Shape: the inline PeekDefinition() (expanded in retail) fills a counted handle and releases it before the member read.
+// Layout: CThing::DefGlobalIndex +0x8C; CThingBuildingDef::FloorMaterial +0x8C (Ego_r +0x90).
+// Name fix (agentNF9 2026-11-11): moved off the local CThingBuilding / CThingBuildingDef / CDefinitionManager / CDefPointer models (a
+//   same-TU stand-in GetDef body) onto the shared headers; 0x004C7990 binds ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+//   and 0x004AB840 ??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z; the row
+//   is now the const virtual the PDB spells (was non-const ?GetFloorMaterial@CThingBuilding@@QAEJXZ).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CTHINGBUILDING
+#define FABLE_RETAIL_CTHINGBUILDINGDEF
+#define FABLE_RETAIL_CTHINGBUILDING_DEFINITION
+#define FABLE_RETAIL_CTHINGBUILDING_PEEKSIMDEF
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingBuilding.h"
 
-class CThingBuildingDef : public CDefPointeeBase { public:    // retail offsets = PDB - 4
-    unsigned char _pad08[0x80];
-    long WallMaterial;                  // +0x88 (PDB +0x8c)
-    long FloorMaterial;                 // +0x8c (PDB +0x90)
-    long ReverbEnvironmentType;         // +0x90 EReverbEnvironmentType (PDB +0x94)
-    long ReverbEnvironmentLevel;        // +0x94 float, moved as a dword (PDB +0x98)
-    long OutsideOcclusionLevel;         // +0x98 float
-    long CameraManagerSetIndex;         // +0x9c
-    unsigned char UseHighDetailQuadTree : 1;    // +0xa0 bit 0 (PDB +0xa4)
-    unsigned char IsSelfIlluminating : 1;
-    unsigned char IsPartOfHeroGuild : 1;
-    unsigned char HasWeatherMask : 1;
-};
-
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-template<class T> struct CDefHolder {
-    T* Object;
-    CDefHolder(T* object) : Object(object) { }
-    ~CDefHolder()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Destroy();
-    }
-};
-
-class CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointer<CThingBuildingDef>* out);   // 0x004AB840 (GetDef<CThingBuildingDef>)
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingBuildingDef>* out)
+long CThingBuilding::GetFloorMaterial() const
 {
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThingBuilding { public:
-    unsigned char _pad00[0x8c];
-    unsigned short DefGlobalIndex;      // +0x8c (CThing; PDB +0x9c)
-    CDefinitionManager* GetDefinitionManager();     // 0x004C7990 (CThing)
-    const CThingBuildingDef* GetBuildingDef()
-    {
-        CDefPointer<CThingBuildingDef> out;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, &out);
-        CDefHolder<CThingBuildingDef> def(out.Object);
-        return def.Object;
-    }
-    long GetFloorMaterial();
-};
-
-long CThingBuilding::GetFloorMaterial()
-{
-    return GetBuildingDef()->FloorMaterial;
+    return PeekDefinition().FloorMaterial;
 }

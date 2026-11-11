@@ -1,11 +1,35 @@
 #ifndef FABLE_ENGINE_CTHINGMARKER_H
 #define FABLE_ENGINE_CTHINGMARKER_H
 #include "engine/CThingGameObject.h"
+#ifdef FABLE_RETAIL_CTHINGMARKER_DEFINITION
+// Retail opt-in (agentNF9): see the class body. Needs FABLE_RETAIL_CTHING_MOREACCESS and the CGameDefinitionManager chain.
+#include "engine/CDefPointer.h"
+#include "engine/CEngineGraphic.h"
+#include "engine/CThingMarkerDef.h"
+#include "engine/CGameDefinitionManager.h"
+#endif
 // Both original PDBs: CThingGameObject base, no added data; retail RTTI agrees.
 class CThingMarker : public CThingGameObject { public:static long __fastcall StatGetType(){return 11;}
 #ifdef FABLE_RETAIL_CTHINGMARKER
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingMarker@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
+#endif
+#ifdef FABLE_RETAIL_CTHINGMARKER_DEFINITION
+    // Retail opt-in (agentNF9, rows 0x0083D190 / 0x0083D280). Ego_r.pdb ?PeekDefinition@CThingMarker@@IBE?AV?$CDefPointer@$$CBVCThingMarkerDef@@@@XZ
+    // (protected const, the def by value; no out-of-line copy in Fable.exe: GetProperties expands it, the copy's add-ref and the local's
+    // release sharing one null test, 0x0083D2A6), ?GetCurrentGraphic@CThingMarker@@IBE?AVCEngineGraphic@@XZ (protected const, 0x0083D190;
+    // its only caller is the CThingMarker virtual 0x0083D2E0) and ?GetProperties@CThingMarker@@UBEKXZ (public const virtual, vtable
+    // 0x01245524 slot 48 = 0x0083D280).
+protected:
+    CDefPointer<const CThingMarkerDef> PeekDefinition() const
+    {
+        CDefPointer<const CThingMarkerDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return def;
+    }
+    CEngineGraphic GetCurrentGraphic() const;                            // 0x0083D190
+public:
+    virtual unsigned long GetProperties() const;                         // 0x0083D280
 #endif
 #ifdef FABLE_RETAIL_CTHINGMARKER_CREATE
     // Opt-in (chunk 1012, row 0x006B2260 CAtmosProcess::Update): Ego_r.pdb / FableWin.pdb

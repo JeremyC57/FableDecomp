@@ -248551,15 +248551,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0082d870'
         Module = 'CThingBuilding'
-        Source = '00/82/CThingBuilding_UsesHighDetailQuadTree_0082d870.cpp'
-        TestSource = '00/82/CThingBuilding_UsesHighDetailQuadTree_0082d870_test.cpp'
+        Source = '00/82/CThingBuilding_UseHighDetailQuadTree_0082d870.cpp'
+        TestSource = '00/82/CThingBuilding_UseHighDetailQuadTree_0082d870_test.cpp'
         PassPattern = '0082d870_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0082d8c0'
         Module = 'CThingBuilding'
-        Source = '00/82/CThingBuilding_GetReverbEnvironment_0082d8c0.cpp'
-        TestSource = '00/82/CThingBuilding_GetReverbEnvironment_0082d8c0_test.cpp'
+        Source = '00/82/CThingBuilding_GetReverbSettings_0082d8c0.cpp'
+        TestSource = '00/82/CThingBuilding_GetReverbSettings_0082d8c0_test.cpp'
         PassPattern = '0082d8c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -248599,9 +248599,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0083d900'
-        Module = 'CThingDeadCreature'
-        Source = '00/83/CThingDeadCreature_PeekDefinition_0083d900.cpp'
-        TestSource = '00/83/CThingDeadCreature_PeekDefinition_0083d900_test.cpp'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/83/CThingPhysicalSwitch_PeekDefinition_0083d900.cpp'
+        TestSource = '00/83/CThingPhysicalSwitch_PeekDefinition_0083d900_test.cpp'
         PassPattern = '0083d900_TEST PASS'
     }
     [pscustomobject]@{
@@ -250312,8 +250312,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0082d6b0'
         Module = 'CThingBuilding'
-        Source = '00/82/CThingBuilding_GetMaterial_0082d6b0.cpp'
-        TestSource = '00/82/CThingBuilding_GetMaterial_0082d6b0_test.cpp'
+        Source = '00/82/CThingBuilding_GetMaterialOnHitByMelee_0082d6b0.cpp'
+        TestSource = '00/82/CThingBuilding_GetMaterialOnHitByMelee_0082d6b0_test.cpp'
         PassPattern = '0082d6b0_TEST PASS'
     }
     [pscustomobject]@{

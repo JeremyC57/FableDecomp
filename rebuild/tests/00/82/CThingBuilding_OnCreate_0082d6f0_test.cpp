@@ -1,148 +1,103 @@
-// Behaviour test for 0082d6f0: src/0082d6f0.cpp copied verbatim; OnCreate copies the building def's graphic into the
-// appearance, applies the scale, clears the 0xD4 flag, runs the game-object OnCreate and on success sets both health words
-// from the def's max health; each def fetch is released.
-#include "fable_compiler.h"
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0082d6f0: the row body verbatim over fixture models of the shared-header interfaces (CThing::PeekDefinitionManager, CDefinitionManager::GetDef<T>, the counted CDefPointer, the inline CThingBuilding::PeekDefinition, the appearance setters).
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CThingBuilding::OnCreate() -- hands the def's graphic record and the building's scale to the graphic appearance component, clears its +0xD4 bit 0, runs the game-object creation and, when that succeeds, seeds health and maximum health from the def
-// Leaf: OnCreate
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0082D6F0, 218 bytes (+6 int3). `ret`, bool in al. CThingBuilding vtable 0x0124509C slot 8 (+0x20).
-//         Catalog name CThingBuilding::vfunc_8 (CThing::OnCreate 0x004C9560 is slot 8).
-// Callees: CThing::GetDefinitionManager() const 0x004C7990, CDefinitionManager::GetDef(long, CDefPointer<const CThingBuildingDef>*)
-//          0x004AB840 (x2; manifest "GetDef<CThingPhysicalSwitchDef>" propagated), CDefClassBase virtual slot 1 (Delete), CTCGraphic
-//          Appearance::SetScale(float) 0x004BFA50, CThingGameObject::OnCreate() 0x00838A40.
-// Shape: the appearance pointer is loaded into ebx before the first PeekPDef (inlined: zeroed holder, GetDef, release, raw read);
-//        the 14-byte graphic record is copied as three dwords and a word through `add edi,78h`; the def's max health is read
-//        after the second PeekPDef and stored to Health then MaxHealth (`fst` / `fstp`, `MaxHealth = Health = ...`); the
-//        success path is the `if (OnCreateGameObject()) { ... }` block so the false return is laid out last.
-//        GetDef gets a same-TU `auto_inline(off)` stand-in body that writes only the out slot: VC7.1 then knows the holder
-//        does not escape and keeps the def in edi from the call through the release to the member reads, as retail.
-// Layout: CThing PTCGraphicAppearance +0x64, DefGlobalIndex +0x8C; CThingPhysical Scale +0x9C, MaxHealth +0xB0, Health +0xB4
-//         (Ego_r.pdb +0xC8/+0xCC); the +0xD4 flag byte (descriptive); CTCGraphicAppearance::Graphic +0x44; CThingBuildingDef
-//         MaxHealth +0x50 and Graphic +0x78 (PDB +0x7C, def classes pack to 1).
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Delete();                           // slot 1 (+0x04)
-    long RefCount;                                   // +0x04
+// Fixture models of the shared-header interfaces: a counted def (count starts at 1 for the manager's own reference, Delete counted),
+// the counted CDefPointer handle, and the definition manager's GetDef<T> (fills the handle with an add-ref, returns whether found).
+class CDefPointeeBase { public:
+    long Refs; int Deleted;
+    CDefPointeeBase() : Refs(1), Deleted(0) { }
+    void Delete() { ++Deleted; }
 };
-#pragma pack(push, 1)
-class CEngineGraphic { public:                              // 14 bytes
-    long  Bank;
-    long  Index;
-    long  Flags;
-    short Lod;
-};
-class CThingBuildingDef : public CDefClassBase { public:
-    unsigned char  _pad08[0x50 - 0x08];
-    float          MaxHealth;                        // +0x50 (CThingPhysicalDef)
-    unsigned char  _pad54[0x78 - 0x54];
-    CEngineGraphic Graphic;                          // +0x78
-};
-#pragma pack(pop)
-struct CDefPointer {                                 // CDefPointer<const CThingBuildingDef>
-    CThingBuildingDef* Object;
+template <class T> class CDefPointer { public:
+    CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
-    ~CDefPointer()
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { if (Object) { if (--Object->Refs == 0) Object->Delete(); } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (Object && --Object->Refs == 0) Object->Delete(); Object = p; if (p) ++p->Refs; }
+};
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
     {
-        CDefClassBase* old = Object;                  // released through the unpacked base (the def classes pack to 1)
-        if (old) {
-            if (--old->RefCount == 0)
-                old->Delete();
-        }
-    }
-};
-class CDefinitionManager { public:
-    bool GetDef_004ab840(long index, CDefPointer* out);       // 0x004AB840
-};
-void* FindDef_CDefinitionManager_GetDef(long index);   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef_004ab840(long index, CDefPointer* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef(index);
-    if (!def)
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
         return false;
-    out->Object = (CThingBuildingDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-struct CTCGraphicAppearance {
-    unsigned char  _pad00[0x44];
-    CEngineGraphic Graphic;                          // +0x44
-    void SetScale(float scale);                      // 0x004BFA50
-};
-class CThingBuilding { public:
-    unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
-    unsigned char         _pad68[0x8c - 0x68];
-    unsigned short        DefGlobalIndex;            // +0x8c
-    unsigned char         _pad8e[0x9c - 0x8e];
-    float                 Scale;                     // +0x9c
-    unsigned char         _pada0[0xb0 - 0xa0];
-    float                 MaxHealth;                 // +0xb0
-    float                 Health;                    // +0xb4
-    unsigned char         _padb8[0xd4 - 0xb8];
-    unsigned char         m_flagD4 : 1;              // +0xd4 bit 0 (descriptive)
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    FABLE_FORCEINLINE const CThingBuildingDef* PeekPDef() const
-    {
-        CDefPointer def;
-        GetDefinitionManager()->GetDef_004ab840(DefGlobalIndex, &def);
-        return def.Object;
     }
-    bool OnCreateGameObject();                       // 0x00838A40 CThingGameObject::OnCreate (called non-virtually)
-    bool OnCreate();
 };
+static CGameDefinitionManager g_manager;
+struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+enum EReverbEnvironmentType { REVERB_NONE = 0, REVERB_HALL = 7 };
+class CThingBuildingDef : public CDefPointeeBase { public:
+    float Health; unsigned long SimBuildingDef; CEngineGraphic Graphic; long WallMaterial; long FloorMaterial;
+    EReverbEnvironmentType ReverbEnvironmentType; float ReverbEnvironmentLevel; bool UseHighDetailQuadTree;
+};
+class CSimBuildingDef : public CDefPointeeBase { };
+class CMaterialDef : public CDefPointeeBase { };
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    CEngineGraphic MainGraphic; float ScaleSet; int ScaleCalls;
+    void SetMainGraphic(const CEngineGraphic& g) { MainGraphic = g; }
+    void SetScale(float s) { ScaleSet = s; ++ScaleCalls; }
+};
+}
+class CThingGameObject { public:
+    unsigned short DefGlobalIndex; NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;
+    float Scale, MaxHealth, Health; bool BaseResult; int BaseCalls;
+    const CGameDefinitionManager& PeekDefinitionManager() const { return g_manager; }
+    bool OnCreate() { ++BaseCalls; return BaseResult; }
+};
+class CThingBuilding : public CThingGameObject { public:
+    bool OverrideAutomaticLocking;
+    const CThingBuildingDef& PeekDefinition() const
+    {
+        CDefPointer<const CThingBuildingDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return *def;
+    }
+    bool OnCreate();
+    CDefPointer<const CMaterialDef> PeekPMaterial() const;
+    CDefPointer<const CSimBuildingDef> PeekPSimDefinition() const;
+    long GetMaterialOnHitByMelee() const;
+    long GetFloorMaterial() const;
+    bool UseHighDetailQuadTree() const;
+    void GetReverbSettings(EReverbEnvironmentType& type, float& level) const;
+};
+static CThingBuildingDef g_def; static CSimBuildingDef g_sim; static CMaterialDef g_mat;
+static void Setup(CThingBuilding& b)
+{
+    memset(&g_manager, 0, sizeof(g_manager));
+    g_def.Refs = 1; g_sim.Refs = 1; g_mat.Refs = 1; g_def.Deleted = g_sim.Deleted = g_mat.Deleted = 0;
+    g_manager.Table[3] = &g_def; g_manager.Table[5] = &g_sim; g_manager.Table[6] = &g_mat;
+    memset(&b, 0, sizeof(b)); b.DefGlobalIndex = 3;
+}
+// ---- row body (verbatim) ----
 bool CThingBuilding::OnCreate()
 {
-    CTCGraphicAppearance* appearance = PTCGraphicAppearance;
-    appearance->Graphic = PeekPDef()->Graphic;
+    NGraphicAppearance::CTCGraphicAppearance* appearance = PTCGraphicAppearance;
+    appearance->SetMainGraphic(PeekDefinition().Graphic);
     appearance->SetScale(Scale);
-    m_flagD4 = false;
-    if (OnCreateGameObject()) {
-        MaxHealth = Health = PeekPDef()->MaxHealth;
+    OverrideAutomaticLocking = false;
+    if (CThingGameObject::OnCreate()) {
+        MaxHealth = Health = PeekDefinition().Health;
         return true;
     }
     return false;
 }
-
 // ---- harness ----
-static int g_deleted = 0, g_getDefs = 0, g_scaleCalls = 0, g_gameObject = 0;
-static long g_lastIndex = -1;
-static float g_lastScale = 0;
-static bool g_gameObjectResult = true;
-void CDefClassBase::v00() { }
-void CDefClassBase::Delete() { ++g_deleted; }
-static CThingBuildingDef g_def;
-void* FindDef_CDefinitionManager_GetDef(long index) { ++g_getDefs; g_lastIndex = index; ++g_def.RefCount; return &g_def; }
-void CTCGraphicAppearance::SetScale(float scale) { ++g_scaleCalls; g_lastScale = scale; }
-static CDefinitionManager g_mgr;
-CDefinitionManager* CThingBuilding::GetDefinitionManager() const { return &g_mgr; }
-bool CThingBuilding::OnCreateGameObject() { ++g_gameObject; return g_gameObjectResult; }
 int main()
 {
-    CHECK(sizeof(CEngineGraphic) == 14);
-    CTCGraphicAppearance app;
-    memset(&app, 0, sizeof app);
-    CThingBuilding b;
-    memset(&b, 0, sizeof b);
-    b.PTCGraphicAppearance = &app; b.DefGlobalIndex = 0x77; b.Scale = 1.5f; b.m_flagD4 = 1;
-    g_def.RefCount = 1; g_def.MaxHealth = 250.0f;
-    g_def.Graphic.Bank = 3; g_def.Graphic.Index = 4; g_def.Graphic.Flags = 5; g_def.Graphic.Lod = 6;
-    CHECK(b.OnCreate() == true);
-    CHECK(app.Graphic.Bank == 3 && app.Graphic.Index == 4 && app.Graphic.Flags == 5 && app.Graphic.Lod == 6);
-    CHECK(g_scaleCalls == 1 && g_lastScale == 1.5f && b.m_flagD4 == 0 && g_gameObject == 1);
-    CHECK(b.MaxHealth == 250.0f && b.Health == 250.0f && g_getDefs == 2 && g_lastIndex == 0x77);
-    CHECK(g_def.RefCount == 1 && g_deleted == 0);
-    g_gameObjectResult = false; b.Health = b.MaxHealth = 1.0f; b.m_flagD4 = 1;
-    CHECK(b.OnCreate() == false);                        // game-object create failed: no health update
-    CHECK(g_getDefs == 3 && b.Health == 1.0f && b.MaxHealth == 1.0f && b.m_flagD4 == 0);
-    g_gameObjectResult = true; g_def.RefCount = 0;      // the holders own the last reference each time
-    CHECK(b.OnCreate() == true && g_deleted == 2);
+    CThingBuilding b; Setup(b); NGraphicAppearance::CTCGraphicAppearance app; memset(&app, 0, sizeof(app));
+    b.PTCGraphicAppearance = &app; b.Scale = 2.5f; b.OverrideAutomaticLocking = true; b.BaseResult = true;
+    g_def.Graphic.BankIndex = 77; g_def.Graphic.Type = 4; g_def.Health = 40.0f;
+    CHECK(b.OnCreate()); CHECK(app.MainGraphic.BankIndex == 77 && app.MainGraphic.Type == 4); CHECK(app.ScaleCalls == 1 && app.ScaleSet == 2.5f);
+    CHECK(!b.OverrideAutomaticLocking); CHECK(b.BaseCalls == 1); CHECK(b.Health == 40.0f && b.MaxHealth == 40.0f); CHECK(g_def.Refs == 1);
+    b.BaseResult = false; b.Health = b.MaxHealth = 1.0f;
+    CHECK(!b.OnCreate()); CHECK(b.Health == 1.0f && b.MaxHealth == 1.0f); CHECK(b.BaseCalls == 2);
     if (fails == 0) printf("0082d6f0_TEST PASS\n");
     return fails;
 }

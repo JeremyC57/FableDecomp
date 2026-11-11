@@ -1,177 +1,137 @@
-// Behaviour test for 0083b520: src/0083b520.cpp copied verbatim; the state sub-def's graphic is used when it has a bank,
-// else the village def's; the result is cached in CurrentGraphic, and every def reference taken is released.
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0083b520: the row body verbatim over fixture models of the shared-header interfaces (CThing::PeekDefinitionManager, CDefinitionManager::GetDef<T>, the counted CDefPointer, the base-class calls the row makes by name, CDefClassBase::GetSubDef<CAppearanceDef>).
+#include <stdio.h>
+#include <string.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CThingVillage::GetCurrentGraphic() -- the village's current map graphic: the state sub-def's graphic when it has one, else the village def's own graphic; cached in CurrentGraphic and returned by reference
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0083B520, length 228 bytes (240 with padding).
-// Callees: CDefClassBase::GetSubDef<T> @ 0x0042B0A2 (on the base def, out pointer), CThing::GetDefinitionManager
-// @ 0x004C7990 (manifest "CViewBase::GetDisplayEngine" is propagated), CDefinitionManager::GetDef<T>(long,
-// CDefPointer<T>*) @ 0x0083B970, the defs' virtual Destroy (slot 1, +4).
-// Layout: retail CThing PBaseDef +0x70, DefGlobalIndex (ushort) +0x8c (Ego_r.pdb - 0x10); CThingVillage
-// CurrentGraphic +0xd0 (PDB 0xe8 - 0x18); CEngineGraphic is 14 packed bytes {BankIndex, AnimStep, RenderSizeX,
-// AdditiveAlpha, Type}; the state sub-def holds one at +0x25 (unaligned), the village def at +0x70 (descriptive).
-// Shape: the sub-def out pointer is tested straight from the holder (no `found` local: with one the state def lands in
-// ebp, not ebx) and released by hand on both exits (the dereference drops the null test on the first);
-// the village def is read through a by-value counted copy
-// (`.Object`: add-ref and release share one null test, both count stores kept, as the landed 0x0070B4D0); BankIndex
-// is tested unsigned (`> 0` -> `jbe`).
-// GetSubDef and GetDef get same-TU `auto_inline(off)` stand-in bodies that write only the out slot: VC7.1 then knows
-// neither holder escapes, keeps the state def in ebx and the village def in esi, and shares one 4-byte frame word
-// between both out pointers, as retail.
-#pragma pack(push, 1)
-class CEngineGraphic { public:                                     // 14 bytes
-    unsigned long BankIndex;                                // +0x00
-    float         AnimStep;                                 // +0x04
-    float         RenderSizeX;                              // +0x08
-    bool          AdditiveAlpha;                            // +0x0c
-    unsigned char Type;                                     // +0x0d
-};
-#pragma pack(pop)
-
+// Fixture models of the shared-header interfaces: a counted def (count starts at 1 for the manager's own reference, Delete counted),
+// the counted CDefPointer handle, and the definition manager's GetDef<T> (fills the handle with an add-ref, returns whether found).
 class CDefPointeeBase { public:
-    virtual void Destroy0();
-    virtual void Destroy();                                 // slot 1 (+0x04)
-    long RefCount;                                          // +0x04
-    void AddRef() { ++RefCount; }
-    void Release() { if (--RefCount == 0) Destroy(); }
+    long Refs; int Deleted;
+    CDefPointeeBase() : Refs(1), Deleted(0) { }
+    void Delete() { ++Deleted; }
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
+    CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->Refs; }
+    ~CDefPointer() { if (Object) { if (--Object->Refs == 0) Object->Delete(); } }
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+    bool IsNull() const { return Object == 0; }
+    void Set(CDefPointeeBase* p) { if (Object && --Object->Refs == 0) Object->Delete(); Object = p; if (p) ++p->Refs; }
 };
-template <class T> struct CCountedDefPointer {              // the by-value CDefPointer<T> copy
-    T* Object;
-    CCountedDefPointer(T* object) : Object(object) { if (Object) Object->AddRef(); }
-    ~CCountedDefPointer() { if (Object) Object->Release(); }
-};
-
-#pragma pack(push, 1)
-struct CVillageStateDef : CDefPointeeBase {                 // the base def's graphic sub-def (descriptive)
-    unsigned char  _pad08[0x25 - 0x08];
-    CEngineGraphic Graphic;                                 // +0x25
-};
-#pragma pack(pop)
-class CThingVillageDef : public CDefPointeeBase { public:
-    unsigned char  _pad08[0x70 - 0x08];
-    CEngineGraphic Graphic;                                 // +0x70 (descriptive)
-};
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CVillageStateDef>* out) const;   // 0x0042B0A2
-};
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingVillageDef>* out);   // 0x0083B970
-};
-
-void* FindSubDef_CThingBaseDef_GetSubDef(const CThingBaseDef* def);       // stand-in callees of the stand-in bodies below
-void* FindDef_CDefinitionManager_GetDef(long index);
-// Stand-in bodies (the real ones are out of line in retail): they write the out slot only, so VC7.1 knows the def
-// pointers' addresses do not escape the calls (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CVillageStateDef>* out) const
-{
-    void* def = FindSubDef_CThingBaseDef_GetSubDef(this);
-    if (!def)
-        return false;
-    out->Object = (CVillageStateDef*)def;
-    return true;
-}
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingVillageDef>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef(index);
-    if (!def)
-        return false;
-    out->Object = (CThingVillageDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThing { public:
-    unsigned char  _pad00[0x70];
-    CThingBaseDef* PBaseDef;                                // +0x70
-    unsigned char  _pad74[0x8c - 0x74];
-    unsigned short DefGlobalIndex;                          // +0x8c
-    CDefinitionManager* GetDefinitionManager();            // 0x004C7990
-};
-
-class CThingVillage : public CThing { public:
-    unsigned char  _pad90[0xd0 - 0x90];                    // (CThing is 0x90 bytes)
-    CEngineGraphic CurrentGraphic;                          // +0xd0
-    const CEngineGraphic& GetCurrentGraphic();
-};
-
-const CEngineGraphic& CThingVillage::GetCurrentGraphic()
-{
-    CDefPointer<CVillageStateDef> out;
-    if (PBaseDef->GetSubDef(&out) && out.Object->Graphic.BankIndex > 0) {
-        CVillageStateDef* state = out.Object;
-        CurrentGraphic = state->Graphic;
-        if (state) {
-            if (--state->RefCount == 0)
-                state->Destroy();
-        }
-        return CurrentGraphic;
-    }
+class CGameDefinitionManager { public:
+    CDefPointeeBase* Table[16]; mutable long Calls; mutable long LastIndex;
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
     {
-        CDefPointer<CThingVillageDef> defOut;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, &defOut);
-        CThingVillageDef* def = CCountedDefPointer<CThingVillageDef>(defOut.Object).Object;
-        CurrentGraphic = def->Graphic;
-        if (def) {
-            if (--def->RefCount == 0)
-                def->Destroy();
-        }
+        ++Calls; LastIndex = index;
+        if (index > 0 && index < 16 && Table[index]) { out->Set(Table[index]); return true; }
+        return false;
     }
-    CVillageStateDef* state = out.Object;
-    if (state) {
-        if (--state->RefCount == 0)
-            state->Destroy();
+};
+static CGameDefinitionManager g_manager;
+struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) { } };
+class CPersistContext { public: long Mode; bool IsSaving() const { return Mode == 1 || Mode == 3; } };
+class CThingObjectDef : public CDefPointeeBase { public: float Health; long Material; };
+class CThingHolySiteDef : public CDefPointeeBase { public: bool PlayerStart; };
+class CThingCreatureDef : public CDefPointeeBase { public: };
+class CThingPhysicalSwitchDef : public CDefPointeeBase { public: };
+class CThingMarkerDef : public CDefPointeeBase { public: CEngineGraphic Graphic; unsigned long Properties; };
+class CThingVillageDef : public CDefPointeeBase { public: CEngineGraphic Graphic; };
+class CAppearanceDef : public CDefPointeeBase { public: CEngineGraphic Graphic; };
+class CMaterialDef : public CDefPointeeBase { };
+static CAppearanceDef* g_appearance = 0;
+class CThingBaseDef : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const { if (!g_appearance) return false; out->Set(g_appearance); return true; }
+};
+class CThing { public:
+    CDefPointer<const CThingBaseDef> PBaseDef;
+    unsigned short DefGlobalIndex; float MaxHealth, Health; bool BaseResult; int BaseCalls; long LastDef; const char* LastScript;
+    long LastPlayer; unsigned long LastFlags; const char* LastName; CThing* LastCreator; CThing* LastOriginal; bool LastFlag;
+    const CGameDefinitionManager& PeekDefinitionManager() const { return g_manager; }
+};
+typedef CThing CThingPhysicalBase;
+class CThingPhysical : public CThing { public:
+    bool SerialiseGameState(CPersistContext&) { ++BaseCalls; return BaseResult; }
+};
+class CThingGameObject : public CThingPhysical { public:
+    bool ConstructFromLevelScript(const char* s) { ++BaseCalls; LastScript = s; return BaseResult; }
+    bool ConstructFromParams(long d, const C3DVector&, long player, unsigned long flags, const CCharString& name, CThingPhysical* creator,
+                             CThingPhysical* original, bool flag)
+    {
+        ++BaseCalls; LastDef = d; LastPlayer = player; LastFlags = flags; LastName = name.Text; LastCreator = creator; LastOriginal = original;
+        LastFlag = flag; DefGlobalIndex = (unsigned short)d; return BaseResult;
     }
-    return CurrentGraphic;
+};
+class CThingObject : public CThingGameObject { public:
+    CDefPointer<const CThingObjectDef> PDef;
+    const CThingObjectDef& PeekDefinition() const { return *PDef; }
+    bool SerialiseGameState(CPersistContext& context);
+    bool ConstructFromLevelScript(const char* script);
+    CDefPointer<const CMaterialDef> PeekPMaterial() const;
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, unsigned long flags, const CCharString& scriptName);
+};
+class CThingHolySite : public CThingGameObject { public:
+    CDefPointer<const CThingHolySiteDef> Def; unsigned char PlayerStart;
+    const CThingHolySiteDef& PeekDefinition() const { return *Def; }
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, bool playerStart);
+    bool SerialiseGameState(CPersistContext& context);
+    bool ConstructFromLevelScript(const char* script);
+};
+class CThingCreatureBase : public CThingGameObject { public:
+    CDefPointer<const CThingCreatureDef> PDef;
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, CThingPhysical* creator,
+                             CThingPhysical* originalCreator, const CCharString& scriptName, bool flag);
+    bool SerialiseGameState(CPersistContext& context);
+    bool ConstructFromLevelScript(const char* script);
+};
+class CThingDeadCreature : public CThingGameObject { public: const CThingCreatureDef& PeekDefinition() const; };
+class CThingPhysicalSwitch : public CThingGameObject { public: const CThingPhysicalSwitchDef& PeekDefinition() const; };
+class CThingMarker : public CThingGameObject { public:
+    CDefPointer<const CThingMarkerDef> PeekDefinition() const
+    {
+        CDefPointer<const CThingMarkerDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return def;
+    }
+    CEngineGraphic GetCurrentGraphic() const;
+    unsigned long GetProperties() const;
+};
+class CThingVillage : public CThingGameObject { public:
+    mutable CEngineGraphic CurrentGraphic;
+    CDefPointer<const CThingVillageDef> PeekDefinition() const
+    {
+        CDefPointer<const CThingVillageDef> def;
+        PeekDefinitionManager().GetDef(DefGlobalIndex, &def);
+        return def;
+    }
+    const CEngineGraphic* GetCurrentGraphic() const;
+};
+static void Reset() { memset(&g_manager, 0, sizeof(g_manager)); g_appearance = 0; }
+template <class T> static void Zero(T& t) { memset(&t, 0, sizeof(t)); }
+// ---- row body (verbatim) ----
+const CEngineGraphic* CThingVillage::GetCurrentGraphic() const
+{
+    CDefPointer<const CAppearanceDef> appearance;
+    if (PBaseDef->GetSubDef(&appearance) && appearance->Graphic.BankIndex > 0) {
+        CurrentGraphic = appearance->Graphic;
+        return &CurrentGraphic;
+    }
+    CurrentGraphic = PeekDefinition()->Graphic;
+    return &CurrentGraphic;
 }
-
 // ---- harness ----
-static int g_destroyed = 0;
-void CDefPointeeBase::Destroy0() { }
-void CDefPointeeBase::Destroy() { ++g_destroyed; }
-static CVillageStateDef g_state;
-static CThingVillageDef g_village;
-static bool g_haveState = true;
-static long g_lastIndex = -1;
-void* FindSubDef_CThingBaseDef_GetSubDef(const CThingBaseDef*) { if (!g_haveState) return 0; ++g_state.RefCount; return &g_state; }
-void* FindDef_CDefinitionManager_GetDef(long index) { g_lastIndex = index; ++g_village.RefCount; return &g_village; }
-static CDefinitionManager g_mgr;
-CDefinitionManager* CThing::GetDefinitionManager() { return &g_mgr; }
-static void SetGraphic(CEngineGraphic& g, unsigned long bank, float step) { memset(&g, 0, sizeof g); g.BankIndex = bank; g.AnimStep = step; g.RenderSizeX = 2.0f; g.AdditiveAlpha = true; g.Type = 7; }
 int main()
 {
-    CHECK(sizeof(CEngineGraphic) == 14);
-    CThingBaseDef base;
-    CThingVillage v;
-    memset(&v, 0, sizeof v);
-    v.PBaseDef = &base; v.DefGlobalIndex = 0x321;
-    g_state.RefCount = 1; g_village.RefCount = 1;
-    SetGraphic(g_state.Graphic, 5, 0.5f);
-    SetGraphic(g_village.Graphic, 9, 0.25f);
-    const CEngineGraphic& r = v.GetCurrentGraphic();      // state graphic has a bank: use it
-    CHECK(&r == &v.CurrentGraphic && r.BankIndex == 5 && r.AnimStep == 0.5f && r.Type == 7 && r.AdditiveAlpha);
-    CHECK(g_state.RefCount == 1 && g_village.RefCount == 1 && g_lastIndex == -1 && g_destroyed == 0);
-    g_state.Graphic.BankIndex = 0;                        // no bank: fall back to the village def
-    const CEngineGraphic& r2 = v.GetCurrentGraphic();
-    CHECK(&r2 == &v.CurrentGraphic && r2.BankIndex == 9 && r2.AnimStep == 0.25f);
-    CHECK(g_lastIndex == 0x321 && g_state.RefCount == 1 && g_village.RefCount == 1 && g_destroyed == 0);
-    g_haveState = false;                                  // no state sub-def at all
-    g_village.Graphic.BankIndex = 11;
-    CHECK(v.GetCurrentGraphic().BankIndex == 11);
-    CHECK(g_state.RefCount == 1 && g_village.RefCount == 1 && g_destroyed == 0);
-    g_haveState = true; g_state.RefCount = 0; g_village.RefCount = 0;   // holders own the last references
-    g_state.Graphic.BankIndex = 0;
-    CHECK(v.GetCurrentGraphic().BankIndex == 11);
-    CHECK(g_destroyed == 2 && g_state.RefCount == 0 && g_village.RefCount == 0);
-    g_state.Graphic.BankIndex = 3;
-    CHECK(v.GetCurrentGraphic().BankIndex == 3 && g_destroyed == 3);
+    Reset(); CThingVillageDef def; def.Graphic.BankIndex = 5; def.Graphic.Type = 1; g_manager.Table[10] = &def;
+    CThingBaseDef base; CAppearanceDef app; app.Graphic.BankIndex = 9; app.Graphic.Type = 2;
+    CThingVillage v; Zero(v); v.DefGlobalIndex = 10; v.PBaseDef.Set(&base);
+    const CEngineGraphic* g = v.GetCurrentGraphic(); CHECK(g == &v.CurrentGraphic && g->BankIndex == 5 && g->Type == 1);
+    g_appearance = &app; g = v.GetCurrentGraphic(); CHECK(g->BankIndex == 9 && g->Type == 2); CHECK(app.Refs == 1);
+    app.Graphic.BankIndex = 0; g = v.GetCurrentGraphic(); CHECK(g->BankIndex == 5); CHECK(app.Refs == 1 && def.Refs == 1);
+    v.PBaseDef.Object = 0;
     if (fails == 0) printf("0083b520_TEST PASS\n");
     return fails;
 }
