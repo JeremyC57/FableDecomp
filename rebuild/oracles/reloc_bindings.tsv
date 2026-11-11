@@ -38895,3 +38895,6 @@ _c_dfDIMouse2	012addfc	00ab5710
 ?WriteBinary@CParticleSystem@NParticleEngine@@QAEXPAVCDataOutputStream@@@Z	00af4240	00aedaf0
 ?Initialise@CPSCSplineBase@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	00b215a0	00b094b0
 ?Update@CEngineInternalPrimitiveSprite@@UAEXABVCEnginePrimitive@@K@Z	00bad670	00bcdfb0
+?GetObjectWithScriptName@CAIStateGroup_ApprenticeHero@@IAEPAVCThingGameObject@@ABVCCharString@@@Z	00929fc0	0092ace0
+_g_LookAtTurnSpeed	0138cba8	0092ace0
+?Add2DLine@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@0JPAVCTexture@@@Z	009dc2c0	009dd960

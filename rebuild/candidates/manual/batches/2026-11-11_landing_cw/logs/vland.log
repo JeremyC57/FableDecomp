@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0092ace0   RELOCATION_MATCH PASS   GoToLibrary
+009dd960   RELOCATION_MATCH PASS   Draw2DLine
+00dd9520   RELOCATION_MATCH PASS   SplittingUpCutscene
+WINS: 3
+  0092ace0 RELOCATION_MATCH CAIStateGroup_ApprenticeHero::?GoToLibrary@CAIStateGroup_ApprenticeHero@@IAE_NXZ
+  009dd960 RELOCATION_MATCH CRenderManager2D::?Draw2DLine@CRenderManager2D@@QAE_NABVC2DVector@@0ABVCRGBColour@@K@Z
+  00dd9520 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::?SplittingUpCutscene@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupApprenticeHero_GoToLibrary_0092ace0
+  CRenderManager2D_Draw2DLine_009dd960
+  NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520

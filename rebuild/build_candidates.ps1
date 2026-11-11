@@ -393122,6 +393122,27 @@ $catalog = @(
         TestSource = '00/d9/NScriptCQHobbeCaveScriptCHobbeRoaming_Main_00d91960_test.cpp'
         PassPattern = '00d91960_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0092ace0'
+        Module = 'CAIStateGroup_ApprenticeHero'
+        Source = '00/92/CAIStateGroupApprenticeHero_GoToLibrary_0092ace0.cpp'
+        TestSource = '00/92/CAIStateGroupApprenticeHero_GoToLibrary_0092ace0_test.cpp'
+        PassPattern = '0092ace0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009dd960'
+        Module = 'CRenderManager2D'
+        Source = '00/9d/CRenderManager2D_Draw2DLine_009dd960.cpp'
+        TestSource = '00/9d/CRenderManager2D_Draw2DLine_009dd960_test.cpp'
+        PassPattern = '009dd960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd9520'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520_test.cpp'
+        PassPattern = '00dd9520_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
