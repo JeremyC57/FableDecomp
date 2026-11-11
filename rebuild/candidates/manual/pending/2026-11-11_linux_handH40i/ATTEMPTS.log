@@ -1,0 +1,10 @@
+2026-11-11_08:59:33 00507c30 507_0.cpp flags=[] DIFFER(7677v7661) masked diff lines 185 (9 normalised, 8 hunks) -- baseline regrade of prevH differ draft
+2026-11-11_09:11:14 00507c30 507_1.cpp flags=[] DIFFER(7661v7661) nd 4 lines/4 hunks -- unused 'CCharString error' is a CParsedItem (12 bytes, String +8; FABLE_RETAIL_CPARSEDITEM implicit ctor): frame 0x1BC = retail
+2026-11-11_09:12:54 00507c30 507_2.cpp flags=[] DIFFER(7661v7661) nd 2 lines/2 hunks -- CurrentUniqueID through FableWin's inline CThingManager::SetCurrentThingUID (hdr opt-in): loop-entry lea/store schedule = retail
+2026-11-11_09:13:31 00507c30 507_3.cpp flags=[] DIFFER(7660v7661) nd 50 lines -- no named text (buffer[0] at each use): ebp/ebx swap through the tail; reverted
+2026-11-11_09:19:59 00507c30 507_4.cpp flags=[] DIFFER(7661v7661) nd 2 lines -- text = buffer.begin(): inert (post-loop reload order ebp/ebx/edi v retail ebp/edi/ebx)
+2026-11-11_09:21:01 00507c30 507_5.cpp flags=[] DIFFER(7660v7661) nd 50 lines -- text named after the Read (buffer[0] in Read/terminator): ebp/ebx swap as 507_3; reverted
+2026-11-11_09:29:35 00c4f600 c0.cpp flags=[] DIFFER(9204v9204) nd 83 lines (jump-table data masking ~70; real: ROOM/ROOMHF/ROOMLF data-reload rotation) -- baseline regrade
+2026-11-11_09:32:42 00507c30 507_6.cpp flags=[] DIFFER(7661v7661) nd 2 lines -- 'long size = length' local: reload order becomes edi/ebp/ebx (= ascending c2 piece ids local #293 < file #295 < this #296; confirms the order follows piece ids)
+2026-11-11_09:44:20 00d0f640 d0.cpp flags=[] DIFFER(2131v2101) nd 108 lines/24 hunks -- baseline regrade (unchanged)
+2026-11-11_09:44:35 00e50fd0 e0.cpp flags=[] DIFFER(9850v9885) nd ~99 lines -- baseline regrade (unchanged; const-0 v vtable register)
