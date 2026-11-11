@@ -1,0 +1,10 @@
+address	name	evidence
+00b51570	CEngineWeatherRenderer::BuildBuffers	Ego_r + FableWin ?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ; RELOCATION_MATCH (chunk 2005)
+00a4d920	C3DAnimation2::CalcLocalBoneTransformationRelative	Ego_r + FableWin ?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z; body shape (ConvertTimeToFrames + keyframe interpolate + mesh rest keyframe) 1341v1341 at 2 lines
+00ab2520	C3DAnimationBuilder::BuildMeshAnimation	Ego_r + FableWin ?BuildMeshAnimation@C3DAnimationBuilder@@QAEKAAVCOutputAnimation@N3DAnimationBuilder@@PBVC3DAnimationSequence@@KABVC3DMesh2@@_NAAVCSimpleMemoryPool@@@Z; 1265v1265
+00ab1cc0	C3DAnimationBuilder::BuildBoneInfoTree	Ego_r + FableWin ?BuildBoneInfoTree@C3DAnimationBuilder@@AAE?AV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@ABVC3DMesh2@@AAV?$CArray@V?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@@@Z; reconstructed body RELOCATION_MATCHes 612 bytes (replaces forge-autoname4 guess BuildEntityScriptBindings_FromVertexIndices)
+00a12ee0	CPhysicsMeshObject::GetNavigationLevelVolumes	Ego_r + FableWin ?GetNavigationLevelVolumes@CPhysicsMeshObject@@QBEXAAV?$CVectorMap@JV?$CCountedPointer@VCContainmentVolume@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@@@Z; 1118v1144 shape match
+004978a0	GFFloatRandom	Ego_r + FableWin ?GFFloatRandom@@YIMMPAK@Z; inline body in hdr/engine/GFFloatRandom.h RELOCATION_MATCHes the COMDAT (already bound)
+00a42140	CPlane::Initialise	Ego_r + FableWin ?Initialise@CPlane@@QAE_NABVC3DVector@@M@Z; called from 0x00A13094 with (normal, normal.Dot(point))
+00a752d0	CContainmentVolume::CContainmentVolume	already bound (vtable 0x0129DC94, RTTI .?AVCContainmentVolume@@); ctor after new(0x10) at 0x00A13195
+00a755c0	CContainmentVolume::Initialise	Ego_r + FableWin ?Initialise@CContainmentVolume@@QAE_NPBVCPlane@@KPAVCMovableResourceMemoryPool@@@Z; called at 0x00A131E1 with (planes, plane_count, 0)

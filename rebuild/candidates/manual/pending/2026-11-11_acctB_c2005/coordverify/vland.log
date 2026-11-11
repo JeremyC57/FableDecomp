@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b51570   WARN RELOC_NAME: ?GetVertexBufferMemPool@CEngineResourceManager@@QAE?AW4EVertexBufferPool@@XZ -> 00b3b090 labelled '_global::ReturnConst_1_00b3b090'
+00b51570   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00b51570   RELOCATION_MATCH PASS   BuildBuffers
+
+WINS: 1
+  00b51570 RELOCATION_MATCH CEngineWeatherRenderer::?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ
