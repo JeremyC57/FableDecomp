@@ -38987,3 +38987,4 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?erase@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAE?AU?$_List_iterator@VCMaintainedEvent@@U?$_Nonconst_traits@VCMaintainedEvent@@@std@@@2@U32@@Z	009e47e0	00a66fd0
 ?insert@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAE?AU?$_List_iterator@VCMaintainedEvent@@U?$_Nonconst_traits@VCMaintainedEvent@@@std@@@2@U32@@Z	009e4a20	00a66fd0
 ?push_back@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ	009e4aa0	00a66fd0
+??$GFReadVectorMapMemDump@VCTextureMorph@CRandomAppearanceMorph@@KV?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@YIXAAVCMemoryDataInputStream@@AAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@@Z	0086deb0	0086bfb0

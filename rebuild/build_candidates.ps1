@@ -392791,6 +392791,13 @@ $catalog = @(
         TestSource = '00/a6/CMouse_ProcessMaintainedEventsFromEvent_00a66fd0_test.cpp'
         PassPattern = '00a66fd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0086bfb0'
+        Module = 'CRandomAppearanceMorph'
+        Source = '00/86/CRandomAppearanceMorph_TransferBinaryIn_0086bfb0.cpp'
+        TestSource = '00/86/CRandomAppearanceMorph_TransferBinaryIn_0086bfb0_test.cpp'
+        PassPattern = '0086bfb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
