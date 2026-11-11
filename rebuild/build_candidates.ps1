@@ -392228,6 +392228,41 @@ $catalog = @(
         TestSource = '00/c4/CAudioObject_AttachConfiguredBackend_00c43b30_test.cpp'
         PassPattern = '00c43b30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d5e0c0'
+        Module = 'NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_Main_00d5e0c0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_Main_00d5e0c0_test.cpp'
+        PassPattern = '00d5e0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd6a60'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Main_00dd6a60.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Main_00dd6a60_test.cpp'
+        PassPattern = '00dd6a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de4cb0'
+        Module = 'NScript::CQ_RansomVictimScript::CVictimsFather'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictimsFather_Main_00de4cb0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictimsFather_Main_00de4cb0_test.cpp'
+        PassPattern = '00de4cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e58d40'
+        Module = 'NScript::CV_BeggarAndChildScript::CLookoutPointBeggar'
+        Source = '00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_Main_00e58d40.cpp'
+        TestSource = '00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_Main_00e58d40_test.cpp'
+        PassPattern = '00e58d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5b3b0'
+        Module = 'NScript::CV_BeggarAndChildScript::CBeggarBully'
+        Source = '00/e5/NScriptCVBeggarAndChildScriptCBeggarBully_Main_00e5b3b0.cpp'
+        TestSource = '00/e5/NScriptCVBeggarAndChildScriptCBeggarBully_Main_00e5b3b0_test.cpp'
+        PassPattern = '00e5b3b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,6 @@
+address	name	evidence
+00D5E0C0	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::Main	chunk H40: Ego_r.pdb + FableWin.pdb; entity vtable slot 1
+00DD6A60	NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture::Main	chunk H40: Ego_r.pdb + FableWin.pdb; entity vtable slot 1
+00DE4CB0	NScript::CQ_RansomVictimScript::CVictimsFather::Main	chunk H40: Ego_r.pdb + FableWin.pdb; entity vtable slot 1
+00E58D40	NScript::CV_BeggarAndChildScript::CLookoutPointBeggar::Main	chunk H40: Ego_r.pdb + FableWin.pdb; entity vtable slot 1
+00E5B3B0	NScript::CV_BeggarAndChildScript::CBeggarBully::Main	chunk H40: Ego_r.pdb + FableWin.pdb; entity vtable slot 1

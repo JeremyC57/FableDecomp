@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00d5e0c0   WARN RELOC_NAME: ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac2d0 labelled 'CUnprovenContainer_009ac2d0::CUnprovenContainer_009ac2d0'
+00d5e0c0   WARN RELOC_NAME: ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac310 labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+00d5e0c0   RELOCATION_MATCH PASS   Main
+00dd6a60   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dd6a60   RELOCATION_MATCH PASS   Main
+00de4cb0   RELOCATION_MATCH PASS   Main
+00e58d40   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e58d40   RELOCATION_MATCH PASS   Main
+00e5b3b0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e5b3b0   RELOCATION_MATCH PASS   Main
+
+WINS: 5
+  00d5e0c0 RELOCATION_MATCH NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::?Main@CTheRealGuildmaster@CQ_GuildTrainingWillScript@NScript@@EAEXXZ
+  00dd6a60 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture::?Main@CMotherTorture@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00de4cb0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsFather::?Main@CVictimsFather@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00e58d40 RELOCATION_MATCH NScript::CV_BeggarAndChildScript::CLookoutPointBeggar::?Main@CLookoutPointBeggar@CV_BeggarAndChildScript@NScript@@EAEXXZ
+  00e5b3b0 RELOCATION_MATCH NScript::CV_BeggarAndChildScript::CBeggarBully::?Main@CBeggarBully@CV_BeggarAndChildScript@NScript@@EAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_Main_00d5e0c0
+  NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Main_00dd6a60
+  NScriptCQRansomVictimScriptCVictimsFather_Main_00de4cb0
+  NScriptCVBeggarAndChildScriptCLookoutPointBeggar_Main_00e58d40
+  NScriptCVBeggarAndChildScriptCBeggarBully_Main_00e5b3b0

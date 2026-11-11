@@ -1,0 +1,2 @@
+address	length	name	evidence
+00e58d40	9616	NScript::CV_BeggarAndChildScript::CLookoutPointBeggar::Main	the catalog row (9808) runs over the next three functions: Main ends with its two jump tables at 0x00E5B2D0, where the landed CBeggarBully::Alloc 0x00E5B2D0 starts (then GetParentScript 0x00E5B370, Init 0x00E5B380)

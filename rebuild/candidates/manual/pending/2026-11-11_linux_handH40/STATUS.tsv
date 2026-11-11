@@ -1,0 +1,41 @@
+address	name	grade	grades_used	note
+0x00F0FB70	NScript::CQ_ArenaScript::Main	parked, draft untouched	1	DIFFER(18320v18144) 895 lines
+0x00E64FB0	NScript::CV_ChickenKickingScript::CChickenMaster::Main	parked, draft untouched	1	DIFFER(15054v15210) 461 lines -- header debt (hand818/820 CScriptGameResourceObjectScriptedThingBase.h opt-in not carried; the draft was 16 lines with it)
+0x00E40E80	NScript::CV_BordelloScript::CMagicman::Main	parked, draft untouched	1	DIFFER(14772v15104) 220 lines
+0x00D5E0C0	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::Main	RELOCATION_MATCH	28	src + test: timers in a block, break exit, final return and last movie declaration under in-body inline_depth(0), final answer wait as guarded do-while
+0x00E20600	NScript::CQR_EscortTraderScript::CTraderToEscort::Main	DIFFER(14478v14510) 355 lines	3	differ: predicate lever (504 -> 355); needs the base vtable store NOVTABLE drops
+0x00502E90	CWorldMap::PopulateRegionWithVillagers	parked, draft untouched	1	not graded: grade stopped with the hung loop (hand879 overlay not carried)
+0x006096E0	CTCInventoryMap::ConstructLogbookListPC	parked, draft untouched	1	SRC_FAIL -- header debt (hand883 overlay: CDefClassBase::GetSubDef)
+0x0061E6D0	CTCInventoryQuests::ConstructQuestListPC	parked, draft untouched	0	not graded: missing engine/CQuestCardDef.h (hand882 overlay)
+0x00D5AE70	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::Main	parked, draft untouched	2	DIFFER(11636v11636) 127 lines
+0x00E4B5B0	NScript::CV_BanditTollScript::CTollBandit::Main	parked, draft untouched	1	DIFFER(10631v10594) 697 lines
+0x00E3BB70	NScript::CV_BordelloScript::CMadame::Main	DIFFER(10085v10149) 595 lines	5	differ: predicate lever (656 -> 595); per-scene movie split left
+0x00E50FD0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main	DIFFER(10022v9885) 224 lines	4	differ: predicate + spawn ctor levers (281 -> 224); movie split left
+0x00D973D0	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main	DIFFER(9883v9821) 1170 lines	7	differ: predicate lever (1932 -> 1170); frame-slot order left
+0x00E58D40	NScript::CV_BeggarAndChildScript::CLookoutPointBeggar::Main	RELOCATION_MATCH (extent 9616, SPLITS.tsv)	4	src + test: same lever; the catalog extent 9808 runs over three following functions, q.py / gall.sh therefore print DIFFER(9616v9793): grade with the SPLITS extent (tools/md.py)
+0x00D3E2E0	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::Main	DIFFER(9792v9633) 539 lines	10	differ: predicate lever (646 -> 539); catalog extent suspect (draft graded against 9440)
+0x00603000	CTCInventoryMap::CreateMiniMapMarkers	parked, draft untouched	0	not graded: cl hangs (missing engine/CThingFilter_HasInformation.h, CThingFilter_EnemyCreature.h of the hand729 overlay); stopped
+0x00DFE0F0	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::Main	DIFFER(9501v9501) 11 lines	2	differ: draft unchanged, diagnosis refined (second cross-jump pass needs one return block for the B / C arms)
+0x00E5FD40	NScript::CV_BodyGuardScript::CBodyGuard::Main	parked, draft untouched	1	SRC_FAIL -- header debt (hand815 CV_BodyGuardScript.h opt-in)
+0x0078FD60	CTCDivineWrath::FrameUpdate	parked, draft untouched	0	not reached (no source yet)
+0x00E33EA0	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main	DIFFER(9303v9228) 323 lines	4	differ: draft unchanged (spawn ctor specialization alone 1028, with predicate region 1018)
+0x00C4F600	PropertySerializer_GetPropertyTypeCode	parked, draft untouched	1	DIFFER(9204v9204) 85 lines by tools/md.py (6 hunks; the chunk 878 count is 10 lines)
+0x00B10B10	NParticleEngine::CPSCEmitterGeneric::GenerateParticle	parked, draft untouched	1	SRC_FAIL -- header debt (hand741 C3DVector.h opt-in: Clear)
+0x00D0F640	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre	parked, draft untouched	1	DIFFER(1945v8930) -- the catalog extent 8944 covers far more than the 2101-byte function the chunk 855 draft models
+0x00E84B80	NScript::CV_FisticuffsClubScript::CFisticuffsMember::Main	DIFFER(8852v8836) 55 lines	38	differ: byte-exact to 0x00E8697B (132 -> 55); exit pads laid after the loop instead of before the tail
+0x00E2FF00	NScript::CV_AmbushScamScript::CAS_Buddy::Main	DIFFER(8327v8567) 165 lines	10	differ: spawn ctors solved (explicit specialization under inline_depth(0)), byte-exact to 0x00E3033C; two in-place expanded exits left
+0x00CF68C0	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::Main	parked, draft untouched	1	DIFFER(8210v8070) 1472 lines
+0x00E6BC50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil::Main	parked, draft untouched	1	DIFFER(7692v7655) 23 lines
+0x00507C30	CWorldMap::CWorldMap::LoadFromFile	parked, draft untouched	0	not reached (no source yet)
+0x00D647F0	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::Main	parked, draft untouched	1	DIFFER(7405v7389) 201 lines
+0x00E5B3B0	NScript::CV_BeggarAndChildScript::CBeggarBully::Main	RELOCATION_MATCH	20	src + test: inline_depth(0) round the CIsThingAlive ctor + FABLE_RETAIL_CPREDICATEBASE_NOVTABLE + IMPLICIT_COPY
+0x00DB97A0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Main	DIFFER(6964v7013) 888 lines (draft 587)	6	differ: predicate solved, exposes an esi / edi colouring swap (zero constant v filter vtable) + 4-byte frame
+0x00D13580	NScript::CQ_BountyHuntScript::Main	parked, draft untouched	1	SRC_FAIL -- header debt (hand812 CQ_BountyHuntScript.h opt-in: WatchForQuestFailure)
+0x00DE4CB0	NScript::CQ_RansomVictimScript::CVictimsFather::Main	RELOCATION_MATCH	7	src + test: same + row-local inline ~CScriptThing outside the region
+0x00DBB310	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::Main	DIFFER(6527v6639) 141 lines	11	differ: draft unchanged (lever is byte-neutral here; inline ~CScriptThing gives 386)
+0x00B03CA0	NParticleEngine::CPSCRenderMesh::PreparePrimitives	parked, draft untouched	1	DIFFER(6601v6515) 1022 lines
+0x00DF6010	NScript::CQ_TraderConflictEvilScript::Main	parked, draft untouched	1	DIFFER(6247v6493) 1486 lines
+0x00DD6A60	NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture::Main	RELOCATION_MATCH	4	src + test: inline_depth(0) round the CIsThingAlive ctor and dtor + NOVTABLE
+0x00EC8300	NScript::CV_SickChildScript::CManInLove::Main	DIFFER(6364v6394) 107 lines	12	differ: predicate + by-value copies solved (159 -> 107); &Me register and one pad left
+0x00D8BCD0	NScript::CQ_HerosOldHouseScript::CFishermansWife::Main	DIFFER(6343v6343) 23 lines	5	differ: predicate solved (93 -> 23); bool temp / WifeTimer frame slots swapped
+0x00E3EB10	NScript::CV_BordelloScript::CBordelloLady::Main	DIFFER(6330v6330) 4 lines	7	differ: predicate solved (20 -> 4); natural-exit ~seh_me store order (scheduler)

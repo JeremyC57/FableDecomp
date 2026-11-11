@@ -41,10 +41,28 @@ public:
     class CLookoutPointBeggar : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_BeggarAndChildScript&, CScriptDataBase*, const CScriptThing&);   // 0x00E58C60
+#ifdef FABLE_RETAIL_CV_BEGGARANDCHILDSCRIPT_ENTITY_MAINS   // chunk H40: the entity's PDB overrides and members (Ego_r.pdb, 28 bytes)
+        virtual CScriptBase* GetParentScript() const;                    // 0x00E58D00
+    protected:
+        CV_BeggarAndChildScript* ParentClass;                            // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+    private:
+        virtual void Init();                                             // 0x00E58D10
+        virtual void Main();                                             // 0x00E58D40
+#endif
     };
     class CBeggarBully : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_BeggarAndChildScript&, CScriptDataBase*, const CScriptThing&);   // 0x00E5B2D0
+#ifdef FABLE_RETAIL_CV_BEGGARANDCHILDSCRIPT_ENTITY_MAINS   // chunk H40: the entity's PDB overrides and members (Ego_r.pdb, 28 bytes)
+        virtual CScriptBase* GetParentScript() const;                    // 0x00E5B370
+    protected:
+        CV_BeggarAndChildScript* ParentClass;                            // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+    private:
+        virtual void Init();                                             // 0x00E5B380
+        virtual void Main();                                             // 0x00E5B3B0
+#endif
     };
 };
 } // namespace NScript

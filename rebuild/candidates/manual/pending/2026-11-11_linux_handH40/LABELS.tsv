@@ -1,0 +1,6 @@
+address	name	evidence
+0x00E5B3B0	?Main@CBeggarBully@CV_BeggarAndChildScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012E6C1C (.rdata 0x012E6C20) stored by the landed Alloc 0x00E5B2D0; RELOCATION_MATCH (chunk H40)
+0x00E58D40	?Main@CLookoutPointBeggar@CV_BeggarAndChildScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012E68C4 stored by the Alloc 0x00E58C60; RELOCATION_MATCH at the true extent 9616 (0x00E58D40..0x00E5B2D0, SPLITS.tsv)
+0x00DD6A60	?Main@CMotherTorture@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012DC108; RELOCATION_MATCH (chunk H40)
+0x00DE4CB0	?Main@CVictimsFather@CQ_RansomVictimScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012DD190; RELOCATION_MATCH (chunk H40)
+0x00D5E0C0	?Main@CTheRealGuildmaster@CQ_GuildTrainingWillScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012D1070 (.rdata 0x012D1074) stored by Alloc 0x00D5DDE0; RELOCATION_MATCH (chunk H40)

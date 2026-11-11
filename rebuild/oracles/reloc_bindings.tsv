@@ -39132,3 +39132,4 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ?CombineBaseAnimationsBoneList@C3DAnimationManager@@AAEXABVC3DAnimationStateBase@@PAVC3DKeyframe@@KKABVC3DMesh2@@ABV?$CArray@K@@@Z	00aa0c50	00aa0c50
 ?CombineBlendedBaseAnimationsBoneList@C3DAnimationManager@@AAEXABVC3DAnimationStateBase@@0MPAVC3DKeyframe@@KKABVC3DMesh2@@ABV?$CArray@K@@@Z	00aa0dc0	00aa0dc0
 ?g_pAudioMaster@@3PAVCAudioMaster@@A	0143bc2c	00c708a0
+?GetAngleXY@CScriptThing@@UBEMXZ	004aaa40	00dd6a60

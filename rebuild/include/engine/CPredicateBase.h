@@ -16,7 +16,16 @@
 class CGameScriptInterfaceBase;
 
 namespace NScript {
+// Opt-in FABLE_RETAIL_CPREDICATEBASE_NOVTABLE (chunk H40, inline-budget device; same lever as the predicate filter rows in docs/journal/2026-10/2026-10-26_one_address_one_name_pass.md): the abstract base gets
+// MSVC's `__declspec(novtable)`, so its constructor is empty and a derived predicate ctor compiled under a row-local
+// `#pragma inline_depth(0)` region (nested CScriptThing copy 0x004ABE90 CALLED, as retail does at every predicate construction
+// site) has no `call CPredicateBase::CPredicateBase` left (first witness 0x00E5B3B0). It also drops the base vtable store
+// 0x012C2FF4 from expanded destructors: use it only in rows whose retail body has no such store. Other compilers see the plain class.
+#if defined(FABLE_RETAIL_CPREDICATEBASE_NOVTABLE) && defined(_MSC_VER)
+class __declspec(novtable) CPredicateBase {
+#else
 class CPredicateBase {
+#endif
 public:
     CPredicateBase() { }
     virtual bool operator()() const = 0;                                 // slot 0

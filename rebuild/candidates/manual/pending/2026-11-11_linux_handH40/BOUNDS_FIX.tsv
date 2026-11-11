@@ -1,0 +1,2 @@
+address	name	evidence
+0x00E58D40	NScript::CV_BeggarAndChildScript::CLookoutPointBeggar::Main	real length 9616: Main ends with its two jump tables at 0x00E5B2D0, where the landed CBeggarBully::Alloc 0x00E5B2D0 starts (catalog 9808 ran over Alloc / GetParentScript 0x00E5B370 / Init 0x00E5B380)
