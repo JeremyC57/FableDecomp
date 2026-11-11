@@ -108,7 +108,9 @@ struct CScreenFilter {
     void* vfp;
 };
 class CPlayerGui { public: void Close(bool b); };                 // 0x00438400
-extern CPlayerGui* g_pPlayerGui;                           // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
 double __fastcall GFGetTime();                             // 0x009E1BC0
 enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
 struct CFilterComponent {
@@ -219,6 +221,6 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
     PBlack = (CFilterComponent*)NUISystem::CManager::GetInstance()->CreateComponent("PC_SCREEN_FILTER", false);
     PBlack->Show();
     PBlack->SetFocus(true);
-    g_pPlayerGui->Close(true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Close(true);
     LastRenderTime = GFGetTime();
 }

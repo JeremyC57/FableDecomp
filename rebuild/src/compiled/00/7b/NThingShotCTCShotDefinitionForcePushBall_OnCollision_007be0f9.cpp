@@ -97,7 +97,7 @@ class CEventHitBySpecialAbility : public NEntityEvents::CEventBase { public:    
 class CTCEntityEvents { public: void AddEvent(NEntityEvents::CEventBase* event); };   // 0x008113C0
 class CTCForcePushed { public: void SetUpForcePush(const C3DVector& dir, float force, CThing* pusher); };   // 0x007986A0
 class CTCPerceiveThing { public:
-    CThing* GetPerceivedThing();                        // 0x007446A0
+    const CThing* GetPerceivedThing() const;                        // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
     void SetAsIndirectlyAwareOfPerceivedThing();        // 0x007449E0
 };
 class CTCPhysicalShieldSpell { public: void FadeOutEffect(); };   // 0x0072AC40

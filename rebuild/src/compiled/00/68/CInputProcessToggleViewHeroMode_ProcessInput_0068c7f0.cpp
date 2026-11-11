@@ -29,9 +29,10 @@ public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
     FABLE_FORCEINLINE void AddGameEvent(long type) { CGameEvent gameEvent(type); AddGameEvent(gameEvent); }
 };
+#include "engine/EPlayerMode.h"
 class CPlayer {
 public:
-    bool HasMode(long mode);                       // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                       // 0x00634160 ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z (agentNF16)
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -55,6 +56,6 @@ public:
 void CInputProcessToggleViewHeroMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     if (IsEventButtonHeld(event)
-        && (IsEventGameAction(0x70, event) || (MyPlayer->HasMode(0x2f) && event.GetControllerIndex() == 1)))
+        && (IsEventGameAction(0x70, event) || (MyPlayer->HasMode((EPlayerMode)0x2f) && event.GetControllerIndex() == 1)))
         processed.AddGameEvent(0x55);
 }

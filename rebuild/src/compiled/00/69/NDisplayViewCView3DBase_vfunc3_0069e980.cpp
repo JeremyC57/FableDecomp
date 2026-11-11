@@ -95,22 +95,31 @@ struct CRenderManagerCore { void SetVWindow(const C2DBoxF&); };
 // Layout: CTCInGameMenu.h donor size0x118; only its primary vptr slot11
 // DrawPreparePrimitivesForRendering is accessed by this leaf.
 class CTCInGameMenu { public: virtual void v00(){};virtual void v01(){};virtual void v02(){};virtual void v03(){};virtual void v04(){};virtual void v05(){};virtual void v06(){};virtual void v07(){};virtual void v08(){};virtual void v09(){};virtual void v10(){};virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&); };
-struct CTCMap {
-    struct Entry { long Type; void* Component; };
-    Entry *First,*Last;
-    Entry* LowerBound(const long*); // 0x0040f020
-    const Entry* LowerBound(const long&) const; // 0x004365b0
+// agentNF16: the stand-in CTCMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed 0x0074EE90
+//   idiom); 0x0040F020 / 0x004365B0 are its LowerBound and const LowerBound (NF14 / established spelling; Codex pass 20, both PDBs).
+class CTCBase;
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
     template<class T> FABLE_FORCEINLINE T* Get(long interfaceType) {
-        long type=interfaceType;
-        Entry* it=LowerBound(&type);
-        return (T*)(it==Last || interfaceType<it->Type ? Last : it)->Component;
+        ETCInterfaceType type=(ETCInterfaceType)interfaceType;
+        value_type* it=LowerBound(type);
+        return (T*)(it==_M_finish || interfaceType<it->first ? _M_finish : it)->second;
     }
     template<class T> FABLE_FORCEINLINE const T* Get(long interfaceType) const {
-        long type=interfaceType;
-        const Entry* it=LowerBound(type);
-        return (const T*)(it==Last || interfaceType<it->Type ? Last : it)->Component;
+        ETCInterfaceType type=(ETCInterfaceType)interfaceType;
+        const value_type* it=LowerBound(type);
+        return (const T*)(it==_M_finish || interfaceType<it->first ? _M_finish : it)->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThingPlayerCreature { public:
     unsigned char _pad00[0x20]; unsigned long UsingComponents[9]; CTCMap Interfaces;
     unsigned char _pad4c[0x91-0x4c]; unsigned char Killed:1; unsigned char _padKilled:7;

@@ -62,17 +62,27 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CTCCreatureOpinionOfHero { public:
-    unsigned char _pad00[0x0c];
+class CTCWife;
+class CTCBase { public:
+    virtual ~CTCBase();                         // slot 0 (0x00686830)
+protected:
+    CPlayerManager& GetPlayerManager();         // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+    CWorld& GetWorld() const;                   // 0x00686A70 Ego_r/FableWin ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (protected)
+};
+// agentNF16: the opinion component derives from CTCBase (Ego_r.pdb) and is reached from CTCWife::Divorce through its protected /
+//   private members (GetWorld, ClearAllKnownDeeds), so CTCWife is modelled as its friend.
+class CTCCreatureOpinionOfHero : public CTCBase { public:
+    friend class CTCWife;
+    unsigned char _pad04[0x0c - 0x04];
     long LastOpinionReactionFrame;              // +0x0c
     unsigned char _pad10[0x342 - 0x10];
     bool HeroOpinionEnemy;                      // +0x342
-    CWorld* GetWorld();                         // 0x00686A70
     void SetOpinionReactionMask(const CCharString& name);   // 0x00681E30
     void SetOpinionDeedMask(const CCharString& name);       // 0x006822E0
     void SetPersonalityOverride(const CCharString& name, bool force);   // 0x006820E0
-    void ClearAllKnownDeeds();                  // 0x00681A70
     void ApplyOpinionTransientOffset(long type, float amount, long a, long frames, float decay, bool ignorePersonality);   // 0x00682140 (6th parameter bool: retail tests it as a byte)
+private:
+    void ClearAllKnownDeeds();                  // 0x00681A70 Ego_r/FableWin ?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@AAEXXZ (private)
 };
 class CTCHeroStats { public:
     unsigned char _pad00[0x28];
@@ -110,11 +120,6 @@ class CHeroMarriageDef { public:
     unsigned char _pad00[0xac];
     float HeroStatMoralityInOpinionFormChangePerDivorce;   // +0xac
 };
-class CTCBase { public:
-    virtual ~CTCBase();                         // slot 0 (0x00686830)
-protected:
-    CPlayerManager& GetPlayerManager();         // 0x00686D40 (Ego_r.pdb CTCBase, protected)
-};
 class CTCWife : public CTCBase { public:
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x0c - 0x08];
@@ -148,7 +153,7 @@ void CTCWife::Divorce()
             CCharString personality("OPINION_PERSONALITY_WIFE_DIVORCED");
             opinion->SetPersonalityOverride(personality, true);
         }
-        opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetFrame();
+        opinion->LastOpinionReactionFrame = opinion->GetWorld().GetFrame();
         opinion->ClearAllKnownDeeds();
         opinion->HeroOpinionEnemy = false;
     }

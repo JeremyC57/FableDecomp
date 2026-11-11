@@ -57,10 +57,13 @@ namespace NUISystem {
 class CManager { public:
  // Explicit native member projection: PDB donor+88 is retail+64 (0041d8f3).
  // Header preserved above; preceding UI state is opaque, no fabricated vtable slots.
- unsigned char NativeUIState[0x64];
+ // agentNF16: GetMiscThingsDef / GetIconsDef are virtual (NUISystem::CManager vtable 0x01230134 slots 42 / 43 = 0x0041D8E7 /
+ // 0x0041D98A, rebuild/manifest/rtti-vtables.tsv; Ego_r + FableWin ?GetMiscThingsDef@CManager@NUISystem@@UAE...), so the vptr
+ // takes the first dword of the opaque UI state.
+ unsigned char NativeUIState[0x64-4];
  CDefinitionManager* m_pDefinitionManager;
- CDefPointer<CUIMiscThingsDef> GetMiscThingsDef();
- CDefPointer<CUIIconsDef> GetIconsDef();
+ virtual CDefPointer<CUIMiscThingsDef> GetMiscThingsDef();
+ virtual CDefPointer<CUIIconsDef> GetIconsDef();
 };
 }
 #ifdef _MSC_VER

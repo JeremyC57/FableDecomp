@@ -76,7 +76,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     long AIAction_WaitForMessage(long mode, const CReplyFilter& filter, CMessageEvent** ppEvent);   // 0x0091A670
 };
 
@@ -102,7 +104,7 @@ bool CAIStateGroup_GoToPub::GetPaymentRequestReplyMessage()
     CMessageEvent* event;
     if (AIAction_WaitForMessage(2, CReplyFilter(CMessageEventFilter_IsOfType(0x30), CMessageEventFilter_IsOriginatedByThing(*barman),
             CMessageEventFilter_IsTargettedAtThing(*creature)), &event) == 2) {
-        GetPWorld()->GetPMessageManager()->RemoveMessage(event);
+        GetWorld().GetPMessageManager()->RemoveMessage(event);
         return true;
     }
     return false;

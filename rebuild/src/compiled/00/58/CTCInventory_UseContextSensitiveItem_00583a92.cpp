@@ -22,12 +22,19 @@ template <unsigned int _Nb> class bitset { public:
     bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
 }
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;             // 0x004365B0
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x004365B0 is its const LowerBound (both original PDBs, Codex pass 20 / queue land1011bu).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -39,12 +46,12 @@ public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->_M_finish || interfaceType < it->first)
+                it = map->_M_finish;
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
@@ -103,13 +110,13 @@ CDefClassBase* LookUpDef(long index);
 CDefClassBase* LookUpSubDef(const CDefClassBase* def);
 bool IsAlive(const CThing* thing);
 #pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    SEntry* lo = first;
-    SEntry* hi = last;
+    const value_type* lo = _M_start;
+    const value_type* hi = _M_finish;
     while (lo < hi) {
-        SEntry* mid = lo + (hi - lo) / 2;
-        if (mid->type < *type)
+        const value_type* mid = lo + (hi - lo) / 2;
+        if (mid->first < key)
             lo = mid + 1;
         else
             hi = mid;

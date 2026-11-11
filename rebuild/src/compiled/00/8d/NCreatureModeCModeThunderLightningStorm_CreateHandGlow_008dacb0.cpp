@@ -39,18 +39,18 @@ template <class T> struct CDefHolder {
     T* operator->() const { return Object; }
 };
 class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool GetEffectFromString(const CCharString& name, long* type);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
 // Stand-in body (out of line in retail): it writes the out type only, so VC7.1 knows the effect type's address does
 // not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long* type)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
 {
     long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
     if (found < 0)
         return false;
-    *type = found;
+    type = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -134,7 +134,7 @@ void CModeThunderLightningStorm::CreateHandGlow()
     long effectType = 0;
     PDef->GetSubDef(&out);
     CDefHolder<CSpecialEffectsDef> effects(out.Object);
-    if (effects->GetEffectFromString("LIGHTNING_HAND_EFFECT", &effectType)) {
+    if (effects->GetEffectFromString("LIGHTNING_HAND_EFFECT", effectType)) {
         C3DVector position = ParentThing->GetPos();
         CThing* glow = CTCDParticleEmitter::Create(effectType, *(&position), false);
         if (glow && !glow->IsDead()) {

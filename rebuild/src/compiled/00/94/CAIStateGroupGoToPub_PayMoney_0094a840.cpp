@@ -92,7 +92,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                                  // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                               // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                               // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     bool IsStopping() const;                                 // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
@@ -125,7 +127,7 @@ bool CAIStateGroup_GoToPub::PayMoney()
         CThing* barman = ((CThing*)PBarman.GetPItem());
         CThingCreatureBase* creature = GetCreature();
         C3DVector pos(0.0f, 0.0f, 0.0f);
-        CMessageEventManager* messages = GetPWorld()->MessageEventManager;
+        CMessageEventManager* messages = GetWorld().MessageEventManager;
         request = messages->AddMessage((EMessageEventType)(0x30), 1000, pos, creature, barman, 0.0f, 0.0f, BarIndex);
     }
     long fps = CMainGameComponent::GetConstantFPS();
@@ -133,13 +135,13 @@ bool CAIStateGroup_GoToPub::PayMoney()
     while (!GetPaymentRequestReplyMessage()) {
         if (CWorld::GetFrame() > timeout || IsStopping()) {
             {
-                CWorld* world = GetPWorld();
+                CWorld* world = &GetWorld();
                 world->MessageEventManager->RemoveMessage(request);
             }
             CThing* barman = ((CThing*)PBarman.GetPItem());
             CThingCreatureBase* creature = GetCreature();
             C3DVector pos(0.0f, 0.0f, 0.0f);
-            CWorld* world = GetPWorld();
+            CWorld* world = &GetWorld();
             world->MessageEventManager->AddMessage((EMessageEventType)(0x31), 1000, pos, creature, barman, 0.0f, 0.0f, BarIndex);
             FreeBarPoint();
             return false;
@@ -150,7 +152,7 @@ bool CAIStateGroup_GoToPub::PayMoney()
     {
         CThingCreatureBase* creature = GetCreature();
         C3DVector pos(0.0f, 0.0f, 0.0f);
-        CMessageEventManager* messages = GetPWorld()->MessageEventManager;
+        CMessageEventManager* messages = GetWorld().MessageEventManager;
         messages->AddMessage((EMessageEventType)(0x30), 1000, pos, creature, ((CThing*)PBarman.GetPItem()), 0.0f, 0.0f, 0);
     }
     FreeBarPoint();

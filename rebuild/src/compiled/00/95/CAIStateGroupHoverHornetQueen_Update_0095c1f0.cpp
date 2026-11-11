@@ -56,7 +56,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
@@ -96,7 +98,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
     case 5:
         {
             CThingCreatureBase* creature = GetCreature();
-            CWorld* world = GetPWorld();
+            CWorld* world = &GetWorld();
             world->PCombatManager->DeregisterCombatant(creature);
         }
         if (WaitWhileBabiesFight() == 1 || !IsStillRunnable()) {
@@ -106,7 +108,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
         boss->IsReadyForPhaseChange();
         {
             CThingCreatureBase* creature = GetCreature();
-            CCombatManager* combat = GetPWorld()->PCombatManager;
+            CCombatManager* combat = GetWorld().PCombatManager;
             combat->RegisterCombatant(creature, PTarget.Get(), true);
         }
         boss->IncrementBossPhase();

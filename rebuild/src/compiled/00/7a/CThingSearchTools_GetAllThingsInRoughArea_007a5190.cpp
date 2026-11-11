@@ -81,7 +81,7 @@ struct CThingMap {
 };
 struct SMapwhoLevel { long Shift; long _pad[3]; };
 extern SMapwhoLevel g_MapwhoLevels[];                      // 0x0137DADC
-extern long g_NumMapwhoLevels;                             // 0x013BA848
+namespace NThingMap { extern long MaxLayers; }                             // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 struct SSearchStamps { unsigned long Searches; unsigned long Found; unsigned long Stamp; };
 extern SSearchStamps g_SearchStamps;                       // 0x013B89A8
 // STLport vector<CThingMap*> (the search tools' scratch map list); clear() is erase(begin, end) over memmove.
@@ -156,7 +156,7 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
     for (CThingMap** it = maps->_M_start; it != AreaMaps._M_finish; ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = GetCellExtents(map, area);
-        for (long level = 0; level < g_NumMapwhoLevels; ++level) {
+        for (long level = 0; level < NThingMap::MaxLayers; ++level) {
             long shift = g_MapwhoLevels[level].Shift;
             C2DBoxI box(extents.X0 >> shift, extents.Y0 >> shift, ((extents.X1 - 1) >> shift) + 1,
                         ((extents.Y1 - 1) >> shift) + 1);

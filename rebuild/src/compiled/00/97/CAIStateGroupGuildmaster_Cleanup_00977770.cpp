@@ -6,7 +6,7 @@
 // on the world's combat manager at CWorld+0x4c.
 //
 // Shape: `if (creature->IsInMeleeAsAttacker()) { CThingAICreature* c = PBrain->PCreature; CWorld* w =
-// GetPWorld(); w->m_pCombatManager->DeregisterCombatant(c); }` -- the creature is re-read into a local (edi)
+// (&GetWorld()); w->m_pCombatManager->DeregisterCombatant(c); }` -- the creature is re-read into a local (edi)
 // before the GetPWorld call so it survives it, and the world must be a named local too: with the chained
 // expression VC pushes the creature BEFORE the GetPWorld call (42 bytes), with the local it pushes edi after. The engine header keeps PBrain as a pad, so the base layout is local.
 class CThingCreatureBase
@@ -41,7 +41,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
@@ -53,7 +55,7 @@ void CAIStateGroup_Guildmaster::Cleanup()
 {
     if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingAICreature* pCreature = PBrain->PCreature;
-        CWorld* pWorld = GetPWorld();
+        CWorld* pWorld = &GetWorld();
         pWorld->m_pCombatManager->DeregisterCombatant(pCreature);
     }
 }

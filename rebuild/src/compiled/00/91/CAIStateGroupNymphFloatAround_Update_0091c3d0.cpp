@@ -108,7 +108,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
@@ -136,7 +138,7 @@ void CAIStateGroup_NymphFloatAround::Update()
         } else
             nymph->StartFlyingAround(0);
     }
-    long frame = GetPWorld()->GetFrame();
+    long frame = GetWorld().GetFrame();
     while (!nymph->ReadyToAttack) {
         nymph->CheckIfCanAttack(frame);
         if (IsStopping() || !nymph->FlyingAround) {

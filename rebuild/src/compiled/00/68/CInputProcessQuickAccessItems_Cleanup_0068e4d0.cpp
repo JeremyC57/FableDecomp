@@ -4,8 +4,9 @@
 // Shape: `this` in esi, `cmp dword ptr [g],-1`, two global stores.
 extern long g_quickAccessChargeItem_0137ee78;      // 0x0137EE78
 extern long g_quickAccessChargeSlot_0137ee7c;      // 0x0137EE7C
+#include "engine/EPlayerMode.h"
 class CPlayer { public:
-    bool HasMode(long mode);                       // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                       // 0x00634160 ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z (agentNF16)
 };
 class CInputProcessQuickAccessItems { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -17,7 +18,7 @@ class CInputProcessQuickAccessItems { public:
 
 void CInputProcessQuickAccessItems::Cleanup()
 {
-    if (m_pPlayer->HasMode(0x1c) && g_quickAccessChargeItem_0137ee78 != -1) {
+    if (m_pPlayer->HasMode((EPlayerMode)0x1c) && g_quickAccessChargeItem_0137ee78 != -1) {
         CancelQuickAccessCharge();
         g_quickAccessChargeItem_0137ee78 = -1;
         g_quickAccessChargeSlot_0137ee7c = -1;

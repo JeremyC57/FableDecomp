@@ -13,7 +13,7 @@
 //          SetButton1OverrideText @ 0x0048F7C0, ~CCharString @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 //          CTCHeroOnlineScoreboard::UpdateScoreForActivity @ 0x0055F3B0, CTCBase::GetWorld @ 0x00686A70, message add
 //          @ 0x00687540, CThing::GetPlayer @ 0x004C7A30, CPlayer::RemoveMode @ 0x00634190. Globals: player GUI @ 0x013B8790,
-//          g_framesPerSecond @ 0x01375550, "" @ 0x0122D70E.
+//          CMainGameComponent::GetConstantFPS() @ 0x01375550, "" @ 0x0122D70E.
 // Layout: Ego_r.pdb CTCFishing (matches retail): PFish +0x0C, Stage +0x14, StageInitialised +0x18, ReelingInSoundID +0x54,
 //         FishEscapingSoundID +0x58.
 // Shape: the sound ids are read into locals (edi); the empty prompts are implicit const char* conversions (default length
@@ -38,7 +38,10 @@ public:
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
-extern long g_framesPerSecond;                          // 0x01375550
+// agentNF16: the global stand-in CMainGameComponent::GetConstantFPS() (0x01375550) is the protected static CMainGameComponent::ConstantFPS
+//   (?ConstantFPS@CMainGameComponent@@1JA), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ; shared engine/CMainGameComponent.h). Name-only: the load is the same.
+#include "engine/CMainGameComponent.h"
 class CTCBase;
 
 #include "engine/CVectorMap.h"
@@ -74,7 +77,7 @@ protected:
 public:
     FABLE_FORCEINLINE void PostMessage(long type, const C3DVector& pos, const CThing* thing)
     {
-        GetWorld().PMessages->AddMessage(type, g_framesPerSecond, pos, 0, 0, 0, 0, thing);
+        GetWorld().PMessages->AddMessage(type, CMainGameComponent::GetConstantFPS(), pos, 0, 0, 0, 0, thing);
     }
 protected:
     CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
@@ -115,7 +118,7 @@ class CPlayerGui { public:
     unsigned char _padf9[0x1c8 - 0xf9];
     CDrawQuestInfo* PQuestInfo;                         // +0x1C8
 };
-extern long g_framesPerSecond;                          // 0x01375550
+
 
 class CTCFishing : public CTCBase {
 public:
@@ -160,7 +163,7 @@ void CTCFishing::FinishFishing(bool caught)
     }
     C3DVector zero(0.0f, 0.0f, 0.0f);
     CWorld* world = &GetWorld();
-    world->PMessages->AddMessage(0x3f, g_framesPerSecond, zero, 0, 0, 0, 0, fish);
+    world->PMessages->AddMessage(0x3f, CMainGameComponent::GetConstantFPS(), zero, 0, 0, 0, 0, fish);
     if (Stage) {
         Stage = 0;
         StageInitialised = false;

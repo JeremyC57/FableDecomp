@@ -63,7 +63,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated) ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
@@ -104,7 +106,7 @@ void CAIStateGroup_OpinionReactionRoot::OnReplace()
     if (PBrain->PCreature->GetTC(TCI_TALK, &pTalk))
         pTalk->StopCurrentSpeech();
     if (CurrentReactionType != 0 && ThingReactingTo.Get() != 0) {
-        CWorldR* world = (CWorldR*)GetPWorld();    // named: fetched before the argument loads (landed 24a lesson)
+        CWorldR* world = (CWorldR*)(&GetWorld());    // named: fetched before the argument loads (landed 24a lesson)
         world->m_pOpinionReactionManager->LogReaction(CurrentReactionType, PBrain->PCreature, false);
         LastRunWasTryAndLook = false;
     } else {

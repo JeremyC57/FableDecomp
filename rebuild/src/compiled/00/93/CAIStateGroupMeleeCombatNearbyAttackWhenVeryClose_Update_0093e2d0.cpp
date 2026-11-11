@@ -175,7 +175,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
@@ -205,7 +207,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
     OnReadyToAttack();
     if (GetCreature()->IsCombatant()) {
         CThing* attacker = GetCreature();
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->PCombatManager->SetAttackerAsReadyToAttack(attacker, true);
     }
     while (IS_THING_ALIVE(PEnemy) && !IsStopping() && IsStillRunnable(true) && GetCreature()->IsCombatant()) {
@@ -221,7 +223,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
     }
     if (GetCreature()->IsCombatant()) {
         CThing* attacker = GetCreature();
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->PCombatManager->SetAttackerAsReadyToAttack(attacker, false);
     }
     Terminate();

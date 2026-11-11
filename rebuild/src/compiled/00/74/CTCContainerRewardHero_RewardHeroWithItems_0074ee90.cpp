@@ -185,7 +185,10 @@ class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 
 class CTCHeroStats { public:
     void AddMoney(long amount, bool showMessage);           // 0x0057B327
@@ -230,7 +233,7 @@ bool CTCContainerRewardHero::RewardHeroWithItems()
             bool found = ParentThing->GetPBaseDef()->GetSubDef(&chestDef);
             if (!found || chestDef->DisplayMessageOnEmpty) {
                 CWideString text = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TXT_SIGN_NOTHING");
-                g_pPlayerGui->SubtitleRenderer.SetText(PeekComponent().PeekCutSceneMainFont(), text, 0x122, 0.0f, false, true);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(PeekComponent().PeekCutSceneMainFont(), text, 0x122, 0.0f, false, true);
             }
             return false;
         }

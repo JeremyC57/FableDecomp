@@ -77,7 +77,7 @@ class CThingMap { public:
 using namespace NThingMap;
 struct SMapwhoLevel { long Level,Shift; long _pad[2]; };
 extern SMapwhoLevel g_MapwhoLevels[];                      
-extern long g_NumMapwhoLevels;                             
+namespace NThingMap { extern long MaxLayers; }                              // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 struct SSearchStamps { unsigned long Searches; unsigned long Found; unsigned long Stamp; };
 extern SSearchStamps g_SearchStamps;                       
 
@@ -186,7 +186,7 @@ template<class F,class C,class T> bool CThingSearchTools::GetPBestThingInRoughAr
     for (CThingMap** it = maps->begin(); it != AreaMaps.end(); ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = ClipAndConvertWorldMapAreaToLocalArea(*map,area);
-        for (long level = 0; level < g_NumMapwhoLevels; ++level) {
+        for (long level = 0; level < NThingMap::MaxLayers; ++level) {
             long shift = g_MapwhoLevels[level].Shift;
             C2DBoxI box(extents.X0 >> shift, extents.Y0 >> shift, ((extents.X1 - 1) >> shift) + 1,
                         ((extents.Y1 - 1) >> shift) + 1);

@@ -71,7 +71,7 @@ class CThing { public:
 class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad[0x32];
     bool CanHear;                               // +0x32 (descriptive)
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -162,7 +162,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
     if (!InvestigatingNoise) {
         CTCPerceiveThing* perceive;
         GetCreature()->GetInterface(&perceive, 0x34);
-        CThing* noise = perceive->GetPerceivedThing();
+        const CThing* noise = perceive->GetPerceivedThing();
         if (noise) {
             const C3DVector& noisePos = noise->GetPos();
             CThing* home = GetCreature()->PHome.GetPItem();

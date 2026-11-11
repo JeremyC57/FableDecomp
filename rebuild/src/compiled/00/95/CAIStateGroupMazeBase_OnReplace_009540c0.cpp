@@ -31,7 +31,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13
-    CWorld* GetPWorld();                    // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                    // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_MazeBase : CAIStateGroupBase {
@@ -42,7 +44,7 @@ void CAIStateGroup_MazeBase::OnReplace()
 {
     if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->Creature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->m_pCombatManager->DeregisterCombatant(creature);
     }
 }

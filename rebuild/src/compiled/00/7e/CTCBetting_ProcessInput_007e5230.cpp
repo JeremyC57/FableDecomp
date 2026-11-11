@@ -39,7 +39,10 @@ class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 class CTCHeroStats { public:
     unsigned char _pad00[0x3c];
     long          Gold;                                 // +0x3c
@@ -205,13 +208,13 @@ void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& process
     }
     if (input->IsEventButtonPressed(event)) {
         if (input->IsEventGameAction(0x16, event)) {
-            g_pPlayerGui->SubtitleRenderer.Clear(false);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.Clear(false);
             processed.SetHandled();
             g_BettingActive = false;
             g_BetPlaced = true;
             PreviousDonation = g_CurrentBet;
         } else if (input->IsEventGameAction(0x17, event)) {
-            g_pPlayerGui->SubtitleRenderer.Clear(false);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.Clear(false);
             processed.SetHandled();
             g_BettingActive = false;
             g_BetPlaced = false;

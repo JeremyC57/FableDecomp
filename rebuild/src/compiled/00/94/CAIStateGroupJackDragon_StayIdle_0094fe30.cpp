@@ -7,7 +7,7 @@
 // CAIStateGroupBase::IsStopping @ 0x008FD010, CAIStateGroupBase::Terminate @ 0x008FCF40.
 // Globals: the frames-per-second long @ 0x01375550 (`fidiv`).
 //
-// Shape: `GetPWorld()->GetWorldFrame()` still calls the accessor (static member through an object
+// Shape: `GetWorld().GetWorldFrame()` still calls the accessor (static member through an object
 // expression); the start frame lives in ebp, &PEnemy (+0x14) in edi (hoisted above the loop). A do/while:
 // DoNothing, then the inlined IS_THING_ALIVE(PEnemy) / IsStopping exits sharing one Terminate tail, then
 // `(float)(frame - start) / g_framesPerSecond < seconds` (`fild ; fidiv ; fcomp [arg] ; test ah,5 ; jnp`,
@@ -40,7 +40,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
-    CWorld* GetPWorld();                        protected: // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        protected: // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
@@ -55,12 +57,12 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 
 void CAIStateGroup_JackDragon::StayIdle(float seconds)
 {
-    long start = GetPWorld()->GetFrame();
+    long start = GetWorld().GetFrame();
     do {
         AIAction_DoNothing();
         if (!IS_THING_ALIVE(PEnemy) || IsStopping()) {
             Terminate();
             return;
         }
-    } while ((float)(GetPWorld()->GetFrame() - start) / g_framesPerSecond < seconds);
+    } while ((float)(GetWorld().GetFrame() - start) / g_framesPerSecond < seconds);
 }

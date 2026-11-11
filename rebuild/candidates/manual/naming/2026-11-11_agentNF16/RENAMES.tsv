@@ -1,0 +1,32 @@
+# Own-name renames (the row's own retail symbol changes). Old = the landed spelling (from the landed source); new = Ego_r.pdb + FableWin.pdb.
+address	old_own_spelling	new_own_spelling	evidence
+00692980	?CCreatureActionBase_GetThingManager@@YIPAVCThingManager@@PAVCCreatureActionBase@@@Z (free __fastcall stand-in)	?GetThingManager@CCreatureActionBase@@IAEAAVCThingManager@@XZ	Ego_r + FableWin; body `add ecx,8; call GetPItem; mov eax,[0x013B8A1C]` = PCreature item then CThing::PCurrentThingManager; caller 0x0084A7E0 (queue land1011bw)
+00487510	DrawGetEnvironment(const unsigned char*) (free stand-in)	?GetJoystickDeviceNumber@CPlayer@@QBEJXZ	Ego_r + FableWin; Ego_r donor order IsFirstPersonTargeting/GetJoystickDeviceNumber = retail 0x004874D0/0x00487510; reads CPlayer JoystickDeviceNumber (engine/CPlayer.h FABLE_RETAIL_PLAYER); queue land1011bu
+00634470	CPlayer_Methods::UninitModeChargeQuickAccess (derived stand-in class)	?UninitModeChargeQuickAccess@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	Ego_r + FableWin (private); shared engine/CPlayer.h FABLE_RETAIL_PLAYER(_REMOVEMODE) + engine/EPlayerMode.h
+00635b30	CPlayer::UninitModeFirstPersonTargeting(long /*typedef EPlayerMode*/, CProcessedInput*) (public)	?UninitModeFirstPersonTargeting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	Ego_r + FableWin (private, enum EPlayerMode)
+006ae1c0	CDefinitionManager::GetDef_006ae1c0 (non-template stand-in)	??$GetDef@VCPlayerMovementDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCPlayerMovementDef@@@@@Z	Ego_r + FableWin member template GetDef<T>; queue land1011bw
+007edee0	CTCCarriedActionUseTrophy::OnActionUseCommon(CThingCreatureBase*) (public)	?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z	Ego_r + FableWin (private, CThing&); queue land1011bw
+005bf654	NInventory::CTCInventoryBase::AddItemToInventory(CThing*, bool, bool, long, bool) (public, non-virtual)	?AddItemToInventory@CTCInventoryBase@NInventory@@MAE_NAAVCThing@@_N1J1@Z	Ego_r + FableWin (protected virtual, CThing&); vtable 0x0124356C slot 80 = 0x005BF654; queue land1011bw
+0041d8e7	NUISystem::CManager::GetMiscThingsDef() (non-virtual)	?GetMiscThingsDef@CManager@NUISystem@@UAE?AV?$CDefPointer@VCUIMiscThingsDef@NUISystem@@@@XZ	Ego_r + FableWin (virtual); vtable 0x01230134 slots 42/43 = 0x0041D8E7 / GetIconsDef; queue land1011bw
+008cb780	CCreatureAction_SummonerSheatheWeapon::PerformAction() (non-virtual)	?PerformAction@CCreatureAction_SummonerSheatheWeapon@@UAEXXZ	Ego_r + FableWin (virtual, slot 3); queue land1011bw
+00898db0	CGameScriptInterfaceMethods::TakeObjectFromHero(const CCharString&) const (derived stand-in)	?TakeObjectFromHero@CGameScriptInterface@@UBEXABVCCharString@@@Z	Ego_r; vtable 0x01260F0C slot 125 = 0x00898DB0; shared engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT); queue land1011bw
+
+# Leaf-only respellings (callee/global spellings inside rows; the rows' own names unchanged) -- one line per family
+target	new_spelling	rows
+013ba848	?MaxLayers@NThingMap@@3JA	86 rows (fix_maxlayers; all BAD binders)
+008fcfc0	?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (was GetPWorld)	55 rows
+0049d850	?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z	19 rows (0062ce60 + the CWorld::EA* rows)
+0070c050	?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (was Set)	22 rows
+00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z (was CalcAndLookup)	19 rows
+009d49b0	?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z	18 rows
+007446a0	?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ	13 rows
+013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get())	12 rows
+0040dce0	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	9 rows (template/specialisation; IS_THING_ALIVE_0040dce0 renamed)
+006c5630	?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (was GetDeedEffectsDef)	7 rows
+00634160/00634190/006345c0	HasMode/RemoveMode/AddMode with enum EPlayerMode (engine/EPlayerMode.h)	13 rows
+01375550	?ConstantFPS@CMainGameComponent@@1JA via CMainGameComponent::GetConstantFPS()	5 rows
+005da980	?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ	5 rows
+0040f020 / 004365b0	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<...>>::LowerBound (and const)	15 + 16 rows (Part 2)
+00487510	GetPlayerNumber -> GetJoystickDeviceNumber	006881d0 0068fb90 007a7000 007a9960 007e0750
+00842150	??0CCreatureAction_DropGenericBox@@QAE@AAVCThingCreatureBase@@@Z (was N_00842150::CCreatureAction_AlertToPlayer)	007ed060
+other single-row fixes	GetMainPlayer 00449970, GetBoast 004af7a0, IsPosInMap 004fc600, Activate/CompletionType 005e4740, UpdateHornTasks 0065be6c, ClearAllKnownDeeds 00681a70, GetWorld@CTCBase 00686a70, GetCombatManager 00856b10 (3), CWideString operator= 0099b7d0 (3), SetPItem 00a01b90	see STATUS.tsv

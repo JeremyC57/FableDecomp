@@ -17,7 +17,7 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct CTCInventoryWeaponsNative {unsigned char Base[0x168];long PreviouslyWieldedMeleeWeaponDefIndex,PreviouslyWieldedRangedWeaponDefIndex; FABLE_FORCEINLINE long GetPreviousRanged()const{return PreviouslyWieldedRangedWeaponDefIndex;}}; // donor184/188; native168/16c
 class CDefString { public:long TablePos;CDefString(){} CDefString(const CDefString& x):TablePos(x.TablePos){}};
 class CDefinitionManager { public: CDefString GetDefNameFromGlobalIndex(long) const; }; // 0x009ACCC0 (Ego_r.pdb, const)
-class CDefStringTable { public:CCharString GetString(long);}; //009D49B0
+class CDefStringTable { public:CCharString GetString(long) const;}; //009D49B0 Ego_r/FableWin ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (agentNF16)
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21) //013CA828
 struct CCharStringMethods:CCharString {bool operator!=(const char*)const;}; //0099E960
 FABLE_FORCEINLINE bool CThingNative::GetInventory(CTCInventoryWeaponsNative** out){

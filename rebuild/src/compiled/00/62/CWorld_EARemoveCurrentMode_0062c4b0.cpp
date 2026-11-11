@@ -47,7 +47,9 @@ class CPlayer { public:
 };
 
 class CWorld { public:
-    CPlayer* GetPlayer(long number);               // 0x0049D850
+protected:
+    CPlayer* GetPlayer(unsigned long number);               // 0x0049D850 ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z (Ego_r/FableWin, protected)
+public:
     void EARemoveCurrentMode(const CGameEvent* event);
 };
 

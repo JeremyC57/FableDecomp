@@ -20,7 +20,7 @@ template<class T> struct CRetailVector {           // STLport vector: {start, fi
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-extern long g_NoMapwhoLevels;                      // 0x013BA848
+extern long MaxLayers;                      // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingMap { public:
     virtual void v00();
     CRetailVector<long>                          MapwhoLevelInfo;   // +0x04
@@ -32,7 +32,7 @@ class CThingMap { public:
 long CThingMap::GetMemoryFootprint()
 {
     long footprint = 0;
-    for (long level = 0; level < g_NoMapwhoLevels; ++level)
+    for (long level = 0; level < MaxLayers; ++level)
         footprint += Cells[level].size() * sizeof(CThingMapCell);
     return footprint;
 }

@@ -7,7 +7,7 @@
 // (float in st0) on the world's combat manager at +0x4c. Pool constants: 0x012925CC = 0.8333333f (5/6),
 // 0x0122DED8 = 1.0f.
 // Shape: both branches read the creature into a named local BEFORE their world call (edi) and reach the combat
-// manager through an INLINE ACCESSOR (`GetPWorld()->GetPCombatManager()`), which materialises the manager in eax
+// manager through an INLINE ACCESSOR (`GetWorld().GetPCombatManager()`), which materialises the manager in eax
 // with the creature push before the `mov ecx,eax` (a direct member chain pushes the creature before the world
 // call); the float result of the manager call is returned straight from st0. The fallback reads the float at +0x34 of the creature's def pointer at +0x60:
 // the doubling is written as `radius + radius` (`fadd st,st(0)`) -- `radius * 2.0f * K` lets VC fold the two
@@ -42,7 +42,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13
-    CWorld* GetPWorld();                    // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                    // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
@@ -54,9 +56,9 @@ struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
 float CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature()
 {
     CThingCreatureBase* creature = PBrain->Creature;
-    if (GetPWorld()->GetPCombatManager()->CCombatWheel_ValidateSequencePosition(creature)) {
+    if (GetWorld().GetPCombatManager()->CCombatWheel_ValidateSequencePosition(creature)) {
         CThingCreatureBase* combatant = PBrain->Creature;
-        return GetPWorld()->GetPCombatManager()->Combat_ProximityCalculation(combatant);
+        return GetWorld().GetPCombatManager()->Combat_ProximityCalculation(combatant);
     }
     float radius = PBrain->Creature->m_pDef->m_radius;
     return (radius + radius) * 0.8333333f + 1.0f;

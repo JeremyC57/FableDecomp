@@ -21,9 +21,10 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 
+#include "engine/EPlayerMode.h"
 struct CPlayer {
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
-    void AddMode(long mode, bool flag);            // 0x006345C0
+    void AddMode(EPlayerMode mode, bool flag);     // 0x006345C0 Ego_r/FableWin ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z
 };
 
 struct CPlayerManager_007b1eb0 {
@@ -50,7 +51,7 @@ void CTCFishing::GoFishing(bool arg)
 {
     CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->IsDead() && CreateFish(arg)) {
-        hero->GetPlayer()->AddMode(0x1d, false);
+        hero->GetPlayer()->AddMode(PLAYER_MODE_FISHING, false);
         SetStage(1);
     }
 }

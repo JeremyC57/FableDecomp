@@ -98,7 +98,7 @@ struct CLayerInfo {long Size;long ScaleShift;unsigned long UsedColour,UnusedColo
 extern long SearchCount_013b89a8;
 extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
-namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
+namespace NThingMap {extern long MaxLayers;} // 0x013ba848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
 class CThingFilter_CanBeUsedAsCover { public:bool operator()(const CThing&)const;}; // 0x006a7ab0
 class CThingFilter_IsOccupiableOccupied { public:bool operator()(const CThing&)const;}; // 0x006a8a30
@@ -134,7 +134,7 @@ void CThingSearchTools_Calls::GetAllThingsInRoughArea(const C2DBoxI& area,const 
  ++SearchCount_013b89a8;SearchWork_013b89ac=0;++SearchID_013b89b0;
  for(RetailVector<NThingMap::CThingMap*>::iterator m=AreaMaps.begin();m!=AreaMaps.end();++m) {
   NThingMap::CThingMap* map=*m;C2DBoxI bounds=ClipAndConvertWorldMapAreaToLocalArea(*map,area);
-  for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
+  for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
    C2DBoxI scaled=GetMapwhoArea(*map,layer,bounds);
    if(scaled.Width()!=0 && scaled.Height()!=0) {
     for(long y=scaled.TLY;y<scaled.BRY;++y) {

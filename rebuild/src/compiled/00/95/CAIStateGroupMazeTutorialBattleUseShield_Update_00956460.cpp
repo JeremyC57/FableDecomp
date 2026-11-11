@@ -9,7 +9,7 @@
 // Terminate @ 0x008FCF40.
 //
 // Shape: `if (IS_THING_ALIVE(PTargetThing) && !IsStopping()) { PerformActionAndWait(&WillShieldInto(creature,
-// 3.0f, 5.0f), false); FrameOfLastShield = GetPWorld()->GetCurrentFrame(); } Terminate();` -- `false` pushed
+// 3.0f, 5.0f), false); FrameOfLastShield = GetWorld().GetCurrentFrame(); } Terminate();` -- `false` pushed
 // before the out-of-line action constructor's arguments (the floats as immediates), the action's implicit
 // destructor is the base one, the creature comes through an inline GetCreature() (a direct PBrain->PCreature
 // argument loads it into ecx instead of eax), the static frame getter still calls the world accessor. Frame 0x11c = the action.
@@ -64,7 +64,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
@@ -82,7 +84,7 @@ void CAIStateGroup_MazeTutorialBattleUseShield::Update()
 {
     if (IS_THING_ALIVE(PTargetThing) && !IsStopping()) {
         AIAction_PerformActionAndWait(CCombatAction_WillShieldInto(GetCreature(), 3.0f, 5.0f), false);
-        FrameOfLastShield = GetPWorld()->GetFrame();
+        FrameOfLastShield = GetWorld().GetFrame();
     }
     Terminate();
 }

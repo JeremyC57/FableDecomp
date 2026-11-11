@@ -46,7 +46,7 @@ template<class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CSpecialEffectsDef : public CDefBase { public:
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 class CSoundMap { public:
     const long* GetPSound(const CCharString& name) const;       // 0x0065FBA4
@@ -79,12 +79,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CEntitySoundDef>*
     out->Object = (CEntitySoundDef*)def;
     return true;
 }
-__declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& name, long* value)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
-    long found = Lookup_CSpecialEffectsDef(this, name);
+    long found = Lookup_CSpecialEffectsDef(const_cast<CSpecialEffectsDef*>(this), name);
     if (found < 0)
         return false;
-    *value = found;
+    value = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -182,7 +182,7 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
         modeManager->AddMode(CCountedPointer<CModeBase>(new CModeBriarRoseTeleportIntangible(PCreature, PEnemy.GetPItem())));
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
-    if (CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&effects) && effects->CalcAndLookup("TELEPORT_POP", &effect))
+    if (CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&effects) && effects->GetEffectFromString("TELEPORT_POP", effect))
         CTCDParticleEmitter::Create(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
     CDefPointer<CEntitySoundDef> sounds;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&soundPlayer, 0x10) && CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&sounds)) {

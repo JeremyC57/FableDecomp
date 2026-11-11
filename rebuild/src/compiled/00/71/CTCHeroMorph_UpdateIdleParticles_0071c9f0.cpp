@@ -128,7 +128,7 @@ public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     bool GetTCDriver(CTCDParticleEmitter** out);        // 0x004ACB50
 };
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);  // 0x0040DCE0
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 = IS_THING_ALIVE<CThing*> (FableWin ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z; agentNF16)
 class CThingPlayerCreature;
 class CPlayer {
 public:
@@ -218,7 +218,7 @@ void CTCHeroMorph::UpdateIdleParticles()
                         } else {
                             particle = CTCDParticleEmitter::Create(entry->ParticleType, Thing->GetPos(), false);
                         }
-                        if (IS_THING_ALIVE((CThing*)particle)) {
+                        if (IS_THING_ALIVE<CThing*>((CThing*)particle)) {
                             CTCDParticleEmitter* emitter = 0;
                             ((CThing*)particle)->GetTCDriver(&emitter);
                             if (entry->AttachMode == 1) {

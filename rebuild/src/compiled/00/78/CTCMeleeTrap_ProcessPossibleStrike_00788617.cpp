@@ -13,20 +13,23 @@
 //   CIntelligentPointer<CThing> vtable 0x01238C6C; the <const CThing> instantiation is 0x0056C860 / vtable 0x01237F1C),
 //   pair<CIntelligentPointer<CThing>,long>::pair(const pair<CIntelligentPointer<CThing>,float>&) 0x00788D68,
 //   vector<pair<CIntelligentPointer<CThing>,long>>::push_back 0x00789515, ~CBaseIntelligentPointer 0x00A01C10 (x3),
-//   ~CHitParameters 0x00789358. Globals: DELTA_NOTIONAL_ZERO 0x0129BA3C, g_framesPerSecond 0x01375550, 1.5f 0x0126B7E0.
+//   ~CHitParameters 0x00789358. Globals: DELTA_NOTIONAL_ZERO 0x0129BA3C, CMainGameComponent::GetConstantFPS() 0x01375550, 1.5f 0x0126B7E0.
 // Layout: as PerformPossibleTrapDamage (HitThings +0xc = Ego_r vector<pair<CIntelligentPointer<CThing>, long>>; the landed
 //   0x00788D68 file spells the pair `<const CThing>`, the stored vtable 0x01238C6C proves `<CThing>`).
 // Shape: the triangle vector lives in its own block (freed right after the intersection call, its slot reused by the direction);
 //   direction = current.first - previous.first, normalised when its squared length exceeds DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO (landed 0x00805A90 form);
 //   the hit is built with the trap's parent as the hitting thing and no weapon, knock-down set, the other flags clear; the
-//   remembered entry is pair<CIntelligentPointer<CThing>, float>(&thing, g_framesPerSecond * 1.5f) converted on push_back.
+//   remembered entry is pair<CIntelligentPointer<CThing>, float>(&thing, CMainGameComponent::GetConstantFPS() * 1.5f) converted on push_back.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 #include <new>
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern const float DELTA_NOTIONAL_ZERO;                                   // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (ESTABLISHED_SPELLINGS; naming wave 20) (1e-4f)
-extern long g_framesPerSecond;                                // 0x01375550
+// agentNF16: the global stand-in CMainGameComponent::GetConstantFPS() (0x01375550) is the protected static CMainGameComponent::ConstantFPS
+//   (?ConstantFPS@CMainGameComponent@@1JA), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ; shared engine/CMainGameComponent.h). Name-only: the load is the same.
+#include "engine/CMainGameComponent.h"
 
 #include "engine/C3DVector.h"
 class C2DBoxI { public:
@@ -255,7 +258,7 @@ void CTCMeleeTrap::ProcessPossibleStrike(float hitTolerance, float damage, const
         CHitParameters hit(hitLocation, ParentThing, 0, hitPosition, direction, true, false, false, false);
         hit.AddDamageWithAttribute(DAMAGE_ATTRIBUTE_NONE, damage);
         thing.OnHit(hit);
-        float frames = (float)g_framesPerSecond * 1.5f;
+        float frames = (float)CMainGameComponent::GetConstantFPS() * 1.5f;
         HitThings.push_back(std::pair<CIntelligentPointer<CThing>, float>(CIntelligentPointer<CThing>(&thing), frames));
     }
 }

@@ -23,7 +23,7 @@ class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -35,12 +35,12 @@ long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString&
 // Stand-in body (out of line in retail @ 0x00669D30): it writes the out value only, so VC7.1 knows the local's address
 // does not escape the call (the landed 0x008C8380 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& name, long* value)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
     long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
     if (found < 0)
         return false;
-    *value = found;
+    value = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -178,9 +178,9 @@ void CTCAssassinRush::CreateTrailingEffect()
     long lowEffect = 0;
     CThing* parent = ParentThing;
     if (PDef->GetSubDef(&effects)) {
-        if (effects->CalcAndLookup("STARTUP_EFFECT_LOW", &lowEffect)) {
+        if (effects->GetEffectFromString("STARTUP_EFFECT_LOW", lowEffect)) {
             long startEffect = 0;
-            effects->CalcAndLookup("STARTUP_EFFECT", &startEffect);
+            effects->GetEffectFromString("STARTUP_EFFECT", startEffect);
             float scale = 0.0f;
             const CThing* constParent = parent;
             CTCInventoryAbilities* abilities;
@@ -197,7 +197,7 @@ void CTCAssassinRush::CreateTrailingEffect()
             }
         }
         long displacement = 0;
-        if (effects->CalcAndLookup("DISPLACEMENT_EFFECT", &displacement)) {
+        if (effects->GetEffectFromString("DISPLACEMENT_EFFECT", displacement)) {
             AssassinDisplacementTrail = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(displacement, ParentThing->GetPos(), false));
             if (IS_THING_ALIVE(AssassinDisplacementTrail)) {
                 CTCDParticleEmitter* emitter = 0;

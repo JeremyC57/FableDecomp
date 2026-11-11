@@ -126,7 +126,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                                   // +0x04
     unsigned char _pad08[0x0c];
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                                // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                                // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 struct CAIStateGroup_MinionGuardFollowPlayer : CAIStateGroupBase {
     virtual bool IsStillValidInternal(bool flag);
@@ -153,7 +155,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool)
                     if (unowned)
                         return false;
                 }
-                CWorld* world = GetPWorld();
+                CWorld* world = &GetWorld();
                 long nextFrame = village->NextFollowFrame;
                 if (world->GetFrame() < nextFrame)
                     return false;

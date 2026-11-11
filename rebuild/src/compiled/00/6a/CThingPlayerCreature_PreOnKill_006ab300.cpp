@@ -42,9 +42,9 @@ class CTCResurrectionItem {
 public:
     void OnItemUsed(CThingCreatureBase& creature);             // 0x007F04C0
 };
-enum CompletionType { COMPLETION_TYPE_3 = 3 };
 class CTCQuestCompletionUI {
 public:
+    enum CompletionType { COMPLETION_TYPE_3 = 3 };   // nested: Ego_r/FableWin ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@...
     void Activate(CompletionType type, const CCharString& questName, bool a, const CWideString& text, bool b);   // 0x005E4740
 };
 
@@ -67,7 +67,7 @@ bool CThingPlayerCreature::PreOnKill()
         CTCQuestCompletionUI* ui = 0;
         if (HasTC(TCI_QUEST_COMPLETION_UI))
             ui = (CTCQuestCompletionUI*)(&GetTC(TCI_QUEST_COMPLETION_UI));
-        ui->Activate(COMPLETION_TYPE_3, g_emptyString_0122d70e, true, g_emptyWideString_0122d70c, true);
+        ui->Activate(CTCQuestCompletionUI::COMPLETION_TYPE_3, g_emptyString_0122d70e, true, g_emptyWideString_0122d70c, true);
         return false;
     }
     return true;

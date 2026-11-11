@@ -99,7 +99,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                                   // +0x04
     unsigned char _pad08[0x0c];
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                                // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                                // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
     unsigned long NextReactionFrame[5];                 // +0x14
@@ -114,7 +116,7 @@ struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable()
 {
-    CThing* player = ((CPlayer*)((CWorld*)(GetPWorld()))->PeekMyPlayer())->GetPControlledCreature();
+    CThing* player = ((CPlayer*)((CWorld*)((&GetWorld())))->PeekMyPlayer())->GetPControlledCreature();
     if (!player || (player->m_flags91 & 1))
         return false;
     CMessageEvent* event = FindPlayerInteractionEvent();

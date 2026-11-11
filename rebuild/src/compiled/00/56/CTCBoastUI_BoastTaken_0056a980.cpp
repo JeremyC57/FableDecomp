@@ -330,7 +330,9 @@ private: public:
 class CPlayerGui { public:
     void Open();                                        // 0x004374B0 (Ego_r.pdb CPlayerGui::Open)
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
 
 struct SListNode { SListNode* _M_next; SListNode* _M_prev; };
 struct CBoastList {
@@ -365,7 +367,7 @@ class CTCBoastUI { public:
             if (Active) {
                 CMainGameComponent::Get()->m_pWorld->m_pCameraManager->SetAutomaticCameraControl();
                 Quitting = true;
-                g_pPlayerGui->Open();
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
             } else {
                 ActivationRequested = false;
             }

@@ -9,7 +9,7 @@
 //   copy 0x004365B0, CTCInventoryItem::GetInventoryType 0x005D9030 / GetMaxNumberOfItems 0x005D9050 (both PDBs, next after GetInventoryType: Ego_r 0x00559F80 / 0x00559FA0 = retail +0x20; the landed sibling
 //   0x00849380 spells it GetMaxNumberItems) / AddToInventory 0x005D8D50, puts 0x00BFEAF2 + abort 0x00BFEAEC (STLport bitset<274>::test range check, "bitset"),
 //   IsSpaceInInventoryForItem 0x005BF2ED (Ego_r + FableWin.pdb QBE_NJ@Z; Ego_r pair IsSpaceInInventoryForItem / GetAmountOfItemsContainable 0x26 apart = retail 0x005BF2ED / 0x005BF30D, both tail-calling the CCategory pair 0x005BF19C / 0x005BF1D7 = Ego_r IsSpaceInCategoryForItem / GetAmountOfItemsContainable), CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / operator=(const char*)
-//   0x0099EFE0 / ~ 0x0099EAE0, CThing::PeekComponent 0x004C7A70, CSubtitleRenderer::SetText 0x00492ED1 on g_pPlayerGui
+//   0x0099EFE0 / ~ 0x0099EAE0, CThing::PeekComponent 0x004C7A70, CSubtitleRenderer::SetText 0x00492ED1 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get())
 //   0x013B8790 (+0x18 SubtitleRenderer), CThing::GetPos 0x004C73D0, CThingObject::Create 0x00703210 (__fastcall),
 //   CCreatureActionBase::GetWorld 0x00692940 (CWorld +0x60 PMessageEventManager), CMessageEventManager::AddMessage 0x00687540,
 //   CThingCreatureBase::MakeNoise 0x00662110.
@@ -143,7 +143,10 @@ class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 class CMessageEventManager { public:
     CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
@@ -188,7 +191,7 @@ void CCreatureAction_StealThingFromShop::PerformAction()
             else
                 message = "You don't have room in your inventory for this item!";
             CMainGameComponent* component = GetCreature()->PeekComponent();
-            g_pPlayerGui->SubtitleRenderer.SetText(*component->PCutSceneMainFont, message, 0, 3.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*component->PCutSceneMainFont, message, 0, 3.0f, false, true);
             return;
         }
         CThing* copy = CreateThingAt(((CThing*)PThingToSteal.GetPItem()), (CThing*)PCreature.GetPItem(), (CThing*)PCreature.GetPItem(), "");

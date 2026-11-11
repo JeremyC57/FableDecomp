@@ -141,8 +141,9 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;             // 0x00487DC0
 };
 class CWorld {
+protected:
+    CPlayer* GetPlayer(unsigned long number);          // 0x0049D850 ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z
 public:
-    CPlayer* GetPlayer(long number);                   // 0x0049D850
     bool LoadGameState(const CWideString& name, bool flag);   // 0x004A3200
     void EALoadGameFromInGameMenu(const CGameEvent* event);
 };

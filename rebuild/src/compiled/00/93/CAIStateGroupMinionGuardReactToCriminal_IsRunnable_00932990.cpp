@@ -117,7 +117,7 @@ struct CTCVillager;
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CTCPerceiveThing { public:                       // interface 0x34
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
     bool CanSeeOrSmellPerceivedThing() const;   // 0x00661600
 };
 

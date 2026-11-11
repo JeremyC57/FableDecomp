@@ -139,7 +139,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
@@ -155,7 +157,7 @@ void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
 {
     if (PBrain->PCreature->IsRegisteredCombatant()) {
         CThingCreatureBase* creature = PBrain->PCreature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->CombatManager->SetAttackerAsReadyToAttack(creature, true);
     }
     while (!IsStopping()) {
@@ -166,7 +168,7 @@ void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
         if (!PBrain->PCreature->IsRegisteredCombatant())
             return;
         CThingCreatureBase* creature = PBrain->PCreature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         if (!world->GetPCombatManager()->IsCreatureInAttackRingSector(*creature))
             return;
         CBrainOutput output;

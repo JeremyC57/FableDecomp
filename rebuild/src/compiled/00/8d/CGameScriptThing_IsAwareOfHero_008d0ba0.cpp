@@ -39,7 +39,7 @@ class CTCPerceiveThing { public:
     CIntelligentPointer<const CThing> PerceivedThing;   // +0x0c
     float DistanceFromPerceivedThingSquared;            // +0x14
     float AwarenessTimer;                               // +0x18
-    CThing* GetPerceivedThing() const;                  // 0x007446A0
+    const CThing* GetPerceivedThing() const;                  // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
 public:
     bool IsPlayerExtendedLineOfSight() const;   // 0x00744830
 };
@@ -60,7 +60,7 @@ bool CGameScriptThing::IsAwareOfHero()
         CTCPerceiveThing* perceive = (CTCPerceiveThing*)it->second;
         if (perceive->IsPlayerExtendedLineOfSight()) return true;
         if (perceive->AwarenessTimer == 0.0f) return false;
-        CThing* target = perceive->GetPerceivedThing();
+        const CThing* target = perceive->GetPerceivedThing();
         if (target && !target->Dead && perceive->GetPerceivedThing()->ThingType == 2) return true;
     }
     return false;

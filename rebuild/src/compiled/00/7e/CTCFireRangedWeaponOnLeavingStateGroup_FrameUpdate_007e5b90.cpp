@@ -74,7 +74,7 @@ class CTCCarrying { public:
 };
 class CTCWeapon { public:
     bool IsProjectileWeapon() const;                  // 0x005DAA40
-    bool IsProjectileWeaponLoaded();            // 0x005DA980
+    bool IsProjectileWeaponLoaded() const;   // Ego_r/FableWin ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (agentNF16)            // 0x005DA980
     void SetFireRequested();                    // 0x005DA4C0 (+0x18 = 1)
 };
 

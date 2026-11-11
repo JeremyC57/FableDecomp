@@ -24,12 +24,12 @@ class CTCBase;
 #include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);      // 0x0040DCE0
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 = IS_THING_ALIVE<CThing*> (FableWin ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z; agentNF16)
 
 // Same-TU stand-ins (as the landed 0x005BE119): with these bodies visible VC7.1 sees that neither the thing's
 // address nor the lookup key escapes, keeps the thing in esi and lets the key share the thing's frame word.
 bool IsAlive(const CThing* thing);
-bool __fastcall IS_THING_ALIVE(CThing* const& thing) { return thing != 0 && IsAlive(thing); }
+template <> bool __fastcall IS_THING_ALIVE<CThing*>(CThing* const& thing) { return thing != 0 && IsAlive(thing); }
 #pragma auto_inline(on)
 
 class CTCInGameMenu {
@@ -51,7 +51,7 @@ private: public:
 void __fastcall VideoOptionsChangedConfirmed()
 {
     CThing* thing = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
-    if (IS_THING_ALIVE(thing)) {
+    if (IS_THING_ALIVE<CThing*>(thing)) {
         CTCInGameMenu* menu = 0;
         thing->GetTC(TCI_IN_GAME_MENU, &menu);
         menu->ConfirmedVideoOptionsChanged();

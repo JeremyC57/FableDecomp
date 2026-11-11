@@ -20,7 +20,7 @@ class CWideString { public:
     void* m_pStringData;
     CWideString(const CWideString& other);                        // 0x0099B720
     ~CWideString();                                               // 0x0099B510
-    CWideString& operator=(const CWideString& other);             // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // Ego_r/FableWin ??4CWideString@@QAEABV0@ABV0@@Z (agentNF16)             // 0x0099B7D0
     const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
 };
 extern const CWideString g_EmptyWideString;                       // 0x013BCA24

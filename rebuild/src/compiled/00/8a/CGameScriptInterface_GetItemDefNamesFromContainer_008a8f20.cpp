@@ -72,27 +72,35 @@ class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0 (Ego_r.pdb, const)
 };
 class CDefStringTable { public:
-    CCharString GetString(long index);                  // 0x009D49B0
+    CCharString GetString(long index) const;                  // 0x009D49B0 Ego_r/FableWin ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (agentNF16)
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)         // 0x013CA828
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
 // the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    const SEntry* it = first;
-    int len = int(last - first);
+    const value_type* it = _M_start;
+    int len = int(_M_finish - _M_start);
     while (len > 0) {
         int half = len / 2;
-        const SEntry* middle = it + half;
-        if (middle->type < *type) {
+        const value_type* middle = it + half;
+        if (middle->first < key) {
             it = middle + 1;
             len = len - half - 1;
         } else
@@ -116,12 +124,12 @@ public:
     bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
     template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return (const T*)it->component;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->_M_finish || interfaceType < it->first)
+            it = map->_M_finish;
+        return (const T*)it->second;
     }
 };
 class CScriptThing { public:

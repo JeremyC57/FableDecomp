@@ -33,7 +33,7 @@ struct CInsertResult {                          // pair<iterator, bool>
 struct CTCMapwhoSet {                           // STLport set<CTCMapwho*>
     CInsertResult insert(CTCMapwho* const& value);   // 0x0085E140
 };
-extern long g_NoMapwhoLevels;                      // 0x013BA848
+extern long MaxLayers;                      // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingMap { public:
     virtual void v00();
     CRetailVector<long>                          MapwhoLevelInfo;   // +0x04
@@ -44,7 +44,7 @@ class CThingMap { public:
 
 void CThingMap::GetAllThings(CTCMapwhoSet* out)
 {
-    for (long level = 0; level < g_NoMapwhoLevels; ++level) {
+    for (long level = 0; level < MaxLayers; ++level) {
         for (unsigned long i = 0; i < Cells[level].size(); ++i) {
             for (CMapwhoNode* node = Cells[level][i].PFirstNode; node; node = node->PNext)
                 out->insert(node->PThing);

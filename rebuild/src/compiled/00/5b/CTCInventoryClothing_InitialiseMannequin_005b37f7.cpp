@@ -64,6 +64,7 @@ class CAnimFrameInfo { public:
     CAnimFrameInfo() : Current(0), Last(0) {}
     CAnimFrameInfo(const CAnimFrameInfo& o) : Current(o.Current), Last(o.Last) {}
 };
+#include "engine/EAnimUpdateMode.h"
 class CAnimInit { public:                                             // 0x2c bytes
     long          UpdateMode;
     unsigned char Type;
@@ -79,10 +80,9 @@ class CAnimInit { public:                                             // 0x2c by
     CAnimInit(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
               long priority)
     {
-        Set(type, typeFlags, anim, updateMode, looping, flags, priority);
+        Init(type, typeFlags, anim, (EAnimUpdateMode)(updateMode), looping, flags, priority);
     }
-    void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
-             long priority);                                   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 Ego_r/FableWin ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (agentNF16: was Set)
 };
 struct CAnimFrameUpdate {
     float Time;

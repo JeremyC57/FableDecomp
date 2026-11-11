@@ -71,26 +71,27 @@ private: public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;   // agentNF16: mutable so the CDefPointer<const T> release compiles (model only; the count is the def's +4 ref count)
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
-    virtual void Destroy();                     // slot 1
+    virtual void Destroy() const;                     // slot 1
 };
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x34];
     long KnowledgeLifeInSeconds;                // +0x3c
     unsigned char _pad_0x40[0x3c];
     long CrimeSeverity;                         // +0x7c (ECrimeSeverity)
-    FABLE_FORCEINLINE void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
             Destroy();
     }
 };
+#include "engine/EOpinionDeedType.h"
 template <class T> class CDefPointer { public:
     T* Object;
     FABLE_FORCEINLINE ~CDefPointer()
@@ -109,7 +110,7 @@ class COpinionDeed { public:
 };
 class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
-    CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
+    CDefPointer<const COpinionDeedEffectsDef> PeekPDeedEffectsDef(EOpinionDeedType deedType) const;   // 0x006C5630 Ego_r/FableWin ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (agentNF16: was GetDeedEffectsDef)
 };
 
 struct SNode {                                  // STLport _Rb_tree_node<long>
@@ -151,7 +152,7 @@ bool CTCVillage::PlayerCanApologiseForCurrentCrimes(long seconds)
         for (SNode* it = end->_M_left; it != end; it = Successor(it)) {
             COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(it->_M_value_field);
             if (deed) {
-                bool refused = !(log->GetDeedEffectsDef(deed->DeedType).Object->CrimeSeverity & 8)
+                bool refused = !(log->PeekPDeedEffectsDef((EOpinionDeedType)(deed->DeedType)).Object->CrimeSeverity & 8)
                                || now - deed->FrameHappened > CMainGameComponent::GetConstantFPS() * seconds;
                 if (refused)
                     return false;

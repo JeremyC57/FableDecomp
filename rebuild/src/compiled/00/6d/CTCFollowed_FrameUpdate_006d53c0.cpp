@@ -38,29 +38,38 @@ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 #include "engine/C3DVector.h"
-struct CTCPair { long Type; void* TC; };
-struct CTCMap {
-    CTCPair* _M_start;
-    CTCPair* _M_finish;
-    CTCPair* LowerBound(const long& key);               // 0x0040F020
-    CTCPair* LowerBoundConst(const long& key);          // 0x004365B0
+// agentNF16: the stand-in CTCMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed 0x0074EE90
+//   idiom); 0x0040F020 / 0x004365B0 are its LowerBound and const LowerBound (NF14 / established spelling; Codex pass 20, both PDBs;
+//   the const one was the invented LowerBoundConst).
+class CTCBase;
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;
+    value_type* _M_finish;
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
     FABLE_FORCEINLINE void* Find(long type)
     {
-        long key = type;
-        CTCPair* it = LowerBound(key);
-        if (it == _M_finish || it->Type > type)
+        ETCInterfaceType key = (ETCInterfaceType)type;
+        value_type* it = LowerBound(key);
+        if (it == _M_finish || it->first > type)
             it = _M_finish;
-        return it->TC;
+        return it->second;
     }
-    FABLE_FORCEINLINE void* FindConst(long type)
+    FABLE_FORCEINLINE void* FindConst(long type) const
     {
-        long key = type;
-        CTCPair* it = LowerBoundConst(key);
-        if (it == _M_finish || it->Type > type)
+        ETCInterfaceType key = (ETCInterfaceType)type;
+        const value_type* it = LowerBound(key);
+        if (it == _M_finish || it->first > type)
             it = _M_finish;
-        return it->TC;
+        return it->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThing {
 public:
     void* _vfptr;

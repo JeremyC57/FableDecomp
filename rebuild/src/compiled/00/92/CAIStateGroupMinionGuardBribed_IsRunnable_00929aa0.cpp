@@ -65,7 +65,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated) ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
@@ -83,7 +85,7 @@ struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
     virtual bool IsRunnable();
     bool IsStillBribed(CTCVillager* villager)
     {
-        GetPWorld();
+        (&GetWorld());
         return CWorld::GetFrame() < ((CTCVillageMember*)villager)->GetPVillage()->m_frameBribeEnds;
     }
 };

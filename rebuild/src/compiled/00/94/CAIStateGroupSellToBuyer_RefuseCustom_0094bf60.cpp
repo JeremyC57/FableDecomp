@@ -58,7 +58,9 @@ class CAIStateGroupBase { public:
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 class CAIStateGroup_SellToBuyer : public CAIStateGroupBase {
@@ -72,6 +74,6 @@ void CAIStateGroup_SellToBuyer::RefuseCustom()
 {
     CThing* creature = GetCreature();
     C3DVector position(0.0f, 0.0f, 0.0f);
-    CMessageEventManager* messages = GetPWorld()->MessageEventManager;
+    CMessageEventManager* messages = GetWorld().MessageEventManager;
     messages->AddMessage((EMessageEventType)(0x10), 1000, position, creature, PBuyer.GetPItem(), 0.0f, 0.0f, 0);
 }

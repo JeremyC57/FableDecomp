@@ -53,10 +53,11 @@ public:
     virtual void SetPosition(const C3DVector& position);   // slot 30 (+0x78)
 };
 
+#include "engine/EPlayerMode.h"
 class CPlayer {
 public:
     long GetCurrentMode();                          // 0x00633BE0 (EPlayerMode)
-    void AddMode(long mode, bool flag);             // 0x006345C0
+    void AddMode(EPlayerMode mode, bool flag);             // 0x006345C0 ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (agentNF16)
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -116,7 +117,7 @@ void CTCFireheartMinigame::PlayGame()
     physics->SetPosition(Markers[0][3]->GetPos());
     CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() != 0x2a)
-        player->AddMode(0x2a, false);
+        player->AddMode((EPlayerMode)0x2a, false);
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DisplayBottomHalfGUI = false;
     QuitWithDelay = false;
 }

@@ -13,7 +13,7 @@
 //   +0x20, LoopingSounds +0x2C; retail CObjectAugmentationsDef InitSounds +0x58, LoopingSounds +0x64 (STLport maps of
 //   EObjectAugmentationType -> CDefString; Ego_r.pdb +0x64/+0x74 with its 16-byte containers).
 // Shape: `ClearAllSounds(); if (!PThing->InLimbo) { for each (type, name) in PDef->InitSounds { type copied to a local;
-//   if (HasCombinationOfAugmentations(type)) { CCharString sound = GDefStringTable.GetString(name); InitSounds[type].Sound
+//   if (HasCombinationOfAugmentations(type)) { CCharString sound = GDefStringTable.GetString(name.Index); InitSounds[type].Sound
 //   = sound; } } the same for
 //   LoopingSounds }` -- STLport tree iterator, `++` through the inlined static `_Rb_global<bool>::_M_increment`; PDef is
 //   re-read for every end() compare.
@@ -195,7 +195,7 @@ class CDefString { public: long Index; };
 
 class CDefStringTable {
 public:
-    CCharString GetString(CDefString name);                 // 0x009D49B0
+    CCharString GetString(long index) const;                 // 0x009D49B0 Ego_r/FableWin ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (agentNF16)
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 
@@ -249,14 +249,14 @@ void CTCObjectAugmentations::SetupAugmentationSounds()
         for (it = PDef->InitSounds.begin(); it != PDef->InitSounds.end(); ++it) {
             EObjectAugmentationType type = (*it).first;
             if (HasCombinationOfAugmentations(type)) {
-                CCharString sound = GDefStringTable.GetString((*it).second);
+                CCharString sound = GDefStringTable.GetString(((*it).second).Index);
                 InitSounds[type].Sound = sound;
             }
         }
         for (it = PDef->LoopingSounds.begin(); it != PDef->LoopingSounds.end(); ++it) {
             EObjectAugmentationType type = (*it).first;
             if (HasCombinationOfAugmentations(type)) {
-                CCharString sound = GDefStringTable.GetString((*it).second);
+                CCharString sound = GDefStringTable.GetString(((*it).second).Index);
                 LoopingSounds[type].Sound = sound;
             }
         }

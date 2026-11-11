@@ -127,7 +127,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated) ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 
@@ -177,11 +179,11 @@ bool CAIStateGroup_BanditKingLunge::CanLungeAtPlayer(CThing* player)
         if (hits == 0) {
             if (TimeOfLastLunge) {
                 long interval = (long)(CMainGameComponent::GetConstantFPS() * boss->Def->LungeIntervalSeconds);
-                if (((CWorld*)GetPWorld())->GetFrame() - TimeOfLastLunge > interval)
+                if (((CWorld*)(&GetWorld()))->GetFrame() - TimeOfLastLunge > interval)
                     return true;
             }
             else
-                TimeOfLastLunge = ((CWorld*)GetPWorld())->GetFrame();
+                TimeOfLastLunge = ((CWorld*)(&GetWorld()))->GetFrame();
         }
         else
             return boss->GetHitsThisPhase() >= hits;

@@ -51,24 +51,25 @@ public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;   // agentNF16: mutable so the CDefPointer<const T> release compiles (model only; the count is the def's +4 ref count)
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
-    virtual void Destroy();                                 // slot 1
+    virtual void Destroy() const;                                 // slot 1
 };
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x3c - 0x08];
     long KnowledgeLifeInSeconds;                            // +0x3c
-    FABLE_FORCEINLINE void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
             Destroy();
     }
 };
+#include "engine/EOpinionDeedType.h"
 template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
@@ -81,7 +82,7 @@ template <class T> class CDefPointer { public:
     }
 };
 class CTCHeroOpinionDeedLog { public:
-    CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
+    CDefPointer<const COpinionDeedEffectsDef> PeekPDeedEffectsDef(EOpinionDeedType deedType) const;   // 0x006C5630 Ego_r/FableWin ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (agentNF16: was GetDeedEffectsDef)
 };
 
 struct MirroredCriminalStatus {
@@ -127,8 +128,8 @@ void CTCHeroStats::UpdateOutstandingCrimes(const CCharString& region)
         deedLog = (CTCHeroOpinionDeedLog*)parent->GetTC(0x51);
     for (long crime = 0; crime < 10; ++crime) {
         if (OutstandingCrimes[region].Crimes[crime] != 0) {
-            deedLog->GetDeedEffectsDef(crime);
-            long expiry = deedLog->GetDeedEffectsDef(crime)->KnowledgeLifeInSeconds * 15
+            deedLog->PeekPDeedEffectsDef((EOpinionDeedType)(crime));
+            long expiry = deedLog->PeekPDeedEffectsDef((EOpinionDeedType)(crime))->KnowledgeLifeInSeconds * 15
                         + OutstandingCrimes[region].LastTimeSeenByGuard;
             if (expiry < GetWorld().GetFrame())
                 OutstandingCrimes[region].Crimes[crime] = 0;

@@ -36,7 +36,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
@@ -51,7 +53,7 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBase {
 
 bool CAIStateGroup_GoToBed::IsInSleepTime()
 {
-    CGameTime* pTime = GetPWorld()->m_pTime;
+    CGameTime* pTime = GetWorld().m_pTime;
     long sleepEnd;
     long sleepStart;
     PBrain->PCreature->GetSleepTimes(&sleepStart, &sleepEnd);

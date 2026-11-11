@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954190, length 74 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy at +0x14, called twice: once for the flag
 // test, once for the argument), CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (twice: once for the combat manager
-// at +0x4c, once with its result DROPPED in front of the frame read -- `GetPWorld()->GetFrameCount()` with a
+// at +0x4c, once with its result DROPPED in front of the frame read -- `GetWorld().GetFrameCount()` with a
 // static GetFrameCount, the landed CreatureUseCover shape), CCombatManager::RegisterCombatant(creature, enemy,
 // true) @ 0x006EDC50, CWorld::GetFrame @ 0x0049D870 (__fastcall, no arguments).
 // Shape: the flag is bit 3 of the enemy's byte at +0x6c, tested as a branch; inside the body the enemy, the
@@ -41,7 +41,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13
-    CWorld* GetPWorld();                    // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                    // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_MazeTutorialBattle : CAIStateGroupBase {
@@ -56,8 +58,8 @@ void CAIStateGroup_MazeTutorialBattle::OnActivate()
     if (PEnemy.Get()->GetTypeFlags() & 8) {
         CThing* enemy = PEnemy.Get();
         CThingCreatureBase* creature = PBrain->Creature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->m_pCombatManager->RegisterCombatant(creature, enemy, true);
     }
-    FrameOfLastShield = GetPWorld()->GetFrame();
+    FrameOfLastShield = GetWorld().GetFrame();
 }

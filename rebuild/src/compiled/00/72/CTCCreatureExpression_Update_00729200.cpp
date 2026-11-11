@@ -20,6 +20,7 @@ class CAnimFrameInfo { public:                                 // CAnimInit +0x1
     CAnimFrameInfo() : m_first(0.0f), m_second(0.0f) { }
     CAnimFrameInfo(float first, float second) : m_first(first), m_second(second) { }
 };
+#include "engine/EAnimUpdateMode.h"
 class CAnimInit { public:                                      // 0x2c bytes
     long           UpdateMode;                          // +0x00
     unsigned char  Type;                                // +0x04
@@ -32,10 +33,10 @@ class CAnimInit { public:                                      // 0x2c bytes
     unsigned long  Flags;                               // +0x20
     unsigned long  TypeFlags;                           // +0x24
     long           Priority;                            // +0x28
-    void Set(long animType, long typeFlags, long anim, long mode, bool looping, unsigned long flags, long priority);   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 Ego_r/FableWin ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (agentNF16: was Set)
     CAnimInit(long animType, long typeFlags, long anim, long mode, bool looping, unsigned long flags, long priority)
     {
-        Set(animType, typeFlags, anim, mode, looping, flags, priority);
+        Init((unsigned char)(animType), typeFlags, anim, (EAnimUpdateMode)(mode), looping, flags, priority);
     }
 };
 class CAnimSet;

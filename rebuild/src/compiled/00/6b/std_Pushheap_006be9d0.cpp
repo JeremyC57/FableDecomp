@@ -14,7 +14,7 @@ namespace N006be9d0 {
 } // (hoisted to global scope: naming wave 22, the PDB CWideString)
 class CWideString { public:
     void* Data;
-    CWideString& operator=(const CWideString& other);     // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // Ego_r/FableWin ??4CWideString@@QAEABV0@ABV0@@Z (agentNF16)     // 0x0099B7D0
     ~CWideString();                                       // 0x0099B510
 };
 namespace N006be9d0 {

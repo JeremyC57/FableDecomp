@@ -82,7 +82,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     unsigned long& GetPWorldSeed();             // 0x008FCFD0
 protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
@@ -107,7 +109,7 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
 
 void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
 {
-    ((CWorld*)(GetPWorld()))->GetWorldSeed();
+    ((CWorld*)((&GetWorld())))->GetWorldSeed();
     CThingCreatureBase* creature = GetCreature();
     CTCCreatureNavigation* nav;
     bool has = (creature->m_presentBits[0] >> 7) & 1;

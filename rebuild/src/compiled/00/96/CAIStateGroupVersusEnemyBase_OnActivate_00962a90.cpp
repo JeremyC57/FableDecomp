@@ -56,7 +56,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_VersusEnemyBase : CAIStateGroupBase {
@@ -69,7 +71,7 @@ void CAIStateGroup_VersusEnemyBase::OnActivate()
     if (!PBrain->Creature->IsRegisteredCombatant()) {
         if (PTargetThing.IsAlive()) {
             CThingAICreature* creature = PBrain->Creature;
-            CCombatManager* combatManager = GetPWorld()->m_pCombatManager;
+            CCombatManager* combatManager = GetWorld().m_pCombatManager;
             combatManager->RegisterCombatant(creature, PTargetThing.GetPItem(), true);
         }
     }

@@ -22,11 +22,6 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CBoast {
-    long ID;                                    // +0x00
-    long Cost;                                  // +0x04
-    long Reward;                                // +0x08
-};
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
     static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
@@ -34,10 +29,16 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    CBoast* GetBoast(long id, CCharString scriptName);          // 0x004AF7A0
+    class CBoast { public:                      // Ego_r.pdb CQuestManager::CBoast (nested, class key V)
+    public:
+        long ID;                                // +0x00
+        long Cost;                              // +0x04
+        long Reward;                            // +0x08
+    };
+    CBoast* GetBoast(long id, CCharString scriptName);          // 0x004AF7A0 ?GetBoast@CQuestManager@@QAEPAVCBoast@1@JVCCharString@@@Z
     void SetBoastAsMade(long id, CCharString scriptName);       // 0x004B1A80
 };
-FABLE_FORCEINLINE CBoast* GetBoast(long id)
+FABLE_FORCEINLINE CQuestManager::CBoast* GetBoast(long id)
 {
     CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     return questManager->GetBoast(id, "");
@@ -65,7 +66,7 @@ public:
 void CTCBoastingPodium::OnHeroBoast(long boastId, CThing* hero)
 {
     if (hero && !hero->IsDead()) {
-        CBoast* boast = GetBoast(boastId);
+        CQuestManager::CBoast* boast = GetBoast(boastId);
         if (boast && hero->HasTC(TCI_HERO_STATS))
             ((CTCHeroStats*)&hero->GetTC(TCI_HERO_STATS))->AddMoney(-boast->Cost, true);
     }

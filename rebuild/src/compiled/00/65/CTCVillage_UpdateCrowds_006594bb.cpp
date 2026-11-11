@@ -4,7 +4,7 @@
 //   (2) CThing::PBaseDef is a CDefPointer with operator->, so the def is loaded into ecx before &soundDef is pushed.
 //   (3) Each name is a block-scoped named CCharString (`{ CCharString name("CROWD_CHEER"); cheer = ...(name); }`), not a
 //       temporary. This gives retail's frame order: name -8, crowd -0xc, key/player -0x10.
-//   (4) The interface Find returns `(it != last && !(interfaceType < it->type)) ? it : last;`, putting the result in edi
+//   (4) The interface Find returns `(it != last && !(interfaceType < it->first)) ? it : last;`, putting the result in edi
 //       (the map register).
 // CTCVillage::UpdateCrowds() -- when the village owner's crowd interface allows a new awe (cheer) or lynch (boo) crowd event, stamp the event frame and play the matching CROWD_CHEER / CROWD_BOO sound of the owner's entity sound def through its sound player
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006594BB, length 362 bytes (`leave`, plain `ret`): frame-pointer size TU,
@@ -37,25 +37,32 @@ struct CBitset {                                        // std::bitset<274>
     unsigned long m_bits[9];
     bool test(unsigned long position) const;            // 0x00410DE0
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
-    FABLE_FORCEINLINE SEntry* Find(long interfaceType)
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling), 0x004365B0 its const LowerBound.
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
+    FABLE_FORCEINLINE value_type* Find(long interfaceType)
     {
-        long type = interfaceType;
-        SEntry* it = LowerBound(&type);
-        return (it != last && !(interfaceType < it->type)) ? it : last;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+        value_type* it = LowerBound(type);
+        return (it != _M_finish && !(interfaceType < it->first)) ? it : _M_finish;
     }
-    FABLE_FORCEINLINE const SEntry* Find(long interfaceType) const
+    FABLE_FORCEINLINE const value_type* Find(long interfaceType) const
     {
-        long type = interfaceType;
-        const SEntry* it = LowerBound(&type);
-        return (it != last && !(interfaceType < it->type)) ? it : last;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+        const value_type* it = LowerBound(type);
+        return (it != _M_finish && !(interfaceType < it->first)) ? it : _M_finish;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 // Same-TU bodies of the template members this TU instantiates (std::bitset<>::test, the CVectorMap lower bounds): VC7.1
 // sees they write no memory, so the zeroed sound def is still known null on the early exits.
@@ -67,13 +74,13 @@ __declspec(noinline) bool CBitset::test(unsigned long position) const
         ThrowOutOfRange();
     return (m_bits[position >> 5] & (1UL << (position & 31))) != 0;
 }
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    long count = last - first;
+    value_type* it = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count / 2;
-        if (it[half].type < *type) {
+        if (it[half].first < key) {
             it += half + 1;
             count -= half + 1;
         } else
@@ -81,13 +88,13 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     }
     return it;
 }
-__declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+__declspec(noinline) const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    const SEntry* it = first;
-    long count = last - first;
+    const value_type* it = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count / 2;
-        if (it[half].type < *type) {
+        if (it[half].first < key) {
             it += half + 1;
             count -= half + 1;
         } else
@@ -165,8 +172,8 @@ class CThing { public:
     unsigned char  _pad4c[0x70 - 0x4c];
     CDefPointer<const CDefClassBase> PBaseDef;          // +0x70 CDefPointer<const CThingBaseDef>
     bool HasTC(long type) const { return m_present.test(type); }
-    template <class T> FABLE_FORCEINLINE T* GetTC(long type) { return (T*)m_interfaces.Find(type)->component; }
-    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const { return (T*)m_interfaces.Find(type)->component; }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) { return (T*)m_interfaces.Find(type)->second; }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const { return (T*)m_interfaces.Find(type)->second; }
 };
 class CWorld {
 public:

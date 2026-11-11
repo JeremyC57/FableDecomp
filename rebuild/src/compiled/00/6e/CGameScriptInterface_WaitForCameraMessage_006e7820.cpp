@@ -15,16 +15,25 @@
 #include "fable_compiler.h"
 class CCharString;
 
+class CTCBase;
+// agentNF16: the stand-in CInterfaceMap_Retail struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
-    struct CInterfaceMap_Retail {
-        struct SEntry { long type; void* component; };
-        SEntry* first;
-        SEntry* last;
-        SEntry* LowerBound(const long* type);       // 0x0040F020
-    } m_interfaces;                       // +0x44
+    CInterfaceMap_Retail m_interfaces;                       // +0x44
     unsigned char _pad4c[0x20];
     unsigned long ThingTypeFlags;         // +0x6c
     unsigned char _pad70[0x21];
@@ -33,10 +42,10 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
             CInterfaceMap_Retail* map = &m_interfaces;
-            CInterfaceMap_Retail::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->_M_finish || interfaceType < it->first) ? map->_M_finish : it)->second;
             return true;
         }
         return false;

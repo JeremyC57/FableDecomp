@@ -27,7 +27,7 @@ class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -284,12 +284,12 @@ inline unsigned long GFRandom(unsigned long* seed)
 // Same-TU stand-in for CSpecialEffectsDef::CalcAndLookup 0x00669D30 (reads the name, writes the looked-up value through
 // the pointer, nothing escapes): VC7.1 then sinks the `effect = 0` store with the def-pointer zero as retail does.
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& name, long* value)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
     const char* text = (const char*)name.PStringData;
     if (text == 0)
         return false;
-    *value = (long)text[0];
+    value = (long)text[0];
     return true;
 }
 #pragma auto_inline(on)
@@ -333,7 +333,7 @@ void CModeGuildmasterPowerUpShield::OnActivate()
         m_pThing->GetDef()->GetSubDef(&effects);
         {
             CCharString name("POWER_UP_BEAM");
-            effects->CalcAndLookup(name, &effect);
+            effects->GetEffectFromString(name, effect);
         }
         while (bodyguards.size() > 0 && ShieldTargets.size() < 3) {
             unsigned long count = bodyguards.size();

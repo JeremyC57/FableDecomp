@@ -63,24 +63,25 @@ private: public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;   // agentNF16: mutable so the CDefPointer<const T> release compiles (model only; the count is the def's +4 ref count)
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
-    virtual void Destroy();                             // slot 1
+    virtual void Destroy() const;                             // slot 1
 };
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x70 - 0x08];
     long Severity;                                      // +0x70 ECrimeSeverity
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
             Destroy();
     }
 };
+#include "engine/EOpinionDeedType.h"
 template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
@@ -112,7 +113,7 @@ class COpinionDeed { public:
     CIntelligentPointer<CThing> Perpetrator;                // +0x18
 };
 class CTCHeroOpinionDeedLog { public:                          // interface 0x51
-    CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
+    CDefPointer<const COpinionDeedEffectsDef> PeekPDeedEffectsDef(EOpinionDeedType deedType) const;   // 0x006C5630 Ego_r/FableWin ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (agentNF16: was GetDeedEffectsDef)
 };
 class CTCVillage { public:
     void RecalculateSecuritySweep(long flags);          // 0x00659C32
@@ -149,7 +150,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);
-        CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(deed.Type);
+        CDefPointer<const COpinionDeedEffectsDef> effects = log->PeekPDeedEffectsDef((EOpinionDeedType)(deed.Type));
         LastCrimeSeenSeverity = effects->Severity;
         if (LastCrimeSeenSeverity == 2)
             severe = true;

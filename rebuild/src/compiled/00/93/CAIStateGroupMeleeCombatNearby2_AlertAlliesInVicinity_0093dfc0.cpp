@@ -59,7 +59,7 @@ class CTCPerceiveThing { public:                       // interface 0x34 (Ego_r.
     bool IgnoreFOVLineOfSight;                  // +0x2f
     bool DirectAwareness;                       // +0x30
     bool Smelt;                                 // +0x31
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
 };
 
 class CMessageEvent;

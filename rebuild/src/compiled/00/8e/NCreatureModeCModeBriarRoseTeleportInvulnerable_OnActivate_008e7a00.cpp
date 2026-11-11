@@ -50,18 +50,18 @@ template <class T> struct CDefCopy {
     T* operator->() const { return Object; }
 };
 class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool GetEffectFromString(const CCharString& name, long* type);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
 // Stand-in body (out of line in retail): it writes the out type only, so VC7.1 knows the effect type's address does
 // not escape the call (the 0x008D9740 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long* type)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& type) const
 {
     long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
     if (found < 0)
         return false;
-    *type = found;
+    type = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -174,7 +174,7 @@ void CModeBriarRoseTeleportInvulnerable::OnActivate()
     CDefPointer<CSpecialEffectsDef> out;
     long effectType = 0;
     bool found = CDefCopy<CDefClassBase>(ParentThing->PDef)->GetSubDef(&out)
-        && out.Object->GetEffectFromString("TELEPORT_CHARGE", &effectType);
+        && out.Object->GetEffectFromString("TELEPORT_CHARGE", effectType);
     CDefHolder<CSpecialEffectsDef> effects(out.Object);
     if (found) {
         CThing* effect = CTCDParticleEmitter::Create(effectType, *(&GetParent()->GetPos()), false);

@@ -43,17 +43,17 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
 #pragma auto_inline(off)
 // Stand-in body (out of line in retail): writes the out value only, so the effect index's address does not escape.
-__declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& name, long* value)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
     long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
     if (found < 0)
         return false;
-    *value = found;
+    value = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -259,7 +259,7 @@ void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
     DelayTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->DelayTimeSecs[SpellLevel]);
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
-    bool found = ((CDefClassBase*)PDef.Object)->GetSubDef(&effects) && effects->CalcAndLookup("HIT_EFFECT", &effect);
+    bool found = ((CDefClassBase*)PDef.Object)->GetSubDef(&effects) && effects->GetEffectFromString("HIT_EFFECT", effect);
     if (found)
         CreateParticleEffect(effect, target->GetPos());
     const CThing* parentThing = ParentThing;

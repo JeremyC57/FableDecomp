@@ -93,7 +93,7 @@ class CThingCreatureDef { public:
     long PrimaryMeleeWeaponDef;                         // +0xd8
 };
 class CDefinitionManager { public:
-    bool GetDef(const CCharString& name, CDefPointer<CPlayerMovementDef>& out);   // 0x006AE1C0
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x006AE1C0 GetDef<CPlayerMovementDef> (Ego_r.pdb member template)
 };
 
 extern long g_HeroCreationState;                        // 0x0137F940
@@ -149,7 +149,7 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
 #pragma pack(pop)
     unsigned char _pad1e5[0x1e8 - 0x1e5];
     CDefPointer<const CHeroCombatDef> PHeroCombatDef;         // +0x1e8
-    CDefPointer<CPlayerMovementDef> PPlayerMovementDef; // +0x1ec
+    CDefPointer<const CPlayerMovementDef> PPlayerMovementDef; // +0x1ec (Ego_r.pdb CDefPointer<const CPlayerMovementDef>)
     C3DVector ImpulseVelocity;                          // +0x1f0
     float LeanAngle;                                    // +0x1fc
     void InitialiseMovementSpeeds();                    // 0x006A9A00
@@ -179,7 +179,7 @@ bool CThingPlayerCreature::OnCreate()
         LastThingCollision.Normal.Clear();
         LastThingCollision.Position.Clear();
         PHeroCombatDef = GetPHeroCombatDef();
-        GetDefinitionManager()->GetDef("MOVEMENT_DEFAULT", PPlayerMovementDef);
+        GetDefinitionManager()->GetDef("MOVEMENT_DEFAULT", &PPlayerMovementDef);
         if (g_HeroCreationState == -1)
             g_HeroCreationState = 1;
         if (ValidateInitialisation()) {

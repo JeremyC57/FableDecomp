@@ -143,7 +143,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
 public:
@@ -212,14 +214,14 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
     }
     }
     {
-        const CMessageEvent* invitation = GetPWorld()->GetPMessageManager()->FindMostRecentMessage(
+        const CMessageEvent* invitation = GetWorld().GetPMessageManager()->FindMostRecentMessage(
             CMessageEventFilter_IsOfType(0x2e) && TSFNotMe(CThingFilter_IsNotThing(GetCreature()))
             && TSFRange(CThingFilter_In2DRange(GetCreature(), 8.0f)));
         if (invitation) {
             long markerIndex;
             {
                 CCharString markerName("INTERNAL_MARKER_LIGHT");
-                markerIndex = GetPWorld()->GetPDefinitionManager()->GetDefGlobalIndexFromName(markerName);
+                markerIndex = GetWorld().GetPDefinitionManager()->GetDefGlobalIndexFromName(markerName);
             }
             CThing* marker = Create(markerIndex, GetCreature()->GetPos());
             {
@@ -227,19 +229,19 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
                 PTCGroupTag = (CTCCreatureGroupTag*)marker->AddTC(componentName, false, 0);
             }
             if (PTCGroupTag && PTCGroupTag->AddMember(GetCreature())) {
-                GetPWorld()->GetPMessageManager()->RemoveMessage(invitation);
+                GetWorld().GetPMessageManager()->RemoveMessage(invitation);
                 InitialTagPos = GetCreature()->PeekPos();
                 InitiatedTag = true;
                 return true;
             }
         }
     }
-    if (!GetPWorld()->GetPMessageManager()->FindMostRecentMessage(
+    if (!GetWorld().GetPMessageManager()->FindMostRecentMessage(
             CMessageEventFilter_IsOfType(0x2e) && CMessageEventFilter_IsOriginatedByThing(GetCreature())
             && TSFRange(CThingFilter_In2DRange(GetCreature(), 8.0f)))) {
         CThingAICreature* creature = GetCreature();
         long fps = CMainGameComponent::GetConstantFPS();
-        CMessageEventManager* manager = GetPWorld()->PMessageEventManager;
+        CMessageEventManager* manager = GetWorld().PMessageEventManager;
         manager->AddMessage((EMessageEventType)(0x2e), (long)(fps * 4.0f), creature->PeekPos(), creature, 0, 8.0f, 8.0f, 0);
     }
     return false;

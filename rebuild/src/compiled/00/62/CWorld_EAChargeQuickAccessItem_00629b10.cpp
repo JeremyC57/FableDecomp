@@ -60,7 +60,9 @@ class CPlayerGui { public:
     bool IsOpen() const;                           // 0x004374F0
 };
 class CWorld { public:
-    CPlayer* GetPlayer(long number);               // 0x0049D850
+protected:
+    CPlayer* GetPlayer(unsigned long number);               // 0x0049D850 ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z (Ego_r/FableWin, protected)
+public:
     void EAChargeQuickAccessItem(const CGameEvent* event);
 };
 void CWorld::EAChargeQuickAccessItem(const CGameEvent* event)

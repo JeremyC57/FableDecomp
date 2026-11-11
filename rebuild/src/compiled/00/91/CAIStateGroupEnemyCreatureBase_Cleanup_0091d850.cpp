@@ -5,7 +5,7 @@
 // CCombatManager::DeregisterCombatant(CThingCreatureBase*) @ 0x006ED9C0 (the world's manager at +0x4c), `this`'s
 // virtual slot 17 (+0x44), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/90/50/0x00A01C10.
 // Shape: the creature is read into a named local (edi) BEFORE the world call, and the world is a named local
-// too (a chained `GetPWorld()->CombatManager->Deregister(creature)` pushes the creature before the call); then `PEnemy = CIntelligentPointer<CThingCreatureBase>(0)` -- a frame temporary
+// too (a chained `GetWorld().CombatManager->Deregister(creature)` pushes the creature before the call); then `PEnemy = CIntelligentPointer<CThingCreatureBase>(0)` -- a frame temporary
 // through the inline converting constructor (vtable 0x0123E7D8, SetPItem(0)), the inline operator= and the base
 // destructor.
 // Model: local (engine/CAIStateGroup_EnemyCreatureBase.h flattens the base).
@@ -69,7 +69,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                         // +0x11
     unsigned char Enabled;                          // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                            // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                            // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
@@ -81,7 +83,7 @@ void CAIStateGroup_EnemyCreatureBase::Cleanup()
 {
     if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingAICreature* creature = PBrain->Creature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->CombatManager->DeregisterCombatant((CThingCreatureBase*)creature);
     }
     OnCleanup();

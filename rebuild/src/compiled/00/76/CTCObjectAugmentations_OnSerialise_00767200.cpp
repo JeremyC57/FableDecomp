@@ -52,7 +52,7 @@ class CDefString { public:
     CDefString() { }
 };
 class CDefStringTable { public:
-    CCharString GetString(CDefString id);               // 0x009D49B0
+    CCharString GetString(long index) const;               // 0x009D49B0 Ego_r/FableWin ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (agentNF16)
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CPersistContext { public:
@@ -116,7 +116,7 @@ void CTCObjectAugmentations::OnSerialise(CPersistContext& context, bool savedInG
         if (savedInGame) {
             for (unsigned long i = 0; i < Augmentations.size(); ++i) {
                 if (Augmentations[i].Object) {
-                    CCharString name = GDefStringTable.GetString(Augmentations[i]->GetDefName());
+                    CCharString name = GDefStringTable.GetString((Augmentations[i]->GetDefName()).ID);
                     names[i] = name;
                 }
             }

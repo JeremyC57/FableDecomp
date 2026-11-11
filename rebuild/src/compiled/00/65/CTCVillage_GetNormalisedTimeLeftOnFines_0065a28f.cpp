@@ -77,20 +77,20 @@ private: public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;   // agentNF16: mutable so the CDefPointer<const T> release compiles (model only; the count is the def's +4 ref count)
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
-    virtual void Destroy();                     // slot 1
+    virtual void Destroy() const;                     // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
 };
 class COpinionDeedEffectsDef : public CDefBase { public:
     unsigned char _pad_0x08[0x34];
     long KnowledgeLifeInSeconds;                // +0x3c
-    FABLE_FORCEINLINE void Release()
+    FABLE_FORCEINLINE void Release() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -100,12 +100,13 @@ class COpinionDeedEffectsDef : public CDefBase { public:
 class CRegionDef : public CDefBase { public:
     unsigned char _pad_0x08[0x95];
     bool HasFines;                              // +0x9d (descriptive)
-    FABLE_FORCEINLINE void Release()
+    FABLE_FORCEINLINE void Release() const
     {
         if (--m_count == 0)
             Destroy();
     }
 };
+#include "engine/EOpinionDeedType.h"
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* object) : Object(object)
@@ -127,7 +128,7 @@ class COpinionDeed { public:
 };
 class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
-    CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
+    CDefPointer<const COpinionDeedEffectsDef> PeekPDeedEffectsDef(EOpinionDeedType deedType) const;   // 0x006C5630 Ego_r/FableWin ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (agentNF16: was GetDeedEffectsDef)
 };
 
 class CRegion { public:
@@ -183,7 +184,7 @@ float CTCVillage::GetNormalisedTimeLeftOnFines()
             for (SNode* it = end->_M_left; it != end; it = Successor(it)) {
                 COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(it->_M_value_field);
                 if (deed) {
-                    CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(deed->DeedType);
+                    CDefPointer<const COpinionDeedEffectsDef> effects = log->PeekPDeedEffectsDef((EOpinionDeedType)(deed->DeedType));
                     long knowledge = effects->KnowledgeLifeInSeconds * PeekComponent().GetConstantFPS();
                     long left = knowledge - GetWorld().GetFramesSince(FramePlayerLastSeenByGuard);
                     if (left >= longest) {

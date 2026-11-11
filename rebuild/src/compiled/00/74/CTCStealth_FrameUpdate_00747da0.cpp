@@ -23,13 +23,20 @@
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-    SEntry* LowerBound2(const long* type);              // 0x004365B0
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0 (agentNF16: was the invented LowerBound2)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CGraphic {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -110,18 +117,18 @@ class CThing { public:
     template <class T>
     FABLE_FORCEINLINE T* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
     template <class T>
     FABLE_FORCEINLINE T* GetTC2(long type)
     {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound2(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        ETCInterfaceType key = (ETCInterfaceType)type;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
 };
 class CTCCreatureModeManager { public:

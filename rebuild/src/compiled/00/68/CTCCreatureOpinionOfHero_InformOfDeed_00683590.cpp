@@ -49,22 +49,23 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;   // agentNF16: mutable so the CDefPointer<const T> release compiles (model only; the count is the def's +4 ref count)
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
-    virtual void Destroy();                             // slot 1
+    virtual void Destroy() const;                             // slot 1
 };
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
             Destroy();
     }
 };
+#include "engine/EOpinionDeedType.h"
 template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
@@ -78,7 +79,7 @@ class COpinionDeed { public:
 };
 class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;       // 0x006C58F0
-    CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
+    CDefPointer<const COpinionDeedEffectsDef> PeekPDeedEffectsDef(EOpinionDeedType deedType) const;   // 0x006C5630 Ego_r/FableWin ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (agentNF16: was GetDeedEffectsDef)
 };
 class CTCBase
 {
@@ -102,6 +103,6 @@ void CTCCreatureOpinionOfHero::InformOfDeed(long deedHandle, bool flag)
         hero->GetInterface(&log, 0x51);
         COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(deedHandle);
         if (deed)
-            InformOfDeed(deed->Type, deedHandle, log->GetDeedEffectsDef(deed->Type).Object, flag);
+            InformOfDeed(deed->Type, deedHandle, log->PeekPDeedEffectsDef((EOpinionDeedType)(deed->Type)).Object, flag);
     }
 }

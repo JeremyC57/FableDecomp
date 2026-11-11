@@ -29,7 +29,7 @@ class CPlayer { public:
     CGamePlayerInterface* m_pInterface;                 // +0x0c
     unsigned char _pad010[0x218 - 0x10];
     bool m_controlsLocked;                              // +0x218
-    long GetPlayerNumber() const;                       // 0x00487510
+    long GetJoystickDeviceNumber() const;                       // 0x00487510 Ego_r/FableWin ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ (agentNF16: was GetPlayerNumber)
 };
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_PEEKPLAYER
@@ -88,7 +88,7 @@ void CTCHeroSpecialMovement::FrameUpdate()
 {
     CGamePlayerInterface* input = ParentThing->PeekPlayer().m_pInterface;
     if (g_bHeroRunOption) {
-        SetRunning(input->IsGameActionEventInQueue(0x1f, 2, GetThing().GetPlayer().GetPlayerNumber())
+        SetRunning(input->IsGameActionEventInQueue(0x1f, 2, GetThing().GetPlayer().GetJoystickDeviceNumber())
                    && !GetThing().GetPlayer().m_controlsLocked && IsAvailableForHeroRun(ParentThing));
         if (Running) {
             if (!Sprinting) {
@@ -99,7 +99,7 @@ void CTCHeroSpecialMovement::FrameUpdate()
         } else
             SetSprinting(false);
     } else {
-        SetSprinting(input->IsGameActionEventInQueue(0x1e, 2, GetThing().GetPlayer().GetPlayerNumber())
+        SetSprinting(input->IsGameActionEventInQueue(0x1e, 2, GetThing().GetPlayer().GetJoystickDeviceNumber())
                      && IsAvailableForHeroSprint(ParentThing));
     }
     if (Sprinting) {

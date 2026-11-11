@@ -54,7 +54,8 @@ bool IsThingAliveImpl(const CThing* thing);
 // Same-TU read-only stand-ins for out-of-line retail callees that receive a local's address (IS_THING_ALIVE<CThing*>
 // 0x0040DCE0, CVectorMap LowerBound const 0x004365B0, std::find<long*> 0x008E6FB0): the address does not escape, so
 // VC7.1 can reuse the dead argument slot as retail does.
-bool __fastcall IS_THING_ALIVE(CThing* const& thing)
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 = IS_THING_ALIVE<CThing*> (FableWin ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z; agentNF16)
+template <> bool __fastcall IS_THING_ALIVE<CThing*>(CThing* const& thing)
 {
     return thing != 0 && IsThingAliveImpl(thing);
 }
@@ -184,7 +185,7 @@ bool CMeleeCombatAbilityDef::IsAbilityValid(CThingCreatureBase* creature)
         }
         CThing* weapon = carrying->GetThingInPrimarySlot();
         long weaponClass = 0;
-        if (IS_THING_ALIVE(weapon)) {
+        if (IS_THING_ALIVE<CThing*>(weapon)) {
             CTCWeapon* tc;
             if (weapon->GetInterface(&tc, 0x48))
                 weaponClass = tc->GetWeaponClass();

@@ -10,8 +10,9 @@
 // +0xa9, PCameraManagerSet +0x130); the set def's main manager def index at +0x44.
 // Shape: `push 2Fh` before the GetMainPlayer call (the HasMode argument is evaluated before the object expression); the local
 // CDefPointer's zero initialisation is scheduled after the GetDef argument pushes; its destructor releases with `dec [ecx+4] ; jne`.
+#include "engine/EPlayerMode.h"
 class CPlayer { public:
-    bool HasMode(long mode);                        // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                        // 0x00634160 ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z (agentNF16)
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -123,7 +124,7 @@ __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPoin
 #pragma auto_inline(on)
 void CGameCameraManager::RemoveCombatCameraMode()
 {
-    if (!CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
+    if (!CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().HasMode((EPlayerMode)0x2f)) {
         CDefPointer<CCameraManagerDef> def;
         World->m_pDefinitionManager->GetDef(PCameraManagerSet->MainCameraManagerDef, def);
         SetCameraManagerDef(def);

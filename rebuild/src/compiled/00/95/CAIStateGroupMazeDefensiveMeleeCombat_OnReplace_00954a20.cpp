@@ -15,7 +15,7 @@
 // `if (modes->HasMode(0x19)) modes->RemoveMode(0x19);`. No engine header models the
 // state group's vptr chain: local model.
 // Tried: combat-manager local (this, best: world call first but the manager lands in eax + `mov ecx,eax`), the
-// direct chain `GetPWorld()->m_pCombatManager->Deregister(creature)` (the lane pushes the creature before the
+// direct chain `GetWorld().m_pCombatManager->Deregister(creature)` (the lane pushes the creature before the
 // world call, 139v141).
 #include "fable_compiler.h"
 class CTCBase;
@@ -73,7 +73,9 @@ class CAIStateGroupBase { public:
     virtual void OnReplace();                   // slot 10 (+0x28)
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_MazeDefensiveMeleeCombat : CAIStateGroupBase {
@@ -84,7 +86,7 @@ void CAIStateGroup_MazeDefensiveMeleeCombat::OnReplace()
 {
     if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->PCreature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->m_pCombatManager->DeregisterCombatant(creature);
     }
     CTCCreatureModeManager* modes;

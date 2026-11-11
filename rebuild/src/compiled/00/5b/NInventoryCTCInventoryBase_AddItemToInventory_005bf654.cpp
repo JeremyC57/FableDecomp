@@ -1,4 +1,4 @@
-// NInventory::CTCInventoryBase::AddItemToInventory(CThing* item, bool silent, bool fromShop, long price, bool noTutorials) -- a hero-title item sets the owner's title instead; otherwise the item goes into the category matching its identifier and OnItemAdded is raised; true when added
+// NInventory::CTCInventoryBase::AddItemToInventory(CThing& item, bool silent, bool fromShop, long price, bool noTutorials) -- a hero-title item sets the owner's title instead; otherwise the item goes into the category matching its identifier and OnItemAdded is raised; true when added
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail 0x005BF654, 297 bytes, `ret 14h`. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: CDefClassBase::GetSubDef<CHeroTitleDef>(CDefPointer<const CHeroTitleDef>*) const 0x005B1E5A (on the item's def),
@@ -24,23 +24,31 @@ template <unsigned int _Nb> class bitset { public:
     bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
 }
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);            // 0x0040F020
-    SEntry* LowerBound(const long* type) const;      // 0x004365B0
+class CTCBase;
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound template member (compiled in the caller's TU):
 // binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    long count = last - first;
+    value_type* it = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count / 2;
-        if (it[half].type < *type) {
+        if (it[half].first < key) {
             it += half + 1;
             count -= half + 1;
         } else
@@ -52,13 +60,13 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound template member (compiled in the caller's TU):
 // binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+__declspec(noinline) const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    SEntry* it = first;
-    long count = last - first;
+    const value_type* it = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count / 2;
-        if (it[half].type < *type) {
+        if (it[half].first < key) {
             it += half + 1;
             count -= half + 1;
         } else
@@ -136,12 +144,12 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)wanted;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || wanted < it->type)
-                it = map->last;
-            *out = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->_M_finish || wanted < it->first)
+                it = map->_M_finish;
+            *out = (T*)it->second;
             return true;
         }
         return false;
@@ -149,10 +157,10 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)wanted;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *out = (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *out = (T*)((it == map->_M_finish || wanted < it->first) ? map->_M_finish : it)->second;
             return true;
         }
         return false;
@@ -263,7 +271,11 @@ class CTCInventoryBase { public:
     virtual void v077();
     virtual void v078();
     virtual void v079();
-    virtual void v080();
+protected:
+    // agentNF16: slot 80 (CTCInventoryClothing vtable 0x0124356C slot 80 = 0x005BF654, rtti-vtables.tsv) is this function;
+    // Ego_r.pdb ?AddItemToInventory@CTCInventoryBase@NInventory@@MAE_NAAVCThing@@_N1J1@Z (protected virtual, CThing&).
+    virtual bool AddItemToInventory(CThing& item, bool silent, bool fromShop, long price, bool noTutorials);
+public:
     virtual void v081();
     virtual void v082();
     virtual void v083();
@@ -272,28 +284,27 @@ class CTCInventoryBase { public:
     unsigned char _pad_0x008[0x20 - 0x08];
     CCategory* m_categoriesFirst;                    // +0x20 Categories
     CCategory* m_categoriesLast;                     // +0x24
-    bool AddItemToInventory(CThing* item, bool silent, bool fromShop, long price, bool noTutorials);
 };
 
-bool CTCInventoryBase::AddItemToInventory(CThing* item, bool silent, bool fromShop, long price, bool noTutorials)
+bool CTCInventoryBase::AddItemToInventory(CThing& item, bool silent, bool fromShop, long price, bool noTutorials)
 {
     CDefPointer<const CHeroTitleDef> titleDef;
     bool isTitle;
     {
-        CDefPointer<CDefClassBase> def(item->PDef);
+        CDefPointer<CDefClassBase> def(item.PDef);
         isTitle = def->GetSubDef(&titleDef);
     }
     if (isTitle) {
         CTCHero* hero;
         if (ParentThing->GetInterface(&hero, 0x29))
-            hero->SetTitle(item->DefIndex);
+            hero->SetTitle(item.DefIndex);
     } else {
-        const CThing* constItem = item;
+        const CThing* constItem = &item;
         CTCInventoryItem* inventoryItem = 0;
         constItem->GetInterface(&inventoryItem, 0x1a);
         CCategory* category = FindCategory(m_categoriesFirst, m_categoriesLast, inventoryItem->GetCategoryIdentifier());
-        if (category->AddItem(item, silent, price)) {
-            OnItemAdded(item->DefIndex, fromShop, noTutorials);
+        if (category->AddItem(&item, silent, price)) {
+            OnItemAdded(item.DefIndex, fromShop, noTutorials);
             return true;
         }
     }

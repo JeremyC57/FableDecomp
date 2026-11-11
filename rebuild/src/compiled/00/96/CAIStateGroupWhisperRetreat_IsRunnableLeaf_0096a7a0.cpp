@@ -113,7 +113,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                            // +0x11
     unsigned char Enabled;                             // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                               // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                               // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)         // 0x008FD000
 public:
@@ -132,7 +134,7 @@ bool CAIStateGroup_WhisperRetreat::IsRunnableLeaf()
 {
     CThing* arenaCentre = 0;
     if (FindHitEvent()) {
-        FrameOfLastHit = GetPWorld()->GetFrame();
+        FrameOfLastHit = GetWorld().GetFrame();
         ++NumHits;
         CWhisperRetreatDef* retreat = PBrain->PCreature->GetRetreatDef();
         if (NumHits >= retreat->HitsBeforeRetreat) {

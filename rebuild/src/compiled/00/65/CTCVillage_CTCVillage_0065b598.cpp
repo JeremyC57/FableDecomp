@@ -46,7 +46,7 @@ public:
     }
 };
 class CThingAICreature : public CThing {};
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x0040DCE0 (bound through a converted CThing* temporary)
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 = IS_THING_ALIVE<CThing*> (FableWin ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z; agentNF16)
 
 class CTCVillageMember { public:
     void SetPVillage(CTCVillage* village);      // 0x007EE270
@@ -147,7 +147,7 @@ CTCVillage::~CTCVillage()
 {
     for (SPersonNode* node = VillagePeople._M_node->_M_next; node != VillagePeople._M_node; node = node->_M_next) {
         CThingAICreature* person = (CThingAICreature*)node->_M_data.GetPItem();
-        if (IS_THING_ALIVE(person)) {
+        if (IS_THING_ALIVE<CThing*>(person)) {
             CTCVillageMember* member;
             if (person->HasTC(35))
                 member = (CTCVillageMember*)person->GetTC(35);

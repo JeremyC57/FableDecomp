@@ -61,7 +61,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
@@ -85,7 +87,7 @@ struct CAIStateGroup_MinionBehaviourPodiumEmoteNeutral : CAIStateGroupBase {
 
 void CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::UpdateLeaf()
 {
-    float now = DivideByGameSpeed((float)GetPWorld()->GetFrame());
+    float now = DivideByGameSpeed((float)GetWorld().GetFrame());
     if (now - LastEmoteTime > SpeechDuration + Pause) {
         CTCTalk* talk;
         GetCreature()->GetTC(TCI_TALK, &talk);

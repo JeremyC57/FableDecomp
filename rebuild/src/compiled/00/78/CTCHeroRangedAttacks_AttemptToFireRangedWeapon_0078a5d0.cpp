@@ -66,7 +66,7 @@ public:
 };
 
 class CTCWeapon { public:                                   // interface type 0x48
-    bool IsProjectileWeaponLoaded();                 // 0x005DA980
+    bool IsProjectileWeaponLoaded() const;   // Ego_r/FableWin ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (agentNF16)                 // 0x005DA980
 public:
     bool IsProjectileWeapon() const;   // 0x005DAA40
 };

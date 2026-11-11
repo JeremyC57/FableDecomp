@@ -19,7 +19,7 @@ class CCharString { public:
 class CDefString { public: long Index; };
 
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);     // 0x009D49B0
+    CCharString GetString(long index) const;     // 0x009D49B0 Ego_r/FableWin ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (agentNF16)
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 
@@ -99,7 +99,7 @@ CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMulti
     }
     CGameDefinitionManager::Get().GetDef(index, &def);
     {
-        CCharString animation = GDefStringTable.GetString(def->Animations[SpellLevel - 1]);
+        CCharString animation = GDefStringTable.GetString((def->Animations[SpellLevel - 1]).Index);
         SetCombatAnimation(animation);
     }
 }

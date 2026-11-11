@@ -114,7 +114,7 @@ class CThingMap { public:
     C2DBoxI Area;                                                  // +0x20
     long NoThings;                                                 // +0x30
 };
-extern long g_NoMapwhoLevels;                                      // 0x013BA848
+extern long MaxLayers;                                      // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 }
 // The table's real element type is NThingMap::CLayerInfo (Ego_r.pdb, 16 bytes); the landed spelling below keeps a global struct.
 struct CLayerInfo { long Size; long ScaleShift; unsigned long UsedColour, UnusedColour; };
@@ -166,7 +166,7 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
     for (std::vector<NThingMap::CThingMap*>::iterator m = AreaMaps.begin(); m != AreaMaps.end(); ++m) {
         NThingMap::CThingMap* map = *m;
         C2DBoxI bounds = ClipAndConvertWorldMapAreaToLocalArea(*map, area);
-        for (long layer = 0; layer < NThingMap::g_NoMapwhoLevels; ++layer) {
+        for (long layer = 0; layer < NThingMap::MaxLayers; ++layer) {
             C2DBoxI scaled = GetMapwhoArea(*map, layer, bounds);
             if (scaled.Width() != 0 && scaled.Height() != 0) {
                 long y = scaled.TLY;

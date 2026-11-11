@@ -13,7 +13,7 @@
 // "WHISTLE_GUARD_BRIBED" @ 0x01291A00; 0.0027777f turn speed (immediate).
 // Layout: local model (PBrain +4; brain PCreature +0x18; player +0x34 CIntelligentPointer to the character; presence bits +0x20,
 // interface map +0x44; interface 0x10 = sound component, 0x23 = CTCVillageMember; village bribe frame +0xA8).
-// Shape: the random delays are a static CWorld random called through GetPWorld() (the discarded call); the in-loop sound lookup
+// Shape: the random delays are a static CWorld random called through (&GetWorld()) (the discarded call); the in-loop sound lookup
 // inlines the vector-map lower_bound, the after-loop one calls it.
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
 enum EAIActionRepeat;                         // MS forward enum
@@ -25,19 +25,25 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-    static FABLE_FORCEINLINE SEntry* LowerBoundInline(SEntry* first, SEntry* end, long key)
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+    static FABLE_FORCEINLINE value_type* LowerBoundInline(value_type* start, value_type* end, long key)
     {
-        long len = end - first;
-        SEntry* it = first;
+        long len = end - start;
+        value_type* it = start;
         while (len > 0) {
             long half = len / 2;
-            SEntry* middle = it + half;
-            if (middle->type < key) {
+            value_type* middle = it + half;
+            if (middle->first < key) {
                 it = middle + 1;
                 len = len - half - 1;
             } else
@@ -46,6 +52,7 @@ struct CInterfaceMap {
         return it;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
@@ -56,10 +63,10 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->_M_finish || interfaceType < it->first) ? map->_M_finish : it)->second;
             return true;
         }
         return false;
@@ -67,9 +74,9 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterfaceInline(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
-            CInterfaceMap::SEntry* end = m_interfaces.last;
-            CInterfaceMap::SEntry* it = CInterfaceMap::LowerBoundInline(m_interfaces.first, end, interfaceType);
-            *ppOut = (T*)((it == end || interfaceType < it->type) ? end : it)->component;
+            CInterfaceMap::value_type* end = m_interfaces._M_finish;
+            CInterfaceMap::value_type* it = CInterfaceMap::LowerBoundInline(m_interfaces._M_start, end, interfaceType);
+            *ppOut = (T*)((it == end || interfaceType < it->first) ? end : it)->second;
             return true;
         }
         return false;
@@ -141,7 +148,9 @@ class CAIStateGroupBase { public:
     protected:
     const CPlayerManager& PeekPlayerManager() const;    // 0x008FCF80
     public:
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
@@ -157,7 +166,7 @@ struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
 void CAIStateGroup_MinionGuardBribed::Update()
 {
     CIntelligentPointerPlayerCreature hero(((CThing*)PeekPlayerManager().GetMainPlayer().GetPCharacter().GetPItem()));
-    unsigned long delay = GetPWorld()->Random(g_BribedWhistleFirstMax - g_BribedWhistleFirstMin, GetPWorldSeed());
+    unsigned long delay = GetWorld().Random(g_BribedWhistleFirstMax - g_BribedWhistleFirstMin, GetPWorldSeed());
     long nextWhistle = CWorld::GetFrame() + g_BribedWhistleFirstMin + delay;
     unsigned long sample = g_InvalidSoundHandle;
     while (IsStillValid() && IS_THING_ALIVE(hero)) {
@@ -168,11 +177,11 @@ void CAIStateGroup_MinionGuardBribed::Update()
             break;
         if (AIAction_DoNothing() != 4)
             break;
-        if (GetPWorld()->GetFrame() >= nextWhistle) {
+        if (GetWorld().GetFrame() >= nextWhistle) {
             CTCSoundPlayer* sound;
             if (GetCreature()->GetInterfaceInline(&sound, 0x10))
                 sample = sound->PlayAttachedCriteria("WHISTLE_GUARD_BRIBED", 0, 0, 0, -1);
-            delay = GetPWorld()->Random(g_BribedWhistleRepeatMax - g_BribedWhistleRepeatMin, GetPWorldSeed());
+            delay = GetWorld().Random(g_BribedWhistleRepeatMax - g_BribedWhistleRepeatMin, GetPWorldSeed());
             nextWhistle = CWorld::GetFrame() + delay;
             nextWhistle += g_BribedWhistleRepeatMin;
         }

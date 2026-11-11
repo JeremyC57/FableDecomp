@@ -50,8 +50,11 @@ class CDefPointeeBase { public:
 };
 #include "engine/C3DVector.h"
 class CMainGameComponent { public:
-    static long FrameRate;                      // 0x01375550 (frames per second)
-    static float GetSecondsPerFrame() { return 1.0f / FrameRate; }
+protected:
+    static long ConstantFPS;                    // 0x01375550 (frames per second) ?ConstantFPS@CMainGameComponent@@1JA (agentNF16: was FrameRate)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r + FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+    static float GetSecondsPerFrame() { return 1.0f / GetConstantFPS(); }
 };
 class CTCBase { public:                                 // row-local view of the component base (Ego_r.pdb CTCBase: vptr, ParentThing)
     void*     __vftable;                        // +0x00 (CTCBase)

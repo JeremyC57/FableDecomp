@@ -60,7 +60,9 @@ class CAIStateGroupBase { public:
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
     void Terminate();                           // 0x008FCF40
 };
@@ -77,7 +79,7 @@ void CAIStateGroup_HoverAttack::Update()
     if (GetCreature()->IsInMeleeAsAttacker())
     {
         CThingCreatureBase* creature = GetCreature();
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->PCombatManager->SetAttackerAsReadyToAttack(creature, true);
     }
     while (IsAlive(PTarget) && IsToAttackTarget(GetCreature(), PTarget.Get()) && IsRunnableLeaf()) {

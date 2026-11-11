@@ -6,7 +6,7 @@
 //          @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0,
 //          CCombatActionBase::Initialise @ 0x00857520.
 // Shape: the dialogue def pointer is copied into a block-scoped CDefPointer from a named CCombatManager* local (copying
-//   straight from `GetCombatManager()->...` leaves a dead `add eax,44h`: the copy ctor parameter address), null-tested
+//   straight from `GetCombatManager()....` leaves a dead `add eax,44h`: the copy ctor parameter address), null-tested
 //   `inc [p+4]` add-ref, the
 //   speech id (+0x5c) read into ebx, and the copy released by its destructor (count decremented, slot 1 on zero);
 //   the combat manager for SaySpeech is a named local fetched before the pushes; the animation string is a scoped
@@ -77,7 +77,9 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThingCreatureBase> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];
-    CCombatManager* GetCombatManager();     // 0x00856B10
+protected:
+    CCombatManager& GetCombatManager();     // 0x00856B10 ?GetCombatManager@CCombatActionBase@@IAEAAVCCombatManager@@XZ (Ego_r/FableWin, protected; agentNF16)
+public:
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -90,11 +92,11 @@ void CCreatureAction_CombatBoast::Initialise()
 {
     unsigned long speech;
     {
-        CCombatManager* manager = GetCombatManager();
+        CCombatManager* manager = &GetCombatManager();
         CDefPointer<const CCombatDialogueDef> def = manager->DialogueManager.PDialogueDef;
         speech = def->BoastSpeech;
     }
-    CCombatManager* manager = GetCombatManager();
+    CCombatManager* manager = &GetCombatManager();
     manager->DialogueManager.SaySpeech(*PCreature.GetPItem(), speech);
     {
         CCharString name("SPECIAL_BOAST", -1);

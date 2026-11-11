@@ -17,7 +17,10 @@ class CPlayerGui { public:
     unsigned char     _pad[0x18];
     CSubtitleRenderer SubtitleRenderer;     // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 
 namespace NCameraModes {
 class CBase { public:
@@ -64,7 +67,7 @@ void CGameCameraManager::UpdatePrepareFlags()
     UpdateObservedThingInMelee();
     UpdateObservedThingInBuilding();
     if (!PPendingScriptModule.Data) {
-        bool waitingForSubtitle = g_pPlayerGui->SubtitleRenderer.IsWaitingForClickPast();
+        bool waitingForSubtitle = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.IsWaitingForClickPast();
         if (PCurrentScriptModule.Data && PCurrentScriptModule.Data->IsFinished() && !waitingForSubtitle) {
             if (ScriptedCameraRemoveTimer < 0)
                 ScriptedCameraRemoveTimer = 1;

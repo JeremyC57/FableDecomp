@@ -1,4 +1,4 @@
-// CTCCarriedActionUseTrophy::OnActionUseCommon(CThingCreatureBase* user) -- a player aiming at a live wall mount (interface 0xda) while no trophy minigame runs hands the use to the wall-mount action; otherwise the trophy component handles it
+// CTCCarriedActionUseTrophy::OnActionUseCommon(CThing& user) -- a player aiming at a live wall mount (interface 0xda) while no trophy minigame runs hands the use to the wall-mount action; otherwise the trophy component handles it
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EDEE0, 202 bytes (`ret 4`). Called by vfunc_28/vfunc_32 (landed 0x007EDFB0/0x007EDFD0).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (two inlined lookups), the user's virtual slot 77
@@ -10,6 +10,7 @@
 // type 0xda = bit 26 of the +0x38 word), map +0x44, dead bit +0x91.
 // Shape: the trophy lookup is the unchecked out-parameter GetInterface (the absent arm reads the never-written local from the
 // dead `user` argument slot, GOTCHAS chunk 129); the target component is loaded straight into ecx (HasTC + one-ternary GetTC).
+// Leaf: ?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -65,32 +66,35 @@ struct CTCTargetSource {                                // the interface-8 compo
 struct CTCCarriedActionUseWallMount {                   // embedded action (CTCCarriedActionUseBase-derived)
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
     V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27)
-    virtual void OnActionUse(CThingCreatureBase* user); // slot 28 (+0x70)
+    virtual void OnActionUse(CThing& user);             // slot 28 (+0x70), Ego_r ?OnActionUse@CTCCarriedActionUseWallMount@@UAEXAAVCThing@@@Z
 #undef V
 };
 class CTCTrophy { public:
     unsigned char _pad00[0x14];
     bool MinigameInProgress;                            // +0x14
-    void OnTrophyUseAction(CThingCreatureBase* user);   // 0x006DDD30
+    void OnTrophyUseAction(CThingCreatureBase& user);   // 0x006DDD30 Ego_r/FableWin ?OnTrophyUseAction@CTCTrophy@@QAEXAAVCThingCreatureBase@@@Z
 };
 struct CTCCarriedActionUseTrophy {
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x14 - 0x08];
     CTCCarriedActionUseWallMount PTCCarriedActionUseWallMount;   // +0x14
-    void OnActionUseCommon(CThingCreatureBase* user);
+private:
+    // agentNF16: Ego_r / FableWin ?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z (private, CThing&).
+    void OnActionUseCommon(CThing& user);
 };
 
-void CTCCarriedActionUseTrophy::OnActionUseCommon(CThingCreatureBase* user)
+void CTCCarriedActionUseTrophy::OnActionUseCommon(CThing& thing)
 {
+    CThingCreatureBase* user = (CThingCreatureBase*)&thing;
     CTCTrophy* trophy;
     ParentThing->GetInterface(&trophy, 0x39);
     if (!trophy->MinigameInProgress && user->IsPlayer() && user->HasTC(8)) {
         CThing* target = ((CTCTargetSource*)user->GetTCSelect(8))->GetTargetThing();
         if (target && !target->m_dead && target->HasTC(0xda)) {
-            PTCCarriedActionUseWallMount.OnActionUse(user);
+            PTCCarriedActionUseWallMount.OnActionUse(*user);
             return;
         }
     }
-    trophy->OnTrophyUseAction(user);
+    trophy->OnTrophyUseAction(*user);
 }

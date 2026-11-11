@@ -166,6 +166,7 @@ struct CBlendPair {                                     // the two floats at CAn
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
+#include "engine/EAnimUpdateMode.h"
 class CAnimInit { public:                                      // 0x2c bytes
     long          Mode;
     unsigned char AnimType;
@@ -178,10 +179,9 @@ class CAnimInit { public:                                      // 0x2c bytes
     long          Percent;
     CAnimInit() { }
     CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x005B33F4
-    void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 Ego_r/FableWin ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (agentNF16: was Set)
 };
 
-enum EAnimUpdateMode { AUM_NONE };
 class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
@@ -221,7 +221,7 @@ private:   // Ego_r.pdb ?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
 void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
 {
     CThingAICreature* creature = (CThingAICreature*)ParentThing;
-    anim.ResetTransistionAnimationModes((EAnimUpdateMode)4, (EAnimUpdateMode)2);
+    anim.ResetTransistionAnimationModes(ANIM_UPDATE_LOCKED_TO_MAIN, ANIM_UPDATE_FROM_DIST);
     bool subtle = false;
     CCharString poseName;
     if (creature->AreWeaponsUnsheathed() && creature->HasTC(0x30)
@@ -272,7 +272,7 @@ void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
                 CThing* thing = ParentThing;
                 unsigned long flags = entry->GetAnimateThingFlags();
                 CAnimInit init;
-                init.Set(6, 0, entry->AnimIndex, 1, false, flags, 100);
+                init.Init((unsigned char)(6), 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, flags, 100);
                 anim.SetMainAnim(init, entry->GetTimeToBlendIn(thing), entry->GetAnimationTransitionInTime());
             }
         }

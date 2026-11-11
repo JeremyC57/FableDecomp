@@ -62,7 +62,7 @@ struct CTCEnemyTracker {                        // interface 8
 class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad[0x1c];
     long FramesSinceSeen;                       // +0x1c (descriptive)
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
 public:
     bool IsAwareOfThing() const;   // 0x00643B3B
 };

@@ -35,7 +35,7 @@ class CThing { public:
         return (T*)it->second;
     }
 };
-template <class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing);   // 0x0040DCE0 (CThing*)
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 (CThing*)
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -56,7 +56,7 @@ struct CTCShotDefinitionMultiArrow : CTCShotDefinitionBase {
 float CTCShotDefinitionMultiArrow::GetShotDamage() const
 {
     float multiplier = 1.0f;
-    if (IS_THING_ALIVE_0040dce0<CThing*>(((CThing*)PShooter.GetPItem()))) {
+    if (IS_THING_ALIVE<CThing*>(((CThing*)PShooter.GetPItem()))) {
         CThing* shooter = ((CThing*)PShooter.GetPItem());
         if (shooter->HasInterface(0x88))
             multiplier = shooter->GetInterfaceUnchecked<CTCDivineWrath>(0x88)->GetDamageMultiplier();

@@ -121,7 +121,9 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThing> PTarget;        // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
-    CCombatManager* GetCombatManager();     // 0x00856B10
+protected:
+    CCombatManager& GetCombatManager();     // 0x00856B10 ?GetCombatManager@CCombatActionBase@@IAEAAVCCombatManager@@XZ (Ego_r/FableWin, protected; agentNF16)
+public:
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -144,11 +146,11 @@ void CCreatureAction_Ambush::Initialise()
     }
     long speech;
     {
-        CCombatManager* manager = GetCombatManager();
+        CCombatManager* manager = &GetCombatManager();
         CDefPointer<const CCombatDialogueDef> def = manager->DialogueManager.PDialogueDef;
         speech = def->Ambushing;
     }
-    CCombatManager* manager = GetCombatManager();
+    CCombatManager* manager = &GetCombatManager();
     manager->DialogueManager.SaySpeech(*(CThingCreatureBase*)PCreature.GetPItem(), speech);
     CTCPhysicsBase* physics = PCreature.GetPItem()->m_pPhysics;
     float fraction = (float)atan2(side.X, side.Y) * 0.15915493667125702f;

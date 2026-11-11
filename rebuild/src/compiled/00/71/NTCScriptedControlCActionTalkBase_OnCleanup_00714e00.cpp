@@ -74,7 +74,10 @@ class CPlayerGui { public:
     unsigned char     _pad19[0xff - 0x19];
     bool              ShowSubtitleBackground;       // +0xff
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -135,8 +138,8 @@ void CActionTalkBase::OnCleanup()
         else
             modes->RemoveMode(CREATURE_MODE_CONVERSATION);
     }
-    g_pPlayerGui->ShowSubtitleBackground = true;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ShowSubtitleBackground = true;
     if (!CUserProfileManager::Get().AreSubtitlesOn())
-        g_pPlayerGui->SubtitleRenderer.ClearText(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.ClearText(false);
 }
 }

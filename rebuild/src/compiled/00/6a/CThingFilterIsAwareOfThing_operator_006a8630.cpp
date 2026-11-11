@@ -38,7 +38,7 @@ public:
 class CTCPerceiveThing { public:
     unsigned char _pad00[0x18];
     float         m_awareness;                  // +0x18
-    CThing* GetPerceivedThing() const;          // 0x007446A0
+    const CThing* GetPerceivedThing() const;          // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
 };
 class CThingFilter_IsAwareOfThing { public:
     CThing* PThingToBeAwareOf;                  // +0x00

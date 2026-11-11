@@ -64,7 +64,7 @@ struct CTCCombatTarget {                        // interface 8
     virtual CThing* GetTarget();                // slot 29 (+0x74)
 };
 class CTCPerceiveThing { public:                       // interface 0x34
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
     bool CanSeeOrSmellPerceivedThing();         // 0x00661600
     bool GetDirectAwareness();                  // 0x00744430
 };

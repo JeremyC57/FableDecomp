@@ -86,7 +86,7 @@ class CWorld { public:
 #include "engine/CPlayerManager.h"
 
 namespace NPlayerManager { class CPlayerSave; }
-typedef long EPlayerMode;
+#include "engine/EPlayerMode.h"   // agentNF16: was `typedef long EPlayerMode` (AddMode 0x006345C0 binds ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z)
 
 class CPlayer { public:
     void*           __vftable;
@@ -113,7 +113,7 @@ bool CPlayer::InitCharacterFromSave(const NPlayerManager::CPlayerSave& save)
     if (LoadPlayerCharacterFromGameState(save)) {
         SetControlledCreature(PlayerCharacter.GetPItem());
         PlayerCharacter.GetPItem()->SetPlayerNumber(PlayerManager->GetMainPlayerNumber());
-        AddMode(1, true);
+        AddMode(PLAYER_MODE_CONTROL_CREATURE, true);
         PlayerCharacter.GetPItem()->GetPhysicsTC()->GetFacingAngle();
         {
             CGameCameraManager* camera;

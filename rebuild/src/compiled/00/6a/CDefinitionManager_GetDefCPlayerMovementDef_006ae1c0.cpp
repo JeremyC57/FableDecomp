@@ -1,4 +1,4 @@
-// CDefinitionManager::GetDef<T>(const CCharString&, CDefPointer&) -- GetPDefFromInstantiationName @ 0x009ADA40 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
+// CDefinitionManager::GetDef<CPlayerMovementDef>(const CCharString&, CDefPointer<const CPlayerMovementDef>*) -- GetPDefFromInstantiationName @ 0x009ADA40 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AE1C0, oracle length 104 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -16,6 +16,7 @@
 // test and the def is kept in ecx for the virtual call. The manifest
 // label names one instantiation; the def type is opaque. One of 9 bodies of this shape.
 // Name fix (agentNF6 2026-11-10): CDefinitionManager::GetPDefFromInstantiationName 0x009ADA40 is ?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z (Ego_r.pdb / FableWin.pdb; const, returns the class template CDefPointer<const CDefClassBase>). The row's own GetDef<T> identity (one of the 42 PDB GetDef-by-name instantiations) is still unresolved.
+// Leaf: ??$GetDef@VCPlayerMovementDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCPlayerMovementDef@@@@@Z
 #include "fable_string.h"
 
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
@@ -52,7 +53,7 @@ template <class T> class CDefPointer { public:   // CDefPointer<T> (Ego_r.pdb / 
         if (m_p)
             m_p->ReleaseTemporary();
     }
-    CDefPointer& operator=(const CDefPointer& other)   // inlined by the speed TU
+    template <class U> CDefPointer& operator=(const CDefPointer<U>& other)   // inlined by the speed TU
     {
         if (m_p != other.m_p) {
             if (m_p) {
@@ -69,15 +70,21 @@ template <class T> class CDefPointer { public:   // CDefPointer<T> (Ego_r.pdb / 
 
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString& name) const;   // 0x009ADA40 (hidden result pointer)
-    bool GetDef_006ae1c0(const CCharString& name, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;
 };
+class CPlayerMovementDef;
 
-bool CDefinitionManager::GetDef_006ae1c0(const CCharString& name, CDefPointer<const CDefClassBase>& out)
+// agentNF16: this body is GetDef<CPlayerMovementDef> (Ego_r.pdb / FableWin.pdb member template
+//   ??$GetDef@VCPlayerMovementDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCPlayerMovementDef@@@@@Z): its one
+//   caller CThingPlayerCreature::OnCreate 0x006A9EF0 loads "MOVEMENT_DEFAULT" into PPlayerMovementDef (Ego_r.pdb
+//   CThingPlayerCreature +0x218 CDefPointer<const CPlayerMovementDef>). Was the non-template GetDef_006ae1c0 stand-in.
+template <class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<const T>* out) const
 {
     CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
     if (def.m_p) {
-        out = def;
+        *out = def;
         return true;
     }
     return false;
 }
+template bool CDefinitionManager::GetDef<CPlayerMovementDef>(const CCharString& name, CDefPointer<const CPlayerMovementDef>* out) const;

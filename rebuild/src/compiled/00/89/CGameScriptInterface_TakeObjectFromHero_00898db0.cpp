@@ -1,8 +1,10 @@
 // CGameScriptInterface::TakeObjectFromHero(const CCharString&) -- remove one inventory item by definition name
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
+// Leaf: ?TakeObjectFromHero@CGameScriptInterface@@UBEXABVCCharString@@@Z
 // Retail00898DB0,173 bytes; native Thing bitset20,map44; category is __fastcall GetInventoryCategory005D99D0.
 #include <stdio.h>
 #include <stdlib.h>
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerManager.h"
 #define CPlayer CPlayerPdb
@@ -22,8 +24,9 @@ long __fastcall GetInventoryCategory_005d99d0(long); //005D99D0
 namespace NInventory{class CTCInventoryBase{public:void* VTable;long GetNumberOfItemsOfTypeInInventory(long)const;};} //005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 using NInventory::CTCInventoryBase;
 union InventorySlot{void* Native;void(CTCInventoryBase::*RemoveItem)(long,long);}; // actual inventory slot79
-struct CGameScriptInterfaceMethods:CGameScriptInterface{void TakeObjectFromHero(const CCharString&)const;};
-void CGameScriptInterfaceMethods::TakeObjectFromHero(const CCharString& name)const{
+// agentNF16: defined on the shared-header class (engine/CGameScriptInterface.h slot 125, vtable 0x01260F0C slot 125 = 0x00898DB0;
+//   Ego_r ?TakeObjectFromHero@CGameScriptInterface@@UBEXABVCCharString@@@Z) instead of the derived stand-in CGameScriptInterfaceMethods.
+void CGameScriptInterface::TakeObjectFromHero(const CCharString& name)const{
  long index=reinterpret_cast<DefinitionMethods*>(DefinitionManager)->GetDefGlobalIndexFromName(name);
  if(index>0){long category=GetInventoryCategory_005d99d0(index);if(category){CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();CTCInventoryBase* inventory=0;
  if(static_cast<unsigned long>(category)>=274){puts("bitset");abort();}

@@ -92,7 +92,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
@@ -125,7 +127,7 @@ void CAIStateGroup_MeleeCombatNearby2::Update()
         return;
     }
     CThing* creature = GetCreature();
-    CCombatManager* combat = GetPWorld()->PCombatManager;
+    CCombatManager* combat = GetWorld().PCombatManager;
     combat->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
     CTCPerceiveThing* perceive;
     if (GetCreature()->GetInterface(&perceive, 0x34))
@@ -154,7 +156,7 @@ void CAIStateGroup_MeleeCombatNearby2::Update()
         if (!GetCreature()->IsInMeleeAsAttacker())
             continue;
         CThing* attacker = GetCreature();
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->PCombatManager->SetAttackerAsReadyToAttack(attacker, false);
     }
     Terminate();

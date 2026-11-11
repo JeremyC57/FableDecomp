@@ -10,9 +10,10 @@
 class CProcessedInput;
 extern long g_QuickAccessChargeSlot;               // 0x0137EE78
 extern long g_QuickAccessChargeButton;             // 0x0137EE7C
+#include "engine/EPlayerMode.h"
 class CPlayer {
 public:
-    bool HasMode(long mode);                       // 0x00634160
+    bool HasMode(EPlayerMode mode) const;          // 0x00634160 Ego_r/FableWin ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -43,7 +44,7 @@ void CInputProcessQuickAccessItems::Update(CProcessedInput& processed)
     } else if (slot != -1) {
         if (!IsAssignableSpecialMoveButtonInQueue(g_QuickAccessChargeButton, 2))
             CancelQuickAccessCharge();
-    } else if (MyPlayer->HasMode(0x1c)) {
+    } else if (MyPlayer->HasMode(PLAYER_MODE_CHARGE_QUICK_ACCESS)) {
         CancelQuickAccessCharge();
     }
 }

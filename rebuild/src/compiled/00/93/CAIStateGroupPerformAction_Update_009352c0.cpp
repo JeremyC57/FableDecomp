@@ -60,7 +60,7 @@ FABLE_FORCEINLINE bool IsAlive(const CThing* thing)
     return false;
 }
 class CTCPerceiveThing { public:                       // interface 0x34
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
 };
 class CCharString { public:
     void* m_pData;

@@ -7,8 +7,9 @@
 // @ 0x006994F0, AddMeleeCameraMode @ 0x0069A8B0 (manifest "CTCCombat::AddMeleeFlourishAbility" is propagated).
 // Globals: the engine singleton @ 0x013B86A0 whose player manager sits at +0x1c (retail CEngine layout).
 // Shape: `push 2Fh` precedes the GetMainPlayer call because VC evaluates the HasMode argument before the object expression.
+#include "engine/EPlayerMode.h"
 class CPlayer { public:
-    bool HasMode(long mode);                        // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                        // 0x00634160 ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z (agentNF16)
 };
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -127,7 +128,7 @@ class CGameCameraManager { public:
 
 void CGameCameraManager::RemoveBuildingCameraMode()
 {
-    if (!CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
+    if (!CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().HasMode((EPlayerMode)0x2f)) {
         SetUpMainCameraManagerSetDef();
         if (IsObservedThingInMelee())
             AddMeleeCameraMode();

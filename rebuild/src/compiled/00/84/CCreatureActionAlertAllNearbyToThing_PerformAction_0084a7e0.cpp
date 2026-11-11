@@ -24,34 +24,27 @@ class CThingManager { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+// agentNF16: derive from the shared-header CCreatureActionBase (retail branch: PCreature +0x08, sizeof 0xa8) so the
+//   protected accessor 0x00692980 binds its Ego_r / FableWin spelling ?GetThingManager@CCreatureActionBase@@IAEAAVCThingManager@@XZ
+//   (was a local CCreatureAction_AlertAllNearbyToThing::GetThingManager returning a pointer).
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_GETTHINGMANAGER
+#include "engine/CCreatureActionBase.h"
+class CThing : public CBaseObject { };
+class CThingCreatureBase : public CThing { };
 
-class CCreatureAction_AlertAllNearbyToThing { public:
-    virtual void v00(); virtual void v01(); virtual void v02();
+class CCreatureAction_AlertAllNearbyToThing : public CCreatureActionBase { public:
     virtual void PerformAction();           // slot 3
-    unsigned char _pad04[4];                // +0x04
-    CIntelligentPointer<CThingCreatureBase> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
-    unsigned char _pad10[0xa8 - 0x10];      // +0x10 rest of CCreatureActionBase
     long    Radius;                         // +0xa8
     CThing* PThing;                         // +0xac
-    CThingManager* GetThingManager();       // 0x00692980
 };
 
 void CCreatureAction_AlertAllNearbyToThing::PerformAction()
 {
-    CThingCreatureBase* creature = PCreature.GetPItem();
-    GetThingManager()->GetNearbyAlerter()->AlertAllNearbyToThing(PThing, creature, (float)Radius);
+    CThingCreatureBase* creature = PCreature.Get();
+    GetThingManager().GetNearbyAlerter()->AlertAllNearbyToThing(PThing, creature, (float)Radius);
 }

@@ -21,6 +21,9 @@ namespace NCreatureAction { class CActionEventBase; }
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
 class CGameDefinitionManager;class CWorld;
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETTHINGMANAGER
+class CThingManager;
+#endif
 // Original Ego_r TPI0x221c9; native factories and calls prove vtable slots40-42.
 // Complete native sizea8 after the three retail container reductions.
 class CCreatureActionBase : public CBaseObject {
@@ -183,6 +186,12 @@ protected:
 protected:
     const CGameDefinitionManager& PeekDefinitionManager() const;       // 0x00692910
     CWorld& GetWorld();                                                  // 0x00692940
+#endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETTHINGMANAGER
+    // agentNF16 (row 0x00692980): Ego_r.pdb / FableWin.pdb protected accessor ?GetThingManager@CCreatureActionBase@@IAEAAVCThingManager@@XZ,
+    // out of line in retail at 0x00692980 (`add ecx,8 ; call GetPItem 0x00A01B50 ; mov eax,[0x013B8A1C] ; ret`).
+protected:
+    CThingManager& GetThingManager();                                    // 0x00692980
 #endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
 protected:

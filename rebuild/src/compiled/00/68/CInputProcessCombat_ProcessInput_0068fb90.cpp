@@ -22,7 +22,7 @@ public:
 extern CInputManager* PInputManager;             // 0x013B8388
 class CPlayer {
 public:
-    long GetPlayerNumber() const;                  // 0x00487510
+    long GetJoystickDeviceNumber() const;                  // 0x00487510 Ego_r/FableWin ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ (agentNF16: was GetPlayerNumber)
 };
 struct CInputEventQueue {
     void Push(const CInputEvent& event);           // 0x00A0DFC0
@@ -52,7 +52,7 @@ void CInputProcessCombat::ProcessInput(const CInputEvent& event, CProcessedInput
     if (m_lastJoystickFrame != CWorld::GetFrame()) {
         m_lastJoystickFrame = CWorld::GetFrame();
         CInputEvent joystickEvent;
-        if (PInputManager->IsJoystickEventInQueue(0x11, 0, &joystickEvent, MyPlayer->GetPlayerNumber()))
+        if (PInputManager->IsJoystickEventInQueue(0x11, 0, &joystickEvent, MyPlayer->GetJoystickDeviceNumber()))
             m_joystickEvents.Push(joystickEvent);
     }
     ProcessCombatInput(event, processed);

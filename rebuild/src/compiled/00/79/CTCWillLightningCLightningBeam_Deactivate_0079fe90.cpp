@@ -19,7 +19,7 @@
 #include "engine/CThing.h"
 class CDefString { public: long Index; };
 class CDefStringTable { public:
-    CCharString GetString(CDefString name);           // 0x009D49B0
+    CCharString GetString(long index) const;           // 0x009D49B0 Ego_r/FableWin ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (agentNF16)
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)              // 0x013CA828
 class CTCBase;
@@ -114,13 +114,13 @@ void CLightningBeam::Deactivate(CIntelligentPointer player)
         if (IS_THING_ALIVE(m_tcpTarget)) {
             CTCSoundPlayer* sound;
             if (((CThing*)m_tcpTarget.GetPItem())->GetTC(TCI_SOUND_PLAYER, &sound)) {
-                CCharString name = GDefStringTable.GetString(PDef->HitSound);
+                CCharString name = GDefStringTable.GetString(PDef->HitSound.Index);
                 sound->PlayAttachedCriteria(name, true, false, false, -1);
             }
         } else if (IS_THING_ALIVE(player) && !m_bTemporary) {
             CTCSoundPlayer* sound;
             if (((CThing*)player.GetPItem())->GetTC(TCI_SOUND_PLAYER, &sound)) {
-                CCharString name = GDefStringTable.GetString(PDef->HitSound);
+                CCharString name = GDefStringTable.GetString(PDef->HitSound.Index);
                 sound->PlayUnattachedCriteria(name, m_vEndPos, false, false);
             }
         }

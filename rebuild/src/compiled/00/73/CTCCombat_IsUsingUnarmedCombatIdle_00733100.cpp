@@ -11,8 +11,9 @@
 #undef CPlayer
 extern unsigned char g_bAggressiveModeAvailable;   // 0x013B85F3
 
+#include "engine/EPlayerMode.h"
 class CPlayer { public:
-    bool HasMode(long mode);                     // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                     // 0x00634160 ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z (agentNF16)
     unsigned char buf[0x300];
 };
 
@@ -32,9 +33,9 @@ class CTCCombat { public:
 
 bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* combat)
 {
-    if (combat->obj->GetPlayer()->HasMode(0x1b))
+    if (combat->obj->GetPlayer()->HasMode((EPlayerMode)0x1b))
         return false;
-    if (combat->obj->GetPlayer()->HasMode(0x2f))
+    if (combat->obj->GetPlayer()->HasMode((EPlayerMode)0x2f))
         return false;
     if (CTCCarrying::IsThingCarryingWeapon(*combat->obj))
         return false;

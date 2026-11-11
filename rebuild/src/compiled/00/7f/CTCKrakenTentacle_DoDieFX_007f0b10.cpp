@@ -51,7 +51,7 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CSpecialEffectsDef : public CDefClassBase { public:
-    bool GetEffectFromString(const CCharString& name, long* effect) const;   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& effect) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 
 class CTCBaseComponent;
@@ -63,12 +63,12 @@ long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharS
 // Stand-in body (out of line in retail @ 0x00669D30): it writes the out value only, so VC7.1 knows the local's address
 // does not escape the call (the 0x008D9740 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long* value) const
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
     long found = Lookup_CSpecialEffectsDef_GetEffectFromString(this, name);
     if (found < 0)
         return false;
-    *value = found;
+    value = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -158,7 +158,7 @@ void CTCKrakenTentacle::DoDieFX()
     CDefPointer<const CSpecialEffectsDef> effects;
     long effect = 0;
     const CDefClassBase* thingDef = ParentThing->PDef;
-    thingDef->GetSubDef(&effects) && effects->GetEffectFromString("ON_DIE", &effect);
+    thingDef->GetSubDef(&effects) && effects->GetEffectFromString("ON_DIE", effect);
     PRippleEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, ParentThing->GetPos(), false));
     if (PRippleEffect.IsAlive()) {
         CTCDParticleEmitter* emitter = 0;

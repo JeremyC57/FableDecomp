@@ -119,7 +119,9 @@ public:
     unsigned char           _pad04[4];
     CIntelligentPointer<CThingCreatureBase> PCreature;                         // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    CCombatManager* GetCombatManager();                        // 0x00856B10
+protected:
+    CCombatManager& GetCombatManager();                        // 0x00856B10 ?GetCombatManager@CCombatActionBase@@IAEAAVCCombatManager@@XZ (Ego_r/FableWin, protected; agentNF16)
+public:
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -167,7 +169,7 @@ void CCombatAction_ControlledStrafeJump::Initialise()
         name += "FORWARD";
     }
     SetCombatAnimation(name);
-    if (GetCombatManager()->CombatStrafeTurningEnabled && !PCreature.GetPItem()->PeekPlayer().ZTargeting) {
+    if (GetCombatManager().CombatStrafeTurningEnabled && !PCreature.GetPItem()->PeekPlayer().ZTargeting) {
         float delta = turnOffset - angle;
         const C3DVector& forward = PCreature.GetPItem()->GetPhysicsTC()->GetRHSet()->Forward;
         float heading = FacingFraction(forward.X, forward.Y);

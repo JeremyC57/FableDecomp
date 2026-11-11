@@ -29,6 +29,7 @@ class CAnimFrameInfo { public:
     float Last;
     CAnimFrameInfo() : Current(0), Last(0) {}
 };
+#include "engine/EAnimUpdateMode.h"
 class CAnimInit { public:                              // 0x2c bytes
     long  UpdateMode;                           // +0x00
     unsigned char Type;                         // +0x04
@@ -42,8 +43,7 @@ class CAnimInit { public:                              // 0x2c bytes
     unsigned long TypeFlags;                    // +0x24
     long  Priority;                             // +0x28
     CAnimInit() {}
-    void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
-             long priority);                    // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 Ego_r/FableWin ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (agentNF16: was Set)
 };
 class CAnimateThing { public:
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
@@ -60,7 +60,7 @@ void CTCCupboard::StartAnimation(long anim)
 {
     Animating = true;
     CAnimInit init;
-    init.Set(6, 0, anim, 1, false, 0, 100);
+    init.Init((unsigned char)(6), 0, anim, (EAnimUpdateMode)(1), false, 0, 100);
     CTCAnimationComplex* animation;
     if (ParentThing->HasTC(TCI_ANIMATION))
         animation = ((CTCAnimationComplex*)&ParentThing->GetTC(TCI_ANIMATION));

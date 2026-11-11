@@ -82,7 +82,9 @@ private: public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated) ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 public:
     void Terminate();   // 0x008FCF40
 };
@@ -109,7 +111,7 @@ struct CAIStateGroup_Drunk : CAIStateGroupBase {
 
 void CAIStateGroup_Drunk::TalkToSelfUpdate()
 {
-    if (((CWorld*)GetPWorld())->GetFrame() <= FrameToNextTalkToSelf)
+    if (((CWorld*)(&GetWorld()))->GetFrame() <= FrameToNextTalkToSelf)
         return;
     CTCTalk* talk;
     PBrain->PCreature->GetTC(TCI_TALK, &talk);
@@ -128,7 +130,7 @@ void CAIStateGroup_Drunk::TalkToSelfUpdate()
             return;
         }
         if (result == 0) {
-            CWorld* world = (CWorld*)GetPWorld();
+            CWorld* world = (CWorld*)(&GetWorld());
             long framesPerSecond = CMainGameComponent::GetConstantFPS();
             FrameToNextTalkToSelf = (long)(world->GetFrame() +
                 (GFFloatRandom(20.0f, GetPWorldSeed()) + 10.0f) * framesPerSecond);

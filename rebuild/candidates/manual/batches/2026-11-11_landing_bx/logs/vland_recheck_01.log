@@ -1,0 +1,964 @@
+addr       parity           behav  name
+00766550   WARN SHARED_HEADER_AVAILABLE CThing
+00766550   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+00766550   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationSoundSet
+00766550   WARN SHARED_HEADER_AVAILABLE CTCBase
+00766550   RELOCATION_MATCH PASS   00766550
+00766c00   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationSoundSet
+00766c00   WARN SHARED_HEADER_AVAILABLE CThing
+00766c00   WARN SHARED_HEADER_AVAILABLE CDefString
+00766c00   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00766c00   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00766c00   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00766c00   WARN SHARED_HEADER_AVAILABLE CTCBase
+00766c00   RELOCATION_MATCH PASS   00766c00
+00767200   WARN SHARED_HEADER_AVAILABLE CDefString
+00767200   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00767200   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00767200   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00767200   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00767200   WARN SHARED_HEADER_AVAILABLE CTCObjectAugmentations
+00767200   RELOCATION_MATCH PASS   00767200
+0077adf0   WARN SHARED_HEADER_AVAILABLE CThing
+0077adf0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0077adf0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0077adf0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+0077adf0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+  WARN leaf '0077adf0' matches no symbol in 0077adf0.obj; graded the largest function
+  WARN leaf '0077adf0' matches no symbol in 0077adf0.obj; graded the largest function
+0077adf0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0077adf0   WARN STANDIN_LEAF ?GetAllTCDsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABUFilters@@AAUThingVector@@@Z (catalog GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>; names another function)
+0077adf0   RELOCATION_MATCH PASS   0077adf0
+00785dd0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00785dd0   WARN SHARED_HEADER_AVAILABLE CThing
+00785dd0   WARN SHARED_HEADER_AVAILABLE CThingFilter_OverlappingSphere
+00785dd0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00785dd0   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+00785dd0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+00785dd0   RELOCATION_MATCH PASS   00785dd0
+00786140   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00786140   WARN SHARED_HEADER_AVAILABLE CThing
+00786140   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest
+00786140   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+00786140   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00786140   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+00786140   RELOCATION_MATCH PASS   00786140
+00788229   WARN SHARED_HEADER_AVAILABLE CTCDExplosion
+00788229   WARN SHARED_HEADER_AVAILABLE CTCDPhysicalObstruction
+00788229   WARN SHARED_HEADER_AVAILABLE CThing
+00788229   WARN SHARED_HEADER_AVAILABLE CTCTrapBase
+00788229   WARN RELOC_NAME: ?IS_THING_ALIVE_004cc340@@YI_NABUCBaseIntelligentPointer@@@Z -> 004cc340 labelled 'IS_THING_ALIVE<class CIntelligentPointer<class CThing>>'
+00788229   RELOCATION_MATCH PASS   00788229
+00788617   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00788617   WARN SHARED_HEADER_AVAILABLE CThing
+00788617   WARN SHARED_HEADER_AVAILABLE CTCBase
+00788617   WARN SHARED_HEADER_AVAILABLE CHitParameters
+00788617   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00788617   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00788617   WARN SHARED_HEADER_AVAILABLE CWorld
+00788617   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotList
+00788617   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+00788617   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00788617   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+00788617   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00788617   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00788617   WARN RELOC_NAME: ??$?0V?$CIntelligentPointer@VCThing@@@@M@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@M@1@@Z -> 00788d68 labelled 'pair<CIntelligentPointer<const CThing>,long>::pair'
+00788617   RELOCATION_MATCH PASS   00788617
+0078a2c0   WARN SHARED_HEADER_AVAILABLE CThing
+0078a2c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0078a2c0   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+0078a2c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0078a2c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0078a2c0   WARN RELOC_NAME: ??1CCreatureAction_HeroLoadRangedWeapon@@QAE@XZ -> 0078ab20 labelled '_unattributed::~CAggregate_0078ab20'
+0078a2c0   RELOCATION_MATCH PASS   0078a2c0
+0078a5d0   WARN SHARED_HEADER_AVAILABLE CThing
+0078a5d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0078a5d0   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+0078a5d0   RELOCATION_MATCH PASS   0078a5d0
+0078db20   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0078db20   WARN SHARED_HEADER_AVAILABLE CThing
+0078db20   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+0078db20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+0078db20   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0078db20   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+0078db20   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+0078db20   RELOCATION_MATCH PASS   0078db20
+00792e50   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00792e50   WARN SHARED_HEADER_AVAILABLE CThing
+00792e50   WARN SHARED_HEADER_AVAILABLE CThingFilter_OverlappingCircle
+00792e50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00792e50   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QBEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00792e50   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QBE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+00792e50   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+00792e50   RELOCATION_MATCH PASS   00792e50
+007930b0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007930b0   WARN SHARED_HEADER_AVAILABLE CThing
+007930b0   WARN SHARED_HEADER_AVAILABLE CThingFilter_OverlappingCircle
+007930b0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+007930b0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007930b0   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007930b0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007930b0   RELOCATION_MATCH PASS   007930b0
+0079a050   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0079a050   WARN SHARED_HEADER_AVAILABLE CThing
+0079a050   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest
+0079a050   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0079a050   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+0079a050   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+0079a050   RELOCATION_MATCH PASS   0079a050
+0079a280   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0079a280   WARN SHARED_HEADER_AVAILABLE CThing
+0079a280   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0079a280   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+0079a280   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+0079a280   RELOCATION_MATCH PASS   0079a280
+0079bf30   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0079bf30   WARN SHARED_HEADER_AVAILABLE CThing
+0079bf30   WARN SHARED_HEADER_AVAILABLE CThingFilter_None
+0079bf30   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0079bf30   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+0079bf30   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+0079bf30   RELOCATION_MATCH PASS   0079bf30
+0079fe90   WARN SHARED_HEADER_AVAILABLE CDefString
+0079fe90   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+0079fe90   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+0079fe90   RELOCATION_MATCH PASS   0079fe90
+007a3ca0   WARN SHARED_HEADER_AVAILABLE CThing
+007a3ca0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007a3ca0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007a3ca0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+007a3ca0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+  WARN leaf '007a3ca0' matches no symbol in 007a3ca0.obj; graded the largest function
+  WARN leaf '007a3ca0' matches no symbol in 007a3ca0.obj; graded the largest function
+007a3ca0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007a3ca0   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABUFilters@@AAUThingVector@@@Z (catalog GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_>,CThingCompare_Nearest,CThingCreatureBase>; names another function)
+007a3ca0   RELOCATION_MATCH PASS   007a3ca0
+007a5190   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007a5190   WARN SHARED_HEADER_AVAILABLE CThing
+007a5190   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+007a5190   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+007a5190   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007a5190   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007a5190   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007a5190   RELOCATION_MATCH PASS   007a5190
+007a63d0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007a63d0   WARN SHARED_HEADER_AVAILABLE CThing
+007a63d0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+007a63d0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007a63d0   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007a63d0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007a63d0   RELOCATION_MATCH PASS   007a63d0
+007a7000   WARN SHARED_HEADER_AVAILABLE C2DVector
+007a7000   WARN SHARED_HEADER_AVAILABLE C3DVector
+007a7000   WARN SHARED_HEADER_AVAILABLE CInputEvent
+007a7000   WARN SHARED_HEADER_AVAILABLE CInputManager
+007a7000   WARN SHARED_HEADER_AVAILABLE CSystemManager
+007a7000   WARN SHARED_HEADER_AVAILABLE CPlayer
+007a7000   WARN SHARED_HEADER_AVAILABLE CTCBattleCharge
+007a7000   RELOCATION_MATCH PASS   007a7000
+007a9300   WARN SHARED_HEADER_AVAILABLE CThing
+007a9300   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007a9300   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007a9300   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+  WARN leaf '007a9300' matches no symbol in 007a9300.obj; graded the largest function
+  WARN leaf '007a9300' matches no symbol in 007a9300.obj; graded the largest function
+007a9300   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007a9300   RELOCATION_MATCH PASS   007a9300
+007a9580   WARN SHARED_HEADER_AVAILABLE CThing
+007a9580   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007a9580   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007a9580   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+  WARN leaf '007a9580' matches no symbol in 007a9580.obj; graded the largest function
+  WARN leaf '007a9580' matches no symbol in 007a9580.obj; graded the largest function
+007a9580   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007a9580   RELOCATION_MATCH PASS   007a9580
+007a9960   WARN SHARED_HEADER_AVAILABLE C2DVector
+007a9960   WARN SHARED_HEADER_AVAILABLE C3DVector
+007a9960   WARN SHARED_HEADER_AVAILABLE CInputEvent
+007a9960   WARN SHARED_HEADER_AVAILABLE CInputManager
+007a9960   WARN SHARED_HEADER_AVAILABLE CSystemManager
+007a9960   WARN SHARED_HEADER_AVAILABLE CPlayer
+007a9960   WARN RELOC_NAME: ?GetAnaloguePosition@CInputEvent@@QBE?AVC2DVector@@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+007a9960   RELOCATION_MATCH PASS   007a9960
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CThing
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CEnvironment
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CWorld
+007a9fe0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007a9fe0   RELOCATION_MATCH PASS   007a9fe0
+007b0950   WARN SHARED_HEADER_AVAILABLE CPlayer
+007b0950   WARN SHARED_HEADER_AVAILABLE CWorld
+007b0950   WARN SHARED_HEADER_AVAILABLE CTCBase
+007b0950   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007b0950   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+007b0950   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007b0950   WARN RELOC_NAME: ?StopSound@CTCSoundEmitter@@QAEXK@Z -> 0066add0 labelled 'CTCSoundPlayer::StopAttachedSound'
+007b0950   RELOCATION_MATCH PASS   007b0950
+007b1eb0   WARN SHARED_HEADER_AVAILABLE CThing
+007b1eb0   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '007b1eb0' matches no symbol in 007b1eb0.obj; graded the largest function
+  WARN leaf '007b1eb0' matches no symbol in 007b1eb0.obj; graded the largest function
+007b1eb0   WARN RELOC_NAME: ?GetPlayerManager@CTCFishing@@QAEPAUCPlayerManager_007b1eb0@@XZ -> 00686d50 labelled 'CTCBase::PeekPlayerManager'
+007b1eb0   RELOCATION_MATCH PASS   007b1eb0
+007b2e20   WARN SHARED_HEADER_AVAILABLE CThing
+007b2e20   WARN SHARED_HEADER_AVAILABLE CPlayer
+007b2e20   WARN SHARED_HEADER_AVAILABLE CWorld
+007b2e20   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007b2e20   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007b2e20   WARN SHARED_HEADER_AVAILABLE CTCHeroOpinionDeedLog
+007b2e20   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+007b2e20   WARN SHARED_HEADER_AVAILABLE CTCVillage
+007b2e20   WARN RELOC_NAME: ?RecalculateSecuritySweep@CTCVillage@@QAEXJ@Z -> 00659c32 labelled 'CTCVillage::StartSecuritySweep'
+007b2e20   RELOCATION_MATCH PASS   007b2e20
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CThing
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CWorld
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007b2fd0   WARN SHARED_HEADER_AVAILABLE COpinionDeed
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CTCHeroOpinionDeedLog
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+007b2fd0   WARN SHARED_HEADER_AVAILABLE CTCVillageMember
+007b2fd0   WARN RELOC_NAME: ?RecalculateSecuritySweep@CTCVillage@@QAEXJ@Z -> 00659c32 labelled 'CTCVillage::StartSecuritySweep'
+007b2fd0   RELOCATION_MATCH PASS   007b2fd0
+007b6300   WARN SHARED_HEADER_AVAILABLE CThing
+007b6300   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007b6300   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007b6300   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasDefGlobalIndex
+007b6300   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+007b6300   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+007b6300   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007b6300   RELOCATION_MATCH PASS   007b6300
+007bc8fc   WARN SHARED_HEADER_AVAILABLE C3DVector
+007bc8fc   WARN SHARED_HEADER_AVAILABLE CWorldMap
+007bc8fc   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007bc8fc   WARN SHARED_HEADER_AVAILABLE CThing
+007bc8fc   WARN SHARED_HEADER_AVAILABLE CThingShotDef
+007bc8fc   RELOCATION_MATCH PASS   007bc8fc
+007bd7ca   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile
+007bd7ca   WARN RELOC_NAME: ?FadeOutEffect@@YIXPAVCThing@@@Z -> 0072ac40 labelled 'CTCSpecialAbilities::FadeOrKillEffect'
+007bd7ca   RELOCATION_MATCH PASS   007bd7ca
+007bdcfc   WARN SHARED_HEADER_AVAILABLE CThing
+007bdcfc   WARN SHARED_HEADER_AVAILABLE CTCDivineWrath
+007bdcfc   RELOCATION_MATCH PASS   007bdcfc
+007be0f9   WARN SHARED_HEADER_AVAILABLE C3DVector
+007be0f9   WARN SHARED_HEADER_AVAILABLE CThing
+007be0f9   WARN SHARED_HEADER_AVAILABLE CHitParameters
+007be0f9   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+007be0f9   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+007be0f9   WARN SHARED_HEADER_AVAILABLE CTCPhysicalShieldSpell
+007be0f9   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+007be0f9   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007be0f9   WARN SHARED_HEADER_AVAILABLE CThingShotDef
+007be0f9   WARN SHARED_HEADER_AVAILABLE CMessageEventManager
+007be0f9   WARN SHARED_HEADER_AVAILABLE CWorld
+007be0f9   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+007be0f9   WARN SHARED_HEADER_AVAILABLE CTCBase
+007be0f9   WARN RELOC_NAME: ?SetHitter@CHitParameters@@QAEXPAVCThing@@@Z -> 008685f0 labelled 'CHitParameters::SetThingHitting'
+007be0f9   WARN RELOC_NAME: ?FadeOutEffect@CTCPhysicalShieldSpell@@QAEXXZ -> 0072ac40 labelled 'CTCSpecialAbilities::FadeOrKillEffect'
+007be0f9   RELOCATION_MATCH PASS   007be0f9
+007c3c20   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007c3c20   WARN SHARED_HEADER_AVAILABLE CThing
+007c3c20   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+007c3c20   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007c3c20   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007c3c20   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007c3c20   RELOCATION_MATCH PASS   007c3c20
+007cc2b0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007cc2b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007cc2b0   WARN SHARED_HEADER_AVAILABLE CThing
+007cc2b0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+007cc2b0   WARN SHARED_HEADER_AVAILABLE CTCMultiArrow
+007cc2b0   RELOCATION_MATCH PASS   007cc2b0
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CThing
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+007cc4d0   WARN SHARED_HEADER_AVAILABLE CTCMultiArrow
+007cc4d0   RELOCATION_MATCH PASS   007cc4d0
+007ccb00   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007ccb00   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007ccb00   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007ccb00   WARN SHARED_HEADER_AVAILABLE CPlayer
+007ccb00   WARN SHARED_HEADER_AVAILABLE CThing
+007ccb00   WARN SHARED_HEADER_AVAILABLE CHitParameters
+007ccb00   WARN SHARED_HEADER_AVAILABLE CInputManager
+007ccb00   WARN SHARED_HEADER_AVAILABLE CSystemManager
+007ccb00   WARN SHARED_HEADER_AVAILABLE CTCMultiStrike
+007ccb00   WARN RELOC_NAME: ?ProcessMultiHitCombo@CTCExperienceCombo@@QAEXABVCHitParameters@@@Z -> 006d8830 labelled 'CTCHeroExperience::AddSuccessfulMultistrikeHit'
+007ccb00   RELOCATION_MATCH PASS   007ccb00
+007e0750   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+007e0750   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e0750   WARN SHARED_HEADER_AVAILABLE CHeroSpecialMovementDef
+007e0750   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007e0750   RELOCATION_MATCH PASS   007e0750
+007e5230   WARN SHARED_HEADER_AVAILABLE C2DVector
+007e5230   WARN SHARED_HEADER_AVAILABLE CInputEvent
+007e5230   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+007e5230   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+007e5230   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e5230   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007e5230   WARN SHARED_HEADER_AVAILABLE CThing
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5230   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007e5230   WARN SHARED_HEADER_AVAILABLE CBettingDef
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007e5230   WARN SHARED_HEADER_AVAILABLE CTCBetting
+007e5230   WARN RELOC_NAME: ?GetFrame@CMainGameComponent@@QAEJXZ -> 00416225 labelled '_global::GetMember_dword0x48_00416225'
+007e5230   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+007e5230   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007e5230   RELOCATION_MATCH PASS   007e5230
+007e5b90   WARN SHARED_HEADER_AVAILABLE CThing
+007e5b90   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+007e5b90   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+007e5b90   WARN SHARED_HEADER_AVAILABLE CCombatManager
+007e5b90   WARN SHARED_HEADER_AVAILABLE CWorld
+007e5b90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e5b90   WARN RELOC_NAME: ?SetFireRequested@CTCWeapon@@QAEXXZ -> 005da4c0 labelled 'CTCWeapon::Member_5da4c0'
+007e5b90   RELOCATION_MATCH PASS   007e5b90
+007e5d20   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName
+007e5d20   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007e5d20   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5d20   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef
+007e5d20   WARN SHARED_HEADER_AVAILABLE CTCBase
+  WARN leaf '007e5d20' matches no symbol in 007e5d20.obj; graded the largest function
+  WARN leaf '007e5d20' matches no symbol in 007e5d20.obj; graded the largest function
+007e5d20   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007e5d20   RELOCATION_MATCH PASS   007e5d20
+007e5f70   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e5f70   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame
+007e5f70   RELOCATION_MATCH PASS   007e5f70
+007e78e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName
+007e78e0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007e78e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007e78e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e78e0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+007e78e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e78e0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007e78e0   RELOCATION_MATCH PASS   007e78e0
+007ed060   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+007ed060   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007ed060   WARN SHARED_HEADER_AVAILABLE CTCActionUseBase
+  WARN leaf '007ed060' matches no symbol in 007ed060.obj; graded the largest function
+  WARN leaf '007ed060' matches no symbol in 007ed060.obj; graded the largest function
+007ed060   WARN RELOC_NAME: ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z -> 007eab90 labelled 'CTCActionUseBase::vfunc_28'
+007ed060   RELOCATION_MATCH PASS   007ed060
+007edee0   WARN SHARED_HEADER_AVAILABLE CThing
+007edee0   RELOCATION_MATCH PASS   007edee0
+007edfb0   WARN SHARED_HEADER_AVAILABLE CTCActionUseBase
+  WARN leaf '007edfb0' matches no symbol in 007edfb0.obj; graded the largest function
+  WARN leaf '007edfb0' matches no symbol in 007edfb0.obj; graded the largest function
+007edfb0   WARN RELOC_NAME: ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z -> 007eab90 labelled 'CTCActionUseBase::vfunc_28'
+007edfb0   RELOCATION_MATCH PASS   007edfb0
+007f08b0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007f08b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007f08b0   WARN SHARED_HEADER_AVAILABLE CThing
+007f08b0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+007f08b0   RELOCATION_MATCH PASS   007f08b0
+007f0b10   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007f0b10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007f0b10   WARN SHARED_HEADER_AVAILABLE CThing
+007f0b10   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+007f0b10   RELOCATION_MATCH PASS   007f0b10
+007f4020   WARN SHARED_HEADER_AVAILABLE CThing
+007f4020   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007f4020   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007f4020   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+007f4020   WARN SHARED_HEADER_AVAILABLE CThingFilter_EnemyCreature
+  WARN leaf '007f4020' matches no symbol in 007f4020.obj; graded the largest function
+  WARN leaf '007f4020' matches no symbol in 007f4020.obj; graded the largest function
+007f4020   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f4020   WARN RELOC_NAME: ??RCThingFilter_EnemyCreature@@QBE_NABVCThing@@@Z -> 006a7550 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007f4020   WARN RELOC_NAME: ?_M_insert_overflow@ThingVector@@QAEXPAPAVCThingGameObject@@ABQAV2@ABUFalseType@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+007f4020   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABUFilters@@AAUThingVector@@@Z (catalog GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>; names another function)
+007f4020   RELOCATION_MATCH PASS   007f4020
+007f42a0   WARN SHARED_HEADER_AVAILABLE CThing
+007f42a0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007f42a0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007f42a0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+  WARN leaf '007f42a0' matches no symbol in 007f42a0.obj; graded the largest function
+  WARN leaf '007f42a0' matches no symbol in 007f42a0.obj; graded the largest function
+007f42a0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f42a0   WARN RELOC_NAME: ?_M_insert_overflow@ThingVector@@QAEXPAPAVCThingGameObject@@ABQAV2@ABUFalseType@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+007f42a0   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABUFilters@@AAUThingVector@@@Z (catalog GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>; names another function)
+007f42a0   RELOCATION_MATCH PASS   007f42a0
+007f4500   WARN SHARED_HEADER_AVAILABLE CThing
+007f4500   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007f4500   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007f4500   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+  WARN leaf '007f4500' matches no symbol in 007f4500.obj; graded the largest function
+  WARN leaf '007f4500' matches no symbol in 007f4500.obj; graded the largest function
+007f4500   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f4500   WARN RELOC_NAME: ?_M_insert_overflow@ThingVector@@QAEXPAPAVCThingGameObject@@ABQAV2@ABUFalseType@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+007f4500   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABUFilters@@AAUThingVector@@@Z (catalog GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>; names another function)
+007f4500   RELOCATION_MATCH PASS   007f4500
+007f5d20   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007f5d20   WARN SHARED_HEADER_AVAILABLE CThing
+007f5d20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+007f5d20   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest
+007f5d20   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f5d20   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007f5d20   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007f5d20   RELOCATION_MATCH PASS   007f5d20
+007f70d0   WARN SHARED_HEADER_AVAILABLE CThing
+007f70d0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007f70d0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest
+  WARN leaf '007f70d0' matches no symbol in 007f70d0.obj; graded the largest function
+  WARN leaf '007f70d0' matches no symbol in 007f70d0.obj; graded the largest function
+007f70d0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f70d0   WARN RELOC_NAME: ??RCThingFilter_IsUnconscious@@QBE_NABVCThing@@@Z -> 006a73e0 labelled '_global::ReturnFalse_ret4_006a73e0'
+007f70d0   WARN RELOC_NAME: ??$?RVCThingAICreature@@@CThingCompare_Nearest@@QBEPAVCThingAICreature@@PAV1@0@Z -> 0065da97 labelled 'CThingCompare_Nearest::operator'
+007f70d0   RELOCATION_MATCH PASS   007f70d0
+007f7340   WARN SHARED_HEADER_AVAILABLE CThing
+007f7340   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007f7340   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest
+  WARN leaf '007f7340' matches no symbol in 007f7340.obj; graded the largest function
+  WARN leaf '007f7340' matches no symbol in 007f7340.obj; graded the largest function
+007f7340   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f7340   WARN RELOC_NAME: ??RCThingFilter_IsAICreatureAwareOf@@QBE_NABVCThingCreatureBase@@@Z -> 006a7610 labelled '_Dest_val_std::allocator_NCreatureHitNotification::CFlash_,NCreatureHitNotification::CFlash_'
+007f7340   WARN RELOC_NAME: ??RCThingFilter_IsIncapacitated@@QBE_NABVCThing@@@Z -> 006a73f0 labelled '_global::CdeclCall_IsIncapacitated_006a73f0'
+007f7340   WARN RELOC_NAME: ??$?RVCThingAICreature@@@CThingCompare_Nearest@@QBEPAVCThingAICreature@@PAV1@0@Z -> 0065da97 labelled 'CThingCompare_Nearest::operator'
+007f7340   RELOCATION_MATCH PASS   007f7340
+007f9c00   WARN SHARED_HEADER_AVAILABLE CThing
+007f9c00   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007f9c00   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007f9c00   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotList
+  WARN leaf '007f9c00' matches no symbol in 007f9c00.obj; graded the largest function
+  WARN leaf '007f9c00' matches no symbol in 007f9c00.obj; graded the largest function
+007f9c00   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f9c00   RELOCATION_MATCH PASS   007f9c00
+007fcef0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007fcef0   WARN SHARED_HEADER_AVAILABLE CThing
+007fcef0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasDefGlobalIndex
+007fcef0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007fcef0   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007fcef0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007fcef0   RELOCATION_MATCH PASS   007fcef0
+007fd110   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007fd110   WARN SHARED_HEADER_AVAILABLE CThing
+007fd110   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName
+007fd110   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007fd110   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007fd110   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007fd110   RELOCATION_MATCH PASS   007fd110
+007fdb10   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+007fdb10   WARN SHARED_HEADER_AVAILABLE CThing
+007fdb10   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007fdb10   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+007fdb10   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotList
+  WARN leaf 'allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>' matches no symbol in 007fdb10.obj; graded the largest function
+  WARN leaf 'allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>' matches no symbol in 007fdb10.obj; graded the largest function
+007fdb10   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007fdb10   RELOCATION_MATCH PASS   007fdb10
+007fe730   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007fe730   WARN SHARED_HEADER_AVAILABLE CThing
+007fe730   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+007fe730   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+007fe730   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+007fe730   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007fe730   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+007fe730   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007fe730   RELOCATION_MATCH PASS   007fe730
+00809a70   WARN SHARED_HEADER_AVAILABLE CThing
+00809a70   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00809a70   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00809a70   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+00809a70   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsInTargetingRangeAndFOV
+  WARN leaf '00809a70' matches no symbol in 00809a70.obj; graded the largest function
+  WARN leaf '00809a70' matches no symbol in 00809a70.obj; graded the largest function
+00809a70   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00809a70   RELOCATION_MATCH PASS   00809a70
+0080a550   WARN SHARED_HEADER_AVAILABLE CThing
+0080a550   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0080a550   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0080a550   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsInFOV
+0080a550   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+0080a550   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+  WARN leaf '0080a550' matches no symbol in 0080a550.obj; graded the largest function
+  WARN leaf '0080a550' matches no symbol in 0080a550.obj; graded the largest function
+0080a550   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0080a550   RELOCATION_MATCH PASS   0080a550
+0080e670   WARN SHARED_HEADER_AVAILABLE CThing
+0080e670   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0080e670   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0080e670   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+0080e670   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotList
+  WARN leaf '0080e670' matches no symbol in 0080e670.obj; graded the largest function
+  WARN leaf '0080e670' matches no symbol in 0080e670.obj; graded the largest function
+0080e670   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0080e670   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_IsNotList@@VCThingFilter_IsWithinArea@@U?$unary_negate@UCThingFilter_IsEvadeExplosion@?A0x0f9512fe@@@std@@@@AAUThingList@@@Z (catalog GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_>,CThingCompare_Nearest,CThingCreatureBase>; names another function)
+0080e670   RELOCATION_MATCH PASS   0080e670
+0080e8e0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0080e8e0   WARN SHARED_HEADER_AVAILABLE CThing
+0080e8e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+0080e8e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotList
+0080e8e0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+0080e8e0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0080e8e0   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+0080e8e0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+0080e8e0   RELOCATION_MATCH PASS   0080e8e0
+0080ecc0   WARN SHARED_HEADER_AVAILABLE CThing
+0080ecc0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0080ecc0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0080ecc0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+0080ecc0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotList
+0080ecc0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+  WARN leaf '0080ecc0' matches no symbol in 0080ecc0.obj; graded the largest function
+  WARN leaf '0080ecc0' matches no symbol in 0080ecc0.obj; graded the largest function
+0080ecc0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0080ecc0   RELOCATION_MATCH PASS   0080ecc0
+0080f5e0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0080f5e0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0080f5e0   WARN SHARED_HEADER_AVAILABLE CThing
+0080f5e0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0080f5e0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+0080f5e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0080f5e0   WARN SHARED_HEADER_AVAILABLE CNymphDef
+0080f5e0   RELOCATION_MATCH PASS   0080f5e0
+0080f870   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0080f870   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0080f870   WARN SHARED_HEADER_AVAILABLE CThing
+0080f870   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0080f870   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+0080f870   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0080f870   WARN SHARED_HEADER_AVAILABLE CNymphDef
+0080f870   RELOCATION_MATCH PASS   0080f870
+008139c0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+008139c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+008139c0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+008139c0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+008139c0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+008139c0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+008139c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008139c0   WARN RELOC_NAME: ?LookupValue@CDataBank@NGameText@@QBEKK@Z -> 009cc410 labelled 'CBankFile::FindIndexBySymbolCRC'
+008139c0   RELOCATION_MATCH PASS   008139c0
+00813c50   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00813c50   WARN SHARED_HEADER_AVAILABLE CQuestManager
+00813c50   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00813c50   RELOCATION_MATCH PASS   00813c50
+00832840   WARN SHARED_HEADER_AVAILABLE CWorld
+00832840   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00832840   RELOCATION_MATCH PASS   00832840
+008424d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008424d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '008424d0' matches no symbol in 008424d0.obj; graded the largest function
+  WARN leaf '008424d0' matches no symbol in 008424d0.obj; graded the largest function
+008424d0   RELOCATION_MATCH PASS   008424d0
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefString
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+008430b0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008430b0   WARN SHARED_HEADER_AVAILABLE CExpressionDef
+008430b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '008430b0' matches no symbol in 008430b0.obj; graded the largest function
+  WARN leaf '008430b0' matches no symbol in 008430b0.obj; graded the largest function
+008430b0   WARN RELOC_NAME: ?GetRandomLoadedAnim@@YIPAVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z -> 006924b0 labelled 'CCreatureActionBase::GetRandomAnimFromName'
+008430b0   RELOCATION_MATCH PASS   008430b0
+00843fc0   WARN SHARED_HEADER_AVAILABLE CDefString
+00843fc0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00843fc0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00843fc0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+00843fc0   RELOCATION_MATCH PASS   00843fc0
+00849700   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00849700   WARN SHARED_HEADER_AVAILABLE CThing
+00849700   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+00849700   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00849700   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00849700   WARN SHARED_HEADER_AVAILABLE CMessageEventManager
+00849700   WARN SHARED_HEADER_AVAILABLE CWorld
+00849700   WARN SHARED_HEADER_AVAILABLE CTCOwnedEntity
+00849700   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+00849700   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00849700   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00849700   WARN RELOC_NAME: ?GetMaxNumberOfItems@CTCInventoryItem@@QBEJXZ -> 005d9050 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+00849700   RELOCATION_MATCH PASS   00849700
+0084a7e0   WARN SHARED_HEADER_AVAILABLE CThingManager
+  WARN leaf '0084a7e0' matches no symbol in 0084a7e0.obj; graded the largest function
+  WARN leaf '0084a7e0' matches no symbol in 0084a7e0.obj; graded the largest function
+0084a7e0   WARN RELOC_NAME: ?GetNearbyAlerter@CThingManager@@QAEPAUCNearbyAlerter@@XZ -> 0051e490 labelled 'CThingManager::GetThingSearchTools'
+0084a7e0   RELOCATION_MATCH PASS   0084a7e0
+0084f850   WARN SHARED_HEADER_AVAILABLE CThing
+0084f850   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0084f850   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+  WARN leaf '0084f850' matches no symbol in 0084f850.obj; graded the largest function
+  WARN leaf '0084f850' matches no symbol in 0084f850.obj; graded the largest function
+0084f850   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0084f850   WARN RELOC_NAME: ??RCThingFilter_IsCreatureThreatTo@@QBE_NABVCThingCreatureBase@@@Z -> 006a7600 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0084f850   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABUFilters@@AAUThingVector@@@Z (catalog GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>; names another function)
+0084f850   RELOCATION_MATCH PASS   0084f850
+00851490   WARN SHARED_HEADER_AVAILABLE CThing
+00851490   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00851490   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00851490   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+  WARN leaf '00851490' matches no symbol in 00851490.obj; graded the largest function
+  WARN leaf '00851490' matches no symbol in 00851490.obj; graded the largest function
+00851490   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00851490   RELOCATION_MATCH PASS   00851490
+0085bd70   WARN SHARED_HEADER_AVAILABLE C3DVector
+0085bd70   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0085bd70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0085bd70   WARN SHARED_HEADER_AVAILABLE CPlayer
+0085bd70   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0085bd70   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0085bd70   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0085bd70   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+0085bd70   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+0085bd70   WARN RELOC_NAME: ?IsBlocking@CTCCombat@@QBE_NXZ -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
+0085bd70   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+0085bd70   RELOCATION_MATCH PASS   0085bd70
+0085cec0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0085cec0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0085cec0   WARN SHARED_HEADER_AVAILABLE CTCMapwho
+0085cec0   RELOCATION_MATCH PASS   0085cec0
+  WARN leaf '0085cfe0' matches no symbol in 0085cfe0.obj; graded the largest function
+  WARN leaf '0085cfe0' matches no symbol in 0085cfe0.obj; graded the largest function
+0085cfe0   RELOCATION_MATCH PASS   0085cfe0
+0085d010   RELOCATION_MATCH PASS   0085d010
+0085d0a0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0085d0a0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0085d0a0   RELOCATION_MATCH PASS   0085d0a0
+00862780   WARN SHARED_HEADER_AVAILABLE CThing
+00862780   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+00862780   WARN SHARED_HEADER_AVAILABLE CPlayer
+00862780   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimInit
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimateThing
+00862780   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetWaveWithInformation@CThingAICreature@@QBE_NXZ -> 008300f0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetAnimationTransitionInTime@CAnimationEntry@@QBEJXZ -> 005dc1f0 labelled 'CAnimationEntry::GetDelayTime'
+00862780   RELOCATION_MATCH PASS   00862780
+00863e70   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00863e70   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00863e70   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00863e70   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00863e70   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00863e70   RELOCATION_MATCH PASS   00863e70
+008786e0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+008786e0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+008786e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_None
+  WARN leaf 'allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>' matches no symbol in 008786e0.obj; graded the largest function
+  WARN leaf 'allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>' matches no symbol in 008786e0.obj; graded the largest function
+008786e0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@AAU?$RetailVector@PAVCThingMap@NThingMap@@@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+008786e0   WARN STANDIN_LEAF ?GetAllThingsInRoughArea@CThingSearchTools_Calls@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAUThingVector@@@Z (catalog CIntelligentPointer<CThing>::CIntelligentPointer; names another function)
+008786e0   RELOCATION_MATCH PASS   008786e0
+00881780   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+  WARN leaf '00881780' matches no symbol in 00881780.obj; graded the largest function
+  WARN leaf '00881780' matches no symbol in 00881780.obj; graded the largest function
+00881780   RELOCATION_MATCH PASS   00881780
+00891e30   WARN SHARED_HEADER_AVAILABLE CDefString
+00891e30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00891e30   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00891e30   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00891e30   RELOCATION_MATCH PASS   00891e30
+00893b00   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00893b00   WARN SHARED_HEADER_AVAILABLE CDefString
+00893b00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00893b00   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00893b00   RELOCATION_MATCH PASS   00893b00
+00893c00   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00893c00   WARN SHARED_HEADER_AVAILABLE CDefString
+00893c00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00893c00   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00893c00   RELOCATION_MATCH PASS   00893c00
+00897630   WARN SHARED_HEADER_AVAILABLE CDefString
+00897630   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00897630   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+  WARN leaf '00897630' matches no symbol in 00897630.obj; graded the largest function
+  WARN leaf '00897630' matches no symbol in 00897630.obj; graded the largest function
+00897630   RELOCATION_MATCH PASS   00897630
+00898c40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898c40   RELOCATION_MATCH PASS   00898c40
+00898db0   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00898db0   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00898db0   RELOCATION_MATCH PASS   00898db0
+008a8f20   WARN SHARED_HEADER_AVAILABLE CDefString
+008a8f20   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008a8f20   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+008a8f20   WARN SHARED_HEADER_AVAILABLE CTCContainer
+008a8f20   WARN SHARED_HEADER_AVAILABLE CThing
+008a8f20   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a8f20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008a8f20   RELOCATION_MATCH PASS   008a8f20
+008ad710   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+008ad710   WARN SHARED_HEADER_AVAILABLE CThing
+008ad710   WARN SHARED_HEADER_AVAILABLE CThingFilter_None
+008ad710   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+008ad710   WARN RELOC_NAME: ?GetCellExtents@CThingSearchTools@@QAE?AVC2DBoxI@@PAUCThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea'
+008ad710   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+008ad710   RELOCATION_MATCH PASS   008ad710
+008ad950   WARN SHARED_HEADER_AVAILABLE CVectorMap
+008ad950   WARN SHARED_HEADER_AVAILABLE CBaseClass
+008ad950   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+008ad950   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+008ad950   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName
+008ad950   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+008ad950   RELOCATION_MATCH PASS   008ad950
+008adcc0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+008adcc0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+008adcc0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+008adcc0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+008adcc0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+008adcc0   RELOCATION_MATCH PASS   008adcc0
+008af5f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+008af5f0   WARN SHARED_HEADER_AVAILABLE CTCTalk
+008af5f0   WARN SHARED_HEADER_AVAILABLE CCombatDialogueDef
+008af5f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008af5f0   WARN SHARED_HEADER_AVAILABLE CombatDialogueManager
+008af5f0   WARN RELOC_NAME: ?ContainsCreature@CTCCombatSpeechTargets@@QAE_NABVCThingCreatureBase@@@Z -> 00747450 labelled 'CTCBuyableHouse::MovedInNotification'
+008af5f0   RELOCATION_MATCH PASS   008af5f0
+008b6e60   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008b6e60   WARN SHARED_HEADER_AVAILABLE CombatDialogueManager
+008b6e60   WARN SHARED_HEADER_AVAILABLE CCombatManager
+008b6e60   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+  WARN leaf '008b6e60' matches no symbol in 008b6e60.obj; graded the largest function
+  WARN leaf '008b6e60' matches no symbol in 008b6e60.obj; graded the largest function
+008b6e60   RELOCATION_MATCH PASS   008b6e60
+008beee0   WARN SHARED_HEADER_AVAILABLE C3DVector
+008beee0   WARN SHARED_HEADER_AVAILABLE C2DVector
+008beee0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008beee0   WARN SHARED_HEADER_AVAILABLE CThing
+008beee0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008beee0   WARN SHARED_HEADER_AVAILABLE CombatDialogueManager
+008beee0   WARN SHARED_HEADER_AVAILABLE CCombatManager
+008beee0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008beee0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+008beee0   RELOCATION_MATCH PASS   008beee0
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CThing
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008c0ea0   RELOCATION_MATCH PASS   008c0ea0
+008c1f70   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c1f70   WARN SHARED_HEADER_AVAILABLE CSoundMap
+008c1f70   WARN SHARED_HEADER_AVAILABLE CSoundInit
+008c1f70   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+008c1f70   WARN SHARED_HEADER_AVAILABLE CThing
+008c1f70   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008c1f70   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+008c1f70   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008c1f70   WARN RELOC_NAME: ?PlaySound@CTCSoundPlayer@@QAEKJABVCSoundInit@@JJ@Z -> 0066ace0 labelled 'CTCSoundPlayer::PlayUnattachedSample'
+008c1f70   RELOCATION_MATCH PASS   008c1f70
+008c4170   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+008c4170   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c4170   WARN SHARED_HEADER_AVAILABLE CThing
+008c4170   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008c4170   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+  WARN leaf '008c4170' matches no symbol in 008c4170.obj; graded the largest function
+  WARN leaf '008c4170' matches no symbol in 008c4170.obj; graded the largest function
+008c4170   RELOCATION_MATCH PASS   008c4170
+008c8180   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef
+008c8180   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c8180   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c8180   WARN SHARED_HEADER_AVAILABLE CThing
+008c8180   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008c8180   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c8180   WARN SHARED_HEADER_AVAILABLE CTCDExplosion
+008c8180   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c8180   WARN RELOC_NAME: ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+008c8180   WARN RELOC_NAME: ?SetOwner@CTCDriver41@@QAEXPAVCThing@@@Z -> 0080cbf0 labelled 'CTCDExplosion::SetThingAsImmune'
+008c8180   RELOCATION_MATCH PASS   008c8180
+008c8380   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef
+008c8380   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c8380   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c8380   WARN SHARED_HEADER_AVAILABLE CThing
+008c8380   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008c8380   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008c8380   RELOCATION_MATCH PASS   008c8380
+008c8550   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef
+008c8550   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c8550   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c8550   WARN SHARED_HEADER_AVAILABLE CThing
+008c8550   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008c8550   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+008c8550   WARN SHARED_HEADER_AVAILABLE CTCHitLocations
+008c8550   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008c8550   RELOCATION_MATCH PASS   008c8550
+008cb780   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008cb780   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008cb780   WARN SHARED_HEADER_AVAILABLE CThing
+008cb780   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+008cb780   WARN SHARED_HEADER_AVAILABLE CTCCombat
+008cb780   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+  WARN leaf '008cb780' matches no symbol in 008cb780.obj; graded the largest function
+  WARN leaf '008cb780' matches no symbol in 008cb780.obj; graded the largest function
+008cb780   WARN RELOC_NAME: ?GetDefinitionManager@CThing@@QAEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+008cb780   WARN RELOC_NAME: ?GetDefinitionManager@CCombatActionBase@@QAEPAVCDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+008cb780   RELOCATION_MATCH PASS   008cb780
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefString
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CThing
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008ce6f0   RELOCATION_MATCH PASS   008ce6f0
+008ce900   WARN SHARED_HEADER_AVAILABLE CDefString
+008ce900   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+008ce900   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008ce900   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008ce900   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+008ce900   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer
+008ce900   WARN SHARED_HEADER_AVAILABLE CThing
+008ce900   WARN SHARED_HEADER_AVAILABLE CSoundPair
+008ce900   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008ce900   RELOCATION_MATCH PASS   008ce900
+008d02c0   WARN SHARED_HEADER_AVAILABLE CDefString
+008d02c0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+008d02c0   WARN SHARED_HEADER_AVAILABLE CGameScriptThing
+008d02c0   RELOCATION_MATCH PASS   008d02c0
+008d0ba0   WARN SHARED_HEADER_AVAILABLE CThing
+008d0ba0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+008d0ba0   WARN SHARED_HEADER_AVAILABLE CGameScriptThing
+  WARN leaf '008d0ba0' matches no symbol in 008d0ba0.obj; graded the largest function
+  WARN leaf '008d0ba0' matches no symbol in 008d0ba0.obj; graded the largest function
+008d0ba0   RELOCATION_MATCH PASS   008d0ba0
+008d23c0   WARN SHARED_HEADER_AVAILABLE CDefString
+008d23c0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+008d23c0   WARN SHARED_HEADER_AVAILABLE CThing
+008d23c0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+008d23c0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+008d23c0   RELOCATION_MATCH PASS   008d23c0
+008d6ac0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+008d6ac0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+008d6ac0   WARN SHARED_HEADER_AVAILABLE CAnimInit
+008d6ac0   WARN SHARED_HEADER_AVAILABLE CAnimateThing
+008d6ac0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008d6ac0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008d6ac0   WARN SHARED_HEADER_AVAILABLE CWorld
+008d6ac0   WARN RELOC_NAME: ??1CCreatureAction_PlayAnimation@@QAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+008d6ac0   WARN RELOC_NAME: ?GetWorld@CModeBase@@QBEPAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008d6ac0   RELOCATION_MATCH PASS   008d6ac0
+
+WINS: 112
+  00766550 RELOCATION_MATCH m::?ClearAllSounds@
+  00766c00 RELOCATION_MATCH m::?SetupAugmentationSounds@CTCObjectAugmentations@@AAEXXZ
+  00767200 RELOCATION_MATCH m::OnSerialise
+  0077adf0 RELOCATION_MATCH m::0077adf0
+  00785dd0 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  00786140 RELOCATION_MATCH m::??$GetPBestThingInRoughArea@VCThingFilter_HasTC@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasTC@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+  00788229 RELOCATION_MATCH m::Trigger
+  00788617 RELOCATION_MATCH m::?ProcessPossibleStrike@CTCMeleeTrap@@AAEXMMABU?$pair@VC3DVector@@V1@@std@@0AAVCThing@@@Z
+  0078a2c0 RELOCATION_MATCH m::?LoadRangedWeapon@CTCHeroRangedAttacks
+  0078a5d0 RELOCATION_MATCH m::AttemptToFireRangedWeapon
+  0078db20 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  00792e50 RELOCATION_MATCH m::??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilter_CanBeHitByEpicSpell@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilter_CanBeHitByEpicSpell@@@@AAV?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z
+  007930b0 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  0079a050 RELOCATION_MATCH m::GetPBestThingInRoughArea
+  0079a280 RELOCATION_MATCH m::GetPFirstThingInRoughArea
+  0079bf30 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  0079fe90 RELOCATION_MATCH m::Deactivate
+  007a3ca0 RELOCATION_MATCH m::007a3ca0
+  007a5190 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  007a63d0 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  007a7000 RELOCATION_MATCH m::UpdateDirectionOverride
+  007a9300 RELOCATION_MATCH m::007a9300
+  007a9580 RELOCATION_MATCH m::007a9580
+  007a9960 RELOCATION_MATCH m::UpdateDirectionOverride
+  007a9fe0 RELOCATION_MATCH m::CreateTrailingEffect
+  007b0950 RELOCATION_MATCH m::?FinishFishing@CTCFishing@@QAEX_N@Z
+  007b1eb0 RELOCATION_MATCH m::007b1eb0
+  007b2e20 RELOCATION_MATCH m::?ReportAllPendingCrimes@CTCGuard@@QAEXPAVCTCVillage@@@Z
+  007b2fd0 RELOCATION_MATCH m::WitnessedCrime
+  007b6300 RELOCATION_MATCH m::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  007bc8fc RELOCATION_MATCH m::?InitMovement@CTCShotDefinitionTearInGround@NThingShot@@UAEXXZ
+  007bd7ca RELOCATION_MATCH m::??1CTCShotDefinitionFireballSpell
+  007bdcfc RELOCATION_MATCH m::GetShotDamage
+  007be0f9 RELOCATION_MATCH m::OnCollision
+  007c3c20 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  007cc2b0 RELOCATION_MATCH m::CreateAmmoEffect
+  007cc4d0 RELOCATION_MATCH m::?Init@CTCMultiArrow@@QAEXXZ
+  007ccb00 RELOCATION_MATCH m::StartMultiHit
+  007e0750 RELOCATION_MATCH m::FrameUpdate
+  007e5230 RELOCATION_MATCH m::ProcessInput
+  007e5b90 RELOCATION_MATCH m::FrameUpdate
+  007e5d20 RELOCATION_MATCH m::007e5d20
+  007e5f70 RELOCATION_MATCH m::?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z
+  007e78e0 RELOCATION_MATCH m::?PlayGame@CTCFireheartMinigame@@QAEXXZ
+  007ed060 RELOCATION_MATCH m::007ed060
+  007edee0 RELOCATION_MATCH m::?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z
+  007edfb0 RELOCATION_MATCH m::007edfb0
+  007f08b0 RELOCATION_MATCH m::OnInitialActivate
+  007f0b10 RELOCATION_MATCH m::?DoDieFX@CTCKrakenTentacle@@QAEXXZ
+  007f4020 RELOCATION_MATCH m::007f4020
+  007f42a0 RELOCATION_MATCH m::007f42a0
+  007f4500 RELOCATION_MATCH m::007f4500
+  007f5d20 RELOCATION_MATCH m::GetPBestThingInRoughArea
+  007f70d0 RELOCATION_MATCH m::007f70d0
+  007f7340 RELOCATION_MATCH m::007f7340
+  007f9c00 RELOCATION_MATCH m::007f9c00
+  007fcef0 RELOCATION_MATCH m::GetPFirstThingInRoughArea
+  007fd110 RELOCATION_MATCH m::??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@
+  007fdb10 RELOCATION_MATCH m::allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>
+  007fe730 RELOCATION_MATCH m::GetPFirstThingInRoughArea
+  00809a70 RELOCATION_MATCH m::00809a70
+  0080a550 RELOCATION_MATCH m::0080a550
+  0080e670 RELOCATION_MATCH m::0080e670
+  0080e8e0 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  0080ecc0 RELOCATION_MATCH m::0080ecc0
+  0080f5e0 RELOCATION_MATCH m::StartFlyingAround
+  0080f870 RELOCATION_MATCH m::StopFlyingAround
+  008139c0 RELOCATION_MATCH m::?OnHeroEnterBoastArea@CTCBoastingPodium@@QAEXJ_NAAVCThingCreatureBase@@@Z
+  00813c50 RELOCATION_MATCH m::?OnHeroBoast@CTCBoastingPodium@@QAEXJPAVCThing@@@Z
+  00832840 RELOCATION_MATCH m::OnCollision
+  008424d0 RELOCATION_MATCH m::008424d0
+  008430b0 RELOCATION_MATCH m::008430b0
+  00843fc0 RELOCATION_MATCH m::Initialise
+  00849700 RELOCATION_MATCH m::?PerformAction@CCreatureAction_StealThingFromShop@@UAEXXZ
+  0084a7e0 RELOCATION_MATCH m::0084a7e0
+  0084f850 RELOCATION_MATCH m::0084f850
+  00851490 RELOCATION_MATCH m::00851490
+  0085bd70 RELOCATION_MATCH m::?Initialise@CCombatAction_ControlledStrafeJump@@UAEXXZ
+  0085cec0 RELOCATION_MATCH m::Clear
+  0085cfe0 RELOCATION_MATCH m::0085cfe0
+  0085d010 RELOCATION_MATCH m::GetAllThings
+  0085d0a0 RELOCATION_MATCH m::??1CThingMap@NThingMap@@UAE@XZ
+  00862780 RELOCATION_MATCH m::?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+  00863e70 RELOCATION_MATCH m::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  008786e0 RELOCATION_MATCH m::allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>
+  00881780 RELOCATION_MATCH m::00881780
+  00891e30 RELOCATION_MATCH m::GetWanderingPopulationScriptDefNameInRegion
+  00893b00 RELOCATION_MATCH m::MsgOnExpressionPerformed
+  00893c00 RELOCATION_MATCH m::?MsgOnHeroHairTypeChanged@CGameScriptInterface@@UBE_NW4EClothingCoversArea@@AAVCCharString@@@Z
+  00897630 RELOCATION_MATCH m::00897630
+  00898c40 RELOCATION_MATCH m::?GiveHeroItemsFromContainer@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+  00898db0 RELOCATION_MATCH m::?TakeObjectFromHero@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  008a8f20 RELOCATION_MATCH m::?GetItemDefNamesFromContainer@CGameScriptInterface
+  008ad710 RELOCATION_MATCH m::GetAllThingsInRoughArea
+  008ad950 RELOCATION_MATCH m::??$GetAllThingsInRoughArea@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_HasScriptName@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasScriptName@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z
+  008adcc0 RELOCATION_MATCH m::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  008af5f0 RELOCATION_MATCH m::IsSpeechAllowed
+  008b6e60 RELOCATION_MATCH m::008b6e60
+  008beee0 RELOCATION_MATCH m::?Initialise@CCreatureAction_Ambush@@UAEXXZ
+  008c0ea0 RELOCATION_MATCH m::?Initialise@CCreatureAction_JackDeathInto@@UAEXXZ
+  008c1f70 RELOCATION_MATCH m::?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport@@UAEXXZ
+  008c4170 RELOCATION_MATCH m::008c4170
+  008c8180 RELOCATION_MATCH m::?PerformAction@CCreatureAction_BanditKingLunge
+  008c8380 RELOCATION_MATCH m::?Initialise@CCreatureAction_BanditKingStuck
+  008c8550 RELOCATION_MATCH m::?Initialise@CCreatureAction_BanditKingUnstuck@@UAEXXZ
+  008cb780 RELOCATION_MATCH m::008cb780
+  008ce6f0 RELOCATION_MATCH m::??0CCreatureAction_CastSkillMultiArrow
+  008ce900 RELOCATION_MATCH m::??0CCreatureAction_CastSkillMultiArrow
+  008d02c0 RELOCATION_MATCH m::?GetDefName@CGameScriptThing@@UBE?AVCCharString@@XZ
+  008d0ba0 RELOCATION_MATCH m::008d0ba0
+  008d23c0 RELOCATION_MATCH m::?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z
+  008d6ac0 RELOCATION_MATCH m::?AnimUpdate@CModeSitBase

@@ -136,7 +136,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
@@ -163,7 +165,7 @@ void CAIStateGroup_SummonerCharge::Update()
         Terminate();
         return;
     }
-    CWorld* world = GetPWorld();
+    CWorld* world = &GetWorld();
     long fps = CMainGameComponent::GetConstantFPS();
     const CSummonerDef* def = PDef;
     NextFrameToCharge = (long)((float)world->GetFrame() + (float)fps * def->ChargeDelay);

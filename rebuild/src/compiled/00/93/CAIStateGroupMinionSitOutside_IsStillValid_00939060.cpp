@@ -7,7 +7,7 @@
 // IsCurfewTime @ 0x00658DB3, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (called for nothing: the result is dropped,
 // as in the landed siblings), CWorld::GetFrame @ 0x0049D870.
 // Shape: an early `return false` (its own byte `xor al,al` epilogue) from inside the nested village test, then
-// `GetPWorld(); return GFGetCurrentFrame() <= FrameToStopSitting;` (`cmp eax,[edi+40h] ; setle al` with no
+// `(&GetWorld()); return GFGetCurrentFrame() <= FrameToStopSitting;` (`cmp eax,[edi+40h] ; setle al` with no
 // `xor` zero-extension: the result type is an unsigned char, not bool).
 // FrameToStopSitting is +0x40 (engine header name; the header flattens the base so the class is modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
@@ -61,7 +61,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated) ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
@@ -89,6 +91,6 @@ unsigned char CAIStateGroup_MinionSitOutside::IsStillValid()
                 return false;
         }
     }
-    GetPWorld();
+    (&GetWorld());
     return CWorld::GetFrame() <= FrameToStopSitting;
 }

@@ -1,5 +1,5 @@
 // CPlayer::UninitModeFirstPersonTargeting(EPlayerMode, CProcessedInput*) -- detach the first-person targeting input processes and, for a living hero, take its creature mode manager out of mode 25 and push the camera's current manual mode; then drop player mode 22
-// Leaf: ?UninitModeFirstPersonTargeting@CPlayer@@QAEXJPAVCProcessedInput@@@Z
+// Leaf: ?UninitModeFirstPersonTargeting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00635B30, length 192 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?UninitModeFirstPersonTargeting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a
@@ -13,14 +13,14 @@
 // CPlayer carrier; CThing interface bitset +0x20, interface map +0x44, dead bit +0x91 & 1.
 // Shape: the mode manager is zero-initialised and filled by the out-parameter GetInterface (`xor ecx,ecx` before the
 // bitset test, the component loaded straight into ecx for its one use); the camera manager out pointer is
-// zero-initialised in its frame word and the getter's bool guards the push; RemoveMode(22) runs on every path.
+// zero-initialised in its frame word and the getter's bool guards the push; RemoveMode((EPlayerMode)22) runs on every path.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
 #undef CPlayer
 
-typedef long EPlayerMode;
+#include "engine/EPlayerMode.h"   // agentNF16: was `typedef long EPlayerMode` (RemoveMode 0x00634190 binds ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z)
 class CProcessedInput;
 class CTCBase;
 
@@ -60,7 +60,8 @@ class CWorld { public:
 class CPlayer : public CPlayerPdb { public:
     CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
     void RemoveMode(EPlayerMode mode);                  // 0x00634190
-    void UninitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input);
+private:
+    void UninitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input);   // Ego_r/FableWin ?UninitModeFirstPersonTargeting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z (private; agentNF16)
 };
 
 void CPlayer::UninitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input)
@@ -79,5 +80,5 @@ void CPlayer::UninitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* 
         if (World->CameraSource->GetCameraManager(&camera))
             camera->PushCurrentManualMode();
     }
-    RemoveMode(22);
+    RemoveMode(PLAYER_MODE_FIRST_PERSON_TARGETING);
 }

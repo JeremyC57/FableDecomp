@@ -1,23 +1,30 @@
-// Leaf: ?CCreatureActionBase_GetThingManager@@YIPAVCThingManager@@PAVCCreatureActionBase@@@Z
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
+// CCreatureActionBase::GetThingManager() -- the creature's thing manager: fetch the acting creature (PCreature +0x08) and return the current thing manager
+// Leaf: ?GetThingManager@CCreatureActionBase@@IAEAAVCThingManager@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00692980, 14 bytes, thiscall: `add ecx,8 ; call 0x00A01B50 ; mov eax,[0x013B8A1C] ; ret`.
+// Name (agentNF16): Ego_r.pdb + FableWin.pdb ?GetThingManager@CCreatureActionBase@@IAEAAVCThingManager@@XZ (protected, returns a
+//   reference); the body reads the private static CThing::PCurrentThingManager (0x013B8A1C) through the public inline static
+//   accessor called on PCreature's item, so the GetPItem call stays and its result is dropped. Was the free stand-in ?CCreatureActionBase_GetThingManager@@YIPAVCThingManager@@PAVCCreatureActionBase@@@Z.
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
+#define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct Sub; 
-class CThingManager;
-// agentNF15: the global stand-in `g_thingmgr` at 0x013B8A1C is the private static CThing::PCurrentThingManager
-//   (?PCurrentThingManager@CThing@@0PAVCThingManager@@A, engine/CThing.h, 65 landed rows), read through the inline public
-//   accessor as retail code outside CThing does. Partial view of CThing (only the static and its accessor).
-class CThing {
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_GETTHINGMANAGER
+#include "engine/CCreatureActionBase.h"
+// Partial view of CThing: the private static CThing::PCurrentThingManager (0x013B8A1C, ?PCurrentThingManager@CThing@@0PAVCThingManager@@A)
+// and its inline public accessor (Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ).
+class CThing : public CBaseObject {
 private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C (private static)
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C
 public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }
 };
-CThingManager* __fastcall CCreatureActionBase_GetThingManager(CCreatureActionBase* action)
+class CThingCreatureBase : public CThing { };
+
+CThingManager& CCreatureActionBase::GetThingManager()
 {
-    ((CBaseIntelligentPointer*)(reinterpret_cast<Sub*>(reinterpret_cast<char*>(action) + 8)))->GetPItem();
-    return CThing::GetPCurrentThingManager();
+    return *PCreature.Get()->GetPCurrentThingManager();
 }

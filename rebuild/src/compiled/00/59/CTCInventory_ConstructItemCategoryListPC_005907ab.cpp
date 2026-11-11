@@ -177,12 +177,20 @@ template <unsigned int _Nb> class bitset { public:
     bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
 }
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+class CTCBase;
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CBaseObject;
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
 struct CTCCarryingSlot {                                // the parent thing's interface 8
@@ -202,10 +210,10 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
     {
         if (m_present.test(kind)) {
-            long key = kind;
+            ETCInterfaceType key = (ETCInterfaceType)kind;
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            *out = (T*)((it == map->last || kind < it->type) ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)((it == map->_M_finish || kind < it->first) ? map->_M_finish : it)->second;
             return true;
         }
         return false;

@@ -31,7 +31,7 @@ class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -71,12 +71,12 @@ class CDefClassBase { public:
 // Same-TU stand-in for CSpecialEffectsDef::CalcAndLookup 0x00669D30 (advisor C1's 0x008E0060 lever: it reads the name and writes
 // through the out pointer, nothing escapes), so VC7.1 sinks the per-bodyguard `effect = 0` store after the sub-def zero, as retail does.
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& name, long* value)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
     const char* text = (const char*)name.PStringData;
     if (text == 0)
         return false;
-    *value = (long)text[0];
+    value = (long)text[0];
     return true;
 }
 #pragma auto_inline(on)
@@ -240,7 +240,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
                 bool found;
                 {
                     CCharString name("HEAL");
-                    found = effects->CalcAndLookup(name, &effect);
+                    found = effects->GetEffectFromString(name, effect);
                 }
                 if (found) {
                     CThing* healEffect = CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false);

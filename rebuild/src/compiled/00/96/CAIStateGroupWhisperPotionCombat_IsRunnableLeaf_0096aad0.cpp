@@ -114,7 +114,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
@@ -131,9 +133,9 @@ struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
 // against the creature's combat-type range.
 FABLE_FORCEINLINE bool CAIStateGroup_WhisperPotionCombat::RestampAndCheckRange()
 {
-    FrameLastRun = GetPWorld()->GetFrame();
+    FrameLastRun = GetWorld().GetFrame();
     long rate = CMainGameComponent::GetConstantFPS();
-    unsigned long* seed = GetPWorld()->GetWorldSeed();
+    unsigned long* seed = GetWorld().GetWorldSeed();
     FrameLastRun += WorldRandomRange(*seed, rate * 5);
     CThing* creature = PBrain->PCreature;
     const C3DVector* targetPos = &PTarget.GetPItem()->GetPos();
@@ -156,7 +158,7 @@ bool CAIStateGroup_WhisperPotionCombat::IsRunnableLeaf()
     default:
         return false;
     }
-    long delta = GetPWorld()->GetFrame() - FrameLastRun;
+    long delta = GetWorld().GetFrame() - FrameLastRun;
     if ((float)delta > (float)CMainGameComponent::GetConstantFPS() * 10.0f) {
         if (RestampAndCheckRange()) {
             if (FindValidCombatPositions(&Jump_to_pos))

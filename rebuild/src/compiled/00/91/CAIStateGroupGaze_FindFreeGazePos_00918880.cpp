@@ -42,7 +42,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                                 // +0x11
     unsigned char Enabled;                                  // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                                    // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                                    // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_Gaze : CAIStateGroupBase {
@@ -60,7 +62,7 @@ CThingGameObject* CAIStateGroup_Gaze::FindFreeGazePos()
 {
     bool inSleepTime = false;
     if (IsStateGroupStillValid()) {
-        CGameTime* gameTime = GetPWorld()->GameTime;
+        CGameTime* gameTime = GetWorld().GameTime;
         long start, end;
         PBrain->Creature->GetSleepTimes(&start, &end);
         inSleepTime = gameTime->IsTimeOfDayInRange(start, end);

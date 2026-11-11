@@ -20,23 +20,31 @@ template <unsigned int _Nb> class bitset { public:
     bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
 }
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const long* type) const;      // 0x004365B0
+class CTCBase;
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x004365B0 is its const LowerBound (both original PDBs, Codex pass 20 / queue land1011bu).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
 // the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    SEntry* it = first;
-    int len = int(last - first);
+    const value_type* it = _M_start;
+    int len = int(_M_finish - _M_start);
     while (len > 0) {
         int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
+        const value_type* middle = it + half;
+        if (middle->first < key) {
             it = middle + 1;
             len = len - half - 1;
         } else
@@ -53,11 +61,11 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
-            long type = wanted;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            CInterfaceMap::SEntry* found = (it == map->last || wanted < it->type) ? map->last : it;
-            *out = (T*)found->component;
+            ETCInterfaceType type = (ETCInterfaceType)wanted;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            const CInterfaceMap::value_type* found = (it == map->_M_finish || wanted < it->first) ? map->_M_finish : it;
+            *out = (T*)found->second;
             return true;
         }
         return false;

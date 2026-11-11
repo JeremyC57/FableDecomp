@@ -63,7 +63,7 @@ struct CTCGraphicAppearance {
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
 class CWorldMap { public:
-    bool IsPosInMap(const C3DVector* position);             // 0x004FC600
+    bool IsPosInMap(const C3DVector& position) const;       // 0x004FC600 Ego_r/FableWin ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z
     float GetHeightZBelowPos(const C3DVector* position);    // 0x0063E480
 };
 struct CWorldHolder { unsigned char _pad[0x28]; CWorldMap* PWorldMap; };
@@ -142,7 +142,7 @@ void CModeDragonStrafeBurninate::UpdateBeam(float progress)
         C3DVector position;
         position = (FlameEndPos - FlameStartPos) * fraction + FlameStartPos;
         CWorldMap* mapA = GetDisplayEngine()->GetWorldA()->PWorldMap;
-        if (mapA->IsPosInMap(&position)) {
+        if (mapA->IsPosInMap(position)) {
             CWorldMap* mapB = GetDisplayEngine()->GetWorldB()->PWorldMap;
             position.Z = mapB->GetHeightZBelowPos(&position);
             long index;

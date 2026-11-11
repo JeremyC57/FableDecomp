@@ -80,10 +80,12 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     unsigned long Random(unsigned long range)
     {
-        unsigned long* seed = GetPWorld()->GetWorldSeed();
+        unsigned long* seed = GetWorld().GetWorldSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;
         *seed = GFROR13(*seed);
         return *seed % range;

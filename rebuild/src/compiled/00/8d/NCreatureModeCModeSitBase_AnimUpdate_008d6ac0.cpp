@@ -44,6 +44,7 @@ class CAnimFrameInfo { public:                    // Ego_r.pdb CAnimFrameInfo (8
     float Last;
     CAnimFrameInfo() : Current(0.0f), Last(0.0f) { }   // float zeros: immediate stores, not the integer zero register
 };
+#include "engine/EAnimUpdateMode.h"
 class CAnimInit { public:                         // Ego_r.pdb CAnimInit (0x2c)
     long           UpdateMode;             // +0x00
     unsigned char  Type;                   // +0x04
@@ -58,9 +59,9 @@ class CAnimInit { public:                         // Ego_r.pdb CAnimInit (0x2c)
     long           Priority;               // +0x28
     CAnimInit(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority)
     {
-        Set(type, typeFlags, anim, updateMode, looping, flags, priority);
+        Init(type, typeFlags, anim, (EAnimUpdateMode)(updateMode), looping, flags, priority);
     }
-    void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 Ego_r/FableWin ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (agentNF16: was Set)
 };
 class CAnimateThing { public:                     // starts with CCompleteAnimation::MainAnimSet (retail CAnimSet, 12-byte vectors)
     long           UpdateMode;             // +0x00

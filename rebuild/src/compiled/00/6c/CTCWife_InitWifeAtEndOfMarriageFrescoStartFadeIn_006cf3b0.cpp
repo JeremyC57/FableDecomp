@@ -15,8 +15,12 @@
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { TC_REGION_FOLLOWER = 0x7a, TC_FOLLOWED = 0xbc };
-template <class K, class V> class CVectorMap { public:
-    struct value_type { K first; V second; };
+// agentNF16: the third template parameter (CKeyPairCompareLess<K,V>, engine/CVectorMap.h) and the std::pair value_type make
+//   0x0040F020 bind the NF14 / established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@...@@@@QAEPAU?$pair@...@std@@ABW4ETCInterfaceType@@@Z.
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class CompareType = CKeyPairCompareLess<K, V> > class CVectorMap { public:
+    typedef std::pair<K, V> value_type;
     value_type* _M_start;
     value_type* _M_finish;
     value_type* LowerBound(const K& key);       // 0x0040F020

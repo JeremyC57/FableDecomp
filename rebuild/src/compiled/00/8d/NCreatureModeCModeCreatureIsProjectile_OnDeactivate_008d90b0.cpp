@@ -103,7 +103,7 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();               // 0x00449970
+    CPlayer& GetMainPlayer();               // 0x00449970 Ego_r/FableWin ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
 };
 
 class CGameDefinitionManager : public CDefinitionManager { };
@@ -150,7 +150,7 @@ void CModeCreatureIsProjectile::OnDeactivate()
     long index = ParentThing->Brain->DefGlobalIndex;
     CDefString brain = CMainGameComponent::Get()->PeekDefinitionManager().GetDefNameFromGlobalIndex(index);
     if (brain == "BRAIN_CHICKEN") {
-        CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPHero().GetPItem();
+        CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPHero().GetPItem();
         if (hero && !hero->m_dead) {
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);

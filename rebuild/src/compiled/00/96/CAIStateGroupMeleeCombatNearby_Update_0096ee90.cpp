@@ -80,7 +80,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
@@ -116,7 +118,7 @@ void CAIStateGroup_MeleeCombatNearby::Update()
             RemoveMovementBlockingModes(GetCreature());
         if (IS_THING_ALIVE(PEnemy)) {
             CThing* creature = GetCreature();
-            CCombatManager* combat = GetPWorld()->PCombatManager;
+            CCombatManager* combat = GetWorld().PCombatManager;
             combat->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
             if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PEnemy), 0x21, 0.0027777f) == 1)
                 goto done;

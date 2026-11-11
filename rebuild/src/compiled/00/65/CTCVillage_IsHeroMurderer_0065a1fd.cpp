@@ -25,19 +25,26 @@ template <unsigned int _Nb> class bitset { public:
     bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
 }
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-    FABLE_FORCEINLINE SEntry* find(const long* key, long value)
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+    FABLE_FORCEINLINE value_type* find(const ETCInterfaceType& key, long value)
     {
-        SEntry* it = LowerBound(key);
-        if (it == last || value < it->type)
-            return last;
+        value_type* it = LowerBound(key);
+        if (it == _M_finish || value < it->first)
+            return _M_finish;
         return it;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -47,8 +54,8 @@ public:
     bool HasTC(long type) const { return m_present.test(type); }
     FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
-        long type = interfaceType;
-        return m_interfaces.find(&type, interfaceType)->component;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+        return m_interfaces.find(type, interfaceType)->second;
     }
 };
 class CThingPlayerCreature : public CThing { };

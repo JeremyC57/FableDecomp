@@ -109,7 +109,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
 public:
@@ -142,7 +144,7 @@ bool CAIStateGroup_ScorpionKing::IsRunnable()
             PEnemy = CIntelligentPointerCreature(enemy);
             HealthAtLastTailStrike = PBrain->PCreature->Health;
             CThing* creature = PBrain->PCreature;
-            CCombatManager* combat = GetPWorld()->PCombatManager;
+            CCombatManager* combat = GetWorld().PCombatManager;
             combat->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
             return true;
         }

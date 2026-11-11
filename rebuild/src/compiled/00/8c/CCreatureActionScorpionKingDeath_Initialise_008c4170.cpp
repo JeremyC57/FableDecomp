@@ -50,7 +50,7 @@ template <class T> struct CDefHolder {
 };
 
 class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 
 class CDefClassBase : public CDefPointeeBase { public:
@@ -127,7 +127,7 @@ void CCreatureAction_ScorpionKingDeath::Initialise()
         bool found;
         {
             CCharString name("DEATH", -1);
-            found = effects->CalcAndLookup(name, &effectIndex);
+            found = effects->GetEffectFromString(name, effectIndex);
         }
         if (found)
             CTCDParticleEmitter::Create(effectIndex, GetOwner()->GetPos(), 0);

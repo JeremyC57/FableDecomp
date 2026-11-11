@@ -177452,8 +177452,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006ae1c0'
         Module = 'CDefinitionManager'
-        Source = '00/6a/CDefinitionManager_GetDef006ae1c0_006ae1c0.cpp'
-        TestSource = '00/6a/CDefinitionManager_GetDef006ae1c0_006ae1c0_test.cpp'
+        Source = '00/6a/CDefinitionManager_GetDefCPlayerMovementDef_006ae1c0.cpp'
+        TestSource = '00/6a/CDefinitionManager_GetDefCPlayerMovementDef_006ae1c0_test.cpp'
         PassPattern = '006ae1c0_TEST PASS'
     }
     [pscustomobject]@{

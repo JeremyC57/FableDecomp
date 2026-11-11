@@ -205,7 +205,9 @@ class CTCVillage : public CTCBase { public:
     void UpdateCrowds();                        // 0x006594BB
     void UpdateTorchTasks();                    // 0x00659625
     void UpdateSecuritySweepTasks();            // 0x0065C08A
-    void UpdateHornTasks();                     // 0x0065BE6C
+private:
+    void UpdateHornTasks();                     // 0x0065BE6C Ego_r/FableWin ?UpdateHornTasks@CTCVillage@@AAEXXZ (private)
+public:
     void SetEnemyToHeroStatus();                // 0x0065A852
     void RemoveTimedoutCrimes();                // 0x0065A7A9
     void UpdateMirroredCrimeData();             // 0x0065C5BB

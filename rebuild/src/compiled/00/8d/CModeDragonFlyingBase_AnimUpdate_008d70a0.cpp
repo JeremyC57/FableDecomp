@@ -21,6 +21,7 @@ struct CBlendPair {                            // the two floats at CAnimInit +0
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
+#include "engine/EAnimUpdateMode.h"
 class CAnimInit { public:                             // 0x2c bytes
     long          Mode;                        // +0x00
     unsigned char AnimType;                    // +0x04
@@ -31,10 +32,10 @@ class CAnimInit { public:                             // 0x2c bytes
     unsigned long Flags;                       // +0x20
     long          Arg24;                       // +0x24
     long          Percent;                     // +0x28
-    void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 Ego_r/FableWin ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (agentNF16: was Set)
     CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
     {
-        Set(animType, arg24, animIndex, mode, flag05, flags, percent);
+        Init((unsigned char)(animType), arg24, animIndex, (EAnimUpdateMode)(mode), flag05, flags, percent);
     }
 };
 class CAnimSet { public:

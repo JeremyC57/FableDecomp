@@ -33,9 +33,10 @@ class CThingSearchTools { public:
     // 0x0056D050 ??$GetPFirstThing@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z (the gamesmaster, by script name)
     // (Ego_r / FableWin.pdb member template; naming wave 20 -- both were named with CThingFilter_HasTrackName, a CThingTrackNode filter)
 };
+#include "engine/EPlayerMode.h"
 class CPlayer { public:
     long GetCurrentMode();                              // 0x00633BE0
-    void AddMode(long mode, bool exclusive);            // 0x006345C0
+    void AddMode(EPlayerMode mode, bool exclusive);            // 0x006345C0 ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (agentNF16)
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -105,6 +106,6 @@ void CTCOracleMinigame::PlayGame()
     SymbolsFiring[3] = 0;
     CPlayer* player = &GetPlayerManager()->GetMainPlayer();
     if (player->GetCurrentMode() != 0x29)
-        player->AddMode(0x29, false);
+        player->AddMode((EPlayerMode)0x29, false);
     CurrentText = 0;
 }

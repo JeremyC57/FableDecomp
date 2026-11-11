@@ -28,7 +28,7 @@ class CWideString { public:
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // Ego_r/FableWin ??4CWideString@@QAEABV0@ABV0@@Z (agentNF16)   // 0x0099B7D0
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
     void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };

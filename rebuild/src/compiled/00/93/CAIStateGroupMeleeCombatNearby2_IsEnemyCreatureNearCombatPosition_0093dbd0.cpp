@@ -4,9 +4,9 @@
 // Callees: the creature's IsRegisteredCombatant query @ 0x00662410 (no-argument bool), CAIStateGroupBase::
 // GetPWorld @ 0x008FCFC0, CCombatManager::IsCreatureInAttackRingSector(const CThingCreatureBase&) const @ 0x006E94D0 on
 // the world's combat manager at +0x4c.
-// Shape: `if (a()) { creature local; if (GetPWorld()->mgr->Check(creature)) return true; } return false;` --
+// Shape: `if (a()) { creature local; if (GetWorld().mgr->Check(creature)) return true; } return false;` --
 // the creature is a named local read before the world call (edi) and the combat manager is reached through an
-// INLINE ACCESSOR (`GetPWorld()->GetPCombatManager()->...`): the accessor materialises the manager in eax and
+// INLINE ACCESSOR (`GetWorld().GetPCombatManager()->...`): the accessor materialises the manager in eax and
 // the creature push lands between it and the `mov ecx,eax` (a direct member chain pushes the creature before
 // the world call and loads the manager straight into ecx). One shared `xor al,al` false tail.
 // Base layout modelled locally (PDB names).
@@ -34,7 +34,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13
-    CWorld* GetPWorld();                    // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                    // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
@@ -47,7 +49,7 @@ bool CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureNearCombatPosition()
 {
     if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->Creature;
-        if (GetPWorld()->GetPCombatManager()->IsCreatureInAttackRingSector(*creature))
+        if (GetWorld().GetPCombatManager()->IsCreatureInAttackRingSector(*creature))
             return true;
     }
     return false;

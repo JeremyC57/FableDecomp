@@ -34,7 +34,7 @@ class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -46,12 +46,12 @@ long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString&
 // Stand-in body (out of line in retail @ 0x00669D30): it writes the out value only, so VC7.1 knows the local's address
 // does not escape the call (the 0x008D9740 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& name, long* value)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
     long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
     if (found < 0)
         return false;
-    *value = found;
+    value = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -184,7 +184,7 @@ void CCreatureAction_BanditKingUnstuck::Initialise()
         blade->SetEnabled(true);
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
-    if (PCreature.GetPItem()->GetDef()->GetSubDef(&effects) && effects->CalcAndLookup("UNSTUCK", &effect)) {
+    if (PCreature.GetPItem()->GetDef()->GetSubDef(&effects) && effects->GetEffectFromString("UNSTUCK", effect)) {
         CThing* created = CTCDParticleEmitter::Create(effect, PCreature.GetPItem()->GetPos(), false);
         if (created && !(created->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = created->GetTCIfPresent<CTCDParticleEmitter>(0x4b);

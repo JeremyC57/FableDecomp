@@ -80,7 +80,9 @@ class CAIStateGroupBase { public:
     protected:
     CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
     public:
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 protected:
     virtual bool IsRunnable();
 };
@@ -96,7 +98,7 @@ bool CAIStateGroup_Guildmaster::IsRunnable()
 {
     PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
     CThingCreatureBase* creature = PBrain->PCreature;
-    CCombatManager* combat = GetPWorld()->m_pCombatManager;
+    CCombatManager* combat = GetWorld().m_pCombatManager;
     combat->RegisterCombatant(*creature, *(PEnemy.GetPItem()), true);
     return true;
 }

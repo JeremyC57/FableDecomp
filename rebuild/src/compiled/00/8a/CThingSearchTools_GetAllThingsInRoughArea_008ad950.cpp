@@ -123,7 +123,7 @@ class CTCBase:public CBaseClassNonCopyable{public:CThing*ParentThing;bool ToBeRe
 class C2DBoxI{public:long TLX,TLY,BRX,BRY;C2DBoxI(){}C2DBoxI(long a,long b,long c,long d):TLX(a),TLY(b),BRX(c),BRY(d){}};class C2DExtentsI{public:long XExtent,YExtent;};
 namespace NThingMap{class CThingMapCell;class CThingMapManager;class CMapwhoLevelInfo{public:long Size;C2DExtentsI Extents;long ScaleShift,NoThings;};class CMapwhoNode{public:CTCMapwho*PMapwho;CMapwhoNode*PNext,*PPrevious;CThingMapCell*PCell;};class CThingMapCell{public:CMapwhoNode*PFirstNode;};class CThingMap:public CBaseClassNonCopyable{public:std::vector<CMapwhoLevelInfo>MapwhoLevelInfo;CThingMapManager*Manager;std::vector<std::vector<CThingMapCell> >Cells;C2DBoxI Area;long NoThings;CThingMap(CThingMapManager&,const C2DBoxI&);};}
 class CTCMapwho:public CTCBase{public:NThingMap::CMapwhoNode TLNode,TRNode,BLNode,BRNode;unsigned long SearchID;unsigned char InMapwho:1;CTCMapwho(CThing&);};using namespace NThingMap;
-struct SMapwhoLevel{long Level,Shift;long _pad[2];};extern SMapwhoLevel g_MapwhoLevels[];extern long g_NumMapwhoLevels;struct SSearchStamps{unsigned long Searches,Found,Stamp;};extern SSearchStamps g_SearchStamps;
+struct SMapwhoLevel{long Level,Shift;long _pad[2];};extern SMapwhoLevel g_MapwhoLevels[];namespace NThingMap { extern long MaxLayers; }struct SSearchStamps{unsigned long Searches,Found,Stamp;};extern SSearchStamps g_SearchStamps; // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingFilter_HasScriptName{public:CCharString Name;bool operator()(const CThing&)const;};
 typedef std::vector<CThingMap*> CMapVector;
 class CThingSearchTools { public:
@@ -149,7 +149,7 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
     for (CThingMap** it = maps->begin(); it != AreaMaps.end(); ++it) {
         CThingMap* map = *it;
         C2DBoxI extents = ClipAndConvertWorldMapAreaToLocalArea(*map,area);
-        for (long level = 0; level < g_NumMapwhoLevels; ++level) {
+        for (long level = 0; level < NThingMap::MaxLayers; ++level) {
             long shift = g_MapwhoLevels[level].Shift;
             C2DBoxI box(extents.TLX >> shift, extents.TLY >> shift, ((extents.BRX - 1) >> shift) + 1,
                         ((extents.BRY - 1) >> shift) + 1);

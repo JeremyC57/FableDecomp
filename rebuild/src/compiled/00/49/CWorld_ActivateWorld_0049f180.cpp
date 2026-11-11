@@ -57,7 +57,9 @@ class CEnvironment { public:
 class CPlayerGui { public:
     void InitialActivate();                              // 0x0043A380
 };
-extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
     static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
@@ -100,7 +102,7 @@ void CWorld::ActivateWorld(bool loadedGame)
         PlayerManager->InitPlayerCharacter(loadedGame);
     PEnvironment_ptr->SpellEffectInterpolator->RefreshScreenEffects();
     NProfileTimer::StartProfile("Init GUI", 0);
-    g_pPlayerGui->InitialActivate();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().InitialActivate();
     NProfileTimer::StartProfile("Init Quests", 0);
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateMultipleQuests((CArray<CCharString>*)InitialActiveQuests, false, true);
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PostBoastTransfer();

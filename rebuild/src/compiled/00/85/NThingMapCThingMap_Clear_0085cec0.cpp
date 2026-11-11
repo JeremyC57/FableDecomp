@@ -1,7 +1,7 @@
 // NThingMap::CThingMap::Clear() -- unlink every mapwho node from every cell of every level (clearing each mapwho's InMapwho bit), then zero the thing count
 // Leaf: Clear
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085CEC0, length 275 bytes (+ int3 padding). No callees.
-// Globals: the mapwho level count @ 0x013BA848 (g_NoMapwhoLevels, as the landed GetMemoryFootprint 0x0085CFE0).
+// Globals: the mapwho level count @ 0x013BA848 (MaxLayers, as the landed GetMemoryFootprint 0x0085CFE0).
 // Layout (PDB NThingMap::CThingMap, retail vectors 12 bytes, as the landed ctor 0x0085D370): MapwhoLevelInfo +0x04
 // (CMapwhoLevelInfo, 20 bytes: Size, Extents {X, Y}, ScaleShift, NoThings), Cells +0x14, Area (C2DBoxI) +0x20,
 // NoThings +0x30. CMapwhoNode {PMapwho, PNext, PPrevious, PCell}; CTCMapwho InMapwho bit at +0x50 (PDB layout).
@@ -38,7 +38,7 @@ template<class T> struct CRetailVector {           // STLport vector: {start, fi
     T* begin() const { return _M_start; }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-extern long g_NoMapwhoLevels;                      // 0x013BA848
+extern long MaxLayers;                      // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingMap { public:
     virtual void v00();
     CRetailVector<CMapwhoLevelInfo>               MapwhoLevelInfo;   // +0x04
@@ -52,7 +52,7 @@ class CThingMap { public:
 
 void CThingMap::Clear()
 {
-    for (long level = 0; level < g_NoMapwhoLevels; ++level) {
+    for (long level = 0; level < MaxLayers; ++level) {
         long width, height;
         long size = MapwhoLevelInfo[level].Size;
         if (size == -1) {

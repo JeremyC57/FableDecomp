@@ -87,7 +87,10 @@ class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 
 class CTCBase { public:
     virtual ~CTCBase();
@@ -112,6 +115,6 @@ void CTCChest::DisplayLockedMessage() const
             text = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_CHEST_LOCKED_MULTIPLE_KEYS");
             NGameText::ConstructString(text, chestDef->OpenersRequired);
         }
-        g_pPlayerGui->SubtitleRenderer.SetText(PeekComponent().PeekCutSceneMainFont(), text, 0x122, 0.0f, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(PeekComponent().PeekCutSceneMainFont(), text, 0x122, 0.0f, false, true);
     }
 }

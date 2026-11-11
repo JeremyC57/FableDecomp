@@ -24,7 +24,7 @@ class CWorld { public:
 };
 class CThing;
 class CTCPerceiveThing { public:
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
 };
 

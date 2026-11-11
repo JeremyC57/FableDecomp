@@ -15,7 +15,7 @@
 class CProcessedInput;
 class CPlayer : public CPlayerDonor {
 public:
-    long GetPlayerNumber() const;                  // 0x00487510
+    long GetJoystickDeviceNumber() const;                  // 0x00487510 Ego_r/FableWin ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ (agentNF16: was GetPlayerNumber)
 };
 class CGamePlayerInterface {
 public:
@@ -43,13 +43,13 @@ void CInputProcessControlCreature::Update(CProcessedInput& processed)
 {
     if (MyPlayer->SpellMode && !PGamePlayerInterface->IsSpellModeForced()) {
         CGamePlayerInterface* gpi = PGamePlayerInterface;
-        bool held = gpi->IsGameActionEventInQueue(0x56, 2, MyPlayer->GetPlayerNumber());
+        bool held = gpi->IsGameActionEventInQueue(0x56, 2, MyPlayer->GetJoystickDeviceNumber());
         if (!held)
             MyPlayer->SpellMode = held;
     }
     if (MyPlayer->ExpressionShiftMode && !PGamePlayerInterface->IsExpressionShiftModeForced()) {
         CGamePlayerInterface* gpi = PGamePlayerInterface;
-        if (!gpi->IsGameActionEventInQueue(0x57, 2, MyPlayer->GetPlayerNumber()))
+        if (!gpi->IsGameActionEventInQueue(0x57, 2, MyPlayer->GetJoystickDeviceNumber()))
             MyPlayer->ExpressionShiftMode = false;
     }
 }

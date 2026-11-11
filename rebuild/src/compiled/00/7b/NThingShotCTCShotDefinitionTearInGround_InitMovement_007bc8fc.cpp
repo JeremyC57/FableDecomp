@@ -1,6 +1,6 @@
 // NThingShot::CTCShotDefinitionTearInGround::InitMovement() -- start a ground-tearing shot toward a live target: the horizontal direction to the target's fire-at point, the shot placed on the ground two units along it, moving at the def's speed per frame, with a hit-on-collision component, then the first movement update
 // Leaf: ?InitMovement@CTCShotDefinitionTearInGround@NThingShot@@UAEXXZ
-// Lever (chunk 840): naming the per-frame speed (`const float speed = PShotDef->Speed / g_framesPerSecond;` before SetVelocity)
+// Lever (chunk 840): naming the per-frame speed (`const float speed = PShotDef->Speed / CMainGameComponent::GetConstantFPS();` before SetVelocity)
 //   flips VC7.1's tie-break at the AddTC call: the name temporary's `lea eax,[ebp-4]` now precedes the ParentThing load
 //   `mov ecx,[edi+4]` as in retail (an IR-numbering tie; every AddTC-site spelling alone kept ours). Same bytes otherwise.
 // Names (chunk 840): NThingShot::GetCreatureFireAtPos(const CThing&) (Ego_r.pdb ?GetCreatureFireAtPos@NThingShot@@YI?AVC3DVector@@
@@ -18,7 +18,7 @@
 //   @ 0x0066F9B0 (manifest "CTCPhysicsRigidBody::SetFacingAnglesFromRHSet", named from this use), the physics body's slot 43
 //   (+0xAC, 0x14), CCharString(const char*, long) @ 0x0099EBF0 ("CTCHitOnCollision" @ 0x0123D1D8), CThing::AddTC(const
 //   CCharString&, bool, CTCParamsBase*) @ 0x004C9D60, ~CCharString @ 0x0099EAE0, the shot's UpdateMovement (slot 35, +0x8C).
-//   2.0f from 0x0122DCDC; g_framesPerSecond @ 0x01375550.
+//   2.0f from 0x0122DCDC; CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: Ego_r.pdb CTCShotDefinitionBase PTargetThing +0x20 (PDB 0x24), PShotDef +0x38; CThingShotDef Speed +0x3C (PDB 0x40);
 //   retail CThing PhysicsTC +0x60; CTCPhysicsBase Position +0x0C.
 // Shape: the liveness test binds the GetPItem result as a temporary (its frame word is reused by the component-name
@@ -52,7 +52,10 @@ namespace NThingShot {
 C3DVector __fastcall GetCreatureFireAtPos(const CThing& thing);   // 0x007BEDF0 ?GetCreatureFireAtPos@NThingShot@@YI?AVC3DVector@@ABVCThing@@@Z
 }
 template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x00436380 ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z
-extern long g_framesPerSecond;                          // 0x01375550
+// agentNF16: the global stand-in CMainGameComponent::GetConstantFPS() (0x01375550) is the protected static CMainGameComponent::ConstantFPS
+//   (?ConstantFPS@CMainGameComponent@@1JA), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ; shared engine/CMainGameComponent.h). Name-only: the load is the same.
+#include "engine/CMainGameComponent.h"
 class CWorldMap {
 public:
     float GetGroundSizeZAt(const C3DVector& position) const;   // 0x0063A300 ?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
@@ -124,7 +127,7 @@ void CTCShotDefinitionTearInGround::InitMovement()
     C3DVector ground = physics->Position;
     ground.Z = GetWorldMap().GetGroundSizeZAt(ground);
     physics->SetPosition(direction * 2.0f + ground);
-    const float speed = PShotDef->Speed / g_framesPerSecond;
+    const float speed = PShotDef->Speed / CMainGameComponent::GetConstantFPS();
     physics->SetVelocity(direction * speed);
     physics->SetCollisionFlags(0x14);
     ParentThing->AddTC("CTCHitOnCollision", false, 0);

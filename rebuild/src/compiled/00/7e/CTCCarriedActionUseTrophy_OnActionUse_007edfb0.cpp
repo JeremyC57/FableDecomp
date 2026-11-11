@@ -16,13 +16,13 @@ class CTCCarriedActionUseBase : public CTCActionUseBase { public:
 };
 
 struct CTCCarriedActionUseTrophy : CTCCarriedActionUseBase {
-    void OnActionUseCommon(CThing* user);           // 0x007EDEE0
     virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThing*))
+private:
+    void OnActionUseCommon(CThing& user);           // 0x007EDEE0 Ego_r/FableWin ?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z
 };
 
 void CTCCarriedActionUseTrophy::OnActionUse(CThing& thing)
 {
-    CThing* user = (CThing*)&thing;
     CTCCarriedActionUseBase::OnActionUse(thing);
-    OnActionUseCommon(user);
+    OnActionUseCommon(thing);
 }

@@ -131,7 +131,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
@@ -185,7 +187,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
                 long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerLightningOrbOutOfGroundSmash(GetCreature()), false);
                 if (result != 1) {
                     float delay = PDef->LightningPreemptiveDelay;
-                    CWorld* world = GetPWorld();
+                    CWorld* world = &GetWorld();
                     long fps = CMainGameComponent::GetConstantFPS();
                     NextFrameForPreemptiveUse = (long)((float)world->GetFrame() + (float)fps * delay);
                 }

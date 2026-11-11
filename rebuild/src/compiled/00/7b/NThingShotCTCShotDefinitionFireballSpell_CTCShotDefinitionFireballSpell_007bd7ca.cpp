@@ -24,7 +24,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CThing* Get() const { return (CThing*)GetPItem(); }
 };
 
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x0040DCE0
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 = IS_THING_ALIVE<CThing*> (FableWin ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z; agentNF16)
 void __fastcall FadeOutEffect(CThing* effect);          // 0x0072AC40
 
 namespace NThingShot {
@@ -42,7 +42,7 @@ struct CTCShotDefinitionFireballSpell : CTCShotDefinitionProjectile {
 
 CTCShotDefinitionFireballSpell::~CTCShotDefinitionFireballSpell()
 {
-    if (IS_THING_ALIVE(PEffect.Get()))
+    if (IS_THING_ALIVE<CThing*>(PEffect.Get()))
         FadeOutEffect(PEffect.Get());
 }
 

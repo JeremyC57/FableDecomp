@@ -30,7 +30,7 @@ class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -178,7 +178,7 @@ void CModeSummonerLightningOrb::OnActivate()
     CDefPointer<CSpecialEffectsDef> effects;
     if (m_pThing->GetDef()->GetSubDef(&effects)) {
         long effect;
-        if (effects->CalcAndLookup("LIGHTNING_ORB_CHARGE", &effect)) {
+        if (effects->GetEffectFromString("LIGHTNING_ORB_CHARGE", effect)) {
             POrbChargeEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false));
             if (IS_THING_ALIVE(POrbChargeEffect)) {
                 CTCDParticleEmitter* emitter;
@@ -188,7 +188,7 @@ void CModeSummonerLightningOrb::OnActivate()
                 emitter->AttachToThing(*m_pThing, 10, "LIGHTNING_ORB_FOCUS", 0, 0.0f);
             }
         }
-        if (effects->CalcAndLookup("LIGHTNING_CHARGE", &effect))
+        if (effects->GetEffectFromString("LIGHTNING_CHARGE", effect))
             PChargeEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false));
     }
     m_pThing->AddTC("CTCElectrocuteOnTouch", true, 0);

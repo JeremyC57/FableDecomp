@@ -21,7 +21,9 @@ class CWorld { public:
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 struct CAIStateGroup_WorkBase : CAIStateGroupBase {
@@ -39,7 +41,7 @@ public:
 
 bool CAIStateGroup_SitForMeal::IsRunnable()
 {
-    if (GetPWorld()->m_pClock->m_day != DayLastAte) {
+    if (GetWorld().m_pClock->m_day != DayLastAte) {
         if (IsInMealHours()) {
             if (GetPCookingPot() != 0)
                 return true;

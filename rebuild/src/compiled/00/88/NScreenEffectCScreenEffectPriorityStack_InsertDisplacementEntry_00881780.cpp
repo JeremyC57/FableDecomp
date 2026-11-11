@@ -13,7 +13,10 @@
 #include "fable_compiler.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 
-extern const long g_FramesPerSecond;                 // 0x01375550
+// agentNF16: the global stand-in CMainGameComponent::GetConstantFPS() (0x01375550) is the protected static CMainGameComponent::ConstantFPS
+//   (?ConstantFPS@CMainGameComponent@@1JA), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ; shared engine/CMainGameComponent.h). Name-only: the load is the same.
+#include "engine/CMainGameComponent.h"
 
 namespace NScreenEffect {
 
@@ -71,7 +74,7 @@ private:
 
 void* CScreenEffectPriorityStack::InsertDisplacementEntry(float time, const CRGBFloatColour& colour, ScreenEffectPriority priority)
 {
-    CDisplacementMonochromeEffectColourEntry entry((long)(time * g_FramesPerSecond), colour);
+    CDisplacementMonochromeEffectColourEntry entry((long)(time * CMainGameComponent::GetConstantFPS()), colour);
     list<CDisplacementMonochromeEffectColourEntry>& stack = DisplacementParamStack[priority];
     stack.push_back(entry);
     CStackEntry* key = &stack.back();

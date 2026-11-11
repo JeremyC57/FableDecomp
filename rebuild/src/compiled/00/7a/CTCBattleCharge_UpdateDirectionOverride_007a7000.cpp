@@ -62,7 +62,7 @@ class CSystemManager { public:
 };
 CSystemManager* __fastcall GFGetSystemManager();            // 0x009A4EC0
 class CPlayer { public:
-    long GetPlayerNumber() const;                           // 0x00487510
+    long GetJoystickDeviceNumber() const;                           // 0x00487510 Ego_r/FableWin ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ (agentNF16: was GetPlayerNumber)
 };
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
@@ -87,7 +87,7 @@ void CTCBattleCharge::UpdateDirectionOverride()
     CInputEvent event;
     CThingPlayerCreature* thing = ParentThing;
     CInputManager* input = GFGetSystemManager()->InputManager;
-    if (input->IsJoystickEventInQueue(0x11, 0, &event, thing->GetPlayer().GetPlayerNumber())) {
+    if (input->IsJoystickEventInQueue(0x11, 0, &event, thing->GetPlayer().GetJoystickDeviceNumber())) {
         C2DVector stick = event.GetJoystickPosition();
         if (stick.GetLength() > 0.05f) {
             DirectionOverrideVector.X = stick.X;

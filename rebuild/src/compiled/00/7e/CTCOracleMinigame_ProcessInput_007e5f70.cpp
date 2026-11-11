@@ -69,7 +69,10 @@ public:
     unsigned char                               _pad000[0x1c8];
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo; // +0x1c8
 };
-extern CPlayerGui* g_pPlayerGui;                                 // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 
 enum EOracleMinigameInput { ORACLE_INPUT_0 = 0 };
 enum EOracleMinigameState { ORACLE_STAGE_WAITING_FOR_INPUT = 4 };
@@ -97,7 +100,7 @@ bool CTCOracleMinigame::ProcessInput(EOracleMinigameInput input)
 {
     if (NumOutputsFired + InputsPending.size() < (unsigned int)Level && Stage == ORACLE_STAGE_WAITING_FOR_INPUT) {
         InputsPending.push_back(input);
-        g_pPlayerGui->PDrawQuestInfo->OracleSymbolPushBack(g_OracleSymbolNames[input]);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PDrawQuestInfo->OracleSymbolPushBack(g_OracleSymbolNames[input]);
         return true;
     }
     return false;

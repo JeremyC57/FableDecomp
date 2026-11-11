@@ -5,7 +5,7 @@
 //   Ego_r.pdb has `??1CThingMap@NThingMap@@UAE@XZ`. The catalog class "CThingMap" lacks the namespace.
 // Callees: free 0x00BFEA14 (STLport allocator::deallocate, inner vectors then both outer blocks), CBaseClassNonCopyable::
 //   ~CBaseClassNonCopyable 0x0099A300 (`??1CBaseClassNonCopyable@@MAE@XZ`, settled, tail jump).
-// Globals: NThingMap::g_NoMapwhoLevels 0x013BA848 (`?g_NoMapwhoLevels@NThingMap@@3JA`, as the landed Clear 0x0085CEC0).
+// Globals: NThingMap::MaxLayers 0x013BA848 (`?MaxLayers@NThingMap@@3JA`, as the landed Clear 0x0085CEC0).
 // Layout (Ego_r.pdb NThingMap::CThingMap with retail 12-byte vectors, as the landed ctor 0x0085D370 and Clear 0x0085CEC0):
 //   MapwhoLevelInfo +0x04, Manager +0x10, Cells +0x14 (vector<vector<CThingMapCell> >), Area +0x20, NoThings +0x30.
 //   CThingMapCell {PFirstNode}; CMapwhoNode {PMapwho, PNext, PPrevious, PCell} (PDB). No engine header.
@@ -59,7 +59,7 @@ class C2DExtentsI { public:
 };
 
 namespace NThingMap {
-extern long g_NoMapwhoLevels;                               // 0x013BA848
+extern long MaxLayers;                               // 0x013BA848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
 class CThingMapManager;
 class CTCMapwho;
 class CMapwhoLevelInfo { public:
@@ -89,7 +89,7 @@ class CThingMap : public CBaseClassNonCopyable { public:    // vtable 0x01276B00
 
 CThingMap::~CThingMap()
 {
-    for (long level = 0; level < g_NoMapwhoLevels; ++level) {
+    for (long level = 0; level < MaxLayers; ++level) {
         for (unsigned int i = 0; i < Cells[level].size(); ++i) {
             CThingMapCell& cell = Cells[level][i];
             CMapwhoNode* node = cell.PFirstNode;

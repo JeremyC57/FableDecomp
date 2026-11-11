@@ -143,15 +143,18 @@ public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > {
 public:
-    struct SEntry { ETCInterfaceType first; CTCBase* second; };   // STLport pair<ETCInterfaceType, CTCBase*>
-    SEntry* _M_start;
-    SEntry* _M_finish;
-    SEntry* _M_end_of_storage;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
+    // agentNF16: value_type is std::pair<ETCInterfaceType, CTCBase*> (not a nested SEntry), so 0x0040F020 binds the NF14 / established
+    //   ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z.
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;
+    value_type* _M_finish;
+    value_type* _M_end_of_storage;
+    value_type* LowerBound(const ETCInterfaceType& key);   // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -170,7 +173,7 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
+        CInterfaceMap::value_type* it = map->LowerBound(key);
         return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
     FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex()

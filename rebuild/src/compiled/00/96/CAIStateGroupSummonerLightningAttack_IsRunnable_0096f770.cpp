@@ -125,7 +125,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 struct CAIStateGroup_SummonerLightningAttack : CAIStateGroupBase {
     CIntelligentPointer<CThing> PTarget;           // +0x14
@@ -148,7 +150,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
         CThing* enemy = source->GetEnemy();
         if (enemy && !(enemy->m_flags91 & 1)) {
             CCameraManager* camera;
-            CWorld* world = GetPWorld();
+            CWorld* world = &GetWorld();
             if (world->PCameraManager->GetCameraManager(&camera)) {
                 const C3DVector& e = enemy->GetPos();
                 C3DVector to(e.X, e.Y, e.Z + 2.0f);
@@ -169,7 +171,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                     return true;
                 }
                 if (CWorld::GetFrame() > NextFrameForPreemptiveUse) {
-                    unsigned long* seed = GetPWorld()->GetWorldSeed();
+                    unsigned long* seed = GetWorld().GetWorldSeed();
                     unsigned long next = *seed * 0x24A1U + 0x24DFU;
                     *seed = next;
                     unsigned long rotated = GFROR13(next);

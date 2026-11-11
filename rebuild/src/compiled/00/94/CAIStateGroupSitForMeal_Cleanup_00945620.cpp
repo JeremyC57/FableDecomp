@@ -68,7 +68,9 @@ class CAIStateGroupBase { public:
     bool Terminated;                            // +0x10
     unsigned char Priority;                     // +0x11
     bool Enabled;                               // +0x12
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24)
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 (PBrain->+0x1c->+0x24) ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 
 // PDB layout (sizeof 0x48): the state-group bytes up to +0x34 are a second base's (unnamed in the PDB).
@@ -87,7 +89,7 @@ public:
 void CAIStateGroup_SitForMeal::Cleanup()
 {
     ReleaseControlOfPot();
-    DayLastAte = GetPWorld()->PGameTime->Day;
+    DayLastAte = GetWorld().PGameTime->Day;
     if (HoldingBowl) {
         CTCCarrying* carrying;
         PBrain->PCreature->GetTC(TCI_CARRYING, &carrying);

@@ -119,7 +119,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     long AIAction_MoveToPos(long repeat, C3DVector pos, bool* arrived, long movement, bool a, bool b,
                             CThing* avoid, bool c, float speed);        // 0x0097EC00
     long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float proximity,
@@ -139,7 +141,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
 {
     bool arrived = false;
     CThingCreatureBase* creature = PBrain->PCreature;
-    CWorld* world = GetPWorld();
+    CWorld* world = &GetWorld();
     C3DVector pos = world->GetPCombatManager()->GetPreferredPos(*creature);
     long lastFrame = CWorld::GetFrame();
     if (IsStillRunnable(true)) {
@@ -153,7 +155,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
             unsigned __int64 uid = me->UID;
             if ((uid + CWorld::GetFrame()) % 5 == 0 || CWorld::GetFrame() - lastFrame > 6) {
                 CThingCreatureBase* self = PBrain->PCreature;
-                CWorld* w = GetPWorld();
+                CWorld* w = &GetWorld();
                 pos = w->GetPCombatManager()->GetPreferredPos(*self);
                 lastFrame = CWorld::GetFrame();
             }
@@ -162,7 +164,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
             if (result == 3) {
                 if (PBrain->PCreature->IsRegisteredCombatant()) {
                     CThingCreatureBase* self = PBrain->PCreature;
-                    CWorld* w = GetPWorld();
+                    CWorld* w = &GetWorld();
                     w->CombatManager->OnCombatPositionUnreachable(self);
                 }
             } else if (result != 4 && result != 2)

@@ -89,7 +89,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        protected: // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        protected: // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 protected:
@@ -138,7 +140,7 @@ void CAIStateGroup_JackDragon::FlyOutOfGround()
     up.RotateAboutZ(GetCreature()->GetPhysicsTC()->GetHeading());
     GetCreature()->GetPos();
     CVector3DList route;
-    if (WorldRandomRange(GetPWorld()->GetWorldSeed(), 100) > 50)
+    if (WorldRandomRange(GetWorld().GetWorldSeed(), 100) > 50)
         GoLeft = 1;
     else
         GoLeft = 0;

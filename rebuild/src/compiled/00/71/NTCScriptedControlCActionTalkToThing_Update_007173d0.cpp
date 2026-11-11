@@ -54,7 +54,10 @@ class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;            // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 
 class CUserProfileManager {
 public:
@@ -110,7 +113,7 @@ public:
 void CActionTalkToThing::Update()
 {
     if (CUserProfileManager::Get().IsSubtitlingEnabled()) {
-        if (!g_pPlayerGui->SubtitleRenderer.DisplayingText)
+        if (!CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.DisplayingText)
             SkipCurrentLine();
     } else {
         CMessageEventManager* manager = CMainGameComponent::Get()->PWorld->PMessageEventManager.Data;

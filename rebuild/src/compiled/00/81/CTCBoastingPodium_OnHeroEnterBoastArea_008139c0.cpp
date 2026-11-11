@@ -94,7 +94,9 @@ class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                    // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                           // 0x013B8790
+// agentNF16: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
+//   read through the inline static accessor Get() (name-only: the load is the same).
 
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
@@ -136,8 +138,8 @@ void CTCBoastingPodium::OnHeroEnterBoastArea(long boastID, bool canAfford, CThin
             NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
             CWideString goldText = bank->GetPTextEntry(entry, true)->GetText();
             goldText += L": " + GFIntToWideString(boast->Cost);
-            g_pPlayerGui->SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
         }
     } else
-        g_pPlayerGui->SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
 }

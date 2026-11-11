@@ -71,31 +71,37 @@ struct CTCBitset {
     unsigned long m_words[9];
     CTCBitset& reset(unsigned int pos);         // 0x004CC0D0
 };
-struct CInterfaceMap {
-    struct SEntry { ETCInterfaceType type; CTCBase* component; };
-    SEntry* first;                              // +0x00
-    SEntry* last;                               // +0x04
-    SEntry* LowerBound(const ETCInterfaceType* type);   // 0x0040F020
-    SEntry* find(const ETCInterfaceType& type)
+// agentNF16: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+    value_type* find(const ETCInterfaceType& type)
     {
-        SEntry* it = LowerBound(&type);
-        if (it == last || type < it->type)
-            it = last;
+        value_type* it = LowerBound(type);
+        if (it == _M_finish || type < it->first)
+            it = _M_finish;
         return it;
     }
-    SEntry* end() const { return last; }
+    value_type* end() const { return _M_finish; }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
 // the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const ETCInterfaceType* type)
+CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    int len = int(last - first);
+    value_type* it = _M_start;
+    int len = int(_M_finish - _M_start);
     while (len > 0) {
         int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
+        value_type* middle = it + half;
+        if (middle->first < key) {
             it = middle + 1;
             len = len - half - 1;
         } else
@@ -115,10 +121,10 @@ class CThing { public:
 
 void CThing::RemoveTC(ETCInterfaceType type)
 {
-    CInterfaceMap::SEntry* it = m_interfaces.find(type);
+    CInterfaceMap::value_type* it = m_interfaces.find(type);
     if (it == m_interfaces.end())
         return;
-    CTCBase* tc = it->component;
+    CTCBase* tc = it->second;
     if (tc->PendingRemoval)
         return;
     tc->PendingRemoval = true;

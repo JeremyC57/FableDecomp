@@ -49,7 +49,9 @@ class CWorld { public:
     virtual void _slot1();
     virtual void _slot2();
     virtual CThingManager* GetThingManager();      // slot 3 (0x0049E1B0)
-    CPlayer* GetPlayer(long number);               // 0x0049D850
+protected:
+    CPlayer* GetPlayer(unsigned long number);               // 0x0049D850 ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z (Ego_r/FableWin, protected)
+public:
     void EAMoveCreature(const CGameEvent* event);
 };
 

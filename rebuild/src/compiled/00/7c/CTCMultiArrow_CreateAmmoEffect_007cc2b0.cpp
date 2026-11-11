@@ -49,18 +49,18 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CSpecialEffectsDef : public CDefPointeeBase { public:
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
 // Stand-in body (out of line in retail): it writes the out value only, so VC7.1 knows the effect index's address does
 // not escape the call (the 0x008D9740 GetEffectFromString idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& name, long* value)
+__declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name, long& value) const
 {
     long found = Lookup_CSpecialEffectsDef_CalcAndLookup(this, name);
     if (found < 0)
         return false;
-    *value = found;
+    value = found;
     return true;
 }
 #pragma auto_inline(on)
@@ -168,7 +168,7 @@ void CTCMultiArrow::CreateAmmoEffect()
     CDefPointer<CSpecialEffectsDef> effects;
     long effectIndex = 0;
     if (PDef->GetSubDef(&effects)) {
-        if (effects->CalcAndLookup("AMMO_EFFECT", &effectIndex)) {
+        if (effects->GetEffectFromString("AMMO_EFFECT", effectIndex)) {
             CIntelligentPointer<CThing> effect(CreateParticleEffect(effectIndex, ParentThing->GetPos()));
             if (IS_THING_ALIVE(effect)) {
                 CTCDParticleEmitter* emitter;

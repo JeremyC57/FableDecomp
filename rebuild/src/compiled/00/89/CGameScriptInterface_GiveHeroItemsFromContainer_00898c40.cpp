@@ -47,24 +47,32 @@ struct CTCBase_Retail {
 };
 class CTCContainer : public CTCBase_Retail { public: bool AddItemsToInventory(); };                   // 0x008ED170
 class CTCContainerRewardHero : public CTCContainer { public: bool RewardHeroWithItems(); };           // 0x0074EE90
-struct CInterfaceMap_Retail {
-    struct SEntry { long type; CTCBase_Retail* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);   // 0x0040F020
+class CTCBase;
+// agentNF16: the stand-in CInterfaceMap_Retail struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 #pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound (STLport lower_bound over the 8-byte entries):
 // compiled above the caller so VC7.1 knows the key's address does not escape and packs the frame words as retail
 // (the chunk 242 / landed GetItemDefNamesFromContainer 0x008A8F20 idiom).
-CInterfaceMap_Retail::SEntry* CInterfaceMap_Retail::LowerBound(const long* type)
+CInterfaceMap_Retail::value_type* CInterfaceMap_Retail::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    int len = int(last - first);
+    value_type* it = _M_start;
+    int len = int(_M_finish - _M_start);
     while (len > 0) {
         int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
+        value_type* middle = it + half;
+        if (middle->first < key) {
             it = middle + 1;
             len = len - half - 1;
         } else
@@ -83,12 +91,12 @@ struct CThing_Retail {
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
         CInterfaceMap_Retail* map = &m_interfaces;
-        CInterfaceMap_Retail::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return it->component;
+        CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+        if (it == map->_M_finish || interfaceType < it->first)
+            it = map->_M_finish;
+        return (CTCBase_Retail*)it->second;   // agentNF16: the specialisation's mapped type is CTCBase*
     }
 };
 class CThingPlayerCreature : public CThing_Retail { };

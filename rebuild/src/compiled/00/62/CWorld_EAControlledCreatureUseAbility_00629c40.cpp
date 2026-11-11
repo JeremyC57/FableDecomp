@@ -66,7 +66,9 @@ class CWorld { public:
     unsigned char       _pad00[0xc];
     CPlayerManager*     PlayerManager;             // +0x0C
     CDefinitionManager* DefinitionManager;         // +0x10
-    CPlayer* GetPlayer(long number);               // 0x0049D850
+protected:
+    CPlayer* GetPlayer(unsigned long number);               // 0x0049D850 ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z (Ego_r/FableWin, protected)
+public:
     void EAControlledCreatureUseAbility(const CGameEvent* event);
 };
 void CWorld::EAControlledCreatureUseAbility(const CGameEvent* event)

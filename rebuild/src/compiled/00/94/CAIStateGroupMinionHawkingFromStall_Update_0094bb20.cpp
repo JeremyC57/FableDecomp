@@ -124,7 +124,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
@@ -165,7 +167,7 @@ void CAIStateGroup_MinionHawkingFromStall::Update()
             CIntelligentPointer<const CThing>(PStall), speech, false, 0x93);
         keeper->AcquireNewCustomer();
     }
-    NextHawkFrame = GetPWorld()->GetFrame() + Random(75) + 75;
+    NextHawkFrame = GetWorld().GetFrame() + Random(75) + 75;
     Terminate();
     }
 }

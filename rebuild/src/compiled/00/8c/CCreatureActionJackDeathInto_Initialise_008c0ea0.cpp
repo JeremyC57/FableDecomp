@@ -29,7 +29,7 @@ class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30 (CCRC, at the def)
+    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 (CCRC, at the def) // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -172,7 +172,7 @@ void CCreatureAction_JackDeathInto::Initialise()
         bool found;
         {
             CCharString name("DEATH");
-            found = effects->CalcAndLookup(name, &effect);
+            found = effects->GetEffectFromString(name, effect);
         }
         if (found)
             CTCDParticleEmitter::Create(effect, *(&PCreature.GetPItem()->GetPos()), false);

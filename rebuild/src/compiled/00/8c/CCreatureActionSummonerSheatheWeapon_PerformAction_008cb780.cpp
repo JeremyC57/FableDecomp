@@ -122,10 +122,10 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     CDefinitionManager* GetDefinitionManager(); // 0x00692910
 };
 class CCreatureAction_SheatheWeapons : public CCombatActionBase { public:
-    void PerformAction();                       // 0x008B7B10
+    virtual void PerformAction();               // 0x008B7B10 (Ego_r ?PerformAction@CCreatureAction_SheatheWeapons@@UAEXXZ)
 };
 class CCreatureAction_SummonerSheatheWeapon : public CCreatureAction_SheatheWeapons { public:
-    void PerformAction();
+    virtual void PerformAction();               // vtable 0x0128360C slot 3 (Ego_r / FableWin UAE)
 };
 
 void CCreatureAction_SummonerSheatheWeapon::PerformAction()

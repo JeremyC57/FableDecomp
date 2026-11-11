@@ -93,7 +93,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
 };
 struct CAIStateGroup_SummonerCharge : CAIStateGroupBase {
     CIntelligentPointer<CThing> PTarget;           // +0x14
@@ -105,7 +107,7 @@ struct CAIStateGroup_SummonerCharge : CAIStateGroupBase {
 
 bool CAIStateGroup_SummonerCharge::IsRunnable()
 {
-    if (GetPWorld()->GetFrame() < NextFrameToCharge)
+    if (GetWorld().GetFrame() < NextFrameToCharge)
         return false;
     CTCCarrying* carrying;
     if (!GetCreature()->GetTC(TCI_CARRYING, &carrying))

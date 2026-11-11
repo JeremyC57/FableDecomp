@@ -16,7 +16,7 @@
 //   CCrimeWaitingForBribe {DeedHandle +0, Type +4}; COpinionDeedEffectsDef severity +0x70.
 // Shape: `if (village) { hero; log = 0; if (hero) GetInterface(&log, 0x51); severe = false; for (it = begin, end; it !=
 //   end; ++it) { crime = *it; village->ReportCrime(..); if (village thing has 0x4F) { if (!op->KnowsOfDeed(..))
-//   op->InformOfDeed(.., false); } if (log) { effects = log->GetDeedEffectsDef(it->Type); severity 2/3 -> severe; } }
+//   op->InformOfDeed(.., false); } if (log) { effects = log->PeekPDeedEffectsDef((EOpinionDeedType)(it->Type)); severity 2/3 -> severe; } }
 //   if (severe) village->RecalculateSecuritySweep(0); } PendingCrimes.clear();`
 #include "fable_compiler.h"
 class CTCBase;
@@ -69,18 +69,18 @@ private: public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;   // agentNF16: mutable so the CDefPointer<const T> release compiles (model only; the count is the def's +4 ref count)
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
-    virtual void Destroy();                             // slot 1
+    virtual void Destroy() const;                             // slot 1
 };
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x70 - 0x08];
     long Severity;                                      // +0x70 ECrimeSeverity
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -102,7 +102,7 @@ template <class T> class CDefPointer { public:
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE };
 
 class CTCHeroOpinionDeedLog { public:                          // interface 0x51
-    CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
+    CDefPointer<const COpinionDeedEffectsDef> PeekPDeedEffectsDef(EOpinionDeedType deedType) const;   // 0x006C5630 Ego_r/FableWin ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (agentNF16: was GetDeedEffectsDef)
 };
 class CTCCreatureOpinionOfHero { public:                       // interface 0x4F
     bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool) const;   // 0x00681AE0
@@ -219,7 +219,7 @@ void CTCGuard::ReportAllPendingCrimes(CTCVillage* village)
                     opinion->InformOfDeed(crime.DeedHandle, false);
             }
             if (log) {
-                CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(it->Type);
+                CDefPointer<const COpinionDeedEffectsDef> effects = log->PeekPDeedEffectsDef((EOpinionDeedType)(it->Type));
                 if (effects->Severity == 2 || effects->Severity == 3)
                     severe = true;
             }
