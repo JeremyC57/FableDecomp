@@ -1,6 +1,6 @@
 // CCreatureAction_DragonFlight::PerformAction() -- with a target, fetch the owner's ability def and fire its shot at the target (accuracy from the owner's shot-accuracy percentage)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3020, length 212 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CDefClassBase::GetSubDef<CAbilityDef>(CDefPointer*) 0x0042B1A6 (on the
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer*) 0x0042B1A6 (on the
 // owner's def-class base at +0x70), CThingCreatureBase::GetShotAccuracyPercentage 0x00663B10, CreateShot(long, CThing*, CThing*,
 // CThing*, float, float, float, CDefPointer<CMeleeCombatAbilityDef>*, C3DVector*, CRightHandedSet*) 0x007C0AD0 (`__fastcall`),
 // the defs' virtual slot 1 on the last release.
@@ -22,7 +22,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                      // slot 1
 };
-class CAbilityDef : public CDefVirtual, public CRefCounted { public:
+class CWeaponDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0xa0 - 0x08];
     long ShotDefIndex;                           // +0xa0
 };
@@ -34,11 +34,12 @@ class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointerAbility {                      // CDefPointer<const CAbilityDef>
-    CAbilityDef* m_p;
-    CDefPointerAbility() : m_p(0) { }
-    ~CDefPointerAbility() { if (m_p && --m_p->m_count == 0) m_p->Destroy(); }
-    CAbilityDef* operator->() const { return m_p; }
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CWeaponDef> { public:   // the GetSubDef<CWeaponDef> out slot (Ego_r.pdb CDefPointer<const CWeaponDef>)
+    CWeaponDef* m_p;
+    CDefPointer() : m_p(0) { }
+    ~CDefPointer() { if (m_p && --m_p->m_count == 0) m_p->Destroy(); }
+    CWeaponDef* operator->() const { return m_p; }
 };
 struct CDefPointerMelee {                        // CDefPointer<const CMeleeCombatAbilityDef>
     CMeleeCombatAbilityDef* m_p;
@@ -47,18 +48,18 @@ struct CDefPointerMelee {                        // CDefPointer<const CMeleeComb
 };
 
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointerAbility* out);     // 0x0042B1A6 (GetSubDef<CAbilityDef>)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
 };
 void* FindSubDef_CDefClassBase_GetSubDef(const CDefClassBase* def);   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointerAbility* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
 {
     void* def = FindSubDef_CDefClassBase_GetSubDef(this);
     if (!def)
         return false;
-    out->m_p = (CAbilityDef*)def;
+    out->m_p = (CWeaponDef*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -99,7 +100,7 @@ public:
 void CCreatureAction_DragonFlight::PerformAction()
 {
     if (PTarget.GetPItem()) {
-        CDefPointerAbility ability;
+        CDefPointer<const CWeaponDef> ability;
         CDefClassBase* defClass = ((CThing*)PCreature.GetPItem())->PhysicsTC;
         if (defClass->GetSubDef(&ability)) {
             long shotDef = ability->ShotDefIndex;

@@ -27,10 +27,16 @@ public:
     T* operator->() const { return Object; }
 };
 
-template<class T> class CDefOutPointer {           // a plain out slot (the def is released by hand)
-public:
-    T* Object;
-    CDefOutPointer() : Object(0) {}
+// agentNF15: the hand-released out slots are dtor-less specialisations of CDefPointer (Ego_r.pdb CDefPointer<const T>),
+//   replacing the invented CDefPointer (the landed agentNF14 idiom).
+class CThingObjectDef; class CAppearanceModifierDef;
+template<> class CDefPointer<const CThingObjectDef> { public:
+    const CThingObjectDef* Object;
+    CDefPointer() : Object(0) {}
+};
+template<> class CDefPointer<const CAppearanceModifierDef> { public:
+    const CAppearanceModifierDef* Object;
+    CDefPointer() : Object(0) {}
 };
 
 class CDefClassBase {
@@ -38,7 +44,7 @@ public:
     virtual void v00();
     virtual void Destroy() const;                   // slot 1
     mutable long RefCount;                          // +0x04
-    template<class T> bool GetSubDef(CDefOutPointer<const T>* out) const;   // 0x0057FF92 for CAppearanceModifierDef
+    template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 for CAppearanceModifierDef
 };
 class CAppearanceModifierDef : public CDefClassBase {
 public:
@@ -49,7 +55,7 @@ class CThingObjectDef : public CDefClassBase { };
 
 class CDefinitionManager {
 public:
-    template<class T> bool GetDef(long index, CDefOutPointer<const T>* out) const;   // 0x0042B040 for CThingObjectDef
+    template<class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 for CThingObjectDef
 };
 class CGameDefinitionManager : public CDefinitionManager { };
 
@@ -126,7 +132,7 @@ __declspec(noinline) void CRetailVector<T>::_M_insert_overflow(T* position, cons
 void* FindDef_0042b040(long index);
 void* FindSubDef_0057ff92(const void* def);
 #pragma auto_inline(off)
-template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefOutPointer<const T>* out) const
+template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     T* def = (T*)FindDef_0042b040(index);
     if (!def)
@@ -135,7 +141,7 @@ template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(long inde
     out->Object = def;
     return true;
 }
-template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefOutPointer<const T>* out) const
+template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     T* def = (T*)FindSubDef_0057ff92(this);
     if (!def)
@@ -147,8 +153,8 @@ template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefOutPoin
 #pragma auto_inline(on)
 void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifier(long defIndex)
 {
-    CDefOutPointer<const CThingObjectDef> thingOut;
-    CDefOutPointer<const CAppearanceModifierDef> appearanceOut;
+    CDefPointer<const CThingObjectDef> thingOut;
+    CDefPointer<const CAppearanceModifierDef> appearanceOut;
     if (GetDefinitionManager().GetDef(defIndex, &thingOut) && thingOut.Object->GetSubDef(&appearanceOut)) {
         AppearanceModifiers._M_start[appearanceOut.Object->Type].push_back(CModifierEntry(defIndex, true));
         Changed = true;

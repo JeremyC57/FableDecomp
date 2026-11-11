@@ -52,7 +52,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;          // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
     static long __fastcall GetFrame();          // 0x0049D870 (GFGetCurrentFrame)
 };
 class CMainGameComponent {
@@ -141,7 +141,7 @@ bool CTCVillage::PlayerCanApologiseForCurrentCrimes(long seconds)
 {
     if (LastFrameApologised != 0 && GetWorld().GetFrame() - LastFrameApologised < 450)
         return false;
-    CThing* hero = CMainGameComponent::Get()->World->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->World->PeekMyPlayer()->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         if (hero->HasTC(0x51))

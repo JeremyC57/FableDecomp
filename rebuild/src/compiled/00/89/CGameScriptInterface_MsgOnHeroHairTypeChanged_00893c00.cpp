@@ -39,15 +39,15 @@ class CDefString { public:                              // a def name: its offse
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }   // user copy ctor: returned through the hidden pointer
 };
-struct CDefinitionManager_Retail {
-    CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
+class CDefinitionManager { public:
+    CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0 (Ego_r.pdb, const)
 };
 class CDefStringTable { public:
     CCharString GetString(long index);              // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)     // 0x013CA828
 struct CWorldMap_Retail;
-struct CDefinitionManager_Retail;
+struct CDefinitionManager;
 struct CPlayerManager_Retail;
 struct CRegion_Retail {
     unsigned char _pad[0x18];
@@ -69,7 +69,7 @@ class CGameScriptInterface { public:
     CWorld* World;                                  // +0x04 (engine/CGameScriptInterface.h)
     void*   Component;                              // +0x08
     void*   DisplayEngine;                          // +0x0c
-    CDefinitionManager_Retail* DefinitionManager;   // +0x10
+    CDefinitionManager* DefinitionManager;   // +0x10
     CPlayerManager_Retail*     PlayerManager;       // +0x14
 protected:
     long GetMinWorldFrameForMessages() const;   // 0x006E7510

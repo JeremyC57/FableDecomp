@@ -49,7 +49,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CAttackStyleDef : CDefVirtual, CRefCounted {
+class CCombatTypeDef : public CDefVirtual, public CRefCounted { public:   // Ego_r.pdb (was the row-local CAttackStyleDef)
     void ReleaseTemporary()
     {
         DecRef();
@@ -57,8 +57,12 @@ struct CAttackStyleDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* m_p;
+    typename CDefNonConst<T>::Type* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
     {
@@ -70,11 +74,11 @@ template <class T> class CDefPointer { public:
 };
 
 class CDefinitionManager { public:
-    bool GetDef(const CCharString& name, CDefPointer<CAttackStyleDef>* def);   // 0x00669770
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* def) const;   // 0x00669770 GetDef<CCombatTypeDef> (Ego_r.pdb)
 };
 
 class CTCCombat { public:
-    void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);         // 0x007355F0
+    void SetCombatType(const CDefPointer<const CCombatTypeDef>& def);         // 0x007355F0 (Ego_r.pdb)
 };
 
 class CBaseObject;
@@ -118,10 +122,10 @@ void CCreatureAction_SummonerUnsheatheStrike::Initialise()
 {
     CCreatureAction_UnsheatheWeapons::Initialise();
     CTCCombat* combat = GetCombat();
-    CDefPointer<CAttackStyleDef> def;
+    CDefPointer<const CCombatTypeDef> def;
     {
         CCharString name("SUMMONER_ATTACK_STYLE", -1);
         GetPDefinitionManager()->GetDef(name, &def);
     }
-    combat->SetAttackStyleDef(&def);
+    combat->SetCombatType(def);
 }

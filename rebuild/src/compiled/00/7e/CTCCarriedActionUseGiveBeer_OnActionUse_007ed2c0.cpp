@@ -1,5 +1,5 @@
-// CTCCarriedActionUseGiveBeer::OnActionUse(CThingAICreature* user) -- an idle creature uses carried beer: give it to a targeted drinker (type 2 target with the drinker interface 0xC3, which also gets 1.0 drunkenness), else drink it itself
-// Leaf: vfunc_28
+// CTCCarriedActionUseGiveBeer::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingAICreature*)] -- an idle creature uses carried beer: give it to a targeted drinker (type 2 target with the drinker interface 0xC3, which also gets 1.0 drunkenness), else drink it itself
+// Leaf: OnActionUse
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x007ED2C0, 352 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28).
@@ -81,20 +81,24 @@ struct CTCDrinker {                                         // interface 0xc3
     unsigned char _pad00[0x10];
     float         Drunkenness;                              // +0x10
 };
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThingAICreature*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)
 };
 struct CTCCarriedActionUseGiveBeer : CTCCarriedActionUseBase {
-    void vfunc_28(CThingAICreature* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingAICreature*))
 };
 
-void CTCCarriedActionUseGiveBeer::vfunc_28(CThingAICreature* user)
+void CTCCarriedActionUseGiveBeer::OnActionUse(CThing& thing)
 {
+    CThingAICreature* user = (CThingAICreature*)&thing;
     if (user->IsPerformingAnyAction())
         return;
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CTCCarriedActionUseBase::OnActionUse(thing);
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
         if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {

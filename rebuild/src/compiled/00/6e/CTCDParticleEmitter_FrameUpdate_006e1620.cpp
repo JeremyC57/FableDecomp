@@ -140,14 +140,18 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-struct CFrameSource {
+class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsActive();                                 // slot 9 (+0x24)
+    virtual bool IsEditorActive() const;                                 // slot 9 (+0x24) 0x004197B0 FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ (was IsActive)
 };
-class CTCDParticleEmitter { public:
+class CTCBase { public:                                 // row-local view of the component base (Ego_r.pdb CTCBase: vptr, ParentThing)
     virtual void v00();
     CThing*                 ParentThing;                     // +0x04
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+};
+class CTCDParticleEmitter : public CTCBase { public:
     unsigned char           _base08[0x4];
     void*                   EmitterName;                     // +0x0c
     long                    ParticleTypeID;                  // +0x10
@@ -172,7 +176,6 @@ class CTCDParticleEmitter { public:
     bool AlwaysUpdate : 1;
     bool Asleep : 1;
     CWorld* GetWorld();                                      // 0x00686A70 (CTCBase)
-    CFrameSource* GetFrameSource();                          // 0x00686D60 (CTCBase accessor, [0x013B8A1C]+0x1c)
     void CreateParticleWaitingFor();                         // 0x006E14E0
     bool IsParticleCreationDisabled();                       // 0x006E0DF0
     void SetParticleCreationDisabled(bool disabled);         // 0x006E0690
@@ -197,7 +200,7 @@ void CTCDParticleEmitter::FrameUpdate()
         }
         CreateParticleWaitingFor();
     }
-    if ((!GetFrameSource()->IsActive() && !PEmitter.GetPItem() && !WaitingForParticleToLoad) || DieOffTimer == 0) {
+    if ((!PeekComponent().IsEditorActive() && !PEmitter.GetPItem() && !WaitingForParticleToLoad) || DieOffTimer == 0) {
         ParentThing->Kill(true);
         return;
     }

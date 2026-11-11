@@ -41,10 +41,11 @@ template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> struct CCountedDefPointer {
-    T* m_p;
-    CCountedDefPointer() : m_p(0) { }
-    ~CCountedDefPointer()
+class CThingObjectDef : public CDefBase { public: };
+template <> class CDefPointer<const CThingObjectDef> { public:   // Ego_r.pdb CDefPointer<const CThingObjectDef> (was CCountedDefPointer)
+    CThingObjectDef* m_p;
+    CDefPointer() : m_p(0) { }
+    ~CDefPointer()
     {
         if (m_p)
             m_p->Release();
@@ -78,22 +79,21 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-class CThingObjectDef : public CDefBase { public: };
 class CDefinitionManager
 {
 public:
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 GetDef<CThingObjectDef> (Ego_r.pdb member template)
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
-    bool GetDef(long globalIndex, CCountedDefPointer<CThingObjectDef>* out);   // 0x0042B040
 };
 void* FindDef_CDefinitionManager_GetDef(const void* manager, long globalIndex);   // stand-in callee
 // Same-TU stand-in for the GetDef<CThingObjectDef> instantiation (0x0042B040, a template member compiled in the caller's
 // TU): it writes the out slot only, so the def pointer's address does not escape.
 #pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CCountedDefPointer<CThingObjectDef>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingObjectDef>(long globalIndex, CDefPointer<const CThingObjectDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef(this, globalIndex);
     if (!def)
@@ -185,7 +185,7 @@ void CModeScorpionKingTailPlunge::Spike()
         spikeIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
     SCreationRecord record("", "");
-    CCountedDefPointer<CThingObjectDef> spikeDef;
+    CDefPointer<const CThingObjectDef> spikeDef;
     CGameDefinitionManager::Get().GetDef(spikeIndex, &spikeDef);
     C3DVector position = TargetPos;
     CThing* spike = CThingObject::Create(spikeIndex, position, PCreature->Player, 0, 0, "");

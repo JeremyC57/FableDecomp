@@ -86,17 +86,25 @@ template <class T> class CDefPointer { public:
     }
 };
 
-class CDefClassBase { public:
-    bool GetSubDef(CWeaponDef** out);                  // 0x0042B1A6
+// agentNF15: the GetSubDef out slot is CDefPointer<const CWeaponDef> (Ego_r.pdb member template), released by hand: a dtor-less
+//   specialisation that reads as the raw pointer (the landed agentNF14 idiom for hand-released out slots).
+template <> class CDefPointer<const CWeaponDef> { public:
+    CWeaponDef* Object;
+    CDefPointer() : Object(0) { }
+    CWeaponDef* operator->() const { return Object; }
+    operator CWeaponDef*() const { return Object; }
 };
-void* FindSubDef_CWeaponDef(CDefClassBase* def);
+class CDefClassBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
+};
+void* FindSubDef_CWeaponDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CWeaponDef** out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
 {
     void* found = FindSubDef_CWeaponDef(this);
     if (!found)
         return false;
-    *out = (CWeaponDef*)found;
+    out->Object = (CWeaponDef*)found;
     return true;
 }
 #pragma auto_inline(on)
@@ -191,7 +199,7 @@ struct CCreatureAction_DragonLandFireball : CCombatActionBase {
 
 void CCreatureAction_DragonLandFireball::PerformAction()
 {
-    CWeaponDef* weaponDef = 0;
+    CDefPointer<const CWeaponDef> weaponDef;
     CDefClassBase* creatureDef = PCreature.GetPItem()->PDef;
     creatureDef->GetSubDef(&weaponDef);
     CThingShotDef* shotDef;

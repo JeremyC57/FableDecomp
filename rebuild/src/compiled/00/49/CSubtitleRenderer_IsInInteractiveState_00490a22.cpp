@@ -92,23 +92,30 @@ template <unsigned int _Nb> class bitset { public:
     bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
 }
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;    // 0x004365B0
-    SEntry* LowerBound(const long* type);          // 0x0040F020
+// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 // same-TU stand-in for the interface-map LowerBound (VC7.1 then knows the entry is not derived from the key)
 #pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+__declspec(noinline) const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    SEntry* lo = first;
-    long count = last - first;
+    const value_type* lo = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count >> 1;
-        SEntry* mid = lo + half;
-        if (mid->type < *type) {
+        const value_type* mid = lo + half;
+        if (mid->first < key) {
             lo = mid + 1;
             count -= half + 1;
         } else
@@ -118,14 +125,14 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 #pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* lo = first;
-    long count = last - first;
+    value_type* lo = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count >> 1;
-        SEntry* mid = lo + half;
-        if (mid->type < *type) {
+        value_type* mid = lo + half;
+        if (mid->first < key) {
             lo = mid + 1;
             count -= half + 1;
         } else
@@ -142,24 +149,24 @@ class CThing { public:
     bool HasInterface(long type) const { return m_present.test(type); }
     template <class T> FABLE_FORCEINLINE T* GetInterfaceConst(long type) const
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)type;
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
     template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
     template <class T> FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        *out = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        *out = (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
 };
 template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBF0

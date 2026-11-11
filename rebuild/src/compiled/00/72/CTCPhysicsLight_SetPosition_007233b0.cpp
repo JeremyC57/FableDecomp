@@ -5,10 +5,22 @@
 //   (stores a 16-bit map number at +0x8e), CTCPhysicsBase::SetAsMoving @ 0x006B0130.
 // Layout: engine/CTCPhysicsBase.h (Position +0x0c viewed as a C3DVector, +0x04 the parent thing); AffectedByGravity at +0x40.
 // Shape: the argument stays in edi; the position copy goes through `mov ecx,edi`; the thing is fetched into ebx between the
-//   world-map call and the argument push (the object expression of the outer call). The virtual returns a LONG narrowed to the
+//   world-map call and the argument push (the object expression of the outer call, CTCBase::GetParentThing(); a direct
+//   ParentThing read defers the load past the call: DIFFER 67v71). The virtual returns a LONG narrowed to the
 //   16-bit parameter: that puts `push eax` before `mov ecx,ebx` (an unsigned short return schedules the mov first).
 // Leaf: SetPosition
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+// agentNF15: the retail engine/CTCPhysicsBase.h branch (polymorphic, : CTCBase) replaces the flattened view and the row-local
+//   CTCPhysicsBase_Calls stand-in reached through reinterpret_cast: GetWorldMap() 0x006AF620 is Ego_r.pdb
+//   ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ (protected, CWorldMap&; FABLE_RETAIL_CTCPHYSICSBASE_WORLDMAP) and SetAsMoving(bool)
+//   0x006B0130 ?SetAsMoving@CTCPhysicsBase@@QAEX_N@Z (FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING); SetPosition is the Ego_r virtual.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_WORLDMAP
+#define FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING
 #include "engine/CTCPhysicsBase.h"
 
 #include "engine/C3DVector.h"
@@ -20,26 +32,14 @@ class CWorldMap { public:
     virtual long GetMapNumberAt(const C3DVector& pos);   // slot 16 (+0x40)
 };
 
-#define FABLE_RETAIL_CTHING
-#define FABLE_RETAIL_CTHING_STATEACCESS
-#include "engine/CThing.h"
-
-struct CTCPhysicsBase_Calls {
-    CWorldMap* GetWorldMap();               // 0x006AF620
-    void SetAsMoving(bool moving);          // 0x006B0130
-};
-
 struct CTCPhysicsLight : CTCPhysicsBase {
     bool AffectedByGravity : 1;             // +0x40 bit 0
-    CTCPhysicsBase_Calls* Base() { return reinterpret_cast<CTCPhysicsBase_Calls*>(this); }
-    CThing* GetThing() { return reinterpret_cast<CThing*>(sub); }
-    C3DVector& PositionVector() { return *reinterpret_cast<C3DVector*>(&Position_X); }
-    void SetPosition(const C3DVector& pos);
+    virtual void SetPosition(const C3DVector& pos);
 };
 
 void CTCPhysicsLight::SetPosition(const C3DVector& pos)
 {
-    PositionVector() = pos;
-    GetThing()->SetCurrentMapNumber(Base()->GetWorldMap()->GetMapNumberAt(pos));
-    Base()->SetAsMoving(true);
+    Position = pos;
+    GetParentThing().SetCurrentMapNumber(GetWorldMap().GetMapNumberAt(pos));
+    SetAsMoving(true);
 }

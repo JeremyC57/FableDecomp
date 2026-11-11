@@ -60,8 +60,9 @@ public:
     virtual void _v45();
     virtual void _v46();
     virtual CThing* GetItemOfTypeInInventory(long itemType);          // slot 47 (+0xBC)
-    long    GetNumberOfItemsOfTypeInInventory(long itemType);   // 0x005BDF08
-    CThing* CreateInventoryObject(long itemType);               // 0x005BE8F3
+    long    GetNumberOfItemsOfTypeInInventory(long itemType) const;   // 0x005BDF08 Ego_r.pdb (const)
+protected:
+    CThing* CreateInventoryObject(long itemType);               // 0x005BE8F3 Ego_r.pdb ?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z
 };
 
 } // namespace NInventory

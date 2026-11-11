@@ -2,7 +2,7 @@
 // Leaf: OnCreate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007079E0, 234 bytes; vtable 0x01264F0C slot 4 (catalogued "vfunc_4";
 // slot 4 of the CTCBase vtables is OnCreate).
-// Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<CCreatureDef>*) @ 0x00485815 (landed),
+// Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*) @ 0x00485815 (landed),
 //          CTCHeroAttachableAppearanceModifiers::AddAppearanceModifier(long) @ 0x00706880 (per def entry, then the
 //          horns), CCharString::CCharString(const char*, long) @ 0x0099EBF0, CTCBase::GetDefinitionManager() @ 0x006869D0,
 //          CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, ~CCharString @ 0x0099EAE0,
@@ -43,8 +43,12 @@ class CCreatureDef : public CDefBase { public:
     CLongVector   InitialAppearanceModifiers;        // +0x54 (PDB +0x58)
 };
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:              // the out slot GetSubDef fills
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
 };
 
 template <class T> struct CDefHolder {               // releases the def read out of the slot
@@ -55,13 +59,13 @@ template <class T> struct CDefHolder {               // releases the def read ou
 };
 
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);  // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_1();
     if (!def)
@@ -133,7 +137,7 @@ void CTCHeroAttachableAppearanceModifiers::OnCreate()
 {
     if (!AppearanceModifiersLoaded) {
         CDefClassBase* thingDef = ParentThing->PDef;
-        CDefPointer<CCreatureDef> out;
+        CDefPointer<const CCreatureDef> out;
         out.Object = 0;
         bool found = thingDef->GetSubDef(&out);
         CDefHolder<CCreatureDef> def(out.Object);

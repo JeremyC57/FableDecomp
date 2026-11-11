@@ -32,11 +32,15 @@ class CCreatureDef { public:
     unsigned char _pad08[0xac - 0x08];
     long CreatureType;                                // +0xac (0x100: wasp)
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
     CDefPointer& operator=(const CDefPointer& other)
     {
         if (Object != other.Object) {
@@ -53,7 +57,7 @@ template<class T> class CDefPointer { public:
     }
 };
 class CDefinitionManager { public:
-    CDefPointer<CCreatureDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
+    CDefPointer<const CCreatureDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
 class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
@@ -62,21 +66,21 @@ class CDefClassBase { public:
     virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
     unsigned char _pad04[0x1c - 4];
     CDefinitionManager* m_pManager;                   // +0x1c
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 #pragma auto_inline(off)
 // Same-TU stand-in for GetSubDef<CCreatureDef> 0x00485815 (the landed body, CDefClassBase_GetSubDef00485815): compiled
 // above the caller so VC7.1 knows the def pointer it fills does not escape (retail's LTCG knowledge) -- the def stays
 // in a register and its frame word is reused by the target's def and the animation string.
-bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
+template <> bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     long* pIndex;
     {
         CCharString name("CCreatureDef");
-        pIndex = GetSubDefIndex(name);
+        pIndex = const_cast<CDefClassBase*>(this)->GetSubDefIndex(name);
     }
     if (pIndex) {
-        CDefPointer<CCreatureDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
+        CDefPointer<const CCreatureDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
         *out = result;
         return true;
     }
@@ -121,11 +125,11 @@ class CCreatureAction_FodderPrimaryAttack : public CCombatActionBase { public:
 
 void CCreatureAction_FodderPrimaryAttack::Initialise()
 {
-    CDefPointer<CCreatureDef> creatureDef;
+    CDefPointer<const CCreatureDef> creatureDef;
     CThing* creature = PCreature.GetPItem();
     creature->m_pDef->GetSubDef(&creatureDef);
     if (creatureDef->CreatureType == 0x100 && IS_THING_ALIVE(PTarget) && (PTarget.GetPItem()->m_flags6c & 8)) {
-        CDefPointer<CCreatureDef> targetDef;
+        CDefPointer<const CCreatureDef> targetDef;
         CThing* target = PTarget.GetPItem();
         target->m_pDef->GetSubDef(&targetDef);
         if (targetDef->CreatureType == 0x100)

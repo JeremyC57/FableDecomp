@@ -20,14 +20,16 @@ struct CRandomGenerator {
     FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
     FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
-struct CRandomOwner {
+class CMainGameComponent { public:
     unsigned char _pad00[0x16140];
     CRandomGenerator Random;                    // +0x16140
 };
 class CTCBase { public:
     virtual void v00();
     void* ParentThing;                          // +0x04
-    CRandomOwner* GetRandomOwner();             // 0x00686D60
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+public:
 };
 class CTCSoundPlayer : public CTCBase { public:
     unsigned long PlayAttachedSampleIndex(CASoundBank* bank, long index, CSoundInit* init, bool a, bool b, bool c);   // 0x0066B080
@@ -36,7 +38,7 @@ class CTCSoundPlayer : public CTCBase { public:
 
 unsigned long CTCSoundPlayer::PlayAttachedSample(CASoundBank* bank, const CSoundPair* pair, CSoundInit* init, bool a, bool b, bool c)
 {
-    CRandomGenerator& rng = GetRandomOwner()->Random;
+    CRandomGenerator& rng = const_cast<CMainGameComponent&>(PeekComponent()).Random;
     long index = pair->Min + rng.Random(pair->Max - pair->Min + 1);
     return PlayAttachedSampleIndex(bank, index, init, a, b, c);
 }

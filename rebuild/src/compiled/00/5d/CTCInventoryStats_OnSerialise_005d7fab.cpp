@@ -17,22 +17,25 @@ struct CCreatureKillMap {
 class CPersistContext { public:
     template <class T> void Transfer(const char* name, T* value);
 };
-struct CTCInventoryBase_Retail {
+namespace NInventory {
+class CTCInventoryBase { public:
     virtual void v00();
     unsigned char _pad_0x04[0x130 - 4];
-    void OnSerialise(CPersistContext& context, bool loading);   // 0x005BFD5E
+protected:
+    virtual void OnSerialise(CPersistContext& context, bool loading);   // 0x005BFD5E Ego_r.pdb ?OnSerialise@CTCInventoryBase@NInventory@@MAEXAAVCPersistContext@@_N@Z
 };
+}
 namespace NHeroInformationScreens {
 class CBase { public:
     virtual long vfunc_0();
 };
 }
-class CTCInventoryStats : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
+class CTCInventoryStats : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     CCreatureKillMap CreaturesKilled;         // +0x134
-    void OnSerialise(CPersistContext& context, bool loading);
+    virtual void OnSerialise(CPersistContext& context, bool loading);   // Ego_r.pdb ?OnSerialise@CTCInventoryStats@@UAEXAAVCPersistContext@@_N@Z
 };
 void CTCInventoryStats::OnSerialise(CPersistContext& context, bool loading)
 {
-    CTCInventoryBase_Retail::OnSerialise(context, loading);
+    NInventory::CTCInventoryBase::OnSerialise(context, loading);
     context.Transfer("CreaturesKilled2", &CreaturesKilled);
 }

@@ -105,7 +105,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                            // 0x00487DC0
 };
 class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;                  // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;                  // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
     static long __fastcall GetFrame();                        // 0x0049D870
 };
 class CMainGameComponent {
@@ -134,7 +134,7 @@ struct CAIStateGroup_MinionGuardFollowPlayer : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool)
 {
-    CThing* player = CMainGameComponent::Get()->PWorld->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* player = CMainGameComponent::Get()->PWorld->PeekMyPlayer()->GetPControlledCreature();
     if (player && !(player->m_flags91 & 1)) {
         CTCPlayerBuilding* inside;
         if (player->GetInterface(&inside, 0x75) && IsAlive(inside->PBuilding.GetPItem())) {

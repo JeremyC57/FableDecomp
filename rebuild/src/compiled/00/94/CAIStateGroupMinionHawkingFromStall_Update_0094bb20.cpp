@@ -26,27 +26,31 @@ struct CDefPointee {
     long m_refCount;                            // +0x04
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-struct CHawkingDef : CDefPointee {
+class CShopDef : public CDefPointee { public:
     unsigned char _pad08[0x2c - 0x08];
     unsigned long HawkSpeech;                   // +0x2c (descriptive)
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { Object->Release(); }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CHawkingDef>& out);   // 0x005130A0
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005130A0 GetSubDef<CShopDef> (Ego_r.pdb member template)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHawkingDef>& out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CShopDef>(CDefPointer<const CShopDef>* out) const
 {
     void* def = Find_CDefClassBase_GetSubDef(this);
     if (!def)
         return false;
-    out.Object = (CHawkingDef*)def;
+    out->Object = (CShopDef*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -151,8 +155,8 @@ void CAIStateGroup_MinionHawkingFromStall::Update()
     CTCShop* shop = keeper->GetShopTC();
     CThing* shopThing = shop->PThing;
     {
-    CDefPointer<CHawkingDef> def;
-    shopThing->PDef->GetSubDef(def);
+    CDefPointer<const CShopDef> def;
+    shopThing->PDef->GetSubDef(&def);
     unsigned long speech = def->HawkSpeech;
     bool reached;
     if (AIAction_MoveToThingProximity(1, CIntelligentPointer<const CThing>(PStall), 1.5f, &reached, 3,

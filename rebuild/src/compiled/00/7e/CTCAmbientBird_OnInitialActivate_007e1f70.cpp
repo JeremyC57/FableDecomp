@@ -8,10 +8,10 @@
 // 0x0122F59C = 0.5f. Ego_r.pdb: `?OnInitialActivate@CTCAmbientBird@@UAEXXZ`.
 // Shape: `fcomp [0.5] ; fnstsw ax ; test ah,41h ; jne` is the `> 0.5f` test; the two conditions are nested ifs.
 // Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
-struct CGameSubsystem {                        // the main game component's member at +0x1c (unidentified)
+class CMainGameComponent { public:                        // partial view: CTCBase::PeekComponent() 0x00686D60 returns it ([0x013B8A1C]+0x1c)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsSuppressed();               // slot 9 (+0x24)
+    virtual bool IsEditorActive() const;       // slot 9 (+0x24) 0x004197B0 (FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ; was IsSuppressed)
 };
 
 class CWorld { public:
@@ -27,7 +27,9 @@ class CTCBase { public:                               // engine/CTCBase.h layout
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
-    CGameSubsystem* GetSubsystem();            // 0x00686D60 (main game component +0x1c)
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+public:
 protected:
     CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
 };
@@ -40,7 +42,7 @@ struct CTCAmbientBird : CTCBase {
 
 void CTCAmbientBird::OnInitialActivate()
 {
-    if (!GetSubsystem()->IsSuppressed()) {
+    if (!PeekComponent().IsEditorActive()) {
         if (GFFloatRandom(1.0f, GetWorld().GetWorldSeed()) > 0.5f)
             ParentThing->Kill(false);
     }

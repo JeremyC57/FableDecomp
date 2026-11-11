@@ -24,8 +24,8 @@ enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D
 #include "engine/CSubDefClassBase.h"
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350
 namespace NResourceDirectoryNames {
-CWideString __fastcall GetSaveDir_0041a650();               // 0x0041A650
-CWideString __fastcall GetCustomTattooDir();                // 0x0041A6A0
+CWideString __fastcall GetTattooUserDir();               // 0x0041A650 Ego_r.pdb (was GetSaveDir_0041a650)
+CWideString __fastcall GetTattooDataDir();                       // 0x0041A6A0 Ego_r.pdb (body: L"Data\\Tattoos\\"; was GetCustomTattooDir)
 }
 class CUserProfileManager { public:
     unsigned char _pad00[8];
@@ -240,7 +240,7 @@ void CTCHeroMorph::UpdateTattoos(CTextureLayerMap& layers)
                 if (tattoo->IsInvalidCustomTattoo())
                     goto next;
                 CUserProfileManager* profiles = CUserProfileManager::Get();
-                CWideString path = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\"
+                CWideString path = NResourceDirectoryNames::GetTattooUserDir() + GetValidProfileName(profiles->ProfileName) + L"\\"
                     + tattoo->CustomFileName.ToWideString();
                 CBankNode* found = CustomToBankIndex.find(tattoo->CustomFileName);
                 if (found != CustomToBankIndex.end() && found->Value.second == CAFile::GetFileModifiedTime(path)) {
@@ -251,7 +251,7 @@ void CTCHeroMorph::UpdateTattoos(CTextureLayerMap& layers)
                     if (!texture.LoadFromBitmapFile(path, 0, &format, 1, 0, 2, 1, 1, 0, 0))
                         continue;
                     CTexture alpha;
-                    if (!alpha.LoadFromBitmapFile(NResourceDirectoryNames::GetCustomTattooDir() + tattoo->CustomFileNameBase.ToWideString(),
+                    if (!alpha.LoadFromBitmapFile(NResourceDirectoryNames::GetTattooDataDir() + tattoo->CustomFileNameBase.ToWideString(),
                                                   0, &format, 1, 0, 2, 1, 1, 0, 0))
                         continue;
                     CreateAlphaChannel(texture, alpha);

@@ -108,9 +108,11 @@ class CThing : public CThing_Retail { public:
 };
 struct CThingPos_Retail : public CThing {
 };
-struct CTCHeroOpinionDeedLog_Retail {
-    long PostDeed(long deedType, const C3DVector& position, CThing_Retail* target, CThingAICreature* victim, long postType,
-                  bool flagged, bool b2, CFaction* faction, bool b3, long extra);   // 0x006C6990
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
+struct CTCHeroOpinionDeedLog {
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -121,9 +123,9 @@ long CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses(const 
 {
     CThingPos_Retail* t = (CThingPos_Retail*)((CThing_Retail*)thing.GetPThing());
     if (t && t->HasTC(0x51)) {
-        CTCHeroOpinionDeedLog_Retail* log = (CTCHeroOpinionDeedLog_Retail*)GetTC(t, 0x51);
+        CTCHeroOpinionDeedLog* log = (CTCHeroOpinionDeedLog*)GetTC(t, 0x51);
         bool flagged = deedType >= 3 && deedType <= 10;
-        return log->PostDeed(deedType, t->GetPos(), ((CThing_Retail*)target.GetPThing()), 0, 7, flagged, true, 0, false, 0);
+        return log->PostDeed(deedType, t->GetPos(), target.GetPThing(), 0, (EOpinionPostDeedType)7, flagged, true, 0, false, 0);
     }
     return -1;
 }

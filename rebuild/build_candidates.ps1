@@ -210753,15 +210753,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007eb9b0'
         Module = 'CTCActionUseBlowHorn'
-        Source = '00/7e/CTCActionUseBlowHorn_vfunc28_007eb9b0.cpp'
-        TestSource = '00/7e/CTCActionUseBlowHorn_vfunc28_007eb9b0_test.cpp'
+        Source = '00/7e/CTCActionUseBlowHorn_OnActionUse_007eb9b0.cpp'
+        TestSource = '00/7e/CTCActionUseBlowHorn_OnActionUse_007eb9b0_test.cpp'
         PassPattern = '007eb9b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007ebbc0'
         Module = 'CTCActionUseAcceptBoast'
-        Source = '00/7e/CTCActionUseAcceptBoast_vfunc28_007ebbc0.cpp'
-        TestSource = '00/7e/CTCActionUseAcceptBoast_vfunc28_007ebbc0_test.cpp'
+        Source = '00/7e/CTCActionUseAcceptBoast_OnActionUse_007ebbc0.cpp'
+        TestSource = '00/7e/CTCActionUseAcceptBoast_OnActionUse_007ebbc0_test.cpp'
         PassPattern = '007ebbc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -212777,8 +212777,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007ed060'
         Module = 'CTCCarriedActionUseDropGenericBox'
-        Source = '00/7e/CTCCarriedActionUseDropGenericBox_vfunc28_007ed060.cpp'
-        TestSource = '00/7e/CTCCarriedActionUseDropGenericBox_vfunc28_007ed060_test.cpp'
+        Source = '00/7e/CTCCarriedActionUseDropGenericBox_OnActionUse_007ed060.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseDropGenericBox_OnActionUse_007ed060_test.cpp'
         PassPattern = '007ed060_TEST PASS'
     }
     [pscustomobject]@{
@@ -212791,8 +212791,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007edfb0'
         Module = 'CTCCarriedActionUseTrophy'
-        Source = '00/7e/CTCCarriedActionUseTrophy_vfunc28_007edfb0.cpp'
-        TestSource = '00/7e/CTCCarriedActionUseTrophy_vfunc28_007edfb0_test.cpp'
+        Source = '00/7e/CTCCarriedActionUseTrophy_OnActionUse_007edfb0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseTrophy_OnActionUse_007edfb0_test.cpp'
         PassPattern = '007edfb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -230930,8 +230930,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007ed0a0'
         Module = 'CTCCarriedActionUseDrop'
-        Source = '00/7e/CTCCarriedActionUseDrop_vfunc28_007ed0a0.cpp'
-        TestSource = '00/7e/CTCCarriedActionUseDrop_vfunc28_007ed0a0_test.cpp'
+        Source = '00/7e/CTCCarriedActionUseDrop_OnActionUse_007ed0a0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseDrop_OnActionUse_007ed0a0_test.cpp'
         PassPattern = '007ed0a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -230944,8 +230944,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007eddf0'
         Module = 'CTCCarriedActionUseWallMount'
-        Source = '00/7e/CTCCarriedActionUseWallMount_vfunc28_007eddf0.cpp'
-        TestSource = '00/7e/CTCCarriedActionUseWallMount_vfunc28_007eddf0_test.cpp'
+        Source = '00/7e/CTCCarriedActionUseWallMount_OnActionUse_007eddf0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseWallMount_OnActionUse_007eddf0_test.cpp'
         PassPattern = '007eddf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -243359,8 +243359,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007ecee0'
         Module = 'CTCCarriedActionUseLamp'
-        Source = '00/7e/CTCCarriedActionUseLamp_vfunc28_007ecee0.cpp'
-        TestSource = '00/7e/CTCCarriedActionUseLamp_vfunc28_007ecee0_test.cpp'
+        Source = '00/7e/CTCCarriedActionUseLamp_OnActionUse_007ecee0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseLamp_OnActionUse_007ecee0_test.cpp'
         PassPattern = '007ecee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -243373,8 +243373,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007f03d0'
         Module = 'CTCCarriedActionUseSpade'
-        Source = '00/7f/CTCCarriedActionUseSpade_vfunc28_007f03d0.cpp'
-        TestSource = '00/7f/CTCCarriedActionUseSpade_vfunc28_007f03d0_test.cpp'
+        Source = '00/7f/CTCCarriedActionUseSpade_OnActionUse_007f03d0.cpp'
+        TestSource = '00/7f/CTCCarriedActionUseSpade_OnActionUse_007f03d0_test.cpp'
         PassPattern = '007f03d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -249139,8 +249139,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007ed170'
         Module = 'CTCCarriedActionUseGive'
-        Source = '00/7e/CTCCarriedActionUseGive_vfunc28_007ed170.cpp'
-        TestSource = '00/7e/CTCCarriedActionUseGive_vfunc28_007ed170_test.cpp'
+        Source = '00/7e/CTCCarriedActionUseGive_OnActionUse_007ed170.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseGive_OnActionUse_007ed170_test.cpp'
         PassPattern = '007ed170_TEST PASS'
     }
     [pscustomobject]@{
@@ -263089,9 +263089,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007bdb66'
-        Module = 'CTCShotDefinitionNymphFun'
-        Source = '00/7b/CTCShotDefinitionNymphFun_OnCollision_007bdb66.cpp'
-        TestSource = '00/7b/CTCShotDefinitionNymphFun_OnCollision_007bdb66_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionNymphFun'
+        Source = '00/7b/NThingShotCTCShotDefinitionNymphFun_OnCollision_007bdb66.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionNymphFun_OnCollision_007bdb66_test.cpp'
         PassPattern = '007bdb66_TEST PASS'
     }
     [pscustomobject]@{

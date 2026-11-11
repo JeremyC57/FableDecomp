@@ -77,24 +77,27 @@ public:
     CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 
-struct CGameSubsystem {                                     // the main game component's member at +0x1c (unidentified)
+class CMainGameComponent { public:                                     // partial view: CTCBase::PeekComponent() 0x00686D60 ([0x013B8A1C]+0x1c)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsSuppressed();                            // slot 9 (+0x24)
+    virtual bool IsEditorActive() const;                            // slot 9 (+0x24) 0x004197B0 FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ (was IsSuppressed)
 };
 
-class CTCCrateStack { public:
+class CTCBase { public:                                 // row-local view of the component base (Ego_r.pdb CTCBase: vptr, ParentThing)
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+};
+class CTCCrateStack : public CTCBase { public:
     unsigned char _pad08[0x1c - 0x08];                      // +0x08 CTCBase, FirstCrate, SecondCrate
     long          CrateDefIndex;                            // +0x1c
-    CGameSubsystem* GetGameSubsystem();                     // 0x00686D60 (CTCBase)
     void vfunc_6();
 };
 
 void CTCCrateStack::vfunc_6()
 {
-    if (!GetGameSubsystem()->IsSuppressed())
+    if (!PeekComponent().IsEditorActive())
     {
         CTCVillageMember* member;
         ParentThing->GetInterface(&member, 0x23);           // TC_VILLAGE_MEMBER

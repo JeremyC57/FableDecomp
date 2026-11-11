@@ -40,25 +40,26 @@ class CThingObjectDef { public:
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
 };
-struct CDefPointerThingObjectDef {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CThingObjectDef> { public:   // Ego_r.pdb CDefPointer<const CThingObjectDef> (was the row-local CDefPointerThingObjectDef)
     CThingObjectDef* Object;
-    CDefPointerThingObjectDef() : Object(0) {}
-    ~CDefPointerThingObjectDef() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
+    CDefPointer() : Object(0) {}
+    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
 };
 class CDefinitionManager
 {
 public:
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 GetDef<CThingObjectDef> (Ego_r.pdb member template)
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 
 class CGameDefinitionManager : public CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointerThingObjectDef* out);               // 0x0042B040
 };
 void* FindDef_CGameDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CDefPointerThingObjectDef* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingObjectDef>(long globalIndex, CDefPointer<const CThingObjectDef>* out) const
 {
     void* def = FindDef_CGameDefinitionManager_GetDef_0();
     if (!def)
@@ -83,7 +84,7 @@ CScriptThing CGameScriptInterface::CreateObject(const CCharString& defName, cons
                                                 const CCharString& scriptName) const
 {
     long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
-    CDefPointerThingObjectDef def;
+    CDefPointer<const CThingObjectDef> def;
     DefinitionManager->GetDef(index, &def);
     CThingObject* object = CThingObject::Create(index, position, 4, 0, 0, scriptName);
     CScriptThing result;

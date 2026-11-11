@@ -21,22 +21,29 @@ template <unsigned int _Nb> class bitset { public:
     bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
 }
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
+// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
 // caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    long count = last - first;
+    value_type* it = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count / 2;
-        if (it[half].type < *type) {
+        if (it[half].first < key) {
             it += half + 1;
             count -= half + 1;
         } else
@@ -57,34 +64,34 @@ public:
     // VC7.1 deletes the search but keeps the thing pointer it loaded for it (`mov eax,[edi+4]` / `lea ecx,[eax+20h]`).
     CTCBase* FindTCInline(long type)
     {
-        CInterfaceMap::SEntry* it = m_interfaces.first;
-        long count = m_interfaces.last - m_interfaces.first;
+        CInterfaceMap::value_type* it = m_interfaces._M_start;
+        long count = m_interfaces._M_finish - m_interfaces._M_start;
         while (count > 0) {
             long half = count / 2;
-            if (it[half].type < type) { it += half + 1; count -= half + 1; } else count = half;
+            if (it[half].first < type) { it += half + 1; count -= half + 1; } else count = half;
         }
-        if (it == m_interfaces.last || type < it->type) it = m_interfaces.last;
-        return it->component;
+        if (it == m_interfaces._M_finish || type < it->first) it = m_interfaces._M_finish;
+        return it->second;
     }
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->_M_finish || interfaceType < it->first) ? map->_M_finish : it)->second;
             return true;
         }
         return false;
     }
     template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return (T*)it->component;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->_M_finish || interfaceType < it->first)
+            it = map->_M_finish;
+        return (T*)it->second;
     }
 };
 class CTCInGameMenu { public:                                      // interface type 0xC6

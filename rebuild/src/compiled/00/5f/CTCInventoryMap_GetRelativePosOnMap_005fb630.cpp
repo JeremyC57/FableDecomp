@@ -18,18 +18,20 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CUIMiscThingsDef {
+namespace NUISystem { class CUIMiscThingsDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
     unsigned char _pad08[0xf8 - 0x08];
     float MapWidth;                                     // +0xF8
     float MapHeight;                                    // +0xFC
-};
-struct CUIMiscThingsDefPointer {
+}; }
+using NUISystem::CUIMiscThingsDef;
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CUIMiscThingsDef> { public:   // Ego_r.pdb CDefPointer<const CUIMiscThingsDef> (was the row-local CUIMiscThingsDefPointer)
     CUIMiscThingsDef* Object;
-    CUIMiscThingsDefPointer() : Object(0) {}
-    ~CUIMiscThingsDefPointer()
+    CDefPointer() : Object(0) {}
+    ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
@@ -38,8 +40,8 @@ struct CUIMiscThingsDefPointer {
 };
 class CDefinitionManager {
 public:
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B312 GetDef<CUIMiscThingsDef> (Ego_r.pdb member template)
     long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
-    bool GetDef(long index, CUIMiscThingsDefPointer* out) const;                            // 0x0042B312
 };
 class CGameDefinitionManager : public CDefinitionManager {
 public:
@@ -47,7 +49,7 @@ public:
 };
 void* FindDef(long index);
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CUIMiscThingsDefPointer* out) const
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CUIMiscThingsDef>(long index, CDefPointer<const CUIMiscThingsDef>* out) const
 {
     void* def = FindDef(index);
     if (!def)
@@ -100,7 +102,7 @@ class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
 
 void CTCInventoryMap::GetRelativePosOnMap(NUISystem::CComponent* component, const C3DVector& position, C2DVector& relative) const
 {
-    CUIMiscThingsDefPointer def;
+    CDefPointer<const CUIMiscThingsDef> def;
     long index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", 1);
     CGameDefinitionManager::Get().GetDef(index, &def);
     if (PeekWorld().GetWorldMap()->Maps.size() > 0) {

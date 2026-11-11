@@ -12,31 +12,34 @@
 #pragma optimize("s", on)
 class CThing;
 long __fastcall GetReplacementItemForType(long itemType);      // 0x005D99B0
-struct CTCInventoryBase_Retail {
-    void*   __vftable;                                          // +0x000
+namespace NInventory {
+class CTCInventoryBase { public:                                // vptr +0x000
     CThing* ParentThing;                                        // +0x004
     unsigned char _pad_0x008[0x80];
     bool    Dying;                                              // +0x088
-    bool IsItemSelected(long itemType);                         // 0x005BCA87
-    void RemoveItemFromInventory(long itemType, long count);    // 0x005BF3C6
-    void SelectItemWithDefIndex(long defIndex);                 // 0x005BDFB1
+    virtual void RemoveItemFromInventory(long itemType, long count);   // 0x005BF3C6 Ego_r.pdb ?RemoveItemFromInventory@CTCInventoryBase@NInventory@@UAEXJJ@Z
+protected:
+    bool IsItemSelected(long itemType) const;                   // 0x005BCA87 Ego_r.pdb ?IsItemSelected@CTCInventoryBase@NInventory@@IBE_NJ@Z
+    void SelectItemWithDefIndex(long defIndex);                 // 0x005BDFB1 Ego_r.pdb ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
 };
-struct CTCInventoryClothing_Retail : CTCInventoryBase_Retail {
+}
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
     unsigned char _pad_0x08c[0x15C - 0x8C];                     // (base padded to 0x8C)
     bool    UseMannequin;                                       // +0x15C
-    void SetThingAsWearingSelectedClothes(CThing* thing);       // 0x005B406D
-    void RemoveItemFromInventory(long itemType, long count);
+    virtual void RemoveItemFromInventory(long itemType, long count);   // Ego_r.pdb ?RemoveItemFromInventory@CTCInventoryClothing@@UAEXJJ@Z
+private:
+    void SetThingAsWearingSelectedClothes(CThing& thing);       // 0x005B406D Ego_r.pdb ?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z
 };
-void CTCInventoryClothing_Retail::RemoveItemFromInventory(long itemType, long count)
+void CTCInventoryClothing::RemoveItemFromInventory(long itemType, long count)
 {
     bool useMannequin = UseMannequin;
     UseMannequin = false;
     bool wasSelected = IsItemSelected(itemType);
-    CTCInventoryBase_Retail::RemoveItemFromInventory(itemType, count);
+    NInventory::CTCInventoryBase::RemoveItemFromInventory(itemType, count);
     if (!Dying) {
         if (wasSelected)
             SelectItemWithDefIndex(GetReplacementItemForType(itemType));
-        SetThingAsWearingSelectedClothes(ParentThing);
+        SetThingAsWearingSelectedClothes(*ParentThing);
     }
     UseMannequin = useMannequin;
 }

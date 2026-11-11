@@ -21,7 +21,7 @@ class CDefString { public:                                     // 4-byte def-nam
     CDefString();
 };
 class CDefinitionManager { public:
-    CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
+    CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0 (Ego_r.pdb, const)
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0

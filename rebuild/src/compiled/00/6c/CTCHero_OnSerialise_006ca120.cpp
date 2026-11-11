@@ -46,14 +46,12 @@ public:
         if (--RefCount == 0)
             Destroy();
     }
-};
-class CDefinition : public CDefClassBase {
-public:
+    // (the row-local CDefinition layer, a name in no PDB, folded in: Ego_r.pdb returns CDefPointer<const CDefClassBase>)
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09();
     virtual CDefString GetDefName() const;          // slot 10 (+0x28)
 };
-class CHeroTitleDef : public CDefinition { };
+class CHeroTitleDef : public CDefClassBase { };
 template<class T> class CDefPointer {
 public:
     T* Object;
@@ -78,7 +76,7 @@ public:
 };
 class CDefinitionManager {
 public:
-    CDefPointer<const CDefinition> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
     long GetDefGlobalIndexFromName(const CCharString& name) const;                       // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager
@@ -150,7 +148,7 @@ void CTCHero::OnSerialise(CPersistContext* context, long)
         }
         context->Transfer<unsigned __int64>("LastWeaponEquippedID", LastWeaponEquippedID, 0);
         CCharString defName("");
-        CDefPointer<const CDefinition> def = GetDefinitionManager().GetPDefFromGlobalIndex(HeroTitleObjectDef);
+        CDefPointer<const CDefClassBase> def = GetDefinitionManager().GetPDefFromGlobalIndex(HeroTitleObjectDef);
         if (def.Object)
         {
             CCharString name = GDefStringTable.GetString(def->GetDefName().Index);

@@ -21,7 +21,9 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct GuiObject {
+// agentNF15: the held object is the owner's CCreatureDef sub-def: GetHeld = CDefClassBase::GetSubDef<CCreatureDef> 0x00485815
+//   (Ego_r.pdb ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z) on the thing's def +0x70.
+class CCreatureDef { public:
     virtual void v0();          // vtbl+0x0
     virtual void v1();          // vtbl+0x4  -- destroy-on-zero-refcount
     int          refs;          // +0x4
@@ -29,15 +31,15 @@ struct GuiObject {
     int          fieldA8;       // +0xa8
 };
 
-struct GuiHolder { GuiObject* obj; GuiHolder() : obj(0) {} };
+template <class T> class CDefPointer { public: CCreatureDef* obj; CDefPointer() : obj(0) {} };   // the zeroed out slot
 
-struct GuiProvider {
-    void GetHeld(GuiHolder* out);   // __fastcall, ecx = this, one stack arg
+class CDefClassBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef>
 };
 
 struct Sub4 {
     char         pad[0x70];
-    GuiProvider* provider70;        // +0x70
+    CDefClassBase* provider70;      // +0x70 the thing's def
 };
 
 class CTCInGameMenu { public:
@@ -49,9 +51,9 @@ class CTCInGameMenu { public:
 
 void CTCInGameMenu::OnCreate()
 {
-    GuiHolder h;
-    ParentThing->provider70->GetHeld(&h);
-    GuiObject* o = h.obj;
+    CDefPointer<const CCreatureDef> h;
+    ParentThing->provider70->GetSubDef(&h);
+    CCreatureDef* o = h.obj;
     ApplyGuiField(o->fieldA8);
     if (--o->refs == 0)
         o->v1();

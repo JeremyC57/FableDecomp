@@ -5,8 +5,8 @@
 // bit 31 of +0x2c), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0
 // ("HERO_JACK_OF_BLADES_ATTACK_STYLE_LAST_STAND" @ 0x01297668, "HIT_LOCATION_JACK_OF_BLADES_BIG" @ 0x01297604,
 // "HIT_LOCATION_JACK_OF_BLADES_FORCEFIELD" @ 0x01297624, "HIT_LOCATION_JACK_OF_BLADES" @ 0x0129764C),
-// CAIStateGroupBase::GetPDefinitionManager @ 0x008FCFB0, CDefinitionManager::GetDef<CAttackStyleDef> @ 0x00669770,
-// CTCCombat::SetAttackStyleDef @ 0x007355F0, CTCHitLocations::GetPHitLocationFromName @ 0x00815820,
+// CAIStateGroupBase::GetPDefinitionManager @ 0x008FCFB0, CDefinitionManager::GetDef<CCombatTypeDef> @ 0x00669770,
+// CTCCombat::SetCombatType @ 0x007355F0, CTCHitLocations::GetPHitLocationFromName @ 0x00815820,
 // CHitLocation::SetEnabled @ 0x00816390, the def's virtual slot 1 (release).
 // Shape: the will flag is cleared inside the checked out-parameter lookup; the combat and hit-location components come from
 // UNCHECKED inline accessors (the absent path reads the lookup key's frame word), the def pointer and its release as the
@@ -55,7 +55,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CAttackStyleDef : CDefVirtual, CRefCounted {
+class CCombatTypeDef : public CDefVirtual, public CRefCounted { public:   // Ego_r.pdb (was the row-local CAttackStyleDef)
     void ReleaseTemporary()
     {
         DecRef();
@@ -63,8 +63,12 @@ struct CAttackStyleDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* m_p;
+    typename CDefNonConst<T>::Type* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
     {
@@ -75,14 +79,14 @@ template <class T> class CDefPointer { public:
     }
 };
 class CDefinitionManager { public:
-    bool GetDef(const CCharString& name, CDefPointer<CAttackStyleDef>* def);   // 0x00669770
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* def) const;   // 0x00669770 GetDef<CCombatTypeDef> (Ego_r.pdb)
 };
 struct CTCWillPower {                           // interface 0xce
     unsigned char _pad0[0x18];
     bool Active;                                // +0x18 (descriptive)
 };
 class CTCCombat { public:                              // interface 0x30
-    void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);   // 0x007355F0
+    void SetCombatType(const CDefPointer<const CCombatTypeDef>& def);   // 0x007355F0 (Ego_r.pdb)
 };
 struct CHitLocation {
     void SetEnabled(bool enabled);              // 0x00816390
@@ -110,12 +114,12 @@ void CAIStateGroup_JackOfBladesStage3::OnActivate()
     if (GetCreature()->GetInterface(&will, 0xce))
         will->Active = false;
     CTCCombat* combat = GetCreature()->GetTCIfPresent<CTCCombat>(0x30);
-    CDefPointer<CAttackStyleDef> def;
+    CDefPointer<const CCombatTypeDef> def;
     {
         CCharString name("HERO_JACK_OF_BLADES_ATTACK_STYLE_LAST_STAND");
         GetPDefinitionManager()->GetDef(name, &def);
     }
-    combat->SetAttackStyleDef(&def);
+    combat->SetCombatType(def);
     CTCHitLocations* hitLocations = GetCreature()->GetTCIfPresent<CTCHitLocations>(0x7f);
     CHitLocation* big = hitLocations->GetPHitLocationFromName("HIT_LOCATION_JACK_OF_BLADES_BIG");
     big->SetEnabled(false);

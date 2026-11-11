@@ -43,7 +43,8 @@ class CVillagePeopleDef : public CDefBase { public:
     CRetailVector<long> GuardRespawnType;       // +0xa8
     CRetailVector<long> GuardRespawnQuantity;   // +0xb4
 };
-struct CDefPointer {                            // CDefPointer<const CVillagePeopleDef>
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CVillagePeopleDef> { public:   // Ego_r.pdb CDefPointer<const CVillagePeopleDef>
     CVillagePeopleDef* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) m_p->Release(); }
@@ -51,18 +52,18 @@ struct CDefPointer {                            // CDefPointer<const CVillagePeo
     operator bool() const { return m_p != 0; }
 };
 class CDefClassBase : public CDefBase { public:
-    bool GetSubDef_00512fe0(CDefPointer& out);  // 0x00512FE0 (GetSubDef<CVillagePeopleDef>)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00512FE0 GetSubDef<CVillagePeopleDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_00512fe0_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_00512fe0(CDefPointer& out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CVillagePeopleDef>(CDefPointer<const CVillagePeopleDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_00512fe0_0();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -88,10 +89,10 @@ class CTCVillage { public:
 long CTCVillage::GetNextGuardTypeAndIncrement()
 {
     long respawn = NextGuardRespawn++;
-    CDefPointer def;
+    CDefPointer<const CVillagePeopleDef> def;
     {
         CThingDefPointer thingDef(ParentThing->PDef);
-        thingDef->GetSubDef_00512fe0(def);
+        thingDef->GetSubDef(&def);
     }
     if (def && def->GuardRespawnType.size() != 0 && def->GuardRespawnType.size() == def->GuardRespawnQuantity.size()) {
         for (unsigned int i = 0; i < def->GuardRespawnQuantity.size(); ++i) {

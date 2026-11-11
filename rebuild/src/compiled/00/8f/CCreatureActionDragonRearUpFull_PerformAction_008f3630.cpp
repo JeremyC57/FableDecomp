@@ -114,19 +114,27 @@ template <class T> class CDefPointer { public:
         }
     }
 };
+// agentNF15: the GetSubDef out slot is CDefPointer<const CWeaponDef> (Ego_r.pdb member template), released by hand: a dtor-less
+//   specialisation that reads as the raw pointer (the landed agentNF14 idiom for hand-released out slots).
+template <> class CDefPointer<const CWeaponDef> { public:
+    CWeaponDef* Object;
+    CDefPointer() : Object(0) { }
+    CWeaponDef* operator->() const { return Object; }
+    operator CWeaponDef*() const { return Object; }
+};
 class CDefClassBase { public:
-    bool GetSubDef(CWeaponDef** out);                  // 0x0042B1A6
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
     bool GetSubDef(CSpecialEffectsDef** out);          // 0x00669580
 };
-void* FindSubDef_CWeaponDef(CDefClassBase* def);
-void* FindSubDef_CSpecialEffectsDef(CDefClassBase* def);
+void* FindSubDef_CWeaponDef(const CDefClassBase* def);
+void* FindSubDef_CSpecialEffectsDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CWeaponDef** out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
 {
     void* found = FindSubDef_CWeaponDef(this);
     if (!found)
         return false;
-    *out = (CWeaponDef*)found;
+    out->Object = (CWeaponDef*)found;
     return true;
 }
 __declspec(noinline) bool CDefClassBase::GetSubDef(CSpecialEffectsDef** out)
@@ -255,7 +263,7 @@ void CCreatureAction_DragonRearUpFull::PerformAction()
     CThing* thing = CreateThingObject(shotDef->Thing, position, PCreature.GetPItem(), "");
     if (thing) {
         PShot = CIntelligentPointer(thing);
-        CWeaponDef* weaponDef = 0;
+        CDefPointer<const CWeaponDef> weaponDef;
         CDefClassBase* creatureDef = PCreature.GetPItem()->GetDef();
         creatureDef->GetSubDef(&weaponDef);
         long accuracy = PCreature.GetPItem()->GetShotAccuracyPercentage();

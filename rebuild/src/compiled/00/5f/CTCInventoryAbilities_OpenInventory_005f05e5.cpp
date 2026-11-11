@@ -120,7 +120,7 @@ public:
     FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
     void OpenInventory();                                   // 0x005BD4EA
     void SetInventoryAnimRenderBox(const C2DBoxF& box);     // 0x005BC58F
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;  // 0x005BDF08 (Ego_r.pdb, const)
 };
 }
 

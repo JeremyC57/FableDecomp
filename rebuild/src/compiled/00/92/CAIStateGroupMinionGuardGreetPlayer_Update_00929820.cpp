@@ -91,7 +91,7 @@ struct COpinionManager {
     float GetOpinionValue(CThing* thing, long opinion);     // 0x00701750
 };
 class CWorld { public:
-    CPlayer* GetCurrentPlayer();                // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;                // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
     unsigned char _pad[0x74];
     COpinionManager* POpinions;                 // +0x74
     COpinionManager* GetPOpinions() const { return POpinions; }
@@ -145,7 +145,7 @@ struct CAIStateGroup_MinionGuardGreetPlayer : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGuardGreetPlayer::Update()
 {
-    CThingPlayerCreature* player = CMainGameComponent::Get()->PWorld->GetCurrentPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* player = CMainGameComponent::Get()->PWorld->PeekMyPlayer()->GetPControlledCreature();
     if (player && !(player->m_flags91 & 1)) {
         CTCVillageMember* member;
         GetCreature()->GetInterface(&member, 0x23);

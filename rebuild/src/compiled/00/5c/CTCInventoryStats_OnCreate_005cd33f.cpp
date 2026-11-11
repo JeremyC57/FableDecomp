@@ -55,20 +55,22 @@ class CDefClassBase : public CDefPointeeBase { public:
     virtual const CDefSubRef* FindSubDef(const CCharString& typeName);   // slot 14 (+0x38)
     unsigned char _pad08[0x1c - 0x08];
     CDefinitionManager* DefManager;                     // +0x1c
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);     // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 // 0x00485815 CDefClassBase::GetSubDef<CCreatureDef>, the retail body: look the sub def up by its class name, fetch it from
 // the definition manager and assign it into *out (addref/release); only *out is written, so the caller's def word does
 // not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* outConst) const
 {
-    const CDefSubRef* sub = FindSubDef(CCharString("CCreatureDef"));
+    CDefClassBase* self = const_cast<CDefClassBase*>(this);
+    CDefPointer<CCreatureDef>* out = reinterpret_cast<CDefPointer<CCreatureDef>*>(outConst);
+    const CDefSubRef* sub = self->FindSubDef(CCharString("CCreatureDef"));
     if (!sub)
         return false;
     CCreatureDef* def;
     {
-        CDefPointer<CDefPointeeBase> fetched = DefManager->GetDef(sub->DefIndex);
+        CDefPointer<CDefPointeeBase> fetched = self->DefManager->GetDef(sub->DefIndex);
         def = (CCreatureDef*)fetched.Object;
         if (def)
             ++def->m_refCount;
@@ -152,7 +154,7 @@ void CTCInventoryStats::OnCreate()
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
-    CDefPointer<CCreatureDef> def;
+    CDefPointer<const CCreatureDef> def;
     def.Object = 0;
     if (thingDef)
         ++thingDef->m_refCount;
@@ -163,5 +165,5 @@ void CTCInventoryStats::OnCreate()
     CTCInventoryBase_Stats::OnCreate();
     ParentThing->GetInterface(0x68, &pTCHeroExperience);
     ParentThing->GetInterface(4, &pTCHeroStats);
-    def.Object->Release();
+    const_cast<CCreatureDef*>(def.Object)->Release();
 }

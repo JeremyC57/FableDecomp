@@ -23,18 +23,22 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventoryBase {
-    unsigned char _pad_0x000[0x148];
+namespace NInventory {
+class CTCInventoryBase { public:                     // vptr +0
+    unsigned char _pad_0x004[0x148 - 0x4];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168; CTCInventory member, kept here for the layout)
     unsigned char _pad_0x154[0x1d4 - 0x154];
-    void OnItemAdded(long item, bool assignQuickAccess, bool silent);   // 0x005BE028
+protected:
+    virtual void OnItemAdded(long item, bool assignQuickAccess, bool silent);   // 0x005BE028 Ego_r.pdb ?OnItemAdded@CTCInventoryBase@NInventory@@MAEXJ_N0@Z
 };
+}
 
-class CTCInventory : public CTCInventoryBase { public:
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     bool ContextSensitiveUpdate;                     // +0x1d4 (PDB +0x20c)
     long GetQuickAccessNextFreeSlot(long item);      // 0x00582027
     void SetThingAsQuickAccessItem(long item, long slot, bool silent);  // 0x00584157
-    void OnItemAdded(long item, bool assignQuickAccess, bool silent);
+protected:
+    virtual void OnItemAdded(long item, bool assignQuickAccess, bool silent);   // Ego_r.pdb ?OnItemAdded@CTCInventory@@MAEXJ_N0@Z
 };
 
 long CTCInventory::GetQuickAccessNextFreeSlot(long item)
@@ -53,7 +57,7 @@ long CTCInventory::GetQuickAccessNextFreeSlot(long item)
 
 void CTCInventory::OnItemAdded(long item, bool assignQuickAccess, bool silent)
 {
-    CTCInventoryBase::OnItemAdded(item, assignQuickAccess, silent);
+    NInventory::CTCInventoryBase::OnItemAdded(item, assignQuickAccess, silent);
     if (assignQuickAccess) {
         long slot = GetQuickAccessNextFreeSlot(item);
         if (slot != -1)

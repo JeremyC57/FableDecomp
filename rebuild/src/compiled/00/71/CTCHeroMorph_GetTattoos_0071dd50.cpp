@@ -40,22 +40,22 @@ template <class T> struct CDefHolder {                  // owns the reference Ge
 };
 class CTattooDef : public CDefBase { public: };
 class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x005B1EFC (T = const CTattooDef)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1EFC GetSubDef<CTattooDef> (Ego_r.pdb member template)
 };
 void* FindDef_s7r_0();
 #pragma auto_inline(off)
 // Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out) const
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
         return false;
-    void* old = *(void**)&out;
+    void* old = *(void**)out;
     if (old != def) {
         if (old)
             ReleaseDef_s7(old);
-        *(void**)&out = def;
+        *(void**)out = def;
     }
     return true;
 }
@@ -134,7 +134,7 @@ void CTCHeroMorph::GetTattoos(CTattooDefVector& tattoos) const
     tattoos.reserve(Tattoos.size());
     for (unsigned long i = 0; i < Tattoos.size(); ++i) {
         CTattooDefPointer slot;
-        Tattoos[i]->GetSubDef(slot);
+        Tattoos[i]->GetSubDef(&slot);
         CDefHolder<const CTattooDef> tattoo = { slot.Object };
         tattoos.push_back(slot);
     }

@@ -43,10 +43,10 @@ public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
-class CWorld { public:
+class CMainGameComponent { public:                 // partial view: CTCBase::PeekComponent() 0x00686D60 (was the stand-in CWorld)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsLoading();                           // slot 9 (+0x24) (name descriptive)
+    virtual bool IsEditorActive() const;                // slot 9 (+0x24) 0x004197B0 FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ (was IsLoading)
 };
 class CThingPlayerCreature;
 class CPlayer { public:
@@ -87,8 +87,8 @@ protected:
     CPlayerManager&     GetPlayerManager();             // 0x00686D40 (Ego_r.pdb: protected, CPlayerManager&)
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+    const CMainGameComponent& PeekComponent() const;    // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ (was GetWorld_00686d60)
 public:
-    CWorld*             GetWorld_00686d60();                     // 0x00686D60
 };
 class CTCKraken : public CTCBase { public:
     unsigned char       _pad08[0x10 - 0x08];
@@ -100,7 +100,7 @@ class CTCKraken : public CTCBase { public:
 
 void CTCKraken::GetCentreMarker()
 {
-    if (GetWorld_00686d60()->IsLoading())
+    if (PeekComponent().IsEditorActive())
         return;
     const CGameDefinitionManager& definitions = GetDefinitionManager();
     long chamberIndex = definitions.GetDefGlobalIndexFromName("BUILDING_KRAKEN_CHAMBER");

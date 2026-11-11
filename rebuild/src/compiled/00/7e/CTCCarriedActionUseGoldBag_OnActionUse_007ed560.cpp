@@ -1,5 +1,5 @@
-// CTCCarriedActionUseGoldBag::OnActionUse(CThingAICreature* user) -- a creature with gold uses a carried gold bag on a targeted creature (type 2): give it the default gift (50) or the receiver's own asking amount; then report the use to the bag's interface-0x1A component
-// Leaf: vfunc_28
+// CTCCarriedActionUseGoldBag::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingAICreature*)] -- a creature with gold uses a carried gold bag on a targeted creature (type 2): give it the default gift (50) or the receiver's own asking amount; then report the use to the bag's interface-0x1A component
+// Leaf: OnActionUse
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x007ED560, 368 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28).
 // Callees: the base use hook 0x007EAB90, CVectorMap::LowerBound const 0x004365B0 (interfaces 8, 4, 0x80) and 0x0040F020
@@ -93,10 +93,13 @@ class CTCTargetingBase { public:                                   // interface 
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
 };
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThingAICreature*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)
 };
 long GetDefaultGoldGift();                                 // 0x007898F0
 class CTCHeroStats { public:                                       // interface 4
@@ -107,12 +110,13 @@ struct CTCGoldReceiver {                                    // interface 0x80
     long GetGoldGiftAmount();                               // 0x00789900
 };
 struct CTCCarriedActionUseGoldBag : CTCCarriedActionUseBase {
-    void vfunc_28(CThingAICreature* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingAICreature*))
 };
 
-void CTCCarriedActionUseGoldBag::vfunc_28(CThingAICreature* user)
+void CTCCarriedActionUseGoldBag::OnActionUse(CThing& thing)
 {
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CThingAICreature* user = (CThingAICreature*)&thing;
+    CTCCarriedActionUseBase::OnActionUse(thing);
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
         CTCHeroStats* stats;

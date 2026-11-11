@@ -114,12 +114,14 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 
 #include "engine/CTCBase.h"
 class CFaction;class CThing;class CThingAICreature;
-struct HeroDeedLogMethods:CTCBase{long PostDeed(long,const C3DVector&,const CThing*,CThingAICreature*,long,bool,bool,const CFaction*,bool,long);}; //006C6990 actual 10 stack arguments
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };   // Ego_r.pdb enum (values used here by number)
+class CTCHeroOpinionDeedLog:public CTCBase{public:long PostDeed(EOpinionDeedType,const C3DVector&,const CThing*,CThingAICreature*,EOpinionPostDeedType,bool,bool,const CFaction*,bool,long);}; //006C6990 Ego_r.pdb / FableWin.pdb (was the stand-in HeroDeedLogMethods)
 struct OpinionSourceMethods:CTCBase{void PostDeed(long,float);}; //007712F0: Deed+80, counter+84, expiry frame+88; recovered OnActivate label is incorrect
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityPostOpinionDeedToAll(const ScriptMethods&,long)const;};
 void CGameScriptInterfaceMethods::EntityPostOpinionDeedToAll(const ScriptMethods& script,long deed)const{
  CThingNative* thing=script.GetPThing();if(thing){
- if(thing->UsingComponents[2]&0x20000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)81);ComponentEntry* end=map->Finish;HeroDeedLogMethods* log=static_cast<HeroDeedLogMethods*>(((void*)(it==end||it->first>81?end:it)->second));bool positive=deed>=3&&deed<=10;log->PostDeed(deed,thing->GetPos(),0,0,7,positive,false,0,false,0);}
+ if(thing->UsingComponents[2]&0x20000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)81);ComponentEntry* end=map->Finish;CTCHeroOpinionDeedLog* log=static_cast<CTCHeroOpinionDeedLog*>(((void*)(it==end||it->first>81?end:it)->second));bool positive=deed>=3&&deed<=10;log->PostDeed((EOpinionDeedType)deed,thing->GetPos(),0,0,(EOpinionPostDeedType)7,positive,false,0,false,0);}
  else{OpinionSourceMethods* source;if(thing->UsingComponents[2]&0x10000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)80);ComponentEntry* end=map->Finish;source=static_cast<OpinionSourceMethods*>(((void*)(it==end||it->first>80?end:it)->second));}else{CCharString componentName("CTCOpinionSource",-1);source=static_cast<OpinionSourceMethods*>(thing->AddTC(componentName,false,0));}source->PostDeed(deed,5.0f);}
  }
 }

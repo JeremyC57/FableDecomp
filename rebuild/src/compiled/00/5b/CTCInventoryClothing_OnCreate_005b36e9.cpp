@@ -34,24 +34,28 @@ class CDefPointeeBase { public:
     long m_refCount;                            // +0x04
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* Object;
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-struct CInventoryClothingDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x7c - 0x08];
     long InventoryDefIndex;                     // +0x7c
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CInventoryClothingDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
-CInventoryClothingDef* FindSubDef_00485815(CDefClassBase* defClass);   // the sub-def, add-ref'd (0 when absent)
+CCreatureDef* FindSubDef_00485815(const CDefClassBase* defClass);   // the sub-def, add-ref'd (0 when absent)
 // Stand-in for CDefClassBase::GetSubDef<T> @ 0x00485815: same TU, writes the out slot only on success, so the caller's
 // def slot does not escape.
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CInventoryClothingDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
-    CInventoryClothingDef* def = FindSubDef_00485815(this);
+    CCreatureDef* def = FindSubDef_00485815(this);
     if (def == 0)
         return false;
     out->Object = def;
@@ -232,7 +236,7 @@ void CTCInventoryClothing::OnCreate()
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
-    CDefPointer<CInventoryClothingDef> def;
+    CDefPointer<const CCreatureDef> def;
     def.Object = 0;
     if (thingDef)
         ++thingDef->m_refCount;

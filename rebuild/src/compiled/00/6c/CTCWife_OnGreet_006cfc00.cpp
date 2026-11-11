@@ -33,9 +33,11 @@ class CWorld { public:
 };
 class CFaction;
 class CThingAICreature;
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
 class CTCHeroOpinionDeedLog { public:
-    long PostDeed(long deedType, const C3DVector* position, CThing* thing, CThing* creature, long postType,
-                  bool b1, bool b2, CFaction* faction, bool b3, long value);   // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
 };
 class CTCBase
 {
@@ -61,6 +63,6 @@ void CTCWife::OnGreet()
     CTCHeroOpinionDeedLog* deedLog;
     if (hero->GetTC(TCI_HERO_OPINION_DEED_LOG, &deedLog)) {
         if (ParentThing->GetTypeFlags() & 0x10)
-            deedLog->PostDeed(0x50, &ParentThing->GetPos(), ParentThing, ParentThing, 1, false, false, 0, false, 0);
+            deedLog->PostDeed(OPINION_DEED_TYPE_WIFE_GREETED, ParentThing->GetPos(), ParentThing, (CThingAICreature*)ParentThing, (EOpinionPostDeedType)1, false, false, 0, false, 0);
     }
 }

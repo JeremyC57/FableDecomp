@@ -201,6 +201,9 @@ FABLE_STATIC_ASSERT(offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
 #include "rebuild_abi.h"
 
 class CThing;
+#ifdef FABLE_RETAIL_CTCBASE_FLAT_PEEKCOMPONENT
+class CMainGameComponent;
+#endif
 
 #pragma pack(push, 1)
 class CTCBase {
@@ -210,6 +213,14 @@ public:
     bool          ToBeRemoved;                               // +0x08
     bool          IsInGlobalUpdateTCs;                       // +0x09
     unsigned char _pad_0x0a[0x2];                            // +0x0a
+#ifdef FABLE_RETAIL_CTCBASE_FLAT_PEEKCOMPONENT
+    // Flattened-branch opt-in (agentNF15, row 0x0071AA50 CTCEmoteIcon::SetActiveTimer): the same Ego_r.pdb protected accessor the
+    // retail branch declares under FABLE_RETAIL_CTCBASE_COMPONENT, ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ, out of line in
+    // retail at 0x00686D60 (`mov eax,[0x013B8A1C] ; mov eax,[eax+1Ch] ; ret`). Declaration only, no layout change.
+protected:
+    const CMainGameComponent& PeekComponent() const;                     // 0x00686D60
+public:
+#endif
 };
 #pragma pack(pop)
 

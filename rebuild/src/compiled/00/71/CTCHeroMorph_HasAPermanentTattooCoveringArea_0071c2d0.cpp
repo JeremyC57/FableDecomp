@@ -23,11 +23,12 @@ template <class T> class CDefPointer { public:
     ~CDefPointer() { if (Object && DecRefToZero(Object->m_refCount)) Object->Delete(); }
     T* operator->() const { return (T*)Object; }
 };
-template <class T> struct CSubDefPointer {      // GetSubDef's out pointer (released by hand)
+class CTattooDef;
+template <> class CDefPointer<const CTattooDef> { public:   // GetSubDef's out slot (Ego_r.pdb CDefPointer<const CTattooDef>), released at scope end without a null test
     CDefPointeeBase* Object;
-    CSubDefPointer() : Object(0) {}
-    ~CSubDefPointer() { if (DecRefToZero(Object->m_refCount)) Object->Delete(); }
-    T* operator->() const { return (T*)Object; }
+    CDefPointer() : Object(0) {}
+    ~CDefPointer() { if (DecRefToZero(Object->m_refCount)) Object->Delete(); }
+    const CTattooDef* operator->() const { return (const CTattooDef*)Object; }
 };
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
@@ -42,14 +43,16 @@ class CTattooDef : public CDefPointeeBase { public:
     unsigned char _pad3e[2];
     long  CoveredArea;                          // +0x40
 };
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CSubDefPointer<const CTattooDef>* out) const;  // 0x005B1EFC
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1EFC GetSubDef<CTattooDef> (Ego_r.pdb member template)
+};
+class CThingBaseDef : public CDefClassBase { public:
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CSubDefPointer<const CTattooDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CTattooDef>(CDefPointer<const CTattooDef>* out) const
 {
     void* def = FindDef_CThingBaseDef_GetSubDef_0();
     if (!def)
@@ -79,7 +82,7 @@ long CTCHeroMorph::HasAPermanentTattooCoveringArea() const
 {
     for (const CDefPointer<const CThingBaseDef>* it = Tattoos.begin(); it != Tattoos.end(); ++it) {
         CDefPointer<const CThingBaseDef> def = *it;
-        CSubDefPointer<const CTattooDef> out;
+        CDefPointer<const CTattooDef> out;
         def->GetSubDef(&out);
         if (out->Permanent)
             return out->CoveredArea;

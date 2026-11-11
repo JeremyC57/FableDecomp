@@ -29,6 +29,7 @@ template<class T> class CDefPointer { public:
  CIVCountedPointeeBase* PObject;
  CDefPointer():PObject(0){}
  CDefPointer(const CDefPointer& p):PObject(p.PObject){if(PObject)PObject->AddReference();}
+ template<class U> CDefPointer(const CDefPointer<U>& p):PObject(p.PObject){if(PObject)PObject->AddReference();} // Ego_r.pdb ??$?0$$CBV...@?$CDefPointer@V...@@QAE@ABV?$CDefPointer@$$CBV...@@@Z
  ~CDefPointer(){if(PObject)PObject->RemoveReference();}
  CDefPointer& operator=(const CDefPointer& p){if(PObject!=p.PObject){if(PObject){PObject->RemoveReference();PObject=0;}PObject=p.PObject;if(PObject)PObject->AddReference();}return *this;}
 };
@@ -37,17 +38,16 @@ namespace NUISystem { class CUIMiscThingsDef; class CUIIconsDef; }
 class CDefinitionManager { public:
  CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const; //009ad9e0
  long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009ad390
- bool GetDef(long,CDefPointer<NUISystem::CUIMiscThingsDef>*); //0042b312
- bool GetDef(long,CDefPointer<NUISystem::CUIIconsDef>*); //0042b374
+ template<class T> bool GetDef(long,CDefPointer<const T>*) const; //0042b312 GetDef<NUISystem::CUIMiscThingsDef>, 0042b374 GetDef<NUISystem::CUIIconsDef> (Ego_r.pdb member template)
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIMiscThingsDef>* out){
+template<> bool CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>(long index,CDefPointer<const NUISystem::CUIMiscThingsDef>* out) const{
  if(index>0){ CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
   if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
  }}return false;
 }
-bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIIconsDef>* out){
+template<> bool CDefinitionManager::GetDef<NUISystem::CUIIconsDef>(long index,CDefPointer<const NUISystem::CUIIconsDef>* out) const{
  if(index>0){ CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
   if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
  }}return false;
@@ -70,7 +70,7 @@ FABLE_STATIC_ASSERT(sizeof(CDefPointer<NUISystem::CUIIconsDef>)==4);
 FABLE_STATIC_ASSERT(sizeof(CIVCountedPointeeBase)==sizeof(CIVCountedPointeeBaseDonor));
 #endif
 CDefPointer<NUISystem::CUIMiscThingsDef> NUISystem::CManager::GetMiscThingsDef(){
- CDefPointer<CUIMiscThingsDef> result;
+ CDefPointer<const CUIMiscThingsDef> result;   // the GetDef<T> out slot is CDefPointer<const T>; returned through the converting copy
  if(m_pDefinitionManager){
    long index; { CCharString name("UI_MISC_THINGS_DEF",-1); index=m_pDefinitionManager->GetGlobalIndexFromClassIndex(name,1); }
    m_pDefinitionManager->GetDef(index,&result);

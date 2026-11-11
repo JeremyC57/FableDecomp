@@ -11,23 +11,30 @@
 //         CTCDoor bytes +0x10 (open), +0x12 (locked), +0x13 (barred) (descriptive).
 #include "fable_compiler.h"
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);            // 0x0040F020
-    SEntry* LowerBound(const long* type) const;      // 0x004365B0
+// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
 // caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+__declspec(noinline) const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    SEntry* it = first;
-    long count = last - first;
+    const value_type* it = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count / 2;
-        if (it[half].type < *type) {
+        if (it[half].first < key) {
             it += half + 1;
             count -= half + 1;
         } else
@@ -39,13 +46,13 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
 // caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    long count = last - first;
+    value_type* it = _M_start;
+    long count = _M_finish - _M_start;
     while (count > 0) {
         long half = count / 2;
-        if (it[half].type < *type) {
+        if (it[half].first < key) {
             it += half + 1;
             count -= half + 1;
         } else
@@ -87,12 +94,12 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)wanted;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || wanted < it->type)
-                it = map->last;
-            *out = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->_M_finish || wanted < it->first)
+                it = map->_M_finish;
+            *out = (T*)it->second;
             return true;
         }
         return false;
@@ -100,12 +107,12 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(const T** out, long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)wanted;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || wanted < it->type)
-                it = map->last;
-            *out = (const T*)it->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->_M_finish || wanted < it->first)
+                it = map->_M_finish;
+            *out = (const T*)it->second;
             return true;
         }
         return false;

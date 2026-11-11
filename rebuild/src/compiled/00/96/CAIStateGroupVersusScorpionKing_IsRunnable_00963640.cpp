@@ -36,18 +36,22 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-class CEnemyDef { public:
+class CCreatureDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
     unsigned char _pad08[0xac - 0x08];
     long CreatureType;                          // +0xac
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
     CDefPointer& operator=(const CDefPointer& other)
     {
         if (Object != other.Object) {
@@ -64,7 +68,7 @@ template <class T> class CDefPointer { public:
     }
 };
 class CDefinitionManager { public:
-    CDefPointer<CEnemyDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
+    CDefPointer<const CCreatureDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
 class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
@@ -73,18 +77,18 @@ class CDefClassBase { public:
     virtual long* GetSubDefIndex(const CCharString& name);  // slot 14 (+0x38)
     unsigned char _pad04[0x1c - 4];
     CDefinitionManager* m_pManager;             // +0x1c
-    bool GetSubDef(CDefPointer<CEnemyDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 #pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<CEnemyDef>* out)
+template <> bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     long* pIndex;
     {
         CCharString name("CCreatureDef");
-        pIndex = GetSubDefIndex(name);
+        pIndex = const_cast<CDefClassBase*>(this)->GetSubDefIndex(name);
     }
     if (pIndex) {
-        CDefPointer<CEnemyDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
+        CDefPointer<const CCreatureDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
         *out = result;
         return true;
     }
@@ -192,7 +196,7 @@ bool CAIStateGroup_VersusScorpionKing::IsRunnable()
     CTCEnemySource* source;
     PBrain->PCreature->GetInterface(&source, 8);
     CThing* enemy = source->GetEnemy();
-    CDefPointer<CEnemyDef> def;
+    CDefPointer<const CCreatureDef> def;
     if (enemy != 0 && !(enemy->m_flags91 & 1)) {
         if (enemy->m_pDef->GetSubDef(&def) && def->CreatureType == 0x80000) {
             CThing* centre;

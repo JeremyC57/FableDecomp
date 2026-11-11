@@ -35,38 +35,45 @@ class CInventoryItemDef : public CIVCountedPointeeBase { public:
     long          Graphic;                                  // +0x25 (CEngineGraphic)
 };
 #pragma pack(pop)
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     FABLE_FORCEINLINE CDefPointer() : Object(0) {}
     FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->IVRefCount == 0)
             Object->Delete();
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-struct CObjectDef : CIVCountedPointeeBase {
-    void GetSubDef(CDefPointer<CInventoryItemDef>* out) const;   // 0x005BADE1
+class CDefClassBase : public CIVCountedPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005BADE1 GetSubDef<CInventoryItemDef> (Ego_r.pdb member template)
+};
+class CThingObjectDef : public CDefClassBase { public:
 };
 void* FindDef_CObjectDef_GetSubDef();   // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
-__declspec(noinline) void CObjectDef::GetSubDef(CDefPointer<CInventoryItemDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer<const CInventoryItemDef>* out) const
 {
     void* def = FindDef_CObjectDef_GetSubDef();
     if (!def)
-        return;
+        return false;
     *(void**)out = def;
+    return true;
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CObjectDef>* out) const;   // 0x0042B040
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 GetDef<CThingObjectDef> (Ego_r.pdb member template)
 };
 class CGameDefinitionManager : public CDefinitionManager
 {
 };
 void* FindDef_CDefinitionManager_GetDef();   // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CObjectDef>* out) const
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingObjectDef>(long index, CDefPointer<const CThingObjectDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef();
     if (!def)
@@ -172,9 +179,9 @@ void CAutoPickupBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, 
     }
     if (!Pickups.empty()) {
         CAutoPickup& pickup = Pickups.front();
-        CDefPointer<CObjectDef> def;
+        CDefPointer<const CThingObjectDef> def;
         CMainGameComponent::Get()->PeekDefinitionManager().GetDef(pickup.DefIndex, &def);
-        CDefPointer<CInventoryItemDef> itemDef;
+        CDefPointer<const CInventoryItemDef> itemDef;
         def->GetSubDef(&itemDef);
         GraphicFrame = itemDef->Graphic;
         Value = (float)pickup.Count;

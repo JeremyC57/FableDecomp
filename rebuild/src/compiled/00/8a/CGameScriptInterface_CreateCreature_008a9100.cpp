@@ -42,20 +42,21 @@ class CThingCreatureDef { public:
     unsigned char _pad08[0x11c - 0x08];
     long Player;                                        // +0x11C
 };
-struct CDefPointerThingCreatureDef {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CThingCreatureDef> { public:   // Ego_r.pdb CDefPointer<const CThingCreatureDef> (was the row-local CDefPointerThingCreatureDef)
     CThingCreatureDef* Object;
-    CDefPointerThingCreatureDef() : Object(0) {}
-    ~CDefPointerThingCreatureDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
+    CDefPointer() : Object(0) {}
+    ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
 };
 class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00513160 GetDef<CThingCreatureDef> (Ego_r.pdb member template)
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointerThingCreatureDef* out);             // 0x00513160
 };
 void* FindDef_CGameDefinitionManager_GetDef_0();
 #pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CDefPointerThingCreatureDef* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingCreatureDef>(long globalIndex, CDefPointer<const CThingCreatureDef>* out) const
 {
     void* def = FindDef_CGameDefinitionManager_GetDef_0();
     if (!def)
@@ -108,7 +109,7 @@ CScriptThing CGameScriptInterface::CreateCreature(const CCharString& defName, co
 {
     long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
     CScriptThing result;
-    CDefPointerThingCreatureDef def;
+    CDefPointer<const CThingCreatureDef> def;
     if (DefinitionManager->GetDef(index, &def)) {
         CThingAICreatureInit init;
         init.ScriptName = scriptName;

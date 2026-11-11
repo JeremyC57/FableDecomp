@@ -103,9 +103,11 @@ FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing ex
     CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
     return t && !t->m_dead;
 }
-struct CTCInventoryBase_Retail {
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08
+namespace NInventory {
+class CTCInventoryBase { public:
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 };
+}
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
@@ -123,7 +125,8 @@ long CGameScriptInterface::GetNumberOfItemsOfTypeInInventory(const CCharString& 
     if (defIndex > 0) {
         const CThing_Retail* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
         if (hero && !hero->m_dead)
-            return ((CTCInventoryBase_Retail*)GetTCIfPresentConst(hero, 0x11))->GetNumberOfItemsOfTypeInInventory(defIndex);
+            return ((NInventory::CTCInventoryBase*
+)GetTCIfPresentConst(hero, 0x11))->GetNumberOfItemsOfTypeInInventory(defIndex);
     }
     return 0;
 }

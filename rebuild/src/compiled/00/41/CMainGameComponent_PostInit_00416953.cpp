@@ -33,12 +33,15 @@ CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);  // 0x0099BF30 (wchar_t is unsigned short under VC7.1 defaults)
 CWideString __fastcall GetLevelsDirectory();                                     // 0x0041A060
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 { public:                                // 0x1c bytes
+class CAFile { public:                                         // Ego_r.pdb base of CDiskFileWin32 (row-local view)
+    virtual ~CAFile();                                         // 0x0099A300
+    static void __fastcall CopyFileW(CAFile& from, CAFile& to);   // 0x00998E70 Ego_r.pdb / FableWin.pdb ?CopyFileW@CAFile@@SIXAAV1@0@Z (was a free function on CDiskFileWin32&)
+};
+class CDiskFileWin32 : public CAFile { public:                // 0x1c bytes
     unsigned char _body[0x18];
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     virtual ~CDiskFileWin32();                                 // 0x00401630 (out-of-line copy)
 };
-void __fastcall CopyFileW(CDiskFileWin32& from, CDiskFileWin32& to);   // 0x00998E70
 namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 }
@@ -124,12 +127,12 @@ void CMainGameComponent::PostInit()
             CDiskFileWin32 mapFrom(mapPath, FILE_ACCESS_READ, 2);
             CWideString staticMapPath = PWorld->ConvertWorldToStaticMapPath(path, true, g_b13B8616);
             CDiskFileWin32 mapTo(staticMapPath, FILE_ACCESS_WRITE, 2);
-            CopyFileW(mapFrom, mapTo);
+            CAFile::CopyFileW(mapFrom, mapTo);
             CWideString mapPath2 = PWorld->GetMapPath2(path);
             CDiskFileWin32 mapFrom2(mapPath2, FILE_ACCESS_READ, 2);
             CWideString staticMapPath2 = PWorld->ConvertWorldToStaticMapPath2(path, true, g_b13B8616);
             CDiskFileWin32 mapTo2(staticMapPath2, FILE_ACCESS_WRITE, 2);
-            CopyFileW(mapFrom2, mapTo2);
+            CAFile::CopyFileW(mapFrom2, mapTo2);
             return;
         }
         PWorld->PostLoad(0);

@@ -1,6 +1,6 @@
 // CTCCreatureExpression::UpdateBlinking(CAnimateThing& animate, long) -- on a 1-in-50 world-seed roll start a blink: play a random loaded "ST_BLINK" animation as combination animation type 13; while blinking, stop once the blink animation is gone or has finished
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00728FF0, 280 bytes (+ int3 padding), `ret 8`.
-// Callees: CTCBase::GetGameSubsystem @ 0x00686D60 (the main game component; its WorldSeed +0x1613C), GFROR13 @ 0x00497890
+// Callees: CTCBase::PeekComponent() const @ 0x00686D60 (Ego_r.pdb) (the main game component; its WorldSeed +0x1613C), GFROR13 @ 0x00497890
 //   (`__fastcall`), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, the creature's virtual slot 73
 //   (+0x124, has-animation test (const CCharString&, bool)), CThingCreatureBase::GetRandomLoadedAnimFromName(const
 //   CCharString&, bool) @ 0x00662FA0, CAnimationEntry::GetAnimateThingFlags @ 0x005DC390, the 7-argument CAnimInit
@@ -66,19 +66,22 @@ class CThingCreatureBase { public:
 public:
     const CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString&, bool) const;   // 0x00662FA0
 };
-class CTCCreatureExpression { public:
+class CTCBase { public:                                 // row-local view of the component base (Ego_r.pdb CTCBase: vptr, ParentThing)
     virtual void v00();
     CThingCreatureBase* ParentThing;                    // +0x04 (CTCBase)
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+};
+class CTCCreatureExpression : public CTCBase { public:
     unsigned char _pad08[0x10 - 0x08];
     bool Blinking;                                      // +0x10
-    CMainGameComponent* GetGameSubsystem();             // 0x00686D60 (CTCBase)
     void UpdateBlinking(CAnimateThing& animate, long);
 };
 
 void CTCCreatureExpression::UpdateBlinking(CAnimateThing& animate, long)
 {
     CThingCreatureBase* creature = ParentThing;
-    if (GFNextRandomSeed(&GetGameSubsystem()->WorldSeed) % 50 == 0 && !Blinking) {
+    if (GFNextRandomSeed(&const_cast<CMainGameComponent&>(PeekComponent()).WorldSeed) % 50 == 0 && !Blinking) {
         bool hasBlink = creature->HasAnimation("ST_BLINK", false);
         if (hasBlink) {
             const CAnimationEntry* entry = creature->GetRandomLoadedAnimFromName("ST_BLINK", false);

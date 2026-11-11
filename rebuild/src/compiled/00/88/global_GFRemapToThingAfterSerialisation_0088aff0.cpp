@@ -29,7 +29,14 @@ struct SThingUIDRemapComponent {                        // the interface-0xEB co
     unsigned __int64 RemapUID;                          // +0x10
 };
 
+class CThingManager;
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
+
 public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
@@ -56,7 +63,6 @@ class CThingManager {
 public:
     CThing* GetPThingWithUID(unsigned __int64 uid);               // 0x0051ED80
 };
-extern CThingManager* g_pThingManager;                  // 0x013B8A1C
 
 class CBaseObject;
 class CBaseIntelligentPointer {
@@ -93,6 +99,6 @@ void __fastcall GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>& po
     if (IsThingAlive((CThing*)pointer.GetPItem()) && pointer->GetInterface(&remap, TC_THING_UID_REMAP)) {
         unsigned __int64 uid = remap->RemapUID;
         pointer->Kill(false);
-        pointer = CIntelligentPointer<CThing>(g_pThingManager->GetPThingWithUID(uid));
+        pointer = CIntelligentPointer<CThing>(CThing::GetPCurrentThingManager()->GetPThingWithUID(uid));
     }
 }

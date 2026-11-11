@@ -22362,7 +22362,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007bd80a	~CTCShotDefinitionDrainLife	NThingShot::CTCShotDefinitionDrainLife	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
 007bd845	InitMovement	CTCShotDefinitionDrainLife	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
 007bdac7	UpdateCollision	NThingShot::CTCShotDefinitionDrainLife	__thiscall	void	2	CTCShotDefinitionDrainLife *,bool *	1	yes	accepted									
-007bdb66	OnCollision	CTCShotDefinitionNymphFun	__thiscall	void	5	CTCShotDefinitionNymphFun *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
+007bdb66	OnCollision	NThingShot::CTCShotDefinitionNymphFun	__thiscall	void	5	CTCShotDefinitionNymphFun *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 007bdcfc	GetShotDamage	CTCShotDefinitionMultiArrow	__thiscall	float	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
 007bdd77	InitAttachedEffects	NThingShot::CTCShotDefinitionMultiArrow	__thiscall	void	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
 007bde31	OnCollision	CTCShotDefinitionFireballSpell	__thiscall	void	5	CTCShotDefinitionFireballSpell *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
@@ -23343,12 +23343,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007eb600	CCreatureAction_PlayerInteractionViewQuests	CCreatureAction_PlayerInteractionViewQuests	__thiscall	undefined	2	CCreatureAction_PickUpJug *,CCreatureAction_PickUpJug *	0	yes	accepted									
 007eb6a0	CTCActionUseSearch::vfunc_28	CTCActionUseSearch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007eb990	Dtor_CCreatureActionBaseBase_007eb990	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb990.cpp
-007eb9b0	vfunc_28	CTCActionUseBlowHorn	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007eb9b0	OnActionUse	CTCActionUseBlowHorn	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007eba20	CCreatureAction_LookThroughWindow	CCreatureAction_LookThroughWindow	__thiscall	undefined	2	CCreatureAction_AlertToPlayer *,CThingAICreature *	0	yes	accepted									
 007eba90	`scalar_deleting_destructor'	CCreatureAction_LookThroughWindow	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CLandscapeBackgroundPatch_vectordeletingdestructor_007eba90.cpp
 007ebab0	OnActionUse	CTCActionUseWindow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ebb30	Clone	CCreatureAction_LookThroughWindow	__thiscall	CCreatureActionBase *	1	CCreatureAction_LookThroughWindow *	1	yes	accepted									
-007ebbc0	vfunc_28	CTCActionUseAcceptBoast	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007ebbc0	OnActionUse	CTCActionUseAcceptBoast	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ebc20	OnActionUse	CTCActionUseStartExtrapolationMorph	unknown	undefined	0		0	yes	accepted									
 007ebd40	CIVCountedPointer_Release_007ebd40	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ebd40.cpp
 007ebd70	CIVCountedPointer_Release_007ebd70	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ebd70.cpp
@@ -23359,13 +23359,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007ecd00	GetSubDef<CTavernDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 007ece20	OnActionUse	CTCActionUseKickChicken	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ece60	vfunc_32	CTCCarriedActionUseBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007ecee0	vfunc_28	CTCCarriedActionUseLamp	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007ecee0	OnActionUse	CTCCarriedActionUseLamp	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ecfd0	CCreatureAction_DropWeapon	CCreatureAction_DropWeapon	__thiscall	undefined	2	CCreatureAction_AlertToPlayer *,CThingAICreature *	0	yes	accepted									
 007ed040	`scalar_deleting_destructor'	CCreatureAction_DropWeapon	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CLandscapeBackgroundPatch_vectordeletingdestructor_007ed040.cpp
-007ed060	vfunc_28	CTCCarriedActionUseDropGenericBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007ed0a0	vfunc_28	CTCCarriedActionUseDrop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007ed060	OnActionUse	CTCCarriedActionUseDropGenericBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007ed0a0	OnActionUse	CTCCarriedActionUseDrop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ed140	Clone	CCreatureAction_DropWeapon	__thiscall	CCreatureActionBase *	1	CCreatureAction_DropWeapon *	1	yes	accepted									
-007ed170	vfunc_28	CTCCarriedActionUseGive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007ed170	OnActionUse	CTCCarriedActionUseGive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ed270	~CAggregate_007ed270	_unattributed	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									
 007ed2c0	OnActionUse	CTCCarriedActionUseGiveBeer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ed420	Dtor_CCreatureActionBaseBase_007ed420	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007ed420.cpp
@@ -23385,9 +23385,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007edbe0	OnActionUse	CTCCarriedActionUseFish	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007edcd0	vfunc_32	CTCCarriedActionUseFish	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007edd60	OnActionUse	CTCCarriedActionUsePotion	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007eddf0	vfunc_28	CTCCarriedActionUseWallMount	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007eddf0	OnActionUse	CTCCarriedActionUseWallMount	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007edee0	OnActionUseCommon	CTCCarriedActionUseTrophy	__thiscall	void	2	CTCCarriedActionUseTrophy *,CThing *	1	yes	accepted									
-007edfb0	vfunc_28	CTCCarriedActionUseTrophy	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007edfb0	OnActionUse	CTCCarriedActionUseTrophy	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007edfd0	vfunc_32	CTCCarriedActionUseTrophy	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007edff0	Dtor_CCreatureActionBaseBase_007edff0	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007edff0.cpp
 007ee010	CCreatureAction_UseSwitch	CCreatureAction_UseSwitch	__thiscall	undefined	3	CCreatureAction_AddRealObjectToInventory *,CThingCreatureBase *,CThingObject *	0	yes	accepted									
@@ -23437,7 +23437,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f01f0	OnActionUse	CTCCarriedActionUseFishingRod	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f02f0	vfunc_32	CTCCarriedActionUseSpade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f0300	IsThingAbleToDig	CTCCarriedActionUseSpade	__fastcall	bool	1	CThingCreatureBase *	1	yes	accepted									
-007f03d0	vfunc_28	CTCCarriedActionUseSpade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007f03d0	OnActionUse	CTCCarriedActionUseSpade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f04b0	OnCreate	CTCResurrectionItem	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f04c0	OnItemUsed	CTCResurrectionItem	__thiscall	void	2	CTCResurrectionItem *,CThingCreatureBase *	1	yes	accepted									
 007f05c0	CCombatAction_GenericStrikeResponseKnockdownRecover	CCombatAction_GenericStrikeResponseKnockdownRecover	__thiscall	undefined	3	CDrawAutoPickups *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									

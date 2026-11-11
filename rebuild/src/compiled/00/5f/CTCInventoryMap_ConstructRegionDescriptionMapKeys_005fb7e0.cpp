@@ -39,8 +39,12 @@ class CDefPointeeBase { public:
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
     {
@@ -48,10 +52,11 @@ template <class T> class CDefPointer { public:
             Object->Release();
     }
 };
-struct CUIMiscThingsDef : CDefPointeeBase {};
+namespace NUISystem { class CUIMiscThingsDef : public CDefPointeeBase { public:}; }
+using NUISystem::CUIMiscThingsDef;
 class CDefinitionManager { public:
     long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
-    template <class T> bool GetDef(long globalIndex, CDefPointer<T>* out);                     // 0x0042B312
+    template <class T> bool GetDef(long globalIndex, CDefPointer<const T>* out) const;         // 0x0042B312 GetDef<NUISystem::CUIMiscThingsDef> (Ego_r.pdb)
 };
 void* FindDef_s7r_0();
 long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work FindDef_s7r_0 does (outside the bytes graded here)
@@ -67,7 +72,7 @@ __declspec(noinline) void* FindDef_s7r_0()
 #pragma auto_inline(off)
 // Same-TU body of GetDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointer<T>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>(long p0, CDefPointer<const NUISystem::CUIMiscThingsDef>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
@@ -165,7 +170,7 @@ void CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* p
 {
     NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CWideString text;
-    CDefPointer<CUIMiscThingsDef> miscDef;
+    CDefPointer<const CUIMiscThingsDef> miscDef;
     long index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", 1);
     CGameDefinitionManager::Get().GetDef(index, &miscDef);
     CCountedPointer<NUISystem::CComponent> container;

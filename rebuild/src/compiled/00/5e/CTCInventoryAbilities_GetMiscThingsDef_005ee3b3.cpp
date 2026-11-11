@@ -34,25 +34,29 @@ struct CDefBase {                           // counted game definition: vtable +
     long m_refCount;                        // +4
 };
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T>
 class CDefPointer { public:
-    T* m_pDef;
+    typename CDefNonConst<T>::Type* m_pDef;
     FABLE_FORCEINLINE CDefPointer() : m_pDef(0) { }
     FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
     FABLE_FORCEINLINE ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
 };
 
-struct CUIMiscThingsDef : CDefBase { };
+namespace NUISystem { class CUIMiscThingsDef : public CDefBase { }; }
 
 class CDefinitionManager { public:
     long GetDefGlobalIndex(const CCharString& name, bool mustExist);          // 0x009AD390
-    template <class T> bool GetDef(long index, CDefPointer<T>* result);        // 0x0042B312 (one instantiation)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* result) const;   // 0x0042B312 GetDef<NUISystem::CUIMiscThingsDef> (Ego_r.pdb)
 };
 void* FindDef_s7r_0();
 #pragma auto_inline(off)
 // Same-TU body of GetDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointer<T>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>(long p0, CDefPointer<const NUISystem::CUIMiscThingsDef>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
@@ -71,11 +75,11 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
-class CTCInventoryAbilities { public:
-    CDefPointer<CUIMiscThingsDef> GetMiscThingsDef() const;
+class CTCInventoryAbilities { private:
+    const CDefPointer<const NUISystem::CUIMiscThingsDef> GetMiscThingsDef() const;   // Ego_r.pdb: private, const return
 };
 
-CDefPointer<CUIMiscThingsDef> CTCInventoryAbilities::GetMiscThingsDef() const
+const CDefPointer<const NUISystem::CUIMiscThingsDef> CTCInventoryAbilities::GetMiscThingsDef() const
 {
     long index;
     {
@@ -83,7 +87,7 @@ CDefPointer<CUIMiscThingsDef> CTCInventoryAbilities::GetMiscThingsDef() const
         index = CGameDefinitionManager::Get().GetDefGlobalIndex(name, true);
     }
     {
-        CDefPointer<CUIMiscThingsDef> def;      // sibling block: shares the string's frame word
+        CDefPointer<const NUISystem::CUIMiscThingsDef> def;      // sibling block: shares the string's frame word
         CGameDefinitionManager::Get().GetDef(index, &def);
         return def;
     }

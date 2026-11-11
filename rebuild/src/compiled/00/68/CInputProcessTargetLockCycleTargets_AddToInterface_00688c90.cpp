@@ -29,8 +29,12 @@ struct CDefObject : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
     {
@@ -42,7 +46,7 @@ template <class T> class CDefPointer { public:
     CDefPointer& operator=(const CDefPointer& o)
     {
         if (Object != o.Object) {
-            T* object = Object;
+            typename CDefNonConst<T>::Type* object = Object;
             if (object) {
                 if (--object->m_count == 0)
                     object->Destroy();
@@ -54,7 +58,7 @@ template <class T> class CDefPointer { public:
         }
         return *this;
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CHeroCombatDef : public CDefObject { public:
     unsigned char _pad08[0xe4 - 0x08];
@@ -64,9 +68,11 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                        // +0x91 bit 0
     unsigned char _bits91 : 7;
-    CDefPointer<CHeroCombatDef> GetHeroCombatDef() const;   // 0x00663340
 };
-class CThingPlayerCreature : public CThing { };
+class CThingCreatureBase : public CThing { public:   // Ego_r.pdb owner of 0x00663340
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 (Ego_r.pdb)
+};
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer {
 public:
     const CThingPlayerCreature* PeekPControlledCreature() const;               // 0x00487DD0
@@ -98,7 +104,7 @@ struct CHeroCombatDefHolder {
     CHeroCombatDef* Object;
     CHeroCombatDefHolder() : Object(0) { }
     ~CHeroCombatDefHolder() { if (Object) { if (--Object->m_count == 0) Object->Destroy(); } }
-    CHeroCombatDefHolder& operator=(const CDefPointer<CHeroCombatDef>& o)
+    CHeroCombatDefHolder& operator=(const CDefPointer<const CHeroCombatDef>& o)
     {
         if (Object != o.Object) {
             CHeroCombatDef* object = Object;
@@ -121,9 +127,9 @@ bool CInputProcessTargetLockCycleTargets::AddToInterface(CInputProcessManager& m
     ClickAcceptancePulseTimer = -1;
     AllowPulsesOnly = g_targetLockAllowPulsesOnly;
     CHeroCombatDefHolder def;
-    const CThing* creature = MyPlayer->PeekPControlledCreature();
+    const CThingPlayerCreature* creature = MyPlayer->PeekPControlledCreature();
     if (creature && !creature->Dead) {
-        def = creature->GetHeroCombatDef();
+        def = creature->GetPHeroCombatDef();
         ButtonPressureThresholdForClick = def->ClickPressureThreshold;
     } else {
         ButtonPressureThresholdForClick = 0.75f;

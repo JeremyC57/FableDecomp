@@ -19,16 +19,21 @@ class CWideString { public:
     ~CWideString();                                         // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);        // 0x0099BE70
-CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);            // 0x0099BF30
-class CAFile {
+CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);     // 0x0099BF30
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                               // 0x0099A300
+};
+class CAFile : public CBaseClassNonCopyable {          // Ego_r.pdb base of CDiskFileWin32 (row-local view: its statics)
 public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
-};        // 0x00999230
-bool __fastcall IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
+    static bool __fastcall IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0 Ego_r.pdb / FableWin.pdb (was a free function)
+    static void __fastcall CopyFileW(CAFile& from, CAFile& to);                 // 0x00998E70 Ego_r.pdb / FableWin.pdb (was a free function on CDiskFileWin32&)
+};
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350
 namespace NResourceDirectoryNames {
-CWideString __fastcall GetSaveDir_0041a650();                        // 0x0041A650
-CWideString __fastcall GetCustomTattooDir();                // 0x0041A6A0
+CWideString __fastcall GetTattooUserDir();                       // 0x0041A650 Ego_r.pdb (body: GetMyDocumentsDir + "My Games\\Fable\\Tattoos\\"; was GetSaveDir_0041a650)
+CWideString __fastcall GetTattooDataDir();                       // 0x0041A6A0 Ego_r.pdb (body: L"Data\\Tattoos\\"; was GetCustomTattooDir)
 }
 class CCharStringData;
 class CCharString { public:
@@ -40,12 +45,8 @@ class CUserProfileManager { public:
     CWideString ProfileName;                                // +0x08
     static CUserProfileManager& __fastcall Get();                      // 0x0040D2A0
 };
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                                               // 0x0099A300
-};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBaseClassNonCopyable { public:                             // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CAFile { public:                             // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                                   // 0x0099A920 (slot 2)
     long        AccessType;                                 // +0x04
@@ -57,7 +58,6 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
 };
-void __fastcall CopyFileW(CDiskFileWin32& from, CDiskFileWin32& to);   // 0x00998E70
 class CTattooDef { public:
     void* __vftable;
     unsigned char _pad04[0x30];
@@ -71,16 +71,16 @@ class CTattooDef { public:
 bool CTattooDef::CopyCustomTattooToUserDir() const
 {
     CUserProfileManager* profiles = &CUserProfileManager::Get();
-    CWideString destination = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\" + CustomFileName.ToWideString();
+    CWideString destination = NResourceDirectoryNames::GetTattooUserDir() + GetValidProfileName(profiles->ProfileName) + L"\\" + CustomFileName.ToWideString();
     if (CAFile::PathExists(destination))
         return true;
-    CWideString source = NResourceDirectoryNames::GetCustomTattooDir() + CustomFileNameBase.ToWideString();
+    CWideString source = NResourceDirectoryNames::GetTattooDataDir() + CustomFileNameBase.ToWideString();
     if (!CAFile::PathExists(source))
         return false;
     CDiskFileWin32 from(source, FILE_ACCESS_READ, 2);
-    if (IsRoomForFile(from.Length, destination)) {
+    if (CAFile::IsRoomForFile(from.Length, destination)) {
         CDiskFileWin32 to(destination, FILE_ACCESS_WRITE, 2);
-        CopyFileW(from, to);
+        CAFile::CopyFileW(from, to);
         return true;
     }
     return false;

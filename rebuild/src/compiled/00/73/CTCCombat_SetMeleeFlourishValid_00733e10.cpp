@@ -42,14 +42,18 @@ class CHeroCombatDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     ~CDefPointer()
     {
         if (Object)
             Object->ReleaseTemporary();
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CTCSoundPlayer { public:
 public:
@@ -69,13 +73,15 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    CDefPointer<CHeroCombatDef> GetHeroCombatDef() const;   // 0x00663340
+};
+class CThingCreatureBase : public CThing { public:   // Ego_r.pdb owner of 0x00663340
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 (Ego_r.pdb)
 };
 class CTCCombat { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x24 - 0x08];
-    CThing* ParentCreature;                             // +0x24
+    CThingCreatureBase* ParentCreature;                 // +0x24 (Ego_r.pdb CThingCreatureBase*)
     unsigned char _pad28[0x44 - 0x28];
     long CurrentAbilityIndex;                           // +0x44 (PDB +0x4c)
     unsigned char _pad48[0x50 - 0x48];
@@ -86,7 +92,7 @@ class CTCCombat { public:
 void CTCCombat::SetMeleeFlourishValid(bool valid)
 {
     bool usable = false;
-    CDefPointer<CHeroCombatDef> def = ParentCreature->GetHeroCombatDef();
+    CDefPointer<const CHeroCombatDef> def = ParentCreature->GetPHeroCombatDef();
     if (def.Object && def->MeleeFlourishUsable)
         usable = true;
     if (valid && usable) {

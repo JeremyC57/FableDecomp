@@ -38,7 +38,7 @@ template <class T> class CDefPointer { public:        // CDefPointer<const CTatt
 };
 
 class CDefClassBase : public CDefBase { public:
-    bool GetSubDefTattoo(CDefPointer<const CTattooDef>& out);      // 0x005B1EFC (GetSubDef<CTattooDef>)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1EFC GetSubDef<CTattooDef> (Ego_r.pdb member template)
 };
 
 class CThing { public:
@@ -53,9 +53,9 @@ class CTCInventoryItem { public:
 };
 
 #pragma auto_inline(off)
-bool CDefClassBase::GetSubDefTattoo(CDefPointer<const CTattooDef>& out)   // same-TU stand-in for 0x005B1EFC: fills only the out-pointer
+template <> bool CDefClassBase::GetSubDef<CTattooDef>(CDefPointer<const CTattooDef>* out) const   // same-TU stand-in for 0x005B1EFC: fills only the out-pointer
 {
-    out.m_p = this;
+    out->m_p = const_cast<CDefClassBase*>(this);
     return true;
 }
 #pragma auto_inline(on)
@@ -65,7 +65,7 @@ CDefPointer<const CTattooDef> CTCInventoryItem::GetTattooCardDef() const
     CDefPointer<const CTattooDef> def(m_pThing->m_pDef);
     if (def) {
         CDefPointer<const CTattooDef> out;
-        if (((CDefClassBase*)def.m_p)->GetSubDefTattoo(out))
+        if (((CDefClassBase*)def.m_p)->GetSubDef(&out))
             return out;
     }
     return CDefPointer<const CTattooDef>();

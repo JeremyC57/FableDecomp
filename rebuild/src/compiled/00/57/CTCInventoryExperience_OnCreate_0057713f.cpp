@@ -33,7 +33,7 @@ class CCreatureDef : public CDefPointeeBase { public:
     long ExperienceScreenInventory;             // +0x98 (PDB +0xA8)
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 class CThing { public:
     unsigned char _pad00[0x70];
@@ -101,14 +101,14 @@ void CTCInventoryExperience::OnCreate()
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
-    CDefPointer<CCreatureDef> def;
+    CDefPointer<const CCreatureDef> def;
     def.Object = 0;
     if (thingDef)
         ++thingDef->m_refCount;
     thingDef->GetSubDef(&def);
     if (thingDef && --thingDef->m_refCount == 0)
         thingDef->Destroy();
-    CCreatureDef* creatureDef = def.Object;
+    CCreatureDef* creatureDef = const_cast<CCreatureDef*>(def.Object);
     SetPDef(creatureDef->ExperienceScreenInventory);
     CTCInventoryBase_Experience::OnCreate();
     ResetStatIndicatorValues();

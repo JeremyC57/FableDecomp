@@ -58,11 +58,15 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;          // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
     static long __fastcall GetFrame();   // 0x0049D870
     static long GetFramesSince(long frame) { return GetFrame() - frame; }
 };
 class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static; was the stand-in g_framesPerSecond)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
 public:
@@ -70,10 +74,6 @@ public:
 private: public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
-};
-extern long g_framesPerSecond;                  // 0x01375550
-class CDefinitionManager { public:
-    static long& FramesPerSecond() { return g_framesPerSecond; }
 };
 
 struct CRefCounted {
@@ -155,6 +155,7 @@ SNode* __cdecl Successor(SNode* node);          // 0x004292C0
 class CTCBase { protected:
     CWorldMap& GetWorldMap();   // 0x00686D30 (Ego_r.pdb CTCBase, protected)
     CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ (was CTCVillage::GetDefinitionManager)
 };
 class CTCVillage : public CTCBase { public:
     void*         __vftable;                    // +0x00
@@ -163,7 +164,6 @@ class CTCVillage : public CTCBase { public:
     SNode*        PlayersCrimes;                // +0x64 set<long> header node
     unsigned char _pad_0x68[0x18];
     long          FramePlayerLastSeenByGuard;   // +0x80
-    CDefinitionManager* GetDefinitionManager(); // 0x00686D60
     float GetNormalisedTimeLeftOnFines();
 };
 
@@ -174,7 +174,7 @@ float CTCVillage::GetNormalisedTimeLeftOnFines()
     if (def.Object && def->HasFines) {
         long longest = 0;
         long life = 1;
-        CThing* hero = CMainGameComponent::Get()->World->GetCurrentPlayer()->GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->World->PeekMyPlayer()->GetPControlledCreature();
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->HasTC(0x51))
@@ -184,7 +184,7 @@ float CTCVillage::GetNormalisedTimeLeftOnFines()
                 COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(it->_M_value_field);
                 if (deed) {
                     CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(deed->DeedType);
-                    long knowledge = effects->KnowledgeLifeInSeconds * GetDefinitionManager()->FramesPerSecond();
+                    long knowledge = effects->KnowledgeLifeInSeconds * PeekComponent().GetConstantFPS();
                     long left = knowledge - GetWorld().GetFramesSince(FramePlayerLastSeenByGuard);
                     if (left >= longest) {
                         life = knowledge;

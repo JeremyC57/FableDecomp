@@ -32,18 +32,18 @@ public:
     virtual void v00();
     virtual void Destroy() const;                   // slot 1
     mutable long RefCount;                          // +0x04
-    template<class T> bool GetSubDef(const T** out) const;   // 0x0057FF92 for CAppearanceModifierDef
+    template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 for CAppearanceModifierDef (Ego_r.pdb member template)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(const T** out) const
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = Find_CDefClassBase_GetSubDef(this);
     if (!def)
         return false;
-    *out = (const T*)def;
+    out->Object = (const T*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -53,6 +53,14 @@ public:
     long Type;                                      // +0x50 EHeroAttachableAppearanceModifierType
 };
 class CThingObjectDef : public CDefClassBase { };
+// agentNF15: the appearance def's out slot is CDefPointer<const CAppearanceModifierDef> (Ego_r.pdb), released by hand below
+//   (null-tested): a dtor-less specialisation that reads as the raw pointer.
+template<> class CDefPointer<const CAppearanceModifierDef> { public:
+    const CAppearanceModifierDef* Object;
+    CDefPointer() : Object(0) {}
+    const CAppearanceModifierDef* operator->() const { return Object; }
+    operator const CAppearanceModifierDef*() const { return Object; }
+};
 
 class CDefinitionManager {
 public:
@@ -113,7 +121,7 @@ public:
 void CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifier(long defIndex)
 {
     CDefPointer<const CThingObjectDef> thingDef;
-    const CAppearanceModifierDef* appearanceDef = 0;
+    CDefPointer<const CAppearanceModifierDef> appearanceDef;
     if (GetDefinitionManager().GetDef(defIndex, &thingDef)) {
         if (thingDef->GetSubDef(&appearanceDef)) {
             CRetailVector<CModifierEntry>& entries = AppearanceModifiers._M_start[appearanceDef->Type];

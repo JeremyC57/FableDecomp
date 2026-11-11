@@ -135,10 +135,10 @@ class CThing { public:
         return false;
     }
 };
-struct CTCShopkeeper {
-    bool IsTattooShop() const;                           // 0x00772510 (name unproven)
-    bool IsBarberShop() const;                           // 0x00772490 (name unproven)
-    bool IsAbilityShop() const;                          // 0x00772590 (name unproven)
+class CTCShop { public:                                 // the shop component (TCI 0x53); declarations only (engine/CTCShop.h _SHOPTYPE)
+    bool IsBarberShop() const;                           // 0x00772490 Ego_r.pdb + FableWin.pdb ?IsBarberShop@CTCShop@@QBE_NXZ
+    bool IsTattooShop() const;                           // 0x00772510 ?IsTattooShop@CTCShop@@QBE_NXZ
+    bool IsTitleShop() const;                            // 0x00772590 ?IsTitleShop@CTCShop@@QBE_NXZ
 };
 
 class CTCInventoryTrade {
@@ -152,9 +152,9 @@ public:
 
 void CTCInventoryTrade::UpdateSellActionsList()
 {
-    CTCShopkeeper* shop = 0;
+    CTCShop* shop = 0;
     GetShopThing()->GetInterface(&shop, 0x53);
-    if (shop->IsAbilityShop() || shop->IsBarberShop() || shop->IsTattooShop())
+    if (shop->IsTitleShop() || shop->IsBarberShop() || shop->IsTattooShop())
         return;
     for (CComponentMap::iterator it = ItemSellLists.begin(); it != ItemSellLists.end(); ++it) {
         NUISystem::CDeletion deletion;

@@ -69,9 +69,11 @@ class CTCHeroOnlineScoreboard { public:
 };
 class CThingAICreature;
 class CFaction;
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
 class CTCHeroOpinionDeedLog { public:
-    long PostDeed(long type, const C3DVector& position, const CThing* victim, CThingAICreature* witness, long postType,
-                  bool a, bool b, const CFaction* faction, bool c, long extra);   // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
 };
 
 class CHeroStatsDef { public:
@@ -141,7 +143,7 @@ void CTCHeroStats::Vomit()
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
-                DeedHandle = log->PostDeed(0x15, hero->GetPos(), 0, 0, 7, 0, 1, 0, 0, 0);
+                DeedHandle = log->PostDeed(OPINION_DEED_TYPE_EXPRESSION_FART, hero->GetPos(), 0, 0, (EOpinionPostDeedType)7, false, true, 0, false, 0);
             hero->SetCurrentAction(action);
         }
         long fps = CMainGameComponent::GetConstantFPS();

@@ -93,7 +93,7 @@ struct CTCMap {
         return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
     }
 };
-struct CCrowdDef {
+class CVillagePeopleDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long          RefCount;                             // +0x04
@@ -103,18 +103,22 @@ struct CCrowdDef {
     long          MaleDef;                              // +0x80
     long          FemaleDef;                            // +0x84
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CCrowdDef>* out);        // 0x00512FE0
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00512FE0 GetSubDef<CVillagePeopleDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCrowdDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CVillagePeopleDef>(CDefPointer<const CVillagePeopleDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -185,7 +189,7 @@ bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoin
 {
     if (village->HasTC(0x22)) {
         CTCVillage* tcVillage = (CTCVillage*)village->GetTC(0x22);
-        CDefPointer<CCrowdDef> def;
+        CDefPointer<const CVillagePeopleDef> def;
         if (tcVillage->ParentThing->GetDef()->GetSubDef(&def)) {
             if (def->MaleDef == 0 && def->FemaleDef == 0)
                 return false;

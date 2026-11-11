@@ -1,4 +1,4 @@
-// CTCCarriedActionUseGive::vfunc_28(CThingAICreature* user) -- run the base use hook; when the user is targeting a creature (targeting type 2) it may give to, start a give-item action towards it; otherwise tell the carried thing's interface-0x1a component that the use failed
+// CTCCarriedActionUseGive::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingAICreature*)] -- run the base use hook; when the user is targeting a creature (targeting type 2) it may give to, start a give-item action towards it; otherwise tell the carried thing's interface-0x1a component that the use failed
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ED170, 250 bytes (+ int3 padding), `ret 4`. Vtable 0x0123FAB4
@@ -76,18 +76,22 @@ class CTCTargetingBase { public:                                   // interface 
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
 };
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThingAICreature*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)
 };
 struct CTCCarriedActionUseGive : CTCCarriedActionUseBase {
-    void vfunc_28(CThingAICreature* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingAICreature*))
 };
 
-void CTCCarriedActionUseGive::vfunc_28(CThingAICreature* user)
+void CTCCarriedActionUseGive::OnActionUse(CThing& thing)
 {
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CThingAICreature* user = (CThingAICreature*)&thing;
+    CTCCarriedActionUseBase::OnActionUse(thing);
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
         if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {

@@ -8,7 +8,7 @@
 //   @ 0x006647F0, CThingCreatureBase::UnsheatheWeapon(long, bool) @ 0x006648D0, LowerBound @ 0x0040F020,
 //   CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDefNameFromGlobalIndex @ 0x009ACCC0 (CDefString
 //   by value), the combat type def's virtual slot 10 (+0x28, its def name by value), CDefinitionManager::GetDef
-//   <CCombatTypeDef>(long, CDefPointer*) @ 0x00669640, CTCCombat::SetCombatTypeDef @ 0x007355F0 (the landed
+//   <CCombatTypeDef>(long, CDefPointer*) @ 0x00669640, CTCCombat::SetCombatType @ 0x007355F0 (the landed
 //   "SetAttackStyleDef"), the defs' virtual slot 1 on the last release.
 // Layout (retail): CThing bitset +0x20 (0x30 CTCCombat = bit 16 of +0x24), map +0x44, PBaseDef +0x70;
 //   CThingCreatureBase::PDef +0xe0; CThingCreatureDef RangedWeaponDef +0xe0, CombatTypeDef +0x124,
@@ -71,7 +71,7 @@ class CThingCreatureDef : public CDefPointeeBase { public:
 };
 
 class CDefinitionManager { public:
-    void GetDef(long index, CDefPointer<const CCombatTypeDef>* out);   // 0x00669640
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00669640 GetDef<CCombatTypeDef> (Ego_r.pdb)
 public:
     CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
@@ -79,7 +79,7 @@ public:
 class CTCCombat { public:
     unsigned char _pad00[0x28];
     CDefPointer<const CCombatTypeDef> PCombatTypeDef;   // +0x28
-    void SetCombatTypeDef(const CDefPointer<const CCombatTypeDef>* def);   // 0x007355F0
+    void SetCombatType(const CDefPointer<const CCombatTypeDef>& def);   // 0x007355F0 (Ego_r.pdb)
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -143,7 +143,7 @@ void CThingCreatureBase::UnsheatheDefaultWeapon()
             && def.ResetCombatTypeOnUnsheatheDefaultWeapons) {
             CDefPointer<const CCombatTypeDef> newType;
             GetDefinitionManager()->GetDef(def.CombatTypeDef, &newType);
-            combat->SetCombatTypeDef(&newType);
+            combat->SetCombatType(newType);
         }
     }
 }

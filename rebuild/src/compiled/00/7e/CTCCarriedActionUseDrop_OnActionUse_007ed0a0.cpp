@@ -1,5 +1,5 @@
-// CTCCarriedActionUseDrop::vfunc_28(CThingAICreature* user) -- run the base use hook; if the dropped thing is an alarm item (interface 0x48) and the user is flagged to react, make the user alert the player, else take the thing out of the user's carrying component
-// Leaf: ?vfunc_28@CTCCarriedActionUseDrop@@QAEXPAVCThingAICreature@@@Z
+// CTCCarriedActionUseDrop::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingAICreature*)] -- run the base use hook; if the dropped thing is an alarm item (interface 0x48) and the user is flagged to react, make the user alert the player, else take the thing out of the user's carrying component
+// Leaf: ?OnActionUse@CTCCarriedActionUseDrop@@UAEXAAVCThing@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x007ED0A0, 151 bytes (`ret 4`). Vtable slot 28 of CTCCarriedActionUseDrop. Callees: the
@@ -39,19 +39,23 @@ class CCreatureAction_AlertToPlayer : public CCreatureActionBase { public:
     CCreatureAction_AlertToPlayer(CThingAICreature* creature);   // 0x007ECFD0
 };
 
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThingAICreature*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)
 };
 
 struct CTCCarriedActionUseDrop : CTCCarriedActionUseBase {
-    void vfunc_28(CThingAICreature* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingAICreature*))
 };
 
-void CTCCarriedActionUseDrop::vfunc_28(CThingAICreature* user)
+void CTCCarriedActionUseDrop::OnActionUse(CThing& thing)
 {
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CThingAICreature* user = (CThingAICreature*)&thing;
+    CTCCarriedActionUseBase::OnActionUse(thing);
     CTCCarrying* carrying;
     user->GetTC(TCI_CARRYING, &carrying);                    // TC_CARRYING
     if (ParentThing->HasTC(TCI_WEAPON) && (user->GetTypeFlags() & 8))

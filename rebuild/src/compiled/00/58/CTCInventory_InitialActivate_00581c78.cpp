@@ -18,20 +18,22 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventoryBase {
-    unsigned char _pad_0x000[0x148];
-    void InitialActivate();                          // 0x005BF9E3
-    long GetNumberOfItemsOfTypeInInventory(long type);   // 0x005BDF08
+namespace NInventory {
+class CTCInventoryBase { public:                     // vptr +0
+    unsigned char _pad_0x004[0x148 - 0x4];
+    virtual void InitialActivate();                  // 0x005BF9E3 Ego_r.pdb ?InitialActivate@CTCInventoryBase@NInventory@@UAEXXZ
+    long GetNumberOfItemsOfTypeInInventory(long type) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 };
+}
 
-class CTCInventory : public CTCInventoryBase { public:
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     CLongVector QuickAccessItems;                    // +0x148 (PDB +0x168)
-    void InitialActivate();
+    virtual void InitialActivate();                  // Ego_r.pdb ?InitialActivate@CTCInventory@@UAEXXZ
 };
 
 void CTCInventory::InitialActivate()
 {
-    CTCInventoryBase::InitialActivate();
+    NInventory::CTCInventoryBase::InitialActivate();
     for (unsigned long i = 0; i < QuickAccessItems.size(); ++i) {
         if (GetNumberOfItemsOfTypeInInventory(QuickAccessItems[i]) == 0)
             QuickAccessItems[i] = 0;

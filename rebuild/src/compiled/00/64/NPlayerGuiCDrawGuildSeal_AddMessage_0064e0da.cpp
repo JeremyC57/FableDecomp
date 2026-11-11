@@ -71,9 +71,12 @@ struct CDefinitionOwner {
     unsigned char _pad[0x10];
     CDefinitionManager* DefinitionManager;         // +0x10
 };
-struct CTCInventoryBase {
-    long GetNumberOfItemsOfTypeInInventory(long type);   // 0x005BDF08
+namespace NInventory {
+class CTCInventoryBase { public:
+    long GetNumberOfItemsOfTypeInInventory(long type) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 };
+}
+using NInventory::CTCInventoryBase;
 
 namespace NPlayerGui {
 struct SGuildSealMessage {

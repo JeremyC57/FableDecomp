@@ -26,11 +26,20 @@ class CTCHeroStats : public CTCHeroStatsDonor {
                                     // interface type 4 (retail offsets)
 public:
 };
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
-    struct Entry { long type; void* component; };
-    Entry* first; Entry* last;
-    Entry* LowerBound(const long*);                     // 0x0040F020
+class CTCBase;
+// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
 template <unsigned int _Nb> class bitset { public:
     // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
@@ -40,14 +49,14 @@ template <unsigned int _Nb> class bitset { public:
 // LowerBound @ 0x0040F020: a same-TU read-only stand-in (GOTCHAS 665, the escaping callee) -- with its body visible the
 // key word is dead after the call and VC7.1 reuses it for the fidiv divisor spill as retail.
 #pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key)
+__declspec(noinline) CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    Entry* lo = first;
-    int len = last - first;
+    value_type* lo = _M_start;
+    int len = _M_finish - _M_start;
     while (len > 0) {
         int half = len >> 1;
-        Entry* middle = lo + half;
-        if (middle->type < *key) {
+        value_type* middle = lo + half;
+        if (middle->first < key) {
             lo = middle + 1;
             len = len - half - 1;
         }
@@ -61,9 +70,9 @@ class CThing { public:
     unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
-            long key = kind; CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(&key);
-            if (it == map->last || kind < it->type) it = map->last;
-            *out = (T*)it->component; return true;
+            ETCInterfaceType key = (ETCInterfaceType)kind; CInterfaceMap* map = &interfaces; CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->_M_finish || kind < it->first) it = map->_M_finish;
+            *out = (T*)it->second; return true;
         }
         return false;
     }

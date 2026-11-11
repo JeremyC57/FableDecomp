@@ -91,7 +91,11 @@ class CTCBase { public:
 protected:
     const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
-struct CTCPhysicsStandard : public CTCBase {
+class CTCPhysicsBase : public CTCBase {              // Ego_r.pdb base of CTCPhysicsStandard (row-local view: no members modelled here)
+protected:
+    CWorldMap& GetWorldMap();                         // 0x006AF620 Ego_r.pdb ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ
+};
+struct CTCPhysicsStandard : public CTCPhysicsBase {
     virtual void v0b(); virtual void v0c(); virtual void v0d();   // 1-3 (slot 0: ~CTCBase)
     virtual void OnCreate();                        // slot 4
     virtual void v5(); virtual void v6(); virtual void v7();
@@ -134,7 +138,6 @@ struct CTCPhysicsStandard : public CTCBase {
     unsigned char   NavigationLayers : 1;
     unsigned char   PushableByHero : 1;
 
-    CWorldMap* GetWorldMap();                       // 0x006AF620 (CTCPhysicsBase)
     void CreatePPhysicsMeshInfo(const CGraphicDataRef& graphic);   // 0x006B05A0
     void BaseOnCreate();                            // 0x006B0780 CTCPhysicsBase::OnCreate
     float GetMass();                                // 0x006AFE00
@@ -173,7 +176,7 @@ void CTCPhysicsStandard::OnCreate()
         PushableByHero = true;
     }
     C3DVector position(Position);
-    OnGround = fabs(position.Z - GetWorldMap()->GetGroundSizeZAt(position)) < g_OnGroundTolerance;
+    OnGround = fabs(position.Z - GetWorldMap().GetGroundSizeZAt(position)) < g_OnGroundTolerance;
     if (InteractsWithThingsCheck()) {
         CThingPtrVector things;
         GetPossibleInteractedWithList(GetPossibleCollidedWithArea(), things, 1.0f);

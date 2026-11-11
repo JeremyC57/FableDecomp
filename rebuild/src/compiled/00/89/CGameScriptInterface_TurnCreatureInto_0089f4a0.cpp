@@ -53,8 +53,12 @@ class CDefPointeeBase : public CDefVirtual, public CRefCounted { public:
             DestroyDef();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* m_pObject;
+    typename CDefNonConst<T>::Type* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()
     {
@@ -64,19 +68,19 @@ template<class T> class CDefPointer { public:
 };
 class CThingCreatureDef : public CDefPointeeBase { public: };
 class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00513160 GetDef<CThingCreatureDef> (Ego_r.pdb member template)
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);        // 0x00513160 (GetDef<CThingCreatureDef>)
 };
 void* FindDef_CGameDefinitionManager_GetDef_F4A0();
 #pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer<CThingCreatureDef>& out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingCreatureDef>(long index, CDefPointer<const CThingCreatureDef>* out) const
 {
     void* def = FindDef_CGameDefinitionManager_GetDef_F4A0();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -180,8 +184,8 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
             if (old->m_type == 1) {
                 CThingAICreatureInit init(0, 0, false, "", "", true);
                 init.ScriptName = old->ScriptName;
-                CDefPointer<CThingCreatureDef> def;
-                if (DefinitionManager->GetDef(index, def)) {
+                CDefPointer<const CThingCreatureDef> def;
+                if (DefinitionManager->GetDef(index, &def)) {
                     CThingAICreature* creature = CThingAICreature::Create(index, old->GetPos(), old->PlayerNumber, init);
                     if (creature) {
                         creature->SetAsGameStatePersisted(old->IsGameStatePersisted());
@@ -190,8 +194,8 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
                     }
                 }
             } else if (old->m_type == 2) {
-                CDefPointer<CThingCreatureDef> def;
-                if (DefinitionManager->GetDef(index, def)) {
+                CDefPointer<const CThingCreatureDef> def;
+                if (DefinitionManager->GetDef(index, &def)) {
                     g_pPlayerGui->GetPHeroInfoScreensManager()->DeregisterAllScreens();
                     CThingPlayerCreatureInit init;
                     CThingPlayerCreature* creature = CThingPlayerCreature::Create(index, old->GetPos(), old->PlayerNumber, init);

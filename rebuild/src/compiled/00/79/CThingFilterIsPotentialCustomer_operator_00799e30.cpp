@@ -29,6 +29,7 @@ FABLE_FORCEINLINE float Length(const C3DVector& v)
 }
 
 #define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MANAGERACCESS   // CThing::PCurrentThingManager 0x013B8A1C + its inline Peek/Get accessors
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -55,12 +56,28 @@ struct CTCWithItem : CTCBase {                          // component 0x75
     unsigned char _pad08[4];
     CIntelligentPointer<CThing> Item;                           // +0xc
 };
-struct COpinionManager {
-    long GetOpinionAttitudeToPlayer(const CThing* thing) const;   // 0x00701840
+// agentNF15: the stand-in chain g_013B8A1C (CGameTop*) -> Sub (+0x24) -> Opinions (+0x74) is the current thing manager
+//   CThing::PCurrentThingManager (0x013B8A1C, engine/CThing.h), its CWorld (+0x24 retail; Ego_r ?PeekWorld@CThingManager@@QBEABVCWorld@@XZ,
+//   inline) and the world's CCountedPointer<COpinionReactionManager> POpinionReactionManager (+0x74, Ego_r.pdb CWorld TPI; engine/CWorld.h)
+//   read through ?PeekOpinionReactionManager@CWorld@@QBEABVCOpinionReactionManager@@XZ (inline). The callee 0x00701840 is
+//   COpinionReactionManager::GetThingAttitudeToPlayer(const CThing&) const (Ego_r + FableWin; was COpinionManager::GetOpinionAttitudeToPlayer).
+//   Shape: the members are read directly (World, POpinionReactionManager_Data); spelled through the inline PeekWorld() /
+//   PeekOpinionReactionManager() accessors VC7.1 loads the manager chain before the ParentThing argument (DIFFER 383v383),
+//   retail loads the argument first.
+enum EOpinionAttitudeType { };
+class COpinionReactionManager { public:
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840
 };
-struct CGameSub { unsigned char _pad[0x74]; COpinionManager* Opinions; };
-struct CGameTop { unsigned char _pad[0x24]; CGameSub* Sub; };
-extern CGameTop* g_013B8A1C;
+class CWorld { public:                                  // partial view, retail offsets
+    unsigned char _pad00[0x74];
+    COpinionReactionManager* POpinionReactionManager_Data;   // +0x74 CCountedPointer<COpinionReactionManager>::Data
+    const COpinionReactionManager& PeekOpinionReactionManager() const { return *POpinionReactionManager_Data; }
+};
+class CThingManager { public:                           // partial view, retail offsets
+    unsigned char _pad00[0x24];
+    CWorld*       World;                                // +0x24 (retail)
+    const CWorld& PeekWorld() const { return *World; }
+};
 
 class CThingFilter_IsPotentialCustomer { public:
     CThing*        ShopperContainer;                    // +0x00
@@ -83,7 +100,7 @@ bool CThingFilter_IsPotentialCustomer::operator()(const CThing& thing) const
         }
         if (!TCShopKeeper->HasBeenCustomer(&thing) || AllowExistingShopper) {
             if (thing.GetType() == 2) {
-                long attitude = g_013B8A1C->Sub->Opinions->GetOpinionAttitudeToPlayer(TCShopKeeper->ParentThing);
+                EOpinionAttitudeType attitude = CThing::PeekPCurrentThingManager()->World->POpinionReactionManager_Data->GetThingAttitudeToPlayer(*TCShopKeeper->ParentThing);
                 if (attitude >= 3 && (attitude <= 4 || attitude == 8))
                     return false;
             }

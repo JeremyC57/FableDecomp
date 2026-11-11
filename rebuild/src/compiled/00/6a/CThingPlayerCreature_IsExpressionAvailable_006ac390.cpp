@@ -47,9 +47,12 @@ class CGameDefinitionManager : public CDefinitionManager
 };
 
 class CTCBase;
-struct CTCInventoryBase {
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08
+namespace NInventory {
+class CTCInventoryBase { public:
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 };
+}
+using NInventory::CTCInventoryBase;
 
 struct CInterfaceMap {                                // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };

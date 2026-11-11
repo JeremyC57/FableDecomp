@@ -56,13 +56,18 @@ struct CLongVector {                                 // std::vector<long> {first
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-class CTCInventory { public:
+namespace NInventory {
+class CTCInventoryBase { public:                     // the base component (declarations only)
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+};
+}
+
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x140];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
 
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08 (CTCInventoryBase)
     void SetThingAsQuickAccessItem(long item, long slot, bool giveTutorial);
 };
 

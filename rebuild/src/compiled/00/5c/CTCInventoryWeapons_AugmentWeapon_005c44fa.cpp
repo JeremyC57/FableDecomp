@@ -87,7 +87,8 @@ class CTCInventoryBase { public:
     virtual void RemoveItem(long item, long count);         // slot 79 (+0x13C)
     CThing*       ParentThing;                              // +0x04 CTCBase
     unsigned char _pad08[0x134 - 0x08];
-    CThing* CreateInventoryObject(long defIndex);           // 0x005BE8F3
+protected:
+    CThing* CreateInventoryObject(long defIndex);           // 0x005BE8F3 Ego_r.pdb ?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z
 };
 }
 

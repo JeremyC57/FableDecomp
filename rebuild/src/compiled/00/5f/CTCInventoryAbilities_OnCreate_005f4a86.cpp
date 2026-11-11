@@ -31,22 +31,26 @@ class CDefPointeeBase { public:
     virtual void Destroy();                          // slot 1
     long m_refCount;                                 // +0x04
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* Object;
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-struct CInventoryAbilitiesDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x84 - 0x08];
     long InventoryDefIndex;                          // +0x84
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CInventoryAbilitiesDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CInventoryAbilitiesDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -116,14 +120,14 @@ void CTCInventoryAbilities::OnCreate()
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
-    CDefPointer<CInventoryAbilitiesDef> def;
+    CDefPointer<const CCreatureDef> def;
     def.Object = 0;
     if (thingDef)
         ++thingDef->m_refCount;
     thingDef->GetSubDef(&def);
     if (thingDef && --thingDef->m_refCount == 0)
         thingDef->Destroy();
-    CInventoryAbilitiesDef* abilitiesDef = def.Object;
+    CCreatureDef* abilitiesDef = const_cast<CCreatureDef*>(def.Object);
     SetPDef(abilitiesDef->InventoryDefIndex);
     CTCInventoryBase_Abilities::OnCreate();
     if (!Initialised) {

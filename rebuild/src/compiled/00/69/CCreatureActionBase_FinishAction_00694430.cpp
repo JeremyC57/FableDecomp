@@ -13,13 +13,13 @@
 //   SetPItemToUnsheatheAfterCutscene 0x00662450 (sets +0x150; manifest "CVillageTaskCarryCrate::AssignCreatureToTask" is
 //   wrong), CTCCarrying::GetAllItems 0x006A2220 (manifest "COptimisedPrimitive::RemapGroups" is propagated) / RemoveThing
 //   0x006A19B0, free 0x00BFEA14 (the item vector's buffer), CThing::Kill(bool) 0x004C9B80.
-// Globals: g_pThingManager 0x013B8A1C (NonScriptedEntitesPauseMode +0x54, AllEntitesPauseMode +0x55).
+// Globals: CThing::GetPCurrentThingManager() 0x013B8A1C (NonScriptedEntitesPauseMode +0x54, AllEntitesPauseMode +0x55).
 // Layout: Ego_r.pdb CCreatureActionBase agrees with retail below +0x84 (PCreature +8, PItemRemoved +0x2c, AddedActionAnim
 //   +0x60, Finished +0x61, PAnimEntry +0x74) but its vectors/map are 16 bytes (retail 12, sizeof 0xa8) and the generated
 //   header carries the intelligent pointers as opaque bytes, so `this` is modelled locally. CThing: interface bitset +0x20
 //   (0xFD = bit 29 of +0x3c), map +0x44, dead bit +0x91; CAnimSet UpdateMode +0, Finished bit 1 of +0x51.
 // Shape: the anim entry is a named local read after the alive test (retail keeps it in esi across GetPItem); the pause test
-//   reads the thing manager through a STATIC creature accessor (`PCreature.GetPItem()->PeekThingManager()`): the call is
+//   reads the thing manager through a STATIC creature accessor (`PCreature.GetPItem()->PeekPCurrentThingManager()`): the call is
 //   still made for its side effects and the global load follows it (a non-static inline hoists the global above the call);
 //   the haste and carrying components use the out-parameter GetInterface; the carried-thing vector is released with free.
 #include "fable_compiler.h"
@@ -30,7 +30,15 @@ class CThingCreatureBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
+class CThingManager;
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+    static const CThingManager* __fastcall PeekPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?PeekPCurrentThingManager@CThing@@SIPBVCThingManager@@XZ (inline)
+private:
+ public:
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10() VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6) VF10(7) VF(80) VF(81) VF(82) VF(83) VF(84) VF(85) VF(86) VF(87)
@@ -73,10 +81,8 @@ class CThingManager { public:
     bool          NonScriptedEntitesPauseMode;          // +0x54
     bool          AllEntitesPauseMode;                  // +0x55
 };
-extern CThingManager* g_pThingManager;                  // 0x013B8A1C
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    static CThingManager* PeekThingManager() { return g_pThingManager; }
     void SetPItemToUnsheatheAfterCutscene(CThing* item);        // 0x00662450
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
@@ -168,8 +174,8 @@ void CCreatureActionBase::FinishAction()
     Finished = true;
     if (ReEquipRemovedItem()) {
         if (((CThing*)PItemRemoved.GetPItem()) && !((CThing*)PItemRemoved.GetPItem())->Dead) {
-            if (!PCreature.GetCreature()->PeekThingManager()->NonScriptedEntitesPauseMode &&
-                !PCreature.GetCreature()->PeekThingManager()->AllEntitesPauseMode) {
+            if (!PCreature.GetCreature()->PeekPCurrentThingManager()->NonScriptedEntitesPauseMode &&
+                !PCreature.GetCreature()->PeekPCurrentThingManager()->AllEntitesPauseMode) {
                 PCreature.GetCreature()->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(PCreature.GetCreature(), ((CThing*)PItemRemoved.GetPItem()), 0, 150));
             }
             else if (PCreature.GetCreature()->IsPlayerCreature()) {

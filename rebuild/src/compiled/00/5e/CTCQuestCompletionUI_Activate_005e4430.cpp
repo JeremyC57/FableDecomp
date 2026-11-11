@@ -26,8 +26,12 @@ class CWideString { public:
 };
 struct CDef { virtual void v00(); virtual void DeleteThis(); long RefCount;
     FABLE_FORCEINLINE void Release() { if (--RefCount == 0) DeleteThis(); } };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* P;
+    typename CDefNonConst<T>::Type* P;
     FABLE_FORCEINLINE CDefPointer() : P(0) { }
     FABLE_FORCEINLINE T* operator->() const { return P; }
     FABLE_FORCEINLINE CDefPointer(const CDefPointer& o) : P(o.P) { if (P) ++P->RefCount; }
@@ -50,18 +54,18 @@ class CQuestCardDef : public CDef { public:
     unsigned char _pad08[0x4c - 0x08];
     vector<long> RewardObjects;                            // +0x4c
 };
-struct CObjectDef : CDef {
+class CThingObjectDef : public CDef { public:
     unsigned char _pad08[0x7d - 0x08];
     unsigned char Type;                                    // +0x7d
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CObjectDef>* out); // 0x0042B040 (same-TU stand-in below)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 GetDef<CThingObjectDef> (Ego_r.pdb member template)
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CObjectDef>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingObjectDef>(long index, CDefPointer<const CThingObjectDef>* out) const
 {
-    out->P = (CObjectDef*)index;
+    out->P = (CThingObjectDef*)index;
     return true;
 }
 #pragma auto_inline(on)
@@ -181,7 +185,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
                 it = it->next;
             }
         }
-        CDefPointer<CObjectDef> def;
+        CDefPointer<const CThingObjectDef> def;
         CGameDefinitionManager::Get().GetDef(card->GetOwner()->DefIndex, &def);
         if (def.P->Type == 5) {
             RenderedObjectDef = card->Owner->DefIndex;
@@ -189,7 +193,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
                 bool found = false;
                 for (unsigned long i = 0; i < PCardDef->RewardObjects.size() && !found; ++i) {
                     if (IsAugmentation_005d9930(PCardDef->RewardObjects[i])) {
-                        CDefPointer<CObjectDef> reward;
+                        CDefPointer<const CThingObjectDef> reward;
                         CGameDefinitionManager::Get().GetDef(PCardDef->RewardObjects[i], &reward);
                         RenderedObjectDef = PCardDef->RewardObjects[i];
                         found = true;

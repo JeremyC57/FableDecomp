@@ -1,5 +1,5 @@
-// CTCActionUseStartExtrapolationMorph::OnActionUse(CThing& user) -- run the base hook, then turn the user to face away from this thing: the XY bearing from the user to the parent as a turn fraction wrapped into [0, 1), plus half a turn
-// Leaf: ?OnActionUse@CTCActionUseStartExtrapolationMorph@@QAEXAAVCThing@@@Z
+// CTCActionUseStartExtrapolationMorph::OnActionUse(CThing& user) [Ego_r.pdb virtual] -- run the base hook, then turn the user to face away from this thing: the XY bearing from the user to the parent as a turn fraction wrapped into [0, 1), plus half a turn
+// Leaf: ?OnActionUse@CTCActionUseStartExtrapolationMorph@@UAEXAAVCThing@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007EBC20, 145 bytes (`ret 4`). Slot 28 of vtable 0x0123F6FC =
 //   CTCActionUseStartExtrapolationMorph (rtti-vtables.tsv; modelled non-virtual, hence the QAE leaf); FableWin.pdb `?OnActionUse@CTCActionUseStartExtrapolationMorph
@@ -41,12 +41,12 @@ class CTCActionUseBase {
 public:
     virtual void v00();
     CThing* ParentThing;                                        // +0x04 (CTCBase)
-    void OnActionUse(CThing& user);                             // 0x007EAB90 (empty base slot 28)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnActionUse(CThing&))
 };
 
 class CTCActionUseStartExtrapolationMorph : public CTCActionUseBase {
 public:
-    void OnActionUse(CThing& user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was OnActionUse(CThing&))
 };
 
 void CTCActionUseStartExtrapolationMorph::OnActionUse(CThing& user)

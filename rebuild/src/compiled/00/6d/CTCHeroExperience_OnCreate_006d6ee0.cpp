@@ -27,14 +27,18 @@ struct CDefObject : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CDefPointer& operator=(const CDefPointer& o)
     {
         if (Object != o.Object) {
-            T* object = Object;
+            typename CDefNonConst<T>::Type* object = Object;
             if (object) {
                 if (--object->m_count == 0)
                     object->Destroy();
@@ -46,7 +50,7 @@ template <class T> class CDefPointer { public:
         }
         return *this;
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CHeroExperienceDef : public CDefObject { public:};
 class CHeroCombatDef : public CDefObject { public:};
@@ -60,7 +64,9 @@ public:
     unsigned char IsHeroThing : 1;              // +0x6c bit 3
     unsigned char _pad6d[0x70 - 0x6d];
     CDefPointer<CDefClassBase> PDef;            // +0x70
-    CDefPointer<CHeroCombatDef> GetHeroCombatDef() const;  // 0x00663340
+};
+class CThingCreatureBase : public CThing { public:   // Ego_r.pdb owner of 0x00663340
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 (Ego_r.pdb)
 };
 class CTCHeroExperience {
 public:
@@ -68,7 +74,7 @@ public:
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad08[0x54 - 0x08];
     CDefPointer<CHeroExperienceDef> PDef;       // +0x54
-    CDefPointer<CHeroCombatDef>     PHeroCombatDef;   // +0x58
+    CDefPointer<const CHeroCombatDef>     PHeroCombatDef;   // +0x58
     virtual void OnCreate();
 };
 
@@ -76,5 +82,5 @@ void CTCHeroExperience::OnCreate()
 {
     ParentThing->PDef->GetSubDef(&PDef);
     if (ParentThing->IsHeroThing)
-        PHeroCombatDef = ParentThing->GetHeroCombatDef();
+        PHeroCombatDef = static_cast<CThingCreatureBase*>(ParentThing)->GetPHeroCombatDef();
 }

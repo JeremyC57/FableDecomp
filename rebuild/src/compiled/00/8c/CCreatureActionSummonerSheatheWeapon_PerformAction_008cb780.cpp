@@ -6,8 +6,8 @@
 // RemoveThing(CThing*) @ 0x006A19B0 and PutThingInCarrySlot(CThing&, long, bool) @ 0x006A1F80, CCharString ctor/dtor @ 0x0099EBF0 /
 // 0x0099EAE0, CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 // CCreatureAction_SheatheWeapons::PerformAction @ 0x008B7B10 (direct base call), CCreatureActionBase::GetDefinitionManager
-// @ 0x00692910, CDefinitionManager::GetDef<CAttackStyleDef>(long, CDefPointer*) @ 0x00669640, CTCCombat::SetAttackStyleDef
-// (const CDefPointer<CAttackStyleDef>*) @ 0x007355F0.
+// @ 0x00692910, CDefinitionManager::GetDef<CCombatTypeDef>(long, CDefPointer*) @ 0x00669640, CTCCombat::SetCombatType
+// (const CDefPointer<CCombatTypeDef>*) @ 0x007355F0.
 // Layout: retail CCombatActionBase is 0x114 bytes (PCreature +8); CThing +0x70 the def pointer; CCreatureDef +0x124 the attack-style
 // def index.
 // Shape: `this` spills to the frame across the carrying block (ebx holds the slot index); the creature def is taken as a by-value
@@ -38,11 +38,15 @@ class CDefClassBase { public:
 };
 class CCreatureDef : public CDefClassBase { public:
     unsigned char _pad08[0x124 - 0x08];
-    long AttackStyleDefIndex;                   // +0x124
+    long CombatTypeDef;                         // +0x124 (Ego_r.pdb CThingCreatureDef::CombatTypeDef; retail offset)
 };
-struct CAttackStyleDef : CDefClassBase { };
+class CCombatTypeDef : public CDefClassBase { };   // Ego_r.pdb (was the row-local CAttackStyleDef)
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object)
     {
@@ -57,7 +61,7 @@ template<class T> class CDefPointer { public:
     operator T*() const { return Object; }
 };
 class CDefinitionManager { public:
-    void GetDef(long index, CDefPointer<CAttackStyleDef>* out);   // 0x00669640
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00669640 GetDef<CCombatTypeDef> (Ego_r.pdb)
 public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
@@ -108,7 +112,7 @@ public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCCombat { public:
-    void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);   // 0x007355F0
+    void SetCombatType(const CDefPointer<const CCombatTypeDef>& def);   // 0x007355F0 (Ego_r.pdb)
 };
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
@@ -139,7 +143,7 @@ void CCreatureAction_SummonerSheatheWeapon::PerformAction()
     CTCCombat* combat;
     PCreature.GetPItem()->GetInterface(&combat, 0x30);
     const CCreatureDef* creatureDef = PCreature.GetPItem()->GetDef();
-    CDefPointer<CAttackStyleDef> attackStyle;
-    GetDefinitionManager()->GetDef(creatureDef->AttackStyleDefIndex, &attackStyle);
-    combat->SetAttackStyleDef(&attackStyle);
+    CDefPointer<const CCombatTypeDef> attackStyle;
+    GetDefinitionManager()->GetDef(creatureDef->CombatTypeDef, &attackStyle);
+    combat->SetCombatType(attackStyle);
 }

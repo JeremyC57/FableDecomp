@@ -7,7 +7,7 @@
 // (slot name unknown; "OnInventoryOpened" is descriptive).
 // Model: engine/CTCInventoryClothing.h (PDB) has UseMannequin at +0x180; the retail flag is +0x15C, so a local view is used.
 #pragma optimize("s", on)
-struct CTCInventoryClothing_Retail;
+class CTCInventoryClothing;
 namespace NUISystem { class CManager { public:
     virtual void v00();
     virtual void v01();
@@ -31,24 +31,27 @@ namespace NUISystem { class CManager { public:
     virtual void v19();
     virtual void v20();
     virtual void v21();
-    virtual void OnInventoryOpened(CTCInventoryClothing_Retail* inventory);   // slot 22 (+0x58)
+    virtual void OnInventoryOpened(CTCInventoryClothing* inventory);   // slot 22 (+0x58)
     static CManager* __fastcall GetInstance();           // 0x0041E5F2
 }; }
-struct CTCInventoryBase_Retail {
-    void OpenInventory();                                        // 0x005BD4EA
+namespace NInventory {
+class CTCInventoryBase { public:                                 // vptr +0
+    virtual void OpenInventory();                                // 0x005BD4EA Ego_r.pdb ?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ
 };
-struct CTCInventoryClothing_Retail : CTCInventoryBase_Retail {
-    unsigned char _pad_0x000[0x15C];
+}
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
+    unsigned char _pad_0x004[0x15C - 0x4];
     bool          UseMannequin;                                  // +0x15C
-    void InitialiseMannequin();                                  // 0x005B37F7
-    void SetUpSelectedClothes();                                 // 0x005B4795
-    void OpenInventory();
+    virtual void OpenInventory();                                // Ego_r.pdb ?OpenInventory@CTCInventoryClothing@@UAEXXZ
+private:
+    void InitialiseMannequin();                                  // 0x005B37F7 Ego_r.pdb ?InitialiseMannequin@CTCInventoryClothing@@AAEXXZ
+    void SetUpSelectedClothes();                                 // 0x005B4795 Ego_r.pdb ?SetUpSelectedClothes@CTCInventoryClothing@@AAEXXZ
 };
-void CTCInventoryClothing_Retail::OpenInventory()
+void CTCInventoryClothing::OpenInventory()
 {
     InitialiseMannequin();
     UseMannequin = true;
     SetUpSelectedClothes();
-    CTCInventoryBase_Retail::OpenInventory();
+    NInventory::CTCInventoryBase::OpenInventory();
     NUISystem::CManager::GetInstance()->OnInventoryOpened(this);
 }

@@ -22,15 +22,15 @@ class CWideString { public:
     ~CWideString();                                         // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);        // 0x0099BE70
-CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);            // 0x0099BF30
+CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);     // 0x0099BF30
 class CAFile {
 public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
 };        // 0x00999230
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350
 namespace NResourceDirectoryNames {
-CWideString __fastcall GetSaveDir_0041a650();                        // 0x0041A650
-CWideString __fastcall GetCustomTattooDir();                // 0x0041A6A0
+CWideString __fastcall GetTattooUserDir();                       // 0x0041A650 Ego_r.pdb (body: GetMyDocumentsDir + "My Games\\Fable\\Tattoos\\"; was GetSaveDir_0041a650)
+CWideString __fastcall GetTattooDataDir();                       // 0x0041A6A0 Ego_r.pdb (body: L"Data\\Tattoos\\"; was GetCustomTattooDir)
 }
 class CCharStringData;
 class CCharString { public:
@@ -65,9 +65,9 @@ bool CTattooDef::IsInvalidCustomTattoo() const
     if (BankIndex != -1)
         return false;
     CUserProfileManager* profiles = &CUserProfileManager::Get();
-    CWideString profileDir = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\";
+    CWideString profileDir = NResourceDirectoryNames::GetTattooUserDir() + GetValidProfileName(profiles->ProfileName) + L"\\";
     if (CAFile::PathExists(profileDir + CustomFileName.ToWideString())) {
-        CWideString baseDir = NResourceDirectoryNames::GetCustomTattooDir() + L"\\";
+        CWideString baseDir = NResourceDirectoryNames::GetTattooDataDir() + L"\\";
         CDiskFileWin32 file(profileDir + CustomFileName.ToWideString(), FILE_ACCESS_READ, 2);
         if (CAFile::PathExists(baseDir + CustomFileNameBase.ToWideString())) {
             CDiskFileWin32 baseFile(baseDir + CustomFileNameBase.ToWideString(), FILE_ACCESS_READ, 2);

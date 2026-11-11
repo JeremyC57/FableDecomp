@@ -47,31 +47,35 @@ struct CExpressionMap {
     long FindRandomElement(long expressionType, unsigned long* seed);   // 0x0086F510
 };
 
-struct CCreatureExpressionDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char   _pad08[0x38 - 0x08];
     CExpressionMap* Expressions;                    // +0x38
 };
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T>
 class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
     {
         if (DecRefToZero(Object->m_refCount))
             Object->Destroy();
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CCreatureExpressionDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureExpressionDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -163,7 +167,7 @@ FABLE_FORCEINLINE void CTCCreatureExpression::SetExpressionInline(long expressio
         else
             front->value.Primary = false;
     }
-    CDefPointer<CCreatureExpressionDef> def;
+    CDefPointer<const CCreatureDef> def;
     ParentThing->PDef_Object->GetSubDef(&def);
     CExpressionMap* expressions = def->Expressions;
     long anim = expressions->FindRandomElement(expressionType, GetWorld().GetWorldSeed());

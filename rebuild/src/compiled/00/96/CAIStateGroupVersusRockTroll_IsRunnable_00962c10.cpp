@@ -5,7 +5,7 @@
 // 100) for the rock-throwing variant.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00962C10, length 309 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface, type 8, ternary form into ecx for the
-// component's virtual slot 29 +0x74 GetEnemy), CDefClassBase::GetSubDef<CAbilityDef>(CDefPointer<const CAbilityDef>*)
+// component's virtual slot 29 +0x74 GetEnemy), CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*)
 // @ 0x00485815 on the enemy's def (+0x70), CAIStateGroupBase::GetWorld @ 0x008FCFC0, CWorld::GetPRandomSeed
 // @ 0x0049D810, GFROR13 @ 0x00497890, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (vtable 0x0123E7D8), the
 // ability def's virtual slot 1 (destroy on the last release).
@@ -204,7 +204,7 @@ struct CTCEnemyTracker {                        // interface 8
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
-class CAbilityDef { public:
+class CCreatureDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
@@ -212,20 +212,24 @@ class CAbilityDef { public:
     unsigned long AbilityType;                  // +0xac
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T>
 class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }               // a plain holder here: released by hand through a local copy
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CDefClassBase { public:
-    bool GetSubDef_00485815(CDefPointer<CAbilityDef>* out);   // 0x00485815 (GetSubDef<CAbilityDef>)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_00485815(CDefPointer<CAbilityDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -252,10 +256,10 @@ bool CAIStateGroup_VersusRockTroll::IsRunnable()
     CTCEnemyTracker* tracker;
     PBrain->PCreature->GetInterfaceX(&tracker, 8);
     CThing* enemy = tracker->GetEnemy();
-    CDefPointer<CAbilityDef> holder;
+    CDefPointer<const CCreatureDef> holder;
     if (enemy && !(enemy->m_flags91 & 1)) {
-        bool found = GetThingDef(enemy)->GetSubDef_00485815(&holder);
-        CAbilityDef* ability = holder.Object;
+        bool found = GetThingDef(enemy)->GetSubDef(&holder);
+        CCreatureDef* ability = const_cast<CCreatureDef*>(holder.Object);
         if (found && (ability->AbilityType == 0x10000 || ability->AbilityType == 0x8000)) {
             unsigned long* seed = ((CWorld*)(((CWorldR*)&GetWorld())))->GetWorldSeed();
             unsigned long next = *seed * 0x24A1U + 0x24DFU;

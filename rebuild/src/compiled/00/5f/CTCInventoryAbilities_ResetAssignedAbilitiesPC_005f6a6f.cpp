@@ -31,13 +31,15 @@ struct CDefBase {
     long RefCount;                                   // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CUIMiscThingsDef : CDefBase {
-};
-struct CMiscThingsDefPointer {                       // CDefPointer<const CUIMiscThingsDef>
+namespace NUISystem { class CUIMiscThingsDef : public CDefBase { public:
+}; }
+using NUISystem::CUIMiscThingsDef;
+template <class T> class CDefPointer;
+template <> class CDefPointer<const NUISystem::CUIMiscThingsDef> { public:   // Ego_r.pdb (was the row-local CMiscThingsDefPointer)
     CUIMiscThingsDef* Object;
-    CMiscThingsDefPointer() {}
-    CMiscThingsDefPointer(CUIMiscThingsDef* object) : Object(object) {}   // adopts a reference the caller already owns
-    ~CMiscThingsDefPointer() { if (Object) Object->Release(); }
+    CDefPointer() {}
+    CDefPointer(CUIMiscThingsDef* object) : Object(object) {}   // adopts a reference the caller already owns
+    ~CDefPointer() { if (Object) Object->Release(); }
 };
 
 enum EHeroAbility { HERO_ABILITY_NULL };
@@ -65,22 +67,24 @@ class CTCInventoryAbilities { public:
     CAbilityVector AssignedAbilities;                // +0x17C (PDB +0x1A4)
     CAbilityVector AssignedAbilitiesSave;            // +0x188 (PDB +0x1B4)
 
-    CMiscThingsDefPointer GetMiscThingsDef() const;  // 0x005EE3B3
+private:
+    const CDefPointer<const NUISystem::CUIMiscThingsDef> GetMiscThingsDef() const;   // 0x005EE3B3 (Ego_r.pdb: private)
+public:
     long GetNumAssignableSpecialMoveButtons() const;              // 0x005EDCF0
     void CycleAssignedAbilities(bool forward);       // 0x005F64DD
     void ResetAssignedAbilitiesPC();
 };
 CUIMiscThingsDef* Lookup_CTCInventoryAbilities_GetMiscThingsDef(const void* owner);   // stand-in callee
 #pragma auto_inline(off)
-__declspec(noinline) CMiscThingsDefPointer CTCInventoryAbilities::GetMiscThingsDef() const
+__declspec(noinline) const CDefPointer<const NUISystem::CUIMiscThingsDef> CTCInventoryAbilities::GetMiscThingsDef() const
 {
-    return CMiscThingsDefPointer(Lookup_CTCInventoryAbilities_GetMiscThingsDef(this));
+    return CDefPointer<const NUISystem::CUIMiscThingsDef>(Lookup_CTCInventoryAbilities_GetMiscThingsDef(this));
 }
 #pragma auto_inline(on)
 
 void CTCInventoryAbilities::ResetAssignedAbilitiesPC()
 {
-    CMiscThingsDefPointer miscThings = GetMiscThingsDef();
+    CDefPointer<const NUISystem::CUIMiscThingsDef> miscThings = GetMiscThingsDef();
     ReceivedAbilityOrder.clear();
     for (unsigned long i = 0; i < AssignedAbilities.size() && i < AssignedAbilitiesSave.size(); ++i) {
         AssignedAbilitiesSave[i] = AssignedAbilities[i];

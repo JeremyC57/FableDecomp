@@ -18,27 +18,28 @@ class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> class CDefPointer { public:
-    T* Object;
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
+template <class T> class CDefPointer { public:  // the counted def pointer; as the GetSubDef out slot: zeroed, released at scope end (no null test)
+    typename CDefNonConst<T>::Type* Object;
+    CDefPointer() : Object(0) {}
+    ~CDefPointer() { if (--Object->m_refCount == 0) Object->Destroy(); }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-template <class T> struct CSubDefPointer {      // the GetSubDef out pointer: zeroed, released at scope end (no null test)
-    T* Object;
-    CSubDefPointer() : Object(0) {}
-    ~CSubDefPointer() { if (--Object->m_refCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
-struct CCreatureSubDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xe4 - 0x08];
     bool IsGhost;                               // +0xe4
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CSubDefPointer<CCreatureSubDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CSubDefPointer<CCreatureSubDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -92,7 +93,7 @@ CThingFilter_IsValidAttackTargetForCreature::CThingFilter_IsValidAttackTargetFor
       FilterNotInList(notList), CheckAwareness(checkAwareness), IAmAGhostExclaim(false)
 {
     CDefClassBase* thingDef = ((CThingBase*)creature)->PDef.Object;
-    CSubDefPointer<CCreatureSubDef> def;
+    CDefPointer<const CCreatureDef> def;
     if (thingDef)
         ++thingDef->m_refCount;
     thingDef->GetSubDef(&def);

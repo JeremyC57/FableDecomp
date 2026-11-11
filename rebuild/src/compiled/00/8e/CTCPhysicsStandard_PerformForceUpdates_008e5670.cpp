@@ -3,7 +3,7 @@
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E5670, 217 bytes (plain `ret`). Callers 0x00725C47 / 0x00726FCD / 0x008E5D52.
 // Callees: virtual GetFeelsGravity slot 48 (+0xc0), GetFeelsAirResistance slot 49 (+0xc4), IsOnGround slot 56 (+0xe0) (GOTCHAS
-//   chunk 168 slot list); CTCPhysicsBase::GetAirResistance() @ 0x006AFDE0, CTCBase::GetWorldMap() @ 0x006AF620,
+//   chunk 168 slot list); CTCPhysicsBase::GetAirResistance() @ 0x006AFDE0, CTCBase::&GetWorldMap() @ 0x006AF620,
 //   CWorldMap::GetGroundFaceNormalAt(const C3DVector&) const @ 0x0063AB10 (PDB QBE, hidden C3DVector result),
 //   CTCPhysicsBase::ApplyAcceleration(const C3DVector&) @ 0x006B0210. Floats: 1.0f @ 0x0122DED8, 0.98f @ 0x01287364 (the
 //   flat-ground normal Z), DELTA_NOTIONAL_ZERO @ 0x0129BA3C (1e-4f, an extern float squared in place), -0.12f folded into the
@@ -40,7 +40,9 @@ class CTCPhysicsBase { public:
     void*     PhysicsDef;                           // +0x38 CDefPointer<CPhysicsDef const>::Object
     unsigned char m_flags3c;                        // +0x3c Moving / OldMoving
     float GetAirResistance();                       // 0x006AFDE0
-    CWorldMap* GetWorldMap();                       // 0x006AF620 (CTCBase)
+protected:
+    CWorldMap& GetWorldMap();   // 0x006AF620 Ego_r.pdb (was GetWorldMap)
+public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
 struct CTCPhysicsStandard : CTCPhysicsBase {
@@ -57,7 +59,7 @@ void CTCPhysicsStandard::PerformForceUpdates()
         Velocity.Z *= keep;
     }
     if (GetFeelsGravity()) {
-        if (!IsOnGround() || GetWorldMap()->GetGroundFaceNormalAt(Position).Z < 0.98f
+        if (!IsOnGround() || GetWorldMap().GetGroundFaceNormalAt(Position).Z < 0.98f
             || Velocity.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             ApplyAcceleration(C3DVector(0.0f, 0.0f, -0.12f));
     }

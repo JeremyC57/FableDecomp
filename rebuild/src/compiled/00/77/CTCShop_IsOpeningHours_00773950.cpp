@@ -39,9 +39,13 @@ public:
     unsigned char _pad08[0x9c - 0x08];
     bool AlwaysOpen;                            // +0x9c retail (Ego_r.pdb +0xAC)
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer {
 public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object)
     {
@@ -49,18 +53,18 @@ public:
             ++Object->m_refCount;
     }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
     operator bool() const { return Object != 0; }
 };
 class CDefClassBase : public CDefPointeeBase {
 public:
-    bool GetSubDef(CDefPointer<CShopDef>* out); // 0x005130A0 (CDefPointer<const CShopDef>*)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005130A0 GetSubDef<CShopDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_1();      // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed GetName 0x00772610 / 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CShopDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CShopDef>(CDefPointer<const CShopDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_1();
     if (!def)
@@ -130,7 +134,7 @@ bool CTCShop::IsOpeningHours() const
 {
     if (!IS_THING_ALIVE(PShopKeeper))
         return false;
-    CDefPointer<CShopDef> shopDef;
+    CDefPointer<const CShopDef> shopDef;
     bool alwaysOpen = GetDef() && GetDef()->GetSubDef(&shopDef) && shopDef->AlwaysOpen;
     if (alwaysOpen)
         return true;

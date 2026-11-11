@@ -48,13 +48,14 @@ class CInventoryItemDef : public CDefBase { public:
     unsigned char _pad_0x08[0x2C];
     unsigned long ItemDescription;                   // +0x34
 };
-struct CItemDefPointer {                             // CDefPointer<const CInventoryItemDef>
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CInventoryItemDef> { public:   // Ego_r.pdb CDefPointer<const CInventoryItemDef>
     CInventoryItemDef* m_p;
-    CItemDefPointer() : m_p(0) { }
-    CItemDefPointer(const CDefPointerBase& other) : m_p((CInventoryItemDef*)other.m_p) { if (m_p) ++m_p->m_count; }
-    ~CItemDefPointer() { if (m_p) m_p->Release(); }
+    CDefPointer() : m_p(0) { }
+    CDefPointer(const CDefPointerBase& other) : m_p((CInventoryItemDef*)other.m_p) { if (m_p) ++m_p->m_count; }
+    ~CDefPointer() { if (m_p) m_p->Release(); }
     CInventoryItemDef* operator->() const { return m_p; }
-    CItemDefPointer& operator=(const CItemDefPointer& other)
+    CDefPointer& operator=(const CDefPointer& other)
     {
         if (m_p != other.m_p) {
             if (m_p) { m_p->Release(); m_p = 0; }
@@ -74,18 +75,18 @@ class CDefClassBase : public CDefBase { public:
     virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
     unsigned char _pad[0x1c - 8];
     CDefinitionManager* m_pManager;                  // +0x1C
-    bool GetSubDef(CItemDefPointer& out);            // 0x005BADE1
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005BADE1 GetSubDef<CInventoryItemDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CItemDefPointer& out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer<const CInventoryItemDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -191,8 +192,8 @@ class CTCHeroMorph { public:
 void CTCHeroMorph::GetTattooNames(std::vector<CWideString>& names)
 {
     for (unsigned long i = 0; i < Tattoos.size(); ++i) {
-        CItemDefPointer item;
-        Tattoos[i]->GetSubDef(item);
+        CDefPointer<const CInventoryItemDef> item;
+        Tattoos[i]->GetSubDef(&item);
         CInventoryItemDef* itemDef = item.m_p;
         CIVCountedPointer<const NGameText::CTextEntry> entry =
             CMainGameComponent::Get()->PGameTextDataBank->GetPTextEntry(itemDef->ItemDescription, true);

@@ -14,7 +14,7 @@
 // 0x00487DC0, the const interface LowerBound 0x004365B0 and the non-const one 0x0040F020, CBaseIntelligentPointer::GetPItem
 // 0x00A01B50, CTCBase::PeekWorld 0x00686A80 (+0xDA a bool), CTCHeroCentre::GetQuestCards 0x0077DBC0, CMemoryBuffer::Copy
 // 0x009F1760, the second player-manager getter 0x00686D40, CPlayerManager::GetMainPlayerNumber 0x00449700,
-// CMainGameComponent::AddGameEvent 0x0041649C, CCharString 0x0099EBF0 / 0x0099EAE0, CTCBase::GetGameSubsystem 0x00686D60
+// CMainGameComponent::AddGameEvent 0x0041649C, CCharString 0x0099EBF0 / 0x0099EAE0, CTCBase::PeekComponent() const 0x00686D60 (Ego_r.pdb)
 // (+0x1614C the font bank), CSubtitleRenderer::SetText 0x00492ED1 on the player GUI 0x013B8790 (+0x18),
 // ~vector<CIntelligentPointer<CThing> > 0x004406D0, __security_check_cookie 0x00BFE9F9.
 // Layout: CGameEvent as the landed CTCShop::OpenShoppingInterface 0x00773B20; CThing interface bitset +0x20, map +0x44,
@@ -107,6 +107,8 @@ public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
 private: public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
+    unsigned char _pad00[0x1614c];
+    class CFontBank* PCutSceneMainFont_Data;            // +0x1614C CCountedPointer<CFontBank>::Data (Ego_r.pdb PCutSceneMainFont; was CGameSubsystem::SubtitleFont)
 };
 class CCharStringData;
 class CCharString { public:
@@ -128,10 +130,6 @@ class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
 };
-struct CGameSubsystem {
-    unsigned char _pad00[0x1614c];
-    CFontBank* SubtitleFont;                            // +0x1614C
-};
 class CWorld { public:
     unsigned char _pad00[0xda];
     bool QuestCardsEnabled;                             // +0xDA
@@ -139,8 +137,8 @@ class CWorld { public:
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
-    CGameSubsystem* GetGameSubsystem() const;           // 0x00686D60
 protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ (was GetGameSubsystem)
     const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
     CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
     const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50 (Ego_r.pdb CTCBase, protected)
@@ -169,8 +167,8 @@ void CTCHeroGuide::OpenQuestSelectInterface()
             CMainGameComponent::Get()->AddGameEvent(event);
         } else {
             CCharString text("TEXT_GUI_QUESTS_NO_AVAILABLE", -1);
-            CGameSubsystem* subsystem = GetGameSubsystem();
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(subsystem->SubtitleFont, text, 0x122, 4.0f, false, true);
+            const CMainGameComponent* component = &PeekComponent();
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(component->PCutSceneMainFont_Data, text, 0x122, 4.0f, false, true);
         }
     }
 }

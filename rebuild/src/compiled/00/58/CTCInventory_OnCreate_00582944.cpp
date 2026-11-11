@@ -27,7 +27,7 @@ struct CRefCounted {
     long RefCount;                                   // +0x04
 };
 
-struct CInventorySubDef : CRefCounted {
+class CCreatureDef : public CRefCounted { public:    // the owner's creature sub-def
     unsigned char _pad_0x08[0x70];
     long          InventoryDefIndex;                 // +0x78
 };
@@ -40,19 +40,23 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 
-template <class T> struct CRawDefPointer {
-    T* Object;
-    CRawDefPointer() : Object(0) {}
+// agentNF15: the GetSubDef out slot is CDefPointer<const CCreatureDef>, released by hand below (no null test): a dtor-less
+//   specialisation (the landed agentNF14 idiom for hand-released out slots).
+template <> class CDefPointer<const CCreatureDef> { public:
+    CCreatureDef* Object;
+    CDefPointer() : Object(0) {}
 };
 
-struct CThingDef : CRefCounted {
-    bool GetSubDef(CRawDefPointer<CInventorySubDef>* out) const;   // 0x00485815
+class CDefClassBase : public CRefCounted { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
+};
+class CThingDef : public CDefClassBase { public:
 };
 void* FindDef_CThingDef_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventorySubDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CThingDef_GetSubDef_0();
     if (!def)
@@ -106,9 +110,9 @@ class CTCInventory : public CTCInventoryBase, public CScreenBase { public:    //
 void CTCInventory::OnCreate()
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetScreenManager()->RegisterScreen(this);
-    CRawDefPointer<CInventorySubDef> pdef;
+    CDefPointer<const CCreatureDef> pdef;
     ParentThing->GetDef()->GetSubDef(&pdef);
-    CInventorySubDef* def = pdef.Object;
+    CCreatureDef* def = pdef.Object;
     SetPDef(def->InventoryDefIndex);
     CTCInventoryBase::OnCreate();
     SetQuickAccessAssign(false);

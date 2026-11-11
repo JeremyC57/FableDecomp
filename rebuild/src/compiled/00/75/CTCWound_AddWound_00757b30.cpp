@@ -52,8 +52,12 @@ class CCreatureDef { public:
     unsigned char _pad08[0x28 - 0x08];
     CCountedPointer<CWoundMorphs> PWoundMorphs;              // +0x28
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
     T* operator->() const { return Object; }
@@ -78,7 +82,7 @@ class CCharString { public:
     ~CCharString();                                          // 0x0099EAE0
 };
 class CDefinitionManager { public:
-    CDefPointer<CCreatureDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
+    CDefPointer<const CCreatureDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
 class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
@@ -87,20 +91,21 @@ class CDefClassBase { public:
     virtual long* GetSubDefIndex(const CCharString& name);  // slot 14 (+0x38)
     unsigned char _pad04[0x1c - 4];
     CDefinitionManager* m_pManager;                          // +0x1c
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);         // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 #pragma auto_inline(off)
 // Same-TU stand-in for GetSubDef 0x00485815 (the landed PickUpGoods 0x00848730 model): VC7.1 then knows the def
 // pointer's address does not escape, so the null test before the release folds and the zero store sinks like retail's.
-bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
+template <> bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
+    CDefClassBase* self = const_cast<CDefClassBase*>(this);
     long* pIndex;
     {
         CCharString name("CCreatureDef");
-        pIndex = GetSubDefIndex(name);
+        pIndex = self->GetSubDefIndex(name);
     }
     if (pIndex) {
-        CDefPointer<CCreatureDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
+        CDefPointer<const CCreatureDef> result = self->m_pManager->GetPDefFromGlobalIndex(*pIndex);
         *out = result;
         return true;
     }
@@ -198,7 +203,7 @@ class CTCWound : public CTCBase { public:
 
 void CTCWound::AddWound(EBodyLocation location)
 {
-    CDefPointer<CCreatureDef> def;
+    CDefPointer<const CCreatureDef> def;
     ParentThing->m_pDef->GetSubDef(&def);
     const CWoundMorphs* morphs = def->PWoundMorphs.Data;
     long morphIndex = -1;

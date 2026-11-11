@@ -25,7 +25,7 @@ template <class T> class CDefPointer { public:
 };
 
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<const CInventoryItemDef>& out);   // 0x005BADE1
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005BADE1 GetSubDef<CInventoryItemDef> (Ego_r.pdb member template)
 };
 
 class CThing { public:
@@ -41,5 +41,5 @@ struct CTCInventoryItem_Methods : CTCInventoryItem {
 
 void CTCInventoryItem_Methods::OnCreate()
 {
-    GetThing()->GetDef()->GetSubDef(*(CDefPointer<const CInventoryItemDef>*)&PDef_Object);
+    GetThing()->GetDef()->GetSubDef((CDefPointer<const CInventoryItemDef>*)&PDef_Object);
 }

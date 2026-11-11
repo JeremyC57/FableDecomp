@@ -41,17 +41,19 @@ class CTattooDef : public CDefPointeeBase { public:
     float VisibilityMultiplier;                         // +0x44
     long  SpecificCoversBodyAreaFlags;                  // +0x48
 };
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<const CTattooDef>* out) const;   // 0x005B1EFC
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1EFC GetSubDef<CTattooDef> (Ego_r.pdb member template)
+};
+class CThingBaseDef : public CDefClassBase { public:
 };
 typedef CDefPointer<const CThingBaseDef> CThingDefPointer;
 
-void* FindSubDef(const CThingBaseDef* def);
+void* FindSubDef(const CDefClassBase* def);
 void ReleaseDef(void* def);
 #pragma auto_inline(off)
 // Same-TU stand-in for GetSubDef (retail's body is out of line): it reads the old out pointer and stores the new one like
 // CDefPointer::operator=, so VC7.1 knows the out pointer's address does not escape the call.
-bool CThingBaseDef::GetSubDef(CDefPointer<const CTattooDef>* out) const
+template <> bool CDefClassBase::GetSubDef<CTattooDef>(CDefPointer<const CTattooDef>* out) const
 {
     void* def = FindSubDef(this);
     if (!def)

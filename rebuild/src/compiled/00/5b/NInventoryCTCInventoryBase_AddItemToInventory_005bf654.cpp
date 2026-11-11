@@ -76,8 +76,12 @@ class CDefPointeeBase { public:
     void Release() { if (DecRefToZero(RefCount)) Destroy(); }
 };
 class CHeroTitleDef : public CDefPointeeBase { public:};
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     FABLE_FORCEINLINE ~CDefPointer()
@@ -87,10 +91,10 @@ template <class T> class CDefPointer { public:
             Object = 0;
         }
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CHeroTitleDef>* out) const;   // 0x005B1E5A
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1E5A GetSubDef<CHeroTitleDef> (Ego_r.pdb member template)
 };
 void* FindDef_s7r_0();
 long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work FindDef_s7r_0 does (outside the bytes graded here)
@@ -106,7 +110,7 @@ __declspec(noinline) void* FindDef_s7r_0()
 #pragma auto_inline(off)
 // Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHeroTitleDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CHeroTitleDef>(CDefPointer<const CHeroTitleDef>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
@@ -273,7 +277,7 @@ class CTCInventoryBase { public:
 
 bool CTCInventoryBase::AddItemToInventory(CThing* item, bool silent, bool fromShop, long price, bool noTutorials)
 {
-    CDefPointer<CHeroTitleDef> titleDef;
+    CDefPointer<const CHeroTitleDef> titleDef;
     bool isTitle;
     {
         CDefPointer<CDefClassBase> def(item->PDef);

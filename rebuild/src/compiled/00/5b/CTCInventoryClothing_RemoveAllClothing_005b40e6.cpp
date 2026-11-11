@@ -32,24 +32,25 @@ protected:
 namespace NInventory {
 class CTCInventoryBase : public CTCBase
 {
-public:
+protected:
+    void SelectItemWithDefIndex(long defIndex);                  // 0x005BDFB1 Ego_r.pdb ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
 };
 }
 
-struct CTCInventoryClothing_Retail : public NInventory::CTCInventoryBase {
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
     void*         __vftable;                                     // +0x000
     CThing*       Owner;                                         // +0x004
     unsigned char _pad_0x008[0x154];
     bool          UseMannequin;                                  // +0x15C
-    void SelectItemWithDefIndex(long defIndex);                  // 0x005BDFB1 (CTCInventoryBase)
-    void SetThingAsWearingSelectedClothes(CThing* thing);        // 0x005B406D
-    void RemoveAllClothing();
+    void RemoveAllClothing();                                    // Ego_r.pdb ?RemoveAllClothing@CTCInventoryClothing@@QAEXXZ
+private:
+    void SetThingAsWearingSelectedClothes(CThing& thing);        // 0x005B406D Ego_r.pdb ?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z
 };
-void CTCInventoryClothing_Retail::RemoveAllClothing()
+void CTCInventoryClothing::RemoveAllClothing()
 {
     UseMannequin = false;
     long suitIndex = GetDefinitionManager().GetDefGlobalIndexFromName("HERO_SUIT_NAKED");
     SelectItemWithDefIndex(suitIndex);
-    SetThingAsWearingSelectedClothes(Owner);
+    SetThingAsWearingSelectedClothes(*Owner);
     UseMannequin = true;
 }

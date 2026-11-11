@@ -31,7 +31,8 @@ struct CThing_Retail {
         return ((CTCBase_Retail*)it->second);
     }
 };
-struct CTCInventoryBase { long GetNumberOfItemsOfTypeInInventory(long defIndex); };   // 0x005BDF08
+namespace NInventory { class CTCInventoryBase { public: long GetNumberOfItemsOfTypeInInventory(long defIndex) const; }; }   // 0x005BDF08 Ego_r.pdb (const)
+using NInventory::CTCInventoryBase;
 class CTCCarrying { public: bool IsCarryingThing(long defIndex); };                          // 0x006A10A0
 struct CTCHouseContents { bool ContainsItemOfType(long defIndex); };                  // 0x008ED010
 #include "engine/CCountedPointer.h"

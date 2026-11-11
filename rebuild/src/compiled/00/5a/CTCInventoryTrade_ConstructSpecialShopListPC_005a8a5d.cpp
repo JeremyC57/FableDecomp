@@ -35,27 +35,31 @@ struct CDefBase {
     virtual void Destroy();
     long m_refCount;
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
 };
-struct CMiscThingsDef : CDefBase { };
+namespace NUISystem { class CUIMiscThingsDef : public CDefBase { }; }   // Ego_r.pdb (was the row-local CMiscThingsDef)
 void* FindDef_c();
 class CDefinitionManager { public:
     long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B312 GetDef<NUISystem::CUIMiscThingsDef> (Ego_r.pdb)
 };
-class CGameDefinitionManager { public:
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-    bool GetDef(long index, CDefPointer<CMiscThingsDef>& out);         // 0x0042B312
 };
 #pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer<CMiscThingsDef>& out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>(long index, CDefPointer<const NUISystem::CUIMiscThingsDef>* out) const
 {
     void* def = FindDef_c();
     if (!def)
         return false;
-    out.Object = (CMiscThingsDef*)def;
+    out->Object = (NUISystem::CUIMiscThingsDef*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -171,9 +175,9 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
 {
     NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     NUISystem::CComponent* list = frontEnd->CreateComponent(name, false);
-    CDefPointer<CMiscThingsDef> misc;
+    CDefPointer<const NUISystem::CUIMiscThingsDef> misc;
     long miscIndex = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", true);
-    CGameDefinitionManager::Get().GetDef(miscIndex, misc);
+    CGameDefinitionManager::Get().GetDef(miscIndex, &misc);
     NUISystem::CComponent* entry = list->FindChild("PC_SPECIALSHOP_MENU_BUY_ENTRY");
     TotSpecialItemsToBuy = 0;
     if (!items.empty() || !NotInStock.empty()) {

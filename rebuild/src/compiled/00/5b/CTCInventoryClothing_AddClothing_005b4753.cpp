@@ -1,20 +1,28 @@
+// CTCInventoryClothing::AddClothing(long item) -- adds a clothing item to the owner thing, then selects it in the inventory
+// Leaf: ?AddClothing@CTCInventoryClothing@@QAEXJ@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005B4753, 30 bytes, `ret 4`. Size-optimised TU (`optimize("s", on)`).
+// Callees: CTCInventoryClothing::AddClothingToThing(long, CThing*) @ 0x005B43A2 (Ego_r.pdb
+//   ?AddClothingToThing@CTCInventoryClothing@@QAEXJPAVCThing@@@Z; ecx is still `this`, so VC7.1 reloads nothing),
+//   NInventory::CTCInventoryBase::SelectItemWithDefIndex(long) @ 0x005BDFB1 (Ego_r.pdb, protected).
+// agentNF15: the free __stdcall stand-in Sub_5b43a2 and the member stand-in Sub_5bdfb1 replaced by the Ego_r.pdb members
+//   (same bytes: AddClothingToThing is a thiscall whose `this` is already in ecx); the thing at +4 is CTCBase::ParentThing.
 #pragma optimize("s",on)
-// CTCInventoryClothing::AddClothing @ 0x005b4753
-struct Item;
-
-// call 0x5b43a2 : two stack args, __stdcall (no caller cleanup)
-extern void __stdcall Sub_5b43a2(long item, long member4);
-
-class CTCInventoryClothing { public:
-    void* vtbl;      // +0
-    long  member4;   // +4
-    // 0x5bdfb1 modeled as a thiscall member (self in ecx, one stack arg)
-    void Sub_5bdfb1(long item);
-    void AddClothing(long item);
+class CThing;
+namespace NInventory {
+class CTCInventoryBase { public:                        // CTCBase: vptr +0, ParentThing +4 (declarations only)
+    void*   __vftable;                                  // +0
+    CThing* ParentThing;                                // +4
+protected:
+    void SelectItemWithDefIndex(long defIndex);         // 0x005BDFB1 ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
+};
+}
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
+    void AddClothing(long item);                        // Ego_r.pdb ?AddClothing@CTCInventoryClothing@@QAEXJ@Z
+    void AddClothingToThing(long item, CThing* thing);  // 0x005B43A2
 };
 
 void CTCInventoryClothing::AddClothing(long item)
 {
-    Sub_5b43a2(item, this->member4);
-    this->Sub_5bdfb1(item);
+    AddClothingToThing(item, ParentThing);
+    SelectItemWithDefIndex(item);
 }

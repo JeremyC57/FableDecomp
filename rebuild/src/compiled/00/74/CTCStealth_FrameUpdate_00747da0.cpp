@@ -60,9 +60,13 @@ class CPlayer { public:
 };
 class CCreatureActionBase { public: long GetActionID() const; };   // 0x00692620
 class CThing;
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
+class CFaction;
+class CThingAICreature;
 class CTCHeroOpinionDeedLog { public:
-    long PostDeed(long type, const C3DVector& pos, CThing* a, CThing* b, long post, bool c, bool d, void* faction, bool e,
-                  long f);                              // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
     void RemoveDeedStillSearchingForWitnesses(long handle);   // 0x006C5920
 };
 class CThing { public:
@@ -237,7 +241,7 @@ void CTCStealth::FrameUpdate()
                 long frames = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * 4.0f);
                 if (CWorld::GetFrame() - FrameStartedSneakingAndMoving > frames && creature->HasTC(0x51)) {
                     CTCHeroOpinionDeedLog* log = creature->GetTC<CTCHeroOpinionDeedLog>(0x51);
-                    SneakingAndMovingDeedHandle = log->PostDeed(0x49, creature->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);
+                    SneakingAndMovingDeedHandle = log->PostDeed(OPINION_DEED_TYPE_GENERIC_INCOMPREHENSION, creature->GetPos(), 0, 0, (EOpinionPostDeedType)2, false, true, 0, false, 0);
                 }
             }
         }

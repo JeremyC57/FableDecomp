@@ -23,8 +23,12 @@ struct CDefPointee {
     virtual void Destroy();                             // slot 1
     long m_refCount;                                    // +0x04
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) { Object = other.Object; if (Object) { long& count = Object->m_refCount; count = count + 1; } }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
@@ -64,21 +68,22 @@ class CDefClassBase : public CDefPointee { public:
     virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
     unsigned char _pad08[0x1c - 0x08];
     CDefinitionManagerBase* m_pManager;                 // +0x1c
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);     // 0x00485815 (GetSubDef<CCreatureDef>)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 #pragma auto_inline(off)
 // Same-TU stand-in: the landed body of GetSubDef<CCreatureDef> 0x00485815 (retail's LTCG knowledge that the out pointer
 // does not escape; precedent NEntityEvents::CEventKnockedOut::OnAdd 0x00811470).
-bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
+template <> bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
+    CDefClassBase* self = const_cast<CDefClassBase*>(this);
     long* pIndex;
     {
         CCharString name("CCreatureDef", -1);
-        pIndex = GetSubDefIndex(name);
+        pIndex = self->GetSubDefIndex(name);
     }
     if (pIndex) {
-        CDefPointer<CDefPointee> base = m_pManager->GetPDefFromGlobalIndex(*pIndex);
-        CDefPointer<CCreatureDef> result;
+        CDefPointer<CDefPointee> base = self->m_pManager->GetPDefFromGlobalIndex(*pIndex);
+        CDefPointer<const CCreatureDef> result;
         result.Object = (CCreatureDef*)base.Object;
         if (result.Object)
             ++result.Object->m_refCount;
@@ -127,7 +132,7 @@ bool CTCRegionFollower::IsCreatureAllowedInRegionAt(const CThing* creature, cons
 {
     bool hasDef = creature->GetPDef().IsValid();
     if (hasDef) {
-        CDefPointer<CCreatureDef> creatureDef;
+        CDefPointer<const CCreatureDef> creatureDef;
         bool ok = creature->GetPDef()->GetSubDef(&creatureDef);
         if (ok && !creatureDef->AllowedInProtectedTowns) {
             const CRegion& region = PeekWorldMap().GetRegion(PeekWorldMap().GetRegionNumberMapIsIn(PeekWorldMap().GetMapNumberAt(position)));

@@ -75,9 +75,14 @@ class CTCCreatureOpinionOfHero {
 public:
     bool IsWillingToContinueFollowingHero() const;      // 0x006818F0
 };
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
+class CFaction;
+class CThingAICreature;
 class CTCHeroOpinionDeedLog {
 public:
-    void PostDeed(long deed, const C3DVector& pos, CThing* a, CThing* b, bool notify, long p0, long p1, long p2, long p3, long p4);   // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
 };
 class CTCDependents {
 public:
@@ -186,7 +191,7 @@ void CTCFollowed::FrameUpdate()
                 if (Thing->HasTC(0x7a))
                     dependents = (CTCDependents*)Thing->TCs.Find(0x7a);
                 dependents->AddDependentThing(follower);
-                deeds->PostDeed(0x31, Thing->GetPos(), follower, follower, true, 0, 0, 0, 0, 0);
+                deeds->PostDeed(OPINION_DEED_TYPE_FOLLOWER_QUIT, Thing->GetPos(), follower, (CThingAICreature*)follower, (EOpinionPostDeedType)1, false, false, 0, false, 0);
                 OnFollowerLeft(follower);
             }
             const C3DVector& pos = Thing->GetPos();
@@ -206,7 +211,7 @@ void CTCFollowed::FrameUpdate()
                             CIntelligentPointer<CThing>& p = node->_M_data;
                             CThing* follower = p.Get();
                             CThing* thing = Thing;
-                            deeds->PostDeed(0x34, thing->GetPos(), follower, p.Get(), true, 0, 0, 0, 0, 0);
+                            deeds->PostDeed(OPINION_DEED_TYPE_FOLLOWER_IDLEBORED, thing->GetPos(), follower, (CThingAICreature*)p.Get(), (EOpinionPostDeedType)1, false, false, 0, false, 0);
                             FrameLastIdleReaction = GetWorld().GetFrame();
                             break;
                         }

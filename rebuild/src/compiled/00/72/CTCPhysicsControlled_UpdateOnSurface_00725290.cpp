@@ -65,7 +65,9 @@ class CTCPhysicsBase { public:
     C3DVector     Velocity;                             // +0x28
     float         Radius;                               // +0x34
     float GetRadius() const { return Radius; }
-    CWorldMap* GetWorldMap();                           // 0x006AF620
+protected:
+    CWorldMap& GetWorldMap();   // 0x006AF620 Ego_r.pdb (was GetWorldMap)
+public:
     void ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse* response);   // 0x006B0610
     void SetThingStandingOn(CTCPhysicsBase* other);     // 0x006AF6D0
 };
@@ -119,7 +121,7 @@ void CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVec
             }
         }
     }
-    float groundZ = GetWorldMap()->GetGroundSizeZAt(pos);
+    float groundZ = GetWorldMap().GetGroundSizeZAt(pos);
     if (groundZ > pos.Z)
         pos.Z = groundZ;
     OnGround = (float)fabs(pos.Z - groundZ) < 0.05f;

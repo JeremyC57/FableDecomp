@@ -139,14 +139,18 @@ public:
     CSuitPartMap  SuitParts;                         // +0x28
 };
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* Object;
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 
 class CDefClassBase {
 public:
-    bool GetSubDef(CDefPointer<const CHeroSuitDef>* out) const;   // 0x005935C4 (GetSubDef<CHeroSuitDef>)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005935C4 GetSubDef<CHeroSuitDef> (Ego_r.pdb member template)
 };
 
 class CThing {

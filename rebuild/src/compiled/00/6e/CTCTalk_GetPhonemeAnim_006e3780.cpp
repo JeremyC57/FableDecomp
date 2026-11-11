@@ -1,6 +1,6 @@
 // CTCTalk::GetPhonemeAnim(const CCharString& phoneme) const -- the animation index the talk definition maps a phoneme name to (0 when the phoneme is not in the map)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E3780, length 77 bytes (+ int3 padding).
-// Callees: CDefClassBase::GetSubDef<CTalkDef>(CDefPointer<const CTalkDef>&) @ 0x00485815 (manifest template argument
+// Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>&) @ 0x00485815 (manifest template argument
 // "CAbilityDef" propagated), the phoneme map's find(const CCharString&) @ 0x0042B467 (manifest "StdMap_FindLE"; returns
 // the node pointer), the def's virtual slot 1 (+4) when the count drops to zero.
 // Identity: Ego_r.pdb has both `?GetPhonemeAnim@CThingCreatureBase@@MBEKABVCCharString@@@Z` and
@@ -25,8 +25,12 @@ class CDefPointeeBase { public:                        // a counted definition o
     }
 };
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
-    T* m_pObject;
+    typename CDefNonConst<T>::Type* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
 
@@ -45,24 +49,24 @@ struct CPhonemeMap {                            // map<CCharString, unsigned lon
     SPhonemeNode* Find(const CCharString& key) const;       // 0x0042B467
 };
 
-struct CTalkDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x58];
     CPhonemeMap   Phonemes;                     // +0x60
 };
 
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CTalkDef>& out) const;       // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CTalkDef>& out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -80,9 +84,9 @@ class CTCTalk { public:
 
 unsigned long CTCTalk::GetPhonemeAnim(const CCharString& phoneme) const
 {
-    CDefPointer<CTalkDef> def;
-    ParentThing->PBaseDef->GetSubDef(def);
-    CTalkDef* talk = def.m_pObject;
+    CDefPointer<const CCreatureDef> def;
+    ParentThing->PBaseDef->GetSubDef(&def);
+    CCreatureDef* talk = const_cast<CCreatureDef*>(def.m_pObject);
     const CPhonemeMap* phonemes = &talk->Phonemes;
     SPhonemeNode* it = phonemes->Find(phoneme);
     unsigned long anim = (it != phonemes->m_header) ? it->m_anim : 0;

@@ -28,8 +28,12 @@ class CDefPointeeBase { public:                        // a counted definition o
             DestroyDef();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
-    T* m_pObject;
+    typename CDefNonConst<T>::Type* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
 class CCreatureDef : public CDefPointeeBase { public:
@@ -37,13 +41,13 @@ class CCreatureDef : public CDefPointeeBase { public:
     bool PickPocketable;                        // +0xca
 };
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);         // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -102,7 +106,7 @@ class CThingCreatureBase : public CThing { public:
 
 bool CThingCreatureBase::IsPickPocketable()
 {
-    CDefPointer<CCreatureDef> out;
+    CDefPointer<const CCreatureDef> out;
     PBaseDef->GetSubDef(&out);
     CCreatureDef* def = out.m_pObject;
     if (def) {

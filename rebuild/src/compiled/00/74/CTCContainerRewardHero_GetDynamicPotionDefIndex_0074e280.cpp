@@ -67,9 +67,12 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-struct CTCInventoryBase {
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08
+namespace NInventory {
+class CTCInventoryBase { public:
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 };
+}
+using NInventory::CTCInventoryBase;
 class CTCHeroStats { public:
     unsigned char _pad00[0x58];
     long          WillPower;                        // +0x58

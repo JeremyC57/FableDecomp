@@ -18,24 +18,31 @@
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
 #include "fable_compiler.h"
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
+// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 // Same-TU stand-in for CVectorMap::LowerBound (its retail body is 0x0040F020, outside these bytes): a binary search
 // that only reads the key, so the key's frame word can be reused for find_if's result.
 #pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    int len = int(last - first);
+    value_type* it = _M_start;
+    int len = int(_M_finish - _M_start);
     while (len > 0) {
         int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
+        value_type* middle = it + half;
+        if (middle->first < key) {
             it = middle + 1;
             len = len - half - 1;
         } else
@@ -53,12 +60,12 @@ public:
     template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)type;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            if (it == map->last || type < it->type)
-                it = map->last;
-            *out = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->_M_finish || type < it->first)
+                it = map->_M_finish;
+            *out = (T*)it->second;
             return true;
         }
         return false;

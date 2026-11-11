@@ -55,10 +55,10 @@ class CDefinitionManager { public:
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();        // 0x0044C6B0
 };
-struct CGameRunState {                                  // descriptive: [0x013B8A1C]+0x1c
+class CMainGameComponent { public:                                  // partial view: CTCBase::PeekComponent() 0x00686D60 ([0x013B8A1C]+0x1c)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsRunning();                           // slot 9 (+0x24, descriptive)
+    virtual bool IsEditorActive() const;                // slot 9 (+0x24) 0x004197B0 (FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ; was IsRunning)
 };
 class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -71,7 +71,9 @@ class CTCBase {
 public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
-    CGameRunState* GetRunState();                       // 0x00686D60
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+public:
 protected:
     const CWorldMap& PeekWorldMap() const;   // 0x00686D20 (Ego_r.pdb CTCBase, protected)
 };
@@ -82,7 +84,7 @@ public:
 
 void CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CRoute& route)
 {
-    if (!GetRunState()->IsRunning())
+    if (!PeekComponent().IsEditorActive())
         return;
     long fromRegion = PeekWorldMap().GetRegionNumberMapIsIn(PeekWorldMap().GetMapNumberAt(from));
     if (fromRegion != PeekWorldMap().GetRegionNumberMapIsIn(PeekWorldMap().GetMapNumberAt(to)))

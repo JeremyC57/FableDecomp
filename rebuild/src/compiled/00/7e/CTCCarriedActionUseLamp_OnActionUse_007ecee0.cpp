@@ -1,5 +1,5 @@
-// CTCCarriedActionUseLamp::vfunc_28(CThing* user) -- toggle the user's hand-lamp light (interface 0x27) from the lamp's light def and notify the lamp's own interface-0x1a component
-// Leaf: vfunc_28
+// CTCCarriedActionUseLamp::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThing*)] -- toggle the user's hand-lamp light (interface 0x27) from the lamp's light def and notify the lamp's own interface-0x1a component
+// Leaf: OnActionUse
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ECEE0, 211 bytes (`ret 4`). OnActionUse(CThing&) slot 28 (GOTCHAS: "vfunc_28"
 // rows are OnActionUse).
@@ -33,8 +33,12 @@ class CLightDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
     {
@@ -43,7 +47,7 @@ template <class T> class CDefPointer { public:
     }
 };
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CLightDef>* out) const;   // 0x0059346A
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0059346A GetSubDef<CLightDef> (Ego_r.pdb member template)
 };
 class CThing { public:
     unsigned char  _pad00[0x20];
@@ -65,28 +69,32 @@ class CThing { public:
 class CTCLight { public:
     unsigned char _pad00[0x1c];
     bool Active;                                        // +0x1c
-    void SetLightDef(const CDefPointer<CLightDef>& def);   // 0x00640E60
+    void SetLightDef(const CDefPointer<const CLightDef>& def);   // 0x00640E60
     void SetActive(bool active);                        // 0x006412B0
 };
 struct CTCShowableItem {
     void OnShowEnded();                                 // 0x005D8E50
 };
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThing*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    void OnUseBase(CThing* user);                       // 0x007EAB90 (empty base implementation)
 };
 struct CTCCarriedActionUseLamp : CTCCarriedActionUseBase {
-    void vfunc_28(CThing* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThing*))
 };
 
-void CTCCarriedActionUseLamp::vfunc_28(CThing* user)
+void CTCCarriedActionUseLamp::OnActionUse(CThing& thing)
 {
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CThing* user = (CThing*)&thing;
+    CTCCarriedActionUseBase::OnActionUse(thing);
     CTCLight* light = 0;
     if (user->HasTC(0x27))
         light = (CTCLight*)user->GetTC(0x27);
-    CDefPointer<CLightDef> def;
+    CDefPointer<const CLightDef> def;
     ParentThing->PDef->GetSubDef(&def);
     light->SetLightDef(def);
     light->SetActive(!light->Active);

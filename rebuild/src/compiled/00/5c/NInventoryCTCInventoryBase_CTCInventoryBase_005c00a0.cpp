@@ -36,14 +36,19 @@ struct CCategoryVector {                           // vector<NInventory::CCatego
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     ~CCategoryVector();                            // 0x005C2C1F
 };
-struct CSerialisedItemsPointer {                   // CCountedPointer<vector<NInventory::CItem>>
-    void* Data; void* Info;
-    ~CSerialisedItemsPointer();                    // 0x005C0511
-};
-struct CSerialisedSelectedItemsPointer {           // CCountedPointer<vector<CCharString>>
-    void* Data; void* Info;
-    ~CSerialisedSelectedItemsPointer();            // 0x005C0563
-};
+// agentNF15: the two serialised counted pointers are the shared engine/CCountedPointer.h instances (Ego_r.pdb SerialisedItems /
+//   SerialisedSelectedItems). Their destructors are `{ ReleaseData(); }` with ReleaseData out of line (opt-in _RELEASEDATA_DECL_ONLY):
+//   retail's 5-byte dtor COMDATs are `jmp 0x005C0511` (0x005C07DF) / `jmp 0x005C0563` (0x005C07FB), and ShareData 0x005C053D / 0x005C058F
+//   call the same bodies on live pointers, so 0x005C0511 / 0x005C0563 are ReleaseData (FableWin.pdb names), called here.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+class CCharString;
+namespace std {
+template <class T> class allocator;
+template <class T, class A> class vector;
+}
+typedef CCountedPointer<std::vector<NInventory::CItem, std::allocator<NInventory::CItem> > > CSerialisedItemsPointer;   // ReleaseData 0x005C0511
+typedef CCountedPointer<std::vector<CCharString, std::allocator<CCharString> > > CSerialisedSelectedItemsPointer;       // ReleaseData 0x005C0563
 class CInventoryDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+0x04)

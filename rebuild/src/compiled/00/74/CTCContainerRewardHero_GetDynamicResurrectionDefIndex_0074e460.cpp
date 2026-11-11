@@ -57,9 +57,12 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                   // 0x0044C6B0
 };
 
-struct CTCInventoryBase {
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08
+namespace NInventory {
+class CTCInventoryBase { public:
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 };
+}
+using NInventory::CTCInventoryBase;
 
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                        // 0x00487DD0

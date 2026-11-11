@@ -83,9 +83,11 @@ struct CTCFollowActionHandler {
     void HandleFollowerQuit(CThing* follower);              // 0x006AEBA0 (component 0x7a)
 };
 class CFaction;
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
 class CTCHeroOpinionDeedLog { public:
-    long PostDeed(long deed, const C3DVector& position, CThing* doer, CThingAICreature* creature, long postType, bool a, bool b,
-                  CFaction* faction, bool c, long d);       // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
 };
 
 class CTCBase {
@@ -115,7 +117,7 @@ void CTCFollowed::QuitAIFollower(CThingAICreature* creature)
         CThing* thing = ParentThing;
         CTCHeroOpinionDeedLog* deeds;
         thing->GetInterface(&deeds, 0x51);
-        deeds->PostDeed(0x31, thing->GetPos(), creature, creature, 1, false, false, 0, false, 0);
+        deeds->PostDeed(OPINION_DEED_TYPE_FOLLOWER_QUIT, thing->GetPos(), creature, creature, (EOpinionPostDeedType)1, false, false, 0, false, 0);
         RemoveEmoteIcon(creature);
         if (!IsAlive(creature->HomeBuilding.GetPItem()) && !IsAlive(creature->WorkBuilding.GetPItem())) {
             creature->SetAsGameStatePersisted(false);

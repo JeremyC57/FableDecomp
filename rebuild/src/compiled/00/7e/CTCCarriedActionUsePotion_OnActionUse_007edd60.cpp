@@ -1,5 +1,5 @@
-// CTCCarriedActionUsePotion::OnActionUse(CThing* user) -- drink the carried potion: run the base use hook, apply the potion's bonus-item def to the user's hero stats (when it has them), then kill the potion thing
-// Leaf: vfunc_28
+// CTCCarriedActionUsePotion::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThing*)] -- drink the carried potion: run the base use hook, apply the potion's bonus-item def to the user's hero stats (when it has them), then kill the potion thing
+// Leaf: OnActionUse
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // (catalogued slot +0x28; it is OnActionUse: the qualified base call is CTCActionUseBase::OnActionUse 0x007EAB90,
 // as in the landed CTCCarriedActionUseAbility::OnActionUse 0x007F4D50)
@@ -78,19 +78,23 @@ class CThing { public:
     void Kill(bool removeNow);                              // 0x004C9B80
 };
 
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThing*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    void OnUseBase(CThing* user);                           // 0x007EAB90 (empty base implementation)
 };
 
 struct CTCCarriedActionUsePotion : CTCCarriedActionUseBase {
-    void vfunc_28(CThing* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThing*))
 };
 
-void CTCCarriedActionUsePotion::vfunc_28(CThing* user)
+void CTCCarriedActionUsePotion::OnActionUse(CThing& thing)
 {
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CThing* user = (CThing*)&thing;
+    CTCCarriedActionUseBase::OnActionUse(thing);
     CDefPointer<const CBonusItemDef> out;
     out.Object = 0;
     CDefClassBase* defClass = (CDefClassBase*)ParentThing->PDef_Object;

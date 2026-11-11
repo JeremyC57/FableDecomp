@@ -4,13 +4,19 @@
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 class CTCBase;
 class CThing;
-struct CInterfaceMap {                             // a thing's sorted {type, component} vector
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long& type);          // 0x0040F020
-};
+// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
 enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
+};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
@@ -24,10 +30,10 @@ class CThing { public:
     template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(long(interfaceType + 0));
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return (T*)it->component;
+        CInterfaceMap::value_type* it = map->LowerBound(ETCInterfaceType(interfaceType + 0));
+        if (it == map->_M_finish || interfaceType < it->first)
+            it = map->_M_finish;
+        return (T*)it->second;
     }
     void RemoveTC(ETCInterfaceType interfaceType);             // 0x004C9840
 };

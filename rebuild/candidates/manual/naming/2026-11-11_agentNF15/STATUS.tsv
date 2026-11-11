@@ -1,0 +1,184 @@
+kind	target_or_class	rows_changed	grades	binders_left
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CAIStateGroupMinionReactToNoiseMethods	1 (0091cdc0)	0091cdc0 RELOCATION_MATCH	004c8050 004c9840 004c9d60 00518dc0 005e4860 006412b0 006594bb 0065a1fd 00689130 0069e980 006e7820 006e7920 00713740 00766550 007e5230 008385b0 00857b70 00859d80 00896e60 00896f60 00896fd0 00898bb0 0089a270 0089ae30 0089b390 0089c4c0 0089df70 0089dff0 0089e4c0 0089ec60 0089ecc0 008af850 00915190 00927c80 00929b10 00935160 009547d0 00954e30 00972490 (+ stand-in kept in 00898b30 005bf654 00783380)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CAIStateGroup_BanditKingLunge	1 (009613a0)	009613a0 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CAIStateGroup_Clean	1 (00917e30)	00917e30 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CAIStateGroup_LightHomeCandle	1 (00946ae0)	00946ae0 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CAIStateGroup_WanderAroundShops	1 (00947110)	00947110 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CCombatActionBase	4 (00858130 00858400 00858590 008587b0)	00858130 RELOCATION_MATCH; 00858400 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 00858590 RELOCATION_MATCH; 008587b0 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CCombatAction_StrikeResponseJackOfBladesIntoRush	1 (008c1600)	008c1600 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CModeJackOfBladesFlash	1 (008dcb60)	008dcb60 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CSubtitleRenderer	1 (00490a22)	00490a22 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CTCCreatureModeManager	1 (0073acc0)	0073acc0 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CTCHeroExperience	1 (006d8170)	006d8170 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CTCInventory	2 (00587847 00587a41)	00587847 RELOCATION_MATCH; 00587a41 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CTCInventoryStats	2 (005cdd86 005cdbbe)	005cdd86 RELOCATION_MATCH; 005cdbbe RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CTCInventoryTrade	1 (005a30a1)	005a30a1 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CTCMultiArrow	1 (007cc4d0)	007cc4d0 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CThingBuilding	3 (0082db00 0082def0 0082de20)	0082db00 RELOCATION_MATCH; 0082def0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 0082de20 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CThingGameObject	1 (00838bc0)	00838bc0 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	CWorld	1 (0062aba0)	0062aba0 RELOCATION_MATCH	(see first line)
+0x0040F020 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	NCreatureMode	1 (008df3a0)	008df3a0 RELOCATION_MATCH	(see first line)
+0x0041A650 ?GetTattooUserDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	CTCHeroMorph	1 (0071d3b0)	0071d3b0 RELOCATION_MATCH	-
+0x0041A650 ?GetTattooUserDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	CTattooDef	2 (00581765 0071b840)	00581765 RELOCATION_MATCH; 0071b840 RELOCATION_MATCH	(see first line)
+0x0042AF9E ??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z	CTCObjectAugmentations	1 (007673c0)	007673c0 RELOCATION_MATCH	-
+0x0042B040 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	CGameScriptInterface	3 (008946e0 00894820 00894950)	008946e0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 00894820 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 00894950 RELOCATION_MATCH	-
+0x0042B040 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	CTCHeroAttachableAppearanceModifiers	2 (00706880 00706950)	00706880 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 00706950 RELOCATION_MATCH	(see first line)
+0x0042B040 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	NCreatureMode	1 (008da0f0)	008da0f0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x0042B040 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	_global	1 (005e4430)	005e4430 RELOCATION_MATCH	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCombatManager	1 (006ea5f0)	006ea5f0 RELOCATION_MATCH	-
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_BanditKingThrowWeapons	1 (008c89d0)	008c89d0 RELOCATION_MATCH	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_BriarRoseShotFarOutof	1 (008c0900)	008c0900 RELOCATION_MATCH	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_DragonFlight	1 (008f3020)	008f3020 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_DragonLandFireball	1 (008f3100)	008f3100 RELOCATION_MATCH	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_DragonRearUpFull	1 (008f3630)	008f3630 RELOCATION_MATCH	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_DropWeapon	1 (00845ce0)	00845ce0 RELOCATION_MATCH	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_HeroLoadRangedWeapon	1 (0078b410)	0078b410 RELOCATION_MATCH	(see first line)
+0x0042B1A6 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	CCreatureAction_TrollThrowProjectile	1 (008c64f0)	008c64f0 RELOCATION_MATCH	(see first line)
+0x0042B312 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	CTCInventoryAbilities	1 (005ee3b3)	005ee3b3 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x0042B312 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	CTCInventoryMap	2 (005fb630 005fb7e0)	005fb630 RELOCATION_MATCH; 005fb7e0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x0042B312 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	CTCInventoryTrade	1 (005a8a5d)	005a8a5d RELOCATION_MATCH	(see first line)
+0x0042B312 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	NUISystem	1 (0041d8e7)	0041d8e7 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CAIStateGroup_VersusRockTroll	1 (00962c10)	00962c10 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CAIStateGroup_VersusScorpionKing	1 (00963640)	00963640 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CCreatureAction_FodderPrimaryAttack	1 (008b7350)	008b7350 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCCreatureExpression	2 (00729410 007294a0)	00729410 RELOCATION_MATCH; 007294a0 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCHeroAttachableAppearanceModifiers	1 (007079e0)	007079e0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInGameMenu	1 (0047d60d)	0047d60d RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventory	1 (00582944)	00582944 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryAbilities	1 (005f4a86)	005f4a86 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryClothing	1 (005b36e9)	005b36e9 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryExperience	1 (0057713f)	0057713f RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryMagic	1 (0072dc70)	0072dc70 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryMap	1 (00602e30)	00602e30 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryStats	1 (005cd33f)	005cd33f RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryTrade	1 (0059c8f2)	0059c8f2 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCInventoryWeapons	1 (005c3057)	005c3057 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCRegionFollower	1 (006aebf0)	006aebf0 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCTalk	1 (006e3780)	006e3780 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CTCWound	2 (00757b30 00757c90)	00757b30 RELOCATION_MATCH; 00757c90 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CThingCreatureBase	1 (00665e90)	00665e90 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CThingFilter_IsValidAttackTargetForCreature	2 (007f6df0 007f6d70)	007f6df0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 007f6d70 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CThingFilter_ViableProjectileAimingTarget	1 (008077b0)	008077b0 RELOCATION_MATCH	(see first line)
+0x00485815 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	CThingPlayerCreature	1 (00666850)	00666850 RELOCATION_MATCH	(see first line)
+0x0049D9D0 ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	CAIStateGroup_MinionGuardFollowPlayer	2 (0090c2d0 0090c1a0)	0090c2d0 RELOCATION_MATCH; 0090c1a0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x0049D9D0 ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	CAIStateGroup_MinionGuardGreetPlayer	1 (00929820)	00929820 RELOCATION_MATCH	(see first line)
+0x0049D9D0 ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	CAIStateGroup_MinionReactToBurglary	1 (00957f20)	00957f20 RELOCATION_MATCH	(see first line)
+0x0049D9D0 ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	CInputProcessCombat	1 (0068ea10)	0068ea10 RELOCATION_MATCH	(see first line)
+0x0049D9D0 ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	CTCCameraPointTrack	1 (0075cad0)	0075cad0 RELOCATION_MATCH	(see first line)
+0x0049D9D0 ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	CTCVillage	2 (0065a28f 0065a686)	0065a28f RELOCATION_MATCH; 0065a686 RELOCATION_MATCH	(see first line)
+0x00512FE0 ??$GetSubDef@VCVillagePeopleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillagePeopleDef@@@@@Z	CTCBoastingCrowdControl	1 (00783380)	00783380 RELOCATION_MATCH	-
+0x00512FE0 ??$GetSubDef@VCVillagePeopleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillagePeopleDef@@@@@Z	CTCVillage	1 (00658fa2)	00658fa2 RELOCATION_MATCH	(see first line)
+0x005130A0 ??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z	CAIStateGroup_MinionHawkingFromStall	1 (0094bb20)	0094bb20 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x005130A0 ??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z	CGameScriptInterface	1 (008a1360)	008a1360 RELOCATION_MATCH	(see first line)
+0x005130A0 ??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z	CTCShop	2 (00773950 00774100)	00773950 RELOCATION_MATCH; 00774100 RELOCATION_MATCH	(see first line)
+0x00513160 ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z	CGameScriptInterface	2 (0089f4a0 008a9100)	0089f4a0 RELOCATION_MATCH; 008a9100 RELOCATION_MATCH	-
+0x00513160 ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z	CThingDeadCreature	1 (00836260)	00836260 RELOCATION_MATCH	(see first line)
+0x0057FF92 ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z	CCreatureAction_Undress	1 (00846410)	00846410 RELOCATION_MATCH	-
+0x0057FF92 ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z	CCreatureAction_WearGameObject	1 (00846100)	00846100 RELOCATION_MATCH	(see first line)
+0x0057FF92 ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z	CTCHeroAttachableAppearanceModifiers	2 (00706370 00706040)	00706370 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 00706040 RELOCATION_MATCH	(see first line)
+0x0059346A ??$GetSubDef@VCLightDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLightDef@@@@@Z	CTCLight	1 (00640f00)	00640f00 RELOCATION_MATCH	-
+0x0059350C ??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z	CTCBuyableHouse	1 (006bffd0)	006bffd0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x0059350C ??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z	CTCShop	1 (00773e10)	00773e10 RELOCATION_MATCH	(see first line)
+0x0059350C ??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z	CTCStockItem	2 (007f4e80 007f4f40)	007f4e80 RELOCATION_MATCH; 007f4f40 RELOCATION_MATCH	(see first line)
+0x005935C4 ??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z	CTCDHeroSuit	1 (007ff8a0)	007ff8a0 RELOCATION_MATCH	-
+0x005B1E5A ??$GetSubDef@VCHeroTitleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroTitleDef@@@@@Z	CTCHero	1 (006ca400)	006ca400 RELOCATION_MATCH	-
+0x005B1E5A ??$GetSubDef@VCHeroTitleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroTitleDef@@@@@Z	NInventory	1 (005bf654)	005bf654 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x005B1EFC ??$GetSubDef@VCTattooDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTattooDef@@@@@Z	CTCHeroMorph	3 (0071d7c0 0071c2d0 0071dd50)	0071d7c0 RELOCATION_MATCH; 0071c2d0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 0071dd50 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x005B1EFC ??$GetSubDef@VCTattooDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTattooDef@@@@@Z	CTCInventoryItem	1 (005d93b0)	005d93b0 RELOCATION_MATCH	(see first line)
+0x005B4795 ?SetUpSelectedClothes@CTCInventoryClothing@@AAEXXZ	CTCInventoryClothing	2 (005b4a6e 005b4e7c)	005b4a6e RELOCATION_MATCH; 005b4e7c RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x005BADE1 ??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	CTCHeroMorph	1 (0071ce80)	0071ce80 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x005BADE1 ??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	CTCInventoryItem	1 (005d9380)	005d9380 RELOCATION_MATCH	(see first line)
+0x005BADE1 ??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	NPlayerGui	1 (00646dbd)	00646dbd RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x005BC4C0 ?OnItemHighlighted@CTCInventoryBase@NInventory@@UAEXJ@Z	CTCInventory	1 (005819aa)	005819aa RELOCATION_MATCH	-
+0x005BC4C0 ?OnItemHighlighted@CTCInventoryBase@NInventory@@UAEXJ@Z	CTCInventoryTrade	1 (0059b71c)	0059b71c RELOCATION_MATCH	(see first line)
+0x005BC4C0 ?OnItemHighlighted@CTCInventoryBase@NInventory@@UAEXJ@Z	CTCInventoryWeapons	1 (005c2e02)	005c2e02 RELOCATION_MATCH	(see first line)
+0x005BDF08 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	CGameScriptInterface	4 (00897220 00897190 00898db0 00898b30)	00897220 RELOCATION_MATCH; 00897190 RELOCATION_MATCH; 00898db0 RELOCATION_MATCH; 00898b30 RELOCATION_MATCH	-
+0x005BDF08 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	CTCContainerRewardHero	2 (0074e280 0074e460)	0074e280 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 0074e460 RELOCATION_MATCH	(see first line)
+0x005BDF08 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	CTCInventory	3 (00581c78 00584157 0058502d)	00581c78 RELOCATION_MATCH; 00584157 RELOCATION_MATCH; 0058502d RELOCATION_MATCH	(see first line)
+0x005BDF08 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	CTCInventoryAbilities	1 (005f05e5)	005f05e5 RELOCATION_MATCH	(see first line)
+0x005BDF08 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	CThingPlayerCreature	1 (006ac390)	006ac390 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x005BDF08 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	NInventory	1 (005bf3f1)	005bf3f1 RELOCATION_MATCH	(see first line)
+0x005BDF08 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	NPlayerGui	1 (0064e0da)	0064e0da RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x005BDFB1 ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z	CTCInventoryClothing	2 (005b40e6 005b4753)	005b40e6 RELOCATION_MATCH; 005b4753 RELOCATION_MATCH	-
+0x005BE028 ?OnItemAdded@CTCInventoryBase@NInventory@@MAEXJ_N0@Z	CTCInventory	1 (0058509f)	0058509f RELOCATION_MATCH	-
+0x005BE8F3 ?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z	CTCInventoryWeapons	1 (005c44fa)	005c44fa RELOCATION_MATCH	-
+0x005BF3C6 ?RemoveItemFromInventory@CTCInventoryBase@NInventory@@UAEXJJ@Z	CTCInventoryClothing	1 (005b4340)	005b4340 RELOCATION_MATCH	-
+0x005BFD5E ?OnSerialise@CTCInventoryBase@NInventory@@MAEXAAVCPersistContext@@_N@Z	CTCInventoryClothing	1 (005b369a)	005b369a RELOCATION_MATCH	-
+0x005BFD5E ?OnSerialise@CTCInventoryBase@NInventory@@MAEXAAVCPersistContext@@_N@Z	CTCInventoryStats	1 (005d7fab)	005d7fab RELOCATION_MATCH	(see first line)
+0x005C0511 ?ReleaseData@?$CCountedPointer@V?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@@QAEXXZ	NInventory	1 (005c00a0)	005c00a0 RELOCATION_MATCH	-
+0x005EE3B3 ?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ	CTCInventoryAbilities	2 (005f694d 005f6a6f)	005f694d RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 005f6a6f RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x005F81BE ??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z	CTCInventoryAbilities	1 (005f4c8f)	005f4c8f RELOCATION_MATCH	-
+0x00663340 ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ	CInputProcessTargetLockCycleTargets	1 (00688c90)	00688c90 RELOCATION_MATCH	-
+0x00663340 ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ	CTCCombat	1 (00733e10)	00733e10 RELOCATION_MATCH	(see first line)
+0x00663340 ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ	CTCHeroExperience	1 (006d6ee0)	006d6ee0 RELOCATION_MATCH	(see first line)
+0x00663340 ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ	CTCHeroRangedAttacks	1 (00789c20)	00789c20 RELOCATION_MATCH	(see first line)
+0x00663340 ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ	CThingPlayerCreature	1 (006a9ef0)	006a9ef0 RELOCATION_MATCH	(see first line)
+0x00669640 ??$GetDef@VCCombatTypeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z	CCreatureAction_SummonerSheatheWeapon	1 (008cb780)	008cb780 RELOCATION_MATCH	-
+0x00669640 ??$GetDef@VCCombatTypeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z	CThingCreatureBase	1 (00664a50)	00664a50 RELOCATION_MATCH	(see first line)
+0x00686AE0 ?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ	CTCOwnedEntity	1 (007e8820)	007e8820 RELOCATION_MATCH	-
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCAmbientBird	1 (007e1f70)	007e1f70 RELOCATION_MATCH	005dab10
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCCrateStack	1 (007b6a80)	007b6a80 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCCreatureExpression	1 (00728ff0)	00728ff0 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCDParticleEmitter	1 (006e1620)	006e1620 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCEmoteIcon	1 (0071aa50)	0071aa50 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCHeroGuide	1 (007800b0)	007800b0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCHighlightItem	1 (0077cb60)	0077cb60 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCKraken	1 (007fbc90)	007fbc90 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCNoise	2 (007498e0 007497c0)	007498e0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS); 007497c0 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCPerceiveThing	1 (00745730)	00745730 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCPreCalculatedNavigationRoute	1 (00800540)	00800540 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCSoundPlayer	2 (0066b280 0066b300)	0066b280 RELOCATION_MATCH; 0066b300 RELOCATION_MATCH	(see first line)
+0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	CTCTavernGameSpotTheAddition	1 (007d83c0)	007d83c0 RELOCATION_MATCH	(see first line)
+0x006AF620 ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ	CTCPhysicsControlled	1 (00725290)	00725290 RELOCATION_MATCH	-
+0x006AF620 ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ	CTCPhysicsLight	1 (007233b0)	007233b0 RELOCATION_MATCH	(see first line)
+0x006AF620 ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ	CTCPhysicsStandard	3 (008e5670 008e5f00 00724010)	008e5670 RELOCATION_MATCH; 008e5f00 RELOCATION_MATCH; 00724010 RELOCATION_MATCH	(see first line)
+0x006AF630 ?GetWorldMap@CTCPhysicsBase@@IBEABVCWorldMap@@XZ	CTCPhysicsBase	1 (00880220)	00880220 RELOCATION_MATCH	00880200
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CGameScriptInterface	4 (0089c670 0089c710 0089c7b0 0089c560)	0089c670 RELOCATION_MATCH; 0089c710 RELOCATION_MATCH; 0089c7b0 RELOCATION_MATCH; 0089c560 RELOCATION_MATCH	-
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CTCCreatureGroupBoastingCrowd	2 (00784260 007846b0)	00784260 RELOCATION_MATCH; 007846b0 RELOCATION_MATCH	(see first line)
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CTCFollowed	2 (006d53c0 006d56e0)	006d53c0 RELOCATION_MATCH; 006d56e0 RELOCATION_MATCH	(see first line)
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CTCHeroOpinionDeedLog	1 (006c6e20)	006c6e20 RELOCATION_MATCH	(see first line)
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CTCHeroStats	1 (0057b783)	0057b783 RELOCATION_MATCH	(see first line)
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CTCStealth	1 (00747da0)	00747da0 RELOCATION_MATCH	(see first line)
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CTCWife	1 (006cfc00)	006cfc00 RELOCATION_MATCH	(see first line)
+0x006C6990 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@ABVC3DVector@@PBVCThing@@PAVCThingAICreature@@W4EOpinionPostDeedType@@_N5PBVCFaction@@5J@Z	CThingAICreature	1 (00832e60)	00832e60 RELOCATION_MATCH	(see first line)
+0x007355F0 ?SetCombatType@CTCCombat@@QAEXABV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z	CAIStateGroup_JackOfBladesStage3	1 (00972670)	00972670 RELOCATION_MATCH	-
+0x007355F0 ?SetCombatType@CTCCombat@@QAEXABV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z	CCreatureAction_SummonerUnsheatheStrike	1 (008cb620)	008cb620 RELOCATION_MATCH	(see first line)
+0x00772490 ?IsBarberShop@CTCShop@@QBE_NXZ	CTCInventoryTrade	1 (0059de76)	0059de76 RELOCATION_MATCH	-
+0x007BF510 ?OnCollision@CTCShotDefinitionBase@NThingShot@@UAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	CTCShotDefinitionNymphFun	1 (007bdb66)	007bdb66 RELOCATION_MATCH	-
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCActionUseAcceptBoast	1 (007ebbc0)	007ebbc0 RELOCATION_MATCH	007edfd0
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCActionUseBlowHorn	1 (007eb9b0)	007eb9b0 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCActionUseBuyHouse	1 (0072ed10)	0072ed10 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCActionUseStartExtrapolationMorph	1 (007ebc20)	007ebc20 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCActionUseWallMount	1 (007efe70)	007efe70 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseDrop	1 (007ed0a0)	007ed0a0 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseDropGenericBox	1 (007ed060)	007ed060 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseGive	1 (007ed170)	007ed170 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseGiveBeer	1 (007ed2c0)	007ed2c0 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseGoldBag	1 (007ed560)	007ed560 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseLamp	1 (007ecee0)	007ecee0 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUsePotion	1 (007edd60)	007edd60 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseShow	1 (007ed870)	007ed870 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseSpade	1 (007f03d0)	007f03d0 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseTrophy	1 (007edfb0)	007edfb0 RELOCATION_MATCH	(see first line)
+0x007EAB90 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z	CTCCarriedActionUseWallMount	1 (007eddf0)	007eddf0 RELOCATION_MATCH	(see first line)
+0x00998E70 ?CopyFileW@CAFile@@SIXAAV1@0@Z	CMainGameComponent	1 (00416953)	00416953 RELOCATION_MATCH	-
+0x00998E70 ?CopyFileW@CAFile@@SIXAAV1@0@Z	CWorld	1 (0049dd50)	0049dd50 RELOCATION_MATCH	(see first line)
+0x009ACCC0 ?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	CGameScriptInterface	3 (00893c00 00897630 008a8f20)	00893c00 RELOCATION_MATCH; 00897630 RELOCATION_MATCH; 008a8f20 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	-
+0x009ACCC0 ?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	CPlayerManager	1 (00449d90)	00449d90 RELOCATION_MATCH	(see first line)
+0x009ACCC0 ?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	CTCAtmosPlayer	1 (007e36a0)	007e36a0 RELOCATION_MATCH	(see first line)
+0x009ACCC0 ?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	CTCInventoryWeapons	1 (005c3a95)	005c3a95 RELOCATION_MATCH	(see first line)
+0x009AD3B0 ?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z	CAtmosProcess	1 (006b1f30)	006b1f30 RELOCATION_MATCH	-
+0x009AD3B0 ?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z	NEntityEvents	2 (008111f0 00811830)	008111f0 RELOCATION_MATCH; 00811830 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x009AD9E0 ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z	CTCHero	1 (006ca120)	006ca120 RELOCATION_MATCH	-
+0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A	CCreatureActionBase	2 (00694430 00692980)	00694430 RELOCATION_MATCH; 00692980 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	006e11f0
+0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A	CPersistTraits<CIntelligentPointer<CThing> >	1 (006c9900)	006c9900 RELOCATION_MATCH	(see first line)
+0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A	CThing	1 (004c7c40)	004c7c40 RELOCATION_MATCH	(see first line)
+0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A	CThingFilter_IsPotentialCustomer	1 (00799e30)	00799e30 RELOCATION_MATCH	(see first line)
+0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A	CThingGameObject	1 (008389e0)	008389e0 RELOCATION_MATCH (g++ test PREFAIL on landed test, unchanged; VC71 test PASS)	(see first line)
+0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A	CThingTrackNode	1 (00837830)	00837830 RELOCATION_MATCH	(see first line)
+0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A	_global	2 (0088ae40 0088aff0)	0088ae40 RELOCATION_MATCH; 0088aff0 RELOCATION_MATCH	(see first line)
+0x00415DD0 ?GetString@CDefString@@QBE?AVCCharString@@XZ	-	0	-	005c0e81 008e7040 (claim rejected)
+0x00686A70 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ	-	0	-	006a23e0 006d0180 00700940 00960760
+0x00993CA0 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z	-	0	-	007565e0 007adbf0
+0x00999AB0 ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z	-	0	-	0049d4b0
+0x005BBA94 ?push_back@?$vector@W4EClothingSuitPart@@V?$allocator@W4EClothingSuitPart@@@std@@@std@@QAEXABW4EClothingSuitPart@@@Z	-	0	-	005b43a2

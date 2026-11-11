@@ -8,7 +8,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C64F0, length 688 bytes, plain `ret` (virtual).
 // Callees: SetCombatAnimation 0x008574D0, CCombatActionBase::Initialise 0x00857520, GetPItem 0x00A01B50, CDefClassBase
-//   GetSubDef<CAbilityDef> 0x0042B1A6 / GetSubDef<CAICreatureWillPowerIndicatorDef> 0x008C78F0, GetPWorld 0x00692940,
+//   GetSubDef<CWeaponDef> 0x0042B1A6 / GetSubDef<CAICreatureWillPowerIndicatorDef> 0x008C78F0, GetPWorld 0x00692940,
 //   CDefinitionManager::GetDef<physical def> 0x0078B230, CThing::GetPosition 0x004C73D0, CThingObject::Create
 //   0x00703210 (__fastcall), CIntelligentPointer ctor 0x00A01B10 / Set 0x00A01B90 / dtor 0x00A01C10, LowerBound
 //   0x0040F020, 0x00669CB0 (weapon-hand query, out param), GetPDefinitionManager 0x00692910, GetDefGlobalIndex
@@ -34,13 +34,17 @@ struct CDefBase {
     virtual void Destroy();                                  // slot 1
     long RefCount;                                           // +4
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-class CAbilityDef : public CDefBase { public:
+class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0xa0 - 8];
     long          ProjectileDef;                             // +0xa0
 };
@@ -54,7 +58,7 @@ struct CWillPowerIndicatorDef : CDefBase {
     long          Value;                                     // +0x4c
 };
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CAbilityDef>* out);           // 0x0042B1A6
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
     bool GetSubDef(CDefPointer<CWillPowerIndicatorDef>* out);   // 0x008C78F0
 };
 class CDefinitionManager { public:
@@ -63,13 +67,13 @@ class CDefinitionManager { public:
 struct CPhysicalDefManager {
     bool GetDef(long index, CDefPointer<CPhysicalDef>* out);   // 0x0078B230
 };
-CAbilityDef* FindAbilityDef(const CDefClassBase* def);                 // stand-ins: the def lookups (not graded here)
+CWeaponDef* FindAbilityDef(const CDefClassBase* def);                 // stand-ins: the def lookups (not graded here)
 CWillPowerIndicatorDef* FindWillPowerDef(const CDefClassBase* def);
 CPhysicalDef* FindPhysicalDef(long index);
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAbilityDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
 {
-    CAbilityDef* def = FindAbilityDef(this);
+    CWeaponDef* def = FindAbilityDef(this);
     out->Object = def;
     return def != 0;
 }
@@ -197,7 +201,7 @@ void CCreatureAction_TrollThrowProjectile::Initialise()
         SetCombatAnimation(animation);
     }
     CCombatActionBase::Initialise();
-    CDefPointer<CAbilityDef> ability;
+    CDefPointer<const CWeaponDef> ability;
     CThing* self = GetCreature();
     self->PDef->GetSubDef(&ability);
     CDefPointer<CPhysicalDef> projectileDef;

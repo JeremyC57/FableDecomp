@@ -88,13 +88,13 @@ struct CHomeOwner {
 struct CWorldClock {
     bool IsTimeOfDayInRange(long start, long end);  // 0x006BB390
 };
-class CPlayerManager { public:
-    CThing* GetPlayerCharacter();               // 0x00487DD0
+class CPlayer { public:                         // (was the stand-in CPlayerManager: 0x0049D9D0 returns the world's CPlayer)
+    CThing* GetPlayerCharacter() const;         // 0x00487DD0 (Ego_r.pdb: CPlayer::PeekPControlledCreature, see NOTES)
 };
 class CWorld { public:
     unsigned char _pad[0x1c];
     CWorldClock* PClock;                        // +0x1c
-    CPlayerManager* GetPlayerManager();         // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;        // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
 };
 
 class CThingAICreature;
@@ -119,7 +119,7 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
     bool sleepTime = clock->IsTimeOfDayInRange(start, end);
     CThingBuilding* home = (CThingBuilding*)((CHomeOwner*)PBrain->PCreature)->GetPHome();
     if (sleepTime && home != 0) {
-        CThing* player = GetWorld().GetPlayerManager()->GetPlayerCharacter();
+        CThing* player = GetWorld().PeekMyPlayer()->GetPlayerCharacter();
         if (player != 0 && !player->IsDead() && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), player, false) &&
             home->IsPointInside(((CThingPos*)player)->GetPosition())) {
             CIntelligentPointerOut burglar(player);

@@ -19,25 +19,29 @@ struct CDefBase {
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
 };
 class CStockItemDef : public CDefBase { public: };
 class CDefClassBase : public CDefBase { public:
-    bool GetSubDef_0059350c(CDefPointer<CStockItemDef>& out);   // 0x0059350C
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0059350C GetSubDef<CStockItemDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0059350c_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_0059350c(CDefPointer<CStockItemDef>& out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CStockItemDef>(CDefPointer<const CStockItemDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0059350c_0();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -105,10 +109,10 @@ void CTCShop::RemoveStockItemsFromShop()
         CTCThingOwner* owner = (CTCThingOwner*)shop->GetTC(0x21);
         for (CObjectNode* node = owner->ObjectList->_M_next; node != owner->ObjectList; node = node->_M_next) {
             CIntelligentPointer<CThing>& object = node->_M_data;
-            CDefPointer<CStockItemDef> stockDef;
+            CDefPointer<const CStockItemDef> stockDef;
             if (object.GetPItem() && !(object.GetPItem()->m_flags91 & 1)) {
                 CDefClassBase* def = object.GetPItem()->PDef;
-                if (def->GetSubDef_0059350c(stockDef))
+                if (def->GetSubDef(&stockDef))
                     object.GetPItem()->Kill(true);
             }
         }

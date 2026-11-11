@@ -21,17 +21,21 @@ class CPersistContext { public:
 public:
     bool IsSaving() const;   // 0x004AEF50
 };
-struct CTCInventoryBase_Retail {
-    void OnSerialise(CPersistContext& context, bool inGameSave);             // 0x005BFD5E
+namespace NInventory {
+class CTCInventoryBase { public:                                             // vptr +0 (declarations only)
+protected:
+    virtual void OnSerialise(CPersistContext& context, bool inGameSave);     // 0x005BFD5E Ego_r.pdb ?OnSerialise@CTCInventoryBase@NInventory@@MAEXAAVCPersistContext@@_N@Z
 };
-struct CTCInventoryClothing_Retail : CTCInventoryBase_Retail {
-    unsigned char _pad_0x000[0x15D];
+}
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
+    unsigned char _pad_0x004[0x15D - 0x4];
     bool          LoadedFromSaveGame;                                        // +0x15D
-    void OnSerialise(CPersistContext& context, bool inGameSave);
+protected:
+    virtual void OnSerialise(CPersistContext& context, bool inGameSave);     // Ego_r.pdb ?OnSerialise@CTCInventoryClothing@@MAEXAAVCPersistContext@@_N@Z
 };
-void CTCInventoryClothing_Retail::OnSerialise(CPersistContext& context, bool inGameSave)
+void CTCInventoryClothing::OnSerialise(CPersistContext& context, bool inGameSave)
 {
-    CTCInventoryBase_Retail::OnSerialise(context, inGameSave);
+    NInventory::CTCInventoryBase::OnSerialise(context, inGameSave);
     if (context.IsSaving())
         context.Transfer("InGameSave", inGameSave, false);
     else

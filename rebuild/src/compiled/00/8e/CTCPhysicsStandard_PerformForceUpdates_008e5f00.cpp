@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E5F00, 168 bytes (plain `ret`). No call or data reference to this body was found
 //   (xref.py); it is byte-identical to the gravity half of 0x008E5670, so the class is the catalog's (CTCPhysicsStandard) until
 //   a vtable shows otherwise.
-// Callees: virtual GetFeelsGravity slot 48 (+0xc0), IsOnGround slot 56 (+0xe0); CTCBase::GetWorldMap() @ 0x006AF620,
+// Callees: virtual GetFeelsGravity slot 48 (+0xc0), IsOnGround slot 56 (+0xe0); CTCBase::&GetWorldMap() @ 0x006AF620,
 //   CWorldMap::GetGroundFaceNormalAt(const C3DVector&) const @ 0x0063AB10, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210.
 //   Floats: 0.98f @ 0x01287364, DELTA_NOTIONAL_ZERO @ 0x0129BA3C (1e-4f).
 // Shape: as 0x008E5670 (one `||` chain, inline GetLengthSquared() on the x87 stack).
@@ -36,7 +36,9 @@ class CTCPhysicsBase { public:
     void*     PhysicsDef;                           // +0x38 CDefPointer<CPhysicsDef const>::Object
     unsigned char m_flags3c;                        // +0x3c Moving / OldMoving
     float GetAirResistance();                       // 0x006AFDE0
-    CWorldMap* GetWorldMap();                       // 0x006AF620 (CTCBase)
+protected:
+    CWorldMap& GetWorldMap();   // 0x006AF620 Ego_r.pdb (was GetWorldMap)
+public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
 struct CTCPhysicsStandard : CTCPhysicsBase {
@@ -46,7 +48,7 @@ struct CTCPhysicsStandard : CTCPhysicsBase {
 void CTCPhysicsStandard::PerformForceUpdates()
 {
     if (GetFeelsGravity()) {
-        if (!IsOnGround() || GetWorldMap()->GetGroundFaceNormalAt(Position).Z < 0.98f
+        if (!IsOnGround() || GetWorldMap().GetGroundFaceNormalAt(Position).Z < 0.98f
             || Velocity.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             ApplyAcceleration(C3DVector(0.0f, 0.0f, -0.12f));
     }

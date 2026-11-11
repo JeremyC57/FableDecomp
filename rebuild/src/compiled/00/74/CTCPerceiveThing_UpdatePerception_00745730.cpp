@@ -10,7 +10,7 @@
 // Callees: IsIncapacitated @ 0x0085F0C0 and IsLyingDown @ 0x0085F2B0 (`__fastcall`, the thing in ecx), CPlayerGui::
 // RemovePerceivingThing @ 0x00437900 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790), UpdateLineOfSight @ 0x00745120, UpdateSmell @ 0x00744B50,
 // UpdateHearing @ 0x00744FB0 (PDB private members; addresses follow the PDB declaration order Smell, Hearing,
-// LineOfSight), SetAsDirectlyAwareOfPerceivedThing @ 0x00744730 (tail-jumped), CTCBase::GetGameSubsystem() @ 0x00686D60
+// LineOfSight), SetAsDirectlyAwareOfPerceivedThing @ 0x00744730 (tail-jumped), CTCBase::&PeekComponent() @ 0x00686D60
 // (only evaluated: the frame rate is a static long, 0x01375550). Constants: 1e-4f 0x0129BA3C, 1.0f 0x0122DED8,
 // 4.0f 0x0123088C, 0.0f 0x0122DEDC.
 // Shape: the landed ResetPerceptionVariables (0x00744DB0) model and its three inline setters with a constant false (the
@@ -49,13 +49,17 @@ class CDefPointeeBase { public:
     long StartWithoutTarget;                    // +0x40 CPerceivedThingDef word: 0 = start searching for a target
 };
 #include "engine/C3DVector.h"
-struct CGameSubsystem {
+class CMainGameComponent { public:
     static long FrameRate;                      // 0x01375550 (frames per second)
     static float GetSecondsPerFrame() { return 1.0f / FrameRate; }
 };
-class CTCPerceiveThing { public:
+class CTCBase { public:                                 // row-local view of the component base (Ego_r.pdb CTCBase: vptr, ParentThing)
     void*     __vftable;                        // +0x00 (CTCBase)
     CThing*   ParentThing;                      // +0x04
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+};
+class CTCPerceiveThing : public CTCBase { public:
     bool      ToBeRemoved;                      // +0x08
     bool      IsInGlobalUpdateTCs;              // +0x09
     CIntelligentPointer PerceivedThing;         // +0x0c
@@ -126,7 +130,6 @@ private:
 public:
     void UpdateHearing();                       // 0x00744FB0
     void UpdateLineOfSight();                   // 0x00745120
-    CGameSubsystem* GetGameSubsystem() const;   // 0x00686D60 (CTCBase)
     void UpdatePerception();
     float& GetAwarenessTimer() { return AwarenessTimer; }
 };
@@ -154,7 +157,7 @@ void CTCPerceiveThing::UpdatePerception()
     if (perceived) {
         SetLastAwareInfo();
     } else if (AwarenessTimer > DELTA_NOTIONAL_ZERO) {
-        float frameTime = GetGameSubsystem()->GetSecondsPerFrame();
+        float frameTime = PeekComponent().GetSecondsPerFrame();
         GetAwarenessTimer() -= frameTime * 4.0f;
         if (AwarenessTimer < 0.0f)
             AwarenessTimer = 0.0f;

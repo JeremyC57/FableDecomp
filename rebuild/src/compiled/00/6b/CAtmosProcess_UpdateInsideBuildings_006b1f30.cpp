@@ -17,7 +17,7 @@
 //   CThingBuilding::GetReverbSettings 0x0082D8C0, free 0x00BFEA14 (vector storage), CGameDefinitionManager::Get 0x0044C6B0,
 //   CASoundManager slot 46 SetGainFader (+0xB8, the landed CNewFrontendGameComponent::InitialiseSounds model; no PDB
 //   symbol in Ego_r / FableWin; name from the Fable Anniversary 360 PDB, agentSND 2026-11-10) on g_pSoundManager 0x013B8394 (labels DB spelling), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
-//   CDefinitionManager::GetNumberOfDefsOfType 0x009AD3B0 (landed), CDefinitionManager::GetDef<CSoundThemeDef> 0x006B25E0.
+//   CDefinitionManager::GetNoInstantiatedDefsOfType 0x009AD3B0 (landed), CDefinitionManager::GetDef<CSoundThemeDef> 0x006B25E0.
 // Layout (local models; the shared headers differ from retail):
 //   CAtmosProcess: retail InsideBuilding +0x14, ReverbType +0x18, ReverbLevel +0x1c (Ego_r +0x10/+0x14/+0x18; retail keeps
 //     one more dword ahead of them). No engine header exists.
@@ -211,7 +211,7 @@ class CSoundThemeDef : public CDefPointeeBase { };
 #include "engine/CDefinitionManager.h"
 #undef CDefinitionManager
 class CDefinitionManager { public:
-    long GetNumberOfDefsOfType(const CCharString& typeName);                                       // 0x009AD3B0
+    long GetNoInstantiatedDefsOfType(const CCharString& typeName) const;                                       // 0x009AD3B0 (Ego_r.pdb / FableWin.pdb)
     template <class T> bool GetDef(const CCharString& name, long index, CDefPointer<const T>* def) const;   // <CSoundThemeDef> 0x006B25E0
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
@@ -296,7 +296,7 @@ void CAtmosProcess::UpdateInsideBuildings()
         long count;
         {
             CCharString type("SOUND_THEME");
-            count = CGameDefinitionManager::Get().GetNumberOfDefsOfType(type);
+            count = CGameDefinitionManager::Get().GetNoInstantiatedDefsOfType(type);
         }
         for (long i = 1; i < count; ++i) {
             CDefPointer<const CSoundThemeDef> theme;

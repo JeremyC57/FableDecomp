@@ -119,7 +119,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
+class CPlayer;
+class CWorld { public: static long __fastcall GetFrame();            // 0x0049D870
+    const CPlayer* PeekMyPlayer() const;        // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ (was the stand-in CWorldP::GetCurrentPlayer)
+};
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CThingSearchTools;
@@ -165,9 +168,6 @@ extern "C" double __cdecl sqrt(double);
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
-struct CWorldP {
-    CPlayer* GetCurrentPlayer();                // 0x0049D9D0
-};
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -180,7 +180,7 @@ public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
 private: public:
     unsigned char _pad[0x24];
-    CWorldP* m_pWorld;                          // +0x24
+    CWorld* m_pWorld;                           // +0x24
 };
 struct CThingPos : CThing {
 };
@@ -250,7 +250,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
 {
     if (NextCheckFrame > (unsigned long)CWorld::GetFrame())
         return false;
-    CThing* hero = CMainGameComponent::Get()->m_pWorld->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->m_pWorld->PeekMyPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1) && PBrain->PCreature->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second;
         if (((CVillage*)((CTCVillageMember*)villager)->GetPVillage())) {

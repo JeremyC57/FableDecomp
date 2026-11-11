@@ -47,11 +47,15 @@ class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0x38 - 0x08];
     long SheatheObject;                               // +0x38
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     CDefPointer& operator=(const CDefPointer& other)
     {
@@ -79,7 +83,7 @@ class CDefClassBase { public:
     unsigned char _pad04[0x1c - 4];
     CDefinitionManager* m_pManager;                   // +0x1c
     bool GetSubDef(CDefPointer<CCarryableDef>* out);  // 0x005CC10E
-    bool GetSubDef(CDefPointer<CWeaponDef>* out);     // 0x0042B1A6
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
 };
 #pragma auto_inline(off)
 // Same-TU stand-ins for GetSubDef<CCarryableDef> 0x005CC10E and GetSubDef<CWeaponDef> 0x0042B1A6 (the landed GetSubDef
@@ -98,16 +102,17 @@ bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
     }
     return false;
 }
-bool CDefClassBase::GetSubDef(CDefPointer<CWeaponDef>* out)
+template <> bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
 {
+    CDefClassBase* self = const_cast<CDefClassBase*>(this);
     long* pIndex;
     {
         CCharString name("CWeaponDef");
-        pIndex = GetSubDefIndex(name);
+        pIndex = self->GetSubDefIndex(name);
     }
     if (pIndex) {
-        CDefPointer<CWeaponDef> result = m_pManager->GetPDefFromGlobalIndex<CWeaponDef>(*pIndex);
-        *out = result;
+        CDefPointer<CWeaponDef> result = self->m_pManager->GetPDefFromGlobalIndex<CWeaponDef>(*pIndex);
+        *reinterpret_cast<CDefPointer<CWeaponDef>*>(out) = result;
         return true;
     }
     return false;
@@ -220,7 +225,7 @@ void __fastcall CCreatureAction_DropWeapon::DropWeapon(CThing& weapon, CTCCarryi
             else
                 sheathed->Kill(true);
         }
-        CDefPointer<CWeaponDef> weaponDef;
+        CDefPointer<const CWeaponDef> weaponDef;
         if ((!weapon.m_pDef->GetSubDef(&weaponDef) || weaponDef->SheatheObject < 0) && !(weapon.m_flags91 & 1)) {
             CTCInventoryWeapons* inventoryWeapons;
             if (creature.GetInterface(&inventoryWeapons, 0x13)) {

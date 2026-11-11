@@ -3,13 +3,13 @@
 // Retail 0x006BFFD0, 336 bytes, `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound (const) 0x004365B0 (interfaces 0x21 thing list, 0xDA wall
 // mount), CBaseIntelligentPointer::GetPItem 0x00A01B50, the wall mount's mounted-thing accessor 0x007DE4F0,
-// CDefClassBase::GetSubDef<CTrophyDef> 0x0059350C; the defs' slot 1 release.
+// CDefClassBase::GetSubDef<CStockItemDef> 0x0059350C; the defs' slot 1 release.
 // Layout: CTCBase ParentThing +4; the interface-0x21 component's list header +0x0C (landed CountMoneyBags 0x006C04D0
-// model); CThing bitset +0x20 (0xDA = word 6 bit 26), map +0x44, def +0x70, dead flag +0x91; CTrophyDef value +0x28.
+// model); CThing bitset +0x20 (0xDA = word 6 bit 26), map +0x44, def +0x70, dead flag +0x91; CStockItemDef value +0x28.
 // Shape: the list walk of CountMoneyBags; the trophy's def is an inline-copied CDefPointer (add-ref after the out pointer
 // is zeroed, register-held, released right after GetSubDef); the out CDefPointer is re-read from the frame for the value
 // and its release.
-// Shape (stand-ins): CDefClassBase::GetSubDef<CTrophyDef> (a template instantiation, out of line in retail) has a same-TU
+// Shape (stand-ins): CDefClassBase::GetSubDef<CStockItemDef> (a template instantiation, out of line in retail) has a same-TU
 //   stand-in body that writes the out slot only, and the CVectorMap LowerBound (const) instantiation has its same-TU
 //   binary-search body; with both visible VC7.1 keeps the running value in ebp and releases the out def with one load.
 #include "fable_compiler.h"
@@ -20,8 +20,12 @@ class CDefPointeeBase { public:
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer()
@@ -29,20 +33,20 @@ template <class T> class CDefPointer { public:
         if (Object && --Object->m_refCount == 0)
             Object->Delete();
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-class CTrophyDef : public CDefPointeeBase { public:
+class CStockItemDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long          Value;                                // +0x28
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CTrophyDef>* out);       // 0x0059350C
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0059350C GetSubDef<CStockItemDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CTrophyDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CStockItemDef>(CDefPointer<const CStockItemDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -149,7 +153,7 @@ long CTCBuyableHouse::GetValueOfTrophies() const
             if (IsThingAlive(node->thing) && node->thing.Get()->GetInterface(&mount, 0xda)) {
                 CThing* trophy = mount->GetMountedThing();
                 if (trophy && !(trophy->m_stateFlags & 1)) {
-                    CDefPointer<CTrophyDef> def;
+                    CDefPointer<const CStockItemDef> def;
                     if (mount->GetMountedThing()->GetDef()->GetSubDef(&def))
                         value += def->Value;
                     else

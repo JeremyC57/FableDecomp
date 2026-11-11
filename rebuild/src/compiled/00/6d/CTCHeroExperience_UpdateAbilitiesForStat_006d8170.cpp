@@ -23,25 +23,32 @@
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
 class CTCBase;
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;       // 0x004365B0
+// agentNF15: the stand-in CInterfaceMap struct is the explicit specialisation of CVectorMap<ETCInterfaceType, CTCBase*> (the landed
+//   0x0074EE90 idiom); 0x0040F020 is its LowerBound (NF14 / established spelling).
+enum ETCInterfaceType { };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class C> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
+    value_type* _M_start;                                   // +0x00 (the STLport vector)
+    value_type* _M_finish;                                  // +0x04
+    const value_type* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
+    value_type* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #pragma auto_inline(off)
 // Same-TU stand-ins for CVectorMap::LowerBound 0x0040F020 / const 0x004365B0 (STLport lower_bound over the 8-byte
 // {type, component} entries): VC7.1 then knows the key's address does not escape.
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
 {
-    SEntry* it = first;
-    int len = int(last - first);
+    value_type* it = _M_start;
+    int len = int(_M_finish - _M_start);
     while (len > 0) {
         int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
+        value_type* middle = it + half;
+        if (middle->first < key) {
             it = middle + 1;
             len = len - half - 1;
         } else
@@ -49,14 +56,14 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceType& key) const
 {
-    const SEntry* it = first;
-    int len = int(last - first);
+    const value_type* it = _M_start;
+    int len = int(_M_finish - _M_start);
     while (len > 0) {
         int half = len / 2;
-        const SEntry* middle = it + half;
-        if (middle->type < *type) {
+        const value_type* middle = it + half;
+        if (middle->first < key) {
             it = middle + 1;
             len = len - half - 1;
         } else
@@ -85,18 +92,18 @@ class CThing { public:
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template<class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
     template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)type;
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            *ppOut = (const T*)((it == map->last || type < it->type) ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            *ppOut = (const T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
             return true;
         }
         return false;

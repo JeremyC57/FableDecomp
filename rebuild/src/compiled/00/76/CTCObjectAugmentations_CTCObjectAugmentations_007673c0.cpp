@@ -34,7 +34,7 @@ class CObjectAugmentationsDef : public CDefBase { public:
 };
 class CThingBaseDef : public CDefBase { public: };
 class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0042AF9E (T = CObjectAugmentationsDef)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042AF9E GetSubDef<CObjectAugmentationsDef> (Ego_r.pdb member template)
 };
 class CThing { public:
     unsigned char  _pad00[0x70];
@@ -119,7 +119,7 @@ class CTCBase { public:
     bool    IsInGlobalUpdateTCs;                        // +0x09
 };
 class CTCObjectAugmentations : public CTCBase { public:               // vtable 0x0126A3A4
-    CDefPointer<CObjectAugmentationsDef> PDef;          // +0x0c
+    CDefPointer<const CObjectAugmentationsDef> PDef;    // +0x0c
     bool          LoadedFromSaveGame;                   // +0x10
     vector< CDefPointer<CThingBaseDef> > Augmentations; // +0x14
     CSoundSetMap  InitSounds;                           // +0x20
@@ -139,6 +139,6 @@ CTCObjectAugmentations::CTCObjectAugmentations(CThing* thing)
     : CTCBase(thing), LoadedFromSaveGame(false), CurrentRunningAugEffectIndex(0), CurPeriod(0), InStrikeAction(false),
       ProjectileTrailEffect(0)
 {
-    ParentThing->PDef->GetSubDef(PDef);
+    ParentThing->PDef->GetSubDef(&PDef);
     Augmentations.resize(PDef.Object->NumberOfSlots);
 }

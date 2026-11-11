@@ -16,7 +16,7 @@ class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
 struct CTCInventoryWeaponsNative {unsigned char Base[0x168];long PreviouslyWieldedMeleeWeaponDefIndex,PreviouslyWieldedRangedWeaponDefIndex; FABLE_FORCEINLINE long GetPreviousRanged()const{return PreviouslyWieldedRangedWeaponDefIndex;}}; // donor184/188; native168/16c
 class CDefString { public:long TablePos;CDefString(){} CDefString(const CDefString& x):TablePos(x.TablePos){}};
-struct CDefinitionManagerMethods {CDefString GetDefNameFromGlobalIndex(long);}; //009ACCC0
+class CDefinitionManager { public: CDefString GetDefNameFromGlobalIndex(long) const; }; // 0x009ACCC0 (Ego_r.pdb, const)
 class CDefStringTable { public:CCharString GetString(long);}; //009D49B0
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21) //013CA828
 struct CCharStringMethods:CCharString {bool operator!=(const char*)const;}; //0099E960
@@ -30,6 +30,6 @@ bool CGameScriptInterfaceMethods::GetPreviouslyWieldedRangedWeaponName(CCharStri
  if(hero && !(hero->LifeFlags&1) && hero->GetInventory(&inventory)) {
 
  long index=inventory->PreviouslyWieldedRangedWeaponDefIndex;
- if(index>0){{CCharString name=GDefStringTable.GetString(reinterpret_cast<CDefinitionManagerMethods*>(DefinitionManager)->GetDefNameFromGlobalIndex(index).TablePos);result=name;}if(static_cast<CCharStringMethods&>(result)!="")return true;}
+ if(index>0){{CCharString name=GDefStringTable.GetString(reinterpret_cast<CDefinitionManager*>(DefinitionManager)->GetDefNameFromGlobalIndex(index).TablePos);result=name;}if(static_cast<CCharStringMethods&>(result)!="")return true;}
  } return true;
 }

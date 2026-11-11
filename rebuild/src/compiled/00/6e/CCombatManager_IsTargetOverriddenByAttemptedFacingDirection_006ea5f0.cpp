@@ -31,33 +31,34 @@ class CDefPointeeBase { public:                    // a counted definition objec
     virtual void DestroyDef();              // slot 1 (+4)
     long m_refCount;                        // +4
 };
-struct CCombatOverrideDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:    // the controller's CWeaponDef sub-def (GetSubDef<CWeaponDef> 0x0042B1A6, string "CWeaponDef")
     unsigned char _pad08[0xc4];
     float TargetOverrideAngle;              // +0xcc (degrees)
 };
-struct CSubDefPointer {                     // CDefPointer<const CCombatOverrideDef>
-    CCombatOverrideDef* Object;
-    CSubDefPointer() : Object(0) {}
-    ~CSubDefPointer()
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CWeaponDef> { public:   // the GetSubDef out slot (Ego_r.pdb CDefPointer<const CWeaponDef>)
+    CWeaponDef* Object;
+    CDefPointer() : Object(0) {}
+    ~CDefPointer()
     {
         if (Object && --Object->m_refCount == 0)
             Object->DestroyDef();
     }
-    CCombatOverrideDef* operator->() const { return Object; }
+    CWeaponDef* operator->() const { return Object; }
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CSubDefPointer& out) const;      // 0x0042B1A6
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
 };
 void* FindDef_GetSubDef_0042b1a6();         // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
 // Same-TU stand-in for the GetSubDef<T> instantiation 0x0042B1A6: it writes the out slot only inline, so VC7.1 knows
 // the def pointer's address does not escape the call (the landed 0x005DA6E0 idiom).
-__declspec(noinline) bool CDefClassBase::GetSubDef(CSubDefPointer& out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
 {
     void* def = FindDef_GetSubDef_0042b1a6();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -130,11 +131,11 @@ bool CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCr
                 controller = carried;
         }
         float angle = 60.0f;
-        CSubDefPointer overrideDef;
+        CDefPointer<const CWeaponDef> overrideDef;
         bool found;
         {
             CDefClassPointer def = controller->PBaseDef;
-            found = def->GetSubDef(overrideDef);
+            found = def->GetSubDef(&overrideDef);
         }
         if (found)
             angle = overrideDef->TargetOverrideAngle;

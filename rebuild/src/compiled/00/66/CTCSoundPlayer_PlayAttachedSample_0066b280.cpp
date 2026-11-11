@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066B280, 116 bytes (+ int3 padding to 128), thiscall `ret 14h`.
 //   Name: Ego_r.pdb `?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z` (the bank-less overload;
 //   the landed 0x0066B300 is the CASoundBank& one). 23+ callers (CTCDoor::PlaySoundW 0x00730A00, CTCShop::SetAlarm, ...).
-// Extra callees: CTCBase::GetGameSubsystem @ 0x00686D60 (the random generator at +0x16140), GFROR13 @ 0x00497890,
+// Extra callees: CTCBase::PeekComponent() const @ 0x00686D60 (Ego_r.pdb; the main game component, random seed at +0x16140), GFROR13 @ 0x00497890,
 //   InternalPlayAttachedSample @ 0x0066B080.
 // Label correction: the catalog "CAnimateThing_PlayRandomSound" is descriptive.
 // Callees/globals: CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) @ 0x008369F0 (static __fastcall),
@@ -74,7 +74,7 @@ public:
     FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
     FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
-class CGameSubsystem {
+class CMainGameComponent {
 public:
     unsigned char    _pad00[0x16140];
     CRandomGenerator Random;                    // +0x16140
@@ -83,7 +83,9 @@ class CTCBase {
 public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
-    CGameSubsystem* GetGameSubsystem();         // 0x00686D60
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+public:
 };
 class CTCSoundPlayer : public CTCBase {
 public:
@@ -99,7 +101,7 @@ private:
 
 unsigned long CTCSoundPlayer::PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached)
 {
-    CRandomGenerator& rng = GetGameSubsystem()->Random;
+    CRandomGenerator& rng = const_cast<CMainGameComponent&>(PeekComponent()).Random;
     long sample = sound.FirstSound + rng.Random(sound.LastSound - sound.FirstSound + 1);
     CASoundBank& bank = ParentThing->GetSampleBank();
     return InternalPlayAttachedSample(bank, sample, init, flag, loop, attached);

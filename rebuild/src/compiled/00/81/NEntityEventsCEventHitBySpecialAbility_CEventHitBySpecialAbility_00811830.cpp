@@ -6,7 +6,7 @@
 // (rtti-vtables.tsv) and the base is the landed CEventHitBase constructor.
 // Callees: NEntityEvents::CEventHitBase::CEventHitBase(const CHitParameters&) @ 0x00811760, CDefinitionManager::Get (static,
 // __fastcall) @ 0x0044C6B0, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("HERO_ABILITY" @ 0x01235E14),
-// CDefinitionManager::GetNumberOfDefsOfType(const CCharString&) @ 0x009AD3B0, CDefinitionManager::GetDef_005f89f2(const
+// CDefinitionManager::GetNoInstantiatedDefsOfType(const CCharString&) @ 0x009AD3B0, CDefinitionManager::GetDef<CHeroAbilityDef>(const
 // CCharString&, long, CDefPointer&) @ 0x005F89F2 (the landed body names its first parameter `long kind`: it is the type-name
 // string's address); the def's virtual slot 1.
 // Layout: CEventHitBase (WorldFrame +0x04, PHitParams +0x08) then Ability +0x10, Aggressive +0x14; CHeroAbilityDef (retail def
@@ -25,11 +25,15 @@ struct CDefBase {
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CHeroAbilityDef : public CDefBase { public:
     unsigned char _pad08[0x3c - 0x08];
@@ -38,20 +42,20 @@ class CHeroAbilityDef : public CDefBase { public:
     bool Aggressive;                                    // +0x94
 };
 class CDefinitionManager { public:
-    long GetNumberOfDefsOfType(const CCharString& typeName);   // 0x009AD3B0
-    bool GetDef_005f89f2(const CCharString& typeName, long index, CDefPointer<CHeroAbilityDef>& out);   // 0x005F89F2
+    long GetNoInstantiatedDefsOfType(const CCharString& typeName) const;   // 0x009AD3B0 (Ego_r.pdb / FableWin.pdb)
+    template <class T> bool GetDef(const CCharString& typeName, long index, CDefPointer<const T>* out) const;   // 0x005F89F2 GetDef<CHeroAbilityDef> (FableWin.pdb / Ego_r.pdb)
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
-void* FindDef_CDefinitionManager_GetDef_005f89f2_0();   // stand-in callee of the stand-in body below
+void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef_005f89f2(const CCharString& typeName, long index, CDefPointer<CHeroAbilityDef>& out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CHeroAbilityDef>(const CCharString& typeName, long index, CDefPointer<const CHeroAbilityDef>* out) const
 {
-    void* def = FindDef_CDefinitionManager_GetDef_005f89f2_0();
+    void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -79,13 +83,13 @@ CEventHitBySpecialAbility::CEventHitBySpecialAbility(const CHitParameters& param
     long count;
     {
         CCharString typeName("HERO_ABILITY", -1);
-        count = manager.GetNumberOfDefsOfType(typeName);
+        count = manager.GetNoInstantiatedDefsOfType(typeName);
     }
     for (long i = 1; i < count; ++i) {
-        CDefPointer<CHeroAbilityDef> def;
+        CDefPointer<const CHeroAbilityDef> def;
         {
             CCharString typeName("HERO_ABILITY", -1);
-            manager.GetDef_005f89f2(typeName, i, def);
+            manager.GetDef(typeName, i, &def);
         }
         if (def->Ability == Ability) {
             Aggressive = def->Aggressive;

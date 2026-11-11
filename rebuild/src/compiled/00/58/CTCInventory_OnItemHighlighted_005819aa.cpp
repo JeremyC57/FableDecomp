@@ -9,22 +9,25 @@
 // Vtable slot 36 of CTCInventory (0x01250DE4); the base vtable 0x01253DBC holds 0x005BC4C0 there.
 // Ego_r PDB: ?OnItemHighlighted@CTCInventory@@UAEXJ@Z.
 // Shape: the argument is loaded once into edi and pushed before every call.
-struct CTCInventoryBase {
-    void ResetInventoryAnim(long item);              // 0x005BCD2D
-    void OnItemHighlighted(long item);               // 0x005BC4C0
-    void SetCanItemBeQuickAssigned(long item);       // 0x005BC505
-    void SetCanItemBeUsed(long item);                // 0x005BC4DF
-    void SetNumberOfSelectedItemOwned(long item);    // 0x005BE284
+namespace NInventory {
+class CTCInventoryBase { public:                     // Ego_r.pdb NInventory::CTCInventoryBase (declarations only)
+    void ResetInventoryAnim(long item);              // 0x005BCD2D ?ResetInventoryAnim@CTCInventoryBase@NInventory@@QAEXJ@Z
+    virtual void OnItemHighlighted(long item);       // 0x005BC4C0 ?OnItemHighlighted@CTCInventoryBase@NInventory@@UAEXJ@Z
+protected:
+    void SetCanItemBeQuickAssigned(long item);       // 0x005BC505 ?SetCanItemBeQuickAssigned@CTCInventoryBase@NInventory@@IAEXJ@Z
+    void SetCanItemBeUsed(long item);                // 0x005BC4DF ?SetCanItemBeUsed@CTCInventoryBase@NInventory@@IAEXJ@Z
+    void SetNumberOfSelectedItemOwned(long item);    // 0x005BE284 ?SetNumberOfSelectedItemOwned@CTCInventoryBase@NInventory@@IAEXJ@Z
 };
+}
 
-class CTCInventory : public CTCInventoryBase { public:
-    void OnItemHighlighted(long item);
+class CTCInventory : public NInventory::CTCInventoryBase { public:
+    virtual void OnItemHighlighted(long item);       // Ego_r.pdb ?OnItemHighlighted@CTCInventory@@UAEXJ@Z
 };
 
 void CTCInventory::OnItemHighlighted(long item)
 {
     ResetInventoryAnim(item);
-    CTCInventoryBase::OnItemHighlighted(item);
+    NInventory::CTCInventoryBase::OnItemHighlighted(item);
     SetCanItemBeQuickAssigned(item);
     SetCanItemBeUsed(item);
     SetNumberOfSelectedItemOwned(item);

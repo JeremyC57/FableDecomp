@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CB60, 116 bytes (+12 int3); default /O2 TU, no frame.
 // Catalog label "CTCHighlightItem::vfunc_6" = CTCBase::OnInitialActivate slot.
 // Callees: CThingDef::GetSubDef<CHighlightItemDef> @ 0x0077D080 (manifest name is a byte-twin instantiation),
-//          CThing::GetPos() @ 0x004C73D0, CTCBase::GetGameSubsystem() @ 0x00686D60 and its slot 9 (+0x24).
+//          CThing::GetPos() @ 0x004C73D0, CTCBase::&PeekComponent() @ 0x00686D60 and its slot 9 (+0x24).
 // Shape: the zeroed CDefPointer local is the `push ecx` frame word (zero stored after the push); the position copy
 // goes through the member address (`lea edx,[esi+14h]`); a busy camera sets StartRunning and clears LifeTimer.
 // Layout: CTCHighlightItem (PDB, matches retail): StartRunning +0x0C, Running +0x0D, LifeTimer +0x10, StartPos +0x14,
@@ -66,17 +66,21 @@ class CThing { public:
 
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
 
-struct CGameSubsystem {
+class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsCameraIdle();                     // slot 9 (+0x24)
+    virtual bool IsEditorActive() const;                     // slot 9 (+0x24) 0x004197B0 FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ (was IsCameraIdle)
 };
 
 extern long g_GameFramesPerSecond;                   // 0x01375550
 
-struct CTCHighlightItem {
+class CTCBase { public:                                 // row-local view of the component base (Ego_r.pdb CTCBase: vptr, ParentThing)
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+};
+struct CTCHighlightItem : public CTCBase {
     bool          ToBeRemoved;                       // +0x08
     bool          IsInGlobalUpdateTCs;               // +0x09
     unsigned char _pad_0x0a[0x2];
@@ -86,7 +90,6 @@ struct CTCHighlightItem {
     C3DVector     StartPos;                          // +0x14
     CBaseIntelligentPointer PParticleEmitter;        // +0x20 CIntelligentPointer<CThing>
 
-    CGameSubsystem* GetGameSubsystem() const;        // 0x00686D60 (CTCBase: main game component +0x1C)
     void DoStartRunning();                           // 0x0077CBE0
     void DoMovement();                               // 0x0077C960
     void OnInitialActivate();
@@ -102,7 +105,7 @@ void CTCHighlightItem::OnInitialActivate()
     const CHighlightItemDef* def = pdef.Object;
     if (def) {
         StartPos = ParentThing->GetPos();
-        if (def->WaitForCameraIdle && !GetGameSubsystem()->IsCameraIdle()) {
+        if (def->WaitForCameraIdle && !PeekComponent().IsEditorActive()) {
             StartRunning = true;
             LifeTimer = 0;
         }

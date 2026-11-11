@@ -23,7 +23,6 @@
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
-#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_EXPRESSIONDEF
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTCBASE_COMPONENT
@@ -71,22 +70,12 @@
 namespace { extern CCharString TITLE_NAME; }                  // 0x013B8C60 ("EXPRESSIONS TITLE")
 
 // Same-TU bodies of the def lookups the row calls (retail instantiates / emits them in this TU and calls them out of line:
-// CDefinitionManager::GetDef<CThingBaseDef> 0x0042AF3C, GetDef(long, CDefPointer<CExpressionDef>*) 0x005F81BE,
+// CDefinitionManager::GetDef<CThingBaseDef> 0x0042AF3C, GetDef<CExpressionDef> 0x005F81BE (FableWin.pdb template),
 // CDefClassBase::GetSubDef<CExpressionSubDef> 0x005DA240, CTCInventoryAbilities::GetMiscThingsDef 0x005EE3B3). With the
 // bodies visible VC7.1 knows the handles' addresses do not escape, so their scope-end releases are the fused `dec [ecx+4] ;
 // jne` with the null store dropped, as retail's are (see hdr/README.md, CDefPointer release shapes). Only the row is graded.
 #pragma auto_inline(off)
 template <class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
-{
-    if (index <= 0)
-        return false;
-    CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
-    if (def.IsNull())
-        return false;
-    out->SetDynamicCast(def);
-    return true;
-}
-bool CDefinitionManager::GetDef(long index, CDefPointer<CExpressionDef>* out) const
 {
     if (index <= 0)
         return false;
@@ -206,7 +195,7 @@ NUISystem::CComponent* CTCInventoryAbilities::GetExpressionsListUIComponent(long
         CDefPointer<const CThingBaseDef> itemDef;
         GetDefinitionManager().GetDef(allItems[i].first, &itemDef);
         CDefPointer<const CExpressionSubDef> expressionSubDef;
-        CDefPointer<CExpressionDef> expressionDef;
+        CDefPointer<const CExpressionDef> expressionDef;
         if (itemDef->GetSubDef(&expressionSubDef)) {
             if (GetDefinitionManager().GetDef(expressionSubDef->ExpressionDef, &expressionDef)) {
                 switch (expressionDef->ExpressionType) {

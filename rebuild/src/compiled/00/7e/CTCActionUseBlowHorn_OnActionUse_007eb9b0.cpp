@@ -1,5 +1,5 @@
-// CTCActionUseBlowHorn::vfunc_28(CThingCreatureBase*) -- run the base slot, then make a live creature blow this horn
-// Leaf: vfunc_28
+// CTCActionUseBlowHorn::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingCreatureBase_Retail*)] -- run the base slot, then make a live creature blow this horn
+// Leaf: OnActionUse
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EB9B0, length 90 bytes. Slot 28 of the CTCActionUseBlowHorn
 // vtable 0x0123F564 (rtti-vtables.tsv).
@@ -44,18 +44,19 @@ struct CCreatureAction_BlowHorn_Retail : CCreatureActionBase_Retail {
 };
 
 class CTCActionUseBase { public:
-    void*   __vftable;                          // +0x00
+    // +0x00 vptr (OnActionUse is virtual)
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    void vfunc_28(CThingCreatureBase_Retail* creature);  // 0x007EAB90 (empty)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was vfunc_28(CThingCreatureBase_Retail*))
 };
 
 struct CTCActionUseBlowHorn : CTCActionUseBase {
-    void vfunc_28(CThingCreatureBase_Retail* creature);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingCreatureBase_Retail*))
 };
 
-void CTCActionUseBlowHorn::vfunc_28(CThingCreatureBase_Retail* creature)
+void CTCActionUseBlowHorn::OnActionUse(CThing& thing)
 {
-    CTCActionUseBase::vfunc_28(creature);
+    CThingCreatureBase_Retail* creature = (CThingCreatureBase_Retail*)&thing;
+    CTCActionUseBase::OnActionUse(thing);
     if (creature != 0 && !creature->IsDead()) {
         CThing* horn = ParentThing;
         creature->SetCurrentAction(&CCreatureAction_BlowHorn_Retail(creature, horn));

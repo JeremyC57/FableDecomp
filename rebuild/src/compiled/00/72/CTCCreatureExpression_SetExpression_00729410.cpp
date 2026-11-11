@@ -1,7 +1,7 @@
 // CTCCreatureExpression::SetExpression(long expressionType, float maxWeight) -- pick a random animation for the expression type from the creature's expression def and force it as the primary expression; type 0 first restores or demotes the front state
 //
-// Retail 0x00729410, 134 bytes (`ret 8`). Callees: CDefClassBase::GetSubDef<CCreatureExpressionDef>
-// (CDefPointer<const CCreatureExpressionDef>*) @ 0x00485815 (label "GetSubDef<CAbilityDef>",
+// Retail 0x00729410, 134 bytes (`ret 8`). Callees: CDefClassBase::GetSubDef<CCreatureDef>
+// (CDefPointer<const CCreatureDef>*) @ 0x00485815 (label "GetSubDef<CAbilityDef>",
 // propagated), CTCBase::GetWorld @ 0x00686A70, CWorld::GetWorldSeed @ 0x0049D810 (label
 // "CVertexBufferWin32::DoSizeof", propagated), the def's expression map FindRandomElement(long,
 // unsigned long*) @ 0x0086F510, CTCCreatureExpression::ForcePrimaryExpression(long, float) @ 0x007293A0,
@@ -39,31 +39,35 @@ struct CExpressionMap {
     long FindRandomElement(long expressionType, unsigned long* seed);   // 0x0086F510
 };
 
-struct CCreatureExpressionDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char   _pad08[0x38 - 0x08];
     CExpressionMap* Expressions;                    // +0x38
 };
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T>
 class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
     {
         if (DecRefToZero(Object->m_refCount))
             Object->Destroy();
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CCreatureExpressionDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureExpressionDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -109,7 +113,7 @@ void CTCCreatureExpression::SetExpression(long expressionType, float maxWeight)
         else
             front->value.Primary = false;
     }
-    CDefPointer<CCreatureExpressionDef> def;
+    CDefPointer<const CCreatureDef> def;
     ParentThing->PDef_Object->GetSubDef(&def);
     CExpressionMap* expressions = def->Expressions;
     long anim = expressions->FindRandomElement(expressionType, GetWorld().GetWorldSeed());

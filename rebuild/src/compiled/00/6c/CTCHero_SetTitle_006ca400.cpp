@@ -33,8 +33,8 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                         // slot 1
 };
-template<class T> class CDefPointerT;
-struct CDefBase : CDefVirtual, CRefCounted {        // CDefClassBase
+template<class T> class CDefPointer;
+class CDefClassBase : public CDefVirtual, public CRefCounted { public:   // Ego_r.pdb CDefClassBase
     void Release()
     {
         if (--m_count == 0)
@@ -46,21 +46,21 @@ struct CDefBase : CDefVirtual, CRefCounted {        // CDefClassBase
         if (GetRefCount() == 0)
             Destroy();
     }
-    template<class T> bool GetSubDef(CDefPointerT<const T>* out) const;   // 0x005B1E5A for CHeroTitleDef
+    template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1E5A GetSubDef<CHeroTitleDef> (Ego_r.pdb member template)
 };
-class CHeroTitleDef : public CDefBase { public:
+class CHeroTitleDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long Title;                                     // +0x28 EHeroTitle
 };
 
-template<class T> class CDefPointerT {              // CDefPointer<const T> member
+template<> class CDefPointer<const CHeroTitleDef> { // the CTCHero member (Ego_r.pdb CDefPointer<const CHeroTitleDef>)
 public:
-    T* Object;
-    T* operator->() const { return Object; }
-    CDefPointerT& operator=(int)
+    const CHeroTitleDef* Object;
+    const CHeroTitleDef* operator->() const { return Object; }
+    CDefPointer& operator=(int)
     {
         if (Object) {
-            ((CDefBase*)Object)->Release();
+            ((CDefClassBase*)Object)->Release();
             Object = 0;
         }
         Object = 0;
@@ -68,9 +68,8 @@ public:
     }
 };
 
-class CDefClassBase;
 template <class T> class CDefPointer { public:                                // CDefPointer<CDefClassBase>: the manager's return type
-    CDefBase* m_p;
+    CDefClassBase* m_p;
     CDefPointer() { }
     ~CDefPointer()
     {
@@ -119,7 +118,7 @@ public:
     unsigned char _pad08[0x10 - 0x08];
     long Title;                                     // +0x10 EHeroTitle
     long HeroTitleObjectDef;                        // +0x14
-    CDefPointerT<const CHeroTitleDef> PHeroTitleSubDef;   // +0x18
+    CDefPointer<const CHeroTitleDef> PHeroTitleSubDef;   // +0x18
     void SetTitle(long titleObjectDef);
 };
 

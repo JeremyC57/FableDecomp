@@ -22,7 +22,7 @@ struct CSubDefMap {
     SSubDefMapNode* end() const { return m_pHead; }
 };
 
-struct CSubDef {
+class CCreatureDef { public:
     virtual void v000();
     virtual void Destroy();                              // slot 1 (+4)
     long          m_refCount;                            // +0x04
@@ -30,21 +30,25 @@ struct CSubDef {
     CSubDefMap    m_map;                                 // +0x60
 };
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* m_pDef;
+    typename CDefNonConst<T>::Type* m_pDef;
     CDefPointer() : m_pDef(0) {}
     ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
-    T* operator->() const { return m_pDef; }
+    typename CDefNonConst<T>::Type* operator->() const { return m_pDef; }
 };
 
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CSubDef>* out);           // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSubDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -62,9 +66,9 @@ class CThingPlayerCreature { public:
 
 void* CThingPlayerCreature::vfunc_71(long key)
 {
-    CDefPointer<CSubDef> subDef;
+    CDefPointer<const CCreatureDef> subDef;
     PBaseDef->GetSubDef(&subDef);
-    CSubDef* def = subDef.m_pDef;
+    CCreatureDef* def = subDef.m_pDef;
     CSubDefMap* map = &def->m_map;
     SSubDefMapNode* it = map->find(key);
     void* result = it != map->end() ? it->m_pValue : 0;

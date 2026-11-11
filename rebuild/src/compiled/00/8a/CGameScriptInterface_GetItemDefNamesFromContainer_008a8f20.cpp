@@ -68,8 +68,8 @@ class CDefString { public:
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }
 };
-struct CDefinitionManager_Retail {
-    CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
+class CDefinitionManager { public:
+    CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0 (Ego_r.pdb, const)
 };
 class CDefStringTable { public:
     CCharString GetString(long index);                  // 0x009D49B0
@@ -144,7 +144,7 @@ class CGameScriptInterface { public:
     void*                      World;                   // +0x04
     void*                      Component;               // +0x08
     void*                      DisplayEngine;           // +0x0c
-    CDefinitionManager_Retail* DefinitionManager;       // +0x10
+    CDefinitionManager* DefinitionManager;       // +0x10
 };
 
 void CGameScriptInterface::GetItemDefNamesFromContainer(const CScriptThing& container, CCharStringVector& names) const

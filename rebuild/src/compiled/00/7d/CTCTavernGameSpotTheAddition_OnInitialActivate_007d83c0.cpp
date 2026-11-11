@@ -112,12 +112,16 @@ class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
                                  long flags, bool reserve);   // 0x007FF190
 };
-struct CGameView { virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-                   virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual bool IsShowing(); };
+class CMainGameComponent { public: virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+                   virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual bool IsEditorActive() const; };   // slot 9: 0x004197B0 FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ (was IsShowing)
 #pragma pack(push, 1)
-struct CTCTavernGameSpotTheAddition {
+class CTCBase { public:                                 // row-local view of the component base (Ego_r.pdb CTCBase: vptr, ParentThing)
     virtual void v00();
     CThing* ParentThing;                                // +0x04
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
+};
+struct CTCTavernGameSpotTheAddition : public CTCBase {
     unsigned char _pad08[0xf8 - 0x08];
     CThing* Cover;                                      // +0xf8
     unsigned char _padfc[0x104 - 0xfc];
@@ -134,7 +138,6 @@ struct CTCTavernGameSpotTheAddition {
     long GamePositionActionPointIndex;                  // +0x174
     void OnInitialActivateBase();                       // 0x005EA650
     void* CreateGamePiece(long type);                   // 0x005EA9B0
-    CGameView* GetGameView();                           // 0x00686D60
     void PositionCover(float t);                        // 0x007D7F10
     void OnInitialActivate();
 };
@@ -170,7 +173,7 @@ void CTCTavernGameSpotTheAddition::OnInitialActivate()
                 Cover = t;
                 CoverPosition = t->GetPos();
                 CoverRHSet = t->Frame->GetRHSet();
-                if (!GetGameView()->IsShowing())
+                if (!PeekComponent().IsEditorActive())
                     PositionCover(1.0f);
                 break;
             }

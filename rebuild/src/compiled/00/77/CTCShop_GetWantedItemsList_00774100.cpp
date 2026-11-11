@@ -27,13 +27,17 @@ class CDefPointeeBase { public:
     void AddReference() { ++m_refCount; }
     void ReleaseReference() { if (--m_refCount == 0) Delete(); }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* p) : Object(p) { if (Object) Object->AddReference(); }
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) Object->AddReference(); }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
     bool IsValid() const { return Object != 0; }
 };
 class CShopDef : public CDefPointeeBase { public:
@@ -41,11 +45,11 @@ class CShopDef : public CDefPointeeBase { public:
     float MinPriceMultiplierForItemToBeWanted;      // +0xa0 (PDB +0xb0)
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CShopDef>* out);     // 0x005130A0
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005130A0 GetSubDef<CShopDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_1();
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CShopDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CShopDef>(CDefPointer<const CShopDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_1();
     if (!def)
@@ -174,7 +178,7 @@ class CTCShop { public:
 std::vector<long> CTCShop::GetWantedItemsList() const
 {
     std::vector<long> wanted;
-    CDefPointer<CShopDef> shopDef;
+    CDefPointer<const CShopDef> shopDef;
     bool noShopDef = !ParentThing->GetPDef().IsValid() || !ParentThing->GetPDef()->GetSubDef(&shopDef);
     if (noShopDef)
         return wanted;

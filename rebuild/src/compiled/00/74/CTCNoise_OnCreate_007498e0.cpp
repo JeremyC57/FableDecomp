@@ -61,9 +61,6 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-struct CFrameSource {
-    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
-};
 struct CIntelligentPointerConstThing {
     virtual void v00();
     const CThing* m_pItem;
@@ -76,13 +73,14 @@ class CTCBase { public:                         // the component base (members t
     bool IsInGlobalUpdateTCs;                   // +0x09
 protected:
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
 };
 class CTCNoise : public CTCBase { public:
     CTCNoiseDef Definition;                     // +0x0c
     long  LifeTimer;                            // +0x40
     float DistanceCanBeHeardFrom;               // +0x44
     CIntelligentPointerConstThing Creator;      // +0x48
-    CFrameSource* GetFrameSource();             // 0x00686D60 (CTCBase)
+public:
     void OnCreate();
 };
 
@@ -95,7 +93,7 @@ void CTCNoise::OnCreate()
     DistanceCanBeHeardFrom = Definition.DistanceCanBeHeardFrom;
     switch (Definition.Type) {
     case 0:
-        LifeTimer = (long)(Definition.LifeTime * (float)GetFrameSource()->GetFramesPerSecond() + 5.0f);
+        LifeTimer = (long)(Definition.LifeTime * (float)PeekComponent().GetConstantFPS() + 5.0f);
         break;
     case 1:
         LifeTimer = 5;

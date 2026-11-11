@@ -17,7 +17,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                              // 0x00487DD0
 };
 class CWorld { public:
-    CPlayer* GetPlayerManager();                 // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;                 // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
 };
 class CTCBase
 {
@@ -45,7 +45,7 @@ public:
 
 void CTCCameraPointTrack::UpdateActiveCameraPosition()
 {
-    C3DVector heroPos = GetWorld().GetPlayerManager()->PeekPControlledCreature()->GetPos();
+    C3DVector heroPos = GetWorld().PeekMyPlayer()->PeekPControlledCreature()->GetPos();
     const C3DVector& cam = DragCamPos;
     C3DVector offset(heroPos.X - cam.X, heroPos.Y - cam.Y, 0.0f);
     float lengthSq = offset.GetSquaredMagnitude2D();

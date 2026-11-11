@@ -44,15 +44,19 @@ class CDefPointeeBase : public CDefVirtual, public CRefCounted { public:
             DestroyDef();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* m_pObject;
+    typename CDefNonConst<T>::Type* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()
     {
         if (m_pObject)
             m_pObject->ReleaseDef();
     }
-    T& operator*() const { return *m_pObject; }
+    typename CDefNonConst<T>::Type& operator*() const { return *m_pObject; }
 };
 class CThingCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x88 - 0x08];
@@ -61,16 +65,16 @@ class CThingCreatureDef : public CDefPointeeBase { public:
     long DeadBodyDecayEffect;                           // +0x144
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);   // 0x00513160 (GetDef<CThingCreatureDef>)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00513160 GetDef<CThingCreatureDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefinitionManager_GetDef_6260();
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingCreatureDef>& out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingCreatureDef>(long index, CDefPointer<const CThingCreatureDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef_6260();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -177,8 +181,8 @@ protected:
 public:
     const CThingCreatureDef& PeekDefinitionInline() const
     {
-        CDefPointer<CThingCreatureDef> def;
-        GetDefinitionManager()->GetDef(m_defGlobalIndex, def);
+        CDefPointer<const CThingCreatureDef> def;
+        GetDefinitionManager()->GetDef(m_defGlobalIndex, &def);
         return *def;
     }
     bool WorldUpdate();

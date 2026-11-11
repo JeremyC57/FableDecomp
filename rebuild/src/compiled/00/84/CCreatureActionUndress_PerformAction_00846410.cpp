@@ -50,29 +50,35 @@ class CAppearanceModifierDef : public CDefBase { public:
     unsigned char _pad08[0x44 - 8];
     bool          IsRemoveable;                              // +0x44
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
-class CThingObjectDef : public CDefBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceModifierDef>* out);   // 0x0057FF92
+class CDefClassBase : public CDefBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 GetSubDef<CAppearanceModifierDef> (Ego_r.pdb member template)
+};
+class CThingObjectDef : public CDefClassBase { public:
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingObjectDef>* out);   // 0x0042B040
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 GetDef<CThingObjectDef> (Ego_r.pdb member template)
 };
 CThingObjectDef* FindThingObjectDef(long index);                       // stand-in: the def lookup (not graded here)
-CAppearanceModifierDef* FindAppearanceModifierDef(const CThingObjectDef* def);   // stand-in: the sub def lookup
+CAppearanceModifierDef* FindAppearanceModifierDef(const CDefClassBase* def);   // stand-in: the sub def lookup
 #pragma auto_inline(off)
 // Same-TU bodies of the two def getters (retail instantiates them in this TU): they write only their out pointer.
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingObjectDef>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingObjectDef>(long index, CDefPointer<const CThingObjectDef>* out) const
 {
     CThingObjectDef* def = FindThingObjectDef(index);
     out->Object = def;
     return def != 0;
 }
-__declspec(noinline) bool CThingObjectDef::GetSubDef(CDefPointer<CAppearanceModifierDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
     CAppearanceModifierDef* def = FindAppearanceModifierDef(this);
     out->Object = def;
@@ -172,8 +178,8 @@ void CCreatureAction_Undress::PerformAction()
     std::list<long> worn;
     modifiers->GetAppearanceModifierList(worn, (EHeroAttachableAppearanceModifierType)2);
     for (std::list<long>::iterator it = worn.begin(); it != worn.end(); ) {
-        CDefPointer<CThingObjectDef> def;
-        CDefPointer<CAppearanceModifierDef> modifier;
+        CDefPointer<const CThingObjectDef> def;
+        CDefPointer<const CAppearanceModifierDef> modifier;
         if (GetPDefinitionManager()->GetDef(*it, &def) && def->GetSubDef(&modifier) && !modifier->IsRemoveable)
             it = worn.erase(it);
         else

@@ -55,7 +55,14 @@ public:
 #include "engine/CVectorMap.h"
 
 
-class CThing {                                          // partial view, retail offsets
+class CThingManager;
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
+                                          // partial view, retail offsets
 public:
     typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
     unsigned char      Header[0x20];
@@ -92,7 +99,6 @@ class CThingManager { public:
     CWorld*       World;                                // +0x24
     const CWorld& PeekWorld() const { return *World; }
 };
-extern CThingManager* g_pThingManager;                  // 0x013B8A1C
 
 template <class T> class CPersistTraits {
 public:
@@ -109,7 +115,7 @@ void CPersistTraits<CIntelligentPointer<CThing> >::TransferIn(CPersistContext& c
         {
             CCharString name("THING_DUMMY_FOR_SERIALISATION");
             C3DVector position(0.0f, 0.0f, 0.0f);
-            thing = CTCDNone::Create(g_pThingManager->PeekWorld().PeekDefinitionManager().GetDefGlobalIndexFromName(name), position, true);
+            thing = CTCDNone::Create(CThing::GetPCurrentThingManager()->PeekWorld().PeekDefinitionManager().GetDefGlobalIndexFromName(name), position, true);
         }
         CTCThingUIDDummyForSerialisation* dummy = 0;
         if (thing->HasTC((ETCInterfaceType)0xEB))

@@ -1,5 +1,5 @@
-// CTCCarriedActionUseSpade::vfunc_28(CThingCreatureBase* user) -- a user able to dig starts the "Expression_Dig" activate-quest action; then the spade's interface-0x1a component is notified
-// Leaf: vfunc_28
+// CTCCarriedActionUseSpade::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingCreatureBase*)] -- a user able to dig starts the "Expression_Dig" activate-quest action; then the spade's interface-0x1a component is notified
+// Leaf: OnActionUse
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F03D0, 187 bytes (`ret 4`, 0xbc-byte frame). OnActionUse(CThing&) slot 28.
@@ -63,18 +63,22 @@ bool __fastcall IsThingAbleToDig(CThingCreatureBase* thing);   // 0x007F0300
 struct CTCShowableItem {
     void OnShowEnded();                                 // 0x005D8E50
 };
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThingCreatureBase*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThingCreatureBase* ParentThing;                    // +0x04 (CTCBase)
-    void OnUseBase(CThingCreatureBase* user);           // 0x007EAB90 (empty base implementation)
 };
 struct CTCCarriedActionUseSpade : CTCCarriedActionUseBase {
-    void vfunc_28(CThingCreatureBase* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingCreatureBase*))
 };
 
-void CTCCarriedActionUseSpade::vfunc_28(CThingCreatureBase* user)
+void CTCCarriedActionUseSpade::OnActionUse(CThing& thing)
 {
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CThingCreatureBase* user = (CThingCreatureBase*)&thing;
+    CTCCarriedActionUseBase::OnActionUse(thing);
     if (IsThingAbleToDig(user)) {
         CCharString name("Expression_Dig", -1);
         user->SetCurrentAction(CCreatureAction_ActivateQuest(user, 0, name, false));

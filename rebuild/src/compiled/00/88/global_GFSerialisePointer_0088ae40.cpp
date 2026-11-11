@@ -14,7 +14,7 @@
 //   CTCDNone::Create(long, const C3DVector&, bool) 0x00835A20 (static __fastcall),
 //   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> >::LowerBound 0x0040F020 (inside CThing::GetTC<T>),
 //   CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 / ~CBaseIntelligentPointer 0x00A01C10.
-// Globals: g_pThingManager 0x013B8A1C (descriptive, as the landed CTCBase::PeekWorld 0x00686A80), the
+// Globals: CThing::GetPCurrentThingManager() 0x013B8A1C (descriptive, as the landed CTCBase::PeekWorld 0x00686A80), the
 //   CIntelligentPointer<CThing> vtable 0x01238C6C, "THING_DUMMY_FOR_SERIALISATION" 0x0125E9EC.
 // Layout: retail CThing UniqueID +0x18, UsingComponents bitset +0x20 (0xEB = CTCThingUIDDummyForSerialisation: word 7
 //   bit 11), Components +0x44, Dead bit 0 of +0x91; CTCThingUIDDummyForSerialisation ThingUID +0x10 (PDB);
@@ -72,7 +72,14 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_THING_UID_DUMMY_FOR_SERIALISATION; }
 };
 
+class CThingManager;
 class CThing : public CBaseObject {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
+
 public:
     unsigned char    _pad04[0x18 - 0x04];
     unsigned __int64 UniqueID;                              // +0x18
@@ -124,7 +131,6 @@ public:
     const CWorld& PeekWorld() const { return *World; }      // Ego_r ?PeekWorld@CThingManager@@QBEABVCWorld@@XZ
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool level_less, unsigned long level, unsigned __int64 uid) const;   // 0x0051E210
 };
-extern CThingManager* g_pThingManager;                      // 0x013B8A1C
 
 class CPersistContext {
 public:
@@ -144,7 +150,7 @@ void __fastcall GFSerialisePointer(CPersistContext& context, const char* name, C
         CThing* thing = pointer.GetPItem();
         if (thing != 0 && !thing->Dead) {
             uid = pointer->GetUniqueID();
-            uid = g_pThingManager->RemapUIDForSerialisation(true, false, level, uid);
+            uid = CThing::GetPCurrentThingManager()->RemapUIDForSerialisation(true, false, level, uid);
         }
         context.Transfer<unsigned __int64>(name, uid, 0);
     }
@@ -152,11 +158,11 @@ void __fastcall GFSerialisePointer(CPersistContext& context, const char* name, C
         unsigned __int64 uid = 0;
         context.Transfer<unsigned __int64>(name, uid, 0);
         if (uid != 0) {
-            uid = g_pThingManager->RemapUIDForSerialisation(false, false, level, uid);
+            uid = CThing::GetPCurrentThingManager()->RemapUIDForSerialisation(false, false, level, uid);
             CThing* thing;
             {
                 CCharString def_name("THING_DUMMY_FOR_SERIALISATION");
-                thing = CTCDNone::Create(g_pThingManager->PeekWorld().PeekDefinitionManager().GetDefGlobalIndexFromName(def_name),
+                thing = CTCDNone::Create(CThing::GetPCurrentThingManager()->PeekWorld().PeekDefinitionManager().GetDefGlobalIndexFromName(def_name),
                                          C3DVector(0.0f, 0.0f, 0.0f), true);
             }
             CTCThingUIDDummyForSerialisation* dummy = 0;

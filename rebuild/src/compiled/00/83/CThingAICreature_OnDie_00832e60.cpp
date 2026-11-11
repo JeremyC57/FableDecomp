@@ -125,9 +125,11 @@ public:
 };
 
 class CThingAICreature;
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
 class CTCHeroOpinionDeedLog { public:
-    long PostDeed(long deedType, const C3DVector& position, const CThing* target, CThingAICreature* victim,
-                  long postType, bool b1, bool b2, const CFaction* faction, bool b3, long extra);   // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
 };
 struct CTCFaction {
     unsigned char _pad00[0x18];
@@ -176,8 +178,8 @@ void CThingAICreature::OnDie()
         if (HasTC(0x49)) {
             const CTCFaction* faction = GetConstTC<CTCFaction>(0x49);
             if (faction->GetFaction()) {
-                log->PostDeed(9, PeekPos(), this, 0, 2, true, false, faction->GetFaction(), false, 0);
-                log->PostDeed(0x3a, PeekPos(), this, 0, 7, false, false, faction->GetFaction(), true, 0);
+                log->PostDeed(OPINION_DEED_TYPE_CRIME_MURDER, PeekPos(), this, 0, (EOpinionPostDeedType)2, true, false, faction->GetFaction(), false, 0);
+                log->PostDeed(OPINION_DEED_TYPE_KILL_BAD_GUY, PeekPos(), this, 0, (EOpinionPostDeedType)7, false, false, faction->GetFaction(), true, 0);
             }
         }
         if (wife)

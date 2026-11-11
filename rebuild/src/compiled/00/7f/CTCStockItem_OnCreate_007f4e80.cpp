@@ -10,8 +10,12 @@
 // by hand WITHOUT a null test (`dec [ecx+4] ; jne`), so retail trusts GetSubDef to fill it.
 #include "engine/CTCStockItem.h"
 
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
 };
 
@@ -25,13 +29,13 @@ class CStockItemDef { public:
 };
 
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CStockItemDef>* out);        // 0x0059350C
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0059350C GetSubDef<CStockItemDef> (Ego_r.pdb member template)
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CStockItemDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CStockItemDef>(CDefPointer<const CStockItemDef>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_1();
     if (!def)
@@ -54,9 +58,9 @@ struct CTCStockItem_Methods : CTCStockItem {
 void CTCStockItem_Methods::OnCreate()
 {
     if (!Initialised) {
-        CDefPointer<CStockItemDef> def;
+        CDefPointer<const CStockItemDef> def;
         GetThing()->PDef->GetSubDef(&def);
-        CStockItemDef* object = def.Object;
+        CStockItemDef* object = const_cast<CStockItemDef*>(def.Object);
         Price = object->DefaultPrice;
         Stealable = object->DefaultIsStealable;
         Initialised = true;

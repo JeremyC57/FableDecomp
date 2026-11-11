@@ -23,16 +23,20 @@ class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     T* operator->() const { return Object; }
 };
-struct CInventoryTradeDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x9c - 0x08];
     long InventoryDefIndex;                     // +0x9c
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CInventoryTradeDef>* out);   // 0x00485815
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 class CThing { public:
     unsigned char _pad00[0x70];
@@ -82,14 +86,14 @@ void CTCInventoryTrade::OnCreate()
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
-    CDefPointer<CInventoryTradeDef> def;
+    CDefPointer<const CCreatureDef> def;
     def.Object = 0;
     if (thingDef)
         ++thingDef->m_refCount;
     thingDef->GetSubDef(&def);
     if (thingDef && --thingDef->m_refCount == 0)
         thingDef->Destroy();
-    CInventoryTradeDef* tradeDef = def.Object;
+    CCreatureDef* tradeDef = const_cast<CCreatureDef*>(def.Object);
     SetPDef(tradeDef->InventoryDefIndex);
     CTCInventoryBase_Trade::OnCreate();
     CategoryCount = 0;

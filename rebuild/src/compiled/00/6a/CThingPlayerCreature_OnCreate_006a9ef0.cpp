@@ -53,14 +53,18 @@ struct CDefObject : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CDefPointer& operator=(const CDefPointer& o)
     {
         if (Object != o.Object) {
-            T* object = Object;
+            typename CDefNonConst<T>::Type* object = Object;
             if (object) {
                 if (--object->m_count == 0)
                     object->Destroy();
@@ -80,7 +84,7 @@ template <class T> class CDefPointer { public:
         }
         Object = 0;
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CHeroCombatDef : public CDefObject { public:};
 class CPlayerMovementDef : public CDefObject { public:};
@@ -126,7 +130,7 @@ class CThingCreatureBase : public CThingGameObject { public:
     unsigned char _pad128[0x16c - 0x128];
     CDefinitionManager* GetDefinitionManager();         // 0x004C7990 (CThing)
     bool ValidateInitialisation();                      // 0x006A4D60 (CThingPhysical)
-    CDefPointer<CHeroCombatDef> GetHeroCombatDef() const;   // 0x00663340
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 (Ego_r.pdb)
     void CreateDefaultWeapons();                        // 0x00664680
     bool OnCreate();                                    // 0x00666310
 };
@@ -144,7 +148,7 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
     struct { C3DVector Normal; C3DVector Position; } LastThingCollision;   // +0x1cd / +0x1d9
 #pragma pack(pop)
     unsigned char _pad1e5[0x1e8 - 0x1e5];
-    CDefPointer<CHeroCombatDef> PHeroCombatDef;         // +0x1e8
+    CDefPointer<const CHeroCombatDef> PHeroCombatDef;         // +0x1e8
     CDefPointer<CPlayerMovementDef> PPlayerMovementDef; // +0x1ec
     C3DVector ImpulseVelocity;                          // +0x1f0
     float LeanAngle;                                    // +0x1fc
@@ -174,7 +178,7 @@ bool CThingPlayerCreature::OnCreate()
         CollidedWithThing = false;
         LastThingCollision.Normal.Clear();
         LastThingCollision.Position.Clear();
-        PHeroCombatDef = GetHeroCombatDef();
+        PHeroCombatDef = GetPHeroCombatDef();
         GetDefinitionManager()->GetDef("MOVEMENT_DEFAULT", PPlayerMovementDef);
         if (g_HeroCreationState == -1)
             g_HeroCreationState = 1;

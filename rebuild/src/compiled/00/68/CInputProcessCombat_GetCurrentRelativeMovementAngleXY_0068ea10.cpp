@@ -27,7 +27,7 @@ class CWorld { public:
     CPlayerManager*     PlayerManager;              // +0x0c
     unsigned char       _pad10[0x24];               // +0x10
     CAIGameCameraBase*  PCurrentGameCamera;         // +0x34
-    CPlayer* GetCurrentPlayer();                    // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;                    // 0x0049D9D0 Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ
 };
 struct CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout (CAInputProcess 0x14 bytes, then the init pointers)
     virtual void v00();
@@ -44,7 +44,7 @@ class CInputProcessCombat : public CInputProcessGameBase { public:
 
 float CInputProcessCombat::GetCurrentRelativeMovementAngleXY()
 {
-    if (World->GetCurrentPlayer()->m_firstPersonControl)
+    if (World->PeekMyPlayer()->m_firstPersonControl)
         return World->GetCameraRecord().GetAngleXY();
     return World->PCurrentGameCamera->GetRelativeMovementAngleXY();
 }

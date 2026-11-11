@@ -1,5 +1,6 @@
 // CTCHeroAttachableAppearanceModifiers::UpdateHiddenModifiers() -- marks every modifier visible, then hides any lower-layer modifier whose hide mask overlaps a visible higher-layer modifier
 #include "fable_compiler.h"
+template<class T> class CDefPointer;
 class CDefClassBase {
 public:
     virtual void v00();
@@ -18,6 +19,7 @@ public:
         if (GetRefCount() == 0)
             Destroy();
     }
+    template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 GetSubDef<CAppearanceModifierDef> (Ego_r.pdb member template)
 };
 template<class T> class CDefPointer {
 public:
@@ -44,10 +46,12 @@ public:
     }
     T* operator->() const { return Object; }
 };
-template<class T> class CDefTempPointer {
+// agentNF15: GetPDefFromGlobalIndex returns CDefPointer<const CDefClassBase> (Ego_r.pdb, 0x009AD9E0); its temporary is released
+//   through ReleaseTemporary (the landed CDefTempPointer body), as an explicit specialisation (the agentNF14 idiom).
+template<> class CDefPointer<const CDefClassBase> {
 public:
-    T* Object;
-    FABLE_FORCEINLINE ~CDefTempPointer()
+    const CDefClassBase* Object;
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();
@@ -62,16 +66,15 @@ public:
 };
 class CDefinition : public CDefClassBase {
 public:
-    bool GetSubDef(CDefPointer<const CAppearanceModifierDef>* out) const;   // 0x0057FF92
 };
 class CDefinitionManager {
 public:
-    CDefTempPointer<const CDefinition> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 Ego_r.pdb ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
     FABLE_FORCEINLINE bool GetDef(long index, CDefPointer<const CDefinition>& out) const
     {
         if (index <= 0)
             return false;
-        CDefTempPointer<const CDefinition> def = GetPDefFromGlobalIndex(index);
+        CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
         if (def.Object) {
             out = *(CDefPointer<const CDefinition>*)&def;
             return true;
@@ -108,9 +111,9 @@ public:
 
 // R&D I-3 sweep: a same-TU auto_inline(off) GetSubDef (fills only *out) makes the per-entry def pointers non-escaping;
 // retail's register roles, slots and release shape follow (684v582 -> match).
-const CAppearanceModifierDef* FindAppearanceModifierSubDef(const CDefinition* def);
+const CAppearanceModifierDef* FindAppearanceModifierSubDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-bool CDefinition::GetSubDef(CDefPointer<const CAppearanceModifierDef>* out) const
+template<> bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
     out->Object = FindAppearanceModifierSubDef(this);
     return out->Object != 0;

@@ -34,9 +34,14 @@ class CWorld { public:
     COpinionReactionManager* POpinionReactionManager;        // +0x74
     static long __fastcall GetFrame();   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 };
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
+class CFaction;
+class CThingAICreature;
 class CTCHeroOpinionDeedLog { public:
     void RemoveDeed(long handle);                            // 0x006C5920
-    long AddDeed(long type, const C3DVector& position, long a, long b, long c, long d, long e, long f, long g, long h);   // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -157,7 +162,7 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
     if (deedType) {
         CTCHeroOpinionDeedLog* log;
         if (PHero.Get() && !PHero.Get()->IsDead() && PHero.Get()->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
-            CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.Get()->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);
+            CurrentOpinionDeedHandle = log->PostDeed((EOpinionDeedType)deedType, PHero.Get()->GetPos(), 0, 0, (EOpinionPostDeedType)2, false, true, 0, false, 0);
     }
     CrowdState = state;
 }

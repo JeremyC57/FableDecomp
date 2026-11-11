@@ -27,8 +27,12 @@ class CDefPointeeBase { public:
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template <class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) { }
 };
 template <class T> struct CCountedDefPointer {  // the by-value CDefPointer<T> copy: add-ref on copy, release on destruction
@@ -42,13 +46,13 @@ class CCreatureDef : public CDefPointeeBase { public:
     bool AGhostIsWhatIBe;                       // +0xe4
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CCreatureDef>* out) const;     // 0x00485815 GetSubDef<CCreatureDef>
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (Ego_r.pdb member template)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     void* def = Find_CDefClassBase_GetSubDef(this);
     if (!def)
@@ -95,9 +99,9 @@ bool CThingFilter_IsValidAttackTargetForCreature::operator()(CThing* thing) cons
     if ((CheckAwareness && !FilterAware(thing)) || !FilterEnemy(thing) || !FilterWilling(thing) || !FilterNot(thing)
         || !FilterNotInList(thing) || !FilterAbleToBeEngaged(thing))
         return false;
-    CDefPointer<CCreatureDef> creatureDef;
+    CDefPointer<const CCreatureDef> creatureDef;
     thing->GetBaseDef()->GetSubDef(&creatureDef);
-    CCreatureDef* def = creatureDef.Object;
+    CCreatureDef* def = const_cast<CCreatureDef*>(creatureDef.Object);
     if (IAmAGhostExclaim && !def->AGhostIsWhatIBe) {
         def->Release();
         return false;

@@ -78,19 +78,23 @@ protected:
     CWorldMap& GetWorldMap();   // 0x00686D30
 };
 
+enum ECollideType { };                                  // Ego_r.pdb enum (the value is only passed through here)
+namespace NThingShot {
 struct CTCShotDefinitionBase : public CTCBase {
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x28 - 0x08];
     CIntelligentPointer<CThing> PShooter;                   // +0x28
-    void OnCollision(long type, const C3DVector& pos, const C3DVector& normal, CThing* other);   // 0x007BF510
+    virtual void OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other);   // 0x007BF510 Ego_r.pdb / FableWin.pdb (UAE)
 };
 struct CTCShotDefinitionNymphFun : CTCShotDefinitionBase {
     unsigned char _pad30[0xa4 - 0x30];
     bool Spent;                                         // +0xa4
-    void OnCollision(long type, const C3DVector& pos, const C3DVector& normal, CThing* other);
+protected:
+    virtual void OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other);   // MAE as its Ego_r siblings (FireballSpell, ForcePushBall)
 };
+}
 
-void CTCShotDefinitionNymphFun::OnCollision(long type, const C3DVector& pos, const C3DVector& normal, CThing* other)
+void NThingShot::CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other)
 {
     if (!Spent) {
         if (IS_THING_ALIVE(PShooter.GetPItem())) {

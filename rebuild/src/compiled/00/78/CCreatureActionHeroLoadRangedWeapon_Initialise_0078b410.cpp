@@ -3,7 +3,7 @@
 // gives the multiplier range, the hero's stats def the ability level (adding a CTCHaste when missing)
 // Leaf: ?Initialise@CCreatureAction_HeroLoadRangedWeapon
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// Layout: CThing interface bitset +0x20, map +0x44, def +0x70; CAbilityDef multiplier max +0xbc / min +0xc0; the stats def's
+// Layout: CThing interface bitset +0x20, map +0x44, def +0x70; CWeaponDef multiplier max +0xbc / min +0xc0; the stats def's
 //   ability table at +0x9c; CTCHaste multipliers map at +0x18.
 // Shape: the 0x68 / 0x46 lookups are const (LowerBound 0x004365B0), the 0x8C one non-const (0x0040F020); the stats def is
 //   returned by value; the ability def pointer is declared before the single `stats && GetSubDef` test (that order gives
@@ -28,8 +28,12 @@ class CDefPointeeBase { public:
     }
     mutable long m_refCount;                          // +4
 };
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
 template<class T> class CDefPointer { public:
-    T* Object;
+    typename CDefNonConst<T>::Type* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
     {
@@ -38,17 +42,17 @@ template<class T> class CDefPointer { public:
             Object = 0;
         }
     }
-    T* operator->() const { return Object; }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
 class CTCHeroExperience;
 struct CAbilityTable {
     float GetAbilityMultiplier(const CTCHeroExperience* experience) const;   // 0x00851BD0
 };
-class CHeroStatsDef : public CDefPointeeBase { public:
+class CHeroCombatDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x9c - 8];
     CAbilityTable Abilities;                          // +0x9c
 };
-class CAbilityDef : public CDefPointeeBase { public:
+class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xbc - 8];
     float MaxMultiplier;                              // +0xbc
     float MinMultiplier;                              // +0xc0
@@ -57,7 +61,7 @@ class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long m_refCount;                                  // +0x04
-    bool GetSubDef(CDefPointer<const CAbilityDef>* out);   // 0x0042B1A6
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
 };
 struct CDefClassReference {                           // a counted CDefClassBase reference (AddRef / Release)
     CDefClassBase* m_p;
@@ -73,7 +77,6 @@ public:
     CInterfaceMap  m_interfaces;                      // +0x44
     unsigned char  _pad54[0x1c];
     CDefClassBase* m_pDef;                            // +0x70
-    CDefPointer<const CHeroStatsDef> GetHeroStatsDef();   // 0x00663340
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     template <class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
@@ -136,13 +139,16 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
+class CThingCreatureBase : public CThing { public:
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 Ego_r.pdb ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ
+};
 class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0xa8 - 0x10];
     void Initialise();                                // 0x00694D10
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };
 class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PRangedWeapon;            // +0xa8
@@ -158,8 +164,8 @@ void CCreatureAction_HeroLoadRangedWeapon::Initialise()
         const CTCCarrying* carrying;
         if (((const CThing*)GetCreature())->GetInterface(&carrying, 0x46)) {
             CDefClassReference weaponDef(carrying->GetThingInPrimarySlot()->m_pDef);
-            CDefPointer<const CHeroStatsDef> stats = GetCreature()->GetHeroStatsDef();
-            CDefPointer<const CAbilityDef> ability;
+            CDefPointer<const CHeroCombatDef> stats = GetCreature()->GetPHeroCombatDef();
+            CDefPointer<const CWeaponDef> ability;
             if (stats.Object && weaponDef->GetSubDef(&ability)) {
                 float level = stats->Abilities.GetAbilityMultiplier(experience);
                 float multiplier = (ability->MaxMultiplier - ability->MinMultiplier) * level + ability->MinMultiplier;

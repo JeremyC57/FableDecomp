@@ -1,5 +1,5 @@
-// CTCCarriedActionUseShow::OnActionUse(CThingAICreature* user) -- a creature shows its carried item to a targeted creature (type 2), applying the item's bonus-item def to the user's hero stats; otherwise report the failed use to the item's interface-0x1A component
-// Leaf: vfunc_28
+// CTCCarriedActionUseShow::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingAICreature*)] -- a creature shows its carried item to a targeted creature (type 2), applying the item's bonus-item def to the user's hero stats; otherwise report the failed use to the item's interface-0x1A component
+// Leaf: OnActionUse
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail 0x007ED870, 384 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28).
@@ -95,10 +95,13 @@ class CTCTargetingBase { public:                                   // interface 
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
 };
-class CTCCarriedActionUseBase { public:
+class CThing;
+class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnUseBase(CThingAICreature*))
+};
+class CTCCarriedActionUseBase : public CTCActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)
 };
 class CDefPointeeBase { public:
     virtual void Destroy();                                 // slot 0
@@ -139,12 +142,13 @@ class CTCHeroStats { public:
     void ApplyBonusItemEffects(CBonusItemDef* def);         // 0x0057C4F1
 };
 struct CTCCarriedActionUseShow : CTCCarriedActionUseBase {
-    void vfunc_28(CThingAICreature* user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingAICreature*))
 };
 
-void CTCCarriedActionUseShow::vfunc_28(CThingAICreature* user)
+void CTCCarriedActionUseShow::OnActionUse(CThing& thing)
 {
-    CTCCarriedActionUseBase::OnUseBase(user);
+    CThingAICreature* user = (CThingAICreature*)&thing;
+    CTCCarriedActionUseBase::OnActionUse(thing);
     ParentThing->SetAsGameStatePersisted(false);
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);

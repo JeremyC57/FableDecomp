@@ -51,6 +51,7 @@ namespace NInventory {
 class CTCInventoryBase : public CTCBase
 {
 public:
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;   // 0x005BDF08 Ego_r.pdb ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
 };
 }
 
@@ -60,7 +61,6 @@ class CTCInventory : public NInventory::CTCInventoryBase { public:
 
     static CContextSensitiveItemVector ContextSensitivePreferredItems;   // 0x013B8B40
 
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08 (CTCInventoryBase)
     bool AddContextSensitivePreferredItem(const CCharString& defName, long button, long priority);
 };
 

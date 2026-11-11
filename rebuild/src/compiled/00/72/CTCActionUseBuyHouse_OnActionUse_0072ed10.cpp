@@ -1,4 +1,4 @@
-// CTCActionUseBuyHouse::OnActionUse(CThing& user) -- after the base handling, when this object belongs (interface 0x33) to a living house that is buyable (0xD5) and the main player's hero has stats (4), run the main-sign or the dress-sign purchase flow with the hero's money
+// CTCActionUseBuyHouse::OnActionUse(CThing& user) [Ego_r.pdb virtual] -- after the base handling, when this object belongs (interface 0x33) to a living house that is buyable (0xD5) and the main player's hero has stats (4), run the main-sign or the dress-sign purchase flow with the hero's money
 // Leaf: ?OnActionUse@CTCActionUseBuyHouse
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072ED10, 278 bytes (+8 int3 padding), `ret 4`; CTCActionUseBuyHouse vtable 0x01266A7C
@@ -103,19 +103,21 @@ template <class T> class CDefPointer { public:
 
 class CTCBase
 {
+public:
+    virtual void v00();                   // slot 0 placeholder: CTCBase is polymorphic (Ego_r.pdb), so the vptr is its +0x00
 protected:
     CPlayerManager& GetPlayerManager();   // 0x00686D40
 };
 
 class CTCActionUseBase : public CTCBase {
 public:
-    void*   __vftable;                          // +0x00 (CTCBase)
+    // +0x00 vptr (CTCBase; OnActionUse is virtual)
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     void*   PActionUseDef;                      // +0x0c
     bool    Usable;                             // +0x10
-    void OnActionUse(CThing& user);             // 0x007EAB90
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was OnActionUse(CThing&))
 };
 enum EHouseQuestion { HOUSE_QUESTION_NONE };
 class CTCActionUseBuyHouse : public CTCActionUseBase {
@@ -125,7 +127,7 @@ public:
     EHouseQuestion HouseQuestion;               // +0x1c
     void OnActionUseMain(CTCBuyableHouse* house, long money);    // 0x0072E940
     void OnActionUseDress(CTCBuyableHouse* house, long money);   // 0x0072E710
-    void OnActionUse(CThing& user);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was OnActionUse(CThing&))
 };
 
 void CTCActionUseBuyHouse::OnActionUse(CThing& user)

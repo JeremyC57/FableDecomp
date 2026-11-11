@@ -22,6 +22,8 @@ class CFaction;
 
 #include "engine/CThing.h"
 
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                   // Ego_r.pdb enum (values used here by number)
 class CTCHeroOpinionDeedLog { public:
     void*         __vftable;                  // +0x00
     CThing*       ParentThing;                // +0x04 CTCBase
@@ -30,8 +32,8 @@ class CTCHeroOpinionDeedLog { public:
     bool          WeaponOutCrimeEnabled;      // +0x2C (PDB +0x38)
 
     void RemoveCrimeFromVillage(long handle);                 // 0x006C5F80
-    long PostDeed(long type, const C3DVector& position, CThing* target, CThingAICreature* victim,
-                  long postType, bool a, bool b, CFaction* faction, bool c, long extra);   // 0x006C6990
+    long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990 Ego_r.pdb / FableWin.pdb (engine/CTCHeroOpinionDeedLog.h)
     void PlayerTakenOutWeapon();
 public:
     void RemoveDeed(long);   // 0x006C59E0
@@ -47,5 +49,5 @@ void CTCHeroOpinionDeedLog::PlayerTakenOutWeapon()
         WeaponOutDeedHandle = -1;
     }
     if (WeaponOutCrimeEnabled)
-        WeaponOutDeedHandle = PostDeed(1, ParentThing->GetPos(), 0, 0, 2, true, true, 0, false, 0);
+        WeaponOutDeedHandle = PostDeed(OPINION_DEED_TYPE_CRIME_WEAPON_OUT, ParentThing->GetPos(), 0, 0, (EOpinionPostDeedType)2, true, true, 0, false, 0);
 }

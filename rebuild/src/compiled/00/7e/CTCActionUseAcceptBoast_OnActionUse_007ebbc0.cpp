@@ -1,5 +1,5 @@
-// CTCActionUseAcceptBoast::vfunc_28(CThingCreatureBase*) -- run the base slot, then tell the parent thing's boasting-position component (interface 0x71) that the creature accepted
-// Leaf: vfunc_28
+// CTCActionUseAcceptBoast::OnActionUse(CThing& user) [Ego_r.pdb; was vfunc_28(CThingCreatureBase*)] -- run the base slot, then tell the parent thing's boasting-position component (interface 0x71) that the creature accepted
+// Leaf: OnActionUse
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EBBC0, length 96 bytes. Slot 28 of the
 // CTCActionUseAcceptBoast vtable 0x0123F674 (rtti-vtables.tsv).
@@ -27,18 +27,19 @@ struct CTCBoastingPosition_Calls {                    // interface type 0x71 com
 };
 
 class CTCActionUseBase { public:
-    void*   __vftable;                          // +0x00
+    // +0x00 vptr (OnActionUse is virtual)
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    void vfunc_28(CThingCreatureBase* creature);  // 0x007EAB90 (empty)
+    virtual void OnActionUse(CThing& user);   // 0x007EAB90 Ego_r.pdb ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z (empty `ret 4`, RTTI slot 28; was vfunc_28(CThingCreatureBase*))
 };
 
 struct CTCActionUseAcceptBoast : CTCActionUseBase {
-    void vfunc_28(CThingCreatureBase* creature);
+    virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingCreatureBase*))
 };
 
-void CTCActionUseAcceptBoast::vfunc_28(CThingCreatureBase* creature)
+void CTCActionUseAcceptBoast::OnActionUse(CThing& thing)
 {
-    CTCActionUseBase::vfunc_28(creature);
+    CThingCreatureBase* creature = (CThingCreatureBase*)&thing;
+    CTCActionUseBase::OnActionUse(thing);
     CTCBoastingPosition_Calls* position;
     ParentThing->GetTC(TCI_BOASTING_POSITION, &position);
     position->OnBoastAccepted(creature);
