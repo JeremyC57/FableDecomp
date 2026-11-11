@@ -1,0 +1,14 @@
+address	name	evidence
+0x00D0EE70	?CheckForFirstAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	both PDB name sets list it next to CheckForSecondAreaMassacre; the body 0x00D0EE70..0x00D0F63F reads pGlobalScriptDef +0xE78 (the field in front of BAC_EnemiesToKillInSecondArea +0xE7C that 0x00D0F640 reads) and has the same kill-count loops; parked in chunks 839 / 844 under this name
+0x00C4F600	CEAXManager::SetEAXProperty	NOT a PDB name (neither name set has a CEAXManager symbol): descriptive, from chunk 878 -- the landed CEAXManager::QueueCommit 0x00C51A20 declares and calls it (carried from H40c)
+0x00E50FD0	?Main@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name sets (ghidra_out/egor_pdb_names.tsv, fablewin_pdb_names.tsv), as chunk 815; not matched (differ)
+00507c30	?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z	Ego_r.pdb 0x004DC750 + FableWin.pdb 0x01C79720 (hand873 LABELS); vtable slot 3 (0x01244AF8); the catalog's CWorldMap::CWorldMap::LoadFromFile doubles the class
+006bc4a0	?AddMap@CRegion@@QAEXJ@Z	Ego_r.pdb name; called on Regions.back() with the map index by the "ContainsMap" handler of 0x00507C30 (0x00508DD5); UNVERIFIED second source (argument shape only)
+006bc1d0	?SetRegionDefName@CRegion@@QAEXABVCCharString@@@Z	Ego_r.pdb name; "RegionDef" handler 0x00508975 (argument shape only)
+006bc4d0	?SetMiniMapRegionExitTextOffsetX@CRegion@@QAEXABVCCharString@@M@Z	Ego_r.pdb name; "MiniMapRegionExitTextOffsetX" handler 0x00509134 (argument shape only)
+006bc4f0	?SetMiniMapRegionExitTextOffsetY@CRegion@@QAEXABVCCharString@@M@Z	Ego_r.pdb name; "MiniMapRegionExitTextOffsetY" handler 0x005091C8 (argument shape only)
+004fce20	?AllocateMapUID@CWorldMap@@IAEKJ@Z	Ego_r.pdb name; "EndMap" handler 0x005084B5, called when the parsed MapUID is 0 (argument shape only)
+004fca50	?IsMapPlacementPositionFree@CWorldMap@@IAE_NABVC2DBoxI@@@Z	Ego_r.pdb name; "EndMap" handler 0x005084A5 with the map's Area (argument shape only)
+00506e30	?GetLevelDimensions@CWorldMap@@QBE?AVC2DBoxI@@ABVCCharString@@@Z	Ego_r.pdb name; 0x00508450 returns a C2DBoxI through a hidden pointer from the level name (argument shape only)
+00521ae0	?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@PAVCASuspendableProcess@@H@Z	Ego_r.pdb name; 0x00509810: counted file pointer, 0, the GetLoadableSections set by value, a vector<CThing*>&, 0, 0 (argument shape only)
+006c26b0	??0CLevelLoader@@QAE@AAVCThingManager@@AAVCWorldMap@@AAVCWorld@@@Z	Ego_r.pdb name; 0x00507C6D after operator new(0x24): (World.GetThingManager(), this, World)
