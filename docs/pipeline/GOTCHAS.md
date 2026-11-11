@@ -1,12 +1,11 @@
 
-- (agentFAM07, 2026-11-11) A container ctor's type is cheapest from the 66-byte dtor at ctor+0x40: its _M_erase target, then whoever else calls that erase.
-- (agentFAM07, 2026-11-11) An unnamed def-class sdd: find its slot-0 vtable dword in .rdata, then the landed ctor that stores that vtable.
-- (agentFAM07, 2026-11-11) In K050 sdds the class's dtor is compiler-generated (no own vptr store); a header that declares it needs an IMPLICIT_DTOR opt-in.
-- (agentFAM07, 2026-11-11) `new T` only emits ??_G when T's ctor is inline in the TU; an out-of-line declared ctor needs an `inline T::T() {}` emitter.
-- (agentFAM07, 2026-11-11) A `static` emitter function does not make VC7.1 emit the implicit container dtor COMDAT; use an external one.
-- (agentFAM07, 2026-11-11) engine/CArenaRoundDef.h / CHeroSoulsRoundDef.h pull CDefString.h: define FABLE_RETAIL_CCHARSTRING + FABLE_RETAIL_CDEFSTRINGTABLE or Wine cl hangs.
-- (agentFAM07, 2026-11-11) Syntax-check with host g++ (-fsyntax-only, -D__cdecl= -D__fastcall= "-D__int64=long long") before a Wine grade; it catches #error/abstract-class traps for free.
-- (agentFAM07, 2026-11-11) vector<T> of an abstract T fails at declaration instantiation; give the class its pure-virtual overrides first.
-- (agentFAM07, 2026-11-11) The grade-log status column breaks on names with spaces (`scalar deleting destructor'); parse the grade word, not field 3.
-- (agentFAM07, 2026-11-11) Landed STLport container tests fail 64-bit g++ (`__cdecl`, operator new(unsigned int)); a prelude-only test copy fixes them.
-- (agentFAM07, 2026-11-11) In Ego_r layouts `schar` is `signed char` (mangled C), distinct from `char` (D): it blocks set<char> spellings.
+- (chunk Q16, 2026-11-11) 0x008378D0 CThingTrackNode::SetAsLinkedTo: this v other colouring was a one-reference c2 priority tie (211 v 210); writing the start-node arm's shared tail (`other->NextNode = this; other->IsEnd = false;`) in BOTH branches (retail cross-jumps them back into one tail) adds IL references to `other` and gives retail's other-esi / this-edi. Duplicated source tails are a free priority lever: the IL counts them before cross-jumping.
+- (chunk Q16, 2026-11-11) 0x008378D0: swapping operand order inside an `&&` (`IsStart && other->IsEnd`) also flips the this/other priorities, but changes which load is CSE'd into al. Use it as a probe only.
+- (chunk Q16, 2026-11-11) 0x00957DB0 CAIStateGroup_MinionBehaviourCrowdBase::Update: an uninitialised by-reference out flag (`bool nav_route_calculated;`) shares the GetTC presence-byte slot as retail; initialising it emits `mov al,1 / xor al,al`.
+- (chunk Q16, 2026-11-11) 0x00957DB0: a move loop that ends on lost perception should be `ret = AI_ACTION_FAILED; break;` followed by `if (ret != AI_ACTION_FINISHED) { Terminate(); return; }`; an `if (ret == FINISHED) {...}` arm moves the Terminate to the function end.
+- (chunk Q16, 2026-11-11) 0x00957DB0: FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN (the GetPointer/SetPointer copy-ctor chain) gives this-in-edi / argument-in-esi for a by-value CIntelligentPointer argument; the plain SetPItem(GetPItem()) body swaps them.
+- (chunk Q16, 2026-11-11) 0x00957DB0: when retail expands StatGetInterfaceType / IsAwareOfThing but calls IsAwarenessOfThingDirect (0x00744430), the inline opt-in must keep StatGetInterfaceType inline. Out of line it costs 314 v 266 bytes.
+- (chunk Q16, 2026-11-11) 0x00774730 CTCShop::SellItem: in a `list<CIntelligentPointer<CThing> >` loop, a named `const CIntelligentPointer<CThing>& thing = *it;` keeps &node->data in esi from the alive test to Kill (`mov ecx,esi`); `(*it)->` re-forms it (`lea ecx,[esi+8]`, 420 v 419).
+- (chunk Q16, 2026-11-11) 0x00A90260 C3DPrimitive2::CreateDegenerateTriangleIndexBuffer: `GetSize() / sizeof(unsigned short)` (unsigned) gives retail's `shr`, where `/ 2` on a signed size emits the cdq/sub/sar idiom.
+- (chunk Q16, 2026-11-11) 0x00F3ABF0 CRangeCompressor::CalcCompressionScript: `const unsigned char* source = data + i * stride;` inside the values loop gives retail's strength-reduced source pointer placement.
+- (chunk Q16, 2026-11-11) 0x00F3ABF0 (probe, not a match): a user counter in the for-init (`remaining = bytes`) is initialised before the loop guard; a guarded do-while (`if (bytes > 0) { ...; do ... while (offset < bytes); }`) moves it after the guard as retail, and so does the strength-reduced form (`bytes - offset`).

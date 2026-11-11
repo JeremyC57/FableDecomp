@@ -1,0 +1,21 @@
+address	name	grade	grades_used	note
+0x00957DB0	CAIStateGroup_MinionBehaviourCrowdBase::Update	RELOCATION_MATCH	1	src/ + test PASS; new hdr CAIStateGroup_MinionBehaviourCrowdBase.h, CTCPerceiveThing AWAREOFTHING opt-in; uninitialised route flag, FAILED+break with an inline Terminate, COPY_ORIGINAL_CHAIN
+0x00774730	CTCShop::SellItem	RELOCATION_MATCH	1	src/ + test PASS; ported onto CTCShop/CShopDef/CTCThingOwner HEAD headers; lever: named const reference to *it in the owner loop
+0x008378D0	CThingTrackNode::SetAsLinkedTo	RELOCATION_MATCH	2	src/ + test PASS; CThingTrackNode LINK opt-in; lever: start-node arm writes other->NextNode/IsEnd in both branches (other esi, this edi)
+0x0090C900	CThingFilter_IsValidGossipee::operator()	DIFFER(345v345)	1	differ/: one jump target (0x0090C952 jne to return-false copy 1 not 2); ~30 probes did not move it alone
+0x00738A80	CTCEntityEvents::GetEvent<const CEventHitBy, CFilter_Bind3<...> >	DIFFER(177v177)	1	differ/: Data/Info esi/edi swap; c2prio Info 80 v Data 76
+0x00F3ABF0	CRangeCompressor::CalcCompressionScript	DIFFER(605v605)	2	differ/: ported (new CRangeCompressor.h, CArray ctor opt-in); one instruction (remaining init) before the loop guard
+0x00A90260	C3DPrimitive2::CreateDegenerateTriangleIndexBuffer	DIFFER(496v496)	1	differ/: ported (C3DPrimitive2 scoped_ptr IndexBuffer opt-in); copy-loop colouring i v dest_index
+0x00649E8B	NPlayerGui::CDrawFishingGame::Draw	DIFFER(469v469)	1	differ/: draft regraded as it sits; not ported
+0x0093C030	CAIStateGroup_SeekScriptTarget::Update	DIFFER(505v505)	1	differ/: draft regraded as it sits; not ported
+0x009711D0	CAIStateGroup_CreatureUseCoverBase::MoveIntoCover	DIFFER(516v516)	1	differ/: draft regraded as it sits; not ported
+0x008E16A0	NCreatureMode::CModeScreamerSuperAttack::FrameUpdate	DIFFER(552v552)	1	differ/: draft regraded as it sits; not ported
+0x0096CD70	CAIStateGroup_EatAtTable::Update	DIFFER(578v578)	1	differ/: draft regraded as it sits; not ported
+0x00795090	CTCUnholyPower::FinalCleanup	DIFFER(586v586)	1	differ/: draft regraded as it sits; not ported (vtable 0x0126BFDC = CTCUnholyPower; the catalog CTCDivineWrath label is propagated from the 0x0078FAF0 twin)
+0x00555A90	NUISystem::CScrollableList::UpdateVisibleList	DIFFER(595v595)	1	differ/: draft regraded as it sits; not ported
+0x00966030	CAIStateGroup_CarryCrateAndFollow::OnReplace	DIFFER(597v597)	1	differ/: draft regraded as it sits; not ported (needs a CTCUserActionPointBase header)
+0x00A87700	CSBCAgents::Process	DIFFER(603v603)	1	differ/: draft regraded as it sits; not ported
+0x0065C5BB	CTCVillage::UpdateMirroredCrimeData	NOT_WORKED	0	no time; size-optimised TU, set<long> + deed log port pending
+0x008BF500	CCreatureAction_GenericFireProjectileWeapon::FinishAction	NOT_WORKED	0	no time; CCombatActionBase / CCombatManager attackers map port pending
+0x008CDD40	CCreatureAction_ReleaseTimeSpell::FinishAction	NOT_WORKED	0	no time
+0x0095B820	CAIStateGroup_HoverHornetQueen::Spawn	NOT_WORKED	0	callees settled (collector 0x008E3EB0 = CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature,...,CThingFilter_HasDefGlobalIndex>, Ego_r 0x00826060; template body in shared CThingSearchTools.h); not ported

@@ -11,7 +11,12 @@ public:
     // FableWin original At(T) called by02ebbf70; same index access as operator[].
     T& At(unsigned int i){return *(this->begin()+i);}
 #endif
-#ifdef FABLE_RETAIL_CARRAY
+#if defined(FABLE_RETAIL_CARRAY_SIZE_CTOR_OUTOFLINE)
+    // Opt-in (chunk Q16, row 0x00A90260 C3DPrimitive2::CreateDegenerateTriangleIndexBuffer): the one-argument constructor called out
+    // of line (0x00A96100 for CArray<unsigned long>: three zero stores, malloc(n*4), `rep stosd` zero fill, `ret 4`; FableWin.pdb
+    // ??0?$CArray@K@@QAE@I@Z). Declaration only.
+    explicit CArray(unsigned int n);
+#elif defined(FABLE_RETAIL_CARRAY)
     // retry11a (row 0x00520670 CArray<unsigned char>(size)): the one-argument ctor forwards to STLport's vector(n) -- the
     // vector(n, T()) form changes LoadHeroStateBinary's register allocation (1 instruction).
     explicit CArray(unsigned int n) : std::vector<T>(n) { }

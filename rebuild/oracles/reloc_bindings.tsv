@@ -38829,3 +38829,5 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?clear@?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ	004855a3	0048573d
 ?_M_erase@?$_Rb_tree@PAVCMenuEntry@NUISystem@@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@U?$_Select1st@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@U?$less@PAVCMenuEntry@NUISystem@@@4@V?$allocator@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@2@@Z	0056cb00	0056d7b0
 ?_M_erase@?$_Rb_tree@W4ESurfaceMultisampleType@@W41@U?$_Identity@W4ESurfaceMultisampleType@@@std@@U?$less@W4ESurfaceMultisampleType@@@3@V?$allocator@W4ESurfaceMultisampleType@@@3@@std@@AAEXPAU?$_Rb_tree_node@W4ESurfaceMultisampleType@@@2@@Z	009c1e00	009c2c10
+??$find@J@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCShopItem@@@std@@@2@@1@ABJ@Z	00777120	00774730
+?FlipTrackDirection@CThingTrackNode@@QAEXXZ	00836de0	008378d0

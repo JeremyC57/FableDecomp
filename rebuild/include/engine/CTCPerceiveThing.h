@@ -9,7 +9,7 @@
 class CPerceivedThingDef;
 class CTCPerceiveThing: public CTCBase {
 public:
-#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+#if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_CTCPERCEIVETHING_AWAREOFTHING)
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PERCEIVE_THING;}
 #else
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
@@ -41,6 +41,12 @@ public:
 #ifdef FABLE_RETAIL_HEARING
  bool IsAwareOfThing()const{return AwarenessTimer!=0.0f;}
  bool IsAwarenessOfThingDirect()const{return DirectAwareness;}
+#elif defined(FABLE_RETAIL_CTCPERCEIVETHING_AWAREOFTHING)
+ // Opt-in (chunk Q16, row 0x00957DB0 CAIStateGroup_MinionBehaviourCrowdBase::Update): IsAwareOfThing expanded in retail (`fld [+0x18];
+ // fucompp` against 0.0f at 0x00957E30) while IsAwarenessOfThingDirect is called out of line (0x00744430 `mov al,[ecx+30h]; ret`,
+ // Ego_r.pdb ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ).
+ bool IsAwareOfThing()const{return AwarenessTimer!=0.0f;}
+ bool IsAwarenessOfThingDirect() const;
 #else
  bool IsAwareOfThing() const;
  bool IsAwarenessOfThingDirect() const;

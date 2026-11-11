@@ -393164,6 +393164,27 @@ $catalog = @(
         TestSource = '00/92/CAIStateGroupMinionSleep_IsRunnable_0092e130_test.cpp'
         PassPattern = '0092e130_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00774730'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_SellItem_00774730.cpp'
+        TestSource = '00/77/CTCShop_SellItem_00774730_test.cpp'
+        PassPattern = '00774730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008378d0'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_SetAsLinkedTo_008378d0.cpp'
+        TestSource = '00/83/CThingTrackNode_SetAsLinkedTo_008378d0_test.cpp'
+        PassPattern = '008378d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00957db0'
+        Module = 'CAIStateGroup_MinionBehaviourCrowdBase'
+        Source = '00/95/CAIStateGroupMinionBehaviourCrowdBase_Update_00957db0.cpp'
+        TestSource = '00/95/CAIStateGroupMinionBehaviourCrowdBase_Update_00957db0_test.cpp'
+        PassPattern = '00957db0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

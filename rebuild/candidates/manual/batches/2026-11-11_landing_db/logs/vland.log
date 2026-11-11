@@ -1,0 +1,6 @@
+00774730   RELOCATION_MATCH PASS   SellItem
+008378d0   RELOCATION_MATCH PASS   SetAsLinkedTo
+00957db0   WARN RELOC_NAME: ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ -> 00744430 labelled '_global::GetMember_byte0x30_00744430'
+00957db0   RELOCATION_MATCH PASS   Update
+WINS: 3
+LANDED 3 wins into src/compiled + tests + catalog + oracle

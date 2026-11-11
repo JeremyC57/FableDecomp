@@ -17,6 +17,10 @@ public: static CClass* __fastcall Alloc();
 #ifdef FABLE_RETAIL_CTHINGTRACKNODE_FLIP
     void FlipTrackDirection(); // Ego_r public nonconst ?FlipTrackDirection@CThingTrackNode@@QAEXXZ
 #endif
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_LINK
+    // Opt-in (chunk Q16, row 0x008378D0): Ego_r.pdb / FableWin.pdb ?SetAsLinkedTo@CThingTrackNode@@QAEXPAV1@@Z (public). Declaration only.
+    void SetAsLinkedTo(CThingTrackNode* other);                         // 0x008378D0
+#endif
 #ifdef FABLE_RETAIL_CTHINGTRACKNODE
     // Retail opt-in (chunk 779, row 0x00837E40): the Ego_r.pdb member set used by the landed rows -- ?ConstructFromLevelScript@CThingTrackNode@@UAE_NPBD@Z
     // (vtable 0x01272CE4 slot 4 = 0x00837E40, the override of CThingGameObject's 0x00838930), ?ConstructFromParams@CThingTrackNode@@IAE_NJABVC3DVector@@VCCharString@@@Z

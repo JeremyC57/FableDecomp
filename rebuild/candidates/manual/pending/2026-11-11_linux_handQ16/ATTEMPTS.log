@@ -1,0 +1,18 @@
+22:39 0090c900 0090c900.cpp DIFFER(345v345) regrade-as-is
+22:44 00738a80 00738a80.cpp DIFFER(177v177) regrade-as-is
+22:55 00957db0 00957db0.cpp RELOCATION_MATCH port-shared-headers
+23:02 00774730 00774730.cpp RELOCATION_MATCH port-shared-headers+thing-ref
+23:03 00649e8b 00649e8b.cpp DIFFER(469v469) regrade-as-is
+23:03 0093c030 0093c030.cpp DIFFER(505v505) regrade-as-is
+23:03 009711d0 009711d0.cpp DIFFER(516v516) regrade-as-is
+23:03 008e16a0 008e16a0.cpp DIFFER(552v552) regrade-as-is
+23:03 0096cd70 0096cd70.cpp DIFFER(578v578) regrade-as-is
+23:03 00795090 00795090.cpp DIFFER(586v586) regrade-as-is
+23:03 00555a90 00555a90.cpp DIFFER(595v595) regrade-as-is
+23:03 00966030 00966030.cpp DIFFER(597v597) regrade-as-is
+23:03 008378d0 008378d0.cpp DIFFER(601v601) regrade-as-is
+23:03 00a87700 00a87700.cpp DIFFER(603v603) regrade-as-is
+23:03 00f3abf0 00f3abf0.cpp DIFFER(605v605) regrade-as-is
+23:08 00f3abf0 best_00f3abf0.cpp DIFFER(605v605) port-CArray-CRangeCompressor-hdr
+23:08 00a90260 best_00a90260.cpp DIFFER(496v496) port-C3DPrimitive2-CIndexBuffer-scoped_ptr
+23:13 008378d0 008378d0.cpp RELOCATION_MATCH unfactored IsStart-branch tails (other->NextNode/IsEnd per arm) lift other's c2 priority over this
