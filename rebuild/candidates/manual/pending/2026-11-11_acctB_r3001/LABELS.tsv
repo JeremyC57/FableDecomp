@@ -1,0 +1,9 @@
+address	name	evidence
+00a4d920	?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z	Ego_r.pdb + FableWin.pdb name sets; `ret 10h` (4 args); RELOCATION_MATCH (chunk 3001)
+00a4d330	?CalcLocalBoneTransformation@C3DAnimation2@@QBEXAAVC3DKeyframe@@KM@Z	both PDB name sets; manifest label; `ret 0Ch`; its body is the first part of 0x00A4D920 (frame 0x38 + 0x30 local = 0x68); this TU emits it as the COMDAT of the forced-inline member
+00a52650	?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z	both PDB name sets; called at 0x00A4D93D with (time, &frame, &fraction)
+00a88c10	??XCQuaternion@@QAEABV0@ABV0@@Z	both PDB name sets; landed; called at 0x00A4DE26 from the expanded FableWin ?PostApplyRelativeAnimation@C3DKeyframe@@QAEXABV1@@Z
+00a9eb90	?BlendAnimations@C3DAnimationManager@@AAEXPAVC3DKeyframe@@PBV2@KM@Z	Ego_r.pdb; `ret 10h`; four landed callers bind it (chunk 2001)
+00ab2520	?BuildMeshAnimation@C3DAnimationBuilder@@QAEKAAVCOutputAnimation@N3DAnimationBuilder@@PBVC3DAnimationSequence@@KABVC3DMesh2@@_NAAVCSimpleMemoryPool@@@Z	both PDB name sets (chunk 2005)
+00ab1cc0	?BuildBoneInfoTree@C3DAnimationBuilder@@AAE?AV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@ABVC3DMesh2@@AAV?$CArray@V?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@@@Z	both PDB name sets (chunk 2005); same-TU body in differ/00ab2520.cpp RELOCATION_MATCHes its 612 bytes; symbol confirmed with objdump -t of the 0x00AB2520 object
+00a12ee0	?GetNavigationLevelVolumes@CPhysicsMeshObject@@QBEXAAV?$CVectorMap@JV?$CCountedPointer@VCContainmentVolume@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@@@Z	both PDB name sets (chunk 2005)
