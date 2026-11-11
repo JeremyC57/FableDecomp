@@ -1,4 +1,4 @@
-// CTCInventoryTrade::InitialiseBuyableItems(vector<pair<long,long> >& items) -- rebuilds the buyable-item map: marks the hero's own tattoo / hair / ability cards the shop deals in as stocked and counts them into BuyableItems, then walks the shop stock map, recording sold-out specials in NotInStock and adding buyable stock to the inventory and to `items`, and stores the item total
+// CTCInventoryTrade::InitialiseBuyableItems(vector<pair<long,long> >& items) -- rebuilds the buyable-item map: marks the hero's own tattoo / hair / title cards the shop deals in as stocked and counts them into BuyableItems, then walks the shop stock map, recording sold-out specials in NotInStock and adding buyable stock to the inventory and to `items`, and stores the item total
 // Leaf: InitialiseBuyableItems@CTCInventoryTrade
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -8,9 +8,10 @@
 // Callees: map<long,long> clear 0x004DB91F / operator[] 0x005B30BB / find 0x00592F92 / ~ 0x004DD2B1, _Rb_tree increment 0x004292C0,
 //   shop-thing getter 0x005BC4C4, bitset test 0x00410DE0, LowerBound 0x0040F020 (shop 0x53) and const 0x004365B0 (hero 0x11),
 //   shop stock map by value 0x00774610, CPlayerManager::GetMainPlayer 0x00449960 (CMainGameComponent::Get() +0x1C), GetControlledCreature
-//   0x00487DD0, GetAllItems 0x005BF482, CTCBase::GetDefinitions 0x006869D0 + GetDef 0x0042AF3C, GetSubDef<CAbilityDef> 0x005B1E5A,
-//   GetTattooCardDef 0x005D9AA0 / GetHairCardDef 0x005D9A10 (`__fastcall`, by value), shop type tests 0x00772510 / 0x00772490 /
-//   0x00772590 (names unproven), GetMaxStock 0x00772720, IsBuyable 0x005D9B50, AddItemOfTypeToInventory 0x0059C6B0,
+//   0x00487DD0, GetAllItems 0x005BF482, CTCBase::GetDefinitionManager const 0x006869D0 + GetDef<CThingBaseDef> const 0x0042AF3C,
+//   GetSubDef<CHeroTitleDef> const 0x005B1E5A (StatGetTypeName literal "CHeroTitleDef"),
+//   GetTattooCardDef 0x005D9AA0 / GetHairCardDef 0x005D9A10 (`__fastcall`, by value), CTCShop::IsTattooShop 0x00772510 / IsBarberShop
+//   0x00772490 / IsTitleShop 0x00772590 (Ego_r / FableWin; landed 006001e0), GetMaxStock 0x00772720, IsBuyable 0x005D9B50, AddItemOfTypeToInventory 0x0059C6B0,
 //   NotInStock clear 0x0042A168 / add 0x0042B687, vector push_back 0x005947B6, free 0x00BFEA14.
 // Shape: the key is a second named copy of the def index (address passed to the map, value kept in a register); the hair test is
 //   a second statement so each by-value def temporary is released before the next test; the stocked mark is written in each
@@ -71,10 +72,10 @@ struct CDefBase {
     long m_refCount;
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefBase* Object;                                   // the pointee as its non-const def base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
     FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 template <class T> struct CDefBasePointer {
     T* Object;
@@ -95,32 +96,34 @@ class CTattooDef : public CDefBase { public: };
 CDefBasePointer<CHairCardDef> __fastcall GetHairCardDef(long defIndex);      // 0x005D9A10
 CDefBasePointer<CTattooDef> __fastcall GetTattooCardDef(long defIndex);      // 0x005D9AA0
 bool __fastcall IsBuyable(long defIndex);               // 0x005D9B50
-class CAbilityDef : public CDefBase { public: };
 class CDefClassBase : public CDefBase { public:
-    bool GetSubDef_005b1e5a(CDefPointer<CAbilityDef>* out);      // 0x005B1E5A
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1E5A GetSubDef<CHeroTitleDef> (Ego_r / FableWin template)
 };
+class CHeroTitleDef : public CDefClassBase { public: };
+class CThingBaseDef : public CDefClassBase { public: };
 void* FindDef_a();
 void* FindDef_b();
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_005b1e5a(CDefPointer<CAbilityDef>* out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_a();
     if (!def)
         return false;
-    out->Object = (CAbilityDef*)def;
+    out->Object = (CDefBase*)def;
     return true;
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDefClassBase>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     void* def = FindDef_b();
     if (!def)
         return false;
-    out->Object = (CDefClassBase*)def;
+    out->Object = (CDefBase*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -178,12 +181,12 @@ protected:
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
 private: public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };   // +0x1c
-struct CTCShopkeeper {
-    CLongMap GetStockMap() const;                          // 0x00774610
-    bool IsTattooShop() const;                          // 0x00772510
-    bool IsBarberShop() const;                       // 0x00772490
-    bool IsAbilityShop() const;                        // 0x00772590
-    long GetMaxStock(long defIndex) const;         // 0x00772720
+class CTCShop { public:                                // Ego_r / FableWin CTCShop (interface 0x53)
+    CLongMap GetStockMap() const;                          // 0x00774610 (PDB GetStockList returns the STLport map: see NOTES)
+    bool IsTattooShop() const;                          // 0x00772510 ?IsTattooShop@CTCShop@@QBE_NXZ
+    bool IsBarberShop() const;                       // 0x00772490 ?IsBarberShop@CTCShop@@QBE_NXZ
+    bool IsTitleShop() const;                          // 0x00772590 ?IsTitleShop@CTCShop@@QBE_NXZ (landed 006001e0)
+    long GetMaxStock(long defIndex) const;         // 0x00772720 ?GetMaxStock@CTCShop@@QBEJJ@Z
 };
 class CTCInventoryItem { public:
     void GetAllItems(std::vector<std::pair<long, long> >& out) const;   // 0x005BF482
@@ -200,8 +203,13 @@ template <class T, class A = allocator<T> > class list : public _List_base<T, A>
 }
 typedef std::list<long> CLongList;                      // the shop's sold-out list (NotInStock)
 typedef std::vector<std::pair<long, long> > CItemVector;
-class CTCInventoryTrade { public:
-    unsigned char _pad00[0x140];
+class CTCBase { public:                                // the component base (members this row reads)
+    virtual ~CTCBase();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCInventoryTrade : public CTCBase { public:
+    unsigned char _pad04[0x140 - 0x4];
     CLongList NotInStock;                               // +0x140
     unsigned char _pad144[0x168 - 0x144];
     long TotalBuyable;                                  // +0x168
@@ -209,7 +217,6 @@ class CTCInventoryTrade { public:
     long Mode;                                          // +0x170
     unsigned char _pad174[0x1a4 - 0x174];
     CLongMap BuyableItems;                              // +0x1a4
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
     CThing* GetShopThing();                             // 0x005BC4C4
     void AddItemOfTypeToInventory(long defIndex, long count);     // 0x0059C6B0
     void InitialiseBuyableItems(CItemVector& items);
@@ -219,7 +226,7 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
     BuyableItems.clear();
     long total = 0;
     Mode = 0xb;
-    CTCShopkeeper* shop = 0;
+    CTCShop* shop = 0;
     GetShopThing()->GetInterface(&shop, 0x53);
     CLongMap stock = shop->GetStockMap();
     CTCInventoryItem* inventory = 0;
@@ -229,15 +236,15 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
     for (unsigned int i = 0; i < heroItems.size(); ++i) {
         long defIndex = heroItems[i].first;
         long key = defIndex;
-        CDefPointer<CDefClassBase> def;
-        GetDefinitionManager()->GetDef(defIndex, &def);
-        CDefPointer<CAbilityDef> ability;
+        CDefPointer<const CThingBaseDef> def;
+        GetDefinitionManager().GetDef(defIndex, &def);
+        CDefPointer<const CHeroTitleDef> heroTitle;
         bool special = GetTattooCardDef(defIndex).Object && shop->IsTattooShop();
         if (!special)
             special = GetHairCardDef(defIndex).Object && shop->IsBarberShop();
         if (special)
             stock[key] = 1;
-        else if (def->GetSubDef_005b1e5a(&ability) && shop->IsAbilityShop())
+        else if (def->GetSubDef(&heroTitle) && shop->IsTitleShop())
             stock[key] = 1;
         else
             goto next;

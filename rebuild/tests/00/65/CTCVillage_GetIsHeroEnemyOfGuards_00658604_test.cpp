@@ -1,67 +1,35 @@
-// Standalone behaviour test for CTCVillage::GetIsHeroEnemyOfGuards @ 0x00658604
-// cl test.cpp && test.exe  -> prints "CTCVILLAGE_00658604_TEST PASS"
-#include <stdio.h>
-
-// Object layout: field at +0xd4 is the compared threshold.
-class CTCVillage
-{ public:
-    char _pad0[0xd4];
-    int  m_guardEnemyThreshold; // +0xd4
+// Behaviour test for 0x00658604 CTCVillage::GetIsHeroEnemyOfGuards: true while the world frame is before
+// HeroEnemyOfGuardsUntil (+0xd4, signed compare); the GetWorld() call is made and its result unused.
+#include <cstdio>
+#include <cstddef>
+class CWorld { public: static long GetFrame(); };
+static long g_frame = 0;
+static int g_getWorldCalls = 0;
+long CWorld::GetFrame() { return g_frame; }
+static CWorld g_world;
+class CTCVillage {
+public:
+    char  pad[0xd4];
+    int   HeroEnemyOfGuardsUntil;                          // +0xd4
+    int   LastFrameApologised;                             // +0xd8
+    CWorld& GetWorld() const { ++g_getWorldCalls; return g_world; }
+    bool GetIsHeroEnemyOfGuards() { return GetWorld().GetFrame() < HeroEnemyOfGuardsUntil; }
 };
-
-// Controllable stub returns for the two engine callees.
-static int g_prepReturn;
-static int g_queryReturn;
-
-extern "C" int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Prep(void)
+int main()
 {
-    return g_prepReturn; // discarded by the accessor; just must link
-}
-extern "C" int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Query(void)
-{
-    return g_queryReturn;
-}
-
-// Same body as the ported accessor (extern "C" stubs above).
-extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Prep(void);
-extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Query(void);
-
-bool __fastcall CTCVillage_GetIsHeroEnemyOfGuards(CTCVillage* village)
-{
-    CTCVillage_GetIsHeroEnemyOfGuards_Prep();
-    return CTCVillage_GetIsHeroEnemyOfGuards_Query() < village->m_guardEnemyThreshold;
-}
-
-int main(void)
-{
-    CTCVillage v;
-    for (int i = 0; i < (int)sizeof(v); ++i) ((char*)&v)[i] = 0;
-
-    int fails = 0;
-
-    // Case 1: Query() < field  -> true
-    v.m_guardEnemyThreshold = 10;
-    g_prepReturn = 999; g_queryReturn = 3;
-    if (CTCVillage_GetIsHeroEnemyOfGuards(&v) != true) { printf("FAIL c1\n"); ++fails; }
-
-    // Case 2: Query() == field -> false (setl is strict less-than)
-    g_queryReturn = 10;
-    if (CTCVillage_GetIsHeroEnemyOfGuards(&v) != false) { printf("FAIL c2\n"); ++fails; }
-
-    // Case 3: Query() > field  -> false
-    g_queryReturn = 25;
-    if (CTCVillage_GetIsHeroEnemyOfGuards(&v) != false) { printf("FAIL c3\n"); ++fails; }
-
-    // Case 4: signed comparison (negative Query, positive field) -> true
-    v.m_guardEnemyThreshold = 5;
-    g_queryReturn = -7;
-    if (CTCVillage_GetIsHeroEnemyOfGuards(&v) != true) { printf("FAIL c4\n"); ++fails; }
-
-    // Case 5: Prep() return must not affect result
-    g_prepReturn = -12345; g_queryReturn = 100; v.m_guardEnemyThreshold = 200;
-    if (CTCVillage_GetIsHeroEnemyOfGuards(&v) != true) { printf("FAIL c5\n"); ++fails; }
-
-    if (fails == 0) printf("CTCVILLAGE_00658604_TEST PASS\n");
-    else printf("CTCVILLAGE_00658604_TEST FAIL (%d)\n", fails);
-    return fails;
+    CTCVillage village;
+    village.HeroEnemyOfGuardsUntil = 100;
+    bool ok = offsetof(CTCVillage, HeroEnemyOfGuardsUntil) == 0xd4;
+    g_frame = 99;  ok = ok && village.GetIsHeroEnemyOfGuards();
+    g_frame = 100; ok = ok && !village.GetIsHeroEnemyOfGuards();
+    g_frame = -5;  ok = ok && village.GetIsHeroEnemyOfGuards();
+    village.HeroEnemyOfGuardsUntil = -10;
+    g_frame = 0;   ok = ok && !village.GetIsHeroEnemyOfGuards();
+    ok = ok && g_getWorldCalls == 4;
+    if (ok) {
+        std::printf("CTCVILLAGE_00658604_TEST PASS\n");
+        return 0;
+    }
+    std::printf("FAIL\n");
+    return 1;
 }

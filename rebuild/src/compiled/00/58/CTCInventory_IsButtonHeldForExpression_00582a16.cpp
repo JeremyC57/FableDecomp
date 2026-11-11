@@ -3,9 +3,9 @@
 // Leaf: IsButtonHeldForExpression
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00582A16, 184 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`.
-// Callees: CTCBase::GetDefinitionManager() @ 0x006869D0, CDefinitionManager::GetDef<CExpressionDef>(const
-//          CCharString&, CDefPointer<CExpressionDef>*) @ 0x00593666 (label says CHeroPostcardGeneratorDef;
-//          propagated), CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08, CThing::PeekPlayer()
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetDef<CExpressionDef>(const
+//          CCharString&, CDefPointer<const CExpressionDef>*) const @ 0x00593666 (label says CHeroPostcardGeneratorDef;
+//          propagated), NInventory::CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) const @ 0x005BDF08, CThing::PeekPlayer()
 //          @ 0x004C7A10 (x2 per test), CPlayer::GetJoystickDeviceNumber() @ 0x00487510, CGamePlayerInterface::
 //          IsGameActionEventInQueue(long, long, long) @ 0x00446B10 (actions 0x37 / 0x38, button event 2 = held).
 // Shape: the def pointer local is zeroed, filled by GetDef and then read once into edi; the def's inline counted
@@ -20,45 +20,46 @@
 
 class CCharString;
 
-struct CDefBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long RefCount;                                   // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
 
-class CExpressionDef : public CDefBase { public:
+class CExpressionDef : public CDefClassBase { public:
     unsigned char _pad_0x08[0x68];
     long          DummyObject;                       // +0x70 CDefIndex (PDB +0x74)
     long GetDummyObject() const { return DummyObject; }
 };
 
-template <class T> class CDefPointer { public:
-    T* Object;
+template <class T> class CDefPointer { public:     // the pointee is held as its non-const def base (engine/CDefPointer.h)
+    CDefClassBase* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->Release(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 
 class CDefinitionManager { public:
-    CDefPointer<CDefBase> GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
-    template <class T> bool GetDef(const CCharString& name, CDefPointer<T>* out);  // 0x00593666 (CExpressionDef)
+    CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString& name) const;   // 0x009ADA40 (hidden result pointer)
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;     // 0x00593666 GetDef<CExpressionDef> (FableWin.pdb template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 
 // Stand-in body of GetDef<CExpressionDef> (0x00593666, same TU in retail): compiled above the caller with
 // auto_inline off so VC7.1 sees that the out pointer's address does not escape (the caller keeps the def in edi).
 // Only IsButtonHeldForExpression is graded from this file.
 #pragma auto_inline(off)
-template <class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<T>* out)
+template <class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<const T>* out) const
 {
-    CDefPointer<CDefBase> found = GetPDefFromInstantiationName(name);
+    CDefPointer<const CDefClassBase> found = GetPDefFromInstantiationName(name);
     if (found.Object) {
         if (out->Object != found.Object) {
             if (out->Object) {
                 out->Object->Release();
                 out->Object = 0;
             }
-            out->Object = (T*)found.Object;
+            out->Object = found.Object;
             if (out->Object)
                 ++out->Object->RefCount;
         }
@@ -84,25 +85,32 @@ public:
     const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 
-class CTCInventory { public:
-    void*   __vftable;                               // +0x00
-    CThing* ParentThing;                             // +0x04 CTCBase
+class CTCBase { public:                              // the component base (members this row reads)
+    virtual ~CTCBase();
+    CThing* ParentThing;                             // +0x04
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase { public:
+    long GetNumberOfItemsOfTypeInInventory(long defIndex) const;   // 0x005BDF08 (Ego_r.pdb QBE)
+};
+}
 
-    CDefinitionManager* GetDefinitionManager() const;    // 0x006869D0 (CTCBase)
-    long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08 (CTCInventoryBase)
-    FABLE_FORCEINLINE bool IsActionButtonHeld(long action)
+class CTCInventory : public NInventory::CTCInventoryBase { public:
+    FABLE_FORCEINLINE bool IsActionButtonHeld(long action) const
     {
         CThing* thing = ParentThing;
         CGamePlayerInterface* input = thing->PeekPlayer().PGamePlayerInterface;
         return input->IsGameActionEventInQueue(action, 2, thing->PeekPlayer().GetJoystickDeviceNumber());
     }
-    bool IsButtonHeldForExpression(const CCharString& expressionName);
+    bool IsButtonHeldForExpression(const CCharString& expressionName) const;   // Ego_r.pdb QBE
 };
 
-bool CTCInventory::IsButtonHeldForExpression(const CCharString& expressionName)
+bool CTCInventory::IsButtonHeldForExpression(const CCharString& expressionName) const
 {
-    CDefPointer<CExpressionDef> def;
-    if (GetDefinitionManager()->GetDef(expressionName, &def) &&
+    CDefPointer<const CExpressionDef> def;
+    if (GetDefinitionManager().GetDef(expressionName, &def) &&
         GetNumberOfItemsOfTypeInInventory(def->GetDummyObject()) > 0 &&
         (IsActionButtonHeld(0x37) || IsActionButtonHeld(0x38)))
         return true;

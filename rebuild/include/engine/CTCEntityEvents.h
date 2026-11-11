@@ -24,6 +24,11 @@ public:
  // ?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@NEntityEvents@@@Z (retail 0x008113C0, out of line). Declaration only.
  void AddEvent(NEntityEvents::CEventBase* event);                   // 0x008113C0
 #endif
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_FRAMEUPDATE
+ // Nested opt-in (agentNF14, row 0x00811450): Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCEntityEvents@@UAEXXZ, the CTCBase slot-9
+ // override (Events.remove_if(NEntityEvents::CPred_EventExpired(frame)), the instantiation 0x00812030). Declaration only.
+ virtual void FrameUpdate();                                         // 0x00811450
+#endif
 protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
 };
 FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);

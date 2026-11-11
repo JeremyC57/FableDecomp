@@ -28,6 +28,12 @@ public:
     void SetNameForThing(unsigned __int64 uid,const CWideString& new_name);
 #endif
     void InitThingTypes();                                              // 0x00522A20 (Ego_r.pdb ?InitThingTypes@CThingManager@@QAEXXZ)
+#ifdef FABLE_RETAIL_CTHINGMANAGER_PEEKWORLD
+    // Opt-in (agentNF14, row 0x006C8780 CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryIn): FableWin.pdb
+    // ?PeekWorld@CThingManager@@QBEABVCWorld@@XZ (0x01CF6420; ?GetWorld@CThingManager@@QAEAAVCWorld@@XZ 0x01CF63E0 is its twin), inline
+    // in retail (the World reference +0x24 read in place, 0x006C881D). Member function only: no layout change.
+    const CWorld& PeekWorld() const { return World; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
     // Retail opt-in (chunk 846, row 0x0051FD80 LoadSingleThing): the same Ego_r.pdb member with its body. Retail keeps an out-of-line
     // copy at 0x0051ED80 and expands it in LoadSingleThing (`lea esi,[ebx+58h] ; call 00527D80h` = the landed UIDToThingMap _M_find,

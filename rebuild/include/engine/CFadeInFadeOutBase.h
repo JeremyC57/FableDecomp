@@ -21,6 +21,11 @@ public:
     float         OpenTimer;                                 // +0x10
     float         CloseTimer;                                // +0x14
     unsigned char ToColour[0x4];                             // +0x18 CRGBColour
+#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
+    // Retail opt-in (agentNF14, row 0x007E2790 via CDisplayEngine::IsScreenFadeOut): FableWin.pdb ?IsActive@CFadeInFadeOutBase@@QBE_NXZ
+    // (0x01A65280), inline in retail (the byte Active +0 tested in place). Member function only: no layout change.
+    bool IsActive() const { return Active; }
+#endif
 };
 #pragma pack(pop)
 

@@ -1,8 +1,8 @@
 // CTCInventoryClothing::SetUpSelectedClothes() -- rebuilds the worn-clothing map: every selected item that is not a whole suit and whose appearance modifier names a suit part is recorded as that part's item
 // Retail 0x005B4795, 269 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: map<EClothingSuitPart, long>::clear 0x004DB795 (manifest "CTCCarryable::OnKill" is propagated),
-// CTCInventoryBase::GetAllSelectedItems(vector<long>*) 0x005BEAF5, CTCBase::GetDefinitionManager 0x006869D0,
-// CDefinitionManager::GetDef<T>(long, CDefPointer*) 0x0042AF3C, CDefClassBase::GetSubDef<CHeroSuitDef> 0x005935C4 and
+// NInventory::CTCInventoryBase::GetAllSelectedItems(vector<long>&) const 0x005BEAF5, CTCBase::GetDefinitionManager const 0x006869D0,
+// CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const 0x0042AF3C, CDefClassBase::GetSubDef<CHeroSuitDef> 0x005935C4 and
 // GetSubDef<CAppearanceModifierDef> 0x0057FF92, map<EClothingSuitPart, long>::operator[](const key&) 0x005BBBF3, free
 // 0x00BFEA14, the defs' slot 1 on release.
 // Shape: the selected item vector is a zeroed local freed inline at the end; each positive item fetches its def, then
@@ -24,24 +24,18 @@ class CDefPointeeBase { public:
     long RefCount;                                   // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    CDefPointer(const CDefPointer& other);
-    ~CDefPointer() { if (Object) Object->Release(); }
+template <class T> class CDefPointer { public:     // the out slot of the def lookups (released by hand at its scope end)
+    CDefPointeeBase* Object;                         // the pointee as its non-const base (engine/CDefPointer.h)
 };
-class CHeroSuitDef : public CDefPointeeBase { public:};
-class CAppearanceModifierDef : public CDefPointeeBase { public:
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // GetSubDef<CHeroSuitDef> 0x005935C4 / <CAppearanceModifierDef> 0x0057FF92 (Ego_r / FableWin templates)
+};
+class CHeroSuitDef : public CDefClassBase { public:};
+class CAppearanceModifierDef : public CDefClassBase { public:
     unsigned char _pad_0x08[0x4c - 0x08];
     long SuitPart;                                   // +0x4c EClothingSuitPart
 };
-template <class T> struct CDefPointerSlot {         // the out-parameter view of a CDefPointer (released by hand)
-    T* Object;
-};
-struct CThingDef : CDefPointeeBase {
-    bool GetSubDef(CDefPointer<CHeroSuitDef>* out);            // 0x005935C4
-    bool GetSubDef(CDefPointerSlot<CAppearanceModifierDef>* out);   // 0x0057FF92
-};
+class CThingBaseDef : public CDefClassBase { public: };
 void* FindDef_s7r_0();
 long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work FindDef_s7r_0 does (outside the bytes graded here)
 #pragma auto_inline(off)
@@ -56,7 +50,7 @@ __declspec(noinline) void* FindDef_s7r_0()
 #pragma auto_inline(off)
 // Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-__declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<CHeroSuitDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CHeroSuitDef>(CDefPointer<const CHeroSuitDef>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
@@ -84,7 +78,7 @@ __declspec(noinline) void* FindDef_s7r_1()
 #pragma auto_inline(off)
 // Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-__declspec(noinline) bool CThingDef::GetSubDef(CDefPointerSlot<CAppearanceModifierDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
     void* def = FindDef_s7r_1();
     if (!def)
@@ -99,7 +93,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CDefPointerSlot<CAppearanceModifi
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointerSlot<CThingDef>* out);   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
 void* FindDef_s7r_2();
 long TmplSink_s7_2(const void* self, long seen);   // stand-in: the work FindDef_s7r_2 does (outside the bytes graded here)
@@ -115,7 +109,7 @@ __declspec(noinline) void* FindDef_s7r_2()
 #pragma auto_inline(off)
 // Same-TU body of GetDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-__declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointerSlot<CThingDef>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(long p0, CDefPointer<const CThingBaseDef>* out) const
 {
     void* def = FindDef_s7r_2();
     if (!def)
@@ -129,51 +123,69 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointerSlot<CT
     return true;
 }
 #pragma auto_inline(on)
-struct CLongVector {
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<long, allocator<long> > { public:   // STLport vector<long> (12 bytes; the members this row uses)
     long* _M_start;
     long* _M_finish;
     long* _M_end_of_storage;
-    CLongVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    FABLE_FORCEINLINE ~CLongVector() { if (_M_start) free(_M_start); }
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE ~vector() { if (_M_start) free(_M_start); }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     long& operator[](unsigned long n) { return *(_M_start + n); }
 };
+}
 struct CSuitPartMap {                                // map<EClothingSuitPart, long>
     void* _M_header; unsigned long _M_node_count; long _M_key_compare;
     void clear();                                    // 0x004DB795
     long& operator[](const long& part);              // 0x005BBBF3
 };
 
-class CTCInventoryClothing { public:
-    unsigned char _pad_0x000[0x140];
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
+class CTCBase { public:                              // the component base (members this row reads)
+    virtual ~CTCBase();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase {
+protected:
+    void GetAllSelectedItems(std::vector<long, std::allocator<long> >& items) const;   // 0x005BEAF5 (Ego_r.pdb IBE)
+};
+}
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
+    unsigned char _pad_0x004[0x140 - 0x4];
     CSuitPartMap CurrentClothingSelected;            // +0x140
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
-    void GetAllSelectedItems(CLongVector* items);    // 0x005BEAF5 (CTCInventoryBase)
-    void SetUpSelectedClothes();
+private:
+    void SetUpSelectedClothes();                     // Ego_r.pdb ?SetUpSelectedClothes@CTCInventoryClothing@@AAEXXZ
 };
 
 void CTCInventoryClothing::SetUpSelectedClothes()
 {
     CurrentClothingSelected.clear();
-    CLongVector selected;
-    GetAllSelectedItems(&selected);
+    std::vector<long, std::allocator<long> > selected;
+    GetAllSelectedItems(selected);
     for (unsigned long i = 0; i < selected.size(); ++i) {
         if (selected[i] > 0) {
-            CDefPointerSlot<CThingDef> def;
+            CDefPointer<const CThingBaseDef> def;
             def.Object = 0;
-            GetDefinitionManager()->GetDef(selected[i], &def);
-            CThingDef* thingDef = def.Object;
+            GetDefinitionManager().GetDef(selected[i], &def);
+            CThingBaseDef* thingDef = static_cast<CThingBaseDef*>(def.Object);
             {
-                CDefPointer<CHeroSuitDef> suit;
+                CDefPointer<const CHeroSuitDef> suit;
+                suit.Object = 0;
                 if (!thingDef->GetSubDef(&suit)) {
-                    CDefPointerSlot<CAppearanceModifierDef> modifierSlot;
+                    CDefPointer<const CAppearanceModifierDef> modifierSlot;
                     modifierSlot.Object = 0;
                     thingDef->GetSubDef(&modifierSlot);
-                    CAppearanceModifierDef* modifier = modifierSlot.Object;
+                    CAppearanceModifierDef* modifier = static_cast<CAppearanceModifierDef*>(modifierSlot.Object);
                     if (modifier->SuitPart != 0)
                         CurrentClothingSelected[modifier->SuitPart] = selected[i];
                     modifier->Release();
                 }
+                if (suit.Object)
+                    suit.Object->Release();
             }
             if (thingDef)
                 thingDef->Release();

@@ -1,10 +1,10 @@
 // CTCCoopSpirit::OnCreate() -- reset the co-op spirit: drop its particle emitter, clear its timers, score, movement and master, and fetch its CCoopSpiritDef
-// Leaf: ?OnCreate@CTCCoopSpirit@@QAEXXZ
-// Retail: Fable.exe @ 0x006700F0, 162 bytes, plain `ret`; Ego_r.pdb ?OnCreate@CTCCoopSpirit@@EAEXXZ (modelled non-virtual public).
+// Leaf: ?OnCreate@CTCCoopSpirit@@EAEXXZ
+// Retail: Fable.exe @ 0x006700F0, 162 bytes, plain `ret`; Ego_r.pdb ?OnCreate@CTCCoopSpirit@@EAEXXZ (private virtual, CTCBase slot 4).
 // Body: PParticleEmitter = CIntelligentPointer<CThing>(0) (base ctor 0x00A01B10, vptr 0x01238C6C, SetPItem 0x00A01B90,
 // GetPItem 0x00A01B50, base dtor 0x00A01C10); CTCBase::OnCreate() (0x00686850, an out-of-line empty body); zero
 // NoMovementTimer, Score, OffscreenCounter, MovementVector and Master; then the landed 0x008EC870 def fetch:
-// GetDefinitionManager() (0x006869D0)->GetDef(ParentThing->DefIndex, &def) (0x0042AF3C), def->GetSubDef(&PCoopSpiritDef)
+// GetDefinitionManager() const (0x006869D0).GetDef<CThingBaseDef>(ParentThing->DefIndex, &def) (0x0042AF3C), def->GetSubDef(&PCoopSpiritDef)
 // (0x00670B90, the CCoopSpiritDef instance), release def (slot 1 at zero refs).
 // Layout: Ego_r.pdb CTCCoopSpirit (0x34): NoMovementTimer +0xc, Score +0x10, OffscreenCounter +0x14, MovementVector
 // +0x18, Master +0x24, PCoopSpiritDef +0x28, PParticleEmitter +0x2c (CIntelligentPointer<CThing>, 8 bytes); CTCBase
@@ -38,8 +38,9 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
+class CDefClassBase;
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefClassBase* Object;                               // the pointee as its non-const def base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
 };
 class CCoopSpiritDef;
@@ -47,16 +48,18 @@ class CDefClassBase { public:
     virtual void v00();
     virtual void DestroySelf();                          // slot 1 (+4)
     long RefCount;                                       // +0x04
-    bool GetSubDef(CDefPointer<const CCoopSpiritDef>* out);   // 0x00670B90
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00670B90 GetSubDef<CCoopSpiritDef> (Ego_r / FableWin template)
 };
+class CThingBaseDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CDefClassBase>* out); // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
 // Stand-in bodies (the real ones are out of line in retail): they write the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 / 0x008EC870 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CCoopSpiritDef>* out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_1();
     if (!def)
@@ -65,7 +68,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CCoopSpirit
     return true;
 }
 void* FindDef_CDefinitionManager_GetDef_0();
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDefClassBase>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -81,13 +84,14 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 class CPlayer;
-class CTCBase { public:
-    virtual void v00();
+class CTCBase { public:                                  // the component base (members this row reads)
+    virtual ~CTCBase();
+    virtual void OnCreate();                             // 0x00686850 (CTCBase slot 4; called qualified)
     CThing* ParentThing;                                 // +0x04
     bool    ToBeRemoved;                                 // +0x08
     bool    IsInGlobalUpdateTCs;                         // +0x09
-    CDefinitionManager* GetDefinitionManager();          // 0x006869D0
-    void OnCreate();                                     // 0x00686850
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
 };
 class CTCCoopSpirit : public CTCBase { public:
     long                              NoMovementTimer;   // +0x0c
@@ -97,7 +101,8 @@ class CTCCoopSpirit : public CTCBase { public:
     CPlayer*                          Master;            // +0x24
     CDefPointer<const CCoopSpiritDef> PCoopSpiritDef;    // +0x28
     CIntelligentPointer<CThing>          PParticleEmitter;  // +0x2c
-    void OnCreate();
+private:
+    virtual void OnCreate();                             // Ego_r.pdb ?OnCreate@CTCCoopSpirit@@EAEXXZ
 };
 
 void CTCCoopSpirit::OnCreate()
@@ -112,8 +117,8 @@ void CTCCoopSpirit::OnCreate()
     OffscreenCounter = 0;
     Score = 0;
     {
-        CDefPointer<CDefClassBase> def;
-        GetDefinitionManager()->GetDef(ParentThing->DefIndex, &def);
+        CDefPointer<const CThingBaseDef> def;
+        GetDefinitionManager().GetDef(ParentThing->DefIndex, &def);
         CDefClassBase* object = def.Object;
         object->GetSubDef(&PCoopSpiritDef);
         if (object != 0 && --object->RefCount == 0)

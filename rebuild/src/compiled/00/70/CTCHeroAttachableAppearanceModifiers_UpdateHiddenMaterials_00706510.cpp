@@ -4,9 +4,9 @@
 // Retail 0x00706510, 304 bytes (plain `ret`; 8-byte aligned frame `and esp,-8`). Ego_r.pdb
 // `?UpdateHiddenMaterials@CTCHeroAttachableAppearanceModifiers@@...` (catalog row).
 // Callees: set<CCharString> _M_erase(node) @ 0x004ABA70 (inlined clear(); label "LTextTreeWalkThrough::BuildTreeArray"
-// propagated), CTCBase::GetDefinitions() const @ 0x006869D0 (label "_Cons_val<...>" propagated), CDefinitionManager::
+// propagated), CTCBase::GetDefinitionManager() const @ 0x006869D0 (label "_Cons_val<...>" propagated), CDefinitionManager::
 // GetPDefFromGlobalIndex(long) @ 0x009AD9E0 (hidden result), CDefClassBase::GetSubDef<CAppearanceModifierDef>
-// (CDefPointer<T>&) @ 0x0057FF92 (landed; a same-TU stand-in is compiled above the function), set<CCharString>::insert
+// (CDefPointer<const T>*) const @ 0x0057FF92 (landed; a same-TU stand-in is compiled above the function), set<CCharString>::insert
 // (const CCharString&) @ 0x004AC380 (pair result dropped), the defs' slot 1 on release.
 // Layout (retail, Ego_r.pdb order with 12-byte containers, as the landed IsWearingAppearanceModifier 0x00706000):
 // HiddenMaterialNames +0x24 (head, count, compare), AppearanceModifiers +0x30 (vector of three vector<CModifierEntry>);
@@ -30,10 +30,12 @@ struct CDefBase : CDefVirtual, CRefCounted {
     void Release() { if (--m_count == 0) Destroy(); }
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-struct CDefPointerBase {                                    // CDefPointer<CDefClassBase>: the manager's return type
+template <class T> class CDefPointer;
+class CDefClassBase;
+template <> class CDefPointer<const CDefClassBase> { public:   // the manager's by-value return type (released and cleared)
     CDefBase* m_p;
-    CDefPointerBase() { }
-    ~CDefPointerBase() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
+    CDefPointer() { }
+    ~CDefPointer() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
 };
 struct CStringVector {                                      // retail vector<CCharString> (12 bytes)
     CCharString* _M_start;
@@ -45,16 +47,16 @@ class CAppearanceModifierDef : public CDefBase { public:
     CStringVector HideMaterials;                            // +0x28
 };
 template <class T> class CDefPointer { public:
-    T* m_p;
+    CDefBase* m_p;                                          // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) m_p->Release(); }
-    T* operator->() const { return m_p; }
-    CDefPointer& operator=(const CDefPointerBase& other)
+    T* operator->() const { return static_cast<T*>(m_p); }
+    CDefPointer& operator=(const CDefPointer<const CDefClassBase>& other)
     {
-        if (m_p != (T*)other.m_p) {
+        if (m_p != other.m_p) {
             if (m_p)
                 m_p->Release();
-            m_p = (T*)other.m_p;
+            m_p = other.m_p;
             if (m_p)
                 ++m_p->m_count;
         }
@@ -62,23 +64,24 @@ template <class T> class CDefPointer { public:
     }
 };
 class CDefinitionManager { public:
-    CDefPointerBase GetPDefFromGlobalIndex_009ad9e0(long index);     // 0x009AD9E0 (hidden result pointer)
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (Ego_r.pdb QBE; hidden result pointer)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 class CDefClassBase : public CDefBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceModifierDef>& out);   // 0x0057FF92
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 GetSubDef<CAppearanceModifierDef> (Ego_r / FableWin template)
 };
-void* FindDef_GetSubDef_CAppearanceModifierDef(CDefClassBase* def);    // stand-in callee of the stand-in body below
+void* FindDef_GetSubDef_CAppearanceModifierDef(const CDefClassBase* def);    // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
 // Same-TU stand-in for GetSubDef<CAppearanceModifierDef> 0x0057FF92 (writes the out slot only inline): it tells VC7.1, as
 // retail's link-time code generation knew, that the out pointer's address does not escape, so the sub-def lives in edi
 // and its frame slot is reused for the insert result (together with the insert stand-in below). Only
 // UpdateHiddenMaterials is graded.
-bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceModifierDef>& out)
+template <> bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
     void* def = FindDef_GetSubDef_CAppearanceModifierDef(this);
     if (!def)
         return false;
-    out.m_p = (CAppearanceModifierDef*)def;
+    out->m_p = (CDefBase*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -128,18 +131,21 @@ struct CCharStringSet {                                     // 12 bytes: head, c
     }
 };
 class CThing;
-class CTCHeroAttachableAppearanceModifiers { public:
-    virtual void v00();
-    CThing* ParentThing;                                    // +0x04 (CTCBase)
+class CTCBase { public:                                     // the component base (members this row reads)
+    virtual ~CTCBase();
+    CThing* ParentThing;                                    // +0x04
     bool ToBeRemoved;                                       // +0x08
     bool IsInGlobalUpdateTCs;                               // +0x09
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                                     // +0x0c secondary vptr
     unsigned long FrameLastChanged;                         // +0x10
     unsigned char Flags14;                                  // +0x14
     unsigned char PrimHandles[0xc];                         // +0x18
     CCharStringSet HiddenMaterialNames;                     // +0x24
     CModifierVectorVector AppearanceModifiers;              // +0x30
-    CDefinitionManager* GetDefinitions() const;             // 0x006869D0 (CTCBase)
     void UpdateHiddenMaterials();
 };
 
@@ -164,14 +170,14 @@ void CTCHeroAttachableAppearanceModifiers::UpdateHiddenMaterials()
         for (CModifierEntry* entry = list._M_start; entry != list._M_finish; ++entry) {
             long index = entry->DefIndex;
             CDefPointer<CDefClassBase> def;
-            CDefinitionManager* defs = GetDefinitions();
+            const CGameDefinitionManager* defs = &GetDefinitionManager();
             if (index > 0) {
-                CDefPointerBase result = defs->GetPDefFromGlobalIndex_009ad9e0(index);
+                CDefPointer<const CDefClassBase> result = defs->GetPDefFromGlobalIndex(index);
                 def = result;
             }
-            CDefPointer<CAppearanceModifierDef> modifier;
-            def->GetSubDef(modifier);
-            CAppearanceModifierDef* modifierDef = modifier.operator->();
+            CDefPointer<const CAppearanceModifierDef> modifier;
+            def->GetSubDef(&modifier);
+            const CAppearanceModifierDef* modifierDef = modifier.operator->();
             for (CCharString* name = modifierDef->HideMaterials._M_start; name != modifierDef->HideMaterials._M_finish; ++name)
                 HiddenMaterialNames.insert(*name);
         }

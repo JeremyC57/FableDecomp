@@ -38,26 +38,29 @@ struct CContainerItemVector {                           // STLport vector<pair<l
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CThingDef {
+struct CDefPointeeBase {
     virtual void v00();
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
+};
+class CDefClassBase : public CDefPointeeBase { public: };
+class CThingBaseDef : public CDefClassBase { public:
     unsigned char _pad08[0x42 - 0x08];
     unsigned char Flags42;                              // +0x42 (bit 1: persist the container's game state)
     bool PersistsGameState() const { return (Flags42 & 2) != 0; }
 };
-template <class T> class CDefPointer { public:
-    T* Object;
+template <class T> class CDefPointer { public:     // the out slot (released through the holder below)
+    CDefPointeeBase* Object;                            // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
 };
 template <class T> struct CDefHolder {                  // the def taken out of the out pointer, released at the end
-    T* Object;
-    CDefHolder(T* object) : Object(object) { }
+    CDefPointeeBase* Object;
+    CDefHolder(CDefPointeeBase* object) : Object(object) { }
     ~CDefHolder() { if (Object && --Object->m_refCount == 0) Object->Delete(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef>
 };
 class CGameDefinitionManager : public CDefinitionManager
 {
@@ -66,7 +69,7 @@ void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-i
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(long index, CDefPointer<const CThingBaseDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -82,18 +85,18 @@ class CThing { public:
 class CTCBase
 {
 public:
-    virtual void v00();
+    virtual ~CTCBase();
+    CThing* ParentThing;                                // +0x04
 protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
 };
 
 class CTCContainer : public CTCBase { public:
-    CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CContainerItemVector ContainerItems;                // +0x0c
-    FABLE_FORCEINLINE CThingDef* GetItemDef(long defIndex) const
+    FABLE_FORCEINLINE CDefPointeeBase* GetItemDef(long defIndex) const
     {
-        CDefPointer<CThingDef> out;
+        CDefPointer<const CThingBaseDef> out;
         GetDefinitionManager().GetDef(defIndex, &out);
         return out.Object;
     }
@@ -104,7 +107,7 @@ void CTCContainer::InsertItem(long defIndex, const CCharString& name)
 {
     ContainerItems.push_back(SContainerItem(defIndex, name));
     if (!ParentThing->IsGameStatePersisted()) {
-        CDefHolder<CThingDef> def(GetItemDef(defIndex));
+        CDefHolder<const CThingBaseDef> def(GetItemDef(defIndex));
         if (def->PersistsGameState())
             ParentThing->SetAsGameStatePersisted(true);
     }

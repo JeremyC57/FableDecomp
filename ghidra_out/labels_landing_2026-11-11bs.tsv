@@ -1,0 +1,12 @@
+address	name	evidence
+006585EE	CTCVillage::NotifyHasApologised	agentNF14: Ego_r.pdb; was free CTCHeroExperience_AddSuccessfulBlockParry
+00658604	CTCVillage::GetIsHeroEnemyOfGuards	agentNF14: Ego_r.pdb + catalog
+006CB8F0	CTCCreatureNavigation::IsCurrentlyNavigating	agentNF14: Ego_r.pdb
+006CEAE0	CTCCreatureOpinionOfHero::ResetLastOpinionReactionFrame	agentNF14: Ego_r.pdb; was free CTCHeroExperience_AddSuccessfulBlockParry
+007236E0	CTCPhysicsStandard::ResetInterpolation	agentNF14: Ego_r.pdb, vtable slot 80
+00811450	CTCEntityEvents::FrameUpdate	agentNF14: Ego_r.pdb / FableWin.pdb
+006AF620	CTCPhysicsBase::GetWorldMap	agentNF14: Ego_r donor order + CWorld vtable slot 12 (IAE)
+006AF630	CTCPhysicsBase::GetWorldMap	agentNF14: const twin (IBE)
+008957C0	CGameScriptInterface::SendEntityEvent	agentNF14: vtable slot 241
+006C8780	CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryIn	agentNF14: Ego_r.pdb
+0071C360	CTCHeroMorph::InitialiseCustomTattoos	agentNF14: Ego_r.pdb / FableWin.pdb (protected const)

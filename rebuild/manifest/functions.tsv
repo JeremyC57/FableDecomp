@@ -14169,7 +14169,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00658561	SetCropTaskAsAcceptedByThing	CTCVillage	__thiscall	bool	3	CTCVillage *,CVillageTaskPickCrops *,CThing *	1	yes	accepted									
 00658586	SetSecuritySweepTaskAsAcceptedByThing	CTCVillage	__thiscall	bool	3	CTCVillage *,CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 006585ba	SetCrateTaskAsAcceptedByThing	CTCVillage	__thiscall	bool	3	CTCVillage *,CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
-006585ee	AddSuccessfulBlockParry	CTCHeroExperience	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCHeroExperience_AddSuccessfulBlockParry_006585ee.cpp
+006585ee	NotifyHasApologised	CTCVillage	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCHeroExperience_AddSuccessfulBlockParry_006585ee.cpp
 00658603	Nop_ret0_00658603	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\E2_E2_00658603.cpp
 00658604	GetIsHeroEnemyOfGuards	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_GetIsHeroEnemyOfGuards_00658604.cpp
 00658620	IsTimeBetween	CTCVillage	__thiscall	bool	3	CTCVillage *,vector<long,std::allocator<long>_> *,long	1	yes	accepted									
@@ -16386,7 +16386,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006af520	GetPTarget<CThingCreatureBase>	CMessageEvent	__thiscall	CThing *	1	CGameScriptThing *	1	yes	accepted									
 006af570	C3DPositionInterpolator	C3DPositionInterpolator	__thiscall	undefined	3	C3DPositionInterpolator *,C3DVector *,C3DVector *	0	yes	accepted									
 006af620	GetWorldMap	CTCPhysicsBase	__thiscall	bool	1	CThingTrackNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CThingTrackNode_DrawIsDrawable_006af620.cpp
-006af630	DisplayEnginePredicate13_006af630	_unattributed	__thiscall	bool	1	CThingTrackNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CThingTrackNode_CThingTrackNodeDrawIsDrawableb_006af630.cpp
+006af630	GetWorldMap	CTCPhysicsBase	__thiscall	bool	1	CThingTrackNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CThingTrackNode_CThingTrackNodeDrawIsDrawableb_006af630.cpp
 006af640	GetBoundingInfo	CTCPhysicsBase	__thiscall	void	3	CTCPhysicsBase *,C3DVector *,float *	1	yes	accepted									
 006af6d0	SetThingStandingOn	CTCPhysicsBase	__thiscall	void	2	CTCPhysicsBase *,CTCPhysicsBase *	1	yes	accepted									
 006af700	ConstructFromParams	CTCPhysicsBase	__thiscall	void	2	CTCPhysicsBase *,CTCParamsBase *	1	yes	accepted									
@@ -16951,7 +16951,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006c85e0	clear	std::vector<std::pair<long, COpinionDeed *>, std::allocator<std::pair<long, COpinionDeed *>>>	__thiscall	void	2	CComponent *,CRGBColour *	1	yes	accepted									
 006c8610	_M_fill_insert	std::vector	unknown	undefined	0		0	yes	accepted									
 006c8730	operator=	std::back_insert_iterator<vector<pair<long, COpinionDeed*> > >	unknown	undefined	0		0	yes	accepted									
-006c8780	TransferBinaryIn	CPersistTraits<CIntelligentPointer<CThing>>	__thiscall	void	3	CPersistTraits<CIntelligentPointer<CThing>_> *,CMemoryDataInputStream *,CIntelligentPointer<CThing> *	1	yes	accepted									
+006c8780	TransferBinaryIn	CPersistTraits<CIntelligentPointer<CThing> >	__thiscall	void	3	CPersistTraits<CIntelligentPointer<CThing>_> *,CMemoryDataInputStream *,CIntelligentPointer<CThing> *	1	yes	accepted									
 006c88d0	TransferBinaryIn	CPersistTraits<COpinionDeed*>	__thiscall	void	3	CPersistTraits<COpinionDeed*> *,CMemoryDataInputStream *,COpinionDeed * *	1	yes	accepted									
 006c8c50	operator()	CThingFilter_IsAlliedWithFaction	__thiscall	bool	1	CThingCreatureBase *	1	yes	accepted									
 006c8cf0	GetInterfaceType	CTCHeroOpinionDeedLog	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -17096,7 +17096,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006ce710	`scalar_deleting_destructor'	CGroundNavigatorExternalInterface	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CLandscapeBackgroundPatch_vectordeletingdestructor_006ce710.cpp
 006ce730	operator()	FrameUpdateThing	unknown	undefined	0		0	yes	accepted									
 006ce800	ForEachInRoughArea<CThing,CThingFilter_IsNot,FrameUpdateThing>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,C2DBoxI *,CThingFilter_IsNot *,FrameUpdateThing *	1	yes	accepted									
-006ceae0	AddSuccessfulBlockParry	CTCHeroExperience	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CTCHeroExperience_AddSuccessfulBlockParry_006ceae0.cpp
+006ceae0	ResetLastOpinionReactionFrame	CTCCreatureOpinionOfHero	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CTCHeroExperience_AddSuccessfulBlockParry_006ceae0.cpp
 006cebf0	SendPauseEvent	CTCWife	__thiscall	void	2	CTCTrophy *,bool	1	yes	accepted									
 006cec70	vfunc_8	CTCWife	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006cec80	IsMarriedToThePlayer	CTCWife	__thiscall	bool	1	CTCWife *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CTCWife_IsMarriedToThePlayer_006cec80.cpp

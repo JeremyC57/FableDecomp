@@ -44,6 +44,10 @@ struct CDefBase {
     virtual void Destroy() const;                              // slot 1
     mutable long RefCount;                                     // +0x04
 };
+template<class T> class CDefPointer;
+class CDefClassBase : public CDefBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // GetSubDef<CHeroSuitDef> 0x005935C4 / <CAppearanceModifierDef> 0x0057FF92 (Ego_r / FableWin templates)
+};
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
@@ -51,22 +55,19 @@ template<class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 // Layout: retail CAppearanceModifierDef (Ego_r.pdb - 8, the two 16-byte containers are 12 in retail).
-class CAppearanceModifierDef : public CDefBase { public:
+class CAppearanceModifierDef : public CDefClassBase { public:
     unsigned char _pad08[0x44 - 0x08];
     bool IsRemoveable;                                         // +0x44
     unsigned char _pad45[0x4c - 0x45];
     long SuitPart;                                             // +0x4c
 };
-class CHeroSuitDef : public CDefBase { public:
+class CHeroSuitDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CSuitPartMap Parts;                                        // +0x28
 };
-struct CThingDef : CDefBase {
-    bool GetSubDef(CDefPointer<const CHeroSuitDef>* out) const;            // 0x005935C4
-    bool GetSubDef(CDefPointer<const CAppearanceModifierDef>* out) const;  // 0x0057FF92
-};
+class CThingBaseDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<const CThingDef>* out) const;      // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
 class CGameDefinitionManager : public CDefinitionManager
 {
@@ -75,7 +76,7 @@ void* FindDef_43a2_0();
 void* FindDef_43a2_1();
 void* FindDef_43a2_2();
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<const CHeroSuitDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CHeroSuitDef>(CDefPointer<const CHeroSuitDef>* out) const
 {
     void* def = FindDef_43a2_0();
     if (!def)
@@ -83,7 +84,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<const CHeroSuitDef>* 
     *(void**)out = def;
     return true;
 }
-__declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<const CAppearanceModifierDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
     void* def = FindDef_43a2_1();
     if (!def)
@@ -91,7 +92,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<const CAppearanceModi
     *(void**)out = def;
     return true;
 }
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const CThingDef>* out) const
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(long index, CDefPointer<const CThingBaseDef>* out) const
 {
     void* def = FindDef_43a2_2();
     if (!def)
@@ -177,6 +178,7 @@ namespace NInventory {
 class CTCInventoryBase : public CTCBase
 {
 public:
+    long GetNumberOfItemsOfTypeInInventory(long type) const;   // 0x005BDF08 (Ego_r.pdb QBE)
 };
 }
 
@@ -185,7 +187,6 @@ class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
     CThing* ParentThing;                                       // +0x04
     unsigned char _pad08[0x134 - 0x08];
     CClothingEntryVector ClothingEntries;                      // +0x134
-    long GetNumberOfItemsOfTypeInInventory(long type);         // 0x005BDF08 (CTCInventoryBase)
     void AddClothingToThing(long item, CThing* thing);
 };
 // R&D I-3: the list ctor's same-TU out-of-line body (it builds only the sentinel) lets the default allocator
@@ -204,7 +205,7 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
 {
     CTCHeroAttachableAppearanceModifiers* modifiers;
     if (thing->GetInterface(&modifiers, 0x5e)) {
-        CDefPointer<const CThingDef> itemDef;
+        CDefPointer<const CThingBaseDef> itemDef;
         GetDefinitionManager().GetDef(item, &itemDef);
         CDefPointer<const CHeroSuitDef> suitDef;
         std::list<long> worn;
@@ -213,7 +214,7 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
             std::list<long>::iterator node = worn.begin();
             CLongVector keptParts;
             for (; node != worn.end(); ++node) {
-                CDefPointer<const CThingDef> wornDef;
+                CDefPointer<const CThingBaseDef> wornDef;
                 CDefPointer<const CAppearanceModifierDef> wornModifier;
                 if (GetDefinitionManager().GetDef(*node, &wornDef)) {
                     if (wornDef->GetSubDef(&wornModifier)) {
@@ -237,7 +238,7 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
                 suitPart = clothing->SuitPart;
             std::list<long>::iterator it = worn.begin();
             while (it != worn.end()) {
-                CDefPointer<const CThingDef> wornDef;
+                CDefPointer<const CThingBaseDef> wornDef;
                 CDefPointer<const CAppearanceModifierDef> wornModifier;
                 if (GetDefinitionManager().GetDef(*it, &wornDef)) {
                     if (wornDef->GetSubDef(&wornModifier)) {

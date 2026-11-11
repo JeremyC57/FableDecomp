@@ -1,38 +1,49 @@
+// Behaviour test for 0x007236E0 CTCPhysicsStandard::ResetInterpolation (slot 80): OldRHSet (+0x68) = RHSet (+0x50), RHSetLastFrameSet
+// (+0x80) = the world frame, then the base CTCPhysicsBase::ResetInterpolation runs (OldPosition = Position).
 #include <cstdio>
-
-struct Xform6 { unsigned int m[6]; };
-struct CTCPhysicsStandard {
-    char pad0[0x50];
-    Xform6 cur;         // +0x50
-    Xform6 interp;      // +0x68
-    unsigned int flag;  // +0x80
+#include <cstddef>
+struct C3DVector { float X, Y, Z; };
+struct CRightHandedSet { C3DVector Up, Forward; };
+class CWorld { public: static long GetFrame(); };
+static long g_frame = 0x4321;
+static int g_getWorldCalls = 0;
+static int g_baseCalls = 0;
+long CWorld::GetFrame() { return g_frame; }
+static CWorld g_world;
+class CTCPhysicsBase {
+public:
+    char      base[0xc];                                   // CTCBase
+    C3DVector Position;                                    // +0x0c
+    C3DVector OldPosition;                                 // +0x18
+    char      rest[0x40 - 0x24];
+    CWorld& GetWorld() const { ++g_getWorldCalls; return g_world; }
+    void ResetInterpolation() { ++g_baseCalls; OldPosition = Position; }
 };
-
-int g_helper_called = 0;
-int g_tail_called = 0;
-
-void __fastcall CTCPhysicsStandard_helper(CTCPhysicsStandard* standard) { g_helper_called = 1; (void)standard; }
-unsigned int __cdecl CTCPhysicsStandard_getFlag(void) { return 0xABCD1234u; }
-void __fastcall CTCPhysicsStandard_tail(CTCPhysicsStandard* standard) { g_tail_called = 1; (void)standard; }
-
-void __fastcall CTCPhysicsStandard_ResetInterpolation(CTCPhysicsStandard* standard)
-{
-    standard->interp = standard->cur;
-    CTCPhysicsStandard_helper(standard);
-    standard->flag = CTCPhysicsStandard_getFlag();
-    CTCPhysicsStandard_tail(standard);
-}
-
+class CTCPhysicsStandard : public CTCPhysicsBase {
+public:
+    int             PPhysicsMeshInfo;                      // +0x40
+    C3DVector       OffsetVector3D;                        // +0x44
+    CRightHandedSet RHSet;                                 // +0x50
+    CRightHandedSet OldRHSet;                              // +0x68
+    int             RHSetLastFrameSet;                     // +0x80
+    void ResetInterpolation()
+    {
+        OldRHSet = RHSet;
+        RHSetLastFrameSet = GetWorld().GetFrame();
+        CTCPhysicsBase::ResetInterpolation();
+    }
+};
 int main()
 {
-    CTCPhysicsStandard obj;
-    for (int i = 0; i < 6; ++i) { obj.cur.m[i] = 0x1000u + i; obj.interp.m[i] = 0; }
-    obj.flag = 0;
-    CTCPhysicsStandard_ResetInterpolation(&obj);
-    int ok = 1;
-    for (int i = 0; i < 6; ++i) if (obj.interp.m[i] != 0x1000u + i) ok = 0;
-    if (obj.flag != 0xABCD1234u) ok = 0;
-    if (!g_helper_called || !g_tail_called) ok = 0;
+    CTCPhysicsStandard p;
+    C3DVector up = { 1.0f, 2.0f, 3.0f }, fwd = { 4.0f, 5.0f, 6.0f }, pos = { 7.0f, 8.0f, 9.0f }, zero = { 0.0f, 0.0f, 0.0f };
+    p.RHSet.Up = up; p.RHSet.Forward = fwd; p.OldRHSet.Up = zero; p.OldRHSet.Forward = zero;
+    p.Position = pos; p.OldPosition = zero; p.RHSetLastFrameSet = 0;
+    p.ResetInterpolation();
+    bool ok = p.OldRHSet.Up.Y == 2.0f && p.OldRHSet.Forward.Z == 6.0f && p.RHSetLastFrameSet == 0x4321 && p.OldPosition.X == 7.0f
+              && g_getWorldCalls == 1 && g_baseCalls == 1
+              && offsetof(CTCPhysicsStandard, RHSet) == 0x50 && offsetof(CTCPhysicsStandard, OldRHSet) == 0x68
+              && offsetof(CTCPhysicsStandard, RHSetLastFrameSet) == 0x80;
     if (ok) { std::printf("CTCPhysicsStandard_007236e0_TEST PASS\n"); return 0; }
     std::printf("CTCPhysicsStandard_007236e0_TEST FAIL\n");
     return 1;

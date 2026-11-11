@@ -5,9 +5,9 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C770C, 519 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 //   Ego_r.pdb ?ConstructWeaponDescriptionWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z (the float is unused).
 // Callees: RefreshActiveWeaponData 0x005C30D3, CGameDefinitionManager::Get 0x0044C6B0 / GetDefGlobalIndexFromName 0x009AD390 /
-//   GetDef<misc things def> 0x0042B312, CTCBase::GetDefinitionManager 0x006869D0, GetPDefFromGlobalIndex 0x009AD9E0,
-//   CDefClassBase::GetSubDef 0x0042B1A6 (weapon def) / 0x0042AF9E (augmentation def), vector<unsigned long>::resize 0x004428F0,
-//   free 0x00BFEA14, IsMeleeWeaponClass 0x005DA510, CDataBank::GetTextBySymbol 0x009C95E0, operator+ 0x0099BE70,
+//   GetDef<NUISystem::CUIMiscThingsDef> const 0x0042B312, CTCBase::GetDefinitionManager const 0x006869D0, GetPDefFromGlobalIndex
+//   const 0x009AD9E0, CDefClassBase::GetSubDef<CWeaponDef> 0x0042B1A6 / GetSubDef<CObjectAugmentationsDef> 0x0042AF9E, vector<unsigned
+//   long>::resize 0x004428F0, free 0x00BFEA14, CTCWeapon::IsMeleeWeaponClass 0x005DA510, CDataBank::GetTextBySymbol 0x009C95E0, operator+ 0x0099BE70,
 //   CWideString::operator+= 0x0099B8D0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Shape: GetDef / GetSubDef get same-TU noinline stand-ins (they only write the out slot), so the out slots are register-promoted
 //   and their frame words reused (the augmentation pointer and the resize zero share the dead defIndex slot). The augmentation
@@ -57,21 +57,16 @@ struct CDefBase {
     long m_refCount;
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefBase* Object;                                   // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
     FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    T* Detach() { T* p = Object; Object = 0; return p; }
+    T* operator->() const { return static_cast<T*>(Object); }
+    CDefBase* Detach() { CDefBase* p = Object; Object = 0; return p; }
 };
-template <class T> struct CDefHolder {
-    T* Object;
-    CDefHolder(T* p) : Object(p) { }
-    FABLE_FORCEINLINE ~CDefHolder() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-};
-struct CDefBasePointer {
+class CDefClassBase;
+template <> class CDefPointer<const CDefClassBase> { public:   // the manager's by-value def reference (released and cleared by its destructor)
     CDefBase* Object;
-    FABLE_FORCEINLINE ~CDefBasePointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             CDefBase* p = Object;
@@ -82,66 +77,69 @@ struct CDefBasePointer {
         }
     }
 };
-struct CMiscThingsDef : CDefBase {
+class CDefClassBase : public CDefBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // GetSubDef<CWeaponDef> 0x0042B1A6 / <CObjectAugmentationsDef> 0x0042AF9E (Ego_r / FableWin templates)
+};
+namespace NUISystem {
+class CUIMiscThingsDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
     CWideString WeightUnits;                            // +0x3c
 };
-class CWeaponDef : public CDefBase { public:
+}
+class CWeaponDef : public CDefClassBase { public:
     unsigned char _pad08[0x2c - 0x08];
-    long WeaponClass;                                   // +0x2c
+    long Class;                                         // +0x2c EWeaponClass
 };
-class CAugmentationDef : public CDefBase { public:
+class CObjectAugmentationsDef : public CDefClassBase { public:   // Ego_r.pdb layout, retail STLport 12-byte map
     unsigned char _pad08[0x28 - 0x08];
     long NumberOfSlots;                                 // +0x28
     unsigned char _pad2c[0x40 - 0x2c];
-    vector<unsigned long> SlotValues;                   // +0x40
-};
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef(CDefPointer<CWeaponDef>* out);       // 0x0042B1A6
-    bool GetSubDef(CDefPointer<CAugmentationDef>& out); // 0x0042AF9E
+    vector<unsigned long> InitialAugmentations;         // +0x40 (PDB +0x44)
 };
 void* FindDef_a();
 void* FindDef_b();
 void* FindDef_c();
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CWeaponDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
 {
     void* def = FindDef_a();
     if (!def)
         return false;
-    out->Object = (CWeaponDef*)def;
+    out->Object = (CDefBase*)def;
     return true;
 }
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAugmentationDef>& out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CObjectAugmentationsDef>(CDefPointer<const CObjectAugmentationsDef>* out) const
 {
     void* def = FindDef_b();
     if (!def)
         return false;
-    out.Object = (CAugmentationDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CGameDefinitionManager { public:
-    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-    bool GetDef(long index, CDefPointer<CMiscThingsDef>& out);         // 0x0042B312
-};
-#pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer<CMiscThingsDef>& out)
-{
-    void* def = FindDef_c();
-    if (!def)
-        return false;
-    out.Object = (CMiscThingsDef*)def;
+    out->Object = (CDefBase*)def;
     return true;
 }
 #pragma auto_inline(on)
 class CDefinitionManager {
 public:
     long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
-private: public:
-    CDefBasePointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (Ego_r.pdb QBE)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B312 GetDef<NUISystem::CUIMiscThingsDef> (FableWin template)
 };
-bool __fastcall IsMeleeWeaponClass(long weaponClass);    // 0x005DA510
+#pragma auto_inline(off)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>(long index, CDefPointer<const NUISystem::CUIMiscThingsDef>* out) const
+{
+    void* def = FindDef_c();
+    if (!def)
+        return false;
+    out->Object = (CDefBase*)def;
+    return true;
+}
+#pragma auto_inline(on)
+class CGameDefinitionManager : public CDefinitionManager { public:   // RTTI CGameDefinitionManager : CDefinitionManager
+    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
+};
+enum EWeaponClass { };
+class CTCWeapon { public:
+    static bool __fastcall IsMeleeWeaponClass(EWeaponClass weaponClass);   // 0x005DA510 (Ego_r.pdb SI)
+};
 struct CPerItemData {
     vector<unsigned long> SlotValues;                   // +0x00
     long A, B, C;                                       // +0x0C
@@ -150,49 +148,53 @@ struct CPerItemData {
     long Extra;                                         // +0x20 (not set by the inline ctor)
     CPerItemData() : A(0), B(0), C(0), Flag(true), Index(-1) {}
 };
-class CTCInventoryWeapons { public:
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
+class CTCBase { public:                                 // the component base (members this row reads)
+    virtual ~CTCBase();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCInventoryWeapons : public CTCBase { public:
     void RefreshActiveWeaponData() const;               // 0x005C30D3
     void ConstructWeaponDescriptionWeight(CWideString& description, long defIndex, float damage) const;
 };
 void CTCInventoryWeapons::ConstructWeaponDescriptionWeight(CWideString& description, long defIndex, float damage) const
 {
     RefreshActiveWeaponData();
-    CDefPointer<CMiscThingsDef> misc;
-    long miscIndex = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", true);
-    CGameDefinitionManager::Get().GetDef(miscIndex, misc);
-    CDefBasePointer def = GetDefinitionManager()->GetPDefFromGlobalIndex(defIndex);
+    CDefPointer<const NUISystem::CUIMiscThingsDef> misc;
+    long miscIndex = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", true);
+    CGameDefinitionManager::Get().GetDef(miscIndex, &misc);
+    CDefPointer<const CDefClassBase> def = GetDefinitionManager().GetPDefFromGlobalIndex(defIndex);
     CWeaponDef* weaponDef;
     {
-        CDefPointer<CWeaponDef> weapon;
+        CDefPointer<const CWeaponDef> weapon;
         ((CDefClassBase*)def.Object)->GetSubDef(&weapon);
-        weaponDef = weapon.Detach();
+        weaponDef = static_cast<CWeaponDef*>(weapon.Detach());
     }
     {
         CPerItemData data;
         {
-            CDefPointer<CAugmentationDef> augmentation;
-            if (((CDefClassBase*)def.Object)->GetSubDef(augmentation)) {
-                CAugmentationDef* a = augmentation.Object;
+            CDefPointer<const CObjectAugmentationsDef> augmentation;
+            if (((CDefClassBase*)def.Object)->GetSubDef(&augmentation)) {
+                CObjectAugmentationsDef* a = static_cast<CObjectAugmentationsDef*>(augmentation.Object);
                 data.SlotValues.resize(a->NumberOfSlots, 0);
                 unsigned long i = 0;
-                if (i < augmentation->SlotValues.size()) {
+                if (i < augmentation->InitialAugmentations.size()) {
                     unsigned long count = data.SlotValues.size();
                     do {
                         if (i >= count)
                             break;
-                        data.SlotValues[i] = augmentation->SlotValues[i];
+                        data.SlotValues[i] = augmentation->InitialAugmentations[i];
                         ++i;
-                    } while (i < augmentation->SlotValues.size());
+                    } while (i < augmentation->InitialAugmentations.size());
                 }
             }
         }
         CDataBank* bank = CMainGameComponent::Get()->TextBank;
-        if (IsMeleeWeaponClass(weaponDef->WeaponClass)) {
+        if (CTCWeapon::IsMeleeWeaponClass((EWeaponClass)weaponDef->Class)) {
             description += bank->GetTextBySymbol("TEXT_GUI_MENU_WEAPON_WEIGHT") + misc->WeightUnits;
-            if (weaponDef->WeaponClass == 2)
+            if (weaponDef->Class == 2)
                 description += bank->GetTextBySymbol("TEXT_GUI_MENU_HEAVY");
-            else if (weaponDef->WeaponClass == 1)
+            else if (weaponDef->Class == 1)
                 description += bank->GetTextBySymbol("TEXT_GUI_MENU_LIGHT");
         }
     }

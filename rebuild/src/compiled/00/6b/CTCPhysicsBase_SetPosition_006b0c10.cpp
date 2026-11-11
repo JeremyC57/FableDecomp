@@ -8,6 +8,8 @@
 //   GetWorldMap; out-of-line copy 0x006AF620), the physics slots 28 (+0x70, GetOffset2D) / 96 (+0x180, UpdateOldPosition),
 //   CWorldMap slots 16 (+0x40, GetMapNumber) / 10 (+0x28, IsMapLoaded), CThing slot 41 (+0xA4, OnCollision),
 //   CTCMapwho::MoveInMapwho @ 0x0071A750, CThing::UpdateGraphicAppearance @ 0x004C7590, CThing::SetCurrentMapNumber @ 0x004C7580.
+// GetWorld (agentNF14 2026-11-11): the component now derives a local CTCBase (virtual dtor slot 0, ParentThing, the protected const
+//   GetWorld returning CWorld&), so the call binds ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ; GetWorldMap is CTCPhysicsBase's (0x006AF620).
 // Shape: a same-TU auto_inline(off) stand-in body for LowerBound (the 008330d0 idiom) lets VC7.1 share the lookup key word with
 //   the zero-initialised mapwho out pointer; the final SetCurrentMapNumber goes through an inline GetParentThing() (retail
 //   mov esi,[esi+4] / mov ecx,esi). Local CTCPhysicsBase model (the engine header has no virtuals).
@@ -72,27 +74,33 @@ class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11();
-    virtual CWorldMap* GetWorldMap();                   // slot 12 (+0x30)
+    virtual CWorldMap& GetWorldMap();                   // slot 12 (+0x30)
 };
-class CTCPhysicsBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+class CTCBase { public:                                       // the component base (members this row reads)
+    virtual ~CTCBase();                                 // slot 0
+    CThing*       ParentThing;                          // +0x04
+    CThing& GetParentThing() { return *ParentThing; }   // FableWin.pdb ?GetParentThing@CTCBase@@QAEAAVCThing@@XZ (inline)
+protected:
+    CWorld& GetWorld() const;                           // 0x00686A70 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCPhysicsBase : public CTCBase { public:
+    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1)
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual void v25(); virtual void v26(); virtual void v27();
     virtual C2DVector GetOffset2D();                    // slot 28 (+0x70)
     virtual void v29();
-    FILL10(3) FILL10(4) FILL10(5) FILL10(6) FILL10(7) FILL10(8)
+    virtual void SetPosition(const C3DVector& pos);     // slot 30 (+0x78): CTCPhysicsBase vtable 0x0125D2C4 (Ego_r.pdb UAE)
+    virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
+    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
+    FILL10(4) FILL10(5) FILL10(6) FILL10(7) FILL10(8)
     virtual void v90(); virtual void v91(); virtual void v92(); virtual void v93(); virtual void v94(); virtual void v95();
     virtual void UpdateOldPosition();                   // slot 96 (+0x180) (name descriptive)
-    CThing*       ParentThing;                          // +0x04
     unsigned char _pad08[0x0c - 0x08];
     C3DVector     Position;                             // +0x0c
-    CThing* GetParentThing() { return ParentThing; }
-    CWorld* GetWorld();                                 // 0x00686A70 (CTCBase)
-    CWorldMap* GetWorldMap() { return GetWorld()->GetWorldMap(); }   // 0x006AF620 out of line
+    CWorldMap& GetWorldMap() { return GetWorld().GetWorldMap(); }   // 0x006AF620 out of line (Ego_r.pdb CTCPhysicsBase, protected)
     C3DVector GetMapwhoPosition() { return Position.OffsetBy2D(GetOffset2D()); }   // 0x006AFCB0 out of line
-    void SetPosition(const C3DVector& pos);
 };
 
 void CTCPhysicsBase::SetPosition(const C3DVector& pos)
@@ -100,10 +108,10 @@ void CTCPhysicsBase::SetPosition(const C3DVector& pos)
     CTCMapwho* mapwho = 0;
     ParentThing->GetInterface(&mapwho, 0x3a);
     if (mapwho->InMapwho) {
-        long oldMap = GetWorldMap()->GetMapNumber(GetMapwhoPosition());
-        long newMap = GetWorldMap()->GetMapNumber(pos.OffsetBy2D(GetOffset2D()));
+        long oldMap = GetWorldMap().GetMapNumber(GetMapwhoPosition());
+        long newMap = GetWorldMap().GetMapNumber(pos.OffsetBy2D(GetOffset2D()));
         if (oldMap != newMap) {
-            if (newMap < 1 || !GetWorldMap()->IsMapLoaded(newMap)) {
+            if (newMap < 1 || !GetWorldMap().IsMapLoaded(newMap)) {
                 ParentThing->OnCollision(4, &Position, &C3DVector(0.0f, 0.0f, 1.0f), 0);
                 return;
             }
@@ -113,5 +121,5 @@ void CTCPhysicsBase::SetPosition(const C3DVector& pos)
     }
     UpdateOldPosition();
     Position = pos;
-    GetParentThing()->SetCurrentMapNumber(GetWorldMap()->GetMapNumber(Position));
+    GetParentThing().SetCurrentMapNumber(GetWorldMap().GetMapNumber(Position));
 }

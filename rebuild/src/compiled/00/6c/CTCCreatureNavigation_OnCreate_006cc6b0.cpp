@@ -2,7 +2,7 @@
 // Leaf: OnCreate
 //
 // Retail 0x006CC6B0, 321 bytes (plain `ret`).
-// Callees: CTCBase::GetDefinitionManager() @ 0x006869D0, CDefinitionManager::GetDef<CThingCreatureDef>(long, CDefPointer*) @
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetDef<CThingCreatureDef>(long, CDefPointer<const ..>*) const @
 // 0x00513160, CTCBase::GetThingManager() @ 0x00686AE0, CGroundNavigatorExternalInterface ctor @ 0x006CD890 / dtor @ 0x006CDD50,
 // CNavigatorAStar::Create @ 0x00A1CBF0 and CNavigatorFlyer::Create @ 0x00A18F70 (both `__fastcall`), the inlined push_back's
 // growth path `_M_insert_overflow` @ 0x006CD5A0, the def's virtual slot 1 on release.
@@ -25,10 +25,10 @@ class CDefPointeeBase { public:
     mutable long m_refCount;                            // +0x04
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;                            // the pointee as its base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 struct CNavigatorTypeVector {                           // STLport vector<ENavigatorType>
     ENavigatorType* _M_start;
@@ -42,12 +42,13 @@ class CThingCreatureDef : public CDefPointeeBase { public:
     CNavigatorTypeVector NavigatorTypes;                // +0xc8
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<const CThingCreatureDef>* out);   // 0x00513160
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00513160 GetDef<CThingCreatureDef> (FableWin template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 void* FindDef(long index);
 #pragma auto_inline(off)
 // Same-TU stand-in for the out-of-line GetDef template: it writes the out pointer only inline.
-bool CDefinitionManager::GetDef(long index, CDefPointer<const CThingCreatureDef>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     void* def = FindDef(index);
     if (!def)
@@ -121,32 +122,33 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CDefinitionManager* GetDefinitionManager();         // 0x006869D0
-    CThingManager* GetThingManager();                   // 0x00686AE0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+    CThingManager& GetThingManager();                   // 0x00686AE0 (Ego_r.pdb IAE)
 };
 class CTCCreatureNavigation : public CTCBase {
 public:
     CNavigatorBase*  PNavigator;                        // +0x0c
     CNavigatorVector PossibleNavigators;                // +0x10
-    void OnCreate();
+    virtual void OnCreate();                            // Ego_r.pdb ?OnCreate@CTCCreatureNavigation@@UAEXXZ
 };
 
 void CTCCreatureNavigation::OnCreate()
 {
     CDefPointer<const CThingCreatureDef> def;
-    GetDefinitionManager()->GetDef(ParentThing->DefIndex, &def);
+    GetDefinitionManager().GetDef(ParentThing->DefIndex, &def);
     const CNavigatorTypeVector& types = def->NavigatorTypes;
     for (const ENavigatorType* it = types.begin(); it != types.end(); ++it) {
         switch (*it) {
         case NAVIGATOR_TYPE_ASTAR: {
             CThingCreatureBase* creature = (CThingCreatureBase*)ParentThing;
-            CNavigatorManager* manager = GetThingManager()->NavigatorManager;
+            CNavigatorManager* manager = GetThingManager().NavigatorManager;
             PossibleNavigators.push_back(CNavigatorAStar::Create(manager, &CGroundNavigatorExternalInterface(creature)));
             break;
         }
         case NAVIGATOR_TYPE_FLYER: {
             CThingCreatureBase* creature = (CThingCreatureBase*)ParentThing;
-            CNavigatorManager* manager = GetThingManager()->NavigatorManager;
+            CNavigatorManager* manager = GetThingManager().NavigatorManager;
             PossibleNavigators.push_back(CNavigatorFlyer::Create(manager, &CGroundNavigatorExternalInterface(creature)));
             break;
         }

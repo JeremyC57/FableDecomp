@@ -1,8 +1,8 @@
 // CTCInventoryWeapons::GetActiveProjectileWeaponDamage() -- the damage of the projectile fired by the hero's active ranged weapon (its weapon def's projectile def), or 0 when no living ranged weapon is active
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3180, length 186 bytes (float in st0). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: IS_THING_ALIVE<CIntelligentPointer<const CThingPhysical>> @ 0x004CC340 (`__fastcall`, by reference), CBaseIntelligentPointer::GetPItem
-// @ 0x00A01B50, CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<T>*) @ 0x0042B1A6 (catalog GetSubDef<CAbilityDef>, a byte twin), CTCBase::
-// GetDefinitions() @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex(long) @ 0x009AD9E0 (a counted def pointer by value through the
+// @ 0x00A01B50, CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>*) const @ 0x0042B1A6, CTCBase::GetDefinitionManager()
+// const @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex(long) const @ 0x009AD9E0 (a CDefPointer<const CDefClassBase> by value through the
 // hidden pointer), the defs' virtual slot 1 on release.
 // Layout: retail CTCInventoryWeapons PActiveRangedWeapon +0x141 (PDB +0x159; an 8-byte intelligent pointer at an odd offset, hence pack(1));
 // CThing::PDef +0x70; the weapon def's projectile def index at +0xA0 and the projectile def's damage at +0x54 (retail; the PDB CWeaponDef has
@@ -33,9 +33,14 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-struct CDefPointerTemp {                             // the manager's by-value def reference
+template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (released by hand, as the landed OnCreate twins)
+    CDefBase* Object;                                // the pointee as its non-const base (engine/CDefPointer.h)
+    T* operator->() const { return static_cast<T*>(Object); }
+};
+class CDefClassBase;
+template <> class CDefPointer<const CDefClassBase> { public:   // the manager's by-value def reference (released by its destructor)
     CDefBase* m_p;
-    FABLE_FORCEINLINE ~CDefPointerTemp()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p) {
             m_p->ReleaseTemporary();
@@ -43,14 +48,10 @@ struct CDefPointerTemp {                             // the manager's by-value d
         }
     }
 };
-template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (released by hand, as the landed OnCreate twins)
-    T* Object;
-    T* operator->() const { return Object; }
-};
 FABLE_FORCEINLINE bool DecRefToZero(long& c) { return --c == 0; }
 template <class T> struct CDefPointerCopy {          // a def copied (add-ref) out of the manager's by-value temporary, released by its destructor
     T* Object;
-    CDefPointerCopy(const CDefPointerTemp& temp) : Object((T*)temp.m_p) { if (Object) ++Object->m_count; }
+    CDefPointerCopy(const CDefPointer<const CDefClassBase>& temp) : Object((T*)temp.m_p) { if (Object) ++Object->m_count; }
     ~CDefPointerCopy() { if (DecRefToZero(Object->m_count)) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
@@ -63,27 +64,29 @@ class CWeaponDef : public CDefBase { public:
     long ProjectileDefIndex;                         // +0xa0
 };
 class CDefClassBase : public CDefBase { public:
-    bool GetSubDef(CDefPointer<CWeaponDef>* out);    // 0x0042B1A6
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r / FableWin template)
 };
+class CThingBaseDef : public CDefClassBase { public: };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CWeaponDef>* out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = Find_CDefClassBase_GetSubDef(this);
     if (!def)
         return false;
-    out->Object = (CWeaponDef*)def;
+    out->Object = (CDefBase*)def;
     return true;
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    CDefPointerTemp GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (Ego_r.pdb QBE; hidden result pointer)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 class CThing { public:
     unsigned char _pad00[0x70];
-    CDefPointer<CDefClassBase> PDef;                 // +0x70
+    CDefPointer<const CThingBaseDef> PBaseDef;       // +0x70
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -103,35 +106,37 @@ public:
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340 for CIntelligentPointer
 
-namespace NInventory {
+class CTCBase { public:                              // the component base (members this row reads)
+    virtual ~CTCBase();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
 #pragma pack(push, 1)
-struct CTCInventoryWeapons {
-    unsigned char       _pad000[0x141];
+class CTCInventoryWeapons : public CTCBase { public:
+    unsigned char       _pad004[0x141 - 0x4];
     CIntelligentPointer<CThing> PActiveRangedWeapon;         // +0x141
-    CDefinitionManager* GetDefinitions();            // 0x006869D0 (CTCBase)
-    float GetActiveProjectileWeaponDamage();
+    float GetActiveProjectileWeaponDamage() const;   // Ego_r.pdb ?GetActiveProjectileWeaponDamage@CTCInventoryWeapons@@QBEMXZ
 };
 #pragma pack(pop)
-float CTCInventoryWeapons::GetActiveProjectileWeaponDamage()
+float CTCInventoryWeapons::GetActiveProjectileWeaponDamage() const
 {
     float damage = 0.0f;
     if (IS_THING_ALIVE(PActiveRangedWeapon)) {
-        CDefPointer<CWeaponDef> def;
+        CDefPointer<const CWeaponDef> def;
         def.Object = 0;
-        CDefClassBase* thingDef = PActiveRangedWeapon.GetPItem()->PDef.Object;
+        CThingBaseDef* thingDef = static_cast<CThingBaseDef*>(PActiveRangedWeapon.GetPItem()->PBaseDef.Object);
         if (thingDef)
             ++thingDef->m_count;
         thingDef->GetSubDef(&def);
         if (thingDef && --thingDef->m_count == 0)
             thingDef->Destroy();
-        CWeaponDef* weaponDef = def.Object;
+        CWeaponDef* weaponDef = static_cast<CWeaponDef*>(def.Object);
         {
-            CDefPointerCopy<CProjectileDef> projectileDef = GetDefinitions()->GetPDefFromGlobalIndex(weaponDef->ProjectileDefIndex);
+            CDefPointerCopy<CProjectileDef> projectileDef = GetDefinitionManager().GetPDefFromGlobalIndex(weaponDef->ProjectileDefIndex);
             damage = projectileDef->Damage;
         }
         if (--weaponDef->m_count == 0)
             weaponDef->Destroy();
     }
     return damage;
-}
 }

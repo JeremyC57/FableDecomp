@@ -1,125 +1,76 @@
-// CGameScriptInterface::SendEntityEvent -- dispatch supported witnessed crime events
-// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail008957C0,293 bytes. Native event RTTI12781B0/12781C8/12781E0 independently read.
+// CGameScriptInterface::SendEntityEvent(EEventType type, const CScriptThing& recipient, const CScriptThing& spotter, CThing* target) const
+// -- when both script things are alive, post the matching spotted-crime event (pickpocketing 19, picking a lock 20, stealing 21) to
+// the recipient's entity-events component
+// Leaf: ?SendEntityEvent@CGameScriptInterface@@UBEXW4EEventType@NEntityEvents@@ABVCScriptThing@@1PAVCThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008957C0, 293 bytes, `ret 10h`; CGameScriptInterface vtable 0x01260F0C slot 241 (Ego_r.pdb
+// ?SendEntityEvent@CGameScriptInterface@@UBEXW4EEventType@NEntityEvents@@ABVCScriptThing@@1PAVCThing@@@Z; engine/CGameScriptInterface.h
+// FABLE_RETAIL_NSCRIPT declares it at slot 241). Respelt by agentNF14 2026-11-11: was CGameScriptInterfaceMethods::SendEntityEvent over a
+// local CThingNative / ScriptMethods projection with invented EventPickpocketing / EventPickingLock / EventStealing ctors.
+// Callees: CScriptThing::IsAlive (slot 75, +0x12C) and GetPThing (slot 11, +0x2C); the CThing interface map's LowerBound @ 0x0040F020
+// (GetTC<CTCEntityEvents>, TCI_ENTITY_EVENTS 66); operator new @ 0x00BFEA1A (0x18 bytes); the Ego_r.pdb event ctors
+// NEntityEvents::CEventHeroHasBeenSpottedPickpocketing @ 0x008AB7B0 / ..PickingLock @ 0x008AB840 / ..Stealing @ 0x008AB8D0
+// (CThing* target, CThing* spotter; vtables 0x012781B0 / 0x012781C8 / 0x012781E0); CTCEntityEvents::AddEvent @ 0x008113C0.
+// Layout: the events are Ego_r.pdb CEventBase (vptr, WorldFrame) + PTarget +0x08 / PSpotter +0x10 (CIntelligentPointer<CThing>).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTCENTITYEVENTS
+#define FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CTCEntityEvents.h"
+#include "engine/NEntityEvents_CEventHitBase.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
-#include "fable_string.h"
-#include "engine/C3DVector.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020 lower_bound
-struct ScriptMethods;
-struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();}; //004C7E50 //004C73D0,004C7E50
-// Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
-// Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
-typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
-struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
-struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
-struct ScriptMethods:CBaseClassNative{
- CountedScriptImp PImp;
- ScriptMethods(){}
- ScriptMethods(const ScriptMethods& other):CBaseClassNative(other),PImp(other.PImp){}
- virtual ~ScriptMethods(){}
- ScriptMethods& operator=(const ScriptMethods&); //008AB980
- CThingNative* GetThing() const {if(!PImp.Data)return 0;return reinterpret_cast<ScriptMethods*>(PImp.Data)->GetPThing();}
-virtual const CCharString& GetName() const; //slot1 0x004AA8B0
-virtual CCharString GetDefName() const; //slot2 0x004AA8D0
-virtual CCharString GetDataString() const; //slot3 0x004AA900
-virtual void SetDataString(const CCharString&); //slot4 0x004AA930
-virtual C3DVector GetFocalPos() const; //slot5 0x004AA940
-virtual const C3DVector& GetPos() const; //slot6 0x004AA980
-virtual C3DVector GetHomePos() const; //slot7 0x004AA9A0
-virtual CCharString GetCurrentMapName() const; //slot8 0x004AA9E0
-virtual CCharString GetHomeMapName() const; //slot9 0x004AAA10
-virtual float GetAngleXY() const; //slot10 0x004AAA40
-virtual CThingNative* GetPThing() const; //slot11 0x004AAA60
-virtual unsigned __int64 GetPThingUniqueID() const; //slot12 0x004AAA70
-virtual EAIStateGroupTypeABI GetCurrentStateGroupType() const; //slot13 0x004AAA90
-virtual EScriptAIPriorityABI GetCurrentScriptPriority() const; //slot14 0x004AAAA0
-virtual bool IsSneaking() const; //slot15 0x004AAAB0
-virtual bool IsAwareOfHero() const; //slot16 0x004AAAC0
-virtual bool MsgIsTriggeredBy(const CCharString&) const; //slot17 0x004AAAD0
-virtual bool MsgIsKilledBy(const CCharString&) const; //slot18 0x004AAAF0
-virtual ScriptMethods MsgWhoKilledMe() const; //slot19 0x004ABE60
-virtual bool MsgIsUsedBy(const CCharString&) const; //slot20 0x004AAB10
-virtual bool MsgIsHitBy(const CCharString&) const; //slot21 0x004AAB30
-virtual bool MsgIsHitByWithFlourish(const CCharString&) const; //slot22 0x004AAB50
-virtual bool MsgIsHitByWithDecapitate(const CCharString&) const; //slot23 0x004AAB70
-virtual bool MsgIsHitByWithWeapon(const CCharString&,const CCharString&) const; //slot24 0x004AAB90
-virtual bool MsgIsHitByWithProjectileWeapon(const CCharString&,float&) const; //slot25 0x004AABB0
-virtual ScriptMethods MsgWhoHitMe() const; //slot26 0x004ABEC0
-virtual bool MsgIsTalkedToBy(const CCharString&) const; //slot27 0x004AABD0
-virtual ScriptMethods MsgWhoTalkedToMe() const; //slot28 0x004ABF00
-virtual bool MsgExpressionPerformedTo(CCharString&) const; //slot29 0x004AABF0
-virtual ScriptMethods MsgWhoExpressedToMe() const; //slot30 0x004ABF40
-virtual long MsgHowLongWasExpressionPerformed() const; //slot31 0x004AAC10
-virtual bool MsgIsKnockedOutBy(const CCharString&) const; //slot32 0x004AAC20
-virtual ScriptMethods MsgWhoKnockedMeOut() const; //slot33 0x004ABF80
-virtual bool MsgReceivedMoney(long&) const; //slot34 0x004AAC40
-virtual bool MsgIsPresentedWithItem(CCharString&) const; //slot35 0x004AAC60
-virtual bool MsgReceivedInventoryItem() const; //slot36 0x004AAC80
-virtual bool MsgPerformedSpecialAbility(EHeroAbilityABI) const; //slot37 0x004AACA0
-virtual bool MsgPerformedAnySpecialAbility() const; //slot38 0x004AACC0
-virtual bool MsgPerformedAnyAggressiveSpecialAbility() const; //slot39 0x004AACE0
-virtual bool MsgPerformedAnyNonAggressiveSpecialAbility() const; //slot40 0x004AAD00
-virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbilityABI,const CCharString&) const; //slot41 0x004AAD20
-virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString&) const; //slot42 0x004AAD40
-virtual bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString&) const; //slot43 0x004AAD60
-virtual bool MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const CCharString&) const; //slot44 0x004AAD80
-virtual bool MsgOpenedChest() const; //slot45 0x004AADA0
-virtual bool MsgHitEnemyWithMeleeWeapon() const; //slot46 0x004AADC0
-virtual bool MsgHitFriendWithMeleeWeapon() const; //slot47 0x004AADE0
-virtual bool MsgHitEnemyWithRangedWeapon() const; //slot48 0x004AAE00
-virtual bool MsgHitFriendWithRangedWeapon() const; //slot49 0x004AAE20
-virtual bool MsgHitEnemyWithBareHands() const; //slot50 0x004AAE40
-virtual bool MsgHitFriendWithBareHands() const; //slot51 0x004AAE60
-virtual bool MsgAttackedWithMeleeWeaponWithoutHittingAnything() const; //slot52 0x004AAE80
-virtual bool MsgAttackedWithBareHandsWithoutHittingAnything() const; //slot53 0x004AAEA0
-virtual bool MsgTalkedToAnyone() const; //slot54 0x004AAEC0
-virtual bool MsgGetThingsKilled(std::vector<unsigned long,std::allocator<unsigned long> >&) const; //slot55 0x004AAEE0
-virtual bool MsgPerformedFlourish() const; //slot56 0x004AAF00
-virtual bool MsgPerformedSuccessfulFlourish() const; //slot57 0x004AAF20
-virtual bool MsgOnMoralityChanged(long&) const; //slot58 0x004AAF40
-virtual bool MsgOnCutSceneAnimEvent(CCharString&) const; //slot59 0x004AAF60
-virtual bool MsgIsKicked() const; //slot60 0x004AAF80
-virtual bool IsUnconscious() const; //slot61 0x004AAFA0
-virtual bool IsUsable() const; //slot62 0x004AAFC0
-virtual bool IsBeingCarriedBy(const CCharString&) const; //slot63 0x004AAFE0
-virtual bool IsOpenDoor() const; //slot64 0x004AB000
-virtual bool IsSummonedCreature() const; //slot65 0x004AB020
-virtual void SetAsUsable(bool); //slot66 0x004AB040
-virtual void SetFriendsWithEverythingFlag(bool); //slot67 0x004AB060
-virtual bool GetActivationTriggerStatus() const; //slot68 0x004AB080
-virtual void SetActivationTriggerStatus(bool); //slot69 0x004AB0A0
-virtual void SetToKillOnLevelUnload(bool); //slot70 0x004AB0C0
-virtual void UpdateThingAttachment(); //slot71 0x004AB0E0
-virtual void IncrementScriptCounter(); //slot72 0x004AB0F0
-virtual void DecrementScriptCounter(); //slot73 0x004AB100
-virtual long GetScriptCounter(); //slot74 0x004AB110
-virtual bool IsAlive() const; //slot75 0x004AB130
-virtual bool IsDead() const; //slot76 0x004AA890
-virtual bool IsNull() const; //slot77 0x004AB150
-virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
+
+namespace NEntityEvents {
+class CEventHeroHasBeenSpottedPickpocketing : public CEventBase {      // Ego_r.pdb, 0x18 bytes, vtable 0x012781B0
+public:
+    CEventHeroHasBeenSpottedPickpocketing(CThing* target, CThing* spotter);   // 0x008AB7B0
+    CIntelligentPointer<CThing> PTarget;                                       // +0x08
+    CIntelligentPointer<CThing> PSpotter;                                      // +0x10
 };
-FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
-FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
-FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
+class CEventHeroHasBeenSpottedPickingLock : public CEventBase {        // Ego_r.pdb, 0x18 bytes, vtable 0x012781C8
+public:
+    CEventHeroHasBeenSpottedPickingLock(CThing* target, CThing* spotter);     // 0x008AB840
+    CIntelligentPointer<CThing> PTarget;                                       // +0x08
+    CIntelligentPointer<CThing> PSpotter;                                      // +0x10
+};
+class CEventHeroHasBeenSpottedStealing : public CEventBase {           // Ego_r.pdb, 0x18 bytes, vtable 0x012781E0
+public:
+    CEventHeroHasBeenSpottedStealing(CThing* target, CThing* spotter);        // 0x008AB8D0
+    CIntelligentPointer<CThing> PTarget;                                       // +0x08
+    CIntelligentPointer<CThing> PSpotter;                                      // +0x10
+};
+}
 
-
-#define FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
-#include "engine/CTCEntityEvents.h"
-namespace NEntityEvents{class CEventBase{public:void* VTable;long FrameCreated;};}
-struct EventPickpocketing:NEntityEvents::CEventBase{unsigned char ThiefAndWitness[16];EventPickpocketing(CThingNative*,CThingNative*);}; //008AB7B0 CEventHeroHasBeenSpottedPickpocketing
-struct EventPickingLock:NEntityEvents::CEventBase{unsigned char ThiefAndWitness[16];EventPickingLock(CThingNative*,CThingNative*);}; //008AB840 CEventHeroHasBeenSpottedPickingLock
-struct EventStealing:NEntityEvents::CEventBase{unsigned char ThiefAndWitness[16];EventStealing(CThingNative*,CThingNative*);}; //008AB8D0 CEventHeroHasBeenSpottedStealing
-struct CGameScriptInterfaceMethods:CGameScriptInterface{void SendEntityEvent(long,const ScriptMethods&,const ScriptMethods&,CThingNative*)const;};
-void CGameScriptInterfaceMethods::SendEntityEvent(long type,const ScriptMethods& recipient,const ScriptMethods& witness,CThingNative* thief)const{
-if(witness.IsAlive()&&recipient.IsAlive()){
- CThingNative* thing=recipient.GetPThing();if(thing->UsingComponents[2]&4){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)66);ComponentEntry* end=map->Finish;CTCEntityEvents* events=static_cast<CTCEntityEvents*>(((void*)(it==end||it->first>66?end:it)->second));
- switch(type){case 19:events->AddEvent(new EventPickpocketing(thief,witness.GetPThing()));break;case 20:events->AddEvent(new EventPickingLock(thief,witness.GetPThing()));break;case 21:events->AddEvent(new EventStealing(thief,witness.GetPThing()));break;}
-}}
+void CGameScriptInterface::SendEntityEvent(NEntityEvents::EEventType type, const CScriptThing& recipient, const CScriptThing& spotter,
+                                           CThing* target) const
+{
+    if (spotter.IsAlive() && recipient.IsAlive()) {
+        CTCEntityEvents* events;
+        if (recipient.GetPThing()->GetTC(TCI_ENTITY_EVENTS, &events)) {
+            switch (type) {
+            case 19:
+                events->AddEvent(new NEntityEvents::CEventHeroHasBeenSpottedPickpocketing(target, spotter.GetPThing()));
+                break;
+            case 20:
+                events->AddEvent(new NEntityEvents::CEventHeroHasBeenSpottedPickingLock(target, spotter.GetPThing()));
+                break;
+            case 21:
+                events->AddEvent(new NEntityEvents::CEventHeroHasBeenSpottedStealing(target, spotter.GetPThing()));
+                break;
+            }
+        }
+    }
 }

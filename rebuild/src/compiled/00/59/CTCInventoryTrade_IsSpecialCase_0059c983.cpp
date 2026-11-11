@@ -1,13 +1,14 @@
-// CTCInventoryTrade::IsSpecialCase(long itemType) -- an item is a special trade case when it is a hair card or a tattoo card, or when its definition carries an ability sub-def
+// CTCInventoryTrade::IsSpecialCase(long itemType) -- an item is a special trade case when it is a hair card or a tattoo card, or when its definition carries a hero-title sub-def
 // Leaf: ?IsSpecialCase@CTCInventoryTrade@@QAE_NJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059C983, length 274 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) +
 // ("s",on). FableWin.pdb ?IsSpecialCase@CTCInventoryTrade@@QAE_NJ@Z.
 // Callees: GetHairCardDef(long) @ 0x005D9A10 and GetTattooCardDef(long) @ 0x005D9AA0 (`__fastcall`, a counted def pointer by
-// value through the hidden pointer; the catalog labels both GetHairCardDef), CTCBase::GetDefinitions() @ 0x006869D0,
-// CDefinitionManager::GetDef(long, CDefPointer*) @ 0x0042AF3C, CDefClassBase::GetSubDef<CAbilityDef>(CDefPointer*) @
-// 0x005B1E5A, the defs' virtual slot 1 on release.
+// value through the hidden pointer; the catalog labels both GetHairCardDef), CTCBase::GetDefinitionManager() const @ 0x006869D0,
+// CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const @ 0x0042AF3C, CDefClassBase::GetSubDef<CHeroTitleDef>(CDefPointer<const CHeroTitleDef>*) const @
+// 0x005B1E5A (its StatGetTypeName literal at 0x005B1E64 is "CHeroTitleDef"; was spelt GetSubDef<CAbilityDef>), the defs'
+// virtual slot 1 on release.
 // Shape: the landed ProcessTradeAction (0x005AEBFE) card-def temporaries (long-form release through the def's
-// ReleaseTemporary; the tattoo pointer's dtor also clears its word); the item def and its ability sub-def are owning out
+// ReleaseTemporary; the tattoo pointer's dtor also clears its word); the item def and its hero-title sub-def are owning out
 // slots (zeroed from the esi zero register, short-form release) filled by same-TU out-only stand-ins of GetDef and
 // GetSubDef, so VC7.1 keeps the fetched defs in edi/ecx; one `&&` test, and every dtor forced inline so the true and false
 // exits each get their own release chain.
@@ -49,10 +50,14 @@ template <class T> struct CClearingDefPointer {      // the same, clearing its w
         }
     }
 };
-template <class T> struct CDefSlot {                 // an owning out slot for GetDef / GetSubDef
-    T* m_p;
-    CDefSlot() : m_p(0) { }
-    FABLE_FORCEINLINE ~CDefSlot()
+template <class T> class CDefPointer;
+class CDefClassBase : public CDefBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1E5A GetSubDef<CHeroTitleDef> (Ego_r / FableWin template)
+};
+template <class T> class CDefPointer<const T> { public:   // an owning out slot for GetDef / GetSubDef (CDefPointer<const T>)
+    CDefClassBase* m_p;
+    CDefPointer() : m_p(0) { }
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p && --m_p->m_count == 0)
             m_p->Destroy();
@@ -60,27 +65,26 @@ template <class T> struct CDefSlot {                 // an owning out slot for G
 };
 struct CTattooCardDef : CDefBase { };
 class CHairCardDef : public CDefBase { public: };
-class CAbilityDef : public CDefBase { public: };
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef(CDefSlot<CAbilityDef>* out);      // 0x005B1E5A
-};
+class CHeroTitleDef : public CDefClassBase { public: };
+class CThingBaseDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefSlot<CDefClassBase>* out);   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
-CDefClassBase* FindRef_CDefinitionManager_GetDef(CDefinitionManager* manager, long index);   // stand-in callee
-CAbilityDef* FindRef_CDefClassBase_GetSubDef(CDefClassBase* defClass);                       // stand-in callee
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
+CDefClassBase* FindRef_CDefinitionManager_GetDef(const CDefinitionManager* manager, long index);   // stand-in callee
+CDefClassBase* FindRef_CDefClassBase_GetSubDef(const CDefClassBase* defClass);                     // stand-in callee
 #pragma auto_inline(off)
-// Same-TU stand-ins for GetDef 0x0042AF3C and GetSubDef<CAbilityDef> 0x005B1E5A: they only write the out slot, so VC7.1
+// Same-TU stand-ins for GetDef<CThingBaseDef> 0x0042AF3C and GetSubDef 0x005B1E5A: they only write the out slot, so VC7.1
 // knows the slots do not escape (retail's link-time knowledge) and keeps the fetched defs in registers.
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefSlot<CDefClassBase>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     CDefClassBase* def = FindRef_CDefinitionManager_GetDef(this, index);
     out->m_p = def;
     return def != 0;
 }
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefSlot<CAbilityDef>* out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
-    CAbilityDef* def = FindRef_CDefClassBase_GetSubDef(this);
+    CDefClassBase* def = FindRef_CDefClassBase_GetSubDef(this);
     out->m_p = def;
     return def != 0;
 }
@@ -88,8 +92,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefSlot<CAbilityDef>* out)
 CDefPointer<CHairCardDef> __fastcall GetHairCardDef(long itemType);              // 0x005D9A10
 CClearingDefPointer<CTattooCardDef> __fastcall GetTattooCardDef(long itemType);  // 0x005D9AA0
 
-class CTCInventoryTrade { public:
-    CDefinitionManager* GetDefinitions() const;      // 0x006869D0 (CTCBase)
+class CTCBase { public:                              // the component base (members this row reads)
+    virtual ~CTCBase();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCInventoryTrade : public CTCBase { public:
     bool IsSpecialCase(long itemType);
 };
 
@@ -101,9 +109,9 @@ bool CTCInventoryTrade::IsSpecialCase(long itemType)
     CClearingDefPointer<CTattooCardDef> tattoo = GetTattooCardDef(itemType);
     if (tattoo.m_p)
         return true;
-    CDefSlot<CDefClassBase> itemDef;
-    CDefSlot<CAbilityDef> ability;
-    if (GetDefinitions()->GetDef(itemType, &itemDef) && itemDef.m_p->GetSubDef(&ability))
+    CDefPointer<const CThingBaseDef> itemDef;
+    CDefPointer<const CHeroTitleDef> heroTitle;
+    if (GetDefinitionManager().GetDef(itemType, &itemDef) && itemDef.m_p->GetSubDef(&heroTitle))
         return true;
     return false;
 }

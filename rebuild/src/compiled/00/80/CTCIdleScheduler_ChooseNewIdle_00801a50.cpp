@@ -26,14 +26,15 @@ class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
 
-class CDefClassBase { public:
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long RefCount;                                   // +0x04
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;                         // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() { Object = 0; }
+    T* operator->() const { return static_cast<T*>(Object); }
     ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
@@ -57,11 +58,11 @@ struct CWeightMap {                                  // map<EIdleStateGroup, lon
     SWeightNode* _M_header;
     unsigned long _M_node_count;
     unsigned long _M_compare;
-    CWeightMapIterator find(const long& key);        // 0x008014F0
+    CWeightMapIterator find(const long& key) const;  // 0x008014F0 (the const overload: the def is const)
     long& operator[](const long& key);               // 0x00802190
 };
 
-static inline bool Contains(CWeightMap& map, const long& key)
+static inline bool Contains(const CWeightMap& map, const long& key)
 {
     CWeightMapIterator it = map.find(key);
     return it._M_node != map._M_header;
@@ -107,15 +108,16 @@ struct CIdleMap {                                    // map<EIdleStateGroup, CAI
     CIdleMapIterator end() { return CIdleMapIterator(_M_header); }
 };
 
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00801670 GetSubDef<CIdleSchedulerDef> (pushes "CIdleSchedulerDef")
+};
 class CIdleSchedulerDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
     CWeightMap IdleWeights;                          // +0x3c
 };
-struct CThingDef : CDefClassBase {
-    bool GetSubDef(CDefPointer<CIdleSchedulerDef>* out);   // 0x00801670 (GetSubDef<CIdleSchedulerDef>)
-};
+class CThingBaseDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out) const;  // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef>
 };
 class CGameDefinitionManager : public CDefinitionManager
 {
@@ -128,15 +130,16 @@ class CThing { public:
 
 class CTCBase
 {
+public:
+    virtual ~CTCBase();
+    CThing*       ParentThing;                       // +0x04
 protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
     CWorld& GetWorld() const;   // 0x00686A70
 };
 
 class CTCIdleScheduler : public CTCBase { public:
-    void*         __vftable;                         // +0x00
-    CThing*       ParentThing;                       // +0x04 CTCBase
-    bool          ToBeRemoved;                       // +0x08
+    bool          ToBeRemoved;                       // +0x08 (CTCBase)
     bool          IsInGlobalUpdateTCs;               // +0x09
     unsigned char _pad_0x0a[0x2];
     CIdleMap      IdleStates;                        // +0x0C
@@ -153,15 +156,15 @@ class CTCIdleScheduler : public CTCBase { public:
 CDefClassBase* LookUpDef(long index);               // the manager's raw lookup (stand-in only)
 CDefClassBase* LookUpSubDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(long index, CDefPointer<const CThingBaseDef>* out) const
 {
-    CThingDef* def = (CThingDef*)LookUpDef(index);
+    CDefClassBase* def = LookUpDef(index);
     out->Object = def;
     return def != 0;
 }
-bool CThingDef::GetSubDef(CDefPointer<CIdleSchedulerDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CIdleSchedulerDef>(CDefPointer<const CIdleSchedulerDef>* out) const
 {
-    CIdleSchedulerDef* def = (CIdleSchedulerDef*)LookUpSubDef(this);
+    CDefClassBase* def = LookUpSubDef(this);
     out->Object = def;
     return def != 0;
 }
@@ -171,12 +174,12 @@ void CTCIdleScheduler::ChooseNewIdle()
 {
     FrameLastChecked = GetWorld().GetFrame();
     if (Preferred != 0 && ParentThing->DefIndex != 0) {
-        CDefPointer<CIdleSchedulerDef> idleDef;
-        CDefPointer<CThingDef> thingDef;
+        CDefPointer<const CIdleSchedulerDef> idleDef;
+        CDefPointer<const CThingBaseDef> thingDef;
         CThing* thing = ParentThing;
         GetDefinitionManager().GetDef(thing->GetDefIndex(), &thingDef);
-        if (thingDef.Object->GetSubDef(&idleDef)) {
-            CWeightMap& weights = idleDef.Object->IdleWeights;
+        if (thingDef->GetSubDef(&idleDef)) {
+            const CWeightMap& weights = idleDef->IdleWeights;
             if (Contains(weights, Preferred)) {
                 long& total = IdleStatesWeight[Preferred];
                 CWeightMapIterator found = weights.find(Preferred);

@@ -65,6 +65,21 @@ public:
     // ?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z (retail 0x00658EA0, out of line).
     CVillageTaskCarryCrate* GetBestCrateTaskForThing(const CThing& thing);   // 0x00658EA0
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_CRIMES
+    // Retail opt-in (agentNF14, row 0x0065C1FC): Ego_r.pdb ?RemoveCrime@CTCVillage@@QAEXJ@Z (retail 0x0065C146, out of line) and
+    // ?RemoveCrimeIfApologisable@CTCVillage@@QAEXJ@Z (0x0065C1FC), both public. Declarations only: no layout change.
+    void RemoveCrime(long deedHandle);                       // 0x0065C146
+    void RemoveCrimeIfApologisable(long deedHandle);         // 0x0065C1FC
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_APOLOGISE
+    // Retail opt-in (agentNF14, rows 0x006585EE / 0x00658604): Ego_r.pdb ?NotifyHasApologised@CTCVillage@@QAEXXZ and
+    // ?GetIsHeroEnemyOfGuards@CTCVillage@@QAE_NXZ. The Ego_r donor order NotifyHasApologised, CreateDummyVillagersIfNecessary (an
+    // empty body), GetIsHeroEnemyOfGuards is retail's packed run 0x006585EE (stores the world frame to LastFrameApologised +0xd8),
+    // the lone `ret` 0x00658603, 0x00658604 (frame < HeroEnemyOfGuardsUntil +0xd4). Declarations only: no layout change.
+    void NotifyHasApologised();                              // 0x006585EE
+    void CreateDummyVillagersIfNecessary();                  // 0x00658603
+    bool GetIsHeroEnemyOfGuards();                           // 0x00658604
+#endif
 private:
 #ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
     // Ego_r/FableWin original private const member template; six retail instances 00660ae2..00660d49.

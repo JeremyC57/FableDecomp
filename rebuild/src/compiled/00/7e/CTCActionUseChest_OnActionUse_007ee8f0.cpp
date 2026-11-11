@@ -66,7 +66,7 @@ class CCreatureActionBase { public:
 #include "engine/CIntelligentPointer.h"
 class CCreatureAction_OpenChest : public CCreatureActionBase { public:
     CBaseIntelligentPointer PChest;                        // +0xa8
-    CCreatureAction_OpenChest(CThingCreatureBase* owner, CThing* chest, const CCharString& animation);   // 0x007EE7E0
+    CCreatureAction_OpenChest(CThingCreatureBase& owner, CThing& chest, const CCharString& animation);   // 0x007EE7E0 (Ego_r.pdb)
 };
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
@@ -78,49 +78,57 @@ class CTCChest { public:
     bool          Closing;                                 // +0x1e
     CCharString GetOpenAnimationForCreature() const;       // 0x00750240
 };
+#include "engine/EOpinionDeedType.h"
+enum EOpinionPostDeedType { };                            // values not in the shared headers (engine/fable_nscript_forward.h)
 class CTCHeroOpinionDeedLog { public:
-    long PostDeed(long deedType, const C3DVector& position, const CThing* target, CThingAICreature* victim,
-                  long postType, bool b1, bool b2, const CFaction* faction, bool b3, long extra);   // 0x006C6990
+    long PostDeed(EOpinionDeedType deedType, const C3DVector& position, const CThing* target, CThingAICreature* victim,
+                  EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long extra);   // 0x006C6990
 };
 class CTCHeroStats { public:
     unsigned char _pad00[0x28];
     long          Morality;                                // +0x28
     void SetMorality(long morality);                       // 0x0057C2E6
 };
-class CHeroDef { public:
+class CHeroStatsDef { public:
     unsigned char _pad00[0xe0];
-    long          TheftMoralityChange;                     // +0xe0
+    long          MoralityChangeOnTheftFromHome;           // +0xe0 (Ego_r.pdb +0xF4; descriptive pick of the theft deltas)
 };
-class CDefinitionManager { public:
+class CDefinitionManager { public: };
+class CGameDefinitionManager : public CDefinitionManager { public:   // RTTI CGameDefinitionManager : CDefinitionManager
+    const CHeroStatsDef& PeekHeroStatsDef() const { return *PHeroStatsDef; }   // FableWin.pdb QBE (inline: no call in retail)
     unsigned char _pad00[0xdc];
-    CHeroDef*     HeroDef;                                 // +0xdc
+    const CHeroStatsDef* PHeroStatsDef;                    // +0xdc (descriptive name, shared engine/CGameDefinitionManager.h)
 };
-class CTCActionUseBase { public:
-    virtual void v00();
+class CTCBase { public:                                    // the component base (members this row reads)
+    virtual ~CTCBase();
     CThing* ParentThing;                                   // +0x04
     CThing& GetParentThing() { return *ParentThing; }      // Ego_r ?GetParentThing@CTCBase@@QAEAAVCThing@@XZ (inline)
-    void OnUseBase(CThingCreatureBase* user);              // 0x007EAB90
-    bool IsThisTheft();                                    // 0x007EACB0
-    CDefinitionManager* GetDefinitionManager();            // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
 };
-struct CTCActionUseChest : CTCActionUseBase {
-    void OnActionUse(CThingCreatureBase* user);
+class CTCActionUseBase : public CTCBase { public:
+    virtual void OnActionUse(CThing& user);                // 0x007EAB90 (Ego_r.pdb UAE)
+    bool IsThisTheft() const;                              // 0x007EACB0 (Ego_r.pdb QBE)
+};
+class CTCActionUseChest : public CTCActionUseBase { public:
+    virtual void OnActionUse(CThing& user);                // Ego_r.pdb ?OnActionUse@CTCActionUseChest@@UAEXAAVCThing@@@Z
 };
 
-void CTCActionUseChest::OnActionUse(CThingCreatureBase* user)
+void CTCActionUseChest::OnActionUse(CThing& thingUser)
 {
-    OnUseBase(user);
+    CTCActionUseBase::OnActionUse(thingUser);
+    CThingCreatureBase* user = static_cast<CThingCreatureBase*>(&thingUser);
     CThing* thing = ParentThing;
     CTCChest* chest;
     thing->GetInterface(&chest, 0x3c);
     if (!chest->Opening && !chest->Closing)
-        user->SetCurrentAction(CCreatureAction_OpenChest(user, thing, chest->GetOpenAnimationForCreature()));
+        user->SetCurrentAction(CCreatureAction_OpenChest(*user, *thing, chest->GetOpenAnimationForCreature()));
     if (IsThisTheft() && user->HasTC(0x51)) {
         CTCHeroOpinionDeedLog* log = user->GetTC<CTCHeroOpinionDeedLog>(0x51);
-        log->PostDeed(6, ((CThing*)user)->GetPos(), &GetParentThing(), 0, 2, true, false, 0, false, 0);
+        log->PostDeed(OPINION_DEED_TYPE_CRIME_THEFT, ((CThing*)user)->GetPos(), &GetParentThing(), 0, (EOpinionPostDeedType)2, true, false, 0, false, 0);
         if (user->HasTC(4)) {
             CTCHeroStats* stats = user->GetTC<CTCHeroStats>(4);
-            stats->SetMorality(GetDefinitionManager()->HeroDef->TheftMoralityChange + stats->Morality);
+            stats->SetMorality(GetDefinitionManager().PeekHeroStatsDef().MoralityChangeOnTheftFromHome + stats->Morality);
         }
     }
 }

@@ -251,6 +251,15 @@ public:
 protected:
     const class CThingSearchTools& GetThingSearchTools() const;        // 0x006AFD40
 #endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_WORLDMAP
+    // Nested opt-in (agentNF14, rows 0x006AF620 / 0x006AF630): Ego_r.pdb ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ and
+    // ?GetWorldMap@CTCPhysicsBase@@IBEABVCWorldMap@@XZ, adjacent 16-byte bodies in the Ego_r donor order (0x006EC300 / 0x006EC310) as
+    // in retail: `call GetWorld 0x00686A70 ; jmp [vtbl+30h]` (CWorld slot 12 GetWorldMap) and `call PeekWorld 0x00686A80 ;
+    // jmp [vtbl+34h]` (slot 13 PeekWorldMap). They hide CTCBase::GetWorldMap. Declarations only: no layout change.
+protected:
+    CWorldMap& GetWorldMap();                                          // 0x006AF620
+    const CWorldMap& GetWorldMap() const;                              // 0x006AF630
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_APPLYACCELERATION
     // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
     // (retail 0x006B0210, non-virtual). Declaration only: no layout change.

@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7F40, 167 bytes (+9 int3). `ret 4`, bool in al.
 // Callees: CBasicString<char>::operator==(const char*) 0x004115A0 on the name's data block (the null-data case is the
 //          inline `repe cmpsb` of "" @ 0x0122D70E against "NULL" @ 0x012393E4), CDefinitionManager::GetDefGlobalIndexFromName
-//          0x009AD410 and GetDef(long, CDefPointer<const CThingBaseDef>*) 0x0042AF3C (manifest template label propagated)
+//          0x009AD410 and GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const 0x0042AF3C (FableWin.pdb template)
 //          on CThing::GetPCurrentThingManager()->DefinitionManager (+0x20, global 0x013B8A1C).
 // Shape: the two id words copied first, the player byte next, the name's address kept in ebp; the found index is
 //        stored as a 16-bit word and tested through ax (`jne` for the dead/fail exit, unsigned `jbe` for the GetDef guard);
@@ -33,9 +33,9 @@ public:
     CCharStringData* PStringData;
 };
 class CThingBaseDef;
-struct CDefPointer { const CThingBaseDef* Object; };  // CDefPointer<const CThingBaseDef>
+template <class T> class CDefPointer { public: T* Object; };   // CDefPointer<const CThingBaseDef>
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer* out);        // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template, const)
 public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
@@ -57,7 +57,7 @@ private: public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                        // +0x18
     unsigned char    _pad20[0x70 - 0x20];
-    CDefPointer      PBaseDef;                        // +0x70
+    CDefPointer<const CThingBaseDef> PBaseDef;        // +0x70
     unsigned char    _pad74[0x8c - 0x74];
     unsigned short   DefGlobalIndex;                  // +0x8c
     short            CurrentMapNumber;                // +0x8e

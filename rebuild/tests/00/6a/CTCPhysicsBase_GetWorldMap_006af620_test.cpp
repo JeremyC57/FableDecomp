@@ -1,60 +1,32 @@
+// Behaviour test for 0x006AF620 CTCPhysicsBase::GetWorldMap() (re-identified; was CThingTrackNode::DrawIsDrawable): the world's
+// virtual GetWorldMap (CWorld slot 12) through CTCBase::GetWorld().
 #include <cstdio>
-
-class CDisplayEngine;
-
-struct CDisplayEngineVtbl
-{
-    void* slot00; void* slot04; void* slot08; void* slot0C;
-    void* slot10; void* slot14; void* slot18; void* slot1C;
-    void* slot20; void* slot24; void* slot28; void* slot2C;
-    bool (__fastcall *DrawIsDrawable)(CDisplayEngine*);
+class CWorldMap { public: int Id; };
+static CWorldMap g_map = { 7 };
+static int g_getWorldCalls = 0;
+static int g_getWorldMapCalls = 0;
+class CWorld {
+public:
+    virtual ~CWorld() { }
+    virtual CWorldMap& GetWorldMap() { ++g_getWorldMapCalls; return g_map; }
 };
-
-class CDisplayEngine
-{ public:
-    CDisplayEngineVtbl* vtbl;
+static CWorld g_world;
+class CTCBase {
+public:
+    CWorld& GetWorld() const { ++g_getWorldCalls; return g_world; }
 };
-
-struct CViewBase {};
-
-class CThingTrackNode : public CViewBase
-{ public:
-    bool __fastcall DrawIsDrawable();
+class CTCPhysicsBase : public CTCBase {
+public:
+    CWorldMap& GetWorldMap() { return GetWorld().GetWorldMap(); }
 };
-
-static CDisplayEngine g_engine;
-static CDisplayEngineVtbl g_vtbl;
-static CThingTrackNode g_node;
-static bool g_called = false;
-
-static bool __fastcall FakeDrawIsDrawable(CDisplayEngine* self)
-{
-    g_called = true;
-    return self == &g_engine;
-}
-
-CDisplayEngine* __fastcall GetDisplayEngine(CViewBase* self)
-{
-    (void)self;
-    return &g_engine;
-}
-
-bool __fastcall CThingTrackNode::DrawIsDrawable()
-{
-    CDisplayEngine* eng = GetDisplayEngine(this);
-    return eng->vtbl->DrawIsDrawable(eng);
-}
-
 int main()
 {
-    g_vtbl.DrawIsDrawable = FakeDrawIsDrawable;
-    g_engine.vtbl = &g_vtbl;
-
-    bool result = g_node.DrawIsDrawable();
-
-    if (g_called && result)
-        printf("DRAWISDRAWABLE_FORWARD_OK\n");
-    else
-        printf("DRAWISDRAWABLE_FORWARD_FAIL\n");
-    return 0;
+    CTCPhysicsBase physics;
+    CWorldMap& map = physics.GetWorldMap();
+    if (&map == &g_map && map.Id == 7 && g_getWorldCalls == 1 && g_getWorldMapCalls == 1) {
+        std::printf("DRAWISDRAWABLE_FORWARD_OK\n");
+        return 0;
+    }
+    std::printf("FAIL\n");
+    return 1;
 }

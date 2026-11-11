@@ -18,13 +18,16 @@ class CDefPointeeBase { public:
     mutable long m_refCount;                                    // +0x04
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;                            // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
-class CTattooDef : public CDefPointeeBase { public:
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1EFC GetSubDef<CTattooDef> (pushes "CTattooDef")
+};
+class CTattooDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
     bool  RemovesAllTattoos;                            // +0x3c
     bool  Permanent;                                    // +0x3d
@@ -33,17 +36,16 @@ class CTattooDef : public CDefPointeeBase { public:
     float VisibilityMultiplier;                         // +0x44
     long  SpecificCoversBodyAreaFlags;                  // +0x48
 };
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<const CTattooDef>* out) const;   // 0x005B1EFC
+class CThingBaseDef : public CDefClassBase { public:
 };
 typedef CDefPointer<const CThingBaseDef> CThingDefPointer;
 
-void* FindSubDef(const CThingBaseDef* def);
+void* FindSubDef(const CDefClassBase* def);
 void ReleaseDef(void* def);
 #pragma auto_inline(off)
 // Same-TU stand-in for GetSubDef (retail's body is out of line): it reads the old out pointer and stores the new one like
 // CDefPointer::operator=, so VC7.1 knows the out pointer's address does not escape the call.
-bool CThingBaseDef::GetSubDef(CDefPointer<const CTattooDef>* out) const
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CTattooDef>(CDefPointer<const CTattooDef>* out) const
 {
     void* def = FindSubDef(this);
     if (!def)
@@ -103,12 +105,13 @@ class CWorld { public:
     static long __fastcall GetFrame();             // 0x0049D870
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CThingDefPointer* out);     // 0x0042AF3C (CDefinitionManager::GetDef<CThingBaseDef>)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef>
 };
-void* FindDef(CDefinitionManager* manager, long index);
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
+void* FindDef(const CDefinitionManager* manager, long index);
 #pragma auto_inline(off)
 // Same-TU stand-in for GetDef (operator=-shaped like the GetSubDef one): VC7.1 then keeps the def in a register.
-bool CDefinitionManager::GetDef(long index, CThingDefPointer* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(long index, CDefPointer<const CThingBaseDef>* out) const
 {
     void* def = FindDef(this, index);
     if (!def)
@@ -128,8 +131,8 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
     const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
 class CTCHeroMorph : public CTCBase {
@@ -160,7 +163,7 @@ static inline bool TattoosOverlap(const CTattooDef* a, const CTattooDef* b)
 void CTCHeroMorph::AddTattoo(long tattooDefIndex)
 {
     CThingDefPointer def;
-    if (GetDefinitionManager()->GetDef(tattooDefIndex, &def)) {
+    if (GetDefinitionManager().GetDef(tattooDefIndex, &def)) {
         CDefPointer<const CTattooDef> tattoo;
         if (def->GetSubDef(&tattoo)) {
             if (tattoo->RemovesAllTattoos) {
@@ -169,7 +172,7 @@ void CTCHeroMorph::AddTattoo(long tattooDefIndex)
                 for (CThingDefPointer* it = Tattoos.begin(); it != Tattoos.end(); ) {
                     CDefPointer<const CTattooDef> other;
                     CThingDefPointer element = *it;
-                    if (element->GetSubDef(&other) && TattoosOverlap(other.Object, tattoo.Object))
+                    if (element->GetSubDef(&other) && TattoosOverlap(other.operator->(), tattoo.operator->()))
                         it = Tattoos.erase(it);
                     else
                         ++it;

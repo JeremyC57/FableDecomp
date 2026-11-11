@@ -1,13 +1,13 @@
 // CTCShop::FindDefaultStockItem(long defIndex) -- the shop def's default stock entry for an item def: first by the item's own def index, then by its inventory item's category; 0 when the item has no stock/inventory sub-def or the shop lists neither
 // Leaf: FindDefaultStockItem
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00772250, 378 bytes (`ret 4`, returns const CShopItem*).
-// Callees: CTCBase::GetDefinitions() const 0x006869D0; CDefinitionManager::GetPDefFromGlobalIndex(long) 0x009AD9E0
+// Callees: CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetPDefFromGlobalIndex(long) 0x009AD9E0
 //          (CDefPointer by value, homed in the dead `defIndex` argument slot); CDefClassBase::GetSubDef<CStockItemDef>
-//          0x0059350C and GetSubDef<CInventoryItemDef> 0x005BADE1 (manifest "GetSubDef<CAbilityDef>" labels are propagated
-//          byte twins; landed spellings); CDefClassBase::GetSubDef<CShopDef> 0x005130A0 (landed GetName 0x00772610); the
+//          0x0059350C (pushes "CStockItemDef") and GetSubDef<CInventoryItemDef> 0x005BADE1 (manifest "GetSubDef<CAbilityDef>"
+//          labels are propagated byte twins); CDefClassBase::GetSubDef<CShopDef> 0x005130A0 (landed GetName 0x00772610); the
 //          defs' virtual slot 1 on release.
-// Layout: CTCShop ParentThing +0x04; CThing PDef +0x70; CShopDef default stock items +0x40/+0x44 and category stock items
-//          +0x4c/+0x50 (0x48-byte records: key +0x28, CShopItem +0x2c); CInventoryItemDef category +0x3c (name unverified).
+// Layout: CTCShop ParentThing +0x04; CThing PDef +0x70; CShopDef DefaultStock +0x40 and StockCategoryDefaults +0x4c (STLport vectors of
+//          0x48-byte CShopItemDef: Type +0x28, CShopItem +0x2c); CInventoryItemDef InventoryCategory +0x3c (Ego_r.pdb).
 // Shape: the three sub-defs are null-tested CDefPointer locals with GetSubDef stand-ins (the out pointers re-read once into
 //        registers, released `dec [reg+4] ; jne`, the null test dropped after a dereference); the by-value def is the
 //        DecRef-then-GetRefCount temporary form; the thing's def is read into a named local before the shop-def lookup.
@@ -26,11 +26,23 @@ class CDefPointeeBase { public:
     }
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;                    // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
+class CDefClassBase;
+template <> class CDefPointer<const CDefClassBase> { public:   // the manager's by-value lookup result (released temporary)
+    CDefPointeeBase* Object;
+    CDefPointer() { }
+    ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    const CDefClassBase* operator->() const;
+};
+
+class CDefClassBase : public CDefPointeeBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // Ego_r / FableWin member template
+};
+inline const CDefClassBase* CDefPointer<const CDefClassBase>::operator->() const { return static_cast<const CDefClassBase*>(Object); }
 
 class CShopItem { public:                              // 28 bytes
     float Quantity;
@@ -41,37 +53,34 @@ class CShopItem { public:                              // 28 bytes
     float SalesPerDay;
     float SalesPerDayRandomness;
 };
-class CStockItemDef { public:                          // 0x48-byte stock record
-    unsigned char _pad00[0x28];
-    long          Key;                          // +0x28
+class CShopItemDef : public CDefClassBase { public:   // 0x48-byte stock record (Ego_r.pdb CShopItemDef)
+    unsigned char _pad08[0x28 - 0x08];
+    long          Type;                         // +0x28 (item def index or inventory category)
     CShopItem     Item;                         // +0x2c
 };
-class CShopDef : public CDefPointeeBase { public:
-    unsigned char  _pad08[0x40 - 0x08];
-    CStockItemDef* DefaultStockFirst;           // +0x40
-    CStockItemDef* DefaultStockLast;            // +0x44
-    unsigned char  _pad48[4];
-    CStockItemDef* CategoryStockFirst;          // +0x4c
-    CStockItemDef* CategoryStockLast;           // +0x50
+struct CShopItemDefVector {                     // STLport vector<CShopItemDef> (12 bytes)
+    CShopItemDef* _M_start;
+    CShopItemDef* _M_finish;
+    CShopItemDef* _M_end_of_storage;
 };
-struct CStockDef : CDefPointeeBase { };
-class CInventoryItemDef : public CDefPointeeBase { public:
+class CShopDef : public CDefClassBase { public:
+    unsigned char      _pad08[0x40 - 0x08];
+    CShopItemDefVector DefaultStock;            // +0x40
+    CShopItemDefVector StockCategoryDefaults;   // +0x4c
+};
+class CStockItemDef : public CDefClassBase { public: };
+class CInventoryItemDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
-    long          Category;                     // +0x3c (name unverified)
+    long          InventoryCategory;            // +0x3c (Ego_r.pdb)
 };
 
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef_0059350c(CDefPointer<CStockDef>* out);          // 0x0059350C
-    bool GetSubDef_005bade1(CDefPointer<CInventoryItemDef>* out);  // 0x005BADE1
-    bool GetSubDef_005130a0(CDefPointer<CShopDef>* out);           // 0x005130A0
-};
 void* FindDef_GetSubDef_0();                    // stand-in callees of the stand-in bodies below
 void* FindDef_GetSubDef_1();
 void* FindDef_GetSubDef_2();
 // Stand-in bodies (the real ones are out of line in retail): they write the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed GetName 0x00772610 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_0059350c(CDefPointer<CStockDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CStockItemDef>(CDefPointer<const CStockItemDef>* out) const   // 0x0059350C
 {
     void* def = FindDef_GetSubDef_0();
     if (!def)
@@ -79,7 +88,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_0059350c(CDefPointer<CStockDe
     *(void**)out = def;
     return true;
 }
-__declspec(noinline) bool CDefClassBase::GetSubDef_005bade1(CDefPointer<CInventoryItemDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer<const CInventoryItemDef>* out) const   // 0x005BADE1
 {
     void* def = FindDef_GetSubDef_1();
     if (!def)
@@ -87,7 +96,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_005bade1(CDefPointer<CInvento
     *(void**)out = def;
     return true;
 }
-__declspec(noinline) bool CDefClassBase::GetSubDef_005130a0(CDefPointer<CShopDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CShopDef>(CDefPointer<const CShopDef>* out) const   // 0x005130A0
 {
     void* def = FindDef_GetSubDef_2();
     if (!def)
@@ -97,40 +106,38 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_005130a0(CDefPointer<CShopDef
 }
 #pragma auto_inline(on)
 
-struct CDefTemporary {                          // the by-value CDefPointer<CDefClassBase> result
-    CDefClassBase* Object;
-    CDefTemporary() { }
-    ~CDefTemporary() { if (Object) Object->ReleaseTemporary(); }
-    CDefClassBase* operator->() const { return Object; }
-};
 class CDefinitionManager { public:
-    CDefTemporary GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (Ego_r.pdb QBE)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
-class CTCShop { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04 (CTCBase)
-    CDefinitionManager* GetDefinitions() const; // 0x006869D0 (CTCBase)
-    const CShopItem* FindDefaultStockItem(long defIndex);
+class CTCBase { public:                         // the component base (members this row reads)
+    virtual ~CTCBase();
+    CThing* ParentThing;                        // +0x04
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCShop : public CTCBase { public:
+    const CShopItem* FindDefaultStockItem(long defIndex) const;
 };
 
-const CShopItem* CTCShop::FindDefaultStockItem(long defIndex)
+const CShopItem* CTCShop::FindDefaultStockItem(long defIndex) const
 {
-    CDefTemporary def = GetDefinitions()->GetPDefFromGlobalIndex(defIndex);
-    CDefPointer<CStockDef> stockDef;
-    CDefPointer<CInventoryItemDef> itemDef;
-    CDefPointer<CShopDef> shopDef;
-    if (def->GetSubDef_0059350c(&stockDef) && def->GetSubDef_005bade1(&itemDef)) {
+    CDefPointer<const CDefClassBase> def = GetDefinitionManager().GetPDefFromGlobalIndex(defIndex);
+    CDefPointer<const CStockItemDef> stockDef;
+    CDefPointer<const CInventoryItemDef> itemDef;
+    CDefPointer<const CShopDef> shopDef;
+    if (def->GetSubDef(&stockDef) && def->GetSubDef(&itemDef)) {
         CDefClassBase* thingDef = ParentThing->PDef;
-        if (thingDef->GetSubDef_005130a0(&shopDef)) {
-        for (CStockItemDef* it = shopDef->DefaultStockFirst; it != shopDef->DefaultStockLast; ++it)
-            if (it->Key == defIndex)
+        if (thingDef->GetSubDef(&shopDef)) {
+        for (CShopItemDef* it = shopDef->DefaultStock._M_start; it != shopDef->DefaultStock._M_finish; ++it)
+            if (it->Type == defIndex)
                 return &it->Item;
-        for (CStockItemDef* it2 = shopDef->CategoryStockFirst; it2 != shopDef->CategoryStockLast; ++it2)
-            if (it2->Key == itemDef->Category)
+        for (CShopItemDef* it2 = shopDef->StockCategoryDefaults._M_start; it2 != shopDef->StockCategoryDefaults._M_finish; ++it2)
+            if (it2->Type == itemDef->InventoryCategory)
                 return &it2->Item;
         }
     }

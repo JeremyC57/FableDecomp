@@ -1,7 +1,7 @@
 // CTCPhysicsBase::OnCreate() -- on creation: remember the start position, fetch the physics sub-def of the thing's definition (or drop it when the thing has no definition), derive the radius (mesh bounding-circle radius, else half the def's diameter, else 1), stop the body and mark it moving
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006B0780, 198 bytes (plain `ret`). CTCPhysicsBase vtable 0x0125D2C4 slot 4 (PDB ?OnCreate@CTCPhysicsBase@@UAEXXZ).
-// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0 (PDB IBEABVCGameDefinitionManager@@XZ), CGameDefinitionManager::
-//   GetDef<T>(long, CDefPointer<T>&) @ 0x0042AF3C, CDefClassBase::GetSubDef<CPhysicsDef>(CDefPointer&) @ 0x006B0FA0, the def
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0 (PDB IBEABVCGameDefinitionManager@@XZ), CDefinitionManager::
+//   GetDef<CThingBaseDef>(long, CDefPointer<const ..>*) const @ 0x0042AF3C, CDefClassBase::GetSubDef<CPhysicsDef>(CDefPointer<const ..>*) const @ 0x006B0FA0, the def
 //   release through vtable slot 1, virtual GetPhysicsMeshInfo slot 93 (+0x174). Floats: 0.5f @ 0x0122F59C, 1.0f @ 0x0122DED8.
 // Layout: Ego_r.pdb CTCPhysicsBase (0x40); CThing DefGlobalIndex at retail +0x8c (PDB +0x9c); CPhysicsDef Diameter +0x28 (the
 //   retail CPhysicsDef keeps the PDB offsets: GetAirResistance 0x006AFDE0 reads +0x34 = AirResistance); CThingPhysicsMeshInfo
@@ -27,12 +27,12 @@ struct CDefBase : CDefVirtual {
     long m_refCount;                                    // +0x04
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefBase* Object;                                   // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
     void Clear()
     {
-        T* object = Object;
+        CDefBase* object = Object;
         if (object) {
             if (DecRefToZero(object->m_refCount))
                 object->Destroy();
@@ -50,49 +50,50 @@ template <class T> struct CDefHolder {                  // owns the reference Ge
     T* Object;
     FABLE_FORCEINLINE ~CDefHolder() { ReleaseDef(Object); }
 };
-class CPhysicsDef : public CDefBase { public:
+class CDefClassBase : public CDefBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x006B0FA0 GetSubDef<CPhysicsDef> (Ego_r / FableWin template)
+};
+class CPhysicsDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     float Diameter;                                     // +0x28
-};
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x006B0FA0 (T = CPhysicsDef)
 };
 void* FindDef_s7r_0();
 #pragma auto_inline(off)
 // Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
         return false;
-    void* old = *(void**)&out;
+    void* old = *(void**)out;
     if (old != def) {
         if (old)
             ReleaseDef_s7(old);
-        *(void**)&out = def;
+        *(void**)out = def;
     }
     return true;
 }
 #pragma auto_inline(on)
-struct CThingDef : CDefClassBase { };
-class CGameDefinitionManager { public:
-    template <class T> bool GetDef(long index, CDefPointer<T>& out) const;   // 0x0042AF3C (T = CThingDef)
+class CThingBaseDef : public CDefClassBase { public: };
+class CDefinitionManager { public:
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 void* FindDef_s7r_1();
 #pragma auto_inline(off)
 // Same-TU body of GetDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CGameDefinitionManager::GetDef(long p0, CDefPointer<T>& out) const
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointer<const T>* out) const
 {
     void* def = FindDef_s7r_1();
     if (!def)
         return false;
-    void* old = *(void**)&out;
+    void* old = *(void**)out;
     if (old != def) {
         if (old)
             ReleaseDef_s7(old);
-        *(void**)&out = def;
+        *(void**)out = def;
     }
     return true;
 }
@@ -222,13 +223,13 @@ public:
     long      OldPositionLastFrameSet;                  // +0x24
     C3DVector Velocity;                                 // +0x28
     float     Radius;                                   // +0x34
-    CDefPointer<CPhysicsDef> PhysicsDef;                // +0x38
+    CDefPointer<const CPhysicsDef> PhysicsDef;          // +0x38
     bool      Moving : 1;                               // +0x3c bit 0
     bool      OldMoving : 1;                            // +0x3c bit 1
     float CalculateRadius()
     {
         CThingPhysicsMeshInfo* mesh = GetPhysicsMeshInfo();
-        return mesh ? mesh->BoundingCircleRadius : (PhysicsDef.Object ? PhysicsDef.Object->Diameter * 0.5f : 1.0f);
+        return mesh ? mesh->BoundingCircleRadius : (PhysicsDef.Object ? PhysicsDef->Diameter * 0.5f : 1.0f);
     }
 };
 
@@ -237,10 +238,10 @@ void CTCPhysicsBase::OnCreate()
     OldPosition = Position;
     unsigned short defIndex = ParentThing->DefGlobalIndex;
     if (defIndex != 0) {
-        CDefPointer<CThingDef> thingDef;
-        GetDefinitionManager().GetDef(defIndex, thingDef);
-        CDefHolder<CThingDef> def = { thingDef.Object };
-        def.Object->GetSubDef(PhysicsDef);
+        CDefPointer<const CThingBaseDef> thingDef;
+        GetDefinitionManager().GetDef(defIndex, &thingDef);
+        CDefHolder<CThingBaseDef> def = { static_cast<CThingBaseDef*>(thingDef.Object) };
+        def.Object->GetSubDef(&PhysicsDef);
     } else
         PhysicsDef.Clear();
     Radius = CalculateRadius();

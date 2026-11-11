@@ -6,7 +6,7 @@
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9560, 293 bytes (+11 int3), virtual, `ret`, bool in al.
-// Callees: CDefinitionManager::GetDef<CThingDef>(long, CDefPointer*) @ 0x0042AF3C, the thing manager's member @ 0x0051E2E0
+// Callees: CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const @ 0x0042AF3C, the thing manager's member @ 0x0051E2E0
 //   (manifest "CTCInventoryBase::GetCanItemBeQuickAssigned" is propagated; name not recovered), the driver's virtual slot 29
 //   (+0x74), the component map's (CVectorMap) copy constructor @ 0x004CC290, each component's virtual slot 4 (+0x10), the member
 //   @ 0x00A36F80 taking the thing manager (manifest "CThingFilter_IsValid::operator()" is propagated), free @ 0x00BFEA14.
@@ -26,11 +26,11 @@ class CThingBaseDef { public:
     unsigned char IsLoadableGlobal : 1;          // +0x42 bit 0
     unsigned char GameStatePersisted : 1;        // bit 1
 };
-struct CDefPointer {                             // CDefPointer<const CThingBaseDef>
-    CThingBaseDef* Object;
+template <class T> class CDefPointer { public:  // CDefPointer<const CThingBaseDef>
+    T* Object;
 };
 class CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointer* out);   // 0x0042AF3C
+    template <class T> bool GetDef(long globalIndex, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb, const)
 };
 class CThingManager { public:
     unsigned char _pad00[0x20];
@@ -90,7 +90,7 @@ private: public:
     unsigned char  _pad54[0x5c - 0x54];
     CTCDriverBase* PTCDriver;                    // +0x5c
     unsigned char  _pad60[0x70 - 0x60];
-    CDefPointer    PBaseDef;                     // +0x70
+    CDefPointer<const CThingBaseDef> PBaseDef;   // +0x70
     unsigned char  _pad74[0x8c - 0x74];
     unsigned short DefGlobalIndex;               // +0x8c
     unsigned char  _pad8e[0x91 - 0x8e];

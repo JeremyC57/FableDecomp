@@ -3,9 +3,9 @@
 // CTCInventoryAbilities::InitialiseAbilities() -- binds every HERO_ABILITY def to its ability slot and clears the experience spent on it, then sizes the received-ability order list from the UI misc-things def
 // Retail 0x005EEDE2, 260 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CTCBase::GetDefinitionManager 0x006869D0
-// (landed as GetDefinitions / GetDefinitionManager), CDefinitionManager::GetNumberOfDefsOfType(const CCharString&)
-// 0x009AD3B0, GetDef(const CCharString&, long, CDefPointer<CHeroAbilityDef>*) 0x005F89F2, GetUIMiscThingsDef()
-// 0x005EE3B3 (CDefPointer by value; manifest "CCreatureAction_CastStrengthMultiStrikeProper" is propagated),
+// const, CDefinitionManager::GetNoInstantiatedDefsOfType(const CCharString&) const 0x009AD3B0, GetDef<CHeroAbilityDef>(const
+// CCharString&, long, CDefPointer<const CHeroAbilityDef>*) const 0x005F89F2, CTCInventoryAbilities::GetMiscThingsDef() const
+// 0x005EE3B3 (const CDefPointer<const NUISystem::CUIMiscThingsDef> by value),
 // vector<EHeroAbility>::resize(n, const EHeroAbility&) 0x005F9DF8 (manifest "CArray<pair<long,long>>::push_back"),
 // the defs' slot 1 on release.
 // Shape: both type names convert implicitly (built first, re-addressed with `lea`); the count lives in a block that
@@ -37,12 +37,14 @@ class CHeroAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad_0x08[0x3c - 0x08];
     EHeroAbility Ability;                              // +0x3c
 };
-struct CUIMiscThingsDef : CDefPointeeBase {
+namespace NUISystem {
+class CUIMiscThingsDef : public CDefPointeeBase { public:
     unsigned char _pad_0x08[0x148 - 0x08];
     unsigned long TotalSpellsInPalettes;               // +0x148
 };
+}
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointeeBase* Object;                           // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
@@ -58,15 +60,16 @@ template <class T> class CDefPointer { public:
         }
         return *this;
     }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 class CDefinitionManager { public:
-    long GetNumberOfDefsOfType(const CCharString& typeName);                                       // 0x009AD3B0
-    bool GetDef(const CCharString& typeName, long index, CDefPointer<CHeroAbilityDef>* out);       // 0x005F89F2
+    long GetNoInstantiatedDefsOfType(const CCharString& typeName) const;                             // 0x009AD3B0 (Ego_r / FableWin QBE)
+    template <class T> bool GetDef(const CCharString& typeName, long index, CDefPointer<const T>* out) const;   // 0x005F89F2 GetDef<CHeroAbilityDef> (FableWin template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 struct SAbilityEntry {                                 // pair<long, CDefPointer<const CHeroAbilityDef>>
     long Level;                                        // +0x00
-    CDefPointer<CHeroAbilityDef> PDef;                 // +0x04
+    CDefPointer<const CHeroAbilityDef> PDef;           // +0x04
 };
 template <class T> struct CVector {                    // STLport vector (12 bytes)
     T* _M_start;
@@ -79,40 +82,45 @@ struct CAbilityOrderVector : CVector<EHeroAbility> {
     void resize(unsigned long n, const EHeroAbility& value);   // 0x005F9DF8
 };
 
-class CTCInventoryAbilities { public:
-    unsigned char _pad_0x000[0x148];
+class CTCBase { public:                                // the component base (members this row reads)
+    virtual ~CTCBase();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCInventoryAbilities : public CTCBase { public:
+    unsigned char _pad_0x004[0x148 - 0x4];
     CVector<long> ExperienceSpentOnAbilities;          // +0x148
     CAbilityOrderVector ReceivedAbilityOrder;          // +0x154
     CVector<SAbilityEntry> Abilities;                  // +0x160
-    CDefinitionManager* GetDefinitionManager() const;  // 0x006869D0 (CTCBase)
-    CDefPointer<CUIMiscThingsDef> GetUIMiscThingsDef();   // 0x005EE3B3
     void InitialiseAbilities();
+private:
+    const CDefPointer<const NUISystem::CUIMiscThingsDef> GetMiscThingsDef() const;   // 0x005EE3B3 (Ego_r.pdb ABE, const result)
 };
 
 extern "C" int StandInSink(int, int);
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(const CCharString&, long, CDefPointer<CHeroAbilityDef>* out2)
+template <class T> bool CDefinitionManager::GetDef(const CCharString&, long, CDefPointer<const T>* out2) const
 {
     *(int*)out2 = StandInSink((int)this, 1);
     return (bool)StandInSink((int)this, 101);
 }
-CDefPointer<CUIMiscThingsDef> CTCInventoryAbilities::GetUIMiscThingsDef()
+const CDefPointer<const NUISystem::CUIMiscThingsDef> CTCInventoryAbilities::GetMiscThingsDef() const
 {
-    CDefPointer<CUIMiscThingsDef> result;
-    result.Object = (CUIMiscThingsDef*)StandInSink((int)this, 2);
+    CDefPointer<const NUISystem::CUIMiscThingsDef> result;
+    result.Object = (CDefPointeeBase*)StandInSink((int)this, 2);
     return result;
 }
 #pragma auto_inline(on)
 void CTCInventoryAbilities::InitialiseAbilities()
 {
-    long count = GetDefinitionManager()->GetNumberOfDefsOfType("HERO_ABILITY");
+    long count = GetDefinitionManager().GetNoInstantiatedDefsOfType("HERO_ABILITY");
     for (long i = 1; i < count; ++i) {
-        CDefPointer<CHeroAbilityDef> def;
-        GetDefinitionManager()->GetDef("HERO_ABILITY", i, &def);
+        CDefPointer<const CHeroAbilityDef> def;
+        GetDefinitionManager().GetDef("HERO_ABILITY", i, &def);
         Abilities[def->Ability].PDef = def;
         ExperienceSpentOnAbilities[i] = 0;
     }
-    CDefPointer<CUIMiscThingsDef> misc = GetUIMiscThingsDef();
+    CDefPointer<const NUISystem::CUIMiscThingsDef> misc = GetMiscThingsDef();
     unsigned long n = misc->TotalSpellsInPalettes;
     ReceivedAbilityOrder.resize(n, ABILITY_NULL);
 }

@@ -21,6 +21,9 @@ class CWorld;
 #if defined(FABLE_RETAIL_CMAINGAMECOMPONENT) && defined(FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE)
 class CDisplayEngine;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKDISPLAYENGINE
+class CDisplayEngine;                               // agentNF14: PeekDisplayEngine's return type
+#endif
 #if defined(FABLE_RETAIL_CMAINGAMECOMPONENT) && defined(FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK)
 namespace NGameText { class CDataBank; }
 class CFontBank;
@@ -224,6 +227,12 @@ public:
     // ?GetDisplayEngine@CMainGameComponent@@QAEAAVCDisplayEngine@@XZ, inline in retail (the caller reads the scoped_ptr word +0x28 in
     // place, 0x005E790B). PDisplayEngine stays opaque (boost::scoped_ptr<CDisplayEngine>, one pointer word), read as that word.
     CDisplayEngine& GetDisplayEngine() { return **reinterpret_cast<CDisplayEngine* const*>(PDisplayEngine); }
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKDISPLAYENGINE
+    // Nested opt-in (agentNF14, row 0x007E2790 CTCFineDialogue::IsAllowed): FableWin.pdb
+    // ?PeekDisplayEngine@CMainGameComponent@@QBEABVCDisplayEngine@@XZ (0x01A700DC), inline in retail (the caller reads the scoped_ptr
+    // word +0x28 of CTCBase::PeekComponent()'s result in place, 0x007E279F). The const twin of GetDisplayEngine; no layout change.
+    const CDisplayEngine& PeekDisplayEngine() const { return **reinterpret_cast<CDisplayEngine* const*>(PDisplayEngine); }
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_WORLDFRAME
     // Nested opt-in (chunk 755, row 0x008AF500 CombatDialogueManager::AttemptToSpeak): Ego_r.pdb

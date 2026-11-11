@@ -7,6 +7,10 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT
+#define FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
+#include "engine/CFadeInFadeOutBase.h"
+#endif
 
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES
 class CGameEventPackage;
@@ -46,6 +50,12 @@ public:
     void PreChangeResolution();                                         // 0x00434A10 ?PreChangeResolution@CDisplayEngine@@QAEXXZ
     void PostChangeResolution(unsigned long, unsigned long, unsigned long);   // 0x00434A20 ?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT
+    // Retail opt-in (agentNF14, row 0x007E2790 CTCFineDialogue::IsAllowed): FableWin.pdb ?IsScreenFadeOut@CDisplayEngine@@QBE_NXZ
+    // (0x01A70098), inline in retail (the caller tests the byte +0xBC, ScreenFadeOutInfo +0xBC with CFadeInFadeOutBase::Active at +0, in
+    // place, 0x007E27A2). ScreenFadeOutInfo is typed CFadeInFadeOutBase under this opt-in (same 0x1c bytes, pack 1).
+    bool IsScreenFadeOut() const { return ScreenFadeOutInfo.IsActive(); }
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?Get3DEngine@CDisplayEngine@@QAEAAVCIEngine@@XZ,
     // inline in retail (the caller reads Engine3D +0x2C in place, 0x005E790E). Define FABLE_RETAIL_CIENGINE for the polymorphic CIEngine.
@@ -77,7 +87,11 @@ public:
     unsigned char           _pad_0xb1[0x3];                  // +0xb1
     float                   GammaRamp;                       // +0xb4
     float                   OldGammaRamp;                    // +0xb8
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT
+    CFadeInFadeOutBase      ScreenFadeOutInfo;               // +0xbc (typed: Ego_r.pdb CFadeInFadeOutBase, 0x1c bytes)
+#else
     unsigned char           ScreenFadeOutInfo[0x1c];         // +0xbc CFadeInFadeOutBase
+#endif
     bool                    ScreenFadeOutLocked;             // +0xd8
     bool                    DrawMemoryUse;                   // +0xd9
     unsigned char           _pad_0xda[0x2];                  // +0xda

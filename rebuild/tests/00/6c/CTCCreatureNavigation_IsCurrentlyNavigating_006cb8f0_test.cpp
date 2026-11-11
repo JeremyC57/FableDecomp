@@ -1,31 +1,32 @@
+// Behaviour test for 0x006CB8F0 CTCCreatureNavigation::IsCurrentlyNavigating() const: true when FrameLastNavigated (+0x50) is
+// non-negative and the world frame is at most one past it; the GetWorld() call is made only on the non-negative path.
 #include <cstdio>
-class CTCCreatureNavigation { public:
+#include <cstddef>
+class CWorld { public: static long GetFrame(); };
+static long g_frame = 0;
+static int g_getWorldCalls = 0;
+long CWorld::GetFrame() { return g_frame; }
+static CWorld g_world;
+class CTCCreatureNavigation {
+public:
     char pad[0x50];
-    int cur;
+    int  FrameLastNavigated;                                // +0x50
+    CWorld& GetWorld() const { ++g_getWorldCalls; return g_world; }
+    bool IsCurrentlyNavigating() const { return FrameLastNavigated >= 0 && GetWorld().GetFrame() - FrameLastNavigated <= 1; }
 };
-static int g_a = 0;
-static int g_b = 0;
-extern "C" int helperA(void){ return g_a; }
-extern "C" int helperB(void){ return g_b; }
-int __fastcall CTCCreatureNavigation_IsCurrentlyNavigating(CTCCreatureNavigation* navigation)
+int main()
 {
-    if (navigation->cur >= 0) {
-        helperA();
-        if (helperB() - navigation->cur <= 1)
-            return 1;
-    }
-    return 0;
-}
-int main(){
     CTCCreatureNavigation o;
-    o.cur = -5;
-    if (CTCCreatureNavigation_IsCurrentlyNavigating(&o)) { std::printf("FAIL neg\n"); return 1; }
-    o.cur = 10; g_b = 10;
-    if (!CTCCreatureNavigation_IsCurrentlyNavigating(&o)) { std::printf("FAIL eq\n"); return 1; }
-    o.cur = 10; g_b = 11;
-    if (!CTCCreatureNavigation_IsCurrentlyNavigating(&o)) { std::printf("FAIL one\n"); return 1; }
-    o.cur = 10; g_b = 12;
-    if (CTCCreatureNavigation_IsCurrentlyNavigating(&o)) { std::printf("FAIL two\n"); return 1; }
+    if (offsetof(CTCCreatureNavigation, FrameLastNavigated) != 0x50) { std::printf("FAIL layout\n"); return 1; }
+    o.FrameLastNavigated = -5;
+    if (o.IsCurrentlyNavigating() || g_getWorldCalls != 0) { std::printf("FAIL neg\n"); return 1; }
+    o.FrameLastNavigated = 10; g_frame = 10;
+    if (!o.IsCurrentlyNavigating()) { std::printf("FAIL eq\n"); return 1; }
+    g_frame = 11;
+    if (!o.IsCurrentlyNavigating()) { std::printf("FAIL one\n"); return 1; }
+    g_frame = 12;
+    if (o.IsCurrentlyNavigating()) { std::printf("FAIL two\n"); return 1; }
+    if (g_getWorldCalls != 3) { std::printf("FAIL calls\n"); return 1; }
     std::printf("CTCCreatureNavigation_006cb8f0_TEST PASS\n");
     return 0;
 }

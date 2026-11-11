@@ -5,7 +5,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659164, 305 bytes (plain `ret`, `leave`).
-// Callees: CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) 0x0042AF3C;
+// Callees: CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer<const ..>*) const 0x0042AF3C;
 //          CDefClassBase::GetSubDef<CVillageDef>(CDefPointer<const CVillageDef>*) 0x0065F440 (into PDef);
 //          CWorld::PeekMyPlayer() const 0x0049D9D0; CPlayer::GetPControlledCreature() 0x00487DC0;
 //          CDefClassBase::GetSubDef<CVillagePeopleDef> 0x00512FE0; IS_THING_ALIVE<const CThing*>(const CThing* const&) 0x0043DBD0
@@ -39,47 +39,47 @@ struct CDefBase {
     }
 };
 template<class T> class CDefPointer { public:
-    T* Object;
+    CDefBase* Object;                           // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) {}
     FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
-class CVillageDef : public CDefBase { public:
+class CDefClassBase : public CDefBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // GetSubDef<CVillageDef> 0x0065F440 / <CVillagePeopleDef> 0x00512FE0 (Ego_r / FableWin templates)
+};
+class CThingBaseDef : public CDefClassBase { public: };
+class CVillageDef : public CDefClassBase { public:
     unsigned char _pad_0x08[0x30];
     long          DefaultStanceToHero;          // +0x38 (EVillageStanceToHero)
 };
-class CVillagePeopleDef : public CDefBase { public:
+class CVillagePeopleDef : public CDefClassBase { public:
     unsigned char _pad_0x08[0xb8];
     long          GuardRespawnMaxRenownBasedOffset;   // +0xc0
 };
 
-struct CThingDef : CDefBase {
-    bool GetSubDef(CDefPointer<CVillageDef>* out);          // 0x0065F440
-    bool GetSubDef(CDefPointer<CVillagePeopleDef>* out);    // 0x00512FE0
-};
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
 class CGameDefinitionManager : public CDefinitionManager
 {
 };
-CThingDef* FindRef_CDefinitionManager_GetDef_0(long index);   // stand-in callees of the stand-in bodies below
-CVillagePeopleDef* FindRef_CThingDef_GetSubDef_0(CThingDef* def);
+CDefBase* FindRef_CDefinitionManager_GetDef_0(long index);   // stand-in callees of the stand-in bodies below
+CDefBase* FindRef_CThingDef_GetSubDef_0(const CDefClassBase* def);
 // Stand-in bodies (the real ones are out of line: 0x0042AF3C elsewhere, 0x00512FE0 in another TU; retail's link-time
 // knowledge): they only write the def through the out parameter, so VC7.1 knows the caller's address-taken pointer does
 // not escape the call.
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
+template <> bool CDefinitionManager::GetDef<CThingBaseDef>(long index, CDefPointer<const CThingBaseDef>* out) const
 {
-    CThingDef* def = FindRef_CDefinitionManager_GetDef_0(index);
+    CDefBase* def = FindRef_CDefinitionManager_GetDef_0(index);
     if (!def)
         return false;
     out->Object = def;
     return true;
 }
-bool CThingDef::GetSubDef(CDefPointer<CVillagePeopleDef>* out)
+template <> bool CDefClassBase::GetSubDef<CVillagePeopleDef>(CDefPointer<const CVillagePeopleDef>* out) const
 {
-    CVillagePeopleDef* def = FindRef_CThingDef_GetSubDef_0(this);
+    CDefBase* def = FindRef_CThingDef_GetSubDef_0(this);
     if (!def)
         return false;
     out->Object = def;
@@ -165,7 +165,7 @@ public:
     unsigned char _pad_0x08[0x7c];
     bool          InCurfew;                     // +0x84
     unsigned char _pad_0x85[0xf];
-    CDefPointer<CVillageDef> PDef;              // +0x94
+    CDefPointer<const CVillageDef> PDef;        // +0x94
     long          StanceToHero;                 // +0x98
     long          TimeStopIndex;                // +0x9c
     long          AmountOfFineAlreadyPaid;      // +0xa0
@@ -178,14 +178,14 @@ public:
 
 void CTCVillage::OnCreate()
 {
-    CDefPointer<CThingDef> thingDef;
+    CDefPointer<const CThingBaseDef> thingDef;
     GetDefinitionManager().GetDef(ParentThing->DefIndex, &thingDef);
     thingDef->GetSubDef(&PDef);
     StanceToHero = PDef->DefaultStanceToHero;
     NextGuardRespawn = 0;
     InCurfew = false;
     CThingPlayerCreature* hero = ((CPlayer*)((CWorld*)(CMainGameComponent::Get()->World))->PeekMyPlayer())->GetPControlledCreature();
-    CDefPointer<CVillagePeopleDef> peopleDef;
+    CDefPointer<const CVillagePeopleDef> peopleDef;
     if (thingDef->GetSubDef(&peopleDef) && IS_THING_ALIVE(hero) && hero->HasTC(0x14))
         NextGuardRespawn = (long)(((CTCRenownRatio*)hero->GetTC(0x14))->CalculateRatio()
                                   * peopleDef->GuardRespawnMaxRenownBasedOffset);

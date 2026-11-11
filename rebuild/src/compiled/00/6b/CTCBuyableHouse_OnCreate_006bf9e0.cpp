@@ -5,8 +5,8 @@
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BF9E0, 301 bytes (+3 int3 padding), `ret`. CTCBase vtable slot 4 (the catalog's
 //   "vfunc_4"; slot 4 is OnCreate, as the landed CTCHeroSpecialMovement::OnCreate 0x007E0910).
-// Callees: CTCBase::GetDefinitions() 0x006869D0, CDefinitionManager::GetDef(long, CDefPointer*) 0x0042AF3C and
-//   CDefClassBase::GetSubDef<CBuyableHouseDef>(CDefPointer*) 0x006C1B00 (both manifest labels propagated instantiations;
+// Callees: CTCBase::GetDefinitionManager() const 0x006869D0, CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer<const ..>*)
+//   const 0x0042AF3C and CDefClassBase::GetSubDef<CBuyableHouseDef>(CDefPointer<const ..>*) const 0x006C1B00 (FableWin / Ego_r templates;
 //   same-TU stand-in bodies as the landed 0x007E0910), CThing::SetAsGameStatePersisted(bool) 0x004C7880,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (non-const), CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   the def's slot 1 on release.
@@ -42,11 +42,12 @@ class CBuyableHouseDef : public CDefPointeeBase { public:
     bool          IsBuyableWithoutSignpost;     // +0x49
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<const CBuyableHouseDef>* out);   // 0x006C1B00
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x006C1B00 GetSubDef<CBuyableHouseDef> (Ego_r / FableWin template)
 };
+class CThingBaseDef : public CDefClassBase { public: };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CBuyableHouseDef>* out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_1();
     if (!def)
@@ -57,11 +58,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CBuyableHou
 #pragma auto_inline(on)
 class CDefinitionManager {
 public:
-    bool GetDef(long index, CDefPointer<const CDefClassBase>* out);     // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const CDefClassBase>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -129,7 +131,8 @@ public:
     CThing* GetParentThing() const { return ParentThing; }
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CDefinitionManager* GetDefinitions();       // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
 };
 class CTCBuyableHouse : public CTCBase {
 public:
@@ -149,9 +152,9 @@ void CTCBuyableHouse::OnCreate()
     if (GetParentThing()->DefIndex == 0)
         return;
     {
-        CDefPointer<const CDefClassBase> out;
-        GetDefinitions()->GetDef(GetParentThing()->DefIndex, &out);
-        CDefClassBase* def = (CDefClassBase*)out.Object;
+        CDefPointer<const CThingBaseDef> out;
+        GetDefinitionManager().GetDef(GetParentThing()->DefIndex, &out);
+        CThingBaseDef* def = (CThingBaseDef*)out.Object;
         def->GetSubDef(&PDef);
         IsScripted = PDef.Object && PDef->IsScripted ? true : false;
         if (PDef.Object && (PDef->IsBuyable || PDef->IsBuyableWithoutSignpost)) {

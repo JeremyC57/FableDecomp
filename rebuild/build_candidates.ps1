@@ -1136,9 +1136,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006ceae0'
-        Module = 'CTCHeroExperience'
-        Source = '00/6c/CTCHeroExperience_AddSuccessfulBlockParry_006ceae0.cpp'
-        TestSource = '00/6c/CTCHeroExperience_AddSuccessfulBlockParry_006ceae0_test.cpp'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/6c/CTCCreatureOpinionOfHero_ResetLastOpinionReactionFrame_006ceae0.cpp'
+        TestSource = '00/6c/CTCCreatureOpinionOfHero_ResetLastOpinionReactionFrame_006ceae0_test.cpp'
         PassPattern = 'CTCHeroExperience_006ceae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -1192,9 +1192,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006585ee'
-        Module = 'CTCHeroExperience'
-        Source = '00/65/CTCHeroExperience_AddSuccessfulBlockParry_006585ee.cpp'
-        TestSource = '00/65/CTCHeroExperience_AddSuccessfulBlockParry_006585ee_test.cpp'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_NotifyHasApologised_006585ee.cpp'
+        TestSource = '00/65/CTCVillage_NotifyHasApologised_006585ee_test.cpp'
         PassPattern = 'CTCHeroExperience_006585ee_TEST PASS'
     }
     [pscustomobject]@{
@@ -32420,9 +32420,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006af630'
-        Module = '_unattributed'
-        Source = '00/6a/_unattributed_DisplayEnginePredicate13_006af630_006af630.cpp'
-        TestSource = '00/6a/_unattributed_DisplayEnginePredicate13_006af630_006af630_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_GetWorldMap_006af630.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_GetWorldMap_006af630_test.cpp'
         PassPattern = '006af630_TEST PASS'
     }
     [pscustomobject]@{
@@ -275586,7 +275586,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c8780'
-        Module = 'CPersistTraits<CIntelligentPointer<CThing>>'
+        Module = 'CPersistTraits<CIntelligentPointer<CThing> >'
         Source = '00/6c/CPersistTraitsCIntelligentPointerCThing_TransferBinaryIn_006c8780.cpp'
         TestSource = '00/6c/CPersistTraitsCIntelligentPointerCThing_TransferBinaryIn_006c8780_test.cpp'
         PassPattern = '006c8780_TEST PASS'

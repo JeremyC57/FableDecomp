@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C1FC, 210 bytes (`ret 4`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)`. Ego_r.pdb `?RemoveCrimeIfApologisable@CTCVillage@@QAEXJ@Z`.
 // Callees: CTCBase::GetWorld() 0x00686A70 (its result only feeds the static frame getter); CWorld::GetWorldFrame()
-//          0x0049D870 (static); CWorld::GetCurrentPlayer() const 0x0049D9D0 (CMainGameComponent::Get() 0x013B86A0 +0x24);
+//          0x0049D870 (static); CWorld::PeekMyPlayer() const 0x0049D9D0 (CMainGameComponent::Get() 0x013B86A0 +0x24);
 //          CPlayer::GetPControlledCreature() 0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x51); CVectorMap<
 //          ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020; CTCHeroOpinionDeedLog::GetDeedFromHandle(long) 0x006C58F0;
 //          the effects-def getter 0x006C5630 (landed spelling GetDeedEffectsDef); CTCVillage::RemoveCrime(long) 0x0065C146;
@@ -18,20 +18,33 @@
 //        from the unchecked out-parameter GetInterface (the absent arm reads the handle's argument slot); the effects def
 //        is a named counted-pointer local in the lookup key's frame word, released by its `__forceinline` null-tested
 //        destructor (the clear of its pointer is elided before the return).
+// GetWorld (agentNF14 2026-11-11): the class is now the retail engine/CTCVillage.h (FABLE_RETAIL_CTCVILLAGE: CTCVillage : CTCBase), so
+//   the frame read binds CTCBase::GetWorld() const 0x00686A70; the deed-log effects getter is Ego_r.pdb
+//   ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z (engine/
+//   CTCHeroOpinionDeedLog.h _DEEDS) and its result the shared CDefPointer<const COpinionDeedEffectsDef> (count-reference release).
 // Layout (supersedes any local-model note above): engine/CTCVillage.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
 // Name fix (agentNF5 2026-11-10): CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 is const and returns a const pointer (?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
-#define CTCVillage CTCVillageDonor
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_COUNTREF
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCVILLAGE
+#define FABLE_RETAIL_CTCVILLAGE_CRIMES
+#define FABLE_RETAIL_CTCHEROOPINIONDEEDLOG
+#define FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_DEEDS
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/ETCInterfaceType.h"
 #include "engine/CTCVillage.h"
-#undef CTCVillage
+#include "stlport/fable_map.h"
+#include "engine/CTCHeroOpinionDeedLog.h"
+#include "engine/COpinionDeed.h"
+#include "engine/CVectorMap.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CTCBase;
 
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -62,7 +75,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
+    const CPlayer* PeekMyPlayer() const;        // 0x0049D9D0 (Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
     static long __fastcall GetFrame();                // 0x0049D870
 };
 class CMainGameComponent {
@@ -75,70 +88,27 @@ private: public:
     CWorld*       World;                        // +0x24
 };
 
-struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-};
-class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
-    unsigned char _pad_0x08[0x34];
-    long KnowledgeLifeInSeconds;                // +0x3c
-    unsigned char _pad_0x40[0x3c];
+class COpinionDeedEffectsDef : public CDefPointeeBase { public:   // the def's flag byte (retail +0x7c; Ego_r.pdb +0x90)
+    unsigned char _pad_0x1c[0x7c - 0x1c];
     bool CanBeHeard : 1;                        // +0x7c bit 0
     bool ReactionRestrictToTarget : 1;          // bit 1
     bool AllowSimultaneousReactionDialogue : 1; // bit 2
     bool CanApologise : 1;                      // bit 3
-    FABLE_FORCEINLINE void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        if (Object) {
-            Object->ReleaseTemporary();
-            Object = 0;
-        }
-    }
-};
-class COpinionDeed { public:
-    long          DeedType;                     // +0x00 EOpinionDeedType
-    unsigned char _pad_0x04[0x1d];
-    bool          IsStillHappening;             // +0x21
-};
-class CTCHeroOpinionDeedLog { public:
-    const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
-    CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
-};
-
-class CTCVillage : public CTCVillageDonor {
- public:
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
-    void RemoveCrime(long deedHandle);          // 0x0065C146
-    void RemoveCrimeIfApologisable(long deedHandle);
 };
 
 void CTCVillage::RemoveCrimeIfApologisable(long deedHandle)
 {
     long* lastApology = &LastFrameApologised;
-    if (*lastApology != 0 && GetWorld()->GetFrame() - *lastApology < 450)
+    if (*lastApology != 0 && GetWorld().GetFrame() - *lastApology < 450)
         return;
-    CThing* hero = CMainGameComponent::Get()->World->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->World->PeekMyPlayer()->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);
-        COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(deedHandle);
+        const COpinionDeed* deed = log->GetDeedFromHandle(deedHandle);
         if (deed) {
-            CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(deed->DeedType);
-            if (!deed->IsStillHappening && effects.Object->CanApologise)
+            CDefPointer<const COpinionDeedEffectsDef> effects = log->PeekPDeedEffectsDef(deed->DeedType);
+            if (!deed->IsStillHappening && effects->CanApologise)
                 RemoveCrime(deedHandle);
         }
     }

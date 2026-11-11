@@ -1,4 +1,7 @@
 // NInventory::CItem::AddItem(long, long, long) -- add items of a type
+// Leaf: ?AddItem@CItem@NInventory@@QAEXJJJ@Z
+// Callees (NF14): CDefinitionManager::GetDef<CThingBaseDef> const 0x0042AF3C, CDefClassBase::GetSubDef<CObjectAugmentationsDef> const
+//   0x0042AF9E (its StatGetTypeName literal 0x0122FF9C is "CObjectAugmentationsDef"; was spelt GetSubDef<CAugmentationDef>).
 #include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #pragma optimize("y", off)
@@ -21,11 +24,11 @@ struct CDefBase {
     long m_refCount;                               // +0x04
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefBase* Object;                              // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
     FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    T* Detach() { T* p = Object; Object = 0; return p; }
+    T* operator->() const { return static_cast<T*>(Object); }
+    CDefBase* Detach() { CDefBase* p = Object; Object = 0; return p; }
 };
 template <class T> struct CDefHolder {             // adopts a reference (no addref)
     T* Object;
@@ -33,51 +36,54 @@ template <class T> struct CDefHolder {             // adopts a reference (no add
     FABLE_FORCEINLINE ~CDefHolder() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-class CAugmentationDef : public CDefBase { public:
+class CDefClassBase : public CDefBase { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042AF9E GetSubDef<CObjectAugmentationsDef> (Ego_r / FableWin template)
+};
+class CObjectAugmentationsDef : public CDefClassBase { public:   // Ego_r.pdb layout, retail STLport 12-byte map
     unsigned char _pad08[0x28 - 0x08];
     long NumberOfSlots;                            // +0x28
     unsigned char _pad2c[0x40 - 0x2c];
-    vector<unsigned long> SlotValues;              // +0x40
+    vector<unsigned long> InitialAugmentations;    // +0x40 (PDB +0x44)
 };
-class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0042AF9E
-};
+class CThingBaseDef : public CDefClassBase { public: };
 void* FindDef_s7r_0();
 #pragma auto_inline(off)
 // Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out) const
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_s7r_0();
     if (!def)
         return false;
-    void* old = *(void**)&out;
+    void* old = *(void**)out;
     if (old != def) {
         if (old)
             ReleaseDef_s7(old);
-        *(void**)&out = def;
+        *(void**)out = def;
     }
     return true;
 }
 #pragma auto_inline(on)
-class CGameDefinitionManager { public:
+class CDefinitionManager { public:
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:   // RTTI CGameDefinitionManager : CDefinitionManager
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-    template <class T> bool GetDef(long index, CDefPointer<T>& out) const;   // 0x0042AF3C
 };
 void* FindDef_s7r_1();
 #pragma auto_inline(off)
 // Same-TU body of GetDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
 // CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template <class T> __declspec(noinline) bool CGameDefinitionManager::GetDef(long p0, CDefPointer<T>& out) const
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointer<const T>* out) const
 {
     void* def = FindDef_s7r_1();
     if (!def)
         return false;
-    void* old = *(void**)&out;
+    void* old = *(void**)out;
     if (old != def) {
         if (old)
             ReleaseDef_s7(old);
-        *(void**)&out = def;
+        *(void**)out = def;
     }
     return true;
 }
@@ -93,34 +99,36 @@ struct CCountedPointer_PerItemData {
     void Reset(CPerItemData* object);              // 0x005C1946
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct CItem {
+namespace NInventory {
+class CItem { public:                              // NInventory::CItem (Ego_r.pdb / FableWin.pdb; the engine/CItem.h layout, PPerItemData as its counted pointer)
     long                        ItemType;          // +0x00
     long                        NumberOfItems;     // +0x04
     CCountedPointer_PerItemData PPerItemData;      // +0x08
     long                        AverageBoughtPrice;   // +0x10
-    void AddItem(long itemType, long number, long price);
+    void AddItem(long itemType, long number, long price);   // Ego_r.pdb ?AddItem@CItem@NInventory@@QAEXJJJ@Z
 };
+}
 
-void CItem::AddItem(long itemType, long number, long price)
+void NInventory::CItem::AddItem(long itemType, long number, long price)
 {
     if (NumberOfItems == 0) {
         AverageBoughtPrice = 0;
         if (IsAugmentation(itemType)) {
             PPerItemData.Reset(new CPerItemData());
-            CDefPointer<CDefClassBase> def;
-            CGameDefinitionManager::Get().GetDef(itemType, def);
+            CDefPointer<const CThingBaseDef> def;
+            CGameDefinitionManager::Get().GetDef(itemType, &def);
             bool found;
-            CAugmentationDef* raw;
+            CObjectAugmentationsDef* raw;
             {
-                CDefPointer<CAugmentationDef> out;
-                found = def->GetSubDef(out);
-                raw = out.Detach();
+                CDefPointer<const CObjectAugmentationsDef> out;
+                found = def->GetSubDef(&out);
+                raw = static_cast<CObjectAugmentationsDef*>(out.Detach());
             }
-            CDefHolder<CAugmentationDef> augmentation(raw);
+            CDefHolder<CObjectAugmentationsDef> augmentation(raw);
             if (found) {
                 PPerItemData.m_pObject->SlotValues.resize(augmentation->NumberOfSlots, 0);
-                for (unsigned long i = 0; i < augmentation->SlotValues.size() && i < PPerItemData.m_pObject->SlotValues.size(); ++i)
-                    PPerItemData.m_pObject->SlotValues[i] = augmentation->SlotValues[i];
+                for (unsigned long i = 0; i < augmentation->InitialAugmentations.size() && i < PPerItemData.m_pObject->SlotValues.size(); ++i)
+                    PPerItemData.m_pObject->SlotValues[i] = augmentation->InitialAugmentations[i];
             }
         }
     }

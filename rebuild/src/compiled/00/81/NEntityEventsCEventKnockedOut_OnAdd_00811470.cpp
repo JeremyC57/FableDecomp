@@ -8,8 +8,8 @@
 // (Ego_r.pdb); no pointer to it survives in the exe (no vtable slot references it).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), the interface map LowerBound @ 0x0040F020 and its const
 // copy @ 0x004365B0, CGameDefinitionManager::Get @ 0x0044C6B0 (__fastcall), CDefinitionManager::GetDef<T> @ 0x0042AF3C,
-// CDefClassBase::GetSubDef<CCreatureDef> @ 0x00485815 (landed; the catalog says CAbilityDef), IsThingGhostSword(CThing*) @ 0x007C53F0 (__fastcall),
-// CTCHeroStats::InformOfEvent(const NHeroStatModifierEvent::CBase*) @ 0x0057A56C, the defs' virtual slot 1 on release.
+// CDefClassBase::GetSubDef<CCreatureDef> @ 0x00485815 (landed; the catalog says CAbilityDef), CTCGhostSword::IsThingGhostSword(const CThing*) @ 0x007C53F0 (static __fastcall),
+// CTCHeroStats::InformOfEvent(const NHeroStatModifierEvent::CBase&) @ 0x0057A56C, the defs' virtual slot 1 on release.
 // Vtable: NHeroStatModifierEvent::CKnockedThingUnconscious 0x01272334 (RTTI) for the stack event.
 // Layout: the event's knocked-out-by intelligent pointer +8 (GetPKnockedOutBy); CTCEntityEvents ParentThing +4; retail CThing interface bitset
 // +0x20, interface map +0x44, def index (word) +0x8c; CCreatureDef's reported value +0x40; component 0xa0's flag +0x10.
@@ -78,11 +78,11 @@ struct CDefPointee {
     long m_refCount;                                    // +0x04
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefPointee* Object;                                // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    CDefPointer& operator=(const CDefPointer& other)
+    T* operator->() const { return static_cast<T*>(Object); }
+    template <class U> CDefPointer& operator=(const CDefPointer<U>& other)
     {
         if (Object != other.Object) {
             if (Object) {
@@ -97,40 +97,42 @@ template <class T> class CDefPointer { public:
         return *this;
     }
 };
-class CCreatureDef : public CDefPointee { public:
-    unsigned char _pad08[0x40 - 0x08];
-    long m_value40;                                     // +0x40 the value the kill event reports
-};
-struct CDefinitionManagerBase {
-    CDefPointer<CDefPointee> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
-};
+class CDefinitionManager;
 class CDefClassBase : public CDefPointee { public:
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
-    virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
+    virtual long* GetSubDefIndex(const CCharString& name) const;   // slot 14 (+0x38)
     unsigned char _pad08[0x1c - 0x08];
-    CDefinitionManagerBase* m_pManager;                 // +0x1c
-    bool GetSubDef(CDefPointer<CCreatureDef>* out);     // 0x00485815
+    CDefinitionManager* m_pManager;                     // +0x1c
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 GetSubDef<CCreatureDef> (pushes "CCreatureDef")
+};
+class CThingBaseDef : public CDefClassBase { public: };
+class CCreatureDef : public CDefClassBase { public:
+    unsigned char _pad20[0x40 - 0x20];
+    long m_value40;                                     // +0x40 the value the kill event reports
 };
 class CDefinitionManager { public:
-    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef(long globalIndex, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
+    friend class CDefClassBase;
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (Ego_r.pdb QBE; hidden result pointer)
+    template <class T> bool GetDef(long globalIndex, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef>
+protected:
+    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (Ego_r.pdb IAE: the twin after the const one)
 };
 #pragma auto_inline(off)
 // Same-TU stand-ins: the landed bodies of GetDef<T> 0x0042AF3C and GetSubDef<CCreatureDef> 0x00485815.
-bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CDefClassBase>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(long globalIndex, CDefPointer<const CThingBaseDef>* out) const
 {
     if (globalIndex <= 0)
         return false;
-    CDefPointer<CDefClassBase> def = GetPDefFromGlobalIndex(globalIndex);
+    CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(globalIndex);
     if (def.Object) {
         *out = def;
         return true;
     }
     return false;
 }
-bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out) const
 {
     long* pIndex;
     {
@@ -138,9 +140,9 @@ bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
         pIndex = GetSubDefIndex(name);
     }
     if (pIndex) {
-        CDefPointer<CDefPointee> base = m_pManager->GetPDefFromGlobalIndex(*pIndex);
-        CDefPointer<CCreatureDef> result;
-        result.Object = (CCreatureDef*)base.Object;
+        CDefPointer<CDefClassBase> base = m_pManager->GetPDefFromGlobalIndex(*pIndex);
+        CDefPointer<const CCreatureDef> result;
+        result.Object = base.Object;
         if (result.Object)
             ++result.Object->m_refCount;
         *out = result;
@@ -164,13 +166,15 @@ struct CKnockedThingUnconscious : CBase {               // vtable 0x01272334
 };
 }
 class CTCHeroStats { public:
-    void InformOfEvent(const NHeroStatModifierEvent::CBase* event);   // 0x0057A56C
+    void InformOfEvent(const NHeroStatModifierEvent::CBase& event);   // 0x0057A56C (Ego_r.pdb, by reference)
 };
 struct CTCInterface_a0 {
     unsigned char _pad00[0x10];
     bool m_flag10;                                      // +0x10
 };
-bool __fastcall IsThingGhostSword(const CThing* thing); // 0x007C53F0
+class CTCGhostSword { public:
+    static bool __fastcall IsThingGhostSword(const CThing* thing);   // 0x007C53F0 (Ego_r.pdb static)
+};
 
 class CTCEntityEvents { public:
     void* _vptr;
@@ -197,19 +201,19 @@ void CEventKnockedOut::OnAdd(const CTCEntityEvents& events)
     CTCHeroStats* stats;
     if (!((CThing*)m_pKnockedOutBy.GetPItem())->GetInterface(&stats, 4))
         return;
-    CDefPointer<CDefClassBase> def;
+    CDefPointer<const CThingBaseDef> def;
     CGameDefinitionManager::Get().GetDef(events.GetThing()->GetGlobalDefIndex(), &def);
-    CDefPointer<CCreatureDef> creatureDef;
+    CDefPointer<const CCreatureDef> creatureDef;
     def->GetSubDef(&creatureDef);
     const CThing* thing = events.ParentThing;
     bool flagged = false;
     CTCInterface_a0* tc;
     if (thing->GetInterface(&tc, 0xa0) && tc->m_flag10)
         flagged = true;
-    bool ghost = IsThingGhostSword(thing);
+    bool ghost = CTCGhostSword::IsThingGhostSword(thing);
     if (!flagged && !ghost) {
         NHeroStatModifierEvent::CKnockedThingUnconscious event(creatureDef->m_value40);
-        stats->InformOfEvent(&event);
+        stats->InformOfEvent(event);
     }
 }
 }

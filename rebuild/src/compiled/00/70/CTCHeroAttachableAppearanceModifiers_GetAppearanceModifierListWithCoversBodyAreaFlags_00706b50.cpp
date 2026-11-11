@@ -127,31 +127,35 @@ public:
 };
 template <class T> class CDefPointer {
 public:
-    T* Object;
+    CDefBase* Object;                                   // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
-class CThingObjectDef : public CDefBase {
+class CDefClassBase : public CDefBase {
 public:
-    bool GetSubDef(CDefPointer<CAppearanceModifierDef>* out);   // 0x0057FF92
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 GetSubDef<CAppearanceModifierDef>
+};
+class CThingObjectDef : public CDefClassBase {
+public:
 };
 class CDefinitionManager {
 public:
-    bool GetDef(long index, CDefPointer<CThingObjectDef>* out);   // 0x0042B040
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 GetDef<CThingObjectDef>
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 CThingObjectDef* FindThingObjectDef(long index);                       // stand-in: the def lookup (not graded here)
-CAppearanceModifierDef* FindAppearanceModifierDef(const CThingObjectDef* def);   // stand-in: the sub def lookup
+CAppearanceModifierDef* FindAppearanceModifierDef(const CDefClassBase* def);   // stand-in: the sub def lookup
 #pragma auto_inline(off)
 // Same-TU bodies of the two def getters (template instantiations retail holds in this TU): they write only their out
 // pointer, which lets VC7.1 keep the sub def in a register across the push_back malloc.
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingObjectDef>* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingObjectDef>(long index, CDefPointer<const CThingObjectDef>* out) const
 {
     CThingObjectDef* def = FindThingObjectDef(index);
     out->Object = def;
     return def != 0;
 }
-__declspec(noinline) bool CThingObjectDef::GetSubDef(CDefPointer<CAppearanceModifierDef>* out)
+template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
     CAppearanceModifierDef* def = FindAppearanceModifierDef(this);
     out->Object = def;
@@ -172,24 +176,35 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
 
-class CTCHeroAttachableAppearanceModifiers {
+enum EHeroAttachableAppearanceModifierType {        // engine/CTCHeroAttachableAppearanceModifiers.h (W4 in the PDB spelling)
+    APPEARANCE_HAIR = 0,
+    APPEARANCE_HORN = 1,
+    APPEARANCE_CLOTHING = 2,
+    NO_OF_APPEARANCE_MODIFIER_TYPES = 3
+};
+class CThing;
+class CTCBase {                                         // the component base (members this row reads)
 public:
-    virtual void v00();
-    void* ParentThing;                                  // +0x04 (CTCBase)
+    virtual ~CTCBase();
+    CThing* ParentThing;                                // +0x04
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCHeroAttachableAppearanceModifiers : public CTCBase {
+public:
     unsigned char _pad08[0x30 - 0x08];
     CRetailVector< CRetailVector<CModifierEntry> > AppearanceModifiers;   // +0x30
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
-    std::list<long> GetAppearanceModifierListWithCoversBodyAreaFlags(long flags, long type) const;
+    std::list<long> GetAppearanceModifierListWithCoversBodyAreaFlags(long flags, EHeroAttachableAppearanceModifierType type) const;
 };
 
-std::list<long> CTCHeroAttachableAppearanceModifiers::GetAppearanceModifierListWithCoversBodyAreaFlags(long flags, long type) const
+std::list<long> CTCHeroAttachableAppearanceModifiers::GetAppearanceModifierListWithCoversBodyAreaFlags(long flags, EHeroAttachableAppearanceModifierType type) const
 {
     const CRetailVector<CModifierEntry>& modifiers = AppearanceModifiers[type];
     std::list<long> result;
     for (const CModifierEntry* it = modifiers.begin(); it != modifiers.end(); ++it) {
-        CDefPointer<CThingObjectDef> def;
-        CDefPointer<CAppearanceModifierDef> modifierDef;
-        if (GetDefinitionManager()->GetDef(it->DefIndex, &def) && def->GetSubDef(&modifierDef)
+        CDefPointer<const CThingObjectDef> def;
+        CDefPointer<const CAppearanceModifierDef> modifierDef;
+        if (GetDefinitionManager().GetDef(it->DefIndex, &def) && def->GetSubDef(&modifierDef)
             && (modifierDef->CoversBodyAreaFlags & flags))
             result.push_back(it->DefIndex);
     }

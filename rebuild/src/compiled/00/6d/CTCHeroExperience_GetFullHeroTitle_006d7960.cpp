@@ -2,6 +2,8 @@
 // Naming wave 18: the global stand-in g_GameText (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // CTCHeroExperience::GetFullHeroTitle() const -- hero title text, plus " - " and the best earned title from the experience def's list
+// Callees (NF14): CTCBase::GetDefinitionManager() const 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex(long) const 0x009AD9E0,
+//   CDefClassBase::GetSubDef<CHeroTitleDef> const 0x005B1E5A (its StatGetTypeName literal is "CHeroTitleDef"; was CTitleDef).
 // Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CWideString {
@@ -14,7 +16,6 @@ public:
     const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
 };
 template<class T> class CDefPointer;
-class CTitleDef;
 class CDefClassBase {
 public:
     virtual void v00();
@@ -28,7 +29,7 @@ public:
         if (GetRefCount() == 0)
             Destroy();
     }
-    bool GetSubDef(CDefPointer<const CTitleDef>* out) const;   // 0x005B1E5A
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005B1E5A GetSubDef<CHeroTitleDef> (Ego_r / FableWin template)
 };
 template<class T> class CDefPointer {
 public:
@@ -41,17 +42,17 @@ public:
     }
     T* operator->() const { return Object; }
 };
-template<class T> class CCountedPointer {
+template<> class CDefPointer<const CDefClassBase> {   // GetPDefFromGlobalIndex's by-value result (released and cleared by its destructor)
 public:
-    T* Object;
-    FABLE_FORCEINLINE ~CCountedPointer()
+    const CDefClassBase* Object;
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();
             Object = 0;
         }
     }
-    T* operator->() const { return Object; }
+    const CDefClassBase* operator->() const { return Object; }
 };
 template<class T> class CIVCountedPointer {
 public:
@@ -65,7 +66,7 @@ public:
     }
     T* operator->() const { return Object; }
 };
-class CTitleDef : public CDefClassBase {
+class CHeroTitleDef : public CDefClassBase {
 public:
     unsigned char _pad08[0x2c - 0x08];
     long TextID;                                        // +0x2C
@@ -77,7 +78,7 @@ public:
 };
 class CDefinitionManager {
 public:
-    CCountedPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (Ego_r.pdb QBE)
 };
 namespace NGameText {
 class CTextEntry {
@@ -143,12 +144,14 @@ public:
         return (it == end || type < it->first ? end : it)->second;
     }
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 class CTCBase {
 public:
-    virtual void v00();
-    CThing* Thing;                                      // +0x04
+    virtual ~CTCBase();
+    CThing* ParentThing;                                // +0x04
     unsigned char _pad08[4];
-    CDefinitionManager* GetDefinitions() const;         // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
 };
 class CTCHero : public CTCBase {
 public:
@@ -169,9 +172,9 @@ public:
 
 // Same-TU stand-in for the out-of-line GetSubDef (retail's link-time codegen saw that the out pointer does not escape).
 #pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<const CTitleDef>* out) const
+template <> bool CDefClassBase::GetSubDef<CHeroTitleDef>(CDefPointer<const CHeroTitleDef>* out) const
 {
-    out->Object = (const CTitleDef*)this;
+    out->Object = (const CHeroTitleDef*)this;
     return true;
 }
 #pragma auto_inline(on)
@@ -179,15 +182,15 @@ bool CDefClassBase::GetSubDef(CDefPointer<const CTitleDef>* out) const
 CWideString CTCHeroExperience::GetFullHeroTitle() const
 {
     CTCHero* hero;
-    if (Thing->HasTC(0x29))
-        hero = (CTCHero*)Thing->GetTC(0x29);
+    if (ParentThing->HasTC(0x29))
+        hero = (CTCHero*)ParentThing->GetTC(0x29);
     CWideString title = hero->GetTitleGuiText();
     CTCAge* age;
-    if (Thing->HasTC(4))
-        age = (CTCAge*)Thing->GetTC(4);
+    if (ParentThing->HasTC(4))
+        age = (CTCAge*)ParentThing->GetTC(4);
     for (long i = PDef->Titles.size() - 1; i >= 0; --i) {
-        CCountedPointer<CDefClassBase> def = GetDefinitions()->GetPDefFromGlobalIndex(PDef->Titles[i]);
-        CDefPointer<const CTitleDef> titleDef;
+        CDefPointer<const CDefClassBase> def = GetDefinitionManager().GetPDefFromGlobalIndex(PDef->Titles[i]);
+        CDefPointer<const CHeroTitleDef> titleDef;
         def->GetSubDef(&titleDef);
         if (titleDef.Object && titleDef->Enabled && age->Age >= titleDef->MinAge && GetTotalStatLevel(0) >= titleDef->MinStat[0]
             && GetTotalStatLevel(1) >= titleDef->MinStat[1] && GetTotalStatLevel(2) >= titleDef->MinStat[2]) {

@@ -17,6 +17,8 @@
 //   Data: inverse-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C.
 // Layout: shot base PEffect +0x0c, PShooter +0x28, PShotDef +0x38 (impact effect +0x40); force-push ball push force +0xa4;
 //   CThing presence bitset +0x20, interface map +0x44, type flags +0x6c; the world's message event manager +0x60.
+// GetWorld (agentNF14 2026-11-11): the shot component now derives a local CTCBase (virtual dtor, ParentThing, the protected const
+//   GetWorld returning CWorld&), so the call binds ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ.
 // Shape: the no-shooter base call is the else arm (placed last); the shooter position is a named copy (user copy
 //   constructor) before the subtraction; both CCharString names are block-scoped named locals (constructed before the
 //   other arguments, destroyed right after the call); the message manager is a named local; GetDef has a same-TU stand-in.
@@ -148,27 +150,32 @@ bool CGameDefinitionManager::GetDef(const CCharString& name, CDefPointer<CMessag
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
+#include "engine/ECollideType.h"
+class CTCBase { public:                                 // the component base (members this row reads)
+    virtual ~CTCBase();                                 // slot 0
+    CThing*                 ParentThing;                // +0x04
+protected:
+    CWorld& GetWorld() const;                           // 0x00686A70 (Ego_r.pdb / FableWin.pdb IBE)
+};
 namespace NThingShot {
 
-class CTCShotDefinitionBase { public:
-    void*                   __vftable;                  // +0x00
-    CThing*                 ParentThing;                // +0x04
+class CTCShotDefinitionBase : public CTCBase { public:
     unsigned char           _pad08[0x0c - 0x08];
     CBaseIntelligentPointer PEffect;                    // +0x0c
     unsigned char           _pad14[0x28 - 0x14];
     CBaseIntelligentPointer PShooter;                   // +0x28
     unsigned char           _pad30[0x38 - 0x30];
     CThingShotDef*          PShotDef;                   // +0x38
-    CWorld* GetWorld();                                 // 0x00686A70
-    void OnCollision(long type, const C3DVector& position, const C3DVector& normal, CThing* thing);   // 0x007BF510
+    virtual void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing);   // 0x007BF510 (Ego_r.pdb UAE)
 };
 struct CTCShotDefinitionForcePushBall : CTCShotDefinitionBase {
     unsigned char _pad3c[0xa4 - 0x3c];
     float         PushForce;                            // +0xa4
-    void OnCollision(long type, const C3DVector& position, const C3DVector& normal, CThing* thing);
+protected:
+    virtual void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing);   // Ego_r.pdb MAE
 };
 
-void CTCShotDefinitionForcePushBall::OnCollision(long type, const C3DVector& position, const C3DVector& normal, CThing* thing)
+void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing)
 {
     CThing* shooter = reinterpret_cast<CThing*>(PShooter.GetPItem());
     if (shooter) {
@@ -201,7 +208,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(long type, const C3DVector& pos
                 found = CGameDefinitionManager::Get().GetDef(name, &def);
             }
             if (found) {
-                CMessageEventManager* manager = GetWorld()->MessageEventManager;
+                CMessageEventManager* manager = GetWorld().MessageEventManager;
                 manager->AddMessage(def.Data, &((CThing*)thing)->GetPos(), shooter, thing, 1);
             }
             if (thing->HasTC(0x34)) {

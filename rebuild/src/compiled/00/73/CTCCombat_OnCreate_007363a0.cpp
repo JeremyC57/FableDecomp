@@ -39,7 +39,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
     }
 };
 template <class T> class CDefPointer { public:
-    T* m_p;
+    CDefBase* m_p;                                      // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : m_p(0) { }
     CDefPointer(const CDefPointer& other) : m_p(other.m_p) { if (m_p) ++m_p->m_count; }
     ~CDefPointer()
@@ -49,7 +49,7 @@ template <class T> class CDefPointer { public:
             m_p = 0;
         }
     }
-    T* operator->() const { return m_p; }
+    T* operator->() const { return static_cast<T*>(m_p); }
     bool IsNull() const { return m_p == 0; }
 };
 
@@ -88,17 +88,18 @@ class CCombatTypeDef : public CDefBase { public:
 };
 class CMeleeCombatAbilityDef : public CDefBase { public: };
 
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CMeleeCombatAbilityDef>* out) const;     // 0x00737F80
-    bool GetDef(const CCharString& name, CDefPointer<CMeleeCombatAbilityDef>& out);   // 0x00737FF0
-    bool GetDef(long index, CDefPointer<CCombatTypeDef>& out);                   // 0x00669640
+class CDefinitionManager { public:                     // Ego_r.pdb / FableWin.pdb member templates
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // <CMeleeCombatAbilityDef> 0x00737F80, <CCombatTypeDef> 0x00669640
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // <CMeleeCombatAbilityDef> 0x00737FF0
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 
 void* FindDef_CDefinitionManager_GetDef();   // stand-in callee of the stand-in bodies below
 // Same-TU stand-in bodies (the real GetDef instantiations are out of line in retail, in this TU): each writes the out
 // pointer only, so VC7.1 knows the def pointer's address does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CMeleeCombatAbilityDef>* out) const
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CMeleeCombatAbilityDef>(long index,
+    CDefPointer<const CMeleeCombatAbilityDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef();
     if (!def)
@@ -106,20 +107,22 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CMe
     *(void**)out = def;
     return true;
 }
-__declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<CMeleeCombatAbilityDef>& out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CMeleeCombatAbilityDef>(const CCharString& name,
+    CDefPointer<const CMeleeCombatAbilityDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CCombatTypeDef>& out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CCombatTypeDef>(long index,
+    CDefPointer<const CCombatTypeDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef();
     if (!def)
         return false;
-    *(void**)&out = def;
+    *(void**)out = def;
     return true;
 }
 #pragma auto_inline(on)
@@ -130,26 +133,30 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public:
     long GetCombatTypeIndex() const;                    // 0x00662170
-    CDefPointer<CHeroCombatDef> GetPHeroCombatDef() const;  // 0x00663340
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;  // 0x00663340 (Ego_r.pdb QBE)
 };
 
-class CTCCombat { public:
-    void*               __vftable;                      // +0x00
-    CThing*             ParentThing;                    // +0x04 (CTCBase)
+class CTCBase { public:                                 // the component base (members this row reads)
+    virtual ~CTCBase();
+    CThing*             ParentThing;                    // +0x04
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCCombat : public CTCBase { public:
     unsigned char       _pad08[0x24 - 0x08];
     CThingCreatureBase* ParentCreature;                 // +0x24
-    CDefPointer<CCombatTypeDef> PCombatTypeDef;         // +0x28
-    CDefPointerVector<CMeleeCombatAbilityDef> AbilityList;   // +0x2c
+    CDefPointer<const CCombatTypeDef> PCombatTypeDef;   // +0x28
+    CDefPointerVector<const CMeleeCombatAbilityDef> AbilityList;   // +0x2c
     unsigned char       _pad38[0x48 - 0x38];
-    CDefPointer<CMeleeCombatAbilityDef> PBlockCounterAbility;   // +0x48
-    CDefPointer<CMeleeCombatAbilityDef> PFlourish360Ability;    // +0x4c
+    CDefPointer<const CMeleeCombatAbilityDef> PBlockCounterAbility;   // +0x48
+    CDefPointer<const CMeleeCombatAbilityDef> PFlourish360Ability;    // +0x4c
     unsigned char       _pad50[0x80 - 0x50];
     bool                ReadyForMelee;                  // +0x80
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     const CThingCreatureBase& GetParentCreature() const { return *ParentCreature; }
-    CDefPointer<CHeroCombatDef> GetPHeroCombatDef() const { return GetParentCreature().GetPHeroCombatDef(); }
-    void SetCombatType(const CDefPointer<CCombatTypeDef>& def);   // 0x007355F0
-    void OnCreate();
+    void SetCombatType(const CDefPointer<const CCombatTypeDef>& def);   // 0x007355F0 (Ego_r.pdb)
+private:
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const { return GetParentCreature().GetPHeroCombatDef(); }   // Ego_r ABE (inlined)
+    virtual void OnCreate();                            // Ego_r.pdb ?OnCreate@CTCCombat@@EAEXXZ
 };
 
 void* FindRef_CTCCombat();   // stand-in callee of the stand-in bodies below
@@ -166,7 +173,7 @@ template <class T> __declspec(noinline) void CDefPointerVector<T>::_M_insert_ove
     if (*(void**)&x != p)
         return;
 }
-__declspec(noinline) void CTCCombat::SetCombatType(const CDefPointer<CCombatTypeDef>& def)
+__declspec(noinline) void CTCCombat::SetCombatType(const CDefPointer<const CCombatTypeDef>& def)
 {
     if (def.m_p == FindRef_CTCCombat())
         ParentCreature = 0;
@@ -180,18 +187,18 @@ void CTCCombat::OnCreate()
         if (!GetPHeroCombatDef().IsNull()) {
             for (const long* it = GetPHeroCombatDef()->DefaultCombatAbilities.begin();
                  it != GetPHeroCombatDef()->DefaultCombatAbilities.end(); ++it) {
-                CDefPointer<CMeleeCombatAbilityDef> ability;
+                CDefPointer<const CMeleeCombatAbilityDef> ability;
                 long index = *it;
-                GetDefinitionManager()->GetDef(index, &ability);
+                GetDefinitionManager().GetDef(index, &ability);
                 AbilityList.push_back(ability);
             }
         }
-        GetDefinitionManager()->GetDef("HERO_MELEE_COMBAT_ABILITY_BLOCK_COUNTER", PBlockCounterAbility);
-        GetDefinitionManager()->GetDef("HERO_MELEE_COMBAT_ABILITY_FLOURISH_360_STRIKE", PFlourish360Ability);
+        GetDefinitionManager().GetDef("HERO_MELEE_COMBAT_ABILITY_BLOCK_COUNTER", &PBlockCounterAbility);
+        GetDefinitionManager().GetDef("HERO_MELEE_COMBAT_ABILITY_FLOURISH_360_STRIKE", &PFlourish360Ability);
     }
-    CDefPointer<CCombatTypeDef> combatType;
+    CDefPointer<const CCombatTypeDef> combatType;
     long combatTypeIndex = GetParentCreature().GetCombatTypeIndex();
-    if (GetDefinitionManager()->GetDef(combatTypeIndex, combatType)) {
+    if (GetDefinitionManager().GetDef(combatTypeIndex, &combatType)) {
         SetCombatType(combatType);
         ReadyForMelee = combatType->StartsAsReadyForMelee;
     }

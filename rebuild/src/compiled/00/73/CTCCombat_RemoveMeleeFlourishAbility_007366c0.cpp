@@ -100,11 +100,12 @@ struct CAbilityVector {                             // STLport vector<CDefPointe
 };
 
 class CDefinitionManager { public:
-    bool GetDef(long index, CAbilityPointer* out);  // 0x00737F80
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x00737F80 GetDef<CMeleeCombatAbilityDef> (Ego_r / FableWin template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 CDefPointeeBase* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CAbilityPointer* out)
+template <> __declspec(noinline) bool CDefinitionManager::GetDef<CMeleeCombatAbilityDef>(long index, CAbilityPointer* out) const
 {
     CDefPointeeBase* found = Lookup_CDefinitionManager_GetDef(this, index);
     if (!found)
@@ -114,20 +115,25 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CAbilityPointer
 }
 #pragma auto_inline(on)
 
-class CTCCombat { public:
-    virtual void v00();
-    void*          ParentThing;                     // +0x04 (CTCBase)
+class CThing;
+class CTCBase { public:                             // the component base (members this row reads)
+    virtual ~CTCBase();
+    CThing*        ParentThing;                     // +0x04
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCCombat : public CTCBase { public:
     unsigned char  _pad08[0x2c - 0x08];
     CAbilityVector AbilityList;                     // +0x2c
-    CDefinitionManager* GetDefinitionManager();     // 0x006869D0 (CTCBase forwarder)
-    void UpdateUsableMeleeCombatAbilities();        // 0x00736590
     void RemoveMeleeFlourishAbility(long defIndex);
+private:
+    void UpdateUsableMeleeCombatAbilities();        // 0x00736590 (Ego_r.pdb AAE)
 };
 
 void CTCCombat::RemoveMeleeFlourishAbility(long defIndex)
 {
     CAbilityPointer def;
-    GetDefinitionManager()->GetDef(defIndex, &def);
+    GetDefinitionManager().GetDef(defIndex, &def);
     CAbilityPointer* last = AbilityList.end();
     CAbilityPointer* newEnd = remove(AbilityList.begin(), last, def);
     AbilityList.erase(newEnd, last);

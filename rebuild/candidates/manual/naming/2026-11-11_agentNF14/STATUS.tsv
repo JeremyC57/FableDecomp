@@ -1,0 +1,46 @@
+kind	target_or_class	rows_changed	grades	binders_left
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CItem	1 (005bd82e)	005bd82e RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCActionUseChest	1 (007ee8f0)	007ee8f0 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCBuyableHouse	1 (006bf9e0)	006bf9e0 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCCombat	2 (007363a0 007366c0)	007363a0 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 007366c0 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCContainer	1 (008ed1f0)	008ed1f0 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCCoopSpirit	1 (006700f0)	006700f0 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCCreatureNavigation	1 (006cc6b0)	006cc6b0 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCExpression	1 (007eefe0)	007eefe0 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCHeroAttachableAppearanceModifiers	3 (00706290 00706510 00706b50)	00706290 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 00706510 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 00706b50 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCHeroExperience	1 (006d7960)	006d7960 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCHeroMorph	2 (0071c360 0071da70)	0071c360 RELOCATION_MATCH; 0071da70 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCHeroStats	1 (0057d1a4)	0057d1a4 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCIdleScheduler	1 (00801a50)	00801a50 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCInventory	4 (00582a16 00583a92 00583cd4 00591a66)	00582a16 RELOCATION_MATCH; 00583a92 RELOCATION_MATCH; 00583cd4 RELOCATION_MATCH; 00591a66 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCInventoryAbilities	1 (005eede2)	005eede2 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCInventoryBase	3 (005bdf08 005bdfb1 005bf77d)	005bdf08 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005bdfb1 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005bf77d RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCInventoryClothing	6 (005b3c95 005b3d7a 005b413d 005b43a2 005b4795 005b5be6)	005b3c95 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005b3d7a RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005b413d RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005b43a2 RELOCATION_MATCH; 005b4795 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005b5be6 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCInventoryStats	1 (005d66ba)	005d66ba RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCInventoryTrade	2 (0059c983 005a30a1)	0059c983 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005a30a1 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCInventoryWeapons	3 (005c3180 005c770c 005cb780)	005c3180 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 005c770c RELOCATION_MATCH; 005cb780 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCPhysicsBase	1 (006b0780)	006b0780 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCShop	2 (00772250 007744a0)	00772250 RELOCATION_MATCH; 007744a0 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CTCVillage	1 (00659164)	00659164 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	CThing	3 (004c7f40 004c9560 004ca010)	004c7f40 RELOCATION_MATCH (test PREFAIL on g++, unchanged); 004c9560 RELOCATION_MATCH; 004ca010 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	NEntityEvents::CEventDied	1 (008115a0)	008115a0 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	NEntityEvents::CEventKnockedOut	1 (00811470)	00811470 RELOCATION_MATCH	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	NInventory::CItem	1 (005bec92)	005bec92 RELOCATION_MATCH (test PREFAIL on g++, unchanged)	-
+item1 GetDef<CThingBaseDef> 0x0042AF3C / CTCBase::GetDefinitionManager 0x006869D0	NInventory::CTCInventoryBase	1 (005bf9e3)	005bf9e3 RELOCATION_MATCH	-
+item2 own name	0x006585EE ?NotifyHasApologised@CTCVillage@@QAEXXZ	1 (006585ee)	RELOCATION_MATCH	-
+item2 own name	0x00658604 ?GetIsHeroEnemyOfGuards@CTCVillage@@QAE_NXZ	1 (00658604)	RELOCATION_MATCH	-
+item2 own name	0x006CB8F0 ?IsCurrentlyNavigating@CTCCreatureNavigation@@QBE_NXZ	1 (006cb8f0)	RELOCATION_MATCH	-
+item2 own name	0x006CEAE0 ?ResetLastOpinionReactionFrame@CTCCreatureOpinionOfHero@@QAEXXZ	1 (006ceae0)	RELOCATION_MATCH	-
+item2 own name	0x007236E0 ?ResetInterpolation@CTCPhysicsStandard@@UAEXXZ	1 (007236e0)	RELOCATION_MATCH	-
+item2 own name	0x00811450 ?FrameUpdate@CTCEntityEvents@@UAEXXZ	1 (00811450)	RELOCATION_MATCH	-
+item2 own name	0x006AF620 ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ	1 (006af620)	RELOCATION_MATCH	-
+item2 own name	0x006AF630 ?GetWorldMap@CTCPhysicsBase@@IBEABVCWorldMap@@XZ (bonus twin)	1 (006af630)	RELOCATION_MATCH	-
+item2 own name	0x008957C0 ?SendEntityEvent@CGameScriptInterface@@UBEXW4EEventType@NEntityEvents@@ABVCScriptThing@@1PAVCThing@@@Z	1 (008957c0)	RELOCATION_MATCH	-
+item2 own name	0x006C8780 ?TransferBinaryIn@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCMemoryDataInputStream@@AAV?$CIntelligentPointer@VCThing@@@@@Z	1 (006c8780)	RELOCATION_MATCH	-
+item3 GetWorld 0x00686A70 header base	0x0065C1FC CTCVillage::RemoveCrimeIfApologisable	1 (0065c1fc)	RELOCATION_MATCH	-
+item3 GetWorld 0x00686A70 header base	0x006B0C10 CTCPhysicsBase::SetPosition	1 (006b0c10)	RELOCATION_MATCH	-
+item3 GetWorld 0x00686A70 header base	0x007BE0F9 NThingShot::CTCShotDefinitionForcePushBall::OnCollision	1 (007be0f9)	RELOCATION_MATCH	-
+item3 GetWorld 0x00686A70 header base	0x007E2790 CTCFineDialogue::IsAllowed	1 (007e2790)	RELOCATION_MATCH	-
+item2 left	0x006A23E0 ?ResetAllCarriedThingsAsBypassFilter@CTCCarrying@@QAEXXZ	0 (left as landed, NRemap006a23e0)	-	006a23e0 (see NOTES "Left")
+item2 left	0x008AF850 ?PlayBattleCry@CombatDialogueManager@@... (own name right)	0 (left as landed, ExternalRetry_008af850)	-	008af850 (see NOTES "Left")
+summary	all changed rows	62	62 RELOCATION_MATCH (final regrade with the overlay, --all bindings); VC7.1 /Od tests PASS on all; g++ tests PASS except the 21 PREFAIL rows	2 rows left (006a23e0, 008af850)

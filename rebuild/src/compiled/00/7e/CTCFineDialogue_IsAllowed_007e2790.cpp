@@ -1,71 +1,62 @@
-// CTCFineDialogue::IsAllowed() -- the fine dialogue may start only when the player is offered the chance to pay, the main player is free, no blocking game-UI state is up and the world's mode is 0 or 9
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
-// Naming wave 18: the global stand-in g_pGameUI_013b8790 (0x013B8790) is the private static CCountedPointer<CPlayerGui>
-//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E2790, length 83 bytes.
-// Callees: the CTCBase accessor @ 0x00686D60 (`[g_pMainGameComponent 0x013B8A1C]+0x1c`; object not identified, modelled by the
-// record at its +0x28 -- landed 0x007E1F70 calls it GetSubsystem)
-// and CTCBase::GetWorld() @ 0x00686A70 (`+0x24`, PWorld; landed naming of 0x006588DC); the game UI singleton @ 0x013B8790.
-// Layout: PDB CTCFineDialogue (28 bytes) over CTCBase (engine/CTCBase.h): Fine +0xc, Money +0x10,
-// GivePlayerChanceToPayFine +0x14, WaitingForConfirmation +0x15, Village +0x18. The other records are opaque here:
-// the player manager's main-player record at +0x28 (busy flag byte +0xbc), two game-UI flag bytes (+0xfd, +0xf6),
-// the world's mode word at +0x104.
-// Shape: `this` in esi (ecx still holds it for the first getter, `mov ecx,esi` before the second); every early
-// `return false` shares the `xor al,al` exit; the closing `if (mode == 0 || mode == 9) return true; return false;`
-// keeps byte exits (`mov al,1`) where `return a || b;` would materialise a full register; the UI pointer is read once.
+// CTCFineDialogue::IsAllowed() -- the fine dialogue may start only when the player is offered the chance to pay, the screen is not
+// faded out, no subtitle text or cutscene is up and the world is not performing a region load
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E2790, length 83 bytes. Ego_r.pdb / FableWin.pdb ?IsAllowed@CTCFineDialogue@@QAE_NXZ.
+// Rebased (agentNF14, w22 item 3) onto the shared retail CTCBase so the two getters bind as the real base members:
+//   0x00686D60 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ (FABLE_RETAIL_CTCBASE_COMPONENT; called with ecx = this) and
+//   0x00686A70 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (`mov ecx,esi ; call`).
+// The address-suffixed stand-ins of the earlier landing are replaced by the real inline accessors (FableWin.pdb names, two sources
+// each: the PDB name + the retail per-offset read):
+//   PeekComponent().PeekDisplayEngine()  CMainGameComponent +0x28 PDisplayEngine (scoped_ptr word)   FableWin 0x01A700DC
+//     .IsScreenFadeOut()                 CDisplayEngine +0xBC ScreenFadeOutInfo, CFadeInFadeOutBase::IsActive (Active +0)
+//                                        FableWin 0x01A70098 / 0x01A65280
+//   CPlayerGui::Get().GetSubtitleRenderer().IsDisplayingText()  singleton 0x013B8790, +0x18 + DisplayingText +0xE5 = +0xFD
+//   CPlayerGui::Get().GetSubtitleRenderer().IsInCutscene()      +0x18 + InCutscene +0xDE = +0xF6 (the order CTCBoastUI::Activate
+//                                        0x0056AD40 also uses)
+//   GetWorld().IsPerformingRegionLoad()  CWorld +0x104 RegionLoadStatus, `!= 0 && != 9` (Ego_r.pdb ?IsPerformingRegionLoad@CWorld@@QBE_NXZ)
+// Layout: Ego_r.pdb CTCFineDialogue (28 bytes) over CTCBase: Fine +0xc, Money +0x10, GivePlayerChanceToPayFine +0x14,
+// WaitingForConfirmation +0x15, Village +0x18.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_COMPONENT
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKDISPLAYENGINE
+#define FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CSUBTITLERENDERER
+#define FABLE_RETAIL_CSUBTITLERENDERER_INCUTSCENE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_QUESTCOMPLETIONUI
+#include "engine/ETCInterfaceType.h"
 #include "engine/CTCBase.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CDisplayEngine.h"
+#include "engine/CPlayerGui.h"
+#include "engine/CWorld.h"
 
-struct CPlayerRecord_007e2790 {
-    unsigned char _pad[0xbc];
-    bool          m_busy;                          // +0xbc
-};
+class CTCVillage;
 
-struct CPlayerManager_007e2790 {
-    unsigned char           _pad[0x28];
-    CPlayerRecord_007e2790* m_pMainPlayer;         // +0x28
-};
-
-#include "engine/CCountedPointer.h"
-template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
-    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+class CTCFineDialogue : public CTCBase {
 public:
-    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
-};
-class CPlayerGui { public:                          // the game UI singleton behind the pointer at 0x013B8790
-    unsigned char _pad00[0xf6];
-    bool          m_blockingF6;                    // +0xf6
-    unsigned char _padF7[0x6];
-    bool          m_blockingFD;                    // +0xfd
-};
-
-struct CWorld_007e2790 {
-    unsigned char _pad[0x104];
-    long          m_mode;                          // +0x104
-};
-
-class CTCFineDialogue : public CTCBase { public:
-    long  Fine;                                    // +0x0c
-    long  Money;                                   // +0x10
-    bool  GivePlayerChanceToPayFine;               // +0x14
-    bool  WaitingForConfirmation;                  // +0x15
-    void* Village;                                 // +0x18 CTCVillage*
-    CPlayerManager_007e2790* GetGameSubsystem1C(); // 0x00686D60
-    CWorld_007e2790* GetWorld();                   // 0x00686A70
     bool IsAllowed();
+private:
+    long        Fine;                              // +0x0c
+    long        Money;                             // +0x10
+    bool        GivePlayerChanceToPayFine;         // +0x14
+    bool        WaitingForConfirmation;            // +0x15
+    CTCVillage* Village;                           // +0x18
 };
 
 bool CTCFineDialogue::IsAllowed()
 {
     if (!GivePlayerChanceToPayFine)
         return false;
-    if (GetGameSubsystem1C()->m_pMainPlayer->m_busy)
+    if (PeekComponent().PeekDisplayEngine().IsScreenFadeOut())
         return false;
-    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_blockingFD)
+    if (CPlayerGui::Get().GetSubtitleRenderer().IsDisplayingText())
         return false;
-    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_blockingF6)
+    if (CPlayerGui::Get().GetSubtitleRenderer().IsInCutscene())
         return false;
-    long mode = GetWorld()->m_mode;
-    if (mode == 0 || mode == 9)
-        return true;
-    return false;
+    if (GetWorld().IsPerformingRegionLoad())
+        return false;
+    return true;
 }

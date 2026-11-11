@@ -6,8 +6,8 @@
 // vector-of-vectors at +0x30, and its only caller is CGameScriptInterface::IsHeroNaked (0x0089B330), which fetches the hero's
 // interface 0x5e component and calls it. Ego_r.pdb has `?IsNaked@CTCHeroAttachableAppearanceModifiers@@QBE_NXZ` (const,
 // bool, no arguments) right after UpdateHiddenMaterials in that class's member block, so the name is the PDB's.
-// Callees: CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetDef(long, CDefPointer<CThingObjectDef>&)
-// @ 0x0042B040, CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<CAppearanceModifierDef>&) @ 0x0057FF92;
+// Callees: CTCBase::GetDefinitionManager const @ 0x006869D0, CDefinitionManager::GetDef<CThingObjectDef>(long, CDefPointer<const ..>*)
+// const @ 0x0042B040, CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const ..>*) const @ 0x0057FF92;
 // the defs' virtual slot 1 (destroy on the last release).
 // Layout (retail; the PDB's 16-byte containers are 12 here, as the landed IsWearingAppearanceModifier 0x00706000):
 // AppearanceModifiers +0x30 (vector< vector<CModifierEntry{DefIndex, Rendered}> >, element 2 at +0x18); CAppearanceModifierDef
@@ -24,22 +24,22 @@ struct CDefBase {
     void Release() { if (--RefCount == 0) Destroy(); }
 };
 template <class T> class CDefPointer { public:                 // a counted def reference (released at scope end)
-    T* Object;
+    CDefBase* Object;                                   // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 class CDefClassBase : public CDefBase { public:
-    template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0057FF92 (CAppearanceModifierDef instantiation)
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 GetSubDef<CAppearanceModifierDef> (Ego_r / FableWin template)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<T>& out) const
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = Find_CDefClassBase_GetSubDef(this);
     if (!def)
         return false;
-    out.Object = (T*)def;
+    out->Object = (CDefBase*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -56,16 +56,17 @@ class CAppearanceModifierDef : public CDefClassBase { public:
 };
 class CThingObjectDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
-    bool GetDef(long globalIndex, CDefPointer<CThingObjectDef>& out);   // 0x0042B040
+    template <class T> bool GetDef(long globalIndex, CDefPointer<const T>* out) const;   // 0x0042B040 GetDef<CThingObjectDef> (FableWin.pdb template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingObjectDef>& out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<const T>* out) const
 {
     void* def = Lookup_CDefinitionManager_GetDef(this, globalIndex);
     if (!def)
         return false;
-    out.Object = (CThingObjectDef*)def;
+    out->Object = (CDefBase*)def;
     return true;
 }
 #pragma auto_inline(on)
@@ -87,13 +88,14 @@ struct CModifierVectorVector {
     const CModifierVector& operator[](long i) const { return _Myfirst[i]; }
 };
 class CThing;
-class CTCBase { public:
-    virtual void v00();
+class CTCBase { public:                                  // the component base (members this row reads)
+    virtual ~CTCBase();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     unsigned char _pad0a[2];
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
 };
 class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                                 // +0x0c secondary vptr
@@ -109,9 +111,9 @@ bool CTCHeroAttachableAppearanceModifiers::IsNaked() const
 {
     const CModifierVector& worn = AppearanceModifiers[2];
     for (CModifierEntry* e = worn.begin(); e != worn.end(); ++e) {
-        CDefPointer<CThingObjectDef> def;
-        CDefPointer<CAppearanceModifierDef> modifier;
-        if (GetDefinitionManager()->GetDef(e->DefIndex, def) && def->GetSubDef(modifier) && modifier->GetNumMorphGraphics() > 0)
+        CDefPointer<const CThingObjectDef> def;
+        CDefPointer<const CAppearanceModifierDef> modifier;
+        if (GetDefinitionManager().GetDef(e->DefIndex, &def) && def->GetSubDef(&modifier) && modifier->GetNumMorphGraphics() > 0)
             return false;
     }
     return true;

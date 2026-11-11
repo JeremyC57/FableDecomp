@@ -39,8 +39,8 @@ class CThingBaseDef { public:
     long DefaultScriptData;                          // +0x6C (CDefString)
 };
 
-struct CThingBaseDefPointer {                        // CDefPointer<const CThingBaseDef>
-    CThingBaseDef* m_p;
+template <class T> class CDefPointer { public:       // CDefPointer<const CThingBaseDef>
+    T* Object;
 };
 
 class CDefStringTable {
@@ -49,9 +49,10 @@ public:
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)             // 0x013CA828
 
-class CGameDefinitionManager { public:
-    bool GetDef(long globalIndex, CThingBaseDefPointer* out);   // 0x0042AF3C
+class CDefinitionManager { public:
+    template <class T> bool GetDef(long globalIndex, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb, const)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 
 class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -83,7 +84,7 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void OnBaseDefSet(CThingBaseDef* def);   // slot 15 (+0x3C)
+    virtual void OnBaseDefSet(const CThingBaseDef* def);   // slot 15 (+0x3C)
 
     unsigned char        _pad04[0x10 - 4];
     unsigned char        ThingClass;                 // +0x10
@@ -92,7 +93,7 @@ public:
     unsigned char        _pad5c[0x68 - 0x5c];
     long                 WorldFrameCreatedAt;        // +0x68
     unsigned long        ThingTypeFlags;             // +0x6C
-    CThingBaseDefPointer PBaseDef;                   // +0x70
+    CDefPointer<const CThingBaseDef> PBaseDef;       // +0x70
     CCharString          ScriptName;                 // +0x74
     CCharString          ScriptData;                 // +0x78
     CThing*              RenderListPrev;             // +0x7C
@@ -135,14 +136,14 @@ bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long ma
     ThingTypeFlags = CThing::GetPCurrentThingManager()->GetThingTypeFlags(ThingClass);
     if (PlayerNumber == 5 || PlayerNumber < 0 || PlayerNumber >= 4)
         PlayerNumber = 4;
-    if (PBaseDef.m_p) {
-        OnBaseDefSet(PBaseDef.m_p);
+    if (PBaseDef.Object) {
+        OnBaseDefSet(PBaseDef.Object);
         {
-            CCharString name = GDefStringTable.GetString(PBaseDef.m_p->DefaultScriptName);
+            CCharString name = GDefStringTable.GetString(PBaseDef.Object->DefaultScriptName);
             ScriptName = name;
         }
         {
-            CCharString data = GDefStringTable.GetString(PBaseDef.m_p->DefaultScriptData);
+            CCharString data = GDefStringTable.GetString(PBaseDef.Object->DefaultScriptData);
             ScriptData = data;
         }
     }

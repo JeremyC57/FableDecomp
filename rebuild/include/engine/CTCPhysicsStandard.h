@@ -8,6 +8,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD
+// Retail opt-in (agentNF14, row 0x007236E0 CTCPhysicsStandard::ResetInterpolation): the polymorphic retail class. Fable.exe RTTI
+// .?AVCTCPhysicsStandard@@ (vtable 0x01265F84) : CTCPhysicsBase (engine/CTCPhysicsBase.h FABLE_RETAIL_CTCPHYSICSBASE, sizeof 0x40,
+// needs FABLE_RETAIL_CTCBASE); slot 80 is 0x007236E0 here and CTCPhysicsBase::ResetInterpolation 0x006AF790 in the base vtable
+// 0x0125D2C4 (Ego_r.pdb ?ResetInterpolation@CTCPhysicsStandard@@UAEXXZ / ?ResetInterpolation@CTCPhysicsBase@@UAEXXZ). Members: the
+// Ego_r.pdb names and types at the flattened branch's offsets (RHSet / OldRHSet CRightHandedSet, 24 bytes each); the bitfield group
+// stays opaque bytes. Only what the row uses is declared.
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CRightHandedSet.h"
+class CThingPhysicsMeshInfo;
+class CTCPhysicsStandard : public CTCPhysicsBase {
+public:
+    virtual void ResetInterpolation();                       // slot 80 0x007236E0
+protected:
+    CThingPhysicsMeshInfo* PPhysicsMeshInfo;                 // +0x40
+    C3DVector              OffsetVector3D;                   // +0x44
+    CRightHandedSet        RHSet;                            // +0x50
+    CRightHandedSet        OldRHSet;                         // +0x68
+    long                   RHSetLastFrameSet;                // +0x80
+    unsigned char          CollidesWithThings[0x1];          // +0x84 bitfield group: bool:1
+    unsigned char          Impassable[0x3];                  // +0x85 bitfield group: bool:1
+};
+FABLE_STATIC_ASSERT(sizeof(CTCPhysicsStandard) == 0x88);
+#else // flattened Ego_r layout (the landed default)
 class CThingPhysicsMeshInfo;
 
 #pragma pack(push, 1)
@@ -53,5 +77,6 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OldRHSet) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, RHSetLastFrameSet) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, CollidesWithThings) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, Impassable) == 0x85);
+#endif // FABLE_RETAIL_CTCPHYSICSSTANDARD
 
 #endif // FABLE_ENGINE_CTCPHYSICSSTANDARD_H

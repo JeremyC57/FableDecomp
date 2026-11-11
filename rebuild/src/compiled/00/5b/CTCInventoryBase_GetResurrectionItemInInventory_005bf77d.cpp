@@ -47,27 +47,27 @@ struct CTCInterface1A {
     void Notify();                                          // 0x005D8E50
 };
 
+template <class T> class CDefPointer;
 class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long RefCount;                                          // +0x04
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005C0CFB GetSubDef<CResurrectionItemDef> (Ego_r.pdb template)
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefClassBase* Object;                                  // the pointee as its non-const base (engine/CDefPointer.h)
     CDefPointer() { Object = 0; }
     FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
     }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 class CResurrectionItemDef : public CDefClassBase { public: };
-struct CThingDef : CDefClassBase {
-    bool GetSubDef(CDefPointer<CResurrectionItemDef>* out);    // 0x005C0CFB
-};
+class CThingBaseDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
 class CGameDefinitionManager : public CDefinitionManager
 {
@@ -77,15 +77,15 @@ class CGameDefinitionManager : public CDefinitionManager
 CDefClassBase* LookUpDef(long index);
 CDefClassBase* LookUpSubDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
+template <class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
-    CThingDef* def = (CThingDef*)LookUpDef(index);
+    CDefClassBase* def = LookUpDef(index);
     out->Object = def;
     return def != 0;
 }
-bool CThingDef::GetSubDef(CDefPointer<CResurrectionItemDef>* out)
+template <class T> bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
-    CResurrectionItemDef* def = (CResurrectionItemDef*)LookUpSubDef(this);
+    CDefClassBase* def = LookUpSubDef(this);
     out->Object = def;
     return def != 0;
 }
@@ -117,14 +117,18 @@ protected:
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
 };
 
-struct CTCInventoryBase : public CTCBase {
+namespace NInventory {
+class CTCInventoryBase : public CTCBase { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 CTCBase
 
     void GetAllItems(CItemVector& items);                   // 0x005BF482
-    CThing* CreateInventoryObject(long defIndex);           // 0x005BE8F3
     CThing* GetResurrectionItemInInventory();
+protected:
+    CThing* CreateInventoryObject(long defIndex);           // 0x005BE8F3 (Ego_r.pdb IAE)               // Ego_r.pdb ?GetResurrectionItemInInventory@CTCInventoryBase@NInventory@@QAEPAVCThing@@XZ
 };
+}
+using NInventory::CTCInventoryBase;
 
 NInventory::CItem* LookUpItems(const CTCInventoryBase* inventory, unsigned long* count);
 #pragma auto_inline(off)
@@ -143,9 +147,9 @@ CThing* CTCInventoryBase::GetResurrectionItemInInventory()
     unsigned long count = items.size();
     for (unsigned long i = 0; i < count; ++i) {
         NInventory::CItem& item = items[i];
-        CDefPointer<CThingDef> thingDef;
+        CDefPointer<const CThingBaseDef> thingDef;
         GetDefinitionManager().GetDef(item.DefIndex, &thingDef);
-        CDefPointer<CResurrectionItemDef> resurrectionDef;
+        CDefPointer<const CResurrectionItemDef> resurrectionDef;
         if (thingDef->GetSubDef(&resurrectionDef)) {
             CThing* object = CreateInventoryObject(item.DefIndex);
             if (object->HasTC(0xe1))

@@ -2,11 +2,11 @@
 // Leaf: SelectItemWithDefIndex
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDFB1, 117 bytes (+2 int3); frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`.
-// Callees: CGameDefinitionManager::Get() @ 0x0044C6B0 (__fastcall), CDefinitionManager::GetDef<CThingDef>(long,
-//          CDefPointer*) @ 0x0042AF3C, CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer*) @ 0x005BADE1,
+// Callees: CGameDefinitionManager::Get() @ 0x0044C6B0 (__fastcall), CDefinitionManager::GetDef<CThingBaseDef>(long,
+//          CDefPointer<const CThingBaseDef>*) const @ 0x0042AF3C, CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer<const ..>*) const @ 0x005BADE1,
 //          STLport find_if<CCategory*, CCategoryHasIdentifier> @ 0x005C08D3 (__fastcall: first in ecx, last in edx,
 //          the one-word predicate by value), NInventory::CCategory::SelectItemOfType(long) @ 0x005BDEC1.
-// Shape: the thing def is a CDefPointer local (zeroed, released with a null test at the end); the item sub-def's
+// Shape: the thing def is a CDefPointer local (zeroed, released by hand with a null test at the end); the item sub-def's
 // pointer is read into ebx and released by hand without a null test; the predicate carries the item's category
 // identifier (+0x3C); the end pointer stays in edi across the find.
 // Layout: retail CTCInventoryBase Categories {first +0x20, last +0x24}; NInventory::CCategory 0x2C bytes.
@@ -20,24 +20,25 @@ struct CRefCounted {
     long RefCount;                                   // +0x04
 };
 
-class CInventoryItemDef : public CRefCounted { public:
+
+template <class T> class CDefPointer { public:     // the out slot of the def lookups (released by hand at the end)
+    CRefCounted* Object;                             // the pointee as its non-const base (engine/CDefPointer.h)
+    CDefPointer() : Object(0) {}
+    T* operator->() const { return static_cast<T*>(Object); }
+};
+class CDefClassBase : public CRefCounted { public:
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005BADE1 GetSubDef<CInventoryItemDef> (Ego_r / FableWin template)
+};
+class CThingBaseDef : public CDefClassBase { public: };
+class CInventoryItemDef : public CDefClassBase { public:
     unsigned char _pad_0x08[0x34];
     long          CategoryIdentifier;                // +0x3C
-};
-
-template <class T> struct CRawDefPointer {
-    T* Object;
-    CRawDefPointer() : Object(0) {}
-};
-
-struct CThingDef : CRefCounted {
-    bool GetSubDef(CRawDefPointer<CInventoryItemDef>* out) const;     // 0x005BADE1
 };
 void* FindDef_CThingDef_GetSubDef_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventoryItemDef>* out) const
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_CThingDef_GetSubDef_1();
     if (!def)
@@ -47,22 +48,17 @@ __declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventoryItemDef>
 }
 #pragma auto_inline(on)
 
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    FABLE_FORCEINLINE ~CDefPointer() { T* object = Object; if (object && --object->RefCount == 0) object->Destroy(); }
-    T* operator->() const { return Object; }
+class CDefinitionManager { public:
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
-
-class CGameDefinitionManager { public:
+class CGameDefinitionManager : public CDefinitionManager { public:   // RTTI CGameDefinitionManager : CDefinitionManager
     static CGameDefinitionManager& __fastcall Get(); // 0x0044C6B0
-    bool GetDef(long index, CDefPointer<CThingDef>* out);              // 0x0042AF3C
 };
 void* FindDef_CGameDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     void* def = FindDef_CGameDefinitionManager_GetDef_0();
     if (!def)
@@ -94,16 +90,17 @@ class CTCInventoryBase { public:
     CCategory*    Categories_last;                   // +0x24
     CCategory*    Categories_end;                    // +0x28
 
-    void SelectItemWithDefIndex(long defIndex);
+protected:
+    void SelectItemWithDefIndex(long defIndex);      // Ego_r.pdb ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
 };
 
 void CTCInventoryBase::SelectItemWithDefIndex(long defIndex)
 {
-    CDefPointer<CThingDef> thingDef;
+    CDefPointer<const CThingBaseDef> thingDef;
     CGameDefinitionManager::Get().GetDef(defIndex, &thingDef);
-    CRawDefPointer<CInventoryItemDef> pItem;
+    CDefPointer<const CInventoryItemDef> pItem;
     thingDef->GetSubDef(&pItem);
-    CInventoryItemDef* item = pItem.Object;
+    CInventoryItemDef* item = static_cast<CInventoryItemDef*>(pItem.Object);
     CCategoryHasIdentifier pred(item->CategoryIdentifier);
     CCategory* last = Categories_last;
     CCategory* found = find_if(Categories_first, last, pred);
@@ -111,6 +108,9 @@ void CTCInventoryBase::SelectItemWithDefIndex(long defIndex)
         found->SelectItemOfType(defIndex);
     if (--item->RefCount == 0)
         item->Destroy();
+    CRefCounted* object = thingDef.Object;
+    if (object && --object->RefCount == 0)
+        object->Destroy();
 }
 
 }

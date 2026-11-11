@@ -1,36 +1,42 @@
+// Portable behaviour test for CTCFineDialogue::IsAllowed (0x007E2790), with the retail member names of the accessors it inlines:
+// CDisplayEngine::IsScreenFadeOut (ScreenFadeOutInfo.Active), CSubtitleRenderer::IsDisplayingText / IsInCutscene and
+// CWorld::IsPerformingRegionLoad (RegionLoadStatus != 0 && != 9).
 #include <cstdio>
-struct CPlayerRecord { bool m_busy; };
-class CPlayerManager { public: CPlayerRecord* m_pMainPlayer; };
-struct CGameUI { bool m_blockingF6; bool m_blockingFD; };
-class CWorld { public: long m_mode; };
-static CPlayerRecord g_player; static CPlayerManager g_manager; static CGameUI g_ui; static CWorld g_world;
-static CGameUI* g_pGameUI = &g_ui;
-class CTCFineDialogue { public:
-    void* vptrSlot; void* ParentThing; long Fine; long Money; bool GivePlayerChanceToPayFine; bool WaitingForConfirmation;
-    CPlayerManager* GetGameSubsystem1C() { return &g_manager; }
-    CWorld* GetWorld() { return &g_world; }
+struct CFadeInFadeOutBase { bool Active; bool IsActive() const { return Active; } };
+class CDisplayEngine { public: CFadeInFadeOutBase ScreenFadeOutInfo; bool IsScreenFadeOut() const { return ScreenFadeOutInfo.IsActive(); } };
+class CMainGameComponent { public: CDisplayEngine* PDisplayEngine; const CDisplayEngine& PeekDisplayEngine() const { return *PDisplayEngine; } };
+class CSubtitleRenderer { public: bool InCutscene; bool DisplayingText;
+    bool IsDisplayingText() const { return DisplayingText; } bool IsInCutscene() const { return InCutscene; } };
+class CPlayerGui { public: CSubtitleRenderer SubtitleRenderer; static CPlayerGui* PClass;
+    static CPlayerGui& Get() { return *PClass; } CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; } };
+class CWorld { public: long RegionLoadStatus; bool IsPerformingRegionLoad() const { return RegionLoadStatus != 0 && RegionLoadStatus != 9; } };
+static CDisplayEngine g_display; static CMainGameComponent g_component; static CPlayerGui g_gui; static CWorld g_world;
+CPlayerGui* CPlayerGui::PClass = &g_gui;
+class CTCBase { protected: const CMainGameComponent& PeekComponent() const { return g_component; } CWorld& GetWorld() const { return g_world; } };
+class CTCFineDialogue : public CTCBase { public:
+    long Fine; long Money; bool GivePlayerChanceToPayFine; bool WaitingForConfirmation;
     bool IsAllowed()
     {
         if (!GivePlayerChanceToPayFine) return false;
-        if (GetGameSubsystem1C()->m_pMainPlayer->m_busy) return false;
-        if (g_pGameUI->m_blockingFD) return false;
-        if (g_pGameUI->m_blockingF6) return false;
-        long mode = GetWorld()->m_mode;
-        if (mode == 0 || mode == 9) return true;
-        return false;
+        if (PeekComponent().PeekDisplayEngine().IsScreenFadeOut()) return false;
+        if (CPlayerGui::Get().GetSubtitleRenderer().IsDisplayingText()) return false;
+        if (CPlayerGui::Get().GetSubtitleRenderer().IsInCutscene()) return false;
+        if (GetWorld().IsPerformingRegionLoad()) return false;
+        return true;
     }
 };
 int main()
 {
-    g_manager.m_pMainPlayer = &g_player; g_player.m_busy = false; g_ui.m_blockingF6 = false; g_ui.m_blockingFD = false; g_world.m_mode = 0;
+    g_component.PDisplayEngine = &g_display; g_display.ScreenFadeOutInfo.Active = false;
+    g_gui.SubtitleRenderer.InCutscene = false; g_gui.SubtitleRenderer.DisplayingText = false; g_world.RegionLoadStatus = 0;
     CTCFineDialogue d; d.GivePlayerChanceToPayFine = false;
     bool r0 = d.IsAllowed();
     d.GivePlayerChanceToPayFine = true; bool r1 = d.IsAllowed();
-    g_world.m_mode = 9; bool r2 = d.IsAllowed();
-    g_world.m_mode = 4; bool r3 = d.IsAllowed();
-    g_world.m_mode = 0; g_player.m_busy = true; bool r4 = d.IsAllowed();
-    g_player.m_busy = false; g_ui.m_blockingFD = true; bool r5 = d.IsAllowed();
-    g_ui.m_blockingFD = false; g_ui.m_blockingF6 = true; bool r6 = d.IsAllowed();
+    g_world.RegionLoadStatus = 9; bool r2 = d.IsAllowed();
+    g_world.RegionLoadStatus = 4; bool r3 = d.IsAllowed();
+    g_world.RegionLoadStatus = 0; g_display.ScreenFadeOutInfo.Active = true; bool r4 = d.IsAllowed();
+    g_display.ScreenFadeOutInfo.Active = false; g_gui.SubtitleRenderer.DisplayingText = true; bool r5 = d.IsAllowed();
+    g_gui.SubtitleRenderer.DisplayingText = false; g_gui.SubtitleRenderer.InCutscene = true; bool r6 = d.IsAllowed();
     if (r0 || !r1 || !r2 || r3 || r4 || r5 || r6) { std::printf("007e2790_TEST FAIL\n"); return 1; }
     std::printf("007e2790_TEST PASS\n");
     return 0;

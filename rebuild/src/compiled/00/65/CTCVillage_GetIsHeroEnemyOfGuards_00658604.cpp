@@ -1,41 +1,21 @@
-#pragma optimize("s",on)
-// CTCVillage::GetIsHeroEnemyOfGuards @ 0x00658604 (retail, 28 bytes)
-// VC7.1 / MSVC 2003, compile: cl /c /O2 /Oy /W3
-//
-// Retail disasm:
-//   push  esi
-//   mov   esi, ecx            ; esi = this
-//   call  <FirstFunc>         ; result discarded
-//   call  <SecondFunc>        ; eax = result
-//   xor   ecx, ecx
-//   cmp   eax, [esi+0xd4]     ; compare SecondFunc() with this->m_guardEnemyThreshold
-//   pop   esi
-//   setl  cl                 ; cl = (SecondFunc() < this->m_field) ? 1 : 0  (signed)
-//   mov   al, cl
-//   ret
-//
-// A this-only member accessor. Modeled as __fastcall so the object pointer
-// arrives in ECX exactly like __fastcall. Two engine callees; the first's
-// return value is discarded, the second's is the compared value.
+// CTCVillage::GetIsHeroEnemyOfGuards() -- is the world frame still before the frame the guards' enmity runs until
+// Leaf: ?GetIsHeroEnemyOfGuards@CTCVillage@@QAE_NXZ
+// Flags: /Os
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00658604, 28 bytes, plain `ret` (packed after the empty CreateDummyVillagersIfNecessary `ret`
+// at 0x00658603). Ego_r.pdb ?GetIsHeroEnemyOfGuards@CTCVillage@@QAE_NXZ (the catalog name; landed as a free __fastcall stub over a
+// local pad struct): `GetWorld().GetFrame() < HeroEnemyOfGuardsUntil` (+0xd4 in the retail CTCVillage layout, engine/CTCVillage.h).
+// Callees: CTCBase::GetWorld() const @ 0x00686A70 (result unused), CWorld::GetFrame() @ 0x0049D870 (static __fastcall).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCVILLAGE
+#define FABLE_RETAIL_CTCVILLAGE_APOLOGISE
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCVillage.h"
+#include "engine/CWorld.h"
 
-// --- Engine callees (relocation-masked; need not resolve for parity) ---
-extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Prep(void); // call A (discarded)
-class CWorld {
-public:
-    static long __fastcall GetFrame();   // 0x0049D870
-}; // call B (compared)
-
-// --- Inlined object layout with the load-bearing field at +0xd4 ---
-class CTCVillage
-{ public:
-    char _pad0[0xd4];
-    int  m_guardEnemyThreshold; // +0xd4  (signed compare via setl)
-};
-
-// __fastcall models __fastcall: 'this' arrives in ECX.
-bool __fastcall CTCVillage_GetIsHeroEnemyOfGuards(CTCVillage* village)
+bool CTCVillage::GetIsHeroEnemyOfGuards()
 {
-    CTCVillage_GetIsHeroEnemyOfGuards_Prep();          // call A, result discarded
-    return CWorld::GetFrame()   // call B, eax
-           < village->m_guardEnemyThreshold;           // cmp eax,[esi+0xd4] ; setl
+    return GetWorld().GetFrame() < HeroEnemyOfGuardsUntil;
 }

@@ -4,8 +4,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00583A92, 323 bytes, `ret 4`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`leave`, `push 46h ; pop ebx`).
 // Callees: std::bitset<>::test @ 0x00410DE0 and CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0
-//   (inlined GetInterface for CTCCarrying, type 0x46), CTCBase::GetDefinitions @ 0x006869D0,
-//   CDefinitionManager::GetDef<CThingDef> @ 0x0042AF3C, CDefClassBase::GetSubDef<CContextSensitiveItemDef> @ 0x005933C8
+//   (inlined GetInterface for CTCCarrying, type 0x46), CTCBase::GetDefinitionManager const @ 0x006869D0,
+//   CDefinitionManager::GetDef<CThingBaseDef> const @ 0x0042AF3C, CDefClassBase::GetSubDef<CContextSensitiveItemDef> const @ 0x005933C8
 //   (landed), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, IS_THING_ALIVE<CThing*> @ 0x0040DCE0 (__fastcall), the
 //   inventory's own virtual slots 33 (+0x84, use by def) and 34 (+0x88, use a thing), the defs' virtual slot 1.
 // Layout: retail CTCInventory (engine/CTCInventory.h, STLport 4.6 12-byte vectors): ContextSensitiveItems begin +0x154, the slot item
@@ -50,27 +50,29 @@ public:
         return false;
     }
 };
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);      // 0x0040DCE0
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 IS_THING_ALIVE<CThing*> (landed spelling)
 
 class CTCCarrying { public:
 public:
-    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440 (Ego_r.pdb QBE)
 };
 
+template <class T> class CDefPointer;
 class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long RefCount;                                          // +0x04
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005933C8 GetSubDef<CContextSensitiveItemDef> (Ego_r / FableWin template)
 };
 template <class T> class CDefPointer { public:
-    T* Object;
+    CDefClassBase* Object;                                  // the pointee as its non-const def base (engine/CDefPointer.h)
     CDefPointer() { Object = 0; }
     FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
     }
-    T* operator->() const { return Object; }
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 class CContextSensitiveItemDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
@@ -78,11 +80,9 @@ class CContextSensitiveItemDef : public CDefClassBase { public:
     unsigned char _pad2c[0x34 - 0x2c];
     long Slot;                                              // +0x34
 };
-struct CThingDef : CDefClassBase {
-    bool GetSubDef(CDefPointer<CContextSensitiveItemDef>* out);   // 0x005933C8
-};
+class CThingBaseDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
 class CGameDefinitionManager : public CDefinitionManager
 {
@@ -116,19 +116,19 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     }
     return lo;
 }
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
+template <class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
-    CThingDef* def = (CThingDef*)LookUpDef(index);
+    CDefClassBase* def = LookUpDef(index);
     out->Object = def;
     return def != 0;
 }
-bool CThingDef::GetSubDef(CDefPointer<CContextSensitiveItemDef>* out)
+template <class T> bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
-    CContextSensitiveItemDef* def = (CContextSensitiveItemDef*)LookUpSubDef(this);
+    CDefClassBase* def = LookUpSubDef(this);
     out->Object = def;
     return def != 0;
 }
-bool __fastcall IS_THING_ALIVE(CThing* const& thing)
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
 {
     return thing != 0 && IsAlive(thing);
 }
@@ -173,9 +173,9 @@ void CTCInventory::UseContextSensitiveItem(long quickSlot)
     CTCCarrying* carrying = 0;
     ParentThing->GetInterface(&carrying, 0x46);
     if (ContextSensitiveItems[quickSlot] > 0) {
-        CDefPointer<CThingDef> thingDef;
+        CDefPointer<const CThingBaseDef> thingDef;
         if (GetDefinitionManager().GetDef(ContextSensitiveItems[quickSlot], &thingDef)) {
-            CDefPointer<CContextSensitiveItemDef> itemDef;
+            CDefPointer<const CContextSensitiveItemDef> itemDef;
             if (thingDef->GetSubDef(&itemDef) && itemDef->ItemType == 6 && itemDef->Slot >= 0 && itemDef->Slot < 6) {
                 PreviousSlotItems[itemDef->Slot] = SlotItems[itemDef->Slot];
                 SlotItems[itemDef->Slot] = ContextSensitiveItems[quickSlot];

@@ -1,12 +1,12 @@
-// CTCInventoryClothing::SetThingAsWearingClothingSuit(CThing* thing, long suitDefIndex) -- strips the thing's clothing appearance modifiers and dresses it in every part of the hero suit `suitDefIndex` that the inventory actually holds, then refreshes the modifiers
+// CTCInventoryClothing::SetThingAsWearingClothingSuit(CThing& thing, long suitDefIndex) -- strips the thing's clothing appearance modifiers and dresses it in every part of the hero suit `suitDefIndex` that the inventory actually holds, then refreshes the modifiers
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005B3D7A, length 212 bytes (`ret 8`). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: std::bitset::test @ 0x00410DE0 and CVectorMap::LowerBound @ 0x0040F020 (the inline GetInterface for type 0x5E),
 // CTCHeroAttachableAppearanceModifiers::RemoveAllAppearanceModifiers(long) @ 0x00706640, AddAppearanceModifierWithReplace(long)
-// @ 0x00706950 and UploadChangesToGraphics() @ 0x00707930, CTCBase::GetDefinitions() @ 0x006869D0, CDefinitionManager::GetDef(long,
-// CDefPointer<T>*) @ 0x0042AF3C (the catalog's GetDef<CSpecialAbilitiesDrunkennessDef> body), CDefClassBase::GetSubDef<CHeroSuitDef>
-// @ 0x005935C4 (landed), CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08, the STLport tree successor
+// @ 0x00706950 and UploadChangesToGraphics() @ 0x00707930, CTCBase::GetDefinitionManager() const @ 0x006869D0,
+// CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const @ 0x0042AF3C, CDefClassBase::GetSubDef<CHeroSuitDef>
+// const @ 0x005935C4 (landed), NInventory::CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) const @ 0x005BDF08, the STLport tree successor
 // _Rb_global<bool>::_M_increment @ 0x004292C0 (`__cdecl`), the defs' virtual slot 1 on release.
 // Layout: CThing presence bits +0x20, interface map +0x44; CHeroSuitDef::SuitParts (map<EClothingSuitPart,long>) at +0x28
 // (PDB +0x28; node: part +0x10, item def index +0x14).
@@ -67,21 +67,22 @@ class CDefPointeeBase { public:
     long m_refCount;                                 // +0x04
 };
 template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (counted reference handed over)
-    T* Object;
-    T* operator->() const { return Object; }
-};
-class CHeroSuitDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x28 - 0x08];
-    CSuitPartMap  SuitParts;                         // +0x28
+    CDefPointeeBase* Object;                         // the pointee as its non-const base (engine/CDefPointer.h)
+    T* operator->() const { return static_cast<T*>(Object); }
 };
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CHeroSuitDef>* out);  // 0x005935C4
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005935C4 GetSubDef<CHeroSuitDef> (Ego_r / FableWin template)
+};
+class CThingBaseDef : public CDefClassBase { public: };
+class CHeroSuitDef : public CDefClassBase { public:
+    unsigned char _pad08[0x28 - 0x08];
+    CSuitPartMap  SuitParts;                         // +0x28
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHeroSuitDef>* out)
+template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 {
     void* def = FindDef_CDefClassBase_GetSubDef_1();
     if (!def)
@@ -91,13 +92,13 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHeroSuitDef>* ou
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C GetDef<CThingBaseDef> (FableWin.pdb template)
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDefClassBase>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -107,27 +108,34 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
 }
 #pragma auto_inline(on)
 
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
+class CTCBase { public:                              // the component base (members this row reads)
+    virtual ~CTCBase();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
 namespace NInventory {
-class CTCInventoryBase { public:
-    unsigned char _pad00[0x130];
-    CDefinitionManager* GetDefinitions();            // 0x006869D0 (CTCBase)
-    long GetNumberOfItemsOfTypeInInventory(long itemType);   // 0x005BDF08
+class CTCInventoryBase : public CTCBase { public:
+    unsigned char _pad04[0x130 - 0x4];
+    long GetNumberOfItemsOfTypeInInventory(long itemType) const;   // 0x005BDF08 (Ego_r.pdb QBE)
 };
-struct CTCInventoryClothing : CTCInventoryBase {
-    void SetThingAsWearingClothingSuit(CThing* thing, long suitDefIndex);
+}
+class CTCInventoryClothing : public NInventory::CTCInventoryBase {
+private:
+    void SetThingAsWearingClothingSuit(CThing& thing, long suitDefIndex);   // Ego_r.pdb ?SetThingAsWearingClothingSuit@CTCInventoryClothing@@AAEXAAVCThing@@J@Z
 };
-void CTCInventoryClothing::SetThingAsWearingClothingSuit(CThing* thing, long suitDefIndex)
+void CTCInventoryClothing::SetThingAsWearingClothingSuit(CThing& thing, long suitDefIndex)
 {
     CTCHeroAttachableAppearanceModifiers* modifiers;
-    if (thing->GetInterface(&modifiers, 0x5E)) {
+    if (thing.GetInterface(&modifiers, 0x5E)) {
         modifiers->RemoveAllAppearanceModifiers(APPEARANCE_MODIFIER_CLOTHING);
-        CDefPointer<CDefClassBase> def;
+        CDefPointer<const CThingBaseDef> def;
         def.Object = 0;
-        GetDefinitions()->GetDef(suitDefIndex, &def);
-        CDefPointer<CHeroSuitDef> suit;
+        GetDefinitionManager().GetDef(suitDefIndex, &def);
+        CDefPointer<const CHeroSuitDef> suit;
         suit.Object = 0;
         def->GetSubDef(&suit);
-        CHeroSuitDef* suitDef = suit.Object;
+        CHeroSuitDef* suitDef = static_cast<CHeroSuitDef*>(suit.Object);
         for (SNode* it = suitDef->SuitParts.begin(); it != suitDef->SuitParts.end(); it = _M_increment(it)) {
             if (GetNumberOfItemsOfTypeInInventory(it->second) > 0)
                 modifiers->AddAppearanceModifierWithReplace(it->second);
@@ -135,9 +143,8 @@ void CTCInventoryClothing::SetThingAsWearingClothingSuit(CThing* thing, long sui
         modifiers->UploadChangesToGraphics();
         if (--suitDef->m_refCount == 0)
             suitDef->Destroy();
-        CDefClassBase* owner = def.Object;
+        CDefPointeeBase* owner = def.Object;
         if (owner && --owner->m_refCount == 0)
             owner->Destroy();
     }
-}
 }

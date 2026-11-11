@@ -134,6 +134,11 @@ public:
 #ifdef FABLE_RETAIL_CTCBOASTINGCROWDCONTROL
     const CGameDefinitionManager& PeekDefinitionManager()const{return *DefinitionManager;}
 #endif
+#if defined(FABLE_RETAIL_CWORLD_PEEKDEFINITIONMANAGER) && !defined(FABLE_RETAIL_CTCBOASTINGCROWDCONTROL)
+    // Opt-in (agentNF14, row 0x006C8780): the same FableWin.pdb ?PeekDefinitionManager@CWorld@@QBEABVCGameDefinitionManager@@XZ
+    // (0x018D4A60), inline in retail (+0x10 read in place, 0x006C8820), under its own opt-in name. No layout change.
+    const CGameDefinitionManager& PeekDefinitionManager()const{return *DefinitionManager;}
+#endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
 #ifdef FABLE_RETAIL_CWORLD_MOVEHEROTOREGION
