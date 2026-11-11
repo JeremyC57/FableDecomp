@@ -1,0 +1,15 @@
+# Header overlay (chunk Q2) -- grade with FABLE_HDR_OVERLAY=$A/hdr; every change is behind a new opt-in, default paths byte-identical
+- engine/CTCOracleMinigame.h: `FABLE_RETAIL_CTCORACLEMINIGAME_CLASS` -- the polymorphic retail class (: CTCBase), typed members at the generated offsets, PDB member functions (row 0x007E6750).
+- engine/NPlayerGui_CDrawQuestInfo.h: `FABLE_RETAIL_CDRAWQUESTINFO_ORACLESYMBOLS` -- OracleSymbolSize 0x00647308, OracleSymbolPopBack 0x006463E1, OracleSymbolPopFront 0x006463F0, DisplayMiniGameInfo 0x00654593 (declarations).
+- engine/CSubtitleRenderer.h: `FABLE_RETAIL_CSUBTITLERENDERER_BUTTONOVERRIDE` -- SetButton2OverrideText 0x0048F881 (declaration).
+- engine/NCreatureMode_CModeScorpionKingVulnerable.h: NEW class header (Ego_r.pdb layout, retail STLport sizes; row 0x008E0A10).
+- engine/CTCBoss.h: `FABLE_RETAIL_CTCBOSS_EFFECTS` -- IncrementBossPhase / IsReadyForPhaseChange / CountEffects / ClearEffects / AddEffect (declarations).
+- engine/CTCHitLocations.h: `FABLE_RETAIL_CTCHITLOCATIONS_FROMNAME` -- GetPHitLocationFromName 0x00815820 (declaration, default branch).
+- engine/NHitLocations_CHitLocation.h: `FABLE_RETAIL_CHITLOCATION_SETENABLED` -- SetEnabled 0x00816390 (declaration, default branch).
+- engine/CCreatureAction_ScorpionSummon.h: `FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_CLASS` -- the class as `: CCombatActionBase` with its PDB ctor (replaces the flattened data-only model for that TU).
+- engine/CThing.h: `FABLE_RETAIL_CTHING_SAVEBINARY` -- SaveBinary(CDataOutputStream&) 0x004C84B0 (declaration, in the FABLE_RETAIL_CTHING_LOADSINGLE branch).
+- engine/CTCBase.h: `FABLE_RETAIL_CTCBASE_SERIALISE` -- Serialise(CPersistContext&, bool) 0x00686AA0 (declaration) and the inline IsToBeRemoved().
+- engine/CDataOutputStream.h: `FABLE_RETAIL_CDATAOUTPUTSTREAM_WRITESTREAM` -- Write(const CMemoryDataOutputStream&) 0x00995EB0 (declaration).
+- engine/CThing.h: `FABLE_RETAIL_CTHING_SAVE` -- the Save(CCharString&) override 0x004C9120 and SaveSerialiseCreatableTCs 0x004C72D0 (declarations).
+- engine/CStringParser.h: `FABLE_RETAIL_CSTRINGPARSER_INLINE_DEFAULTCTOR` -- the default ctor inline (`String = 0`), as the CThing TU expands it.
+- engine/CPersistContext.h: `FABLE_RETAIL_CPERSISTCONTEXT_STRINGSAVE` -- CPersistContext(CCharString&) 0x009BAE10 and Init(CCharString&, const CDefinitionManager*) 0x009BAA10 (declarations).

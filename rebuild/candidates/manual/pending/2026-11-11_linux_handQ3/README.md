@@ -1,0 +1,1 @@
+# Chunk Q3 -- paused by the coordinator (user, 2026-11-11: pause agents, land work, push for a second account). No row matched; ATTEMPTS.log holds the grades so far; differ/ the drafts touched this pass.
