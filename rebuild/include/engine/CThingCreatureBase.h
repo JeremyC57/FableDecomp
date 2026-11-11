@@ -302,6 +302,24 @@ public:
     virtual bool IsNewAttackerGreaterThreat(CThingCreatureBase const &, CThingCreatureBase const &) const;  // slot 74, 0x0052AB90
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingCreatureBase virtuals (TLC vtable slots aligned with the Xbox 360 Test PDB order;
+// Ego_r.pdb / FableWin.pdb spellings) and the protected non-virtual
+// ?GetMovementSpeedFromCreatureMode@CThingCreatureBase@@IBEMABVC3DVector@@W4EMovementType@@@Z (out of line at 0x00663BA0; the
+// CThingAICreature hover-speed overrides call it with AI_MOVEMENT_HOVER_SLOW / _MEDIUM / _FAST). Declarations only (no layout
+// change). Needs EMovementType declared (engine/EMovementType.h).
+public:
+    virtual void CopyGameState(const CThing&);                           // slot 7, 0x006619D0
+    virtual void ForceAnim(long, bool);                                  // slot 68, 0x00663E90
+    virtual void ForceAnim(const CCharString&, bool);                    // slot 69, 0x006635D0
+protected:
+    virtual unsigned long GetPhonemeAnim(const CCharString&) const;      // slot 71, 0x00666850
+public:
+    virtual bool IsWillable() const;                                     // slot 75, 0x00661FD0
+protected:
+    float GetMovementSpeedFromCreatureMode(const C3DVector&, EMovementType) const;   // 0x00663BA0
+public:
+#endif // FABLE_RETAIL_CTHINGCREATUREBASE_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase)==0x160);
 #ifdef FABLE_ENGINE_CTHINGCREATUREDEF_H

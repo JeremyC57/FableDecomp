@@ -27,6 +27,25 @@ public:
     virtual void ForceWidth(float width);                                          // slot 148 0x0054FFE0
     virtual void SetTextWindow(C2DBoxF& window);                                   // slot 149 0x0054FB10
     virtual C2DBoxF& GetTextWindow();                                              // slot 150 0x0054FFF0
+#ifdef FABLE_RETAIL_CTEXT_VSLOTS
+// agentFAM04 (2026-11-11): retail CComponent overrides of NUISystem::CText (vtable 0x01249CCC slots 94 / 95 / 111, Ego_r / FableWin
+// ?MakeAvailable@CText@NUISystem@@UAEXXZ, ?MakeAvailableDynamically@CText@NUISystem@@UAEXXZ, ?GetDynamicSize@CText@NUISystem@@UBE?AVC2DVector@@XZ)
+// and the Ego_r.pdb CText data members 0x30 lower in retail (on CChangingStateComponent's 0x15c; CTextContainer's members not
+// declared): Unavailable +0x189 is the byte MakeAvailable 0x0054FF90 clears. Declarations and members only.
+    virtual void MakeAvailable();                                   // slot 94 0x0054FF90
+    virtual void MakeAvailableDynamically();                        // slot 95 0x0054FFA0
+    virtual C2DVector GetDynamicSize() const;                       // slot 111 0x0054FF50
+protected:
+    CWideString Value;                                              // +0x15c (Ego_r +396)
+    CCountedPointer<CFontBank> PFont;                               // +0x160
+    unsigned char Handle[8];                                        // +0x168 CEnginePrimitiveHandle
+    unsigned char HandleDropShadowBottomRight[8];                   // +0x170 CEnginePrimitiveHandle
+    C2DBoxF Window;                                                 // +0x178
+    bool ScaleText;                                                 // +0x188
+    bool Unavailable;                                               // +0x189
+    unsigned char NoRenderNextFrame;                                // +0x18a
+public:
+#endif // FABLE_RETAIL_CTEXT_VSLOTS
 };
 }
 #endif // FABLE_ENGINE_NUISYSTEM_CTEXT_H

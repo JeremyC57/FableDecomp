@@ -111,6 +111,15 @@ public:
     virtual bool UseHighDetailQuadTree() const;  // slot 57, 0x005297C0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingPhysical overrides of CThing virtuals (TLC vtable slots aligned with the Xbox 360
+// Test PDB order; Ego_r.pdb / FableWin.pdb spellings). Declaration only (no layout change). Needs CThingPhysicalDebugInfo declared.
+public:
+    virtual void CopyGameState(const CThing&);                           // slot 7, 0x006A4B70
+    virtual bool DrawGetPhysicsDebugInfo(class CThingPhysicalDebugInfo&) const;   // slot 35, 0x006A4E70
+    virtual bool CanBlockNavigatingCreature() const;                     // slot 55, 0x006A4D90
+public:
+#endif // FABLE_RETAIL_CTHINGPHYSICAL_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingPhysical)==0xc0);
 #else

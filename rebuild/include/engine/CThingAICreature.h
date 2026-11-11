@@ -244,6 +244,26 @@ public:
     virtual bool FeelsGravity() const;  // slot 91, 0x00835920
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingAICreature overrides (TLC vtable 0x0127293C slots aligned with the Xbox 360 Test
+// PDB order; Ego_r.pdb / FableWin.pdb spellings). Declarations only (no layout change).
+protected:
+    virtual void OnSetInLimbo(bool);                                     // slot 14, 0x008337B0
+public:
+    virtual void SetPositionUsingBrain();                                // slot 45, 0x00830350
+    virtual unsigned long GetProperties() const;                         // slot 48, 0x00830140
+    virtual float GetMaxPushingSpeed(const C3DVector&) const;            // slot 78, 0x00830310
+    virtual float GetMaxFlyingSpeed(const C3DVector&) const;             // slot 83, 0x00830090
+    virtual float GetMaxHoverSpeedSlow(const C3DVector&) const;          // slot 84, 0x008300A0
+    virtual float GetMaxHoverSpeedMedium(const C3DVector&) const;        // slot 85, 0x008300B0
+    virtual float GetMaxHoverSpeedFast(const C3DVector&) const;          // slot 86, 0x008300C0
+    virtual float GetMaxAcceleration() const;                            // slot 87, 0x00830300
+protected:
+    virtual const class CEngineGraphic* GetCurrentGraphic() const;       // slot 90, 0x00830250
+public:
+    virtual float GetFOV() const;                                        // slot 92, 0x008302F0
+public:
+#endif // FABLE_RETAIL_CTHINGAICREATURE_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingAICreature) == 0x1d8);
 #else

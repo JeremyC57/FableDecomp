@@ -19,6 +19,15 @@ public:
     // PLACEHOLDER accessor names (no PDB on disk lists a getter; the row reads the members as inline tests):
     const CIntelligentPointer<CThing>& GetPTarget() const { return PTarget; }
     bool GetIsZTargetting() const { return IsZTargetting; }
+#ifdef FABLE_RETAIL_CTCBATTLECHARGE_VSLOTS
+// agentFAM04 (2026-11-11): retail virtuals and the private cleanup they share (Ego_r.pdb / FableWin.pdb spellings;
+// TLC vtable slots aligned with the Xbox 360 Test PDB order). Declarations only (no layout change).
+    virtual bool HasFrameUpdate() const;                                 // slot 8, 0x007A92B0
+    virtual void OnKill();                                               // slot 14, 0x007A7BD0 (tail call to FinalCleanup)
+private:
+    void FinalCleanup();                                                 // 0x007A75F0 ?FinalCleanup@CTCBattleCharge@@AAEXXZ
+public:
+#endif // FABLE_RETAIL_CTCBATTLECHARGE_VSLOTS
 private:
     CIntelligentPointer<CThing> PTarget;                                 // +0x0c
     unsigned char _unmodelled_0x14[0x88 - 0x14];                         // +0x14 PDef .. PeopleHit (not modelled)

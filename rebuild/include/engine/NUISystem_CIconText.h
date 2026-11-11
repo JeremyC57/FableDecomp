@@ -41,6 +41,10 @@ public:
     virtual void ChangeState(unsigned long);                         // slot 48, 0x005419E0
     virtual float CanScroll(bool, C2DBoxF&);                         // slot 88 (Ego_r ?CanScroll@CIconText@NUISystem@@UAEM_NAAVC2DBoxF@@@Z)
     virtual void MakeUnavailable();                                  // slot 92, 0x00543A80
+#ifdef FABLE_RETAIL_CICONTEXT_VSLOTS
+// agentFAM04 (2026-11-11): retail CComponent override missing above (vtable 0x012470CC slot 94, Ego_r / FableWin ?MakeAvailable@CIconText@NUISystem@@UAEXXZ). Declaration only.
+    virtual void MakeAvailable();                                    // slot 94, 0x00543AA0
+#endif // FABLE_RETAIL_CICONTEXT_VSLOTS
     virtual void MakeAvailableDynamically();                         // slot 95, 0x00543AB0
     virtual C2DVector GetDynamicSize() const;                        // slot 111, 0x00543A60
     virtual const CWideString& GetValue();                           // slot 142, 0x00543AC0

@@ -657,9 +657,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041c5a0	ChangeState	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c5c0	HasState	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c5e0	ChangedStateLastUpdate	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
-0041c610	vfunc_86	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c620	vfunc_87	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c630	vfunc_54	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c610	GetCurrentStateIndex	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c620	GetTargetStateIndex	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c630	GetUpdateTime	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c640	OnActivate	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c650	OnDeactivate	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c660	GetDynamicSize	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -694,11 +694,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041ca52	SetMember_dword0x13c_0041ca52	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CObservable_AddExclusiveObserver_0041ca52.cpp
 0041cadc	CYesNo	NUISystem::CYesNo	__thiscall	undefined	2	CTCHeroPodium *,CThing *	0	yes	accepted									
 0041cb10	ProcessEvent	NUISystem::CYesNo	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041cb56	vfunc_142	NUISystem::CYesNo	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041cb63	vfunc_143	NUISystem::CYesNo	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041cb56	SetYesCallBack	NUISystem::CYesNo	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041cb63	SetNoCallBack	NUISystem::CYesNo	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041cb70	COk	NUISystem::COk	__thiscall	undefined	2	CControllerDisconnect *,long	0	yes	accepted									
 0041cb9d	ProcessEvent	NUISystem::COk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041cbd7	vfunc_142	NUISystem::COk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041cbd7	SetOkCallBack	NUISystem::COk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041cbe4	CControllerDisconnect	NUISystem::CControllerDisconnect	__thiscall	undefined	2	CControllerDisconnect *,long	0	yes	accepted									
 0041cc11	ProcessEvent	NUISystem::CControllerDisconnect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041cc14	GetBackBufferWidth	NUISystem::CUIScreenUnitConverter	__thiscall	float	1	CTCLook *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCLook_GetHeadAngularVelocityMaxXY_0041cc14.cpp
@@ -724,16 +724,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041d165	OnCloseMenus	NUISystem::CManager	__fastcall	void	0		1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\global_OnCloseMenus_0041d165.cpp
 0041d198	SetMeshBank	NUISystem::CManager	__thiscall	void	2	CManager *,CCountedPointer<CGraphicDataBank>	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CManager_SetGraphicsBank_0041d198.cpp
 0041d1b4	GetBankHandle	CBankFile	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CBankFile_GetBankHandle_0041d1b4.cpp
-0041d1c8	vfunc_28	NUISystem::CManager	__thiscall	void	2	CTCBoastingCrowdControl *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCBoastingCrowdControl_OnKillCrowd_0041d1c8.cpp
+0041d1c8	RemoveUIActionParam	NUISystem::CManager	__thiscall	void	2	CTCBoastingCrowdControl *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCBoastingCrowdControl_OnKillCrowd_0041d1c8.cpp
 0041d207	ClearActionParams	NUISystem::CManager	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0041d207.cpp
 0041d21b	CreateComponent	NUISystem::CManager	__thiscall	CComponent *	2	CManager *,long	1	yes	accepted									
-0041d8a8	vfunc_25	NUISystem::CManager	__thiscall	void	2	CTCBoastingCrowdControl *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCBoastingCrowdControl_OnKillCrowd_0041d8a8.cpp
+0041d8a8	RemoveThingActionParam	NUISystem::CManager	__thiscall	void	2	CTCBoastingCrowdControl *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCBoastingCrowdControl_OnKillCrowd_0041d8a8.cpp
 0041d8e7	GetMiscThingsDef	NUISystem::CManager	__thiscall	CDefPointer<NUISystem::CUIIconsDef>	1	CManager *	1	yes	accepted									
 0041d98a	GetIconsDef	NUISystem::CManager	__thiscall	CDefPointer<NUISystem::CUIIconsDef>	1	CManager *	1	yes	accepted									
 0041da2d	ScrollMenu	CManager	__thiscall	void	2	CManager *,long	1	yes	accepted									
 0041db1d	CreateComponent	NUISystem::CManager	__thiscall	CComponent *	3	CManager *,CCharString *,bool	1	yes	accepted									
-0041db64	vfunc_27	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041db74	vfunc_24	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041db64	AddUIActionParam	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041db74	AddThingActionParam	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041db84	ShowErrorMessage	NUISystem::CManager	__thiscall	void	2	CManager *,ERRORMESSAGE_TYPE	1	yes	accepted									
 0041dc9d	AddActionsListenIgnoreOnList	NUISystem::CManager	__thiscall	void	5	CManager *,CComponent *,CComponent *,CComponent *,EEvent	1	yes	accepted									
 0041ded2	ClearBastardChild	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -965,7 +965,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042be2f	_M_create_node	std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<NUISystem::CComponent>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<NUISystem::CComponent>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<NUISystem::CComponent>>>>	__fastcall	CScriptDataBase *	0		1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_Alloc_0042be2f.cpp
 0042be50	CAction	NUISystem::CAction	__thiscall	undefined	1	CRumbleDef *	0	yes	accepted									
 0042be7b	CObservable	NUISystem::CObservable	__thiscall	undefined	3	CConsoleCommandParameters *,EGenericVarType,EGenericVarType	0	yes	accepted									
-0042bea9	vfunc_7	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042bea9	GetExclusiveObserver	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0042bead	Forward_Std_List_PushFront_member0x198_0042bead	_global	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCInventoryAbilities_AddLearnedExpression_0042bead.cpp
 0042bec0	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0.cpp
 0042bed4	CDeletion	NUISystem::CDeletion	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CBankFile_GetBankHandle_0042bed4.cpp
@@ -1030,22 +1030,22 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042d4d3	Forward_CForwarder_0042d4d3	_unattributed	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
 0042d4f0	vfunc_11	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0042d4f7	SetKeyPressed	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d506	vfunc_13	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d50e	vfunc_15	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d518	vfunc_16	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d522	vfunc_17	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d52c	vfunc_18	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d536	vfunc_19	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d540	vfunc_20	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d54a	vfunc_21	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d554	vfunc_22	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d55e	vfunc_23	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d568	vfunc_26	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d572	vfunc_30	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d57c	vfunc_31	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d580	vfunc_32	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d58a	vfunc_33	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0042d58e	vfunc_35	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d506	GetKeyPressed	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d50e	SetWeaponsInventory	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d518	SetMapInventory	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d522	SetQuestInventory	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d52c	SetTCHeroExperienceInventory	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d536	SetAbilitiesInventory	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d540	SetExperienceInventory	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d54a	SetInventory	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d554	SetInventoryClothing	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d55e	SetInventoryTrade	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d568	SetPlayerThing	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d572	SetNumberAugmentations	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d57c	GetNumberAugmentations	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d580	SetChange	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d58a	GetChange	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042d58e	GetMetaLayer	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0042d592	SetRightStickForce	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0042d5aa	vfunc_39	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0042d5b1	operator[]	std::map<unsigned long,NUISystem::CUIState>	unknown	undefined	0		0	yes	accepted									
@@ -1195,14 +1195,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0043211d	ReleaseFirstMember_0043211d	_unattributed	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CActiveFile_OnReadFinished_0043211d.cpp
 0043212b	_M_allocate_and_copy	std::vector<std::pair<unsigned long, CDefClassBase::CSubDefInfo> >	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x0043212B_global_Vector_AllocateAndCopy.cpp				
 00432180	Alloc	CControlsDef	unknown	undefined	0		0			discovered	gapscan							
-004321e0	vfunc_19	NUISystem::CUIMiscThingsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004321e0	Copy	NUISystem::CUIMiscThingsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004321f0	operator=	NUISystem::CUIMiscThingsDef	__thiscall	CSpecialAbilitiesBerserkDef *	2	CSpecialAbilitiesBerserkDef *,CSpecialAbilitiesBerserkDef *	1	yes	accepted									
 00432a35	operator=	CRetailTree_00432aa8	unknown	undefined	0		0	yes	accepted									
 00432aa8	Copy	CRetailTree_00431471	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432AA8_global_CTCCarryable_CloneTree.cpp				
 00432b38	operator=	CRetailTree_00432bab	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432B38_global_CTCCarryable_assign.cpp				
 00432bab	_M_copy	std::_Rb_tree<CCharString, pair<const CCharString, long>, ...>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432BAB_global_CExpression_DigScript_CloneTree.cpp				
 00432c40	Alloc	NUISystem::CUIMiscThingsDef	unknown	undefined	0		0			discovered	gapscan							
-00432c60	vfunc_19	NUISystem::CUIIconsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00432c60	Copy	NUISystem::CUIIconsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00432c70	operator=	NUISystem::CUIIconsDef	__thiscall	CUIIconsDef *	2	CUIIconsDef *,CUIIconsDef *	1	yes	accepted									
 00432e50	Copy	CFrontEndDef	__thiscall	CThingBuildingDef *	2	CThingBuildingDef *,CThingBuildingDef *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CFrontEndDef_CopyCFrontEndDefUAEXPBVCDefClassBaseZ_00432e50.cpp
 00432e60	operator=	CFrontEndDef	__thiscall	CThingBuildingDef *	2	CThingBuildingDef *,CThingBuildingDef *	1	yes	accepted									
@@ -5206,16 +5206,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c6fd0	GetType	NTCMessages::CMessageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004c7000	`scalar_deleting_destructor'	NTCMessages::CMessageBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CLandscapeBackgroundPatch_vectordeletingdestructor_004c7000.cpp
 004c70f0	IsActive	CTCScriptedControl	__thiscall	bool	1	CTCScriptedControl *	1	yes	accepted									
-004c72a0	vfunc_7	CThing	unknown	undefined	0		0	unmeasured	review-low						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\StubReturnVoid004c72a0_StubReturnVoid004c72a0_004c72a0.cpp
-004c72b0	vfunc_5	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004c72c0	vfunc_6	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004c72a0	CopyGameState	CThing	unknown	undefined	0		0	unmeasured	review-low						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\StubReturnVoid004c72a0_StubReturnVoid004c72a0_004c72a0.cpp
+004c72b0	ConstructAlreadyExistingThingFromLevelScript	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004c72c0	ConstructFromGameStateScript	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004c72d0	SaveSerialiseCreatableTCs	CThing	__thiscall	void	2	CThing *,CCharString *	1	yes	accepted									
 004c7380	operator new	CThing	__fastcall	void *	2	uint,bool	1	yes	accepted									
 004c73b0	DeleteArray_004c73b0	_global	__fastcall	void *	1	uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\global_operatornew_004c73b0.cpp
 004c73d0	GetPos	CThing	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CVertexBufferWin32_DoSizeof_004c73d0.cpp
 004c73e0	InitTC	CThing	__thiscall	void	2	CThing *,CTCBase *	1	yes	accepted									
 004c7440	SetPlayerNumber	CThing	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CTCPhysicsNavigator_EnableNavigator_004c7440.cpp
-004c7460	vfunc_21	CThing	__thiscall	bool	2	CThingFilter_IsUnconscious *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThingFilterIsUnconscious_operator_004c7460.cpp
+004c7460	RenderUpdate	CThing	__thiscall	bool	2	CThingFilter_IsUnconscious *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThingFilterIsUnconscious_operator_004c7460.cpp
 004c7470	ValidateThing	CThing	__thiscall	bool	2	CThing *,CCharString *	1	yes	accepted									
 004c74b0	DrawGetEditDrawInfo	CThing	__thiscall	bool	3	CThing *,float,CEditEngineDrawInfo *	1	yes	accepted									
 004c74f0	SetCurrentThingManager	CThing	__fastcall	void	1	CThingManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\global_SetCurrentThingManager_004c74f0.cpp
@@ -5226,7 +5226,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c75a0	sub_004c75a0	_global	unknown	undefined	0		0			discovered	gapscan							
 004c7770	SetAsActivated	CThing	__thiscall	void	2	CThing *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_SetAsGameStatePersisted_004c7770.cpp
 004c7790	DrawIsDrawable	CThing	__thiscall	bool	1	CThing *	1	yes	accepted									
-004c77b0	vfunc_29	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004c77b0	DrawIsEditDrawable	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004c77d0	OnLevelUnload	CThing	__thiscall	void	1	CThing *	1	yes	accepted									
 004c7820	SendMessageW	CThing	__thiscall	void	2	CThing *,CMessageBase *	1	yes	accepted									
 004c7870	IsEntitySerialisable	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -5252,7 +5252,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c7ac0	AddToRenderList	CThing	__thiscall	void	1	CThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_AddToRenderList_004c7ac0.cpp
 004c7ae0	GetPWorldSeed	CThing	__thiscall	CDisplayEngine *	1	CViewBase *	1	yes	accepted									
 004c7b00	GetInfo	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004c7b80	vfunc_17	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004c7b80	IsToBePlacedInMap	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004c7bc0	CheckUID	CThing	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 004c7bd0	IsForceNoSerialise	CThing	__thiscall	bool	1	CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_IsForceNoSerialise_004c7bd0.cpp
 004c7bf0	IsFrameUpdated	CThing	__thiscall	bool	1	CThing *	1	yes	accepted									
@@ -5362,12 +5362,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004cd0c0	__linear_insert	std	unknown	undefined	0		0	yes	accepted									
 004cd130	SortHeap_004cd130	_global	__fastcall	void	2	pair<long,unsigned_long> *,pair<long,unsigned_long> *	1	yes	accepted									
 004cd1a0	SerialiseGameState	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004cd1b0	vfunc_13	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004cd1c0	vfunc_14	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004cd1d0	vfunc_26	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004cd1e0	vfunc_30	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004cd220	vfunc_34	CThing	unknown	undefined	0		0			discovered	boundary							
-004cd230	vfunc_35	CThing	unknown	undefined	0		0			discovered	boundary							
+004cd1b0	PreOnKill	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004cd1c0	OnSetInLimbo	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004cd1d0	DrawUpdate	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004cd1e0	DrawIsInDrawList	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004cd220	DrawGetThingDisplayInformation	CThing	unknown	undefined	0		0			discovered	boundary							
+004cd230	DrawGetPhysicsDebugInfo	CThing	unknown	undefined	0		0			discovered	boundary							
 004cd2a0	CPairVectorWithFlag	CPairVectorWithFlag	unknown	undefined	0		0			discovered	boundary							
 004cd2b0	CPairVectorWithFlag	CPairVectorWithFlag	unknown	undefined	0		0			discovered	boundary							
 004cd2d0	push_back	CPointerRecordList	unknown	undefined	0		0			discovered	boundary							
@@ -7141,7 +7141,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004debc0	GetSizeofClass	CTurncoatDef	__thiscall	ulong	1	CTurncoatDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTurncoatDef_GetSizeofClass_004debc0.cpp
 004debc4	Transfer	CGoldDef	__thiscall	void	2	CGoldDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CGoldDef_Transfer_004debc4.cpp
 004debd4	CTCTargetingSpirit	CTCTargetingSpirit	__thiscall	undefined	2	CTCBed *,CThing *	0	yes	accepted									
-004debf7	vfunc_10	CTCTargetingSpirit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004debf7	BulletTimeFrameUpdate	CTCTargetingBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004debfc	GetPBestEnemyCreatureForAttack	CTCTargetingBase	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 004debff	GetPBestCreatureForInteractionTypeWithinRangeLimit	CTCTargetingBase	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 004dec04	GetPBestCreatureForInteractionType	CTCTargetingBase	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
@@ -7168,7 +7168,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004defa7	CTCKraken	CTCKraken	__thiscall	undefined	2	CTCDPhysicalObstruction *,CThing *	0	yes	accepted									
 004df037	GetInterfaceType	CTCKraken	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df03d	GetClassTypeName	CTCKraken	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004df04d	vfunc_8	CTCKraken	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004df04d	HasFrameUpdate	CTCKraken	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df050	Transfer	CKrakenTentacleDef	__fastcall	void	0		1	yes	accepted									
 004df0f7	Transfer	CAICreatureWillPowerIndicatorDef	__thiscall	void	2	CAICreatureWillPowerIndicatorDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CAICreatureWillPowerIndicatorDef_Transfer_004df0f7.cpp
 004df107	Transfer	CFishingRodDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CFishingRodDef_TransferCFishingRodDefUAEXAAVCPersistContextZ_004df107.cpp
@@ -8989,7 +8989,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005297d0	`scalar_deleting_destructor'	CThingPhysical	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_005297d0.cpp
 005297f0	PeekPMaterial	CThingPhysical	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529830	IsUsingTriggerRadius	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00529840	vfunc_62	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00529840	GetTriggerRadius	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529850	SetTriggerRadius	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529860	IsCover	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529870	IsGameObject	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9015,8 +9015,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00529b50	IsEntitySerialisable	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529b60	ModifyHealth	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529b70	IsUsingTriggerRadius	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00529b80	vfunc_62	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00529b90	vfunc_63	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00529b80	GetTriggerRadius	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00529b90	SetTriggerRadius	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529ba0	`scalar_deleting_destructor'	CThingSwitch	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted									
 00529c10	IsEntitySerialisable	CThingMarker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529c20	ModifyHealth	CThingMarker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9044,11 +9044,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052aad0	`scalar deleting destructor'	NThingManager::CEntityRuntimePersistence::CEntityScriptInfo	__thiscall	void *	2	CParticleEffect *,uint	1	yes	accepted									
 0052ab00	CEntityScriptInfo	CEntityScriptInfo	__thiscall	undefined	1	CEntityScriptInfo *	0	yes	accepted									
 0052ab20	CThingPlayerCreature	CThingPlayerCreature	__thiscall	undefined	1	C3DMeshFileBoneChunk *	0	yes	accepted									
-0052ab80	vfunc_50	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052ab90	vfunc_74	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052ab80	IsHidden	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052ab90	IsNewAttackerGreaterThreat	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052aba0	IsAffectedByDamage	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052abb0	IsControlled	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052abc0	vfunc_80	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052abc0	GetMaxJoggingSpeed	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052abd0	IsToUnsheatheItemsAfterCutscenes	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052abe0	IsPlayerCharacter	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052abf0	`scalar_deleting_destructor'	CThingPlayerCreature	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_0052abf0.cpp
@@ -9158,29 +9158,29 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052e730	vfunc_49	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e740	vfunc_46	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e750	SetZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e780	vfunc_12	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e780	GetZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e7a0	SetColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e7c0	vfunc_52	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e7d0	vfunc_53	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e7c0	GetParent	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e7d0	GetChildren	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e7e0	vfunc_54	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e7f0	vfunc_55	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e810	vfunc_57	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e7f0	GetTargetPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e810	GetTargetZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e830	ProcessEvent	NUISystem::CComponent	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\E2_E2_0052e830.cpp
 0052e840	ProcessChangeState	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e850	vfunc_63	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e850	GetDeletion	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e860	SetPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e890	vfunc_16	NUISystem::CComponent	__thiscall	undefined	2	CMessageEventFilter_IsOriginatedByThing *,CThing *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CMessageEventFilterIsOriginatedByThing_IsOriginatedByThing_0052e890.cpp
-0052e8b0	vfunc_17	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e890	GetPosition	NUISystem::CComponent	__thiscall	undefined	2	CMessageEventFilter_IsOriginatedByThing *,CThing *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CMessageEventFilterIsOriginatedByThing_IsOriginatedByThing_0052e890.cpp
+0052e8b0	GetParentPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e8d0	SetParentPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e8f0	vfunc_19	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e8f0	GetParentZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e910	SetParentZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e930	vfunc_22	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e930	SetParentColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e940	vfunc_25	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e950	vfunc_26	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e960	vfunc_27	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e970	SetRenderPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e990	SetRenderZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e9b0	vfunc_30	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e9b0	SetRenderColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e9c0	ChangePosition	NUISystem::CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
 0052ea30	ChangePositionDelta	NUISystem::CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
 0052eaf0	ChangePositionDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
@@ -9191,11 +9191,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052ee00	GetTargetRenderPosition	CComponent	__thiscall	C2DVector	1	CComponent *	1	yes	accepted									
 0052eec0	GetTargetRelativeRenderPosition	_global	__thiscall	C2DVector	1	CComponent *	1	yes	accepted									
 0052efe0	GetType	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052eff0	vfunc_66	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f000	vfunc_67	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f010	vfunc_68	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f020	vfunc_69	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f030	vfunc_70	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052eff0	AddAction	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f000	AddActionOnSelected	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f010	AddActionOnBack	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f020	AddPreAction	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f030	AddActionOnInactive	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f040	vfunc_71	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f050	vfunc_80	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f060	vfunc_72	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9206,7 +9206,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052f0b0	vfunc_77	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f0c0	vfunc_78	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f0d0	vfunc_79	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f0e0	vfunc_82	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f0e0	GetStates	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f0f0	SetName	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f100	GetName	NUISystem::CComponent	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CBankFile_GetBankHandle_0052f100.cpp
 0052f120	GetCurrentStateIndex	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9214,9 +9214,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052f140	RemoveChild	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f150	vfunc_91	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f160	vfunc_90	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f170	vfunc_99	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f170	GetParentViewport	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f180	IsBastardChild	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f190	vfunc_101	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f190	IsIndependent	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f1a0	IsPositionIndependent	NUISystem::CComponent	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 0052f1b0	IsZoomIndependent	NUISystem::CComponent	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 0052f3e0	GetRenderLayer	CComponent	__thiscall	long	1	CComponent *	1	yes	accepted									
@@ -9408,13 +9408,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053ce17	vfunc_158	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce24	vfunc_163	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce2b	vfunc_164	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053ce32	vfunc_170	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053ce41	vfunc_171	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053ce50	vfunc_172	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053ce32	IsWrapping	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053ce41	IsScrolling	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053ce50	IsInverted	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce5f	vfunc_175	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce66	vfunc_176	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce6d	vfunc_177	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053ce7a	vfunc_181	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053ce7a	SetRecomputeOffsets	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce87	Override_0053cfa6	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce8f	Override_0053cfa6	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ce97	SetActionOnScrollUp	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9426,7 +9426,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053d000	MakeUnavailableDynamically	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053d060	MakeAvailable	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053d0c0	MakeAvailableDynamically	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
-0053d120	vfunc_64	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053d120	RemoveChild	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053d130	OnLeftClicked	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053d140	OnRightUnclicked	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053d150	AddChild	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9503,12 +9503,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00540df0	Initialise	NUISystem::CDynamicList	__thiscall	void	1	CDynamicList *	1	yes	accepted									
 00540e10	ProcessEvent	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00540e20	ChangeState	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00540e30	vfunc_143	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00540e40	vfunc_149	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540e30	GetSelectedIndex	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540e40	GetScrollingChildren	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00540e50	ScrollSelectionUp	NUISystem::CDynamicList	__thiscall	void	1	CDynamicList *	1	yes	accepted									
 00540ec0	ScrollSelectionDown	NUISystem::CDynamicList	__thiscall	void	1	CDynamicList *	1	yes	accepted									
 00540f50	SetSelectionIndex	NUISystem::CDynamicList	__thiscall	void	2	CDynamicList *,ulong	1	yes	accepted									
-00541020	vfunc_1	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00541020	Update	NUISystem::CDynamicList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00541120	vfunc_64	NUISystem::CDynamicList	__thiscall	void	2	CDynamicList *,ulong	1	yes	accepted									
 00541230	vfunc_148	NUISystem::CDynamicList	__thiscall	void	2	CDynamicList *,ulong	1	yes	accepted									
 00541350	~CDynamicList	NUISystem::CDynamicList	__thiscall	void	1	CParticleEffect *	1	yes	accepted									
@@ -9541,11 +9541,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00543870	__uninitialized_fill_n	std	__fastcall	void	2	CAnimatedBlock *,ulong	1	yes	accepted									
 00543910	CEnginePrimitive2DText	CEnginePrimitive2DText	__thiscall	undefined	9	CEnginePrimitive2DText *,__uint64,C2DVector *,EEngine2DLayer,float,CWideString *,CFontBank *,CRGBColour *,EEngineInterpolationSet	0	yes	accepted									
 00543a40	GetSize	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00543a60	vfunc_111	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00543a60	GetDynamicSize	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543a80	MakeUnavailable	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543a90	MakeUnavailableDynamically	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00543aa0	vfunc_94	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00543ab0	vfunc_95	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00543aa0	MakeAvailable	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00543ab0	MakeAvailableDynamically	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543ac0	GetValue	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543ad0	GetFont	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543ae0	SetTextWindow	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9565,7 +9565,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00544090	`vector deleting destructor'	NUISystem::CParticleEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005440a0	`vector deleting destructor'	NUISystem::CParticleEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005440b0	`scalar_deleting_destructor'	NUISystem::CParticleEffect	__thiscall	void *	2	CParticleEffect *,uint	1	yes	accepted									
-00544100	vfunc_144	NUISystem::CSpellContainerList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00544100	SetSpellToAssign	NUISystem::CSpellContainerList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00544110	ShowSpellSelectionChild	NUISystem::CSpellContainerList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00544190	HideSpellSelectionChild	NUISystem::CSpellContainerList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00544210	InitialiseOffsets	NUISystem::CSpellContainerList	__thiscall	void	2	CSpellContainerList *,ulong	1	yes	accepted									
@@ -9580,7 +9580,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00544c10	~CSpellContainerList	NUISystem::CSpellContainerList	__thiscall	void	1	CSpellContainerList *	1	yes	accepted									
 00544d20	ProcessEvent	NUISystem::CSpellContainerList	__thiscall	void	2	CSpellContainerList *,EEvent	1	yes	accepted									
 005455f0	`scalar_deleting_destructor'	NUISystem::CSpellContainerList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_005455f0.cpp
-00545610	vfunc_64	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00545610	RemoveChild	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00545670	AcceptAssignments	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00545720	CSpellContainer	NUISystem::CSpellContainer	__thiscall	undefined	2	CSpellContainer *,long	0	yes	accepted									
 00545840	~CSpellContainer	NUISystem::CSpellContainer	__thiscall	void	1	CZoomingComponent *	1	yes	accepted									
@@ -9589,8 +9589,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00545df0	AddChildAndSetOffsets	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00545e60	Initialise	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00545f00	AddChildDynamically	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00546060	vfunc_145	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00546070	vfunc_148	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00546060	SetEmptySlotDef	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00546070	GetBaseSpells	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00546080	`vector deleting destructor'	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00546090	`vector deleting destructor'	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005460a0	`scalar_deleting_destructor'	NUISystem::CSpellContainer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_005460a0.cpp
@@ -9612,7 +9612,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00546b80	SetMinZoom	NUISystem::CZoomingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00546ba0	SetMaxZoom	NUISystem::CZoomingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00546bc0	SetZoomCenter	NUISystem::CZoomingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00546be0	vfunc_146	NUISystem::CZoomingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00546be0	GetZoomCenter	NUISystem::CZoomingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00546c00	`vector deleting destructor'	NUISystem::CZoomingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00546c10	`vector deleting destructor'	NUISystem::CZoomingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00546c20	`scalar deleting destructor'	NUISystem::CZoomingComponent	__thiscall	void *	2	CZoomingComponent *,uint	1	yes	accepted									
@@ -9638,7 +9638,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00547500	GetDataFromDef	NUISystem::CSwappingStateComponent	__thiscall	void	1	CList *	1	yes	accepted									
 00547600	CSwappingStateComponent	NUISystem::CSwappingStateComponent	__thiscall	undefined	2	CScrollBarOutside *,long	0	yes	accepted									
 00547790	__find_if<std::pair<unsigned long, float> *, CIsStateSwapping>	std	unknown	undefined	0		0	yes	accepted									
-00547970	vfunc_142	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00547970	IsRandomSwap	NUISystem::CSwappingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00547980	`vector deleting destructor'	NUISystem::CSwappingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00547990	`vector deleting destructor'	NUISystem::CSwappingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005479a0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
@@ -9721,8 +9721,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054c250	Initialise	NUISystem::CListArrow	__thiscall	void	1	CEngine *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CEngine_ChangeCameraAngle_0054c250.cpp
 0054c270	ChangeState	NUISystem::CListArrow	__thiscall	void	2	CListArrow *,ulong	1	yes	accepted									
 0054c2a0	Update	NUISystem::CListArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054c320	vfunc_149	NUISystem::CListArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054c330	vfunc_150	NUISystem::CListArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054c320	SetMinToDraw	NUISystem::CListArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054c330	SetMaxToDraw	NUISystem::CListArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c340	`vector deleting destructor'	NUISystem::CListArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c350	`vector deleting destructor'	NUISystem::CListArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c360	`scalar deleting destructor'	NUISystem::CListArrow	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
@@ -9795,11 +9795,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054ff10	GetValue	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ff20	GetFont	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ff30	GetSize	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054ff50	vfunc_111	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ff50	GetDynamicSize	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ff70	MakeUnavailable	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ff80	MakeUnavailableDynamically	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054ff90	vfunc_94	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054ffa0	vfunc_95	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ff90	MakeAvailable	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ffa0	MakeAvailableDynamically	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ffb0	SetTextWindow	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ffe0	GetTextWindow	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054fff0	GetAlignment	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -10077,8 +10077,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0055c8b0	`vector deleting destructor'	NUISystem::CMouseCursor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055c8c0	`vector deleting destructor'	NUISystem::CMouseCursor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055c8d0	`scalar deleting destructor'	NUISystem::CMouseCursor	__thiscall	void *	2	CMouseCursor *,uint	1	yes	accepted									
-0055c930	vfunc_3	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055c940	vfunc_4	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0055c930	AddExclusiveObserver	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0055c940	RemoveExclusiveObserver	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055c950	RemoveAllObservers	NUISystem::CObservable	__thiscall	void	3	CGraphicBankManager *,bool,double	1	yes	accepted									
 0055c9c0	RemoveObserver	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055ca00	RemoveConcurrentExclusiveObserver	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -10401,7 +10401,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0056e1e0	OnReset	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e1f0	`scalar_deleting_destructor'	NCameraModes::CBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CLandscapeBackgroundPatch_vectordeletingdestructor_0056e1f0.cpp
 0056e260	IsUseRightStickLookAround	NCameraModes::CCameraPointModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0056e270	vfunc_18	NCameraModes::CCameraPointModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0056e270	GetDefaultFOV	NCameraModes::CCameraPointModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e280	OnInitLeaf	NCameraModes::CCameraPointModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e290	OnDieLeaf	NCameraModes::CCameraPointModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e2a0	IsTrackObservedThing	NCameraModes::CCameraPointModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -10411,7 +10411,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0056e330	CSnapToPoint	NCameraModes::CSnapToPoint	__thiscall	undefined	4	CSnapToPoint *,CGameCameraManager *,CDefPointer<CCameraModeDef_const_> *,CThing *	0	yes	accepted									
 0056e380	GetModeType	NCameraModes::CSnapToPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e390	OnDieLeaf	NCameraModes::CSnapToPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0056e3a0	vfunc_28	NCameraModes::CSnapToPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0056e3a0	IsTrackObservedThing	NCameraModes::CSnapToPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e3b0	GetLookDirection	NCameraModes::CSnapToPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e3e0	ScalarDeletingDestructor	CSnapToPoint	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 0056e410	`scalar_deleting_destructor'	CTCBoastUI	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CLandscapeBackgroundPatch_vectordeletingdestructor_0056e410.cpp
@@ -13236,7 +13236,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00625150	GetSizeofClass	NUISystem::CUIStateDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00625160	`vector_deleting_destructor'	CCompressedMemoryDataInputStream	__thiscall	void *	2	CCompressedMemoryDataInputStream *,uint	1	yes	accepted									
 006251c0	__partial_sort	std	unknown	undefined	0		0	yes	accepted									
-00625340	vfunc_19	NUISystem::CUIStateDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00625340	Copy	NUISystem::CUIStateDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00625350	operator=	CConfigOptionsDefaultsDef	__thiscall	CConfigOptionsDefaultsDef *	2	CConfigOptionsDefaultsDef *,CConfigOptionsDefaultsDef *	1	yes	accepted									
 006253d0	resize	std::vector<CQuestCardItem>	__thiscall	void	2	vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>_>_> *,uint	1	yes	accepted									
 00625440	__introsort_loop<CTestQuest *, CTestQuest, int, CTestQuestNameCompare>	std	unknown	undefined	0		0	yes	accepted									
@@ -13460,7 +13460,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00631560	UninitCopy_CElement124_006250b0_00631560	_global	__fastcall	CFeatDef *	5	CFeatDef *,CFeatDef *,CFeatDef *,allocator<CFeatDef> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00631590	_M_allocate_and_copy<NUISystem::CUIStateDef const *>	std::vector<NUISystem::CUIStateDef, std::allocator<NUISystem::CUIStateDef>>	unknown	undefined	0		0	yes	accepted									
 006315e0	operator=	std::vector<NUISystem::CUIStateDef, std::allocator<NUISystem::CUIStateDef>>	unknown	undefined	0		0	yes	accepted									
-00631710	vfunc_19	NUISystem::CUIDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00631710	Copy	NUISystem::CUIDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00631720	operator=	NUISystem::CUIDef	__thiscall	CUIDef *	2	CUIDef *,CUIDef *	1	yes	accepted									
 00631c60	Transfer	NUISystem::CUIDef	__fastcall	void	0		1	yes	accepted									
 00632260	Transfer	CPersistContext	unknown	undefined	0		0	yes	accepted									
@@ -13703,9 +13703,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00640560	AddChangedArea	CEngineManager	unknown	undefined	0		0	yes	accepted									
 006405b0	list<CTCBase*::remove	_global	__thiscall	void	2	list<CTCBase*,std::allocator<CTCBase*>_> *,CTCBase * *	1	yes	accepted									
 00640670	_M_insert_overflow	std::vector<C2DBoxI, std::allocator<C2DBoxI>>	unknown	undefined	0		0	yes	accepted									
-006407b0	vfunc_2	NGraphicAppearance::CAGraphicAppearanceComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006407c0	vfunc_3	NGraphicAppearance::CAGraphicAppearanceComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006407d0	vfunc_4	NGraphicAppearance::CAGraphicAppearanceComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006407b0	GetMeshesUsed	NGraphicAppearance::CAGraphicAppearanceComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006407c0	GetTexturesUsed	NGraphicAppearance::CAGraphicAppearanceComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006407d0	IsAppearanceSentEveryRenderFrame	NGraphicAppearance::CAGraphicAppearanceComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006409a0	FreeSelf_006409a0	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 006409d0	CCountedPointer_Release_006409d0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006409d0.cpp
 00640a70	fill<NGraphicAppearance::CPrimitive**,NGraphicAppearance::CPrimitive*>	std	__fastcall	void	3	ENavigatorType *,ENavigatorType *,ENavigatorType *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\global_fillENavigatorTypeENavigatorType_00640a70.cpp
@@ -13814,7 +13814,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00644efd	UpdateMiniGame	NPlayerGui::CDrawQuestInfo	__thiscall	void	4	CDrawQuestInfo *,float,long,long	1	yes	accepted									
 00644f85	UpdateMiniGame	NPlayerGui::CDrawQuestInfo	__thiscall	void	2	CDrawQuestInfo *,CRGBColour *	1	yes	accepted									
 00644fc5	GetElementByIndex	NPlayerGui::CDrawQuestInfo	__thiscall	CQuestInfoElement *	2	CDrawQuestInfo *,long	1	yes	accepted									
-00644fe5	vfunc_2	NPlayerGui::CDrawQuestInfo::CQuestInfoElement	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00644fe5	Clear	NPlayerGui::CDrawQuestInfo::CQuestInfoElement	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00644ffc	ClearPrimitivesIfNecessary	NPlayerGui::CDrawAbilityButtons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00645099	DrawButton	NPlayerGui::CDrawAbilityButtons	__thiscall	void	8	CDrawAbilityButtons *,CEnginePrimitivePrepareInfo *,C2DVector *,float,long,long,bool,EEngine2DLayer	1	yes	accepted									
 006451dd	DrawEffects	NPlayerGui::CDrawAbilityButtons	__thiscall	void	4	CDrawAbilityButtons *,long,C2DVector *,CHeroAbilityDef *	1	yes	accepted									
@@ -14565,7 +14565,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00661620	CThingFilter_SolidToThing	CThingFilter_SolidToThing	__thiscall	undefined	2	CThingFilter_SolidToThing *,CThing *	0	yes	accepted									
 00661640	operator()	CThingFilter_SolidToThing	__thiscall	bool	2	CThingFilter_IsNot *,CThing *	1	yes	accepted									
 00661720	IsFinished	CAnimateThing	__thiscall	bool	1	CTCWife *	1	yes	accepted									
-006619d0	vfunc_7	CThingCreatureBase	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\global_StubReturnVoid004c72a0_006619d0.cpp
+006619d0	CopyGameState	CThingCreatureBase	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\global_StubReturnVoid004c72a0_006619d0.cpp
 006619f0	SetLastActionHandedness	CThingCreatureBase	__thiscall	void	2	CThingCreatureBase *,ECombatAnimationHandedness	1	yes	accepted									
 00661a40	DrawUpdate	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00661a60	Save	CThingCreatureBase	__thiscall	void	2	CThingPhysical *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CThingPhysical_Save_00661a60.cpp
@@ -14574,7 +14574,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00661ca0	GetSoundPair	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00661cc0	GetPersonalSpaceRadius	CThingCreatureBase	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00661cc0.cpp
 00661cd0	GetCurrentSpeed	CThingCreatureBase	unknown	undefined	0		0	yes	accepted									
-00661d00	vfunc_70	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00661d00	GetMaterialOnHitByMelee	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00661d20	GetNavigationLevelAt	CThingCreatureBase	__thiscall	CComponent *	2	CFrontEndManager *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CFrontEndManager_CreateComponent_00661d20.cpp
 00661d70	IsThingInFrontCone	CThingCreatureBase	unknown	undefined	0		0	yes	accepted									
 00661e70	CanCollideWithLandscape	CTCPhysicsStandard	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CTCPhysicsStandard_CanCollideWithLandscape_00661e70.cpp
@@ -14588,7 +14588,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00661f70	IsChild	CThingCreatureBase	__thiscall	bool	1	CThingCreatureBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CThingCreatureBase_IsChild_00661f70.cpp
 00661f90	GetCombatRadius	CThingCreatureBase	__thiscall	float	1	CThingCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CThingCreatureBase_GetCombatRadius_00661f90.cpp
 00661fc0	IsIndestructible	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00661fd0	vfunc_75	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00661fd0	IsWillable	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00661ff0	GetSex	CThingCreatureBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CPixelShader_CountReferences_00661ff0.cpp
 00662000	GetCreatureType	CThingCreatureBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CPixelShader_CountReferences_00662000.cpp
 00662010	GetProperty	CThingCreatureBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CPixelShader_CountReferences_00662010.cpp
@@ -15293,7 +15293,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00681420	CVectorMap_Sort_00681420	_global	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CGuiVarTransferBool_TransferToGui_00681420.cpp
 00681440	CVectorMap_SortIfDirty_00681440	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CTCVillage_OnInitialActivate_00681440.cpp
 00681500	GetAttitudeType	COpinionReactionManager	__thiscall	EOpinionAttitudeType	3	COpinionReactionManager *,CThing *,CTCOpinionSource *	1	yes	accepted									
-006815c0	vfunc_6	CTCCreatureOpinionOfHero	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006815c0	OnInitialActivate	CTCCreatureOpinionOfHero	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006815d0	SetHeroOpinionEnemy	CTCCreatureOpinionOfHero	__thiscall	void	2	CTCCreatureOpinionOfHero *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CTCCreatureOpinionOfHero_SetHeroOpinionEnemy_006815d0.cpp
 006815f0	SRecord_006815f0	SRecord_006815f0	__thiscall	undefined	1	CVsyncCallbackTimerInfo *	0	yes	accepted									
 00681610	COpinionTransientOffset	COpinionTransientOffset	__thiscall	undefined	6	COpinionTransientOffset *,EOpinion,float,long,long,float	0	yes	accepted									
@@ -15959,20 +15959,20 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0069dd10	IsShortenOnOcclusion	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069dd20	IsStringAndCage	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069dd30	IsAvoidLandscape	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0069dd40	vfunc_24	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0069dd60	vfunc_25	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0069dd40	GetStringBaseOffset	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0069dd60	GetCageBaseOffset	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069dd80	SetUpPhysics	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069dd90	IsZTargeting	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069dda0	IsAutoGoBehind	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0069ddb0	vfunc_29	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0069ddb0	GetAutoGoBehindTime	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069ddc0	SetSACPosition	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069dde0	IsDriftToMaxStringLength	NCameraModes::CStringAndCageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069de00	`scalar deleting destructor'	NCameraModes::CStringAndCageBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 0069de30	CStringAndCage	NCameraModes::CStringAndCage	__thiscall	undefined	9	CStringAndCage *,CGameCameraManager *,CDefPointer<CCameraModeDef_const_> *,float,float,float,bool,float,float	0	yes	accepted									
 0069dea0	GetModeType	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0069deb0	vfunc_18	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0069dec0	vfunc_28	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0069ded0	vfunc_29	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0069deb0	GetDefaultFOV	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0069dec0	IsAutoGoBehind	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0069ded0	GetAutoGoBehindTime	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069df30	GetModeType	NCameraModes::CFixedDolly	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069df40	OnDieLeaf	NCameraModes::CFixedDolly	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0069df50	ScalarDeletingDestructor	CFixedDolly	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
@@ -16166,7 +16166,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006a4a70	push_back	std::list<pair<C2DVector,long>>	unknown	undefined	0		0	yes	accepted									
 006a4ab0	push_back	std::list<C3DVector>	unknown	undefined	0		0	yes	accepted									
 006a4b30	CUnprovenRecord_006a4b30	CUnprovenRecord_006a4b30	__thiscall	undefined	1	CRegister *	0	yes	accepted									
-006a4b70	vfunc_7	CThingPhysical	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\global_StubReturnVoid004c72a0_006a4b70.cpp
+006a4b70	CopyGameState	CThingPhysical	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\global_StubReturnVoid004c72a0_006a4b70.cpp
 006a4b80	SetScale	CThingPhysical	__thiscall	void	2	CThingPhysical *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CThingPhysical_SetScale_006a4b80.cpp
 006a4ba0	Save	CThingPhysical	__thiscall	void	2	CThingPhysical *,CCharString *	1	yes	accepted									
 006a4cf0	Kill	CThingPhysical	__thiscall	void	1	CParticleSystem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CParticleSystem_Kill_006a4cf0.cpp
@@ -16179,7 +16179,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006a4dd0	AddChild	NUISystem::CSpellContainerList	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CSpellContainerList_AddChild_006a4dd0.cpp
 006a4df0	IsInRange	CThingPhysical	__thiscall	bool	3	CThingPhysical *,C3DVector *,float	1	yes	accepted									
 006a4e40	GetNormalisedTime	NParticleEngine::CParticleSystem	__thiscall	float	1	CParticleSystem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CParticleSystem_GetNormalisedTime_006a4e40.cpp
-006a4e70	vfunc_35	CThingPhysical	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a4e70	DrawGetPhysicsDebugInfo	CThingPhysical	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a4e90	DrawGetEditDrawInfo	CThingPhysical	__thiscall	bool	3	CThingPhysical *,float,CEditEngineDrawInfo *	1	yes	accepted									
 006a4f10	GetNoNavCollisionLineLists	CThingPhysical	__thiscall	long	1	CThingPhysical *	1	yes	accepted									
 006a4f60	GetNavCollisionLineList	CThingPhysical	__thiscall	void	3	CThingPhysical *,vector<C2DLineF,std::allocator<C2DLineF>_> *,long	1	yes	accepted									
@@ -16286,33 +16286,33 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006a9180	Init	CInputProcessControlSpirit	__thiscall	void	1	CInputProcessControlSpirit *	1	yes	accepted									
 006a91d0	`scalar_deleting_destructor'	CInputProcessControlSpirit	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CEngineSubPrimitiveText_scalardeletingdestructor_006a91d0.cpp
 006a92b0	CRecord_006a92b0	CRecord_006a92b0	__thiscall	undefined	8	CDateAndTime *,long,ulong,ulong,ulong,ulong,ulong,ulong	0	yes	accepted									
-006a94b0	vfunc_7	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a94b0	CopyGameState	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a9520	GetTargetPosition	CThingAICreature	__thiscall	C3DVector	1	CThingAICreature *	1	yes	accepted									
-006a9550	vfunc_26	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9550	DrawUpdate	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a9560	DrawIsDisplayingInformation	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a9570	FeelsGravity	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a9590	OnDie	CThingPlayerCreature	__thiscall	void	1	CThingPlayerCreature *	1	yes	accepted									
 006a9640	GetCurrentRelativeMovementAngleXY	CThingPlayerCreature	__thiscall	float	1	CThingPlayerCreature *	1	yes	accepted									
 006a9690	ResolveRelativeMovementAcceleration	CThingPlayerCreature	__thiscall	void	1	CThingPlayerCreature *	1	yes	accepted									
-006a9870	vfunc_92	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a9880	vfunc_82	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a9890	vfunc_81	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a98a0	vfunc_79	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a98b0	vfunc_83	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9870	GetControlledMovementType	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9880	GetMaxSprintingSpeed	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9890	GetMaxRunningSpeed	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a98a0	GetMaxWalkingSpeed	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a98b0	GetMaxFlyingSpeed	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a98c0	DrawGetEditDrawInfo	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a98d0	Get_1e8	CThingCreatureBase	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\DrawGetEnvironment_DrawGetEnvironment_006a98d0.cpp
 006a98f0	SerialiseGameState	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a9960	ConstructFromLevelScript	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a99c0	vfunc_90	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a99c0	GetCurrentGraphic	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a99d0	GetMaxTurnSpeed	CThingPlayerCreature	__thiscall	float	1	CThingPlayerCreature *	1	yes	accepted									
 006a9a00	InitialiseMovementSpeeds	CThingPlayerCreature	__thiscall	void	1	CThingPlayerCreature *	1	yes	accepted									
 006a9b70	ResetMaxWalkingSpeedToDefault	CThingPlayerCreature	__thiscall	void	1	CThingPlayerCreature *	1	yes	accepted									
 006a9bc0	ResetMaxRunningSpeedToDefault	CThingPlayerCreature	__thiscall	void	1	CThingPlayerCreature *	1	yes	accepted									
-006a9c10	vfunc_87	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a9c20	vfunc_78	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a9c30	vfunc_84	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a9c40	vfunc_85	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006a9c50	vfunc_86	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9c10	GetMaxAcceleration	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9c20	GetMaxPushingSpeed	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9c30	GetMaxHoverSpeedSlow	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9c40	GetMaxHoverSpeedMedium	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006a9c50	GetMaxHoverSpeedFast	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a9d10	vfunc_34	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006a9dd0	ConstructFromParams	CThingPlayerCreature	__thiscall	bool	5	CThingPlayerCreature *,long,C3DVector *,long,CThingPlayerCreatureInit *	1	yes	accepted									
 006a9ef0	OnCreate	CThingPlayerCreature	unknown	undefined	0		0	unmeasured	accepted									
@@ -16405,7 +16405,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006afde0	GetAirResistance	CTCPhysicsBase	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
 006afe00	GetMass	CTCPhysicsBase	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
 006afe20	CalculateRadius	CTCPhysicsBase	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
-006afe50	vfunc_83	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006afe50	IsPushableByHero	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006afe60	RespondToCollision	CTCPhysicsBase	__thiscall	void	3	CTCPhysicsBase *,CPhysicsCollideResponse *,C3DVector *	1	yes	accepted									
 006aff00	UpdateCollisionGroundIneractions	CTCPhysicsBase	__thiscall	void	2	CTCPhysicsBase *,C3DVector *	1	yes	accepted									
 006aff40	GetTurnSpeedAngleXY	CTCPhysicsBase	unknown	undefined	0		0	yes	accepted									
@@ -16461,19 +16461,19 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006b1200	CanInteractWithThings	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1210	IsExcludingCreatures	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1220	IsPhysicsMeshImpassable	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b1230	vfunc_63	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b1240	vfunc_64	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b1250	vfunc_65	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b1230	GetFacingAngleXY	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b1240	GetFacingAngleYZ	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b1250	GetFacingAngleXZ	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1260	SetFacingAngleXY	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1270	SetFacingAngleYZ	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1280	SetFacingAngleXZ	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b1290	vfunc_72	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b12a0	vfunc_73	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b1290	GetRHSet	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b12a0	GetLastRHSet	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b12b0	SetFacingAnglesFromRHSet	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b12c0	SetRHSet	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b12d0	SetRHSetAsFlushOnNormal	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b12e0	SetRHSetAsFlushOnGround	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b12f0	vfunc_79	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b12f0	GetRenderZOffset	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1300	ApplyControlledImpulse	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1310	ApplyControlledAcceleration	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1320	SetAsPushableByHero	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -16488,11 +16488,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006b13b0	GetPhysicsMeshInfo	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b13c0	UpdateOldRHSet	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b13d0	GetOffsetVector	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b13f0	vfunc_29	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b13f0	GetOffsetVector3D	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1410	GetFacingVector	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1430	GetFacingVector	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b1450	GetRHSet	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-006b1490	vfunc_76	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006b1490	GetImpulse	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b14b0	HasPositiveMass	CTCPhysicsBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006b14d0	`scalar_deleting_destructor'	CTCPhysicsBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CLandscapeBackgroundPatch_vectordeletingdestructor_006b14d0.cpp
 006b14f0	~CSharedOwner_006b14f0	_unattributed	__thiscall	void	1	C3DAnimationBlendState *	1	yes	accepted									
@@ -18195,16 +18195,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00702bf0	`scalar_deleting_destructor'	CTCDayOrNightOnlySupport	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CLandscapeBackgroundPatch_vectordeletingdestructor_00702bf0.cpp
 00702c60	DrawIsDrawable	CThingObject	__thiscall	bool	1	CThingObject *	1	yes	accepted									
 00702cb0	IsCrop	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00702cc0	vfunc_55	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00702cc0	CanBlockNavigatingCreature	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00702cd0	CanBlockUpperLevelNavigatingCreature	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00702ce0	ResetDieOffTimer	CThingObject	__thiscall	void	1	CThingObject *	1	yes	accepted									
 00702d00	vfunc_40	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00702d10	DrawGetEditDrawInfo	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00702e00	CViewBase_GetRotationDegrees	_global	unknown	undefined	0		0	yes	accepted									
 00702ff0	GetProperties	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00703000	vfunc_54	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00703000	IsFragile	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00703010	UseHighDetailQuadTree	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00703040	vfunc_70	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00703040	GetMaterialOnHitByMelee	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00703050	ConstructFromParams	CThingObject	__thiscall	bool	6	CThingObject *,long,C3DVector *,long,ulong,CCharString *	1	yes	accepted									
 007030c0	SerialiseGameState	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00703110	ConstructFromLevelScript	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -18876,13 +18876,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007233b0	SetPosition	CTCPhysicsLight	__thiscall	void	2	CTCPhysicsLight *,C3DVector *	1	yes	accepted									
 00723400	CTCPhysicsLight	CTCPhysicsLight	__thiscall	undefined	2	CTCPhysicsLight *,CThing *	0	yes	accepted									
 00723420	GetClassTypeName	CTCPhysicsLight	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-00723440	vfunc_48	CTCPhysicsLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00723440	IsAffectedByGravity	CTCPhysicsLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00723450	`scalar_deleting_destructor'	CTCPhysicsLight	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_00723450.cpp
 007234c0	SetInteractionFlags	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00723570	ConstructFromParams	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007235e0	vfunc_38	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007235e0	EnableGravity	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00723630	SetPhysicsEnabled	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007236a0	vfunc_86	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007236a0	SetScaleFromOwner	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007236c0	FillPhysicsDebugInfoForSelf	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007236e0	ResetInterpolation	CTCPhysicsStandard	__thiscall	void	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CTCPhysicsStandard_ResetInterpolation_007236e0.cpp
 00723730	UpdateInterpolation	CTCPhysicsStandard	__thiscall	void	1	CCreatureAction_TrollWhackGroundBase *	1	yes	accepted									
@@ -18900,7 +18900,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00723ac0	UpdateCollisionGameInteractions	CTCPhysicsStandard	__thiscall	void	3	CTCPhysicsStandard *,CThing *,CPhysicsCollideResponse *	1	yes	accepted									
 00723b30	GetFacingAngleXY	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00723b90	GetFacingAngleYZ	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00723c00	vfunc_70	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00723c00	GetFacingVector	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00723c20	GetFacingVector	CTCPhysicsStandard	__thiscall	C3DVector	2	CTCPhysicsStandard *,float	1	yes	accepted									
 00723c80	GetRHSet	CTCPhysicsStandard	__thiscall	CRightHandedSet	2	CTCPhysicsRigidBody *,float	1	yes	accepted									
 00723e50	CCharacter_UpdateOrientation	_global	unknown	undefined	0		0	yes	accepted									
@@ -18916,30 +18916,30 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00724a50	remove_copy_if	_global	unknown	undefined	0		0	yes	accepted									
 00724a90	__find_if	_global	unknown	undefined	0		0	yes	accepted									
 00724b80	GetClassTypeName	CTCPhysicsStandard	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-00724ba0	vfunc_37	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724bb0	vfunc_39	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724bc0	vfunc_42	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724bd0	vfunc_72	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724be0	vfunc_73	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724bf0	vfunc_47	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c00	vfunc_48	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c10	vfunc_49	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724ba0	IsPhysicsEnabled	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724bb0	IsGravityEnabled	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724bc0	HasNavigationLayers	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724bd0	GetRHSet	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724be0	GetLastRHSet	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724bf0	IsAlwaysFacingMovementDirection	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c00	IsAffectedByGravity	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c10	IsAffectedByAir	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00724c20	IsAffectedByWind	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c30	vfunc_51	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c40	vfunc_52	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c50	vfunc_53	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c70	vfunc_55	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c80	vfunc_56	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724c90	vfunc_57	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724ca0	vfunc_58	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724cb0	vfunc_59	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724cc0	vfunc_60	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724cd0	vfunc_61	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724ce0	vfunc_62	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724cf0	vfunc_83	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724d00	vfunc_84	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724d20	vfunc_93	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00724d30	vfunc_28	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c30	IsAngledWithGround	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c40	IsImmoveable	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c50	IsOnAnySurface	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c70	IsOnMeshSurface	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c80	IsOnGroundSurface	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724c90	CanCollideWithThings	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724ca0	CanCollideWithThingsOneWay	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724cb0	CanCollideWithLandscape	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724cc0	CanInteractWithThings	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724cd0	IsExcludingCreatures	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724ce0	IsPhysicsMeshImpassable	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724cf0	IsPushableByHero	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724d00	SetAsPushableByHero	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724d20	GetPhysicsMeshInfo	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00724d30	GetOffsetVector	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00724d50	GetOffsetVector3D	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00724de0	`scalar_deleting_destructor'	CTCPhysicsStandard	__thiscall	void *	2	CThingHolySite *,uint	1	yes	accepted									
 00724e30	reserve	std::vector<float, std::allocator<float>>	unknown	undefined	0		0	yes	accepted									
@@ -18977,9 +18977,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00726be0	UpdateAdditionalImpulse	CTCPhysicsNavigator	__thiscall	void	1	CTCPhysicsNavigator *	1	yes	accepted									
 00726ce0	Move	CTCPhysicsNavigator	__thiscall	void	1	CTCPhysicsNavigator *	1	yes	accepted									
 007270e0	GetClassTypeName	CTCPhysicsNavigator	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-00727100	vfunc_41	CTCPhysicsNavigator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00727110	vfunc_40	CTCPhysicsNavigator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00727120	vfunc_34	CTCPhysicsNavigator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00727100	IsNavigationEnabled	CTCPhysicsNavigator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00727110	EnableNavigator	CTCPhysicsNavigator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00727120	SetForcedToMovePos	CTCPhysicsNavigator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00727200	`scalar_deleting_destructor'	CTCPhysicsNavigator	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_00727200.cpp
 00727220	operator()	CApplyAdditionalImpulseIfInCombatAndTooClose	__thiscall	void	2	CApplyAdditionalImpulseIfInCombatAndTooClose *,CThing *	1	yes	accepted									
 00727500	for_each	_global	__fastcall	CApplyAdditionalImpulseIfInCombatAndTooClose	3	CThingCreatureBase * *,CThingCreatureBase * *,CApplyAdditionalImpulseIfInCombatAndTooClose	1	yes	accepted									
@@ -19139,7 +19139,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0072e130	CreateParticle	CTCMeshAutomaticEntityCreator	__thiscall	void	4	CTCMeshAutomaticEntityCreator *,CCharString *,CCharString *,CTCGraphicAppearance *	1	yes	accepted									
 0072e290	CreateChildThings	CTCMeshAutomaticEntityCreator	__thiscall	void	1	CTCMeshAutomaticEntityCreator *	1	yes	accepted									
 0072e4c0	CatchMessage	CTCMeshAutomaticEntityCreator	__thiscall	void	2	CTCMeshAutomaticEntityCreator *,CMessageOnMeshReplaced *	1	yes	accepted									
-0072e550	vfunc_6	CTCMeshAutomaticEntityCreator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0072e550	OnInitialActivate	CTCMeshAutomaticEntityCreator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072e560	HandleMessage	CTCMeshAutomaticEntityCreator	__thiscall	void	2	CTCMeshAutomaticEntityCreator *,CMessageBase *	1	yes	accepted									
 0072e600	CIVCountedPointer_Release_0072e600	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0072e600.cpp
 0072e630	CIVCountedPointer_Release_0072e630	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0072e630.cpp
@@ -19230,8 +19230,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00732550	CIVCountedPointer_Attach_00732550	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732550.cpp
 00732580	GetInterfaceType	CTCSpotLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00732590	GetClassTypeName	CTCSpotLight	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-007325b0	vfunc_23	CTCSpotLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007325c0	vfunc_8	CTCSpotLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007325b0	IsComponentSerialisable	CTCSpotLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007325c0	HasFrameUpdate	CTCSpotLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007325d0	GetSubDef<CSpotLightDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 00732690	`scalar deleting destructor'	CTCSpotLight	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CLandscapeBackgroundPatch_vectordeletingdestructor_00732690.cpp
 00732730	GetHandAnimationUpdateAmount	CTCClock	__thiscall	float	1	CTCClock *	1	yes	accepted									
@@ -19402,12 +19402,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00739df0	~CAnimFilterOf3Groups	CAnimFilterOf3Groups	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									
 00739e20	~CModeBase	CTCCreatureModeManager::CModeBase	__thiscall	undefined	1	pair<unsigned_long,C3DMeshVolume> *	0	yes	accepted									
 00739e40	AnimUpdate	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00739e50	vfunc_4	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00739e50	GetAnimFilter	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00739e60	OnDeactivate	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00739e70	GetMovementSpeed	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00739e80	vfunc_8	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00739e80	IsIdleMode	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00739e90	IsAllowingPlayerSpecialMovementMoves	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00739ea0	vfunc_11	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00739ea0	IsRemoveOnDeactivate	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00739ee0	`scalar deleting destructor'	CTCCreatureModeManager::CModeBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 0073a0a0	Alloc	NCreatureMode::CModeCarryingWeaponStand	unknown	undefined	0		0			discovered	gapscan							
 0073a290	Alloc	NCreatureMode::CModeScorpionKingExhausted	unknown	undefined	0		0			discovered	gapscan							
@@ -19420,7 +19420,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073a760	GetNoFramesBeforePlayingIdleAnims	CTCCreatureModeManager::CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
 0073a7d0	GetNoFramesBeforePlayingWaveAnims	CTCCreatureModeManager::CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
 0073a840	RestartCurrentMode	CTCCreatureModeManager	__thiscall	void	1	CNavQuadTreeNode *	1	yes	accepted									
-0073a880	vfunc_9	CTCCreatureModeManager	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+0073a880	FrameUpdate	CTCCreatureModeManager	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 0073a8a0	IsModeActive	CTCCreatureModeManager	__thiscall	bool	2	CPlayer *,EPlayerMode	1	yes	accepted									
 0073a8e0	AllocateMode	CTCCreatureModeManager	__thiscall	CCountedPointer<CTCCreatureModeManager::CModeBase>	2	CTCCreatureModeManager *,ulong	1	yes	accepted									
 0073a9b0	CAnimEntryLite	CAnimEntryLite	__thiscall	undefined	2	CAnimEntryLite *,CAnimationEntry *	0	yes	accepted									
@@ -19487,17 +19487,17 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073e2f0	Clone	CAnimFilterOf3Groups	__thiscall	CAnimFilterBase *	1	CAnimFilterOf3Groups *	1	yes	accepted									
 0073e320	CModeStandFront	NCreatureMode::CModeStandFront	__thiscall	undefined	2	CModeCrouch *,CThing *	0	yes	accepted									
 0073e3b0	GetType	NCreatureMode::CModeStandFront	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0073e3c0	vfunc_4	NCreatureMode::CModeStandFront	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0073e3c0	GetAnimFilter	NCreatureMode::CModeStandFront	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073e3d0	IsIdleMode	NCreatureMode::CModeStandFront	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073e3e0	`scalar_deleting_destructor'	NCreatureMode::CModeStandFront	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CEngineSubPrimitiveText_scalardeletingdestructor_0073e3e0.cpp
 0073e410	CModeStandLeft	NCreatureMode::CModeStandLeft	__thiscall	undefined	2	CModeCrouch *,CThing *	0	yes	accepted									
 0073e4a0	GetType	NCreatureMode::CModeStandLeft	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0073e4b0	vfunc_4	NCreatureMode::CModeStandLeft	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0073e4b0	GetAnimFilter	NCreatureMode::CModeStandLeft	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073e4c0	IsIdleMode	NCreatureMode::CModeStandLeft	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073e4d0	`scalar_deleting_destructor'	NCreatureMode::CModeStandLeft	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CEngineSubPrimitiveText_scalardeletingdestructor_0073e4d0.cpp
 0073e500	CModeStandRight	NCreatureMode::CModeStandRight	__thiscall	undefined	2	CModeCrouch *,CThing *	0	yes	accepted									
 0073e590	GetType	NCreatureMode::CModeStandRight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0073e5a0	vfunc_4	NCreatureMode::CModeStandRight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0073e5a0	GetAnimFilter	NCreatureMode::CModeStandRight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073e5b0	IsIdleMode	NCreatureMode::CModeStandRight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073e5c0	`scalar_deleting_destructor'	NCreatureMode::CModeStandRight	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CEngineSubPrimitiveText_scalardeletingdestructor_0073e5c0.cpp
 0073e5f0	`scalar_deleting_destructor'	NCreatureMode::CModeCarryingStandBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CLandscapeBackgroundPatch_vectordeletingdestructor_0073e5f0.cpp
@@ -19607,16 +19607,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073fd80	`scalar_deleting_destructor'	NCreatureMode::CModeCarryingGoodsStand	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CEngineSubPrimitiveText_scalardeletingdestructor_0073fd80.cpp
 0073fdb0	CModeCrouch	NCreatureMode::CModeCrouch	__thiscall	undefined	2	CModeCrouch *,CThing *	0	yes	accepted									
 0073fe40	GetType	NCreatureMode::CModeCrouch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0073fe50	vfunc_4	NCreatureMode::CModeCrouch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0073fe50	GetAnimFilter	NCreatureMode::CModeCrouch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073fe60	IsRemoveOnDeactivate	NCreatureMode::CModeCrouch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073fe70	`scalar_deleting_destructor'	NCreatureMode::CModeCrouch	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CThingSwitch_vectordeletingdestructor_0073fe70.cpp
 0073fea0	CModeSitChair	NCreatureMode::CModeSitChair	__thiscall	undefined	2	CModeSitChair *,CThing *	0	yes	accepted									
 0073ff20	GetType	NCreatureMode::CModeSitChair	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0073ff30	vfunc_4	NCreatureMode::CModeSitChair	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0073ff30	GetAnimFilter	NCreatureMode::CModeSitChair	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073ff40	`scalar_deleting_destructor'	NCreatureMode::CModeSitChair	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CEngineSubPrimitiveText_scalardeletingdestructor_0073ff40.cpp
 0073ff70	CModeSitFloor	NCreatureMode::CModeSitFloor	unknown	undefined	0		0	yes	accepted									
-0073fff0	vfunc_1	NCreatureMode::CModeSitFloor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00740000	vfunc_4	NCreatureMode::CModeSitFloor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0073fff0	GetType	NCreatureMode::CModeSitFloor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00740000	GetAnimFilter	NCreatureMode::CModeSitFloor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00740010	`scalar_deleting_destructor'	NCreatureMode::CModeSitFloor	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CEngineSubPrimitiveText_scalardeletingdestructor_00740010.cpp
 00740040	CModeSitBench	NCreatureMode::CModeSitBench	unknown	undefined	0		0	yes	accepted									
 007400c0	GetType	NCreatureMode::CModeSitBench	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -19648,7 +19648,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00740610	`scalar_deleting_destructor'	NCreatureMode::CModeJackOfBladesDeath	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CEngineSubPrimitiveText_scalardeletingdestructor_00740610.cpp
 00740640	CModeThunderLightningStorm	NCreatureMode::CModeThunderLightningStorm	__thiscall	undefined	2	CModeThunderLightningStorm *,CThing *	0	yes	accepted									
 00740730	GetType	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00740740	vfunc_4	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00740740	GetAnimFilter	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00740750	CModeUnderground	CModeUnderground	unknown	undefined	0		0	yes	accepted									
 007407d0	GetType	NCreatureMode::CModeUnderground	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007407e0	GetAnimFilter	NCreatureMode::CModeUnderground	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -19712,7 +19712,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00741390	~CModeScreamerAggressive	NCreatureMode::CModeScreamerAggressive	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 007413c0	CModeDrained	NCreatureMode::CModeDrained	__thiscall	undefined	2	CModeDrained *,CThing *	0	yes	accepted									
 00741460	GetType	NCreatureMode::CModeDrained	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00741470	vfunc_4	NCreatureMode::CModeDrained	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00741470	GetAnimFilter	NCreatureMode::CModeDrained	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00741480	IsAllowingPlayerSpecialMovementMoves	NCreatureMode::CModeDrained	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00741490	`scalar_deleting_destructor'	NCreatureMode::CModeDrained	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CThingSwitch_vectordeletingdestructor_00741490.cpp
 007414c0	CModeRollAround	NCreatureMode::CModeRollAround	unknown	undefined	0		0	yes	accepted									
@@ -19762,7 +19762,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00741eb0	`scalar_deleting_destructor'	NCreatureMode::CModeIntangible	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CEngineSubPrimitiveText_scalardeletingdestructor_00741eb0.cpp
 00741ee0	CModeBriarRoseConcentrate	NCreatureMode::CModeBriarRoseConcentrate	__thiscall	undefined	2	CModeBriarRoseConcentrate *,CThing *	0	yes	accepted									
 00741fb0	GetType	NCreatureMode::CModeBriarRoseConcentrate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00741fc0	vfunc_4	NCreatureMode::CModeBriarRoseConcentrate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00741fc0	GetAnimFilter	NCreatureMode::CModeBriarRoseConcentrate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00741fd0	vfunc_11	NCreatureMode::CModeBriarRoseConcentrate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00741fe0	CModeStrafe	NCreatureMode::CModeStrafe	__thiscall	undefined	3	CModeStrafe *,CThing *,bool	0	yes	accepted									
 007420a0	GetType	NCreatureMode::CModeStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -19823,15 +19823,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00743780	`scalar_deleting_destructor'	NCreatureMode::CModeDragonFlyingBase	unknown	undefined	0		0	yes	accepted									
 007437c0	CModeDragonFlying	NCreatureMode::CModeDragonFlying	__thiscall	undefined	2	CModeDragonFlying *,CThing *	0	yes	accepted									
 00743860	GetType	NCreatureMode::CModeDragonFlying	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00743870	vfunc_4	NCreatureMode::CModeDragonFlying	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00743870	GetAnimFilter	NCreatureMode::CModeDragonFlying	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00743880	`scalar_deleting_destructor'	NCreatureMode::CModeDragonFlying	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CLandscapeBackgroundPatch_vectordeletingdestructor_00743880.cpp
 007438a0	CModeDragonStrafe	NCreatureMode::CModeDragonStrafe	__thiscall	undefined	2	CModeDragonFlying *,CThing *	0	yes	accepted									
 00743940	GetType	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00743950	vfunc_4	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00743950	GetAnimFilter	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00743960	`scalar_deleting_destructor'	NCreatureMode::CModeDragonStrafe	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CEngineSubPrimitiveText_scalardeletingdestructor_00743960.cpp
 00743990	CModeDragonStrafeBurninate	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	undefined	2	CModeDragonStrafeBurninate *,CThing *	0	yes	accepted									
 00743a20	GetType	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00743a30	vfunc_4	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00743a30	GetAnimFilter	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00743a40	`scalar_deleting_destructor'	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted									
 00743a90	~vector	std::vector<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData, std::allocator<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 00743b10	StdList_Dtor_00743b10	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CActiveFile_OnReadFinished_00743b10.cpp
@@ -19844,9 +19844,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00743d10	Alloc	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan							
 00743d40	~CModeHoverBase	NCreatureMode::CModeHoverBase	unknown	undefined	0		0	yes	accepted									
 00743dd0	GetEffectName	NCreatureMode::CModeBase	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CActionDoCreatureAction_GetActionName_00743dd0.cpp
-00743df0	vfunc_15	NCreatureMode::CModeHoverBase	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CActionDoCreatureAction_GetActionName_00743df0.cpp
+00743df0	GetEffectHelperPointName	NCreatureMode::CModeHoverBase	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CActionDoCreatureAction_GetActionName_00743df0.cpp
 00743e10	GetType	NCreatureMode::CModeWalkInAllDirections	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00743e20	vfunc_4	NCreatureMode::CModeWalkInAllDirections	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00743e20	GetAnimFilter	NCreatureMode::CModeWalkInAllDirections	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00743e30	GetName_STWALK	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00743e50	GetAnimUpdateType	NCreatureMode::CModeWalkInAllDirections	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00743e60	Insert	CVectorMap<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo, CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo>>	unknown	undefined	0		0	yes	accepted									
@@ -19855,7 +19855,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00743fe0	~CModeIceTrollGroundSmashIcicleAssault	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted									
 00744040	CModeHoverNormal	CModeHoverNormal	unknown	undefined	0		0	yes	accepted									
 007440c0	GetType	NCreatureMode::CModeHoverNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007440d0	vfunc_4	NCreatureMode::CModeHoverNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007440d0	GetAnimFilter	NCreatureMode::CModeHoverNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007440e0	GetName_STHOVER	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00744100	GetAnimUpdateType	NCreatureMode::CModeHoverNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00744110	GetEffectName	NCreatureMode::CModeHoverNormal	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CActionDoCreatureAction_GetActionName_00744110.cpp
@@ -19915,7 +19915,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00745fd0	CIVCountedPointer_Release_00745fd0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745fd0.cpp
 007460a0	GetInterfaceType	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007460b0	GetClassTypeName	CTCPerceiveThing	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-007460d0	vfunc_10	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007460d0	BulletTimeFrameUpdate	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007460e0	HasFrameUpdate	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 007460f0	Piece_007460f0	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00746100	GetSubDef<CPerceivedThingDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
@@ -20022,7 +20022,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00749bf0	StartAnimation	CTCCupboard	__thiscall	void	2	CTCCupboard *,long	1	yes	accepted									
 00749c80	sub_00749c80	_global	unknown	undefined	0		0			discovered	gapscan							
 00749c90	sub_00749c90	_global	unknown	undefined	0		0			discovered	gapscan							
-00749ca0	vfunc_9	CTCCupboard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00749ca0	FrameUpdate	CTCCupboard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00749d20	IsThemeHidable	NCreatureHiding	__fastcall	bool	2	CWorldMap *,C3DVector *	1	yes	accepted									
 00749d60	Nop_ret0_00749d60	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\E2_E2_00749d60.cpp
 00749d70	SetAlwaysCreateCreaturesOnTrigger	_global	__thiscall	void	2	CTCCreatureGenerator *,bool	1	yes	accepted									
@@ -20160,7 +20160,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007502d0	InitClosed	CTCChest	__thiscall	void	1	CTCChest *	1	yes	accepted									
 00750470	UpdateAnimation	CTCChest	__thiscall	void	2	CTCChest *,float	1	yes	accepted									
 007504e0	SetInterface9Flag	_unattributed	__thiscall	void	2	CAIStateGroupBase *,bool	1	yes	accepted									
-00750530	vfunc_6	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00750530	OnInitialActivate	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00750540	Open	CTCChest	__thiscall	void	1	CTCChest *	1	yes	accepted									
 007506c0	Close	CTCChest	__thiscall	void	1	CTCChest *	1	yes	accepted									
 00750730	OnCreate	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -20169,7 +20169,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007508d0	CTCChest	CTCChest	__thiscall	undefined	2	CTCChest *,CThing *	0	yes	accepted									
 00750930	GetClassTypeName	CTCChest	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00750950	HasFrameUpdate	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00750960	vfunc_10	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00750960	BulletTimeFrameUpdate	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00750970	IsComponentSerialisable	CTCChest	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 00750980	`scalar_deleting_destructor'	CTCChest	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\CLandscapeBackgroundPatch_vectordeletingdestructor_00750980.cpp
 007509a0	CTCDiscovery	CTCDiscovery	__thiscall	undefined	2	CTCDiscovery *,CThing *	0	yes	accepted									
@@ -20245,7 +20245,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00753c70	FrameUpdate	CTCLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00753e90	LookAtPos	CTCLook	__thiscall	void	3	CTCLook *,C3DVector *,long	1	yes	accepted									
 00754050	UpdateTurningAnims	CTCLook	__thiscall	void	1	CTCLook *	1	yes	accepted									
-007542a0	vfunc_6	CTCLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007542a0	OnInitialActivate	CTCLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007542b0	CTCLook::OnAppearanceDraw	CTCLook	__thiscall	bool	3	CTCLook *,NGraphicAppearance::CTCGraphicAppearance &,NGraphicAppearance::CGraphicAppearanceDrawInfo const &	1	yes	accepted									
 00754b90	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00754b90.cpp
 00754c80	CIVCountedPointer_Release_00754c80	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754c80.cpp
@@ -20374,7 +20374,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00759a00	SetRHSet	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00759a50	GetFacingAngleXY	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00759ab0	GetFacingAngleYZ	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00759b20	vfunc_70	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00759b20	GetFacingVector	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00759b40	GetRHSet	CTCPhysicsRigidBody	__thiscall	CRightHandedSet	2	CTCPhysicsRigidBody *,float	1	yes	accepted									
 00759d30	ComputeForces	CTCPhysicsRigidBody	__thiscall	void	2	CTCPhysicsRigidBody *,CRigidBodyConfig *	1	yes	accepted									
 00759ec0	CalculateVertices	CTCPhysicsRigidBody	__thiscall	void	2	CTCPhysicsRigidBody *,CRigidBodyConfig *	1	yes	accepted									
@@ -20402,18 +20402,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0075bc40	GetAllThingsInRoughArea<CThing, std::vector<CThing *, std::allocator<CThing *>>, CFilter_Bind2<CThingFilter_IsNot, CThingFilter_CanCollideWithThing>>	CThingSearchTools	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea> *,list<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 0075bee0	~CBufferTriple_0075bee0	CBufferTriple_0075bee0	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 0075bf20	GetClassTypeName	CTCPhysicsRigidBody	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-0075bf40	vfunc_66	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bf50	vfunc_67	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bf60	vfunc_68	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bf70	vfunc_72	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bf80	vfunc_73	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bf90	vfunc_57	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bfa0	vfunc_58	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bfb0	vfunc_59	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bfc0	vfunc_60	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bfd0	vfunc_93	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bfe0	vfunc_48	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0075bff0	vfunc_28	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bf40	SetFacingAngleXY	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bf50	SetFacingAngleYZ	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bf60	SetFacingAngleXZ	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bf70	GetRHSet	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bf80	GetLastRHSet	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bf90	CanCollideWithThings	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bfa0	CanCollideWithThingsOneWay	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bfb0	CanCollideWithLandscape	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bfc0	CanInteractWithThings	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bfd0	GetPhysicsMeshInfo	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bfe0	IsAffectedByGravity	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0075bff0	GetOffsetVector	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0075c020	`scalar deleting destructor'	CTCPhysicsRigidBody	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\CLandscapeBackgroundPatch_vectordeletingdestructor_0075c020.cpp
 0075c040	resize	std::vector<C3DVector, std::allocator<C3DVector>>	__thiscall	void	3	vector<CBrainBehaviour,std::allocator<CBrainBehaviour>_> *,uint,CBrainBehaviour	1	yes	accepted									
 0075c0e0	ResetCameraPointEnable	CameraState	unknown	undefined	0		0	yes	accepted									
@@ -20874,8 +20874,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00771620	PushNewSourceDef	CTCOpinionSource	__thiscall	bool	2	CTCOpinionSource *,CCharString *	1	yes	accepted									
 00771660	OnCreate	CTCOpinionSource	__thiscall	void	1	CTCOpinionSource *	1	yes	accepted									
 00771770	CleanupSource	CTCOpinionSource	__thiscall	void	1	CTCOpinionSource *	1	yes	accepted									
-00771810	vfunc_2	CTCOpinionSource	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00771820	vfunc_14	CTCOpinionSource	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00771810	OnRemove	CTCOpinionSource	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00771820	OnKill	CTCOpinionSource	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00771890	CCountedPointer_Release_00771890	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771890.cpp
 00771900	CCountedPointer_Release_00771900	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771900.cpp
 00771940	CIVCountedPointer_Release_00771940	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771940.cpp
@@ -21136,7 +21136,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0077d180	OnCreate	CTCCreatureHive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077d190	UpdateAnimation	CTCCreatureHive	__thiscall	void	1	CTCCreatureHive *	1	yes	accepted									
 0077d230	Open	CTCCreatureHive	__thiscall	void	1	CTCCreatureHive *	1	yes	accepted									
-0077d330	vfunc_9	CTCCreatureHive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0077d330	FrameUpdate	CTCCreatureHive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077d3a0	Transfer	CHeroCentreDef	__thiscall	void	2	CHeroCentreDef *,CPersistContext &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\CHeroCentreDef_Transfer_0077d3a0.cpp
 0077d3d0	OnCreate	CTCHeroCentre	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077d3e0	OnHeroCloseDoor	CTCHeroCentre	__thiscall	void	1	CTCHeroCentre *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\CTCHeroCentre_OnHeroCloseDoor_0077d3e0.cpp
@@ -21287,8 +21287,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00783680	OnNoBoastsRemain	CTCBoastingCrowdControl	unknown	undefined	0		0	yes	accepted									
 00783730	GetCrowdGroup	CTCBoastingCrowdControl	__thiscall	bool	3	CTCBoastingCrowdControl *,CThing *,CTCCreatureGroupBoastingCrowd * *	1	yes	accepted									
 007837c0	CTCBoastingCrowdControl	CTCBoastingCrowdControl	unknown	undefined	0		0	yes	accepted									
-00783830	vfunc_2	CTCBoastingCrowdControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00783840	vfunc_14	CTCBoastingCrowdControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00783830	OnRemove	CTCBoastingCrowdControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00783840	OnKill	CTCBoastingCrowdControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00783850	Startup	CTCBoastingCrowdControl	__thiscall	void	1	CTCBoastingCrowdControl *	1	yes	accepted									
 00783a10	OnSetInLimbo	CTCBoastingCrowdControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00783a30	GetCrowd	CTCBoastingCrowdControl	__thiscall	bool	5	CTCBoastingCrowdControl *,CThing *,CThing * *,CTCCreatureGroupBoastingCrowd * *,bool	1	yes	accepted									
@@ -21585,7 +21585,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0078f820	CancelMove	CTCDivineWrath	unknown	undefined	0		0	yes	accepted									
 0078f8f0	CancelForCutscene	CTCDivineWrath	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
 0078faf0	FinalCleanup	CTCDivineWrath	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
-0078fd40	vfunc_14	CTCDivineWrath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0078fd40	OnKill	CTCDivineWrath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0078fd50	FinalCleanup	CTCDivineWrath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0078fd60	FrameUpdate	CTCDivineWrath	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
 007921a0	begin	CUnprovenRbTree_007921A0	unknown	undefined	0		0			discovered	boundary							
@@ -21645,7 +21645,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00794d90	CancelMove	CTCUnholyPower	unknown	undefined	0		0	yes	accepted									
 00794e60	CancelForCutscene	CTCUnholyPower	__thiscall	void	1	CTCUnholyPower *	1	yes	accepted									
 00795090	FinalCleanup	CTCUnholyPower	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
-007952e0	vfunc_14	CTCUnholyPower	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007952e0	OnKill	CTCUnholyPower	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007952f0	FinalCleanup	CTCUnholyPower	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00795300	FrameUpdate	CTCDivineWrath	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
 00797760	Vector_Erase_TwoIntelligentPtr_v3	_global	unknown	undefined	0		0	yes	accepted									
@@ -21770,7 +21770,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0079d110	~CTCBulletTime	CTCBulletTime	__thiscall	void	1	CTCBulletTime *	1	yes	accepted									
 0079d2d0	FinalCleanup	CTCBulletTime	unknown	undefined	0		0	unmeasured	accepted									
 0079d360	CTCBulletTime	CTCBulletTime	__thiscall	undefined	2	CTCBulletTime *,CThing *	0	yes	accepted									
-0079d7c0	vfunc_14	CTCBulletTime	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0079d7c0	OnKill	CTCBulletTime	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0079d7d0	FinalCleanup	CTCBulletTime	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0079d7e0	UnPause	CTCBulletTime	__thiscall	void	1	CTCBulletTime *	1	yes	accepted									
 0079daf0	CIVCountedPointer_Release_0079daf0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079daf0.cpp
@@ -21949,7 +21949,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007a74a0	CleanUpEffects	CTCBattleCharge	__thiscall	void	1	CTCBattleCharge *	1	yes	accepted									
 007a75f0	FinalCleanup	CTCBattleCharge	unknown	undefined	0		0			discovered	gapscan							
 007a76f0	CreateStartUpEffect	CTCBattleCharge	__thiscall	void	1	CTCBattleCharge *	1	yes	accepted									
-007a7bd0	vfunc_14	CTCBattleCharge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007a7bd0	OnKill	CTCBattleCharge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007a7be0	FinalCleanup	CTCBattleCharge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007a7bf0	FinishMove	CTCBattleCharge	__thiscall	void	3	CTCBattleCharge *,CThingCreatureBase *,bool	1	yes	accepted									
 007a7d10	PrepareForLoad	CWorldMap	__thiscall	void	1	CWorldMap *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\CWorldMap_PrepareForLoad_007a7d10.cpp
@@ -21962,7 +21962,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007a91a0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 007a9280	GetInterfaceType	CTCBattleCharge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007a9290	GetClassTypeName	CTCBattleCharge	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-007a92b0	vfunc_8	CTCBattleCharge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007a92b0	HasFrameUpdate	CTCBattleCharge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007a9300	GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303::CThingFilter_IsEvadeExplosion>_>_>	_global	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303::CThingFilter_IsEvadeExplosion>_> *,list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_> *	1	yes	accepted									
 007a9580	GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303::CThingFilter_IsEvadeExplosion>_>_>	_global	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303::CThingFilter_IsEvadeExplosion>_> *,list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_> *	1	yes	accepted									
 007a9800	`scalar_deleting_destructor'	CTCBattleCharge	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\CLandscapeBackgroundPatch_vectordeletingdestructor_007a9800.cpp
@@ -22100,7 +22100,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007afc40	erase	std::vector	unknown	undefined	0		0	yes	accepted									
 007afcd0	GetInterfaceType	CTCBoss	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007afce0	GetClassTypeName	CTCBoss	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-007afd00	vfunc_8	CTCBoss	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007afd00	HasFrameUpdate	CTCBoss	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007afd10	vector_insert_range_CBaseIntelligentPointer	_global	unknown	undefined	0		0	yes	accepted									
 007afe20	_M_fill_insert	std::vector<CIntelligentPointer<CThingAICreature> >	unknown	undefined	0		0	yes	accepted									
 007aff50	`scalar_deleting_destructor'	CTCBoss	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\CLandscapeBackgroundPatch_vectordeletingdestructor_007aff50.cpp
@@ -22463,7 +22463,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007c3f10	~CTCHealLife	CTCHealLife	__thiscall	void	1	CTCActionUseBuyHouse *	1	yes	accepted									
 007c3fb0	FrameUpdate	CTCHealLife	__thiscall	void	1	CTCHealLife *	1	yes	accepted									
 007c4320	FinalCleanup	CTCHealLife	unknown	undefined	0		0			discovered	gapscan							
-007c4410	vfunc_14	CTCHealLife	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007c4410	OnKill	CTCHealLife	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007c4420	FinalCleanup	CTCHealLife	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007c4430	StartHealingEffect	CTCHealLife	__thiscall	void	1	CTCHealLife *	1	yes	accepted									
 007c4bd0	CTCHealLife	CTCHealLife	__thiscall	undefined	2	CTCHealLife *,CThing *	0	yes	accepted									
@@ -22552,7 +22552,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007c8de0	ProcessLevellingUpFX	CTCFireballSpell	__thiscall	void	1	CTCFireballSpell *	1	yes	accepted									
 007c8fd0	CancelMove	CTCFireballSpell	__thiscall	void	1	CTCFireballSpell *	1	yes	accepted									
 007c90a0	FinalCleanup	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan							
-007c9160	vfunc_14	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007c9160	OnKill	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007c9170	FinalCleanup	CTCFireballSpell	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007c9180	FrameUpdate	CTCFireballSpell	__thiscall	void	1	CTCFireballSpell *	1	yes	accepted									
 007c93b0	FrameUpdate	CTCFireballSpell	__thiscall	void	1	CTCFireballSpell *	1	yes	accepted									
@@ -22619,8 +22619,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007cc230	ResumeForCutscene	CTCMultiArrow	__thiscall	void	1	CTCMultiArrow *	1	yes	accepted									
 007cc2b0	CreateAmmoEffect	CTCMultiArrow	__thiscall	void	1	CTCMultiArrow *	1	yes	accepted									
 007cc410	FinalCleanup	CTCMultiArrow	__thiscall	void	1	CTCMultiArrow *	1	yes	accepted									
-007cc470	vfunc_14	CTCMultiArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007cc480	vfunc_2	CTCMultiArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007cc470	OnKill	CTCMultiArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007cc480	OnRemove	CTCMultiArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cc490	vfunc_9	CTCMultiArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cc4d0	Init	CTCMultiArrow	__thiscall	void	1	CTCMultiArrow *	1	yes	accepted									
 007cc710	ReleaseShot	CTCMultiArrow	__thiscall	void	1	CTCMultiArrow *	1	yes	accepted									
@@ -22640,7 +22640,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007cca90	~CTCMultiStrike	CTCMultiStrike	__thiscall	void	1	CTCCoopSpirit *	1	yes	accepted									
 007ccb00	StartMultiHit	CTCMultiStrike	__thiscall	void	3	CTCMultiStrike *,CHitParameters *,CThing *	1	yes	accepted									
 007ccd70	FinalCleanup	CTCMultiStrike	unknown	undefined	0		0			discovered	gapscan							
-007cce00	vfunc_14	CTCMultiStrike	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007cce00	OnKill	CTCMultiStrike	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cce10	FinalCleanup	CTCMultiStrike	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cce20	FrameUpdate	CTCMultiStrike	__thiscall	void	1	CTCMultiStrike *	1	yes	accepted									
 007ccf50	ApplyEffectOnWeapon	CTCMultiStrike	__thiscall	void	2	CTCMultiStrike *,CThing *	1	yes	accepted									
@@ -22655,7 +22655,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007cd850	CIVCountedPointer_Release_007cd850	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7c\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd850.cpp
 007cd8c0	CIVCountedPointer_Release_007cd8c0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7c\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd8c0.cpp
 007cd930	FinalCleanup	CTCBurntEffect	unknown	undefined	0		0			discovered	gapscan							
-007cd980	vfunc_14	CTCBurntEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007cd980	OnKill	CTCBurntEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cd990	FinalCleanup	CTCBurntEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cd9a0	FrameUpdate	CTCBurntEffect	__thiscall	void	1	CTCBurntEffect *	1	yes	accepted									
 007cdc20	~CTCBurntEffect	CTCBurntEffect	__thiscall	void	1	CTCBurntEffect *	1	yes	accepted									
@@ -22685,7 +22685,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007cede0	Reset	CTCCreatureTintEffect	__thiscall	void	1	CTCCreatureTintEffect *	1	yes	accepted									
 007cee40	FrameUpdate	CTCCreatureTintEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cf040	FinalCleanup	CTCCreatureTintEffect	unknown	undefined	0		0			discovered	gapscan							
-007cf090	vfunc_14	CTCCreatureTintEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007cf090	OnKill	CTCCreatureTintEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cf0a0	FinalCleanup	CTCCreatureTintEffect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007cf0b0	~CTCCreatureTintEffect	CTCCreatureTintEffect	__thiscall	void	1	CTCGraphicAppearanceReplaceableMesh *	1	yes	accepted									
 007cf110	CTCCreatureTintEffect	CTCCreatureTintEffect	__thiscall	undefined	2	CTCBurntEffect *,CThing *	0	yes	accepted									
@@ -23597,7 +23597,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f8890	AttachParticles	CTCParticleAttacher	__thiscall	void	1	CTCParticleAttacher *	1	yes	accepted									
 007f8b50	OnInitialActivate	CTCParticleAttacher	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f8b60	HandleMessage	CTCParticleAttacher	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007f8bd0	vfunc_10	CTCAnimatingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007f8bd0	BulletTimeFrameUpdate	CTCAnimatingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f8be0	ClearQueuedAnims	CTCAnimatingObject	__thiscall	void	2	CParticleSystem *,CEnginePrimitiveHandle *	1	yes	accepted									
 007f8c20	AddQueuedAnimation	CTCAnimatingObject	__thiscall	void	3	CTCAnimatingObject *,CCharString *,bool	1	yes	accepted									
 007f8d00	SetCurrentAnimAsManualUpdate	CTCAnimatingObject	__thiscall	void	1	CTCAnimatingObject *	1	yes	accepted									
@@ -23606,7 +23606,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f8e20	FrameUpdate	CTCAnimatingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f8f30	PlayDefaultAnimation	CTCAnimatingObject	__thiscall	void	1	CTCAnimatingObject *	1	yes	accepted									
 007f9010	PlayAnimation	CTCAnimatingObject	__thiscall	void	4	CTCAnimatingObject *,long,long,bool	1	yes	accepted									
-007f90a0	vfunc_6	CTCAnimatingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007f90a0	OnInitialActivate	CTCAnimatingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f90b0	PlayAnimation	CTCAnimatingObject	__thiscall	void	4	CTCAnimatingObject *,CCharString *,long,bool	1	yes	accepted									
 007f91e0	CIVCountedPointer_Release_007f91e0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007f91e0.cpp
 007f9250	CIVCountedPointer_Release_007f9250	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007f9250.cpp
@@ -24098,7 +24098,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00814ea0	GetClosestPointToPos2D	NHitLocations::CPhysicalPrimitiveSphere	__thiscall	C3DVector	4	CPhysicalPrimitiveSphere *,CThing *,C3DVector *,C3DVector *	1	yes	accepted									
 00814f90	GetBoundingSphere	NHitLocations::CPhysicalPrimitiveSphere	__thiscall	void	4	CPhysicalPrimitiveSphere *,CThing *,C3DVector *,float *	1	yes	accepted									
 00815010	TransferBinaryOut	NHitLocations::CPhysicalPrimitiveCylinder	__thiscall	void	2	CPhysicalPrimitiveCylinder *,CDataOutputStream *	1	yes	accepted									
-00815070	vfunc_7	NHitLocations::CPhysicalPrimitiveMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00815070	GetFirstIntersectionWithFiniteLine	NHitLocations::CPhysicalPrimitiveMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00815200	GetBoundingSphere	NHitLocations::CPhysicalPrimitiveMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00815230	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
 00815240	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
@@ -24660,28 +24660,28 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0082ff60	GetMaxSprintingSpeed	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0082ff70	GetMaxJoggingSpeed	CThingAICreature	__thiscall	float	2	CThingAICreature *,C3DVector *	1	yes	accepted									
 00830000	GetMaxWalkingSpeed	CThingAICreature	__thiscall	float	2	CThingAICreature *,C3DVector *	1	yes	accepted									
-00830090	vfunc_83	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008300a0	vfunc_84	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008300b0	vfunc_85	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008300c0	vfunc_86	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00830090	GetMaxFlyingSpeed	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008300a0	GetMaxHoverSpeedSlow	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008300b0	GetMaxHoverSpeedMedium	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008300c0	GetMaxHoverSpeedFast	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008300d0	CanCollideWithLandscape	CTCPhysicsStandard	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CTCPhysicsStandard_CTCPhysicsStandardCanCollideWithLandscapea_008300d0.cpp
 008300e0	CanCollideWithLandscape	CTCPhysicsStandard	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CTCPhysicsStandard_CTCPhysicsStandardCanCollideWithLandscapeb_008300e0.cpp
 008300f0	CanCollideWithLandscape	CTCPhysicsStandard	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CTCPhysicsStandard_CTCPhysicsStandardCanCollideWithLandscapec_008300f0.cpp
 00830100	CanCollideWithLandscape	CTCPhysicsStandard	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\global_CanCollideWithLandscape_00830100.cpp
 00830110	IsNewAttackerGreaterThreat	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830130	Forward_IsUpdateZoneActiveThisFrame_via0x1a8_00830130	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00830130.cpp
-00830140	vfunc_48	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00830140	GetProperties	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830150	DrawGetEditDrawInfo	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00830250	vfunc_90	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00830250	GetCurrentGraphic	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830260	RandomiseMovementSpeed	CThingAICreature	__thiscall	void	2	CThingAICreature *,float *	1	yes	accepted									
 008302c0	Forward_IsStateGroupPresentAndEnabled_via0x1a8_008302c0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302c0.cpp
 008302d0	Forward_SetStateGroupEnabled_via0x1a8_008302d0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302d0.cpp
 008302e0	Forward_SetAllStateGroupsEnabled_via0x1a8_008302e0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302e0.cpp
-008302f0	vfunc_92	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00830300	vfunc_87	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00830310	vfunc_78	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008302f0	GetFOV	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00830300	GetMaxAcceleration	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00830310	GetMaxPushingSpeed	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830320	IsAvailableForInteractionType	CThingAICreature	__thiscall	bool	2	CThingAICreature *,ECreatureInteractionType	1	yes	accepted									
-00830350	vfunc_45	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00830350	SetPositionUsingBrain	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830360	ConstructFromParams	CThingAICreature	__thiscall	bool	5	CThingAICreature *,long,C3DVector *,long,CThingAICreatureInit *	1	yes	accepted									
 008304a0	Save	CThingAICreature	__thiscall	void	2	CThingAICreature *,CCharString *	1	yes	accepted									
 00830cb0	DrawGetThingDisplayInformation	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -24824,7 +24824,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00838740	`scalar_deleting_destructor'	CThingNoise	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00838740.cpp
 008388d0	ConstructFromParams	CThingGameObject	__thiscall	bool	9	CThingGameObject *,long,C3DVector *,long,ulong,CCharString *,CThingPhysical *,CThingPhysical *,bool	1	yes	accepted									
 00838930	ConstructFromLevelScript	CThingGameObject	__thiscall	bool	2	CThingPhysical *,char *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CThingPhysical_ConstructFromLevelScript_00838930.cpp
-00838940	vfunc_7	CThingGameObject	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\global_StubReturnVoid004c72a0_00838940.cpp
+00838940	CopyGameState	CThingGameObject	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\global_StubReturnVoid004c72a0_00838940.cpp
 00838950	IsLineOfSightTo_00838950	CThing	unknown	undefined	0		0			discovered	gapscan							
 00838990	DrawIsTargeted	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008389a0	SetAddToComboMultiplierOnHit	CThingGameObject	__thiscall	void	2	CThingGameObject *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CThingGameObject_SetAddToComboMultiplierOnHit_008389a0.cpp
@@ -25257,7 +25257,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0084cb40	CCreatureAction_PutDownJugFromFilling	CCreatureAction_PutDownJugFromFilling	__thiscall	undefined	2	CCreatureAction_PickUpJug *,CCreatureAction_PickUpJug *	0	yes	accepted									
 0084ccc0	GetNewCameraPosFromOcclusionParams	_global	__fastcall	C3DVector	4	C3DVector *,C3DVector *,float,C3DVector *	1	yes	accepted									
 0084cd10	SetCameraRoll	_global	__fastcall	void	2	CCamera *,float	1	yes	accepted									
-0084cde0	vfunc_12	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0084cde0	IsTrackMeleeOpponentsAutoFOVChange	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0084cdf0	UpdateFixLookDirection	NCameraModes::CBase	__thiscall	void	5	CBase *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted									
 0084cf40	SetRightStickLookAround	NCameraModes::CBase	__thiscall	void	2	CEditControlCentre *,C3DVector *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\CEditControlCentre_OnEngineSurveyLMBHeld_0084cf40.cpp
 0084cf60	OnEngineSurveyLMBHeld	CEditControlCentre	__thiscall	void	2	CEditControlCentre *,C3DVector *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\CEditControlCentre_OnEngineSurveyLMBHeld_0084cf60.cpp
@@ -25273,10 +25273,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0084d2c0	UpdateSubComponents	CBase	__thiscall	void	1	CBase *	1	yes	accepted									
 0084d2f0	IsCameraOcclusionFromTo	CBase	__thiscall	bool	4	CBase *,C3DVector *,C3DVector *,C3DVector *	1	yes	accepted									
 0084d790	GetDefaultFOV	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0084d7a0	vfunc_19	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0084d7b0	vfunc_20	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0084d7c0	vfunc_7	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0084d7d0	vfunc_8	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0084d7a0	GetDefaultRollAngle	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0084d7b0	GetDefaultObservedPositionZOffset	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0084d7c0	IsRaiseUpOnHeroNearby	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0084d7d0	IsStretchAroundHero	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0084d7e0	UpdateRaiseUp	NCameraModes::CBase	unknown	undefined	0		0	yes	accepted									
 0084d8b0	GetObservedThingCurrentMeshHeight	CBase	__thiscall	float	1	CBase *	1	yes	accepted									
 0084d910	UpdateCameraStretchAroundHero	CBase	__thiscall	void	3	CBase *,C3DVector *,C3DVector *	1	yes	accepted									
@@ -25404,7 +25404,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00854370	ResetCameraOnEnd	NCameraModes::CScriptModuleFOVZoom	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854380	~CScriptModuleFOVZoom	NCameraModes::CScriptModuleFOVZoom	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
 008543b0	GetModuleFOV	NCameraModes::CScriptModuleSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008543c0	vfunc_6	NCameraModes::CScriptModuleSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008543c0	GetModuleRollAngle	NCameraModes::CScriptModuleSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854410	`scalar deleting destructor'	NCameraModes::CScriptModuleSelfTerminateBase	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 00854450	`scalar_deleting_destructor'	NCameraModes::CScriptModuleTransitionBetweenPoints	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\85\CEngineSubPrimitiveText_scalardeletingdestructor_00854450.cpp
 00854480	`scalar deleting destructor'	NCameraModes::CScriptModuleFOVZoom	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
@@ -26081,8 +26081,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00871d50	UpdateCageRadius	NCameraModes::CStringAndCageBase	unknown	undefined	0		0	yes	accepted									
 00871e40	SetSACPosition	NCameraModes::CStringAndCage	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00871e60	SetSACPosition	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00871e80	vfunc_19	NCameraModes::CZTargetNew	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00871e90	vfunc_20	NCameraModes::CZTargetNew	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00871e80	GetDefaultRollAngle	NCameraModes::CZTargetNew	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00871e90	GetDefaultObservedPositionZOffset	NCameraModes::CZTargetNew	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00871ea0	IsUseRightStickLookAround	NCameraModes::CZTargetNew	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00871eb0	IsFinished	NCameraModes::CZTargetNew	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00871ec0	OnReset	NCameraModes::CStringAndCageBase	__thiscall	void	1	CStringAndCageBase *	1	yes	accepted									
@@ -26109,9 +26109,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008733c0	IsAvoidLandscape	NCameraModes::CZTargetNew	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008733d0	CSACCombat	NCameraModes::CSACCombat	__thiscall	undefined	9	CStringAndCage *,CGameCameraManager *,CDefPointer<CCameraModeDef_const_> *,float,float,float,bool,float,float	0	yes	accepted									
 00873440	GetModeType	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00873450	vfunc_18	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00873460	vfunc_28	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00873470	vfunc_29	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00873450	GetDefaultFOV	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00873460	IsAutoGoBehind	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00873470	GetAutoGoBehindTime	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873480	IsDriftToMaxStringLength	NCameraModes::CSACCombat	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873490	`scalar_deleting_destructor'	NCameraModes::CZTargetNew	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\87\CEngineSubPrimitiveText_scalardeletingdestructor_00873490.cpp
 008734c0	`scalar deleting destructor'	NCameraModes::CSACCombat	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
@@ -26124,7 +26124,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008738f0	Alloc	NCameraModes::CFirstPerson::CFirstPersonInit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873930	Alloc	CLookAtFrontInit	__thiscall	CBase *	3	CLookAtFrontInit *,CGameCameraManager *,CDefPointer<CCameraModeDef_const_> *	1	yes	accepted									
 00873a10	CSimplePointBase	NCameraModes::CSimplePointBase	__thiscall	undefined	6	CLookAtFront *,CGameCameraManager *,CDefPointer<CCameraModeDef_const_> *,C3DVector *,C3DVector *,bool	0	yes	accepted									
-00873a80	vfunc_4	NCameraModes::CSimplePointBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00873a80	IsUseRightStickLookAround	NCameraModes::CSimplePointBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873ac0	GetModeType	NCameraModes::CFirstPerson	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873ad0	IsRaiseUpOnHeroNearby	NCameraModes::CFirstPerson	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873b10	GetModeType	NCameraModes::CLookAtFront	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -26198,7 +26198,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0087aa10	GetRootsNumerically<class `anonymous namespace'::CTanMethod>	NMaths	unknown	undefined	0		0	yes	accepted									
 0087aff0	GetRootsNumerically<class `anonymous namespace'::CCotMethod>	NMaths	unknown	undefined	0		0	yes	accepted									
 0087b5f0	GetModeType	NCameraModes::CProjectileWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0087b600	vfunc_13	NCameraModes::CProjectileWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0087b600	IsFinished	NCameraModes::CProjectileWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087b610	IsRaiseUpOnHeroNearby	NCameraModes::CProjectileWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087b620	IsShortenOnOcclusion	NCameraModes::CProjectileWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087b630	GetDefaultFOV	NCameraModes::CProjectileWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -26208,7 +26208,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0087b6f0	OnInitLeaf	CFixedDolly	__thiscall	void	1	CFixedDolly *	1	yes	accepted									
 0087b770	GetPhysicsMode	NCameraModes::CFixedDolly	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087b7e0	GetPointType<CTCCameraPointFixedPoint>	CTCCameraPointDefinitionBase	__thiscall	bool	2	CTCCameraPointDefinitionBase *,CTCCameraPointFixedPoint * *	1	yes	accepted									
-0087b820	vfunc_30	NCameraModes::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0087b820	GoBehindPlayer	NCameraModes::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087b830	OnDieLeaf	NCameraModes::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087b840	OnInitLeaf	NCameraModes::CTrack	__thiscall	void	1	CTrack *	1	yes	accepted									
 0087b910	UpdateDesiredPos	NCameraModes::CTrack	__thiscall	void	2	CTrack *,C3DVector *	1	yes	accepted									
@@ -26219,9 +26219,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0087bbc0	Update	NCameraModes::CScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087bbf0	OnDie	NCameraModes::CScriptedControl	__thiscall	void	1	CScriptedControl *	1	yes	accepted									
 0087bd20	UpdateDesiredPos	NCameraModes::CDead	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0087bd40	vfunc_18	NCameraModes::CRotateAround	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0087bd50	vfunc_19	NCameraModes::CRotateAround	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0087bd60	vfunc_20	NCameraModes::CRotateAround	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0087bd40	GetDefaultFOV	NCameraModes::CRotateAround	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0087bd50	GetDefaultRollAngle	NCameraModes::CRotateAround	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0087bd60	GetDefaultObservedPositionZOffset	NCameraModes::CRotateAround	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087bd70	Update	CRotateAround	__thiscall	void	1	CRotateAround *	1	yes	accepted									
 0087bf40	OnInit	NCameraModes::CRotateAround	__thiscall	void	1	CRotateAround *	1	yes	accepted									
 0087c070	OnInit	NCameraModes::COrbitGame	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29163,7 +29163,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008d63f0	CCreatureAction_FireMissileTest	CCreatureAction_FireMissileTest	__thiscall	undefined	2	CCreatureAction_PickUpJug *,CCreatureAction_PickUpJug *	0	yes	accepted									
 008d6540	GetHoldingAnimIndex	NCreatureMode::CModeCarryingPlateStand	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6580	OnActivate	NCreatureMode::CModeSitBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008d6610	vfunc_4	NCreatureMode::CModeBlock	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d6610	GetAnimFilter	NCreatureMode::CModeBlock	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6620	FrameUpdate	NCreatureMode::CModeOutOfActionBase	__thiscall	void	1	CModeOutOfActionBase *	1	yes	accepted									
 008d6650	GetOutOfActionRecoveryFrames	NCreatureMode::CModeDazed	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 008d6660	GetOutOfActionTimeSeconds	NCreatureMode::CModeDazed	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
@@ -29176,9 +29176,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008d6760	OnActivate	NCreatureMode::CModeExplosiveForcePushed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6770	FrameUpdate	NCreatureMode::CModeExplosiveForcePushed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6780	AnimUpdate	NCreatureMode::CModeExplosiveForcePushed	__thiscall	void	2	CModeExplosiveForcePushed *,CAnimateThing *	1	yes	accepted									
-008d6820	vfunc_6	NCreatureMode::CModeExplosiveForcePushed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008d6830	vfunc_6	NCreatureMode::CModeBerserk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008d6840	vfunc_6	NCreatureMode::CModeRockTrollVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d6820	OnDeactivate	NCreatureMode::CModeExplosiveForcePushed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d6830	OnDeactivate	NCreatureMode::CModeBerserk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d6840	OnDeactivate	NCreatureMode::CModeRockTrollVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6850	AnimUpdate	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6860	OnActivate	CModeJackOfBladesDeath	__thiscall	void	1	CModeJackOfBladesDeath *	1	yes	accepted									
 008d6890	OnDeactivate	NCreatureMode::CModeJackOfBladesDeath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29186,11 +29186,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008d68e0	OnActivate	NCreatureMode::CModeSummonerSummon	__thiscall	void	1	CModeChargeForcePush *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeChargeForcePush_OnActivate_008d68e0.cpp
 008d6900	OnDeactivate	NCreatureMode::CModeSummonerSummon	__thiscall	void	1	CModeChargeForcePush *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeChargeForcePush_OnActivate_008d6900.cpp
 008d6920	OnActivate	NCreatureMode::CModeSummonerDie	__thiscall	void	1	CModeSummonerDie *	1	yes	accepted									
-008d6950	vfunc_6	NCreatureMode::CModeSummonerDie	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d6950	OnDeactivate	NCreatureMode::CModeSummonerDie	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6960	OnActivate	NCreatureMode::CModeChargeForcePush	__thiscall	void	1	CModeChargeForcePush *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeChargeForcePush_OnActivate_008d6960.cpp
 008d6980	OnActivate	NCreatureMode::CModeChargeForcePush	__thiscall	void	1	CModeChargeForcePush *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeChargeForcePush_OnActivate_008d6980.cpp
 008d69a0	OnDeactivate	NCreatureMode::CModeGuildmasterPowerUpHeal	__thiscall	void	1	CModeDragonRearUp *	1	yes	accepted									
-008d69c0	vfunc_6	NCreatureMode::CModeDragonLanded	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d69c0	OnDeactivate	NCreatureMode::CModeDragonLanded	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d69d0	OnActivate	NCreatureMode::CModeDragonRearUp	__thiscall	void	1	CModeDragonRearUp *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeDragonRearUp_OnActivate_008d69d0.cpp
 008d69f0	OnActivate	NCreatureMode::CModeDragonRearUp	__thiscall	void	1	CModeDragonRearUp *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeDragonRearUp_OnActivate_008d69f0.cpp
 008d6a10	OnDeactivate	NCreatureMode::CModeDragonRearUp	__thiscall	void	1	CModeDragonRearUp *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeDragonRearUp_OnDeactivate_008d6a10.cpp
@@ -29305,7 +29305,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008dcb60	ExtinguishFlames	CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
 008dcc80	Flash	NCreatureMode::CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
 008dd0f0	OnActivate	CModeScorpionKingVulnerable	__thiscall	void	1	CModeScorpionKingVulnerable *	1	yes	accepted									
-008dd6e0	vfunc_5	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008dd6e0	OnActivate	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dd7e0	UpdateDamage	CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
 008ddad0	CreateLightningBeams	NCreatureMode::CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
 008ddd70	OnActivate	NCreatureMode::CModeGuildmasterPowerUpHeal	__thiscall	void	1	CModeGuildmasterPowerUpHeal *	1	yes	accepted									
@@ -29322,7 +29322,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008df510	Recover	NCreatureMode::CModeScorpionKingTailPlunge	unknown	undefined	0		0	yes	accepted									
 008df640	Recover	NCreatureMode::CModeScorpionKingExhausted	__thiscall	void	1	CModeScorpionKingExhausted *	1	yes	accepted									
 008df680	OnDeactivate	CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008df9c0	vfunc_3	NCreatureMode::CModeSummonerSummon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008df9c0	FrameUpdate	NCreatureMode::CModeSummonerSummon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dfb00	NCreatureMode::CModeSummonerLightningOrb::vfunc_3	NCreatureMode::CModeSummonerLightningOrb	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dfef0	FrameUpdate	NCreatureMode::CModeSummonerDie	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dff50	FrameUpdate	NCreatureMode::CModeChargeForcePush	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29382,7 +29382,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e3700	`scalar_deleting_destructor'	NCreatureMode::CModeJackOfBladesFlash	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CLandscapeBackgroundPatch_vectordeletingdestructor_008e3700.cpp
 008e3720	~CModeJackOfBladesFlash	NCreatureMode::CModeJackOfBladesFlash	__thiscall	void	1	CAIStateGroup_CarryCrateAndFollow *	1	yes	accepted									
 008e3760	GetType	NCreatureMode::CModeScorpionKingVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008e3770	vfunc_4	NCreatureMode::CModeScorpionKingVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008e3770	GetAnimFilter	NCreatureMode::CModeScorpionKingVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e3780	GetType	NCreatureMode::CModeScorpionKingTailPlunge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e3790	GetAnimFilter	NCreatureMode::CModeScorpionKingTailPlunge	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e37a0	`scalar_deleting_destructor'	NCreatureMode::CModeScorpionKingTailPlunge	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CLandscapeBackgroundPatch_vectordeletingdestructor_008e37a0.cpp
@@ -29528,7 +29528,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e7f80	GetRandomImposter	NCreatureMode::CModeBriarRoseConcentrate	__thiscall	CThing *	1	CModeBriarRoseConcentrate *	1	yes	accepted									
 008e8060	OnActivate	CModeBriarRoseConcentrate	__thiscall	void	1	CModeBriarRoseConcentrate *	1	yes	accepted									
 008e8760	FrameUpdate	NCreatureMode::CModeBriarRoseConcentrate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008e8830	vfunc_3	NCreatureMode::CModeBriarRoseTeleportInvulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008e8830	FrameUpdate	NCreatureMode::CModeBriarRoseTeleportInvulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e8940	FrameUpdate	NCreatureMode::CModeBriarRoseTeleportIntangible	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e89d0	HasEvent	CTCEntityEvents	__thiscall	bool	2	CTCEntityEvents *,CIsEventOfType *	1	yes	accepted									
 008e8a10	operator()	`anonymous namespace'::CIsImposterHit	__thiscall	bool	1	CAIStateGroup_VersusScorpionKing *	1	yes	accepted									
@@ -29914,18 +29914,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fc890	insert	std::list<CPhysicsMeshObject, std::allocator<CPhysicsMeshObject>>	unknown	undefined	0		0			discovered	gapscan							
 008fc9e0	list	std::list<T_0x8_008fc9e0>	unknown	undefined	0		0	yes	accepted									
 008fca40	transform	std	unknown	undefined	0		0	yes	accepted									
-008fcb50	vfunc_2	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008fcb70	vfunc_3	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008fcb90	vfunc_4	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008fcbb0	vfunc_5	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcb50	DoThingEvasion	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcb70	DoThemeEvasion	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcb90	DoGroundEvasion	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcbb0	DoCreatureEvasion	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008fcbd0	DoAttractToPoint	NCameraModes::CPhysicsForceModelGotoOutsideSimple	__thiscall	C3DVector	1	CPhysicsForceModelGotoOutsideSimple *	1	yes	accepted									
 008fcc10	DoVelocityDamping	NCameraModes::CPhysicsForceModelGotoOutsideSimple	__thiscall	C3DVector	1	CPhysicsForceModelGotoOutsideSimple *	1	yes	accepted									
 008fcc60	FrameUpdate	NCameraModes::CPhysicsCoordRigid	__thiscall	void	1	CPhysicsCoordRigid *	1	yes	accepted									
-008fcd70	vfunc_2	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008fcd90	vfunc_3	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008fcdb0	vfunc_4	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008fcdd0	vfunc_5	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008fcdf0	vfunc_7	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcd70	DoThingEvasion	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcd90	DoThemeEvasion	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcdb0	DoGroundEvasion	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcdd0	DoCreatureEvasion	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008fcdf0	DoVelocityDamping	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008fce10	DoAttractToPoint	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008fcec0	Initialise	CAIStateGroupBase	__thiscall	void	6	CAIStateGroupBase *,CAIBrain *,CThingAICreature *,long,EScriptAIPriority,CCharString *	1	yes	accepted									
 008fcf10	IsRunnableMain	CAIStateGroupBase	unknown	undefined	0		0	yes	accepted									
@@ -31114,7 +31114,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009107b0	GetPBestThing<CThingFilter_HasDefGlobalIndex,CThingCompare_Nearest,CThing>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CThingFilter_HasDefGlobalIndex *,CThingCompare_Nearest *,CThing * *	1	yes	accepted									
 00910830	CModeSitChairStudious	NCreatureMode::CModeSitChairStudious	__thiscall	undefined	2	CModeCrouch *,CThing *	0	yes	accepted									
 009108c0	GetType	NCreatureMode::CModeSitChairStudious	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-009108d0	vfunc_4	NCreatureMode::CModeSitChairStudious	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+009108d0	GetAnimFilter	NCreatureMode::CModeSitChairStudious	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 009108e0	`scalar_deleting_destructor'	NCreatureMode::CModeSitChairStudious	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CEngineSubPrimitiveText_scalardeletingdestructor_009108e0.cpp
 009109b0	operator()	CIsSeatWithSpaceOwnedBy	__thiscall	bool	2	CIsSeatWithSpaceOwnedBy *,CThingObject *	1	yes	accepted									
 00910a90	GetAllLeafThings<CThingObject,std::vector<CThingObject*>,CIsSeatWithSpaceOwnedBy>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
@@ -31773,11 +31773,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00938070	Reset	CCountedPointer_00938060	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 009380e0	CModeSitChairBored	NCreatureMode::CModeSitChairBored	__thiscall	undefined	2	CModeSitChair *,CThing *	0	yes	accepted									
 00938160	GetType	NCreatureMode::CModeSitChairBored	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00938170	vfunc_4	NCreatureMode::CModeSitChairBored	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00938170	GetAnimFilter	NCreatureMode::CModeSitChairBored	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00938180	`scalar_deleting_destructor'	NCreatureMode::CModeSitChairBored	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\93\CEngineSubPrimitiveText_scalardeletingdestructor_00938180.cpp
 009381b0	CModeSitChairSleeping	NCreatureMode::CModeSitChairSleeping	__thiscall	undefined	2	CModeSitChair *,CThing *	0	yes	accepted									
 00938230	GetType	NCreatureMode::CModeSitChairSleeping	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00938240	vfunc_4	NCreatureMode::CModeSitChairSleeping	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00938240	GetAnimFilter	NCreatureMode::CModeSitChairSleeping	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00938250	`scalar_deleting_destructor'	NCreatureMode::CModeSitChairSleeping	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\93\CEngineSubPrimitiveText_scalardeletingdestructor_00938250.cpp
 00938280	AllocChairSittingMode	CAIStateGroup_UsesSeat	__thiscall	CModeSitBase *	1	CAIStateGroup_UsesSeat *	1	yes	accepted									
 00938380	SitInSeat	CAIStateGroup_UsesSeat	__thiscall	bool	1	CAIStateGroup_UsesSeat *	1	yes	accepted									

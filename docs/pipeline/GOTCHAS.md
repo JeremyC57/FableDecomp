@@ -3018,3 +3018,12 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk H40k, 2026-11-11) 0x00DB97A0: retail keeps T-return pads apart when the block laid before the exit is NOT one of them (there a bare `call IsActiveThreadTerminating` from a folded post-loop `if (T) return;`, 0x00DBB2E1); if the last pad lies before the exit, c2 cross-jumps every other pad into its tail. Read the block before the exit label before blaming the pads.
 - (chunk H40k, 2026-11-11) 0x00D13580: rewriting `while (!c) { NSF; if (T) return; }` as `for (;;) { if (c) break; ... }` leaves c2's block frequencies (inline trace f values) and bytes unchanged; and `while (A && B)` vs `for(;;){if(!A||!B)break;...}` too.
 - (chunk H40k, 2026-11-11) /d2inlT73 / T75 sweeps are byte-neutral on 9 of the 10 long NScript rows tried: check tools/inl.sh for a site within a point or two of T before spending grades on threshold flags.
+- (agentFAM04, 2026-11-11) Default-mode VSLOTS declarations are fine for leaf bodies but give wrong slot offsets for virtual calls; use a header whose whole vtable is modelled (CThing ORIGINAL_VTABLE, CTCBase, CModeBase VIRTUALS) when the body calls a virtual.
+- (agentFAM04, 2026-11-11) FAM03's CThingCreatureBase VSLOTS needs `class CInterpolationInfo;` declared before the include (its DrawUpdate parameter).
+- (agentFAM04, 2026-11-11) STLport list front() is behind FABLE_RETAIL_STLP_LIST; CCountedPointer operator-> behind FABLE_RETAIL_CCOUNTEDPOINTER.
+- (agentFAM04, 2026-11-11) CTCBoss.h needs FABLE_RETAIL_C3DVECTOR_PACKED + engine/C3DVector.h (PhaseStartPos at alignment 1).
+- (agentFAM04, 2026-11-11) Check callee access in the PDB mangling (AAE / IAE / QAE): several landed binders use QAE for private cleanup helpers.
+- (agentFAM04, 2026-11-11) A landed prologue that renames the class (`#define CTCBulletTime CTCBulletTimeLayout`) is not reusable; pick the next one with the FABLE_RETAIL_<CLASS> macro.
+- (agentFAM04, 2026-11-11) One Wine cl hang (120 s timeout, no output) cleared on regrade with a fuller prologue; always run cl under timeout.
+- (agentFAM04, 2026-11-11) Catalog tests that are 32-bit source snapshots cannot run on a 64-bit g++ host; record them, do not rewrite them.
+- (agentFAM04, 2026-11-11) Group rows by shape and generate specs from a short table; 30-50 rows per bulk grade kept every row under 3 grades.

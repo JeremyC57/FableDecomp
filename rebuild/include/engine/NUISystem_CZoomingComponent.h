@@ -16,6 +16,13 @@ public:
     CZoomingComponent(const CZoomingComponent&);
     virtual ~CZoomingComponent();
     void GetDataFromDef();
+#ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_VSLOTS
+// agentFAM04 (2026-11-11): retail virtuals of vtable 0x01247DC4 the declarations above lack (Ego_r / FableWin
+// ?Pan@CZoomingComponent@NUISystem@@UAEXVC2DVector@@@Z slot 142, ?GetZoomCenter@CZoomingComponent@NUISystem@@UAE?AVC2DVector@@XZ slot 146). Declarations only.
+public:
+    virtual void Pan(C2DVector);                                    // slot 142, 0x005466B0
+    virtual C2DVector GetZoomCenter();                              // slot 146, 0x00546BE0
+#endif // FABLE_RETAIL_CZOOMINGCOMPONENT_VSLOTS
 #ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_MEMBERS
     // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x184 ; call operator new` before the
     // constructor 0x00546B00): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),

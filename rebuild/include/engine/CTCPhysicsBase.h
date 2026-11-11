@@ -244,6 +244,21 @@ public:
     const C3DVector& GetLastPosition() const { return OldPosition; }
 #endif
     CPhysicsMeshObject GetPhysicsMeshObject() const;
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
+// agentFAM04 (2026-11-11): Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ (public const, out of line in retail at 0x006AFE00: the
+// PhysicsDef Mass +0x38 read; CTCPhysicsStandard::EnableGravity 0x007235E0 calls it). Declaration only: no layout change.
+public:
+    float GetMass() const;                                             // 0x006AFE00
+#endif // FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
+// agentFAM04 (2026-11-11): the static right-handed set the base GetRHSet() / GetLastRHSet() return (0x006B1290 /
+// 0x006B12A0 `mov eax,0137F9B4h`, 0x006B1450 copies it): FableWin.pdb names its initializer `dynamic initializer for
+// 'CTCPhysicsBase::DummyRHSet'` (retail .data 0x0137F9B4 holds it statically: Up (0,0,1), Forward (0,1,0)). Access and
+// const-ness are not in either PDB extract (protected assumed, as the class data). Declaration only.
+protected:
+    static CRightHandedSet DummyRHSet;                                  // 0x0137F9B4
+public:
+#endif // FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_SEARCHTOOLS
     // Nested opt-in (chunk 758, row 0x00725B70 CTCPhysicsControlled::UpdateAdditionalImpulse): Ego_r.pdb
     // ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ, out of line in retail at 0x006AFD40 (`call PeekWorld

@@ -103,6 +103,14 @@ public:
     virtual long GetMaterialOnHitByMelee() const;  // slot 70, 0x005298B0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingGameObject virtuals (TLC vtable slots aligned with the Xbox 360 Test PDB order;
+// Ego_r.pdb / FableWin.pdb spellings). Declaration only (no layout change).
+public:
+    virtual void CopyGameState(const CThing&);                           // slot 7, 0x00838940
+    virtual float GetTriggerRadius() const;                              // slot 62, 0x00529840
+public:
+#endif // FABLE_RETAIL_CTHINGGAMEOBJECT_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingGameObject)==0xd0);
 #else

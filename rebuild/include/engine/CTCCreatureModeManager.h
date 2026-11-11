@@ -64,6 +64,13 @@ protected:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x007442A0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_FRAMEUPDATE
+// agentFAM04 (2026-11-11): retail CTCBase slot 9 override (Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCCreatureModeManager@@MAEXXZ,
+// protected virtual; TLC vtable 0x01268854 slot 9 = 0x0073A880). Declaration only (no layout change).
+protected:
+    virtual void FrameUpdate();                                          // slot 9, 0x0073A880
+public:
+#endif // FABLE_RETAIL_CTCCREATUREMODEMANAGER_FRAMEUPDATE
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCreatureModeManager)==0x24);
 

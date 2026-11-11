@@ -5,6 +5,7 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifndef FABLE_RETAIL_CTCPHYSICSNAVIGATOR // agentFAM04 (2026-11-11)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -39,5 +40,31 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPos_X) == 0xa1);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPos_Y) == 0xa5);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPos_Z) == 0xa9);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPosUsePhysics) == 0xad);
+#else // FABLE_RETAIL_CTCPHYSICSNAVIGATOR
+// Retail opt-in FABLE_RETAIL_CTCPHYSICSNAVIGATOR (agentFAM04, 2026-11-11): the polymorphic retail class. Fable.exe RTTI
+// .?AVCTCPhysicsNavigator@@ (vtable 0x01266314) : CTCPhysicsStandard (engine/CTCPhysicsStandard.h FABLE_RETAIL_CTCPHYSICSSTANDARD,
+// needs FABLE_RETAIL_CTCPHYSICSBASE / FABLE_RETAIL_CTCBASE). Members: the Ego_r.pdb names and types at the byte-packed offsets
+// above (the C3DVectors sit at +0x89 / +0x95 / +0xa1, so the members are pack(1)); the two `bool : 1` flags of +0xad in the
+// Ego_r.pdb order. Overrides: the CTCPhysicsBase virtuals the rows define (slots from the TLC vtable aligned with the Xbox 360
+// Test PDB order, agentFAM03; spellings Ego_r / FableWin ?<name>@CTCPhysicsNavigator@@). No sizeof assertion (only the member
+// offsets are proven).
+#include "engine/CTCPhysicsStandard.h"
+#include "engine/C3DVector.h"
+class CTCPhysicsNavigator : public CTCPhysicsStandard {
+public:
+    virtual void SetForcedToMovePos(const C3DVector&, bool);        // slot 34, 0x00727120
+    virtual void EnableNavigator(bool);                             // slot 40, 0x00727110
+    virtual bool IsNavigationEnabled() const;                       // slot 41, 0x00727100
+protected:
+#pragma pack(push, 1)
+    bool Navigating;                                                // +0x88
+    C3DVector PositionToNavigateTo;                                 // +0x89
+    C3DVector AdditionalImpulse;                                    // +0x95
+    C3DVector ForcedMoveToPos;                                      // +0xa1
+    bool ForcedMoveToPosSet : 1;                                    // +0xad bit 0
+    bool ForcedMoveToPosUsePhysics : 1;                             // +0xad bit 1
+#pragma pack(pop)
+};
+#endif // FABLE_RETAIL_CTCPHYSICSNAVIGATOR
 
 #endif // FABLE_ENGINE_CTCPHYSICSNAVIGATOR_H

@@ -105,6 +105,29 @@ public:
     virtual bool FeelsGravity() const;  // slot 91, 0x006A9570
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingPlayerCreature overrides (TLC vtable slots aligned with the Xbox 360 Test PDB
+// order; Ego_r.pdb / FableWin.pdb spellings). Declarations only (no layout change).
+public:
+    virtual void CopyGameState(const CThing&);                           // slot 7, 0x006A94B0
+    virtual void DrawUpdate(const class CInterpolationInfo*);            // slot 26, 0x006A9550
+    virtual bool DrawGetThingDisplayInformation(class CThingDrawInformation*) const;   // slot 34, 0x006A9D10
+    virtual float GetMaxPushingSpeed(const C3DVector&) const;            // slot 78, 0x006A9C20
+    virtual float GetMaxWalkingSpeed(const C3DVector&) const;            // slot 79, 0x006A98A0
+    virtual float GetMaxJoggingSpeed(const C3DVector&) const;            // slot 80, 0x0052ABC0
+    virtual float GetMaxRunningSpeed(const C3DVector&) const;            // slot 81, 0x006A9890
+    virtual float GetMaxSprintingSpeed(const C3DVector&) const;          // slot 82, 0x006A9880
+    virtual float GetMaxFlyingSpeed(const C3DVector&) const;             // slot 83, 0x006A98B0
+    virtual float GetMaxHoverSpeedSlow(const C3DVector&) const;          // slot 84, 0x006A9C30
+    virtual float GetMaxHoverSpeedMedium(const C3DVector&) const;        // slot 85, 0x006A9C40
+    virtual float GetMaxHoverSpeedFast(const C3DVector&) const;          // slot 86, 0x006A9C50
+    virtual float GetMaxAcceleration() const;                            // slot 87, 0x006A9C10
+protected:
+    virtual const class CEngineGraphic* GetCurrentGraphic() const;       // slot 90, 0x006A99C0
+public:
+    virtual EControlledMovementType GetControlledMovementType() const;   // slot 92, 0x006A9870
+public:
+#endif // FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS2
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CThingPlayerCreature)==0x208);

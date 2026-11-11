@@ -25,5 +25,14 @@ public:
     virtual bool IsComponentSerialisable() const;  // slot 23, 0x00750970
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCCHEST_VSLOTS2
+// agentFAM04 (2026-11-11): retail virtuals and the non-virtual they call (Ego_r.pdb / FableWin.pdb spellings; TLC vtable slots aligned with the Xbox 360 Test PDB order). Declarations only (no layout change).
+public:
+    virtual void OnInitialActivate();                                    // slot 6, 0x00750530 (tail call to InitClosed)
+    virtual void BulletTimeFrameUpdate();                                // slot 10, 0x00750960 (the slot-9 FrameUpdate)
+private:
+    void InitClosed();                                                   // 0x007502D0 ?InitClosed@CTCChest@@AAEXXZ
+public:
+#endif // FABLE_RETAIL_CTCCHEST_VSLOTS2
 };
 #endif

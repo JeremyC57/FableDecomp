@@ -26,5 +26,11 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x004DE87E
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_VSLOTS2
+// agentFAM04 (2026-11-11): retail virtuals and the non-virtual they call (Ego_r.pdb / FableWin.pdb spellings; TLC vtable slots aligned with the Xbox 360 Test PDB order). Declarations only (no layout change).
+public:
+    virtual void OnInitialActivate();                                    // slot 6, 0x007F90A0 (tail call to PlayDefaultAnimation)
+    virtual void BulletTimeFrameUpdate();                                // slot 10, 0x007F8BD0 (the slot-9 FrameUpdate)
+#endif // FABLE_RETAIL_CTCANIMATINGOBJECT_VSLOTS2
 };
 #endif

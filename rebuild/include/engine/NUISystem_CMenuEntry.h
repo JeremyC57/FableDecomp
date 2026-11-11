@@ -16,6 +16,11 @@ public:
     CMenuEntry(long);
     CMenuEntry(const CMenuEntry&);
     virtual ~CMenuEntry();
+#ifdef FABLE_RETAIL_CMENUENTRY_VSLOTS
+// agentFAM04 (2026-11-11): retail CComponent override missing here (vtable 0x0124662C slot 64, Ego_r / FableWin ?RemoveChild@CMenuEntry@NUISystem@@UAEXK@Z). Declaration only.
+public:
+    virtual void RemoveChild(unsigned long);                        // slot 64, 0x0053D120
+#endif // FABLE_RETAIL_CMENUENTRY_VSLOTS
 #ifdef FABLE_RETAIL_CMENUENTRY_UPDATE
     // Original PDB and native primary vtable slot1,0053d4b0.
     virtual void Update(float tick);

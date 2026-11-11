@@ -31,6 +31,15 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x007CC980
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCMULTIARROW_VSLOTS2
+// agentFAM04 (2026-11-11): retail virtuals and the non-virtual they call (Ego_r.pdb / FableWin.pdb spellings; TLC vtable slots aligned with the Xbox 360 Test PDB order). Declarations only (no layout change).
+public:
+    virtual void OnRemove();                                             // slot 2, 0x007CC480 (tail call to FinalCleanup)
+    virtual void OnKill();                                               // slot 14, 0x007CC470 (tail call to FinalCleanup)
+protected:
+    void FinalCleanup();                                                 // 0x007CC410 ?FinalCleanup@CTCMultiArrow@@IAEXXZ
+public:
+#endif // FABLE_RETAIL_CTCMULTIARROW_VSLOTS2
 };
 FABLE_STATIC_ASSERT(offsetof(CTCMultiArrow, NumberOfShots) == 0x10);
 #endif // FABLE_ENGINE_CTCMULTIARROW_H

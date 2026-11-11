@@ -16,6 +16,10 @@
 class CThing;
 class CCharString;
 class CCreatureActionBase;
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITFLOOR_GETANIMFILTER
+// agentFAM04 (2026-11-11): CModeSitFloor's GetAnimFilter override (row 0x00740000), slot 4 of CModeBase.
+class CAnimFilterBase;
+#endif // FABLE_RETAIL_NCREATUREMODE_CMODESITFLOOR_GETANIMFILTER
 namespace NCreatureMode {
 class CModeSitBase : public CTCCreatureModeManager::CModeBase {
 public:
@@ -31,6 +35,11 @@ public:
     CModeSitFloor(CThing& thing, const CCharString& group);              // 0x008AC3C0
     virtual ~CModeSitFloor();
     virtual unsigned long GetType() const;                               // MODE_SIT_FLOOR
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITFLOOR_GETANIMFILTER
+// agentFAM04 (2026-11-11): Ego_r.pdb / FableWin.pdb ?GetAnimFilter@CModeSitFloor@NCreatureMode@@UBEABVCAnimFilterBase@@XZ, CModeBase slot 4
+// (TLC CModeSitFloor vtable slot 4 = 0x00740000, `lea eax,[ecx+2Ch]; ret`: the Filter member). Declaration only.
+    virtual const CAnimFilterBase& GetAnimFilter() const;               // slot 4, 0x00740000
+#endif // FABLE_RETAIL_NCREATUREMODE_CMODESITFLOOR_GETANIMFILTER
 private:
     unsigned char Filter[0xc];                                           // +0x2c CAnimFilterOfGroup
 };

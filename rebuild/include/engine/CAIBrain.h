@@ -52,6 +52,11 @@ public:
     // out of line at 0x0088BB60 (ForceAIReset tail-jumps to it with the PBrain item in ecx). Declaration only; no layout change.
     void ForceReset();                                                   // 0x0088BB60
 #endif
+#ifdef FABLE_RETAIL_CAIBRAIN_INITCREATUREPOSITION
+// agentFAM04 (2026-11-11): Ego_r.pdb / FableWin.pdb ?InitCreaturePosition@CAIBrain@@QAEXXZ, out of line at 0x0088BBB0
+// (CThingAICreature::SetPositionUsingBrain 0x00830350 tail-jumps to it with the PBrain item in ecx). Declaration only; no layout change.
+    void InitCreaturePosition();                                         // 0x0088BBB0
+#endif // FABLE_RETAIL_CAIBRAIN_INITCREATUREPOSITION
 #ifdef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
 private:
     // Both original PDBs: reference, private, +18; native 0090bbf7.
