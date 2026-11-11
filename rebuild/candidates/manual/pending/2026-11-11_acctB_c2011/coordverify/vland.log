@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00bf12a0   RELOCATION_MATCH PASS   AddGeneratedObjects
+00bf18b0   WARN RELOC_NAME: ??0C3DDummyObject@@QAE@XZ -> 00a2e4b0 labelled 'CMatrix3x4_00a2e4b0::CMatrix3x4_00a2e4b0'
+00bf18b0   RELOCATION_MATCH PASS   AddGeneratedObjects
+
+WINS: 2
+  00bf12a0 RELOCATION_MATCH CEnginePrimitiveRenderUtil::?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveStaticMesh@@@Z
+  00bf18b0 RELOCATION_MATCH CEnginePrimitiveRenderUtil::?AddGeneratedObjects@CEnginePrimitiveRenderUtil@@QAEXABVCEngineInternalPrimitiveAnimatedMesh@@ABVCMatrix3x4@@@Z
