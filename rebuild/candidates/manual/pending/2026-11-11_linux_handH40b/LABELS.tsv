@@ -1,0 +1,8 @@
+address	name	evidence
+0x00E3EB10	?Main@CBordelloLady@CV_BordelloScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012E3AC8 stored by the landed CBordelloLady::Alloc 0x00E3AB90; RELOCATION_MATCH (chunk H40b)
+0x00DFE0F0	?Main@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012DEC68 (.rdata 0x012DEC6C) stored by the landed Alloc 0x00DFB050; RELOCATION_MATCH (chunk H40b)
+0x00D8BCD0	?Main@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012D50DC stored by the landed CFishermansWife::Alloc 0x00D8A650; RELOCATION_MATCH (chunk H40b)
+0x00E84B80	?Main@CFisticuffsMember@CV_FisticuffsClubScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name; slot 1 of the entity vtable 0x012EB0F8 (.rdata 0x012EB0FC) stored by the ctor 0x00E83920; RELOCATION_MATCH (chunk H40b)
+0x00E403D0	?GetLHTSTag@CBordelloLady@CV_BordelloScript@NScript@@AAE?AVCCharString@@ABV4@@Z	Ego_r.pdb + FableWin.pdb name; called by the matched Main 0x00E3EB10 (hdr opt-in FABLE_RETAIL_CV_BORDELLOSCRIPT_CBORDELLOLADY, chunk 810)
+0x00D0F640	?CheckForSecondAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	Ego_r.pdb 0x00D13E10 / FableWin.pdb 0x0368B050 (chunk 855); true extent 2101 bytes (SPLITS.tsv), not matched
+0x00B10B10	?GenerateParticle@CPSCEmitterGeneric@NParticleEngine@@AAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@M@Z	FableWin.pdb name (chunk 741); true extent 4276 bytes (SPLITS.tsv), not matched

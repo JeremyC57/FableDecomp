@@ -47,9 +47,35 @@ public:
         virtual void Main();                                             // 0x00D8ABF0
     };
 };
+#ifdef FABLE_RETAIL_CQ_HEROSOLDHOUSESCRIPT_CFISHERMANSWIFE
+// Retail opt-in (chunk 810): nested CFishermansWife (Ego_r.pdb, 36 bytes): CEntityScriptBase (0x14), ParentClass +0x14, PMasterData
+// +0x18, TalkedTo +0x1c, LeavingHappy +0x1d, initial_angle +0x20. Retail: the Alloc 0x00D8A650 stores vtable 0x012D50DC (slot 0 ??_G
+// 0x00D8A7D0, 1 Main 0x00D8BCD0, 2 Init 0x00D8A700, 3 GetParentScript 0x00D8A6F0, 4 OnPersist 0x00D8ABA0, 5 OnPredicateFail
+// 0x00D8A770); Main 0x00D8BCD0 reads TalkedTo +0x1c / LeavingHappy +0x1d / initial_angle +0x20 and writes +0x1c / +0x1d.
+// Methods: the Ego_r.pdb / FableWin.pdb name set ?<Name>@CFishermansWife@CQ_HerosOldHouseScript@NScript@@...
+class CQ_HerosOldHouseScript::CFishermansWife : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HerosOldHouseScript&, CScriptDataBase*, const CScriptThing&); // 0x00D8A650
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D8A6F0
+protected:
+    CQ_HerosOldHouseScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    bool TalkedTo;                                                       // +0x1c
+    bool LeavingHappy;                                                   // +0x1d
+    float initial_angle;                                                 // +0x20
+    virtual void Init();                                                 // 0x00D8A700
+    virtual void OnPersist(CPersistContext&);                            // 0x00D8ABA0
+    virtual void OnPredicateFail();                                      // 0x00D8A770
+    virtual void Main();                                                 // 0x00D8BCD0
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HerosOldHouseScript) == 0x50);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HerosOldHouseScript::CGhostFisherman) == 0x20);
+#ifdef FABLE_RETAIL_CQ_HEROSOLDHOUSESCRIPT_CFISHERMANSWIFE
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HerosOldHouseScript::CFishermansWife) == 0x24);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_HEROSOLDHOUSESCRIPT_H

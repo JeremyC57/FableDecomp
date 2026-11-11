@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00d8bcd0   RELOCATION_MATCH PASS   Main
+00dfe0f0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dfe0f0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00dfe0f0   RELOCATION_MATCH PASS   Main
+00e3eb10   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e3eb10   RELOCATION_MATCH PASS   Main
+00e84b80   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e84b80   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e84b80   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  00d8bcd0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?Main@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00dfe0f0 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CTraderToRescue::?Main@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ
+  00e3eb10 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloLady::?Main@CBordelloLady@CV_BordelloScript@NScript@@EAEXXZ
+  00e84b80 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CFisticuffsMember::?Main@CFisticuffsMember@CV_FisticuffsClubScript@NScript@@EAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHerosOldHouseScriptCFishermansWife_Main_00d8bcd0
+  NScriptCQTraderConflictGoodScriptCTraderToRescue_Main_00dfe0f0
+  NScriptCVBordelloScriptCBordelloLady_Main_00e3eb10
+  NScriptCVFisticuffsClubScriptCFisticuffsMember_Main_00e84b80

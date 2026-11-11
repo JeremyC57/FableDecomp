@@ -392263,6 +392263,34 @@ $catalog = @(
         TestSource = '00/e5/NScriptCVBeggarAndChildScriptCBeggarBully_Main_00e5b3b0_test.cpp'
         PassPattern = '00e5b3b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d8bcd0'
+        Module = 'NScript::CQ_HerosOldHouseScript::CFishermansWife'
+        Source = '00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Main_00d8bcd0.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Main_00d8bcd0_test.cpp'
+        PassPattern = '00d8bcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfe0f0'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CTraderToRescue'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Main_00dfe0f0.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Main_00dfe0f0_test.cpp'
+        PassPattern = '00dfe0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3eb10'
+        Module = 'NScript::CV_BordelloScript::CBordelloLady'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloLady_Main_00e3eb10.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloLady_Main_00e3eb10_test.cpp'
+        PassPattern = '00e3eb10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e84b80'
+        Module = 'NScript::CV_FisticuffsClubScript::CFisticuffsMember'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Main_00e84b80.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Main_00e84b80_test.cpp'
+        PassPattern = '00e84b80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -39133,3 +39133,6 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ?CombineBlendedBaseAnimationsBoneList@C3DAnimationManager@@AAEXABVC3DAnimationStateBase@@0MPAVC3DKeyframe@@KKABVC3DMesh2@@ABV?$CArray@K@@@Z	00aa0dc0	00aa0dc0
 ?g_pAudioMaster@@3PAVCAudioMaster@@A	0143bc2c	00c708a0
 ?GetAngleXY@CScriptThing@@UBEMXZ	004aaa40	00dd6a60
+?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z	00cbeed2	00dfe0f0
+?GetLHTSTag@CBordelloLady@CV_BordelloScript@NScript@@AAE?AVCCharString@@ABV4@@Z	00e403d0	00e3eb10
+?FisticuffsChallenge@CV_FisticuffsClubScript@NScript@@QAEXXZ	00e86e60	00e84b80

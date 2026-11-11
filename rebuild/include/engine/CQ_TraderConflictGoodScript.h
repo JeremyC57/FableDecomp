@@ -61,5 +61,31 @@ public:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_TraderConflictGoodScript) == 0x68);
 
+#ifdef FABLE_RETAIL_CQ_TRADERCONFLICTGOODSCRIPT_TRADERTORESCUE
+// Retail opt-in (chunk 815): NScript::CQ_TraderConflictGoodScript::CTraderToRescue (Ego_r.pdb struct_layouts_egor.tsv, 0x20):
+// CEntityScriptBase (Game +0x04, Me +0x08), ParentClass +0x14 (a reference: GetParentScript 0x00DFB0F0 returns it), PMasterData
+// +0x18, BarIndex +0x1c (the landed Init 0x00DFB1B0 clears it; Main 0x00DFE0F0 stores AddQuestInfoBarHealth's result there).
+// Entity vtable 0x012DEC68 (stored by the landed Alloc 0x00DFB050): 0 scalar deleting dtor 0x00DFB190, 1 Main 0x00DFE0F0, 2 Init
+// 0x00DFB1B0, 3 GetParentScript 0x00DFB0F0 (Ego_r.pdb / FableWin.pdb ?Main@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ).
+class CScriptDataBase;
+namespace NScript {
+class CQ_TraderConflictGoodScript::CTraderToRescue : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_TraderConflictGoodScript&, CScriptDataBase*, const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const;
+protected:
+    NScript::CQ_TraderConflictGoodScript & ParentClass; // +0x14
+protected:
+    NScript::CQ_SunnyvaleMasterData * PMasterData; // +0x18
+private:
+    long BarIndex; // +0x1c
+private:
+    virtual void Init();
+private:
+    virtual void Main();
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_TraderConflictGoodScript::CTraderToRescue) == 0x20);
+#endif // FABLE_RETAIL_CQ_TRADERCONFLICTGOODSCRIPT_TRADERTORESCUE
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_TRADERCONFLICTGOODSCRIPT_H

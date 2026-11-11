@@ -50,6 +50,11 @@ public:
         long GoldRequired;
         bool NoLongerWorking;
         CCharString Name;
+#ifdef FABLE_RETAIL_CV_BORDELLOSCRIPT_CBORDELLOLADY
+        // Retail opt-in (chunk 810): the private helper CBordelloLady::Main 0x00E3EB10 calls (0x00E403D0; Ego_r.pdb + FableWin.pdb
+        // ?GetLHTSTag@CBordelloLady@CV_BordelloScript@NScript@@AAE?AVCCharString@@ABV4@@Z).
+        CCharString GetLHTSTag(const CCharString&);                         // 0x00E403D0
+#endif
         virtual void Init();virtual void Main();
     };
     class CBordelloGuard:public CEntityScriptBase {
