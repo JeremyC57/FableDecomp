@@ -1,22 +1,17 @@
 // CTCVillage::OnInitialActivate() -- a village restored in limbo re-applies its limbo state on activation
-// Leaf: OnInitialActivate
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0065CE88, length 19 bytes. CTCVillage vtable 0x0125A9AC slot 6, the CTCBase
-// OnInitialActivate slot (PDB `?OnInitialActivate@CTCVillage@@UAEXXZ`); the catalog's "vfunc_6" is the slot name.
-// Callees: CTCVillage::SetVillageLimbo(bool) @ 0x0065C36E.
-// Shape: the flag is read once into a zero-extended register (`xor eax,eax ; mov al,[ecx+0B2h]`) that serves both the
-// test and the pushed argument; the call keeps `call ; ret` (the callee pops an argument this function does not have).
-// Layout: CTCVillage.h is the PDB layout (Limbo +0x13E); with the 4-byte retail lists / 12-byte set it is +0xB2.
-// Layout (supersedes any local-model note above): engine/CTCVillage.h now has the retail STLport 4.6 offsets, so the data
-//   members come from the shared header; the class below keeps only the declarations this body needs.
-#define CTCVillage CTCVillageDonor
+// Leaf: ?OnInitialActivate@CTCVillage@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0065CE88, thiscall, `ret`.
+// Identity (agentFAM03 proof, re-verified by agentFAM05): slot 6 of CTCVillage's vtable 0x0125A9AC (the slot holds this body in 1 vtable(s), owner CTCVillage); the Xbox 360 Test PDB virtual order (third source) aligned on 14 TLC-named slots of that vtable puts OnInitialActivate(void) at this slot [gap kind GS]; Ego_r/FableWin name set: ?OnInitialActivate@CTCVillage@@UAEXXZ; `ret` matches the signature.
+// Was: CTCVillage::vfunc_6 (rebuild/src/compiled/00/65/CTCVillage_OnInitialActivate_0065ce88.cpp).
+#pragma optimize("s", on)
+#define FABLE_RETAIL_CTCVILLAGE_VSLOTS3
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCVILLAGE
+#include "engine/ETCInterfaceType.h"
 #include "engine/CTCVillage.h"
-#undef CTCVillage
-class CTCVillage : public CTCVillageDonor {
- public:
-    void SetVillageLimbo(bool limbo);       // 0x0065C36E
-    void OnInitialActivate();
-};
-
 void CTCVillage::OnInitialActivate()
 {
     if (Limbo)

@@ -11,6 +11,11 @@
 #include "engine/CDefPointer.h"
 #include "engine/ETCInterfaceType.h"
 class CActionUseDef;
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
+// agentFAM05 (2026-11-11): the return type of GetWhenToActivate (mangled W4EWhenToActivate@@, a global enum; the enumerators are not in the name
+// sets, so the rows write the retail values as casts).
+enum EWhenToActivate { };
+#endif // FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
 #pragma pack(push, 1)
 class CTCActionUseBase : public CTCBase {
 public:
@@ -37,6 +42,15 @@ public:
     virtual bool IsToActuallyUseActionUseAsIntendedGoddammitWeReallyHaveGotOurselvesInAMess() const;  // slot 31, 0x004DA964
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtuals this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC vtable
+// 0x0123F09C (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x004DA959
+public:
+    virtual EWhenToActivate GetWhenToActivate() const;  // slot 29, 0x004DA95D
+public:
+#endif // FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CTCActionUseBase) == 0x14);

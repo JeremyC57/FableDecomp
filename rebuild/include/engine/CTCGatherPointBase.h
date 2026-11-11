@@ -27,7 +27,16 @@ public:
     bool AddAsUser(const CThing&);
     void RemoveAsUser(const CThing&);
 protected:
+#ifdef FABLE_RETAIL_CTCGATHERPOINTBASE_VSLOTS3
+// agentFAM05 (2026-11-11): OnSerialise is public in both PDB name sets (?OnSerialise@CTCGatherPointBase@@UAEXAAVCPersistContext@@_N@Z, Ego_r.pdb /
+// FableWin.pdb), not protected: the opt-in restores the PDB access around the declaration (no layout or vtable change).
+public:
+#endif // FABLE_RETAIL_CTCGATHERPOINTBASE_VSLOTS3
     virtual void OnSerialise(CPersistContext&, bool);                    // slot 1  0x007FFE40
+#ifdef FABLE_RETAIL_CTCGATHERPOINTBASE_VSLOTS3
+// agentFAM05 (2026-11-11): end of the public OnSerialise access restore above.
+protected:
+#endif // FABLE_RETAIL_CTCGATHERPOINTBASE_VSLOTS3
     virtual bool IsPointInside(const C3DVector&) const = 0;              // slot 28
     virtual void Init();                                                 // slot 29 0x004E0AE4
     virtual void OnSerialiseLeaf(CPersistContext&);                      // slot 30 0x004E0AE5

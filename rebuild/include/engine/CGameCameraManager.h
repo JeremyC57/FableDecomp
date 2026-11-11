@@ -94,9 +94,20 @@ template <class T> class CCountedPointer;
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMTOOLS_TYPED
 #include "engine/NCameraModes_CTools.h"
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
+// agentFAM05 (2026-11-11): the forward declaration the camera-point declarations below need.
+class CThing;
+#endif // FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
+// agentFAM05 (2026-11-11): the two camera-point list members (Ego_r.pdb / FableWin.pdb ?AddCameraPoint@CGameCameraManager@@QAEXAAVCThing@@@Z
+// 0x006991F0 and ?RemoveCameraPoint@CGameCameraManager@@QAEXAAVCThing@@@Z 0x006984A0, both landed). Declarations only.
+public:
+    void AddCameraPoint(CThing&);                            // 0x006991F0
+    void RemoveCameraPoint(CThing&);                         // 0x006984A0
+#endif // FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_SCRIPTEDMODE
     // Retail opt-in (chunk 1026, row 0x00716B30): FableWin.pdb ?IsUsingScriptedCameraMode@CGameCameraManager@@QBE_NXZ, out of line at
     // 0x00697AE0 (landed). A declaration only.

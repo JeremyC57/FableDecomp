@@ -7,6 +7,10 @@
 // FABLE_RETAIL_DEF_CLASS_BASE (CTCTargetingBase's CDefPointer). Member functions: the protected
 // ?UpdateTargetedPositionRandomWalk@CTCTargetingPlayer@@IAEXXZ (Ego_r.pdb 0x007FE840; retail 0x00803540, called from FrameUpdate
 // at 0x00805814). No vtable is emitted from these declarations (no virtual is defined here).
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
+// agentFAM05 (2026-11-11): the member type of the typed pointers below.
+#include "engine/CIntelligentPointer.h"
+#endif // FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
 #include "engine/CTCTargetingBase.h"
 #include "engine/C3DVector.h"
 #include "engine/C2DVector.h"
@@ -32,8 +36,15 @@ protected:
     C2DVector     DesiredTargetedPosOffset;                     // +0xc4
     C2DVector     TargetedPosOffsetSecondOrder;                 // +0xcc
     unsigned char PLastThreatenedThing[0x8];                    // +0xd4 CIntelligentPointer<CThing>
+#ifndef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3 // agentFAM05 (2026-11-11)
     unsigned char PProjectileTargetedThing[0x8];                // +0xdc CIntelligentPointer<CThing>
     unsigned char PTargetLockedThing[0x8];                      // +0xe4 CIntelligentPointer<CThing>
+#else // FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
+    // agentFAM05 (2026-11-11): the two members typed as Ego_r.pdb declares them (CIntelligentPointer<CThing>, 8 bytes, same offsets),
+    // for the getters below (`add ecx,0DCh / 0E4h ; jmp CBaseIntelligentPointer::GetPItem`, 0x004E231D / 0x004E2328).
+    CIntelligentPointer<CThing> PProjectileTargetedThing;       // +0xdc
+    CIntelligentPointer<CThing> PTargetLockedThing;             // +0xe4
+#endif // FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
     unsigned char PTargetOnlyThing[0x8];                        // +0xec CIntelligentPointer<CThing>
     bool          LockedOntoEnemy;                              // +0xf4
 public:
@@ -52,6 +63,14 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x004E231A
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtuals this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC vtable
+// 0x0124280C (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual CThing* GetPProjectileTargetedThing() const;   // slot 35, 0x004E231D
+    virtual CThing* GetPTargetLockedThing() const;         // slot 36, 0x004E2328
+public:
+#endif // FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargetingPlayer) == 0xf8);
 #else

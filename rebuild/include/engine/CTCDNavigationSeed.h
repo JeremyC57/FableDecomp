@@ -10,6 +10,11 @@
 class CTCDNavigationSeed : public CTCDriverBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_NAVIGATION_SEED; }
+#ifdef FABLE_RETAIL_CTCDNAVIGATIONSEED_VSLOTS
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (needs the polymorphic FABLE_RETAIL_CTCBASE; no layout
+// change). Slot 23 of the TLC vtable 0x0123B944 (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+    virtual bool IsComponentSerialisable() const;                        // slot 23 0x004D422F
+#endif // FABLE_RETAIL_CTCDNAVIGATIONSEED_VSLOTS
 #ifdef FABLE_RETAIL_CTCD_STATGETDRIVERTYPE
     static unsigned long __fastcall StatGetDriverType() { return 21; }
 #endif

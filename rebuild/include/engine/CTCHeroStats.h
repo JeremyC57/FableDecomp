@@ -290,6 +290,13 @@ public:
     virtual bool IsComponentSerialisable() const;  // slot 23, 0x005814C6
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005814A8
+public:
+#endif // FABLE_RETAIL_CTCHEROSTATS_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);
 #endif

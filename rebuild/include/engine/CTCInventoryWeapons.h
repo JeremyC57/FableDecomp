@@ -131,6 +131,13 @@ public:
     virtual void OnChangeCategory();  // slot 37, 0x005CC4F8
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005CC4DD
+public:
+#endif // FABLE_RETAIL_CTCINVENTORYWEAPONS_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryWeapons) == 0x1A0);   // 0x19C of members, rounded to the base's 8-byte alignment (double LastRenderTime)
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, PActiveMeleeWeapon) == 0x134);

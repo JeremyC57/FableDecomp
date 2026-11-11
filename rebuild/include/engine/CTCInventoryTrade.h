@@ -207,6 +207,15 @@ public:
     virtual void OnChangeCategory();  // slot 37, 0x005B306F
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual overrides this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005B304A
+public:
+    virtual bool GetInventoryShoppingValidity();  // slot 48, 0x0059B6E8
+public:
+#endif // FABLE_RETAIL_CTCINVENTORYTRADE_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryTrade) == 0x230);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NotInStock) == 0x140);

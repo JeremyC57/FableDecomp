@@ -83,6 +83,15 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x007A4080
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void OnKill();  // slot 14, 0x007A0D70
+private:
+    void FinalCleanup();    // 0x007A0950 ?FinalCleanup@CTCWillLightning@@AAEXXZ
+public:
+#endif // FABLE_RETAIL_CTCWILLLIGHTNING_VSLOTS3
 };
 #pragma pack(pop)
 

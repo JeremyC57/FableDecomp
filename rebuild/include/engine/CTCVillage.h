@@ -167,6 +167,19 @@ public:
     virtual bool IsComponentSerialisable() const;  // slot 23, 0x00661248
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual overrides this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets. SetVillageLimbo: Ego_r.pdb
+// ?SetVillageLimbo@CTCVillage@@QAEX_N@Z, out of line at 0x0065C36E (the landed binding); RemoveThingAndUpdateCameraPoints: Ego_r.pdb
+// ?RemoveThingAndUpdateCameraPoints@CTCVillage@@QAEXPAVCThing@@@Z, retail 0x0065B6DD (landed).
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x0066122A
+public:
+    virtual void OnInitialActivate();  // slot 6, 0x0065CE88
+    void SetVillageLimbo(bool limbo);  // 0x0065C36E
+    void RemoveThingAndUpdateCameraPoints(CThing* thing);  // 0x0065B6DD
+public:
+#endif // FABLE_RETAIL_CTCVILLAGE_VSLOTS3
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CTCVillage) == 0xe8);

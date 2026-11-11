@@ -87,6 +87,14 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x005DAE10
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCWEAPON_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void FrameUpdate();  // slot 9, 0x005DA4F0
+    virtual void OnSerialise(CPersistContext&, bool);  // slot 1, 0x005DA9B0
+public:
+#endif // FABLE_RETAIL_CTCWEAPON_VSLOTS3
 };
 #ifdef FABLE_RETAIL_CTCWEAPON_MEMBERS
 FABLE_STATIC_ASSERT(sizeof(CTCWeapon) == 0x28);

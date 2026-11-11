@@ -7,6 +7,11 @@
 // retail (`cmp dword ptr [edi+10h],ebx ; jle`, 0x005CAC43). StatGetInterfaceType: TCI_MULTI_ARROW (136; `mov edi,88h`, 0x005CA730).
 // Out-of-line methods (Ego_r.pdb + FableWin.pdb spellings): ?ApplyEffectOnWeapon@CTCMultiArrow@@QAEXPAVCThing@@@Z (retail 0x007CC060)
 // and ?RemoveEffectOnWeapon@CTCMultiArrow@@QAEXPAVCThing@@@Z (0x007CC120). Declarations only.
+#ifdef FABLE_RETAIL_CTCMULTIARROW_VSLOTS3
+// agentFAM05 (2026-11-11): the member types of the retail layout block below.
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
+#endif // FABLE_RETAIL_CTCMULTIARROW_VSLOTS3
 #ifndef FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTCBASE
 #endif
@@ -40,6 +45,26 @@ protected:
     void FinalCleanup();                                                 // 0x007CC410 ?FinalCleanup@CTCMultiArrow@@IAEXXZ
 public:
 #endif // FABLE_RETAIL_CTCMULTIARROW_VSLOTS2
+#ifdef FABLE_RETAIL_CTCMULTIARROW_VSLOTS3
+// agentFAM05 (2026-11-11): retail FrameUpdate (slot 9; agentFAM03 proof, re-verified by agentFAM05), the protected CreateAmmoEffect it tail-calls
+// (Ego_r.pdb ?CreateAmmoEffect@CTCMultiArrow@@IAEXXZ, 0x007CC2B0) and the members after NumberOfShots (Ego_r.pdb names; retail
+// offsets: the STLport vector is 12 bytes, so BowEffect is +0x3C and CutSceneCancelled +0x44, `mov al,[ecx+44h]` at 0x007CC497).
+public:
+    virtual void FrameUpdate();                              // slot 9, 0x007CC490
+protected:
+    void CreateAmmoEffect();                                 // 0x007CC2B0
+public:
+    long NumberInVolley;                                     // +0x14
+    long NumOfVolleys;                                       // +0x18
+    long SpellLevel;                                         // +0x1c
+    bool RemovedEffect;                                      // +0x20
+    long CreateAmmoEffectCount;                              // +0x24
+    long CreateAmmoEffectDelay;                              // +0x28
+    long CreateAmmoEffectTimer;                              // +0x2c
+    std::vector<CIntelligentPointer<CThing> > AmmoEffects;   // +0x30
+    CIntelligentPointer<CThing> BowEffect;                   // +0x3c
+    bool CutSceneCancelled;                                  // +0x44
+#endif // FABLE_RETAIL_CTCMULTIARROW_VSLOTS3
 };
 FABLE_STATIC_ASSERT(offsetof(CTCMultiArrow, NumberOfShots) == 0x10);
 #endif // FABLE_ENGINE_CTCMULTIARROW_H

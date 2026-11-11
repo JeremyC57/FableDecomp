@@ -1,17 +1,13 @@
-// CTCWeapon::FrameUpdate() -- count the frames the weapon has been wielded and, while aiming, the frames spent aiming
-// Leaf: FrameUpdate
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005DA4F0, length 23 bytes (+ int3 padding).
-// CTCWeapon vtable 0x012554FC slot 9 (rtti-vtables.tsv; chunk label "CTCWeapon::vfunc_9"); slot 9 of the CTCBase-derived
-// vtables is FrameUpdate.
-// Layout: engine/CTCWeapon.h (Ego_r.pdb): AimingTime +0x14 (-1 = not aiming), TimeWielded +0x20, Wielded +0x24.
-// Shape: the wielded counter is a memory `inc`, the aiming counter is loaded, compared with -1 and stored back.
+// CTCWeapon::FrameUpdate() -- counts the frames the weapon has been wielded and, while aiming, the frames spent aiming
+// Leaf: ?FrameUpdate@CTCWeapon@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005DA4F0, thiscall, `ret`.
+// Identity (agentFAM03 proof, re-verified by agentFAM05): slot 9 of CTCWeapon's vtable 0x012554FC (the slot holds this body in 1 vtable(s), owner CTCWeapon); the Xbox 360 Test PDB virtual order (third source) aligned on 15 TLC-named slots of that vtable puts FrameUpdate(void) at this slot [gap kind GS]; Ego_r/FableWin name set: ?FrameUpdate@CTCWeapon@@UAEXXZ; `ret` matches the signature.
+// Was: CTCWeapon::vfunc_9 (rebuild/src/compiled/00/5d/CTCWeapon_FrameUpdate_005da4f0.cpp).
+#define FABLE_RETAIL_CTCWEAPON_VSLOTS3
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_CTCWEAPON_MEMBERS
 #include "engine/CTCWeapon.h"
-
-struct CTCWeapon_FrameUpdate : CTCWeapon {
-    void FrameUpdate();
-};
-
-void CTCWeapon_FrameUpdate::FrameUpdate()
+void CTCWeapon::FrameUpdate()
 {
     if (Wielded)
         ++TimeWielded;

@@ -66,6 +66,13 @@ public:
     virtual bool IsComponentSerialisable() const;  // slot 23, 0x00731300
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCDOOR_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void BulletTimeFrameUpdate();  // slot 10, 0x007312F0
+public:
+#endif // FABLE_RETAIL_CTCDOOR_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDoor) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCDoor, Jammed) == 0xc);

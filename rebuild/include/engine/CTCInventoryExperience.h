@@ -155,6 +155,17 @@ public:
     virtual bool IsComponentSerialisable() const;  // slot 23, 0x0057A25D
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual overrides this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets. ResetStatIndicatorValues:
+// Ego_r.pdb ?ResetStatIndicatorValues@CTCInventoryExperience@@QAEXXZ, out of line at 0x0056E5AB (the landed binding).
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x0057A238
+public:
+    virtual void OnChangeCategory();  // slot 37, 0x0056EC79
+    void ResetStatIndicatorValues();  // 0x0056E5AB
+public:
+#endif // FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryExperience) == 0x270);
 #endif

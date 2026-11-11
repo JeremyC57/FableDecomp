@@ -49,6 +49,14 @@ public:
     virtual bool IsComponentSerialisable() const;  // slot 23, 0x004DA936
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETED_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets
+// (?OnSerialise@CTCTargeted@@MAEXAAVCPersistContext@@_N@Z: protected).
+protected:
+    virtual void OnSerialise(CPersistContext&, bool);  // slot 1, 0x007EA550
+public:
+#endif // FABLE_RETAIL_CTCTARGETED_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargeted) == 0x18);
 #else

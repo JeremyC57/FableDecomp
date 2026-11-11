@@ -3028,3 +3028,11 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (agentFAM04, 2026-11-11) Catalog tests that are 32-bit source snapshots cannot run on a 64-bit g++ host; record them, do not rewrite them.
 - (agentFAM04, 2026-11-11) Group rows by shape and generate specs from a short table; 30-50 rows per bulk grade kept every row under 3 grades.
 - (landing ci, 2026-11-11) A RELOCATION_MATCH masks callee names, so a swapped enum pair still matches. Treat vland's RELOC_NAME warnings that swap two siblings as a real naming bug, and settle it from what each callee body stores (0x00A66FD0: Middle/Right mouse buttons).
+- (agentFAM05, 2026-11-11) Probe the codegen (compile + objdump against allinfo) before grading: 136 rows took 157 grades because the shape was settled first.
+- (agentFAM05, 2026-11-11) A `#error` in a header hangs Wine cl: a probe with no output after 120 s means a missing prerequisite macro (CDefPointer.h needs FABLE_RETAIL_DEF_CLASS_BASE).
+- (agentFAM05, 2026-11-11) Check the access letter of the proven leaf (UAE / MAE / EAE / ABE) against the header: two repo headers had the wrong access.
+- (agentFAM05, 2026-11-11) Out-of-order _VSLOTS blocks are fine for leaf bodies but not for bodies that call virtuals; declare the vtable in slot order for those.
+- (agentFAM05, 2026-11-11) `if (x == 1) return y; return 0;` and `switch` differ in VC7.1 codegen; `long r = 0; switch (x) { case 1: r = y; break; } return r;` gives `dec ; jne`.
+- (agentFAM05, 2026-11-11) A `CWorld* world = &GetWorld();` local changed register allocation to match retail where the chained expression did not.
+- (agentFAM05, 2026-11-11) String keys of OnSerialise rows: read them from Fable.exe (work/rstr.py) rather than trusting the landed source's literals.
+- (agentFAM05, 2026-11-11) Catalog tests that are __fastcall shims never test the row and fail under g++; replace them with a portable twin when the row is respelled.

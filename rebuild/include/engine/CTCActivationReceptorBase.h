@@ -26,6 +26,12 @@ public:
     unsigned char _pad_0x21[0x3];                            // +0x21
     unsigned long FramesAfterActivationToDeactivate;         // +0x24
     unsigned long FrameAtLastActivation;                     // +0x28
+#ifdef FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_REMOVETRIGGER
+// agentFAM05 (2026-11-11): Ego_r.pdb / FableWin.pdb ?RemoveTrigger@CTCActivationReceptorBase@@QAEXAAVCTCActivationTrigger@@@Z, out of line at
+// 0x007F7750 (CTCActivationTrigger::OnKill 0x0077B0B0 calls it with the trigger). Declaration only: no layout change.
+public:
+    void RemoveTrigger(class CTCActivationTrigger& trigger);              // 0x007F7750
+#endif // FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_REMOVETRIGGER
 #ifdef FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

@@ -1,0 +1,137 @@
+address	old_name	new_name	grade	test	note
+0x00412C50	CPersistContext_TransferableVector<ETutorialCategory>::vfunc_1	CPersistContext_TransferableVector<ETutorialCategory>::Resize	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00412c50	grades this pass: 1
+0x00442760	NPlayerGui::CDrawNPCName::vfunc_1	NPlayerGui::CDrawBase::ClearPrimitivesIfNecessary	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00442760	grades this pass: 1
+0x0046656A	NSpeechGainManager::CDialogueLayerDef::vfunc_19	NSpeechGainManager::CDialogueLayerDef::Copy	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0046656a	grades this pass: 2
+0x004C5D70	NGraphicAppearance::CTCGraphicAppearance::vfunc_10	NGraphicAppearance::CTCGraphicAppearance::BulletTimeFrameUpdate	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004c5d70	grades this pass: 1
+0x004D2E41	NHeroInformationScreens::CBase::vfunc_3	NHeroInformationScreens::CBase::IsInventoryScreen	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d2e41	grades this pass: 1
+0x004D3A1B	CTCCameraPointShapeActivationBase::vfunc_21	CTCCameraPointDefinitionBase::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d3a1b	grades this pass: 1
+0x004D3ADD	CTCCameraPointFixedDolly::vfunc_28	CTCCameraPointFixedDolly::GetCameraPointType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d3add	grades this pass: 1
+0x004D3B2A	CTCCameraPointTrack::vfunc_28	CTCCameraPointTrack::GetCameraPointType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d3b2a	grades this pass: 1
+0x004D3B88	CTCCameraPointGeneralCase::vfunc_28	CTCCameraPointGeneralCase::GetCameraPointType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d3b88	grades this pass: 1
+0x004D3BC7	CTCCameraPointDead::vfunc_28	CTCCameraPointDead::GetCameraPointType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d3bc7	grades this pass: 1
+0x004D422F	CTCDNavigationSeed::vfunc_23	CTCDNavigationSeed::IsComponentSerialisable	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d422f	grades this pass: 1
+0x004D81C6	CTCCameraPointBuilding::vfunc_28	CTCCameraPointBuilding::GetCameraPointType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004d81c6	grades this pass: 1
+0x004DA959	CTCActionUseBase::vfunc_21	CTCActionUseBase::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004da959	grades this pass: 1
+0x004DA95D	CTCActionUseBase::vfunc_29	CTCActionUseBase::GetWhenToActivate	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004da95d	grades this pass: 1
+0x004DAC79	CTCCarriedActionUseBase::vfunc_21	CTCCarriedActionUseBase::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004dac79	grades this pass: 1
+0x004DCB11	NThingShot::CTCShotDefinitionFireballSpell::vfunc_30	NThingShot::CTCShotDefinitionFireballSpell::GetStatToModifyOnHit	MATCH	VC71 PASS; GXX PASS; PassPattern 004dcb11_TEST PASS	grades this pass: 1
+0x004DE6E5	CTCCreatureItemLevitationBase::vfunc_21	CTCCreatureItemLevitationBase::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004de6e5	grades this pass: 1
+0x004DE73A	CTCCreatureItemLevitationNymph::vfunc_28	CTCCreatureItemLevitationNymph::GetLeafType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004de73a	grades this pass: 1
+0x004DE76A	CTCCreatureItemLevitationHero::vfunc_28	CTCCreatureItemLevitationHero::GetLeafType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004de76a	grades this pass: 1
+0x004DE76D	CTCCreatureItemLevitationHero::vfunc_30	CTCCreatureItemLevitationHero::GetMaxNumItems	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004de76d	grades this pass: 1
+0x004DF365	CTCObstacle::vfunc_6	CTCObstacle::OnInitialActivate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 004df365_TEST PASS	grades this pass: 1
+0x004E0AD5	CTCGatherPointBase::vfunc_21	CTCGatherPointBase::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_004e0ad5	grades this pass: 2
+0x004E231D	CTCTargetingPlayer::vfunc_35	CTCTargetingPlayer::GetPProjectileTargetedThing	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 004e231d_TEST PASS	grades this pass: 1
+0x004E2328	CTCTargetingPlayer::vfunc_36	CTCTargetingPlayer::GetPTargetLockedThing	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 004e2328_TEST PASS	grades this pass: 1
+0x00569AF0	CPersistContext_TransferableVector<int>::vfunc_1	CPersistContext_TransferableVector<int>::Resize	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern UMOVE_OK	grades this pass: 1
+0x00569B10	CPersistContext_TransferableVector<float>::vfunc_1	CPersistContext_TransferableVector<float>::Resize	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00569b10_TEST PASS	grades this pass: 1
+0x0056EC79	CTCInventoryExperience::vfunc_37	CTCInventoryExperience::OnChangeCategory	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 0056ec79_TEST PASS	grades this pass: 1
+0x0057A238	CTCInventoryExperience::vfunc_21	CTCInventoryExperience::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0057a238	grades this pass: 2
+0x0057A535	NEntityEvents::CEventMoralityChanged::vfunc_1	NEntityEvents::CEventMoralityChanged::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0057a535	grades this pass: 1
+0x005813BC	CPersistContext_TransferableVector<long>::vfunc_1	CPersistContext_TransferableVector<long>::Resize	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern UMOVE_PARITY_OK	grades this pass: 1
+0x005814A8	CTCHeroStats::vfunc_21	CTCHeroStats::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_005814a8	grades this pass: 1
+0x00594BC9	CTCInventory::vfunc_21	CTCInventory::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00594bc9	grades this pass: 3
+0x0059B6E8	CTCInventoryTrade::vfunc_48	CTCInventoryTrade::GetInventoryShoppingValidity	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0059b6e8	grades this pass: 2
+0x005B304A	CTCInventoryTrade::vfunc_21	CTCInventoryTrade::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_005b304a	grades this pass: 1
+0x005BC3E3	NEntityEvents::CEventReceivedItemInInventory::vfunc_1	NEntityEvents::CEventReceivedItemInInventory::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_005bc3e3	grades this pass: 1
+0x005CC4DD	CTCInventoryWeapons::vfunc_21	CTCInventoryWeapons::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_005cc4dd	grades this pass: 2
+0x005D8779	CTCInventoryStats::vfunc_21	CTCInventoryStats::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_005d8779	grades this pass: 2
+0x005DA4F0	CTCWeapon::vfunc_9	CTCWeapon::FrameUpdate	MATCH	VC71 PASS; GXX PASS; PassPattern 005da4f0_TEST PASS	grades this pass: 1
+0x005DA9B0	CTCWeapon::vfunc_1	CTCWeapon::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 005da9b0_TEST PASS	grades this pass: 1
+0x005E9820	CPersistContext_TransferableVector<unsigned_long>::vfunc_1	CPersistContext_TransferableVector<unsigned long>::Resize	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 005e9820_TEST PASS	grades this pass: 1
+0x005E9A70	CTCTavernGame::vfunc_31	CTCTavernGame::NewGame	MATCH	VC71 PASS; GXX PASS; PassPattern 005e9a70_TEST PASS	grades this pass: 1
+0x005FA381	CTCInventoryAbilities::vfunc_21	CTCInventoryAbilities::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_005fa381	grades this pass: 1
+0x006567C3	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_3	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_006567c3	grades this pass: 1
+0x006567C7	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer::vfunc_3	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_006567c7	grades this pass: 1
+0x006567CB	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_3	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_006567cb	grades this pass: 1
+0x00656BD4	NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounter::vfunc_3	NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounter::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00656bd4	grades this pass: 1
+0x00656C38	NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounterList::vfunc_3	NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounterList::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00656c38	grades this pass: 1
+0x00656C73	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::vfunc_3	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00656c73	grades this pass: 1
+0x0065CE88	CTCVillage::vfunc_6	CTCVillage::OnInitialActivate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 0065ce88_TEST PASS	grades this pass: 1
+0x0066122A	CTCVillage::vfunc_21	CTCVillage::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0066122a	grades this pass: 1
+0x0066A910	CTCSoundPlayer::vfunc_10	CTCSoundPlayer::BulletTimeFrameUpdate	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0066a910	grades this pass: 1
+0x006CD560	CTCCreatureNavigation::vfunc_8	CTCCreatureNavigation::HasFrameUpdate	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_006cd560	grades this pass: 2
+0x006E1D50	CTCDParticleEmitter::vfunc_23	CTCDParticleEmitter::IsComponentSerialisable	MATCH	VC71 PASS; GXX PASS; PassPattern 006e1d50_TEST PASS	grades this pass: 1
+0x00705150	CTCCarryable::vfunc_14	CTCCarryable::OnKill	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00705150_TEST PASS	grades this pass: 1
+0x0070B3C0	CTCAnimationBase::vfunc_21	CTCAnimationBase::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0070b3c0	grades this pass: 1
+0x0070B3D0	CTCAnimationBase::vfunc_30	CTCAnimationBase::AnimsCanBeIgnored	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0070b3d0	grades this pass: 1
+0x0070B440	CTCAnimationComplex::vfunc_28	CTCAnimationComplex::GetInterpolatedMeshAnim	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0070b440	grades this pass: 2
+0x0070B450	CTCAnimationComplex::vfunc_29	CTCAnimationComplex::GetMeshAnims	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0070b450	grades this pass: 2
+0x0070B480	CTCAnimationComplex::vfunc_31	CTCAnimationComplex::OnFrameUpdate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 0070b480_TEST PASS	grades this pass: 1
+0x00711FE0	CTCScriptedControl::CActionBase::vfunc_3	CTCScriptedControl::CActionBase::OnAdd	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00711fe0	grades this pass: 1
+0x00727BC0	CTCRandomAppearanceMorph::vfunc_1	CTCRandomAppearanceMorph::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00727bc0_TEST PASS	grades this pass: 1
+0x007312F0	CTCDoor::vfunc_10	CTCDoor::BulletTimeFrameUpdate	MATCH	VC71 PASS; GXX PASS; PassPattern 007312f0_TEST PASS	grades this pass: 2
+0x00731970	CTCJackShield::vfunc_6	CTCJackShield::OnInitialActivate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00731970_TEST PASS	grades this pass: 1
+0x00744F70	CTCPerceiveThing::vfunc_14	CTCPerceiveThing::OnKill	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00744f70_TEST PASS	grades this pass: 1
+0x00749860	CTCNoise::vfunc_9	CTCNoise::FrameUpdate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00749860_TEST PASS	grades this pass: 1
+0x0075C5F0	CTCCameraPointShapeActivationBase::vfunc_9	CTCCameraPointDefinitionBase::FrameUpdate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 0075c5f0_TEST PASS	grades this pass: 1
+0x0075D0A0	CTCCameraPointBuilding::vfunc_33	CTCCameraPointBuilding::OnSerialseLeaf	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 0075d0a0_TEST PASS	grades this pass: 1
+0x0075D140	CTCCameraPointFixedPoint::vfunc_33	CTCCameraPointFixedPoint::OnSerialseLeaf	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 0075d140_TEST PASS	grades this pass: 1
+0x0077B060	CTCActivationTrigger::vfunc_28	CTCActivationTrigger::OnTriggerActivate	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0077b060	grades this pass: 1
+0x0077B0B0	CTCActivationTrigger::vfunc_14	CTCActivationTrigger::OnKill	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 0077b0b0_TEST PASS	grades this pass: 1
+0x007827A0	CTCBoastingArea::vfunc_1	CTCBoastingArea::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007827a0_TEST PASS	grades this pass: 1
+0x00783210	CTCBoastingCrowdControl::vfunc_1	CTCBoastingCrowdControl::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00783210_TEST PASS	grades this pass: 1
+0x00788B0A	CTCMeleeTrap::vfunc_29	CTCMeleeTrap::UpdateTrap	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00788b0a_TEST PASS	grades this pass: 1
+0x007891EB	CTCTrapBase::vfunc_21	CTCTrapBase::GetInterfaceType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007891eb	grades this pass: 2
+0x0079EC70	CTCPhysicalShieldSpell::vfunc_14	CTCPhysicalShieldSpell::OnKill	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0079ec70	grades this pass: 2
+0x007A0D70	CTCWillLightning::vfunc_14	CTCWillLightning::OnKill	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007a0d70	grades this pass: 1
+0x007AED80	CTCRockTrollShield::vfunc_9	CTCRockTrollShield::FrameUpdate	MATCH	VC71 PASS; GXX PASS; PassPattern 007aed80_TEST PASS	grades this pass: 1
+0x007BBA20	CTCDrunkenness::vfunc_6	CTCDrunkenness::OnInitialActivate	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007bba20	grades this pass: 1
+0x007BBA70	CTCOnHeroPush::vfunc_9	CTCOnHeroPush::FrameUpdate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007bba70_TEST PASS	grades this pass: 2
+0x007BBB36	NThingShot::CTCShotDefinitionQueenHornetShot::vfunc_28	NThingShot::CTCShotDefinitionQueenHornetShot::OnCollision	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007bbb36	grades this pass: 1
+0x007BED00	NThingShot::CTCShotDefinitionThrow::vfunc_14	NThingShot::CTCShotDefinitionBase::OnKill	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007bed00	grades this pass: 1
+0x007C81A0	CTCHitOnCollision::vfunc_2	CTCHitOnCollision::OnRemove	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007c81a0_TEST PASS	grades this pass: 2
+0x007CC490	CTCMultiArrow::vfunc_9	CTCMultiArrow::FrameUpdate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007cc490_TEST PASS	grades this pass: 1
+0x007D4E10	CTCTavernGameCardSorting::vfunc_57	CTCTavernGameCardSorting::GetCardOrder	MATCH	VC71 PASS; GXX PASS; PassPattern 007d4e10_TEST PASS	grades this pass: 2
+0x007D56D0	CTCTavernGameCardSorting::vfunc_1	CTCTavernGameCardSorting::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007d56d0_TEST PASS	grades this pass: 1
+0x007D5F90	CTCTavernGameCardPairs::vfunc_57	CTCTavernGameCardPairs::GetCardOrder	MATCH	VC71 PASS; GXX PASS; PassPattern 007d5f90_TEST PASS	grades this pass: 2
+0x007D6260	CTCTavernGameCardPairs::vfunc_53	CTCTavernGameCardPairs::CardsFinishedMoving	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007d6260_TEST PASS	grades this pass: 1
+0x007D6830	CTCTavernGameCardPairs::vfunc_1	CTCTavernGameCardPairs::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007d6830_TEST PASS	grades this pass: 1
+0x007DA010	CTCTavernGameCardBlackjack::vfunc_28	CTCTavernGameCardBlackjack::ProcessInput	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007da010	grades this pass: 1
+0x007DA070	CTCTavernGameCardBlackjack::vfunc_52	CTCTavernGameCardBlackjack::CardsMoving	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007da070	grades this pass: 1
+0x007DA080	CTCTavernGameCardBlackjack::vfunc_57	CTCTavernGameCardBlackjack::GetCardOrder	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007da080	grades this pass: 1
+0x007DA110	CTCTavernGameCardBlackjack::vfunc_50	CTCTavernGameCardBlackjack::DrawBetAndMoney	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007da110	grades this pass: 1
+0x007DA120	CTCTavernGameCardBlackjack::vfunc_53	CTCTavernGameCardBlackjack::CardsFinishedMoving	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007da120_TEST PASS	grades this pass: 1
+0x007DA3A0	CTCTavernGameCardBlackjack::vfunc_42	CTCTavernGameCardBlackjack::GetWinPhrase	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007da3a0_TEST PASS	grades this pass: 1
+0x007DAA60	CTCTavernGameCardBlackjack::vfunc_1	CTCTavernGameCardBlackjack::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007daa60_TEST PASS	grades this pass: 1
+0x007DF670	CTCWallMountEffects::vfunc_1	CTCWallMountEffects::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007df670_TEST PASS	grades this pass: 1
+0x007DFF40	CTCTeleporter::vfunc_1	CTCTeleporter::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007dff40_TEST PASS	grades this pass: 1
+0x007E1E00	CTCCarriedActionUseRead::vfunc_1	CTCCarriedActionUseRead::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007e1e00_TEST PASS	grades this pass: 1
+0x007E35D0	CTCAtmosPlayer::vfunc_14	CTCAtmosPlayer::OnKill	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007e35d0_TEST PASS	grades this pass: 1
+0x007E7000	CTCOracleMinigame::vfunc_8	CTCOracleMinigame::HasFrameUpdate	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_007e7000	grades this pass: 1
+0x007E8420	CTCOwnedEntity::vfunc_23	CTCOwnedEntity::IsComponentSerialisable	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007e8420_TEST PASS	grades this pass: 2
+0x007E8440	CTCOwnedEntity::vfunc_19	CTCOwnedEntity::IsSerialiseCreatable	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007e8440_TEST PASS	grades this pass: 2
+0x007EA550	CTCTargeted::vfunc_1	CTCTargeted::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007ea550_TEST PASS	grades this pass: 1
+0x007EAF40	CTCActionUseTorch::vfunc_6	CTCActionUseTorch::OnInitialActivate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007eaf40_TEST PASS	grades this pass: 2
+0x007EBE50	CTCActionUseBed::vfunc_1	CTCActionUseBed::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007ebe50_TEST PASS	grades this pass: 1
+0x007EE4D0	CTCVillageMember::vfunc_14	CTCVillageMember::OnKill	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007ee4d0_TEST PASS	grades this pass: 1
+0x007FFE40	CTCGatherPointBase::vfunc_1	CTCGatherPointBase::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 007ffe40_TEST PASS	grades this pass: 1
+0x00810E60	NEntityEvents::CEventBase::vfunc_3	NEntityEvents::CEventBase::GetLifeTime	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00810e60	grades this pass: 1
+0x00810EA0	NEntityEvents::CEventHeroHasBeenSpokenToByVillagers::vfunc_3	NEntityEvents::CEventHeroHasBeenSpokenToByVillagers::GetLifeTime	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00810ea0	grades this pass: 1
+0x00810EB0	NEntityEvents::CEventHeroHasBeenSpottedPickpocketing::vfunc_3	NEntityEvents::CEventHeroHasBeenSpottedPickpocketing::GetLifeTime	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00810eb0	grades this pass: 1
+0x00810EC0	NEntityEvents::CEventHeroHasBeenSpottedPickingLock::vfunc_3	NEntityEvents::CEventHeroHasBeenSpottedPickingLock::GetLifeTime	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00810ec0	grades this pass: 1
+0x00810ED0	NEntityEvents::CEventHeroHasBeenSpottedStealing::vfunc_3	NEntityEvents::CEventHeroHasBeenSpottedStealing::GetLifeTime	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00810ed0	grades this pass: 1
+0x00810EE0	NEntityEvents::CEventExpressionPerformedTo::vfunc_3	NEntityEvents::CEventExpressionPerformedTo::GetLifeTime	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00810ee0	grades this pass: 1
+0x00810EF0	NEntityEvents::CEventHitBase::vfunc_5	NEntityEvents::CEventHitBase::IsFlourish	MATCH	VC71 PASS; GXX PASS; PassPattern 00810ef0_TEST PASS	grades this pass: 1
+0x00814BC0	NHitLocations::CPhysicalPrimitiveMesh::vfunc_10	NHitLocations::CPhysicalPrimitiveMesh::GetClosestPointToPos2D	MATCH	VC71 PASS; GXX PASS; PassPattern 00814bc0_TEST PASS	grades this pass: 1
+0x0083CF60	NEntityEvents::CEventTriggered::vfunc_1	NEntityEvents::CEventTriggered::GetType	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_0083cf60	grades this pass: 1
+0x00880F50	_unattributed::vfunc_2	NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess::OnErase	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00880f50_TEST PASS	grades this pass: 1
+0x00882000	NScreenEffect::CScreenEffectPriorityStack::CDisplacementProcess::vfunc_2	NScreenEffect::CScreenEffectPriorityStack::CDisplacementProcess::OnErase	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00882000	grades this pass: 1
+0x008826E0	NScreenEffect::CScreenEffectPriorityStack::CRadialBlurProcess::vfunc_2	NScreenEffect::CScreenEffectPriorityStack::CRadialBlurProcess::OnErase	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_008826e0	grades this pass: 1
+0x008EF170	CTCTavernGameCoinBase::vfunc_31	CTCTavernGameCoinBase::NewGame	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_008ef170	grades this pass: 1
+0x008EF180	CTCTavernGameCoinBase::vfunc_32	CTCTavernGameCoinBase::NewRound	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_008ef180	grades this pass: 1
+0x008EF1A0	CTCTavernGameCoinBase::vfunc_6	CTCTavernGameCoinBase::OnInitialActivate	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_008ef1a0	grades this pass: 1
+0x008F0920	CTCTavernGameCardBase::vfunc_1	CTCTavernGameCardBase::OnSerialise	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_008f0920	grades this pass: 1
+0x00905420	NTCScriptedControl::CActionPerformExpression::vfunc_4	NTCScriptedControl::CActionPerformExpression::GetActionName	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00905420_TEST PASS	grades this pass: 1
+0x00AF2380	CParticleUpdateParamCallback::vfunc_1	NParticleEngine::CParticleUpdateParamCallback<unsigned long,unsigned long>::GetUpdateParam	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00af2380	grades this pass: 1
+0x00AF29E0	NParticleEngine::CPSCBase::vfunc_10	NParticleEngine::CPSCBase::CollectUpdateParameters	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00af29e0	grades this pass: 1
+0x00AF2A00	NParticleEngine::CPSCBase::vfunc_12	NParticleEngine::CPSCBase::UpdateAddParticle	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00af2a00	grades this pass: 1
+0x00AF2A10	NParticleEngine::CPSCBase::vfunc_13	NParticleEngine::CPSCBase::PreparePrimitives	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00af2a10	grades this pass: 1
+0x00AF2AE0	NParticleEngine::CPSCBase::vfunc_31	NParticleEngine::CPSCBase::GetApproximateSplineLength	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00af2ae0	grades this pass: 1
+0x00AF7AF0	NParticleEngine::CParticle::vfunc_1	NParticleEngine::CParticle::Delete	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00af7af0	grades this pass: 1
+0x00B05AB0	NParticleEngine::CPSCRenderMesh::vfunc_2	NParticleEngine::CPSCRenderMesh::DatabaseClone	RELOCATION_MATCH	VC71 PASS; GXX PASS; PassPattern 00b05ab0_TEST PASS	grades this pass: 1
+0x00B0A130	_unattributed::vfunc_25	NParticleEngine::CPSCSingleSprite::EnterTimelineEnd	MATCH	VC71 PASS; GXX PASS; PassPattern 00b0a130_TEST PASS	grades this pass: 1
+0x00B0A300	NParticleEngine::CRandomAcceleration::vfunc_1	NParticleEngine::CRandomAcceleration::Delete	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00b0a300	grades this pass: 1
+0x00B1FF70	_unattributed::vfunc_23	NParticleEngine::CPSCDecalRenderer::GetDecalLifeSecs	MATCH	VC71 PASS; GXX PASS; PassPattern 00b1ff70_TEST PASS	grades this pass: 1
+0x00BCA110	CEngineDynamic3DResourceManager::vfunc_1	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3>>::GetTotalBytesFree	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00bca110	grades this pass: 1
+0x00BCA120	CEngineDynamic3DResourceManager::vfunc_2	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3>>::FreeMemory	MATCH	VC71 PASS; GXX PASS; PassPattern PASS_00bca120	grades this pass: 1

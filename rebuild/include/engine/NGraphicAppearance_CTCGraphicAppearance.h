@@ -215,6 +215,12 @@ public:
     // ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z (out of line, retail 0x004C11D0). Declaration only.
     bool GetFocalPosIfLoaded(C3DVector& pos, float time) const;   // 0x004C11D0
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual this declaration lacks, declaration only (no layout change; the vtable exists). Slot 10 of the TLC vtable
+// (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual void BulletTimeFrameUpdate();                    // slot 10, 0x004C5D70
+#endif // FABLE_RETAIL_CTCGRAPHICAPPEARANCE_VSLOTS3
 };
 }
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT

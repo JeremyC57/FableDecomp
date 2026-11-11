@@ -60,6 +60,13 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x0066C2C0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void BulletTimeFrameUpdate();  // slot 10, 0x0066A910
+public:
+#endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCSoundPlayer)==36);
 #endif
