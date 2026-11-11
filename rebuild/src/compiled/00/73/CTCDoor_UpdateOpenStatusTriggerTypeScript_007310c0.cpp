@@ -1,137 +1,56 @@
 // CTCDoor::UpdateOpenStatusTriggerTypeScript() -- when the script changed the open state, open (touching the appearance's DOOR_OPEN animation in the main mesh bank) or close the door, then latch OldOpen
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007310C0, length 163 bytes (+ int3 padding). __fastcall, `ret`.
-//         Ego_r.pdb: `?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ` (protected).
-// Callees: CTCDoor::Open(bool) @ 0x00730C00, CTCDoor::Close() @ 0x00730DD0,
-//          CDefClassBase::GetSubDef<CAppearanceDef>(CDefPointer<const CAppearanceDef>*) const @ 0x0042B0A2,
-//          CAnimationSet::GetAnim(const CCharString&, long, const CAnimFilterBase&) const @ 0x005DC340,
-//          CTCBase::GetWorld @ 0x00686A70, the main mesh bank's GetAnimation(long) @ 0x00A242C0 (result unused);
-//          global CCharString "DOOR_OPEN" @ 0x013BAD34; CAnimFilterNoGroup vtable 0x0122FFDC (base CAnimFilterBase 0x0122FFCC).
-// Shape: GetSubDef's result is ignored; the sub-def is read once from the out slot into a holder that releases it with
-//        `dec [edi+4] ; jne`; the filter is an inline temporary whose dtor stores the base vtable; both arms end in the
-//        duplicated `OldOpen = CurrentOpen` tail.
-// Layout: engine/CTCDoor.h (+0x04 `m4` is CTCBase::ParentThing); retail CThing PBaseDef.Object +0x70 (PDB +0x80);
-//         CAppearanceDef::Animation +0x34 (PDB); retail CWorld::PMainMeshBank +0x3C.
-#include "fable_compiler.h"
-void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
+// Leaf: ?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007310C0, 163 bytes (+ int3 padding), plain `ret`. Ego_r.pdb / FableWin.pdb
+//   ?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ (protected).
+// Callees (PDB spellings): CTCDoor::Open(bool) 0x00730C00, CTCDoor::Close() 0x00730DD0, CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2
+//   (on the thing's base def read in place; result ignored), CAnimationSet::GetAnim 0x005DC340, CTCBase::GetWorld 0x00686A70,
+//   CMeshDataBank::PeekAnimation 0x00A242C0 (through CWorld::GetMeshBank, PMainMeshBank +0x3C; result unused), the def's virtual release.
+// Globals: the CCharString "DOOR_OPEN" @ 0x013BAD34 (dynamic initializer 0x0121ED00; no PDB data name on disk: the spelling the landed
+//   Open 0x00730C00 binds). Filter temporary: CAnimFilterNoGroup (vtable 0x0122FFDC; base CAnimFilterBase 0x0122FFCC).
+// Layout: engine/CTCDoor.h (CurrentOpen +0x10, OldOpen +0x11); CThing PBaseDef +0x70; CAppearanceDef Animation +0x34.
+// Name fix (agentNF12 2026-11-11): moved off the local CTCDoor_Methods / CDefPointer / CAppearanceDef holder / CWorld / CMeshDataBank
+// stand-ins (and a same-TU stand-in GetSubDefRaw body) onto the shared headers. 0x0042B0A2 binds GetSubDef<CAppearanceDef> (was
+// ??$GetSubDefRaw@VCAppearanceDef@@@CDefClassBase@@...), 0x00686A70 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (was QAE returning a pointer);
+// the class is CTCDoor (was CTCDoor_Methods) and the row's own symbol the PDB protected IAEXXZ.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCDOOR
+#define FABLE_RETAIL_CTCDOOR_OPENCLOSE
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_MESH_BANK
+#define FABLE_RETAIL_CMESHDATABANK_PEEKANIMATION
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CDefPointer.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CWorld.h"
+#include "engine/CMeshDataBank.h"
 #include "engine/CTCDoor.h"
 
-class CCharString;
+extern const CCharString g_DoorOpenAnimName;                   // 0x013BAD34 ("DOOR_OPEN")
 
-class CAnimFilterBase {                             // vtable 0x0122FFCC
-public:
-    virtual bool operator()(const class CAnimationEntry& entry) const;
-    CAnimFilterBase() {}
-    ~CAnimFilterBase() {}
-};
-class CAnimFilterNoGroup : public CAnimFilterBase { // vtable 0x0122FFDC
-public:
-    virtual bool operator()(const class CAnimationEntry& entry) const;
-    CAnimFilterNoGroup() {}
-};
-
-class CAnimationEntry {
-public:
-    long BankIndex;                                 // +0x00
-};
-
-class CAnimationSet {
-public:
-    const CAnimationEntry& GetAnim(const CCharString& name, long n, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
-
-class CAppearanceDef {
-public:
-    virtual void v00();
-    virtual void Destroy() const;                   // slot 1
-    mutable long RefCount;                          // +0x04
-    unsigned char _pad08[0x34 - 0x08];
-    CAnimationSet Animation;                        // +0x34
-};
-
-template<class T> class CDefPointer {               // the out slot: the def object only
-public:
-    T* Object;
-    CDefPointer() {}
-};
-
-class CDefClassBase {
-public:
-    template<class T> bool GetSubDefRaw(CDefPointer<const T>* out) const;   // 0x0042B0A2 for T = CAppearanceDef
-    template<class T> FABLE_FORCEINLINE bool GetSubDef(CDefPointer<const T>* out) const { out->Object = 0; return GetSubDefRaw(out); }
-};
-void* FindDef_s7r_0();
-#pragma auto_inline(off)
-// Same-TU body of GetSubDefRaw (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
-// CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template<class T> __declspec(noinline) bool CDefClassBase::GetSubDefRaw(CDefPointer<const T>* out) const
-{
-    void* def = FindDef_s7r_0();
-    if (!def)
-        return false;
-    void* old = *(void**)out;
-    if (old != def) {
-        if (old)
-            ReleaseDef_s7(old);
-        *(void**)out = def;
-    }
-    return true;
-}
-#pragma auto_inline(on)
-
-struct CAppearanceDefHolder {                       // releases the sub-def read once from the out slot
-    const CAppearanceDef* Def;
-    CAppearanceDefHolder(const CAppearanceDef* def) : Def(def) {}
-    ~CAppearanceDefHolder()
-    {
-        if (Def && --Def->RefCount == 0)
-            Def->Destroy();
-    }
-};
-
-class C3DAnimationInfo;
-class CMeshDataBank { public:
-public:
-    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
-};
-class CWorld { public:
-    unsigned char _pad00[0x3c];
-    CMeshDataBank* PMainMeshBank;                   // +0x3C
-};
-
-struct CBaseDefPointer {                           // CDefPointer<const CThingBaseDef>
-    const CDefClassBase* Object;
-    const CDefClassBase* operator->() const { return Object; }
-};
-
-class CThing { public:
-    unsigned char _pad00[0x70];
-    CBaseDefPointer PBaseDef;                       // +0x70 CDefPointer<const CThingBaseDef>
-};
-
-class CTCBase { public:
-    CWorld* GetWorld();                             // 0x00686A70
-};
-
-extern CCharString g_CCharString_013bad34;          // 0x013BAD34 "DOOR_OPEN"
-
-struct CTCDoor_Methods : CTCDoor {
-    CThing* GetParentThing() const { return (CThing*)m4; }
-    void Open(bool instant);                        // 0x00730C00
-    void Close();                                   // 0x00730DD0
-    void UpdateOpenStatusTriggerTypeScript();
-};
-
-void CTCDoor_Methods::UpdateOpenStatusTriggerTypeScript()
+void CTCDoor::UpdateOpenStatusTriggerTypeScript()
 {
     if (CurrentOpen != OldOpen) {
         if (CurrentOpen) {
-            CDefPointer<const CAppearanceDef> out;
             Open(true);
-            GetParentThing()->PBaseDef->GetSubDef(&out);
-            CAppearanceDefHolder appearance(out.Object);
-            const CAnimationEntry& entry = appearance.Def->Animation.GetAnim(g_CCharString_013bad34, 0, CAnimFilterNoGroup());
-            CWorld* world = ((CTCBase*)this)->GetWorld();
-            world->PMainMeshBank->PeekAnimation(entry.BankIndex);
+            CDefPointer<const CAppearanceDef> appearance;
+            ParentThing->PeekBaseDef().GetSubDef(&appearance);
+            const CAnimationEntry& entry = appearance->Animation.GetAnim(g_DoorOpenAnimName, 0, CAnimFilterNoGroup());
+            GetWorld().GetMeshBank()->PeekAnimation(entry.BankIndex);
         } else {
             Close();
         }

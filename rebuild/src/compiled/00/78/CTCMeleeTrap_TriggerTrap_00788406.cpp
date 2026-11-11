@@ -1,126 +1,67 @@
-// CTCMeleeTrap::TriggerTrap() -- fires the trap: starts its (non-looping) trigger animation and hands the trap the durations of its trigger animation and, when the def has one, its second animation
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00788406, length 239 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CDefClassBase::GetSubDef<CMeleeTrapDef>(CDefPointer<T>*) @ 0x0042B0A2 (catalog GetSubDef<CAbilityDef>, a byte twin; on
-// CThing::PDef +0x70, no addref), CTCMeleeTrap::InitialiseAnimation(const CCharString&, bool) @ 0x0078809B, the def's animation table
-// (+0x34): GetAnimation(const CCharString&, long, const CAnimFilterBase&) const @ 0x005DC340 and HasAnimation(const CCharString&,
-// const CAnimFilterBase&) const @ 0x005DC2E0 (catalog "Animation_FindNthValid" / "CAnimationDef_FindAnimationByName"), CTCBase::GetWorld
-// @ 0x00686A70, CMeshDataBank::GetAnimation(long) @ 0x00A242C0 on CWorld::PMainMeshBank (+0x3C; the info's duration at +0x10),
-// CTCMeleeTrap::SetStrikeTimes(float, float) @ 0x00787C35 (catalog "ConstructString", propagated), the def's virtual slot 1 on release.
-// Globals: the two animation names 0x013BADF8 and 0x013BADFC (CCharString objects); the filter vtables 0x0122FFDC / 0x0122FFCC.
-// Layout: ParentThing +0x04; the filter temporary is one vptr word ([ebp-0Ch]) whose derived destructor leaves the base vtable; `this`
-// is spilled to [ebp-8]; the two durations live in [ebp-14h] and [ebp-10h] (the second defaults to 0.0f via `fldz`).
-// Shape: the def out slot is zeroed and filled before the animation starts; the filter temporary is rebuilt for each table call and
-// the entry's index (its first word) feeds the mesh bank lookup; the durations are pushed through `fstp` onto the argument stack.
-#include "fable_compiler.h"
+// CTCMeleeTrap::TriggerTrap() -- play the trap's "TRAP_TRIGGER" animation and hand the trigger / reset animation durations (the reset one only when the appearance has a "TRAP_RESET" animation, else 0) to the base trap's transition timing
+// Leaf: ?TriggerTrap@CTCMeleeTrap@@MAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00788406, 239 bytes, size-optimised TU, plain `ret`. Ego_r.pdb / FableWin.pdb
+//   ?TriggerTrap@CTCMeleeTrap@@MAEXXZ (protected virtual; vtable 0x0126B884 slot 30).
+// Callees (PDB spellings): CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2 (on the thing's base def read in place),
+//   CTCMeleeTrap::InitialiseAnimation(const CCharString&, bool) 0x0078809B, CAnimationSet::GetAnim 0x005DC340 / AnimExists 0x005DC2E0,
+//   CTCBase::GetWorld 0x00686A70, CMeshDataBank::PeekAnimation 0x00A242C0 (through CWorld::GetMeshBank, PMainMeshBank +0x3C),
+//   CTCTrapBase::SetTransitionParams(float, float) 0x00787C35, the def's virtual release (slot 1).
+// Globals: the anonymous-namespace CCharStrings STrapTrigger @ 0x013BADF8 ("TRAP_TRIGGER") and STrapReset @ 0x013BADFC ("TRAP_RESET").
+// Filter temporaries: CAnimFilterNoGroup (vtable 0x0122FFDC; base CAnimFilterBase 0x0122FFCC).
+// Layout: CThing PBaseDef +0x70; CAppearanceDef Animation +0x34; C3DAnimationInfo Duration +0x10.
+// Name fix (agentNF12 2026-11-11): moved off the local CDefPointer / CDefClassBase / CThing / CWorld / CMeshDataBank / C3DAnimationInfo /
+// CTCMeleeTrap stand-ins (and a same-TU stand-in GetSubDef body) onto the shared headers (new engine/CTCMeleeTrap.h, CTCTrapBase.h
+// retail opt-in). 0x0042B0A2 binds GetSubDef<CAppearanceDef> (was ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@UCMeleeTrapDef@@@@@Z),
+// 0x005DC340 GetAnim (was CAnimationTable::GetAnimation), 0x00686A70 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (was QAE), 0x00A242C0
+// CMeshDataBank::PeekAnimation (was GetAnimation), 0x00787C35 CTCTrapBase::SetTransitionParams (was CTCMeleeTrap::SetStrikeTimes);
+// the row's own symbol is the PDB protected virtual MAEXXZ (was QAEXXZ).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CCharString { public:
-    void* PStringData;
-};
-namespace { extern CCharString STrapTrigger; }       // 0x013BADF8
-namespace { extern CCharString STrapReset; }        // 0x013BADFC
-class CAnimFilterBase { public:                             // vtable 0x0122FFCC
-    virtual ~CAnimFilterBase() { }
-};
-struct CAnimFilterAll : CAnimFilterBase {            // vtable 0x0122FFDC: accepts every entry
-    virtual ~CAnimFilterAll() { }
-};
-class CAnimationEntry { public:
-    long AnimationIndex;                             // +0x00
-};
-class CAnimationSet { public:
-    bool AnimExists(CCharString const&a0, CAnimFilterBase const&a1) const;   // 0x005DC2E0 (Ego_r.pdb ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z)
-};
-struct CAnimationTable {
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
-class CDefPointeeBase { public:
-    virtual void v00();
-    virtual void Destroy();                          // slot 1
-    long m_refCount;                                 // +0x04
-    FABLE_FORCEINLINE void Release()
-    {
-        if (--m_refCount == 0)
-            Destroy();
-    }
-};
-template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (released by hand)
-    T* Object;
-    CDefPointer() : Object(0) { }
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        if (Object)
-            Object->Release();
-    }
-    T* operator->() const { return Object; }
-};
-struct CMeleeTrapDef : CDefPointeeBase {
-    unsigned char   _pad08[0x34 - 0x08];
-    CAnimationTable Animations;                      // +0x34
-};
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CMeleeTrapDef>* out) const;   // 0x0042B0A2
-};
-class CThing { public:
-    unsigned char _pad00[0x70];
-    CDefPointer<CDefClassBase> PDef;                 // +0x70
-};
-class C3DAnimationInfo { public:
-    unsigned char _pad00[0x10];
-    float Duration;                                  // +0x10
-};
-class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimation(long index);      // 0x00A242C0
-};
-struct CMeshDataBankPointer {                        // CCountedPointer<CMeshDataBank>
-    CMeshDataBank* Data;
-    void*          Info;
-};
-class CWorld { public:
-    unsigned char        _pad00[0x3c];
-    CMeshDataBankPointer PMainMeshBank;              // +0x3c
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCTRAPBASE
+#define FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_MESH_BANK
+#define FABLE_RETAIL_CMESHDATABANK_PEEKANIMATION
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CDefPointer.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CWorld.h"
+#include "engine/CMeshDataBank.h"
+#include "engine/C3DAnimationInfo.h"
+#include "engine/CTCMeleeTrap.h"
 
-class CTCBase
-{
-protected:
-    CWorld& GetWorld() const;   // 0x00686A70
-};
-class CTCTrapBase : public CTCBase
-{
-public:
-};
-
-struct CTCMeleeTrap : public CTCTrapBase {
-    unsigned char _pad00[0x04];
-    CThing*       ParentThing;                       // +0x04
-    void InitialiseAnimation(const CCharString& animationName, bool loop);   // 0x0078809B
-    void SetStrikeTimes(float trigger, float second);   // 0x00787C35
-    void TriggerTrap();
-};
-// R&D I-3 sweep: a same-TU out-of-line GetSubDef (writes only *out) settles the def null store, the push order and the
-// /Os release shape as in retail. The sub-def search itself is the declaration-only helper below.
-CMeleeTrapDef* FindMeleeTrapSubDef(const CDefClassBase* def);
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<CMeleeTrapDef>* out) const
-{
-    out->Object = FindMeleeTrapSubDef(this);
-    return out->Object != 0;
+namespace {
+extern CCharString STrapTrigger;                               // 0x013BADF8 ("TRAP_TRIGGER")
+extern CCharString STrapReset;                                 // 0x013BADFC ("TRAP_RESET")
 }
-#pragma auto_inline(on)
+
 void CTCMeleeTrap::TriggerTrap()
 {
-    CDefPointer<CMeleeTrapDef> def;
-    ParentThing->PDef->GetSubDef(&def);
+    CDefPointer<const CAppearanceDef> appearance;
+    ParentThing->PeekBaseDef().GetSubDef(&appearance);
     InitialiseAnimation(STrapTrigger, false);
-    const CAnimationEntry* trigger = def->Animations.GetAnimation(STrapTrigger, 0, CAnimFilterAll());
-    CMeshDataBank* bank = GetWorld().PMainMeshBank.Data;
-    float triggerTime = bank->GetAnimation(trigger->AnimationIndex)->Duration;
-    float secondTime = 0.0f;
-    if (((CAnimationSet*)&(def->Animations))->AnimExists(STrapReset, CAnimFilterAll())) {
-        const CAnimationEntry* second = def->Animations.GetAnimation(STrapReset, 0, CAnimFilterAll());
-        CMeshDataBank* secondBank = GetWorld().PMainMeshBank.Data;
-        secondTime = secondBank->GetAnimation(second->AnimationIndex)->Duration;
+    const CAnimationEntry& trigger = appearance->Animation.GetAnim(STrapTrigger, 0, CAnimFilterNoGroup());
+    float triggerTime = GetWorld().GetMeshBank()->PeekAnimation(trigger.BankIndex)->Duration;
+    float resetTime = 0.0f;
+    if (appearance->Animation.AnimExists(STrapReset, CAnimFilterNoGroup())) {
+        const CAnimationEntry& reset = appearance->Animation.GetAnim(STrapReset, 0, CAnimFilterNoGroup());
+        resetTime = GetWorld().GetMeshBank()->PeekAnimation(reset.BankIndex)->Duration;
     }
-    SetStrikeTimes(triggerTime, secondTime);
+    SetTransitionParams(triggerTime, resetTime);
 }

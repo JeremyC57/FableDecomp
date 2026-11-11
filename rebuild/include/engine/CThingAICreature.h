@@ -83,6 +83,15 @@ public:
     // (Ego_r.pdb has the ?IsImmuneToAttack@..QBE_NXZ twin), inline in retail: `or cl,40h` on +0x1C8 = bit 6 ImmuneToAttack below.
     void SetAsImmuneToAttack(bool immune) { ImmuneToAttack = immune; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_INITFROMDEF
+    // Nested opt-in (agentNF12, 2026-11-11, row 0x008338D0): Ego_r.pdb / FableWin.pdb ?InitialiseFromDef@CThingAICreature@@IAEXXZ (protected)
+    // and ?InitialiseMovementSpeeds@CThingAICreature@@QAEXXZ (retail 0x00830DD0, out of line). Needs FABLE_RETAIL_CTHINGAICREATURE_LEVELSCRIPT
+    // (OverridingBrainName) for the speed members it names. Declarations only.
+    void InitialiseMovementSpeeds();                                     // 0x00830DD0
+protected:
+    void InitialiseFromDef();                                            // 0x008338D0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_SETNEWBRAIN
     // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb / FableWin.pdb
     // ?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z (retail 0x00833010, out of line; the CDefPointer is passed by
@@ -168,7 +177,20 @@ private:
     CCountedPointer<CAIBrain> PBrain;                                    // +0x1A8
     unsigned char _pad_0x1b0[0x18];                                      // +0x1B0 WFTimeLastDamaged .. MaxFlyingSpeed (opaque)
 #else
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_INITFROMDEF
+    // The Ego_r.pdb members after DebugRenderHandles .. PBrain (opaque here) in order and spelling: WFTimeLastDamaged,
+    // VillageTaskPerforming, then the four speeds InitialiseFromDef stores at +0x1B8 / +0x1BC / +0x1C0 / +0x1C4 (0x008338E0..0x0083390A;
+    // Ego_r +488..+500, 0x30 higher). Same offsets as the pad it names.
+    unsigned char _pad_0x194[0x1c];                                      // +0x194 DebugRenderHandles .. PBrain (opaque)
+    float WFTimeLastDamaged;                                             // +0x1B0
+    class CVillageTask* VillageTaskPerforming;                           // +0x1B4
+    float MaxWalkingSpeed;                                               // +0x1B8
+    float MaxJoggingSpeed;                                               // +0x1BC
+    float MaxRunningSpeed;                                               // +0x1C0
+    float MaxFlyingSpeed;                                                // +0x1C4
+#else
     unsigned char _pad_0x194[0x34];                                      // +0x194 DebugRenderHandles .. MaxFlyingSpeed (opaque)
+#endif
 #endif
 #else
 private:

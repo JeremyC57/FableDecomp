@@ -20,6 +20,16 @@ public:
     unsigned long      GainFaderBits;           // +0x14
     unsigned long      PitchFaderBits;          // +0x18
     long               OverrideID;              // +0x1C
+#if defined(FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR_TYPE_LAST)
+    // Retail opt-in (agentNF12, 2026-11-11, rows 0x0083DDC0 / 0x0083DF20 CThingPhysicalSwitch::TriggerMe / UntriggerMe): the same inline
+    // constructor (same defaults) with only PlaybackType assigned in the body: the expanded store order there is Volume, Pitch, Pan,
+    // NoPlays, GainFaderBits, PitchFaderBits, OverrideID, PlaybackType (0x0083DFDB..0x0083E007). Which member the Lionhead source assigned
+    // in the body is unproven; the two spellings differ only in VC7.1's expanded store order.
+    CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), GainFaderBits(0), PitchFaderBits(0), OverrideID(-1)
+    {
+        PlaybackType = (ESoundPlaybackType)1;
+    }
+#else
 #ifdef FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR
     // Retail opt-in (agentSND2, 2026-11-10): the constructor with its body visible (Ego_r.pdb ??0CSoundInit@@QAE@XZ is inline; retail
     // keeps the out-of-line COMDAT 0x0041C930 for the TUs that call it and expands it elsewhere: CWorld::EAAnswerQuestion 0x00629DE0 /
@@ -32,6 +42,7 @@ public:
     }
 #else
     CSoundInit();                               // 0x0041C930 ??0CSoundInit@@QAE@XZ
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CSoundInit) == 0x20);

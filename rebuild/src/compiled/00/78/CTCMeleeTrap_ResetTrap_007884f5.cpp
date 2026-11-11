@@ -1,98 +1,49 @@
 // CTCMeleeTrap::ResetTrap() -- stop the continuous animation flag, fetch the owner's appearance def and, when it has an animation named by the global "TRAP_RESET" string (any group), start that animation without looping
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007884F5, length 96 bytes.
-// Callees: CDefClassBase::GetSubDef<CAppearanceDef>(CDefPointer<CAppearanceDef const>&) @ 0x0042B0A2 (landed),
-// the animation lookup @ 0x005DC2E0 on the def's animation set at +0x34 (name, filter; manifest
-// "CAnimationDef_FindAnimationByName"), CTCMeleeTrap::InitialiseAnimation(const CCharString&, bool) @ 0x0078809B, the def's
-// virtual slot 1 (Destroy, when the local's release drops the count to zero).
-// Globals: the CCharString "TRAP_RESET" @ 0x013BADFC (its landed dynamic initializer @ 0x0121F057); vtable
-// CAnimFilterNoGroup @ 0x0122FFDC (RTTI; a 4-byte filter object built in the frame).
-// Layout (local model, no engine header): the CTCBase owner at +4 (the thing's PBaseDef at +0x70), PlayingContinuous +0x60.
-// Shape: frame pointer + `leave` with free esi/edi/ebx: `optimize("y",off)` + `("s",on)`; the def-pointer local is
-// default-constructed null (`and dword ptr [ebp-4],0`), the filter temporary is a polymorphic class whose inline
-// constructor stores only its vtable ([ebp-8]) and whose empty destructor leaves nothing; the global string's address is
-// kept in edi for both uses; retail caches the def in ebx right after GetSubDef and releases through that register
-// (`dec [ebx+4] ; jne`). With a CDefPointer destructor the lane re-reads the escaped slot `[ebp-4]` at the end
-// (the wave-24k "CDefPointer local re-read from its slot" gap, 102v96); this best form releases explicitly through a raw
-// pointer copy (98v96).
-#include "fable_compiler.h"
+// Leaf: ?ResetTrap@CTCMeleeTrap@@MAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007884F5, 96 bytes, size-optimised TU, plain `ret`. Ego_r.pdb / FableWin.pdb
+//   ?ResetTrap@CTCMeleeTrap@@MAEXXZ (protected virtual; vtable 0x0126B884 slot 31).
+// Callees (PDB spellings): CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2 (on the thing's base def read in place),
+//   CAnimationSet::AnimExists 0x005DC2E0, CTCMeleeTrap::InitialiseAnimation(const CCharString&, bool) 0x0078809B, the def's virtual
+//   release (slot 1).
+// Globals: the anonymous-namespace CCharString STrapReset @ 0x013BADFC ("TRAP_RESET"; dynamic initializer 0x0121F057).
+// Filter temporary: CAnimFilterNoGroup (vtable 0x0122FFDC; base CAnimFilterBase 0x0122FFCC).
+// Layout: engine/CTCMeleeTrap.h (PlayingContinuous +0x60); CThing PBaseDef +0x70; CAppearanceDef Animation +0x34.
+// Name fix (agentNF12 2026-11-11): moved off the local CAppearanceDef / CDefPointer / CDefClassBase / CThing / CTCMeleeTrap stand-ins
+// (and a same-TU stand-in GetSubDef body) onto the shared headers (new engine/CTCMeleeTrap.h, CTCTrapBase.h retail opt-in).
+// 0x0042B0A2 binds GetSubDef<CAppearanceDef> (was ?GetSubDef@CDefClassBase@@QAE_NAAUCAppearanceDefPointer@@@Z), 0x005DC2E0
+// CAnimationSet::AnimExists (was FindAnimationByName); the row's own symbol is the PDB protected virtual MAEXXZ (was QAEXXZ).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCTRAPBASE
+#define FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
+#define FABLE_RETAIL_CANIMFILTER
 #include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CDefPointer.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CTCMeleeTrap.h"
 
-struct CAnimFilter {
-    virtual bool Accepts(const void* entry) const; // slot 0
-};
-
-struct CAnimFilterNoGroup : CAnimFilter {
-    CAnimFilterNoGroup() { }
-    virtual bool Accepts(const void* entry) const;
-};
-
-class CAnimationSet { public:
-    bool FindAnimationByName(const CCharString& name, const CAnimFilter& filter);   // 0x005DC2E0
-};
-
-class CAppearanceDef { public:                            // counted def: vptr, count at +4
-    virtual void v00();
-    virtual void Destroy();                        // slot 1
-    long          m_count;                         // +0x04
-    unsigned char _pad_0x08[0x34 - 0x08];
-    CAnimationSet m_animations;                    // +0x34
-    FABLE_FORCEINLINE void Release()
-    {
-        if (--m_count == 0)
-            Destroy();
-    }
-};
-
-struct CAppearanceDefPointer {                     // CDefPointer<CAppearanceDef const>
-    CAppearanceDef* m_pDef;
-    CAppearanceDefPointer() : m_pDef(0) { }
-    CAppearanceDef* operator->() const { return m_pDef; }
-};
-
-class CDefClassBase { public:
-    bool GetSubDef(CAppearanceDefPointer& out);    // 0x0042B0A2
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CAppearanceDefPointer& out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CThing { public:
-    unsigned char  _pad_0x00[0x70];
-    CDefClassBase* PBaseDef;                       // +0x70
-};
-
-namespace { extern CCharString STrapReset; }       // 0x013BADFC ("TRAP_RESET")
-
-struct CTCMeleeTrap {
-    void*         __vftable;                       // +0x00 (CTCBase)
-    CThing*       m_pThing;                        // +0x04 (CTCBase owner)
-    unsigned char _pad_0x08[0x60 - 0x08];
-    bool          PlayingContinuous;               // +0x60
-    void ResetTrap();
-private:
-    void InitialiseAnimation(const CCharString&, bool);   // 0x0078809B
-};
+namespace { extern CCharString STrapReset; }                  // 0x013BADFC ("TRAP_RESET")
 
 void CTCMeleeTrap::ResetTrap()
 {
-    CAppearanceDefPointer appearance;
+    CDefPointer<const CAppearanceDef> appearance;
     PlayingContinuous = false;
-    m_pThing->PBaseDef->GetSubDef(appearance);
-    CAppearanceDef* def = appearance.m_pDef;
-    if (def->m_animations.FindAnimationByName(STrapReset, CAnimFilterNoGroup()))
+    ParentThing->PeekBaseDef().GetSubDef(&appearance);
+    if (appearance->Animation.AnimExists(STrapReset, CAnimFilterNoGroup()))
         InitialiseAnimation(STrapReset, false);
-    if (def)
-        def->Release();
 }

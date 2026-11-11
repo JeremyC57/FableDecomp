@@ -19,6 +19,11 @@ class CTCEntityEvents:public CTCBase {
 public:
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_ENTITY_EVENTS;}
  template<class E,class F> bool GetEvent(E**,const F&)const;
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
+ // Nested opt-in (agentNF12, 2026-11-11, row 0x0083DDC0 CThingPhysicalSwitch::TriggerMe): Ego_r.pdb / FableWin.pdb
+ // ?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@NEntityEvents@@@Z (retail 0x008113C0, out of line). Declaration only.
+ void AddEvent(NEntityEvents::CEventBase* event);                   // 0x008113C0
+#endif
 protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
 };
 FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);

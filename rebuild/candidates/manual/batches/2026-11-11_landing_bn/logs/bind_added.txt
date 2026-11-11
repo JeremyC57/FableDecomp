@@ -1,0 +1,12 @@
++?Close@CTCDoor@@IAEXXZ	00730dd0	007310c0
++?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	005dc340	007310c0
++?Open@CTCDoor@@IAEX_N@Z	00730c00	007310c0
++?InitialiseStrikeAnimation@CTCMeleeTrap@@AAEXABVCAnimationEntry@@@Z	00787f29	0078809b
++?STrapReset@?A0xf2fa07dc@@3VCCharString@@A	013badfc	00788406
++?STrapTrigger@?A0xf2fa07dc@@3VCCharString@@A	013badf8	00788406
++?SetTransitionParams@CTCTrapBase@@IAEXMM@Z	00787c35	00788406
++?STrapReset@?A0xbede6206@@3VCCharString@@A	013badfc	007884f5
++?InitialiseMovementSpeeds@CThingAICreature@@QAEXXZ	00830dd0	008338d0
++?g_bForceStandAroundBrain@@3_NA	013b86ea	008338d0
++??0CEventTriggered@NEntityEvents@@QAE@AAVCThing@@@Z	0083cf20	0083ddc0
++?PeekDefinition@CThingPhysicalSwitch@@IBEABVCThingPhysicalSwitchDef@@XZ	0083d900	0083ddc0

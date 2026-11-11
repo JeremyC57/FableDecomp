@@ -6,6 +6,51 @@
 // Retail evidence: 1 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CTCTRAPBASE
+// Retail opt-in (agentNF12, 2026-11-11, rows 0x00788406 CTCMeleeTrap::TriggerTrap / 0x007884F5 ResetTrap / 0x0078809B
+// InitialiseAnimation): the polymorphic retail class. RTTI .?AVCTCTrapBase@@ : CTCBase (ghidra_out/rtti_bases.tsv; engine/CTCBase.h's
+// FABLE_RETAIL_CTCBASE branch, selected here), vtable 0x0126B7FC. The four trap virtuals after CTCBase's 28 slots in the retail slot
+// order of the CTCMeleeTrap vtable 0x0126B884 (28 InitTrap 0x007883C3, 29 UpdateTrap 0x00788B0A, 30 TriggerTrap 0x00788406,
+// 31 ResetTrap 0x007884F5); Ego_r.pdb spells the CTCMeleeTrap overrides protected virtual (?InitTrap@CTCMeleeTrap@@MAEXXZ ...) and
+// has no CTCTrapBase body for them. ?SetTransitionParams@CTCTrapBase@@IAEXMM@Z (protected, Ego_r donor 0x0078EFAC between
+// ManualReset and IsOpen; retail 0x00787C35 between ManualReset 0x00787C0C and GetUpdateTimeForThing). Members: Ego_r.pdb at the
+// retail STLport offsets of the flattened layout below (PTrapDef +0x54, TrapType +0x5C; sizeof 0x60); the containers and the
+// fade helper stay opaque.
+#ifndef FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE
+#endif
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+class CTrapDef;
+enum ETrapType;                                                          // MS forward enum
+
+class CTCTrapBase : public CTCBase {
+protected:
+    virtual void InitTrap() = 0;                                         // 28
+    virtual void UpdateTrap() = 0;                                       // 29
+    virtual void TriggerTrap() = 0;                                      // 30
+    virtual void ResetTrap() = 0;                                        // 31
+    void SetTransitionParams(float triggerTime, float resetTime);       // 0x00787C35
+public:
+    unsigned char    HitThings[0xc];                         // +0x0c vector<std::pair<CIntelligentPointer<CThing>,long>,std::allocator<std::pair<CIntelligentPointer<CThing>,long>_>_>
+    unsigned char    ImmuneThings[0xc];                      // +0x18 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    PObstruction[0x8];                      // +0x24 CIntelligentPointer<CThing>
+    unsigned char    TriggerThings[0xc];                     // +0x2c vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    TrapOpener[0x1c];                       // +0x38 CFadeInFadeOutBase
+    CDefPointer<const CTrapDef> PTrapDef;                    // +0x54
+    bool             Active;                                 // +0x58
+    bool             Triggered;                              // +0x59
+    bool             LastTriggerOnProximity;                 // +0x5a
+    unsigned char    _pad_0x5b[0x1];                         // +0x5b
+    unsigned char    TrapType[0x4];                          // +0x5c ETrapType
+};
+FABLE_STATIC_ASSERT(sizeof(CTCTrapBase) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, HitThings) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, PTrapDef) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, TrapType) == 0x5c);
+#else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -43,5 +88,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, Active) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, Triggered) == 0x59);
 FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, LastTriggerOnProximity) == 0x5a);
 FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, TrapType) == 0x5c);
+
+#endif // FABLE_RETAIL_CTCTRAPBASE
 
 #endif // FABLE_ENGINE_CTCTRAPBASE_H

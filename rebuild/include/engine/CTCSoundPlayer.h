@@ -16,6 +16,12 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SOUND_PLAYER; }
 #endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE
+    // Opt-in (agentNF12, 2026-11-11, rows 0x0083DDC0 / 0x0083DF20): Ego_r.pdb / FableWin.pdb
+    // ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z (retail 0x0066B280, out of line; the callers push the
+    // three bools as 1, 0, 0). Declaration only.
+    unsigned long PlayAttachedSample(const class CSoundPair& sound, const class CSoundInit& init, bool, bool, bool);   // 0x0066B280
+#endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VOICENAME
     // Opt-in (chunk 765, row 0x0066A9D0): Ego_r.pdb / FableWin.pdb ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z (VoiceName +0x14).
     void SetVoiceName(const CCharString&);                               // 0x0066A9D0

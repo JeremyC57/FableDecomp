@@ -1,0 +1,10 @@
+address	old_symbol	new_symbol	evidence
+
+# leaf-only respellings (class::name unchanged)
+0x007884F5	?ResetTrap@CTCMeleeTrap@@QAEXXZ	?ResetTrap@CTCMeleeTrap@@MAEXXZ	Ego_r.pdb / FableWin.pdb protected virtual; vtable 0x0126B884 slot 31
+0x00788406	?TriggerTrap@CTCMeleeTrap@@QAEXXZ	?TriggerTrap@CTCMeleeTrap@@MAEXXZ	Ego_r.pdb / FableWin.pdb protected virtual; vtable 0x0126B884 slot 30
+0x0078809B	?InitialiseAnimation@CTCMeleeTrap@@QAEXABVCCharString@@_N@Z (self symbol; the leaf line already said AAE)	?InitialiseAnimation@CTCMeleeTrap@@AAEXABVCCharString@@_N@Z	Ego_r.pdb / FableWin.pdb private
+0x008338D0	?InitialiseFromDef@CThingAICreature@@QAEXXZ	?InitialiseFromDef@CThingAICreature@@IAEXXZ	Ego_r.pdb / FableWin.pdb protected
+0x0083DF20	?UntriggerMe@CThingPhysicalSwitch@@QAEXXZ	?UntriggerMe@CThingPhysicalSwitch@@IAEXXZ	Ego_r.pdb / FableWin.pdb protected
+0x0083DDC0	?TriggerMe@CThingPhysicalSwitch@@QAEXPAVCThing@@@Z	?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z	Ego_r.pdb / FableWin.pdb protected, CThingCreatureBase& parameter (the landed row passed a CThing*; same bytes)
+0x007310C0	?UpdateOpenStatusTriggerTypeScript@CTCDoor_Methods@@QAEXXZ	?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ	Ego_r.pdb / FableWin.pdb protected; the invented CTCDoor_Methods class dropped (catalog name already CTCDoor::...)

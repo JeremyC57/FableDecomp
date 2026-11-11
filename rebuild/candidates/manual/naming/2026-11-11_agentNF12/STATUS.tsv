@@ -1,0 +1,10 @@
+kind	target_or_class	rows_changed	grades	binders_left
+target	0x0042B0A2 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	4 (007884f5 00788406 0078809b 007310c0)	all RELOCATION_MATCH (BIND OK x4); GXX PASS 007884f5 00788406, GXX PREFAIL (as landed) 0078809b 007310c0; VC71 tests PASS	004bfd10 (NF11 parked) 005b37f7 (parked: DIFFER 759v760, best source work/parked/005b37f7.cpp) 005cd767 (same residue) 00779d20 007306c0 00730c00 00730dd0 007502d0
+target	0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ	3 (008338d0 0083df20 0083ddc0)	all RELOCATION_MATCH (BIND OK x3); GXX PASS 008338d0 0083ddc0, GXX PREFAIL (as landed) 0083df20; VC71 tests PASS	00664a50 00665510 006a9ef0 0082d3b0 00832e60 00833a70 00836260 0083cc10 008cb780 008d1130
+target	0x0042AF3C GetDef<CThingBaseDef>	0	compile-checked only (all 52 item-3 rows still bind a wrong spelling)	unchanged from NF10 STATUS.tsv (27 rows; list in work/item3_pre.txt)
+target	0x006869D0 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ	0	compile-checked only	unchanged from NF10 STATUS.tsv (34 rows; list in work/item3_pre.txt)
+class	CTCMeleeTrap	3 (007884f5 00788406 0078809b)	RELOCATION_MATCH x3 (1 grade each)	-
+class	CTCDoor	1 (007310c0)	RELOCATION_MATCH (1 grade)	007306c0 00730c00 00730dd0
+class	CThingAICreature	1 (008338d0)	RELOCATION_MATCH (3 grades)	00832e60 00833a70
+class	CThingPhysicalSwitch	2 (0083df20 0083ddc0)	RELOCATION_MATCH (0083df20: 8 grades; 0083ddc0: 1)	-
+class	CTCInventoryClothing	0	005b37f7 parked after 7 grades: DIFFER(759v760)	005b37f7

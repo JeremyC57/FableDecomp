@@ -1,0 +1,25 @@
+# NF12 header overlay
+
+Full copies of the current repo headers with `#ifdef` opt-in additions only (diff against `rebuild/include/engine/` removes 0
+lines for every copied header), plus new headers. Graded with `FABLE_HDR_OVERLAY=$S/w22/agentNF12/hdr`.
+
+## Opt-ins added to existing headers
+| Header | Opt-in | Adds | Evidence |
+|---|---|---|---|
+| CTCTrapBase.h | FABLE_RETAIL_CTCTRAPBASE | the polymorphic retail class `CTCTrapBase : CTCBase` (selects FABLE_RETAIL_CTCBASE): protected pure virtuals InitTrap / UpdateTrap / TriggerTrap / ResetTrap (slots 28..31), protected `SetTransitionParams(float, float)` 0x00787C35, PTrapDef typed `CDefPointer<const CTrapDef>`; same offsets and size 0x60 as the flattened default | RTTI .?AVCTCTrapBase@@ : CTCBase; CTCMeleeTrap vtable 0x0126B884 slots 28..31 = 0x007883C3 / 0x00788B0A / 0x00788406 / 0x007884F5; Ego_r.pdb ?SetTransitionParams@CTCTrapBase@@IAEXMM@Z, donor order ManualReset / SetTransitionParams / IsOpen = retail 0x00787C0C / 0x00787C35 / ... |
+| CThingCreatureDef.h | FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS (wraps the existing LEADER / COMBATTYPE / default branches in its `#else`) | the Ego_r.pdb members StunTimeMin .. DeadBodyDecayEffect at retail offsets (PDB - 4 to NavigatorTypes, - 8 after); enums / vector opaque | 0x008338D0 reads +0x90 / +0x94 / +0x98 / +0xA0 / +0xE8; existing branches agree (CombatTypeDef +0x124, LeaderTypeDef +0x13C, flags +0x148) |
+| CThingAICreature.h | FABLE_RETAIL_CTHINGAICREATURE_INITFROMDEF | `InitialiseMovementSpeeds()` 0x00830DD0 (QAE), protected `InitialiseFromDef()` 0x008338D0 (IAE); in the non-DEBUGRENDER pad: WFTimeLastDamaged +0x1B0, VillageTaskPerforming +0x1B4, MaxWalkingSpeed .. MaxFlyingSpeed +0x1B8..+0x1C4 | Ego_r.pdb / FableWin.pdb spellings; Ego_r +488..+500 (0x30 higher); InitialiseFromDef stores at +0x1B8..+0x1C4 |
+| CThingPhysicalSwitch.h | FABLE_RETAIL_CTHINGPHYSICALSWITCH_TRIGGER | protected `TriggerMe(CThingCreatureBase&)` 0x0083DDC0, `UntriggerMe()` 0x0083DF20 | Ego_r.pdb / FableWin.pdb ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z, ?UntriggerMe@..IAEXXZ; donor order after PeekDefinition = retail order |
+| CThingPhysicalSwitch.h | FABLE_RETAIL_CTHINGPHYSICALSWITCH_PEEKDEFINITION_SAMETU | the landed 0x0083D900 PeekDefinition body after the class (inline) | retail expands the first PeekDefinition of TriggerMe / UntriggerMe (GetDef 0x0083E0D0, release, stale `[edi+90h]` read) and calls the second (`call 0x0083D900`): same TU, inline budget |
+| CTCSoundPlayer.h | FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE | `unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool)` 0x0066B280 | Ego_r.pdb / FableWin.pdb ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z |
+| CSoundInit.h | FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR_TYPE_LAST (wraps the existing INLINE_CTOR / declaration branches in its `#else`) | the same inline ctor (same defaults) with only PlaybackType in the body | the expanded store order of 0x0083DDC0 / 0x0083DF20 (Volume, Pitch, Pan, NoPlays, GainFaderBits, PitchFaderBits, OverrideID, PlaybackType); which member Lionhead's body assigned is unproven -- the two spellings only differ in VC7.1's store order |
+| CTCEntityEvents.h (retail branch) | FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT | `void AddEvent(NEntityEvents::CEventBase*)` 0x008113C0 | Ego_r.pdb / FableWin.pdb ?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@NEntityEvents@@@Z |
+| CTCDoor.h (retail branch) | FABLE_RETAIL_CTCDOOR_OPENCLOSE | virtual OnInitialActivate (slot 6), protected Open(bool) 0x00730C00, Close() 0x00730DD0, UpdateOpenStatusTriggerTypeScript() 0x007310C0 | Ego_r.pdb / FableWin.pdb ?Open@CTCDoor@@IAEX_N@Z, ?Close@CTCDoor@@IAEXXZ, ?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ, ?OnInitialActivate@CTCDoor@@UAEXXZ |
+| CInventoryDef.h | FABLE_RETAIL_CINVENTORYDEF_DOLLS | the Ego_r.pdb members NextCategoryOffset .. StatsPersonalityDoll at retail offsets (ClothingDoll +0xD4, StatsPersonalityDoll +0x2E0); EInventoryIdentifier opaque | InitialiseMannequin rows read +0xD4 (0x005B380B) / +0x2E0 (0x005CD77B). Used only by the parked 0x005B37F7 source (kept for the next attempt) |
+
+## New headers
+| Header | Contents | Evidence |
+|---|---|---|
+| CTCMeleeTrap.h | `CTCMeleeTrap : CTCTrapBase`; protected virtual TriggerTrap / ResetTrap, private InitialiseStrikeAnimation(const CAnimationEntry&) 0x00787F29 and InitialiseAnimation(const CCharString&, bool) 0x0078809B; PlayingContinuous +0x60, StrikeAnimation +0x61 | RTTI; Ego_r.pdb layout (+108 / +109) and spellings (MAEXXZ, AAE); ResetTrap `mov byte ptr [esi+60h],0` |
+| NEntityEvents_CEventTriggered.h | `NEntityEvents::CEventTriggered : CEventBase`, ctor (CThing&) 0x0083CF20, TriggeredBy CIntelligentPointer<CThing> +8, sizeof 0x10 | RTTI; Ego_r.pdb layout (16 bytes); ??0CEventTriggered@NEntityEvents@@QAE@AAVCThing@@@Z; `push 10h ; call new` |
+| CTCDNone.h | `CTCDNone : CTCDriverBase`, static __fastcall Create(long, const C3DVector&, bool) 0x00835A20 | RTTI .?AVCTCDNone@@ : CTCDriverBase; Ego_r.pdb ?Create@CTCDNone@@SIPAVCThing@@JABVC3DVector@@_N@Z. Used only by the parked 0x005B37F7 source |

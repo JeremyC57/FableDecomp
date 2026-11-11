@@ -2770,3 +2770,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (agentNF11, 2026-11-11) Use `GetPBaseDef().Get()` when retail adds and drops a reference before GetSubDef; use `PeekBaseDef()` when it reads the slot in place.
 - (agentNF11, 2026-11-11) A GetTC that leaves the out pointer unset when the component is absent (FABLE_RETAIL_CTHING_GETTC_EXPANDED) matches retail's dead-slot read.
 - (agentNF11, 2026-11-11) Taking `const CAnimationSet& animations = appearance->Animation;` before std::for_each keeps the release null test retail has.
+- (agentNF12, 2026-11-11) VC7.1 shares a frame slot only between locals of disjoint blocks: a named CSoundPair in its own `{ }` after the GetTC reuses the def-handle word as retail does (0x0083DF20, frame 0x2c -> 0x28).
+- (agentNF12, 2026-11-11) A same-TU inline body of a callee that also has an out-of-line copy (CThingPhysicalSwitch::PeekDefinition) reproduces retail's "first call expanded, second call made" split on its own.
+- (agentNF12, 2026-11-11) CGameDefinitionManager hides CDefinitionManager::GetDef unless FABLE_RETAIL_CGAMEDEFINITIONMANAGER is defined (C2664 otherwise); GETDEF_*_BODY need no complete def type.
+- (agentNF12, 2026-11-11) A retail GetTC laid out `cmp [eax],key ; jg` with the component loaded first matches no PDB-named CThing template body; park such rows (0x005B37F7 / 0x005CD767 TCI_SKELETAL_MORPH).

@@ -1,159 +1,81 @@
-// CThingPhysicalSwitch::TriggerMe(CThing* triggerer) -- trigger the switch once: mark it triggered, queue a CEventTriggered for the triggerer on the entity-events component (0x42), then play the def's TriggerSound through the sound player (0x10) when it has one
-// Leaf: ?TriggerMe@CThingPhysicalSwitch
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0083DDC0, length 344 bytes (`ret 4`).
-// Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A,
-//   NEntityEvents::CEventTriggered::CEventTriggered(CThing*) @ 0x0083CF20 (vtable 0x01273014),
-//   CTCEntityEvents::AddEvent(CEventBase*) @ 0x008113C0, CThing::GetDefinitionManager @ 0x004C7990,
-//   CDefinitionManager::GetDef<CThingPhysicalSwitchDef>(long, CDefPointer&) @ 0x0083E0D0,
-//   CThingPhysicalSwitch::PeekDefinition() const @ 0x0083D900 (landed under the propagated label
-//   "CThingDeadCreature::PeekDefinition"), CTCSoundPlayer::PlayAttachedSample(const CSoundPair&, const CSoundInit&, ...) @ 0x0066B280,
-//   the def's virtual slot 1 on the last release.
-// Layout (retail, local model): CThing interface bitset +0x20, interface map +0x44, def global index (unsigned short)
-//   +0x8c; CThingPhysicalSwitch::Triggered +0xd0 (Ego_r.pdb +0xe8, retail CThingPhysical is 0x18 lower);
-//   CThingPhysicalSwitchDef::TriggerSound +0x90 (PDB +0x94, retail def base 4 smaller). CSoundPair {FirstSound, LastSound}.
-// Shape: the first PeekDefinition is inlined (the def is released and then read, exactly as retail does), the second
-//   is the out-of-line call; the def out pointer and the second lookup key live in the dead triggerer slot. GetDef has a
-//   same-TU noinline stand-in (gives the short `dec [edi+4] ; jne` release). The sound pair is a named local built from
-//   the second PeekDefinition before the call (a temporary pair moves the CSoundInit stores above the call), and
-//   CSoundInit assigns PlaybackType in its ctor body (retail stores it after OverrideID).
-#include "fable_compiler.h"
-class CThing;
-class CTCBase;
-struct CEventBase { virtual void v00(); };
+// CThingPhysicalSwitch::TriggerMe(CThingCreatureBase& triggerer) -- trigger the switch once: mark it triggered, queue a CEventTriggered for the triggerer on the entity-events component, then play the def's TriggerSound through the sound player when it has one
+// Leaf: ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0083DDC0, 344 bytes (`ret 4`). Ego_r.pdb / FableWin.pdb
+//   ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z (protected).
+// Callees (PDB spellings): CVectorMap::LowerBound 0x0040F020 (the inline HasTC + GetTC of TCI_ENTITY_EVENTS 0x42 and TCI_SOUND_PLAYER
+//   0x10), operator new 0x00BFEA1A, NEntityEvents::CEventTriggered::CEventTriggered(CThing&) 0x0083CF20, CTCEntityEvents::AddEvent
+//   0x008113C0, CThing::PeekDefinitionManager 0x004C7990, CDefinitionManager::GetDef<CThingPhysicalSwitchDef> 0x0083E0D0 (the first
+//   PeekDefinition expanded), CThingPhysicalSwitch::PeekDefinition 0x0083D900 (the second one called), CTCSoundPlayer::PlayAttachedSample
+//   0x0066B280, the def's virtual release.
+// Layout: CThing DefGlobalIndex +0x8C, bitset +0x20, map +0x44; CThingPhysicalSwitch Triggered +0xD0; CThingPhysicalSwitchDef
+//   TriggerSound +0x90; CSoundInit (inline ctor) 0x20 bytes.
+// Shape: as UntriggerMe 0x0083DF20: the sound pair is a named local in its own block (it shares the frame word of the def handle and
+//   the lookup key), the CSoundInit a temporary.
+// Name fix (agentNF12 2026-11-11): moved off the local CThing / CThingPhysicalSwitch / CDefPointer / CDefinitionManager /
+// CTCEntityEvents / CEventTriggered / CTCSoundPlayer / CSoundPair / CSoundInit stand-ins (and a same-TU stand-in GetDef body) onto the
+// shared headers (new engine/NEntityEvents_CEventTriggered.h). 0x004C7990 binds CThing::PeekDefinitionManager (was
+// ?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ), 0x0083E0D0 the const GetDef<CThingPhysicalSwitchDef> template (was
+// ?GetDef@CDefinitionManager@@QAE_NJAAV?$CDefPointer@VCThingPhysicalSwitchDef@@@@@Z), 0x0083CF20 ??0CEventTriggered@NEntityEvents@@QAE@AAVCThing@@@Z
+// (was the pointer form), 0x0066B280 PlayAttachedSample (.., bool, bool, bool) returning unsigned long; the row's own symbol is the PDB
+// protected IAE taking CThingCreatureBase& (was QAE taking CThing*).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCENTITYEVENTS
+#define FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CTHINGBASEDEF
+#define FABLE_RETAIL_CTHINGPHYSICALSWITCH_PEEKDEFINITION
+#define FABLE_RETAIL_CTHINGPHYSICALSWITCH_PEEKDEFINITION_SAMETU
+#define FABLE_RETAIL_CTHINGPHYSICALSWITCH_TRIGGER
+#define FABLE_RETAIL_CTCSOUNDPLAYER
+#define FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR_TYPE_LAST
+#define FABLE_RETAIL_CSOUNDPAIR_ORIGINAL_CTORS
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingPhysicalSwitchDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CThingPhysicalSwitch.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCEntityEvents.h"
+#include "engine/NEntityEvents_CEventTriggered.h"
+#include "engine/CTCSoundPlayer.h"
+#include "engine/CSoundPair.h"
+#include "engine/CSoundInit.h"
 
-namespace NEntityEvents {
-class CEventTriggered : public CEventBase { public:
-    unsigned char _body[0x10 - 4];
-    CEventTriggered(CThing* triggerer);                 // 0x0083CF20
-};
-}
 
-
-class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);                   // 0x008113C0
-};
-
-class CSoundPair { public:
-    long FirstSound;
-    long LastSound;
-    CSoundPair(long sound) : FirstSound(sound), LastSound(sound) {}
-};
-
-class CSoundInit { public:
-    float         Volume;
-    float         Pitch;
-    float         Pan;
-    long          NoPlays;
-    long          PlaybackType;
-    unsigned long GainFaderBits;
-    unsigned long PitchFaderBits;
-    long          OverrideID;
-    CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), GainFaderBits(0), PitchFaderBits(0), OverrideID(-1)
-    {
-        PlaybackType = 1;
-    }
-};
-
-class CTCSoundPlayer { public:
-public:
-    unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool);   // 0x0066B280
-};
-
-class CDefPointeeBase { public:
-    virtual void v000();
-    virtual void DestroyDef();                          // slot 1
-    long m_refCount;                                    // +4
-    void ReleaseDef()
-    {
-        if (--m_refCount == 0)
-            DestroyDef();
-    }
-};
-
-class CThingPhysicalSwitchDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x90 - 8];
-    long          TriggerSound;                         // +0x90
-};
-
-template<class T> class CDefPointer { public:
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) {}
-};
-
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingPhysicalSwitchDef>& out);   // 0x0083E0D0
-};
-void* FindSwitchDef(long index);                        // stand-in callee of the stand-in body below
-// Same-TU stand-in for GetDef<CThingPhysicalSwitchDef> (0x0083E0D0 sits in this TU, 0x310 bytes after this function):
-// it only writes the out slot, so VC7.1 knows the def pointer's address does not escape (the landed 0x0083D900 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingPhysicalSwitchDef>& out)
-{
-    void* def = FindSwitchDef(index);
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_presentBits[9];                    // +0x20
-    CInterfaceMap  m_interfaces;                        // +0x44
-    unsigned char  _pad54[0x38];
-    unsigned short m_defGlobalIndex;                    // +0x8c
-    unsigned short _pad8e;
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    FABLE_FORCEINLINE bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    FABLE_FORCEINLINE CTCBase* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
-
-class CThingPhysicalSwitch : public CThing { public:
-    unsigned char _pad90[0xd0 - 0x90];
-    bool          Triggered;                            // +0xd0
-    const CThingPhysicalSwitchDef& PeekDefinition() const;   // 0x0083D900
-    FABLE_FORCEINLINE const CThingPhysicalSwitchDef& PeekDefinitionInline() const
-    {
-        CDefPointer<CThingPhysicalSwitchDef> def;
-        GetDefinitionManager()->GetDef(m_defGlobalIndex, def);
-        CThingPhysicalSwitchDef* switchDef = def.m_pObject;
-        if (switchDef)
-            switchDef->ReleaseDef();
-        return *switchDef;
-    }
-    void TriggerMe(CThing* triggerer);
-};
-
-void CThingPhysicalSwitch::TriggerMe(CThing* triggerer)
+void CThingPhysicalSwitch::TriggerMe(CThingCreatureBase& triggerer)
 {
     if (Triggered)
         return;
     Triggered = true;
-    if (HasTC(0x42)) {
-        CTCEntityEvents* events = (CTCEntityEvents*)GetTC(0x42);
-        events->AddEvent(new NEntityEvents::CEventTriggered(triggerer));
+    if (HasTC(TCI_ENTITY_EVENTS)) {
+        CTCEntityEvents& events = static_cast<CTCEntityEvents&>(GetTC(TCI_ENTITY_EVENTS));
+        events.AddEvent(new NEntityEvents::CEventTriggered(triggerer));
     }
-    if (PeekDefinitionInline().TriggerSound && HasTC(0x10)) {
-        CTCSoundPlayer* player = (CTCSoundPlayer*)GetTC(0x10);
-        CSoundPair sound(PeekDefinition().TriggerSound);
-        player->PlayAttachedSample(sound, CSoundInit(), true, false, false);
+    if (PeekDefinition().TriggerSound && HasTC(TCI_SOUND_PLAYER)) {
+        CTCSoundPlayer& player = static_cast<CTCSoundPlayer&>(GetTC(TCI_SOUND_PLAYER));
+        {
+            long sound = PeekDefinition().TriggerSound;
+            CSoundPair pair(sound, sound);
+            player.PlayAttachedSample(pair, CSoundInit(), true, false, false);
+        }
     }
 }

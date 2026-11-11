@@ -35,6 +35,18 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_DOOR; }
     bool PostVandalismCrimeIfDestroyed() const;                          // 0x007305F0
 #endif
+#ifdef FABLE_RETAIL_CTCDOOR_OPENCLOSE
+    // Nested opt-in (agentNF12, 2026-11-11, rows 0x007306C0 / 0x00730C00 / 0x00730DD0 / 0x007310C0): Ego_r.pdb / FableWin.pdb
+    // ?OnInitialActivate@CTCDoor@@UAEXXZ (CTCBase slot 6, vtable 0x01266DE4), ?Open@CTCDoor@@IAEX_N@Z (retail 0x00730C00),
+    // ?Close@CTCDoor@@IAEXXZ (0x00730DD0) and ?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ (0x007310C0), all protected but the
+    // virtual. Declarations only: no layout change.
+    virtual void OnInitialActivate();                                    //  6 0x007306C0
+protected:
+    void Open(bool fireEvent);                                           // 0x00730C00
+    void Close();                                                        // 0x00730DD0
+    void UpdateOpenStatusTriggerTypeScript();                            // 0x007310C0
+public:
+#endif
     long                     Jammed;                                     // +0x0c
     bool                     CurrentOpen;                                // +0x10
     bool                     OldOpen;                                    // +0x11
