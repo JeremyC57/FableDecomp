@@ -21,6 +21,11 @@ public:
     const C3DVector GetCenter() const { return Center; }
 #endif
     float GetRadius() const { return Radius; }
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_FASTBUILD
+    // Retail opt-in (chunk Q8, row 0x00ADD690): Ego_r.pdb ?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z, out of
+    // line in retail at 0x00ADD690 (the axis-aligned box centre, then the largest squared distance from it). Declaration only.
+    void FastBuildFromPoints(const C3DVector* points,long count);
+#endif
     C3DVector Center;
     float Radius;
 };

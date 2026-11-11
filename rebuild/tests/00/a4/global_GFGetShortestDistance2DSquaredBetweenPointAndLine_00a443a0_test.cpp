@@ -24,14 +24,14 @@ public:
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
 
-float __fastcall GFGetDistanceSquaredFromPointToLine2D(const C2DVector& lineStart, const C2DVector& lineEnd, const C2DVector& point,
-    float* lineParam)
+float __fastcall GFGetShortestDistance2DSquaredBetweenPointAndLine(const C2DVector& lineStart, const C2DVector& lineEnd, const C2DVector& point,
+    float& lineParam)
 {
     C2DVector dir = lineStart - lineEnd;
     C2DVector toStart = lineStart - point;
     float t = (toStart * dir) / (dir * dir);
     C2DVector offset = dir * t - toStart;
-    *lineParam = t;
+    lineParam = t;
     return offset.GetLengthSquared();
 }
 
@@ -39,13 +39,13 @@ int main()
 {
     float t = -1.0f;
     // horizontal line y = 0 from (0,0) to (4,0); point (1,3): foot (1,0), t = 0.25, distance^2 = 9
-    float d = GFGetDistanceSquaredFromPointToLine2D(C2DVector(0, 0), C2DVector(4, 0), C2DVector(1, 3), &t);
+    float d = GFGetShortestDistance2DSquaredBetweenPointAndLine(C2DVector(0, 0), C2DVector(4, 0), C2DVector(1, 3), t);
     Check(Near(d, 9.0f) && Near(t, 0.25f));
     // beyond the end (no clamp): point (6,-2): t = 1.5, distance^2 = 4
-    d = GFGetDistanceSquaredFromPointToLine2D(C2DVector(0, 0), C2DVector(4, 0), C2DVector(6, -2), &t);
+    d = GFGetShortestDistance2DSquaredBetweenPointAndLine(C2DVector(0, 0), C2DVector(4, 0), C2DVector(6, -2), t);
     Check(Near(d, 4.0f) && Near(t, 1.5f));
     // diagonal line through (1,1)-(3,3); point (3,1): foot (2,2), t = 0.5, distance^2 = 2
-    d = GFGetDistanceSquaredFromPointToLine2D(C2DVector(1, 1), C2DVector(3, 3), C2DVector(3, 1), &t);
+    d = GFGetShortestDistance2DSquaredBetweenPointAndLine(C2DVector(1, 1), C2DVector(3, 3), C2DVector(3, 1), t);
     Check(Near(d, 2.0f) && Near(t, 0.5f));
     if (g_fail) {
         printf("00a443a0_TEST FAIL\n");

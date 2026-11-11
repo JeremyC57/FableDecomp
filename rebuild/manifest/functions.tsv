@@ -37013,8 +37013,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a44170	Reset	CCountedPointer_00a44130	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 00a441e0	GFGetSignedAngleDifference	_global	unknown	undefined	0		0	yes	accepted									
 00a44250	GFGetInterpolatedColour	_global	__cdecl	CRGBColour	3	CRGBColour,CRGBColour,ulong	1	yes	accepted									
-00a442e0	GFGetDistanceSquaredFromPointToLine	_global	unknown	undefined	0		0	yes	accepted									
-00a443a0	GFGetDistanceSquaredFromPointToLine2D	_global	unknown	undefined	0		0	yes	accepted									
+00a442e0	GFGetShortestDistanceSquaredBetweenPointAndLine	_global	unknown	undefined	0		0	yes	accepted									
+00a443a0	GFGetShortestDistance2DSquaredBetweenPointAndLine	_global	unknown	undefined	0		0	yes	accepted									
 00a44420	GFIsPointInTriangle	_global	__fastcall	bool	5	C3DVector *,C3DVector *,C3DVector *,C3DVector *,C3DVector *	1	yes	accepted									
 00a445d0	CASuspendableProcess	CASuspendableProcess	__thiscall	undefined	3	CCreatureAction_CastBattleCharge *,CThingCreatureBase *,long	0	yes	accepted									
 00a44600	SuspendableProcess	CASuspendableProcess	__thiscall	void	1	CASuspendableProcess *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a4\CASuspendableProcess_SuspendableProcess_00a44600.cpp

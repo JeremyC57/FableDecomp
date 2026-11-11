@@ -76,6 +76,12 @@ public:
     // Chunk 724 round 3 (row 0x008771A0): Ego_r.pdb ?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ,
     // out of line at retail 0x006A5AB0 (catalog name; `mov ecx,edi ; call` in CTools::GetThingPointIntersectionFromTo).
     bool IsThingAbleToComeBetweenCameraAndObservedThing() const;   // 0x006A5AB0
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_FIRSTCOLLISION
+    // Retail opt-in (chunk Q8, row 0x006A4FB0): Ego_r.pdb ?GetFirstCollision@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z (public
+    // const), out of line at retail 0x006A4FB0 (called at 0x006A5469). Declaration only: no layout change.
+    bool GetFirstCollision(float radius, const C3DVector& from, const C3DVector& delta, C3DVector& hit_position,
+                           C3DVector& hit_normal) const;                // 0x006A4FB0
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_SERIALISE
     // Retail opt-in (agentNF9, row 0x007030C0 CThingObject::SerialiseGameState, which calls it by name): Ego_r.pdb / FableWin.pdb
     // ?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z (public virtual, CThingPhysical vtable 0x01244E84 slot 3 =

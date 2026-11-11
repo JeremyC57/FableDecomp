@@ -37,6 +37,12 @@ public:
     virtual ~CPhysicsMeshObject();
     bool HasContainmentVolume(const CCharString&) const;
     bool GetPointIntersectionFromTo(const C3DVector&,const C3DVector&,CMeshIntersectionData&) const;
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_SPHEREINTERSECTION
+    // Retail opt-in (chunk Q8, row 0x006A4FB0 CThingPhysical::GetFirstCollision): Ego_r.pdb / FableWin.pdb
+    // ?GetSphereIntersectionFromTo@CPhysicsMeshObject@@QBE_NMABVC3DVector@@0AAVCMeshIntersectionData@@@Z, out of line at retail
+    // 0x00A120D0. Declaration only: no layout change.
+    bool GetSphereIntersectionFromTo(float,const C3DVector&,const C3DVector&,CMeshIntersectionData&) const;   // 0x00A120D0
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_EDGES
     // Chunk 756 (rows 0x00875F00 / 0x00A11C20): Ego_r.pdb ?GetBoundingBoxXEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ (0x00A11C20)
     // and ?GetBoundingBoxYEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ (0x00A11C90), out of line, by value.

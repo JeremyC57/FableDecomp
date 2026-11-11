@@ -16481,8 +16481,6 @@ __imp__OutputDebugStringW@4	0143fe14	005472a0
 ?GetPItem@CBaseIntelligentPointer@FablePush_006a3cd0@@QBEPAVCBaseObject@2@XZ	00a01b50	006a3cd0
 ?SetPItem@CBaseIntelligentPointer@FablePush_006a3cd0@@QAEXPAVCBaseObject@2@@Z	00a01b90	006a3cd0
 ?_M_insert_overflow@?$vector@U?$pair@JU?$CIntelligentPointer@VCThing@FablePush_006a3cd0@@@FablePush_006a3cd0@@@FablePush_006a3cd0@@@FablePush_006a3cd0@@QAEXPAU?$pair@JU?$CIntelligentPointer@VCThing@FablePush_006a3cd0@@@FablePush_006a3cd0@@@2@ABU32@ABU__false_type@@I_N@Z	006a3a70	006a3cd0
-?GetBoundingInfo@CTCPhysicsBase@@QBEXAAVC3DVector@@AAM@Z	006af640	006a7050
-?GetSquaredDistanceToInfiniteLine@@YIMABVC3DVector@@00AAM@Z	00a442e0	006a7050
 ?TransitionToDefaultTheme@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXM@Z	00886400	006b3880
 ??$__lower_bound@PAU?$pair@JM@std@@U12@U?$less@U?$pair@JM@std@@@2@H@std@@YIPAU?$pair@JM@0@PAU10@0ABU10@U?$less@U?$pair@JM@std@@@0@PAH@Z	006b5890	006b5a50
 ?_M_insert_overflow@?$vector@U?$pair@JM@std@@@std@@QAEXPAU?$pair@JM@2@ABU32@ABU__false_type@2@I_N@Z	006b5be0	006b5ed0
@@ -22402,8 +22400,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Save@CThing@@UAEXAAVCCharString@@@Z	004c9120	006a4ba0
 ?GetWorldMap@CThingPhysical@@QAEPAVCWorldMap@@XZ	004c79d0	006a4d60
 ?DrawGetEditDrawInfo@CThing@@QBE_NMPAVCEditEngineDrawInfo@@@Z	004c74b0	006a4e90
-?GetFirstCollision@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z	006a4fb0	006a5460
-?GetSphereIntersectionFromTo@CPhysicsMeshObject@@QBE_NMABVC3DVector@@0AAUCPhysicsHit@@@Z	00a120d0	006a5460
 ??RCThingFilter_IsInFOV@@QBE_NABVC3DVector@@@Z	006a7270	006a7390
 ?IsNavLineOfSight@CTCCreatureNavigation@@QAE_NPBVC3DVector@@ABV2@@Z	006cb610	006a7640
 ?CanCreatureSeeCreature@@YI_NPBVCThingCreatureBase@@0_N@Z	008645e0	006a78d0
@@ -38992,3 +38988,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?VideoOptionsChangedConfirmed@@YIXXZ	0047d9e3	0047e651
 ?SaveGame@CTCInGameMenu@@QAEXJ@Z	0047e196	0047e9ae
 ?VideoOptionsNotAcceptedConfirmed@@YIXXZ	0047e941	0047f30f
+??$GetEvent@VCEventFiredShot@NEntityEvents@@VCIsEventCreatedAfter@2@@CTCEntityEvents@@QBE_NPAPAVCEventFiredShot@NEntityEvents@@ABVCIsEventCreatedAfter@2@@Z	0095d920	0095d0e0
+?GetFirstCollision@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z	006a4fb0	006a5460
+?GetBoundingInfo@CTCPhysicsBase@@QBEXAAVC3DVector@@AAM@Z	006af640	006a7050

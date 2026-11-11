@@ -24,7 +24,13 @@ extern const float DELTA_NOTIONAL_ZERO;                                 // 0x012
 // exponent (0x17C - e) / 2, the 128-entry mantissa table 0x013CE558, one Newton step with 3.0f / 0.5f), the body the landed
 // 0x007AF0F0 / 0x006B3030 rows model locally.
 extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013CE558
-#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN
+#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_GROUPED
+// Retail opt-in (chunk Q8, row 0x006A4FB0 CThingPhysical::GetFirstCollision): the same body with the Newton step fully grouped,
+// `((3.0f-((r*r)*value))*r)*0.5f`. Same instructions; the three extra no-code PAREN tuples move VC7.1's scheduling-region cut so
+// that the epilogue pops interleave with the final Normalise as retail does (0x006A51F1 `pop edi` ahead of `fmul [eax]`, `pop
+// esi / pop ebp / pop ebx` ahead of its `fstp`). Body only: default path unchanged.
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return ((3.0f-((r*r)*value))*r)*0.5f;}
+#elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN)
 // Retail opt-in (chunk 892, row 0x00963880 CAIStateGroup_VersusScorpionKing::IsScorpionChargingAtMe): the same body with the
 // Newton step's product parenthesised, `(3.0f-(r*r*value))`. Same instructions; the extra parenthesis is one more no-code PAREN tuple
 // in VC7.1's scheduling region (81-tuple cap, c2.dll 0x107B4E6A). It puts the region cut where retail has it in two rows: inside

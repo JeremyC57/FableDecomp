@@ -169,6 +169,13 @@ public:
     long             Morality;                                           // +0x28
     bool             MoralityChangingEnabled;                            // +0x2c
     float            Age;                                                // +0x30
+#ifdef FABLE_RETAIL_CTCHEROSTATS_AGE
+    // Retail opt-in (chunk Q8, row 0x006D8980 CTCHeroExperience::UpgradeTrainableStat): Ego_r.pdb / FableWin.pdb
+    // ?SetAge@CTCHeroStats@@QAEXM@Z (out of line at retail 0x0057B05F) and FableWin.pdb ?GetAge@CTCHeroStats@@QBEMXZ (inline: the
+    // row reads +0x30 in place). No layout change.
+    void SetAge(float age);                                              // 0x0057B05F
+    float GetAge() const { return Age; }
+#endif
     float            SunTan;                                             // +0x34
     float            Fatness;                                            // +0x38
     long             Money;                                              // +0x3c

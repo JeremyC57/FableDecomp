@@ -1,0 +1,15 @@
+addr       parity           behav  name
+006a4fb0   WARN RELOC_NAME: ?GFGetShortestDistanceSquaredBetweenPointAndLine@@YIMABVC3DVector@@00AAM@Z -> 00a442e0 labelled '_global::GFGetDistanceSquaredFromPointToLine'
+006a4fb0   RELOCATION_MATCH PASS   GetFirstCollision
+0095d0e0   RELOCATION_MATCH PASS   IsStillRunnable
+009f5690   RELOCATION_MATCH PASS   CInputEventPackage
+
+WINS: 3
+  006a4fb0 RELOCATION_MATCH CThingPhysical::?GetFirstCollision@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z
+  0095d0e0 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ
+  009f5690 RELOCATION_MATCH CInputEventPackage::??0CInputEventPackage@@QAE@AAVCAFile@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CThingPhysical_GetFirstCollision_006a4fb0
+  CAIStateGroupRangedCombatUsePreferredFirePoint_IsStillRunnable_0095d0e0
+  CInputEventPackage_CInputEventPackage_009f5690

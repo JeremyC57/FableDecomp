@@ -300320,8 +300320,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a443a0'
         Module = '_global'
-        Source = '00/a4/global_GFGetDistanceSquaredFromPointToLine2D_00a443a0.cpp'
-        TestSource = '00/a4/global_GFGetDistanceSquaredFromPointToLine2D_00a443a0_test.cpp'
+        Source = '00/a4/global_GFGetShortestDistance2DSquaredBetweenPointAndLine_00a443a0.cpp'
+        TestSource = '00/a4/global_GFGetShortestDistance2DSquaredBetweenPointAndLine_00a443a0_test.cpp'
         PassPattern = '00a443a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -305098,8 +305098,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a442e0'
         Module = '_global'
-        Source = '00/a4/global_GFGetDistanceSquaredFromPointToLine_00a442e0.cpp'
-        TestSource = '00/a4/global_GFGetDistanceSquaredFromPointToLine_00a442e0_test.cpp'
+        Source = '00/a4/global_GFGetShortestDistanceSquaredBetweenPointAndLine_00a442e0.cpp'
+        TestSource = '00/a4/global_GFGetShortestDistanceSquaredBetweenPointAndLine_00a442e0_test.cpp'
         PassPattern = '00a442e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -392826,6 +392826,27 @@ $catalog = @(
         Source = '00/69/CGameCameraManager_IsPosCameraInsideThing_00697490.cpp'
         TestSource = '00/69/CGameCameraManager_IsPosCameraInsideThing_00697490_test.cpp'
         PassPattern = '00697490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a4fb0'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_GetFirstCollision_006a4fb0.cpp'
+        TestSource = '00/6a/CThingPhysical_GetFirstCollision_006a4fb0_test.cpp'
+        PassPattern = '006a4fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095d0e0'
+        Module = 'CAIStateGroup_RangedCombatUsePreferredFirePoint'
+        Source = '00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_IsStillRunnable_0095d0e0.cpp'
+        TestSource = '00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_IsStillRunnable_0095d0e0_test.cpp'
+        PassPattern = '0095d0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f5690'
+        Module = 'CInputEventPackage'
+        Source = '00/9f/CInputEventPackage_CInputEventPackage_009f5690.cpp'
+        TestSource = '00/9f/CInputEventPackage_CInputEventPackage_009f5690_test.cpp'
+        PassPattern = '009f5690_TEST PASS'
     }
 )
 

@@ -34,15 +34,15 @@ class C3DVector { public:
     float GetLengthInline() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
 };
 FABLE_FORCEINLINE float DotProduct(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.X * b.X + a.Y * b.Y; }
-struct CPhysicsHit {
-    C3DVector Position;
+class CMeshIntersectionData { public:          // Ego_r.pdb / FableWin.pdb (V-keyed, 0x1c); landed earlier as `CMeshIntersectionData`
+    C3DVector IntersectionPosition;
     C3DVector Normal;
-    float     Time;
+    float     DistanceSquared;
 };
 class CPhysicsMeshObject { public:
     unsigned char Data[0x40];
     ~CPhysicsMeshObject();                                  // 0x00A127D0
-    bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CPhysicsHit& hit) const;   // 0x00A120D0
+    bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& hit) const;   // 0x00A120D0
 };
 class CTCPhysicsBase { public:
 #define VF(n) virtual void v##n() {}
@@ -68,9 +68,9 @@ bool CThingPhysical::GetFirstCollisionBetweenPoints(float radius, const C3DVecto
         return false;
     if (GetPhysicsTC() && GetPhysicsTC()->GetPhysicsMesh()) {
         CPhysicsMeshObject meshObject = GetPhysicsTC()->GetPhysicsMeshObject();
-        CPhysicsHit hit;
+        CMeshIntersectionData hit;
         if (meshObject.GetSphereIntersectionFromTo(radius, from, to, hit)) {
-            hitPosition = hit.Position;
+            hitPosition = hit.IntersectionPosition;
             hitNormal = hit.Normal;
             return true;
         }
@@ -89,10 +89,10 @@ static bool g_sphereHit = false, g_firstHit = false;
 static C3DVector g_firstPos;
 static void* g_mesh = 0;
 CPhysicsMeshObject::~CPhysicsMeshObject() { ++g_meshDtors; }
-bool CPhysicsMeshObject::GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CPhysicsHit& hit) const
+bool CPhysicsMeshObject::GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& hit) const
 {
     ++g_sphereCalls;
-    hit.Position = C3DVector(1, 2, 3); hit.Normal = C3DVector(0, 0, 1); hit.Time = radius;
+    hit.IntersectionPosition = C3DVector(1, 2, 3); hit.Normal = C3DVector(0, 0, 1); hit.DistanceSquared = radius;
     return g_sphereHit;
 }
 void* CTCPhysicsBase::GetPhysicsMesh() const { return g_mesh; }

@@ -248,6 +248,7 @@ CCarryableDef	CCarryableDef.h	80	10	OK	0 retail files
 CCarryingDef	_quarantine/CCarryingDef.h	56	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CCategory	CCategory.h	44	9	OK	3 retail files; suspect=CCategory_GetHighlightedItemCountInCategory_00713290.cpp
 CCharString		0	0	HAND_OWNED	
+CChecksum	CChecksum.h	16	4	OK	0 retail files
 CChestDef	CChestDef.h	60	6	OK	0 retail files
 CChunkedFileChunk	CChunkedFileChunk.h	16	2	OK	0 retail files
 CChunkedFileRawDataChunk	CChunkedFileRawDataChunk.h	24	2	OK	0 retail files
@@ -841,6 +842,7 @@ CIVCountedPointeeBase	CIVCountedPointeeBase.h	8	1	OK	0 retail files
 CIdleSchedulerDef	_quarantine/CIdleSchedulerDef.h	72	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CIndexBuffer	CIndexBuffer.h	20	4	OK	0 retail files
 CInitBaseClass		0	0	HAND_OWNED	
+CInputEventPackage	CInputEventPackage.h	48	10	OK	0 retail files
 CInputProcessBetting	CInputProcessBetting.h	40	0	OK	0 retail files
 CInputProcessBoastUI	CInputProcessBoastUI.h	40	0	OK	0 retail files
 CInputProcessClickPastText	CInputProcessClickPastText.h	40	0	OK	0 retail files

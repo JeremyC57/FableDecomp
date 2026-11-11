@@ -5,7 +5,7 @@ class CTCPhysicsBase { public:
     C3DVector Centre; float Radius;
     void GetBoundingInfo(C3DVector& c, float& r) const { c = Centre; r = Radius; }
 };
-static float GetSquaredDistanceToInfiniteLine(const C3DVector& a, const C3DVector& b, const C3DVector& p, float& t)
+static float GFGetShortestDistanceSquaredBetweenPointAndLine(const C3DVector& a, const C3DVector& b, const C3DVector& p, float& t)
 {   // stand-in for 0x00A442E0: |p - a|^2 - (dot(p - a, d)^2 / |d|^2)
     float dx = b.X - a.X, dy = b.Y - a.Y, dz = b.Z - a.Z;
     float px = p.X - a.X, py = p.Y - a.Y, pz = p.Z - a.Z;
@@ -23,7 +23,7 @@ class CThingFilter_BoundingRadiusIntersectsInfiniteLine { public:
             C3DVector centre; float radius;
             thing.PhysicsTC->GetBoundingInfo(centre, radius);
             float t;
-            float distance_sq = GetSquaredDistanceToInfiniteLine(Start, End, centre, t);
+            float distance_sq = GFGetShortestDistanceSquaredBetweenPointAndLine(Start, End, centre, t);
             if (distance_sq < radius * radius) return true;
         }
         return false;
