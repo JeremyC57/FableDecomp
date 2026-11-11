@@ -1,0 +1,2 @@
+address	true_length	evidence
+00d2988b	1319	the row is 11 bytes into the function at 0x00D29880 (int3 padding 0x00D2987A..7F, then sub esp,38h / mov edx,[0143E90Ch] / push ebx / push ebp before 0x00D2988B; the shared epilogue at 0x00D29D9F pops edi,esi,ebp,ebx and does add esp,38h). The true function is 0x00D29880..0x00D29DA6 (ret, then int3 to 0x00D29DAF) = 1319 bytes; manifest label at 0x00D29880: NScript::CQ_EndGameScript::CHookCoastTeleporter::Main (not verified here). Skipped.

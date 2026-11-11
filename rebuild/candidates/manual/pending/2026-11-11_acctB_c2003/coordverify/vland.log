@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0051f480   RELOCATION_MATCH PASS   ClearPersistenceDataForSectionInEntityScript
+00598463   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00598463   WARN RELOC_NAME: ?IsDebugProfile@CUserProfileManager@@QBE_NXZ -> 00407030 labelled '_global::ReturnFalse_ret0_00407030'
+00598463   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00598463   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+00598463   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+00598463   RELOCATION_MATCH PASS   RefreshAvailableSavedGamesForProfile
+00e10e60   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  0051f480 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?ClearPersistenceDataForSectionInEntityScript@CEntityRuntimePersistence@NThingManager@@AAEXABVCCharString@@AAVCEntityScriptInfo@12@@Z
+  00598463 RELOCATION_MATCH NUISystem::CFrontEndManager::?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@IAEJXZ
+  00e10e60 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspChaseWoman::?Main@CWaspChaseWoman@CQ_WaspBossScript@NScript@@EAEXXZ
