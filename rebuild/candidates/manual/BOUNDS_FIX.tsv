@@ -276,3 +276,6 @@ address	pool	module	name	length	class	action	new_length	evidence
 00a43ee0	chunkQ1		destructor of a vector of 12-byte elements (element dtor 0x0099EAE0)		NEW_START	note	49	chunkQ1: new start
 00a465e0	chunkQ1		wrapper: 0x00A46350(arg, 0, 0), ret 4		NEW_START	note	17	chunkQ1: new start inside the bogus row 0x00A46594
 00a46600	chunkQ1		insertion-sort wrapper calling 0x00A462A0, ret 4		NEW_START	note	68	chunkQ1: new start
+0052f1b0	chunkQ2	NUISystem::CComponent	IsZoomIndependent	553	SPLIT	fix	8	chunkQ2: vtable 0x0124608C slot 103; the jmp ends it, int3 pad; 0x0052F1C0..0x0052F3C0 are 21 further CSprite/CComponent virtuals (rtti-vtables.tsv slots 104..128 of 0x0122F5D4, slot 44 of 0x0124608C)
+007e6750	chunkQ2	CTCOracleMinigame	FrameUpdate	883	SPLIT	fix	832	chunkQ2: ret 0x007E6A7B + 5-entry jump table 0x007E6A7C..0x007E6A8F; 0x007E6A90 (mov eax,ecx; ret), 0x007E6AB0, 0x007E6AC0 are separate functions
+00a53c50	chunkQ2	C3DAnimation2	CalcLocalBoneTransformation	1201	SPLIT	fix	1055	chunkQ2: true extent to the `ret 10h` at 0x00A5406C; 0x00A54070..0x00A540F0 are eight small `ret 4` functions behind int3 pads (not authored)

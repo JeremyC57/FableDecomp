@@ -17,6 +17,16 @@ public:
  void SetNextBossPhase(long,bool);
  bool HasBossDef()const{return !PBossDef.IsNull();}
  const CBossDef& GetBossDef()const{return *PBossDef;}
+#ifdef FABLE_RETAIL_CTCBOSS_EFFECTS
+ // Retail opt-in (chunk Q2, row 0x008E0A10 NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate): Ego_r.pdb / FableWin.pdb
+ // ?IncrementBossPhase@CTCBoss@@QAEXXZ (0x007AED20), ?IsReadyForPhaseChange@CTCBoss@@QBE_NXZ (0x007AEE90), ?CountEffects@CTCBoss@@QAEJXZ
+ // (0x007AEF10), ?ClearEffects@CTCBoss@@QAEXXZ (0x007AEF60), ?AddEffect@CTCBoss@@QAEXAAVCThing@@@Z (0x007AF6C0). Declarations only.
+ void IncrementBossPhase();
+ bool IsReadyForPhaseChange() const;
+ long CountEffects();
+ void ClearEffects();
+ void AddEffect(CThing&);
+#endif
 private:
  CDefPointer<const CBossDef> PBossDef;
  long GenericCounter,StrikesSinceHit,currentBossPhase,NextWeapon;

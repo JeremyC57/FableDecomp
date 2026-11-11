@@ -96,6 +96,17 @@ public:
         long Graphic;
         std::vector<long> ExtraElements;
     };
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_ORACLESYMBOLS
+    // Retail opt-in (chunk Q2, row 0x007E6750 CTCOracleMinigame::FrameUpdate): Ego_r.pdb ?OracleSymbolSize@CDrawQuestInfo@NPlayerGui@@QAEJXZ
+    // (retail 0x00647308: counts the OracleSymbols list +0x40), ?OracleSymbolPopBack@..QAEXXZ (0x006463E1) / ?OracleSymbolPopFront@..QAEXXZ
+    // (0x006463F0: `if (!OracleSymbols.empty())` jmp list::pop_front 0x00655A2E; Ego_r defines PopBack then PopFront, as retail) and
+    // ?DisplayMiniGameInfo@..QAEX_NW4EMiniGameType@@J@Z (0x00654593). Declarations only: no layout change.
+public:
+    long OracleSymbolSize();                                             // 0x00647308
+    void OracleSymbolPopBack();                                          // 0x006463E1
+    void OracleSymbolPopFront();                                         // 0x006463F0
+    void DisplayMiniGameInfo(bool, EMiniGameType, long);                 // 0x00654593
+#endif
 private:
 #ifdef FABLE_RETAIL_CDRAWQUESTINFO_ADDELEMENT
     void AddElement(CCountedPointer<CQuestInfoElement> pelement);

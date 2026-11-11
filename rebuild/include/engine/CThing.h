@@ -221,6 +221,20 @@ public:
     virtual bool DrawIsDrawable() const;                                 // slot 27 0x004C7790
     virtual void SetAsDrawable(bool);                                    // slot 28 0x004C8E50
 #endif
+#ifdef FABLE_RETAIL_CTHING_SAVE
+    // Retail opt-in (chunk Q2, row 0x004C9120): Ego_r.pdb 0x004CAF70 ?Save@CThing@@UAEXAAVCCharString@@@Z (the CClass slot 2 override:
+    // vtable cells 0x01239AC4 / 0x01272C2C / 0x01272EEC hold 0x004C9120) and ?SaveSerialiseCreatableTCs@CThing@@IBEXAAVCCharString@@@Z
+    // (the landed 0x004C72D0). Declarations only: an override adds no slot, no layout change.
+    virtual void Save(CCharString&);                             // 0x004C9120
+protected:
+    void SaveSerialiseCreatableTCs(CCharString&) const;          // 0x004C72D0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_SAVEBINARY
+    // Retail opt-in (chunk Q2, row 0x004C84B0): Ego_r.pdb 0x004C9E60 / FableWin.pdb 0x01CF18B0 ?SaveBinary@CThing@@QAEXAAVCDataOutputStream@@@Z
+    // (retail 0x004C84B0, `ret 4`; called by CThingManager's binary saver at 0x005222B5 with a CMemoryDataOutputStream). Declaration only.
+    void SaveBinary(class CDataOutputStream&);                   // 0x004C84B0
+#endif
     static void __fastcall SerialiseThingInfo(CPersistContext&,CSerialiseInfo&);           // 0x004C81F0
     static void __fastcall SerialiseThingInfo(bool,CCharString&,CSerialiseInfo&);         // 0x004C88E0
     bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }

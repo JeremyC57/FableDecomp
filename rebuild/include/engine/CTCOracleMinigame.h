@@ -8,6 +8,54 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTCORACLEMINIGAME_CLASS
+// Retail opt-in (chunk Q2, row 0x007E6750 CTCOracleMinigame::FrameUpdate): the polymorphic retail class, RTTI .?AVCTCOracleMinigame@@ :
+// CTCBase, vtable 0x012707B4 (slot 9 FrameUpdate 0x007E6750). Members: the generated names below at the same retail offsets,
+// typed (Stage / PostWaitStage long-sized EOracleMinigameState, InputsPending the one-pointer STLport list, PDef a
+// CDefPointer<const COracleMinigameDef>'s Object). Member functions: Ego_r.pdb / FableWin.pdb spellings (PlaySoundW is the PDB
+// spelling: <windows.h> renamed the source's PlaySound), retail addresses in the comments. Default path unchanged.
+#ifndef FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE
+#endif
+#include "fable_string.h"
+#include "engine/CTCBase.h"
+#include "engine/COracleMinigameDef.h"
+#include "stlport/fable_containers.h"
+class CThing;
+enum EOracleMinigameInput { };                                           // W4EOracleMinigameInput@@ (enumerators not needed here)
+class CTCOracleMinigame : public CTCBase {
+public:
+    virtual void FrameUpdate();                                          // slot 9 0x007E6750 ?FrameUpdate@CTCOracleMinigame@@UAEXXZ
+    bool OutputsFiring();                                                // 0x007E5D00 ?OutputsFiring@CTCOracleMinigame@@QAE_NXZ
+    void PlayGame();                                                     // 0x007E5D20
+    unsigned long PlaySoundW(const CCharString&);                        // 0x007E60F0 ?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z
+    void FireOutput();                                                   // 0x007E61B0
+    void SetText(unsigned long);                                         // 0x007E6230
+    void Quit();                                                         // 0x007E62D0
+    void UpdateTints();                                                  // 0x007E6450 ?UpdateTints@CTCOracleMinigame@@QAEXXZ
+    unsigned long    CurrentText;                            // +0x0c
+    long             Level;                                  // +0x10
+    long             Stage;                                  // +0x14 EOracleMinigameState
+    long             PostWaitStage;                          // +0x18 EOracleMinigameState
+    long             WaitTime;                               // +0x1c
+    float            TimeBetweenOutputs;                     // +0x20
+    long             NumOutputsFired;                        // +0x24
+    long             Output[32];                             // +0x28
+    bool             Success;                                // +0xa8
+    long             NextOutputFrame;                        // +0xac
+    CThing*          Symbols[4];                             // +0xb0
+    long             SymbolsFiring[4];                       // +0xc0
+    long             FramesFired[4];                         // +0xd0
+    std::list<EOracleMinigameInput> InputsPending;           // +0xe0
+    CThing*          SpeechMarker;                           // +0xe4
+    const COracleMinigameDef* PDef;                          // +0xe8 CDefPointer<const COracleMinigameDef>::Object
+};
+FABLE_STATIC_ASSERT(sizeof(CTCOracleMinigame) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, CurrentText) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, Success) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, InputsPending) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, PDef) == 0xe8);
+#else
 #ifdef FABLE_RETAIL_CTCORACLEMINIGAME
 #include "fable_string.h"
 #endif
@@ -65,5 +113,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, FramesFired) == 0xd0);
 FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, InputsPending) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, SpeechMarker) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CTCOracleMinigame, PDef_Object) == 0xe8);
+
+#endif // FABLE_RETAIL_CTCORACLEMINIGAME_CLASS
 
 #endif // FABLE_ENGINE_CTCORACLEMINIGAME_H

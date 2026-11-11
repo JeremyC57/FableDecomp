@@ -62,6 +62,12 @@ public:
     ~CPersistContext() {}
     // retry11a (row 0x00521620): the save-side constructor 0x009BAE50 (Ego_r.pdb / FableWin.pdb
     // ??0CPersistContext@@QAE@AAVCDataOutputStream@@_N@Z) and the PSaveStream accessor (inline in retail).
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_STRINGSAVE
+    // Retail opt-in (chunk Q2, row 0x004C9120 CThing::Save): Ego_r.pdb ??0CPersistContext@@QAE@AAVCCharString@@@Z (retail 0x009BAE10, the
+    // text-save context) and ?Init@CPersistContext@@QAEXAAVCCharString@@PBVCDefinitionManager@@@Z (0x009BAA10, `push 0 ; push &data`).
+    CPersistContext(CCharString&);                           // 0x009BAE10
+    void Init(CCharString&,const CDefinitionManager*);       // 0x009BAA10
+#endif
     CPersistContext(CDataOutputStream&,bool);
     CDataOutputStream* GetPSaveStream() { return PSaveStream; }
     // Chunk 735 (rows 0x0047F58B CTCInGameMenu / 0x00597228 NUISystem::CFrontEndManager AddRegionAndTimeInfo): the binary-load Init

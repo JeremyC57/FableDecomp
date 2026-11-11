@@ -1,0 +1,51 @@
+address	name	grade	grades_used	note
+0052f1b0	NUISystem::CComponent::IsZoomIndependent	MATCH	1	src/ + test/; extent 8 bytes (SPLITS)
+007e6750	CTCOracleMinigame::FrameUpdate	RELOCATION_MATCH	4	src/ + test/; extent 832 (SPLITS); overlay hdr
+008e0a10	NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate	RELOCATION_MATCH	1	src/ + test/; overlay hdr (new class header + 4 opt-ins)
+004c84b0	CThing::SaveBinary	RELOCATION_MATCH	8	src/ + test/; overlay hdr (3 opt-ins)
+004c9120	CThing::Save	RELOCATION_MATCH	2	src/ + test/; overlay hdr (CThing / CStringParser / CPersistContext opt-ins)
+008f61a0	CHeightMap::Resize	NOT_REACHED	0	read only: needs a new engine/CHeightMap.h (Ego_r layout: cells vector +0x10 of 12-byte elements, Width +0x204, Height +0x208, +0x20C / +0x210 / +0x1FC); body = __allmul overflow guard on (w+1)*(h+1), a temporary vector(n) filled through 0x008F6740, std::max/std::min by reference on the offsets (the `lea reg,[a] ; jg ; lea reg,[b]` runs), the cell copy loop, swap 0x008F6A90. Next: author with std::max / std::min on named locals.
+006e3b90	_global::CThingCreatureBase_UpdatePhonemeAnimation	NOT_REACHED	0	not read this pass
+0080c6d0	CTCDExplosion::UpdateDynamicHitThings	NOT_REACHED	0	not read this pass
+007348c0	CTCCombat::IsToBlock	NOT_REACHED	0	not read this pass
+008f8f50	LHNetworkLib::LSocket::Send	NOT_REACHED	0	970 bytes with its catch funclet (SPLITS.tsv, from Q1); not read this pass.
+004199c0	interior of the function 0x00419880	NOT_A_FUNCTION	0	0x004199C0 is mid-instruction inside the function 0x00419880..0x00419C9A (1051 bytes; HERO_ABILITY_* name -> id ladder returning 1..0x11): the catalog start is wrong. The body is the two-chain keyword ladder behind one null test that GOTCHAS records as open (0x00507C30: 17 `repe cmpsb` blocks, then 17 calls of 0x004115A0). Next: author at 0x00419880 once that ladder idiom is solved; behind it 0x00419CA0 / 0x00419CF0 / 0x00419D30 are three console-command wrappers.
+008dfb00	NCreatureMode::CModeSummonerLightningOrb::vfunc_3	NOT_REACHED	0	not read this pass
+00cdd6b0	NScript::CGlobal_TeleportToHeroGuildScript::Main	NOT_REACHED	0	not read this pass
+008e20f0	NCreatureMode::CModeGuildmasterPowerUpShield::FrameUpdate (slot 3)	NOT_REACHED	0	read only: twin shape of 0x008E24F0; two GetHelperPoint lookups, a midpoint, a per-orb loop building a lightning-effect record (vector push_back 0x0076ADA0 inline) and a CCombatActionBase-derived action at the end. The landed CModeScorpionKing rows are the template (hdr/engine/NCreatureMode_CModeScorpionKingVulnerable.h shows the header shape).
+008e24f0	NCreatureMode::CModeGuildmasterPowerUpSpeed::FrameUpdate (slot 3)	NOT_REACHED	0	see 0x008E20F0 (same body shape, other strings / vtable 0x01268630).
+00b4ef80	CEngineShadowRenderer::UpdateSpotLightShadowSpace	NOT_REACHED	0	not read this pass
+006cddf0	CGroundNavigatorExternalInterface::?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	NOT_REACHED	0	not read this pass
+00a6a670	CPreallocTexturePool::ResizePool	NOT_REACHED	0	not read this pass
+00745840	CTCPerceiveThing::vfunc_11	NOT_REACHED	0	not read this pass
+00b9d220	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	NOT_REACHED	0	not read this pass
+00497fd0	CProgressDisplay::DisplayCenteredText	NOT_REACHED	0	not read this pass
+0076eb00	CTCWeaponTrail::InitialiseTrails	NOT_REACHED	0	not read this pass
+00a6cc10	CPhysicsMesh::GetMeshDataFromFileData	NOT_REACHED	0	not read this pass
+00a4d330	C3DAnimation2::CalcLocalBoneTransformation	NOT_REACHED	0	not read this pass
+007ccf50	CTCMultiStrike::ApplyEffectOnWeapon	NOT_REACHED	0	not read this pass
+00c604e0	CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface	NOT_REACHED	0	read only: 208 instructions of member stores and five `rep movsd` struct copies, no calls: needs the class and its nested settings structs from the PDB before the store order can be matched.
+008f12d0	CTCTavernGameCardBase::ProcessInput	NOT_REACHED	0	not read this pass
+00621f70	CTCInventoryQuests::TakeQuest	NOT_REACHED	0	not read this pass
+007b5e50	CTCWaterWader::FrameUpdate	NOT_REACHED	0	read only: an ebp-framed size-TU function (`#pragma optimize("s", on)` candidates: `push ebp ; mov ebp,esp`): water-ripple emitter create / attach / release around three CIntelligentPointer<CThing> temporaries (0x00A01B10 / 0x00A01B90 / 0x00A01C10), GetTC(TCI_PARTICLE_EMITTER) through LowerBound, CTCDParticleEmitter::Create(const CCharString&, const C3DVector&, bool) 0x006E0970.
+00541a00	CIconText::FitInWindow	NOT_REACHED	0	not read this pass
+00a4cec0	C3DAnimation2::CalcLocalTransformations	NOT_REACHED	0	not read this pass
+00b640e0	CEngineSkyRenderer::RenderMoon	NOT_REACHED	0	not read this pass
+00b68070	CEngineLandscapeRenderer::LoadForegroundTextures	NOT_REACHED	0	not read this pass
+0097a1b0	CAIStateGroup_CreatureTakeCover::MoveFromCoverToFiringPosition	NOT_REACHED	0	not read this pass
+0078c900	CTCBerserk::InitAbility	NOT_REACHED	0	not read this pass
+007d3f80	CTCTavernGameCoinGolf::OnInitialActivate	NOT_REACHED	0	not read this pass
+00ba4c10	CEnginePrimitiveManagerStaticMeshesBase::?PreloadPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z	NOT_REACHED	0	not read this pass
+00bd2360	CEnginePrimitiveManagerAnimatedMeshesBase::PreloadPrimitive	NOT_REACHED	0	not read this pass
+00a17af0	CPhysicsMesh::GetSphereIntersectionFromToUsingSegmentation	NOT_REACHED	0	not read this pass
+00a182c0	CPhysicsMesh::GetSphereIntersectionFromToUsingFullCollision	NOT_REACHED	0	not read this pass
+00446ef0	CGamePlayerInterface::SetControlScheme	NOT_REACHED	0	read only: four vector erase(begin, end) expansions (0x00448300 / 0x00448860), CCountedPointer assignment, a 0x1C-byte action-binding loop with `new` of nine small polymorphic input classes (vtables 0x012317A8..0x012318A4) and CVectorMap inserts: needs the input-action class family first.
+007d2ff0	CTCTavernGameCoinGolf::FrameUpdate	NOT_REACHED	0	not read this pass
+00a53c50	C3DAnimation2::CalcLocalBoneTransformation	NOT_REACHED	0	true extent 1055 bytes (SPLITS.tsv): the row runs on through eight small `ret 4` functions; quaternion slerp with the table-driven acos / sin and fistp rounding (shared GFFloatToLong helpers needed). Not authored.
+00b8c830	CEngineEnvironment::FrameStart	NOT_REACHED	0	not read this pass
+008e5880	CTCPhysicsStandard::PerformStepBasedMovement	NOT_REACHED	0	not read this pass
+00973900	CAIStateGroup_JackOfBladesBase::SummonPillarsOld	NOT_REACHED	0	not read this pass
+00785160	_global::CTCPhysicsBase_Update_CustomerInteraction	NOT_REACHED	0	not read this pass
+008637d0	CThingBodyReorienter::CheckForNewBodyReorientationAngle	NOT_REACHED	0	not read this pass
+00605ce0	CTCInventoryMap::UpdateVisitedRegions	NOT_REACHED	0	not read this pass
+00b63c00	CEngineSkyRenderer::RenderSun	NOT_REACHED	0	not read this pass

@@ -96,6 +96,12 @@ public:
     // +0xE5 in place). Member functions only: the layout is unchanged on both paths.
     bool IsDisplayingText() const { return DisplayingText; }
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_BUTTONOVERRIDE
+    // Retail opt-in (chunk Q2, row 0x007E6750 CTCOracleMinigame::FrameUpdate): Ego_r.pdb 0x004989B6
+    // ?SetButton2OverrideText@CSubtitleRenderer@@QAEXABVCCharString@@@Z, out of line in retail at 0x0048F881 (`mov ecx,[013B8790h] ;
+    // add ecx,18h ; call`; the landed CTCOracleMinigame::Quit 0x007E62D0 calls it the same way). Declaration only: no layout change.
+    void SetButton2OverrideText(const CCharString&);                     // 0x0048F881
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_INTERACTIVE
     // Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): Ego_r.pdb (0x0049A606) / FableWin.pdb (0x01A70145)
     // ?IsInInteractiveState@CSubtitleRenderer@@QBE_NXZ, out of line in retail at 0x00490A22 (`mov ecx,edi ; call`, edi = the

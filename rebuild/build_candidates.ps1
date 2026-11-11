@@ -392706,6 +392706,41 @@ $catalog = @(
         TestSource = '00/f2/CRegionScriptDef_Copy_00f29f60_test.cpp'
         PassPattern = '00f29f60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c84b0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SaveBinary_004c84b0.cpp'
+        TestSource = '00/4c/CThing_SaveBinary_004c84b0_test.cpp'
+        PassPattern = '004c84b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c9120'
+        Module = 'CThing'
+        Source = '00/4c/CThing_Save_004c9120.cpp'
+        TestSource = '00/4c/CThing_Save_004c9120_test.cpp'
+        PassPattern = '004c9120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052f1b0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_IsZoomIndependent_0052f1b0.cpp'
+        TestSource = '00/52/NUISystemCComponent_IsZoomIndependent_0052f1b0_test.cpp'
+        PassPattern = '0052f1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e6750'
+        Module = 'CTCOracleMinigame'
+        Source = '00/7e/CTCOracleMinigame_FrameUpdate_007e6750.cpp'
+        TestSource = '00/7e/CTCOracleMinigame_FrameUpdate_007e6750_test.cpp'
+        PassPattern = '007e6750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e0a10'
+        Module = 'NCreatureMode::CModeScorpionKingVulnerable'
+        Source = '00/8e/NCreatureModeCModeScorpionKingVulnerable_FrameUpdate_008e0a10.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScorpionKingVulnerable_FrameUpdate_008e0a10_test.cpp'
+        PassPattern = '008e0a10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

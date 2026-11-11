@@ -14,6 +14,11 @@ class CDataOutputStream : public CDataStream {
 public:
     virtual ~CDataOutputStream();
     virtual void Write(const void* data, long size) = 0;
+#ifdef FABLE_RETAIL_CDATAOUTPUTSTREAM_WRITESTREAM
+    // Retail opt-in (chunk Q2, row 0x004C84B0 CThing::SaveBinary): Ego_r.pdb ?Write@CDataOutputStream@@QAEXABVCMemoryDataOutputStream@@@Z
+    // (retail 0x00995EB0: writes the memory stream's PeekData() / GetLength() through the virtual Write). Declaration only.
+    void Write(const class CMemoryDataOutputStream& stream);  // 0x00995EB0
+#endif
     void WriteEBOOL(bool value);                             // 0x00993E30 ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z
     void WriteUWORD(unsigned short value);                   // 0x00993E80 ?WriteUWORD@CDataOutputStream@@QAEXG@Z
     void WriteSWORD(short value);                            // 0x00993E90 ?WriteSWORD@CDataOutputStream@@QAEXF@Z

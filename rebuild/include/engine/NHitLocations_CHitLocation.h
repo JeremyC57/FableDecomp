@@ -62,6 +62,10 @@ public:
     EActionRegisteredType GetHitResponseActionType() const;
     EActionRegisteredType GetHitKnockdownActionType() const;
     EActionRegisteredType GetHitKnockdownDeathActionType() const;
+#ifdef FABLE_RETAIL_CHITLOCATION_SETENABLED
+    // Retail opt-in (chunk Q2, row 0x008E0A10): Ego_r.pdb ?SetEnabled@CHitLocation@NHitLocations@@QAEX_N@Z (0x00816390). Declaration only.
+    void SetEnabled(bool enabled);                                       // 0x00816390
+#endif
 #ifdef FABLE_RETAIL_CHITLOCATION_STATREGISTERCLASS
     // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb / FableWin.pdb ?StatRegisterClass@CHitLocation@NHitLocations@@SIXXZ
     // (public static __fastcall), retail 0x008162F0 (between the NHitLocations primitives and CHitLocation::SetEnabled 0x00816390, as Ego_r

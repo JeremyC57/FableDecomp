@@ -1,0 +1,2 @@
+// CHeightMap::Resize @ 0x008F61A0 (catalog row, 530 bytes) -- no source: not authored
+// Grade: NOT_REACHED (0 grades) -- read only: needs a new engine/CHeightMap.h (Ego_r layout: cells vector +0x10 of 12-byte elements, Width +0x204, Height +0x208, +0x20C / +0x210 / +0x1FC); body = __allmul overflow guard on (w+1)*(h+1), a temporary vector(n) filled through 0x008F6740, std::max/std::min by reference on the offsets (the `lea reg,[a] ; jg ; lea reg,[b]` runs), the cell copy loop, swap 0x008F6A90. Next: author with std::max / std::min on named locals.

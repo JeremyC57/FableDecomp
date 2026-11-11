@@ -37,7 +37,14 @@ public:
     // Codex pass 13 (row 0x009BB110 and its siblings): Ego_r / FableWin ??0CStringParser@@QAE@XZ, ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z,
     // ?Init@CStringParser@@QAEXABVCCharString@@P6IX0@Z0J@Z, ?PeekNextItemType@..., ?ReadNextItem@..., ?ReadAsInteger@..., ?NextItemExists@...,
     // ?ReadAsStringUntilWhitespace@... (out of line); ?GetLine@CStringParser@@QBEKXZ inline.
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INLINE_DEFAULTCTOR
+    // Per-TU opt-in (chunk Q2, row 0x004C9120 CThing::Save): the default constructor expanded in place, as the CThing TU does for the
+    // parser of SerialiseThingInfo(bool, CCharString&, CSerialiseInfo&) (0x004C91FA..0x004C9241 and the landed 0x004C88E0: CBaseClass(),
+    // the vptr, the two strings, the comment list's node, then `String = 0`). Same members, no layout change.
+    CStringParser() { String = 0; }
+#else
     CStringParser();
+#endif
     CStringParser(const char*,void (__fastcall*)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0);
     void Init(const CCharString&,void (__fastcall*)(const CCharString&),const CCharString&,long);
     unsigned long GetLine() const { return CursorPos.Line; }

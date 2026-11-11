@@ -1,0 +1,17 @@
+address	name	evidence
+0052F1B0	?IsZoomIndependent@CComponent@NUISystem@@UBE_NXZ	chunk Q2 (landing cb): vtable 0x0124608C slot 103 (engine/NUISystem_CComponent.h); Ego_r.pdb 0x005A8D70 behind IsPositionIndependent
+007E6750	?FrameUpdate@CTCOracleMinigame@@UAEXXZ	chunk Q2 (landing cb): vtable 0x012707B4 slot 9; Ego_r.pdb 0x007E1C60 behind UpdateTints
+007E6450	?UpdateTints@CTCOracleMinigame@@QAEXXZ	chunk Q2 (landing cb): Ego_r.pdb 0x007E1910 right before FrameUpdate; called first by FrameUpdate 0x007E676B
+00647308	?OracleSymbolSize@CDrawQuestInfo@NPlayerGui@@QAEJXZ	chunk Q2 (landing cb): counts the list at +0x40 = OracleSymbols (engine/NPlayerGui_CDrawQuestInfo.h layout); Ego_r.pdb 0x006875D2; caller 0x007E6797 compares it with InputsPending.size()
+006463F0	?OracleSymbolPopFront@CDrawQuestInfo@NPlayerGui@@QAEXXZ	chunk Q2 (landing cb): `add ecx,40h; if (!empty) jmp list::pop_front 0x00655A2E`; Ego_r.pdb order PopBack 0x0068C6F4 / PopFront 0x0068C70F = retail 0x006463E1 / 0x006463F0
+006463E1	?OracleSymbolPopBack@CDrawQuestInfo@NPlayerGui@@QAEXXZ	chunk Q2 (landing cb): same shape on +0x40 with jmp 0x005791B5; Ego_r.pdb order
+008E0A10	?FrameUpdate@CModeScorpionKingVulnerable@NCreatureMode@@UAEXXZ	chunk Q2 (landing cb): vtable 0x0128582C slot 3 (CModeBase slot 3 FrameUpdate); Ego_r.pdb 0x00823030; calls the private Recover 0x008DF3A0
+004C08C0	?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z	chunk Q2 (landing cb): six arguments (name, index, 0, pos, orientation, 1.0f) from thing+0x64 at 0x008E0AC4; Ego_r.pdb 0x004C1B40
+006E0880	?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z	chunk Q2 (landing cb): fastcall (ecx long, edx const C3DVector&, one stack bool) at 0x008E0AE4; Ego_r.pdb 0x00534C30
+004C84B0	?SaveBinary@CThing@@QAEXAAVCDataOutputStream@@@Z	chunk Q2 (landing cb): Ego_r.pdb 0x004C9E60 / FableWin.pdb 0x01CF18B0; the only CThing member taking a CDataOutputStream&; builds CPersistContext(CDataOutputStream&, bool) on its argument
+00995EB0	?Write@CDataOutputStream@@QAEXABVCMemoryDataOutputStream@@@Z	chunk Q2 (landing cb): Ego_r.pdb; SaveBinary passes its CMemoryDataOutputStream (`lea ecx,[esp+78h] ; push ecx`, 0x004C864D); the body reads the stream Data array +8
+004CBD50	?TransferBinaryIn@?$CPersistTraits@C@@QAEXAAVCMemoryDataInputStream@@AAC@Z	chunk Q2 (landing cb): the load arm of Transfer(info.Player) in SaveBinary 0x004C85BC; CSerialiseInfo::Player is signed char (Ego_r.pdb) and the save arm sign-extends (`movsx ecx,byte ptr`, 0x004C859D)
+004C9120	?Save@CThing@@UAEXAAVCCharString@@@Z	chunk Q2 (landing cb): Ego_r.pdb 0x004CAF70; CClass slot 2 of the CThing vtable family (cells 0x01239AC4 / 0x01272C2C / 0x01272EEC)
+0051E2E0	?IsSerialisingGameState@CThingManager@@QBE_NXZ	chunk Q2 (landing cb): `mov al,[ecx+9Ah] ; ret`; called on CThing::PCurrentThingManager at 0x004C9147; engine/CThingManager.h FABLE_RETAIL_CTHINGMANAGER_ACCESSORS (Ego_r donor order)
+009BAA10	?Init@CPersistContext@@QAEXAAVCCharString@@PBVCDefinitionManager@@@Z	chunk Q2 (landing cb): Ego_r.pdb; two stack arguments (&data, 0) at 0x004C9245
+009BAE10	??0CPersistContext@@QAE@AAVCCharString@@@Z	chunk Q2 (landing cb): Ego_r.pdb; one argument (&data) at 0x004C928B

@@ -60,6 +60,11 @@ public:
         C3DVector&, C3DVector&, float);                                // 0x008168B0
     const NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector&, const C3DVector&,
         C3DVector&, C3DVector&, float) const;                          // 0x00816AA0
+#ifdef FABLE_RETAIL_CTCHITLOCATIONS_FROMNAME
+    // Retail opt-in (chunk Q2, row 0x008E0A10): the landed 0x00815820 (the first hit location whose def's instantiation name
+    // equals `name`; no PDB carries the name: the established landed spelling, descriptive). Declaration only.
+    NHitLocations::CHitLocation* GetPHitLocationFromName(const CCharString& name);   // 0x00815820
+#endif
 private:
     unsigned char HitLocations[0xC];                                  // +0x0C vector<pair<NHitLocations::CHitLocation,long> >
     NHitLocations::CHitLocation* PDefaultHitLocation;                 // +0x18

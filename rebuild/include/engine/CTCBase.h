@@ -187,6 +187,14 @@ protected:
     // 0x00686DA0 (the GFRandom seed argument, `call 0x00686DA0; mov edx,eax` before `call 0x004CDAE0`). Declaration only.
     unsigned long* GetPWorldSeed() const;                                // 0x00686DA0
 #endif
+#ifdef FABLE_RETAIL_CTCBASE_SERIALISE
+    // Retail opt-in (chunk Q2, row 0x004C84B0 CThing::SaveBinary): Ego_r.pdb / FableWin.pdb ?Serialise@CTCBase@@QAEXAAVCPersistContext@@_N@Z
+    // (the landed 0x00686AA0, `push 1 ; push &context ; mov ecx,tc ; call`, 0x004C8782) and ?IsToBeRemoved@CTCBase@@QBE_NXZ (inline in
+    // retail: SaveBinary reads the byte +0x08 in place, 0x004C86ED). No layout or vtable change.
+public:
+    void Serialise(CPersistContext& context, bool saving);               // 0x00686AA0
+    bool IsToBeRemoved() const { return ToBeRemoved; }
+#endif
 public:
     CThing* ParentThing;                                                 // +0x04
     bool    ToBeRemoved;                                                 // +0x08

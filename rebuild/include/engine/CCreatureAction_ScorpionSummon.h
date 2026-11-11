@@ -9,6 +9,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_CLASS
+// Retail opt-in (chunk Q2, row 0x008E0A10): the polymorphic class, RTTI .?AVCCreatureAction_ScorpionSummon@@ : CCombatActionBase (no own
+// members: sizeof 0x114 = the base's); Ego_r.pdb ??0CCreatureAction_ScorpionSummon@@QAE@AAVCThingCreatureBase@@0@Z (retail 0x008E46D0).
+// The temporary's implicit destructor is ~CCombatActionBase 0x0062E900. Needs engine/CCombatActionBase.h first.
+class CThingCreatureBase;
+class CCreatureAction_ScorpionSummon : public CCombatActionBase {
+public:
+    CCreatureAction_ScorpionSummon(CThingCreatureBase& creature, CThingCreatureBase& target);   // 0x008E46D0
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ScorpionSummon {
 public:
@@ -29,5 +39,7 @@ public:
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionSummon) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionSummon, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONSUMMON_H

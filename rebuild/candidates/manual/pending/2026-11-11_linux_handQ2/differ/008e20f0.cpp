@@ -1,0 +1,2 @@
+// NCreatureMode::CModeGuildmasterPowerUpShield::FrameUpdate (slot 3) @ 0x008E20F0 (catalog row, 1019 bytes) -- no source: not authored
+// Grade: NOT_REACHED (0 grades) -- read only: twin shape of 0x008E24F0; two GetHelperPoint lookups, a midpoint, a per-orb loop building a lightning-effect record (vector push_back 0x0076ADA0 inline) and a CCombatActionBase-derived action at the end. The landed CModeScorpionKing rows are the template (hdr/engine/NCreatureMode_CModeScorpionKingVulnerable.h shows the header shape).

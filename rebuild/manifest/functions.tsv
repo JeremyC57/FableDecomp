@@ -5276,7 +5276,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c8280	IsGameStatePersisted	CThing	__thiscall	bool	1	CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_IsGameStatePersisted_004c8280.cpp
 004c82a0	IsLevelPersistent	CThing	__thiscall	bool	1	CThing *	1	yes	accepted									
 004c8310	~CThing	CThing	__thiscall	void	1	CThing *	1	yes	accepted									
-004c84b0	CThing::Serialise	CThing	unknown	undefined	0		0	yes	accepted									
+004c84b0	SaveBinary	CThing	unknown	undefined	0		0	yes	accepted									
 004c88e0	SerialiseThingInfo	CThing	__fastcall	void	3	bool,CCharString *,CSerialiseInfo *	1	yes	accepted									
 004c8a30	GetSubTypeFromScript	CThing	__fastcall	long	1	char *	1	yes	accepted									
 004c8ba0	WorldUpdateBulletTime	CThing	__thiscall	void	1	CThing *	1	yes	accepted									
@@ -9218,7 +9218,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052f180	IsBastardChild	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f190	vfunc_101	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f1a0	IsPositionIndependent	NUISystem::CComponent	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
-0052f1b0	vfunc_103	NUISystem::CComponent	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+0052f1b0	IsZoomIndependent	NUISystem::CComponent	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 0052f3e0	GetRenderLayer	CComponent	__thiscall	long	1	CComponent *	1	yes	accepted									
 0052f430	vfunc_133	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f440	CUIState	CUIState	__thiscall	undefined	2	CUIState *,CUIStateDef *	0	yes	accepted									
@@ -29335,7 +29335,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e07f0	FrameUpdate	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e08c0	Recover	NCreatureMode::CModeCreatureIsProjectile	__thiscall	void	1	CModeCreatureIsProjectile *	1	yes	accepted									
 008e0990	FrameUpdate	NCreatureMode::CModeRockTrollVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008e0a10	NCreatureMode::CModeScorpionKingVulnerable::vfunc_3	NCreatureMode::CModeScorpionKingVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008e0a10	FrameUpdate	NCreatureMode::CModeScorpionKingVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e0d20	FrameUpdate	NCreatureMode::CModeScorpionKingTailPlunge	__thiscall	void	1	CModeScorpionKingTailPlunge *	1	yes	accepted									
 008e10e0	FrameUpdate	NCreatureMode::CModeScorpionKingExhausted	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e1150	CModeDragonFlying	NCreatureMode::CModeDragonFlying	__thiscall	undefined	6	CModeDragonFlying *,CThing *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,float,CCountedPointer<CCreatureActionBase>	0	yes	accepted									

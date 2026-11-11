@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00647308	?OracleSymbolSize@CDrawQuestInfo@NPlayerGui@@QAEJXZ	list at +0x40 is OracleSymbols (Elements is +0x58); Ego_r.pdb 0x006875D2; CTCOracleMinigame::FrameUpdate 0x007E6797 compares it with InputsPending.size()	CDrawQuestInfo::GetElementCount (landed), GetElementByIndex (manifest)
+006463f0	?OracleSymbolPopFront@CDrawQuestInfo@NPlayerGui@@QAEXXZ	`add ecx,40h` + tail jump to std::list::pop_front 0x00655A2E; Ego_r.pdb PopBack/PopFront order = retail 0x006463E1 / 0x006463F0	CRenderTarget::DetachTarget (landed)
+004c84b0	?SaveBinary@CThing@@QAEXAAVCDataOutputStream@@@Z	Ego_r.pdb 0x004C9E60 / FableWin.pdb 0x01CF18B0; takes a CDataOutputStream& (CPersistContext(CDataOutputStream&, bool) 0x009BAE50 built on it; caller 0x005222B5)	CThing::Serialise (catalog)
+00995eb0	?Write@CDataOutputStream@@QAEXABVCMemoryDataOutputStream@@@Z	Ego_r.pdb name set; SaveBinary 0x004C864D passes a CMemoryDataOutputStream; body reads Data +8	CDataOutputStream::Write(const CByteBlock&) (landed)
+004cbd50	?TransferBinaryIn@?$CPersistTraits@C@@QAEXAAVCMemoryDataInputStream@@AAC@Z	CSerialiseInfo::Player is signed char; the save arm of the same inline Transfer sign-extends (0x004C859D)	CPersistTraits<unsigned char>::TransferBinaryIn (landed)
+0051e2e0	?IsSerialisingGameState@CThingManager@@QBE_NXZ	`mov al,[ecx+9Ah] ; ret` on a CThingManager (CThing::Save 0x004C9147 calls it on PCurrentThingManager); engine/CThingManager.h already binds the address	CTCInventoryBase::GetCanItemBeQuickAssigned (landed file name / Leaf)

@@ -1,0 +1,23 @@
+addr       parity           behav  name
+004c84b0   RELOCATION_MATCH PASS   SaveBinary
+004c9120   WARN RELOC_NAME: ?IsSerialisingGameState@CThingManager@@QBE_NXZ -> 0051e2e0 labelled '_global::GetMember_byte0x9a_0051e2e0'
+004c9120   RELOCATION_MATCH PASS   Save
+0052f1b0   MATCH            PASS   IsZoomIndependent
+007e6750   WARN RELOC_NAME: ?OracleSymbolSize@CDrawQuestInfo@NPlayerGui@@QAEJXZ -> 00647308 labelled 'GetElementByIndex'
+007e6750   WARN RELOC_NAME: ?OracleSymbolPopFront@CDrawQuestInfo@NPlayerGui@@QAEXXZ -> 006463f0 labelled 'CRenderTarget::DetachTarget'
+007e6750   RELOCATION_MATCH PASS   FrameUpdate
+008e0a10   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 5
+  004c84b0 RELOCATION_MATCH CThing::?SaveBinary@CThing@@QAEXAAVCDataOutputStream@@@Z
+  004c9120 RELOCATION_MATCH CThing::?Save@CThing@@UAEXAAVCCharString@@@Z
+  0052f1b0 MATCH NUISystem::CComponent::?IsZoomIndependent@CComponent@NUISystem@@UBE_NXZ
+  007e6750 RELOCATION_MATCH CTCOracleMinigame::?FrameUpdate@CTCOracleMinigame@@UAEXXZ
+  008e0a10 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?FrameUpdate@CModeScorpionKingVulnerable@NCreatureMode@@UAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CThing_SaveBinary_004c84b0
+  CThing_Save_004c9120
+  NUISystemCComponent_IsZoomIndependent_0052f1b0
+  CTCOracleMinigame_FrameUpdate_007e6750
+  NCreatureModeCModeScorpionKingVulnerable_FrameUpdate_008e0a10
