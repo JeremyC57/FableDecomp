@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+007f39a0	?SetPParent@CTCLightningNode@@QAEXAAVCThing@@@Z	LABELS.tsv (proven in chunk 2022, re-used for the matched row 0x007F26B0)	unattributed AssignTarget_007f39a0 (landed rebuild/src/compiled/00/7f/unattributed_AssignTarget007f39a0_007f39a0.cpp)
+007f39f0	?SetPSourceOfFaction@CTCLightningNode@@QAEXPBVCThing@@@Z	LABELS.tsv (proven in chunk 2022, re-used for the matched row 0x007F26B0)	unattributed AssignTarget_007f39f0
+007f3a40	?SetPSourceOfHit@CTCLightningNode@@QAEXPAVCThing@@@Z	LABELS.tsv (proven in chunk 2022, re-used for the matched row 0x007F26B0)	unattributed AssignTarget_007f3a40
+007f3bb0	??$GetDef@VCLightningDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCLightningDef@@@@@Z	LABELS.tsv (proven in chunk 2022, re-used for the matched row 0x007F26B0)	CDefinitionManager::GetDef_007f3bb0 (landed)
+007f4780	?Reset@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@QAEXPAVCLinearSpline@NBBBMaths@@@Z	LABELS.tsv (proven in chunk 2022, re-used for the matched row 0x007F26B0)	CCountedPointer_007f3fb0::Reset (landed)
+00a58130	?ProcessPoints@CLinearSpline@NBBBMaths@@QAEXJ@Z	LABELS.tsv (proven in chunk 2022, re-used for the matched row 0x007F26B0)	CPSCSplineBase_GenerateCurvePoints (catalog)
