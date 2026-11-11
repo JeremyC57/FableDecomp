@@ -1,0 +1,23 @@
+address	name	grade	grades_used_H40k	note
+0x00507C30	CWorldMap::LoadFromFile	DIFFER(7661v7661)	2	2 masked lines kept (draft); terminator via buffer[] worse (51). Loop-exit reload order only
+0x00C4F600	CEAXManager::SetEAXProperty (catalog PropertySerializer_GetPropertyTypeCode wrong)	DIFFER(9204v9204)	1	85 kept; baseline only (rotation step, 30 earlier probes); header debt: row-local CEAXManager / CEAXVoice
+0x00E50FD0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main	DIFFER(9850v9885)	5	99 kept; /d2inlT73 / T75, inline ~CScriptThing, function-scope answer = 0 all byte-identical
+0x00D0F640	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre	DIFFER(2131v2101)	3	108 kept; /d2inlT73 / T75 byte-identical
+0x00D13580	NScript::CQ_BountyHuntScript::Main	DIFFER(6875v6917)	5	119 -> 106: per-row /d2inlT75 (cutscene-1 movie dtor s74 v T74, retail expands at 0x00D13D94); differ/ updated (FABLE_FORCEINLINE respelled)
+0x00DB97A0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Main	DIFFER(6859v7013)	5	125 kept; T73 worse (184), T75 / outro-test folds byte-identical; pad cross-jump cause measured (exit block layout, NOTES)
+0x00E5FD40	NScript::CV_BodyGuardScript::CBodyGuard::Main	DIFFER(9471v9381)	4	163 kept; T73 / T75 / T76 byte-identical (~CScriptThing split already retail's); residue = block layout + one exit not cross-jumped
+0x00D973D0	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main	DIFFER(9997v9821)	4	190 kept; T73 / T75 byte-identical; inline ~CScriptThing worse (560)
+0x00E3BB70	NScript::CV_BordelloScript::CMadame::Main	DIFFER(10053v10149)	4	198 kept; T73 / T75 / inline ~CScriptThing byte-identical
+0x00E33EA0	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main	DIFFER(9303v9228)	3	323 kept; T73 / T75 identical; inline ~CScriptThing worse (565)
+0x00E4B5B0	NScript::CV_BanditTollScript::CTollBandit::Main	DIFFER(10610v10594)	3	591 kept; T73 / T75 / inline ~CScriptThing identical
+0x00CF68C0	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::Main	DIFFER(8150v8070)	2	864 kept; T73 / T75 identical (movie / STB dtor sites span s71..s15000)
+0x00E20600	NScript::CQR_EscortTraderScript::CTraderToEscort::Main	DIFFER(14478v14510)	2	355 kept; T73 / T75 identical
+0x00F0FB70	NScript::CQ_ArenaScript::Main	DIFFER(18320v18144)	1	895 kept; baseline only
+0x0061E6D0	CTCInventoryQuests::ConstructQuestListPC	DIFFER(12357v12356)	1	1295 kept; baseline only
+0x00B10B10	NParticleEngine::CPSCEmitterGeneric::GenerateParticle	DIFFER(4380v4276)	1	788 kept; baseline only
+0x00B03CA0	NParticleEngine::CPSCRenderMesh::PreparePrimitives	DIFFER(6601v6515)	1	1022 kept; baseline only
+0x00DF6010	NScript::CQ_TraderConflictEvilScript::Main	DIFFER(6247v6493)	1	1486 kept; baseline only
+0x006096E0	CTCInventoryMap::ConstructLogbookListPC	DIFFER(12864v12832)	1	902 kept (/d2inlT71); baseline only
+0x00502E90	CWorldMap::PopulateRegionWithVillagers	SRC_FAIL	1	11 header-debt errors (hand879 opt-ins not on HEAD); draft untouched except note
+0x0078FD60	CTCDivineWrath::FrameUpdate	SRC_FAIL	1	>100 declaration errors; draft untouched except note
+0x00603000	CTCInventoryMap::CreateMiniMapMarkers	not graded	0	skipped per coordinator (compile does not finish in 900 s); draft untouched
