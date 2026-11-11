@@ -333,6 +333,23 @@ private:
  float InventoryAnimXRotationAngleGain,InventoryAnimYRotationAngleGain,InventoryAnimZRotationAngleGain;
  bool EnableAnimXAxis,EnableAnimZAxis;
  long InventoryAnimThingDefIndex,RHSetInvItemDefIndex,ParentMapNumber;
+#ifdef FABLE_RETAIL_NINVENTORY_CTCINVENTORYBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x004E7D3B
+public:
+    virtual void UpdateMenuScrollButtonsCategory();  // slot 28, 0x005BC589
+public:
+    virtual void UpdateMenuScrollButtonsItem();  // slot 29, 0x005BC58A
+public:
+    virtual void OnItemSelectedInHand(CThing&, bool&);  // slot 34, 0x004E7D3E
+public:
+    virtual void OnChangeCategory();  // slot 37, 0x005BC4C3
+public:
+    virtual void SetInventorySelectionState(NInventory::CTCInventoryBase::EInventorySelectionState);  // slot 46, 0x005BC586
+public:
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NInventory::CTCInventoryBase)==0x130);

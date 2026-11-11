@@ -7,10 +7,20 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS
+// Landing cf (2026-11-11): the real class is NCreatureMode::CModeDragonBase (?GetAnimFilter@CModeDragonBase@NCreatureMode@@UBEABVCAnimFilterBase@@XZ,
+// retail 0x00741D50). The opt-in puts it in its namespace, declares the retail virtual in place of the vptr member and types Filter; same layout.
+#include "engine/CAnimFilterOfGroup.h"
+namespace NCreatureMode {
+#endif
 
 #pragma pack(push, 1)
 struct CModeDragonBase {
+#ifdef FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS
+    virtual const CAnimFilterBase& GetAnimFilter() const;   // vptr +0x00; slot 4, 0x00741D50
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     long          holder;                                    // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
@@ -18,16 +28,28 @@ struct CModeDragonBase {
     unsigned char _pad_0x14[0x4];                            // +0x14
     unsigned char active;                                    // +0x18 retail-only unsigned char (previous header)
     unsigned char _pad_0x19[0x3];                            // +0x19
+#ifdef FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS
+    CAnimFilterOfGroup Filter;                               // +0x1c
+#else
     unsigned char Filter[0xc];                               // +0x1c CAnimFilterOfGroup
+#endif
     unsigned char PTarget[0x8];                              // +0x28 CIntelligentPointer<CThing>
 };
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS
+}  // namespace NCreatureMode
+#define FABLE_CMODEDRAGONBASE_T NCreatureMode::CModeDragonBase
+#else
+#define FABLE_CMODEDRAGONBASE_T CModeDragonBase
+#endif
 
-FABLE_STATIC_ASSERT(sizeof(CModeDragonBase) == 0x30);
+FABLE_STATIC_ASSERT(sizeof(FABLE_CMODEDRAGONBASE_T) == 0x30);
+#ifndef FABLE_RETAIL_CMODEDRAGONBASE_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CModeDragonBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CModeDragonBase, holder) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CModeDragonBase, active) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CModeDragonBase, Filter) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CModeDragonBase, PTarget) == 0x28);
+#endif
+FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, holder) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, active) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, Filter) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(FABLE_CMODEDRAGONBASE_T, PTarget) == 0x28);
 
 #endif // FABLE_ENGINE_CMODEDRAGONBASE_H

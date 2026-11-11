@@ -45,6 +45,13 @@ public:
         FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffsetSecondOrder) == 0xcc);
         FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, LockedOntoEnemy) == 0xf4);
     }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004E231A
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargetingPlayer) == 0xf8);
 #else
@@ -60,7 +67,9 @@ FABLE_STATIC_ASSERT(sizeof(CTCTargetingPlayer) == 0xf8);
 #pragma pack(push, 1)
 class CTCTargetingPlayer {
 public:
+#ifndef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
@@ -111,11 +120,20 @@ public:
     unsigned char PTargetOnlyThing[0x8];                     // +0xec CIntelligentPointer<CThing>
     bool          LockedOntoEnemy;                           // +0xf4
     unsigned char _pad_0xf5[0x3];                            // +0xf5
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004E231A
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCTargetingPlayer) == 0xf8);
+#ifndef FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, ZLockTargetSelectionTimer) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetNextThing) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, ForcedToHaveNoTarget) == 0x3d);

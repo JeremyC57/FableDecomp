@@ -17,6 +17,14 @@ class CTCFireballSpell : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_FIREBALL_SPELL; }
     void CancelMove();                                                   // 0x007C8FD0
+#ifdef FABLE_RETAIL_CTCFIREBALLSPELL_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007C95B0
+public:
+#endif
 };
 #else
 class CTCFireballSpell;

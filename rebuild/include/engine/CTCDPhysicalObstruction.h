@@ -32,6 +32,13 @@ public:
     float         Radius;                                // +0x28
     unsigned char ThingsToIgnoreObstruction[0xc];        // +0x2c vector<CIntelligentPointer<CThing> >
     unsigned char Lines[0x18];                           // +0x38 line1, line2, line3 (CEnginePrimitiveHandle)
+#ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004DF1C9
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDPhysicalObstruction) == 0x50);
 #endif // FABLE_ENGINE_CTCDPHYSICALOBSTRUCTION_H

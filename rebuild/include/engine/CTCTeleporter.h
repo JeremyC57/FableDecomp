@@ -17,6 +17,15 @@ public:
  // ?TeleportHero@CTCTeleporter@@QAEXXZ, out of line in retail at 0x007DFCF0. Declaration only.
  void TeleportHero();                                                 // 0x007DFCF0
 #endif
+#ifdef FABLE_RETAIL_CTCTELEPORTER_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007E0520
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x007E0530
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTeleporter)==28);
 #endif

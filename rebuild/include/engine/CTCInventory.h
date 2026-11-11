@@ -351,6 +351,16 @@ public:
 #endif
     float         AccumFadeTime;                             // +0x220
     unsigned char _pad_0x224[0x4];                           // +0x224
+#ifdef FABLE_RETAIL_CTCINVENTORY_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00594BE4
+public:
+    virtual void OnChangeCategory();  // slot 37, 0x00594BE7
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventory) == 0x228);
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, PTop_Level_List) == 0x218);

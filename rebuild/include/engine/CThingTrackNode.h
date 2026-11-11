@@ -45,6 +45,13 @@ protected:
     bool ConstructFromParams(long defIndex,const C3DVector& position,CCharString trackName);   // 0x00836C50
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x008384E0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingTrackNode)==0xf0);
 #endif

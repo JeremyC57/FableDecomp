@@ -16,7 +16,9 @@ struct CSpotLightInfo;
 #pragma pack(push, 1)
 class CTCSpotLight {
 public:
+#ifndef FABLE_RETAIL_CTCSPOTLIGHT_VSLOTS
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
     unsigned char    _pad_0x0c[0x4];                         // +0x0c
@@ -28,11 +30,24 @@ public:
     CPrimitive*      LightPrimitive;                         // +0x20
     float            AccumilativeFlickerFactor;              // +0x24
     float            OldAccumilativeFlickerFactor;           // +0x28
+#ifdef FABLE_RETAIL_CTCSPOTLIGHT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007325C0
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x007325B0
+public:
+    virtual void EditorDrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo const &);  // slot 28, 0x00731AB0
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCSpotLight) == 0x2c);
+#ifndef FABLE_RETAIL_CTCSPOTLIGHT_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightInfo_Data) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightInfo_Info) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightDef_Object) == 0x18);

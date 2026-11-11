@@ -15,6 +15,14 @@ class CTCSolidToThing : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SOLID_TO_THING; }
     void AddThingNotSolidTo(const CThing* thing);                    // 0x00770FA0
+#ifdef FABLE_RETAIL_CTCSOLIDTOTHING_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00771020
+public:
+#endif
 };
 #endif
 #endif // FABLE_ENGINE_CTCSOLIDTOTHING_H

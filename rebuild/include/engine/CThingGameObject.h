@@ -79,6 +79,30 @@ protected:
                              CThingPhysical* creator,CThingPhysical* originalCreator,bool a8);   // 0x008388D0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool DrawIsTargeted() const;  // slot 60, 0x00838990
+public:
+    virtual bool IsUsingTriggerRadius() const;  // slot 61, 0x00529830
+public:
+    virtual void SetTriggerRadius(float);  // slot 63, 0x00529850
+public:
+    virtual bool IsCover() const;  // slot 64, 0x00529860
+public:
+    virtual bool IsGameObject() const;  // slot 66, 0x00529870
+public:
+    virtual bool IsIndestructible() const;  // slot 67, 0x00529880
+public:
+    virtual void ForceAnim(long, bool);  // slot 68, 0x005298A0
+public:
+    virtual void ForceAnim(CCharString const &, bool);  // slot 69, 0x00529890
+public:
+    virtual long GetMaterialOnHitByMelee() const;  // slot 70, 0x005298B0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingGameObject)==0xd0);
 #else

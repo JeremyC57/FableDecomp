@@ -16,5 +16,14 @@ public:
     CCharString GetOpenAnimNameForCreature() const;                      // 0x00750240
     void Open();                                                         // 0x00750540
     void Close();                                                        // 0x007506C0
+#ifdef FABLE_RETAIL_CTCCHEST_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00750950
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00750970
+public:
+#endif
 };
 #endif

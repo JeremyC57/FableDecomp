@@ -87,6 +87,24 @@ public:
         FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, PHeroCombatDef) == 0x1e8);
         FABLE_STATIC_ASSERT(offsetof(CThingPlayerCreature, MovementBandType) == 0x200);
     }
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool DrawIsDisplayingInformation() const;  // slot 33, 0x006A9560
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x0052ABA0
+public:
+    virtual bool IsControlled() const;  // slot 76, 0x0052ABB0
+public:
+    virtual bool IsPlayerCharacter() const;  // slot 77, 0x0052ABE0
+public:
+    virtual bool IsToUnsheatheItemsAfterCutscenes() const;  // slot 88, 0x0052ABD0
+public:
+    virtual bool FeelsGravity() const;  // slot 91, 0x006A9570
+public:
+#endif
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CThingPlayerCreature)==0x208);

@@ -33,6 +33,13 @@ private:
 public:
  virtual ~CTCNoise();
  CTCNoise & operator=(const CTCNoise & p0);
+#ifdef FABLE_RETAIL_CTCNOISE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007499E0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCNoise)==80);
 #endif
@@ -57,6 +64,13 @@ protected:
     long LifeTimer;                                                      // +0x40
     float DistanceCanBeHeardFrom;                                        // +0x44
     CIntelligentPointer<const CThing> Creator;                           // +0x48
+#ifdef FABLE_RETAIL_CTCNOISE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007499E0
+public:
+#endif
 };
 #endif
 

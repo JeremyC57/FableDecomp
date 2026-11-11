@@ -21,6 +21,15 @@ protected:
     CDefPointer<const class CThingSwitchDef> PeekDefinition() const;     // 0x0083C1E0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGSWITCH_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x00529B50
+public:
+    virtual bool IsUsingTriggerRadius() const;  // slot 61, 0x00529B70
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingSwitch)==0xe8);
 #endif

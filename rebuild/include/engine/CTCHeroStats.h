@@ -280,6 +280,16 @@ private:unsigned char _before_stamina[0x58-sizeof(CTCBase)];
 #else
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x005814C3
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x005814C6
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);
 #endif

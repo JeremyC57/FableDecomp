@@ -79,6 +79,14 @@ public:
     long             TimeWielded;                            // +0x20
     bool             Wielded;                                // +0x24
 #endif
+#ifdef FABLE_RETAIL_CTCWEAPON_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x005DAE10
+public:
+#endif
 };
 #ifdef FABLE_RETAIL_CTCWEAPON_MEMBERS
 FABLE_STATIC_ASSERT(sizeof(CTCWeapon) == 0x28);

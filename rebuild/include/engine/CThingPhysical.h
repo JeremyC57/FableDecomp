@@ -87,6 +87,30 @@ public:
     // override of CThing's, FABLE_RETAIL_CTHING_LEVELSCRIPT; vtable entry 0x00E44E94 file offset). A declaration only.
     virtual bool ConstructFromLevelScript(const char* script);   // 0x006A5D90
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x00529730
+public:
+    virtual unsigned long GetProperties() const;  // slot 48, 0x00529740
+public:
+    virtual bool IsCrop() const;  // slot 49, 0x00529750
+public:
+    virtual bool IsHidden() const;  // slot 50, 0x00529760
+public:
+    virtual bool IsTargetedByPlayer(long) const;  // slot 51, 0x00529770
+public:
+    virtual void SetTargetedByPlayer(long);  // slot 52, 0x00529780
+public:
+    virtual void ClearTargetedByPlayer(long);  // slot 53, 0x00529790
+public:
+    virtual bool CanBlockUpperLevelNavigatingCreature() const;  // slot 56, 0x005297B0
+public:
+    virtual bool UseHighDetailQuadTree() const;  // slot 57, 0x005297C0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingPhysical)==0xc0);
 #else

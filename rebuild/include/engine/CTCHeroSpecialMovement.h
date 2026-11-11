@@ -19,6 +19,13 @@ private:
     float SprintFramesRemaining;                                         // +0x10
     long  RunTimer;                                                      // +0x14
     CDefPointer<const CHeroSpecialMovementDef> PHeroSpecialMovementDef;  // +0x18
+#ifdef FABLE_RETAIL_CTCHEROSPECIALMOVEMENT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007E0A30
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroSpecialMovement) == 0x1c);
 #endif

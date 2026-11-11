@@ -30,6 +30,14 @@ public:
  virtual void FrameUpdate();                                         // 0x00811450
 #endif
 protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004E3D12
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);
 #else

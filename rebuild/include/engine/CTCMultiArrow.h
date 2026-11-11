@@ -24,6 +24,13 @@ public:
     // Public as the other partial retail models (CTCHero): the layout is asserted below.
     unsigned char PDef[4];                                   // +0x0C CDefPointer<const CSpecialAbilitiesMultiArrowDef>
     long NumberOfShots;                                      // +0x10
+#ifdef FABLE_RETAIL_CTCMULTIARROW_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007CC980
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(offsetof(CTCMultiArrow, NumberOfShots) == 0x10);
 #endif // FABLE_ENGINE_CTCMULTIARROW_H

@@ -48,6 +48,15 @@ public:
     bool IsWeaponUseAllowed() const { return WeaponsUsable; }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCHERO_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x006CA720
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x006CA730
+public:
+#endif
 };
 #ifdef FABLE_RETAIL_CTCHERO_TITLE
 FABLE_STATIC_ASSERT(sizeof(CTCHero) == 0x38);

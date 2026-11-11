@@ -57,6 +57,13 @@ private:
     std::list<CCountedPointer<CModeBase> > PModes;
     long TimeLeftForCurrentMode,TimeForNextIdleMode;
     unsigned char AvailableIdleModes[12]; // std::vector<NCreatureMode::EMode>.
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+protected:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007442A0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCreatureModeManager)==0x24);
 

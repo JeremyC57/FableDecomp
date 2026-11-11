@@ -45,7 +45,9 @@ public:
     void EditFrameUpdate();                                  // 0x00707930
 #endif
 #endif
+#ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
@@ -56,11 +58,22 @@ public:
     unsigned char HiddenMaterialNames[0xc];                  // +0x24 set<CCharString,std::less<CCharString>,std::allocator<CCharString>_>
     unsigned char AppearanceModifiers[0xc];                  // +0x30 vector<std::vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierEntry>_>,std::allocator<std::vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierEntry>_>_>_>
     unsigned char Graphics[0xc];                             // +0x3c vector<CTCHeroAttachableAppearanceModifiers::CModifierGraphic,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierGraphic>_>
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007097E0
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x007097F0
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCHeroAttachableAppearanceModifiers) == 0x48);
+#ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, FrameLastChanged) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiersLoaded) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroAttachableAppearanceModifiers, PrimHandles) == 0x18);

@@ -124,6 +124,13 @@ public:
     NUISystem::CComponent* PRangedList;                                  // +0x190
     NUISystem::CComponent* PMeleeList;                                   // +0x194
     std::list<NUISystem::CComponent*> AvailableWeaponsEntries;           // +0x198
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual void OnChangeCategory();  // slot 37, 0x005CC4F8
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryWeapons) == 0x1A0);   // 0x19C of members, rounded to the base's 8-byte alignment (double LastRenderTime)
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, PActiveMeleeWeapon) == 0x134);

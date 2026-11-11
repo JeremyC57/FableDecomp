@@ -29,6 +29,14 @@ protected:
     long                   RHSetLastFrameSet;                // +0x80
     unsigned char          CollidesWithThings[0x1];          // +0x84 bitfield group: bool:1
     unsigned char          Impassable[0x3];                  // +0x85 bitfield group: bool:1
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsAffectedByWind() const;  // slot 50, 0x00724C20
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsStandard) == 0x88);
 #else // flattened Ego_r layout (the landed default)

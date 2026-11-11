@@ -30,6 +30,18 @@ private:
     unsigned char SelectedShape[4]; // Original STLport vector iterator
     bool Activated,NewShapeActivated,LeavingShape;
     C2DBoxF ClosedShapeBounds;
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00765650
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00765640
+public:
+    virtual void EditorDrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo const &);  // slot 28, 0x0075FFE0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCShapeManager)==0x30);
 #endif

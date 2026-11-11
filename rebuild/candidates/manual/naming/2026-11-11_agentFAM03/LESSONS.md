@@ -1,0 +1,11 @@
+# agentFAM03 lessons (one line each)
+- No source in the repo holds the PDB virtual ORDER (struct_layouts / fable_types.h are data-only, the name sets are keyed by donor address); the Xbox 360 Test PDB type records (`$S/anniv_dbg/dl/WellingtonGame-Xbox360-Test.pdb`, LF_ONEMETHOD/LF_METHODLIST intro offsets) give each class's full vtable, and the TLC vtable's named slots pin it.
+- The 360 vtables are TLC plus Anniversary additions (CTCBase gained BeginSerialising and a CInterpolationInfo DrawPreparePrimitivesForRendering overload: TLC CTCBase has 28 slots, 360 30): drop 360 entries whose name+parameter list is not a virtual in the TLC name sets of the class hierarchy, then map gap by gap between anchors.
+- MSVC puts an overload group in REVERSE declaration order (GetFacingVector(float) before GetFacingVector()); the 360 vfptr offsets already reflect it.
+- The TLC editor-only virtuals in the name sets (CTCBase::EditFrameUpdate / Editor* / Get/SetFromPropertiesStruct) are not in retail CTCBase's vtable; derived classes that declare EditorDrawPreparePrimitivesForRendering introduce it as a new slot in retail.
+- A slot body's owner is the most-base class whose vtable holds it at that slot: 96 family rows carried an inheriting class's name (e.g. CTCInGameMenu::vfunc_7 = CTCBase::RenderUpdate 0x00686880).
+- `ret N` against the PDB signature (class returns add the hidden pointer, enums do not) agreed on 1,121 of 1,122 named rows: a cheap independent check of every slot mapping.
+- `mov eax, imm32 ; ret` in a `const T&` getter is the address of a global, not a constant: it needs the global's name.
+- Vtable census: stop at the first slot that is neither a catalogued function start nor preceded by int3/nop/ret padding, or the next table's entries leak in.
+- Wine cl.exe can hang on a header's `#error`; parity_of has no timeout, so wrap `V.run_tool` with one (90 s) before bulk grading.
+- A flat generated header (vptr as `void* __vftable`) takes declared virtuals under an opt-in by swapping that member for the declarations: same layout, the vptr stays at +0.

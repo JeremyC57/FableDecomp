@@ -26,6 +26,17 @@ private:
     CDefPointer<const CActionUseDef> PActionUseDef;                      // +0x0c
     bool Usable;                                                         // +0x10
     unsigned char _pad_0x11[3];                                          // +0x11
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual void OnActionUse(CThing&);  // slot 28, 0x007EAB90
+public:
+    virtual bool IsUsableWhileThingPerformingAction() const;  // slot 30, 0x004DA961
+public:
+    virtual bool IsToActuallyUseActionUseAsIntendedGoddammitWeReallyHaveGotOurselvesInAMess() const;  // slot 31, 0x004DA964
+public:
+#endif
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CTCActionUseBase) == 0x14);

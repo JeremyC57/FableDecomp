@@ -197,6 +197,16 @@ public:
     NUISystem::CComponent* PTop_Level_List;                                        // +0x220
     NUISystem::CComponent* PCurrentOpenTradeMenu;                                  // +0x224
     float AccumFadeTime;                                                           // +0x228
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x005B3070
+public:
+    virtual void OnChangeCategory();  // slot 37, 0x005B306F
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryTrade) == 0x230);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NotInStock) == 0x140);

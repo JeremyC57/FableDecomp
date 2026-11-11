@@ -222,6 +222,28 @@ private:
     bool AllowedToFollowHero:1, RegionFollowingOverriddenFromScript:1, RespondingToFollowAndWait:1,
         CanBeCourted:1, CanBeMarried:1;                                  // +0x1C9 (Ego_r 0x1F9; CanBeCourted bit 3 / CanBeMarried bit 4 landed)
     unsigned char _pad_0x1ca[0xe];                                       // +0x1CA Suspenders (opaque)
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x00835900
+public:
+    virtual bool DrawIsDisplayingInformation() const;  // slot 33, 0x0082FE90
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x00835910
+protected:
+    virtual bool IsNewAttackerGreaterThreat(CThingCreatureBase const &, CThingCreatureBase const &) const;  // slot 74, 0x00830110
+public:
+    virtual bool IsControlled() const;  // slot 76, 0x00835950
+public:
+    virtual bool IsPlayerCharacter() const;  // slot 77, 0x00835940
+public:
+    virtual bool IsToUnsheatheItemsAfterCutscenes() const;  // slot 88, 0x00835930
+public:
+    virtual bool FeelsGravity() const;  // slot 91, 0x00835920
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingAICreature) == 0x1d8);
 #else

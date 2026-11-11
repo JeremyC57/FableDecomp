@@ -39,6 +39,15 @@ private:
     long             ReplacementObject;                                  // +0x48
     bool             ReversedOnMiniMap;                                  // +0x4c
     bool             HiddenOnMiniMap;                                    // +0x4d
+#ifdef FABLE_RETAIL_CTCACTIONUSESCRIPTEDHOOK_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsSerialiseCreatable() const;  // slot 19, 0x0072A410
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x0072A420
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCActionUseScriptedHook) == 0x50);
 #endif

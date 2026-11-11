@@ -11,7 +11,9 @@
 #pragma pack(push, 1)
 class CTCStockItem {
 public:
+#ifndef FABLE_RETAIL_CTCSTOCKITEM_VSLOTS
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     bool          ForSale;                                   // +0x0c
@@ -20,11 +22,22 @@ public:
     unsigned char _pad_0x0f[0x1];                            // +0x0f
     long          Price;                                     // +0x10
     unsigned char PrimHandle[0x8];                           // +0x14 CEnginePrimitiveHandle
+#ifdef FABLE_RETAIL_CTCSTOCKITEM_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004DC78C
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x004DC789
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCStockItem) == 0x1c);
+#ifndef FABLE_RETAIL_CTCSTOCKITEM_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCStockItem, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCStockItem, ForSale) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCStockItem, Stealable) == 0xd);
 FABLE_STATIC_ASSERT(offsetof(CTCStockItem, Initialised) == 0xe);

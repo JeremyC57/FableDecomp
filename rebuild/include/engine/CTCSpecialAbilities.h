@@ -24,6 +24,15 @@ public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&)
 #endif
 private:class CUndeadFollower;bool AbilityMutexLock,UsingBed;EHeroAbility CurrentAbility;
  std::list<CUndeadFollower> UndeadFollowers;CThingCreatureBase& Creature;std::vector<bool> AbilityAvailability;
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0072DA20
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x0072DA30
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCSpecialAbilities)==0x28);
 #elif defined(FABLE_RETAIL_CTCSPECIALABILITIES)
@@ -40,6 +49,15 @@ public:
 private:
     bool AbilityMutexLock;                                   // +0x0C
     bool UsingBed;                                           // +0x0D
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0072DA20
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x0072DA30
+public:
+#endif
 };
 #else
 class CTCSpecialAbilities;

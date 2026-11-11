@@ -10,6 +10,15 @@
 class CInputProcessPhotojournalCapture : public CInputProcessGameBase {
 public:
     CInputProcessPhotojournalCapture(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 9, 0x00486C20
+public:
+    virtual void FrameUpdate();  // slot 10, 0x00691AD0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessPhotojournalCapture) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSPHOTOJOURNALCAPTURE_H

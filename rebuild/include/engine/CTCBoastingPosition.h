@@ -11,7 +11,9 @@
 #pragma pack(push, 1)
 class CTCBoastingPosition {
 public:
+#ifndef FABLE_RETAIL_CTCBOASTINGPOSITION_VSLOTS
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char PBoastingPodium[0x8];                      // +0x0c CIntelligentPointer<CThing>
@@ -25,11 +27,22 @@ public:
     bool          BoastOn;                                   // +0x2c
     bool          HeroInsideRadius;                          // +0x2d
     unsigned char PParticleEffect[0xa];                      // +0x2e CIntelligentPointer<CThing>
+#ifdef FABLE_RETAIL_CTCBOASTINGPOSITION_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00782660
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00782650
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCBoastingPosition) == 0x38);
+#ifndef FABLE_RETAIL_CTCBOASTINGPOSITION_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, PBoastingPodium) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, OrbPosition_X) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, OrbPosition_Y) == 0x18);

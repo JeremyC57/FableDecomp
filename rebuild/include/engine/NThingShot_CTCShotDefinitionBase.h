@@ -91,6 +91,17 @@ protected:
     CHitLocation* PBestCollisionHitLocation; //94
     bool MultiArrowShotType; //98
 #endif
+#ifdef FABLE_RETAIL_NTHINGSHOT_CTCSHOTDEFINITIONBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+protected:
+    virtual void OnPassingTarget();  // slot 41, 0x004D5483
+protected:
+    virtual bool IsNegatedHit() const;  // slot 42, 0x004D5484
+protected:
+    virtual bool IsCreateParticleEffectOnHit() const;  // slot 43, 0x004D5487
+public:
+#endif
 };
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT
 FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionBase)==0x9c);

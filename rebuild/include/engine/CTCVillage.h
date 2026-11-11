@@ -157,6 +157,16 @@ public:
     unsigned char    GuardWarningHero[0x8];                  // +0xdc CIntelligentPointer<CThingAICreature>
     bool             CurrentIsHeroCriminal;                  // +0xe4
     unsigned char    _pad_0xe5[0x3];                         // +0xe5
+#ifdef FABLE_RETAIL_CTCVILLAGE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00661245
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00661248
+public:
+#endif
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CTCVillage) == 0xe8);

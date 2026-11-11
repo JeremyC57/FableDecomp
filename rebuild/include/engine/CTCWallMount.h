@@ -19,6 +19,13 @@ protected:
     long BoughtForAmount;                                                // +0x0c
     CIntelligentPointer<CThing> Trophy;                                  // +0x10
     unsigned __int64 TrophyID;                                           // +0x18
+#ifdef FABLE_RETAIL_CTCWALLMOUNT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x007DE490
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCWallMount) == 0x20);
 #endif

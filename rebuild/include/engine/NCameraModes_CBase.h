@@ -108,6 +108,29 @@ private:
  C2DVector RightStickVector;
  C2DVector LeftStickVector;
  bool ViewOccluded;
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual void OnCameraInsideObservedThing();  // slot 3, 0x0056E150
+public:
+    virtual bool IsUseRightStickLookAround() const;  // slot 4, 0x0056E160
+public:
+    virtual bool IsShortenOnOcclusion() const;  // slot 6, 0x0056E170
+public:
+    virtual bool IsAvoidLandscape() const;  // slot 9, 0x0056E180
+public:
+    virtual bool IsFOVChange() const;  // slot 10, 0x0056E190
+public:
+    virtual bool IsTrackMeleeOpponents() const;  // slot 11, 0x0056E1A0
+public:
+    virtual bool IsFinished() const;  // slot 13, 0x0056E1B0
+public:
+    virtual bool IsStringAndCage() const;  // slot 14, 0x0056E1C0
+public:
+    virtual void Recentre();  // slot 16, 0x0056E1D0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
 }
@@ -205,6 +228,29 @@ private:
 #else
     CGameCameraManager* CameraManager;                   // +0x40
 #endif
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual void OnCameraInsideObservedThing();  // slot 3, 0x0056E150
+public:
+    virtual bool IsUseRightStickLookAround() const;  // slot 4, 0x0056E160
+public:
+    virtual bool IsShortenOnOcclusion() const;  // slot 6, 0x0056E170
+public:
+    virtual bool IsAvoidLandscape() const;  // slot 9, 0x0056E180
+public:
+    virtual bool IsFOVChange() const;  // slot 10, 0x0056E190
+public:
+    virtual bool IsTrackMeleeOpponents() const;  // slot 11, 0x0056E1A0
+public:
+    virtual bool IsFinished() const;  // slot 13, 0x0056E1B0
+public:
+    virtual bool IsStringAndCage() const;  // slot 14, 0x0056E1C0
+public:
+    virtual void Recentre();  // slot 16, 0x0056E1D0
+public:
 #endif
 };
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES

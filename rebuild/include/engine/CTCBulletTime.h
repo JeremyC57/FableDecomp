@@ -48,6 +48,14 @@ public:
     void ImmediateCancel();                                              // 0x0079D020 ?ImmediateCancel@CTCBulletTime@@QAEXXZ (Ego_r + FableWin)
     // chunk 755 (row 0x006A02B0): Ego_r.pdb / FableWin.pdb ?GetTimeMultiplier@CTCBulletTime@@QBEMXZ, out of line at 0x0079C740.
     float GetTimeMultiplier() const;                                     // 0x0079C740
+#ifdef FABLE_RETAIL_CTCBULLETTIME_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0079DC80
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCBulletTime)==0x58);
 #ifdef FABLE_RETAIL_CTCBULLETTIME_MEMBERS

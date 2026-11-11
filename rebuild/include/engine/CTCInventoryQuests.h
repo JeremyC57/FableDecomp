@@ -39,5 +39,14 @@ public:
     // Ego_r.pdb / FableWin.pdb ?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z
     void ConstructQuestListPC(NUISystem::CComponent* container, const std::vector<CThing*>& quests, NUISystem::CList* list,
                               QuestScreenType type, NUISystem::CList* parent);                             // 0x0061E6D0
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00624DB0
+public:
+    virtual void OnChangeCategory();  // slot 37, 0x00624DA0
+public:
+#endif
 };
 #endif

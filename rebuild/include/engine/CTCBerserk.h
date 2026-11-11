@@ -22,6 +22,13 @@ private:
  unsigned long BerserkingLoopingSound;long SpellLevel;bool JustReleased,AbilityInitialised;
  std::vector<CIntelligentPointer<CThing> > DependentThings;CIntelligentPointer<CThing> StartUpEffect,BerserkBodyEffect;
  CDefPointer<const CSpecialAbilitiesBerserkDef> PDef;void* RadialBlurFadeKey;bool Paused,Pausable,IsInCutscene;
+#ifdef FABLE_RETAIL_CTCBERSERK_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0078DAF0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCBerserk)==0x74);
 #else
@@ -39,7 +46,9 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCBerserk {
 public:
+#ifndef FABLE_RETAIL_CTCBERSERK_VSLOTS
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
     long             Timer;                                  // +0x0c
@@ -69,11 +78,20 @@ public:
     bool             Pausable;                               // +0x71
     bool             IsInCutscene;                           // +0x72
     unsigned char    _pad_0x73[0x1];                         // +0x73
+#ifdef FABLE_RETAIL_CTCBERSERK_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0078DAF0
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCBerserk) == 0x74);
+#ifndef FABLE_RETAIL_CTCBERSERK_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCBerserk, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCBerserk, Timer) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCBerserk, DarkenEnvTimer) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCBerserk, StrengthPercentage) == 0x14);

@@ -288,6 +288,20 @@ public:
 protected:
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x00663C40
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void DrawUpdate(CInterpolationInfo const *);  // slot 26, 0x00661A40
+public:
+    virtual bool IsHidden() const;  // slot 50, 0x0052AB80
+public:
+    virtual long GetMaterialOnHitByMelee() const;  // slot 70, 0x00661D00
+public:
+    virtual bool IsNewAttackerGreaterThreat(CThingCreatureBase const &, CThingCreatureBase const &) const;  // slot 74, 0x0052AB90
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase)==0x160);
 #ifdef FABLE_ENGINE_CTHINGCREATUREDEF_H

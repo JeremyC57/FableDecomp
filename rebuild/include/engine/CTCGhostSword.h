@@ -46,6 +46,16 @@ private:
     CIntelligentPointer<CThing> PItemRemoved; // +40
     bool CutSceneCancelled; // +48
 #endif
+#ifdef FABLE_RETAIL_CTCGHOSTSWORD_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007C66A0
+public:
+    virtual void OnKill();  // slot 14, 0x007C5460
+public:
+#endif
 };
 #ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
 FABLE_STATIC_ASSERT(sizeof(CTCGhostSword)==0x4c);

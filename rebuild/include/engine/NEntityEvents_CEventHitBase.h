@@ -9,11 +9,20 @@
 #include "engine/CCountedPointer.h"
 #include "engine/CHitParameters.h"
 class CThing;
+#ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS
+class CTCEntityEvents;
+#endif
 namespace NEntityEvents {
 class CEventBase {
 public:
     virtual ~CEventBase();                               // slot 0
     long WorldFrame;                                     // +0x04
+#ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS
+    // agentFAM03 fix14 (2026-11-11): retail virtuals of CEventBase, declaration only (no layout change; the vtable exists). Slots
+    // from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings from the Ego_r / FableWin name sets.
+    virtual void OnAdd(const ::CTCEntityEvents&);        // slot 2, 0x0057A4FC
+    virtual bool IsReadyToDie() const;                   // slot 4, 0x0057A4FF
+#endif
 };
 class CEventHitBase : public CEventBase {
 public:

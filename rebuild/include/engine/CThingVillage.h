@@ -41,6 +41,17 @@ public:
     // 0x005166B0 scans type list 4 (`push 4 ; call PeekTypeList`). No layout change.
     static long __fastcall StatGetType() { return 4; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGVILLAGE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x00529A30
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x00529A10
+public:
+    virtual unsigned long GetProperties() const;  // slot 48, 0x0083B3A0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingVillage)==0xe0);
 #endif

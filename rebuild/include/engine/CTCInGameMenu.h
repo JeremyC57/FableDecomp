@@ -60,6 +60,14 @@ private:
 #else
     unsigned char _pad_0x9c[0xf8 - 0x9c];                            // +0x9c .. PYesNo (generated header below)
 #endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x0048616C
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInGameMenu) == 0xf8);
 #endif

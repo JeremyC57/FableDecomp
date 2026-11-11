@@ -21,6 +21,13 @@ private:
     bool                                      HasBeenSummoned;           // +0x10
     unsigned char                             Summoner[8];               // +0x11 CIntelligentPointer<CThingCreatureBase> (byte-packed)
     unsigned char                             _pad_0x19[3];
+#ifdef FABLE_RETAIL_CTCSUMMONABLECREATURE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0079C4A0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCSummonableCreature) == 0x1c);
 #endif

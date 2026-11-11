@@ -67,6 +67,13 @@ public:
     // GetAllLeafThings<CThingObject> 0x00910A90 scans (`push 5 ; call PeekTypeList`).
     static long __fastcall StatGetType() { return 5; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGOBJECT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool CanBlockUpperLevelNavigatingCreature() const;  // slot 56, 0x00702CD0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingObject)==0xe0);
 #endif

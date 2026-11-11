@@ -68636,8 +68636,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006868a0'
         Module = 'CTCBase'
-        Source = '00/68/E2_E2_006868a0.cpp'
-        TestSource = '00/68/E2_E2_006868a0_test.cpp'
+        Source = '00/68/CTCBase_FrameUpdate_006868a0.cpp'
+        TestSource = '00/68/CTCBase_FrameUpdate_006868a0_test.cpp'
         PassPattern = 'OK_006868a0'
     }
     [pscustomobject]@{
@@ -68671,8 +68671,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00686960'
         Module = 'CTCBase'
-        Source = '00/68/E2_E2_00686960.cpp'
-        TestSource = '00/68/E2_E2_00686960_test.cpp'
+        Source = '00/68/CTCBase_OnSerialise_00686960.cpp'
+        TestSource = '00/68/CTCBase_OnSerialise_00686960_test.cpp'
         PassPattern = 'OK_00686960'
     }
     [pscustomobject]@{
@@ -68727,8 +68727,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007eab90'
         Module = 'CTCActionUseBase'
-        Source = '00/7e/E2_E2_007eab90.cpp'
-        TestSource = '00/7e/E2_E2_007eab90_test.cpp'
+        Source = '00/7e/CTCActionUseBase_OnActionUse_007eab90.cpp'
+        TestSource = '00/7e/CTCActionUseBase_OnActionUse_007eab90_test.cpp'
         PassPattern = 'OK_007eab90'
     }
     [pscustomobject]@{
@@ -94902,9 +94902,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00415cc0'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub00415cc0_00415cc0.cpp'
-        TestSource = '00/41/gapscan_sub00415cc0_00415cc0_test.cpp'
+        Module = 'NParticleEngine::CAEnvironmentInteraction'
+        Source = '00/41/NParticleEngineCAEnvironmentInteraction_IsWindActive_00415cc0.cpp'
+        TestSource = '00/41/NParticleEngineCAEnvironmentInteraction_IsWindActive_00415cc0_test.cpp'
         PassPattern = 'PASS_00415cc0'
     }
     [pscustomobject]@{
@@ -95322,16 +95322,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0048616c'
-        Module = '_gapscan'
-        Source = '00/48/gapscan_sub0048616c_0048616c.cpp'
-        TestSource = '00/48/gapscan_sub0048616c_0048616c_test.cpp'
+        Module = 'CTCInGameMenu'
+        Source = '00/48/CTCInGameMenu_GetInterfaceType_0048616c.cpp'
+        TestSource = '00/48/CTCInGameMenu_GetInterfaceType_0048616c_test.cpp'
         PassPattern = 'PASS_0048616c'
     }
     [pscustomobject]@{
         Address = '00486c20'
-        Module = '_gapscan'
-        Source = '00/48/gapscan_sub00486c20_00486c20.cpp'
-        TestSource = '00/48/gapscan_sub00486c20_00486c20_test.cpp'
+        Module = 'CInputProcessPhotojournalCapture'
+        Source = '00/48/CInputProcessPhotojournalCapture_HasFrameUpdate_00486c20.cpp'
+        TestSource = '00/48/CInputProcessPhotojournalCapture_HasFrameUpdate_00486c20_test.cpp'
         PassPattern = 'PASS_00486c20'
     }
     [pscustomobject]@{
@@ -95434,9 +95434,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c6fd0'
-        Module = '_gapscan'
-        Source = '00/4c/gapscan_sub004c6fd0_004c6fd0.cpp'
-        TestSource = '00/4c/gapscan_sub004c6fd0_004c6fd0_test.cpp'
+        Module = 'NTCMessages::CMessageBase'
+        Source = '00/4c/NTCMessagesCMessageBase_GetType_004c6fd0.cpp'
+        TestSource = '00/4c/NTCMessagesCMessageBase_GetType_004c6fd0_test.cpp'
         PassPattern = 'PASS_004c6fd0'
     }
     [pscustomobject]@{
@@ -95504,16 +95504,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d2b77'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d2b77_004d2b77.cpp'
-        TestSource = '00/4d/gapscan_sub004d2b77_004d2b77_test.cpp'
+        Module = 'CTCRotate'
+        Source = '00/4d/CTCRotate_HasFrameUpdate_004d2b77.cpp'
+        TestSource = '00/4d/CTCRotate_HasFrameUpdate_004d2b77_test.cpp'
         PassPattern = 'PASS_004d2b77'
     }
     [pscustomobject]@{
         Address = '004d2e07'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d2e07_004d2e07.cpp'
-        TestSource = '00/4d/gapscan_sub004d2e07_004d2e07_test.cpp'
+        Module = 'CTCUndeadSoul'
+        Source = '00/4d/CTCUndeadSoul_HasFrameUpdate_004d2e07.cpp'
+        TestSource = '00/4d/CTCUndeadSoul_HasFrameUpdate_004d2e07_test.cpp'
         PassPattern = 'PASS_004d2e07'
     }
     [pscustomobject]@{
@@ -95525,86 +95525,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d34d7'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d34d7_004d34d7.cpp'
-        TestSource = '00/4d/gapscan_sub004d34d7_004d34d7_test.cpp'
+        Module = 'CTCWeatherVane'
+        Source = '00/4d/CTCWeatherVane_HasFrameUpdate_004d34d7.cpp'
+        TestSource = '00/4d/CTCWeatherVane_HasFrameUpdate_004d34d7_test.cpp'
         PassPattern = 'PASS_004d34d7'
     }
     [pscustomobject]@{
         Address = '004d36cb'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d36cb_004d36cb.cpp'
-        TestSource = '00/4d/gapscan_sub004d36cb_004d36cb_test.cpp'
+        Module = 'CTCCupboard'
+        Source = '00/4d/CTCCupboard_HasFrameUpdate_004d36cb.cpp'
+        TestSource = '00/4d/CTCCupboard_HasFrameUpdate_004d36cb_test.cpp'
         PassPattern = 'PASS_004d36cb'
     }
     [pscustomobject]@{
         Address = '004d3a1f'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a1f_004d3a1f.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a1f_004d3a1f_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/4d/CTCCameraPointDefinitionBase_HasFrameUpdate_004d3a1f.cpp'
+        TestSource = '00/4d/CTCCameraPointDefinitionBase_HasFrameUpdate_004d3a1f_test.cpp'
         PassPattern = 'PASS_004d3a1f'
     }
     [pscustomobject]@{
         Address = '004d3a22'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a22_004d3a22.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a22_004d3a22_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/4d/CTCCameraPointDefinitionBase_IsHeroTheSubject_004d3a22.cpp'
+        TestSource = '00/4d/CTCCameraPointDefinitionBase_IsHeroTheSubject_004d3a22_test.cpp'
         PassPattern = 'PASS_004d3a22'
     }
     [pscustomobject]@{
         Address = '004d3a26'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a26_004d3a26.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a26_004d3a26_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/4d/CTCCameraPointDefinitionBase_IsComponentSerialisable_004d3a26.cpp'
+        TestSource = '00/4d/CTCCameraPointDefinitionBase_IsComponentSerialisable_004d3a26_test.cpp'
         PassPattern = 'PASS_004d3a26'
     }
     [pscustomobject]@{
         Address = '004d3a29'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a29_004d3a29.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a29_004d3a29_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/4d/CTCCameraPointDefinitionBase_SetLeafDataInWindow_004d3a29.cpp'
+        TestSource = '00/4d/CTCCameraPointDefinitionBase_SetLeafDataInWindow_004d3a29_test.cpp'
         PassPattern = 'PASS_004d3a29'
     }
     [pscustomobject]@{
         Address = '004d3a2c'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a2c_004d3a2c.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a2c_004d3a2c_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/4d/CTCCameraPointDefinitionBase_GetLeafDataFromWindow_004d3a2c.cpp'
+        TestSource = '00/4d/CTCCameraPointDefinitionBase_GetLeafDataFromWindow_004d3a2c_test.cpp'
         PassPattern = 'PASS_004d3a2c'
     }
     [pscustomobject]@{
         Address = '004d3a2f'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a2f_004d3a2f.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a2f_004d3a2f_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/4d/CTCCameraPointDefinitionBase_OnSerialseLeaf_004d3a2f.cpp'
+        TestSource = '00/4d/CTCCameraPointDefinitionBase_OnSerialseLeaf_004d3a2f_test.cpp'
         PassPattern = 'PASS_004d3a2f'
     }
     [pscustomobject]@{
         Address = '004d3a32'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a32_004d3a32.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a32_004d3a32_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/4d/CTCCameraPointDefinitionBase_UpdateActiveCameraPosition_004d3a32.cpp'
+        TestSource = '00/4d/CTCCameraPointDefinitionBase_UpdateActiveCameraPosition_004d3a32_test.cpp'
         PassPattern = 'PASS_004d3a32'
     }
     [pscustomobject]@{
         Address = '004d3a9f'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3a9f_004d3a9f.cpp'
-        TestSource = '00/4d/gapscan_sub004d3a9f_004d3a9f_test.cpp'
+        Module = 'CTCCameraPointFixedPoint'
+        Source = '00/4d/CTCCameraPointFixedPoint_GetCameraPointType_004d3a9f.cpp'
+        TestSource = '00/4d/CTCCameraPointFixedPoint_GetCameraPointType_004d3a9f_test.cpp'
         PassPattern = 'PASS_004d3a9f'
     }
     [pscustomobject]@{
         Address = '004d3f28'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3f28_004d3f28.cpp'
-        TestSource = '00/4d/gapscan_sub004d3f28_004d3f28_test.cpp'
+        Module = 'CTCDriverBase'
+        Source = '00/4d/CTCDriverBase_IsDriver_004d3f28.cpp'
+        TestSource = '00/4d/CTCDriverBase_IsDriver_004d3f28_test.cpp'
         PassPattern = 'PASS_004d3f28'
     }
     [pscustomobject]@{
         Address = '004d3f2b'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d3f2b_004d3f2b.cpp'
-        TestSource = '00/4d/gapscan_sub004d3f2b_004d3f2b_test.cpp'
+        Module = 'CTCDriverBase'
+        Source = '00/4d/CTCDriverBase_CreateAdditionalTCs_004d3f2b.cpp'
+        TestSource = '00/4d/CTCDriverBase_CreateAdditionalTCs_004d3f2b_test.cpp'
         PassPattern = 'PASS_004d3f2b'
     }
     [pscustomobject]@{
@@ -95630,37 +95630,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d42ef'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d42ef_004d42ef.cpp'
-        TestSource = '00/4d/gapscan_sub004d42ef_004d42ef_test.cpp'
+        Module = 'CTCDRegionEntrance'
+        Source = '00/4d/CTCDRegionEntrance_IsComponentSerialisable_004d42ef.cpp'
+        TestSource = '00/4d/CTCDRegionEntrance_IsComponentSerialisable_004d42ef_test.cpp'
         PassPattern = 'PASS_004d42ef'
     }
     [pscustomobject]@{
         Address = '004d43f3'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d43f3_004d43f3.cpp'
-        TestSource = '00/4d/gapscan_sub004d43f3_004d43f3_test.cpp'
+        Module = 'CTCActivationTrigger'
+        Source = '00/4d/CTCActivationTrigger_OnHitByMelee_004d43f3.cpp'
+        TestSource = '00/4d/CTCActivationTrigger_OnHitByMelee_004d43f3_test.cpp'
         PassPattern = 'PASS_004d43f3'
     }
     [pscustomobject]@{
         Address = '004d43f4'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d43f4_004d43f4.cpp'
-        TestSource = '00/4d/gapscan_sub004d43f4_004d43f4_test.cpp'
+        Module = 'CTCActivationTrigger'
+        Source = '00/4d/CTCActivationTrigger_OnHitByShot_004d43f4.cpp'
+        TestSource = '00/4d/CTCActivationTrigger_OnHitByShot_004d43f4_test.cpp'
         PassPattern = 'PASS_004d43f4'
     }
     [pscustomobject]@{
         Address = '004d43f5'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d43f5_004d43f5.cpp'
-        TestSource = '00/4d/gapscan_sub004d43f5_004d43f5_test.cpp'
+        Module = 'CTCActivationTrigger'
+        Source = '00/4d/CTCActivationTrigger_IsComponentSerialisable_004d43f5.cpp'
+        TestSource = '00/4d/CTCActivationTrigger_IsComponentSerialisable_004d43f5_test.cpp'
         PassPattern = 'PASS_004d43f5'
     }
     [pscustomobject]@{
         Address = '004d45f7'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d45f7_004d45f7.cpp'
-        TestSource = '00/4d/gapscan_sub004d45f7_004d45f7_test.cpp'
+        Module = 'CTCCreatureHive'
+        Source = '00/4d/CTCCreatureHive_HasFrameUpdate_004d45f7.cpp'
+        TestSource = '00/4d/CTCCreatureHive_HasFrameUpdate_004d45f7_test.cpp'
         PassPattern = 'PASS_004d45f7'
     }
     [pscustomobject]@{
@@ -95686,9 +95686,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d4fcc'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d4fcc_004d4fcc.cpp'
-        TestSource = '00/4d/gapscan_sub004d4fcc_004d4fcc_test.cpp'
+        Module = 'CTCStealableItemLocation'
+        Source = '00/4d/CTCStealableItemLocation_IsComponentSerialisable_004d4fcc.cpp'
+        TestSource = '00/4d/CTCStealableItemLocation_IsComponentSerialisable_004d4fcc_test.cpp'
         PassPattern = 'PASS_004d4fcc'
     }
     [pscustomobject]@{
@@ -95707,9 +95707,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d536f'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d536f_004d536f.cpp'
-        TestSource = '00/4d/gapscan_sub004d536f_004d536f_test.cpp'
+        Module = 'CTCOnHeroPush'
+        Source = '00/4d/CTCOnHeroPush_HasFrameUpdate_004d536f.cpp'
+        TestSource = '00/4d/CTCOnHeroPush_HasFrameUpdate_004d536f_test.cpp'
         PassPattern = 'PASS_004d536f'
     }
     [pscustomobject]@{
@@ -95721,23 +95721,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d5483'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d5483_004d5483.cpp'
-        TestSource = '00/4d/gapscan_sub004d5483_004d5483_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/4d/NThingShotCTCShotDefinitionBase_OnPassingTarget_004d5483.cpp'
+        TestSource = '00/4d/NThingShotCTCShotDefinitionBase_OnPassingTarget_004d5483_test.cpp'
         PassPattern = 'PASS_004d5483'
     }
     [pscustomobject]@{
         Address = '004d5484'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d5484_004d5484.cpp'
-        TestSource = '00/4d/gapscan_sub004d5484_004d5484_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/4d/NThingShotCTCShotDefinitionBase_IsNegatedHit_004d5484.cpp'
+        TestSource = '00/4d/NThingShotCTCShotDefinitionBase_IsNegatedHit_004d5484_test.cpp'
         PassPattern = 'PASS_004d5484'
     }
     [pscustomobject]@{
         Address = '004d5487'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d5487_004d5487.cpp'
-        TestSource = '00/4d/gapscan_sub004d5487_004d5487_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/4d/NThingShotCTCShotDefinitionBase_IsCreateParticleEffectOnHit_004d5487.cpp'
+        TestSource = '00/4d/NThingShotCTCShotDefinitionBase_IsCreateParticleEffectOnHit_004d5487_test.cpp'
         PassPattern = 'PASS_004d5487'
     }
     [pscustomobject]@{
@@ -95770,9 +95770,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d5f32'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d5f32_004d5f32.cpp'
-        TestSource = '00/4d/gapscan_sub004d5f32_004d5f32_test.cpp'
+        Module = 'CTCAmbientBird'
+        Source = '00/4d/CTCAmbientBird_HasFrameUpdate_004d5f32.cpp'
+        TestSource = '00/4d/CTCAmbientBird_HasFrameUpdate_004d5f32_test.cpp'
         PassPattern = 'PASS_004d5f32'
     }
     [pscustomobject]@{
@@ -95791,9 +95791,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d6206'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d6206_004d6206.cpp'
-        TestSource = '00/4d/gapscan_sub004d6206_004d6206_test.cpp'
+        Module = 'CTCWobble'
+        Source = '00/4d/CTCWobble_HasFrameUpdate_004d6206.cpp'
+        TestSource = '00/4d/CTCWobble_HasFrameUpdate_004d6206_test.cpp'
         PassPattern = 'PASS_004d6206'
     }
     [pscustomobject]@{
@@ -95805,9 +95805,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d62ce'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d62ce_004d62ce.cpp'
-        TestSource = '00/4d/gapscan_sub004d62ce_004d62ce_test.cpp'
+        Module = 'CTCFlashOnHit'
+        Source = '00/4d/CTCFlashOnHit_HasFrameUpdate_004d62ce.cpp'
+        TestSource = '00/4d/CTCFlashOnHit_HasFrameUpdate_004d62ce_test.cpp'
         PassPattern = 'PASS_004d62ce'
     }
     [pscustomobject]@{
@@ -95840,9 +95840,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d65a1'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d65a1_004d65a1.cpp'
-        TestSource = '00/4d/gapscan_sub004d65a1_004d65a1_test.cpp'
+        Module = 'CTCFireRangedWeaponOnLeavingStateGroup'
+        Source = '00/4d/CTCFireRangedWeaponOnLeavingStateGroup_HasFrameUpdate_004d65a1.cpp'
+        TestSource = '00/4d/CTCFireRangedWeaponOnLeavingStateGroup_HasFrameUpdate_004d65a1_test.cpp'
         PassPattern = 'PASS_004d65a1'
     }
     [pscustomobject]@{
@@ -95861,16 +95861,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d8171'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d8171_004d8171.cpp'
-        TestSource = '00/4d/gapscan_sub004d8171_004d8171_test.cpp'
+        Module = 'CTCDCameraPoint'
+        Source = '00/4d/CTCDCameraPoint_IsComponentSerialisable_004d8171.cpp'
+        TestSource = '00/4d/CTCDCameraPoint_IsComponentSerialisable_004d8171_test.cpp'
         PassPattern = 'PASS_004d8171'
     }
     [pscustomobject]@{
         Address = '004d8174'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d8174_004d8174.cpp'
-        TestSource = '00/4d/gapscan_sub004d8174_004d8174_test.cpp'
+        Module = 'CTCDCameraPoint'
+        Source = '00/4d/CTCDCameraPoint_HasFrameUpdate_004d8174.cpp'
+        TestSource = '00/4d/CTCDCameraPoint_HasFrameUpdate_004d8174_test.cpp'
         PassPattern = 'PASS_004d8174'
     }
     [pscustomobject]@{
@@ -95917,44 +95917,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004d97af'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004d97af_004d97af.cpp'
-        TestSource = '00/4d/gapscan_sub004d97af_004d97af_test.cpp'
+        Module = 'CTCAvoidRegionExit'
+        Source = '00/4d/CTCAvoidRegionExit_HasFrameUpdate_004d97af.cpp'
+        TestSource = '00/4d/CTCAvoidRegionExit_HasFrameUpdate_004d97af_test.cpp'
         PassPattern = 'PASS_004d97af'
     }
     [pscustomobject]@{
         Address = '004da936'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004da936_004da936.cpp'
-        TestSource = '00/4d/gapscan_sub004da936_004da936_test.cpp'
+        Module = 'CTCTargeted'
+        Source = '00/4d/CTCTargeted_IsComponentSerialisable_004da936.cpp'
+        TestSource = '00/4d/CTCTargeted_IsComponentSerialisable_004da936_test.cpp'
         PassPattern = 'PASS_004da936'
     }
     [pscustomobject]@{
         Address = '004da961'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004da961_004da961.cpp'
-        TestSource = '00/4d/gapscan_sub004da961_004da961_test.cpp'
+        Module = 'CTCActionUseBase'
+        Source = '00/4d/CTCActionUseBase_IsUsableWhileThingPerformingAction_004da961.cpp'
+        TestSource = '00/4d/CTCActionUseBase_IsUsableWhileThingPerformingAction_004da961_test.cpp'
         PassPattern = 'PASS_004da961'
     }
     [pscustomobject]@{
         Address = '004da964'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004da964_004da964.cpp'
-        TestSource = '00/4d/gapscan_sub004da964_004da964_test.cpp'
+        Module = 'CTCActionUseBase'
+        Source = '00/4d/CTCActionUseBase_IsToActuallyUseActionUseAsIntendedGoddammitWeReallyHaveGotOurselvesInAMess_004da964.cpp'
+        TestSource = '00/4d/CTCActionUseBase_IsToActuallyUseActionUseAsIntendedGoddammitWeReallyHaveGotOurselvesInAMess_004da964_test.cpp'
         PassPattern = 'PASS_004da964'
     }
     [pscustomobject]@{
         Address = '004daa0b'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004daa0b_004daa0b.cpp'
-        TestSource = '00/4d/gapscan_sub004daa0b_004daa0b_test.cpp'
+        Module = 'CTCActionUseReadable'
+        Source = '00/4d/CTCActionUseReadable_IsComponentSerialisable_004daa0b.cpp'
+        TestSource = '00/4d/CTCActionUseReadable_IsComponentSerialisable_004daa0b_test.cpp'
         PassPattern = 'PASS_004daa0b'
     }
     [pscustomobject]@{
         Address = '004dac17'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dac17_004dac17.cpp'
-        TestSource = '00/4d/gapscan_sub004dac17_004dac17_test.cpp'
+        Module = 'CTCActionUseBed'
+        Source = '00/4d/CTCActionUseBed_IsComponentSerialisable_004dac17.cpp'
+        TestSource = '00/4d/CTCActionUseBed_IsComponentSerialisable_004dac17_test.cpp'
         PassPattern = 'PASS_004dac17'
     }
     [pscustomobject]@{
@@ -95987,16 +95987,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004daee6'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004daee6_004daee6.cpp'
-        TestSource = '00/4d/gapscan_sub004daee6_004daee6_test.cpp'
+        Module = 'CTCInventoryItem'
+        Source = '00/4d/CTCInventoryItem_IsComponentSerialisable_004daee6.cpp'
+        TestSource = '00/4d/CTCInventoryItem_IsComponentSerialisable_004daee6_test.cpp'
         PassPattern = 'PASS_004daee6'
     }
     [pscustomobject]@{
         Address = '004daf2b'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004daf2b_004daf2b.cpp'
-        TestSource = '00/4d/gapscan_sub004daf2b_004daf2b_test.cpp'
+        Module = 'CTCVillageMember'
+        Source = '00/4d/CTCVillageMember_IsComponentSerialisable_004daf2b.cpp'
+        TestSource = '00/4d/CTCVillageMember_IsComponentSerialisable_004daf2b_test.cpp'
         PassPattern = 'PASS_004daf2b'
     }
     [pscustomobject]@{
@@ -96008,9 +96008,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004db082'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db082_004db082.cpp'
-        TestSource = '00/4d/gapscan_sub004db082_004db082_test.cpp'
+        Module = 'CTCExpression'
+        Source = '00/4d/CTCExpression_IsComponentSerialisable_004db082.cpp'
+        TestSource = '00/4d/CTCExpression_IsComponentSerialisable_004db082_test.cpp'
         PassPattern = 'PASS_004db082'
     }
     [pscustomobject]@{
@@ -96022,23 +96022,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004db19b'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db19b_004db19b.cpp'
-        TestSource = '00/4d/gapscan_sub004db19b_004db19b_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionDrainLife'
+        Source = '00/4d/NThingShotCTCShotDefinitionDrainLife_GetStatToModifyOnHit_004db19b.cpp'
+        TestSource = '00/4d/NThingShotCTCShotDefinitionDrainLife_GetStatToModifyOnHit_004db19b_test.cpp'
         PassPattern = 'PASS_004db19b'
     }
     [pscustomobject]@{
         Address = '004db1a0'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db1a0_004db1a0.cpp'
-        TestSource = '00/4d/gapscan_sub004db1a0_004db1a0_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionDrainLife'
+        Source = '00/4d/NThingShotCTCShotDefinitionDrainLife_IsNegatedHit_004db1a0.cpp'
+        TestSource = '00/4d/NThingShotCTCShotDefinitionDrainLife_IsNegatedHit_004db1a0_test.cpp'
         PassPattern = 'PASS_004db1a0'
     }
     [pscustomobject]@{
         Address = '004db1a3'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db1a3_004db1a3.cpp'
-        TestSource = '00/4d/gapscan_sub004db1a3_004db1a3_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionDrainLife'
+        Source = '00/4d/NThingShotCTCShotDefinitionDrainLife_IsCreateParticleEffectOnHit_004db1a3.cpp'
+        TestSource = '00/4d/NThingShotCTCShotDefinitionDrainLife_IsCreateParticleEffectOnHit_004db1a3_test.cpp'
         PassPattern = 'PASS_004db1a3'
     }
     [pscustomobject]@{
@@ -96064,16 +96064,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004db363'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db363_004db363.cpp'
-        TestSource = '00/4d/gapscan_sub004db363_004db363_test.cpp'
+        Module = 'CTCKrakenTentacle'
+        Source = '00/4d/CTCKrakenTentacle_HasFrameUpdate_004db363.cpp'
+        TestSource = '00/4d/CTCKrakenTentacle_HasFrameUpdate_004db363_test.cpp'
         PassPattern = 'PASS_004db363'
     }
     [pscustomobject]@{
         Address = '004db396'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db396_004db396.cpp'
-        TestSource = '00/4d/gapscan_sub004db396_004db396_test.cpp'
+        Module = 'CTCCarriedActionUseRead'
+        Source = '00/4d/CTCCarriedActionUseRead_IsComponentSerialisable_004db396.cpp'
+        TestSource = '00/4d/CTCCarriedActionUseRead_IsComponentSerialisable_004db396_test.cpp'
         PassPattern = 'PASS_004db396'
     }
     [pscustomobject]@{
@@ -96085,9 +96085,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004db3d8'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db3d8_004db3d8.cpp'
-        TestSource = '00/4d/gapscan_sub004db3d8_004db3d8_test.cpp'
+        Module = 'CTCDRumble'
+        Source = '00/4d/CTCDRumble_HasFrameUpdate_004db3d8.cpp'
+        TestSource = '00/4d/CTCDRumble_HasFrameUpdate_004db3d8_test.cpp'
         PassPattern = 'PASS_004db3d8'
     }
     [pscustomobject]@{
@@ -96113,9 +96113,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004db540'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004db540_004db540.cpp'
-        TestSource = '00/4d/gapscan_sub004db540_004db540_test.cpp'
+        Module = 'CTCLightningOrb'
+        Source = '00/4d/CTCLightningOrb_HasFrameUpdate_004db540.cpp'
+        TestSource = '00/4d/CTCLightningOrb_HasFrameUpdate_004db540_test.cpp'
         PassPattern = 'PASS_004db540'
     }
     [pscustomobject]@{
@@ -96127,16 +96127,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dc789'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dc789_004dc789.cpp'
-        TestSource = '00/4d/gapscan_sub004dc789_004dc789_test.cpp'
+        Module = 'CTCStockItem'
+        Source = '00/4d/CTCStockItem_IsComponentSerialisable_004dc789.cpp'
+        TestSource = '00/4d/CTCStockItem_IsComponentSerialisable_004dc789_test.cpp'
         PassPattern = 'PASS_004dc789'
     }
     [pscustomobject]@{
         Address = '004dc78c'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dc78c_004dc78c.cpp'
-        TestSource = '00/4d/gapscan_sub004dc78c_004dc78c_test.cpp'
+        Module = 'CTCStockItem'
+        Source = '00/4d/CTCStockItem_HasFrameUpdate_004dc78c.cpp'
+        TestSource = '00/4d/CTCStockItem_HasFrameUpdate_004dc78c_test.cpp'
         PassPattern = 'PASS_004dc78c'
     }
     [pscustomobject]@{
@@ -96148,58 +96148,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dce75'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dce75_004dce75.cpp'
-        TestSource = '00/4d/gapscan_sub004dce75_004dce75_test.cpp'
+        Module = 'CTCSoundAtmosphere'
+        Source = '00/4d/CTCSoundAtmosphere_HasFrameUpdate_004dce75.cpp'
+        TestSource = '00/4d/CTCSoundAtmosphere_HasFrameUpdate_004dce75_test.cpp'
         PassPattern = 'PASS_004dce75'
     }
     [pscustomobject]@{
         Address = '004dda83'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dda83_004dda83.cpp'
-        TestSource = '00/4d/gapscan_sub004dda83_004dda83_test.cpp'
+        Module = 'CTCTargetingBase'
+        Source = '00/4d/CTCTargetingBase_GetPBestThingForMeleeAttack_004dda83.cpp'
+        TestSource = '00/4d/CTCTargetingBase_GetPBestThingForMeleeAttack_004dda83_test.cpp'
         PassPattern = 'PASS_004dda83'
     }
     [pscustomobject]@{
         Address = '004dda86'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dda86_004dda86.cpp'
-        TestSource = '00/4d/gapscan_sub004dda86_004dda86_test.cpp'
+        Module = 'CTCTargetingBase'
+        Source = '00/4d/CTCTargetingBase_GetPBestThingForProjectileTargetingLock_004dda86.cpp'
+        TestSource = '00/4d/CTCTargetingBase_GetPBestThingForProjectileTargetingLock_004dda86_test.cpp'
         PassPattern = 'PASS_004dda86'
     }
     [pscustomobject]@{
         Address = '004dda89'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dda89_004dda89.cpp'
-        TestSource = '00/4d/gapscan_sub004dda89_004dda89_test.cpp'
+        Module = 'CTCTargetingBase'
+        Source = '00/4d/CTCTargetingBase_GetPProjectileTargetedThing_004dda89.cpp'
+        TestSource = '00/4d/CTCTargetingBase_GetPProjectileTargetedThing_004dda89_test.cpp'
         PassPattern = 'PASS_004dda89'
     }
     [pscustomobject]@{
         Address = '004dda8c'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dda8c_004dda8c.cpp'
-        TestSource = '00/4d/gapscan_sub004dda8c_004dda8c_test.cpp'
+        Module = 'CTCTargetingBase'
+        Source = '00/4d/CTCTargetingBase_GetPTargetLockedThing_004dda8c.cpp'
+        TestSource = '00/4d/CTCTargetingBase_GetPTargetLockedThing_004dda8c_test.cpp'
         PassPattern = 'PASS_004dda8c'
     }
     [pscustomobject]@{
         Address = '004dda8f'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004dda8f_004dda8f.cpp'
-        TestSource = '00/4d/gapscan_sub004dda8f_004dda8f_test.cpp'
+        Module = 'CTCTargetingBase'
+        Source = '00/4d/CTCTargetingBase_IsTargetedThingInRange_004dda8f.cpp'
+        TestSource = '00/4d/CTCTargetingBase_IsTargetedThingInRange_004dda8f_test.cpp'
         PassPattern = 'PASS_004dda8f'
     }
     [pscustomobject]@{
         Address = '004de647'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004de647_004de647.cpp'
-        TestSource = '00/4d/gapscan_sub004de647_004de647_test.cpp'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/4d/CTCActivationReceptorBase_HasFrameUpdate_004de647.cpp'
+        TestSource = '00/4d/CTCActivationReceptorBase_HasFrameUpdate_004de647_test.cpp'
         PassPattern = 'PASS_004de647'
     }
     [pscustomobject]@{
         Address = '004de64a'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004de64a_004de64a.cpp'
-        TestSource = '00/4d/gapscan_sub004de64a_004de64a_test.cpp'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/4d/CTCActivationReceptorBase_IsComponentSerialisable_004de64a.cpp'
+        TestSource = '00/4d/CTCActivationReceptorBase_IsComponentSerialisable_004de64a_test.cpp'
         PassPattern = 'PASS_004de64a'
     }
     [pscustomobject]@{
@@ -96211,9 +96211,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004de678'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004de678_004de678.cpp'
-        TestSource = '00/4d/gapscan_sub004de678_004de678_test.cpp'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/4d/CTCActivationReceptorBase_SetSelfTriggeringIfTriggerPresent_004de678.cpp'
+        TestSource = '00/4d/CTCActivationReceptorBase_SetSelfTriggeringIfTriggerPresent_004de678_test.cpp'
         PassPattern = 'PASS_004de678'
     }
     [pscustomobject]@{
@@ -96225,16 +96225,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004de6e9'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004de6e9_004de6e9.cpp'
-        TestSource = '00/4d/gapscan_sub004de6e9_004de6e9_test.cpp'
+        Module = 'CTCCreatureItemLevitationBase'
+        Source = '00/4d/CTCCreatureItemLevitationBase_HasFrameUpdate_004de6e9.cpp'
+        TestSource = '00/4d/CTCCreatureItemLevitationBase_HasFrameUpdate_004de6e9_test.cpp'
         PassPattern = 'PASS_004de6e9'
     }
     [pscustomobject]@{
         Address = '004de6ec'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004de6ec_004de6ec.cpp'
-        TestSource = '00/4d/gapscan_sub004de6ec_004de6ec_test.cpp'
+        Module = 'CTCCreatureItemLevitationBase'
+        Source = '00/4d/CTCCreatureItemLevitationBase_LeafUpdate_004de6ec.cpp'
+        TestSource = '00/4d/CTCCreatureItemLevitationBase_LeafUpdate_004de6ec_test.cpp'
         PassPattern = 'PASS_004de6ec'
     }
     [pscustomobject]@{
@@ -96246,9 +96246,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004de771'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004de771_004de771.cpp'
-        TestSource = '00/4d/gapscan_sub004de771_004de771_test.cpp'
+        Module = 'CTCCreatureItemLevitationHero'
+        Source = '00/4d/CTCCreatureItemLevitationHero_DropItems_004de771.cpp'
+        TestSource = '00/4d/CTCCreatureItemLevitationHero_DropItems_004de771_test.cpp'
         PassPattern = 'PASS_004de771'
     }
     [pscustomobject]@{
@@ -96267,9 +96267,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004de87e'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004de87e_004de87e.cpp'
-        TestSource = '00/4d/gapscan_sub004de87e_004de87e_test.cpp'
+        Module = 'CTCAnimatingObject'
+        Source = '00/4d/CTCAnimatingObject_HasFrameUpdate_004de87e.cpp'
+        TestSource = '00/4d/CTCAnimatingObject_HasFrameUpdate_004de87e_test.cpp'
         PassPattern = 'PASS_004de87e'
     }
     [pscustomobject]@{
@@ -96302,9 +96302,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004df1c9'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004df1c9_004df1c9.cpp'
-        TestSource = '00/4d/gapscan_sub004df1c9_004df1c9_test.cpp'
+        Module = 'CTCDPhysicalObstruction'
+        Source = '00/4d/CTCDPhysicalObstruction_HasFrameUpdate_004df1c9.cpp'
+        TestSource = '00/4d/CTCDPhysicalObstruction_HasFrameUpdate_004df1c9_test.cpp'
         PassPattern = 'PASS_004df1c9'
     }
     [pscustomobject]@{
@@ -96316,16 +96316,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004df319'
-        Module = '_gapscan'
-        Source = '00/4d/gapscan_sub004df319_004df319.cpp'
-        TestSource = '00/4d/gapscan_sub004df319_004df319_test.cpp'
+        Module = 'CTCAISummon'
+        Source = '00/4d/CTCAISummon_HasFrameUpdate_004df319.cpp'
+        TestSource = '00/4d/CTCAISummon_HasFrameUpdate_004df319_test.cpp'
         PassPattern = 'PASS_004df319'
     }
     [pscustomobject]@{
         Address = '004e0ad9'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e0ad9_004e0ad9.cpp'
-        TestSource = '00/4e/gapscan_sub004e0ad9_004e0ad9_test.cpp'
+        Module = 'CTCGatherPointBase'
+        Source = '00/4e/CTCGatherPointBase_HasFrameUpdate_004e0ad9.cpp'
+        TestSource = '00/4e/CTCGatherPointBase_HasFrameUpdate_004e0ad9_test.cpp'
         PassPattern = 'PASS_004e0ad9'
     }
     [pscustomobject]@{
@@ -96337,9 +96337,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e0ca4'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e0ca4_004e0ca4.cpp'
-        TestSource = '00/4e/gapscan_sub004e0ca4_004e0ca4_test.cpp'
+        Module = 'CTCHaste'
+        Source = '00/4e/CTCHaste_HasFrameUpdate_004e0ca4.cpp'
+        TestSource = '00/4e/CTCHaste_HasFrameUpdate_004e0ca4_test.cpp'
         PassPattern = 'PASS_004e0ca4'
     }
     [pscustomobject]@{
@@ -96351,9 +96351,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e0d30'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e0d30_004e0d30.cpp'
-        TestSource = '00/4e/gapscan_sub004e0d30_004e0d30_test.cpp'
+        Module = 'CTCPreCalculatedNavigationRoute'
+        Source = '00/4e/CTCPreCalculatedNavigationRoute_IsComponentSerialisable_004e0d30.cpp'
+        TestSource = '00/4e/CTCPreCalculatedNavigationRoute_IsComponentSerialisable_004e0d30_test.cpp'
         PassPattern = 'PASS_004e0d30'
     }
     [pscustomobject]@{
@@ -96365,16 +96365,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e231a'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e231a_004e231a.cpp'
-        TestSource = '00/4e/gapscan_sub004e231a_004e231a_test.cpp'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/4e/CTCTargetingPlayer_HasFrameUpdate_004e231a.cpp'
+        TestSource = '00/4e/CTCTargetingPlayer_HasFrameUpdate_004e231a_test.cpp'
         PassPattern = 'PASS_004e231a'
     }
     [pscustomobject]@{
         Address = '004e3165'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e3165_004e3165.cpp'
-        TestSource = '00/4e/gapscan_sub004e3165_004e3165_test.cpp'
+        Module = 'CTCDExplosion'
+        Source = '00/4e/CTCDExplosion_HasFrameUpdate_004e3165.cpp'
+        TestSource = '00/4e/CTCDExplosion_HasFrameUpdate_004e3165_test.cpp'
         PassPattern = 'PASS_004e3165'
     }
     [pscustomobject]@{
@@ -96386,9 +96386,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e339c'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e339c_004e339c.cpp'
-        TestSource = '00/4e/gapscan_sub004e339c_004e339c_test.cpp'
+        Module = 'CTCNymph'
+        Source = '00/4e/CTCNymph_HasFrameUpdate_004e339c.cpp'
+        TestSource = '00/4e/CTCNymph_HasFrameUpdate_004e339c_test.cpp'
         PassPattern = 'PASS_004e339c'
     }
     [pscustomobject]@{
@@ -96400,23 +96400,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e3474'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e3474_004e3474.cpp'
-        TestSource = '00/4e/gapscan_sub004e3474_004e3474_test.cpp'
+        Module = 'CTCDExplosiveTrail'
+        Source = '00/4e/CTCDExplosiveTrail_HasFrameUpdate_004e3474.cpp'
+        TestSource = '00/4e/CTCDExplosiveTrail_HasFrameUpdate_004e3474_test.cpp'
         PassPattern = 'PASS_004e3474'
     }
     [pscustomobject]@{
         Address = '004e3d12'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e3d12_004e3d12.cpp'
-        TestSource = '00/4e/gapscan_sub004e3d12_004e3d12_test.cpp'
+        Module = 'CTCEntityEvents'
+        Source = '00/4e/CTCEntityEvents_HasFrameUpdate_004e3d12.cpp'
+        TestSource = '00/4e/CTCEntityEvents_HasFrameUpdate_004e3d12_test.cpp'
         PassPattern = 'PASS_004e3d12'
     }
     [pscustomobject]@{
         Address = '004e48d7'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e48d7_004e48d7.cpp'
-        TestSource = '00/4e/gapscan_sub004e48d7_004e48d7_test.cpp'
+        Module = 'CTCSearchableContainer'
+        Source = '00/4e/CTCSearchableContainer_IsComponentSerialisable_004e48d7.cpp'
+        TestSource = '00/4e/CTCSearchableContainer_IsComponentSerialisable_004e48d7_test.cpp'
         PassPattern = 'PASS_004e48d7'
     }
     [pscustomobject]@{
@@ -96442,37 +96442,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e6d87'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e6d87_004e6d87.cpp'
-        TestSource = '00/4e/gapscan_sub004e6d87_004e6d87_test.cpp'
+        Module = 'CTCLightningNode'
+        Source = '00/4e/CTCLightningNode_HasFrameUpdate_004e6d87.cpp'
+        TestSource = '00/4e/CTCLightningNode_HasFrameUpdate_004e6d87_test.cpp'
         PassPattern = 'PASS_004e6d87'
     }
     [pscustomobject]@{
         Address = '004e74d9'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e74d9_004e74d9.cpp'
-        TestSource = '00/4e/gapscan_sub004e74d9_004e74d9_test.cpp'
+        Module = 'CTCCarrying'
+        Source = '00/4e/CTCCarrying_HasFrameUpdate_004e74d9.cpp'
+        TestSource = '00/4e/CTCCarrying_HasFrameUpdate_004e74d9_test.cpp'
         PassPattern = 'PASS_004e74d9'
     }
     [pscustomobject]@{
         Address = '004e7559'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7559_004e7559.cpp'
-        TestSource = '00/4e/gapscan_sub004e7559_004e7559_test.cpp'
+        Module = 'CTCBoastingPodium'
+        Source = '00/4e/CTCBoastingPodium_HasFrameUpdate_004e7559.cpp'
+        TestSource = '00/4e/CTCBoastingPodium_HasFrameUpdate_004e7559_test.cpp'
         PassPattern = 'PASS_004e7559'
     }
     [pscustomobject]@{
         Address = '004e7d3b'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d3b_004e7d3b.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d3b_004e7d3b_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_IsComponentSerialisable_004e7d3b.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_IsComponentSerialisable_004e7d3b_test.cpp'
         PassPattern = 'PASS_004e7d3b'
     }
     [pscustomobject]@{
         Address = '004e7d3e'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d3e_004e7d3e.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d3e_004e7d3e_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_OnItemSelectedInHand_004e7d3e.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_OnItemSelectedInHand_004e7d3e_test.cpp'
         PassPattern = 'PASS_004e7d3e'
     }
     [pscustomobject]@{
@@ -96540,9 +96540,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e7d7a'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d7a_004e7d7a.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d7a_004e7d7a_test.cpp'
+        Module = 'CTCInventoryClothing'
+        Source = '00/4e/CTCInventoryClothing_OnChangeCategory_004e7d7a.cpp'
+        TestSource = '00/4e/CTCInventoryClothing_OnChangeCategory_004e7d7a_test.cpp'
         PassPattern = 'PASS_004e7d7a'
     }
     [pscustomobject]@{
@@ -96596,135 +96596,135 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00529730'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529730_00529730.cpp'
-        TestSource = '00/52/gapscan_sub00529730_00529730_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_IsAffectedByDamage_00529730.cpp'
+        TestSource = '00/52/CThingPhysical_IsAffectedByDamage_00529730_test.cpp'
         PassPattern = 'PASS_00529730'
     }
     [pscustomobject]@{
         Address = '00529740'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529740_00529740.cpp'
-        TestSource = '00/52/gapscan_sub00529740_00529740_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_GetProperties_00529740.cpp'
+        TestSource = '00/52/CThingPhysical_GetProperties_00529740_test.cpp'
         PassPattern = 'PASS_00529740'
     }
     [pscustomobject]@{
         Address = '00529750'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529750_00529750.cpp'
-        TestSource = '00/52/gapscan_sub00529750_00529750_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_IsCrop_00529750.cpp'
+        TestSource = '00/52/CThingPhysical_IsCrop_00529750_test.cpp'
         PassPattern = 'PASS_00529750'
     }
     [pscustomobject]@{
         Address = '00529760'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529760_00529760.cpp'
-        TestSource = '00/52/gapscan_sub00529760_00529760_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_IsHidden_00529760.cpp'
+        TestSource = '00/52/CThingPhysical_IsHidden_00529760_test.cpp'
         PassPattern = 'PASS_00529760'
     }
     [pscustomobject]@{
         Address = '00529770'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529770_00529770.cpp'
-        TestSource = '00/52/gapscan_sub00529770_00529770_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_IsTargetedByPlayer_00529770.cpp'
+        TestSource = '00/52/CThingPhysical_IsTargetedByPlayer_00529770_test.cpp'
         PassPattern = 'PASS_00529770'
     }
     [pscustomobject]@{
         Address = '00529780'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529780_00529780.cpp'
-        TestSource = '00/52/gapscan_sub00529780_00529780_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_SetTargetedByPlayer_00529780.cpp'
+        TestSource = '00/52/CThingPhysical_SetTargetedByPlayer_00529780_test.cpp'
         PassPattern = 'PASS_00529780'
     }
     [pscustomobject]@{
         Address = '00529790'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529790_00529790.cpp'
-        TestSource = '00/52/gapscan_sub00529790_00529790_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_ClearTargetedByPlayer_00529790.cpp'
+        TestSource = '00/52/CThingPhysical_ClearTargetedByPlayer_00529790_test.cpp'
         PassPattern = 'PASS_00529790'
     }
     [pscustomobject]@{
         Address = '005297b0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub005297b0_005297b0.cpp'
-        TestSource = '00/52/gapscan_sub005297b0_005297b0_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_CanBlockUpperLevelNavigatingCreature_005297b0.cpp'
+        TestSource = '00/52/CThingPhysical_CanBlockUpperLevelNavigatingCreature_005297b0_test.cpp'
         PassPattern = 'PASS_005297b0'
     }
     [pscustomobject]@{
         Address = '005297c0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub005297c0_005297c0.cpp'
-        TestSource = '00/52/gapscan_sub005297c0_005297c0_test.cpp'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_UseHighDetailQuadTree_005297c0.cpp'
+        TestSource = '00/52/CThingPhysical_UseHighDetailQuadTree_005297c0_test.cpp'
         PassPattern = 'PASS_005297c0'
     }
     [pscustomobject]@{
         Address = '00529830'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529830_00529830.cpp'
-        TestSource = '00/52/gapscan_sub00529830_00529830_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_IsUsingTriggerRadius_00529830.cpp'
+        TestSource = '00/52/CThingGameObject_IsUsingTriggerRadius_00529830_test.cpp'
         PassPattern = 'PASS_00529830'
     }
     [pscustomobject]@{
         Address = '00529850'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529850_00529850.cpp'
-        TestSource = '00/52/gapscan_sub00529850_00529850_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_SetTriggerRadius_00529850.cpp'
+        TestSource = '00/52/CThingGameObject_SetTriggerRadius_00529850_test.cpp'
         PassPattern = 'PASS_00529850'
     }
     [pscustomobject]@{
         Address = '00529860'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529860_00529860.cpp'
-        TestSource = '00/52/gapscan_sub00529860_00529860_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_IsCover_00529860.cpp'
+        TestSource = '00/52/CThingGameObject_IsCover_00529860_test.cpp'
         PassPattern = 'PASS_00529860'
     }
     [pscustomobject]@{
         Address = '00529870'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529870_00529870.cpp'
-        TestSource = '00/52/gapscan_sub00529870_00529870_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_IsGameObject_00529870.cpp'
+        TestSource = '00/52/CThingGameObject_IsGameObject_00529870_test.cpp'
         PassPattern = 'PASS_00529870'
     }
     [pscustomobject]@{
         Address = '00529880'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529880_00529880.cpp'
-        TestSource = '00/52/gapscan_sub00529880_00529880_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_IsIndestructible_00529880.cpp'
+        TestSource = '00/52/CThingGameObject_IsIndestructible_00529880_test.cpp'
         PassPattern = 'PASS_00529880'
     }
     [pscustomobject]@{
         Address = '00529890'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529890_00529890.cpp'
-        TestSource = '00/52/gapscan_sub00529890_00529890_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_ForceAnim_00529890.cpp'
+        TestSource = '00/52/CThingGameObject_ForceAnim_00529890_test.cpp'
         PassPattern = 'PASS_00529890'
     }
     [pscustomobject]@{
         Address = '005298a0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub005298a0_005298a0.cpp'
-        TestSource = '00/52/gapscan_sub005298a0_005298a0_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_ForceAnim_005298a0.cpp'
+        TestSource = '00/52/CThingGameObject_ForceAnim_005298a0_test.cpp'
         PassPattern = 'PASS_005298a0'
     }
     [pscustomobject]@{
         Address = '005298b0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub005298b0_005298b0.cpp'
-        TestSource = '00/52/gapscan_sub005298b0_005298b0_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_GetMaterialOnHitByMelee_005298b0.cpp'
+        TestSource = '00/52/CThingGameObject_GetMaterialOnHitByMelee_005298b0_test.cpp'
         PassPattern = 'PASS_005298b0'
     }
     [pscustomobject]@{
         Address = '00529990'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529990_00529990.cpp'
-        TestSource = '00/52/gapscan_sub00529990_00529990_test.cpp'
+        Module = 'CThingBuilding'
+        Source = '00/52/CThingBuilding_IsAffectedByDamage_00529990.cpp'
+        TestSource = '00/52/CThingBuilding_IsAffectedByDamage_00529990_test.cpp'
         PassPattern = 'PASS_00529990'
     }
     [pscustomobject]@{
         Address = '00529a10'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529a10_00529a10.cpp'
-        TestSource = '00/52/gapscan_sub00529a10_00529a10_test.cpp'
+        Module = 'CThingVillage'
+        Source = '00/52/CThingVillage_IsAffectedByDamage_00529a10.cpp'
+        TestSource = '00/52/CThingVillage_IsAffectedByDamage_00529a10_test.cpp'
         PassPattern = 'PASS_00529a10'
     }
     [pscustomobject]@{
@@ -96736,23 +96736,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00529a30'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529a30_00529a30.cpp'
-        TestSource = '00/52/gapscan_sub00529a30_00529a30_test.cpp'
+        Module = 'CThingVillage'
+        Source = '00/52/CThingVillage_IsEntitySerialisable_00529a30.cpp'
+        TestSource = '00/52/CThingVillage_IsEntitySerialisable_00529a30_test.cpp'
         PassPattern = 'PASS_00529a30'
     }
     [pscustomobject]@{
         Address = '00529aa0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529aa0_00529aa0.cpp'
-        TestSource = '00/52/gapscan_sub00529aa0_00529aa0_test.cpp'
+        Module = 'CThingHolySite'
+        Source = '00/52/CThingHolySite_IsEntitySerialisable_00529aa0.cpp'
+        TestSource = '00/52/CThingHolySite_IsEntitySerialisable_00529aa0_test.cpp'
         PassPattern = 'PASS_00529aa0'
     }
     [pscustomobject]@{
         Address = '00529b50'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529b50_00529b50.cpp'
-        TestSource = '00/52/gapscan_sub00529b50_00529b50_test.cpp'
+        Module = 'CThingSwitch'
+        Source = '00/52/CThingSwitch_IsEntitySerialisable_00529b50.cpp'
+        TestSource = '00/52/CThingSwitch_IsEntitySerialisable_00529b50_test.cpp'
         PassPattern = 'PASS_00529b50'
     }
     [pscustomobject]@{
@@ -96764,9 +96764,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00529b70'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529b70_00529b70.cpp'
-        TestSource = '00/52/gapscan_sub00529b70_00529b70_test.cpp'
+        Module = 'CThingSwitch'
+        Source = '00/52/CThingSwitch_IsUsingTriggerRadius_00529b70.cpp'
+        TestSource = '00/52/CThingSwitch_IsUsingTriggerRadius_00529b70_test.cpp'
         PassPattern = 'PASS_00529b70'
     }
     [pscustomobject]@{
@@ -96785,9 +96785,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00529c10'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529c10_00529c10.cpp'
-        TestSource = '00/52/gapscan_sub00529c10_00529c10_test.cpp'
+        Module = 'CThingMarker'
+        Source = '00/52/CThingMarker_IsEntitySerialisable_00529c10.cpp'
+        TestSource = '00/52/CThingMarker_IsEntitySerialisable_00529c10_test.cpp'
         PassPattern = 'PASS_00529c10'
     }
     [pscustomobject]@{
@@ -96799,9 +96799,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00529c90'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub00529c90_00529c90.cpp'
-        TestSource = '00/52/gapscan_sub00529c90_00529c90_test.cpp'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/52/CThingPhysicalSwitch_IsEntitySerialisable_00529c90.cpp'
+        TestSource = '00/52/CThingPhysicalSwitch_IsEntitySerialisable_00529c90_test.cpp'
         PassPattern = 'PASS_00529c90'
     }
     [pscustomobject]@{
@@ -96820,16 +96820,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052aba0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052aba0_0052aba0.cpp'
-        TestSource = '00/52/gapscan_sub0052aba0_0052aba0_test.cpp'
+        Module = 'CThingPlayerCreature'
+        Source = '00/52/CThingPlayerCreature_IsAffectedByDamage_0052aba0.cpp'
+        TestSource = '00/52/CThingPlayerCreature_IsAffectedByDamage_0052aba0_test.cpp'
         PassPattern = 'PASS_0052aba0'
     }
     [pscustomobject]@{
         Address = '0052abb0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052abb0_0052abb0.cpp'
-        TestSource = '00/52/gapscan_sub0052abb0_0052abb0_test.cpp'
+        Module = 'CThingPlayerCreature'
+        Source = '00/52/CThingPlayerCreature_IsControlled_0052abb0.cpp'
+        TestSource = '00/52/CThingPlayerCreature_IsControlled_0052abb0_test.cpp'
         PassPattern = 'PASS_0052abb0'
     }
     [pscustomobject]@{
@@ -96841,23 +96841,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052abd0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052abd0_0052abd0.cpp'
-        TestSource = '00/52/gapscan_sub0052abd0_0052abd0_test.cpp'
+        Module = 'CThingPlayerCreature'
+        Source = '00/52/CThingPlayerCreature_IsToUnsheatheItemsAfterCutscenes_0052abd0.cpp'
+        TestSource = '00/52/CThingPlayerCreature_IsToUnsheatheItemsAfterCutscenes_0052abd0_test.cpp'
         PassPattern = 'PASS_0052abd0'
     }
     [pscustomobject]@{
         Address = '0052abe0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052abe0_0052abe0.cpp'
-        TestSource = '00/52/gapscan_sub0052abe0_0052abe0_test.cpp'
+        Module = 'CThingPlayerCreature'
+        Source = '00/52/CThingPlayerCreature_IsPlayerCharacter_0052abe0.cpp'
+        TestSource = '00/52/CThingPlayerCreature_IsPlayerCharacter_0052abe0_test.cpp'
         PassPattern = 'PASS_0052abe0'
     }
     [pscustomobject]@{
         Address = '0052e700'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052e700_0052e700.cpp'
-        TestSource = '00/52/gapscan_sub0052e700_0052e700_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ForceState_0052e700.cpp'
+        TestSource = '00/52/NUISystemCComponent_ForceState_0052e700_test.cpp'
         PassPattern = 'PASS_0052e700'
     }
     [pscustomobject]@{
@@ -97051,16 +97051,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052f120'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f120_0052f120.cpp'
-        TestSource = '00/52/gapscan_sub0052f120_0052f120_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetCurrentStateIndex_0052f120.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetCurrentStateIndex_0052f120_test.cpp'
         PassPattern = 'PASS_0052f120'
     }
     [pscustomobject]@{
         Address = '0052f130'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f130_0052f130.cpp'
-        TestSource = '00/52/gapscan_sub0052f130_0052f130_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetTargetStateIndex_0052f130.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetTargetStateIndex_0052f130_test.cpp'
         PassPattern = 'PASS_0052f130'
     }
     [pscustomobject]@{
@@ -97618,9 +97618,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0055de30'
-        Module = '_gapscan'
-        Source = '00/55/gapscan_sub0055de30_0055de30.cpp'
-        TestSource = '00/55/gapscan_sub0055de30_0055de30_test.cpp'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_HasGlobalUpdate_0055de30.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_HasGlobalUpdate_0055de30_test.cpp'
         PassPattern = 'PASS_0055de30'
     }
     [pscustomobject]@{
@@ -97632,16 +97632,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056a660'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056a660_0056a660.cpp'
-        TestSource = '00/56/gapscan_sub0056a660_0056a660_test.cpp'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_HasFrameUpdate_0056a660.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_HasFrameUpdate_0056a660_test.cpp'
         PassPattern = 'PASS_0056a660'
     }
     [pscustomobject]@{
         Address = '0056a670'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056a670_0056a670.cpp'
-        TestSource = '00/56/gapscan_sub0056a670_0056a670_test.cpp'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_IsComponentSerialisable_0056a670.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_IsComponentSerialisable_0056a670_test.cpp'
         PassPattern = 'PASS_0056a670'
     }
     [pscustomobject]@{
@@ -97688,65 +97688,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056e150'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e150_0056e150.cpp'
-        TestSource = '00/56/gapscan_sub0056e150_0056e150_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_OnCameraInsideObservedThing_0056e150.cpp'
+        TestSource = '00/56/NCameraModesCBase_OnCameraInsideObservedThing_0056e150_test.cpp'
         PassPattern = 'PASS_0056e150'
     }
     [pscustomobject]@{
         Address = '0056e160'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e160_0056e160.cpp'
-        TestSource = '00/56/gapscan_sub0056e160_0056e160_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_IsUseRightStickLookAround_0056e160.cpp'
+        TestSource = '00/56/NCameraModesCBase_IsUseRightStickLookAround_0056e160_test.cpp'
         PassPattern = 'PASS_0056e160'
     }
     [pscustomobject]@{
         Address = '0056e170'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e170_0056e170.cpp'
-        TestSource = '00/56/gapscan_sub0056e170_0056e170_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_IsShortenOnOcclusion_0056e170.cpp'
+        TestSource = '00/56/NCameraModesCBase_IsShortenOnOcclusion_0056e170_test.cpp'
         PassPattern = 'PASS_0056e170'
     }
     [pscustomobject]@{
         Address = '0056e180'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e180_0056e180.cpp'
-        TestSource = '00/56/gapscan_sub0056e180_0056e180_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_IsAvoidLandscape_0056e180.cpp'
+        TestSource = '00/56/NCameraModesCBase_IsAvoidLandscape_0056e180_test.cpp'
         PassPattern = 'PASS_0056e180'
     }
     [pscustomobject]@{
         Address = '0056e190'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e190_0056e190.cpp'
-        TestSource = '00/56/gapscan_sub0056e190_0056e190_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_IsFOVChange_0056e190.cpp'
+        TestSource = '00/56/NCameraModesCBase_IsFOVChange_0056e190_test.cpp'
         PassPattern = 'PASS_0056e190'
     }
     [pscustomobject]@{
         Address = '0056e1a0'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e1a0_0056e1a0.cpp'
-        TestSource = '00/56/gapscan_sub0056e1a0_0056e1a0_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_IsTrackMeleeOpponents_0056e1a0.cpp'
+        TestSource = '00/56/NCameraModesCBase_IsTrackMeleeOpponents_0056e1a0_test.cpp'
         PassPattern = 'PASS_0056e1a0'
     }
     [pscustomobject]@{
         Address = '0056e1b0'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e1b0_0056e1b0.cpp'
-        TestSource = '00/56/gapscan_sub0056e1b0_0056e1b0_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_IsFinished_0056e1b0.cpp'
+        TestSource = '00/56/NCameraModesCBase_IsFinished_0056e1b0_test.cpp'
         PassPattern = 'PASS_0056e1b0'
     }
     [pscustomobject]@{
         Address = '0056e1c0'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e1c0_0056e1c0.cpp'
-        TestSource = '00/56/gapscan_sub0056e1c0_0056e1c0_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_IsStringAndCage_0056e1c0.cpp'
+        TestSource = '00/56/NCameraModesCBase_IsStringAndCage_0056e1c0_test.cpp'
         PassPattern = 'PASS_0056e1c0'
     }
     [pscustomobject]@{
         Address = '0056e1d0'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e1d0_0056e1d0.cpp'
-        TestSource = '00/56/gapscan_sub0056e1d0_0056e1d0_test.cpp'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_Recentre_0056e1d0.cpp'
+        TestSource = '00/56/NCameraModesCBase_Recentre_0056e1d0_test.cpp'
         PassPattern = 'PASS_0056e1d0'
     }
     [pscustomobject]@{
@@ -97758,9 +97758,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056e260'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e260_0056e260.cpp'
-        TestSource = '00/56/gapscan_sub0056e260_0056e260_test.cpp'
+        Module = 'NCameraModes::CCameraPointModeBase'
+        Source = '00/56/NCameraModesCCameraPointModeBase_IsUseRightStickLookAround_0056e260.cpp'
+        TestSource = '00/56/NCameraModesCCameraPointModeBase_IsUseRightStickLookAround_0056e260_test.cpp'
         PassPattern = 'PASS_0056e260'
     }
     [pscustomobject]@{
@@ -97772,37 +97772,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056e280'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e280_0056e280.cpp'
-        TestSource = '00/56/gapscan_sub0056e280_0056e280_test.cpp'
+        Module = 'NCameraModes::CCameraPointModeBase'
+        Source = '00/56/NCameraModesCCameraPointModeBase_OnInitLeaf_0056e280.cpp'
+        TestSource = '00/56/NCameraModesCCameraPointModeBase_OnInitLeaf_0056e280_test.cpp'
         PassPattern = 'PASS_0056e280'
     }
     [pscustomobject]@{
         Address = '0056e290'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e290_0056e290.cpp'
-        TestSource = '00/56/gapscan_sub0056e290_0056e290_test.cpp'
+        Module = 'NCameraModes::CCameraPointModeBase'
+        Source = '00/56/NCameraModesCCameraPointModeBase_OnDieLeaf_0056e290.cpp'
+        TestSource = '00/56/NCameraModesCCameraPointModeBase_OnDieLeaf_0056e290_test.cpp'
         PassPattern = 'PASS_0056e290'
     }
     [pscustomobject]@{
         Address = '0056e2a0'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e2a0_0056e2a0.cpp'
-        TestSource = '00/56/gapscan_sub0056e2a0_0056e2a0_test.cpp'
+        Module = 'NCameraModes::CCameraPointModeBase'
+        Source = '00/56/NCameraModesCCameraPointModeBase_IsTrackObservedThing_0056e2a0.cpp'
+        TestSource = '00/56/NCameraModesCCameraPointModeBase_IsTrackObservedThing_0056e2a0_test.cpp'
         PassPattern = 'PASS_0056e2a0'
     }
     [pscustomobject]@{
         Address = '0056e380'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e380_0056e380.cpp'
-        TestSource = '00/56/gapscan_sub0056e380_0056e380_test.cpp'
+        Module = 'NCameraModes::CSnapToPoint'
+        Source = '00/56/NCameraModesCSnapToPoint_GetModeType_0056e380.cpp'
+        TestSource = '00/56/NCameraModesCSnapToPoint_GetModeType_0056e380_test.cpp'
         PassPattern = 'PASS_0056e380'
     }
     [pscustomobject]@{
         Address = '0056e390'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056e390_0056e390.cpp'
-        TestSource = '00/56/gapscan_sub0056e390_0056e390_test.cpp'
+        Module = 'NCameraModes::CSnapToPoint'
+        Source = '00/56/NCameraModesCSnapToPoint_OnDieLeaf_0056e390.cpp'
+        TestSource = '00/56/NCameraModesCSnapToPoint_OnDieLeaf_0056e390_test.cpp'
         PassPattern = 'PASS_0056e390'
     }
     [pscustomobject]@{
@@ -97842,9 +97842,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0057a25d'
-        Module = '_gapscan'
-        Source = '00/57/gapscan_sub0057a25d_0057a25d.cpp'
-        TestSource = '00/57/gapscan_sub0057a25d_0057a25d_test.cpp'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_IsComponentSerialisable_0057a25d.cpp'
+        TestSource = '00/57/CTCInventoryExperience_IsComponentSerialisable_0057a25d_test.cpp'
         PassPattern = 'PASS_0057a25d'
     }
     [pscustomobject]@{
@@ -97856,30 +97856,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0057a4fc'
-        Module = '_gapscan'
-        Source = '00/57/gapscan_sub0057a4fc_0057a4fc.cpp'
-        TestSource = '00/57/gapscan_sub0057a4fc_0057a4fc_test.cpp'
+        Module = 'NEntityEvents::CEventBase'
+        Source = '00/57/NEntityEventsCEventBase_OnAdd_0057a4fc.cpp'
+        TestSource = '00/57/NEntityEventsCEventBase_OnAdd_0057a4fc_test.cpp'
         PassPattern = 'PASS_0057a4fc'
     }
     [pscustomobject]@{
         Address = '0057a4ff'
-        Module = '_gapscan'
-        Source = '00/57/gapscan_sub0057a4ff_0057a4ff.cpp'
-        TestSource = '00/57/gapscan_sub0057a4ff_0057a4ff_test.cpp'
+        Module = 'NEntityEvents::CEventBase'
+        Source = '00/57/NEntityEventsCEventBase_IsReadyToDie_0057a4ff.cpp'
+        TestSource = '00/57/NEntityEventsCEventBase_IsReadyToDie_0057a4ff_test.cpp'
         PassPattern = 'PASS_0057a4ff'
     }
     [pscustomobject]@{
         Address = '005814c3'
-        Module = '_gapscan'
-        Source = '00/58/gapscan_sub005814c3_005814c3.cpp'
-        TestSource = '00/58/gapscan_sub005814c3_005814c3_test.cpp'
+        Module = 'CTCHeroStats'
+        Source = '00/58/CTCHeroStats_HasFrameUpdate_005814c3.cpp'
+        TestSource = '00/58/CTCHeroStats_HasFrameUpdate_005814c3_test.cpp'
         PassPattern = 'PASS_005814c3'
     }
     [pscustomobject]@{
         Address = '005814c6'
-        Module = '_gapscan'
-        Source = '00/58/gapscan_sub005814c6_005814c6.cpp'
-        TestSource = '00/58/gapscan_sub005814c6_005814c6_test.cpp'
+        Module = 'CTCHeroStats'
+        Source = '00/58/CTCHeroStats_IsComponentSerialisable_005814c6.cpp'
+        TestSource = '00/58/CTCHeroStats_IsComponentSerialisable_005814c6_test.cpp'
         PassPattern = 'PASS_005814c6'
     }
     [pscustomobject]@{
@@ -97898,16 +97898,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00594be4'
-        Module = '_gapscan'
-        Source = '00/59/gapscan_sub00594be4_00594be4.cpp'
-        TestSource = '00/59/gapscan_sub00594be4_00594be4_test.cpp'
+        Module = 'CTCInventory'
+        Source = '00/59/CTCInventory_IsComponentSerialisable_00594be4.cpp'
+        TestSource = '00/59/CTCInventory_IsComponentSerialisable_00594be4_test.cpp'
         PassPattern = 'PASS_00594be4'
     }
     [pscustomobject]@{
         Address = '00594be7'
-        Module = '_gapscan'
-        Source = '00/59/gapscan_sub00594be7_00594be7.cpp'
-        TestSource = '00/59/gapscan_sub00594be7_00594be7_test.cpp'
+        Module = 'CTCInventory'
+        Source = '00/59/CTCInventory_OnChangeCategory_00594be7.cpp'
+        TestSource = '00/59/CTCInventory_OnChangeCategory_00594be7_test.cpp'
         PassPattern = 'PASS_00594be7'
     }
     [pscustomobject]@{
@@ -97954,16 +97954,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b306f'
-        Module = '_gapscan'
-        Source = '00/5b/gapscan_sub005b306f_005b306f.cpp'
-        TestSource = '00/5b/gapscan_sub005b306f_005b306f_test.cpp'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5b/CTCInventoryTrade_OnChangeCategory_005b306f.cpp'
+        TestSource = '00/5b/CTCInventoryTrade_OnChangeCategory_005b306f_test.cpp'
         PassPattern = 'PASS_005b306f'
     }
     [pscustomobject]@{
         Address = '005b3070'
-        Module = '_gapscan'
-        Source = '00/5b/gapscan_sub005b3070_005b3070.cpp'
-        TestSource = '00/5b/gapscan_sub005b3070_005b3070_test.cpp'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5b/CTCInventoryTrade_IsComponentSerialisable_005b3070.cpp'
+        TestSource = '00/5b/CTCInventoryTrade_IsComponentSerialisable_005b3070_test.cpp'
         PassPattern = 'PASS_005b3070'
     }
     [pscustomobject]@{
@@ -97982,30 +97982,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bc4c3'
-        Module = '_gapscan'
-        Source = '00/5b/gapscan_sub005bc4c3_005bc4c3.cpp'
-        TestSource = '00/5b/gapscan_sub005bc4c3_005bc4c3_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_OnChangeCategory_005bc4c3.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_OnChangeCategory_005bc4c3_test.cpp'
         PassPattern = 'PASS_005bc4c3'
     }
     [pscustomobject]@{
         Address = '005bc586'
-        Module = '_gapscan'
-        Source = '00/5b/gapscan_sub005bc586_005bc586.cpp'
-        TestSource = '00/5b/gapscan_sub005bc586_005bc586_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_SetInventorySelectionState_005bc586.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_SetInventorySelectionState_005bc586_test.cpp'
         PassPattern = 'PASS_005bc586'
     }
     [pscustomobject]@{
         Address = '005bc589'
-        Module = '_gapscan'
-        Source = '00/5b/gapscan_sub005bc589_005bc589.cpp'
-        TestSource = '00/5b/gapscan_sub005bc589_005bc589_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_UpdateMenuScrollButtonsCategory_005bc589.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_UpdateMenuScrollButtonsCategory_005bc589_test.cpp'
         PassPattern = 'PASS_005bc589'
     }
     [pscustomobject]@{
         Address = '005bc58a'
-        Module = '_gapscan'
-        Source = '00/5b/gapscan_sub005bc58a_005bc58a.cpp'
-        TestSource = '00/5b/gapscan_sub005bc58a_005bc58a_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_UpdateMenuScrollButtonsItem_005bc58a.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_UpdateMenuScrollButtonsItem_005bc58a_test.cpp'
         PassPattern = 'PASS_005bc58a'
     }
     [pscustomobject]@{
@@ -98080,9 +98080,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005cc4f8'
-        Module = '_gapscan'
-        Source = '00/5c/gapscan_sub005cc4f8_005cc4f8.cpp'
-        TestSource = '00/5c/gapscan_sub005cc4f8_005cc4f8_test.cpp'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_OnChangeCategory_005cc4f8.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_OnChangeCategory_005cc4f8_test.cpp'
         PassPattern = 'PASS_005cc4f8'
     }
     [pscustomobject]@{
@@ -98094,16 +98094,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005d8794'
-        Module = '_gapscan'
-        Source = '00/5d/gapscan_sub005d8794_005d8794.cpp'
-        TestSource = '00/5d/gapscan_sub005d8794_005d8794_test.cpp'
+        Module = 'CTCInventoryStats'
+        Source = '00/5d/CTCInventoryStats_HasFrameUpdate_005d8794.cpp'
+        TestSource = '00/5d/CTCInventoryStats_HasFrameUpdate_005d8794_test.cpp'
         PassPattern = 'PASS_005d8794'
     }
     [pscustomobject]@{
         Address = '005d87a1'
-        Module = '_gapscan'
-        Source = '00/5d/gapscan_sub005d87a1_005d87a1.cpp'
-        TestSource = '00/5d/gapscan_sub005d87a1_005d87a1_test.cpp'
+        Module = 'CTCInventoryStats'
+        Source = '00/5d/CTCInventoryStats_OnChangeCategory_005d87a1.cpp'
+        TestSource = '00/5d/CTCInventoryStats_OnChangeCategory_005d87a1_test.cpp'
         PassPattern = 'PASS_005d87a1'
     }
     [pscustomobject]@{
@@ -98122,9 +98122,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005dae10'
-        Module = '_gapscan'
-        Source = '00/5d/gapscan_sub005dae10_005dae10.cpp'
-        TestSource = '00/5d/gapscan_sub005dae10_005dae10_test.cpp'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_HasFrameUpdate_005dae10.cpp'
+        TestSource = '00/5d/CTCWeapon_HasFrameUpdate_005dae10_test.cpp'
         PassPattern = 'PASS_005dae10'
     }
     [pscustomobject]@{
@@ -98150,51 +98150,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005e9750'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005e9750_005e9750.cpp'
-        TestSource = '00/5e/gapscan_sub005e9750_005e9750_test.cpp'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_IsComponentSerialisable_005e9750.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_IsComponentSerialisable_005e9750_test.cpp'
         PassPattern = 'PASS_005e9750'
     }
     [pscustomobject]@{
         Address = '005e9ab0'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005e9ab0_005e9ab0.cpp'
-        TestSource = '00/5e/gapscan_sub005e9ab0_005e9ab0_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_Greeting_005e9ab0.cpp'
+        TestSource = '00/5e/CTCTavernGame_Greeting_005e9ab0_test.cpp'
         PassPattern = 'PASS_005e9ab0'
     }
     [pscustomobject]@{
         Address = '005e9ac0'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005e9ac0_005e9ac0.cpp'
-        TestSource = '00/5e/gapscan_sub005e9ac0_005e9ac0_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_Options_005e9ac0.cpp'
+        TestSource = '00/5e/CTCTavernGame_Options_005e9ac0_test.cpp'
         PassPattern = 'PASS_005e9ac0'
     }
     [pscustomobject]@{
         Address = '005e9ad0'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005e9ad0_005e9ad0.cpp'
-        TestSource = '00/5e/gapscan_sub005e9ad0_005e9ad0_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_Instructions_005e9ad0.cpp'
+        TestSource = '00/5e/CTCTavernGame_Instructions_005e9ad0_test.cpp'
         PassPattern = 'PASS_005e9ad0'
     }
     [pscustomobject]@{
         Address = '005e9ae0'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005e9ae0_005e9ae0.cpp'
-        TestSource = '00/5e/gapscan_sub005e9ae0_005e9ae0_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_Betting_005e9ae0.cpp'
+        TestSource = '00/5e/CTCTavernGame_Betting_005e9ae0_test.cpp'
         PassPattern = 'PASS_005e9ae0'
     }
     [pscustomobject]@{
         Address = '005e9af0'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005e9af0_005e9af0.cpp'
-        TestSource = '00/5e/gapscan_sub005e9af0_005e9af0_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_ReactionAndPayout_005e9af0.cpp'
+        TestSource = '00/5e/CTCTavernGame_ReactionAndPayout_005e9af0_test.cpp'
         PassPattern = 'PASS_005e9af0'
     }
     [pscustomobject]@{
         Address = '005e9b00'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005e9b00_005e9b00.cpp'
-        TestSource = '00/5e/gapscan_sub005e9b00_005e9b00_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_Farewell_005e9b00.cpp'
+        TestSource = '00/5e/CTCTavernGame_Farewell_005e9b00_test.cpp'
         PassPattern = 'PASS_005e9b00'
     }
     [pscustomobject]@{
@@ -98213,37 +98213,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ed0f0'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005ed0f0_005ed0f0.cpp'
-        TestSource = '00/5e/gapscan_sub005ed0f0_005ed0f0_test.cpp'
+        Module = 'NCameraModes::CScriptModuleBase'
+        Source = '00/5e/NCameraModesCScriptModuleBase_IsShortenOnOcclusion_005ed0f0.cpp'
+        TestSource = '00/5e/NCameraModesCScriptModuleBase_IsShortenOnOcclusion_005ed0f0_test.cpp'
         PassPattern = 'PASS_005ed0f0'
     }
     [pscustomobject]@{
         Address = '005ed100'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005ed100_005ed100.cpp'
-        TestSource = '00/5e/gapscan_sub005ed100_005ed100_test.cpp'
+        Module = 'NCameraModes::CScriptModuleBase'
+        Source = '00/5e/NCameraModesCScriptModuleBase_GetModuleRollAngle_005ed100.cpp'
+        TestSource = '00/5e/NCameraModesCScriptModuleBase_GetModuleRollAngle_005ed100_test.cpp'
         PassPattern = 'PASS_005ed100'
     }
     [pscustomobject]@{
         Address = '005ed110'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005ed110_005ed110.cpp'
-        TestSource = '00/5e/gapscan_sub005ed110_005ed110_test.cpp'
+        Module = 'NCameraModes::CScriptModuleBase'
+        Source = '00/5e/NCameraModesCScriptModuleBase_OnInitLeaf_005ed110.cpp'
+        TestSource = '00/5e/NCameraModesCScriptModuleBase_OnInitLeaf_005ed110_test.cpp'
         PassPattern = 'PASS_005ed110'
     }
     [pscustomobject]@{
         Address = '005eda00'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005eda00_005eda00.cpp'
-        TestSource = '00/5e/gapscan_sub005eda00_005eda00_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_GetInterfaceType_005eda00.cpp'
+        TestSource = '00/5e/CTCTavernGame_GetInterfaceType_005eda00_test.cpp'
         PassPattern = 'PASS_005eda00'
     }
     [pscustomobject]@{
         Address = '005eda10'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005eda10_005eda10.cpp'
-        TestSource = '00/5e/gapscan_sub005eda10_005eda10_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_HasFrameUpdate_005eda10.cpp'
+        TestSource = '00/5e/CTCTavernGame_HasFrameUpdate_005eda10_test.cpp'
         PassPattern = 'PASS_005eda10'
     }
     [pscustomobject]@{
@@ -98262,16 +98262,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005fa39f'
-        Module = '_gapscan'
-        Source = '00/5f/gapscan_sub005fa39f_005fa39f.cpp'
-        TestSource = '00/5f/gapscan_sub005fa39f_005fa39f_test.cpp'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_IsComponentSerialisable_005fa39f.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_IsComponentSerialisable_005fa39f_test.cpp'
         PassPattern = 'PASS_005fa39f'
     }
     [pscustomobject]@{
         Address = '005fa3a2'
-        Module = '_gapscan'
-        Source = '00/5f/gapscan_sub005fa3a2_005fa3a2.cpp'
-        TestSource = '00/5f/gapscan_sub005fa3a2_005fa3a2_test.cpp'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_HasFrameUpdate_005fa3a2.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_HasFrameUpdate_005fa3a2_test.cpp'
         PassPattern = 'PASS_005fa3a2'
     }
     [pscustomobject]@{
@@ -98318,9 +98318,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00619f40'
-        Module = '_gapscan'
-        Source = '00/61/gapscan_sub00619f40_00619f40.cpp'
-        TestSource = '00/61/gapscan_sub00619f40_00619f40_test.cpp'
+        Module = 'CTCInventoryMap'
+        Source = '00/61/CTCInventoryMap_HasFrameUpdate_00619f40.cpp'
+        TestSource = '00/61/CTCInventoryMap_HasFrameUpdate_00619f40_test.cpp'
         PassPattern = 'PASS_00619f40'
     }
     [pscustomobject]@{
@@ -98374,16 +98374,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00624da0'
-        Module = '_gapscan'
-        Source = '00/62/gapscan_sub00624da0_00624da0.cpp'
-        TestSource = '00/62/gapscan_sub00624da0_00624da0_test.cpp'
+        Module = 'CTCInventoryQuests'
+        Source = '00/62/CTCInventoryQuests_OnChangeCategory_00624da0.cpp'
+        TestSource = '00/62/CTCInventoryQuests_OnChangeCategory_00624da0_test.cpp'
         PassPattern = 'PASS_00624da0'
     }
     [pscustomobject]@{
         Address = '00624db0'
-        Module = '_gapscan'
-        Source = '00/62/gapscan_sub00624db0_00624db0.cpp'
-        TestSource = '00/62/gapscan_sub00624db0_00624db0_test.cpp'
+        Module = 'CTCInventoryQuests'
+        Source = '00/62/CTCInventoryQuests_IsComponentSerialisable_00624db0.cpp'
+        TestSource = '00/62/CTCInventoryQuests_IsComponentSerialisable_00624db0_test.cpp'
         PassPattern = 'PASS_00624db0'
     }
     [pscustomobject]@{
@@ -98444,23 +98444,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00637800'
-        Module = '_gapscan'
-        Source = '00/63/gapscan_sub00637800_00637800.cpp'
-        TestSource = '00/63/gapscan_sub00637800_00637800_test.cpp'
+        Module = 'NCameraModes::CMoveOnCylinder'
+        Source = '00/63/NCameraModesCMoveOnCylinder_GetModeType_00637800.cpp'
+        TestSource = '00/63/NCameraModesCMoveOnCylinder_GetModeType_00637800_test.cpp'
         PassPattern = 'PASS_00637800'
     }
     [pscustomobject]@{
         Address = '00637810'
-        Module = '_gapscan'
-        Source = '00/63/gapscan_sub00637810_00637810.cpp'
-        TestSource = '00/63/gapscan_sub00637810_00637810_test.cpp'
+        Module = 'NCameraModes::CMoveOnCylinder'
+        Source = '00/63/NCameraModesCMoveOnCylinder_IsRaiseUpOnHeroNearby_00637810.cpp'
+        TestSource = '00/63/NCameraModesCMoveOnCylinder_IsRaiseUpOnHeroNearby_00637810_test.cpp'
         PassPattern = 'PASS_00637810'
     }
     [pscustomobject]@{
         Address = '00637820'
-        Module = '_gapscan'
-        Source = '00/63/gapscan_sub00637820_00637820.cpp'
-        TestSource = '00/63/gapscan_sub00637820_00637820_test.cpp'
+        Module = 'NCameraModes::CMoveOnCylinder'
+        Source = '00/63/NCameraModesCMoveOnCylinder_IsStretchAroundHero_00637820.cpp'
+        TestSource = '00/63/NCameraModesCMoveOnCylinder_IsStretchAroundHero_00637820_test.cpp'
         PassPattern = 'PASS_00637820'
     }
     [pscustomobject]@{
@@ -98472,9 +98472,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0063a220'
-        Module = '_gapscan'
-        Source = '00/63/gapscan_sub0063a220_0063a220.cpp'
-        TestSource = '00/63/gapscan_sub0063a220_0063a220_test.cpp'
+        Module = 'CTCRegionDisplay'
+        Source = '00/63/CTCRegionDisplay_HasFrameUpdate_0063a220.cpp'
+        TestSource = '00/63/CTCRegionDisplay_HasFrameUpdate_0063a220_test.cpp'
         PassPattern = 'PASS_0063a220'
     }
     [pscustomobject]@{
@@ -98507,16 +98507,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006423f0'
-        Module = '_gapscan'
-        Source = '00/64/gapscan_sub006423f0_006423f0.cpp'
-        TestSource = '00/64/gapscan_sub006423f0_006423f0_test.cpp'
+        Module = 'CTCLight'
+        Source = '00/64/CTCLight_HasFrameUpdate_006423f0.cpp'
+        TestSource = '00/64/CTCLight_HasFrameUpdate_006423f0_test.cpp'
         PassPattern = 'PASS_006423f0'
     }
     [pscustomobject]@{
         Address = '00642400'
-        Module = '_gapscan'
-        Source = '00/64/gapscan_sub00642400_00642400.cpp'
-        TestSource = '00/64/gapscan_sub00642400_00642400_test.cpp'
+        Module = 'CTCLight'
+        Source = '00/64/CTCLight_IsComponentSerialisable_00642400.cpp'
+        TestSource = '00/64/CTCLight_IsComponentSerialisable_00642400_test.cpp'
         PassPattern = 'PASS_00642400'
     }
     [pscustomobject]@{
@@ -98577,23 +98577,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00661245'
-        Module = '_gapscan'
-        Source = '00/66/gapscan_sub00661245_00661245.cpp'
-        TestSource = '00/66/gapscan_sub00661245_00661245_test.cpp'
+        Module = 'CTCVillage'
+        Source = '00/66/CTCVillage_HasFrameUpdate_00661245.cpp'
+        TestSource = '00/66/CTCVillage_HasFrameUpdate_00661245_test.cpp'
         PassPattern = 'PASS_00661245'
     }
     [pscustomobject]@{
         Address = '00661248'
-        Module = '_gapscan'
-        Source = '00/66/gapscan_sub00661248_00661248.cpp'
-        TestSource = '00/66/gapscan_sub00661248_00661248_test.cpp'
+        Module = 'CTCVillage'
+        Source = '00/66/CTCVillage_IsComponentSerialisable_00661248.cpp'
+        TestSource = '00/66/CTCVillage_IsComponentSerialisable_00661248_test.cpp'
         PassPattern = 'PASS_00661248'
     }
     [pscustomobject]@{
         Address = '00661a40'
-        Module = '_gapscan'
-        Source = '00/66/gapscan_sub00661a40_00661a40.cpp'
-        TestSource = '00/66/gapscan_sub00661a40_00661a40_test.cpp'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_DrawUpdate_00661a40.cpp'
+        TestSource = '00/66/CThingCreatureBase_DrawUpdate_00661a40_test.cpp'
         PassPattern = 'PASS_00661a40'
     }
     [pscustomobject]@{
@@ -98605,9 +98605,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00669350'
-        Module = '_gapscan'
-        Source = '00/66/gapscan_sub00669350_00669350.cpp'
-        TestSource = '00/66/gapscan_sub00669350_00669350_test.cpp'
+        Module = 'NEntityEvents::CEventDied'
+        Source = '00/66/NEntityEventsCEventDied_GetType_00669350.cpp'
+        TestSource = '00/66/NEntityEventsCEventDied_GetType_00669350_test.cpp'
         PassPattern = 'PASS_00669350'
     }
     [pscustomobject]@{
@@ -98626,9 +98626,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0066c2c0'
-        Module = '_gapscan'
-        Source = '00/66/gapscan_sub0066c2c0_0066c2c0.cpp'
-        TestSource = '00/66/gapscan_sub0066c2c0_0066c2c0_test.cpp'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_HasFrameUpdate_0066c2c0.cpp'
+        TestSource = '00/66/CTCSoundPlayer_HasFrameUpdate_0066c2c0_test.cpp'
         PassPattern = 'PASS_0066c2c0'
     }
     [pscustomobject]@{
@@ -98640,9 +98640,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00670b80'
-        Module = '_gapscan'
-        Source = '00/67/gapscan_sub00670b80_00670b80.cpp'
-        TestSource = '00/67/gapscan_sub00670b80_00670b80_test.cpp'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_HasFrameUpdate_00670b80.cpp'
+        TestSource = '00/67/CTCCoopSpirit_HasFrameUpdate_00670b80_test.cpp'
         PassPattern = 'PASS_00670b80'
     }
     [pscustomobject]@{
@@ -98654,23 +98654,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0067f5d0'
-        Module = '_gapscan'
-        Source = '00/67/gapscan_sub0067f5d0_0067f5d0.cpp'
-        TestSource = '00/67/gapscan_sub0067f5d0_0067f5d0_test.cpp'
+        Module = 'NHitLocations::CPhysicalPrimitiveMesh'
+        Source = '00/67/NHitLocationsCPhysicalPrimitiveMesh_GetType_0067f5d0.cpp'
+        TestSource = '00/67/NHitLocationsCPhysicalPrimitiveMesh_GetType_0067f5d0_test.cpp'
         PassPattern = 'PASS_0067f5d0'
     }
     [pscustomobject]@{
         Address = '0067f700'
-        Module = '_gapscan'
-        Source = '00/67/gapscan_sub0067f700_0067f700.cpp'
-        TestSource = '00/67/gapscan_sub0067f700_0067f700_test.cpp'
+        Module = 'NHitLocations::CPhysicalPrimitiveSphere'
+        Source = '00/67/NHitLocationsCPhysicalPrimitiveSphere_GetType_0067f700.cpp'
+        TestSource = '00/67/NHitLocationsCPhysicalPrimitiveSphere_GetType_0067f700_test.cpp'
         PassPattern = 'PASS_0067f700'
     }
     [pscustomobject]@{
         Address = '0067f760'
-        Module = '_gapscan'
-        Source = '00/67/gapscan_sub0067f760_0067f760.cpp'
-        TestSource = '00/67/gapscan_sub0067f760_0067f760_test.cpp'
+        Module = 'NHitLocations::CPhysicalPrimitiveCylinder'
+        Source = '00/67/NHitLocationsCPhysicalPrimitiveCylinder_GetType_0067f760.cpp'
+        TestSource = '00/67/NHitLocationsCPhysicalPrimitiveCylinder_GetType_0067f760_test.cpp'
         PassPattern = 'PASS_0067f760'
     }
     [pscustomobject]@{
@@ -98710,16 +98710,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006866b0'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub006866b0_006866b0.cpp'
-        TestSource = '00/68/gapscan_sub006866b0_006866b0_test.cpp'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_HasFrameUpdate_006866b0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_HasFrameUpdate_006866b0_test.cpp'
         PassPattern = 'PASS_006866b0'
     }
     [pscustomobject]@{
         Address = '006866c0'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub006866c0_006866c0.cpp'
-        TestSource = '00/68/gapscan_sub006866c0_006866c0_test.cpp'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_IsComponentSerialisable_006866c0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_IsComponentSerialisable_006866c0_test.cpp'
         PassPattern = 'PASS_006866c0'
     }
     [pscustomobject]@{
@@ -98731,23 +98731,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00686880'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686880_00686880.cpp'
-        TestSource = '00/68/gapscan_sub00686880_00686880_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_RenderUpdate_00686880.cpp'
+        TestSource = '00/68/CTCBase_RenderUpdate_00686880_test.cpp'
         PassPattern = 'PASS_00686880'
     }
     [pscustomobject]@{
         Address = '00686890'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686890_00686890.cpp'
-        TestSource = '00/68/gapscan_sub00686890_00686890_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_HasFrameUpdate_00686890.cpp'
+        TestSource = '00/68/CTCBase_HasFrameUpdate_00686890_test.cpp'
         PassPattern = 'PASS_00686890'
     }
     [pscustomobject]@{
         Address = '006868b0'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub006868b0_006868b0.cpp'
-        TestSource = '00/68/gapscan_sub006868b0_006868b0_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_BulletTimeFrameUpdate_006868b0.cpp'
+        TestSource = '00/68/CTCBase_BulletTimeFrameUpdate_006868b0_test.cpp'
         PassPattern = 'PASS_006868b0'
     }
     [pscustomobject]@{
@@ -98766,51 +98766,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00686920'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686920_00686920.cpp'
-        TestSource = '00/68/gapscan_sub00686920_00686920_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_Validate_00686920.cpp'
+        TestSource = '00/68/CTCBase_Validate_00686920_test.cpp'
         PassPattern = 'PASS_00686920'
     }
     [pscustomobject]@{
         Address = '00686930'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686930_00686930.cpp'
-        TestSource = '00/68/gapscan_sub00686930_00686930_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_IsFreeForDeletion_00686930.cpp'
+        TestSource = '00/68/CTCBase_IsFreeForDeletion_00686930_test.cpp'
         PassPattern = 'PASS_00686930'
     }
     [pscustomobject]@{
         Address = '00686940'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686940_00686940.cpp'
-        TestSource = '00/68/gapscan_sub00686940_00686940_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_IsSerialiseCreatable_00686940.cpp'
+        TestSource = '00/68/CTCBase_IsSerialiseCreatable_00686940_test.cpp'
         PassPattern = 'PASS_00686940'
     }
     [pscustomobject]@{
         Address = '00686950'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686950_00686950.cpp'
-        TestSource = '00/68/gapscan_sub00686950_00686950_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_IsSerialisableForHeroState_00686950.cpp'
+        TestSource = '00/68/CTCBase_IsSerialisableForHeroState_00686950_test.cpp'
         PassPattern = 'PASS_00686950'
     }
     [pscustomobject]@{
         Address = '00686970'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686970_00686970.cpp'
-        TestSource = '00/68/gapscan_sub00686970_00686970_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_IsComponentSerialisable_00686970.cpp'
+        TestSource = '00/68/CTCBase_IsComponentSerialisable_00686970_test.cpp'
         PassPattern = 'PASS_00686970'
     }
     [pscustomobject]@{
         Address = '00686980'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686980_00686980.cpp'
-        TestSource = '00/68/gapscan_sub00686980_00686980_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_IsDriver_00686980.cpp'
+        TestSource = '00/68/CTCBase_IsDriver_00686980_test.cpp'
         PassPattern = 'PASS_00686980'
     }
     [pscustomobject]@{
         Address = '00686990'
-        Module = '_gapscan'
-        Source = '00/68/gapscan_sub00686990_00686990.cpp'
-        TestSource = '00/68/gapscan_sub00686990_00686990_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_IsCopyable_00686990.cpp'
+        TestSource = '00/68/CTCBase_IsCopyable_00686990_test.cpp'
         PassPattern = 'PASS_00686990'
     }
     [pscustomobject]@{
@@ -98836,16 +98836,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00691ad0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub00691ad0_00691ad0.cpp'
-        TestSource = '00/69/gapscan_sub00691ad0_00691ad0_test.cpp'
+        Module = 'CInputProcessPhotojournalCapture'
+        Source = '00/69/CInputProcessPhotojournalCapture_FrameUpdate_00691ad0.cpp'
+        TestSource = '00/69/CInputProcessPhotojournalCapture_FrameUpdate_00691ad0_test.cpp'
         PassPattern = 'PASS_00691ad0'
     }
     [pscustomobject]@{
         Address = '00692370'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub00692370_00692370.cpp'
-        TestSource = '00/69/gapscan_sub00692370_00692370_test.cpp'
+        Module = 'NEntityEvents::CEventCutSceneAnimEvent'
+        Source = '00/69/NEntityEventsCEventCutSceneAnimEvent_GetType_00692370.cpp'
+        TestSource = '00/69/NEntityEventsCEventCutSceneAnimEvent_GetType_00692370_test.cpp'
         PassPattern = 'PASS_00692370'
     }
     [pscustomobject]@{
@@ -98857,65 +98857,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069dd00'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dd00_0069dd00.cpp'
-        TestSource = '00/69/gapscan_sub0069dd00_0069dd00_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_OnDie_0069dd00.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_OnDie_0069dd00_test.cpp'
         PassPattern = 'PASS_0069dd00'
     }
     [pscustomobject]@{
         Address = '0069dd10'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dd10_0069dd10.cpp'
-        TestSource = '00/69/gapscan_sub0069dd10_0069dd10_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_IsShortenOnOcclusion_0069dd10.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_IsShortenOnOcclusion_0069dd10_test.cpp'
         PassPattern = 'PASS_0069dd10'
     }
     [pscustomobject]@{
         Address = '0069dd20'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dd20_0069dd20.cpp'
-        TestSource = '00/69/gapscan_sub0069dd20_0069dd20_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_IsStringAndCage_0069dd20.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_IsStringAndCage_0069dd20_test.cpp'
         PassPattern = 'PASS_0069dd20'
     }
     [pscustomobject]@{
         Address = '0069dd30'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dd30_0069dd30.cpp'
-        TestSource = '00/69/gapscan_sub0069dd30_0069dd30_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_IsAvoidLandscape_0069dd30.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_IsAvoidLandscape_0069dd30_test.cpp'
         PassPattern = 'PASS_0069dd30'
     }
     [pscustomobject]@{
         Address = '0069dd80'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dd80_0069dd80.cpp'
-        TestSource = '00/69/gapscan_sub0069dd80_0069dd80_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_SetUpPhysics_0069dd80.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_SetUpPhysics_0069dd80_test.cpp'
         PassPattern = 'PASS_0069dd80'
     }
     [pscustomobject]@{
         Address = '0069dd90'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dd90_0069dd90.cpp'
-        TestSource = '00/69/gapscan_sub0069dd90_0069dd90_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_IsZTargeting_0069dd90.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_IsZTargeting_0069dd90_test.cpp'
         PassPattern = 'PASS_0069dd90'
     }
     [pscustomobject]@{
         Address = '0069dda0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dda0_0069dda0.cpp'
-        TestSource = '00/69/gapscan_sub0069dda0_0069dda0_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_IsAutoGoBehind_0069dda0.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_IsAutoGoBehind_0069dda0_test.cpp'
         PassPattern = 'PASS_0069dda0'
     }
     [pscustomobject]@{
         Address = '0069dde0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dde0_0069dde0.cpp'
-        TestSource = '00/69/gapscan_sub0069dde0_0069dde0_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/69/NCameraModesCStringAndCageBase_IsDriftToMaxStringLength_0069dde0.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCageBase_IsDriftToMaxStringLength_0069dde0_test.cpp'
         PassPattern = 'PASS_0069dde0'
     }
     [pscustomobject]@{
         Address = '0069dea0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dea0_0069dea0.cpp'
-        TestSource = '00/69/gapscan_sub0069dea0_0069dea0_test.cpp'
+        Module = 'NCameraModes::CStringAndCage'
+        Source = '00/69/NCameraModesCStringAndCage_GetModeType_0069dea0.cpp'
+        TestSource = '00/69/NCameraModesCStringAndCage_GetModeType_0069dea0_test.cpp'
         PassPattern = 'PASS_0069dea0'
     }
     [pscustomobject]@{
@@ -98941,37 +98941,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069df30'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069df30_0069df30.cpp'
-        TestSource = '00/69/gapscan_sub0069df30_0069df30_test.cpp'
+        Module = 'NCameraModes::CFixedDolly'
+        Source = '00/69/NCameraModesCFixedDolly_GetModeType_0069df30.cpp'
+        TestSource = '00/69/NCameraModesCFixedDolly_GetModeType_0069df30_test.cpp'
         PassPattern = 'PASS_0069df30'
     }
     [pscustomobject]@{
         Address = '0069df40'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069df40_0069df40.cpp'
-        TestSource = '00/69/gapscan_sub0069df40_0069df40_test.cpp'
+        Module = 'NCameraModes::CFixedDolly'
+        Source = '00/69/NCameraModesCFixedDolly_OnDieLeaf_0069df40.cpp'
+        TestSource = '00/69/NCameraModesCFixedDolly_OnDieLeaf_0069df40_test.cpp'
         PassPattern = 'PASS_0069df40'
     }
     [pscustomobject]@{
         Address = '0069dfd0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069dfd0_0069dfd0.cpp'
-        TestSource = '00/69/gapscan_sub0069dfd0_0069dfd0_test.cpp'
+        Module = 'NCameraModes::CTrack'
+        Source = '00/69/NCameraModesCTrack_GetModeType_0069dfd0.cpp'
+        TestSource = '00/69/NCameraModesCTrack_GetModeType_0069dfd0_test.cpp'
         PassPattern = 'PASS_0069dfd0'
     }
     [pscustomobject]@{
         Address = '0069e040'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e040_0069e040.cpp'
-        TestSource = '00/69/gapscan_sub0069e040_0069e040_test.cpp'
+        Module = 'NCameraModes::CScriptedControl'
+        Source = '00/69/NCameraModesCScriptedControl_GetModeType_0069e040.cpp'
+        TestSource = '00/69/NCameraModesCScriptedControl_GetModeType_0069e040_test.cpp'
         PassPattern = 'PASS_0069e040'
     }
     [pscustomobject]@{
         Address = '0069e050'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e050_0069e050.cpp'
-        TestSource = '00/69/gapscan_sub0069e050_0069e050_test.cpp'
+        Module = 'NCameraModes::CScriptedControl'
+        Source = '00/69/NCameraModesCScriptedControl_IsRaiseUpOnHeroNearby_0069e050.cpp'
+        TestSource = '00/69/NCameraModesCScriptedControl_IsRaiseUpOnHeroNearby_0069e050_test.cpp'
         PassPattern = 'PASS_0069e050'
     }
     [pscustomobject]@{
@@ -98983,79 +98983,79 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069e0c0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e0c0_0069e0c0.cpp'
-        TestSource = '00/69/gapscan_sub0069e0c0_0069e0c0_test.cpp'
+        Module = 'NCameraModes::CDead'
+        Source = '00/69/NCameraModesCDead_GetModeType_0069e0c0.cpp'
+        TestSource = '00/69/NCameraModesCDead_GetModeType_0069e0c0_test.cpp'
         PassPattern = 'PASS_0069e0c0'
     }
     [pscustomobject]@{
         Address = '0069e0f0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e0f0_0069e0f0.cpp'
-        TestSource = '00/69/gapscan_sub0069e0f0_0069e0f0_test.cpp'
+        Module = 'NCameraModes::CRotateAround'
+        Source = '00/69/NCameraModesCRotateAround_GetModeType_0069e0f0.cpp'
+        TestSource = '00/69/NCameraModesCRotateAround_GetModeType_0069e0f0_test.cpp'
         PassPattern = 'PASS_0069e0f0'
     }
     [pscustomobject]@{
         Address = '0069e100'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e100_0069e100.cpp'
-        TestSource = '00/69/gapscan_sub0069e100_0069e100_test.cpp'
+        Module = 'NCameraModes::CRotateAround'
+        Source = '00/69/NCameraModesCRotateAround_IsShortenOnOcclusion_0069e100.cpp'
+        TestSource = '00/69/NCameraModesCRotateAround_IsShortenOnOcclusion_0069e100_test.cpp'
         PassPattern = 'PASS_0069e100'
     }
     [pscustomobject]@{
         Address = '0069e110'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e110_0069e110.cpp'
-        TestSource = '00/69/gapscan_sub0069e110_0069e110_test.cpp'
+        Module = 'NCameraModes::CRotateAround'
+        Source = '00/69/NCameraModesCRotateAround_IsFOVChange_0069e110.cpp'
+        TestSource = '00/69/NCameraModesCRotateAround_IsFOVChange_0069e110_test.cpp'
         PassPattern = 'PASS_0069e110'
     }
     [pscustomobject]@{
         Address = '0069e120'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e120_0069e120.cpp'
-        TestSource = '00/69/gapscan_sub0069e120_0069e120_test.cpp'
+        Module = 'NCameraModes::CRotateAround'
+        Source = '00/69/NCameraModesCRotateAround_IsAvoidLandscape_0069e120.cpp'
+        TestSource = '00/69/NCameraModesCRotateAround_IsAvoidLandscape_0069e120_test.cpp'
         PassPattern = 'PASS_0069e120'
     }
     [pscustomobject]@{
         Address = '0069e130'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e130_0069e130.cpp'
-        TestSource = '00/69/gapscan_sub0069e130_0069e130_test.cpp'
+        Module = 'NCameraModes::CRotateAround'
+        Source = '00/69/NCameraModesCRotateAround_OnDie_0069e130.cpp'
+        TestSource = '00/69/NCameraModesCRotateAround_OnDie_0069e130_test.cpp'
         PassPattern = 'PASS_0069e130'
     }
     [pscustomobject]@{
         Address = '0069e160'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e160_0069e160.cpp'
-        TestSource = '00/69/gapscan_sub0069e160_0069e160_test.cpp'
+        Module = 'NCameraModes::COrbitGame'
+        Source = '00/69/NCameraModesCOrbitGame_GetModeType_0069e160.cpp'
+        TestSource = '00/69/NCameraModesCOrbitGame_GetModeType_0069e160_test.cpp'
         PassPattern = 'PASS_0069e160'
     }
     [pscustomobject]@{
         Address = '0069e170'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e170_0069e170.cpp'
-        TestSource = '00/69/gapscan_sub0069e170_0069e170_test.cpp'
+        Module = 'NCameraModes::COrbitGame'
+        Source = '00/69/NCameraModesCOrbitGame_IsShortenOnOcclusion_0069e170.cpp'
+        TestSource = '00/69/NCameraModesCOrbitGame_IsShortenOnOcclusion_0069e170_test.cpp'
         PassPattern = 'PASS_0069e170'
     }
     [pscustomobject]@{
         Address = '0069e180'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e180_0069e180.cpp'
-        TestSource = '00/69/gapscan_sub0069e180_0069e180_test.cpp'
+        Module = 'NCameraModes::COrbitGame'
+        Source = '00/69/NCameraModesCOrbitGame_IsFOVChange_0069e180.cpp'
+        TestSource = '00/69/NCameraModesCOrbitGame_IsFOVChange_0069e180_test.cpp'
         PassPattern = 'PASS_0069e180'
     }
     [pscustomobject]@{
         Address = '0069e190'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e190_0069e190.cpp'
-        TestSource = '00/69/gapscan_sub0069e190_0069e190_test.cpp'
+        Module = 'NCameraModes::COrbitGame'
+        Source = '00/69/NCameraModesCOrbitGame_IsRaiseUpOnHeroNearby_0069e190.cpp'
+        TestSource = '00/69/NCameraModesCOrbitGame_IsRaiseUpOnHeroNearby_0069e190_test.cpp'
         PassPattern = 'PASS_0069e190'
     }
     [pscustomobject]@{
         Address = '0069e1a0'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e1a0_0069e1a0.cpp'
-        TestSource = '00/69/gapscan_sub0069e1a0_0069e1a0_test.cpp'
+        Module = 'NCameraModes::COrbitGame'
+        Source = '00/69/NCameraModesCOrbitGame_OnDie_0069e1a0.cpp'
+        TestSource = '00/69/NCameraModesCOrbitGame_OnDie_0069e1a0_test.cpp'
         PassPattern = 'PASS_0069e1a0'
     }
     [pscustomobject]@{
@@ -99067,37 +99067,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069e840'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e840_0069e840.cpp'
-        TestSource = '00/69/gapscan_sub0069e840_0069e840_test.cpp'
+        Module = 'NDisplayView::CViewBase'
+        Source = '00/69/NDisplayViewCViewBase_OnInit_0069e840.cpp'
+        TestSource = '00/69/NDisplayViewCViewBase_OnInit_0069e840_test.cpp'
         PassPattern = 'PASS_0069e840'
     }
     [pscustomobject]@{
         Address = '0069e850'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e850_0069e850.cpp'
-        TestSource = '00/69/gapscan_sub0069e850_0069e850_test.cpp'
+        Module = 'NDisplayView::CViewBase'
+        Source = '00/69/NDisplayViewCViewBase_SetVWindow_0069e850.cpp'
+        TestSource = '00/69/NDisplayViewCViewBase_SetVWindow_0069e850_test.cpp'
         PassPattern = 'PASS_0069e850'
     }
     [pscustomobject]@{
         Address = '0069e860'
-        Module = '_gapscan'
-        Source = '00/69/gapscan_sub0069e860_0069e860.cpp'
-        TestSource = '00/69/gapscan_sub0069e860_0069e860_test.cpp'
+        Module = 'NDisplayView::CViewBase'
+        Source = '00/69/NDisplayViewCViewBase_Render_0069e860.cpp'
+        TestSource = '00/69/NDisplayViewCViewBase_Render_0069e860_test.cpp'
         PassPattern = 'PASS_0069e860'
     }
     [pscustomobject]@{
         Address = '006a0790'
-        Module = '_gapscan'
-        Source = '00/6a/gapscan_sub006a0790_006a0790.cpp'
-        TestSource = '00/6a/gapscan_sub006a0790_006a0790_test.cpp'
+        Module = 'NEntityEvents::CEventItemUsed'
+        Source = '00/6a/NEntityEventsCEventItemUsed_GetType_006a0790.cpp'
+        TestSource = '00/6a/NEntityEventsCEventItemUsed_GetType_006a0790_test.cpp'
         PassPattern = 'PASS_006a0790'
     }
     [pscustomobject]@{
         Address = '006a0fe0'
-        Module = '_gapscan'
-        Source = '00/6a/gapscan_sub006a0fe0_006a0fe0.cpp'
-        TestSource = '00/6a/gapscan_sub006a0fe0_006a0fe0_test.cpp'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_FrameUpdate_006a0fe0.cpp'
+        TestSource = '00/6a/CTCCarrying_FrameUpdate_006a0fe0_test.cpp'
         PassPattern = 'PASS_006a0fe0'
     }
     [pscustomobject]@{
@@ -99116,16 +99116,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006a9560'
-        Module = '_gapscan'
-        Source = '00/6a/gapscan_sub006a9560_006a9560.cpp'
-        TestSource = '00/6a/gapscan_sub006a9560_006a9560_test.cpp'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_DrawIsDisplayingInformation_006a9560.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_DrawIsDisplayingInformation_006a9560_test.cpp'
         PassPattern = 'PASS_006a9560'
     }
     [pscustomobject]@{
         Address = '006a9570'
-        Module = '_gapscan'
-        Source = '00/6a/gapscan_sub006a9570_006a9570.cpp'
-        TestSource = '00/6a/gapscan_sub006a9570_006a9570_test.cpp'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_FeelsGravity_006a9570.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_FeelsGravity_006a9570_test.cpp'
         PassPattern = 'PASS_006a9570'
     }
     [pscustomobject]@{
@@ -99179,16 +99179,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006afca0'
-        Module = '_gapscan'
-        Source = '00/6a/gapscan_sub006afca0_006afca0.cpp'
-        TestSource = '00/6a/gapscan_sub006afca0_006afca0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_OnAddedToUpdateList_006afca0.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_OnAddedToUpdateList_006afca0_test.cpp'
         PassPattern = 'PASS_006afca0'
     }
     [pscustomobject]@{
         Address = '006b1060'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1060_006b1060.cpp'
-        TestSource = '00/6b/gapscan_sub006b1060_006b1060_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_GetInterfaceType_006b1060.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_GetInterfaceType_006b1060_test.cpp'
         PassPattern = 'PASS_006b1060'
     }
     [pscustomobject]@{
@@ -99207,121 +99207,121 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b1090'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1090_006b1090.cpp'
-        TestSource = '00/6b/gapscan_sub006b1090_006b1090_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetForcedToMovePos_006b1090.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetForcedToMovePos_006b1090_test.cpp'
         PassPattern = 'PASS_006b1090'
     }
     [pscustomobject]@{
         Address = '006b10a0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b10a0_006b10a0.cpp'
-        TestSource = '00/6b/gapscan_sub006b10a0_006b10a0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_ResetMovementState_006b10a0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_ResetMovementState_006b10a0_test.cpp'
         PassPattern = 'PASS_006b10a0'
     }
     [pscustomobject]@{
         Address = '006b10b0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b10b0_006b10b0.cpp'
-        TestSource = '00/6b/gapscan_sub006b10b0_006b10b0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_EnablePhysics_006b10b0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_EnablePhysics_006b10b0_test.cpp'
         PassPattern = 'PASS_006b10b0'
     }
     [pscustomobject]@{
         Address = '006b10c0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b10c0_006b10c0.cpp'
-        TestSource = '00/6b/gapscan_sub006b10c0_006b10c0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsPhysicsEnabled_006b10c0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsPhysicsEnabled_006b10c0_test.cpp'
         PassPattern = 'PASS_006b10c0'
     }
     [pscustomobject]@{
         Address = '006b10d0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b10d0_006b10d0.cpp'
-        TestSource = '00/6b/gapscan_sub006b10d0_006b10d0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_EnableGravity_006b10d0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_EnableGravity_006b10d0_test.cpp'
         PassPattern = 'PASS_006b10d0'
     }
     [pscustomobject]@{
         Address = '006b10e0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b10e0_006b10e0.cpp'
-        TestSource = '00/6b/gapscan_sub006b10e0_006b10e0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_EnableNavigator_006b10e0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_EnableNavigator_006b10e0_test.cpp'
         PassPattern = 'PASS_006b10e0'
     }
     [pscustomobject]@{
         Address = '006b10f0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b10f0_006b10f0.cpp'
-        TestSource = '00/6b/gapscan_sub006b10f0_006b10f0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsNavigationEnabled_006b10f0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsNavigationEnabled_006b10f0_test.cpp'
         PassPattern = 'PASS_006b10f0'
     }
     [pscustomobject]@{
         Address = '006b1100'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1100_006b1100.cpp'
-        TestSource = '00/6b/gapscan_sub006b1100_006b1100_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_HasNavigationLayers_006b1100.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_HasNavigationLayers_006b1100_test.cpp'
         PassPattern = 'PASS_006b1100'
     }
     [pscustomobject]@{
         Address = '006b1110'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1110_006b1110.cpp'
-        TestSource = '00/6b/gapscan_sub006b1110_006b1110_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetInteractionFlags_006b1110.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetInteractionFlags_006b1110_test.cpp'
         PassPattern = 'PASS_006b1110'
     }
     [pscustomobject]@{
         Address = '006b1120'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1120_006b1120.cpp'
-        TestSource = '00/6b/gapscan_sub006b1120_006b1120_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_ReturnToDefaultInteractionFlags_006b1120.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_ReturnToDefaultInteractionFlags_006b1120_test.cpp'
         PassPattern = 'PASS_006b1120'
     }
     [pscustomobject]@{
         Address = '006b1130'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1130_006b1130.cpp'
-        TestSource = '00/6b/gapscan_sub006b1130_006b1130_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsAlwaysFacingMovementDirection_006b1130.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsAlwaysFacingMovementDirection_006b1130_test.cpp'
         PassPattern = 'PASS_006b1130'
     }
     [pscustomobject]@{
         Address = '006b1140'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1140_006b1140.cpp'
-        TestSource = '00/6b/gapscan_sub006b1140_006b1140_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsAffectedByGravity_006b1140.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsAffectedByGravity_006b1140_test.cpp'
         PassPattern = 'PASS_006b1140'
     }
     [pscustomobject]@{
         Address = '006b1150'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1150_006b1150.cpp'
-        TestSource = '00/6b/gapscan_sub006b1150_006b1150_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsAffectedByAir_006b1150.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsAffectedByAir_006b1150_test.cpp'
         PassPattern = 'PASS_006b1150'
     }
     [pscustomobject]@{
         Address = '006b1160'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1160_006b1160.cpp'
-        TestSource = '00/6b/gapscan_sub006b1160_006b1160_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsAffectedByWind_006b1160.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsAffectedByWind_006b1160_test.cpp'
         PassPattern = 'PASS_006b1160'
     }
     [pscustomobject]@{
         Address = '006b1170'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1170_006b1170.cpp'
-        TestSource = '00/6b/gapscan_sub006b1170_006b1170_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsAngledWithGround_006b1170.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsAngledWithGround_006b1170_test.cpp'
         PassPattern = 'PASS_006b1170'
     }
     [pscustomobject]@{
         Address = '006b1180'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1180_006b1180.cpp'
-        TestSource = '00/6b/gapscan_sub006b1180_006b1180_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsImmoveable_006b1180.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsImmoveable_006b1180_test.cpp'
         PassPattern = 'PASS_006b1180'
     }
     [pscustomobject]@{
         Address = '006b1190'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1190_006b1190.cpp'
-        TestSource = '00/6b/gapscan_sub006b1190_006b1190_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsOnAnySurface_006b1190.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsOnAnySurface_006b1190_test.cpp'
         PassPattern = 'PASS_006b1190'
     }
     [pscustomobject]@{
@@ -99333,79 +99333,79 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b11b0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b11b0_006b11b0.cpp'
-        TestSource = '00/6b/gapscan_sub006b11b0_006b11b0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsOnMeshSurface_006b11b0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsOnMeshSurface_006b11b0_test.cpp'
         PassPattern = 'PASS_006b11b0'
     }
     [pscustomobject]@{
         Address = '006b11c0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b11c0_006b11c0.cpp'
-        TestSource = '00/6b/gapscan_sub006b11c0_006b11c0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsOnGroundSurface_006b11c0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsOnGroundSurface_006b11c0_test.cpp'
         PassPattern = 'PASS_006b11c0'
     }
     [pscustomobject]@{
         Address = '006b11d0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b11d0_006b11d0.cpp'
-        TestSource = '00/6b/gapscan_sub006b11d0_006b11d0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_CanCollideWithThings_006b11d0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_CanCollideWithThings_006b11d0_test.cpp'
         PassPattern = 'PASS_006b11d0'
     }
     [pscustomobject]@{
         Address = '006b11e0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b11e0_006b11e0.cpp'
-        TestSource = '00/6b/gapscan_sub006b11e0_006b11e0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_CanCollideWithThingsOneWay_006b11e0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_CanCollideWithThingsOneWay_006b11e0_test.cpp'
         PassPattern = 'PASS_006b11e0'
     }
     [pscustomobject]@{
         Address = '006b11f0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b11f0_006b11f0.cpp'
-        TestSource = '00/6b/gapscan_sub006b11f0_006b11f0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_CanCollideWithLandscape_006b11f0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_CanCollideWithLandscape_006b11f0_test.cpp'
         PassPattern = 'PASS_006b11f0'
     }
     [pscustomobject]@{
         Address = '006b1200'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1200_006b1200.cpp'
-        TestSource = '00/6b/gapscan_sub006b1200_006b1200_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_CanInteractWithThings_006b1200.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_CanInteractWithThings_006b1200_test.cpp'
         PassPattern = 'PASS_006b1200'
     }
     [pscustomobject]@{
         Address = '006b1210'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1210_006b1210.cpp'
-        TestSource = '00/6b/gapscan_sub006b1210_006b1210_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsExcludingCreatures_006b1210.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsExcludingCreatures_006b1210_test.cpp'
         PassPattern = 'PASS_006b1210'
     }
     [pscustomobject]@{
         Address = '006b1220'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1220_006b1220.cpp'
-        TestSource = '00/6b/gapscan_sub006b1220_006b1220_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsPhysicsMeshImpassable_006b1220.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsPhysicsMeshImpassable_006b1220_test.cpp'
         PassPattern = 'PASS_006b1220'
     }
     [pscustomobject]@{
         Address = '006b1260'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1260_006b1260.cpp'
-        TestSource = '00/6b/gapscan_sub006b1260_006b1260_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetFacingAngleXY_006b1260.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetFacingAngleXY_006b1260_test.cpp'
         PassPattern = 'PASS_006b1260'
     }
     [pscustomobject]@{
         Address = '006b1270'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1270_006b1270.cpp'
-        TestSource = '00/6b/gapscan_sub006b1270_006b1270_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetFacingAngleYZ_006b1270.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetFacingAngleYZ_006b1270_test.cpp'
         PassPattern = 'PASS_006b1270'
     }
     [pscustomobject]@{
         Address = '006b1280'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1280_006b1280.cpp'
-        TestSource = '00/6b/gapscan_sub006b1280_006b1280_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetFacingAngleXZ_006b1280.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetFacingAngleXZ_006b1280_test.cpp'
         PassPattern = 'PASS_006b1280'
     }
     [pscustomobject]@{
@@ -99424,23 +99424,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b12b0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b12b0_006b12b0.cpp'
-        TestSource = '00/6b/gapscan_sub006b12b0_006b12b0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetFacingAnglesFromRHSet_006b12b0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetFacingAnglesFromRHSet_006b12b0_test.cpp'
         PassPattern = 'PASS_006b12b0'
     }
     [pscustomobject]@{
         Address = '006b12c0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b12c0_006b12c0.cpp'
-        TestSource = '00/6b/gapscan_sub006b12c0_006b12c0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetRHSet_006b12c0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetRHSet_006b12c0_test.cpp'
         PassPattern = 'PASS_006b12c0'
     }
     [pscustomobject]@{
         Address = '006b12d0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b12d0_006b12d0.cpp'
-        TestSource = '00/6b/gapscan_sub006b12d0_006b12d0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetRHSetAsFlushOnNormal_006b12d0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetRHSetAsFlushOnNormal_006b12d0_test.cpp'
         PassPattern = 'PASS_006b12d0'
     }
     [pscustomobject]@{
@@ -99452,44 +99452,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b1300'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1300_006b1300.cpp'
-        TestSource = '00/6b/gapscan_sub006b1300_006b1300_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_ApplyControlledImpulse_006b1300.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_ApplyControlledImpulse_006b1300_test.cpp'
         PassPattern = 'PASS_006b1300'
     }
     [pscustomobject]@{
         Address = '006b1310'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1310_006b1310.cpp'
-        TestSource = '00/6b/gapscan_sub006b1310_006b1310_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_ApplyControlledAcceleration_006b1310.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_ApplyControlledAcceleration_006b1310_test.cpp'
         PassPattern = 'PASS_006b1310'
     }
     [pscustomobject]@{
         Address = '006b1320'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1320_006b1320.cpp'
-        TestSource = '00/6b/gapscan_sub006b1320_006b1320_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetAsPushableByHero_006b1320.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetAsPushableByHero_006b1320_test.cpp'
         PassPattern = 'PASS_006b1320'
     }
     [pscustomobject]@{
         Address = '006b1330'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1330_006b1330.cpp'
-        TestSource = '00/6b/gapscan_sub006b1330_006b1330_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_HasFrameUpdate_006b1330.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_HasFrameUpdate_006b1330_test.cpp'
         PassPattern = 'PASS_006b1330'
     }
     [pscustomobject]@{
         Address = '006b1340'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1340_006b1340.cpp'
-        TestSource = '00/6b/gapscan_sub006b1340_006b1340_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetPhysicsMeshBankIndex_006b1340.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetPhysicsMeshBankIndex_006b1340_test.cpp'
         PassPattern = 'PASS_006b1340'
     }
     [pscustomobject]@{
         Address = '006b1350'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1350_006b1350.cpp'
-        TestSource = '00/6b/gapscan_sub006b1350_006b1350_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_SetScaleFromOwner_006b1350.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_SetScaleFromOwner_006b1350_test.cpp'
         PassPattern = 'PASS_006b1350'
     }
     [pscustomobject]@{
@@ -99501,37 +99501,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b1370'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1370_006b1370.cpp'
-        TestSource = '00/6b/gapscan_sub006b1370_006b1370_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsComponentSerialisable_006b1370.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsComponentSerialisable_006b1370_test.cpp'
         PassPattern = 'PASS_006b1370'
     }
     [pscustomobject]@{
         Address = '006b1380'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1380_006b1380.cpp'
-        TestSource = '00/6b/gapscan_sub006b1380_006b1380_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsSerialisableForHeroState_006b1380.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsSerialisableForHeroState_006b1380_test.cpp'
         PassPattern = 'PASS_006b1380'
     }
     [pscustomobject]@{
         Address = '006b1390'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b1390_006b1390.cpp'
-        TestSource = '00/6b/gapscan_sub006b1390_006b1390_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsCopyable_006b1390.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsCopyable_006b1390_test.cpp'
         PassPattern = 'PASS_006b1390'
     }
     [pscustomobject]@{
         Address = '006b13a0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b13a0_006b13a0.cpp'
-        TestSource = '00/6b/gapscan_sub006b13a0_006b13a0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_FillPhysicsDebugInfoForSelf_006b13a0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_FillPhysicsDebugInfoForSelf_006b13a0_test.cpp'
         PassPattern = 'PASS_006b13a0'
     }
     [pscustomobject]@{
         Address = '006b13b0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006b13b0_006b13b0.cpp'
-        TestSource = '00/6b/gapscan_sub006b13b0_006b13b0_test.cpp'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_GetPhysicsMeshInfo_006b13b0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_GetPhysicsMeshInfo_006b13b0_test.cpp'
         PassPattern = 'PASS_006b13b0'
     }
     [pscustomobject]@{
@@ -99550,16 +99550,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006bf7a0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006bf7a0_006bf7a0.cpp'
-        TestSource = '00/6b/gapscan_sub006bf7a0_006bf7a0_test.cpp'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_HasFrameUpdate_006bf7a0.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_HasFrameUpdate_006bf7a0_test.cpp'
         PassPattern = 'PASS_006bf7a0'
     }
     [pscustomobject]@{
         Address = '006bf7c0'
-        Module = '_gapscan'
-        Source = '00/6b/gapscan_sub006bf7c0_006bf7c0.cpp'
-        TestSource = '00/6b/gapscan_sub006bf7c0_006bf7c0_test.cpp'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_IsComponentSerialisable_006bf7c0.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_IsComponentSerialisable_006bf7c0_test.cpp'
         PassPattern = 'PASS_006bf7c0'
     }
     [pscustomobject]@{
@@ -99578,9 +99578,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c4420'
-        Module = '_gapscan'
-        Source = '00/6c/gapscan_sub006c4420_006c4420.cpp'
-        TestSource = '00/6c/gapscan_sub006c4420_006c4420_test.cpp'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/6c/CTCFadeOutAndIn_HasFrameUpdate_006c4420.cpp'
+        TestSource = '00/6c/CTCFadeOutAndIn_HasFrameUpdate_006c4420_test.cpp'
         PassPattern = 'PASS_006c4420'
     }
     [pscustomobject]@{
@@ -99592,16 +99592,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c8d20'
-        Module = '_gapscan'
-        Source = '00/6c/gapscan_sub006c8d20_006c8d20.cpp'
-        TestSource = '00/6c/gapscan_sub006c8d20_006c8d20_test.cpp'
+        Module = 'CTCHeroOpinionDeedLog'
+        Source = '00/6c/CTCHeroOpinionDeedLog_HasFrameUpdate_006c8d20.cpp'
+        TestSource = '00/6c/CTCHeroOpinionDeedLog_HasFrameUpdate_006c8d20_test.cpp'
         PassPattern = 'PASS_006c8d20'
     }
     [pscustomobject]@{
         Address = '006c8d30'
-        Module = '_gapscan'
-        Source = '00/6c/gapscan_sub006c8d30_006c8d30.cpp'
-        TestSource = '00/6c/gapscan_sub006c8d30_006c8d30_test.cpp'
+        Module = 'CTCHeroOpinionDeedLog'
+        Source = '00/6c/CTCHeroOpinionDeedLog_IsComponentSerialisable_006c8d30.cpp'
+        TestSource = '00/6c/CTCHeroOpinionDeedLog_IsComponentSerialisable_006c8d30_test.cpp'
         PassPattern = 'PASS_006c8d30'
     }
     [pscustomobject]@{
@@ -99613,16 +99613,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006ca720'
-        Module = '_gapscan'
-        Source = '00/6c/gapscan_sub006ca720_006ca720.cpp'
-        TestSource = '00/6c/gapscan_sub006ca720_006ca720_test.cpp'
+        Module = 'CTCHero'
+        Source = '00/6c/CTCHero_HasFrameUpdate_006ca720.cpp'
+        TestSource = '00/6c/CTCHero_HasFrameUpdate_006ca720_test.cpp'
         PassPattern = 'PASS_006ca720'
     }
     [pscustomobject]@{
         Address = '006ca730'
-        Module = '_gapscan'
-        Source = '00/6c/gapscan_sub006ca730_006ca730.cpp'
-        TestSource = '00/6c/gapscan_sub006ca730_006ca730_test.cpp'
+        Module = 'CTCHero'
+        Source = '00/6c/CTCHero_IsComponentSerialisable_006ca730.cpp'
+        TestSource = '00/6c/CTCHero_IsComponentSerialisable_006ca730_test.cpp'
         PassPattern = 'PASS_006ca730'
     }
     [pscustomobject]@{
@@ -99641,16 +99641,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006cec70'
-        Module = '_gapscan'
-        Source = '00/6c/gapscan_sub006cec70_006cec70.cpp'
-        TestSource = '00/6c/gapscan_sub006cec70_006cec70_test.cpp'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_HasFrameUpdate_006cec70.cpp'
+        TestSource = '00/6c/CTCWife_HasFrameUpdate_006cec70_test.cpp'
         PassPattern = 'PASS_006cec70'
     }
     [pscustomobject]@{
         Address = '006ced40'
-        Module = '_gapscan'
-        Source = '00/6c/gapscan_sub006ced40_006ced40.cpp'
-        TestSource = '00/6c/gapscan_sub006ced40_006ced40_test.cpp'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_IsComponentSerialisable_006ced40.cpp'
+        TestSource = '00/6c/CTCWife_IsComponentSerialisable_006ced40_test.cpp'
         PassPattern = 'PASS_006ced40'
     }
     [pscustomobject]@{
@@ -99662,9 +99662,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006d4570'
-        Module = '_gapscan'
-        Source = '00/6d/gapscan_sub006d4570_006d4570.cpp'
-        TestSource = '00/6d/gapscan_sub006d4570_006d4570_test.cpp'
+        Module = 'CTCWife'
+        Source = '00/6d/CTCWife_IsSerialiseCreatable_006d4570.cpp'
+        TestSource = '00/6d/CTCWife_IsSerialiseCreatable_006d4570_test.cpp'
         PassPattern = 'PASS_006d4570'
     }
     [pscustomobject]@{
@@ -99676,9 +99676,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006d58e0'
-        Module = '_gapscan'
-        Source = '00/6d/gapscan_sub006d58e0_006d58e0.cpp'
-        TestSource = '00/6d/gapscan_sub006d58e0_006d58e0_test.cpp'
+        Module = 'CTCFollowed'
+        Source = '00/6d/CTCFollowed_HasFrameUpdate_006d58e0.cpp'
+        TestSource = '00/6d/CTCFollowed_HasFrameUpdate_006d58e0_test.cpp'
         PassPattern = 'PASS_006d58e0'
     }
     [pscustomobject]@{
@@ -99697,23 +99697,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006db540'
-        Module = '_gapscan'
-        Source = '00/6d/gapscan_sub006db540_006db540.cpp'
-        TestSource = '00/6d/gapscan_sub006db540_006db540_test.cpp'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_HasFrameUpdate_006db540.cpp'
+        TestSource = '00/6d/CTCHeroExperience_HasFrameUpdate_006db540_test.cpp'
         PassPattern = 'PASS_006db540'
     }
     [pscustomobject]@{
         Address = '006db550'
-        Module = '_gapscan'
-        Source = '00/6d/gapscan_sub006db550_006db550.cpp'
-        TestSource = '00/6d/gapscan_sub006db550_006db550_test.cpp'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_IsComponentSerialisable_006db550.cpp'
+        TestSource = '00/6d/CTCHeroExperience_IsComponentSerialisable_006db550_test.cpp'
         PassPattern = 'PASS_006db550'
     }
     [pscustomobject]@{
         Address = '006dd750'
-        Module = '_gapscan'
-        Source = '00/6d/gapscan_sub006dd750_006dd750.cpp'
-        TestSource = '00/6d/gapscan_sub006dd750_006dd750_test.cpp'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_IsComponentSerialisable_006dd750.cpp'
+        TestSource = '00/6d/CTCTrophy_IsComponentSerialisable_006dd750_test.cpp'
         PassPattern = 'PASS_006dd750'
     }
     [pscustomobject]@{
@@ -99725,9 +99725,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dfa40'
-        Module = '_gapscan'
-        Source = '00/6d/gapscan_sub006dfa40_006dfa40.cpp'
-        TestSource = '00/6d/gapscan_sub006dfa40_006dfa40_test.cpp'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_HasFrameUpdate_006dfa40.cpp'
+        TestSource = '00/6d/CTCTrophy_HasFrameUpdate_006dfa40_test.cpp'
         PassPattern = 'PASS_006dfa40'
     }
     [pscustomobject]@{
@@ -99746,9 +99746,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006e1d40'
-        Module = '_gapscan'
-        Source = '00/6e/gapscan_sub006e1d40_006e1d40.cpp'
-        TestSource = '00/6e/gapscan_sub006e1d40_006e1d40_test.cpp'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_HasFrameUpdate_006e1d40.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_HasFrameUpdate_006e1d40_test.cpp'
         PassPattern = 'PASS_006e1d40'
     }
     [pscustomobject]@{
@@ -99760,9 +99760,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006e4100'
-        Module = '_gapscan'
-        Source = '00/6e/gapscan_sub006e4100_006e4100.cpp'
-        TestSource = '00/6e/gapscan_sub006e4100_006e4100_test.cpp'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_IsComponentSerialisable_006e4100.cpp'
+        TestSource = '00/6e/CTCTalk_IsComponentSerialisable_006e4100_test.cpp'
         PassPattern = 'PASS_006e4100'
     }
     [pscustomobject]@{
@@ -99781,9 +99781,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00702a20'
-        Module = '_gapscan'
-        Source = '00/70/gapscan_sub00702a20_00702a20.cpp'
-        TestSource = '00/70/gapscan_sub00702a20_00702a20_test.cpp'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_IsComponentSerialisable_00702a20.cpp'
+        TestSource = '00/70/CTCQuestCard_IsComponentSerialisable_00702a20_test.cpp'
         PassPattern = 'PASS_00702a20'
     }
     [pscustomobject]@{
@@ -99802,9 +99802,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00702cd0'
-        Module = '_gapscan'
-        Source = '00/70/gapscan_sub00702cd0_00702cd0.cpp'
-        TestSource = '00/70/gapscan_sub00702cd0_00702cd0_test.cpp'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_CanBlockUpperLevelNavigatingCreature_00702cd0.cpp'
+        TestSource = '00/70/CThingObject_CanBlockUpperLevelNavigatingCreature_00702cd0_test.cpp'
         PassPattern = 'PASS_00702cd0'
     }
     [pscustomobject]@{
@@ -99816,16 +99816,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007097e0'
-        Module = '_gapscan'
-        Source = '00/70/gapscan_sub007097e0_007097e0.cpp'
-        TestSource = '00/70/gapscan_sub007097e0_007097e0_test.cpp'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_HasFrameUpdate_007097e0.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_HasFrameUpdate_007097e0_test.cpp'
         PassPattern = 'PASS_007097e0'
     }
     [pscustomobject]@{
         Address = '007097f0'
-        Module = '_gapscan'
-        Source = '00/70/gapscan_sub007097f0_007097f0.cpp'
-        TestSource = '00/70/gapscan_sub007097f0_007097f0_test.cpp'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_IsComponentSerialisable_007097f0.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_IsComponentSerialisable_007097f0_test.cpp'
         PassPattern = 'PASS_007097f0'
     }
     [pscustomobject]@{
@@ -99865,9 +99865,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0070b600'
-        Module = '_gapscan'
-        Source = '00/70/gapscan_sub0070b600_0070b600.cpp'
-        TestSource = '00/70/gapscan_sub0070b600_0070b600_test.cpp'
+        Module = 'CTCAnimationComplex'
+        Source = '00/70/CTCAnimationComplex_HasFrameUpdate_0070b600.cpp'
+        TestSource = '00/70/CTCAnimationComplex_HasFrameUpdate_0070b600_test.cpp'
         PassPattern = 'PASS_0070b600'
     }
     [pscustomobject]@{
@@ -99886,9 +99886,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007122a0'
-        Module = '_gapscan'
-        Source = '00/71/gapscan_sub007122a0_007122a0.cpp'
-        TestSource = '00/71/gapscan_sub007122a0_007122a0_test.cpp'
+        Module = 'NTCScriptedControl::CActionSummonerLightningAttackTarget'
+        Source = '00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_OnAdd_007122a0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_OnAdd_007122a0_test.cpp'
         PassPattern = 'PASS_007122a0'
     }
     [pscustomobject]@{
@@ -99921,9 +99921,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0071b0c0'
-        Module = '_gapscan'
-        Source = '00/71/gapscan_sub0071b0c0_0071b0c0.cpp'
-        TestSource = '00/71/gapscan_sub0071b0c0_0071b0c0_test.cpp'
+        Module = 'CTCEmoteIcon'
+        Source = '00/71/CTCEmoteIcon_HasFrameUpdate_0071b0c0.cpp'
+        TestSource = '00/71/CTCEmoteIcon_HasFrameUpdate_0071b0c0_test.cpp'
         PassPattern = 'PASS_0071b0c0'
     }
     [pscustomobject]@{
@@ -99935,16 +99935,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0071b790'
-        Module = '_gapscan'
-        Source = '00/71/gapscan_sub0071b790_0071b790.cpp'
-        TestSource = '00/71/gapscan_sub0071b790_0071b790_test.cpp'
+        Module = 'CTCAppearanceMorphBase'
+        Source = '00/71/CTCAppearanceMorphBase_GetInterfaceType_0071b790.cpp'
+        TestSource = '00/71/CTCAppearanceMorphBase_GetInterfaceType_0071b790_test.cpp'
         PassPattern = 'PASS_0071b790'
     }
     [pscustomobject]@{
         Address = '0071b7a0'
-        Module = '_gapscan'
-        Source = '00/71/gapscan_sub0071b7a0_0071b7a0.cpp'
-        TestSource = '00/71/gapscan_sub0071b7a0_0071b7a0_test.cpp'
+        Module = 'CTCAppearanceMorphBase'
+        Source = '00/71/CTCAppearanceMorphBase_DoMorphUpdate_0071b7a0.cpp'
+        TestSource = '00/71/CTCAppearanceMorphBase_DoMorphUpdate_0071b7a0_test.cpp'
         PassPattern = 'PASS_0071b7a0'
     }
     [pscustomobject]@{
@@ -99956,16 +99956,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00722380'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub00722380_00722380.cpp'
-        TestSource = '00/72/gapscan_sub00722380_00722380_test.cpp'
+        Module = 'CTCHeroMorph'
+        Source = '00/72/CTCHeroMorph_HasFrameUpdate_00722380.cpp'
+        TestSource = '00/72/CTCHeroMorph_HasFrameUpdate_00722380_test.cpp'
         PassPattern = 'PASS_00722380'
     }
     [pscustomobject]@{
         Address = '00722390'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub00722390_00722390.cpp'
-        TestSource = '00/72/gapscan_sub00722390_00722390_test.cpp'
+        Module = 'CTCHeroMorph'
+        Source = '00/72/CTCHeroMorph_IsComponentSerialisable_00722390.cpp'
+        TestSource = '00/72/CTCHeroMorph_IsComponentSerialisable_00722390_test.cpp'
         PassPattern = 'PASS_00722390'
     }
     [pscustomobject]@{
@@ -99984,9 +99984,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007224d0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub007224d0_007224d0.cpp'
-        TestSource = '00/72/gapscan_sub007224d0_007224d0_test.cpp'
+        Module = 'CTCSmokeGenerator'
+        Source = '00/72/CTCSmokeGenerator_OnSerialise_007224d0.cpp'
+        TestSource = '00/72/CTCSmokeGenerator_OnSerialise_007224d0_test.cpp'
         PassPattern = 'PASS_007224d0'
     }
     [pscustomobject]@{
@@ -99998,16 +99998,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007230f0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub007230f0_007230f0.cpp'
-        TestSource = '00/72/gapscan_sub007230f0_007230f0_test.cpp'
+        Module = 'CTCSmokeGenerator'
+        Source = '00/72/CTCSmokeGenerator_HasFrameUpdate_007230f0.cpp'
+        TestSource = '00/72/CTCSmokeGenerator_HasFrameUpdate_007230f0_test.cpp'
         PassPattern = 'PASS_007230f0'
     }
     [pscustomobject]@{
         Address = '00723100'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub00723100_00723100.cpp'
-        TestSource = '00/72/gapscan_sub00723100_00723100_test.cpp'
+        Module = 'CTCSmokeGenerator'
+        Source = '00/72/CTCSmokeGenerator_IsSerialisable_00723100.cpp'
+        TestSource = '00/72/CTCSmokeGenerator_IsSerialisable_00723100_test.cpp'
         PassPattern = 'PASS_00723100'
     }
     [pscustomobject]@{
@@ -100026,9 +100026,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00724c20'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub00724c20_00724c20.cpp'
-        TestSource = '00/72/gapscan_sub00724c20_00724c20_test.cpp'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_IsAffectedByWind_00724c20.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_IsAffectedByWind_00724c20_test.cpp'
         PassPattern = 'PASS_00724c20'
     }
     [pscustomobject]@{
@@ -100061,9 +100061,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007284e0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub007284e0_007284e0.cpp'
-        TestSource = '00/72/gapscan_sub007284e0_007284e0_test.cpp'
+        Module = 'CTCRandomAppearanceMorph'
+        Source = '00/72/CTCRandomAppearanceMorph_IsComponentSerialisable_007284e0.cpp'
+        TestSource = '00/72/CTCRandomAppearanceMorph_IsComponentSerialisable_007284e0_test.cpp'
         PassPattern = 'PASS_007284e0'
     }
     [pscustomobject]@{
@@ -100082,9 +100082,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007299f0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub007299f0_007299f0.cpp'
-        TestSource = '00/72/gapscan_sub007299f0_007299f0_test.cpp'
+        Module = 'CTCCreatureExpression'
+        Source = '00/72/CTCCreatureExpression_HasFrameUpdate_007299f0.cpp'
+        TestSource = '00/72/CTCCreatureExpression_HasFrameUpdate_007299f0_test.cpp'
         PassPattern = 'PASS_007299f0'
     }
     [pscustomobject]@{
@@ -100096,16 +100096,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072a410'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072a410_0072a410.cpp'
-        TestSource = '00/72/gapscan_sub0072a410_0072a410_test.cpp'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_IsSerialiseCreatable_0072a410.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_IsSerialiseCreatable_0072a410_test.cpp'
         PassPattern = 'PASS_0072a410'
     }
     [pscustomobject]@{
         Address = '0072a420'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072a420_0072a420.cpp'
-        TestSource = '00/72/gapscan_sub0072a420_0072a420_test.cpp'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_IsComponentSerialisable_0072a420.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_IsComponentSerialisable_0072a420_test.cpp'
         PassPattern = 'PASS_0072a420'
     }
     [pscustomobject]@{
@@ -100131,16 +100131,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072da20'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072da20_0072da20.cpp'
-        TestSource = '00/72/gapscan_sub0072da20_0072da20_test.cpp'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_HasFrameUpdate_0072da20.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_HasFrameUpdate_0072da20_test.cpp'
         PassPattern = 'PASS_0072da20'
     }
     [pscustomobject]@{
         Address = '0072da30'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072da30_0072da30.cpp'
-        TestSource = '00/72/gapscan_sub0072da30_0072da30_test.cpp'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_IsComponentSerialisable_0072da30.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_IsComponentSerialisable_0072da30_test.cpp'
         PassPattern = 'PASS_0072da30'
     }
     [pscustomobject]@{
@@ -100166,9 +100166,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072dd20'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072dd20_0072dd20.cpp'
-        TestSource = '00/72/gapscan_sub0072dd20_0072dd20_test.cpp'
+        Module = 'CTCInventoryMagic'
+        Source = '00/72/CTCInventoryMagic_OnChangeCategory_0072dd20.cpp'
+        TestSource = '00/72/CTCInventoryMagic_OnChangeCategory_0072dd20_test.cpp'
         PassPattern = 'PASS_0072dd20'
     }
     [pscustomobject]@{
@@ -100187,16 +100187,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072f0c0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072f0c0_0072f0c0.cpp'
-        TestSource = '00/72/gapscan_sub0072f0c0_0072f0c0_test.cpp'
+        Module = 'CTCDummyVillager'
+        Source = '00/72/CTCDummyVillager_HasFrameUpdate_0072f0c0.cpp'
+        TestSource = '00/72/CTCDummyVillager_HasFrameUpdate_0072f0c0_test.cpp'
         PassPattern = 'PASS_0072f0c0'
     }
     [pscustomobject]@{
         Address = '0072f0d0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072f0d0_0072f0d0.cpp'
-        TestSource = '00/72/gapscan_sub0072f0d0_0072f0d0_test.cpp'
+        Module = 'CTCDummyVillager'
+        Source = '00/72/CTCDummyVillager_IsComponentSerialisable_0072f0d0.cpp'
+        TestSource = '00/72/CTCDummyVillager_IsComponentSerialisable_0072f0d0_test.cpp'
         PassPattern = 'PASS_0072f0d0'
     }
     [pscustomobject]@{
@@ -100215,9 +100215,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007312e0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub007312e0_007312e0.cpp'
-        TestSource = '00/73/gapscan_sub007312e0_007312e0_test.cpp'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_HasFrameUpdate_007312e0.cpp'
+        TestSource = '00/73/CTCDoor_HasFrameUpdate_007312e0_test.cpp'
         PassPattern = 'PASS_007312e0'
     }
     [pscustomobject]@{
@@ -100236,9 +100236,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00731ab0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub00731ab0_00731ab0.cpp'
-        TestSource = '00/73/gapscan_sub00731ab0_00731ab0_test.cpp'
+        Module = 'CTCSpotLight'
+        Source = '00/73/CTCSpotLight_EditorDrawPreparePrimitivesForRendering_00731ab0.cpp'
+        TestSource = '00/73/CTCSpotLight_EditorDrawPreparePrimitivesForRendering_00731ab0_test.cpp'
         PassPattern = 'PASS_00731ab0'
     }
     [pscustomobject]@{
@@ -100271,9 +100271,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00732bc0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub00732bc0_00732bc0.cpp'
-        TestSource = '00/73/gapscan_sub00732bc0_00732bc0_test.cpp'
+        Module = 'CTCClock'
+        Source = '00/73/CTCClock_HasFrameUpdate_00732bc0.cpp'
+        TestSource = '00/73/CTCClock_HasFrameUpdate_00732bc0_test.cpp'
         PassPattern = 'PASS_00732bc0'
     }
     [pscustomobject]@{
@@ -100285,9 +100285,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00739d10'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub00739d10_00739d10.cpp'
-        TestSource = '00/73/gapscan_sub00739d10_00739d10_test.cpp'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_HasFrameUpdate_00739d10.cpp'
+        TestSource = '00/73/CTCCombat_HasFrameUpdate_00739d10_test.cpp'
         PassPattern = 'PASS_00739d10'
     }
     [pscustomobject]@{
@@ -100348,16 +100348,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073da10'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073da10_0073da10.cpp'
-        TestSource = '00/73/gapscan_sub0073da10_0073da10_test.cpp'
+        Module = 'NCreatureMode::CModeOutOfActionBase'
+        Source = '00/73/NCreatureModeCModeOutOfActionBase_LeafInit_0073da10.cpp'
+        TestSource = '00/73/NCreatureModeCModeOutOfActionBase_LeafInit_0073da10_test.cpp'
         PassPattern = 'PASS_0073da10'
     }
     [pscustomobject]@{
         Address = '0073e3b0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073e3b0_0073e3b0.cpp'
-        TestSource = '00/73/gapscan_sub0073e3b0_0073e3b0_test.cpp'
+        Module = 'NCreatureMode::CModeStandFront'
+        Source = '00/73/NCreatureModeCModeStandFront_GetType_0073e3b0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandFront_GetType_0073e3b0_test.cpp'
         PassPattern = 'PASS_0073e3b0'
     }
     [pscustomobject]@{
@@ -100369,16 +100369,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073e3d0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073e3d0_0073e3d0.cpp'
-        TestSource = '00/73/gapscan_sub0073e3d0_0073e3d0_test.cpp'
+        Module = 'NCreatureMode::CModeStandFront'
+        Source = '00/73/NCreatureModeCModeStandFront_IsIdleMode_0073e3d0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandFront_IsIdleMode_0073e3d0_test.cpp'
         PassPattern = 'PASS_0073e3d0'
     }
     [pscustomobject]@{
         Address = '0073e4a0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073e4a0_0073e4a0.cpp'
-        TestSource = '00/73/gapscan_sub0073e4a0_0073e4a0_test.cpp'
+        Module = 'NCreatureMode::CModeStandLeft'
+        Source = '00/73/NCreatureModeCModeStandLeft_GetType_0073e4a0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandLeft_GetType_0073e4a0_test.cpp'
         PassPattern = 'PASS_0073e4a0'
     }
     [pscustomobject]@{
@@ -100390,16 +100390,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073e4c0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073e4c0_0073e4c0.cpp'
-        TestSource = '00/73/gapscan_sub0073e4c0_0073e4c0_test.cpp'
+        Module = 'NCreatureMode::CModeStandLeft'
+        Source = '00/73/NCreatureModeCModeStandLeft_IsIdleMode_0073e4c0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandLeft_IsIdleMode_0073e4c0_test.cpp'
         PassPattern = 'PASS_0073e4c0'
     }
     [pscustomobject]@{
         Address = '0073e590'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073e590_0073e590.cpp'
-        TestSource = '00/73/gapscan_sub0073e590_0073e590_test.cpp'
+        Module = 'NCreatureMode::CModeStandRight'
+        Source = '00/73/NCreatureModeCModeStandRight_GetType_0073e590.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandRight_GetType_0073e590_test.cpp'
         PassPattern = 'PASS_0073e590'
     }
     [pscustomobject]@{
@@ -100411,303 +100411,303 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073e5b0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073e5b0_0073e5b0.cpp'
-        TestSource = '00/73/gapscan_sub0073e5b0_0073e5b0_test.cpp'
+        Module = 'NCreatureMode::CModeStandRight'
+        Source = '00/73/NCreatureModeCModeStandRight_IsIdleMode_0073e5b0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandRight_IsIdleMode_0073e5b0_test.cpp'
         PassPattern = 'PASS_0073e5b0'
     }
     [pscustomobject]@{
         Address = '0073eb60'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073eb60_0073eb60.cpp'
-        TestSource = '00/73/gapscan_sub0073eb60_0073eb60_test.cpp'
+        Module = 'NCreatureMode::CModeNull'
+        Source = '00/73/NCreatureModeCModeNull_GetType_0073eb60.cpp'
+        TestSource = '00/73/NCreatureModeCModeNull_GetType_0073eb60_test.cpp'
         PassPattern = 'PASS_0073eb60'
     }
     [pscustomobject]@{
         Address = '0073ebb0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ebb0_0073ebb0.cpp'
-        TestSource = '00/73/gapscan_sub0073ebb0_0073ebb0_test.cpp'
+        Module = 'NCreatureMode::CModeBasic'
+        Source = '00/73/NCreatureModeCModeBasic_GetType_0073ebb0.cpp'
+        TestSource = '00/73/NCreatureModeCModeBasic_GetType_0073ebb0_test.cpp'
         PassPattern = 'PASS_0073ebb0'
     }
     [pscustomobject]@{
         Address = '0073ecf0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ecf0_0073ecf0.cpp'
-        TestSource = '00/73/gapscan_sub0073ecf0_0073ecf0_test.cpp'
+        Module = 'NCreatureMode::CModeStandHappy'
+        Source = '00/73/NCreatureModeCModeStandHappy_GetType_0073ecf0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandHappy_GetType_0073ecf0_test.cpp'
         PassPattern = 'PASS_0073ecf0'
     }
     [pscustomobject]@{
         Address = '0073ed00'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ed00_0073ed00.cpp'
-        TestSource = '00/73/gapscan_sub0073ed00_0073ed00_test.cpp'
+        Module = 'NCreatureMode::CModeStandHappy'
+        Source = '00/73/NCreatureModeCModeStandHappy_GetAnimFilter_0073ed00.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandHappy_GetAnimFilter_0073ed00_test.cpp'
         PassPattern = 'PASS_0073ed00'
     }
     [pscustomobject]@{
         Address = '0073ed10'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ed10_0073ed10.cpp'
-        TestSource = '00/73/gapscan_sub0073ed10_0073ed10_test.cpp'
+        Module = 'NCreatureMode::CModeStandHappy'
+        Source = '00/73/NCreatureModeCModeStandHappy_IsIdleMode_0073ed10.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandHappy_IsIdleMode_0073ed10_test.cpp'
         PassPattern = 'PASS_0073ed10'
     }
     [pscustomobject]@{
         Address = '0073edd0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073edd0_0073edd0.cpp'
-        TestSource = '00/73/gapscan_sub0073edd0_0073edd0_test.cpp'
+        Module = 'NCreatureMode::CModeStandBored'
+        Source = '00/73/NCreatureModeCModeStandBored_GetType_0073edd0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandBored_GetType_0073edd0_test.cpp'
         PassPattern = 'PASS_0073edd0'
     }
     [pscustomobject]@{
         Address = '0073ede0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ede0_0073ede0.cpp'
-        TestSource = '00/73/gapscan_sub0073ede0_0073ede0_test.cpp'
+        Module = 'NCreatureMode::CModeStandBored'
+        Source = '00/73/NCreatureModeCModeStandBored_GetAnimFilter_0073ede0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandBored_GetAnimFilter_0073ede0_test.cpp'
         PassPattern = 'PASS_0073ede0'
     }
     [pscustomobject]@{
         Address = '0073edf0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073edf0_0073edf0.cpp'
-        TestSource = '00/73/gapscan_sub0073edf0_0073edf0_test.cpp'
+        Module = 'NCreatureMode::CModeStandBored'
+        Source = '00/73/NCreatureModeCModeStandBored_IsIdleMode_0073edf0.cpp'
+        TestSource = '00/73/NCreatureModeCModeStandBored_IsIdleMode_0073edf0_test.cpp'
         PassPattern = 'PASS_0073edf0'
     }
     [pscustomobject]@{
         Address = '0073eeb0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073eeb0_0073eeb0.cpp'
-        TestSource = '00/73/gapscan_sub0073eeb0_0073eeb0_test.cpp'
+        Module = 'NCreatureMode::CModeScripted'
+        Source = '00/73/NCreatureModeCModeScripted_GetType_0073eeb0.cpp'
+        TestSource = '00/73/NCreatureModeCModeScripted_GetType_0073eeb0_test.cpp'
         PassPattern = 'PASS_0073eeb0'
     }
     [pscustomobject]@{
         Address = '0073eec0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073eec0_0073eec0.cpp'
-        TestSource = '00/73/gapscan_sub0073eec0_0073eec0_test.cpp'
+        Module = 'NCreatureMode::CModeScripted'
+        Source = '00/73/NCreatureModeCModeScripted_GetAnimFilter_0073eec0.cpp'
+        TestSource = '00/73/NCreatureModeCModeScripted_GetAnimFilter_0073eec0_test.cpp'
         PassPattern = 'PASS_0073eec0'
     }
     [pscustomobject]@{
         Address = '0073ef80'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ef80_0073ef80.cpp'
-        TestSource = '00/73/gapscan_sub0073ef80_0073ef80_test.cpp'
+        Module = 'NCreatureMode::CModeScared'
+        Source = '00/73/NCreatureModeCModeScared_GetType_0073ef80.cpp'
+        TestSource = '00/73/NCreatureModeCModeScared_GetType_0073ef80_test.cpp'
         PassPattern = 'PASS_0073ef80'
     }
     [pscustomobject]@{
         Address = '0073ef90'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ef90_0073ef90.cpp'
-        TestSource = '00/73/gapscan_sub0073ef90_0073ef90_test.cpp'
+        Module = 'NCreatureMode::CModeScared'
+        Source = '00/73/NCreatureModeCModeScared_GetAnimFilter_0073ef90.cpp'
+        TestSource = '00/73/NCreatureModeCModeScared_GetAnimFilter_0073ef90_test.cpp'
         PassPattern = 'PASS_0073ef90'
     }
     [pscustomobject]@{
         Address = '0073f050'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f050_0073f050.cpp'
-        TestSource = '00/73/gapscan_sub0073f050_0073f050_test.cpp'
+        Module = 'NCreatureMode::CModeOutraged'
+        Source = '00/73/NCreatureModeCModeOutraged_GetType_0073f050.cpp'
+        TestSource = '00/73/NCreatureModeCModeOutraged_GetType_0073f050_test.cpp'
         PassPattern = 'PASS_0073f050'
     }
     [pscustomobject]@{
         Address = '0073f060'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f060_0073f060.cpp'
-        TestSource = '00/73/gapscan_sub0073f060_0073f060_test.cpp'
+        Module = 'NCreatureMode::CModeOutraged'
+        Source = '00/73/NCreatureModeCModeOutraged_GetAnimFilter_0073f060.cpp'
+        TestSource = '00/73/NCreatureModeCModeOutraged_GetAnimFilter_0073f060_test.cpp'
         PassPattern = 'PASS_0073f060'
     }
     [pscustomobject]@{
         Address = '0073f120'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f120_0073f120.cpp'
-        TestSource = '00/73/gapscan_sub0073f120_0073f120_test.cpp'
+        Module = 'NCreatureMode::CModeSad'
+        Source = '00/73/NCreatureModeCModeSad_GetType_0073f120.cpp'
+        TestSource = '00/73/NCreatureModeCModeSad_GetType_0073f120_test.cpp'
         PassPattern = 'PASS_0073f120'
     }
     [pscustomobject]@{
         Address = '0073f130'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f130_0073f130.cpp'
-        TestSource = '00/73/gapscan_sub0073f130_0073f130_test.cpp'
+        Module = 'NCreatureMode::CModeSad'
+        Source = '00/73/NCreatureModeCModeSad_GetAnimFilter_0073f130.cpp'
+        TestSource = '00/73/NCreatureModeCModeSad_GetAnimFilter_0073f130_test.cpp'
         PassPattern = 'PASS_0073f130'
     }
     [pscustomobject]@{
         Address = '0073f1f0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f1f0_0073f1f0.cpp'
-        TestSource = '00/73/gapscan_sub0073f1f0_0073f1f0_test.cpp'
+        Module = 'NCreatureMode::CModeAttracted'
+        Source = '00/73/NCreatureModeCModeAttracted_GetType_0073f1f0.cpp'
+        TestSource = '00/73/NCreatureModeCModeAttracted_GetType_0073f1f0_test.cpp'
         PassPattern = 'PASS_0073f1f0'
     }
     [pscustomobject]@{
         Address = '0073f200'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f200_0073f200.cpp'
-        TestSource = '00/73/gapscan_sub0073f200_0073f200_test.cpp'
+        Module = 'NCreatureMode::CModeAttracted'
+        Source = '00/73/NCreatureModeCModeAttracted_GetAnimFilter_0073f200.cpp'
+        TestSource = '00/73/NCreatureModeCModeAttracted_GetAnimFilter_0073f200_test.cpp'
         PassPattern = 'PASS_0073f200'
     }
     [pscustomobject]@{
         Address = '0073f2c0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f2c0_0073f2c0.cpp'
-        TestSource = '00/73/gapscan_sub0073f2c0_0073f2c0_test.cpp'
+        Module = 'NCreatureMode::CModeCreeping'
+        Source = '00/73/NCreatureModeCModeCreeping_GetType_0073f2c0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCreeping_GetType_0073f2c0_test.cpp'
         PassPattern = 'PASS_0073f2c0'
     }
     [pscustomobject]@{
         Address = '0073f2d0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f2d0_0073f2d0.cpp'
-        TestSource = '00/73/gapscan_sub0073f2d0_0073f2d0_test.cpp'
+        Module = 'NCreatureMode::CModeCreeping'
+        Source = '00/73/NCreatureModeCModeCreeping_GetAnimFilter_0073f2d0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCreeping_GetAnimFilter_0073f2d0_test.cpp'
         PassPattern = 'PASS_0073f2d0'
     }
     [pscustomobject]@{
         Address = '0073f390'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f390_0073f390.cpp'
-        TestSource = '00/73/gapscan_sub0073f390_0073f390_test.cpp'
+        Module = 'NCreatureMode::CModeCheering'
+        Source = '00/73/NCreatureModeCModeCheering_GetType_0073f390.cpp'
+        TestSource = '00/73/NCreatureModeCModeCheering_GetType_0073f390_test.cpp'
         PassPattern = 'PASS_0073f390'
     }
     [pscustomobject]@{
         Address = '0073f3a0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f3a0_0073f3a0.cpp'
-        TestSource = '00/73/gapscan_sub0073f3a0_0073f3a0_test.cpp'
+        Module = 'NCreatureMode::CModeCheering'
+        Source = '00/73/NCreatureModeCModeCheering_GetAnimFilter_0073f3a0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCheering_GetAnimFilter_0073f3a0_test.cpp'
         PassPattern = 'PASS_0073f3a0'
     }
     [pscustomobject]@{
         Address = '0073f460'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f460_0073f460.cpp'
-        TestSource = '00/73/gapscan_sub0073f460_0073f460_test.cpp'
+        Module = 'NCreatureMode::CModeHeckling'
+        Source = '00/73/NCreatureModeCModeHeckling_GetType_0073f460.cpp'
+        TestSource = '00/73/NCreatureModeCModeHeckling_GetType_0073f460_test.cpp'
         PassPattern = 'PASS_0073f460'
     }
     [pscustomobject]@{
         Address = '0073f470'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f470_0073f470.cpp'
-        TestSource = '00/73/gapscan_sub0073f470_0073f470_test.cpp'
+        Module = 'NCreatureMode::CModeHeckling'
+        Source = '00/73/NCreatureModeCModeHeckling_GetAnimFilter_0073f470.cpp'
+        TestSource = '00/73/NCreatureModeCModeHeckling_GetAnimFilter_0073f470_test.cpp'
         PassPattern = 'PASS_0073f470'
     }
     [pscustomobject]@{
         Address = '0073f530'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f530_0073f530.cpp'
-        TestSource = '00/73/gapscan_sub0073f530_0073f530_test.cpp'
+        Module = 'NCreatureMode::CModeHeroImitation'
+        Source = '00/73/NCreatureModeCModeHeroImitation_GetType_0073f530.cpp'
+        TestSource = '00/73/NCreatureModeCModeHeroImitation_GetType_0073f530_test.cpp'
         PassPattern = 'PASS_0073f530'
     }
     [pscustomobject]@{
         Address = '0073f540'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f540_0073f540.cpp'
-        TestSource = '00/73/gapscan_sub0073f540_0073f540_test.cpp'
+        Module = 'NCreatureMode::CModeHeroImitation'
+        Source = '00/73/NCreatureModeCModeHeroImitation_GetAnimFilter_0073f540.cpp'
+        TestSource = '00/73/NCreatureModeCModeHeroImitation_GetAnimFilter_0073f540_test.cpp'
         PassPattern = 'PASS_0073f540'
     }
     [pscustomobject]@{
         Address = '0073f600'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f600_0073f600.cpp'
-        TestSource = '00/73/gapscan_sub0073f600_0073f600_test.cpp'
+        Module = 'NCreatureMode::CModeCurious'
+        Source = '00/73/NCreatureModeCModeCurious_GetType_0073f600.cpp'
+        TestSource = '00/73/NCreatureModeCModeCurious_GetType_0073f600_test.cpp'
         PassPattern = 'PASS_0073f600'
     }
     [pscustomobject]@{
         Address = '0073f610'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f610_0073f610.cpp'
-        TestSource = '00/73/gapscan_sub0073f610_0073f610_test.cpp'
+        Module = 'NCreatureMode::CModeCurious'
+        Source = '00/73/NCreatureModeCModeCurious_GetAnimFilter_0073f610.cpp'
+        TestSource = '00/73/NCreatureModeCModeCurious_GetAnimFilter_0073f610_test.cpp'
         PassPattern = 'PASS_0073f610'
     }
     [pscustomobject]@{
         Address = '0073f6d0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f6d0_0073f6d0.cpp'
-        TestSource = '00/73/gapscan_sub0073f6d0_0073f6d0_test.cpp'
+        Module = 'NCreatureMode::CModeBully'
+        Source = '00/73/NCreatureModeCModeBully_GetType_0073f6d0.cpp'
+        TestSource = '00/73/NCreatureModeCModeBully_GetType_0073f6d0_test.cpp'
         PassPattern = 'PASS_0073f6d0'
     }
     [pscustomobject]@{
         Address = '0073f6e0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f6e0_0073f6e0.cpp'
-        TestSource = '00/73/gapscan_sub0073f6e0_0073f6e0_test.cpp'
+        Module = 'NCreatureMode::CModeBully'
+        Source = '00/73/NCreatureModeCModeBully_GetAnimFilter_0073f6e0.cpp'
+        TestSource = '00/73/NCreatureModeCModeBully_GetAnimFilter_0073f6e0_test.cpp'
         PassPattern = 'PASS_0073f6e0'
     }
     [pscustomobject]@{
         Address = '0073f7a0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f7a0_0073f7a0.cpp'
-        TestSource = '00/73/gapscan_sub0073f7a0_0073f7a0_test.cpp'
+        Module = 'NCreatureMode::CModeCook'
+        Source = '00/73/NCreatureModeCModeCook_GetType_0073f7a0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCook_GetType_0073f7a0_test.cpp'
         PassPattern = 'PASS_0073f7a0'
     }
     [pscustomobject]@{
         Address = '0073f7b0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f7b0_0073f7b0.cpp'
-        TestSource = '00/73/gapscan_sub0073f7b0_0073f7b0_test.cpp'
+        Module = 'NCreatureMode::CModeCook'
+        Source = '00/73/NCreatureModeCModeCook_GetAnimFilter_0073f7b0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCook_GetAnimFilter_0073f7b0_test.cpp'
         PassPattern = 'PASS_0073f7b0'
     }
     [pscustomobject]@{
         Address = '0073f870'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f870_0073f870.cpp'
-        TestSource = '00/73/gapscan_sub0073f870_0073f870_test.cpp'
+        Module = 'NCreatureMode::CModeHandsBound'
+        Source = '00/73/NCreatureModeCModeHandsBound_GetType_0073f870.cpp'
+        TestSource = '00/73/NCreatureModeCModeHandsBound_GetType_0073f870_test.cpp'
         PassPattern = 'PASS_0073f870'
     }
     [pscustomobject]@{
         Address = '0073f880'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f880_0073f880.cpp'
-        TestSource = '00/73/gapscan_sub0073f880_0073f880_test.cpp'
+        Module = 'NCreatureMode::CModeHandsBound'
+        Source = '00/73/NCreatureModeCModeHandsBound_GetAnimFilter_0073f880.cpp'
+        TestSource = '00/73/NCreatureModeCModeHandsBound_GetAnimFilter_0073f880_test.cpp'
         PassPattern = 'PASS_0073f880'
     }
     [pscustomobject]@{
         Address = '0073f940'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f940_0073f940.cpp'
-        TestSource = '00/73/gapscan_sub0073f940_0073f940_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesVulnerable'
+        Source = '00/73/NCreatureModeCModeJackOfBladesVulnerable_GetType_0073f940.cpp'
+        TestSource = '00/73/NCreatureModeCModeJackOfBladesVulnerable_GetType_0073f940_test.cpp'
         PassPattern = 'PASS_0073f940'
     }
     [pscustomobject]@{
         Address = '0073f950'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073f950_0073f950.cpp'
-        TestSource = '00/73/gapscan_sub0073f950_0073f950_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesVulnerable'
+        Source = '00/73/NCreatureModeCModeJackOfBladesVulnerable_GetAnimFilter_0073f950.cpp'
+        TestSource = '00/73/NCreatureModeCModeJackOfBladesVulnerable_GetAnimFilter_0073f950_test.cpp'
         PassPattern = 'PASS_0073f950'
     }
     [pscustomobject]@{
         Address = '0073fa10'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fa10_0073fa10.cpp'
-        TestSource = '00/73/gapscan_sub0073fa10_0073fa10_test.cpp'
+        Module = 'NCreatureMode::CModeVulnerable'
+        Source = '00/73/NCreatureModeCModeVulnerable_GetType_0073fa10.cpp'
+        TestSource = '00/73/NCreatureModeCModeVulnerable_GetType_0073fa10_test.cpp'
         PassPattern = 'PASS_0073fa10'
     }
     [pscustomobject]@{
         Address = '0073fa20'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fa20_0073fa20.cpp'
-        TestSource = '00/73/gapscan_sub0073fa20_0073fa20_test.cpp'
+        Module = 'NCreatureMode::CModeVulnerable'
+        Source = '00/73/NCreatureModeCModeVulnerable_GetAnimFilter_0073fa20.cpp'
+        TestSource = '00/73/NCreatureModeCModeVulnerable_GetAnimFilter_0073fa20_test.cpp'
         PassPattern = 'PASS_0073fa20'
     }
     [pscustomobject]@{
         Address = '0073fae0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fae0_0073fae0.cpp'
-        TestSource = '00/73/gapscan_sub0073fae0_0073fae0_test.cpp'
+        Module = 'NCreatureMode::CModeUnderwater'
+        Source = '00/73/NCreatureModeCModeUnderwater_GetType_0073fae0.cpp'
+        TestSource = '00/73/NCreatureModeCModeUnderwater_GetType_0073fae0_test.cpp'
         PassPattern = 'PASS_0073fae0'
     }
     [pscustomobject]@{
         Address = '0073faf0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073faf0_0073faf0.cpp'
-        TestSource = '00/73/gapscan_sub0073faf0_0073faf0_test.cpp'
+        Module = 'NCreatureMode::CModeUnderwater'
+        Source = '00/73/NCreatureModeCModeUnderwater_GetAnimFilter_0073faf0.cpp'
+        TestSource = '00/73/NCreatureModeCModeUnderwater_GetAnimFilter_0073faf0_test.cpp'
         PassPattern = 'PASS_0073faf0'
     }
     [pscustomobject]@{
         Address = '0073fbb0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fbb0_0073fbb0.cpp'
-        TestSource = '00/73/gapscan_sub0073fbb0_0073fbb0_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingGenericBox'
+        Source = '00/73/NCreatureModeCModeCarryingGenericBox_GetType_0073fbb0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCarryingGenericBox_GetType_0073fbb0_test.cpp'
         PassPattern = 'PASS_0073fbb0'
     }
     [pscustomobject]@{
         Address = '0073fbc0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fbc0_0073fbc0.cpp'
-        TestSource = '00/73/gapscan_sub0073fbc0_0073fbc0_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingGenericBox'
+        Source = '00/73/NCreatureModeCModeCarryingGenericBox_GetAnimFilter_0073fbc0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCarryingGenericBox_GetAnimFilter_0073fbc0_test.cpp'
         PassPattern = 'PASS_0073fbc0'
     }
     [pscustomobject]@{
@@ -100719,37 +100719,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073fc90'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fc90_0073fc90.cpp'
-        TestSource = '00/73/gapscan_sub0073fc90_0073fc90_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingPlateStand'
+        Source = '00/73/NCreatureModeCModeCarryingPlateStand_GetType_0073fc90.cpp'
+        TestSource = '00/73/NCreatureModeCModeCarryingPlateStand_GetType_0073fc90_test.cpp'
         PassPattern = 'PASS_0073fc90'
     }
     [pscustomobject]@{
         Address = '0073fca0'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fca0_0073fca0.cpp'
-        TestSource = '00/73/gapscan_sub0073fca0_0073fca0_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingPlateStand'
+        Source = '00/73/NCreatureModeCModeCarryingPlateStand_GetAnimFilter_0073fca0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCarryingPlateStand_GetAnimFilter_0073fca0_test.cpp'
         PassPattern = 'PASS_0073fca0'
     }
     [pscustomobject]@{
         Address = '0073fd60'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fd60_0073fd60.cpp'
-        TestSource = '00/73/gapscan_sub0073fd60_0073fd60_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingGoodsStand'
+        Source = '00/73/NCreatureModeCModeCarryingGoodsStand_GetType_0073fd60.cpp'
+        TestSource = '00/73/NCreatureModeCModeCarryingGoodsStand_GetType_0073fd60_test.cpp'
         PassPattern = 'PASS_0073fd60'
     }
     [pscustomobject]@{
         Address = '0073fd70'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fd70_0073fd70.cpp'
-        TestSource = '00/73/gapscan_sub0073fd70_0073fd70_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingGoodsStand'
+        Source = '00/73/NCreatureModeCModeCarryingGoodsStand_GetAnimFilter_0073fd70.cpp'
+        TestSource = '00/73/NCreatureModeCModeCarryingGoodsStand_GetAnimFilter_0073fd70_test.cpp'
         PassPattern = 'PASS_0073fd70'
     }
     [pscustomobject]@{
         Address = '0073fe40'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fe40_0073fe40.cpp'
-        TestSource = '00/73/gapscan_sub0073fe40_0073fe40_test.cpp'
+        Module = 'NCreatureMode::CModeCrouch'
+        Source = '00/73/NCreatureModeCModeCrouch_GetType_0073fe40.cpp'
+        TestSource = '00/73/NCreatureModeCModeCrouch_GetType_0073fe40_test.cpp'
         PassPattern = 'PASS_0073fe40'
     }
     [pscustomobject]@{
@@ -100761,16 +100761,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073fe60'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073fe60_0073fe60.cpp'
-        TestSource = '00/73/gapscan_sub0073fe60_0073fe60_test.cpp'
+        Module = 'NCreatureMode::CModeCrouch'
+        Source = '00/73/NCreatureModeCModeCrouch_IsRemoveOnDeactivate_0073fe60.cpp'
+        TestSource = '00/73/NCreatureModeCModeCrouch_IsRemoveOnDeactivate_0073fe60_test.cpp'
         PassPattern = 'PASS_0073fe60'
     }
     [pscustomobject]@{
         Address = '0073ff20'
-        Module = '_gapscan'
-        Source = '00/73/gapscan_sub0073ff20_0073ff20.cpp'
-        TestSource = '00/73/gapscan_sub0073ff20_0073ff20_test.cpp'
+        Module = 'NCreatureMode::CModeSitChair'
+        Source = '00/73/NCreatureModeCModeSitChair_GetType_0073ff20.cpp'
+        TestSource = '00/73/NCreatureModeCModeSitChair_GetType_0073ff20_test.cpp'
         PassPattern = 'PASS_0073ff20'
     }
     [pscustomobject]@{
@@ -100796,100 +100796,100 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007400c0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007400c0_007400c0.cpp'
-        TestSource = '00/74/gapscan_sub007400c0_007400c0_test.cpp'
+        Module = 'NCreatureMode::CModeSitBench'
+        Source = '00/74/NCreatureModeCModeSitBench_GetType_007400c0.cpp'
+        TestSource = '00/74/NCreatureModeCModeSitBench_GetType_007400c0_test.cpp'
         PassPattern = 'PASS_007400c0'
     }
     [pscustomobject]@{
         Address = '007400d0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007400d0_007400d0.cpp'
-        TestSource = '00/74/gapscan_sub007400d0_007400d0_test.cpp'
+        Module = 'NCreatureMode::CModeSitBench'
+        Source = '00/74/NCreatureModeCModeSitBench_GetAnimFilter_007400d0.cpp'
+        TestSource = '00/74/NCreatureModeCModeSitBench_GetAnimFilter_007400d0_test.cpp'
         PassPattern = 'PASS_007400d0'
     }
     [pscustomobject]@{
         Address = '00740130'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740130_00740130.cpp'
-        TestSource = '00/74/gapscan_sub00740130_00740130_test.cpp'
+        Module = 'NCreatureMode::CModeBlock'
+        Source = '00/74/NCreatureModeCModeBlock_GetType_00740130.cpp'
+        TestSource = '00/74/NCreatureModeCModeBlock_GetType_00740130_test.cpp'
         PassPattern = 'PASS_00740130'
     }
     [pscustomobject]@{
         Address = '00740200'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740200_00740200.cpp'
-        TestSource = '00/74/gapscan_sub00740200_00740200_test.cpp'
+        Module = 'NCreatureMode::CModeStunned'
+        Source = '00/74/NCreatureModeCModeStunned_GetType_00740200.cpp'
+        TestSource = '00/74/NCreatureModeCModeStunned_GetType_00740200_test.cpp'
         PassPattern = 'PASS_00740200'
     }
     [pscustomobject]@{
         Address = '00740210'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740210_00740210.cpp'
-        TestSource = '00/74/gapscan_sub00740210_00740210_test.cpp'
+        Module = 'NCreatureMode::CModeStunned'
+        Source = '00/74/NCreatureModeCModeStunned_GetAnimFilter_00740210.cpp'
+        TestSource = '00/74/NCreatureModeCModeStunned_GetAnimFilter_00740210_test.cpp'
         PassPattern = 'PASS_00740210'
     }
     [pscustomobject]@{
         Address = '007402f0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007402f0_007402f0.cpp'
-        TestSource = '00/74/gapscan_sub007402f0_007402f0_test.cpp'
+        Module = 'NCreatureMode::CModeDazed'
+        Source = '00/74/NCreatureModeCModeDazed_GetType_007402f0.cpp'
+        TestSource = '00/74/NCreatureModeCModeDazed_GetType_007402f0_test.cpp'
         PassPattern = 'PASS_007402f0'
     }
     [pscustomobject]@{
         Address = '00740300'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740300_00740300.cpp'
-        TestSource = '00/74/gapscan_sub00740300_00740300_test.cpp'
+        Module = 'NCreatureMode::CModeDazed'
+        Source = '00/74/NCreatureModeCModeDazed_GetAnimFilter_00740300.cpp'
+        TestSource = '00/74/NCreatureModeCModeDazed_GetAnimFilter_00740300_test.cpp'
         PassPattern = 'PASS_00740300'
     }
     [pscustomobject]@{
         Address = '007403e0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007403e0_007403e0.cpp'
-        TestSource = '00/74/gapscan_sub007403e0_007403e0_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesFloat'
+        Source = '00/74/NCreatureModeCModeJackOfBladesFloat_GetType_007403e0.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesFloat_GetType_007403e0_test.cpp'
         PassPattern = 'PASS_007403e0'
     }
     [pscustomobject]@{
         Address = '007403f0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007403f0_007403f0.cpp'
-        TestSource = '00/74/gapscan_sub007403f0_007403f0_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesFloat'
+        Source = '00/74/NCreatureModeCModeJackOfBladesFloat_GetAnimFilter_007403f0.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesFloat_GetAnimFilter_007403f0_test.cpp'
         PassPattern = 'PASS_007403f0'
     }
     [pscustomobject]@{
         Address = '00740500'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740500_00740500.cpp'
-        TestSource = '00/74/gapscan_sub00740500_00740500_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesScream'
+        Source = '00/74/NCreatureModeCModeJackOfBladesScream_GetType_00740500.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesScream_GetType_00740500_test.cpp'
         PassPattern = 'PASS_00740500'
     }
     [pscustomobject]@{
         Address = '00740510'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740510_00740510.cpp'
-        TestSource = '00/74/gapscan_sub00740510_00740510_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesScream'
+        Source = '00/74/NCreatureModeCModeJackOfBladesScream_GetAnimFilter_00740510.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesScream_GetAnimFilter_00740510_test.cpp'
         PassPattern = 'PASS_00740510'
     }
     [pscustomobject]@{
         Address = '007405f0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007405f0_007405f0.cpp'
-        TestSource = '00/74/gapscan_sub007405f0_007405f0_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesDeath'
+        Source = '00/74/NCreatureModeCModeJackOfBladesDeath_GetType_007405f0.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesDeath_GetType_007405f0_test.cpp'
         PassPattern = 'PASS_007405f0'
     }
     [pscustomobject]@{
         Address = '00740600'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740600_00740600.cpp'
-        TestSource = '00/74/gapscan_sub00740600_00740600_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesDeath'
+        Source = '00/74/NCreatureModeCModeJackOfBladesDeath_GetAnimFilter_00740600.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesDeath_GetAnimFilter_00740600_test.cpp'
         PassPattern = 'PASS_00740600'
     }
     [pscustomobject]@{
         Address = '00740730'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740730_00740730.cpp'
-        TestSource = '00/74/gapscan_sub00740730_00740730_test.cpp'
+        Module = 'NCreatureMode::CModeThunderLightningStorm'
+        Source = '00/74/NCreatureModeCModeThunderLightningStorm_GetType_00740730.cpp'
+        TestSource = '00/74/NCreatureModeCModeThunderLightningStorm_GetType_00740730_test.cpp'
         PassPattern = 'PASS_00740730'
     }
     [pscustomobject]@{
@@ -100901,219 +100901,219 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007407d0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007407d0_007407d0.cpp'
-        TestSource = '00/74/gapscan_sub007407d0_007407d0_test.cpp'
+        Module = 'NCreatureMode::CModeUnderground'
+        Source = '00/74/NCreatureModeCModeUnderground_GetType_007407d0.cpp'
+        TestSource = '00/74/NCreatureModeCModeUnderground_GetType_007407d0_test.cpp'
         PassPattern = 'PASS_007407d0'
     }
     [pscustomobject]@{
         Address = '007407e0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007407e0_007407e0.cpp'
-        TestSource = '00/74/gapscan_sub007407e0_007407e0_test.cpp'
+        Module = 'NCreatureMode::CModeUnderground'
+        Source = '00/74/NCreatureModeCModeUnderground_GetAnimFilter_007407e0.cpp'
+        TestSource = '00/74/NCreatureModeCModeUnderground_GetAnimFilter_007407e0_test.cpp'
         PassPattern = 'PASS_007407e0'
     }
     [pscustomobject]@{
         Address = '007408a0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007408a0_007408a0.cpp'
-        TestSource = '00/74/gapscan_sub007408a0_007408a0_test.cpp'
+        Module = 'NCreatureMode::CModeKnockedDown'
+        Source = '00/74/NCreatureModeCModeKnockedDown_GetType_007408a0.cpp'
+        TestSource = '00/74/NCreatureModeCModeKnockedDown_GetType_007408a0_test.cpp'
         PassPattern = 'PASS_007408a0'
     }
     [pscustomobject]@{
         Address = '007408b0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007408b0_007408b0.cpp'
-        TestSource = '00/74/gapscan_sub007408b0_007408b0_test.cpp'
+        Module = 'NCreatureMode::CModeKnockedDown'
+        Source = '00/74/NCreatureModeCModeKnockedDown_GetAnimFilter_007408b0.cpp'
+        TestSource = '00/74/NCreatureModeCModeKnockedDown_GetAnimFilter_007408b0_test.cpp'
         PassPattern = 'PASS_007408b0'
     }
     [pscustomobject]@{
         Address = '00740970'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740970_00740970.cpp'
-        TestSource = '00/74/gapscan_sub00740970_00740970_test.cpp'
+        Module = 'NCreatureMode::CModeForcePushed'
+        Source = '00/74/NCreatureModeCModeForcePushed_GetType_00740970.cpp'
+        TestSource = '00/74/NCreatureModeCModeForcePushed_GetType_00740970_test.cpp'
         PassPattern = 'PASS_00740970'
     }
     [pscustomobject]@{
         Address = '00740980'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740980_00740980.cpp'
-        TestSource = '00/74/gapscan_sub00740980_00740980_test.cpp'
+        Module = 'NCreatureMode::CModeForcePushed'
+        Source = '00/74/NCreatureModeCModeForcePushed_GetAnimFilter_00740980.cpp'
+        TestSource = '00/74/NCreatureModeCModeForcePushed_GetAnimFilter_00740980_test.cpp'
         PassPattern = 'PASS_00740980'
     }
     [pscustomobject]@{
         Address = '00740a40'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740a40_00740a40.cpp'
-        TestSource = '00/74/gapscan_sub00740a40_00740a40_test.cpp'
+        Module = 'NCreatureMode::CModeBerserk'
+        Source = '00/74/NCreatureModeCModeBerserk_GetType_00740a40.cpp'
+        TestSource = '00/74/NCreatureModeCModeBerserk_GetType_00740a40_test.cpp'
         PassPattern = 'PASS_00740a40'
     }
     [pscustomobject]@{
         Address = '00740a50'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740a50_00740a50.cpp'
-        TestSource = '00/74/gapscan_sub00740a50_00740a50_test.cpp'
+        Module = 'NCreatureMode::CModeBerserk'
+        Source = '00/74/NCreatureModeCModeBerserk_GetAnimFilter_00740a50.cpp'
+        TestSource = '00/74/NCreatureModeCModeBerserk_GetAnimFilter_00740a50_test.cpp'
         PassPattern = 'PASS_00740a50'
     }
     [pscustomobject]@{
         Address = '00740b10'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740b10_00740b10.cpp'
-        TestSource = '00/74/gapscan_sub00740b10_00740b10_test.cpp'
+        Module = 'NCreatureMode::CModeWading'
+        Source = '00/74/NCreatureModeCModeWading_GetType_00740b10.cpp'
+        TestSource = '00/74/NCreatureModeCModeWading_GetType_00740b10_test.cpp'
         PassPattern = 'PASS_00740b10'
     }
     [pscustomobject]@{
         Address = '00740b20'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740b20_00740b20.cpp'
-        TestSource = '00/74/gapscan_sub00740b20_00740b20_test.cpp'
+        Module = 'NCreatureMode::CModeWading'
+        Source = '00/74/NCreatureModeCModeWading_GetAnimFilter_00740b20.cpp'
+        TestSource = '00/74/NCreatureModeCModeWading_GetAnimFilter_00740b20_test.cpp'
         PassPattern = 'PASS_00740b20'
     }
     [pscustomobject]@{
         Address = '00740be0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740be0_00740be0.cpp'
-        TestSource = '00/74/gapscan_sub00740be0_00740be0_test.cpp'
+        Module = 'NCreatureMode::CModeBattleCharge'
+        Source = '00/74/NCreatureModeCModeBattleCharge_GetType_00740be0.cpp'
+        TestSource = '00/74/NCreatureModeCModeBattleCharge_GetType_00740be0_test.cpp'
         PassPattern = 'PASS_00740be0'
     }
     [pscustomobject]@{
         Address = '00740bf0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740bf0_00740bf0.cpp'
-        TestSource = '00/74/gapscan_sub00740bf0_00740bf0_test.cpp'
+        Module = 'NCreatureMode::CModeBattleCharge'
+        Source = '00/74/NCreatureModeCModeBattleCharge_GetAnimFilter_00740bf0.cpp'
+        TestSource = '00/74/NCreatureModeCModeBattleCharge_GetAnimFilter_00740bf0_test.cpp'
         PassPattern = 'PASS_00740bf0'
     }
     [pscustomobject]@{
         Address = '00740cb0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740cb0_00740cb0.cpp'
-        TestSource = '00/74/gapscan_sub00740cb0_00740cb0_test.cpp'
+        Module = 'NCreatureMode::CModeAssassinRush'
+        Source = '00/74/NCreatureModeCModeAssassinRush_GetType_00740cb0.cpp'
+        TestSource = '00/74/NCreatureModeCModeAssassinRush_GetType_00740cb0_test.cpp'
         PassPattern = 'PASS_00740cb0'
     }
     [pscustomobject]@{
         Address = '00740cc0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740cc0_00740cc0.cpp'
-        TestSource = '00/74/gapscan_sub00740cc0_00740cc0_test.cpp'
+        Module = 'NCreatureMode::CModeAssassinRush'
+        Source = '00/74/NCreatureModeCModeAssassinRush_GetAnimFilter_00740cc0.cpp'
+        TestSource = '00/74/NCreatureModeCModeAssassinRush_GetAnimFilter_00740cc0_test.cpp'
         PassPattern = 'PASS_00740cc0'
     }
     [pscustomobject]@{
         Address = '00740d80'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740d80_00740d80.cpp'
-        TestSource = '00/74/gapscan_sub00740d80_00740d80_test.cpp'
+        Module = 'NCreatureMode::CModeDrinkingFromTankard'
+        Source = '00/74/NCreatureModeCModeDrinkingFromTankard_GetType_00740d80.cpp'
+        TestSource = '00/74/NCreatureModeCModeDrinkingFromTankard_GetType_00740d80_test.cpp'
         PassPattern = 'PASS_00740d80'
     }
     [pscustomobject]@{
         Address = '00740d90'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740d90_00740d90.cpp'
-        TestSource = '00/74/gapscan_sub00740d90_00740d90_test.cpp'
+        Module = 'NCreatureMode::CModeDrinkingFromTankard'
+        Source = '00/74/NCreatureModeCModeDrinkingFromTankard_GetAnimFilter_00740d90.cpp'
+        TestSource = '00/74/NCreatureModeCModeDrinkingFromTankard_GetAnimFilter_00740d90_test.cpp'
         PassPattern = 'PASS_00740d90'
     }
     [pscustomobject]@{
         Address = '00740e50'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740e50_00740e50.cpp'
-        TestSource = '00/74/gapscan_sub00740e50_00740e50_test.cpp'
+        Module = 'NCreatureMode::CModeEatingAtTable'
+        Source = '00/74/NCreatureModeCModeEatingAtTable_GetType_00740e50.cpp'
+        TestSource = '00/74/NCreatureModeCModeEatingAtTable_GetType_00740e50_test.cpp'
         PassPattern = 'PASS_00740e50'
     }
     [pscustomobject]@{
         Address = '00740e60'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740e60_00740e60.cpp'
-        TestSource = '00/74/gapscan_sub00740e60_00740e60_test.cpp'
+        Module = 'NCreatureMode::CModeEatingAtTable'
+        Source = '00/74/NCreatureModeCModeEatingAtTable_GetAnimFilter_00740e60.cpp'
+        TestSource = '00/74/NCreatureModeCModeEatingAtTable_GetAnimFilter_00740e60_test.cpp'
         PassPattern = 'PASS_00740e60'
     }
     [pscustomobject]@{
         Address = '00740f20'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740f20_00740f20.cpp'
-        TestSource = '00/74/gapscan_sub00740f20_00740f20_test.cpp'
+        Module = 'NCreatureMode::CModeHoldJug'
+        Source = '00/74/NCreatureModeCModeHoldJug_GetType_00740f20.cpp'
+        TestSource = '00/74/NCreatureModeCModeHoldJug_GetType_00740f20_test.cpp'
         PassPattern = 'PASS_00740f20'
     }
     [pscustomobject]@{
         Address = '00740f30'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740f30_00740f30.cpp'
-        TestSource = '00/74/gapscan_sub00740f30_00740f30_test.cpp'
+        Module = 'NCreatureMode::CModeHoldJug'
+        Source = '00/74/NCreatureModeCModeHoldJug_GetAnimFilter_00740f30.cpp'
+        TestSource = '00/74/NCreatureModeCModeHoldJug_GetAnimFilter_00740f30_test.cpp'
         PassPattern = 'PASS_00740f30'
     }
     [pscustomobject]@{
         Address = '00740ff0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00740ff0_00740ff0.cpp'
-        TestSource = '00/74/gapscan_sub00740ff0_00740ff0_test.cpp'
+        Module = 'NCreatureMode::CModeServeCustomer'
+        Source = '00/74/NCreatureModeCModeServeCustomer_GetType_00740ff0.cpp'
+        TestSource = '00/74/NCreatureModeCModeServeCustomer_GetType_00740ff0_test.cpp'
         PassPattern = 'PASS_00740ff0'
     }
     [pscustomobject]@{
         Address = '00741000'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741000_00741000.cpp'
-        TestSource = '00/74/gapscan_sub00741000_00741000_test.cpp'
+        Module = 'NCreatureMode::CModeServeCustomer'
+        Source = '00/74/NCreatureModeCModeServeCustomer_GetAnimFilter_00741000.cpp'
+        TestSource = '00/74/NCreatureModeCModeServeCustomer_GetAnimFilter_00741000_test.cpp'
         PassPattern = 'PASS_00741000'
     }
     [pscustomobject]@{
         Address = '007410c0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007410c0_007410c0.cpp'
-        TestSource = '00/74/gapscan_sub007410c0_007410c0_test.cpp'
+        Module = 'NCreatureMode::CModeFillJug'
+        Source = '00/74/NCreatureModeCModeFillJug_GetType_007410c0.cpp'
+        TestSource = '00/74/NCreatureModeCModeFillJug_GetType_007410c0_test.cpp'
         PassPattern = 'PASS_007410c0'
     }
     [pscustomobject]@{
         Address = '007410d0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007410d0_007410d0.cpp'
-        TestSource = '00/74/gapscan_sub007410d0_007410d0_test.cpp'
+        Module = 'NCreatureMode::CModeFillJug'
+        Source = '00/74/NCreatureModeCModeFillJug_GetAnimFilter_007410d0.cpp'
+        TestSource = '00/74/NCreatureModeCModeFillJug_GetAnimFilter_007410d0_test.cpp'
         PassPattern = 'PASS_007410d0'
     }
     [pscustomobject]@{
         Address = '00741190'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741190_00741190.cpp'
-        TestSource = '00/74/gapscan_sub00741190_00741190_test.cpp'
+        Module = 'NCreatureMode::CModeDrunk'
+        Source = '00/74/NCreatureModeCModeDrunk_GetType_00741190.cpp'
+        TestSource = '00/74/NCreatureModeCModeDrunk_GetType_00741190_test.cpp'
         PassPattern = 'PASS_00741190'
     }
     [pscustomobject]@{
         Address = '007411a0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007411a0_007411a0.cpp'
-        TestSource = '00/74/gapscan_sub007411a0_007411a0_test.cpp'
+        Module = 'NCreatureMode::CModeDrunk'
+        Source = '00/74/NCreatureModeCModeDrunk_GetAnimFilter_007411a0.cpp'
+        TestSource = '00/74/NCreatureModeCModeDrunk_GetAnimFilter_007411a0_test.cpp'
         PassPattern = 'PASS_007411a0'
     }
     [pscustomobject]@{
         Address = '00741260'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741260_00741260.cpp'
-        TestSource = '00/74/gapscan_sub00741260_00741260_test.cpp'
+        Module = 'NCreatureMode::CModeArmsOffTable'
+        Source = '00/74/NCreatureModeCModeArmsOffTable_GetType_00741260.cpp'
+        TestSource = '00/74/NCreatureModeCModeArmsOffTable_GetType_00741260_test.cpp'
         PassPattern = 'PASS_00741260'
     }
     [pscustomobject]@{
         Address = '00741270'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741270_00741270.cpp'
-        TestSource = '00/74/gapscan_sub00741270_00741270_test.cpp'
+        Module = 'NCreatureMode::CModeArmsOffTable'
+        Source = '00/74/NCreatureModeCModeArmsOffTable_GetAnimFilter_00741270.cpp'
+        TestSource = '00/74/NCreatureModeCModeArmsOffTable_GetAnimFilter_00741270_test.cpp'
         PassPattern = 'PASS_00741270'
     }
     [pscustomobject]@{
         Address = '00741350'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741350_00741350.cpp'
-        TestSource = '00/74/gapscan_sub00741350_00741350_test.cpp'
+        Module = 'NCreatureMode::CModeScreamerAggressive'
+        Source = '00/74/NCreatureModeCModeScreamerAggressive_GetType_00741350.cpp'
+        TestSource = '00/74/NCreatureModeCModeScreamerAggressive_GetType_00741350_test.cpp'
         PassPattern = 'PASS_00741350'
     }
     [pscustomobject]@{
         Address = '00741360'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741360_00741360.cpp'
-        TestSource = '00/74/gapscan_sub00741360_00741360_test.cpp'
+        Module = 'NCreatureMode::CModeScreamerAggressive'
+        Source = '00/74/NCreatureModeCModeScreamerAggressive_GetAnimFilter_00741360.cpp'
+        TestSource = '00/74/NCreatureModeCModeScreamerAggressive_GetAnimFilter_00741360_test.cpp'
         PassPattern = 'PASS_00741360'
     }
     [pscustomobject]@{
         Address = '00741460'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741460_00741460.cpp'
-        TestSource = '00/74/gapscan_sub00741460_00741460_test.cpp'
+        Module = 'NCreatureMode::CModeDrained'
+        Source = '00/74/NCreatureModeCModeDrained_GetType_00741460.cpp'
+        TestSource = '00/74/NCreatureModeCModeDrained_GetType_00741460_test.cpp'
         PassPattern = 'PASS_00741460'
     }
     [pscustomobject]@{
@@ -101132,163 +101132,163 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00741540'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741540_00741540.cpp'
-        TestSource = '00/74/gapscan_sub00741540_00741540_test.cpp'
+        Module = 'NCreatureMode::CModeRollAround'
+        Source = '00/74/NCreatureModeCModeRollAround_GetType_00741540.cpp'
+        TestSource = '00/74/NCreatureModeCModeRollAround_GetType_00741540_test.cpp'
         PassPattern = 'PASS_00741540'
     }
     [pscustomobject]@{
         Address = '00741550'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741550_00741550.cpp'
-        TestSource = '00/74/gapscan_sub00741550_00741550_test.cpp'
+        Module = 'NCreatureMode::CModeRollAround'
+        Source = '00/74/NCreatureModeCModeRollAround_GetAnimFilter_00741550.cpp'
+        TestSource = '00/74/NCreatureModeCModeRollAround_GetAnimFilter_00741550_test.cpp'
         PassPattern = 'PASS_00741550'
     }
     [pscustomobject]@{
         Address = '00741610'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741610_00741610.cpp'
-        TestSource = '00/74/gapscan_sub00741610_00741610_test.cpp'
+        Module = 'NCreatureMode::CModeCaged'
+        Source = '00/74/NCreatureModeCModeCaged_GetType_00741610.cpp'
+        TestSource = '00/74/NCreatureModeCModeCaged_GetType_00741610_test.cpp'
         PassPattern = 'PASS_00741610'
     }
     [pscustomobject]@{
         Address = '00741620'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741620_00741620.cpp'
-        TestSource = '00/74/gapscan_sub00741620_00741620_test.cpp'
+        Module = 'NCreatureMode::CModeCaged'
+        Source = '00/74/NCreatureModeCModeCaged_GetAnimFilter_00741620.cpp'
+        TestSource = '00/74/NCreatureModeCModeCaged_GetAnimFilter_00741620_test.cpp'
         PassPattern = 'PASS_00741620'
     }
     [pscustomobject]@{
         Address = '007416e0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007416e0_007416e0.cpp'
-        TestSource = '00/74/gapscan_sub007416e0_007416e0_test.cpp'
+        Module = 'NCreatureMode::CModeSummonerDie'
+        Source = '00/74/NCreatureModeCModeSummonerDie_GetType_007416e0.cpp'
+        TestSource = '00/74/NCreatureModeCModeSummonerDie_GetType_007416e0_test.cpp'
         PassPattern = 'PASS_007416e0'
     }
     [pscustomobject]@{
         Address = '007416f0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007416f0_007416f0.cpp'
-        TestSource = '00/74/gapscan_sub007416f0_007416f0_test.cpp'
+        Module = 'NCreatureMode::CModeSummonerDie'
+        Source = '00/74/NCreatureModeCModeSummonerDie_GetAnimFilter_007416f0.cpp'
+        TestSource = '00/74/NCreatureModeCModeSummonerDie_GetAnimFilter_007416f0_test.cpp'
         PassPattern = 'PASS_007416f0'
     }
     [pscustomobject]@{
         Address = '007417b0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007417b0_007417b0.cpp'
-        TestSource = '00/74/gapscan_sub007417b0_007417b0_test.cpp'
+        Module = 'NCreatureMode::CModeChargeForcePush'
+        Source = '00/74/NCreatureModeCModeChargeForcePush_GetType_007417b0.cpp'
+        TestSource = '00/74/NCreatureModeCModeChargeForcePush_GetType_007417b0_test.cpp'
         PassPattern = 'PASS_007417b0'
     }
     [pscustomobject]@{
         Address = '007417c0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007417c0_007417c0.cpp'
-        TestSource = '00/74/gapscan_sub007417c0_007417c0_test.cpp'
+        Module = 'NCreatureMode::CModeChargeForcePush'
+        Source = '00/74/NCreatureModeCModeChargeForcePush_GetAnimFilter_007417c0.cpp'
+        TestSource = '00/74/NCreatureModeCModeChargeForcePush_GetAnimFilter_007417c0_test.cpp'
         PassPattern = 'PASS_007417c0'
     }
     [pscustomobject]@{
         Address = '00741880'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741880_00741880.cpp'
-        TestSource = '00/74/gapscan_sub00741880_00741880_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterConcentrate'
+        Source = '00/74/NCreatureModeCModeGuildmasterConcentrate_GetType_00741880.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterConcentrate_GetType_00741880_test.cpp'
         PassPattern = 'PASS_00741880'
     }
     [pscustomobject]@{
         Address = '00741890'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741890_00741890.cpp'
-        TestSource = '00/74/gapscan_sub00741890_00741890_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterConcentrate'
+        Source = '00/74/NCreatureModeCModeGuildmasterConcentrate_GetAnimFilter_00741890.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterConcentrate_GetAnimFilter_00741890_test.cpp'
         PassPattern = 'PASS_00741890'
     }
     [pscustomobject]@{
         Address = '00741960'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741960_00741960.cpp'
-        TestSource = '00/74/gapscan_sub00741960_00741960_test.cpp'
+        Module = 'NCreatureMode::CModeDragonLanded'
+        Source = '00/74/NCreatureModeCModeDragonLanded_GetType_00741960.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonLanded_GetType_00741960_test.cpp'
         PassPattern = 'PASS_00741960'
     }
     [pscustomobject]@{
         Address = '00741970'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741970_00741970.cpp'
-        TestSource = '00/74/gapscan_sub00741970_00741970_test.cpp'
+        Module = 'NCreatureMode::CModeDragonLanded'
+        Source = '00/74/NCreatureModeCModeDragonLanded_GetAnimFilter_00741970.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonLanded_GetAnimFilter_00741970_test.cpp'
         PassPattern = 'PASS_00741970'
     }
     [pscustomobject]@{
         Address = '00741a40'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741a40_00741a40.cpp'
-        TestSource = '00/74/gapscan_sub00741a40_00741a40_test.cpp'
+        Module = 'NCreatureMode::CModeDragonGetHit'
+        Source = '00/74/NCreatureModeCModeDragonGetHit_GetType_00741a40.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonGetHit_GetType_00741a40_test.cpp'
         PassPattern = 'PASS_00741a40'
     }
     [pscustomobject]@{
         Address = '00741a50'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741a50_00741a50.cpp'
-        TestSource = '00/74/gapscan_sub00741a50_00741a50_test.cpp'
+        Module = 'NCreatureMode::CModeDragonGetHit'
+        Source = '00/74/NCreatureModeCModeDragonGetHit_GetAnimFilter_00741a50.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonGetHit_GetAnimFilter_00741a50_test.cpp'
         PassPattern = 'PASS_00741a50'
     }
     [pscustomobject]@{
         Address = '00741b10'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741b10_00741b10.cpp'
-        TestSource = '00/74/gapscan_sub00741b10_00741b10_test.cpp'
+        Module = 'NCreatureMode::CModeDragonRearUp'
+        Source = '00/74/NCreatureModeCModeDragonRearUp_GetType_00741b10.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonRearUp_GetType_00741b10_test.cpp'
         PassPattern = 'PASS_00741b10'
     }
     [pscustomobject]@{
         Address = '00741b20'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741b20_00741b20.cpp'
-        TestSource = '00/74/gapscan_sub00741b20_00741b20_test.cpp'
+        Module = 'NCreatureMode::CModeDragonRearUp'
+        Source = '00/74/NCreatureModeCModeDragonRearUp_GetAnimFilter_00741b20.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonRearUp_GetAnimFilter_00741b20_test.cpp'
         PassPattern = 'PASS_00741b20'
     }
     [pscustomobject]@{
         Address = '00741bf0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741bf0_00741bf0.cpp'
-        TestSource = '00/74/gapscan_sub00741bf0_00741bf0_test.cpp'
+        Module = 'NCreatureMode::CModeDragonHover'
+        Source = '00/74/NCreatureModeCModeDragonHover_GetType_00741bf0.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonHover_GetType_00741bf0_test.cpp'
         PassPattern = 'PASS_00741bf0'
     }
     [pscustomobject]@{
         Address = '00741c00'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741c00_00741c00.cpp'
-        TestSource = '00/74/gapscan_sub00741c00_00741c00_test.cpp'
+        Module = 'NCreatureMode::CModeDragonHover'
+        Source = '00/74/NCreatureModeCModeDragonHover_GetAnimFilter_00741c00.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonHover_GetAnimFilter_00741c00_test.cpp'
         PassPattern = 'PASS_00741c00'
     }
     [pscustomobject]@{
         Address = '00741cc0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741cc0_00741cc0.cpp'
-        TestSource = '00/74/gapscan_sub00741cc0_00741cc0_test.cpp'
+        Module = 'NCreatureMode::CModeHitByEpicSpell'
+        Source = '00/74/NCreatureModeCModeHitByEpicSpell_GetType_00741cc0.cpp'
+        TestSource = '00/74/NCreatureModeCModeHitByEpicSpell_GetType_00741cc0_test.cpp'
         PassPattern = 'PASS_00741cc0'
     }
     [pscustomobject]@{
         Address = '00741cd0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741cd0_00741cd0.cpp'
-        TestSource = '00/74/gapscan_sub00741cd0_00741cd0_test.cpp'
+        Module = 'NCreatureMode::CModeHitByEpicSpell'
+        Source = '00/74/NCreatureModeCModeHitByEpicSpell_GetAnimFilter_00741cd0.cpp'
+        TestSource = '00/74/NCreatureModeCModeHitByEpicSpell_GetAnimFilter_00741cd0_test.cpp'
         PassPattern = 'PASS_00741cd0'
     }
     [pscustomobject]@{
         Address = '00741d50'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741d50_00741d50.cpp'
-        TestSource = '00/74/gapscan_sub00741d50_00741d50_test.cpp'
+        Module = 'NCreatureMode::CModeDragonBase'
+        Source = '00/74/NCreatureModeCModeDragonBase_GetAnimFilter_00741d50.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonBase_GetAnimFilter_00741d50_test.cpp'
         PassPattern = 'PASS_00741d50'
     }
     [pscustomobject]@{
         Address = '00741ea0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741ea0_00741ea0.cpp'
-        TestSource = '00/74/gapscan_sub00741ea0_00741ea0_test.cpp'
+        Module = 'NCreatureMode::CModeIntangible'
+        Source = '00/74/NCreatureModeCModeIntangible_GetType_00741ea0.cpp'
+        TestSource = '00/74/NCreatureModeCModeIntangible_GetType_00741ea0_test.cpp'
         PassPattern = 'PASS_00741ea0'
     }
     [pscustomobject]@{
         Address = '00741fb0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00741fb0_00741fb0.cpp'
-        TestSource = '00/74/gapscan_sub00741fb0_00741fb0_test.cpp'
+        Module = 'NCreatureMode::CModeBriarRoseConcentrate'
+        Source = '00/74/NCreatureModeCModeBriarRoseConcentrate_GetType_00741fb0.cpp'
+        TestSource = '00/74/NCreatureModeCModeBriarRoseConcentrate_GetType_00741fb0_test.cpp'
         PassPattern = 'PASS_00741fb0'
     }
     [pscustomobject]@{
@@ -101307,65 +101307,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007420a0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007420a0_007420a0.cpp'
-        TestSource = '00/74/gapscan_sub007420a0_007420a0_test.cpp'
+        Module = 'NCreatureMode::CModeStrafe'
+        Source = '00/74/NCreatureModeCModeStrafe_GetType_007420a0.cpp'
+        TestSource = '00/74/NCreatureModeCModeStrafe_GetType_007420a0_test.cpp'
         PassPattern = 'PASS_007420a0'
     }
     [pscustomobject]@{
         Address = '007420b0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007420b0_007420b0.cpp'
-        TestSource = '00/74/gapscan_sub007420b0_007420b0_test.cpp'
+        Module = 'NCreatureMode::CModeStrafe'
+        Source = '00/74/NCreatureModeCModeStrafe_GetAnimFilter_007420b0.cpp'
+        TestSource = '00/74/NCreatureModeCModeStrafe_GetAnimFilter_007420b0_test.cpp'
         PassPattern = 'PASS_007420b0'
     }
     [pscustomobject]@{
         Address = '00742d80'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00742d80_00742d80.cpp'
-        TestSource = '00/74/gapscan_sub00742d80_00742d80_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpHeal'
+        Source = '00/74/NCreatureModeCModeGuildmasterPowerUpHeal_GetType_00742d80.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterPowerUpHeal_GetType_00742d80_test.cpp'
         PassPattern = 'PASS_00742d80'
     }
     [pscustomobject]@{
         Address = '00742d90'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00742d90_00742d90.cpp'
-        TestSource = '00/74/gapscan_sub00742d90_00742d90_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpHeal'
+        Source = '00/74/NCreatureModeCModeGuildmasterPowerUpHeal_GetAnimFilter_00742d90.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterPowerUpHeal_GetAnimFilter_00742d90_test.cpp'
         PassPattern = 'PASS_00742d90'
     }
     [pscustomobject]@{
         Address = '00742e40'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00742e40_00742e40.cpp'
-        TestSource = '00/74/gapscan_sub00742e40_00742e40_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpShield'
+        Source = '00/74/NCreatureModeCModeGuildmasterPowerUpShield_GetType_00742e40.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterPowerUpShield_GetType_00742e40_test.cpp'
         PassPattern = 'PASS_00742e40'
     }
     [pscustomobject]@{
         Address = '00742e50'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00742e50_00742e50.cpp'
-        TestSource = '00/74/gapscan_sub00742e50_00742e50_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpShield'
+        Source = '00/74/NCreatureModeCModeGuildmasterPowerUpShield_GetAnimFilter_00742e50.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterPowerUpShield_GetAnimFilter_00742e50_test.cpp'
         PassPattern = 'PASS_00742e50'
     }
     [pscustomobject]@{
         Address = '00742f00'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00742f00_00742f00.cpp'
-        TestSource = '00/74/gapscan_sub00742f00_00742f00_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpSpeed'
+        Source = '00/74/NCreatureModeCModeGuildmasterPowerUpSpeed_GetType_00742f00.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterPowerUpSpeed_GetType_00742f00_test.cpp'
         PassPattern = 'PASS_00742f00'
     }
     [pscustomobject]@{
         Address = '00742f10'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00742f10_00742f10.cpp'
-        TestSource = '00/74/gapscan_sub00742f10_00742f10_test.cpp'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpSpeed'
+        Source = '00/74/NCreatureModeCModeGuildmasterPowerUpSpeed_GetAnimFilter_00742f10.cpp'
+        TestSource = '00/74/NCreatureModeCModeGuildmasterPowerUpSpeed_GetAnimFilter_00742f10_test.cpp'
         PassPattern = 'PASS_00742f10'
     }
     [pscustomobject]@{
         Address = '00743860'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743860_00743860.cpp'
-        TestSource = '00/74/gapscan_sub00743860_00743860_test.cpp'
+        Module = 'NCreatureMode::CModeDragonFlying'
+        Source = '00/74/NCreatureModeCModeDragonFlying_GetType_00743860.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonFlying_GetType_00743860_test.cpp'
         PassPattern = 'PASS_00743860'
     }
     [pscustomobject]@{
@@ -101377,9 +101377,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00743940'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743940_00743940.cpp'
-        TestSource = '00/74/gapscan_sub00743940_00743940_test.cpp'
+        Module = 'NCreatureMode::CModeDragonStrafe'
+        Source = '00/74/NCreatureModeCModeDragonStrafe_GetType_00743940.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonStrafe_GetType_00743940_test.cpp'
         PassPattern = 'PASS_00743940'
     }
     [pscustomobject]@{
@@ -101391,9 +101391,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00743a20'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743a20_00743a20.cpp'
-        TestSource = '00/74/gapscan_sub00743a20_00743a20_test.cpp'
+        Module = 'NCreatureMode::CModeDragonStrafeBurninate'
+        Source = '00/74/NCreatureModeCModeDragonStrafeBurninate_GetType_00743a20.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonStrafeBurninate_GetType_00743a20_test.cpp'
         PassPattern = 'PASS_00743a20'
     }
     [pscustomobject]@{
@@ -101405,16 +101405,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00743c90'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743c90_00743c90.cpp'
-        TestSource = '00/74/gapscan_sub00743c90_00743c90_test.cpp'
+        Module = 'NCreatureMode::CModeIceTrollGroundSmashIcicleAssault'
+        Source = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_GetType_00743c90.cpp'
+        TestSource = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_GetType_00743c90_test.cpp'
         PassPattern = 'PASS_00743c90'
     }
     [pscustomobject]@{
         Address = '00743ca0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743ca0_00743ca0.cpp'
-        TestSource = '00/74/gapscan_sub00743ca0_00743ca0_test.cpp'
+        Module = 'NCreatureMode::CModeIceTrollGroundSmashIcicleAssault'
+        Source = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_GetAnimFilter_00743ca0.cpp'
+        TestSource = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_GetAnimFilter_00743ca0_test.cpp'
         PassPattern = 'PASS_00743ca0'
     }
     [pscustomobject]@{
@@ -101426,9 +101426,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00743e10'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743e10_00743e10.cpp'
-        TestSource = '00/74/gapscan_sub00743e10_00743e10_test.cpp'
+        Module = 'NCreatureMode::CModeWalkInAllDirections'
+        Source = '00/74/NCreatureModeCModeWalkInAllDirections_GetType_00743e10.cpp'
+        TestSource = '00/74/NCreatureModeCModeWalkInAllDirections_GetType_00743e10_test.cpp'
         PassPattern = 'PASS_00743e10'
     }
     [pscustomobject]@{
@@ -101440,16 +101440,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00743e50'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743e50_00743e50.cpp'
-        TestSource = '00/74/gapscan_sub00743e50_00743e50_test.cpp'
+        Module = 'NCreatureMode::CModeWalkInAllDirections'
+        Source = '00/74/NCreatureModeCModeWalkInAllDirections_GetAnimUpdateType_00743e50.cpp'
+        TestSource = '00/74/NCreatureModeCModeWalkInAllDirections_GetAnimUpdateType_00743e50_test.cpp'
         PassPattern = 'PASS_00743e50'
     }
     [pscustomobject]@{
         Address = '007440c0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007440c0_007440c0.cpp'
-        TestSource = '00/74/gapscan_sub007440c0_007440c0_test.cpp'
+        Module = 'NCreatureMode::CModeHoverNormal'
+        Source = '00/74/NCreatureModeCModeHoverNormal_GetType_007440c0.cpp'
+        TestSource = '00/74/NCreatureModeCModeHoverNormal_GetType_007440c0_test.cpp'
         PassPattern = 'PASS_007440c0'
     }
     [pscustomobject]@{
@@ -101461,9 +101461,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00744100'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00744100_00744100.cpp'
-        TestSource = '00/74/gapscan_sub00744100_00744100_test.cpp'
+        Module = 'NCreatureMode::CModeHoverNormal'
+        Source = '00/74/NCreatureModeCModeHoverNormal_GetAnimUpdateType_00744100.cpp'
+        TestSource = '00/74/NCreatureModeCModeHoverNormal_GetAnimUpdateType_00744100_test.cpp'
         PassPattern = 'PASS_00744100'
     }
     [pscustomobject]@{
@@ -101475,9 +101475,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007442a0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007442a0_007442a0.cpp'
-        TestSource = '00/74/gapscan_sub007442a0_007442a0_test.cpp'
+        Module = 'CTCCreatureModeManager'
+        Source = '00/74/CTCCreatureModeManager_HasFrameUpdate_007442a0.cpp'
+        TestSource = '00/74/CTCCreatureModeManager_HasFrameUpdate_007442a0_test.cpp'
         PassPattern = 'PASS_007442a0'
     }
     [pscustomobject]@{
@@ -101496,9 +101496,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00746c10'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00746c10_00746c10.cpp'
-        TestSource = '00/74/gapscan_sub00746c10_00746c10_test.cpp'
+        Module = 'CTCBed'
+        Source = '00/74/CTCBed_HasFrameUpdate_00746c10.cpp'
+        TestSource = '00/74/CTCBed_HasFrameUpdate_00746c10_test.cpp'
         PassPattern = 'PASS_00746c10'
     }
     [pscustomobject]@{
@@ -101510,9 +101510,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00749410'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00749410_00749410.cpp'
-        TestSource = '00/74/gapscan_sub00749410_00749410_test.cpp'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_HasFrameUpdate_00749410.cpp'
+        TestSource = '00/74/CTCStealth_HasFrameUpdate_00749410_test.cpp'
         PassPattern = 'PASS_00749410'
     }
     [pscustomobject]@{
@@ -101524,9 +101524,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007499e0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub007499e0_007499e0.cpp'
-        TestSource = '00/74/gapscan_sub007499e0_007499e0_test.cpp'
+        Module = 'CTCNoise'
+        Source = '00/74/CTCNoise_HasFrameUpdate_007499e0.cpp'
+        TestSource = '00/74/CTCNoise_HasFrameUpdate_007499e0_test.cpp'
         PassPattern = 'PASS_007499e0'
     }
     [pscustomobject]@{
@@ -101566,23 +101566,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0074da20'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub0074da20_0074da20.cpp'
-        TestSource = '00/74/gapscan_sub0074da20_0074da20_test.cpp'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_IsComponentSerialisable_0074da20.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_IsComponentSerialisable_0074da20_test.cpp'
         PassPattern = 'PASS_0074da20'
     }
     [pscustomobject]@{
         Address = '0074da30'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub0074da30_0074da30.cpp'
-        TestSource = '00/74/gapscan_sub0074da30_0074da30_test.cpp'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_HasFrameUpdate_0074da30.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_HasFrameUpdate_0074da30_test.cpp'
         PassPattern = 'PASS_0074da30'
     }
     [pscustomobject]@{
         Address = '0074fca0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub0074fca0_0074fca0.cpp'
-        TestSource = '00/74/gapscan_sub0074fca0_0074fca0_test.cpp'
+        Module = 'CTCContainer'
+        Source = '00/74/CTCContainer_IsComponentSerialisable_0074fca0.cpp'
+        TestSource = '00/74/CTCContainer_IsComponentSerialisable_0074fca0_test.cpp'
         PassPattern = 'PASS_0074fca0'
     }
     [pscustomobject]@{
@@ -101594,9 +101594,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00750950'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00750950_00750950.cpp'
-        TestSource = '00/75/gapscan_sub00750950_00750950_test.cpp'
+        Module = 'CTCChest'
+        Source = '00/75/CTCChest_HasFrameUpdate_00750950.cpp'
+        TestSource = '00/75/CTCChest_HasFrameUpdate_00750950_test.cpp'
         PassPattern = 'PASS_00750950'
     }
     [pscustomobject]@{
@@ -101622,16 +101622,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00751280'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00751280_00751280.cpp'
-        TestSource = '00/75/gapscan_sub00751280_00751280_test.cpp'
+        Module = 'CTCExplodingObject'
+        Source = '00/75/CTCExplodingObject_IsComponentSerialisable_00751280.cpp'
+        TestSource = '00/75/CTCExplodingObject_IsComponentSerialisable_00751280_test.cpp'
         PassPattern = 'PASS_00751280'
     }
     [pscustomobject]@{
         Address = '00751290'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00751290_00751290.cpp'
-        TestSource = '00/75/gapscan_sub00751290_00751290_test.cpp'
+        Module = 'CTCExplodingObject'
+        Source = '00/75/CTCExplodingObject_HasFrameUpdate_00751290.cpp'
+        TestSource = '00/75/CTCExplodingObject_HasFrameUpdate_00751290_test.cpp'
         PassPattern = 'PASS_00751290'
     }
     [pscustomobject]@{
@@ -101650,23 +101650,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00755310'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00755310_00755310.cpp'
-        TestSource = '00/75/gapscan_sub00755310_00755310_test.cpp'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_HasFrameUpdate_00755310.cpp'
+        TestSource = '00/75/CTCLook_HasFrameUpdate_00755310_test.cpp'
         PassPattern = 'PASS_00755310'
     }
     [pscustomobject]@{
         Address = '007555d0'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub007555d0_007555d0.cpp'
-        TestSource = '00/75/gapscan_sub007555d0_007555d0_test.cpp'
+        Module = 'CTCHeroRememberCrimes'
+        Source = '00/75/CTCHeroRememberCrimes_OnInitialActivate_007555d0.cpp'
+        TestSource = '00/75/CTCHeroRememberCrimes_OnInitialActivate_007555d0_test.cpp'
         PassPattern = 'PASS_007555d0'
     }
     [pscustomobject]@{
         Address = '007555e0'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub007555e0_007555e0.cpp'
-        TestSource = '00/75/gapscan_sub007555e0_007555e0_test.cpp'
+        Module = 'CTCHeroRememberCrimes'
+        Source = '00/75/CTCHeroRememberCrimes_FrameUpdate_007555e0.cpp'
+        TestSource = '00/75/CTCHeroRememberCrimes_FrameUpdate_007555e0_test.cpp'
         PassPattern = 'PASS_007555e0'
     }
     [pscustomobject]@{
@@ -101678,16 +101678,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00756bc0'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00756bc0_00756bc0.cpp'
-        TestSource = '00/75/gapscan_sub00756bc0_00756bc0_test.cpp'
+        Module = 'CTCHeroRememberCrimes'
+        Source = '00/75/CTCHeroRememberCrimes_HasFrameUpdate_00756bc0.cpp'
+        TestSource = '00/75/CTCHeroRememberCrimes_HasFrameUpdate_00756bc0_test.cpp'
         PassPattern = 'PASS_00756bc0'
     }
     [pscustomobject]@{
         Address = '00756bd0'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00756bd0_00756bd0.cpp'
-        TestSource = '00/75/gapscan_sub00756bd0_00756bd0_test.cpp'
+        Module = 'CTCHeroRememberCrimes'
+        Source = '00/75/CTCHeroRememberCrimes_IsComponentSerialisable_00756bd0.cpp'
+        TestSource = '00/75/CTCHeroRememberCrimes_IsComponentSerialisable_00756bd0_test.cpp'
         PassPattern = 'PASS_00756bd0'
     }
     [pscustomobject]@{
@@ -101699,16 +101699,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00758eb0'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00758eb0_00758eb0.cpp'
-        TestSource = '00/75/gapscan_sub00758eb0_00758eb0_test.cpp'
+        Module = 'CTCWound'
+        Source = '00/75/CTCWound_HasFrameUpdate_00758eb0.cpp'
+        TestSource = '00/75/CTCWound_HasFrameUpdate_00758eb0_test.cpp'
         PassPattern = 'PASS_00758eb0'
     }
     [pscustomobject]@{
         Address = '00758ec0'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub00758ec0_00758ec0.cpp'
-        TestSource = '00/75/gapscan_sub00758ec0_00758ec0_test.cpp'
+        Module = 'CTCWound'
+        Source = '00/75/CTCWound_IsComponentSerialisable_00758ec0.cpp'
+        TestSource = '00/75/CTCWound_IsComponentSerialisable_00758ec0_test.cpp'
         PassPattern = 'PASS_00758ec0'
     }
     [pscustomobject]@{
@@ -101811,9 +101811,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075ee10'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub0075ee10_0075ee10.cpp'
-        TestSource = '00/75/gapscan_sub0075ee10_0075ee10_test.cpp'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/75/CTCCameraPointScripted_HasFrameUpdate_0075ee10.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_HasFrameUpdate_0075ee10_test.cpp'
         PassPattern = 'PASS_0075ee10'
     }
     [pscustomobject]@{
@@ -101825,9 +101825,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075fc00'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub0075fc00_0075fc00.cpp'
-        TestSource = '00/75/gapscan_sub0075fc00_0075fc00_test.cpp'
+        Module = 'CTCCameraPointScriptedSpline'
+        Source = '00/75/CTCCameraPointScriptedSpline_HasFrameUpdate_0075fc00.cpp'
+        TestSource = '00/75/CTCCameraPointScriptedSpline_HasFrameUpdate_0075fc00_test.cpp'
         PassPattern = 'PASS_0075fc00'
     }
     [pscustomobject]@{
@@ -101839,9 +101839,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075ffe0'
-        Module = '_gapscan'
-        Source = '00/75/gapscan_sub0075ffe0_0075ffe0.cpp'
-        TestSource = '00/75/gapscan_sub0075ffe0_0075ffe0_test.cpp'
+        Module = 'CTCShapeManager'
+        Source = '00/75/CTCShapeManager_EditorDrawPreparePrimitivesForRendering_0075ffe0.cpp'
+        TestSource = '00/75/CTCShapeManager_EditorDrawPreparePrimitivesForRendering_0075ffe0_test.cpp'
         PassPattern = 'PASS_0075ffe0'
     }
     [pscustomobject]@{
@@ -101853,23 +101853,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00764f60'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub00764f60_00764f60.cpp'
-        TestSource = '00/76/gapscan_sub00764f60_00764f60_test.cpp'
+        Module = 'NShape::CShape'
+        Source = '00/76/NShapeCShape_UpdateSubdivisions_00764f60.cpp'
+        TestSource = '00/76/NShapeCShape_UpdateSubdivisions_00764f60_test.cpp'
         PassPattern = 'PASS_00764f60'
     }
     [pscustomobject]@{
         Address = '00765040'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub00765040_00765040.cpp'
-        TestSource = '00/76/gapscan_sub00765040_00765040_test.cpp'
+        Module = 'NShape::CClosedShapeBase'
+        Source = '00/76/NShapeCClosedShapeBase_GetType_00765040.cpp'
+        TestSource = '00/76/NShapeCClosedShapeBase_GetType_00765040_test.cpp'
         PassPattern = 'PASS_00765040'
     }
     [pscustomobject]@{
         Address = '007650c0'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub007650c0_007650c0.cpp'
-        TestSource = '00/76/gapscan_sub007650c0_007650c0_test.cpp'
+        Module = 'NShape::CTrack'
+        Source = '00/76/NShapeCTrack_GetType_007650c0.cpp'
+        TestSource = '00/76/NShapeCTrack_GetType_007650c0_test.cpp'
         PassPattern = 'PASS_007650c0'
     }
     [pscustomobject]@{
@@ -101881,16 +101881,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00765640'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub00765640_00765640.cpp'
-        TestSource = '00/76/gapscan_sub00765640_00765640_test.cpp'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_IsComponentSerialisable_00765640.cpp'
+        TestSource = '00/76/CTCShapeManager_IsComponentSerialisable_00765640_test.cpp'
         PassPattern = 'PASS_00765640'
     }
     [pscustomobject]@{
         Address = '00765650'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub00765650_00765650.cpp'
-        TestSource = '00/76/gapscan_sub00765650_00765650_test.cpp'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_HasFrameUpdate_00765650.cpp'
+        TestSource = '00/76/CTCShapeManager_HasFrameUpdate_00765650_test.cpp'
         PassPattern = 'PASS_00765650'
     }
     [pscustomobject]@{
@@ -101902,16 +101902,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0076c3d0'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub0076c3d0_0076c3d0.cpp'
-        TestSource = '00/76/gapscan_sub0076c3d0_0076c3d0_test.cpp'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_IsComponentSerialisable_0076c3d0.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_IsComponentSerialisable_0076c3d0_test.cpp'
         PassPattern = 'PASS_0076c3d0'
     }
     [pscustomobject]@{
         Address = '0076c3e0'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub0076c3e0_0076c3e0.cpp'
-        TestSource = '00/76/gapscan_sub0076c3e0_0076c3e0_test.cpp'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_HasFrameUpdate_0076c3e0.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_HasFrameUpdate_0076c3e0_test.cpp'
         PassPattern = 'PASS_0076c3e0'
     }
     [pscustomobject]@{
@@ -101923,9 +101923,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0076d8a0'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub0076d8a0_0076d8a0.cpp'
-        TestSource = '00/76/gapscan_sub0076d8a0_0076d8a0_test.cpp'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_IsComponentSerialisable_0076d8a0.cpp'
+        TestSource = '00/76/CTCEnemy_IsComponentSerialisable_0076d8a0_test.cpp'
         PassPattern = 'PASS_0076d8a0'
     }
     [pscustomobject]@{
@@ -101951,9 +101951,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00771020'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00771020_00771020.cpp'
-        TestSource = '00/77/gapscan_sub00771020_00771020_test.cpp'
+        Module = 'CTCSolidToThing'
+        Source = '00/77/CTCSolidToThing_HasFrameUpdate_00771020.cpp'
+        TestSource = '00/77/CTCSolidToThing_HasFrameUpdate_00771020_test.cpp'
         PassPattern = 'PASS_00771020'
     }
     [pscustomobject]@{
@@ -101993,9 +101993,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00771a60'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00771a60_00771a60.cpp'
-        TestSource = '00/77/gapscan_sub00771a60_00771a60_test.cpp'
+        Module = 'CTCOpinionSource'
+        Source = '00/77/CTCOpinionSource_HasFrameUpdate_00771a60.cpp'
+        TestSource = '00/77/CTCOpinionSource_HasFrameUpdate_00771a60_test.cpp'
         PassPattern = 'PASS_00771a60'
     }
     [pscustomobject]@{
@@ -102007,9 +102007,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00771f00'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00771f00_00771f00.cpp'
-        TestSource = '00/77/gapscan_sub00771f00_00771f00_test.cpp'
+        Module = 'CTCHeroPodium'
+        Source = '00/77/CTCHeroPodium_HasFrameUpdate_00771f00.cpp'
+        TestSource = '00/77/CTCHeroPodium_HasFrameUpdate_00771f00_test.cpp'
         PassPattern = 'PASS_00771f00'
     }
     [pscustomobject]@{
@@ -102021,16 +102021,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007783b0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub007783b0_007783b0.cpp'
-        TestSource = '00/77/gapscan_sub007783b0_007783b0_test.cpp'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_HasFrameUpdate_007783b0.cpp'
+        TestSource = '00/77/CTCShop_HasFrameUpdate_007783b0_test.cpp'
         PassPattern = 'PASS_007783b0'
     }
     [pscustomobject]@{
         Address = '007783c0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub007783c0_007783c0.cpp'
-        TestSource = '00/77/gapscan_sub007783c0_007783c0_test.cpp'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_IsComponentSerialisable_007783c0.cpp'
+        TestSource = '00/77/CTCShop_IsComponentSerialisable_007783c0_test.cpp'
         PassPattern = 'PASS_007783c0'
     }
     [pscustomobject]@{
@@ -102049,9 +102049,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00778820'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00778820_00778820.cpp'
-        TestSource = '00/77/gapscan_sub00778820_00778820_test.cpp'
+        Module = 'CTCTimeAppearanceFade'
+        Source = '00/77/CTCTimeAppearanceFade_HasFrameUpdate_00778820.cpp'
+        TestSource = '00/77/CTCTimeAppearanceFade_HasFrameUpdate_00778820_test.cpp'
         PassPattern = 'PASS_00778820'
     }
     [pscustomobject]@{
@@ -102091,16 +102091,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00779950'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00779950_00779950.cpp'
-        TestSource = '00/77/gapscan_sub00779950_00779950_test.cpp'
+        Module = 'CTCDRegionExit'
+        Source = '00/77/CTCDRegionExit_IsComponentSerialisable_00779950.cpp'
+        TestSource = '00/77/CTCDRegionExit_IsComponentSerialisable_00779950_test.cpp'
         PassPattern = 'PASS_00779950'
     }
     [pscustomobject]@{
         Address = '00779960'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00779960_00779960.cpp'
-        TestSource = '00/77/gapscan_sub00779960_00779960_test.cpp'
+        Module = 'CTCDRegionExit'
+        Source = '00/77/CTCDRegionExit_HasFrameUpdate_00779960.cpp'
+        TestSource = '00/77/CTCDRegionExit_HasFrameUpdate_00779960_test.cpp'
         PassPattern = 'PASS_00779960'
     }
     [pscustomobject]@{
@@ -102112,9 +102112,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077aba0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077aba0_0077aba0.cpp'
-        TestSource = '00/77/gapscan_sub0077aba0_0077aba0_test.cpp'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_HasFrameUpdate_0077aba0.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_HasFrameUpdate_0077aba0_test.cpp'
         PassPattern = 'PASS_0077aba0'
     }
     [pscustomobject]@{
@@ -102126,9 +102126,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077b230'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077b230_0077b230.cpp'
-        TestSource = '00/77/gapscan_sub0077b230_0077b230_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh_FrameUpdate_0077b230.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh_FrameUpdate_0077b230_test.cpp'
         PassPattern = 'PASS_0077b230'
     }
     [pscustomobject]@{
@@ -102147,16 +102147,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077b6a0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077b6a0_0077b6a0.cpp'
-        TestSource = '00/77/gapscan_sub0077b6a0_0077b6a0_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh_HasFrameUpdate_0077b6a0.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh_HasFrameUpdate_0077b6a0_test.cpp'
         PassPattern = 'PASS_0077b6a0'
     }
     [pscustomobject]@{
         Address = '0077ba30'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077ba30_0077ba30.cpp'
-        TestSource = '00/77/gapscan_sub0077ba30_0077ba30_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceStaticMesh'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceStaticMesh_OnInitialActivate_0077ba30.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceStaticMesh_OnInitialActivate_0077ba30_test.cpp'
         PassPattern = 'PASS_0077ba30'
     }
     [pscustomobject]@{
@@ -102196,9 +102196,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077c7c0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077c7c0_0077c7c0.cpp'
-        TestSource = '00/77/gapscan_sub0077c7c0_0077c7c0_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceSprite'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_HasFrameUpdate_0077c7c0.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_HasFrameUpdate_0077c7c0_test.cpp'
         PassPattern = 'PASS_0077c7c0'
     }
     [pscustomobject]@{
@@ -102224,9 +102224,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077cff0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077cff0_0077cff0.cpp'
-        TestSource = '00/77/gapscan_sub0077cff0_0077cff0_test.cpp'
+        Module = 'CTCHighlightItem'
+        Source = '00/77/CTCHighlightItem_HasFrameUpdate_0077cff0.cpp'
+        TestSource = '00/77/CTCHighlightItem_HasFrameUpdate_0077cff0_test.cpp'
         PassPattern = 'PASS_0077cff0'
     }
     [pscustomobject]@{
@@ -102252,9 +102252,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077eb90'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077eb90_0077eb90.cpp'
-        TestSource = '00/77/gapscan_sub0077eb90_0077eb90_test.cpp'
+        Module = 'CTCHeroCentre'
+        Source = '00/77/CTCHeroCentre_HasFrameUpdate_0077eb90.cpp'
+        TestSource = '00/77/CTCHeroCentre_HasFrameUpdate_0077eb90_test.cpp'
         PassPattern = 'PASS_0077eb90'
     }
     [pscustomobject]@{
@@ -102266,16 +102266,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077fce0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077fce0_0077fce0.cpp'
-        TestSource = '00/77/gapscan_sub0077fce0_0077fce0_test.cpp'
+        Module = 'CTCHeroCentreDoorMarker'
+        Source = '00/77/CTCHeroCentreDoorMarker_IsComponentSerialisable_0077fce0.cpp'
+        TestSource = '00/77/CTCHeroCentreDoorMarker_IsComponentSerialisable_0077fce0_test.cpp'
         PassPattern = 'PASS_0077fce0'
     }
     [pscustomobject]@{
         Address = '0077fcf0'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub0077fcf0_0077fcf0.cpp'
-        TestSource = '00/77/gapscan_sub0077fcf0_0077fcf0_test.cpp'
+        Module = 'CTCHeroCentreDoorMarker'
+        Source = '00/77/CTCHeroCentreDoorMarker_HasFrameUpdate_0077fcf0.cpp'
+        TestSource = '00/77/CTCHeroCentreDoorMarker_HasFrameUpdate_0077fcf0_test.cpp'
         PassPattern = 'PASS_0077fcf0'
     }
     [pscustomobject]@{
@@ -102301,9 +102301,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007819f0'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub007819f0_007819f0.cpp'
-        TestSource = '00/78/gapscan_sub007819f0_007819f0_test.cpp'
+        Module = 'CTCFlammable'
+        Source = '00/78/CTCFlammable_HasFrameUpdate_007819f0.cpp'
+        TestSource = '00/78/CTCFlammable_HasFrameUpdate_007819f0_test.cpp'
         PassPattern = 'PASS_007819f0'
     }
     [pscustomobject]@{
@@ -102315,16 +102315,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00782650'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00782650_00782650.cpp'
-        TestSource = '00/78/gapscan_sub00782650_00782650_test.cpp'
+        Module = 'CTCBoastingPosition'
+        Source = '00/78/CTCBoastingPosition_IsComponentSerialisable_00782650.cpp'
+        TestSource = '00/78/CTCBoastingPosition_IsComponentSerialisable_00782650_test.cpp'
         PassPattern = 'PASS_00782650'
     }
     [pscustomobject]@{
         Address = '00782660'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00782660_00782660.cpp'
-        TestSource = '00/78/gapscan_sub00782660_00782660_test.cpp'
+        Module = 'CTCBoastingPosition'
+        Source = '00/78/CTCBoastingPosition_HasFrameUpdate_00782660.cpp'
+        TestSource = '00/78/CTCBoastingPosition_HasFrameUpdate_00782660_test.cpp'
         PassPattern = 'PASS_00782660'
     }
     [pscustomobject]@{
@@ -102336,16 +102336,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00782b00'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00782b00_00782b00.cpp'
-        TestSource = '00/78/gapscan_sub00782b00_00782b00_test.cpp'
+        Module = 'CTCBoastingArea'
+        Source = '00/78/CTCBoastingArea_HasFrameUpdate_00782b00.cpp'
+        TestSource = '00/78/CTCBoastingArea_HasFrameUpdate_00782b00_test.cpp'
         PassPattern = 'PASS_00782b00'
     }
     [pscustomobject]@{
         Address = '00782b10'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00782b10_00782b10.cpp'
-        TestSource = '00/78/gapscan_sub00782b10_00782b10_test.cpp'
+        Module = 'CTCBoastingArea'
+        Source = '00/78/CTCBoastingArea_IsComponentSerialisable_00782b10.cpp'
+        TestSource = '00/78/CTCBoastingArea_IsComponentSerialisable_00782b10_test.cpp'
         PassPattern = 'PASS_00782b10'
     }
     [pscustomobject]@{
@@ -102371,16 +102371,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00784140'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00784140_00784140.cpp'
-        TestSource = '00/78/gapscan_sub00784140_00784140_test.cpp'
+        Module = 'CTCBoastingCrowdControl'
+        Source = '00/78/CTCBoastingCrowdControl_IsComponentSerialisable_00784140.cpp'
+        TestSource = '00/78/CTCBoastingCrowdControl_IsComponentSerialisable_00784140_test.cpp'
         PassPattern = 'PASS_00784140'
     }
     [pscustomobject]@{
         Address = '00784150'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00784150_00784150.cpp'
-        TestSource = '00/78/gapscan_sub00784150_00784150_test.cpp'
+        Module = 'CTCBoastingCrowdControl'
+        Source = '00/78/CTCBoastingCrowdControl_HasFrameUpdate_00784150.cpp'
+        TestSource = '00/78/CTCBoastingCrowdControl_HasFrameUpdate_00784150_test.cpp'
         PassPattern = 'PASS_00784150'
     }
     [pscustomobject]@{
@@ -102392,9 +102392,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00784cd0'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00784cd0_00784cd0.cpp'
-        TestSource = '00/78/gapscan_sub00784cd0_00784cd0_test.cpp'
+        Module = 'CTCCreatureGroupBoastingCrowd'
+        Source = '00/78/CTCCreatureGroupBoastingCrowd_HasFrameUpdate_00784cd0.cpp'
+        TestSource = '00/78/CTCCreatureGroupBoastingCrowd_HasFrameUpdate_00784cd0_test.cpp'
         PassPattern = 'PASS_00784cd0'
     }
     [pscustomobject]@{
@@ -102406,9 +102406,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00785cf0'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00785cf0_00785cf0.cpp'
-        TestSource = '00/78/gapscan_sub00785cf0_00785cf0_test.cpp'
+        Module = 'CTCVolumeContainmentTracker'
+        Source = '00/78/CTCVolumeContainmentTracker_HasFrameUpdate_00785cf0.cpp'
+        TestSource = '00/78/CTCVolumeContainmentTracker_HasFrameUpdate_00785cf0_test.cpp'
         PassPattern = 'PASS_00785cf0'
     }
     [pscustomobject]@{
@@ -102434,9 +102434,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00787a30'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00787a30_00787a30.cpp'
-        TestSource = '00/78/gapscan_sub00787a30_00787a30_test.cpp'
+        Module = 'CTCBob'
+        Source = '00/78/CTCBob_HasFrameUpdate_00787a30.cpp'
+        TestSource = '00/78/CTCBob_HasFrameUpdate_00787a30_test.cpp'
         PassPattern = 'PASS_00787a30'
     }
     [pscustomobject]@{
@@ -102448,9 +102448,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007891ef'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub007891ef_007891ef.cpp'
-        TestSource = '00/78/gapscan_sub007891ef_007891ef_test.cpp'
+        Module = 'CTCTrapBase'
+        Source = '00/78/CTCTrapBase_HasFrameUpdate_007891ef.cpp'
+        TestSource = '00/78/CTCTrapBase_HasFrameUpdate_007891ef_test.cpp'
         PassPattern = 'PASS_007891ef'
     }
     [pscustomobject]@{
@@ -102462,9 +102462,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0078af70'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub0078af70_0078af70.cpp'
-        TestSource = '00/78/gapscan_sub0078af70_0078af70_test.cpp'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_HasFrameUpdate_0078af70.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_HasFrameUpdate_0078af70_test.cpp'
         PassPattern = 'PASS_0078af70'
     }
     [pscustomobject]@{
@@ -102476,9 +102476,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0078daf0'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub0078daf0_0078daf0.cpp'
-        TestSource = '00/78/gapscan_sub0078daf0_0078daf0_test.cpp'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_HasFrameUpdate_0078daf0.cpp'
+        TestSource = '00/78/CTCBerserk_HasFrameUpdate_0078daf0_test.cpp'
         PassPattern = 'PASS_0078daf0'
     }
     [pscustomobject]@{
@@ -102504,9 +102504,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00793340'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub00793340_00793340.cpp'
-        TestSource = '00/79/gapscan_sub00793340_00793340_test.cpp'
+        Module = 'CTCDivineWrath'
+        Source = '00/79/CTCDivineWrath_HasFrameUpdate_00793340.cpp'
+        TestSource = '00/79/CTCDivineWrath_HasFrameUpdate_00793340_test.cpp'
         PassPattern = 'PASS_00793340'
     }
     [pscustomobject]@{
@@ -102532,9 +102532,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00798180'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub00798180_00798180.cpp'
-        TestSource = '00/79/gapscan_sub00798180_00798180_test.cpp'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_HasFrameUpdate_00798180.cpp'
+        TestSource = '00/79/CTCUnholyPower_HasFrameUpdate_00798180_test.cpp'
         PassPattern = 'PASS_00798180'
     }
     [pscustomobject]@{
@@ -102546,9 +102546,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00798cb0'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub00798cb0_00798cb0.cpp'
-        TestSource = '00/79/gapscan_sub00798cb0_00798cb0_test.cpp'
+        Module = 'CTCForcePushed'
+        Source = '00/79/CTCForcePushed_HasFrameUpdate_00798cb0.cpp'
+        TestSource = '00/79/CTCForcePushed_HasFrameUpdate_00798cb0_test.cpp'
         PassPattern = 'PASS_00798cb0'
     }
     [pscustomobject]@{
@@ -102560,16 +102560,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00799d70'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub00799d70_00799d70.cpp'
-        TestSource = '00/79/gapscan_sub00799d70_00799d70_test.cpp'
+        Module = 'CTCShopKeeper'
+        Source = '00/79/CTCShopKeeper_HasFrameUpdate_00799d70.cpp'
+        TestSource = '00/79/CTCShopKeeper_HasFrameUpdate_00799d70_test.cpp'
         PassPattern = 'PASS_00799d70'
     }
     [pscustomobject]@{
         Address = '0079a5f0'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub0079a5f0_0079a5f0.cpp'
-        TestSource = '00/79/gapscan_sub0079a5f0_0079a5f0_test.cpp'
+        Module = 'CTCSummonSpell'
+        Source = '00/79/CTCSummonSpell_OnKill_0079a5f0.cpp'
+        TestSource = '00/79/CTCSummonSpell_OnKill_0079a5f0_test.cpp'
         PassPattern = 'PASS_0079a5f0'
     }
     [pscustomobject]@{
@@ -102588,9 +102588,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079bd00'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub0079bd00_0079bd00.cpp'
-        TestSource = '00/79/gapscan_sub0079bd00_0079bd00_test.cpp'
+        Module = 'CTCSummonSpell'
+        Source = '00/79/CTCSummonSpell_HasFrameUpdate_0079bd00.cpp'
+        TestSource = '00/79/CTCSummonSpell_HasFrameUpdate_0079bd00_test.cpp'
         PassPattern = 'PASS_0079bd00'
     }
     [pscustomobject]@{
@@ -102602,9 +102602,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079c4a0'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub0079c4a0_0079c4a0.cpp'
-        TestSource = '00/79/gapscan_sub0079c4a0_0079c4a0_test.cpp'
+        Module = 'CTCSummonableCreature'
+        Source = '00/79/CTCSummonableCreature_HasFrameUpdate_0079c4a0.cpp'
+        TestSource = '00/79/CTCSummonableCreature_HasFrameUpdate_0079c4a0_test.cpp'
         PassPattern = 'PASS_0079c4a0'
     }
     [pscustomobject]@{
@@ -102630,9 +102630,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079dc80'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub0079dc80_0079dc80.cpp'
-        TestSource = '00/79/gapscan_sub0079dc80_0079dc80_test.cpp'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_HasFrameUpdate_0079dc80.cpp'
+        TestSource = '00/79/CTCBulletTime_HasFrameUpdate_0079dc80_test.cpp'
         PassPattern = 'PASS_0079dc80'
     }
     [pscustomobject]@{
@@ -102658,9 +102658,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079f500'
-        Module = '_gapscan'
-        Source = '00/79/gapscan_sub0079f500_0079f500.cpp'
-        TestSource = '00/79/gapscan_sub0079f500_0079f500_test.cpp'
+        Module = 'CTCPhysicalShieldSpell'
+        Source = '00/79/CTCPhysicalShieldSpell_HasFrameUpdate_0079f500.cpp'
+        TestSource = '00/79/CTCPhysicalShieldSpell_HasFrameUpdate_0079f500_test.cpp'
         PassPattern = 'PASS_0079f500'
     }
     [pscustomobject]@{
@@ -102686,16 +102686,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007a4080'
-        Module = '_gapscan'
-        Source = '00/7a/gapscan_sub007a4080_007a4080.cpp'
-        TestSource = '00/7a/gapscan_sub007a4080_007a4080_test.cpp'
+        Module = 'CTCWillLightning'
+        Source = '00/7a/CTCWillLightning_HasFrameUpdate_007a4080.cpp'
+        TestSource = '00/7a/CTCWillLightning_HasFrameUpdate_007a4080_test.cpp'
         PassPattern = 'PASS_007a4080'
     }
     [pscustomobject]@{
         Address = '007a42f0'
-        Module = '_gapscan'
-        Source = '00/7a/gapscan_sub007a42f0_007a42f0.cpp'
-        TestSource = '00/7a/gapscan_sub007a42f0_007a42f0_test.cpp'
+        Module = 'CTCWillEnflame'
+        Source = '00/7a/CTCWillEnflame_OnKill_007a42f0.cpp'
+        TestSource = '00/7a/CTCWillEnflame_OnKill_007a42f0_test.cpp'
         PassPattern = 'PASS_007a42f0'
     }
     [pscustomobject]@{
@@ -102714,9 +102714,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007a5070'
-        Module = '_gapscan'
-        Source = '00/7a/gapscan_sub007a5070_007a5070.cpp'
-        TestSource = '00/7a/gapscan_sub007a5070_007a5070_test.cpp'
+        Module = 'CTCWillEnflame'
+        Source = '00/7a/CTCWillEnflame_HasFrameUpdate_007a5070.cpp'
+        TestSource = '00/7a/CTCWillEnflame_HasFrameUpdate_007a5070_test.cpp'
         PassPattern = 'PASS_007a5070'
     }
     [pscustomobject]@{
@@ -102805,9 +102805,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007ab4a0'
-        Module = '_gapscan'
-        Source = '00/7a/gapscan_sub007ab4a0_007ab4a0.cpp'
-        TestSource = '00/7a/gapscan_sub007ab4a0_007ab4a0_test.cpp'
+        Module = 'NCameraModes::CScriptModuleCameraOnAStick'
+        Source = '00/7a/NCameraModesCScriptModuleCameraOnAStick_ResetCameraOnEnd_007ab4a0.cpp'
+        TestSource = '00/7a/NCameraModesCScriptModuleCameraOnAStick_ResetCameraOnEnd_007ab4a0_test.cpp'
         PassPattern = 'PASS_007ab4a0'
     }
     [pscustomobject]@{
@@ -102819,9 +102819,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007ab5d0'
-        Module = '_gapscan'
-        Source = '00/7a/gapscan_sub007ab5d0_007ab5d0.cpp'
-        TestSource = '00/7a/gapscan_sub007ab5d0_007ab5d0_test.cpp'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_HasFrameUpdate_007ab5d0.cpp'
+        TestSource = '00/7a/CTCAssassinRush_HasFrameUpdate_007ab5d0_test.cpp'
         PassPattern = 'PASS_007ab5d0'
     }
     [pscustomobject]@{
@@ -102833,9 +102833,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007acdd0'
-        Module = '_gapscan'
-        Source = '00/7a/gapscan_sub007acdd0_007acdd0.cpp'
-        TestSource = '00/7a/gapscan_sub007acdd0_007acdd0_test.cpp'
+        Module = 'CTCAIScratchpad'
+        Source = '00/7a/CTCAIScratchpad_IsComponentSerialisable_007acdd0.cpp'
+        TestSource = '00/7a/CTCAIScratchpad_IsComponentSerialisable_007acdd0_test.cpp'
         PassPattern = 'PASS_007acdd0'
     }
     [pscustomobject]@{
@@ -102847,9 +102847,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007af860'
-        Module = '_gapscan'
-        Source = '00/7a/gapscan_sub007af860_007af860.cpp'
-        TestSource = '00/7a/gapscan_sub007af860_007af860_test.cpp'
+        Module = 'CTCRockTrollShield'
+        Source = '00/7a/CTCRockTrollShield_HasFrameUpdate_007af860.cpp'
+        TestSource = '00/7a/CTCRockTrollShield_HasFrameUpdate_007af860_test.cpp'
         PassPattern = 'PASS_007af860'
     }
     [pscustomobject]@{
@@ -102868,9 +102868,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b0140'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b0140_007b0140.cpp'
-        TestSource = '00/7b/gapscan_sub007b0140_007b0140_test.cpp'
+        Module = 'CTCFishingSpot'
+        Source = '00/7b/CTCFishingSpot_OnInitialActivate_007b0140.cpp'
+        TestSource = '00/7b/CTCFishingSpot_OnInitialActivate_007b0140_test.cpp'
         PassPattern = 'PASS_007b0140'
     }
     [pscustomobject]@{
@@ -102882,16 +102882,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b06a0'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b06a0_007b06a0.cpp'
-        TestSource = '00/7b/gapscan_sub007b06a0_007b06a0_test.cpp'
+        Module = 'CTCFishingSpot'
+        Source = '00/7b/CTCFishingSpot_HasFrameUpdate_007b06a0.cpp'
+        TestSource = '00/7b/CTCFishingSpot_HasFrameUpdate_007b06a0_test.cpp'
         PassPattern = 'PASS_007b06a0'
     }
     [pscustomobject]@{
         Address = '007b06b0'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b06b0_007b06b0.cpp'
-        TestSource = '00/7b/gapscan_sub007b06b0_007b06b0_test.cpp'
+        Module = 'CTCFishingSpot'
+        Source = '00/7b/CTCFishingSpot_IsComponentSerialisable_007b06b0.cpp'
+        TestSource = '00/7b/CTCFishingSpot_IsComponentSerialisable_007b06b0_test.cpp'
         PassPattern = 'PASS_007b06b0'
     }
     [pscustomobject]@{
@@ -102903,23 +102903,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b26f0'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b26f0_007b26f0.cpp'
-        TestSource = '00/7b/gapscan_sub007b26f0_007b26f0_test.cpp'
+        Module = 'CTCFishing'
+        Source = '00/7b/CTCFishing_HasFrameUpdate_007b26f0.cpp'
+        TestSource = '00/7b/CTCFishing_HasFrameUpdate_007b26f0_test.cpp'
         PassPattern = 'PASS_007b26f0'
     }
     [pscustomobject]@{
         Address = '007b2910'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b2910_007b2910.cpp'
-        TestSource = '00/7b/gapscan_sub007b2910_007b2910_test.cpp'
+        Module = 'NEntityEvents::CEventApologyReceived'
+        Source = '00/7b/NEntityEventsCEventApologyReceived_GetType_007b2910.cpp'
+        TestSource = '00/7b/NEntityEventsCEventApologyReceived_GetType_007b2910_test.cpp'
         PassPattern = 'PASS_007b2910'
     }
     [pscustomobject]@{
         Address = '007b29a0'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b29a0_007b29a0.cpp'
-        TestSource = '00/7b/gapscan_sub007b29a0_007b29a0_test.cpp'
+        Module = 'CTCGuard'
+        Source = '00/7b/CTCGuard_IsComponentSerialisable_007b29a0.cpp'
+        TestSource = '00/7b/CTCGuard_IsComponentSerialisable_007b29a0_test.cpp'
         PassPattern = 'PASS_007b29a0'
     }
     [pscustomobject]@{
@@ -102945,9 +102945,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b62d0'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b62d0_007b62d0.cpp'
-        TestSource = '00/7b/gapscan_sub007b62d0_007b62d0_test.cpp'
+        Module = 'CTCWaterWader'
+        Source = '00/7b/CTCWaterWader_HasFrameUpdate_007b62d0.cpp'
+        TestSource = '00/7b/CTCWaterWader_HasFrameUpdate_007b62d0_test.cpp'
         PassPattern = 'PASS_007b62d0'
     }
     [pscustomobject]@{
@@ -102966,9 +102966,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b8080'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007b8080_007b8080.cpp'
-        TestSource = '00/7b/gapscan_sub007b8080_007b8080_test.cpp'
+        Module = 'CTCOverheadDisplay'
+        Source = '00/7b/CTCOverheadDisplay_HasFrameUpdate_007b8080.cpp'
+        TestSource = '00/7b/CTCOverheadDisplay_HasFrameUpdate_007b8080_test.cpp'
         PassPattern = 'PASS_007b8080'
     }
     [pscustomobject]@{
@@ -103001,9 +103001,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007badc0'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007badc0_007badc0.cpp'
-        TestSource = '00/7b/gapscan_sub007badc0_007badc0_test.cpp'
+        Module = 'CTCTrespasser'
+        Source = '00/7b/CTCTrespasser_HasFrameUpdate_007badc0.cpp'
+        TestSource = '00/7b/CTCTrespasser_HasFrameUpdate_007badc0_test.cpp'
         PassPattern = 'PASS_007badc0'
     }
     [pscustomobject]@{
@@ -103022,9 +103022,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007bba10'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007bba10_007bba10.cpp'
-        TestSource = '00/7b/gapscan_sub007bba10_007bba10_test.cpp'
+        Module = 'CTCDrunkenness'
+        Source = '00/7b/CTCDrunkenness_HasFrameUpdate_007bba10.cpp'
+        TestSource = '00/7b/CTCDrunkenness_HasFrameUpdate_007bba10_test.cpp'
         PassPattern = 'PASS_007bba10'
     }
     [pscustomobject]@{
@@ -103043,9 +103043,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007beb10'
-        Module = '_gapscan'
-        Source = '00/7b/gapscan_sub007beb10_007beb10.cpp'
-        TestSource = '00/7b/gapscan_sub007beb10_007beb10_test.cpp'
+        Module = 'NEntityEvents::CEventShotStruck'
+        Source = '00/7b/NEntityEventsCEventShotStruck_GetType_007beb10.cpp'
+        TestSource = '00/7b/NEntityEventsCEventShotStruck_GetType_007beb10_test.cpp'
         PassPattern = 'PASS_007beb10'
     }
     [pscustomobject]@{
@@ -103057,9 +103057,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c3020'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c3020_007c3020.cpp'
-        TestSource = '00/7c/gapscan_sub007c3020_007c3020_test.cpp'
+        Module = 'CTCDrainLife'
+        Source = '00/7c/CTCDrainLife_OnKill_007c3020.cpp'
+        TestSource = '00/7c/CTCDrainLife_OnKill_007c3020_test.cpp'
         PassPattern = 'PASS_007c3020'
     }
     [pscustomobject]@{
@@ -103078,9 +103078,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c3c10'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c3c10_007c3c10.cpp'
-        TestSource = '00/7c/gapscan_sub007c3c10_007c3c10_test.cpp'
+        Module = 'CTCDrainLife'
+        Source = '00/7c/CTCDrainLife_HasFrameUpdate_007c3c10.cpp'
+        TestSource = '00/7c/CTCDrainLife_HasFrameUpdate_007c3c10_test.cpp'
         PassPattern = 'PASS_007c3c10'
     }
     [pscustomobject]@{
@@ -103106,16 +103106,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c5100'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c5100_007c5100.cpp'
-        TestSource = '00/7c/gapscan_sub007c5100_007c5100_test.cpp'
+        Module = 'CTCHealLife'
+        Source = '00/7c/CTCHealLife_HasFrameUpdate_007c5100.cpp'
+        TestSource = '00/7c/CTCHealLife_HasFrameUpdate_007c5100_test.cpp'
         PassPattern = 'PASS_007c5100'
     }
     [pscustomobject]@{
         Address = '007c5460'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c5460_007c5460.cpp'
-        TestSource = '00/7c/gapscan_sub007c5460_007c5460_test.cpp'
+        Module = 'CTCGhostSword'
+        Source = '00/7c/CTCGhostSword_OnKill_007c5460.cpp'
+        TestSource = '00/7c/CTCGhostSword_OnKill_007c5460_test.cpp'
         PassPattern = 'PASS_007c5460'
     }
     [pscustomobject]@{
@@ -103134,9 +103134,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c66a0'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c66a0_007c66a0.cpp'
-        TestSource = '00/7c/gapscan_sub007c66a0_007c66a0_test.cpp'
+        Module = 'CTCGhostSword'
+        Source = '00/7c/CTCGhostSword_HasFrameUpdate_007c66a0.cpp'
+        TestSource = '00/7c/CTCGhostSword_HasFrameUpdate_007c66a0_test.cpp'
         PassPattern = 'PASS_007c66a0'
     }
     [pscustomobject]@{
@@ -103148,9 +103148,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c77c0'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c77c0_007c77c0.cpp'
-        TestSource = '00/7c/gapscan_sub007c77c0_007c77c0_test.cpp'
+        Module = 'CTCTurncoatSpell'
+        Source = '00/7c/CTCTurncoatSpell_HasFrameUpdate_007c77c0.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_HasFrameUpdate_007c77c0_test.cpp'
         PassPattern = 'PASS_007c77c0'
     }
     [pscustomobject]@{
@@ -103162,9 +103162,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c80f0'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c80f0_007c80f0.cpp'
-        TestSource = '00/7c/gapscan_sub007c80f0_007c80f0_test.cpp'
+        Module = 'CTCTurncoat'
+        Source = '00/7c/CTCTurncoat_HasFrameUpdate_007c80f0.cpp'
+        TestSource = '00/7c/CTCTurncoat_HasFrameUpdate_007c80f0_test.cpp'
         PassPattern = 'PASS_007c80f0'
     }
     [pscustomobject]@{
@@ -103197,9 +103197,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c95b0'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c95b0_007c95b0.cpp'
-        TestSource = '00/7c/gapscan_sub007c95b0_007c95b0_test.cpp'
+        Module = 'CTCFireballSpell'
+        Source = '00/7c/CTCFireballSpell_HasFrameUpdate_007c95b0.cpp'
+        TestSource = '00/7c/CTCFireballSpell_HasFrameUpdate_007c95b0_test.cpp'
         PassPattern = 'PASS_007c95b0'
     }
     [pscustomobject]@{
@@ -103211,16 +103211,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c9e90'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c9e90_007c9e90.cpp'
-        TestSource = '00/7c/gapscan_sub007c9e90_007c9e90_test.cpp'
+        Module = 'CTCCreatureGeneratorCreator'
+        Source = '00/7c/CTCCreatureGeneratorCreator_HasFrameUpdate_007c9e90.cpp'
+        TestSource = '00/7c/CTCCreatureGeneratorCreator_HasFrameUpdate_007c9e90_test.cpp'
         PassPattern = 'PASS_007c9e90'
     }
     [pscustomobject]@{
         Address = '007c9ea0'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007c9ea0_007c9ea0.cpp'
-        TestSource = '00/7c/gapscan_sub007c9ea0_007c9ea0_test.cpp'
+        Module = 'CTCCreatureGeneratorCreator'
+        Source = '00/7c/CTCCreatureGeneratorCreator_IsComponentSerialisable_007c9ea0.cpp'
+        TestSource = '00/7c/CTCCreatureGeneratorCreator_IsComponentSerialisable_007c9ea0_test.cpp'
         PassPattern = 'PASS_007c9ea0'
     }
     [pscustomobject]@{
@@ -103232,9 +103232,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cbd70'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007cbd70_007cbd70.cpp'
-        TestSource = '00/7c/gapscan_sub007cbd70_007cbd70_test.cpp'
+        Module = 'CTCHeroReceiveItems'
+        Source = '00/7c/CTCHeroReceiveItems_IsComponentSerialisable_007cbd70.cpp'
+        TestSource = '00/7c/CTCHeroReceiveItems_IsComponentSerialisable_007cbd70_test.cpp'
         PassPattern = 'PASS_007cbd70'
     }
     [pscustomobject]@{
@@ -103267,9 +103267,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cc980'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007cc980_007cc980.cpp'
-        TestSource = '00/7c/gapscan_sub007cc980_007cc980_test.cpp'
+        Module = 'CTCMultiArrow'
+        Source = '00/7c/CTCMultiArrow_HasFrameUpdate_007cc980.cpp'
+        TestSource = '00/7c/CTCMultiArrow_HasFrameUpdate_007cc980_test.cpp'
         PassPattern = 'PASS_007cc980'
     }
     [pscustomobject]@{
@@ -103295,9 +103295,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cd800'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007cd800_007cd800.cpp'
-        TestSource = '00/7c/gapscan_sub007cd800_007cd800_test.cpp'
+        Module = 'CTCMultiStrike'
+        Source = '00/7c/CTCMultiStrike_HasFrameUpdate_007cd800.cpp'
+        TestSource = '00/7c/CTCMultiStrike_HasFrameUpdate_007cd800_test.cpp'
         PassPattern = 'PASS_007cd800'
     }
     [pscustomobject]@{
@@ -103323,9 +103323,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007ce1a0'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007ce1a0_007ce1a0.cpp'
-        TestSource = '00/7c/gapscan_sub007ce1a0_007ce1a0_test.cpp'
+        Module = 'CTCBurntEffect'
+        Source = '00/7c/CTCBurntEffect_HasFrameUpdate_007ce1a0.cpp'
+        TestSource = '00/7c/CTCBurntEffect_HasFrameUpdate_007ce1a0_test.cpp'
         PassPattern = 'PASS_007ce1a0'
     }
     [pscustomobject]@{
@@ -103337,9 +103337,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007ced30'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007ced30_007ced30.cpp'
-        TestSource = '00/7c/gapscan_sub007ced30_007ced30_test.cpp'
+        Module = 'CTCElectrocutedEffect'
+        Source = '00/7c/CTCElectrocutedEffect_HasFrameUpdate_007ced30.cpp'
+        TestSource = '00/7c/CTCElectrocutedEffect_HasFrameUpdate_007ced30_test.cpp'
         PassPattern = 'PASS_007ced30'
     }
     [pscustomobject]@{
@@ -103365,16 +103365,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cf380'
-        Module = '_gapscan'
-        Source = '00/7c/gapscan_sub007cf380_007cf380.cpp'
-        TestSource = '00/7c/gapscan_sub007cf380_007cf380_test.cpp'
+        Module = 'CTCCreatureTintEffect'
+        Source = '00/7c/CTCCreatureTintEffect_HasFrameUpdate_007cf380.cpp'
+        TestSource = '00/7c/CTCCreatureTintEffect_HasFrameUpdate_007cf380_test.cpp'
         PassPattern = 'PASS_007cf380'
     }
     [pscustomobject]@{
         Address = '007d21f0'
-        Module = '_gapscan'
-        Source = '00/7d/gapscan_sub007d21f0_007d21f0.cpp'
-        TestSource = '00/7d/gapscan_sub007d21f0_007d21f0_test.cpp'
+        Module = 'CTCTavernGameCoinBase'
+        Source = '00/7d/CTCTavernGameCoinBase_GetInterfaceType_007d21f0.cpp'
+        TestSource = '00/7d/CTCTavernGameCoinBase_GetInterfaceType_007d21f0_test.cpp'
         PassPattern = 'PASS_007d21f0'
     }
     [pscustomobject]@{
@@ -103435,9 +103435,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007dd1b0'
-        Module = '_gapscan'
-        Source = '00/7d/gapscan_sub007dd1b0_007dd1b0.cpp'
-        TestSource = '00/7d/gapscan_sub007dd1b0_007dd1b0_test.cpp'
+        Module = 'CTCCreatureFlyOnSpline'
+        Source = '00/7d/CTCCreatureFlyOnSpline_HasFrameUpdate_007dd1b0.cpp'
+        TestSource = '00/7d/CTCCreatureFlyOnSpline_HasFrameUpdate_007dd1b0_test.cpp'
         PassPattern = 'PASS_007dd1b0'
     }
     [pscustomobject]@{
@@ -103449,16 +103449,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007de410'
-        Module = '_gapscan'
-        Source = '00/7d/gapscan_sub007de410_007de410.cpp'
-        TestSource = '00/7d/gapscan_sub007de410_007de410_test.cpp'
+        Module = 'CTCCreatureFlyInCircles'
+        Source = '00/7d/CTCCreatureFlyInCircles_HasFrameUpdate_007de410.cpp'
+        TestSource = '00/7d/CTCCreatureFlyInCircles_HasFrameUpdate_007de410_test.cpp'
         PassPattern = 'PASS_007de410'
     }
     [pscustomobject]@{
         Address = '007de490'
-        Module = '_gapscan'
-        Source = '00/7d/gapscan_sub007de490_007de490.cpp'
-        TestSource = '00/7d/gapscan_sub007de490_007de490_test.cpp'
+        Module = 'CTCWallMount'
+        Source = '00/7d/CTCWallMount_IsComponentSerialisable_007de490.cpp'
+        TestSource = '00/7d/CTCWallMount_IsComponentSerialisable_007de490_test.cpp'
         PassPattern = 'PASS_007de490'
     }
     [pscustomobject]@{
@@ -103470,23 +103470,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007df3a0'
-        Module = '_gapscan'
-        Source = '00/7d/gapscan_sub007df3a0_007df3a0.cpp'
-        TestSource = '00/7d/gapscan_sub007df3a0_007df3a0_test.cpp'
+        Module = 'CTCWallMountEffects'
+        Source = '00/7d/CTCWallMountEffects_OnInitialActivate_007df3a0.cpp'
+        TestSource = '00/7d/CTCWallMountEffects_OnInitialActivate_007df3a0_test.cpp'
         PassPattern = 'PASS_007df3a0'
     }
     [pscustomobject]@{
         Address = '007df3b0'
-        Module = '_gapscan'
-        Source = '00/7d/gapscan_sub007df3b0_007df3b0.cpp'
-        TestSource = '00/7d/gapscan_sub007df3b0_007df3b0_test.cpp'
+        Module = 'CTCWallMountEffects'
+        Source = '00/7d/CTCWallMountEffects_HasFrameUpdate_007df3b0.cpp'
+        TestSource = '00/7d/CTCWallMountEffects_HasFrameUpdate_007df3b0_test.cpp'
         PassPattern = 'PASS_007df3b0'
     }
     [pscustomobject]@{
         Address = '007df3c0'
-        Module = '_gapscan'
-        Source = '00/7d/gapscan_sub007df3c0_007df3c0.cpp'
-        TestSource = '00/7d/gapscan_sub007df3c0_007df3c0_test.cpp'
+        Module = 'CTCWallMountEffects'
+        Source = '00/7d/CTCWallMountEffects_IsComponentSerialisable_007df3c0.cpp'
+        TestSource = '00/7d/CTCWallMountEffects_IsComponentSerialisable_007df3c0_test.cpp'
         PassPattern = 'PASS_007df3c0'
     }
     [pscustomobject]@{
@@ -103512,16 +103512,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e0520'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e0520_007e0520.cpp'
-        TestSource = '00/7e/gapscan_sub007e0520_007e0520_test.cpp'
+        Module = 'CTCTeleporter'
+        Source = '00/7e/CTCTeleporter_HasFrameUpdate_007e0520.cpp'
+        TestSource = '00/7e/CTCTeleporter_HasFrameUpdate_007e0520_test.cpp'
         PassPattern = 'PASS_007e0520'
     }
     [pscustomobject]@{
         Address = '007e0530'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e0530_007e0530.cpp'
-        TestSource = '00/7e/gapscan_sub007e0530_007e0530_test.cpp'
+        Module = 'CTCTeleporter'
+        Source = '00/7e/CTCTeleporter_IsComponentSerialisable_007e0530.cpp'
+        TestSource = '00/7e/CTCTeleporter_IsComponentSerialisable_007e0530_test.cpp'
         PassPattern = 'PASS_007e0530'
     }
     [pscustomobject]@{
@@ -103533,9 +103533,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e0a30'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e0a30_007e0a30.cpp'
-        TestSource = '00/7e/gapscan_sub007e0a30_007e0a30_test.cpp'
+        Module = 'CTCHeroSpecialMovement'
+        Source = '00/7e/CTCHeroSpecialMovement_HasFrameUpdate_007e0a30.cpp'
+        TestSource = '00/7e/CTCHeroSpecialMovement_HasFrameUpdate_007e0a30_test.cpp'
         PassPattern = 'PASS_007e0a30'
     }
     [pscustomobject]@{
@@ -103547,9 +103547,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e0da0'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e0da0_007e0da0.cpp'
-        TestSource = '00/7e/gapscan_sub007e0da0_007e0da0_test.cpp'
+        Module = 'CTCEffectOnDie'
+        Source = '00/7e/CTCEffectOnDie_HasFrameUpdate_007e0da0.cpp'
+        TestSource = '00/7e/CTCEffectOnDie_HasFrameUpdate_007e0da0_test.cpp'
         PassPattern = 'PASS_007e0da0'
     }
     [pscustomobject]@{
@@ -103561,9 +103561,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e1170'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e1170_007e1170.cpp'
-        TestSource = '00/7e/gapscan_sub007e1170_007e1170_test.cpp'
+        Module = 'CTCAICreatureWillPowerIndicator'
+        Source = '00/7e/CTCAICreatureWillPowerIndicator_HasFrameUpdate_007e1170.cpp'
+        TestSource = '00/7e/CTCAICreatureWillPowerIndicator_HasFrameUpdate_007e1170_test.cpp'
         PassPattern = 'PASS_007e1170'
     }
     [pscustomobject]@{
@@ -103575,9 +103575,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e1b00'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e1b00_007e1b00.cpp'
-        TestSource = '00/7e/gapscan_sub007e1b00_007e1b00_test.cpp'
+        Module = 'CTCInfoDisplay'
+        Source = '00/7e/CTCInfoDisplay_FrameUpdate_007e1b00.cpp'
+        TestSource = '00/7e/CTCInfoDisplay_FrameUpdate_007e1b00_test.cpp'
         PassPattern = 'PASS_007e1b00'
     }
     [pscustomobject]@{
@@ -103589,16 +103589,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e1c10'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e1c10_007e1c10.cpp'
-        TestSource = '00/7e/gapscan_sub007e1c10_007e1c10_test.cpp'
+        Module = 'CTCInfoDisplay'
+        Source = '00/7e/CTCInfoDisplay_HasFrameUpdate_007e1c10.cpp'
+        TestSource = '00/7e/CTCInfoDisplay_HasFrameUpdate_007e1c10_test.cpp'
         PassPattern = 'PASS_007e1c10'
     }
     [pscustomobject]@{
         Address = '007e1c20'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e1c20_007e1c20.cpp'
-        TestSource = '00/7e/gapscan_sub007e1c20_007e1c20_test.cpp'
+        Module = 'CTCInfoDisplay'
+        Source = '00/7e/CTCInfoDisplay_IsComponentSerialisable_007e1c20.cpp'
+        TestSource = '00/7e/CTCInfoDisplay_IsComponentSerialisable_007e1c20_test.cpp'
         PassPattern = 'PASS_007e1c20'
     }
     [pscustomobject]@{
@@ -103617,9 +103617,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e25b0'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e25b0_007e25b0.cpp'
-        TestSource = '00/7e/gapscan_sub007e25b0_007e25b0_test.cpp'
+        Module = 'CTCDiggingSpot'
+        Source = '00/7e/CTCDiggingSpot_IsComponentSerialisable_007e25b0.cpp'
+        TestSource = '00/7e/CTCDiggingSpot_IsComponentSerialisable_007e25b0_test.cpp'
         PassPattern = 'PASS_007e25b0'
     }
     [pscustomobject]@{
@@ -103638,9 +103638,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e2d60'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e2d60_007e2d60.cpp'
-        TestSource = '00/7e/gapscan_sub007e2d60_007e2d60_test.cpp'
+        Module = 'CTCFineDialogue'
+        Source = '00/7e/CTCFineDialogue_HasFrameUpdate_007e2d60.cpp'
+        TestSource = '00/7e/CTCFineDialogue_HasFrameUpdate_007e2d60_test.cpp'
         PassPattern = 'PASS_007e2d60'
     }
     [pscustomobject]@{
@@ -103659,9 +103659,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e3560'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e3560_007e3560.cpp'
-        TestSource = '00/7e/gapscan_sub007e3560_007e3560_test.cpp'
+        Module = 'CTCDeadShotInThingTracker'
+        Source = '00/7e/CTCDeadShotInThingTracker_HasFrameUpdate_007e3560.cpp'
+        TestSource = '00/7e/CTCDeadShotInThingTracker_HasFrameUpdate_007e3560_test.cpp'
         PassPattern = 'PASS_007e3560'
     }
     [pscustomobject]@{
@@ -103673,9 +103673,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e3790'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e3790_007e3790.cpp'
-        TestSource = '00/7e/gapscan_sub007e3790_007e3790_test.cpp'
+        Module = 'CTCAtmosPlayer'
+        Source = '00/7e/CTCAtmosPlayer_IsComponentSerialisable_007e3790.cpp'
+        TestSource = '00/7e/CTCAtmosPlayer_IsComponentSerialisable_007e3790_test.cpp'
         PassPattern = 'PASS_007e3790'
     }
     [pscustomobject]@{
@@ -103701,9 +103701,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e4c40'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e4c40_007e4c40.cpp'
-        TestSource = '00/7e/gapscan_sub007e4c40_007e4c40_test.cpp'
+        Module = 'CTCCreditsUI'
+        Source = '00/7e/CTCCreditsUI_HasFrameUpdate_007e4c40.cpp'
+        TestSource = '00/7e/CTCCreditsUI_HasFrameUpdate_007e4c40_test.cpp'
         PassPattern = 'PASS_007e4c40'
     }
     [pscustomobject]@{
@@ -103715,9 +103715,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e5910'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e5910_007e5910.cpp'
-        TestSource = '00/7e/gapscan_sub007e5910_007e5910_test.cpp'
+        Module = 'CTCBetting'
+        Source = '00/7e/CTCBetting_HasFrameUpdate_007e5910.cpp'
+        TestSource = '00/7e/CTCBetting_HasFrameUpdate_007e5910_test.cpp'
         PassPattern = 'PASS_007e5910'
     }
     [pscustomobject]@{
@@ -103729,9 +103729,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e5b00'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e5b00_007e5b00.cpp'
-        TestSource = '00/7e/gapscan_sub007e5b00_007e5b00_test.cpp'
+        Module = 'CTCLifeTimer'
+        Source = '00/7e/CTCLifeTimer_HasFrameUpdate_007e5b00.cpp'
+        TestSource = '00/7e/CTCLifeTimer_HasFrameUpdate_007e5b00_test.cpp'
         PassPattern = 'PASS_007e5b00'
     }
     [pscustomobject]@{
@@ -103757,9 +103757,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e7ea0'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e7ea0_007e7ea0.cpp'
-        TestSource = '00/7e/gapscan_sub007e7ea0_007e7ea0_test.cpp'
+        Module = 'CTCFireheartMinigame'
+        Source = '00/7e/CTCFireheartMinigame_HasFrameUpdate_007e7ea0.cpp'
+        TestSource = '00/7e/CTCFireheartMinigame_HasFrameUpdate_007e7ea0_test.cpp'
         PassPattern = 'PASS_007e7ea0'
     }
     [pscustomobject]@{
@@ -103792,23 +103792,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007f20c0'
-        Module = '_gapscan'
-        Source = '00/7f/gapscan_sub007f20c0_007f20c0.cpp'
-        TestSource = '00/7f/gapscan_sub007f20c0_007f20c0_test.cpp'
+        Module = 'CTCLightningNode'
+        Source = '00/7f/CTCLightningNode_OnInitialActivate_007f20c0.cpp'
+        TestSource = '00/7f/CTCLightningNode_OnInitialActivate_007f20c0_test.cpp'
         PassPattern = 'PASS_007f20c0'
     }
     [pscustomobject]@{
         Address = '007f20e0'
-        Module = '_gapscan'
-        Source = '00/7f/gapscan_sub007f20e0_007f20e0.cpp'
-        TestSource = '00/7f/gapscan_sub007f20e0_007f20e0_test.cpp'
+        Module = 'CTCLightningNode'
+        Source = '00/7f/CTCLightningNode_OnKill_007f20e0.cpp'
+        TestSource = '00/7f/CTCLightningNode_OnKill_007f20e0_test.cpp'
         PassPattern = 'PASS_007f20e0'
     }
     [pscustomobject]@{
         Address = '007f20f0'
-        Module = '_gapscan'
-        Source = '00/7f/gapscan_sub007f20f0_007f20f0.cpp'
-        TestSource = '00/7f/gapscan_sub007f20f0_007f20f0_test.cpp'
+        Module = 'CTCLightningNode'
+        Source = '00/7f/CTCLightningNode_OnRemove_007f20f0.cpp'
+        TestSource = '00/7f/CTCLightningNode_OnRemove_007f20f0_test.cpp'
         PassPattern = 'PASS_007f20f0'
     }
     [pscustomobject]@{
@@ -103827,9 +103827,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007ffd30'
-        Module = '_gapscan'
-        Source = '00/7f/gapscan_sub007ffd30_007ffd30.cpp'
-        TestSource = '00/7f/gapscan_sub007ffd30_007ffd30_test.cpp'
+        Module = 'CTCGatherPointBase'
+        Source = '00/7f/CTCGatherPointBase_FrameUpdate_007ffd30.cpp'
+        TestSource = '00/7f/CTCGatherPointBase_FrameUpdate_007ffd30_test.cpp'
         PassPattern = 'PASS_007ffd30'
     }
     [pscustomobject]@{
@@ -103848,65 +103848,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00811ce0'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00811ce0_00811ce0.cpp'
-        TestSource = '00/81/gapscan_sub00811ce0_00811ce0_test.cpp'
+        Module = 'NEntityEvents::CEventReceivedItem'
+        Source = '00/81/NEntityEventsCEventReceivedItem_GetType_00811ce0.cpp'
+        TestSource = '00/81/NEntityEventsCEventReceivedItem_GetType_00811ce0_test.cpp'
         PassPattern = 'PASS_00811ce0'
     }
     [pscustomobject]@{
         Address = '00811cf0'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00811cf0_00811cf0.cpp'
-        TestSource = '00/81/gapscan_sub00811cf0_00811cf0_test.cpp'
+        Module = 'NEntityEvents::CEventSoldItem'
+        Source = '00/81/NEntityEventsCEventSoldItem_GetType_00811cf0.cpp'
+        TestSource = '00/81/NEntityEventsCEventSoldItem_GetType_00811cf0_test.cpp'
         PassPattern = 'PASS_00811cf0'
     }
     [pscustomobject]@{
         Address = '00811d00'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00811d00_00811d00.cpp'
-        TestSource = '00/81/gapscan_sub00811d00_00811d00_test.cpp'
+        Module = 'NEntityEvents::CEventHitThing'
+        Source = '00/81/NEntityEventsCEventHitThing_GetType_00811d00.cpp'
+        TestSource = '00/81/NEntityEventsCEventHitThing_GetType_00811d00_test.cpp'
         PassPattern = 'PASS_00811d00'
     }
     [pscustomobject]@{
         Address = '00811eb0'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00811eb0_00811eb0.cpp'
-        TestSource = '00/81/gapscan_sub00811eb0_00811eb0_test.cpp'
+        Module = 'NEntityEvents::CEventKilledCreature'
+        Source = '00/81/NEntityEventsCEventKilledCreature_GetType_00811eb0.cpp'
+        TestSource = '00/81/NEntityEventsCEventKilledCreature_GetType_00811eb0_test.cpp'
         PassPattern = 'PASS_00811eb0'
     }
     [pscustomobject]@{
         Address = '00811ee0'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00811ee0_00811ee0.cpp'
-        TestSource = '00/81/gapscan_sub00811ee0_00811ee0_test.cpp'
+        Module = 'NEntityEvents::CEventPerformedSpecialAbility'
+        Source = '00/81/NEntityEventsCEventPerformedSpecialAbility_GetType_00811ee0.cpp'
+        TestSource = '00/81/NEntityEventsCEventPerformedSpecialAbility_GetType_00811ee0_test.cpp'
         PassPattern = 'PASS_00811ee0'
     }
     [pscustomobject]@{
         Address = '00812100'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00812100_00812100.cpp'
-        TestSource = '00/81/gapscan_sub00812100_00812100_test.cpp'
+        Module = 'NEntityEvents::CEventShownItem'
+        Source = '00/81/NEntityEventsCEventShownItem_GetType_00812100.cpp'
+        TestSource = '00/81/NEntityEventsCEventShownItem_GetType_00812100_test.cpp'
         PassPattern = 'PASS_00812100'
     }
     [pscustomobject]@{
         Address = '00812300'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00812300_00812300.cpp'
-        TestSource = '00/81/gapscan_sub00812300_00812300_test.cpp'
+        Module = 'NEntityEvents::CEventHitBySpecialAbility'
+        Source = '00/81/NEntityEventsCEventHitBySpecialAbility_GetType_00812300.cpp'
+        TestSource = '00/81/NEntityEventsCEventHitBySpecialAbility_GetType_00812300_test.cpp'
         PassPattern = 'PASS_00812300'
     }
     [pscustomobject]@{
         Address = '00812310'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00812310_00812310.cpp'
-        TestSource = '00/81/gapscan_sub00812310_00812310_test.cpp'
+        Module = 'NEntityEvents::CEventHitBySpecialAbility'
+        Source = '00/81/NEntityEventsCEventHitBySpecialAbility_IsFlourish_00812310.cpp'
+        TestSource = '00/81/NEntityEventsCEventHitBySpecialAbility_IsFlourish_00812310_test.cpp'
         PassPattern = 'PASS_00812310'
     }
     [pscustomobject]@{
         Address = '00814b80'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00814b80_00814b80.cpp'
-        TestSource = '00/81/gapscan_sub00814b80_00814b80_test.cpp'
+        Module = 'NHitLocations::CPhysicalPrimitiveMesh'
+        Source = '00/81/NHitLocationsCPhysicalPrimitiveMesh_Init_00814b80.cpp'
+        TestSource = '00/81/NHitLocationsCPhysicalPrimitiveMesh_Init_00814b80_test.cpp'
         PassPattern = 'PASS_00814b80'
     }
     [pscustomobject]@{
@@ -103925,30 +103925,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00814bb0'
-        Module = '_gapscan'
-        Source = '00/81/gapscan_sub00814bb0_00814bb0.cpp'
-        TestSource = '00/81/gapscan_sub00814bb0_00814bb0_test.cpp'
+        Module = 'NHitLocations::CPhysicalPrimitiveMesh'
+        Source = '00/81/NHitLocationsCPhysicalPrimitiveMesh_IsPosInside_00814bb0.cpp'
+        TestSource = '00/81/NHitLocationsCPhysicalPrimitiveMesh_IsPosInside_00814bb0_test.cpp'
         PassPattern = 'PASS_00814bb0'
     }
     [pscustomobject]@{
         Address = '0082d070'
-        Module = '_gapscan'
-        Source = '00/82/gapscan_sub0082d070_0082d070.cpp'
-        TestSource = '00/82/gapscan_sub0082d070_0082d070_test.cpp'
+        Module = 'CThingBuilding'
+        Source = '00/82/CThingBuilding_DrawIsDisplayingInformation_0082d070.cpp'
+        TestSource = '00/82/CThingBuilding_DrawIsDisplayingInformation_0082d070_test.cpp'
         PassPattern = 'PASS_0082d070'
     }
     [pscustomobject]@{
         Address = '0082d0b0'
-        Module = '_gapscan'
-        Source = '00/82/gapscan_sub0082d0b0_0082d0b0.cpp'
-        TestSource = '00/82/gapscan_sub0082d0b0_0082d0b0_test.cpp'
+        Module = 'CThingBuilding'
+        Source = '00/82/CThingBuilding_GetProperties_0082d0b0.cpp'
+        TestSource = '00/82/CThingBuilding_GetProperties_0082d0b0_test.cpp'
         PassPattern = 'PASS_0082d0b0'
     }
     [pscustomobject]@{
         Address = '0082fe90'
-        Module = '_gapscan'
-        Source = '00/82/gapscan_sub0082fe90_0082fe90.cpp'
-        TestSource = '00/82/gapscan_sub0082fe90_0082fe90_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/82/CThingAICreature_DrawIsDisplayingInformation_0082fe90.cpp'
+        TestSource = '00/82/CThingAICreature_DrawIsDisplayingInformation_0082fe90_test.cpp'
         PassPattern = 'PASS_0082fe90'
     }
     [pscustomobject]@{
@@ -103960,9 +103960,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00830110'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00830110_00830110.cpp'
-        TestSource = '00/83/gapscan_sub00830110_00830110_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsNewAttackerGreaterThreat_00830110.cpp'
+        TestSource = '00/83/CThingAICreature_IsNewAttackerGreaterThreat_00830110_test.cpp'
         PassPattern = 'PASS_00830110'
     }
     [pscustomobject]@{
@@ -103988,51 +103988,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00835900'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00835900_00835900.cpp'
-        TestSource = '00/83/gapscan_sub00835900_00835900_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsEntitySerialisable_00835900.cpp'
+        TestSource = '00/83/CThingAICreature_IsEntitySerialisable_00835900_test.cpp'
         PassPattern = 'PASS_00835900'
     }
     [pscustomobject]@{
         Address = '00835910'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00835910_00835910.cpp'
-        TestSource = '00/83/gapscan_sub00835910_00835910_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsAffectedByDamage_00835910.cpp'
+        TestSource = '00/83/CThingAICreature_IsAffectedByDamage_00835910_test.cpp'
         PassPattern = 'PASS_00835910'
     }
     [pscustomobject]@{
         Address = '00835920'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00835920_00835920.cpp'
-        TestSource = '00/83/gapscan_sub00835920_00835920_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_FeelsGravity_00835920.cpp'
+        TestSource = '00/83/CThingAICreature_FeelsGravity_00835920_test.cpp'
         PassPattern = 'PASS_00835920'
     }
     [pscustomobject]@{
         Address = '00835930'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00835930_00835930.cpp'
-        TestSource = '00/83/gapscan_sub00835930_00835930_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsToUnsheatheItemsAfterCutscenes_00835930.cpp'
+        TestSource = '00/83/CThingAICreature_IsToUnsheatheItemsAfterCutscenes_00835930_test.cpp'
         PassPattern = 'PASS_00835930'
     }
     [pscustomobject]@{
         Address = '00835940'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00835940_00835940.cpp'
-        TestSource = '00/83/gapscan_sub00835940_00835940_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsPlayerCharacter_00835940.cpp'
+        TestSource = '00/83/CThingAICreature_IsPlayerCharacter_00835940_test.cpp'
         PassPattern = 'PASS_00835940'
     }
     [pscustomobject]@{
         Address = '00835950'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00835950_00835950.cpp'
-        TestSource = '00/83/gapscan_sub00835950_00835950_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsControlled_00835950.cpp'
+        TestSource = '00/83/CThingAICreature_IsControlled_00835950_test.cpp'
         PassPattern = 'PASS_00835950'
     }
     [pscustomobject]@{
         Address = '00836670'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00836670_00836670.cpp'
-        TestSource = '00/83/gapscan_sub00836670_00836670_test.cpp'
+        Module = 'CThingDeadCreature'
+        Source = '00/83/CThingDeadCreature_IsEntitySerialisable_00836670.cpp'
+        TestSource = '00/83/CThingDeadCreature_IsEntitySerialisable_00836670_test.cpp'
         PassPattern = 'PASS_00836670'
     }
     [pscustomobject]@{
@@ -104044,9 +104044,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008384e0'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub008384e0_008384e0.cpp'
-        TestSource = '00/83/gapscan_sub008384e0_008384e0_test.cpp'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_IsEntitySerialisable_008384e0.cpp'
+        TestSource = '00/83/CThingTrackNode_IsEntitySerialisable_008384e0_test.cpp'
         PassPattern = 'PASS_008384e0'
     }
     [pscustomobject]@{
@@ -104065,23 +104065,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00838990'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00838990_00838990.cpp'
-        TestSource = '00/83/gapscan_sub00838990_00838990_test.cpp'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_DrawIsTargeted_00838990.cpp'
+        TestSource = '00/83/CThingGameObject_DrawIsTargeted_00838990_test.cpp'
         PassPattern = 'PASS_00838990'
     }
     [pscustomobject]@{
         Address = '0083af50'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub0083af50_0083af50.cpp'
-        TestSource = '00/83/gapscan_sub0083af50_0083af50_test.cpp'
+        Module = 'NEntityEvents::CEventHitBy'
+        Source = '00/83/NEntityEventsCEventHitBy_GetType_0083af50.cpp'
+        TestSource = '00/83/NEntityEventsCEventHitBy_GetType_0083af50_test.cpp'
         PassPattern = 'PASS_0083af50'
     }
     [pscustomobject]@{
         Address = '0083b3a0'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub0083b3a0_0083b3a0.cpp'
-        TestSource = '00/83/gapscan_sub0083b3a0_0083b3a0_test.cpp'
+        Module = 'CThingVillage'
+        Source = '00/83/CThingVillage_GetProperties_0083b3a0.cpp'
+        TestSource = '00/83/CThingVillage_GetProperties_0083b3a0_test.cpp'
         PassPattern = 'PASS_0083b3a0'
     }
     [pscustomobject]@{
@@ -104107,51 +104107,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0084ae40'
-        Module = '_gapscan'
-        Source = '00/84/gapscan_sub0084ae40_0084ae40.cpp'
-        TestSource = '00/84/gapscan_sub0084ae40_0084ae40_test.cpp'
+        Module = 'NEntityEvents::CEventReceivedMoney'
+        Source = '00/84/NEntityEventsCEventReceivedMoney_GetType_0084ae40.cpp'
+        TestSource = '00/84/NEntityEventsCEventReceivedMoney_GetType_0084ae40_test.cpp'
         PassPattern = 'PASS_0084ae40'
     }
     [pscustomobject]@{
         Address = '0084afd0'
-        Module = '_gapscan'
-        Source = '00/84/gapscan_sub0084afd0_0084afd0.cpp'
-        TestSource = '00/84/gapscan_sub0084afd0_0084afd0_test.cpp'
+        Module = 'NEntityEvents::CEventTalkedTo'
+        Source = '00/84/NEntityEventsCEventTalkedTo_GetType_0084afd0.cpp'
+        TestSource = '00/84/NEntityEventsCEventTalkedTo_GetType_0084afd0_test.cpp'
         PassPattern = 'PASS_0084afd0'
     }
     [pscustomobject]@{
         Address = '0084b070'
-        Module = '_gapscan'
-        Source = '00/84/gapscan_sub0084b070_0084b070.cpp'
-        TestSource = '00/84/gapscan_sub0084b070_0084b070_test.cpp'
+        Module = 'NEntityEvents::CEventExpressionPerformedTo'
+        Source = '00/84/NEntityEventsCEventExpressionPerformedTo_GetType_0084b070.cpp'
+        TestSource = '00/84/NEntityEventsCEventExpressionPerformedTo_GetType_0084b070_test.cpp'
         PassPattern = 'PASS_0084b070'
     }
     [pscustomobject]@{
         Address = '0084b0c0'
-        Module = '_gapscan'
-        Source = '00/84/gapscan_sub0084b0c0_0084b0c0.cpp'
-        TestSource = '00/84/gapscan_sub0084b0c0_0084b0c0_test.cpp'
+        Module = 'NEntityEvents::CEventOpenedChest'
+        Source = '00/84/NEntityEventsCEventOpenedChest_GetType_0084b0c0.cpp'
+        TestSource = '00/84/NEntityEventsCEventOpenedChest_GetType_0084b0c0_test.cpp'
         PassPattern = 'PASS_0084b0c0'
     }
     [pscustomobject]@{
         Address = '0084b140'
-        Module = '_gapscan'
-        Source = '00/84/gapscan_sub0084b140_0084b140.cpp'
-        TestSource = '00/84/gapscan_sub0084b140_0084b140_test.cpp'
+        Module = 'NEntityEvents::CEventTalkedToAnyone'
+        Source = '00/84/NEntityEventsCEventTalkedToAnyone_GetType_0084b140.cpp'
+        TestSource = '00/84/NEntityEventsCEventTalkedToAnyone_GetType_0084b140_test.cpp'
         PassPattern = 'PASS_0084b140'
     }
     [pscustomobject]@{
         Address = '0084b800'
-        Module = '_gapscan'
-        Source = '00/84/gapscan_sub0084b800_0084b800.cpp'
-        TestSource = '00/84/gapscan_sub0084b800_0084b800_test.cpp'
+        Module = 'NCreatureMode::CModeSleepBed'
+        Source = '00/84/NCreatureModeCModeSleepBed_GetType_0084b800.cpp'
+        TestSource = '00/84/NCreatureModeCModeSleepBed_GetType_0084b800_test.cpp'
         PassPattern = 'PASS_0084b800'
     }
     [pscustomobject]@{
         Address = '0084b810'
-        Module = '_gapscan'
-        Source = '00/84/gapscan_sub0084b810_0084b810.cpp'
-        TestSource = '00/84/gapscan_sub0084b810_0084b810_test.cpp'
+        Module = 'NCreatureMode::CModeSleepBed'
+        Source = '00/84/NCreatureModeCModeSleepBed_GetAnimFilter_0084b810.cpp'
+        TestSource = '00/84/NCreatureModeCModeSleepBed_GetAnimFilter_0084b810_test.cpp'
         PassPattern = 'PASS_0084b810'
     }
     [pscustomobject]@{
@@ -104177,51 +104177,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00854360'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub00854360_00854360.cpp'
-        TestSource = '00/85/gapscan_sub00854360_00854360_test.cpp'
+        Module = 'NCameraModes::CScriptModuleFOVZoom'
+        Source = '00/85/NCameraModesCScriptModuleFOVZoom_IsShortenOnOcclusion_00854360.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleFOVZoom_IsShortenOnOcclusion_00854360_test.cpp'
         PassPattern = 'PASS_00854360'
     }
     [pscustomobject]@{
         Address = '00854370'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub00854370_00854370.cpp'
-        TestSource = '00/85/gapscan_sub00854370_00854370_test.cpp'
+        Module = 'NCameraModes::CScriptModuleFOVZoom'
+        Source = '00/85/NCameraModesCScriptModuleFOVZoom_ResetCameraOnEnd_00854370.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleFOVZoom_ResetCameraOnEnd_00854370_test.cpp'
         PassPattern = 'PASS_00854370'
     }
     [pscustomobject]@{
         Address = '008544f0'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub008544f0_008544f0.cpp'
-        TestSource = '00/85/gapscan_sub008544f0_008544f0_test.cpp'
+        Module = 'NCameraModes::CScriptModuleOpenChest'
+        Source = '00/85/NCameraModesCScriptModuleOpenChest_IsShortenOnOcclusion_008544f0.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleOpenChest_IsShortenOnOcclusion_008544f0_test.cpp'
         PassPattern = 'PASS_008544f0'
     }
     [pscustomobject]@{
         Address = '00854530'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub00854530_00854530.cpp'
-        TestSource = '00/85/gapscan_sub00854530_00854530_test.cpp'
+        Module = 'NCameraModes::CScriptModuleUseLamp'
+        Source = '00/85/NCameraModesCScriptModuleUseLamp_IsShortenOnOcclusion_00854530.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleUseLamp_IsShortenOnOcclusion_00854530_test.cpp'
         PassPattern = 'PASS_00854530'
     }
     [pscustomobject]@{
         Address = '00854570'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub00854570_00854570.cpp'
-        TestSource = '00/85/gapscan_sub00854570_00854570_test.cpp'
+        Module = 'NCameraModes::CScriptModuleOpenGate'
+        Source = '00/85/NCameraModesCScriptModuleOpenGate_IsShortenOnOcclusion_00854570.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleOpenGate_IsShortenOnOcclusion_00854570_test.cpp'
         PassPattern = 'PASS_00854570'
     }
     [pscustomobject]@{
         Address = '0085a430'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub0085a430_0085a430.cpp'
-        TestSource = '00/85/gapscan_sub0085a430_0085a430_test.cpp'
+        Module = 'NEntityEvents::CEventAttackedWithMeleeWeaponWithoutHittingAnything'
+        Source = '00/85/NEntityEventsCEventAttackedWithMeleeWeaponWithoutHittingAnything_GetType_0085a430.cpp'
+        TestSource = '00/85/NEntityEventsCEventAttackedWithMeleeWeaponWithoutHittingAnything_GetType_0085a430_test.cpp'
         PassPattern = 'PASS_0085a430'
     }
     [pscustomobject]@{
         Address = '0085a450'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub0085a450_0085a450.cpp'
-        TestSource = '00/85/gapscan_sub0085a450_0085a450_test.cpp'
+        Module = 'NEntityEvents::CEventAttackedWithBareHandsWithoutHittingAnything'
+        Source = '00/85/NEntityEventsCEventAttackedWithBareHandsWithoutHittingAnything_GetType_0085a450.cpp'
+        TestSource = '00/85/NEntityEventsCEventAttackedWithBareHandsWithoutHittingAnything_GetType_0085a450_test.cpp'
         PassPattern = 'PASS_0085a450'
     }
     [pscustomobject]@{
@@ -104233,23 +104233,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00864160'
-        Module = '_gapscan'
-        Source = '00/86/gapscan_sub00864160_00864160.cpp'
-        TestSource = '00/86/gapscan_sub00864160_00864160_test.cpp'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpokenToByVillagers'
+        Source = '00/86/NEntityEventsCEventHeroHasBeenSpokenToByVillagers_GetType_00864160.cpp'
+        TestSource = '00/86/NEntityEventsCEventHeroHasBeenSpokenToByVillagers_GetType_00864160_test.cpp'
         PassPattern = 'PASS_00864160'
     }
     [pscustomobject]@{
         Address = '008680e0'
-        Module = '_gapscan'
-        Source = '00/86/gapscan_sub008680e0_008680e0.cpp'
-        TestSource = '00/86/gapscan_sub008680e0_008680e0_test.cpp'
+        Module = 'NCreatureMode::CModeExplosiveForcePushed'
+        Source = '00/86/NCreatureModeCModeExplosiveForcePushed_GetType_008680e0.cpp'
+        TestSource = '00/86/NCreatureModeCModeExplosiveForcePushed_GetType_008680e0_test.cpp'
         PassPattern = 'PASS_008680e0'
     }
     [pscustomobject]@{
         Address = '008680f0'
-        Module = '_gapscan'
-        Source = '00/86/gapscan_sub008680f0_008680f0.cpp'
-        TestSource = '00/86/gapscan_sub008680f0_008680f0_test.cpp'
+        Module = 'NCreatureMode::CModeExplosiveForcePushed'
+        Source = '00/86/NCreatureModeCModeExplosiveForcePushed_GetAnimFilter_008680f0.cpp'
+        TestSource = '00/86/NCreatureModeCModeExplosiveForcePushed_GetAnimFilter_008680f0_test.cpp'
         PassPattern = 'PASS_008680f0'
     }
     [pscustomobject]@{
@@ -104282,51 +104282,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00871ea0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00871ea0_00871ea0.cpp'
-        TestSource = '00/87/gapscan_sub00871ea0_00871ea0_test.cpp'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_IsUseRightStickLookAround_00871ea0.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_IsUseRightStickLookAround_00871ea0_test.cpp'
         PassPattern = 'PASS_00871ea0'
     }
     [pscustomobject]@{
         Address = '00871eb0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00871eb0_00871eb0.cpp'
-        TestSource = '00/87/gapscan_sub00871eb0_00871eb0_test.cpp'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_IsFinished_00871eb0.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_IsFinished_00871eb0_test.cpp'
         PassPattern = 'PASS_00871eb0'
     }
     [pscustomobject]@{
         Address = '00873390'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00873390_00873390.cpp'
-        TestSource = '00/87/gapscan_sub00873390_00873390_test.cpp'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_GetModeType_00873390.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_GetModeType_00873390_test.cpp'
         PassPattern = 'PASS_00873390'
     }
     [pscustomobject]@{
         Address = '008733a0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub008733a0_008733a0.cpp'
-        TestSource = '00/87/gapscan_sub008733a0_008733a0_test.cpp'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_OnDie_008733a0.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_OnDie_008733a0_test.cpp'
         PassPattern = 'PASS_008733a0'
     }
     [pscustomobject]@{
         Address = '008733b0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub008733b0_008733b0.cpp'
-        TestSource = '00/87/gapscan_sub008733b0_008733b0_test.cpp'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_IsShortenOnOcclusion_008733b0.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_IsShortenOnOcclusion_008733b0_test.cpp'
         PassPattern = 'PASS_008733b0'
     }
     [pscustomobject]@{
         Address = '008733c0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub008733c0_008733c0.cpp'
-        TestSource = '00/87/gapscan_sub008733c0_008733c0_test.cpp'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_IsAvoidLandscape_008733c0.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_IsAvoidLandscape_008733c0_test.cpp'
         PassPattern = 'PASS_008733c0'
     }
     [pscustomobject]@{
         Address = '00873440'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00873440_00873440.cpp'
-        TestSource = '00/87/gapscan_sub00873440_00873440_test.cpp'
+        Module = 'NCameraModes::CSACCombat'
+        Source = '00/87/NCameraModesCSACCombat_GetModeType_00873440.cpp'
+        TestSource = '00/87/NCameraModesCSACCombat_GetModeType_00873440_test.cpp'
         PassPattern = 'PASS_00873440'
     }
     [pscustomobject]@{
@@ -104352,9 +104352,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00873480'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00873480_00873480.cpp'
-        TestSource = '00/87/gapscan_sub00873480_00873480_test.cpp'
+        Module = 'NCameraModes::CSACCombat'
+        Source = '00/87/NCameraModesCSACCombat_IsDriftToMaxStringLength_00873480.cpp'
+        TestSource = '00/87/NCameraModesCSACCombat_IsDriftToMaxStringLength_00873480_test.cpp'
         PassPattern = 'PASS_00873480'
     }
     [pscustomobject]@{
@@ -104366,51 +104366,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00873ac0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00873ac0_00873ac0.cpp'
-        TestSource = '00/87/gapscan_sub00873ac0_00873ac0_test.cpp'
+        Module = 'NCameraModes::CFirstPerson'
+        Source = '00/87/NCameraModesCFirstPerson_GetModeType_00873ac0.cpp'
+        TestSource = '00/87/NCameraModesCFirstPerson_GetModeType_00873ac0_test.cpp'
         PassPattern = 'PASS_00873ac0'
     }
     [pscustomobject]@{
         Address = '00873ad0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00873ad0_00873ad0.cpp'
-        TestSource = '00/87/gapscan_sub00873ad0_00873ad0_test.cpp'
+        Module = 'NCameraModes::CFirstPerson'
+        Source = '00/87/NCameraModesCFirstPerson_IsRaiseUpOnHeroNearby_00873ad0.cpp'
+        TestSource = '00/87/NCameraModesCFirstPerson_IsRaiseUpOnHeroNearby_00873ad0_test.cpp'
         PassPattern = 'PASS_00873ad0'
     }
     [pscustomobject]@{
         Address = '00873b10'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00873b10_00873b10.cpp'
-        TestSource = '00/87/gapscan_sub00873b10_00873b10_test.cpp'
+        Module = 'NCameraModes::CLookAtFront'
+        Source = '00/87/NCameraModesCLookAtFront_GetModeType_00873b10.cpp'
+        TestSource = '00/87/NCameraModesCLookAtFront_GetModeType_00873b10_test.cpp'
         PassPattern = 'PASS_00873b10'
     }
     [pscustomobject]@{
         Address = '00873bb0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00873bb0_00873bb0.cpp'
-        TestSource = '00/87/gapscan_sub00873bb0_00873bb0_test.cpp'
+        Module = 'NCameraModes::CPCMouseLook'
+        Source = '00/87/NCameraModesCPCMouseLook_OnDie_00873bb0.cpp'
+        TestSource = '00/87/NCameraModesCPCMouseLook_OnDie_00873bb0_test.cpp'
         PassPattern = 'PASS_00873bb0'
     }
     [pscustomobject]@{
         Address = '00874e50'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00874e50_00874e50.cpp'
-        TestSource = '00/87/gapscan_sub00874e50_00874e50_test.cpp'
+        Module = 'NCameraModes::CPCMouseLook'
+        Source = '00/87/NCameraModesCPCMouseLook_GetModeType_00874e50.cpp'
+        TestSource = '00/87/NCameraModesCPCMouseLook_GetModeType_00874e50_test.cpp'
         PassPattern = 'PASS_00874e50'
     }
     [pscustomobject]@{
         Address = '00874e60'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub00874e60_00874e60.cpp'
-        TestSource = '00/87/gapscan_sub00874e60_00874e60_test.cpp'
+        Module = 'NCameraModes::CPCMouseLook'
+        Source = '00/87/NCameraModesCPCMouseLook_IsShortenOnOcclusion_00874e60.cpp'
+        TestSource = '00/87/NCameraModesCPCMouseLook_IsShortenOnOcclusion_00874e60_test.cpp'
         PassPattern = 'PASS_00874e60'
     }
     [pscustomobject]@{
         Address = '0087b5f0'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087b5f0_0087b5f0.cpp'
-        TestSource = '00/87/gapscan_sub0087b5f0_0087b5f0_test.cpp'
+        Module = 'NCameraModes::CProjectileWeapon'
+        Source = '00/87/NCameraModesCProjectileWeapon_GetModeType_0087b5f0.cpp'
+        TestSource = '00/87/NCameraModesCProjectileWeapon_GetModeType_0087b5f0_test.cpp'
         PassPattern = 'PASS_0087b5f0'
     }
     [pscustomobject]@{
@@ -104422,30 +104422,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0087b610'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087b610_0087b610.cpp'
-        TestSource = '00/87/gapscan_sub0087b610_0087b610_test.cpp'
+        Module = 'NCameraModes::CProjectileWeapon'
+        Source = '00/87/NCameraModesCProjectileWeapon_IsRaiseUpOnHeroNearby_0087b610.cpp'
+        TestSource = '00/87/NCameraModesCProjectileWeapon_IsRaiseUpOnHeroNearby_0087b610_test.cpp'
         PassPattern = 'PASS_0087b610'
     }
     [pscustomobject]@{
         Address = '0087b620'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087b620_0087b620.cpp'
-        TestSource = '00/87/gapscan_sub0087b620_0087b620_test.cpp'
+        Module = 'NCameraModes::CProjectileWeapon'
+        Source = '00/87/NCameraModesCProjectileWeapon_IsShortenOnOcclusion_0087b620.cpp'
+        TestSource = '00/87/NCameraModesCProjectileWeapon_IsShortenOnOcclusion_0087b620_test.cpp'
         PassPattern = 'PASS_0087b620'
     }
     [pscustomobject]@{
         Address = '0087b630'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087b630_0087b630.cpp'
-        TestSource = '00/87/gapscan_sub0087b630_0087b630_test.cpp'
+        Module = 'NCameraModes::CProjectileWeapon'
+        Source = '00/87/NCameraModesCProjectileWeapon_GetDefaultFOV_0087b630.cpp'
+        TestSource = '00/87/NCameraModesCProjectileWeapon_GetDefaultFOV_0087b630_test.cpp'
         PassPattern = 'PASS_0087b630'
     }
     [pscustomobject]@{
         Address = '0087b830'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087b830_0087b830.cpp'
-        TestSource = '00/87/gapscan_sub0087b830_0087b830_test.cpp'
+        Module = 'NCameraModes::CTrack'
+        Source = '00/87/NCameraModesCTrack_OnDieLeaf_0087b830.cpp'
+        TestSource = '00/87/NCameraModesCTrack_OnDieLeaf_0087b830_test.cpp'
         PassPattern = 'PASS_0087b830'
     }
     [pscustomobject]@{
@@ -104478,30 +104478,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0087c760'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087c760_0087c760.cpp'
-        TestSource = '00/87/gapscan_sub0087c760_0087c760_test.cpp'
+        Module = 'NEntityEvents::CEventAttackedWithFlourishWithoutHittingAnything'
+        Source = '00/87/NEntityEventsCEventAttackedWithFlourishWithoutHittingAnything_GetType_0087c760.cpp'
+        TestSource = '00/87/NEntityEventsCEventAttackedWithFlourishWithoutHittingAnything_GetType_0087c760_test.cpp'
         PassPattern = 'PASS_0087c760'
     }
     [pscustomobject]@{
         Address = '0087e760'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087e760_0087e760.cpp'
-        TestSource = '00/87/gapscan_sub0087e760_0087e760_test.cpp'
+        Module = 'NEntityEvents::CEventKicked'
+        Source = '00/87/NEntityEventsCEventKicked_GetType_0087e760.cpp'
+        TestSource = '00/87/NEntityEventsCEventKicked_GetType_0087e760_test.cpp'
         PassPattern = 'PASS_0087e760'
     }
     [pscustomobject]@{
         Address = '0087ff10'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087ff10_0087ff10.cpp'
-        TestSource = '00/87/gapscan_sub0087ff10_0087ff10_test.cpp'
+        Module = 'NEntityEvents::CEventKillLocked'
+        Source = '00/87/NEntityEventsCEventKillLocked_GetType_0087ff10.cpp'
+        TestSource = '00/87/NEntityEventsCEventKillLocked_GetType_0087ff10_test.cpp'
         PassPattern = 'PASS_0087ff10'
     }
     [pscustomobject]@{
         Address = '0087ff20'
-        Module = '_gapscan'
-        Source = '00/87/gapscan_sub0087ff20_0087ff20.cpp'
-        TestSource = '00/87/gapscan_sub0087ff20_0087ff20_test.cpp'
+        Module = 'NEntityEvents::CEventKillLocked'
+        Source = '00/87/NEntityEventsCEventKillLocked_GetLifeTime_0087ff20.cpp'
+        TestSource = '00/87/NEntityEventsCEventKillLocked_GetLifeTime_0087ff20_test.cpp'
         PassPattern = 'PASS_0087ff20'
     }
     [pscustomobject]@{
@@ -104534,37 +104534,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008ab800'
-        Module = '_gapscan'
-        Source = '00/8a/gapscan_sub008ab800_008ab800.cpp'
-        TestSource = '00/8a/gapscan_sub008ab800_008ab800_test.cpp'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpottedPickpocketing'
+        Source = '00/8a/NEntityEventsCEventHeroHasBeenSpottedPickpocketing_GetType_008ab800.cpp'
+        TestSource = '00/8a/NEntityEventsCEventHeroHasBeenSpottedPickpocketing_GetType_008ab800_test.cpp'
         PassPattern = 'PASS_008ab800'
     }
     [pscustomobject]@{
         Address = '008ab890'
-        Module = '_gapscan'
-        Source = '00/8a/gapscan_sub008ab890_008ab890.cpp'
-        TestSource = '00/8a/gapscan_sub008ab890_008ab890_test.cpp'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpottedPickingLock'
+        Source = '00/8a/NEntityEventsCEventHeroHasBeenSpottedPickingLock_GetType_008ab890.cpp'
+        TestSource = '00/8a/NEntityEventsCEventHeroHasBeenSpottedPickingLock_GetType_008ab890_test.cpp'
         PassPattern = 'PASS_008ab890'
     }
     [pscustomobject]@{
         Address = '008ab920'
-        Module = '_gapscan'
-        Source = '00/8a/gapscan_sub008ab920_008ab920.cpp'
-        TestSource = '00/8a/gapscan_sub008ab920_008ab920_test.cpp'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpottedStealing'
+        Source = '00/8a/NEntityEventsCEventHeroHasBeenSpottedStealing_GetType_008ab920.cpp'
+        TestSource = '00/8a/NEntityEventsCEventHeroHasBeenSpottedStealing_GetType_008ab920_test.cpp'
         PassPattern = 'PASS_008ab920'
     }
     [pscustomobject]@{
         Address = '008ac490'
-        Module = '_gapscan'
-        Source = '00/8a/gapscan_sub008ac490_008ac490.cpp'
-        TestSource = '00/8a/gapscan_sub008ac490_008ac490_test.cpp'
+        Module = 'NCreatureMode::CModeScreamerSuperAttack'
+        Source = '00/8a/NCreatureModeCModeScreamerSuperAttack_GetType_008ac490.cpp'
+        TestSource = '00/8a/NCreatureModeCModeScreamerSuperAttack_GetType_008ac490_test.cpp'
         PassPattern = 'PASS_008ac490'
     }
     [pscustomobject]@{
         Address = '008ac4a0'
-        Module = '_gapscan'
-        Source = '00/8a/gapscan_sub008ac4a0_008ac4a0.cpp'
-        TestSource = '00/8a/gapscan_sub008ac4a0_008ac4a0_test.cpp'
+        Module = 'NCreatureMode::CModeScreamerSuperAttack'
+        Source = '00/8a/NCreatureModeCModeScreamerSuperAttack_GetAnimFilter_008ac4a0.cpp'
+        TestSource = '00/8a/NCreatureModeCModeScreamerSuperAttack_GetAnimFilter_008ac4a0_test.cpp'
         PassPattern = 'PASS_008ac4a0'
     }
     [pscustomobject]@{
@@ -104576,30 +104576,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008bfe60'
-        Module = '_gapscan'
-        Source = '00/8b/gapscan_sub008bfe60_008bfe60.cpp'
-        TestSource = '00/8b/gapscan_sub008bfe60_008bfe60_test.cpp'
+        Module = 'NEntityEvents::CEventFiredShot'
+        Source = '00/8b/NEntityEventsCEventFiredShot_GetType_008bfe60.cpp'
+        TestSource = '00/8b/NEntityEventsCEventFiredShot_GetType_008bfe60_test.cpp'
         PassPattern = 'PASS_008bfe60'
     }
     [pscustomobject]@{
         Address = '008bfe70'
-        Module = '_gapscan'
-        Source = '00/8b/gapscan_sub008bfe70_008bfe70.cpp'
-        TestSource = '00/8b/gapscan_sub008bfe70_008bfe70_test.cpp'
+        Module = 'NEntityEvents::CEventFiredShot'
+        Source = '00/8b/NEntityEventsCEventFiredShot_GetLifeTime_008bfe70.cpp'
+        TestSource = '00/8b/NEntityEventsCEventFiredShot_GetLifeTime_008bfe70_test.cpp'
         PassPattern = 'PASS_008bfe70'
     }
     [pscustomobject]@{
         Address = '008c3680'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008c3680_008c3680.cpp'
-        TestSource = '00/8c/gapscan_sub008c3680_008c3680_test.cpp'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportInvulnerable'
+        Source = '00/8c/NCreatureModeCModeBriarRoseTeleportInvulnerable_GetType_008c3680.cpp'
+        TestSource = '00/8c/NCreatureModeCModeBriarRoseTeleportInvulnerable_GetType_008c3680_test.cpp'
         PassPattern = 'PASS_008c3680'
     }
     [pscustomobject]@{
         Address = '008c3690'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008c3690_008c3690.cpp'
-        TestSource = '00/8c/gapscan_sub008c3690_008c3690_test.cpp'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportInvulnerable'
+        Source = '00/8c/NCreatureModeCModeBriarRoseTeleportInvulnerable_GetAnimFilter_008c3690.cpp'
+        TestSource = '00/8c/NCreatureModeCModeBriarRoseTeleportInvulnerable_GetAnimFilter_008c3690_test.cpp'
         PassPattern = 'PASS_008c3690'
     }
     [pscustomobject]@{
@@ -104611,16 +104611,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008c3790'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008c3790_008c3790.cpp'
-        TestSource = '00/8c/gapscan_sub008c3790_008c3790_test.cpp'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportIntangible'
+        Source = '00/8c/NCreatureModeCModeBriarRoseTeleportIntangible_GetType_008c3790.cpp'
+        TestSource = '00/8c/NCreatureModeCModeBriarRoseTeleportIntangible_GetType_008c3790_test.cpp'
         PassPattern = 'PASS_008c3790'
     }
     [pscustomobject]@{
         Address = '008c37a0'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008c37a0_008c37a0.cpp'
-        TestSource = '00/8c/gapscan_sub008c37a0_008c37a0_test.cpp'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportIntangible'
+        Source = '00/8c/NCreatureModeCModeBriarRoseTeleportIntangible_GetAnimFilter_008c37a0.cpp'
+        TestSource = '00/8c/NCreatureModeCModeBriarRoseTeleportIntangible_GetAnimFilter_008c37a0_test.cpp'
         PassPattern = 'PASS_008c37a0'
     }
     [pscustomobject]@{
@@ -104632,30 +104632,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008cc160'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008cc160_008cc160.cpp'
-        TestSource = '00/8c/gapscan_sub008cc160_008cc160_test.cpp'
+        Module = 'NCreatureMode::CModeSummonerSummon'
+        Source = '00/8c/NCreatureModeCModeSummonerSummon_GetType_008cc160.cpp'
+        TestSource = '00/8c/NCreatureModeCModeSummonerSummon_GetType_008cc160_test.cpp'
         PassPattern = 'PASS_008cc160'
     }
     [pscustomobject]@{
         Address = '008cc170'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008cc170_008cc170.cpp'
-        TestSource = '00/8c/gapscan_sub008cc170_008cc170_test.cpp'
+        Module = 'NCreatureMode::CModeSummonerSummon'
+        Source = '00/8c/NCreatureModeCModeSummonerSummon_GetAnimFilter_008cc170.cpp'
+        TestSource = '00/8c/NCreatureModeCModeSummonerSummon_GetAnimFilter_008cc170_test.cpp'
         PassPattern = 'PASS_008cc170'
     }
     [pscustomobject]@{
         Address = '008cc240'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008cc240_008cc240.cpp'
-        TestSource = '00/8c/gapscan_sub008cc240_008cc240_test.cpp'
+        Module = 'NCreatureMode::CModeSummonerLightningOrb'
+        Source = '00/8c/NCreatureModeCModeSummonerLightningOrb_GetType_008cc240.cpp'
+        TestSource = '00/8c/NCreatureModeCModeSummonerLightningOrb_GetType_008cc240_test.cpp'
         PassPattern = 'PASS_008cc240'
     }
     [pscustomobject]@{
         Address = '008cc250'
-        Module = '_gapscan'
-        Source = '00/8c/gapscan_sub008cc250_008cc250.cpp'
-        TestSource = '00/8c/gapscan_sub008cc250_008cc250_test.cpp'
+        Module = 'NCreatureMode::CModeSummonerLightningOrb'
+        Source = '00/8c/NCreatureModeCModeSummonerLightningOrb_GetAnimFilter_008cc250.cpp'
+        TestSource = '00/8c/NCreatureModeCModeSummonerLightningOrb_GetAnimFilter_008cc250_test.cpp'
         PassPattern = 'PASS_008cc250'
     }
     [pscustomobject]@{
@@ -104709,16 +104709,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e35d0'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e35d0_008e35d0.cpp'
-        TestSource = '00/8e/gapscan_sub008e35d0_008e35d0_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingWeaponStand'
+        Source = '00/8e/NCreatureModeCModeCarryingWeaponStand_GetType_008e35d0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeCarryingWeaponStand_GetType_008e35d0_test.cpp'
         PassPattern = 'PASS_008e35d0'
     }
     [pscustomobject]@{
         Address = '008e35e0'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e35e0_008e35e0.cpp'
-        TestSource = '00/8e/gapscan_sub008e35e0_008e35e0_test.cpp'
+        Module = 'NCreatureMode::CModeCarryingWeaponStand'
+        Source = '00/8e/NCreatureModeCModeCarryingWeaponStand_GetAnimFilter_008e35e0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeCarryingWeaponStand_GetAnimFilter_008e35e0_test.cpp'
         PassPattern = 'PASS_008e35e0'
     }
     [pscustomobject]@{
@@ -104730,51 +104730,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e3640'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3640_008e3640.cpp'
-        TestSource = '00/8e/gapscan_sub008e3640_008e3640_test.cpp'
+        Module = 'NCreatureMode::CModeCreatureIsProjectile'
+        Source = '00/8e/NCreatureModeCModeCreatureIsProjectile_GetType_008e3640.cpp'
+        TestSource = '00/8e/NCreatureModeCModeCreatureIsProjectile_GetType_008e3640_test.cpp'
         PassPattern = 'PASS_008e3640'
     }
     [pscustomobject]@{
         Address = '008e3650'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3650_008e3650.cpp'
-        TestSource = '00/8e/gapscan_sub008e3650_008e3650_test.cpp'
+        Module = 'NCreatureMode::CModeCreatureIsProjectile'
+        Source = '00/8e/NCreatureModeCModeCreatureIsProjectile_GetAnimFilter_008e3650.cpp'
+        TestSource = '00/8e/NCreatureModeCModeCreatureIsProjectile_GetAnimFilter_008e3650_test.cpp'
         PassPattern = 'PASS_008e3650'
     }
     [pscustomobject]@{
         Address = '008e3690'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3690_008e3690.cpp'
-        TestSource = '00/8e/gapscan_sub008e3690_008e3690_test.cpp'
+        Module = 'NCreatureMode::CModeRockTrollVulnerable'
+        Source = '00/8e/NCreatureModeCModeRockTrollVulnerable_GetType_008e3690.cpp'
+        TestSource = '00/8e/NCreatureModeCModeRockTrollVulnerable_GetType_008e3690_test.cpp'
         PassPattern = 'PASS_008e3690'
     }
     [pscustomobject]@{
         Address = '008e36a0'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e36a0_008e36a0.cpp'
-        TestSource = '00/8e/gapscan_sub008e36a0_008e36a0_test.cpp'
+        Module = 'NCreatureMode::CModeRockTrollVulnerable'
+        Source = '00/8e/NCreatureModeCModeRockTrollVulnerable_GetAnimFilter_008e36a0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeRockTrollVulnerable_GetAnimFilter_008e36a0_test.cpp'
         PassPattern = 'PASS_008e36a0'
     }
     [pscustomobject]@{
         Address = '008e36e0'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e36e0_008e36e0.cpp'
-        TestSource = '00/8e/gapscan_sub008e36e0_008e36e0_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesFlash'
+        Source = '00/8e/NCreatureModeCModeJackOfBladesFlash_GetType_008e36e0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeJackOfBladesFlash_GetType_008e36e0_test.cpp'
         PassPattern = 'PASS_008e36e0'
     }
     [pscustomobject]@{
         Address = '008e36f0'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e36f0_008e36f0.cpp'
-        TestSource = '00/8e/gapscan_sub008e36f0_008e36f0_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesFlash'
+        Source = '00/8e/NCreatureModeCModeJackOfBladesFlash_GetAnimFilter_008e36f0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeJackOfBladesFlash_GetAnimFilter_008e36f0_test.cpp'
         PassPattern = 'PASS_008e36f0'
     }
     [pscustomobject]@{
         Address = '008e3760'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3760_008e3760.cpp'
-        TestSource = '00/8e/gapscan_sub008e3760_008e3760_test.cpp'
+        Module = 'NCreatureMode::CModeScorpionKingVulnerable'
+        Source = '00/8e/NCreatureModeCModeScorpionKingVulnerable_GetType_008e3760.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScorpionKingVulnerable_GetType_008e3760_test.cpp'
         PassPattern = 'PASS_008e3760'
     }
     [pscustomobject]@{
@@ -104786,51 +104786,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e3780'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3780_008e3780.cpp'
-        TestSource = '00/8e/gapscan_sub008e3780_008e3780_test.cpp'
+        Module = 'NCreatureMode::CModeScorpionKingTailPlunge'
+        Source = '00/8e/NCreatureModeCModeScorpionKingTailPlunge_GetType_008e3780.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScorpionKingTailPlunge_GetType_008e3780_test.cpp'
         PassPattern = 'PASS_008e3780'
     }
     [pscustomobject]@{
         Address = '008e3790'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3790_008e3790.cpp'
-        TestSource = '00/8e/gapscan_sub008e3790_008e3790_test.cpp'
+        Module = 'NCreatureMode::CModeScorpionKingTailPlunge'
+        Source = '00/8e/NCreatureModeCModeScorpionKingTailPlunge_GetAnimFilter_008e3790.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScorpionKingTailPlunge_GetAnimFilter_008e3790_test.cpp'
         PassPattern = 'PASS_008e3790'
     }
     [pscustomobject]@{
         Address = '008e3800'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3800_008e3800.cpp'
-        TestSource = '00/8e/gapscan_sub008e3800_008e3800_test.cpp'
+        Module = 'NCreatureMode::CModeScorpionKingExhausted'
+        Source = '00/8e/NCreatureModeCModeScorpionKingExhausted_GetType_008e3800.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScorpionKingExhausted_GetType_008e3800_test.cpp'
         PassPattern = 'PASS_008e3800'
     }
     [pscustomobject]@{
         Address = '008e3810'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3810_008e3810.cpp'
-        TestSource = '00/8e/gapscan_sub008e3810_008e3810_test.cpp'
+        Module = 'NCreatureMode::CModeScorpionKingExhausted'
+        Source = '00/8e/NCreatureModeCModeScorpionKingExhausted_GetAnimFilter_008e3810.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScorpionKingExhausted_GetAnimFilter_008e3810_test.cpp'
         PassPattern = 'PASS_008e3810'
     }
     [pscustomobject]@{
         Address = '008e3850'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e3850_008e3850.cpp'
-        TestSource = '00/8e/gapscan_sub008e3850_008e3850_test.cpp'
+        Module = 'NCreatureMode::CModeDragonFireBeam'
+        Source = '00/8e/NCreatureModeCModeDragonFireBeam_GetType_008e3850.cpp'
+        TestSource = '00/8e/NCreatureModeCModeDragonFireBeam_GetType_008e3850_test.cpp'
         PassPattern = 'PASS_008e3850'
     }
     [pscustomobject]@{
         Address = '008e39b0'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e39b0_008e39b0.cpp'
-        TestSource = '00/8e/gapscan_sub008e39b0_008e39b0_test.cpp'
+        Module = 'NCreatureMode::CModeConversation'
+        Source = '00/8e/NCreatureModeCModeConversation_GetType_008e39b0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeConversation_GetType_008e39b0_test.cpp'
         PassPattern = 'PASS_008e39b0'
     }
     [pscustomobject]@{
         Address = '008e39c0'
-        Module = '_gapscan'
-        Source = '00/8e/gapscan_sub008e39c0_008e39c0.cpp'
-        TestSource = '00/8e/gapscan_sub008e39c0_008e39c0_test.cpp'
+        Module = 'NCreatureMode::CModeConversation'
+        Source = '00/8e/NCreatureModeCModeConversation_GetAnimFilter_008e39c0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeConversation_GetAnimFilter_008e39c0_test.cpp'
         PassPattern = 'PASS_008e39c0'
     }
     [pscustomobject]@{
@@ -104842,30 +104842,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f09b0'
-        Module = '_gapscan'
-        Source = '00/8f/gapscan_sub008f09b0_008f09b0.cpp'
-        TestSource = '00/8f/gapscan_sub008f09b0_008f09b0_test.cpp'
+        Module = 'CTCTavernGameCardBase'
+        Source = '00/8f/CTCTavernGameCardBase_GetRandomCard_008f09b0.cpp'
+        TestSource = '00/8f/CTCTavernGameCardBase_GetRandomCard_008f09b0_test.cpp'
         PassPattern = 'PASS_008f09b0'
     }
     [pscustomobject]@{
         Address = '008f09d0'
-        Module = '_gapscan'
-        Source = '00/8f/gapscan_sub008f09d0_008f09d0.cpp'
-        TestSource = '00/8f/gapscan_sub008f09d0_008f09d0_test.cpp'
+        Module = 'CTCTavernGameCardBase'
+        Source = '00/8f/CTCTavernGameCardBase_ReactionAndPayout_008f09d0.cpp'
+        TestSource = '00/8f/CTCTavernGameCardBase_ReactionAndPayout_008f09d0_test.cpp'
         PassPattern = 'PASS_008f09d0'
     }
     [pscustomobject]@{
         Address = '008fa610'
-        Module = '_gapscan'
-        Source = '00/8f/gapscan_sub008fa610_008fa610.cpp'
-        TestSource = '00/8f/gapscan_sub008fa610_008fa610_test.cpp'
+        Module = 'NCameraModes::CPhysicsForceModelBase'
+        Source = '00/8f/NCameraModesCPhysicsForceModelBase_Reset_008fa610.cpp'
+        TestSource = '00/8f/NCameraModesCPhysicsForceModelBase_Reset_008fa610_test.cpp'
         PassPattern = 'PASS_008fa610'
     }
     [pscustomobject]@{
         Address = '009108c0'
-        Module = '_gapscan'
-        Source = '00/91/gapscan_sub009108c0_009108c0.cpp'
-        TestSource = '00/91/gapscan_sub009108c0_009108c0_test.cpp'
+        Module = 'NCreatureMode::CModeSitChairStudious'
+        Source = '00/91/NCreatureModeCModeSitChairStudious_GetType_009108c0.cpp'
+        TestSource = '00/91/NCreatureModeCModeSitChairStudious_GetType_009108c0_test.cpp'
         PassPattern = 'PASS_009108c0'
     }
     [pscustomobject]@{
@@ -104877,16 +104877,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00915700'
-        Module = '_gapscan'
-        Source = '00/91/gapscan_sub00915700_00915700.cpp'
-        TestSource = '00/91/gapscan_sub00915700_00915700_test.cpp'
+        Module = 'NEntityEvents::CEventChildHurtGoToMother'
+        Source = '00/91/NEntityEventsCEventChildHurtGoToMother_GetType_00915700.cpp'
+        TestSource = '00/91/NEntityEventsCEventChildHurtGoToMother_GetType_00915700_test.cpp'
         PassPattern = 'PASS_00915700'
     }
     [pscustomobject]@{
         Address = '00915710'
-        Module = '_gapscan'
-        Source = '00/91/gapscan_sub00915710_00915710.cpp'
-        TestSource = '00/91/gapscan_sub00915710_00915710_test.cpp'
+        Module = 'NEntityEvents::CEventChildHurtGoToMother'
+        Source = '00/91/NEntityEventsCEventChildHurtGoToMother_IsReadyToDie_00915710.cpp'
+        TestSource = '00/91/NEntityEventsCEventChildHurtGoToMother_IsReadyToDie_00915710_test.cpp'
         PassPattern = 'PASS_00915710'
     }
     [pscustomobject]@{
@@ -104898,9 +104898,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0091e920'
-        Module = '_gapscan'
-        Source = '00/91/gapscan_sub0091e920_0091e920.cpp'
-        TestSource = '00/91/gapscan_sub0091e920_0091e920_test.cpp'
+        Module = 'NCreatureAI::CIsRunnableModuleBase'
+        Source = '00/91/NCreatureAICIsRunnableModuleBase_SetAsRun_0091e920.cpp'
+        TestSource = '00/91/NCreatureAICIsRunnableModuleBase_SetAsRun_0091e920_test.cpp'
         PassPattern = 'PASS_0091e920'
     }
     [pscustomobject]@{
@@ -105010,9 +105010,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00938160'
-        Module = '_gapscan'
-        Source = '00/93/gapscan_sub00938160_00938160.cpp'
-        TestSource = '00/93/gapscan_sub00938160_00938160_test.cpp'
+        Module = 'NCreatureMode::CModeSitChairBored'
+        Source = '00/93/NCreatureModeCModeSitChairBored_GetType_00938160.cpp'
+        TestSource = '00/93/NCreatureModeCModeSitChairBored_GetType_00938160_test.cpp'
         PassPattern = 'PASS_00938160'
     }
     [pscustomobject]@{
@@ -105024,9 +105024,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00938230'
-        Module = '_gapscan'
-        Source = '00/93/gapscan_sub00938230_00938230.cpp'
-        TestSource = '00/93/gapscan_sub00938230_00938230_test.cpp'
+        Module = 'NCreatureMode::CModeSitChairSleeping'
+        Source = '00/93/NCreatureModeCModeSitChairSleeping_GetType_00938230.cpp'
+        TestSource = '00/93/NCreatureModeCModeSitChairSleeping_GetType_00938230_test.cpp'
         PassPattern = 'PASS_00938230'
     }
     [pscustomobject]@{
@@ -105038,16 +105038,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0094b5b0'
-        Module = '_gapscan'
-        Source = '00/94/gapscan_sub0094b5b0_0094b5b0.cpp'
-        TestSource = '00/94/gapscan_sub0094b5b0_0094b5b0_test.cpp'
+        Module = 'NCreatureMode::CModeSitTavernStool'
+        Source = '00/94/NCreatureModeCModeSitTavernStool_GetType_0094b5b0.cpp'
+        TestSource = '00/94/NCreatureModeCModeSitTavernStool_GetType_0094b5b0_test.cpp'
         PassPattern = 'PASS_0094b5b0'
     }
     [pscustomobject]@{
         Address = '0094b5c0'
-        Module = '_gapscan'
-        Source = '00/94/gapscan_sub0094b5c0_0094b5c0.cpp'
-        TestSource = '00/94/gapscan_sub0094b5c0_0094b5c0_test.cpp'
+        Module = 'NCreatureMode::CModeSitTavernStool'
+        Source = '00/94/NCreatureModeCModeSitTavernStool_GetAnimFilter_0094b5c0.cpp'
+        TestSource = '00/94/NCreatureModeCModeSitTavernStool_GetAnimFilter_0094b5c0_test.cpp'
         PassPattern = 'PASS_0094b5c0'
     }
     [pscustomobject]@{
@@ -105094,9 +105094,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00982380'
-        Module = '_gapscan'
-        Source = '00/98/gapscan_sub00982380_00982380.cpp'
-        TestSource = '00/98/gapscan_sub00982380_00982380_test.cpp'
+        Module = 'NEntityEvents::CEventVillagerInteraction'
+        Source = '00/98/NEntityEventsCEventVillagerInteraction_GetType_00982380.cpp'
+        TestSource = '00/98/NEntityEventsCEventVillagerInteraction_GetType_00982380_test.cpp'
         PassPattern = 'PASS_00982380'
     }
     [pscustomobject]@{
@@ -105528,9 +105528,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af29b0'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af29b0_00af29b0.cpp'
-        TestSource = '00/af/gapscan_sub00af29b0_00af29b0_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_OnCreate_00af29b0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_OnCreate_00af29b0_test.cpp'
         PassPattern = 'PASS_00af29b0'
     }
     [pscustomobject]@{
@@ -105556,9 +105556,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af29f0'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af29f0_00af29f0.cpp'
-        TestSource = '00/af/gapscan_sub00af29f0_00af29f0_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_TransferUpdateParametersToDialog_00af29f0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_TransferUpdateParametersToDialog_00af29f0_test.cpp'
         PassPattern = 'PASS_00af29f0'
     }
     [pscustomobject]@{
@@ -105577,9 +105577,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af2a20'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2a20_00af2a20.cpp'
-        TestSource = '00/af/gapscan_sub00af2a20_00af2a20_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_DatabaseSerialise_00af2a20.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_DatabaseSerialise_00af2a20_test.cpp'
         PassPattern = 'PASS_00af2a20'
     }
     [pscustomobject]@{
@@ -105591,51 +105591,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af2a40'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2a40_00af2a40.cpp'
-        TestSource = '00/af/gapscan_sub00af2a40_00af2a40_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetParticleLifeSecs_00af2a40.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetParticleLifeSecs_00af2a40_test.cpp'
         PassPattern = 'PASS_00af2a40'
     }
     [pscustomobject]@{
         Address = '00af2a50'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2a50_00af2a50.cpp'
-        TestSource = '00/af/gapscan_sub00af2a50_00af2a50_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetNumberOfParticles_00af2a50.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetNumberOfParticles_00af2a50_test.cpp'
         PassPattern = 'PASS_00af2a50'
     }
     [pscustomobject]@{
         Address = '00af2a60'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2a60_00af2a60.cpp'
-        TestSource = '00/af/gapscan_sub00af2a60_00af2a60_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetDecalLifeSecs_00af2a60.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetDecalLifeSecs_00af2a60_test.cpp'
         PassPattern = 'PASS_00af2a60'
     }
     [pscustomobject]@{
         Address = '00af2a70'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2a70_00af2a70.cpp'
-        TestSource = '00/af/gapscan_sub00af2a70_00af2a70_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetNumberOfDecals_00af2a70.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetNumberOfDecals_00af2a70_test.cpp'
         PassPattern = 'PASS_00af2a70'
     }
     [pscustomobject]@{
         Address = '00af2a80'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2a80_00af2a80.cpp'
-        TestSource = '00/af/gapscan_sub00af2a80_00af2a80_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_EnterTimelineEnd_00af2a80.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_EnterTimelineEnd_00af2a80_test.cpp'
         PassPattern = 'PASS_00af2a80'
     }
     [pscustomobject]@{
         Address = '00af2a90'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2a90_00af2a90.cpp'
-        TestSource = '00/af/gapscan_sub00af2a90_00af2a90_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetParticleCount_00af2a90.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetParticleCount_00af2a90_test.cpp'
         PassPattern = 'PASS_00af2a90'
     }
     [pscustomobject]@{
         Address = '00af2aa0'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2aa0_00af2aa0.cpp'
-        TestSource = '00/af/gapscan_sub00af2aa0_00af2aa0_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetDecalCount_00af2aa0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetDecalCount_00af2aa0_test.cpp'
         PassPattern = 'PASS_00af2aa0'
     }
     [pscustomobject]@{
@@ -105647,9 +105647,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af2ad0'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00af2ad0_00af2ad0.cpp'
-        TestSource = '00/af/gapscan_sub00af2ad0_00af2ad0_test.cpp'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetUserPoint_00af2ad0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetUserPoint_00af2ad0_test.cpp'
         PassPattern = 'PASS_00af2ad0'
     }
     [pscustomobject]@{
@@ -105668,16 +105668,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00afe460'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00afe460_00afe460.cpp'
-        TestSource = '00/af/gapscan_sub00afe460_00afe460_test.cpp'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_GetComponentType_00afe460.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_GetComponentType_00afe460_test.cpp'
         PassPattern = 'PASS_00afe460'
     }
     [pscustomobject]@{
         Address = '00afe470'
-        Module = '_gapscan'
-        Source = '00/af/gapscan_sub00afe470_00afe470.cpp'
-        TestSource = '00/af/gapscan_sub00afe470_00afe470_test.cpp'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_GetComponentSubType_00afe470.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_GetComponentSubType_00afe470_test.cpp'
         PassPattern = 'PASS_00afe470'
     }
     [pscustomobject]@{
@@ -105689,30 +105689,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b05a70'
-        Module = '_gapscan'
-        Source = '00/b0/gapscan_sub00b05a70_00b05a70.cpp'
-        TestSource = '00/b0/gapscan_sub00b05a70_00b05a70_test.cpp'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/b0/NParticleEngineCPSCRenderMesh_GetComponentType_00b05a70.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCRenderMesh_GetComponentType_00b05a70_test.cpp'
         PassPattern = 'PASS_00b05a70'
     }
     [pscustomobject]@{
         Address = '00b05a80'
-        Module = '_gapscan'
-        Source = '00/b0/gapscan_sub00b05a80_00b05a80.cpp'
-        TestSource = '00/b0/gapscan_sub00b05a80_00b05a80_test.cpp'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/b0/NParticleEngineCPSCRenderMesh_GetComponentSubType_00b05a80.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCRenderMesh_GetComponentSubType_00b05a80_test.cpp'
         PassPattern = 'PASS_00b05a80'
     }
     [pscustomobject]@{
         Address = '00b0a0f0'
-        Module = '_gapscan'
-        Source = '00/b0/gapscan_sub00b0a0f0_00b0a0f0.cpp'
-        TestSource = '00/b0/gapscan_sub00b0a0f0_00b0a0f0_test.cpp'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_GetComponentType_00b0a0f0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_GetComponentType_00b0a0f0_test.cpp'
         PassPattern = 'PASS_00b0a0f0'
     }
     [pscustomobject]@{
         Address = '00b0a100'
-        Module = '_gapscan'
-        Source = '00/b0/gapscan_sub00b0a100_00b0a100.cpp'
-        TestSource = '00/b0/gapscan_sub00b0a100_00b0a100_test.cpp'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_GetComponentSubType_00b0a100.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_GetComponentSubType_00b0a100_test.cpp'
         PassPattern = 'PASS_00b0a100'
     }
     [pscustomobject]@{
@@ -105724,16 +105724,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b0f8a0'
-        Module = '_gapscan'
-        Source = '00/b0/gapscan_sub00b0f8a0_00b0f8a0.cpp'
-        TestSource = '00/b0/gapscan_sub00b0f8a0_00b0f8a0_test.cpp'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_GetComponentType_00b0f8a0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_GetComponentType_00b0f8a0_test.cpp'
         PassPattern = 'PASS_00b0f8a0'
     }
     [pscustomobject]@{
         Address = '00b0f8b0'
-        Module = '_gapscan'
-        Source = '00/b0/gapscan_sub00b0f8b0_00b0f8b0.cpp'
-        TestSource = '00/b0/gapscan_sub00b0f8b0_00b0f8b0_test.cpp'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_GetComponentSubType_00b0f8b0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_GetComponentSubType_00b0f8b0_test.cpp'
         PassPattern = 'PASS_00b0f8b0'
     }
     [pscustomobject]@{
@@ -105745,16 +105745,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b15ab0'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b15ab0_00b15ab0.cpp'
-        TestSource = '00/b1/gapscan_sub00b15ab0_00b15ab0_test.cpp'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_GetComponentType_00b15ab0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_GetComponentType_00b15ab0_test.cpp'
         PassPattern = 'PASS_00b15ab0'
     }
     [pscustomobject]@{
         Address = '00b15ac0'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b15ac0_00b15ac0.cpp'
-        TestSource = '00/b1/gapscan_sub00b15ac0_00b15ac0_test.cpp'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_GetComponentSubType_00b15ac0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_GetComponentSubType_00b15ac0_test.cpp'
         PassPattern = 'PASS_00b15ac0'
     }
     [pscustomobject]@{
@@ -105766,16 +105766,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b178f0'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b178f0_00b178f0.cpp'
-        TestSource = '00/b1/gapscan_sub00b178f0_00b178f0_test.cpp'
+        Module = 'NParticleEngine::CPSCOrbit'
+        Source = '00/b1/NParticleEngineCPSCOrbit_GetComponentType_00b178f0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCOrbit_GetComponentType_00b178f0_test.cpp'
         PassPattern = 'PASS_00b178f0'
     }
     [pscustomobject]@{
         Address = '00b17900'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b17900_00b17900.cpp'
-        TestSource = '00/b1/gapscan_sub00b17900_00b17900_test.cpp'
+        Module = 'NParticleEngine::CPSCOrbit'
+        Source = '00/b1/NParticleEngineCPSCOrbit_GetComponentSubType_00b17900.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCOrbit_GetComponentSubType_00b17900_test.cpp'
         PassPattern = 'PASS_00b17900'
     }
     [pscustomobject]@{
@@ -105787,30 +105787,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b18700'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b18700_00b18700.cpp'
-        TestSource = '00/b1/gapscan_sub00b18700_00b18700_test.cpp'
+        Module = 'NParticleEngine::CPSCAttractor'
+        Source = '00/b1/NParticleEngineCPSCAttractor_GetComponentType_00b18700.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCAttractor_GetComponentType_00b18700_test.cpp'
         PassPattern = 'PASS_00b18700'
     }
     [pscustomobject]@{
         Address = '00b18710'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b18710_00b18710.cpp'
-        TestSource = '00/b1/gapscan_sub00b18710_00b18710_test.cpp'
+        Module = 'NParticleEngine::CPSCAttractor'
+        Source = '00/b1/NParticleEngineCPSCAttractor_GetComponentSubType_00b18710.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCAttractor_GetComponentSubType_00b18710_test.cpp'
         PassPattern = 'PASS_00b18710'
     }
     [pscustomobject]@{
         Address = '00b1ae20'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b1ae20_00b1ae20.cpp'
-        TestSource = '00/b1/gapscan_sub00b1ae20_00b1ae20_test.cpp'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_GetComponentType_00b1ae20.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_GetComponentType_00b1ae20_test.cpp'
         PassPattern = 'PASS_00b1ae20'
     }
     [pscustomobject]@{
         Address = '00b1ae30'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b1ae30_00b1ae30.cpp'
-        TestSource = '00/b1/gapscan_sub00b1ae30_00b1ae30_test.cpp'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_GetComponentSubType_00b1ae30.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_GetComponentSubType_00b1ae30_test.cpp'
         PassPattern = 'PASS_00b1ae30'
     }
     [pscustomobject]@{
@@ -105822,30 +105822,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b1b450'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b1b450_00b1b450.cpp'
-        TestSource = '00/b1/gapscan_sub00b1b450_00b1b450_test.cpp'
+        Module = 'NParticleEngine::CPSCSpline'
+        Source = '00/b1/NParticleEngineCPSCSpline_GetComponentType_00b1b450.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCSpline_GetComponentType_00b1b450_test.cpp'
         PassPattern = 'PASS_00b1b450'
     }
     [pscustomobject]@{
         Address = '00b1b460'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b1b460_00b1b460.cpp'
-        TestSource = '00/b1/gapscan_sub00b1b460_00b1b460_test.cpp'
+        Module = 'NParticleEngine::CPSCSpline'
+        Source = '00/b1/NParticleEngineCPSCSpline_GetComponentSubType_00b1b460.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCSpline_GetComponentSubType_00b1b460_test.cpp'
         PassPattern = 'PASS_00b1b460'
     }
     [pscustomobject]@{
         Address = '00b1ff30'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b1ff30_00b1ff30.cpp'
-        TestSource = '00/b1/gapscan_sub00b1ff30_00b1ff30_test.cpp'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_GetComponentType_00b1ff30.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_GetComponentType_00b1ff30_test.cpp'
         PassPattern = 'PASS_00b1ff30'
     }
     [pscustomobject]@{
         Address = '00b1ff40'
-        Module = '_gapscan'
-        Source = '00/b1/gapscan_sub00b1ff40_00b1ff40.cpp'
-        TestSource = '00/b1/gapscan_sub00b1ff40_00b1ff40_test.cpp'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_GetComponentSubType_00b1ff40.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_GetComponentSubType_00b1ff40_test.cpp'
         PassPattern = 'PASS_00b1ff40'
     }
     [pscustomobject]@{
@@ -106144,51 +106144,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bdf6e0'
-        Module = '_gapscan'
-        Source = '00/bd/gapscan_sub00bdf6e0_00bdf6e0.cpp'
-        TestSource = '00/bd/gapscan_sub00bdf6e0_00bdf6e0_test.cpp'
+        Module = 'CLocalDetailPrimitiveBase'
+        Source = '00/bd/CLocalDetailPrimitiveBase_NeedsRenderUpdate_00bdf6e0.cpp'
+        TestSource = '00/bd/CLocalDetailPrimitiveBase_NeedsRenderUpdate_00bdf6e0_test.cpp'
         PassPattern = 'PASS_00bdf6e0'
     }
     [pscustomobject]@{
         Address = '00bdf6f0'
-        Module = '_gapscan'
-        Source = '00/bd/gapscan_sub00bdf6f0_00bdf6f0.cpp'
-        TestSource = '00/bd/gapscan_sub00bdf6f0_00bdf6f0_test.cpp'
+        Module = 'CLocalDetailPrimitiveBase'
+        Source = '00/bd/CLocalDetailPrimitiveBase_OnPostRelocation_00bdf6f0.cpp'
+        TestSource = '00/bd/CLocalDetailPrimitiveBase_OnPostRelocation_00bdf6f0_test.cpp'
         PassPattern = 'PASS_00bdf6f0'
     }
     [pscustomobject]@{
         Address = '00bdf700'
-        Module = '_gapscan'
-        Source = '00/bd/gapscan_sub00bdf700_00bdf700.cpp'
-        TestSource = '00/bd/gapscan_sub00bdf700_00bdf700_test.cpp'
+        Module = 'CLocalDetailPrimitiveBase'
+        Source = '00/bd/CLocalDetailPrimitiveBase_RelocateData_00bdf700.cpp'
+        TestSource = '00/bd/CLocalDetailPrimitiveBase_RelocateData_00bdf700_test.cpp'
         PassPattern = 'PASS_00bdf700'
     }
     [pscustomobject]@{
         Address = '00bdfba0'
-        Module = '_gapscan'
-        Source = '00/bd/gapscan_sub00bdfba0_00bdfba0.cpp'
-        TestSource = '00/bd/gapscan_sub00bdfba0_00bdfba0_test.cpp'
+        Module = 'CLocalDetailPrimitiveMesh'
+        Source = '00/bd/CLocalDetailPrimitiveMesh_GetType_00bdfba0.cpp'
+        TestSource = '00/bd/CLocalDetailPrimitiveMesh_GetType_00bdfba0_test.cpp'
         PassPattern = 'PASS_00bdfba0'
     }
     [pscustomobject]@{
         Address = '00bfbb90'
-        Module = '_gapscan'
-        Source = '00/bf/gapscan_sub00bfbb90_00bfbb90.cpp'
-        TestSource = '00/bf/gapscan_sub00bfbb90_00bfbb90_test.cpp'
+        Module = 'CLocalDetailPrimitiveRepeatedMesh'
+        Source = '00/bf/CLocalDetailPrimitiveRepeatedMesh_GetType_00bfbb90.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveRepeatedMesh_GetType_00bfbb90_test.cpp'
         PassPattern = 'PASS_00bfbb90'
     }
     [pscustomobject]@{
         Address = '00bfbba0'
-        Module = '_gapscan'
-        Source = '00/bf/gapscan_sub00bfbba0_00bfbba0.cpp'
-        TestSource = '00/bf/gapscan_sub00bfbba0_00bfbba0_test.cpp'
+        Module = 'CLocalDetailPrimitiveMeshZSpriteBatch'
+        Source = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_NeedsRenderUpdate_00bfbba0.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_NeedsRenderUpdate_00bfbba0_test.cpp'
         PassPattern = 'PASS_00bfbba0'
     }
     [pscustomobject]@{
         Address = '00bfbbb0'
-        Module = '_gapscan'
-        Source = '00/bf/gapscan_sub00bfbbb0_00bfbbb0.cpp'
-        TestSource = '00/bf/gapscan_sub00bfbbb0_00bfbbb0_test.cpp'
+        Module = 'CLocalDetailPrimitiveMeshZSpriteBatch'
+        Source = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_GetType_00bfbbb0.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_GetType_00bfbbb0_test.cpp'
         PassPattern = 'PASS_00bfbbb0'
     }
     [pscustomobject]@{
@@ -120677,8 +120677,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0073da20'
         Module = 'NCreatureMode::CModeOutOfActionBase'
-        Source = '00/73/NCreatureModeCModeOutOfActionBase_vfunc13_0073da20.cpp'
-        TestSource = '00/73/NCreatureModeCModeOutOfActionBase_vfunc13_0073da20_test.cpp'
+        Source = '00/73/NCreatureModeCModeOutOfActionBase_GetParticleEffectIndex_0073da20.cpp'
+        TestSource = '00/73/NCreatureModeCModeOutOfActionBase_GetParticleEffectIndex_0073da20_test.cpp'
         PassPattern = 'PASS_0073da20'
     }
     [pscustomobject]@{
@@ -159103,8 +159103,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004d65a4'
         Module = 'CTCFireRangedWeaponOnLeavingStateGroup'
-        Source = '00/4d/CTCFireRangedWeaponOnLeavingStateGroup_vfunc28_004d65a4.cpp'
-        TestSource = '00/4d/CTCFireRangedWeaponOnLeavingStateGroup_vfunc28_004d65a4_test.cpp'
+        Source = '00/4d/CTCFireRangedWeaponOnLeavingStateGroup_SetNotAbleToFire_004d65a4.cpp'
+        TestSource = '00/4d/CTCFireRangedWeaponOnLeavingStateGroup_SetNotAbleToFire_004d65a4_test.cpp'
         PassPattern = '004d65a4_TEST PASS'
     }
     [pscustomobject]@{
@@ -213946,8 +213946,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00731300'
         Module = 'CTCDoor'
-        Source = '00/73/CTCDoor_vfunc23_00731300.cpp'
-        TestSource = '00/73/CTCDoor_vfunc23_00731300_test.cpp'
+        Source = '00/73/CTCDoor_IsComponentSerialisable_00731300.cpp'
+        TestSource = '00/73/CTCDoor_IsComponentSerialisable_00731300_test.cpp'
         PassPattern = '00731300_TEST PASS'
     }
     [pscustomobject]@{
@@ -213960,8 +213960,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00750970'
         Module = 'CTCChest'
-        Source = '00/75/CTCChest_vfunc23_00750970.cpp'
-        TestSource = '00/75/CTCChest_vfunc23_00750970_test.cpp'
+        Source = '00/75/CTCChest_IsComponentSerialisable_00750970.cpp'
+        TestSource = '00/75/CTCChest_IsComponentSerialisable_00750970_test.cpp'
         PassPattern = '00750970_TEST PASS'
     }
     [pscustomobject]@{
@@ -217194,9 +217194,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004debfc'
-        Module = 'CTCTargetingSpirit'
-        Source = '00/4d/CTCTargetingSpirit_vfunc29_004debfc.cpp'
-        TestSource = '00/4d/CTCTargetingSpirit_vfunc29_004debfc_test.cpp'
+        Module = 'CTCTargetingBase'
+        Source = '00/4d/CTCTargetingBase_GetPBestEnemyCreatureForAttack_004debfc.cpp'
+        TestSource = '00/4d/CTCTargetingBase_GetPBestEnemyCreatureForAttack_004debfc_test.cpp'
         PassPattern = '004debfc_TEST PASS'
     }
     [pscustomobject]@{
@@ -217208,9 +217208,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dec04'
-        Module = 'CTCTargetingSpirit'
-        Source = '00/4d/CTCTargetingSpirit_vfunc32_004dec04.cpp'
-        TestSource = '00/4d/CTCTargetingSpirit_vfunc32_004dec04_test.cpp'
+        Module = 'CTCTargetingBase'
+        Source = '00/4d/CTCTargetingBase_GetPBestCreatureForInteractionType_004dec04.cpp'
+        TestSource = '00/4d/CTCTargetingBase_GetPBestCreatureForInteractionType_004dec04_test.cpp'
         PassPattern = '004dec04_TEST PASS'
     }
     [pscustomobject]@{
@@ -217223,8 +217223,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004dec19'
         Module = 'CTCTargetingSpirit'
-        Source = '00/4d/CTCTargetingSpirit_vfunc8_004dec19.cpp'
-        TestSource = '00/4d/CTCTargetingSpirit_vfunc8_004dec19_test.cpp'
+        Source = '00/4d/CTCTargetingSpirit_HasFrameUpdate_004dec19.cpp'
+        TestSource = '00/4d/CTCTargetingSpirit_HasFrameUpdate_004dec19_test.cpp'
         PassPattern = '004dec19_TEST PASS'
     }
     [pscustomobject]@{
@@ -218833,8 +218833,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007460e0'
         Module = 'CTCPerceiveThing'
-        Source = '00/74/CTCPerceiveThing_vfunc8_007460e0.cpp'
-        TestSource = '00/74/CTCPerceiveThing_vfunc8_007460e0_test.cpp'
+        Source = '00/74/CTCPerceiveThing_HasFrameUpdate_007460e0.cpp'
+        TestSource = '00/74/CTCPerceiveThing_HasFrameUpdate_007460e0_test.cpp'
         PassPattern = '007460e0_TEST PASS'
     }
     [pscustomobject]@{

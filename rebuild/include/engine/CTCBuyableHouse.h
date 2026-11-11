@@ -22,6 +22,16 @@ private:
     bool OwnedByPlayer;                                      // +0x11
     bool Rented;                                             // +0x12
     unsigned char _pad_0x13[0x4c - 0x13];                    // +0x13 DaySomeoneWillMoveIn .. IsResidential (opaque)
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x006BF7A0
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x006BF7C0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCBuyableHouse) == 0x4c);
 #else
