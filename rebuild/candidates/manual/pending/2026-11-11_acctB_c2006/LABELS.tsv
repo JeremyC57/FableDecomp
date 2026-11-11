@@ -1,0 +1,14 @@
+address	name	evidence
+00e621f0	?SetHenchmanAsHired@CBodyGuard@CV_BodyGuardScript@NScript@@AAEX_N@Z	Ego_r.pdb 0x00EB7FA0 + FableWin.pdb 0x039A84C0; same TU as CBodyGuard::Main 0x00E5FD40 (its caller); row RELOCATION_MATCH
+00d91e00	?Main@CHobbeSpawn@CQ_HobbeCaveScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name sets; CHobbeSpawn layout (Ego_r 32 bytes: NumberToGenerate +0x1c) read and written by the row; landed Alloc 0x00D8F310; row RELOCATION_MATCH
+00550dc0	?Draw@CTable@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z	Ego_r.pdb + FableWin.pdb name sets; ends in the base Draw call 0x00530260 with the same five arguments; parked DIFFER(1399v1399)
+00b399a0	?UpdateOutputPrimitive@CEngineInternalAttachedPrimitive@@QAEXM@Z	Ego_r.pdb 0x009D8810 + FableWin.pdb 0x02D975C0; bound by landed caller 0x00B3A0D0; row RELOCATION_MATCH
+00e5fc70	?GetGoldCost@CBodyGuard@CV_BodyGuardScript@NScript@@AAEJXZ	both PDBs; see NAME_FIXES.tsv
+00b39080	?GetParentTransformAnimatedMesh@CEngineInternalAttachedPrimitive@@QAE_NAAVCMatrix3x4@@M@Z	Ego_r.pdb 0x009D7F90 + FableWin.pdb 0x02D977E0; called from 0x00B399CD (and jumped to by GetParentTransform 0x00B398ED)
+00b398e0	?GetParentTransform@CEngineInternalAttachedPrimitive@@QAE_NAAVCMatrix3x4@@M@Z	Ego_r.pdb 0x009D87B0 + FableWin.pdb 0x02D97790; body = one-case switch on ParentType tail-jumping to 0x00B39080 (as GetParentWorldSpaceBoundingSphere 0x00B39930 does to 0x00B395E0); expanded in 0x00B399A0
+00b39900	?GetChildInverseTransform@CEngineInternalAttachedPrimitive@@QAE_NXZ	both PDBs; landed row 0x00B39900; called from 0x00B39B6B
+00b38e30	?RedoMatrixConversion@CEngineInternalAttachedPrimitive@@QBEXAAVCMatrix3x4@@@Z	both PDBs; see NAME_FIXES.tsv
+00b393d0	?GetChildInverseTransformStaticMesh@CEngineInternalAttachedPrimitive@@QAE_NAAVCMatrix3x4@@@Z	both PDBs; see NAME_FIXES.tsv
+00b39930	?GetParentWorldSpaceBoundingSphere@CEngineInternalAttachedPrimitive@@QAE_NAAVC3DBoundingSphere@@M@Z	both PDBs; one-case switch tail-jumping to GetParentWorldSpaceBoundingSphereAnimatedMesh 0x00B395E0 (landed); inlined into 0x00B39950
+00b39950	?GetOuterBoundingSphere@CEngineInternalAttachedPrimitiveInfo@@QAE_NAAVC3DBoundingSphere@@M@Z	both PDBs (Ego_r 0x009D8540 right after GetParentWorldSpaceBoundingSphere); body: the attached primitive at Info+8 (expanded GetParentWorldSpaceBoundingSphere: ParentType == 2 -> 0x00B395E0), then a virtual at +0x4c on the output primitive, then sphere radius += 2 * that value; not authored here (label only)
+00e62730	?Alloc@CV_BodyGuardScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	engine/CV_BodyGuardScript.h static Alloc(CScriptDataBase*, CGameScriptInterfaceBase&) __fastcall; body `new 0x94` (sizeof CV_BodyGuardScript, header assert) + ctor 0x00E5D140 (landed CV_BodyGuardScript ctor); the function after 0x00E621F0

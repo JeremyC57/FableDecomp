@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00b399a0   RELOCATION_MATCH PASS   UpdateOutputPrimitive
+00d91e00   RELOCATION_MATCH PASS   Main
+00e621f0   WARN RELOC_NAME: ?GetGoldCost@CBodyGuard@CV_BodyGuardScript@NScript@@AAEJXZ -> 00e5fc70 labelled 'NScript::CV_BodyGuardScript::CBodyGuard::GetHenchmanGoldCost'
+00e621f0   RELOCATION_MATCH PASS   SetHenchmanAsHired
+
+WINS: 3
+  00b399a0 RELOCATION_MATCH CEngineInternalAttachedPrimitive::?UpdateOutputPrimitive@CEngineInternalAttachedPrimitive@@QAEXM@Z
+  00d91e00 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeSpawn::?Main@CHobbeSpawn@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00e621f0 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::?SetHenchmanAsHired@CBodyGuard@CV_BodyGuardScript@NScript@@AAEX_N@Z
