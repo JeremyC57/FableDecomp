@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00C4F600	CEAXManager::SetEAXProperty	catalog name only (no landed code): chunk 878 identity, see LABELS.tsv (carried from H40c)	PropertySerializer_GetPropertyTypeCode (catalog / ROWS.tsv)
