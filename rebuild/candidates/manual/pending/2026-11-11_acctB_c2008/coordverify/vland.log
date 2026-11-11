@@ -1,0 +1,10 @@
+addr       parity           behav  name
+004ca390   WARN RELOC_NAME: ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z -> 0051e580 labelled 'CEditWorldMap::GetEditMap'
+004ca390   RELOCATION_MATCH PASS   ConstructFromBinarySave
+00b665e0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b665e0   WARN RELOC_NAME: ?DetachZBuffer@CRenderTarget@@QAEXXZ -> 00a10e20 labelled 'CRenderTarget::DetachTarget'
+00b665e0   RELOCATION_MATCH PASS   GetEnvironmentMap
+
+WINS: 2
+  004ca390 RELOCATION_MATCH CThing::?ConstructFromBinarySave@CThing@@UAEXAAVCMemoryDataInputStream@@ABVCSerialiseInfo@1@@Z
+  00b665e0 RELOCATION_MATCH CEngineSkyRenderer::?GetEnvironmentMap@CEngineSkyRenderer@@QAEXPAVCTexture@@ABVCEngineComponentRenderParams@@@Z

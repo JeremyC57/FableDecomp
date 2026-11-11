@@ -1,0 +1,178 @@
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM
+#ifndef FABLE_ENGINE_CPARTICLEPROGRAM_H
+#define FABLE_ENGINE_CPARTICLEPROGRAM_H
+// Retail branch (pass 12 header wave; rows 0x00AE0070 ApplyTransform, 0x00AE0710 CalculateAveragePatchSize, 0x00AE2E20
+// OptimiseSpringOrder): the polymorphic retail class, RTTI .?AVCParticleProgram@@ : CMovableResource. Members are the Ego_r TPI
+// names (struct_layouts_egor.tsv) at retail offsets (12-byte STLport CArray, 0x10 CVectorMap): InitialSimulation +0x08,
+// ExportParticles +0x88, RenderTris +0x98, RenderQuads +0xA4, RenderVertices +0xB0, NonSimCount +0xBC, NonSimPositions +0xC0,
+// IndexedTextureCoords +0xC4, TempVertexPositions +0xD0, ParticleIndices +0xDC, VertexIndices +0xE8, BezierEnable +0xF4,
+// AveragePatchSize +0xF8, SimGroups +0xFC, NonSimGroups +0x108, Constraints +0x114 (CMemoryDataOutputStream, 0x18),
+// LoopStack +0x12C, MemoryHandle +0x138, MemoryPool +0x13C; sizeof 0x140 (the generated default below agrees).
+// 0x00AE0070 reads Constraints.PeekData / GetLength and InitialSimulation; 0x00AE0710 RenderTris / RenderQuads (strides 6 / 8) and
+// stores AveragePatchSize +0xF8. Methods: Ego_r / FableWin ?ApplyTransform@CParticleProgram@@QAEXABVCMatrix3x4@@@Z,
+// ?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z (private),
+// ?OptimiseSpringOrder@CParticleProgram@@QBEXAAV?$CArray@VCParticleDistanceConstraint@@@@@Z, ?PeekInitialSimulation@...QBE,
+// ?GetInitialSimulation@...QAE (inline in retail).
+#include "rebuild_abi.h"
+#ifndef FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#endif
+#ifndef FABLE_RETAIL_CDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#endif
+#ifndef FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM
+#endif
+#include "engine/CParticleSimulation.h"
+#include "engine/CMemoryDataOutputStream.h"
+#include "engine/CArray.h"
+#include "engine/C3DTriangle2.h"
+#include "engine/C3DQuad2.h"
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
+#include "engine/C3DClothRenderVertex.h"
+#endif
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES
+#include "stlport/fable_map.h"
+#endif
+class CMatrix3x4;
+class CMatrix4x4;
+class C3DGroup2;
+class C3DAnimationBlendState;
+class C3DAnimationManager;
+class C3DMesh2;
+class CParticleContext;
+class CParticleDistanceConstraint;
+class CParticleProgram : public CMovableResource {
+public:
+    CParticleProgram();
+    virtual ~CParticleProgram();
+    virtual void RelocateData(long,void*,void*,long);
+    const CParticleSimulation& PeekInitialSimulation() const { return InitialSimulation; }
+    CParticleSimulation& GetInitialSimulation() { return InitialSimulation; }
+    void ApplyTransform(const CMatrix3x4&);
+    void OptimiseSpringOrder(CArray<CParticleDistanceConstraint>&) const;
+    // Chunk 748 (FableWin.pdb spellings; the skinned set-up / cling rows 0x00AE29D0 / 0x00AE1320 and their callees):
+    bool SetupSimulation(CParticleSimulation& simulation, const C3DAnimationBlendState& blend_state, C3DAnimationManager& animation_manager,
+                         const C3DVector* position, const C3DMesh2& mesh, CMovableResourceMemoryPool& pool, const CParticleContext& context) const;
+private:
+    static CMatrix4x4* __fastcall GetMatrixBuffer(unsigned long count);   // 0x00AE04E0 ?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z
+    static C4DVector* __fastcall GetVectorBuffer(unsigned long count);    // 0x00AE0540 ?GetVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z
+    void TransformVertices(C4DVector* out, const C4DVector* in, unsigned long count, const CMatrix4x4* matrices,
+                           const CArray<C3DGroup2>& groups) const;        // 0x00AE0E60
+    void ApplyConstraints(CParticleSimulation& simulation, long iterations, float time_delta) const;   // 0x00AE2510
+    void ClingToMesh(CParticleSimulation& simulation, const C3DAnimationBlendState& blend_state, C3DAnimationManager& animation_manager,
+                     const C3DVector* position, const C3DMesh2& mesh) const;   // 0x00AE1320
+    void CalculateAveragePatchSize(const CParticleSimulation&);
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES
+    // Opt-in (chunk 1017, row 0x00AE3920): Ego_r.pdb / FableWin.pdb ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KK...@AAV?$CArray@
+    // VC3DGroup2@@@@@Z, the private static __fastcall overload (remap in ecx, groups in edx) the public RemapBoneIndices 0x00AE3A30
+    // calls on SimGroups and NonSimGroups.
+    static void __fastcall RemapBoneIndices(std::map<unsigned long, unsigned long>& remap, CArray<C3DGroup2>& groups);   // 0x00AE3920
+#endif
+    CParticleSimulation InitialSimulation;                   // +0x08
+    unsigned char ExportParticles[16];                       // +0x88 CVectorMap<CCharString,unsigned long,CKeyPairCompareLess<CCharString,unsigned long> >
+    CArray<C3DTriangle2> RenderTris;                         // +0x98
+    CArray<C3DQuad2> RenderQuads;                            // +0xA4
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_RENDERACCESS
+public:
+    // Retail opt-in (chunk 2008, row 0x00BB1F50 CEngineClothRenderer::CalculateVertexNormals): FableWin.pdb's inline render accessors
+    // (debug COMDATs 0x02E75C80..0x02E75D20 and 0x02D7B290, expanded in release): GetRenderTriangleCount / GetRenderQuadCount (size()),
+    // PeekRenderTriangles / PeekRenderQuads / PeekRenderVertices (CArray::GetAsCArray: `test ; jbe` keeps the array object's address for
+    // an empty array, 0x00BB1FBD..0x00BB1FD9) and GetVertexPositionCount (NonSimCount + the initial simulation's particle count,
+    // 0x00BB1F61..0x00BB1F69). RenderVertices typed (Ego_r CArray<C3DClothRenderVertex>, 12 bytes): no layout change.
+    unsigned long GetRenderTriangleCount() const { return RenderTris.size(); }
+    const C3DTriangle2* PeekRenderTriangles() const { return RenderTris.GetAsCArray(); }
+    unsigned long GetRenderQuadCount() const { return RenderQuads.size(); }
+    const C3DQuad2* PeekRenderQuads() const { return RenderQuads.GetAsCArray(); }
+    const C3DClothRenderVertex* PeekRenderVertices() const { return RenderVertices.GetAsCArray(); }
+    unsigned long GetVertexPositionCount() const { return NonSimCount + InitialSimulation.GetParticleCount(); }
+private:
+    CArray<C3DClothRenderVertex> RenderVertices;             // +0xB0
+#else
+    unsigned char RenderVertices[12];                        // +0xB0 CArray<C3DClothRenderVertex>
+#endif
+    unsigned long NonSimCount;                               // +0xBC
+    C4DVector* NonSimPositions;                              // +0xC0
+    unsigned char IndexedTextureCoords[12];                  // +0xC4 CArray<C2DVector>
+    unsigned char TempVertexPositions[12];                   // +0xD0 CArray<C4DVector>
+    unsigned char ParticleIndices[12];                       // +0xDC CArray<long>
+    unsigned char VertexIndices[12];                         // +0xE8 CArray<long>
+    bool BezierEnable;                                       // +0xF4
+    float AveragePatchSize;                                  // +0xF8
+    unsigned char SimGroups[12];                             // +0xFC CArray<C3DGroup2>
+    const CArray<C3DGroup2>& PeekSimGroups() const { return *reinterpret_cast<const CArray<C3DGroup2>*>(SimGroups); }   // chunk 748
+    unsigned char NonSimGroups[12];                          // +0x108 CArray<C3DGroup2>
+    CMemoryDataOutputStream Constraints;                     // +0x114
+    unsigned char LoopStack[12];                             // +0x12C CArray<CParticleProgram::CLoopBegin>
+    long MemoryHandle;                                       // +0x138
+    CMovableResourceMemoryPool* MemoryPool;                  // +0x13C
+};
+FABLE_STATIC_ASSERT(sizeof(CParticleProgram)==0x140);
+#endif // FABLE_ENGINE_CPARTICLEPROGRAM_H
+#else // generated flattened default (unchanged)
+#ifndef FABLE_ENGINE_CPARTICLEPROGRAM_H
+#define FABLE_ENGINE_CPARTICLEPROGRAM_H
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CParticleProgram = 0x170.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CParticleProgram = 0x140.
+// Retail evidence: 1 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class C4DVector;
+class CMovableResourceMemoryPool;
+
+#pragma pack(push, 1)
+class CParticleProgram {
+public:
+    void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char               _pad_0x04[0x4];              // +0x04
+    unsigned char               InitialSimulation[0x80];     // +0x08 CParticleSimulation
+    unsigned char               ExportParticles[0x10];       // +0x88 CVectorMap<CCharString,unsigned_long,CKeyPairCompareLess<CCharString,unsigned_long>_>
+    unsigned char               RenderTris[0xc];             // +0x98 CArray<C3DTriangle2>
+    unsigned char               RenderQuads[0xc];            // +0xa4 CArray<C3DQuad2>
+    unsigned char               RenderVertices[0xc];         // +0xb0 CArray<C3DClothRenderVertex>
+    unsigned long               NonSimCount;                 // +0xbc
+    C4DVector*                  NonSimPositions;             // +0xc0
+    unsigned char               IndexedTextureCoords[0xc];   // +0xc4 CArray<C2DVector>
+    unsigned char               TempVertexPositions[0xc];    // +0xd0 CArray<C4DVector>
+    unsigned char               ParticleIndices[0xc];        // +0xdc CArray<long>
+    unsigned char               VertexIndices[0xc];          // +0xe8 CArray<long>
+    bool                        BezierEnable;                // +0xf4
+    unsigned char               _pad_0xf5[0x3];              // +0xf5
+    float                       AveragePatchSize;            // +0xf8
+    unsigned char               SimGroups[0xc];              // +0xfc CArray<C3DGroup2>
+    unsigned char               NonSimGroups[0xc];           // +0x108 CArray<C3DGroup2>
+    unsigned char               Constraints[0x18];           // +0x114 CMemoryDataOutputStream
+    unsigned char               LoopStack[0xc];              // +0x12c CArray<CParticleProgram::CLoopBegin>
+    long                        MemoryHandle;                // +0x138
+    CMovableResourceMemoryPool* MemoryPool;                  // +0x13c
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CParticleProgram) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, InitialSimulation) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, ExportParticles) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, RenderTris) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, RenderQuads) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, RenderVertices) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, NonSimCount) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, NonSimPositions) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, IndexedTextureCoords) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, TempVertexPositions) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, ParticleIndices) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, VertexIndices) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, BezierEnable) == 0xf4);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, AveragePatchSize) == 0xf8);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, SimGroups) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, NonSimGroups) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, Constraints) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, LoopStack) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, MemoryHandle) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CParticleProgram, MemoryPool) == 0x13c);
+
+#endif // FABLE_ENGINE_CPARTICLEPROGRAM_H
+#endif // FABLE_RETAIL_CPARTICLEPROGRAM
