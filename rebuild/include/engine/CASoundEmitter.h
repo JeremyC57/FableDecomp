@@ -57,8 +57,16 @@ public:
     virtual bool IsSpecificSampleLoadedAndPlaying(unsigned long sampleID) const = 0;  // slot 21 (+0x54) LH 0x00AABB00
     virtual bool IsSpecificSamplePlaying(unsigned long sampleID) const = 0;           // slot 22 (+0x58) LH 0x00AABAC0
     virtual bool IsSamplePlaying(const CASoundBank& bank, long sample) const = 0;     // slot 23 (+0x5C) LH 0x00AABC50
+#ifdef FABLE_RETAIL_CASOUNDEMITTER_ACTIVESAMPLEINFO_ORDER
+    // Opt-in (chunk 1024, row 0x006E2ED0): the argument order retail's caller pushes (`push &infos ; push sample ; push bank`,
+    // 0x006E306A..0x006E3073) and the LH body 0x00AAC5E0 reads (bank [esp+28h] first, then the sample; the vector, third, gets the
+    // CActiveSoundInfo records, RTTI vtable 0x0129E674). Same slot; the default declaration's order is unproven.
+    virtual void GetActiveSampleInfo(const CASoundBank& bank, long sample,
+                                     std::vector<CActiveSoundInfo, std::allocator<CActiveSoundInfo> >& infos) const = 0; // slot 24 (+0x60)
+#else
     virtual void GetActiveSampleInfo(std::vector<CActiveSoundInfo, std::allocator<CActiveSoundInfo> >& infos,
                                      const CASoundBank& bank, long sample) const = 0; // slot 24 (+0x60) LH 0x00AAC5E0 (descriptive)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CASoundEmitter) == 0x4);
 

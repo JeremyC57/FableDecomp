@@ -1,0 +1,4 @@
+address	length	name	evidence
+007cd390	796	CTCMultiStrike::CTCMultiStrike	body ends `ret 4` at 0x007CD698 + nop, then its own 4-entry case jump table 0x007CD69C..0x007CD6AB (CAST_EFFECT_LEVEL1..4) and int3 padding; the catalog 832 also spans two separate functions after int3 padding
+007cd6b0	11	(unreferenced 0x007CD6B0: `mov eax,ecx ; mov ecx,[esp+4] ; mov [eax],ecx ; ret 4`, a one-pointer constructor)	new start after int3 padding; no call or data reference in Fable.exe; owner unproven, not authored
+007cd6c0	3	(unreferenced 0x007CD6C0: `mov eax,[ecx] ; ret`, a first-word getter)	new start after int3 padding; no call or data reference in Fable.exe; owner unproven, not authored

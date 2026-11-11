@@ -9,6 +9,25 @@ class CAIStateGroup_TavernServer:public CAIStateGroup_WorkBase<CAIStateGroupBase
 public:
  bool WalkToPoint(const C3DVector&,const CRightHandedSet&);
  bool IsServingPointValid();
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TAVERNSERVER_METHODS
+ // Opt-in (chunk 1024, rows 0x00966DA0 GetServingPoint / 0x00967D40 Update): the Ego_r.pdb / FableWin.pdb public members
+ // (?<Name>@CAIStateGroup_TavernServer@@QAE_NXZ, WanderWithinTavern QAE?AW4EAIActionReturn@@XZ, FreeServingPoint QAEXXZ) at their
+ // retail addresses (the Ego_r donor order IsCarryingJug / GetServingPoint / FreeServingPoint / FreeBarPoint / GetJug /
+ // IsServingPointValid / GetOldJugPoint .. IsRunnable / WalkToPoint / PickUpJug / PutDownJug / FillTankard / WalkToBar /
+ // WalkToServingPoint / Update is retail's 0x00966CF0 .. 0x00967D40 run). The bodies a row needs inline (WanderWithinTavern,
+ // FreeServingPoint, WalkToBar, WalkToServingPoint: same-TU bodies VC7.1 expands into Update) are defined by that row.
+ EAIActionReturn WanderWithinTavern();                                  // 0x00966AD0
+ bool IsCarryingJug();                                                  // 0x00966CF0
+ bool GetServingPoint();                                                // 0x00966DA0
+ void FreeServingPoint();                                               // 0x009670A0
+ bool GetJug();                                                         // 0x00967180
+ bool GetOldJugPoint();                                                 // 0x009672C0
+ bool PickUpJug();                                                      // 0x00967930
+ bool PutDownJug();                                                     // 0x00967A20
+ bool FillTankard();                                                    // 0x00967B40
+ bool WalkToBar();                                                      // inline in retail (WalkToPoint(BarPos, BarRHSet))
+ bool WalkToServingPoint();                                             // inline in retail (WalkToPoint(ServingPos, ServingRHSet))
+#endif
 protected:
  virtual bool IsRunnable();
  virtual void Update();

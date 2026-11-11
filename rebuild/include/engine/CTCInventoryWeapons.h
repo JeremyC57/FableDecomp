@@ -83,6 +83,14 @@ private:
                                            unsigned long);                                                 // 0x005C47D5
     void SetupActiveWeaponsOnCarrier();                                                                  // 0x005CA68E
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_ACTIVEMELEE
+    // Retail opt-in (chunk 1024, row 0x007CD390 CTCMultiStrike::CTCMultiStrike): FableWin.pdb
+    // ?GetActiveMeleeWeapon@CTCInventoryWeapons@@QBEPAVCThing@@XZ (inline in retail: lea ecx,[eax+134h] then GetPItem 0x00A01B50, 0x007CD469) and
+    // the TCI_INVENTORY_WEAPONS (19) key of CThing::PeekTC<CTCInventoryWeapons>. No layout change.
+public:
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_WEAPONS; }
+    CThing* GetActiveMeleeWeapon() const { return PActiveMeleeWeapon.Get(); }
+#endif
 public:
     CIntelligentPointer<CThing> PActiveMeleeWeapon;                      // +0x134
     CDefIndex ActiveMeleeWeaponDefIndex;                                 // +0x13C

@@ -11,10 +11,36 @@
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
 class CThing;
+#ifdef FABLE_RETAIL_CTCMULTISTRIKE_MEMBERS
+// Retail opt-in (chunk 1024, row 0x007CD390 the constructor ??0CTCMultiStrike@@QAE@AAVCThing@@@Z): the Ego_r.pdb members in order and
+// spelling at the retail offsets (the ctor's stores: PDef +0x0C .. PHitLocation +0x20, the two CIntelligentPointer<CThing> +0x24 / +0x44
+// built with vtable 0x01238C6C, the 12-byte STLport ParticleEffects +0x4C; retail sizeof 0x58, Ego_r 0x5C with its 16-byte vector).
+// Members stay public (the landed rows reach them through local models). Needs FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/C3DVector.h"
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_containers.h"
+class CSpecialAbilitiesMultiStrikeDef;
+class CHitLocation;
+#endif
 class CTCMultiStrike : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_MULTI_STRIKE; }
     void ApplyEffectOnWeapon(CThing* weapon);                // 0x007CCF50
     void RemoveEffectOnWeapon(CThing* weapon);               // 0x007CC9E0
+#ifdef FABLE_RETAIL_CTCMULTISTRIKE_MEMBERS
+    CTCMultiStrike(CThing& thing);                           // 0x007CD390
+    CDefPointer<const CSpecialAbilitiesMultiStrikeDef> PDef;                 // +0x0C
+    long SpellLevel;                                                         // +0x10
+    bool StrikeStarted;                                                      // +0x14
+    long DelayTimer;                                                         // +0x18
+    long NumHits;                                                            // +0x1C
+    CHitLocation* PHitLocation;                                              // +0x20
+    CIntelligentPointer<CThing> PWeapon;                                     // +0x24
+    C3DVector PointOfHit;                                                    // +0x2C
+    C3DVector HitDirection;                                                  // +0x38
+    CIntelligentPointer<CThing> PTarget;                                     // +0x44
+    std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > ParticleEffects;   // +0x4C
+#endif
 };
 #endif // FABLE_ENGINE_CTCMULTISTRIKE_H

@@ -1,0 +1,10 @@
+- Signed `long` index from GFRandom(n, seed) keeps the remainder in eax for the list walk; unsigned gave edx (0x00966F1D).
+- `if (0.0 > x) x = 0.0;` gives `fld 0.0 ; fcomp st(1) ; test ah,41h` (0x006B3E33).
+- `if (!(a > 0.0f || b >= 0.0)) return;` reproduces the two-test entry of 0x006B3B86.
+- A named CCharString before the call orders the sample-bank read after its constructor (0x006B3D70).
+- FABLE_RETAIL_CARRAY (operator[] through begin()) gives the `[edi+eax]` operand order (0x006B3DF3).
+- An early `if (v.empty()) return false;` keeps the vector-dtor + return-false block inline; `if (!empty()) {...}` moves it to the end (0x006E3081).
+- FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND expands LowerBound only in loops (higher frequency), entry lookups still call 0x0040F020 (0x00967E23 v 0x00967D67).
+- A visible same-TU body of the out-param callee (CSpecialEffectsDef::GetEffectFromString, GETEFFECT_BODY) makes the out-local uncaptured, so VC7.1 shares its slot with inline GetTC keys and temporaries (frame 8 v 0xC, 0x007CD390).
+- `case 0:` + identical `default:` bodies are tail-merged into one block and keep the jump table based at 0 (`cmp eax,3 ; ja ; jmp [eax*4+tbl]`); `case 0: default:` as one label gives a dec/je chain (0x007CD510).
+- Const PeekTC goes through LowerBound const 0x004365B0, GetTC through 0x0040F020: pick by which address retail calls (0x007CD453 v 0x007CD59A).

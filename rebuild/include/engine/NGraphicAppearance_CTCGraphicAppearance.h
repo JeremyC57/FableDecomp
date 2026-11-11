@@ -104,6 +104,11 @@ protected:
 public:
 #endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_WASRENDERED
+    // Opt-in (chunk 1024, row 0x006E2ED0): Ego_r.pdb / FableWin.pdb ?WasRenderedLastFrame@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ,
+    // out of line in retail at 0x004BD200 (landed). Declaration only.
+    bool WasRenderedLastFrame() const;                       // 0x004BD200
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb
     // ?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z (out of

@@ -29,6 +29,12 @@ private:
     void GetPotentialCriteriaStrings(const CCharString& criteria, std::vector<CCharString>& criteria_strings);   // 0x0066BC10
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_TALKFRIEND
+    // Opt-in (chunk 1024, row 0x006E2ED0 CTCTalk::GetCurrentLipSyncFrameData): retail TLC CTCTalk reads PAttachedEmitter (+0x0C) in
+    // place (`lea edi,[ecx+0Ch] ; call GetPItem`, 0x006E2FEB); no accessor for it is in either PDB name set, so the access is
+    // modelled as a friend (unproven: the TLC header may have made the member public instead). No layout change.
+    friend class CTCTalk;
+#endif
 protected:
     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;
     CCharString VoiceName,ExtraTag;

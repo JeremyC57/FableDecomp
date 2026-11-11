@@ -1,0 +1,5 @@
+00966da0	1	RELOCATION_MATCH	signed long index from GFRandom (unsigned kept the remainder in edx)
+00967d40	1	RELOCATION_MATCH	first draft: same-TU WanderWithinTavern/FreeServingPoint/WalkToBar/WalkToServingPoint bodies, INLINE_LOWERBOUND
+006b3b80	1	RELOCATION_MATCH	!(freq > 0 || start >= 0) entry test, named CCharString, if (0.0 > chance) clamp, FABLE_RETAIL_CARRAY index through begin()
+006e2ed0	1	RELOCATION_MATCH	early 'if (active_samples.empty()) return false;' keeps the vector-dtor return-false block inline (if(!empty){...} put it at the end)
+007cd390	1	RELOCATION_MATCH	gsplit 796: GetEffectFromString same-TU body (uncaptured index shares the key slot), case 0 + identical default tail-merged; d.py iterations were diagnostics

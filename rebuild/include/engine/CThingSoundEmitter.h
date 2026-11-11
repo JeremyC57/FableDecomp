@@ -18,6 +18,11 @@ class CCharString;
 // Retail opt-in (Codex pass 12): original PDB sole base and full native allocation.
 // AttachedToThing, PAttachedThing, ContinuePlayingAfterAttachedThingDeath, Pos; complete tail through+b8, native allocation527340.
 class CThingSoundEmitter:public CThing {
+#ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_TALKFRIEND
+    // Opt-in (chunk 1024, row 0x006E2ED0 CTCTalk::GetCurrentLipSyncFrameData): retail TLC CTCTalk reads PSoundEmitter (+0x98) in
+    // place (`mov edi,[eax+98h]`, 0x006E3004); no accessor in either PDB name set, so modelled as a friend (unproven). No layout change.
+    friend class CTCTalk;
+#endif
 protected:
 #ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_SOUNDEMITTER
     // Retail opt-in (agentSND2, 2026-11-10): +0x98 is the thing's sound emitter -- OnCreate 0x00836740 stores
@@ -41,6 +46,12 @@ protected:
 #endif
     unsigned char _pad_0xb2[6];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_CREATE
+    // Opt-in (chunk 1024, row 0x006B3B80 CEnvironment::LightingFlash): Ego_r.pdb / FableWin.pdb
+    // ?Create@CThingSoundEmitter@@SIPAV1@ABVC3DVector@@PBVCThing@@_N@Z (public static __fastcall), out of line in retail at 0x008369F0
+    // (landed; position in ecx, parent in edx, the bool on the stack). Declaration only.
+    static CThingSoundEmitter* __fastcall Create(const C3DVector& pos, const CThing* parent, bool attached);   // 0x008369F0
+#endif
 #ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_SOUNDEMITTER
     // Ego_r.pdb members (agentSND2 opt-in): the sound forwarders.
     unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);   // 0x00836810

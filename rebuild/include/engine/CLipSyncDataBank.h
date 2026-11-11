@@ -14,9 +14,23 @@ class CPhonemeDataBank;
 class CResourceBank;
 class CSpeechAnalyser;
 
+#ifdef FABLE_RETAIL_CLIPSYNCDATABANK_LIPSYNCDATA
+#include "engine/CCountedPointer.h"
+class CLipSyncDataBankEntry;
+class CLipSyncSampleData;
+#endif
 #pragma pack(push, 1)
 class CLipSyncDataBank {
 public:
+#ifdef FABLE_RETAIL_CLIPSYNCDATABANK_LIPSYNCDATA
+    // Opt-in (chunk 1024, row 0x006E2ED0 CTCTalk::GetCurrentLipSyncFrameData): Ego_r.pdb
+    // ?PeekLipSyncInfo@CLipSyncDataBank@@QBEPBVCLipSyncDataBankEntry@@K@Z (retail 0x00A42830, landed under the descriptive name
+    // GetPEntry: the 8-byte entry record of the index when the bank entry exists, else null) and
+    // ?GetLipSyncData@CLipSyncDataBank@@QBE?AV?$CCountedPointer@VCLipSyncSampleData@@@@K@Z (retail 0x00A42FC0, result through the
+    // hidden pointer). Declarations only: no layout change.
+    const CLipSyncDataBankEntry* PeekLipSyncInfo(unsigned long index) const;          // 0x00A42830
+    CCountedPointer<CLipSyncSampleData> GetLipSyncData(unsigned long index) const;    // 0x00A42FC0
+#endif
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     long              object;                                // +0x04 retail-only long (previous header)
     unsigned char     _pad_0x08[0x30];                       // +0x08

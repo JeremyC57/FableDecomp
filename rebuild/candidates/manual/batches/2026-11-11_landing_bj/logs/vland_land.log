@@ -1,0 +1,25 @@
+addr       parity           behav  name
+006b3b80   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b3b80   RELOCATION_MATCH PASS   LightingFlash
+006e2ed0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006e2ed0   WARN RELOC_NAME: ?PeekLipSyncInfo@CLipSyncDataBank@@QBEPBVCLipSyncDataBankEntry@@K@Z -> 00a42830 labelled 'CLipSyncDataBank::GetPEntry'
+006e2ed0   WARN RELOC_NAME: ??1?$CCountedPointer@VCLipSyncSampleData@@@@QAE@XZ -> 006e46f0 labelled '_global::CCountedPointer_Release_006e46f0'
+006e2ed0   RELOCATION_MATCH PASS   GetCurrentLipSyncFrameData
+007cd390   RELOCATION_MATCH PASS   CTCMultiStrike
+00966da0   RELOCATION_MATCH PASS   GetServingPoint
+00967d40   WARN RELOC_NAME: ?FreeServingPoint@CTCTavernTable@@QAEXJ@Z -> 007b9090 labelled 'CTCTavernTable::FreePoint'
+00967d40   RELOCATION_MATCH PASS   Update
+
+WINS: 5
+  006b3b80 RELOCATION_MATCH CEnvironment::?LightingFlash@CEnvironment@@AAEXXZ
+  006e2ed0 RELOCATION_MATCH CTCTalk::?GetCurrentLipSyncFrameData@CTCTalk@@AAE_NAAVCLipSyncFrameData@@@Z
+  007cd390 RELOCATION_MATCH CTCMultiStrike::??0CTCMultiStrike@@QAE@AAVCThing@@@Z
+  00966da0 RELOCATION_MATCH CAIStateGroup_TavernServer::?GetServingPoint@CAIStateGroup_TavernServer@@QAE_NXZ
+  00967d40 RELOCATION_MATCH CAIStateGroup_TavernServer::?Update@CAIStateGroup_TavernServer@@MAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CEnvironment_LightingFlash_006b3b80
+  CTCTalk_GetCurrentLipSyncFrameData_006e2ed0
+  CTCMultiStrike_CTCMultiStrike_007cd390
+  CAIStateGroupTavernServer_GetServingPoint_00966da0
+  CAIStateGroupTavernServer_Update_00967d40

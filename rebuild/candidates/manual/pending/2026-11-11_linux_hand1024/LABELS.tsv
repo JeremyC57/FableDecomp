@@ -1,0 +1,19 @@
+address	name	evidence
+00966da0	?GetServingPoint@CAIStateGroup_TavernServer@@QAE_NXZ	Ego_r donor order IsCarryingJug / GetServingPoint / FreeServingPoint = retail order; row RELOCATION_MATCH (chunk 1024)
+00967d40	?Update@CAIStateGroup_TavernServer@@MAEXXZ	vtable slot 12 at 0x0128CD44; Ego_r ?Update@CAIStateGroup_TavernServer@@MAEXXZ; row RELOCATION_MATCH
+006b3b80	?LightingFlash@CEnvironment@@AAEXXZ	FableWin 0x0244E310 directly before ?Update@CEnvironment@@QAEXM@Z; only caller CEnvironment::Update 0x006B42B2; theme priority 4 + CS_LIGHTNING_THUNDER; row RELOCATION_MATCH (catalog placeholder CEnvironment_UpdateThunder)
+006e2ed0	?GetCurrentLipSyncFrameData@CTCTalk@@AAE_NAAVCLipSyncFrameData@@@Z	private, ret 4, bool; caller 0x006E3C65 (talk update); Ego_r + FableWin; row RELOCATION_MATCH (catalog placeholder CViewBase_ProcessLipSync)
+007cd390	??0CTCMultiStrike@@QAE@AAVCThing@@@Z	vtable 0x0126EE0C after CTCBase ctor, SPECIAL_ABILITIES_MULTI_STRIKE_DEF; Ego_r 0x007CBA10 / FableWin 0x0272FCE0; row RELOCATION_MATCH at 796 (SPLITS.tsv)
+0080cd40	?UpdateHitThings@CTCDExplosion@@AAEXABVC3DVector@@0@Z	Ego_r 0x00808AF0 between SetSpecificThingToHit and CreateStaticExplosion (retail neighbours 0x0080CCF0 / 0x0080D0B0 landed); ret 8 = two const C3DVector&
+006cbac0	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z	Ego_r 0x00701580; ret 1Ch = hidden result + target + five bools
+006cbe80	?GetNearestFleePositionBehindCover@CTCCreatureNavigation@@QBE_NABVC3DVector@@AAV2@@Z	Ego_r 0x00701A60; ret 8, returns bool, writes the C3DVector out
+006e2860	?GetPLipSyncBank@CTCTalk@@ABEPBVCLipSyncDataBank@@XZ	out-of-line copy of the body 0x006E2ED0 expands first (PSoundManager GetPLipSyncBank 0x009916F0 / GetAnyPLipSyncBank 0x00991720)
+00686d70	?PeekSampleBank@CTCBase@@IBEABVCASoundBank@@XZ	CTCTalk::GetSpeechBank fallback in 0x006E2ED0; Ego_r CTCBase donor order
+004978a0	?GFFloatRandom@@YIMMPAK@Z	__fastcall seed in ecx, range on the stack (0x006B3B80, 0x006CBE80); Ego_r
+0097f870	?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z	WanderWithinTavern body in 0x00967D40 (AI_MOVEMENT_WALKING, PPub)
+006b2bd0	?GetRainStrength@CEnvironment@@QBEMXZ	out-of-line copy of the same-TU body 0x006B3B80 expands (RainStrength +0x1C4)
+007b8cc0	?GetServingPoint@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3PAPAVCThingObject@@W4ServingMode@1@_N@Z	called by 0x00966DA0 with SERVING_MODE 0, true; Ego_r
+00a48f10	?GetFrameInterpolate@CLipSyncSampleData@@QBEXAAVCLipSyncFrameData@@M@Z	both paths of 0x006E2ED0; Ego_r
+00a42fc0	?GetLipSyncData@CLipSyncDataBank@@QBE?AV?$CCountedPointer@VCLipSyncSampleData@@@@K@Z	0x006E2ED0 (hidden CCountedPointer result, released by 0x006E46F0); Ego_r
+008369f0	?Create@CThingSoundEmitter@@SIPAV1@ABVC3DVector@@PBVCThing@@_N@Z	0x006B3B80 thunder emitter (__fastcall); Ego_r
+004bd200	?WasRenderedLastFrame@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ	0x006E2ED0 visibility test; Ego_r

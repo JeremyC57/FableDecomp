@@ -164,6 +164,12 @@ protected:
     // retail at 0x00686D50 (after GetPlayerManager 0x00686D40; landed CTCFishing rows 0x007B0880 / 0x007B0950 call it). Declaration only.
     const CPlayerManager& PeekPlayerManager() const;                     // 0x00686D50
 #endif
+#ifdef FABLE_RETAIL_CTCBASE_PEEKSAMPLEBANK
+    // Nested opt-in (chunk 1024, row 0x006E2ED0 CTCTalk::GetCurrentLipSyncFrameData): Ego_r.pdb / FableWin.pdb
+    // ?PeekSampleBank@CTCBase@@IBEABVCASoundBank@@XZ, out of line in retail at 0x00686D70 (`mov eax,[0x013B86A0] ; mov eax,[eax+10h]`,
+    // after PeekComponent 0x00686D60 as in the Ego_r donor order). Declaration only.
+    const class CASoundBank& PeekSampleBank() const;                     // 0x00686D70
+#endif
 #ifdef FABLE_RETAIL_CTCBASE_WORLDSEED
     // Nested opt-in (chunk 760, row 0x006E2C00 CTCTalk::OnCreate): ?GetPWorldSeed@CTCBase@@IBEPAKXZ, out of line in retail at
     // 0x00686DA0 (the GFRandom seed argument, `call 0x00686DA0; mov edx,eax` before `call 0x004CDAE0`). Declaration only.

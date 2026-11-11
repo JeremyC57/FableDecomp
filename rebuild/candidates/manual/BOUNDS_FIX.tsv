@@ -226,3 +226,4 @@ address	pool	module	name	length	class	action	new_length	evidence
 004ca019	chunk1022	CThing	ConstructFromParams	439	PHANTOM	skip	0	9 bytes inside the landed CThing::ConstructFromParams 0x004CA010 (437 bytes); not a function start (chunk 1022)
 007cb8b0	chunk1023	CTCHeroReceiveItems	OnSerialise	608	OVERLONG	split	508	the catalog's 608 bytes also cover two separate functions 0x007CBAB0 and 0x007CBAE0 (chunk 1023 SPLITS.tsv)
 0074b77c	chunk1023	CTCCreatureGenerator	SpawnInArea	388	PHANTOM	skip	0	interior of the landed 0x0074B770 CTCCreatureGenerator::InitialiseCreatureGenerator; not a function start (chunk 1023)
+007cd390	chunk1024	CTCMultiStrike	CTCMultiStrike	832	OVERLONG	split	796	`ret 4` at 0x007CD698 + its 4-entry case table to 0x007CD6AB; the catalog extent also spans unreferenced 0x007CD6B0 (11) and 0x007CD6C0 (3) (chunk 1024 SPLITS.tsv)

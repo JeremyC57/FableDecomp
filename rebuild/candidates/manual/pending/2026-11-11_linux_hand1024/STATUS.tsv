@@ -1,0 +1,9 @@
+address	name	grade	grades_used	note
+00966da0	CAIStateGroup_TavernServer::GetServingPoint	RELOCATION_MATCH	1	signed long GFRandom index; list of live tables
+00967d40	CAIStateGroup_TavernServer::Update	RELOCATION_MATCH	1	same-TU WanderWithinTavern / FreeServingPoint / WalkToBar / WalkToServingPoint bodies
+006b3b80	CEnvironment::LightingFlash	RELOCATION_MATCH	1	catalog placeholder CEnvironment_UpdateThunder; entry test, named CCharString, 0.0 > chance clamp
+006e2ed0	CTCTalk::GetCurrentLipSyncFrameData	RELOCATION_MATCH	1	catalog placeholder CViewBase_ProcessLipSync; early return false after empty()
+007cd390	CTCMultiStrike::CTCMultiStrike	RELOCATION_MATCH	1	SPLITS 796 (gsplit); GetEffectFromString same-TU body; case 0 + identical default
+0080cd40	CTCDExplosion::UpdateHitThings	DIFFER	0	not graded: structural draft in differ/ (filters, vector copy, CTCDExplosion members unmodelled)
+006cbac0	CTCCreatureNavigation::GetNextNavPosOnRoute	DIFFER	0	not graded: structural draft in differ/ (creature speed virtuals 79-86, navigator slots 3-5)
+006cbe80	CTCCreatureNavigation::GetNearestFleePositionBehindCover	DIFFER	0	not graded: structural draft in differ/ (world-map region, cover filter / compare, fast inverse sqrt)

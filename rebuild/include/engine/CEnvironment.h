@@ -79,6 +79,16 @@ public:
     // in retail at 0x006B3800 (`ret 10h`; the ctor pushes channel, 2, theme index, the def's EnvChangeSecs). Declaration only.
     void TransitionToTheme(long channel, long priority, long theme, float time);   // 0x006B3800
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_LIGHTINGFLASH
+    // Opt-in (chunk 1024, row 0x006B3B80): Ego_r.pdb / FableWin.pdb ?LightingFlash@CEnvironment@@AAEXXZ (private; FableWin 0x0244E310
+    // directly before ?Update@CEnvironment@@QAEXM@Z 0x0244E500, as retail 0x006B3B80 sits before SetWeightedThemes 0x006B3E60 / Update
+    // 0x006B3FF0, which calls it third after UpdateSunAndMoonPositions and UpdateWind) and the public
+    // ?TransitionToThemeAllChannels@CEnvironment@@QAEXJJM@Z (retail 0x006B38D0, landed). Declarations only.
+    void TransitionToThemeAllChannels(long priority, long global_theme_index, float duration);   // 0x006B38D0
+private:
+    void LightingFlash();                                        // 0x006B3B80
+public:
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_RENDERUPDATE
     // Per-TU opt-in (chunk 767, row 0x01229390): Ego_r.pdb / FableWin.pdb ?RenderUpdate@CEnvironment@@QAEXM@Z, retail 0x006B42F0
     // (ret 4; the only registrant of the atexit stub 0x01229390 for its function-local static interpolated_theme).
@@ -127,7 +137,22 @@ public:
 #else
     unsigned char                        PriorityStackChannels[0xc];  // +0x48 CArray<NEnvironmentInternal::CEnvironmentThemePriorityStack>
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_WEATHERSCALERS
+    // Opt-in (chunk 1024, row 0x006B3B80 LightingFlash): the four weather strengths of the game tick state's first blended theme
+    // (CBlendedEnvironmentTheme::Scalers, Ego_r +0x134 of the theme) that retail reads in place: +0x1C0 (GetSnowStrength 0x006B2BE0
+    // `fld [ecx+1C0h]`), +0x1C4 (GetRainStrength 0x006B2BD0 `fld [ecx+1C4h]`), +0x1C8 (the third precipitation strength tested by
+    // IsEnvironmentRequiringWeatherMasks 0x006B2C00) and +0x1CC (the lightning frequency LightingFlash adds to its flash chance).
+    // Names after the CEnvironmentThemeDef fields they blend (RainStrength, SnowStrength, MistMaxAlpha, LightningFrequency; descriptive
+    // as members here). Same size and offsets as the opaque array.
+    unsigned char                        GameTickState[0x16c]; // +0x54 CEnvironmentGameTickState (up to the weather scalers)
+    float                                SnowStrength;       // +0x1c0
+    float                                RainStrength;       // +0x1c4
+    float                                MistStrength;       // +0x1c8
+    float                                LightningFrequency; // +0x1cc
+    unsigned char                        GameTickStateRest[0xc20 - 0x17c]; // +0x1d0
+#else
     unsigned char                        GameTickState[0xc20]; // +0x54 CEnvironmentGameTickState
+#endif
     unsigned char                        PrevGameTickState[0xc20]; // +0xc74 CEnvironmentGameTickState
     unsigned char                        InterpolatedEnvironmentParams[0xc0]; // +0x1894 CIDrawEnvironmentParams
 #ifdef FABLE_RETAIL_CENVIRONMENT_THEMESTACKS

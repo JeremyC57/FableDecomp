@@ -392144,6 +392144,41 @@ $catalog = @(
         TestSource = '00/b6/CEngineLandscapeRenderer_BuildBlendingTables_00b67270_test.cpp'
         PassPattern = '00b67270_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b3b80'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_LightingFlash_006b3b80.cpp'
+        TestSource = '00/6b/CEnvironment_LightingFlash_006b3b80_test.cpp'
+        PassPattern = '006b3b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2ed0'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_GetCurrentLipSyncFrameData_006e2ed0.cpp'
+        TestSource = '00/6e/CTCTalk_GetCurrentLipSyncFrameData_006e2ed0_test.cpp'
+        PassPattern = '006e2ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cd390'
+        Module = 'CTCMultiStrike'
+        Source = '00/7c/CTCMultiStrike_CTCMultiStrike_007cd390.cpp'
+        TestSource = '00/7c/CTCMultiStrike_CTCMultiStrike_007cd390_test.cpp'
+        PassPattern = '007cd390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00966da0'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_GetServingPoint_00966da0.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_GetServingPoint_00966da0_test.cpp'
+        PassPattern = '00966da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00967d40'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_Update_00967d40.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_Update_00967d40_test.cpp'
+        PassPattern = '00967d40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

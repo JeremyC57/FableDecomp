@@ -233,6 +233,12 @@ public:
     const CEnvironment& PeekEnvironment()const { return *PEnvironment_ptr; }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CWORLD_GAMESCRIPTINTERFACE
+    // Opt-in (chunk 1024, row 0x006E2ED0 CTCTalk::GetCurrentLipSyncFrameData): Ego_r.pdb / FableWin.pdb
+    // ?GetGameScriptInterface@CWorld@@QBEAAVCGameScriptInterface@@XZ, inline in retail (`mov ecx,[eax+38h]` straight after GetWorld,
+    // then the IsInMovieSequence slot +0x62C; as the landed CTCLook::IsInsideAnimationRange 0x00751BC0). No layout change.
+    CGameScriptInterface& GetGameScriptInterface() const { return *PGameScriptInterface_ptr; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_MESSAGEEVENTMANAGER
     // Chunk 764 (row 0x0096DBC0 CCreatureAction_ScreamerIntoAggressive::Initialise): FableWin.pdb
     // ?GetMessageEventManager@CWorld@@QAEAAVCMessageEventManager@@XZ, inline in retail (`call GetWorld ; mov ebx,[eax+60h]` before the

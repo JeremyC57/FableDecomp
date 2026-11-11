@@ -2749,3 +2749,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (agentNF9, 2026-11-11) PeekDefinition is out of line in retail for some classes (CThingDeadCreature 0x00835B90, CThingPhysicalSwitch 0x0083D900, CThingSwitch 0x0083C1E0) and expanded for others (CThingBuilding, CThingObject, CThingMarker, CThingVillage): check for an out-of-line copy before writing it inline.
 - (agentNF9, 2026-11-11) All GetDef<T> bodies are byte-identical (98 bytes), so catalog labels on them mean nothing; FableWin.pdb's per-TU COMDAT run, matched against retail's COMDAT run, proves T.
 - (agentNF9, 2026-11-11) A uchar member assigned from a bool def field needs `!= 0` to get retail's `test al,al ; setne` (CThingHolySite PlayerStart).
+- (chunk 1024, 2026-11-11) Signed `long` index from GFRandom(n, seed) keeps the remainder in eax for the list walk; unsigned gave edx (0x00966F1D).
+- (chunk 1024, 2026-11-11) `if (0.0 > x) x = 0.0;` gives `fld 0.0 ; fcomp st(1) ; test ah,41h` (0x006B3E33).
+- (chunk 1024, 2026-11-11) `if (!(a > 0.0f || b >= 0.0)) return;` reproduces the two-test entry of 0x006B3B86.
+- (chunk 1024, 2026-11-11) A named CCharString before the call orders the sample-bank read after its constructor (0x006B3D70).
+- (chunk 1024, 2026-11-11) FABLE_RETAIL_CARRAY (operator[] through begin()) gives the `[edi+eax]` operand order (0x006B3DF3).
+- (chunk 1024, 2026-11-11) An early `if (v.empty()) return false;` keeps the vector-dtor + return-false block inline; `if (!empty()) {...}` moves it to the end (0x006E3081).

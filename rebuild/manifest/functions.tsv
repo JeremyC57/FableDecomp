@@ -16536,7 +16536,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006b38d0	TransitionToThemeAllChannels	CEnvironment	__thiscall	void	4	CEnvironment *,long,long,float	1	yes	accepted									
 006b3950	TransitionToDefaultThemeAllChannels	CEnvironment	__thiscall	void	3	CEnvironment *,long,float	1	yes	accepted									
 006b3b30	ConsoleRestoreDefaultTheme	CEnvironment	unknown	undefined	0		0	yes	accepted									
-006b3b80	CEnvironment_UpdateThunder	_global	unknown	undefined	0		0	yes	accepted									
+006b3b80	LightingFlash	CEnvironment	unknown	undefined	0		0	yes	accepted									
 006b3e60	SetWeightedThemes	CEnvironment	unknown	undefined	0		0	yes	accepted									
 006b3ff0	Update	CEnvironment	__thiscall	void	2	CEnvironment *,float	1	yes	accepted									
 006b42f0	RenderUpdate	CEnvironment	__thiscall	void	2	CEnvironment *,float	1	yes	accepted									
@@ -17490,7 +17490,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e2d30	IsSpeechSamplePlaying	CTCTalk	unknown	undefined	0		0	yes	accepted									
 006e2dc0	IsSpeechSampleLoadedAndPlaying	CTCTalk	__thiscall	bool	1	CTCTalk *	1	yes	accepted									
 006e2e60	StopCurrentSpeech	CTCTalk	__thiscall	void	1	CTCTalk *	1	yes	accepted									
-006e2ed0	CViewBase_ProcessLipSync	_global	unknown	undefined	0		0	yes	accepted									
+006e2ed0	GetCurrentLipSyncFrameData	CTCTalk	unknown	undefined	0		0	yes	accepted									
 006e3180	GetAttitude	CTCTalk	__thiscall	EConversationAttitude	1	CTCTalk *	1	yes	accepted									
 006e31e0	OnDialogueStart	_global	__fastcall	bool	4	CWorld *,CThing *,ulong,EDialogueLayer	1	yes	accepted									
 006e3440	UpdateDialogueElement	NSpeechGainManager	__fastcall	bool	3	CActiveDialogueInfo *,long,vector<NSpeechGainManager::CDialogueLayerDef,std::allocator<NSpeechGainManager::CDialogueLayerDef>_> *	1	yes	accepted									
@@ -32566,7 +32566,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00967930	PickUpJug	CAIStateGroup_TavernServer	__thiscall	bool	1	CAIStateGroup_TavernServer *	1	yes	accepted									
 00967a20	PutDownJug	CAIStateGroup_TavernServer	__thiscall	bool	1	CAIStateGroup_TavernServer *	1	yes	accepted									
 00967b40	FillTankard	CAIStateGroup_TavernServer	__thiscall	bool	1	CAIStateGroup_TavernServer *	1	yes	accepted									
-00967d40	?Update@CAIStateGroup_TavernServer@@MAEXXZ	CAIStateGroup_TavernServer	__thiscall	void	1	CAIStateGroup_TavernServer *	1	yes	accepted									
+00967d40	Update	CAIStateGroup_TavernServer	__thiscall	void	1	CAIStateGroup_TavernServer *	1	yes	accepted									
 00968040	`scalar_deleting_destructor'	CCreatureAction_PickUpJug	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\96\CEngineSubPrimitiveText_scalardeletingdestructor_00968040.cpp
 00968070	`scalar_deleting_destructor'	CCreatureAction_PutDownJug	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\96\CLandscapeBackgroundPatch_vectordeletingdestructor_00968070.cpp
 00968090	ReplaceJug	CTCTavernJug	__thiscall	void	1	CTCTavernJug *	1	yes	accepted									

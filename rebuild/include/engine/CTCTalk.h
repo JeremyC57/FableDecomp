@@ -30,6 +30,18 @@ public:
 #endif
 #endif
     void StopCurrentSpeech();
+#ifdef FABLE_RETAIL_CTCTALK_LIPSYNC
+    // Opt-in (chunk 1024, row 0x006E2ED0): Ego_r.pdb / FableWin.pdb private members ?GetSpeechBank@CTCTalk@@ABEABVCASoundBank@@XZ
+    // (inline in retail: `mov eax,[esi+24h] ; test eax,eax ; jne` else CTCBase::PeekSampleBank 0x00686D70), ?GetPLipSyncBank@CTCTalk@@ABEPBVCLipSyncDataBank@@XZ
+    // (out of line in retail at 0x006E2860, after GetCurrentSpeechDuration 0x006E2840 as in the Ego_r donor order; the row defines
+    // its body, the CTCTalk TU's) and ?GetCurrentLipSyncFrameData@CTCTalk@@AAE_NAAVCLipSyncFrameData@@@Z (retail 0x006E2ED0, called by
+    // the talk update at 0x006E3C65 with a CLipSyncFrameData local). Needs FABLE_RETAIL_CTCBASE_PEEKSAMPLEBANK.
+private:
+    const CASoundBank& GetSpeechBank() const { return PSpeechBank ? *PSpeechBank : PeekSampleBank(); }
+    const class CLipSyncDataBank* GetPLipSyncBank() const;               // 0x006E2860
+    bool GetCurrentLipSyncFrameData(class CLipSyncFrameData& frame_data);   // 0x006E2ED0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCTALK
     // Chunk 756 (row 0x008AF6E0): Ego_r.pdb ?DoesSpeechExist@CTCTalk@@QAE_NK@Z (0x006E2910).
     bool DoesSpeechExist(unsigned long textGroup);

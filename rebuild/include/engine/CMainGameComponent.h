@@ -163,6 +163,13 @@ protected:
 public:
 #endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_SAMPLEBANK_WORLDSEED
+    // Opt-in (chunk 1024, row 0x006B3B80 CEnvironment::LightingFlash): Ego_r.pdb ?GetSampleBank@CMainGameComponent@@QBEAAVCASoundBank@@XZ
+    // and ?GetWorldSeed@CMainGameComponent@@QBEPAKXZ, inline in retail (the caller reads PSampleBank +0x10 in place and forms
+    // `PMainGameComponent + 0x1613C` for the GFFloatRandom seed, 0x006B3CEB / 0x006B3D8C).
+    CASoundBank& GetSampleBank() const { return *PSampleBank; }
+    unsigned long* GetWorldSeed() const { return const_cast<unsigned long*>(&WorldSeed); }
+#endif
     static long __fastcall GetConstantFPS() { return ConstantFPS; }
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT
     // Retail opt-in (chunk 728, row 0x0074B770): Ego_r.pdb (0x00415162) / FableWin.pdb
