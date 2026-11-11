@@ -1,0 +1,13 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+007d4bd0	??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z	the landed row 0x007D4BD0's own leaf (Ego_r.pdb / FableWin.pdb name set, literal 'CTavernGameCoinGolfDef'); ProcessInput 0x007D3820 calls it	?GetSubDef@CDefClassBase@@QAE_NPAUCCoinGolfDefPointer@@@Z (reloc_bindings, from 0x007D3700)
+007f39a0	?SetPParent@CTCLightningNode@@QAEXAAVCThing@@@Z	LABELS.tsv	unattributed AssignTarget_007f39a0 (landed rebuild/src/compiled/00/7f/unattributed_AssignTarget007f39a0_007f39a0.cpp)
+007f39f0	?SetPSourceOfFaction@CTCLightningNode@@QAEXPBVCThing@@@Z	LABELS.tsv	unattributed AssignTarget_007f39f0
+007f3a40	?SetPSourceOfHit@CTCLightningNode@@QAEXPAVCThing@@@Z	LABELS.tsv	unattributed AssignTarget_007f3a40
+007f3bb0	??$GetDef@VCLightningDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCLightningDef@@@@@Z	LABELS.tsv	CDefinitionManager::GetDef_007f3bb0 (landed)
+007f4780	?Reset@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@QAEXPAVCLinearSpline@NBBBMaths@@@Z	LABELS.tsv	CCountedPointer_007f3fb0::Reset (landed)
+00a58130	?ProcessPoints@CLinearSpline@NBBBMaths@@QAEXJ@Z	LABELS.tsv	CPSCSplineBase_GenerateCurvePoints (catalog)
+007f23d0	?OnInitialActivate@CTCLightningOrb@@UAEXXZ	LABELS.tsv	CTCLightningOrb::LoadDefAndFlagAppearance (landed, descriptive)
+007f24e0	?FrameUpdate@CTCLightningOrb@@UAEXXZ	vtable 0x01240A2C slot 9; Ego_r.pdb / FableWin.pdb spell it virtual (UAE)	?FrameUpdate@CTCLightningOrb@@QAEXXZ (landed leaf)
+00687d00	?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z	Ego_r.pdb name (shared CInputProcessGameBase.h, sibling 0x007CF9A0); vland RELOC_NAME warning only	CInputProcessGameBase::GetEventGameActionVector (label)
+00a0d390	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ	shared CProcessedInput.h opt-in (siblings 0x007CF9A0 / 0x007D8570); vland RELOC_NAME warning only	NScript::CV_SickChildScript::CWomanToAttract::Init (label)
+00687d80	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@AAM@Z	Ego_r.pdb / FableWin.pdb (as filed by the c2007 hand-back)	?IsGameActionEventInQueue@CInputProcessGameBase@@QAE_NJJPAM@Z
