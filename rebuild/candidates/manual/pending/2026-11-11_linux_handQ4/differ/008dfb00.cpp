@@ -1,0 +1,2 @@
+// NCreatureMode::CModeSummonerLightningOrb::vfunc_3 @ 0x008DFB00 (catalog row, 1001 bytes) -- no source: not reached
+// Grade: NOT_REACHED (0 grades) -- read only (Q3): CModeSummonerLightningOrb::FrameUpdate -- acos (0x00BFEBA2) angle, RotateXY (0x00A13C60), physics virtuals, then a summoner action chosen by a ray test (0x00877C40) built as one of two CCombatAction ctors (0x008CBEA0 / 0x008CBE10); same TU as the matched Guildmaster rows.

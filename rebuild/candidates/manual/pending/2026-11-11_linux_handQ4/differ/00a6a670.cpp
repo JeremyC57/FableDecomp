@@ -1,0 +1,2 @@
+// CPreallocTexturePool::ResizePool @ 0x00A6A670 (catalog row, 1058 bytes) -- no source: not reached
+// Grade: NOT_REACHED (0 grades) -- read only (Q3): texture-pool resize -- two refcount-counting passes, `new CPreallocTexture` (0x4C, vtable 0x0129DC24) expanded ctor twice, vector<CIVCountedPointer> resize via 0x00A6B080 / 0x00A6BCD0, CCountedPointer release blocks; needs CPreallocTexturePool / CPreallocTexture headers.

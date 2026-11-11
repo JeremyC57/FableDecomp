@@ -1,0 +1,2 @@
+// CTCTavernGameCardBase::ProcessInput @ 0x008F12D0 (catalog row, 1095 bytes) -- no source: not reached
+// Grade: NOT_REACHED (0 grades) -- read only (Q3): ProcessInput -- 7-way state switch (byte table 0x008F1710), input queries 0x00687A90 / 0x00687CF0 / 0x00687D00, card-def CCountedPointer releases, inline CRightHandedSet cross products and two clamps; the landed CardBase rows use local models (no shared CTCTavernGameCardBase header).
