@@ -1,0 +1,21 @@
+address	name	evidence
+0047E651	?VideoOptionsChanged@CTCInGameMenu@@QAEXXZ	chunk Q7 (landing cl): Ego_r.pdb name set; matched row (RELOCATION_MATCH)
+0047F30F	?VideoOptionsNotAccepted@CTCInGameMenu@@QAEXXZ	chunk Q7 (landing cl): Ego_r.pdb name set; matched row
+0047E9AE	?GlobalUpdate@CTCInGameMenu@@UAEX_N@Z	chunk Q7 (landing cl): Ego_r.pdb name set (virtual, UAE); matched row
+00697490	?IsPosCameraInsideThing@CGameCameraManager@@QBE_NABVCThing@@ABVC3DVector@@@Z	chunk Q7 (landing cl): Ego_r.pdb name set (thing by reference, not pointer as the parked drafts had); matched row
+0086BFB0	?TransferBinaryIn@CRandomAppearanceMorph@@QAEXAAVCMemoryDataInputStream@@@Z	chunk Q7 (landing cl): Ego_r.pdb name set; matched row
+00A1A7E0	?GetIntersectionPointsBetweenNodes@CNavigatorAStar@@ABE?AU?$pair@VC2DVector@@V1@@std@@ABVCANavQuadTreeNode@@0M@Z	chunk Q7 (landing cl): manifest functions.tsv name + Ego_r.pdb name set; callee of 0x00A1CC30 (the parked draft called it GetConnectingPoints with pointer arguments)
+0043DBD0	??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z	chunk Q7 (landing cl): reloc_bindings (3) + Ego_r.pdb; called by 0x0047E9AE on the GetPControlledCreature result (the parked draft called it as IS_THING_ALIVE<CThing*>)
+0041CC14	?GetBackBufferWidth@CUIScreenUnitConverter@NUISystem@@SIMXZ	chunk Q7 (landing cl): reloc_bindings + Ego_r.pdb (static __fastcall); the dialog rows called it GetScreenWidth
+0041CC2B	?GetBackBufferHeight@CUIScreenUnitConverter@NUISystem@@SIMXZ	chunk Q7 (landing cl): reloc_bindings; the dialog rows called it GetScreenHeight
+0041CF47	?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ	chunk Q7 (landing cl): reloc_bindings + Ego_r.pdb (const)
+00487DC0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	chunk Q7 (landing cl): reloc_bindings (48) + Ego_r.pdb
+00449970	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	chunk Q7 (landing cl): Ego_r.pdb non-const overload (the const one is 0x00449960 per landed 0x0047E941)
+00686D40	?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ	chunk Q7 (landing cl): reloc_bindings + Ego_r.pdb (protected, returns a reference)
+004C73D0	?GetPos@CThing@@QBEABVC3DVector@@XZ	chunk Q7 (landing cl): reloc_bindings (35) + Ego_r.pdb
+004C08C0	?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z	chunk Q7 (landing cl): reloc_bindings + Ego_r.pdb
+0129BA3C	?g_NormaliseEpsilon@@3MB	chunk Q7 (landing cl): reloc_bindings (landed spelling)
+013D27B8	?NoOfStates@CAStarState@CNavigatorAStar@@2JA	chunk Q7 (landing cl): reloc_bindings + labels_chunks718_725 (used by 0x00A1CC30; the parked draft calls it g_AStarStat_b8)
+00582754	?RevertVideoChanges@CTCInventory@@QAEXXZ	chunk Q7 (landing cl): reloc_bindings + Ego_r.pdb / FableWin.pdb; called by 0x0047E9AE
+0047E196	?SaveGame@CTCInGameMenu@@QAEXJ@Z	chunk Q7 (landing cl): Ego_r.pdb name set; called by 0x0047E9AE
+00405F00	?GFIntToWideString@@YI?AVCWideString@@J@Z	chunk Q7 (landing cl): Ego_r.pdb / FableWin.pdb (the only PDB spelling; reloc_bindings also carries IntToWideString / LongToWideString, both invented); called by 0x0047E9AE and the landed 0x0058AF10

@@ -234,6 +234,11 @@ template <class T> class CCountedPointer;
 #endif
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORY_REVERTVIDEOCHANGES
+    // agentQ7 (2026-11-11, row 0x0047E9AE CTCInGameMenu::GlobalUpdate): Ego_r.pdb / FableWin.pdb ?RevertVideoChanges@CTCInventory@@QAEXXZ,
+    // out of line in retail at 0x00582754 (the in-game menu's 15-second video-options timeout calls it). Declaration only.
+    void RevertVideoChanges();                                                                    // 0x00582754
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_PCMENUS
     // Nested opt-in (chunk 867, row 0x00590F0B GetItemsListUIComponentPC; needs FABLE_RETAIL_CTCINVENTORY_QUICKACCESS for the
     // vector include): the PC inventory screen's items page and its per-category list builder, FableWin.pdb / Ego_r.pdb spellings

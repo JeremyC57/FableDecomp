@@ -66,6 +66,12 @@ public:
     void SetDefaultValuesVideo();                                        // 0x004093E0
     void CaptureBackBufferForUIBackground();                             // 0x00406CC0
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYDIALOG
+    // agentQ7 (2026-11-11, row 0x0047E9AE CTCInGameMenu::GlobalUpdate): FableWin.pdb ?SetDisplayDialogOnOptionsChanged@CUserProfileManager@@QAEX_N@Z,
+    // inline in retail (the row writes the byte +0x34 in place twice around Apply / Save). The member (Ego_r.pdb DisplayDialogOnOptionsChanged
+    // +0x34, before the first STLport vector, so the same offset in retail) stays opaque here, as in the SETTERS block's accessors.
+    void SetDisplayDialogOnOptionsChanged(bool display) { reinterpret_cast<bool*>(this)[0x34] = display; }
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
     // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
     // ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ, out of

@@ -1,0 +1,154 @@
+17:02 0047d296 0047d296.cpp ERROR regrade-asis
+17:02 0047e196 0047e196.cpp DIFFER(1211v1211) regrade-asis
+17:02 0047e651 0047e651.cpp ERROR regrade-asis
+17:02 0047e9ae 0047e9ae.cpp ERROR regrade-asis
+17:02 0047f30f 0047f30f.cpp ERROR regrade-asis
+17:02 00563480 00563480.cpp DIFFER(1178v1178) regrade-asis
+17:02 0064ae80 0064ae80.cpp DIFFER(812v812) regrade-asis
+17:02 0064e978 0064e978.cpp DIFFER(910v910) regrade-asis
+17:03 00697490 00697490.cpp DIFFER(475v475) regrade-asis
+17:03 00698170 00698170.cpp DIFFER(693v693) regrade-asis
+17:03 006ad700 006ad700.cpp DIFFER(615v615) regrade-asis
+17:03 006e99b0 006e99b0.cpp DIFFER(852v852) regrade-asis
+17:03 00727220 00727220.cpp DIFFER(732v732) regrade-asis
+17:03 007621c0 007621c0.cpp DIFFER(243v243) regrade-asis
+17:03 00798940 00798940.cpp ERROR regrade-asis
+17:03 0080dc90 0080dc90.cpp DIFFER(242v242) regrade-asis
+17:03 00813d00 00813d00.cpp DIFFER(1372v1372) regrade-asis
+17:03 0084e590 0084e590.cpp DIFFER(593v593) regrade-asis
+17:03 00853670 00853670.cpp DIFFER(445v445) regrade-asis
+17:03 008539c0 008539c0.cpp DIFFER(475v475) regrade-asis
+17:03 0085c470 0085c470.cpp DIFFER(857v857) regrade-asis
+17:03 0086bfb0 0086bfb0.cpp DIFFER(1307v1307) regrade-asis
+17:03 00872110 00872110.cpp DIFFER(447v447) regrade-asis
+17:03 008e5d40 008e5d40.cpp ERROR regrade-asis
+17:03 008f3310 008f3310.cpp ERROR regrade-asis
+17:03 00920dc0 00920dc0.cpp DIFFER(455v455) regrade-asis
+17:03 00927f30 00927f30.cpp DIFFER(1331v1331) regrade-asis
+17:03 0095b9e0 0095b9e0.cpp DIFFER(782v782) regrade-asis
+17:03 00a1ba10 00a1ba10.cpp DIFFER(642v642) regrade-asis
+17:03 00a1cc30 00a1cc30.cpp DIFFER(632v632) regrade-asis
+17:03 00a3c3b0 00a3c3b0.cpp DIFFER(777v777) regrade-asis
+17:03 00ab7b00 00ab7b00.cpp DIFFER(287v287) regrade-asis
+17:03 00aede60 00aede60.cpp DIFFER(796v796) regrade-asis
+17:03 00b45720 00b45720.cpp DIFFER(787v787) regrade-asis
+17:03 00b45cf0 00b45cf0.cpp DIFFER(697v697) regrade-asis
+17:03 00b47390 00b47390.cpp DIFFER(665v665) regrade-asis
+17:03 00b4b8b0 00b4b8b0.cpp DIFFER(421v421) regrade-asis
+17:03 00b6e890 00b6e890.cpp DIFFER(1371v1371) regrade-asis
+17:03 00b9d730 00b9d730.cpp DIFFER(429v429) regrade-asis
+17:03 00bcf040 00bcf040.cpp DIFFER(658v658) regrade-asis
+17:04 0047d296 0047d296.cpp DIFFER(482v482) 0047d296.cpp
+17:04 0047d296 0047d296_v1.cpp DIFFER(482v482) 0047d296_v1.cpp
+17:04 0047d296 0047d296_v2.cpp DIFFER(482v482) 0047d296_v2.cpp
+17:04 0047d296 0047d296_v3.cpp DIFFER(482v482) 0047d296_v3.cpp
+17:05 0047f30f 0047f30f_v1.cpp ERROR 0047f30f_v1.cpp
+17:05 0047e651 0047e651_v1.cpp ERROR 0047e651_v1.cpp
+17:05 0047e9ae 0047e9ae_v1.cpp ERROR 0047e9ae_v1.cpp
+17:05 0047f30f 0047f30f_v1.cpp RELOCATION_MATCH 0047f30f_v1.cpp
+17:05 0047e651 0047e651_v1.cpp RELOCATION_MATCH 0047e651_v1.cpp
+17:05 0047e9ae 0047e9ae_v1.cpp RELOCATION_MATCH 0047e9ae_v1.cpp
+17:05 0047d296 0047d296_t1.cpp DIFFER(482v482) 0047d296_t1.cpp
+17:06 0047e651 0047e651.cpp DIFFER(752v752) src-final
+17:06 0047e9ae 0047e9ae.cpp DIFFER(860v860) src-final
+17:06 0047f30f 0047f30f.cpp DIFFER(636v636) src-final
+17:07 0047e651 0047e651.cpp RELOCATION_MATCH src-final2
+17:07 0047e9ae 0047e9ae.cpp RELOCATION_MATCH src-final2
+17:07 0047f30f 0047f30f.cpp RELOCATION_MATCH src-final2
+17:07 00bcf040 00bcf040_v1.cpp DIFFER(658v658) 00bcf040_v1.cpp
+17:07 00bcf040 00bcf040_v2.cpp DIFFER(658v658) 00bcf040_v2.cpp
+17:07 00bcf040 00bcf040_v3.cpp DIFFER(658v658) 00bcf040_v3.cpp
+17:07 00bcf040 00bcf040_v4.cpp DIFFER(658v658) 00bcf040_v4.cpp
+17:08 00a1ba10 00a1ba10_a.cpp DIFFER(642v642) 00a1ba10_a.cpp
+17:08 00a1ba10 00a1ba10_b.cpp DIFFER(642v642) 00a1ba10_b.cpp
+17:08 00a1ba10 00a1ba10_c.cpp DIFFER(656v642) 00a1ba10_c.cpp
+17:09 00697490 00697490_v1.cpp RELOCATION_MATCH 00697490_v1.cpp
+17:09 00697490 00697490_v2.cpp DIFFER(475v475) 00697490_v2.cpp
+17:09 00697490 00697490_v4.cpp DIFFER(475v475) 00697490_v4.cpp
+17:10 00697490 00697490.cpp RELOCATION_MATCH src-final
+17:10 00853670 00853670_v1.cpp DIFFER(445v445) 00853670_v1.cpp
+17:10 00853670 00853670_v2.cpp DIFFER(445v445) 00853670_v2.cpp
+17:10 00853670 00853670_v3.cpp DIFFER(445v445) 00853670_v3.cpp
+17:10 00853670 00853670_v4.cpp DIFFER(445v445) 00853670_v4.cpp
+17:10 00853670 00853670_v6.cpp DIFFER(445v445) 00853670_v6.cpp
+17:10 00853670 00853670_v7.cpp DIFFER(445v445) 00853670_v7.cpp
+17:11 00853670 00853670_v8.cpp DIFFER(445v445) 00853670_v8.cpp
+17:11 00853670 00853670_v9.cpp DIFFER(445v445) 00853670_v9.cpp
+17:11 00853670 00853670_v10.cpp DIFFER(445v445) 00853670_v10.cpp
+17:11 008539c0 008539c0_a.cpp DIFFER(475v475) 008539c0_a.cpp
+17:11 008539c0 008539c0_b.cpp DIFFER(475v475) 008539c0_b.cpp
+17:11 008539c0 008539c0_c.cpp DIFFER(475v475) 008539c0_c.cpp
+17:11 008539c0 008539c0_d.cpp DIFFER(475v475) 008539c0_d.cpp
+17:12 00698170 00698170_v1.cpp DIFFER(693v693) 00698170_v1.cpp
+17:12 00698170 00698170_v2.cpp DIFFER(693v693) 00698170_v2.cpp
+17:12 00698170 00698170_v3.cpp DIFFER(693v693) 00698170_v3.cpp
+17:12 00698170 00698170_v4.cpp DIFFER(693v693) 00698170_v4.cpp
+17:13 008f3310 008f3310_v1.cpp DIFFER(796v796) 008f3310_v1.cpp
+17:13 008f3310 008f3310_v2.cpp DIFFER(796v796) 008f3310_v2.cpp
+17:13 008f3310 008f3310_v3.cpp DIFFER(796v796) 008f3310_v3.cpp
+17:13 0095b9e0 0095b9e0_v1.cpp DIFFER(782v782) 0095b9e0_v1.cpp
+17:13 0095b9e0 0095b9e0_v2.cpp DIFFER(782v782) 0095b9e0_v2.cpp
+17:13 0095b9e0 0095b9e0_v3.cpp DIFFER(782v782) 0095b9e0_v3.cpp
+17:14 00927f30 00927f30.cpp DIFFER(1331v1331) 00927f30.cpp
+17:14 00927f30 00927f30_a.cpp DIFFER(1321v1331) 00927f30_a.cpp
+17:15 00697490 00697490_hdr.cpp RELOCATION_MATCH 00697490_hdr.cpp
+17:15 00697490 src/00697490.cpp = p/00697490_hdr.cpp RELOCATION_MATCH (copied, not regraded)
+17:17 00563480 00563480.cpp DIFFER(1178v1178) latest-pending-asis
+17:17 0064e978 0064e978.cpp DIFFER(908v910) latest-pending-asis
+17:17 006ad700 006ad700.cpp DIFFER(615v615) latest-pending-asis
+17:17 007621c0 007621c0.cpp DIFFER(235v243) latest-pending-asis
+17:17 0080dc90 0080dc90.cpp DIFFER(246v242) latest-pending-asis
+17:17 008539c0 008539c0.cpp DIFFER(475v475) latest-pending-asis
+17:17 0085c470 0085c470.cpp DIFFER(857v857) latest-pending-asis
+17:17 0086bfb0 0086bfb0.cpp DIFFER(1307v1307) latest-pending-asis
+17:17 00872110 00872110.cpp DIFFER(447v447) latest-pending-asis
+17:17 008e5d40 008e5d40.cpp DIFFER(441v441) latest-pending-asis
+17:17 00920dc0 00920dc0.cpp DIFFER(457v455) latest-pending-asis
+17:17 00927f30 00927f30.cpp DIFFER(1331v1331) latest-pending-asis
+17:17 00ab7b00 00ab7b00.cpp DIFFER(287v287) latest-pending-asis
+17:17 00b4b8b0 00b4b8b0.cpp DIFFER(421v421) latest-pending-asis
+17:17 00b9d730 00b9d730.cpp DIFFER(429v429) latest-pending-asis
+17:17 00b9d730 00b9d730_a.cpp DIFFER(429v429) 00b9d730_a.cpp
+17:17 00b9d730 00b9d730_b.cpp DIFFER(429v429) 00b9d730_b.cpp
+17:17 00b9d730 00b9d730_c.cpp DIFFER(429v429) 00b9d730_c.cpp
+17:18 00b9d730 00b9d730_d.cpp DIFFER(429v429) 00b9d730_d.cpp
+17:18 00b9d730 00b9d730_e.cpp DIFFER(429v429) 00b9d730_e.cpp
+17:18 00a1cc30 00a1cc30_a.cpp RELOCATION_MATCH 00a1cc30_a.cpp
+17:18 00a1cc30 00a1cc30_b.cpp RELOCATION_MATCH 00a1cc30_b.cpp
+17:19 00a1cc30 00a1cc30_c.cpp DIFFER(664v632) 00a1cc30_c.cpp
+17:24 0086bfb0 0086bfb0_hdr.cpp ERROR 0086bfb0_hdr.cpp
+17:30 0086bfb0 0086bfb0_hdr.cpp SRC_FAIL 0086bfb0_hdr.cpp
+17:30 0086bfb0 0086bfb0_hdr.cpp RELOCATION_MATCH 0086bfb0_hdr.cpp
+17:31 006ad700 006ad700_a.cpp DIFFER(615v615) 006ad700_a.cpp
+17:31 006ad700 006ad700_b.cpp DIFFER(615v615) 006ad700_b.cpp
+17:31 006ad700 006ad700_c.cpp DIFFER(615v615) 006ad700_c.cpp
+17:31 006ad700 006ad700_e.cpp DIFFER(615v615) 006ad700_e.cpp
+17:31 006ad700 006ad700_f.cpp DIFFER(615v615) 006ad700_f.cpp
+17:31 006ad700 006ad700_g.cpp DIFFER(615v615) 006ad700_g.cpp
+17:39 0047e9ae 0047e9ae.cpp DIFFER(861v860) names-fix
+17:40 0047e9ae 0047e9ae_n1.cpp SRC_FAIL names-fix-thingalive
+17:40 0047e9ae 0047e9ae_n1.cpp RELOCATION_MATCH names-fix-thingalive2
+17:41 0047e651 0047e651.cpp RELOCATION_MATCH respell
+17:41 0047f30f 0047f30f.cpp RELOCATION_MATCH respell
+17:41 0047e9ae 0047e9ae.cpp RELOCATION_MATCH respell
+# notes (agent Q7): the 17:02-17:03 "ERROR regrade-asis" lines are as-is regrades whose draft had no full // Leaf: (gg.sh passed "-v"
+#   as the leaf, q.py graded the largest function and printed DIFFER on line 2, which the old gg.sh parser missed); their real
+#   results are in bin/<addr>.asis.out (all DIFFER, same length). 0047d296's first one was a Wine first-start timeout.
+# The 17:05 0047f30f/0047e651/0047e9ae _v1 ERROR lines were a relative-path tool error (nothing compiled; not grades).
+# The 17:24 0086bfb0_hdr ERROR was cl spinning on CDefString.h's #error (missing FABLE_RETAIL_CDEFSTRINGTABLE); not a grade.
+2026-11-11T17:44:40Z 0086bfb0 final gall.sh RELOCATION_MATCH (gall.sh now exports FABLE_HDR_OVERLAY; the earlier SRC_FAIL ran without the overlay)
+17:48 0047e651 0047e651_a.cpp SRC_FAIL rework: shared headers
+17:48 0047e651 0047e651_a.cpp RELOCATION_MATCH rework: + ETCInterfaceType.h
+17:49 0047f30f 0047f30f_a.cpp RELOCATION_MATCH rework: shared headers
+17:55 0047e9ae 0047e9ae_a.cpp ERROR rework: shared headers
+17:55 0047e9ae 0047e9ae_a.cpp SRC_FAIL rework: + CYESNO
+17:56 0047e9ae 0047e9ae_a.cpp RELOCATION_MATCH rework: + creature chain, RevertVideoChanges opt-in
+17:57 00697490 00697490_a.cpp RELOCATION_MATCH rework: shared headers
+18:01 0047e651 0047e651.cpp RELOCATION_MATCH final gall.sh with overlay (rework on shared headers)
+18:01 0047e9ae 0047e9ae.cpp RELOCATION_MATCH final gall.sh with overlay (rework on shared headers)
+18:01 0047f30f 0047f30f.cpp RELOCATION_MATCH final gall.sh with overlay (rework on shared headers)
+18:01 00697490 00697490.cpp RELOCATION_MATCH final gall.sh with overlay (rework on shared headers)
+18:01 0086bfb0 0086bfb0.cpp RELOCATION_MATCH final gall.sh with overlay (rework on shared headers)
+# note: the 17:55 0047e9ae ERROR was cl spinning on NUISystem_CYesNo.h's #error (FABLE_RETAIL_CYESNO not defined); the grade timed out with no output.
+18:02 0047e9ae 0047e9ae.cpp RELOCATION_MATCH regrade after rebasing the CTCInventory overlay on the 18:01 repo header
+18:02 00697490 00697490.cpp RELOCATION_MATCH regrade after rebasing the CGameCameraManager overlay on the 18:01 repo header

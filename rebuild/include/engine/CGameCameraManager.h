@@ -98,9 +98,17 @@ template <class T> class CCountedPointer;
 // agentFAM05 (2026-11-11): the forward declaration the camera-point declarations below need.
 class CThing;
 #endif // FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INSIDETHING
+class CThing; class C3DVector;
+#endif
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INSIDETHING
+    // agentQ7 (2026-11-11, row 0x00697490): Ego_r.pdb / FableWin.pdb ?IsPosCameraInsideThing@CGameCameraManager@@QBE_NABVCThing@@ABVC3DVector@@@Z,
+    // public, const, out of line in retail (473 bytes, `ret 8`). Declaration only: no layout change.
+    bool IsPosCameraInsideThing(const CThing& thing, const C3DVector& pos) const;   // 0x00697490
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
 // agentFAM05 (2026-11-11): the two camera-point list members (Ego_r.pdb / FableWin.pdb ?AddCameraPoint@CGameCameraManager@@QAEXAAVCThing@@@Z
 // 0x006991F0 and ?RemoveCameraPoint@CGameCameraManager@@QAEXAAVCThing@@@Z 0x006984A0, both landed). Declarations only.

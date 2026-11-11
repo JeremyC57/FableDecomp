@@ -392798,6 +392798,35 @@ $catalog = @(
         TestSource = '00/86/CRandomAppearanceMorph_TransferBinaryIn_0086bfb0_test.cpp'
         PassPattern = '0086bfb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0047e651'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_VideoOptionsChanged_0047e651.cpp'
+        TestSource = '00/47/CTCInGameMenu_VideoOptionsChanged_0047e651_test.cpp'
+        PassPattern = '0047e651_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047e9ae'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_GlobalUpdate_0047e9ae.cpp'
+        TestSource = '00/47/CTCInGameMenu_GlobalUpdate_0047e9ae_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0047e9ae_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047f30f'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_VideoOptionsNotAccepted_0047f30f.cpp'
+        TestSource = '00/47/CTCInGameMenu_VideoOptionsNotAccepted_0047f30f_test.cpp'
+        PassPattern = '0047f30f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00697490'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_IsPosCameraInsideThing_00697490.cpp'
+        TestSource = '00/69/CGameCameraManager_IsPosCameraInsideThing_00697490_test.cpp'
+        PassPattern = '00697490_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

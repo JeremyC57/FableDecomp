@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0047e651   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0047e651   RELOCATION_MATCH PASS   VideoOptionsChanged
+0047e9ae   RELOCATION_MATCH PASS   GlobalUpdate
+0047f30f   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0047f30f   RELOCATION_MATCH PASS   VideoOptionsNotAccepted
+00697490   RELOCATION_MATCH PASS   IsPosCameraInsideThing
+
+WINS: 4
+  0047e651 RELOCATION_MATCH CTCInGameMenu::?VideoOptionsChanged@CTCInGameMenu@@QAEXXZ
+  0047e9ae RELOCATION_MATCH CTCInGameMenu::?GlobalUpdate@CTCInGameMenu@@UAEX_N@Z
+  0047f30f RELOCATION_MATCH CTCInGameMenu::?VideoOptionsNotAccepted@CTCInGameMenu@@QAEXXZ
+  00697490 RELOCATION_MATCH CGameCameraManager::?IsPosCameraInsideThing@CGameCameraManager@@QBE_NABVCThing@@ABVC3DVector@@@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCInGameMenu_VideoOptionsChanged_0047e651
+  CTCInGameMenu_GlobalUpdate_0047e9ae
+  CTCInGameMenu_VideoOptionsNotAccepted_0047f30f
+  CGameCameraManager_IsPosCameraInsideThing_00697490

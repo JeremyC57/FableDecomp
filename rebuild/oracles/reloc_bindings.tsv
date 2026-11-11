@@ -38989,3 +38989,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?OnInitialActivate@CTCTavernGame@@UAEXXZ	005ea650	008ef1a0
 ?OnSerialise@CTCTavernGame@@UAEXAAVCPersistContext@@_N@Z	005ea8e0	008f0920
 ?Alloc@CPSCRenderMesh@NParticleEngine@@SIPAVCPSCBase@2@XZ	00af7d80	00b05ab0
+?VideoOptionsChangedConfirmed@@YIXXZ	0047d9e3	0047e651
+?SaveGame@CTCInGameMenu@@QAEXJ@Z	0047e196	0047e9ae
+?VideoOptionsNotAcceptedConfirmed@@YIXXZ	0047e941	0047f30f
