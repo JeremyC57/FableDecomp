@@ -1,0 +1,11 @@
+address	name	evidence
+0x004CAA00	?ConstructFromLevelScript@CThing@@UAE_NPBD@Z	Ego_r.pdb 0x004CD4E0; CThing vtable 0x01239ABC slot 4; literals "CThing: Construct From Level Script 1/2/3"
+0x004CA230	?CreateSerialiseCreatableTCs@CThing@@IAEXABVCCharString@@@Z	Ego_r.pdb 0x004CC640 + FableWin.pdb 0x01CF0320 (protected; load twin of SaveSerialiseCreatableTCs 0x004C72D0); called with the level-script text at 0x004CAE62; body parses CreateTC "<name>"; lines
+0x0051E2C0	?GetLevelBeingLoaded@CThingManager@@QBEJXZ	Ego_r.pdb 0x005281F0 donor order GetLevelBeingLoaded / GetSerialiseVersion / IsSerialisingGameState = retail 0x0051E2C0 / 0x0051E2D0 / 0x0051E2E0; body mov eax,[ecx+0DCh] (LevelBeingLoaded)
+0x0061AD60	?DrawActiveTestQuests@CTCInventoryQuests@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	Ego_r.pdb 0x005987B0 (after GetTestQuestsToDisplay 0x005982E0 = retail 0x0061A8A0 which it calls); sole caller DrawPreparePrimitivesForRendering 0x0061B518; literals "Test Quest Mode" / "Selected HSP:"
+0x005BCAFE	?Draw2DText@CTCInventoryBase@NInventory@@SIXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@M_N@Z	Ego_r.pdb 0x0061F9FC (public static __fastcall); called by 0x005BCE49 DrawInventoryText and by 0x0061AD60 with ecx=pos, edx=text, font/colour/0.8f/false pushed
+0x005BCE49	?DrawInventoryText@CTCInventoryBase@NInventory@@QAEXVC2DVector@@ABVCFontBank@@ABVCWideString@@W4ETextLayout@2@ABVCRGBColour@@_N@Z	Ego_r.pdb 0x0061FD48 + FableWin.pdb; ret 1Ch; landed body (layout 1/2 shifts)
+0x009DDA50	?Draw2DBoxColours@CRenderManager2D@@QAE_NABVC2DBoxF@@QBVCRGBColour@@K@Z	Ego_r.pdb 0x00B31770 + FableWin.pdb 0x030E2A80 (array parameter, QBV); landed body (four corner colours)
+0x004AF610	?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z	Ego_r.pdb 0x004B4930 + FableWin.pdb 0x01C53CE0 (const); called on the singleton at 0x0061B10A
+0x007D6870	?ProcessInput@CTCTavernGameCardPairs@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z	Ego_r.pdb 0x007D3BC0 + FableWin.pdb 0x02749060; vtable 0x0126F6FC slot 28 (row parked)
+0x008F12D0	?ProcessInput@CTCTavernGameCardBase@@UAEXABVCInputEvent@@AAVCProcessedInput@@PAVCInputProcessTavernGame@@@Z	FableWin.pdb 0x02AEF830 + Ego_r.pdb 0x00916B30; vtables 0x01288294 / 0x0126F5B4 slot 28
