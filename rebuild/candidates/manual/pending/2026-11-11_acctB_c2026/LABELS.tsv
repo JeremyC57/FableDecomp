@@ -1,0 +1,29 @@
+address	name	evidence
+0x0092DA20	?Update@CAIStateGroup_MinionSleep@@UAEXXZ	vtable 0x0128B140 slot 12 (xref 0x0128B170); Ego_r.pdb donor 0x00950F30 / FableWin.pdb name sets
+0x0094E7B0	?Update@CAIStateGroup_EarthTroll@@MAEXXZ	vtable 0x0128C044 slot 12 (xref 0x0128C074); Ego_r.pdb donor 0x00972EC0 / FableWin.pdb (protected virtual)
+0x0092C520	?IsInSleepTime@CAIStateGroup_MinionSleep@@QBE_NXZ	Ego_r donor order + RELOCATION_MATCH of the body compiled in src/0092da20.cpp (see NAME_FIXES.tsv)
+0x0092D1F0	?FindFreeBed@CAIStateGroup_GoToBed@@IAE_N_N@Z	Ego_r/FableWin; already bound
+0x0092C8A0	?FindFreeBanditBed@CAIStateGroup_GoToBed@@IAE_NXZ	Ego_r/FableWin; already bound
+0x0092CB30	?IsHeroTrespassingPerceived@CAIStateGroup_GoToBed@@IBE_NXZ	Ego_r/FableWin; already bound
+0x0092C3B0	?GetFastTrack@CTCSleep@@QAE_NXZ	Ego_r/FableWin; landed row leaf
+0x0092E300	??0CCreatureAction_GetInBed@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCAnimationEntry@@ABVCCharString@@JJ@Z	Ego_r/FableWin; landed row leaf (inline ctor COMDAT of the MinionSleep TU)
+0x00860060	??0CCreatureAction_GetOutOfBed@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z	Ego_r/FableWin (NAME_FIXES.tsv)
+0x008CC370	??0CCreatureAction_SheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z	Ego_r/FableWin; already bound
+0x008B8590	??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z	Ego_r/FableWin; already bound
+0x00746A70	?StartGetOutOfBedAnimation@CTCBed@@QAEXJ@Z	Ego_r/FableWin; landed row leaf
+0x00833390	?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z	Ego_r/FableWin (NAME_FIXES.tsv)
+0x006BB390	?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z	Ego_r/FableWin (NAME_FIXES.tsv)
+0x006647F0	?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ	Ego_r/FableWin; already bound
+0x006CB6B0	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	Ego_r/FableWin; c2020 header; already bound
+0x005FA740	??9CDefString@@QBE_NPBD@Z	Ego_r; already bound
+0x0094DBC0	?ForceRiseUp@CAIStateGroup_TrollBase@@IAEXXZ	Ego_r (NAME_FIXES.tsv)
+0x0094D930	?IsStillRunnable@CAIStateGroup_TrollBase@@QAE_NXZ	Ego_r; landed row leaf
+0x0094D680	?GetEnemyPredictedPos@CAIStateGroup_TrollBase@@IAE?AVC3DVector@@XZ	Ego_r (NAME_FIXES.tsv)
+0x0094D9C0	?HasEnemyBeenKnockedDown@CAIStateGroup_TrollBase@@IAE_NXZ	Ego_r (NAME_FIXES.tsv)
+0x0094DC40	?ThrowRocks@CAIStateGroup_TrollBase@@IAE?AW4EAIActionReturn@@XZ	Ego_r (NAME_FIXES.tsv)
+0x0094E5F0	??0CCreatureAction_TrollGroundPound@@QAE@AAVCThingCreatureBase@@0@Z	Ego_r/FableWin (NAME_FIXES.tsv)
+0x0091F990	??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	FableWin (NAME_FIXES.tsv)
+0x00733210	?ResetComboChainPos@CTCCombat@@QAEXXZ	Ego_r/FableWin (NAME_FIXES.tsv)
+0x006619F0	?SetLastActionHandedness@CThingCreatureBase@@QAEXW4ECombatAnimationHandedness@@@Z	Ego_r/FableWin; already bound
+0x006622A0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	Ego_r; chunk 802 header; the correct spelling is bound (with seven wrong ones, NAME_FIXES.tsv)
+0x008C78F0	??$GetSubDef@VCTrollBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTrollBattleDef@@@@@Z	Ego_r; already bound

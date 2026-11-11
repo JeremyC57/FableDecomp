@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0092da20   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0092da20   RELOCATION_MATCH PASS   Update
+0094e7b0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0094e7b0   WARN RELOC_NAME: ?ResetComboChainPos@CTCCombat@@QAEXXZ -> 00733210 labelled 'CWADFile::Close'
+0094e7b0   RELOCATION_MATCH PASS   Update
+
+WINS: 2
+  0092da20 RELOCATION_MATCH CAIStateGroup_MinionSleep::?Update@CAIStateGroup_MinionSleep@@UAEXXZ
+  0094e7b0 RELOCATION_MATCH CAIStateGroup_EarthTroll::?Update@CAIStateGroup_EarthTroll@@MAEXXZ
