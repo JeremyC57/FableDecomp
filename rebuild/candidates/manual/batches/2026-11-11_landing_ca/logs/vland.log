@@ -1,0 +1,74 @@
+addr       parity           behav  name
+00462fac   MATCH            PASS   Copy
+004ddaa4   MATCH            PASS   BulletTimeFrameUpdate
+004e0adc   MATCH            PASS   OnInitialActivate
+00644263   MATCH            PASS   ClearPrimitivesIfNecessary
+00a446a0   RELOCATION_MATCH PASS   ThreadEntry
+00ae5c60   RELOCATION_MATCH PASS   vector
+00c088b0   MATCH            PASS   Invoke
+00c2e610   WARN SHARED_HEADER_AVAILABLE CString
+00c2e610   WARN RELOC_NAME: ?Find@CDriverMap@@QAEPAUCDriver@@K@Z -> 00c3abd0 labelled 'CIndexMap_00c3abd0::Get'
+00c2e610   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c2e610   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c2e610   WARN RELOC_NAME: ?MakeUpper@CString@@QAEXXZ -> 00c0c910 labelled 'std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::~list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>'
+00c2e610   WARN RELOC_NAME: ??6CString@@QAIAAV0@ABV0@@Z -> 00c0dea0 labelled 'CString::operator<<(CString const &)'
+00c2e610   WARN RELOC_NAME: ??0CEventTriggerRef@@QAE@PAUCItemDispatcher@@VCString@@_N@Z -> 00c1eee0 labelled 'CItemAction::CItemAction'
+00c2e610   WARN RELOC_NAME: ?InsertDriver@CEventTriggerRef@@QAEXKPAUCDriver@@@Z -> 00c1f4e0 labelled 'CItemAction::Handle'
+00c2e610   RELOCATION_MATCH PASS   AddSampleNameTriggers
+00c35460   MATCH            PASS   Release
+00c3c4b0   MATCH            PASS   SetDesc
+00c51a00   RELOCATION_MATCH PASS   GetEAXProperty
+00c51eb0   WARN RELOC_NAME: ?SetSlotProperty@CEAXFXSlots@@QAEJKKPAXKPAPAU_CHANGES@@@Z -> 00c68f90 labelled 'CEAXListener::SetEffectProperty_00c68f90'
+00c51eb0   RELOCATION_MATCH PASS   SetFXSlotProperty
+00c57490   MATCH            PASS   Close
+00c5c090   RELOCATION_MATCH PASS   MixAdd16Ramp
+00c5d530   RELOCATION_MATCH PASS   MixAdd16Ramp
+00ca53c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca53c0   MATCH            PASS   QueryInterface
+00caa470   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caa470   MATCH            PASS   QueryInterface
+00caf430   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caf430   MATCH            PASS   QueryInterface
+00f29f60   RELOCATION_MATCH PASS   Copy
+
+WINS: 19
+  00462fac MATCH NUISystem::CUILocaleGraphicsDef::?Copy@CUILocaleGraphicsDef@NUISystem@@UAEXPBVCDefClassBase@@@Z
+  004ddaa4 MATCH CTCTargetingAI::?BulletTimeFrameUpdate@CTCTargetingAI@@UAEXXZ
+  004e0adc MATCH CTCGatherPointBase::?OnInitialActivate@CTCGatherPointBase@@UAEXXZ
+  00644263 MATCH NPlayerGui::CDrawMoney::?ClearPrimitivesIfNecessary@CDrawMoney@NPlayerGui@@UAEXXZ
+  00a446a0 RELOCATION_MATCH CSuspendableProcessMicrothread::?ThreadEntry@CSuspendableProcessMicrothread@@CAXPAX@Z
+  00ae5c60 RELOCATION_MATCH std::vector::??0?$vector@UCUnprovenElement_00ae5730@@V?$allocator@UCUnprovenElement_00ae5730@@@std@@@std@@QAE@ABV01@@Z
+  00c088b0 MATCH CVtable_012b1b40::?Invoke@CVtable_012b1b40@@UAEXXZ
+  00c2e610 RELOCATION_MATCH CBankProcessor::?AddSampleNameTriggers@CBankProcessor@@QAEXXZ
+  00c35460 MATCH CEnvelope_012b37dc::?Release@CEnvelope_012b37dc@@UAEXXZ
+  00c3c4b0 MATCH CVtable_012b4f74::?SetDesc@CVtable_012b4f74@@QAEJPBUSNotificationDesc@@@Z
+  00c51a00 RELOCATION_MATCH CEAXManager::?GetEAXProperty@CEAXManager@@QAEJPBU_GUID@@KPAUCEAXVoice@@PAXK@Z
+  00c51eb0 RELOCATION_MATCH CEAXManager::?SetFXSlotProperty@CEAXManager@@QAEJKKPAXKPAUCEAXVoice@@@Z
+  00c57490 MATCH CVtable_012b8ed4::?Close@CVtable_012b8ed4@@UAEXXZ
+  00c5c090 RELOCATION_MATCH CVtable_012b5d40::?MixAdd16Ramp@CVtable_012b5d40@@UAEXPBFPAJFF@Z
+  00c5d530 RELOCATION_MATCH CVtable_012b5de0::?MixAdd16Ramp@CVtable_012b5de0@@UAEXPBFPAJFF@Z
+  00ca53c0 MATCH CBasePin::?QueryInterface@CBasePin@@UAGJABU_GUID@@PAPAX@Z
+  00caa470 MATCH CBaseAllocator::?QueryInterface@CBaseAllocator@@UAGJABU_GUID@@PAPAX@Z
+  00caf430 MATCH CDeferredCommand::?QueryInterface@CDeferredCommand@@UAGJABU_GUID@@PAPAX@Z
+  00f29f60 RELOCATION_MATCH CRegionScriptDef::?Copy@CRegionScriptDef@@UAEXPBVCDefClassBase@@@Z
+
+LANDED 19 wins into src/compiled + tests + catalog + oracle
+  NUISystemCUILocaleGraphicsDef_Copy_00462fac
+  CTCTargetingAI_BulletTimeFrameUpdate_004ddaa4
+  CTCGatherPointBase_OnInitialActivate_004e0adc
+  NPlayerGuiCDrawMoney_ClearPrimitivesIfNecessary_00644263
+  CSuspendableProcessMicrothread_ThreadEntry_00a446a0
+  stdvector_vector_00ae5c60
+  CVtable012b1b40_Invoke_00c088b0
+  CBankProcessor_AddSampleNameTriggers_00c2e610
+  CEnvelope012b37dc_Release_00c35460
+  CVtable012b4f74_SetDesc_00c3c4b0
+  CEAXManager_GetEAXProperty_00c51a00
+  CEAXManager_SetFXSlotProperty_00c51eb0
+  CVtable012b8ed4_Close_00c57490
+  CVtable012b5d40_MixAdd16Ramp_00c5c090
+  CVtable012b5de0_MixAdd16Ramp_00c5d530
+  CBasePin_QueryInterface_00ca53c0
+  CBaseAllocator_QueryInterface_00caa470
+  CDeferredCommand_QueryInterface_00caf430
+  CRegionScriptDef_Copy_00f29f60

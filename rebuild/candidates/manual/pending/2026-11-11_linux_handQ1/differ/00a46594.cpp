@@ -1,0 +1,2 @@
+// GetDefaultVal<CObjectAugmentationParticleSet> @ 0x00A46594 (catalog row, 235 bytes) -- no source: not a function
+// Grade: NOT_A_FUNCTION (0 grades) -- interior of the catalog's std::__linear_insert 0x00A46530 (169 bytes, ends 0x00A465D9): its tail. Not a function start. The extent also covers 0x00A465E0 (17 bytes, wrapper calling 0x00A46350 with two zero arguments) and 0x00A46600 (68 bytes, a __linear_insert-style wrapper calling 0x00A462A0); see SPLITS.tsv.

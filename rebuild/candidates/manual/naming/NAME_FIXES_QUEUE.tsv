@@ -8230,3 +8230,6 @@ land1011bz	00655371	??1?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInf
 land1011bz	00655376	??1?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ	5-byte `jmp 0x00654BD9`	not a catalog row
 land1011bz	0065537b	??1?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ	5-byte `jmp 0x00654C1E`	not a catalog row
 land1011bz	00655380	??1?$CCountedPointer@VCQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ	5-byte `jmp 0x00654C63`	not a catalog row
+land1011ca	00c0c910	CString::MakeUpper (libpk, descriptive)	chunk Q1: body = CString copy-on-write 0x00C0BE20 + MSVCR71 _strupr (import 0x0144002C) on m_pchData; called on a CString by 0x00C2E6D2	~list<CMessageEvent const*> / DtorMsgEventList_A (catalog + landed listCMessageEventcon..._00c0c910.cpp)
+land1011ca	00a446f4	(not a function) catch funclet of ?ThreadEntry@CSuspendableProcessMicrothread@@CAXPAX@Z 0x00A446A0	chunk Q1: EH FuncInfo 0x01369504: one try block, handler 0x00A446F4 catching CASuspendableProcess::CExceptionExit&; `mov eax,0x00A446FA; ret`	Catch@00a446f4 landed as the shape row C00a446f4::M (returns 10766074)
+land1011ca	00c35450	CEnvelope_012b37dc::Stop (libpk, descriptive)	chunk Q1: slot 5 of the envelope vtable 0x012B37DC (m_state +0x10 = 3 done, m_loopsLeft +8 = 0)	CClass_00c35450::ResetPair_00c35450

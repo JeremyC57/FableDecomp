@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c0c910	CString::MakeUpper (libpk, descriptive)	body = CString copy-on-write 0x00C0BE20 + MSVCR71 _strupr (import 0x0144002C) on m_pchData; called on a CString by 0x00C2E6D2	~list<CMessageEvent const*> / DtorMsgEventList_A (catalog + landed listCMessageEventcon..._00c0c910.cpp)
+00a446f4	(not a function) catch funclet of ?ThreadEntry@CSuspendableProcessMicrothread@@CAXPAX@Z 0x00A446A0	EH FuncInfo 0x01369504: one try block, handler 0x00A446F4 catching CASuspendableProcess::CExceptionExit&; `mov eax,0x00A446FA; ret`	Catch@00a446f4 landed as the shape row C00a446f4::M (returns 10766074)
+00c35450	CEnvelope_012b37dc::Stop (libpk, descriptive)	slot 5 of the envelope vtable 0x012B37DC (m_state +0x10 = 3 done, m_loopsLeft +8 = 0)	CClass_00c35450::ResetPair_00c35450

@@ -1,0 +1,35 @@
+address	name	evidence
+004ddaa4	?BulletTimeFrameUpdate@CTCTargetingAI@@UAEXXZ	vtable 0x012411FC slot 10 (CTCBase slot 10); FableWin.pdb 0x01B97954
+004ddaa9	?HasFrameUpdate@CTCTargetingAI@@UBE_NXZ	vtable 0x012411FC slot 8; FableWin.pdb 0x01B9796D
+004e0adc	?OnInitialActivate@CTCGatherPointBase@@UAEXXZ	vtable 0x012421E4 slot 6; Ego_r.pdb 0x004FE449, FableWin.pdb 0x01BAC6A2
+004e0ae1	?IsComponentSerialisable@CTCGatherPointBase@@UBE_NXZ	vtable 0x012421E4 slot 23; Ego_r.pdb 0x0091D7ED, FableWin.pdb 0x01BAC6BE
+004e0ae4	?Init@CTCGatherPointBase@@MAEXXZ	vtable 0x012421E4 slot 29 (target of OnInitialActivate); FableWin.pdb 0x01BAC6CB
+004e0ae5	?OnSerialiseLeaf@CTCGatherPointBase@@MAEXAAVCPersistContext@@@Z	vtable 0x012421E4 slot 30 (ret 4); FableWin.pdb 0x01BAC6D6
+00462fac	?Copy@CUILocaleGraphicsDef@NUISystem@@UAEXPBVCDefClassBase@@@Z	vtable 0x01235344 slot 19; Ego_r.pdb 0x0047CCC5, FableWin.pdb 0x01926C96
+00462fb1	??4CUILocaleGraphicsDef@NUISystem@@QAEAAV01@ABV01@@Z	jmp target of Copy; Ego_r.pdb 0x0047962C, FableWin.pdb 0x01926D24
+00f29f60	?Copy@CRegionScriptDef@@UAEXPBVCDefClassBase@@@Z	CDefClassBase slot 19 cell 0x012FB67C; FableWin.pdb 0x00F9DD40
+00f29f70	??4CRegionScriptDef@@QAEAAV0@ABV0@@Z	jmp target of Copy (implicit assignment, out of line); base assign 0x00431ED0 + four longs
+00644263	?ClearPrimitivesIfNecessary@CDrawMoney@NPlayerGui@@UAEXXZ	vtable 0x0125A544 slot 0; Ego_r.pdb 0x006871B1, FableWin.pdb 0x020E2DB7
+0064427c	?ClearPrimitivesIfNecessary@CDrawRenown@NPlayerGui@@UAEXXZ	vtable 0x0125A550 slot 0 (RTTI); twin of 0x00644263 on PRenown +0x2D4
+00644295	?ClearPrimitivesIfNecessary@CDrawMorality@NPlayerGui@@UAEXXZ	vtable 0x0125A55C slot 0 (RTTI); twin on PMorality +0x2DC
+00a446a0	?ThreadEntry@CSuspendableProcessMicrothread@@CAXPAX@Z	Ego_r.pdb 0x00B9E2A0; entry passed to CreateMicroThread by the landed ctor 0x00A44740
+00ca53c0	?QueryInterface@CBasePin@@UAGJABU_GUID@@PAPAX@Z	IPin vtable 0x012BF3C0 slot 0; strmbase DECLARE_IUNKNOWN (landed AddRef 0x00CA53F0 is slot 1)
+00caa470	?QueryInterface@CBaseAllocator@@UAGJABU_GUID@@PAPAX@Z	IMemAllocatorCallbackTemp table 0x012BF810 slot 0 (landed CBaseAllocator rows name the table)
+00caa480	?AddRef@CBaseAllocator@@UAGKXZ	table 0x012BF810 slot 1
+00caa490	?Release@CBaseAllocator@@UAGKXZ	table 0x012BF810 slot 2
+00caf430	?QueryInterface@CDeferredCommand@@UAGJABU_GUID@@PAPAX@Z	IDeferredCommand table 0x012BF8B8 slot 0 (landed CDeferredCommand rows name the table)
+00caf440	?AddRef@CDeferredCommand@@UAGKXZ	table 0x012BF8B8 slot 1
+00caf450	?Release@CDeferredCommand@@UAGKXZ	table 0x012BF8B8 slot 2
+00c0c910	CString::MakeUpper (descriptive, libpk)	body: copy-on-write 0x00C0BE20 then MSVCR71 _strupr (import 0x0144002C) on m_pchData; called on the sample name by 0x00C2E610
+00c57490	CVtable_012b8ed4::Close (descriptive, libpk)	slot 2 of 0x012B8ED4 / 0x012B8E20: forwards to slot 5 ReleaseBuffer 0x00C579C0
+00c35460	CEnvelope_012b37dc::Release (descriptive, libpk)	slot 4 of 0x012B37DC: forwards to slot 5 0x00C35450
+00c35450	CEnvelope_012b37dc::Stop (descriptive, libpk)	slot 5 of 0x012B37DC: m_state = 3 (done), m_loopsLeft = 0
+00c088b0	CVtable_012b1b40::Invoke (descriptive, libpk)	slot 0 of 0x012B1B40: forwards to slot 0 of the wrapped object +4
+00c3c4b0	CVtable_012b4f74::SetDesc (descriptive, libpk)	state bit 2 ? slot 3 : slot 2 (SetupEventNotification 0x00C3C4E0); caller 0x00C360F9
+00c51a00	CEAXManager::GetEAXProperty (descriptive, libpk)	five-argument getter twin of SetEAXProperty 0x00C4F600; calls 0x00C4E730, returns 0
+00c4e730	CEAXManager::GetListenerProperty (descriptive, libpk)	26-way switch on the id copying from the EAX30LISTENERPROPERTIES block +0x74; ret 0Ch
+00c51eb0	CEAXManager::SetFXSlotProperty (descriptive, libpk)	0x00C68F90 on the +0xE4 object with a change list, then QueueCommit 0x00C51A20
+00c5c090	CVtable_012b5d40::MixAdd16Ramp (descriptive, libpk)	slot 9 of the MMX mix-buffer table 0x012B5D40; calls the MMX ramp kernel 0x00C5BEF0 with 16 blocks
+00c5d530	CVtable_012b5de0::MixAdd16Ramp (descriptive, libpk)	slot 9 of the SSE2 mix-buffer table 0x012B5DE0; calls ScaleAccumulate16Ramp 0x00C5D1F0 with 16 blocks
+00c2e610	CBankProcessor::AddSampleNameTriggers (descriptive, libpk)	called by CBankProcessor::Load 0x00C2EB68; strings 0x012B488C / 0x012B48C4 / 0x012B48B4
+00ae5c60	std::vector<CUnprovenElement_00ae5730>::vector(const vector&)	STLport copy ctor over the 16-byte element of the landed __uninitialized_copy 0x00AE5730 (its only caller)

@@ -38956,3 +38956,13 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z	00668610	00695880
 ?DeleteData@?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@SIXPAX@Z	008ebdd0	008ebe90
 ?DeleteData@?$CCountedPointer@VCActiveEntityScriptBase@@@@SIXPAX@Z	00ce1100	00ce10b0
+??4CUILocaleGraphicsDef@NUISystem@@QAEAAV01@ABV01@@Z	00462fb1	00462fac
+??$__uninitialized_copy@PBUCUnprovenElement_00ae5730@@PAU1@@std@@YIPAUCUnprovenElement_00ae5730@@PBU1@0PAU1@ABU__false_type@0@@Z	00ae5730	00ae5c60
+?GetFileNameWithoutExtension@CString@@QBE?AV1@XZ	00c0e360	00c2e610
+?MakeUpper@CString@@QAEXXZ	00c0c910	00c2e610
+?GetListenerProperty@CEAXManager@@QAEJKPAXK@Z	00c4e730	00c51a00
+?QueueCommit@CEAXManager@@QAEXPAU_CHANGES@@PAUCEAXVoice@@@Z	00c51a20	00c51eb0
+?SetSlotProperty@CEAXFXSlots@@QAEJKKPAXKPAPAU_CHANGES@@@Z	00c68f90	00c51eb0
+?CUnprovenMixKernel_00c5bef0@@YAXPBFKPAJFF@Z	00c5bef0	00c5c090
+?ScaleAccumulate16Ramp@@YAXPBFKPAJFF@Z	00c5d1f0	00c5d530
+??4CRegionScriptDef@@QAEAAV0@ABV0@@Z	00f29f70	00f29f60

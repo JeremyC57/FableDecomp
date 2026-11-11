@@ -1,0 +1,35 @@
+address	name	evidence
+004DDAA4	?BulletTimeFrameUpdate@CTCTargetingAI@@UAEXXZ	chunk Q1 (landing ca): vtable 0x012411FC slot 10 (CTCBase slot 10); FableWin.pdb 0x01B97954
+004DDAA9	?HasFrameUpdate@CTCTargetingAI@@UBE_NXZ	chunk Q1 (landing ca): vtable 0x012411FC slot 8; FableWin.pdb 0x01B9796D
+004E0ADC	?OnInitialActivate@CTCGatherPointBase@@UAEXXZ	chunk Q1 (landing ca): vtable 0x012421E4 slot 6; Ego_r.pdb 0x004FE449, FableWin.pdb 0x01BAC6A2
+004E0AE1	?IsComponentSerialisable@CTCGatherPointBase@@UBE_NXZ	chunk Q1 (landing ca): vtable 0x012421E4 slot 23; Ego_r.pdb 0x0091D7ED, FableWin.pdb 0x01BAC6BE
+004E0AE4	?Init@CTCGatherPointBase@@MAEXXZ	chunk Q1 (landing ca): vtable 0x012421E4 slot 29 (target of OnInitialActivate); FableWin.pdb 0x01BAC6CB
+004E0AE5	?OnSerialiseLeaf@CTCGatherPointBase@@MAEXAAVCPersistContext@@@Z	chunk Q1 (landing ca): vtable 0x012421E4 slot 30 (ret 4); FableWin.pdb 0x01BAC6D6
+00462FAC	?Copy@CUILocaleGraphicsDef@NUISystem@@UAEXPBVCDefClassBase@@@Z	chunk Q1 (landing ca): vtable 0x01235344 slot 19; Ego_r.pdb 0x0047CCC5, FableWin.pdb 0x01926C96
+00462FB1	??4CUILocaleGraphicsDef@NUISystem@@QAEAAV01@ABV01@@Z	chunk Q1 (landing ca): jmp target of Copy; Ego_r.pdb 0x0047962C, FableWin.pdb 0x01926D24
+00F29F60	?Copy@CRegionScriptDef@@UAEXPBVCDefClassBase@@@Z	chunk Q1 (landing ca): CDefClassBase slot 19 cell 0x012FB67C; FableWin.pdb 0x00F9DD40
+00F29F70	??4CRegionScriptDef@@QAEAAV0@ABV0@@Z	chunk Q1 (landing ca): jmp target of Copy (implicit assignment, out of line); base assign 0x00431ED0 + four longs
+00644263	?ClearPrimitivesIfNecessary@CDrawMoney@NPlayerGui@@UAEXXZ	chunk Q1 (landing ca): vtable 0x0125A544 slot 0; Ego_r.pdb 0x006871B1, FableWin.pdb 0x020E2DB7
+0064427C	?ClearPrimitivesIfNecessary@CDrawRenown@NPlayerGui@@UAEXXZ	chunk Q1 (landing ca): vtable 0x0125A550 slot 0 (RTTI); twin of 0x00644263 on PRenown +0x2D4
+00644295	?ClearPrimitivesIfNecessary@CDrawMorality@NPlayerGui@@UAEXXZ	chunk Q1 (landing ca): vtable 0x0125A55C slot 0 (RTTI); twin on PMorality +0x2DC
+00A446A0	?ThreadEntry@CSuspendableProcessMicrothread@@CAXPAX@Z	chunk Q1 (landing ca): Ego_r.pdb 0x00B9E2A0; entry passed to CreateMicroThread by the landed ctor 0x00A44740
+00CA53C0	?QueryInterface@CBasePin@@UAGJABU_GUID@@PAPAX@Z	chunk Q1 (landing ca): IPin vtable 0x012BF3C0 slot 0; strmbase DECLARE_IUNKNOWN (landed AddRef 0x00CA53F0 is slot 1)
+00CAA470	?QueryInterface@CBaseAllocator@@UAGJABU_GUID@@PAPAX@Z	chunk Q1 (landing ca): IMemAllocatorCallbackTemp table 0x012BF810 slot 0 (landed CBaseAllocator rows name the table)
+00CAA480	?AddRef@CBaseAllocator@@UAGKXZ	chunk Q1 (landing ca): table 0x012BF810 slot 1
+00CAA490	?Release@CBaseAllocator@@UAGKXZ	chunk Q1 (landing ca): table 0x012BF810 slot 2
+00CAF430	?QueryInterface@CDeferredCommand@@UAGJABU_GUID@@PAPAX@Z	chunk Q1 (landing ca): IDeferredCommand table 0x012BF8B8 slot 0 (landed CDeferredCommand rows name the table)
+00CAF440	?AddRef@CDeferredCommand@@UAGKXZ	chunk Q1 (landing ca): table 0x012BF8B8 slot 1
+00CAF450	?Release@CDeferredCommand@@UAGKXZ	chunk Q1 (landing ca): table 0x012BF8B8 slot 2
+00C0C910	CString::MakeUpper (descriptive, libpk)	chunk Q1 (landing ca): body: copy-on-write 0x00C0BE20 then MSVCR71 _strupr (import 0x0144002C) on m_pchData; called on the sample name by 0x00C2E610
+00C57490	CVtable_012b8ed4::Close (descriptive, libpk)	chunk Q1 (landing ca): slot 2 of 0x012B8ED4 / 0x012B8E20: forwards to slot 5 ReleaseBuffer 0x00C579C0
+00C35460	CEnvelope_012b37dc::Release (descriptive, libpk)	chunk Q1 (landing ca): slot 4 of 0x012B37DC: forwards to slot 5 0x00C35450
+00C35450	CEnvelope_012b37dc::Stop (descriptive, libpk)	chunk Q1 (landing ca): slot 5 of 0x012B37DC: m_state = 3 (done), m_loopsLeft = 0
+00C088B0	CVtable_012b1b40::Invoke (descriptive, libpk)	chunk Q1 (landing ca): slot 0 of 0x012B1B40: forwards to slot 0 of the wrapped object +4
+00C3C4B0	CVtable_012b4f74::SetDesc (descriptive, libpk)	chunk Q1 (landing ca): state bit 2 ? slot 3 : slot 2 (SetupEventNotification 0x00C3C4E0); caller 0x00C360F9
+00C51A00	CEAXManager::GetEAXProperty (descriptive, libpk)	chunk Q1 (landing ca): five-argument getter twin of SetEAXProperty 0x00C4F600; calls 0x00C4E730, returns 0
+00C4E730	CEAXManager::GetListenerProperty (descriptive, libpk)	chunk Q1 (landing ca): 26-way switch on the id copying from the EAX30LISTENERPROPERTIES block +0x74; ret 0Ch
+00C51EB0	CEAXManager::SetFXSlotProperty (descriptive, libpk)	chunk Q1 (landing ca): 0x00C68F90 on the +0xE4 object with a change list, then QueueCommit 0x00C51A20
+00C5C090	CVtable_012b5d40::MixAdd16Ramp (descriptive, libpk)	chunk Q1 (landing ca): slot 9 of the MMX mix-buffer table 0x012B5D40; calls the MMX ramp kernel 0x00C5BEF0 with 16 blocks
+00C5D530	CVtable_012b5de0::MixAdd16Ramp (descriptive, libpk)	chunk Q1 (landing ca): slot 9 of the SSE2 mix-buffer table 0x012B5DE0; calls ScaleAccumulate16Ramp 0x00C5D1F0 with 16 blocks
+00C2E610	CBankProcessor::AddSampleNameTriggers (descriptive, libpk)	chunk Q1 (landing ca): called by CBankProcessor::Load 0x00C2EB68; strings 0x012B488C / 0x012B48C4 / 0x012B48B4
+00AE5C60	std::vector<CUnprovenElement_00ae5730>::vector(const vector&)	chunk Q1 (landing ca): STLport copy ctor over the 16-byte element of the landed __uninitialized_copy 0x00AE5730 (its only caller)

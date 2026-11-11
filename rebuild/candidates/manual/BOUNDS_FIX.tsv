@@ -227,3 +227,52 @@ address	pool	module	name	length	class	action	new_length	evidence
 007cb8b0	chunk1023	CTCHeroReceiveItems	OnSerialise	608	OVERLONG	split	508	the catalog's 608 bytes also cover two separate functions 0x007CBAB0 and 0x007CBAE0 (chunk 1023 SPLITS.tsv)
 0074b77c	chunk1023	CTCCreatureGenerator	SpawnInArea	388	PHANTOM	skip	0	interior of the landed 0x0074B770 CTCCreatureGenerator::InitialiseCreatureGenerator; not a function start (chunk 1023)
 007cd390	chunk1024	CTCMultiStrike	CTCMultiStrike	832	OVERLONG	split	796	`ret 4` at 0x007CD698 + its 4-entry case table to 0x007CD6AB; the catalog extent also spans unreferenced 0x007CD6B0 (11) and 0x007CD6C0 (3) (chunk 1024 SPLITS.tsv)
+004ddaa4	chunkQ1	CTCTargetingAI	BulletTimeFrameUpdate	16	SPLIT	fix	5	chunkQ1: vtable 0x012411FC slot 10; body ends at the jmp, 0x004DDAA9 is slot 8 (HasFrameUpdate), 0x004DDAAC slot 33
+004ddaa9	chunkQ1		CTCTargetingAI::HasFrameUpdate		NEW_START	note	3	chunkQ1: vtable 0x012411FC slot 8 (mov al,1; ret)
+004ddaac	chunkQ1		CTCTargetingAI vtable slot 33		NEW_START	note	8	chunkQ1: vtable 0x012411FC slot 33 (add ecx,0x25?; jmp 0x00A01B50)
+004e0adc	chunkQ1	CTCGatherPointBase	OnInitialActivate	12	SPLIT	fix	5	chunkQ1: vtable 0x012421E4 slot 6; ends at the jmp
+004e0ae1	chunkQ1		CTCGatherPointBase::IsComponentSerialisable		NEW_START	note	3	chunkQ1: vtable slot 23 (mov al,1; ret); FableWin ?IsComponentSerialisable@CTCGatherPointBase@@UBE_NXZ
+004e0ae4	chunkQ1		CTCGatherPointBase::Init		NEW_START	note	1	chunkQ1: vtable slot 29 (ret); FableWin ?Init@CTCGatherPointBase@@MAEXXZ
+004e0ae5	chunkQ1		CTCGatherPointBase::OnSerialiseLeaf		NEW_START	note	3	chunkQ1: vtable slot 30 (ret 4); FableWin ?OnSerialiseLeaf@CTCGatherPointBase@@MAEXAAVCPersistContext@@@Z
+00f29f60	chunkQ1	CRegionScriptDef	Copy	61	SPLIT	fix	5	chunkQ1: jmp to the adjacent operator=; int3 padding follows
+00f29f70	chunkQ1		CRegionScriptDef::operator=		NEW_START	note	45	chunkQ1: body behind the Copy thunk: CParentDefClassBase::operator= then four longs, ret 4
+00462fac	chunkQ1	NUISystem::CUILocaleGraphicsDef	Copy	56	SPLIT	fix	5	chunkQ1: jmp to the adjacent operator=
+00462fb1	chunkQ1		NUISystem::CUILocaleGraphicsDef::operator=		NEW_START	note	51	chunkQ1: both PDBs ??4CUILocaleGraphicsDef@NUISystem@@QAEAAV01@ABV01@@Z; base assign 0x00431ED0, map +0x3C (0x00462FE4), vector +0x48 (0x0045BC09), HelpRingPic +0x54
+00ca53c0	chunkQ1	CBasePin	QueryInterface	39	SPLIT	fix	15	chunkQ1: IPin vtable 0x012BF3C0 slot 0; jmp [ecx] ends it, int3 pad
+00ca53d0	chunkQ1		unnamed thiscall setter of +0x150/+0x154 (two dwords), ret 8		NEW_START	note	23	chunkQ1: new start behind the pad; not in ROWS
+00caa470	chunkQ1	CBaseAllocator	QueryInterface	48	SPLIT	fix	15	chunkQ1: table 0x012BF810 slot 0
+00caa480	chunkQ1		CBaseAllocator::AddRef		NEW_START	note	16	chunkQ1: table 0x012BF810 slot 1 (jmp [ecx+4])
+00caa490	chunkQ1		CBaseAllocator::Release		NEW_START	note	16	chunkQ1: table 0x012BF810 slot 2 (jmp [ecx+8])
+00caf430	chunkQ1	CDeferredCommand	QueryInterface	78	SPLIT	fix	15	chunkQ1: table 0x012BF8B8 slot 0
+00caf440	chunkQ1		CDeferredCommand::AddRef		NEW_START	note	16	chunkQ1: table 0x012BF8B8 slot 1
+00caf450	chunkQ1		CDeferredCommand::Release		NEW_START	note	16	chunkQ1: table 0x012BF8B8 slot 2
+00caf460	chunkQ1		scalar deleting destructor calling 0x00CAF480		NEW_START	note	30	chunkQ1: push esi .. ret 4
+00c57490	chunkQ1	CVtable_012b8ed4	Close	20	SPLIT	fix	5	chunkQ1: slot 2 of 0x012B8ED4 / 0x012B8E20; int3 pad follows
+00c574a0	chunkQ1		slot 7 of 0x012B8ED4 (lea eax,[ecx+4]; ret)		NEW_START	note	4	chunkQ1: cells 0x012B8E3C / 0x012B8EF0; byte twin of landed 0x00C3AB20
+00c35460	chunkQ1	CEnvelope_012b37dc	Release	51	SPLIT	fix	5	chunkQ1: slot 4 of 0x012B37DC
+00c35470	chunkQ1		CEnvelope_012b37dc slot 1 (ret 8)		NEW_START	note	3	chunkQ1: cell 0x012B37E0
+00c35480	chunkQ1		CEnvelope_012b37dc slot 6 (ret 4)		NEW_START	note	3	chunkQ1: cell 0x012B37F4
+00c35490	chunkQ1		CEnvelope_012b37dc slot 7 (ret 4)		NEW_START	note	3	chunkQ1: cell 0x012B37F8
+00c088b0	chunkQ1	CVtable_012b1b40	Invoke	28	SPLIT	fix	7	chunkQ1: slot 0 of 0x012B1B40
+00c088c0	chunkQ1		slot 0 of table 0x012B1B70 (mov ecx,[esp+4]; call 0x00C0EC90; ret 4)		NEW_START	note	12	chunkQ1: cell 0x012B1B70; byte twin family of landed 0x006A7140
+00c3c4b0	chunkQ1	CVtable_012b4f74	SetDesc	40	SPLIT	fix	18	chunkQ1: called from 0x00C360F9; two tail jumps end it
+00c3c4d0	chunkQ1		CVtable_012b4f74 slot 3 / 7 (mov eax,-9; ret 4)		NEW_START	note	8	chunkQ1: cells 0x012B4F80 / 0x012B4F90
+00644263	chunkQ1	NPlayerGui::CDrawMoney	ClearPrimitivesIfNecessary	75	SPLIT	fix	25	chunkQ1: vtable 0x0125A544 slot 0; ret at 0x0064427B
+0064427c	chunkQ1		NPlayerGui::CDrawRenown::ClearPrimitivesIfNecessary		NEW_START	note	25	chunkQ1: vtable 0x0125A550 slot 0 (PRenown +0x2D4)
+00644295	chunkQ1		NPlayerGui::CDrawMorality::ClearPrimitivesIfNecessary		NEW_START	note	25	chunkQ1: vtable 0x0125A55C slot 0 (PMorality +0x2DC)
+00a446a0	chunkQ1	CSuspendableProcessMicrothread	ThreadEntry	46	SPLIT	fix	158	chunkQ1: one unoptimised function with a try/catch: 0x00A446A0..0x00A4473D; the rows 0x00A446CE / 0x00A446FA / 0x00A44719 and the landed catch funclet 0x00A446F4 are its interior
+00ae5c60	chunkQ1	std::vector	vector	273	SPLIT	fix	87	chunkQ1: ret 4 at 0x00AE5CB4, int3 pad
+00ae5cc0	chunkQ1		three-word zeroing constructor (ret 4)		NEW_START	note	15	chunkQ1: new start; 0x00AE5CD0 / 0x00AE5CE0 / 0x00AE5CF0 / 0x00AE5D40 are byte-identical copies
+00ae5cd0	chunkQ1		three-word zeroing constructor (ret 4)		NEW_START	note	15	chunkQ1: new start
+00ae5ce0	chunkQ1		three-word zeroing constructor (ret 4)		NEW_START	note	15	chunkQ1: new start
+00ae5cf0	chunkQ1		three-word zeroing constructor (ret 4)		NEW_START	note	15	chunkQ1: new start
+00ae5d00	chunkQ1		_Vector_base(n, alloc) over 12-byte elements (ret 8)		NEW_START	note	58	chunkQ1: new start
+00ae5d40	chunkQ1		three-word zeroing constructor (ret 4)		NEW_START	note	15	chunkQ1: new start
+00ae5d50	chunkQ1		wrapper calling 0x00AE5910 std::__copy<pair<CCharString,unsigned long>*> (ret 8)		NEW_START	note	20	chunkQ1: new start
+00ae5d70	chunkQ1		empty function (ret)		NEW_START	note	1	chunkQ1: new start
+008f8f50	chunkQ1	LHNetworkLib::LSocket	Send	927	SPLIT	fix	970	chunkQ1: true extent to the ret 0Ch at 0x008F9317: catch funclet 0x008F92EF + continuation 0x008F92FD belong to it (not authored)
+00a43e80	chunkQ1		scalar deleting destructor of a vector of 12-byte elements (element dtor 0x0099EAE0)		NEW_START	note	69	chunkQ1: new start inside the bogus row 0x00A43E30
+00a43ed0	chunkQ1		jmp 0x00A43CD0 thunk		NEW_START	note	5	chunkQ1: new start
+00a43ee0	chunkQ1		destructor of a vector of 12-byte elements (element dtor 0x0099EAE0)		NEW_START	note	49	chunkQ1: new start
+00a465e0	chunkQ1		wrapper: 0x00A46350(arg, 0, 0), ret 4		NEW_START	note	17	chunkQ1: new start inside the bogus row 0x00A46594
+00a46600	chunkQ1		insertion-sort wrapper calling 0x00A462A0, ret 4		NEW_START	note	68	chunkQ1: new start

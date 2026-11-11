@@ -27,6 +27,12 @@ public:
     void StopSuspendableProcess();
     void TerminateProcess();
     static CASuspendableProcess* FABLE_FASTCALL GetPActiveProcess();
+#ifdef FABLE_RETAIL_CASUSPENDABLEPROCESS_EXCEPTIONEXIT
+    // Retail opt-in (chunk Q1, row 0x00A446A0 CSuspendableProcessMicrothread::ThreadEntry): the nested exception a terminated process
+    // throws (RTTI .?AVCExceptionExit@CASuspendableProcess@@ 0x01397754; Ego_r.pdb CExceptionExit, 1 byte, no members). ThreadEntry's
+    // catch block takes it by reference. A type only: no layout or code change.
+    class CExceptionExit { };
+#endif
     bool  Running;                                                       // +0x04
     bool  StopRunning;                                                   // +0x05
     bool  TerminateUsingExceptions;                                      // +0x06

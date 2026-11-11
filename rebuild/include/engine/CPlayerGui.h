@@ -154,6 +154,14 @@ private: unsigned char _pad_0x04[0x14];                              // +0x04 Wo
     std::list<NPlayerGui::CScreenMessage> ScreenMessages;                // +0x328
     boost::scoped_ptr<NHeroInformationScreens::CManager> PHeroInfoScreensManager;   // +0x32c
     bool DisplayBottomHalfGUI;                                           // +0x330
+#ifdef FABLE_RETAIL_CPLAYERGUI_FRIEND_STAT_DRAWERS
+    // Retail opt-in (chunk Q1, row 0x00644263 NPlayerGui::CDrawMoney::ClearPrimitivesIfNecessary): the stat-bar drawers read the
+    // GUI's private bar pointers in place (PMoney +0x2CC / PRenown +0x2D4 / PMorality +0x2DC: `mov eax,[ecx+4]; mov ecx,[eax+2CCh]`),
+    // so they are friends of CPlayerGui (no accessor exists in either PDB name set). Access only; no layout or code change.
+    friend class NPlayerGui::CDrawMoney;
+    friend class NPlayerGui::CDrawRenown;
+    friend class NPlayerGui::CDrawMorality;
+#endif
 public:
     static CDefPointer<const CPlayerGuiDef> PGuiDef;                     // 0x013B878C
     ~CPlayerGui();                                                       // 0x0043A570 (virtual through the singleton base)

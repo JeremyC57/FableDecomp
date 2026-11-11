@@ -1,0 +1,2 @@
+// OnCreate @ 0x007FA26C (catalog row, 30 bytes) -- no source: not a function
+// Grade: NOT_A_FUNCTION (0 grades) -- function tail (by-value 0x34-byte argument copy 0x007F9730, `call 0x007FA0E0`, `ret 38h`) of an unlisted STLport sort helper instance that starts between 0x007FA225 (end of the catalog's __push_heap 0x007FA160) and here. Not a function start; the label CTCActionUseBuyHouse::OnCreate is propagated.
