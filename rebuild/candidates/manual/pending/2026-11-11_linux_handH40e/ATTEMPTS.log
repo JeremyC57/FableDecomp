@@ -1,0 +1,2 @@
+00e50fd0 H40e g1 work/bb1: for (; !T && true; NSF) -> DIFFER(9882v9885)
+00e50fd0 H40e g2 work/bb3: + !IntroComplete arm first, EntitySetFacingAngleTowardsThing(GetHero(), Me) -> DIFFER(9850v9885)
