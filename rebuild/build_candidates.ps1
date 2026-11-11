@@ -393115,6 +393115,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT200'
         PassPattern = '00ddc070_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d91960'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeRoaming'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCHobbeRoaming_Main_00d91960.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCHobbeRoaming_Main_00d91960_test.cpp'
+        PassPattern = '00d91960_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

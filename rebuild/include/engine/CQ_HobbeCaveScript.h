@@ -79,8 +79,29 @@ public:
     class CCheckTheSilverKeyChest;                                       // Alloc 0x00D91250
     class CInvisibleCage;                                                // Alloc 0x00D91470
 };
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_HOBBEROAMING
+// Retail opt-in (chunk Q12, row 0x00D91960): the nested entity script CHobbeRoaming (Ego_r.pdb, 28 bytes: CEntityScriptBase 0x14,
+// ParentClass +0x14 `CQ_HobbeCaveScript *`, PMasterData +0x18 `CQ_SunnyvaleMasterData *`; the entity offsets equal retail's). Names:
+// Ego_r.pdb / FableWin.pdb ?Main@CHobbeRoaming@CQ_HobbeCaveScript@NScript@@EAEXXZ (private), ?Init@..@@EAEXXZ, ?OnPredicateFail@..@@EAEXXZ,
+// ?GetParentScript@..@@UBEPAVCScriptBase@@XZ, ?Alloc@..@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// (Alloc 0x00D8F4F0). Declarations only.
+class CQ_HobbeCaveScript::CHobbeRoaming : public CEntityScriptBase {
+public:
+    virtual CScriptBase* GetParentScript() const;
+private:
+    virtual void Main();                                                 // 0x00D91960 (slot 1)
+    virtual void Init();
+    virtual void OnPredicateFail();
+protected:
+    CQ_HobbeCaveScript* ParentClass;                                     // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript) == 0x78);
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_HOBBEROAMING
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript::CHobbeRoaming) == 0x1c);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_HOBBECAVESCRIPT_H

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00d91960   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d91960   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d91960 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeRoaming::?Main@CHobbeRoaming@CQ_HobbeCaveScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHobbeCaveScriptCHobbeRoaming_Main_00d91960

@@ -192,7 +192,13 @@ public:
 #ifdef FABLE_RETAIL_C3DVECTOR_DOT_GROUPED
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=(Y*other.Y);dot+=Z*other.Z;dot+=X*other.X;return dot;}
 #else
-#ifdef FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_XYZ
+#ifdef FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_YXZ
+    // Retail opt-in (chunk Q12, row 0x008B6AD0 CCreatureAction_MidAttackSide::Initialise): the dot product as running statements in
+    // Y, X, Z order. There retail forms the Y product first with this->Y on top (0x008B6BBC `fxch st(2) ; fmul st(2)`), then the X
+    // product (`fmul [other.X]`) added onto it, then Z; the one-line default forms the same order with the operand roles swapped and
+    // the X, Y, Z statements form X first. Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=Y*other.Y;dot+=X*other.X;dot+=Z*other.Z;return dot;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_XYZ)
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=X*other.X;dot+=Y*other.Y;dot+=Z*other.Z;return dot;}
 #else
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION

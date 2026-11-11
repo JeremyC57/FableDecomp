@@ -31,6 +31,12 @@ public:
     unsigned char GetG() const { return G; }
     unsigned char GetB() const { return B; }
     unsigned char GetA() const { return A; }
+#ifdef FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
+    // Retail opt-in (chunk Q12, row 0x009DD960 CRenderManager2D::Draw2DLine): Ego_r.pdb / FableWin.pdb ?GetD3DCOLOR@CRGBColour@@QBEKXZ,
+    // inline in retail: the A,R,G,B word packed from the channel bytes (`movzx eax,[R] ; mov ah,[A] ; shl eax,8 ; or eax,G ; shl
+    // eax,8 ; or eax,B` at 0x009DD96E). No layout change.
+    unsigned long GetD3DCOLOR() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CRGBColour)==4);
 #endif

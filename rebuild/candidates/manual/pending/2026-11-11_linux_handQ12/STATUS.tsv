@@ -1,0 +1,41 @@
+address	name	grade	grades_used	note
+00d91960	NScript::CQ_HobbeCaveScript::CHobbeRoaming::Main	RELOCATION_MATCH	4	matched: while(alive) + if/do-while idle tail, shared headers
+00490494	CSubtitleRenderer::DrawPreparePrimitivesForEngine	DIFFER(1073v1094)	1	regraded only
+0063d0a0	CWorldMap::FindGroundCollisionPointWithinCell	DIFFER(1017v1017)	1	regraded only
+0063d4a0	CWorldMap::FindThemeCollisionPointWithinCell	DIFFER(1017v1017)	1	regraded only
+0064a639	CDrawGuildSeal::Draw	DIFFER(911v911)	1	regraded only
+00666d40	CThingCreatureBase::GetHeightZBelowAt	DIFFER(346v348)	1	regraded only
+00697f80	CGameCameraManager::CGameCameraManager::Is2DAreaInViewingFrustrum	DIFFER(492v490)	1	regraded only
+00699670	CGameCameraManager::UpdateHeightLimits	DIFFER(759v761)	1	regraded only
+006af7d0	CTCPhysicsBase::ImpulseRespondToCollision	DIFFER(614v612)	1	regraded only
+006c0970	CTCBuyableHouse::CreateSignPost	DIFFER(421v419)	1	regraded only
+007243c0	CTCPhysicsStandard::UpdateVelocityForImpassability	DIFFER(620v617)	1	regraded only
+007bc004	CTCShotDefinitionNymphFun::InitMovement	DIFFER(343v342)	9	migrated; temp slot + fild scheduling
+007c7c40	CTCTurncoat::FrameUpdate	DIFFER(744v744)	1	regraded only
+007f0c70	CTCKrakenTentacle::TrackTarget	DIFFER(718v715)	1	regraded only
+00852e10	CScriptModuleFOVZoomStayRelative::CScriptModuleFOVZoomStayRelative	DIFFER(447v445)	1	regraded only
+00853d30	CScriptModuleOpenGate::OnInitLeaf	DIFFER(627v625)	1	regraded only
+00873bc0	CPCMouseLook::Recentre	DIFFER(478v481)	1	regraded only
+00874790	CPCMouseLook::OnInit	DIFFER(749v752)	1	regraded only
+00877840	NCameraModes::CTools::IsLineOfSight	DIFFER(1021v1023)	1	regraded only
+008b6ad0	CCreatureAction_MidAttackSide::CCreatureAction_MidAttackSide::Initialise	DIFFER(342v344)	9	1 fxch left after header Normalise + DOT_ORDERED_YXZ
+008d9b00	CModeScorpionKingVulnerable::AnimUpdate	DIFFER(406v408)	1	regraded only
+008f18c0	CTCTavernGameCardBase::UpdateHighlightedCard	DIFFER(772v770)	1	regraded only
+00926ed0	CAIStateGroup_OpenAndCloseShop	DIFFER(1389v1373)	1	regraded only
+0092d1f0	CAIStateGroup_GoToBed::FindFreeBed	DIFFER(1025v1031)	1	regraded only
+00934410	CAIStateGroup_MinionKidGroupTag::EvadeTarget	DIFFER(922v922)	1	regraded only
+00935580	CAIStateGroup_MinionFaceHero	DIFFER(615v617)	1	regraded only
+0095bcf0	CAIStateGroup_HoverHornetQueen::Attack	DIFFER(948v948)	4	probe only (local model)
+009b9770	CParsedItem::InitAsFloat	DIFFER(171v181)	1	regraded only
+009dd960	CRenderManager2D::Draw2DLine	DIFFER(227v229)	9	migrated; RHW integer copy
+00a177a0	CPhysicsMesh::GetPointIntersectionFromToUsingSegmentation	DIFFER(840v840)	1	regraded only
+00a18fc0	CNavigatorFlyer	DIFFER(1123v1125)	1	regraded only
+00a364e0	C3DMeshObject::GetDummyObjectPositionStatic	DIFFER(703v700)	1	regraded only
+00a571a0	C2DLineF::GetPointOnLine	DIFFER(652v654)	1	regraded only
+00a89a70	C3DMesh2	DIFFER(970v970)	1	regraded only
+00a89e40	C3DMesh2	DIFFER(986v986)	1	regraded only
+00a8a220	C3DMesh2	DIFFER(965v965)	1	regraded only
+00aeeba0	CParticleEmitter::StartFrame	DIFFER(890v890)	1	regraded only
+00b242d0	CEngine::CEngine::ConvertWorldPosToScreenPos	DIFFER(295v293)	1	regraded only
+00b45a40	CEngineLightingManager::CalcSWLightingNoClipSeparateMainLight	DIFFER(681v683)	1	regraded only
+00dd9520	NScript::CQ_PrisonEscapeRescueMotherScript::SplittingUpCutscene	DIFFER(986v986)	6	migrated; 1 fstp scheduling slot
