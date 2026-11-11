@@ -1,0 +1,13 @@
+address	name	evidence
+00b891b0	??0CEngineScreenEffectOutlineGlow@@QAE@ABVCEngineInit@@@Z	vtable 0x012A3B6C (RTTI) stored after CEngineComponent(); sole caller CEngine::Initialise 0x00B2668D after new(0x1E4); Ego_r 0x00A31C30 / FableWin 0x02DBB340 names; RELOCATION_MATCH
+00b4fc40	?SetupShadowFuncRenderStates@CEngineShadowRenderer@@QAEXJABVCMatrix3x4@@ABUCColorBufferDepthPackParameters@1@@Z	Ego_r 0x009EDF60 / FableWin 0x02D73690 names; signature from the body (ret 0Ch, matrix and pack read through the argument pointers); 0x00B50510 forwards with an identity matrix
+00b50770	?Initialise@CMatrix4x4@@QAEXABVCMatrix3x4@@@Z	FableWin 0x02D79500 name; unreferenced COMDAT in the shadow TU, void (no mov eax,ecx), ret 4, rows copied + 0/0/0/1 column; the header body compiles byte-identical
+00b50ae0	??0CMatrix4x4@@QAE@ABVCMatrix3x4@@@Z	FableWin 0x02D79420 name; the same body plus mov eax,ecx (returns this), ret 4: the ctor with Initialise expanded
+00b4b7b0	?PeekShadowProjectionZOffset@CEngineShadowRenderer@@QBEMXZ	FableWin name; fld dword ptr [ecx+250h] / ret = Ego_r ShadowProjectionZOffset +0x250; shadow TU accessor COMDAT run
+00b4b7c0	?PeekShadowProjectionZSlopeOffset@CEngineShadowRenderer@@QBEMXZ	FableWin name; fld [ecx+254h] / ret = ShadowProjectionZSlopeOffset +0x254
+00b4b7d0	?GetRenderTarget@CEngineShadowRenderer@@QAEAAVCRenderTarget@@XZ	FableWin name; lea eax,[ecx+2C4h] / ret = RenderTarget +0x2C4
+00b4b7e0	?GetShadowBufferTexture@CEngineShadowRenderer@@QAEAAVCTexture@@XZ	FableWin name; lea eax,[ecx+2E8h] / ret = ShadowBufferTexture +0x2E8
+00b4b7f0	?GetDepthPackingTexture@CEngineShadowRenderer@@QAEAAVCTexture@@XZ	FableWin name; lea eax,[ecx+32Ch] / ret = DepthPackingLookupTexture +0x32C
+00b4b820	?PeekGlobalShadowMode@CEngineLightingManager@@QBE?AW4ELightingManagerShadowMode@@XZ	FableWin name; mov eax,[ecx+4694h] / ret = Ego_r ShadowMode +0x4694 (only copy in Fable.exe)
+00b31e00	?PeekRenderingTechnique@CEngineShadowRenderer@@QBE?AW4EShadowRenderingTechnique@1@XZ	FableWin name; mov eax,[ecx+334h] / ret = RenderingTechnique +0x334 (only copy in Fable.exe, in the primitive-renderer TU COMDAT run)
+00b89080	?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ	see NAME_FIXES.tsv
