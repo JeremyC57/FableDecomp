@@ -1,6 +1,9 @@
 // CAnimationEntry::CAnimationEntry(const CAnimationEntry& other, long transitionInTime) -- copy an animation entry and give the copy a fresh transition-in-time component
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DEC70, 135 bytes (+9 int3), __fastcall, ret 8, returns `this`.
-// Leaf: ??0CAnimationEntry@@
+// Leaf: ??0CAnimationEntry@@QAE@ABV0@J@Z
+// Identity (agentFAM06): Ego_r.pdb / FableWin.pdb ??0CAnimationEntry@@QAE@ABV0@J@Z; callers the CCreatureAction_SheatheItemToInventory /
+//   UnsheatheItemFromInventory / PlayAnimation constructors (bound to this spelling). Source unchanged but for the full leaf.
+//   Catalog CIVCountedPointer_Assign was a placeholder.
 // Callees: operator new 0x00BFEA1A, CAnimationEntry::AddComponent(CAnimComponentBase*) 0x005DEB40; the old
 // component map's release is its virtual slot 1 (`call [eax+4]`).
 // Layout: PDB CAnimationEntry (0x10, as the landed operator= 0x00471A09): BankIndex, CDefString AnimName,

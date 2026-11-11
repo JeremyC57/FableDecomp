@@ -1,5 +1,8 @@
 // CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, bool arg) -- open the quest-completion screen: set the wait flags and completion type; with a card copy its script name, def, rewards and boasts (dropping boasts for other scripts), pick the rendered object (an augmentation reward on a type-1 completion of a reward card), fetch the summary / success / name texts; without one clear them; then create the screen-filter component, close the player GUI and stamp the render time
-// Leaf: Activate
+// Leaf: ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z
+// Identity (agentFAM06): Ego_r.pdb / FableWin.pdb ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z (the quest-card
+//   overload; CompletionType is nested in the class); called twice by the other overload 0x005E4740 (CCharString / CWideString
+//   arguments). Respelled: the enum moved into the class (bytes unchanged). Catalog CIVCountedPointer_Assign was a placeholder.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -112,7 +115,6 @@ class CPlayerGui { public: void Close(bool b); };                 // 0x00438400
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A),
 //   read through the inline static accessor Get() (name-only: the load is the same).
 double __fastcall GFGetTime();                             // 0x009E1BC0
-enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
 struct CFilterComponent {
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10(); virtual void v14();
     virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
@@ -126,6 +128,7 @@ struct CFilterComponent {
     virtual void SetFocus(bool b);                                            // +0xc0
 };
 class CTCQuestCompletionUI { public:
+    enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };   // nested: Ego_r / FableWin W4CompletionType@CTCQuestCompletionUI@@ (agentFAM06)
     void* vftable;                                         // +0x00 (a real vptr pads to 8 beside the double)
     unsigned char _pad04[0x0c - 0x04];
     bool Active;                                           // +0x0c

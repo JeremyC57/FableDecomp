@@ -20,6 +20,10 @@
 // *ParentThing; the bound spelling ?OnShowEnded@CTCShowableItem@@QAEXXZ names no PDB member.
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_PDEF
+#include "engine/CDefPointer.h"
+class CInventoryItemDef;
+#endif
 class CDefPointeeBase;
 namespace NInventory { class CTCInventoryBase; }
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
@@ -118,7 +122,14 @@ public:
     static CDefPointer<const CHairCardDef> __fastcall GetHairCardDef(long defIndex);       // 0x005D9A10
     static CDefPointer<const CTattooDef> __fastcall GetTattooCardDef(long defIndex);       // 0x005D9AA0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_PDEF
+    // Nested opt-in (agentFAM06, row 0x004DC600 ~CTCInventoryItem): Ego_r.pdb's member type, CDefPointer<const CInventoryItemDef>
+    // PDef (+0x0C), whose release the compiler-generated ??1CTCInventoryItem@@UAE@XZ expands before `jmp ~CTCBase`. Needs
+    // FABLE_RETAIL_DEF_CLASS_BASE (engine/CDefPointer.h).
+    CDefPointer<const CInventoryItemDef> PDef;               // +0x0c
+#else
     CDefPointeeBase*  PDef_Object;                           // +0x0c CDefPointer<CInventoryItemDef_const_>::Object
+#endif
     NInventory::CTCInventoryBase* PInventory;                // +0x10
     long              call;                                  // +0x14 retail-only long (previous header)
     unsigned __int64  InventoryUIDToAttachTo;                // +0x18

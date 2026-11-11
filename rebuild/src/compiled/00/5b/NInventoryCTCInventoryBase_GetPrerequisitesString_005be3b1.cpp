@@ -1,5 +1,8 @@
 // NInventory::CTCInventoryBase::GetPrerequisitesString(CTCQuestCard*) -- per renown prerequisite of the card's def, "Renown: <n> (Current level <hero renown>)"
-// Leaf: GetPrerequisitesString
+// Leaf: ?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@PAVCTCQuestCard@@@Z
+// Identity (agentFAM06): Ego_r.pdb / FableWin.pdb ?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@PAVCTCQuestCard@@@Z
+//   (protected; the CTCQuestCard* overload, the other takes CDefPointer<const CQuestCardDef>); the body's "Renown:" / "Current level"
+//   text. Unreferenced in retail. Respelled: protected access (bytes unchanged). Catalog CIVCountedPointer_Assign was a placeholder.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -102,6 +105,7 @@ class CThing { public:
 namespace NInventory {
 class CTCInventoryBase { public:
     void* __vftable; CThing* ParentThing;
+protected:                                     // Ego_r / FableWin ?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE... (agentFAM06)
     CWideString GetPrerequisitesString(CTCQuestCard* card);
 };
 CWideString CTCInventoryBase::GetPrerequisitesString(CTCQuestCard* card)

@@ -1,5 +1,7 @@
 // CTCHeroStats::~CTCHeroStats() -- destroy the hero stats component's members in reverse order (marriages list, primitive handle, drunkenness def pointer, death-recovery marker name, five long/position vectors, outstanding-crimes map), then the CTCBase base
-// Leaf: ??1CTCHeroStats
+// Leaf: ??1CTCHeroStats@@UAE@XZ
+// Identity (agentFAM06): Ego_r.pdb / FableWin.pdb ??1CTCHeroStats@@UAE@XZ; the only caller is 0x005814C9, slot 0 of the CTCHeroStats
+//   vtable. Source unchanged but for the full leaf. Catalog CIVCountedPointer_Assign was a placeholder.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005814E5, 241 bytes; called only by the vector deleting destructor 0x005814C9 =
 //   CTCHeroStats vtable 0x0124F70C slot 0 (rtti-vtables.tsv). Label correction: the catalog says

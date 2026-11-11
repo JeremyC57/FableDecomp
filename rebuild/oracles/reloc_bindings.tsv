@@ -2670,8 +2670,6 @@ _FableCheck_5d9b70	005d94b0	005d9b70
 ?Insert@CAnimComponentVectorMap@@QAEXPAUCAnimComponentEntry@@PBU2@PBUCComponentCompare@@KK@Z	005e29d0	005deb40
 ?LowerBound@CAnimComponentVectorMap@@QAEPAUCAnimComponentEntry@@ABJ@Z	005dfa50	005deb40
 ?SortComponents@@YIXPAUCAnimComponentEntry@@0UCComponentCompare@@@Z	005e3ad0	005deb40
-??_7CAnimComponentTransitionInTime@@6B@	01255670	005dec70
-?AddComponent@CAnimationEntry@@QAEXPAVCAnimComponentBase@@@Z	005deb40	005dec70
 ??_7CAnimComponentDelayTime@@6B@	01255698	005ded00
 ??_7CAnimComponentFlags@@6B@	01255850	005ded00
 ??_7CAnimComponentCombatHandedness@@6B@	012556c0	005df690
@@ -11674,8 +11672,6 @@ _wcsrchr	00bfedb2	009a5340
 ?SelectCard@CTCTavernGameCardBase@@QAE_NXZ	008f09c0	007d5fb0
 ?ClearEntries@CTCComponent82@@QAEXXZ	007f8860	007de5d0
 ?BuildMapTeleportUI@CTCInventoryMap@@QAEXJ_NPA_N@Z	0060c900	007dff90
-??1CCriminalStatusMap@@QAE@XZ	00580a64	005814e5
-??1CMarriageList@@QAE@XZ	0057fdbd	005814e5
 ?$S1@?1??GetTextWithNarrator@CTCTavernGame@@QAE?AVCWideString@@K@Z@4IA	013b8c5c	005eb3a0
 ?PlaySpeech@CTCTalk@@QAEJKW4EDialogueLayer@@_N1@Z	006e3b10	005eb3a0
 ?no_text_entry@?1??GetTextWithNarrator@CTCTavernGame@@QAE?AVCWideString@@K@Z@4V3@A	013b8c58	005eb3a0
@@ -37865,13 +37861,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?GetAnimation@CAnimationSet@@QBEPAVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	005dc340	005cd767
 ?find@CKillMap@@QAEPAUSKillNode@@ABK@Z	005d83b3	005cdccb
 ?insert@CKillMap@@QAE?AUSInsertResult@1@ABUSKillPair@@@Z	0045ca09	005cdccb
-??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	0042b040	005e4430
-??4CBoastList@@QAEAAU0@ABU0@@Z	005e9630	005e4430
-?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@_N@Z	0041db1d	005e4430
-?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ	00702470	005e4430
-?GetQuestSummary@CTCQuestCard@@QAE?AVCWideString@@XZ	00702400	005e4430
-?GetSuccessSummary@CTCQuestCard@@QAE?AVCWideString@@XZ	00702630	005e4430
-?IsAugmentation_005d9930@@YI_NJ@Z	005d9930	005e4430
 ??A?$map@JKU?$less@J@std@@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@QAEAAKABJ@Z	005e9760	005e4860
 ?ConstructItemCategoryList@CTCQuickAccessMenu@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@_N@Z	00626e40	006276f0
 ?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z	005bf482	006276f0
@@ -38928,3 +38917,14 @@ __imp___strupr	0144002c	00c0c910
 ?AIAction_PerformActionAndWait@CAIStateGroupApprenticeHeroMethods@@QAEJPAVCCreatureActionBase@@_N@Z	0097db70	0092ae70
 ?g_LeaderboardInUse@@3_NA	013bb6b0	0092ae70
 _g_LeaderboardApproachDistance	013bb6ac	0092ae70
+??1CCriminalStatusMap@@QAE@XZ	00580a64	005814e5
+??1CMarriageList@@QAE@XZ	0057fdbd	005814e5
+??_7CAnimComponentTransitionInTime@@6B@	01255670	005dec70
+?AddComponent@CAnimationEntry@@QAEXPAVCAnimComponentBase@@@Z	005deb40	005dec70
+??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	0042b040	005e4430
+??4CBoastList@@QAEAAU0@ABU0@@Z	005e9630	005e4430
+?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@_N@Z	0041db1d	005e4430
+?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ	00702470	005e4430
+?GetQuestSummary@CTCQuestCard@@QAE?AVCWideString@@XZ	00702400	005e4430
+?GetSuccessSummary@CTCQuestCard@@QAE?AVCWideString@@XZ	00702630	005e4430
+?IsAugmentation_005d9930@@YI_NJ@Z	005d9930	005e4430

@@ -1,0 +1,66 @@
+addr       parity           behav  name
+00a6afd0   MATCH            PASS   00a6afd0
+0071ea10   MATCH            PASS   0071ea10
+00a3c2d0   RELOCATION_MATCH PASS   00a3c2d0
+005930f3   MATCH            FAIL   005930f3
+005f8736   MATCH            PASS   005f8736
+004db47d   RELOCATION_MATCH FAIL   004db47d
+004dc600   RELOCATION_MATCH FAIL   004dc600
+004dc916   RELOCATION_MATCH FAIL   004dc916
+004dcda4   RELOCATION_MATCH FAIL   004dcda4
+005814e5   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+005814e5   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+005814e5   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005814e5   WARN SHARED_HEADER_AVAILABLE CTCBase
+005814e5   WARN RELOC_NAME: ??1CMarriageList@@QAE@XZ -> 0057fdbd labelled 'std::list<T_0057fdbd>::~list'
+005814e5   WARN RELOC_NAME: ??1CCriminalStatusMap@@QAE@XZ -> 00580a64 labelled '_global::StdList_Dtor_00580a64'
+005814e5   RELOCATION_MATCH PASS   005814e5
+005dec70   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+005dec70   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+005dec70   WARN SHARED_HEADER_AVAILABLE CDefString
+005dec70   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+005dec70   RELOCATION_MATCH PASS   005dec70
+004bfd10   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+004bfd10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004bfd10   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004bfd10   WARN SHARED_HEADER_AVAILABLE CThing
+004bfd10   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+004bfd10   RELOCATION_MATCH PASS   004bfd10
+00af1c70   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00af1c70   MATCH            PASS   00af1c70
+00a43890   MATCH            PASS   00a43890
+005bd1b3   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005bd1b3   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005bd1b3   MATCH            PASS   005bd1b3
+005e4430   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005e4430   WARN SHARED_HEADER_AVAILABLE CThing
+005e4430   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+005e4430   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+005e4430   WARN SHARED_HEADER_AVAILABLE CQuestManager
+005e4430   WARN SHARED_HEADER_AVAILABLE CManager
+005e4430   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005e4430   WARN SHARED_HEADER_AVAILABLE CTCQuestCompletionUI
+005e4430   WARN RELOC_NAME: ?IsAugmentation_005d9930@@YI_NJ@Z -> 005d9930 labelled 'CTCInventoryItem::IsTrophy'
+005e4430   WARN RELOC_NAME: ?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ -> 00702470 labelled 'CTCQuestCard::GetQuestObjective'
+005e4430   RELOCATION_MATCH PASS   005e4430
+005be3b1   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005be3b1   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005be3b1   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005be3b1   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+005be3b1   WARN SHARED_HEADER_AVAILABLE CThing
+005be3b1   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+005be3b1   RELOCATION_MATCH PASS   005be3b1
+
+WINS: 12
+  00a6afd0 MATCH m::??$__uninitialized_copy@PAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@@std@@YIPAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@00ABU__false_type@0@@Z
+  0071ea10 MATCH m::??$__uninitialized_copy@PBV?$CDefPointer@$$CBVCThingBaseDef@@@@PAV1@@std@@YIPAV?$CDefPointer@$$CBVCThingBaseDef@@@@PBV1@0PAV1@ABU__false_type@0@@Z
+  00a3c2d0 RELOCATION_MATCH m::?SetBaseAnimation@C3DAnimationBlendState@@QAEXABV?$CIVCountedPointer@VC3DAnimationStateBase@@@@@Z
+  005f8736 MATCH m::??1?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@QAE@XZ
+  005814e5 RELOCATION_MATCH m::??1CTCHeroStats@@UAE@XZ
+  005dec70 RELOCATION_MATCH m::??0CAnimationEntry@@QAE@ABV0@J@Z
+  004bfd10 RELOCATION_MATCH m::?CatchMessage@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCMessageOnSetThingOwner@NTCMessages@@@Z
+  00af1c70 MATCH m::??$fill@PAVCParticleEmitterInfo@NParticleEngine@@V12@@std@@YIXPAVCParticleEmitterInfo@NParticleEngine@@0ABV12@@Z
+  00a43890 MATCH m::??$fill@PAVCLipSyncDataBankEntry@@V1@@std@@YIXPAVCLipSyncDataBankEntry@@0ABV1@@Z
+  005bd1b3 MATCH m::?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ
+  005e4430 RELOCATION_MATCH m::?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z
+  005be3b1 RELOCATION_MATCH m::?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@PAVCTCQuestCard@@@Z

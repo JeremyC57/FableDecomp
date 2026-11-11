@@ -1,5 +1,9 @@
 // NInventory::CCategory::GetCategoryIdentifier() const -- returns the category definition's CategoryIdentifier
-// Leaf: GetCategoryIdentifier
+// Leaf: ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ
+// Identity (agentFAM06): Ego_r.pdb / FableWin.pdb ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ
+//   (the enum lives in NInventory); callers CTCInventoryExperience::GetHeroTrainableStatType / GetHeroTrainableAbilityType /
+//   ProcessExperienceAction, CTCInventoryTrade::GetItemCountForCategory / ProcessTradeAction. Respelled: enum namespace (bytes
+//   unchanged). Catalog CIVCountedPointer_Assign was a placeholder.
 // Retail: Fable.exe @ 0x005BD1B3, 28 bytes. Body: a CDefPointer copy of PDef (add-ref `inc [ecx+4]` when non-null), read
 // CategoryIdentifier (+0x50), then release the copy (`dec [ecx+4]`, slot 1 Delete on zero).
 // Layout: retail CCategory PDef at +0x14 (engine/CCategory.h has the Ego_r.pdb +0x18; the STLport vector ahead of it is
@@ -8,7 +12,8 @@
 // Opt: size TU (`dec dword ptr [ecx+4]` in place).
 #include "fable_compiler.h"
 #pragma optimize("s", on)
-enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE };
+namespace NInventory { enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE }; }   // Ego_r W4EInventoryCategoryIdentifier@NInventory@@ (agentFAM06)
+using NInventory::EInventoryCategoryIdentifier;
 class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
