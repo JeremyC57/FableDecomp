@@ -393143,6 +393143,13 @@ $catalog = @(
         TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520_test.cpp'
         PassPattern = '00dd9520_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00876ca0'
+        Module = 'NCameraModes::CTools'
+        Source = '00/87/NCameraModesCTools_PotentialFieldBufferObjects_00876ca0.cpp'
+        TestSource = '00/87/NCameraModesCTools_PotentialFieldBufferObjects_00876ca0_test.cpp'
+        PassPattern = '00876ca0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

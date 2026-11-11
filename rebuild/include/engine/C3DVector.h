@@ -170,6 +170,12 @@ public:
     // order. There the inlined Normalise loads Z, Y, X (0x0079AE93 fld [esp+24h], 0x0079AEA0 fld [esp+20h], 0x0079AEAA fld
     // [esp+1Ch]); the X, Z, Y spelling loads Y, Z, X in that TU. Body only: no layout change, default path unchanged.
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (X*X+Y*Y+Z*Z);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_ZYX)
+    // Retail opt-in (chunk Q14, row 0x00A58790 NBBBMaths::CSphere::GetFirstIntersectionWithFiniteLine): the parenthesised one-line
+    // sum in Z, Y, X order. There both squared lengths sum Z*Z, Y*Y, X*X (0x00A587B2 `fst [esp+8] ; fmul [esp+8]` then Y, X;
+    // 0x00A58825 `fld st(2) ; fmul st(3)` on the offset's Z) and the first one is shared with IsNonZero's Z, Y, X sum. Body only:
+    // no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (Z*Z+Y*Y+X*X);}
 #else
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (X*X+Y*Y+Z*Z);}
@@ -198,6 +204,10 @@ public:
     // product (`fmul [other.X]`) added onto it, then Z; the one-line default forms the same order with the operand roles swapped and
     // the X, Y, Z statements form X first. Body only: no layout change, default path unchanged.
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=Y*other.Y;dot+=X*other.X;dot+=Z*other.Z;return dot;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_ZYX)
+    // Retail opt-in (chunk Q14, row 0x0066C900 CRegionMinimap::IlluminateRegionMinimapTheme): the dot product as running statements in
+    // Z, Y, X order (0x0066CA43 `fmul st(1)` on the two Z, then Y, then X added). Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=Z*other.Z;dot+=Y*other.Y;dot+=X*other.X;return dot;}
 #elif defined(FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_XYZ)
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=X*other.X;dot+=Y*other.Y;dot+=Z*other.Z;return dot;}
 #else

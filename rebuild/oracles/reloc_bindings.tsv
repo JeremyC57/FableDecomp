@@ -38829,3 +38829,4 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?g_fadeAlphaStep@@3MB	013ac864	00efe9f0
 ?g_fadeStartAlpha@@3MB	013ac868	00efe9f0
 ?NullString@CWideString@@2V1@A	013bca24	0122a550
+?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z	00875f00	00876ca0

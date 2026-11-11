@@ -19,6 +19,10 @@ class CWorld;
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD
 #include "engine/CGameCameraManager.h"
 #endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_POTENTIALFIELD
+#include "engine/C3DVector.h"
+class CThingGameObject;
+#endif
 namespace NCameraModes {
 class CTools {
 public:
@@ -49,6 +53,18 @@ public:
     template<class T> void GetThingsOfType(std::list<const T*>& things,long type,const C3DVector& pos,float radius) const;
     // Chunk 756 (row 0x00875F00): Ego_r.pdb ?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z.
     float GetMeshExtent(const CThing& thing) const;
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_POTENTIALFIELD
+    // Retail opt-in (chunk Q14, row 0x00876CA0): Ego_r.pdb ?PotentialField@CTools@NCameraModes@@QBEMABVC3DVector@@0MM@Z (Ego_r
+    // 0x0085BE80; no out-of-line copy in retail: expanded in 0x00876CA0 and the landed 0x00876E10, the body the latter models,
+    // parameter names as NCameraModes::CPhysicsForceModelBase's copy) and
+    // ?PotentialFieldBufferObjects@CTools@NCameraModes@@QBE?AVC3DVector@@ABV3@ABV?$list@PBVCThingGameObject@@...@std@@@Z (Ego_r
+    // 0x0085D8B0; retail 0x00876CA0). No layout change.
+    float PotentialField(const C3DVector& pos,const C3DVector& source,float scale,float r_prime) const
+    {
+        return (scale*0.1f)/((pos-source).GetMagnitude()-r_prime);
+    }
+    C3DVector PotentialFieldBufferObjects(const C3DVector& field_is_at,const std::list<const CThingGameObject*>& objects) const;   // 0x00876CA0
 #endif
 private:
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD

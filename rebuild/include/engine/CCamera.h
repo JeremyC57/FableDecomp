@@ -39,6 +39,11 @@ public:
     // Retail opt-in (chunk 1021): Ego_r.pdb ?SetAngleXY@CCamera@@QAEXM@Z (0x00B4D1B0), out of line in retail at 0x00A0C570.
     void SetAngleXY(float angle);                                        // 0x00A0C570
 #endif
+#ifdef FABLE_RETAIL_CCAMERA_MOVESIDEWAYS
+    // Retail opt-in (chunk Q14, row 0x00A0C1B0): Ego_r.pdb / FableWin.pdb ?MoveSideways@CCamera@@QAEXM@Z, out of line in retail at
+    // 0x00A0C1B0 (the sibling of the landed ?MoveForward@CCamera@@QAEXM@Z 0x00A0C250). Declaration only.
+    void MoveSideways(float distance);                                   // 0x00A0C1B0
+#endif
     const C3DVector& PeekWorldPos() const { return WorldPosition; }
     const C3DVector& PeekViewDirection() const { return RHSet.GetForward(); }
 private:

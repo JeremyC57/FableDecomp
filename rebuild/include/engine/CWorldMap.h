@@ -177,6 +177,12 @@ protected:
     void SetMapPlacement(const C2DBoxI& area, long map);
 public:
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_GROUNDFACENORMAL
+    // Nested opt-in (chunk Q14, row 0x0066C900 CRegionMinimap::IlluminateRegionMinimapTheme): Ego_r.pdb (0x006E7420) / FableWin.pdb
+    // (0x024A4450) ?GetGroundFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z, out of line in retail at 0x0063AB10 (the row calls it
+    // with ecx = the world map, the position and the hidden result pushed; GetThemeFaceNormalAt 0x0063AB90 follows it). Declaration only.
+    C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;                          // 0x0063AB10
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_THEMEFACENORMAL
     // Nested opt-in (chunk 1013, row 0x0063AB90): Ego_r.pdb / FableWin.pdb ?GetThemeFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z and
     // ?GetThemeSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z (retail 0x0063A7E0). Declarations only.
