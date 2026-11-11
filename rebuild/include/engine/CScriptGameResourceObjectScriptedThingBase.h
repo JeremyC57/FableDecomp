@@ -24,6 +24,9 @@
 // the CCountedPointer<STB> reset that takes the new pointer: PImp at +8).
 #ifdef FABLE_RETAIL_BASE_OBJECT
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_FORCEINLINE_ASSIGN
+#include "fable_compiler.h"
+#endif
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/fable_nscript_forward.h"
 #if defined(FABLE_RETAIL_SCRIPT_MOVE_ENUM)
@@ -47,6 +50,17 @@ public:
 #ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_DTOR
     // (same kind) 15 Codex pass 13 NScript TUs call the dtor COMDAT 0x007E74D0 (??1..@@UAE@XZ) instead of expanding the implicit dtor.
     virtual ~CScriptGameResourceObjectScriptedThingBase();
+#endif
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_FORCEINLINE_ASSIGN
+    // Retail opt-in (chunk 818): the CV_ChickenKickingScript TU (CChickenMaster::Main 0x00E64FB0 at 0x00E65052, like the landed
+    // PlayCutscene 0x00E68B20) expands operator= (CBaseObject::operator= 0x0099A3B0, then the PImp share inline) where the
+    // other NScript TUs call the implicit member's COMDAT 0x008ABD10.
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    {
+        CBaseObject::operator=(other);
+        PImp = other.PImp;
+        return *this;
+    }
 #endif
     bool IsValid() const;                                                // 0x00CD23B9
     void Release();                                                      // 0x00CD2770

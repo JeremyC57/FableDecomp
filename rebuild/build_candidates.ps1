@@ -392291,6 +392291,27 @@ $catalog = @(
         TestSource = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Main_00e84b80_test.cpp'
         PassPattern = '00e84b80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d5ae70'
+        Module = 'NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_Main_00d5ae70.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_Main_00d5ae70_test.cpp'
+        PassPattern = '00d5ae70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d647f0'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Main_00d647f0.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Main_00d647f0_test.cpp'
+        PassPattern = '00d647f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e64fb0'
+        Module = 'NScript::CV_ChickenKickingScript::CChickenMaster'
+        Source = '00/e6/NScriptCVChickenKickingScriptCChickenMaster_Main_00e64fb0.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScriptCChickenMaster_Main_00e64fb0_test.cpp'
+        PassPattern = '00e64fb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

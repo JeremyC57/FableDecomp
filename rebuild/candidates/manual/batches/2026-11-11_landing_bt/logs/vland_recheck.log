@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00e81b40   WARN RELOC_NAME: ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z -> 00e80d60 labelled '_global::CTCCarryable_Initialize'
+00e81b40   RELOCATION_MATCH PASS   00e81b40
+01224c83   WARN RELOC_CONFLICT: _$E2 -> 0122ae6a here, 01228930 in landed 01219f00
+01224c83   WARN RELOC_NAME: _$E2 -> 0122ae6a labelled '_global::AtexitDtor_CCharString_at_0143e908_0122ae6a'
+01224c83   RELOCATION_MATCH PASS   01224c83
+
+WINS: 2
+  00e81b40 RELOCATION_MATCH m::?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ
+  01224c83 RELOCATION_MATCH m::_$E1

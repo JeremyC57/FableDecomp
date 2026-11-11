@@ -56,4 +56,30 @@ enum EPrizes {
  };
 };
 }
+#ifdef FABLE_RETAIL_CV_CHICKENKICKINGSCRIPT_CHICKENMASTER
+// Retail opt-in (chunk 818): the chicken master entity (Ego_r.pdb CChickenMaster, 32 bytes, entity offsets equal retail;
+// vtable 0x012E747C stored by Alloc 0x00E634B0: slot 0 scalar deleting dtor 0x00E63570, 1 Main 0x00E64FB0, 2 Init 0x00E63560,
+// 3 GetParentScript 0x00E63550, 4 OnPersist 0x00E641B0).
+namespace NScript {
+class CV_ChickenKickingScript::CChickenMaster:public CEntityScriptBase {
+public:
+ typedef CV_ChickenKickingScript TParentClass;
+protected:
+ TParentClass& ParentClass;                                              // +0x14
+ CQ_SunnyvaleMasterData* PMasterData;                                    // +0x18
+public:
+ static CCountedPointer<CEntityScriptBase> __fastcall Alloc(TParentClass&,CScriptDataBase*,const CScriptThing&); // 0x00E634B0
+ virtual CScriptBase* GetParentScript()const;                            // 0x00E63550
+private:
+ bool HaveTalked;                                                        // +0x1c
+ bool HeroHasPlayed;                                                     // +0x1d
+ bool KickingChickens;                                                   // +0x1e
+ bool GhostChat;                                                         // +0x1f
+ virtual void OnPersist(CPersistContext&);                               // 0x00E641B0
+ virtual void Init();                                                    // 0x00E63560
+ virtual void Main();                                                    // 0x00E64FB0
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_ChickenKickingScript::CChickenMaster) == 0x20);
+#endif
 #endif

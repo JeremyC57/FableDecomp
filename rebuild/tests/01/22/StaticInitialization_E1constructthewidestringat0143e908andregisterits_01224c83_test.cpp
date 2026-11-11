@@ -96,5 +96,5 @@ extern fable_i32 g_CWideStringInstanceCount_013BCA20;
 extern fable_i32 g_CCharStringInstanceCount_013BD800;
 extern wchar_t g_FableEmptyWideString_0129A8E0[1];
 
-CWideString g_UnprovenWideString_0143E908;
-fable_i32 g_CWideStringInstanceCount_013BCA20;CWideString::CWideString():storage_(0){if(this!=&g_UnprovenWideString_0143E908)bad=1;++constructed;++g_CWideStringInstanceCount_013BCA20;}CWideString::~CWideString(){if(this!=&g_UnprovenWideString_0143E908)bad=1;++destroyed;--g_CWideStringInstanceCount_013BCA20;}static void CheckLifetime(){puts(!bad&&constructed==1&&destroyed==1&&!g_CWideStringInstanceCount_013BCA20?"01224c83_TEST PASS":"01224c83_TEST FAIL");}int main(){return constructed==1&&!destroyed&&!bad&&g_CWideStringInstanceCount_013BCA20==1?0:1;}
+CWideString g_ScriptFormattedText;
+fable_i32 g_CWideStringInstanceCount_013BCA20;CWideString::CWideString():storage_(0){if(this!=&g_ScriptFormattedText)bad=1;++constructed;++g_CWideStringInstanceCount_013BCA20;}CWideString::~CWideString(){if(this!=&g_ScriptFormattedText)bad=1;++destroyed;--g_CWideStringInstanceCount_013BCA20;}static void CheckLifetime(){puts(!bad&&constructed==1&&destroyed==1&&!g_CWideStringInstanceCount_013BCA20?"01224c83_TEST PASS":"01224c83_TEST FAIL");}int main(){return constructed==1&&!destroyed&&!bad&&g_CWideStringInstanceCount_013BCA20==1?0:1;}

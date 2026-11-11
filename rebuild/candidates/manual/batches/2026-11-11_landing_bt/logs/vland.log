@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00d5ae70   WARN RELOC_NAME: ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac2d0 labelled 'CUnprovenContainer_009ac2d0::CUnprovenContainer_009ac2d0'
+00d5ae70   WARN RELOC_NAME: ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac310 labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+00d5ae70   RELOCATION_MATCH PASS   Main
+00d647f0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d647f0   RELOCATION_MATCH PASS   Main
+00e64fb0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00d5ae70 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::?Main@CTheRealGuildmaster@CQ_GuildTrainingSkillScript@NScript@@EAEXXZ
+  00d647f0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::?Main@CFinalMaze@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+  00e64fb0 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CChickenMaster::?Main@CChickenMaster@CV_ChickenKickingScript@NScript@@EAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_Main_00d5ae70
+  NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Main_00d647f0
+  NScriptCVChickenKickingScriptCChickenMaster_Main_00e64fb0

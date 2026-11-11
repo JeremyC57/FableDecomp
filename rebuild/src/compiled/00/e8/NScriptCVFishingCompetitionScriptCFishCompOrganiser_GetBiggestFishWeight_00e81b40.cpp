@@ -36,7 +36,7 @@ public:
     const CWideString& operator=(const wchar_t* text);   // 0x0099B800 (Ego_r ??4CWideString@@QAEABV0@PB_W@Z, G form)
 };
 CWideString __fastcall GFFloatToWideString(double value);   // 0x00486C40
-extern CWideString g_UnprovenWideString_0143E908;       // 0x0143E908 (landed descriptive spelling)
+extern CWideString g_ScriptFormattedText;       // 0x0143E908 (landed descriptive spelling)
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -135,9 +135,9 @@ float CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight()
     }
     std::vector<CWideString> params;
     params.push_back(GFFloatToWideString(RoundToDecimals(biggest, 2)));
-    g_UnprovenWideString_0143E908 = Game->GetFormattedString("TEXT_QST_B15_FISHSIZE", params);
+    g_ScriptFormattedText = Game->GetFormattedString("TEXT_QST_B15_FISHSIZE", params);
     PlayCutscene("CS_FISHCOMP_CHECKFISH_OUTPUTSIZE");
-    g_UnprovenWideString_0143E908 = L"";
+    g_ScriptFormattedText = L"";
     return biggest;
 }
 }   // namespace NScript

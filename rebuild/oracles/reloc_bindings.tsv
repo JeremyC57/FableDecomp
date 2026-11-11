@@ -30194,7 +30194,6 @@ _CUnprovenFloatProvider_00A76320	00a76320	012242b0
 ?g_UnprovenDynamicHeap_013D2E38@@3V?$CDynamicObjectHeap@$0BI@$0DFF@@@A	013d2e38	012244f0
 ?g_UnprovenDynamicHeap_01427E20@@3V?$CDynamicObjectHeap@$0HE@$0CBB@@@A	01427e20	01224590
 ??0?$map@VCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@U?$less@VCUnprovenMapKey_00CD3640@@@std@@V?$allocator@U?$pair@$$CBVCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@@std@@@4@@std@@QAE@XZ	00cd3640	01224c6d
-?g_UnprovenWideString_0143E908@@3VCWideString@@A	0143e908	01224c83
 ?Audio_RenderMultichannelData@@YAXPBUSUnprovenImpulse52@@KPAFK@Z	00c78970	00c705b0
 ?Audio_RenderMultichannelData_Alt@@YAXPBUSUnprovenImpulse52@@KPAFK@Z	00c7ba00	00c70f80
 ??$_M_allocate_and_copy@PBVCBrainUpdateZone@@@?$vector@VCBrainUpdateZone@@V?$allocator@VCBrainUpdateZone@@@std@@@std@@IAEPAVCBrainUpdateZone@@IPBV2@0@Z	00462dc1	00462cb0
@@ -38242,7 +38241,6 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?Reset@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXPAVCLipSyncSampleData@@@Z	00a44170	00a42ea0
 ?Sizeof@CLipSyncSampleData@@QBEKXZ	00a43960	00a42ea0
 ?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXIABVCWideString@@@Z	00412b20	00e68dc0
-?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z	00e80d60	00e81b40
 ?AddEventPackageSetToSave@CMainGameComponent@@IAEXPBVCGameEventPackageSet@@@Z	004161a7	00418289
 ?GetEventPackageSetFromSave@CMainGameComponent@@IAE_NPAVCGameEventPackageSet@@@Z	00416148	00418289
 ?GetFrameDifferenceFromCurrent@CMainGameComponent@@IBEJJ@Z	004167a7	00418289
@@ -39033,3 +39031,6 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ??0CEventHeroHasBeenSpottedPickpocketing@NEntityEvents@@QAE@PAVCThing@@0@Z	008ab7b0	008957c0
 ??0CEventHeroHasBeenSpottedStealing@NEntityEvents@@QAE@PAVCThing@@0@Z	008ab8d0	008957c0
 ?_M_insert_overflow@CContainerItemVector@@QAEXPAUSContainerItem@@ABU2@ABU__false_type@@K_N@Z	0074fce0	008ed1f0
+?PlayCutscene@CV_ChickenKickingScript@NScript@@QAEXVCCharString@@@Z	00e68b20	00e64fb0
+?g_ScriptFormattedText@@3VCWideString@@A	0143e908	00e64fb0
+?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z	00e80d60	00e81b40
