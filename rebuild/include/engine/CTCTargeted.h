@@ -29,6 +29,12 @@ public:
     // highlighted). No layout change.
     bool IsToUseTargetGlow() const { return UseTargetGlow; }
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETED_PTARGETINGDEF
+    // Retail opt-in (chunk 1025, row 0x00802B60 GetTargetingRangeForTarget): FableWin.pdb
+    // ?GetPTargetingDef@CTCTargeted@@QBE?AV?$CDefPointer@$$CBVCTargetingDef@@@@XZ (by value; inline in retail: the caller reads
+    // PTargetingDef +0x14 in place and add-refs it, 0x00802BA2). No layout change.
+    CDefPointer<const CTargetingDef> GetPTargetingDef() const { return PTargetingDef; }
+#endif
 private:
     unsigned long TargetingFlags;                            // +0x0c
     bool Targetable;                                         // +0x10

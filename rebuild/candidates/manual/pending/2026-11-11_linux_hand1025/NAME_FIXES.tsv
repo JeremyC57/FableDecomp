@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x006B2660	??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z	FableWin.pdb 0x02247E20 + by-name body (GetPDefFromInstantiationName) called from the inline MixAtmos 0x006B1900	CDefinitionManager::GetDef_006b2660
+0x013BACB4	SHOT_CREATION_DUMMY	literal + both PDBs' dynamic initializer names (0x0121EA20)	g_CCharString_013bacb4
+0x013BACB8	SHOT_CREATION_POINT	literal + both PDBs' dynamic initializer names (0x0121EA40)	g_CCharString_013bacb8

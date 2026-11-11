@@ -43,6 +43,11 @@ public:
     CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString&) const;   // 0x009ADA40 ?GetPDefFromInstantiationName@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z
     CDefPointer<const CDefClassBase> GetPDefFromClassIndex(const CCharString&,long) const;  // 0x009ADE10 ?GetPDefFromClassIndex@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z
     CDefString GetDefNameFromGlobalIndex(long) const;
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_CLASSTYPENAME
+    // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb
+    // ?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z, out of line in retail at 0x009ACCE0. Declaration only.
+    CDefString GetDefClassTypeNameFromGlobalIndex(long) const;          // 0x009ACCE0
+#endif
     long GetDefGlobalIndexFromName(const CCharString&) const;
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_NOINSTANTIATED
     // Nested opt-in (chunk 1012, rows 0x006B1A20 CAtmosProcess::UpdateDayNightAtmosSounds / 0x006B2260): Ego_r.pdb / FableWin.pdb
@@ -120,6 +125,30 @@ template<class T> bool CDefinitionManager::GetDef(const CCharString& type_name, 
     if (index <= 0)
         return false;
     CDefPointer<const CDefClassBase> def = GetPDefFromClassIndex(type_name, index);
+    if (!def.IsNull()) {
+        *out = def;
+        return true;
+    }
+    return false;
+}
+#if defined(_MSC_VER)
+#pragma auto_inline(on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY
+// Nested opt-in (chunk 1025, row 0x006B1D30 CAtmosProcess::SetAtmosSoundsAsMuted): the same-TU body of the by-name lookup
+// ??$GetDef@V..@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBV..@@@@@Z (Ego_r.pdb / FableWin.pdb; the CSoundThemeDef
+// instance is the landed 0x006B2660 of the atmos TU, FableWin.pdb 0x02247E20): GetPDefFromInstantiationName 0x009ADA40, the
+// assignment on a hit (retail 0x006B2673..0x006B26BA). Called out of line in retail; with the body visible VC7.1 knows the caller's
+// out-handle is only assigned through `out`.
+#if defined(_MSC_VER)
+#pragma auto_inline(off)
+template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<const T>* out) const
+#else
+template<class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<const T>* out) const
+#endif
+{
+    CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
     if (!def.IsNull()) {
         *out = def;
         return true;

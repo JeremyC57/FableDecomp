@@ -134,6 +134,16 @@ public:
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): FableWin.pdb ?IsZTargeting@CPlayer@@QBE_NXZ (0x01AD0350;
     // no Ego_r.pdb copy, expanded in retail: GetPlayer then a byte read of +0x20A at 0x006AAD4D / 0x006AADEF) reads ZTargeting.
     bool IsZTargeting() const { return ZTargeting; }
+#ifdef FABLE_RETAIL_PLAYER_ISSPELLMODE
+    // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): FableWin.pdb ?IsSpellMode@CPlayer@@QBE_NXZ (no Ego_r.pdb
+    // or Fable.exe copy: the row reads SpellMode +0x218 in place off CThing::PeekPlayer, `mov cl,[eax+218h] ; test cl,cl`, 0x00802903).
+    bool IsSpellMode() const { return SpellMode; }
+#endif
+#ifdef FABLE_RETAIL_PLAYER_GETNUMBER
+    // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb ?GetNumber@CPlayer@@QBEJXZ, inline in
+    // retail (`call CThing::GetPlayer 0x004C7A30 ; mov eax,[eax+28h]`, 0x007C0C03 / 0x007C0C7A).
+    long GetNumber() const { return Number; }
+#endif
     // Retail opt-in (chunk 709): ?ResetModes@CPlayer@@QAEXXZ (Ego_r 0x005579A0, FableWin 0x01F5AA20; retail 0x00634870, the
     // only binding in reloc_bindings) and ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ (Ego_r 0x00493650,
     // FableWin 0x01ACDE00; retail 0x00487DC0, 65 landed binders), both called by CWorld::Unload 0x0049E270.

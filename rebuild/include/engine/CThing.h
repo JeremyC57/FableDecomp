@@ -371,6 +371,11 @@ public:
     // and FableWin.pdb ?SetScriptName@CThing@@QAEXABVCCharString@@@Z, inline in retail (`lea ecx,[eax+74h] ; call CCharString::operator=`).
     void SetScriptName(const CCharString& name) { ScriptName = name; }
 #endif
+#ifdef FABLE_RETAIL_CTHING_GETSCRIPTNAME
+    // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb ?GetScriptName@CThing@@QBEABVCCharString@@XZ,
+    // inline in retail (`lea edx,[esi+74h]` as operator+'s left operand, 0x007C0D7B).
+    const CCharString& GetScriptName() const { return ScriptName; }
+#endif
     // FableWin.pdb-only inline flag accessors (?IsInLimbo@CThing@@QBE_NXZ, ?IsActivated@, ?IsDying@, ?IsKillLocked@,
     // ?IsGloballyLoaded@, ?IsDeathPersistent@; inline in retail, which tests the +0x91..+0x93 bits in place in every caller --
     // the same evidence as GetTypeFlags above).

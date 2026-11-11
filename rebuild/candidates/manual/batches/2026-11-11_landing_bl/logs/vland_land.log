@@ -1,0 +1,15 @@
+addr       parity           behav  name
+006b1d30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1d30   RELOCATION_MATCH PASS   SetAtmosSoundsAsMuted
+007bf000   RELOCATION_MATCH PASS   GetCreatureFirePosAndOrientation
+008028d0   RELOCATION_MATCH PASS   GetTargetingRangeForTargetType
+
+WINS: 3
+  006b1d30 RELOCATION_MATCH CAtmosProcess::?SetAtmosSoundsAsMuted@CAtmosProcess@@QAEX_NM@Z
+  007bf000 RELOCATION_MATCH NThingShot::?GetCreatureFirePosAndOrientation@NThingShot@@YIXABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@@Z
+  008028d0 RELOCATION_MATCH _global::?GetTargetingRangeForTargetType@?A0x
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CAtmosProcess_SetAtmosSoundsAsMuted_006b1d30
+  NThingShot_GetCreatureFirePosAndOrientation_007bf000
+  global_GetTargetingRangeForTargetType_008028d0

@@ -1,0 +1,17 @@
+address	name	evidence
+007BF000	NThingShot::GetCreatureFirePosAndOrientation	chunk 1025: Ego_r.pdb 0x007BDEF0 / FableWin.pdb ?GetCreatureFirePosAndOrientation@NThingShot@@YIXABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@@Z; ret 4 arity; caller CreateShot 0x007C0B56
+008028D0	`anonymous namespace'::GetTargetingRangeForTargetType	chunk 1025: Ego_r.pdb 0x007FD8C0 / FableWin.pdb ?GetTargetingRangeForTargetType@?A0x58ed6966@@YIMKABVCTargetingDef@@ABVCThing@@PBV3@@Z; donor order; ret 8
+00802B60	`anonymous namespace'::GetTargetingRangeForTarget	chunk 1025: Ego_r.pdb 0x007FDB70 / FableWin.pdb ?GetTargetingRangeForTarget@?A0x58ed6966@@YIMABVCThing@@0PBV2@@Z; donor order; ret 4; caller 0x00809132
+00802890	`anonymous namespace'::GetTargetingRange	chunk 1025: Ego_r.pdb donor order 0x007FD880 (before 0x007FD8C0 / 0x007FDB70); called twice from 0x008028D0 with (def, type), ret 8
+006B1D30	CAtmosProcess::SetAtmosSoundsAsMuted	chunk 1025: Ego_r.pdb / FableWin.pdb ?SetAtmosSoundsAsMuted@CAtmosProcess@@QAEX_NM@Z (only (bool,float) member; donor order); stores AtmosSoundsMuted +0x09
+006B1A20	CAtmosProcess::UpdateDayNightAtmosSounds	chunk 1025: donor order Update / UpdateDayNightAtmosSounds / SetAtmosSoundsAsMuted = 0x006B2260 / 0x006B1A20 / 0x006B1D30; called on the unmute path
+006B1900	CAtmosProcess::MixAtmos	chunk 1025: Ego_r.pdb ?MixAtmos@CAtmosProcess@@QAEXABVCCharString@@0MM@Z; its body is expanded twice in 0x006B1D30 and called from 0x006B1A20 / 0x007F53B0
+006B2660	CDefinitionManager::GetDef<CSoundThemeDef>	chunk 1025: FableWin.pdb ??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z (0x02247E20); by-name body (GetPDefFromInstantiationName)
+005DA890	CTCWeapon::GetTargetingRange	chunk 1025: Ego_r.pdb ?GetTargetingRange@CTCWeapon@@QBEJXZ (0x0063A6D0); donor order GetTargetingRange / GetTargetingFOV / IsAnalogueLoading at 0x30 stride = 0x005DA890 / 0x005DA8C0 / 0x005DA8F0
+013BACB4	SHOT_CREATION_DUMMY	chunk 1025: literal "SHOT_CREATION_DUMMY" (initializer 0x0121EA20) + both PDBs `dynamic initializer for 'SHOT_CREATION_DUMMY'`
+013BACB8	SHOT_CREATION_POINT	chunk 1025: literal "SHOT_CREATION_POINT" (initializer 0x0121EA40) + both PDBs `dynamic initializer for 'SHOT_CREATION_POINT'`
+007C0AD0	NThingShot::CreateShot	chunk 1025: Ego_r.pdb / FableWin.pdb ?CreateShot@NThingShot@@YIPAVCThing@@JPAV2@0PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@PBVC3DVector@@PBVCRightHandedSet@@@Z (def-index overload; ret 20h; donor 0x007BF280)
+009ACCE0	CDefinitionManager::GetDefClassTypeNameFromGlobalIndex	chunk 1025: PDB symbol ?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z (ghidra_out) + landed 0x005B3C95 comment; CDefString by hidden pointer
+009D5080	CDefString::SetDefaultString	chunk 1025: PDB symbol ?SetDefaultString@CDefString@@QAEXABVCCharString@@@Z (ghidra_out function table); thiscall on CUIDef::Font with a CCharString temp
+0062FE60	NUISystem::CUIDef::CUIDef	chunk 1025: vtable 0x01259F8C (RTTI NUISystem::CUIDef, same as landed ~CUIDef 0x006301A0) + Ego_r.pdb ??0CUIDef@NUISystem@@QAE@XZ; builds exactly the PDB CUIDef containers
+0137573F	g_bShotsEnabled	chunk 1025: descriptive (no original name found); the bool both CreateShot overloads test first; spelling of the landed 0x007C0E80

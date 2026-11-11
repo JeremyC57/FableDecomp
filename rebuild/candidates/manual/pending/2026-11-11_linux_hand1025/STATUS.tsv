@@ -1,0 +1,9 @@
+address	name	grade	grades_used	note
+0x007BF000	NThingShot::GetCreatureFirePosAndOrientation	RELOCATION_MATCH	4	named bool for the helper-point result; head-height clamp as store-then-raise
+0x008028D0	`anonymous namespace'::GetTargetingRangeForTargetType	RELOCATION_MATCH	1	new CTargetingDef.h; std::max with the new value first for the weapon pair; same-TU GetTargetingRange body
+0x006B1D30	CAtmosProcess::SetAtmosSoundsAsMuted	RELOCATION_MATCH	3	new CAtmosProcess.h with inline MixAtmos; same-TU by-name GetDef body
+0x00802B60	`anonymous namespace'::GetTargetingRangeForTarget	DIFFER(410v424)	4	parked: allocation only (def esi v ebx, targeter ebp v frame slot; frame 4 v 8)
+0x007C0AD0	NThingShot::CreateShot	DIFFER(936v938)	3	parked: else-if block order + shot/shot-def ebx/ebp swap; same-TU CBasicString<char>::operator==(const char*) body proven lever
+0x0062FE60	NUISystem::CUIDef::CUIDef	DIFFER(829v817)	3	parked: base and containers match; zero/1.0f component stores of the vector/box assignments differ
+0x00716B30	CActionTalkBase::SetUpTextAndSpeech	not attempted	0	budget spent on the six rows above; decode notes in NOTES.md
+0x00BD2D90	CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations	not attempted	0	GF_SSE_MATRIX_MULTIPLY row (retail_asm grade at best, chunk 748 x87-arm residue); decode notes in NOTES.md

@@ -23782,7 +23782,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00802650	ClearLockedTarget	CTCTargetingPlayer	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									
 008026a0	OnInitialActivate	CTCTargetingPlayer	unknown	undefined	0		0	yes	accepted									
 00802890	GetTargetingRange	_global	__fastcall	float	2	CTargetingDef *,ETargetingType	1	yes	accepted									
-008028d0	GetTargetingRangeForTargetType	`anonymousnamespace'	__fastcall	float	4	ulong,CTargetingDef *,CThing *,CThing *	1	yes	accepted									
+008028d0	GetTargetingRangeForTargetType	`anonymous namespace'	__fastcall	float	4	ulong,CTargetingDef *,CThing *,CThing *	1	yes	accepted									
 00802b60	GetTargetingRangeForTarget	`anonymousnamespace'	__fastcall	float	3	CThing *,CThing *,CThing *	1	yes	accepted									
 00802d10	IsThingInTargetingRangeForTargetType	NPlayerTargeting	__fastcall	bool	3	CThing *,CThing *,ulong	1	yes	accepted									
 00802e00	SetPTargetedThing	CTCTargetingPlayer	__thiscall	void	2	CTCTargetingPlayer *,CThing *	1	yes	accepted									

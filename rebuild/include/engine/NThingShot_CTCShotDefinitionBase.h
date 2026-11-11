@@ -26,10 +26,23 @@ class CThing;
 class C3DVector;
 enum ECollideType;                                                      // MS forward enum (chunk 794)
 #endif
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT
+#include "engine/CDefPointer.h"
+#include "engine/CThingShotDef.h"
+class CMeleeCombatAbilityDef;
+#endif
 namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase {
 public:
     CThing* GetPWeapon() const;                                         // 0x007BEFF0
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT
+    // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb
+    // ?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1PBV4@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z
+    // (the target-thing overload; both CreateShot overloads call it at 0x007C0690). Declaration only; the three floats are named after
+    // the members they fill (AccuracyPercentage, DamageMultiplier, ShotBuildupTime; descriptive).
+    void Init(CDefPointer<const CThingShotDef> def, CThing* shooter, CThing* weapon, const CThing* target, float accuracy,
+              float damageMultiplier, float buildupTime, const CDefPointer<const CMeleeCombatAbilityDef>& ability);   // 0x007C0690
+#endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ONHITBYMELEE
     // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): the first two virtuals CTCShotDefinitionBase adds after CTCBase's 28
     // slots (vtable 0x0126E1A4 family; CTCShotDefinitionThrow 0x0123CDC4 slot 28 = 0x007BF510, slot 29 = 0x007C22F0), Ego_r.pdb

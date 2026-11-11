@@ -392179,6 +392179,27 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupTavernServer_Update_00967d40_test.cpp'
         PassPattern = '00967d40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b1d30'
+        Module = 'CAtmosProcess'
+        Source = '00/6b/CAtmosProcess_SetAtmosSoundsAsMuted_006b1d30.cpp'
+        TestSource = '00/6b/CAtmosProcess_SetAtmosSoundsAsMuted_006b1d30_test.cpp'
+        PassPattern = '006b1d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bf000'
+        Module = 'NThingShot'
+        Source = '00/7b/NThingShot_GetCreatureFirePosAndOrientation_007bf000.cpp'
+        TestSource = '00/7b/NThingShot_GetCreatureFirePosAndOrientation_007bf000_test.cpp'
+        PassPattern = '007bf000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008028d0'
+        Module = '_global'
+        Source = '00/80/global_GetTargetingRangeForTargetType_008028d0.cpp'
+        TestSource = '00/80/global_GetTargetingRangeForTargetType_008028d0_test.cpp'
+        PassPattern = '008028d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

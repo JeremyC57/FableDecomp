@@ -72,6 +72,11 @@ public:
  // line in retail at 0x005B3440 (the def name returned by CThing::GetDefName compared with a literal). Declaration only.
  bool operator==(const char* text) const;                               // 0x005B3440
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_SETDEFAULTSTRING
+ // Retail opt-in (chunk 1025, row 0x0062FE60 NUISystem::CUIDef::CUIDef): the PDB symbol in ghidra_out (function table)
+ // ?SetDefaultString@CDefString@@QAEXABVCCharString@@@Z, out of line in retail at 0x009D5080. Declaration only.
+ void SetDefaultString(const CCharString& text);                        // 0x009D5080
+#endif
 #ifdef FABLE_RETAIL_CDEFSTRING_TRANSFER
  // Opt-in (chunk 765, row 0x005DBED0): Ego_r.pdb / FableWin.pdb ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z, out of line
  // in retail at 0x0044FC00 (the only PDB spelling of the four bound to it). Declaration only.

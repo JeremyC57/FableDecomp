@@ -39164,3 +39164,9 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ??$GetSubDef@VCActionUseDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCActionUseDef@@@@@Z	007eae40	007eac10
 ??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z	006d3ef0	00894bf0
 ??$GetSubDef@VCDegradableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCDegradableDef@@@@@Z	008ecda0	008ec870
+??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z	006b2660	006b1d30
+?SHOT_CREATION_DUMMY@@3VCCharString@@A	013bacb4	007bf000
+?SHOT_CREATION_POINT@@3VCCharString@@A	013bacb8	007bf000
+?GetTargetingRange@?A0x9ec1c2cb@@YIMABVCTargetingDef@@W4ETargetingType@@@Z	00802890	008028d0
+?GetTargetingRange@CTCWeapon@@QBEJXZ	005da890	008028d0
+?find@?$_Rb_tree@W4ETargetingType@@U?$pair@$$CBW4ETargetingType@@M@std@@U?$_Select1st@U?$pair@$$CBW4ETargetingType@@M@std@@@3@U?$less@W4ETargetingType@@@3@V?$allocator@U?$pair@$$CBW4ETargetingType@@M@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ETargetingType@@M@std@@U?$_Const_traits@U?$pair@$$CBW4ETargetingType@@M@std@@@2@@2@ABW4ETargetingType@@@Z	007f9830	008028d0

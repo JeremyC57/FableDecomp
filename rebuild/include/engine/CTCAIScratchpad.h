@@ -15,6 +15,11 @@ public:
  static bool CountBetMoneyDown;
 #endif
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_AI_SCRATCHPAD;}
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_TARGETINGOFFSET
+ // Retail opt-in (chunk 1025, row 0x00802B60 GetTargetingRangeForTarget): FableWin.pdb ?GetTargetingDistanceOffset@CTCAIScratchpad@@QBEMXZ,
+ // inline in retail (`fadd dword ptr [eax+7Ch]`, 0x00802BFF). No layout change.
+ float GetTargetingDistanceOffset()const{return TargetingDistanceOffset;}
+#endif
  long GetActionFrequency()const{return ActionFrequency;}
  float GetActionFrequencyVariation()const{return (ActionFrequencyVariation);}
 public: unsigned long ThankingPhrase;

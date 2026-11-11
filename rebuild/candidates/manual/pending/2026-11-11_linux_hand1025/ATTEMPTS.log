@@ -1,0 +1,18 @@
+00802b60 g1 DIFFER(410v424) -- first draft: shared headers, PeekTC uninitialised targeted
+00802b60 g2 DIFFER(410v424)  -- one range variable for both range returns (retail cross-jumps the scripted-hook return into the main tail)
+00802b60 g3 DIFFER(406v424)  -- if/else with one final return range; failures return 0.0f
+008028d0 g1 RELOCATION_MATCH  -- first draft: shared headers, std::max selects, same-TU GetTargetingRange body
+006b1d30 g1 DIFFER(527v507)  -- first draft: new CAtmosProcess.h, inline MixAtmos body, GetDef index body
+006b1d30 g2 DIFFER(527v507)  -- self-deleting release opt-ins (dec [ecx+4] ; jne)
+006b1d30 g3 RELOCATION_MATCH  -- same-TU by-name GetDef body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY); release opt-ins dropped
+007bf000 g1 DIFFER(715v679)  -- first draft: shared headers
+007bf000 g2 DIFFER(684v679)  -- helper-point result in a named bool (temp string destroyed before the test)
+007bf000 g3 DIFFER(674v679)  -- value ternary for the head-height clamp (no reference max)
+007bf000 g4 RELOCATION_MATCH  -- head-height clamp as store then conditional raise
+00802b60 g4 DIFFER(410v424)  -- GetSubDef success arm first (if/else), single final return range
+007c0ad0 g1 DIFFER(947v938)  -- first draft: shared headers + overlay, same-TU GetDef body, GetTC of the mode manager
+007c0ad0 g2 DIFFER(932v938)  -- class name copy-initialised from GetString(), shot = 0 first, the created creature held in shot
+007c0ad0 g3 DIFFER(936v938)  -- same-TU CBasicString<char>::operator==(const char*) body (class name data kept in esi, no second null test)
+0062fe60 g1 DIFFER(799v817)  -- first draft: shared CUIDef header, member assignments in the body
+0062fe60 g2 DIFFER(810v817)  -- inline CParentDefClassBase / CDefClassBase ctors (FABLE_RETAIL_DEF_CLASS_BASE_CTORS)
+0062fe60 g3 DIFFER(829v817)  -- typed CParentDefClassBase members (FABLE_PDCB_TYPED_MEMBERS) with the CVectorMap ctor (Dirty cleared)
