@@ -393150,6 +393150,20 @@ $catalog = @(
         TestSource = '00/87/NCameraModesCTools_PotentialFieldBufferObjects_00876ca0_test.cpp'
         PassPattern = '00876ca0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00713d50'
+        Module = 'NTCScriptedControl::CActionFollowCreature'
+        Source = '00/71/NTCScriptedControlCActionFollowCreature_SetAsSneaking_00713d50.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionFollowCreature_SetAsSneaking_00713d50_test.cpp'
+        PassPattern = '00713d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092e130'
+        Module = 'CAIStateGroup_MinionSleep'
+        Source = '00/92/CAIStateGroupMinionSleep_IsRunnable_0092e130.cpp'
+        TestSource = '00/92/CAIStateGroupMinionSleep_IsRunnable_0092e130_test.cpp'
+        PassPattern = '0092e130_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

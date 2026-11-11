@@ -45,6 +45,12 @@ protected:
  TTextureMorphMap GeneralTextureMorphs;
  unsigned long MaxTextureGroupID;
  void GetRandomBodyParts(unsigned long&,CMorphSet&,bool) const;
+#ifdef FABLE_RETAIL_CRANDOMAPPEARANCEMORPH_SKELETAL
+ // Opt-in (chunk Q15, row 0x0086B9D0): Ego_r.pdb ?GetRandomSkeletalMorph@CRandomAppearanceMorph@@IBEXAAKAAVCMorphSet@1@@Z and
+ // ?AddSkeletalMorphToMorphSet@CRandomAppearanceMorph@@IBEXAAKABVCSkeletalMorph@1@AAVCMorphSet@1@@Z (0x0086B900). Declarations only.
+ void GetRandomSkeletalMorph(unsigned long& seed,CMorphSet& morph_set) const;
+ void AddSkeletalMorphToMorphSet(unsigned long& seed,const CSkeletalMorph& morph,CMorphSet& morph_set) const;
+#endif
  void GetRandomTextureMorphs(unsigned long&,unsigned long,const TTextureMorphMap&,CArray<CMorphSet::CMorphSetTextureMorph>&) const;
 };
 #endif

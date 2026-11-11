@@ -96,6 +96,11 @@ public:
     void CreateDummyVillagersIfNecessary();                  // 0x00658603
     bool GetIsHeroEnemyOfGuards();                           // 0x00658604
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_CURFEW
+    // Retail opt-in (chunk Q15, row 0x0090C900): Ego_r.pdb ?IsCurfewTime@CTCVillage@@QBE_NXZ (out of line, 0x00658D5D). Declaration only.
+public:
+    bool IsCurfewTime() const;                               // 0x00658D5D
+#endif
 private:
 #ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
     // Ego_r/FableWin original private const member template; six retail instances 00660ae2..00660d49.

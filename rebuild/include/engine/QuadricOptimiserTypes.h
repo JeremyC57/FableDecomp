@@ -20,6 +20,16 @@ class COptimisedVertex {public:
  float GetGroupDifference(const COptimisedVertex&)const;
 };
 class CSubContraction {public:unsigned long Index1,Index2;};
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDFACE
+// Retail opt-in (chunk Q15, rows 0x00AC7CB0 / 0x00AC7300): Ego_r.pdb COptimisedFace (72 bytes, no containers, so the retail
+// layout is the PDB one): VertexIndices +0, UniqueVertexIndices +0Ch, Edges +18h, UTangent +24h, VTangent +30h, Exists +3Ch,
+// OutputIndex +40h, Segment +44h.
+class COptimisedFace {public:
+ unsigned long VertexIndices[3];unsigned long UniqueVertexIndices[3];long Edges[3];C3DVector UTangent,VTangent;bool Exists;
+ unsigned long OutputIndex;long Segment;
+};
+FABLE_STATIC_ASSERT(sizeof(COptimisedFace)==0x48);
+#endif
 FABLE_STATIC_ASSERT(sizeof(CQuadric)==0x58);
 FABLE_STATIC_ASSERT(sizeof(COptimisedVertex)==0xb8);
 FABLE_STATIC_ASSERT(sizeof(CSubContraction)==8);

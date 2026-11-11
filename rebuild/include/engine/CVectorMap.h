@@ -33,6 +33,11 @@ public:
     // instance 0x009B1FF0). A declaration only.
     const_iterator UpperBound(const K&) const;
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_GETKEYLIST
+    // Retail opt-in (chunk Q15, row 0x0086B9D0): Ego_r.pdb ?GetKeyList@?$CVectorMap@J..@@QBEXAAV?$vector@J..@std@@@Z, out of line in
+    // retail (0x0086D240 for <long, CRandomAppearanceMorph::CSkeletalMorph>). Declaration only.
+    void GetKeyList(std::vector<K>& keys) const;
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
     // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
     // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under
