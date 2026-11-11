@@ -1,0 +1,236 @@
+#ifndef FABLE_ENGINE_CTCWILLLIGHTNING_H
+#define FABLE_ENGINE_CTCWILLLIGHTNING_H
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_CLASS
+// Retail opt-in (chunk 2015, row 0x007A0D90 CTCWillLightning::GetTargets): the polymorphic retail class. RTTI .?AVCTCWillLightning@@ :
+// CTCBase (vtable 0x0126C724; the landed siblings Deactivate 0x007A0310 / InitialiseBeams 0x007A16F0 read ParentThing +0x04). Members:
+// Ego_r.pdb struct_layouts_egor.tsv names and types; the generated flat layout below gives the retail offsets (12-byte STLport vector in
+// CWillButtonHelperTimer, 4-byte list): m_lspDef +0x28, m_lbBeams +0x68, m_cbpPlayer +0x70, PTargetOverride +0x88, m_fAreaEffect +0x9C,
+// m_fActivationTime / m_fDeActivationTime +0xA8 / +0xAC, m_OnhitEveryFrame +0xDC -- each read at those offsets by GetTargets. The
+// CIntelligentPointer members are the packed retail pointers (PItemRemoved +0x11). The nested CLightningBeam (Ego_r.pdb 132 bytes, retail
+// 0x7C: `push 7Ch ; call operator new`, 0x007A1250; its list m_lChildren is 4 bytes) has the Ego_r member names at the retail offsets
+// (m_tcpHome +0x0C, m_tcpTarget +0x14, m_fDamagePerHit +0x40, m_lChildren +0x4C, m_bTemporary +0x50, m_fActivationTime +0x54,
+// m_fDecapitationTime +0x60, m_fDelay +0x68, m_OnhitEveryFrame +0x6C, m_nFrameCount +0x70, PDef +0x74: GetTargets' stores) and the
+// Ego_r.pdb constructor ??0CLightningBeam@CTCWillLightning@@QAE@PAVCThing@@0@Z (out of line, landed 0x007A0630). Methods: Ego_r.pdb
+// ?GetTargets@CTCWillLightning@@AAE_NAAV?$list@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@..@std@@JPAVCThing@@AAV?$list@PAVCThing@@..@3@MMM_N@Z
+// (private). Needs FABLE_RETAIL_CTCBASE, FABLE_RETAIL_CINTELLIGENTPOINTER, FABLE_RETAIL_DEF_CLASS_BASE.
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "stlport/fable_containers.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/C3DVector.h"
+class CThing;
+class CThingCreatureBase;
+class CSpecialAbilitiesLightningSpellDef;
+enum ELightningState;                                                    // MS forward enum (Ego_r.pdb)
+class CTCWillLightning : public CTCBase {
+public:
+    class CLightningBeam {
+    public:
+        CLightningBeam(CThing* home, CThing* target);                    // 0x007A0630
+        ELightningState  m_lsState;                                      // +0x00
+        CIntelligentPointer<CThing> m_tpParticleHandle;                  // +0x04
+        CIntelligentPointer<CThing> m_tcpHome;                           // +0x0c
+        CIntelligentPointer<CThing> m_tcpTarget;                         // +0x14
+        C3DVector        m_vStartPos;                                    // +0x1c
+        C3DVector        m_vEndPos;                                      // +0x28
+        C3DVector        m_vDestination;                                 // +0x34
+        float            m_fDamagePerHit;                                // +0x40
+        float            m_fTime;                                        // +0x44
+        float            m_fTimeBase;                                    // +0x48
+        std::list<CCountedPointer<CLightningBeam> > m_lChildren;         // +0x4c
+        bool             m_bTemporary;                                   // +0x50
+        bool             m_bMainBeam;                                    // +0x51
+        bool             m_bRightHand;                                   // +0x52
+        float            m_fActivationTime;                              // +0x54
+        float            m_fDeActivationTime;                            // +0x58
+        float            m_fLife;                                        // +0x5c
+        float            m_fDecapitationTime;                            // +0x60
+        float            m_fDecapitationClock;                           // +0x64
+        float            m_fDelay;                                       // +0x68
+        long             m_OnhitEveryFrame;                              // +0x6c
+        long             m_nFrameCount;                                  // +0x70
+        CDefPointer<const CSpecialAbilitiesLightningSpellDef> PDef;      // +0x74
+        bool             SuccessfulHit;                                  // +0x78
+    };
+private:
+    bool GetTargets(std::list<CCountedPointer<CLightningBeam> >& beams, long max_beams, CThing* source, std::list<CThing*>& targets,
+                    float damage_per_hit, float decapitation_time, float delay, bool retarget_beams);   // 0x007A0D90
+public:
+    unsigned char    WeaponState[0x4];                       // +0x0c EWEAPON_STATE (CTCSpecialAbilities)
+    bool             LeftHandAnim;                           // +0x10
+    CIntelligentPointer<CThing> PItemRemoved;                // +0x11
+    long             AIHoldingDownTimer;                     // +0x1c
+    long             PrimaryHandEffect;                      // +0x20
+    long             SecondaryHandEffect;                    // +0x24
+    CDefPointer<const CSpecialAbilitiesLightningSpellDef> m_lspDef;   // +0x28
+    unsigned char    m_tTimer[0x34];                         // +0x2c CWillButtonHelperTimer
+    float            m_fTime;                                // +0x60
+    float            m_fTimeBase;                            // +0x64
+    std::list<CCountedPointer<CLightningBeam> > m_lbBeams;   // +0x68
+    ELightningState  m_lsState;                              // +0x6c
+    CIntelligentPointer<CThingCreatureBase> m_cbpPlayer;     // +0x70
+    CIntelligentPointer<CThing> m_tpLeftHandEffect;          // +0x78
+    CIntelligentPointer<CThing> m_tpRightHandEffect;         // +0x80
+    CIntelligentPointer<CThing> PTargetOverride;             // +0x88
+    unsigned long    InitSound;                              // +0x90
+    bool             StartCostingStamina;                    // +0x94
+    bool             BeamsInitialised;                       // +0x95
+    unsigned long    LoopingSound;                           // +0x98
+    float            m_fAreaEffect;                          // +0x9c
+    float            m_fDamagePerHit;                        // +0xa0
+    float            m_fSubBeamDamagePerHit;                 // +0xa4
+    float            m_fActivationTime;                      // +0xa8
+    float            m_fDeActivationTime;                    // +0xac
+    long             m_nMinMainBeams;                        // +0xb0
+    long             m_nMaxMainBeams;                        // +0xb4
+    long             m_nMinSubBeams;                         // +0xb8
+    long             m_nMaxSubBeams;                         // +0xbc
+    float            m_fTemporaryBeamLife;                   // +0xc0
+    float            m_fTargettingFOV;                       // +0xc4
+    float            m_fStaminaPerSecond;                    // +0xc8
+    float            m_fMainBeamDecapitationTime;            // +0xcc
+    float            m_fSubBeamDecapitationTime;             // +0xd0
+    float            m_fSubBeamDelay;                        // +0xd4
+    bool             m_bPlayedSound;                         // +0xd8
+    long             m_OnhitEveryFrame;                      // +0xdc
+    long             m_CombatMultiplierTimer;                // +0xe0
+    static void CheckRetailLayout() {
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PItemRemoved) == 0x11);
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_lspDef) == 0x28);
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_lbBeams) == 0x68);
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_cbpPlayer) == 0x70);
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PTargetOverride) == 0x88);
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fAreaEffect) == 0x9c);
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fActivationTime) == 0xa8);
+        FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_OnhitEveryFrame) == 0xdc);
+        FABLE_STATIC_ASSERT(offsetof(CLightningBeam, m_tcpTarget) == 0x14);
+        FABLE_STATIC_ASSERT(offsetof(CLightningBeam, m_lChildren) == 0x4c);
+        FABLE_STATIC_ASSERT(offsetof(CLightningBeam, PDef) == 0x74);
+    }
+};
+FABLE_STATIC_ASSERT(sizeof(CTCWillLightning) == 0xe4);
+FABLE_STATIC_ASSERT(sizeof(CTCWillLightning::CLightningBeam) == 0x7c);
+#else
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CTCWillLightning = 0xf0.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CTCWillLightning = 0xe4.
+// Retail evidence: 1 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class CDefPointeeBase;
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_AICASTING
+// chunk 770 (row 0x0079F960): m_tTimer typed as its Ego_r.pdb CWillButtonHelperTimer (retail 0x34 bytes at +0x2c: the STLport vector
+// is 12 bytes, so IsAICasting sits at +0x5a), Ego_r.pdb ?SetAICasting@CTCWillLightning@@QAEXJ@Z (public, 0x0079F960) and the private
+// ?SetLevel@CTCWillLightning@@AAEXJ@Z (0x0079F810).
+#define FABLE_RETAIL_CWILLBUTTONHELPERTIMER_SETAICASTING
+#include "engine/CWillButtonHelperTimer.h"
+#endif
+
+#pragma pack(push, 1)
+class CTCWillLightning {
+public:
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    WeaponState[0x4];                       // +0x0c EWEAPON_STATE
+    bool             LeftHandAnim;                           // +0x10
+    unsigned char    PItemRemoved[0xb];                      // +0x11 CIntelligentPointer<CThing>
+    long             AIHoldingDownTimer;                     // +0x1c
+    long             PrimaryHandEffect;                      // +0x20
+    long             SecondaryHandEffect;                    // +0x24
+    CDefPointeeBase* m_lspDef_Object;                        // +0x28 CDefPointer<CSpecialAbilitiesLightningSpellDef_const_>::Object
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_AICASTING
+    CWillButtonHelperTimer m_tTimer;                         // +0x2c
+#else
+    unsigned char    m_tTimer[0x34];                         // +0x2c CWillButtonHelperTimer
+#endif
+    float            m_fTime;                                // +0x60
+    float            m_fTimeBase;                            // +0x64
+    unsigned char    m_lbBeams[0x4];                         // +0x68 list<CCountedPointer<CTCWillLightning::CLightningBeam>,std::allocator<CCountedPointer<CTCWillLightning::CLightningBeam>_>_>
+    unsigned char    m_lsState[0x4];                         // +0x6c ELightningState
+    unsigned char    m_cbpPlayer[0x8];                       // +0x70 CIntelligentPointer<CThingCreatureBase>
+    unsigned char    m_tpLeftHandEffect[0x8];                // +0x78 CIntelligentPointer<CThing>
+    unsigned char    m_tpRightHandEffect[0x8];               // +0x80 CIntelligentPointer<CThing>
+    unsigned char    PTargetOverride[0x8];                   // +0x88 CIntelligentPointer<CThing>
+    unsigned long    InitSound;                              // +0x90
+    bool             StartCostingStamina;                    // +0x94
+    bool             BeamsInitialised;                       // +0x95
+    unsigned char    _pad_0x96[0x2];                         // +0x96
+    unsigned long    LoopingSound;                           // +0x98
+    float            m_fAreaEffect;                          // +0x9c
+    float            m_fDamagePerHit;                        // +0xa0
+    float            m_fSubBeamDamagePerHit;                 // +0xa4
+    float            m_fActivationTime;                      // +0xa8
+    float            m_fDeActivationTime;                    // +0xac
+    long             m_nMinMainBeams;                        // +0xb0
+    long             m_nMaxMainBeams;                        // +0xb4
+    long             m_nMinSubBeams;                         // +0xb8
+    long             m_nMaxSubBeams;                         // +0xbc
+    float            m_fTemporaryBeamLife;                   // +0xc0
+    float            m_fTargettingFOV;                       // +0xc4
+    float            m_fStaminaPerSecond;                    // +0xc8
+    float            m_fMainBeamDecapitationTime;            // +0xcc
+    float            m_fSubBeamDecapitationTime;             // +0xd0
+    float            m_fSubBeamDelay;                        // +0xd4
+    bool             m_bPlayedSound;                         // +0xd8
+    unsigned char    _pad_0xd9[0x3];                         // +0xd9
+    long             m_OnhitEveryFrame;                      // +0xdc
+    long             m_CombatMultiplierTimer;                // +0xe0
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_AICASTING
+    void SetAICasting(long level);                           // 0x0079F960
+private:
+    void SetLevel(long level);                               // 0x0079F810
+public:
+#endif
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CTCWillLightning) == 0xe4);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, WeaponState) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, LeftHandAnim) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PItemRemoved) == 0x11);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, AIHoldingDownTimer) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PrimaryHandEffect) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, SecondaryHandEffect) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_lspDef_Object) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_tTimer) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fTime) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fTimeBase) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_lbBeams) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_lsState) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_cbpPlayer) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_tpLeftHandEffect) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_tpRightHandEffect) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PTargetOverride) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, InitSound) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, StartCostingStamina) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, BeamsInitialised) == 0x95);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, LoopingSound) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fAreaEffect) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fDamagePerHit) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fSubBeamDamagePerHit) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fActivationTime) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fDeActivationTime) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_nMinMainBeams) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_nMaxMainBeams) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_nMinSubBeams) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_nMaxSubBeams) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fTemporaryBeamLife) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fTargettingFOV) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fStaminaPerSecond) == 0xc8);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fMainBeamDecapitationTime) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fSubBeamDecapitationTime) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fSubBeamDelay) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_bPlayedSound) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_OnhitEveryFrame) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_CombatMultiplierTimer) == 0xe0);
+
+#endif // FABLE_RETAIL_CTCWILLLIGHTNING_CLASS
+#endif // FABLE_ENGINE_CTCWILLLIGHTNING_H

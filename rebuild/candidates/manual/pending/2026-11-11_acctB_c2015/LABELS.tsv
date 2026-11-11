@@ -1,0 +1,13 @@
+address	name	evidence
+0097fea0	?AIAction_FindAGuardAndYellForHelp@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@VC3DVector@@K_N@Z	Ego_r.pdb / FableWin.pdb; Ego_r donor order RunAwayFrom 0x0084AE40 / this 0x0084B160 / FleeToThingProximity 0x0084B800 = retail 0x0097FBE0 / 0x0097FEA0 / 0x009804A0 (both neighbours landed); `ret 14h` = C3DVector + ulong + bool
+007a0d90	?GetTargets@CTCWillLightning@@AAE_NAAV?$list@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@V?$allocator@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@@std@@@std@@JPAVCThing@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@MMM_N@Z	Ego_r.pdb 0x007A6430 / FableWin.pdb; `ret 20h` = 8 argument words; the landed InitialiseBeams 0x007A16F0 calls it
+00982450	??$GetPBestLeafThing@V?$CFilter_Bind2@V?$unary_negate@VCThingFilter_HasScriptedControl@@@std@@VCThingFilter_AICreatureHasProperty@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$unary_negate@VCThingFilter_HasScriptedControl@@@std@@VCThingFilter_AICreatureHasProperty@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z	Ego_r.pdb 0x0084D680 (FableWin too); its body calls ??RCThingFilter_HasScriptedControl 0x006A8560 and the AICreatureHasProperty operator 0x006A75D0; row 0x0097FEA0 passes the Bind2 / compare / out pointer
+0065ce56	?RemoveApologiseableCrimes@CTCVillage@@QAEXJ@Z	Ego_r.pdb; landed row CTCVillage_RemoveApologiseableCrimes_0065ce56; row 0x0097FEA0 `push 0Ah` on the village
+006585ee	?NotifyHasApologised@CTCVillage@@QAEXXZ	Ego_r.pdb; landed row 0x006585EE; engine/CTCVillage.h APOLOGISE opt-in
+00684210	?ReportAllCrimes@CTCCreatureOpinionOfHero@@QAEXPAV1@@Z	Ego_r.pdb 0x00591F00; row 0x0097FEA0 calls it on the creature's opinion with the guard's opinion
+0085faa0	?IsLightningable@NCreatureMode@@YI_NABVCThing@@@Z	Ego_r.pdb; landed row 0x0085FAA0 (Leaf line); row 0x007A0D90
+008fcfb0	?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ	see NAME_FIXES.tsv
+006691c0	?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ	see NAME_FIXES.tsv
+007a4210	??0?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAE@PAVCLightningBeam@CTCWillLightning@@@Z	see NAME_FIXES.tsv
+007a3200	??1?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAE@XZ	see NAME_FIXES.tsv
+007a3ca0	??$GetAllThingsInRoughArea@VCThingCreatureBase@@...CFilter_Bind4<IsNot,IsNot,IsTargetable,In2DRange>...@Z	see NAME_FIXES.tsv (full spelling there)

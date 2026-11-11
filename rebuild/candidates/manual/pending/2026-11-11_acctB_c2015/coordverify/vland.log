@@ -1,0 +1,10 @@
+addr       parity           behav  name
+007a0d90   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_IsNot@@V1@VCThingFilter_IsTargetable@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsNot@@V1@VCThingFilter_IsTargetable@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 007a3ca0 labelled 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_>,CThingCompare_Nearest,CThingCreatureBase>'
+007a0d90   WARN RELOC_NAME: ??1?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAE@XZ -> 007a3200 labelled '_global::CCountedPointer_Release_007a3200'
+007a0d90   RELOCATION_MATCH PASS   GetTargets
+0097fea0   WARN RELOC_NAME: ?ClearAttackedByCreature@CThingCreatureBase@@QAEXXZ -> 006691c0 labelled 'CAIStateGroupWithBuilding_006691c0::Cleanup'
+0097fea0   RELOCATION_MATCH PASS   AIAction_FindAGuardAndYellForHelp
+
+WINS: 2
+  007a0d90 RELOCATION_MATCH CTCWillLightning::?GetTargets@CTCWillLightning@@AAE_NAAV?$list@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@V?$allocator@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@@std@@@std@@JPAVCThing@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@MMM_N@Z
+  0097fea0 RELOCATION_MATCH CAIStateGroupBase::?AIAction_FindAGuardAndYellForHelp@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@VC3DVector@@K_N@Z
