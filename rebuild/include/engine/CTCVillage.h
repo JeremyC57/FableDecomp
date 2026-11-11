@@ -45,6 +45,13 @@ public:
     bool SetTorchTaskAsAcceptedByThing(CVillageTaskTorch&,const CThing&);
     void SetTorchTaskAsCompleted(CIntelligentPointer<CVillageTaskTorch>);
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_HORNTASK
+    // Retail opt-in (chunk Q11, row 0x00940960 CAIStateGroup_VillageTaskHorn::Update): Ego_r.pdb
+    // ?SetHornTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskHorn@@ABVCThing@@@Z (retail 0x006584F9) and
+    // ?SetHornTaskAsCompleted@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskHorn@@@@@Z (retail 0x0065A00F), out of line.
+    bool SetHornTaskAsAcceptedByThing(CVillageTaskHorn&,const CThing&);
+    void SetHornTaskAsCompleted(CIntelligentPointer<CVillageTaskHorn>);
+#endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     void DetachFromDummyVillager(CThing*);
 #endif

@@ -61,6 +61,25 @@ private:
     virtual void Main();                                                 // 0x00D328C0
 };
 #endif
+#ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CSWORDVOID
+// Retail opt-in (chunk Q11, row 0x00D33280): the nested entity script CSwordVoid (Ego_r.pdb, 0x1c: ParentClass +0x14, PMasterData +0x18,
+// struct_layouts_egor.tsv). Methods: Ego_r.pdb / FableWin.pdb ?Main@CSwordVoid@...@EAEXXZ (private virtual, vtable 0x012CC6EC slot 1,
+// 0x00D33280), Alloc 0x00D2FCE0; FableWin.pdb ?Init / ?GetParentScript / ?GetMasterData (declared as the sibling CTheRealGuildmaster's).
+class CQ_EndGameBossBattleScript::CSwordVoid : public CEntityScriptBase {
+public:
+    typedef CQ_EndGameBossBattleScript TParentClass;
+    CSwordVoid(CQ_EndGameBossBattleScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_EndGameBossBattleScript&, CScriptDataBase*, const CScriptThing&); // 0x00D2FCE0
+    virtual CScriptBase* GetParentScript() const;
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_EndGameBossBattleScript& ParentClass;                             // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    virtual void Init();
+    virtual void Main();                                                 // 0x00D33280
+};
+#endif
 #ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CTHEREALGUILDMASTER
 // Retail opt-in (chunk 838): the nested entity script CTheRealGuildmaster (Ego_r.pdb, 0x1c: ParentClass +0x14, PMasterData +0x18,
 // struct_layouts_egor.tsv; Alloc 0x00D2FDC0 stores the vtable 0x012CC708). Methods: Ego_r.pdb ?Main@CTheRealGuildmaster@...@EAEXXZ
@@ -84,6 +103,9 @@ private:
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameBossBattleScript) == 0x6c);
 #ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CTHEREALGUILDMASTER
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster) == 0x1c);
+#endif
+#ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CSWORDVOID
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameBossBattleScript::CSwordVoid) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CENDGAMESISTER
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameBossBattleScript::CEndGameSister) == 0x1c);

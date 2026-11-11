@@ -52,10 +52,31 @@ public:
     private:
         long DistanceToPlayAnim;                                         // +0x1c
     };
+#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_WINNINGPOSTGUARD
+    // Retail opt-in (chunk Q11, row 0x00DDC070): nested entity script CPrisonRaceWinningPostGuard (Ego_r.pdb, 28 bytes:
+    // CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18; vtable 0x012DC9E8: 1 Main 0x00DDC070, 2 Init 0x00DDC040,
+    // 3 GetParentScript 0x00DDC030; Alloc 0x00DDBF90). Names: Ego_r.pdb / FableWin.pdb ?Main / ?Init / ?GetParentScript /
+    // ?Alloc@CPrisonRaceWinningPostGuard@CQ_PrisonRaceScript@NScript@@.
+    class CPrisonRaceWinningPostGuard : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonRaceScript&, CScriptDataBase*, const CScriptThing&);   // 0x00DDBF90
+        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00DDC030
+    private:
+        virtual void Main();                                             // slot 1 0x00DDC070
+        virtual void Init();                                             // slot 2 0x00DDC040
+    protected:
+        NScript::CQ_PrisonRaceScript & ParentClass;                      // +0x14
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
+    };
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript) == 0x60);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceGuard) == 0x20);
+#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_WINNINGPOSTGUARD
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard) == 0x1c);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_PRISONRACESCRIPT_H

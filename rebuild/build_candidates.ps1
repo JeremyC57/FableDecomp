@@ -393093,6 +393093,28 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT1537 /d2inlS15'
         PassPattern = '00afcc30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00940960'
+        Module = 'CAIStateGroup_VillageTaskHorn'
+        Source = '00/94/CAIStateGroupVillageTaskHorn_Update_00940960.cpp'
+        TestSource = '00/94/CAIStateGroupVillageTaskHorn_Update_00940960_test.cpp'
+        PassPattern = '00940960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d33280'
+        Module = 'NScript::CQ_EndGameBossBattleScript::CSwordVoid'
+        Source = '00/d3/NScriptCQEndGameBossBattleScriptCSwordVoid_Main_00d33280.cpp'
+        TestSource = '00/d3/NScriptCQEndGameBossBattleScriptCSwordVoid_Main_00d33280_test.cpp'
+        PassPattern = '00d33280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddc070'
+        Module = 'NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_Main_00ddc070.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_Main_00ddc070_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT200'
+        PassPattern = '00ddc070_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

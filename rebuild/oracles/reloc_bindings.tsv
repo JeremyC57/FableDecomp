@@ -38934,3 +38934,5 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z	00989830	00b44f20
 ?ResetLight@CShaderRenderManager@@QAEXK@Z	00988640	00b44f20
 ?InitPerlinNoise@CNoise@NFractal@@AAEXXZ	00f35e00	00f36ba0
+?SetHornTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskHorn@@ABVCThing@@@Z	006584f9	00940960
+?SetHornTaskAsCompleted@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskHorn@@@@@Z	0065a00f	00940960

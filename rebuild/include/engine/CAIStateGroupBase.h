@@ -75,6 +75,12 @@ protected:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat,C3DVector,bool&,EMovementType,bool,bool,const CThing*,bool,float);
     EAIActionReturn AIAction_LookAtPos(EAIActionRepeat,C3DVector,long,float);
 #endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY)
+    // Nested opt-in (chunk Q11, row 0x00940960 CAIStateGroup_VillageTaskHorn::Update): Ego_r.pdb
+    // ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+    // (protected; retail 0x0097E890), declaration only.
+    EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat,C3DVector,float,bool&,EMovementType,bool,bool,bool,const CThing*,bool,float);
+#endif
     EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
     // Opt-in (chunk 1024, row 0x00967D40 CAIStateGroup_TavernServer::Update): Ego_r.pdb / FableWin.pdb
