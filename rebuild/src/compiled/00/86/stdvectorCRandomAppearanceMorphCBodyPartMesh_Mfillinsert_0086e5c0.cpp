@@ -1,4 +1,8 @@
-// 0086e5c0 N0086e5c0::vector<Element>::_M_fill_insert (STLport; catalog: Resize_CSharerParserEntry_24byte)
+// std::vector<CRandomAppearanceMorph::CBodyPartMesh>::_M_fill_insert(pos, n, x) -- STLport 4.6 vector.c fill-insert of n copies of x at pos (24-byte elements)
+// agentNF19 (landing cj): the landed NRandomAppearance caller 0x0086BFB0 (RELOCATION_MATCH) binds 0x0086E5C0 as
+//   ?_M_fill_insert@?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@V?$allocator@VCBodyPartMesh@CRandomAppearanceMorph@@@std@@@std@@QAEXPAVCBodyPartMesh@CRandomAppearanceMorph@@IABV34@@Z;
+//   the catalog label Resize_CSharerParserEntry_24byte was a placeholder. The body below still grades the namespace stand-in
+//   N0086e5c0::vector<Element> (element model unproven here; a CBodyPartMesh model is the follow-up).
 // Flags: /O2 /Oy /W3
 // Leaf: _M_fill_insert
 // Layout: oracle element stride 24 bytes and local copy/destruction call offsets; uncertain element identity.

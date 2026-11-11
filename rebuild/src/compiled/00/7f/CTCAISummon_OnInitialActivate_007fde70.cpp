@@ -52,26 +52,23 @@ class CThing
 };
 
 #pragma pack(push, 1)
-struct CTCBase_Calls                                   // engine/CTCBase.h layout (the header holds the layout only)
-{
-    void*   __vftable;                              // +0x00
-    CThing* ParentThing;                            // +0x04
-    bool    ToBeRemoved;                            // +0x08
-    bool    IsInGlobalUpdateTCs;                    // +0x09
-    unsigned char _pad_0x0a[0x2];                   // +0x0a
-    void OnInitialActivate();                       // 0x00686870
-};
+#pragma pack(pop)
+// agentNF19: the base is the shared retail CTCBase model (engine/CTCBase.h, FABLE_RETAIL_CTCBASE: vptr +0x00, ParentThing +0x04,
+// ToBeRemoved +0x08, IsInGlobalUpdateTCs +0x09, size 0x0C), so the base call binds ?OnInitialActivate@CTCBase@@UAEXXZ (0x00686870, vtable slot 6).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
+#pragma pack(push, 1)
 
-class CTCAISummon : public CTCBase_Calls
+class CTCAISummon : public CTCBase
 { public:
     CDefPointer<CSummonDef_Retail> PSummonDef;             // +0x0c
-    void OnInitialActivate();
+    virtual void OnInitialActivate();
 };
 #pragma pack(pop)
 
 void CTCAISummon::OnInitialActivate()
 {
-    CTCBase_Calls::OnInitialActivate();
+    CTCBase::OnInitialActivate();
     CDefPointer<CThingDef> thingDef(ParentThing->PDef);
     thingDef->GetSubDef(&PSummonDef);
 }

@@ -62,13 +62,13 @@ class CThingCreatureBase;
 class CCreatureActionBase {
 public:
     unsigned char _d[0xbc];
+    void SetPItemRemoved(CIntelligentPointer<CThing> item);   // 0x0072D360 ?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThing@@@@@Z (Ego_r 0x00525E80 / FableWin 0x01DD0230; stores +0x2C PItemRemoved)
 };
 class CCreatureAction_CastStrengthBerserk : public CCreatureActionBase {
 public:
     unsigned char _more[0x114 - 0xbc];
     CCreatureAction_CastStrengthBerserk(CThingCreatureBase* creature);   // 0x008E6880
     ~CCreatureAction_CastStrengthBerserk();         // 0x0062E900
-    void SetItem(CIntelligentPointer<CThing> item); // 0x0072D360
 };
 class CCharString { public: void* m_pData; };
 extern const CCharString g_sheatheForAbilityName;   // 0x013BAD30
@@ -101,7 +101,7 @@ bool CTCSpecialAbilities::SetupBerserk()
                 CThing* item = (CThing*)held->HeldItem.GetPItem();
                 if (weapon == item) {
                     CCreatureAction_CastStrengthBerserk* berserk = new CCreatureAction_CastStrengthBerserk(Creature);
-                    berserk->SetItem(item);
+                    berserk->SetPItemRemoved(item);
                     CCreatureAction_SheatheItemToInventory action(Creature, g_sheatheForAbilityName, berserk, 0);
                     return Creature->SetCurrentAction(action);
                 }

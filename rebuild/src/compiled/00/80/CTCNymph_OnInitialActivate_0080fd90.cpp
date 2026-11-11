@@ -43,7 +43,7 @@ class CTCBase { public:
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
-    void OnInitialActivate();                   // 0x00686870
+    virtual void OnInitialActivate();           // 0x00686870 ?OnInitialActivate@CTCBase@@UAEXXZ (Ego_r; vtable slot 6)
 };
 class CTCNymph : public CTCBase { public:
     CDefPointer<const CNymphDef> PDef;          // +0x0c

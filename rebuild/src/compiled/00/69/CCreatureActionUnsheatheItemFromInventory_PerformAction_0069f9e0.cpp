@@ -103,7 +103,7 @@ public:
 };
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;                         // 0x006A1440
-    void RemoveThing(CThing* thing);                         // 0x006A19B0
+    void RemoveThing(CThing& thing);                         // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     bool IsCarryingThing(CThing* thing);                     // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool drop);           // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
@@ -150,7 +150,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
         if (held->HasTC(0x48))
             DropWeapon(held, carrying, GetCreature());
         else
-            carrying->RemoveThing(held);
+            carrying->RemoveThing(*held);
         if (held->HasTC(0x1a)) {
             CTC1A* tc = held->GetTC<CTC1A>(0x1a);
             if (!carrying->IsCarryingThing(held))

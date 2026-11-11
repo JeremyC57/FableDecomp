@@ -50,16 +50,18 @@ template <class T> class CDefPointer { public:
 
 namespace NCameraModes { class CSubComponentBase; }
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
-void __fastcall DestroyRange(CCountedPointer<NCameraModes::CSubComponentBase>* first,
-                             CCountedPointer<NCameraModes::CSubComponentBase>* last,
-                             const SNonscalarPtrIteratorTag& tag);   // 0x0056DBF0
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x0056DBF0 (std::__destroy_aux<T*>)
+}
 struct CSubComponentVector {                       // vector<CCountedPointer<NCameraModes::CSubComponentBase>>
     CCountedPointer<NCameraModes::CSubComponentBase>* _M_start;
     CCountedPointer<NCameraModes::CSubComponentBase>* _M_finish;
     CCountedPointer<NCameraModes::CSubComponentBase>* _M_end_of_storage;
     ~CSubComponentVector()
     {
-        DestroyRange(_M_start, _M_finish, SNonscalarPtrIteratorTag());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }

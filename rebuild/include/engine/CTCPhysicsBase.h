@@ -294,6 +294,9 @@ FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
 
 class CDefPointeeBase;
 
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
+class CRightHandedSet;
+#endif
 #pragma pack(push, 1)
 class CTCPhysicsBase {
 public:
@@ -313,6 +316,18 @@ public:
     float            Radius;                                 // +0x34
     CDefPointeeBase* PhysicsDef_Object;                      // +0x38 CDefPointer<CPhysicsDef_const_>::Object
     unsigned char    OldMoving[0x4];                         // +0x3c bitfield group: bool:1
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
+    // agentNF19: the same declaration as the retail branch's opt-in (Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ, 0x006AFE00),
+    // for rows on this layout view (0x007232E0 CTCPhysicsLight::OnCreate). Declaration only: no layout change.
+    float GetMass() const;                                   // 0x006AFE00
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
+    // agentNF19: the retail branch's static (FableWin.pdb `dynamic initializer for 'CTCPhysicsBase::DummyRHSet'`; access as
+    // that opt-in assumes), for rows on this layout view (0x006B1450 CTCPhysicsBase::GetRHSet). Declaration only.
+protected:
+    static CRightHandedSet DummyRHSet;                       // 0x0137F9B4
+public:
+#endif
 };
 #pragma pack(pop)
 

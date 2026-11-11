@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D2A00, 358 bytes (`ret 4`, CWideString by hidden pointer);
 // CTCTavernGameCoinGolf vtable 0x0126F49C slot 43 (the catalog's "vfunc_43"; slot 43 is GetBestScore in every tavern game:
 // ShoveHaPenny 0x007CF5B0, CardPairs 0x007D6560, SpotTheAddition 0x007D7C80, all landed).
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; CTCTavernGame::GetText(unsigned long) 0x005E9E70;
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; CTCTavernGame::GetText(unsigned long) 0x005E9E70;
 //          CTCTavernGame::GetHeroStats(CTCHeroStats**) 0x005EB4B0; CThing::GetDefName() const 0x004C7CC0;
 //          CDefString::operator==(const char*) const 0x005B3440; CCharString::FormatDouble(long, double) 0x009A08B0
 //          (static `__fastcall`); CCharString::ToWideString() const 0x0099E480; CWideString::operator+= 0x0099B8D0;
@@ -60,7 +60,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -74,7 +75,7 @@ class CTCHeroStats : public CTCHeroStatsDonor {
 class CTCTavernGame { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
     CWideString GetText(unsigned long id);      // 0x005E9E70
 };
@@ -85,8 +86,8 @@ class CTCTavernGameCoinGolf : public CTCTavernGame { public:
 
 CWideString CTCTavernGameCoinGolf::GetBestScore()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     CWideString text = GetText(def->BestScore);
     CTCHeroStats* stats = 0;
     GetHeroStats(&stats);

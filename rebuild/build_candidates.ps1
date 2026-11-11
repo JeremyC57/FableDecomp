@@ -42587,9 +42587,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c0c910'
-        Module = '~list<CMessageEvent_const*,std'
-        Source = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c910.cpp'
-        TestSource = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c910_test.cpp'
+        Module = 'CString'
+        Source = '00/c0/CString_MakeUpper_00c0c910.cpp'
+        TestSource = '00/c0/CString_MakeUpper_00c0c910_test.cpp'
         PassPattern = 'OK_00c0c910'
     }
     [pscustomobject]@{
@@ -166203,9 +166203,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072d360'
-        Module = '_unattributed'
-        Source = '00/72/unattributed_SetItemCItemOwner0072d360_0072d360.cpp'
-        TestSource = '00/72/unattributed_SetItemCItemOwner0072d360_0072d360_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '00/72/CCreatureActionBase_SetPItemRemoved_0072d360.cpp'
+        TestSource = '00/72/CCreatureActionBase_SetPItemRemoved_0072d360_test.cpp'
         PassPattern = '0072d360_TEST PASS'
     }
     [pscustomobject]@{
@@ -198676,9 +198676,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e4aa0'
-        Module = 'CKeyedOwner_009e4aa0'
-        Source = '00/9e/CKeyedOwner009e4aa0_Register_009e4aa0.cpp'
-        TestSource = '00/9e/CKeyedOwner009e4aa0_Register_009e4aa0_test.cpp'
+        Module = 'std::list<CMaintainedEvent>'
+        Source = '00/9e/stdlistCMaintainedEvent_pushback_009e4aa0.cpp'
+        TestSource = '00/9e/stdlistCMaintainedEvent_pushback_009e4aa0_test.cpp'
         PassPattern = '009e4aa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -211327,8 +211327,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007aeec0'
         Module = 'CTCBoss'
-        Source = '00/7a/CTCBoss_CountLivingHelperCreatures_007aeec0.cpp'
-        TestSource = '00/7a/CTCBoss_CountLivingHelperCreatures_007aeec0_test.cpp'
+        Source = '00/7a/CTCBoss_CountLivingHelpers_007aeec0.cpp'
+        TestSource = '00/7a/CTCBoss_CountLivingHelpers_007aeec0_test.cpp'
         PassPattern = '007aeec0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275082,9 +275082,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007f1b70'
-        Module = '_global'
-        Source = '00/7f/global_Create_007f1b70.cpp'
-        TestSource = '00/7f/global_Create_007f1b70_test.cpp'
+        Module = 'CTCDRumble'
+        Source = '00/7f/CTCDRumble_Create_007f1b70.cpp'
+        TestSource = '00/7f/CTCDRumble_Create_007f1b70_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '007f1b70_TEST PASS'
     }
@@ -275126,9 +275126,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0086e5c0'
-        Module = 'std::vector'
-        Source = '00/86/stdvector_ResizeCSharerParserEntry24byte_0086e5c0.cpp'
-        TestSource = '00/86/stdvector_ResizeCSharerParserEntry24byte_0086e5c0_test.cpp'
+        Module = 'std::vector<CRandomAppearanceMorph::CBodyPartMesh>'
+        Source = '00/86/stdvectorCRandomAppearanceMorphCBodyPartMesh_Mfillinsert_0086e5c0.cpp'
+        TestSource = '00/86/stdvectorCRandomAppearanceMorphCBodyPartMesh_Mfillinsert_0086e5c0_test.cpp'
         PassPattern = '0086e5c0_TEST PASS'
     }
     [pscustomobject]@{

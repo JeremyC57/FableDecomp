@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D8160, 299 bytes (`ret 4`, CWideString by hidden pointer);
 // CTCTavernGameSpotTheAddition vtable 0x0126F814 slot 46 (Ego_r.pdb `?GetAdditionalInfo@CTCTavernGameSpotTheAddition@@UAE?AVCWideString@@XZ`;
 // the manifest row says "vfunc_46").
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; CDefClassBase::GetSubDef<CTavernGameSpotTheAdditionDef>
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; CDefClassBase::GetSubDef<CTavernGameSpotTheAdditionDef>
 //          (CDefPointer<const CTavernGameSpotTheAdditionDef>*) 0x007D9A80 (on the owner's def class, owner +0x70; its body
 //          names "CTavernGameSpotTheAdditionDef"); GFIntToCharString(long) 0x0099F830 (`__fastcall`, hidden result in ecx);
 //          CCharString::ToWideString() const 0x0099E480; CTCTavernGame::GetText(unsigned long) 0x005E9E70;
@@ -64,7 +64,8 @@ class CTavernGameSpotTheAdditionDef : public CDefBase { public:
     unsigned char _pad_0x08[0x3c];
     CLongVector   ItemsPerRound;                // +0x44
 };
-struct CDefPointer {                            // CDefPointer<const CTavernGameDef>
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)                            // CDefPointer<const CTavernGameDef>
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -109,7 +110,7 @@ class CThing { public:
 class CTCTavernGame { public:
     virtual void v00();
     CThing*       Owner;                        // +0x04
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70
     unsigned char _pad_0x08[0xe8];
     long          CurrentRound;                 // +0xf0
@@ -121,8 +122,8 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
 
 CWideString CTCTavernGameSpotTheAddition::GetAdditionalInfo()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     CSpotTheAdditionDefPointer spotDef;
     Owner->DefClass->GetSubDef(&spotDef);
     return GetText(def->AdditionalInfo) + GFIntToCharString(CurrentRound + 1).ToWideString() + L"/"

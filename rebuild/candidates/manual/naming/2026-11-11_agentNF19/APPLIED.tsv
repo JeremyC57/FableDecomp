@@ -1,0 +1,100 @@
+tag	address	status	binders_respelled	note
+land1011ca	00c0c910	done	0	self-rename; 0x00C2E610 already binds ?MakeUpper@CString@@QAEXXZ (correct once the catalog takes the rename)
+land1011ca	00a446f4	partial	0	not a function (catch funclet of CSuspendableProcessMicrothread::ThreadEntry 0x00A446A0); the landed shape row needs coordinator handling (catalog/label); no binder
+land1011ca	00c35450	done	0	self-rename
+land1011cb	0072d360	partial	1	self-rename + 0x0072CBA0; left 0x007C9180 (passes CIntelligentPointer<const CThing> through the converting ctor 0x004A9730; argument type conflict, needs re-authoring)
+land1011cb	007f1b70	done	2	self-rename + both callers
+land1011cc	00647308	done	0	no landed binder spells it wrong
+land1011cc	006463f0	done	0	no landed binder spells it wrong
+land1011cc	004c84b0	done	0	no landed binder spells it wrong
+land1011cc	00995eb0	done	0	no landed binder spells it wrong
+land1011cc	004cbd50	done	1	all wrong binders respelled
+land1011cc	0051e2e0	done	1	all wrong binders respelled
+land1011cd	00450a58	partial	0	left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450a74	partial	0	left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450a90	partial	0	left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450ab2	partial	0	left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450aea	partial	1	0x00471CC5 respelled; left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00450b1b	partial	1	0x00472EDA respelled; left: the caller row models an ICF-folded callee as an unrelated free stand-in (Inner_Process / AutoTinyFinishRead / Consume / CActiveFile_cb ...); needs re-authoring of the caller, not a respell
+land1011cd	00493959	done	1	all wrong binders respelled
+land1011cd	00493984	done	1	all wrong binders respelled
+land1011cd	004aa060	done	1	all wrong binders respelled
+land1011cd	004aa580	done	1	all wrong binders respelled
+land1011cd	00535420	done	1	all wrong binders respelled
+land1011cd	0054a1c0	done	3	all wrong binders respelled
+land1011cd	0056dbf0	done	1	all wrong binders respelled
+land1011cd	005c0df0	done	1	all wrong binders respelled
+land1011cd	005c0e1b	partial	1	0x005C2831 respelled; left 0x005C1140 (FableUmove_construct stand-in, element modelled as a local struct)
+land1011cd	005c10cc	partial	0	left 0x005C1F42 (CInvItem stand-in derived from engine/CItem.h; target wants const NInventory::CItem*) and 0x005C140E (UninitCopy stand-in on SElement20)
+land1011cd	005f7a1d	done	1	all wrong binders respelled
+land1011cd	005f9379	partial	0	left 0x005F9A29 (FableUmove_construct stand-in)
+land1011cd	00612860	partial	0	left 0x0065571A (FableUmove_construct stand-in)
+land1011cd	00696790	partial	1	0x00693EF0 respelled; left 0x00694020 (Destroy_range on a local CActionEventPointer with SRandomTag)
+land1011cd	006d3770	done	1	all wrong binders respelled
+land1011cd	006f2300	partial	3	3 respelled (one via a new fable_containers.h opt-in); left 0x006ED510 (local CSequencePointer whose members .Object/.Count are used)
+land1011cd	006fb1c0	done	1	all wrong binders respelled
+land1011cd	00764ee0	done	1	all wrong binders respelled
+land1011cd	0085db50	partial	0	left 0x0085E570 (namespace N0085e570 stand-in Element, not CTextureManagerPoolInfo)
+land1011cd	00889230	done	0	no landed binder spells it wrong
+land1011cd	00889700	done	1	all wrong binders respelled
+land1011cd	0088a410	done	0	no landed binder spells it wrong
+land1011cd	008e33d0	done	0	no landed binder spells it wrong
+land1011cd	0098cee0	done	1	all wrong binders respelled
+land1011cd	009e11a0	done	0	no landed binder spells it wrong
+land1011cd	009f6750	partial	1	0x009F5C80 respelled; left 0x00A5FFD0 (local CJoystickPointer with members + Move_00a5fda0 stand-in)
+land1011cd	00a464e0	done	2	all wrong binders respelled
+land1011cd	00a744b0	done	0	no landed binder spells it wrong
+land1011cd	00a96940	done	1	all wrong binders respelled
+land1011cd	00a969d0	done	1	all wrong binders respelled
+land1011cd	00aa9140	done	2	all wrong binders respelled
+land1011cd	00ab2bd0	partial	0	left 0x00AB34C0: it destroys CCountedPointer<CBindingTarget>, the address name is the CBoneInfo instance (ICF); respelling to CBoneInfo would be wrong
+land1011cd	00ad1990	done	0	no landed binder spells it wrong
+land1011cd	00af0d80	rejected	0	REJECTED: element is CCountedPointer<NParticleEngine::CParticleSystem> (callers 0x00AF0EF0 reserve, 0x00AF10E0 ctor; 0x00AF0EF0 already binds the CParticleSystem spelling)
+land1011cd	00b38930	done	2	all wrong binders respelled
+land1011ce	007aeec0	done	0	self-rename
+land1011cf	006868a0	done	4	all wrong binders respelled
+land1011cf	00644627	partial	0	no correct symbol settled (slot 0 scalar deleting destructor shared by 23 NPlayerGui::CDraw* vtables); 5 binders left
+land1011ch	0052c7e0	partial	3	left 0x0054BA20 / 0x00555220 (CChangingStateComponent outside NUISystem) and forwarders 0x005419D0 0x00543ED0 0x0054ECA0 0x00550C50 0x005367F3 (stand-in classes)
+land1011ch	0052e890	done	1	all wrong binders respelled
+land1011ch	00533bc0	partial	0	left 0x0053B321 0x00541120 0x00541230 (RemoveChild stand-ins on unproven classes)
+land1011ch	00663ba0	done	0	no landed binder spells it wrong
+land1011ch	00686870	partial	4	left 0x004DC83E 0x007B2A90 0x0076C830 (stand-in classes, no proven CTCBase model)
+land1011ch	0072e290	done	1	all wrong binders respelled
+land1011ch	007502d0	done	1	all wrong binders respelled
+land1011ch	007832b0	done	1	all wrong binders respelled
+land1011ch	00861d00	partial	3	left 10 binders in namespace NCreatureMode stand-ins (no shared CModeStandBase header)
+land1011ch	0137f9b4	done	1	all wrong binders respelled
+land1011ch	006afe00	done	2	all wrong binders respelled
+land1011ch	00af1200	rejected	0	entry is FAM04 rejection of ??1CParticleDataBank (ret 18h); nothing to apply
+land1011ci	00912700	done	4	all wrong binders respelled
+land1011ci	009e4aa0	done	0	self-rename
+land1011cj	0086e5c0	done	0	self-rename
+FAM05	00788555	done	0	no landed binder spells it wrong
+FAM05	00788aef	done	0	no landed binder spells it wrong
+FAM05	007cc2b0	done	1	all wrong binders respelled
+FAM05	0075c530	done	0	no landed binder spells it wrong
+FAM05	006984a0	done	0	no landed binder spells it wrong
+FAM05	006991f0	done	0	no landed binder spells it wrong
+FAM05	00410620	done	2	all wrong binders respelled
+FAM05	004106f0	done	2	all wrong binders respelled
+FAM05	00410be0	done	2	all wrong binders respelled
+FAM05	004045c0	done	7	all wrong binders respelled
+FAM05	00a1c700	done	0	no landed binder spells it wrong
+FAM05	00412a50	partial	0	left 0x00412D20: COMDAT-folded resize (other element types keep their own spelling; needs per-row element proof)
+FAM05	00442770	partial	0	left 5: COMDAT-folded resize (other element types)
+FAM05	004428f0	partial	0	left 19: COMDAT-folded resize (int/long/unsigned long spellings)
+FAM05	00464931	partial	0	left 7: COMDAT-folded resize
+FAM05	005ea000	partial	30	30 respelled; left 0x007CF530 (CoinBase) 0x007D5AD0 0x007D7520 (CardBase) 0x007D62D0 (CardPairs): GetDef declared on the wrong local class, needs a CTCTavernGame model
+FAM05	004c9840	partial	3	3 respelled; left 11 stand-ins (local CThing models without the enum overload)
+FAM05	004c9b80	partial	0	binds correctly in every changed row; left 6 stand-ins (0x0066FB50 0x008C5370 0x008D7730 0x008D79A0 0x008D79F0 0x008DF310)
+FAM05	005e9a70	done	1	all wrong binders respelled
+FAM05	005e9a90	done	1	all wrong binders respelled
+FAM05	005ea650	partial	1	left 0x007D83C0 (tavern stand-in class)
+FAM05	006a19b0	done	14	all wrong binders respelled
+FAM05	007f7750	done	0	no landed binder spells it wrong
+FAM05	00883ae0	done	0	no landed binder spells it wrong
+FAM05	008ef170	partial	1	left 0x007D2900 (FableEndCut stand-in)
+FAM05	008ef180	done	2	all wrong binders respelled
+FAM05	008f0920	done	0	no landed binder spells it wrong
+FAM05	00a01b50	partial	2	26 changed rows bind it correctly (2 respelled here: 0x00847C90 0x008D90B0); ~90 namespaced stand-ins not started
+FAM05	00af7d80	partial	0	left 0x00AF8170 (SAPAV vs SIPAV; not examined)

@@ -45,17 +45,22 @@ struct __false_type { __false_type() { } };
 
 // Same-TU stand-ins for the out-of-line helpers (their STLport bodies, tags unnamed and untouched): with them
 // visible VC7.1 homes every empty tag over the dead `atend` byte, as retail.
+template <class _InputIter, class _ForwardIter>
+_ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&);
+template <class _ForwardIter, class _Size, class _Tp>
+_ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&);
+// Explicit specializations, defined under auto_inline(off) so they stay out of line as the retail COMDATs (same-TU bodies).
 #pragma auto_inline(off)
-CAbilityDefPointer* __fastcall __uninitialized_copy(const CAbilityDefPointer* __first, const CAbilityDefPointer* __last,
-                                                    CAbilityDefPointer* __result, const __false_type&)  // 0x005F79F7
+template <>
+CAbilityDefPointer* __fastcall __uninitialized_copy<CAbilityDefPointer*, CAbilityDefPointer*>(CAbilityDefPointer* __first, CAbilityDefPointer* __last, CAbilityDefPointer* __result, const __false_type&)   // 0x005F79F7
 {
     CAbilityDefPointer* __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
         new (__cur) CAbilityDefPointer(*__first);
     return __cur;
 }
-CAbilityDefPointer* __fastcall __uninitialized_fill_n(CAbilityDefPointer* __first, size_t __n, const CAbilityDefPointer& __x,
-                                                      const __false_type&)                             // 0x005F7A1D
+template <>
+CAbilityDefPointer* __fastcall __uninitialized_fill_n<CAbilityDefPointer*, size_t, CAbilityDefPointer>(CAbilityDefPointer* __first, size_t __n, const CAbilityDefPointer& __x, const __false_type&)   // 0x005F7A1D
 {
     for (; __n > 0; --__n, ++__first)
         new (__first) CAbilityDefPointer(__x);

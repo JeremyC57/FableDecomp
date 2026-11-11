@@ -50,17 +50,22 @@ struct __false_type { __false_type() { } };
 
 typedef CSubtitleRenderer::CEmbeddedGraphic CEmbeddedGraphic;
 
+template <class _InputIter, class _ForwardIter>
+_ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&);
+template <class _ForwardIter, class _Size, class _Tp>
+_ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&);
+// Explicit specializations, defined under auto_inline(off) so they stay out of line as the retail COMDATs (same-TU bodies).
 #pragma auto_inline(off)
-CEmbeddedGraphic* __fastcall __uninitialized_copy(const CEmbeddedGraphic* __first, const CEmbeddedGraphic* __last,
-                                                CEmbeddedGraphic* __result, const __false_type&)        // 0x00493959 (same-TU stand-in body)
+template <>
+CEmbeddedGraphic* __fastcall __uninitialized_copy<CEmbeddedGraphic*, CEmbeddedGraphic*>(CEmbeddedGraphic* __first, CEmbeddedGraphic* __last, CEmbeddedGraphic* __result, const __false_type&)   // 0x00493959
 {
     CEmbeddedGraphic* __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
         new (__cur) CEmbeddedGraphic(*__first);
     return __cur;
 }
-CEmbeddedGraphic* __fastcall __uninitialized_fill_n(CEmbeddedGraphic* __first, size_t __n, const CEmbeddedGraphic& __x,
-                                                  const __false_type&)                                // 0x00493984 (same-TU stand-in body)
+template <>
+CEmbeddedGraphic* __fastcall __uninitialized_fill_n<CEmbeddedGraphic*, size_t, CEmbeddedGraphic>(CEmbeddedGraphic* __first, size_t __n, const CEmbeddedGraphic& __x, const __false_type&)   // 0x00493984
 {
     for (; __n > 0; --__n, ++__first)
         new (__first) CEmbeddedGraphic(__x);

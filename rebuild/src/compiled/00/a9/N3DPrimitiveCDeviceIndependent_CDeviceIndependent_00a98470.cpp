@@ -19,8 +19,6 @@ protected:                                      // vtable 0x01231710
     virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
 };
 
-struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
-
 class C3DVertex2;
 #include "engine/C3DVector.h"
 class C3DBoundingSphere { public: C3DVector Centre; float Radius; };
@@ -29,10 +27,12 @@ class C3DGroup2;
 template <class T> class CIVCountedPointer { public: T* Object; };
 #include "engine/CCountedPointer.h"
 
-void __fastcall DestroyRange(CIVCountedPointer<N3DPrimitive::CTriangleList>* first,
-                             CIVCountedPointer<N3DPrimitive::CTriangleList>* last, const SNonscalarPtrIteratorTag& tag);   // 0x00A96990
-void __fastcall DestroyRange(CCountedPointer<C3DGroup2>* first, CCountedPointer<C3DGroup2>* last,
-                             const SNonscalarPtrIteratorTag& tag);   // 0x00A969D0
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);
+// 0x00A96990 std::__destroy_aux<CIVCountedPointer<N3DPrimitive::CTriangleList>*>, 0x00A969D0 std::__destroy_aux<CCountedPointer<C3DGroup2>*>
+}
 
 template <class T>
 struct CPodArray {                                 // retail CArray<T> of a trivially destructible T: first / last / end
@@ -48,7 +48,7 @@ class CArray { public:                                    // retail CArray<T>: f
     T* m_pEnd;
     ~CArray()
     {
-        DestroyRange(m_pFirst, m_pLast, SNonscalarPtrIteratorTag());
+        std::__destroy_aux(m_pFirst, m_pLast, std::__false_type());
         if (m_pFirst)
             free(m_pFirst);
     }

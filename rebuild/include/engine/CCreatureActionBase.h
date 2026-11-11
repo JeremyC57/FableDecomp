@@ -193,6 +193,13 @@ protected:
 protected:
     CThingManager& GetThingManager();                                    // 0x00692980
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_SETPITEMREMOVED
+    // agentNF19 (row 0x0072D360): Ego_r.pdb 0x00525E80 / FableWin.pdb 0x01DD0230
+    // ?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThing@@@@@Z (public; stores the by-value pointer into
+    // PItemRemoved +0x2C). Needs FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS (CIntelligentPointer). Declaration only.
+public:
+    void SetPItemRemoved(CIntelligentPointer<CThing> item);           // 0x0072D360
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
 protected:
  CIntelligentPointer<CThingCreatureBase> PCreature;

@@ -22,7 +22,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCCarrying { public:
     CThing* RemoveThingFromPrimarySlot(bool drop);     // 0x006A1E00
-    void RemoveThing(CThing* thing);                   // 0x006A19B0
+    void RemoveThing(CThing& thing);                   // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 class CTCCarryable { public:
@@ -33,15 +33,16 @@ struct CTCCarriedObject {
     CThing* m_pCarrier;                     // +0x10
     long GetCarrySlot() const;              // 0x00705CC0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {            // CIntelligentPointer<CThing>: vptr + item
     virtual void v00();
     CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;          // 0x00A01B50 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -63,23 +64,23 @@ class CCreatureAction_Drink : public CCreatureActionBase { public:
 void CCreatureAction_Drink::FinishAction()
 {
     if (IS_THING_ALIVE(PDrinkThing)) {
-        PDrinkThing.GetPItem()->Kill(true);
+        ((CThing*)PDrinkThing.GetPItem())->Kill(true);
         CTCCarrying* carrying;
-        PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying);
+        ((CThing*)PCreature.GetPItem())->GetTC(TCI_CARRYING, &carrying);
         carrying->RemoveThingFromPrimarySlot(false);
         if (IS_THING_ALIVE(PJug)) {
             const CTCCarriedObject* carried = 0;
-            const CThing* jugThing = PJug.GetPItem();
+            const CThing* jugThing = ((CThing*)PJug.GetPItem());
             if (jugThing->HasTC(TCI_CARRYABLE))
                 carried = ((const CTCCarriedObject*)&jugThing->GetTC(TCI_CARRYABLE));
             if (carried->m_pCarrier) {
                 CThing* carrier = ((CThing*)((CTCCarryable*)carried)->GetPCarriedByThing());
-                if (carrier == PCreature.GetPItem())
-                    carrying->RemoveThing(PJug.GetPItem());
+                if (carrier == ((CThing*)PCreature.GetPItem()))
+                    carrying->RemoveThing(*(((CThing*)PJug.GetPItem())));
                 else
                     goto done;
             }
-            CThing* jug = PJug.GetPItem();
+            CThing* jug = ((CThing*)PJug.GetPItem());
             carrying->PutThingInCarrySlot(*jug, carried->GetCarrySlot(), true);
         }
     }

@@ -185,7 +185,7 @@ public:
 };
 class CTCCarrying {
 public:
-    void RemoveThing(CThing* thing);                                         // 0x006A19B0
+    void RemoveThing(CThing& thing);                                         // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z    // 0x006A1F80
 public:
     CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
@@ -213,13 +213,13 @@ public:
 void __fastcall CCreatureAction_DropWeapon::DropWeapon(CThing& weapon, CTCCarrying& carrying, CThing& creature)
 {
     if (weapon.HasTC(0x1a)) {
-        carrying.RemoveThing(&weapon);
+        carrying.RemoveThing(weapon);
         CDefPointer<CCarryableDef> carryableDef;
         weapon.m_pDef->GetSubDef(&carryableDef);
         long passiveSlot = carryableDef->PassiveCarrySlot;
         CThing* sheathed = carrying.GetThingInCarrySlot(passiveSlot);
         if (sheathed && !(sheathed->m_flags91 & 1)) {
-            carrying.RemoveThing(sheathed);
+            carrying.RemoveThing(*sheathed);
             if (sheathed->HasTC(0x1a))
                 sheathed->SetInLimbo(true);
             else
@@ -252,7 +252,7 @@ void __fastcall CCreatureAction_DropWeapon::DropWeapon(CThing& weapon, CTCCarryi
                           (float)cos(angle * 6.2831854820251465) * cosPitch, (float)sin(0.0));
         CRightHandedSet rhs(C3DVector(0.0f, 0.0f, 1.0f), forward);
         physics->SetRHSet(rhs);
-        carrying.RemoveThing(&weapon);
+        carrying.RemoveThing(weapon);
         CTCSolidToThing* solidToThing;
         if (!weapon.GetInterface(&solidToThing, 0x4d)) {
             {

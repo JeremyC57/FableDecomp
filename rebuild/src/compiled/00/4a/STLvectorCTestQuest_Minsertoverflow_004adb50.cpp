@@ -16,7 +16,8 @@
 #include <stdlib.h>                                 // malloc @ 0x00BFEA0E, free @ 0x00BFEA14
 #include <new>
 
-struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
+namespace std { struct __false_type { __false_type() { } }; }   // user constructor: no zero-initialised tag temporary
+using std::__false_type;
 
 class CCharString { public:
     void* PStringData;
@@ -37,23 +38,35 @@ class CTestQuest { public:
 
 #pragma auto_inline(off)
 // Same-TU stand-ins for the STLport COMDATs 0x004AA060 / 0x004AA0D0 / 0x004ABD90 (they never touch the tag).
-CTestQuest* __fastcall __uninitialized_copy(CTestQuest* __first, CTestQuest* __last, CTestQuest* __result, const __false_type&)
+namespace std {
+template <class _InputIter, class _ForwardIter>
+_ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&);
+template <class _ForwardIter, class _Size, class _Tp>
+_ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&);
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);
+// Explicit specializations (defined here so auto_inline(off) keeps them out of line, as the retail COMDATs are).
+template <>
+CTestQuest* __fastcall __uninitialized_copy<CTestQuest*, CTestQuest*>(CTestQuest* __first, CTestQuest* __last, CTestQuest* __result, const __false_type&)
 {
     for ( ; __first != __last; ++__first, ++__result)
         new (__result) CTestQuest(*__first);
     return __result;
 }
-CTestQuest* __fastcall __uninitialized_fill_n(CTestQuest* __first, unsigned int __n, const CTestQuest& __x, const __false_type&)
+template <>
+CTestQuest* __fastcall __uninitialized_fill_n<CTestQuest*, unsigned int, CTestQuest>(CTestQuest* __first, unsigned int __n, const CTestQuest& __x, const __false_type&)
 {
     CTestQuest* __cur = __first;
     for ( ; __n > 0; --__n, ++__cur)
         new (__cur) CTestQuest(__x);
     return __cur;
 }
-void __fastcall __destroy_aux(CTestQuest* __first, CTestQuest* __last, const __false_type&)
+template <>
+void __fastcall __destroy_aux<CTestQuest*>(CTestQuest* __first, CTestQuest* __last, const __false_type&)
 {
     for ( ; __first != __last; ++__first)
         __first->~CTestQuest();
+}
 }
 #pragma auto_inline(on)
 
@@ -72,7 +85,7 @@ struct _STLP_alloc_proxy : public _MaybeReboundAlloc {
     _Value _M_data;
 };
 
-inline void _Destroy(CTestQuest* __first, CTestQuest* __last) { __destroy_aux(__first, __last, __false_type()); }
+inline void _Destroy(CTestQuest* __first, CTestQuest* __last) { std::__destroy_aux(__first, __last, __false_type()); }
 
 struct CTestQuestVector {
     CTestQuest* _M_start;                            // +0x00
@@ -103,15 +116,15 @@ void CTestQuestVector::_M_insert_overflow(CTestQuest* __position, const CTestQue
 
     CTestQuest* __new_start = _M_end_of_storage.allocate(__len);
     CTestQuest* __new_finish = __new_start;
-    __new_finish = __uninitialized_copy(_M_start, __position, __new_start, __false_type());
+    __new_finish = std::__uninitialized_copy(_M_start, __position, __new_start, __false_type());
     if (__fill_len == 1) {
         new (__new_finish) CTestQuest(__x);
         ++__new_finish;
     }
     else
-        __new_finish = __uninitialized_fill_n(__new_finish, __fill_len, __x, __false_type());
+        __new_finish = std::__uninitialized_fill_n(__new_finish, __fill_len, __x, __false_type());
     if (!__atend)
-        __new_finish = __uninitialized_copy(__position, _M_finish, __new_finish, __false_type());
+        __new_finish = std::__uninitialized_copy(__position, _M_finish, __new_finish, __false_type());
     _M_clear();
     _M_set(__new_start, __new_finish, __new_start + __len);
 }

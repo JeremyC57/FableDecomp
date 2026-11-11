@@ -33,7 +33,7 @@ class CTCNamedUserActionPoints { public:
 class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
-    void OnInitialActivateBase();               // 0x005EA650 (CTCTavernGame::OnInitialActivate)
+    virtual void OnInitialActivate();           // 0x005EA650 ?OnInitialActivate@CTCTavernGame@@UAEXXZ (vtable slot 6; Ego_r/FableWin)
 };
 
 struct CTCTavernGameCardBase : CTCTavernGame {
@@ -51,5 +51,5 @@ void CTCTavernGameCardBase::OnInitialActivate()
     thing->GetTC(TCI_NAMED_USER_ACTION_POINTS, &points);
     points->GetFreeNamedActionPoint(thing, &GamePositionPos, &GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
                                     &GamePositionActionPointIndex, 0, true);
-    OnInitialActivateBase();
+    CTCTavernGame::OnInitialActivate();
 }

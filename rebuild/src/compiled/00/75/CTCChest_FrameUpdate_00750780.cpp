@@ -59,7 +59,9 @@ class CTCContainerRewardHero : public CTCContainer { public:
 class CTCChest : public CTCContainerRewardHero { public:
     COpenCloseHelper ChestOpener;                       // +0x1c
     void UpdateAnimation(float time);                   // 0x00750470
-    void InitClosed();                                  // 0x007502D0
+private:
+    void InitClosed();                                  // 0x007502D0 ?InitClosed@CTCChest@@AAEXXZ (Ego_r/FableWin: private)
+public:
     void FrameUpdate();
 };
 

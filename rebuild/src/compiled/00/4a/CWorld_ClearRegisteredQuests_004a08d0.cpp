@@ -21,8 +21,12 @@ class CCharString { public:
     void* PStringData;
 };
 
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
+}
+using std::random_access_iterator_tag;
+using std::__false_type;
 
 class CTestQuest { public:
     CCharString QuestName;                          // +0x00
@@ -34,9 +38,13 @@ class CTestQuest { public:
     CCharString QuestCardDefName;                   // +0x18
 };
 
-CTestQuest* __fastcall __copy(CTestQuest* first, CTestQuest* last, CTestQuest* result,
-                              const random_access_iterator_tag&, int*);             // 0x004AA580
-void __fastcall __destroy_aux(CTestQuest* first, CTestQuest* last, const __false_type&);   // 0x004ABD90
+namespace std {
+template <class _RandomAccessIter, class _OutputIter, class _Distance>
+_OutputIter __fastcall __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
+                              const random_access_iterator_tag&, _Distance*);       // 0x004AA580 ??$__copy@PAVCTestQuest@@PAV1@H@std@@...
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator first, _ForwardIterator last, const __false_type&);   // 0x004ABD90 std::__destroy_aux<CTestQuest*>
+}
 
 struct CCharStringVector {
     CCharString* _M_start;
@@ -54,8 +62,8 @@ struct CTestQuestVector {
     CTestQuest* _M_end_of_storage;
     CTestQuest* erase(CTestQuest* __first, CTestQuest* __last)
     {
-        CTestQuest* __i = __copy(__last, _M_finish, __first, random_access_iterator_tag(), (int*)0);
-        __destroy_aux(__i, _M_finish, __false_type());
+        CTestQuest* __i = std::__copy(__last, _M_finish, __first, random_access_iterator_tag(), (int*)0);
+        std::__destroy_aux(__i, _M_finish, __false_type());
         _M_finish = __i;
         return __first;
     }

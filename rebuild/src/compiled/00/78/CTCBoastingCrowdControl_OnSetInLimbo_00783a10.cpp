@@ -28,7 +28,7 @@ class CTCBoastingCrowdControl { public:
     unsigned char HeroCrowdThings[0xc];                     // +0x10 map<unsigned __int64, CIntelligentPointer<CThing>> (12 bytes in retail)
     bool          CrowdSizesSuppressed;                     // +0x1c (PDB +0x20)
     bool GetCrowd(CThing* thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);   // 0x00783A30
-    void KillAllCrowdThings();                              // 0x007832B0
+    void Shutdown();                                        // 0x007832B0 ?Shutdown@CTCBoastingCrowdControl@@QAEXXZ (Ego_r/FableWin; the Startup twin)
     void Startup();                                         // 0x00783850
     void OnSetInLimbo(bool flag);
 };
@@ -36,7 +36,7 @@ class CTCBoastingCrowdControl { public:
 void CTCBoastingCrowdControl::OnSetInLimbo(bool flag)
 {
     if (flag)
-        KillAllCrowdThings();
+        Shutdown();
     else if (!Active)
         Startup();
 }

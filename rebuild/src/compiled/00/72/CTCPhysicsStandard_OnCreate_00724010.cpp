@@ -94,6 +94,8 @@ protected:
 class CTCPhysicsBase : public CTCBase {              // Ego_r.pdb base of CTCPhysicsStandard (row-local view: no members modelled here)
 protected:
     CWorldMap& GetWorldMap();                         // 0x006AF620 Ego_r.pdb ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ
+public:
+    float GetMass() const;                            // 0x006AFE00 Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ
 };
 struct CTCPhysicsStandard : public CTCPhysicsBase {
     virtual void v0b(); virtual void v0c(); virtual void v0d();   // 1-3 (slot 0: ~CTCBase)
@@ -140,7 +142,6 @@ struct CTCPhysicsStandard : public CTCPhysicsBase {
 
     void CreatePPhysicsMeshInfo(const CGraphicDataRef& graphic);   // 0x006B05A0
     void BaseOnCreate();                            // 0x006B0780 CTCPhysicsBase::OnCreate
-    float GetMass();                                // 0x006AFE00
     float GetAirResistance();                       // 0x006AFDE0
     void GetPossibleInteractedWithList(const C2DBoxI& area, CThingPtrVector& things, float speed);   // 0x008E57D0
 };

@@ -172,6 +172,13 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }
 inline void _Destroy(char*,char*) { }
+#ifdef FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+// Retail opt-in (NF19, 2026-11-11): the nontrivial range destroy as the out-of-line /Gr COMDAT the caller only calls --
+// first/last in ecx/edx, the tag by reference on the stack (e.g. 0x006F2300 std::__destroy_aux<CCountedPointer<
+// CCombatSequenceBase>*>, called from CCombatManager::RegisterAttackingCombatant 0x006EDA80). Declaration only.
+#include "rebuild_abi.h"
+template<class I> void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&);
+#else
 #if defined(FABLE_RETAIL_STLP_DESTROY_AUX_NOINLINE) && defined(_MSC_VER)
 // Inline-budget: retain the actual nontrivial range destructor COMDAT call.
 template<class I> __declspec(noinline) void __destroy_aux(I first,I last,const __false_type&) {
@@ -185,6 +192,7 @@ template<class I> inline void __destroy_aux(I first,I last,const __false_type&) 
 #endif
     for(;first!=last;++first) _Destroy(&*first);
 }
+#endif
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
 #ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.

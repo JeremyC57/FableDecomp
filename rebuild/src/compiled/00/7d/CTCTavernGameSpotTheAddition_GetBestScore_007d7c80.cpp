@@ -2,7 +2,7 @@
 // Leaf: GetBestScore
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D7C80, 212 bytes (`ret 4`, CWideString by hidden pointer);
 // CTCTavernGameSpotTheAddition vtable 0x0126F814 slot 43. Ego_r.pdb `?GetBestScore@...@@UAE?AVCWideString@@XZ`.
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; CTCTavernGame::GetHeroStats(CTCHeroStats**)
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; CTCTavernGame::GetHeroStats(CTCHeroStats**)
 //          0x005EB4B0 (out parameter); CTCTavernGame::GetText(unsigned long) 0x005E9E70; CCharString::FormatDouble(long
 //          digits, double) 0x009A08B0 (static `__fastcall`, hidden result in ecx, digits in edx; Ego_r.pdb names it
 //          `GFFloatToCharString(double, long)`, the landed callers' spelling is kept);
@@ -53,7 +53,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -66,7 +67,7 @@ class CTCHeroStats : public CTCHeroStatsDonor {
 
 class CTCTavernGame { public:
     virtual void v00();
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
     CWideString GetText(unsigned long id);      // 0x005E9E70
 };
@@ -77,8 +78,8 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
 
 CWideString CTCTavernGameSpotTheAddition::GetBestScore()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     CTCHeroStats* stats;
     GetHeroStats(&stats);
     CWideString text = GetText(def->BestScore);

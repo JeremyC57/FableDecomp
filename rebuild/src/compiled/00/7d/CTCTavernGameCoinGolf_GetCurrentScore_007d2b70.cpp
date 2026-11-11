@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D2B70, 159 bytes (`ret 4`, CWideString by hidden pointer);
 // CTCTavernGameCoinGolf vtable 0x0126F49C slot 44. The catalog's "CTCTavernGameCardBase::GetCurrentScore" is a
 // propagated label: the body is byte-identical to CTCTavernGameShoveHaPenny's slot-44 body 0x007CF690.
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; CCharString::FormatDouble(long digits, double)
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; CCharString::FormatDouble(long digits, double)
 //          0x009A08B0 (static `__fastcall`, hidden result in ecx, digits in edx; Ego_r.pdb names this body
 //          `GFFloatToCharString(double, long)`, the landed callers' spelling is kept); CCharString::ToWideString() const
 //          0x0099E480; CTCTavernGame::GetText(unsigned long) 0x005E9E70; operator+(const CWideString&, const CWideString&)
@@ -46,7 +46,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -55,7 +56,7 @@ struct CDefPointer {
 
 class CTCTavernGame { public:
     virtual void v00();
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70
     unsigned char _pad_0x04[0x28];
     float         Score;                        // +0x2c
@@ -67,7 +68,7 @@ class CTCTavernGameCoinGolf : public CTCTavernGame { public:
 
 CWideString CTCTavernGameCoinGolf::GetCurrentScore()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     return GetText(def->CurrentScore) + CCharString::FormatDouble(0, Score).ToWideString();
 }

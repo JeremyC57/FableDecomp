@@ -1,0 +1,7 @@
+address	name	evidence
+00C0C910	?MakeUpper@CString@@QAEXXZ	agentNF19 (landing cn): body = CopyBeforeWrite 0x00C0BE20 + MSVCR71 _strupr (IAT 0x0144002C) on m_pchData; caller 0x00C2E6D2 on a CString; MFC strcore spelling; libpk, descriptive (no PDB covers libpk)
+007AEEC0	?CountLivingHelpers@CTCBoss@@QAEJXZ	agentNF19 (landing cn): Ego_r.pdb 0x007B0810 + Ego_d.pdb 0x026D1670 both spell ?CountLivingHelpers@CTCBoss@@QAEJXZ
+0072D360	?SetPItemRemoved@CCreatureActionBase@@QAEXV?$CIntelligentPointer@VCThing@@@@@Z	agentNF19 (landing cn): Ego_r.pdb + FableWin.pdb spell it; stores +0x2C PItemRemoved (struct_layouts_egor); row now on engine/CCreatureActionBase.h
+007F1B70	?Create@CTCDRumble@@SIPAVCThing@@ABVC3DVector@@W4EQuakeStrength@@W4EQuakeLength@@_N@Z	agentNF19 (landing cn): Ego_r.pdb 0x007EB500 mangled name; callers 0x0080D0B0 / 0x00871250 now bind it
+009E4AA0	?push_back@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ	agentNF19 (landing cn): RELOCATION_MATCH caller 0x00A66FD0 calls it as list<CMaintainedEvent>::push_back(); body = STLport insert(end()) via 0x009E4A20
+0086E5C0	_M_fill_insert	agentNF19 (landing cn): catalog/name only: caller 0x0086BFB0 (RELOCATION_MATCH) calls it as vector<CBodyPartMesh>::_M_fill_insert; full leaf ?_M_fill_insert@?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@...@Z needs the row re-authored on the real element type (left; stand-in leaf kept)

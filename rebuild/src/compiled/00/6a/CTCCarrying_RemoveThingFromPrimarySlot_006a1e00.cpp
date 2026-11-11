@@ -57,7 +57,7 @@ void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner)
 class CTCCarrying { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
-    void RemoveThing(CThing* thing);                    // 0x006A19B0
+    void RemoveThing(CThing& thing);                    // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     bool IsCarryingThing(CThing* thing);                // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool unused);
 public:
@@ -73,7 +73,7 @@ CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
         if (thing->HasTC(0x48))
             DropWeapon(thing, this, ParentThing);
         else
-            RemoveThing(thing);
+            RemoveThing(*thing);
         if (!IsCarryingThing(thing) && thing->HasTC(0x1a)) {
             CTCInterface1A* c = thing->GetTC<CTCInterface1A>(0x1a);
             if (c->Armed)
@@ -89,7 +89,7 @@ CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
         if (!IsPrimarySlotFree()) {
             CThing* next = GetThingInPrimarySlot();
             if (next && !(next->m_flags & 1) && next->HasTC(0x48) && next->GetTCConst<CTCWeapon>(0x48)->IsMeleeWeapon())
-                RemoveThing(next);
+                RemoveThing(*next);
         }
         return thing;
     }

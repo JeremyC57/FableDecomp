@@ -25,7 +25,7 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 class CTCCarrying { public:                        // interface type 0x46 component
-    void RemoveThing(CThing* thing);        // 0x006A19B0
+    void RemoveThing(CThing& thing);        // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
 public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
@@ -48,7 +48,7 @@ void CCreatureAction_ThrowGameObject::PerformAction()
     PCreature.Get()->GetTC(TCI_CARRYING, &pCarrying);
     CThing* thrown = pCarrying->GetThingInPrimarySlot();
     if (thrown) {
-        pCarrying->RemoveThing(thrown);
+        pCarrying->RemoveThing(*thrown);
         thrown->GetPhysicsTC()->ApplyAcceleration(Target);
     }
 }

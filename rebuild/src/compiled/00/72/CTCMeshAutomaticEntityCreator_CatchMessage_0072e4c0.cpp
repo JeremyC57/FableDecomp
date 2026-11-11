@@ -36,7 +36,9 @@ struct CMessageOnMeshReplaced;
 struct CTCMeshAutomaticEntityCreator {
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    void CreateChildThings();                   // 0x0072E290
+private:
+    void CreateChildThings();                   // 0x0072E290 ?CreateChildThings@CTCMeshAutomaticEntityCreator@@AAEXXZ (Ego_r/FableWin: private)
+public:
     void CatchMessage(const CMessageOnMeshReplaced& message);
 };
 

@@ -85,9 +85,13 @@ template <class T> struct CRetailList {          // STLport list<CCountedPointer
             free(_M_node);
     }
 };
-struct __false_type {};
-struct CCountedPointerAny { void* Data; void* Info; };
-void __fastcall DestroyRange_00535420(CCountedPointerAny* first, CCountedPointerAny* last, const __false_type& tag);
+namespace std { struct __false_type {}; }
+using std::__false_type;
+
+namespace std {
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00535420 (std::__destroy_aux<CCountedPointer<NUISystem::CComponent>*>)
+}
 template <class T> struct CCountedVector {       // STLport vector<CCountedPointer<T> >
     CCountedPointer<T>* _M_start;
     CCountedPointer<T>* _M_finish;
@@ -97,7 +101,7 @@ template <class T> struct CCountedVector {       // STLport vector<CCountedPoint
     ~CCountedVector()
     {
         __false_type tag;
-        DestroyRange_00535420((CCountedPointerAny*)_M_start, (CCountedPointerAny*)_M_finish, tag);
+        std::__destroy_aux(_M_start, _M_finish, tag);
         if (_M_start)
             free(_M_start);
     }

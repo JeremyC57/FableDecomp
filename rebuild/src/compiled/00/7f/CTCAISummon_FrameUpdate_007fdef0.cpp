@@ -40,28 +40,22 @@ template <class T, class _Alloc = allocator<T> > class list { public:           
 };
 }
 
+// agentNF19: the base is the shared retail CTCBase model (engine/CTCBase.h, FABLE_RETAIL_CTCBASE: vptr +0x00, ParentThing +0x04,
+// ToBeRemoved +0x08, IsInGlobalUpdateTCs +0x09, size 0x0C), so the base call binds ?FrameUpdate@CTCBase@@UAEXXZ (0x006868A0, slot 9).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 #pragma pack(push, 1)
-struct CTCBase_Calls                                   // engine/CTCBase.h layout (the header holds the layout only)
-{
-    void*   __vftable;                                      // +0x00
-    CThing* ParentThing;                                    // +0x04
-    bool    ToBeRemoved;                                    // +0x08
-    bool    IsInGlobalUpdateTCs;                            // +0x09
-    unsigned char _pad_0x0a[0x2];                           // +0x0a
-    void FrameUpdate();                                     // 0x006868A0
-};
-
-class CTCAISummon : public CTCBase_Calls
+class CTCAISummon : public CTCBase
 { public:
     void*                                         PSummonDef;            // +0x0c CDefPointer<CSummonDef>
     std::list<CIntelligentPointer<CThing> >     MySummonedCreatures;   // +0x10
     long                                          LastSummonTick;        // +0x14
-    void FrameUpdate();
+    virtual void FrameUpdate();
 };
 #pragma pack(pop)
 
 void CTCAISummon::FrameUpdate()
 {
     MySummonedCreatures.remove(CIntelligentPointer<CThing>(0));
-    CTCBase_Calls::FrameUpdate();
+    CTCBase::FrameUpdate();
 }

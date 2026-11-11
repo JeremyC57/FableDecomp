@@ -101,7 +101,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:
-    void RemoveThing(CThing* thing);                         // 0x006A19B0
+    void RemoveThing(CThing& thing);                         // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     bool IsCarryingThing(CThing* thing);                     // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool drop);           // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
@@ -146,7 +146,7 @@ void CTCDivineWrath::UnsheatheWeapon()
         if (held->HasTC(0x48))
             DropWeapon(held, carrying, parent);
         else
-            carrying->RemoveThing(held);
+            carrying->RemoveThing(*held);
         if (held->HasTC(0x1a)) {
             CTC1A* tc = held->GetTC<CTC1A>(0x1a);
             if (!carrying->IsCarryingThing(held))
@@ -156,7 +156,7 @@ void CTCDivineWrath::UnsheatheWeapon()
             carrying->RemoveThingFromPrimarySlot(false);
     }
     if (carrying->IsCarryingThing(PItemRemoved.GetPItem()))
-        carrying->RemoveThing(PItemRemoved.GetPItem());
+        carrying->RemoveThing(*(PItemRemoved.GetPItem()));
     CDefPointer<CCarryableDef> carryDef;
     CThing* item = GetItemRemoved();
     item->m_pDef->GetSubDef(&carryDef);

@@ -26,25 +26,30 @@ struct CChunkedFileChunk_Retail : CBaseClassNonCopyable {       // vtable 0x0129
     ~CChunkedFileChunk_Retail() { }                             // inline, empty
 };
 
-struct CCountedChunk { void* m_pObject; void* m_pCount; };      // CCountedPointer<CChunkedFileChunk>
+class CChunkedFileChunk;
+#include "engine/CCountedPointer.h"
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
-void __fastcall DestroyRange(CCountedChunk* first, CCountedChunk* last, const SNonscalarPtrIteratorTag& tag);   // 0x00AA9140
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00AA9140 (std::__destroy_aux<CCountedPointer<CChunkedFileChunk>*>)
+}
 
 template<class T> struct CRetailArray {                         // retail CArray: {first, last, end}
     T* first; T* last; T* end_of_storage;
     ~CRetailArray()
     {
-        DestroyRange(first, last, SNonscalarPtrIteratorTag());
+        std::__destroy_aux(first, last, std::__false_type());
         if (first != 0)
             free(first);
     }
 };
 
 struct CChunkedFileSuperChunk_Retail : CChunkedFileChunk_Retail {
-    CRetailArray<CCountedChunk> SubChunks;                      // +0x10
-    CRetailArray<CCountedChunk> RegisteredSubChunkTypes;        // +0x1c
+    CRetailArray<CCountedPointer<CChunkedFileChunk> > SubChunks;                      // +0x10
+    CRetailArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes;        // +0x1c
     unsigned long CurrentChunkIndex;                            // +0x28
     virtual void v00();                                         // own vtable 0x0129E4F0
     void RemoveAllSubChunks();                                  // 0x00AA8400

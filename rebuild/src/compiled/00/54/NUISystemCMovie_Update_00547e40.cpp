@@ -213,7 +213,7 @@ class CComponent { public:
     unsigned char _pad148[0x15c - 0x148];
 };
 class CChangingStateComponent : public CComponent { public:
-    void Update(float dt);                         // 0x0052C7E0
+    virtual void Update(float dt);                 // 0x0052C7E0 ?Update@CChangingStateComponent@NUISystem@@UAEXM@Z (Ego_r: virtual, slot 1)
 };
 
 class CMovie : public CChangingStateComponent { public:

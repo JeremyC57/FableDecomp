@@ -64,7 +64,7 @@ class CThingObject;
 class CTCCarrying { public:
     bool IsCarryingThing(long defIndex);                         // 0x006A10A0
     CThing* GetCarriedThing(long defIndex);                      // 0x006A1120
-    void RemoveThing(CThing* thing);                             // 0x006A19B0
+    void RemoveThing(CThing& thing);                             // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 
@@ -118,7 +118,7 @@ void CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot
     CThing* weapon;
     if (carrying->IsCarryingThing(weaponDefIndex)) {
         weapon = carrying->GetCarriedThing(weaponDefIndex);
-        carrying->RemoveThing(weapon);
+        carrying->RemoveThing(*weapon);
     } else {
         weapon = (CThing*)CThingObject::Create(weaponDefIndex, *(const_cast<C3DVector*>(&GetPos())), PlayerNumber, 0, 0, "");
     }

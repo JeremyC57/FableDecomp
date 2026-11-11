@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CFF40, 290 bytes (`ret 4`, CWideString by hidden pointer);
 // CTCTavernGameShoveHaPenny vtable 0x0126F2F4 slot 46 (Ego_r.pdb `?GetAdditionalInfo@CTCTavernGameShoveHaPenny@@UAE?AVCWideString@@XZ`).
 // The manifest row says "CTCTavernGameCoinGolf::GetAdditionalInfo" (propagated; the CoinGolf override is 0x007D3700).
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; CDefClassBase::GetSubDef<CTavernGameShoveHaPennyDef>
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; CDefClassBase::GetSubDef<CTavernGameShoveHaPennyDef>
 //          (CDefPointer<const CTavernGameShoveHaPennyDef>*) 0x007D1260 (on the owner's def class, owner +0x70; manifest
 //          label "<CAICreatureWillPowerIndicatorDef>" is propagated, the landed body names the ShoveHaPenny def string);
 //          GFIntToCharString(long) 0x0099F830 (`__fastcall`, hidden result in ecx); CCharString::ToWideString() const
@@ -60,7 +60,8 @@ class CTavernGameShoveHaPennyDef : public CDefBase { public:
     unsigned char _pad_0x08[0x1f4];
     long          Rounds;                       // +0x1fc
 };
-struct CDefPointer {                            // CDefPointer<const CTavernGameDef>
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)                            // CDefPointer<const CTavernGameDef>
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -105,7 +106,7 @@ class CThing { public:
 class CTCTavernGame { public:
     virtual void v00();
     CThing*       Owner;                        // +0x04
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70
     unsigned char _pad_0x08[0x140];
     long          RoundsPlayed;                 // +0x148
@@ -117,8 +118,8 @@ struct CTCTavernGameShoveHaPenny : CTCTavernGame {
 
 CWideString CTCTavernGameShoveHaPenny::GetAdditionalInfo()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     CShoveHaPennyDefPointer shoveDef;
     Owner->DefClass->GetSubDef(&shoveDef);
     return GetText(def->AdditionalInfo) + GFIntToCharString(RoundsPlayed + 1).ToWideString() + L"/"

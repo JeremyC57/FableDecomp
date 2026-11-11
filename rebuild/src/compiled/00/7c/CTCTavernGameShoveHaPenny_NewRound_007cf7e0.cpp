@@ -59,7 +59,7 @@ public:
     CThing* ParentThing;                        // +0x04
     unsigned char _pad_0x08[0x128];
     float BoardSizeX;                           // +0x130 BoardSize.X
-    void NewRound();                            // 0x008EF180
+    virtual void NewRound();                    // 0x008EF180 ?NewRound@CTCTavernGameCoinBase@@UAEXXZ (vtable slot 32; Ego_r/FableWin)
     void ClearBoard();                          // 0x008EF950
     void FindObstacles();                       // 0x008EFB00
     void AddNewCoin(const C3DVector& pos);      // 0x008EFA00

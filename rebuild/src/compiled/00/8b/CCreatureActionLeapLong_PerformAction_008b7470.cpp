@@ -2,10 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B7470, length 48 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, called twice as retail does), CBaseObject::OnPropertyChanged(long) @ 0x004C9840 (landed naming).
 // Shape: `test ch,20h` is the compiler's form of the 0x2000 bit test on the dword; the pointer object at +8 rides in edi.
+enum ETCInterfaceType { };                  // CTCBase interface type (values unused here)
 class CThing { public:
     unsigned char _pad[0x28];
     unsigned long m_flags;                  // +0x28
-    void OnPropertyChanged(long property);  // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);   // 0x004C9840 ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z (Ego_r/FableWin; was the propagated OnPropertyChanged)
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -38,6 +39,6 @@ class CCreatureAction_LeapLong : public CCombatActionBase { public:
 void CCreatureAction_LeapLong::PerformAction()
 {
     if (PCreature.GetPItem()->m_flags & 0x2000)
-        PCreature.GetPItem()->OnPropertyChanged(77);
+        PCreature.GetPItem()->RemoveTC((ETCInterfaceType)77);
     m_finished = 1;
 }

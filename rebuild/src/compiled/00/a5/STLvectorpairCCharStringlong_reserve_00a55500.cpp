@@ -28,7 +28,7 @@ template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _T1, class _T2>
-class pair {
+struct pair {
 public:
     _T1 first;
     _T2 second;

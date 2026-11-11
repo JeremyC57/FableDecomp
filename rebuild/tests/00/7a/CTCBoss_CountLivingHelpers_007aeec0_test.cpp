@@ -1,4 +1,4 @@
-// Behaviour test for 007aeec0 CTCBoss::CountLivingHelperCreatures: counts the entries of HelperCreatures that point at a thing that is not dead.
+// Behaviour test for 007aeec0 CTCBoss::CountLivingHelpers: counts the entries of HelperCreatures that point at a thing that is not dead.
 #include <cstdio>
 
 class CThing { public: unsigned char Dead : 1; };
@@ -27,7 +27,7 @@ class CTCBoss
 { public:
     CRetailVector<CIntelligentPointer<CThing> > HelperCreatures;
 
-    long CountLivingHelperCreatures() const
+    long CountLivingHelpers()
     {
         long count = 0;
         for (unsigned int i = 0; i < HelperCreatures.size(); ++i)
@@ -46,9 +46,9 @@ int main()
     CIntelligentPointer<CThing> list[4];
     list[0].m_pItem = &a; list[1].m_pItem = &b; list[2].m_pItem = 0; list[3].m_pItem = &c;
     CTCBoss boss; boss.HelperCreatures._First = list; boss.HelperCreatures._Last = list + 4; boss.HelperCreatures._End = list + 4;
-    if (boss.CountLivingHelperCreatures() != 2) { std::printf("007aeec0_TEST FAIL\n"); return 1; }
+    if (boss.CountLivingHelpers() != 2) { std::printf("007aeec0_TEST FAIL\n"); return 1; }
     boss.HelperCreatures._Last = list;
-    if (boss.CountLivingHelperCreatures() != 0) { std::printf("007aeec0_TEST FAIL\n"); return 1; }
+    if (boss.CountLivingHelpers() != 0) { std::printf("007aeec0_TEST FAIL\n"); return 1; }
     std::printf("007aeec0_TEST PASS\n");
     return 0;
 }

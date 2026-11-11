@@ -4,7 +4,7 @@
 //   0x01288294 slot 44 (slot 44 = GetCurrentScore, 45 = GetRequiredScore, as the landed CoinGolf / CardPairs rows).
 // Identity (proven): the vtable slot; Ego_r.pdb ?GetCurrentScore@CTCTavernGameCardBase@@UAE?AVCWideString@@XZ (donor 0x00916120); the float is
 //   Ego_r.pdb CTCTavernGameCardBase::Counter at retail +0x154.
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; CCharString::FormatDouble(long, double) 0x009A08B0;
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; CCharString::FormatDouble(long, double) 0x009A08B0;
 //   CCharString::ToWideString() const 0x0099E480; CTCTavernGame::GetText(unsigned long) 0x005E9E70; operator+(const
 //   CWideString&, const CWideString&) 0x0099BE70; ~CWideString 0x0099B510 (x2); ~CCharString 0x0099EAE0; the def's slot 1.
 // Shape (family K026, representative 0x007D53A0): the landed CTCTavernGameCoinGolf::GetCurrentScore 0x007D2B70 expression
@@ -40,7 +40,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -55,7 +56,7 @@ public:
     bool IsInGlobalUpdateTCs;                            // +0x09
 };
 class CTCTavernGame : public CTCBase { public:           // Ego_r.pdb 264 bytes; retail 0xEC of data, 0xF0 with its 8-byte alignment
-    void GetTavernGameDef(CDefPointer* out);             // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);             // 0x005EA000
     CWideString GetText(unsigned long id);               // 0x005E9E70
     unsigned char _pad_0x0c[0x18 - 0x0c];
     double        LastRenderTime;                        // +0x18 (PDB +32): makes the class 8-aligned (sizeof 0xF0)
@@ -74,7 +75,7 @@ public:
 
 CWideString CTCTavernGameCardBase::GetCurrentScore()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     return GetText(def->CurrentScore) + CCharString::FormatDouble(1, Counter).ToWideString();
 }

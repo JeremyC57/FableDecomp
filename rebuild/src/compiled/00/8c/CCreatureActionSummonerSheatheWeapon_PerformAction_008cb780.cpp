@@ -106,7 +106,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:
-    void RemoveThing(CThing* thing);            // 0x006A19B0
+    void RemoveThing(CThing& thing);            // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
@@ -134,7 +134,7 @@ void CCreatureAction_SummonerSheatheWeapon::PerformAction()
     if (PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
         CThing* weapon = carrying->GetThingInPrimarySlot();
         if (weapon && !(weapon->m_flags91 & 1)) {
-            carrying->RemoveThing(weapon);
+            carrying->RemoveThing(*weapon);
             long slot = PCreature.GetPItem()->GetDefinitionManager()->GetDefGlobalIndexFromName("CARRY_SLOT_PRIMARY_SHEATHE");
             carrying->PutThingInCarrySlot(*weapon, slot, true);
         }

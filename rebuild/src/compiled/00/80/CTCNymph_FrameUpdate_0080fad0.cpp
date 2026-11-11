@@ -18,16 +18,10 @@
 #include "fable_compiler.h"
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 using NGraphicAppearance::CTCGraphicAppearance;
-#define CTCBase CTCBaseLayout
+// agentNF19: the shared retail CTCBase model (FABLE_RETAIL_CTCBASE: virtual FrameUpdate slot 9 0x006868A0, protected GetWorld 0x00686A70)
+#define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"
-#undef CTCBase
 class CWorld;
-
-class CTCBase : public CTCBaseLayout
-{
-protected:
-    CWorld& GetWorld() const;   // 0x00686A70
-};
 
 class CCharStringData;
 class CCharString { public:
@@ -215,10 +209,7 @@ class CNymphDef { public:
     float FadeInTime;                                       // +0x48
     float FadeOutTime;                                      // +0x4c
 };
-struct CTCBaseFrame : CTCBase {
-    void FrameUpdate();                                     // 0x006868A0 (CTCBase)
-};
-class CTCNymph : public CTCBaseFrame { public:
+class CTCNymph : public CTCBase { public:
     const CNymphDef* PDef;                                  // +0x0c
     C3DVector PointToFlyAround;                             // +0x10
     float EffectHeightOffset;                               // +0x1c
@@ -283,5 +274,5 @@ void CTCNymph::FrameUpdate()
             POldEffect = none;
         }
     }
-    CTCBaseFrame::FrameUpdate();
+    CTCBase::FrameUpdate();
 }

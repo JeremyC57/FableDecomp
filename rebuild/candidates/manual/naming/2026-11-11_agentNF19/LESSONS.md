@@ -1,0 +1,7 @@
+- A function template defined under `#pragma auto_inline(off)` still inlines at instantiation; use an explicit specialization defined there instead.
+- A member-template explicit-specialization declaration hit a VC7.1 ICE; inline explicit specializations with the primary declaration-only worked.
+- When a shared header already defines an inline std:: helper, a local redeclaration with another calling convention fails (C2373); add a header opt-in instead.
+- Moving `#include` and forward declarations into a namespaced row nests them; hoist them above the row's namespace.
+- `X<Y<Z>>` breaks VC7.1; scripts that substitute template types must emit `> >`.
+- Check reloc pairs of every changed row against all queue symbols at the end; two GetPItem stragglers were caught that way.
+- ICF-folded addresses carry one instance name; a caller with a different element type keeps its own spelling, so do not respell it to the address name.

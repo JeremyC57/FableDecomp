@@ -149,7 +149,7 @@ void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner)
 class CTCCarrying { public:
     bool IsPrimarySlotEmpty();                        // 0x006A1270
     CThing* GetThingInPrimarySlot() const;                  // 0x006A1440
-    void RemoveThing(CThing* thing);                  // 0x006A19B0
+    void RemoveThing(CThing& thing);                  // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     bool IsCarryingThing(CThing* thing);              // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool unused);  // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
@@ -196,7 +196,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
             if (thing->HasTC(0x48))
                 DropWeapon(thing, carrying, ((CThing*)PCreature.GetPItem()));
             else
-                carrying->RemoveThing(thing);
+                carrying->RemoveThing(*thing);
             CTCShowableItem* showable;
             if (thing->GetInterface(&showable, 0x1a)) {
                 if (!carrying->IsCarryingThing(thing))
@@ -206,7 +206,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
                 carrying->RemoveThingFromPrimarySlot(false);
         }
         if (carrying->IsCarryingThing(((CThing*)item.GetPItem())))
-            carrying->RemoveThing(((CThing*)item.GetPItem()));
+            carrying->RemoveThing(*((CThing*)item.GetPItem()));
         CDefPointer<CCarryableDef> carryDef;
         ((CThing*)item.GetPItem())->GetDef()->GetSubDef(&carryDef);
         carrying->PutThingInCarrySlot(*item, carryDef->CarrySlot, true);

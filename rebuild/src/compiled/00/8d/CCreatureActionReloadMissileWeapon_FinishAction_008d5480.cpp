@@ -41,7 +41,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 class CTCCarrying { public:                                  // interface type 0x46
-    void RemoveThing(CThing* thing);                  // 0x006A19B0
+    void RemoveThing(CThing& thing);                  // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     CThing* GetThingInPrimarySlot() const;                  // 0x006A1440
 };
 class CTCWeapon { public:                                    // interface type 0x48
@@ -63,7 +63,7 @@ void CCreatureAction_ReloadMissileWeapon::FinishAction()
 {
     CTCCarrying* carrying;
     if (IS_THING_ALIVE(PAmmo) && ((CThing*)PCreature.GetPItem())->GetTC(TCI_CARRYING, &carrying)) {
-        carrying->RemoveThing(((CThing*)PAmmo.GetPItem()));
+        carrying->RemoveThing(*((CThing*)PAmmo.GetPItem()));
         ((CThing*)PAmmo.GetPItem())->Kill(true);
         {
             CIntelligentPointer none;

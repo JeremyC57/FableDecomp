@@ -1,5 +1,5 @@
-// CTCBoss::CountLivingHelperCreatures() const -- catalog label; the body counts the boss's HelperCreatures (+0x30) that still exist and are not dead
-// Leaf: CountLivingHelperCreatures
+// CTCBoss::CountLivingHelpers() -- Ego_r.pdb / FableWin.pdb ?CountLivingHelpers@CTCBoss@@QAEJXZ (was the catalog label CountLivingHelperCreatures); the body counts the boss's HelperCreatures (+0x30) that still exist and are not dead
+// Leaf: ?CountLivingHelpers@CTCBoss@@QAEJXZ
 //
 // Retail 0x007AEEC0, 78 bytes. Callee: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (twice
 // per element). The manifest gives both 0x007AEEC0 and 0x007AEF10 the name CountEffects; this one
@@ -60,11 +60,11 @@ class CTCBoss
     CRetailVector<CIntelligentPointer<CThingAICreature> > HelperCreatures;   // +0x30
     CRetailVector<CIntelligentPointer<CThing> >           Effects;           // +0x3c
 
-    long CountLivingHelperCreatures() const;
+    long CountLivingHelpers();
 };
 #pragma pack(pop)
 
-long CTCBoss::CountLivingHelperCreatures() const
+long CTCBoss::CountLivingHelpers()
 {
     long count = 0;
     for (unsigned int i = 0; i < HelperCreatures.size(); ++i)

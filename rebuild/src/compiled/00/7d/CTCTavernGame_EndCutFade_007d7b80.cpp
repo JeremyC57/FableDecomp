@@ -6,13 +6,13 @@
 // SetState callee is labelled CTCTavernGame, which is the only class evidence -- provisional. The name is the manifest's.
 // Shape: two thiscalls on `this` kept in esi.
 class CTCTavernGame { public:
-    void ResetPlayback();                           // 0x005E9A90
+    virtual void NewRound();                        // 0x005E9A90 ?NewRound@CTCTavernGame@@UAEXXZ (vtable slot 32; Ego_r/FableWin)
     void SetState(long state);                      // 0x005E9B20
     void EndCutFade();
 };
 
 void CTCTavernGame::EndCutFade()
 {
-    ResetPlayback();
+    CTCTavernGame::NewRound();
     SetState(0x27);
 }

@@ -36,7 +36,11 @@ template <class T> struct CPODArray {                   // CArray<T> of a trivia
 };
 
 template <class T> struct allocator { allocator() {} };
-template <class T> void __fastcall _Destroy_range(T* first, T* last, const allocator<T>& alloc);   // 0x0098CEE0 for this T
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x0098CEE0 for this T (std::__destroy_aux<T*>)
+}
 
 template <class T> class CArray { public:                      // CArray<T> of a non-trivial T, 12 bytes
     T* _M_start;
@@ -44,7 +48,7 @@ template <class T> class CArray { public:                      // CArray<T> of a
     T* _M_end_of_storage;
     ~CArray()
     {
-        _Destroy_range(_M_start, _M_finish, allocator<T>());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }

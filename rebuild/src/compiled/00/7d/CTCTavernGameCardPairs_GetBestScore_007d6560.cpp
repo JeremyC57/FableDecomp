@@ -2,7 +2,7 @@
 // Leaf: GetBestScore
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D6560, 268 bytes (`ret 4`, CWideString by hidden pointer);
 // CTCTavernGameCardPairs vtable 0x0126F6FC slot 43 (GetBestScore, as ShoveHaPenny 0x007CF5B0 / SpotTheAddition 0x007D7C80).
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; CTCTavernGame::GetHeroStats(CTCHeroStats**)
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; CTCTavernGame::GetHeroStats(CTCHeroStats**)
 //          0x005EB4B0; CTCTavernGame::GetText(unsigned long) 0x005E9E70; CCharString(const char*, long) 0x0099EBF0;
 //          CCharString::ToWideString() const 0x0099E480; ~CCharString 0x0099EAE0; CCharString::FormatDouble(long, double)
 //          0x009A08B0 (static `__fastcall`); CWideString::operator+=(const CWideString&) 0x0099B8D0; CWideString(const
@@ -50,7 +50,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -63,7 +64,7 @@ class CTCHeroStats : public CTCHeroStatsDonor {
 
 class CTCTavernGame { public:
     virtual void v00();
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
     CWideString GetText(unsigned long id);      // 0x005E9E70
     unsigned char _pad_0x04[0x2fc];
@@ -76,8 +77,8 @@ struct CTCTavernGameCardPairs : CTCTavernGame {
 
 CWideString CTCTavernGameCardPairs::GetBestScore()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     CTCHeroStats* stats = 0;
     GetHeroStats(&stats);
     CWideString text = GetText(def->BestScore);

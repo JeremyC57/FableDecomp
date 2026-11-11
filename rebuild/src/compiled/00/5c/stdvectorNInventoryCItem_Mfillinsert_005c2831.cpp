@@ -16,7 +16,8 @@
 // Layout: a local CItem model -- engine/CItem.h flattens the CCountedPointer member whose out-of-line destructor this body calls.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct __false_type { __false_type() {} };
+namespace std { struct __false_type { __false_type() {} }; }
+using std::__false_type;
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
 namespace NInventory { class CPerItemData; }
@@ -34,17 +35,25 @@ public:
 }
 using NInventory::CItem;
 #pragma auto_inline(off)
-CItem* __fastcall __uninitialized_copy(const CItem* first, const CItem* last, CItem* result, const __false_type&)   // 0x005C0DF0
+namespace std {
+template <class _InputIter, class _ForwardIter>
+_ForwardIter __fastcall __uninitialized_copy(_InputIter first, _InputIter last, _ForwardIter result, const __false_type&);
+template <class _ForwardIter, class _Size, class _Tp>
+_ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter first, _Size n, const _Tp& x, const __false_type&);
+template <>
+CItem* __fastcall __uninitialized_copy<CItem*, CItem*>(CItem* first, CItem* last, CItem* result, const __false_type&)   // 0x005C0DF0
 {
     for (; first != last; ++first, ++result)
         new (result) CItem(*first);
     return result;
 }
-CItem* __fastcall __uninitialized_fill_n(CItem* first, unsigned int n, const CItem& x, const __false_type&)   // 0x005C0E1B
+template <>
+CItem* __fastcall __uninitialized_fill_n<CItem*, unsigned int, CItem>(CItem* first, unsigned int n, const CItem& x, const __false_type&)   // 0x005C0E1B
 {
     for (; n > 0; --n, ++first)
         new (first) CItem(x);
     return first;
+}
 }
 CItem* __fastcall __copy_backward(CItem* first, CItem* last, CItem* result, const random_access_iterator_tag&, int*)   // 0x005C135E
 {
@@ -78,14 +87,14 @@ void CItemVector::_M_fill_insert(CItem* position, size_type n, const CItem& x)
             const size_type elems_after = _M_finish - position;
             CItem* old_finish = _M_finish;
             if (elems_after > n) {
-                __uninitialized_copy(_M_finish - n, _M_finish, _M_finish, __false_type());
+                std::__uninitialized_copy(_M_finish - n, _M_finish, _M_finish, __false_type());
                 _M_finish += n;
                 __copy_backward_ptrs(position, old_finish - n, old_finish, __false_type());
                 fill(position, position + n, x_copy);
             } else {
-                __uninitialized_fill_n(_M_finish, n - elems_after, x_copy, __false_type());
+                std::__uninitialized_fill_n(_M_finish, n - elems_after, x_copy, __false_type());
                 _M_finish += n - elems_after;
-                __uninitialized_copy(position, old_finish, _M_finish, __false_type());
+                std::__uninitialized_copy(position, old_finish, _M_finish, __false_type());
                 _M_finish += elems_after;
                 fill(position, old_finish, x_copy);
             }

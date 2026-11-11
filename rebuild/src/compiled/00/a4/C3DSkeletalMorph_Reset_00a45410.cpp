@@ -39,7 +39,11 @@ class C3DSkeletalMorphParameter;
 class C3DSkeletalMorphTarget;
 typedef CCountedPointer<C3DSkeletalMorphParameter> PMorphParameter;
 PMorphParameter* __fastcall _Move(PMorphParameter* first, PMorphParameter* last, PMorphParameter* dest, const SMoveTag& tag, bool overlap);   // 0x00A46460
-void __fastcall DestroyRange(PMorphParameter* first, PMorphParameter* last, const SNonscalarPtrIteratorTag& tag);   // 0x00A464E0
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00A464E0 (std::__destroy_aux<T*>)
+}
 template<class T> struct CRetailArray {                          // retail CArray: {first, last, end}
     T* first; T* last; T* end_of_storage;
     void clear()
@@ -47,7 +51,7 @@ template<class T> struct CRetailArray {                          // retail CArra
         T* l = last;
         T* f = first;
         T* kept = _Move(l, l, f, SMoveTag(), false);
-        DestroyRange(kept, last, SNonscalarPtrIteratorTag());
+        std::__destroy_aux(kept, last, std::__false_type());
         last = kept;
     }
 };

@@ -1,6 +1,6 @@
 // CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(CThing* owner) -- constructor: tavern-game ctor, own vtable, empty knick-knack vector, target time from the def's last prize score, pointer and its scale cleared
 // Retail: Fable.exe @ 0x007D8DA0, 113 bytes (`ret 4`; vtable 0x0126F814 = CTCTavernGameSpotTheAddition per rtti-vtables.tsv).
-// Callees: CTCTavernGame::CTCTavernGame(CThing*) 0x005EC8A0; CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; the
+// Callees: CTCTavernGame::CTCTavernGame(CThing*) 0x005EC8A0; CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; the
 //          def's virtual slot 1 when its count reaches 0.
 // Layout: retail = Ego_r.pdb minus 0x18: Pointer +0x104, PointerScale +0x108, KnickKnacks (12-byte vector) +0x110;
 //         CTCTavernGame::TargetTime +0x98 (PDB +0xb4). Def: PrizeScores (8-byte {Score, Mult}) end pointer +0x178.
@@ -32,7 +32,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { Object->ReleaseTemporary(); }
@@ -55,7 +56,7 @@ struct KnickKnack { unsigned char _data[0x10]; };
 class CTCTavernGame { public:
     CTCTavernGame(CThing* owner);              // 0x005EC8A0
     virtual void v00();
-    void GetTavernGameDef(CDefPointer* out);   // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);   // 0x005EA000
     unsigned char _pad_0x04[0x94];
     float         TargetTime;                  // +0x98
     unsigned char _pad_0x9c[0x54];
@@ -78,8 +79,8 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
 CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(CThing* owner)
     : CTCTavernGame(owner)
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     TargetTime = (def->PrizeScoresEnd - 1)->Score;
     PointerScale = 0.0f;
     Pointer = 0;

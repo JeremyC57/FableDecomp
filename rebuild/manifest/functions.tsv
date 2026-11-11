@@ -19103,7 +19103,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0072ce20	SetupUnholyPower	CTCSpecialAbilities	__thiscall	bool	1	CTCSpecialAbilities *	1	yes	accepted									
 0072cf40	UseSpecialAbility	CTCSpecialAbilities	__thiscall	bool	2	CTCSpecialAbilities *,EHeroAbility	1	yes	accepted									
 0072d330	ScalarDeletingDtor_0072d330	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_0072d330.cpp
-0072d360	SetItem_CItemOwner_0072d360	_unattributed	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
+0072d360	SetPItemRemoved	CCreatureActionBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 0072d390	~CCreatureAction_SheatheItemToInventory_ForEnflame	CCreatureAction_SheatheItemToInventory_ForEnflame	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 0072d3e0	~CCreatureAction_SheatheItemToInventory_ForDivineWrath	CCreatureAction_SheatheItemToInventory_ForDivineWrath	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 0072d430	~CCreatureAction_SheatheItemToInventory_ForUnholyPower	CCreatureAction_SheatheItemToInventory_ForUnholyPower	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
@@ -22075,7 +22075,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007aee10	CTCRockTrollShield	CTCRockTrollShield	__thiscall	undefined	2	CComponentContainer *,long	0	yes	accepted									
 007aee40	GetMinHealthForPhase	CTCBoss	__thiscall	float	2	CTCBoss *,long	1	yes	accepted									
 007aee90	IsReadyForPhaseChange	CTCBoss	__thiscall	bool	1	CTCBoss *	1	yes	accepted									
-007aeec0	CountLivingHelperCreatures	CTCBoss	__thiscall	long	1	CTCBoss *	1	yes	accepted									
+007aeec0	CountLivingHelpers	CTCBoss	__thiscall	long	1	CTCBoss *	1	yes	accepted									
 007aef10	CountEffects	CTCBoss	__thiscall	long	1	CTCBoss *	1	yes	accepted									
 007aef60	ClearEffects	CTCBoss	__thiscall	void	1	CTCBoss *	1	yes	accepted									
 007aefd0	CTCBoss	CTCBoss	__thiscall	undefined	2	CTCBoss *,CThing *	0	yes	accepted									
@@ -23467,7 +23467,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f18b0	Construct	CTCDRumble	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
 007f1930	OnInitialActivate	CTCDRumble	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f1ac0	Create	CTCDRumble	__fastcall	CThing *	4	C3DVector *,float,float,bool	1	yes	accepted									
-007f1b70	CreateCameraShake	_global	__fastcall	CThing *	4	C3DVector *,EQuakeStrength,EQuakeLength,bool	1	yes	accepted									
+007f1b70	Create	CTCDRumble	__fastcall	CThing *	4	C3DVector *,EQuakeStrength,EQuakeLength,bool	1	yes	accepted									
 007f1ee0	GetSubDef<CRumbleDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 007f1fa0	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
 007f1ff0	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
@@ -26001,7 +26001,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0086e1c0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 0086e3b0	InsertGrow_0086e3b0	STL::Vector24_vector24	unknown	undefined	0		0	yes	accepted									
 0086e4b0	FillInsert_0086e4b0	STL::VectorElement16	unknown	undefined	0		0	yes	accepted									
-0086e5c0	Resize_CSharerParserEntry_24byte	std::vector::std::vector	unknown	undefined	0		0	yes	accepted									
+0086e5c0	_M_fill_insert	std::vector<CRandomAppearanceMorph::CBodyPartMesh>	unknown	undefined	0		0	yes	accepted									
 0086e710	UninitCopy_CElement12_00675230_0086e710	_global	__fastcall	CFeatDef *	5	CFeatDef *,CFeatDef *,CFeatDef *,allocator<CFeatDef> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0086e740	UninitFillN_CElement12_00675230_0086e740	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 0086e770	CopyBackward_CElement12_006755e0_0086e770	_global	__fastcall	CSeaBodyDesc *	4	CSeaBodyDesc *,CSeaBodyDesc *,CSeaBodyDesc *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -34916,7 +34916,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e4950	SetHasInputFocus	CJoystick	__thiscall	void	2	CJoystick *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CJoystick_SetHasInputFocus_009e4950.cpp
 009e4980	`scalar_deleting_destructor'	CJoystick	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CLandscapeBackgroundPatch_vectordeletingdestructor_009e4980.cpp
 009e4a20	insert	std::list<CMaintainedEvent>	unknown	undefined	0		0	yes	accepted									
-009e4aa0	Register	CKeyedOwner_009e4aa0	__thiscall	CWideString	1	CDefString *	1	yes	accepted									
+009e4aa0	push_back	std::list<CMaintainedEvent>	__thiscall	CWideString	1	CDefString *	1	yes	accepted									
 009e4ad0	Initialise	CDriveManager	__thiscall	ESystemCode	2	CDriveManager *,CSystemManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CDriveManager_Initialise_009e4ad0.cpp
 009e4ae0	DriveExists	CDriveManager	__thiscall	EDriveReturn	2	CDriveManager *,wchar_t	1	yes	accepted									
 009e4b70	DeleteDirectory	CDriveManager	__thiscall	EDriveReturn	2	CDriveManager *,CWideString *	1	yes	accepted									
@@ -43835,7 +43835,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0c270	ConcatInPlace	CString	unknown	undefined	0		0	yes	accepted									
 00c0c4b0	GetBuffer	CString	unknown	undefined	0		0	yes	accepted									
 00c0c630	SetLengthAuto	CCharString	unknown	undefined	0		0	yes	accepted									
-00c0c910	~list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	__thiscall	void	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\listCMessageEventconststd_allocatorCMessageEventconst_00c0c910.cpp
+00c0c910	MakeUpper	CString	__thiscall	void	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\listCMessageEventconststd_allocatorCMessageEventconst_00c0c910.cpp
 00c0c930	~list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	__thiscall	void	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\listCMessageEventconststd_allocatorCMessageEventconst_00c0c930.cpp
 00c0c950	~list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	__thiscall	void	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\listCMessageEventconststd_allocatorCMessageEventconst_00c0c950.cpp
 00c0c970	SetAt	CString	unknown	undefined	0		0	yes	accepted									

@@ -3056,3 +3056,10 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk Q8, 2026-11-11) prior/<addr>_lastdraft.cpp was a behaviour test, not the source, for 8 rows (0x00989830, 0x006D8980, 0x007F68B0, 0x00918A40, 0x009F5690, 0x0095D0E0, 0x0093D270, 0x00A76770): take the newest rebuild/candidates/manual/pending/*/differ/<addr>.cpp.
 - (chunk Q8, 2026-11-11) `// Flags: none` in old drafts is passed to cl as a file name by gr-style scripts that read the line verbatim (0x0093D270 graded 305v295 that way); strip it.
 - (chunk Q8, 2026-11-11) 0x00989830 CShaderRenderManager::InitialiseLight on the shared header: the attenuation slot written block-first (`float* attenuation = &LightAttenuations[((index-1)/4)*2].X; attenuation[(index-1)%4] = ...`) recomputes `lea [ebx-1]` like retail but hoists the Attenuation2 load; the component local first fixes the order but CSEs the lea (98v99). Unresolved.
+- (agentNF19, 2026-11-11) A function template defined under `#pragma auto_inline(off)` still inlines at instantiation; use an explicit specialization defined there instead.
+- (agentNF19, 2026-11-11) A member-template explicit-specialization declaration hit a VC7.1 ICE; inline explicit specializations with the primary declaration-only worked.
+- (agentNF19, 2026-11-11) When a shared header already defines an inline std:: helper, a local redeclaration with another calling convention fails (C2373); add a header opt-in instead.
+- (agentNF19, 2026-11-11) Moving `#include` and forward declarations into a namespaced row nests them; hoist them above the row's namespace.
+- (agentNF19, 2026-11-11) `X<Y<Z>>` breaks VC7.1; scripts that substitute template types must emit `> >`.
+- (agentNF19, 2026-11-11) Check reloc pairs of every changed row against all queue symbols at the end; two GetPItem stragglers were caught that way.
+- (agentNF19, 2026-11-11) ICF-folded addresses carry one instance name; a caller with a different element type keeps its own spelling, so do not respell it to the address name.

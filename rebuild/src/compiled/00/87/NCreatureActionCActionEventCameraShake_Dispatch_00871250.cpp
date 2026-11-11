@@ -35,14 +35,18 @@ struct CActionEventContext {
     CIntelligentPointer<CThing> m_pThing;                       // +0x08
 };
 
-void __fastcall CreateCameraShake(const C3DVector& position, long strength, long bone, unsigned char flag);   // 0x007F1B70 (`ret 8`: two stack parameters after the ecx/edx pair)
+enum EQuakeStrength { };                                  // agentNF19: CTCDRumble quake enums (values unused here)
+enum EQuakeLength { };
+class CTCDRumble { public:
+    static CThing* __fastcall Create(const C3DVector& position, EQuakeStrength strength, EQuakeLength length, bool flag);   // 0x007F1B70 ?Create@CTCDRumble@@SIPAVCThing@@ABVC3DVector@@W4EQuakeStrength@@W4EQuakeLength@@_N@Z (Ego_r 0x007EB500)
+};
 
 struct CActionEventCameraShake {
     virtual void v00();
     unsigned char _pad[0x14 - 0x04];
     long          m_strength;                           // +0x14
     long          m_bone;                               // +0x18
-    unsigned char m_boneFlag;                           // +0x1c
+    bool          m_boneFlag;                           // +0x1c
     void Dispatch(const CActionEventContext& context);
 };
 
@@ -50,5 +54,5 @@ void CActionEventCameraShake::Dispatch(const CActionEventContext& context)
 {
     CThing* thing = const_cast<CIntelligentPointer<CThing>&>(context.m_pThing).GetPItem();
     if (thing && !thing->IsDead())
-        CreateCameraShake(thing->GetPos(), m_strength, m_bone, m_boneFlag);
+        CTCDRumble::Create(thing->GetPos(), (EQuakeStrength)m_strength, (EQuakeLength)m_bone, m_boneFlag);
 }

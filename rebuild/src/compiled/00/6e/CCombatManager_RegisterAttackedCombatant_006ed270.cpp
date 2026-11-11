@@ -74,21 +74,23 @@ class CThingCreatureBase { public:
 };
 
 struct SCountBlock;
-struct CSequencePointer {                   // CCountedPointer<CCombatSequenceBase>
-    void* m_pObject;
-    SCountBlock* m_pCount;
-};
+class CCombatSequenceBase;
+#include "engine/CCountedPointer.h"
 struct CRetailAllocator {
     CRetailAllocator() { }
 };
-void __fastcall DestroyRange_CountedPointer_006f2300(CSequencePointer* first, CSequencePointer* last, const CRetailAllocator& al);   // 0x006F2300
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x006F2300 (std::__destroy_aux<CCountedPointer<CCombatSequenceBase>*>)
+}
 struct CSequenceVector {                    // retail vector<CCountedPointer<CCombatSequenceBase>>, 12 bytes
-    CSequencePointer* _M_start;
-    CSequencePointer* _M_finish;
-    CSequencePointer* _M_end_of_storage;
+    CCountedPointer<CCombatSequenceBase>* _M_start;
+    CCountedPointer<CCombatSequenceBase>* _M_finish;
+    CCountedPointer<CCombatSequenceBase>* _M_end_of_storage;
     ~CSequenceVector()
     {
-        DestroyRange_CountedPointer_006f2300(_M_start, _M_finish, CRetailAllocator());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }
