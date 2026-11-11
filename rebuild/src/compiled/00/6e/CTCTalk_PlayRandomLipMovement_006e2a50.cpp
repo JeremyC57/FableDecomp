@@ -1,7 +1,11 @@
-// CTCTalk::SetUpSpeechSample() -- reset the talker's speech bank and sample, resolve the lip-sync bank for the default speech bank, look the speaker's sound symbol up in the matching sound bank, start loading that lip-sync entry, then stamp the mime start time and the sample duration
-// Leaf: ?SetUpSpeechSample@CTCTalk@@QAEXXZ
+// CTCTalk::PlayRandomLipMovement() -- reset the talker's speech bank and sample, resolve the lip-sync bank for the default speech bank, look the speaker's sound symbol up in the matching sound bank, start loading that lip-sync entry, then stamp the mime start time and the sample duration
+// Leaf: ?PlayRandomLipMovement@CTCTalk@@QAEXXZ
 // Retry 10b (getsw sweep, FIXES B-15): the speaker info is read through an inline getter `GetSpeakerInfo()`; the plain member read gives the parked register/scheduling difference.
-// Leaf: SetUpSpeechSample
+// Identity (agentNF13, 2026-11-11; was CTCTalk::SetUpSpeechSample, in no name set): FableWin.pdb / Ego_r.pdb
+//   ?PlayRandomLipMovement@CTCTalk@@QAEXXZ; the Ego_r donor order DoesSpeechExist / GetSpeechDurationInFrames / PlayLipMovement /
+//   PlayRandomLipMovement = retail 0x006E2910 / 0x006E2940 / 0x006E29A0 / 0x006E2A50, and CActionTalkBase::SetUpTextAndSpeech
+//   0x00716B30 calls it (landed binding) for a line without speech. GetSpeechDurationInFrames 0x006E2940 is the private const
+//   ?GetSpeechDurationInFrames@CTCTalk@@ABEJJ@Z (was spelt GetSampleDurationFrames).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2A50, 152 bytes (+8 int3), __fastcall, no arguments.
 // Sound manager (agentSND2, 2026-11-10): the "symbol map" at 0x013B8394 is PSoundManager (engine/CASoundManager.h); its bank lookups carry the Fable Anniversary 360 PDB names under FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP (GetPLipSyncBank 0x009916F0, GetAnyPLipSyncBank 0x00991720, GetPSoundBank(const CLipSyncDataBank&) 0x00991690 descriptive); was a local CSymbolMap.
 // The catalog label (CAnimateThing::SetUpAnimation) is propagated: the members touched are CTCTalk's
@@ -72,7 +76,9 @@ public:
     float SampleLoadedTime;                  // +0x20
     CASoundBank* PSpeechBank;                // +0x24
 
-    long GetSampleDurationFrames(long sample);                   // 0x006E2940
+private:
+    long GetSpeechDurationInFrames(long sample) const;           // 0x006E2940 (Ego_r.pdb, private)
+public:
 
     CLipSyncDataBank* GetLipSyncBank()
     {
@@ -85,10 +91,10 @@ public:
         return lipSync;
     }
 
-    void SetUpSpeechSample();
+    void PlayRandomLipMovement();
 };
 
-void CTCTalk::SetUpSpeechSample()
+void CTCTalk::PlayRandomLipMovement()
 {
     PSpeechBank = 0;
     SpeechSample = 0;
@@ -100,5 +106,5 @@ void CTCTalk::SetUpSpeechSample()
         lipSync->BeginLoadingEntry(SpeechSample);
     }
     MimeStartTime = (float)GFGetTime();
-    SampleDurationFrames = GetSampleDurationFrames(SpeechSample);
+    SampleDurationFrames = GetSpeechDurationInFrames(SpeechSample);
 }

@@ -42,6 +42,7 @@ public:
                                                          // PObstruction +0x24, TriggerThings +0x2c (retail sizes)
     CFadeInFadeOutBase TrapOpener;                       // +0x38 (PDB +0x44)
 
+protected:
     void SetTransitionParams(float fadeInTime, float fadeOutTime);
 };
 

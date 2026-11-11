@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA0C50, length 351 bytes (`ret 18h`). Ego_r.pdb
 //          ?CombineBaseAnimationsBoneList@C3DAnimationManager@@AAEXABVC3DAnimationStateBase@@PAVC3DKeyframe@@KKABVC3DMesh2@@ABV?$CArray@K@@@Z.
-// Callees: state virtual slot 2 (+8) GetStateType, the mesh bank's GetAnimationInfo(long) @ 0x00A242C0 (manifest
+// Callees: state virtual slot 2 (+8) GetStateType, the mesh bank's PeekAnimation(unsigned long) const @ 0x00A242C0 (manifest
 //          "CTCInventoryAbilities::GetAbilityLevel" is propagated), C3DAnimationInfo::GetAnimation(const C3DMesh2&) const
 //          @ 0x00A26C60 (CCountedPointer<const C3DAnimation2> by value), C3DAnimation2::CalcLocalBoneTransformationRelative
 //          @ 0x00A4D920 and CalcLocalBoneTransformation @ 0x00A4D330, C3DAnimationManager::BlendAnimations @ 0x00A9EB90,
@@ -12,8 +12,8 @@
 //          bit 2, `shr ; test cl,1`) also take the mesh -- with the state time copied into a local (it homes in the
 //          dead mesh slot); type 2 (C3DAnimationTransitionState) recurses into the start state, and below depth 5
 //          into the end state in the scratch keyframes after `out` and blends the two by Progress. The child depth is
-//          a named local (it homes in the dead state slot; `++depth` would reuse the depth slot). GetAnimationInfo
-//          goes through an inline manager forwarder (MeshBank loads into ecx before the index push) and its result is
+//          a named local (it homes in the dead state slot; `++depth` would reuse the depth slot). MeshBank->PeekAnimation
+//          takes the animation index from a named local (MeshBank loads into ecx before the index push) and its result is
 //          a named local, so the bank call precedes the GetAnimation argument pushes.
 // Layout: C3DAnimationState AnimationIndex +8 / AnimationTime +0xC and C3DAnimationTransitionState StartState +8 /
 //          EndState +0xC / Progress +0x10 agree with engine/C3DAnimationState.h and C3DAnimationTransitionState.h; they
@@ -36,7 +36,7 @@ class C3DAnimationInfo { public:
     CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2& mesh) const;   // 0x00A26C60
 };
 class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimationInfo(long index);   // 0x00A242C0
+    const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
 };
 
 class C3DAnimationStateBase { public:
@@ -58,8 +58,8 @@ class C3DAnimationTransitionState : public C3DAnimationStateBase { public:
 class C3DAnimationManager { public:
     void* __vftable;
     CMeshDataBank* MeshBank;                // +0x04
-    C3DAnimationInfo* GetAnimationInfo(long index) const { return MeshBank->GetAnimationInfo(index); }
-    void BlendAnimations(C3DKeyframe* a, C3DKeyframe* b, unsigned long count, float weight);   // 0x00A9EB90
+private:
+    void BlendAnimations(C3DKeyframe* a, const C3DKeyframe* b, unsigned long count, float weight);   // 0x00A9EB90 (Ego_r.pdb, private)
     void CombineBaseAnimationsBoneList(const C3DAnimationStateBase& state, C3DKeyframe* out, unsigned long count,
                                        unsigned long depth, const C3DMesh2& mesh, const CArray<unsigned long>& bones);
 };
@@ -70,7 +70,8 @@ void C3DAnimationManager::CombineBaseAnimationsBoneList(const C3DAnimationStateB
     long type = state.GetStateType();
     if (type == 0) {
         const C3DAnimationState& single = static_cast<const C3DAnimationState&>(state);
-        C3DAnimationInfo* info = GetAnimationInfo(single.AnimationIndex);
+        long index = single.AnimationIndex;
+        const C3DAnimationInfo* info = MeshBank->PeekAnimation(index);
         CCountedPointer<const C3DAnimation2> animation = info->GetAnimation(mesh);
         float time = single.AnimationTime;
         if (animation->IsRelative()) {

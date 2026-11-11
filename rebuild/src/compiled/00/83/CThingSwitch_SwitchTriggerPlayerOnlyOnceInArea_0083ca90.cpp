@@ -6,7 +6,7 @@
 // Callees: as the sibling SwitchTriggerPlayerOnlyMultipleTimesInArea 0x0083C690 (same TU): CThing::PeekPos() const
 //   @ 0x006A4D00, player-manager accessors @ 0x004C79F0 (const) / 0x004C7A00, CPlayerManager::GetPlayer(long) const
 //   @ 0x00449910 / non-const @ 0x004498C0, CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetPControlledCreature
-//   @ 0x00487DC0, LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A, NEntityEvents::CEventTriggered(CThing*)
+//   @ 0x00487DC0, LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A, NEntityEvents::CEventTriggered(CThing&)
 //   @ 0x0083CF20, CTCEntityEvents::AddEvent @ 0x008113C0.
 // Layout (retail): as the sibling, plus Triggered +0xdc (Ego_r.pdb +0xf4, CThingPhysical 0x18 lower).
 // Shape: the early `if (Triggered) return;` keeps the ebx/ebp/edi pushes below the test; the loop does not stop after
@@ -24,16 +24,18 @@ class C2DBoxF { public:
     FABLE_FORCEINLINE bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
 
-struct CEventBase { virtual void v00(); };
+namespace NEntityEvents {
+class CEventBase { public: virtual void v00(); };
+}
 class CThing;
 namespace NEntityEvents {
-class CEventTriggered : public CEventBase { public:
+class CEventTriggered : public NEntityEvents::CEventBase { public:
     unsigned char _body[0x10 - 4];
-    CEventTriggered(CThing* triggerer);                 // 0x0083CF20
+    CEventTriggered(CThing& triggered_by);               // 0x0083CF20
 };
 }
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);                   // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);                   // 0x008113C0
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -107,7 +109,7 @@ void CThingSwitch::SwitchTriggerPlayerOnlyOnceInArea()
                 Triggered = true;
                 if (HasTC(0x42)) {
                     CTCEntityEvents* events = (CTCEntityEvents*)GetTC(0x42);
-                    events->AddEvent(new NEntityEvents::CEventTriggered(hero));
+                    events->AddEvent(new NEntityEvents::CEventTriggered(*hero));
                 }
             }
         }

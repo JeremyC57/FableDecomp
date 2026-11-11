@@ -25,13 +25,15 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 
-struct CEventBase { };
-struct CEventTalkedTo : CEventBase {
+namespace NEntityEvents {
+class CEventBase { public: };
+}
+struct CEventTalkedTo : NEntityEvents::CEventBase {
     unsigned char _pad[0x10];
     CEventTalkedTo(CThing* talker);             // 0x0084AF90
 };
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);           // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);           // 0x008113C0
 };
 
 class CCreatureActionBase {

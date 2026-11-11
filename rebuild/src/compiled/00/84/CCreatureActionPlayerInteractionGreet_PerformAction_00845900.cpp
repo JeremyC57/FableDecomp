@@ -65,19 +65,21 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     }
     return false;
 }
-struct CEventBase { };
 namespace NEntityEvents {
-class CEventTalkedTo : public CEventBase { public:            // 0x10 bytes
+class CEventBase { public: };
+}
+namespace NEntityEvents {
+class CEventTalkedTo : public NEntityEvents::CEventBase { public:            // 0x10 bytes
     unsigned char _pad[0x10];
     CEventTalkedTo(CThing* talker);             // 0x0084AF90
 };
-struct CEventTalkedToBy : CEventBase {          // 0x10 bytes
+struct CEventTalkedToBy : NEntityEvents::CEventBase {          // 0x10 bytes
     unsigned char _pad[0x10];
     CEventTalkedToBy(CThing* listener);         // 0x0084B100
 };
 }
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);           // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);           // 0x008113C0
 };
 class CMessageEvent;
 class CMessageEventManager { public:

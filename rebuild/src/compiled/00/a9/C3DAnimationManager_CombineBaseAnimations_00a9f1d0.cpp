@@ -61,6 +61,7 @@ class C3DAnimationTransitionState : public C3DAnimationStateBase { public:
 class C3DAnimationManager { public:
     virtual ~C3DAnimationManager();
     CMeshDataBank* MeshDataBank;                   // +0x04
+private:                                           // Ego_r.pdb: both private (AAE)
     void BlendAnimations(C3DKeyframe* dest, const C3DKeyframe* src, unsigned long count, float alpha);   // 0x00A9EB90
     void CombineBaseAnimations(const C3DAnimationStateBase& state, C3DKeyframe* keyframes, unsigned long boneCount, unsigned long depth, const C3DMesh2& mesh);
 };

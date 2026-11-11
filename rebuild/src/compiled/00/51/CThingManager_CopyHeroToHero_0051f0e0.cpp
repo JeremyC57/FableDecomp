@@ -1,4 +1,4 @@
-// CThingManager::CopyHeroToHero(CThing& from, CThing& to, vector<CThing*>& things) -- carries the hero state over from one hero thing to another: the components the source has (interface types 3, 4, 0x5E, 0x5C, 0x68) are copied into the target through CThing::CopyTCState (type 3 after resetting the target's), types 0x6F and 0x14 through the target component's virtual copy
+// CThingManager::CopyHeroToHero(CThing& from, CThing& to, vector<CThing*>& things) -- carries the hero state over from one hero thing to another: the components the source has (interface types 3, 4, 0x5E, 0x5C, 0x68) are copied into the target through CThing::AddAndCopyTC (type 3 after resetting the target's), types 0x6F and 0x14 through the target component's virtual copy
 // Leaf: ?CopyHeroToHero@CThingManager@@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051F0E0, 595 bytes (0x253 + int3 padding to 608), thiscall `ret 0Ch` (`this` and
@@ -8,7 +8,7 @@
 //   "CTCHeroMorph_ApplyEffects_WithLookup" is descriptive.
 // Callees: CInterfaceMap::LowerBound 0x0040F020 (non-const: the type-3 lookups and the target lookups) and its const
 //   overload 0x004365B0 (the source lookups through the const CThing reference), the type-3
-//   component's reset 0x0071C260, CThing::CopyTCState(CTCBase*, bool) 0x004C9F60, the component's virtual copy (slot 12,
+//   component's reset 0x0071C260, CThing::AddAndCopyTC(const CTCBase&, bool) 0x004C9F60, the component's virtual copy (slot 12,
 //   +0x30).
 // Layout: retail CThing: the interface presence bitset<274> +0x20 (nine words), the interface map +0x44 (as the landed
 //   GetInterface models).
@@ -43,7 +43,7 @@ public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    void CopyTCState(CTCBase* source, bool flag);    // 0x004C9F60
+    void AddAndCopyTC(const CTCBase& other, bool flag);   // 0x004C9F60 (Ego_r.pdb ?AddAndCopyTC@CThing@@QAEXABVCTCBase@@_N@Z)
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present[wanted]) {
@@ -91,18 +91,18 @@ void CThingManager::CopyHeroToHero(CThing& from, CThing& to, std::vector<CThing*
         CTCHeroType3* targetType3;
         to.GetInterface(&targetType3, 3);
         ((CTCHeroMorph*)targetType3)->KillParticles();
-        to.CopyTCState(sourceType3, true);
+        to.AddAndCopyTC(*sourceType3, true);
     }
     const CThing& sourceThing = from;
     CTCBase* source;
     if (sourceThing.GetInterface(&source, 4))
-        to.CopyTCState(source, true);
+        to.AddAndCopyTC(*source, true);
     if (sourceThing.GetInterface(&source, 0x5e))
-        to.CopyTCState(source, true);
+        to.AddAndCopyTC(*source, true);
     if (sourceThing.GetInterface(&source, 0x5c))
-        to.CopyTCState(source, true);
+        to.AddAndCopyTC(*source, true);
     if (sourceThing.GetInterface(&source, 0x68))
-        to.CopyTCState(source, true);
+        to.AddAndCopyTC(*source, true);
     if (sourceThing.GetInterface(&source, 0x6f)) {
         CTCBase* target;
         to.GetInterface(&target, 0x6f);

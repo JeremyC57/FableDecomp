@@ -1,4 +1,4 @@
-// dynamic initializer for CCharString g_CCharString_013bad34 @ 0x013BAD34 -- constructs it from the literal, then registers its destructor with atexit
+// dynamic initializer for const CCharString g_DoorOpenAnimName @ 0x013BAD34 -- constructs it from the literal, then registers its destructor with atexit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0121ED00, oracle length 29 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,7 +9,8 @@
 // destructor thunk @ 0x012299E0 (`mov ecx,offset object ; jmp CCharString::~CCharString`, already landed)
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
 // exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
-// real identifier is not recoverable. One of 163 bodies of this shape.
+// real identifier is not recoverable (no PDB data name on disk): agentNF13 gave 0x013BAD34 one spelling, the one its
+// landed users bind. One of 163 bodies of this shape.
 #include "fable_string.h"      // CCharString: ctor @ 0x0099EBF0 / default @ 0x0099AED0, ~CCharString @ 0x0099EAE0
 
-CCharString g_CCharString_013bad34("DOOR_OPEN", -1);
+extern const CCharString g_DoorOpenAnimName("DOOR_OPEN", -1);

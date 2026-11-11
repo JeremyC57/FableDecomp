@@ -1,8 +1,8 @@
-// CCombatAction_StabThing::Initialise() -- when the stab target is alive, post a CEventFiredShot(attacker) to its entity events, set flag 0x20 on its +0x60 object, then the base Initialise
+// CCombatAction_StabThing::Initialise() -- when the stab target is alive, post a CEventKillLocked(attacker) to its entity events, set flag 0x20 on its +0x60 object, then the base Initialise
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087ECB0, 185 bytes (192 with padding), virtual Initialise.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface, type
-//   0x42 = CTCEntityEvents, bit 2 of +0x28), operator new 0x00BFEA1A (0x10 bytes), CEventFiredShot::CEventFiredShot(CThing*)
-//   0x0087FED0, CTCEntityEvents::AddEvent 0x008113C0, the +0x60 object's virtual slot 43 (+0xac) with 0x20,
+//   0x42 = CTCEntityEvents, bit 2 of +0x28), operator new 0x00BFEA1A (0x10 bytes), NEntityEvents::CEventKillLocked::CEventKillLocked(const CThing*)
+//   0x0087FED0 (the landed ctor row: it stores the CEventKillLocked vtable 0x01277CA8; FableWin.pdb ??0CEventKillLocked@NEntityEvents@@QAE@PBVCThing@@@Z), CTCEntityEvents::AddEvent 0x008113C0, the +0x60 object's virtual slot 43 (+0xac) with 0x20,
 //   CCombatActionBase::Initialise 0x00857520.
 // Layout: CCombatActionBase PCreature +0x08 (landed 0x008C2A80); the stab target CIntelligentPointer at +0xa8 (retail;
 //   engine/CCombatAction_StabThing.h is pads only there). Thing model as the landed 0x0095D310 plus the +0x60 pointer.
@@ -81,15 +81,16 @@ struct CThingGraphic {
     virtual void SetFlag(long flag);            // slot 43 (+0xac)
 };
 
-struct CEvent { };
-
-struct CEventFiredShot : CEvent {
+namespace NEntityEvents {
+class CEventBase { public: };
+class CEventKillLocked : public CEventBase { public:
     unsigned char _body[0x10];                  // sizeof = 0x10
-    CEventFiredShot(CThing* shooter);           // 0x0087FED0
+    CEventKillLocked(const CThing* killer);     // 0x0087FED0
 };
+}
 
 class CTCEntityEvents { public:                        // interface type 0x42
-    void AddEvent(CEvent* event);               // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);             // 0x008113C0
 };
 
 class CCombatActionBase { public:
@@ -111,7 +112,7 @@ void CCombatAction_StabThing::Initialise()
         CThing* target = PTarget.GetPItem();
         CTCEntityEvents* events;
         if (PTarget.GetPItem()->GetInterface(&events, 0x42))
-            events->AddEvent(new CEventFiredShot(PCreature.GetPItem()));
+            events->AddEvent(new NEntityEvents::CEventKillLocked(PCreature.GetPItem()));
         PTarget.GetPItem()->GetGraphic()->SetFlag(0x20);
     }
     CCombatActionBase::Initialise();

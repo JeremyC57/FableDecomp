@@ -66,17 +66,8 @@ class CSoundPair { public:
     long First;
     long Second;
 };
-struct CSoundPlayParams {
-    float Volume;                               // +0x00
-    float Pitch;                                // +0x04
-    float Delay;                                // +0x08
-    long Loop;                                  // +0x0c
-    long Priority;                              // +0x10
-    long Pan;                                   // +0x14
-    long Flags;                                 // +0x18
-    long Handle;                                // +0x1c
-    CSoundPlayParams() : Volume(1.0f), Pitch(1.0f), Delay(0.0f), Loop(1), Priority(1), Pan(0), Flags(0), Handle(-1) { }
-};
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR_TYPE_LAST
+#include "engine/CSoundInit.h"                    // Ego_r.pdb CSoundInit (0x20), the start parameters; inline ctor expanded
 
 struct CThingSoundSource {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -101,7 +92,7 @@ struct CThingSoundSource {
 };
 
 class CTCSoundPlayer { public:                         // the interface-0x10 component
-    void PlaySound(const CSoundPair& sound, const CSoundPlayParams& params, long a, long b, long c);   // 0x0066B280
+    unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool a, bool b, bool c);   // 0x0066B280 (Ego_r.pdb / FableWin.pdb)
 };
 
 struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
@@ -113,6 +104,6 @@ void CAIStateGroup_StealthSeekEnemy::SetWhatsThatSound()
     CTCSoundPlayer* player;
     if (PBrain->PCreature->GetTC(TCI_SOUND_PLAYER, &player)) {
         CSoundPair sound = ((CThingSoundSource*)PBrain->PCreature)->GetSoundPair("WHATS_THAT");
-        player->PlaySound(sound, CSoundPlayParams(), 1, 0, 0);
+        player->PlayAttachedSample(sound, CSoundInit(), true, false, false);
     }
 }

@@ -124,9 +124,10 @@ class CTCTrapBase : public CTCBase
 public:
 };
 
-struct CTCMeleeTrap : public CTCTrapBase {
+class CTCMeleeTrap : public CTCTrapBase { public:
     unsigned char _pad00[0x61];
     bool          StrikeAnimation;                          // +0x61
+private:
     void InitialiseStrikeAnimation(const CAnimationEntry& entry);
 };
 

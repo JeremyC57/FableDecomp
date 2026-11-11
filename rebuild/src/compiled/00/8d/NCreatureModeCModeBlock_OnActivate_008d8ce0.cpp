@@ -28,20 +28,11 @@ class CSoundPair { public:
     long Second;
 };
 
-struct CSoundPlayParams {                  // as the landed 0x00855430
-    float Volume;                          // +0x00
-    float Pitch;                           // +0x04
-    float Delay;                           // +0x08
-    long  Loop;                            // +0x0c
-    long  Priority;                        // +0x10
-    long  Pan;                             // +0x14
-    long  Flags;                           // +0x18
-    long  Handle;                          // +0x1c
-    CSoundPlayParams() { Volume = 1.0f; Pitch = 1.0f; Delay = 0.0f; Loop = 1; Pan = 0; Flags = 0; Handle = -1; Priority = 1; }
-};
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR_TYPE_LAST
+#include "engine/CSoundInit.h"                    // Ego_r.pdb CSoundInit (0x20), the start parameters; inline ctor expanded
 
 class CTCSoundPlayer { public:                    // the interface-0x10 component
-    void PlaySound(const CSoundPair& sound, const CSoundPlayParams& params, long a, long b, long c);   // 0x0066B280
+    unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool a, bool b, bool c);   // 0x0066B280 (Ego_r.pdb / FableWin.pdb)
 };
 
 class CThing;
@@ -111,7 +102,7 @@ void CModeBlock::OnActivate()
         ((CThingAICreature*)PCreature)->SuspendAI(true, 0);
     CTCSoundPlayer* player;
     if (ParentThing->GetInterface(&player, 0x10)) {
-        player->PlaySound(PCreature->GetSoundPair("START_BLOCKING"), CSoundPlayParams(), 1, 0, 0);
+        player->PlayAttachedSample(PCreature->GetSoundPair("START_BLOCKING"), CSoundInit(), true, false, false);
     }
     FrameUpdate();
 }

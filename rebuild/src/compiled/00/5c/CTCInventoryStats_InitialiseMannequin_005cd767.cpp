@@ -8,7 +8,7 @@
 //   LowerBound 0x0040F020 (non-const), CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, animation-set lookup 0x005DC340
 //   (CAnimFilterNoGroup temporary, vtables 0x0122FFDC / 0x0122FFCC), CAnimationEntry::GetAnimateThingFlags 0x005DC390,
 //   CAnimInit::Set 0x0070C050, CTCAnimationComplex::GetAnimation 0x0070B460, CAnimateThing::SetMainAnim 0x0070D580,
-//   component 0x5E EditFrameUpdate 0x00707930, CCharString 0x0099EBF0 / ~ 0x0099EAE0.
+//   component 0x5E UploadChangesToGraphics 0x00707930, CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Shape: the hero def at +0x68 is copied twice into def-pointer temporaries whose destructor skips the null test; the parent
 //   thing is read into a named local before the create call (retail loads it ahead of the def copy); the 0x5C component is
 //   added unconditionally (read uninitialised when absent, as retail); all def-pointer functions are __forceinline.
@@ -103,8 +103,8 @@ class CAnimateThing { public:
 class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();                      // 0x0070B460
 };
-struct CTCEditable {
-    void EditFrameUpdate();                             // 0x00707930
+class CTCHeroAttachableAppearanceModifiers { public:   // interface 0x5E
+    void UploadChangesToGraphics();                     // 0x00707930 (Ego_r.pdb QAEXXZ)
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
@@ -119,7 +119,7 @@ class CThing { public:
     unsigned char  _pad68[0x70 - 0x68];
     CDefClassBase* PBaseDef;                            // +0x70
     const C3DVector& GetPos() const;               // 0x004C73D0
-    void AddAndCopyTC(CTCBase* tc, bool b);             // 0x004C9F60
+    void AddAndCopyTC(const CTCBase& tc, bool b);       // 0x004C9F60 (Ego_r.pdb, by reference)
     void AddTC(const CCharString& name, bool a, bool b);   // 0x004C9D60
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)
     {
@@ -133,7 +133,9 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, bool b);   // 0x00835A20
+class CTCDNone { public:                                    // RTTI .?AVCTCDNone@@ : CTCDriverBase
+    static CThing* __fastcall Create(long defIndex, const C3DVector& position, bool flag);   // 0x00835A20 (Ego_r.pdb / FableWin.pdb)
+};
 class CHeroDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2e0 - 0x08];
     long MannequinDef;                                  // +0x2e0
@@ -155,19 +157,19 @@ void CTCInventoryStats::InitialiseMannequin()
         return;
     }
     CThing* parent = ParentThing;
-    Mannequin = CreateThing(CDefRef<CHeroDef>(HeroDef)->MannequinDef, parent->GetPos(), true);
-    Mannequin->AddAndCopyTC(ParentThing->Clothing, false);
+    Mannequin = CTCDNone::Create(CDefRef<CHeroDef>(HeroDef)->MannequinDef, parent->GetPos(), true);
+    Mannequin->AddAndCopyTC(*ParentThing->Clothing, false);
     CTCBase* tc;
     if (ParentThing->GetInterface(&tc, 0x5e))
-        Mannequin->AddAndCopyTC(tc, false);
+        Mannequin->AddAndCopyTC(*tc, false);
     if (ParentThing->GetInterface(&tc, 0x78))
-        Mannequin->AddAndCopyTC(tc, false);
+        Mannequin->AddAndCopyTC(*tc, false);
     if (ParentThing->GetInterface(&tc, 3))
-        Mannequin->AddAndCopyTC(tc, false);
+        Mannequin->AddAndCopyTC(*tc, false);
     {
         CTCBase* tc5c;
         ParentThing->GetInterface(&tc5c, 0x5c);
-        Mannequin->AddAndCopyTC(tc5c, false);
+        Mannequin->AddAndCopyTC(*tc5c, false);
     }
     Mannequin->AddTC("CTCAnimationComplex", false, false);
     CTCAnimationComplex* complex;
@@ -177,7 +179,7 @@ void CTCInventoryStats::InitialiseMannequin()
     CAnimationEntry* entry = appearance->Animation.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
     CAnimInit init(6, 0, entry->AnimIndex, 1, true, entry->GetAnimateThingFlags(), 100);
     complex->GetAnimation().SetMainAnim(init, 1, 0);
-    CTCEditable* editable;
-    if (Mannequin->GetInterface(&editable, 0x5e))
-        editable->EditFrameUpdate();
+    CTCHeroAttachableAppearanceModifiers* modifiers;
+    if (Mannequin->GetInterface(&modifiers, 0x5e))
+        modifiers->UploadChangesToGraphics();
 }

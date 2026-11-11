@@ -106,9 +106,9 @@ class CTCCreatureModeManager { public:
 };                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
     CModeBase& GetCurrentMode() const;          // 0x0073A6E0
 };
-struct CEventBase;
+namespace NEntityEvents { class CEventBase; }
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);                   // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);                   // 0x008113C0
 };
 struct CEventKilledCreature {
     unsigned char _body[0x0c];
@@ -154,7 +154,7 @@ public:
     signed char   PlayerNumber;                         // +0x90
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;    // 0x004C73D0
-    void AddAndCopyTC(const CTCBase* tc, bool activate);   // 0x004C9F60
+    void AddAndCopyTC(const CTCBase& tc, bool activate);   // 0x004C9F60 (Ego_r.pdb, by reference)
     FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -265,15 +265,15 @@ void CThingCreatureBase::OnDie()
             if (body->PhysicsTC->IsGravityEnabled())
                 body->PhysicsTC->SetGravityEnabled(false);
             if (GetConstInterface(&component, 0xd1))
-                body->AddAndCopyTC(component, true);
+                body->AddAndCopyTC(*component, true);
             if (GetConstInterface(&component, 3))
-                body->AddAndCopyTC(component, true);
+                body->AddAndCopyTC(*component, true);
             if (GetConstInterface(&component, 0x5e))
-                body->AddAndCopyTC(component, true);
+                body->AddAndCopyTC(*component, true);
             if (GetConstInterface(&component, 0x5c))
-                body->AddAndCopyTC(component, true);
+                body->AddAndCopyTC(*component, true);
             if (GetConstInterface(&component, 0x57))
-                body->AddAndCopyTC(component, true);
+                body->AddAndCopyTC(*component, true);
             const CTCLightingChannel* lighting;
             if (GetConstInterface(&lighting, 0x75)) {
                 if (body->PTCGraphicAppearance) {
@@ -291,13 +291,13 @@ void CThingCreatureBase::OnDie()
     if (killer && !killer->Dead) {
         if (killer->HasTC(0x42)) {
             CTCEntityEvents* events = (CTCEntityEvents*)killer->GetTC(0x42);
-            events->AddEvent((CEventBase*)new CEventKilledCreature(killer, this));
+            events->AddEvent((NEntityEvents::CEventBase*)new CEventKilledCreature(killer, this));
         }
         if (LeaveExperienceOrbsOverride && killer->HasTC(0xc9) && m_type == 1)
             CTCDExperienceOrb::Create(*this);
     }
     if (HasTC(0x42)) {
         CTCEntityEvents* events = (CTCEntityEvents*)GetTC(0x42);
-        events->AddEvent((CEventBase*)new CEventDied(killer, body));
+        events->AddEvent((NEntityEvents::CEventBase*)new CEventDied(killer, body));
     }
 }

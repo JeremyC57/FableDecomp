@@ -2778,3 +2778,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 1026, 2026-11-11) A switch whose jump table and byte index table sit inside the function extent needs a BOUNDS_FIX / QLEN for the full extent (0x00C400D0: 175 code bytes of 256).
 - (chunk 1026, 2026-11-11) x87 `_real@0` zero copies are rewritten after register colouring, so c2 allocator priority cannot steer them (0x0062FE60).
 - (chunk 1026, 2026-11-11) fable_string.h is `#pragma once` and also reached through rebuild/include, so FABLE_HDR_OVERLAY cannot override it; a CCharString change must be a repo opt-in.
+- (agentNF13, 2026-11-11) A queue claim can be wrong even when a shared header carries it: check the landed self row and the PDB virtual/non-virtual spelling (0x00707930 is UploadChangesToGraphics, not the EditFrameUpdate virtual).
+- (agentNF13, 2026-11-11) Moving a row-local `CEventBase` into `namespace NEntityEvents` (as a class) fixes the AddEvent mangling with no byte change; an empty first base keeps a flat event model's layout (EBO).
+- (agentNF13, 2026-11-11) A same-TU stand-in body made a member template (`template <class T> __declspec(noinline) bool GetDef(...) const`) binds the PDB instantiation name.
+- (agentNF13, 2026-11-11) `const CCharString g` mangles B, plain A: a dynamic initializer defines the const one as `extern const CCharString g("..", -1);`; its atexit thunk is `g.~CCharString();`.
+- (agentNF13, 2026-11-11) cl under Wine hangs silently on an `#error` in an included header; run `g++ -E` first to find the missing FABLE_RETAIL_* define.
+- (agentNF13, 2026-11-11) The three PlayAttachedSample bools are pushed before the CSoundInit temporary is built; a "matching" CSoundInit(bool,long,long) ctor was those pushes misread (0x00694020).

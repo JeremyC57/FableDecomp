@@ -62898,9 +62898,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006bd760'
-        Module = 'CMusicManager'
-        Source = '00/6b/CMusicManager_IsDangerMusicEnabled_006bd760.cpp'
-        TestSource = '00/6b/CMusicManager_IsDangerMusicEnabled_006bd760_test.cpp'
+        Module = 'CMusicManager::CState'
+        Source = '00/6b/CMusicManagerCState_GetActiveSet_006bd760.cpp'
+        TestSource = '00/6b/CMusicManagerCState_GetActiveSet_006bd760_test.cpp'
         PassPattern = 'BEHAVIOUR_PASS_006bd760'
     }
     [pscustomobject]@{
@@ -143541,22 +143541,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121ed00'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad34_0121ed00.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad34_0121ed00_test.cpp'
+        Source = '01/21/staticinit_gDoorOpenAnimName_0121ed00.cpp'
+        TestSource = '01/21/staticinit_gDoorOpenAnimName_0121ed00_test.cpp'
         PassPattern = '0121ed00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ed20'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad38_0121ed20.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad38_0121ed20_test.cpp'
+        Source = '01/21/staticinit_gDoorCloseAnimName_0121ed20.cpp'
+        TestSource = '01/21/staticinit_gDoorCloseAnimName_0121ed20_test.cpp'
         PassPattern = '0121ed20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ed40'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad3c_0121ed40.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad3c_0121ed40_test.cpp'
+        Source = '01/21/staticinit_gClockHandTurnName_0121ed40.cpp'
+        TestSource = '01/21/staticinit_gClockHandTurnName_0121ed40_test.cpp'
         PassPattern = '0121ed40_TEST PASS'
     }
     [pscustomobject]@{
@@ -176857,8 +176857,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006d3e80'
         Module = 'CDefinitionManager'
-        Source = '00/6d/CDefinitionManager_GetDef006d3e80_006d3e80.cpp'
-        TestSource = '00/6d/CDefinitionManager_GetDef006d3e80_006d3e80_test.cpp'
+        Source = '00/6d/CDefinitionManager_GetDefCBrainDef_006d3e80.cpp'
+        TestSource = '00/6d/CDefinitionManager_GetDefCBrainDef_006d3e80_test.cpp'
         PassPattern = '006d3e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -177004,8 +177004,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0083e0d0'
         Module = 'CDefinitionManager'
-        Source = '00/83/CDefinitionManager_GetDef0083e0d0_0083e0d0.cpp'
-        TestSource = '00/83/CDefinitionManager_GetDef0083e0d0_0083e0d0_test.cpp'
+        Source = '00/83/CDefinitionManager_GetDefCThingPhysicalSwitchDef_0083e0d0.cpp'
+        TestSource = '00/83/CDefinitionManager_GetDefCThingPhysicalSwitchDef_0083e0d0_test.cpp'
         PassPattern = '0083e0d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -177291,8 +177291,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0079bd80'
         Module = 'CDefinitionManager'
-        Source = '00/79/CDefinitionManager_GetDef0079bd80_0079bd80.cpp'
-        TestSource = '00/79/CDefinitionManager_GetDef0079bd80_0079bd80_test.cpp'
+        Source = '00/79/CDefinitionManager_GetDefCBrainDef_0079bd80.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDefCBrainDef_0079bd80_test.cpp'
         PassPattern = '0079bd80_TEST PASS'
     }
     [pscustomobject]@{
@@ -254230,8 +254230,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006e2a50'
         Module = 'CTCTalk'
-        Source = '00/6e/CTCTalk_SetUpSpeechSample_006e2a50.cpp'
-        TestSource = '00/6e/CTCTalk_SetUpSpeechSample_006e2a50_test.cpp'
+        Source = '00/6e/CTCTalk_PlayRandomLipMovement_006e2a50.cpp'
+        TestSource = '00/6e/CTCTalk_PlayRandomLipMovement_006e2a50_test.cpp'
         PassPattern = '006e2a50_TEST PASS'
     }
     [pscustomobject]@{

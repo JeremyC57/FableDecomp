@@ -5,7 +5,7 @@
 // Retail @ 0x00AA0DC0, 413 bytes (`ret 20h`). Merge of the landed siblings CombineBlendedBaseAnimations 0x00A9F2F0 (state
 //   pair + InterpolateFloat time/progress) and CombineBaseAnimationsBoneList 0x00AA0C50 (per-bone loops through
 //   CalcLocalBoneTransformationRelative 0x00A4D920 / CalcLocalBoneTransformation 0x00A4D330); same callees otherwise
-//   (GetAnimationInfo 0x00A242C0 -- manifest "CTCInventoryAbilities::GetAbilityLevel" is propagated -- GetAnimation
+//   (CMeshDataBank::PeekAnimation 0x00A242C0 -- manifest "CTCInventoryAbilities::GetAbilityLevel" is propagated -- GetAnimation
 //   0x00A26C60, BlendAnimations 0x00A9EB90). Matched first try with the siblings' shapes verbatim.
 // Layout: as the siblings (C3DAnimationState / C3DAnimationTransitionState modelled locally for the polymorphic base).
 #include "engine/CCountedPointer.h"
@@ -25,7 +25,7 @@ class C3DAnimationInfo { public:
     CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2& mesh) const;   // 0x00A26C60
 };
 class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimationInfo(long index);   // 0x00A242C0
+    const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
 };
 
 class C3DAnimationStateBase { public:
@@ -49,8 +49,8 @@ inline float InterpolateFloat(float from, float to, float t) { return from + (to
 class C3DAnimationManager { public:
     void* __vftable;
     CMeshDataBank* MeshBank;                // +0x04
-    C3DAnimationInfo* GetAnimationInfo(long index) const { return MeshBank->GetAnimationInfo(index); }
-    void BlendAnimations(C3DKeyframe* a, C3DKeyframe* b, unsigned long count, float weight);   // 0x00A9EB90
+private:
+    void BlendAnimations(C3DKeyframe* a, const C3DKeyframe* b, unsigned long count, float weight);   // 0x00A9EB90 (Ego_r.pdb, private)
     void CombineBlendedBaseAnimationsBoneList(const C3DAnimationStateBase& stateA, const C3DAnimationStateBase& stateB, float blend,
                                               C3DKeyframe* out, unsigned long count, unsigned long depth, const C3DMesh2& mesh,
                                               const CArray<unsigned long>& bones);
@@ -66,7 +66,7 @@ void C3DAnimationManager::CombineBlendedBaseAnimationsBoneList(const C3DAnimatio
         const C3DAnimationState& singleB = static_cast<const C3DAnimationState&>(stateB);
         long index = singleA.AnimationIndex;
         float time = InterpolateFloat(singleA.AnimationTime, singleB.AnimationTime, blend);
-        C3DAnimationInfo* info = GetAnimationInfo(index);
+        const C3DAnimationInfo* info = MeshBank->PeekAnimation(index);
         CCountedPointer<const C3DAnimation2> animation = info->GetAnimation(mesh);
         if (animation->IsRelative()) {
             for (unsigned long i = 0; i < count; ++i)

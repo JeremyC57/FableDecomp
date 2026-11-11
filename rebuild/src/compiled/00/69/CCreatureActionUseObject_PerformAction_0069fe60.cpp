@@ -29,19 +29,21 @@ class CBaseObject;
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     FABLE_FORCEINLINE CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
-struct __declspec(novtable) CEventBase {
+namespace NEntityEvents {
+class __declspec(novtable) CEventBase { public:
     virtual void v00();
     long m_data;                                // +0x04
     CEventBase() : m_data(0) {}
 };
+}
 namespace NEntityEvents {
-class CEventItemUsed : public CEventBase { public:            // 0x10 bytes, vtable 0x0125C820
+class CEventItemUsed : public NEntityEvents::CEventBase { public:            // 0x10 bytes, vtable 0x0125C820
     CIntelligentThingPointer User;              // +0x08
     CEventItemUsed(CThing* user) : User(user) {}
 };
 }
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);           // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);           // 0x008113C0
 };
 class CTCActionUseScriptedHook { public:               // interface type 0xC2
     void OnActionUse(CThing* user);             // 0x00729B20

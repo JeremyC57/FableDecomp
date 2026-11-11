@@ -132,7 +132,8 @@ bool CGameDefinitionManager::GetDef(const CCharString& name, CDefPointer<CExpres
 }
 #pragma auto_inline(on)
 namespace NEntityEvents {
-class CEventExpressionPerformedTo { public:               // 0x20 bytes
+class CEventBase { public: };                     // RTTI base of every event (members modelled flat below)
+class CEventExpressionPerformedTo : public CEventBase { public:   // 0x20 bytes
     void*           __vftable;                     // +0x00
     long            m_eventType;                   // +0x04
     void*           m_targetVtable;                // +0x08 CIntelligentPointer
@@ -160,7 +161,7 @@ CEventExpressionPerformedTo::CEventExpressionPerformedTo(void* target, long expr
 #pragma auto_inline(on)
 }
 class CTCEntityEvents { public:                           // interface 0x42 component
-    void AddEvent(NEntityEvents::CEventExpressionPerformedTo* event);   // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);   // 0x008113C0
 };
 extern const char g_actionFollowCreature[];        // 0x0128D850 "CActionFollowCreature"
 extern const char g_expressionWait[];              // 0x012757DC "EXPRESSION_WAIT"

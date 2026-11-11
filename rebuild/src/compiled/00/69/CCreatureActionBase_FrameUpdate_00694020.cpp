@@ -8,7 +8,8 @@
 //   copy 0x006962C0, _Destroy_range 0x00696790 (all LTCG `__fastcall`); UpdateActionMovement 0x00692AA0; __ftol2;
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50; CVectorMap::LowerBound 0x0040F020; CTCHaste pause set erase 0x0058119B /
 //   insert 0x00580D21 / recalc 0x00800020; CThing::AddTC 0x004C9D60; CCharString 0x0099EBF0 / copy 0x0099EC30 / ~ 0x0099EAE0;
-//   CSoundInit 0x0041C930; PlayRandomSound 0x0066B280; operator new 0x00BFEA1A; CTCEntityEvents::AddEvent 0x008113C0;
+//   CSoundInit() 0x0041C930 (Ego_r.pdb ??0CSoundInit@@QAE@XZ); CTCSoundPlayer::PlayAttachedSample(const CSoundPair&, const CSoundInit&,
+//   bool, bool, bool) 0x0066B280 (Ego_r.pdb / FableWin.pdb; the three pushes before the CSoundInit temporary are its bools); operator new 0x00BFEA1A; CTCEntityEvents::AddEvent 0x008113C0;
 //   _Rb_global::_Rebalance_for_erase 0x0042A34E; free 0x00BFEA14. Cut-scene event vtable 0x0125C1CC.
 // Layout: local model -- engine/CCreatureActionBase.h has the PDB (debug STL) container sizes; retail uses 12-byte
 //   STLport vectors: ActionEvents {start +0x84, finish +0x88}, CutSceneEvents tree {header +0x90, count +0x94}; scalar
@@ -29,14 +30,16 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 class CTCBase { public: virtual void v00(); };
-struct CEventBase { CEventBase() : Unknown(0) { } virtual void v00(); long Unknown; };
-struct CEventCutScene : CEventBase {                   // vtable 0x0125C1CC, 0x0c bytes
+namespace NEntityEvents {
+class CEventBase { public: CEventBase() : Unknown(0) { } virtual void v00(); long Unknown; };
+}
+struct CEventCutScene : NEntityEvents::CEventBase {                   // vtable 0x0125C1CC, 0x0c bytes
     CCharString Name;
     CEventCutScene(const CCharString& name) : Name(name) { }
     virtual void v00();
 };
 class CTCEntityEvents : public CTCBase { public:
-    void AddEvent(CEventBase* event);                  // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);                  // 0x008113C0
 };
 class CCreatureActionBase;
 struct SPausePair { CCreatureActionBase* first; long second; SPausePair(CCreatureActionBase* a, long b) : first(a), second(b) { } };
@@ -53,10 +56,10 @@ class CTCHaste : public CTCBase { public:
 class CSoundPair { public: long FirstSound, LastSound; };
 class CSoundInit { public:
     unsigned char _data[0x20];
-    CSoundInit(bool a, long b, long c);                // 0x0041C930
+    CSoundInit();                                      // 0x0041C930
 };
-struct CTCSound : CTCBase {
-    unsigned long PlayRandomSound(const CSoundPair& sounds, const CSoundInit& init);   // 0x0066B280
+class CTCSoundPlayer : public CTCBase { public:
+    unsigned long PlayAttachedSample(const CSoundPair& sound_pair, const CSoundInit& init, bool a, bool b, bool c);   // 0x0066B280
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -267,9 +270,9 @@ void CCreatureActionBase::FrameUpdate()
         (AddedActionAnim || PAnimEntry == 0 || *PAnimEntry == 0)) {
         PerformAction();
         PerformedAction = true;
-        CTCSound* sound;
+        CTCSoundPlayer* sound;
         if (((CThing*)PCreature.GetPItem())->GetInterface(&sound, 0x10))
-            PlayingSoundID = sound->PlayRandomSound(Sounds, CSoundInit(true, 0, 0));
+            PlayingSoundID = sound->PlayAttachedSample(Sounds, CSoundInit(), true, false, false);
     }
     while (CutSceneEvents._M_node_count != 0) {
         SCutSceneNode* node = CutSceneEvents._M_header->Left;

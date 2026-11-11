@@ -68,16 +68,20 @@ struct CIntelligentPointerConstThing {
     virtual void v00();
     const CThing* m_pItem;
 };
-class CTCNoise { public:
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
+class CTCBase { public:                         // the component base (members this row reads)
     virtual void v00();
-    CThing* ParentThing;                        // +0x04 (CTCBase)
+    CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCNoise : public CTCBase { public:
     CTCNoiseDef Definition;                     // +0x0c
     long  LifeTimer;                            // +0x40
     float DistanceCanBeHeardFrom;               // +0x44
     CIntelligentPointerConstThing Creator;      // +0x48
-    const CDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     CFrameSource* GetFrameSource();             // 0x00686D60 (CTCBase)
     void OnCreate();
 };

@@ -108,7 +108,7 @@ class CTCAnimationComplex { public:
 };
 class CTCBase;
 class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
-    void EditFrameUpdate();                                    // 0x00707930
+    void UploadChangesToGraphics();                            // 0x00707930 (Ego_r.pdb QAEXXZ)
 };
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
@@ -124,7 +124,7 @@ class CThing { public:
     unsigned char  _pad68[0x70 - 0x68];
     CThingBaseDef* PBaseDef;                                   // +0x70
     const C3DVector& GetPos() const;                      // 0x004C73D0
-    void AddAndCopyTC(CTCBase* tc, bool activate);             // 0x004C9F60
+    void AddAndCopyTC(const CTCBase& tc, bool activate);       // 0x004C9F60 (Ego_r.pdb, by reference)
     CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
     bool HasTC(long type) { return m_present.test(type); }
     template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
@@ -164,7 +164,9 @@ class CThing { public:
         return (T*)((it != map->end() && !(wanted < it->first)) ? it : map->end())->second;
     }
 };
-CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, bool flag);   // 0x00835A20
+class CTCDNone { public:                                    // RTTI .?AVCTCDNone@@ : CTCDriverBase
+    static CThing* __fastcall Create(long defIndex, const C3DVector& position, bool flag);   // 0x00835A20 (Ego_r.pdb / FableWin.pdb)
+};
 
 class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xd4 - 0x08];
@@ -194,19 +196,19 @@ void CTCInventoryClothing::InitialiseMannequin()
         PMannequin = 0;
         return;
     }
-    PMannequin = CreateThing(GetInventoryDef()->MannequinDef, GetParentThing()->GetPos(), true);
+    PMannequin = CTCDNone::Create(GetInventoryDef()->MannequinDef, GetParentThing()->GetPos(), true);
     if (PMannequin) {
-        PMannequin->AddAndCopyTC(ParentThing->PTCBase64, false);
+        PMannequin->AddAndCopyTC(*ParentThing->PTCBase64, false);
         CTCBase* tc;
         if (ParentThing->GetInterface(&tc, 3))
-            PMannequin->AddAndCopyTC(tc, false);
+            PMannequin->AddAndCopyTC(*tc, false);
         if (ParentThing->GetInterface(&tc, 0x5e))
-            PMannequin->AddAndCopyTC(tc, false);
+            PMannequin->AddAndCopyTC(*tc, false);
         if (ParentThing->GetInterfaceFound(&tc, 0x78))
-            PMannequin->AddAndCopyTC(tc, false);
+            PMannequin->AddAndCopyTC(*tc, false);
         CTCBase* tc5c = 0;
         ParentThing->GetInterface(&tc5c, 0x5c);
-        PMannequin->AddAndCopyTC(tc5c, false);
+        PMannequin->AddAndCopyTC(*tc5c, false);
         PMannequin->AddTC("CTCAnimationComplex", false, 0);
         CTCAnimationComplex* complex = 0;
         PMannequin->GetInterface(&complex, 0x5a);
@@ -217,6 +219,6 @@ void CTCInventoryClothing::InitialiseMannequin()
         complex->GetAnimation().SetMainAnim(init, 1, 0);
         CTCHeroAttachableAppearanceModifiers* modifiers;
         if (PMannequin->GetInterface(&modifiers, 0x5e))
-            modifiers->EditFrameUpdate();
+            modifiers->UploadChangesToGraphics();
     }
 }

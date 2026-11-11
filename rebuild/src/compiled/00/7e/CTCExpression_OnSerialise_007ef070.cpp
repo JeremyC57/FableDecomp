@@ -42,22 +42,27 @@ class CDefClassBase { public:
 class CExpressionDef : public CDefClassBase { public: };
 template <class T> class CDefPointer { public: T* Object; };
 class CDefinitionManager { public:
-    bool GetDef(const CCharString& name, CDefPointer<const CExpressionDef>* out);   // 0x00593666
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // GetDef<CExpressionDef> 0x00593666 (FableWin.pdb template, landed)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);   // 0x004109A0
 };
-class CTCExpression {
+class CTCBase {                                         // the component base (members this row reads)
 public:
     virtual void v00();
     void*  ParentThing;                                 // +0x04
     bool   ToBeRemoved;                                 // +0x08
     bool   IsInGlobalUpdateTCs;                         // +0x09
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
+};
+class CTCExpression : public CTCBase {
+public:
     CDefPointer<const CExpressionDef> PDef;             // +0x0c
-    CDefinitionManager* GetDefinitionManager();         // 0x006869D0 (CTCBase)
     void OnSerialise(CPersistContext& context, bool);
 };
 
@@ -73,6 +78,6 @@ void CTCExpression::OnSerialise(CPersistContext& context, bool)
         CCharString name;
         context.Transfer("ExpressionDef", name, EmptyString());
         if (name != "")
-            GetDefinitionManager()->GetDef(name, &PDef);
+            GetDefinitionManager().GetDef(name, &PDef);
     }
 }

@@ -4,7 +4,7 @@
 //   Ego_r.pdb / FableWin.pdb ?GlobalUpdate@CTCInventoryClothing@@UAEX_N@Z.
 // Callees (PDB spellings): NInventory::CTCInventoryBase::GlobalUpdate 0x005BDD39 (qualified), CDefClassBase::GetSubDef<CAppearanceDef>
 //   0x0042B0A2, CAnimationSet::GetAnim 0x005DC340 (returns a reference), CTCHeroAttachableAppearanceModifiers::
-//   GetAppearanceModifierListWithCoversBodyAreaFlags 0x00706B50 / EditFrameUpdate 0x00707930 (called directly), the list<long>
+//   GetAppearanceModifierListWithCoversBodyAreaFlags 0x00706B50 / UploadChangesToGraphics 0x00707930 (called directly; Ego_r.pdb QAEXXZ), the list<long>
 //   destructor 0x0042AB73, CTCAnimationComplex::GetAnimation 0x0070B460, CAnimationEntry::GetAnimateThingFlags 0x005DC390 /
 //   GetTransitionTime 0x005DC1D0, CAnimInit::Init 0x0070C050, CAnimateThing::SetMainAnim 0x0070D580 / Update 0x0070E8B0;
 //   inline: IsInventoryOpen (+0x58), GetPBaseDef, the GetTC expansions (keys 0x5E / 0x5A), CAnimFilterNoGroup temporaries
@@ -30,6 +30,7 @@
 #define FABLE_RETAIL_CTCINVENTORYCLOTHING_GLOBALUPDATE
 #define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
 #define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_COVERS
+#define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_UPLOADCHANGES
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_STLP_LIST
@@ -88,7 +89,7 @@ void CTCInventoryClothing::GlobalUpdate(bool paused)
         if (PMannequin->GetTC(&modifiers)) {
             if (modifiers->GetAppearanceModifierListWithCoversBodyAreaFlags(4, APPEARANCE_CLOTHING).empty())
                 anim = &twirlAnim;
-            modifiers->EditFrameUpdate();
+            modifiers->UploadChangesToGraphics();
         }
         CTCAnimationComplex* complex = 0;
         PMannequin->GetTC(&complex);

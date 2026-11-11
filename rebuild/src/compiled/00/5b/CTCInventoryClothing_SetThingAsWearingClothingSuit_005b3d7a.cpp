@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005B3D7A, length 212 bytes (`ret 8`). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: std::bitset::test @ 0x00410DE0 and CVectorMap::LowerBound @ 0x0040F020 (the inline GetInterface for type 0x5E),
 // CTCHeroAttachableAppearanceModifiers::RemoveAllAppearanceModifiers(long) @ 0x00706640, AddAppearanceModifierWithReplace(long)
-// @ 0x00706950 and EditFrameUpdate() @ 0x00707930, CTCBase::GetDefinitions() @ 0x006869D0, CDefinitionManager::GetDef(long,
+// @ 0x00706950 and UploadChangesToGraphics() @ 0x00707930, CTCBase::GetDefinitions() @ 0x006869D0, CDefinitionManager::GetDef(long,
 // CDefPointer<T>*) @ 0x0042AF3C (the catalog's GetDef<CSpecialAbilitiesDrunkennessDef> body), CDefClassBase::GetSubDef<CHeroSuitDef>
 // @ 0x005935C4 (landed), CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08, the STLport tree successor
 // _Rb_global<bool>::_M_increment @ 0x004292C0 (`__cdecl`), the defs' virtual slot 1 on release.
@@ -43,7 +43,7 @@ enum { APPEARANCE_MODIFIER_CLOTHING = 2 };
 class CTCHeroAttachableAppearanceModifiers { public:        // interface type 0x5E
     void RemoveAllAppearanceModifiers(long type);    // 0x00706640
     void AddAppearanceModifierWithReplace(long defIndex);   // 0x00706950
-    void EditFrameUpdate();                          // 0x00707930
+    void UploadChangesToGraphics();                  // 0x00707930 (Ego_r.pdb QAEXXZ)
 };
 struct SNode {                                       // _Rb_tree_node<pair<const EClothingSuitPart, long>>
     long   _M_color;
@@ -132,7 +132,7 @@ void CTCInventoryClothing::SetThingAsWearingClothingSuit(CThing* thing, long sui
             if (GetNumberOfItemsOfTypeInInventory(it->second) > 0)
                 modifiers->AddAppearanceModifierWithReplace(it->second);
         }
-        modifiers->EditFrameUpdate();
+        modifiers->UploadChangesToGraphics();
         if (--suitDef->m_refCount == 0)
             suitDef->Destroy();
         CDefClassBase* owner = def.Object;

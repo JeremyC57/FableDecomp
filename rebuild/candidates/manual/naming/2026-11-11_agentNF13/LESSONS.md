@@ -1,0 +1,10 @@
+- A queue claim can be wrong even when a shared header carries it: check the landed self row and the PDB virtual / non-virtual spelling (0x00707930 is UploadChangesToGraphics, not the EditFrameUpdate virtual).
+- Moving a row-local global `CEventBase` into `namespace NEntityEvents` as a `class` (and qualifying every other use) fixes the AddEvent mangling with no byte change; a script did 17 rows in one pass (work/evt.py).
+- An empty first base (`class CEventBase { public: };`) added to a flat event model keeps its layout (EBO) and gives the implicit pointer conversion AddEvent needs.
+- A same-TU stand-in body can be made a member template (`template <class T> __declspec(noinline) bool GetDef(...) const`) so the call binds the PDB instantiation name.
+- `const CCharString g` and `CCharString g` mangle `B` / `A`: a dynamic initializer defines the const one as `extern const CCharString g("..", -1);`.
+- An atexit destructor thunk is `object.~CCharString();` on the real global (VC7.1 emits `mov ecx,offset ; jmp ??1CCharString@@QAE@XZ`).
+- cl under Wine hangs (no output, timeout) on an `#error` in an included header; preprocess with `g++ -E` first to find the missing FABLE_RETAIL_* define.
+- Removing an inline forwarder can move a load across a push; a named local for the forwarded argument restores retail's order (0x00AA0C50).
+- The three PlayAttachedSample bools are pushed before the CSoundInit temporary is built; a landed `CSoundInit(bool, long, long)` ctor that "matched" was those pushes misread.
+- `chk.py` must use the catalog PassPattern (build_candidates.ps1), not `<addr>_TEST PASS`, or a correct test reports FAIL.

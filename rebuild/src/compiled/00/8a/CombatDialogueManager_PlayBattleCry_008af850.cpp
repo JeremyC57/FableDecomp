@@ -7,6 +7,12 @@
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 #include "engine/CDefClassBase.h"
 #include "engine/CThingCreatureBase.h"
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR_TYPE_LAST
+#include "engine/CSoundInit.h"                    // Ego_r.pdb CSoundInit; the inline ctor's stores as this row's (PlaybackType last)
+class CSoundPair { public: long FirstSound, LastSound; };
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool);   // 0x0066B280 (Ego_r.pdb / FableWin.pdb)
+};
 namespace ExternalRetry_008af850 {
 
 struct CCreatureDef:CDefClassBase {unsigned char Pad[0xb0-0x25];unsigned int BattleCry;bool GetSubDef(CCreatureDef**);};
@@ -40,9 +46,6 @@ struct DefLookup {CCreatureDef*Data;DefLookup(CCreatureDef*p):Data(p){if(p)++Def
 struct DefinitionManagerMethods {DefLookup GetPDefFromGlobalIndex(unsigned);};
 __declspec(noinline) bool CCreatureDef::GetSubDef(CCreatureDef**out){CSubDefInfo*info;{CCharString name("CCreatureDef",-1);info=reinterpret_cast<SubDefMethods*>(this)->GetSubDefInfo(name);}if(!info)return false;CCreatureDef*value;{DefLookup found=reinterpret_cast<DefinitionManagerMethods*>(PDefManager)->GetPDefFromGlobalIndex(info->GlobalIndex);value=found.Data;if(value)++DefReferences(value);}CCreatureDef*previous=*out;if(previous!=value){if(previous){ReleaseDefinition(previous);*out=0;}*out=value;if(value)++DefReferences(value);}ReleaseDefinition(value);return true;}
 struct CMainGameComponent {unsigned int Pad[4];CASoundBank* PSampleBank;FABLE_FORCEINLINE CASoundBank&GetSampleBank()const{return *PSampleBank;}};extern CMainGameComponent* Sounds;
-struct CSoundPair {long FirstSound,LastSound;};
-struct CSoundInit {float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;FABLE_FORCEINLINE CSoundInit(){Volume=1.0f;Pitch=1.0f;Pan=0.0f;NoPlays=1;GainFaderBits=0;PitchFaderBits=0;OverrideID=-1;PlaybackType=1;}};
-struct CTCSoundPlayer {unsigned long PlayAttachedSample(const CSoundPair&,const CSoundInit&,bool,bool,bool);};
 struct Entry {int Type;CTCSoundPlayer* Value;};struct CVectorMap {Entry* Start;Entry* Finish;Entry* End;__declspec(noinline) Entry* LowerBound(const int* key){int length=(int)(Finish-Start);Entry* first=Start;while(length>0){int half=length>>1;Entry* middle=first+half;if(middle->Type<*key){first=middle+1;length-=half+1;}else length=half;}return first;}};
 struct CThingCreatureBase: ::CThingCreatureBase {FABLE_FORCEINLINE unsigned&Flags(){return *(unsigned*)_pad_0x20;}FABLE_FORCEINLINE CVectorMap&Interfaces(){return *(CVectorMap*)(_pad_0x20+0x24);}FABLE_FORCEINLINE CCreatureDef*&Definition(){return *(CCreatureDef**)_pad_0x70;}};
 FABLE_FORCEINLINE CTCSoundPlayer* FindSoundInterface(CThingCreatureBase* thing){int type=16;CVectorMap& interfaces=thing->Interfaces();Entry* p=interfaces.LowerBound(&type);return (p==interfaces.Finish||type<p->Type?interfaces.Finish:p)->Value;}
@@ -55,7 +58,7 @@ bool CombatDialogueManager::PlayBattleCry(CThingCreatureBase& creature){
   if(index && (thing->Flags()&0x10000)){
    CThingCreatureBase* receiver=thing;CTCSoundPlayer* sound=FindSoundInterface(receiver);
    CSoundInit params;CSoundPair pair;pair.FirstSound=index;pair.LastSound=index;
-   if(sound->PlayAttachedSample(pair,params,1,0,0)){LastBattleCryFrame=((unsigned int)CWorld::GetFrame());return true;}
+   if(sound->PlayAttachedSample(pair,params,true,false,false)){LastBattleCryFrame=((unsigned int)CWorld::GetFrame());return true;}
   }
  }
  return false;

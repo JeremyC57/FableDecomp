@@ -21,6 +21,11 @@ public:
     public:
         CState();                                                           // ??0CState@CMusicManager@@QAE@XZ (zeroes every member)
         // ?GetActiveSet@CState@CMusicManager@@QBEJXZ (0x006BD760): the first non-zero set in priority order.
+#ifdef FABLE_RETAIL_CMUSICMANAGER_GETACTIVESET_OUTOFLINE
+        // Opt-in (agentNF13, 2026-11-11, row 0x006BD760 itself): declaration only; the row defines the out-of-line COMDAT body
+        // (the same priority chain as the inline body below).
+        long GetActiveSet() const;
+#else
         long GetActiveSet() const
         {
             if (UIOverrideSet)
@@ -33,6 +38,7 @@ public:
                 return MapCellSet;
             return RegionSet;
         }
+#endif
         // ?GetDanger@CState@CMusicManager@@QBE_NXZ (0x006BD780; the landed body).
         bool GetDanger() const
         {

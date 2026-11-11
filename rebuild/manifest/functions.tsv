@@ -16735,7 +16735,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006bd3a0	insert_unique	std::_Rb_tree<CCharString, std::pair<CCharString const, C2DVector>, std::_Select1st<std::pair<CCharString const, C2DVector>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, C2DVector>>>	unknown	undefined	0		0	yes	accepted									
 006bd640	CUnprovenContainer_006bd640	CUnprovenContainer_006bd640	unknown	undefined	0		0	yes	accepted									
 006bd6a0	operator[]	std::map	__thiscall	C2DVector *	2	map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> *,CCharString *	1	yes	accepted									
-006bd760	IsDangerMusicEnabled	CMusicManager	__thiscall	bool	1	CMusicManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CMusicManager_IsDangerMusicEnabled_006bd760.cpp
+006bd760	GetActiveSet	CMusicManager::CState	__thiscall	bool	1	CMusicManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CMusicManager_IsDangerMusicEnabled_006bd760.cpp
 006bd780	GetDanger	CMusicManager::CState	__thiscall	bool	1	CMusicManager *	1	yes	accepted									
 006bd830	SetMember_byte0x3c_006bd830	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CTCPhysicsNavigator_EnableNavigator_006bd830.cpp
 006bd840	IsDangerMusicEnabled	CMusicManager	__thiscall	bool	1	CMusicManager *	1	yes	accepted									
@@ -17162,7 +17162,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006d3ca0	Remove_006d3ca0	_unattributed	unknown	undefined	0		0	yes	accepted									
 006d3d00	GetSubDef<CHeroMarriageDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 006d3dc0	GetSubDef<CWifeDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
-006d3e80	GetDef_006d3e80	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,CCharString *,CDefPointer<CHeroPostcardGeneratorDef_const_> *	1	yes	accepted									
+006d3e80	GetDef<CBrainDef>	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,CCharString *,CDefPointer<CHeroPostcardGeneratorDef_const_> *	1	yes	accepted									
 006d3ef0	GetSubDef<CGiftDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 006d3fb0	GetPFirstThing<CThingFilter_HasTC,CThing>	CThingSearchTools	__thiscall	bool	3	CThingSearchTools *,CThingFilter_HasDefGlobalIndex *,CThing * *	1	yes	accepted									
 006d4110	Remove_006d4110	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -17480,7 +17480,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e2910	DoesSpeechExist	CTCTalk	__thiscall	bool	2	CTCTalk *,ulong	1	yes	accepted									
 006e2940	GetSpeechDurationInFrames	CTCTalk	unknown	undefined	0		0	yes	accepted									
 006e29a0	PlayLipMovement	CTCTalk	unknown	undefined	0		0	yes	accepted									
-006e2a50	SetUpSpeechSample	CTCTalk	unknown	undefined	0		0	yes	accepted									
+006e2a50	PlayRandomLipMovement	CTCTalk	unknown	undefined	0		0	yes	accepted									
 006e2af0	CIntelligentPointer	CIntelligentPointer<CThing>	__thiscall	undefined	1	CActiveDialogueInfo *	0	yes	accepted									
 006e2b30	CIntelligentPointer	CIntelligentPointer<CThing>	__thiscall	undefined	5	CActiveDialogueInfo *,CThing *,ulong,EDialogueLayer,bool	0	yes	accepted									
 006e2b70	GetTargetGain	NSpeechGainManager	__fastcall	float	2	CActiveDialogueInfo *,vector<NSpeechGainManager::CDialogueLayerDef,std::allocator<NSpeechGainManager::CDialogueLayerDef>_> *	1	yes	accepted									
@@ -21740,7 +21740,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0079bce0	GetClassTypeName	CTCSummonSpell	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 0079bd00	vfunc_8	CTCSummonSpell	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0079bd10	GetDef_0079bd10	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
-0079bd80	GetDef_0079bd80	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
+0079bd80	GetDef<CBrainDef>	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
 0079bdf0	`scalar_deleting_destructor'	CTCSummonSpell	__thiscall	void *	2	CTCActionUseBuyOrSteal *,uint	1	yes	accepted									
 0079bf30	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasDefName *,CThingCompare_Nearest *,CThing * *	1	yes	accepted									
 0079c1c0	GetBrainName	CTCSummonableCreature	__thiscall	CCharString	1	CTCActionUseBase *	1	yes	accepted									
@@ -24933,7 +24933,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083df20	UntriggerMe	CThingPhysicalSwitch	__thiscall	void	1	CThingPhysicalSwitch *	1	yes	accepted									
 0083e040	CIVCountedPointer_Release_0083e040	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083e040.cpp
 0083e070	CIVCountedPointer_Release_0083e070	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083e070.cpp
-0083e0d0	GetDef_0083e0d0	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
+0083e0d0	GetDef<CThingPhysicalSwitchDef>	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
 0083e1b0	CFourierAnalysis	CFourierAnalysis	__thiscall	undefined	1	CFourierAnalysis *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CFourierAnalysis_CFourierAnalysis_0083e1b0.cpp
 0083e1f0	CThingScriptUIDReplacer	CThingScriptUIDReplacer	__thiscall	undefined	2	CThingScriptUIDReplacer *,CCharString *	0	yes	accepted									
 0083ea10	~LHHttpDocumentParts	LHNetworkLib::LHHttpDocumentParts	__thiscall	void	1	LHHttpDocumentParts *	1	yes	accepted									
@@ -57165,9 +57165,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121eca0	g_CCharString_013bad28	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ecc0	g_CCharString_013bad2c	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ece0	g_CCharString_013bad30	_static_init	unknown	undefined	0		0			discovered	gapscan							
-0121ed00	g_CCharString_013bad34	_static_init	unknown	undefined	0		0			discovered	gapscan							
-0121ed20	g_CCharString_013bad38	_static_init	unknown	undefined	0		0			discovered	gapscan							
-0121ed40	g_CCharString_013bad3c	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121ed00	g_DoorOpenAnimName	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121ed20	g_DoorCloseAnimName	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121ed40	g_ClockHandTurnName	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ed60	g_scaled_013bad40	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ed70	g_CStatic_01229a20_01229a20	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ed80	g_CStatic_01229a10_0122ffcc	_static_init	unknown	undefined	0		0			discovered	gapscan							

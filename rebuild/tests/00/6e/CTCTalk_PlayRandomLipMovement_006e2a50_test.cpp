@@ -5,9 +5,9 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 // ---- source (verbatim) ----
-// CTCTalk::SetUpSpeechSample() -- reset the talker's speech bank and sample, resolve the lip-sync bank for the default speech bank, look the speaker's sound symbol up in the matching sound bank, start loading that lip-sync entry, then stamp the mime start time and the sample duration
+// CTCTalk::PlayRandomLipMovement() -- reset the talker's speech bank and sample, resolve the lip-sync bank for the default speech bank, look the speaker's sound symbol up in the matching sound bank, start loading that lip-sync entry, then stamp the mime start time and the sample duration
 // Retry 10b (getsw sweep, FIXES B-15): the speaker info is read through an inline getter `GetSpeakerInfo()`; the plain member read gives the parked register/scheduling difference.
-// Leaf: SetUpSpeechSample
+// Leaf: PlayRandomLipMovement
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2A50, 152 bytes (+8 int3), __fastcall, no arguments.
 // The catalog label (CAnimateThing::SetUpAnimation) is propagated: the members touched are CTCTalk's
 // (Ego_r.pdb: SpeechSample +0x0C, SampleDurationFrames +0x14, MimeStartTime +0x1C, PSpeechBank +0x24, cf.
@@ -76,7 +76,7 @@ public:
 
     CASoundBank* GetDefaultSpeechBank();                         // 0x00686D70
     COwnerSystem* GetOwnerSystem();                              // 0x006869D0
-    long GetSampleDurationFrames(long sample);                   // 0x006E2940
+    long GetSpeechDurationInFrames(long sample);                   // 0x006E2940
 
     CLipSyncDataBank* GetLipSyncBank()
     {
@@ -89,10 +89,10 @@ public:
         return lipSync;
     }
 
-    void SetUpSpeechSample();
+    void PlayRandomLipMovement();
 };
 
-void CTCTalk::SetUpSpeechSample()
+void CTCTalk::PlayRandomLipMovement()
 {
     PSpeechBank = 0;
     SpeechSample = 0;
@@ -104,7 +104,7 @@ void CTCTalk::SetUpSpeechSample()
         lipSync->BeginLoadingEntry(SpeechSample);
     }
     MimeStartTime = (float)GFGetTime();
-    SampleDurationFrames = GetSampleDurationFrames(SpeechSample);
+    SampleDurationFrames = GetSpeechDurationInFrames(SpeechSample);
 }
 // ---- end source ----
 static CASoundBank g_defaultBank, g_soundBank; static CLipSyncDataBank g_lipSync;
@@ -121,22 +121,22 @@ extern "C" double __fastcall GFGetTime() { return 12.5; }
 static CSpeakerInfo g_speaker; static COwnerSystem g_owner;
 CASoundBank* CTCTalk::GetDefaultSpeechBank() { return &g_defaultBank; }
 COwnerSystem* CTCTalk::GetOwnerSystem() { return &g_owner; }
-long CTCTalk::GetSampleDurationFrames(long sample) { g_durationFor = sample; return sample * 2; }
+long CTCTalk::GetSpeechDurationInFrames(long sample) { g_durationFor = sample; return sample * 2; }
 int main()
 {
     g_owner.PSpeakerInfo = &g_speaker;
     CTCTalk talk; memset(&talk, 0, sizeof(talk)); talk.SpeechSample = 9; talk.PSpeechBank = &g_soundBank;
-    talk.SetUpSpeechSample();
+    talk.PlayRandomLipMovement();
     CHECK(talk.PSpeechBank == 0 && talk.SpeechSample == 42 && g_symbol == &g_speaker.SpeechSymbol && g_loaded == 42);
     CHECK(talk.MimeStartTime == 12.5f && talk.SampleDurationFrames == 84 && g_durationFor == 42);
     g_mapHasSound = false; g_loaded = 0xffffffff;
-    talk.SetUpSpeechSample();
+    talk.PlayRandomLipMovement();
     CHECK(talk.SpeechSample == 0 && g_loaded == 0 && talk.SampleDurationFrames == 0);
     g_mapHasLipSync = false; g_loaded = 0xffffffff;
-    talk.SetUpSpeechSample();
+    talk.PlayRandomLipMovement();
     CHECK(talk.SpeechSample == 0 && g_loaded == 0xffffffff);
     g_pSpeechBankMap = 0;
-    talk.SetUpSpeechSample();
+    talk.PlayRandomLipMovement();
     CHECK(talk.SpeechSample == 0 && talk.MimeStartTime == 12.5f);
     if (fails == 0) printf("006e2a50_TEST PASS\n"); else printf("006e2a50_TEST FAIL\n");
     return fails;

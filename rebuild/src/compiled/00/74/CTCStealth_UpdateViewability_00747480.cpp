@@ -33,13 +33,14 @@ template<class T> class CDefPointer { public:
     }
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<const CEngineThemeDef>* out);     // 0x0063F3A0
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // GetDef<CEngineThemeDef> 0x0063F3A0 (FableWin.pdb template)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const CEngineThemeDef>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -53,8 +54,8 @@ class CTCBase { public:
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
-    CDefinitionManager* GetDefinitionManager(); // 0x006869D0
 protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
     CWorldMap& GetWorldMap();   // 0x00686D30 (Ego_r.pdb CTCBase, protected)
 };
 class CTCStealth : public CTCBase { public:
@@ -73,7 +74,7 @@ void CTCStealth::UpdateViewability()
         long weight;
         long theme = GetWorldMap().GetStrongestEngineThemeAt(position, &weight);
         CDefPointer<const CEngineThemeDef> def;
-        GetDefinitionManager()->GetDef(theme, &def);
+        GetDefinitionManager().GetDef(theme, &def);
         if (def.Object) {
             if (def.Object->StealthFactor > 1e-4f)
                 Viewable = false;

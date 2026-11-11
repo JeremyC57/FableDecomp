@@ -9,6 +9,7 @@
 #define CCreatureActionBase CCreatureActionBase_PDB
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
+#define FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
 #include "engine/CTCEntityEvents.h"
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
@@ -22,12 +23,11 @@ class CEventBase { public:
 struct CEventAttackedWithMeleeWeaponWithoutHittingAnything:CEventBase {virtual ~CEventAttackedWithMeleeWeaponWithoutHittingAnything();virtual long GetEventType()const;}; //vtable01276484 type30
 struct CEventAttackedWithBareHandsWithoutHittingAnything:CEventBase {virtual ~CEventAttackedWithBareHandsWithoutHittingAnything();virtual long GetEventType()const;}; //vtable0127649C type31
 }
-struct CTCEntityEventsCalls:CTCEntityEvents {void AddEvent(NEntityEvents::CEventBase* event);}; //008113C0
-struct InterfaceEntry {long Type;CTCEntityEventsCalls* Component;};
+struct InterfaceEntry {long Type;CTCEntityEvents* Component;};
 struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* key);}; //0040F020
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];unsigned long PresentBits[9];InterfaceMap Interfaces;
-    FABLE_FORCEINLINE bool GetInterface(CTCEntityEventsCalls** out,long type){
+    FABLE_FORCEINLINE bool GetInterface(CTCEntityEvents** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);
             if(p==map->Last || type<p->Type)p=map->Last;*out=p->Component;return true;}return false;
     }
@@ -64,7 +64,7 @@ void CCombatActionBase::FrameUpdate(){
     bool wasReady=IsActionReadyForInterruption();
     UpdateFacingDirection();ProcessStrikeEvents();
     if(IsStrikeEventFinishedBeingActive() && !HitThing && !SentMissedEvent){
-        CTCEntityEventsCalls* events;PCreature.GetPItem()->GetInterface(&events,66);
+        CTCEntityEvents* events;PCreature.GetPItem()->GetInterface(&events,66);
         if(IsThingCarryingMeleeWeapon(PCreature.GetPItem()))events->AddEvent(new NEntityEvents::CEventAttackedWithMeleeWeaponWithoutHittingAnything);
         else events->AddEvent(new NEntityEvents::CEventAttackedWithBareHandsWithoutHittingAnything);
         SentMissedEvent=true;

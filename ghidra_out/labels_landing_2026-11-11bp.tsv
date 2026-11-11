@@ -1,0 +1,12 @@
+address	name	evidence
+006BD760	CMusicManager::CState::GetActiveSet	agentNF13: FableWin.pdb ?GetActiveSet@CState@CMusicManager@@QBEJXZ; was CMusicManager_IsDangerMusicEnabled
+006E2A50	CTCTalk::PlayRandomLipMovement	agentNF13: FableWin + Ego_r name sets; Ego_r donor order matches retail 0x006E2910..0x006E2A50; was SetUpSpeechSample (in no name set)
+0083E0D0	CDefinitionManager::GetDef<CThingPhysicalSwitchDef>	agentNF13: FableWin.pdb template instantiation
+0079BD80	CDefinitionManager::GetDef<CBrainDef>	agentNF13: FableWin.pdb template instantiation (long index)
+006D3E80	CDefinitionManager::GetDef<CBrainDef>	agentNF13: FableWin.pdb template instantiation (by name)
+0121ED00	_static_init::g_DoorOpenAnimName	agentNF13: descriptive (no PDB data name); "DOOR_OPEN"
+0121ED20	_static_init::g_DoorCloseAnimName	agentNF13: descriptive; "DOOR_CLOSE"
+0121ED40	_static_init::g_ClockHandTurnName	agentNF13: descriptive; "CLOCKHAND_TURN"
+013BAD34	g_DoorOpenAnimName	agentNF13: descriptive data name, one spelling (const CCharString)
+013BAD38	g_DoorCloseAnimName	agentNF13: descriptive data name, one spelling (const CCharString)
+013BAD3C	g_ClockHandTurnName	agentNF13: descriptive data name, one spelling (CCharString)

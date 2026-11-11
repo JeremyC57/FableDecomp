@@ -5,7 +5,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inline GetInterface 0x42 =
 // CTCEntityEvents, bit 2 of the present-bits byte +0x28), operator new 0x00BFEA1A (0x18 bytes),
 // NEntityEvents::CEventShownItem::CEventShownItem(CThing*, CThing*) 0x0084AEE0 (vtable 0x012723D8 by RTTI; the manifest label
-// "CEventDied" is a propagation), CTCEntityEvents::AddEvent(CEventBase*) 0x008113C0.
+// "CEventDied" is a propagation), CTCEntityEvents::AddEvent(NEntityEvents::CEventBase*) 0x008113C0.
 // Layout: owner PCreature +8, the onlooker PTarget +0xA8 (CCreatureActionBase), the shown item PItem +0xB0.
 // Shape: the two liveness tests share the constant 1 in bl (`mov bl,1 ; test bl,cl`, then `test [eax+91h],bl`); the
 // creature goes through the intelligent pointer's inline conversion (fetched before the item's plain GetPItem), the `new` null test selects 0 for AddEvent and the two
@@ -24,16 +24,18 @@ struct CBaseIntelligentPointer {
     operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 
-struct CEventBase { };
 namespace NEntityEvents {
-class CEventShownItem : public CEventBase { public:           // 0x18 bytes
+class CEventBase { public: };
+}
+namespace NEntityEvents {
+class CEventShownItem : public NEntityEvents::CEventBase { public:           // 0x18 bytes
     unsigned char _pad[0x18];
     CEventShownItem(CThing* shower, CThing* item);   // 0x0084AEE0
 };
 }
 using NEntityEvents::CEventShownItem;
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);           // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);           // 0x008113C0
 };
 
 class CCreatureActionBase {

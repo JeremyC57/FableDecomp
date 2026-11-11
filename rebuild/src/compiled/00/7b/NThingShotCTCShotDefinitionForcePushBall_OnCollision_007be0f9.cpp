@@ -83,14 +83,16 @@ class CHitParameters { public:                                 // 0x60 bytes
     ~CHitParameters();                                  // 0x00789358
     void SetHitter(CThing* hitter);                     // 0x008685F0
 };
-struct CEventBase { virtual ~CEventBase(); };
 namespace NEntityEvents {
-class CEventHitBySpecialAbility : public CEventBase { public:         // 0x18 bytes
+class CEventBase { public: virtual ~CEventBase(); };
+}
+namespace NEntityEvents {
+class CEventHitBySpecialAbility : public NEntityEvents::CEventBase { public:         // 0x18 bytes
     unsigned char _pad04[0x18 - 0x04];
     CEventHitBySpecialAbility(const CHitParameters& params, long ability);   // 0x00811830
 };
 }
-class CTCEntityEvents { public: void AddEvent(CEventBase* event); };   // 0x008113C0
+class CTCEntityEvents { public: void AddEvent(NEntityEvents::CEventBase* event); };   // 0x008113C0
 class CTCForcePushed { public: void SetUpForcePush(const C3DVector& dir, float force, CThing* pusher); };   // 0x007986A0
 class CTCPerceiveThing { public:
     CThing* GetPerceivedThing();                        // 0x007446A0

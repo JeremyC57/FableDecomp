@@ -35,7 +35,15 @@ public:
     // CTCBase vtable has no editor slot), so it is declared non-virtual as the landed caller 0x005B3D7A binds it (QAEXXZ).
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS; }
     std::list<long> GetAppearanceModifierListWithCoversBodyAreaFlags(long flags, EHeroAttachableAppearanceModifierType type) const;   // 0x00706B50
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_UPLOADCHANGES
+    // Nested opt-in (agentNF13, 2026-11-11): retail 0x00707930 is Ego_r.pdb ?UploadChangesToGraphics@CTCHeroAttachableAppearanceModifiers@@QAEXXZ
+    // (public, non-virtual: the four direct callers 0x005B3AD5 / 0x005B3E25 / 0x005B3F81 / 0x005CDA36; the landed self row; body = clear
+    // the Changed bit, UpdateHiddenModifiers / UpdateHiddenMaterials / UpdateGraphics, SetAsChanged). EditFrameUpdate is the CTCBase
+    // editor virtual (UAEXXZ, Ego_r donor 0x0055C9F0 after FrameUpdate), not this address.
+    void UploadChangesToGraphics();                          // 0x00707930
+#else
     void EditFrameUpdate();                                  // 0x00707930
+#endif
 #endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04

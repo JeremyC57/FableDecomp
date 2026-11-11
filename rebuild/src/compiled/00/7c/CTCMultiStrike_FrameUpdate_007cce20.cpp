@@ -35,12 +35,14 @@ public:
     ~CHitParameters();                              // 0x00789358
 };
 
-class CEventBase {
+namespace NEntityEvents {
+class CEventBase { public:
 public:
     virtual ~CEventBase();
 };
+}
 namespace NEntityEvents {
-class CEventHitBySpecialAbility : public CEventBase {   // 0x18 bytes, vtable 0x012723F0
+class CEventHitBySpecialAbility : public NEntityEvents::CEventBase {   // 0x18 bytes, vtable 0x012723F0
 public:
     unsigned char _pad04[0x18 - 0x04];
     CEventHitBySpecialAbility(const CHitParameters& params, long ability);   // 0x00811830
@@ -48,7 +50,7 @@ public:
 }
 class CTCEntityEvents {                             // interface 0x42
 public:
-    void AddEvent(CEventBase* event);               // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);               // 0x008113C0
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

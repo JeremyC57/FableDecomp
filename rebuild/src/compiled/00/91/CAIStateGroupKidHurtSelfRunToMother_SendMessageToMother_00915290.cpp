@@ -130,11 +130,13 @@ class CWorld { public:
 struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
 
-struct __declspec(novtable) CEventBase_NEntityEvents {   // NEntityEvents::CEventBase (vtable never stored by a derived constructor)
+namespace NEntityEvents {
+class __declspec(novtable) CEventBase { public:   // vtable never stored by a derived constructor
     virtual void v00();
     long m_eventType;                           // +0x04
-    CEventBase_NEntityEvents() : m_eventType(0) { }
+    CEventBase() : m_eventType(0) { }
 };
+}
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
@@ -142,15 +144,15 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
 };
 
 namespace NEntityEvents {
-class CEventChildHurtGoToMother : public CEventBase_NEntityEvents { public:   // vtable 0x0128FA80
+class CEventChildHurtGoToMother : public NEntityEvents::CEventBase { public:   // vtable 0x0128FA80
     CIntelligentPointerConstThing m_child;      // +0x08
     virtual void v00();
-    FABLE_FORCEINLINE CEventChildHurtGoToMother(CThing* child) : CEventBase_NEntityEvents(), m_child(child) { }
+    FABLE_FORCEINLINE CEventChildHurtGoToMother(CThing* child) : NEntityEvents::CEventBase(), m_child(child) { }
 };
 }
 
 class CTCEntityEvents { public:                        // interface 0x42
-    void AddEvent(CEventBase_NEntityEvents* event);   // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);   // 0x008113C0
 };
 
 struct CThingKid {

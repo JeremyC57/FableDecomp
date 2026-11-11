@@ -1,0 +1,33 @@
+kind	target_or_class	rows_changed	grades	binders_left
+queue	0x00787F29 ?InitialiseStrikeAnimation@CTCMeleeTrap@@AAEXABVCAnimationEntry@@@Z	1 (self 00787f29)	RELOCATION_MATCH	- (0078809b already OK)
+queue	0x00787C35 ?SetTransitionParams@CTCTrapBase@@IAEXMM@Z	2 (self 00787c35, 00787ca5 + its own TriggerTrap MAE)	RELOCATION_MATCH x2	- (00788406 already OK)
+queue	0x0083CF20 ??0CEventTriggered@NEntityEvents@@QAE@AAVCThing@@@Z	4 (0083c690 0083c800 0083ca90 0083cc10)	RELOCATION_MATCH x4	-
+queue	0x0066B280 ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z	5 (00694020 00855430 008d8ce0 0093c600 008af850)	RELOCATION_MATCH x5	-
+queue	0x008113C0 ?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@NEntityEvents@@@Z	22 (0057c2e6 005be028 00663f50 00694020 0069fe60 007be0f9 007cce20 0083c690 0083c800 0083ca90 0083cc10 008448e0 00845270 00845900 00846660 00849380 00859d80 0087cb10 0087ecb0 008957c0 009041a0 00915290)	RELOCATION_MATCH x22	-
+queue	0x0083E0D0 ??$GetDef@VCThingPhysicalSwitchDef@@@CDefinitionManager@@...	1 (self, renamed)	RELOCATION_MATCH	-
+queue	0x0079BD80 ??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJ...	1 (self, renamed)	RELOCATION_MATCH	00833a70 (NF12-left: same-TU GetDef stand-in + SuspendAI set model)
+queue	0x006D3E80 ??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NABVCCharString@@...	1 (self, renamed)	RELOCATION_MATCH	-
+queue	0x005DC2E0 ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z	0	-	none (all 16 landed binders already bind it)
+queue	0x00A242C0 ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z	3 (00a9f2f0 00aa0c50 00aa0dc0) + 00a9f1d0 (BlendAnimations)	RELOCATION_MATCH x4 (00aa0c50: 3 grades)	-
+queue	0x00686A70 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ	0	-	006585ee 00658604 006cb8f0 006ceae0 007236e0 00811450 006af620 006a23e0 (free-function / invented-namespace stub rows: own names wrong too) 0065c1fc (flattened CTCVillage has no CTCBase base) 006b0c10 007be0f9 007e2790 (local models, CWorld member models) 006d0180 00700940 00960760 (call GetWorld on another component: protected in the PDB, so retail used some other accessor)
+queue	0x00835A20 ?Create@CTCDNone@@SIPAVCThing@@JABVC3DVector@@_N@Z	3 (005b37f7 005cd767 005f05e5)	RELOCATION_MATCH x3	006c8780 (invented namespace X_006c8780 with a CTCDNone::Create stand-in body)
+queue	0x004C9F60 ?AddAndCopyTC@CThing@@QAEXABVCTCBase@@_N@Z	5 (0051f0e0 00663f50 0089f4a0 005b37f7 005cd767)	RELOCATION_MATCH x5	-
+queue	0x00707930 REJECTED -> ?UploadChangesToGraphics@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	4 (005b3d7a 005b3e4e 005b37f7 005cd767; hdr opt-in)	RELOCATION_MATCH x4	-
+queue	0x013BAD34 ?g_DoorOpenAnimName@@3VCCharString@@B (descriptive)	2 (0121ed00 012299e0)	RELOCATION_MATCH x2	- (door rows already bind it)
+queue	0x013BAD38 ?g_DoorCloseAnimName@@3VCCharString@@B (descriptive)	2 (0121ed20 012299f0)	RELOCATION_MATCH x2	-
+queue	0x013BAD3C ?g_ClockHandTurnName@@3VCCharString@@A (descriptive)	2 (0121ed40 01229a00)	RELOCATION_MATCH x2	- (00732850 already binds it)
+queue	0x006BD760 ?GetActiveSet@CState@CMusicManager@@QBEJXZ	1 (self, renamed; new test, PassPattern kept)	MATCH	- (006bd9b0 already OK)
+queue	0x00C400D0 ?LookupDirectionFilterPair@@YAXJMMPAPBUSDirectionFilter@@0@Z (descriptive)	2 (00c708a0 00c71270)	RELOCATION_MATCH x2	-
+queue	0x006E2A50 ?PlayRandomLipMovement@CTCTalk@@QAEXXZ (proven)	1 (self, renamed; test names respelt) + GetSpeechDurationInFrames 0x006E2940 respelt	RELOCATION_MATCH	-
+queue	0x006BD9B0 InternalUpdate	0	-	nothing to do: landed row, auto-re-candidates and manifest already name it InternalUpdate; every landed caller binds it
+queue	0x00C43B30 AttachConfiguredBackend	0	-	auto-re-candidates / manifest already CAudioObject::AttachConfiguredBackend; but the callers 00c418c0 00c448a0 spell its parameters with other descriptive types (NAME_FIXES)
+target	0x0042AF3C GetDef<CThingBaseDef> / 0x006869D0 CTCBase::GetDefinitionManager	4 (007498e0 00747480 007fbc90 007ef070; 006869D0 only)	RELOCATION_MATCH x4	48 of the 52 item-3 rows (work/item3_pre.txt minus the four)
+class	CTCMeleeTrap / CTCTrapBase / CTCProjectileTrap	3 (00787f29 00787c35 00787ca5)	RELOCATION_MATCH x3	-
+class	CThingSwitch	4 (0083c690 0083c800 0083ca90 0083cc10)	RELOCATION_MATCH x4	-
+class	C3DAnimationManager	4 (00a9f1d0 00a9f2f0 00aa0c50 00aa0dc0)	RELOCATION_MATCH x4	-
+class	CTCInventoryClothing / CTCInventoryStats / CTCInventoryAbilities	5 (005b37f7 005b3d7a 005b3e4e 005cd767 005f05e5)	RELOCATION_MATCH x5	-
+class	CMusicManager::CState	1 (006bd760)	MATCH	-
+class	CTCTalk	1 (006e2a50)	RELOCATION_MATCH	-
+class	CDefinitionManager (GetDef instantiations)	3 (0083e0d0 0079bd80 006d3e80)	RELOCATION_MATCH x3	-
+class	static CCharString objects	6 (0121ed00 0121ed20 0121ed40 012299e0 012299f0 01229a00)	RELOCATION_MATCH x6	-
+note	GXX PREFAIL (as landed, test unchanged unless noted)	005be028 007cce20 008af850 005b3d7a 00a9f1d0 012299e0 012299f0 01229a00 006e2a50 007498e0	VC7.1 tests PASS for all 57 rows	-

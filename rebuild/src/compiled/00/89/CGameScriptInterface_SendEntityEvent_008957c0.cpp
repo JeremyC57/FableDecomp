@@ -110,16 +110,16 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Dat
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 
 
+#define FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
 #include "engine/CTCEntityEvents.h"
-struct EventBase{void* VTable;long FrameCreated;};
-struct EventPickpocketing:EventBase{unsigned char ThiefAndWitness[16];EventPickpocketing(CThingNative*,CThingNative*);}; //008AB7B0 CEventHeroHasBeenSpottedPickpocketing
-struct EventPickingLock:EventBase{unsigned char ThiefAndWitness[16];EventPickingLock(CThingNative*,CThingNative*);}; //008AB840 CEventHeroHasBeenSpottedPickingLock
-struct EventStealing:EventBase{unsigned char ThiefAndWitness[16];EventStealing(CThingNative*,CThingNative*);}; //008AB8D0 CEventHeroHasBeenSpottedStealing
-struct EntityEventsMethods:CTCEntityEvents{void AddEvent(EventBase*);}; //008113C0
+namespace NEntityEvents{class CEventBase{public:void* VTable;long FrameCreated;};}
+struct EventPickpocketing:NEntityEvents::CEventBase{unsigned char ThiefAndWitness[16];EventPickpocketing(CThingNative*,CThingNative*);}; //008AB7B0 CEventHeroHasBeenSpottedPickpocketing
+struct EventPickingLock:NEntityEvents::CEventBase{unsigned char ThiefAndWitness[16];EventPickingLock(CThingNative*,CThingNative*);}; //008AB840 CEventHeroHasBeenSpottedPickingLock
+struct EventStealing:NEntityEvents::CEventBase{unsigned char ThiefAndWitness[16];EventStealing(CThingNative*,CThingNative*);}; //008AB8D0 CEventHeroHasBeenSpottedStealing
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SendEntityEvent(long,const ScriptMethods&,const ScriptMethods&,CThingNative*)const;};
 void CGameScriptInterfaceMethods::SendEntityEvent(long type,const ScriptMethods& recipient,const ScriptMethods& witness,CThingNative* thief)const{
 if(witness.IsAlive()&&recipient.IsAlive()){
- CThingNative* thing=recipient.GetPThing();if(thing->UsingComponents[2]&4){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)66);ComponentEntry* end=map->Finish;EntityEventsMethods* events=static_cast<EntityEventsMethods*>(((void*)(it==end||it->first>66?end:it)->second));
+ CThingNative* thing=recipient.GetPThing();if(thing->UsingComponents[2]&4){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)66);ComponentEntry* end=map->Finish;CTCEntityEvents* events=static_cast<CTCEntityEvents*>(((void*)(it==end||it->first>66?end:it)->second));
  switch(type){case 19:events->AddEvent(new EventPickpocketing(thief,witness.GetPThing()));break;case 20:events->AddEvent(new EventPickingLock(thief,witness.GetPThing()));break;case 21:events->AddEvent(new EventStealing(thief,witness.GetPThing()));break;}
 }}
 }

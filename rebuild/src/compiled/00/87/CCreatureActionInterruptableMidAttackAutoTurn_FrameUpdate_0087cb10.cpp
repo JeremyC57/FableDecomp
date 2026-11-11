@@ -12,16 +12,18 @@
 // Shape: the 0x68 component's def is a by-value CDefPointer temporary inside an `&&` (its destruction flag is the frame
 //   word zeroed on entry); the flourish flag is a bool initialised false at the top and set in the hit arm.
 #include "fable_compiler.h"
-struct CEventBase {
+namespace NEntityEvents {
+class CEventBase { public:
     virtual void v00();
     long Data;                                               // +4
     CEventBase() : Data(0) { }
 };
-struct CEventMissedStrike : CEventBase {                     // vtable 0x01277874, 8 bytes
+}
+struct CEventMissedStrike : NEntityEvents::CEventBase {                     // vtable 0x01277874, 8 bytes
     virtual void v00();
 };
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);                        // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);                        // 0x008113C0
 };
 class CTCStealth { public:
     bool IsAbleToFlourishDangerThings();                     // 0x007471A0

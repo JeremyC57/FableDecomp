@@ -43,7 +43,9 @@ public:
         return (T*)it->second;
     }
 };
-CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, bool flag);   // 0x00835A20
+class CTCDNone { public:                                    // RTTI .?AVCTCDNone@@ : CTCDriverBase
+    static CThing* __fastcall Create(long defIndex, const C3DVector& position, bool flag);   // 0x00835A20 (Ego_r.pdb / FableWin.pdb)
+};
 
 class CCharStringData;
 class CCharString { public:
@@ -138,7 +140,7 @@ void CTCInventoryAbilities::OpenInventory()
     for (CCharString* it = toGive.begin(); it != toGive.end(); ++it) {
         long defIndex = defs.GetDefGlobalIndexFromName(*it);
         if (defIndex && GetNumberOfItemsOfTypeInInventory(defIndex) == 0) {
-            CThing* item = CreateThing(defIndex, ParentThing->GetPos(), true);
+            CThing* item = CTCDNone::Create(defIndex, ParentThing->GetPos(), true);
             if (item) {
                 CTCInventoryItem* inventoryItem;
                 if (item->HasTC(0x1a))

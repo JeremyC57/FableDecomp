@@ -42,6 +42,7 @@ class CDefinitionManager { public:
 public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
+class CGameDefinitionManager : public CDefinitionManager { public: };   // RTTI CGameDefinitionManager : CDefinitionManager
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -85,9 +86,9 @@ class CTCBase { public:
 protected:
     CPlayerManager&     GetPlayerManager();             // 0x00686D40 (Ego_r.pdb: protected, CPlayerManager&)
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb / FableWin.pdb IBE)
 public:
     CWorld*             GetWorld_00686d60();                     // 0x00686D60
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
 class CTCKraken : public CTCBase { public:
     unsigned char       _pad08[0x10 - 0x08];
@@ -101,8 +102,8 @@ void CTCKraken::GetCentreMarker()
 {
     if (GetWorld_00686d60()->IsLoading())
         return;
-    CDefinitionManager* definitions = GetDefinitionManager();
-    long chamberIndex = definitions->GetDefGlobalIndexFromName("BUILDING_KRAKEN_CHAMBER");
+    const CGameDefinitionManager& definitions = GetDefinitionManager();
+    long chamberIndex = definitions.GetDefGlobalIndexFromName("BUILDING_KRAKEN_CHAMBER");
     {
         const C3DVector& pos = ParentThing->GetPos();
         long x = (long)pos.X;

@@ -173,15 +173,17 @@ class CTCStockItem { public:
     long          Price;                                // +0x10
     CTCShop* GetShopTC() const;                         // 0x007F4FC0
 };
-struct CEventBase { };
 namespace NEntityEvents {
-struct CEventSoldItem : CEventBase {                    // 0x1c bytes
+class CEventBase { public: };
+}
+namespace NEntityEvents {
+struct CEventSoldItem : NEntityEvents::CEventBase {                    // 0x1c bytes
     unsigned char _pad[0x1c];
     CEventSoldItem(CThing* giver, CThing* item, bool ownsItem);   // 0x0084AF30
 };
 }
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);                   // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);                   // 0x008113C0
 };
 class CMessageEventManager { public:
     CMessageEvent* AddMessage(EMessageEventType type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540

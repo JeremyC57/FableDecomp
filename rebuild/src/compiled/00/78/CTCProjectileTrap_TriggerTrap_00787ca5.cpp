@@ -88,13 +88,15 @@ class CTCTrapBase : public CTCBase { public:
     bool          Triggered;                           // +0x59
     bool          LastTriggerOnProximity;              // +0x5a
     long          TrapType;                            // +0x5c ETrapType
-    void SetTransitionParams(float a, float b);        // 0x00787C35
+protected:
+    void SetTransitionParams(float a, float b);        // 0x00787C35 (Ego_r.pdb IAEXMM)
 };
-struct CTCProjectileTrap : CTCTrapBase {
+class CTCProjectileTrap : public CTCTrapBase { public:
     long ShotTimer;                                    // +0x60
     long IdleTimer;                                    // +0x64
     long NumShotsThisRound;                            // +0x68
-    virtual void TriggerTrap();
+protected:
+    virtual void TriggerTrap();                        // Ego_r.pdb ?TriggerTrap@CTCProjectileTrap@@MAEXXZ
 };
 
 void CTCProjectileTrap::TriggerTrap()

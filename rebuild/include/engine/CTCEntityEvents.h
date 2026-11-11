@@ -28,9 +28,18 @@ protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
 };
 FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);
 #else
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
+namespace NEntityEvents{class CEventBase;}
+#endif
 #pragma pack(push, 1)
 class CTCEntityEvents {
 public:
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS_ADDEVENT
+    // Opt-in (agentNF13, 2026-11-11, rows 0x008957C0 / 0x00859D80 on the flattened layout): Ego_r.pdb / FableWin.pdb
+    // ?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@NEntityEvents@@@Z (retail 0x008113C0, out of line), as the retail branch above.
+    // Declaration only: no layout change.
+    void AddEvent(NEntityEvents::CEventBase* event);         // 0x008113C0
+#endif
 #ifdef FABLE_RETAIL_CTCENTITYEVENTS_GETEVENT_DECL
     // Opt-in (agentNF5 name-fix wave, rows 0x0096BAC0 / 0x0096BC20): Ego_r.pdb / FableWin.pdb
     // ??$GetEvent@..@CTCEntityEvents@@QBE_NPAPAV..@ABV..@@Z, the public const member template (the retail branch above declares the

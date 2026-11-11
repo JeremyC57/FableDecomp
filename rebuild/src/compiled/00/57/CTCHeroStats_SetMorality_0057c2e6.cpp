@@ -12,7 +12,7 @@
 //          morality limits), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0, CPlayerGui::AddMoralityChange(long)
 //          @ 0x00437930 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790), CThingCreatureBase::IsChild() @ 0x00661F70, operator new @ 0x00BFEA1A,
-//          CTCEntityEvents::AddEvent(CEventBase*) @ 0x008113C0, CTCHeroStats::CheckForNewExpressions() @ 0x0057BE71,
+//          CTCEntityEvents::AddEvent(NEntityEvents::CEventBase*) @ 0x008113C0, CTCHeroStats::CheckForNewExpressions() @ 0x0057BE71,
 //          CCharString @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos() @ 0x004C73D0,
 //          CTCSoundPlayer::PlayUnattachedCriteria @ 0x0066BDF0, CTCHeroStats::GetMoralityPercentage() @ 0x0057A690,
 //          CTCHeroMorph::SetMorality(float) @ 0x0071C000.
@@ -93,14 +93,16 @@ class CCharString { public:
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CEventBase {
+namespace NEntityEvents {
+class CEventBase { public:
     long WorldFrame;                                 // +0x04
     CEventBase() : WorldFrame(0) {}
     virtual ~CEventBase();
 };
+}
 
 namespace NEntityEvents {
-class CEventMoralityChanged : public CEventBase { public:          // vtable 0x0124F2DC
+class CEventMoralityChanged : public NEntityEvents::CEventBase { public:          // vtable 0x0124F2DC
     long ChangedBy;                                  // +0x08
     CEventMoralityChanged(long changedBy) : ChangedBy(changedBy) {}
     virtual ~CEventMoralityChanged();                // 0x0057F36F
@@ -112,7 +114,7 @@ class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 class CTCEntityEvents { public:
-    void AddEvent(CEventBase* event);                // 0x008113C0
+    void AddEvent(NEntityEvents::CEventBase* event);                // 0x008113C0
 };
 class CTCSoundPlayer { public:
     unsigned long PlayUnattachedCriteria(const CCharString& name, const C3DVector& pos, bool a, bool b);  // 0x0066BDF0
