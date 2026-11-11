@@ -1,0 +1,21 @@
+address	name	evidence
+00595CC1	?ConstructFileDescription@CFrontEndManager@NUISystem@@IAEXKPAVCComponent@2@0AAVCWideString@@@Z	Ego_r / FableWin name sets; sole caller 0x005988FE in RefreshAvailableSavedGamesForProfile passes (i, button, menu, save_names[i]); RELOCATION_MATCH
+00597DF7	?GetSavedGameNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	Ego_r / FableWin name sets, donor order GotoPreviousScreen -> GetSavedGameNames -> RefreshAvailableSavedGamesForProfile as in retail; callers 0x0059848B / 0x005989CF; RELOCATION_MATCH
+00626110	?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	Ego_r 0x0066A9F0 / FableWin 0x0211A640 (map overload first in both, as retail); caller 0x006272FD = landed ConstructItemCategoryList passing a std::map<long,long>; map tree walk in the body; RELOCATION_MATCH
+00626750	?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	Ego_r 0x0066B1E0 / FableWin 0x0211B330 (vector overload); caller 0x0062764C in 0x00627400 (expressions category); 8-byte element index walk; RELOCATION_MATCH
+004091C0	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	see NAME_FIXES.tsv
+00406690	?GetAutoSaveFileName@CUserProfileManager@@QBE?AVCWideString@@XZ	Ego_r / FableWin; reloc_bindings; hidden-result call 0x00598053
+004067B0	?GetMaxSaveSlots@CUserProfileManager@@QBEJXZ	Ego_r name set; body `mov eax,32h ; ret` sizes the save list (0x005980F1); catalog label ReturnConst_50_004067b0 is descriptive
+00407360	?GetSaveSlotFileName@CUserProfileManager@@QBEABVCWideString@@J@Z	Ego_r name set (returns const CWideString&, long); body `lea eax,[SaveSlots + n*4] ; ret 4`, no hidden slot at 0x00598247; catalog label NInventory::CTCInventoryBase::GetCategoryWithIndex is wrong
+00407030	?IsDebugProfile@CUserProfileManager@@QBE_NXZ	chunk 2003 evidence (`xor al,al ; ret`, FableWin order); here at 0x00597E68
+009992A0	?GetFileModifiedTime@CAFile@@SI?AVCDateAndTime@@ABVCWideString@@@Z	Ego_r / FableWin; reloc_bindings
+009E9AB0	??0CDateAndTime@@QAE@XZ	Ego_r; landed resize 0x0048623F; zeroes the 7 dwords
+009E9D40	?ToFileTime@CDateAndTime@@QBE?AU_FILETIME@@XZ	Ego_r; reloc_bindings (landed 0x0047EEE4)
+00A0D980	?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PAG1H@Z	see NAME_FIXES.tsv
+009CC410	?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z	see NAME_FIXES.tsv
+005CCC91	?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z	see NAME_FIXES.tsv
+0099B0F0	??9CWideString@@QBE_NABV0@@Z	Ego_r / FableWin; reloc_bindings (landed 0x00541E60)
+0099E960	??9CCharString@@QBE_NPBD@Z	Ego_r 0x00AFA270 / FableWin 0x02F61900; body negates the text compare (null: "" compare); reloc_bindings 0x0048DF77 (other binders: Compare / CCharStringCmp / check stand-ins)
+0059AE20	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@@Z	STLport 4.6 erase(iterator); called at 0x0059844C on the names vector
+0059AEAF	?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@@Z	landed row 0x0059AEAF; called at 0x00598459
+00429C53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	`jmp 0x004291DE` COMDAT (engine/CCountedPointer.h evidence); called at 0x00626504 / 0x00626AF5

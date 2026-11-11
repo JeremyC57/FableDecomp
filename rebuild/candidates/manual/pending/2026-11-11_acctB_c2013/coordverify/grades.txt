@@ -1,0 +1,4 @@
+00595cc1 CFrontEndManager::ConstructFileDescription RELOCATION_MATCH flags= ['/GS']
+00597df7 CFrontEndManager::GetSavedGameNames RELOCATION_MATCH flags= []
+00626110 CTCQuickAccessMenu::ContructItemLists RELOCATION_MATCH flags= ['/d2inlT59']
+00626750 CTCQuickAccessMenu::ContructItemLists RELOCATION_MATCH flags= ['/d2inlT59']
