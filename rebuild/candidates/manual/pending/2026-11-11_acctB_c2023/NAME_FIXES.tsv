@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0094bef0	?StayInShop@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	see LABELS.tsv (Ego_r donor order + body compiled from the SellToBuyer TU grades RELOCATION_MATCH against 0x0094BEF0)	catalog / landed row rebuild/src/compiled/00/94/CAIStateGroupWorkBase_IsInWorkHours_0094bef0.cpp `?IsInWorkHours@CAIStateGroup_WorkBase@@QAE_NXZ` (also a non-template class); reloc_bindings `?IsInWorkHours@CAIStateGroup_MinionHawkingFromStall@@QAE_NXZ` -> 0x0094BEF0 (the HawkingFromStall Update 0x0094BB20 calls StayInShop, not IsInWorkHours)
+00798d10	?GetMinDistFromStall@CTCShopKeeper@@QAEJXZ	see LABELS.tsv	catalog `_global::ReturnZero_ret0_00798d10`
+00798d20	?GetMaxDistFromCustomer@CTCShopKeeper@@QAEJXZ	see LABELS.tsv	catalog `_global::ReturnConst_10_00798d20`
+00798d90	?AddNewCustomer@CTCShopKeeper@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	Ego_r + FableWin spelling	reloc_bindings `?AddNewCustomer@CTCShopKeeper@@QAEXUCIntelligentPointerCreature@@@Z` (invented struct type)
+008644e0	?IsSpeaking@NCreatureAI@@YI_NABVCThingCreatureBase@@@Z	Ego_r + FableWin spelling	reloc_bindings `?IsSpeaking@@YI_NPAVCThing@@@Z` (global, pointer to CThing)

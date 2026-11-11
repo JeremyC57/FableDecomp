@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+0094c050	RELOCATION_MATCH	1859v1859	PASS	pass1: 7 (+1 re-grade after comment edits)	true length 1859 confirmed (the 23 extra reserved bytes are 13 int3 + a separate 10-byte setter at 0x0094C7A0); ~45 probe compiles (fragments, layout, 9 c2 inline traces, 3 c2prio traces) on top
+00915b60	NOT_ATTEMPTED	-v1931	-	0	stopped for context after row 0x0094C050; name and extent proven (Ego_r donor order; ret 20h at 0x009162E8); decoded outline and models to build in NOTES.md
