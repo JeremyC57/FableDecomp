@@ -50,7 +50,6 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
         SkipPastNextItemIfIs(item);
     }
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ""
 extern const char g_createTC[];                   // 0x01239BFC "CreateTC"
 extern const char g_quote[];                      // 0x0122DF24 "\""
 extern const char g_semicolon[];                  // 0x0123542C ";"
@@ -64,7 +63,7 @@ public:
 
 void CThing::CreateTCsFromString(const CCharString& text)
 {
-    CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+    CStringParser parser(text, 0, CCharString("", -1), 0);
     while (parser.NextItemIsText(g_createTC)) {
         parser.SkipPastText(g_quote);
         CCharString name = parser.ReadAsString();

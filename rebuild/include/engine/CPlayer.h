@@ -9,6 +9,12 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_PLAYER_MODES_LIST
+// Opt-in (agentNF22, row 0x00633BE0 CPlayer::GetCurrentMode): PlayerModes (+0x210) as its Ego_r.pdb type, the retail STLport
+// list<EPlayerMode> (4 bytes, the head node pointer); needs FABLE_RETAIL_STLP_LIST for list::back().
+#include "engine/EPlayerMode.h"
+#include "stlport/fable_containers.h"
+#endif
 
 class CCPPointerInfo;
 class CDefPointeeBase;
@@ -495,7 +501,11 @@ public:
     bool                                                         RightTriggerTargetLocked; // +0x20c
     unsigned char                                                _pad_0x20d[0x1]; // +0x20d
     unsigned char                                                _pad_0x20e[0x2]; // +0x20e
+#ifdef FABLE_RETAIL_PLAYER_MODES_LIST
+    std::list<EPlayerMode>                                       PlayerModes; // +0x210
+#else
     unsigned char                                                PlayerModes[0x4]; // +0x210 list<EPlayerMode,std::allocator<EPlayerMode>_>
+#endif
     bool                                                         SuppressFullModeRemoval; // +0x214
     bool                                                         DisallowModeChanges; // +0x215
     bool                                                         InitialPlayerModeSet; // +0x216

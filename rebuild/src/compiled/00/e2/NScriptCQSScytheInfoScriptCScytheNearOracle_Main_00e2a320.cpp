@@ -106,7 +106,6 @@ FABLE_FORCEINLINE CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 struct CCutsceneCastMap {
     unsigned char _rep[12];
     CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
@@ -194,7 +193,7 @@ void NScript::CQS_ScytheInfoScript::CScytheNearOracle::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                 face.Speak(Game->GetHero(), "TEXT_QST_B03_SCYTHE_ON_HIT_RETURNED", (ETextGroupSelectionMethod)2, false, true, false);
                 while (face.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();

@@ -11,18 +11,18 @@
 // change is an inline SetStage (`cmp [esi+14h],1 ; je` then the two stores).
 #include "engine/CTCBase.h"
 
-struct CPlayer;
+class CPlayer;
 
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                         // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    CPlayer* GetPlayer();                 // 0x004C7A30
+    CPlayer& GetPlayer();   // 0x004C7A30 ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ
 };
 class CThingPlayerCreature : public CThing { };
 
 #include "engine/EPlayerMode.h"
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
     void AddMode(EPlayerMode mode, bool flag);     // 0x006345C0 Ego_r/FableWin ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z
 };
@@ -51,7 +51,7 @@ void CTCFishing::GoFishing(bool arg)
 {
     CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->IsDead() && CreateFish(arg)) {
-        hero->GetPlayer()->AddMode(PLAYER_MODE_FISHING, false);
+        hero->GetPlayer().AddMode(PLAYER_MODE_FISHING, false);
         SetStage(1);
     }
 }

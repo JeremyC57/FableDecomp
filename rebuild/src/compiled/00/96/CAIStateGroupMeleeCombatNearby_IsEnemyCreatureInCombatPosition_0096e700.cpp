@@ -12,7 +12,7 @@
 //   CBaseIntelligentPointer::GetPItem() const 0x00A01B50.
 // Constants: four const float globals in .rdata (separate operands: VC would fold literal 0.3f + 1e-4f into one):
 //   ReachScale 0.8333333 (0x012925CC), PreferredPosMargin 0.3 (0x01238170), DELTA_NOTIONAL_ZERO 1e-4 (0x0129BA3C),
-//   EnemyMargin 1.0 (0x0122DED8); reach = (r + r) * ReachScale + margin + DELTA_NOTIONAL_ZERO. Names are descriptive.
+//   1.0f 1.0 (0x0122DED8); reach = (r + r) * ReachScale + margin + DELTA_NOTIONAL_ZERO. Names are descriptive.
 // Layout: engine/CAIStateGroupBase.h (PBrain +0x04), CAIBrain.h (Creature +0x18), CWorld.h (PThingCombatManager_ptr
 //   +0x4c); the group's enemy pointer at +0x14 (PDB: unnamed base bytes) and the physics radius at +0x34 are retail
 //   offsets. The *_Methods structs are the lane's method carriers for generated data-only headers.
@@ -32,7 +32,6 @@ protected:
 extern const float ReachScale;                          // 0x012925CC = 0.8333333
 extern const float PreferredPosMargin;                  // 0x01238170 = 0.3
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C = 1e-4
-extern const float EnemyMargin;                         // 0x0122DED8 = 1.0
 class CBaseObject;
 struct CThingPhysics { char _prefix[0x34]; float Radius; };                  // +0x34
 class CThing { public:
@@ -72,7 +71,8 @@ bool CAIStateGroup_MeleeCombatNearby_Methods::IsEnemyCreatureInCombatPosition() 
         C3DVector delta; delta.X = target.X - current.X; delta.Y = target.Y - current.Y; delta.Z = 0;
         CThingCreatureBase* owner = Creature(); CCombatManager* manager = GetPWorld()->PThingCombatManager_ptr;
         if (!manager->IsPositionOccupied(owner)) {
-            float limit = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + EnemyMargin + DELTA_NOTIONAL_ZERO;
+            float limit = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + 1.0f;
+            limit += DELTA_NOTIONAL_ZERO;   // its own statement: in one expression VC7.1 moves the 1.0f literal add after this one
             if (delta.X * delta.X + delta.Y * delta.Y < limit * limit) return true;
         }
     }

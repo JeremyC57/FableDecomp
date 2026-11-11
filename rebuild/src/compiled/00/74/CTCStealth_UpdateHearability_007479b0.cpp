@@ -8,7 +8,7 @@
 //          "CTCHearabilityManager::GetSoundRadiusWithModifiers"); CCharString(const char*, long) 0x0099EBF0 ("SIMPLE_NOISE"
 //          0x01268A5C) / ~CCharString 0x0099EAE0; CTCBase::GetDefinitions 0x006869D0; CDefinitionManager::
 //          GetDefGlobalIndexFromName 0x009AD410; CThingNoise::Create(long, const C3DVector&, float) 0x008385B0 (__fastcall);
-//          CThingNoise::PassToNoiseComponent(CThing*) 0x008386E0. Global: g_epsilon 1e-4f 0x0129BA3C.
+//          CThingNoise::SetCreator(const CThing&) 0x008386E0. Global: DELTA_NOTIONAL_ZERO 1e-4f 0x0129BA3C.
 // Layout: Ego_r.pdb CTCStealth (retail = PDB here): ParentThing +0x04, Sneaking +0x0f, DistanceCanBeHeardFrom +0x14, PDef +0x1c;
 //          CStealthDef (descriptive): base hearing distance +0x28, running / walking / creeping multipliers +0x2c/+0x30/+0x34;
 //          retail CThing PhysicsTC +0x60 (Position +0x0c, OldPosition +0x18), dead flag +0x91 bit 0.
@@ -52,7 +52,7 @@ public:
 };
 class CThingNoise : public CThing { public:
     static CThingNoise* __fastcall Create(long defIndex, const C3DVector& pos, float radius);   // 0x008385B0
-    void PassToNoiseComponent(CThing* thing);   // 0x008386E0
+    void SetCreator(const CThing& creator);     // 0x008386E0 ?SetCreator@CThingNoise@@QAEXABVCThing@@@Z
 };
 class CStealthDef { public:
     unsigned char _pad00[0x28];
@@ -117,6 +117,6 @@ void CTCStealth::UpdateHearability()
         }
         CThingNoise* noise = CThingNoise::Create(defIndex, ParentThing->GetPos(), DistanceCanBeHeardFrom);
         if (noise && !(noise->m_flags91 & 1))
-            noise->PassToNoiseComponent(ParentThing);
+            noise->SetCreator(*ParentThing);
     }
 }

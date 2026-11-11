@@ -11,6 +11,9 @@
 #include "engine/CMatrix3x4.h"
 #include "engine/C2DVector.h"
 #endif
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
+#include "engine/CMatrix3x4.h"
+#endif
 class CIEngine;
 namespace NParticleEngine {
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM
@@ -69,6 +72,13 @@ public:CParticleSystem();virtual ~CParticleSystem();
  void TransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
  void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
  void InverseTransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformPoint(v);}}
+#endif
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
+ // Opt-in (agentNF22, row 0x00AF3D80): Ego_r.pdb + FableWin.pdb ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ
+ // (private const), out of line at 0x00AF3D80: `mov eax,[ecx+4] ; add eax,0B0h ; ret` -- the parent emitter's Transform (+0xb0).
+ // Callers: GetSystemTransform 0x00AF2250, GetUnscaledWorldTransform 0x00B05840, GetInverseSystemTransformWithTranslate 0x00B201D0.
+private:
+ const CMatrix3x4& PeekEmitterTransform() const;
 #endif
 protected:
  const CParticleEmitter* PParentEmitter;CIEngine* PEngine;

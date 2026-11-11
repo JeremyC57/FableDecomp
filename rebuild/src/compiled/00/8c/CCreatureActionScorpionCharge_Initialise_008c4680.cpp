@@ -54,6 +54,7 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { publ
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
 class CTCPhysicsBase;class CTCHitOnCollision;struct CDefLookup;
 class CTCBase;
+class CTCParamsBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -71,7 +72,7 @@ class CThing:public CBaseObject { public:
     CDefLookup* PBaseDef;
     unsigned char LaterState[0x1d];
     unsigned char DeadFlags;
-    CTCHitOnCollision* AddTC(const CCharString&,bool,void*); //004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
     void Kill(bool); //004C9B80
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
@@ -334,7 +335,7 @@ void CCreatureAction_ScorpionCharge::Initialise(){
  }
  if(!(PCreature->UsingComponents[6]&0x100)){
   CTCHitOnCollision* collision;
-  {CCharString type("CTCHitOnCollision",-1);collision=PCreature->AddTC(type,true,0);}
+  {CCharString type("CTCHitOnCollision",-1);collision= (CTCHitOnCollision*)PCreature->AddTC(type,true,0);}
   if(collision){
    DefPointer<CScorpionKingBattleDef> battle;CThingCreatureBase* actor=PCreature;actor->PBaseDef->GetScorpionBattle(&battle);
    collision->PushSideways=true;collision->Damage=battle->ChargeDamage;

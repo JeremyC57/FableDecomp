@@ -79,7 +79,7 @@ extern FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 extern void* g_FableRenderState_013B8380;
 extern fable_u8 g_FableRenderStateStorage_013BC470;
 class CInputManager;
-extern CInputManager* PInputManager;
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 class CFontManager;
 extern CFontManager* PFontManager;
 class CGraphicBankManager;
@@ -108,7 +108,7 @@ bool FABLE_FASTCALL GFInitialise()
         GPDisplayManager->displayPrimitive08;
     g_FableRenderState_013B8380 = &g_FableRenderStateStorage_013BC470;
 
-    PInputManager = (CInputManager*)(AddChildPrimitive()->renderDevice58);
+    GPInputManager = (CInputManager*)(AddChildPrimitive()->renderDevice58);
     PFontManager = (CFontManager*)(AddChildPrimitive()->resourceManager84);
     PGraphicBankManager = (CGraphicBankManager*)(AddChildPrimitive()->textureManager6C);
 

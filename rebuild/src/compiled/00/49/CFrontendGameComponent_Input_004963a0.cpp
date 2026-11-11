@@ -5,7 +5,7 @@
 //   is live in the TU's inline ChangeSelection callers).
 // Identity (two sources): Ego_r.pdb / FableWin.pdb ?Input@CFrontendGameComponent@@AAEXXZ (private, void()), and the landed
 //   CFrontendGameComponent::Run 0x00496CF0 calls 0x004963A0 then Output 0x00494900 once per updated frame.
-// Callees (Ego_r.pdb / FableWin.pdb spellings): PInputManager 0x013B8388 (?PInputManager@@3PAVCInputManager@@A) Update (slot 2),
+// Callees (Ego_r.pdb / FableWin.pdb spellings): GPInputManager 0x013B8388 (?GPInputManager@@3PAVCInputManager@@A) Update (slot 2),
 //   EventScanStart 0x009F4ED0 / EventScanNext 0x009F4F10 / EventScanEnd 0x009F4AC0; CInputEvent() 0x00A04410 / ~CInputEvent
 //   0x00A03B30 / GetType 0x00A03B40 / GetDeviceNumber 0x00A03B60 / GetKey 0x00A03B70 / GetJoystickButton 0x00A03B90 /
 //   GetJoystickPosition 0x00A043A0; the CFrontendGameComponent privates ChangeSelection 0x00494380, GetMaxVisibleProfileNumber
@@ -41,7 +41,7 @@
 
 namespace NGameComponentHelpers { enum ECursorMovement { }; }
 enum EGameMode { };
-extern CInputManager* PInputManager;                                     // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 extern long g_KeyToNumber[];                                             // 0x013B87B0
 // GFWrapLimit<long,int,int> 0x00496EB0: the header template, instantiated out of line in this TU (its body follows Run).
 template <class T, class TMin, class TMax> __declspec(noinline) void __fastcall GFWrapLimit(T& value, const TMin& minimum, const TMax& maximum)
@@ -161,9 +161,9 @@ void CFrontendGameComponent::Input()
     CInputEventScanInfo scanInfo;
     CInputEvent event;
     CInputEvent unusedEvent;
-    PInputManager->Update();
+    GPInputManager->Update();
     bool handled = false;
-    if (PInputManager->EventScanStart(scanInfo, event) == true) do {
+    if (GPInputManager->EventScanStart(scanInfo, event) == true) do {
         if (handled == true) break;
         switch (Mode) {
         case 1:
@@ -410,6 +410,6 @@ void CFrontendGameComponent::Input()
             }
             break;
         }
-    } while (PInputManager->EventScanNext(scanInfo, event) == true);
-    PInputManager->EventScanEnd(scanInfo);
+    } while (GPInputManager->EventScanNext(scanInfo, event) == true);
+    GPInputManager->EventScanEnd(scanInfo);
 }

@@ -69,7 +69,6 @@ private: public:                // retail 0x28 bytes
         return SkipPastNextItemIfIs(item);
     }
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ""
 extern const char g_startNewEntityScript[];       // 0x012C1674 "START_NEW_ENTITY_SCRIPT"
 extern const char g_endNewEntityScript[];         // 0x012C165C "END_NEW_ENTITY_SCRIPT"
 
@@ -127,7 +126,7 @@ void NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript(const CChar
 {
     PersistScripts.Data.erase(PersistScripts.Data._M_start, PersistScripts.Data._M_finish);
     PersistScripts.Clear();
-    CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+    CStringParser parser(text, 0, CCharString("", -1), 0);
     {
         CCharString start(g_startNewEntityScript, -1);
         parser.ReadAsStringUntilString(start);

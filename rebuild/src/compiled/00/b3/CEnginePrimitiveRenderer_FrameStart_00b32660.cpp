@@ -44,7 +44,7 @@ class C2DExtentsI { public: long Width; long Height; };
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;         // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 struct CCamera_01436ea0 { unsigned char _pad[0xd4]; float Zoom; };
 extern CCamera_01436ea0* g_pCamera_01436ea0;       // 0x01436EA0
 
@@ -144,7 +144,7 @@ void CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params)
         LODErrorTolerance = g_pTextureManager_01436ea4->GetPoolTextureSize(g_pTexturePoolOwner_01436eb0->PoolID)->LODErrorTolerance;
         CharacterLODErrorTolerance = g_pTextureManager_01436ea4->GetPoolTextureSize(g_pTexturePoolOwner_01436eb0->PoolID)->CharacterLODErrorTolerance;
     }
-    C2DExtentsI dims = g_pDisplayManager_01436e1c->GetRenderTargetDimensions();
+    C2DExtentsI dims = NEngineInternal::GPDisplayManager->GetRenderTargetDimensions();
     float width = (float)dims.Width;
     float screen = width < LODVirtualScreenSize ? width : LODVirtualScreenSize;
     MipmapSizeMultiplier = g_pCamera_01436ea0->Zoom * MipmapQuality * (unsigned long)screen;

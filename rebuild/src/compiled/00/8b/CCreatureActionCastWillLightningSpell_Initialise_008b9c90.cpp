@@ -15,6 +15,7 @@
 #include "fable_string.h"
 
 class CThing;
+class CTCBase;
 class CTCParamsBase;
 class CTCWillLightning;
 struct CBaseObjectPointer { CThing* Object; unsigned long refs; };
@@ -43,7 +44,7 @@ class CThing : public CClass { public:
     unsigned char _nativeTailBeforeLifeFlags[0x80];
     unsigned char LifeFlags;                          // +0x91 retail; named native view of CThing life state
     void RemoveTC(ETCInterfaceType type); // 0x004C9840 marks matching component removed and queues removal
-    CTCWillLightning* AddTC(const CCharString&, bool, CTCParamsBase*); // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
 };
 FABLE_STATIC_ASSERT(offsetof(CThing, Type) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CThing, LifeFlags) == 0x91);
@@ -87,7 +88,7 @@ void CCreatureAction_CastWillLightningSpell::Initialise()
     CTCWillLightning* force;
     {
         CCharString name("CTCWillLightning", -1);
-        force = PCreature.GetPItem()->AddTC(name, true, 0);
+        force = (CTCWillLightning*)PCreature.GetPItem()->AddTC(name, true, 0);
     }
 
     CThing* creature = PCreature.GetPItem();

@@ -1,0 +1,11 @@
+# NF22 lessons (one line each)
+- A bool return of a compare on eax: `return x == K ? true : false;` gives byte-wide `sete al`; `return x == K;` gives `xor ecx,ecx ; sete cl ; mov al,cl` (0x004874D0).
+- Replacing a named float alias with a literal can re-associate a chain of adds: `a + 1.0f + D` compiled as `a + D + 1.0f` (HARD RELOC_IDENTITY, 0x0096E700); putting `limit += D;` in its own statement keeps retail order. Always grep HARD in the grade log, not just the grade.
+- Apply FABLE_HDR_OVERLAY only to rows that define an opt-in macro: the overlay copies otherwise shadow repo headers the coordinator may have changed since.
+- Python `re.sub` keeps `\&` in the replacement as a literal backslash-ampersand (C2017); do not escape `&` in replacement strings.
+- A member template body landed at one address is emitted out of line by an explicit instantiation (`template bool CThing::GetTCDriver<CTCDExplosion>(CTCDExplosion**);`) or an explicit specialization; that gives the retail `??$Name@...` leaf without a stand-in free function.
+- When a PDB-proven accessor reads protected data of another class and no PDB accessor exists, a `friend` opt-in in the shared header keeps the body over the shared model (CParticleEmitter -> CParticleSystem, CCharStringData -> CCharString).
+- A shared header that is not standalone (engine/CTCFlammable.h needs ETCInterfaceType.h) and one that pulls CTCBase.h/CVectorMap.h cannot go into rows that model those classes locally (C2011); leave those binders and record the gap.
+- `struct` vs `class` changes the mangled class key (U vs V): a local model of a PDB class must use the PDB's key (0x007B1EB0 bound AAUCPlayer).
+- Nested enums mangle as `W4EEnum@1@`; a global enum of the same name binds a different symbol (0x0071AAB0 EEmotePriority).
+- The literal-for-alias swap (0.0f) can turn a memory `fld` into `fldz` and change the schedule: grade first, keep the alias on DIFFER, and record it.

@@ -23,7 +23,6 @@
 // (g_Upper == 1.0f trigger, g_Lower == 0.0f floor).
 
 extern const float CPlayerGui_UpdateTimer_00437500_Upper;
-extern const float CPlayerGui_UpdateTimer_00437500_Lower;
 
 void __stdcall CPlayerGui_UpdateTimer_00437500(
     const float* pRate,
@@ -44,7 +43,7 @@ void __stdcall CPlayerGui_UpdateTimer_00437500(
     if (*pTimer <= CPlayerGui_UpdateTimer_00437500_Upper) {
         *pMode = 1;
         *pTimer = 0.0f;
-    } else if (*pTimer >= CPlayerGui_UpdateTimer_00437500_Lower) {
+    } else if (*pTimer >= 1.0f) {
         *pMode = 0;
         *pTimer = 1.0f;
     }

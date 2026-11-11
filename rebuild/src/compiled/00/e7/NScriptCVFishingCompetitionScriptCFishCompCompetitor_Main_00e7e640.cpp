@@ -141,7 +141,6 @@ public:
 };
 }
 using NScript::CV_FishingCompetitionScript;
-extern const float g_fZero;                             // 0x0122DEDC (0.0f)
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -222,7 +221,7 @@ void NScript::CV_FishingCompetitionScript::CFishCompCompetitor::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            bool alive = Game->GetHealth(competitor.GetScriptThing()) > g_fZero;
+            bool alive = Game->GetHealth(competitor.GetScriptThing()) > 0.0f;
             if (alive) {
                 competitor.Speak(Game->GetHero(), line, (ETextGroupSelectionMethod)2, false, true, false);
                 while (competitor.IsPerformingScriptTask()) {

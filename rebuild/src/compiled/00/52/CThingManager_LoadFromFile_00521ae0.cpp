@@ -101,7 +101,6 @@ class CStringParser : public CBaseClass { public:                        // reta
     bool SkipPastNextItemIfIs(const CCharString& item);    // 0x009B9E00
     float ReadAsFloat();                                   // 0x009BA650
 };
-extern const char g_emptyString_0122d70e[];               // 0x0122D70E ""
 class CThingManager { public:
     unsigned char _pad00[0x80];
     long          LoadKind;                                // +0x80
@@ -132,7 +131,7 @@ void CThingManager::LoadFromFile(CCountedPointer<CAFile> file, long version, CCh
     NProgressDisplay::DisplayProgress("Thing Manager: Load From File", -1.0f, false, false);
     CCharString text;
     text.LoadFromFile(file.Object, process, -1);
-    CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+    CStringParser parser(text, 0, CCharString("", -1), 0);
     NProgressDisplay::DisplayProgress("Thing Manager: Load From File End", -1.0f, false, false);
     long fileVersion = 0;
     if (parser.SkipPastNextItemIfIs("Version")) {

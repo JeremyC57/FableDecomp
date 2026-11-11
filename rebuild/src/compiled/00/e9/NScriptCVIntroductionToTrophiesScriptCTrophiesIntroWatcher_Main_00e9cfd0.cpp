@@ -61,7 +61,6 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool FABLE_FASTCALL IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-extern const float g_fZero;                                  // 0x0122DEDC (0.0f)
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;
@@ -153,7 +152,7 @@ void NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroWatcher::Main()
             CScriptGameResourceObjectMovieBase movie;
             Game->StartMovieSequence("", movie);
             CWideScreenMagicPauseEntities pause(*Game);
-            if (Game->GetHealth(watcher.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(watcher.GetScriptThing()) > 0.0f) {
                 watcher.Speak(Game->GetHero(), "TEXT_QST_038_CROWD", GROUP_SELECT_RANDOM, false, true, false);
                 while (watcher.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();

@@ -68,7 +68,6 @@ struct CQ_HeroSoulsGuildScript {
     unsigned char _pad[0x4a];
     bool AcolyteReady;                                  // +0x4a
 };
-extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -128,7 +127,7 @@ void NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                 face.Speak(Game->GetHero(), "TEXT_QST_B04_GUILD_ACOLYTE", (ETextGroupSelectionMethod)2, false, true, false);
                 while (face.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
@@ -151,7 +150,7 @@ void NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                 face.Speak(Game->GetHero(), "TEXT_QST_B04_GUILD_ACOLYTE_HIT", (ETextGroupSelectionMethod)2, false, true, false);
                 while (face.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();

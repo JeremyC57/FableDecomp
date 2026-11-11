@@ -138,7 +138,6 @@ public:
 };
 }
 using NScript::CQ_FireHeartScript;
-extern const float g_fZero;                             // 0x0122DEDC (0.0f)
 extern const float g_fSixteen;                          // 0x01238164 (16.0f)
 class CEntityScriptBase { public:
     virtual void e00();
@@ -215,7 +214,7 @@ void NScript::CQ_FireHeartScript::CFH_Villager::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            bool alive = Game->GetHealth(villager.GetScriptThing()) > g_fZero;
+            bool alive = Game->GetHealth(villager.GetScriptThing()) > 0.0f;
             if (alive) {
                 villager.Speak(Game->GetHero(), "TEXT_QST_B01_VILLAGER" + GFIntToCharString(MyID) + "_ON_TALK", (ETextGroupSelectionMethod)2, false, true, false);
                 while (villager.IsPerformingScriptTask()) {

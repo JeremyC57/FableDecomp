@@ -15,12 +15,12 @@ class CInputManager {
 public:
     bool IsJoystickDeviceNumberActive(long device) const;   // 0x009F5250
 };
-extern CInputManager* PInputManager;                  // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 class CMainGameComponent {
 public:
     bool IsControllerDisconnected() const;
 };
 bool CMainGameComponent::IsControllerDisconnected() const
 {
-    return PInputManager->IsJoystickDeviceNumberActive(CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber()) ? false : true;
+    return GPInputManager->IsJoystickDeviceNumberActive(CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber()) ? false : true;
 }

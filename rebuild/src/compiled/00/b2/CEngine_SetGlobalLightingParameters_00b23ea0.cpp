@@ -7,7 +7,7 @@
 //   ?SetGlobalLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z (the virtual CIEngine method, `this` never read).
 // Callee: CEngineLightingManager::SetGlobalLightingParameters @ 0x00B47280, Ego_r + FableWin ?SetGlobalLightingParameters@CEngineLightingManager@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z;
 //   its `ret 10h` pops the same 4 stack arguments, so VC7.1 passes them through untouched and tail-jumps.
-// Global: the engine component pointer 0x01436E9C (CEngineLightingManager*) under its landed spelling g_pEngineLightingManager; it has no PDB data symbol
+// Global: the engine component pointer 0x01436E9C (CEngineLightingManager*) under its landed spelling NEngineInternal::GPLightingManager; it has no PDB data symbol
 //   (CEngine::AddEngineComponent<T>(T*, T*&, unsigned char) publishes each component into its own global).
 // Shape: a virtual member of a local CEngine model: the shared engine/CEngine.h carries the vptr as a data member, so it cannot
 //   declare the CIEngine virtual (same model as the landed siblings 0x00B239C0 / 0x00B23CB0 / 0x00B25D20).
@@ -17,7 +17,7 @@ class CRGBFloatColour;
 class CEngineLightingManager { public:
     void SetGlobalLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight);   // 0x00B47280
 };
-extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 class CEngine { public:                      // vtable 0x012A0F3C, slot 66
     virtual void SetGlobalLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight);
@@ -25,5 +25,5 @@ class CEngine { public:                      // vtable 0x012A0F3C, slot 66
 
 void CEngine::SetGlobalLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight)
 {
-    g_pEngineLightingManager->SetGlobalLightingParameters(lightDirection, diffuse, ambient, backlight);
+    NEngineInternal::GPLightingManager->SetGlobalLightingParameters(lightDirection, diffuse, ambient, backlight);
 }

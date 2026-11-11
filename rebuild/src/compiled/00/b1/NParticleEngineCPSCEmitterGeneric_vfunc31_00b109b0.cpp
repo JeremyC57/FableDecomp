@@ -9,7 +9,6 @@
 // implementation: sum squared deltas for consecutive points, then sqrt once.
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-extern const float Zero_0122dedc; // retail zero constant at 0x0122DEDC
 
 #include "engine/C3DVector.h"
 struct CPointVector {
@@ -39,7 +38,7 @@ class CPSCEmitterGeneric { public:
 };
 float CPSCEmitterGeneric::GetApproximateSplineLength()
 {
-    float total = Zero_0122dedc;
+    float total = 0.0f;
     if (EmitterType == 3 && Spline.Data != 0) {
         int count = size();
         for (int i = 0; i < count - 1; ++i) {

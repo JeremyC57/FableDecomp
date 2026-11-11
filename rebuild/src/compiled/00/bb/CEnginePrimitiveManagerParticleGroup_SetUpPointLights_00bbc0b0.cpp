@@ -33,7 +33,7 @@ public:
                                                   const CEnginePrimitiveThemeChannelDesc& channels);   // 0x00B46B90
     void SetupShaderPointLights(CEngineLocalLightArray* lights);   // 0x00B44F20
 };
-extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 #pragma pack(push, 1)
 class CEnginePrimitiveManagerParticleGroup {
@@ -62,10 +62,10 @@ long CEnginePrimitiveManagerParticleGroup::SetUpPointLights()
     if (!PointLightsSet) {
         CEnginePrimitiveThemeChannelDesc channels;
         channels = CEnginePrimitiveThemeChannelDesc();
-        CEngineLocalLightArray* lights = g_pEngineLightingManager->GetLightsInSphereFast(
+        CEngineLocalLightArray* lights = NEngineInternal::GPLightingManager->GetLightsInSphereFast(
             C3DBoundingSphere(CurrentWorldPos, CurrentBSRadius), 5, channels);
         PointLightCount = lights->Count;
-        g_pEngineLightingManager->SetupShaderPointLights(lights);
+        NEngineInternal::GPLightingManager->SetupShaderPointLights(lights);
         PointLightsSet = true;
     }
     return PointLightCount;

@@ -1,9 +1,10 @@
+#define FABLE_RETAIL_CWIDESTRING_NOSTRINGS
 #include "fable_string.h"
 
 CWideString::CWideString(const CWideString& other)
     : storage_(0)
 {
-    ++g_CWideStringInstanceCount_013BCA20;
+    ++NoStrings;                                   // 0x013BCA20 ?NoStrings@CWideString@@1JA
 
     if (&other != this && other.storage_ != storage_)
     {

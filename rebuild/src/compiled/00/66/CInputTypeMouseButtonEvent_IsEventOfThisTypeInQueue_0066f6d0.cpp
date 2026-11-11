@@ -19,7 +19,7 @@ class CInputManager {
 public:
     bool IsMouseEventInQueue(EInputEventType type, CInputEvent& event) const;
 };
-extern CInputManager* PInputManager;
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 
 class CInputTypeMouseButtonEvent {
 public:
@@ -38,7 +38,7 @@ private:
 bool CInputTypeMouseButtonEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
 {
     CInputEvent event;
-    if (PInputManager->IsMouseEventInQueue(GetEventTypeFromGeneralButtonType(type), event)) {
+    if (GPInputManager->IsMouseEventInQueue(GetEventTypeFromGeneralButtonType(type), event)) {
         value = 1.0f;
         return true;
     }

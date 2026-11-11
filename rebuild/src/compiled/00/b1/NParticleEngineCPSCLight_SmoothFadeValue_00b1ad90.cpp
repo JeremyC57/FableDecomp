@@ -8,9 +8,9 @@
 //   NParticleEngine::GFSmoothFadeValue 0x00AF9000 and CPSCSingleSprite::SmoothFadeValue 0x00B05E10 (per-TU copies; the body never reads `this`).
 // Identity: FableWin.pdb ?SmoothFadeValue@CPSCLight@NParticleEngine@@QBEMM@Z (public const); callers 0x00B1A098 / 0x00B1A0D0 in the
 //   CPSCLight TU (0x00B18xxx..0x00B1Axxx).
-// Globals: cosine table g_CosTable @ 0x013CD550 (1025 floats); constants 0.5f 0x0122F59C, 1024.0f 0x01230010, 1.0f 0x0122DED8.
+// Globals: cosine table GFastCosTable @ 0x013CD550 (1025 floats); constants 0.5f 0x0122F59C, 1024.0f 0x01230010, 1.0f 0x0122DED8.
 #include "engine/GFFloatToLongNear.h"
-extern float g_CosTable[1025];          // 0x013CD550
+extern float GFastCosTable[1025];      // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2*pi*k/1024), k = 0..1024)
 namespace NParticleEngine {
 class CPSCLight {
 public:
@@ -23,6 +23,6 @@ float CPSCLight::SmoothFadeValue(float t) const
     long i = GFFloatToLongNear(t - 0.5f);
     float frac = t - (float)i;
     i &= 0x3ff;
-    return 0.5f - ((1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1]) * 0.5f;
+    return 0.5f - ((1.0f - frac) * GFastCosTable[i] + frac * GFastCosTable[i + 1]) * 0.5f;
 }
 }

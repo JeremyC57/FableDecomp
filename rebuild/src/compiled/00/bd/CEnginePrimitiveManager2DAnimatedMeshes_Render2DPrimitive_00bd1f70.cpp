@@ -55,7 +55,7 @@ class CEngineLocalLightArray;
 class CEngineLightingManager : public CEngineLightingManagerDonor {
  public:
 };
-extern CEngineLightingManager* g_pLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 class CMatrix3x4 { public: float m[12]; };
 #include "engine/C3DVector.h"
@@ -116,7 +116,7 @@ class CDisplayManager { public:
     unsigned char _pad[0x1f4];
     long          ViewportTLX, ViewportTLY, ViewportBRX, ViewportBRY;   // +0x1f4
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 struct C2DClipInfo {
     long          Active;                          // +0x00
@@ -183,7 +183,7 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
     if (!Enable)
         return;
     CEngineInternalPrimitive2DAnimatedMesh& mesh = (CEngineInternalPrimitive2DAnimatedMesh&)primitive;
-    CDisplayManager* display = g_pDisplayManager_01436e1c;
+    CDisplayManager* display = NEngineInternal::GPDisplayManager;
     if (mesh.ScreenTLX > display->ViewportBRX || mesh.ScreenBRX < display->ViewportTLX ||
         mesh.ScreenTLY > display->ViewportBRY || mesh.ScreenBRY < display->ViewportTLY)
         return;
@@ -218,7 +218,7 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
     AddGeneratedObjects(&mesh, &transform);
     if (data->HasSimulation)
         mesh.InitialiseSimulation(mesh.MeshInfo, data);
-    mesh.LightArray = g_pLightingManager->EmptyLightArray;
+    mesh.LightArray = NEngineInternal::GPLightingManager->EmptyLightArray;
     unsigned char* hidden = 0;
     const long& primitiveType = mesh.Type;
     if (primitiveType == 0x26) {

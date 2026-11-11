@@ -10,7 +10,7 @@
 //   1024.0f 0x01230010, 0.5f 0x0122F59C, 1.0f 0x0122DED8.
 // Shape: angle scaled in place in its argument slot (`fst [esp+0Ch]`), index rounded by fistp, fraction from fild, index
 //   shifted a quarter turn back (-256: cos(a - 1/4 turn) = sin a) and masked to 10 bits; lerp of two table entries.
-extern float g_CosTable[1025];          // 0x013CD550: cos(2*pi*k/1024), k = 0..1024
+extern float GFastCosTable[1025];      // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2*pi*k/1024), k = 0..1024)
 
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
 #include "engine/GFFloatToLongNear.h"
@@ -21,5 +21,5 @@ float __fastcall GFFastSin(float angle)
     long i = GFFloatToLongNear(angle - 0.5f);
     float frac = angle - (float)i;
     i = (i - 256) & 0x3ff;
-    return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
+    return (1.0f - frac) * GFastCosTable[i] + frac * GFastCosTable[i + 1];
 }

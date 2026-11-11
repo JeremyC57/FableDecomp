@@ -21,11 +21,14 @@ class CRGBColour { public:
 };
 class CEnginePrimitiveHandle { public: unsigned long m_data[2]; };
 class CEnginePrimitive { public: };
+enum EEnginePrimitiveBlendMode;                     // MS forward enums: the ctor's three enum parameters (Ego_r/FableWin
+enum EEngineInterpolationSet;                       //   ??0CEnginePrimitiveLine@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MW4EEnginePrimitiveBlendMode@@K_N
+enum EEnginePrimitiveBlendOp;                       //   W4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z)
 class CEnginePrimitiveLine : public CEnginePrimitive { public:
     unsigned char _body[0x3c];
     CEnginePrimitiveLine(unsigned __int64 id, const C3DVector& start, const C3DVector& end, const CRGBColour& colour,
-                         float width, long blendMode, unsigned long flags, bool depthTest, long interpolation,
-                         long blendOp);                                     // 0x004C3090
+                         float width, EEnginePrimitiveBlendMode blendMode, unsigned long flags, bool depthTest,
+                         EEngineInterpolationSet interpolation, EEnginePrimitiveBlendOp blendOp);                                     // 0x004C3090
 };
 class CIEngine { public:
 #define VF(n) virtual void v##n();
@@ -86,7 +89,7 @@ void CTCCreatureFlyOnSpline::DrawPreparePrimitivesForRendering(const CEnginePrim
             PSpline->GetSplinePosition(&pos, progress);
             unsigned __int64 id = ParentThing->GetUniqueID();
             info.Engine->SetPersistentPrimitive(*(EngineHandles.begin() + i),
-                CEnginePrimitiveLine(id, lastPos, pos, colour, 0.05f, 0, 0, true, 0, 0), 0);
+                CEnginePrimitiveLine(id, lastPos, pos, colour, 0.05f, (EEnginePrimitiveBlendMode)0, 0, true, (EEngineInterpolationSet)0, (EEnginePrimitiveBlendOp)0), 0);
             lastPos = pos;
         } while (++i != EngineHandles.size());
     }

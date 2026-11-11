@@ -1,4 +1,3 @@
-extern "C" long g_charStringRefTrace; // 0x013bca20
 // Leaf: ?SetSubstring@CWideString@@
 // Name debt: retail 0x0099BDB0 is ?GetSubString@CWideString@@QBE?AV1@KK@Z (Ego_r / FableWin; fable_string.h FABLE_RETAIL_CWIDESTRING_SUBSTRING).
 //   This stand-in keeps the return pointer as an explicit parameter; the real by-value spelling (a named local copied out) grades
@@ -21,6 +20,8 @@ class CWideString
 protected:
     CWideStringData* AllocStringData(const unsigned short* s, long n);   // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
     void UnassignString_0099b4d0();
+protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
 };
 
 // Real implementations live at 0x0099b3c0 (AllocStringData) / 0x0099b4d0 (UnassignString);
@@ -34,7 +35,7 @@ CWideString* CWideString::SetSubstring(CWideString* retVal, unsigned long start,
     CWideStringData* newStorage = 0;
     CWideString localTmp;
 
-    ++g_charStringRefTrace;
+    ++NoStrings;
 
     CWideStringData* storage = this->storage;
     unsigned short* base;
@@ -55,7 +56,7 @@ CWideString* CWideString::SetSubstring(CWideString* retVal, unsigned long start,
 skipAlloc:
 
     retVal->storage = 0;
-    ++g_charStringRefTrace;
+    ++NoStrings;
 
     if ((void*)&localTmp != (void*)retVal)
     {
@@ -83,7 +84,7 @@ skipAlloc:
             operator delete(newStorage);
         }
     }
-    --g_charStringRefTrace;
+    --NoStrings;
 
     return retVal;
 }

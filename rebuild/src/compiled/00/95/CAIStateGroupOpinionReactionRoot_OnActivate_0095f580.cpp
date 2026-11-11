@@ -66,7 +66,6 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-extern float g_maxActionSecondsBeforeReaction;  // 0x0122DEDC
 
 class CCreatureActionBase { public:
     unsigned char _pad[0x20];
@@ -111,7 +110,7 @@ void CAIStateGroup_OpinionReactionRoot::OnActivate()
     CCreatureActionBase* action = ((CThingCreatureBase*)PBrain->PCreature)->PCurrentAction;
     if (action != 0) {
         long framesPerSecond = CMainGameComponent::GetConstantFPS();
-        if (action->GetFramesRemaining() > framesPerSecond * g_maxActionSecondsBeforeReaction && action->LoopCount <= 0)
+        if (action->GetFramesRemaining() > framesPerSecond * 0.0f && action->LoopCount <= 0)
             ((CThingCreatureBase*)PBrain->PCreature)->FinishCurrentAction();
     }
     AllowSpeechOnNonPureAISpeaker = false;

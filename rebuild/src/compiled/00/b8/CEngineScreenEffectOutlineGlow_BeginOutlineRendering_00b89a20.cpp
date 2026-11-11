@@ -53,7 +53,7 @@ class CDisplayManager { public:
     C2DBoxI       Viewport;                        // +0x1f4
     void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 class CTexture { public:
     CSurface GetSurface(long level);               // 0x009F9E00
@@ -113,14 +113,14 @@ void CEngineScreenEffectOutlineGlow_Begin::BeginOutlineRendering()
         if (!Blur2Texture)
             Blur2Texture = g_pEngine_01436e98->m_texturePool.Get(Blur2TextureHandle);
         {
-            CRenderTarget current(g_pDisplayManager_01436e1c->CurrentRenderSurface,
-                                  g_pDisplayManager_01436e1c->CurrentZBufferSurface);
+            CRenderTarget current(NEngineInternal::GPDisplayManager->CurrentRenderSurface,
+                                  NEngineInternal::GPDisplayManager->CurrentZBufferSurface);
             *(CRenderTarget*)OldRenderTarget = current;
         }
-        *(C2DBoxI*)&OldViewport_TLX = g_pDisplayManager_01436e1c->Viewport;
+        *(C2DBoxI*)&OldViewport_TLX = NEngineInternal::GPDisplayManager->Viewport;
         CRenderTarget target;
         target.AttachTarget(OutlineTexture->GetSurface(0));
-        g_pDisplayManager_01436e1c->SetRenderTarget(&target);
+        NEngineInternal::GPDisplayManager->SetRenderTarget(&target);
         g_pRenderManagerCore->Clear(CRGBColour(0, 0, 0, 0), 4);
     }
 }

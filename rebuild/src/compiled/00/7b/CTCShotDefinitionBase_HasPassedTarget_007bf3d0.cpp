@@ -12,7 +12,6 @@
 #pragma pack(push, 1)
 #include "engine/C3DVector.h"
 #pragma pack(pop)
-extern const float g_zero_0122dedc;                 // 0x0122DEDC (0.0f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -61,7 +60,7 @@ bool CTCShotDefinitionBase::HasPassedTarget() const
     CTCPhysicsBase* physics = GetPhysics(ParentThing);
     C3DVector moved = physics->Position - physics->OldPosition;
     C3DVector toTarget = TargetPos - physics->Position;
-    if (toTarget.Dot(moved) < g_zero_0122dedc)
+    if (toTarget.Dot(moved) < 0.0f)
         return true;
     return false;
 }

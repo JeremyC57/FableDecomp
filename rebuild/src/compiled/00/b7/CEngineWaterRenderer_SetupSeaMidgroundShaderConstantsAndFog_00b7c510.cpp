@@ -221,7 +221,7 @@ class CEngineLightingManager { public:
     unsigned char  _pad00[0x3c];
     CThemeChannel* ThemeChannels;                       // +0x3c (CArray first pointer)
 };
-extern CEngineLightingManager* g_pLightingManager;      // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 class CEngineCamera { public:
     unsigned char _pad00[0x54];
@@ -258,7 +258,7 @@ void CEngineWaterRenderer::SetupSeaMidgroundShaderConstantsAndFog()
     } else {
         static C4DVector lowEndConstant(0.8f, 0.8f, 0.0f, 0.0f);
         static CRGBFloatColour lowEndColour(0.0f, 0.4f, 0.8f, 1.0f);
-        CRGBFloatColour colour = lowEndColour * g_pLightingManager->ThemeChannels[0].Colour;
+        CRGBFloatColour colour = lowEndColour * NEngineInternal::GPLightingManager->ThemeChannels[0].Colour;
         g_pShaderRenderManager->SetPixelShaderConstant(5, lowEndConstant);
         g_pShaderRenderManager->SetPixelShaderConstant(6, C4DVector(colour));
     }

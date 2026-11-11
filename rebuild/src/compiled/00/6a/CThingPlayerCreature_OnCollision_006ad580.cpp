@@ -10,7 +10,7 @@
 //   CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, LowerBound @ 0x0040F020,
 //   CTCHeroExperience::AddExperience(long) @ 0x006D77C0, CPlayerManager @ 0x00449700 (the main player's number;
 //   manifest "CWorld::DrawGetEnvironment", propagated), CTCCoopSpirit::AddExperience(long) @ 0x0066FB00,
-//   CTCDExperienceOrb::OnCollected(CThing*) @ 0x0077A180.
+//   CTCDExperienceOrb::OnCollected(CThing&) @ 0x0077A180.
 // Layout (retail): CThing ThingType +0x10, bitset +0x20 (0x68/0x69 = bits 8/9 of +0x2c, 0xc7 = bit 7 of +0x38), map
 //   +0x44, PlayerNumber +0x90, Dead bit 0 / InLimbo bit 5 of +0x91; CThingPlayerCreature CollidedWithThing +0x1cc,
 //   LastThingCollisionNormal +0x1cd, LastThingCollisionPosition +0x1d9 (Ego_r.pdb +0x1f8/+0x1f9/+0x205, unaligned);
@@ -42,7 +42,7 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 class CTCDExperienceOrb { public:
     unsigned char _pad00[0x10];
     long          ExperiencePoints;                     // +0x10
-    void OnCollected(CThing* collector);                // 0x0077A180
+    void OnCollected(CThing& collector);                // 0x0077A180 ?OnCollected@CTCDExperienceOrb@@QAEXAAVCThing@@@Z
 };
 class CTCHeroExperience { public: void AddExperience(long points); };   // 0x006D77C0
 class CTCCoopSpirit { public: void AddExperience(long points); };       // 0x0066FB00
@@ -61,7 +61,7 @@ class CThing { public:
     unsigned char  _bits91 : 4;
     unsigned char  InLimbo : 1;                         // +0x91 bit 5
     unsigned char  _bits91b : 2;
-    bool GetTCDriver(CTCDExperienceOrb** out);          // 0x006AE5C0 (GetTCDriver<CTCDExperienceOrb>)
+    template <class T> bool GetTCDriver(T** out);       // Ego_r/FableWin ??$GetTCDriver@VCTCDExperienceOrb@@@CThing@@QAE_NPAPAVCTCDExperienceOrb@@@Z 0x006AE5C0
     FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -100,7 +100,7 @@ protected:
 #pragma auto_inline(off)
 // Same-TU body of the GetTCDriver<CTCDExperienceOrb> instantiation (retail 0x006AE5C0): the driver pointer is written
 // only when the experience-orb interface (0x69) is present.
-__declspec(noinline) bool CThing::GetTCDriver(CTCDExperienceOrb** out)
+template <> __declspec(noinline) bool CThing::GetTCDriver<CTCDExperienceOrb>(CTCDExperienceOrb** out)
 {
     if (m_presentBits[0x69 >> 5] & (1UL << (0x69 & 31))) {
         *out = (CTCDExperienceOrb*)PTCDriver;
@@ -125,7 +125,7 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
             experience->AddExperience(orb->ExperiencePoints);
         if (PlayerNumber != GetPlayerManager().GetMainPlayerNumber())
             GetCoopSpirit()->AddExperience(orb->ExperiencePoints);
-        orb->OnCollected(this);
+        orb->OnCollected(*this);
     }
     void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing);
 };

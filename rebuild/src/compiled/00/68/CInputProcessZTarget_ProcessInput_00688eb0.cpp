@@ -72,7 +72,7 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 class CGamePlayerInterface { public:
-    bool IsInputEnabled();                         // 0x00445B80 (descriptive)
+    bool IsToggleZTarget() const;                  // 0x00445B80 ?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ
 };
 class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameComponent;
 class CInputProcessGameBase {
@@ -101,7 +101,7 @@ public:
 
 void CInputProcessZTarget::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (!PGamePlayerInterface->IsInputEnabled())
+    if (!PGamePlayerInterface->IsToggleZTarget())
         return;
     if (IsEventButtonPressed(event) && IsEventGameAction(0x4a, event)) {
         CThing* target = 0;

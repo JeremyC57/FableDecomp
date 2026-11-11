@@ -71,7 +71,7 @@ class CEngine { public:
     bool SetVideoOptions(const CEngineVideoOptions& options);
 };
 
-extern CDisplayManager*                 g_pDisplayManager_01436e1c;        // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 extern CEngineScreenEffectColourFilter* g_pColourFilter;          // 0x01436E40
 extern CShaderBankStateBlock*           g_pShaderBankStateBlock;  // 0x01436E44
 extern CEngineVideoOptionsListener*     g_pVideoOptionsListener;  // 0x01436E54
@@ -93,21 +93,21 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     VideoOptions = options;
     g_pVideoOptions = &VideoOptions;
     bool result = true;
-    if (g_pDisplayManager_01436e1c->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, options.Antialiasing, options.RefreshRate) != CREATE_DEVICE_OK) {
+    if (NEngineInternal::GPDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, options.Antialiasing, options.RefreshRate) != CREATE_DEVICE_OK) {
         result = false;
-        if (g_pDisplayManager_01436e1c->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
+        if (NEngineInternal::GPDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
             C2DExtentsI resolution = options.ScreenResolution;
             if (resolution.X > 1024)
                 resolution.X = 1024;
             if (resolution.Y > 768)
                 resolution.Y = 768;
-            if (g_pDisplayManager_01436e1c->SetDisplayMode(resolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
+            if (NEngineInternal::GPDisplayManager->SetDisplayMode(resolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
                 EnablePostDeviceReset = true;
                 return false;
             }
         }
     }
-    g_pDisplayManager_01436e1c->SetPresentParameters(!options.VerticalSync, true, true);
+    NEngineInternal::GPDisplayManager->SetPresentParameters(!options.VerticalSync, true, true);
     g_pShaderBankStateBlock->Set(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pColourFilter->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pVideoOptionsListener->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);

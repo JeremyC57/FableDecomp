@@ -50,7 +50,7 @@ CDisplayManager* GPDisplayManager;                               // 0x013B8390
 FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 void* g_FableRenderState_013B8380;
 fable_u8 g_FableRenderStateStorage_013BC470;
-class CInputManager; CInputManager* PInputManager;              // 0x013B8388
+class CInputManager; CInputManager* GPInputManager;             // 0x013B8388
 class CFontManager; CFontManager* PFontManager;                 // 0x013B838C
 class CGraphicBankManager; CGraphicBankManager* PGraphicBankManager;   // 0x013B837C
 fable_u32 g_FableTextureBitDepth_013B7D68;
@@ -147,7 +147,7 @@ static int VerifySuccessfulProgressSetup()
         return 2;
     if (
         (fable_u32)PSoundManager != 0x7C7C7C7C ||
-        (fable_u32)PInputManager != 0x58585858 ||
+        (fable_u32)GPInputManager != 0x58585858 ||
         (fable_u32)PFontManager != 0x84848484 ||
         (fable_u32)PGraphicBankManager != 0x6C6C6C6C)
         return 3;

@@ -5,13 +5,14 @@
 #include <stdlib.h>
 namespace AFileSupport {
 struct CWideStringData {unsigned short* text,*last,*limit;int refs;};
-extern int WideInstances; // 013bca20
 // Layout: wide string one dword; drive[3],dir/name/ext[256],component[262] (retail frame: path+0, drive+4, cwd temp/d+8, component+0x10, ext+0x21c, dir+0x41c, name+0x61c); retail target frame0x820.
-struct CWideString {CWideStringData* data;CWideStringData* AllocStringData(const unsigned short*,int);__declspec(noinline) CWideString();__declspec(noinline) CWideString(const unsigned short*);__declspec(noinline) CWideString(const CWideString&);__declspec(noinline) ~CWideString();__declspec(noinline) CWideString& operator=(const unsigned short*); operator const unsigned short*();__declspec(noinline) operator const unsigned short*()const{static const unsigned short empty[]={0};return data?data->text:empty;}};
-__declspec(noinline) CWideString::CWideString():data(0){++WideInstances;}
-__declspec(noinline) CWideString::CWideString(const CWideString&x):data(0){++WideInstances;if(this!=&x&&x.data){data=x.data;++data->refs;}}
-__declspec(noinline) CWideString::CWideString(const unsigned short*p):data(0){++WideInstances;if(p&&*p)data=AllocStringData(p,-1);}
-__declspec(noinline) CWideString::~CWideString(){if(data){if(--data->refs<=0){if(data->text)free(data->text);delete data;}data=0;}--WideInstances;}
+struct CWideString {CWideStringData* data;CWideStringData* AllocStringData(const unsigned short*,int);__declspec(noinline) CWideString();__declspec(noinline) CWideString(const unsigned short*);__declspec(noinline) CWideString(const CWideString&);__declspec(noinline) ~CWideString();__declspec(noinline) CWideString& operator=(const unsigned short*); operator const unsigned short*();__declspec(noinline) operator const unsigned short*()const{static const unsigned short empty[]={0};return data?data->text:empty;}protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
+};
+__declspec(noinline) CWideString::CWideString():data(0){++NoStrings;}
+__declspec(noinline) CWideString::CWideString(const CWideString&x):data(0){++NoStrings;if(this!=&x&&x.data){data=x.data;++data->refs;}}
+__declspec(noinline) CWideString::CWideString(const unsigned short*p):data(0){++NoStrings;if(p&&*p)data=AllocStringData(p,-1);}
+__declspec(noinline) CWideString::~CWideString(){if(data){if(--data->refs<=0){if(data->text)free(data->text);delete data;}data=0;}--NoStrings;}
 __declspec(noinline) CWideString& CWideString::operator=(const unsigned short*p){if(data){if(--data->refs<=0){if(data->text)free(data->text);delete data;}data=0;}if(p&&*p)data=AllocStringData(p,-1);return *this;}
 extern "C" void __cdecl _wsplitpath(const unsigned short* path,unsigned short* drive,unsigned short* dir,unsigned short* name,unsigned short* ext); // 0x00BFED4C MSVCR71 _wsplitpath (import thunk)
 CWideString __fastcall GetCurrentWorkingDirectory();CWideString __fastcall ExpandPath(const CWideString&,const CWideString&);

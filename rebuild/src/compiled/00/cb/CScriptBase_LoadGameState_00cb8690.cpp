@@ -55,7 +55,6 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
         SkipPastNextItemIfIs(item);
     }
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ""
 extern const char g_startScriptData[];            // 0x012C16C8 "START_SCRIPT_DATA"
 extern const char g_endScriptData[];              // 0x012C16B8 "END_SCRIPT_DATA"
 extern const char g_startEntityScripts[];         // 0x012C16A0 "START_ENTITY_SCRIPTS"
@@ -80,7 +79,7 @@ private:
 
 void CScriptBase::LoadGameState(const CCharString& state)
 {
-    CStringParser parser(state, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+    CStringParser parser(state, 0, CCharString("", -1), 0);
     if (parser.NextItemIsText(g_startScriptData)) {
         CCharString data = parser.ReadUntilText(g_endScriptData);
         DoScriptDataPersist(data, false);

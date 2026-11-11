@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#define FABLE_RETAIL_CWIDESTRING_NOSTRINGS
 #include "fable_string.h"
 
 namespace
@@ -7,7 +8,8 @@ namespace
     int g_unassignCalls = 0;
 }
 
-fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
+long CWideString::NoStrings = 0;                               // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static)
+struct NoStringsProbe : CWideString { static long& Ref() { return NoStrings; } };
 
 void CWideString::UnassignString()
 {
@@ -16,7 +18,7 @@ void CWideString::UnassignString()
 
 CWideString::~CWideString()
 {
-    --g_CWideStringInstanceCount_013BCA20;
+    --NoStringsProbe::Ref();
 }
 
 static void InstallStorage(
@@ -49,7 +51,7 @@ int main()
                 return 1;
             if (sharedStorage.owners != 4)
                 return 2;
-            if (g_CWideStringInstanceCount_013BCA20 != 2)
+            if (NoStringsProbe::Ref() != 2)
                 return 3;
             if (g_unassignCalls != 0)
                 return 4;
@@ -58,7 +60,7 @@ int main()
         InstallStorage(source, 0);
     }
 
-    if (g_CWideStringInstanceCount_013BCA20 != 0)
+    if (NoStringsProbe::Ref() != 0)
         return 5;
 
     puts("FABLETLC_WIDE_STRING_COPY_CONSTRUCTOR_BEHAVIOR PASS");
@@ -68,5 +70,5 @@ int main()
 CWideString::CWideString()
     : storage_(0)
 {
-    ++g_CWideStringInstanceCount_013BCA20;
+    ++NoStringsProbe::Ref();
 }

@@ -18,7 +18,7 @@ class CPlayer { public:
 };
 
 class CThing { public:
-    CPlayer* GetPlayer();                        // 0x004C7A10
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10 ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ
 };
 class CTCCarrying { public:
     static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
@@ -33,13 +33,13 @@ class CTCCombat { public:
 
 bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* combat)
 {
-    if (combat->obj->GetPlayer()->HasMode((EPlayerMode)0x1b))
+    if (combat->obj->PeekPlayer().HasMode((EPlayerMode)0x1b))
         return false;
-    if (combat->obj->GetPlayer()->HasMode((EPlayerMode)0x2f))
+    if (combat->obj->PeekPlayer().HasMode((EPlayerMode)0x2f))
         return false;
     if (CTCCarrying::IsThingCarryingWeapon(*combat->obj))
         return false;
-    if (combat->obj->GetPlayer()->buf[0x217])
+    if (combat->obj->PeekPlayer().buf[0x217])
         return true;
     if (g_bAggressiveModeAvailable)
         return false;

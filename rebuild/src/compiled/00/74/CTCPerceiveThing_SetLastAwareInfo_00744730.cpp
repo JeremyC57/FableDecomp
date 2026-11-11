@@ -24,7 +24,6 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 extern "C" Vec3* __fastcall Getter_d82ca0(void* self);   // 0xffd82ca0
-extern float g_const_122dedc;                            // ds:0x122dedc
 extern GObj* g_obj_13b8790;                              // ds:0x13b8790
 
 void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
@@ -36,7 +35,7 @@ void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
     float val = self->p34->f44;
     self->f18 = val;
 
-    if (val != g_const_122dedc) {
+    if (val != 0.0f) {
         if (((CBaseIntelligentPointer*)(self->field_c))->GetPItem()) {
             g_obj_13b8790->NotifyA(self->field4);
         } else {

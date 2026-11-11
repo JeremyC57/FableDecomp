@@ -62,7 +62,7 @@ class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CWillPowerIndicatorDef>* out);   // 0x008C78F0
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndex(const CCharString& name);         // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r + FableWin spelling)
 };
 struct CPhysicalDefManager {
     bool GetDef(long index, CDefPointer<CPhysicalDef>* out);   // 0x0078B230
@@ -224,9 +224,9 @@ void CCreatureAction_TrollThrowProjectile::Initialise()
             PCombat->GetWeaponHand(&hand);
             long slot;
             if (hand->Hand == 1)
-                slot = GetPDefinitionManager()->GetDefGlobalIndex("CARRY_SLOT_TROLL_THROW_ROCK_LEFT");
+                slot = GetPDefinitionManager()->GetDefGlobalIndexFromName("CARRY_SLOT_TROLL_THROW_ROCK_LEFT");
             else
-                slot = GetPDefinitionManager()->GetDefGlobalIndex("CARRY_SLOT_TROLL_THROW_ROCK");
+                slot = GetPDefinitionManager()->GetDefGlobalIndexFromName("CARRY_SLOT_TROLL_THROW_ROCK");
             carrying->AddThing(thing, slot, true);
         }
         ProjectileVisible = 0;

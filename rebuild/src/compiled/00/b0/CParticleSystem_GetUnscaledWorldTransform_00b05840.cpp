@@ -3,7 +3,7 @@
 // Name: FableWin.pdb / Ego_r.pdb ?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z (namespace, const,
 //   reference); the callers 0x00B05980 and 0x00B087C0 pass the matrix address (`ret 4`).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B05840, 80 bytes (`ret 4`).
-// Callees: CParticleSystem::GetSystemTransform @ 0x00AF3D80 (returns &PParentEmitter->Transform, emitter +0xb0;
+// Callees: CParticleSystem::PeekEmitterTransform @ 0x00AF3D80 (returns PParentEmitter->Transform, emitter +0xb0;
 // labelled "CVertexBufferWin32::DoSizeof", propagated).
 // Shape: StayWithEmitter is bit 6 of the flag byte +0x50 (`test byte ptr [ecx+50h],40h`). The 48-byte matrix
 // copy is a `rep movsd` of 12 dwords (a POD block copy). The identity arm writes the twelve floats through the
@@ -25,14 +25,15 @@ class CParticleSystem { public:
     bool          Visible : 1;
     bool          StayWithEmitter : 1;               // bit 6
     bool          ScaleParticles : 1;
-    const CMatrix3x4* GetSystemTransform() const;    // 0x00AF3D80
     void GetUnscaledWorldTransform(CMatrix3x4& result) const;
+private:
+    const CMatrix3x4& PeekEmitterTransform() const;  // 0x00AF3D80 ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ
 };
 
 void CParticleSystem::GetUnscaledWorldTransform(CMatrix3x4& result) const
 {
     if (StayWithEmitter) {
-        result = *GetSystemTransform();
+        result = PeekEmitterTransform();
     } else {
         result.m[1] = result.m[2] = result.m[3] = result.m[5] = result.m[6] = result.m[7] =
             result.m[9] = result.m[10] = result.m[11] = 0.0f;

@@ -17,7 +17,6 @@
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 extern const unsigned long g_InvalidSoundHandle;       // 0x0129D25C
-extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 
 class CTCBase;
 class CTCSoundPlayer {                                 // the thing's interface-16 component
@@ -75,7 +74,7 @@ void Coin::UpdateSound(bool muted)
         return;
     CTCSoundPlayer* player;
     Thing->GetTC(TCI_SOUND_PLAYER, &player);
-    if (Velocity.GetLengthSquared() == g_fZero) {
+    if (Velocity.GetLengthSquared() == 0.0f) {
         if (Sound != g_InvalidSoundHandle) {
             player->StopAttachedSound(Sound);
             Sound = g_InvalidSoundHandle;

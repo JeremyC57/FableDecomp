@@ -79,7 +79,7 @@ public:
     unsigned char _pad00[0x2C];
     std::vector<CCountedPointer<CJoystick>, std::allocator<CCountedPointer<CJoystick> > > PJoysticks;   // +0x2C
 };
-extern CInputManager* PInputManager;                    // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 
 class CWorld {
 public:
@@ -263,7 +263,7 @@ void CTCFishing::FrameUpdate()
             float hookWindow = PDef->HookWindowSeconds;
             long fps = CMainGameComponent::GetConstantFPS();
             FrameStageFinishes = (long)(CWorld::GetFrame() + fps * hookWindow);
-            PInputManager->PJoysticks[ParentThing->GetJoystickDeviceNumber()]->AddRumble(4,
+            GPInputManager->PJoysticks[ParentThing->GetJoystickDeviceNumber()]->AddRumble(4,
                 CJoystick::CInitRumble(0.35f, 0.75f, 0.0f, hookWindow, false), false);
             StageInitialised = true;
             CPlayerGui::Get().GetSubtitleRenderer().SetButton1OverrideText("TEXT_GUI_FISHING_PRESS");
@@ -328,7 +328,7 @@ void CTCFishing::FrameUpdate()
                 if (Pulling) {
                     CPlayerGui::Get().GetSubtitleRenderer().Button1Alpha = 0x80;
                     Distance += fish->Speed / CMainGameComponent::GetConstantFPS();
-                    PInputManager->PJoysticks[ParentThing->GetJoystickDeviceNumber()]->AddRumble(4,
+                    GPInputManager->PJoysticks[ParentThing->GetJoystickDeviceNumber()]->AddRumble(4,
                         CJoystick::CInitRumble(0.75f, 0.25f, 0.1f, 0.1f, false), false);
                 } else {
                     CPlayerGui::Get().GetSubtitleRenderer().Button1Alpha = 0xff;

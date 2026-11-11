@@ -111,7 +111,6 @@ class CScriptDef { public:
     long DemonDoor_CombatMult_TriggerLevel;             // +0x105C
 };
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 namespace NScript {
 class CV_DemonDoorsScript {
 public:
@@ -182,7 +181,7 @@ void NScript::CV_DemonDoorsScript::CDF_CombatMult::Main()
                     game->PauseAllNonScriptedEntities(false);
                     return;
                 }
-                if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                     face.Speak(Game->GetHero(), "TEXT_QST_088_COMBAT_MULT_INTRO", (ETextGroupSelectionMethod)0, false, true, false);
                     while (face.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -202,7 +201,7 @@ void NScript::CV_DemonDoorsScript::CDF_CombatMult::Main()
                     game->PauseAllNonScriptedEntities(false);
                     return;
                 }
-                if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                     face.Speak(Game->GetHero(), "TEXT_QST_088_COMBAT_MULT_OPENING", (ETextGroupSelectionMethod)0, false, true, false);
                     while (face.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();

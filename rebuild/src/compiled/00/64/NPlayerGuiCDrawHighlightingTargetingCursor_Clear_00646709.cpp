@@ -2,7 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawHighlightingTargetingCursor::Clear() -- drop the highlight mesh effect from the targeted thing's graphic appearance (when the thing is alive and has one), release the intelligent pointer and reset the cursor type
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00646709, length 89 bytes.
-// Callees: IS_THING_ALIVE<CIntelligentPointer<const CThingPhysical>> @ 0x004CC340 (`__fastcall`, the pointer in ecx), CBaseIntelligentPointer::GetPItem @ 0x00A01B50
+// Callees: IS_THING_ALIVE<CIntelligentPointer<CThing> > @ 0x004CC340 (`__fastcall`, the reference in ecx), CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (twice), CTCGraphicAppearance::ClearMeshEffect(void*) @ 0x004BFFC0 (on the thing's component at +0x64, key = this), CIntelligentPointer<const CThing>::
 // CIntelligentPointer(CThing*) @ 0x004A96F0 (a null temporary in the 8-byte frame, built by the implicit conversion of
 // the null pointer, so it is re-addressed with `lea` for the assignment), CIntelligentPointer::operator=(const CIntelligentPointer&) @ 0x004A9760,
@@ -35,7 +35,7 @@ template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
 
-bool __fastcall IS_THING_ALIVE(CIntelligentPointer<CThing>* pointer);   // 0x004CC340
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340 = IS_THING_ALIVE<CIntelligentPointer<CThing> > (Ego_r/FableWin ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z)
 
 namespace NPlayerGui {
 
@@ -49,7 +49,7 @@ class CDrawHighlightingTargetingCursor { public:
 
 void CDrawHighlightingTargetingCursor::Clear()
 {
-    if (IS_THING_ALIVE(&PTargetedThing)) {
+    if (IS_THING_ALIVE(PTargetedThing)) {
         if (PTargetedThing.GetPItem()->m_pGraphicAppearance != 0)
             PTargetedThing.GetPItem()->GetGraphicAppearance()->ClearMeshEffect(this);
     }

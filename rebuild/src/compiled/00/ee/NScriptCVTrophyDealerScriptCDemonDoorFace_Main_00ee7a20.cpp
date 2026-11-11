@@ -122,7 +122,6 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad7d[0x140 - 0x7d];
     bool SingingStonesInSync;                          // +0x140 (PDB +0x144)
 };
-extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -188,7 +187,7 @@ void NScript::CV_TrophyDealerScript::CDemonDoorFace::Main()
                 Game->StartMovieSequence("", movie);
                 CGameScriptInterface* game = Game;
                 game->PauseAllNonScriptedEntities(true);
-                if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                     face.Speak(Game->GetHero(), "TEXT_QST_071_DOOR_LOCKED1", (ETextGroupSelectionMethod)0, false, true, false);
                     while (face.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();

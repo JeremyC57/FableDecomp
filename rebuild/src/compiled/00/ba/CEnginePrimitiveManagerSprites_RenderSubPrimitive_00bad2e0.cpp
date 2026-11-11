@@ -161,7 +161,7 @@ class CEngineLightingManager {
 public:
     void UpdateGlobalLightingStates();                  // 0x00B46C80
 };
-extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 enum ERenderPassType { RENDER_PASS_NONE };
 class CEngineInternalPrimitiveBase { };
@@ -212,7 +212,7 @@ void CEnginePrimitiveManagerSprites::RenderSubPrimitive(CEngineSubPrimitiveBase&
     SetStateConst(g_pRenderManagerCore->m_state28b8, 1, g_pRenderManagerCore);
     SetStateConst(g_pRenderManagerCore->m_state28cc, 0, g_pRenderManagerCore);
     SetStateConst(g_pRenderManagerCore->m_state2944, 0, g_pRenderManagerCore);
-    g_pEngineLightingManager->UpdateGlobalLightingStates();
+    NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     g_pShaderRenderManager->ResetWorldTransform();
     group->RenderSingleSprite(&subPrimitive, pass);
     g_pShaderRenderManager->ResetWorldTransform();

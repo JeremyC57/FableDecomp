@@ -5,9 +5,7 @@
 // Name fix (agentNF6 2026-11-10): 0x013CE558 is ?GFastOneOverSqrtTable@@3PAKA (unsigned long[128]; Ego_r.pdb / FableWin.pdb public and typed records).
 extern unsigned long GFastOneOverSqrtTable[128]; // 0x013CE558
 extern float g_three; // 0x0122DED4
-extern float g_half; // 0x0122F59C
 extern float g_vector_scale; // 0x01238170
-extern float g_bias_base; // 0x0122DED8
 extern float g_bias_scale; // 0x012305A0
 #include "engine/C3DVector.h"
 class CTCContainerRewardHero { public: void AdjustTrajectoryVector(int, C3DVector*); };
@@ -18,9 +16,9 @@ void CTCContainerRewardHero::AdjustTrajectoryVector(int bias, C3DVector* v) {
     unsigned int estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23) | (GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);
     float r=*(float*)&estimate;
     r=(g_three-r*r*lengthSquared)*r;
-    r=r*g_half;
+    r=r*0.5f;
     v->X=(v->X*r)*g_vector_scale;
     v->Y=(v->Y*r)*g_vector_scale;
-    float vertical=((float)bias+g_bias_base)*g_bias_scale;
+    float vertical=((float)bias+1.0f)*g_bias_scale;
     v->Z=vertical+(r*v->Z)*g_vector_scale;
 }

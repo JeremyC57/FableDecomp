@@ -2,7 +2,6 @@
 // push esi; mov esi,ecx; call base::Initialise; fild [esi+0x10]; fmul [g];
 // call __ftol; mov [esi+0x14],eax; ret
 
-extern float g_dragonFlightScale; // dword ptr [0x122f59c]
 
 struct CCreatureAction_Base
 {
@@ -24,5 +23,5 @@ void __fastcall CCreatureAction_Base_Initialise(CCreatureAction_Base* action);
 void CCreatureAction_DragonFlight::Initialise()
 {
     CCreatureAction_Base_Initialise(this);
-    this->ActionTime = (int)((float)this->TotalTime * g_dragonFlightScale);
+    this->ActionTime = (int)((float)this->TotalTime * 0.5f);
 }

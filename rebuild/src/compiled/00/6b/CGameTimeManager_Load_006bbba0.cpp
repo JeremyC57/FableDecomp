@@ -43,7 +43,6 @@ class CPersistContext { public:                           // retail 0x2c bytes, 
     CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
                     const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceName);   // 0x009BADD0
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CGameTimeManager { public:
     unsigned char _pad00[0x40];
     void Load(CPersistContext& context);           // 0x006BBAC0
@@ -52,7 +51,7 @@ class CGameTimeManager { public:
 
 void CGameTimeManager::Load(const CCharString& text)
 {
-    CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+    CStringParser parser(text, 0, CCharString("", -1), 0);
     CPersistContext context(parser, 0, true, 0, 0, 0);
     Load(context);
 }

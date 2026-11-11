@@ -7,7 +7,7 @@
 //   SetTexture (+0x104) (d3d9.h order), all through the render core's inline state-cache helpers.
 // Globals: g_pRenderManagerCore 0x01436E18 (CRenderManagerCore: TextureStagesInUse +0x3CB8, PD3DDevice +0x3CF0,
 //   PSelectedIndexBuffer +0x3CF4, CurrentlySelectedTextures[8] +0x3D00 -- Ego_r.pdb names at retail offsets, engine header);
-//   g_pEngineLightingManager 0x01436E9C (FadedShadowDiffuseFactorEnabled +0xCE, CurrentThemeChannel +0xE0, StateUpdateFlags
+//   NEngineInternal::GPLightingManager 0x01436E9C (FadedShadowDiffuseFactorEnabled +0xCE, CurrentThemeChannel +0xE0, StateUpdateFlags
 //   +0xE4, SelfIlluminationAmbientPercentage +0xE8 -- engine header).
 // Shape: every render-core helper re-reads the global and keeps its `this` in esi across the device call (the texture-stage
 //   bookkeeping after each call reads esi, the next helper reloads eax); the theme descriptor (0,0,0) is built in the push-ecx
@@ -222,7 +222,7 @@ public:
         SetSelfIlluminationAmbient(0);
     }
 };
-extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 #define CEngineLandscapeRenderer CEngineLandscapeRendererLayout
 #include "engine/CEngineLandscapeRenderer.h"
@@ -239,5 +239,5 @@ void CEngineLandscapeRenderer::PostRenderClearRenderStates()
     g_pRenderManagerCore->AttachTextureToStage(0, 0);
     g_pRenderManagerCore->AttachTextureToStage(1, 0);
     g_pRenderManagerCore->AttachTextureToStage(2, 0);
-    g_pEngineLightingManager->RestoreDefaultPrimitiveParameters();
+    NEngineInternal::GPLightingManager->RestoreDefaultPrimitiveParameters();
 }

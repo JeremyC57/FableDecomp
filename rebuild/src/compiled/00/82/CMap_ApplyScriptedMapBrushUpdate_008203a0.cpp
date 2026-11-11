@@ -7,7 +7,6 @@ extern "C" double __cdecl sqrt(double x);
 extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(pow, sqrt, fabs)
 inline float fabs(float x) { return (float)fabs((double)x); }
-extern const float g_zero_0122dedc;               // 0x0122DEDC (0.0f)
 extern const float g_maxSize_012724c0;            // 0x012724C0 (2048.0f)
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
@@ -60,8 +59,8 @@ class CHeightMap { public:
     void SetSizeZAt(const C2DCoordI& cell, float size)   // out-of-line copy 0x00825440
     {
         float value;
-        if (size < g_zero_0122dedc) {
-            value = g_zero_0122dedc;
+        if (size < 0.0f) {
+            value = 0.0f;
         } else {
             float limit = g_maxSize_012724c0 - DELTA_NOTIONAL_ZERO;
             value = size > limit ? limit : size;

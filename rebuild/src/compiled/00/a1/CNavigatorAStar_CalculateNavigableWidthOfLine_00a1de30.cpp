@@ -1,9 +1,12 @@
-// CNavigatorAStar::CalcWayPointWidths(const C3DVector& position) -- measure the navigable widths of the first two route legs (position -> first way point, first -> second) into the steering agent's four best-distance slots, then set its ProximityForArrival to the narrowest less the navigator radius, raised to CurrentMaxSpeed (CurrentMaxSpeed alone when the route has one point)
-// Leaf: ?CalcWayPointWidths@CNavigatorAStar@@
+// CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector& position) -- measure the navigable widths of the first two route legs (position -> first way point, first -> second) into the steering agent's four best-distance slots, then set its ProximityForArrival to the narrowest less the navigator radius, raised to CurrentMaxSpeed (CurrentMaxSpeed alone when the route has one point)
+// Leaf: ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z
+// Name (agentNF22, Codex pass 21 queue): Ego_r.pdb + FableWin.pdb ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z,
+//   the one-reference overload of the five-argument 0x00A1D6E0 it calls (Codex: donor caller sequence + aligned native call
+//   operand, evidence/00a1e5c0). Was the descriptive CalcWayPointWidths.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1DE30, 298 bytes, `ret 4`.
-// Identity: bound ?CalcWayPointWidths@CNavigatorAStar@@QAEXABVC3DVector@@@Z by the landed caller InitialiseFromPreCalculatedRoute
-//   0x00A1E370 (passes its `const C3DVector& from`); six call sites (xref). Not in the PDB name sets (inlined in Ego_r).
+// Identity: bound by the landed caller InitialiseFromPreCalculatedRoute 0x00A1E370 (passes its `const C3DVector& from`); six
+//   call sites (xref).
 // Callees: CNavigatorAStar::CalculateNavigableWidthOfLine(const CNavWayPoint&, const CNavWayPoint&, float&, float&, bool) 0x00A1D6E0
 //   (Ego_r.pdb ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVCNavWayPoint@@0AAM1_N@Z, bound the same);
 //   CNavigatorExternalInterface virtual slot 6 (+0x18) PeekNavigatorRadius(bool) const (CGroundNavigatorExternalInterface vtable
@@ -100,10 +103,10 @@ class CNavigatorAStar : public CNavigatorBaseLayout { public:
     unsigned char _pad24[0x8c - 0x24];
     CWayPointList Route;                           // +0x8c
     void CalculateNavigableWidthOfLine(const CNavWayPoint& from, const CNavWayPoint& to, float& widthLeft, float& widthRight, bool flag);   // 0x00A1D6E0
-    void CalcWayPointWidths(const C3DVector& position);
+    void CalculateNavigableWidthOfLine(const C3DVector& position);
 };
 
-void CNavigatorAStar::CalcWayPointWidths(const C3DVector& position)
+void CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector& position)
 {
     CNavWayPoint start(position, Route.front().NavLayer, true);
     CNavWayPoint* first = &Route.front();

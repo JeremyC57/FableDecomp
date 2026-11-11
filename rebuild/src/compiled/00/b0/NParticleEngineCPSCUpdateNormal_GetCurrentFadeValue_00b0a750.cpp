@@ -9,7 +9,7 @@
 // Retail-asm: 0x00B0A848 / 0x00B0A8CC (fistp at 0x00B0A850 / 0x00B0A8D4) `fstp [slot] ; fld [slot] ; fistp dword ptr [slot]` in the inline table-cosine (x2) -- the engine's inline-assembly float-to-long helper (the by-value copy is stored and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload).
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 #include "fable_compiler.h"
-extern const float g_cosTable[1025];                // 0x013CD550
+extern float GFastCosTable[1025];                  // 0x013CD550 ?GFastCosTable@@3PAMA
 extern const float g_fadeScale;                     // 0x01266300
 extern const float g_cosTableScale;                 // 0x01230010
 namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
@@ -22,7 +22,7 @@ FABLE_FORCEINLINE float TableCos01(float x)
     long whole = GFFloatToLongNear(scaled - 0.5f);
     float frac = scaled - (float)whole;
     long index = whole & 0x3ff;
-    return 0.5f - ((1.0f - frac) * g_cosTable[index] + frac * g_cosTable[index + 1]) * 0.5f;
+    return 0.5f - ((1.0f - frac) * GFastCosTable[index] + frac * GFastCosTable[index + 1]) * 0.5f;
 }
 namespace NParticleEngine {
 class CPSCUpdateNormal { public:

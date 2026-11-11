@@ -1,4 +1,6 @@
 // CNavigatorBase::IsAnyPartOfNodeWithinDistOfPos -- test node square against a radius and produce a candidate point.
+// Leaf: ?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@IBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z
+// Name (agentNF22, Codex pass 21 queue): Ego_r.pdb + FableWin.pdb spell it protected (IBE); it was declared public here.
 // Retail00a471d0 length283. Actual navigator/node headers and native PDB const
 // signature used. CalleesA14510 C2DVector::AccurateNormalise, A75B30 node GetSize const.
 // Pool129ba3c is0.0001f. C2DVector PDB ctor/copy/operator signatures audited.
@@ -29,7 +31,7 @@ class CANavQuadTreeNode : public CANavQuadTreeNodeLayout { public:
     const C2DVector& GetPosition() const {return *(const C2DVector*)&Position_X;}
     float GetSize() const; //0x00a75b30
 };
-class CNavigatorBase : public CNavigatorBaseLayout { public:
+class CNavigatorBase : public CNavigatorBaseLayout { protected:
     bool IsAnyPartOfNodeWithinDistOfPos(const CANavQuadTreeNode*,float,const C3DVector&,C2DVector&) const;
 };
 bool CNavigatorBase::IsAnyPartOfNodeWithinDistOfPos(const CANavQuadTreeNode* node,float distance,const C3DVector& position,C2DVector& result) const {

@@ -1,4 +1,5 @@
-#include "fable_filesystem.h"
+#define FABLE_RETAIL_CWIDESTRING_NOSTRINGS
+#include "fable_string.h"
 // Leaf: ??1CWideString@@QAE@XZ
 
 #include <stdlib.h>
@@ -23,5 +24,5 @@ CWideString::~CWideString()
         storage_ = 0;
     }
 
-    --g_CWideStringInstanceCount_013BCA20;
+    --NoStrings;                                   // 0x013BCA20 ?NoStrings@CWideString@@1JA
 }

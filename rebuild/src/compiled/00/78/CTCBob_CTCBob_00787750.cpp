@@ -9,12 +9,11 @@
 // `mov ecx,[esi+4] ; push 2` argument setup and the call. Rhset/Pos/ForceVisible are not touched
 // here (OnInitialActivate 0x00787780 fills them), so no member initialisers.
 
+#include "engine/ECutsceneBehaviour.h"
 class CThing
 { public:
-    void SetCutscenePauseBehaviour(long behaviour);  // 0x004C78A0 (ECutsceneBehaviour)
+    void SetCutscenePauseBehaviour(ECutsceneBehaviour behaviour);  // 0x004C78A0 ?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z
 };
-
-enum { CUTSCENE_BEHAVIOUR_2 = 2 };
 
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
@@ -44,5 +43,5 @@ class CTCBob : public CTCBase                             // vtable 0x0126B76C
 CTCBob::CTCBob(CThing* owner)
     : CTCBase(owner)
 {
-    ParentThing->SetCutscenePauseBehaviour(CUTSCENE_BEHAVIOUR_2);
+    ParentThing->SetCutscenePauseBehaviour(CUTSCENE_BEHAVIOUR_NOT_PAUSED);
 }

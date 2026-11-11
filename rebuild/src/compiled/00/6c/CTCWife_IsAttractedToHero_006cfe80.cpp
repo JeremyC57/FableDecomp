@@ -12,7 +12,6 @@
 
 enum EOpinionAttitudeType { OPINION_ATTITUDE_LOVE = 12 };
 
-extern const float g_zero;                                  // 0x0122DEDC (0.0f)
 
 class CThingBuilding;
 
@@ -35,5 +34,5 @@ class CTCWife { public:                                            // retail lay
 
 bool CTCWife::IsAttractedToHero() const
 {
-    return IsCourtingHero() && (LoveAttitudeValue > g_zero || IsInLoveWithHero());
+    return IsCourtingHero() && (LoveAttitudeValue > 0.0f || IsInLoveWithHero());
 }

@@ -7,7 +7,6 @@
 // Point is a C3DVector-compatible local model; no generated C3DVector header exists.
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-extern const float Zero_0122dedc; // 0x0122dedc
 struct Point {
  float X,Y,Z;
  Point() {}
@@ -28,7 +27,7 @@ class CPSCSplineBase { public:
  float GetApproximateSplineLength();
 };
 float CPSCSplineBase::GetApproximateSplineLength() {
- float total=Zero_0122dedc;
+ float total=0.0f;
  int count=size();
  for(int i=0;i<count-1;++i) {
   total+=(at(i)-at(i+1)).SquaredLength();

@@ -6,6 +6,7 @@
 // Shape: the presence test is the inlined bitset probe (type 200 = bit 8 of the dword at +0x38, `test ch,1`); the name is a scoped named local
 // (re-addressed with `lea` for the argument), the new component rides in esi across the string destructor and is null-checked before the two stores, which share one register value (a chained assignment).
 #include "fable_string.h"
+class CTCBase;
 class CTCParamsBase;
 class CTCHitOnCollision { public:                  // the component AddTC returns: two arming bytes
     unsigned char _pad[0x18];
@@ -15,7 +16,7 @@ class CTCHitOnCollision { public:                  // the component AddTC return
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CTCHitOnCollision* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -52,7 +53,7 @@ void CCreatureAction_WaspQueenDiveAttack::Initialise()
         CTCHitOnCollision* pHit;
         {
             CCharString name("CTCHitOnCollision", -1);
-            pHit = PCreature.GetPItem()->AddTC(name, false, 0);
+            pHit = (CTCHitOnCollision*)PCreature.GetPItem()->AddTC(name, false, 0);
         }
         if (pHit)
             pHit->m_hitsObjects = pHit->m_hitsCreatures = 1;   // chained: one register value stored twice (two immediates otherwise)

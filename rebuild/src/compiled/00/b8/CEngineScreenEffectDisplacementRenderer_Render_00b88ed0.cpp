@@ -20,7 +20,7 @@ class CEngineComponentRenderParams { public:
 class CDisplayManager { public:
     CTexture* CopyBackBufferToTexture();           // 0x009BF5E0
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 struct CTexturePool_00f36f00 {
     void Release(long texture);                    // 0x00F36F00
@@ -53,7 +53,7 @@ void CEngineScreenEffectDisplacementRenderer_Render::Render(const CEngineCompone
         unsigned long pass = params.m_pass;
         if (pass == 0x20000000 || pass == 0x10000) {
             if (HasContent) {
-                BackBufferCopyTexture = g_pDisplayManager_01436e1c->CopyBackBufferToTexture();
+                BackBufferCopyTexture = NEngineInternal::GPDisplayManager->CopyBackBufferToTexture();
                 ApplyDisplacement();
                 ShowDisplacementTexture();
                 HasContent = false;

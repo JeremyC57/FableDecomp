@@ -69,7 +69,7 @@ extern unsigned long g_renderStateDefault_01396ff4;    // 0x01396FF4
 class CEngineLightingManager { public:
     void UpdateGlobalLightingStates();             // 0x00B46C80
 };
-extern CEngineLightingManager* g_pLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
     void InitialiseGlobalLights();
@@ -77,7 +77,7 @@ struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
 
 void CEnginePrimitiveRenderer_Methods::InitialiseGlobalLights()
 {
-    g_pLightingManager->UpdateGlobalLightingStates();
+    NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     g_pRenderManagerCore->SetState(g_pRenderManagerCore->m_state2a70, g_renderStateDefault_01396ff4);
     g_pRenderManagerCore->SetState(g_pRenderManagerCore->m_state2a5c, g_renderStateDefault_01396ff4);
     g_pRenderManagerCore->SetGlobalLightColours(CRGBColour(255, 255, 255, 255), CRGBColour(255, 255, 255, 255));

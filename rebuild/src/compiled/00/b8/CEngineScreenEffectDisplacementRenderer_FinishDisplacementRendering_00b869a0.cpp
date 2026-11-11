@@ -12,7 +12,7 @@ class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
     void SetViewport(void* viewport);              // 0x009BEF80
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 struct CTexturePool_00f36f00 {
     void Release(void* texture);                   // 0x00F36F00
@@ -39,8 +39,8 @@ class CEngineScreenEffectDisplacementRenderer { public:
 void CEngineScreenEffectDisplacementRenderer::FinishDisplacementRendering()
 {
     if (m_active) {
-        g_pDisplayManager_01436e1c->SetRenderTarget(&m_renderTarget);
-        g_pDisplayManager_01436e1c->SetViewport(m_viewport);
+        NEngineInternal::GPDisplayManager->SetRenderTarget(&m_renderTarget);
+        NEngineInternal::GPDisplayManager->SetViewport(m_viewport);
         m_renderTarget.Uninitialise();
         if (!m_active) {
             g_pEngine_01436e98->m_texturePool.Release(m_pTexture);

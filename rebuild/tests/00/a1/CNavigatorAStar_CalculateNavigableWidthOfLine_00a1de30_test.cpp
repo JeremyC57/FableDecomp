@@ -1,4 +1,4 @@
-// Behaviour test for CNavigatorAStar::CalcWayPointWidths @ 0x00A1DE30: same logic over a model route / steering agent.
+// Behaviour test for CNavigatorAStar::CalculateNavigableWidthOfLine @ 0x00A1DE30: same logic over a model route / steering agent.
 #include <cstdio>
 
 class C2DVector { public: float X, Y; };
@@ -31,7 +31,7 @@ class CNavigatorAStar { public:
         startLayer = from.NavLayer;
         l = legWidths[leg][0]; r = legWidths[leg][1]; ++calls;
     }
-    void CalcWayPointWidths(const C2DVector& position)
+    void CalculateNavigableWidthOfLine(const C2DVector& position)
     {
         CNavWayPoint start = { position, route[0].NavLayer, true };
         CNavWayPoint* first = &route[0];
@@ -65,13 +65,13 @@ int main()
     C2DVector p = { 1.0f, 2.0f };
     bool ok = true;
     nav.count = 2; nav.calls = 0;
-    nav.CalcWayPointWidths(p);
+    nav.CalculateNavigableWidthOfLine(p);
     ok = ok && nav.calls == 2 && agent.BestDistLeft == 5.0f && agent.BestNextDistLeft == 3.0f && agent.ProximityForArrival == 2.5f;
     agent.radius = 2.5f;                          // 3 - 2.5 = 0.5 < 1 -> clamped
-    nav.CalcWayPointWidths(p);
+    nav.CalculateNavigableWidthOfLine(p);
     ok = ok && agent.ProximityForArrival == 1.0f;
     nav.count = 1; nav.calls = 0; agent.ProximityForArrival = 0;
-    nav.CalcWayPointWidths(p);
+    nav.CalculateNavigableWidthOfLine(p);
     ok = ok && nav.calls == 1 && agent.ProximityForArrival == 1.0f;
     if (!ok) { std::printf("00a1de30_TEST FAIL\n"); return 1; }
     std::printf("00a1de30_TEST PASS\n");

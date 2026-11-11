@@ -53,7 +53,7 @@ class CEnginePrimitivePrepareInfo { public:
     CIEngine* Engine;                                   // +0x34
 };
 class CWorldMap { public:
-    float GetGroundSizeZAt(const C3DVector* position);  // 0x0063A300
+    float GetGroundSizeZAt(const C3DVector& position) const;  // 0x0063A300 ?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
 };
 void __fastcall EditorDrawSphere(CEnginePrimitivePrepareInfo* info, const C3DVector& position, const C3DVector& colour, float radius);   // 0x00875FB0
 void __fastcall EditorDrawCross(CEnginePrimitivePrepareInfo* info, const C3DVector& position, float size);   // 0x008764E0
@@ -72,8 +72,8 @@ void CShape::EditorDrawHighlightPoints(CEnginePrimitivePrepareInfo* info, CWorld
     for (C3DVector* it = Points._M_start; it != Points._M_finish; ++it) {
         C3DVector top = *it;
         C3DVector bottom(top.X, top.Y + 0.25f, top.Z);
-        top.Z = worldMap->GetGroundSizeZAt(&top) + 0.15f;
-        bottom.Z = worldMap->GetGroundSizeZAt(&bottom) + 0.15f;
+        top.Z = worldMap->GetGroundSizeZAt(top) + 0.15f;
+        bottom.Z = worldMap->GetGroundSizeZAt(bottom) + 0.15f;
         float dx = top.X - cursor->X;
         float dy = top.Y - cursor->Y;
         if (dy * dy + dx * dx < 0.0625f)
@@ -82,7 +82,7 @@ void CShape::EditorDrawHighlightPoints(CEnginePrimitivePrepareInfo* info, CWorld
     }
     for (C3DVector** sel = SelectedPoints._M_start; sel != SelectedPoints._M_finish; ++sel) {
         C3DVector point = **sel;
-        point.Z = worldMap->GetGroundSizeZAt(&point) + 0.15f;
+        point.Z = worldMap->GetGroundSizeZAt(point) + 0.15f;
         EditorDrawCross(info, point, 0.25f);
     }
 }

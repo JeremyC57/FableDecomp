@@ -56,7 +56,6 @@ struct CThingAICreatureInterfaceAccess : CThingAICreature {
 
 extern fable_u32 g_InvSqrtMantissaTable[128];              // 0x013ce558
 extern float g_three;                                      // 0x0122ded4
-extern float g_half;                                       // 0x0122f59c
 extern float g_angryPushDistance;                          // 0x01383744
 
 FABLE_FORCEINLINE C3DVector& C3DVector::Normalise()
@@ -70,7 +69,7 @@ FABLE_FORCEINLINE C3DVector& C3DVector::Normalise()
         (g_InvSqrtMantissaTable[(bits >> 17) & 0x7fu] << 15);
     float r = *(float*)&estimateBits;
     r = (g_three - r * r * lengthSquared) * r;
-    r = r * g_half;
+    r = r * 0.5f;
     X = X * r;
     Y = Y * r;
     Z = Z * r;

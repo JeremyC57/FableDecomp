@@ -5,7 +5,7 @@
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00734050, length 96 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, __ftol2 @ 0x00BFEA70,
-// CCombatManager::DeregisterCombatant(CThingCreatureBase*) @ 0x006EA430 (landed). Global: the frame rate
+// CCombatManager::DeregisterCombatant(CThingCreatureBase&) @ 0x006EA430 (landed). Global: the frame rate
 // long @ 0x01375550 (15).
 // Layout = engine/CTCCombat.h: CombatManager +0x20, ParentCreature +0x24. CThing: the thing-type byte
 // +0x10, the interface presence bitset +0x20 (type 48 -> word 1 bit 16: `test dword ptr [eax+24h],10000h`),
@@ -37,7 +37,7 @@ public:
 
 class CThingCreatureBase;
 class CCombatManager { public:
-    void DeregisterCombatant_006ea430(CThingCreatureBase* creature);   // 0x006EA430
+    void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006EA430 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
 };
 
 struct CTCCombat_Methods : CTCCombat {
@@ -49,5 +49,5 @@ void CTCCombat_Methods::SetBlocked(CThing* blocker)
     CTCBase* component;
     if (blocker->GetType() == 2 && blocker->GetTC(TCI_COMBAT, &component))
         component->m_frameCounter = (long)(CMainGameComponent::GetConstantFPS() * 2.0f);
-    CombatManager->DeregisterCombatant_006ea430(ParentCreature);
+    CombatManager->DeregisterCombatant(*ParentCreature);
 }

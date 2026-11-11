@@ -11,7 +11,6 @@
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_STATEACCESS
 #include "engine/CThing.h"
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CDefString { public:                                // a definition-string handle: one table index
     long m_index;
 };
@@ -49,5 +48,5 @@ CCharString CGameScriptThing::GetDefName() const
         CCharString name = GDefStringTable.GetString((PThing.GetPItem()->GetDefName()).m_index);
         return name;
     }
-    return CCharString(g_emptyString_0122d70e, -1);
+    return CCharString("", -1);
 }

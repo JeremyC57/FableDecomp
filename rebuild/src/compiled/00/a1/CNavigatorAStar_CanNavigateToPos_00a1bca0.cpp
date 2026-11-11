@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1BCA0, 297 bytes, `ret 10h`.
 // Callees: the external interface's virtual slot 16 (+0x40, the nav layer of a position), CNavigatorManager::GetNodeAt(const
 //   C2DVector&, unsigned char) 0x00A14F70, CNavigatorBase::FindNearestNavigableNode(from node, blocked node, const C3DVector&, float,
-//   CNavigatorManager*) 0x00A475C0, CNavigatorBase::IsAnyPartOfNodeWithinDistOfPos(node, float, const C3DVector&, C2DVector*)
+//   CNavigatorManager*) 0x00A475C0, CNavigatorBase::IsAnyPartOfNodeWithinDistOfPos(const node*, float, const C3DVector&, C2DVector&)
 //   0x00A471D0, the node's virtual slot 7 (+0x1c, its region) and the region connectivity test 0x00A77780.
 // Layout (retail, Ego_r.pdb less the 12-byte map / 4-byte list): CNavigatorBase PInterface +0x14, NavigationManager +0x1c;
 //   CNavigatorAStar LastNavigableNodeVisited +0x88; CANavQuadTreeNode Blocked +0x0f.
@@ -17,7 +17,7 @@ class C2DVector { public:
 };
 #include "engine/C3DVector.h"
 class CNavRegion { public:
-    bool IsConnectedTo(const CNavRegion* other) const;   // 0x00A77780
+    bool IsConnectedToRegion(const CNavRegion& other) const;   // 0x00A77780 ?IsConnectedToRegion@CNavRegion@@QBE_NABV1@@Z
 };
 class CANavQuadTreeNode { public:
     virtual void v00();
@@ -66,7 +66,8 @@ class CNavigatorBase { public:
     CNavigatorManager*           NavigationManager; // +0x1c
     CSteeringAgent*              SteeringAgent;     // +0x20
     CANavQuadTreeNode* FindNearestNavigableNode(CANavQuadTreeNode* from, CANavQuadTreeNode* node, const C3DVector& position, float distance, CNavigatorManager* manager) const;   // 0x00A475C0
-    bool IsAnyPartOfNodeWithinDistOfPos(CANavQuadTreeNode* node, float distance, const C3DVector& position, C2DVector* nearest) const;   // 0x00A471D0
+protected:
+    bool IsAnyPartOfNodeWithinDistOfPos(const CANavQuadTreeNode* node, float distance, const C3DVector& position, C2DVector& nearest) const;   // 0x00A471D0 ?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@IBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z
 };
 class CNavigatorAStar : public CNavigatorBase { public:
     unsigned char      _pad24[0x88 - 0x24];
@@ -97,8 +98,8 @@ bool CNavigatorAStar::CanNavigateToPos(const C3DVector& from, const C3DVector& t
         endNode = FindNearestNavigableNode(startNode, endNode, to, radius, NavigationManager);
         if (!endNode)
             return false;
-        if (!IsAnyPartOfNodeWithinDistOfPos(endNode, radius, to, &nearest))
+        if (!IsAnyPartOfNodeWithinDistOfPos(endNode, radius, to, nearest))
             return false;
     }
-    return !endNode->Blocked && !startNode->Blocked && startNode->GetRegion()->IsConnectedTo(endNode->GetRegion());
+    return !endNode->Blocked && !startNode->Blocked && startNode->GetRegion()->IsConnectedToRegion(*endNode->GetRegion());
 }

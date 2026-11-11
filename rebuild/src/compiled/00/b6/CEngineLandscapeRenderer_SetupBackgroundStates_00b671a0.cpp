@@ -11,7 +11,7 @@
 //   The catalog label "_global::UpdateLighting" is a stand-in.
 // Callees: CEngineLightingManager::UpdateGlobalLightingStates() 0x00B46C80 (tail; bound spelling correct).
 // Globals: 0x01436E9C, the engine lighting manager pointer. Its spelling is NOT proven by two sources (the PDB name sets carry no
-//   data symbol here); `g_pLightingManager` follows the bound `?g_pLightingManager@@3PAVCEngineLightingManager@@A`, one of ~8
+//   data symbol here); `NEngineInternal::GPLightingManager` follows the bound `?NEngineInternal::GPLightingManager@@3PAVCEngineLightingManager@@A`, one of ~8
 //   bound variants for this address -- coordinator decision.
 // Layout: engine/CEngineLightingManager.h and engine/CEngineLandscapeRenderer.h are flattened (vptr as data), so both are included
 //   under the layout-rename pattern and the class is restated over the Fields struct with sizeof asserted equal. Members used
@@ -43,7 +43,7 @@ public:
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager) == sizeof(CEngineLightingManagerFields));
 
-extern CEngineLightingManager* g_pLightingManager;                // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 class CEngineLandscapeRenderer : public CEngineLandscapeRendererFields {
 private:
@@ -53,6 +53,6 @@ FABLE_STATIC_ASSERT(sizeof(CEngineLandscapeRenderer) == sizeof(CEngineLandscapeR
 
 void CEngineLandscapeRenderer::SetupBackgroundStates()
 {
-    g_pLightingManager->SetEnableFadedShadowFactor(true);
-    g_pLightingManager->UpdateGlobalLightingStates();
+    NEngineInternal::GPLightingManager->SetEnableFadedShadowFactor(true);
+    NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
 }

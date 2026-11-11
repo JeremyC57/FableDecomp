@@ -1,4 +1,4 @@
-// dynamic initializer for CCharString g_CCharString_013bace4 @ 0x013BACE4 -- constructs it from the literal, then registers its destructor with atexit
+// dynamic initializer for const CCharString ST_HEAD_TURN_H @ 0x013BACE4 -- constructs it from the literal, then registers its destructor with atexit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0121EBA0, oracle length 29 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -8,8 +8,10 @@
 // living at 0x013BACE4: it constructs it from the literal and registers the
 // destructor thunk @ 0x01229920 (`mov ecx,offset object ; jmp CCharString::~CCharString`, already landed)
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
-// exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
-// real identifier is not recoverable. One of 163 bodies of this shape.
+// exact function (and the thunk) from the .CRT$XCU table; the object's name is its PDB name
+// (see Names below). One of 163 bodies of this shape.
 #include "fable_string.h"      // CCharString: ctor @ 0x0099EBF0 / default @ 0x0099AED0, ~CCharString @ 0x0099EAE0
 
-CCharString g_CCharString_013bace4("ST_HEAD_TURN_H", -1);
+// Names (agentNF22): Ego_r.pdb + FableWin.pdb `dynamic initializer for 'ST_HEAD_TURN_H''; the Anniversary PDB (anniv360.pdb)
+// spells the object ?ST_HEAD_TURN_H@@3VCCharString@@B (a const CCharString, initialised from its own name). Was g_CCharString_013bace4.
+extern const CCharString ST_HEAD_TURN_H("ST_HEAD_TURN_H", -1);    // 0x013BACE4 ?ST_HEAD_TURN_H@@3VCCharString@@B

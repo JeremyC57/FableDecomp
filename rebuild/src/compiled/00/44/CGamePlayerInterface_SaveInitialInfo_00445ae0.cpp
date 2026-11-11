@@ -62,7 +62,7 @@ public:
     unsigned char _pad00[0x24];
     CMouse*       PMouse;                                // +0x24 scoped_ptr<CMouse>
 };
-extern CInputManager* PInputManager;                   // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 struct CGamePlayerInterface_Methods : CGamePlayerInterface {
     CAFile& GetPacketFile() { return *reinterpret_cast<CAFile*>(PacketFile); }
     void SaveInitialInfo();
@@ -70,7 +70,7 @@ struct CGamePlayerInterface_Methods : CGamePlayerInterface {
 void CGamePlayerInterface_Methods::SaveInitialInfo()
 {
     CSavedInputEvent saved;
-    CMouse* mouse = PInputManager->PMouse;
+    CMouse* mouse = GPInputManager->PMouse;
     if (mouse)
         mouse->GetMousePosition(saved.MousePos);
     GetPacketFile().Write(&saved, sizeof(saved), 0);

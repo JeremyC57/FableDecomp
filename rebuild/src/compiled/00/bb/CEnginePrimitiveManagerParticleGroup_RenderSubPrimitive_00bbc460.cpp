@@ -33,7 +33,7 @@
 #undef CEngineInternalPrimitiveParticleGroup
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }              // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }  // 0x01436E14
-extern CEngineLightingManager* g_pEngineLightingManager;                           // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 class CEngineSubPrimitiveBase : public CBaseClassNonCopyable {
 public:
@@ -112,7 +112,7 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimitive(CEngineSubPrimitiv
         NEngineInternal::GPRenderManager->SetAlphaBlendEnable(!WriteZBuffer);
         NEngineInternal::GPRenderManager->SetZBufferEnable(ReadZBuffer);
     }
-    g_pEngineLightingManager->UpdateGlobalLightingStates();
+    NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     CScopedVertexShaderConstantLayout layout(5);
     PointLightsSet = false;
     PointLightCount = 0;

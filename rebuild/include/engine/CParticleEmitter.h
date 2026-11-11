@@ -14,6 +14,11 @@ float __fastcall GetFadeOutStartDistance();float __fastcall GetFadeInStartDistan
 // Layout: Ego_r complete original fields, native vector12/update36; size0x16c.
 class CParticleEmitter:public CBaseObject {
 public:CParticleEmitter();virtual ~CParticleEmitter();
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
+ // Opt-in (agentNF22, row 0x00AF3D80): CParticleSystem::PeekEmitterTransform 0x00AF3D80 / PeekEmitterVelocity 0x00AF3DB0 read the
+ // protected Transform (+0xb0) / Velocity (+0x52) straight off the parent emitter, and neither PDB names an emitter accessor for them.
+ friend class CParticleSystem;
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEEMITTER_KILL
  // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause): Ego_r.pdb ?IsDead@CParticleEmitter@NParticleEngine@@QBE_NXZ (inline: the
  // Dead bit, bit 5 of the +0x40 word: `mov cl,[eax+40h] ; shr cl,5 ; test cl,1` at 0x0079CF6F) and ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ (0x00AEE8C0).

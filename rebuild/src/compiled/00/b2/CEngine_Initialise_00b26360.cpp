@@ -102,7 +102,7 @@ extern CRenderManager*       GPRenderManager;          // 0x01436E18
 extern CShaderRenderManager* GPShaderRenderManager;    // 0x01436E14
 }
 extern CInputManager*          g_pEngineInputManager_01436e10;   // 0x01436E10 (descriptive)
-extern CDisplayManager*        g_pDisplayManager_01436e1c;       // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 extern const CEngineDef*       g_pEngineDef_01436e20;            // 0x01436E20 (descriptive)
 extern const CEnvironmentDef*  g_pEngineEnvironmentDef;          // 0x01436E24 (descriptive, chunk 727)
 extern CDefinitionManager*     g_pEngineDefinitionManager;       // 0x01436E28 (descriptive, chunk 727)
@@ -130,7 +130,7 @@ extern CEngineLocalDetailGenerator*             g_pLocalDetailGenerator;        
 extern CEngineWorldMap*                         g_pEngineWorldMap;                   // 0x01436E8C
 extern CEngineStateBlocks*                      g_pEngineStateBlocks;                // 0x01436E90
 extern CEngineResourceManager*                  g_pResourceManager;                  // 0x01436E98
-extern CEngineLightingManager*                  g_pEngineLightingManager;            // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 extern CEngineCamera*                           g_pEngineCamera;                     // 0x01436EA0
 extern CEngineLandscapeRenderer*                g_LandscapeRenderer_01436EA8;        // 0x01436EA8
 extern CEngineSurfaceCompositionManager*        g_pEngineSurfaceCompositionManager;  // 0x01436EAC
@@ -161,11 +161,11 @@ bool CEngine::Initialise(const CEngineInit& init)
         g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGHEST", &PEngineVideoOptionsDefs[3]);
     }
     g_pEngineInputManager_01436e10 = GFGetSystemManager()->GetInputManager();
-    g_pDisplayManager_01436e1c = GFGetSystemManager()->GetDisplayManager();
+    NEngineInternal::GPDisplayManager = GFGetSystemManager()->GetDisplayManager();
     NEngineInternal::GPRenderManager = init.RenderManager;
     NEngineInternal::GPShaderRenderManager = &CShaderRenderManager::Get();
     g_pEngine_01436ea4 = this;
-    g_pDisplayManager_01436e1c->AddDeviceResetCallback(this);
+    NEngineInternal::GPDisplayManager->AddDeviceResetCallback(this);
     CDefaultEngineMemoryInit memory_init;
     memory_init.ApplyCustomSettings(init.MemoryInit);
     AddEngineComponent(new CEnginePrimitiveTypeInfo(), g_pEnginePrimitiveTypeInfo, 0);
@@ -181,7 +181,7 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddEngineComponent(new CEngineSubPrimitiveRenderer(), g_pEngineSubPrimitiveRenderer, 0);
     AddEngineComponent(new CEnginePrimitiveRenderer(), g_pEnginePrimitiveRenderer, 0);
     AddEngineComponent(new CEnginePrimitiveRenderer2D(), g_pEnginePrimitiveRenderer2D, 0);
-    AddEngineComponent(new CEngineLightingManager(), g_pEngineLightingManager, 0);
+    AddEngineComponent(new CEngineLightingManager(), NEngineInternal::GPLightingManager, 0);
     AddEngineComponent(new CEnginePrimitiveAttachmentManager(), g_pEnginePrimitiveAttachmentManager, 0);
     AddEngineComponent(new CEngineSurfaceCompositionManager(), g_pEngineSurfaceCompositionManager, 0);
     AddEngineComponent(new CEngineSimulationManager(), g_pEngineSimulationManager, 0);

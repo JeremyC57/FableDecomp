@@ -23,7 +23,7 @@ class CEngineLightingManager { public:
     void UpdateGlobalLightingStates();             // 0x00B46C80
     void EnableFog();                              // 0x00B46890
 };
-extern CEngineLightingManager* g_pEngineLightingManager_01436e9c;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 class CShaderRenderManager { public:
     void SetWorldTransform(const CMatrix3x4& matrix);   // 0x009881F0
@@ -36,8 +36,8 @@ class CEngineLandscapeRenderer { public:
 
 void CEngineLandscapeRenderer::SetupCommonStates()
 {
-    g_pEngineLightingManager_01436e9c->UpdateGlobalLightingStates();
-    g_pEngineLightingManager_01436e9c->EnableFog();
+    NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
+    NEngineInternal::GPLightingManager->EnableFog();
     CMatrix3x4 identity;
     identity.SetIdentity();
     g_pShaderRenderManager_01436e14->SetWorldTransform(identity);

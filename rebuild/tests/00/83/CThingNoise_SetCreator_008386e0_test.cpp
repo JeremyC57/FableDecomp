@@ -1,4 +1,4 @@
-// Behaviour test for CThingNoise::PassToNoiseComponent @ 0x008386E0: the thing reaches this thing's own interface-0x37 component.
+// Behaviour test for CThingNoise::SetCreator @ 0x008386E0: the creator reaches this thing's own interface-0x37 component.
 #include <cstdio>
 
 class CTCBase { public: int unused; };
@@ -52,16 +52,16 @@ struct CTestThing : CThing {
 };
 
 class CTCNoise : public CTCBase { public:
-    CThing* taken; int calls;
-    void TakeThing(CThing* thing) { taken = thing; ++calls; }
+    const CThing* taken; int calls;
+    void SetCreator(const CThing& creator) { taken = &creator; ++calls; }
 };
 
 class CThingNoise : public CTestThing { public:
-    void PassToNoiseComponent(CThing* thing)
+    void SetCreator(const CThing& creator)
     {
         CTCNoise* noise;
         GetInterface(&noise, 0x37);
-        noise->TakeThing(thing);
+        noise->SetCreator(creator);
     }
 };
 
@@ -71,7 +71,7 @@ int main()
     CTCNoise other; other.taken = 0; other.calls = 0;
     CThingNoise self; self.Init(0x37, &noise, &other);
     CTestThing hearer; hearer.Init(0x10, 0, 0);
-    self.PassToNoiseComponent(&hearer);
+    self.SetCreator(hearer);
     bool ok = noise.taken == &hearer && noise.calls == 1 && other.calls == 0;
     if (!ok) { std::printf("008386e0_TEST FAIL\n"); return 1; }
     std::printf("008386e0_TEST PASS\n");

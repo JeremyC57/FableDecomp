@@ -33,9 +33,8 @@ class CThing { public:
     }
 };
 
-enum EEmotePriority { EMOTE_PRIORITY_FOLLOWER = 1 };
-
 class CTCEmoteIcon { public:
+    enum EEmotePriority { EMOTE_PRIORITY_DEBUG_HIGH=0,EMOTE_PRIORITY_FOLLOWING=1,EMOTE_PRIORITY_TROPHY_MINIGAME=2,EMOTE_PRIORITY_WIFE=3,EMOTE_PRIORITY_ATTRACTION=4,EMOTE_PRIORITY_EXPRESSION=5,EMOTE_PRIORITY_BRIBE=6,EMOTE_PRIORITY_DEBUG_LOW=7,EMOTE_PRIORITY_NONE=8 };   // nested (Ego_r ?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z)
     unsigned char _pad00[0x14];
     long          EmoteIcon;                                // +0x14
     void SetEmoteIcon(EEmotePriority priority, long icon, float activeTime, float scale, unsigned char alpha);   // 0x0071AAB0
@@ -71,6 +70,6 @@ void CTCFollowed::RemoveEmoteIcon(CThing& follower)
         CTCEmoteIcon* icon = (CTCEmoteIcon*)follower.GetInterface(0x45);
         long shown = icon->EmoteIcon;
         if (shown == GetDefinitionManager().PGlobalDef->FollowerEmoteIcon)
-            icon->SetEmoteIcon(EMOTE_PRIORITY_FOLLOWER, 0, 0.0f, 1.0f, 0xff);
+            icon->SetEmoteIcon(CTCEmoteIcon::EMOTE_PRIORITY_FOLLOWING, 0, 0.0f, 1.0f, 0xff);
     }
 }

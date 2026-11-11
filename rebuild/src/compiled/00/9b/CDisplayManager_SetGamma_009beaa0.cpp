@@ -16,7 +16,6 @@ struct NativeD3DDevice {
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(NativeD3DDevice::GammaMethod)==4);
 #endif
-extern const float g_RampZero; //0122DEDC
 extern const float g_RampMaximum; //0129B3F0
 class CDisplayManager { public:
  unsigned char DisplayState[0x58];NativeD3DDevice* PD3DDevice;
@@ -28,7 +27,7 @@ void CDisplayManager::SetGamma(float gamma,bool calibrate) {
  Gamma=gamma;GammaRamp ramp;
  for(int i=0;i<=255;++i){
   float value=(i*256)*gamma;
-  value=value<g_RampZero?g_RampZero:(value>g_RampMaximum?g_RampMaximum:value);
+  value=value<0.0f?0.0f:(value>g_RampMaximum?g_RampMaximum:value);
   unsigned short v=(unsigned short)value;
   ramp.Red[i]=v;ramp.Green[i]=v;ramp.Blue[i]=v;
  }

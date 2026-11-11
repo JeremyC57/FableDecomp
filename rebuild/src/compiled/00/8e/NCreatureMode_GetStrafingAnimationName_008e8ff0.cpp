@@ -22,6 +22,7 @@
 #define FABLE_RETAIL_C3DVECTOR
 #include "fable_string.h"
 #include "engine/C3DVector.h"
+#include "engine/EPlayerMode.h"
 #include <math.h>
 
 enum EMovementType { MOVEMENT_TYPE_0 };
@@ -106,7 +107,7 @@ public:
 
 class CPlayer {
 public:
-    long GetCurrentMode() const;                // 0x00633BE0 (EPlayerMode)
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                // 0x00633BE0 (EPlayerMode)
 };
 
 class CThing {
@@ -115,7 +116,7 @@ public:
     unsigned char   ThingType;                  // +0x10 (2 = a creature that can be player-controlled)
     unsigned char   _pad11[0x60 - 0x11];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    CPlayer* GetPlayer() const;                 // 0x004C7A10
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10 ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ
 };
 
 namespace NCreatureMode {
@@ -149,7 +150,7 @@ CCharString FABLE_FASTCALL GetStrafingAnimationName(const C3DVector& movement, c
 
 CCharString FABLE_FASTCALL GetStrafingAnimationName(const CThing& thing, EMovementType movementType)
 {
-    if (thing.ThingType == 2 && thing.GetPlayer()->GetCurrentMode() == 0x19)
+    if (thing.ThingType == 2 && thing.PeekPlayer().GetCurrentMode() == 0x19)
         return CCharString("STRAFE_IDLE");
     const CTCPhysicsBase* physics = thing.PhysicsTC;
     C3DVector movement;

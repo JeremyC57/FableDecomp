@@ -20,6 +20,7 @@
 //         local read before the implicit "" conversion.
 #include "fable_compiler.h"
 class CTCBase;
+class CTCParamsBase;
 class CThingCreatureBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -30,7 +31,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    class CTCBase* AddTC(const class CCharString& name, bool a, void* params);   // 0x004C9D60
+    CTCBase* AddTC(const class CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

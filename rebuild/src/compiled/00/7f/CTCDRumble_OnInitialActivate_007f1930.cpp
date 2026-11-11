@@ -118,7 +118,7 @@ class CInputManager { public:
     unsigned char   _pad00[0x2c];
     CJoystickEntry* Joysticks;                          // +0x2c
 };
-extern CInputManager* PInputManager;                  // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -167,7 +167,7 @@ void CTCDRumble::OnInitialActivate()
             scale = RumbleDistanceFalloff(thing->GetPos(), hero->GetPos());
         }
         long joystick = hero->GetJoystickDeviceNumber();
-        CJoystickDevice* device = PInputManager->Joysticks[joystick].Device;
+        CJoystickDevice* device = GPInputManager->Joysticks[joystick].Device;
         CInitRumble init(scale * Strength, 0.5f, attackTime, decayTime, false);
         device->StartRumble(4, &init, false);
         LifeTimer = (long)(CMainGameComponent::GetConstantFPS() * Length);

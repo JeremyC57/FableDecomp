@@ -4,7 +4,7 @@
 //          label "CViewBase::GetDisplayEngine"), CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 //          CThing::GetPos @ 0x004C73D0 (`[this+60h] + 0Ch`), CThingNoise::Create(long def, const C3DVector& pos,
 //          float radius) @ 0x008385B0 (static __fastcall: def in ecx, position in edx, radius on the stack),
-//          CThingNoise::PassToNoiseComponent(CThing*) @ 0x008386E0 (landed; propagated "OnActionUse" label).
+//          CThingNoise::SetCreator(const CThing&) @ 0x008386E0 (Ego_r/FableWin ?SetCreator@CThingNoise@@QAEXABVCThing@@@Z).
 // Layout: the thing's dead flag is bit 0 of the byte at +0x91 (as in the landed IS_THING_ALIVE family).
 // Shape: arguments right to left: the -1.0f radius is pushed before GetPos; the def index lives in edi.
 class CCharString;
@@ -27,7 +27,7 @@ public:
 
 class CThingNoise : public CThing { public:
     static CThingNoise* __fastcall Create(long defIndex, const C3DVector& pos, float radius);   // 0x008385B0
-    void PassToNoiseComponent(CThing* thing);       // 0x008386E0
+    void SetCreator(const CThing& creator);         // 0x008386E0 ?SetCreator@CThingNoise@@QAEXABVCThing@@@Z
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -40,6 +40,6 @@ void CThingCreatureBase::MakeNoise(const CCharString& noiseDefName)
     if (defIndex) {
         CThingNoise* noise = CThingNoise::Create(defIndex, GetPos(), -1.0f);
         if (noise && !noise->m_dead)
-            noise->PassToNoiseComponent(this);
+            noise->SetCreator(*this);
     }
 }

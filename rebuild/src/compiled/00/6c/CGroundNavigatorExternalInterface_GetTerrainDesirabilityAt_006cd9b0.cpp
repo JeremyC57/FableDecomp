@@ -8,7 +8,6 @@
 // parameter so the compiler emits 'ret 4'.
 
 #include "engine/CGroundNavigatorExternalInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-extern float g_terrainDesirability; // ds:0x122ded8 (reloc-masked)
 
 struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {
     float GetTerrainDesirabilityAt(void* pos);
@@ -17,5 +16,5 @@ struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInter
 float CGroundNavigatorExternalInterface_Methods::GetTerrainDesirabilityAt(void* pos)
 {
     (void)pos;
-    return g_terrainDesirability;
+    return 1.0f;
 }

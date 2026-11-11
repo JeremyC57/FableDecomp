@@ -49,7 +49,6 @@ public:
 };
 
 extern const wchar_t g_emptyWideString_0122d70c[];             // 0x0122D70C (L"")
-extern const char g_emptyString_0122d70e[];                    // 0x0122D70E ("")
 
 bool CThingPlayerCreature::PreOnKill()
 {
@@ -67,7 +66,7 @@ bool CThingPlayerCreature::PreOnKill()
         CTCQuestCompletionUI* ui = 0;
         if (HasTC(TCI_QUEST_COMPLETION_UI))
             ui = (CTCQuestCompletionUI*)(&GetTC(TCI_QUEST_COMPLETION_UI));
-        ui->Activate(CTCQuestCompletionUI::COMPLETION_TYPE_3, g_emptyString_0122d70e, true, g_emptyWideString_0122d70c, true);
+        ui->Activate(CTCQuestCompletionUI::COMPLETION_TYPE_3, "", true, g_emptyWideString_0122d70c, true);
         return false;
     }
     return true;

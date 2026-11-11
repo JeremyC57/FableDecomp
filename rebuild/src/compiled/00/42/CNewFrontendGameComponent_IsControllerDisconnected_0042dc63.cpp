@@ -19,7 +19,7 @@ class CInputManager {
 public:
     bool IsJoystickDeviceNumberActive(long device_number) const;   // 0x009F5250
 };
-extern CInputManager* PInputManager;                   // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 class CNewFrontendGameComponent {
 public:
     unsigned char _body[0x10];
@@ -30,6 +30,6 @@ private:
 bool CNewFrontendGameComponent::IsControllerDisconnected()
 {
     if (CGameJoystickManager::Get().HasExplicitMainPlayerJoystickDeviceNumber())
-        return !PInputManager->IsJoystickDeviceNumberActive(CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber());
+        return !GPInputManager->IsJoystickDeviceNumberActive(CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber());
     return false;
 }

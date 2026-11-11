@@ -58,13 +58,12 @@ public:
 
 extern const char g_strNewThing[];                 // 0x01245A88 "NewThing"
 extern const char g_strEndThingLevel[];            // 0x01245A78 "END_THING_LEVEL"
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 
 void CThingManager::LoadHeroStateScript(CStringParser& parser)
 {
     parser.ReadAsStringUntilPastString(g_strNewThing);
     CCharString heroState = parser.ReadAsStringUntilString(g_strEndThingLevel);
-    CStringParser heroParser(heroState, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+    CStringParser heroParser(heroState, 0, CCharString("", -1), 0);
     heroParser.SkipWhitespace();
     CPersistContext context(heroParser, 0, true, 0, 0, 0);
     LoadSingleThing(context, 1);

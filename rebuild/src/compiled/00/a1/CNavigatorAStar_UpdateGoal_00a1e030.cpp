@@ -4,16 +4,16 @@
 // Leaf: ?UpdateGoal@CNavigatorAStar@@QAEXABVC3DVector@@VC2DVector@@1@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1E030, 217 bytes, thiscall `ret 14h` (the reference plus two by-value C2DVectors).
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?UpdateGoal@CNavigatorAStar@@QAEXABVC3DVector@@VC2DVector@@1@Z -- (1) the 20 bytes of
-//   arguments are exactly one reference and two C2DVectors, the reference forwarded to CalcWayPointWidths(const C3DVector&); (2) Ego_r
+//   arguments are exactly one reference and two C2DVectors, the reference forwarded to CalculateNavigableWidthOfLine(const C3DVector&); (2) Ego_r
 //   donor order puts UpdateGoal right after CalculateNavigableWidthOfLine, as retail 0x00A1DF60 -> 0x00A1E030; (3) its body uses the
 //   CSteeringAgent goal API (SetGoal) and the best-distance pair UpdateGoal maintains. The manifest's "waypoint_update_with_width_calc"
 //   is descriptive.
-// Callees: CNavigatorAStar::CalcWayPointWidths(const C3DVector&) 0x00A1DE30; CSteeringAgent::SetGoal(const C2DVector&, const C2DVector&)
+// Callees: CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector&) 0x00A1DE30; CSteeringAgent::SetGoal(const C2DVector&, const C2DVector&)
 //   0x00A20970 (both PDBs; the landed binding's CNavWayPoint spelling is wrong, NAME_FIXES.tsv); CNavigatorExternalInterface virtual
 //   slot 6 PeekNavigatorRadius(bool) const (+0x18) through the agent's inline GetRadius. Constant 5.0f @ 0x012462A8.
 // Layout: CNavigatorBase from the retail branch of engine/CNavigatorBase.h (SteeringAgent +0x20); CNavigatorAStar::Route +0x8c is the
 //   retail 4-byte STLport list<CNavWayPoint> (as InitialiseFromPreCalculatedRoute 0x00A1E370); CSteeringAgent (no engine header) is
-//   Ego_r.pdb with retail's one-word lists (BestDistLeft +0x40, BestDistRight +0x44, as the landed CalcWayPointWidths 0x00A1DE30).
+//   Ego_r.pdb with retail's one-word lists (BestDistLeft +0x40, BestDistRight +0x44, as the landed CalculateNavigableWidthOfLine 0x00A1DE30).
 // Shape (what matched): the two best-distance references bound before the length and the radius call (retail keeps the agent in
 //   edi and re-derives GetRadius's `this` with `mov eax,edi`; a named agent pointer or binding them after the call does not); the
 //   length is C2DVector::GetMagnitude through the float sqrt overload (engine/C2DVector.h retail branch); the next goal is one
@@ -135,7 +135,7 @@ class CNavigatorAStar : public CNavigatorBase {
 public:
     unsigned char                _pad24[0x8c - 0x24];        // +0x24 States .. LastNavigableNodeVisited
     std::list<CNavWayPoint>      Route;                       // +0x8c
-    void CalcWayPointWidths(const C3DVector& position);       // 0x00A1DE30
+    void CalculateNavigableWidthOfLine(const C3DVector& position);   // 0x00A1DE30 ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z
     void UpdateGoal(const C3DVector& position, C2DVector oldGoal, C2DVector newGoal);
 };
 
@@ -146,7 +146,7 @@ void CNavigatorAStar::UpdateGoal(const C3DVector& position, C2DVector oldGoal, C
     float distance = (newGoal - oldGoal).GetMagnitude();
     float minWidth = SteeringAgent->GetRadius(false) * 5.0f;
     if (bestDistLeft - distance < minWidth || bestDistRight - distance < minWidth)
-        CalcWayPointWidths(position);
+        CalculateNavigableWidthOfLine(position);
     else {
         bestDistLeft -= distance;
         bestDistRight -= distance;

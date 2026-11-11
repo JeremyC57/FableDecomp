@@ -1,0 +1,3 @@
+entry	address	claimed_symbol	reason
+# No claim rejected. One claim corrected rather than rejected:
+# 113/114 0x013BACE4/0x013BACE8: queue spelled ?ST_HEAD_TURN_H@@3VCCharString@@A / ?ST_HEAD_TURN_V@@3VCCharString@@A; anniv360.pdb spells both @@B (const CCharString). Applied with @@B.

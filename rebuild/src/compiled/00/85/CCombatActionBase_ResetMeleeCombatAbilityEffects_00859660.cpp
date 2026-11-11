@@ -51,7 +51,7 @@
 #include "engine/CDefClassBase.h"
 #include "engine/CParentDefClassBase.h"
 
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>& thing);   // 0x004CC340
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340 = IS_THING_ALIVE<CIntelligentPointer<CThing> > (Ego_r/FableWin ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z)
 
 class CMeleeCombatKnockdownEffects : public CParentDefClassBase { public:   // RTTI : CParentDefClassBase; Ego_r.pdb members (retail offsets)
     long BlendInFrames;                                     // +0x3c

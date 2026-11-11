@@ -6,7 +6,7 @@
 // Callees: ??0CCharString@@QAE@PBDJ@Z 0x0099EBF0 / ~CCharString 0x0099EAE0, NGraphicAppearance::CTCGraphicAppearance::GetDummyObject
 //   0x004C08C0, CThing::GetPos 0x004C73D0; inline CThing::GetTCGraphicAppearance (+0x64) / GetPhysicsTC (+0x60) and
 //   CTCPhysicsBase::GetRadius (+0x34); constants 1.2f 0x0125A690, 1.8f 0x0125C288, 1.0f 0x0122DED8 and the const epsilon
-//   g_NormaliseEpsilon 0x0129BA3C (0.0001f; landed spelling ?g_NormaliseEpsilon@@3MB).
+//   DELTA_NOTIONAL_ZERO 0x0129BA3C (0.0001f; ?DELTA_NOTIONAL_ZERO@@3MB, declared by engine/C3DVector.h).
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING
@@ -25,7 +25,6 @@
 #include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
 #include "engine/CGameCameraManager.h"
 
-extern const float g_NormaliseEpsilon;                   // 0x0129BA3C (0.0001f)
 // Descriptive (no PDB name found): the open-interval test of the projection.
 static inline bool InRange(float value, float low, float high) { return value > low && value < high; }
 
@@ -42,7 +41,7 @@ bool CGameCameraManager::IsPosCameraInsideThing(const CThing& thing, const C3DVe
     axis *= (1.0f / height);
     C3DVector offset = pos - base;
     double along = offset.Dot(axis);
-    if (InRange(along, -g_NormaliseEpsilon, height)) {
+    if (InRange(along, -DELTA_NOTIONAL_ZERO, height)) {
         C3DVector perp = offset - axis * (float)along;
         if (perp.GetSquaredMagnitude() < radius * radius)
             return true;

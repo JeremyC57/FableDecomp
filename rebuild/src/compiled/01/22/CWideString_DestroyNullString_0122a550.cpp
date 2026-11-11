@@ -30,7 +30,6 @@ class CWideStringData { public:                                   // 0x10 bytes
     long          owners;                                  // +0x0C
 };
 
-extern long g_CWideStringInstanceCount;                    // 0x013BCA20
 
 class CWideString {
 public:
@@ -39,6 +38,8 @@ public:
     static CWideString NullString;                         // 0x013BCA24
 private:
     CWideStringData* storage_;
+protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
 };
 
 static FABLE_FORCEINLINE long DecrementOwners(long* owners)
@@ -66,7 +67,7 @@ CWideString::~CWideString()
         storage_ = 0;
     }
 
-    --g_CWideStringInstanceCount;
+    --NoStrings;
 }
 
 CWideString CWideString::NullString;

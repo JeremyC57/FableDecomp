@@ -71,7 +71,7 @@ class CDisplayManager { public:
 };
 class CRenderManager {
 };
-extern CRenderManager* g_pRenderManager;            // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 extern void* g_pEngineComponentGlobal;              // 0x01436E78
 extern void* g_pEngineGlobal_01436eb0;              // 0x01436EB0
 
@@ -133,7 +133,7 @@ void CEngine::Uninitialise()
 {
     if (!IsInitialised)
         return;
-    ((CDisplayManager*)g_pRenderManager)->RemoveDeviceResetCallback(this);
+    NEngineInternal::GPDisplayManager->RemoveDeviceResetCallback(this);
     g_pRenderManagerCore->PD3DDevice->SetStreamSource(0, 0, 0, 0);
     g_pRenderManagerCore->SetIndices(0);
     g_pRenderManagerCore->SetTexture(0, 0);

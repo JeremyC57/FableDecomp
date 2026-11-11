@@ -35,7 +35,7 @@ class CThingSearchTools { public:
 };
 #include "engine/EPlayerMode.h"
 class CPlayer { public:
-    long GetCurrentMode();                              // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                              // 0x00633BE0
     void AddMode(EPlayerMode mode, bool exclusive);            // 0x006345C0 ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (agentNF16)
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared

@@ -84,7 +84,6 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)   // the pointe
 class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
-extern const float g_one;                            // 0x0122DED8
 
 // agentNF19: the base is the shared retail CTCBase model (engine/CTCBase.h, FABLE_RETAIL_CTCBASE: vptr +0x00, ParentThing +0x04,
 // ToBeRemoved +0x08, size 0x0C), so the base call binds ?FrameUpdate@CTCBase@@UAEXXZ (0x006868A0, slot 9).
@@ -118,7 +117,7 @@ void CTCKrakenTentacle::FrameUpdate()
     {
         if (!DoneDeathStuff) {
             CThing* thing = ParentThing;
-            if (thing->EmergeFraction < g_one) {
+            if (thing->EmergeFraction < 1.0f) {
                 CTCCreatureFlags9* flags;
                 if (thing->GetInterface(&flags, 9))
                     flags->m_canBeTargeted = 0;

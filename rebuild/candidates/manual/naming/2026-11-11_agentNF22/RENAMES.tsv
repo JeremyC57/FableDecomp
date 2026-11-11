@@ -1,0 +1,127 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00cbe0c0	_global	SetDSTGame	?SetDSTGame@@YIXAAVCGameScriptInterfaceBase@@@Z	SetDSTGame	?SetCurrentThingManager@@YIXPAX@Z	Ego_r.pdb / FableWin.pdb; binds pDSTGame 0x0143E8F8 (entry 103)
+0x0121eba0	_static_init	ST_HEAD_TURN_H	??__EST_HEAD_TURN_H@@YAXXZ	_static_init::g_CCharString_013bace4	??__Eg_CCharString_013bace4@@YAXXZ	anniv360.pdb ?ST_HEAD_TURN_H@@3VCCharString@@B (const; queue said @@A); dynamic initializer of 0x013BACE4
+0x0121ebc0	_static_init	ST_HEAD_TURN_V	??__EST_HEAD_TURN_V@@YAXXZ	_static_init::g_CCharString_013bace8	??__Eg_CCharString_013bace8@@YAXXZ	anniv360.pdb ?ST_HEAD_TURN_V@@3VCCharString@@B; dynamic initializer of 0x013BACE8
+0x008386e0	CThingNoise	SetCreator	?SetCreator@CThingNoise@@QAEXABVCThing@@@Z	CThingNoise::PassToNoiseComponent	?PassToNoiseComponent@CThingNoise@@QAEXPAVCThing@@@Z	Ego_r.pdb / FableWin.pdb ?SetCreator@CThingNoise@@QAEXABVCThing@@@Z; forwards to CTCNoise::SetCreator; queue entry 51; callee 0x00749880
+0x00a1de30	CNavigatorAStar	CalculateNavigableWidthOfLine	?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z	CNavigatorAStar::CalcWayPointWidths	?CalcWayPointWidths@CNavigatorAStar@@QAEXABVC3DVector@@@Z	Ego_r.pdb / FableWin.pdb ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z; queue entry 68
+0x00780410	CTCFlammable	SetOnFire	?SetOnFire@CTCFlammable@@QAEXXZ	CMusicManager_00780410::ResetMusicEntriesOffsets	?ResetMusicEntriesOffsets@CMusicManager_00780410@@QAEXXZ	Ego_r.pdb / FableWin.pdb; queue entry 38; body walks FirePoints (+0x10) and Resistance
+0x00af3d80	NParticleEngine::CParticleSystem	PeekEmitterTransform	?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ	CVertexBufferWin32::DoSizeof	?M@C00af3d80@@QAEJXZ	Ego_r.pdb / FableWin.pdb ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ; queue entry 72
+0x004c78a0	CThing	SetCutscenePauseBehaviour	?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z	CThing::SetCutscenePauseBehaviour	?SetCutscenePauseBehaviour@CThing@@QAEXJ@Z	Ego_r.pdb / FableWin.pdb ECutsceneBehaviour parameter; queue entry 15
+0x0071aab0	CTCEmoteIcon	SetEmoteIcon	?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z	CTCEmoteIcon::SetEmoteIcon	?SetEmoteIcon@CTCEmoteIcon@@QAEXJJMME@Z	Ego_r.pdb / FableWin.pdb nested CTCEmoteIcon::EEmotePriority parameter; queue entry 32
+0x00af8f80	NParticleEngine::CParticleSystem	ScaleParticleDimensions	?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAM@Z	CParticleSystem::ScaleParticleDimensions	?ScaleParticleDimensions@CParticleSystem@@QAEXPAM@Z	Ego_r.pdb / FableWin.pdb (namespace, float&, const); queue entry 73
+0x00a471d0	CNavigatorBase	IsAnyPartOfNodeWithinDistOfPos	?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@IBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z	IsAnyPartOfNodeWithinDistOfPos	?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@QBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z	Ego_r.pdb / FableWin.pdb protected (IBE); queue entry 70
+0x00811830	NEntityEvents::CEventHitBySpecialAbility	CEventHitBySpecialAbility	??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z	NEntityEvents::CEventHitBySpecialAbility::CEventHitBySpecialAbility	??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@J@Z	Ego_r.pdb / FableWin.pdb EHeroAbility parameter; queue entry 50
+0x00db0600	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl	GivenTeddy	?GivenTeddy@CNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@AAEXXZ	CNOVI_TeddyGirl::GivenTeddy	?GivenTeddy@CNOVI_TeddyGirl@@QAEXXZ	Ego_r.pdb private GivenTeddy; queue entry 107; body takes OBJECT_TEDDY_BEAR_UNGIVEABLE, sets TeddySolution "B"
+0x004acb50	CThing	GetTCDriver<CTCDParticleEmitter>	??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z	CThing::GetTCDriver<CTCDParticleEmitter>	??$GetTCDriver@VCTCDExperienceOrb@@@CThing@@QAE_NPAPAVCTCDExperienceOrb@@@Z	Ego_r.pdb / FableWin.pdb ??$GetTCDriver@VCTCDParticleEmitter@@@CThing; body tests bit 75 = TCI_PARTICLE_EMITTER (entry 12)
+0x007512c0	CThing	GetTCDriver<CTCDExplosion>	??$GetTCDriver@VCTCDExplosion@@@CThing@@QAE_NPAPAVCTCDExplosion@@@Z	CThing::GetTCDriver<CTCDExperienceOrb>	?GetTCDriver_CTCDExperienceOrb@@YI_NPAVCThing@@HPAPAX@Z	Ego_r.pdb / FableWin.pdb ??$GetTCDriver@VCTCDExplosion@@@CThing; body tests bit 65 = TCI_EXPLOSION (entry 34)
+0x00633be0	CPlayer	GetCurrentMode	?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ	CPlayer::GetCurrentMode	?GetCurrentMode@@YIHPAUA1@@@Z	Ego_r.pdb / FableWin.pdb ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ; body PlayerModes.back() (entry 22)
+0x004874d0	CPlayer	IsFirstPersonTargeting	?IsFirstPersonTargeting@CPlayer@@QBE_NXZ	CPlayer::IsFirstPersonTargeting	@Is_4874d0@0	Ego_r.pdb / FableWin.pdb ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ; calls GetCurrentMode (entry 6)
+0x006ea430	CCombatManager	DeregisterCombatant	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	CCombatManager::DeregisterCombatant	?CCombatManager_DeregisterCombatant@@YIXPAVCCombatManager@@PAXPAVCThingCreatureBase@@@Z	Ego_r.pdb / FableWin.pdb ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (entry 31)
+0x0099e4c0	CCharString	operator const char *	??BCCharString@@QBEPBDXZ	CCharString::operator_char_const*	?CCharString_operator_char_const_ptr_b@@YIPBDPBVCCharString@@@Z	Ego_r.pdb / FableWin.pdb ??BCCharString@@QBEPBDXZ (entry 55)
+0x0099efb0	CCharString	operator=	??4CCharString@@QAEABV0@ABV0@@Z	CCharString::operator=	?CCharString_operator_assign@@YIPAVCCharString@@PAV1@PAX0@Z	Ego_r.pdb / FableWin.pdb ??4CCharString@@QAEABV0@ABV0@@Z (entry 59)
+0x00445b80	CGamePlayerInterface	IsToggleZTarget	?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ	_global::GetMember_dword0x7a0_derefbyte0x48_00445b80	?CTCShotDefinitionBase_CanBeHitByMeleeStrike@@YI_NPBUCTCShotDefinitionBase@@@Z	Ego_r.pdb / FableWin.pdb ?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ (entry 4); reads CControlsDef::ToggleZTarget +0x48
+0x004cc340	_global	IS_THING_ALIVE<CIntelligentPointer<CThing> >	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	IS_THING_ALIVE<class CIntelligentPointer<class CThing>>	?IsThingAlive_004cc340@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z	Ego_r.pdb / FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YA_NABV?$CIntelligentPointer@VCThing@@@@@Z (entry 21)
+0x007e7450	CScriptGameResourceObjectScriptedThingBase	IsPerformingScriptTask	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	CScriptGameResourceObjectScriptedThingBase::IsPerformingScriptTask	?CScriptGameResourceObjectScriptedThingBase_IsPerformingScriptTask@@YI_NPAVCScriptGameResourceObjectScriptedThingBase@@@Z	Ego_r.pdb / FableWin.pdb virtual (UBE) (entry 45)
+0x007e7490	CScriptGameResourceObjectScriptedThingBase	GetScriptThing	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ	CScriptGameResourceObjectScriptedThingBase::GetScriptThing	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase_Methods@@QBE?AVCScriptThing@@XZ	Ego_r.pdb / FableWin.pdb (entry 46)
+0x007e72f0	CScriptGameResourceObjectScriptedThingBase	MoveToPosition	?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z	CScriptGameResourceObjectScriptedThingBase::MoveToPosition	?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@QAEXHHHHH@Z	Ego_r.pdb / FableWin.pdb (const C3DVector&, float, EScriptEntityMoveType, bool, bool) (entry 44)
+0x00ed7580	CSpawnedFunc1<NScript::CV_SwordInTheStoneScript,CScriptThing>	SuspendableProcess	?SuspendableProcess@?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@UAEXXZ	_unattributed::Fire_CDispatcher_00ed7580	?Fire_CDispatcher_00ed7580@CDispatcher_00ed7580@@QAEXXZ	Ego_r.pdb / FableWin.pdb; vtable 0x012F3374 slot 4 (entries 108/111)
+0x00411570	CBasicString<char>	Compare	?Compare@?$CBasicString@D@@KIJPBD0@Z	CBasicString<char>::Compare	?strcmp_signed@@YIJPBD0@Z	Ego_r.pdb / FableWin.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z (protected static fastcall, entry 2)
+# Section 2
+address	old_symbol	new_symbol
+0x013b8388	?PInputManager@@3PAVCInputManager@@A	?GPInputManager@@3PAVCInputManager@@A
+0x0122dedc	?g_floatZero@@3MB	__real@00000000
+0x0122ded8	?CPlayerGui_UpdateTimer_00437500_Lower@@3MB	__real@3f800000
+0x00633be0	@Mode_4874d0@0	?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ
+0x0122d70e	?g_emptyString_0122d70e@@3QBDB	??_C@_00CNPNBAHC@?$AA@
+0x0122ded8	?g_bulletTimeRatioNumerator@@3MB	__real@3f800000
+0x0122ded8	?g_terrainDesirability@@3MA	__real@3f800000
+0x0122dedc	?g_zero_0122dedc@@3MB	__real@00000000
+0x00633be0	?GetCurrentMode@CPlayer@@QAEJXZ	?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ
+0x004cc340	?IS_THING_ALIVE@@YI_NPAV?$CIntelligentPointer@VCThing@@@@@Z	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z
+0x008386e0	?PassToNoiseComponent@CThingNoise@@QAEXPAVCThing@@@Z	?SetCreator@CThingNoise@@QAEXABVCThing@@@Z
+0x0099a380	??0CBaseObject@@QAE@XZ	??0CBaseObject@@IAE@XZ
+0x00445b80	?IsValid@CTarget_00445b80@@QAE_NXZ	?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ
+0x00445b80	?IsInputEnabled@CGamePlayerInterface@@QAE_NXZ	?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ
+0x00633be0	?GetCurrentMode@CPlayer@@QBEJXZ	?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ
+0x0129ba3c	?g_NormaliseEpsilon@@3MB	?DELTA_NOTIONAL_ZERO@@3MB
+0x0122dedc	?g_fZero@@3MB	__real@00000000
+0x006ae5c0	?GetTCDriver@CThing@@QAE_NPAPAVCTCDExperienceOrb@@@Z	??$GetTCDriver@VCTCDExperienceOrb@@@CThing@@QAE_NPAPAVCTCDExperienceOrb@@@Z
+0x0077a180	?OnCollected@CTCDExperienceOrb@@QAEXPAVCThing@@@Z	?OnCollected@CTCDExperienceOrb@@QAEXAAVCThing@@@Z
+0x0122ded8	?g_one_0122ded8@@3MB	__real@3f800000
+0x0122dedc	?g_zero@@3MB	__real@00000000
+0x0071aab0	?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@@JMME@Z	?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z
+0x006ea2c0	?RemoveCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+0x0122f59c	?g_threshold@@3MB	__real@3f000000
+0x004acb50	?GetTCDriver@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z	??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z
+0x004c7a10	?GetPlayer@CThing@@QAEPAVCPlayer@@XZ	?PeekPlayer@CThing@@QBEABVCPlayer@@XZ
+0x006ea430	?DeregisterCombatant_006ea430@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+0x0122dedc	?g_const_122dedc@@3MA	__real@00000000
+0x0122ded8	?g_bias_base@@3MA	__real@3f800000
+0x0122f59c	?g_half@@3MA	__real@3f000000
+0x004c78a0	?SetCutscenePauseBehaviour@CThing@@QAEXJ@Z	?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z
+0x013bace4	?g_HeadTurnAnimHName@@3VCCharString@@A	?ST_HEAD_TURN_H@@3VCCharString@@B
+0x013bace8	?g_HeadTurnAnimVName@@3VCCharString@@A	?ST_HEAD_TURN_V@@3VCCharString@@B
+0x0063a300	?GetGroundSizeZAt@CWorldMap@@QAEMPBVC3DVector@@@Z	?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
+0x004cc340	?IS_THING_ALIVE_004cc340@@YI_NABUCBaseIntelligentPointer@@@Z	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z
+0x007512c0	?GetTCDriver@CThing@@QAE_NPAPAVCTCDExplosion@@@Z	??$GetTCDriver@VCTCDExplosion@@@CThing@@QAE_NPAPAVCTCDExplosion@@@Z
+0x004c7a30	?GetPlayer@CThing@@QAEPAUCPlayer@@XZ	?GetPlayer@CThing@@QAEAAVCPlayer@@XZ
+0x00a14440	?Normalise@C3DVector@@QAEAAV1@XZ	?AccurateNormalise@C3DVector@@QAEAAV1@XZ
+0x00811830	??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@J@Z	??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z
+0x00a14440	?Normalise@C3DVector@@QAEXXZ	?AccurateNormalise@C3DVector@@QAEAAV1@XZ
+0x004c3090	??0CEnginePrimitiveLine@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MJK_NJJ@Z	??0CEnginePrimitiveLine@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MW4EEnginePrimitiveBlendMode@@K_NW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z
+0x004cc340	?IS_THING_ALIVE@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z
+0x0122ded8	?g_one@@3MB	__real@3f800000
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@JJ@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x00749880	?TakeThing@CTCNoise@@QAEXPAVCThing@@@Z	?SetCreator@CTCNoise@@QAEXABVCThing@@@Z
+0x0080cbf0	?AddExcludedThing@CTCDExplosion@@QAEXPAVCThing@@@Z	?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z
+0x0122ded8	?CGSI_Rumble_One@@3MB	__real@3f800000
+0x0122dedc	?CGSI_Rumble_Zero@@3MB	__real@00000000
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCForcePushPower@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCTurncoatSpell@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCWillLightning@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCSolidToThing@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCHitOnCollision@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCHitOnCollision@@ABVCCharString@@_NPAX@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x009ad410	?GetDefGlobalIndex@CDefinitionManager@@QAEJABVCCharString@@@Z	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z
+0x0080cbf0	?AddImmuneThing@CTCDExplosion@@QAEXPAVCThing@@@Z	?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCAssassinRush@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x0071aab0	?SetEmoteIcon@CTCEmoteIcon@@QAEXJJMME@Z	?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z
+0x009ad410	?GetDefGlobalIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@@Z	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z
+0x004c7a10	?GetPlayer@CThing@@QBEPAVCPlayer@@XZ	?PeekPlayer@CThing@@QBEABVCPlayer@@XZ
+0x0122f59c	?g_dragonFlightScale@@3MA	__real@3f000000
+0x004c9d60	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPAX@Z	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+0x0122dedc	?g_maxActionSecondsBeforeReaction@@3MA	__real@00000000
+0x0122ded8	?EnemyMargin@@3MB	__real@3f800000
+0x013bca20	?g_CWideStringInstanceCount@@3JA	?NoStrings@CWideString@@1JA
+0x013bca20	?g_CWideStringInstanceCount_013BCA20@@3HA	?NoStrings@CWideString@@1JA
+0x013bca20	_g_charStringRefTrace	?NoStrings@CWideString@@1JA
+0x0129aaf4	?g_EmptyCharString_0129AAF4@@3PADA	?NullChar@CCharString@@1DB
+0x0099e9b0	?UnassignString@CCharString@@QAEXXZ	?UnassignString@CCharString@@IAEXXZ
+0x0122dedc	?g_RampZero@@3MB	__real@00000000
+0x013cd550	?g_CosTable@@3PAMA	?GFastCosTable@@3PAMA
+0x00a471d0	?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@QBE_NPAVCANavQuadTreeNode@@MABVC3DVector@@PAVC2DVector@@@Z	?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@IBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z
+0x00a77780	?IsConnectedTo@CNavRegion@@QBE_NPBV1@@Z	?IsConnectedToRegion@CNavRegion@@QBE_NABV1@@Z
+0x00a1de30	?CalcWayPointWidths@CNavigatorAStar@@QAEXABVC3DVector@@@Z	?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z
+0x0122d70e	?EmptyString@@3QBDB	??_C@_00CNPNBAHC@?$AA@
+0x0122ded8	?g_One@@3MB	__real@3f800000
+0x00af3d80	?GetSystemTransform@CParticleSystem@NParticleEngine@@QBEPBVCMatrix3x4@@XZ	?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ
+0x013cd550	?g_cosTable@@3QBMB	?GFastCosTable@@3PAMA
+0x0122dedc	?Zero_0122dedc@@3MB	__real@00000000
+0x00af8f80	?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QAEXAAM@Z	?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAM@Z
+0x01436e9c	?g_pEngineLightingManager@@3PAVCEngineLightingManager@@A	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
+0x01436e1c	?g_pDisplayManager_01436e1c@@3PAVCDisplayManager@@A	?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
+0x01436e1c	?g_pRenderManager@@3PAVCRenderManager@@A	?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
+0x01436e9c	?g_pLightingManager@@3PAVCEngineLightingManager@@A	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
+0x01436e9c	?g_pEngineLightingManager_01436e9c@@3PAVCEngineLightingManager@@A	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
+0x01436e1c	?g_pDisplayManager@@3PAVCDisplayManager@@A	?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
+0x0122ded8	?g_fOne_0122DED8@@3MA	__real@3f800000
+0x0143e8f8	?g_value_0143e8f8@@3PAXA	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
+0x0143e928	?RelationCounters@CQ_SunnyvaleMasterData@NScript@@2PAJA	?NPCAttitudes@@3PAJA
+0x0143e934	?RelationSuffixes@CQ_SunnyvaleMasterData@NScript@@2PAVCCharString@@A	?NPCAttitudeStrings@@3PAVCCharString@@A
+0x0143e8f8	?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
+0x00db0660	?AddGoodDeed@CQ_NewOakValeIntroScript@@QAEXXZ	?AddGoodDeed@CQ_NewOakValeIntroScript@NScript@@QAEXXZ
+0x00cbe2ff	?IsDistanceBetweenThingsUnder@@YI_NPBVCScriptThing@@0M@Z	?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z
+0x01231710	??_7CEventBase@@6B@	??_7CBaseClass@@6B@
+0x01238c8c	??_7CEvent_00ed7580@@6B@	??_7CScriptThing@@6B@
+0x013bace4	?g_CCharString_013bace4@@3VCCharString@@A	?ST_HEAD_TURN_H@@3VCCharString@@B
+0x013bace8	?g_CCharString_013bace8@@3VCCharString@@A	?ST_HEAD_TURN_V@@3VCCharString@@B

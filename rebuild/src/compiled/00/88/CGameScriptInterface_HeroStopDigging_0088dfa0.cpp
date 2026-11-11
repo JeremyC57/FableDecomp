@@ -10,7 +10,7 @@ enum EPlayerMode;                                  // MS forward enum (CPlayer::
 #include "engine/CGameScriptInterface.h"
 
 class CPlayer { public:
-    long GetCurrentMode();                          // 0x00633BE0 EPlayerMode
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                          // 0x00633BE0 EPlayerMode
     void RemoveMode(EPlayerMode mode);                     // 0x00634190
 };
 

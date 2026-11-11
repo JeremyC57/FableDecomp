@@ -15,7 +15,7 @@ namespace NScript { class CPredicateBase; }
 class CScriptThing { public:
     long m_thingId;
 };
-bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing* a, const CScriptThing* b, float distance);   // 0x00CBE2FF
+bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 struct CQuestCalls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Tick();                           // slot 7 (+0x1C)
@@ -67,7 +67,7 @@ void NScript::CV_BordelloScript::CM_HeroDownstairs::Main()
 {
     while (!IsActiveThreadTerminating())
     {
-        if (IsDistanceBetweenThingsUnder(&Thing, PQuest->GetHero(), 3.0f))
+        if (IsDistanceBetweenThingsUnder(Thing, *PQuest->GetHero(), 3.0f))
         {
             if (IsActiveThreadTerminating())
                 return;

@@ -13,7 +13,7 @@
 //   0x0123CF9C slot 33. The shot TU is size-optimised with a frame pointer: `optimize("y", off)` + `("s", on)`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), IS_THING_ALIVE<CThing*> @ 0x00436380 (`__fastcall`, by
 //   const reference), GetCreatureFireAtPos(CThing*) @ 0x007BEDF0 (`__fastcall`, C3DVector through the hidden pointer in ecx),
-//   C3DVector::Normalise @ 0x00A14440, CTCBase::GetWorldMap() @ 0x00686D30, CWorldMap::GetGroundSizeZAt(const C3DVector&)
+//   C3DVector::AccurateNormalise @ 0x00A14440, CTCBase::GetWorldMap() @ 0x00686D30, CWorldMap::GetGroundSizeZAt(const C3DVector&)
 //   @ 0x0063A300 (float), the physics body's SetPosition (slot 31, +0x7C), CTCPhysicsBase::SetVelocity(const C3DVector&)
 //   @ 0x0066F9B0 (manifest "CTCPhysicsRigidBody::SetFacingAnglesFromRHSet", named from this use), the physics body's slot 43
 //   (+0xAC, 0x14), CCharString(const char*, long) @ 0x0099EBF0 ("CTCHitOnCollision" @ 0x0123D1D8), CThing::AddTC(const
@@ -37,7 +37,7 @@ public:
     FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     FABLE_FORCEINLINE C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     FABLE_FORCEINLINE C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector& Normalise();                             // 0x00A14440
+    C3DVector& AccurateNormalise();                     // 0x00A14440 ?AccurateNormalise@C3DVector@@QAEAAV1@XZ
 };
 class CCharString {
 public:
@@ -123,7 +123,7 @@ void CTCShotDefinitionTearInGround::InitMovement()
     CTCPhysicsBase* physics = ParentThing->PhysicsTC;
     C3DVector direction = GetCreatureFireAtPos(*reinterpret_cast<CThing*>(PTargetThing.GetPItem())) - physics->Position;
     direction.Z = 0.0f;
-    direction.Normalise();
+    direction.AccurateNormalise();
     C3DVector ground = physics->Position;
     ground.Z = GetWorldMap().GetGroundSizeZAt(ground);
     physics->SetPosition(direction * 2.0f + ground);

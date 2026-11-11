@@ -4,8 +4,8 @@
 // Name: FableWin.pdb ?GetComponentCost@CPSCLight@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z;
 // slot 20 of the vtable (rtti-vtables.tsv: slot 20 of CPSCSpline/CPSCOrbit/CPSCUpdateNormal is their landed
 // GetComponentCost; `ret 10h`, four arguments).
-// Callees: CParticleSystem::ScaleParticleDimensions(float&) @ 0x00AF8F80 (landed non-const; called through a
-// const_cast on the const system).
+// Callees: CParticleSystem::ScaleParticleDimensions(float&) @ 0x00AF8F80 (const; Ego_r/FableWin
+// ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAM@Z).
 // Constants: 1.0f @ 0x0122DED8 (compiler literal).
 // Layout: the landed AddToBoundingSphere 0x00B18AF0 (retail offsets equal the PDB): LightStartRenderWorldRadius +0x2C,
 // LightEndRenderWorldRadius +0x30, the +0x48 flag bits (LightEnabled bit 2); CParticleSystemCost (as the landed
@@ -24,7 +24,7 @@ class CParticleSystemCost { public:
 };
 
 class CParticleSystem { public:
-    void ScaleParticleDimensions(float& size);                  // 0x00AF8F80
+    void ScaleParticleDimensions(float& size) const;            // 0x00AF8F80 ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAM@Z
 };
 
 class CPSCBase { public:
@@ -73,7 +73,7 @@ void CPSCLight::GetComponentCost(CParticleSystemCost& cost, const CParticleSyste
         cost.LightCount += 1.0f;
         float radius = LightStartRenderWorldRadius > LightEndRenderWorldRadius ? LightStartRenderWorldRadius
                                                                                 : LightEndRenderWorldRadius;
-        const_cast<CParticleSystem&>(system).ScaleParticleDimensions(radius);
+        system.ScaleParticleDimensions(radius);
         cost.LightCost += radius;
     }
 }

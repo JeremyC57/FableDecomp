@@ -8,14 +8,14 @@
 //   the CParticleSystem accessors and CPSCRenderSprite, as retail 0x00AF9000 sits after ScaleParticleDimensions); the two
 //   identical bodies are CPSCSingleSprite::SmoothFadeValue (IBE) and CPSCLight::SmoothFadeValue (QBE). Was catalogued as
 //   CPSCLight::SmoothFadeValue; the body never reads `this`, so the __fastcall free form gives the same bytes.
-// Globals: cosine table g_CosTable @ 0x013CD550 (1025 floats, built at start-up); constants 0.5f @ 0x0122F59C,
+// Globals: cosine table GFastCosTable @ 0x013CD550 (1025 floats, built at start-up); constants 0.5f @ 0x0122F59C,
 //          1024.0f @ 0x01230010, 1.0f @ 0x0122DED8.
 // Shape: t scaled in place in its argument slot (`fst [esp+0Ch]`); `fild` of the rounded index gives the fraction;
 // the index is masked to 10 bits for the two table reads.
 namespace NParticleEngine {
 float __fastcall GFSmoothFadeValue(float t);   // FableWin.pdb ?GFSmoothFadeValue@NParticleEngine@@YIMM@Z
 }
-extern float g_CosTable[1025];          // 0x013CD550
+extern float GFastCosTable[1025];      // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2*pi*k/1024), k = 0..1024)
 // the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
 #include "engine/GFFloatToLongNear.h"
 float __fastcall NParticleEngine::GFSmoothFadeValue(float t)
@@ -25,5 +25,5 @@ float __fastcall NParticleEngine::GFSmoothFadeValue(float t)
     long i = GFFloatToLongNear(t - 0.5f);
     float frac = t - (float)i;
     i &= 0x3ff;
-    return 0.5f - ((1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1]) * 0.5f;
+    return 0.5f - ((1.0f - frac) * GFastCosTable[i] + frac * GFastCosTable[i + 1]) * 0.5f;
 }
