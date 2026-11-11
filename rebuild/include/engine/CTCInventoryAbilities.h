@@ -107,6 +107,15 @@ private:
                            CCountedPointer<NUISystem::CComponent>& actions);                                     // 0x005F077F
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_INITIALISE
+    // Retail opt-in (agentNF8, rows 0x005F3E3E / 0x005EEDE2 / 0x005EE207): Ego_r.pdb + FableWin.pdb
+    // ?InitialiseExpressions@CTCInventoryAbilities@@QAEXXZ 0x005F3E3E, ?InitialiseAbilities@CTCInventoryAbilities@@QAEXXZ 0x005EEDE2 and
+    // (FableWin.pdb) ?GetExpressionPDef@CTCInventoryAbilities@@QBE?AV?@23019CBVCExpressionDef@@@@J@Z 0x005EE207, all out of
+    // line in retail. Declarations only.
+    void InitialiseExpressions();                                                                                // 0x005F3E3E
+    void InitialiseAbilities();                                                                                  // 0x005EEDE2
+    CDefPointer<const class CExpressionDef> GetExpressionPDef(long index) const;                                 // 0x005EE207
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAXLEVEL_FIRST
     // Opt-in (chunk 1005): GetAbilityMaximumLevel declared before GetAbilityLevel. VC7.1 evaluates the two out-of-line calls of
     // `GetAbilityLevel(a) < GetAbilityMaximumLevel(a)` with the later-declared callee first; retail calls GetAbilityLevel

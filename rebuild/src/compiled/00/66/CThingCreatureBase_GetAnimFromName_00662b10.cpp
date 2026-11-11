@@ -1,93 +1,52 @@
-// CThingCreatureBase::GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index) -- the index-th appearance animation called `name` passing the filter, else one of any group, else the first "DEFAULT"
-// Leaf: ?GetAnimFromName@CThingCreatureBase
+// CThingCreatureBase::GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index) const -- the index-th appearance animation called `name` passing the filter, else one of any group, else the first "DEFAULT"
+// Leaf: ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00662B10, 242 bytes (+14 int3), `ret 0Ch`.
-// Callees: CDefClassBase::GetSubDef<CAppearanceDef> @ 0x0042B0A2 (byte-twin label GetSubDef<CAbilityDef>), the animation
-//   set's "has a matching animation" test @ 0x005DC2E0 and CAnimationSet::GetAnimation(const CCharString&, long, const
-//   CAnimFilterBase&) @ 0x005DC340, CCharString(const char*, long) @ 0x0099EBF0 ("DEFAULT" @ 0x01230554), ~CCharString
-//   @ 0x0099EAE0, the def's virtual slot 1 (+4) at a zero count.
-// Identity: the fallback filter is CAnimFilterNoGroup (vtable 0x0122FFDC) destroyed through the CAnimFilterBase store
-//   0x0122FFCC (the landed CThingPlayerCreature::vfunc_73 0x00662CC0 model). The overload with a long flag is 0x00662A00.
-// Layout: retail CThing PBaseDef +0x70; CAppearanceDef Animation +0x34; a counted def holds its count at +4.
-// Shape: the sub-def out pointer is the zeroed `push ecx` word, copied into a holder whose destructor releases it at
-//   each of the three returns (the landed vfunc_73 model); the fallback filters are temporaries in the dead filter
-//   argument slot (the base-vtable store is their destructor); "DEFAULT" is passed as a plain literal so its implicit
-//   CCharString temporary is built before the other arguments are pushed.
-// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-class CAnimationEntry;
-class CAnimFilterBase { public:                        // vtable 0x0122FFCC
-    virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
-    virtual CAnimFilterBase* Clone() const;
-    ~CAnimFilterBase() {}
-};
-struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
-};
-class CAnimationSet { public:
-    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC2E0
-    CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
-class CDefPointeeBase { public:                        // a counted definition object
-    virtual void v000();
-    virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
-    long m_refCount;                            // +4
-    void ReleaseDef()
-    {
-        if (--m_refCount == 0)
-            DestroyDef();
-    }
-};
-template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) { }
-};
-template <class T> struct CHeldDef {            // the def copied out of the escaped out pointer, released at scope end
-    T* Object;
-    CHeldDef(T* object) : Object(object) { }
-    ~CHeldDef() { if (Object) Object->ReleaseDef(); }
-    T* operator->() const { return Object; }
-};
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x2c];
-    CAnimationSet Animation;                    // +0x34
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceDef>& out);       // 0x0042B0A2
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
-#pragma auto_inline(on)
+// Identity: Ego_r.pdb ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@J@Z (donor 0x0053DA10;
+// the index overload 0x00662A00 is donor 0x0053D8E0).
+// Callees: CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, CAnimationSet::AnimExists 0x005DC2E0 and CAnimationSet::GetAnim(const
+//   CCharString&, long, const CAnimFilterBase&) const 0x005DC340, CCharString(const char*, long) 0x0099EBF0 ("DEFAULT" 0x01230554),
+//   ~CCharString 0x0099EAE0, the def's virtual Delete at a zero count.
+// Identity: the fallback filter is CAnimFilterNoGroup (vtable 0x0122FFDC) destroyed through the CAnimFilterBase store 0x0122FFCC.
+// Layout: CThing PBaseDef +0x70; CAppearanceDef Animation +0x34.
+// Shape: the sub-def out pointer is the zeroed `push ecx` word released at each of the three returns; the fallback filters are
+//   temporaries in the dead filter argument slot; "DEFAULT" is passed as a plain literal so its implicit CCharString temporary is
+//   built before the other arguments are pushed.
+// Name fix (agentNF8 2026-11-11): moved off the local CDefClassBase / CDefPointer / CAnimationSet / CThingCreatureBase stand-ins (and a
+// same-TU stand-in GetSubDef body) onto the shared headers: 0x0042B0A2 binds GetSubDef<CAppearanceDef> (was
+// ?GetSubDef@CDefClassBase@@QAE_NAAV?$CDefPointer@VCAppearanceDef@@@@@Z), 0x005DC340 binds the PDB
+// ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (was GetAnimation, returning a pointer), and the
+// row's own symbol is the PDB const one returning a reference (was QAEPAVCAnimationEntry@@...).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
+#define FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CAnimFilterNoGroup.h"
 
-class CThingCreatureBase { public:
-    unsigned char  _pad00[0x70];
-    CDefClassBase* PBaseDef;                    // +0x70
-    CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index);
-};
-
-CAnimationEntry* CThingCreatureBase::GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index)
+const CAnimationEntry& CThingCreatureBase::GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index) const
 {
-    CDefPointer<CAppearanceDef> out;
-    PBaseDef->GetSubDef(out);
-    CHeldDef<CAppearanceDef> def(out.m_pObject);
+    CDefPointer<const CAppearanceDef> def;
+    PBaseDef->GetSubDef(&def);
     const CAnimationSet& animations = def->Animation;
     if (animations.AnimExists(name, filter))
-        return animations.GetAnimation(name, index, filter);
+        return animations.GetAnim(name, index, filter);
     if (animations.AnimExists(name, CAnimFilterNoGroup()))
-        return animations.GetAnimation(name, index, CAnimFilterNoGroup());
-    return animations.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
+        return animations.GetAnim(name, index, CAnimFilterNoGroup());
+    return animations.GetAnim("DEFAULT", 0, CAnimFilterNoGroup());
 }

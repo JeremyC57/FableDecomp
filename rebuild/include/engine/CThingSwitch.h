@@ -13,6 +13,14 @@ protected:
     CCharString TriggerableObjectScriptName; // +e0 ctor529b35
     long TimesTriggered; // +e4; complete nativee8
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGSWITCH_PEEKDEFINITION
+    // Retail opt-in (agentNF8, row 0x0083C1E0): Ego_r.pdb ?PeekDefinition@CThingSwitch@@IBE?AV?$CDefPointer@$$CBVCThingSwitchDef@@@@XZ
+    // (protected const, the def by value through the hidden pointer; out of line in retail at 0x0083C1E0, called by WorldUpdate
+    // 0x0083CD70). Declaration only (needs FABLE_RETAIL_DEF_CLASS_BASE and engine/CDefPointer.h).
+protected:
+    CDefPointer<const class CThingSwitchDef> PeekDefinition() const;     // 0x0083C1E0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingSwitch)==0xe8);
 #endif

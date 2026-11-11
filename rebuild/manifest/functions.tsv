@@ -10641,7 +10641,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0057a690	GetMoralityPercentage	CTCHeroStats	__thiscall	float	1	CTCHeroStats *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCHeroStats_GetMoralityPercentage_0057a690.cpp
 0057a6b8	GetMoralityCategory	CTCHeroStats	unknown	undefined	0		0	yes	accepted									
 0057a730	SetMaxStamina	CTCHeroStats	__thiscall	void	2	CTCHeroStats *,long	1	yes	accepted									
-0057a753	AddSuccessfulBlockParry	CTCHeroExperience	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCHeroExperience_AddSuccessfulBlockParry_0057a753.cpp
+0057a753	OnHealthModified	CTCHeroStats	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCHeroExperience_AddSuccessfulBlockParry_0057a753.cpp
 0057a774	SetMoney	CTCHeroStats	__thiscall	void	3	CTCHeroStats *,long,bool	1	yes	accepted									
 0057a7b9	GetDrinkResistance	CTCHeroStats	__thiscall	CWideString	1	CTCHeroStats *	1	yes	accepted									
 0057a82a	Drink	CTCHeroStats	__thiscall	void	2	CTCHeroStats *,float	1	yes	accepted									
@@ -24890,7 +24890,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083be50	DrawIsDrawable	CThingSwitch	__thiscall	bool	1	CThingHolySite *	1	yes	accepted									
 0083be90	TriggerSetEnvironment	CThingSwitch	__thiscall	void	1	CThingSwitch *	1	yes	accepted									
 0083bf90	Save	CThingSwitch	__thiscall	void	2	CThingSwitch *,CCharString *	1	yes	accepted									
-0083c1e0	GetSwitchDef	CThingSwitch	__thiscall	long	1	CThingBuilding *	1	yes	accepted									
+0083c1e0	PeekDefinition	CThingSwitch	__thiscall	long	1	CThingBuilding *	1	yes	accepted									
 0083c230	SerialiseGameState	CThingSwitch	__thiscall	bool	2	CThingPhysicalSwitch *,CPersistContext *	1	yes	accepted									
 0083c2d0	ConstructFromLevelScript	CThingSwitch	__thiscall	bool	2	CThingSwitch *,char *	1	yes	accepted									
 0083c5d0	Create	CThingSwitch	__fastcall	CThingTrackNode *	3	long,C3DVector *,CCharString	1	yes	accepted									

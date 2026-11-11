@@ -1,86 +1,41 @@
 // CTCVillageMember::OnCreate() -- when the owner has a definition index, fetches its definition and resolves the village-member sub-definition into PDef
-// Leaf: OnCreate
+// Leaf: ?OnCreate@CTCVillageMember@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EE370, length 86 bytes. CTCVillageMember vtable 0x0124007C slot 4, the
-// CTCBase OnCreate slot (as CTCTrophy::OnCreate 0x006DDA20 in slot 4; PDB `?OnCreate@CTCVillageMember@@UAEXXZ`).
-// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0 (landed naming, 0x005BDB4D), CDefinitionManager::GetDef<
-// CDefClassBase>(long, CDefPointer*) @ 0x0042AF3C (template argument propagated), CDefClassBase::GetSubDef<
-// CVillageMemberDef>(CDefPointer*) @ 0x007EE6E0 (template argument propagated), the def's virtual slot 1 (destroy).
-// Shape: the def index is a zero-extended word of the owner (+0x8C); the counted local is zeroed after the argument
-// pushes (`mov dword ptr [esp+0Ch],0`), GetDef's arguments are pushed before the manager call; the local's object
-// is read once into esi for the GetSubDef call and its release (`test ; je ; dec [esi+4] ; jne ; call [vt+4]`):
-// a CDefPointer destructor re-reads the escaped local after the call, so the holder is modelled as a plain record
-// whose object is copied to a pointer local and released through it.
-// Layout: Ego_r.pdb CTCVillageMember (retail = PDB): PDef +0x0C.
-class CVillageMemberDef;
-
-struct CDefPointerVillageMemberDef {
-    const CVillageMemberDef* Object;
-};
-
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Destroy();                 // slot 1
-    long RefCount;                          // +0x04
-    bool GetSubDef(CDefPointerVillageMemberDef* out);   // 0x007EE6E0
-};
-
-struct CDefPointerClassBase {
-    CDefClassBase* Object;
-};
-
-inline void ReleaseDef(CDefClassBase* def)
-{
-    if (def) {
-        if (--def->RefCount == 0)
-            def->Destroy();
-    }
-}
-
-class CDefinitionManager { public:
-    bool GetDef(long globalDefIndex, CDefPointerClassBase* out) const;   // 0x0042AF3C
-};
-class CGameDefinitionManager : public CDefinitionManager
-{
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalDefIndex, CDefPointerClassBase* out) const
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-
+// CTCBase OnCreate slot (PDB `?OnCreate@CTCVillageMember@@UAEXXZ`).
+// Callees: CTCBase::GetDefinitionManager() const 0x006869D0, CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer*) 0x0042AF3C,
+// CDefClassBase::GetSubDef<CVillageMemberDef>(CDefPointer*) 0x007EE6E0, the def's Release.
+// Shape: the def index is a zero-extended word of the owner (+0x8C); the counted local is zeroed after the argument pushes, GetDef's
+// arguments are pushed before the manager call; GetDef is the header's noinline template body (out of line in retail), so the local's
+// object is read once into esi for the GetSubDef call and its release.
+// Layout: engine/CTCVillageMember.h (retail = PDB): PDef +0x0C.
+// Name fix (agentNF8 2026-11-11): moved off the local CDefPointerClassBase / CDefClassBase / ReleaseDef stand-ins onto the shared
+// headers: 0x0042AF3C binds GetDef<CThingBaseDef> (was GetDef<CDefClassBase>) and 0x007EE6E0 the PDB
+// ??$GetSubDef@VCVillageMemberDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillageMemberDef@@@@@Z.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#include "fable_string.h"
 #include "engine/CThing.h"
-
-class CTCBase
-{
-protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
-};
-
-class CTCVillageMember : public CTCBase { public:
-    void*                       __vftable;  // +0x00
-    CThing*                     Thing;      // +0x04
-    unsigned char               _pad_0x08[0x4];
-    CDefPointerVillageMemberDef PDef;       // +0x0C
-    void OnCreate();
-};
+#include "engine/CThingBaseDef.h"
+#include "engine/CTCVillageMember.h"
+#include "engine/CGameDefinitionManager.h"
 
 void CTCVillageMember::OnCreate()
 {
-    if (Thing->GetDefGlobalIndex() != 0) {
-        CDefPointerClassBase def;
-        def.Object = 0;
-        CThing* thing = Thing;
+    if (ParentThing->GetDefGlobalIndex() != 0) {
+        CDefPointer<const CThingBaseDef> def;
+        CThing* thing = ParentThing;
         GetDefinitionManager().GetDef(thing->GetDefGlobalIndex(), &def);
-        CDefClassBase* classDef = def.Object;
-        classDef->GetSubDef(&PDef);
-        ReleaseDef(classDef);
+        def->GetSubDef(&PDef);
     }
 }

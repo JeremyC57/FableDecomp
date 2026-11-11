@@ -1,0 +1,10 @@
+- Once GETDEF_GLOBAL_BODY / GETSUBDEF_BODY (noinline) are opted in, natural shared-header C++ usually matches with no tricks.
+- GETSUBDEF_BODY needs T::StatGetTypeName; for defs without it (CVillageMemberDef, CInventoryItemDef), omit the BODY macro and use the declaration.
+- Retail re-reads ParentThing before a second GetDefGlobalIndex call; a `CThing* thing = ParentThing;` local reproduces it (007ee370, DIFFER 84v86 -> match).
+- Including CDefString.h without FABLE_RETAIL_CDEFSTRINGTABLE trips an #error that shows up as a cl hang/timeout on the Wine lane; define it first.
+- CThingSwitch-style "return a CDefPointer" rows need engine/CThingBaseDef.h included; otherwise static_cast to an incomplete CDefClassBase fails.
+- 0x0042B144 is a second GetDef<T> instantiation (not CThingBaseDef); read the row's COMDAT order before assuming T.
+- Free `__fastcall` stand-ins for CTC getters (CTCHeroStats) become PDB const members with identical bytes once the class header is in.
+- Ego_r donor function order (GetMoralityMax / OnHealthModified / IsDrunk / GetMaxDrunkenness) is a second source for naming adjacent retail functions.
+- The CThingCreatureBase anim rows need the whole chain (CCLASS, CINTELLIGENTPOINTER, CTHINGPHYSICAL, CTHINGGAMEOBJECT, CTHINGCREATUREBASE + ANIM*) opted in; keep one shared define block for them.
+- Never wait with a foreground sleep; poll with a background until-loop when sharing the compiler lane.

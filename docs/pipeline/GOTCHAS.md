@@ -2739,3 +2739,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 1023, 2026-11-11) 0x0061A6A0: `CWideString text = L"..."` (block-scoped, copy-initialised) re-takes the temporary's address with `lea`; an explicit `CWideString(L"...")` argument pushes eax instead.
 - (chunk 1023, 2026-11-11) 0x00B67270: a texel index written as `y * pitch + x * bpp + b` is strength-reduced by VC7.1 into two induction slots that reuse dead locals (this / texture pointer, ebp-8 / ebp-4) exactly as retail; named row / column offset locals get their own slots and a bigger frame.
 - (chunk 1023, 2026-11-11) 0x00B67270: a named outer-loop float copied into a vector member lets VC7.1 hoist member*member out of the inner loop (extra slot, frame +4); writing the member from the invariant expression in the inner loop keeps retail's in-loop `fld Y ; fmul Y` (VC7.1 still hoists the expression itself).
+- (agentNF8, 2026-11-11) Once GETDEF_GLOBAL_BODY / GETSUBDEF_BODY (noinline) are opted in, natural shared-header C++ usually matches with no tricks.
+- (agentNF8, 2026-11-11) GETSUBDEF_BODY needs T::StatGetTypeName; for defs without it (CVillageMemberDef, CInventoryItemDef), omit the BODY macro and use the declaration.
+- (agentNF8, 2026-11-11) Retail re-reads ParentThing before a second GetDefGlobalIndex call; a `CThing* thing = ParentThing;` local reproduces it (007ee370, DIFFER 84v86 -> match).
+- (agentNF8, 2026-11-11) Including CDefString.h without FABLE_RETAIL_CDEFSTRINGTABLE trips an #error that shows up as a cl hang/timeout on the Wine lane; define it first.
+- (agentNF8, 2026-11-11) CThingSwitch-style "return a CDefPointer" rows need engine/CThingBaseDef.h included; otherwise static_cast to an incomplete CDefClassBase fails.

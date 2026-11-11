@@ -1,70 +1,38 @@
-// CTCInventoryAbilities::GetExpressionPDef(long) -- looks up the definition with the given global index and returns it as a counted CDefPointer<const CExpressionDef>
-#include "fable_compiler.h"
+// CTCInventoryAbilities::GetExpressionPDef(long) const -- looks up the definition with the given global index and returns it as a counted CDefPointer<const CExpressionDef>
+// Leaf: ?GetExpressionPDef@CTCInventoryAbilities@@QBE?AV?$CDefPointer@$$CBVCExpressionDef@@@@J@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE207, length 68 bytes.
+// Identity: Ego_r.pdb + FableWin.pdb ?GetExpressionPDef@CTCInventoryAbilities@@QBE?AV?$CDefPointer@$$CBVCExpressionDef@@@@J@Z.
+// Callees: CTCBase::GetDefinitionManager 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex(long) const 0x009AD9E0
+//          (CDefPointer<const CDefClassBase> returned through the hidden pointer, which VC homes in the dead `index` slot [ebp+0Ch]);
+//          the def's virtual Delete at a zero count.
+// Pragmas: frame-pointer size TU (`optimize("y", off)` + `("s", on)`).
+// Shape: the base-typed temporary is converted into the typed result (the shared CDefPointer converting constructor, add-ref when
+//        non-null), then the temporary's destructor releases it; the arguments of GetPDefFromGlobalIndex are pushed before the
+//        GetDefinitionManager() call that yields its `this`.
+// Name fix (agentNF8 2026-11-11): moved off the local CTCInventoryAbilities_Retail / CDefinitionManager / CDefPointer stand-ins onto
+// the shared headers: the callees bind ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ (was
+// ?GetDefinitions@CTCInventoryAbilities_Retail@@QAEPAVCDefinitionManager@@XZ) and the const
+// ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z (was the QAE CDefPointer<CDefClassBase>
+// spelling); the row's own symbol is the PDB const member (was CTCInventoryAbilities_Retail, non-const, CDefPointer<CExpressionDef>).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE207, length 68 bytes.
-// Callees: CTCBase::GetDefinitions() @ 0x006869D0 (`mov ecx,[ecx+4] ; jmp`: the parent thing's definition
-//          manager), CDefinitionManager::GetPDefFromGlobalIndex(long) @ 0x009AD9E0 (CDefPointer<CDefClassBase>
-//          returned through the hidden pointer, which VC homes in the dead `index` slot [ebp+0Ch]);
-//          the def's virtual slot 1 (destroy at a zero count).
-// Pragmas: frame-pointer size TU (`optimize("y", off)` + `("s", on)`).
-// Shape: the base-typed temporary is converted into the typed result (a copy between two different
-//        pointer types is never elided): result = temp, add-ref when non-null, then the temporary's
-//        destructor releases through the ref-count base's inline accessors (`dec [eax] ; cmp [eax],0`,
-//        the def kept in ecx for the virtual call); the converting constructor, the accessors and the
-//        destructor are `__forceinline`
-//        because a size TU calls them out of line (the converting constructor alone: 62v68). The model drops
-//        the `const` of the pointee (the counted base is mutated). The arguments of GetPDefFromGlobalIndex are pushed
-//        before the GetDefinitions() call that yields its `this`.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
+#define FABLE_RETAIL_CTCINVENTORYABILITIES
+#define FABLE_RETAIL_CTCINVENTORYABILITIES_INITIALISE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCInventoryAbilities.h"
+#include "engine/CGameDefinitionManager.h"
 
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                       // slot 1 (+0x04)
-};
-
-struct CDefRefCounted {                           // second base: the count sits at +4 behind the vptr
-    long m_count;
-    FABLE_FORCEINLINE void DecRef() { --m_count; }
-    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
-};
-
-class CDefClassBase : public CDefVirtual, public CDefRefCounted { public:
-    FABLE_FORCEINLINE void ReleaseTemporary()
-    {
-        DecRef();
-        if (GetRefCount() == 0)
-            Destroy();
-    }
-};
-
-class CExpressionDef : public CDefClassBase { public:
-};
-
-template <class T> class CDefPointer { public:
-    T* m_p;
-    CDefPointer() { }
-    template <class U> FABLE_FORCEINLINE CDefPointer(const CDefPointer<U>& other) : m_p((T*)other.m_p)
-    {
-        if (m_p)
-            ++m_p->m_count;
-    }
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        if (m_p)
-            m_p->ReleaseTemporary();
-    }
-};
-
-class CDefinitionManager { public:
-    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
-};
-
-struct CTCInventoryAbilities_Retail {
-    CDefinitionManager* GetDefinitions();                           // 0x006869D0 (CTCBase)
-    CDefPointer<CExpressionDef> GetExpressionPDef(long index);
-};
-
-CDefPointer<CExpressionDef> CTCInventoryAbilities_Retail::GetExpressionPDef(long index)
+CDefPointer<const CExpressionDef> CTCInventoryAbilities::GetExpressionPDef(long index) const
 {
-    return CDefPointer<CExpressionDef>(GetDefinitions()->GetPDefFromGlobalIndex(index));
+    return CDefPointer<const CExpressionDef>(GetDefinitionManager().GetPDefFromGlobalIndex(index));
 }

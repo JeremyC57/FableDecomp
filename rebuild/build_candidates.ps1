@@ -1311,10 +1311,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0057a753'
-        Module = 'CTCHeroExperience'
-        Source = '00/57/CTCHeroExperience_AddSuccessfulBlockParry_0057a753.cpp'
-        TestSource = '00/57/CTCHeroExperience_AddSuccessfulBlockParry_0057a753_test.cpp'
-        PassPattern = 'CTCHeroExperience_0057a753_TEST PASS'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_OnHealthModified_0057a753.cpp'
+        TestSource = '00/57/CTCHeroStats_OnHealthModified_0057a753_test.cpp'
+        PassPattern = '0057a753_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006cba20'
@@ -248586,8 +248586,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0083c1e0'
         Module = 'CThingSwitch'
-        Source = '00/83/CThingSwitch_GetSwitchDef_0083c1e0.cpp'
-        TestSource = '00/83/CThingSwitch_GetSwitchDef_0083c1e0_test.cpp'
+        Source = '00/83/CThingSwitch_PeekDefinition_0083c1e0.cpp'
+        TestSource = '00/83/CThingSwitch_PeekDefinition_0083c1e0_test.cpp'
         PassPattern = '0083c1e0_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,0 +1,3 @@
+address	module	name
+0x0057A753	CTCHeroStats	OnHealthModified
+0x0083C1E0	CThingSwitch	PeekDefinition

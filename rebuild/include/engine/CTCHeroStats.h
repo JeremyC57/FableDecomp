@@ -45,6 +45,20 @@ public:
     // ?GetMoralityMax@CTCHeroStats@@QBEJXZ (public const), out of line at 0x0057A67E (landed). Declaration only: no layout change.
     long GetMoralityMax() const;                                          // 0x0057A67E
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_DRUNKENNESS
+    // Retail opt-in (agentNF8, rows 0x0057A874 / 0x0057A89D): Ego_r.pdb + FableWin.pdb ?IsDrunk@CTCHeroStats@@QBE_NXZ and
+    // ?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ (public const), out of line in retail at 0x0057A874 / 0x0057A89D (both read the
+    // hero-stats def through CTCBase::GetDefinitionManager: PintsToDrunk +0xA0 / PintsToVomit +0xA4). Declarations only.
+    bool IsDrunk() const;                                                 // 0x0057A874
+    float GetMaxDrunkenness() const;                                      // 0x0057A89D
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_ONHEALTHMODIFIED
+    // Retail opt-in (agentNF8, row 0x0057A753): Ego_r.pdb + FableWin.pdb ?OnHealthModified@CTCHeroStats@@QAEXXZ (public), out of line
+    // in retail at 0x0057A753 (Ego_r donor order GetMoralityMax 0x0056DA4B / OnHealthModified 0x0056DB3E / IsDrunk 0x0056DE4A =
+    // retail 0x0057A67E / 0x0057A753 / 0x0057A874; CThingPhysical::InternalModifyHealth calls it on TC 4 after a health change;
+    // the body resets FramesUntilHealthRefills +0x64). Declaration only.
+    void OnHealthModified();                                              // 0x0057A753
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_STAMINA
     // Retail opt-in (Codex pass 17): exact public float method in both donors.
     void ForceStaminaTo(float);

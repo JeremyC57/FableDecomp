@@ -1,80 +1,55 @@
-// Behaviour test for 006632a0: src/006632a0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
-// declared callees stubbed below so calls and arguments are observable. CThingCreatureBase::IsCombatAnimationValid(long animation)
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 006632a0: the row body verbatim over fixture models of the shared-header interfaces it uses (CThing::PBaseDef,
+// CDefClassBase::GetSubDef<CAppearanceDef>, counted CDefPointer, the CAnimationSet queries, CAnimFilterNoGroup, the creature mode
+// manager's current-mode filter, CThing::GetPWorldSeed).
+#include <stdio.h>
+#include <string.h>
+#include <vector>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CThingCreatureBase::IsCombatAnimationValid(long animation) -- does the creature's appearance animation set hold this animation (no group filter)
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006632A0, 154 bytes (`ret 4`).
-// Callees: CDefClassBase::GetSubDef<CAppearanceDef> @ 0x0042B0A2 (twice; byte-twin label GetSubDef<CAbilityDef>),
-//   CAnimationSet::HasAnimation(long, const CAnimFilter&) @ 0x005DC2E0 (auto label "CAnimationDef_FindAnimationByName").
-// Identity: the frame word 0x0122FFDC is a CAnimFilterNoGroup temporary (RTTI locator at vtable-4).
-// Layout: retail CThing PBaseDef +0x70; CAppearanceDef Animation +0x34; def ref count +4, virtual Destroy slot 1.
-// Shape: the first GetSubDef only tests that the creature has an appearance def; the animation set is then taken from a
-//   second CDefPointer in its own block, released (inline dtor) before the set is used; each return arm releases the
-//   first def through its own inline dtor copy.
-void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-class CAnimationEntry;
-struct CAnimFilter {
-    virtual bool Accept(const CAnimationEntry* entry) const = 0;
-    virtual CAnimFilter* Clone() const = 0;
-};
-struct CAnimFilterNoGroup : CAnimFilter {      // vtable 0x0122FFDC
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilter* Clone() const;                         // 0x00429A2F
-};
+class CCharString { public: const char* Text; CCharString(const char* t, long = -1) : Text(t) { } };
+class CAnimationEntry { public: const char* Name; long Group; long Index; };
+class CAnimFilterBase { public: virtual ~CAnimFilterBase() { } virtual bool Accept(const CAnimationEntry& e) const = 0; };
+class CAnimFilterNoGroup : public CAnimFilterBase { public: bool Accept(const CAnimationEntry& e) const { return e.Group == -1; } };
+class CAnimFilterGroup : public CAnimFilterBase { public: long G; CAnimFilterGroup(long g) : G(g) { } bool Accept(const CAnimationEntry& e) const { return e.Group == G; } };
+static CAnimationEntry g_entries[4] = { { "walk", 1, 0 }, { "walk", -1, 0 }, { "run", -1, 0 }, { "DEFAULT", -1, 0 } };
+static long g_lastIndex = -99; static long g_lastExclude = -99; static unsigned long* g_lastSeed = 0;
 class CAnimationSet { public:
-    bool HasAnimation(long animation, const CAnimFilter& filter) const;     // 0x005DC2E0
+    bool AnimExists(const CCharString& n, const CAnimFilterBase& f) const
+    { for (int i = 0; i < 4; ++i) if (!strcmp(g_entries[i].Name, n.Text) && f.Accept(g_entries[i])) return true; return false; }
+    const CAnimationEntry& GetAnim(const CCharString& n, long index, const CAnimFilterBase& f) const
+    { g_lastIndex = index; for (int i = 0; i < 4; ++i) if (!strcmp(g_entries[i].Name, n.Text) && f.Accept(g_entries[i])) return g_entries[i]; return g_entries[3]; }
+    const CAnimationEntry& GetRandomAnim(const CCharString& n, unsigned long& seed, const CAnimFilterBase& f, long exclude) const
+    { g_lastSeed = &seed; g_lastExclude = exclude; return GetAnim(n, -7, f); }
+    const CAnimationEntry* GetRandomLoadedAnim(const CCharString& n, unsigned long& seed, bool flag, const CAnimFilterBase& f) const
+    { g_lastSeed = &seed; g_lastExclude = flag ? 1 : 0; return &GetAnim(n, -7, f); }
+    void GetAnimsWithNameStartingWith(const CCharString& p, std::vector<const CAnimationEntry*>& out, const CAnimFilterBase& f) const
+    { for (int i = 0; i < 4; ++i) if (!strncmp(g_entries[i].Name, p.Text, strlen(p.Text)) && f.Accept(g_entries[i])) out.push_back(&g_entries[i]); }
 };
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long RefCount;                              // +0x04
-};
-class CAppearanceDef : public CDefClassBase { public:
-    unsigned char _pad08[0x34 - 0x08];
-    CAnimationSet Animation;                    // +0x34
-};
-template<class T> class CDefPointer { public:
+struct Counted { mutable int Refs; Counted() : Refs(1) { } };
+template <class T> class CDefPointer {
     T* Object;
+public:
     CDefPointer() : Object(0) { }
-    ~CDefPointer()
-    {
-        if (Object && --((CDefClassBase*)Object)->RefCount == 0)
-            ((CDefClassBase*)Object)->Destroy();
-    }
+    ~CDefPointer() { if (Object) --Object->Refs; }
     T* operator->() const { return Object; }
+    void Set(T* p) { Object = p; if (p) ++p->Refs; }
 };
+class CAppearanceDef : public Counted { public: CAnimationSet Animation; };
+static CAppearanceDef g_appearance;
 class CThingBaseDef { public:
-    template<class T> bool GetSubDef(CDefPointer<const T>* out) const;      // 0x0042B0A2
+    mutable int Queries;
+    bool GetSubDef(CDefPointer<const CAppearanceDef>* out) const { ++Queries; out->Set(&g_appearance); return true; }
 };
-void* FindDef_s7r_0();
-#pragma auto_inline(off)
-// Same-TU body of GetSubDef (retail instantiates it in this TU): fetch the def, then assign it to the out pointer the way
-// CDefPointer::operator= does (read the old pointer, release it when different, store the new one).
-template<class T> __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<const T>* out) const
-{
-    void* def = FindDef_s7r_0();
-    if (!def)
-        return false;
-    void* old = *(void**)out;
-    if (old != def) {
-        if (old)
-            ReleaseDef_s7(old);
-        *(void**)out = def;
-    }
-    return true;
-}
-#pragma auto_inline(on)
-
+class CModeBase { public: CAnimFilterGroup Filter; CModeBase() : Filter(1) { } const CAnimFilterBase& GetAnimFilter() const { return Filter; } };
+class CTCCreatureModeManager { public: CModeBase Mode; CModeBase& GetCurrentMode() const { return const_cast<CModeBase&>(Mode); } };
+static unsigned long g_seed = 1234;
 class CThingCreatureBase { public:
-    unsigned char _pad00[0x70];
-    const CThingBaseDef* PBaseDef;              // +0x70
-    bool IsCombatAnimationValid(long animation);
+    const CThingBaseDef* PBaseDef; CTCCreatureModeManager* PTCModeManager;
+    unsigned long* GetPWorldSeed() const { return &g_seed; }
+    bool IsCombatAnimationValid(const CCharString& name) const;
 };
-
-bool CThingCreatureBase::IsCombatAnimationValid(long animation)
+// ---- row body (verbatim) ----
+bool CThingCreatureBase::IsCombatAnimationValid(const CCharString& name) const
 {
     CDefPointer<const CAppearanceDef> def;
     if (PBaseDef->GetSubDef(&def)) {
@@ -84,34 +59,19 @@ bool CThingCreatureBase::IsCombatAnimationValid(long animation)
             PBaseDef->GetSubDef(&appearance);
             set = &appearance->Animation;
         }
-        if (set->HasAnimation(animation, CAnimFilterNoGroup()))
+        if (set->AnimExists(name, CAnimFilterNoGroup()))
             return true;
     }
     return false;
 }
-
-// ---- stubs and driver ----
-static void* g_def = 0; static int g_find = 0, g_release = 0, g_destroy = 0, g_has = 0; static long g_anim = -1; static bool g_result = false; static const void* g_filterVtbl = 0;
-void* FindDef_s7r_0() { ++g_find; return g_def; }
-void ReleaseDef_s7(void*) { ++g_release; }
-void CDefClassBase::v00() {}
-void CDefClassBase::Destroy() { ++g_destroy; }
-bool CAnimFilterNoGroup::Accept(const CAnimationEntry*) const { return true; }
-CAnimFilter* CAnimFilterNoGroup::Clone() const { return 0; }
-static const CAnimationSet* g_set = 0;
-bool CAnimationSet::HasAnimation(long animation, const CAnimFilter& filter) const
-{ ++g_has; g_anim = animation; g_set = this; CHECK(filter.Accept(0)); return g_result; }
+// ---- harness ----
 int main()
 {
-    static CAppearanceDef def; def.RefCount = 10;
-    static CThingBaseDef base; CThingCreatureBase c; c.PBaseDef = &base;
-    g_def = 0; CHECK(c.IsCombatAnimationValid(7) == false); CHECK(g_find == 1 && g_has == 0 && g_destroy == 0);
-    g_def = &def; g_result = true;
-    CHECK(c.IsCombatAnimationValid(7) == true); CHECK(g_find == 3 && g_has == 1 && g_anim == 7 && g_set == &def.Animation);
-    CHECK(def.RefCount == 8);   // both pointers release (the stand-in fetch takes no reference)
-    g_result = false; CHECK(c.IsCombatAnimationValid(9) == false); CHECK(g_find == 5 && g_has == 2 && g_anim == 9 && def.RefCount == 6);
-    def.RefCount = 2; g_result = true; CHECK(c.IsCombatAnimationValid(1) == true); CHECK(def.RefCount == 0 && g_destroy == 1);
-    CHECK(g_release == 0);
-    if (fails == 0) printf("006632a0_TEST PASS\n"); else printf("006632a0_TEST FAIL\n");
+    CThingBaseDef base; base.Queries = 0; CTCCreatureModeManager modes; CThingCreatureBase creature;
+    creature.PBaseDef = &base; creature.PTCModeManager = &modes;
+    CHECK(creature.IsCombatAnimationValid("walk") && creature.IsCombatAnimationValid("run"));
+    CHECK(!creature.IsCombatAnimationValid("jump") && base.Queries == 6);
+    CHECK(g_appearance.Refs == 1);
+    if (fails == 0) printf("006632a0_TEST PASS\n");
     return fails;
 }

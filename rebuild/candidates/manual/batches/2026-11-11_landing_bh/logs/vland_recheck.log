@@ -1,0 +1,55 @@
+addr       parity           behav  name
+0057a67e   RELOCATION_MATCH PASS   0057a67e
+0057a753   RELOCATION_MATCH PASS   0057a753
+0057a874   RELOCATION_MATCH PASS   0057a874
+0057a89d   RELOCATION_MATCH PASS   0057a89d
+005da6e0   RELOCATION_MATCH PASS   005da6e0
+005ee207   RELOCATION_MATCH PASS   005ee207
+005f3e3e   RELOCATION_MATCH PASS   005f3e3e
+00662a00   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00662a00   RELOCATION_MATCH PASS   00662a00
+00662b10   RELOCATION_MATCH PASS   00662b10
+00662c10   RELOCATION_MATCH PASS   00662c10
+00662c70   RELOCATION_MATCH PASS   00662c70
+00662d80   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00662d80   RELOCATION_MATCH PASS   00662d80
+00662ef0   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00662ef0   RELOCATION_MATCH PASS   00662ef0
+00662fa0   WARN RELOC_NAME: ?GetRandomLoadedAnim@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@AAK_NABVCAnimFilterBase@@@Z -> 005dcd10 labelled 'CTCInventoryAbilities_GetRandomAbility'
+00662fa0   RELOCATION_MATCH PASS   00662fa0
+00663260   RELOCATION_MATCH PASS   00663260
+006632a0   RELOCATION_MATCH PASS   006632a0
+00753040   RELOCATION_MATCH PASS   00753040
+007721a0   RELOCATION_MATCH PASS   007721a0
+00772610   RELOCATION_MATCH PASS   00772610
+007742c0   RELOCATION_MATCH PASS   007742c0
+007743b0   RELOCATION_MATCH PASS   007743b0
+007ee370   RELOCATION_MATCH PASS   007ee370
+007eec90   RELOCATION_MATCH PASS   007eec90
+0083c1e0   RELOCATION_MATCH PASS   0083c1e0
+
+WINS: 24
+  0057a67e RELOCATION_MATCH m::?GetMoralityMax@CTCHeroStats@@QBEJXZ
+  0057a753 RELOCATION_MATCH m::?OnHealthModified@CTCHeroStats@@QAEXXZ
+  0057a874 RELOCATION_MATCH m::?IsDrunk@CTCHeroStats@@QBE_NXZ
+  0057a89d RELOCATION_MATCH m::?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ
+  005da6e0 RELOCATION_MATCH m::?OnCreate@CTCWeapon@@EAEXXZ
+  005ee207 RELOCATION_MATCH m::?GetExpressionPDef@CTCInventoryAbilities@@QBE?AV?$CDefPointer@$$CBVCExpressionDef@@@@J@Z
+  005f3e3e RELOCATION_MATCH m::?InitialiseExpressions@CTCInventoryAbilities@@QAEXXZ
+  00662a00 RELOCATION_MATCH m::?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+  00662b10 RELOCATION_MATCH m::?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@J@Z
+  00662c10 RELOCATION_MATCH m::?GetAnimsWithNameStartingWith@CThingCreatureBase@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z
+  00662c70 RELOCATION_MATCH m::?HasAnim@CThingCreatureBase@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z
+  00662d80 RELOCATION_MATCH m::?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+  00662ef0 RELOCATION_MATCH m::?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z
+  00662fa0 RELOCATION_MATCH m::?GetRandomLoadedAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@_N@Z
+  00663260 RELOCATION_MATCH m::?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ
+  006632a0 RELOCATION_MATCH m::?IsCombatAnimationValid@CThingCreatureBase@@QBE_NABVCCharString@@@Z
+  00753040 RELOCATION_MATCH m::?OnCreate@CTCLook@@UAEXXZ
+  007721a0 RELOCATION_MATCH m::?IsPermanentlyStocked@CTCShop@@QBE_NXZ
+  00772610 RELOCATION_MATCH m::?GetName@CTCShop@@QBEKXZ
+  007742c0 RELOCATION_MATCH m::?GetCurrentBuyPrice@CTCShop@@QBEJJJ@Z
+  007743b0 RELOCATION_MATCH m::?GetCurrentSellPrice@CTCShop@@QBEJJJ@Z
+  007ee370 RELOCATION_MATCH m::?OnCreate@CTCVillageMember@@UAEXXZ
+  007eec90 RELOCATION_MATCH m::?OnCreate@CTCSmashableBase@@MAEXXZ
+  0083c1e0 RELOCATION_MATCH m::?PeekDefinition@CThingSwitch@@IBE?AV?$CDefPointer@$$CBVCThingSwitchDef@@@@XZ

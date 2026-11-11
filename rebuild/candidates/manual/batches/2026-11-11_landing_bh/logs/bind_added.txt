@@ -1,0 +1,12 @@
+?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z	005dc2e0	00662a00
+?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z	005dcc00	00662a00
+?GetAnimsWithNameStartingWith@CAnimationSet@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@ABVCAnimFilterBase@@@Z	005dcb00	00662c10
+?GetRandomLoadedAnim@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@AAK_NABVCAnimFilterBase@@@Z	005dcd10	00662fa0
+??$GetSubDef@VCLookDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLookDef@@@@@Z	007550f0	00753040
+?ChangeEyeAngles@CTCLook@@AAEXMM@Z	00752200	00753040
+?GetCurrentBasicPrice@CTCShop@@QBEMJJ@Z	007727e0	007742c0
+?GetAttitudeSellPriceMultiplier@CTCShop@@QBEMXZ	00773790	007743b0
+?g_sellPriceScale_013833d4@@3MB	013833d4	007743b0
+??$GetSubDef@VCVillageMemberDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillageMemberDef@@@@@Z	007ee6e0	007ee370
+??$GetSubDef@VCSmashableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSmashableDef@@@@@Z	007eeea0	007eec90
+??$GetDef@VCThingSwitchDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingSwitchDef@@@@@Z	0083cfa0	0083c1e0

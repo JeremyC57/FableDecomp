@@ -1,96 +1,56 @@
-// CThingCreatureBase::GetRandomAnimFromNameWithFilter(const CCharString& name, const CAnimFilterBase& filter) -- a random animation called `name` that passes the filter from the creature's appearance animation set, else the set's first "DEFAULT" animation of any group
+// CThingCreatureBase::GetRandomAnimFromNameWithFilter(const CCharString& name, const CAnimFilterBase& filter) const -- a random animation called `name` that passes the filter from the creature's appearance animation set, else the set's first "DEFAULT" animation of any group
+// Leaf: ?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00662EF0, length 167 bytes, `ret 8`.
-// Callees: CThingBaseDef::GetSubDef<CAppearanceDef> @ 0x0042B0A2 (byte-twin label GetSubDef<CAbilityDef>; the spelling the
-//   landed CTCAnimationComplex::OnCreate 0x0070B4D0 uses), the animation set's "has a matching animation" test @ 0x005DC2E0
-//   (walks the name's run calling filter.Accept), its random pick @ 0x005DCC00 (name, random seed, filter, -1),
-//   CAnimationSet::GetAnimation(const CCharString&, long, const CAnimFilterBase&) @ 0x005DC340, the game object's
-//   random source @ 0x004C7AE0 (`[[0x013B8A1C]+0x2C]`; manifest "CViewBase::GetDisplayEngine" is a byte twin),
-//   CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, the def's virtual Destroy (slot 1).
-// Identity: engine_api.tsv gives CThingCreatureBase::GetRandomAnimFromNameWithFilter(CCharString*, CAnimFilterBase*)
-//   returning CAnimationEntry*; the fallback filter is CAnimFilterNoGroup (vtable 0x0122FFDC) destroyed through the
-//   CAnimFilterBase store 0x0122FFCC.
-// Layout: retail CThing PBaseDef +0x70; CAppearanceDef Animation +0x34.
-// Shape: the sub-def out pointer is the zeroed `push ecx` frame word; the `-1` push is shared by the random pick's last
-//   argument and the "DEFAULT" string's length; the fallback string and filter temporaries land in the dead argument
-//   slots; the appearance def is copied out of the holder into a scoped CHeldDef released at each return
-//   (`dec [esi+4] ; jne`, def in esi, &Animation in edi, `name` re-read from its slot).
-// GetSubDef gets a same-TU `auto_inline(off)` stand-in body that writes only the out slot (VC7.1 then knows the
-//   holder does not escape); with the held copy as a real local the def outranks `name` for a register, as retail.
-// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    ~CCharString();                                            // 0x0099EAE0
-};
-class CAnimationEntry;
-class CAnimFilterBase { public:                        // vtable 0x0122FFCC
-    virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
-    virtual CAnimFilterBase* Clone() const;
-    ~CAnimFilterBase() {}
-};
-struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
-};
+// Identity: Ego_r.pdb / FableWin.pdb ?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z
+// (engine/CThingCreatureBase.h FABLE_RETAIL_CTHINGCREATUREBASE_ANIMFILTER; the landed caller 0x008A8C60 binds it).
+// Callees: CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, CAnimationSet::AnimExists 0x005DC2E0, CAnimationSet::GetRandomAnim 0x005DCC00
+//   (name, seed, filter, -1), CAnimationSet::GetAnim 0x005DC340, CThing::GetPWorldSeed 0x004C7AE0, CCharString(const char*, long) 0x0099EBF0 /
+//   ~CCharString 0x0099EAE0, the def's virtual Delete.
+// Identity: the fallback filter is CAnimFilterNoGroup (vtable 0x0122FFDC) destroyed through the CAnimFilterBase store 0x0122FFCC.
+// Layout: CThing PBaseDef +0x70; CAppearanceDef Animation +0x34.
+// Shape: the sub-def out pointer is the zeroed `push ecx` frame word; the `-1` push is shared by the random pick's last argument and
+//   the "DEFAULT" string's length; the fallback string and filter temporaries land in the dead argument slots.
+// Name fix (agentNF8 2026-11-11): moved off the local CDefClassBase / CDefPointer / CAnimationSet / CThingCreatureBase stand-ins (and a
+// same-TU stand-in GetSubDef body) onto the shared headers: 0x0042B0A2 binds GetSubDef<CAppearanceDef> (was
+// ?GetSubDef@CThingBaseDef@@...), 0x005DC340 / 0x005DCC00 bind the PDB GetAnim / GetRandomAnim (were GetAnimation /
+// GetRandomAnimation_005dcc00), 0x004C7AE0 binds ?GetPWorldSeed@CThing@@IBEPAKXZ (was GetRandomSeed_004c7ae0), and the row's own symbol
+// is the PDB const one returning a reference (was QAEPBVCAnimationEntry@@...).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
+#define FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
+#define FABLE_RETAIL_CANIMFILTER
+#define FABLE_RETAIL_CANIMATIONSET_ANIMS
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMATION
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMFILTER
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CAppearanceDef.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CAnimFilterNoGroup.h"
+#include "engine/CTCCreatureModeManager.h"
 
-class CAnimationSet { public:
-    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
-    const CAnimationEntry* GetRandomAnimation_005dcc00(const CCharString& name, unsigned long* randomSeed,
-        const CAnimFilterBase& filter, long index) const;                                       // 0x005DCC00
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
-
-class CDefPointeeBase { public:
-    virtual void Destroy0();
-    virtual void Destroy();                     // slot 1 (+0x04)
-    long RefCount;                              // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-template <class T> struct CHeldDef {            // the def copied out of the escaped out pointer, released at scope end
-    T* Object;
-    CHeldDef(T* object) : Object(object) { }
-    ~CHeldDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
-};
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x34 - 0x08];
-    CAnimationSet Animation;                    // +0x34
-};
-class CThingBaseDef : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
-};
-void* FindSubDef_CThingBaseDef_GetSubDef(const CThingBaseDef* def);   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAppearanceDef>* out) const
+const CAnimationEntry& CThingCreatureBase::GetRandomAnimFromNameWithFilter(const CCharString& name, const CAnimFilterBase& filter) const
 {
-    void* def = FindSubDef_CThingBaseDef_GetSubDef(this);
-    if (!def)
-        return false;
-    out->Object = (CAppearanceDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CThing { public:
-    unsigned char _pad00[0x70];
-    CThingBaseDef* PBaseDef;                    // +0x70 CDefPointer<CThingBaseDef const>::Object
-    unsigned long* GetRandomSeed_004c7ae0();    // 0x004C7AE0 (the game random seed)
-};
-
-class CThingCreatureBase : public CThing { public:
-    const CAnimationEntry* GetRandomAnimFromNameWithFilter(const CCharString& name, const CAnimFilterBase& filter);
-};
-
-const CAnimationEntry* CThingCreatureBase::GetRandomAnimFromNameWithFilter(const CCharString& name, const CAnimFilterBase& filter)
-{
-    CDefPointer<CAppearanceDef> out;
-    PBaseDef->GetSubDef(&out);
-    CHeldDef<CAppearanceDef> def(out.Object);
-    CAnimationSet& animations = def.Object->Animation;
+    CDefPointer<const CAppearanceDef> def;
+    PBaseDef->GetSubDef(&def);
+    const CAnimationSet& animations = def->Animation;
     if (animations.AnimExists(name, filter))
-        return animations.GetRandomAnimation_005dcc00(name, GetRandomSeed_004c7ae0(), filter, -1);
-    return animations.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
+        return animations.GetRandomAnim(name, *GetPWorldSeed(), filter, -1);
+    return animations.GetAnim("DEFAULT", 0, CAnimFilterNoGroup());
 }

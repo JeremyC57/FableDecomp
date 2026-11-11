@@ -1,86 +1,44 @@
-// Behaviour test for 007742c0: src/007742c0.cpp copied verbatim; GetCurrentBuyPrice returns 0 without the shop sub-def, else the sum
-// over count items of (long)(basic price * the def's BuyPriceMultiplier * the attitude multiplier); both
-// defs are released.
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 007742c0 CTCShop::GetCurrentBuyPrice: the row body verbatim over fixture models of the shared-header interfaces
+// (CTCBase::GetDefinitionManager, GetDef<CThingBaseDef>, GetSubDef<CShopDef>, counted CDefPointer). Without the shop sub-def the
+// price is 0; otherwise count items of the basic price times the def multiplier times the attitude multiplier, truncated per item.
+#include <stdio.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-// ---- source (verbatim) ----
-// CTCShop::GetCurrentBuyPrice(long itemDefIndex, long count) -- the whole-gold price the shop asks for count items: the basic price scaled by the shop def's buy multiplier and the attitude multiplier, truncated per item
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007742C0, 231 bytes (`ret 8`).
-// Callees: CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetDef_0042af3c @ 0x0042AF3C (result ignored),
-// CDefClassBase::GetSubDef_005130a0 @ 0x005130A0 (the 'CShopDef' instantiation), CTCShop::GetAttitudeBuyPriceMultiplier const
-// @ 0x007735D0, CTCShop::GetCurrentBasicPrice(long, long) @ 0x007727E0 (float), __ftol2 @ 0x00BFEA70; the defs' slot 1.
-// Layout: CThing def index (unsigned short) +0x8c; retail CShopDef sits 8 below Ego_r.pdb here (two 12-byte vectors before):
-// BuyPriceMultiplier +0x58.
-// Shape: both defs are dtor-carrying CDefPointer locals; GetDef and GetSubDef are same-TU noinline stand-in bodies that write
-// only the out slot, so the thing def is read once into ebp and the shop def is re-read once on the found path (its release
-// there has no null test); the price total is declared just before the loop, so its zero is the out slots' zero register
-// (edi) and `push ebx` sinks into the found branch; the multiplier is a named float local.
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    void Release() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> class CDefPointer { public:
+struct Counted { mutable int Refs; Counted() : Refs(1) { } };
+template <class T> class CDefPointer {
     T* Object;
+public:
     CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) Object->Release(); }
+    ~CDefPointer() { if (Object) --Object->Refs; }
     T* operator->() const { return Object; }
+    void Set(T* p) { Object = p; if (p) ++p->Refs; }
 };
-class CShopDef : public CDefBase { public:
-    unsigned char _pad08[0x58 - 0x08];
-    float BuyPriceMultiplier;                           // +0x58
-    float SellPriceMultiplier;                          // +0x5c
+class CShopDef : public Counted { public: float BuyPriceMultiplier; };
+class CThingBaseDef : public Counted { public:
+    const CShopDef* Shop;
+    CThingBaseDef() : Shop(0) { }
+    bool GetSubDef(CDefPointer<const CShopDef>* out) const { if (!Shop) return false; out->Set(Shop); return true; }
 };
-class CDefClassBase : public CDefBase { public:
-    bool GetSubDef_005130a0(CDefPointer<CShopDef>& out);    // 0x005130A0
+class CGameDefinitionManager { public:
+    const CThingBaseDef* Def; mutable long Index;
+    bool GetDef(long index, CDefPointer<const CThingBaseDef>* out) const { Index = index; out->Set(Def); return true; }
 };
-void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef_005130a0(CDefPointer<CShopDef>& out)
-{
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out.Object = (CShopDef*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefinitionManager { public:
-    bool GetDef_0042af3c(long index, CDefPointer<CDefClassBase>& out);   // 0x0042AF3C
-};
-void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef_0042af3c(long index, CDefPointer<CDefClassBase>& out)
-{
-    void* def = Lookup_CDefinitionManager_GetDef(this, index);
-    if (!def)
-        return false;
-    out.Object = (CDefClassBase*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CThing { public:
-    unsigned char _pad00[0x8c];
-    unsigned short DefIndex;                            // +0x8c
-};
+class CThing { public: unsigned short DefGlobalIndex; unsigned long GetDefGlobalIndex() const { return DefGlobalIndex; } };
+const float g_sellPriceScale_013833d4 = 1.0f;
 class CTCShop { public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04 (CTCBase)
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
-    float GetCurrentBasicPrice(long itemDefIndex, long forSale);   // 0x007727E0
-    float GetAttitudeBuyPriceMultiplier() const;        // 0x007735D0
-    long GetCurrentBuyPrice(long itemDefIndex, long count);
+    CThing* ParentThing; const CGameDefinitionManager* Manager; float Attitude; mutable int BasicCalls; mutable long LastItem;
+    const CGameDefinitionManager& GetDefinitionManager() const { return *Manager; }
+    float GetAttitudeBuyPriceMultiplier() const { return Attitude; }
+    float GetCurrentBasicPrice(long item, long forSale) const { ++BasicCalls; LastItem = item; return forSale ? -1.0f : 10.0f; }
+    long GetCurrentBuyPrice(long itemDefIndex, long count) const;
 };
-
-long CTCShop::GetCurrentBuyPrice(long itemDefIndex, long count)
+// ---- row body (verbatim) ----
+long CTCShop::GetCurrentBuyPrice(long itemDefIndex, long count) const
 {
-    CDefPointer<CDefClassBase> thingDef;
-    GetDefinitionManager()->GetDef_0042af3c(ParentThing->DefIndex, thingDef);
-    CDefPointer<CShopDef> shopDef;
-    if (!thingDef->GetSubDef_005130a0(shopDef))
+    CDefPointer<const CThingBaseDef> thingDef;
+    GetDefinitionManager().GetDef(ParentThing->GetDefGlobalIndex(), &thingDef);
+    CDefPointer<const CShopDef> shopDef;
+    if (!thingDef->GetSubDef(&shopDef))
         return 0;
     float multiplier = shopDef->BuyPriceMultiplier;
     multiplier = multiplier * GetAttitudeBuyPriceMultiplier();
@@ -90,45 +48,18 @@ long CTCShop::GetCurrentBuyPrice(long itemDefIndex, long count)
     return total;
 }
 // ---- harness ----
-
-static int g_destroyed = 0, g_basicCalls = 0; static long g_index = -1, g_item = -1, g_forSale = -1;
-static void* g_thingDef = 0; static void* g_shopDef = 0; static const void* g_subOwner = 0;
-static CDefinitionManager g_manager; static float g_attitude = 1.0f; static float g_basic = 10.0f;
-void CDefBase::v00() { }
-void CDefBase::Destroy() { ++g_destroyed; }
-void CTCShop::v00() { }
-CDefinitionManager* CTCShop::GetDefinitionManager() const { return &g_manager; }
-float CTCShop::GetAttitudeBuyPriceMultiplier() const { return g_attitude; }
-float CTCShop::GetCurrentBasicPrice(long itemDefIndex, long forSale) { ++g_basicCalls; g_item = itemDefIndex; g_forSale = forSale; return g_basic; }
-void* Lookup_CDefinitionManager_GetDef(const void* manager, long index)
-{ CHECK(manager == &g_manager); g_index = index; if (g_thingDef) ++((CDefBase*)g_thingDef)->RefCount; return g_thingDef; }
-void* Find_CDefClassBase_GetSubDef(const void* owner)
-{ g_subOwner = owner; if (g_shopDef) ++((CDefBase*)g_shopDef)->RefCount; return g_shopDef; }
 int main()
 {
-    static CDefClassBase thingDef; thingDef.RefCount = 1;
-    static CShopDef shopDef; shopDef.RefCount = 1; shopDef.BuyPriceMultiplier = 1.5f;
-    static unsigned char thingBuf[sizeof(CThing)]; CThing& thing = *(CThing*)thingBuf; thing.DefIndex = 0x4321;
-    static unsigned char shopBuf[sizeof(CTCShop)]; CTCShop& shop = *(CTCShop*)shopBuf; shop.ParentThing = &thing;
-    g_thingDef = &thingDef; g_shopDef = &shopDef; g_attitude = 2.0f; g_basic = 10.25f;
-
-    long price = shop.GetCurrentBuyPrice(77, 3);
-    // per item: (long)(10.25 * multiplier) with multiplier = 1.5 * 2.0
-    CHECK(price == 3 * 30 && g_basicCalls == 3 && g_item == 77 && g_forSale == 0);
-    CHECK(g_index == 0x4321 && g_subOwner == &thingDef && thingDef.RefCount == 1 && shopDef.RefCount == 1 && g_destroyed == 0);
-
-    // no items
-    g_basicCalls = 0;
-    CHECK(shop.GetCurrentBuyPrice(77, 0) == 0 && g_basicCalls == 0);
-
-    // no shop sub-def
-    g_shopDef = 0; g_basicCalls = 0;
-    CHECK(shop.GetCurrentBuyPrice(77, 2) == 0 && g_basicCalls == 0 && thingDef.RefCount == 1 && g_destroyed == 0);
-
-    // last references: both destroyed
-    g_shopDef = &shopDef; thingDef.RefCount = 0; shopDef.RefCount = 0;
-    CHECK(shop.GetCurrentBuyPrice(77, 1) == 30 && g_destroyed == 2);
-
+    CShopDef shopDef; CThingBaseDef thingDef; CGameDefinitionManager manager; CThing thing; CTCShop shop;
+    thing.DefGlobalIndex = 77; manager.Def = &thingDef; thingDef.Shop = &shopDef;
+    shop.ParentThing = &thing; shop.Manager = &manager; shop.Attitude = 1.5f; shop.BasicCalls = 0; shop.LastItem = 0;
+    shopDef.BuyPriceMultiplier = 1.25f;                         // 10 * 1.25 * 1.5 = 18.75
+    long each = 18;
+    CHECK(shop.GetCurrentBuyPrice(5, 3) == 3 * each && shop.BasicCalls == 3 && shop.LastItem == 5 && manager.Index == 77);
+    CHECK(shop.GetCurrentBuyPrice(5, 0) == 0 && shop.BasicCalls == 3);
+    CHECK(thingDef.Refs == 1 && shopDef.Refs == 1);
+    thingDef.Shop = 0;
+    CHECK(shop.GetCurrentBuyPrice(5, 3) == 0 && shop.BasicCalls == 3 && thingDef.Refs == 1);
     if (fails == 0) printf("007742c0_TEST PASS\n");
     return fails;
 }

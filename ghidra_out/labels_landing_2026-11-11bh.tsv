@@ -1,0 +1,3 @@
+address	name	evidence
+0057A753	CTCHeroStats::OnHealthModified	agentNF8: FableWin + Ego_r PDBs; Ego_r order GetMoralityMax, OnHealthModified, IsDrunk, GetMaxDrunkenness matches retail (landing bh)
+0083C1E0	CThingSwitch::PeekDefinition	agentNF8: FableWin + Ego_r PDBs; binds GetDef<CThingSwitchDef> 0x0083CFA0 (landing bh)

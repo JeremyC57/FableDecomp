@@ -9,6 +9,9 @@
 class CCharString;
 class CAnimationEntry;
 class CAnimFilterBase;
+#ifdef FABLE_RETAIL_CANIMATIONSET_QUERIES
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CANIMATIONSET_ANIMS
 // Retail opt-in (chunk 1014, row 0x005DCC00 GetRandomAnim): Anims as the Ego_r.pdb CVectorMap<unsigned long, CAnimationEntry> (0x14-byte
 // pairs; retail 0x10 bytes: CArray + compare + dirty). Needs the complete CAnimationEntry (engine/CAnimationEntry.h) first.
@@ -20,6 +23,14 @@ public:
     bool AnimExists(const CCharString&,const CAnimFilterBase&)const;
 #endif
     const CAnimationEntry& GetAnim(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
+#ifdef FABLE_RETAIL_CANIMATIONSET_QUERIES
+    // Retail opt-in (agentNF8, rows 0x00662C10 / 0x00662FA0): Ego_r.pdb
+    // ?GetAnimsWithNameStartingWith@CAnimationSet@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@..@std@@ABVCAnimFilterBase@@@Z (0x005DCB00)
+    // and ?GetRandomLoadedAnim@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@AAK_NABVCAnimFilterBase@@@Z (0x005DCD10), out of line.
+    // Declarations only (needs std::vector from stlport/fable_containers.h).
+    void GetAnimsWithNameStartingWith(const CCharString& prefix, std::vector<const CAnimationEntry*>& anims, const CAnimFilterBase& filter) const;   // 0x005DCB00
+    const CAnimationEntry* GetRandomLoadedAnim(const CCharString& name, unsigned long& seed, bool flag, const CAnimFilterBase& filter) const;      // 0x005DCD10
+#endif
 #ifdef FABLE_RETAIL_CANIMATIONSET_ANIMS
     typedef CVectorMap<unsigned long, CAnimationEntry, CKeyPairCompareLess<unsigned long, CAnimationEntry> > TAnimMap;
     // Ego_r.pdb ?FindFirstAnimWithName@CAnimationSet@@QBE (public const; retail 0x005DC020 ?FindFirstAnimWithName@CAnimationSet@@QBEPBU?$pair@KVCAnimationEntry@@@std@@ABVCCharString@@@Z,

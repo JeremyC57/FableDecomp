@@ -10,6 +10,9 @@
 #endif
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCWEAPON_ONCREATE
+#include "engine/CDefPointer.h"
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_DAMAGE
 #include "engine/EWeaponClass.h"
 #endif
@@ -52,7 +55,17 @@ public:
     // Retail opt-in (chunk 1002, row 0x005CB2B0 CTCInventoryWeapons::SetThingAsActiveWeapon): the Ego_r.pdb members after the CTCBase part
     // (struct_layouts_egor.tsv, sizeof 0x28, the same offsets as the generated default branch below): the row writes Wielded +0x24
     // (`mov byte ptr [esi+24h],0` on the previous weapon, `mov byte ptr [eax+24h],1` on the new one).
+#ifdef FABLE_RETAIL_CTCWEAPON_ONCREATE
+    // Nested opt-in (agentNF8, row 0x005DA6E0 CTCWeapon::OnCreate): WeaponDef typed as its Ego_r.pdb CDefPointer<const CWeaponDef>
+    // (same 4 bytes; needs FABLE_RETAIL_DEF_CLASS_BASE and engine/CDefPointer.h) and Ego_r.pdb ?OnCreate@CTCWeapon@@EAEXXZ (the private
+    // override of CTCBase slot 4, CTCWeapon vtable slot 4 = 0x005DA6E0). Same layout.
+private:
+    virtual void OnCreate();                                 // slot 4 0x005DA6E0
+public:
+    CDefPointer<const class CWeaponDef> WeaponDef;           // +0x0c
+#else
     unsigned char    WeaponDef[0x4];                         // +0x0c CDefPointer<const CWeaponDef>
+#endif
     bool             ProjectileWeaponLoaded;                 // +0x10
     long             AimingTime;                             // +0x14
     bool             AimingTimeOverride;                     // +0x18

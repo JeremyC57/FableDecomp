@@ -180,6 +180,25 @@ public:
     const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
     const CCreatureActionBase* PeekPCurrentAction() const { return PCurrentAction.Data; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMQUERY
+    // Retail opt-in (agentNF8, the appearance-animation queries over GetSubDef<CAppearanceDef> 0x0042B0A2): Ego_r.pdb spellings (all
+    // public, out of line in retail; Ego_r donor order 0x0053D8E0 .. 0x0053E560 = retail 0x00662A00 .. 0x00663610):
+    // ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@J@Z 0x00662B10,
+    // ?GetAnimsWithNameStartingWith@..@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@..@std@@@Z 0x00662C10,
+    // ?HasAnim@..@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z 0x00662C70,
+    // ?GetRandomLoadedAnimFromName@..@@QBEPBVCAnimationEntry@@ABVCCharString@@_N@Z 0x00662FA0, ?PreloadAnims@..@@QAEXXZ 0x00663140,
+    // ?PreloadAnimation@..@@QAEXABVCCharString@@@Z 0x006631C0, ?GetCombatAnimationSet@..@@QBEABVCAnimationSet@@XZ 0x00663260,
+    // ?IsCombatAnimationValid@..@@QBE_NABVCCharString@@@Z 0x006632A0, ?PreloadBasicAnimations@..@@QAEXXZ 0x00663610. Declarations only.
+    const class CAnimationEntry& GetAnimFromName(const CCharString& name, const class CAnimFilterBase& filter, long index) const;   // 0x00662B10
+    bool HasAnim(const CCharString& name, const class CAnimFilterBase& filter) const;                                           // 0x00662C70
+    const class CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool flag) const;                          // 0x00662FA0
+    void GetAnimsWithNameStartingWith(const CCharString& prefix, std::vector<const class CAnimationEntry*>& anims) const;        // 0x00662C10
+    void PreloadAnims();                                                                                                         // 0x00663140
+    void PreloadAnimation(const CCharString& name);                                                                              // 0x006631C0
+    const class CAnimationSet& GetCombatAnimationSet() const;                                                                    // 0x00663260
+    bool IsCombatAnimationValid(const CCharString& name) const;                                                                  // 0x006632A0
+    void PreloadBasicAnimations();                                                                                               // 0x00663610
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMFILTER
     // Retail opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): Ego_r.pdb / FableWin.pdb
     // ?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z (const,

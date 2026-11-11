@@ -85,6 +85,13 @@ public:
     // out of line in retail (0x00772610; the row tests it `> 0` unsigned and passes it to the text bank). Declaration only.
     unsigned long GetName() const;                                       // 0x00772610
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_ATTITUDEPRICE
+    // Retail opt-in (agentNF8, rows 0x007742C0 GetCurrentBuyPrice / 0x007743B0 GetCurrentSellPrice): Ego_r.pdb
+    // ?GetAttitudeBuyPriceMultiplier@CTCShop@@QBEMXZ and ?GetAttitudeSellPriceMultiplier@CTCShop@@QBEMXZ, out of line in retail
+    // (0x007735D0 / 0x00773790; the two price rows call them after reading the shop def's multiplier). Declarations only.
+    float GetAttitudeBuyPriceMultiplier() const;                         // 0x007735D0
+    float GetAttitudeSellPriceMultiplier() const;                        // 0x00773790
+#endif
 #ifdef FABLE_RETAIL_CTCSHOP_WANTED
     // Retail opt-in (chunk 891, row 0x005A5B31 CTCInventoryTrade::ConstructActualWantedInventoryPC): Ego_r.pdb
     // ?GetWantedItemsList@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ, out of line in retail (0x00774100, landed; the caller

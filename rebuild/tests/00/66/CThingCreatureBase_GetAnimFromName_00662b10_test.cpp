@@ -1,136 +1,64 @@
-#include <cstdio>
-#include <cstring>
-#ifndef _MSC_VER
-#define __declspec(x)
-#define __forceinline inline
-#define __fastcall
-#endif
-class CAnimationEntry { public: int id; };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-
-class CAnimFilterBase { public:                        // vtable 0x0122FFCC
-    virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
-    virtual CAnimFilterBase* Clone() const;
-    ~CAnimFilterBase() {}
-};
-struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
-    virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
-    virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
-};
+// Behaviour test for 00662b10: the row body verbatim over fixture models of the shared-header interfaces it uses (CThing::PBaseDef,
+// CDefClassBase::GetSubDef<CAppearanceDef>, counted CDefPointer, CAnimationSet::AnimExists / GetAnim, CAnimFilterNoGroup).
+#include <stdio.h>
+#include <string.h>
+static int fails = 0;
+#define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+class CCharString { public: const char* Text; CCharString(const char* t, long = -1) : Text(t) { } };
+class CAnimationEntry { public: const char* Name; long Group; long Index; };
+class CAnimFilterBase { public: virtual ~CAnimFilterBase() { } virtual bool Accept(const CAnimationEntry& e) const = 0; };
+class CAnimFilterNoGroup : public CAnimFilterBase { public: bool Accept(const CAnimationEntry& e) const { return e.Group == -1; } };
+class CAnimFilterGroup : public CAnimFilterBase { public: long G; CAnimFilterGroup(long g) : G(g) { } bool Accept(const CAnimationEntry& e) const { return e.Group == G; } };
+static CAnimationEntry g_entries[4] = { { "walk", 1, 0 }, { "walk", -1, 0 }, { "run", -1, 0 }, { "DEFAULT", -1, 0 } };
+static long g_lastIndex = -99; static long g_lastExclude = -99; static unsigned long* g_lastSeed = 0;
 class CAnimationSet { public:
-    bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC2E0
-    CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
+    bool AnimExists(const CCharString& n, const CAnimFilterBase& f) const
+    { for (int i = 0; i < 4; ++i) if (!strcmp(g_entries[i].Name, n.Text) && f.Accept(g_entries[i])) return true; return false; }
+    const CAnimationEntry& GetAnim(const CCharString& n, long index, const CAnimFilterBase& f) const
+    { g_lastIndex = index; for (int i = 0; i < 4; ++i) if (!strcmp(g_entries[i].Name, n.Text) && f.Accept(g_entries[i])) return g_entries[i]; return g_entries[3]; }
+    const CAnimationEntry& GetRandomAnim(const CCharString& n, unsigned long& seed, const CAnimFilterBase& f, long exclude) const
+    { g_lastSeed = &seed; g_lastExclude = exclude; return GetAnim(n, -7, f); }
 };
-class CDefPointeeBase { public:                        // a counted definition object
-    virtual void v000();
-    virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
-    long m_refCount;                            // +4
-    void ReleaseDef()
-    {
-        if (--m_refCount == 0)
-            DestroyDef();
-    }
-};
-template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
-    T* m_pObject;
-    CDefPointer() : m_pObject(0) { }
-};
-template <class T> struct CHeldDef {            // the def copied out of the escaped out pointer, released at scope end
+struct Counted { mutable int Refs; Counted() : Refs(1) { } };
+template <class T> class CDefPointer {
     T* Object;
-    CHeldDef(T* object) : Object(object) { }
-    ~CHeldDef() { if (Object) Object->ReleaseDef(); }
+public:
+    CDefPointer() : Object(0) { }
+    ~CDefPointer() { if (Object) --Object->Refs; }
     T* operator->() const { return Object; }
+    void Set(T* p) { Object = p; if (p) ++p->Refs; }
 };
-class CAppearanceDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x2c];
-    CAnimationSet Animation;                    // +0x34
+class CAppearanceDef : public Counted { public: CAnimationSet Animation; };
+static CAppearanceDef g_appearance;
+class CThingBaseDef { public:
+    mutable int Queries;
+    bool GetSubDef(CDefPointer<const CAppearanceDef>* out) const { ++Queries; out->Set(&g_appearance); return true; }
 };
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CAppearanceDef>& out);       // 0x0042B0A2
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)&out = def;
-    return true;
-}
 
 class CThingCreatureBase { public:
-    unsigned char  _pad00[0x70];
-    CDefClassBase* PBaseDef;                    // +0x70
-    CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index);
+    const CThingBaseDef* PBaseDef;
+    const CAnimationEntry& GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index) const;
 };
-
-CAnimationEntry* CThingCreatureBase::GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index)
+// ---- row body (verbatim) ----
+const CAnimationEntry& CThingCreatureBase::GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index) const
 {
-    CDefPointer<CAppearanceDef> out;
-    PBaseDef->GetSubDef(out);
-    CHeldDef<CAppearanceDef> def(out.m_pObject);
+    CDefPointer<const CAppearanceDef> def;
+    PBaseDef->GetSubDef(&def);
     const CAnimationSet& animations = def->Animation;
-    if (animations.HasAnimation(name, filter))
-        return animations.GetAnimation(name, index, filter);
-    if (animations.HasAnimation(name, CAnimFilterNoGroup()))
-        return animations.GetAnimation(name, index, CAnimFilterNoGroup());
-    return animations.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
+    if (animations.AnimExists(name, filter))
+        return animations.GetAnim(name, index, filter);
+    if (animations.AnimExists(name, CAnimFilterNoGroup()))
+        return animations.GetAnim(name, index, CAnimFilterNoGroup());
+    return animations.GetAnim("DEFAULT", 0, CAnimFilterNoGroup());
 }
-// ---- test doubles ----
-void CDefPointeeBase::v000() {}
-void CDefPointeeBase::DestroyDef() {}
-static const char* g_lastName = 0; static int g_strings = 0;
-CCharString::CCharString(const char* text, long) : PStringData((void*)text) { ++g_strings; }
-CCharString::~CCharString() { --g_strings; }
-
-static CAnimationEntry g_entries[8];
-bool CAnimFilterBase::Accept(const CAnimationEntry*) const { return true; }
-CAnimFilterBase* CAnimFilterBase::Clone() const { return 0; }
-bool CAnimFilterNoGroup::Accept(const CAnimationEntry*) const { return true; }
-CAnimFilterBase* CAnimFilterNoGroup::Clone() const { return 0; }
-static bool g_hasWithFilter, g_hasAny; static const CAnimFilterBase* g_lastFilter; static long g_lastIndex;
-static const CAnimFilterBase* g_user[2];
-static bool IsInternal(const CAnimFilterBase* f) { return f != g_user[0] && f != g_user[1]; }
-bool CAnimationSet::HasAnimation(const CCharString&, const CAnimFilterBase& f) const
-{
-    return IsInternal(&f) ? g_hasAny : g_hasWithFilter;
-}
-CAnimationEntry* CAnimationSet::GetAnimation(const CCharString& name, long index, const CAnimFilterBase& f) const
-{
-    g_lastName = (const char*)name.PStringData; g_lastIndex = index; g_lastFilter = &f;
-    return &g_entries[IsInternal(&f) ? 1 : 0];
-}
-struct CTestAppearance : CAppearanceDef { int destroyed; virtual void v000() {} virtual void DestroyDef() { ++destroyed; } };
-static CTestAppearance* g_def;
-void* FindDef_CDefClassBase_GetSubDef_0() { ++g_def->m_refCount; return g_def; }
+// ---- harness ----
 int main()
 {
-    CTestAppearance def; def.m_refCount = 1; def.destroyed = 0; g_def = &def;
-    CDefClassBase base; CThingCreatureBase creature; creature.PBaseDef = &base;
-    CCharString name("WALK"); CAnimFilterNoGroup custom;
-    struct CPlain : CAnimFilterBase { } plain;
-    g_user[0] = &custom; g_user[1] = &plain;
-    bool ok = true;
-    g_hasWithFilter = true; g_hasAny = true;
-    ok = ok && creature.GetAnimFromName(name, custom, 3) == &g_entries[0] && g_lastIndex == 3 && g_lastFilter == &custom
-        && def.m_refCount == 1;
-    ok = ok && creature.GetAnimFromName(name, plain, 2) == &g_entries[0] && g_lastFilter == &plain && g_lastIndex == 2;
-    g_hasWithFilter = false; g_hasAny = true;
-    ok = ok && creature.GetAnimFromName(name, plain, 5) == &g_entries[1] && g_lastIndex == 5
-        && std::strcmp(g_lastName, "WALK") == 0;
-    g_hasWithFilter = false; g_hasAny = false;
-    ok = ok && creature.GetAnimFromName(name, plain, 5) == &g_entries[1] && g_lastIndex == 0
-        && std::strcmp(g_lastName, "DEFAULT") == 0 && g_strings == 1 && def.m_refCount == 1 && def.destroyed == 0;
-    def.m_refCount = 0;                       // the sub-def reference is the last one: released to zero
-    creature.GetAnimFromName(name, plain, 1);
-    ok = ok && def.destroyed == 1;
-    if (!ok) { std::printf("00662b10_TEST FAIL\n"); return 1; }
-    std::printf("00662b10_TEST PASS\n");
-    return 0;
+    CThingBaseDef base; base.Queries = 0; CThingCreatureBase creature; creature.PBaseDef = &base;
+    CHECK(&creature.GetAnimFromName("walk", CAnimFilterGroup(1), 5) == &g_entries[0] && g_lastIndex == 5);
+    CHECK(&creature.GetAnimFromName("run", CAnimFilterGroup(1), 6) == &g_entries[2] && g_lastIndex == 6);
+    CHECK(&creature.GetAnimFromName("jump", CAnimFilterGroup(1), 7) == &g_entries[3] && g_lastIndex == 0 && base.Queries == 3);
+    CHECK(g_appearance.Refs == 1);
+    if (fails == 0) printf("00662b10_TEST PASS\n");
+    return fails;
 }

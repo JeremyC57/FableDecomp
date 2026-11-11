@@ -1,24 +1,39 @@
-// Layout: retail STLport 4.6 header offsets; member names re-bound by the bytes this body touches: `BestScoreCoinGolfOakVale` -> `Drunkenness` (+0x19c).
-#include "engine/CTCHeroStats.h"
-#include <cstdio>
-struct GBlob { char pad[0xa0]; float thresh; };
-struct GHolder { char pad[0xdc]; GBlob* blob; };
-static GBlob g_blob;
-static GHolder g_holder;
-extern "C" GHolder* GetGlobal(void){ g_holder.blob = &g_blob; return &g_holder; }
-bool __fastcall CTCHeroStats_IsDrunk(const CTCHeroStats* stats)
+// Behaviour test for 0057a874 CTCHeroStats::IsDrunk: the row body verbatim over a fixture model of the shared-header interfaces it uses
+// (CTCBase::GetDefinitionManager returning the game definition manager, CGameDefinitionManager::PeekHeroStatsDef, CHeroStatsDef fields).
+#include <stdio.h>
+static int fails = 0;
+#define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+class CHeroStatsDef { public:
+    float NumberOfSecondsAfterChangeHealthStartsRefilling; float PintsToDrunk; float PintsToVomit; long MaxMorality;
+};
+class CGameDefinitionManager { public:
+    const CHeroStatsDef* PHeroStatsDef;
+    const CHeroStatsDef& PeekHeroStatsDef() const { return *PHeroStatsDef; }
+};
+class CMainGameComponent { public: static long ConstantFPS; static long GetConstantFPS() { return ConstantFPS; } };
+long CMainGameComponent::ConstantFPS = 30;
+static int g_managerCalls = 0;
+class CTCHeroStats { public:
+    float Drunkenness; long FramesUntilHealthRefills; const CGameDefinitionManager* Manager;
+    const CGameDefinitionManager& GetDefinitionManager() const { ++g_managerCalls; return *Manager; }
+    bool IsDrunk() const;
+};
+// ---- row body (verbatim) ----
+bool CTCHeroStats::IsDrunk() const
 {
-    GHolder* h = GetGlobal();
-    return stats->Drunkenness >= h->blob->thresh;
+    return Drunkenness >= GetDefinitionManager().PeekHeroStatsDef().PintsToDrunk;
 }
-int main(){
-    CTCHeroStats s; s.Drunkenness = 5.0f;
-    g_blob.thresh = 3.0f;
-    if(!CTCHeroStats_IsDrunk(&s)){ std::printf("FAIL ge\n"); return 1; }
-    g_blob.thresh = 9.0f;
-    if(CTCHeroStats_IsDrunk(&s)){ std::printf("FAIL lt\n"); return 1; }
-    g_blob.thresh = 5.0f;
-    if(!CTCHeroStats_IsDrunk(&s)){ std::printf("FAIL eq\n"); return 1; }
-    std::printf("CTCHeroStats_0057a874_TEST PASS\n");
-    return 0;
+// ---- harness ----
+int main()
+{
+    CHeroStatsDef def; def.NumberOfSecondsAfterChangeHealthStartsRefilling = 2.5f; def.PintsToDrunk = 3.0f; def.PintsToVomit = 6.5f;
+    def.MaxMorality = 1000;
+    CGameDefinitionManager manager; manager.PHeroStatsDef = &def;
+    CTCHeroStats stats; stats.Manager = &manager; stats.Drunkenness = 0.0f; stats.FramesUntilHealthRefills = -1;
+    CHECK(!stats.IsDrunk());
+    stats.Drunkenness = 2.99f; CHECK(!stats.IsDrunk());
+    stats.Drunkenness = 3.0f; CHECK(stats.IsDrunk());
+    stats.Drunkenness = 7.0f; CHECK(stats.IsDrunk() && g_managerCalls == 4);
+    if (fails == 0) printf("0057a874_TEST PASS\n");
+    return fails;
 }

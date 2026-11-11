@@ -1,80 +1,44 @@
 // CTCShop::GetName() const -- fetch the parent thing's definition by its index, take its shop sub-definition and return the shop name word at +0x28 (0 when the thing has no shop def)
-// Leaf: GetName
+// Leaf: ?GetName@CTCShop@@QBEKXZ
 // Retail: Fable.exe 0x00772610, 151 bytes (plain `ret`).
-// Callees: CTCBase::GetDefinitions() const @ 0x006869D0 (manifest "_Cons_val<...>" is propagated),
-// CDefinitionManager::GetDef(long index, CDefPointer*) @ 0x0042AF3C (manifest "GetDef<CSpecialAbilitiesDrunkennessDef>",
-// a byte-twin template instance), CDefClassBase::GetSubDef(CDefPointer*) @ 0x005130A0 (manifest
-// "GetSubDef<CAICreatureWillPowerIndicatorDef>", byte twin), the defs' virtual slot 1 (+0x04, release at zero).
-// Layout: CThing def index word +0x8C; ref count +0x04 on the def base; the shop def's name word +0x28.
-// Shape: both defs live in null-tested CDefPointer locals whose destructors release them (`if (Object) Object->ReleaseReference()`); the found
-// path returns `shopDef->Name` directly, so its null test on the sub-def is dropped after the dereference while the not-found path keeps it.
-// a null test, the miss arm with one; the thing def with a null test on both arms).
-class CDefPointeeBase { public:
-    virtual void Destroy();                         // slot 0
-    virtual void Delete();                          // slot 1 (+0x04)
-    long m_refCount;                                // +0x04
-    void ReleaseReference() { if (--m_refCount == 0) Delete(); }
-};
-class CShopDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x28 - 0x08];
-    long Name;                                      // +0x28
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) Object->ReleaseReference(); }
-    T* operator->() const { return Object; }
-};
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CShopDef>* out);     // 0x005130A0 (CDefPointer<const CShopDef>*)
-};
-void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CShopDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_1();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C (CDefPointer<const CThingDef>*)
-};
-void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDefClassBase>* out)
-{
-    void* def = FindDef_CDefinitionManager_GetDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-class CThing { public:
-    unsigned char  _pad00[0x8c];
-    unsigned short DefIndex;                        // +0x8c
-};
-class CTCShop { public:
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04 (CTCBase)
-    bool    ToBeRemoved;                            // +0x08
-    bool    IsInGlobalUpdateTCs;                    // +0x09
-    CDefinitionManager* GetDefinitions() const;     // 0x006869D0 (CTCBase)
-    long GetName() const;
-};
+// Identity: Ego_r.pdb / FableWin.pdb ?GetName@CTCShop@@QBEKXZ (engine/CTCShop.h FABLE_RETAIL_CTCSHOP_NAME: unsigned long).
+// Callees: CTCBase::GetDefinitionManager 0x006869D0, CDefinitionManager::GetDef<CThingBaseDef> 0x0042AF3C (result ignored),
+// CDefClassBase::GetSubDef<CShopDef> 0x005130A0; the defs' Release (virtual Delete at zero).
+// Layout: CThing::DefGlobalIndex +0x8C; CShopDef::Name +0x28 (engine/CShopDef.h).
+// Shape: both defs live in CDefPointer locals whose destructors release them; the found path returns `shopDef->Name` directly,
+// so its null test on the sub-def is dropped after the dereference while the not-found path keeps it. GetDef / GetSubDef are the
+// headers' noinline template bodies (out of line in retail).
+// Name fix (agentNF8 2026-11-11): moved off the local CDefinitionManager / CDefClassBase / CTCShop stand-ins onto the shared
+// headers: the callees now bind ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ (was ?GetDefinitions@CTCShop@@...),
+// GetDef<CThingBaseDef> and GetSubDef<CShopDef> (was ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCShopDef@@@@@Z); the row's own
+// symbol is the PDB ?GetName@CTCShop@@QBEKXZ (was ?GetName@CTCShop@@QBEJXZ, long).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCE
+#define FABLE_RETAIL_CTCSHOP_NAME
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CShopDef.h"
+#include "engine/CTCShop.h"
+#include "engine/CGameDefinitionManager.h"
 
-long CTCShop::GetName() const
+unsigned long CTCShop::GetName() const
 {
-    CDefPointer<CDefClassBase> thingDef;
-    GetDefinitions()->GetDef(ParentThing->DefIndex, &thingDef);
-    CDefPointer<CShopDef> shopDef;
+    CDefPointer<const CThingBaseDef> thingDef;
+    GetDefinitionManager().GetDef(ParentThing->GetDefGlobalIndex(), &thingDef);
+    CDefPointer<const CShopDef> shopDef;
     if (thingDef->GetSubDef(&shopDef))
         return shopDef->Name;
     return 0;
