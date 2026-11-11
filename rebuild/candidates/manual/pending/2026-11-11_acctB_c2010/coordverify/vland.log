@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00492381   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00492381   WARN RELOC_NAME: ?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z -> 0048daa2 labelled 'CGuiControlListBox::SelectEntryFromName'
+00492381   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+00492381   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00492381   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00492381   RELOCATION_MATCH PASS   ProcessEmbeddedGraphicTags
+004959e0   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+004959e0   RELOCATION_MATCH PASS   GetProfileNames
+005248b0   RELOCATION_MATCH PASS   LoadFromGameStateScript
+00716de0   WARN RELOC_NAME: ?IsOverriddenByParent@CTCLook@@QBE_NXZ -> 00751a70 labelled 'CThingPlayerCreature::EditWorldUpdate'
+00716de0   RELOCATION_MATCH PASS   Update
+
+WINS: 4
+  00492381 RELOCATION_MATCH CSubtitleRenderer::?ProcessEmbeddedGraphicTags@CSubtitleRenderer@@AAEXXZ
+  004959e0 RELOCATION_MATCH CFrontendGameComponent::?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  005248b0 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?LoadFromGameStateScript@CEntityRuntimePersistence@NThingManager@@QAEXAAVCStringParser@@@Z
+  00716de0 RELOCATION_MATCH NTCScriptedControl::CActionTalkBase::?Update@CActionTalkBase@NTCScriptedControl@@UAEXXZ
