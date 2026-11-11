@@ -161,7 +161,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-extern float g_LibraryLookTurnSpeed;            // 0x0138CBA8 (the look turn speed shared with GoToLibrary)
+extern float g_LookAtTurnSpeed;            // 0x0138CBA8 (the look turn speed shared with GoToLibrary)
 extern bool g_LeaderboardInUse;                 // 0x013BB6B0
 // The approach distance is TU-local: the only reference to 0x013BB6AC in the whole executable is this function's
 // store, so it is a file-scope static of this TU (as an extern, VC7.1 schedules the store ahead of the by-value
@@ -210,7 +210,7 @@ bool CAIStateGroupApprenticeHeroMethods::LookAtLeaderBoard()
     bool reached;
     if (AIAction_MoveToPosProximity(1, centre, g_LeaderboardApproachDistance = 0.5f, &reached, 3, true, false, true, 0, true, 0.0f) != 2)
         return false;
-    if (AIAction_LookAtThing(1, board, 0xb, g_LibraryLookTurnSpeed) != 2)
+    if (AIAction_LookAtThing(1, board, 0xb, g_LookAtTurnSpeed) != 2)
         return false;
     bool failed;
     {
@@ -312,7 +312,7 @@ static int g_ipCtors = 0, g_ipDtors = 0; static void* g_lookItem;
 CIntelligentPointerConstThing::CIntelligentPointerConstThing(CThingGameObject* thing) { ++g_ipCtors; m_pItem = thing; }
 CIntelligentPointerConstThing::CIntelligentPointerConstThing(const CIntelligentPointerConstThing& o) { ++g_ipCtors; m_pItem = o.m_pItem; }
 CIntelligentPointerConstThing::~CIntelligentPointerConstThing() { ++g_ipDtors; }
-float g_LibraryLookTurnSpeed = 0.25f;
+float g_LookAtTurnSpeed = 0.25f;
 bool g_LeaderboardInUse = false;
 static CThingGameObject* g_board; static CThingGameObject* g_marker; static int g_finds = 0;
 CThingGameObject* CAIStateGroupApprenticeHeroMethods::FindDummy(const CCharString& name)

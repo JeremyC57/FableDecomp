@@ -49,6 +49,13 @@ public:
 protected:
     bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, const class CThingPlayerCreatureInit& init);   // 0x006A9DD0
 #endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_MOVEMENTBAND
+    // Retail opt-in (chunk Q9, row 0x006AB430): Ego_r.pdb / FableWin.pdb
+    // ?GetMovementBandTypeFromJoytickMagnitude@CThingPlayerCreature@@IBE?AW4EMovementBandType@@M@Z (protected const, `ret 4`; the PDB
+    // spelling "Joytick"). The body reads PPlayerMovementDef's joystick bands (engine/CPlayerMovementDef.h). Declaration only.
+protected:
+    EMovementBandType GetMovementBandTypeFromJoytickMagnitude(float magnitude) const;   // 0x006AB430 IBE
+#endif
 protected:
     void SetPlayerCreatureActionForMelee(ECombatZone zone, const C3DVector& direction, CThing* target,
                                          const CCreatureAbilityDef& ability);              // 0x006AA720 IAE

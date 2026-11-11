@@ -1,0 +1,18 @@
+addr       parity           behav  name
+006ab430   RELOCATION_MATCH PASS   GetMovementBandTypeFromJoytickMagnitude
+0092b900   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+0092b900   RELOCATION_MATCH PASS   Update
+009f3010   MATCH            PASS   ReadOnlyLock
+00e1cae0   RELOCATION_MATCH PASS   MonitorMazePhases
+
+WINS: 4
+  006ab430 RELOCATION_MATCH CThingPlayerCreature::?GetMovementBandTypeFromJoytickMagnitude@CThingPlayerCreature@@IBE?AW4EMovementBandType@@M@Z
+  0092b900 RELOCATION_MATCH CAIStateGroup_OnHeroPush::?Update@CAIStateGroup_OnHeroPush@@UAEXXZ
+  009f3010 MATCH CSurface::?ReadOnlyLock@CSurface@@QBE?AVCSurfaceLockedRect@@K@Z
+  00e1cae0 RELOCATION_MATCH NScript::CQ_WizardBattleScript::?MonitorMazePhases@CQ_WizardBattleScript@NScript@@QAEXAAVCScriptThing@@@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CThingPlayerCreature_GetMovementBandTypeFromJoytickMagnitude_006ab430
+  CAIStateGroupOnHeroPush_Update_0092b900
+  CSurface_ReadOnlyLock_009f3010
+  NScriptCQWizardBattleScript_MonitorMazePhases_00e1cae0

@@ -11,7 +11,7 @@
 #define FABLE_VECTOR_INLINE inline
 #endif
 #include <math.h>
-#if defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
 inline float FABLE_FASTCALL GFFastSqrt(float value){return sqrt(value);}
 #endif
 #include "engine/C2DCoordI.h"
@@ -195,6 +195,12 @@ public:
     // Original FableWin01d9faa0 GetMagnitude2D, calls single-precision sqrt helper.
     inline float GetMagnitude2D()const {float squared=X*X;squared+=Y*Y;return GFFastSqrt(squared);}
 #endif
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+    // Retail opt-in (chunk Q9, row 0x0092ACE0 CAIStateGroup_ApprenticeHero::GoToLibrary): the same FableWin.pdb
+    // ?GetMagnitude2D@C3DVector@@QBEMXZ body as the FABLE_RETAIL_UPDATE_NEAREST_INTERESTING branch above, without that opt-in's
+    // CThingCreatureBase / CTCTargetingBase / C2DBoxI changes. Body only: default path unchanged.
+    inline float GetMagnitude2D()const {return GFFastSqrt(X*X+Y*Y);}
+#endif
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Retail branch (pass 12 header wave, 0x00AC2BE0 PartitionSpace): inline in retail; FableWin.pdb keeps out-of-line debug
@@ -252,7 +258,14 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS)
+    // Retail opt-in (chunk Q9, row 0x0092B900 CAIStateGroup_OnHeroPush::Update): the components read into locals first, then the
+    // squared length summed Z, X, Y. There the inlined Normalise loads X, Y, Z (0x0092B95F..0x0092B969) and sums Z*Z, X*X, Y*Y
+    // (0x0092B96C `fld st(0) ; fmul st(1)`, 0x0092B970 `fld st(3) ; fmul st(4)`, 0x0092B976 `fld st(2) ; fmul st(3)`); every
+    // one-expression sum (GFSqr or plain, any order) loads the components in its own sum order there. Body only: no layout change,
+    // default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float x=X;float y=Y;float z=Z;float squared=z*z;squared+=x*x;squared+=y*y;float one_on_magnitude=GFFastOneOverSqrt(squared);X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER)
 #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_GROUPED_SUM
     FABLE_VECTOR_INLINE C3DVector& Normalise(){float one_on_magnitude=GFFastOneOverSqrt((GFSqr(X)+GFSqr(Y)+GFSqr(Z)));X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
 #else

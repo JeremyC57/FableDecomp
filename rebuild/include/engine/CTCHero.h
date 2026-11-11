@@ -41,7 +41,15 @@ public:
     bool WillUsable;                                                     // +0x0d
     bool WeaponUseOverriddenByScripts;                                   // +0x0e
     bool WillUseOverriddenByScripts;                                     // +0x0f
+#ifdef FABLE_RETAIL_CTCHERO_TITLEOBJECT
+    // Nested opt-in (chunk 1009b, row 0x0059FC17 CTCInventoryTrade::AlreadyHaveSpecial): Ego_r.pdb Title +0x10 (EHeroTitle) and
+    // HeroTitleObjectDef +0x14 (the worn title's def index; `cmp [eax+14h],ecx` 0x0059FE29) typed, the rest opaque.
+    long          Title;                                                 // +0x10 EHeroTitle
+    long          HeroTitleObjectDef;                                    // +0x14
+    unsigned char _tail[0x20];                                           // +0x18 PHeroTitleSubDef .. PTeleportParticle (opaque)
+#else
     unsigned char _tail[0x28];                                           // +0x10 Title .. PTeleportParticle (opaque)
+#endif
 #ifdef FABLE_RETAIL_CTCHERO_WEAPONUSE
     // Nested opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): FableWin.pdb
     // ?IsWeaponUseAllowed@CTCHero@@QBE_NXZ (a 5-byte body there), inline in retail (`cmp byte ptr [eax+0Ch],0`, 0x005CA6D5).

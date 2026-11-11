@@ -392848,6 +392848,35 @@ $catalog = @(
         TestSource = '00/9f/CInputEventPackage_CInputEventPackage_009f5690_test.cpp'
         PassPattern = '009f5690_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006ab430'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_GetMovementBandTypeFromJoytickMagnitude_006ab430.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_GetMovementBandTypeFromJoytickMagnitude_006ab430_test.cpp'
+        PassPattern = '006ab430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092b900'
+        Module = 'CAIStateGroup_OnHeroPush'
+        Source = '00/92/CAIStateGroupOnHeroPush_Update_0092b900.cpp'
+        TestSource = '00/92/CAIStateGroupOnHeroPush_Update_0092b900_test.cpp'
+        PassPattern = '0092b900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f3010'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_ReadOnlyLock_009f3010.cpp'
+        TestSource = '00/9f/CSurface_ReadOnlyLock_009f3010_test.cpp'
+        PassPattern = '009f3010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1cae0'
+        Module = 'NScript::CQ_WizardBattleScript'
+        Source = '00/e1/NScriptCQWizardBattleScript_MonitorMazePhases_00e1cae0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScript_MonitorMazePhases_00e1cae0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT138'
+        PassPattern = '00e1cae0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

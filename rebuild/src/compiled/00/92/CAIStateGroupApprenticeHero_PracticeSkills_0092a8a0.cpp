@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0092A8A0, 1088 bytes, plain ret.
 // Twin: the landed CAIStateGroup_SkillPractice::PracticeSkills 0x0092B3E0 (same callees and step shape); this one gives
 //   and destroys carried objects (0x008FD0A0 / DestroyItem 0x008FD1B0) instead of unsheathing, and looks with the shared
-//   g_LibraryLookTurnSpeed 0x0138CBA8. Literals "OBJECT_IRON_LONGSWORD" 0x01291A50, "OBJECT_YEW_LONGBOW" 0x01291AF0,
+//   g_LookAtTurnSpeed 0x0138CBA8. Literals "OBJECT_IRON_LONGSWORD" 0x01291A50, "OBJECT_YEW_LONGBOW" 0x01291AF0,
 //   "CARRY_SLOT_RIGHT_HAND" 0x01265440, "CARRY_SLOT_LEFT_HAND" 0x01265428.
 #include "fable_compiler.h"
 class CThing;
@@ -55,7 +55,7 @@ class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:  
     long Loop;                                  // +0x114
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
-extern float g_LibraryLookTurnSpeed;            // 0x0138CBA8
+extern float g_LookAtTurnSpeed;            // 0x0138CBA8
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -126,7 +126,7 @@ bool CAIStateGroup_ApprenticeHero::PracticeSkills()
     if (!MoveToAppropriateDummy() || !IsDummyTypeLegal(DummyType))
         goto failed;
     for (long i = 0; i < repetitions; ++i) {
-        if (AIAction_LookAtThing(1, CIntelligentPointerConstThing(PDummy), 1, g_LibraryLookTurnSpeed) != 2)
+        if (AIAction_LookAtThing(1, CIntelligentPointerConstThing(PDummy), 1, g_LookAtTurnSpeed) != 2)
             goto failed;
         bool stepFailed;
         if (DummyType == 1) {

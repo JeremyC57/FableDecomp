@@ -13,6 +13,11 @@ class CHeroSpecialMovementDef;
 class CTCHeroSpecialMovement : public CTCBase {
 public:
     virtual void OnCreate();                                             // slot 4 0x007E0910 ?OnCreate@CTCHeroSpecialMovement@@UAEXXZ
+#ifdef FABLE_RETAIL_CTCHEROSPECIALMOVEMENT_ISRUNNING
+    // Retail opt-in (chunk Q9, row 0x006AB430): FableWin.pdb ?IsRunning@CTCHeroSpecialMovement@@QBE_NXZ (absent from Ego_r.pdb, the
+    // release build: inline), expanded in retail as `mov cl,[eax+0Dh] ; test cl,cl` (0x006AB507). Body only, no layout change.
+    bool IsRunning() const { return Running; }
+#endif
 private:
     bool  Sprinting;                                                     // +0x0c
     bool  Running;                                                       // +0x0d

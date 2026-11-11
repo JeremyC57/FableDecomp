@@ -71,7 +71,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-extern float g_LibraryLookTurnSpeed;            // 0x0138CBA8 (the look turn speed shared with GoToLibrary)
+extern float g_LookAtTurnSpeed;            // 0x0138CBA8 (the look turn speed shared with GoToLibrary)
 extern bool g_LeaderboardInUse;                 // 0x013BB6B0
 // The approach distance is TU-local: the only reference to 0x013BB6AC in the whole executable is this function's
 // store, so it is a file-scope static of this TU (as an extern, VC7.1 schedules the store ahead of the by-value
@@ -120,7 +120,7 @@ bool CAIStateGroupApprenticeHeroMethods::LookAtLeaderBoard()
     bool reached;
     if (AIAction_MoveToPosProximity(1, centre, g_LeaderboardApproachDistance = 0.5f, &reached, 3, true, false, true, 0, true, 0.0f) != 2)
         return false;
-    if (AIAction_LookAtThing(1, board, 0xb, g_LibraryLookTurnSpeed) != 2)
+    if (AIAction_LookAtThing(1, board, 0xb, g_LookAtTurnSpeed) != 2)
         return false;
     bool failed;
     {

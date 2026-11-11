@@ -45,6 +45,12 @@ public:
     void EditFrameUpdate();                                  // 0x00707930
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_WEARING
+    // Retail opt-in (chunk 1009b, row 0x0059FC17 CTCInventoryTrade::AlreadyHaveSpecial; needs _LIST for the enum): Ego_r.pdb /
+    // FableWin.pdb ?IsWearingAppearanceModifier@CTCHeroAttachableAppearanceModifiers@@QBE_NJW4EHeroAttachableAppearanceModifierType@@@Z,
+    // out of line at 0x00706000 (`push ebx(0) ; push [eax+28h] ; call 00706000h`, 0x0059FC6E).
+    bool IsWearingAppearanceModifier(long defIndex, EHeroAttachableAppearanceModifierType type) const;   // 0x00706000
+#endif
 #ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
 #endif

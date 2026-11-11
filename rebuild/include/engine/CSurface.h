@@ -24,6 +24,12 @@ public:
  virtual ~CSurface();
 #endif
  void Uninitialise();                                     // 0x009F2E20
+#ifdef FABLE_RETAIL_CSURFACE_READONLYLOCK
+ // Retail opt-in (chunk Q9, row 0x009F3010): Ego_r.pdb / FableWin.pdb ?ReadOnlyLock@CSurface@@QBE?AVCSurfaceLockedRect@@K@Z (hidden result,
+ // `ret 8`). Needs CSurfaceLockedRect complete (engine/CSurfaceLockedRect.h) before the include; GetDimensions comes from
+ // FABLE_RETAIL_CSURFACE_BITMAP. Declaration only.
+ CSurfaceLockedRect ReadOnlyLock(unsigned long flags) const;            // 0x009F3010
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_BITMAP
  // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
  // (0x00B46C70 = the landed retail 0x009F2F90, hidden result) and ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z

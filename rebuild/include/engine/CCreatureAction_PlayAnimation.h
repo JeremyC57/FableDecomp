@@ -23,7 +23,13 @@ protected: bool StayOnLastFrame;
 protected: bool Looping;
 protected: long NumberOfTimesToLoop;
 protected: bool AnimMayNeedCameraPositionUpdatedInSpeakAndWait;
+#ifndef FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION_IMPLICIT_DTOR
 public: virtual ~CCreatureAction_PlayAnimation();
+#else
+// Retail opt-in (chunk Q9, row 0x0092B900 CAIStateGroup_OnHeroPush::Update): no user destructor, so the implicit one expands and a
+// temporary's destruction calls ~CCreatureActionBase 0x00693EF0 straight (0x0092BB7B `lea ecx,[esp+1Ch] ; call 00693EF0`), as
+// retail binds it; the declared one calls a ??1CCreatureAction_PlayAnimation@@UAE@XZ retail does not have there. Default unchanged.
+#endif
 public: CCreatureAction_PlayAnimation& operator=(const CCreatureAction_PlayAnimation&);
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayAnimation)==0xb4);

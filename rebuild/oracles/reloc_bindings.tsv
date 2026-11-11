@@ -13140,10 +13140,6 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?OnAnimationLoaded@CCombatActionBase@@QAEXXZ	00859ef0	008ec260
 ??0Coin@@QAE@MMPAVCThing@@_N@Z	008ef200	008efa00
 ?GetDef@CThingDefHolder@@QAE_NPAUCDefPointer@@@Z	008f00f0	008efa00
-?AIAction_LookAtThing@CAIStateGroupApprenticeHeroMethods@@QAEJJUCIntelligentPointerConstThing@@JM@Z	0097d6f0	0092ae70
-?g_LeaderboardInUse@@3_NA	013bb6b0	0092ae70
-?g_LibraryLookTurnSpeed@@3MA	0138cba8	0092ae70
-_g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ	006a4d00	0092e950
 ?GetPersonalSpaceRadius@CThingCreatureBase@@SIMXZ	00661cc0	0092e950
 ??_7CTaskPointer@@6B@	0128b088	0093e8c0
@@ -14316,9 +14312,6 @@ __Rb_increment	004292c0	00599e3f
 __wcsicmp	00f3fb84	00599e3f
 ?g_PlayAnimationDefaultFlag@@3_NA	01375748	00d08790
 ?g_pEngineSystem_01436e48@@3PAUSEngineSystem_01436e48@@A	01436e48	00b990b0
-?GetDummy@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092a0c0	0092a8a0
-?IsDummyTypeLegal@CAIStateGroup_ApprenticeHero@@QAE_NJ@Z	00929f70	0092a8a0
-?MoveToAppropriateDummy@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092a220	0092a8a0
 ??0C3DAnimFileBoneMaskChunk@@QAE@XZ	00ab0700	00a999b0
 ??0C3DAnimFileMovementVectorChunk@@QAE@XZ	00aae2a0	00a999b0
 ??0C3DAnimFileObjectChunk@@QAE@XZ	00ab0020	00a999b0
@@ -23746,11 +23739,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?FindDummy@CAIStateGroupApprenticeHeroMethods@@QAEPAVCThingGameObject@@ABVCCharString@@@Z	00929fc0	0092a0c0
 ?AIAction_MoveToPosProximity@CAIStateGroupApprenticeHeroMethods@@QAEJJVC3DVector@@MPA_NJ_N22PAVCThing@@2M@Z	0097e890	0092a220
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	0092a220
-?DestroyItem@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@@Z	008fd1b0	0092a8a0
-?GiveCarriedObject@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@0@Z	008fd0a0	0092a8a0
-??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	008b7ff0	0092ae70
-??0CIntelligentPointerConstThing@@QAE@PAVCThingGameObject@@@Z	0056c860	0092ae70
-?AIAction_PerformActionAndWait@CAIStateGroupApprenticeHeroMethods@@QAEJPAVCCreatureActionBase@@_N@Z	0097db70	0092ae70
 ??0CCreatureAction_AimMissileWeapon@@QAE@PAVCThingCreatureBase@@@Z	00718710	0092b3e0
 ?AIAction_MinionWander@CAIStateGroupBase@@QAEJJPAVCThing@@@Z	0097f870	0092b3e0
 ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@J@Z	006ebdd0	0092b3e0
@@ -25421,7 +25409,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Reset@CCountedPointer@@QAEXPAX@Z	00668d90	00917bb0
 ??0CCreatureAction_PutDownTankard@@QAE@PAVCThingCreatureBase@@@Z	00922f50	009236c0
 ?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@J@Z	006a1e00	009236c0
-??1CCreatureAction_FireMissileWeapon@@UAE@XZ	0078adf0	0092a8a0
 ??0CCreatureAction_AlertToPlayer@N_00933cc0@@QAE@PAVCThingAICreature@@@Z	00933cc0	00933bb0
 ?FreeBarPoint_009670a0@CAIStateGroup_TavernServer@@QAEXXZ	009670a0	00967b40
 ??0CCreatureAction_PutDownTankard@N_0096c820@@QAE@PAVCThingCreatureBase@@@Z	0096c820	0096c9a0
@@ -38929,3 +38916,15 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ??_7CEnginePrimitiveRenderer2D@@6B@	012a2308	00b4aaa0
 ?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z	00b8fee0	00b4aaa0
 __imp___strupr	0144002c	00c0c910
+??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	008b7ff0	0092a8a0
+??1CCreatureAction_FireMissileWeapon@@UAE@XZ	0078adf0	0092a8a0
+?DestroyItem@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@@Z	008fd1b0	0092a8a0
+?GetDummy@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092a0c0	0092a8a0
+?GiveCarriedObject@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@0@Z	008fd0a0	0092a8a0
+?IsDummyTypeLegal@CAIStateGroup_ApprenticeHero@@QAE_NJ@Z	00929f70	0092a8a0
+?MoveToAppropriateDummy@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092a220	0092a8a0
+??0CIntelligentPointerConstThing@@QAE@PAVCThingGameObject@@@Z	0056c860	0092ae70
+?AIAction_LookAtThing@CAIStateGroupApprenticeHeroMethods@@QAEJJUCIntelligentPointerConstThing@@JM@Z	0097d6f0	0092ae70
+?AIAction_PerformActionAndWait@CAIStateGroupApprenticeHeroMethods@@QAEJPAVCCreatureActionBase@@_N@Z	0097db70	0092ae70
+?g_LeaderboardInUse@@3_NA	013bb6b0	0092ae70
+_g_LeaderboardApproachDistance	013bb6ac	0092ae70
