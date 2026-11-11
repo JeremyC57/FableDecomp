@@ -15,6 +15,7 @@
 // place), nested ifs with two `mov eax,esi` hit returns and the shared null exit; the lock test is the ternary
 // `UsesTargetLock() ? IsLockedA() : IsLockedB()` on the 0x34 component.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -24,29 +25,13 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;       // 0x0040F020
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
 // caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 
 
@@ -65,10 +50,10 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

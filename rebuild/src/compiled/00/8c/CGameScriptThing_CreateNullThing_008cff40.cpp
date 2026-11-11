@@ -13,6 +13,7 @@
 //   SetResidency 0x008A1CC0, CScriptGameResourceObjectScriptedThing::GetScriptThing 0x009038D0), each on its own
 //   "return the null thing" path. It is not CScriptThing::CScriptThing() (that is 0x006E7B40: base ctor 0x0099A2D0,
 //   vtable 0x01238C8C, PImp nulled) and not the operator&& the propagated manifest label claimed.
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
@@ -29,7 +30,8 @@ public:
     CCountedPointer<CGameScriptThingManager> PGameScriptThingManager;   // +0x04
 };
 
-extern CQuestManager* g_pQuestManager;                  // 0x013B89FC (the CTBaseSingletonNoDefaultAlloc<CQuestManager> instance)
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 class CGameScriptThing : public CScriptThing {
 public:
@@ -38,5 +40,5 @@ public:
 
 CScriptThing __fastcall CGameScriptThing::CreateNullThing()
 {
-    return g_pQuestManager->PGameScriptThingManager.Data->GetNullScriptThing();
+    return CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PGameScriptThingManager.Data->GetNullScriptThing();
 }

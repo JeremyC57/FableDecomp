@@ -21,6 +21,7 @@
 //   around a second fetch tested again (`test eax,eax` then `cmp eax,ebx`, 0x005CB054..0x005CB064; the ternary form keeps a
 //   null arm); the container is created in an if/else over IsLiveGUIMode() (two CreateComponent calls, as 0x005C90FC);
 //   FABLE_RETAIL_CDELETION_BODIES schedules the Method store right before the copy constructor (0x005CAFA2).
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -137,7 +138,7 @@ void CTCInventoryWeapons::RefreshWeaponDescriptions()
             NUISystem::CComponent* description = *it;
             long itemDefIndex = WeaponMenuItemMap[description];
             if (itemDefIndex > 0) {
-                CDefPointer<const CDefClassBase> def;
+                CDefPointer<const CThingBaseDef> def;
                 GetDefinitionManager().GetDef(itemDefIndex, &def);
                 CDefPointer<const CWeaponDef> weaponDef;
                 def->GetSubDef(&weaponDef);

@@ -17,7 +17,12 @@ struct GameGlobal {
     QuestObj* active; // +0x88
 };
 
-GameGlobal* g_ptr;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+class CQuestManager;
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
 
 class CGameScriptInterface { public:
     void* vt;
@@ -26,7 +31,7 @@ class CGameScriptInterface { public:
 
 CCharString CGameScriptInterface::GetActiveQuestName()
 {
-    QuestObj* q = g_ptr->active;
+    QuestObj* q = (reinterpret_cast<GameGlobal*&>(CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data))->active;
     if (q)
         return q->name;
     return CCharString("", -1);
@@ -34,7 +39,7 @@ CCharString CGameScriptInterface::GetActiveQuestName()
 
 int main() {
     GameGlobal g; g.active = 0;
-    g_ptr = &g;
+    (reinterpret_cast<GameGlobal*&>(CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data)) = &g;
     CGameScriptInterface self;
     CCharString r1 = self.GetActiveQuestName();
     if (r1.p == 0 || r1.p[0] != 0) { std::printf("FAIL null-branch not empty\n"); return 1; }

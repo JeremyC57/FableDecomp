@@ -6,7 +6,9 @@
 // Callees: CThingAICreature::SuspendAI(bool, long) 0x00833A10; the creature's physics object (+0x60) virtual slots 40
 // (+0xa0, enable) and 44 (+0xb0, wake); CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase*, bool)
 // 0x00867AF0 (then the derived CCombatAction_GenericStrikeResponseKnockdownRecover vtable 0x0127191C from its inline ctor);
-// CThingCreatureBase::SetCurrentAction(const CCombatActionBase&) 0x006644F0; ~CCombatActionBase 0x0062E900;
+// Name fix (agentNF7 2026-11-10): SetCurrentAction 0x006644F0 takes const CCreatureActionBase& (Ego_r.pdb); the local CCombatActionBase stand-in (no base) replaced by the shared engine/CCombatActionBase.h, so the temporary's dtor binds ??1CCombatActionBase@@UAE@XZ 0x0062E900.
+class CCreatureActionBase;
+// CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) 0x006644F0; ~CCombatActionBase 0x0062E900;
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined GetInterface, CTCCreatureModeManager = type 0x31,
 // bit 17 of +0x24); CTCCreatureModeManager::RemoveMode(unsigned long) 0x0073ABA0.
 // Layout (PDB CModeCreatureIsProjectile 0x88, matches retail): CModeStandBase 0x68, StartThrow +0x68, Filter +0x74,
@@ -47,7 +49,7 @@ class CThingCreatureBase : public CThingAnimatable { public:
     CInterfaceMap   m_interfaces;          // +0x44
     unsigned char   _pad54[0xc];
     CPhysicsObject* PPhysics;              // +0x60
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -67,12 +69,10 @@ class CTCCreatureModeManager { public:            // interface type 0x31
     void RemoveMode(unsigned long mode);   // 0x0073ABA0
 };
 
-class CCombatActionBase { public:                 // retail sizeof 0x114
-    virtual void v00();
-    unsigned char _body[0x110];
-    virtual ~CCombatActionBase();                  // 0x0062E900
-};
-
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCombatActionBase.h"   // ~CCombatActionBase 0x0062E900 (virtual), base CCreatureActionBase (Ego_r.pdb)
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:   // vtable 0x01271BAC
     bool CanBeHit;                         // +0x114
     bool Flip;                             // +0x115

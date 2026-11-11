@@ -16,6 +16,7 @@
 //   (Interrupt +0x114, LoopNum +0x118); CKrakenDef HighStrikeAttackLoops +0x44; CTCKraken HeadTrackTarget +0x51 (PDB +0x61).
 // Shape: the loop limit is read into a local before the alive test; the target is fetched into a local before the
 //   SetCurrentAction call (retail's fetch order), as the twin 0x00924720.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -28,11 +29,8 @@ class CCombatActionBase;
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CKrakenDef { public:
     unsigned char _pad00[0x44];
     long          HighStrikeAttackLoops;        // +0x44 (Ego_r.pdb)
@@ -64,15 +62,15 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     CBaseIntelligentPointer PTarget;            // +0xa8 CIntelligentPointer<CThing>
     unsigned char           _padb0[0x114 - 0xb0];
     ~CCombatActionBase();                       // 0x0062E900
-    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(reinterpret_cast<CThing*>(PCreature.GetPItem())); }
     FABLE_FORCEINLINE bool IsTargetAlive() const    // two fetches: present, then not dead
     {
-        return PTarget.GetPItem() && !PTarget.GetPItem()->IsDead();
+        return reinterpret_cast<CThing*>(PTarget.GetPItem()) && !reinterpret_cast<CThing*>(PTarget.GetPItem())->IsDead();
     }
     FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
-        PCreature.GetPItem()->GetTC(TCI_KRAKEN, &kraken);
+        reinterpret_cast<CThing*>(PCreature.GetPItem())->GetTC(TCI_KRAKEN, &kraken);
         return kraken;
     }
 };
@@ -100,7 +98,7 @@ void CCreatureAction_KrakenHighAttackLoop::FinishAction()
             kraken->EndAttackBeam();
             kraken->HeadTrackTarget = false;
         }
-        CThing* target = PTarget.GetPItem();
+        CThing* target = reinterpret_cast<CThing*>(PTarget.GetPItem());
         Creature().SetCurrentAction(CCreatureAction_KrakenHighAttackLoop(&Creature(), target, LoopNum, Interrupt));
     } else
         Creature().SetCurrentAction(CCreatureAction_KrakenHighAttackOutOf(&Creature()));

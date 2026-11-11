@@ -13,6 +13,7 @@
 // (PBrain +4, brain PCreature +0x18, creature PMother +0x180, dead bit +0x91 bit 0), as in the landed 0x0090EE20.
 // Shape: the move result is a function-scope long initialised to 3 before the loop (retail keeps it in ebp and tests it
 // after the inner Terminate); the 8-byte held pointer forces the `and esp,-8` frame.
+// Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 #include "fable_compiler.h"
 class CTCBase;
 class CBaseObject { public:
@@ -48,14 +49,8 @@ class CThingPlayerCreature : public CThing { };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CMessageEvent : public CBaseObject { public: };
-struct CIntelligentPointerMessage : CBaseIntelligentPointer {    // CIntelligentPointer<CMessageEvent>, vtable 0x0128B0C0
-    virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerMessage(CMessageEvent* item) { SetPItem(item); }
-};
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer { // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(const_cast<CThing*>(item)); }
-};
+// CIntelligentPointerMessage = the shared CIntelligentPointer<CMessageEvent> (engine/CIntelligentPointer.h).
+// CIntelligentPointerConstThing = the shared CIntelligentPointer<const CThing> (engine/CIntelligentPointer.h).
 class CThingAICreature : public CThing { public:
     unsigned char _pad94[0x180 - 0x94];
     CBaseIntelligentPointer PMother;            // +0x180
@@ -78,8 +73,8 @@ class CAIStateGroupBase { public:
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
     CPlayerManager* GetPPlayerManager_008fcf80();        // 0x008FCF80
     void Terminate();                           // 0x008FCF40
-    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
-    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float distance, bool* reached,
+    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointer<const CThing> target, float distance, bool* reached,
         long movement, bool a, bool b, bool c, bool d, float speed);         protected: // 0x0097E380
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
@@ -90,7 +85,7 @@ struct CAIStateGroup_MinionKidCalledToMother : CAIStateGroupBase {
 
 void CAIStateGroup_MinionKidCalledToMother::Update()
 {
-    CIntelligentPointerMessage callHome(FindCallHomeEvent());
+    CIntelligentPointer<CMessageEvent> callHome(FindCallHomeEvent());
     if (((CThing*)callHome.GetPItem()) == 0)
         return;
     long result = 3;
@@ -113,7 +108,7 @@ void CAIStateGroup_MinionKidCalledToMother::Update()
                     distanceSquared = dy * dy + dx * dx;
                 }
                 if (distanceSquared < 1.44f) {
-                    if (AIAction_LookAtThing(1, CIntelligentPointerConstThing(hero), 9,
+                    if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(hero), 9,
                             GetCreature()->GetTurnAngleDegrees() / 360.0f) != 2)
                         return;
                 } else {
@@ -125,7 +120,7 @@ void CAIStateGroup_MinionKidCalledToMother::Update()
                             break;
                         }
                         CThing* target = ((CThing*)GetCreature()->PMother.GetPItem());
-                        result = AIAction_MoveToThingProximity(2, CIntelligentPointerConstThing(target), 1.2f, &reached, 5,
+                        result = AIAction_MoveToThingProximity(2, CIntelligentPointer<const CThing>(target), 1.2f, &reached, 5,
                             true, false, true, true, 0.0f);
                     } while (result == 4);
                     if (result != 2)

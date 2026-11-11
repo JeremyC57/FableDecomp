@@ -9,19 +9,20 @@
 // CCreatureAction_BanditKingGetHit::FinishAction 0x008C92C0. The action class (ctor 0x008AE160, callers 0x008A8EF6,
 // 0x00962FEE, 0x00963C84) is not named; modelled as CCreatureAction_AttackThing.
 // Shape: /O2 (16-aligned entry).
+// Name fix (agentNF7 2026-11-10): SetCurrentAction 0x006644F0 takes const CCreatureActionBase& (Ego_r.pdb); the local CCombatActionBase stand-in (no base) replaced by the shared engine/CCombatActionBase.h, so the temporary's dtor binds ??1CCombatActionBase@@UAE@XZ 0x0062E900.
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
 inline bool IS_THING_ALIVE(const CThing* t)
 {
     return t != 0 && !t->IsDead();
 }
-class CCombatActionBase { public:                      // retail sizeof 0x114
-    virtual void v00();
-    unsigned char _pad04[0x114 - 4];
-    virtual ~CCombatActionBase();                       // 0x0062E900
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCombatActionBase.h"   // ~CCombatActionBase 0x0062E900 (virtual), base CCreatureActionBase (Ego_r.pdb)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 struct CCreatureAction_AttackThing : CCombatActionBase {      // retail sizeof 0x118 (name not recovered)
     unsigned char _body[4];

@@ -15,6 +15,7 @@
 //     arm and tail-merges the call, 0x005B94D5 / 0x005B94D9); a bool expression argument is materialised in al.
 // Header: engine/CTCInventoryClothing.h FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN (NHeroInformationScreens::CBase at +0x130, the screen
 //   methods, typed ClothingItemMap / ClothingList), engine/CHeroSuitDef.h / engine/CAppearanceModifierDef.h _STATGETTYPENAME opt-ins.
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -66,10 +67,11 @@
 #include "engine/CHeroSuitDef.h"
 #include "engine/CAppearanceModifierDef.h"
 #include "engine/CThingObjectDef.h"
+#include "engine/CThingBaseDef.h"
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                       // 0x00405F00
 
-// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C, GetDef<CThingObjectDef>
+// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C, GetDef<CThingObjectDef>
 // 0x0042B040, GetSubDef<CHeroSuitDef> 0x005935C4, GetSubDef<CAppearanceModifierDef> 0x0057FF92).
 #pragma auto_inline(off)
 template <class T>
@@ -125,7 +127,7 @@ NUISystem::CComponent* CTCInventoryClothing::ConstructScreenPC(NUISystem::CCompo
     std::vector<std::pair<long, long> > feetItems;
     std::vector<std::pair<long, long> > suitItems;
     for (unsigned long i = 0; i < items.size(); ++i) {
-        CDefPointer<const CDefClassBase> def;
+        CDefPointer<const CThingBaseDef> def;
         GetDefinitionManager().GetDef(items[i].first, &def);
         CDefPointer<const CHeroSuitDef> suit;
         if (def->GetSubDef(&suit)) {

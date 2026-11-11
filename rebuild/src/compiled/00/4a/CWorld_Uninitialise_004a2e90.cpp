@@ -12,9 +12,11 @@
 // CWorld (engine/CWorld.h offsets agree): PWorldMap +0x14, PGameCameraManager +0x30, PThingManager +0x50 (scoped_ptrs).
 // Shape: scoped_ptr::reset(0) (old read, zero stored, `delete old`); the singleton access is an inline static
 // GetInstance() that creates the manager on first use, its method call becomes the tail jump.
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 class CWorldMap { public: void PrepareForLoad(); };          // 0x004FF560
 class CQuestManager { public: void OnWorldDestruction(); };  // 0x004B49E0
-extern CQuestManager* g_pQuestManager;                // 0x013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 class CThingManager { public: virtual ~CThingManager(); };
 void __fastcall SetCurrentThingManager(CThingManager* manager);   // 0x004C74F0
@@ -67,7 +69,7 @@ void CWorld::Uninitialise()
 {
     PWorldMap->PrepareForLoad();
     SetCurrentThingManager(PThingManager.get());
-    g_pQuestManager->OnWorldDestruction();
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnWorldDestruction();
     PThingManager.reset(0);
     PGameCameraManager.reset(0);
     CSkeletalMorphResourceManager::GetInstance().ReleaseResources();

@@ -1,0 +1,2 @@
+address	name	evidence
+01228CA0	`dynamic atexit destructor for 'CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass''	agentNF7: Ego_r name set + body; VC7.1 local _$E2 of the static member definition; RELOCATION_MATCH (landing bf)

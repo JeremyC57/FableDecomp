@@ -14,6 +14,7 @@
 // Shape: inline Normalise over local copies (the Z = 0 term folds away, Z = r * 0); the SetCurrentAction result is a named
 //   bool so it is kept in bl across the temporary's destructor; the world is a named local so GetWorld is called before
 //   the OverrideWindDirection argument pushes.
+// Name fix (agentNF7 2026-11-10): 0x0062E900 bound as the PDB's virtual ??1CCombatActionBase@@UAE@XZ through the shared engine/CCombatActionBase.h (was a local stand-in with a non-virtual dtor).
 extern unsigned long GFastOneOverSqrtTable[128];       // 0x013CE558
 
 #define FABLE_RETAIL_C3DVECTOR
@@ -34,12 +35,12 @@ class CThingPlayerCreature : public CThing { };
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-class CCreatureActionBase { public: };
-class CCombatActionBase : public CCreatureActionBase { public:
-    unsigned char _body[0x11c];
-    ~CCombatActionBase();                                  // 0x0062E900
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCombatActionBase.h"                     // ~CCombatActionBase 0x0062E900 (virtual, Ego_r.pdb UAE)
 class CCreatureAction_DragonFlight : public CCombatActionBase { public:
+    unsigned char _pad_0x114[0x11c - 0x114];               // the temporary is 0x11c bytes
     CCreatureAction_DragonFlight(CThingCreatureBase* creature, const CCharString& animation);   // 0x008F4CB0
 };
 

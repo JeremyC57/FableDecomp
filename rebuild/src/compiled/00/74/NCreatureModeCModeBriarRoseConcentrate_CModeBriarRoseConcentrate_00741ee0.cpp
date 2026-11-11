@@ -7,13 +7,14 @@
 // CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10.
 // Layout (PDB CModeBriarRoseConcentrate, 0xA8; retail 0xA4 because the STLport vector is 12 bytes, not the PDB's 16):
 // Filter +0x68 (CAnimFilterOfGroup, vtable 0x01267568), Timer +0x74, PTarget +0x78
-// (CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8), Imposters +0x80 (vector<CIntelligentPointer<CThing>>),
+// (CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8), Imposters +0x80 (vector<CIntelligentPointer<CThing> >),
 // Imposter +0x8c (bool), PDef +0x90 (CDefPointer<const CBriarRoseDef>), PBodyEffect +0x94, PSwordEffect +0x9c
 // (CIntelligentPointer<CThing>, vtable 0x01238C6C).
 // Shape: the filter is built from an implicit CCharString conversion temporary of the literal; Timer is a
 // plain initialiser (stored before the PTarget base ctor); the vector is the STLport _Vector_base +
 // _STLP_alloc_proxy model (three zero words from the shared ebx); Imposter / PDef interleave with the next
 // member's `lea`.
+// Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 class CThing;
 class CThingCreatureBase;
 class CBriarRoseDef;
@@ -54,16 +55,8 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    CIntelligentPointerCreature() { }
-};
-
-struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
-};
-
+// CIntelligentPointerCreature = the shared CIntelligentPointer<CThingCreatureBase> (engine/CIntelligentPointer.h).
+// CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 template <class T> struct CAllocator {     // STLport allocator<T>: empty
     CAllocator() { }
 };
@@ -97,12 +90,12 @@ namespace NCreatureMode {
 class CModeBriarRoseConcentrate : public CModeStandBase { public:   // vtable 0x01268548
     CAnimFilterOfGroup                  Filter;       // +0x68
     long                                Timer;        // +0x74
-    CIntelligentPointerCreature         PTarget;      // +0x78
-    CVector<CIntelligentPointerThing>   Imposters;    // +0x80
+    CIntelligentPointer<CThingCreatureBase>         PTarget;      // +0x78
+    CVector<CIntelligentPointer<CThing> >   Imposters;    // +0x80
     bool                                Imposter;     // +0x8c
     CDefPointer<const CBriarRoseDef>    PDef;         // +0x90
-    CIntelligentPointerThing            PBodyEffect;  // +0x94
-    CIntelligentPointerThing            PSwordEffect; // +0x9c
+    CIntelligentPointer<CThing>            PBodyEffect;  // +0x94
+    CIntelligentPointer<CThing>            PSwordEffect; // +0x9c
     virtual void v00();
     CModeBriarRoseConcentrate(CThing* thing);
 };

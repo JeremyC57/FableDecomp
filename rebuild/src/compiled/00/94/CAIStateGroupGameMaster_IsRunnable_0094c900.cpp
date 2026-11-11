@@ -13,35 +13,19 @@
 // Layout: CAIStateGroupBase modelled locally (as engine/CAIStateGroupBase.h: vptr +0, PBrain +4, 0x14 bytes) so the virtual
 //          slots can be declared; the group's CIntelligentPointer<CThingBuilding> at +0x14 (descriptive);
 //          retail CThingAICreature WorkBuilding +0x170 (landed 0x00830360).
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CThingBuilding;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0 (stand-in body below)
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
 // Same-TU stand-in for the const CVectorMap::LowerBound (0x004365B0, STLport lower_bound; retail's LTCG saw its body): the
 // key's address does not escape, so the three lookup keys share the building temporary's frame slot as in retail.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -61,7 +45,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x91 - 0x4c];
+    unsigned char _pad1[0x91 - 0x54];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned long HasTC(long interfaceType) const
     {
@@ -71,8 +55,8 @@ class CThing { public:
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 class CThingPlayerCreature : public CThing { };

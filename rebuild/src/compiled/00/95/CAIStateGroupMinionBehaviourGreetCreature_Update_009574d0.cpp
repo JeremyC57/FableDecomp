@@ -10,17 +10,16 @@
 // @ 0x0099EAE0, the state-group finish call @ 0x008FCF40 (manifest "CXMVPlaybackInfo" is propagated and wrong).
 // Shape: a NAMED CCharString in the inner block; the action result is a named long (compared after the action dtor); `if (result != 2) { FinishUpdate(); return; }` inside the block
 // (FinishUpdate before the string dtor on that path), the common FinishUpdate after it. No engine header.
+// Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 class CThing;
 class CThingCreatureBase;
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
 #include "engine/CIntelligentPointer.h"
 
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
-    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
-
+// CIntelligentPointerConstThing = the shared CIntelligentPointer<const CThing> (engine/CIntelligentPointer.h).
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -56,7 +55,7 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   protected: // 0x0097D6F0
+    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed);   protected: // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool flag); public:   // 0x0097DB70 (EAIActionReturn)
     void FinishUpdate();                            // 0x008FCF40
 };
@@ -73,7 +72,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 struct CAIStateGroup_MinionBehaviourGreetCreature : CAIStateGroupBase {
-    CIntelligentPointerConstThing PCreatureToGreet; // +0x14
+    CIntelligentPointer<const CThing> PCreatureToGreet; // +0x14
     void Update();
 };
 

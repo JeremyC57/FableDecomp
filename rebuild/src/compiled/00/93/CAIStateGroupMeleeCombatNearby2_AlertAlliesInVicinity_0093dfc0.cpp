@@ -18,18 +18,16 @@
 //   PEnemy.GetPItem(), 0.0f, 36.0f, 0) with the creature in a named local. Tried: nested ifs (best), one && chain,
 //   #pragma optimize("s"), a `bool` result local -- all keep the duplicated early-exit tail.
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 class CTCBase;
 class C3DVector;
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
-};
-
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
@@ -39,10 +37,10 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
@@ -52,12 +50,8 @@ class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;           // 0x006A4D00 (Ego_r.pdb ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ)
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CTCPerceiveThing { public:                       // interface 0x34 (Ego_r.pdb names)
     unsigned char _pad00[0x2d];
     bool LineOfSight;                           // +0x2d
@@ -119,12 +113,12 @@ bool CAIStateGroup_MeleeCombatNearby2::AlertAlliesInVicinity()
     CTCPerceiveThing* perceive;
     if (!PBrain->PCreature->GetInterface(&perceive, 0x34))
         return true;
-    if (perceive->GetPerceivedThing() != PEnemy.GetPItem() || (!perceive->LineOfSight && !perceive->Smelt))
+    if (perceive->GetPerceivedThing() != reinterpret_cast<CThing*>(PEnemy.GetPItem()) || (!perceive->LineOfSight && !perceive->Smelt))
         return true;
     if (PeekWorld().GetPMessageManager()->FindMostRecentMessage(CMessageEventFilter_IsOfType(0xc)))
         return true;
     CThing* creature = PBrain->PCreature;
     GetWorld().GetPMessageManager()->AddMessage((EMessageEventType)(0xc), g_scaled_013bb714, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
-                                                  PEnemy.GetPItem(), 0.0f, 36.0f, 0);
+                                                  reinterpret_cast<CThing*>(PEnemy.GetPItem()), 0.0f, 36.0f, 0);
     return true;
 }

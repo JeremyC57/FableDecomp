@@ -1,4 +1,5 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 class CBaseObject;
 class CScriptThing;
 class CThing;
@@ -62,21 +63,22 @@ struct CGSIGetMostRecentValidUsedTarget_BaseObject
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-extern CVillageTaskCarryCrate*
-    CGSIGetMostRecentValidUsedTarget_Manager;
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 CScriptThing
 CGameScriptInterface::GetMostRecentValidUsedTarget() const
 {
     CBaseObject* const item =
-        CGSIGetMostRecentValidUsedTarget_Manager
+        reinterpret_cast<CVillageTaskCarryCrate*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())
             ->m_MostRecentTarget.GetPItem();
     if (item != 0 &&
         (reinterpret_cast<
             const CGSIGetMostRecentValidUsedTarget_BaseObject*>(
                 item)->m_Flags & 1) == 0)
     {
-        CGSIGetMostRecentValidUsedTarget_Manager
+        reinterpret_cast<CVillageTaskCarryCrate*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())
             ->AssignCreatureToTask(0);
         return item->BuildScriptThing();
     }

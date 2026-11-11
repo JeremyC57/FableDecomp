@@ -1,4 +1,5 @@
 class CCharString;
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 
 class CQuestManager
 {
@@ -13,10 +14,11 @@ public:
         const CCharString& questName) const;
 };
 
-extern CQuestManager* CGSIIsQuestFailed_Manager;
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 bool CGameScriptInterface::IsQuestFailed(
     const CCharString& questName) const
 {
-    return CGSIIsQuestFailed_Manager->IsQuestFailed(questName);
+    return CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsQuestFailed(questName);
 }

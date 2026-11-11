@@ -13,6 +13,7 @@
 //          conversion temporary (`(Shop = SelectRandomShop()).GetPItem() != 0`): VC keeps the temporary's construction
 //          flag in ebx (set after the converting ctor; an explicit functional cast sets it before the picker call) and the
 //          condition in a frame byte; each placement arm reads the creature into a named local before its call.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 class CThing;
 #include "engine/C3DVector.h"
 class CThingBuilding;
@@ -20,19 +21,10 @@ class CThingBuilding;
 #include "engine/CThing.h"
 class CThingPhysical : public CThing { public:
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThingPhysical* GetPItem() const;           // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-};
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CThing*)other.GetPItem()); return *this; }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
+// CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 class CThingCreatureBase { public:
     bool AutoPlaceNearBuilding(CThingBuilding* building, float radius);   // 0x00666EF0
     bool AutoPlaceNear(const C3DVector& position, float radius);          // 0x00665DF0
@@ -70,8 +62,8 @@ struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
 private:
     CThing* FindASimplyDelightfulShop();   // 0x00946F90 (Ego_r.pdb ?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ)
 public:
-    CIntelligentPointerThing Shop;              // +0x14
-    CIntelligentPointerThing PrettyThing;       // +0x1c
+    CIntelligentPointer<CThing> Shop;              // +0x14
+    CIntelligentPointer<CThing> PrettyThing;       // +0x1c
     long NextFrameBuy;                          // +0x24
     bool IsInWorkHours();                       // 0x0091A6F0
     bool InitCreaturePosition();
@@ -80,14 +72,14 @@ public:
 bool CAIStateGroup_WanderAroundShops::InitCreaturePosition()
 {
     bool ok = IsInWorkHours() && Random(100) < g_WanderAroundShopsChance
-              && (Shop = ((CAIStateGroup_WanderAroundShops*)this)->FindASimplyDelightfulShop()).GetPItem() != 0;
+              && reinterpret_cast<CThingPhysical*>((Shop = ((CAIStateGroup_WanderAroundShops*)this)->FindASimplyDelightfulShop()).GetPItem()) != 0;
     if (ok) {
-        if (Shop.GetPItem()->GetTypeFlags() & 0x40) {
+        if (reinterpret_cast<CThingPhysical*>(Shop.GetPItem())->GetTypeFlags() & 0x40) {
             CThingCreatureBase* creature = PBrain->PCreature;
-            return creature->AutoPlaceNearBuilding((CThingBuilding*)Shop.GetPItem(), 5.0f);
+            return creature->AutoPlaceNearBuilding((CThingBuilding*)reinterpret_cast<CThingPhysical*>(Shop.GetPItem()), 5.0f);
         }
         CThingCreatureBase* creature = PBrain->PCreature;
-        return creature->AutoPlaceNear(Shop.GetPItem()->GetPos(), 5.0f);
+        return creature->AutoPlaceNear(reinterpret_cast<CThingPhysical*>(Shop.GetPItem())->GetPos(), 5.0f);
     }
     return false;
 }

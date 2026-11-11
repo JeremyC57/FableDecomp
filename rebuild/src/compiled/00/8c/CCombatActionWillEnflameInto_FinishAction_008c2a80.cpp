@@ -8,6 +8,7 @@
 // returned this), its destructor @ 0x0062E900 (manifest "~CTCLightningOrb" is a propagated label).
 // Level is the long at +0x114 (Ego_r.pdb name; the engine header has it at +0x12c for the PDB build, retail's
 // CCombatActionBase is 0x114 bytes, so the layout is modelled locally).
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 class CCreatureActionBase;
 struct CThingCreatureBase_Calls {              // engine/CThingCreatureBase.h exists but is not used: only its SetCurrentAction call is used
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
@@ -20,12 +21,8 @@ struct CCreatureAction_CastWillEnflameSpell_Retail {              // engine/CCre
     operator const CCreatureActionBase&() const { return *reinterpret_cast<const CCreatureActionBase*>(this); }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThingCreatureBase_Calls* GetPItem() const;       // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
@@ -41,7 +38,7 @@ class CCombatAction_WillEnflameInto : public CCombatActionBase { public:
 
 void CCombatAction_WillEnflameInto::FinishAction()
 {
-    CThingCreatureBase_Calls* creature = PCreature.GetPItem();
+    CThingCreatureBase_Calls* creature = reinterpret_cast<CThingCreatureBase_Calls*>(PCreature.GetPItem());
     CCombatActionBase::FinishAction();
     creature->SetCurrentAction(CCreatureAction_CastWillEnflameSpell_Retail(creature, Level));
 }

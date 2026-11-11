@@ -1,6 +1,7 @@
 // CGameScriptThing::MsgPerformedFlourish -- query entity events within current script frame interval
 // Leaf: MsgPerformedFlourish
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #include "fable_compiler.h"
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
@@ -23,7 +24,8 @@ typedef CSpawnedFuncBase SpawnedFunc;
 struct ScriptBaseNative{unsigned char Containers[0x2c];SpawnedFunc* PActiveThread;};
 struct ActiveQuest{unsigned char State[8];ScriptBaseNative* Script;};
 struct QuestManagerNative{unsigned char State[0x88];ActiveQuest* PQuestCurrentlyRunning;};
-extern QuestManagerNative* QuestManager; //013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 FABLE_FORCEINLINE long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
 FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
 struct CreatedBeforeOrOn{long Frame;CreatedBeforeOrOn(long f):Frame(f){}};
@@ -36,6 +38,6 @@ struct EntityEventsMethods:CTCEntityEvents{bool GetFlourishEvent(EventBase**,con
 struct CGameScriptThingMethods:CGameScriptThing{bool MsgPerformedFlourish()const;bool MsgPerformedSuccessfulFlourish()const;};
 bool CGameScriptThingMethods::MsgPerformedFlourish()const{
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);if(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())&&!(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags&1)){
- long last=LastFrame(QuestManager->PQuestCurrentlyRunning);long current=CurrentFrame(QuestManager->PQuestCurrentlyRunning);
+ long last=LastFrame(reinterpret_cast<QuestManagerNative*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->PQuestCurrentlyRunning);long current=CurrentFrame(reinterpret_cast<QuestManagerNative*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->PQuestCurrentlyRunning);
  CThingNative* thing=((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());if(thing->UsingComponents[2]&4){EntityEventsMethods* events;{long key=66;ComponentMap* map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;events=static_cast<EntityEventsMethods*>((it==end||it->Type>66?end:it)->Component);}EventBase* event;if(events->GetFlourishEvent(&event,Bind2(CreatedBeforeOrOn(current),CreatedAfter(last))))return true;}}return false;
 }

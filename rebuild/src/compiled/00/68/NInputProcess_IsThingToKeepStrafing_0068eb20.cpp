@@ -18,29 +18,14 @@
 //   locals (`= false; if (x) = true;`), homed in bytes 1..3 of the 4-byte frame word; the game-player interface is a local taken
 //   before the PeekPlayer().GetJoystickDeviceNumber() argument chain. A same-TU noinline LowerBound body keeps the lookup keys uncaptured
 //   so they share the second frame word with the carrying pointer.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;     // 0x004365B0
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 
 class CPlayer {
@@ -70,7 +55,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad4c[0x91 - 0x54];
     unsigned char Flags91;                          // +0x91 bit 0: dead
     const CPlayer& PeekPlayer() const;              // 0x004C7A10
     FABLE_FORCEINLINE bool HasTC(long type) const
@@ -84,8 +69,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->type ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -96,8 +81,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            result = (T*)(it == map->last || interfaceType < it->type ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            result = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
         }
         return result;
     }

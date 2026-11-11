@@ -18,6 +18,7 @@
 //   ternary entry pick with its own null test.
 // Tried: out-parameter GetInterface for the contents, an implicit CCharString conversion temporary instead of the named
 //   block local, the contents through a `__forceinline` accessor: the 0x21 key never shares the name's word.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -59,11 +60,8 @@ public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: vptr + item
-    void*   __vftable;
-    CThing* m_pItem;
-    const CThing* GetPItem() const;             // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 struct SThingListNode {
     SThingListNode*         next;
     SThingListNode*         prev;
@@ -113,7 +111,7 @@ long CTCBuyableHouse::GetCurrentCollectableRentValue() const
                 goldIndex = GetDefinitionManager().GetDefGlobalIndexFromName(name);
             }
             for (SThingListNode* node = contents->ThingsHead->next; node != contents->ThingsHead; node = node->next) {
-                const CThing* thing = node->value.GetPItem();
+                const CThing* thing = reinterpret_cast<const CThing*>(node->value.GetPItem());
                 if (thing && !(thing->m_stateFlags & 1) && thing->DefIndex == goldIndex && thing->HasTC(0xcc)) {
                     CTCGold* gold = thing->GetTC<CTCGold>(0xcc);
                     if (gold)

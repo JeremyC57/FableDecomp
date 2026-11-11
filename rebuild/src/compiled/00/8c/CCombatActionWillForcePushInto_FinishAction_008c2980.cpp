@@ -10,6 +10,7 @@
 //          CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the landed WillEnflameInto::FinishAction (0x008C2A80) with a named animation string: the 0x120-byte frame
 // holds the string word below the 0x11c-byte action temporary; the temporary dies first, then the string.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 class CCreatureActionBase;
 
 class CCharString { public:
@@ -30,12 +31,8 @@ struct CCreatureAction_CastWillForceSpell_Retail {      // the retail temporary 
     operator const CCreatureActionBase&() const { return *reinterpret_cast<const CCreatureActionBase*>(this); }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThingCreatureBase_Calls* GetPItem() const; // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
@@ -50,7 +47,7 @@ class CCombatAction_WillForcePushInto : public CCombatActionBase { public:
 
 void CCombatAction_WillForcePushInto::FinishAction()
 {
-    CThingCreatureBase_Calls* creature = PCreature.GetPItem();
+    CThingCreatureBase_Calls* creature = reinterpret_cast<CThingCreatureBase_Calls*>(PCreature.GetPItem());
     CCombatActionBase::FinishAction();
     CCharString animName("ST_FORCE_PUSH_RELEASE", -1);
     creature->SetCurrentAction(CCreatureAction_CastWillForceSpell_Retail(creature, 1, true, animName));

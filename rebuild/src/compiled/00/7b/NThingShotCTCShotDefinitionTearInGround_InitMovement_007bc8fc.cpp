@@ -24,6 +24,7 @@
 // Shape: the liveness test binds the GetPItem result as a temporary (its frame word is reused by the component-name
 //   temporary); the direction is the inline difference with Z zeroed afterwards (the Z subtraction is dead); the ground
 //   point's height stays on the x87 stack into the inline sum; C3DVector temporaries share one frame slot.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -79,12 +80,8 @@ public:
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
 };
-class CBaseIntelligentPointer {
-public:
-    void*   __vftable;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CThingShotDef {
 public:
     unsigned char _pad00[0x3c];
@@ -118,10 +115,10 @@ public:
 
 void CTCShotDefinitionTearInGround::InitMovement()
 {
-    if (!IS_THING_ALIVE<const CThing*>(PTargetThing.GetPItem()))
+    if (!IS_THING_ALIVE<const CThing*>(reinterpret_cast<CThing*>(PTargetThing.GetPItem())))
         return;
     CTCPhysicsBase* physics = ParentThing->PhysicsTC;
-    C3DVector direction = GetCreatureFireAtPos(*PTargetThing.GetPItem()) - physics->Position;
+    C3DVector direction = GetCreatureFireAtPos(*reinterpret_cast<CThing*>(PTargetThing.GetPItem())) - physics->Position;
     direction.Z = 0.0f;
     direction.Normalise();
     C3DVector ground = physics->Position;

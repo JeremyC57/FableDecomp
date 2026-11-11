@@ -5,13 +5,15 @@
 // Callees: GetPItem @ 0x00A01B50, IsInWorkHours @ 0x00947840, MoveToPosProximity @ 0x0097E890,
 // LowerBound @ 0x004365B0, GFGetVillage @ 0x007EE540, IsCookTime @ 0x00658BB9, Terminate @ 0x008FCF40.
 // The loop continues only while the move action reports 4 and the hall remains live and cooking time continues.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 class CThing;
 #include "engine/C3DVector.h"
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
 class CThing { public: unsigned char pad0[0x20]; unsigned long flags20; unsigned long flags24; unsigned char pad28[0x1c]; CInterfaceMap interfaces; unsigned char pad4c[0x45]; unsigned char dead; };
-struct CBaseIntelligentPointer { virtual void v00(); void* Handle; CThing* GetPItem(); };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 struct CTCVillager;
 class CTCVillage { public: bool IsCookTime_00658bb9(); };
 struct CAIStateGroup_StayNearFoodHall : CAIStateGroupBase {
@@ -33,14 +35,14 @@ void CAIStateGroup_StayNearFoodHall::Update()
     bool reached;
     long result;
     long key;
-    if (!PFoodHall.GetPItem()) goto done;
-    foodHall = PFoodHall.GetPItem();
+    if (!reinterpret_cast<CThing*>(PFoodHall.GetPItem())) goto done;
+    foodHall = reinterpret_cast<CThing*>(PFoodHall.GetPItem());
     if (foodHall->dead & 1) goto done;
     if (!IsInWorkHours()) goto done;
     do {
         result = AIAction_MoveToPosProximity(2, Position, 4.0f, &reached, 3, true, false, true, 0, true, 0.0f);
-        if (!PFoodHall.GetPItem()) goto done;
-        foodHall = PFoodHall.GetPItem();
+        if (!reinterpret_cast<CThing*>(PFoodHall.GetPItem())) goto done;
+        foodHall = reinterpret_cast<CThing*>(PFoodHall.GetPItem());
         if (foodHall->dead & 1) goto done;
         creature = (CThing*)PBrain->Creature;
         if (!(creature->flags24 & 8)) goto done;

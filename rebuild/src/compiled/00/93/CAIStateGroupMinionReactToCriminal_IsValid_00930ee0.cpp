@@ -9,6 +9,7 @@
 // Shape: nested tests with one shared `return false` (`xor al,al`); the final `return a || (b && (c || d))` widens to eax; the
 // deed index is pre-set to -1 and the empty filter is one frame byte.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
 class CWorld;
@@ -16,29 +17,13 @@ class CWorld;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;       // 0x0040F020 / 0x004365B0 (per-TU copies)
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
 // caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 
 
@@ -46,7 +31,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x60 - 0x4c];
+    unsigned char _pad1[0x60 - 0x54];
     void* m_pSub60;                             // +0x60 (typed per use below)
     unsigned char _pad2[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -64,24 +49,24 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    FABLE_FORCEINLINE CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE const CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        CInterfaceMap::SEntry* sel;
-        if (it == map->last) sel = map->last;
-        else if (it->type <= interfaceType) sel = it;
-        else sel = map->last;
+        const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+        const CInterfaceMap::value_type* sel;
+        if (it == map->end()) sel = map->end();
+        else if (it->first <= interfaceType) sel = it;
+        else sel = map->end();
         return sel;
     }
     // the bitset::test form: the test's bool is materialised (`shr ; and dl,1 ; mov [esp+x],dl`) and returned
@@ -91,10 +76,10 @@ class CThing { public:
         if (has) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
         }
         return has;
     }
@@ -105,8 +90,8 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -115,10 +100,10 @@ class CThing { public:
     FABLE_FORCEINLINE CTCBase* LookupValue(long interfaceType)
     {
         long type = interfaceType;
-        CInterfaceMap::SEntry* p = m_interfaces.LowerBound(&type);
-        if (p == m_interfaces.last) p = m_interfaces.last;
-        else if (p->type > interfaceType) p = m_interfaces.last;
-        return p->component;
+        const CInterfaceMap::value_type* p = static_cast<const CInterfaceMap&>(m_interfaces).LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+        if (p == m_interfaces.end()) p = m_interfaces.end();
+        else if (p->first > interfaceType) p = m_interfaces.end();
+        return p->second;
     }
     template<class T> FABLE_FORCEINLINE void GetInterfaceK(T** ppOut, long interfaceType)
     {
@@ -130,7 +115,7 @@ class CThing { public:
     {
         T* component;
         if (HasTC(interfaceType))
-            component = (T*)FindEntry(interfaceType)->component;
+            component = (T*)FindEntry(interfaceType)->second;
         return component;
     }
     // the out-parameter form whose result is ignored (no bool to keep: the component lands in its use register)
@@ -139,10 +124,10 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
         }
     }
 };

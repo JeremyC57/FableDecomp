@@ -20,14 +20,13 @@
 // Shape: `GetDef() && GetDef()->GetSubDef(&shopDef) && shopDef->AlwaysOpen` with GetDef returning a CDefPointer BY VALUE:
 //        the two conditionally built temporaries get construction flags in ebx (1, then 3) tested before their
 //        releases; the shop def is read once from its out slot (GetSubDef stand-in below) and held in ebp.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 class CDefPointeeBase {
 public:
     virtual void Destroy();                     // slot 0
@@ -76,7 +75,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad4c[0x70 - 0x54];
     CDefPointer<CDefClassBase> PDef;            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -90,22 +89,18 @@ public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return (T*)it->component;
+        const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
 };
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (reinterpret_cast<CThing*>(p.GetPItem()) != 0) {
+        if (!(reinterpret_cast<CThing*>(p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -139,7 +134,7 @@ bool CTCShop::IsOpeningHours() const
     bool alwaysOpen = GetDef() && GetDef()->GetSubDef(&shopDef) && shopDef->AlwaysOpen;
     if (alwaysOpen)
         return true;
-    CThing* keeper = PShopKeeper.GetPItem();
+    CThing* keeper = reinterpret_cast<CThing*>(PShopKeeper.GetPItem());
     if (keeper->HasTC(0x23)) {
         if (CTCVillage* village = keeper->GetTC<CTCVillageMember>(0x23)->GetPVillage())
             return village->IsCookTime();

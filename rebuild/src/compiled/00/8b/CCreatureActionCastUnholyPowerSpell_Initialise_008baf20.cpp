@@ -17,6 +17,7 @@
 //   inline setter on the component (the copy is the second frame object, sharing the string's slot). The component
 //   name is an IMPLICIT CCharString conversion temporary: a named block local takes its own frame word instead of
 //   sharing the inlined lookup key's.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 class CTCBase;
 class CTCParamsBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -27,20 +28,11 @@ class CTCParamsBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                  // +4
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
+// CIntelligentPointer = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
@@ -52,9 +44,9 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 
 class CTCUnholyPower { public:
     unsigned char _pad00[0x10];
-    CIntelligentPointer PTarget;                      // +0x10
+    CIntelligentPointer<CThing> PTarget;                      // +0x10
     unsigned char m_bArmed;                           // +0x18
-    void SetTarget(CIntelligentPointer target) { PTarget = target; }
+    void SetTarget(CIntelligentPointer<CThing> target) { PTarget = target; }
 };
 
 class CCombatActionBase { public:                            // retail sizeof 0x114
@@ -62,7 +54,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x2c - 0x10];
-    CIntelligentPointer PItemRemoved;                 // +0x2c
+    CIntelligentPointer<CThing> PItemRemoved;                 // +0x2c
     unsigned char _pad34[0x114 - 0x34];
     virtual void Initialise();                                // 0x00857520
 };
@@ -77,7 +69,7 @@ void CCreatureAction_CastUnholyPowerSpell::Initialise()
     if (!((CThing*)PCreature.GetPItem())->GetTC(TCI_UNHOLY_POWER, &power))
         power = (CTCUnholyPower*)((CThing*)PCreature.GetPItem())->AddTC("CTCUnholyPower", true, 0);
     power->m_bArmed = 1;
-    CIntelligentPointer thing(PItemRemoved);
+    CIntelligentPointer<CThing> thing(PItemRemoved);
     if (IS_THING_ALIVE(thing))
         power->SetTarget(thing);
 }

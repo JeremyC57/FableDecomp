@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C66B2, 758 bytes, thiscall `ret 24h`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Identity: Ego_r.pdb / FableWin.pdb ?ConstructWeaponItemEntries@CTCInventoryWeapons@@AAE... (private; the landed ConstructScreen
 //   0x005C8459 calls it for the melee and ranged sub-lists); Ego_r donor 0x0062BB7A.
-// Callees: CTCBase::GetDefinitionManager 0x006869D0, GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6,
+// Callees: CTCBase::GetDefinitionManager 0x006869D0, GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6,
 //   CTCWeapon::IsMeleeWeaponClass 0x005DA510, vector<pair<long,long> >::push_back 0x005947B6, ConstructWieldEntry 0x005C323A,
 //   FinalConstructWeaponItemEntries 0x005C3E91, CCountedPointer<CComponent>::ReleaseData 0x004291DE, free 0x00BFEA14.
 // Shape: the def lookups are the same-TU template bodies; FinalConstructWeaponItemEntries (which retail's TU defines above this row,
@@ -12,6 +12,7 @@
 //   overlap it with the loop's def pointers: the 0x30 frame). The two group vectors of each branch are zeroed above the branch
 //   (hoisted identical code). The second call's entry offset is the size of the vector it builds in the ranged branch, as retail
 //   computes it (`sub edi,[ebp-24h]` on the second group in both branches).
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
@@ -48,8 +49,9 @@
 #include "engine/NUISystem_CUIMiscThingsDef.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CWeaponDef.h"
+#include "engine/CThingBaseDef.h"
 
-// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CWeaponDef>
+// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CWeaponDef>
 // 0x0042B1A6): VC7.1 sees that they only write through the out pointer, so the CDefPointer locals stay unaliased.
 #pragma auto_inline(off)
 template <class T>
@@ -99,7 +101,7 @@ void CTCInventoryWeapons::ConstructWeaponItemEntries(std::vector<std::pair<long,
 {
     if (items.empty())
         return;
-    CDefPointer<const CDefClassBase> def;
+    CDefPointer<const CThingBaseDef> def;
     GetDefinitionManager().GetDef(items[0].first, &def);
     CDefPointer<const CWeaponDef> weaponDef;
     def->GetSubDef(&weaponDef);
@@ -108,7 +110,7 @@ void CTCInventoryWeapons::ConstructWeaponItemEntries(std::vector<std::pair<long,
         std::vector<std::pair<long, long> > lightItems;
         std::vector<std::pair<long, long> > otherItems;
         for (unsigned long i = 0; i < items.size(); ++i) {
-            CDefPointer<const CDefClassBase> itemDef;
+            CDefPointer<const CThingBaseDef> itemDef;
             GetDefinitionManager().GetDef(items[i].first, &itemDef);
             CDefPointer<const CWeaponDef> itemWeaponDef;
             itemDef->GetSubDef(&itemWeaponDef);
@@ -128,7 +130,7 @@ void CTCInventoryWeapons::ConstructWeaponItemEntries(std::vector<std::pair<long,
         std::vector<std::pair<long, long> > typeItems;
         std::vector<std::pair<long, long> > otherItems;
         for (unsigned long i = 0; i < items.size(); ++i) {
-            CDefPointer<const CDefClassBase> itemDef;
+            CDefPointer<const CThingBaseDef> itemDef;
             GetDefinitionManager().GetDef(items[i].first, &itemDef);
             CDefPointer<const CWeaponDef> itemWeaponDef;
             itemDef->GetSubDef(&itemWeaponDef);

@@ -9,6 +9,7 @@
 // long) @ 0x009254C0 (landed), CCreatureAction_KrakenLowAttackOutOf::CCreatureAction_KrakenLowAttackOutOf(CThingCreatureBase&)
 // @ 0x00925680 (landed), CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase @ 0x0062E900.
 // Shape: as 0x00924A90 with a three-argument loop constructor (one `push 0`; ebx is pushed only inside the alive arm).
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/CThing.h"
@@ -19,12 +20,8 @@ class CCombatActionBase;
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void*   m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual ~CCombatActionBase();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0062E900
     virtual void FinishAction();                // 0x00859A20 (slot 4)
@@ -33,10 +30,10 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8 CIntelligentPointer<CThing> (Ego_r.pdb +0xb4)
     unsigned char           _padb0[0x114 - 0xb0];
-    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(reinterpret_cast<CThing*>(PCreature.GetPItem())); }
     FABLE_FORCEINLINE bool IsTargetAlive() const    // two fetches: present, then not dead
     {
-        return PTarget.GetPItem() && !PTarget.GetPItem()->IsDead();
+        return reinterpret_cast<CThing*>(PTarget.GetPItem()) && !reinterpret_cast<CThing*>(PTarget.GetPItem())->IsDead();
     }
 };
 struct CCreatureAction_KrakenLowChargeLoop : CCombatActionBase {    // vtable 0x012909C4
@@ -55,7 +52,7 @@ void CCreatureAction_KrakenLowPoseInto::FinishAction()
 {
     CCombatActionBase::FinishAction();
     if (IsTargetAlive())
-        Creature().SetCurrentAction(CCreatureAction_KrakenLowChargeLoop(Creature(), *PTarget.GetPItem(), 0));
+        Creature().SetCurrentAction(CCreatureAction_KrakenLowChargeLoop(Creature(), *reinterpret_cast<CThing*>(PTarget.GetPItem()), 0));
     else
         Creature().SetCurrentAction(CCreatureAction_KrakenLowAttackOutOf(Creature()));
 }

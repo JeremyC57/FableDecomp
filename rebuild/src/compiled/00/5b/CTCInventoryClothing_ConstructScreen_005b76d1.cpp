@@ -16,6 +16,7 @@
 //   written in both arms of the worn-part test (`push 1` / `push ebx`, tail-merged at 0x005B854C).
 // Header: engine/CTCInventoryClothing.h FABLE_RETAIL_CTCINVENTORYCLOTHING_LISTS (ConstructScreen, CreateMenuDesc, ConstructClothingList);
 //   graded with FABLE_HDR_OVERLAY=$A/hdr.
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -70,10 +71,11 @@
 #include "engine/CHeroSuitDef.h"
 #include "engine/CAppearanceModifierDef.h"
 #include "engine/CThingObjectDef.h"
+#include "engine/CThingBaseDef.h"
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                       // 0x00405F00
 
-// Same-TU bodies of the def lookups retail's TU holds (as in the landed ConstructScreenPC 0x005B8743) (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C, GetDef<CThingObjectDef>
+// Same-TU bodies of the def lookups retail's TU holds (as in the landed ConstructScreenPC 0x005B8743) (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C, GetDef<CThingObjectDef>
 // 0x0042B040, GetSubDef<CHeroSuitDef> 0x005935C4, GetSubDef<CAppearanceModifierDef> 0x0057FF92).
 #pragma auto_inline(off)
 template <class T>
@@ -122,7 +124,7 @@ NUISystem::CComponent* CTCInventoryClothing::ConstructScreen(NUISystem::CCompone
     std::vector<std::pair<long, long> > feetItems;
     std::vector<std::pair<long, long> > suitItems;
     for (unsigned long i = 0; i < items.size(); ++i) {
-        CDefPointer<const CDefClassBase> def;
+        CDefPointer<const CThingBaseDef> def;
         GetDefinitionManager().GetDef(items[i].first, &def);
         CDefPointer<const CHeroSuitDef> suit;
         if (def->GetSubDef(&suit)) {

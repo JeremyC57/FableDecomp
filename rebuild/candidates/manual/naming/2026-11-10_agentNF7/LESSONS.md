@@ -1,0 +1,13 @@
+# NF7 lessons (one line each)
+- A private static such as CTBaseSingletonNoDefaultAlloc<T>::PClass binds from any row through the shared header's public inline Get() (`mov ecx,[PClass]` either way); a stand-in global becomes `Get()` (or `reinterpret_cast<Layout*>(&Get())` where the row keeps a layout struct) with no byte change.
+- Tests that link the row object and defined the old global need the private static modelled with the same mangled name (`template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass(); }` plus an explicit instantiation), else LINK_FAIL.
+- Run a respell batch without test edits first and with them only for the rows that then fail: rewriting a self-contained test can only break it (it lost `= &mgr` initialisers).
+- PREFAIL comparison must normalise test paths and `file:line:col` (the landed and scratch test names differ), or every g++-broken landed test reads as a new failure.
+- An atexit destructor row (`dynamic atexit destructor for 'X::PClass'`) is reproduced by the static member's definition plus `template class X<T>;`; VC7.1 names it `_$E2` (initializer `_$E1`), which is the usable `// Leaf:`.
+- The shared CVectorMap.h already holds same-TU noinline LowerBound bodies, so a row's own stand-in LowerBound body can simply be dropped when it moves onto the header.
+- A local 8-byte interface map replaced by the 0x10-byte CVectorMap shifts every following member: widen the next `_pad[A - B]` by 8 or the row DIFFERs.
+- Pick the const LowerBound (0x004365B0) by casting the receiver to `const CInterfaceMap*` when the row declared only the const overload; otherwise the shared header binds the non-const 0x0040F020.
+- The shared CIntelligentPointer<T> static_casts T* to CBaseObject*, so T must be a complete CBaseObject-derived class; rows with a forward-only or local CThing cannot move until CThing comes from engine/CThing.h with FABLE_RETAIL_CCLASS (and that collides with local CCharString models).
+- A wrapper with a by-value operator= is not the shared const& ASSIGN (DIFFER about 42 bytes short); keep those rows for a hand rewrite.
+- Never run a grade without `source $S/wine/env.sh` (cl.exe times out silently), and never while a batch of your own is compiling.
+- One retail address can be several template instantiations' calls in one row (0x0041E6D3 calls GetDef at 0x0042AF3C and 0x0042B144): retype per call site, not per row.

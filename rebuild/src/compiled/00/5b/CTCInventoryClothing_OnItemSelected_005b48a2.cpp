@@ -5,6 +5,7 @@
 //   (Ego_r donor 0x0056017E); the catalog's "CTCShop::GetName" is wrong.
 // Header: engine/CTCInventoryClothing.h FABLE_RETAIL_CTCINVENTORYCLOTHING_SELECT, engine/NInventory_CTCInventoryBase.h
 //   FABLE_RETAIL_CTCINVENTORYBASE_SELECTION (DeselectAll / SelectItemWithDefIndex).
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -41,8 +42,9 @@
 #include "engine/CHeroSuitDef.h"
 #include "engine/CAppearanceModifierDef.h"
 #include "engine/CThingObjectDef.h"
+#include "engine/CThingBaseDef.h"
 
-// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C,
+// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C,
 // GetSubDef<CHeroSuitDef> 0x005935C4, GetSubDef<CAppearanceModifierDef> 0x0057FF92) and STLport's _List_base(const allocator&)
 // (0x0042AB58): visible bodies keep the CDefPointer locals uncaptured and home the list's allocator temporary on a dead parameter byte.
 #pragma auto_inline(off)
@@ -81,7 +83,7 @@ std::_List_base<_Tp, _Alloc>::_List_base(const _Alloc&) : _M_node(allocator<_Lis
 
 void CTCInventoryClothing::OnItemSelected(long itemDefIndex, bool& handled)
 {
-    CDefPointer<const CDefClassBase> def;
+    CDefPointer<const CThingBaseDef> def;
     GetDefinitionManager().GetDef(itemDefIndex, &def);
     CDefPointer<const CHeroSuitDef> suit;
     if (def->GetSubDef(&suit)) {
@@ -91,7 +93,7 @@ void CTCInventoryClothing::OnItemSelected(long itemDefIndex, bool& handled)
             std::list<long> modifierList;
             modifiers->GetAppearanceModifierList(modifierList, APPEARANCE_CLOTHING);
             for (std::list<long>::iterator it = modifierList.begin(); it != modifierList.end(); ++it) {
-                CDefPointer<const CDefClassBase> itemDef;
+                CDefPointer<const CThingBaseDef> itemDef;
                 CDefPointer<const CAppearanceModifierDef> modifier;
                 if (GetDefinitionManager().GetDef(*it, &itemDef)) {
                     if (itemDef->GetSubDef(&modifier) && !modifier->IsRemoveable)

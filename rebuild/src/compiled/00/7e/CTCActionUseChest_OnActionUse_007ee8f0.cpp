@@ -17,6 +17,7 @@
 // Shape: the chest comes from the out-parameter GetInterface (left unset when absent: retail then reads the shared key
 // slot); the action is a temporary inside the SetCurrentAction call; the deed log (0x51) and hero stats (4) are HasTC +
 // GetTC lookups sharing the map pointer and the key slot.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
 class CFaction;
@@ -27,13 +28,9 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                        // 0x0099EAE0
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                  // 0x0040F020
-    SEntry* LowerBound(const long* type) const;            // 0x004365B0
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 class CThing {
 public:
     C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
@@ -46,16 +43,16 @@ private: public:
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(key));
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

@@ -12,6 +12,7 @@
 //   mov  eax, esi              ; return p
 //   pop  esi
 //   ret  4
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 
 struct CIsThingAlive;      // opaque
 struct CPredicate_And;     // opaque
@@ -27,11 +28,13 @@ struct GlobHolder {
 };
 
 // global object pointer at 0x013b89fc
-extern GlobHolder* g_holder;
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 // Retail is __fastcall(this=ecx, p on stack). Model as __fastcall(self=ecx, edx, p=stack).
 CIsThingAlive* __fastcall Ctor_CPredicate_And_NScript(CPredicate_And* self, int edx, CIsThingAlive* p)
 {
-    g_holder->m4->F(p, self);
+    reinterpret_cast<GlobHolder*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->m4->F(p, self);
     return p;
 }

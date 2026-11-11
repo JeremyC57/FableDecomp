@@ -1,4 +1,5 @@
 struct Guard {
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
     void* vt;    // +0x0
     char pad[1];
     char flag;   // +0x5
@@ -28,7 +29,9 @@ struct Big {
 };
 
 extern Guard* g_guard;   // ds:0x13d2838
-extern Big* g_big;       // ds:0x13b89fc
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 class CWorld {
 public:
@@ -44,7 +47,7 @@ void CGameScriptInterface_NewScriptFrame()
     g = g_guard;
     if (g->flag) return;
 
-    Inner* esi = g_big->p88->p8->p2c;
+    Inner* esi = reinterpret_cast<Big*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->p88->p8->p2c;
     int eax = CWorld::GetFrame();
     esi->f18 = esi->f1c;
     esi->f1c = eax;

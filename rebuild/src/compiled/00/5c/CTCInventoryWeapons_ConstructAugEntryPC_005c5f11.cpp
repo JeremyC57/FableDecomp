@@ -11,6 +11,7 @@
 // Shape: the console body with the PC templates; FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (visible release) as ConstructAugEntry;
 //   the parent's CActionParam conversion (null-guarded) is loop-invariant and VC7.1 hoists it to the inner loop's preheader
 //   (retail 0x005C6226), and the entry pointer stays in edi through the header part.
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -55,6 +56,7 @@
 #include "engine/NUISystem_CActionParamULONG.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CAugmentationDef.h"
+#include "engine/CThingBaseDef.h"
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                       // 0x00405F00
 
@@ -65,7 +67,7 @@ extern const CCharString AUGMENTATIONS_MENU_ENTRY_NAME;             // 0x013B8BC
 extern const CCharString AUG_DESCRIPTION_STRING;                    // 0x013B8BB0 "Augmentation_Descriptions"
 }
 
-// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CAugmentationDef>
+// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CAugmentationDef>
 // 0x0042B248): VC7.1 sees that they only write through the out pointer, so the CDefPointer locals stay unaliased.
 #pragma auto_inline(off)
 template <class T>
@@ -136,7 +138,7 @@ CCountedPointer<NUISystem::CComponent> CTCInventoryWeapons::ConstructAugEntryPC(
     for (unsigned long i = 0; i < augmentations.size(); ++i) {
         for (long j = 0; j < augmentations[i].second; ++j) {
             CWideString itemName;
-            CDefPointer<const CDefClassBase> def;
+            CDefPointer<const CThingBaseDef> def;
             GetDefinitionManager().GetDef(augmentations[i].first, &def);
             CDefPointer<const CAugmentationDef> augmentationDef;
             def->GetSubDef(&augmentationDef);

@@ -6,7 +6,7 @@
 //   (Ego_r donor 0x0062A4AE, after ConstructAugmentationsLeftDescription, the retail order); caller ConstructScreen 0x005C8459.
 // Callees: CManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
 //   ConstructAugmentationsLeftDescription 0x005C4F42, CTCInventoryStats::GetXString 0x005CC772, GFIntToWideString 0x00405F00,
-//   CDataBank::GetTextBySymbol 0x009C95E0, CTCBase::GetDefinitionManager 0x006869D0, GetDef<CDefClassBase> 0x0042AF3C,
+//   CDataBank::GetTextBySymbol 0x009C95E0, CTCBase::GetDefinitionManager 0x006869D0, GetDef<CThingBaseDef> 0x0042AF3C,
 //   GetSubDef<CAugmentationDef> 0x0042B248, CTCInventoryItem::GetDescription 0x005D95C0 / GetDetails 0x005D9630 (static __fastcall),
 //   CCountedPointer<CComponent>(T*) 0x00429C15 / copy 0x00428928 / Reset 0x00429C6F / ReleaseData 0x004291DE,
 //   CCountedPointer<CList>::ShareData 0x00429486 / ReleaseData 0x00429288, CCountedPointer<CText>::ShareData 0x00429460 / ReleaseData
@@ -22,6 +22,7 @@
 //   pointer stays in edi from 0x005C598C through the loop as in retail, and the -1 length goes back to an immediate). The augment
 //   action's own-entry parameter is the CActionParam base of the entry by reference (no null test, retail 0x005C5DCB `add eax,18h`);
 //   the delete action's is the item entry pointer (null-guarded `neg/sbb/and`, 0x005C5D60).
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -66,6 +67,7 @@
 #include "engine/NUISystem_CActionParamULONG.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CAugmentationDef.h"
+#include "engine/CThingBaseDef.h"
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                       // 0x00405F00
 
@@ -76,7 +78,7 @@ extern const CCharString AUGMENTATIONS_MENU_ENTRY_NAME;             // 0x013B8BC
 extern const CCharString AUG_DESCRIPTION_STRING;                    // 0x013B8BB0 "Augmentation_Descriptions"
 }
 
-// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CAugmentationDef>
+// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CAugmentationDef>
 // 0x0042B248): VC7.1 sees that they only write through the out pointer, so the CDefPointer locals stay unaliased.
 #pragma auto_inline(off)
 template <class T>
@@ -145,7 +147,7 @@ CCountedPointer<NUISystem::CComponent> CTCInventoryWeapons::ConstructAugEntry(bo
     for (unsigned long i = 0; i < augmentations.size(); ++i) {
         for (long j = 0; j < augmentations[i].second; ++j) {
             CWideString itemName;
-            CDefPointer<const CDefClassBase> def;
+            CDefPointer<const CThingBaseDef> def;
             GetDefinitionManager().GetDef(augmentations[i].first, &def);
             CDefPointer<const CAugmentationDef> augmentationDef;
             def->GetSubDef(&augmentationDef);

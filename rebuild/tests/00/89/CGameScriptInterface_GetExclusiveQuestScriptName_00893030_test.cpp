@@ -25,7 +25,11 @@ public:
     virtual const CCharString& GetExclusiveQuestScriptName() const;
 };
 
-CQuestManager* CGSIGetExclusiveQuestScriptName_Manager;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
 static CQuestManager* g_ObservedManager;
 static unsigned long g_CallCount;
 
@@ -42,7 +46,7 @@ int main()
     CCharString secondName(0x55667788);
     CQuestManager manager;
     CGameScriptInterface interfaceObject;
-    CGSIGetExclusiveQuestScriptName_Manager = &manager;
+    (CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data) = &manager;
 
     manager.m_Result = &firstName;
     const CCharString& firstResult =

@@ -57486,7 +57486,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 01228c40	AtexitDtor_CCharString_at_013b89d8_01228c40	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01228c40_01228c40.cpp
 01228c50	AtexitDtor_CCharString_at_013b89dc_01228c50	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01228c50_01228c50.cpp
 01228c60	Release_013b89e0	_global	__fastcall	void	0		1	yes	accepted									
-01228ca0	Release_013b89fc	_global	__fastcall	void	0		1	yes	accepted									
+01228ca0	`dynamic atexit destructor for 'CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass''	_global	__fastcall	void	0		1	yes	accepted									
 01228ce0	RenderMeshPrimitiveBlocks	CEnginePrimitiveManagerStaticMeshesBase	__fastcall	void	4	C3DPrimitive2 *,C3DTextureStages *,bool,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_RenderMeshPrimitiveBlocks_01228ce0.cpp
 01228d00	_$E2	_global	unknown	undefined	0		0	yes	accepted									
 01228d40	_$E2	_global	unknown	undefined	0		0	yes	accepted									

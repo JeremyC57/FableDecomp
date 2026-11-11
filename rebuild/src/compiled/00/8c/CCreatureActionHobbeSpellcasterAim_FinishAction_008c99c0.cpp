@@ -9,22 +9,13 @@
 // "assign through a stack CIntelligentPointer" shape (0x0084B1C0): default-construct (inlined CIntelligentPointer ctor stores the
 // vtable 0x01238C6C after the base ctor), SetPItem(0), read it back into the member, destroy -- the 8-byte frame is that temporary.
 // Retail CCombatActionBase is 0x114 bytes, so the spell pointer is this class's first member.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "engine/CThing.h"
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CBaseObject*a0);            // 0x00A01B90
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
+// CIntelligentPointer = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined, landed 0x0094DBC0 form).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -50,8 +41,8 @@ void CCreatureAction_HobbeSpellcasterAim::FinishAction()
     CCombatActionBase::FinishAction();
     if (IS_THING_ALIVE(PSpell)) {
         ((CThing*)PSpell.GetPItem())->Kill(true);
-        CIntelligentPointer none;
+        CIntelligentPointer<CThing> none;
         none.SetPItem(0);
-        PSpell.SetPItem((CBaseObject*)(((CThing*)none.GetPItem())));
+        PSpell.SetPItem(reinterpret_cast<CBaseObject*>((((CThing*)none.GetPItem()))));
     }
 }

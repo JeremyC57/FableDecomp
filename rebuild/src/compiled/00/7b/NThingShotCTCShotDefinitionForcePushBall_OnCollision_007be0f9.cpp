@@ -20,6 +20,7 @@
 // Shape: the no-shooter base call is the else arm (placed last); the shooter position is a named copy (user copy
 //   constructor) before the subtraction; both CCharString names are block-scoped named locals (constructed before the
 //   other arguments, destroyed right after the call); the message manager is a named local; GetDef has a same-TU stand-in.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -143,12 +144,8 @@ bool CGameDefinitionManager::GetDef(const CCharString& name, CDefPointer<CMessag
 }
 #pragma auto_inline(on)
 
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 namespace NThingShot {
 
 class CTCShotDefinitionBase { public:
@@ -171,7 +168,7 @@ struct CTCShotDefinitionForcePushBall : CTCShotDefinitionBase {
 
 void CTCShotDefinitionForcePushBall::OnCollision(long type, const C3DVector& position, const C3DVector& normal, CThing* thing)
 {
-    CThing* shooter = PShooter.GetPItem();
+    CThing* shooter = reinterpret_cast<CThing*>(PShooter.GetPItem());
     if (shooter) {
     if (thing) {
         if (PShotDef->ImpactEffect)
@@ -212,8 +209,8 @@ void CTCShotDefinitionForcePushBall::OnCollision(long type, const C3DVector& pos
             }
         }
     }
-    if (IS_THING_ALIVE(PEffect.GetPItem()))
-        ((CTCPhysicalShieldSpell*)PEffect.GetPItem())->FadeOutEffect();
+    if (IS_THING_ALIVE(reinterpret_cast<CThing*>(PEffect.GetPItem())))
+        ((CTCPhysicalShieldSpell*)reinterpret_cast<CThing*>(PEffect.GetPItem()))->FadeOutEffect();
     ParentThing->Kill(true);
     } else
         CTCShotDefinitionBase::OnCollision(type, position, normal, thing);

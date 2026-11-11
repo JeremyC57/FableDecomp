@@ -15,6 +15,7 @@
 //   dead `set` argument slot (set lives in ebx) -- and the owner is re-read from it each pass; VC7.1 packs them only when
 //   the const LowerBound body is visible in the TU (same-TU auto_inline(off) stand-in), otherwise the owner gets its own
 //   `push ecx` slot.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -22,31 +23,14 @@ class CCharString;
 class C3DVector;
 class CRightHandedSet;
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap::LowerBound const (STLport lower_bound over the 8-byte {type, component} entries): compiled
 // above the caller so VC7.1 knows the key's address does not escape and packs the key and the owner into one frame word
 // (the landed 0x007BABE0 / 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 
 namespace NGraphicAppearance {
@@ -62,7 +46,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
-    unsigned char _pad4c[0x64 - 0x4c];
+    unsigned char _pad4c[0x64 - 0x54];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                     // +0x91 bit 0
@@ -71,10 +55,10 @@ public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

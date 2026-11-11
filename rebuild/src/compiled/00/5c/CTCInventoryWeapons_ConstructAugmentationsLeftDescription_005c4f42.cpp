@@ -7,7 +7,7 @@
 //   RefreshAugmentationsLeftDescriptions 0x005C69AA (true for the "_M" components, false for "_R") and ConstructAugEntry(PC)
 //   0x005C574E / 0x005C5F11. The bool picks TEXT_GUI_MENUGUIDE_WEAPONS_MELEE_AUGMENT (true) / _RANGED_AUGMENT (false).
 // Callees: CTCInventoryStats::GetXString 0x005CC772, map<EObjectAugmentationType,long>() 0x004DF8E9, CTCBase::GetDefinitionManager
-//   0x006869D0, GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CAugmentationDef> 0x0042B248, the tree's _M_find 0x005CC04A /
+//   0x006869D0, GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CAugmentationDef> 0x0042B248, the tree's _M_find 0x005CC04A /
 //   insert_unique 0x004E9442 / destructor 0x004DD3AD, _Rb_global<bool>::_M_increment 0x004292C0, CCharString(const char*, long)
 //   0x0099EBF0, GFIntToWideString 0x00405F00, CDataBank::GetTextBySymbol 0x009C95E0, operator+(CWideString) 0x0099BE70,
 //   CWideString::operator+= 0x0099B8D0, ~CWideString 0x0099B510, ~CCharString 0x0099EAE0.
@@ -17,6 +17,7 @@
 //   value_type: VC7.1 then loads the count once before the found/absent branch, retail's `mov ecx,[ecx+ebx*8+4]` at 0x005C4FC7);
 //   the guide symbol is a named CCharString (its own frame node: retail's 0xD8 frame, the CCharString at [ebp+50h]); the switch
 //   cases are in retail's block order (the per-case bit values: 8,4,2,1,0x10,0x80,0x40,0x20).
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -44,12 +45,13 @@
 #include "engine/CAugmentationDef.h"
 #include "stlport/fable_map.h"
 #include "engine/EObjectAugmentationType.h"
+#include "engine/CThingBaseDef.h"
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                       // 0x00405F00
 
 namespace { extern const CWideString NEWLINE; }                  // 0x013B8BA8 (`anonymous namespace'::NEWLINE of this TU, L"\n")
 
-// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CAugmentationDef>
+// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CAugmentationDef>
 // 0x0042B248): VC7.1 sees that they only write through the out pointer, so the CDefPointer locals stay unaliased.
 #pragma auto_inline(off)
 template <class T>
@@ -84,7 +86,7 @@ void CTCInventoryWeapons::ConstructAugmentationsLeftDescription(CWideString& tex
     // count the owned augmentations per type
     std::map<EObjectAugmentationType, long> counts;
     for (unsigned long i = 0; i < augmentations.size(); ++i) {
-        CDefPointer<const CDefClassBase> def;
+        CDefPointer<const CThingBaseDef> def;
         GetDefinitionManager().GetDef(augmentations[i].first, &def);
         CDefPointer<const CAugmentationDef> augmentationDef;
         if (def->GetSubDef(&augmentationDef)) {

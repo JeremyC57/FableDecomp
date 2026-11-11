@@ -12,6 +12,7 @@
 // Layout: CAIStateGroup_GoToBed PBed +0x14, IsBedSleepPointMarker +0x1c, BedPos +0x3c, Rhset +0x48 (Ego_r.pdb).
 // Shape: the out-of-range lookups read an uninitialised component (retail jumps to a load of the empty slot); the list
 // head is a named local; the blocked filter is declared beside the sleep-point filter; operator= names the item first.
+// Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float M[6]; };
@@ -38,17 +39,9 @@ struct CTCPhysicsBase {
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)
-    {
-        CThing* item = ((CThing*)other.GetPItem());
-        SetPItem((CBaseObject*)item);
-        return *this;
-    }
-};
+// CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 struct CPointerListNode {
     CPointerListNode* _M_next;
     CPointerListNode* _M_prev;
@@ -84,7 +77,7 @@ class CAIStateGroupBase { public:
     CThing* GetCreature() const { return PBrain->Creature; }
 };
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
-    CIntelligentPointerThing PBed;              // +0x14
+    CIntelligentPointer<CThing> PBed;              // +0x14
     bool IsBedSleepPointMarker;                 // +0x1c
     unsigned char _pad1d[0x3c - 0x1d];
     C3DVector BedPos;                           // +0x3c
@@ -103,7 +96,7 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
         if (region && region->_M_node->_M_next != region->_M_node) {
             CThingFilter_IsMySleepPoint isMine(GetCreature());
             CThingFilter_IsBlocked isBlocked;
-            PBed = CIntelligentPointerThing(0);
+            PBed = CIntelligentPointer<CThing>(0);
             float bestDistanceSquared = 0.0f;
             CPointerListNode* head = region->_M_node;
             for (CPointerListNode* node = head->_M_next; node != head; node = node->_M_next) {
@@ -135,6 +128,6 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
             }
         }
     }
-    PBed = CIntelligentPointerThing(0);
+    PBed = CIntelligentPointer<CThing>(0);
     return false;
 }

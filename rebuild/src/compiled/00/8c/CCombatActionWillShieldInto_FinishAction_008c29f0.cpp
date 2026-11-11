@@ -16,6 +16,7 @@
 // source compares the float's bits. ShieldHealth (+0x118) is the float pushed last by value. The 0x128-byte frame
 // holds the string word below the 0x124-byte action temporary (the cast-spell temporaries of 0x008C2A80 /
 // 0x008C2980 are 0x11c bytes; the shield spell adds its two arguments as members).
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 class CCreatureActionBase;
 
 class CCharString { public:
@@ -43,12 +44,8 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThingCreatureBase_Calls* GetPItem() const; // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
@@ -70,7 +67,7 @@ void CCombatAction_WillShieldInto::FinishAction()
         shieldFrames = -1;
     else
         shieldFrames = (long)(ShieldUpTime * CMainGameComponent::GetConstantFPS());
-    CThingCreatureBase_Calls* creature = PCreature.GetPItem();
+    CThingCreatureBase_Calls* creature = reinterpret_cast<CThingCreatureBase_Calls*>(PCreature.GetPItem());
     CCombatActionBase::FinishAction();
     CCharString animName("", -1);
     creature->SetCurrentAction(CCreatureAction_CastPhysicalShieldSpell_Retail(creature, 2, true, animName, shieldFrames, ShieldHealth));

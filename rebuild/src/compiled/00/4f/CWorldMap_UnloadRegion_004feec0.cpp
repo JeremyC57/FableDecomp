@@ -16,6 +16,7 @@
 //   the name is read through Regions[region] again; VC7.1 then keeps the region address in a fresh register (`lea ebx,
 //   [eax+ecx]`, the index scaled in eax ahead of the pushes) and the loop maps in ebp, as retail does (the `CRegion& r`
 //   form coalesced the scale into ebp). Callee spelling: CQuestManager::OnRegionUnloaded 0x004AFC30 (landed).
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global). Local CCountedPointer stand-in replaced by engine/CCountedPointer.h; CQuestManager class-keyed (V) as both PDBs.
 #include <string.h>
 
 struct CCharString { void* PStringData; };
@@ -25,29 +26,7 @@ struct C3DVector {
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CCPPointerInfo {
-    long  Count;                                             // +0
-    void (__fastcall* Destroy)(void* data);                  // +4
-    void* Data;                                              // +8
-};
-template<class T> struct CCountedPointer {
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Clear()
-    {
-        if (Info)
-        {
-            --Info->Count;
-            if (Info->Count == 0)
-            {
-                Info->Destroy(Info->Data);
-                delete Info;
-            }
-        }
-        Info = 0;
-        Data = 0;
-    }
-};
+#include "engine/CCountedPointer.h"                         // CCountedPointer<T> / CCPPointerInfo (shared; Clear = ReleaseData)
 
 struct CIteratorTag { CIteratorTag() { } };
 
@@ -115,10 +94,11 @@ struct CRegion {                                             // 0x58 bytes
 };
 #include "engine/CArray.h"
 
-struct CQuestManager {
+class CQuestManager { public:
     void OnRegionUnloaded(const CCharString& region);      // 0x004AFC30
 };
-extern CQuestManager* g_pQuestManager;                       // 0x013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 struct CEngineManager {
     static CEngineManager& __fastcall Get();                 // 0x00436FB0 CTBaseSingleton<CEngineManager>::Get
     void RemoveMap(long map);                                // 0x00640430
@@ -173,7 +153,7 @@ void CWorldMap::UnloadRegion(long region, bool b)
 {
     CLongArray& maps = Regions[region].Maps;
     RegionUnloading = true;
-    g_pQuestManager->OnRegionUnloaded(Regions[region].Name);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnRegionUnloaded(Regions[region].Name);
     World->GetThingManager()->OnLevelsUnload(maps, b);
     for (unsigned int i = 0; i < maps.size(); ++i) {
         long map = maps[i];
@@ -181,7 +161,7 @@ void CWorldMap::UnloadRegion(long region, bool b)
             Maps[map].Activated = false;
             CEngineManager::Get().RemoveMap(map);
             LoadedMaps.Erase(Find(LoadedMaps.Start, LoadedMaps.Finish, map, CIteratorTag()));
-            Maps[map].PMap.Clear();
+            Maps[map].PMap.ReleaseData();
         }
     }
     for (unsigned int j = 0; j < maps.size(); ++j) {

@@ -11,7 +11,14 @@ void CQuestMgr::Activate(CCharStringArray const& quests, int a, int b) {
     g_lastQuests = &quests; g_lastA = a; g_lastB = b; g_called = 1;
 }
 CQuestMgr realMgr;
-CQuestMgr* g_questMgr = &realMgr;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+class CQuestManager;
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+template class CTBaseSingletonNoDefaultAlloc<CQuestManager>;
+static const bool TestPClassInit = ((reinterpret_cast<CQuestMgr*&>(CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data)) = &realMgr, true);
 
 void __stdcall CGameScriptInterface_ActivateMultipleQuestsWithoutLoadingResources(CCharStringArray const& quests);
 

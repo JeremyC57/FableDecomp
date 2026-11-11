@@ -1,4 +1,5 @@
 class CCharString;
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 
 class CQuestManager
 {
@@ -12,11 +13,12 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-extern CQuestManager* CGSIRemoveQuestCardFromHero_Manager;
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 void CGameScriptInterface::RemoveQuestCardFromHero(
     const CCharString& questCardScriptName) const
 {
-    CGSIRemoveQuestCardFromHero_Manager->RemoveActiveQuestCard(
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().RemoveActiveQuestCard(
         questCardScriptName);
 }

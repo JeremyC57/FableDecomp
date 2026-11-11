@@ -1,5 +1,6 @@
 // CCombatAction_GenericStrikeResponseBase::FinishAction() -- finish response, recover stun or enter alert below dazed threshold.
 // Native008663D0,285 bytes. CreatureAction nativeA8 vs donorB4; stunned adds FlipA8. Physical HealthB4/KillableBC bit1 vs donorCC/D4.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 #include "fable_string.h"
 #define CCreatureActionBase CCreatureActionBase_PDB
@@ -41,16 +42,18 @@ struct Creature {
  FABLE_FORCEINLINE bool GetInterface(CTCCreatureModeManager** out,long type)const {if(PresentBits[type>>5]&(1UL<<(type&31))){ETCInterfaceType key = (ETCInterfaceType)(type);const InterfaceMap* map=&Interfaces;const InterfaceEntry* p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;*out=((CTCCreatureModeManager*)p->second);return true;}return false;}
 };
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
-struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
+ //00A01B50
 class CCombatActionBase { public:void* __vftable;unsigned char _baseState[4];CBaseIntelligentPointer PCreature;void FinishAction();}; //00859A20
 class CCombatAction_GenericStrikeResponseBase:public CCombatActionBase { public:void FinishAction();};
 void CCombatAction_GenericStrikeResponseBase::FinishAction(){
  CCombatActionBase::FinishAction();
- if(PCreature.GetPItem()&&!(PCreature.GetPItem()->DeadFlags&1)){
-  CTCCreatureModeManager* modes;PCreature.GetPItem()->GetInterface(&modes,49);
-  if(modes->GetCurrentMode().GetType()==29){Creature* owner=PCreature.GetPItem();owner->SetCurrentAction(CCreatureAction_BeStunned(*PCreature.GetPItem(),false));}
-  else {Creature* creature=PCreature.GetPItem();if(creature->GetDazedHealthThreshold()>creature->Health && (creature->PresentBits[6]&0x20000) && (creature->PhysicalFlags&2)){
-   Creature* owner=PCreature.GetPItem();owner->SetCurrentAction(CCreatureAction_AlertToPlayer(*PCreature.GetPItem()));
+ if(reinterpret_cast<Creature*>(PCreature.GetPItem())&&!(reinterpret_cast<Creature*>(PCreature.GetPItem())->DeadFlags&1)){
+  CTCCreatureModeManager* modes;reinterpret_cast<Creature*>(PCreature.GetPItem())->GetInterface(&modes,49);
+  if(modes->GetCurrentMode().GetType()==29){Creature* owner=reinterpret_cast<Creature*>(PCreature.GetPItem());owner->SetCurrentAction(CCreatureAction_BeStunned(*reinterpret_cast<Creature*>(PCreature.GetPItem()),false));}
+  else {Creature* creature=reinterpret_cast<Creature*>(PCreature.GetPItem());if(creature->GetDazedHealthThreshold()>creature->Health && (creature->PresentBits[6]&0x20000) && (creature->PhysicalFlags&2)){
+   Creature* owner=reinterpret_cast<Creature*>(PCreature.GetPItem());owner->SetCurrentAction(CCreatureAction_AlertToPlayer(*reinterpret_cast<Creature*>(PCreature.GetPItem())));
   }}
  }
 }

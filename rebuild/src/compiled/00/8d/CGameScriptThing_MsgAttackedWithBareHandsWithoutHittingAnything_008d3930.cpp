@@ -13,6 +13,7 @@
 //   const lower bound); the event list walk with the type and frame-window test -- the landed sibling
 //   MsgPerformedAnyAggressiveSpecialAbility 0x008D27E0 without its Aggressive flag, on Ego_r.pdb types. Header debt:
 //   engine/CGameScriptThing.h / CTCEntityEvents.h / CQuestManager.h flatten the vptr or hold PDB-width containers.
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #include <stddef.h>
 #include "engine/CArray.h"
 #include "engine/CVectorMap.h"
@@ -70,7 +71,8 @@ public:
     unsigned char _pad00[0x88];
     CActiveQuest* PQuestCurrentlyRunning;                     // +0x88
 };
-extern CQuestManager* g_pQuestManager;                        // 0x013B89FC (reloc_bindings' ?g_pQuestManager@@3PAVCQuestManager@@A)
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 class CGameScriptThing {                                      // Ego_r.pdb 72 bytes
 public:
     virtual ~CGameScriptThing();
@@ -82,7 +84,7 @@ public:
 bool CGameScriptThing::MsgAttackedWithBareHandsWithoutHittingAnything() const
 {
     if (IS_THING_ALIVE(PThing)) {
-        CQuestManager::CActiveQuest* quest = g_pQuestManager->PQuestCurrentlyRunning;
+        CQuestManager::CActiveQuest* quest = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning;
         long lastFrame = (quest && quest->PScript.Data) ? quest->PScript->PActiveThread->LastScriptFrame : 0;
         long currentFrame = (quest && quest->PScript.Data) ? quest->PScript->PActiveThread->CurrentScriptFrame : 0;
         const CTCEntityEvents* events;

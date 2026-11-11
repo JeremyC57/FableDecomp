@@ -17,33 +17,17 @@
 //   unchecked (the creature / weapon flag guarantees them); the positive verdict is tested first
 //   (`if (IsUsingProjectileWeapon(..)) return want ? 5 : 0; return want ? 0 : 5;`), which puts the not-projectile arm
 //   right after the combat test as retail; the three key words share one `push ecx` slot with the same-TU LowerBound body.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;             // 0x004365B0
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
 // Same-TU body of the const LowerBound 0x004365B0 (the STLport lower_bound over the sorted {type, component} vector):
 // VC7.1 then sees the key's address go no further, so the three inlined lookups can share one key word.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* f = first;
-    int count = last - first;
-    while (count > 0) {
-        int half = count >> 1;
-        SEntry* middle = f + half;
-        if (middle->type < *type) {
-            f = middle + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return f;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 
 class CThing;
@@ -68,7 +52,7 @@ public:
     unsigned long ThingTypeFlags;                           // +0x28
     unsigned char _pad2c[0x44 - 0x2c];
     CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad4c[0x91 - 0x54];
     unsigned char Dead : 1;                                 // +0x91 bit 0
     bool IsDead() const { return Dead; }
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -77,10 +61,10 @@ public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            if (it == map->last || type < it->type)
-                it = map->last;
-            *out = (T*)it->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(key));
+            if (it == map->end() || type < it->first)
+                it = map->end();
+            *out = (T*)it->second;
             return true;
         }
         return false;
@@ -89,10 +73,10 @@ public:
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        if (it == map->last || type < it->type)
-            it = map->last;
-        return (T*)it->component;
+        const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(key));
+        if (it == map->end() || type < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
 };
 

@@ -9,6 +9,7 @@
 //   engine/CCombatAction_KickThingOnGround.h is pads only at these offsets). Thing model as the landed 0x0095D310.
 // Shape: IS_THING_ALIVE re-fetches GetPItem for each test; each GetInterface's key lives in the frame; `this` is spilled
 //   once to the frame because esi is reused for the map.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 enum ETCInterfaceType { TC_INTERFACE_NONE = 0 };
 class CTCBase;
@@ -51,17 +52,13 @@ public:
     }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (reinterpret_cast<CThing*>(p.GetPItem()) != 0) {
+        if (!(reinterpret_cast<CThing*>(p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -88,11 +85,11 @@ void CCombatAction_KickThingOnGround::FinishAction()
 {
     if (IS_THING_ALIVE(PTarget)) {
         CTCSolidToThing* kickerComponent;
-        if (PCreature.GetPItem()->GetInterface(&kickerComponent, 0x4d))
-            kickerComponent->RemoveThingNotSolidTo(PTarget.GetPItem());
+        if (reinterpret_cast<CThing*>(PCreature.GetPItem())->GetInterface(&kickerComponent, 0x4d))
+            kickerComponent->RemoveThingNotSolidTo(reinterpret_cast<CThing*>(PTarget.GetPItem()));
         CTCSolidToThing* targetComponent;
-        if (PTarget.GetPItem()->GetInterface(&targetComponent, 0x4d))
-            targetComponent->RemoveThingNotSolidTo(PCreature.GetPItem());
+        if (reinterpret_cast<CThing*>(PTarget.GetPItem())->GetInterface(&targetComponent, 0x4d))
+            targetComponent->RemoveThingNotSolidTo(reinterpret_cast<CThing*>(PCreature.GetPItem()));
     }
     CCombatActionBase::FinishAction();
 }

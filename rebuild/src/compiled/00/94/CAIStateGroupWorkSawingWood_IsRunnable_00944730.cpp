@@ -9,47 +9,15 @@
 //          CThing::GetProperties (slot 48), IsActionPointFree @ 0x007FEBF0, CThing::GetPos @ 0x004C73D0 (x2).
 // Layout / shape: the landed sibling CAIStateGroup_WorkHammerAnvil::IsRunnable 0x00944E80 (PSawHorse at +0x15 as PAnvil).
 // Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 #include "engine/C3DVector.h"
 class CThing { public:
@@ -59,7 +27,7 @@ class CThing { public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad4c[0x91 - 0x54];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -76,10 +44,10 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
@@ -89,10 +57,10 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

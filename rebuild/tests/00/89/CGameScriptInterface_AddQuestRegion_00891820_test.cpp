@@ -80,7 +80,11 @@ public:
     CWorld* m_World;
 };
 
-CQuestManager* CGSIAddQuestRegion_QuestManager;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
 static CWorld* g_ObservedWorld;
 static CWorldMap* g_WorldMap;
 static const CWorldMap* g_ObservedLookupWorldMap;
@@ -160,7 +164,7 @@ int main()
     interfaceObject.m_World = &world;
     g_WorldMap = &worldMap;
     g_Region = &region;
-    CGSIAddQuestRegion_QuestManager = &questManager;
+    (CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data) = &questManager;
 
     ResetObservations();
     g_RegionNumber = -1;

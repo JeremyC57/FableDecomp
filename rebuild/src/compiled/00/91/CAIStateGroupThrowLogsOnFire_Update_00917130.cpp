@@ -2,6 +2,7 @@
 // Leaf: Update
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00917130.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 #include <stdlib.h>
 class CTCBase;
@@ -11,19 +12,9 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-};
-struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
-    virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
+// CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 extern CCharString g_CCharString_013bb674;      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
 extern CCharString g_CCharString_013bb678;      // "ST_WORK_GET_CRATE"
 extern CCharString g_CCharString_013bb67c;      // "ST_HOLDING_CRATE"
@@ -102,9 +93,9 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_MoveGoodsBase : CAIStateGroupBase {
-    bool FetchGoods(CIntelligentPointerThing source, float distance, vector<const CCharString*> anims,
+    bool FetchGoods(CIntelligentPointer<CThing> source, float distance, vector<const CCharString*> anims,
         const CAIFilterBase& filter, CThing* goods);   // 0x00915890
-    bool PlaceGoods(CIntelligentPointerThing target, float distance, vector<const CCharString*> anims,
+    bool PlaceGoods(CIntelligentPointer<CThing> target, float distance, vector<const CCharString*> anims,
         const CAIFilterBase& filter, CThing* goods);   // 0x00915B60
 };
 struct CAIStateGroup_ThrowLogsOnFire : CAIStateGroup_MoveGoodsBase {
@@ -132,7 +123,7 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
         PBrain->PCreature->GetAnimFromName(g_CCharString_013bb67c, 0);
         vector<const CCharString*> getAnims;
         getAnims.push_back(&g_CCharString_013bb678);
-        bool failed = !FetchGoods(CIntelligentPointerThing(pile), 3.5f, getAnims, CAIFilterBase(), 0);
+        bool failed = !FetchGoods(CIntelligentPointer<CThing>(pile), 3.5f, getAnims, CAIFilterBase(), 0);
         if (failed) {
             Terminate();
             return;
@@ -141,7 +132,7 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
     {
         vector<const CCharString*> putAnims;
         putAnims.push_back_inline(&g_CCharString_013bb680);
-        PlaceGoods(CIntelligentPointerThing(fire), 4.0f, putAnims, CAIFilterBase(), 0);
+        PlaceGoods(CIntelligentPointer<CThing>(fire), 4.0f, putAnims, CAIFilterBase(), 0);
         Terminate();
     }
 }

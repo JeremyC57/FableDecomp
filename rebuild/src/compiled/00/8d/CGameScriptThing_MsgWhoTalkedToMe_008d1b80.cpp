@@ -2,6 +2,7 @@
 // Leaf: MsgWhoTalkedToMe
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #include "fable_compiler.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -28,7 +29,7 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+#include "engine/CCountedPointer.h"                         // CCPPointerInfo (shared model, same three fields) // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -132,7 +133,8 @@ struct ScriptBaseNative{unsigned char Containers[0x2c];SpawnedFunc* PActiveThrea
 struct ActiveQuest{unsigned char State[8];ScriptBaseNative* Script;};
 struct GameScriptThingManager{ScriptMethods GetNullScriptThing();}; //00704730, non-POD hidden result returned in caller slot
 struct QuestManagerNative{void* State;GameScriptThingManager* ScriptThings;unsigned char OtherState[0x80];ActiveQuest* PQuestCurrentlyRunning;};
-extern QuestManagerNative* QuestManager; //013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 FABLE_FORCEINLINE long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
 FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
 // Event kind2 CEventTalkedTo; originator intelligent pointer+8.
@@ -148,8 +150,8 @@ struct CGameScriptThingMethods:CGameScriptThing{ScriptMethods MsgWhoTalkedToMe()
 ScriptMethods CGameScriptThingMethods::MsgWhoTalkedToMe()const {
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);
  if(p->Get()&&!(p->Get()->LifeFlags&1)) {
- long last=LastFrame(QuestManager->PQuestCurrentlyRunning);
- long current=CurrentFrame(QuestManager->PQuestCurrentlyRunning);
+ long last=LastFrame(reinterpret_cast<QuestManagerNative*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->PQuestCurrentlyRunning);
+ long current=CurrentFrame(reinterpret_cast<QuestManagerNative*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->PQuestCurrentlyRunning);
  CThingNative* thing=p->Get();
  if(thing->UsingComponents[2]&4) {
  CTCEntityEvents* events;
@@ -162,5 +164,5 @@ ScriptMethods CGameScriptThingMethods::MsgWhoTalkedToMe()const {
  }
  }
  }
- return QuestManager->ScriptThings->GetNullScriptThing();
+ return reinterpret_cast<QuestManagerNative*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->ScriptThings->GetNullScriptThing();
 }

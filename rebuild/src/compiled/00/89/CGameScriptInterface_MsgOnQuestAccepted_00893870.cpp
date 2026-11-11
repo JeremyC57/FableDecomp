@@ -3,6 +3,7 @@
 // Callees: the frame getters, FindMostRecentMessage @ 0x008ABED0, CQuestManager::GetRegisteredQuestFromIndex @ 0x004AF3C0 on the global @ 0x013B89FC, CCharString::operator= @ 0x0099EFB0.
 // Shape (shared by the Msg family): the two frame getters 0x006E7510 / 0x006E7530 (both labelled GetMaxWorldFrameForMessages), the 0x14-byte frame holds the IsOfType filter at +8, the CanBeSeenOrHeard filter at +0xc..+0x10 and the Bind2 pair of pointers at +0x14..+0x18; CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, CanBeSeenOrHeard>> @ 0x008ABED0 through CWorld+0x60 (engine/CWorld.h).
 // Leaf: MsgOnQuestAccepted
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 class CCharString { public:
     void* m_pData;
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
@@ -35,7 +36,9 @@ struct CMessageEventManager_Retail {
 struct CQuestManager_Retail {
     const CCharString& GetRegisteredQuestFromIndex(long index);   // 0x004AF3C0 (an empty-string global for a bad index)
 };
-extern CQuestManager_Retail* g_pQuestManager;       // 0x013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 struct CWorldMap_Retail;
 struct CDefinitionManager_Retail;
 struct CPlayerManager_Retail;
@@ -65,7 +68,7 @@ bool CGameScriptInterface::MsgOnQuestAccepted(CCharString& name) const
     CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
     CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x37) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));
     if (message) {
-        name = g_pQuestManager->GetRegisteredQuestFromIndex(message->m_extraData);
+        name = reinterpret_cast<CQuestManager_Retail*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->GetRegisteredQuestFromIndex(message->m_extraData);
         return true;
     }
     return false;

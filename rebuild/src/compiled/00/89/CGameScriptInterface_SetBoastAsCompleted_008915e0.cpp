@@ -1,4 +1,5 @@
 class CCharString
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 {
 public:
     explicit CCharString(unsigned long value)
@@ -24,14 +25,15 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-extern CQuestManager* CGSISetBoastAsCompleted_Manager;
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 void CGameScriptInterface::SetBoastAsCompleted(
     long boastId,
     const CCharString& boastName) const
 {
     CQuestManager* const questManager =
-        CGSISetBoastAsCompleted_Manager;
+        (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     questManager->SetBoastAsCompleted_004af8f0(
         boastId,
         boastName);

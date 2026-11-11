@@ -23,6 +23,7 @@
 //   calls. GetSubDef goes through an inline CThing wrapper so the creature is fetched before &def is pushed; the incremented
 //   count is a named local (without it esi/edi swap); Normalise(delta) before delta.Get2DLength() with `const float&` scaling
 //   gives retail's x87 order (cached dx2/dy2, sqrt last). The CDefPointer null test is dropped by the GetSubDef stand-in.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 #include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
@@ -119,12 +120,8 @@ class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase* m_pItem;
-    CThingCreatureBase* GetPItem() const;              // 0x00A01B50
-};
-
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 struct CCountedItem { };
 class CCPPointerInfo { public:
     long m_count;
@@ -156,7 +153,7 @@ class CCreatureActionBase { public:
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                 // +0x08
     unsigned char _pad10[0xa8 - 0x10];
-    CThingCreatureBase* GetCreature() const { return PCreature.GetPItem(); }
+    CThingCreatureBase* GetCreature() const { return reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
 };
 class CCombatActionBase : public CCreatureActionBase { public:       // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];
@@ -200,9 +197,9 @@ __declspec(noinline) CCountedPointer_CCreatureActionBase::CCountedPointer_CCreat
 void CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction()
 {
     CTCRushCounter* counter;
-    PCreature.GetPItem()->GetInterface(&counter, 0xad);
+    reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem())->GetInterface(&counter, 0xad);
     CDefPointer_CJackOfBladesBattleDef def;
-    PCreature.GetPItem()->GetSubDef(&def);
+    reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem())->GetSubDef(&def);
     long count = counter->RushCount + 1;
     if (count > def->MaxRushCount)
         counter->RushCount = 1;
@@ -210,10 +207,10 @@ void CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction()
         counter->RushCount = count;
     C3DVector rushPosition;
     if (CauseRush && GetValidRushPosition(rushPosition)) {
-        C3DVector delta = rushPosition - PCreature.GetPItem()->GetPos();
+        C3DVector delta = rushPosition - reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem())->GetPos();
         C3DVector direction = Normalise(delta);
         float distance = delta.Get2DLength();
-        CThingCreatureBase* creature = PCreature.GetPItem();
+        CThingCreatureBase* creature = reinterpret_cast<CThingCreatureBase*>(PCreature.GetPItem());
         CCombatAction_GenericStrikeResponseBase::FinishAction();
         CCountedPointer_CCreatureActionBase finalAction(new CCreatureAction_PlayCombatAnimation(creature, "RUSH_OUTOF", true));
         GetCreature()->SetCurrentAction(CCreatureAction_CastAssassinRush(creature, direction, distance, false, 0, finalAction));

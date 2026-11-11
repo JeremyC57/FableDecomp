@@ -4,11 +4,12 @@
 // Identity: Ego_r.pdb / FableWin.pdb ?ConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAE... (private; called by the landed
 //   ConstructScreenPC 0x005C9A95); Ego_r donor 0x0062C1D1. The PC twin of ConstructWeaponItemEntries 0x005C66B2: the same body with
 //   a default-constructed (empty) wield entry instead of ConstructWieldEntry and the PC builder 0x005C47D5.
-// Callees: CTCBase::GetDefinitionManager 0x006869D0, GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6,
+// Callees: CTCBase::GetDefinitionManager 0x006869D0, GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6,
 //   CTCWeapon::IsMeleeWeaponClass 0x005DA510, vector<pair<long,long> >::push_back 0x005947B6, FinalConstructWeaponItemEntriesPC
 //   0x005C47D5, CCountedPointer<CComponent>::ReleaseData 0x004291DE, free 0x00BFEA14.
 // Shape: as 0x005C66B2 (same-TU template bodies; an MSVC-only noinline stand-in for the PC builder that only reads the items keeps
 //   the second group's end in ebx across the first call; the empty wield entry lives in its own block).
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
@@ -45,8 +46,9 @@
 #include "engine/NUISystem_CUIMiscThingsDef.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CWeaponDef.h"
+#include "engine/CThingBaseDef.h"
 
-// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CWeaponDef>
+// Same-TU bodies of the def lookups retail's TU holds (out of line in retail: GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CWeaponDef>
 // 0x0042B1A6): VC7.1 sees that they only write through the out pointer, so the CDefPointer locals stay unaliased.
 #pragma auto_inline(off)
 template <class T>
@@ -96,7 +98,7 @@ void CTCInventoryWeapons::ConstructWeaponItemEntriesPC(std::vector<std::pair<lon
 {
     if (items.empty())
         return;
-    CDefPointer<const CDefClassBase> def;
+    CDefPointer<const CThingBaseDef> def;
     GetDefinitionManager().GetDef(items[0].first, &def);
     CDefPointer<const CWeaponDef> weaponDef;
     def->GetSubDef(&weaponDef);
@@ -105,7 +107,7 @@ void CTCInventoryWeapons::ConstructWeaponItemEntriesPC(std::vector<std::pair<lon
         std::vector<std::pair<long, long> > lightItems;
         std::vector<std::pair<long, long> > otherItems;
         for (unsigned long i = 0; i < items.size(); ++i) {
-            CDefPointer<const CDefClassBase> itemDef;
+            CDefPointer<const CThingBaseDef> itemDef;
             GetDefinitionManager().GetDef(items[i].first, &itemDef);
             CDefPointer<const CWeaponDef> itemWeaponDef;
             itemDef->GetSubDef(&itemWeaponDef);
@@ -125,7 +127,7 @@ void CTCInventoryWeapons::ConstructWeaponItemEntriesPC(std::vector<std::pair<lon
         std::vector<std::pair<long, long> > typeItems;
         std::vector<std::pair<long, long> > otherItems;
         for (unsigned long i = 0; i < items.size(); ++i) {
-            CDefPointer<const CDefClassBase> itemDef;
+            CDefPointer<const CThingBaseDef> itemDef;
             GetDefinitionManager().GetDef(items[i].first, &itemDef);
             CDefPointer<const CWeaponDef> itemWeaponDef;
             itemDef->GetSubDef(&itemWeaponDef);

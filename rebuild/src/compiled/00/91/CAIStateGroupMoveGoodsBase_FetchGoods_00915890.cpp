@@ -12,6 +12,7 @@
 // Layout: local model (PBrain +4; brain PCreature +0x18; CurrentActionID +0x18; retail CThing bitset +0x20, map +0x44, dead bit +0x91;
 // STLport vector 12 bytes; the fetch action is CCreatureActionBase (0xa8) + a CIntelligentPointer<CThing> at +0xa8).
 // Shape: one shared false tail (success path nested); goods.Start read into a local after the walk; the target item hoisted into a local before the action ctor; the crate-stack lookup is the word-local HasTC in the first test and the masked test (null-checked) in the second.
+// Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);
 class CTCBase;
@@ -33,14 +34,10 @@ public:                 // interface 0x2D
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerThing() : CBaseIntelligentPointer() { }
-    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    FABLE_FORCEINLINE CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
+// CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
@@ -63,7 +60,7 @@ class CCreatureActionBase { public:
     long GetActionID() const;                   // 0x00692620
 };
 struct CCreatureAction_FetchGoods : CCreatureActionBase {
-    CIntelligentPointerThing PTarget;           // +0xa8
+    CIntelligentPointer<CThing> PTarget;           // +0xa8
     CCreatureAction_FetchGoods(CThingCreatureBase* creature, CThing* target, long good);   // 0x00916590
 };
 class CAIBrain { public:
@@ -78,21 +75,21 @@ class CAIStateGroupBase { public:
     long CurrentActionID;                       // +0x18
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     protected: EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    long AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligentPointerThing target, long* actionPoint, float distance,
+    long AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligentPointer<CThing> target, long* actionPoint, float distance,
         float faceDistance, CAIFilterBase* filter, CThing* ignore, CThing* other, float speed);   // 0x00980770
 };
 struct CAIStateGroup_MoveGoodsBase : CAIStateGroupBase {
-    bool FetchGoods(CIntelligentPointerThing container, float distance, CLongVector goods, CAIFilterBase* filter, CThing* ignore);
+    bool FetchGoods(CIntelligentPointer<CThing> container, float distance, CLongVector goods, CAIFilterBase* filter, CThing* ignore);
 };
 
-bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container, float distance, CLongVector goods,
+bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointer<CThing> container, float distance, CLongVector goods,
     CAIFilterBase* filter, CThing* ignore)
 {
-    CIntelligentPointerThing target;
+    CIntelligentPointer<CThing> target;
     target.SetPItem((CBaseObject*)(((CThing*)container.GetPItem())));
     CTCCrateStack* stack = 0;
     if (((CThing*)container.GetPItem())->GetTC(TCI_CRATE_STACK, &stack))
-        target = CIntelligentPointerThing(stack->GetNextCrate());
+        target = CIntelligentPointer<CThing>(stack->GetNextCrate());
     long actionPoint;
     if (AIAction_MoveToPossiblyBlockedObjectAndFace(target, &actionPoint, distance, 10.0f, filter, ignore, 0, 1.0f) == 2
             && IS_THING_ALIVE(target)) {

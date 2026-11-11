@@ -24,7 +24,11 @@ public:
         const CCharString& questName) const;
 };
 
-CQuestManager* CGSIIsQuestActive_Manager;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
 static CQuestManager* g_ObservedManager;
 static const CCharString* g_ObservedQuestName;
 static bool g_Result;
@@ -44,7 +48,7 @@ int main()
     CGameScriptInterface interfaceObject;
     CCharString firstQuest(0x11223344);
     CCharString secondQuest(0x55667788);
-    CGSIIsQuestActive_Manager = &manager;
+    (CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data) = &manager;
 
     g_Result = false;
     if (interfaceObject.IsQuestActive(firstQuest))

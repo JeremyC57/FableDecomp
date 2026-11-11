@@ -2,6 +2,7 @@
 // Retail 0x004FF490, 203 bytes. Set build 004B2CA0; insertion 004AC380;
 // CCharString ctor/dtor 0099EBF0/0099EAE0; tree copy ctor 00514400; erase 004ABA70.
 // Canonical CWorldMap has data only; a derived view adds this data-independent virtual method.
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #include "engine/CWorldMap.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (MSVCR71)
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
@@ -37,12 +38,14 @@ struct CSectionSet {
     }
 };
 struct CSectionManager { void BuildLoadSections(CSectionSet*); }; // 0x004B2CA0
-extern CSectionManager* gSectionManager; // 0x013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 struct CWorldMapSectionView : CWorldMap { CSectionSet GetLoadableSections(); };
 CSectionSet CWorldMapSectionView::GetLoadableSections()
 {
     CSectionSet sections;
-    gSectionManager->BuildLoadSections(&sections);
+    reinterpret_cast<CSectionManager*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->BuildLoadSections(&sections);
     {
         CSectionName nullSection("NULL", -1); // literal012393E4
         sections.Insert(nullSection);

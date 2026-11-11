@@ -2,6 +2,7 @@
 // Naming wave 18: the global stand-in g_GameText (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // CTCHeroExperience::GetFullHeroTitle() const -- hero title text, plus " - " and the best earned title from the experience def's list
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CWideString {
 public:
@@ -120,29 +121,12 @@ public:
     vector<long> Titles;                                // +0x34
 };
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;         // 0x004365B0
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 // same-TU stand-in for the interface-map LowerBound (VC7.1 then knows the entry is not derived from the key)
 #pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* lo = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count >> 1;
-        SEntry* mid = lo + half;
-        if (mid->type < *type) {
-            lo = mid + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return lo;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 class CThing {
 public:
@@ -154,9 +138,9 @@ public:
     {
         long key = type;
         const CInterfaceMap* map = &Interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(key));
+        const CInterfaceMap::value_type* end = map->end();
+        return (it == end || type < it->first ? end : it)->second;
     }
 };
 class CTCBase {

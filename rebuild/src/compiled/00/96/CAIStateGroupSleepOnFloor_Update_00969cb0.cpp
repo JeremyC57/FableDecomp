@@ -15,6 +15,7 @@
 // Layout: local stand-ins; CAIStateGroupBase +0x4 PBrain, +0x14 PSleepPoint (IP, 8 bytes), +0x1c Asleep (retail
 //         disassembly). The mode strings are passed as const char* and converted implicitly (an explicit
 //         CCharString temporary pushes each address right after its ctor instead of after both).
+// Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C. The converting construction from CIntelligentPointer<CThing> is FableWin.pdb ??$?0VCThing@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThing@@@@@Z (FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE).
 #include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
@@ -26,12 +27,10 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
-    virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
-};
+// CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 struct CTCOccupiable {                          // interface 0xac
     CThing* GetOccupant();                      // 0x0087C3E0
     void SetOccupant(CThing* occupant);         // 0x0087C390
@@ -123,16 +122,13 @@ public:
 protected:
     bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
-    virtual void v00();
-    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
+// CIntelligentPointerConstThing = the shared CIntelligentPointer<const CThing> (engine/CIntelligentPointer.h).
 struct CAIStateGroup_SleepOnFloor : CAIStateGroupBase {
-    CIntelligentPointerThing PSleepPoint;       // +0x14
+    CIntelligentPointer<CThing> PSleepPoint;       // +0x14
     bool Asleep;                                // +0x1c
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     CThingCreature* GetCreatureThing() const { return PBrain->PCreature; }
-    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float distance, bool* reached,
+    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointer<const CThing> target, float distance, bool* reached,
         long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
     long AIAction_DoNothing();                  // 0x0097E200

@@ -1,0 +1,2 @@
+address	module	name
+0x01228CA0	CTBaseSingletonNoDefaultAlloc<CQuestManager>	`dynamic atexit destructor for 'CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass''

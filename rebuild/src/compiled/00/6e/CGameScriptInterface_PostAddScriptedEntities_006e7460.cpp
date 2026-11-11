@@ -5,6 +5,7 @@
 // quest manager singleton @ 0x013B89FC (named g_pQuestManager by landed code); `this` is unused.
 // Layout: retail CQuestManager = Ego_r.pdb with 4-byte STLport lists, 12-byte vectors and 16-byte CVectorMaps:
 // PQuestCurrentlyRunning +0x88 (PDB +0xe4). CQuestManager::CActiveQuest (Ego_r.pdb): PScript (CCountedPointer<CScriptBase>) +0x08.
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 class CScriptBase;
 class CScriptInfo;
 #include "engine/CCountedPointer.h"
@@ -20,7 +21,8 @@ public:
     CActiveQuest* PQuestCurrentlyRunning;                // +0x88
     void AttachExistingScriptedEntitiesToScript(CScriptBase& script);   // 0x004B26B0
 };
-extern CQuestManager* g_pQuestManager;                   // 0x013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -28,5 +30,5 @@ extern CQuestManager* g_pQuestManager;                   // 0x013B89FC
 
 void CGameScriptInterface::PostAddScriptedEntities() const
 {
-    g_pQuestManager->AttachExistingScriptedEntitiesToScript(*g_pQuestManager->PQuestCurrentlyRunning->PScript);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().AttachExistingScriptedEntitiesToScript(*CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning->PScript);
 }

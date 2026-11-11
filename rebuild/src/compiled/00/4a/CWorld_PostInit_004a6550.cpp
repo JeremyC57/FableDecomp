@@ -15,6 +15,7 @@
 //   0x01239084, "Init Music Manager" 0x01239070.
 // Layout: Ego_r.pdb CWorld (Component +8, PlayerManager +0xc, DefinitionManager +0x10, PAtmosProcessor +0x24,
 //   PGameScriptInterface +0x38, PScriptInfoManager +0x58, PMusicManager +0x6c; CIDrawWorld base +4).
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 class CCharString {
 public:
     void* PStringData;
@@ -66,7 +67,8 @@ public:
     }
     T& operator*() const { return *ptr; }
 };
-extern CCountedPointer<CQuestManager> g_pQuestManager; // 0x013B89FC
+#define FABLE_RETAIL_SINGLETON_SET
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"     // 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private; FableWin public static Set)
 
 class CIEngine {
 public:
@@ -120,7 +122,7 @@ void CWorld::PostInit(CDisplayEngine& displayEngine)
     PGameScriptInterface.reset(new CGameScriptInterface(*Component, *DefinitionManager, *this, *PlayerManager, displayEngine));
     PScriptInfoManager.Reset(new CScriptInfoManager);
     PScriptInfoManager->Init();
-    g_pQuestManager.Reset(new CQuestManager(*this, *PScriptInfoManager, *PGameScriptInterface));
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Set(new CQuestManager(*this, *PScriptInfoManager, *PGameScriptInterface));
     NProfileTimer::StartProfile("Engine Set World", 0);
     NProgressDisplay::DisplayProgress("Engine Set World", -1.0f, false, false);
     displayEngine.Get3DEngine().SetWorld(this);

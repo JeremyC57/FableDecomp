@@ -22,6 +22,7 @@
 // Label: catalog "Combat_ProcessMeleeAttackMessage" -> Ego_r.pdb ?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby@@AAE_NXZ
 //   (between AttackEnemy 0x0096EA50 and MoveToEnemyCreatureCombatPosition 0x0096EC10; its one caller is Update 0x0096EE90).
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -59,11 +60,8 @@ public:
     CMessageEventManager* MessageEventManager;  // +0x60
 };
 extern unsigned long g_AlertAlliesMessageDelay; // 0x013BC3A4
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
@@ -93,7 +91,7 @@ bool CAIStateGroup_MeleeCombatNearby::AlertAlliesInVicinity()
     const CTCPerceiveThing* perceive;
     if (!((const CThing*)GetCreature())->PeekTC(TCI_PERCEIVE_THING, &perceive))
         return true;
-    if (perceive->GetPerceivedThing() != PEnemy.GetPItem() || (!perceive->LineOfSight && !perceive->Smelt))
+    if (perceive->GetPerceivedThing() != reinterpret_cast<CThing*>(PEnemy.GetPItem()) || (!perceive->LineOfSight && !perceive->Smelt))
         return true;
     {
         CMessageEventFilter_IsOfType filter(0xc);
@@ -103,7 +101,7 @@ bool CAIStateGroup_MeleeCombatNearby::AlertAlliesInVicinity()
     }
     CThingCreatureBase* creature = GetCreature();
     CMessageEventManager* messages = GetWorld().MessageEventManager;
-    messages->AddMessage((EMessageEventType)(0xc), g_AlertAlliesMessageDelay, creature->PeekPos(), creature, PEnemy.GetPItem(),
+    messages->AddMessage((EMessageEventType)(0xc), g_AlertAlliesMessageDelay, creature->PeekPos(), creature, reinterpret_cast<CThing*>(PEnemy.GetPItem()),
                          0.0f, 36.0f, 0);
     return true;
 }

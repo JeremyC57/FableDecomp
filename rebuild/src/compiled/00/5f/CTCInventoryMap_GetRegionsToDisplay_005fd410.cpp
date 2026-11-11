@@ -21,6 +21,7 @@
 //   offsets (UsingComponents bitset +0x20, Components CVectorMap +0x44, CurrentMapNumber +0x8E); the quest-manager singleton
 //   is CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (Ego_r dynamic initializer) at 0x013B89FC with ActiveQuestCards +0x5C
 //   (engine/CQuestManager.h, flattened there as bytes).
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's private CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared header's inline Get() (the local template made it public, `2V`).
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
@@ -299,10 +300,7 @@ public:
     std::list<CIntelligentPointer<CThing> > ActiveQuestCards;   // +0x5C
 };
 #include "engine/CCountedPointer.h"
-template <class T> class CTBaseSingletonNoDefaultAlloc {
-public:
-    static CCountedPointer<T> PClass;                    // 0x013B89FC for T = CQuestManager
-};
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"     // PClass 0x013B89FC for T = CQuestManager (private static; public inline Get)
 
 class CTCBase {
 public:
@@ -329,7 +327,7 @@ void CTCInventoryMap::GetRegionsToDisplay(std::set<long>& regions)
     for (std::vector<long>::iterator it = VisitedRegions.begin(); it != VisitedRegions.end(); ++it)
         regions.insert(*it);
 
-    std::list<CIntelligentPointer<CThing> > cards(CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass->ActiveQuestCards);
+    std::list<CIntelligentPointer<CThing> > cards(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActiveQuestCards);
     for (std::list<CIntelligentPointer<CThing> >::iterator card = cards.begin(); card != cards.end(); ++card) {
         CTCQuestCard* questCard = (*card)->PeekTC<CTCQuestCard>(TC_INTERFACE_QUEST_CARD);
         if (questCard->GetRegionName() != "")

@@ -6,6 +6,7 @@
 //   ?IsDead@CThing@@QBE_NXZ, a bool accessor) instead of a direct bit test; the bool accessor keeps retail's register
 //   choice / test-and-branch shape.
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
+// Name fix (agentNF7 2026-11-10): the local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h (Ego_r.pdb CBaseIntelligentPointer: GetPItem returns CBaseObject*, SetPItem takes CBaseObject*, virtual dtor), so the calls bind the PDB spellings.
 enum EAIActionRepeat;                         // MS forward enum
 enum EAIActionReturn;                         // MS forward enum
 class CTCBase;
@@ -21,20 +22,15 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingCreatureBase : public CThing { public:
 };
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00A01C10
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-};
-struct CIntelligentPointerThing : CBaseIntelligentPointer {
-    CIntelligentPointerThing(CThing* item);     // 0x004A96F0
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& o);   // 0x004A9760
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
+// CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 template <class T> class CIntelligentPointer;
 template <> class CIntelligentPointer<const CThing> : public CBaseIntelligentPointer { public:   // Ego_r: PEscapePoint is CIntelligentPointer<CThing const>
 };
 typedef CIntelligentPointer<const CThing> CIntelligentPointerConstThing;
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThing& p);        // 0x004CC340
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>& p);        // 0x004CC340
 template <class T> bool __fastcall IS_THING_ALIVE(const T& p);              // 0x0069CE20 = IS_THING_ALIVE<CIntelligentPointer<const CThing> > (Ego_r / FableWin)
 struct CTCUserActionPointBase {
     bool GetFreeActionPoint(CThingCreatureBase* creature, C3DVector* pos, CRightHandedSet* set, long* index);   // 0x007FEDE0
@@ -79,9 +75,9 @@ class CAIStateGroupBase { public:
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float prox, bool* reached, long a, bool b, bool c, bool d, long e, bool f, float g);   // 0x0097E890
 };
 struct CAIStateGroup_StealStealableItem : CAIStateGroupBase {
-    CIntelligentPointerThing PStealableItem;            // +0x14
+    CIntelligentPointer<CThing> PStealableItem;            // +0x14
     CIntelligentPointerConstThing PEscapePoint;         // +0x1c
-    CIntelligentPointerThing PPreviouslyCarriedItem;    // +0x24
+    CIntelligentPointer<CThing> PPreviouslyCarriedItem;    // +0x24
     long ActionPointIndex;                      // +0x2c
     bool GotActionPoint;                        // +0x30
     bool ReachedDestination;                    // +0x31
@@ -92,12 +88,12 @@ struct CAIStateGroup_StealStealableItem : CAIStateGroupBase {
 
 void CAIStateGroup_StealStealableItem::Update()
 {
-    if (!PStealableItem.GetPItem() || PStealableItem.GetPItem()->IsDead()) {
+    if (!reinterpret_cast<CThing*>(PStealableItem.GetPItem()) || reinterpret_cast<CThing*>(PStealableItem.GetPItem())->IsDead()) {
         Terminate();
         return;
     }
     CTCUserActionPointBase* actionPoint;
-    PStealableItem.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint);
+    reinterpret_cast<CThing*>(PStealableItem.GetPItem())->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint);
     C3DVector pos;
     CRightHandedSet set;
     if (!actionPoint->GetFreeActionPoint(GetCreature(), &pos, &set, &ActionPointIndex)) {
@@ -107,11 +103,11 @@ void CAIStateGroup_StealStealableItem::Update()
     GotActionPoint = true;
     C3DVector facing = set.Up;
     CTCStealable* stealable;
-    PStealableItem.GetPItem()->GetTC(TCI_CARRYABLE, &stealable);
+    reinterpret_cast<CThing*>(PStealableItem.GetPItem())->GetTC(TCI_CARRYABLE, &stealable);
     bool arrived;
     long result;
     do {
-        if (!PStealableItem.GetPItem() || PStealableItem.GetPItem()->IsDead()) {
+        if (!reinterpret_cast<CThing*>(PStealableItem.GetPItem()) || reinterpret_cast<CThing*>(PStealableItem.GetPItem())->IsDead()) {
             Terminate();
             return;
         }
@@ -124,7 +120,7 @@ void CAIStateGroup_StealStealableItem::Update()
     } while (result == 4);
     if (result == 3) {
         do {
-            if (!PStealableItem.GetPItem() || PStealableItem.GetPItem()->IsDead()) {
+            if (!reinterpret_cast<CThing*>(PStealableItem.GetPItem()) || reinterpret_cast<CThing*>(PStealableItem.GetPItem())->IsDead()) {
                 Terminate();
                 return;
             }
@@ -132,13 +128,13 @@ void CAIStateGroup_StealStealableItem::Update()
                 Terminate();
                 return;
             }
-            CThing* item = PStealableItem.GetPItem();
+            CThing* item = reinterpret_cast<CThing*>(PStealableItem.GetPItem());
             bool reached;
             result = AIAction_MoveToPosProximity(2, ((CThing*)item)->GetPos(), 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
         } while (result == 4);
         if (IS_THING_ALIVE(PStealableItem)) {
             CThingCreatureBase* creature = GetCreature();
-            CThing* item = PStealableItem.GetPItem();
+            CThing* item = reinterpret_cast<CThing*>(PStealableItem.GetPItem());
             facing = ((CThing*)item)->GetPos() - ((CThing*)creature)->GetPos();
         }
     }
@@ -167,27 +163,27 @@ void CAIStateGroup_StealStealableItem::Update()
         Terminate();
         return;
     }
-    CCreatureAction_PickUpGenericBox action(*GetCreature(), *PStealableItem.GetPItem());
+    CCreatureAction_PickUpGenericBox action(*GetCreature(), *reinterpret_cast<CThing*>(PStealableItem.GetPItem()));
     PickUpActionID = action.GetActionID();
     CTCCarrying* carrying;
     GetCreature()->GetTC(TCI_CARRYING, &carrying);
     {
-        CIntelligentPointerThing previous(carrying->GetThingInPrimarySlot());
+        CIntelligentPointer<CThing> previous(carrying->GetThingInPrimarySlot());
         PPreviouslyCarriedItem = previous;
     }
     carrying->RemoveThingFromPrimarySlot(false);
-    if (IS_THING_ALIVE(PPreviouslyCarriedItem) && PPreviouslyCarriedItem.GetPItem()->HasTC(TCI_WEAPON))
-        PPreviouslyCarriedItem.GetPItem()->Kill(true);
+    if (IS_THING_ALIVE(PPreviouslyCarriedItem) && reinterpret_cast<CThing*>(PPreviouslyCarriedItem.GetPItem())->HasTC(TCI_WEAPON))
+        reinterpret_cast<CThing*>(PPreviouslyCarriedItem.GetPItem())->Kill(true);
     long done = AIAction_PerformActionAndWait(&action, false);
     if (IS_THING_ALIVE(PEscapePoint) && IS_THING_ALIVE(PStealableItem) && done == 2
-        && carrying->IsCarryingThing(PStealableItem.GetPItem())) {
-        C3DVector escapePos = ((CThing*)(PEscapePoint.GetPItem()))->GetPos();
+        && carrying->IsCarryingThing(reinterpret_cast<CThing*>(PStealableItem.GetPItem()))) {
+        C3DVector escapePos = ((CThing*)(reinterpret_cast<CThing*>(PEscapePoint.GetPItem())))->GetPos();
         if (AIAction_MoveToPosProximity(1, escapePos, 1.0f, &arrived, 5, true, false, true, 0, true, 0.0f) == 2) {
             ReachedDestination = true;
             const const CTCEscapeFlags* flags;
             static_cast<const CThing*>(GetCreature())->PeekTC(TCI_AI_SCRATCHPAD, &flags);
             if (IS_THING_ALIVE(PStealableItem) && flags->DestroyCarried)
-                PStealableItem.GetPItem()->Kill(false);
+                reinterpret_cast<CThing*>(PStealableItem.GetPItem())->Kill(false);
         }
     }
     Terminate();

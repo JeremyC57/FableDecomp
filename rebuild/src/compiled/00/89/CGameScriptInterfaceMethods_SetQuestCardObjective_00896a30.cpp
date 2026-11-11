@@ -1,6 +1,7 @@
 // CGameScriptInterface::SetQuestCardObjective -- update objective and play the hero log-entry cue
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail00896A30,294 bytes.
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerManager.h"
@@ -23,7 +24,8 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 #include "engine/CTCQuestCard.h"
 #include "engine/CTCBase.h"
 struct QuestManagerMethods:CQuestManager{bool SetQuestCardObjective(const CCharString&,const CCharString&,const CCharString&,const CCharString&);bool IsQuestCardActive(const CCharString&)const;CThingNative* GetActiveQuestCardFromScriptName(const CCharString&)const;}; //004B0D30,004AF610,004B0C80
-extern QuestManagerMethods* g_QuestManager; //013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 struct QuestCardMethods:CTCQuestCard{bool IsVignette()const;}; //007022E0 reads native Def+59; donor+5D differs due vector stride
 class CCharString;
 class CTCSoundPlayer { public:
@@ -37,8 +39,8 @@ template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& 
 }
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetQuestCardObjective(const CCharString&,const CCharString&,const CCharString&,const CCharString&)const;};
 void CGameScriptInterfaceMethods::SetQuestCardObjective(const CCharString& quest,const CCharString& objective,const CCharString& region,const CCharString& extra)const{
- if(g_QuestManager->SetQuestCardObjective(quest,objective,region,extra)&&g_QuestManager->IsQuestCardActive(quest)){
- CThingNative* card=g_QuestManager->GetActiveQuestCardFromScriptName(quest);if(card&&!(card->DeletedFlags&1)&&(card->UsingComponents[3]&0x1000)){
+ if(reinterpret_cast<QuestManagerMethods*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->SetQuestCardObjective(quest,objective,region,extra)&&reinterpret_cast<QuestManagerMethods*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->IsQuestCardActive(quest)){
+ CThingNative* card=reinterpret_cast<QuestManagerMethods*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->GetActiveQuestCardFromScriptName(quest);if(card&&!(card->DeletedFlags&1)&&(card->UsingComponents[3]&0x1000)){
  ComponentMap* map=&card->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)108);ComponentEntry* end=map->Finish;QuestCardMethods* tc=static_cast<QuestCardMethods*>(((void*)(it==end||it->first>108?end:it)->second));if(!tc->IsVignette()){
  CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(IS_THING_ALIVE(hero)&&(hero->UsingComponents[0]&0x10000)){
  ComponentMap* soundMap=&hero->Components;ComponentEntry* soundIt=soundMap->LowerBound((ETCInterfaceType)16);ComponentEntry* soundEnd=soundMap->Finish;SoundPlayerMethods* sound=static_cast<SoundPlayerMethods*>(((void*)(soundIt==soundEnd||soundIt->first>16?soundEnd:soundIt)->second));PlayLogCue(sound);

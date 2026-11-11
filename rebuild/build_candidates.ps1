@@ -153978,8 +153978,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01228ca0'
         Module = '_global'
-        Source = '01/22/global_Release013b89fc_01228ca0.cpp'
-        TestSource = '01/22/global_Release013b89fc_01228ca0_test.cpp'
+        Source = '01/22/global_dynamicatexitdestructorforCTBaseSingletonNoDefaultAllocCQuestManagerPClass_01228ca0.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforCTBaseSingletonNoDefaultAllocCQuestManagerPClass_01228ca0_test.cpp'
         PassPattern = '01228ca0_TEST PASS'
     }
     [pscustomobject]@{

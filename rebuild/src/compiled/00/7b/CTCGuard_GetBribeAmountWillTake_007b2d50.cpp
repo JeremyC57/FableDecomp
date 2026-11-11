@@ -8,6 +8,7 @@
 // Tried (4 grades, first authoring agent): out pointer initialised to 0 + inline GetInterface (this file) and the same through
 // an inline GetVillage() helper on CTCGuard (identical bytes); the sibling 0x007B2CF0 (uninitialised out pointer, bool result)
 // matches. Next: an out pointer that is a CTCBase* cast after the call, or a scheduling-only artefact of the lane compiler.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 class CTCBase;
 class CTCVillage { public:
     bool IsHeroCriminal();                                  // 0x0065BFCE
@@ -16,13 +17,9 @@ class CTCVillageMember { public:
     CTCVillage* GetPVillage() const;                        // 0x007EE540
 };
 
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x004365B0
-};
-
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
@@ -32,8 +29,8 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = static_cast<const CInterfaceMap*>(map)->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

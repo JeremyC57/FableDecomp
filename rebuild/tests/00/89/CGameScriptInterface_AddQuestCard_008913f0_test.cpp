@@ -58,7 +58,12 @@ struct CGSIAddQuestCard_TestVTable
 };
 
 long CGSIAddQuestCard_CurrentValue;
-CGameScriptInterface* CGSIAddQuestCard_Manager;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+class CQuestManager;
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
 
 static const CGameScriptInterface* g_ObservedHookThis;
 static long g_GetValues[2];
@@ -200,7 +205,7 @@ int main()
     *reinterpret_cast<unsigned long*>(&interfaceObject) =
         reinterpret_cast<unsigned long>(
             &testVTable.m_Slots[0]);
-    CGSIAddQuestCard_Manager = &manager;
+    (reinterpret_cast<CGameScriptInterface*&>(CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data)) = &manager;
 
     ResetObservations();
     CGSIAddQuestCard_CurrentValue = 7;

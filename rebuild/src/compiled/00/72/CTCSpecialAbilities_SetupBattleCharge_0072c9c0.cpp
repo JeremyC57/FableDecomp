@@ -10,6 +10,7 @@
 // Shape: HasTC(TCI_ASSASSIN_RUSH) || HasTC(TCI_BATTLE_CHARGE) through the retail CThing header (two STLport bitset tests: the second
 //   word reloaded, 0x100 kept in ecx for the GetTC<CTCTargetingBase> presence test); the thing-type flags (+0x6C) bit 3 / bit 5 read
 //   through the inline GetTypeFlags.
+// Name fix (agentNF7 2026-11-10): 0x0062E900 bound as the PDB's virtual ??1CCombatActionBase@@UAE@XZ: the action class derives the shared engine/CCombatActionBase.h (destructor identity = the vtable it stores first), not a derived dtor spelling.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -28,15 +29,18 @@
 #include "engine/CPlayer.h"
 #include "engine/CTCTargetingBase.h"
 class CCreatureActionBase;
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCombatActionBase.h"
 #define CCreatureAction_CastBattleCharge DonorCCreatureAction_CastBattleCharge
 #include "engine/CCreatureAction_CastBattleCharge.h"
 #undef CCreatureAction_CastBattleCharge
-class CCreatureAction_CastBattleCharge : public DonorCCreatureAction_CastBattleCharge {
+class CCreatureAction_CastBattleCharge : public CCombatActionBase {   // ~CCombatActionBase 0x0062E900 (Ego_r.pdb, virtual) destroys the temporary
 public:
     CCreatureAction_CastBattleCharge(CThingCreatureBase& creature, CThing& target, bool zTargeting, long level);   // 0x008CE290
     CCreatureAction_CastBattleCharge(CThingCreatureBase& creature, long level);                                   // 0x008CE2F0
-    ~CCreatureAction_CastBattleCharge();                                                                          // 0x0062E900
-    operator const CCreatureActionBase&() const { return *(const CCreatureActionBase*)this; }
+private:
+    unsigned char _pad_0x114[sizeof(DonorCCreatureAction_CastBattleCharge) - sizeof(CCombatActionBase)];   // retail size from the generated header
 };
 class CTCSpecialAbilities : public CTCBase {
 private:

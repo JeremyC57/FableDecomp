@@ -14,6 +14,7 @@
 //   CTCInventoryStats::GetXString 0x005CC772, GFIntToWideString 0x00405F00, CDeletion 0x0042BED4 / 0x0042CD84,
 //   IS_THING_ALIVE 0x004CC340, GetPItem 0x00A01B50, CThing::PeekTC (expanded; const CVectorMap::LowerBound 0x004365B0), CTCWeapon::GetDamage 0x005DAAA0, GetPDefFromGlobalIndex 0x009AD9E0,
 //   ConstructWeaponItemEntries 0x005C66B2.
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -63,7 +64,7 @@ template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);          
 #include "engine/CThingShotDef.h"
 
 // Same-TU bodies of the def lookups retail's TU holds (the header member templates; out of line in retail: GetDef<CUIMiscThingsDef>
-// 0x0042B312, GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6). VC7.1 sees that they only write through the
+// 0x0042B312, GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6). VC7.1 sees that they only write through the
 // out pointer, so the CDefPointer locals whose addresses they take stay unaliased (retail's `dec dword ptr [ecx+4] ; jne` releases).
 #pragma auto_inline(off)
 template <class T>
@@ -132,7 +133,7 @@ NUISystem::CComponent* CTCInventoryWeapons::ConstructScreen(NUISystem::CComponen
     GetAllItems(items);
     long augmentationCount = 0;
     for (unsigned long i = 0; i < items.size(); ++i) {
-        CDefPointer<const CDefClassBase> def;
+        CDefPointer<const CThingBaseDef> def;
         GetDefinitionManager().GetDef(items[i].first, &def);
         CDefPointer<const CWeaponDef> weaponDef;
         if (def->GetSubDef(&weaponDef)) {

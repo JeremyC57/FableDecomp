@@ -1,6 +1,7 @@
 // Byte-exact reconstruction of CGameScriptInterface::GetMaxWorldFrameForMessages() const @ 0x006e7530
 // Leaf: ?GetMaxWorldFrameForMessages@CGameScriptInterface@@IBEJXZ
 // Protected const member (both PDBs IBE); reads a global singleton, walks a pointer chain, returns a long (+0x1c).
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 
 struct D { long dummy[7]; long frame; };      // +0x1c
 struct C { char pad[0x2c]; D* pD; };           // +0x2c
@@ -12,11 +13,13 @@ struct A { char pad0[0x88]; B* pB; };          // +0x88
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-A* g_singleton = 0;   // at 0x13b89fc
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 long CGameScriptInterface::GetMaxWorldFrameForMessages() const
 {
-    B* b = g_singleton->pB;         // [0x13b89fc] -> [+0x88]
+    B* b = reinterpret_cast<A*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->pB;         // [0x13b89fc] -> [+0x88]
     if (b) {
         C* c = b->pC;               // [+8]
         if (c) {

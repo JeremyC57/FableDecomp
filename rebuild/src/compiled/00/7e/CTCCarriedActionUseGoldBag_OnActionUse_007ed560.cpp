@@ -11,51 +11,22 @@
 // a temporary passed straight to SetCurrentAction; the 0x1A report runs on every path.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
+// Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-    SEntry* LowerBound(const long* type) const;             // 0x004365B0
-};
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
 // caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
 // caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
+// (the CVectorMap LowerBound bodies are the shared header's same-TU noinline templates)
 #pragma auto_inline(on)
 
 class CThing { public:
@@ -67,18 +38,18 @@ class CThing { public:
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
@@ -87,8 +58,8 @@ class CThing { public:
     {
         long type = wanted;
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound(reinterpret_cast<const ETCInterfaceType&>(type));
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
 };
 class CCreatureActionBase { public:                                // retail sizeof 0xa8

@@ -29,7 +29,11 @@ public:
         const CCharString& boastName) const;
 };
 
-CQuestManager* CGSISetBoastAsCompleted_Manager;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
 static CQuestManager* g_ObservedManager;
 static const CCharString* g_CopySource;
 static CCharString* g_CopyDestination;
@@ -71,7 +75,7 @@ static int CheckCall(
     g_ObservedBoastId = 0;
     g_CopyCount = 0;
     g_CallCount = 0;
-    CGSISetBoastAsCompleted_Manager = &manager;
+    (CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data) = &manager;
 
     interfaceObject.SetBoastAsCompleted(boastId, boastName);
 

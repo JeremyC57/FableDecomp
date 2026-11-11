@@ -16,6 +16,8 @@
 // true then cleared; the action is a temporary built inside the SetCurrentAction call and destroyed inline (def
 // release + null, PTarget dtor, base dtor); the indicator def is released by hand at the end. The thing to move to is
 // passed on by value (a copy built in the argument slots: base ctor, vtable store, SetPItem(GetPItem())).
+// Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
+// Name fix (agentNF7 2026-11-10): AIAction_MoveToThingProximity 0x0097E380 and this row are protected members (Ego_r.pdb IAE).
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -96,11 +98,9 @@ class CThingCreatureBase : public CThing { public:
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
+// CIntelligentPointerConstThing = the shared CIntelligentPointer<const CThing> (engine/CIntelligentPointer.h).
 FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
@@ -116,7 +116,7 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // vtable 0x01285424
-    CIntelligentPointerConstThing PTarget;                  // +0xa8
+    CIntelligentPointer<const CThing> PTarget;                  // +0xa8
     float ShotAccuracyPercentage;                           // +0xb0
     float ShotDamageMultiplier;                             // +0xb4
     float ShotBuildupTime;                                  // +0xb8
@@ -139,18 +139,19 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
-    EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointerConstThing thing, float proximity,
+protected:                                      // both protected in Ego_r.pdb (IAE)
+    EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, float proximity,
                                                  bool& speed, EMovementType anim, bool strafe, bool b2, bool extra, bool b4,
                                                  float f);   // 0x0097E380
     EAIActionReturn AIAction_ProjectileAttackAndStrafeToThingProximity(EAIActionRepeat repeat,
-                                                                      CIntelligentPointerConstThing moveTo,
-                                                                      CIntelligentPointerConstThing target, float proximity,
+                                                                      CIntelligentPointer<const CThing> moveTo,
+                                                                      CIntelligentPointer<const CThing> target, float proximity,
                                                                       bool& speed, EMovementType anim, bool extra);
 };
 
 EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProximity(EAIActionRepeat repeat,
-                                                                                     CIntelligentPointerConstThing moveTo,
-                                                                                     CIntelligentPointerConstThing target,
+                                                                                     CIntelligentPointer<const CThing> moveTo,
+                                                                                     CIntelligentPointer<const CThing> target,
                                                                                      float proximity, bool& speed,
                                                                                      EMovementType anim, bool extra)
 {

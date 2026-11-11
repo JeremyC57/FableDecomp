@@ -40,7 +40,11 @@ public:
         const C2DCoordI& offset) const;
 };
 
-CQuestManager* CGSISetQuestWorldMapOffset_Manager;
+// Test model of the retail singleton slot 0x013B89FC: the private static CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
+// (same mangled name as the row binds); TestPClass() is a test-only accessor.
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
+template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
 static CQuestManager* g_ObservedManager;
 static const CCharString* g_ObservedQuestName;
 static const C2DCoordI* g_ObservedOffset;
@@ -64,7 +68,7 @@ int main()
     CCharString secondQuest(0x55667788);
     C2DCoordI firstOffset(-123, 456);
     C2DCoordI secondOffset(789, -1011);
-    CGSISetQuestWorldMapOffset_Manager = &manager;
+    (CTBaseSingletonNoDefaultAlloc<CQuestManager>::TestPClass().Data) = &manager;
 
     interfaceObject.SetQuestWorldMapOffset(firstQuest, firstOffset);
     if (g_CallCount != 1 || g_ObservedManager != &manager ||

@@ -27,6 +27,7 @@
 //   0x0048B160; body = that landed row) because GetPBestThing calls it. With it visible c2 knows the comparator's address is not
 //   captured, so the marker-position copy into it pipelines (`mov edx,[eax]; mov ecx,[eax+4]; mov [esp+20h],edx; mov edx,[eax+8]`,
 //   0x00783924) as in retail; declared only, every store orders the next load. C3DVector is the shared engine/C3DVector.h.
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
@@ -202,7 +203,8 @@ class CQuestManager { public:
     unsigned char _pad00[0x68];
     CBoastList    Boasts;                                   // +0x68 (Ego_r +0xa4 less the STLport container sizes)
 };
-extern CQuestManager* g_pQuestManager;                      // 0x013B89FC
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 extern bool g_boastingEnabled;                              // 0x013833D8 (descriptive: set by CGameScriptInterface::SetBoastingEnabled)
 namespace { extern CCharString BOASTING_CROWD_MARKER_SCRIPT_NAME; }   // 0x013BADEC "MK_BoastingCrowd"
 
@@ -234,7 +236,7 @@ void CTCBoastingCrowdControl::Startup()
 {
     if (!g_boastingEnabled)
         return;
-    if (g_pQuestManager->Boasts.empty())
+    if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().Boasts.empty())
         return;
     const CThing* podium;
     if (!PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTC(TC_INTERFACE_BOASTING_PODIUM), &podium))

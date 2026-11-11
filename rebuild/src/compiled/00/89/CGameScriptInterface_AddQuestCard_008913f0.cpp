@@ -1,4 +1,5 @@
 class CCharString
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 {
 public:
     CCharString(const char* text, long length);
@@ -40,7 +41,9 @@ struct CGSIAddQuestCard_VTable
 };
 
 extern long CGSIAddQuestCard_CurrentValue;
-extern CGameScriptInterface* CGSIAddQuestCard_Manager;
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 void CGameScriptInterface::AddQuestCard(
     const CCharString& questName,
@@ -78,7 +81,7 @@ void CGameScriptInterface::AddQuestCard(
                     this))->m_GetValue)();
     }
 
-    CGSIAddQuestCard_Manager->AddQuestCardEntry(
+    reinterpret_cast<CGameScriptInterface*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->AddQuestCardEntry(
         questName,
         questDescription,
         addToFront);

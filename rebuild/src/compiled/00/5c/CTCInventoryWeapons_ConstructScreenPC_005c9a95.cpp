@@ -3,6 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C9A95, thiscall `ret 4`, no EH frame, biased frame (`push ebp ; lea ebp,[esp-74h] ; sub esp,0C8h`).
 // Identity: slot 87 of the CTCInventoryWeapons vtable 0x01253FF4; Ego_r.pdb / FableWin.pdb ?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z;
 //   the PC twin of ConstructScreen 0x005C8459 (same TU, same shape devices; see that row's notes).
+// Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -52,7 +53,7 @@ template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);          
 #include "engine/CThingShotDef.h"
 
 // Same-TU bodies of the def lookups retail's TU holds (the header member templates; out of line in retail: GetDef<CUIMiscThingsDef>
-// 0x0042B312, GetDef<CDefClassBase> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6). VC7.1 sees that they only write through the
+// 0x0042B312, GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6). VC7.1 sees that they only write through the
 // out pointer, so the CDefPointer locals whose addresses they take stay unaliased (retail's `dec dword ptr [ecx+4] ; jne` releases).
 #pragma auto_inline(off)
 template <class T>
@@ -124,7 +125,7 @@ NUISystem::CComponent* CTCInventoryWeapons::ConstructScreenPC(NUISystem::CCompon
     GetAllItems(items);
     long augmentationCount = 0;
     for (unsigned long i = 0; i < items.size(); ++i) {
-        CDefPointer<const CDefClassBase> def;
+        CDefPointer<const CThingBaseDef> def;
         GetDefinitionManager().GetDef(items[i].first, &def);
         CDefPointer<const CWeaponDef> weaponDef;
         if (def->GetSubDef(&weaponDef)) {

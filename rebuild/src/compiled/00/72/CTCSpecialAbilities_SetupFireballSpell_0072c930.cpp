@@ -12,6 +12,7 @@
 //   passed straight to AddTC (the implicit conversion temporary is built first, then the pushes, then `mov ecx,[esi+18h]`).
 // Header debt: engine/CCreatureAction_CastWillFireballSpell.h is a flat generated layout without the CCreatureActionBase chain, so
 //   the action class here is the donor-include extension with a conversion to the base reference IsFreeToPerformAction takes.
+// Name fix (agentNF7 2026-11-10): 0x0062E900 bound as the PDB's virtual ??1CCombatActionBase@@UAE@XZ: the action class derives the shared engine/CCombatActionBase.h (destructor identity = the vtable it stores first), not a derived dtor spelling.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -26,14 +27,17 @@
 #include "engine/CTCBase.h"
 #include "engine/CThingCreatureBase.h"
 class CCreatureActionBase;
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCombatActionBase.h"
 #define CCreatureAction_CastWillFireballSpell DonorCCreatureAction_CastWillFireballSpell
 #include "engine/CCreatureAction_CastWillFireballSpell.h"
 #undef CCreatureAction_CastWillFireballSpell
-class CCreatureAction_CastWillFireballSpell : public DonorCCreatureAction_CastWillFireballSpell {
+class CCreatureAction_CastWillFireballSpell : public CCombatActionBase {   // ~CCombatActionBase 0x0062E900 (Ego_r.pdb, virtual) destroys the temporary
 public:
     CCreatureAction_CastWillFireballSpell(CThingCreatureBase* creature);   // 0x008BCD10
-    ~CCreatureAction_CastWillFireballSpell();                             // 0x0062E900
-    operator const CCreatureActionBase&() const { return *(const CCreatureActionBase*)this; }
+private:
+    unsigned char _pad_0x114[sizeof(DonorCCreatureAction_CastWillFireballSpell) - sizeof(CCombatActionBase)];   // retail size from the generated header
 };
 class CTCFireballSpell;
 class CTCSpecialAbilities : public CTCBase {

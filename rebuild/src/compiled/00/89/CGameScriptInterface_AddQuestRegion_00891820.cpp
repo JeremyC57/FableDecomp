@@ -1,4 +1,5 @@
 class CCharString;
+// Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 class CRegion;
 class CWorldMap;
 
@@ -51,7 +52,8 @@ public:
         const CCharString& regionName) const;
 };
 
-extern CQuestManager* CGSIAddQuestRegion_QuestManager;
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
 void CGameScriptInterface::AddQuestRegion(
     const CCharString& questName,
@@ -67,7 +69,7 @@ void CGameScriptInterface::AddQuestRegion(
             reinterpret_cast<const CGSIAddQuestRegion_Interface*>(
                 this)->m_World->GetWorldMap()
                 ->GetRegion(regionNumber);
-        CGSIAddQuestRegion_QuestManager->AddQuestRegion(
+        CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().AddQuestRegion(
             questName,
             &region);
     }
