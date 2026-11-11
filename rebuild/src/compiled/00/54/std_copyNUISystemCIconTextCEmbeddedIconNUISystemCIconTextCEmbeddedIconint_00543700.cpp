@@ -1,29 +1,16 @@
-// SGI __copy<SElement28*> (random-access, 28-byte POD elements) -- counted forward copy, returns the advanced result
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00543700, oracle length 72 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  sub edx,ecx ; (divide by 28) ; test eax,eax ; jle Z ; push ebx ; push esi ; mov edx,eax ; mov eax,[result] ; push edi ; L: (copy 28 bytes from [ecx] to [eax]) ; add ecx,0x1c ; add eax,0x1c ; dec edx ; jne L ; pop edi ; pop esi ; pop ebx ; ret 0Ch ; Z: mov eax,[result] ; ret 0Ch
-// SGI-STL `__copy(first, last, result, random_access_iterator_tag, Distance*)` for 28-byte
-// trivially-copyable elements: the signed element count is computed once (the compiler's
-// reciprocal multiply for the division by 28), the loop copies one element per iteration
-// (`*result = *first; ++first; ++result;`) and the advanced result is returned (the untouched
-// result for an empty range). The TU is compiled with /Gr (all free functions __fastcall):
-// first in ecx, last in edx, result + the two tag arguments on the stack (`ret 0Ch`). The
-// manifest label (`_Copy_impl<...>`) is propagated from Dinkumware; the body is SGI's.
-// One of 12 bodies of this shape.
-struct SElement28 {
+// std::__copy(NUISystem::CIconText::CEmbeddedIcon* first, NUISystem::CIconText::CEmbeddedIcon* last, NUISystem::CIconText::CEmbeddedIcon* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted forward copy `for (n = last - first; n > 0; --n) *result++ = *first++`, return the advanced result
+// Leaf: ??$__copy@PAUCEmbeddedIcon@CIconText@NUISystem@@PAU123@H@std@@YIPAUCEmbeddedIcon@CIconText@NUISystem@@PAU123@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00543700, 72 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00542730 source (NUISystemCIconText_ClearIcons_00542730.cpp) names NUISystem::CIconText::CEmbeddedIcon; binder ??$__copy@PAUCEmbeddedIcon@CIconText@NUISystem@@PAU123@H@std@@YIPAUCEmbeddedIcon@CIconText@NUISystem@@PAU123@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over NUISystem::CIconText::CEmbeddedIcon.
+#include "stlport/fable_containers.h"
+namespace NUISystem {
+class CIconText {
+public:
+struct CEmbeddedIcon {
     unsigned char _body[0x1c];
 };
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-SElement28* __fastcall Copy_SElement28_00543700(SElement28* first, SElement28* last, SElement28* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n) {
-        *result = *first;
-        ++first;
-        ++result;
-    }
-    return result;
+};
 }
+template NUISystem::CIconText::CEmbeddedIcon* std::__copy<NUISystem::CIconText::CEmbeddedIcon*,NUISystem::CIconText::CEmbeddedIcon*,int >(NUISystem::CIconText::CEmbeddedIcon*, NUISystem::CIconText::CEmbeddedIcon*, NUISystem::CIconText::CEmbeddedIcon*, std::random_access_iterator_tag const&, int*);

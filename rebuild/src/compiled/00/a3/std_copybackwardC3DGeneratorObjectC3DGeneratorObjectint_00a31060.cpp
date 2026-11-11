@@ -1,37 +1,29 @@
-// _global::CopyBackward_DummyObjectEntry_00a31060(SDummyObjectEntry*, SDummyObjectEntry*, SDummyObjectEntry*, const random_access_iterator_tag&, int*) -- SGI __copy_backward over 0x40-byte (dummy object, name, index, flag) records
-// Leaf: CopyBackward_DummyObjectEntry_00a31060
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A31060, length 103 bytes.
-// SGI-STL `__copy_backward(first, last, result, random_access_iterator_tag, Distance*)`, /Gr TU (__fastcall: first in
-// ecx, last in edx, result + the tag reference + the distance pointer on the stack, `ret 0Ch`); the count is
-// (last - first) / sizeof(T), both pointers step back one element and the moved-back result is returned.
-// Element: 0x40 bytes = a 0x34-byte POD block (13-dword `rep movsd`; Ego_r.pdb C3DDummyObject is 0x34: CMatrix3x4
-// Transform + long BoneIndex), a CCharString +0x34 (CCharString::operator= @ 0x0099EFB0), a long +0x38 and a byte
-// +0x3C. The TU is the mesh dummy-object one (0x00A314E0 / 0x00A33800 sort pair<unsigned long, C3DDummyObject>); the
-// manifest's `pair<CCharString,C3DDummyObject>` label is propagated (that pair is 0x38 bytes), so the record stays
-// descriptive. The count is kept in the `push ecx` frame word.
-class CCharString { public:                         // one-word handle
-    void* m_pData;                           // +0x00
-    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+// std::__copy_backward(C3DGeneratorObject* first, C3DGeneratorObject* last, C3DGeneratorObject* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAVC3DGeneratorObject@@PAV1@H@std@@YIPAVC3DGeneratorObject@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A31060, 103 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00a33f80 std::vector<C3DGeneratorObject, std::allocator<C3DGeneratorObject>>::_M_fill_insert; binder ??$__copy_backward@PAVC3DGeneratorObject@@PAV1@H@std@@YIPAVC3DGeneratorObject@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over C3DGeneratorObject.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+#include "engine/CMatrix3x4.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
 
-class CMatrix3x4 { public: float M[12]; };
 class C3DDummyObject { public:                      // Ego_r.pdb, 0x34 bytes
     CMatrix3x4 Transform;                    // +0x00
     long       BoneIndex;                    // +0x30
 };
-
-struct SDummyObjectEntry {                   // 0x40 bytes
+class C3DGeneratorObject {
+public:                   // 0x40 bytes
     C3DDummyObject Object;                   // +0x00
     CCharString    Name;                     // +0x34
     long           Index;                    // +0x38
     bool           Flag;                     // +0x3C
 };
-
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-
-SDummyObjectEntry* __fastcall CopyBackward_DummyObjectEntry_00a31060(SDummyObjectEntry* first, SDummyObjectEntry* last, SDummyObjectEntry* result, const random_access_iterator_tag& tag, int* distance)
-{
-    for (int n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+template C3DGeneratorObject* std::__copy_backward<C3DGeneratorObject*,C3DGeneratorObject*,int >(C3DGeneratorObject*, C3DGeneratorObject*, C3DGeneratorObject*, std::random_access_iterator_tag const&, int*);

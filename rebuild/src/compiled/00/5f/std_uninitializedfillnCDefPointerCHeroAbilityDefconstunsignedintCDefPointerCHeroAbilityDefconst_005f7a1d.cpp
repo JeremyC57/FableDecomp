@@ -1,34 +1,12 @@
-// _global::UninitFillN_IVCountedPointer_005f7a1d(SIVCountedPointer_005f7a1d* first, unsigned int n, const SIVCountedPointer_005f7a1d& x, const __false_type&) -- STLport __uninitialized_fill_n<CIVCountedPointer<T>*> in a size-optimised TU: copy-construct n intrusive counted pointers (add-ref each), return first + n
-// Leaf: UninitFillN_IVCountedPointer_005f7a1d
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005F7A1D, length 36 bytes, `ret 8`.
-// Callers: one site, 0x005FA17F in the vector resize helper 0x005FA10A (catalog "std_vector_resize_grow"). Both functions
-//   start at unaligned addresses: a size-optimised TU.
-// Identity: the catalog label `_Uninit_fill_n<pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>>*, ...>` is
-//   propagated. The 4-byte element is a CIVCountedPointer<T> (intrusive count at +4 of the pointee); T is not named here.
-//   Byte twin of 0x005B149F (another size-optimised TU); kept as a distinct element type.
-// Shape: STLport 4.x `__uninitialized_fill_n(first, n, x, const __false_type&)`, `__fastcall` (first in ecx -> eax as `cur`,
-//   n in edx -> ecx counted down, &x and the tag reference on the stack). Under `#pragma optimize("s", on)` no callee-saved
-//   register is opened, so &x is re-read from its argument slot every iteration (`mov edx,[esp+4] ; mov edx,[edx]`) and
-//   the loop head is not aligned; the pointer's user copy constructor adds the reference; placement-new null test.
+// std::__uninitialized_fill_n(CDefPointer<CHeroAbilityDef const>* first, unsigned int n, CDefPointer<CHeroAbilityDef const> const& x, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first, return the end
+// Leaf: ??$__uninitialized_fill_n@PAV?$CDefPointer@$$CBVCHeroAbilityDef@@@@IV1@@std@@YIPAV?$CDefPointer@$$CBVCHeroAbilityDef@@@@PAV1@IABV1@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005F7A1D, 36 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 005fa10a std::vector<CDefPointer<const CHeroAbilityDef> >::_M_insert_overflow (landed source); binder names CDefPointer<const CHeroAbilityDef> (non-template spelling)
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CDefPointer<CHeroAbilityDef const>.
 #pragma optimize("s", on)
-inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
-
-struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
-
-struct SRefCounted_005f7a1d {                   // intrusively counted pointee
-    void* __vftable;                            // +0x00
-    long  RefCount;                             // +0x04
-};
-
-struct SIVCountedPointer_005f7a1d {             // CIVCountedPointer<T>, 4 bytes
-    SRefCounted_005f7a1d* P;
-    SIVCountedPointer_005f7a1d(const SIVCountedPointer_005f7a1d& x) : P(x.P) { if (P) ++P->RefCount; }
-};
-
-SIVCountedPointer_005f7a1d* __fastcall UninitFillN_IVCountedPointer_005f7a1d(SIVCountedPointer_005f7a1d* first, unsigned int n, const SIVCountedPointer_005f7a1d& x, const __false_type&)
-{
-    SIVCountedPointer_005f7a1d* cur = first;
-    for (; n > 0; --n, ++cur)
-        new (cur) SIVCountedPointer_005f7a1d(x);
-    return cur;
-}
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "stlport/fable_containers.h"
+#include "engine/CDefPointer.h"
+#include "engine/CHeroAbilityDef.h"
+template CDefPointer<CHeroAbilityDef const>* std::__uninitialized_fill_n<CDefPointer<CHeroAbilityDef const>*,unsigned int,CDefPointer<CHeroAbilityDef const> >(CDefPointer<CHeroAbilityDef const>*, unsigned int, CDefPointer<CHeroAbilityDef const> const&, std::__false_type const&);

@@ -1,26 +1,17 @@
-// _global::Copy_VectorWord_00a52260(C3DVectorWord*, C3DVectorWord*, C3DVectorWord*, const random_access_iterator_tag&, int*) -- SGI __copy over 6-byte C3DAnimationSequenceData::C3DVectorWord elements
-// Leaf: Copy_VectorWord_00a52260
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A52260, length 70 bytes (+ int3 padding).
-// SGI-STL random-access `__copy(first, last, result, random_access_iterator_tag, Distance*)` (the manifest's
-// Dinkumware `_Copy_impl` label is propagated; three byte-identical COMDAT copies sit at 0x00A52120, 0x00A52260 and
-// 0x00A744B0). /Gr TU: __fastcall with first in ecx, last in edx, result + the tag reference + the distance pointer on
-// the stack (`ret 0Ch`). The count is (last - first) / 6 (`imul 2AAAAAABh` with no shift); each element is the
-// implicit operator= of a 6-byte POD of three shorts, which VC7.1 copies as one dword + one word through esi/edi.
-// The result pointer advanced past the copied range is returned (the untouched result for an empty range).
-struct C3DVectorWord {                 // C3DAnimationSequenceData::C3DVectorWord, 6 bytes (quantised x/y/z)
+// std::__copy(C3DAnimationSequenceData::C3DVectorWord const* first, C3DAnimationSequenceData::C3DVectorWord const* last, C3DAnimationSequenceData::C3DVectorWord* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted forward copy `for (n = last - first; n > 0; --n) *result++ = *first++`, return the advanced result
+// Leaf: ??$__copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@H@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A52260, 70 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00a54cb0 std::vector<C3DAnimationSequenceData::C3DVectorWord, std::allocator<C3DAnimationSequenceData::C3DVectorWord>>::operator=; caller 00a54cb0 std::vector<C3DAnimationSequenceData::C3DVectorWord, std::allocator<C3DAnimationSequenceData::C3DVectorWord>>::operator=; binder ??$__copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@H@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over C3DAnimationSequenceData::C3DVectorWord.
+#include "stlport/fable_containers.h"
+class C3DAnimationSequenceData {
+public:
+class C3DVectorWord {
+public:                 // C3DAnimationSequenceData::C3DVectorWord, 6 bytes (quantised x/y/z)
     short X;                           // +0
     short Y;                           // +2
     short Z;                           // +4
 };
-
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-
-C3DVectorWord* __fastcall Copy_VectorWord_00a52260(C3DVectorWord* first, C3DVectorWord* last, C3DVectorWord* result, const random_access_iterator_tag& tag, int* distance)
-{
-    for (int n = last - first; n > 0; --n) {
-        *result = *first;
-        ++first;
-        ++result;
-    }
-    return result;
-}
+};
+template C3DAnimationSequenceData::C3DVectorWord* std::__copy<C3DAnimationSequenceData::C3DVectorWord const*,C3DAnimationSequenceData::C3DVectorWord*,int >(C3DAnimationSequenceData::C3DVectorWord const*, C3DAnimationSequenceData::C3DVectorWord const*, C3DAnimationSequenceData::C3DVectorWord*, std::random_access_iterator_tag const&, int*);

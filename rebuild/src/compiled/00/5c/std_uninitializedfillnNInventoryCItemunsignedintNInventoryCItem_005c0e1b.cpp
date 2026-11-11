@@ -1,26 +1,16 @@
+// std::__uninitialized_fill_n(NInventory::CItem* first, unsigned int n, NInventory::CItem const& x, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first, return the end
+// Leaf: ??$__uninitialized_fill_n@PAVCItem@NInventory@@IV12@@std@@YIPAVCItem@NInventory@@PAV12@IABV12@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C0E1B, 38 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 005c276c std::vector<NInventory::CItem, std::allocator<NInventory::CItem>>::_M_insert_overflow; caller 005c2831 std::vector<NInventory::CItem>::_M_fill_insert; callee 005c08e6 NInventory::CItem::CItem; binder ??$__uninitialized_fill_n@PAVCItem@NInventory@@IV12@@std@@YIPAVCItem@NInventory@@PAV12@IABV12@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over NInventory::CItem.
 #pragma optimize("s",on)
-// _Uninit_fill_n<CElement20_005c08e6*> -- placement-copy `count` copies of value from first (20-byte elements, copy ctor @ 0x005C08E6), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C0E1B, oracle length 38 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push [value] ; mov ecx,esi ; call CElement20_005c08e6::CElement20_005c08e6(const CElement20_005c08e6&) ; S: add esi,0x14 ; dec edi ; jne L ; pop edi ; E: mov eax,esi ; pop esi ; ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// the value reference on the stack, then the by-value allocator): copy-constructs `count` elements in place with
-// placement new (hence the null test on the destination) through the out-of-line copy
-// constructor @ 0x005C08E6 and returns the advanced destination. `ret 8` pops the value
-// reference and the unused allocator. The element type is named from the copy constructor's label when
-// unique. One of 26 bodies.
-#include <new>
-
-struct CElement20_005c08e6 {
+#include "stlport/fable_containers.h"
+namespace NInventory {
+class CItem {
+public:
     unsigned char _body[0x14];
-    CElement20_005c08e6(const CElement20_005c08e6& other);           // 0x005C08E6
+    CItem(const CItem& other);           // 0x005C08E6
 };
-struct CRetailAllocator { };
-CElement20_005c08e6* __fastcall UninitFillN_CElement20_005c08e6_005c0e1b(CElement20_005c08e6* first, unsigned long count, const CElement20_005c08e6& value, CRetailAllocator allocator)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) CElement20_005c08e6(value);
-    return first;
 }
+template NInventory::CItem* std::__uninitialized_fill_n<NInventory::CItem*,unsigned int,NInventory::CItem >(NInventory::CItem*, unsigned int, NInventory::CItem const&, std::__false_type const&);

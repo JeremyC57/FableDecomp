@@ -1,17 +1,8 @@
-// fill<T*, T> -- assign value over [first, last) (8-byte POD elements)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00613260, oracle length 37 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 8 bytes [eax] -> [ecx]> ; add ecx,0x8 ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4
-// `std::fill` over a 8-byte POD element: the value reference is loaded once and assigned to every
-// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the
-// stack. The manifest label is propagated; the element type is modelled by size. One of
-// 7 bodies of this shape.
-struct SElement { unsigned char _body[0x8]; };
-
-void __fastcall Fill_00613260(SElement* first, SElement* last, const SElement& value)
-{
-    for (; first != last; ++first)
-        *first = value;
-}
+// std::fill(unsigned __int64* first, unsigned __int64* last, unsigned __int64 const& x) -- STLport 4.6 _algobase.h: assign x to every element of [first, last)
+// Leaf: ??$fill@PA_K_K@std@@YIXPA_K0AB_K@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00613260, 37 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: builtin; caller 00617fd0 source (stdvector_Mfillinsert_00617fd0.cpp) names unsigned __int64; binder ??$fill@PA_K_K@std@@YIXPA_K0AB_K@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over unsigned __int64.
+#include "stlport/fable_containers.h"
+template void std::fill<unsigned __int64*,unsigned __int64 >(unsigned __int64*, unsigned __int64*, unsigned __int64 const&);

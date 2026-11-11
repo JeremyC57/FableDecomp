@@ -1,59 +1,19 @@
-// _global::CopyBackward_PairCharStringBinding_00cbae30(pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*, pair<..>*, pair<..>*, const random_access_iterator_tag&, int*) -- SGI __copy_backward over 12-byte (name, counted script binding) pairs
-// Leaf: CopyBackward_PairCharStringBinding_00cbae30
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBAE30, length 143 bytes.
-// SGI-STL `__copy_backward(first, last, result, random_access_iterator_tag, Distance*)`, /Gr TU (__fastcall: first in
-// ecx, last in edx, result + the tag reference + the distance pointer on the stack, `ret 0Ch`); count = (last - first)
-// / 12, held in the dead argument slot; both pointers step back one element; the moved-back result is returned.
-// Element: std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (the manifest label; 12 bytes = the
-// one-word CCharString + the 8-byte {object, count block} counted pointer). The pair's implicit operator= calls the
-// out-of-line CCharString::operator= @ 0x0099EFB0, then the inlined CCountedPointer::operator= (the source's fields
-// read first; when the count blocks differ release the old block -- destroy function at +4 with the object, then
-// operator delete @ 0x00BFE9BC -- adopt both words and add a reference), modelled as the landed 0x0084F130.
-class CCharString { public:
-    void* m_pData;                           // +0x00
-    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+// std::__copy_backward(std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >* first, std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >* last, std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00CBAE30, 143 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00cbc3c0 source (STL_linearinsert_00cbc3c0.cpp) names std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>; binder ??$__copy_backward@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#define FABLE_RETAIL_NSCRIPT
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CEntityScriptBindingBase.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
-
-struct SCountBlock {
-    long m_references;                       // +0
-    void (__fastcall* m_pfnDestroy)(void*);  // +4
-    void* m_pObject;                         // +8
-};
-
-struct CCountedPointer {                     // CCountedPointer<CEntityScriptBindingBase>, 8 bytes
-    void*        m_pObject;                  // +0
-    SCountBlock* m_pCount;                   // +4
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* count = other.m_pCount;
-        void* object = other.m_pObject;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            m_pObject = object;
-            m_pCount = count;
-            if (count)
-                ++count->m_references;
-        }
-        return *this;
-    }
-};
-
-struct PairCharStringBinding {               // std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >
-    CCharString     first;                   // +0x00
-    CCountedPointer second;                  // +0x04
-};
-
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-
-PairCharStringBinding* __fastcall CopyBackward_PairCharStringBinding_00cbae30(PairCharStringBinding* first, PairCharStringBinding* last, PairCharStringBinding* result, const random_access_iterator_tag& tag, int* distance)
-{
-    for (int n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+template std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >* std::__copy_backward<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*,std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*,int >(std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*, std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*, std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*, std::random_access_iterator_tag const&, int*);

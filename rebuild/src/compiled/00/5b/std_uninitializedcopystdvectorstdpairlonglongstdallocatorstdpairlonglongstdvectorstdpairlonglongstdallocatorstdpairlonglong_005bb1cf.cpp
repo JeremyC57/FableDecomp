@@ -1,28 +1,9 @@
+// std::__uninitialized_copy(std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >* first, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >* last, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAV12@@std@@YIPAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@0@PAV10@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005BB1CF, 43 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: builtin; caller 005bc0fb source (stdvector_Minsertoverflow_005bc0fb.cpp) names std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>; binder ??$__uninitialized_copy@PAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAV12@@std@@YIPAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@0@PAV10@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>.
 #pragma optimize("s",on)
-// _Uninit_copy<CElement12_005baec4*> -- placement-copy [first, last) to dest (12-byte elements, copy ctor @ 0x005BAEC4)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BB1CF, oracle length 43 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push ebx ; push esi ; mov ebx,edx ; mov esi,ecx ; cmp esi,ebx ; push edi ; mov edi,[esp+10h] ; je E ; L: test edi,edi ; je S ; push esi ; mov ecx,edi ; call CElement12_005baec4::CElement12_005baec4(const CElement12_005baec4&) ; S: add esi,12 ; add edi,12 ; cmp esi,ebx ; jne L ; E: mov eax,edi ; pop edi ; pop esi ; pop ebx ; ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_copy`, __fastcall: first in ecx, last in edx,
-// dest on the stack): copy-constructs every element in place with placement new (hence the null
-// test on the destination) through the out-of-line copy constructor @ 0x005BAEC4 and returns
-// the advanced destination. `ret 8` pops dest and the unused allocator argument. The element
-// type is named from the copy constructor's label when unique. One of 21 bodies.
-#include <new>
-
-struct CElement12_005baec4 {
-    unsigned char _body[0xc];
-    CElement12_005baec4(const CElement12_005baec4& other);           // 0x005BAEC4
-};
-
-struct CRetailAllocator { };
-
-CElement12_005baec4* __fastcall UninitCopy_CElement12_005baec4_005bb1cf(CElement12_005baec4* first, CElement12_005baec4* last, CElement12_005baec4* dest, CRetailAllocator allocator)
-{
-    CElement12_005baec4* d = dest;                      // named local: retail loads dest before the loop test (GOTCHAS)
-    for (; first != last; ++first, ++d)   // increment order = retail `add esi ; add edi` under /O1-style "s"
-        new (d) CElement12_005baec4(*first);
-    return d;
-}
+#include "stlport/fable_containers.h"
+template std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >* std::__uninitialized_copy<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >*,std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >* >(std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >*, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >*, std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > >*, std::__false_type const&);

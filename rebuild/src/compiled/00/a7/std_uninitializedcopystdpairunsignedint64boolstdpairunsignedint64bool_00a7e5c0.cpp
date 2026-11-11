@@ -1,26 +1,8 @@
-// _global::UninitCopy_PairU64Bool_00a7e5c0(const SPairU64Bool_00a7e5c0* first, const SPairU64Bool_00a7e5c0* last, SPairU64Bool_00a7e5c0* result, const __false_type&) -- STLport __uninitialized_copy over 16-byte pair<unsigned __int64, bool>: placement copy-construct key and flag, return the advanced result
-// Leaf: UninitCopy_PairU64Bool_00a7e5c0
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A7E5C0, length 50 bytes, `ret 8`.
-// Callers: one site, 0x00A82451 in the vector insert-n helper 0x00A82380 (catalog "Vector_InsertN_16byte").
-// Identity: the catalog label `_Uninit_copy<_Vector_const_iterator<..unsigned int..>, ...>` is propagated. A 16-byte
-//   stride copying two words and one byte is a pair<unsigned __int64, bool> (8-aligned; +9..+0x0F padding).
-// Shape: STLport 4.x `__uninitialized_copy(first, last, result, const __false_type&)`, `__fastcall` (first in ecx, last
-//   in edx, result + the tag reference on the stack). The byte copy needs a byte register, so `last` moves to esi and
-//   edx is the temporary (`mov dl,[ecx+8]`). STLport pair's memberwise copy constructor; placement-new null test on
-//   the destination; the advanced result returned in eax.
-inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
-
-struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
-
-struct SPairU64Bool_00a7e5c0 {                  // std::pair<unsigned __int64, bool>, 16 bytes (8-aligned)
-    unsigned __int64 first;                     // +0x00
-    bool             second;                    // +0x08
-    SPairU64Bool_00a7e5c0(const SPairU64Bool_00a7e5c0& o) : first(o.first), second(o.second) { }
-};
-
-SPairU64Bool_00a7e5c0* __fastcall UninitCopy_PairU64Bool_00a7e5c0(const SPairU64Bool_00a7e5c0* first, const SPairU64Bool_00a7e5c0* last, SPairU64Bool_00a7e5c0* result, const __false_type&)
-{
-    for (; first != last; ++first, ++result)
-        new (result) SPairU64Bool_00a7e5c0(*first);
-    return result;
-}
+// std::__uninitialized_copy(std::pair<unsigned __int64,bool>* first, std::pair<unsigned __int64,bool>* last, std::pair<unsigned __int64,bool>* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAU?$pair@_K_N@std@@PAU12@@std@@YIPAU?$pair@_K_N@0@PAU10@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A7E5C0, 50 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: builtin; caller 00a82380 source (stdvector_Minsertoverflow_00a82380.cpp) names std::pair<unsigned __int64,bool>; binder ??$__uninitialized_copy@PAU?$pair@_K_N@std@@PAU12@@std@@YIPAU?$pair@_K_N@0@PAU10@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<unsigned __int64,bool>.
+#include "stlport/fable_containers.h"
+template std::pair<unsigned __int64,bool>* std::__uninitialized_copy<std::pair<unsigned __int64,bool>*,std::pair<unsigned __int64,bool>* >(std::pair<unsigned __int64,bool>*, std::pair<unsigned __int64,bool>*, std::pair<unsigned __int64,bool>*, std::__false_type const&);

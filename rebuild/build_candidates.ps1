@@ -2501,9 +2501,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040ea50'
-        Module = '_global'
-        Source = '00/40/global_fillENavigatorTypeENavigatorType_0040ea50.cpp'
-        TestSource = '00/40/global_fillENavigatorTypeENavigatorType_0040ea50_test.cpp'
+        Module = 'std'
+        Source = '00/40/std_fillETutorialCategoryETutorialCategory_0040ea50.cpp'
+        TestSource = '00/40/std_fillETutorialCategoryETutorialCategory_0040ea50_test.cpp'
         PassPattern = '_global_0040ea50_TEST PASS'
     }
     [pscustomobject]@{
@@ -3482,23 +3482,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00450a58'
-        Module = '_global'
-        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a58.cpp'
-        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a58_test.cpp'
+        Module = 'std'
+        Source = '00/45/std_destroyauxCAbilityButtonGuiDef_00450a58.cpp'
+        TestSource = '00/45/std_destroyauxCAbilityButtonGuiDef_00450a58_test.cpp'
         PassPattern = 'vecCIP_00450a58_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00450a74'
-        Module = '_global'
-        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a74.cpp'
-        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a74_test.cpp'
+        Module = 'std'
+        Source = '00/45/std_destroyauxCLensFlareElementDef_00450a74.cpp'
+        TestSource = '00/45/std_destroyauxCLensFlareElementDef_00450a74_test.cpp'
         PassPattern = 'vector_00450a74_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00450ab2'
-        Module = '_global'
-        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450ab2.cpp'
-        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450ab2_test.cpp'
+        Module = 'std'
+        Source = '00/45/std_destroyauxCAppearanceModifierScalingDef_00450ab2.cpp'
+        TestSource = '00/45/std_destroyauxCAppearanceModifierScalingDef_00450ab2_test.cpp'
         PassPattern = 'vecdestroy_00450ab2_TEST PASS'
     }
     [pscustomobject]@{
@@ -62751,9 +62751,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00565a70'
-        Module = '_global'
-        Source = '00/56/global_fillENavigatorTypeENavigatorType_00565a70.cpp'
-        TestSource = '00/56/global_fillENavigatorTypeENavigatorType_00565a70_test.cpp'
+        Module = 'std'
+        Source = '00/56/std_fillCTCHeroOnlineScoreboardEOnlineScoreboardActivityCTCHeroOnlineScoreboardEOnlineScoreboardActivity_00565a70.cpp'
+        TestSource = '00/56/std_fillCTCHeroOnlineScoreboardEOnlineScoreboardActivityCTCHeroOnlineScoreboardEOnlineScoreboardActivity_00565a70_test.cpp'
         PassPattern = 'FILL_OK'
     }
     [pscustomobject]@{
@@ -62821,9 +62821,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00613290'
-        Module = '_global'
-        Source = '00/61/global_fillENavigatorTypeENavigatorType_00613290.cpp'
-        TestSource = '00/61/global_fillENavigatorTypeENavigatorType_00613290_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_fillCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00613290.cpp'
+        TestSource = '00/61/std_fillCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00613290_test.cpp'
         PassPattern = 'FILL_OK'
     }
     [pscustomobject]@{
@@ -62968,9 +62968,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b8210'
-        Module = '_global'
-        Source = '00/7b/global_fillENavigatorTypeENavigatorType_007b8210.cpp'
-        TestSource = '00/7b/global_fillENavigatorTypeENavigatorType_007b8210_test.cpp'
+        Module = 'std'
+        Source = '00/7b/std_fillCThingAICreatureCThingAICreature_007b8210.cpp'
+        TestSource = '00/7b/std_fillCThingAICreatureCThingAICreature_007b8210_test.cpp'
         PassPattern = 'FILL_OK'
     }
     [pscustomobject]@{
@@ -90385,51 +90385,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0043dfc0'
-        Module = '_global'
-        Source = '00/43/global_fillENavigatorTypeENavigatorType_0043dfc0.cpp'
-        TestSource = '00/43/global_fillENavigatorTypeENavigatorType_0043dfc0_test.cpp'
+        Module = 'std'
+        Source = '00/43/std_fillfloatfloat_0043dfc0.cpp'
+        TestSource = '00/43/std_fillfloatfloat_0043dfc0_test.cpp'
         PassPattern = 'PASS_0043dfc0'
     }
     [pscustomobject]@{
         Address = '00638880'
-        Module = '_global'
-        Source = '00/63/global_fillENavigatorTypeENavigatorType_00638880.cpp'
-        TestSource = '00/63/global_fillENavigatorTypeENavigatorType_00638880_test.cpp'
+        Module = 'std'
+        Source = '00/63/std_fillNThingMapCThingMapNThingMapCThingMap_00638880.cpp'
+        TestSource = '00/63/std_fillNThingMapCThingMapNThingMapCThingMap_00638880_test.cpp'
         PassPattern = 'PASS_00638880'
     }
     [pscustomobject]@{
         Address = '00640a70'
-        Module = '_global'
-        Source = '00/64/global_fillENavigatorTypeENavigatorType_00640a70.cpp'
-        TestSource = '00/64/global_fillENavigatorTypeENavigatorType_00640a70_test.cpp'
+        Module = 'std'
+        Source = '00/64/std_fillNGraphicAppearanceCPrimitiveNGraphicAppearanceCPrimitive_00640a70.cpp'
+        TestSource = '00/64/std_fillNGraphicAppearanceCPrimitiveNGraphicAppearanceCPrimitive_00640a70_test.cpp'
         PassPattern = 'PASS_00640a70'
     }
     [pscustomobject]@{
         Address = '009b15f0'
-        Module = '_global'
-        Source = '00/9b/global_fillENavigatorTypeENavigatorType_009b15f0.cpp'
-        TestSource = '00/9b/global_fillENavigatorTypeENavigatorType_009b15f0_test.cpp'
+        Module = 'std'
+        Source = '00/9b/std_fillCDefinitionManagerCInstantiatedDefInfoCDefinitionManagerCInstantiatedDefInfo_009b15f0.cpp'
+        TestSource = '00/9b/std_fillCDefinitionManagerCInstantiatedDefInfoCDefinitionManagerCInstantiatedDefInfo_009b15f0_test.cpp'
         PassPattern = 'PASS_009b15f0'
     }
     [pscustomobject]@{
         Address = '009c9c60'
-        Module = '_global'
-        Source = '00/9c/global_fillENavigatorTypeENavigatorType_009c9c60.cpp'
-        TestSource = '00/9c/global_fillENavigatorTypeENavigatorType_009c9c60_test.cpp'
+        Module = 'std'
+        Source = '00/9c/std_fillNGameTextCDataBankEntryNGameTextCDataBankEntry_009c9c60.cpp'
+        TestSource = '00/9c/std_fillNGameTextCDataBankEntryNGameTextCDataBankEntry_009c9c60_test.cpp'
         PassPattern = 'PASS_009c9c60'
     }
     [pscustomobject]@{
         Address = '009e2a80'
-        Module = '_global'
-        Source = '00/9e/global_fillENavigatorTypeENavigatorType_009e2a80.cpp'
-        TestSource = '00/9e/global_fillENavigatorTypeENavigatorType_009e2a80_test.cpp'
+        Module = 'std'
+        Source = '00/9e/std_fillCVertexBufferWin32CVertexBufferWin32_009e2a80.cpp'
+        TestSource = '00/9e/std_fillCVertexBufferWin32CVertexBufferWin32_009e2a80_test.cpp'
         PassPattern = 'PASS_009e2a80'
     }
     [pscustomobject]@{
         Address = '00a291a0'
-        Module = '_global'
-        Source = '00/a2/global_fillENavigatorTypeENavigatorType_00a291a0.cpp'
-        TestSource = '00/a2/global_fillENavigatorTypeENavigatorType_00a291a0_test.cpp'
+        Module = 'std'
+        Source = '00/a2/std_fillCMeshDataBankEntryCMeshDataBankEntry_00a291a0.cpp'
+        TestSource = '00/a2/std_fillCMeshDataBankEntryCMeshDataBankEntry_00a291a0_test.cpp'
         PassPattern = 'PASS_00a291a0'
     }
     [pscustomobject]@{
@@ -90455,9 +90455,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b43280'
-        Module = '_global'
-        Source = '00/b4/global_fillENavigatorTypeENavigatorType_00b43280.cpp'
-        TestSource = '00/b4/global_fillENavigatorTypeENavigatorType_00b43280_test.cpp'
+        Module = 'std'
+        Source = '00/b4/std_fillCEngineMapCEngineMap_00b43280.cpp'
+        TestSource = '00/b4/std_fillCEngineMapCEngineMap_00b43280_test.cpp'
         PassPattern = 'PASS_00b43280'
     }
     [pscustomobject]@{
@@ -90469,9 +90469,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bac490'
-        Module = '_global'
-        Source = '00/ba/global_fillENavigatorTypeENavigatorType_00bac490.cpp'
-        TestSource = '00/ba/global_fillENavigatorTypeENavigatorType_00bac490_test.cpp'
+        Module = 'std'
+        Source = '00/ba/std_fillCEngineInternalPrimitiveRepeatedZSpriteCEngineInternalPrimitiveRepeatedZSprite_00bac490.cpp'
+        TestSource = '00/ba/std_fillCEngineInternalPrimitiveRepeatedZSpriteCEngineInternalPrimitiveRepeatedZSprite_00bac490_test.cpp'
         PassPattern = 'PASS_00bac490'
     }
     [pscustomobject]@{
@@ -92002,9 +92002,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00450aea'
-        Module = '_global'
-        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450aea.cpp'
-        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450aea_test.cpp'
+        Module = 'std'
+        Source = '00/45/std_destroyauxCOpinionDeedReactionDef_00450aea.cpp'
+        TestSource = '00/45/std_destroyauxCOpinionDeedReactionDef_00450aea_test.cpp'
         PassPattern = 'PASS_00450aea'
     }
     [pscustomobject]@{
@@ -93067,9 +93067,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0043df80'
-        Module = '_global'
-        Source = '00/43/global_fillENavigatorTypeENavigatorType_0043df80.cpp'
-        TestSource = '00/43/global_fillENavigatorTypeENavigatorType_0043df80_test.cpp'
+        Module = 'std'
+        Source = '00/43/std_filllonglong_0043df80.cpp'
+        TestSource = '00/43/std_filllonglong_0043df80_test.cpp'
         PassPattern = 'PASS_0043df80'
     }
     [pscustomobject]@{
@@ -123847,9 +123847,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00450a90'
-        Module = '_global'
-        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a90.cpp'
-        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a90_test.cpp'
+        Module = 'std'
+        Source = '00/45/std_destroyauxCEngineLocalDetailLayerDef_00450a90.cpp'
+        TestSource = '00/45/std_destroyauxCEngineLocalDetailLayerDef_00450a90_test.cpp'
         PassPattern = 'DESTROY_450A90_PASS'
     }
     [pscustomobject]@{
@@ -123868,9 +123868,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00450b1b'
-        Module = '_global'
-        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450b1b.cpp'
-        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450b1b_test.cpp'
+        Module = 'std'
+        Source = '00/45/std_destroyauxCEnvironmentThemeDef_00450b1b.cpp'
+        TestSource = '00/45/std_destroyauxCEnvironmentThemeDef_00450b1b_test.cpp'
         PassPattern = 'DESTROY_450B1B_PASS'
     }
     [pscustomobject]@{
@@ -155804,23 +155804,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040dd60'
-        Module = '_global'
-        Source = '00/40/global_UninitCopyCElement40099b7200040dd60_0040dd60.cpp'
-        TestSource = '00/40/global_UninitCopyCElement40099b7200040dd60_0040dd60_test.cpp'
+        Module = 'std'
+        Source = '00/40/std_uninitializedcopyCWideStringCWideString_0040dd60.cpp'
+        TestSource = '00/40/std_uninitializedcopyCWideStringCWideString_0040dd60_test.cpp'
         PassPattern = '0040dd60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0049ad70'
-        Module = '_global'
-        Source = '00/49/global_UninitCopyCTexture0049ad70_0049ad70.cpp'
-        TestSource = '00/49/global_UninitCopyCTexture0049ad70_0049ad70_test.cpp'
+        Module = 'std'
+        Source = '00/49/std_uninitializedcopyCTextureCTexture_0049ad70.cpp'
+        TestSource = '00/49/std_uninitializedcopyCTextureCTexture_0049ad70_test.cpp'
         PassPattern = '0049ad70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004d2100'
-        Module = '_global'
-        Source = '00/4d/global_UninitCopyCElement68004d1fe0004d2100_004d2100.cpp'
-        TestSource = '00/4d/global_UninitCopyCElement68004d1fe0004d2100_004d2100_test.cpp'
+        Module = 'std'
+        Source = '00/4d/std_uninitializedcopyCSubtitledMessageCSubtitledMessage_004d2100.cpp'
+        TestSource = '00/4d/std_uninitializedcopyCSubtitledMessageCSubtitledMessage_004d2100_test.cpp'
         PassPattern = '004d2100_TEST PASS'
     }
     [pscustomobject]@{
@@ -155832,16 +155832,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051b420'
-        Module = '_global'
-        Source = '00/51/global_UninitCopyCRegion0051b420_0051b420.cpp'
-        TestSource = '00/51/global_UninitCopyCRegion0051b420_0051b420_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_uninitializedcopyCRegionCRegion_0051b420.cpp'
+        TestSource = '00/51/std_uninitializedcopyCRegionCRegion_0051b420_test.cpp'
         PassPattern = '0051b420_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006b6500'
-        Module = '_global'
-        Source = '00/6b/global_UninitCopyCElement496006b6010006b6500_006b6500.cpp'
-        TestSource = '00/6b/global_UninitCopyCElement496006b6010006b6500_006b6500_test.cpp'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedcopyCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannel_006b6500.cpp'
+        TestSource = '00/6b/std_uninitializedcopyCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannel_006b6500_test.cpp'
         PassPattern = '006b6500_TEST PASS'
     }
     [pscustomobject]@{
@@ -155853,58 +155853,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075f3e0'
-        Module = '_global'
-        Source = '00/75/global_UninitCopyCKeyCamera0075f3e0_0075f3e0.cpp'
-        TestSource = '00/75/global_UninitCopyCKeyCamera0075f3e0_0075f3e0_test.cpp'
+        Module = 'std'
+        Source = '00/75/std_uninitializedcopyCKeyCameraCKeyCamera_0075f3e0.cpp'
+        TestSource = '00/75/std_uninitializedcopyCKeyCameraCKeyCamera_0075f3e0_test.cpp'
         PassPattern = '0075f3e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00764970'
-        Module = '_global'
-        Source = '00/76/global_UninitCopyCElement12006f081000764970_00764970.cpp'
-        TestSource = '00/76/global_UninitCopyCElement12006f081000764970_00764970_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopystdvectorC3DVectorstdallocatorC3DVectorstdvectorC3DVectorstdallocatorC3DVector_00764970.cpp'
+        TestSource = '00/76/std_uninitializedcopystdvectorC3DVectorstdallocatorC3DVectorstdvectorC3DVectorstdallocatorC3DVector_00764970_test.cpp'
         PassPattern = '00764970_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0076a930'
-        Module = '_global'
-        Source = '00/76/global_UninitCopyCElement120076a0a00076a930_0076a930.cpp'
-        TestSource = '00/76/global_UninitCopyCElement120076a0a00076a930_0076a930_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopystdvectorParticleAndEndPointsstdallocatorParticleAndEndPointsstdvectorParticleAndEndPointsstdallocatorParticleAndEndPoints_0076a930.cpp'
+        TestSource = '00/76/std_uninitializedcopystdvectorParticleAndEndPointsstdallocatorParticleAndEndPointsstdvectorParticleAndEndPointsstdallocatorParticleAndEndPoints_0076a930_test.cpp'
         PassPattern = '0076a930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0076a990'
-        Module = '_global'
-        Source = '00/76/global_UninitCopyCElement120076a0300076a990_0076a990.cpp'
-        TestSource = '00/76/global_UninitCopyCElement120076a0300076a990_0076a990_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopystdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPointsstdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPoints_0076a990.cpp'
+        TestSource = '00/76/std_uninitializedcopystdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPointsstdvectorAttackParticleAndEndPointsstdallocatorAttackParticleAndEndPoints_0076a990_test.cpp'
         PassPattern = '0076a990_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0076fce0'
-        Module = '_global'
-        Source = '00/76/global_UninitCopyCElement120076fb000076fce0_0076fce0.cpp'
-        TestSource = '00/76/global_UninitCopyCElement120076fb000076fce0_0076fce0_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopystdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVectorstdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVector_0076fce0.cpp'
+        TestSource = '00/76/std_uninitializedcopystdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVectorstdvectorstdpairC3DVectorC3DVectorstdallocatorstdpairC3DVectorC3DVector_0076fce0_test.cpp'
         PassPattern = '0076fce0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007816c0'
-        Module = '_global'
-        Source = '00/78/global_UninitCopyCFirePoint007816c0_007816c0.cpp'
-        TestSource = '00/78/global_UninitCopyCFirePoint007816c0_007816c0_test.cpp'
+        Module = 'std'
+        Source = '00/78/std_uninitializedcopyNFireCFirePointNFireCFirePoint_007816c0.cpp'
+        TestSource = '00/78/std_uninitializedcopyNFireCFirePointNFireCFirePoint_007816c0_test.cpp'
         PassPattern = '007816c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00889700'
-        Module = '_global'
-        Source = '00/88/global_UninitCopyCElement500008894a000889700_00889700.cpp'
-        TestSource = '00/88/global_UninitCopyCElement500008894a000889700_00889700_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentTheme_00889700.cpp'
+        TestSource = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentTheme_00889700_test.cpp'
         PassPattern = '00889700_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008e33d0'
-        Module = '_global'
-        Source = '00/8e/global_UninitCopyCElement36008e2fc0008e33d0_008e33d0.cpp'
-        TestSource = '00/8e/global_UninitCopyCElement36008e2fc0008e33d0_008e33d0_test.cpp'
+        Module = 'std'
+        Source = '00/8e/std_uninitializedcopyNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleDataNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleData_008e33d0.cpp'
+        TestSource = '00/8e/std_uninitializedcopyNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleDataNCreatureModeCModeIceTrollGroundSmashIcicleAssaultCIcicleData_008e33d0_test.cpp'
         PassPattern = '008e33d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155916,9 +155916,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e11a0'
-        Module = '_global'
-        Source = '00/9e/global_UninitCopyCElement60009de890009e11a0_009e11a0.cpp'
-        TestSource = '00/9e/global_UninitCopyCElement60009de890009e11a0_009e11a0_test.cpp'
+        Module = 'std'
+        Source = '00/9e/std_uninitializedcopyCQuickDrawTriInfoCQuickDrawTriInfo_009e11a0.cpp'
+        TestSource = '00/9e/std_uninitializedcopyCQuickDrawTriInfoCQuickDrawTriInfo_009e11a0_test.cpp'
         PassPattern = '009e11a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -155937,30 +155937,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a4aa10'
-        Module = '_global'
-        Source = '00/a4/global_UninitCopyCElement1200a49c6000a4aa10_00a4aa10.cpp'
-        TestSource = '00/a4/global_UninitCopyCElement1200a49c6000a4aa10_00a4aa10_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedcopyCLipSyncFrameDataCLipSyncFrameData_00a4aa10.cpp'
+        TestSource = '00/a4/std_uninitializedcopyCLipSyncFrameDataCLipSyncFrameData_00a4aa10_test.cpp'
         PassPattern = '00a4aa10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bcd8a0'
-        Module = '_global'
-        Source = '00/bc/global_UninitCopyCElement12006f081000bcd8a0_00bcd8a0.cpp'
-        TestSource = '00/bc/global_UninitCopyCElement12006f081000bcd8a0_00bcd8a0_test.cpp'
+        Module = 'std'
+        Source = '00/bc/std_uninitializedcopyCArrayC3DVectorCArrayC3DVector_00bcd8a0.cpp'
+        TestSource = '00/bc/std_uninitializedcopyCArrayC3DVectorCArrayC3DVector_00bcd8a0_test.cpp'
         PassPattern = '00bcd8a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00493959'
-        Module = '_global'
-        Source = '00/49/global_UninitCopyCElement16004935f800493959_00493959.cpp'
-        TestSource = '00/49/global_UninitCopyCElement16004935f800493959_00493959_test.cpp'
+        Module = 'std'
+        Source = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedGraphicCSubtitleRendererCEmbeddedGraphic_00493959.cpp'
+        TestSource = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedGraphicCSubtitleRendererCEmbeddedGraphic_00493959_test.cpp'
         PassPattern = '00493959_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004939bf'
-        Module = '_global'
-        Source = '00/49/global_UninitCopyCElement2000493617004939bf_004939bf.cpp'
-        TestSource = '00/49/global_UninitCopyCElement2000493617004939bf_004939bf_test.cpp'
+        Module = 'std'
+        Source = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedHighlightCSubtitleRendererCEmbeddedHighlight_004939bf.cpp'
+        TestSource = '00/49/std_uninitializedcopyCSubtitleRendererCEmbeddedHighlightCSubtitleRendererCEmbeddedHighlight_004939bf_test.cpp'
         PassPattern = '004939bf_TEST PASS'
     }
     [pscustomobject]@{
@@ -156007,9 +156007,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059ada2'
-        Module = '_global'
-        Source = '00/59/global_UninitCopyCElement8004289280059ada2_0059ada2.cpp'
-        TestSource = '00/59/global_UninitCopyCElement8004289280059ada2_0059ada2_test.cpp'
+        Module = 'std'
+        Source = '00/59/std_uninitializedcopyCCountedPointerNUISystemCComponentconstCCountedPointerNUISystemCComponent_0059ada2.cpp'
+        TestSource = '00/59/std_uninitializedcopyCCountedPointerNUISystemCComponentconstCCountedPointerNUISystemCComponent_0059ada2_test.cpp'
         PassPattern = '0059ada2_TEST PASS'
     }
     [pscustomobject]@{
@@ -156021,9 +156021,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bb1cf'
-        Module = '_global'
-        Source = '00/5b/global_UninitCopyCElement12005baec4005bb1cf_005bb1cf.cpp'
-        TestSource = '00/5b/global_UninitCopyCElement12005baec4005bb1cf_005bb1cf_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_uninitializedcopystdvectorstdpairlonglongstdallocatorstdpairlonglongstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1cf.cpp'
+        TestSource = '00/5b/std_uninitializedcopystdvectorstdpairlonglongstdallocatorstdpairlonglongstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1cf_test.cpp'
         PassPattern = '005bb1cf_TEST PASS'
     }
     [pscustomobject]@{
@@ -156035,16 +156035,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005c0df0'
-        Module = '_global'
-        Source = '00/5c/global_UninitCopyCElement20005c08e6005c0df0_005c0df0.cpp'
-        TestSource = '00/5c/global_UninitCopyCElement20005c08e6005c0df0_005c0df0_test.cpp'
+        Module = 'std'
+        Source = '00/5c/std_uninitializedcopyNInventoryCItemNInventoryCItem_005c0df0.cpp'
+        TestSource = '00/5c/std_uninitializedcopyNInventoryCItemNInventoryCItem_005c0df0_test.cpp'
         PassPattern = '005c0df0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005c10cc'
-        Module = '_global'
-        Source = '00/5c/global_UninitCopyCElement20005c08e6005c10cc_005c10cc.cpp'
-        TestSource = '00/5c/global_UninitCopyCElement20005c08e6005c10cc_005c10cc_test.cpp'
+        Module = 'std'
+        Source = '00/5c/std_uninitializedcopyNInventoryCItemconstNInventoryCItem_005c10cc.cpp'
+        TestSource = '00/5c/std_uninitializedcopyNInventoryCItemconstNInventoryCItem_005c10cc_test.cpp'
         PassPattern = '005c10cc_TEST PASS'
     }
     [pscustomobject]@{
@@ -156056,16 +156056,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f9132'
-        Module = '_global'
-        Source = '00/5f/global_UninitCopyCElement8005f8578005f9132_005f9132.cpp'
-        TestSource = '00/5f/global_UninitCopyCElement8005f8578005f9132_005f9132_test.cpp'
+        Module = 'std'
+        Source = '00/5f/std_uninitializedcopystdpairlongCDefPointerCHeroAbilityDefconstconststdpairlongCDefPointerCHeroAbilityDefconst_005f9132.cpp'
+        TestSource = '00/5f/std_uninitializedcopystdpairlongCDefPointerCHeroAbilityDefconstconststdpairlongCDefPointerCHeroAbilityDefconst_005f9132_test.cpp'
         PassPattern = '005f9132_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006555ce'
-        Module = '_global'
-        Source = '00/65/global_UninitCopyCElement1600654dd4006555ce_006555ce.cpp'
-        TestSource = '00/65/global_UninitCopyCElement1600654dd4006555ce_006555ce_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_uninitializedcopystdpairC3DVectorCCharStringstdpairC3DVectorCCharString_006555ce.cpp'
+        TestSource = '00/65/std_uninitializedcopystdpairC3DVectorCCharStringstdpairC3DVectorCCharString_006555ce_test.cpp'
         PassPattern = '006555ce_TEST PASS'
     }
     [pscustomobject]@{
@@ -156077,9 +156077,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00788f17'
-        Module = '_global'
-        Source = '00/78/global_UninitCopyCElement1200788d8800788f17_00788f17.cpp'
-        TestSource = '00/78/global_UninitCopyCElement1200788d8800788f17_00788f17_test.cpp'
+        Module = 'std'
+        Source = '00/78/std_uninitializedcopystdpairCIntelligentPointerCThinglongstdpairCIntelligentPointerCThinglong_00788f17.cpp'
+        TestSource = '00/78/std_uninitializedcopystdpairCIntelligentPointerCThinglongstdpairCIntelligentPointerCThinglong_00788f17_test.cpp'
         PassPattern = '00788f17_TEST PASS'
     }
     [pscustomobject]@{
@@ -159975,51 +159975,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00447800'
-        Module = '_global'
-        Source = '00/44/global_UninitFillNCPairCountedRef800447800_00447800.cpp'
-        TestSource = '00/44/global_UninitFillNCPairCountedRef800447800_00447800_test.cpp'
+        Module = 'std'
+        Source = '00/44/std_uninitializedfillnCCountedPointerCInputTypeBaseconstunsignedintCCountedPointerCInputTypeBaseconst_00447800.cpp'
+        TestSource = '00/44/std_uninitializedfillnCCountedPointerCInputTypeBaseconstunsignedintCCountedPointerCInputTypeBaseconst_00447800_test.cpp'
         PassPattern = '00447800_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005347a0'
-        Module = '_global'
-        Source = '00/53/global_UninitFillNCPairCountedRef8005347a0_005347a0.cpp'
-        TestSource = '00/53/global_UninitFillNCPairCountedRef8005347a0_005347a0_test.cpp'
+        Module = 'std'
+        Source = '00/53/std_uninitializedfillnCCountedPointerNUISystemCComponentunsignedintCCountedPointerNUISystemCComponent_005347a0.cpp'
+        TestSource = '00/53/std_uninitializedfillnCCountedPointerNUISystemCComponentunsignedintCCountedPointerNUISystemCComponent_005347a0_test.cpp'
         PassPattern = '005347a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0054a180'
-        Module = '_global'
-        Source = '00/54/global_UninitFillNCPairCountedRef80054a180_0054a180.cpp'
-        TestSource = '00/54/global_UninitFillNCPairCountedRef80054a180_0054a180_test.cpp'
+        Module = 'std'
+        Source = '00/54/std_uninitializedfillnCCountedPointerNUISystemCActionunsignedintCCountedPointerNUISystemCAction_0054a180.cpp'
+        TestSource = '00/54/std_uninitializedfillnCCountedPointerNUISystemCActionunsignedintCCountedPointerNUISystemCAction_0054a180_test.cpp'
         PassPattern = '0054a180_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00695bd0'
-        Module = '_global'
-        Source = '00/69/global_UninitFillNCPairCountedRef800695bd0_00695bd0.cpp'
-        TestSource = '00/69/global_UninitFillNCPairCountedRef800695bd0_00695bd0_test.cpp'
+        Module = 'std'
+        Source = '00/69/std_uninitializedfillnCCountedPointerNCreatureActionCActionEventBaseunsignedintCCountedPointerNCreatureActionCActionEventBase_00695bd0.cpp'
+        TestSource = '00/69/std_uninitializedfillnCCountedPointerNCreatureActionCActionEventBaseunsignedintCCountedPointerNCreatureActionCActionEventBase_00695bd0_test.cpp'
         PassPattern = '00695bd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00763eb0'
-        Module = '_global'
-        Source = '00/76/global_UninitFillNCPairCountedRef800763eb0_00763eb0.cpp'
-        TestSource = '00/76/global_UninitFillNCPairCountedRef800763eb0_00763eb0_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_uninitializedfillnCCountedPointerNShapeCShapeunsignedintCCountedPointerNShapeCShape_00763eb0.cpp'
+        TestSource = '00/76/std_uninitializedfillnCCountedPointerNShapeCShapeunsignedintCCountedPointerNShapeCShape_00763eb0_test.cpp'
         PassPattern = '00763eb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007f3820'
-        Module = '_global'
-        Source = '00/7f/global_UninitFillNCPairCountedRef8007f3820_007f3820.cpp'
-        TestSource = '00/7f/global_UninitFillNCPairCountedRef8007f3820_007f3820_test.cpp'
+        Module = 'std'
+        Source = '00/7f/std_uninitializedfillnCCountedPointerCTCLightningNodeCLightningBranchunsignedintCCountedPointerCTCLightningNodeCLightningBranch_007f3820.cpp'
+        TestSource = '00/7f/std_uninitializedfillnCCountedPointerCTCLightningNodeCLightningBranchunsignedintCCountedPointerCTCLightningNodeCLightningBranch_007f3820_test.cpp'
         PassPattern = '007f3820_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0084ebd0'
-        Module = '_global'
-        Source = '00/84/global_UninitFillNCPairCountedRef80084ebd0_0084ebd0.cpp'
-        TestSource = '00/84/global_UninitFillNCPairCountedRef80084ebd0_0084ebd0_test.cpp'
+        Module = 'std'
+        Source = '00/84/std_uninitializedfillnCCountedPointerNCameraModesCSubComponentBaseunsignedintCCountedPointerNCameraModesCSubComponentBase_0084ebd0.cpp'
+        TestSource = '00/84/std_uninitializedfillnCCountedPointerNCameraModesCSubComponentBaseunsignedintCCountedPointerNCameraModesCSubComponentBase_0084ebd0_test.cpp'
         PassPattern = '0084ebd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -160031,30 +160031,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0098c030'
-        Module = '_global'
-        Source = '00/98/global_UninitFillNCPairCountedRef80098c030_0098c030.cpp'
-        TestSource = '00/98/global_UninitFillNCPairCountedRef80098c030_0098c030_test.cpp'
+        Module = 'std'
+        Source = '00/98/std_uninitializedfillnCCountedPointerCShaderResourceunsignedintCCountedPointerCShaderResource_0098c030.cpp'
+        TestSource = '00/98/std_uninitializedfillnCCountedPointerCShaderResourceunsignedintCCountedPointerCShaderResource_0098c030_test.cpp'
         PassPattern = '0098c030_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a29270'
-        Module = '_global'
-        Source = '00/a2/global_UninitFillNCPairCountedRef800a29270_00a29270.cpp'
-        TestSource = '00/a2/global_UninitFillNCPairCountedRef800a29270_00a29270_test.cpp'
+        Module = 'std'
+        Source = '00/a2/std_uninitializedfillnCCountedPointerCMeshDataBankEntryunsignedintCCountedPointerCMeshDataBankEntry_00a29270.cpp'
+        TestSource = '00/a2/std_uninitializedfillnCCountedPointerCMeshDataBankEntryunsignedintCCountedPointerCMeshDataBankEntry_00a29270_test.cpp'
         PassPattern = '00a29270_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a45ea0'
-        Module = '_global'
-        Source = '00/a4/global_UninitFillNCPairCountedRef800a45ea0_00a45ea0.cpp'
-        TestSource = '00/a4/global_UninitFillNCPairCountedRef800a45ea0_00a45ea0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedfillnCCountedPointerC3DSkeletalMorphParameterunsignedintCCountedPointerC3DSkeletalMorphParameter_00a45ea0.cpp'
+        TestSource = '00/a4/std_uninitializedfillnCCountedPointerC3DSkeletalMorphParameterunsignedintCCountedPointerC3DSkeletalMorphParameter_00a45ea0_test.cpp'
         PassPattern = '00a45ea0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a5fce0'
-        Module = '_global'
-        Source = '00/a5/global_UninitFillNCPairCountedRef800a5fce0_00a5fce0.cpp'
-        TestSource = '00/a5/global_UninitFillNCPairCountedRef800a5fce0_00a5fce0_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_uninitializedfillnCCountedPointerCJoystickunsignedintCCountedPointerCJoystick_00a5fce0.cpp'
+        TestSource = '00/a5/std_uninitializedfillnCCountedPointerCJoystickunsignedintCCountedPointerCJoystick_00a5fce0_test.cpp'
         PassPattern = '00a5fce0_TEST PASS'
     }
     [pscustomobject]@{
@@ -160080,9 +160080,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b38500'
-        Module = '_global'
-        Source = '00/b3/global_UninitFillNCPairCountedRef800b38500_00b38500.cpp'
-        TestSource = '00/b3/global_UninitFillNCPairCountedRef800b38500_00b38500_test.cpp'
+        Module = 'std'
+        Source = '00/b3/std_uninitializedfillnCCountedPointerCEnginePrimitiveManagerunsignedintCCountedPointerCEnginePrimitiveManager_00b38500.cpp'
+        TestSource = '00/b3/std_uninitializedfillnCCountedPointerCEnginePrimitiveManagerunsignedintCCountedPointerCEnginePrimitiveManager_00b38500_test.cpp'
         PassPattern = '00b38500_TEST PASS'
     }
     [pscustomobject]@{
@@ -160094,9 +160094,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b82d00'
-        Module = '_global'
-        Source = '00/b8/global_UninitFillNCPairCountedRef800b82d00_00b82d00.cpp'
-        TestSource = '00/b8/global_UninitFillNCPairCountedRef800b82d00_00b82d00_test.cpp'
+        Module = 'std'
+        Source = '00/b8/std_uninitializedfillnCCountedPointerCParticleSimulationunsignedintCCountedPointerCParticleSimulation_00b82d00.cpp'
+        TestSource = '00/b8/std_uninitializedfillnCCountedPointerCParticleSimulationunsignedintCCountedPointerCParticleSimulation_00b82d00_test.cpp'
         PassPattern = '00b82d00_TEST PASS'
     }
     [pscustomobject]@{
@@ -164819,30 +164819,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004768f8'
-        Module = '_global'
-        Source = '00/47/global_UninitFillNCAbilityButtonGuiDef004768f8_004768f8.cpp'
-        TestSource = '00/47/global_UninitFillNCAbilityButtonGuiDef004768f8_004768f8_test.cpp'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfillnCAbilityButtonGuiDefunsignedintCAbilityButtonGuiDef_004768f8.cpp'
+        TestSource = '00/47/std_uninitializedfillnCAbilityButtonGuiDefunsignedintCAbilityButtonGuiDef_004768f8_test.cpp'
         PassPattern = '004768f8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00476d9d'
-        Module = '_global'
-        Source = '00/47/global_UninitFillNCLensFlareElementDef00476d9d_00476d9d.cpp'
-        TestSource = '00/47/global_UninitFillNCLensFlareElementDef00476d9d_00476d9d_test.cpp'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfillnCLensFlareElementDefunsignedintCLensFlareElementDef_00476d9d.cpp'
+        TestSource = '00/47/std_uninitializedfillnCLensFlareElementDefunsignedintCLensFlareElementDef_00476d9d_test.cpp'
         PassPattern = '00476d9d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0047725f'
-        Module = '_global'
-        Source = '00/47/global_UninitFillNCEnvironmentThemeDef0047725f_0047725f.cpp'
-        TestSource = '00/47/global_UninitFillNCEnvironmentThemeDef0047725f_0047725f_test.cpp'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfillnCEnvironmentThemeDefunsignedintCEnvironmentThemeDef_0047725f.cpp'
+        TestSource = '00/47/std_uninitializedfillnCEnvironmentThemeDefunsignedintCEnvironmentThemeDef_0047725f_test.cpp'
         PassPattern = '0047725f_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00478104'
-        Module = '_global'
-        Source = '00/47/global_UninitFillNCEngineLocalDetailObjectDef00478104_00478104.cpp'
-        TestSource = '00/47/global_UninitFillNCEngineLocalDetailObjectDef00478104_00478104_test.cpp'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfillnCEngineLocalDetailObjectDefunsignedintCEngineLocalDetailObjectDef_00478104.cpp'
+        TestSource = '00/47/std_uninitializedfillnCEngineLocalDetailObjectDefunsignedintCEngineLocalDetailObjectDef_00478104_test.cpp'
         PassPattern = '00478104_TEST PASS'
     }
     [pscustomobject]@{
@@ -164861,23 +164861,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0047a2cf'
-        Module = '_global'
-        Source = '00/47/global_UninitFillNCElement72004784b30047a2cf_0047a2cf.cpp'
-        TestSource = '00/47/global_UninitFillNCElement72004784b30047a2cf_0047a2cf_test.cpp'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfillnCAppearanceModifierScalingDefunsignedintCAppearanceModifierScalingDef_0047a2cf.cpp'
+        TestSource = '00/47/std_uninitializedfillnCAppearanceModifierScalingDefunsignedintCAppearanceModifierScalingDef_0047a2cf_test.cpp'
         PassPattern = '0047a2cf_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00493984'
-        Module = '_global'
-        Source = '00/49/global_UninitFillNCElement16004935f800493984_00493984.cpp'
-        TestSource = '00/49/global_UninitFillNCElement16004935f800493984_00493984_test.cpp'
+        Module = 'std'
+        Source = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedGraphicunsignedintCSubtitleRendererCEmbeddedGraphic_00493984.cpp'
+        TestSource = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedGraphicunsignedintCSubtitleRendererCEmbeddedGraphic_00493984_test.cpp'
         PassPattern = '00493984_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004939ea'
-        Module = '_global'
-        Source = '00/49/global_UninitFillNCElement2000493617004939ea_004939ea.cpp'
-        TestSource = '00/49/global_UninitFillNCElement2000493617004939ea_004939ea_test.cpp'
+        Module = 'std'
+        Source = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedHighlightunsignedintCSubtitleRendererCEmbeddedHighlight_004939ea.cpp'
+        TestSource = '00/49/std_uninitializedfillnCSubtitleRendererCEmbeddedHighlightunsignedintCSubtitleRendererCEmbeddedHighlight_004939ea_test.cpp'
         PassPattern = '004939ea_TEST PASS'
     }
     [pscustomobject]@{
@@ -164889,9 +164889,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004ee219'
-        Module = '_global'
-        Source = '00/4e/global_UninitFillNCElement56004eb864004ee219_004ee219.cpp'
-        TestSource = '00/4e/global_UninitFillNCElement56004eb864004ee219_004ee219_test.cpp'
+        Module = 'std'
+        Source = '00/4e/std_uninitializedfillnCMultiStaticMeshEntryDefunsignedintCMultiStaticMeshEntryDef_004ee219.cpp'
+        TestSource = '00/4e/std_uninitializedfillnCMultiStaticMeshEntryDefunsignedintCMultiStaticMeshEntryDef_004ee219_test.cpp'
         PassPattern = '004ee219_TEST PASS'
     }
     [pscustomobject]@{
@@ -164931,16 +164931,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bb1fa'
-        Module = '_global'
-        Source = '00/5b/global_UninitFillNCElement12005baec4005bb1fa_005bb1fa.cpp'
-        TestSource = '00/5b/global_UninitFillNCElement12005baec4005bb1fa_005bb1fa_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_uninitializedfillnstdvectorstdpairlonglongstdallocatorstdpairlonglongunsignedintstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1fa.cpp'
+        TestSource = '00/5b/std_uninitializedfillnstdvectorstdpairlonglongstdallocatorstdpairlonglongunsignedintstdvectorstdpairlonglongstdallocatorstdpairlonglong_005bb1fa_test.cpp'
         PassPattern = '005bb1fa_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005c0e1b'
-        Module = '_global'
-        Source = '00/5c/global_UninitFillNCElement20005c08e6005c0e1b_005c0e1b.cpp'
-        TestSource = '00/5c/global_UninitFillNCElement20005c08e6005c0e1b_005c0e1b_test.cpp'
+        Module = 'std'
+        Source = '00/5c/std_uninitializedfillnNInventoryCItemunsignedintNInventoryCItem_005c0e1b.cpp'
+        TestSource = '00/5c/std_uninitializedfillnNInventoryCItemunsignedintNInventoryCItem_005c0e1b_test.cpp'
         PassPattern = '005c0e1b_TEST PASS'
     }
     [pscustomobject]@{
@@ -164952,9 +164952,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f9379'
-        Module = '_global'
-        Source = '00/5f/global_UninitFillNCElement8005f8578005f9379_005f9379.cpp'
-        TestSource = '00/5f/global_UninitFillNCElement8005f8578005f9379_005f9379_test.cpp'
+        Module = 'std'
+        Source = '00/5f/std_uninitializedfillnstdpairlongCDefPointerCHeroAbilityDefconstunsignedintstdpairlongCDefPointerCHeroAbilityDefconst_005f9379.cpp'
+        TestSource = '00/5f/std_uninitializedfillnstdpairlongCDefPointerCHeroAbilityDefconstunsignedintstdpairlongCDefPointerCHeroAbilityDefconst_005f9379_test.cpp'
         PassPattern = '005f9379_TEST PASS'
     }
     [pscustomobject]@{
@@ -164966,16 +164966,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006555f9'
-        Module = '_global'
-        Source = '00/65/global_UninitFillNCElement1600654dd4006555f9_006555f9.cpp'
-        TestSource = '00/65/global_UninitFillNCElement1600654dd4006555f9_006555f9_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_uninitializedfillnstdpairC3DVectorCCharStringunsignedintstdpairC3DVectorCCharString_006555f9.cpp'
+        TestSource = '00/65/std_uninitializedfillnstdpairC3DVectorCCharStringunsignedintstdpairC3DVectorCCharString_006555f9_test.cpp'
         PassPattern = '006555f9_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00788f42'
-        Module = '_global'
-        Source = '00/78/global_UninitFillNCElement1200788d8800788f42_00788f42.cpp'
-        TestSource = '00/78/global_UninitFillNCElement1200788d8800788f42_00788f42_test.cpp'
+        Module = 'std'
+        Source = '00/78/std_uninitializedfillnstdpairCIntelligentPointerCThinglongunsignedintstdpairCIntelligentPointerCThinglong_00788f42.cpp'
+        TestSource = '00/78/std_uninitializedfillnstdpairCIntelligentPointerCThinglongunsignedintstdpairCIntelligentPointerCThinglong_00788f42_test.cpp'
         PassPattern = '00788f42_TEST PASS'
     }
     [pscustomobject]@{
@@ -164994,9 +164994,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049ae00'
-        Module = '_global'
-        Source = '00/49/global_UninitFillNCTexture0049ae00_0049ae00.cpp'
-        TestSource = '00/49/global_UninitFillNCTexture0049ae00_0049ae00_test.cpp'
+        Module = 'std'
+        Source = '00/49/std_uninitializedfillnCTextureunsignedintCTexture_0049ae00.cpp'
+        TestSource = '00/49/std_uninitializedfillnCTextureunsignedintCTexture_0049ae00_test.cpp'
         PassPattern = '0049ae00_TEST PASS'
     }
     [pscustomobject]@{
@@ -165008,9 +165008,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00719e50'
-        Module = '_global'
-        Source = '00/71/global_UninitFillNCElement68004d1fe000719e50_00719e50.cpp'
-        TestSource = '00/71/global_UninitFillNCElement68004d1fe000719e50_00719e50_test.cpp'
+        Module = 'std'
+        Source = '00/71/std_uninitializedfillnCSubtitledMessageunsignedintCSubtitledMessage_00719e50.cpp'
+        TestSource = '00/71/std_uninitializedfillnCSubtitledMessageunsignedintCSubtitledMessage_00719e50_test.cpp'
         PassPattern = '00719e50_TEST PASS'
     }
     [pscustomobject]@{
@@ -165029,9 +165029,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bcd920'
-        Module = '_global'
-        Source = '00/bc/global_UninitFillNCElement12006f081000bcd920_00bcd920.cpp'
-        TestSource = '00/bc/global_UninitFillNCElement12006f081000bcd920_00bcd920_test.cpp'
+        Module = 'std'
+        Source = '00/bc/std_uninitializedfillnCArrayC3DVectorunsignedintCArrayC3DVector_00bcd920.cpp'
+        TestSource = '00/bc/std_uninitializedfillnCArrayC3DVectorunsignedintCArrayC3DVector_00bcd920_test.cpp'
         PassPattern = '00bcd920_TEST PASS'
     }
     [pscustomobject]@{
@@ -165043,9 +165043,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f26740'
-        Module = '_global'
-        Source = '00/f2/global_UninitFillNCElement5600f25dd000f26740_00f26740.cpp'
-        TestSource = '00/f2/global_UninitFillNCElement5600f25dd000f26740_00f26740_test.cpp'
+        Module = 'std'
+        Source = '00/f2/std_uninitializedfillnCArenaCreatureDefunsignedintCArenaCreatureDef_00f26740.cpp'
+        TestSource = '00/f2/std_uninitializedfillnCArenaCreatureDefunsignedintCArenaCreatureDef_00f26740_test.cpp'
         PassPattern = '00f26740_TEST PASS'
     }
     [pscustomobject]@{
@@ -165064,16 +165064,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f339e0'
-        Module = '_global'
-        Source = '00/f3/global_UninitFillNCElement9200e54ca000f339e0_00f339e0.cpp'
-        TestSource = '00/f3/global_UninitFillNCElement9200e54ca000f339e0_00f339e0_test.cpp'
+        Module = 'std'
+        Source = '00/f3/std_uninitializedfillnCConversationunsignedintCConversation_00f339e0.cpp'
+        TestSource = '00/f3/std_uninitializedfillnCConversationunsignedintCConversation_00f339e0_test.cpp'
         PassPattern = '00f339e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f34830'
-        Module = '_global'
-        Source = '00/f3/global_UninitFillNCFeatDef00f34830_00f34830.cpp'
-        TestSource = '00/f3/global_UninitFillNCFeatDef00f34830_00f34830_test.cpp'
+        Module = 'std'
+        Source = '00/f3/std_uninitializedfillnCFeatDefunsignedintCFeatDef_00f34830.cpp'
+        TestSource = '00/f3/std_uninitializedfillnCFeatDefunsignedintCFeatDef_00f34830_test.cpp'
         PassPattern = '00f34830_TEST PASS'
     }
     [pscustomobject]@{
@@ -165113,9 +165113,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00824690'
-        Module = '_global'
-        Source = '00/82/global_UninitFillNSPairLongCSecond0099ec3000824690_00824690.cpp'
-        TestSource = '00/82/global_UninitFillNSPairLongCSecond0099ec3000824690_00824690_test.cpp'
+        Module = 'std'
+        Source = '00/82/std_uninitializedfillnCMapCScriptedMapBrushUpdateAreaunsignedintCMapCScriptedMapBrushUpdateArea_00824690.cpp'
+        TestSource = '00/82/std_uninitializedfillnCMapCScriptedMapBrushUpdateAreaunsignedintCMapCScriptedMapBrushUpdateArea_00824690_test.cpp'
         PassPattern = '00824690_TEST PASS'
     }
     [pscustomobject]@{
@@ -165134,37 +165134,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ca220'
-        Module = '_global'
-        Source = '00/9c/global_UninitFillNSPairLongCSecond0099ec30009ca220_009ca220.cpp'
-        TestSource = '00/9c/global_UninitFillNSPairLongCSecond0099ec30009ca220_009ca220_test.cpp'
+        Module = 'std'
+        Source = '00/9c/std_uninitializedfillnNGameTextCTextTagunsignedintNGameTextCTextTag_009ca220.cpp'
+        TestSource = '00/9c/std_uninitializedfillnNGameTextCTextTagunsignedintNGameTextCTextTag_009ca220_test.cpp'
         PassPattern = '009ca220_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ae74c0'
-        Module = '_global'
-        Source = '00/ae/global_UninitFillNSPairLongCSecond00ae5d8000ae74c0_00ae74c0.cpp'
-        TestSource = '00/ae/global_UninitFillNSPairLongCSecond00ae5d8000ae74c0_00ae74c0_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae74c0.cpp'
+        TestSource = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae74c0_test.cpp'
         PassPattern = '00ae74c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ae75b0'
-        Module = '_global'
-        Source = '00/ae/global_UninitFillNSPairLongCSecond00ae5d8000ae75b0_00ae75b0.cpp'
-        TestSource = '00/ae/global_UninitFillNSPairLongCSecond00ae5d8000ae75b0_00ae75b0_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae75b0.cpp'
+        TestSource = '00/ae/std_uninitializedfillnC3DGroup2unsignedintC3DGroup2_00ae75b0_test.cpp'
         PassPattern = '00ae75b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bf8f70'
-        Module = '_global'
-        Source = '00/bf/global_UninitFillNSPairLongCSecond0099ec3000bf8f70_00bf8f70.cpp'
-        TestSource = '00/bf/global_UninitFillNSPairLongCSecond0099ec3000bf8f70_00bf8f70_test.cpp'
+        Module = 'std'
+        Source = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8f70.cpp'
+        TestSource = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8f70_test.cpp'
         PassPattern = '00bf8f70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bf8ff0'
-        Module = '_global'
-        Source = '00/bf/global_UninitFillNSPairLongCSecond0099ec3000bf8ff0_00bf8ff0.cpp'
-        TestSource = '00/bf/global_UninitFillNSPairLongCSecond0099ec3000bf8ff0_00bf8ff0_test.cpp'
+        Module = 'std'
+        Source = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8ff0.cpp'
+        TestSource = '00/bf/std_uninitializedfillnCEngineTexturePaletteCPaletteEntryunsignedintCEngineTexturePaletteCPaletteEntry_00bf8ff0_test.cpp'
         PassPattern = '00bf8ff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -165176,23 +165176,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006d3b20'
-        Module = '_global'
-        Source = '00/6d/global_UninitFillNSPairCSecond0099ec30Long006d3b20_006d3b20.cpp'
-        TestSource = '00/6d/global_UninitFillNSPairCSecond0099ec30Long006d3b20_006d3b20_test.cpp'
+        Module = 'std'
+        Source = '00/6d/std_uninitializedfillnstdpairCCharStringlongunsignedintstdpairCCharStringlong_006d3b20.cpp'
+        TestSource = '00/6d/std_uninitializedfillnstdpairCCharStringlongunsignedintstdpairCCharStringlong_006d3b20_test.cpp'
         PassPattern = '006d3b20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006dbd90'
-        Module = '_global'
-        Source = '00/6d/global_UninitFillNSPairCSecond004f9408Long006dbd90_006dbd90.cpp'
-        TestSource = '00/6d/global_UninitFillNSPairCSecond004f9408Long006dbd90_006dbd90_test.cpp'
+        Module = 'std'
+        Source = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dbd90.cpp'
+        TestSource = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dbd90_test.cpp'
         PassPattern = '006dbd90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006dc670'
-        Module = '_global'
-        Source = '00/6d/global_UninitFillNSPairCSecond004f9408Long006dc670_006dc670.cpp'
-        TestSource = '00/6d/global_UninitFillNSPairCSecond004f9408Long006dc670_006dc670_test.cpp'
+        Module = 'std'
+        Source = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dc670.cpp'
+        TestSource = '00/6d/std_uninitializedfillnCAttackHistoryCombounsignedintCAttackHistoryCombo_006dc670_test.cpp'
         PassPattern = '006dc670_TEST PASS'
     }
     [pscustomobject]@{
@@ -165211,37 +165211,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009b26c0'
-        Module = '_global'
-        Source = '00/9b/global_UninitFillNSPairCSecond0099ec30Long009b26c0_009b26c0.cpp'
-        TestSource = '00/9b/global_UninitFillNSPairCSecond0099ec30Long009b26c0_009b26c0_test.cpp'
+        Module = 'std'
+        Source = '00/9b/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_009b26c0.cpp'
+        TestSource = '00/9b/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_009b26c0_test.cpp'
         PassPattern = '009b26c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a2a390'
-        Module = '_global'
-        Source = '00/a2/global_UninitFillNSPairCSecond0099ec30Long00a2a390_00a2a390.cpp'
-        TestSource = '00/a2/global_UninitFillNSPairCSecond0099ec30Long00a2a390_00a2a390_test.cpp'
+        Module = 'std'
+        Source = '00/a2/std_uninitializedfillnCMeshDataBankCLipSyncEntryunsignedintCMeshDataBankCLipSyncEntry_00a2a390.cpp'
+        TestSource = '00/a2/std_uninitializedfillnCMeshDataBankCLipSyncEntryunsignedintCMeshDataBankCLipSyncEntry_00a2a390_test.cpp'
         PassPattern = '00a2a390_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3fc80'
-        Module = '_global'
-        Source = '00/a3/global_UninitFillNSPairCSecond0099ec30Long00a3fc80_00a3fc80.cpp'
-        TestSource = '00/a3/global_UninitFillNSPairCSecond0099ec30Long00a3fc80_00a3fc80_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_uninitializedfillnstdpairCCharStringCSoundBankLHunsignedintstdpairCCharStringCSoundBankLH_00a3fc80.cpp'
+        TestSource = '00/a3/std_uninitializedfillnstdpairCCharStringCSoundBankLHunsignedintstdpairCCharStringCSoundBankLH_00a3fc80_test.cpp'
         PassPattern = '00a3fc80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ae5850'
-        Module = '_global'
-        Source = '00/ae/global_UninitFillNSPairCSecond0099ec30Long00ae5850_00ae5850.cpp'
-        TestSource = '00/ae/global_UninitFillNSPairCSecond0099ec30Long00ae5850_00ae5850_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_00ae5850.cpp'
+        TestSource = '00/ae/std_uninitializedfillnstdpairCCharStringunsignedlongunsignedintstdpairCCharStringunsignedlong_00ae5850_test.cpp'
         PassPattern = '00ae5850_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00513a80'
-        Module = '_global'
-        Source = '00/51/global_UninitFillNSPairLongLong00513a80_00513a80.cpp'
-        TestSource = '00/51/global_UninitFillNSPairLongLong00513a80_00513a80_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_uninitializedfillnstdpairlonglongunsignedintstdpairlonglong_00513a80.cpp'
+        TestSource = '00/51/std_uninitializedfillnstdpairlonglongunsignedintstdpairlonglong_00513a80_test.cpp'
         PassPattern = '00513a80_TEST PASS'
     }
     [pscustomobject]@{
@@ -165253,93 +165253,93 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00612860'
-        Module = '_global'
-        Source = '00/61/global_UninitFillNSPairLongLong00612860_00612860.cpp'
-        TestSource = '00/61/global_UninitFillNSPairLongLong00612860_00612860_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_uninitializedfillnC2DCoordIunsignedintC2DCoordI_00612860.cpp'
+        TestSource = '00/61/std_uninitializedfillnC2DCoordIunsignedintC2DCoordI_00612860_test.cpp'
         PassPattern = '00612860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00638be0'
-        Module = '_global'
-        Source = '00/63/global_UninitFillNSPairLongLong00638be0_00638be0.cpp'
-        TestSource = '00/63/global_UninitFillNSPairLongLong00638be0_00638be0_test.cpp'
+        Module = 'std'
+        Source = '00/63/std_uninitializedfillnNThingMapCThingMapManagerCThingMapInfounsignedintNThingMapCThingMapManagerCThingMapInfo_00638be0.cpp'
+        TestSource = '00/63/std_uninitializedfillnNThingMapCThingMapManagerCThingMapInfounsignedintNThingMapCThingMapManagerCThingMapInfo_00638be0_test.cpp'
         PassPattern = '00638be0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066e130'
-        Module = '_global'
-        Source = '00/66/global_UninitFillNSPairLongLong0066e130_0066e130.cpp'
-        TestSource = '00/66/global_UninitFillNSPairLongLong0066e130_0066e130_test.cpp'
+        Module = 'std'
+        Source = '00/66/std_uninitializedfillnCRegionMinimapRegionMinimapCellDataunsignedintCRegionMinimapRegionMinimapCellData_0066e130.cpp'
+        TestSource = '00/66/std_uninitializedfillnCRegionMinimapRegionMinimapCellDataunsignedintCRegionMinimapRegionMinimapCellData_0066e130_test.cpp'
         PassPattern = '0066e130_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00680670'
-        Module = '_global'
-        Source = '00/68/global_UninitFillNSPairLongLong00680670_00680670.cpp'
-        TestSource = '00/68/global_UninitFillNSPairLongLong00680670_00680670_test.cpp'
+        Module = 'std'
+        Source = '00/68/std_uninitializedfillnstdpairEReactionSpeechTypelongunsignedintstdpairEReactionSpeechTypelong_00680670.cpp'
+        TestSource = '00/68/std_uninitializedfillnstdpairEReactionSpeechTypelongunsignedintstdpairEReactionSpeechTypelong_00680670_test.cpp'
         PassPattern = '00680670_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006c5280'
-        Module = '_global'
-        Source = '00/6c/global_UninitFillNSPairLongLong006c5280_006c5280.cpp'
-        TestSource = '00/6c/global_UninitFillNSPairLongLong006c5280_006c5280_test.cpp'
+        Module = 'std'
+        Source = '00/6c/std_uninitializedfillnstdpairlongCOpinionDeedunsignedintstdpairlongCOpinionDeed_006c5280.cpp'
+        TestSource = '00/6c/std_uninitializedfillnstdpairlongCOpinionDeedunsignedintstdpairlongCOpinionDeed_006c5280_test.cpp'
         PassPattern = '006c5280_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006e4a00'
-        Module = '_global'
-        Source = '00/6e/global_UninitFillNSPairLongLong006e4a00_006e4a00.cpp'
-        TestSource = '00/6e/global_UninitFillNSPairLongLong006e4a00_006e4a00_test.cpp'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedfillnNSpeechGainManagerCResponseTimesunsignedintNSpeechGainManagerCResponseTimes_006e4a00.cpp'
+        TestSource = '00/6e/std_uninitializedfillnNSpeechGainManagerCResponseTimesunsignedintNSpeechGainManagerCResponseTimes_006e4a00_test.cpp'
         PassPattern = '006e4a00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007b4220'
-        Module = '_global'
-        Source = '00/7b/global_UninitFillNSPairLongLong007b4220_007b4220.cpp'
-        TestSource = '00/7b/global_UninitFillNSPairLongLong007b4220_007b4220_test.cpp'
+        Module = 'std'
+        Source = '00/7b/std_uninitializedfillnCCrimeWaitingForBribeunsignedintCCrimeWaitingForBribe_007b4220.cpp'
+        TestSource = '00/7b/std_uninitializedfillnCCrimeWaitingForBribeunsignedintCCrimeWaitingForBribe_007b4220_test.cpp'
         PassPattern = '007b4220_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009b2860'
-        Module = '_global'
-        Source = '00/9b/global_UninitFillNSPairLongLong009b2860_009b2860.cpp'
-        TestSource = '00/9b/global_UninitFillNSPairLongLong009b2860_009b2860_test.cpp'
+        Module = 'std'
+        Source = '00/9b/std_uninitializedfillnstdpairunsignedlongunsignedlongunsignedintstdpairunsignedlongunsignedlong_009b2860.cpp'
+        TestSource = '00/9b/std_uninitializedfillnstdpairunsignedlongunsignedlongunsignedintstdpairunsignedlongunsignedlong_009b2860_test.cpp'
         PassPattern = '009b2860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009c6570'
-        Module = '_global'
-        Source = '00/9c/global_UninitFillNSPairLongLong009c6570_009c6570.cpp'
-        TestSource = '00/9c/global_UninitFillNSPairLongLong009c6570_009c6570_test.cpp'
+        Module = 'std'
+        Source = '00/9c/std_uninitializedfillnCFileInstallerCBufferChunkunsignedintCFileInstallerCBufferChunk_009c6570.cpp'
+        TestSource = '00/9c/std_uninitializedfillnCFileInstallerCBufferChunkunsignedintCFileInstallerCBufferChunk_009c6570_test.cpp'
         PassPattern = '009c6570_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a39380'
-        Module = '_global'
-        Source = '00/a3/global_UninitFillNSPairLongLong00a39380_00a39380.cpp'
-        TestSource = '00/a3/global_UninitFillNSPairLongLong00a39380_00a39380_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_uninitializedfillnstdpairunsignedlonglongunsignedintstdpairunsignedlonglong_00a39380.cpp'
+        TestSource = '00/a3/std_uninitializedfillnstdpairunsignedlonglongunsignedintstdpairunsignedlonglong_00a39380_test.cpp'
         PassPattern = '00a39380_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a95bc0'
-        Module = '_global'
-        Source = '00/a9/global_UninitFillNSPairLongLong00a95bc0_00a95bc0.cpp'
-        TestSource = '00/a9/global_UninitFillNSPairLongLong00a95bc0_00a95bc0_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_uninitializedfillnC3DIndexedBoneWeightunsignedintC3DIndexedBoneWeight_00a95bc0.cpp'
+        TestSource = '00/a9/std_uninitializedfillnC3DIndexedBoneWeightunsignedintC3DIndexedBoneWeight_00a95bc0_test.cpp'
         PassPattern = '00a95bc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab3f30'
-        Module = '_global'
-        Source = '00/ab/global_UninitFillNSPairLongLong00ab3f30_00ab3f30.cpp'
-        TestSource = '00/ab/global_UninitFillNSPairLongLong00ab3f30_00ab3f30_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_uninitializedfillnD3DVERTEXELEMENT9unsignedintD3DVERTEXELEMENT9_00ab3f30.cpp'
+        TestSource = '00/ab/std_uninitializedfillnD3DVERTEXELEMENT9unsignedintD3DVERTEXELEMENT9_00ab3f30_test.cpp'
         PassPattern = '00ab3f30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b84d90'
-        Module = '_global'
-        Source = '00/b8/global_UninitFillNSPairLongLong00b84d90_00b84d90.cpp'
-        TestSource = '00/b8/global_UninitFillNSPairLongLong00b84d90_00b84d90_test.cpp'
+        Module = 'std'
+        Source = '00/b8/std_uninitializedfillnCEngineSubPrimitiveRendererCSortElementunsignedintCEngineSubPrimitiveRendererCSortElement_00b84d90.cpp'
+        TestSource = '00/b8/std_uninitializedfillnCEngineSubPrimitiveRendererCSortElementunsignedintCEngineSubPrimitiveRendererCSortElement_00b84d90_test.cpp'
         PassPattern = '00b84d90_TEST PASS'
     }
     [pscustomobject]@{
@@ -169667,9 +169667,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f65c0'
-        Module = '_global'
-        Source = '00/8f/global_CopySElement12008f65c0_008f65c0.cpp'
-        TestSource = '00/8f/global_CopySElement12008f65c0_008f65c0_test.cpp'
+        Module = 'std'
+        Source = '00/8f/std_copyCHeightMapCellCHeightMapCellint_008f65c0.cpp'
+        TestSource = '00/8f/std_copyCHeightMapCellCHeightMapCellint_008f65c0_test.cpp'
         PassPattern = '008f65c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -169681,9 +169681,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d1c30'
-        Module = '_global'
-        Source = '00/9d/global_CopySElement12009d1c30_009d1c30.cpp'
-        TestSource = '00/9d/global_CopySElement12009d1c30_009d1c30_test.cpp'
+        Module = 'std'
+        Source = '00/9d/std_copyCBankFileCRuntimeDataCBankFileCRuntimeDataint_009d1c30.cpp'
+        TestSource = '00/9d/std_copyCBankFileCRuntimeDataCBankFileCRuntimeDataint_009d1c30_test.cpp'
         PassPattern = '009d1c30_TEST PASS'
     }
     [pscustomobject]@{
@@ -169695,9 +169695,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a7d290'
-        Module = '_global'
-        Source = '00/a7/global_CopySElement1200a7d290_00a7d290.cpp'
-        TestSource = '00/a7/global_CopySElement1200a7d290_00a7d290_test.cpp'
+        Module = 'std'
+        Source = '00/a7/std_copyCNavigationPositionconstCNavigationPositionint_00a7d290.cpp'
+        TestSource = '00/a7/std_copyCNavigationPositionconstCNavigationPositionint_00a7d290_test.cpp'
         PassPattern = '00a7d290_TEST PASS'
     }
     [pscustomobject]@{
@@ -169716,23 +169716,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040e9d0'
-        Module = '_global'
-        Source = '00/40/global_CopySElement280040e9d0_0040e9d0.cpp'
-        TestSource = '00/40/global_CopySElement280040e9d0_0040e9d0_test.cpp'
+        Module = 'std'
+        Source = '00/40/std_copySCameraTagEntryconstSCameraTagEntryint_0040e9d0.cpp'
+        TestSource = '00/40/std_copySCameraTagEntryconstSCameraTagEntryint_0040e9d0_test.cpp'
         PassPattern = '0040e9d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00543700'
-        Module = '_global'
-        Source = '00/54/global_CopySElement2800543700_00543700.cpp'
-        TestSource = '00/54/global_CopySElement2800543700_00543700_test.cpp'
+        Module = 'std'
+        Source = '00/54/std_copyNUISystemCIconTextCEmbeddedIconNUISystemCIconTextCEmbeddedIconint_00543700.cpp'
+        TestSource = '00/54/std_copyNUISystemCIconTextCEmbeddedIconNUISystemCIconTextCEmbeddedIconint_00543700_test.cpp'
         PassPattern = '00543700_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0067e590'
-        Module = '_global'
-        Source = '00/67/global_CopySElement280067e590_0067e590.cpp'
-        TestSource = '00/67/global_CopySElement280067e590_0067e590_test.cpp'
+        Module = 'std'
+        Source = '00/67/std_copyCDegradableInfoCDegradableInfoint_0067e590.cpp'
+        TestSource = '00/67/std_copyCDegradableInfoCDegradableInfoint_0067e590_test.cpp'
         PassPattern = '0067e590_TEST PASS'
     }
     [pscustomobject]@{
@@ -169765,16 +169765,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b490f0'
-        Module = '_global'
-        Source = '00/b4/global_CopySElement11200b490f0_00b490f0.cpp'
-        TestSource = '00/b4/global_CopySElement11200b490f0_00b490f0_test.cpp'
+        Module = 'std'
+        Source = '00/b4/std_copyCEngineLightingManagerCThemeChannelCEngineLightingManagerCThemeChannelint_00b490f0.cpp'
+        TestSource = '00/b4/std_copyCEngineLightingManagerCThemeChannelCEngineLightingManagerCThemeChannelint_00b490f0_test.cpp'
         PassPattern = '00b490f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b6b660'
-        Module = '_global'
-        Source = '00/b6/global_CopySElement5600b6b660_00b6b660.cpp'
-        TestSource = '00/b6/global_CopySElement5600b6b660_00b6b660_test.cpp'
+        Module = 'std'
+        Source = '00/b6/std_copyCLandscapeThemeCLandscapeThemeint_00b6b660.cpp'
+        TestSource = '00/b6/std_copyCLandscapeThemeCLandscapeThemeint_00b6b660_test.cpp'
         PassPattern = '00b6b660_TEST PASS'
     }
     [pscustomobject]@{
@@ -169786,9 +169786,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b8e8b0'
-        Module = '_global'
-        Source = '00/b8/global_CopySElement2800b8e8b0_00b8e8b0.cpp'
-        TestSource = '00/b8/global_CopySElement2800b8e8b0_00b8e8b0_test.cpp'
+        Module = 'std'
+        Source = '00/b8/std_copyCEngineOcclusionManagerCOccluderFlareEntryCEngineOcclusionManagerCOccluderFlareEntryint_00b8e8b0.cpp'
+        TestSource = '00/b8/std_copyCEngineOcclusionManagerCOccluderFlareEntryCEngineOcclusionManagerCOccluderFlareEntryint_00b8e8b0_test.cpp'
         PassPattern = '00b8e8b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -169877,9 +169877,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051ab90'
-        Module = '_global'
-        Source = '00/51/global_CopyCElement8800519b800051ab90_0051ab90.cpp'
-        TestSource = '00/51/global_CopyCElement8800519b800051ab90_0051ab90_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_copyCRegionCRegionint_0051ab90.cpp'
+        TestSource = '00/51/std_copyCRegionCRegionint_0051ab90_test.cpp'
         PassPattern = '0051ab90_TEST PASS'
     }
     [pscustomobject]@{
@@ -169905,9 +169905,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0071a060'
-        Module = '_global'
-        Source = '00/71/global_CopyCElement6800719e800071a060_0071a060.cpp'
-        TestSource = '00/71/global_CopyCElement6800719e800071a060_0071a060_test.cpp'
+        Module = 'std'
+        Source = '00/71/std_copyCSubtitledMessageCSubtitledMessageint_0071a060.cpp'
+        TestSource = '00/71/std_copyCSubtitledMessageCSubtitledMessageint_0071a060_test.cpp'
         PassPattern = '0071a060_TEST PASS'
     }
     [pscustomobject]@{
@@ -169933,9 +169933,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0088a5e0'
-        Module = '_global'
-        Source = '00/88/global_CopyCElement1200889f000088a5e0_0088a5e0.cpp'
-        TestSource = '00/88/global_CopyCElement1200889f000088a5e0_0088a5e0_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_copyNEnvironmentInternalCEnvironmentThemeSetDayNEnvironmentInternalCEnvironmentThemeSetDayint_0088a5e0.cpp'
+        TestSource = '00/88/std_copyNEnvironmentInternalCEnvironmentThemeSetDayNEnvironmentInternalCEnvironmentThemeSetDayint_0088a5e0_test.cpp'
         PassPattern = '0088a5e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170542,9 +170542,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004cf920'
-        Module = '_global'
-        Source = '00/4c/global_UninitCopySElement8004cf920_004cf920.cpp'
-        TestSource = '00/4c/global_UninitCopySElement8004cf920_004cf920_test.cpp'
+        Module = 'std'
+        Source = '00/4c/std_uninitializedcopystdpairfloatEConversationAttitudeconststdpairfloatEConversationAttitude_004cf920.cpp'
+        TestSource = '00/4c/std_uninitializedcopystdpairfloatEConversationAttitudeconststdpairfloatEConversationAttitude_004cf920_test.cpp'
         PassPattern = '004cf920_TEST PASS'
     }
     [pscustomobject]@{
@@ -170556,65 +170556,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00612830'
-        Module = '_global'
-        Source = '00/61/global_UninitCopySElement800612830_00612830.cpp'
-        TestSource = '00/61/global_UninitCopySElement800612830_00612830_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_uninitializedcopyC2DCoordIC2DCoordI_00612830.cpp'
+        TestSource = '00/61/std_uninitializedcopyC2DCoordIC2DCoordI_00612830_test.cpp'
         PassPattern = '00612830_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00638b80'
-        Module = '_global'
-        Source = '00/63/global_UninitCopySElement800638b80_00638b80.cpp'
-        TestSource = '00/63/global_UninitCopySElement800638b80_00638b80_test.cpp'
+        Module = 'std'
+        Source = '00/63/std_uninitializedcopyNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_00638b80.cpp'
+        TestSource = '00/63/std_uninitializedcopyNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_00638b80_test.cpp'
         PassPattern = '00638b80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066e0d0'
-        Module = '_global'
-        Source = '00/66/global_UninitCopySElement80066e0d0_0066e0d0.cpp'
-        TestSource = '00/66/global_UninitCopySElement80066e0d0_0066e0d0_test.cpp'
+        Module = 'std'
+        Source = '00/66/std_uninitializedcopyCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066e0d0.cpp'
+        TestSource = '00/66/std_uninitializedcopyCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066e0d0_test.cpp'
         PassPattern = '0066e0d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006c5220'
-        Module = '_global'
-        Source = '00/6c/global_UninitCopySElement8006c5220_006c5220.cpp'
-        TestSource = '00/6c/global_UninitCopySElement8006c5220_006c5220_test.cpp'
+        Module = 'std'
+        Source = '00/6c/std_uninitializedcopystdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c5220.cpp'
+        TestSource = '00/6c/std_uninitializedcopystdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c5220_test.cpp'
         PassPattern = '006c5220_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006e49a0'
-        Module = '_global'
-        Source = '00/6e/global_UninitCopySElement8006e49a0_006e49a0.cpp'
-        TestSource = '00/6e/global_UninitCopySElement8006e49a0_006e49a0_test.cpp'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedcopyNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e49a0.cpp'
+        TestSource = '00/6e/std_uninitializedcopyNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e49a0_test.cpp'
         PassPattern = '006e49a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007b41c0'
-        Module = '_global'
-        Source = '00/7b/global_UninitCopySElement8007b41c0_007b41c0.cpp'
-        TestSource = '00/7b/global_UninitCopySElement8007b41c0_007b41c0_test.cpp'
+        Module = 'std'
+        Source = '00/7b/std_uninitializedcopyCCrimeWaitingForBribeCCrimeWaitingForBribe_007b41c0.cpp'
+        TestSource = '00/7b/std_uninitializedcopyCCrimeWaitingForBribeCCrimeWaitingForBribe_007b41c0_test.cpp'
         PassPattern = '007b41c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0081a5c0'
-        Module = '_global'
-        Source = '00/81/global_UninitCopySElement80081a5c0_0081a5c0.cpp'
-        TestSource = '00/81/global_UninitCopySElement80081a5c0_0081a5c0_test.cpp'
+        Module = 'std'
+        Source = '00/81/std_uninitializedcopyCSkeletalMorphsCEntryCSkeletalMorphsCEntry_0081a5c0.cpp'
+        TestSource = '00/81/std_uninitializedcopyCSkeletalMorphsCEntryCSkeletalMorphsCEntry_0081a5c0_test.cpp'
         PassPattern = '0081a5c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009c6510'
-        Module = '_global'
-        Source = '00/9c/global_UninitCopySElement8009c6510_009c6510.cpp'
-        TestSource = '00/9c/global_UninitCopySElement8009c6510_009c6510_test.cpp'
+        Module = 'std'
+        Source = '00/9c/std_uninitializedcopyCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c6510.cpp'
+        TestSource = '00/9c/std_uninitializedcopyCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c6510_test.cpp'
         PassPattern = '009c6510_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a487e0'
-        Module = '_global'
-        Source = '00/a4/global_UninitCopySElement800a487e0_00a487e0.cpp'
-        TestSource = '00/a4/global_UninitCopySElement800a487e0_00a487e0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedcopyCComplexNumberCComplexNumber_00a487e0.cpp'
+        TestSource = '00/a4/std_uninitializedcopyCComplexNumberCComplexNumber_00a487e0_test.cpp'
         PassPattern = '00a487e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170626,44 +170626,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a95b60'
-        Module = '_global'
-        Source = '00/a9/global_UninitCopySElement800a95b60_00a95b60.cpp'
-        TestSource = '00/a9/global_UninitCopySElement800a95b60_00a95b60_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_uninitializedcopyC3DIndexedBoneWeightC3DIndexedBoneWeight_00a95b60.cpp'
+        TestSource = '00/a9/std_uninitializedcopyC3DIndexedBoneWeightC3DIndexedBoneWeight_00a95b60_test.cpp'
         PassPattern = '00a95b60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab3f00'
-        Module = '_global'
-        Source = '00/ab/global_UninitCopySElement800ab3f00_00ab3f00.cpp'
-        TestSource = '00/ab/global_UninitCopySElement800ab3f00_00ab3f00_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_uninitializedcopyD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3f00.cpp'
+        TestSource = '00/ab/std_uninitializedcopyD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3f00_test.cpp'
         PassPattern = '00ab3f00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006805b0'
-        Module = '_global'
-        Source = '00/68/global_UninitCopySElement8006805b0_006805b0.cpp'
-        TestSource = '00/68/global_UninitCopySElement8006805b0_006805b0_test.cpp'
+        Module = 'std'
+        Source = '00/68/std_uninitializedcopystdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_006805b0.cpp'
+        TestSource = '00/68/std_uninitializedcopystdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_006805b0_test.cpp'
         PassPattern = '006805b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006b5040'
-        Module = '_global'
-        Source = '00/6b/global_UninitCopySElement8006b5040_006b5040.cpp'
-        TestSource = '00/6b/global_UninitCopySElement8006b5040_006b5040_test.cpp'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedcopystdpairlongfloatstdpairlongfloat_006b5040.cpp'
+        TestSource = '00/6b/std_uninitializedcopystdpairlongfloatstdpairlongfloat_006b5040_test.cpp'
         PassPattern = '006b5040_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007081a0'
-        Module = '_global'
-        Source = '00/70/global_UninitCopySElement8007081a0_007081a0.cpp'
-        TestSource = '00/70/global_UninitCopySElement8007081a0_007081a0_test.cpp'
+        Module = 'std'
+        Source = '00/70/std_uninitializedcopyCTCHeroAttachableAppearanceModifiersCModifierEntryconstCTCHeroAttachableAppearanceModifiersCModifierEntry_007081a0.cpp'
+        TestSource = '00/70/std_uninitializedcopyCTCHeroAttachableAppearanceModifiersCModifierEntryconstCTCHeroAttachableAppearanceModifiersCModifierEntry_007081a0_test.cpp'
         PassPattern = '007081a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009b25c0'
-        Module = '_global'
-        Source = '00/9b/global_UninitCopySElement8009b25c0_009b25c0.cpp'
-        TestSource = '00/9b/global_UninitCopySElement8009b25c0_009b25c0_test.cpp'
+        Module = 'std'
+        Source = '00/9b/std_uninitializedcopystdpairunsignedlonglongstdpairunsignedlonglong_009b25c0.cpp'
+        TestSource = '00/9b/std_uninitializedcopystdpairunsignedlonglongstdpairunsignedlonglong_009b25c0_test.cpp'
         PassPattern = '009b25c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170675,44 +170675,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a5de40'
-        Module = '_global'
-        Source = '00/a5/global_UninitCopySElement800a5de40_00a5de40.cpp'
-        TestSource = '00/a5/global_UninitCopySElement800a5de40_00a5de40_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_uninitializedcopyD3DVERTEXELEMENT9constD3DVERTEXELEMENT9_00a5de40.cpp'
+        TestSource = '00/a5/std_uninitializedcopyD3DVERTEXELEMENT9constD3DVERTEXELEMENT9_00a5de40_test.cpp'
         PassPattern = '00a5de40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00abdc30'
-        Module = '_global'
-        Source = '00/ab/global_UninitCopySElement800abdc30_00abdc30.cpp'
-        TestSource = '00/ab/global_UninitCopySElement800abdc30_00abdc30_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_uninitializedcopyC3DVertexBlend2C3DVertexBlend2_00abdc30.cpp'
+        TestSource = '00/ab/std_uninitializedcopyC3DVertexBlend2C3DVertexBlend2_00abdc30_test.cpp'
         PassPattern = '00abdc30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ae4d80'
-        Module = '_global'
-        Source = '00/ae/global_UninitCopySElement800ae4d80_00ae4d80.cpp'
-        TestSource = '00/ae/global_UninitCopySElement800ae4d80_00ae4d80_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_uninitializedcopyC3DQuad2C3DQuad2_00ae4d80.cpp'
+        TestSource = '00/ae/std_uninitializedcopyC3DQuad2C3DQuad2_00ae4d80_test.cpp'
         PassPattern = '00ae4d80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ae5960'
-        Module = '_global'
-        Source = '00/ae/global_UninitCopySElement800ae5960_00ae5960.cpp'
-        TestSource = '00/ae/global_UninitCopySElement800ae5960_00ae5960_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_uninitializedcopyC3DVertexBlend2constC3DVertexBlend2_00ae5960.cpp'
+        TestSource = '00/ae/std_uninitializedcopyC3DVertexBlend2constC3DVertexBlend2_00ae5960_test.cpp'
         PassPattern = '00ae5960_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b6b4a0'
-        Module = '_global'
-        Source = '00/b6/global_UninitCopySElement800b6b4a0_00b6b4a0.cpp'
-        TestSource = '00/b6/global_UninitCopySElement800b6b4a0_00b6b4a0_test.cpp'
+        Module = 'std'
+        Source = '00/b6/std_uninitializedcopyCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b4a0.cpp'
+        TestSource = '00/b6/std_uninitializedcopyCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b4a0_test.cpp'
         PassPattern = '00b6b4a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b84d00'
-        Module = '_global'
-        Source = '00/b8/global_UninitCopySElement800b84d00_00b84d00.cpp'
-        TestSource = '00/b8/global_UninitCopySElement800b84d00_00b84d00_test.cpp'
+        Module = 'std'
+        Source = '00/b8/std_uninitializedcopyCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d00.cpp'
+        TestSource = '00/b8/std_uninitializedcopyCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d00_test.cpp'
         PassPattern = '00b84d00_TEST PASS'
     }
     [pscustomobject]@{
@@ -170724,100 +170724,100 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0066deb0'
-        Module = '_global'
-        Source = '00/66/global_FillSElement80066deb0_0066deb0.cpp'
-        TestSource = '00/66/global_FillSElement80066deb0_0066deb0_test.cpp'
+        Module = 'std'
+        Source = '00/66/std_fillCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066deb0.cpp'
+        TestSource = '00/66/std_fillCRegionMinimapRegionMinimapCellDataCRegionMinimapRegionMinimapCellData_0066deb0_test.cpp'
         PassPattern = '0066deb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00680320'
-        Module = '_global'
-        Source = '00/68/global_FillSElement800680320_00680320.cpp'
-        TestSource = '00/68/global_FillSElement800680320_00680320_test.cpp'
+        Module = 'std'
+        Source = '00/68/std_fillstdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_00680320.cpp'
+        TestSource = '00/68/std_fillstdpairEReactionSpeechTypelongstdpairEReactionSpeechTypelong_00680320_test.cpp'
         PassPattern = '00680320_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006c4b90'
-        Module = '_global'
-        Source = '00/6c/global_FillSElement8006c4b90_006c4b90.cpp'
-        TestSource = '00/6c/global_FillSElement8006c4b90_006c4b90_test.cpp'
+        Module = 'std'
+        Source = '00/6c/std_fillstdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c4b90.cpp'
+        TestSource = '00/6c/std_fillstdpairlongCOpinionDeedstdpairlongCOpinionDeed_006c4b90_test.cpp'
         PassPattern = '006c4b90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006e4560'
-        Module = '_global'
-        Source = '00/6e/global_FillSElement8006e4560_006e4560.cpp'
-        TestSource = '00/6e/global_FillSElement8006e4560_006e4560_test.cpp'
+        Module = 'std'
+        Source = '00/6e/std_fillNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e4560.cpp'
+        TestSource = '00/6e/std_fillNSpeechGainManagerCResponseTimesNSpeechGainManagerCResponseTimes_006e4560_test.cpp'
         PassPattern = '006e4560_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00784de0'
-        Module = '_global'
-        Source = '00/78/global_FillSElement800784de0_00784de0.cpp'
-        TestSource = '00/78/global_FillSElement800784de0_00784de0_test.cpp'
+        Module = 'std'
+        Source = '00/78/std_fillstdpairlongfloatstdpairlongfloat_00784de0.cpp'
+        TestSource = '00/78/std_fillstdpairlongfloatstdpairlongfloat_00784de0_test.cpp'
         PassPattern = '00784de0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007b3c80'
-        Module = '_global'
-        Source = '00/7b/global_FillSElement8007b3c80_007b3c80.cpp'
-        TestSource = '00/7b/global_FillSElement8007b3c80_007b3c80_test.cpp'
+        Module = 'std'
+        Source = '00/7b/std_fillCCrimeWaitingForBribeCCrimeWaitingForBribe_007b3c80.cpp'
+        TestSource = '00/7b/std_fillCCrimeWaitingForBribeCCrimeWaitingForBribe_007b3c80_test.cpp'
         PassPattern = '007b3c80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009b15a0'
-        Module = '_global'
-        Source = '00/9b/global_FillSElement8009b15a0_009b15a0.cpp'
-        TestSource = '00/9b/global_FillSElement8009b15a0_009b15a0_test.cpp'
+        Module = 'std'
+        Source = '00/9b/std_fillstdpairunsignedlongunsignedlongstdpairunsignedlongunsignedlong_009b15a0.cpp'
+        TestSource = '00/9b/std_fillstdpairunsignedlongunsignedlongstdpairunsignedlongunsignedlong_009b15a0_test.cpp'
         PassPattern = '009b15a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009c5ec0'
-        Module = '_global'
-        Source = '00/9c/global_FillSElement8009c5ec0_009c5ec0.cpp'
-        TestSource = '00/9c/global_FillSElement8009c5ec0_009c5ec0_test.cpp'
+        Module = 'std'
+        Source = '00/9c/std_fillCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c5ec0.cpp'
+        TestSource = '00/9c/std_fillCFileInstallerCBufferChunkCFileInstallerCBufferChunk_009c5ec0_test.cpp'
         PassPattern = '009c5ec0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a39220'
-        Module = '_global'
-        Source = '00/a3/global_FillSElement800a39220_00a39220.cpp'
-        TestSource = '00/a3/global_FillSElement800a39220_00a39220_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_fillstdpairunsignedlonglongstdpairunsignedlonglong_00a39220.cpp'
+        TestSource = '00/a3/std_fillstdpairunsignedlonglongstdpairunsignedlonglong_00a39220_test.cpp'
         PassPattern = '00a39220_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a482f0'
-        Module = '_global'
-        Source = '00/a4/global_FillSElement800a482f0_00a482f0.cpp'
-        TestSource = '00/a4/global_FillSElement800a482f0_00a482f0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_fillCComplexNumberCComplexNumber_00a482f0.cpp'
+        TestSource = '00/a4/std_fillCComplexNumberCComplexNumber_00a482f0_test.cpp'
         PassPattern = '00a482f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab3cd0'
-        Module = '_global'
-        Source = '00/ab/global_FillSElement800ab3cd0_00ab3cd0.cpp'
-        TestSource = '00/ab/global_FillSElement800ab3cd0_00ab3cd0_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_fillD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3cd0.cpp'
+        TestSource = '00/ab/std_fillD3DVERTEXELEMENT9D3DVERTEXELEMENT9_00ab3cd0_test.cpp'
         PassPattern = '00ab3cd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ac4220'
-        Module = '_global'
-        Source = '00/ac/global_FillSElement800ac4220_00ac4220.cpp'
-        TestSource = '00/ac/global_FillSElement800ac4220_00ac4220_test.cpp'
+        Module = 'std'
+        Source = '00/ac/std_fillC3DVertexBlend2C3DVertexBlend2_00ac4220.cpp'
+        TestSource = '00/ac/std_fillC3DVertexBlend2C3DVertexBlend2_00ac4220_test.cpp'
         PassPattern = '00ac4220_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bbd380'
-        Module = '_global'
-        Source = '00/bb/global_FillSElement800bbd380_00bbd380.cpp'
-        TestSource = '00/bb/global_FillSElement800bbd380_00bbd380_test.cpp'
+        Module = 'std'
+        Source = '00/bb/std_fillCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd380.cpp'
+        TestSource = '00/bb/std_fillCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd380_test.cpp'
         PassPattern = '00bbd380_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006131e0'
-        Module = '_global'
-        Source = '00/61/global_FillSElement40006131e0_006131e0.cpp'
-        TestSource = '00/61/global_FillSElement40006131e0_006131e0_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_fillCTCInventoryMapCUIRegionInfoCTCInventoryMapCUIRegionInfo_006131e0.cpp'
+        TestSource = '00/61/std_fillCTCInventoryMapCUIRegionInfoCTCInventoryMapCUIRegionInfo_006131e0_test.cpp'
         PassPattern = '006131e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170829,9 +170829,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00819360'
-        Module = '_global'
-        Source = '00/81/global_FillSElement3600819360_00819360.cpp'
-        TestSource = '00/81/global_FillSElement3600819360_00819360_test.cpp'
+        Module = 'std'
+        Source = '00/81/std_fillCParticleMorphsCEntryCParticleMorphsCEntry_00819360.cpp'
+        TestSource = '00/81/std_fillCParticleMorphsCEntryCParticleMorphsCEntry_00819360_test.cpp'
         PassPattern = '00819360_TEST PASS'
     }
     [pscustomobject]@{
@@ -170843,86 +170843,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a94600'
-        Module = '_global'
-        Source = '00/a9/global_FillSElement3200a94600_00a94600.cpp'
-        TestSource = '00/a9/global_FillSElement3200a94600_00a94600_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_fillC3DVertex2C3DVertex2_00a94600.cpp'
+        TestSource = '00/a9/std_fillC3DVertex2C3DVertex2_00a94600_test.cpp'
         PassPattern = '00a94600_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab10f0'
-        Module = '_global'
-        Source = '00/ab/global_FillSElement5200ab10f0_00ab10f0.cpp'
-        TestSource = '00/ab/global_FillSElement5200ab10f0_00ab10f0_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_fillN3DAnimationBuilderCSequenceInfoN3DAnimationBuilderCSequenceInfo_00ab10f0.cpp'
+        TestSource = '00/ab/std_fillN3DAnimationBuilderCSequenceInfoN3DAnimationBuilderCSequenceInfo_00ab10f0_test.cpp'
         PassPattern = '00ab10f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b48ef0'
-        Module = '_global'
-        Source = '00/b4/global_FillSElement11200b48ef0_00b48ef0.cpp'
-        TestSource = '00/b4/global_FillSElement11200b48ef0_00b48ef0_test.cpp'
+        Module = 'std'
+        Source = '00/b4/std_fillCEngineLightingManagerCThemeChannelCEngineLightingManagerCThemeChannel_00b48ef0.cpp'
+        TestSource = '00/b4/std_fillCEngineLightingManagerCThemeChannelCEngineLightingManagerCThemeChannel_00b48ef0_test.cpp'
         PassPattern = '00b48ef0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b6b580'
-        Module = '_global'
-        Source = '00/b6/global_FillSElement5600b6b580_00b6b580.cpp'
-        TestSource = '00/b6/global_FillSElement5600b6b580_00b6b580_test.cpp'
+        Module = 'std'
+        Source = '00/b6/std_fillCLandscapeThemeCLandscapeTheme_00b6b580.cpp'
+        TestSource = '00/b6/std_fillCLandscapeThemeCLandscapeTheme_00b6b580_test.cpp'
         PassPattern = '00b6b580_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b7aac0'
-        Module = '_global'
-        Source = '00/b7/global_FillSElement4800b7aac0_00b7aac0.cpp'
-        TestSource = '00/b7/global_FillSElement4800b7aac0_00b7aac0_test.cpp'
+        Module = 'std'
+        Source = '00/b7/std_fillCPreTransposedBoneMatrixCPreTransposedBoneMatrix_00b7aac0.cpp'
+        TestSource = '00/b7/std_fillCPreTransposedBoneMatrixCPreTransposedBoneMatrix_00b7aac0_test.cpp'
         PassPattern = '00b7aac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f37a00'
-        Module = '_global'
-        Source = '00/f3/global_FillSElement4400f37a00_00f37a00.cpp'
-        TestSource = '00/f3/global_FillSElement4400f37a00_00f37a00_test.cpp'
+        Module = 'std'
+        Source = '00/f3/std_fillCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37a00.cpp'
+        TestSource = '00/f3/std_fillCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37a00_test.cpp'
         PassPattern = '00f37a00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00535420'
-        Module = '_global'
-        Source = '00/53/global_DestroyRangeCountedPointer00535420_00535420.cpp'
-        TestSource = '00/53/global_DestroyRangeCountedPointer00535420_00535420_test.cpp'
+        Module = 'std'
+        Source = '00/53/std_destroyauxCCountedPointerNUISystemCComponent_00535420.cpp'
+        TestSource = '00/53/std_destroyauxCCountedPointerNUISystemCComponent_00535420_test.cpp'
         PassPattern = '00535420_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006f2300'
-        Module = '_global'
-        Source = '00/6f/global_DestroyRangeCountedPointer006f2300_006f2300.cpp'
-        TestSource = '00/6f/global_DestroyRangeCountedPointer006f2300_006f2300_test.cpp'
+        Module = 'std'
+        Source = '00/6f/std_destroyauxCCountedPointerCCombatSequenceBase_006f2300.cpp'
+        TestSource = '00/6f/std_destroyauxCCountedPointerCCombatSequenceBase_006f2300_test.cpp'
         PassPattern = '006f2300_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00764c40'
-        Module = '_global'
-        Source = '00/76/global_DestroyRangeCountedPointer00764c40_00764c40.cpp'
-        TestSource = '00/76/global_DestroyRangeCountedPointer00764c40_00764c40_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_destroyauxCCountedPointerNShapeCShape_00764c40.cpp'
+        TestSource = '00/76/std_destroyauxCCountedPointerNShapeCShape_00764c40_test.cpp'
         PassPattern = '00764c40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a2bd20'
-        Module = '_global'
-        Source = '00/a2/global_DestroyRangeCountedPointer00a2bd20_00a2bd20.cpp'
-        TestSource = '00/a2/global_DestroyRangeCountedPointer00a2bd20_00a2bd20_test.cpp'
+        Module = 'std'
+        Source = '00/a2/std_destroyauxCCountedPointerCMeshDataBankEntry_00a2bd20.cpp'
+        TestSource = '00/a2/std_destroyauxCCountedPointerCMeshDataBankEntry_00a2bd20_test.cpp'
         PassPattern = '00a2bd20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a464e0'
-        Module = '_global'
-        Source = '00/a4/global_DestroyRangeCountedPointer00a464e0_00a464e0.cpp'
-        TestSource = '00/a4/global_DestroyRangeCountedPointer00a464e0_00a464e0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_destroyauxCCountedPointerC3DSkeletalMorphParameter_00a464e0.cpp'
+        TestSource = '00/a4/std_destroyauxCCountedPointerC3DSkeletalMorphParameter_00a464e0_test.cpp'
         PassPattern = '00a464e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a8dae0'
-        Module = '_global'
-        Source = '00/a8/global_DestroyRangeCountedPointer00a8dae0_00a8dae0.cpp'
-        TestSource = '00/a8/global_DestroyRangeCountedPointer00a8dae0_00a8dae0_test.cpp'
+        Module = 'std'
+        Source = '00/a8/std_destroyauxCCountedPointerCScopedMemoryHandle_00a8dae0.cpp'
+        TestSource = '00/a8/std_destroyauxCCountedPointerCScopedMemoryHandle_00a8dae0_test.cpp'
         PassPattern = '00a8dae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170934,23 +170934,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a96940'
-        Module = '_global'
-        Source = '00/a9/global_DestroyRangeCountedPointer00a96940_00a96940.cpp'
-        TestSource = '00/a9/global_DestroyRangeCountedPointer00a96940_00a96940_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_destroyauxCCountedPointerC3DClothPrimitive_00a96940.cpp'
+        TestSource = '00/a9/std_destroyauxCCountedPointerC3DClothPrimitive_00a96940_test.cpp'
         PassPattern = '00a96940_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aa9140'
-        Module = '_global'
-        Source = '00/aa/global_DestroyRangeCountedPointer00aa9140_00aa9140.cpp'
-        TestSource = '00/aa/global_DestroyRangeCountedPointer00aa9140_00aa9140_test.cpp'
+        Module = 'std'
+        Source = '00/aa/std_destroyauxCCountedPointerCChunkedFileChunk_00aa9140.cpp'
+        TestSource = '00/aa/std_destroyauxCCountedPointerCChunkedFileChunk_00aa9140_test.cpp'
         PassPattern = '00aa9140_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab2bd0'
-        Module = '_global'
-        Source = '00/ab/global_DestroyRangeCountedPointer00ab2bd0_00ab2bd0.cpp'
-        TestSource = '00/ab/global_DestroyRangeCountedPointer00ab2bd0_00ab2bd0_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_destroyauxCCountedPointerC3DAnimationBuilderCBoneInfo_00ab2bd0.cpp'
+        TestSource = '00/ab/std_destroyauxCCountedPointerC3DAnimationBuilderCBoneInfo_00ab2bd0_test.cpp'
         PassPattern = '00ab2bd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -170983,37 +170983,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0054a1c0'
-        Module = '_global'
-        Source = '00/54/global_DestroyRangeCountedPointer0054a1c0_0054a1c0.cpp'
-        TestSource = '00/54/global_DestroyRangeCountedPointer0054a1c0_0054a1c0_test.cpp'
+        Module = 'std'
+        Source = '00/54/std_destroyauxCCountedPointerNUISystemCAction_0054a1c0.cpp'
+        TestSource = '00/54/std_destroyauxCCountedPointerNUISystemCAction_0054a1c0_test.cpp'
         PassPattern = '0054a1c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0056dbf0'
-        Module = '_global'
-        Source = '00/56/global_DestroyRangeCountedPointer0056dbf0_0056dbf0.cpp'
-        TestSource = '00/56/global_DestroyRangeCountedPointer0056dbf0_0056dbf0_test.cpp'
+        Module = 'std'
+        Source = '00/56/std_destroyauxCCountedPointerNCameraModesCSubComponentBase_0056dbf0.cpp'
+        TestSource = '00/56/std_destroyauxCCountedPointerNCameraModesCSubComponentBase_0056dbf0_test.cpp'
         PassPattern = '0056dbf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0067fe60'
-        Module = '_global'
-        Source = '00/67/global_DestroyRangeCountedPointer0067fe60_0067fe60.cpp'
-        TestSource = '00/67/global_DestroyRangeCountedPointer0067fe60_0067fe60_test.cpp'
+        Module = 'std'
+        Source = '00/67/std_destroyauxCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fe60.cpp'
+        TestSource = '00/67/std_destroyauxCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fe60_test.cpp'
         PassPattern = '0067fe60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00696790'
-        Module = '_global'
-        Source = '00/69/global_DestroyRangeCountedPointer00696790_00696790.cpp'
-        TestSource = '00/69/global_DestroyRangeCountedPointer00696790_00696790_test.cpp'
+        Module = 'std'
+        Source = '00/69/std_destroyauxCCountedPointerNCreatureActionCActionEventBase_00696790.cpp'
+        TestSource = '00/69/std_destroyauxCCountedPointerNCreatureActionCActionEventBase_00696790_test.cpp'
         PassPattern = '00696790_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00764ee0'
-        Module = '_global'
-        Source = '00/76/global_DestroyRangeCountedPointer00764ee0_00764ee0.cpp'
-        TestSource = '00/76/global_DestroyRangeCountedPointer00764ee0_00764ee0_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_destroyauxCCountedPointerNShapeCSubdivisionTriangle_00764ee0.cpp'
+        TestSource = '00/76/std_destroyauxCCountedPointerNShapeCSubdivisionTriangle_00764ee0_test.cpp'
         PassPattern = '00764ee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171025,23 +171025,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0098cee0'
-        Module = '_global'
-        Source = '00/98/global_DestroyRangeCountedPointer0098cee0_0098cee0.cpp'
-        TestSource = '00/98/global_DestroyRangeCountedPointer0098cee0_0098cee0_test.cpp'
+        Module = 'std'
+        Source = '00/98/std_destroyauxCCountedPointerCShaderResource_0098cee0.cpp'
+        TestSource = '00/98/std_destroyauxCCountedPointerCShaderResource_0098cee0_test.cpp'
         PassPattern = '0098cee0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009f6750'
-        Module = '_global'
-        Source = '00/9f/global_DestroyRangeCountedPointer009f6750_009f6750.cpp'
-        TestSource = '00/9f/global_DestroyRangeCountedPointer009f6750_009f6750_test.cpp'
+        Module = 'std'
+        Source = '00/9f/std_destroyauxCCountedPointerCJoystick_009f6750.cpp'
+        TestSource = '00/9f/std_destroyauxCCountedPointerCJoystick_009f6750_test.cpp'
         PassPattern = '009f6750_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a969d0'
-        Module = '_global'
-        Source = '00/a9/global_DestroyRangeCountedPointer00a969d0_00a969d0.cpp'
-        TestSource = '00/a9/global_DestroyRangeCountedPointer00a969d0_00a969d0_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_destroyauxCCountedPointerC3DGroup2_00a969d0.cpp'
+        TestSource = '00/a9/std_destroyauxCCountedPointerC3DGroup2_00a969d0_test.cpp'
         PassPattern = '00a969d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171053,16 +171053,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af0d80'
-        Module = '_global'
-        Source = '00/af/global_DestroyRangeCountedPointer00af0d80_00af0d80.cpp'
-        TestSource = '00/af/global_DestroyRangeCountedPointer00af0d80_00af0d80_test.cpp'
+        Module = 'std'
+        Source = '00/af/std_destroyauxCCountedPointerCGuiVarTransferBase_00af0d80.cpp'
+        TestSource = '00/af/std_destroyauxCCountedPointerCGuiVarTransferBase_00af0d80_test.cpp'
         PassPattern = '00af0d80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b38930'
-        Module = '_global'
-        Source = '00/b3/global_DestroyRangeCountedPointer00b38930_00b38930.cpp'
-        TestSource = '00/b3/global_DestroyRangeCountedPointer00b38930_00b38930_test.cpp'
+        Module = 'std'
+        Source = '00/b3/std_destroyauxCCountedPointerCEnginePrimitiveManager_00b38930.cpp'
+        TestSource = '00/b3/std_destroyauxCCountedPointerCEnginePrimitiveManager_00b38930_test.cpp'
         PassPattern = '00b38930_TEST PASS'
     }
     [pscustomobject]@{
@@ -171312,30 +171312,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049add0'
-        Module = '_global'
-        Source = '00/49/global_FillCTexture0049add0_0049add0.cpp'
-        TestSource = '00/49/global_FillCTexture0049add0_0049add0_test.cpp'
+        Module = 'std'
+        Source = '00/49/std_fillCTextureCTexture_0049add0.cpp'
+        TestSource = '00/49/std_fillCTextureCTexture_0049add0_test.cpp'
         PassPattern = '0049add0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00515090'
-        Module = '_global'
-        Source = '00/51/global_FillCMapInfo00515090_00515090.cpp'
-        TestSource = '00/51/global_FillCMapInfo00515090_00515090_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_fillCMapInfoCMapInfo_00515090.cpp'
+        TestSource = '00/51/std_fillCMapInfoCMapInfo_00515090_test.cpp'
         PassPattern = '00515090_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0051a9d0'
-        Module = '_global'
-        Source = '00/51/global_FillCRegion0051a9d0_0051a9d0.cpp'
-        TestSource = '00/51/global_FillCRegion0051a9d0_0051a9d0_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_fillCRegionCRegion_0051a9d0.cpp'
+        TestSource = '00/51/std_fillCRegionCRegion_0051a9d0_test.cpp'
         PassPattern = '0051a9d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0071a030'
-        Module = '_global'
-        Source = '00/71/global_FillCElement6800719e800071a030_0071a030.cpp'
-        TestSource = '00/71/global_FillCElement6800719e800071a030_0071a030_test.cpp'
+        Module = 'std'
+        Source = '00/71/std_fillCSubtitledMessageCSubtitledMessage_0071a030.cpp'
+        TestSource = '00/71/std_fillCSubtitledMessageCSubtitledMessage_0071a030_test.cpp'
         PassPattern = '0071a030_TEST PASS'
     }
     [pscustomobject]@{
@@ -171368,9 +171368,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a4ad80'
-        Module = '_global'
-        Source = '00/a4/global_FillCElement1200a4a52000a4ad80_00a4ad80.cpp'
-        TestSource = '00/a4/global_FillCElement1200a4a52000a4ad80_00a4ad80_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_fillCLipSyncFrameDataCLipSyncFrameData_00a4ad80.cpp'
+        TestSource = '00/a4/std_fillCLipSyncFrameDataCLipSyncFrameData_00a4ad80_test.cpp'
         PassPattern = '00a4ad80_TEST PASS'
     }
     [pscustomobject]@{
@@ -171753,9 +171753,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00514db0'
-        Module = '_global'
-        Source = '00/51/global_UninitFillNCElement72005110b000514db0_00514db0.cpp'
-        TestSource = '00/51/global_UninitFillNCElement72005110b000514db0_00514db0_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_uninitializedfillnCMapInfounsignedintCMapInfo_00514db0.cpp'
+        TestSource = '00/51/std_uninitializedfillnCMapInfounsignedintCMapInfo_00514db0_test.cpp'
         PassPattern = '00514db0_TEST PASS'
     }
     [pscustomobject]@{
@@ -171767,9 +171767,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051ba50'
-        Module = '_global'
-        Source = '00/51/global_UninitFillNCRegion0051ba50_0051ba50.cpp'
-        TestSource = '00/51/global_UninitFillNCRegion0051ba50_0051ba50_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_uninitializedfillnCRegionunsignedintCRegion_0051ba50.cpp'
+        TestSource = '00/51/std_uninitializedfillnCRegionunsignedintCRegion_0051ba50_test.cpp'
         PassPattern = '0051ba50_TEST PASS'
     }
     [pscustomobject]@{
@@ -171788,16 +171788,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a37d80'
-        Module = '_global'
-        Source = '00/a3/global_UninitFillNCElement2000a37b5000a37d80_00a37d80.cpp'
-        TestSource = '00/a3/global_UninitFillNCElement2000a37b5000a37d80_00a37d80_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_uninitializedfillnCClassTypeInfounsignedintCClassTypeInfo_00a37d80.cpp'
+        TestSource = '00/a3/std_uninitializedfillnCClassTypeInfounsignedintCClassTypeInfo_00a37d80_test.cpp'
         PassPattern = '00a37d80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a4aa70'
-        Module = '_global'
-        Source = '00/a4/global_UninitFillNCElement1200a49c6000a4aa70_00a4aa70.cpp'
-        TestSource = '00/a4/global_UninitFillNCElement1200a49c6000a4aa70_00a4aa70_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedfillnCLipSyncFrameDataunsignedintCLipSyncFrameData_00a4aa70.cpp'
+        TestSource = '00/a4/std_uninitializedfillnCLipSyncFrameDataunsignedintCLipSyncFrameData_00a4aa70_test.cpp'
         PassPattern = '00a4aa70_TEST PASS'
     }
     [pscustomobject]@{
@@ -172019,23 +172019,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007d98c0'
-        Module = '_global'
-        Source = '00/7d/global_UninitCopySElement16007d98c0_007d98c0.cpp'
-        TestSource = '00/7d/global_UninitCopySElement16007d98c0_007d98c0_test.cpp'
+        Module = 'std'
+        Source = '00/7d/std_uninitializedcopyKnickKnackKnickKnack_007d98c0.cpp'
+        TestSource = '00/7d/std_uninitializedcopyKnickKnackKnickKnack_007d98c0_test.cpp'
         PassPattern = '007d98c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007ea880'
-        Module = '_global'
-        Source = '00/7e/global_UninitCopySElement16007ea880_007ea880.cpp'
-        TestSource = '00/7e/global_UninitCopySElement16007ea880_007ea880_test.cpp'
+        Module = 'std'
+        Source = '00/7e/std_uninitializedcopystdpairC3DVectorlongstdpairC3DVectorlong_007ea880.cpp'
+        TestSource = '00/7e/std_uninitializedcopystdpairC3DVectorlongstdpairC3DVectorlong_007ea880_test.cpp'
         PassPattern = '007ea880_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0084ef50'
-        Module = '_global'
-        Source = '00/84/global_UninitCopySElement160084ef50_0084ef50.cpp'
-        TestSource = '00/84/global_UninitCopySElement160084ef50_0084ef50_test.cpp'
+        Module = 'std'
+        Source = '00/84/std_uninitializedcopystdpairC3DVectorfloatstdpairC3DVectorfloat_0084ef50.cpp'
+        TestSource = '00/84/std_uninitializedcopystdpairC3DVectorfloatstdpairC3DVectorfloat_0084ef50_test.cpp'
         PassPattern = '0084ef50_TEST PASS'
     }
     [pscustomobject]@{
@@ -172047,23 +172047,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a13490'
-        Module = '_global'
-        Source = '00/a1/global_UninitCopySElement1600a13490_00a13490.cpp'
-        TestSource = '00/a1/global_UninitCopySElement1600a13490_00a13490_test.cpp'
+        Module = 'std'
+        Source = '00/a1/std_uninitializedcopyC2DLineFC2DLineF_00a13490.cpp'
+        TestSource = '00/a1/std_uninitializedcopyC2DLineFC2DLineF_00a13490_test.cpp'
         PassPattern = '00a13490_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a7f9b0'
-        Module = '_global'
-        Source = '00/a7/global_UninitCopySElement1600a7f9b0_00a7f9b0.cpp'
-        TestSource = '00/a7/global_UninitCopySElement1600a7f9b0_00a7f9b0_test.cpp'
+        Module = 'std'
+        Source = '00/a7/std_uninitializedcopyCNavigationTransitionPointconstCNavigationTransitionPoint_00a7f9b0.cpp'
+        TestSource = '00/a7/std_uninitializedcopyCNavigationTransitionPointconstCNavigationTransitionPoint_00a7f9b0_test.cpp'
         PassPattern = '00a7f9b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bdf880'
-        Module = '_global'
-        Source = '00/bd/global_UninitCopySElement1600bdf880_00bdf880.cpp'
-        TestSource = '00/bd/global_UninitCopySElement1600bdf880_00bdf880_test.cpp'
+        Module = 'std'
+        Source = '00/bd/std_uninitializedcopyC3DBoundingSphereC3DBoundingSphere_00bdf880.cpp'
+        TestSource = '00/bd/std_uninitializedcopyC3DBoundingSphereC3DBoundingSphere_00bdf880_test.cpp'
         PassPattern = '00bdf880_TEST PASS'
     }
     [pscustomobject]@{
@@ -172390,9 +172390,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b6e10'
-        Module = '_global'
-        Source = '00/6b/global_UninitCopyCElement12006b6840006b6e10_006b6e10.cpp'
-        TestSource = '00/6b/global_UninitCopyCElement12006b6840006b6e10_006b6e10_test.cpp'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemePriorityStackNEnvironmentInternalCEnvironmentThemePriorityStack_006b6e10.cpp'
+        TestSource = '00/6b/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemePriorityStackNEnvironmentInternalCEnvironmentThemePriorityStack_006b6e10_test.cpp'
         PassPattern = '006b6e10_TEST PASS'
     }
     [pscustomobject]@{
@@ -172425,9 +172425,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0088a410'
-        Module = '_global'
-        Source = '00/88/global_UninitCopyCElement12008899c00088a410_0088a410.cpp'
-        TestSource = '00/88/global_UninitCopyCElement12008899c00088a410_0088a410_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemeSetDayNEnvironmentInternalCEnvironmentThemeSetDay_0088a410.cpp'
+        TestSource = '00/88/std_uninitializedcopyNEnvironmentInternalCEnvironmentThemeSetDayNEnvironmentInternalCEnvironmentThemeSetDay_0088a410_test.cpp'
         PassPattern = '0088a410_TEST PASS'
     }
     [pscustomobject]@{
@@ -172439,23 +172439,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a37d50'
-        Module = '_global'
-        Source = '00/a3/global_UninitCopyCElement2000a37b5000a37d50_00a37d50.cpp'
-        TestSource = '00/a3/global_UninitCopyCElement2000a37b5000a37d50_00a37d50_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_uninitializedcopyCClassTypeInfoCClassTypeInfo_00a37d50.cpp'
+        TestSource = '00/a3/std_uninitializedcopyCClassTypeInfoCClassTypeInfo_00a37d50_test.cpp'
         PassPattern = '00a37d50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ad1990'
-        Module = '_global'
-        Source = '00/ad/global_UninitCopyCElement7200ad010000ad1990_00ad1990.cpp'
-        TestSource = '00/ad/global_UninitCopyCElement7200ad010000ad1990_00ad1990_test.cpp'
+        Module = 'std'
+        Source = '00/ad/std_uninitializedcopyQuadricOptimiserInternalsCOptimisedFaceQuadricOptimiserInternalsCOptimisedFace_00ad1990.cpp'
+        TestSource = '00/ad/std_uninitializedcopyQuadricOptimiserInternalsCOptimisedFaceQuadricOptimiserInternalsCOptimisedFace_00ad1990_test.cpp'
         PassPattern = '00ad1990_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005171b0'
-        Module = '_global'
-        Source = '00/51/global_CopyCElement1200512ce0005171b0_005171b0.cpp'
-        TestSource = '00/51/global_CopyCElement1200512ce0005171b0_005171b0_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_copystdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongint_005171b0.cpp'
+        TestSource = '00/51/std_copystdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongint_005171b0_test.cpp'
         PassPattern = '005171b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -172488,9 +172488,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a4adb0'
-        Module = '_global'
-        Source = '00/a4/global_CopyCElement1200a4a52000a4adb0_00a4adb0.cpp'
-        TestSource = '00/a4/global_CopyCElement1200a4a52000a4adb0_00a4adb0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_copyCLipSyncFrameDataCLipSyncFrameDataint_00a4adb0.cpp'
+        TestSource = '00/a4/std_copyCLipSyncFrameDataCLipSyncFrameDataint_00a4adb0_test.cpp'
         PassPattern = '00a4adb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -172628,9 +172628,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f6680'
-        Module = '_global'
-        Source = '00/8f/global_CopyBackwardSElement12008f6680_008f6680.cpp'
-        TestSource = '00/8f/global_CopyBackwardSElement12008f6680_008f6680_test.cpp'
+        Module = 'std'
+        Source = '00/8f/std_copybackwardCHeightMapCellCHeightMapCellint_008f6680.cpp'
+        TestSource = '00/8f/std_copybackwardCHeightMapCellCHeightMapCellint_008f6680_test.cpp'
         PassPattern = '008f6680_TEST PASS'
     }
     [pscustomobject]@{
@@ -172656,9 +172656,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00517430'
-        Module = '_global'
-        Source = '00/51/global_CopyBackwardCElement1200512ce000517430_00517430.cpp'
-        TestSource = '00/51/global_CopyBackwardCElement1200512ce000517430_00517430_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_copybackwardstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongint_00517430.cpp'
+        TestSource = '00/51/std_copybackwardstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongstdsetunsignedlongstdlessunsignedlongstdallocatorunsignedlongint_00517430_test.cpp'
         PassPattern = '00517430_TEST PASS'
     }
     [pscustomobject]@{
@@ -172691,9 +172691,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a4aac0'
-        Module = '_global'
-        Source = '00/a4/global_CopyBackwardCElement1200a4a52000a4aac0_00a4aac0.cpp'
-        TestSource = '00/a4/global_CopyBackwardCElement1200a4a52000a4aac0_00a4aac0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_copybackwardCLipSyncFrameDataCLipSyncFrameDataint_00a4aac0.cpp'
+        TestSource = '00/a4/std_copybackwardCLipSyncFrameDataCLipSyncFrameDataint_00a4aac0_test.cpp'
         PassPattern = '00a4aac0_TEST PASS'
     }
     [pscustomobject]@{
@@ -173636,9 +173636,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004cf950'
-        Module = '_global'
-        Source = '00/4c/global_UninitCopySPairLongCSecond0099ec30004cf950_004cf950.cpp'
-        TestSource = '00/4c/global_UninitCopySPairLongCSecond0099ec30004cf950_004cf950_test.cpp'
+        Module = 'std'
+        Source = '00/4c/std_uninitializedcopystdpairfloatCCharStringstdpairfloatCCharString_004cf950.cpp'
+        TestSource = '00/4c/std_uninitializedcopystdpairfloatCCharStringstdpairfloatCCharString_004cf950_test.cpp'
         PassPattern = '004cf950_TEST PASS'
     }
     [pscustomobject]@{
@@ -173671,9 +173671,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00824650'
-        Module = '_global'
-        Source = '00/82/global_UninitCopySPairLongCSecond0099ec3000824650_00824650.cpp'
-        TestSource = '00/82/global_UninitCopySPairLongCSecond0099ec3000824650_00824650_test.cpp'
+        Module = 'std'
+        Source = '00/82/std_uninitializedcopyCMapCScriptedMapBrushUpdateAreaCMapCScriptedMapBrushUpdateArea_00824650.cpp'
+        TestSource = '00/82/std_uninitializedcopyCMapCScriptedMapBrushUpdateAreaCMapCScriptedMapBrushUpdateArea_00824650_test.cpp'
         PassPattern = '00824650_TEST PASS'
     }
     [pscustomobject]@{
@@ -173685,37 +173685,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ae7480'
-        Module = '_global'
-        Source = '00/ae/global_UninitCopySPairLongCSecond00ae5d8000ae7480_00ae7480.cpp'
-        TestSource = '00/ae/global_UninitCopySPairLongCSecond00ae5d8000ae7480_00ae7480_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_uninitializedcopyC3DGroup2C3DGroup2_00ae7480.cpp'
+        TestSource = '00/ae/std_uninitializedcopyC3DGroup2C3DGroup2_00ae7480_test.cpp'
         PassPattern = '00ae7480_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bf8f30'
-        Module = '_global'
-        Source = '00/bf/global_UninitCopySPairLongCSecond0099ec3000bf8f30_00bf8f30.cpp'
-        TestSource = '00/bf/global_UninitCopySPairLongCSecond0099ec3000bf8f30_00bf8f30_test.cpp'
+        Module = 'std'
+        Source = '00/bf/std_uninitializedcopyCEngineTexturePaletteCPaletteEntryCEngineTexturePaletteCPaletteEntry_00bf8f30.cpp'
+        TestSource = '00/bf/std_uninitializedcopyCEngineTexturePaletteCPaletteEntryCEngineTexturePaletteCPaletteEntry_00bf8f30_test.cpp'
         PassPattern = '00bf8f30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006d3770'
-        Module = '_global'
-        Source = '00/6d/global_UninitCopySPairCSecond0099ec30Long006d3770_006d3770.cpp'
-        TestSource = '00/6d/global_UninitCopySPairCSecond0099ec30Long006d3770_006d3770_test.cpp'
+        Module = 'std'
+        Source = '00/6d/std_uninitializedcopystdpairCCharStringlongstdpairCCharStringlong_006d3770.cpp'
+        TestSource = '00/6d/std_uninitializedcopystdpairCCharStringlongstdpairCCharStringlong_006d3770_test.cpp'
         PassPattern = '006d3770_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006dbce0'
-        Module = '_global'
-        Source = '00/6d/global_UninitCopySPairCSecond004f9408Long006dbce0_006dbce0.cpp'
-        TestSource = '00/6d/global_UninitCopySPairCSecond004f9408Long006dbce0_006dbce0_test.cpp'
+        Module = 'std'
+        Source = '00/6d/std_uninitializedcopyCAttackHistoryComboCAttackHistoryCombo_006dbce0.cpp'
+        TestSource = '00/6d/std_uninitializedcopyCAttackHistoryComboCAttackHistoryCombo_006dbce0_test.cpp'
         PassPattern = '006dbce0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006fb1c0'
-        Module = '_global'
-        Source = '00/6f/global_UninitCopySPairCSecond0099ec30Long006fb1c0_006fb1c0.cpp'
-        TestSource = '00/6f/global_UninitCopySPairCSecond0099ec30Long006fb1c0_006fb1c0_test.cpp'
+        Module = 'std'
+        Source = '00/6f/std_uninitializedcopystdpairCCharStringlongconststdpairCCharStringlong_006fb1c0.cpp'
+        TestSource = '00/6f/std_uninitializedcopystdpairCCharStringlongconststdpairCCharStringlong_006fb1c0_test.cpp'
         PassPattern = '006fb1c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -173727,30 +173727,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009b2680'
-        Module = '_global'
-        Source = '00/9b/global_UninitCopySPairCSecond0099ec30Long009b2680_009b2680.cpp'
-        TestSource = '00/9b/global_UninitCopySPairCSecond0099ec30Long009b2680_009b2680_test.cpp'
+        Module = 'std'
+        Source = '00/9b/std_uninitializedcopystdpairCCharStringunsignedlongstdpairCCharStringunsignedlong_009b2680.cpp'
+        TestSource = '00/9b/std_uninitializedcopystdpairCCharStringunsignedlongstdpairCCharStringunsignedlong_009b2680_test.cpp'
         PassPattern = '009b2680_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a2a350'
-        Module = '_global'
-        Source = '00/a2/global_UninitCopySPairCSecond0099ec30Long00a2a350_00a2a350.cpp'
-        TestSource = '00/a2/global_UninitCopySPairCSecond0099ec30Long00a2a350_00a2a350_test.cpp'
+        Module = 'std'
+        Source = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryCMeshDataBankCLipSyncEntry_00a2a350.cpp'
+        TestSource = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryCMeshDataBankCLipSyncEntry_00a2a350_test.cpp'
         PassPattern = '00a2a350_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a2a3c0'
-        Module = '_global'
-        Source = '00/a2/global_UninitCopySPairCSecond0099ec30Long00a2a3c0_00a2a3c0.cpp'
-        TestSource = '00/a2/global_UninitCopySPairCSecond0099ec30Long00a2a3c0_00a2a3c0_test.cpp'
+        Module = 'std'
+        Source = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryconstCMeshDataBankCLipSyncEntry_00a2a3c0.cpp'
+        TestSource = '00/a2/std_uninitializedcopyCMeshDataBankCLipSyncEntryconstCMeshDataBankCLipSyncEntry_00a2a3c0_test.cpp'
         PassPattern = '00a2a3c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a3fc40'
-        Module = '_global'
-        Source = '00/a3/global_UninitCopySPairCSecond0099ec30Long00a3fc40_00a3fc40.cpp'
-        TestSource = '00/a3/global_UninitCopySPairCSecond0099ec30Long00a3fc40_00a3fc40_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_uninitializedcopystdpairCCharStringCSoundBankLHstdpairCCharStringCSoundBankLH_00a3fc40.cpp'
+        TestSource = '00/a3/std_uninitializedcopystdpairCCharStringCSoundBankLHstdpairCCharStringCSoundBankLH_00a3fc40_test.cpp'
         PassPattern = '00a3fc40_TEST PASS'
     }
     [pscustomobject]@{
@@ -174735,51 +174735,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0067fd30'
-        Module = '_global'
-        Source = '00/67/global_UninitFillNCCountedPointer0067fd30_0067fd30.cpp'
-        TestSource = '00/67/global_UninitFillNCCountedPointer0067fd30_0067fd30_test.cpp'
+        Module = 'std'
+        Source = '00/67/std_uninitializedfillnCCountedPointerNHitLocationsCPhysicalPrimitiveBaseunsignedintCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fd30.cpp'
+        TestSource = '00/67/std_uninitializedfillnCCountedPointerNHitLocationsCPhysicalPrimitiveBaseunsignedintCCountedPointerNHitLocationsCPhysicalPrimitiveBase_0067fd30_test.cpp'
         PassPattern = '0067fd30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006efe50'
-        Module = '_global'
-        Source = '00/6e/global_UninitFillNCCountedPointer006efe50_006efe50.cpp'
-        TestSource = '00/6e/global_UninitFillNCCountedPointer006efe50_006efe50_test.cpp'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedfillnCCountedPointerCCombatSequenceBaseunsignedintCCountedPointerCCombatSequenceBase_006efe50.cpp'
+        TestSource = '00/6e/std_uninitializedfillnCCountedPointerCCombatSequenceBaseunsignedintCCountedPointerCCombatSequenceBase_006efe50_test.cpp'
         PassPattern = '006efe50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00764590'
-        Module = '_global'
-        Source = '00/76/global_UninitFillNCCountedPointer00764590_00764590.cpp'
-        TestSource = '00/76/global_UninitFillNCCountedPointer00764590_00764590_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_uninitializedfillnCCountedPointerNShapeCSubdivisionTriangleunsignedintCCountedPointerNShapeCSubdivisionTriangle_00764590.cpp'
+        TestSource = '00/76/std_uninitializedfillnCCountedPointerNShapeCSubdivisionTriangleunsignedintCCountedPointerNShapeCSubdivisionTriangle_00764590_test.cpp'
         PassPattern = '00764590_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a95790'
-        Module = '_global'
-        Source = '00/a9/global_UninitFillNCCountedPointer00a95790_00a95790.cpp'
-        TestSource = '00/a9/global_UninitFillNCCountedPointer00a95790_00a95790_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_uninitializedfillnCCountedPointerC3DClothPrimitiveunsignedintCCountedPointerC3DClothPrimitive_00a95790.cpp'
+        TestSource = '00/a9/std_uninitializedfillnCCountedPointerC3DClothPrimitiveunsignedintCCountedPointerC3DClothPrimitive_00a95790_test.cpp'
         PassPattern = '00a95790_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a95860'
-        Module = '_global'
-        Source = '00/a9/global_UninitFillNCCountedPointer00a95860_00a95860.cpp'
-        TestSource = '00/a9/global_UninitFillNCCountedPointer00a95860_00a95860_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_uninitializedfillnCCountedPointerC3DGroup2unsignedintCCountedPointerC3DGroup2_00a95860.cpp'
+        TestSource = '00/a9/std_uninitializedfillnCCountedPointerC3DGroup2unsignedintCCountedPointerC3DGroup2_00a95860_test.cpp'
         PassPattern = '00a95860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aa8e80'
-        Module = '_global'
-        Source = '00/aa/global_UninitFillNCCountedPointer00aa8e80_00aa8e80.cpp'
-        TestSource = '00/aa/global_UninitFillNCCountedPointer00aa8e80_00aa8e80_test.cpp'
+        Module = 'std'
+        Source = '00/aa/std_uninitializedfillnCCountedPointerCChunkedFileChunkunsignedintCCountedPointerCChunkedFileChunk_00aa8e80.cpp'
+        TestSource = '00/aa/std_uninitializedfillnCCountedPointerCChunkedFileChunkunsignedintCCountedPointerCChunkedFileChunk_00aa8e80_test.cpp'
         PassPattern = '00aa8e80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab1000'
-        Module = '_global'
-        Source = '00/ab/global_UninitFillNCCountedPointer00ab1000_00ab1000.cpp'
-        TestSource = '00/ab/global_UninitFillNCCountedPointer00ab1000_00ab1000_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_uninitializedfillnCCountedPointerC3DAnimationBuilderCBoneInfounsignedintCCountedPointerC3DAnimationBuilderCBoneInfo_00ab1000.cpp'
+        TestSource = '00/ab/std_uninitializedfillnCCountedPointerC3DAnimationBuilderCBoneInfounsignedintCCountedPointerC3DAnimationBuilderCBoneInfo_00ab1000_test.cpp'
         PassPattern = '00ab1000_TEST PASS'
     }
     [pscustomobject]@{
@@ -174791,9 +174791,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af0aa0'
-        Module = '_global'
-        Source = '00/af/global_UninitFillNCCountedPointer00af0aa0_00af0aa0.cpp'
-        TestSource = '00/af/global_UninitFillNCCountedPointer00af0aa0_00af0aa0_test.cpp'
+        Module = 'std'
+        Source = '00/af/std_uninitializedfillnCCountedPointerCGuiVarTransferBaseunsignedintCCountedPointerCGuiVarTransferBase_00af0aa0.cpp'
+        TestSource = '00/af/std_uninitializedfillnCCountedPointerCGuiVarTransferBaseunsignedintCCountedPointerCGuiVarTransferBase_00af0aa0_test.cpp'
         PassPattern = '00af0aa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178851,93 +178851,93 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00469fa5'
-        Module = '_global'
-        Source = '00/46/global_UninitFillN00469fa5_00469fa5.cpp'
-        TestSource = '00/46/global_UninitFillN00469fa5_00469fa5_test.cpp'
+        Module = 'std'
+        Source = '00/46/std_uninitializedfillnCTextureReplacementDefCEntryunsignedintCTextureReplacementDefCEntry_00469fa5.cpp'
+        TestSource = '00/46/std_uninitializedfillnCTextureReplacementDefCEntryunsignedintCTextureReplacementDefCEntry_00469fa5_test.cpp'
         PassPattern = '00469fa5_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046b2e9'
-        Module = '_global'
-        Source = '00/46/global_UninitFillN0046b2e9_0046b2e9.cpp'
-        TestSource = '00/46/global_UninitFillN0046b2e9_0046b2e9_test.cpp'
+        Module = 'std'
+        Source = '00/46/std_uninitializedfillnCAtmosBankEntryunsignedintCAtmosBankEntry_0046b2e9.cpp'
+        TestSource = '00/46/std_uninitializedfillnCAtmosBankEntryunsignedintCAtmosBankEntry_0046b2e9_test.cpp'
         PassPattern = '0046b2e9_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0046c5d5'
-        Module = '_global'
-        Source = '00/46/global_UninitFillN0046c5d5_0046c5d5.cpp'
-        TestSource = '00/46/global_UninitFillN0046c5d5_0046c5d5_test.cpp'
+        Module = 'std'
+        Source = '00/46/std_uninitializedfillnCObjectFamilyEntryunsignedintCObjectFamilyEntry_0046c5d5.cpp'
+        TestSource = '00/46/std_uninitializedfillnCObjectFamilyEntryunsignedintCObjectFamilyEntry_0046c5d5_test.cpp'
         PassPattern = '0046c5d5_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00470bcd'
-        Module = '_global'
-        Source = '00/47/global_UninitFillN00470bcd_00470bcd.cpp'
-        TestSource = '00/47/global_UninitFillN00470bcd_00470bcd_test.cpp'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfillnstdpairunsignedlongCDefStringunsignedintstdpairunsignedlongCDefString_00470bcd.cpp'
+        TestSource = '00/47/std_uninitializedfillnstdpairunsignedlongCDefStringunsignedintstdpairunsignedlongCDefString_00470bcd_test.cpp'
         PassPattern = '00470bcd_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00476001'
-        Module = '_global'
-        Source = '00/47/global_UninitFillN00476001_00476001.cpp'
-        TestSource = '00/47/global_UninitFillN00476001_00476001_test.cpp'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfillnC2DVectorunsignedintC2DVector_00476001.cpp'
+        TestSource = '00/47/std_uninitializedfillnC2DVectorunsignedintC2DVector_00476001_test.cpp'
         PassPattern = '00476001_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005ba858'
-        Module = '_global'
-        Source = '00/5b/global_UninitFillN005ba858_005ba858.cpp'
-        TestSource = '00/5b/global_UninitFillN005ba858_005ba858_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_uninitializedfillnstdpairEClothingSuitPartNUISystemCComponentunsignedintstdpairEClothingSuitPartNUISystemCComponent_005ba858.cpp'
+        TestSource = '00/5b/std_uninitializedfillnstdpairEClothingSuitPartNUISystemCComponentunsignedintstdpairEClothingSuitPartNUISystemCComponent_005ba858_test.cpp'
         PassPattern = '005ba858_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005f8299'
-        Module = '_global'
-        Source = '00/5f/global_UninitFillN005f8299_005f8299.cpp'
-        TestSource = '00/5f/global_UninitFillN005f8299_005f8299_test.cpp'
+        Module = 'std'
+        Source = '00/5f/std_uninitializedfillnstdpairlongEHeroAbilityunsignedintstdpairlongEHeroAbility_005f8299.cpp'
+        TestSource = '00/5f/std_uninitializedfillnstdpairlongEHeroAbilityunsignedintstdpairlongEHeroAbility_005f8299_test.cpp'
         PassPattern = '005f8299_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00784f60'
-        Module = '_global'
-        Source = '00/78/global_UninitFillN00784f60_00784f60.cpp'
-        TestSource = '00/78/global_UninitFillN00784f60_00784f60_test.cpp'
+        Module = 'std'
+        Source = '00/78/std_uninitializedfillnstdpairlongfloatunsignedintstdpairlongfloat_00784f60.cpp'
+        TestSource = '00/78/std_uninitializedfillnstdpairlongfloatunsignedintstdpairlongfloat_00784f60_test.cpp'
         PassPattern = '00784f60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0081a620'
-        Module = '_global'
-        Source = '00/81/global_UninitFillN0081a620_0081a620.cpp'
-        TestSource = '00/81/global_UninitFillN0081a620_0081a620_test.cpp'
+        Module = 'std'
+        Source = '00/81/std_uninitializedfillnCSkeletalMorphsCEntryunsignedintCSkeletalMorphsCEntry_0081a620.cpp'
+        TestSource = '00/81/std_uninitializedfillnCSkeletalMorphsCEntryunsignedintCSkeletalMorphsCEntry_0081a620_test.cpp'
         PassPattern = '0081a620_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a48840'
-        Module = '_global'
-        Source = '00/a4/global_UninitFillN00a48840_00a48840.cpp'
-        TestSource = '00/a4/global_UninitFillN00a48840_00a48840_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedfillnCComplexNumberunsignedintCComplexNumber_00a48840.cpp'
+        TestSource = '00/a4/std_uninitializedfillnCComplexNumberunsignedintCComplexNumber_00a48840_test.cpp'
         PassPattern = '00a48840_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ac42c0'
-        Module = '_global'
-        Source = '00/ac/global_UninitFillN00ac42c0_00ac42c0.cpp'
-        TestSource = '00/ac/global_UninitFillN00ac42c0_00ac42c0_test.cpp'
+        Module = 'std'
+        Source = '00/ac/std_uninitializedfillnC3DVertexBlend2unsignedintC3DVertexBlend2_00ac42c0.cpp'
+        TestSource = '00/ac/std_uninitializedfillnC3DVertexBlend2unsignedintC3DVertexBlend2_00ac42c0_test.cpp'
         PassPattern = '00ac42c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ae4f90'
-        Module = '_global'
-        Source = '00/ae/global_UninitFillN00ae4f90_00ae4f90.cpp'
-        TestSource = '00/ae/global_UninitFillN00ae4f90_00ae4f90_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_uninitializedfillnC3DQuad2unsignedintC3DQuad2_00ae4f90.cpp'
+        TestSource = '00/ae/std_uninitializedfillnC3DQuad2unsignedintC3DQuad2_00ae4f90_test.cpp'
         PassPattern = '00ae4f90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b6b5e0'
-        Module = '_global'
-        Source = '00/b6/global_UninitFillN00b6b5e0_00b6b5e0.cpp'
-        TestSource = '00/b6/global_UninitFillN00b6b5e0_00b6b5e0_test.cpp'
+        Module = 'std'
+        Source = '00/b6/std_uninitializedfillnCEngineLandscapeRendererCSubPatchSorterEntryunsignedintCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5e0.cpp'
+        TestSource = '00/b6/std_uninitializedfillnCEngineLandscapeRendererCSubPatchSorterEntryunsignedintCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5e0_test.cpp'
         PassPattern = '00b6b5e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178956,79 +178956,79 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007d9900'
-        Module = '_global'
-        Source = '00/7d/global_UninitFillN007d9900_007d9900.cpp'
-        TestSource = '00/7d/global_UninitFillN007d9900_007d9900_test.cpp'
+        Module = 'std'
+        Source = '00/7d/std_uninitializedfillnKnickKnackunsignedintKnickKnack_007d9900.cpp'
+        TestSource = '00/7d/std_uninitializedfillnKnickKnackunsignedintKnickKnack_007d9900_test.cpp'
         PassPattern = '007d9900_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007ea8c0'
-        Module = '_global'
-        Source = '00/7e/global_UninitFillN007ea8c0_007ea8c0.cpp'
-        TestSource = '00/7e/global_UninitFillN007ea8c0_007ea8c0_test.cpp'
+        Module = 'std'
+        Source = '00/7e/std_uninitializedfillnstdpairC3DVectorlongunsignedintstdpairC3DVectorlong_007ea8c0.cpp'
+        TestSource = '00/7e/std_uninitializedfillnstdpairC3DVectorlongunsignedintstdpairC3DVectorlong_007ea8c0_test.cpp'
         PassPattern = '007ea8c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0084ef90'
-        Module = '_global'
-        Source = '00/84/global_UninitFillN0084ef90_0084ef90.cpp'
-        TestSource = '00/84/global_UninitFillN0084ef90_0084ef90_test.cpp'
+        Module = 'std'
+        Source = '00/84/std_uninitializedfillnstdpairC3DVectorfloatunsignedintstdpairC3DVectorfloat_0084ef90.cpp'
+        TestSource = '00/84/std_uninitializedfillnstdpairC3DVectorfloatunsignedintstdpairC3DVectorfloat_0084ef90_test.cpp'
         PassPattern = '0084ef90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a11250'
-        Module = '_global'
-        Source = '00/a1/global_UninitFillN00a11250_00a11250.cpp'
-        TestSource = '00/a1/global_UninitFillN00a11250_00a11250_test.cpp'
+        Module = 'std'
+        Source = '00/a1/std_uninitializedfillnCPlaneunsignedintCPlane_00a11250.cpp'
+        TestSource = '00/a1/std_uninitializedfillnCPlaneunsignedintCPlane_00a11250_test.cpp'
         PassPattern = '00a11250_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a134d0'
-        Module = '_global'
-        Source = '00/a1/global_UninitFillN00a134d0_00a134d0.cpp'
-        TestSource = '00/a1/global_UninitFillN00a134d0_00a134d0_test.cpp'
+        Module = 'std'
+        Source = '00/a1/std_uninitializedfillnC2DLineFunsignedintC2DLineF_00a134d0.cpp'
+        TestSource = '00/a1/std_uninitializedfillnC2DLineFunsignedintC2DLineF_00a134d0_test.cpp'
         PassPattern = '00a134d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bdf8c0'
-        Module = '_global'
-        Source = '00/bd/global_UninitFillN00bdf8c0_00bdf8c0.cpp'
-        TestSource = '00/bd/global_UninitFillN00bdf8c0_00bdf8c0_test.cpp'
+        Module = 'std'
+        Source = '00/bd/std_uninitializedfillnC3DBoundingSphereunsignedintC3DBoundingSphere_00bdf8c0.cpp'
+        TestSource = '00/bd/std_uninitializedfillnC3DBoundingSphereunsignedintC3DBoundingSphere_00bdf8c0_test.cpp'
         PassPattern = '00bdf8c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007080d0'
-        Module = '_global'
-        Source = '00/70/global_UninitFillN007080d0_007080d0.cpp'
-        TestSource = '00/70/global_UninitFillN007080d0_007080d0_test.cpp'
+        Module = 'std'
+        Source = '00/70/std_uninitializedfillnNGraphicAppearanceCMeshInfounsignedintNGraphicAppearanceCMeshInfo_007080d0.cpp'
+        TestSource = '00/70/std_uninitializedfillnNGraphicAppearanceCMeshInfounsignedintNGraphicAppearanceCMeshInfo_007080d0_test.cpp'
         PassPattern = '007080d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00885ce0'
-        Module = '_global'
-        Source = '00/88/global_UninitFillN00885ce0_00885ce0.cpp'
-        TestSource = '00/88/global_UninitFillN00885ce0_00885ce0_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeightunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeight_00885ce0.cpp'
+        TestSource = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeightunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntryCThemeWeight_00885ce0_test.cpp'
         PassPattern = '00885ce0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008f6860'
-        Module = '_global'
-        Source = '00/8f/global_UninitFillN008f6860_008f6860.cpp'
-        TestSource = '00/8f/global_UninitFillN008f6860_008f6860_test.cpp'
+        Module = 'std'
+        Source = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6860.cpp'
+        TestSource = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6860_test.cpp'
         PassPattern = '008f6860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008f6910'
-        Module = '_global'
-        Source = '00/8f/global_UninitFillN008f6910_008f6910.cpp'
-        TestSource = '00/8f/global_UninitFillN008f6910_008f6910_test.cpp'
+        Module = 'std'
+        Source = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6910.cpp'
+        TestSource = '00/8f/std_uninitializedfillnCHeightMapCellunsignedintCHeightMapCell_008f6910_test.cpp'
         PassPattern = '008f6910_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009d1ca0'
-        Module = '_global'
-        Source = '00/9d/global_UninitFillN009d1ca0_009d1ca0.cpp'
-        TestSource = '00/9d/global_UninitFillN009d1ca0_009d1ca0_test.cpp'
+        Module = 'std'
+        Source = '00/9d/std_uninitializedfillnCBankFileCRuntimeDataunsignedintCBankFileCRuntimeData_009d1ca0.cpp'
+        TestSource = '00/9d/std_uninitializedfillnCBankFileCRuntimeDataunsignedintCBankFileCRuntimeData_009d1ca0_test.cpp'
         PassPattern = '009d1ca0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179040,9 +179040,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ada820'
-        Module = '_global'
-        Source = '00/ad/global_UninitFillN00ada820_00ada820.cpp'
-        TestSource = '00/ad/global_UninitFillN00ada820_00ada820_test.cpp'
+        Module = 'std'
+        Source = '00/ad/std_uninitializedfillnCVertexGroupBlockOptimiserCBlockInfounsignedintCVertexGroupBlockOptimiserCBlockInfo_00ada820.cpp'
+        TestSource = '00/ad/std_uninitializedfillnCVertexGroupBlockOptimiserCBlockInfounsignedintCVertexGroupBlockOptimiserCBlockInfo_00ada820_test.cpp'
         PassPattern = '00ada820_TEST PASS'
     }
     [pscustomobject]@{
@@ -179061,9 +179061,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00613210'
-        Module = '_global'
-        Source = '00/61/global_UninitFillN00613210_00613210.cpp'
-        TestSource = '00/61/global_UninitFillN00613210_00613210_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_uninitializedfillnCTCInventoryMapCUIRegionInfounsignedintCTCInventoryMapCUIRegionInfo_00613210.cpp'
+        TestSource = '00/61/std_uninitializedfillnCTCInventoryMapCUIRegionInfounsignedintCTCInventoryMapCUIRegionInfo_00613210_test.cpp'
         PassPattern = '00613210_TEST PASS'
     }
     [pscustomobject]@{
@@ -179075,51 +179075,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0081a750'
-        Module = '_global'
-        Source = '00/81/global_UninitFillN0081a750_0081a750.cpp'
-        TestSource = '00/81/global_UninitFillN0081a750_0081a750_test.cpp'
+        Module = 'std'
+        Source = '00/81/std_uninitializedfillnCParticleMorphsCEntryunsignedintCParticleMorphsCEntry_0081a750.cpp'
+        TestSource = '00/81/std_uninitializedfillnCParticleMorphsCEntryunsignedintCParticleMorphsCEntry_0081a750_test.cpp'
         PassPattern = '0081a750_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab1410'
-        Module = '_global'
-        Source = '00/ab/global_UninitFillN00ab1410_00ab1410.cpp'
-        TestSource = '00/ab/global_UninitFillN00ab1410_00ab1410_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_uninitializedfillnN3DAnimationBuilderCSequenceInfounsignedintN3DAnimationBuilderCSequenceInfo_00ab1410.cpp'
+        TestSource = '00/ab/std_uninitializedfillnN3DAnimationBuilderCSequenceInfounsignedintN3DAnimationBuilderCSequenceInfo_00ab1410_test.cpp'
         PassPattern = '00ab1410_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b497b0'
-        Module = '_global'
-        Source = '00/b4/global_UninitFillN00b497b0_00b497b0.cpp'
-        TestSource = '00/b4/global_UninitFillN00b497b0_00b497b0_test.cpp'
+        Module = 'std'
+        Source = '00/b4/std_uninitializedfillnCEngineLightingManagerCThemeChannelunsignedintCEngineLightingManagerCThemeChannel_00b497b0.cpp'
+        TestSource = '00/b4/std_uninitializedfillnCEngineLightingManagerCThemeChannelunsignedintCEngineLightingManagerCThemeChannel_00b497b0_test.cpp'
         PassPattern = '00b497b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b7afa0'
-        Module = '_global'
-        Source = '00/b7/global_UninitFillN00b7afa0_00b7afa0.cpp'
-        TestSource = '00/b7/global_UninitFillN00b7afa0_00b7afa0_test.cpp'
+        Module = 'std'
+        Source = '00/b7/std_uninitializedfillnCPreTransposedBoneMatrixunsignedintCPreTransposedBoneMatrix_00b7afa0.cpp'
+        TestSource = '00/b7/std_uninitializedfillnCPreTransposedBoneMatrixunsignedintCPreTransposedBoneMatrix_00b7afa0_test.cpp'
         PassPattern = '00b7afa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0040de40'
-        Module = '_global'
-        Source = '00/40/global_UninitCopy0040de40_0040de40.cpp'
-        TestSource = '00/40/global_UninitCopy0040de40_0040de40_test.cpp'
+        Module = 'std'
+        Source = '00/40/std_uninitializedcopyETutorialCategoryETutorialCategory_0040de40.cpp'
+        TestSource = '00/40/std_uninitializedcopyETutorialCategoryETutorialCategory_0040de40_test.cpp'
         PassPattern = '0040de40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00612770'
-        Module = '_global'
-        Source = '00/61/global_UninitCopy00612770_00612770.cpp'
-        TestSource = '00/61/global_UninitCopy00612770_00612770_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_uninitializedcopyCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00612770.cpp'
+        TestSource = '00/61/std_uninitializedcopyCHeroLogBookCHeroLogBookEntryECategoryCHeroLogBookCHeroLogBookEntryECategory_00612770_test.cpp'
         PassPattern = '00612770_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0085d820'
-        Module = '_global'
-        Source = '00/85/global_UninitCopy0085d820_0085d820.cpp'
-        TestSource = '00/85/global_UninitCopy0085d820_0085d820_test.cpp'
+        Module = 'std'
+        Source = '00/85/std_uninitializedcopyNThingMapCThingMapCellconstNThingMapCThingMapCell_0085d820.cpp'
+        TestSource = '00/85/std_uninitializedcopyNThingMapCThingMapCellconstNThingMapCThingMapCell_0085d820_test.cpp'
         PassPattern = '0085d820_TEST PASS'
     }
     [pscustomobject]@{
@@ -179138,51 +179138,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00592d43'
-        Module = '_global'
-        Source = '00/59/global_UninitCopy00592d43_00592d43.cpp'
-        TestSource = '00/59/global_UninitCopy00592d43_00592d43_test.cpp'
+        Module = 'std'
+        Source = '00/59/std_uninitializedcopystdpairlonglongstdpairlonglong_00592d43.cpp'
+        TestSource = '00/59/std_uninitializedcopystdpairlonglongstdpairlonglong_00592d43_test.cpp'
         PassPattern = '00592d43_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005ba833'
-        Module = '_global'
-        Source = '00/5b/global_UninitCopy005ba833_005ba833.cpp'
-        TestSource = '00/5b/global_UninitCopy005ba833_005ba833_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_uninitializedcopystdpairEClothingSuitPartNUISystemCComponentstdpairEClothingSuitPartNUISystemCComponent_005ba833.cpp'
+        TestSource = '00/5b/std_uninitializedcopystdpairEClothingSuitPartNUISystemCComponentstdpairEClothingSuitPartNUISystemCComponent_005ba833_test.cpp'
         PassPattern = '005ba833_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005baa1c'
-        Module = '_global'
-        Source = '00/5b/global_UninitCopy005baa1c_005baa1c.cpp'
-        TestSource = '00/5b/global_UninitCopy005baa1c_005baa1c_test.cpp'
+        Module = 'std'
+        Source = '00/5b/std_uninitializedcopystdpairlonglongconststdpairlonglong_005baa1c.cpp'
+        TestSource = '00/5b/std_uninitializedcopystdpairlonglongconststdpairlonglong_005baa1c_test.cpp'
         PassPattern = '005baa1c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005f8274'
-        Module = '_global'
-        Source = '00/5f/global_UninitCopy005f8274_005f8274.cpp'
-        TestSource = '00/5f/global_UninitCopy005f8274_005f8274_test.cpp'
+        Module = 'std'
+        Source = '00/5f/std_uninitializedcopystdpairlongEHeroAbilitystdpairlongEHeroAbility_005f8274.cpp'
+        TestSource = '00/5f/std_uninitializedcopystdpairlongEHeroAbilitystdpairlongEHeroAbility_005f8274_test.cpp'
         PassPattern = '005f8274_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005f8325'
-        Module = '_global'
-        Source = '00/5f/global_UninitCopy005f8325_005f8325.cpp'
-        TestSource = '00/5f/global_UninitCopy005f8325_005f8325_test.cpp'
+        Module = 'std'
+        Source = '00/5f/std_uninitializedcopystdpairlongEHeroAbilityconststdpairlongEHeroAbility_005f8325.cpp'
+        TestSource = '00/5f/std_uninitializedcopystdpairlongEHeroAbilityconststdpairlongEHeroAbility_005f8325_test.cpp'
         PassPattern = '005f8325_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00510fe0'
-        Module = '_global'
-        Source = '00/51/global_UninitCopy00510fe0_00510fe0.cpp'
-        TestSource = '00/51/global_UninitCopy00510fe0_00510fe0_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_uninitializedcopyCNavigationPositionCNavigationPosition_00510fe0.cpp'
+        TestSource = '00/51/std_uninitializedcopyCNavigationPositionCNavigationPosition_00510fe0_test.cpp'
         PassPattern = '00510fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066ddf0'
-        Module = '_global'
-        Source = '00/66/global_UninitCopy0066ddf0_0066ddf0.cpp'
-        TestSource = '00/66/global_UninitCopy0066ddf0_0066ddf0_test.cpp'
+        Module = 'std'
+        Source = '00/66/std_uninitializedcopyC3DVectorC3DVector_0066ddf0.cpp'
+        TestSource = '00/66/std_uninitializedcopyC3DVectorC3DVector_0066ddf0_test.cpp'
         PassPattern = '0066ddf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179201,9 +179201,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069bfc0'
-        Module = '_global'
-        Source = '00/69/global_UninitCopy0069bfc0_0069bfc0.cpp'
-        TestSource = '00/69/global_UninitCopy0069bfc0_0069bfc0_test.cpp'
+        Module = 'std'
+        Source = '00/69/std_uninitializedcopyCDefPointerCCameraModeDefconstCDefPointerCCameraModeDefconst_0069bfc0.cpp'
+        TestSource = '00/69/std_uninitializedcopyCDefPointerCCameraModeDefconstCDefPointerCCameraModeDefconst_0069bfc0_test.cpp'
         PassPattern = '0069bfc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179215,9 +179215,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0071f1f0'
-        Module = '_global'
-        Source = '00/71/global_UninitCopy0071f1f0_0071f1f0.cpp'
-        TestSource = '00/71/global_UninitCopy0071f1f0_0071f1f0_test.cpp'
+        Module = 'std'
+        Source = '00/71/std_uninitializedcopyCDefPointerCTattooDefconstCDefPointerCTattooDefconst_0071f1f0.cpp'
+        TestSource = '00/71/std_uninitializedcopyCDefPointerCTattooDefconstCDefPointerCTattooDefconst_0071f1f0_test.cpp'
         PassPattern = '0071f1f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179229,9 +179229,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c9f70'
-        Module = '_global'
-        Source = '00/7c/global_UninitCopy007c9f70_007c9f70.cpp'
-        TestSource = '00/7c/global_UninitCopy007c9f70_007c9f70_test.cpp'
+        Module = 'std'
+        Source = '00/7c/std_uninitializedcopyCDefPointerCCreatureGenerationFamilyDefconstCDefPointerCCreatureGenerationFamilyDefconst_007c9f70.cpp'
+        TestSource = '00/7c/std_uninitializedcopyCDefPointerCCreatureGenerationFamilyDefconstCDefPointerCCreatureGenerationFamilyDefconst_007c9f70_test.cpp'
         PassPattern = '007c9f70_TEST PASS'
     }
     [pscustomobject]@{
@@ -179250,58 +179250,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00613260'
-        Module = '_global'
-        Source = '00/61/global_Fill00613260_00613260.cpp'
-        TestSource = '00/61/global_Fill00613260_00613260_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_fillunsignedint64unsignedint64_00613260.cpp'
+        TestSource = '00/61/std_fillunsignedint64unsignedint64_00613260_test.cpp'
         PassPattern = '00613260_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006387c0'
-        Module = '_global'
-        Source = '00/63/global_Fill006387c0_006387c0.cpp'
-        TestSource = '00/63/global_Fill006387c0_006387c0_test.cpp'
+        Module = 'std'
+        Source = '00/63/std_fillNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_006387c0.cpp'
+        TestSource = '00/63/std_fillNThingMapCThingMapManagerCThingMapInfoNThingMapCThingMapManagerCThingMapInfo_006387c0_test.cpp'
         PassPattern = '006387c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008192f0'
-        Module = '_global'
-        Source = '00/81/global_Fill008192f0_008192f0.cpp'
-        TestSource = '00/81/global_Fill008192f0_008192f0_test.cpp'
+        Module = 'std'
+        Source = '00/81/std_fillCSkeletalMorphsCEntryCSkeletalMorphsCEntry_008192f0.cpp'
+        TestSource = '00/81/std_fillCSkeletalMorphsCEntryCSkeletalMorphsCEntry_008192f0_test.cpp'
         PassPattern = '008192f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a94630'
-        Module = '_global'
-        Source = '00/a9/global_Fill00a94630_00a94630.cpp'
-        TestSource = '00/a9/global_Fill00a94630_00a94630_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_fillC3DIndexedBoneWeightC3DIndexedBoneWeight_00a94630.cpp'
+        TestSource = '00/a9/std_fillC3DIndexedBoneWeightC3DIndexedBoneWeight_00a94630_test.cpp'
         PassPattern = '00a94630_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ae4f60'
-        Module = '_global'
-        Source = '00/ae/global_Fill00ae4f60_00ae4f60.cpp'
-        TestSource = '00/ae/global_Fill00ae4f60_00ae4f60_test.cpp'
+        Module = 'std'
+        Source = '00/ae/std_fillC3DQuad2C3DQuad2_00ae4f60.cpp'
+        TestSource = '00/ae/std_fillC3DQuad2C3DQuad2_00ae4f60_test.cpp'
         PassPattern = '00ae4f60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b6b5b0'
-        Module = '_global'
-        Source = '00/b6/global_Fill00b6b5b0_00b6b5b0.cpp'
-        TestSource = '00/b6/global_Fill00b6b5b0_00b6b5b0_test.cpp'
+        Module = 'std'
+        Source = '00/b6/std_fillCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5b0.cpp'
+        TestSource = '00/b6/std_fillCEngineLandscapeRendererCSubPatchSorterEntryCEngineLandscapeRendererCSubPatchSorterEntry_00b6b5b0_test.cpp'
         PassPattern = '00b6b5b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b84d60'
-        Module = '_global'
-        Source = '00/b8/global_Fill00b84d60_00b84d60.cpp'
-        TestSource = '00/b8/global_Fill00b84d60_00b84d60_test.cpp'
+        Module = 'std'
+        Source = '00/b8/std_fillCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d60.cpp'
+        TestSource = '00/b8/std_fillCEngineSubPrimitiveRendererCSortElementCEngineSubPrimitiveRendererCSortElement_00b84d60_test.cpp'
         PassPattern = '00b84d60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0075b430'
-        Module = '_global'
-        Source = '00/75/global_Fill0075b430_0075b430.cpp'
-        TestSource = '00/75/global_Fill0075b430_0075b430_test.cpp'
+        Module = 'std'
+        Source = '00/75/std_fillC3DVectorC3DVector_0075b430.cpp'
+        TestSource = '00/75/std_fillC3DVectorC3DVector_0075b430_test.cpp'
         PassPattern = '0075b430_TEST PASS'
     }
     [pscustomobject]@{
@@ -179334,16 +179334,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f6580'
-        Module = '_global'
-        Source = '00/8f/global_Fill008f6580_008f6580.cpp'
-        TestSource = '00/8f/global_Fill008f6580_008f6580_test.cpp'
+        Module = 'std'
+        Source = '00/8f/std_fillCHeightMapCellCHeightMapCell_008f6580.cpp'
+        TestSource = '00/8f/std_fillCHeightMapCellCHeightMapCell_008f6580_test.cpp'
         PassPattern = '008f6580_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007d96f0'
-        Module = '_global'
-        Source = '00/7d/global_Fill007d96f0_007d96f0.cpp'
-        TestSource = '00/7d/global_Fill007d96f0_007d96f0_test.cpp'
+        Module = 'std'
+        Source = '00/7d/std_fillKnickKnackKnickKnack_007d96f0.cpp'
+        TestSource = '00/7d/std_fillKnickKnackKnickKnack_007d96f0_test.cpp'
         PassPattern = '007d96f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -179355,30 +179355,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0098c140'
-        Module = '_global'
-        Source = '00/98/global_Fill0098c140_0098c140.cpp'
-        TestSource = '00/98/global_Fill0098c140_0098c140_test.cpp'
+        Module = 'std'
+        Source = '00/98/std_fillC4DVectorC4DVector_0098c140.cpp'
+        TestSource = '00/98/std_fillC4DVectorC4DVector_0098c140_test.cpp'
         PassPattern = '0098c140_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a51fe0'
-        Module = '_global'
-        Source = '00/a5/global_Fill00a51fe0_00a51fe0.cpp'
-        TestSource = '00/a5/global_Fill00a51fe0_00a51fe0_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_fillCQuaternionCQuaternion_00a51fe0.cpp'
+        TestSource = '00/a5/std_fillCQuaternionCQuaternion_00a51fe0_test.cpp'
         PassPattern = '00a51fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bc9e10'
-        Module = '_global'
-        Source = '00/bc/global_Fill00bc9e10_00bc9e10.cpp'
-        TestSource = '00/bc/global_Fill00bc9e10_00bc9e10_test.cpp'
+        Module = 'std'
+        Source = '00/bc/std_fillCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntryCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntry_00bc9e10.cpp'
+        TestSource = '00/bc/std_fillCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntryCEngineInternalPrimitiveSpriteTrailCSpriteTrailEntry_00bc9e10_test.cpp'
         PassPattern = '00bc9e10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bdf580'
-        Module = '_global'
-        Source = '00/bd/global_Fill00bdf580_00bdf580.cpp'
-        TestSource = '00/bd/global_Fill00bdf580_00bdf580_test.cpp'
+        Module = 'std'
+        Source = '00/bd/std_fillC3DBoundingSphereC3DBoundingSphere_00bdf580.cpp'
+        TestSource = '00/bd/std_fillC3DBoundingSphereC3DBoundingSphere_00bdf580_test.cpp'
         PassPattern = '00bdf580_TEST PASS'
     }
     [pscustomobject]@{
@@ -281659,9 +281659,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b6250'
-        Module = '_global'
-        Source = '00/6b/global_CopyBackwardCElement1F0006b6180006b6250_006b6250.cpp'
-        TestSource = '00/6b/global_CopyBackwardCElement1F0006b6180006b6250_006b6250_test.cpp'
+        Module = 'std'
+        Source = '00/6b/std_copybackwardCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannelint_006b6250.cpp'
+        TestSource = '00/6b/std_copybackwardCIDrawEnvironmentParamsCThemeChannelCIDrawEnvironmentParamsCThemeChannelint_006b6250_test.cpp'
         PassPattern = '006b6250_TEST PASS'
     }
     [pscustomobject]@{
@@ -281680,9 +281680,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075f0e0'
-        Module = '_global'
-        Source = '00/75/global_CopyBackwardCElement380075ef000075f0e0_0075f0e0.cpp'
-        TestSource = '00/75/global_CopyBackwardCElement380075ef000075f0e0_0075f0e0_test.cpp'
+        Module = 'std'
+        Source = '00/75/std_copybackwardCKeyCameraCKeyCameraint_0075f0e0.cpp'
+        TestSource = '00/75/std_copybackwardCKeyCameraCKeyCameraint_0075f0e0_test.cpp'
         PassPattern = '0075f0e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -281736,9 +281736,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008898c0'
-        Module = '_global'
-        Source = '00/88/global_CopyBackwardCElement1F4006b5df0008898c0_008898c0.cpp'
-        TestSource = '00/88/global_CopyBackwardCElement1F4006b5df0008898c0_008898c0_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_copybackwardNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentThemeint_008898c0.cpp'
+        TestSource = '00/88/std_copybackwardNEnvironmentInternalCBlendedEnvironmentThemeNEnvironmentInternalCBlendedEnvironmentThemeint_008898c0_test.cpp'
         PassPattern = '008898c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -281771,9 +281771,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3fe60'
-        Module = '_global'
-        Source = '00/a3/global_CopyBackwardSStringPair0C00a3fe60_00a3fe60.cpp'
-        TestSource = '00/a3/global_CopyBackwardSStringPair0C00a3fe60_00a3fe60_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_copybackwardstdpairstdpairCCharStringCCharStringCSoundBankLHstdpairstdpairCCharStringCCharStringCSoundBankLHint_00a3fe60.cpp'
+        TestSource = '00/a3/std_copybackwardstdpairstdpairCCharStringCCharStringCSoundBankLHstdpairstdpairCCharStringCCharStringCSoundBankLHint_00a3fe60_test.cpp'
         PassPattern = '00a3fe60_TEST PASS'
     }
     [pscustomobject]@{
@@ -282446,9 +282446,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00613390'
-        Module = '_global'
-        Source = '00/61/global_CopyBackwardUIMiniMapMarker00613390_00613390.cpp'
-        TestSource = '00/61/global_CopyBackwardUIMiniMapMarker00613390_00613390_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_copybackwardCTCInventoryMapCUIMiniMapMarkerCTCInventoryMapCUIMiniMapMarkerint_00613390.cpp'
+        TestSource = '00/61/std_copybackwardCTCInventoryMapCUIMiniMapMarkerCTCInventoryMapCUIMiniMapMarkerint_00613390_test.cpp'
         PassPattern = '00613390_TEST PASS'
     }
     [pscustomobject]@{
@@ -282460,9 +282460,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b7a00'
-        Module = '_global'
-        Source = '00/6b/global_CopyBackwardElement7006b7a00_006b7a00.cpp'
-        TestSource = '00/6b/global_CopyBackwardElement7006b7a00_006b7a00_test.cpp'
+        Module = 'std'
+        Source = '00/6b/std_copybackwardCGameMapCellCGameMapCellint_006b7a00.cpp'
+        TestSource = '00/6b/std_copybackwardCGameMapCellCGameMapCellint_006b7a00_test.cpp'
         PassPattern = '006b7a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -282488,9 +282488,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00769b90'
-        Module = '_global'
-        Source = '00/76/global_CopyStringStringVector00769b90_00769b90.cpp'
-        TestSource = '00/76/global_CopyStringStringVector00769b90_00769b90_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_copyParticleAndEndPointsconstParticleAndEndPointsint_00769b90.cpp'
+        TestSource = '00/76/std_copyParticleAndEndPointsconstParticleAndEndPointsint_00769b90_test.cpp'
         PassPattern = '00769b90_TEST PASS'
     }
     [pscustomobject]@{
@@ -282558,9 +282558,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a31060'
-        Module = '_global'
-        Source = '00/a3/global_CopyBackwardDummyObjectEntry00a31060_00a31060.cpp'
-        TestSource = '00/a3/global_CopyBackwardDummyObjectEntry00a31060_00a31060_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_copybackwardC3DGeneratorObjectC3DGeneratorObjectint_00a31060.cpp'
+        TestSource = '00/a3/std_copybackwardC3DGeneratorObjectC3DGeneratorObjectint_00a31060_test.cpp'
         PassPattern = '00a31060_TEST PASS'
     }
     [pscustomobject]@{
@@ -282586,30 +282586,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a52120'
-        Module = '_global'
-        Source = '00/a5/global_CopyVectorWord00a52120_00a52120.cpp'
-        TestSource = '00/a5/global_CopyVectorWord00a52120_00a52120_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_copyC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWordint_00a52120.cpp'
+        TestSource = '00/a5/std_copyC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWordint_00a52120_test.cpp'
         PassPattern = '00a52120_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a52260'
-        Module = '_global'
-        Source = '00/a5/global_CopyVectorWord00a52260_00a52260.cpp'
-        TestSource = '00/a5/global_CopyVectorWord00a52260_00a52260_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_copyC3DAnimationSequenceDataC3DVectorWordconstC3DAnimationSequenceDataC3DVectorWordint_00a52260.cpp'
+        TestSource = '00/a5/std_copyC3DAnimationSequenceDataC3DVectorWordconstC3DAnimationSequenceDataC3DVectorWordint_00a52260_test.cpp'
         PassPattern = '00a52260_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a522b0'
-        Module = '_global'
-        Source = '00/a5/global_CopyBackwardVectorWord00a522b0_00a522b0.cpp'
-        TestSource = '00/a5/global_CopyBackwardVectorWord00a522b0_00a522b0_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_copybackwardC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWordint_00a522b0.cpp'
+        TestSource = '00/a5/std_copybackwardC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWordint_00a522b0_test.cpp'
         PassPattern = '00a522b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a5e830'
-        Module = '_global'
-        Source = '00/a5/global_CopyPairLongVectorHolder00a5e830_00a5e830.cpp'
-        TestSource = '00/a5/global_CopyPairLongVectorHolder00a5e830_00a5e830_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_copyCVertexShaderInputCStreamInfoconstCVertexShaderInputCStreamInfoint_00a5e830.cpp'
+        TestSource = '00/a5/std_copyCVertexShaderInputCStreamInfoconstCVertexShaderInputCStreamInfoint_00a5e830_test.cpp'
         PassPattern = '00a5e830_TEST PASS'
     }
     [pscustomobject]@{
@@ -282628,16 +282628,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a744b0'
-        Module = '_global'
-        Source = '00/a7/global_CopyVectorWord00a744b0_00a744b0.cpp'
-        TestSource = '00/a7/global_CopyVectorWord00a744b0_00a744b0_test.cpp'
+        Module = 'std'
+        Source = '00/a7/std_copyC3DTriangle2C3DTriangle2int_00a744b0.cpp'
+        TestSource = '00/a7/std_copyC3DTriangle2C3DTriangle2int_00a744b0_test.cpp'
         PassPattern = '00a744b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a94a00'
-        Module = '_global'
-        Source = '00/a9/global_CopyBackwardVectorWord00a94a00_00a94a00.cpp'
-        TestSource = '00/a9/global_CopyBackwardVectorWord00a94a00_00a94a00_test.cpp'
+        Module = 'std'
+        Source = '00/a9/std_copybackwardC3DTriangle2C3DTriangle2int_00a94a00.cpp'
+        TestSource = '00/a9/std_copybackwardC3DTriangle2C3DTriangle2int_00a94a00_test.cpp'
         PassPattern = '00a94a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -282677,9 +282677,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cbae30'
-        Module = '_global'
-        Source = '00/cb/global_CopyBackwardPairCharStringBinding00cbae30_00cbae30.cpp'
-        TestSource = '00/cb/global_CopyBackwardPairCharStringBinding00cbae30_00cbae30_test.cpp'
+        Module = 'std'
+        Source = '00/cb/std_copybackwardstdpairCCharStringCCountedPointerCEntityScriptBindingBasestdpairCCharStringCCountedPointerCEntityScriptBindingBaseint_00cbae30.cpp'
+        TestSource = '00/cb/std_copybackwardstdpairCCharStringCCountedPointerCEntityScriptBindingBasestdpairCCharStringCCountedPointerCEntityScriptBindingBaseint_00cbae30_test.cpp'
         PassPattern = '00cbae30_TEST PASS'
     }
     [pscustomobject]@{
@@ -282740,16 +282740,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040fc50'
-        Module = '_global'
-        Source = '00/40/global_UninitCopySFloatCameraTagPair1C0040fc50_0040fc50.cpp'
-        TestSource = '00/40/global_UninitCopySFloatCameraTagPair1C0040fc50_0040fc50_test.cpp'
+        Module = 'std'
+        Source = '00/40/std_uninitializedcopySCameraTagEntryconstSCameraTagEntry_0040fc50.cpp'
+        TestSource = '00/40/std_uninitializedcopySCameraTagEntryconstSCameraTagEntry_0040fc50_test.cpp'
         PassPattern = '0040fc50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0040ff80'
-        Module = '_global'
-        Source = '00/40/global_UninitCopySFloatCameraTagPair1C0040ff80_0040ff80.cpp'
-        TestSource = '00/40/global_UninitCopySFloatCameraTagPair1C0040ff80_0040ff80_test.cpp'
+        Module = 'std'
+        Source = '00/40/std_uninitializedcopySCameraTagEntrySCameraTagEntry_0040ff80.cpp'
+        TestSource = '00/40/std_uninitializedcopySCameraTagEntrySCameraTagEntry_0040ff80_test.cpp'
         PassPattern = '0040ff80_TEST PASS'
     }
     [pscustomobject]@{
@@ -282831,9 +282831,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b65c0'
-        Module = '_global'
-        Source = '00/6b/global_CopyCThemeChannel006b65c0_006b65c0.cpp'
-        TestSource = '00/6b/global_CopyCThemeChannel006b65c0_006b65c0_test.cpp'
+        Module = 'std'
+        Source = '00/6b/std_copyCIDrawEnvironmentParamsCThemeChannelconstCIDrawEnvironmentParamsCThemeChannelint_006b65c0.cpp'
+        TestSource = '00/6b/std_copyCIDrawEnvironmentParamsCThemeChannelconstCIDrawEnvironmentParamsCThemeChannelint_006b65c0_test.cpp'
         PassPattern = '006b65c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -282887,9 +282887,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077e280'
-        Module = '_global'
-        Source = '00/77/global_UninitCopySNamedRecord100077e280_0077e280.cpp'
-        TestSource = '00/77/global_UninitCopySNamedRecord100077e280_0077e280_test.cpp'
+        Module = 'std'
+        Source = '00/77/std_uninitializedcopystdpairCCharStringC3DVectorstdpairCCharStringC3DVector_0077e280.cpp'
+        TestSource = '00/77/std_uninitializedcopystdpairCCharStringC3DVectorstdpairCCharStringC3DVector_0077e280_test.cpp'
         PassPattern = '0077e280_TEST PASS'
     }
     [pscustomobject]@{
@@ -282922,16 +282922,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00889830'
-        Module = '_global'
-        Source = '00/88/global_CopyCBlendedEnvironmentTheme00889830_00889830.cpp'
-        TestSource = '00/88/global_CopyCBlendedEnvironmentTheme00889830_00889830_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_copyNEnvironmentInternalCBlendedEnvironmentThemeconstNEnvironmentInternalCBlendedEnvironmentThemeint_00889830.cpp'
+        TestSource = '00/88/std_copyNEnvironmentInternalCBlendedEnvironmentThemeconstNEnvironmentInternalCBlendedEnvironmentThemeint_00889830_test.cpp'
         PassPattern = '00889830_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0088abc0'
-        Module = '_global'
-        Source = '00/88/global_UninitCopySNamedRecord140088abc0_0088abc0.cpp'
-        TestSource = '00/88/global_UninitCopySNamedRecord140088abc0_0088abc0_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_uninitializedcopyC3DSkeletalBoneMorphC3DSkeletalBoneMorph_0088abc0.cpp'
+        TestSource = '00/88/std_uninitializedcopyC3DSkeletalBoneMorphC3DSkeletalBoneMorph_0088abc0_test.cpp'
         PassPattern = '0088abc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -282943,16 +282943,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a40040'
-        Module = '_global'
-        Source = '00/a4/global_CopySStringPairWord0C00a40040_00a40040.cpp'
-        TestSource = '00/a4/global_CopySStringPairWord0C00a40040_00a40040_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_copystdpairstdpairCCharStringCCharStringCSoundBankLHstdpairstdpairCCharStringCCharStringCSoundBankLHint_00a40040.cpp'
+        TestSource = '00/a4/std_copystdpairstdpairCCharStringCCharStringCSoundBankLHstdpairstdpairCCharStringCCharStringCSoundBankLHint_00a40040_test.cpp'
         PassPattern = '00a40040_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a458b0'
-        Module = '_global'
-        Source = '00/a4/global_UninitCopySNamedRecord1400a458b0_00a458b0.cpp'
-        TestSource = '00/a4/global_UninitCopySNamedRecord1400a458b0_00a458b0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedcopyC3DSkeletalBoneMorphconstC3DSkeletalBoneMorph_00a458b0.cpp'
+        TestSource = '00/a4/std_uninitializedcopyC3DSkeletalBoneMorphconstC3DSkeletalBoneMorph_00a458b0_test.cpp'
         PassPattern = '00a458b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -283006,9 +283006,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f37cc0'
-        Module = '_global'
-        Source = '00/f3/global_UninitCopySRecord2C00f37cc0_00f37cc0.cpp'
-        TestSource = '00/f3/global_UninitCopySRecord2C00f37cc0_00f37cc0_test.cpp'
+        Module = 'std'
+        Source = '00/f3/std_uninitializedcopyCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37cc0.cpp'
+        TestSource = '00/f3/std_uninitializedcopyCGPUScratchBufferTextureManagerCResourceEntryCGPUScratchBufferTextureManagerCResourceEntry_00f37cc0_test.cpp'
         PassPattern = '00f37cc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284134,9 +284134,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b9100'
-        Module = '_global'
-        Source = '00/6b/global_CopyBackwardPairLongCountedPointer006b9100_006b9100.cpp'
-        TestSource = '00/6b/global_CopyBackwardPairLongCountedPointer006b9100_006b9100_test.cpp'
+        Module = 'std'
+        Source = '00/6b/std_copybackwardstdpairunsignedlongCCountedPointerCFactionstdpairunsignedlongCCountedPointerCFactionint_006b9100.cpp'
+        TestSource = '00/6b/std_copybackwardstdpairunsignedlongCCountedPointerCFactionstdpairunsignedlongCCountedPointerCFactionint_006b9100_test.cpp'
         PassPattern = '006b9100_TEST PASS'
     }
     [pscustomobject]@{
@@ -284183,9 +284183,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075b5b0'
-        Module = '_global'
-        Source = '00/75/global_CopyBackwardSElement120075b5b0_0075b5b0.cpp'
-        TestSource = '00/75/global_CopyBackwardSElement120075b5b0_0075b5b0_test.cpp'
+        Module = 'std'
+        Source = '00/75/std_copybackwardC3DVectorC3DVectorint_0075b5b0.cpp'
+        TestSource = '00/75/std_copybackwardC3DVectorC3DVectorint_0075b5b0_test.cpp'
         PassPattern = '0075b5b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284211,9 +284211,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008194c0'
-        Module = '_global'
-        Source = '00/81/global_CopySElement20008194c0_008194c0.cpp'
-        TestSource = '00/81/global_CopySElement20008194c0_008194c0_test.cpp'
+        Module = 'std'
+        Source = '00/81/std_copyCTextureMorphEntryCTextureMorphEntryint_008194c0.cpp'
+        TestSource = '00/81/std_copyCTextureMorphEntryCTextureMorphEntryint_008194c0_test.cpp'
         PassPattern = '008194c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284225,23 +284225,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008197b0'
-        Module = '_global'
-        Source = '00/81/global_CopyBackwardSElement20008197b0_008197b0.cpp'
-        TestSource = '00/81/global_CopyBackwardSElement20008197b0_008197b0_test.cpp'
+        Module = 'std'
+        Source = '00/81/std_copybackwardCTextureMorphEntryCTextureMorphEntryint_008197b0.cpp'
+        TestSource = '00/81/std_copybackwardCTextureMorphEntryCTextureMorphEntryint_008197b0_test.cpp'
         PassPattern = '008197b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0082cd00'
-        Module = '_global'
-        Source = '00/82/global_CopySResourceRecord3C0082cd00_0082cd00.cpp'
-        TestSource = '00/82/global_CopySResourceRecord3C0082cd00_0082cd00_test.cpp'
+        Module = 'std'
+        Source = '00/82/std_copyCMinimapDataCMinimapDataint_0082cd00.cpp'
+        TestSource = '00/82/std_copyCMinimapDataCMinimapDataint_0082cd00_test.cpp'
         PassPattern = '0082cd00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0085d6e0'
-        Module = '_global'
-        Source = '00/85/global_CopySElement200085d6e0_0085d6e0.cpp'
-        TestSource = '00/85/global_CopySElement200085d6e0_0085d6e0_test.cpp'
+        Module = 'std'
+        Source = '00/85/std_copyNThingMapCMapwhoLevelInfoNThingMapCMapwhoLevelInfoint_0085d6e0.cpp'
+        TestSource = '00/85/std_copyNThingMapCMapwhoLevelInfoNThingMapCMapwhoLevelInfoint_0085d6e0_test.cpp'
         PassPattern = '0085d6e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284253,9 +284253,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00889650'
-        Module = '_global'
-        Source = '00/88/global_CopySListRecord3000889650_00889650.cpp'
-        TestSource = '00/88/global_CopySListRecord3000889650_00889650_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_copyNEnvironmentInternalCEnvironmentThemePriorityStackEntryNEnvironmentInternalCEnvironmentThemePriorityStackEntryint_00889650.cpp'
+        TestSource = '00/88/std_copyNEnvironmentInternalCEnvironmentThemePriorityStackEntryNEnvironmentInternalCEnvironmentThemePriorityStackEntryint_00889650_test.cpp'
         PassPattern = '00889650_TEST PASS'
     }
     [pscustomobject]@{
@@ -284281,16 +284281,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a45910'
-        Module = '_global'
-        Source = '00/a4/global_CopyBackwardSNamedIndexedValue1400a45910_00a45910.cpp'
-        TestSource = '00/a4/global_CopyBackwardSNamedIndexedValue1400a45910_00a45910_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_copybackwardC3DSkeletalBoneMorphC3DSkeletalBoneMorphint_00a45910.cpp'
+        TestSource = '00/a4/std_copybackwardC3DSkeletalBoneMorphC3DSkeletalBoneMorphint_00a45910_test.cpp'
         PassPattern = '00a45910_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a5acc0'
-        Module = '_global'
-        Source = '00/a5/global_CopyPairLongCountedPointer00a5acc0_00a5acc0.cpp'
-        TestSource = '00/a5/global_CopyPairLongCountedPointer00a5acc0_00a5acc0_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_copystdpairlongCCountedPointerCContainmentVolumeconststdpairlongCCountedPointerCContainmentVolumeint_00a5acc0.cpp'
+        TestSource = '00/a5/std_copystdpairlongCCountedPointerCContainmentVolumeconststdpairlongCCountedPointerCContainmentVolumeint_00a5acc0_test.cpp'
         PassPattern = '00a5acc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284302,16 +284302,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a802a0'
-        Module = '_global'
-        Source = '00/a8/global_CopyBackwardPairLongCountedPointer00a802a0_00a802a0.cpp'
-        TestSource = '00/a8/global_CopyBackwardPairLongCountedPointer00a802a0_00a802a0_test.cpp'
+        Module = 'std'
+        Source = '00/a8/std_copybackwardstdpairlongCCountedPointerCNavConnectorNodestdpairlongCCountedPointerCNavConnectorNodeint_00a802a0.cpp'
+        TestSource = '00/a8/std_copybackwardstdpairlongCCountedPointerCNavConnectorNodestdpairlongCCountedPointerCNavConnectorNodeint_00a802a0_test.cpp'
         PassPattern = '00a802a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a85740'
-        Module = '_global'
-        Source = '00/a8/global_CopyBackwardSTripleVectorRecord2800a85740_00a85740.cpp'
-        TestSource = '00/a8/global_CopyBackwardSTripleVectorRecord2800a85740_00a85740_test.cpp'
+        Module = 'std'
+        Source = '00/a8/std_copybackwardCNavQuadTreeCNavigationLayerCNavQuadTreeCNavigationLayerint_00a85740.cpp'
+        TestSource = '00/a8/std_copybackwardCNavQuadTreeCNavigationLayerCNavQuadTreeCNavigationLayerint_00a85740_test.cpp'
         PassPattern = '00a85740_TEST PASS'
     }
     [pscustomobject]@{
@@ -284386,9 +284386,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004aa580'
-        Module = '_global'
-        Source = '00/4a/global_CopyRecord28004aa580_004aa580.cpp'
-        TestSource = '00/4a/global_CopyRecord28004aa580_004aa580_test.cpp'
+        Module = 'std'
+        Source = '00/4a/std_copyCTestQuestCTestQuestint_004aa580.cpp'
+        TestSource = '00/4a/std_copyCTestQuestCTestQuestint_004aa580_test.cpp'
         PassPattern = '004aa580_TEST PASS'
     }
     [pscustomobject]@{
@@ -284407,23 +284407,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00566780'
-        Module = '_global'
-        Source = '00/56/global_CopyRecord1600566780_00566780.cpp'
-        TestSource = '00/56/global_CopyRecord1600566780_00566780_test.cpp'
+        Module = 'std'
+        Source = '00/56/std_copyCTCHeroOnlineScoreboardCActivityCTCHeroOnlineScoreboardCActivityint_00566780.cpp'
+        TestSource = '00/56/std_copyCTCHeroOnlineScoreboardCActivityCTCHeroOnlineScoreboardCActivityint_00566780_test.cpp'
         PassPattern = '00566780_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00612f70'
-        Module = '_global'
-        Source = '00/61/global_CopyUIMiniMapMarker00612f70_00612f70.cpp'
-        TestSource = '00/61/global_CopyUIMiniMapMarker00612f70_00612f70_test.cpp'
+        Module = 'std'
+        Source = '00/61/std_copyCTCInventoryMapCUIMiniMapMarkerCTCInventoryMapCUIMiniMapMarkerint_00612f70.cpp'
+        TestSource = '00/61/std_copyCTCInventoryMapCUIMiniMapMarkerCTCInventoryMapCUIMiniMapMarkerint_00612f70_test.cpp'
         PassPattern = '00612f70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006237c0'
-        Module = '_global'
-        Source = '00/62/global_CopyRecord28006237c0_006237c0.cpp'
-        TestSource = '00/62/global_CopyRecord28006237c0_006237c0_test.cpp'
+        Module = 'std'
+        Source = '00/62/std_copyCTestQuestconstCTestQuestint_006237c0.cpp'
+        TestSource = '00/62/std_copyCTestQuestconstCTestQuestint_006237c0_test.cpp'
         PassPattern = '006237c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284498,9 +284498,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008247e0'
-        Module = '_global'
-        Source = '00/82/global_UninitCopyRecord20008247e0_008247e0.cpp'
-        TestSource = '00/82/global_UninitCopyRecord20008247e0_008247e0_test.cpp'
+        Module = 'std'
+        Source = '00/82/std_uninitializedcopyCScriptedMapBrushCScriptedMapCellconstCScriptedMapBrushCScriptedMapCell_008247e0.cpp'
+        TestSource = '00/82/std_uninitializedcopyCScriptedMapBrushCScriptedMapCellconstCScriptedMapBrushCScriptedMapCell_008247e0_test.cpp'
         PassPattern = '008247e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284512,16 +284512,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00841de0'
-        Module = '_global'
-        Source = '00/84/global_CopyRetailString00841de0_00841de0.cpp'
-        TestSource = '00/84/global_CopyRetailString00841de0_00841de0_test.cpp'
+        Module = 'std'
+        Source = '00/84/std_copystdbasicstringcharstdchartraitscharstdallocatorcharconststdbasicstringcharstdchartraitscharstdallocatorcharint_00841de0.cpp'
+        TestSource = '00/84/std_copystdbasicstringcharstdchartraitscharstdallocatorcharconststdbasicstringcharstdchartraitscharstdallocatorcharint_00841de0_test.cpp'
         PassPattern = '00841de0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0085db50'
-        Module = '_global'
-        Source = '00/85/global_UninitCopyRecord200085db50_0085db50.cpp'
-        TestSource = '00/85/global_UninitCopyRecord200085db50_0085db50_test.cpp'
+        Module = 'std'
+        Source = '00/85/std_uninitializedcopyCTextureManagerPoolInfoCTextureManagerPoolInfo_0085db50.cpp'
+        TestSource = '00/85/std_uninitializedcopyCTextureManagerPoolInfoCTextureManagerPoolInfo_0085db50_test.cpp'
         PassPattern = '0085db50_TEST PASS'
     }
     [pscustomobject]@{
@@ -284610,9 +284610,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a85870'
-        Module = '_global'
-        Source = '00/a8/global_CopyRecord4000a85870_00a85870.cpp'
-        TestSource = '00/a8/global_CopyRecord4000a85870_00a85870_test.cpp'
+        Module = 'std'
+        Source = '00/a8/std_copyCNavQuadTreeCNavigationLayerCNavQuadTreeCNavigationLayerint_00a85870.cpp'
+        TestSource = '00/a8/std_copyCNavQuadTreeCNavigationLayerCNavQuadTreeCNavigationLayerint_00a85870_test.cpp'
         PassPattern = '00a85870_TEST PASS'
     }
     [pscustomobject]@{
@@ -284638,9 +284638,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b28ed0'
-        Module = '_global'
-        Source = '00/b2/global_UninitCopyRecord5600b28ed0_00b28ed0.cpp'
-        TestSource = '00/b2/global_UninitCopyRecord5600b28ed0_00b28ed0_test.cpp'
+        Module = 'std'
+        Source = '00/b2/std_uninitializedcopyCCameraCCamera_00b28ed0.cpp'
+        TestSource = '00/b2/std_uninitializedcopyCCameraCCamera_00b28ed0_test.cpp'
         PassPattern = '00b28ed0_TEST PASS'
     }
     [pscustomobject]@{
@@ -284659,9 +284659,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bf5b50'
-        Module = '_global'
-        Source = '00/bf/global_UninitCopyRecord2800bf5b50_00bf5b50.cpp'
-        TestSource = '00/bf/global_UninitCopyRecord2800bf5b50_00bf5b50_test.cpp'
+        Module = 'std'
+        Source = '00/bf/std_uninitializedcopystdpairC3DBoundingBoxCWaterPatchMeshstdpairC3DBoundingBoxCWaterPatchMesh_00bf5b50.cpp'
+        TestSource = '00/bf/std_uninitializedcopystdpairC3DBoundingBoxCWaterPatchMeshstdpairC3DBoundingBoxCWaterPatchMesh_00bf5b50_test.cpp'
         PassPattern = '00bf5b50_TEST PASS'
     }
     [pscustomobject]@{
@@ -286381,9 +286381,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004aa060'
-        Module = '_global'
-        Source = '00/4a/global_UninitCopyCTestQuest004aa060_004aa060.cpp'
-        TestSource = '00/4a/global_UninitCopyCTestQuest004aa060_004aa060_test.cpp'
+        Module = 'std'
+        Source = '00/4a/std_uninitializedcopyCTestQuestCTestQuest_004aa060.cpp'
+        TestSource = '00/4a/std_uninitializedcopyCTestQuestCTestQuest_004aa060_test.cpp'
         PassPattern = '004aa060_TEST PASS'
     }
     [pscustomobject]@{
@@ -286479,9 +286479,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00889880'
-        Module = '_global'
-        Source = '00/88/global_UninitCopyCElement1F400889880_00889880.cpp'
-        TestSource = '00/88/global_UninitCopyCElement1F400889880_00889880_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeconstNEnvironmentInternalCBlendedEnvironmentTheme_00889880.cpp'
+        TestSource = '00/88/std_uninitializedcopyNEnvironmentInternalCBlendedEnvironmentThemeconstNEnvironmentInternalCBlendedEnvironmentTheme_00889880_test.cpp'
         PassPattern = '00889880_TEST PASS'
     }
     [pscustomobject]@{
@@ -286528,16 +286528,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a32f40'
-        Module = '_global'
-        Source = '00/a3/global_UninitCopyPairULongMeshVolume00a32f40_00a32f40.cpp'
-        TestSource = '00/a3/global_UninitCopyPairULongMeshVolume00a32f40_00a32f40_test.cpp'
+        Module = 'std'
+        Source = '00/a3/std_uninitializedcopystdpairunsignedlongC3DMeshVolumestdpairunsignedlongC3DMeshVolume_00a32f40.cpp'
+        TestSource = '00/a3/std_uninitializedcopystdpairunsignedlongC3DMeshVolumestdpairunsignedlongC3DMeshVolume_00a32f40_test.cpp'
         PassPattern = '00a32f40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a49bc0'
-        Module = '_global'
-        Source = '00/a4/global_UninitCopyPairCharStringLongCountedPointer00a49b_00a49bc0.cpp'
-        TestSource = '00/a4/global_UninitCopyPairCharStringLongCountedPointer00a49b_00a49bc0_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedcopyCLipSyncPhonemeSampleCLipSyncPhonemeSample_00a49bc0.cpp'
+        TestSource = '00/a4/std_uninitializedcopyCLipSyncPhonemeSampleCLipSyncPhonemeSample_00a49bc0_test.cpp'
         PassPattern = '00a49bc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286556,16 +286556,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a6fe00'
-        Module = '_global'
-        Source = '00/a6/global_UninitCopyPairULongMeshVolume00a6fe00_00a6fe00.cpp'
-        TestSource = '00/a6/global_UninitCopyPairULongMeshVolume00a6fe00_00a6fe00_test.cpp'
+        Module = 'std'
+        Source = '00/a6/std_uninitializedcopystdpairlongC3DMeshVolumestdpairlongC3DMeshVolume_00a6fe00.cpp'
+        TestSource = '00/a6/std_uninitializedcopystdpairlongC3DMeshVolumestdpairlongC3DMeshVolume_00a6fe00_test.cpp'
         PassPattern = '00a6fe00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a6fed0'
-        Module = '_global'
-        Source = '00/a6/global_UninitCopyPairCharStringMeshVolume00a6fed0_00a6fed0.cpp'
-        TestSource = '00/a6/global_UninitCopyPairCharStringMeshVolume00a6fed0_00a6fed0_test.cpp'
+        Module = 'std'
+        Source = '00/a6/std_uninitializedcopystdpairCCharStringC3DMeshVolumestdpairCCharStringC3DMeshVolume_00a6fed0.cpp'
+        TestSource = '00/a6/std_uninitializedcopystdpairCCharStringC3DMeshVolumestdpairCCharStringC3DMeshVolume_00a6fed0_test.cpp'
         PassPattern = '00a6fed0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286682,9 +286682,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f7a1d'
-        Module = '_global'
-        Source = '00/5f/global_UninitFillNIVCountedPointer005f7a1d_005f7a1d.cpp'
-        TestSource = '00/5f/global_UninitFillNIVCountedPointer005f7a1d_005f7a1d_test.cpp'
+        Module = 'std'
+        Source = '00/5f/std_uninitializedfillnCDefPointerCHeroAbilityDefconstunsignedintCDefPointerCHeroAbilityDefconst_005f7a1d.cpp'
+        TestSource = '00/5f/std_uninitializedfillnCDefPointerCHeroAbilityDefconstunsignedintCDefPointerCHeroAbilityDefconst_005f7a1d_test.cpp'
         PassPattern = '005f7a1d_TEST PASS'
     }
     [pscustomobject]@{
@@ -286703,9 +286703,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00769810'
-        Module = '_global'
-        Source = '00/76/global_UninitFillNTwoStringRecord00769810_00769810.cpp'
-        TestSource = '00/76/global_UninitFillNTwoStringRecord00769810_00769810_test.cpp'
+        Module = 'std'
+        Source = '00/76/std_uninitializedfillnParticleAndEndPointsunsignedintParticleAndEndPoints_00769810.cpp'
+        TestSource = '00/76/std_uninitializedfillnParticleAndEndPointsunsignedintParticleAndEndPoints_00769810_test.cpp'
         PassPattern = '00769810_TEST PASS'
     }
     [pscustomobject]@{
@@ -286717,9 +286717,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008002f0'
-        Module = '_global'
-        Source = '00/80/global_UninitCopyPairC2DVectorByte008002f0_008002f0.cpp'
-        TestSource = '00/80/global_UninitCopyPairC2DVectorByte008002f0_008002f0_test.cpp'
+        Module = 'std'
+        Source = '00/80/std_uninitializedcopystdpairC2DVectorunsignedcharstdpairC2DVectorunsignedchar_008002f0.cpp'
+        TestSource = '00/80/std_uninitializedcopystdpairC2DVectorunsignedcharstdpairC2DVectorunsignedchar_008002f0_test.cpp'
         PassPattern = '008002f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286738,16 +286738,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0082c420'
-        Module = '_global'
-        Source = '00/82/global_UninitCopyDword0082c420_0082c420.cpp'
-        TestSource = '00/82/global_UninitCopyDword0082c420_0082c420_test.cpp'
+        Module = 'std'
+        Source = '00/82/std_uninitializedcopyCMinimapDataMinimapThemeconstCMinimapDataMinimapTheme_0082c420.cpp'
+        TestSource = '00/82/std_uninitializedcopyCMinimapDataMinimapThemeconstCMinimapDataMinimapTheme_0082c420_test.cpp'
         PassPattern = '0082c420_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0082c690'
-        Module = '_global'
-        Source = '00/82/global_UninitCopyCRGBColour0082c690_0082c690.cpp'
-        TestSource = '00/82/global_UninitCopyCRGBColour0082c690_0082c690_test.cpp'
+        Module = 'std'
+        Source = '00/82/std_uninitializedcopyCRGBColourconstCRGBColour_0082c690.cpp'
+        TestSource = '00/82/std_uninitializedcopyCRGBColourconstCRGBColour_0082c690_test.cpp'
         PassPattern = '0082c690_TEST PASS'
     }
     [pscustomobject]@{
@@ -286773,9 +286773,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00889230'
-        Module = '_global'
-        Source = '00/88/global_UninitFillNThemeStackEntry00889230_00889230.cpp'
-        TestSource = '00/88/global_UninitFillNThemeStackEntry00889230_00889230_test.cpp'
+        Module = 'std'
+        Source = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntry_00889230.cpp'
+        TestSource = '00/88/std_uninitializedfillnNEnvironmentInternalCEnvironmentThemePriorityStackEntryunsignedintNEnvironmentInternalCEnvironmentThemePriorityStackEntry_00889230_test.cpp'
         PassPattern = '00889230_TEST PASS'
     }
     [pscustomobject]@{
@@ -286815,9 +286815,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a43630'
-        Module = '_global'
-        Source = '00/a4/global_UninitCopyCDataBankTextEntry00a43630_00a43630.cpp'
-        TestSource = '00/a4/global_UninitCopyCDataBankTextEntry00a43630_00a43630_test.cpp'
+        Module = 'std'
+        Source = '00/a4/std_uninitializedcopyNGameTextCDataBankTextEntryNGameTextCDataBankTextEntry_00a43630.cpp'
+        TestSource = '00/a4/std_uninitializedcopyNGameTextCDataBankTextEntryNGameTextCDataBankTextEntry_00a43630_test.cpp'
         PassPattern = '00a43630_TEST PASS'
     }
     [pscustomobject]@{
@@ -286829,16 +286829,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a51c60'
-        Module = '_global'
-        Source = '00/a5/global_UninitCopyC3DTriangle200a51c60_00a51c60.cpp'
-        TestSource = '00/a5/global_UninitCopyC3DTriangle200a51c60_00a51c60_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWord_00a51c60.cpp'
+        TestSource = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordC3DAnimationSequenceDataC3DVectorWord_00a51c60_test.cpp'
         PassPattern = '00a51c60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a52040'
-        Module = '_global'
-        Source = '00/a5/global_UninitCopyC3DVectorWord00a52040_00a52040.cpp'
-        TestSource = '00/a5/global_UninitCopyC3DVectorWord00a52040_00a52040_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordconstC3DAnimationSequenceDataC3DVectorWord_00a52040.cpp'
+        TestSource = '00/a5/std_uninitializedcopyC3DAnimationSequenceDataC3DVectorWordconstC3DAnimationSequenceDataC3DVectorWord_00a52040_test.cpp'
         PassPattern = '00a52040_TEST PASS'
     }
     [pscustomobject]@{
@@ -286850,30 +286850,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a6e350'
-        Module = '_global'
-        Source = '00/a6/global_UninitCopyC3DTriangle200a6e350_00a6e350.cpp'
-        TestSource = '00/a6/global_UninitCopyC3DTriangle200a6e350_00a6e350_test.cpp'
+        Module = 'std'
+        Source = '00/a6/std_uninitializedcopyC3DTriangle2C3DTriangle2_00a6e350.cpp'
+        TestSource = '00/a6/std_uninitializedcopyC3DTriangle2C3DTriangle2_00a6e350_test.cpp'
         PassPattern = '00a6e350_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a7e5c0'
-        Module = '_global'
-        Source = '00/a7/global_UninitCopyPairU64Bool00a7e5c0_00a7e5c0.cpp'
-        TestSource = '00/a7/global_UninitCopyPairU64Bool00a7e5c0_00a7e5c0_test.cpp'
+        Module = 'std'
+        Source = '00/a7/std_uninitializedcopystdpairunsignedint64boolstdpairunsignedint64bool_00a7e5c0.cpp'
+        TestSource = '00/a7/std_uninitializedcopystdpairunsignedint64boolstdpairunsignedint64bool_00a7e5c0_test.cpp'
         PassPattern = '00a7e5c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a7e630'
-        Module = '_global'
-        Source = '00/a7/global_UninitCopyPairU64Long00a7e630_00a7e630.cpp'
-        TestSource = '00/a7/global_UninitCopyPairU64Long00a7e630_00a7e630_test.cpp'
+        Module = 'std'
+        Source = '00/a7/std_uninitializedcopystdpairunsignedint64CANavQuadTreeNodestdpairunsignedint64CANavQuadTreeNode_00a7e630.cpp'
+        TestSource = '00/a7/std_uninitializedcopystdpairunsignedint64CANavQuadTreeNodestdpairunsignedint64CANavQuadTreeNode_00a7e630_test.cpp'
         PassPattern = '00a7e630_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a7e990'
-        Module = '_global'
-        Source = '00/a7/global_UninitCopyRecord1200a7e990_00a7e990.cpp'
-        TestSource = '00/a7/global_UninitCopyRecord1200a7e990_00a7e990_test.cpp'
+        Module = 'std'
+        Source = '00/a7/std_uninitializedcopyCNavigationPositionconstCNavigationPosition_00a7e990.cpp'
+        TestSource = '00/a7/std_uninitializedcopyCNavigationPositionconstCNavigationPosition_00a7e990_test.cpp'
         PassPattern = '00a7e990_TEST PASS'
     }
     [pscustomobject]@{
@@ -286885,9 +286885,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a831d0'
-        Module = '_global'
-        Source = '00/a8/global_UninitCopyList1600a831d0_00a831d0.cpp'
-        TestSource = '00/a8/global_UninitCopyList1600a831d0_00a831d0_test.cpp'
+        Module = 'std'
+        Source = '00/a8/std_uninitializedcopystdlistC2DLineFstdallocatorC2DLineFstdlistC2DLineFstdallocatorC2DLineF_00a831d0.cpp'
+        TestSource = '00/a8/std_uninitializedcopystdlistC2DLineFstdallocatorC2DLineFstdlistC2DLineFstdallocatorC2DLineF_00a831d0_test.cpp'
         PassPattern = '00a831d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -286913,9 +286913,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bbd520'
-        Module = '_global'
-        Source = '00/bb/global_UninitCopyPairByteLong00bbd520_00bbd520.cpp'
-        TestSource = '00/bb/global_UninitCopyPairByteLong00bbd520_00bbd520_test.cpp'
+        Module = 'std'
+        Source = '00/bb/std_uninitializedcopyCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd520.cpp'
+        TestSource = '00/bb/std_uninitializedcopyCEngineInternalPrimitiveParticleGroupCPrimitiveIteratorCEngineInternalPrimitiveParticleGroupCPrimitiveIterator_00bbd520_test.cpp'
         PassPattern = '00bbd520_TEST PASS'
     }
     [pscustomobject]@{
@@ -287187,9 +287187,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bedbb0'
-        Module = '_global'
-        Source = '00/be/global_UninitFillNSPairLongCCompositeSurfaceInfo00bedbb_00bedbb0.cpp'
-        TestSource = '00/be/global_UninitFillNSPairLongCCompositeSurfaceInfo00bedbb_00bedbb0_test.cpp'
+        Module = 'std'
+        Source = '00/be/std_uninitializedfillnstdpairlongCCompositeSurfaceInfounsignedintstdpairlongCCompositeSurfaceInfo_00bedbb0.cpp'
+        TestSource = '00/be/std_uninitializedfillnstdpairlongCCompositeSurfaceInfounsignedintstdpairlongCCompositeSurfaceInfo_00bedbb0_test.cpp'
         PassPattern = '00bedbb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -304312,9 +304312,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bf5bb0'
-        Module = '_global'
-        Source = '00/bf/global_UninitFillNRecord2800bf5bb0_00bf5bb0.cpp'
-        TestSource = '00/bf/global_UninitFillNRecord2800bf5bb0_00bf5bb0_test.cpp'
+        Module = 'std'
+        Source = '00/bf/std_uninitializedfillnstdpairC3DBoundingBoxCWaterPatchMeshunsignedintstdpairC3DBoundingBoxCWaterPatchMesh_00bf5bb0.cpp'
+        TestSource = '00/bf/std_uninitializedfillnstdpairC3DBoundingBoxCWaterPatchMeshunsignedintstdpairC3DBoundingBoxCWaterPatchMesh_00bf5bb0_test.cpp'
         PassPattern = '00bf5bb0_TEST PASS'
     }
     [pscustomobject]@{

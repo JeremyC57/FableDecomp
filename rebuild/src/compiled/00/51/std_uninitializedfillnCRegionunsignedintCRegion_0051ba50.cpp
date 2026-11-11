@@ -1,25 +1,11 @@
-// _Uninit_fill_n<CRegion*> -- placement-copy `count` copies of value from first (88-byte elements, copy ctor @ 0x0051A900), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0051BA50, oracle length 42 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push [value] ; mov ecx,esi ; call CRegion::CRegion(const CRegion&) ; S: add esi,0x58 ; dec edi ; jne L ; pop edi ; E: mov eax,esi ; pop esi ; ret 4
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// the value reference on the stack): copy-constructs `count` elements in place with
-// placement new (hence the null test on the destination) through the out-of-line copy
-// constructor @ 0x0051A900 and returns the advanced destination. `ret 4` pops the value
-// reference. The element type is named from the copy constructor's label when
-// unique. One of 9 bodies.
-#include <new>
-
-class CRegion { public:
-    unsigned char _body[0x58];
-    CRegion(const CRegion& other);           // 0x0051A900
-};
-
-CRegion* __fastcall UninitFillN_CRegion_0051ba50(CRegion* first, unsigned long count, const CRegion& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) CRegion(value);
-    return first;
-}
+// std::uninitialized_fill_n(CRegion* first, unsigned int n, CRegion const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAVCRegion@@IV1@@std@@YIPAVCRegion@@PAV1@IABV1@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0051BA50, 42 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 0051d0a0 std::vector<CRegion, std::allocator<CRegion>>::_M_fill_insert; callee 0051a900 CRegion::CRegion; binder ??$uninitialized_fill_n@PAVCRegion@@IV1@@std@@YIPAVCRegion@@PAV1@IABV1@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CRegion.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CREGION
+#include "stlport/fable_containers.h"
+#include "engine/CRegion.h"
+template CRegion* std::uninitialized_fill_n<CRegion*,unsigned int,CRegion >(CRegion*, unsigned int, CRegion const&);

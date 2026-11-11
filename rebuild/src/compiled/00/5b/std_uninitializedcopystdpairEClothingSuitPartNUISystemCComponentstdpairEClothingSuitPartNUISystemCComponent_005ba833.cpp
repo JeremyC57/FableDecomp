@@ -1,23 +1,13 @@
-// _Uninit_copy<T*> -- placement-copy [first, last) to dest (8-byte POD elements, allocator by value, size TU), return the advanced destination
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BA833, oracle length 37 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; mov eax,[dest] ; je R ; push esi ; L: test eax,eax ; je N ; <copy 8 bytes [ecx] -> [eax]> ; N: add ecx,0x8 ; add eax,0x8 ; cmp ecx,edx ; jne L ; pop esi ; R: ret 8
-// Dinkumware `_Uninit_copy` for a 8-byte element: each copy is a placement new -- VC emits the null
-// check on the placement address -- from the source range; the allocator rides along by value
-// (a 1-byte class in a 4-byte slot). A POD of dwords.
-// Size optimisation leaves the loop unaligned. Fastcall: first in ecx, last in edx. The manifest label is propagated; the element type is modelled by size. One of 5 bodies of this shape.
+// std::__uninitialized_copy(std::pair<EClothingSuitPart,NUISystem::CComponent*>* first, std::pair<EClothingSuitPart,NUISystem::CComponent*>* last, std::pair<EClothingSuitPart,NUISystem::CComponent*>* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAU?$pair@W4EClothingSuitPart@@PAVCComponent@NUISystem@@@std@@PAU12@@std@@YIPAU?$pair@W4EClothingSuitPart@@PAVCComponent@NUISystem@@@0@PAU10@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005BA833, 37 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 005bb409 std::vector<std::pair<EClothingSuitPart, NUISystem::CComponent *>, std::allocator<std::pair<EClothingSuitPart, NUISystem::CComponent *>>>::_M_insert_overflow; caller 005bb409 std::vector<std::pair<EClothingSuitPart, NUISystem::CComponent *>, std::allocator<std::pair<EClothingSuitPart, NUISystem::CComponent *>>>::_M_insert_overflow; binder ??$__uninitialized_copy@PAU?$pair@W4EClothingSuitPart@@PAVCComponent@NUISystem@@@std@@PAU12@@std@@YIPAU?$pair@W4EClothingSuitPart@@PAVCComponent@NUISystem@@@0@PAU10@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<EClothingSuitPart,NUISystem::CComponent*>.
 #pragma optimize("s", on)
-
-#include <new>
-
-struct SElement { long m_0; long m_4; };
-struct CRetailAllocator { };
-
-SElement* __fastcall UninitCopy_005ba833(const SElement* first, const SElement* last, SElement* dest, CRetailAllocator allocator)
-{
-    for (; first != last; ++first, ++dest)
-        new (dest) SElement(*first);
-    return dest;
+#include "stlport/fable_containers.h"
+enum EClothingSuitPart { };
+namespace NUISystem {
+class CComponent;
 }
+template std::pair<EClothingSuitPart,NUISystem::CComponent*>* std::__uninitialized_copy<std::pair<EClothingSuitPart,NUISystem::CComponent*>*,std::pair<EClothingSuitPart,NUISystem::CComponent*>* >(std::pair<EClothingSuitPart,NUISystem::CComponent*>*, std::pair<EClothingSuitPart,NUISystem::CComponent*>*, std::pair<EClothingSuitPart,NUISystem::CComponent*>*, std::__false_type const&);

@@ -10,6 +10,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#ifdef FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE
+#include "fable_compiler.h"
+#endif
 #if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
@@ -238,6 +241,13 @@ template<class I,class N,class T> I __uninitialized_fill_n(I first,N n,const T& 
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
 }
 #pragma auto_inline(on)
+#elif defined(FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE)
+// Retail opt-in (agentFAM02 2026-11-11, the /Os vector TUs, e.g. 0x00469FA5 / 0x004768F8 uninitialized_fill_n): the size-optimised
+// TU expands the non-POD __uninitialized_fill_n into the out-of-line uninitialized_fill_n COMDAT (`ret 4`, one loop, no call);
+// plain `inline` under /Os keeps it as a call (EXTRA_RULES: under /Os the uninitialized/fill helpers are __forceinline).
+template<class I,class N,class T> FABLE_FORCEINLINE I __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+    I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
+}
 #else
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;

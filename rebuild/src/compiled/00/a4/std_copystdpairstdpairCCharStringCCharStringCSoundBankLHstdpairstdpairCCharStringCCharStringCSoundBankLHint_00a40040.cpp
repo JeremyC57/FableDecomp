@@ -1,31 +1,16 @@
-// _global::Copy_SStringPairWord0C_00a40040(const SStringPairWord0C* first, const SStringPairWord0C* last, SStringPairWord0C* result, const random_access_iterator_tag&, int*) -- STLport __copy<SStringPairWord0C*>: counted forward assignment of 12-byte elements, returns the advanced result
-// Leaf: Copy_SStringPairWord0C_00a40040
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A40040, length 84 bytes, `ret 0Ch`.
-// Callees: CCharString::operator= @ 0x0099EFB0 (m_first); CCharString::operator= @ 0x0099EFB0 (m_second).
-// Shape: STLport 4.x `__copy(first, last, result, const random_access_iterator_tag&, _Distance*)` -- the signed element
-// count `last - first` is computed once (imul 0x2aaaaaab ; sar 1 (/12)), then the element's implicit operator= inlined memberwise (each member with its own assignment is a `push src ; mov ecx,dst ; call`, a plain word a direct move),
-// both pointers stepped by 0xc; the advanced result is returned (the untouched result for an empty range).
-// /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on
-// the stack (callers push `0`, `lea` of a dead slot, result).
-// Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is a {CCharString, CCharString, word} record (both assignments are CCharString::operator= @ 0x0099EFB0).
-class CCharString { public:                         // 4 bytes: the string-data pointer
-    void* PStringData;
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+// std::__copy(std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>* first, std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>* last, std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted forward copy `for (n = last - first; n > 0; --n) *result++ = *first++`, return the advanced result
+// Leaf: ??$__copy@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@PAU12@H@std@@YIPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A40040, 84 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00a40c10 source (STLvector_erase_00a40c10.cpp) names std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>; binder ??$__copy@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@PAU12@H@std@@YIPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>.
+#include "stlport/fable_containers.h"
+class CSoundBankLH;
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
-struct SStringPairWord0C {                       // 12 bytes; implicit memberwise operator=
-    CCharString m_first;                    // +0x00
-    CCharString m_second;                    // +0x04
-    long m_value;                           // +0x08
-};
-
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-
-SStringPairWord0C* __fastcall Copy_SStringPairWord0C_00a40040(const SStringPairWord0C* first, const SStringPairWord0C* last, SStringPairWord0C* result, const random_access_iterator_tag& category, int* distance)
-{
-    for (int n = int(last - first); n > 0; --n) {
-        *result = *first;
-        ++first;
-        ++result;
-    }
-    return result;
-}
+template std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>* std::__copy<std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>*,std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>*,int >(std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>*, std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>*, std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*>*, std::random_access_iterator_tag const&, int*);

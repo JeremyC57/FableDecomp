@@ -1,25 +1,18 @@
-// _Uninit_fill_n<SPairLongLong*> -- placement-copy `count` copies of an 8-byte {long, long} pair, return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00638BE0, oracle length 40 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; mov ecx,[value] ; push esi ; L: test eax,eax ; je S ; mov esi,[ecx] ; mov [eax],esi ; mov esi,[ecx+4] ; mov [eax+4],esi ; S: add eax,8 ; dec edx ; jne L ; pop esi ; E: ret 4
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// value reference and the by-value allocator on the stack) for an 8-byte pair of 4-byte scalars:
-// the trivial copy is two dword moves under the placement-new null test; the advanced
-// destination is returned. One of 15 bodies.
-#include <new>
-
-struct SPairLongLong {
+// std::uninitialized_fill_n(NThingMap::CThingMapManager::CThingMapInfo* first, unsigned int n, NThingMap::CThingMapManager::CThingMapInfo const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAVCThingMapInfo@CThingMapManager@NThingMap@@IV123@@std@@YIPAVCThingMapInfo@CThingMapManager@NThingMap@@PAV123@IABV123@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00638BE0, 40 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00639600 std::vector<NThingMap::CThingMapManager::CThingMapInfo, std::allocator<NThingMap::CThingMapManager::CThingMapInfo>>::_M_fill_insert; binder ??$uninitialized_fill_n@PAVCThingMapInfo@CThingMapManager@NThingMap@@IV123@@std@@YIPAVCThingMapInfo@CThingMapManager@NThingMap@@PAV123@IABV123@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over NThingMap::CThingMapManager::CThingMapInfo.
+#include "stlport/fable_containers.h"
+namespace NThingMap {
+class CThingMapManager {
+public:
+class CThingMapInfo {
+public:
     long first;
     long second;
 };
-
-struct CRetailAllocator { };
-
-SPairLongLong* __fastcall UninitFillN_SPairLongLong_00638be0(SPairLongLong* first, unsigned long count, const SPairLongLong& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) SPairLongLong(value);
-    return first;
+};
 }
+template NThingMap::CThingMapManager::CThingMapInfo* std::uninitialized_fill_n<NThingMap::CThingMapManager::CThingMapInfo*,unsigned int,NThingMap::CThingMapManager::CThingMapInfo >(NThingMap::CThingMapManager::CThingMapInfo*, unsigned int, NThingMap::CThingMapManager::CThingMapInfo const&);

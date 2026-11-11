@@ -1,25 +1,11 @@
-// _Uninit_copy<T*> -- placement-copy [first, last) to dest (4-byte counted-pointer elements, allocator by value), return the advanced destination
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0071F1F0, oracle length 45 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; mov eax,[dest] ; je R ; push esi ; (alignment pad) ; L: test eax,eax ; je N ; <copy 4 bytes [ecx] -> [eax] ; addref> ; N: add ecx,0x4 ; add eax,0x4 ; cmp ecx,edx ; jne L ; pop esi ; R: ret 8
-// Dinkumware `_Uninit_copy` for a 4-byte element: each copy is a placement new -- VC emits the null
-// check on the placement address -- from the source range; the allocator rides along by value
-// (a 1-byte class in a 4-byte slot). The element is a counted pointer whose copy constructor bumps the block's reference count when the block is present.
-// The speed TU pads the loop head. Fastcall: first in ecx, last in edx. The manifest label is propagated; the element type is modelled by size. One of 7 bodies of this shape.
-#include <new>
-
-struct SCountBlock { long m_a; long m_references; };
-struct SElement {                          // counted pointer: the copy bumps the block's count at +4
-    SCountBlock* m_pCount;
-    SElement(const SElement& other) : m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
-};
-struct CRetailAllocator { };
-
-SElement* __fastcall UninitCopy_0071f1f0(const SElement* first, const SElement* last, SElement* dest, CRetailAllocator allocator)
-{
-    for (; first != last; ++first, ++dest)
-        new (dest) SElement(*first);
-    return dest;
-}
+// std::__uninitialized_copy(CDefPointer<CTattooDef const>* first, CDefPointer<CTattooDef const>* last, CDefPointer<CTattooDef const>* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAV?$CDefPointer@$$CBVCTattooDef@@@@PAV1@@std@@YIPAV?$CDefPointer@$$CBVCTattooDef@@@@PAV1@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0071F1F0, 45 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 00721b10 std::vector<CDefPointer<CTattooDef const>, std::allocator<CDefPointer<CTattooDef const>>>::_M_insert_overflow; binder ??$__uninitialized_copy@PAV?$CDefPointer@$$CBVCTattooDef@@@@PAV1@@std@@YIPAV?$CDefPointer@$$CBVCTattooDef@@@@PAV1@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CDefPointer<CTattooDef const>.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "stlport/fable_containers.h"
+#include "engine/CDefPointer.h"
+#include "engine/CTattooDef.h"
+template CDefPointer<CTattooDef const>* std::__uninitialized_copy<CDefPointer<CTattooDef const>*,CDefPointer<CTattooDef const>* >(CDefPointer<CTattooDef const>*, CDefPointer<CTattooDef const>*, CDefPointer<CTattooDef const>*, std::__false_type const&);

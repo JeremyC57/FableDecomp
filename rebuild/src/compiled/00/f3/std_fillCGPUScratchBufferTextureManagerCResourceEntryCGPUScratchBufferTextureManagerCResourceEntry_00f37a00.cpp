@@ -1,17 +1,14 @@
-// _Fill<SElement44*> -- assign value to every element of [first, last) (44-byte POD elements)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00F37A00, oracle length 40 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 44 bytes from [eax] to [ecx]) ; add ecx,0x2c ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4
-// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the
-// stack) for 44-byte trivially-copyable elements. One of 10 bodies of this shape.
-struct SElement44 {
+// std::fill(CGPUScratchBufferTextureManager::CResourceEntry* first, CGPUScratchBufferTextureManager::CResourceEntry* last, CGPUScratchBufferTextureManager::CResourceEntry const& x) -- STLport 4.6 _algobase.h: assign x to every element of [first, last)
+// Leaf: ??$fill@PAUCResourceEntry@CGPUScratchBufferTextureManager@@U12@@std@@YIXPAUCResourceEntry@CGPUScratchBufferTextureManager@@0ABU12@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00F37A00, 40 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00f381f0 std::vector<CGPUScratchBufferTextureManager::CResourceEntry, std::allocator<CGPUScratchBufferTextureManager::CResourceEntry>>::_M_fill_insert; caller 00f381f0 std::vector<CGPUScratchBufferTextureManager::CResourceEntry, std::allocator<CGPUScratchBufferTextureManager::CResourceEntry>>::_M_fill_insert; binder ??$fill@PAUCResourceEntry@CGPUScratchBufferTextureManager@@U12@@std@@YIXPAUCResourceEntry@CGPUScratchBufferTextureManager@@0ABU12@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CGPUScratchBufferTextureManager::CResourceEntry.
+#include "stlport/fable_containers.h"
+class CGPUScratchBufferTextureManager {
+public:
+struct CResourceEntry {
     unsigned char _body[0x2c];
 };
-
-void __fastcall Fill_SElement44_00f37a00(SElement44* first, SElement44* last, const SElement44& value)
-{
-    for (; first != last; ++first)
-        *first = value;
-}
+};
+template void std::fill<CGPUScratchBufferTextureManager::CResourceEntry*,CGPUScratchBufferTextureManager::CResourceEntry >(CGPUScratchBufferTextureManager::CResourceEntry*, CGPUScratchBufferTextureManager::CResourceEntry*, CGPUScratchBufferTextureManager::CResourceEntry const&);

@@ -1,23 +1,16 @@
-// _global::CopyBackward_CElement1F4_006b5df0_008898c0(CElement1F4_006b5df0* first, CElement1F4_006b5df0* last, CElement1F4_006b5df0* result, SRandomAccessIteratorTag, long*) -- SGI __copy_backward over 0x1F4-byte elements with an out-of-line operator=: counted backward copy, returns the moved-back result
-// Leaf: CopyBackward_CElement1F4_006b5df0_008898c0
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008898C0, length 73 bytes, `ret 0Ch`.
-// Callee: the element operator= @ 0x006B5DF0 (catalog "CBlendedEnvironmentTheme::operator="; thiscall, source pushed).
-// Shape: the landed 0x00517430 / 0x0086E770 family: SGI-STL `__copy_backward(first, last, result,
-// random_access_iterator_tag, Distance*)` -- `for (n = last - first; n > 0; --n) *--result = *--last;`, the moved-back
-// result returned. /Gr TU (__fastcall: first in ecx, last in edx, result + the two tags on the stack). The element count
-// is the reciprocal-multiply division of the byte distance by 0x1F4.
-// Label correction: the catalog's `_Copy_backward<CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc*>` is propagated;
-// the element is modelled by its size and assignment operator.
-struct CElement1F4_006b5df0 {
+// std::__copy_backward(NEnvironmentInternal::CBlendedEnvironmentTheme* first, NEnvironmentInternal::CBlendedEnvironmentTheme* last, NEnvironmentInternal::CBlendedEnvironmentTheme* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAVCBlendedEnvironmentTheme@NEnvironmentInternal@@PAV12@H@std@@YIPAVCBlendedEnvironmentTheme@NEnvironmentInternal@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008898C0, 73 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 0088a180 std::vector<NEnvironmentInternal::CBlendedEnvironmentTheme, std::allocator<NEnvironmentInternal::CBlendedEnvironmentTheme>>::_M_fill_insert; callee 006b5df0 NEnvironmentInternal::CBlendedEnvironmentTheme::operator=; binder ??$__copy_backward@PAVCBlendedEnvironmentTheme@NEnvironmentInternal@@PAV12@H@std@@YIPAVCBlendedEnvironmentTheme@NEnvironmentInternal@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over NEnvironmentInternal::CBlendedEnvironmentTheme.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+namespace NEnvironmentInternal {
+class CBlendedEnvironmentTheme {
+public:
     unsigned char _body[0x1F4];
-    CElement1F4_006b5df0& operator=(const CElement1F4_006b5df0& other);   // 0x006B5DF0
+    CBlendedEnvironmentTheme& operator=(const CBlendedEnvironmentTheme& other);   // 0x006B5DF0
 };
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-CElement1F4_006b5df0* __fastcall CopyBackward_CElement1F4_006b5df0_008898c0(CElement1F4_006b5df0* first, CElement1F4_006b5df0* last, CElement1F4_006b5df0* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
 }
+template NEnvironmentInternal::CBlendedEnvironmentTheme* std::__copy_backward<NEnvironmentInternal::CBlendedEnvironmentTheme*,NEnvironmentInternal::CBlendedEnvironmentTheme*,int >(NEnvironmentInternal::CBlendedEnvironmentTheme*, NEnvironmentInternal::CBlendedEnvironmentTheme*, NEnvironmentInternal::CBlendedEnvironmentTheme*, std::random_access_iterator_tag const&, int*);

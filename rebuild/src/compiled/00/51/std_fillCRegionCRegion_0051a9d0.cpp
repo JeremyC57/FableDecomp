@@ -1,19 +1,11 @@
-// fill<CRegion*> -- assign value to every element of [first, last) through CRegion::operator= @ 0x00519B80
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0051A9D0, oracle length 37 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je E ; push ebx ; mov ebx,[value] ; L: push ebx ; mov ecx,esi ; call CRegion::operator= ; add esi,0x58 ; cmp esi,edi ; jne L ; pop ebx ; E: pop edi ; pop esi ; ret 4
-// `fill(first, last, value)` (`__fastcall`: first in ecx, last in edx, the value reference on
-// the stack) for 88-byte elements with an out-of-line copy-assignment @ 0x00519B80.
-// One of 12 bodies of this shape.
-class CRegion { public:
-    unsigned char _body[0x58];
-    CRegion& operator=(const CRegion& other);   // 0x00519B80
-};
-
-void __fastcall Fill_CRegion_0051a9d0(CRegion* first, CRegion* last, const CRegion& value)
-{
-    for (; first != last; ++first)
-        *first = value;
-}
+// std::fill(CRegion* first, CRegion* last, CRegion const& x) -- STLport 4.6 _algobase.h: assign x to every element of [first, last)
+// Leaf: ??$fill@PAVCRegion@@V1@@std@@YIXPAVCRegion@@0ABV1@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0051A9D0, 37 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 0051d0a0 std::vector<CRegion, std::allocator<CRegion>>::_M_fill_insert; callee 00519b80 CRegion::operator=; binder ??$fill@PAVCRegion@@V1@@std@@YIXPAVCRegion@@0ABV1@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CRegion.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CREGION
+#include "stlport/fable_containers.h"
+#include "engine/CRegion.h"
+template void std::fill<CRegion*,CRegion >(CRegion*, CRegion*, CRegion const&);

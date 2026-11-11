@@ -1,17 +1,9 @@
-// fill<T*, T> -- assign value over [first, last) (12-byte POD elements)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008F6580, oracle length 49 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 12 bytes [eax] -> [ecx]> ; add ecx,0xc ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4
-// `std::fill` over a 12-byte POD element: the value reference is loaded once and assigned to every
-// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the
-// stack. The manifest label is propagated; the element type is modelled by size. One of
-// 6 bodies of this shape.
-struct SElement { unsigned char _body[0xc]; };
-
-void __fastcall Fill_008f6580(SElement* first, SElement* last, const SElement& value)
-{
-    for (; first != last; ++first)
-        *first = value;
-}
+// std::fill(CHeightMapCell* first, CHeightMapCell* last, CHeightMapCell const& x) -- STLport 4.6 _algobase.h: assign x to every element of [first, last)
+// Leaf: ??$fill@PAVCHeightMapCell@@V1@@std@@YIXPAVCHeightMapCell@@0ABV1@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008F6580, 49 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 008f6c90 source (stdvector_Mfillinsert_008f6c90.cpp) names CHeightMapCell; binder ??$fill@PAVCHeightMapCell@@V1@@std@@YIXPAVCHeightMapCell@@0ABV1@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CHeightMapCell.
+#include "stlport/fable_containers.h"
+#include "engine/CHeightMapCell.h"
+template void std::fill<CHeightMapCell*,CHeightMapCell >(CHeightMapCell*, CHeightMapCell*, CHeightMapCell const&);

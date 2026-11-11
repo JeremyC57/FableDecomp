@@ -1,25 +1,10 @@
-// _Uninit_fill_n<CTexture*> -- placement-copy `count` copies of value from first (8-byte elements, copy ctor @ 0x009F9D00), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0049AE00, oracle length 42 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push [value] ; mov ecx,esi ; call CTexture::CTexture(const CTexture&) ; S: add esi,0x8 ; dec edi ; jne L ; pop edi ; E: mov eax,esi ; pop esi ; ret 4
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// the value reference on the stack): copy-constructs `count` elements in place with
-// placement new (hence the null test on the destination) through the out-of-line copy
-// constructor @ 0x009F9D00 and returns the advanced destination. `ret 4` pops the value
-// reference. The element type is named from the copy constructor's label when
-// unique. One of 12 bodies.
-#include <new>
-
-class CTexture { public:
-    unsigned char _body[0x8];
-    CTexture(const CTexture& other);           // 0x009F9D00
-};
-
-CTexture* __fastcall UninitFillN_CTexture_0049ae00(CTexture* first, unsigned long count, const CTexture& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) CTexture(value);
-    return first;
-}
+// std::uninitialized_fill_n(CTexture* first, unsigned int n, CTexture const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAVCTexture@@IV1@@std@@YIPAVCTexture@@PAV1@IABV1@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0049AE00, 42 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 0049b5a0 std::vector<CTexture>::_M_fill_insert; callee 009f9d00 CTexture::CTexture; binder ??$uninitialized_fill_n@PAVCTexture@@IV1@@std@@YIPAVCTexture@@PAV1@IABV1@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CTexture.
+#define FABLE_RETAIL_CTEXTURE
+#include "stlport/fable_containers.h"
+#include "engine/CTexture.h"
+template CTexture* std::uninitialized_fill_n<CTexture*,unsigned int,CTexture >(CTexture*, unsigned int, CTexture const&);

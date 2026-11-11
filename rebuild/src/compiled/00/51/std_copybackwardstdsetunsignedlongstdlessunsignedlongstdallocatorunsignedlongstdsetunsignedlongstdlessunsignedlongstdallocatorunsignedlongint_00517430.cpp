@@ -1,24 +1,10 @@
-// SGI __copy_backward<CElement12_00512ce0*> (12-byte elements, out-of-line operator= @ 0x00512CE0) -- counted backward copy, returns the moved-back result
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00517430, oracle length 66 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,edx ; sub edx,ecx ; (divide by 12) ; test eax,eax ; jle Z ; push ebx ; push edi ; mov edi,[result] ; mov ebx,eax ; L: sub esi,0xc ; sub edi,0xc ; push esi ; mov ecx,edi ; call operator= ; dec ebx ; jne L ; mov eax,edi ; pop edi ; pop ebx ; pop esi ; ret 0Ch ; Z: mov eax,[result] ; pop esi ; ret 0Ch
-// SGI-STL `__copy_backward(first, last, result, random_access_iterator_tag, Distance*)` for
-// 12-byte elements: `for (n = last - first; n > 0; --n) *--result = *--last;` and the moved-back
-// result is returned. /Gr TU (__fastcall: first in ecx, last in edx, result + two tags on the
-// stack, `ret 0Ch`). Each element is assigned through the out-of-line operator= @ 0x00512CE0. The manifest
-// label (`_Move_backward` / `_Copy_backward`) is propagated from Dinkumware. One of 9 bodies.
-struct CElement12_00512ce0 {
-    unsigned char _body[0xc];
-    CElement12_00512ce0& operator=(const CElement12_00512ce0& other);   // 0x00512CE0
-};
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-CElement12_00512ce0* __fastcall CopyBackward_CElement12_00512ce0_00517430(CElement12_00512ce0* first, CElement12_00512ce0* last, CElement12_00512ce0* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+// std::__copy_backward(std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >* first, std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >* last, std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@PAV12@H@std@@YIPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@0@PAV10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00517430, 66 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00518f60 std::__copy_backward_ptrs<std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>>>; caller 0051c920 std::vector<std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>>, std::allocator<std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>>>>::_M_fill_insert; binder ??$__copy_backward@PAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@PAV12@H@std@@YIPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@0@PAV10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long>>.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+template std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >* std::__copy_backward<std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >*,std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >*,int >(std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >*, std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >*, std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >*, std::random_access_iterator_tag const&, int*);

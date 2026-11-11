@@ -1,34 +1,26 @@
-// _global::Copy_Record16_00566780(const SRecord16* first, const SRecord16* last, SRecord16* result, const random_access_iterator_tag&, int*) -- assign [first, last) of 16-byte {three strings, two flags} records onto result, return the advanced result
-// Leaf: Copy_Record16_00566780
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00566780, length 89 bytes (`ret 0Ch`).
-// Identity: catalog `_Move<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>*>` is propagated (that
-//   pair is 12 bytes; this body strides 16 with three string assignments and two flag bytes). Callers: the tree find
-//   0x00566FE0, the tree erase 0x005689C0 (both landed) and the vector resize 0x00569D90; the element stays descriptive.
-// Shape: SGI `__copy(first, last, result, random_access_iterator_tag, Distance*)` (the counted form), `__fastcall`: first in
-//   ecx, last in edx, result + the tag reference + the distance pointer on the stack (`ret 0Ch`); the signed count is
-//   (last - first) / sizeof(T) (reciprocal multiply), counted down; an empty range returns the untouched result.
-//   Flat record: [esi+N]/[edi+N] throughout (a nested second member adds an induction pair: tried).
-struct random_access_iterator_tag { random_access_iterator_tag() { } };   // empty tag, passed by const reference
-
-class CCharString { public:                            // 4-byte counted string handle
-    void* m_pData;
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+// std::__copy(CTCHeroOnlineScoreboard::CActivity* first, CTCHeroOnlineScoreboard::CActivity* last, CTCHeroOnlineScoreboard::CActivity* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted forward copy `for (n = last - first; n > 0; --n) *result++ = *first++`, return the advanced result
+// Leaf: ??$__copy@PAVCActivity@CTCHeroOnlineScoreboard@@PAV12@H@std@@YIPAVCActivity@CTCHeroOnlineScoreboard@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00566780, 89 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00569d90 std::vector<CTCHeroOnlineScoreboard::CActivity, std::allocator<CTCHeroOnlineScoreboard::CActivity>>::resize; binder ??$__copy@PAVCActivity@CTCHeroOnlineScoreboard@@PAV12@H@std@@YIPAVCActivity@CTCHeroOnlineScoreboard@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CTCHeroOnlineScoreboard::CActivity.
+#include "stlport/fable_containers.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
-
-struct SRecord16 {                              // 16 bytes, flat
+class CTCHeroOnlineScoreboard {
+public:
+class CActivity {
+public:                              // 16 bytes, flat
     CCharString m_0;                            // +0x00
     CCharString m_4;                            // +0x04
     CCharString m_8;                            // +0x08
     bool        m_flagC;                        // +0x0c
     bool        m_flagD;                        // +0x0d
 };
-
-SRecord16* __fastcall Copy_Record16_00566780(const SRecord16* first, const SRecord16* last, SRecord16* result, const random_access_iterator_tag&, int*)
-{
-    for (int n = last - first; n > 0; --n) {
-        *result = *first;
-        ++first;
-        ++result;
-    }
-    return result;
-}
+};
+template CTCHeroOnlineScoreboard::CActivity* std::__copy<CTCHeroOnlineScoreboard::CActivity*,CTCHeroOnlineScoreboard::CActivity*,int >(CTCHeroOnlineScoreboard::CActivity*, CTCHeroOnlineScoreboard::CActivity*, CTCHeroOnlineScoreboard::CActivity*, std::random_access_iterator_tag const&, int*);

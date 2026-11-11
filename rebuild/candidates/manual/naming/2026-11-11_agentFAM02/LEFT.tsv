@@ -1,0 +1,317 @@
+address	old_name	status	reason
+0x00450A14	_global::DestroyRange_Elem0x40_00450a14	OK2	T proven (NSpeechGainManager::CDialogueLayerDef) but the shared-model rewrite does not grade: DIFFER(3v28) 
+0x00450A3C	_global::DestroyRange_Elem0x50_00450a3c	OK2	T proven but the generator could not build an element model (vector/template element with no usable stand-in model)
+0x00450ACE	_global::DestroyRange_Elem0x50_00450ace	OK2	T proven (CAbilityTrackDef) but the shared-model rewrite does not grade: DIFFER(29v28) 
+0x00469149	_global::UninitFillN_00469149	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00472E58	_global::UninitFillN_CDialogueLayerDef_00472e58	MANUAL	T proven (NSpeechGainManager::CDialogueLayerDef) but the shared-model rewrite does not grade: DIFFER(34v38) 
+0x00478EBC	_global::UninitFillN_CElement72_004787f6_00478ebc	OK2	T proven (CAbilityTrackLevelDef) but the shared-model rewrite does not grade: DIFFER(34v38) 
+0x00479C94	_global::UninitFillN_CEngineLocalDetailLayerDef_00479c94	OK2	T proven (CEngineLocalDetailLayerDef) but the shared-model rewrite does not grade: SRC_FAIL p\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_conta
+0x004B8210	_global::UninitCopy_PairCharStringPersistInfo_004b8210	OK2b	T proven (std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>) but the shared-model rewrite does not grade: SRC_FAIL \claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\004b8210\004b8210
+0x004B84F0	_global::Copy_PairCharStringPersistInfo_004b84f0	OK2b	T proven (std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>) but the shared-model rewrite does not grade: SRC_FAIL \claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\004b84f0\004b84f0
+0x004C2070	_global::CopyBackward_SElement12_004c2070	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x004CF9D0	_global::UninitCopy_SPairLongCSecond_0099ec30_004cf9d0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x004CFA10	_global::UninitCopy_CCameraTagPair_004cfa10	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x004CFAC0	_global::UninitCopy_CCameraTagPair_004cfac0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x004DA4FA	_global::UninitCopy_CElement16_004d788d_004da4fa	OK2	T proven (std::pair<CCharString,CTCBase::CRegisteredTCInfo>) but the shared-model rewrite does not grade: SRC_FAIL eDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079
+0x004DA525	_global::UninitFillN_CElement16_004d788d_004da525	OK2	T proven (std::pair<CCharString,CTCBase::CRegisteredTCInfo>) but the shared-model rewrite does not grade: SRC_FAIL eDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079
+0x004DA5A1	_global::DestroyRange_Elem0x8_004da5a1	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x004DA5E2	_global::DestroyRange_Elem0x30_004da5e2	OK2	T proven but the generator could not build an element model (vector/template element with no usable stand-in model)
+0x004DA5FE	_global::DestroyRange_Elem0x30_004da5fe	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x004ED2F1	_global::CopyBackwardPtrs_Element48_004ed2f1	OK2	T proven (CShopItemDef) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\004ed2f1\00
+0x0050D600	_global::UninitCopy_SElement16_0050d600	OK2	T proven (C2DBoxF) but the shared-model rewrite does not grade: DIFFER(62v56) 
+0x0050D640	_global::UninitFillN_0050d640	OK2	T proven (C2DBoxF) but the shared-model rewrite does not grade: DIFFER(58v52) 
+0x00513830	_global::UninitCopy_CElement72_005110b0_00513830	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00513BB0	_global::UninitCopy_SElement16_00513bb0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x005150E0	_global::Copy_CElement72_00513bf0_005150e0	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00517200	_global::Copy_SNamedArray10_00517200	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00518F30	_global::UninitCopy_CElement12_00513700_00518f30	OK2	T proven (std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long>>) but the shared-model rewrite does not grade: DIFFER(44v46) 
+0x00518F80	_global::UninitFillN_CElement12_00513700_00518f80	OK2	T proven (std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long>>) but the shared-model rewrite does not grade: DIFFER(40v42) 
+0x0051C710	_global::CopyBackward_SVectorPair18_0051c710	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SVector_00515320,SVector_0051bcd0); next: model them from Ego_r/headers
+0x00526D70	_global::Fill_SElement8_00526d70	OK2b	T proven (ThingLList) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\ThingLList.h(6) : error C2501: 'FABLE_STATIC_ASSERT' : missing storage-c
+0x00526FE0	_global::CopyBackward_SNamedPair0C_00526fe0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00527C70	_global::UninitCopy_SElement8_00527c70	OK2b	T proven (ThingLList) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\ThingLList.h(6) : error C2501: 'FABLE_STATIC_ASSERT' : missing storage-c
+0x00527CD0	_global::UninitFillN_SPairLongLong_00527cd0	OK2b	T proven (ThingLList) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\ThingLList.h(6) : error C2501: 'FABLE_STATIC_ASSERT' : missing storage-c
+0x0052B640	_global::CopyBackward_SSymbolInfo18_0052b640	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0053CCA5	_global::UninitCopy_CElement12_0053cb9b_0053cca5	OK2	T proven (std::map<unsigned long,NUISystem::CUIState,std::less<unsigned long>,std::allocator<std::pair<unsigned long,NUISystem::CUIState>>>) but the shared-model rewrite does not grade: DIFFER(37v43) 
+0x0053CCD0	_global::UninitFillN_CElement12_0053cb9b_0053ccd0	OK2	T proven (std::map<unsigned long,NUISystem::CUIState,std::less<unsigned long>,std::allocator<std::pair<unsigned long,NUISystem::CUIState>>>) but the shared-model rewrite does not grade: DIFFER(35v38) 
+0x00565400	_global::UninitCopy_SPairLongCSecond_0099b720_00565400	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00565440	_global::UninitFillN_SPairLongCSecond_0099b720_00565440	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x005659D0	_global::CopyBackward_SQuestPersistRecord10_005659d0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0057F24E	_global::UninitCopy_CHeroMarriageInfo_0057f24e	OK2	T proven (CHeroMarriageInfo) but the shared-model rewrite does not grade: DIFFER(42v43) 
+0x0057F2D1	_global::UninitFillN_CHeroMarriageInfo_0057f2d1	OK2	T proven (CHeroMarriageInfo) but the shared-model rewrite does not grade: DIFFER(34v38) 
+0x0057F658	_global::UninitCopy_CElement16_0057f092_0057f658	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0057F683	_global::UninitFillN_CElement16_0057f092_0057f683	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x005810AE	_global::Copy_ListToBackInserter_CHeroMarriageInfo_005810ae	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00592FD5	_global::UninitFillN_CFadeInFadeOutBase_00592fd5	MANUAL	T proven (CFadeInFadeOutBase) but the shared-model rewrite does not grade: DIFFER(34v38) 
+0x00593800	_global::UninitCopy_CElement8_00592dfb_00593800	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0059382B	_global::UninitFillN_CElement8_00592dfb_0059382b	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00593851	_global::UninitCopy_CFadeInFadeOutBase_00593851	MANUAL	T proven (CFadeInFadeOutBase) but the shared-model rewrite does not grade: DIFFER(42v43) 
+0x005B149F	_global::UninitFillN_IVCountedPointer_005b149f	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x005C2929	_global::UninitCopy_CElement44_005c2086_005c2929	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x005C2954	_global::UninitFillN_CElement44_005c2086_005c2954	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x005E0A00	_global::CopyBackward_PairAnimComponent_005e0a00	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x005E0C60	_global::UninitCopy_PairAnimComponent_005e0c60	OK2	T proven (std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CAnimComponentBase.h(30) : error C2118: negative subscript Z:\tmp\claude
+0x005E0CA0	_global::UninitFillN_LongIVCountedPointer_005e0ca0	OK2	T proven (std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CAnimComponentBase.h(30) : error C2118: negative subscript Z:\tmp\claude
+0x005E0E70	_global::CopyBackward_PairULongAnimationEntry_005e0e70	OK2b	T proven (std::pair<unsigned long,CAnimationEntry>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CAnimComponentBase.h(30) : error C2118: negative subscript
+0x005E16F0	_global::UninitCopy_PairULongAnimationEntry_005e16f0	OK2	T proven (std::pair<unsigned long,CAnimationEntry>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CAnimComponentBase.h(30) : error C2118: negative subscript
+0x005E1740	_global::UninitFillN_AnimationEntryPair_005e1740	OK2	T proven (std::pair<unsigned long,CAnimationEntry>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CAnimComponentBase.h(30) : error C2118: negative subscript
+0x006132F0	_global::Copy_SElement40_006132f0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00623390	_global::CopyBackward_SStringRecord1C_00623390	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00625820	_global::Copy_CElement44_006255b0_00625820	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0062FC20	_global::Copy_SElement12_0062fc20	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006314C0	_global::Copy_CConfigOptionsDefaultsDef_006314c0	OK2	T proven (NUISystem::CUIStateDef) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\NUISystem_CUIStateDef.h(35) : error C2118: negative subscript Z:\home\us
+0x00631560	_global::UninitCopy_CElement124_006250b0_00631560	OK2	T proven (NUISystem::CUIStateDef) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\NUISystem_CUIStateDef.h(35) : error C2118: negative subscript Z:\home\us
+0x00633340	_global::UninitFillN_CElement124_006250b0_00633340	OK2	T proven (NUISystem::CUIStateDef) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\NUISystem_CUIStateDef.h(35) : error C2118: negative subscript Z:\home\us
+0x00640220	_global::UninitCopy_SElement16_00640220	OK2	T proven (C2DBoxI) but the shared-model rewrite does not grade: DIFFER(62v56) 
+0x00640260	_global::UninitFillN_00640260	OK2	T proven (C2DBoxI) but the shared-model rewrite does not grade: DIFFER(58v52) 
+0x00672210	_global::CopyBackwardPtrs_long_00672210	OK2b	T proven (ENavigatorType) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00672210\00
+0x00672EB0	_global::Copy_SElement12_00672eb0	OK2	T proven (std::pair<unsigned long,CRandomAppearanceMorph::CTextureMorph>) but the shared-model rewrite does not grade: SRC_FAIL ffb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079: 'std::pai
+0x00672F90	_global::Copy_SElement44_00672f90	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00674CE0	_global::UninitCopy_CVectorMap12_00674ce0	OK2b	T proven (CVectorMap<unsigned long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned long,CRandomAppearanceMorph::CTextureMorph>>) but the shared-model rewrite does not grade: SRC_FAIL \tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00674ce0\0067
+0x00675790	_global::Copy_CElement12_006755e0_00675790	OK2b	T proven (CArray<CRandomAppearanceMorph::CBodyPartMesh>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x00675820	_global::UninitCopy_CElement12_00675230_00675820	OK2	T proven (CArray<CRandomAppearanceMorph::CBodyPartMesh>) but the shared-model rewrite does not grade: SRC_FAIL \-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(37
+0x0067CA70	_global::UninitFillN_CBlurredAttitudesDef_0067ca70	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0067EA30	_global::UninitFillN_0067ea30	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0069C140	_global::Copy_SElement48_0069c140	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006A2EB0	_global::CopyBackward_PairLongThing_006a2eb0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006B6E40	_global::UninitFillN_CElement12_006b6840_006b6e40	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006BEAA0	_global::CopyBackward_PairLongMusicEntry_006beaa0	OK2b	T proven (std::pair<long,CMusicManager::CRegisteredMusicEntry>) but the shared-model rewrite does not grade: SRC_FAIL laude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\006beaa0\006beaa0.c
+0x006D37B0	_global::UninitFillN_SPairCSecond_0099ec30Long_006d37b0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006EFDB0	_global::UninitCopy_006efdb0	OK2b	T proven but the generator could not build an element model (vector/template element with no usable stand-in model)
+0x006F0640	_global::Copy_FlaggedPosEmitter_006f0640	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006F10F0	_global::UninitCopy_CProng_006f10f0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006F14A0	_global::UninitCopy_CProng_006f14a0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006F4470	_global::Copy_SVectorRecord1C_006f4470	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (CRetailVector); next: model them from Ego_r/headers
+0x006FB200	_global::UninitFillN_SPairCSecond_0099ec30Long_006fb200	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x006FBC50	_global::Copy_PairULongEventVector_006fbc50	OK2	T proven (std::pair<unsigned long,CSmallVector<NAnimationEvents::CEvent,32>>) but the shared-model rewrite does not grade: SRC_FAIL ude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\006fbc50\006fbc50.cpp
+0x00708C20	_global::Copy_ModifierGraphic_00708c20	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00709030	_global::UninitCopy_CElement12_00708830_00709030	OK2	T proven but the generator could not build an element model (vector/template element with no usable stand-in model)
+0x00709090	_global::Copy_CElement12_00708ca0_00709090	OK2	T proven (std::vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x0070FA30	_global::UninitCopy_0070fa30	OK2	T proven (CIVCountedPointer<C3DAnimationTransitionState>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\C3DAnimationState.h(48) : error C2118: negative subscript Z:\home\user\F
+0x007108A0	_global::CopyBackward_SSortedItemPtr_007108a0	OK2b	T proven (std::_List_iterator<CAnimSet,std::_Const_traits<CAnimSet>>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\007108a0\00
+0x00718530	_global::Copy_SElement28_00718530	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00719E20	_global::UninitCopy_CElement68_004d1fe0_00719e20	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00719F00	_global::Copy_CSubtitledMessage_00719f00	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0071EA10	_global::UninitCopy_CIVCountedPointer_0071ea10	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0071ED80	_global::CopyBackward_SElement12_0071ed80	OK2	T proven (std::pair<CSkeletalMorphs::CEntry,float>) but the shared-model rewrite does not grade: SRC_FAIL FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(607) : error C
+0x0071EDD0	_global::CopyBackward_SElement24_0071edd0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0071F180	_global::UninitCopy_0071f180	OK2b	T proven (std::pair<CSkeletalMorphs::CEntry,float>) but the shared-model rewrite does not grade: SRC_FAIL FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(607) : error C
+0x00722C90	_global::Copy_GenerationPos_00722c90	OK2	T proven (CTCSmokeGenerator::CGenerationPos) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00722c90\00
+0x00728A40	_global::UninitFillN_SPairLongCSecond_005bbdf1_00728a40	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (CSecond_005bbdf1); next: model them from Ego_r/headers
+0x00728B10	_global::UninitCopy_SPairLongCSecond_005bbdf1_00728b10	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (CSecond_005bbdf1); next: model them from Ego_r/headers
+0x00728B50	_global::UninitFillN_SPairLongCSecond_005bbdf1_00728b50	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (CSecond_005bbdf1); next: model them from Ego_r/headers
+0x00737190	_global::UninitCopy_00737190	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00748AF0	_global::Copy_SThingPointerRecord10_00748af0	OK2b	T proven (std::pair<CIntelligentPointer<CThing>,NStealth::CDangerStatus>) but the shared-model rewrite does not grade: SRC_FAIL ableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2
+0x0074F4F0	_global::UninitCopy_SPairLongCSecond_0099ec30_0074f4f0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0074F530	_global::UninitFillN_SPairLongCSecond_0099ec30_0074f530	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0075F130	_global::Copy_CKeyCamera_0075f130	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00764E90	_global::Copy_CElement12_0075b8d0_00764e90	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00769C00	_global::Copy_StringStringThing_00769c00	OK2	T proven (AttackParticleAndEndPoints) but the shared-model rewrite does not grade: DIFFER(97v108) 
+0x00769EA0	_global::CopyBackward_PairULongUpdateParamDesc_00769ea0	OK2b	T proven (std::pair<unsigned long,NParticleEngine::CParticleUpdateParamDesc<unsigned long,unsigned long>>) but the shared-model rewrite does not grade: SRC_FAIL a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00769ea0\00769ea0.cpp(20) : error C2989: 'NParticleEngine::CParticleUp
+0x0076BA70	_global::Copy_CElement12_0076b1e0_0076ba70	OK2	T proven (std::vector<ParticleAndEndPoints,std::allocator<ParticleAndEndPoints>>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x0076BAC0	_global::Copy_CElement12_0076b320_0076bac0	OK2	T proven (std::vector<AttackParticleAndEndPoints,std::allocator<AttackParticleAndEndPoints>>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x00770200	_global::Fill_CElement4_0076ff90_00770200	OK2	T proven (std::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry,std::allocator<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>>) but the shared-model rewrite does not grade: SRC_FAIL claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00770200\00770200.
+0x00770230	_global::Copy_SListHandle04_0076ff90_00770230	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x007765C0	_global::Copy_SElement36_007765c0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00776B60	_global::UninitCopy_KeyCameraRecord36_00776b60	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SKeyRecord); next: model them from Ego_r/headers
+0x007770C0	_global::UninitCopy_KeyCameraRecord36_007770c0	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SKeyRecord); next: model them from Ego_r/headers
+0x0077E170	_global::CopyBackward_PairCharStringValue0C_0077e170	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00781720	_global::Copy_Record2C_00781720	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00786E40	_global::UninitCopy_NamedRecord12_00786e40	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x007AC8F0	_global::UninitCopy_CElement4_0099ec30_007ac8f0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x007DC600	_global::CopyBackward_CElement12_007dc3f0_007dc600	OK2	T proven (std::vector<CCard*>) but the shared-model rewrite does not grade: DIFFER(76v66) 
+0x007DC650	_global::Copy_CElement12_007dc3f0_007dc650	OK2	T proven (std::vector<CCard*,std::allocator<CCard*>>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x008001F0	_global::Copy_SElement9_008001f0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00806C00	_global::UninitCopy_CTargetPoint_00806c00	OK2b	T proven (NPlayerTargeting::CTargetPoint) but the shared-model rewrite does not grade: DIFFER(89v122) 
+0x00806E10	_global::Copy_CTargetPoint_00806e10	OK2	T proven (NPlayerTargeting::CTargetPoint) but the shared-model rewrite does not grade: DIFFER(101v135) 
+0x00806EA0	_global::Copy_CTargetPoint_00806ea0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00807980	_global::UninitCopy_CTargetPoint_00807980	OK2	T proven (NPlayerTargeting::CTargetPoint) but the shared-model rewrite does not grade: DIFFER(89v122) 
+0x0080DFF0	_global::CopyBackward_PairIntelligentPointerInt_0080dff0	OK2	T proven (std::pair<CIntelligentPointer<CThing>,long>) but the shared-model rewrite does not grade: DIFFER(66v79) 
+0x008181E0	_global::UninitFillN_TwoPointerRecord_008181e0	OK2b	T proven (std::pair<NHitLocations::CHitLocation,long>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\NHitLocations_CHitLocation.h(73) : error C2501: 'FABLE_STATIC_ASSERT' : 
+0x00819280	_global::Fill_SElement40_00819280	OK2b	T proven (std::pair<EHeroMorphType,CParticleMorphs::CEntry>) but the shared-model rewrite does not grade: SRC_FAIL ableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2
+0x008192B0	_global::Fill_008192b0	OK2	T proven (std::pair<unsigned long,CSkeletalMorphs::CEntry>) but the shared-model rewrite does not grade: SRC_FAIL ableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2
+0x00819390	_global::Copy_SElement24_00819390	OK2	T proven (std::pair<EHeroMorphType,CTextureMorphEntry>) but the shared-model rewrite does not grade: SRC_FAIL ser-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : err
+0x00819440	_global::Copy_SElement12_00819440	OK2	T proven (std::pair<unsigned long,CSkeletalMorphs::CEntry>) but the shared-model rewrite does not grade: SRC_FAIL ableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2
+0x00819520	_global::Copy_SElement36_00819520	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00819670	_global::CopyBackward_SElement24_00819670	OK2b	T proven (std::pair<EHeroMorphType,CTextureMorphEntry>) but the shared-model rewrite does not grade: SRC_FAIL ser-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : err
+0x00819720	_global::CopyBackward_SElement12_00819720	OK2	T proven (std::pair<unsigned long,CSkeletalMorphs::CEntry>) but the shared-model rewrite does not grade: SRC_FAIL ableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2
+0x0081A1B0	_global::UninitCopy_CMorphEntryPair_0081a1b0	OK2b	T proven (std::pair<EHeroMorphType,CTextureMorphEntry>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\0081a1b0\00
+0x0081A650	_global::UninitCopy_Record20_0081a650	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00828CD0	_global::Copy_PairLongCountedPointer_00828cd0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0085D6C0	_global::Fill_Elem0x4_0085d6c0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x0085D870	_global::CopyBackward_SElement20_0085d870	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0085DBD0	_global::UninitCopy_0085dbd0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x0085E3E0	_global::UninitCopy_CElement12_0085de40_0085e3e0	OK2	T proven (std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell>>) but the shared-model rewrite does not grade: SRC_FAIL \tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_co
+0x0085E410	_global::Fill_CElement12_0085dfd0_0085e410	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0085E440	_global::UninitFillN_CElement12_0085de40_0085e440	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0085E470	_global::Copy_CElement12_0085dfd0_0085e470	OK2b	T proven (std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell>>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x0085E4C0	_global::CopyBackward_CElement12_0085dfd0_0085e4c0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00865650	_global::UninitCopy_ListLongPair_00865650	OK2b	T proven (NCreatureHitNotification::CFlash) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00865650\00
+0x0086A3F0	_global::Fill_0086a3f0	OK2b	T proven (std::pair<long,CRandomAppearanceMorph::CSkeletalMorph>) but the shared-model rewrite does not grade: SRC_FAIL fb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079: 'std::pair
+0x0086A4F0	_global::Fill_0086a4f0	OK2	T proven (std::pair<unsigned long,CRandomAppearanceMorph::CTextureMorph>) but the shared-model rewrite does not grade: SRC_FAIL ffb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079: 'std::pai
+0x0086A530	_global::Copy_SElement12_0086a530	OK2	T proven (std::pair<unsigned long,CRandomAppearanceMorph::CTextureMorph>) but the shared-model rewrite does not grade: SRC_FAIL ffb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079: 'std::pai
+0x0086A5C0	_global::CopyBackward_SElement12_0086a5c0	OK2	T proven (std::pair<unsigned long,CRandomAppearanceMorph::CTextureMorph>) but the shared-model rewrite does not grade: SRC_FAIL ffb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079: 'std::pai
+0x0086AB10	_global::UninitCopy_SPairCSecond_0099ec30Long_0086ab10	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0086AB50	_global::UninitFillN_SPairCSecond_0099ec30Long_0086ab50	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0086ABF0	_global::UninitCopy_PairLongRecord12_0086abf0	OK2b	T proven (std::pair<long,CRandomAppearanceMorph::CSkeletalMorph>) but the shared-model rewrite does not grade: SRC_FAIL fb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079: 'std::pair
+0x0086D4A0	_global::UninitCopy_SPairLongCSecond_0086b2a0_0086d4a0	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (CSecond_0086b2a0); next: model them from Ego_r/headers
+0x0086D4E0	_global::UninitFillN_SPairLongCSecond_0086b2a0_0086d4e0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0086D5E0	_global::CopyBackward_SPairWithVectorMap18_0086d5e0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0086D870	_global::UninitCopy_PairVectorMapRecord_0086d870	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0086E710	_global::UninitCopy_CElement12_00675230_0086e710	OK2	T proven (CArray<CRandomAppearanceMorph::CBodyPartMesh>) but the shared-model rewrite does not grade: SRC_FAIL \-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(37
+0x0086E740	_global::UninitFillN_CElement12_00675230_0086e740	OK2	T proven (CArray<CRandomAppearanceMorph::CBodyPartMesh>) but the shared-model rewrite does not grade: SRC_FAIL \-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(37
+0x0086E770	_global::CopyBackward_CElement12_006755e0_0086e770	OK2	T proven (CArray<CRandomAppearanceMorph::CBodyPartMesh>) but the shared-model rewrite does not grade: DIFFER(76v66) 
+0x0086E920	_global::Fill_CElement12_006755e0_0086e920	OK2	T proven (CArray<CRandomAppearanceMorph::CBodyPartMesh>) but the shared-model rewrite does not grade: DIFFER(49v37) 
+0x0086E950	_global::Copy_CElement12_006755e0_0086e950	OK2	T proven (CArray<CRandomAppearanceMorph::CBodyPartMesh>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x0086EF60	_global::Fill_0086ef60	OK2	T proven (std::pair<EExpressionType,CExpressionSet::CEntry>) but the shared-model rewrite does not grade: SRC_FAIL FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C
+0x0086EFF0	_global::CopyBackward_SElement12_0086eff0	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00885D90	_global::Fill_00885d90	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00885E60	_global::CopyBackward_SElement12_00885e60	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00885ED0	_global::Copy_SElement12_00885ed0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x008893D0	_global::CopyBackward_Record30_008893d0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00889950	_global::Copy_CElement500_006b5df0_00889950	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0088A440	_global::UninitFillN_CElement12_008899c0_0088a440	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0088A490	_global::CopyBackward_CElement12_00889f00_0088a490	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0088A5B0	_global::Fill_CElement12_00889f00_0088a5b0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x0088C440	_global::Copy_SElement12_0088c440	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x008AC140	_global::UninitCopy_CScriptThing_008ac140	OK2	T proven but the generator could not build an element model (vector/template element with no usable stand-in model)
+0x008AC180	_global::UninitFillN_CScriptThing_008ac180	OK2	T proven (CScriptThing) but the shared-model rewrite does not grade: DIFFER(52v54) 
+0x008B2530	_global::UninitFillN_CPairCountedRef8_008b2530	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SCountBlock); next: model them from Ego_r/headers
+0x008B3010	_global::DestroyRange_CountedPointer_008b3010	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SCountBlock); next: model them from Ego_r/headers
+0x008ED4D0	_global::Copy_ToNameInserter8_008ed4d0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x008ED510	_global::Copy_ToNameInserter4_008ed510	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x008F0280	_global::UninitCopy_CElement60_008eff40_008f0280	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x0098C120	_global::Fill_Elem0x4_0098c120	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x0098C2F0	_global::Copy_SElement56_0098c2f0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009929C0	_global::CopyBackward_PairLongRecord20_009929c0	OK2	T proven (std::pair<long,CSoundBankRecord>) but the shared-model rewrite does not grade: SRC_FAIL -user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : e
+0x00992A10	_global::Copy_PairLongRecord20_00992a10	OK2	T proven (std::pair<long,CSoundBankRecord>) but the shared-model rewrite does not grade: SRC_FAIL -user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : e
+0x009B1620	_global::Copy_SElement12_009b1620	OK2b	T proven (std::pair<unsigned long,CDefClassBase::CSubDefInfo>) but the shared-model rewrite does not grade: SRC_FAIL eDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) : error C2079
+0x009B18E0	_global::CopyBackward_SElement12_009b18e0	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x009B2620	_global::UninitCopy_SElement8_009b2620	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x009C9CC0	_global::UninitFillN_SPairLongCSecond_0099ec30_009c9cc0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009CA4C0	_global::UninitCopy_CountedPointerLong_009ca4c0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009CA530	_global::UninitCopy_009ca530	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009CA660	_global::Copy_DataBankTextEntry_009ca660	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009D1C10	_global::Fill_Elem0x4_009d1c10	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x009D1D40	_global::CopyBackward_SElement12_009d1d40	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009D2450	_global::UninitFillN_009d2450	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009E6270	_global::UninitCopy_PairCharStringSymbolInfo_009e6270	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x009E6410	_global::CopyBackward_PairCharStringSymbolInfo_009e6410	OK2b	T proven (std::pair<CCharString,CSymbolMap::CSymbolInfo>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\009e6410\00
+0x009E6600	_global::Copy_PairCharStringSymbolInfo_009e6600	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x009EE100	_global::UninitFillN_CGenericVar_009ee100	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009F64A0	_global::UninitCopy_CInputEvent_009f64a0	OK2	T proven (CInputEvent) but the shared-model rewrite does not grade: DIFFER(47v46) 
+0x009F65B0	_global::UninitCopy_CInputEvent_009f65b0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x009F6C00	_global::UninitCopy_Record48_009f6c00	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SRecord12); next: model them from Ego_r/headers
+0x009FFF90	_global::Fill_SElement44_009fff90	OK2	T proven (CGraphicInfo) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\009fff90\00
+0x009FFFF0	_global::Copy_SElement44_009ffff0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00A2AE20	_global::UninitCopy_C3DMeshInfo_00a2ae20	OK2	T proven (C3DMeshInfo) but the shared-model rewrite does not grade: DIFFER(47v46) 
+0x00A2AE80	_global::UninitCopy_CPhysicsMeshInfo_00a2ae80	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00A2AED0	_global::UninitFillN_CPhysicsMeshInfo_00a2aed0	OK2	T proven (CPhysicsMeshInfo) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CMeshDataBankEntry.h(30) : error C2039: 'GetEntryDataType' : is not a me
+0x00A2AF20	_global::UninitCopy_C3DAnimationInfo_00a2af20	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00A2BBB0	_global::Copy_C3DMeshInfo_00a2bbb0	OK2	T proven (C3DMeshInfo) but the shared-model rewrite does not grade: DIFFER(68v67) 
+0x00A2BC70	_global::Copy_CElement40_00a2b4e0_00a2bc70	OK2	T proven (C3DAnimationInfo) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\C3DAnimationInfo.h(93) : error C2118: negative subscript
+0x00A311B0	_global::Copy_SElement56_00a311b0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00A31480	_global::CopyBackward_SElement20_00a31480	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00A314E0	_global::CopyBackward_PairULongDummyObject_00a314e0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00A31FD0	_global::UninitCopy_Record20_00a31fd0	OK2	T proven (std::pair<unsigned long,C3DHelperPoint>) but the shared-model rewrite does not grade: SRC_FAIL me-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) :
+0x00A32FB0	_global::UninitFillN_SPairLongNamedCountedPointer_00a32fb0	OK2	T proven (std::pair<unsigned long,C3DMeshVolume>) but the shared-model rewrite does not grade: SRC_FAIL ome-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) 
+0x00A33050	_global::CopyBackward_PairULongMeshVolume_00a33050	OK2	T proven (std::pair<unsigned long,C3DMeshVolume>) but the shared-model rewrite does not grade: SRC_FAIL aude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00a33050\00a33050.cp
+0x00A37A80	_global::CopyBackward_SListRecord14_00a37a80	OK2	T proven (CClassTypeInfo) but the shared-model rewrite does not grade: DIFFER(100v103) 
+0x00A43720	_global::CopyBackward_DataBankTextEntry_00a43720	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00A438E0	_global::Copy_DataBankTextEntry_00a438e0	OK2	T proven (CLipSyncDataBankEntry) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00a438e0\00
+0x00A45990	_global::Copy_NamedRecord20_00a45990	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SRecord12); next: model them from Ego_r/headers
+0x00A49C10	_global::UninitFillN_SPairCharStringLongCountedPointer_00a49c10	OK2b	T proven (CLipSyncPhonemeSample) but the shared-model rewrite does not grade: SRC_FAIL \claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00a49c10\00a49c10
+0x00A5DB30	_global::Fill_Elem0x4_00a5db30	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00A5DDE0	_global::UninitCopy_SElement8_00a5dde0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00A5E7F0	_global::UninitCopy_CStreamInfo_00a5e7f0	OK2	T proven (CVertexShaderInput::CStreamInfo) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00a5e7f0\00
+0x00A6AFD0	_global::UninitCopy_CIVCountedPointer_00a6afd0	OK2	T proven (CIVCountedPointer<CManagedTextureData>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIVCountedPointer.h(21) : error C2039: 'AddRef' : is not a member of 'CI
+0x00A6B340	_global::UninitFillN_CIVCountedPointer_00a6b340	OK2	T proven (CIVCountedPointer<CManagedTextureData>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIVCountedPointer.h(21) : error C2039: 'AddRef' : is not a member of 'CI
+0x00A6E7C0	_global::CopyBackward_PairCharStringValue10_00a6e7c0	OK2b	T proven (std::pair<CCharString,C3DHelperPoint>) but the shared-model rewrite does not grade: SRC_FAIL me-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) :
+0x00A6ED80	_global::UninitCopy_SNamedRecord14_00a6ed80	OK2	T proven (std::pair<CCharString,C3DHelperPoint>) but the shared-model rewrite does not grade: SRC_FAIL me-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) :
+0x00A6FE70	_global::UninitFillN_SPairLongNamedCountedPointer_00a6fe70	OK2	T proven (std::pair<long,C3DMeshVolume>) but the shared-model rewrite does not grade: SRC_FAIL ome-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) 
+0x00A6FF40	_global::UninitFillN_SPairCharStringNamedCountedPointer_00a6ff40	OK2	T proven (std::pair<CCharString,C3DMeshVolume>) but the shared-model rewrite does not grade: SRC_FAIL ome-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\hdr\stlport\fable_containers.h(608) 
+0x00A70AB0	_global::CopyBackward_PairCharStringMeshVolume_00a70ab0	OK2b	T proven (std::pair<CCharString,C3DMeshVolume>) but the shared-model rewrite does not grade: SRC_FAIL aude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00a70ab0\00a70ab0.cp
+0x00A74D90	_global::CopyBackward_CElementC_00515320_00a74d90	OK2	T proven (CArray<C2DLineF>) but the shared-model rewrite does not grade: DIFFER(76v66) 
+0x00A74E20	_global::Fill_CElement12_00515320_00a74e20	OK2	T proven (CArray<C2DLineF>) but the shared-model rewrite does not grade: DIFFER(49v37) 
+0x00A74E50	_global::Copy_CElement12_00515320_00a74e50	OK2b	T proven (CArray<C2DLineF>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x00A7D010	_global::Fill_Elem0x4_00a7d010	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00A7D170	_global::Copy_SElement12_00a7d170	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00A82620	_global::Fill_CElement4_00517720_00a82620	OK2	T proven (std::list<C2DLineF,std::allocator<C2DLineF>>) but the shared-model rewrite does not grade: DIFFER(31v37) 
+0x00A82650	_global::Copy_SListHandle04_00517720_00a82650	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00A8D5C0	_global::UninitFillN_CPairCountedRef8_00a8d5c0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00A8DB30	_global::DestroyRange_CountedPointer_00a8db30	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00A957C0	_global::UninitCopy_00a957c0	OK2	T proven (CIVCountedPointer<N3DPrimitive::CTriangleList>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIVCountedPointer.h(21) : error C2039: 'AddRef' : is not a member of 'CI
+0x00A95A10	_global::UninitCopy_Record32_00a95a10	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00A95A70	_global::CopyBackwardPtrs_Element32_00a95a70	OK2	T proven (C3DVertex2) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00a95a70\00
+0x00AAFB80	_global::Copy_SElement48_00aafb80	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AB1070	_global::UninitFillN_CPairCountedRef8_00ab1070	OK2b	T proven (CCountedPointer<C3DAnimFileSequenceChunk>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\C3DAnimFileSequenceChunk.h(11) : error C2062: type 'long' unexpected Z:\
+0x00AB1160	_global::Copy_SElement52_00ab1160	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AB2C20	_global::DestroyRange_CountedPointer_00ab2c20	OK2	T proven (CCountedPointer<C3DAnimFileSequenceChunk>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\C3DAnimFileSequenceChunk.h(11) : error C2062: type 'long' unexpected Z:\
+0x00AB4450	_global::UninitCopy_CStreamInfo_00ab4450	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AD05A0	_global::Copy_SElement72_00ad05a0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AD1690	_global::UninitFillN_CCountedPointer_00ad1690	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00AD1780	_global::UninitFillN_CPairCountedRef8_00ad1780	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00AD1A00	_global::UninitFillN_CElement72_00ad0100_00ad1a00	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AD37E0	_global::DestroyRange_CountedPointer_00ad37e0	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00AD3830	_global::DestroyRange_CountedPointer_00ad3830	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00AD6360	_global::CopyBackward_SFlaggedTreePair1C_00ad6360	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AD6AE0	_global::UninitCopy_FlagSetPair_00ad6ae0	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SRetailSet_00ad6ae0,STreeNode_00ad6ae0); next: model them from Ego_r/headers
+0x00AD6FF0	_global::Copy_SFlaggedTreePair1C_00ad6ff0	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (STree_00ad3720); next: model them from Ego_r/headers
+0x00AD7120	_global::CopyBackward_CElementB8_00ad7050_00ad7120	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AD7B50	_global::UninitCopy_COptimisedVertex_00ad7b50	OK2	T proven (QuadricOptimiserInternals::COptimisedVertex) but the shared-model rewrite does not grade: SRC_FAIL -FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00ad7b50\00ad7b50.cpp(14) : error C20
+0x00AD7B90	_global::UninitFillN_CElement184_00ad77f0_00ad7b90	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00ADC0D0	_global::Copy_SArrayTreePair18_00adc0d0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AE4DE0	_global::UninitCopy_00ae4de0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00AE4EE0	_global::UninitFillN_00ae4ee0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00AE4FC0	_global::Fill_Elem0x4_00ae4fc0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00AE50E0	_global::Copy_SElement12_00ae50e0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00AF1B30	_global::CopyBackward_ParticleEmitterInfo_00af1b30	OK2	T proven (NParticleEngine::CParticleEmitterInfo) but the shared-model rewrite does not grade: SRC_FAIL :\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00af1b30\00a
+0x00AF1CE0	_global::Copy_ParticleEmitterInfo_00af1ce0	OK2	T proven (NParticleEngine::CParticleEmitterInfo) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00af1ce0\00
+0x00AF2D60	_global::CopyBackward_PairCharStringRegisteredPSCInfo_00af2d60	OK2b	T proven (std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00af2d60\00
+0x00AF6E10	_global::CopyBackward_PairPSCTypeComponentInstance_00af6e10	OK2	T proven (std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>) but the shared-model rewrite does not grade: SRC_FAIL \claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00af6e10\00af6e10
+0x00AF6ED0	_global::Copy_PairPSCTypeComponentInstance_00af6ed0	OK2	T proven (std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>) but the shared-model rewrite does not grade: SRC_FAIL \claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00af6ed0\00af6ed0
+0x00AF72D0	_global::Copy_CElement12_00454886_00af72d0	OK2	T proven (CArray<long>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x00AFE530	_global::CopyBackward_CElement12_00454886_00afe530	OK2	T proven (CArray<long>) but the shared-model rewrite does not grade: DIFFER(76v66) 
+0x00B0F670	_global::UninitCopy_ParamDescPair_00b0f670	OK2b	T proven (std::pair<unsigned long,NParticleEngine::CParticleUpdateParamDesc<unsigned long,unsigned long>>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00b0f670\00
+0x00B283B0	_global::Fill_Elem0x4_00b283b0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00B283D0	_global::Copy_SElement56_00b283d0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00B31A30	_global::UninitCopy_Record32_00b31a30	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (SRecord12); next: model them from Ego_r/headers
+0x00B6BAB0	_global::UninitCopy_CVertexShader_00b6bab0	OK2	T proven (CVertexShader) but the shared-model rewrite does not grade: DIFFER(46v53) 
+0x00B7AAF0	_global::Copy_SElement48_00b7aaf0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00B7AC20	_global::Copy_SElement28_00b7ac20	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00B82860	_global::UninitFillN_CPairCountedRef8_00b82860	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00B83580	_global::DestroyRange_CountedPointer_00b83580	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00B8EED0	_global::UninitCopy_SRecord1C_00b8eed0	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00B955F0	_global::Fill_Elem0x4_00b955f0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00B95FA0	_global::UninitFillN_CCountedPointer_00b95fa0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00B96920	_global::DestroyRange_CountedPointer_00b96920	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00BCD850	_global::CopyBackward_CElement12_0075b8d0_00bcd850	OK2	T proven (CArray<C3DVector>) but the shared-model rewrite does not grade: DIFFER(76v66) 
+0x00BCD8F0	_global::Fill_CElement12_0075b8d0_00bcd8f0	OK2	T proven (CArray<C3DVector>) but the shared-model rewrite does not grade: DIFFER(49v37) 
+0x00BCD950	_global::Copy_CElement12_0075b8d0_00bcd950	OK2	T proven (CArray<C3DVector>) but the shared-model rewrite does not grade: DIFFER(74v66) 
+0x00BED0F0	_global::Fill_Elem0x4_00bed0f0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00BEDB60	_global::UninitCopy_PairLongCompositeSurfaceInfo_00bedb60	CONFLICT	two landed binders with different T or const-ness on one address (ICF-folded instantiation: name ambiguous)
+0x00BEE4E0	_global::CopyBackward_PairLongPairTextureDecal_00bee4e0	OK2b	T proven (std::pair<std::pair<long,long>,CEngineTextureDecal>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00bee4e0\00
+0x00BEE7B0	_global::Copy_PairLongPairTextureDecal_00bee7b0	OK2	T proven (std::pair<std::pair<long,long>,CEngineTextureDecal>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00bee7b0\00
+0x00C13A80	_global::Fill_Elem0x4_00c13a80	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00C13AA0	_global::Fill_Elem0x4_00c13aa0	STANDIN_T	the only landed binder names a stand-in element type (T unproven)
+0x00C28FA0	_global::Fill_Elem0x4_00c28fa0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00C28FC0	_global::Fill_Elem0x4_00c28fc0	WITHHELD	graded MATCH/RELOCATION_MATCH but withheld: the element model still uses invented helper types (CHandleBasedMemoryPool_012b4098); next: model them from Ego_r/headers
+0x00C29340	_global::UninitCopy_Dword_00c29340	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00CB62F0	_global::CopyBackward_PairCharStringScriptInfo_00cb62f0	OK2b	T proven (std::pair<CCharString,CScriptInfo>) but the shared-model rewrite does not grade: SRC_FAIL Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00cb62f0\00
+0x00CB94D0	_global::CopyBackward_PairUInt64PersistInfo_00cb94d0	OK2b	T proven (std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>) but the shared-model rewrite does not grade: SRC_FAIL ome-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00cb94d0\00cb94d0.cpp(11) : e
+0x00CB9C80	_global::Copy_PairUInt64PersistInfo_00cb9c80	OK2b	T proven (std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>) but the shared-model rewrite does not grade: SRC_FAIL ome-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentFAM02\work\q\00cb9c80\00cb9c80.cpp(10) : e
+0x00CBA3E0	_global::UninitCopy_PairU64ActiveEntityScript_00cba3e0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00CBA420	_global::UninitFillN_SPairInt64CountedPointer_00cba420	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00CBA460	_global::UninitCopy_PairU64ActiveEntityScriptConst_00cba460	OK2	T proven (std::pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CSpawnedFuncBase.h(48) : error C2079: 'CSpawnedFuncBase::Name' uses unde
+0x00CBA4A0	_global::UninitCopy_PairCharStringCountedPointer_00cba4a0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00CBA4E0	_global::UninitFillN_SPairCharStringCountedPointer_00cba4e0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00CBADA0	_global::CopyBackward_PairUInt64CountedPointer_00cbada0	OK2b	T proven (std::pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CSpawnedFuncBase.h(48) : error C2079: 'CSpawnedFuncBase::Name' uses unde
+0x00CBB120	_global::Copy_PairUInt64CountedPointer_00cbb120	OK2b	T proven (std::pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CSpawnedFuncBase.h(48) : error C2079: 'CSpawnedFuncBase::Name' uses unde
+0x00CD25E8	_global::UninitCopy_CElement16_00905330_00cd25e8	OK2	T proven (CScriptGameResourceObjectScriptedThingBase) but the shared-model rewrite does not grade: SRC_FAIL me\user\FableDecomp\rebuild\include\engine\CScriptGameResourceObjectScriptedThingBase.h(100) : error C2079: 'CScriptGame
+0x00CD2613	_global::UninitFillN_CElement16_00905330_00cd2613	OK2	T proven (CScriptGameResourceObjectScriptedThingBase) but the shared-model rewrite does not grade: SRC_FAIL me\user\FableDecomp\rebuild\include\engine\CScriptGameResourceObjectScriptedThingBase.h(100) : error C2079: 'CScriptGame
+0x00CD2E65	_global::UninitCopy_CElement16_00cd2ae2_00cd2e65	OK2	T proven (CScreenFilterSThingByPass) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CScreenFilterSThingByPass.h(8) : error C2143: syntax error : missing ')'
+0x00CD2E90	_global::UninitFillN_CElement16_00cd2ae2_00cd2e90	OK2	T proven (CScreenFilterSThingByPass) but the shared-model rewrite does not grade: SRC_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CScreenFilterSThingByPass.h(8) : error C2143: syntax error : missing ')'
+0x00D34D10	_global::UninitFillN_CElement12_004abe90_00d34d10	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00F279E0	_global::UninitFillN_CElement52_00f27060_00f279e0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00F283D0	_global::UninitFillN_CElement60_00f25c60_00f283d0	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources
+0x00F37A30	_global::Copy_SElement44_00f37a30	NOBINDER	no landed caller binds an STLport spelling; T not proven from two sources

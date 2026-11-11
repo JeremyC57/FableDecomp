@@ -1,17 +1,15 @@
-// _Fill<SElement40*> -- assign value to every element of [first, last) (40-byte POD elements)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006131E0, oracle length 40 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 40 bytes from [eax] to [ecx]) ; add ecx,0x28 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4
-// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the
-// stack) for 40-byte trivially-copyable elements. One of 10 bodies of this shape.
-struct SElement40 {
+// std::fill(CTCInventoryMap::CUIRegionInfo* first, CTCInventoryMap::CUIRegionInfo* last, CTCInventoryMap::CUIRegionInfo const& x) -- STLport 4.6 _algobase.h: assign x to every element of [first, last)
+// Leaf: ??$fill@PAVCUIRegionInfo@CTCInventoryMap@@V12@@std@@YIXPAVCUIRegionInfo@CTCInventoryMap@@0ABV12@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006131E0, 40 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00618990 source (stdvector_Mfillinsert_00618990.cpp) names CTCInventoryMap::CUIRegionInfo; binder ??$fill@PAVCUIRegionInfo@CTCInventoryMap@@V12@@std@@YIXPAVCUIRegionInfo@CTCInventoryMap@@0ABV12@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CTCInventoryMap::CUIRegionInfo.
+#include "stlport/fable_containers.h"
+class CTCInventoryMap {
+public:
+class CUIRegionInfo {
+public:
     unsigned char _body[0x28];
 };
-
-void __fastcall Fill_SElement40_006131e0(SElement40* first, SElement40* last, const SElement40& value)
-{
-    for (; first != last; ++first)
-        *first = value;
-}
+};
+template void std::fill<CTCInventoryMap::CUIRegionInfo*,CTCInventoryMap::CUIRegionInfo >(CTCInventoryMap::CUIRegionInfo*, CTCInventoryMap::CUIRegionInfo*, CTCInventoryMap::CUIRegionInfo const&);

@@ -1,26 +1,8 @@
-// _Uninit_copy<SElement8*> -- placement-copy [first, last) to dest (8-byte POD elements), return the advanced dest
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006B5040, oracle length 44 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; mov eax,[dest] ; je E ; push esi ; L: test eax,eax ; je S ; (copy 8 bytes) ; S: add ecx,0x8 ; add eax,0x8 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 8
-// Dinkumware `_Uninit_copy` (`__fastcall`: first in ecx, last in edx, dest and the by-value
-// allocator on the stack) for 8-byte trivially-copyable elements: each element is copied in
-// place under the placement-new null test and the advanced destination is returned.
-// One of 11 bodies of this shape.
-#include <new>
-
-struct SElement8 {                        // dword members: the copy is memberwise (a byte array copies through pointer registers)
-    long m_00;
-    long m_04;
-};
-
-struct CRetailAllocator { };
-
-SElement8* __fastcall UninitCopy_SElement8_006b5040(SElement8* first, SElement8* last, SElement8* dest, CRetailAllocator allocator)
-{
-    SElement8* d = dest;
-    for (; first != last; ++first, ++d)
-        new (d) SElement8(*first);
-    return d;
-}
+// std::__uninitialized_copy(std::pair<long,float>* first, std::pair<long,float>* last, std::pair<long,float>* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAU?$pair@JM@std@@PAU12@@std@@YIPAU?$pair@JM@0@PAU10@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006B5040, 44 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: builtin; caller 00786020 source (stdvector_Mfillinsert_00786020.cpp) names std::pair<long,float>; binder ??$__uninitialized_copy@PAU?$pair@JM@std@@PAU12@@std@@YIPAU?$pair@JM@0@PAU10@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<long,float>.
+#include "stlport/fable_containers.h"
+template std::pair<long,float>* std::__uninitialized_copy<std::pair<long,float>*,std::pair<long,float>* >(std::pair<long,float>*, std::pair<long,float>*, std::pair<long,float>*, std::__false_type const&);

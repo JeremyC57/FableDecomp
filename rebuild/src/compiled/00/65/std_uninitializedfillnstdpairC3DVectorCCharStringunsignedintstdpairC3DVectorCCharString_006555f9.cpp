@@ -1,26 +1,18 @@
+// std::__uninitialized_fill_n(std::pair<C3DVector,CCharString>* first, unsigned int n, std::pair<C3DVector,CCharString> const& x, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first, return the end
+// Leaf: ??$__uninitialized_fill_n@PAU?$pair@VC3DVector@@VCCharString@@@std@@IU12@@std@@YIPAU?$pair@VC3DVector@@VCCharString@@@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006555F9, 38 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 00656d5e _global::std_vector_insert_pair_C3DVector_CCharString_range; callee 00654dd4 std::pair<C3DVector, CCharString>::pair; binder ??$__uninitialized_fill_n@PAU?$pair@VC3DVector@@VCCharString@@@std@@IU12@@std@@YIPAU?$pair@VC3DVector@@VCCharString@@@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<C3DVector,CCharString>.
 #pragma optimize("s",on)
-// _Uninit_fill_n<CElement16_00654dd4*> -- placement-copy `count` copies of value from first (16-byte elements, copy ctor @ 0x00654DD4), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006555F9, oracle length 38 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push [value] ; mov ecx,esi ; call CElement16_00654dd4::CElement16_00654dd4(const CElement16_00654dd4&) ; S: add esi,0x10 ; dec edi ; jne L ; pop edi ; E: mov eax,esi ; pop esi ; ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// the value reference on the stack, then the by-value allocator): copy-constructs `count` elements in place with
-// placement new (hence the null test on the destination) through the out-of-line copy
-// constructor @ 0x00654DD4 and returns the advanced destination. `ret 8` pops the value
-// reference and the unused allocator. The element type is named from the copy constructor's label when
-// unique. One of 26 bodies.
-#include <new>
-
-struct CElement16_00654dd4 {
-    unsigned char _body[0x10];
-    CElement16_00654dd4(const CElement16_00654dd4& other);           // 0x00654DD4
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
-struct CRetailAllocator { };
-CElement16_00654dd4* __fastcall UninitFillN_CElement16_00654dd4_006555f9(CElement16_00654dd4* first, unsigned long count, const CElement16_00654dd4& value, CRetailAllocator allocator)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) CElement16_00654dd4(value);
-    return first;
-}
+
+template std::pair<C3DVector,CCharString>* std::__uninitialized_fill_n<std::pair<C3DVector,CCharString>*,unsigned int,std::pair<C3DVector,CCharString> >(std::pair<C3DVector,CCharString>*, unsigned int, std::pair<C3DVector,CCharString> const&, std::__false_type const&);

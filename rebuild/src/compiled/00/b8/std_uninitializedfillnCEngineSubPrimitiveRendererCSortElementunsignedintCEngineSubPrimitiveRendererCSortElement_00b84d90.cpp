@@ -1,25 +1,16 @@
-// _Uninit_fill_n<SPairLongLong*> -- placement-copy `count` copies of an 8-byte {long, long} pair, return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B84D90, oracle length 40 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; mov ecx,[value] ; push esi ; L: test eax,eax ; je S ; mov esi,[ecx] ; mov [eax],esi ; mov esi,[ecx+4] ; mov [eax+4],esi ; S: add eax,8 ; dec edx ; jne L ; pop esi ; E: ret 4
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// value reference and the by-value allocator on the stack) for an 8-byte pair of 4-byte scalars:
-// the trivial copy is two dword moves under the placement-new null test; the advanced
-// destination is returned. One of 15 bodies.
-#include <new>
-
-struct SPairLongLong {
+// std::uninitialized_fill_n(CEngineSubPrimitiveRenderer::CSortElement* first, unsigned int n, CEngineSubPrimitiveRenderer::CSortElement const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAVCSortElement@CEngineSubPrimitiveRenderer@@IV12@@std@@YIPAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@IABV12@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00B84D90, 40 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00b85fd0 std::vector<CEngineSubPrimitiveRenderer::CSortElement, std::allocator<CEngineSubPrimitiveRenderer::CSortElement>>::_M_fill_insert; binder ??$uninitialized_fill_n@PAVCSortElement@CEngineSubPrimitiveRenderer@@IV12@@std@@YIPAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@IABV12@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CEngineSubPrimitiveRenderer::CSortElement.
+#include "stlport/fable_containers.h"
+class CEngineSubPrimitiveRenderer {
+public:
+class CSortElement {
+public:
     long first;
     long second;
 };
-
-struct CRetailAllocator { };
-
-SPairLongLong* __fastcall UninitFillN_SPairLongLong_00b84d90(SPairLongLong* first, unsigned long count, const SPairLongLong& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) SPairLongLong(value);
-    return first;
-}
+};
+template CEngineSubPrimitiveRenderer::CSortElement* std::uninitialized_fill_n<CEngineSubPrimitiveRenderer::CSortElement*,unsigned int,CEngineSubPrimitiveRenderer::CSortElement >(CEngineSubPrimitiveRenderer::CSortElement*, unsigned int, CEngineSubPrimitiveRenderer::CSortElement const&);

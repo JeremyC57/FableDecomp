@@ -1,25 +1,8 @@
-// _Uninit_fill_n<SPairLongLong*> -- placement-copy `count` copies of an 8-byte {long, long} pair, return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00513A80, oracle length 40 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; mov ecx,[value] ; push esi ; L: test eax,eax ; je S ; mov esi,[ecx] ; mov [eax],esi ; mov esi,[ecx+4] ; mov [eax+4],esi ; S: add eax,8 ; dec edx ; jne L ; pop esi ; E: ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// value reference and the by-value allocator on the stack) for an 8-byte pair of 4-byte scalars:
-// the trivial copy is two dword moves under the placement-new null test; the advanced
-// destination is returned. One of 15 bodies.
-#include <new>
-
-struct SPairLongLong {
-    long first;
-    long second;
-};
-
-struct CRetailAllocator { };
-
-SPairLongLong* __fastcall UninitFillN_SPairLongLong_00513a80(SPairLongLong* first, unsigned long count, const SPairLongLong& value, CRetailAllocator allocator)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) SPairLongLong(value);
-    return first;
-}
+// std::__uninitialized_fill_n(std::pair<long,long>* first, unsigned int n, std::pair<long,long> const& x, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first, return the end
+// Leaf: ??$__uninitialized_fill_n@PAU?$pair@JJ@std@@IU12@@std@@YIPAU?$pair@JJ@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00513A80, 40 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: builtin; caller 0059400c source (stdvector_Minsertoverflow_0059400c.cpp) names std::pair<long,long>; binder ??$__uninitialized_fill_n@PAU?$pair@JJ@std@@IU12@@std@@YIPAU?$pair@JJ@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<long,long>.
+#include "stlport/fable_containers.h"
+template std::pair<long,long>* std::__uninitialized_fill_n<std::pair<long,long>*,unsigned int,std::pair<long,long> >(std::pair<long,long>*, unsigned int, std::pair<long,long> const&, std::__false_type const&);

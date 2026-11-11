@@ -1,28 +1,12 @@
+// std::__uninitialized_copy(std::pair<long,CDefPointer<CHeroAbilityDef const> > const* first, std::pair<long,CDefPointer<CHeroAbilityDef const> > const* last, std::pair<long,CDefPointer<CHeroAbilityDef const> >* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PBU?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@PAU12@@std@@YIPAU?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@0@PBU10@0PAU10@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005F9132, 43 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 005fa1ba std::vector<pair<long,CDefPointer<const CHeroAbilityDef> > >::operator=; callee 005f8578 std::pair<long,CDefPointer<const CHeroAbilityDef> >::pair; binder ??$__uninitialized_copy@PBU?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@PAU12@@std@@YIPAU?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@0@PBU10@0PAU10@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<long,CDefPointer<CHeroAbilityDef const>>.
 #pragma optimize("s",on)
-// _Uninit_copy<CElement8_005f8578*> -- placement-copy [first, last) to dest (8-byte elements, copy ctor @ 0x005F8578)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005F9132, oracle length 43 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push ebx ; push esi ; mov ebx,edx ; mov esi,ecx ; cmp esi,ebx ; push edi ; mov edi,[esp+10h] ; je E ; L: test edi,edi ; je S ; push esi ; mov ecx,edi ; call CElement8_005f8578::CElement8_005f8578(const CElement8_005f8578&) ; S: add esi,8 ; add edi,8 ; cmp esi,ebx ; jne L ; E: mov eax,edi ; pop edi ; pop esi ; pop ebx ; ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_copy`, __fastcall: first in ecx, last in edx,
-// dest on the stack): copy-constructs every element in place with placement new (hence the null
-// test on the destination) through the out-of-line copy constructor @ 0x005F8578 and returns
-// the advanced destination. `ret 8` pops dest and the unused allocator argument. The element
-// type is named from the copy constructor's label when unique. One of 21 bodies.
-#include <new>
-
-struct CElement8_005f8578 {
-    unsigned char _body[0x8];
-    CElement8_005f8578(const CElement8_005f8578& other);           // 0x005F8578
-};
-
-struct CRetailAllocator { };
-
-CElement8_005f8578* __fastcall UninitCopy_CElement8_005f8578_005f9132(CElement8_005f8578* first, CElement8_005f8578* last, CElement8_005f8578* dest, CRetailAllocator allocator)
-{
-    CElement8_005f8578* d = dest;                      // named local: retail loads dest before the loop test (GOTCHAS)
-    for (; first != last; ++first, ++d)   // increment order = retail `add esi ; add edi` under /O1-style "s"
-        new (d) CElement8_005f8578(*first);
-    return d;
-}
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "stlport/fable_containers.h"
+#include "engine/CDefPointer.h"
+#include "engine/CHeroAbilityDef.h"
+template std::pair<long,CDefPointer<CHeroAbilityDef const> >* std::__uninitialized_copy<std::pair<long,CDefPointer<CHeroAbilityDef const> > const*,std::pair<long,CDefPointer<CHeroAbilityDef const> >* >(std::pair<long,CDefPointer<CHeroAbilityDef const> > const*, std::pair<long,CDefPointer<CHeroAbilityDef const> > const*, std::pair<long,CDefPointer<CHeroAbilityDef const> >*, std::__false_type const&);

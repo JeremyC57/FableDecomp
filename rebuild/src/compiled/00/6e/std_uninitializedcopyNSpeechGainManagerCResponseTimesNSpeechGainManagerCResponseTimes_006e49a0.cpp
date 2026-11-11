@@ -1,26 +1,9 @@
-// _Uninit_copy<SElement8*> -- placement-copy [first, last) to dest (8-byte POD elements), return the advanced dest
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006E49A0, oracle length 44 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; mov eax,[dest] ; je E ; push esi ; L: test eax,eax ; je S ; (copy 8 bytes) ; S: add ecx,0x8 ; add eax,0x8 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 8
-// Dinkumware `_Uninit_copy` (`__fastcall`: first in ecx, last in edx, dest and the by-value
-// allocator on the stack) for 8-byte trivially-copyable elements: each element is copied in
-// place under the placement-new null test and the advanced destination is returned.
-// One of 14 bodies of this shape.
-#include <new>
-
-struct SElement8 {                        // dword members: the copy is memberwise (a byte array copies through pointer registers)
-    long m_00;
-    long m_04;
-};
-
-struct CRetailAllocator { };
-
-SElement8* __fastcall UninitCopy_SElement8_006e49a0(SElement8* first, SElement8* last, SElement8* dest, CRetailAllocator allocator)
-{
-    SElement8* d = dest;
-    for (; first != last; ++first, ++d)
-        new (d) SElement8(*first);
-    return d;
-}
+// std::__uninitialized_copy(NSpeechGainManager::CResponseTimes* first, NSpeechGainManager::CResponseTimes* last, NSpeechGainManager::CResponseTimes* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAVCResponseTimes@NSpeechGainManager@@PAV12@@std@@YIPAVCResponseTimes@NSpeechGainManager@@PAV12@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006E49A0, 44 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 006e5240 source (stdvector_Mfillinsert_006e5240.cpp) names NSpeechGainManager::CResponseTimes; binder ??$__uninitialized_copy@PAVCResponseTimes@NSpeechGainManager@@PAV12@@std@@YIPAVCResponseTimes@NSpeechGainManager@@PAV12@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over NSpeechGainManager::CResponseTimes.
+#include "stlport/fable_containers.h"
+#include "engine/NSpeechGainManager.h"
+template NSpeechGainManager::CResponseTimes* std::__uninitialized_copy<NSpeechGainManager::CResponseTimes*,NSpeechGainManager::CResponseTimes* >(NSpeechGainManager::CResponseTimes*, NSpeechGainManager::CResponseTimes*, NSpeechGainManager::CResponseTimes*, std::__false_type const&);

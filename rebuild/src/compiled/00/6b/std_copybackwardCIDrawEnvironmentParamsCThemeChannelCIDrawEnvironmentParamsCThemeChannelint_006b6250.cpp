@@ -1,23 +1,16 @@
-// _global::CopyBackward_CElement1F0_006b6180_006b6250(CElement1F0_006b6180* first, CElement1F0_006b6180* last, CElement1F0_006b6180* result, SRandomAccessIteratorTag, long*) -- SGI __copy_backward over 0x1F0-byte elements with an out-of-line operator=: counted backward copy, returns the moved-back result
-// Leaf: CopyBackward_CElement1F0_006b6180_006b6250
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006B6250, length 88 bytes (+ int3 padding), `ret 0Ch`.
-// Callee: the element operator= @ 0x006B6180 (catalog "CBlendedEnvironmentTheme::operator="; thiscall, source pushed).
-// Shape: the landed 0x00517430 / 0x0086E770 family: SGI-STL `__copy_backward(first, last, result,
-// random_access_iterator_tag, Distance*)` -- `for (n = last - first; n > 0; --n) *--result = *--last;`, the moved-back
-// result returned. /Gr TU (__fastcall: first in ecx, last in edx, result + the two tags on the stack). The element count
-// is the reciprocal-multiply division of the byte distance by 0x1F0.
-// Label correction: the catalog's `_Copy_backward<CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc*>` is propagated;
-// the element is modelled by its size and assignment operator.
-struct CElement1F0_006b6180 {
+// std::__copy_backward(CIDrawEnvironmentParams::CThemeChannel* first, CIDrawEnvironmentParams::CThemeChannel* last, CIDrawEnvironmentParams::CThemeChannel* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAUCThemeChannel@CIDrawEnvironmentParams@@PAU12@H@std@@YIPAUCThemeChannel@CIDrawEnvironmentParams@@PAU12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006B6250, 88 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 006b6b30 source (stdvector_Mfillinsert_006b6b30.cpp) names CIDrawEnvironmentParams::CThemeChannel; binder ??$__copy_backward@PAUCThemeChannel@CIDrawEnvironmentParams@@PAU12@H@std@@YIPAUCThemeChannel@CIDrawEnvironmentParams@@PAU12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CIDrawEnvironmentParams::CThemeChannel.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+struct CIDrawEnvironmentParams {
+public:
+struct CThemeChannel {
     unsigned char _body[0x1F0];
-    CElement1F0_006b6180& operator=(const CElement1F0_006b6180& other);   // 0x006B6180
+    CThemeChannel& operator=(const CThemeChannel& other);   // 0x006B6180
 };
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-CElement1F0_006b6180* __fastcall CopyBackward_CElement1F0_006b6180_006b6250(CElement1F0_006b6180* first, CElement1F0_006b6180* last, CElement1F0_006b6180* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+};
+template CIDrawEnvironmentParams::CThemeChannel* std::__copy_backward<CIDrawEnvironmentParams::CThemeChannel*,CIDrawEnvironmentParams::CThemeChannel*,int >(CIDrawEnvironmentParams::CThemeChannel*, CIDrawEnvironmentParams::CThemeChannel*, CIDrawEnvironmentParams::CThemeChannel*, std::random_access_iterator_tag const&, int*);

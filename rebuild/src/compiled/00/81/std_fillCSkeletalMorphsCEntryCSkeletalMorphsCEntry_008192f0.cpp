@@ -1,17 +1,14 @@
-// fill<T*, T> -- assign value over [first, last) (8-byte POD elements)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008192F0, oracle length 37 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 8 bytes [eax] -> [ecx]> ; add ecx,0x8 ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4
-// `std::fill` over a 8-byte POD element: the value reference is loaded once and assigned to every
-// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the
-// stack. The manifest label is propagated; the element type is modelled by size. One of
-// 7 bodies of this shape.
-struct SElement { unsigned char _body[0x8]; };
-
-void __fastcall Fill_008192f0(SElement* first, SElement* last, const SElement& value)
-{
-    for (; first != last; ++first)
-        *first = value;
-}
+// std::fill(CSkeletalMorphs::CEntry* first, CSkeletalMorphs::CEntry* last, CSkeletalMorphs::CEntry const& x) -- STLport 4.6 _algobase.h: assign x to every element of [first, last)
+// Leaf: ??$fill@PAVCEntry@CSkeletalMorphs@@V12@@std@@YIXPAVCEntry@CSkeletalMorphs@@0ABV12@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008192F0, 37 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 0081cf90 source (stdvector_Mfillinsert_0081cf90.cpp) names CSkeletalMorphs::CEntry; binder ??$fill@PAVCEntry@CSkeletalMorphs@@V12@@std@@YIXPAVCEntry@CSkeletalMorphs@@0ABV12@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CSkeletalMorphs::CEntry.
+#include "stlport/fable_containers.h"
+class CSkeletalMorphs {
+public:
+class CEntry {
+public: unsigned char _body[0x8];
+};
+};
+template void std::fill<CSkeletalMorphs::CEntry*,CSkeletalMorphs::CEntry >(CSkeletalMorphs::CEntry*, CSkeletalMorphs::CEntry*, CSkeletalMorphs::CEntry const&);

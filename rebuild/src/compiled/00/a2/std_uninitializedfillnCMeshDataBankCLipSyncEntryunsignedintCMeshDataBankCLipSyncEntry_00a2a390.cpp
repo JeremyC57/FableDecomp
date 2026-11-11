@@ -1,31 +1,24 @@
-// _Uninit_fill_n<SPairCSecond_0099ec30Long*> -- placement-copy `count` copies of a {CSecond_0099ec30, long} pair (8-byte elements, CSecond_0099ec30 copy ctor @ 0x0099EC30)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2A390, oracle length 48 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push ebx ; mov ebx,[value] ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push ebx ; mov ecx,esi ; call CSecond_0099ec30::CSecond_0099ec30 ; mov eax,[ebx+4] ; mov [esi+4],eax ; S: add esi,0x8 ; dec edi ; jne L ; pop edi ; pop ebx ; E: mov eax,esi ; pop esi ; ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// value reference and the by-value allocator on the stack) for a pair whose second member is a 4-byte scalar
-// and whose first member CSecond_0099ec30 has the out-of-line copy constructor @ 0x0099EC30: the pair's
-// implicit copy constructor is inlined into the placement new (hence the null test), the
-// advanced destination is returned. One of 12 bodies.
-#include <new>
-
-struct CSecond_0099ec30 {
-    unsigned char _body[0x4];
-    CSecond_0099ec30(const CSecond_0099ec30& other);           // 0x0099EC30
+// std::__uninitialized_fill_n(CMeshDataBank::CLipSyncEntry* first, unsigned int n, CMeshDataBank::CLipSyncEntry const& x, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first, return the end
+// Leaf: ??$__uninitialized_fill_n@PAVCLipSyncEntry@CMeshDataBank@@IV12@@std@@YIPAVCLipSyncEntry@CMeshDataBank@@PAV12@IABV12@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A2A390, 48 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 00a2d3b0 std::vector<CMeshDataBank::CLipSyncEntry, std::allocator<CMeshDataBank::CLipSyncEntry>>::_M_insert_overflow; binder ??$__uninitialized_fill_n@PAVCLipSyncEntry@CMeshDataBank@@IV12@@std@@YIPAVCLipSyncEntry@CMeshDataBank@@PAV12@IABV12@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CMeshDataBank::CLipSyncEntry.
+#include "stlport/fable_containers.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
 
-struct SPairCSecond_0099ec30Long {
-    CSecond_0099ec30 first;
+class CMeshDataBank {
+public:
+class CLipSyncEntry {
+public:
+    CCharString first;
     long second;
 };
-
-struct CRetailAllocator { };
-
-SPairCSecond_0099ec30Long* __fastcall UninitFillN_SPairCSecond_0099ec30Long_00a2a390(SPairCSecond_0099ec30Long* first, unsigned long count, const SPairCSecond_0099ec30Long& value, CRetailAllocator allocator)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) SPairCSecond_0099ec30Long(value);
-    return first;
-}
+};
+template CMeshDataBank::CLipSyncEntry* std::__uninitialized_fill_n<CMeshDataBank::CLipSyncEntry*,unsigned int,CMeshDataBank::CLipSyncEntry >(CMeshDataBank::CLipSyncEntry*, unsigned int, CMeshDataBank::CLipSyncEntry const&, std::__false_type const&);

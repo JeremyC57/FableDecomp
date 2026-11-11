@@ -1,31 +1,16 @@
-// _Uninit_fill_n<SPairCSecond_0099ec30Long*> -- placement-copy `count` copies of a {CSecond_0099ec30, long} pair (8-byte elements, CSecond_0099ec30 copy ctor @ 0x0099EC30)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE5850, oracle length 48 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push ebx ; mov ebx,[value] ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push ebx ; mov ecx,esi ; call CSecond_0099ec30::CSecond_0099ec30 ; mov eax,[ebx+4] ; mov [esi+4],eax ; S: add esi,0x8 ; dec edi ; jne L ; pop edi ; pop ebx ; E: mov eax,esi ; pop esi ; ret 4
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// value reference and the by-value allocator on the stack) for a pair whose second member is a 4-byte scalar
-// and whose first member CSecond_0099ec30 has the out-of-line copy constructor @ 0x0099EC30: the pair's
-// implicit copy constructor is inlined into the placement new (hence the null test), the
-// advanced destination is returned. One of 12 bodies.
-#include <new>
-
-struct CSecond_0099ec30 {
-    unsigned char _body[0x4];
-    CSecond_0099ec30(const CSecond_0099ec30& other);           // 0x0099EC30
+// std::uninitialized_fill_n(std::pair<CCharString,unsigned long>* first, unsigned int n, std::pair<CCharString,unsigned long> const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAU?$pair@VCCharString@@K@std@@IU12@@std@@YIPAU?$pair@VCCharString@@K@0@PAU10@IABU10@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AE5850, 48 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00ae7340 std::vector<std::pair<CCharString, unsigned long>, std::allocator<std::pair<CCharString, unsigned long>>>::_M_fill_insert; callee 0099ec30 CCharString::CCharString; binder ??$uninitialized_fill_n@PAU?$pair@VCCharString@@K@std@@IU12@@std@@YIPAU?$pair@VCCharString@@K@0@PAU10@IABU10@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<CCharString,unsigned long>.
+#include "stlport/fable_containers.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
 
-struct SPairCSecond_0099ec30Long {
-    CSecond_0099ec30 first;
-    long second;
-};
-
-struct CRetailAllocator { };
-
-SPairCSecond_0099ec30Long* __fastcall UninitFillN_SPairCSecond_0099ec30Long_00ae5850(SPairCSecond_0099ec30Long* first, unsigned long count, const SPairCSecond_0099ec30Long& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) SPairCSecond_0099ec30Long(value);
-    return first;
-}
+template std::pair<CCharString,unsigned long>* std::uninitialized_fill_n<std::pair<CCharString,unsigned long>*,unsigned int,std::pair<CCharString,unsigned long> >(std::pair<CCharString,unsigned long>*, unsigned int, std::pair<CCharString,unsigned long> const&);

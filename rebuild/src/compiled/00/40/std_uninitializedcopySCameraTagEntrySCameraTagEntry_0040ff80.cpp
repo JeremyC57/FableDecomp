@@ -1,15 +1,11 @@
-// _global::UninitCopy_SFloatCameraTagPair1C_0040ff80(const SFloatCameraTagPair1C* first, const SFloatCameraTagPair1C* last, SFloatCameraTagPair1C* result, const __false_type&) -- STLport __uninitialized_copy over 28-byte trivially-copyable records: placement-copy [first, last) to result, return the advanced result
-// Leaf: UninitCopy_SFloatCameraTagPair1C_0040ff80
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0040FF80, length 74 bytes, `ret 8`.
-// Shape: STLport 4.x `__uninitialized_copy(first, last, result, const __false_type&)` (`__fastcall`: first in ecx, last in
-// edx, result + the tag reference on the stack; callers push `lea` of a dead slot, then result). Each element is built
-// with placement new (hence the null test on the destination, `test eax,eax ; je`) through a memberwise copy
-// constructor: 7 direct dword moves through esi (an implicit copy of a POD this wide is a block move through
-// esi/edi, GOTCHAS wave 13). Both pointers stepped by 0x1c; result (eax throughout) is returned.
-// Label correction: the catalog's `_Copy_impl<std::pair<float,CSubtitledMessage::CCameraTag>*,...>` is a Dinkumware name; same shape as 0x0040FC50 (a second copy of the body); the catalog element pair<float, CCameraTag> fits the size but is unverified.
-inline void* operator new(unsigned int, void* p) { return p; }
-
-struct SFloatCameraTagPair1C {                   // 28 bytes (0x1c), dword members
+// std::__uninitialized_copy(SCameraTagEntry* first, SCameraTagEntry* last, SCameraTagEntry* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAUSCameraTagEntry@@PAU1@@std@@YIPAUSCameraTagEntry@@PAU1@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0040FF80, 74 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 004117c0 source (stdvector_Minsertoverflow_004117c0.cpp) names SCameraTagEntry; caller 00411db0 source (stdvector_Mfillinsert_00411db0.cpp) names SCameraTagEntry; binder ??$__uninitialized_copy@PAUSCameraTagEntry@@PAU1@@std@@YIPAUSCameraTagEntry@@PAU1@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over SCameraTagEntry.
+#include "stlport/fable_containers.h"
+struct SCameraTagEntry {                   // 28 bytes (0x1c), dword members
     long m_00;
     long m_04;
     long m_08;
@@ -17,15 +13,6 @@ struct SFloatCameraTagPair1C {                   // 28 bytes (0x1c), dword membe
     long m_10;
     long m_14;
     long m_18;
-    SFloatCameraTagPair1C(const SFloatCameraTagPair1C& o) : m_00(o.m_00), m_04(o.m_04), m_08(o.m_08), m_0c(o.m_0c), m_10(o.m_10), m_14(o.m_14), m_18(o.m_18) { }
+    SCameraTagEntry(const SCameraTagEntry& o) : m_00(o.m_00), m_04(o.m_04), m_08(o.m_08), m_0c(o.m_0c), m_10(o.m_10), m_14(o.m_14), m_18(o.m_18) { }
 };
-
-struct __false_type { __false_type() { } };
-
-SFloatCameraTagPair1C* __fastcall UninitCopy_SFloatCameraTagPair1C_0040ff80(const SFloatCameraTagPair1C* first, const SFloatCameraTagPair1C* last, SFloatCameraTagPair1C* result, const __false_type&)
-{
-    SFloatCameraTagPair1C* cur = result;
-    for (; first != last; ++first, ++cur)
-        new (cur) SFloatCameraTagPair1C(*first);
-    return cur;
-}
+template SCameraTagEntry* std::__uninitialized_copy<SCameraTagEntry*,SCameraTagEntry* >(SCameraTagEntry*, SCameraTagEntry*, SCameraTagEntry*, std::__false_type const&);

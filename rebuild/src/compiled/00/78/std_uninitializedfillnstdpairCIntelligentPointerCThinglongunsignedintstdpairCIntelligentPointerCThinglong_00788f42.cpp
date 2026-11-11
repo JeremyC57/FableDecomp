@@ -1,26 +1,12 @@
+// std::__uninitialized_fill_n(std::pair<CIntelligentPointer<CThing>,long>* first, unsigned int n, std::pair<CIntelligentPointer<CThing>,long> const& x, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first, return the end
+// Leaf: ??$__uninitialized_fill_n@PAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@IU12@@std@@YIPAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00788F42, 38 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 007893ae std::vector<std::pair<CIntelligentPointer<CThing>, long>, std::allocator<std::pair<CIntelligentPointer<CThing>, long>>>::_M_insert_overflow; callee 00788d88 std::pair<CIntelligentPointer<CThing>, long>::pair; binder ??$__uninitialized_fill_n@PAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@IU12@@std@@YIPAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<CIntelligentPointer<CThing>,long>.
 #pragma optimize("s",on)
-// _Uninit_fill_n<CElement12_00788d88*> -- placement-copy `count` copies of value from first (12-byte elements, copy ctor @ 0x00788D88), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00788F42, oracle length 38 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push [value] ; mov ecx,esi ; call CElement12_00788d88::CElement12_00788d88(const CElement12_00788d88&) ; S: add esi,0xc ; dec edi ; jne L ; pop edi ; E: mov eax,esi ; pop esi ; ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// the value reference on the stack, then the by-value allocator): copy-constructs `count` elements in place with
-// placement new (hence the null test on the destination) through the out-of-line copy
-// constructor @ 0x00788D88 and returns the advanced destination. `ret 8` pops the value
-// reference and the unused allocator. The element type is named from the copy constructor's label when
-// unique. One of 26 bodies.
-#include <new>
-
-struct CElement12_00788d88 {
-    unsigned char _body[0xc];
-    CElement12_00788d88(const CElement12_00788d88& other);           // 0x00788D88
-};
-struct CRetailAllocator { };
-CElement12_00788d88* __fastcall UninitFillN_CElement12_00788d88_00788f42(CElement12_00788d88* first, unsigned long count, const CElement12_00788d88& value, CRetailAllocator allocator)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) CElement12_00788d88(value);
-    return first;
-}
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
+template std::pair<CIntelligentPointer<CThing>,long>* std::__uninitialized_fill_n<std::pair<CIntelligentPointer<CThing>,long>*,unsigned int,std::pair<CIntelligentPointer<CThing>,long> >(std::pair<CIntelligentPointer<CThing>,long>*, unsigned int, std::pair<CIntelligentPointer<CThing>,long> const&, std::__false_type const&);

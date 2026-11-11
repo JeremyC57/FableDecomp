@@ -1,26 +1,15 @@
-// _global::UninitCopy_Record20_008247e0(const SRecord20* first, const SRecord20* last, SRecord20* result, const __false_type&) -- placement copy-construct [first, last) of 20-byte POD records into raw storage, return the advanced result
-// Leaf: UninitCopy_Record20_008247e0
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008247E0, length 68 bytes (`ret 8`).
-// Identity: catalog `_Move<NThingMap::CMapwhoLevelInfo*>`: the body is a null-tested placement copy (not an assignment) of
-//   20-byte records; NThingMap::CMapwhoLevelInfo is 20 bytes in Ego_r.pdb but nothing here pins the element to it, so the
-//   record stays descriptive. Caller: the vector range constructor 0x00824DD0.
-// Shape: STLport 4.x `__uninitialized_copy(first, last, result, const __false_type&)`, `__fastcall` (first in ecx, last in
-//   edx, result + the tag reference on the stack, `ret 8`); the placement new keeps the `test eax,eax` null test on the
-//   destination and the advanced result is returned.
-//   The implicit (bitwise) copy constructor of a 5-word POD is copied through reference registers: `mov esi,ecx ;
-//   mov edi,eax` and five ebx moves (an explicit memberwise copy constructor gives the direct [ecx+N] form of
-//   0x0085DB50 instead; 9 words or more become `rep movsd`).
-inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
-
-struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
-
-struct SRecord20 {                              // 20-byte POD record, implicit copy constructor
+// std::__uninitialized_copy(CScriptedMapBrush::CScriptedMapCell const* first, CScriptedMapBrush::CScriptedMapCell const* last, CScriptedMapBrush::CScriptedMapCell* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PBVCScriptedMapCell@CScriptedMapBrush@@PAV12@@std@@YIPAVCScriptedMapCell@CScriptedMapBrush@@PBV12@0PAV12@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008247E0, 68 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 00824dd0 std::vector<CScriptedMapBrush::CScriptedMapCell, std::allocator<CScriptedMapBrush::CScriptedMapCell>>::vector; binder ??$__uninitialized_copy@PBVCScriptedMapCell@CScriptedMapBrush@@PAV12@@std@@YIPAVCScriptedMapCell@CScriptedMapBrush@@PBV12@0PAV12@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CScriptedMapBrush::CScriptedMapCell.
+#include "stlport/fable_containers.h"
+class CScriptedMapBrush {
+public:
+class CScriptedMapCell {
+public:                              // 20-byte POD record, implicit copy constructor
     long m_0, m_4, m_8, m_c, m_10;
 };
-
-SRecord20* __fastcall UninitCopy_Record20_008247e0(const SRecord20* first, const SRecord20* last, SRecord20* result, const __false_type&)
-{
-    for (; first != last; ++first, ++result)
-        new (result) SRecord20(*first);
-    return result;
-}
+};
+template CScriptedMapBrush::CScriptedMapCell* std::__uninitialized_copy<CScriptedMapBrush::CScriptedMapCell const*,CScriptedMapBrush::CScriptedMapCell* >(CScriptedMapBrush::CScriptedMapCell const*, CScriptedMapBrush::CScriptedMapCell const*, CScriptedMapBrush::CScriptedMapCell*, std::__false_type const&);

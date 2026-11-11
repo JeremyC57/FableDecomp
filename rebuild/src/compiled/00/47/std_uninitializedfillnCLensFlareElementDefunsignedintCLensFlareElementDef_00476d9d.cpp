@@ -1,26 +1,12 @@
+// std::uninitialized_fill_n(CLensFlareElementDef* first, unsigned int n, CLensFlareElementDef const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAVCLensFlareElementDef@@IV1@@std@@YIPAVCLensFlareElementDef@@PAV1@IABV1@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00476D9D, 38 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00476b67 std::vector<CLensFlareElementDef, std::allocator<CLensFlareElementDef>>::_M_fill_insert; callee 0046f6dc CLensFlareElementDef::CLensFlareElementDef; binder ??$uninitialized_fill_n@PAVCLensFlareElementDef@@IV1@@std@@YIPAVCLensFlareElementDef@@PAV1@IABV1@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CLensFlareElementDef.
 #pragma optimize("s",on)
-// _Uninit_fill_n<CLensFlareElementDef*> -- placement-copy `count` copies of value from first (76-byte elements, copy ctor @ 0x0046F6DC), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00476D9D, oracle length 38 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push [value] ; mov ecx,esi ; call CLensFlareElementDef::CLensFlareElementDef(const CLensFlareElementDef&) ; S: add esi,0x4c ; dec edi ; jne L ; pop edi ; E: mov eax,esi ; pop esi ; ret 4
-// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
-// the value reference on the stack): copy-constructs `count` elements in place with
-// placement new (hence the null test on the destination) through the out-of-line copy
-// constructor @ 0x0046F6DC and returns the advanced destination. `ret 4` pops the value
-// reference. The element type is named from the copy constructor's label when
-// unique. One of 26 bodies.
-#include <new>
-
-class CLensFlareElementDef { public:
-    unsigned char _body[0x4c];
-    CLensFlareElementDef(const CLensFlareElementDef& other);           // 0x0046F6DC
-};
-
-CLensFlareElementDef* __fastcall UninitFillN_CLensFlareElementDef_00476d9d(CLensFlareElementDef* first, unsigned long count, const CLensFlareElementDef& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) CLensFlareElementDef(value);
-    return first;
-}
+#define FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "stlport/fable_containers.h"
+#include "engine/CLensFlareElementDef.h"
+template CLensFlareElementDef* std::uninitialized_fill_n<CLensFlareElementDef*,unsigned int,CLensFlareElementDef >(CLensFlareElementDef*, unsigned int, CLensFlareElementDef const&);

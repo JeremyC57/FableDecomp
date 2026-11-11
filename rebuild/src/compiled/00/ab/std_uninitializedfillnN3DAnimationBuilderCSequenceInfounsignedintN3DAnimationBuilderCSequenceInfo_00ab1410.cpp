@@ -1,20 +1,13 @@
-// _Uninit_fill_n<T*> -- placement-copy `count` copies of value from first (52-byte block elements), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB1410, oracle length 43 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe R ; mov ecx,[value] ; push regs ; (alignment pad) ; L: test eax,eax ; je N ; <copy 52 bytes [ecx] -> [eax]> ; N: add eax,0x34 ; dec edx ; jne L ; pop regs ; R: ret 4
-// Dinkumware `_Uninit_fill_n` for a 52-byte element: each copy is a placement new -- VC emits the
-// null check on the placement address -- of the value reference.
-// A plain block copied with `rep movsd`.
-// The speed TU pads the loop head. Fastcall: first in ecx, count in edx. The manifest label is propagated; the element type is modelled by size. One of 7 bodies of this shape.
-#include <new>
-
-struct SElement { unsigned char _body[0x34]; };
-
-SElement* __fastcall UninitFillN_00ab1410(SElement* first, unsigned long count, const SElement& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) SElement(value);
-    return first;
+// std::uninitialized_fill_n(N3DAnimationBuilder::CSequenceInfo* first, unsigned int n, N3DAnimationBuilder::CSequenceInfo const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAVCSequenceInfo@N3DAnimationBuilder@@IV12@@std@@YIPAVCSequenceInfo@N3DAnimationBuilder@@PAV12@IABV12@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AB1410, 43 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00ab2e40 std::vector<N3DAnimationBuilder::CSequenceInfo, std::allocator<N3DAnimationBuilder::CSequenceInfo>>::_M_fill_insert; binder ??$uninitialized_fill_n@PAVCSequenceInfo@N3DAnimationBuilder@@IV12@@std@@YIPAVCSequenceInfo@N3DAnimationBuilder@@PAV12@IABV12@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over N3DAnimationBuilder::CSequenceInfo.
+#include "stlport/fable_containers.h"
+namespace N3DAnimationBuilder {
+class CSequenceInfo {
+public: unsigned char _body[0x34];
+};
 }
+template N3DAnimationBuilder::CSequenceInfo* std::uninitialized_fill_n<N3DAnimationBuilder::CSequenceInfo*,unsigned int,N3DAnimationBuilder::CSequenceInfo >(N3DAnimationBuilder::CSequenceInfo*, unsigned int, N3DAnimationBuilder::CSequenceInfo const&);

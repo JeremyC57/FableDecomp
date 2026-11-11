@@ -1,21 +1,13 @@
-// _Uninit_copy<T*> -- placement-copy [first, last) to dest (4-byte POD elements, allocator by value), return the advanced destination
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0085D820, oracle length 38 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  cmp ecx,edx ; mov eax,[dest] ; je R ; push esi ; (alignment pad) ; L: test eax,eax ; je N ; <copy 4 bytes [ecx] -> [eax]> ; N: add ecx,0x4 ; add eax,0x4 ; cmp ecx,edx ; jne L ; pop esi ; R: ret 8
-// Dinkumware `_Uninit_copy` for a 4-byte element: each copy is a placement new -- VC emits the null
-// check on the placement address -- from the source range; the allocator rides along by value
-// (a 1-byte class in a 4-byte slot). A POD of dwords.
-// The speed TU pads the loop head. Fastcall: first in ecx, last in edx. The manifest label is propagated; the element type is modelled by size. One of 6 bodies of this shape.
-#include <new>
-
-struct SElement { long m_0; };
-struct CRetailAllocator { };
-
-SElement* __fastcall UninitCopy_0085d820(const SElement* first, const SElement* last, SElement* dest, CRetailAllocator allocator)
-{
-    for (; first != last; ++first, ++dest)
-        new (dest) SElement(*first);
-    return dest;
+// std::__uninitialized_copy(NThingMap::CThingMapCell const* first, NThingMap::CThingMapCell const* last, NThingMap::CThingMapCell* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PBVCThingMapCell@NThingMap@@PAV12@@std@@YIPAVCThingMapCell@NThingMap@@PBV12@0PAV12@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0085D820, 38 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 0085dfd0 source (stdvectorCThingMapCell_operator_0085dfd0.cpp) names NThingMap::CThingMapCell; binder ??$__uninitialized_copy@PBVCThingMapCell@NThingMap@@PAV12@@std@@YIPAVCThingMapCell@NThingMap@@PBV12@0PAV12@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over NThingMap::CThingMapCell.
+#include "stlport/fable_containers.h"
+namespace NThingMap {
+class CThingMapCell {
+public: long m_0;
+};
 }
+template NThingMap::CThingMapCell* std::__uninitialized_copy<NThingMap::CThingMapCell const*,NThingMap::CThingMapCell* >(NThingMap::CThingMapCell const*, NThingMap::CThingMapCell const*, NThingMap::CThingMapCell*, std::__false_type const&);

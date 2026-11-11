@@ -1,23 +1,14 @@
-// _global::CopyBackward_CElement38_0075ef00_0075f0e0(CElement38_0075ef00* first, CElement38_0075ef00* last, CElement38_0075ef00* result, SRandomAccessIteratorTag, long*) -- SGI __copy_backward over 0x38-byte elements with an out-of-line operator=: counted backward copy, returns the moved-back result
-// Leaf: CopyBackward_CElement38_0075ef00_0075f0e0
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0075F0E0, length 72 bytes (+ int3 padding), `ret 0Ch`.
-// Callee: the element operator= @ 0x0075EF00 (catalog "CEnginePrimitive2DText::operator="; thiscall, source pushed).
-// Shape: the landed 0x00517430 / 0x0086E770 family: SGI-STL `__copy_backward(first, last, result,
-// random_access_iterator_tag, Distance*)` -- `for (n = last - first; n > 0; --n) *--result = *--last;`, the moved-back
-// result returned. /Gr TU (__fastcall: first in ecx, last in edx, result + the two tags on the stack). The element count
-// is the reciprocal-multiply division of the byte distance by 0x38.
-// Label correction: the catalog's `_Copy_backward<CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc*>` is propagated;
-// the element is modelled by its size and assignment operator.
-struct CElement38_0075ef00 {
+// std::__copy_backward(CKeyCamera* first, CKeyCamera* last, CKeyCamera* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAVCKeyCamera@@PAV1@H@std@@YIPAVCKeyCamera@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0075F0E0, 72 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 0075fae0 std::vector<CKeyCamera>::insert; callee 0075ef00 CKeyCamera::operator=; binder ??$__copy_backward@PAVCKeyCamera@@PAV1@H@std@@YIPAVCKeyCamera@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CKeyCamera.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+class CKeyCamera {
+public:
     unsigned char _body[0x38];
-    CElement38_0075ef00& operator=(const CElement38_0075ef00& other);   // 0x0075EF00
+    CKeyCamera& operator=(const CKeyCamera& other);   // 0x0075EF00
 };
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-CElement38_0075ef00* __fastcall CopyBackward_CElement38_0075ef00_0075f0e0(CElement38_0075ef00* first, CElement38_0075ef00* last, CElement38_0075ef00* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+template CKeyCamera* std::__copy_backward<CKeyCamera*,CKeyCamera*,int >(CKeyCamera*, CKeyCamera*, CKeyCamera*, std::random_access_iterator_tag const&, int*);

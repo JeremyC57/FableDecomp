@@ -1,13 +1,10 @@
-// _global::Copy_PairLongVectorHolder_00a5e830(SPairLongVectorHolder*, SPairLongVectorHolder*, SPairLongVectorHolder*, const random_access_iterator_tag&, int*) -- SGI __copy over 0x14-byte (key, polymorphic vector holder) pairs
-// Leaf: Copy_PairLongVectorHolder_00a5e830
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5E830, length 75 bytes.
-// SGI-STL random-access `__copy(first, last, result, random_access_iterator_tag, Distance*)`, /Gr TU (__fastcall: first
-// in ecx, last in edx, result + the tag reference + the distance pointer on the stack, `ret 0Ch`); the count is
-// (last - first) / sizeof(T) by reciprocal multiply, the loop counts it down and the advanced result is returned.
-// Element: 0x14 bytes = a long key + a polymorphic 0x10-byte holder (vtable +4, never copied by the implicit
-// operator=) whose only member is a 12-byte vector (+8) assigned through the out-of-line vector operator= @ 0x00A5E4D0
-// (first/last/end-of-storage, catalogued as StdVector_Assign_PairFloatEnum_v2). The manifest's
-// `CTCSkeletalMorph::CSkeletalMorph` label is propagated (12 bytes); the record stays descriptive.
+// std::__copy(CVertexShaderInput::CStreamInfo const* first, CVertexShaderInput::CStreamInfo const* last, CVertexShaderInput::CStreamInfo* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted forward copy `for (n = last - first; n > 0; --n) *result++ = *first++`, return the advanced result
+// Leaf: ??$__copy@PBVCStreamInfo@CVertexShaderInput@@PAV12@H@std@@YIPAVCStreamInfo@CVertexShaderInput@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A5E830, 75 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00a5e9c0 std::vector<CVertexShaderInput::CStreamInfo, std::allocator<CVertexShaderInput::CStreamInfo>>::operator=; caller 00a5e9c0 std::vector<CVertexShaderInput::CStreamInfo, std::allocator<CVertexShaderInput::CStreamInfo>>::operator=; binder ??$__copy@PBVCStreamInfo@CVertexShaderInput@@PAV12@H@std@@YIPAVCStreamInfo@CVertexShaderInput@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CVertexShaderInput::CStreamInfo.
+#include "stlport/fable_containers.h"
 struct SVector {                             // 12-byte STL vector (first, last, end of storage)
     void* m_pFirst;                          // +0x00
     void* m_pLast;                           // +0x04
@@ -20,20 +17,12 @@ public:
     virtual void v00();                      // +0x00 vtable
     SVector Items;                           // +0x04
 };
-
-struct SPairLongVectorHolder {               // 0x14 bytes
+class CVertexShaderInput {
+public:
+class CStreamInfo {
+public:               // 0x14 bytes
     long          first;                     // +0x00
     CVectorHolder second;                    // +0x04
 };
-
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-
-SPairLongVectorHolder* __fastcall Copy_PairLongVectorHolder_00a5e830(SPairLongVectorHolder* first, SPairLongVectorHolder* last, SPairLongVectorHolder* result, const random_access_iterator_tag& tag, int* distance)
-{
-    for (int n = last - first; n > 0; --n) {
-        *result = *first;
-        ++first;
-        ++result;
-    }
-    return result;
-}
+};
+template CVertexShaderInput::CStreamInfo* std::__copy<CVertexShaderInput::CStreamInfo const*,CVertexShaderInput::CStreamInfo*,int >(CVertexShaderInput::CStreamInfo const*, CVertexShaderInput::CStreamInfo const*, CVertexShaderInput::CStreamInfo*, std::random_access_iterator_tag const&, int*);

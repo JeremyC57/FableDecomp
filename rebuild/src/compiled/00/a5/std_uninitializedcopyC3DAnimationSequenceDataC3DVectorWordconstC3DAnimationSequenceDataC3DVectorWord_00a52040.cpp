@@ -1,27 +1,17 @@
-// _global::UninitCopy_C3DVectorWord_00a52040(const C3DVectorWord* first, const C3DVectorWord* last, C3DVectorWord* result, const __false_type&) -- STLport __uninitialized_copy<C3DVectorWord*>: placement copy-construct 6-byte short vectors, return the advanced result
-// Leaf: UninitCopy_C3DVectorWord_00a52040
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A52040, length 52 bytes (+12 int3 pad), `ret 8`.
-// Callers: one site, 0x00A54DA3 in the vector<6-byte>::operator= at 0x00A54CB0 (catalog "Array_C3DVectorWord_Assign";
-//   `imul 2AAAAAABh` = divide by 6 after the shift).
-// Identity: the catalog label `_Uninit_copy<_Vector_const_iterator<..unsigned int..>, ...>` is propagated. The 6-byte
-//   element is taken as Ego_r.pdb C3DVectorWord (short X, Y, Z) after the assigning caller's label; C3DTriangle2 has
-//   the same size and copy, so the element name rests on that one label. Byte twins: 0x00A51C60, 0x00A6E350.
-// Shape: STLport 4.x `__uninitialized_copy(first, last, result, const __false_type&)`, `__fastcall` (first in ecx, last
-//   in edx, result + the tag reference on the stack). The implicit (trivial) 6-byte copy is VC7.1's inline block copy
-//   through esi/edi (dword + word); placement-new null test on the destination; the advanced result returned in eax.
-inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
-
-struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
-
-struct C3DVectorWord {                          // 6 bytes (Ego_r.pdb)
+// std::__uninitialized_copy(C3DAnimationSequenceData::C3DVectorWord const* first, C3DAnimationSequenceData::C3DVectorWord const* last, C3DAnimationSequenceData::C3DVectorWord* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A52040, 52 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 00a54cb0 std::vector<C3DAnimationSequenceData::C3DVectorWord, std::allocator<C3DAnimationSequenceData::C3DVectorWord>>::operator=; binder ??$__uninitialized_copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over C3DAnimationSequenceData::C3DVectorWord.
+#include "stlport/fable_containers.h"
+class C3DAnimationSequenceData {
+public:
+class C3DVectorWord {
+public:                          // 6 bytes (Ego_r.pdb)
     short X;                                    // +0x00
     short Y;                                    // +0x02
     short Z;                                    // +0x04
 };
-
-C3DVectorWord* __fastcall UninitCopy_C3DVectorWord_00a52040(const C3DVectorWord* first, const C3DVectorWord* last, C3DVectorWord* result, const __false_type&)
-{
-    for (; first != last; ++first, ++result)
-        new (result) C3DVectorWord(*first);
-    return result;
-}
+};
+template C3DAnimationSequenceData::C3DVectorWord* std::__uninitialized_copy<C3DAnimationSequenceData::C3DVectorWord const*,C3DAnimationSequenceData::C3DVectorWord* >(C3DAnimationSequenceData::C3DVectorWord const*, C3DAnimationSequenceData::C3DVectorWord const*, C3DAnimationSequenceData::C3DVectorWord*, std::__false_type const&);

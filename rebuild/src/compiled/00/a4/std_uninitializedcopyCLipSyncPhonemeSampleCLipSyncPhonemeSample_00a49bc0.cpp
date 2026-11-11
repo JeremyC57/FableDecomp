@@ -1,45 +1,25 @@
-// _global::UninitCopy_PairCharStringLongCountedPointer_00a49bc0(const SNamedSurfaceEntry* first, const SNamedSurfaceEntry* last, SNamedSurfaceEntry* result, const __false_type&) -- STLport __uninitialized_copy over 16-byte {CCharString, long, CCountedPointer<T>} entries: placement-copy each entry (string copy out of line, counted pointer add-ref'd), return the advanced result
-// Leaf: UninitCopy_PairCharStringLongCountedPointer_00a49bc0
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A49BC0, length 70 bytes (+ int3 padding), `ret 8`.
-// Callers: the vector regrowth @ 0x00A4AC60 (catalog "Vector_Reallocate_CCharString_CountedPointer", calls 0x00A4ACB5 /
-//   0x00A4AD19).
-// Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30.
-// Layout (from the copy): CCharString +0x0, a plain word +0x4, CCountedPointer<T> { Data +0x8, Info +0xC }; the count
-//   block keeps its count as word 0.
-// Shape: STLport 4.x `__uninitialized_copy(first, last, result, const __false_type&)` under /Gr (`__fastcall`: first in
-//   ecx, last in edx, result + the tag reference on the stack); first/last/cur in esi/ebx/edi around the out-of-line
-//   string copy; the three trailing words alternate eax/ecx and the count block is add-ref'd (`inc [eax]`).
-// Label correction: the catalog's `_Uninit_copy<..pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>..>` is
-//   propagated (the element starts with a CCharString).
-inline void* operator new(unsigned int, void* where) { return where; }
-
+// std::__uninitialized_copy(CLipSyncPhonemeSample* first, CLipSyncPhonemeSample* last, CLipSyncPhonemeSample* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAVCLipSyncPhonemeSample@@PAV1@@std@@YIPAVCLipSyncPhonemeSample@@PAV1@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A49BC0, 70 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 00a4ac60 source (stdvector_Minsertoverflow_00a4ac60.cpp) names CLipSyncPhonemeSample; binder ??$__uninitialized_copy@PAVCLipSyncPhonemeSample@@PAV1@@std@@YIPAVCLipSyncPhonemeSample@@PAV1@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CLipSyncPhonemeSample.
+#include "stlport/fable_containers.h"
 class CCharString {
 public:
-    CCharString(const CCharString& other);     // 0x0099EC30
-    void* PData;                               // +0x0
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
 
 #include "engine/CCountedPointer.h"
 
-
 struct CCountedObject;
-
-struct SNamedSurfaceEntry {                    // 16 bytes
+class CLipSyncPhonemeSample {
+public:                    // 16 bytes
     CCharString Name;                          // +0x0
     long Value;                                // +0x4
     CCountedPointer<CCountedObject> Object;    // +0x8
 };
-
-struct __false_type { __false_type() { } };
-
-template <class T1, class T2>
-inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
-
-SNamedSurfaceEntry* __fastcall UninitCopy_PairCharStringLongCountedPointer_00a49bc0(const SNamedSurfaceEntry* first, const SNamedSurfaceEntry* last, SNamedSurfaceEntry* result, const __false_type&)
-{
-    SNamedSurfaceEntry* cur = result;
-    for (; first != last; ++first, ++cur)
-        _Construct(cur, *first);
-    return cur;
-}
+template CLipSyncPhonemeSample* std::__uninitialized_copy<CLipSyncPhonemeSample*,CLipSyncPhonemeSample* >(CLipSyncPhonemeSample*, CLipSyncPhonemeSample*, CLipSyncPhonemeSample*, std::__false_type const&);

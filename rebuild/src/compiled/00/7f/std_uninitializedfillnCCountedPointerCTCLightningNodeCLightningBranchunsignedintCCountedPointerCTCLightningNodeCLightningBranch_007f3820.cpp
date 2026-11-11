@@ -1,30 +1,13 @@
-// _Uninit_fill_n<CPairCountedRef8*> -- placement-copy `count` 8-byte {key, counted ref} pairs (count bump inlined)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007F3820, oracle length 46 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; push esi ; mov esi,edx ; mov edx,[esp+8] ; L: test eax,eax ; je N ; mov ecx,[edx] ; mov [eax],ecx ; mov ecx,[edx+4] ; test ecx,ecx ; mov [eax+4],ecx ; je N ; inc dword ptr [ecx] ; N: add eax,8 ; dec esi ; jne L ; pop esi ; E: ret 8
-// Dinkumware `_Uninit_fill_n` (__fastcall: dest in ecx, count in edx, the value and the
-// allocator on the stack): every slot is copy-constructed in place with placement new (null test
-// on the slot) from the value, whose second member is an intrusive counted reference (copying
-// it bumps the count block's first dword); the advanced destination is returned. The element
-// type is named by its shape. One of
-// 20 bodies.
-#include <new>
-
-struct SCountBlock { long m_references; };
-
-struct CPairCountedRef8 {
-    unsigned long m_key;
-    SCountBlock* m_pCount;
-    CPairCountedRef8(const CPairCountedRef8& other) : m_key(other.m_key), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
+// std::__uninitialized_fill_n(CCountedPointer<CTCLightningNode::CLightningBranch>* first, unsigned int n, CCountedPointer<CTCLightningNode::CLightningBranch> const& x, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first, return the end
+// Leaf: ??$__uninitialized_fill_n@PAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@IV1@@std@@YIPAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV1@IABV1@ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x007F3820, 46 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 007f47f0 source (stdvector_Minsertoverflow_007f47f0.cpp) names CCountedPointer<CTCLightningNode::CLightningBranch>; binder ??$__uninitialized_fill_n@PAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@IV1@@std@@YIPAV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@PAV1@IABV1@ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CCountedPointer<CTCLightningNode::CLightningBranch>.
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+class CTCLightningNode {
+public:
+class CLightningBranch;
 };
-
-struct CRetailAllocator { };
-
-CPairCountedRef8* __fastcall UninitFillN_CPairCountedRef8_007f3820(CPairCountedRef8* dest, unsigned long count, const CPairCountedRef8& value, CRetailAllocator allocator)
-{
-    for (; 0 < count; --count, ++dest)
-        new (dest) CPairCountedRef8(value);
-    return dest;                           // the advanced pointer is returned (retail keeps dest in eax from the start)
-}
+template CCountedPointer<CTCLightningNode::CLightningBranch>* std::__uninitialized_fill_n<CCountedPointer<CTCLightningNode::CLightningBranch>*,unsigned int,CCountedPointer<CTCLightningNode::CLightningBranch> >(CCountedPointer<CTCLightningNode::CLightningBranch>*, unsigned int, CCountedPointer<CTCLightningNode::CLightningBranch> const&, std::__false_type const&);

@@ -1,27 +1,13 @@
-// _Uninit_copy<CElement12_00a49c60*> -- placement-copy [first, last) to dest (12-byte elements, copy ctor @ 0x00A49C60)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4AA10, oracle length 46 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push ebx ; push esi ; mov ebx,edx ; mov esi,ecx ; cmp esi,ebx ; push edi ; mov edi,[esp+10h] ; je E ; L: test edi,edi ; je S ; push esi ; mov ecx,edi ; call CElement12_00a49c60::CElement12_00a49c60(const CElement12_00a49c60&) ; S: add esi,12 ; add edi,12 ; cmp esi,ebx ; jne L ; E: mov eax,edi ; pop edi ; pop esi ; pop ebx ; ret 8
-// Retail std::vector helper (Dinkumware `_Uninit_copy`, __fastcall: first in ecx, last in edx,
-// dest on the stack): copy-constructs every element in place with placement new (hence the null
-// test on the destination) through the out-of-line copy constructor @ 0x00A49C60 and returns
-// the advanced destination. `ret 8` pops dest and the unused allocator argument. The element
-// type is named from the copy constructor's label when unique. One of 21 bodies.
-#include <new>
-
-struct CElement12_00a49c60 {
+// std::__uninitialized_copy(CLipSyncFrameData* first, CLipSyncFrameData* last, CLipSyncFrameData* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAVCLipSyncFrameData@@PAV1@@std@@YIPAVCLipSyncFrameData@@PAV1@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A4AA10, 46 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 00a4af00 std::vector<CLipSyncFrameData, std::allocator<CLipSyncFrameData>>::_M_insert_overflow; caller 00a4b020 std::vector<CLipSyncFrameData, std::allocator<CLipSyncFrameData>>::_M_fill_insert; caller 00a4b020 std::vector<CLipSyncFrameData, std::allocator<CLipSyncFrameData>>::_M_fill_insert; binder ??$__uninitialized_copy@PAVCLipSyncFrameData@@PAV1@@std@@YIPAVCLipSyncFrameData@@PAV1@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CLipSyncFrameData.
+#include "stlport/fable_containers.h"
+class CLipSyncFrameData {
+public:
     unsigned char _body[0xc];
-    CElement12_00a49c60(const CElement12_00a49c60& other);           // 0x00A49C60
+    CLipSyncFrameData(const CLipSyncFrameData& other);           // 0x00A49C60
 };
-
-struct CRetailAllocator { };
-
-CElement12_00a49c60* __fastcall UninitCopy_CElement12_00a49c60_00a4aa10(CElement12_00a49c60* first, CElement12_00a49c60* last, CElement12_00a49c60* dest, CRetailAllocator allocator)
-{
-    CElement12_00a49c60* d = dest;                      // named local: retail loads dest before the loop test (GOTCHAS)
-    for (; first != last; ++first, ++d)   // increment order = retail `add esi ; add edi` under /O1-style "s"
-        new (d) CElement12_00a49c60(*first);
-    return d;
-}
+template CLipSyncFrameData* std::__uninitialized_copy<CLipSyncFrameData*,CLipSyncFrameData* >(CLipSyncFrameData*, CLipSyncFrameData*, CLipSyncFrameData*, std::__false_type const&);

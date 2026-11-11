@@ -1,19 +1,13 @@
-// fill<CElement68_00719e80*> -- assign value to every element of [first, last) through CElement68_00719e80::operator= @ 0x00719E80
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0071A030, oracle length 37 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je E ; push ebx ; mov ebx,[value] ; L: push ebx ; mov ecx,esi ; call CElement68_00719e80::operator= ; add esi,0x44 ; cmp esi,edi ; jne L ; pop ebx ; E: pop edi ; pop esi ; ret 4
-// `fill(first, last, value)` (`__fastcall`: first in ecx, last in edx, the value reference on
-// the stack) for 68-byte elements with an out-of-line copy-assignment @ 0x00719E80.
-// One of 12 bodies of this shape.
-struct CElement68_00719e80 {
+// std::fill(CSubtitledMessage* first, CSubtitledMessage* last, CSubtitledMessage const& x) -- STLport 4.6 _algobase.h: assign x to every element of [first, last)
+// Leaf: ??$fill@PAVCSubtitledMessage@@V1@@std@@YIXPAVCSubtitledMessage@@0ABV1@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0071A030, 37 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 0071a2f0 std::vector<CSubtitledMessage, std::allocator<CSubtitledMessage>>::_M_fill_insert; callee 00719e80 CSubtitledMessage::operator=; binder ??$fill@PAVCSubtitledMessage@@V1@@std@@YIXPAVCSubtitledMessage@@0ABV1@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over CSubtitledMessage.
+#include "stlport/fable_containers.h"
+class CSubtitledMessage {
+public:
     unsigned char _body[0x44];
-    CElement68_00719e80& operator=(const CElement68_00719e80& other);   // 0x00719E80
+    CSubtitledMessage& operator=(const CSubtitledMessage& other);   // 0x00719E80
 };
-
-void __fastcall Fill_CElement68_00719e80_0071a030(CElement68_00719e80* first, CElement68_00719e80* last, const CElement68_00719e80& value)
-{
-    for (; first != last; ++first)
-        *first = value;
-}
+template void std::fill<CSubtitledMessage*,CSubtitledMessage >(CSubtitledMessage*, CSubtitledMessage*, CSubtitledMessage const&);

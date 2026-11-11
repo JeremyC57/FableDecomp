@@ -1,57 +1,11 @@
-// _global::CopyBackward_PairLongCountedPointer_006b9100(PairLongCountedPointer*, PairLongCountedPointer*, PairLongCountedPointer*, SRandomAccessIteratorTag, long*) -- SGI __copy_backward over 12-byte (key, counted pointer) pairs, returns the moved-back result
-// Leaf: CopyBackward_PairLongCountedPointer_006b9100
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x006B9100, length 149 bytes.
-// Callees: operator delete @ 0x00BFE9BC (the count block's destroy function is called through its slot +4).
-// SGI-STL `__copy_backward(first, last, result, random_access_iterator_tag, Distance*)`, /Gr TU (__fastcall: first in
-// ecx, last in edx, result + the two tag arguments on the stack, `ret 0Ch`); the signed count is computed once and
-// counted down in the dead `result` argument slot (`dec dword ptr [esp+18h]`), both pointers step back one element
-// per iteration and the moved-back result is returned.
-// Element: 12 bytes = a long key + CCountedPointer at +4 (`sar edx,1` after the 0x2AAAAAAB multiply = / 12). The
-// manifest label pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > would be 16 bytes: propagated.
-// The element's implicit operator= runs the inlined CCountedPointer::operator= (the source's count block and object
-// are read first, kept in ebx and the `push ecx` frame word across the release; when the blocks differ the old block
-// is released -- destroy function at +4 with the object at +8 in ecx, then operator delete -- and both words plus a
-// new reference are adopted). Same model as the landed 0x0084F130 / 0x00CBAE30.
-struct SCountBlock {
-    long m_references;                       // +0
-    void (__fastcall* m_pfnDestroy)(void*);  // +4
-    void* m_pObject;                         // +8
-};
-
-struct CCountedPointer {                     // CCountedPointer<T>, 8 bytes
-    void*        m_pObject;                  // +0
-    SCountBlock* m_pCount;                   // +4
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* count = other.m_pCount;
-        void* object = other.m_pObject;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            m_pObject = object;
-            m_pCount = count;
-            if (count)
-                ++count->m_references;
-        }
-        return *this;
-    }
-};
-
-struct PairLongCountedPointer {              // std::pair<long, CCountedPointer<T> >, 12 bytes
-    long            first;                   // +0x00
-    CCountedPointer second;                  // +0x04
-};
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-PairLongCountedPointer* __fastcall CopyBackward_PairLongCountedPointer_006b9100(PairLongCountedPointer* first, PairLongCountedPointer* last, PairLongCountedPointer* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+// std::__copy_backward(std::pair<unsigned long,CCountedPointer<CFaction> >* first, std::pair<unsigned long,CCountedPointer<CFaction> >* last, std::pair<unsigned long,CCountedPointer<CFaction> >* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@PAU12@H@std@@YIPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006B9100, 149 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 006ba7b0 source (std_linearinsert_006ba7b0.cpp) names std::pair<unsigned long,CCountedPointer<CFaction>>; binder ??$__copy_backward@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@PAU12@H@std@@YIPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<unsigned long,CCountedPointer<CFaction>>.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+class CFaction;
+template std::pair<unsigned long,CCountedPointer<CFaction> >* std::__copy_backward<std::pair<unsigned long,CCountedPointer<CFaction> >*,std::pair<unsigned long,CCountedPointer<CFaction> >*,int >(std::pair<unsigned long,CCountedPointer<CFaction> >*, std::pair<unsigned long,CCountedPointer<CFaction> >*, std::pair<unsigned long,CCountedPointer<CFaction> >*, std::random_access_iterator_tag const&, int*);

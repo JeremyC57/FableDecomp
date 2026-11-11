@@ -1,37 +1,16 @@
-// _global::UninitCopy_SNamedRecord10_0077e280(const SNamedRecord10* first, const SNamedRecord10* last, SNamedRecord10* result, const __false_type&) -- STLport __uninitialized_copy over 16-byte {CCharString, 12-byte record} pairs: placement copy-construct, return the advanced result
-// Leaf: UninitCopy_SNamedRecord10_0077e280
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E280, length 90 bytes (+ int3 padding), `ret 8`.
-// Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30.
-// Shape: STLport 4.x `__uninitialized_copy(first, last, result, const __false_type&)` (`__fastcall`: first in ecx, last in
-// edx -- spilled to the frame word and reloaded after the call -- result + the tag reference on the stack). Placement new
-// (null test on the destination) of the pair's implicit copy constructor: the out-of-line CCharString copy
-// (`push esi ; mov ecx,ebp ; call`), then the 12-byte value through its memberwise USER copy constructor (three direct
-// dword moves through the strength-reduced src+0xC/dst+0xC pointers). The advanced result is returned.
-// Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated; the element is a
-// {name, 12-byte value} pair like the landed CVectorMap<CCharString, STargetPoint> @ 0x0077F270 -- descriptive names.
-inline void* operator new(unsigned int, void* p) { return p; }
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);       // 0x0099EC30
+// std::__uninitialized_copy(std::pair<CCharString,C3DVector>* first, std::pair<CCharString,C3DVector>* last, std::pair<CCharString,C3DVector>* result, std::__false_type const&) -- STLport 4.6 _uninitialized.h: copy-construct [first, last) into raw storage at result (placement new per element), return the end
+// Leaf: ??$__uninitialized_copy@PAU?$pair@VCCharString@@VC3DVector@@@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@VC3DVector@@@0@PAU10@00ABU__false_type@0@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0077E280, 90 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 8`.
+// Identity: caller 0077ef30 source (stdvector_Minsertoverflow_0077ef30.cpp) names std::pair<CCharString,C3DVector>; binder ??$__uninitialized_copy@PAU?$pair@VCCharString@@VC3DVector@@@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@VC3DVector@@@0@PAU10@00ABU__false_type@0@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<CCharString,C3DVector>.
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
-
-struct SValue0C {                                // 12-byte value with a memberwise user copy constructor
-    long m_word0, m_word4, m_word8;
-    SValue0C(const SValue0C& other) : m_word0(other.m_word0), m_word4(other.m_word4), m_word8(other.m_word8) { }
-};
-
-struct SNamedRecord10 {                          // 16 bytes
-    CCharString first;                           // +0x00
-    SValue0C    second;                          // +0x04
-};
-
-struct __false_type { __false_type() { } };
-
-SNamedRecord10* __fastcall UninitCopy_SNamedRecord10_0077e280(const SNamedRecord10* first, const SNamedRecord10* last, SNamedRecord10* result, const __false_type&)
-{
-    SNamedRecord10* cur = result;
-    for (; first != last; ++first, ++cur)
-        new (cur) SNamedRecord10(*first);
-    return cur;
-}
+template std::pair<CCharString,C3DVector>* std::__uninitialized_copy<std::pair<CCharString,C3DVector>*,std::pair<CCharString,C3DVector>* >(std::pair<CCharString,C3DVector>*, std::pair<CCharString,C3DVector>*, std::pair<CCharString,C3DVector>*, std::__false_type const&);

@@ -1,22 +1,12 @@
-// _Uninit_fill_n<T*> -- placement-copy `count` copies of value from first (8-byte POD elements, size TU), return the advanced pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00470BCD, oracle length 35 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe R ; mov ecx,[value] ; push regs ; L: test eax,eax ; je N ; <copy 8 bytes [ecx] -> [eax]> ; N: add eax,0x8 ; dec edx ; jne L ; pop regs ; R: ret 4
-// Dinkumware `_Uninit_fill_n` for a 8-byte element: each copy is a placement new -- VC emits the
-// null check on the placement address -- of the value reference.
-// A POD of dwords copied member by member (three registers when VC splits the base pointers).
-// Size optimisation leaves the loop unaligned. Fastcall: first in ecx, count in edx. The manifest label is propagated; the element type is modelled by size. One of 7 bodies of this shape.
+// std::uninitialized_fill_n(std::pair<unsigned long,CDefString>* first, unsigned int n, std::pair<unsigned long,CDefString> const& x) -- STLport 4.6 _uninitialized.h: copy-construct n copies of x into raw storage at first (the __false_type helper inlined), return the end
+// Leaf: ??$uninitialized_fill_n@PAU?$pair@KVCDefString@@@std@@IU12@@std@@YIPAU?$pair@KVCDefString@@@0@PAU10@IABU10@@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00470BCD, 35 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 4`.
+// Identity: caller 00470a9c std::vector<std::pair<unsigned long, CDefString>, std::allocator<std::pair<unsigned long, CDefString>>>::_M_fill_insert; binder ??$uninitialized_fill_n@PAU?$pair@KVCDefString@@@std@@IU12@@std@@YIPAU?$pair@KVCDefString@@@0@PAU10@IABU10@@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over std::pair<unsigned long,CDefString>.
 #pragma optimize("s", on)
-
-#include <new>
-
-struct SElement { long m_0; long m_4; };
-
-SElement* __fastcall UninitFillN_00470bcd(SElement* first, unsigned long count, const SElement& value)
-{
-    for (; 0 < count; --count, ++first)
-        new (first) SElement(value);
-    return first;
-}
+#define FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#include "stlport/fable_containers.h"
+#include "engine/CDefString.h"
+template std::pair<unsigned long,CDefString>* std::uninitialized_fill_n<std::pair<unsigned long,CDefString>*,unsigned int,std::pair<unsigned long,CDefString> >(std::pair<unsigned long,CDefString>*, unsigned int, std::pair<unsigned long,CDefString> const&);

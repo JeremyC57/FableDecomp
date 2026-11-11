@@ -1,23 +1,10 @@
-// _global::CopyBackward_SElement12_0075b5b0(SElement12*, SElement12*, SElement12*, SRandomAccessIteratorTag, long*) -- SGI __copy_backward over 12-byte POD elements, returns the moved-back result
-// Leaf: CopyBackward_SElement12_0075b5b0
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0075B5B0, length 76 bytes. No callees.
-// SGI-STL `__copy_backward(first, last, result, random_access_iterator_tag, Distance*)`, /Gr TU (__fastcall:
-// first in ecx, last in edx, result + the two tag arguments on the stack, `ret 0Ch`). The signed element count
-// (last - first) / 12 is computed once with the reciprocal multiply, both pointers step back one element per
-// iteration and the 12-byte trivially copyable element is moved as an inline dword block (ebx as the shuttle
-// register, edx/edi as the per-element source/destination). The manifest label
-// (`_Move_backward<pair<unsigned __int64, CPersistInfo>*>`) is propagated across byte-identical bodies of
-// different element sizes, so the element is modelled as an opaque 12-byte record (same shape as the landed
-// 0x00ADAB20).
-struct SElement12 {
-    unsigned char _body[0xc];
-};
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-SElement12* __fastcall CopyBackward_SElement12_0075b5b0(SElement12* first, SElement12* last, SElement12* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+// std::__copy_backward(C3DVector* first, C3DVector* last, C3DVector* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0075B5B0, 76 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 0075bb00 std::vector<C3DVector, std::allocator<C3DVector>>::_M_fill_insert; caller 007653b0 std::vector<C3DVector, std::allocator<C3DVector>>::insert; caller 00a70cb0 std::vector<C3DVector, std::allocator<C3DVector>>::_M_range_insert<C3DVector *>; binder ??$__copy_backward@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over C3DVector.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+template C3DVector* std::__copy_backward<C3DVector*,C3DVector*,int >(C3DVector*, C3DVector*, C3DVector*, std::random_access_iterator_tag const&, int*);

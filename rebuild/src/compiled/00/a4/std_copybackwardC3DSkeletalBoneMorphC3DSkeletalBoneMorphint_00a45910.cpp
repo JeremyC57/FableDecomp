@@ -1,34 +1,26 @@
-// _global::CopyBackward_SNamedIndexedValue14_00a45910(SNamedIndexedValue14*, SNamedIndexedValue14*, SNamedIndexedValue14*, SRandomAccessIteratorTag, long*) -- SGI __copy_backward over 20-byte {CCharString, long, 12-byte value} records, returns the moved-back result
-// Leaf: CopyBackward_SNamedIndexedValue14_00a45910
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45910, length 122 bytes.
-// Callees: CCharString::operator= @ 0x0099EFB0.
-// SGI-STL `__copy_backward(first, last, result, random_access_iterator_tag, Distance*)`, /Gr TU (__fastcall: first in ecx,
-// last in edx, result + the two tag arguments on the stack, `ret 0Ch`): `for (n = last - first; n > 0; --n) *--result = *--last;`
-// with the signed count computed once; the moved-back result is returned.
-// Element: 20 bytes (0x66666667 multiply + `sar 3` = / 20): the CCharString at +0 (out-of-line operator=), a long
-// at +4 and a 12-byte trivially copyable value at +8 moved as an inline dword block (re-addressed in ecx/edx) --
-// the CTargetPoint shape (landed 0x00806EA0) with a string in place of the intelligent pointer. The count lives
-// in the dead `result` argument slot. The manifest label pair<pair<long,long>, CEngineTextureDecal> is propagated.
-class CCharString { public:
-    void* m_pData;
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+// std::__copy_backward(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph* result, std::random_access_iterator_tag const&, int*) -- STLport 4.6 _algobase.h: random-access counted backward copy `for (n = last - first; n > 0; --n) *--result = *--last`, return the moved-back result
+// Leaf: ??$__copy_backward@PAVC3DSkeletalBoneMorph@@PAV1@H@std@@YIPAVC3DSkeletalBoneMorph@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A45910, 122 bytes, /Gr `__fastcall` TU (first argument ecx, second edx, the rest on the stack), `ret 0xc`.
+// Identity: caller 00a46530 source (STL_linearinsert_00a46530.cpp) names C3DSkeletalBoneMorph; caller 00a46b50 source (stdvector_insert_00a46b50.cpp) names C3DSkeletalBoneMorph; binder ??$__copy_backward@PAVC3DSkeletalBoneMorph@@PAV1@H@std@@YIPAVC3DSkeletalBoneMorph@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Body: the STLport 4.6 template from the shared model rebuild/include/stlport/fable_containers.h, explicitly instantiated over C3DSkeletalBoneMorph.
+#define FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+#include "stlport/fable_containers.h"
+class CCharString {
+public:
+    CCharString(const CCharString& other);                       // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z
+    ~CCharString();                                              // 0x0099EAE0 ??1CCharString@@QAE@XZ
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0 ??4CCharString@@QAEABV0@ABV0@@Z
+    class CCharStringData* PStringData;                          // +0x00 (Ego_r.pdb, 4 bytes)
 };
 
 struct SValue0C {                                // 12-byte trivially copyable value
     long m_word0, m_word4, m_word8;
 };
-
-struct SNamedIndexedValue14 {                    // 20 bytes
+class C3DSkeletalBoneMorph {
+public:                    // 20 bytes
     CCharString m_name;                          // +0x00
     long        m_index;                         // +0x04
     SValue0C    m_value;                         // +0x08
 };
-
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-SNamedIndexedValue14* __fastcall CopyBackward_SNamedIndexedValue14_00a45910(SNamedIndexedValue14* first, SNamedIndexedValue14* last, SNamedIndexedValue14* result, SRandomAccessIteratorTag category, long* distance)
-{
-    for (long n = last - first; n > 0; --n)
-        *--result = *--last;
-    return result;
-}
+template C3DSkeletalBoneMorph* std::__copy_backward<C3DSkeletalBoneMorph*,C3DSkeletalBoneMorph*,int >(C3DSkeletalBoneMorph*, C3DSkeletalBoneMorph*, C3DSkeletalBoneMorph*, std::random_access_iterator_tag const&, int*);
