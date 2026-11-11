@@ -1,0 +1,13 @@
+// CCountedPointer::~CCountedPointer() -- the destructor: ReleaseData() expanded (speed TU) (T = NParticleEngine::CParticleEmitter)
+// Leaf: ??1?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AE94A0, 53 bytes. Callees: the count block's DeleteFunc (indirect), operator delete 0x00BFE9BC.
+// Was landed as _global::CCountedPointer_Release_00ae94a0 (stand-in name).
+// T = NParticleEngine::CParticleEmitter, proven by: CEmitterData's /O2 scalar deleting dtor 0x00AF1BD0 calls it on +0x24 = EmitterTemplate (Ego_r CEmitterData +0x24 CCountedPointer<NParticleEngine::CParticleEmitter>); CParticleEmitterManager::CreateEmitter / CreateInterpolatedEmitter (/O2) release a local after operator= 0x00AE96E0, which 0x00AF1480 binds as CCountedPointer<CParticleEmitter>; FableWin.pdb ??1 name.
+// Member: the destructor. Retail's ~CCountedPointer is `{ ReleaseData(); }`; in a speed TU VC7.1 expands ReleaseData into it
+//   (53 bytes, Data zeroed before Info) and /O2 callers (scalar deleting dtors, scope ends past the inline budget) call ??1
+//   (probe: /O2 scalar deleting dtor calls ??1, /O1 calls ReleaseData).
+// Model: engine/CCountedPointer.h opt-in FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (destructor = ReleaseData(); ReleaseData zeroes Data first).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#include "engine/CCountedPointer.h"
+namespace NParticleEngine { class CParticleEmitter; }
+template CCountedPointer<NParticleEngine::CParticleEmitter>::~CCountedPointer();

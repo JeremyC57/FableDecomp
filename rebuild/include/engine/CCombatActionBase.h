@@ -195,6 +195,12 @@ class CCombatActionBase : public CCreatureActionBase {
 public: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sound);   // 0x00858030
 protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_STRIKEEVENT
+    // Per-TU opt-in (agentFAM01 2026-11-11, row 0x0062D9A0 ~CCountedPointer<CCombatActionBase::CStrikeEvent>): the PDB nested class
+    // (Ego_r.pdb / FableWin.pdb ??1?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@QAE@XZ), declared as in the other branches.
+    // Declaration only; no layout change.
+public: class CStrikeEvent;
+#endif
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;

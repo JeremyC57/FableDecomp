@@ -34,7 +34,6 @@ __controlfp	004013e4	0040135c
 @dtorB@4	0099eae0	00403510
 ?g_EmptyCharString_0129AAF4@@3PADA	0129aaf4	00403a10
 ?g_emptyLiteral_0129aaf4@@3PADA	0129aaf4	00403c20
-??2@YAPAXI@Z	00bfea1a	00403d20
 ??3@YAXPAX@Z	00bfe9bc	00403db0
 ?Destroy_00403630@@YIXPAX@Z	00403630	00403db0
 ?Destroy_00403650@@YIXPAX@Z	00403650	00403e40
@@ -117,7 +116,6 @@ _ForwardTarget_0099a360	0099a360	00412f60
 ??0CInitBaseClass@@QAE@XZ	0099a310	00413200
 ??_7CGame@@6B@	0122e59c	00413200
 ?Destroy_004132f0@@YIXPAX@Z	004132f0	00413520
-?FableFacesObjectDelete_00413300@@YIXPAX@Z	00413300	00413590
 ?Ring_dtor@@YIXPAURing@@@Z	0099eae0	00414ef0
 ??_7CConsoleCommandBase_Retail@@6B@	0122e638	00414f30
 ??_7CConsoleInputBase@@6B@	0122e5b0	00414f30
@@ -190,7 +188,6 @@ _ForwardTarget_0099a360	0099a360	00412f60
 ?Initialise@CChangingStateComponentInitialiseCalls@NUISystem@@QAEXXZ	0052c730	0041a8d0
 ?ApplyKey@FableCameraPointScriptedSpline_0041B9C0@@QAEXIPAI@Z	009fbf90	0041b9c0
 ?StepBackward@FableCameraPointScriptedSpline_0041B9C0@@QAEXXZ	009fbfb0	0041b9c0
-?CountedDestroy_0041bd80@@YIXPAX@Z	0041bd80	0041c030
 ?Uninitialise@CGraphicFrameData@@QAEXXZ	009fcba0	0041c0e0
 ??_7CActionParam@@6B@	0122f83c	0041c88f
 ??0CChangingStateComponent@NUISystem@@QAE@J@Z	0052cc50	0041cadc
@@ -226,7 +223,6 @@ _Helper	004292c0	004293db
 _RegionExitTextHelper	004292c0	0042a0ce
 ?BuildTreeArray@Tree@@QAEXPAUNode@@@Z	0042a1b6	0042a1b6
 ?Construct@CVector_0042a291@@QAEXUSIterator@@0ABUSInputIteratorTag@@@Z	00429418	0042a291
-?ShareData@T@@QAEXPAX0@Z	0042943a	0042a2b9
 ?Construct@CVector_0042a2ec@@QAEXUSIterator@@0ABUSInputIteratorTag@@@Z	004294ac	0042a2ec
 ??0CMember_0052e5d0Member@@QAE@XZ	0052e5d0	0042a33f
 ?RBTree__GetMaxNode@@YAPAXPAX@Z	004294e2	0042a58d
@@ -483,7 +479,6 @@ _FableSpellWrap_6a4dd0@4	004498c0	00449a30
 ?g_allocator@@3UCAllocator@@A	013b879c	0044c71f
 ??_7CThingMultiArrowShotDef@@6B@	01232bbc	0044f607
 ??0CBase_0044c0c0@@QAE@XZ	0044c0c0	0044f969
-@CCountedPtr_helper@4	0044f3de	00450142
 ?LTextTreeWalkThrough_BuildTreeArray@@YIXPAULTextTreeWalkThrough@@UNodeArg@@@Z	004506ed	004506ed
 ?Handle@CTree@@QAEXH@Z	0045071a	0045071a
 ?BuildTreeArray@CTree@@QAEXPAUNode@@@Z	00450828	00450828
@@ -2612,7 +2607,6 @@ _GetCellBoundingBox_callee_005ba9f9	005ba9f9	005baeac
 ??0CCategory@NInventory@@QAE@UCDefPointer@@PAUCTCInventoryBase_Retail@@J@Z	005bfcd9	005c024a
 ??1CCategory@NInventory@@QAE@XZ	005c2739	005c024a
 ?GetDef@CGameDefinitionManager@@QAE_NJPAUCDefPointerSlot@@@Z	005c0c99	005c024a
-?Assign@CCountedPointer_CTexture@@QAEXPAX0@Z	005c053d	005c07e4
 ?FableUmove_construct_005c08c0@@YGXPAUFableUmoveElem_005c08c0@@PAD@Z	005c0653	005c08c0
 ?FableUmove_construct_005c08d3@@YGXPAUFableUmoveElem_005c08d3@@PAD@Z	005c06c3	005c08d3
 ?FableUmove_construct_005c0c86@@YGXPAUFableUmoveElem_005c0c86@@PAD@Z	005c0965	005c0c86
@@ -38947,3 +38941,18 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?IsFollower@CTCFollowedNative@@QBE_NPBUCThingNative@@@Z	006d4d70	008a7980
 ?RemoveFollower@CTCFollowedNative@@QAEXAAUCThingNative@@@Z	006d5180	008a7980
 ?RemoveIf@EventListMethods@@QAEXPBJ@Z	008ac890	008a7980
+??2@YAPAXI@Z	00bfea1a	00403d20
+?DeleteData@?$CCountedPointer@VCAProgressDisplay@@@@SIXPAX@Z	00403600	00403d20
+?DeleteData@?$CCountedPointer@VCCodeSectionManager@@@@SIXPAX@Z	00413300	00413590
+?DeleteData@?$CCountedPointer@VCTexture@@@@SIXPAX@Z	0041bd80	0041c030
+?ShareData@?$CCountedPointer@VCTexture@@@@QAEXPAVCTexture@@PAVCCPPointerInfo@@@Z	0042913a	00429a62
+?ShareData@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXPAVCMesh@NUISystem@@PAVCCPPointerInfo@@@Z	0042943a	0042a2b9
+?DeleteData@?$CCountedPointer@VCDrawHealth@NPlayerGui@@@@SIXPAX@Z	00443500	00444050
+?DeleteData@?$CCountedPointer@VCDrawCombatMultiplier@NPlayerGui@@@@SIXPAX@Z	00443540	00444130
+?DeleteData@?$CCountedPointer@VCGameDefinitionManager@@@@SIXPAX@Z	0044eafd	00450142
+?ReleaseData@?$CCountedPointer@VCGameDefinitionManager@@@@QAEXXZ	0044f3de	00450142
+?ShareData@?$CCountedPointer@V?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@@QAEXPAV?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@PAVCCPPointerInfo@@@Z	005c053d	005c07e4
+?ShareData@?$CCountedPointer@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@@QAEXPAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@PAVCCPPointerInfo@@@Z	005c058f	005c0800
+?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z	00668610	00695880
+?DeleteData@?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@SIXPAX@Z	008ebdd0	008ebe90
+?DeleteData@?$CCountedPointer@VCActiveEntityScriptBase@@@@SIXPAX@Z	00ce1100	00ce10b0

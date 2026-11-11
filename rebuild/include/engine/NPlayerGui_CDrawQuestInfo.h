@@ -57,6 +57,33 @@ public:
 #endif
         long ThingMapNumber;
     };
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_ELEMENTS
+    // Per-TU opt-in (agentFAM01 2026-11-11, rows 0x00654B4F..0x00654C8F): the other PDB nested element classes (FableWin.pdb
+    // CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer / CounterList / Tick> members; the converting copy ctors
+    // ??$?0VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@...).
+    // Members are Ego_r.pdb's (Timer: TimerIndex, Graphic; CounterList: Graphic, Value, MaxValue; Tick: Graphic, Text, Ticked); single
+    // inheritance from CQuestInfoElement at +0 (the retail converting ctors copy the pointer unadjusted). Default path unchanged.
+    class CQuestInfoElementTimer : public CQuestInfoElement {
+    public:
+        virtual float DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&);
+        virtual EElementType GetType() const;
+        long TimerIndex,Graphic;
+    };
+    class CQuestInfoElementCounterList : public CQuestInfoElement {
+    public:
+        virtual float DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&);
+        virtual EElementType GetType() const;
+        long Graphic,Value,MaxValue;
+    };
+    class CQuestInfoElementTick : public CQuestInfoElement {
+    public:
+        virtual float DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&);
+        virtual EElementType GetType() const;
+        long Graphic;
+        CWideString Text;
+        bool Ticked;
+    };
+#endif
     class CQuestInfoElementMiniGameBar : public CQuestInfoElement {
     public:
         virtual float DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&);

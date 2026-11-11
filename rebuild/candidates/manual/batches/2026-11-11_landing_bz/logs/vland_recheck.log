@@ -1,0 +1,94 @@
+addr       parity           behav  name
+00403d20   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAProgressDisplay@@@@SIXPAX@Z -> 00403600 labelled 'sub_00403600'
+00403d20   RELOCATION_MATCH FAIL   00403d20
+00413590   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCCodeSectionManager@@@@SIXPAX@Z -> 00413300 labelled 'sub_00413300'
+00413590   RELOCATION_MATCH FAIL   00413590
+0041915a   RELOCATION_MATCH FAIL   0041915a
+0041bb30   RELOCATION_MATCH PASS   0041bb30
+0041c030   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCTexture@@@@SIXPAX@Z -> 0041bd80 labelled '_global::DeleteObject_0041bd80'
+0041c030   RELOCATION_MATCH PASS   0041c030
+00429230   RELOCATION_MATCH FAIL   00429230
+00429a62   RELOCATION_MATCH FAIL   00429a62
+00429c58   RELOCATION_MATCH FAIL   00429c58
+0042a2b9   RELOCATION_MATCH FAIL   0042a2b9
+0042a2ca   RELOCATION_MATCH FAIL   0042a2ca
+0042a2db   RELOCATION_MATCH FAIL   0042a2db
+00433cc0   RELOCATION_MATCH FAIL   00433cc0
+0043e1c0   RELOCATION_MATCH FAIL   0043e1c0
+00444050   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCDrawHealth@NPlayerGui@@@@SIXPAX@Z -> 00443500 labelled '_global::DeleteObject_00443500'
+00444050   RELOCATION_MATCH FAIL   00444050
+00444130   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCDrawCombatMultiplier@NPlayerGui@@@@SIXPAX@Z -> 00443540 labelled 'Catch@0047e8cc'
+00444130   RELOCATION_MATCH FAIL   00444130
+0044f3b2   RELOCATION_MATCH PASS   0044f3b2
+0044f3de   RELOCATION_MATCH FAIL   0044f3de
+00450142   RELOCATION_MATCH PASS   00450142
+004850f9   RELOCATION_MATCH FAIL   004850f9
+0048afb0   RELOCATION_MATCH FAIL   0048afb0
+0056c050   MATCH            FAIL   0056c050
+005c0511   RELOCATION_MATCH FAIL   005c0511
+005c0563   RELOCATION_MATCH FAIL   005c0563
+005c07e4   RELOCATION_MATCH FAIL   005c07e4
+005c0800   RELOCATION_MATCH FAIL   005c0800
+0062d9a0   RELOCATION_MATCH FAIL   0062d9a0
+00654b0a   RELOCATION_MATCH FAIL   00654b0a
+00654b36   WARN STANDIN_LEAF ??$?0VCQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@@@@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>::CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar>; names another function)
+00654b36   MATCH            FAIL   00654b36
+00654b4f   RELOCATION_MATCH FAIL   00654b4f
+00654b7b   WARN STANDIN_LEAF ??$?0VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>::CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer>; names another function)
+00654b7b   MATCH            FAIL   00654b7b
+00654b94   RELOCATION_MATCH FAIL   00654b94
+00654bc0   WARN STANDIN_LEAF ??$?0VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>::CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounter>; names another function)
+00654bc0   MATCH            FAIL   00654bc0
+00654bd9   RELOCATION_MATCH FAIL   00654bd9
+00654c05   WARN STANDIN_LEAF ??$?0VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>::CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounterList>; names another function)
+00654c05   MATCH            FAIL   00654c05
+00654c1e   RELOCATION_MATCH FAIL   00654c1e
+00654c4a   WARN STANDIN_LEAF ??$?0VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>::CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick>; names another function)
+00654c4a   MATCH            FAIL   00654c4a
+00654c63   RELOCATION_MATCH FAIL   00654c63
+00654c8f   WARN STANDIN_LEAF ??$?0VCQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@@@@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>::CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar>; names another function)
+00654c8f   MATCH            FAIL   00654c8f
+0065da52   WARN STANDIN_LEAF ??$?0VCVillageTaskTorch@@@?$CCountedPointer@VCVillageTaskBase@@@@QAE@ABV?$CCountedPointer@VCVillageTaskTorch@@@@@Z (catalog CCountedPointer<CVillageTaskBase>::CCountedPointer<CVillageTaskTorch>; names another function)
+0065da52   MATCH            FAIL   0065da52
+0065db2a   WARN STANDIN_LEAF ??$?0VCVillageTaskHorn@@@?$CCountedPointer@VCVillageTaskBase@@@@QAE@ABV?$CCountedPointer@VCVillageTaskHorn@@@@@Z (catalog CCountedPointer<CVillageTaskBase>::CCountedPointer<CVillageTaskHorn>; names another function)
+0065db2a   MATCH            FAIL   0065db2a
+0065db43   WARN STANDIN_LEAF ??$?0VCVillageTaskPatrol@@@?$CCountedPointer@VCVillageTaskBase@@@@QAE@ABV?$CCountedPointer@VCVillageTaskPatrol@@@@@Z (catalog CCountedPointer<CVillageTaskBase>::CCountedPointer<CVillageTaskPatrol>; names another function)
+0065db43   MATCH            FAIL   0065db43
+0065db5c   WARN STANDIN_LEAF ??$?0VCVillageTaskPickCrops@@@?$CCountedPointer@VCVillageTaskBase@@@@QAE@ABV?$CCountedPointer@VCVillageTaskPickCrops@@@@@Z (catalog CCountedPointer<CVillageTaskBase>::CCountedPointer<CVillageTaskPickCrops>; names another function)
+0065db5c   MATCH            FAIL   0065db5c
+0065db75   WARN STANDIN_LEAF ??$?0VCVillageTaskSecuritySweep@@@?$CCountedPointer@VCVillageTaskBase@@@@QAE@ABV?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@Z (catalog CCountedPointer<CVillageTaskBase>::CCountedPointer<CVillageTaskSecuritySweep>; names another function)
+0065db75   MATCH            FAIL   0065db75
+0065db8e   WARN STANDIN_LEAF ??$?0VCVillageTaskCarryCrate@@@?$CCountedPointer@VCVillageTaskBase@@@@QAE@ABV?$CCountedPointer@VCVillageTaskCarryCrate@@@@@Z (catalog CCountedPointer<CVillageTaskBase>::CCountedPointer<CVillageTaskCarryCrate>; names another function)
+0065db8e   MATCH            FAIL   0065db8e
+00695880   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z -> 00668610 labelled '_global::DeleteViaVtable0_00668610'
+00695880   RELOCATION_MATCH PASS   00695880
+006e46f0   RELOCATION_MATCH FAIL   006e46f0
+0073d630   RELOCATION_MATCH FAIL   0073d630
+00754f10   RELOCATION_MATCH FAIL   00754f10
+007e70e0   RELOCATION_MATCH FAIL   007e70e0
+008ab1e0   RELOCATION_MATCH FAIL   008ab1e0
+008ebe90   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@SIXPAX@Z -> 008ebdd0 labelled 'SCountedNamedRecord_008ebdd0::DeleteObject'
+008ebe90   RELOCATION_MATCH PASS   008ebe90
+009a4400   RELOCATION_MATCH FAIL   009a4400
+009a4440   RELOCATION_MATCH FAIL   009a4440
+009a9d60   RELOCATION_MATCH FAIL   009a9d60
+009c9fc0   RELOCATION_MATCH FAIL   009c9fc0
+009d69a0   MATCH            FAIL   009d69a0
+009d6fd0   RELOCATION_MATCH FAIL   009d6fd0
+009de7c0   RELOCATION_MATCH FAIL   009de7c0
+00a2acc0   RELOCATION_MATCH FAIL   00a2acc0
+00a5f6d0   RELOCATION_MATCH FAIL   00a5f6d0
+00ae94a0   RELOCATION_MATCH FAIL   00ae94a0
+00ae96e0   RELOCATION_MATCH FAIL   00ae96e0
+00cdedb0   RELOCATION_MATCH PASS   00cdedb0
+00ce10b0   RELOCATION_MATCH PASS   00ce10b0
+
+WINS: 8
+  0041bb30 RELOCATION_MATCH m::?ReleaseData@?$CCountedPointer@VCTexture@@@@QAEXXZ
+  0041c030 RELOCATION_MATCH m::??0?$CCountedPointer@VCTexture@@@@QAE@PAVCTexture@@@Z
+  0044f3b2 RELOCATION_MATCH m::?ReleaseData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAEXXZ
+  00450142 RELOCATION_MATCH m::?Reset@?$CCountedPointer@VCGameDefinitionManager@@@@QAEXPAVCGameDefinitionManager@@@Z
+  00695880 RELOCATION_MATCH m::??0?$CCountedPointer@VCCreatureActionBase@@@@QAE@PAVCCreatureActionBase@@@Z
+  008ebe90 RELOCATION_MATCH m::??0?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@QAE@PAVCHoverAnim@CModeHoverBase@NCreatureMode@@@Z
+  00cdedb0 RELOCATION_MATCH m::??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z
+  00ce10b0 RELOCATION_MATCH m::??0?$CCountedPointer@VCActiveEntityScriptBase@@@@QAE@PAVCActiveEntityScriptBase@@@Z

@@ -3657,9 +3657,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0044f3b2'
-        Module = '_global'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3b2.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3b2_test.cpp'
+        Module = 'CCountedPointer<NHitLocations::CPhysicalPrimitiveBase>'
+        Source = '00/44/CCountedPointerNHitLocationsCPhysicalPrimitiveBase_ReleaseData_0044f3b2.cpp'
+        TestSource = '00/44/CCountedPointerNHitLocationsCPhysicalPrimitiveBase_ReleaseData_0044f3b2_test.cpp'
         PassPattern = 'DestVal_0044f3b2_TEST PASS'
     }
     [pscustomobject]@{
@@ -3755,9 +3755,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00450142'
-        Module = '_global'
-        Source = '00/45/CCountedPointerstdvectorCCharString_Reset_00450142.cpp'
-        TestSource = '00/45/CCountedPointerstdvectorCCharString_Reset_00450142_test.cpp'
+        Module = 'CCountedPointer<CGameDefinitionManager>'
+        Source = '00/45/CCountedPointerCGameDefinitionManager_Reset_00450142.cpp'
+        TestSource = '00/45/CCountedPointerCGameDefinitionManager_Reset_00450142_test.cpp'
         PassPattern = 'CCountedPointer_00450142_TEST PASS'
     }
     [pscustomobject]@{
@@ -5470,9 +5470,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041bb30'
-        Module = '_global'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041bb30.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041bb30_test.cpp'
+        Module = 'CCountedPointer<CTexture>'
+        Source = '00/41/CCountedPointerCTexture_ReleaseData_0041bb30.cpp'
+        TestSource = '00/41/CCountedPointerCTexture_ReleaseData_0041bb30_test.cpp'
         PassPattern = 'DestVal_0041bb30_TEST PASS'
     }
     [pscustomobject]@{
@@ -31315,9 +31315,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00403d20'
-        Module = '_global'
-        Source = '00/40/CCountedPointerCProgressDisplay_CCountedPointer_00403d20.cpp'
-        TestSource = '00/40/CCountedPointerCProgressDisplay_CCountedPointer_00403d20_test.cpp'
+        Module = 'CCountedPointer<CAProgressDisplay>'
+        Source = '00/40/CCountedPointerCAProgressDisplay_CCountedPointer_00403d20.cpp'
+        TestSource = '00/40/CCountedPointerCAProgressDisplay_CCountedPointer_00403d20_test.cpp'
         PassPattern = 'FABLETLC_PROGRESS_DISPLAY_COUNTED_CTOR PASS'
     }
     [pscustomobject]@{
@@ -31560,9 +31560,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00413590'
-        Module = '_global'
-        Source = '00/41/CCountedPointerCIPhysicsFacesSegmentBaseconst_Reset_00413590.cpp'
-        TestSource = '00/41/CCountedPointerCIPhysicsFacesSegmentBaseconst_Reset_00413590_test.cpp'
+        Module = 'CCountedPointer<CCodeSectionManager>'
+        Source = '00/41/CCountedPointerCCodeSectionManager_Reset_00413590.cpp'
+        TestSource = '00/41/CCountedPointerCCodeSectionManager_Reset_00413590_test.cpp'
         PassPattern = 'FABLETLC_PHYSICS_FACES_COUNTED_RESET_413590 PASS'
     }
     [pscustomobject]@{
@@ -31609,16 +31609,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00444050'
-        Module = '_global'
-        Source = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444050.cpp'
-        TestSource = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444050_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawHealth>'
+        Source = '00/44/CCountedPointerNPlayerGuiCDrawHealth_Reset_00444050.cpp'
+        TestSource = '00/44/CCountedPointerNPlayerGuiCDrawHealth_Reset_00444050_test.cpp'
         PassPattern = 'FABLETLC_PHYSICS_FACES_COUNTED_RESET_00444050 PASS'
     }
     [pscustomobject]@{
         Address = '00444130'
-        Module = '_global'
-        Source = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444130.cpp'
-        TestSource = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444130_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawCombatMultiplier>'
+        Source = '00/44/CCountedPointerNPlayerGuiCDrawCombatMultiplier_Reset_00444130.cpp'
+        TestSource = '00/44/CCountedPointerNPlayerGuiCDrawCombatMultiplier_Reset_00444130_test.cpp'
         PassPattern = 'FABLETLC_PHYSICS_FACES_COUNTED_RESET_444130 PASS'
     }
     [pscustomobject]@{
@@ -48463,9 +48463,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005c07e4'
-        Module = '_global'
-        Source = '00/5c/CCountedPointerCTexture_operator_005c07e4.cpp'
-        TestSource = '00/5c/CCountedPointerCTexture_operator_005c07e4_test.cpp'
+        Module = 'CCountedPointer<std::vector<NInventory::CItem, std::allocator<NInventory::CItem> >>'
+        Source = '00/5c/CCountedPointerstdvectorNInventoryCItemstdallocatorNInventoryCItem_operator_005c07e4.cpp'
+        TestSource = '00/5c/CCountedPointerstdvectorNInventoryCItemstdallocatorNInventoryCItem_operator_005c07e4_test.cpp'
         PassPattern = 'COUNTEDPTR_ASSIGN_OK'
     }
     [pscustomobject]@{
@@ -64476,23 +64476,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008ab1e0'
-        Module = '_global'
-        Source = '00/8a/CCountedPointerCDiskFileWin32_operator_008ab1e0.cpp'
-        TestSource = '00/8a/CCountedPointerCDiskFileWin32_operator_008ab1e0_test.cpp'
+        Module = 'CCountedPointer<CScriptGameResourceObjectScriptedThingBase>'
+        Source = '00/8a/CCountedPointerCScriptGameResourceObjectScriptedThingBase_operator_008ab1e0.cpp'
+        TestSource = '00/8a/CCountedPointerCScriptGameResourceObjectScriptedThingBase_operator_008ab1e0_test.cpp'
         PassPattern = 'PASS_009a9bf0'
     }
     [pscustomobject]@{
         Address = '009a4440'
-        Module = '_global'
-        Source = '00/9a/CCountedPointerCDiskFileWin32_operator_009a4440.cpp'
-        TestSource = '00/9a/CCountedPointerCDiskFileWin32_operator_009a4440_test.cpp'
+        Module = 'CCountedPointer<CBankFileAsyncData>'
+        Source = '00/9a/CCountedPointerCBankFileAsyncData_operator_009a4440.cpp'
+        TestSource = '00/9a/CCountedPointerCBankFileAsyncData_operator_009a4440_test.cpp'
         PassPattern = 'PASS_009a9bf0'
     }
     [pscustomobject]@{
         Address = '00a2acc0'
-        Module = '_global'
-        Source = '00/a2/CCountedPointerCDiskFileWin32_operator_00a2acc0.cpp'
-        TestSource = '00/a2/CCountedPointerCDiskFileWin32_operator_00a2acc0_test.cpp'
+        Module = 'CCountedPointer<const C3DMesh2>'
+        Source = '00/a2/CCountedPointerconstC3DMesh2_operatorC3DMesh2_00a2acc0.cpp'
+        TestSource = '00/a2/CCountedPointerconstC3DMesh2_operatorC3DMesh2_00a2acc0_test.cpp'
         PassPattern = 'PASS_009a9bf0'
     }
     [pscustomobject]@{
@@ -69356,16 +69356,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429a62'
-        Module = '_global'
+        Module = 'CCountedPointer<CTexture>'
         Source = '00/42/CCountedPointerCTexture_operator_00429a62.cpp'
         TestSource = '00/42/CCountedPointerCTexture_operator_00429a62_test.cpp'
         PassPattern = 'PASS_00429a62'
     }
     [pscustomobject]@{
         Address = '00429c58'
-        Module = '_global'
-        Source = '00/42/CCountedPointerCTexture_operator_00429c58.cpp'
-        TestSource = '00/42/CCountedPointerCTexture_operator_00429c58_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CComponent>'
+        Source = '00/42/CCountedPointerNUISystemCComponent_operator_00429c58.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCComponent_operator_00429c58_test.cpp'
         PassPattern = 'PASS_00429c58'
     }
     [pscustomobject]@{
@@ -71078,9 +71078,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0062d9a0'
-        Module = '_global'
-        Source = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062d9a0.cpp'
-        TestSource = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062d9a0_test.cpp'
+        Module = 'CCountedPointer<CCombatActionBase::CStrikeEvent>'
+        Source = '00/62/CCountedPointerCCombatActionBaseCStrikeEvent_CCountedPointer_0062d9a0.cpp'
+        TestSource = '00/62/CCountedPointerCCombatActionBaseCStrikeEvent_CCountedPointer_0062d9a0_test.cpp'
         PassPattern = 'PASS_0062d9a0'
     }
     [pscustomobject]@{
@@ -71491,9 +71491,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a4400'
-        Module = '_global'
-        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a4400.cpp'
-        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a4400_test.cpp'
+        Module = 'CCountedPointer<CBankFileAsyncData>'
+        Source = '00/9a/CCountedPointerCBankFileAsyncData_CCountedPointer_009a4400.cpp'
+        TestSource = '00/9a/CCountedPointerCBankFileAsyncData_CCountedPointer_009a4400_test.cpp'
         PassPattern = 'PASS_009a4400'
     }
     [pscustomobject]@{
@@ -72758,9 +72758,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ae94a0'
-        Module = '_global'
-        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae94a0.cpp'
-        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae94a0_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CParticleEmitter>'
+        Source = '00/ae/CCountedPointerNParticleEngineCParticleEmitter_CCountedPointer_00ae94a0.cpp'
+        TestSource = '00/ae/CCountedPointerNParticleEngineCParticleEmitter_CCountedPointer_00ae94a0_test.cpp'
         PassPattern = 'PASS_00ae94a0'
     }
     [pscustomobject]@{
@@ -73647,9 +73647,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429230'
-        Module = '_global'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429230.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429230_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CMesh>'
+        Source = '00/42/CCountedPointerNUISystemCMesh_ReleaseData_00429230.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCMesh_ReleaseData_00429230_test.cpp'
         PassPattern = 'PASS_00429230'
     }
     [pscustomobject]@{
@@ -73675,16 +73675,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00433cc0'
-        Module = '_global'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00433cc0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00433cc0_test.cpp'
+        Module = 'CCountedPointer<CStartupDefinitionManager>'
+        Source = '00/43/CCountedPointerCStartupDefinitionManager_ReleaseData_00433cc0.cpp'
+        TestSource = '00/43/CCountedPointerCStartupDefinitionManager_ReleaseData_00433cc0_test.cpp'
         PassPattern = 'PASS_00433cc0'
     }
     [pscustomobject]@{
         Address = '004850f9'
-        Module = '_global'
-        Source = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004850f9.cpp'
-        TestSource = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004850f9_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CMenuEntry>'
+        Source = '00/48/CCountedPointerNUISystemCMenuEntry_ReleaseData_004850f9.cpp'
+        TestSource = '00/48/CCountedPointerNUISystemCMenuEntry_ReleaseData_004850f9_test.cpp'
         PassPattern = 'PASS_004850f9'
     }
     [pscustomobject]@{
@@ -73717,58 +73717,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005c0511'
-        Module = '_global'
-        Source = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0511.cpp'
-        TestSource = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0511_test.cpp'
+        Module = 'CCountedPointer<std::vector<NInventory::CItem, std::allocator<NInventory::CItem> >>'
+        Source = '00/5c/CCountedPointerstdvectorNInventoryCItemstdallocatorNInventoryCItem_ReleaseData_005c0511.cpp'
+        TestSource = '00/5c/CCountedPointerstdvectorNInventoryCItemstdallocatorNInventoryCItem_ReleaseData_005c0511_test.cpp'
         PassPattern = 'PASS_005c0511'
     }
     [pscustomobject]@{
         Address = '005c0563'
-        Module = '_global'
-        Source = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0563.cpp'
-        TestSource = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0563_test.cpp'
+        Module = 'CCountedPointer<std::vector<CCharString, std::allocator<CCharString> >>'
+        Source = '00/5c/CCountedPointerstdvectorCCharStringstdallocatorCCharString_ReleaseData_005c0563.cpp'
+        TestSource = '00/5c/CCountedPointerstdvectorCCharStringstdallocatorCCharString_ReleaseData_005c0563_test.cpp'
         PassPattern = 'PASS_005c0563'
     }
     [pscustomobject]@{
         Address = '00654b0a'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b0a.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b0a_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementBar_ReleaseData_00654b0a.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementBar_ReleaseData_00654b0a_test.cpp'
         PassPattern = 'PASS_00654b0a'
     }
     [pscustomobject]@{
         Address = '00654b4f'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b4f.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b4f_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_ReleaseData_00654b4f.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_ReleaseData_00654b4f_test.cpp'
         PassPattern = 'PASS_00654b4f'
     }
     [pscustomobject]@{
         Address = '00654b94'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b94.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b94_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounter>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounter_ReleaseData_00654b94.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounter_ReleaseData_00654b94_test.cpp'
         PassPattern = 'PASS_00654b94'
     }
     [pscustomobject]@{
         Address = '00654bd9'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654bd9.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654bd9_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounterList>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounterList_ReleaseData_00654bd9.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounterList_ReleaseData_00654bd9_test.cpp'
         PassPattern = 'PASS_00654bd9'
     }
     [pscustomobject]@{
         Address = '00654c1e'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c1e.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c1e_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTick_ReleaseData_00654c1e.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTick_ReleaseData_00654c1e_test.cpp'
         PassPattern = 'PASS_00654c1e'
     }
     [pscustomobject]@{
         Address = '00654c63'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c63.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c63_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementMiniGameBar_ReleaseData_00654c63.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementMiniGameBar_ReleaseData_00654c63_test.cpp'
         PassPattern = 'PASS_00654c63'
     }
     [pscustomobject]@{
@@ -74158,23 +74158,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042a2b9'
-        Module = '_global'
-        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2b9.cpp'
-        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2b9_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CMesh>'
+        Source = '00/42/CCountedPointerNUISystemCMesh_SetStaticCastNUISystemCComponent_0042a2b9.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCMesh_SetStaticCastNUISystemCComponent_0042a2b9_test.cpp'
         PassPattern = 'PASS_0042a2b9'
     }
     [pscustomobject]@{
         Address = '0042a2ca'
-        Module = '_global'
-        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2ca.cpp'
-        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2ca_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CText>'
+        Source = '00/42/CCountedPointerNUISystemCText_SetStaticCastNUISystemCComponent_0042a2ca.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCText_SetStaticCastNUISystemCComponent_0042a2ca_test.cpp'
         PassPattern = 'PASS_0042a2ca'
     }
     [pscustomobject]@{
         Address = '0042a2db'
-        Module = '_global'
-        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2db.cpp'
-        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2db_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CList>'
+        Source = '00/42/CCountedPointerNUISystemCList_SetStaticCastNUISystemCComponent_0042a2db.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCList_SetStaticCastNUISystemCComponent_0042a2db_test.cpp'
         PassPattern = 'PASS_0042a2db'
     }
     [pscustomobject]@{
@@ -78967,9 +78967,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041915a'
-        Module = '_global'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041915a.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041915a_test.cpp'
+        Module = 'CCountedPointer<CPlayerGui>'
+        Source = '00/41/CCountedPointerCPlayerGui_ReleaseData_0041915a.cpp'
+        TestSource = '00/41/CCountedPointerCPlayerGui_ReleaseData_0041915a_test.cpp'
         PassPattern = 'PASS_0041915a'
     }
     [pscustomobject]@{
@@ -78995,9 +78995,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0044f3de'
-        Module = '_global'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3de.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3de_test.cpp'
+        Module = 'CCountedPointer<CGameDefinitionManager>'
+        Source = '00/44/CCountedPointerCGameDefinitionManager_ReleaseData_0044f3de.cpp'
+        TestSource = '00/44/CCountedPointerCGameDefinitionManager_ReleaseData_0044f3de_test.cpp'
         PassPattern = 'PASS_0044f3de'
     }
     [pscustomobject]@{
@@ -84204,9 +84204,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005c0800'
-        Module = '_global'
-        Source = '00/5c/CCountedPointerCTexture_operator_005c0800.cpp'
-        TestSource = '00/5c/CCountedPointerCTexture_operator_005c0800_test.cpp'
+        Module = 'CCountedPointer<std::vector<CCharString, std::allocator<CCharString> >>'
+        Source = '00/5c/CCountedPointerstdvectorCCharStringstdallocatorCCharString_operator_005c0800.cpp'
+        TestSource = '00/5c/CCountedPointerstdvectorCCharStringstdallocatorCCharString_operator_005c0800_test.cpp'
         PassPattern = 'PASS_005c0800'
     }
     [pscustomobject]@{
@@ -84379,9 +84379,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0043e1c0'
-        Module = '_global'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e1c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e1c0_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>'
+        Source = '00/43/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_ReleaseData_0043e1c0.cpp'
+        TestSource = '00/43/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_ReleaseData_0043e1c0_test.cpp'
         PassPattern = 'PASS_0043e1c0'
     }
     [pscustomobject]@{
@@ -84414,9 +84414,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0048afb0'
-        Module = '_global'
-        Source = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0048afb0.cpp'
-        TestSource = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0048afb0_test.cpp'
+        Module = 'CCountedPointer<CCreatureActionBase>'
+        Source = '00/48/CCountedPointerCCreatureActionBase_ReleaseData_0048afb0.cpp'
+        TestSource = '00/48/CCountedPointerCCreatureActionBase_ReleaseData_0048afb0_test.cpp'
         PassPattern = 'PASS_0048afb0'
     }
     [pscustomobject]@{
@@ -84806,9 +84806,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006e46f0'
-        Module = '_global'
-        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e46f0.cpp'
-        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e46f0_test.cpp'
+        Module = 'CCountedPointer<CLipSyncSampleData>'
+        Source = '00/6e/CCountedPointerCLipSyncSampleData_CCountedPointer_006e46f0.cpp'
+        TestSource = '00/6e/CCountedPointerCLipSyncSampleData_CCountedPointer_006e46f0_test.cpp'
         PassPattern = 'PASS_006e46f0'
     }
     [pscustomobject]@{
@@ -84911,9 +84911,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073d630'
-        Module = '_global'
-        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073d630.cpp'
-        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073d630_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>'
+        Source = '00/73/CCountedPointerNCreatureModeCModeHoverBaseCHoverAnim_CCountedPointer_0073d630.cpp'
+        TestSource = '00/73/CCountedPointerNCreatureModeCModeHoverBaseCHoverAnim_CCountedPointer_0073d630_test.cpp'
         PassPattern = 'PASS_0073d630'
     }
     [pscustomobject]@{
@@ -84995,9 +84995,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e70e0'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007e70e0.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007e70e0_test.cpp'
+        Module = 'CCountedPointer<CScriptGameResourceObjectScriptedThingBase>'
+        Source = '00/7e/CCountedPointerCScriptGameResourceObjectScriptedThingBase_ReleaseData_007e70e0.cpp'
+        TestSource = '00/7e/CCountedPointerCScriptGameResourceObjectScriptedThingBase_ReleaseData_007e70e0_test.cpp'
         PassPattern = 'PASS_007e70e0'
     }
     [pscustomobject]@{
@@ -85226,9 +85226,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a9d60'
-        Module = '_global'
-        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9d60.cpp'
-        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9d60_test.cpp'
+        Module = 'CCountedPointer<NBankFileManager::CRetailBank>'
+        Source = '00/9a/CCountedPointerNBankFileManagerCRetailBank_CCountedPointer_009a9d60.cpp'
+        TestSource = '00/9a/CCountedPointerNBankFileManagerCRetailBank_CCountedPointer_009a9d60_test.cpp'
         PassPattern = 'PASS_009a9d60'
     }
     [pscustomobject]@{
@@ -85261,9 +85261,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c9fc0'
-        Module = '_global'
-        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c9fc0.cpp'
-        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c9fc0_test.cpp'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/9c/CCountedPointerCBankFileAsyncEntry_CCountedPointer_009c9fc0.cpp'
+        TestSource = '00/9c/CCountedPointerCBankFileAsyncEntry_CCountedPointer_009c9fc0_test.cpp'
         PassPattern = 'PASS_009c9fc0'
     }
     [pscustomobject]@{
@@ -90938,9 +90938,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00754f10'
-        Module = '_global'
-        Source = '00/75/CCountedPointerCDiskFileWin32_operator_00754f10.cpp'
-        TestSource = '00/75/CCountedPointerCDiskFileWin32_operator_00754f10_test.cpp'
+        Module = 'CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>'
+        Source = '00/75/CCountedPointerNAnimationEntryBodgeCAnimEntryLite_operator_00754f10.cpp'
+        TestSource = '00/75/CCountedPointerNAnimationEntryBodgeCAnimEntryLite_operator_00754f10_test.cpp'
         PassPattern = 'PASS_00754f10'
     }
     [pscustomobject]@{
@@ -90952,30 +90952,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d6fd0'
-        Module = '_global'
-        Source = '00/9d/CCountedPointerCDiskFileWin32_operator_009d6fd0.cpp'
-        TestSource = '00/9d/CCountedPointerCDiskFileWin32_operator_009d6fd0_test.cpp'
+        Module = 'CCountedPointer<CThreadedFile>'
+        Source = '00/9d/CCountedPointerCThreadedFile_operator_009d6fd0.cpp'
+        TestSource = '00/9d/CCountedPointerCThreadedFile_operator_009d6fd0_test.cpp'
         PassPattern = 'PASS_009d6fd0'
     }
     [pscustomobject]@{
         Address = '009de7c0'
-        Module = '_global'
-        Source = '00/9d/CCountedPointerCDiskFileWin32_operator_009de7c0.cpp'
-        TestSource = '00/9d/CCountedPointerCDiskFileWin32_operator_009de7c0_test.cpp'
+        Module = 'CCountedPointer<CShaderResource>'
+        Source = '00/9d/CCountedPointerCShaderResource_operator_009de7c0.cpp'
+        TestSource = '00/9d/CCountedPointerCShaderResource_operator_009de7c0_test.cpp'
         PassPattern = 'PASS_009de7c0'
     }
     [pscustomobject]@{
         Address = '00a5f6d0'
-        Module = '_global'
-        Source = '00/a5/CCountedPointerCDiskFileWin32_operator_00a5f6d0.cpp'
-        TestSource = '00/a5/CCountedPointerCDiskFileWin32_operator_00a5f6d0_test.cpp'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/a5/CCountedPointerCBankFileAsyncEntry_operator_00a5f6d0.cpp'
+        TestSource = '00/a5/CCountedPointerCBankFileAsyncEntry_operator_00a5f6d0_test.cpp'
         PassPattern = 'PASS_00a5f6d0'
     }
     [pscustomobject]@{
         Address = '00ae96e0'
-        Module = '_global'
-        Source = '00/ae/CCountedPointerCDiskFileWin32_operator_00ae96e0.cpp'
-        TestSource = '00/ae/CCountedPointerCDiskFileWin32_operator_00ae96e0_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CParticleEmitter>'
+        Source = '00/ae/CCountedPointerNParticleEngineCParticleEmitter_operator_00ae96e0.cpp'
+        TestSource = '00/ae/CCountedPointerNParticleEngineCParticleEmitter_operator_00ae96e0_test.cpp'
         PassPattern = 'PASS_00ae96e0'
     }
     [pscustomobject]@{
@@ -122454,9 +122454,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056c050'
-        Module = '_global'
-        Source = '00/56/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0056c050.cpp'
-        TestSource = '00/56/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0056c050_test.cpp'
+        Module = 'CCountedPointer<NCameraModes::CBase>'
+        Source = '00/56/CCountedPointerNCameraModesCBase_CCountedPointer_0056c050.cpp'
+        TestSource = '00/56/CCountedPointerNCameraModesCBase_CCountedPointer_0056c050_test.cpp'
         PassPattern = 'PASS_0056c050'
     }
     [pscustomobject]@{
@@ -122475,44 +122475,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00654b36'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b36.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b36_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementBar_00654b36.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementBar_00654b36_test.cpp'
         PassPattern = 'PASS_00654b36'
     }
     [pscustomobject]@{
         Address = '00654b7b'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b7b.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b7b_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_00654b7b.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_00654b7b_test.cpp'
         PassPattern = 'PASS_00654b7b'
     }
     [pscustomobject]@{
         Address = '00654bc0'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654bc0.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654bc0_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounter_00654bc0.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounter_00654bc0_test.cpp'
         PassPattern = 'PASS_00654bc0'
     }
     [pscustomobject]@{
         Address = '00654c05'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c05.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c05_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounterList_00654c05.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementCounterList_00654c05_test.cpp'
         PassPattern = 'PASS_00654c05'
     }
     [pscustomobject]@{
         Address = '00654c4a'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c4a.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c4a_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTick_00654c4a.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementTick_00654c4a_test.cpp'
         PassPattern = 'PASS_00654c4a'
     }
     [pscustomobject]@{
         Address = '00654c8f'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c8f.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c8f_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElement>'
+        Source = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementMiniGameBar_00654c8f.cpp'
+        TestSource = '00/65/CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElement_CCountedPointerNPlayerGuiCDrawQuestInfoCQuestInfoElementMiniGameBar_00654c8f_test.cpp'
         PassPattern = 'PASS_00654c8f'
     }
     [pscustomobject]@{
@@ -122566,44 +122566,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065da52'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065da52.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065da52_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskBase>'
+        Source = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskTorch_0065da52.cpp'
+        TestSource = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskTorch_0065da52_test.cpp'
         PassPattern = 'PASS_0065da52'
     }
     [pscustomobject]@{
         Address = '0065db2a'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db2a.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db2a_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskBase>'
+        Source = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskHorn_0065db2a.cpp'
+        TestSource = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskHorn_0065db2a_test.cpp'
         PassPattern = 'PASS_0065db2a'
     }
     [pscustomobject]@{
         Address = '0065db43'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db43.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db43_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskBase>'
+        Source = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskPatrol_0065db43.cpp'
+        TestSource = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskPatrol_0065db43_test.cpp'
         PassPattern = 'PASS_0065db43'
     }
     [pscustomobject]@{
         Address = '0065db5c'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db5c.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db5c_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskBase>'
+        Source = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskPickCrops_0065db5c.cpp'
+        TestSource = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskPickCrops_0065db5c_test.cpp'
         PassPattern = 'PASS_0065db5c'
     }
     [pscustomobject]@{
         Address = '0065db75'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db75.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db75_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskBase>'
+        Source = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskSecuritySweep_0065db75.cpp'
+        TestSource = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskSecuritySweep_0065db75_test.cpp'
         PassPattern = 'PASS_0065db75'
     }
     [pscustomobject]@{
         Address = '0065db8e'
-        Module = '_global'
-        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db8e.cpp'
-        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db8e_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskBase>'
+        Source = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskCarryCrate_0065db8e.cpp'
+        TestSource = '00/65/CCountedPointerCVillageTaskBase_CCountedPointerCVillageTaskCarryCrate_0065db8e_test.cpp'
         PassPattern = 'PASS_0065db8e'
     }
     [pscustomobject]@{
@@ -122671,9 +122671,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d69a0'
-        Module = '_global'
-        Source = '00/9d/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_009d69a0.cpp'
-        TestSource = '00/9d/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_009d69a0_test.cpp'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/9d/CCountedPointerCBankFileAsyncEntry_CCountedPointer_009d69a0.cpp'
+        TestSource = '00/9d/CCountedPointerCBankFileAsyncEntry_CCountedPointer_009d69a0_test.cpp'
         PassPattern = 'PASS_009d69a0'
     }
     [pscustomobject]@{
@@ -179929,23 +179929,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041c030'
-        Module = '_unattributed'
-        Source = '00/41/unattributed_CCountedPointer0041c030_0041c030.cpp'
-        TestSource = '00/41/unattributed_CCountedPointer0041c030_0041c030_test.cpp'
+        Module = 'CCountedPointer<CTexture>'
+        Source = '00/41/CCountedPointerCTexture_CCountedPointer_0041c030.cpp'
+        TestSource = '00/41/CCountedPointerCTexture_CCountedPointer_0041c030_test.cpp'
         PassPattern = '0041c030_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00695880'
-        Module = '_unattributed'
-        Source = '00/69/unattributed_CCountedPointer00695880_00695880.cpp'
-        TestSource = '00/69/unattributed_CCountedPointer00695880_00695880_test.cpp'
+        Module = 'CCountedPointer<CCreatureActionBase>'
+        Source = '00/69/CCountedPointerCCreatureActionBase_CCountedPointer_00695880.cpp'
+        TestSource = '00/69/CCountedPointerCCreatureActionBase_CCountedPointer_00695880_test.cpp'
         PassPattern = '00695880_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008ebe90'
-        Module = '_unattributed'
-        Source = '00/8e/unattributed_CCountedPointer008ebe90_008ebe90.cpp'
-        TestSource = '00/8e/unattributed_CCountedPointer008ebe90_008ebe90_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>'
+        Source = '00/8e/CCountedPointerNCreatureModeCModeHoverBaseCHoverAnim_CCountedPointer_008ebe90.cpp'
+        TestSource = '00/8e/CCountedPointerNCreatureModeCModeHoverBaseCHoverAnim_CCountedPointer_008ebe90_test.cpp'
         PassPattern = '008ebe90_TEST PASS'
     }
     [pscustomobject]@{
@@ -179971,16 +179971,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdedb0'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_CCountedPointer00cdedb0_00cdedb0.cpp'
-        TestSource = '00/cd/unattributed_CCountedPointer00cdedb0_00cdedb0_test.cpp'
+        Module = 'CCountedPointer<CEntityScriptBase>'
+        Source = '00/cd/CCountedPointerCEntityScriptBase_CCountedPointer_00cdedb0.cpp'
+        TestSource = '00/cd/CCountedPointerCEntityScriptBase_CCountedPointer_00cdedb0_test.cpp'
         PassPattern = '00cdedb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ce10b0'
-        Module = '_unattributed'
-        Source = '00/ce/unattributed_CCountedPointer00ce10b0_00ce10b0.cpp'
-        TestSource = '00/ce/unattributed_CCountedPointer00ce10b0_00ce10b0_test.cpp'
+        Module = 'CCountedPointer<CActiveEntityScriptBase>'
+        Source = '00/ce/CCountedPointerCActiveEntityScriptBase_CCountedPointer_00ce10b0.cpp'
+        TestSource = '00/ce/CCountedPointerCActiveEntityScriptBase_CCountedPointer_00ce10b0_test.cpp'
         PassPattern = '00ce10b0_TEST PASS'
     }
     [pscustomobject]@{
