@@ -392877,6 +392877,34 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT138'
         PassPattern = '00e1cae0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0078f8f0'
+        Module = 'CTCDivineWrath'
+        Source = '00/78/CTCDivineWrath_CancelForCutscene_0078f8f0.cpp'
+        TestSource = '00/78/CTCDivineWrath_CancelForCutscene_0078f8f0_test.cpp'
+        PassPattern = '0078f8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d43190'
+        Module = 'NScript::CQ_GuildTrainingScript::CKillBird'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCKillBird_Main_00d43190.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCKillBird_Main_00d43190_test.cpp'
+        PassPattern = '00d43190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6ad20'
+        Module = 'NScript::CV_ChapelOfEvilScript'
+        Source = '00/e6/NScriptCVChapelOfEvilScript_WatchForAcolyteDeath_00e6ad20.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScript_WatchForAcolyteDeath_00e6ad20_test.cpp'
+        PassPattern = '00e6ad20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc980'
+        Module = 'NScript::CV_TempleOfLightScript'
+        Source = '00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteDeath_00edc980.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteDeath_00edc980_test.cpp'
+        PassPattern = '00edc980_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

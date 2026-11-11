@@ -62,7 +62,14 @@ private:
  void ResetCreatureHitState(CIntelligentPointer<CThingCreatureBase> p0);
  void UnsheatheWeapon();
  unsigned long PlaySoundW(const CCharString & p0, bool p1);
+ #ifdef FABLE_RETAIL_CTCDIVINEWRATH_STOPSOUND_INLINE
+ // Opt-in (chunk Q10, row 0x0078F8F0 CancelForCutscene): the body of 0x0078EC80 visible so the cutscene cancel inlines it as retail
+ // (the inline interface-16 lookup at 0x0078FA64; spelled as CTCUnholyPower::StopSound). Needs engine/CTCSoundPlayer.h with
+ // FABLE_RETAIL_CTCSOUNDPLAYER + FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE (StopAttachedSound) included first.
+ void StopSound(unsigned long sound) {CTCSoundPlayer* sound_player=0;if(GetParentThing().GetTC(TCI_SOUND_PLAYER,&sound_player))sound_player->StopAttachedSound(sound);}
+ #else
  void StopSound(unsigned long p0);
+ #endif
  void SetPTarget();
  CDefPointer<CSpecialAbilitiesDivineWrathDef const > PDef;
  CIntelligentPointer<CThing> PItemRemoved;

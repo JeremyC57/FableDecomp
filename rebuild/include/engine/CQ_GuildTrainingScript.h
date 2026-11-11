@@ -130,4 +130,23 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CMeleeApprentice) == 0x28);
 #endif
+#if defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_KILLBIRD) && defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN)
+// Retail opt-in (chunk Q10, row 0x00D43190 CKillBird::Main): the kill-bird entity script (needs FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN for
+// the nested declaration). Ego_r.pdb layout (struct_layouts_egor.tsv CKillBird, 28 bytes; entity offsets equal retail's): ParentClass
+// +0x14, PMasterData +0x18. Registration "KillBird" at 0x00D3C493 in Main 0x00D3BC60, Alloc 0x00D43040; entity vtable 0x012CE32C:
+// 0 scalar deleting dtor 0x00D43170, 1 Main 0x00D43190, 2 Init 0x00D430F0, 5 OnPredicateFail 0x00D43120 (Ego_r.pdb
+// ?Main@CKillBird@CQ_GuildTrainingScript@NScript@@EAEXXZ, ?Init@..@EAEXXZ, ?OnPredicateFail@..@EAEXXZ: private).
+namespace NScript {
+class CQ_GuildTrainingScript::CKillBird : public CEntityScriptBase {
+private:
+    virtual void Main();                                                 // 0x00D43190
+    virtual void Init();                                                 // 0x00D430F0
+    virtual void OnPredicateFail();                                      // 0x00D43120
+protected:
+    CQ_GuildTrainingScript* ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CKillBird) == 0x1c);
+#endif
 #endif
