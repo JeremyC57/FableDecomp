@@ -1,13 +1,10 @@
-// Behaviour test for 00a80ce0: std::_Rb_tree<CUnprovenKey_00a7e7b0, CUnprovenValue_00a7e7b0, CUnprovenKeyOfValue_00a7e7b0, std::less<CUnprovenKey_00a7e7b0>, std::allocator<CUnprovenValue_00a7e7b0>>::_M_insert (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
+// Behaviour test for 00a80ce0: std::_Rb_tree<long, std::pair<long const, CANavQuadTreeNode*> , std::_Select1st<std::pair<long const, CANavQuadTreeNode*> >, std::less<long>, std::allocator<std::pair<long const, CANavQuadTreeNode*> >>::_M_insert (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
 #include <cstdio>
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_00a7e7b0 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_00a7e7b0& __x, const CUnprovenKey_00a7e7b0& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_00a7e7b0 { CUnprovenKey_00a7e7b0 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_00a7e7b0 { const CUnprovenKey_00a7e7b0& operator()(const CUnprovenValue_00a7e7b0& __v) const { return __v._M_key; } };
+class CANavQuadTreeNode;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -579,8 +576,8 @@ _Rb_tree_node_base* __cdecl _Rb_global<_Dummy>::_Rebalance_for_erase(_Rb_tree_no
     return __y;
 }
 }
-struct _TestTree : public std::_Rb_tree<CUnprovenKey_00a7e7b0, CUnprovenValue_00a7e7b0, CUnprovenKeyOfValue_00a7e7b0, std::less<CUnprovenKey_00a7e7b0 >, std::allocator<CUnprovenValue_00a7e7b0 > > {
-    _TestTree() : std::_Rb_tree<CUnprovenKey_00a7e7b0, CUnprovenValue_00a7e7b0, CUnprovenKeyOfValue_00a7e7b0, std::less<CUnprovenKey_00a7e7b0 >, std::allocator<CUnprovenValue_00a7e7b0 > >(std::less<CUnprovenKey_00a7e7b0 >(), std::allocator<CUnprovenValue_00a7e7b0 >()) { }
+struct _TestTree : public std::_Rb_tree<long, std::pair<long const, CANavQuadTreeNode*> , std::_Select1st<std::pair<long const, CANavQuadTreeNode*> >, std::less<long >, std::allocator<std::pair<long const, CANavQuadTreeNode*>  > > {
+    _TestTree() : std::_Rb_tree<long, std::pair<long const, CANavQuadTreeNode*> , std::_Select1st<std::pair<long const, CANavQuadTreeNode*> >, std::less<long >, std::allocator<std::pair<long const, CANavQuadTreeNode*>  > >(std::less<long >(), std::allocator<std::pair<long const, CANavQuadTreeNode*>  >()) { }
     std::_Rb_tree_node_base* hdr() { return this->_M_header._M_data; }
     unsigned int cnt() { return this->_M_node_count; }
 };
@@ -588,15 +585,15 @@ int main()
 {
     int ok = 1;
     _TestTree t;
-    { CUnprovenValue_00a7e7b0 v5; v5._M_key._M_unproven = 5; if (!(t.insert_unique(v5).second)) ok = 0; }
-    { CUnprovenValue_00a7e7b0 v2; v2._M_key._M_unproven = 2; if (!(t.insert_unique(v2).second)) ok = 0; }
-    { CUnprovenValue_00a7e7b0 v8; v8._M_key._M_unproven = 8; if (!(t.insert_unique(v8).second)) ok = 0; }
-    { CUnprovenValue_00a7e7b0 v1; v1._M_key._M_unproven = 1; if (!(t.insert_unique(v1).second)) ok = 0; }
-    { CUnprovenValue_00a7e7b0 v9; v9._M_key._M_unproven = 9; if (!(t.insert_unique(v9).second)) ok = 0; }
-    { CUnprovenValue_00a7e7b0 v3; v3._M_key._M_unproven = 3; if (!(t.insert_unique(v3).second)) ok = 0; }
-    { CUnprovenValue_00a7e7b0 v2; v2._M_key._M_unproven = 2; if (!(!t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<long const, CANavQuadTreeNode*> v5((long)5, (CANavQuadTreeNode*)0); if (!(t.insert_unique(v5).second)) ok = 0; }
+    { std::pair<long const, CANavQuadTreeNode*> v2((long)2, (CANavQuadTreeNode*)0); if (!(t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<long const, CANavQuadTreeNode*> v8((long)8, (CANavQuadTreeNode*)0); if (!(t.insert_unique(v8).second)) ok = 0; }
+    { std::pair<long const, CANavQuadTreeNode*> v1((long)1, (CANavQuadTreeNode*)0); if (!(t.insert_unique(v1).second)) ok = 0; }
+    { std::pair<long const, CANavQuadTreeNode*> v9((long)9, (CANavQuadTreeNode*)0); if (!(t.insert_unique(v9).second)) ok = 0; }
+    { std::pair<long const, CANavQuadTreeNode*> v3((long)3, (CANavQuadTreeNode*)0); if (!(t.insert_unique(v3).second)) ok = 0; }
+    { std::pair<long const, CANavQuadTreeNode*> v2((long)2, (CANavQuadTreeNode*)0); if (!(!t.insert_unique(v2).second)) ok = 0; }
     if (!(t.size() == 6)) ok = 0;
-    { int n = 0, prev = 0; for (std::_Rb_tree_iterator<CUnprovenValue_00a7e7b0, std::_Nonconst_traits<CUnprovenValue_00a7e7b0 > > it = t.begin(); it != t.end(); ++it) { if (!((*it)._M_key._M_unproven > prev)) ok = 0; prev = (*it)._M_key._M_unproven; ++n; } if (!(n == 6)) ok = 0; }
+    { int n = 0, prev = 0; for (std::_Rb_tree_iterator<std::pair<long const, CANavQuadTreeNode*> , std::_Nonconst_traits<std::pair<long const, CANavQuadTreeNode*>  > > it = t.begin(); it != t.end(); ++it) { if (!((int)(*it).first > prev)) ok = 0; prev = (int)(*it).first; ++n; } if (!(n == 6)) ok = 0; }
     if (!ok) { std::printf("00a80ce0_TEST FAIL\n"); return 1; }
     std::printf("00a80ce0_TEST PASS\n");
     return 0;

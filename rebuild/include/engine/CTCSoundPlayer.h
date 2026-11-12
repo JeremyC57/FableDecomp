@@ -26,6 +26,11 @@ public:
     void StopAttachedSound(unsigned long); // Both original PDBs; native0066add0.
 #endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_RELEASELOOPINGSOUND
+    // Nested opt-in (chunk Q25, row 0x00847520): Ego_r.pdb / FableWin.pdb ?ReleaseAttachedLoopingSound@CTCSoundPlayer@@QAEXK@Z, out of
+    // line in retail at 0x0066AD90. Declaration only.
+    void ReleaseAttachedLoopingSound(unsigned long soundID);             // 0x0066AD90
+#endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE
     // Opt-in (agentNF12, 2026-11-11, rows 0x0083DDC0 / 0x0083DF20): Ego_r.pdb / FableWin.pdb
     // ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z (retail 0x0066B280, out of line; the callers push the

@@ -1,13 +1,10 @@
-// Behaviour test for 006c8400: std::_Rb_tree<CUnprovenKey_006c5010, CUnprovenValue_006c5010, CUnprovenKeyOfValue_006c5010, std::less<CUnprovenKey_006c5010>, std::allocator<CUnprovenValue_006c5010>>::insert_unique (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
+// Behaviour test for 006c8400: std::_Rb_tree<long, std::pair<long const, COpinionDeed*> , std::_Select1st<std::pair<long const, COpinionDeed*> >, std::less<long>, std::allocator<std::pair<long const, COpinionDeed*> >>::insert_unique (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
 #include <cstdio>
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006c5010 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006c5010& __x, const CUnprovenKey_006c5010& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006c5010 { CUnprovenKey_006c5010 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_006c5010 { const CUnprovenKey_006c5010& operator()(const CUnprovenValue_006c5010& __v) const { return __v._M_key; } };
+class COpinionDeed;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -579,8 +576,8 @@ _Rb_tree_node_base* __cdecl _Rb_global<_Dummy>::_Rebalance_for_erase(_Rb_tree_no
     return __y;
 }
 }
-struct _TestTree : public std::_Rb_tree<CUnprovenKey_006c5010, CUnprovenValue_006c5010, CUnprovenKeyOfValue_006c5010, std::less<CUnprovenKey_006c5010 >, std::allocator<CUnprovenValue_006c5010 > > {
-    _TestTree() : std::_Rb_tree<CUnprovenKey_006c5010, CUnprovenValue_006c5010, CUnprovenKeyOfValue_006c5010, std::less<CUnprovenKey_006c5010 >, std::allocator<CUnprovenValue_006c5010 > >(std::less<CUnprovenKey_006c5010 >(), std::allocator<CUnprovenValue_006c5010 >()) { }
+struct _TestTree : public std::_Rb_tree<long, std::pair<long const, COpinionDeed*> , std::_Select1st<std::pair<long const, COpinionDeed*> >, std::less<long >, std::allocator<std::pair<long const, COpinionDeed*>  > > {
+    _TestTree() : std::_Rb_tree<long, std::pair<long const, COpinionDeed*> , std::_Select1st<std::pair<long const, COpinionDeed*> >, std::less<long >, std::allocator<std::pair<long const, COpinionDeed*>  > >(std::less<long >(), std::allocator<std::pair<long const, COpinionDeed*>  >()) { }
     std::_Rb_tree_node_base* hdr() { return this->_M_header._M_data; }
     unsigned int cnt() { return this->_M_node_count; }
 };
@@ -588,15 +585,15 @@ int main()
 {
     int ok = 1;
     _TestTree t;
-    { CUnprovenValue_006c5010 v5; v5._M_key._M_unproven = 5; if (!(t.insert_unique(v5).second)) ok = 0; }
-    { CUnprovenValue_006c5010 v2; v2._M_key._M_unproven = 2; if (!(t.insert_unique(v2).second)) ok = 0; }
-    { CUnprovenValue_006c5010 v8; v8._M_key._M_unproven = 8; if (!(t.insert_unique(v8).second)) ok = 0; }
-    { CUnprovenValue_006c5010 v1; v1._M_key._M_unproven = 1; if (!(t.insert_unique(v1).second)) ok = 0; }
-    { CUnprovenValue_006c5010 v9; v9._M_key._M_unproven = 9; if (!(t.insert_unique(v9).second)) ok = 0; }
-    { CUnprovenValue_006c5010 v3; v3._M_key._M_unproven = 3; if (!(t.insert_unique(v3).second)) ok = 0; }
-    { CUnprovenValue_006c5010 v2; v2._M_key._M_unproven = 2; if (!(!t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<long const, COpinionDeed*> v5((long)5, (COpinionDeed*)0); if (!(t.insert_unique(v5).second)) ok = 0; }
+    { std::pair<long const, COpinionDeed*> v2((long)2, (COpinionDeed*)0); if (!(t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<long const, COpinionDeed*> v8((long)8, (COpinionDeed*)0); if (!(t.insert_unique(v8).second)) ok = 0; }
+    { std::pair<long const, COpinionDeed*> v1((long)1, (COpinionDeed*)0); if (!(t.insert_unique(v1).second)) ok = 0; }
+    { std::pair<long const, COpinionDeed*> v9((long)9, (COpinionDeed*)0); if (!(t.insert_unique(v9).second)) ok = 0; }
+    { std::pair<long const, COpinionDeed*> v3((long)3, (COpinionDeed*)0); if (!(t.insert_unique(v3).second)) ok = 0; }
+    { std::pair<long const, COpinionDeed*> v2((long)2, (COpinionDeed*)0); if (!(!t.insert_unique(v2).second)) ok = 0; }
     if (!(t.size() == 6)) ok = 0;
-    { int n = 0, prev = 0; for (std::_Rb_tree_iterator<CUnprovenValue_006c5010, std::_Nonconst_traits<CUnprovenValue_006c5010 > > it = t.begin(); it != t.end(); ++it) { if (!((*it)._M_key._M_unproven > prev)) ok = 0; prev = (*it)._M_key._M_unproven; ++n; } if (!(n == 6)) ok = 0; }
+    { int n = 0, prev = 0; for (std::_Rb_tree_iterator<std::pair<long const, COpinionDeed*> , std::_Nonconst_traits<std::pair<long const, COpinionDeed*>  > > it = t.begin(); it != t.end(); ++it) { if (!((int)(*it).first > prev)) ok = 0; prev = (int)(*it).first; ++n; } if (!(n == 6)) ok = 0; }
     if (!ok) { std::printf("006c8400_TEST FAIL\n"); return 1; }
     std::printf("006c8400_TEST PASS\n");
     return 0;

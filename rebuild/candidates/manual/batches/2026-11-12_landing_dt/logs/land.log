@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00489d40   RELOCATION_MATCH PASS   CreateCharacter
+00847520   WARN RELOC_NAME: ?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z -> 004460c0 labelled 'CGamePlayerInterface::IsQuickAccessEventInQueue'
+00847520   RELOCATION_MATCH PASS   FinishAction
+004b5ee0   RELOCATION_MATCH PASS   SaveGameState
+007fc210   RELOCATION_MATCH PASS   CreateTentacles
+009658b0   WARN RELOC_NAME: ??1CCreatureAction_PickUpGenericBox@@UAE@XZ -> 007120d0 labelled '_global::Dtor_CCreatureActionBaseBase_007120d0'
+009658b0   RELOCATION_MATCH PASS   Update
+
+WINS: 5
+  00489d40 RELOCATION_MATCH CPlayer::CreateCharacter
+  00847520 RELOCATION_MATCH CCreatureAction_PerformExpressionExtended::FinishAction
+  004b5ee0 RELOCATION_MATCH CQuestManager::SaveGameState
+  007fc210 RELOCATION_MATCH CTCKraken::CreateTentacles
+  009658b0 RELOCATION_MATCH CAIStateGroup_RecoverStealableItem::Update
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CPlayer_CreateCharacter_00489d40
+  CCreatureActionPerformExpressionExtended_FinishAction_00847520
+  CQuestManager_SaveGameState_004b5ee0
+  CTCKraken_CreateTentacles_007fc210
+  CAIStateGroupRecoverStealableItem_Update_009658b0

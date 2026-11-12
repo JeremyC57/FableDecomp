@@ -49,6 +49,13 @@ namespace NQuestManager {
 class CRuntimeQuestPersistence {
 public:
     void LoadFromGameStateScript(CCharString& text);         // 0x004B5080
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // Nested opt-in (chunk Q25, row 0x004B5EE0 SaveGameState(CCharString&)): Ego_r.pdb / FableWin.pdb
+    // ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@0@Z (retail 0x004B4E30) and
+    // ?SaveToGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z (retail 0x004AF450). Declarations only.
+    void SetQuestScriptPersistScript(const CCharString& quest_name, const CCharString& script);   // 0x004B4E30
+    void SaveToGameStateScript(CCharString& text);           // 0x004AF450
+#endif
 private:
     unsigned char _pad_0x00[0x20];
 };
@@ -73,8 +80,16 @@ public:
         bool Persistent,LoadedResources;
         CCountedPointer<CScriptDataBase> PScriptData;
         CCharString QuestName;
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+        // (chunk Q25) CQuestManager::SaveGameState 0x004B5EE0 reads PScriptInfo +4, PScript +8, Persistent +0x24, PScriptData +0x28 and
+        // QuestName +0x30 in place (no accessor of these in either PDB): the owner is a friend.
+        friend class CQuestManager;
+#endif
     };
+#ifndef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // (chunk Q25: the SAVEGAMESTATE row uses the LOADGAMESTATE layout, which has no PQuestCurrentlyRunning member)
     CActiveQuest* GetPActiveQuest()const{return PQuestCurrentlyRunning;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_STARTSCREEN
     // Nested opt-in (chunk 1010b, row 0x00896B60 CGameScriptInterface::KickOffQuestStartScreen): Ego_r.pdb / FableWin.pdb
@@ -262,10 +277,23 @@ public:
     bool ActivateMultipleQuests(const CArray<CCharString>& names, bool load_resources, bool from_saved_game);
     // Ego_r.pdb / FableWin.pdb ?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z (retail 0x004B5500).
     void LoadGameState(CStringParser& parser);
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // (chunk Q25) Ego_r.pdb / FableWin.pdb ?SaveGameState@CQuestManager@@QAEXAAVCCharString@@@Z (retail 0x004B5EE0) and the private
+    // ?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z (retail 0x004B5030).
+    void SaveGameState(CCharString& text);
+private:
+    void SaveMasterScriptDataToGameState(CScriptDataBase& data, const CCharString& quest_name);   // 0x004B5030
+#endif
 private:
     unsigned char _pad_0x04[0x0c - 0x04];                    // +0x04 PGameScriptThingManager (CCountedPointer)
     NQuestManager::CRuntimeQuestPersistence RuntimeQuestPersistence;   // +0x0c (0x20 bytes)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // (chunk Q25, needs FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST) the two members typed, Ego_r.pdb types at the retail offsets.
+    std::vector<CCharString> RegisteredQuestNames;           // +0x2c
+    std::list<CCountedPointer<CActiveQuest> > ActiveQuests;  // +0x38
+#else
     unsigned char _pad_0x2c[0x3c - 0x2c];                    // +0x2c RegisteredQuestNames, ActiveQuests
+#endif
     std::list<std::pair<CCharString, unsigned long> > PendingQuestsToDeactivate;   // +0x3c
     std::vector<CCharString> CreatureGenerationDisabledQuests;   // +0x40
     std::vector<CCharString> BetweenStartAndEndScreenQuests; // +0x4c (Ego_r vector<CCharString>)

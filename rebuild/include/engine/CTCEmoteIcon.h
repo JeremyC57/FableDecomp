@@ -48,7 +48,9 @@ private: bool Enabled;
 private: CEnginePrimitiveHandle PrimitiveHandle;
 private: void DrawEmoteTypeText(const CEnginePrimitivePrepareInfo & p0) const;
 private: void DrawEmoteTypeIcon(const CEnginePrimitivePrepareInfo & p0);
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CTCEMOTEICON_STATTYPE)
+// FABLE_RETAIL_CTCEMOTEICON_STATTYPE (chunk Q25, row 0x00847520): the inline body alone, for a GetTC<CTCEmoteIcon> TU that does not
+// want the ONHIT enumerators (retail tests bit 0x45 in place, 0x00847779).
 public: static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_EMOTEICON;}
 #else
 public: static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();

@@ -1,13 +1,11 @@
-// Behaviour test for 006f1070: std::_Rb_tree<CUnprovenKey_006f1070, CUnprovenValue_006f1070, CUnprovenKeyOfValue_006f1070, std::less<CUnprovenKey_006f1070>, std::allocator<CUnprovenValue_006f1070>>::find (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
+// Behaviour test for 006f1070: std::_Rb_tree<CThingCreatureBase*, std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> , std::_Select1st<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> >, std::less<CThingCreatureBase*>, std::allocator<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> >>::find (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
 #include <cstdio>
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006f1070 { unsigned long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006f1070& __x, const CUnprovenKey_006f1070& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006f1070 { CUnprovenKey_006f1070 _M_key; };
-struct CUnprovenKeyOfValue_006f1070 { const CUnprovenKey_006f1070& operator()(const CUnprovenValue_006f1070& __v) const { return __v._M_key; } };
+class CThingCreatureBase;
+class CAttackingCombatantInfo;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -579,8 +577,8 @@ _Rb_tree_node_base* __cdecl _Rb_global<_Dummy>::_Rebalance_for_erase(_Rb_tree_no
     return __y;
 }
 }
-struct _TestTree : public std::_Rb_tree<CUnprovenKey_006f1070, CUnprovenValue_006f1070, CUnprovenKeyOfValue_006f1070, std::less<CUnprovenKey_006f1070 >, std::allocator<CUnprovenValue_006f1070 > > {
-    _TestTree() : std::_Rb_tree<CUnprovenKey_006f1070, CUnprovenValue_006f1070, CUnprovenKeyOfValue_006f1070, std::less<CUnprovenKey_006f1070 >, std::allocator<CUnprovenValue_006f1070 > >(std::less<CUnprovenKey_006f1070 >(), std::allocator<CUnprovenValue_006f1070 >()) { }
+struct _TestTree : public std::_Rb_tree<CThingCreatureBase*, std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> , std::_Select1st<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> >, std::less<CThingCreatureBase* >, std::allocator<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*>  > > {
+    _TestTree() : std::_Rb_tree<CThingCreatureBase*, std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> , std::_Select1st<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> >, std::less<CThingCreatureBase* >, std::allocator<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*>  > >(std::less<CThingCreatureBase* >(), std::allocator<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*>  >()) { }
     std::_Rb_tree_node_base* hdr() { return this->_M_header._M_data; }
     unsigned int cnt() { return this->_M_node_count; }
 };
@@ -588,16 +586,16 @@ int main()
 {
     int ok = 1;
     _TestTree t;
-    { CUnprovenValue_006f1070 v5; v5._M_key._M_unproven = 5; if (!(t.insert_unique(v5).second)) ok = 0; }
-    { CUnprovenValue_006f1070 v2; v2._M_key._M_unproven = 2; if (!(t.insert_unique(v2).second)) ok = 0; }
-    { CUnprovenValue_006f1070 v8; v8._M_key._M_unproven = 8; if (!(t.insert_unique(v8).second)) ok = 0; }
-    { CUnprovenValue_006f1070 v1; v1._M_key._M_unproven = 1; if (!(t.insert_unique(v1).second)) ok = 0; }
-    { CUnprovenValue_006f1070 v9; v9._M_key._M_unproven = 9; if (!(t.insert_unique(v9).second)) ok = 0; }
-    { CUnprovenValue_006f1070 v3; v3._M_key._M_unproven = 3; if (!(t.insert_unique(v3).second)) ok = 0; }
-    { CUnprovenValue_006f1070 v2; v2._M_key._M_unproven = 2; if (!(!t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> v5((CThingCreatureBase*)5, (CAttackingCombatantInfo*)0); if (!(t.insert_unique(v5).second)) ok = 0; }
+    { std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> v2((CThingCreatureBase*)2, (CAttackingCombatantInfo*)0); if (!(t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> v8((CThingCreatureBase*)8, (CAttackingCombatantInfo*)0); if (!(t.insert_unique(v8).second)) ok = 0; }
+    { std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> v1((CThingCreatureBase*)1, (CAttackingCombatantInfo*)0); if (!(t.insert_unique(v1).second)) ok = 0; }
+    { std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> v9((CThingCreatureBase*)9, (CAttackingCombatantInfo*)0); if (!(t.insert_unique(v9).second)) ok = 0; }
+    { std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> v3((CThingCreatureBase*)3, (CAttackingCombatantInfo*)0); if (!(t.insert_unique(v3).second)) ok = 0; }
+    { std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> v2((CThingCreatureBase*)2, (CAttackingCombatantInfo*)0); if (!(!t.insert_unique(v2).second)) ok = 0; }
     if (!(t.size() == 6)) ok = 0;
-    { CUnprovenKey_006f1070 k8; k8._M_unproven = 8; if (!(t.find(k8) != t.end() && (*t.find(k8))._M_key._M_unproven == 8)) ok = 0; }
-    { CUnprovenKey_006f1070 k4; k4._M_unproven = 4; if (!(t.find(k4) == t.end())) ok = 0; }
+    { CThingCreatureBase* k8 = (CThingCreatureBase*)8; if (!(t.find(k8) != t.end() && (int)(*t.find(k8)).first == 8)) ok = 0; }
+    { CThingCreatureBase* k4 = (CThingCreatureBase*)4; if (!(t.find(k4) == t.end())) ok = 0; }
     if (!ok) { std::printf("006f1070_TEST FAIL\n"); return 1; }
     std::printf("006f1070_TEST PASS\n");
     return 0;

@@ -1,0 +1,21 @@
+address	name	evidence
+006925C0	GetFramesRunning	chunk Q25 (landing dt): 
+0072D360	SetPItemRemoved	chunk Q25 (landing dt): 
+00843310	CCreatureAction_PerformExpressionExtended	chunk Q25 (landing dt): 
+0084ADC0	~CCreatureAction_PerformExpressionExtended	chunk Q25 (landing dt): 
+0066AD90	ReleaseAttachedLoopingSound	chunk Q25 (landing dt): 
+00842150	CCreatureAction_DropGenericBox	chunk Q25 (landing dt): 
+00843700	CCreatureAction_PickUpGenericBox	chunk Q25 (landing dt): 
+00686D60	PeekComponent	chunk Q25 (landing dt): 
+0099F930	GFUHUGEToCharString	chunk Q25 (landing dt): 
+0099F040	operator=	chunk Q25 (landing dt): 
+004B4E30	SetQuestScriptPersistScript	chunk Q25 (landing dt): 
+004AF450	SaveToGameStateScript	chunk Q25 (landing dt): 
+004B5030	SaveMasterScriptDataToGameState	chunk Q25 (landing dt): 
+00487DC0	GetPControlledCreature	chunk Q25 (landing dt): 
+00488B20	LocateCharacterStartHolySite	chunk Q25 (landing dt): 
+005063E0	SetPlayerPos	chunk Q25 (landing dt): 
+006AC910	Create	chunk Q25 (landing dt): 
+013B8647	GSetPlayerStartPos	chunk Q25 (landing dt): 
+013B8650	GOverridePlayerStartPos	chunk Q25 (landing dt): 
+01436E3C	GPScreenEffectOutlineGlow	chunk Q25 (landing dt): 

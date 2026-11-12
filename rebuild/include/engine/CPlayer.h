@@ -97,6 +97,14 @@ class CTCVillage;
 #include "engine/CWorld.h"
 #endif
 
+#ifdef FABLE_RETAIL_PLAYER_CREATECHARACTER
+// Nested opt-in (chunk Q25, row 0x00489D40): the typed PlayerDef member and the two private character-creation members below.
+// Needs FABLE_RETAIL_PLAYER and FABLE_RETAIL_DEF_CLASS_BASE (engine/CDefPointer.h).
+#include "engine/CDefPointer.h"
+class CPlayerDef;
+class CThingHolySite;
+class CCharString;
+#endif
 #ifdef FABLE_RETAIL_PLAYER
 #include "engine/CInitBaseClass.h"                              // chunk 734: RTTI CPlayer : CInitBaseClass (the vptr and Valid +0x04)
 class CGamePlayerInterface;
@@ -332,6 +340,14 @@ private:
     void SetupInitialPlayerMode();                               // 0x004887C0
 public:
 #endif
+#ifdef FABLE_RETAIL_PLAYER_CREATECHARACTER
+    // Nested opt-in (chunk Q25, row 0x00489D40): Ego_r.pdb / FableWin.pdb ?LocateCharacterStartHolySite@CPlayer@@ABE_NPAPBVCThingHolySite@@@Z
+    // (private const, retail 0x00488B20, landed) and ?CreateCharacter@CPlayer@@AAE_NABVCCharString@@@Z (private, retail 0x00489D40).
+private:
+    bool LocateCharacterStartHolySite(const CThingHolySite** holySite) const;   // 0x00488B20
+    bool CreateCharacter(const CCharString& characterDefName);                 // 0x00489D40
+public:
+#endif
 #endif // FABLE_RETAIL_PLAYER
 #ifndef FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
@@ -531,7 +547,14 @@ public:
     bool                                                         ExpressionShiftMode; // +0x219
     bool                                                         PCProjectileWeaponThirdPersonAimingMode; // +0x21a
     bool                                                         KillEverythingMode; // +0x21b
+#ifdef FABLE_RETAIL_PLAYER_CREATECHARACTER
+    // (same opt-in) the Ego_r.pdb member CDefPointer<const CPlayerDef> PlayerDef with its real type (engine/CDefPointer.h, one
+    // CDefPointeeBase* Object: same offset and size as the default branch's PlayerDef_Object). CreateCharacter reads
+    // `mov eax,[ebp+21Ch] ; mov cl,[eax+3Ch]` (PlayerDef->CharacterDef). The includer defines CPlayerDef before using it.
+    CDefPointer<const CPlayerDef>                                PlayerDef; // +0x21c
+#else
     CDefPointeeBase*                                             PlayerDef_Object; // +0x21c CDefPointer<CPlayerDef_const_>::Object
+#endif
     bool                                                         UsingFreeCamera; // +0x220
     bool                                                         FreeCameraTrackingPlayer; // +0x221
     bool                                                         FreeCameraTrackingPlayerYZ; // +0x222
@@ -714,7 +737,11 @@ FABLE_STATIC_ASSERT(offsetof(CPlayer, SpellMode) == 0x218);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, ExpressionShiftMode) == 0x219);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, PCProjectileWeaponThirdPersonAimingMode) == 0x21a);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, KillEverythingMode) == 0x21b);
+#ifdef FABLE_RETAIL_PLAYER_CREATECHARACTER
+FABLE_STATIC_ASSERT(offsetof(CPlayer, PlayerDef) == 0x21c);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayer, PlayerDef_Object) == 0x21c);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayer, UsingFreeCamera) == 0x220);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, FreeCameraTrackingPlayer) == 0x221);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, FreeCameraTrackingPlayerYZ) == 0x222);

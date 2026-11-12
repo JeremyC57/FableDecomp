@@ -1,13 +1,10 @@
-// Behaviour test for 00593bd6: std::_Rb_tree<CUnprovenKey_0059388f, CUnprovenValue_0059388f, CUnprovenKeyOfValue_0059388f, std::less<CUnprovenKey_0059388f>, std::allocator<CUnprovenValue_0059388f>>::_M_insert (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
+// Behaviour test for 00593bd6: std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent*> , std::_Select1st<std::pair<long const, NUISystem::CComponent*> >, std::less<long>, std::allocator<std::pair<long const, NUISystem::CComponent*> >>::_M_insert (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
 #include <cstdio>
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_0059388f { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_0059388f& __x, const CUnprovenKey_0059388f& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_0059388f { CUnprovenKey_0059388f _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_0059388f { const CUnprovenKey_0059388f& operator()(const CUnprovenValue_0059388f& __v) const { return __v._M_key; } };
+namespace NUISystem { class CComponent; }
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -579,8 +576,8 @@ _Rb_tree_node_base* __cdecl _Rb_global<_Dummy>::_Rebalance_for_erase(_Rb_tree_no
     return __y;
 }
 }
-struct _TestTree : public std::_Rb_tree<CUnprovenKey_0059388f, CUnprovenValue_0059388f, CUnprovenKeyOfValue_0059388f, std::less<CUnprovenKey_0059388f >, std::allocator<CUnprovenValue_0059388f > > {
-    _TestTree() : std::_Rb_tree<CUnprovenKey_0059388f, CUnprovenValue_0059388f, CUnprovenKeyOfValue_0059388f, std::less<CUnprovenKey_0059388f >, std::allocator<CUnprovenValue_0059388f > >(std::less<CUnprovenKey_0059388f >(), std::allocator<CUnprovenValue_0059388f >()) { }
+struct _TestTree : public std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent*> , std::_Select1st<std::pair<long const, NUISystem::CComponent*> >, std::less<long >, std::allocator<std::pair<long const, NUISystem::CComponent*>  > > {
+    _TestTree() : std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent*> , std::_Select1st<std::pair<long const, NUISystem::CComponent*> >, std::less<long >, std::allocator<std::pair<long const, NUISystem::CComponent*>  > >(std::less<long >(), std::allocator<std::pair<long const, NUISystem::CComponent*>  >()) { }
     std::_Rb_tree_node_base* hdr() { return this->_M_header._M_data; }
     unsigned int cnt() { return this->_M_node_count; }
 };
@@ -588,15 +585,15 @@ int main()
 {
     int ok = 1;
     _TestTree t;
-    { CUnprovenValue_0059388f v5; v5._M_key._M_unproven = 5; if (!(t.insert_unique(v5).second)) ok = 0; }
-    { CUnprovenValue_0059388f v2; v2._M_key._M_unproven = 2; if (!(t.insert_unique(v2).second)) ok = 0; }
-    { CUnprovenValue_0059388f v8; v8._M_key._M_unproven = 8; if (!(t.insert_unique(v8).second)) ok = 0; }
-    { CUnprovenValue_0059388f v1; v1._M_key._M_unproven = 1; if (!(t.insert_unique(v1).second)) ok = 0; }
-    { CUnprovenValue_0059388f v9; v9._M_key._M_unproven = 9; if (!(t.insert_unique(v9).second)) ok = 0; }
-    { CUnprovenValue_0059388f v3; v3._M_key._M_unproven = 3; if (!(t.insert_unique(v3).second)) ok = 0; }
-    { CUnprovenValue_0059388f v2; v2._M_key._M_unproven = 2; if (!(!t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<long const, NUISystem::CComponent*> v5((long)5, (NUISystem::CComponent*)0); if (!(t.insert_unique(v5).second)) ok = 0; }
+    { std::pair<long const, NUISystem::CComponent*> v2((long)2, (NUISystem::CComponent*)0); if (!(t.insert_unique(v2).second)) ok = 0; }
+    { std::pair<long const, NUISystem::CComponent*> v8((long)8, (NUISystem::CComponent*)0); if (!(t.insert_unique(v8).second)) ok = 0; }
+    { std::pair<long const, NUISystem::CComponent*> v1((long)1, (NUISystem::CComponent*)0); if (!(t.insert_unique(v1).second)) ok = 0; }
+    { std::pair<long const, NUISystem::CComponent*> v9((long)9, (NUISystem::CComponent*)0); if (!(t.insert_unique(v9).second)) ok = 0; }
+    { std::pair<long const, NUISystem::CComponent*> v3((long)3, (NUISystem::CComponent*)0); if (!(t.insert_unique(v3).second)) ok = 0; }
+    { std::pair<long const, NUISystem::CComponent*> v2((long)2, (NUISystem::CComponent*)0); if (!(!t.insert_unique(v2).second)) ok = 0; }
     if (!(t.size() == 6)) ok = 0;
-    { int n = 0, prev = 0; for (std::_Rb_tree_iterator<CUnprovenValue_0059388f, std::_Nonconst_traits<CUnprovenValue_0059388f > > it = t.begin(); it != t.end(); ++it) { if (!((*it)._M_key._M_unproven > prev)) ok = 0; prev = (*it)._M_key._M_unproven; ++n; } if (!(n == 6)) ok = 0; }
+    { int n = 0, prev = 0; for (std::_Rb_tree_iterator<std::pair<long const, NUISystem::CComponent*> , std::_Nonconst_traits<std::pair<long const, NUISystem::CComponent*>  > > it = t.begin(); it != t.end(); ++it) { if (!((int)(*it).first > prev)) ok = 0; prev = (int)(*it).first; ++n; } if (!(n == 6)) ok = 0; }
     if (!ok) { std::printf("00593bd6_TEST FAIL\n"); return 1; }
     std::printf("00593bd6_TEST PASS\n");
     return 0;

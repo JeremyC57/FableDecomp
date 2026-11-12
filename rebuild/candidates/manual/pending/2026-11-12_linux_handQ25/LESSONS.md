@@ -1,0 +1,9 @@
+- MSVC quoted-include search walks up the includer chain: an overlay copy of a root header (fable_string.h) is found again from a root-dir header that includes it, giving C2011; grade the rows that do not need it with an overlay dir lacking that file (engine/ symlinked).
+- A frame-slot mismatch between two locals is often scope: declare the long-lived local (init) before an inner block that holds the short-lived ones, so the short-lived ones share a slot with an earlier block's local as retail (0x00489D40).
+- A callee's real body in the same TU (GetPControlledCreature, GetDef<T> GETDEF_GLOBAL_BODY) lets c2 see that an address does not escape; this fixed both the `lea ecx,[eax+2Ch]` and the register-swap residues.
+- A named temporary passed to an out-of-line operator= (`CIntelligentPointer<CThing> no_item(0); P = no_item;`) emits retail's `lea ecx` + push; an unnamed temporary pushes eax instead.
+- Ctor arguments read from members before the ctor call (`long g = InterruptionGroupID; ... ctor(..., g + 1)`) fixed the argument scheduling of the 8-argument Extended ctor (0x00847520).
+- A `long` passed to a CCharString assignment picks operator=(char) (`xor ecx,ecx ; mov cl,[eax+3Ch] ; push ecx`): declare it in the overlay rather than casting.
+- Drafts named callees from propagated labels: 0x006925C0 is GetFramesRunning() (no args), 0x00843700 / 0x00842150 are the PickUp / DropGenericBox ctors; check the vtable and RTTI the callee stores before trusting a draft.
+- 0x00BF0B20: the colour copy spill order (G stored before `push esi`) did not change for any copy spelling (memberwise, Initialise, 4-arg ctor, byte locals) or scope; treat it as a scheduler tie-break and stop early.
+- g.sh piping sbs.py into `head` can raise BrokenPipe: send the helper's stderr to /dev/null (and guard helpers for MATCH output, which has no disassembly sections).

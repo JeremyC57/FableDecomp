@@ -193,6 +193,12 @@ protected:
 public:
     bool HasPerformedAction() const;                                     // 0x006925A0
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETFRAMESRUNNING
+public:
+    // Nested opt-in (chunk Q25, row 0x00847520): Ego_r.pdb / FableWin.pdb ?GetFramesRunning@CCreatureActionBase@@QBEJXZ, out of line
+    // in retail at 0x006925C0 (`mov eax,[ecx+1Ch] ; ret`: FramesRunning). Declaration only.
+    long GetFramesRunning() const;                                       // 0x006925C0
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETACTIONID
     // Retail opt-in (chunk Q17, rows 0x00966030 / 0x00965640 OnReplace): Ego_r.pdb / FableWin.pdb ?GetActionID@CCreatureActionBase@@QBEJXZ
     // (public), out of line in retail at 0x00692620. Declaration only.

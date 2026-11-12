@@ -89,6 +89,11 @@ protected:
                             CCountedPointer<CAFile> thingFile, ELoadType loadType);
 public:
     void LoadRegion(long,ELoadType,bool);
+#ifdef FABLE_RETAIL_CWORLDMAP_SETPLAYERPOS
+    // Nested opt-in (chunk Q25, row 0x00489D40 CPlayer::CreateCharacter): Ego_r.pdb / FableWin.pdb
+    // ?SetPlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z, out of line in retail at 0x005063E0 (`ret 0Ch`). Declaration only.
+    void SetPlayerPos(long playerNumber, const C3DVector& pos, ELoadType loadType);   // 0x005063E0
+#endif
     long GetRegionNumberMapIsIn(long)const;
     void GenerateRegionConnectivityGraph();
     unsigned long GetMapUID(long map) const;                 // 0x004FCE00 ?GetMapUID@CWorldMap@@QBEKJ@Z

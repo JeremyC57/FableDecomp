@@ -19,6 +19,10 @@ class CThing;
 class CAIStateGroup_RecoverStealableItem : public CAIStateGroupBase {
 public:
     virtual void OnReplace();                                            // slot 10 0x00965640
+#ifdef FABLE_RETAIL_CAISTATEGROUP_RECOVERSTEALABLEITEM_UPDATE
+    // Nested opt-in (chunk Q25, row 0x009658B0): Ego_r.pdb / FableWin.pdb ?Update@CAIStateGroup_RecoverStealableItem@@UAEXXZ.
+    virtual void Update();                                               // 0x009658B0
+#endif
 protected:
     CIntelligentPointer<CThing> PStealableItem;                          // +0x14
     CIntelligentPointer<const CThing> PTargetPoint;                      // +0x1c

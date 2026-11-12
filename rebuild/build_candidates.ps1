@@ -393376,6 +393376,41 @@ $catalog = @(
         TestSource = '00/92/CAIStateGroupBanditPlot_Act_009289b0_test.cpp'
         PassPattern = '009289b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00489d40'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_CreateCharacter_00489d40.cpp'
+        TestSource = '00/48/CPlayer_CreateCharacter_00489d40_test.cpp'
+        PassPattern = '00489d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00847520'
+        Module = 'CCreatureAction_PerformExpressionExtended'
+        Source = '00/84/CCreatureActionPerformExpressionExtended_FinishAction_00847520.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpressionExtended_FinishAction_00847520_test.cpp'
+        PassPattern = '00847520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b5ee0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_SaveGameState_004b5ee0.cpp'
+        TestSource = '00/4b/CQuestManager_SaveGameState_004b5ee0_test.cpp'
+        PassPattern = '004b5ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fc210'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_CreateTentacles_007fc210.cpp'
+        TestSource = '00/7f/CTCKraken_CreateTentacles_007fc210_test.cpp'
+        PassPattern = '007fc210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009658b0'
+        Module = 'CAIStateGroup_RecoverStealableItem'
+        Source = '00/96/CAIStateGroupRecoverStealableItem_Update_009658b0.cpp'
+        TestSource = '00/96/CAIStateGroupRecoverStealableItem_Update_009658b0_test.cpp'
+        PassPattern = '009658b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

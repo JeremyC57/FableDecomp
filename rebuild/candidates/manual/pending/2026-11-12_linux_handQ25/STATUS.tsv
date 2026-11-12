@@ -1,0 +1,7 @@
+address	name	grade	grades_used	note
+00489d40	CPlayer::CreateCharacter	RELOCATION_MATCH	4 (+6 probes, +1 strict regrade)	init declared before a block running from the co-op offset to the end; GetPControlledCreature real body in TU; ResetRHSet slot 32; operator=(char)
+00847520	CCreatureAction_PerformExpressionExtended::FinishAction	RELOCATION_MATCH	4 (+1 strict regrade)	port onto shared EXPRESSION_FRAME headers; Extended 8-arg ctor from named locals; named null temp for operator=; named CWideString / CCharString / CSoundPair locals
+004b5ee0	CQuestManager::SaveGameState	RELOCATION_MATCH	1 (+1 strict regrade)	port onto CQuestManager LOADGAMESTATE+ACTIVEQUEST + new SAVEGAMESTATE opt-in
+007fc210	CTCKraken::CreateTentacles	RELOCATION_MATCH	3 (+1 strict regrade)	IsEditorActive (not IsLoading); GetDef<T> shared noinline body; inline min spelled once
+009658b0	CAIStateGroup_RecoverStealableItem::Update	RELOCATION_MATCH	2 (+1 strict regrade)	PickUp/DropGenericBox actions (draft had them wrong); block-scoped named previous-item pointer; radius local
+00bf0b20	CEnginePrimitiveRenderUtil::SetupOutlineStencilStates	DIFFER(1290v1290)	15 (+1 strict regrade)	2-instruction prologue schedule: retail stores colour byte G and loads the outline-glow pointer before push esi; residue unchanged by every spelling tried

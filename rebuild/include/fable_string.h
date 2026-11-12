@@ -435,6 +435,11 @@ public:
     operator const char*() const;
     const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
+#ifdef FABLE_RETAIL_CCHARSTRING_ASSIGN_CHAR
+    // Retail opt-in (chunk Q25, row 0x00489D40 CPlayer::CreateCharacter): Ego_r.pdb ??4CCharString@@QAEABV0@D@Z, out of line in
+    // retail at 0x0099F040 (landed; the {c, 0} buffer assign). CreateCharacter calls it with a zero-extended byte. Declaration only.
+    const CCharString& operator=(char c);                       // 0x0099F040
+#endif
     CWideString ToWideString() const;
 #ifdef FABLE_RETAIL_CCHARSTRING_GETASUPPERCASE
     // Retail opt-in (chunk 855, row 0x00490BE0 CSubtitleRenderer::GetGraphicFromEmbeddedTag): Ego_r.pdb 0x00AFA710 / FableWin.pdb

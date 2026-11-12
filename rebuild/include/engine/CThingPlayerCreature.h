@@ -42,6 +42,12 @@ public:
     // landed row 0x006A9A00), called out of line. Declaration only: no layout change.
     void InitialiseMovementSpeeds();                                                       // 0x006A9A00 QAE
 #endif
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CREATE
+    // Nested opt-in (chunk Q25, row 0x00489D40 CPlayer::CreateCharacter): Ego_r.pdb / FableWin.pdb
+    // ?Create@CThingPlayerCreature@@SIPAV1@JABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z (public static __fastcall), out of line in
+    // retail at 0x006AC910 (`push 208h ; call operator new`, then ConstructFromParams 0x006A9DD0). Declaration only.
+    static CThingPlayerCreature* __fastcall Create(long defIndex, const C3DVector& position, long playerNumber, const class CThingPlayerCreatureInit& init);   // 0x006AC910
+#endif
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_CONSTRUCT
     // Nested opt-in (agentNF11, row 0x006A9DD0): Ego_r.pdb / FableWin.pdb
     // ?ConstructFromParams@CThingPlayerCreature@@IAE_NJABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z (protected non-virtual, `ret 10h`).
