@@ -46,6 +46,12 @@ public:
         static const long NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS;           // 0x013BAFE8
         static const long NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS;           // 0x013BAFEC
 #endif
+#ifdef FABLE_RETAIL_CMODEBASE_DEFAULTANIMFILTER
+        // Retail opt-in (row 0x00754050 CTCLook::UpdateTurningAnims): FableWin.pdb
+        // ?GetDefaultAnimFilter@CModeBase@CTCCreatureModeManager@@QBEABVCAnimFilterBase@@XZ, inline in retail (the caller passes
+        // mode+8, the WeaponBasedFilter CAnimFilterOfGroup). No layout change.
+        const CAnimFilterBase& GetDefaultAnimFilter() const { return *(const CAnimFilterBase*)WeaponBasedFilter; }
+#endif
     protected:
         CThing& ParentThing;
         unsigned char WeaponBasedFilter[12]; // Original CAnimFilterOfGroup.

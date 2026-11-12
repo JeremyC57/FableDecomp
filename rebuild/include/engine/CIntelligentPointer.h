@@ -1,6 +1,9 @@
 // Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CINTELLIGENTPOINTER_H
 #define FABLE_ENGINE_CINTELLIGENTPOINTER_H
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_FORCEINLINE_CTOR
+#include "fable_compiler.h"
+#endif
 #include "rebuild_abi.h"
 class CBaseObject;
 class CBaseObjectPointer;
@@ -42,6 +45,12 @@ public:
     // `PTargetedThing = targeting->GetPTargetedThing();`. Declaration only.
     CIntelligentPointer(T* pointer);
 #else
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_FORCEINLINE_CTOR
+    // Per-TU inline opt-in (wf13, row 0x009341C0 CAIStateGroup_MinionKidGroupTag::TagTarget): that TU expands this constructor at
+    // both by-value argument sites (0x0093420A, 0x009342AF: base ctor, vtable store 0x01237F1C, SetPItem) past VC7.1's caller-size
+    // inline budget, which calls a plain-inline copy at the second site.
+    FABLE_FORCEINLINE
+#endif
     CIntelligentPointer(T* pointer) { SetPointer(pointer); }
 #endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_OUTOFLINE

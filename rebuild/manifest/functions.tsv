@@ -19218,7 +19218,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00731d40	CTCSpotLight	CTCSpotLight	__thiscall	undefined	2	CTCSpotLight *,CThing *	0	yes	accepted									
 00731db0	~CTCSpotLight	CTCSpotLight	__thiscall	void	1	CTCSpotLight *	1	yes	accepted									
 00731e20	OnCreate	CTCSpotLight	__thiscall	void	1	CTCSpotLight *	1	yes	accepted									
-00731ea0	?OnAppearanceDraw@CTCSpotLight@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z	CTCSpotLight	__thiscall	bool	3	CTCSpotLight *,CTCGraphicAppearance *,CGraphicAppearanceDrawInfo *	1	yes	accepted									
+00731ea0	OnAppearanceDraw	CTCSpotLight	__thiscall	bool	3	CTCSpotLight *,CTCGraphicAppearance *,CGraphicAppearanceDrawInfo *	1	yes	accepted									
 007320e0	OnSerialise	CTCSpotLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00732330	FreeSelf_00732330	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00732340	CCountedPointer_Release_00732340	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00732340.cpp

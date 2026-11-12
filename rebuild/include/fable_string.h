@@ -445,6 +445,11 @@ public:
     const CCharString& operator=(char c);                       // 0x0099F040
 #endif
     CWideString ToWideString() const;
+#ifdef FABLE_RETAIL_CCHARSTRING_GETASLOWERCASE
+    // Retail opt-in (wf13, row 0x009CCEF0): Ego_r.pdb 0x00AFA690 / FableWin.pdb 0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ,
+    // out of line in retail at 0x0099ED10. Declaration only.
+    CCharString GetAsLowerCase() const;                        // 0x0099ED10
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_GETASUPPERCASE
     // Retail opt-in (chunk 855, row 0x00490BE0 CSubtitleRenderer::GetGraphicFromEmbeddedTag): Ego_r.pdb 0x00AFA710 / FableWin.pdb
     // 0x02F61680 ?GetAsUpperCase@CCharString@@QBE?AV1@XZ, out of line in retail at 0x0099EE20 (it calls toupper 0x00BFED16 on every

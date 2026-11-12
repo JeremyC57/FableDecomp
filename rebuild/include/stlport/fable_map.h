@@ -550,6 +550,12 @@ public:
     multimap():_M_t(Compare(),A()){}
     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
     void clear(){_M_t.clear();}
+#ifdef FABLE_RETAIL_STLP_MULTIMAP_EQUAL_RANGE
+    // Retail opt-in (wf13, row 0x009CCEF0 CBankFile::FindIndicesByFilename): STLport 4.6 _map.h multimap const equal_range, forwarding
+    // to the tree (pair with FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE: upper bound called first, then lower bound).
+    typedef typename _Rep_type::const_iterator const_iterator;
+    pair<const_iterator,const_iterator> equal_range(const K& x) const { return _M_t.equal_range(x); }
+#endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     void erase(iterator position){_M_t.erase(position);}
 #endif

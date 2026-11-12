@@ -182,6 +182,13 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 template<class T,class U> inline void FABLE_FASTCALL _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void FABLE_FASTCALL _Destroy(T* p) { p->~T(); }
 inline void FABLE_FASTCALL _Destroy(char*,char*) { }
+#elif defined(FABLE_RETAIL_STLP_CONSTRUCT_BYVAL)
+// Per-TU opt-in (row 0x00754050 CTCLook::UpdateTurningAnims): _Construct taking its value BY VALUE. The inlined push_back then
+// copies the element out of the argument temporary into register-held fields before the placement store (retail 0x007541E0:
+// `mov ecx,edx ; mov [eax],ecx ; mov [eax+4],edi`, no reload of the temporary's second member after the first store).
+template<class T,class U> inline void _Construct(T* p,U v) { new(p) T(v); }
+template<class T> inline void _Destroy(T* p) { p->~T(); }
+inline void _Destroy(char*,char*) { }
 #else
 template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }

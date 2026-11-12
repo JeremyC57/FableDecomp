@@ -141,6 +141,11 @@ public:
 #endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+#ifdef FABLE_RETAIL_CWORLD_SAVEGAMEMARKERPOS
+    // Nested opt-in (row 0x006B08F0 CTCPhysicsBase::OnSerialise): FableWin.pdb ?GetSaveGameMarkerPos@CWorld@@QBEABVC3DVector@@XZ
+    // (0x0184F602 thunk), inline in retail: the const& to the unaligned C3DVector at +0x141 read in place.
+        const C3DVector& GetSaveGameMarkerPos() const { return *(const C3DVector*)SaveGameMarkerPos; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_MOVEHEROTOREGION
     // Nested opt-in (chunk 1011, row 0x005FB4B0 CTCInventoryMap::TeleportHeroToBoastingArea): Ego_r.pdb 0x004A8150
     // ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z, out of line in retail at 0x0049EAF0 (landed). Declaration only.

@@ -394417,6 +394417,55 @@ $catalog = @(
         TestSource = '00/40/CUserProfileManager_ResetAssignedInputs_004085f0_test.cpp'
         PassPattern = '004085f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007f0f40'
+        Module = 'CTCKrakenTentacle'
+        Source = '00/7f/CTCKrakenTentacle_ReturnToDesiredPos_007f0f40.cpp'
+        TestSource = '00/7f/CTCKrakenTentacle_ReturnToDesiredPos_007f0f40_test.cpp'
+        PassPattern = '007f0f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b08f0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_OnSerialise_006b08f0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_OnSerialise_006b08f0_test.cpp'
+        PassPattern = '006b08f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00731ea0'
+        Module = 'CTCSpotLight'
+        Source = '00/73/CTCSpotLight_OnAppearanceDraw_00731ea0.cpp'
+        TestSource = '00/73/CTCSpotLight_OnAppearanceDraw_00731ea0_test.cpp'
+        PassPattern = '00731ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009341c0'
+        Module = 'CAIStateGroup_MinionKidGroupTag'
+        Source = '00/93/CAIStateGroupMinionKidGroupTag_TagTarget_009341c0.cpp'
+        TestSource = '00/93/CAIStateGroupMinionKidGroupTag_TagTarget_009341c0_test.cpp'
+        PassPattern = '009341c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00754050'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_UpdateTurningAnims_00754050.cpp'
+        TestSource = '00/75/CTCLook_UpdateTurningAnims_00754050_test.cpp'
+        PassPattern = '00754050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00951d60'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/95/CAIStateGroupJackDragon_IntoHover_00951d60.cpp'
+        TestSource = '00/95/CAIStateGroupJackDragon_IntoHover_00951d60_test.cpp'
+        PassPattern = '00951d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ccef0'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_FindIndicesByFilename_009ccef0.cpp'
+        TestSource = '00/9c/CBankFile_FindIndicesByFilename_009ccef0_test.cpp'
+        PassPattern = '009ccef0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

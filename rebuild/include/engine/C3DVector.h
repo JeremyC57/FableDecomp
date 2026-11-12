@@ -106,6 +106,10 @@ public:
 #ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_DECLARATION
     float GetAccurateMagnitude()const;
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_GETMAGNITUDEANDNORMALISE
+    // Opt-in (row 0x007F0F40): Ego_r/FableWin ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ, out of line at 0x00A14480 (landed).
+    float GetMagnitudeAndNormalise();
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_TO2D
     C2DVector ToC2DVector()const{return C2DVector(X,Y);}
 #endif
@@ -384,7 +388,11 @@ public:
     // (same opt-in, see Normalise above)
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z+Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #else
-#ifdef FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX
+#if defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX) && defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX_SQUARED)
+    FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=Z*Z;squared+=Y*Y;squared+=X*X;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX) && defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX_PAREN)
+    FABLE_VECTOR_INLINE bool IsNonZero()const{return (Z*Z+Y*Y+X*X)>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX)
     // Original IsNonZero call FableWin02b9fe76; native009420cf..dd squares Z,Y,X.
     FABLE_VECTOR_INLINE bool IsNonZero()const{return Z*Z+Y*Y+X*X>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #elif defined(FABLE_RETAIL_C3DVECTOR_NONZERO_SQUARED_XYZ)

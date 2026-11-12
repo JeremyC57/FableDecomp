@@ -38,6 +38,11 @@ public:
     // (public const, out of line at 0x005DC210; the row tests `& 4` on its result). Declaration only.
     long GetFlags() const;                                     // 0x005DC210
 #endif
+#ifdef FABLE_RETAIL_CANIMATIONENTRY_GETROTATION
+    // Retail opt-in (row 0x00754050): Ego_r.pdb / FableWin.pdb ?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z (out of line
+    // 0x005DBFD0). Declaration only.
+    void GetRotationInAnimation(float& rotation) const;       // 0x005DBFD0
+#endif
     long                                   BankIndex;     // +0x00
     CDefString                             AnimName;      // +0x04
     CDefString                             GroupName;     // +0x08

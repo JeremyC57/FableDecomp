@@ -13,6 +13,45 @@ class CDefPointeeBase;
 struct CPrimitive;
 struct CSpotLightInfo;
 
+#ifdef FABLE_RETAIL_CTCSPOTLIGHT_BASES
+// Opt-in (wf13, row 0x00731EA0 OnAppearanceDraw): the real class with its two bases (Ego_r.pdb CTCSpotLight: CTCBase +0x00,
+// NGraphicAppearance::CAGraphicAppearanceComponent +0x0C; vtables 0x01266FBC / 0x01266FA4), the nested CSpotLightInfo (Ego_r 0x18:
+// Angle, Width, InnerRadius, OuterRadius, Flicker, Colour) and the PDB inline accessors (QAE, by value). Same offsets as below.
+#include "engine/CTCBase.h"
+#include "engine/NGraphicAppearance_CAGraphicAppearanceComponent.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CRGBColour.h"
+#include "engine/CThing.h"
+#include "engine/CSpotLightDef.h"
+namespace NGraphicAppearance { class CPrimitive; }
+class CTCSpotLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent {
+public:
+    struct CSpotLightInfo {
+        float Angle;                                         // +0x00
+        float Width;                                         // +0x04
+        float InnerRadius;                                   // +0x08
+        float OuterRadius;                                   // +0x0c
+        float Flicker;                                       // +0x10
+        CRGBColour Colour;                                   // +0x14
+    };
+    virtual bool OnAppearanceDraw(NGraphicAppearance::CTCGraphicAppearance& p0, const NGraphicAppearance::CGraphicAppearanceDrawInfo& p1);
+    // Accessors: Ego_r ?GetColour@CTCSpotLight@@QAE?AVCRGBColour@@XZ / ?GetWidth / ?GetInnerRadius / ?GetOuterRadius @@QAEMXZ (non-const,
+    // by value), inline in retail. The if/else spelling is the one that reproduces retail's register assignment (row 0x00731EA0).
+    CRGBColour GetColour() { if (Overridden) return PLightInfo->Colour; else return PLightDef->Colour; }
+    float GetWidth() { if (Overridden) return PLightInfo->Width; else return PLightDef->Width; }
+    float GetInnerRadius() { if (Overridden) return PLightInfo->InnerRadius; else return PLightDef->InnerRadius; }
+    float GetOuterRadius() { if (Overridden) return PLightInfo->OuterRadius; else return PLightDef->OuterRadius; }
+    C3DVector GetDirection();                                // 0x00731CA0 (?GetDirection@CTCSpotLight@@QAE?AVC3DVector@@XZ)
+    CCountedPointer<CSpotLightInfo> PLightInfo;              // +0x10
+    CDefPointer<const CSpotLightDef> PLightDef;              // +0x18
+    bool Overridden;                                         // +0x1c
+    NGraphicAppearance::CPrimitive* LightPrimitive;          // +0x20
+    float AccumilativeFlickerFactor;                         // +0x24
+    float OldAccumilativeFlickerFactor;                      // +0x28
+};
+#else
 #pragma pack(push, 1)
 class CTCSpotLight {
 public:
@@ -56,4 +95,5 @@ FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, LightPrimitive) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, AccumilativeFlickerFactor) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, OldAccumilativeFlickerFactor) == 0x28);
 
+#endif // !FABLE_RETAIL_CTCSPOTLIGHT_BASES
 #endif // FABLE_ENGINE_CTCSPOTLIGHT_H

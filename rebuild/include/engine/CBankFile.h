@@ -12,6 +12,14 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+// Retail opt-in (wf13, row 0x009CCEF0 CBankFile::FindIndicesByFilename): typed Symbols / RuntimeData / PackedDataType /
+// FilenameIndices (Ego_r.pdb member types) and the inline entry queries that TU expands.
+#include "engine/CArray.h"
+#include "engine/CPackedUIntArray.h"
+#include "fable_string.h"
+#include "stlport/fable_map.h"
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CCountedPointer.h"
@@ -61,14 +69,36 @@ public:
 #else
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+    // Ego_r.pdb CBankFile::CRuntimeData (12 bytes): DataOffset +0, DataSize +4, DataType +8, Valid +9.
+    struct CRuntimeData {
+        unsigned long DataOffset;
+        unsigned long DataSize;
+        unsigned char DataType;
+        bool Valid;
+        unsigned char _pad_0xa[0x2];
+    };
+#endif
     unsigned long               Size;                        // +0x04
+#ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+    CArray<CCharString>         Symbols;                     // +0x08
+#else
     unsigned char               Symbols[0xc];                // +0x08 CArray<CCharString>
+#endif
     unsigned char               Checksums[0xc];              // +0x14 CArray<unsigned_long>
+#ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+    CArray<CRuntimeData>        RuntimeData;                 // +0x20
+#else
     unsigned char               RuntimeData[0xc];            // +0x20 CArray<CBankFile::CRuntimeData>
+#endif
     unsigned char               UpdateData[0xc];             // +0x2c CArray<CBankFileEntryUpdateData_*>
     unsigned char               PackedDataOffset[0x10];      // +0x38 CPackedUIntArray
     unsigned char               PackedDataSize[0x10];        // +0x48 CPackedUIntArray
+#ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+    CPackedUIntArray            PackedDataType;              // +0x58
+#else
     unsigned char               PackedDataType[0x10];        // +0x58 CPackedUIntArray
+#endif
     unsigned char               PackedValid[0x10];           // +0x68 CPackedUIntArray
     unsigned long               OpenFlags;                   // +0x78
     CDiskFileWin32*             BankFile_Data;               // +0x7c CCountedPointer<CDiskFileWin32>::Data
@@ -90,7 +120,11 @@ public:
     unsigned long               FileSize;                    // +0xa8
     unsigned char               SymbolIndices[0xc];          // +0xac map<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
     unsigned char               OldSymbolIndices[0xc];       // +0xb8 map<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
+#ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+    std::multimap<CCharString,unsigned long> FilenameIndices; // +0xc4
+#else
     unsigned char               FilenameIndices[0xc];        // +0xc4 multimap<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
+#endif
     unsigned char               SymbolCRCIndices[0x10];      // +0xd0 CVectorMap<unsigned_long,unsigned_long,CKeyPairCompareLess<unsigned_long,unsigned_long>_>
     unsigned char               BlockOrder[0xc];             // +0xe0 CArray<unsigned_long>
     CProgressCallback*          ProgressCallback;            // +0xec
@@ -103,6 +137,26 @@ public:
     // ?GetEntryDataType@CBankFile@@QBEKK@Z (0x009CC210), both out of line.
     bool EntryExists(unsigned long index) const;                         // 0x009CC190
     unsigned long GetEntryDataType(unsigned long index) const;           // 0x009CC210
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
+    // Ego_r.pdb ?GetEntrySymbol@CBankFile@@QBE?AVCCharString@@K@Z (0x009CC1D0) and ?GetEntryDataType@CBankFile@@QBEKK@Z (0x009CC210):
+    // the landed bodies, expanded inline by FindIndicesByFilename 0x009CCEF0.
+    CCharString GetEntrySymbol(unsigned long index) const
+    {
+        if (Symbols.empty())
+            return CCharString("(Unknown)", -1);
+        return CCharString(*(Symbols.begin() + index));
+    }
+    unsigned long GetEntryDataType(unsigned long index) const
+    {
+        if (PackedDataType.GetSize())
+            return PackedDataType[index - 1];
+        return RuntimeData[index].DataType;
+    }
+    CArray<unsigned long> FindIndicesByFilename(const CCharString& path, long type, bool excludeUnassigned) const;   // 0x009CCEF0
+private:
+    CCharString ConvertPathToFilename(const CCharString& path) const;    // 0x009CBE10
+public:
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
     // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb

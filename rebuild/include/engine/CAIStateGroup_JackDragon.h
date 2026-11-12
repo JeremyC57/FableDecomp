@@ -1,5 +1,86 @@
 #ifndef FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H
 #define FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON
+// Overlay opt-in (wf13, row 0x00951D60 IntoHover): RTTI .?AVCAIStateGroup_JackDragon@@ : CAIStateGroupBase (rtti_bases.tsv); members
+// Ego_r.pdb struct_layouts_egor.tsv (packed, sizeof 0x140) with their real types; member functions and access from Ego_r.pdb
+// egor_signatures.tsv (FableWin.pdb _fablewin_api.tsv agrees for StartFlying / IsStillRunnable). EDragonState is nested
+// (?ChooseHoverOrStrafeState@CAIStateGroup_JackDragon@@AAE?AW4EDragonState@1@XZ); its enumerator names are in neither PDB, so
+// they are DESCRIPTIVE, named after the Update 0x00952E80 switch (0 IntoGround, 1 UpdateGround, 2 IntoHover, 3 UpdateHover,
+// 4 UpdateStrafe, 5 IntoGroundSwoop). Needs FABLE_RETAIL_CAISTATEGROUPBASE(+_MEMBERS), FABLE_RETAIL_CINTELLIGENTPOINTER,
+// FABLE_RETAIL_C3DVECTOR and stlport/fable_containers.h / engine/CCountedPointer.h (StartFlying's parameter types).
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+class CThing; class CThingCreatureBase; class CThingAICreature; class CCreatureActionBase;
+#pragma pack(push, 1)
+class CAIStateGroup_JackDragon : public CAIStateGroupBase {
+public:
+    enum EDragonState {
+        DRAGON_STATE_INTO_GROUND = 0,                        // descriptive
+        DRAGON_STATE_GROUND = 1,                             // descriptive
+        DRAGON_STATE_INTO_HOVER = 2,                         // descriptive
+        DRAGON_STATE_HOVER = 3,                              // descriptive
+        DRAGON_STATE_STRAFE = 4,                             // descriptive
+        DRAGON_STATE_INTO_GROUND_SWOOP = 5                   // descriptive
+    };
+    CAIStateGroup_JackDragon();                              // ??0CAIStateGroup_JackDragon@@QAE@XZ
+    virtual ~CAIStateGroup_JackDragon();                     // ??1CAIStateGroup_JackDragon@@UAE@XZ
+    virtual void OnActivate();                               // ?OnActivate@CAIStateGroup_JackDragon@@UAEXXZ 0x009500E0
+    virtual void Cleanup();                                  // ?Cleanup@CAIStateGroup_JackDragon@@UAEXXZ
+protected:
+    virtual bool IsRunnable();                               // ?IsRunnable@CAIStateGroup_JackDragon@@MAE_NXZ
+    virtual void Update();                                   // ?Update@CAIStateGroup_JackDragon@@MAEXXZ 0x00952E80
+private:
+    void ResetTimers();                                      // 0x0094F9E0
+    bool IsStillRunnable();                                  // 0x0094FDF0 ?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ
+    EDragonState ChooseHoverOrStrafeState();                 // 0x0094FFF0
+    bool FindHitEvent();                                     // 0x00950B20
+    void SetHeadTurning(bool);                               // 0x00950BB0
+    void StartFlying(CThingCreatureBase& creature, std::vector<C3DVector>& route, C3DVector& previous_pos,
+                     CCountedPointer<CCreatureActionBase> action);   // 0x00950C30
+    void FlyOutOfGround();                                   // 0x00951B20
+    void IntoHover();                                        // 0x00951D60
+    void UpdateHover();                                      // 0x00951FB0
+    CIntelligentPointer<CThingCreatureBase> PEnemy;          // +0x14
+    CIntelligentPointer<CThing> PLandedMarker;               // +0x1c
+    CIntelligentPointer<CThing> PHoverMarker1;               // +0x24
+    CIntelligentPointer<CThing> PHoverMarker2;               // +0x2c
+    CIntelligentPointer<CThing> PStrafeMarker1;              // +0x34
+    CIntelligentPointer<CThing> PStrafeMarker2;              // +0x3c
+    CIntelligentPointer<CThingAICreature> PInvisibleBodgeCreature;   // +0x44
+    long          FrameOfLastSlam;                           // +0x4c
+    long          FrameWhenLastInRange;                      // +0x50
+    long          FrameWhenLanded;                           // +0x54
+    long          FramesInSnapRange;                         // +0x58
+    EDragonState  CurrentState;                              // +0x5c
+    long          GoLeft;                                    // +0x60
+    bool          BattleTriggered;                           // +0x64
+    C3DVector     PreviousFlightPos;                         // +0x65
+    bool          IsRangeAttack;                             // +0x71
+    C3DVector     DragonPosOutOfGround1;                     // +0x72
+    C3DVector     DragonPosOutOfGround2;                     // +0x7e
+    C3DVector     DragonPosOutOfGround3Left;                 // +0x8a
+    C3DVector     DragonPosOutOfGround3Right;                // +0x96
+    C3DVector     DragonPosOutOfGround4Left;                 // +0xa2
+    C3DVector     DragonPosOutOfGround4Right;                // +0xae
+    C3DVector     DragonPosIntoGround1Left;                  // +0xba
+    C3DVector     DragonPosIntoGround1Right;                 // +0xc6
+    C3DVector     DragonPosIntoGround2Left;                  // +0xd2
+    C3DVector     DragonPosIntoGround2Right;                 // +0xde
+    C3DVector     DragonPosIntoGround3;                      // +0xea
+    C3DVector     DragonPosIntoStrafeLeft;                   // +0xf6
+    C3DVector     DragonPosIntoStrafeRight;                  // +0x102
+    C3DVector     DragonPosOutOfStrafeLeft;                  // +0x10e
+    C3DVector     DragonPosOutOfStrafeRight;                 // +0x11a
+    C3DVector     DragonPosStrafeFlameRight;                 // +0x126
+    C3DVector     DragonPosStrafeFlameLeft;                  // +0x132
+    unsigned char _pad_0x13e[0x2];                           // +0x13e
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackDragon) == 0x140);
+#else
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CAIStateGroup_JackDragon = 0x140.
 // Retail evidence: 1 trusted landed function(s); reconciliation clean.
@@ -152,4 +233,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight_Z) == 0x12e);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameLeft) == 0x132);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H

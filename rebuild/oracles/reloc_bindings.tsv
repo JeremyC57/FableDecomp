@@ -38891,3 +38891,16 @@ _D3DXLoadSurfaceFromMemory@40	00bfefc8	009f4390
 ??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z	007d4bd0	007d2cc0
 ??$GetDef@VCControlsDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCControlsDef@@@@@Z	00410820	004085f0
 ?g_StartupDefinitionManagerInstance@@3V?$CCountedPointer@VCStartupDefinitionManager@@@@A	013b8760	004085f0
+?GetSerialiseVersion@CTCBase@@IBEJXZ	00686a90	006b08f0
+??0CEnginePrimitiveShadowedSpotLight@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MMMW4EEngineInterpolationSet@@K@Z	007324a0	00731ea0
+?GetDirection@CTCSpotLight@@QAE?AVC3DVector@@XZ	00731ca0	00731ea0
+?GetNearestOtherActiveMember@CTCCreatureGroup@@QBEPBVCThingAICreature@@PBV2@@Z	00812ca0	009341c0
+?SetTagger@CTCCreatureGroupTag@@QAE_NPBVCThingAICreature@@@Z	008137b0	009341c0
+?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	005dbfd0	00754050
+?_M_insert_overflow@?$vector@U?$pair@MPBVCAnimationEntry@@@std@@V?$allocator@U?$pair@MPBVCAnimationEntry@@@std@@@2@@std@@IAEXPAU?$pair@MPBVCAnimationEntry@@@2@ABU32@ABU__false_type@2@I_N@Z	00755350	00754050
+?clear@?$vector@U?$pair@MPBVCAnimationEntry@@@std@@V?$allocator@U?$pair@MPBVCAnimationEntry@@@std@@@2@@std@@QAEXXZ	00755320	00754050
+??0CCreatureAction_DragonHoverInto@@QAE@AAVCThingCreatureBase@@@Z	009534d0	00951d60
+?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ	0094fdf0	00951d60
+?StartFlying@CAIStateGroup_JackDragon@@AAEXAAVCThingCreatureBase@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@V?$CCountedPointer@VCCreatureActionBase@@@@@Z	00950c30	00951d60
+?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	0042ad34	009ccef0
+?_M_upper_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	009d2b50	009ccef0
