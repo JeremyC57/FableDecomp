@@ -9,6 +9,11 @@ namespace NScript {
 class CalextestData : public CScriptDataBase {
 public:
     static CScriptDataBase* FABLE_FASTCALL Alloc();
+#ifdef FABLE_RETAIL_NSCRIPT_DATA_CTOR
+    // Per-TU opt-in (agentNF24, row 0x00CD4620): FableWin.pdb ??0CalextestData@NScript@@QAE@XZ, out of line in retail at 0x00CD4620
+    // (CBaseClassNonCopyable() 0x0099A2F0, then vtable 0x012C2718; the inline CScriptDataBase ctor's own store is dead). Declaration only.
+    CalextestData();
+#endif
     virtual void OnPersist(CPersistContext&);
     virtual void Init();
 };

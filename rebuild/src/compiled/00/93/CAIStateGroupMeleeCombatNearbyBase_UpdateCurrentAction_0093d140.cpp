@@ -5,8 +5,9 @@
 // @ 0x006622A0, IsFreeToFinishAction @ 0x006621C0, FinishCurrentAction @ 0x00662650 (tail jump).
 // Shape: `if (a() && b()) c();` with the creature read through PBrain each time (no local), which is what
 // gives the three separate `mov [esi+4] ; mov [+18h]` pairs and the sibling-call `jmp` at the end.
+// Name fix (agentNF24): 0x006621C0 respelled CThingCreatureBase::IsFreeToFinishAction() const (Ego_r/FableWin ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ; was non-const)
 class CThingCreatureBase { public:
-    bool IsFreeToFinishAction();            // 0x006621C0
+    bool IsFreeToFinishAction() const;            // 0x006621C0
     void FinishCurrentAction();             // 0x00662650
 public:
     bool IsPerformingAnyAction() const;   // 0x006622A0

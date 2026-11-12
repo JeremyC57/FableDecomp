@@ -224,6 +224,11 @@ public:
     // 0x00CDB9E0 (stores vtable 0x012C2748, whose slots 1/2 are the landed OnPersist 0x00CDC070 / Init 0x00CDBA10). Declaration only.
     CQ_SunnyvaleMasterData();
 #endif
+#ifdef FABLE_RETAIL_CQ_SUNNYVALEMASTERDATA_ALLOC
+    // Retail opt-in (agentNF24, row 0x00CDBD20): Ego_r.pdb ?Alloc@CQ_SunnyvaleMasterData@NScript@@SIPAVCScriptDataBase@@XZ, the script-info
+    // master-data allocator (new 0x144 + the inline constructor; registered by 0x00CD52D0, agentFAM08). Declaration only.
+    static CScriptDataBase* FABLE_FASTCALL Alloc();
+#endif
     void ModifyVillagerAngryRating(float);
     virtual void OnPersist(CPersistContext&);
     virtual void Init();

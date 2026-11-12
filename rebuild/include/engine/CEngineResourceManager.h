@@ -1,3 +1,6 @@
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_EXTERNALTEXTURES
+class CXboxBufferMemoryPool;
+#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER
 #ifndef FABLE_ENGINE_CENGINERESOURCEMANAGER_H
 #define FABLE_ENGINE_CENGINERESOURCEMANAGER_H
@@ -23,6 +26,16 @@ class CEngineInit;
 class CEngineMemoryInit;
 class CEngineResourceManager : public CEngineComponent, public CAsyncLoadingProcessCallback {
 public:
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_EXTERNALTEXTURES
+    // Nested opt-in (agentNF24, Part 2 rows 0x00B3E6E0 / 0x00B3E750 / 0x00B3E8D0 / 0x00B3E990 / 0x00B3E9D0, the
+    // map<CTexture*, CExternalTextureAllocationInfo> ExternalTexturesAllocatedFromEnginePools members): Ego_r.pdb struct (U key, FableWin
+    // ??0?$map@PAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@...) CExternalTextureAllocationInfo, 8 bytes:
+    // Handle +0 (long), Pool +4 (CXboxBufferMemoryPool*). A type only: no layout change.
+    struct CExternalTextureAllocationInfo {
+        long Handle;                                                     // +0x00
+        CXboxBufferMemoryPool* Pool;                                     // +0x04
+    };
+#endif
     // Chunk 731: ??0CEngineResourceManager@@QAE@ABVCEngineInit@@ABVCEngineMemoryInit@@@Z 0x00B3CB30 (Ego_r.pdb / FableWin.pdb;
     // CEngine::Initialise 0x00B26360 news 0x31E0 bytes and passes the init and its CDefaultEngineMemoryInit local).
     CEngineResourceManager(const CEngineInit& init, const CEngineMemoryInit& memory_init);
@@ -113,6 +126,16 @@ struct IDirect3DTexture9;
 #pragma pack(push, 1)
 class CEngineResourceManager {
 public:
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_EXTERNALTEXTURES
+    // Nested opt-in (agentNF24, Part 2 rows 0x00B3E6E0 / 0x00B3E750 / 0x00B3E8D0 / 0x00B3E990 / 0x00B3E9D0, the
+    // map<CTexture*, CExternalTextureAllocationInfo> ExternalTexturesAllocatedFromEnginePools members): Ego_r.pdb struct (U key, FableWin
+    // ??0?$map@PAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@...) CExternalTextureAllocationInfo, 8 bytes:
+    // Handle +0 (long), Pool +4 (CXboxBufferMemoryPool*). A type only: no layout change.
+    struct CExternalTextureAllocationInfo {
+        long Handle;                                                     // +0x00
+        CXboxBufferMemoryPool* Pool;                                     // +0x04
+    };
+#endif
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08

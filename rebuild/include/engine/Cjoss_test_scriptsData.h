@@ -9,6 +9,11 @@ namespace NScript {
 class Cjoss_test_scriptsData : public CScriptDataBase {
 public:
     static CScriptDataBase* FABLE_FASTCALL Alloc();
+#ifdef FABLE_RETAIL_NSCRIPT_DATA_CTOR
+    // Per-TU opt-in (agentNF24, row 0x00CD46A0): FableWin.pdb ??0Cjoss_test_scriptsData@NScript@@QAE@XZ, out of line in retail at 0x00CD46A0
+    // (CBaseClassNonCopyable() 0x0099A2F0, then vtable 0x012C2730; the inline CScriptDataBase ctor's own store is dead). Declaration only.
+    Cjoss_test_scriptsData();
+#endif
     virtual void OnPersist(CPersistContext&);
     virtual void Init();
 };

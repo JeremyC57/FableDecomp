@@ -12,6 +12,7 @@
 // AIAction_MoveToPosProximityAndFacePos @ 0x0091D510, Terminate @ 0x008FCF40. String "QueenDepositPos%d" @ 0x01294EE4.
 // Shape: the search rectangle is a function-scope local written member by member (Left/Top/Right/Bottom); a ctor or a
 // block-scoped rectangle shares the look-at vector's frame words (frame 0x54) and schedules x+60 first.
+// Name fix (agentNF24): 0x0095A420 respelled the protected CAIStateGroup_HoverHornetQueen::IsStillRunnable (Ego_r 0x0097ECE0 / FableWin 0x02C0FEC0 ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ; was public)
 #include <stdio.h>
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -103,7 +104,9 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
     C3DVector StartPos;                         // +0x1c
     C3DVector ArenaCentrePos;                   // +0x28
     bool FirstSpawn;                            // +0x34
-    bool IsStillRunnable();                     // 0x0095A420
+protected:
+    bool IsStillRunnable();                     // 0x0095A420 (protected: Ego_r/FableWin IAE)
+public:
     void GoToSpawnPoint();
 };
 

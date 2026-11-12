@@ -1,0 +1,8 @@
+- Wine cl 13.10 hangs (does not exit) on a hit `#error`; run a gcc `cpp` pre-pass with the row's defines before every grade, and kill a hung cl only by PID.
+- The 0x007FEF40 "lane gap" was a model problem: the shared STLport body in fable_containers.h reproduces _M_insert_overflow and the row matched.
+- A `#pragma auto_inline(off)` around fable_containers.h stops the implicit inline push_back from expanding; leave it out.
+- After including a header that only declares `~CScriptThing`, an `inline CScriptThing::~CScriptThing() {}` in the TU gives the retail inline dtor without a local model.
+- Explicit template instantiation ignores access, so a private nested key/value type (CTCUnholyPower::PerCreatureInfo) can be named in the instantiation.
+- 0x00797E30 (map in CTCUnholyPower) needs the full define set of landed 0x00794E60 plus FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE and CThingCreatureBase.h included first.
+- FAM07-style RENAMES rows need a bracket-aware split at the last top-level `::` to put the class in module.
+- Check every vtable-slot binder by reading reloc_bindings for the exact slot: the 0x012C2FF4 CThingFunctorBase binder was 0x00EF7AB0, not 0x00E241B0.

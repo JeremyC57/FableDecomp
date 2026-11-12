@@ -177,6 +177,13 @@ public:
     float GetExtendedSightRadius()const;
 #endif
     const CThing* GetPerceivedThing() const;                             // 0x007446A0
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS_CALLS
+    // Nested opt-in (agentNF24, row 0x00935160): both awareness queries called out of line, as retail calls them there:
+    // 0x00643B3B Ego_r/FableWin ?IsAwareOfThing@CTCPerceiveThing@@QBE_NXZ (reloc_bindings first caller 0x00864700) and
+    // 0x00744430 ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ (`mov al,[ecx+30h]; ret`). Declarations only: no layout change.
+    bool IsAwareOfThing() const;                                         // 0x00643B3B
+    bool IsAwarenessOfThingDirect() const;                               // 0x00744430
+#endif
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS
 private:
 #else

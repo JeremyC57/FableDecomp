@@ -15,6 +15,7 @@
 // dword by dword (the memberwise C3DVector assignment). Engine header names (flattened base, modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 // Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
+// Name fix (agentNF24): 0x006621C0 respelled CThingCreatureBase::IsFreeToFinishAction() const (Ego_r/FableWin ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ; was non-const)
 #include "fable_compiler.h"
 class CTCBase;
 class CWorld;
@@ -233,7 +234,7 @@ class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* source, long status);   // 0x00747B80
 };
 class CThingCreatureBase : public CThing { public:
-    bool IsFreeToFinishAction();                // 0x006621C0
+    bool IsFreeToFinishAction() const;                // 0x006621C0
     void FinishCurrentAction();                 // 0x00662650
 };
 

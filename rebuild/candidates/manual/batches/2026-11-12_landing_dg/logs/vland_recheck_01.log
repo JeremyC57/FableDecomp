@@ -1,0 +1,107 @@
+addr       parity           behav  name
+0095b020   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName
+0095b020   WARN SHARED_HEADER_AVAILABLE CThing
+0095b020   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation
+0095b020   WARN SHARED_HEADER_AVAILABLE CWorld
+0095b020   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095b020   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b020   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+  WARN leaf '0095b020' matches no symbol in 0095b020.obj; graded the largest function
+  WARN leaf '0095b020' matches no symbol in 0095b020.obj; graded the largest function
+0095b020   RELOCATION_MATCH PASS   0095b020
+0095b680   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0095b680   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b680   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+  WARN leaf '0095b680' matches no symbol in 0095b680.obj; graded the largest function
+  WARN leaf '0095b680' matches no symbol in 0095b680.obj; graded the largest function
+0095b680   RELOCATION_MATCH PASS   0095b680
+0095c1f0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0095c1f0   WARN SHARED_HEADER_AVAILABLE CTCBoss
+0095c1f0   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0095c1f0   WARN SHARED_HEADER_AVAILABLE CWorld
+0095c1f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095c1f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095c1f0   RELOCATION_MATCH PASS   0095c1f0
+0095cb80   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0095cb80   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+  WARN leaf '??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z base CCombatActionBase(owner, thing, 150, GetSoundPair(owner, SWORD_SWING)), then the name SPAWN through the setter @ 0x008574D0' matches no symbol in 0095cb80.obj; graded the largest function
+  WARN leaf '??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z base CCombatActionBase(owner, thing, 150, GetSoundPair(owner, SWORD_SWING)), then the name SPAWN through the setter @ 0x008574D0' matches no symbol in 0095cb80.obj; graded the largest function
+0095cb80   WARN RELOC_NAME: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z -> 008574d0 labelled 'CCombatActionBase::SetCombatAnimation'
+0095cb80   RELOCATION_MATCH PASS   0095cb80
+0095d200   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095d200   WARN SHARED_HEADER_AVAILABLE CWorld
+0095d200   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095d200   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0095d200   RELOCATION_MATCH PASS   0095d200
+009717a0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+009717a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+  WARN leaf '??0CCreatureAction_DuckAndCover@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@@Z combat action with the SWORD_SWING sound pair (action code 150) that remembers the position to duck from' matches no symbol in 009717a0.obj; graded the largest function
+  WARN leaf '??0CCreatureAction_DuckAndCover@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@@Z combat action with the SWORD_SWING sound pair (action code 150) that remembers the position to duck from' matches no symbol in 009717a0.obj; graded the largest function
+009717a0   RELOCATION_MATCH PASS   009717a0
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CThing
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097f3a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097f3a0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+0097f3a0   RELOCATION_MATCH PASS   0097f3a0
+009c1dc0   RELOCATION_MATCH PASS   009c1dc0
+009c2b00   RELOCATION_MATCH PASS   009c2b00
+00b3e6e0   RELOCATION_MATCH PASS   00b3e6e0
+00b3e750   RELOCATION_MATCH PASS   00b3e750
+00b3e8d0   RELOCATION_MATCH PASS   00b3e8d0
+00b3e990   RELOCATION_MATCH PASS   00b3e990
+00b3e9d0   RELOCATION_MATCH PASS   00b3e9d0
+00b442e0   RELOCATION_MATCH PASS   00b442e0
+00cac9d0   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00cac9d0   RELOCATION_MATCH PASS   00cac9d0
+00cd4500   RELOCATION_MATCH PASS   00cd4500
+00cd4620   RELOCATION_MATCH PASS   00cd4620
+00cd4660   RELOCATION_MATCH PASS   00cd4660
+00cd46a0   RELOCATION_MATCH PASS   00cd46a0
+00cd46e0   RELOCATION_MATCH PASS   00cd46e0
+00cdbd20   RELOCATION_MATCH PASS   00cdbd20
+00cdbd70   RELOCATION_MATCH PASS   00cdbd70
+00e8b020   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e8b020   WARN SHARED_HEADER_AVAILABLE CV_FisticuffsClubScript
+00e8b020   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00e8b020   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00e8b020   RELOCATION_MATCH PASS   00e8b020
+00ef6e40   RELOCATION_MATCH PASS   00ef6e40
+00ef7ab0   RELOCATION_MATCH PASS   00ef7ab0
+00ef84d0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef84d0   RELOCATION_MATCH PASS   00ef84d0
+00f263d0   RELOCATION_MATCH PASS   00f263d0
+00f33d90   RELOCATION_MATCH PASS   00f33d90
+
+WINS: 29
+  0095b020 RELOCATION_MATCH m::0095b020
+  0095b680 RELOCATION_MATCH m::0095b680
+  0095c1f0 RELOCATION_MATCH m::Update
+  0095cb80 RELOCATION_MATCH m::??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z base CCombatActionBase(owner, thing, 150, GetSoundPair(owner, SWORD_SWING)), then the name SPAWN through the setter @ 0x008574D0
+  0095d200 RELOCATION_MATCH m::?Update@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAEXXZ
+  009717a0 RELOCATION_MATCH m::??0CCreatureAction_DuckAndCover@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@@Z combat action with the SWORD_SWING sound pair (action code 150) that remembers the position to duck from
+  0097f3a0 RELOCATION_MATCH m::?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z
+  009c1dc0 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@VCDisplayModeDesc@@V1@U?$_Identity@VCDisplayModeDesc@@@std@@U?$less@VCDisplayModeDesc@@@3@V?$allocator@VCDisplayModeDesc@@@3@@std@@AAEXPAU?$_Rb_tree_node@VCDisplayModeDesc@@@2@@Z
+  009c2b00 RELOCATION_MATCH m::??0?$set@VCDisplayModeDesc@@U?$less@VCDisplayModeDesc@@@std@@V?$allocator@VCDisplayModeDesc@@@3@@std@@QAE@XZ
+  00b3e6e0 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@PAVCTexture@@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@U?$_Select1st@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@U?$less@PAVCTexture@@@3@V?$allocator@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@2@@Z
+  00b3e750 RELOCATION_MATCH m::?clear@?$_Rb_tree@PAVCTexture@@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@U?$_Select1st@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@U?$less@PAVCTexture@@@3@V?$allocator@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@@std@@QAEXXZ
+  00b3e8d0 RELOCATION_MATCH m::??1?$_Rb_tree@PAVCTexture@@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@U?$_Select1st@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@U?$less@PAVCTexture@@@3@V?$allocator@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@@std@@QAE@XZ
+  00b3e990 RELOCATION_MATCH m::??0?$map@PAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@U?$less@PAVCTexture@@@std@@V?$allocator@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@5@@std@@QAE@XZ
+  00b3e9d0 RELOCATION_MATCH m::??1?$map@PAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@U?$less@PAVCTexture@@@std@@V?$allocator@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@5@@std@@QAE@XZ
+  00b442e0 RELOCATION_MATCH m::??0?$map@JUCFileBlock@CEngineStaticMapFileBlockManager@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@4@@std@@QAE@XZ
+  00cac9d0 RELOCATION_MATCH m::?CreateInstance@CMemAllocator@@SGPAVCUnknown@@PAUIUnknown@@PAJ@Z
+  00cd4500 RELOCATION_MATCH m::??0CScriptDataBase@@QAE@XZ
+  00cd4620 RELOCATION_MATCH m::??0CalextestData@NScript@@QAE@XZ
+  00cd4660 RELOCATION_MATCH m::??0CEmptyData@NScript@@QAE@XZ
+  00cd46a0 RELOCATION_MATCH m::??0Cjoss_test_scriptsData@NScript@@QAE@XZ
+  00cd46e0 RELOCATION_MATCH m::??0CDanyalTestScriptsData@NScript@@QAE@XZ
+  00cdbd20 RELOCATION_MATCH m::?Alloc@CQ_SunnyvaleMasterData@NScript@@SIPAVCScriptDataBase@@XZ
+  00cdbd70 RELOCATION_MATCH m::??_GCQ_SunnyvaleMasterData@NScript@@UAEPAXI@Z
+  00e8b020 RELOCATION_MATCH m::?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00ef6e40 RELOCATION_MATCH m::??_G?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@UAEPAXI@Z
+  00ef7ab0 RELOCATION_MATCH m::??1CIsThingConscious@NScript@@UAE@XZ
+  00ef84d0 RELOCATION_MATCH m::?Main@CFollower@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00f263d0 RELOCATION_MATCH m::??0CArenaCreatureDef@@QAE@XZ
+  00f33d90 RELOCATION_MATCH m::?resize@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEXI@Z

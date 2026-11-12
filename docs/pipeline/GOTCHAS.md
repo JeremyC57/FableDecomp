@@ -1,10 +1,10 @@
 
-- (chunk Q18, 2026-11-12) Rotation tie (eax/ecx v ecx/edx on a key address): name the intermediate pointer (`CThingCreatureBase* target = ...;`) to take one temporary out of VC7.1's scratch rotation -- 0x008BF500 FinishAction.
-- (chunk Q18, 2026-11-12) A CCountedPointer element read via `.Get()` instead of `.Data` flips the scratch register pick in a loop -- 0x00555A90 UpdateVisibleList.
-- (chunk Q18, 2026-11-12) Entity-script Main with in-loop terminating returns: `for(;;)` with `if (IsActiveThreadTerminating()) return;` first, not `while (!IsActiveThreadTerminating())` (9 hunks -> match) -- 0x00DE3CE0.
-- (chunk Q18, 2026-11-12) An inline `operator=` on a large POD expands to `rep movsd`; when retail calls the out-of-line copy, declare it (opt-in) instead of defining it -- 0x008886E0 (0x006B5DF0).
-- (chunk Q18, 2026-11-12) Inlined null-safe bool wrapper tested with `cmp al,bl` instead of retail's `test al,al`: spell it `return PImp.Get() && PImp->IsAlive();`, not two returns -- 0x00ED94D0.
-- (chunk Q18, 2026-11-12) CIsThingAlive temporary built in place (vtable store + copy ctor) needs the ctor defined inline in the row and FABLE_RETAIL_CPREDICATEBASE_NOVTABLE -- 0x00ED94D0.
-- (chunk Q18, 2026-11-12) Script watcher dtor expansion per exit: `do { if (...) return; } while (0);` expands the by-value CScriptThing dtor, plain `if` calls 0x004AA840 (sibling 0x00ED9790 rule, again at 0x00ED94D0).
-- (chunk Q18, 2026-11-12) c2prio cannot find a template instance by its full mangled leaf: pass `--func <plain method name>` -- 0x008780D0.
-- (chunk Q18, 2026-11-12) cl spins (timeout) on an `#error` deep in the def headers: run a g++ -fsyntax-only precheck first; fable_script_def_global.h needs FABLE_RETAIL_DEF_CLASS_BASE + FABLE_RETAIL_CDEFSTRINGTABLE -- 0x00DE3CE0 / 0x00ED94D0.
+- (agentNF24, 2026-11-12) Wine cl 13.10 hangs (does not exit) on a hit `#error`; run a gcc `cpp` pre-pass with the row's defines before every grade, and kill a hung cl only by PID.
+- (agentNF24, 2026-11-12) The 0x007FEF40 "lane gap" was a model problem: the shared STLport body in fable_containers.h reproduces _M_insert_overflow and the row matched.
+- (agentNF24, 2026-11-12) A `#pragma auto_inline(off)` around fable_containers.h stops the implicit inline push_back from expanding; leave it out.
+- (agentNF24, 2026-11-12) After including a header that only declares `~CScriptThing`, an `inline CScriptThing::~CScriptThing() {}` in the TU gives the retail inline dtor without a local model.
+- (agentNF24, 2026-11-12) Explicit template instantiation ignores access, so a private nested key/value type (CTCUnholyPower::PerCreatureInfo) can be named in the instantiation.
+- (agentNF24, 2026-11-12) 0x00797E30 (map in CTCUnholyPower) needs the full define set of landed 0x00794E60 plus FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE and CThingCreatureBase.h included first.
+- (agentNF24, 2026-11-12) FAM07-style RENAMES rows need a bracket-aware split at the last top-level `::` to put the class in module.
+- (agentNF24, 2026-11-12) Check every vtable-slot binder by reading reloc_bindings for the exact slot: the 0x012C2FF4 CThingFunctorBase binder was 0x00EF7AB0, not 0x00E241B0.
+- (landing dg, 2026-11-12) A naming landing that renames a parent row's file breaks the EH funclet rows that `#include` it by path (8919d6f50 broke three); run lane_tools/coordinator/funclet_includes_check.py after every landing that moves files.

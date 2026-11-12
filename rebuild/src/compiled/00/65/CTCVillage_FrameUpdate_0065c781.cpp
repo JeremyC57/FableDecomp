@@ -8,6 +8,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C781, 1002 bytes, plain `ret`, ebp frame (size TU, `optimize("s",on)`).
 // Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h, GetPSoundBank(const CCharString&) 0x009917E0
 //   (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP, Anniversary name); was a local CSymbolMap::FindFirstSymbolWithVal.
+// Name fix (agentNF24): 0x00658DB3 respelled CTCVillage::IsCurfewTime() const (Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ, the landed row's own leaf) (was IsCurfewTime_00658db3)
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -211,7 +212,7 @@ public:
     void SetEnemyToHeroStatus();                // 0x0065A852
     void RemoveTimedoutCrimes();                // 0x0065A7A9
     void UpdateMirroredCrimeData();             // 0x0065C5BB
-    bool IsCurfewTime_00658db3();                        // 0x00658DB3
+    bool IsCurfewTime() const;                  // 0x00658DB3 Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ
     bool IsCookTime_00658b20();                          // 0x00658B20
     void UpdateCurfew();                        // 0x0065AD37
     void FrameUpdate();
@@ -268,7 +269,7 @@ void CTCVillage::FrameUpdate()
     if (PDef->HasCurfewAnnouncements && !AnnouncementsDisabled) {
         CCharString text(0);
         bool was = WasCurfewTime;
-        if (was != IsCurfewTime_00658db3())
+        if (was != IsCurfewTime())
             text = was ? PDef->CurfewStartText : PDef->CurfewEndText;
         was = WasCookTime;
         if (was != IsCookTime_00658b20())
@@ -279,7 +280,7 @@ void CTCVillage::FrameUpdate()
             bool exists = bank->EntryExists(id);
             CGroupEntryRef::CEntry* entry = bank->GetPGroupEntry(id, false).Object;
             if (entry || !exists) {
-                WasCurfewTime = IsCurfewTime_00658db3();
+                WasCurfewTime = IsCurfewTime();
                 WasCookTime = IsCookTime_00658b20();
                 if (entry) {
                     CASoundBank* soundBank = PSoundManager->GetPSoundBank(entry->BankName);

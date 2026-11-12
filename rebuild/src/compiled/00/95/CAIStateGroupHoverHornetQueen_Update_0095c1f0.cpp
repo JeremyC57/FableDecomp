@@ -10,6 +10,7 @@
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, Attack @ 0x0095BCF0, IsKnockedDown @ 0x0085F010 (`__fastcall`), PlayIdle
 // @ 0x0095B680, CThing::GetPos @ 0x004C73D0, DiveBomb @ 0x0095B9E0.
 // Layout: Ego_r.pdb CAIStateGroup_HoverHornetQueen PTarget +0x14, ArenaCentrePos +0x28; CWorld +0x4c combat manager.
+// Name fix (agentNF24): 0x0095A420 respelled the protected CAIStateGroup_HoverHornetQueen::IsStillRunnable (Ego_r 0x0097ECE0 / FableWin 0x02C0FEC0 ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ; was public)
 #include <math.h>
 class C3DVector { public:
     float X, Y, Z;
@@ -65,7 +66,9 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
     CIntelligentPointer<CThing> PTarget;            // +0x14
     C3DVector StartPos;                         // +0x1c
     C3DVector ArenaCentrePos;                   // +0x28
-    bool IsStillRunnable();                     // 0x0095A420
+protected:
+    bool IsStillRunnable();                     // 0x0095A420 (protected: Ego_r/FableWin IAE)
+public:
     bool GoToSpawnPoint();                      // 0x0095B020
     void PlayIdle();                            // 0x0095B680
     void Spawn();                               // 0x0095B820

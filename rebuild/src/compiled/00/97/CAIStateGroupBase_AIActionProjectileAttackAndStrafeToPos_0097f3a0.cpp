@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat, C3DVector, CIntelligentPointer<const CThing>, bool&, EMovementType, bool) -- strafe to a position (creature mode 0x19 while the will-power indicator allows it), then fire the missile weapon at the target if it is still alive
+// Leaf: ?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097F3A0, 528 bytes (ret 24h).
@@ -14,6 +15,7 @@
 // Shape: the mode lookup is the bitset::test GetInterface (the test bool is stored); the strafe flag is a named bool set
 // true then cleared; the action is a temporary built inside the SetCurrentAction call and destroyed inline (def
 // release + null, PTarget dtor, base dtor); the indicator def is released by hand at the end.
+// Name fix (agentNF24): own symbol made protected, as both PDBs spell it: ?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z (was public QAE)
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -153,7 +155,7 @@ class CAIStateGroupBase { public:
 protected:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& speed, EMovementType anim, bool strafe,
                                        bool extra, const CThing* target, bool b3, float f);   // 0x0097EC00
-public:
+protected:   // Ego_r 0x0084A590 / FableWin 0x02890AB0: a protected member (IAE)
     EAIActionReturn AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat repeat, C3DVector pos,
                                                            CIntelligentPointer<const CThing> target, bool& speed,
                                                            EMovementType anim, bool extra);

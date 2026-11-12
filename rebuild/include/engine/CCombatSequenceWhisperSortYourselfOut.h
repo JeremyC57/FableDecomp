@@ -8,6 +8,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_COMBATSEQUENCE_STATGETNAME
+class CCharString;
+#endif
 
 #pragma pack(push, 1)
 struct CCombatSequenceWhisperSortYourselfOut {
@@ -18,6 +21,11 @@ struct CCombatSequenceWhisperSortYourselfOut {
     unsigned char _pad_0x10[0xc];                            // +0x10
     unsigned char _pad_0x1c[0x9];                            // +0x1c
     unsigned char _pad_0x25[0x3];                            // +0x25
+#ifdef FABLE_RETAIL_COMBATSEQUENCE_STATGETNAME
+    // Opt-in (agentNF24, row 0x008B0440): Ego_r.pdb ?StatGetName@CCombatSequenceWhisperSortYourselfOut@@SI?AVCCharString@@XZ, the static registry-name factory
+    // (out of line at that address: a CCharString built from the sequence's literal into the hidden result). Declaration only.
+    static CCharString FABLE_FASTCALL StatGetName();
+#endif
 };
 #pragma pack(pop)
 

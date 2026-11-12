@@ -11,6 +11,7 @@
 // `xor` zero-extension: the result type is an unsigned char, not bool).
 // FrameToStopSitting is +0x40 (engine header name; the header flattens the base so the class is modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF24): 0x00658DB3 respelled CTCVillage::IsCurfewTime() const (Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ, the landed row's own leaf) (was IsCurfewTime_00658db3)
 class CTCBase;
 class CThing;
 class CWorld;
@@ -72,7 +73,7 @@ unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsCurfewTime_00658db3();                        // 0x00658DB3
+    bool IsCurfewTime() const;                  // 0x00658DB3 Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
@@ -87,7 +88,7 @@ unsigned char CAIStateGroup_MinionSitOutside::IsStillValid()
     CTCVillager* villager;
     if (PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER, &villager)) {
         if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
-            if (((CTCVillageMember*)villager)->GetPVillage()->IsCurfewTime_00658db3())
+            if (((CTCVillageMember*)villager)->GetPVillage()->IsCurfewTime())
                 return false;
         }
     }

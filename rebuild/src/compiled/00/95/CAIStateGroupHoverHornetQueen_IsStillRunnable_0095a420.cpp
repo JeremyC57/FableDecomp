@@ -1,5 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::IsStillRunnable() -- still runnable while the target is alive, the first circle marker (if any) is alive and the group is not stopping
-// Leaf: ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@QAE_NXZ
+// Leaf: ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095A420, length 97 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x4), CAIStateGroupBase::IsStopping @ 0x008FD010.
@@ -14,6 +14,7 @@
 // return true;` keeps the false tail first (`neg al ; sbb al,al ; inc al`); `IsStopping() ? false : true` places it
 // after the second guard.
 // The engine header CAIStateGroup_HoverHornetQueen.h is flattened data-only: local model with the retail offsets.
+// Name fix (agentNF24): own symbol made protected, as both PDBs spell it: ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ (was public QAE)
 class CThingCreatureBase;
 
 #include "engine/C3DVector.h"
@@ -72,6 +73,7 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_EnemyCreatureBase {
     long EnemyKnockDownFrame;                   // +0x5c
     bool TimingCritical;                        // +0x60
     long RouteDirection;                        // +0x64 eWaspDirection
+protected:   // Ego_r 0x0097ECE0 / FableWin 0x02C0FEC0: protected (IAE)
     bool IsStillRunnable();
 };
 

@@ -12,6 +12,7 @@
 // before the IsStillRunnable test); `false` is pushed before the action temporary is built inside the
 // PerformActionAndWait call (frame 0x11c = string 4 + action 0x118), the base destructor runs after the call. The creature comes through an inline GetCreature() accessor. No engine header
 // covers the action; the state group's header is flattened data-only: local model.
+// Name fix (agentNF24): 0x0095A420 respelled the protected CAIStateGroup_HoverHornetQueen::IsStillRunnable (Ego_r 0x0097ECE0 / FableWin 0x02C0FEC0 ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ; was public)
 class CThingCreatureBase;
 
 class CCharString { public:
@@ -51,7 +52,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
-    bool IsStillRunnable();                         // 0x0095A420
+protected:
+    bool IsStillRunnable();                         // 0x0095A420 (protected: Ego_r/FableWin IAE)
+public:
     void PlayIdle();
 };
 

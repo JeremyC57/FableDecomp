@@ -1,0 +1,60 @@
+address	change	grade	test	grades_used	note
+0x0093D800	binder respelled	RELOCATION_MATCH	PASS	1	land1011db 0x00744430 IsAwarenessOfThingDirect const
+0x009576D0	binder respelled	RELOCATION_MATCH	PASS	1	land1011db 0x00744430 IsAwarenessOfThingDirect const (reloc_bindings first caller; not in the queue's list)
+0x00935160	binder respelled (namespaced stand-in CTCPerceiveThing -> shared engine/CTCPerceiveThing.h)	RELOCATION_MATCH	PASS	1	land1011db 0x00744430; also 0x007446A0 GetPerceivedThing and 0x00643B3B IsAwareOfThing now bind their PDB const spellings
+0x00744430	self-row rename (placeholder C_00744430::M -> CTCPerceiveThing::IsAwarenessOfThingDirect const over shared header)	MATCH	PASS	1	land1011db self row (not in the brief's list; the landed row was a placeholder)
+0x00658E73	binder respelled	RELOCATION_MATCH	PASS	1	land1011dc 0x00658DB3 IsCurfewTime const (reloc_bindings first caller; was ComputeB1)
+0x0065C781	binder respelled	RELOCATION_MATCH	PASS	1	land1011dc 0x00658DB3 IsCurfewTime const
+0x00939060	binder respelled	RELOCATION_MATCH	PASS	1	land1011dc 0x00658DB3 IsCurfewTime const
+0x0095D200	binder respelled (CIntelligentPointerConstThing stand-in -> shared CIntelligentPointer<const CThing>)	RELOCATION_MATCH	PASS	1	land1011dd 0x0097F3A0 protected CAIStateGroupBase member; vtable 0x01237F1C now binds ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@
+0x0097F3A0	self-row respell (access: public -> protected, + Leaf line)	RELOCATION_MATCH	PASS	2	land1011dd: Ego_r 0x0084A590 / FableWin 0x02890AB0
+0x006621C0	self-row respell (non-const -> const, + Leaf line)	MATCH	PASS	1	land1011dd: Ego_r 0x0053D040 / FableWin 0x01D9E200
+0x005BE119	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x006621C0 IsFreeToFinishAction const
+0x006E8400	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x006621C0 IsFreeToFinishAction const
+0x006EABB0	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x006621C0 IsFreeToFinishAction const
+0x0093C830	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x006621C0 IsFreeToFinishAction const
+0x0093D140	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x006621C0 IsFreeToFinishAction const
+0x0095A420	self-row respell (public -> protected)	RELOCATION_MATCH	PASS	1	land1011dd: Ego_r 0x0097ECE0 / FableWin 0x02C0FEC0
+0x0095B020	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x0095A420 IsStillRunnable protected
+0x0095B680	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x0095A420 IsStillRunnable protected
+0x0095C1F0	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x0095A420 IsStillRunnable protected
+0x0093BFA0	self-row respell (public non-const -> private const, + Leaf line)	RELOCATION_MATCH	PASS	1	land1011dd: Ego_r 0x0095F610 / FableWin 0x02B81150
+0x009717A0	self-row respell (owner pointer -> reference, + Leaf line)	RELOCATION_MATCH	PASS	1	land1011dd: Ego_r 0x00996650 / FableWin 0x02B86570
+0x0095CB80	self-row respell ((CThingCreatureBase*, CThing*) -> two CThingCreatureBase references, + Leaf line)	RELOCATION_MATCH	PASS	1	land1011dd: Ego_r 0x00981460 / FableWin 0x02C123A0
+0x007FEF40	self-row rename (stand-in CPointerListOwner_007fef40::Add over invented CRetailVector -> CTCUserActionPointBase::SetActionPointAsFree over engine/campfire_types.h + stlport/fable_containers.h) (test changed)	RELOCATION_MATCH	PASS	3	land1011dd; 0x00440990 now binds the STLport vector<long>::_M_insert_overflow spelling (was ?InsertGrow@?$CRetailVector@...); the old 'lane gap' note is gone: the shared STLport body gives retail's tag-on-argument-slot shape
+0x00F33D90	self-row rename (stand-in CDefRecordVector::Resize over local CDefRecord34 -> std::vector<CFireHeartPatternDef>::resize(size_type) over engine/CFireHeartPatternDef.h + stlport/fable_containers.h)	RELOCATION_MATCH	PASS	2	land1011de 0x00F33DC0 ctor binder; also 0x00F33DE0 and 0x00D34F80 now bind their landed spellings; grade 1 hung (#error in CDefString.h without FABLE_RETAIL_CDEFSTRINGTABLE; cl killed by PID)
+0x00EF6E40	binder respelled (local CPredicate/CIsThingAlive/CPredicate_And/NScript::CScriptThing stand-ins -> shared headers; full Leaf)	RELOCATION_MATCH	PASS	2	land1011de vtable 0x012C2FF4; header opt-in FABLE_RETAIL_CPREDICATE_AND_INLINE_DTOR
+0x00EF7AB0	self-row rename (stand-in CScriptThingFunctor_00ef7ab0 -> NScript::CIsThingConscious::~CIsThingConscious over shared headers)	RELOCATION_MATCH	PASS	1	land1011de vtable 0x012C2FF4 binder; 0x012C2FE8 now binds ??_7CIsThingConscious@NScript@@6B@ (was ??_7CScriptThingFunctor_00ef7ab0@@6B@); test unchanged (self-contained copy of the old body)
+0x00EF84D0	binder respelled (local CPredicateBase/CFilterBase/CIsThing/CAnd stand-ins -> shared NScript predicate headers)	RELOCATION_MATCH	PASS	1	land1011de vtable 0x012C2FF4; also 0x012C2FE8 / 0x00EF7AB0 / 0x012F687C / 0x00EF8740 now bind the CIsThingConscious / CPredicate_And spellings
+0x00E8B020	binder respelled (local CIsThingAlive/CIsFlagFalse/CAndPredicate -> shared NScript predicate headers)	RELOCATION_MATCH	PASS	1	land1011de vtable 0x012EA43C; also 0x012EA430 / 0x00E7E020 now bind the CPredicate_And<CIsThingAlive,CIsVariableFalse> spellings
+0x00F263D0	self-row rename (stand-in CFireheartMinigameDef_00f263d0 ctor -> CArenaCreatureDef::CArenaCreatureDef over engine/CArenaCreatureDef.h)	RELOCATION_MATCH	PASS	1	land1011de vtable 0x012FB358; 0x0042D9E0 now binds ??0CDefClassBase@@AAE@XZ (was ??0CPSCBase@@QAE@XZ); test unchanged (self-contained copy)
+0x00CAC9D0	self-row respell (free CreateInstance over CMemAllocatorNative/CBaseAllocatorNative/CUnknownAllocator stand-ins -> static CMemAllocator::CreateInstance with the strmbase class names) + Leaf line	RELOCATION_MATCH	PASS	1	land1011de vtable 0x012BF83C; also 0x012BF810 and 0x00CACC80 now bind the landed spellings; test unchanged (self-contained copy)
+0x00CD4500	self-row rename (C3DAnimationUtil stand-in -> CScriptDataBase::CScriptDataBase over engine/CScriptDataBase.h)	RELOCATION_MATCH	PASS	1	land1011de; test unchanged
+0x00CD4620	self-row rename (C3DAnimationUtil stand-in -> NScript::CalextestData::CalextestData over engine/CalextestData.h + opt-in FABLE_RETAIL_NSCRIPT_DATA_CTOR)	RELOCATION_MATCH	PASS	1	land1011de; test unchanged
+0x00CD4660	self-row rename (C3DAnimationUtil stand-in -> NScript::CEmptyData::CEmptyData over engine/CEmptyData.h + opt-in FABLE_RETAIL_NSCRIPT_DATA_CTOR)	RELOCATION_MATCH	PASS	1	land1011de; test unchanged
+0x00CD46A0	self-row rename (C3DAnimationUtil stand-in -> NScript::Cjoss_test_scriptsData::Cjoss_test_scriptsData over engine/Cjoss_test_scriptsData.h + opt-in FABLE_RETAIL_NSCRIPT_DATA_CTOR)	RELOCATION_MATCH	PASS	1	land1011de; test unchanged
+0x00CD46E0	self-row rename (C3DAnimationUtil stand-in -> NScript::CDanyalTestScriptsData::CDanyalTestScriptsData over engine/CDanyalTestScriptsData.h + opt-in FABLE_RETAIL_NSCRIPT_DATA_CTOR)	RELOCATION_MATCH	PASS	1	land1011de; test unchanged
+0x00CDBD20	self-row rename (free pSunnyvaleDataAlloc_func over local models -> NScript::CQ_SunnyvaleMasterData::Alloc over engine/CQ_SunnyvaleMasterData.h + opt-in)	RELOCATION_MATCH	PASS	1	land1011de; vtable 0x012C2748 now binds ??_7CQ_SunnyvaleMasterData@NScript@@6B@; test unchanged
+0x00CDBD70	self-row rename (descriptive CNoRttiObject_012C2748 -> NScript::CQ_SunnyvaleMasterData scalar deleting dtor over engine/CQ_SunnyvaleMasterData.h)	RELOCATION_MATCH	PASS	1	land1011de; 0x00414EA0 binds the landed STLport ~vector spelling; test unchanged
+0x0056DDC0	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00617140	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00619E30	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	2	Part 2
+0x0070B0A0	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00777A00	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x009C2B00	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00B442E0	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00739A70	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00792B30	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00797E30	held-back rename ported onto shared headers (agentFAM07 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header) (test = FAM07's)	RELOCATION_MATCH	PASS	5	Part 2
+0x008B0020	held-back rename ported onto shared headers (agentFAM07 draft: local CCharString + class model -> fable_string.h + engine header opt-in FABLE_RETAIL_COMBATSEQUENCE_STATGETNAME) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x008B0440	held-back rename ported onto shared headers (agentFAM07 draft: local CCharString + class model -> fable_string.h + engine header opt-in FABLE_RETAIL_COMBATSEQUENCE_STATGETNAME) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x008B04C0	held-back rename ported onto shared headers (agentFAM07 draft: local CCharString + class model -> fable_string.h + engine header opt-in FABLE_RETAIL_COMBATSEQUENCE_STATGETNAME) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x0056D440	held-back rename ported onto shared headers (agentNF23 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header)	RELOCATION_MATCH	PASS	1	Part 2
+0x00776AA0	held-back rename ported onto shared headers (agentNF23 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header)	RELOCATION_MATCH	PASS	1	Part 2
+0x009C1DC0	held-back rename ported onto shared headers (agentNF23 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header)	RELOCATION_MATCH	PASS	1	Part 2
+0x00B3E6E0	held-back rename ported onto shared headers (agentNF23 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header)	RELOCATION_MATCH	PASS	1	Part 2
+0x00B3E750	held-back rename ported onto shared headers (agentNF23 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header)	RELOCATION_MATCH	PASS	1	Part 2
+0x00B3E8D0	held-back rename ported onto shared headers (agentNF23 draft: copied STLport text + local class model -> stlport/fable_map.h + engine header)	RELOCATION_MATCH	PASS	1	Part 2
+0x00B3E990	held-back rename ported onto shared headers (agentFAM07 draft -> stlport/fable_map.h + engine/CEngineResourceManager.h opt-in FABLE_RETAIL_CENGINERESOURCEMANAGER_EXTERNALTEXTURES) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00B3E9D0	held-back rename ported onto shared headers (agentFAM07 draft -> stlport/fable_map.h + engine/CEngineResourceManager.h opt-in FABLE_RETAIL_CENGINERESOURCEMANAGER_EXTERNALTEXTURES) (test = FAM07's)	RELOCATION_MATCH	PASS	1	Part 2
+0x00705C30	binder respelled	RELOCATION_MATCH	PASS	1	land1011dd 0x005CC10E const member template GetSubDef<CCarryableDef>

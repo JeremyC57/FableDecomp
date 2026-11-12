@@ -15,6 +15,7 @@
 // Shape: separate `if (...) { Terminate(); return; }` exits tail-merged into one Terminate block; a do/while
 // yield loop on the strafe action.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF24): 0x0097F3A0 respelled the protected CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat, C3DVector, CIntelligentPointer<const CThing>, bool&, EMovementType, bool) (Ego_r 0x0084A590 / FableWin 0x02890AB0); the CIntelligentPointerConstThing stand-in replaced by the shared template (CONVERT_MUTABLE), PEnemy typed CIntelligentPointer<CThingCreatureBase>
 class CTCBase;
 class CWorld;
 
@@ -26,9 +27,11 @@ class CWorld;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
+#include "engine/fable_ai_action_enums.h"
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
 #include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
@@ -86,6 +89,9 @@ class CAIStateGroupBase { public:
     }
 protected:
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+    // 0x0097F3A0 Ego_r/FableWin protected member (the landed 0x009711D0 binds the same spelling)
+    EAIActionReturn AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat repeat, C3DVector pos, CIntelligentPointer<const CThing> target,
+        bool& nav_route_calculated, EMovementType movement, bool strafe);
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -101,21 +107,15 @@ class CCombatManager { public:
 class CThingCreatureBase : public CThing { public:
     CCombatManager& GetCombatManager();         // 0x00661ED0
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
-    virtual void v00();
-    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
 
 struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
-    CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase> PEnemy;   // +0x14
     CBaseIntelligentPointer PFirePoint;         // +0x1c CIntelligentPointer<CThing>
     long TimeOutCounter;                        // +0x24
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     void Terminate();                           // 0x008FCF40
     bool IsStillRunnable();                     // 0x0095D0E0
     bool AttackEnemy();                         // 0x0095D070
-    long AIAction_ProjectileAttackAndStrafeToPos(long repeat, C3DVector pos, CIntelligentPointerConstThing target,
-        bool* reached, long movement, bool a);  // 0x0097F3A0
     virtual void Update();
 };
 
@@ -128,12 +128,12 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
     CThingCreatureBase* creature = GetCreature();
     creature->GetCombatManager().RegisterCombatant(creature, (CThingCreatureBase*)PEnemy.GetPItem(), false);
     bool reached;
-    long result;
+    EAIActionReturn result;
     do {
-        result = AIAction_ProjectileAttackAndStrafeToPos(2,
-            ((CThingCreatureBase*)PFirePoint.GetPItem())->GetPos(), PEnemy, &reached, 5, true);
-    } while (result == 4);
-    if (result != 2) {
+        result = AIAction_ProjectileAttackAndStrafeToPos(ACTION_REPEAT_CALLBACK,
+            ((CThingCreatureBase*)PFirePoint.GetPItem())->GetPos(), PEnemy, reached, AI_MOVEMENT_RUNNING, true);
+    } while (result == AI_ACTION_IN_PROGRESS);
+    if (result != AI_ACTION_FINISHED) {
         Terminate();
         return;
     }

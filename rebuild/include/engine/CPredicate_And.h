@@ -19,7 +19,15 @@ public:
     CPredicate_And(const P1&, const P2&);                                // <CIsThingAlive,CIsThingAlive> 0x00E24760
     virtual bool operator()() const;                                     // slot 0
     virtual CPredicateBase* Clone() const;                               // slot 1
+#ifdef FABLE_RETAIL_CPREDICATE_AND_INLINE_DTOR
+    // Per-TU opt-in (agentNF24, row 0x00EF6E40 the ??_G of CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,
+    // CIsThingAlive>,CIsThingAlive>): the implicit destructor body is inline in retail -- that ??_G expands the three And destructors
+    // (each stores its own vtable 0x012F6780 / 0x012F6628 / 0x012E1B70, destroys Predicate2 then Predicate1, and the CPredicateBase
+    // dtor resets 0x012C2FF4) and calls only ~CIsThingAlive 0x00E241B0 out of line. The same inline body as the landed 0x00E245A0.
+    virtual ~CPredicate_And() { }                                        // slot 2
+#else
     virtual ~CPredicate_And();                                           // slot 2
+#endif
     P1 Predicate1;                                                       // +0x04
     P2 Predicate2;
 };
