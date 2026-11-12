@@ -1,0 +1,4 @@
+- An inline member defined OUTSIDE its class in another header (CPlayer::GetPPlayerCharacter in CThingPlayerCreature.h, guarded by FABLE_ENGINE_CPLAYER_H) silently becomes a call when the include order hides the definition: include the declaring header first.
+- c2 inline trace (agent2003 inl tools, copied to work/inl): the decision score is per site (c1 x frequency factor, threshold 74); when retail expands a helper at a site whose score is over 74 and another site in the same function proves the threshold (a lower-scored site retail calls), the helper takes a FABLE_FORCEINLINE opt-in.
+- A visible-but-not-inlined constructor body (CSoundInit) lets c2 keep a global pointer read before the call in a register and fixes the store schedule after it; the out-of-line call stays.
+- fg.py reports `mov [esp+x], 0` as a hunk when OUR bytes contain 00000000 (masked as REL): identical lines in a "replace" hunk are false residues.

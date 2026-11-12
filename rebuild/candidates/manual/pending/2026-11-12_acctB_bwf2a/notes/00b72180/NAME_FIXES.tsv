@@ -1,0 +1,2 @@
+0x00F36EE0	?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z	Ego_r 0x00B3C370 name; body returns entry+4 (0x00F36F10 returns +8 = StartSurfaceUse); result stored into CTexture* members (0x00B72A18..)	StartSurfaceUse
+0x00A10E20	?DetachZBuffer@CRenderTarget@@QAEXXZ	Ego_r Attach/Detach Target/ZBuffer pairs; body tests +0x18 and uninitialises the +0x14 ZBufferSurface; called right after DetachTarget 0x00A10E10 at 0x00B7364E	DetachTarget

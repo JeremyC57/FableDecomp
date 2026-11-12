@@ -1,0 +1,1 @@
+- Big constructor rows of the shader-table family can match first time from the scout outline: read the shared resource into a named local when retail keeps it in a register; aligned frames (and esp,-8) follow from 8-byte by-value temporaries without any helper.

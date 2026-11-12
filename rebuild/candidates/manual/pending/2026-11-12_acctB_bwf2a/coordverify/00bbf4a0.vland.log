@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00bbf4a0   WARN RELOC_CONFLICT: ?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA -> 01396dd8 here, 01396de8 in landed 00bbc460
+00bbf4a0   RELOCATION_MATCH PASS   RenderSubPrimitive
+
+WINS: 1
+  00bbf4a0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::RenderSubPrimitive

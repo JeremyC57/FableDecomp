@@ -1,0 +1,1 @@
+007726b0	?GetQuantity@CTCShop@@QBEJJ@Z	dossier: only CTCShop QBEJJ@Z name besides GetMaxStock/GetDaysTillRestock in Ego_r+FableWin; body reads CShopItem::Quantity	GetStockQuantity

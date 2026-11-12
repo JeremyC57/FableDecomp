@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00b72180   WARN RELOC_NAME: ??_GCGraphicFrameData@@QAEPAXI@Z -> 0041bdf0 labelled 'CGraphicFrameData::`scalar deleting destructor''
+00b72180   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00b72180   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b72180   WARN RELOC_NAME: ?DetachZBuffer@CRenderTarget@@QAEXXZ -> 00a10e20 labelled 'CRenderTarget::DetachTarget'
+00b72180   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b72180   RELOCATION_MATCH PASS   CreateDynamicTextures
+
+WINS: 1
+  00b72180 RELOCATION_MATCH CEngineWaterRenderer::CreateDynamicTextures

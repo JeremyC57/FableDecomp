@@ -1,0 +1,4 @@
+005b62fe	CTCInventoryClothing::GetItemDescriptionNoArmourRating	CTCInventoryClothing
+007726b0	CTCShop::GetQuantity	CTCShop
+00772720	CTCShop::GetMaxStock	CTCShop
+00772790	CTCShop::GetDaysTillRestock	CTCShop

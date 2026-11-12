@@ -1,0 +1,2 @@
+- (bwf2 0x00B72180) Two adjacent byte slots holding "old" shader enables = FableWin's CScopedShadersEnable (Ego_r OldVertexEnable/OldPixelEnable), not two bool locals; using it also fixed unrelated frame-slot order.
+- (bwf2 0x00B72180) ??_G called on the error path but expanded on the success path after `for (...) { if (...) break; }` loops = static frequency 7.2 after the loops (c2 inline trace); `while` loops with the same break keep it a call.

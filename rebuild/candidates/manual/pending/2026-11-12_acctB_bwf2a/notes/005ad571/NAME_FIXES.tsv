@@ -1,0 +1,1 @@
+0x007726B0	?GetQuantity@CTCShop@@QBEJJ@Z	Ego_r.pdb 0x0077F780 GetQuantity followed by GetMaxStock/GetDaysTillRestock at the retail 0x70 spacing; FableWin.pdb same symbol	CTCShop::GetStockQuantity (rebuild/src/compiled/00/77/*7726b0*, manifest)

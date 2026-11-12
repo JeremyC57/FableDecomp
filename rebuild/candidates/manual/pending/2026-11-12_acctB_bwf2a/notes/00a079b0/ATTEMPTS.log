@@ -1,0 +1,2 @@
+17:52 00a079b0 grade v1.cpp MATCH -- header retail branch + inline CStateInfo ctor, empty CDeviceState ctor
+17:53 00a079b0 grade src_00a079b0.cpp MATCH -- strict regrade

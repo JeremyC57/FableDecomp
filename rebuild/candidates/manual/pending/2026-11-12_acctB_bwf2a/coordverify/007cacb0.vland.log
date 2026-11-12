@@ -1,0 +1,7 @@
+addr       parity           behav  name
+007cacb0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+007cacb0   WARN RELOC_NAME: ?Init@CRightHandedSet@@QAEXABVC3DVector@@0@Z -> 004bbe10 labelled 'CRightHandedSet::Set'
+007cacb0   RELOCATION_MATCH PASS   GlobalUpdate
+
+WINS: 1
+  007cacb0 RELOCATION_MATCH CTCHeroReceiveItems::GlobalUpdate

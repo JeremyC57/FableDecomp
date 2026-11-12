@@ -1,0 +1,1 @@
+0045A159	??4CInventoryDef@@QAEAAV0@ABV0@@Z	only caller 0x0045A154 = ?Copy@CInventoryDef@@UAEXPBVCDefClassBase@@@Z jmp (rtti_port_compare.tsv); Ego_r.pdb egor_pdb_names.tsv names it; member stream = Ego_r CInventoryDef layout	ForwardTarget_0045a159 (in CInventoryDef_Copy_0045a154.cpp); manifest CParentDefClassBase::operator=

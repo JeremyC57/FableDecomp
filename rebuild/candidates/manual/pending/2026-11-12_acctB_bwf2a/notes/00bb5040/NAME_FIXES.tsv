@@ -1,0 +1,1 @@
+0x00A5D5F0	?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z	engine/CShaderResource.h GetVertexShader + landed 0x00BC14E0/0x00BB6E00 call it with VSHADER_* names; GetPixelShader is 0x00A5D720	GetPixelShader (00/a5/CShaderResource_GetPixelShader_00a5d5f0.cpp)

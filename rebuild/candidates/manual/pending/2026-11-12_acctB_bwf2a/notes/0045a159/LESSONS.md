@@ -1,0 +1,1 @@
+- Big def operator= rows (391 members) match first try when the scout's PDB-ordered member list is pasted into an explicit op= under optimize("s") with the full class in a header overlay.
