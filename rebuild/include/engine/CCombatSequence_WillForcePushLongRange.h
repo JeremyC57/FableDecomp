@@ -6,6 +6,19 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+// Retail opt-in (chunk F2, row 0x00909A00): define FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE before the include for the
+// polymorphic retail class. RTTI .?AVCCombatSequence_WillForcePushLongRange@@ : CCombatSequenceBase; no members of its own (0x28).
+// Ego_r.pdb virtuals: ?OnCreate@..@@UAEXXZ (0x00909520), ?IsValid@..@@UBE_NXZ (0x00909A00), ?OnStart@..@@UAEXXZ (0x00909B50),
+// ?GetName@..@@UBE?AVCCharString@@XZ. The includer supplies CCombatSequenceBase (no shared header), as for CCombatSequenceGeneric.
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE
+#include <stddef.h>
+#include "rebuild_abi.h"
+class CCombatSequence_WillForcePushLongRange : public CCombatSequenceBase {
+public:
+    virtual bool IsValid() const;                                        // 0x00909A00
+};
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillForcePushLongRange) == 0x28);
+#else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -23,5 +36,7 @@ struct CCombatSequence_WillForcePushLongRange {
 
 FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillForcePushLongRange) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CCombatSequence_WillForcePushLongRange, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_H

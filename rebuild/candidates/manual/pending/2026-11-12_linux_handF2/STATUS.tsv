@@ -1,0 +1,7 @@
+address	name	grade	grades_used	note
+00406ae0	CUserProfileManager::GetManualSaveDisplayName	RELOCATION_MATCH	22	symbol as implicit CCharString temporary; inline GFIntToWideString body in the TU
+009d5bf0	CBankFileAsync::HandleFailedAllocation	RELOCATION_MATCH	6	std::set port; STLport insert bodies visible (FABLE_RETAIL_STLP_MAP + _ORIGINAL_INSERT_BODY)
+00be06b0	CEngineStaticMapFileBlockManager::AddRequest	RELOCATION_MATCH	7	CFileBlock aggregate initialiser; STLport insert bodies visible
+00909a00	CCombatSequence_WillForcePushLongRange::IsValid	RELOCATION_MATCH	19	two separate return true statements keep the dead compare; view copied from the camera temporary
+00b939e0	CEngineSceneGrid::CheckVisibilityResults	RELOCATION_MATCH	7	inline GetCell(x, y); single return visible
+00bcfb00	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveBlocksIndexBuffer	RELOCATION_MATCH	6	PDB inline accessors; implicit CShaderConstantRange copy / dtor; draw arguments in locals

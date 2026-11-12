@@ -39,6 +39,12 @@ private:
     static CWideString m_strProfileName;                                  // 0x013B7D54
 public:
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+    // Retail opt-in (chunk F2, row 0x00406AE0): Ego_r.pdb / FableWin.pdb ?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z
+    // (0x00406610) and ?GetManualSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@J@Z (0x00406AE0). Declarations only.
+    CWideString GetManualSaveFileName(long slot) const;                  // 0x00406610
+    CWideString GetManualSaveDisplayName(long slot) const;               // 0x00406AE0
+#endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
     // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in

@@ -21,6 +21,10 @@ public:
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_DATA
     friend class CBankFileAsyncData;
 #endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_HANDLEFAILEDALLOCATION
+    // Retail opt-in (chunk F2, row 0x009D5BF0): Ego_r.pdb / FableWin.pdb ?HandleFailedAllocation@CBankFileAsync@@QAE_NXZ. Declaration only.
+    bool HandleFailedAllocation();                                       // 0x009D5BF0
+#endif
 private:
     CCountedPointer<CThreadedFile> ThreadedFile;
     CCountedPointer<CMovableResourceMemoryPool> LoadingMemoryPool;

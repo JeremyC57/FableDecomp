@@ -292,6 +292,19 @@ public:
         return iterator(y);
     }
     pair<iterator,iterator> equal_range(const K& key) { return pair<iterator,iterator>(lower_bound(key),upper_bound(key)); }
+#ifdef FABLE_RETAIL_STLP_SET_UPPER_BOUND
+    // Retail opt-in (chunk F2, row 0x009D5BF0 CBankFileAsync::HandleFailedAllocation): STLport 4.6 _tree.h const upper_bound (the
+    // same walk as the non-const one, returning const_iterator), which _set.h's upper_bound forwards to; inline in retail.
+    const_iterator upper_bound(const K& key) const {
+        _Link_type y=this->_M_header._M_data;
+        _Link_type x=_M_root();
+        while(x!=0) {
+            if(_M_key_compare(key,_S_key(x))) {y=x;x=_S_left(x);}
+            else x=_S_right(x);
+        }
+        return const_iterator(y);
+    }
+#endif
     void erase(iterator first,iterator last) {
         if(first==begin()&&last==end()) clear();
         else while(first!=last) erase(first++);
@@ -464,6 +477,11 @@ public:
     iterator begin() const { return _M_t.begin(); }
     iterator end() const { return _M_t.end(); }
     size_t size() const { return _M_t.size(); }
+#endif
+#ifdef FABLE_RETAIL_STLP_SET_UPPER_BOUND
+    // Retail opt-in (chunk F2, row 0x009D5BF0): STLport 4.6 _set.h `iterator upper_bound(const key_type& __x) const { return
+    // _M_t.upper_bound(__x); }`. Needs FABLE_RETAIL_STLP_TREE_ERASE_KEY (the tree's upper_bound block).
+    iterator upper_bound(const K& x) const { return _M_t.upper_bound(x); }
 #endif
 #ifdef FABLE_RETAIL_STLP_SET_EMPTY
     // Per-TU opt-in (chunk 849, row 0x00501450 CWorldMap::GenerateRegionConnectivityGraph): STLport 4.6 _set.h `bool empty() const

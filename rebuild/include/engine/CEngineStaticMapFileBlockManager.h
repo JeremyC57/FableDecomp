@@ -10,6 +10,10 @@ class CBankFileAsyncData;
 class CEngineStaticMapFileBlockManager {
 public:
     ~CEngineStaticMapFileBlockManager();
+#ifdef FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_ADDREQUEST
+    // Retail opt-in (chunk F2, row 0x00BE06B0): Ego_r.pdb ?AddRequest@CEngineStaticMapFileBlockManager@@QAEXJJ_N@Z. Declaration only.
+    void AddRequest(long block, long size, bool lowPriority);            // 0x00BE06B0
+#endif
 private:
     struct CFileBlock {
         long RefCount;

@@ -294,4 +294,28 @@ private:
 };
 FABLE_STATIC_ASSERT(sizeof(CShaderRenderManager) == 0x3e8);
 
+#ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BLOCKDRAW
+// Retail opt-in (chunk F2, row 0x00BCFB00 CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveBlocksIndexBuffer): the bodies
+// of two members retail expands there. ?SetBoneTransforms@CShaderRenderManager@@QAEXJJPBUCPreTransposedBoneMatrix@@@Z (Ego_r.pdb
+// 0x00AE6440; no retail copy): three constant rows per matrix through the private SetVSConstants 0x0098B930. The six-argument
+// ?DrawBuffersIndexed@..@@QAEXKKAAVCIndexBuffer@@KKW4EPrimitiveType@@@Z: the body the landed 0x00B8EB00 / 0x00BA7DB0 overloads expand
+// (SetIndices, PT_NULL = the index buffer's own primitive type, RealiseRenderState 0x00A058C0, DrawIndexedPrimitive).
+// The includer defines FABLE_RETAIL_CRENDERMANAGERCORE (engine/CRenderManager.h is included here for RealiseRenderState).
+#include "engine/CIndexBuffer.h"
+#include "engine/CRenderManager.h"
+inline void CShaderRenderManager::SetBoneTransforms(long first_register, long count, const CPreTransposedBoneMatrix* matrices)
+{
+    SetVSConstants(first_register, matrices, count * 3);
+}
+inline void CShaderRenderManager::DrawBuffersIndexed(unsigned long min_vertex_index, unsigned long num_vertices, CIndexBuffer& index_buffer,
+                                                     unsigned long start_index, unsigned long primitive_count, EPrimitiveType primitive_type)
+{
+    D3DDevice->SetIndices(index_buffer.PD3DIndexBuffer);
+    if (primitive_type == PT_NULL)
+        primitive_type = *reinterpret_cast<EPrimitiveType*>(index_buffer.PrimitiveType);
+    RenderManager->RealiseRenderState();
+    D3DDevice->DrawIndexedPrimitive(primitive_type, 0, min_vertex_index, num_vertices, start_index, primitive_count);
+}
+#endif
+
 #endif // FABLE_ENGINE_CSHADERRENDERMANAGER_H

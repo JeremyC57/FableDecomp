@@ -1,0 +1,73 @@
+09:43 00406ae0 grade a1.cpp ERROR -- ported, inline GFIntToWideString body in TU; a2 named number in arm1
+09:43 00406ae0 grade a1.cpp DIFFER(356v314) hunks=13 -- ported, inline GFIntToWideString body in TU; a2 named number in arm1
+09:43 00406ae0 grade a2.cpp DIFFER(356v314) hunks=13 -- ported, inline GFIntToWideString body in TU; a2 named number in arm1
+09:43 00406ae0 grade b1.cpp DIFFER(344v314) hunks=6 -- local component pointers; b2 named number arm1; b3 named both
+09:43 00406ae0 grade b2.cpp DIFFER(344v314) hunks=17 -- local component pointers; b2 named number arm1; b3 named both
+09:43 00406ae0 grade b3.cpp DIFFER(346v314) hunks=10 -- local component pointers; b2 named number arm1; b3 named both
+09:44 00406ae0 grade b3.cpp DIFFER(346v314) hunks=10 -- b3 again for hunks; c1 named number in arm2 only
+09:44 00406ae0 grade c1.cpp DIFFER(346v314) hunks=10 -- b3 again for hunks; c1 named number in arm2 only
+09:45 00406ae0 grade d1.cpp DIFFER(346v314) hunks=10 -- d1 const-ref number both arms; d2 arm2 only; e1 shared inline helper
+09:45 00406ae0 grade d2.cpp DIFFER(346v314) hunks=10 -- d1 const-ref number both arms; d2 arm2 only; e1 shared inline helper
+09:45 00406ae0 grade e1.cpp DIFFER(88v314) hunks=8 -- d1 const-ref number both arms; d2 arm2 only; e1 shared inline helper
+09:45 00406ae0 grade f1.cpp DIFFER(344v314) hunks=6 -- two distinct inline int-to-string fns (Dynamic arm1 / arm2 / decl-only plain)
+09:45 00406ae0 grade f2.cpp DIFFER(344v314) hunks=6 -- two distinct inline int-to-string fns (Dynamic arm1 / arm2 / decl-only plain)
+09:45 00406ae0 grade f3.cpp DIFFER(344v314) hunks=6 -- two distinct inline int-to-string fns (Dynamic arm1 / arm2 / decl-only plain)
+09:46 00406ae0 grade g1.cpp DIFFER(296v314) hunks=20 -- probe-on-row: g1 no inline (see arm2 slot reuse); g2 return CWideString(result)
+09:46 00406ae0 grade g2.cpp DIFFER(344v314) hunks=6 -- probe-on-row: g1 no inline (see arm2 slot reuse); g2 return CWideString(result)
+00406ae0 probe 1 no-inline both arms: which slots does arm 2 reuse -> see below
+00406ae0 grade 13 DIFFER(344v314) b2 regrade to read full listing (named number arm 1)
+09:53 00406ae0 grade h1.cpp DIFFER(353v314) hunks=3 -- h1 inline wrapper around GFInt both arms; h2 arm 2 only; h3 symbol as implicit temp
+09:53 00406ae0 grade h2.cpp DIFFER(353v314) hunks=3 -- h1 inline wrapper around GFInt both arms; h2 arm 2 only; h3 symbol as implicit temp
+09:53 00406ae0 grade h3.cpp RELOCATION_MATCH -- h1 inline wrapper around GFInt both arms; h2 arm 2 only; h3 symbol as implicit temp
+09:53 00406ae0 grade 00406ae0.cpp RELOCATION_MATCH -- final source, strict headers
+09:55 009d5bf0 grade r2a.cpp DIFFER(305v314) hunks=24 -- port onto shared headers: std::set upper_bound/iterator, volatile flags, inline FreeBuffer
+009d5bf0 grade 2 DIFFER(305v314) r2a regrade to read found block
+09:57 009d5bf0 grade r2b.cpp DIFFER(305v314) hunks=24 -- insert_unique body visible (FABLE_RETAIL_STLP_MAP; +ORIGINAL_INSERT_BODY)
+09:57 009d5bf0 grade r2c.cpp RELOCATION_MATCH -- insert_unique body visible (FABLE_RETAIL_STLP_MAP; +ORIGINAL_INSERT_BODY)
+09:58 009d5bf0 grade 009d5bf0.cpp RELOCATION_MATCH -- final source, strict headers
+10:00 00be06b0 grade r3a.cpp DIFFER(349v322) hunks=24 -- port: std::map find/insert, CFileBlock local + pair; b find member template; c insert bodies visible
+10:00 00be06b0 grade r3b.cpp DIFFER(349v322) hunks=24 -- port: std::map find/insert, CFileBlock local + pair; b find member template; c insert bodies visible
+10:00 00be06b0 grade r3c.cpp DIFFER(339v322) hunks=22 -- port: std::map find/insert, CFileBlock local + pair; b find member template; c insert bodies visible
+10:00 00be06b0 grade r3d.cpp DIFFER(333v322) hunks=16 -- CFileBlock aggregate init {1, lowPriority, data}; e with insert bodies visible
+10:00 00be06b0 grade r3e.cpp RELOCATION_MATCH -- CFileBlock aggregate init {1, lowPriority, data}; e with insert bodies visible
+10:00 00be06b0 grade 00be06b0.cpp RELOCATION_MATCH -- final source, strict headers
+10:04 00909a00 grade r4a.cpp DIFFER(299v336) hunks=10 -- port onto shared headers (CThing PeekTC, CWorld/CAIGameCameraBase/CCamera, C3DVector Normalise/Dot)
+10:04 00909a00 grade r4b.cpp DIFFER(136v336) hunks=11 -- creature reference local; dead compare as empty if / expression statement / unused bool
+10:04 00909a00 grade r4c.cpp DIFFER(136v336) hunks=11 -- creature reference local; dead compare as empty if / expression statement / unused bool
+10:05 00909a00 grade r4d.cpp DIFFER(136v336) hunks=11 -- creature reference local; dead compare as empty if / expression statement / unused bool
+10:06 00909a00 grade r4e.cpp DIFFER(136v336) hunks=11 -- dead compare as ?: true:true / || true / if-else returns
+10:06 00909a00 grade r4f.cpp DIFFER(136v336) hunks=11 -- dead compare as ?: true:true / || true / if-else returns
+10:06 00909a00 grade r4g.cpp DIFFER(296v336) hunks=8 -- dead compare as ?: true:true / || true / if-else returns
+10:06 00909a00 grade r4h.cpp DIFFER(136v336) hunks=10 -- common return true; dead arm: dot=0 / view.Y=0 / bool behind
+10:06 00909a00 grade r4i.cpp DIFFER(136v336) hunks=10 -- common return true; dead arm: dot=0 / view.Y=0 / bool behind
+10:06 00909a00 grade r4j.cpp DIFFER(136v336) hunks=10 -- common return true; dead arm: dot=0 / view.Y=0 / bool behind
+00909a00 probe 1 live compare (return false arm): natural FP sequence of the dot -> see listing
+00909a00 probe 2 view copied from the GetRenderCamera temporary, live compare -> see listing
+00909a00 grade 12 DIFFER r4m: temp camera + if/return true/return true
+10:08 00909a00 grade r4n.cpp DIFFER(332v336) hunks=3 -- temp camera view copy; if (dot<0) return true then common return true (n), nested (o), negated (p)
+10:08 00909a00 grade r4o.cpp DIFFER(313v336) hunks=9 -- temp camera view copy; if (dot<0) return true then common return true (n), nested (o), negated (p)
+10:08 00909a00 grade r4p.cpp DIFFER(332v336) hunks=3 -- temp camera view copy; if (dot<0) return true then common return true (n), nested (o), negated (p)
+10:08 00909a00 grade r4q.cpp RELOCATION_MATCH -- positive nesting: if (powered) {...; if (dot<0) return true;} else return false; common return true
+10:09 00909a00 grade 00909a00.cpp RELOCATION_MATCH -- final source, strict headers
+10:09 00909a00 grade r4s.cpp SRC_FAIL -- CThingCreatureBase from the shared header (strict)
+10:09 00909a00 grade r4s.cpp RELOCATION_MATCH -- CThingCreatureBase from the shared header with the 00934f20 opt-in set (strict)
+10:11 00b939e0 grade r5a.cpp DIFFER(316v336) hunks=14 -- port onto shared CEngineSceneGridCell.h + CArray
+10:11 00b939e0 grade r5b.cpp DIFFER(323v336) hunks=22 -- single return visible: if (cell check) visible=true; else if (...) ; c: two ifs
+10:11 00b939e0 grade r5c.cpp DIFFER(323v336) hunks=22 -- single return visible: if (cell check) visible=true; else if (...) ; c: two ifs
+10:12 00b939e0 grade r5d.cpp DIFFER(329v336) hunks=3 -- inline GetCell(x,y) accessor (FableWin name); d: return in arm, e: else-if single return
+10:12 00b939e0 grade r5e.cpp RELOCATION_MATCH -- inline GetCell(x,y) accessor (FableWin name); d: return in arm, e: else-if single return
+10:12 00b939e0 grade 00b939e0.cpp RELOCATION_MATCH -- final source, strict headers
+10:17 00bcfb00 grade r6a.cpp DIFFER(341v336) hunks=6 -- port onto shared headers: accessors, GetBoneMatrices temp, SetBoneTransforms / DrawBuffersIndexed inline
+10:18 00bcfb00 grade r6a.cpp DIFFER(336v336) hunks=4 -- CShaderConstantRange implicit dtor (no vptr re-store)
+10:18 00bcfb00 grade r6b.cpp DIFFER(336v336) hunks=3 -- draw arguments read into locals first: orders PVS / VPS / SVP
+10:18 00bcfb00 grade r6c.cpp RELOCATION_MATCH -- draw arguments read into locals first: orders PVS / VPS / SVP
+10:19 00bcfb00 grade 00bcfb00.cpp RELOCATION_MATCH -- final source, strict headers
+10:19 00406ae0 grade 00406ae0.cpp RELOCATION_MATCH -- final regrade against the complete overlay (strict)
+10:19 009d5bf0 grade 009d5bf0.cpp RELOCATION_MATCH -- final regrade against the complete overlay (strict)
+10:19 00bcfb00 grade 00bcfb00.cpp RELOCATION_MATCH -- final regrade (plain inline in the header opt-in; strict)
+10:19 00be06b0 grade 00be06b0.cpp RELOCATION_MATCH -- final regrade against the complete overlay (strict)
+10:19 00909a00 grade 00909a00.cpp RELOCATION_MATCH -- final regrade against the complete overlay (strict)
+10:19 00b939e0 grade 00b939e0.cpp RELOCATION_MATCH -- final regrade against the complete overlay (strict)
+10:21 009d5bf0 grade 009d5bf0.cpp RELOCATION_MATCH -- comment wording only; regrade
+10:21 00be06b0 grade 00be06b0.cpp RELOCATION_MATCH -- comment wording only; regrade
+10:24 00b939e0 grade r5f.cpp RELOCATION_MATCH -- shared CBaseClassNonCopyable

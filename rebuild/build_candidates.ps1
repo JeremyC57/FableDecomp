@@ -393552,6 +393552,48 @@ $catalog = @(
         TestSource = '00/80/CTCTargetingPlayer_GetPBestThingForMeleeAttack_008031e0_test.cpp'
         PassPattern = '008031e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00406ae0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetManualSaveDisplayName_00406ae0.cpp'
+        TestSource = '00/40/CUserProfileManager_GetManualSaveDisplayName_00406ae0_test.cpp'
+        PassPattern = '00406ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00909a00'
+        Module = 'CCombatSequence_WillForcePushLongRange'
+        Source = '00/90/CCombatSequenceWillForcePushLongRange_IsValid_00909a00.cpp'
+        TestSource = '00/90/CCombatSequenceWillForcePushLongRange_IsValid_00909a00_test.cpp'
+        PassPattern = '00909a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcfb00'
+        Module = 'CEnginePrimitiveManagerAnimatedMeshesBase'
+        Source = '00/bc/CEnginePrimitiveManagerAnimatedMeshesBase_RenderPrimitiveBlocksIndexBuffer_00bcfb00.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerAnimatedMeshesBase_RenderPrimitiveBlocksIndexBuffer_00bcfb00_test.cpp'
+        PassPattern = '00bcfb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d5bf0'
+        Module = 'CBankFileAsync'
+        Source = '00/9d/CBankFileAsync_HandleFailedAllocation_009d5bf0.cpp'
+        TestSource = '00/9d/CBankFileAsync_HandleFailedAllocation_009d5bf0_test.cpp'
+        PassPattern = '009d5bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be06b0'
+        Module = 'CEngineStaticMapFileBlockManager'
+        Source = '00/be/CEngineStaticMapFileBlockManager_AddRequest_00be06b0.cpp'
+        TestSource = '00/be/CEngineStaticMapFileBlockManager_AddRequest_00be06b0_test.cpp'
+        PassPattern = '00be06b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b939e0'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_CheckVisibilityResults_00b939e0.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_CheckVisibilityResults_00b939e0_test.cpp'
+        PassPattern = '00b939e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

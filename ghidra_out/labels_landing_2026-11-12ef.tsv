@@ -1,0 +1,18 @@
+address	name	evidence
+00405F00	GFIntToWideString	chunk F2 (landing ef): 
+009D7CF0	insert_unique	chunk F2 (landing ef): 
+00BE0BF0	insert_unique	chunk F2 (landing ef): 
+00BE08E0	find	chunk F2 (landing ef): 
+009D5630	ChangeLoadingPriority	chunk F2 (landing ef): 
+009D5410	FreeBuffer	chunk F2 (landing ef): 
+009D6100	BeginReadDataAutoAlloc	chunk F2 (landing ef): 
+00B936E0	CheckVisibilityResults	chunk F2 (landing ef): 
+00B92300	CreateOcclusionGroup	chunk F2 (landing ef): 
+0098B930	SetVSConstants	chunk F2 (landing ef): 
+00A058C0	RealiseRenderState	chunk F2 (landing ef): 
+0099A2E0	~CBaseClass	chunk F2 (landing ef): 
+00406610	GetManualSaveFileName	chunk F2 (landing ef): 
+009C95E0	GetTextBySymbol	chunk F2 (landing ef): 
+01436E98	GPResourceManager	chunk F2 (landing ef): 
+01436E14	GPShaderRenderManager	chunk F2 (landing ef): 
+0139A728	g_HighLoadingPriority	chunk F2 (landing ef): 

@@ -60,6 +60,15 @@ public:
     // inline in retail (UpdateDiskCache 0x00B2DA07 / 0x00B2DBA2 read GraphicBanks[0] at +0x954 and write through it).
     CGraphicDataBank* GetGraphicBank(EGraphicBankNo bank) { return GraphicBanks[bank]; }
 #endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PEEKVSCONSTANTLAYOUTLIGHTSBONES
+    // Retail opt-in (chunk F2, row 0x00BCFB00): FableWin.pdb ?PeekVSConstantLayoutLightsBones@CEngineResourceManager@@QAEABVCEngineVSConstantLayoutLightsBones@@XZ,
+    // inline in retail (the row reads the layout's BoneMatrices at +0x2E50 = VSConstantLayoutLightsBones +0x2D7C + 0xD4 in place).
+    // The member stays opaque; the includer supplies engine/CEngineVSConstantLayoutLightsBones.h (retail branch).
+    const class CEngineVSConstantLayoutLightsBones& PeekVSConstantLayoutLightsBones()
+    {
+        return *reinterpret_cast<const class CEngineVSConstantLayoutLightsBones*>(VSConstantLayoutLightsBones);
+    }
+#endif
     CGPUScratchBufferTextureManager& GetGPUScratchBufferTextureManager()
     {
         return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;
