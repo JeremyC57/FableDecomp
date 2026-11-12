@@ -48,6 +48,11 @@ public:
     // CIEngine::SetPersistentPrimitive and for_each's Clear over begin()..end()).
     unsigned char ScaleAlpha(unsigned char alpha) const;                 // 0x00643D5D
 #endif
+#if defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_SCALEALPHA) && !defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES)
+    // Retail opt-in (agentNF29 name-fix, row 0x00643D5D itself): the same ScaleAlpha declaration as the HANDLES opt-in, without the
+    // CEnginePrimitiveHandle element type (the row's own TU needs only PlayerGui). No layout change.
+    unsigned char ScaleAlpha(unsigned char alpha) const;                 // 0x00643D5D
+#endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS
     // Retail opt-in (wf3, row 0x00646580 CDrawMeleeActionButtonEffects::Draw): Ego_r.pdb / FableWin.pdb
     // ?ClearEffects@CDrawBase@NPlayerGui@@SIXAAV?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@...@Z, static

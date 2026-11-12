@@ -13,14 +13,9 @@
 //   STLport vectors put it at +0x298 -- hence a local model (engine/ has no CDisplayManager.h).
 // Shape: the mode count is re-queried in the inner loop condition; only best.Format is initialised (D3DFMT_UNKNOWN); abs() is the
 //   cdq/xor/sub intrinsic; the windowed result is the queried mode with Width/Height overwritten, returned by value.
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_PixelFormatTable)
+// (name-fix NF29: the local _D3DFORMAT enum and _D3DDISPLAYMODE struct are now engine/Direct3D9Types.h, pulled in by engine/CD3DFormatInfo.h)
 #include <stdlib.h>
-struct _D3DDISPLAYMODE {
-    unsigned long Width;
-    unsigned long Height;
-    unsigned long RefreshRate;
-    _D3DFORMAT Format;                          // D3DFORMAT
-};
 
 struct IDirect3D9 {
     virtual long __stdcall QueryInterface(const void* iid, void** object);
@@ -47,16 +42,11 @@ struct IDirect3DDevice9 {
 
 class C2DExtentsI { public: long X; long Y; };
 
-struct SPixelFormatInfo {              // 36-byte format table entry
-    unsigned long m_d3dFormat;         // +0 D3DFORMAT
-    unsigned char _rest[0x20];
-};
-extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
 
 class CPixelFormat { public:
     long FormatIndex;
     void Initialise(_D3DFORMAT format);         // 0x009E3830
-    unsigned long GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].m_d3dFormat; }
+    unsigned long GetD3DFormat() const { return GD3DFormats[FormatIndex].D3DFormat; }
 public:
     unsigned long GetColourDepth() const;   // 0x009E3820
 };

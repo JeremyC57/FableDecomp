@@ -30,11 +30,10 @@ class CSystemManager { public:
     CRenderSystem* m_pRender;               // +0x60
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
-struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
-extern SPixelFormatInfo g_pixelFormatInfo[];                 // 0x0129BA40
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_pixelFormatInfo)
 class CPixelFormat { public:
     long m_format;
-    long GetD3DFormat() const { return g_pixelFormatInfo[m_format].d3dFormat; }
+    long GetD3DFormat() const { return GD3DFormats[m_format].D3DFormat; }
 };
 class C2DExtentsI { public: long X, Y; };
 class CTexture { public:

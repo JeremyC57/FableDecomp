@@ -126,6 +126,11 @@ public:
     float MusicVolumeNewProfile;                                         // +0xe8
     float DialogueVolumeNewProfile;                                      // +0xec
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETSOUNDASMUTED
+    // agentNF29 name-fix opt-in (row 0x00408340 itself): Ego_r.pdb 0x004062F0 + FableWin.pdb 0x0187E2D0
+    // ?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z (public, bool). Declaration only: no layout change.
+    void SetSoundAsMuted(bool muted);                                    // 0x00408340
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
     // Retail opt-in (chunk F1, row 0x00407CD0): FableWin.pdb / Ego_r.pdb ?RedefineControlPassive@CUserProfileManager@@QAEXABVCActionInputControl@@0J@Z
     // (0x00407CD0), ?ApplyValues@CUserProfileManager@@IAEXXZ (0x00407370, landed; PROTECTED in both PDBs) and the Ego_r.pdb member AssignedInputsPassive

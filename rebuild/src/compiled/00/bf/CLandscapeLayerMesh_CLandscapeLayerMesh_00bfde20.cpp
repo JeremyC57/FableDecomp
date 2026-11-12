@@ -9,11 +9,10 @@ class CEngineLandscapeMemoryManager { public:
     void FreeBlock(void* block);                   // 0x00BDA0D0
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
+//   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     CMovableResource() { }
@@ -37,9 +36,9 @@ class CLandscapeLayerMesh : public CMovableResource { public:    // vtable 0x012
 CLandscapeLayerMesh::~CLandscapeLayerMesh()
 {
     if (m_pVertexBlock && !m_vertexBlockShared)
-        g_pEngine_01436ea8->m_pLandscapeMemory->AppendFreeEdgeNode(m_pVertexBlock);
+        g_pLandscapeRenderer->MemoryManager->AppendFreeEdgeNode(m_pVertexBlock);
     if (m_pIndexBlock) {
-        g_pEngine_01436ea8->m_pLandscapeMemory->FreeBlock(m_pIndexBlock);
+        g_pLandscapeRenderer->MemoryManager->FreeBlock(m_pIndexBlock);
         m_pIndexBlock = 0;
     }
     if (m_pOwned)

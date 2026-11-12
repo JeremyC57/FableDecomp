@@ -1,5 +1,8 @@
-// CTCTavernTable::FreePoint(long) -- hand a point index back to the parent thing's interface-0x2E component
-// Leaf: FreePoint
+// CTCTavernTable::FreeServingPoint(long action_point_index) -- hand a serving point index back to the parent thing's interface-0x2E component
+// Leaf: ?FreeServingPoint@CTCTavernTable@@QAEXJ@Z
+// Name-fix pass (2026-11-12): Ego_r.pdb 0x007B8090 ?FreeServingPoint@CTCTavernTable@@QAEXJ@Z (the next body after GetServingPoint
+//   0x007B7C80, as retail 0x007B9090 follows GetServingPoint 0x007B8CC0) + FableWin.pdb 0x026F1DE0, declared in engine/CTCTavernTable.h;
+//   the landed CAIStateGroup_TavernServer row 0x009670A0 binds this symbol. Was the descriptive FreePoint.
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B9090, length 88 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the inlined interface lookup,
@@ -11,7 +14,7 @@
 // GetInterface shape. This copy sits directly before CTCTavernTable::OnInitialActivate (0x007B90F0) and is
 // called on the interface-0xB8 component by CAIStateGroup_TavernKeeper::FreeBarPoint (0x009670F4, which
 // then resets its index to -1), CAIStateGroup_ServeFood::OnReplace and CAIStateGroup_TavernServer::Update;
-// the method name is descriptive.
+// the method name is FreeServingPoint (both PDBs).
 //
 // Shape: the component pointer is an UNINITIALISED local filled by the inlined GetInterface (the landed
 // 0x00949320 template): hit path -> the lookup result in eax; miss path -> retail reads the never-written
@@ -52,12 +55,12 @@ struct CTCFreePointList {                       // interface type 0x2E component
 class CTCTavernTable { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    void FreePoint(long index);
+    void FreeServingPoint(long action_point_index);   // 0x007B9090
 };
 
-void CTCTavernTable::FreePoint(long index)
+void CTCTavernTable::FreeServingPoint(long action_point_index)
 {
     CTCFreePointList* points;
     ParentThing->GetInterface(&points, 0x2E);
-    ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
+    ((CTCUserActionPointBase*)points)->SetActionPointAsFree(action_point_index);
 }

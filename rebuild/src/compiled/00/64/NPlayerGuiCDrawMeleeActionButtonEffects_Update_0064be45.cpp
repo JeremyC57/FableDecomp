@@ -8,8 +8,9 @@
 // (a bool query; the manifest label "CThingFilter_IsUnconscious::operator()" is propagated), the base-ability getter @ 0x007334B0
 // (thiscall on the CTCCombat component, CDefPointer by hidden pointer), ClearEffects @ 0x006445BA (thiscall on the Effects vector), the def's virtual slot 1 on release.
 // Layout: Ego_r.pdb CDrawMeleeActionButtonEffects minus 4 (the 16-byte PDB vector is 12 in retail): PlayerManager +0x08, Effects +0x28,
-// FlashTimer +0x34, ComboLoadingIconTimer +0x38, FlourishCounter +0x3c, EffectCount +0x40, PCurrentAbility +0x44 (names of the last two
-// descriptive). CTCCombat = interface 0x30.
+// FlashTimer +0x34, ComboLoadingIconTimer +0x38, FlourishCounter +0x3c, FlourishEffect +0x40, PMeleeAbilityDef +0x44 (Ego_r.pdb member
+// names, offsets minus 8 after the two 16-byte PDB vectors; FableWin.pdb ?SetFlourishEffect@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXJ@Z
+// writes FlourishEffect; name-fix pass 2026-11-12, were the descriptive names EffectCount (+0x40) and PCurrentAbility (+0x44)). CTCCombat = interface 0x30.
 // Shape: frame-pointer size TU; IS_THING_ALIVE (out of line in retail) has a same-TU read-only stand-in body so the hero's frame word
 // does not escape and is reused for the lookup key and the second temporary; the component comes from the out-param GetInterface
 // (the type constant 0x30 is held in ebx); both getters are called on the CTCCombat component; the chosen def is a CDefPointer local
@@ -155,8 +156,8 @@ struct CDrawMeleeActionButtonEffects {
     long                     FlashTimer;           // +0x34
     long                     ComboLoadingIconTimer;// +0x38
     long                     FlourishCounter;      // +0x3c
-    long                     EffectCount;          // +0x40
-    CDefPointer<CAbilityDef> PCurrentAbility;      // +0x44
+    long                     FlourishEffect;          // +0x40
+    CDefPointer<CAbilityDef> PMeleeAbilityDef;      // +0x44
     void Update();
 };
 
@@ -173,19 +174,19 @@ void CDrawMeleeActionButtonEffects::Update()
             else if (combat->IsShowingBaseAbility()) {
                 ability.Adopt(combat->GetPBaseAbility());
             }
-            if (ability.Object != PCurrentAbility.Object) {
+            if (ability.Object != PMeleeAbilityDef.Object) {
                 ComboLoadingIconTimer = -1;
                 FlashTimer = 15;
             }
         }
     }
-    PCurrentAbility.Assign(ability.Object);
+    PMeleeAbilityDef.Assign(ability.Object);
     if (FlashTimer == 0)
         ComboLoadingIconTimer = 30;
     if (!ability.Object) {
         Effects.ClearEffects();
         FlourishCounter = -1;
-        EffectCount = 0;
+        FlourishEffect = 0;
         ComboLoadingIconTimer = -1;
         FlashTimer = -1;
     }

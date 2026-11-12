@@ -31266,9 +31266,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005e9b10'
-        Module = '_global'
-        Source = '00/5e/global_HideMesh_005e9b10.cpp'
-        TestSource = '00/5e/global_HideMesh_005e9b10_test.cpp'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_HideMesh_005e9b10.cpp'
+        TestSource = '00/5e/CTCTavernGame_HideMesh_005e9b10_test.cpp'
         PassPattern = 'OK_0x005e9b10'
     }
     [pscustomobject]@{
@@ -40906,8 +40906,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0065d624'
         Module = '_global'
-        Source = '00/65/global_ISTHINGALIVECThingBuilding_0065d624.cpp'
-        TestSource = '00/65/global_ISTHINGALIVECThingBuilding_0065d624_test.cpp'
+        Source = '00/65/global_ISTHINGALIVE_0065d624.cpp'
+        TestSource = '00/65/global_ISTHINGALIVE_0065d624_test.cpp'
         PassPattern = 'IA_65d624_OK'
     }
     [pscustomobject]@{
@@ -42692,9 +42692,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004baef0'
-        Module = '_global'
-        Source = '00/4b/CTCMapwho_OnDie_004baef0.cpp'
-        TestSource = '00/4b/CTCMapwho_OnDie_004baef0_test.cpp'
+        Module = 'CCountedPointer<CQuestManager::CActiveQuest>'
+        Source = '00/4b/CCountedPointer_DeleteData_004baef0.cpp'
+        TestSource = '00/4b/CCountedPointer_DeleteData_004baef0_test.cpp'
         PassPattern = 'OK_004baef0'
     }
     [pscustomobject]@{
@@ -62828,9 +62828,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00643d5d'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d5d.cpp'
-        TestSource = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d5d_test.cpp'
+        Module = 'NPlayerGui::CDrawBase'
+        Source = '00/64/NPlayerGuiCDrawBase_ScaleAlpha_00643d5d.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawBase_ScaleAlpha_00643d5d_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -76349,9 +76349,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaaf0'
-        Module = 'NParticleEngine::CParticleEmitterManager'
-        Source = '00/ae/NParticleEngineCParticleEmitterManager_Get_00aeaaf0.cpp'
-        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_Get_00aeaaf0_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetParticleEmitterManager_00aeaaf0.cpp'
+        TestSource = '00/ae/NParticleEngine_GetParticleEmitterManager_00aeaaf0_test.cpp'
         PassPattern = 'PASS_00aeaaf0'
     }
     [pscustomobject]@{
@@ -149189,9 +149189,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004bb200'
-        Module = 'CCountedPointer_004baef0'
-        Source = '00/4b/CCountedPointer004baef0_Reset_004bb200.cpp'
-        TestSource = '00/4b/CCountedPointer004baef0_Reset_004bb200_test.cpp'
+        Module = 'CCountedPointer<CQuestManager::CActiveQuest>'
+        Source = '00/4b/CCountedPointer_Reset_004bb200.cpp'
+        TestSource = '00/4b/CCountedPointer_Reset_004bb200_test.cpp'
         PassPattern = '004bb200_TEST PASS'
     }
     [pscustomobject]@{
@@ -158262,9 +158262,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00645605'
-        Module = '_unattributed'
-        Source = '00/64/unattributed_GetTarget00645605_00645605.cpp'
-        TestSource = '00/64/unattributed_GetTarget00645605_00645605_test.cpp'
+        Module = 'NPlayerGui::CDrawQuickAccessIcons'
+        Source = '00/64/NPlayerGuiCDrawQuickAccessIcons_ClearEffects_00645605.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuickAccessIcons_ClearEffects_00645605_test.cpp'
         PassPattern = '00645605_TEST PASS'
     }
     [pscustomobject]@{
@@ -166091,9 +166091,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00be8ff0'
-        Module = '_global'
-        Source = '00/be/global_PushBackdword00be8ff0_00be8ff0.cpp'
-        TestSource = '00/be/global_PushBackdword00be8ff0_00be8ff0_test.cpp'
+        Module = 'CArray<CEngineWaterBackgroundSubPatch*>'
+        Source = '00/be/CArray_pushback_00be8ff0.cpp'
+        TestSource = '00/be/CArray_pushback_00be8ff0_test.cpp'
         PassPattern = '00be8ff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -210732,8 +210732,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007b9090'
         Module = 'CTCTavernTable'
-        Source = '00/7b/CTCTavernTable_FreePoint_007b9090.cpp'
-        TestSource = '00/7b/CTCTavernTable_FreePoint_007b9090_test.cpp'
+        Source = '00/7b/CTCTavernTable_FreeServingPoint_007b9090.cpp'
+        TestSource = '00/7b/CTCTavernTable_FreeServingPoint_007b9090_test.cpp'
         PassPattern = '007b9090_TEST PASS'
     }
     [pscustomobject]@{
@@ -262527,9 +262527,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007617a0'
-        Module = 'CShape'
-        Source = '00/76/CShape_EditorDrawHighlightPoints_007617a0.cpp'
-        TestSource = '00/76/CShape_EditorDrawHighlightPoints_007617a0_test.cpp'
+        Module = 'NShape::CShape'
+        Source = '00/76/NShapeCShape_EditorDrawHighlightPoints_007617a0.cpp'
+        TestSource = '00/76/NShapeCShape_EditorDrawHighlightPoints_007617a0_test.cpp'
         PassPattern = '007617a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -317593,7 +317593,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00be8f10'
-        Module = 'std::vector'
+        Module = 'std::vector<CEngineWaterBackgroundSubPatch*>'
         Source = '00/be/stdvector_Minsertoverflow_00be8f10.cpp'
         TestSource = '00/be/stdvector_Minsertoverflow_00be8f10_test.cpp'
         PassPattern = '00be8f10_TEST PASS'

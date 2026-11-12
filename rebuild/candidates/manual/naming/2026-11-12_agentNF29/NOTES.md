@@ -1,0 +1,31 @@
+# NOTES (agentNF29 name-fix pass, 33 queue entries)
+
+- Result: 69 rows changed. The final loop (FINAL_GRADES.txt) graded them with the overlay: all MATCH or RELOCATION_MATCH. All 69 tests PASS under their catalog PassPattern. The loop's vt.py checks only the `<addr>_TEST PASS` pattern, so five unchanged self-contained tests (004baef0, 005e9b10, 00643d5d, 0065d624, 00aeaaf0) were rerun afterwards with their own catalog patterns, and all passed. Two tests were respelled: 00406610 and 007fefc0. No row used more than 5 grades.
+- Rejected: none. Every applied claim has two sources: a PDB name set (Ego_r and/or FableWin) plus a reloc binding, the shared header, a vtable slot comment, the body or Ego_r layout offsets.
+- 0x0052CEB0 GetState (partial): I respelled nine binders. The vslot 134/135 pair is declared in header order (non-const first) because MSVC lays out overloaded virtuals in reverse order. Two rows are left: 0052c870 and 0052c8b0. Each calls slot 134 (the const GetState) from a non-const stand-in method, so respelling needs those rows' own names fixed first: both PDBs have ?IsPositionIndependent@...@@UBE_NXZ and IsZoomIndependent (const). Rows 0052c870 / 0052c8b0 / 0052c780 / 0041c5e0 also carry stand-in self names (InternalChanged returns long, vfunc_138, ...), which is outside this queue.
+- 0x01436EA8 g_pLandscapeRenderer (partial): I respelled the 20 smallest SEngine_01436ea8 rows plus 00bf71d0, where the declaration was unused and is now removed. The SEngine struct and extern were replaced by engine/CEngineLandscapeRenderer.h (default branch, MemoryManager +0x6B0) with `extern CEngineLandscapeRenderer* g_pLandscapeRenderer`. Rows with no read just drop the stand-in. Left:
+  - 00bfd480, 00bf6490, 00bde0c0, 00bf6750, 00bfc140: same mechanical pattern (land.py ready), over the 20-row cap.
+  - 00b3b1a0, 00b3b4a0: CEngineGlobal_01436ea8 with void* m_pBuffers.
+  - 00be3660: `extern CEngine* g_pEngine_01436ea8` with LandscapeMemoryManager.
+  - 00bfb210: SEngineLandscape / g_pEngineLandscape.
+  - 00bdf9b0, 00bfdc90, 00beab40: comment-only mentions.
+- 0x0129BA40 GD3DFormats (partial): 11 rows moved onto engine/CD3DFormatInfo.h. In 009fa340 and 009bf600 I also removed their local _D3DFORMAT enum and _D3DDISPLAYMODE struct, which the header now supplies. Left:
+  - 009bfb30: its local _D3DPRESENT_PARAMETERS_ field types (unsigned long / void*) differ from Direct3D9Types.h (enums / HWND).
+  - 009c05c0 and 009c02d0: the include gives a VC7.1 INTERNAL COMPILER ERROR (C1001) at the GetD3DFormat line.
+  - 00b2c4e0: DIFFER. The local table read `unsigned long AlphaBits > 0` at 0x0129BA4C, and the header's `long AlphaBits` changes the compare.
+- 0x00AEAAF0 GetParticleEmitterManager (partial): I respelled the self row and 00643d8c (that row already had its manager model in NParticleEngine). 006e13e0 and 00af5010 graded RELOCATION_MATCH + PASS with the class moved into NParticleEngine, but I withdrew them (parked/). That spelling would add a local model of NParticleEngine::CParticleEmitterManager, which has engine/CParticleEmitterManager.h. The header lacks a CreateEmitter declaration and keeps ActiveEmitters / PEngine protected, so a header opt-in is needed first. Twelve stand-in binders are left:
+  - 006e13e0, 00af5010: withdrawn, see above.
+  - 00645ce9, 00543d30, 00543ee0, 00543df0, 00af5380, 006e14e0, 00b09360: static `CParticleEmitterManager::Get()` models.
+  - 0080d0b0: its local static CreateEmitter is really CTCDParticleEmitter::Create 0x006E11F0.
+  - 0088f4a0: `GObj* GetDecalObj()`.
+  - 006e11f0: an X_006e11f0 namespace stand-in.
+- 0x007B9090 FreeServingPoint (partial): the self row is renamed. Binder 009239c0 (CAIStateGroup_ServeFood::OnReplace) calls it through a local `struct CTCTable` (the interface-0xB8 component, = CTCTavernTable) with ReleasePlace / NotifyFoodServed / Occupied. Respelling it means moving that row onto engine/CTCTavernTable.h, which lacks Occupied (+0x0C) and NotifyFoodServed 0x007B85F0.
+- 0x00669D30, 0x00AE9450, 0x00A0D2B0, 0x007F70D0: the NF28 carry-overs were not advanced in this pass; NF28's gaps stand unchanged.
+- Related wrong binders seen but not in the queue:
+  - 0064be45 binds 0x006445BA as ?ClearEffects@CEffectVector@@QAEXXZ (it is the static CDrawBase::ClearEffects).
+  - 00438230 still spells the other four drawers' clear methods ClearDisplay.
+  - C3DPrimitive2::ConvertToVBFormatAnimated 0x00A91180's own leaf takes CVertexCompressionParams* (PDB: const&).
+  - 00406610 keeps made-up helper names: WSctor_0099aed0, FmtWide_0099ba70, AddWide_0099be70.
+- Coordinator items: the manifest/catalog labels of the renamed rows (RENAMES section 1). The catalog name for 0x00BE8FF0 is _global::PushBack_dword_00be8ff0, for 0x00645605 _unattributed::GetTarget_00645605, for 0x004BAEF0 _global::DeleteObject_CActiveQuest_004baef0 (file module CTCMapwho), and for 0x0065D624 _global::IsThingAlive_ptr_0065d624.
+- Made-up names introduced: none. g_pLandscapeRenderer is the existing descriptive name the queue specifies.
+- Header overlay: two declaration-only opt-ins (hdr/README.md).

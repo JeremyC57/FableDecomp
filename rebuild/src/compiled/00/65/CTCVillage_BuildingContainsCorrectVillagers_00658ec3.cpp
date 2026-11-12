@@ -64,12 +64,16 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CT
     return false;
 }
 #pragma auto_inline(on)
-bool __fastcall IS_THING_ALIVE(CThingBuilding* const& thing);           // 0x0065D624
+// Name-fix pass (2026-11-12): 0x0065D624 is the template instance ??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z
+// (Ego_r.pdb 0x0069F330 + FableWin.pdb; landed row 0x0065D624), so the stand-in body below is the explicit specialization of the
+// IS_THING_ALIVE template (engine/ThingAlive.h's signature) rather than a non-template overload.
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
+template <> bool __fastcall IS_THING_ALIVE<CThingBuilding*>(CThingBuilding* const& thing);   // 0x0065D624
 void* FindRef_free_IS_THING_ALIVE_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) bool __fastcall IS_THING_ALIVE(CThingBuilding* const& thing)
+template <> __declspec(noinline) bool __fastcall IS_THING_ALIVE<CThingBuilding*>(CThingBuilding* const& thing)
 {
     void* p = FindRef_free_IS_THING_ALIVE_0();
     if (!p)

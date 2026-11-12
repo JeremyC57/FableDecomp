@@ -1,10 +1,13 @@
-// CShape::EditorDrawHighlightPoints(CEnginePrimitivePrepareInfo* info, CWorldMap* worldMap, C3DVector* cursor, CRGBColour* colour) -- editor view of a shape: a ground-snapped post per point (a blue marker when the cursor is near it) and a cross on every selected point
-// Leaf: EditorDrawHighlightPoints
+// NShape::CShape::EditorDrawHighlightPoints(const CEnginePrimitivePrepareInfo& info, const CWorldMap& worldMap, const C3DVector& cursor, const CRGBColour& colour) -- editor view of a shape: a ground-snapped post per point (a blue marker when the cursor is near it) and a cross on every selected point
+// Leaf: ?EditorDrawHighlightPoints@CShape@NShape@@QAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z
+// Name: Ego_r.pdb 0x00772560 + FableWin.pdb 0x025DBD60 (NShape namespace, const reference parameters); the name-fix pass moved the
+// local CShape into namespace NShape and spelled the parameters as references (same bytes); the editor helpers keep their
+// pointer first parameter (const_cast of &info), their own names are not proven.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007617A0, length 467 bytes (`ret 10h`, no EH frame).
 // Callees: CWorldMap::GetGroundSizeZAt 0x0063A300, two __fastcall editor draw helpers 0x00875FB0 (manifest
 // "EditorDrawHighlightPoints_Impl": info, position, float colour triple, radius) and 0x008764E0 (manifest
-// "RenderParticleEmitter_4particles": info, position, size), the engine's slot 20 (+0x50, one-off primitive).
+// "RenderParticleEmitter_4particles": info, position, size), the engine's slot 20 (+0x50, CIEngine::AddPrimitive, engine/CIEngine.h + FableWin.pdb ?AddPrimitive@CIEngine@@).
 // Floats: 0.25f 0x0126A1FC, 0.15f 0x0126A1F4, 0.0625f 0x0122DC98.
 // Layout: retail CShape sits below Ego_r.pdb (STLport vectors are 12 bytes): Points +0x08, SelectedPoints +0x14
 // (vector of C3DVector iterators); CEnginePrimitivePrepareInfo::Engine +0x34; CEnginePrimitiveLine (0x3c bytes,
@@ -46,7 +49,7 @@ class CIEngine { public:
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16)
     VF(17) VF(18) VF(19)
 #undef VF
-    virtual void SetPrimitive(const CEnginePrimitive& primitive);   // slot 20 (+0x50)
+    virtual void AddPrimitive(const CEnginePrimitive& primitive);   // slot 20 (+0x50)
 };
 class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
@@ -59,30 +62,32 @@ void __fastcall EditorDrawSphere(CEnginePrimitivePrepareInfo* info, const C3DVec
 void __fastcall EditorDrawCross(CEnginePrimitivePrepareInfo* info, const C3DVector& position, float size);   // 0x008764E0
 struct CPointVector { C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage; };
 struct CPointIteratorVector { C3DVector** _M_start; C3DVector** _M_finish; C3DVector** _M_end_of_storage; };
+namespace NShape {
 struct CShape {
     virtual void v00();
     void*                Owner;                         // +0x04
     CPointVector         Points;                        // +0x08
     CPointIteratorVector SelectedPoints;                // +0x14
-    void EditorDrawHighlightPoints(CEnginePrimitivePrepareInfo* info, CWorldMap* worldMap, C3DVector* cursor, CRGBColour* colour);
+    void EditorDrawHighlightPoints(const CEnginePrimitivePrepareInfo& info, const CWorldMap& worldMap, const C3DVector& cursor, const CRGBColour& colour);
 };
+}
 
-void CShape::EditorDrawHighlightPoints(CEnginePrimitivePrepareInfo* info, CWorldMap* worldMap, C3DVector* cursor, CRGBColour* colour)
+void NShape::CShape::EditorDrawHighlightPoints(const CEnginePrimitivePrepareInfo& info, const CWorldMap& worldMap, const C3DVector& cursor, const CRGBColour& colour)
 {
     for (C3DVector* it = Points._M_start; it != Points._M_finish; ++it) {
         C3DVector top = *it;
         C3DVector bottom(top.X, top.Y + 0.25f, top.Z);
-        top.Z = worldMap->GetGroundSizeZAt(top) + 0.15f;
-        bottom.Z = worldMap->GetGroundSizeZAt(bottom) + 0.15f;
-        float dx = top.X - cursor->X;
-        float dy = top.Y - cursor->Y;
+        top.Z = worldMap.GetGroundSizeZAt(top) + 0.15f;
+        bottom.Z = worldMap.GetGroundSizeZAt(bottom) + 0.15f;
+        float dx = top.X - cursor.X;
+        float dy = top.Y - cursor.Y;
         if (dy * dy + dx * dx < 0.0625f)
-            EditorDrawSphere(info, top, C3DVector(0.05f, 0.05f, 0.95f), 0.25f);
-        info->Engine->SetPrimitive(CEnginePrimitiveLine(0, top, bottom, *colour, 0.05f, 0, 0, true, 0, 0));
+            EditorDrawSphere(const_cast<CEnginePrimitivePrepareInfo*>(&info), top, C3DVector(0.05f, 0.05f, 0.95f), 0.25f);
+        info.Engine->AddPrimitive(CEnginePrimitiveLine(0, top, bottom, colour, 0.05f, 0, 0, true, 0, 0));
     }
     for (C3DVector** sel = SelectedPoints._M_start; sel != SelectedPoints._M_finish; ++sel) {
         C3DVector point = **sel;
-        point.Z = worldMap->GetGroundSizeZAt(point) + 0.15f;
-        EditorDrawCross(info, point, 0.25f);
+        point.Z = worldMap.GetGroundSizeZAt(point) + 0.15f;
+        EditorDrawCross(const_cast<CEnginePrimitivePrepareInfo*>(&info), point, 0.25f);
     }
 }

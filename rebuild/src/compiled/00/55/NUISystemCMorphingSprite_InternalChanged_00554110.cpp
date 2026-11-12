@@ -1,6 +1,6 @@
 // NUISystem::CMorphingSprite::InternalChanged() -- refreshes the current state's data, then runs the CSprite handler
 // Retail: Fable.exe @ 0x00554110, 28 bytes; CMorphingSprite vtable 0x0124A49C slot 138 (+0x228), whose CSprite entry is
-// 0x0052C780 (the tail-jump target). Body: `GetStateData(State)` through slot 135 (+0x21c, 0x0052CEB0, a map lookup at
+// 0x0052C780 (the tail-jump target). Body: `GetState(State)` through slot 135 (+0x21c, 0x0052CEB0, a map lookup at
 // +0x24 returning the value pointer -- result discarded), then `CSprite::InternalChanged()`.
 // Layout: +0x148 the state key passed to slot 135 (Ego_r.pdb CSprite is all `_padding_` there; engine/CMorphingSprite.h is
 // pad-only and data-only), so the class is modelled locally with its virtuals for the slot offsets.
@@ -142,7 +142,7 @@ public:
     virtual void _slot132();
     virtual void _slot133();
     virtual void _slot134();
-    virtual void* GetStateData(long state);              // slot 135 (+0x21c) 0x0052CEB0: map lookup at +0x24, value ptr or 0
+    virtual void* GetState(long state);              // slot 135 (+0x21c) 0x0052CEB0 GetState (Ego_r.pdb / FableWin.pdb; name-fix 2026-11-12): map lookup at +0x24, value ptr or 0
     virtual void _slot136();
     virtual void _slot137();
     virtual void InternalChanged();                      // slot 138 (+0x228) 0x0052C780
@@ -155,7 +155,7 @@ public:
 };
 void CMorphingSprite::InternalChanged()
 {
-    GetStateData(State);
+    GetState(State);
     CSprite::InternalChanged();
 }
 }

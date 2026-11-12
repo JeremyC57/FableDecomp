@@ -230,7 +230,7 @@ public:
     virtual void v132();
     virtual void v133();
     virtual void v134();
-    virtual const CUIStateInfo* GetStateInfo(long state);                               // slot 135 (+0x21c)
+    virtual const CUIStateInfo* GetState(long state);                               // slot 135 (+0x21c) 0x0052CEB0 GetState (Ego_r.pdb / FableWin.pdb ?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z; name-fix 2026-11-12)
     unsigned char _body[0x50];                     // +0x04
     C2DVector     Position;                        // +0x54
     unsigned char _pad5c[0xd3];                    // +0x5c

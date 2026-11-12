@@ -38,8 +38,7 @@ class CSystemManager { public:
     CRenderSystem* m_pRender;               // +0x60
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
-struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
-extern SPixelFormatInfo g_pixelFormatInfo[];                 // 0x0129BA40
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_pixelFormatInfo)
 class CPixelFormat { public: long m_format; };
 class C2DExtentsI { public: long Width, Height; };
 
@@ -63,7 +62,7 @@ bool CSurface::InitialiseAsDepthBuffer(const C2DExtentsI& size, const CPixelForm
 {
     Uninitialise();
     IDirect3DDevice9* device = GFGetSystemManager()->m_pRender->m_pDevice;
-    long d3dFormat = g_pixelFormatInfo[format.m_format].d3dFormat;
+    long d3dFormat = GD3DFormats[format.m_format].D3DFormat;
     long hr = device->CreateDepthStencilSurface(size.Width, size.Height, d3dFormat, multisample, 0, 0, &PD3DSurface, 0);
     AllocationSource = 1;
     return hr >= 0 ? true : false;

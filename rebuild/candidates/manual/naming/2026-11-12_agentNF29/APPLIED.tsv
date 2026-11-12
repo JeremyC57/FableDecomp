@@ -1,0 +1,34 @@
+source	address	symbol	status	binders_respelled	note
+QUEUE land1011ek	0x00761980	?DrawShapes@CTCShapeManager@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@@Z	done	1	00761b10 (private, const references); self row already right
+QUEUE land1011ek	0x007617A0	?EditorDrawHighlightPoints@CShape@NShape@@QAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z	done	1	self row (NShape namespace, const references) + slot 20 spelled CIEngine::AddPrimitive
+QUEUE land1011ek	0x00760910	?GetPrincipalVector@CTCShapeManager@@QBE_NAAVC3DVector@@@Z	done	1	self row rebuilt on shared headers with the inline GetStartPoint (by-value operator- stand-in gone)
+QUEUE land1011ek	0x00BE7BE0	?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z	done	1	00bf71d0 (bool, long&, bool&); self row already right; manifest _global::Render is the coordinator's
+QUEUE land1011ek	0x00BE8FF0	?push_back@?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@QAEXABQAVCEngineWaterBackgroundSubPatch@@@Z	done	1	self row = engine/CArray.h explicit instantiation (was CRetailVector_dword stand-in)
+QUEUE land1011ek	0x00BE8F10	std::vector<CEngineWaterBackgroundSubPatch*>::_M_insert_overflow	done	1	self row element respelled (was CUnprovenElement_00be8f10)
+QUEUE land1011ek	0x0081EF30	?SetEngineThemeAtIncludingExtraCells@CMap@@IAEXJJKK@Z	done	1	self row (protected, unsigned long layer); 008203a0 has only a FABLE_FORCEINLINE copy (no binding), left
+QUEUE land1011ek	0x0081F240	?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z	done	1	0063dfd0 (protected const source, CWorldMap friend)
+QUEUE land1011ek	0x00643D5D	?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z	done	1	self row (was free Cons_val_CEntry); every caller already binds ScaleAlpha; overlay opt-in SCALEALPHA
+QUEUE land1011ek	0x0064BE45	CDrawMeleeActionButtonEffects members FlourishEffect / PMeleeAbilityDef	done	1	self row members respelled
+QUEUE land1011ek	0x00645099	CIEngine::SetPersistentPrimitive (slot 23)	done	1	00645099 rebuilt on the 0x00646580 shared header set; 00646580 already right
+QUEUE land1011ek	0x0052CEB0	?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z	partial	9	0052c780, 005546f0, 00554110, 00543d30, 00543ee0, 00543df0, 0052cab0, 0052c730, 0041c5e0; left 0052c870 / 0052c8b0 (NOTES)
+QUEUE land1011el	0x01436EA8	g_pLandscapeRenderer	partial	21	20 smallest SEngine_01436ea8 rows + 00bf71d0 (unused decl); about 12 rows left (NOTES)
+QUEUE land1011el	0x0129BA40	?GD3DFormats@@3QBVCD3DFormatInfo@@B	partial	11	009e3970, 009e3940, 009be930, 00a68250, 009f3230, 009f32a0, 009f3310, 00a698f0, 009fa280, 009fa340, 009bf600; left 009bfb30, 009c05c0, 009c02d0, 00b2c4e0 (NOTES)
+QUEUE land1011el	0x00669D30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	partial	0	not reached in this pass; the seven stand-in binders NF28 listed remain (NOTES)
+QUEUE land1011el	0x00AE9450	??0?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	partial	0	not reached; callers 00aeb6d0 / 00aeb600 keep local CEmitterPointer models; Reset 0x00AF1860 stand-in
+QUEUE land1011el	0x00A0D2B0	?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z	partial	0	unchanged: self row's slot-2 virtual is unnamed in both PDBs
+QUEUE land1011el	0x007F70D0	GetPBestThingInRoughArea<CFilter_Bind4<...>,CThingCompare_Nearest,CThingAICreature>	partial	0	unchanged: NF28's parked attempt is DIFFER on the shared BESTROUGH template
+QUEUE land1011el	0x009BEBB0	?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z	done	1	self row declaration made private: the compiled symbol now equals the Leaf line (ABE)
+QUEUE land1011el	0x00408340	?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z	done	1	self row bool + shared header (AUDIODEFAULTS + new SETSOUNDASMUTED opt-in)
+QUEUE land1011el	0x00406610	?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z	done	1	self row returns the shared CWideString, class from engine/CUserProfileManager.h (SAVENAMES); test respelled
+QUEUE land1011el	0x009B4FF0	CDefinitionManager (CINSTANTIATEDEFINFO_DECL)	done	1	local CDefinitionManager shell replaced by the shared header opt-in
+QUEUE land1011em	0x009F0570	?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z	done	0	already applied by NF28 (self row + 004b3a20; 004b3ce0 / 004b4260 already spell it)
+QUEUE land1011em	0x004BAEF0	?DeleteData@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@SIXPAX@Z	done	2	self row (was OnDie_3) + 004bb200 (stand-in CCountedPointer_004baef0::Reset -> CCountedPointer<CQuestManager::CActiveQuest>::Reset, FableWin.pdb)
+QUEUE land1011em	0x00A90040	?ConvertToVBFormatBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1Bump@@AAVCDeviceIndependent@2@@Z	done	1	00a91180 (also its NonBump sibling 0x00A8FF50, both PDBs + landed row)
+QUEUE land1011em	0x00645605	?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	done	2	self row (was GetTarget_00645605) + 00438230 (ClearDisplay -> ClearEffects)
+QUEUE land1011em	0x006451DD	ENGINE_2D_LAYER_0	done	1	enumerator respelled in the row's local enum
+QUEUE land1011em	0x00AEAAF0	?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ	partial	2	self row + 00643d8c; twelve stand-in binders left (NOTES)
+QUEUE land1011em	0x005E9B10	?HideMesh@CTCTavernGame@@SIXPAVCThing@@@Z	done	1	self row on shared headers (CThing slot 28 SetAsDrawable); 008f10b0 already binds it
+QUEUE land1011em	0x0065D624	??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z	done	2	self row (explicit instantiation) + 00658ec3 (non-template stand-in -> template specialization)
+QUEUE land1011em	0x00989B00	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z	done	1	self row unsigned long index
+QUEUE land1011em	0x007FEFC0	?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z	done	1	self row reference parameter; test respelled; 007b8b10 already binds it
+QUEUE land1011em	0x007B9090	?FreeServingPoint@CTCTavernTable@@QAEXJ@Z	partial	1	self row renamed; binder 009239c0 (stand-in CTCTable::ReleasePlace) left (NOTES)

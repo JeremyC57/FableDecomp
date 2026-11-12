@@ -20,7 +20,7 @@ class CDrawBase { public:                                          // PDB NPlaye
 class CDrawHealth            { public: void ClearDisplay(); };     // 0x00644644
 class CDrawStamina           { public: void ClearDisplay(); };     // 0x0064464C
 class CDrawAbilityButtons    { public: void ClearDisplay(); };     // 0x0064528A
-class CDrawQuickAccessIcons  { public: void ClearDisplay(); };     // 0x00645605
+class CDrawQuickAccessIcons  { public: void ClearEffects(); };     // 0x00645605 ?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ (Ego_r.pdb + FableWin.pdb; name-fix 2026-11-12)
 class CDrawMeleeActionButtonEffects { public: void ClearDisplay(); };   // 0x00645821
 class CDrawMiniMap           { public: void SetAsActive(bool active); };   // 0x00643E2E
 class CDrawQuestInfo         { public: void Clear(); };            // 0x00647319
@@ -98,7 +98,7 @@ void CPlayerGui::ClearGui()
     PDrawHealth->ClearDisplay();
     PDrawStamina->ClearDisplay();
     PDrawAbilityButtons->ClearDisplay();
-    PDrawQuickAccessIcons->ClearDisplay();
+    PDrawQuickAccessIcons->ClearEffects();
     PDrawMeleeActionButtonEffects->ClearDisplay();
     NPlayerGui::CDrawBase** last = Illustrators._M_finish;
     for (NPlayerGui::CDrawBase** it = Illustrators._M_start; it != last; ++it)

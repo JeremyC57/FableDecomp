@@ -1,0 +1,74 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+007617a0	NShape::CShape	EditorDrawHighlightPoints	?EditorDrawHighlightPoints@CShape@NShape@@QAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z	CShape::EditorDrawHighlightPoints	EditorDrawHighlightPoints	Ego_r.pdb 0x00772560 + FableWin.pdb 0x025DBD60; reloc_bindings first caller 0x00761980 binds this leaf; local CShape moved into NShape, parameters by const reference
+00be8ff0	CArray<CEngineWaterBackgroundSubPatch*>	push_back	?push_back@?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@QAEXABQAVCEngineWaterBackgroundSubPatch@@@Z	_global::PushBack_dword_00be8ff0	PushBack_dword_00be8ff0	FableWin.pdb 0x02CE8750; landed 0x00BE7BE0 calls 0x00BE8FF0 on the CEngineWaterRenderer CArray lists and binds this leaf; row is the engine/CArray.h explicit instantiation
+00be8f10	std::vector<CEngineWaterBackgroundSubPatch*>	_M_insert_overflow	?_M_insert_overflow@?$vector@PAVCEngineWaterBackgroundSubPatch@@V?$allocator@PAVCEngineWaterBackgroundSubPatch@@@std@@@std@@IAEXPAPAVCEngineWaterBackgroundSubPatch@@ABQAV3@ABU__true_type@2@I_N@Z	std::vector::_M_insert_overflow	?_M_insert_overflow@?$vector@PAVCUnprovenElement_00be8f10@@V?$allocator@PAVCUnprovenElement_00be8f10@@@std@@@std@@IAEX	called by CArray<CEngineWaterBackgroundSubPatch*>::push_back 0x00BE8FF0 (FableWin.pdb) and the expanded push_backs of 0x00BE7BE0 (which binds this leaf)
+0081ef30	CMap	SetEngineThemeAtIncludingExtraCells	?SetEngineThemeAtIncludingExtraCells@CMap@@IAEXJJKK@Z	CMap::SetEngineThemeAtIncludingExtraCells	SetEngineThemeAtIncludingExtraCells (compiled QAEXJJKJ)	Ego_r.pdb 0x00679B50 + FableWin.pdb 0x02237DC0 (protected, unsigned long layer); caller 0x0081F240 binds this leaf
+00643d5d	NPlayerGui::CDrawBase	ScaleAlpha	?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z	NPlayerGui::CDrawBase::ScaleAlpha	Cons_val_CEntry	Ego_r.pdb 0x00686C60 + FableWin.pdb 0x020D93CE; callers 0x00645099 / 0x00645292 / 0x00646580 bind this leaf; was a free __fastcall stand-in
+004baef0	CCountedPointer<CQuestManager::CActiveQuest>	DeleteData	?DeleteData@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@SIXPAX@Z	_global::DeleteObject_CActiveQuest_004baef0	OnDie	Ego_r.pdb 0x004BE0B0 + FableWin.pdb 0x01C67F10; stored as the count-block deleter in ActivateQuests 0x004B3F94 / 0x004B40CD (landed 0x004B3CE0 binds it); file module was CTCMapwho
+004bb200	CCountedPointer<CQuestManager::CActiveQuest>	Reset	?Reset@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@QAEXPAVCActiveQuest@CQuestManager@@@Z	CCountedPointer_004baef0::Reset	Reset	FableWin.pdb 0x01C64310; its count block stores DeleteData 0x004BAEF0 (the CActiveQuest deleter, both PDBs); engine/CCountedPointer.h explicit instantiation
+00645605	NPlayerGui::CDrawQuickAccessIcons	ClearEffects	?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	_unattributed::GetTarget_00645605	GetTarget_00645605	Ego_r.pdb 0x0068822D + FableWin.pdb 0x020FB391 (after DrawEffectAtPos in both); body jmps CDrawBase::ClearEffects 0x006445BA on Effects +0x7C (Ego_r +0x88 minus three 4-byte-smaller vectors)
+00aeaaf0	NParticleEngine	GetParticleEmitterManager	?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ	NParticleEngine::GetParticleEmitterManager	GetGlobal	Ego_r.pdb 0x00AAEF80 + FableWin.pdb 0x02EF2810; reads NParticleEngine::PEmitterManager 0x013D2E1C (bound by landed 0x00AEBE20); was a made-up extern "C" GetGlobal
+005e9b10	CTCTavernGame	HideMesh	?HideMesh@CTCTavernGame@@SIXPAVCThing@@@Z	CTCTavernGame::HideMesh	HideMesh (free ?HideMesh@@YIXPAUCMeshEntity@@@Z, module _global)	Ego_r.pdb 0x00647540 + FableWin.pdb 0x022D55E0; landed caller 0x008F10B0 binds this leaf
+0065d624	_global	IS_THING_ALIVE<CThingBuilding*>	??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z	_global::IsThingAlive_ptr_0065d624	@FableIsAlive_65d624@4	Ego_r.pdb 0x0069F330 + FableWin.pdb 0x017A3A14 / 0x01B5E870; landed 0x0065AA6F binds this leaf; engine/ThingAlive.h explicit instantiation
+00989b00	CShaderRenderManager	SetUserVertexShaderConstant	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z	CShaderRenderManager::SetUserVertexShaderConstant	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJMMMM@Z	Ego_r.pdb 0x00AE6350 + FableWin.pdb 0x03034E50 (unsigned long index); landed 0x00B99670 binds this leaf
+007fefc0	CTCNamedUserActionPoints	GetName	?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z	CTCNamedUserActionPoints::GetName	GetName (compiled QAEXJPAVCCharString@@@Z)	Ego_r.pdb 0x007F2830 + FableWin.pdb 0x0258A320; landed 0x007B8B10 binds this leaf
+007b9090	CTCTavernTable	FreeServingPoint	?FreeServingPoint@CTCTavernTable@@QAEXJ@Z	CTCTavernTable::FreePoint	FreePoint	Ego_r.pdb 0x007B8090 (next body after GetServingPoint 0x007B7C80, as retail 0x007B9090 follows GetServingPoint 0x007B8CC0) + FableWin.pdb 0x026F1DE0 + engine/CTCTavernTable.h; landed 0x009670A0 binds this leaf
+00408340	CUserProfileManager	SetSoundAsMuted	?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z	CUserProfileManager::SetSoundAsMuted	SetSoundAsMuted (compiled QAEXD@Z)	Ego_r.pdb 0x004062F0 + FableWin.pdb 0x0187E2D0 (bool)
+00406610	CUserProfileManager	GetManualSaveFileName	?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z	CUserProfileManager::GetManualSaveFileName	GetManualSaveFileName (compiled QBE?AUCWS@@J@Z)	Ego_r.pdb 0x00405270 + FableWin.pdb 0x0187B5B0 (returns CWideString)
+00760910	CTCShapeManager	GetPrincipalVector	?GetPrincipalVector@CTCShapeManager@@QBE_NAAVC3DVector@@@Z	CTCShapeManager::GetPrincipalVector	GetPrincipalVector	name unchanged; Leaf line now the full PDB symbol (Ego_r.pdb 0x00772130 + FableWin.pdb); row rebuilt on shared headers
+# Section 2
+address	old_symbol	new_symbol
+00761b10	?DrawShapes@CTCShapeManager@@QAEXPAVCEnginePrimitivePrepareInfo@@PBVC3DVector@@@Z	?DrawShapes@CTCShapeManager@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@@Z
+00bf71d0	?Render@CLandscapeBackgroundPatch@@QAEX_NPAJPA_N@Z	?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z
+0063dfd0	?CopyPos@CMap@@QAEXAAV1@ABVC2DCoordI@@1@Z	?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z
+00a91180	?TransformVerticesWithNormals@CAnimatedBlock@@QAEXPAUCAnimatedVertexWithNormals@@PBUCDeviceIndependent@@@Z	?ConvertToVBFormatBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1Bump@@AAVCDeviceIndependent@2@@Z
+00a91180	?TransformVertices@CAnimatedBlock@@QAEXPAUCAnimatedVertex@@PBUCDeviceIndependent@@@Z	?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z
+00438230	?ClearDisplay@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ
+004bb200	?Destroy_004baef0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@SIXPAX@Z
+00658ec3	?IS_THING_ALIVE@@YI_NABQAVCThingBuilding@@@Z	??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z
+00643d8c	?Get@CParticleEmitterManager@NParticleEngine@@SAPAV12@XZ	?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ
+00645099	vslot 23 CEnginePrimitiveRenderer::AddPrimitive (no symbol)	CIEngine::SetPersistentPrimitive (engine/CIEngine.h slot 23)
+007617a0	vslot 20 CIEngine::SetPrimitive (no symbol)	CIEngine::AddPrimitive (engine/CIEngine.h slot 20)
+0064be45	members EffectCount +0x40 / PCurrentAbility +0x44	FlourishEffect / PMeleeAbilityDef (Ego_r.pdb)
+006451dd	enumerator ENGINE_2D_LAYER_HUD_EFFECTS	ENGINE_2D_LAYER_0 (=67, PDB enum)
+0052c780	vslots 134 GetStateInfo / 135 OnStateChanged (no symbol)	GetState(unsigned long) const / GetState(unsigned long) (0x0052CEB0)
+0041c5e0	vslots 134 GetStateInfo / 135 OnStateChanged (no symbol)	GetState(unsigned long) const / GetState(unsigned long) (0x0052CEB0)
+0052cab0	vslots 134 GetStateInfo / 135 OnStateChanged (no symbol)	GetState(unsigned long) const / GetState(unsigned long) (0x0052CEB0)
+0052c730	vslots 134 GetStateInfo / 135 OnStateChanged (no symbol)	GetState(unsigned long) const / GetState(unsigned long) (0x0052CEB0)
+005546f0	vslot 135 GetStateInfo (no symbol)	GetState (0x0052CEB0)
+00543d30	vslot 135 GetStateInfo (no symbol)	GetState (0x0052CEB0)
+00543ee0	vslot 135 GetStateInfo (no symbol)	GetState (0x0052CEB0)
+00543df0	vslot 135 GetStateInfo (no symbol)	GetState (0x0052CEB0)
+00554110	vslot 135 GetStateData (no symbol)	GetState (0x0052CEB0)
+00bdf9e0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf8ce0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bfbc50	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf9b90	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bdda50	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	(unused declaration removed; no binding)
+00bfdd70	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bddcb0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bde020	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	(unused declaration removed; no binding)
+00bfde20	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf73a0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf5d30	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf6530	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bfc410	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bfc510	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf6b70	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf6ac0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	(unused declaration removed; no binding)
+00bf65b0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf38f0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf6a30	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	(unused declaration removed; no binding)
+00bf6bf0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	(unused declaration removed; no binding)
+00bf71d0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	(unused declaration removed; no binding)
+009e3970	?g_PixelFormatDescriptors@@3PAUCPixelFormatDescriptor@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009e3940	?g_PixelFormatDescriptors@@3PAUCPixelFormatDescriptor@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009be930	?g_PixelFormatTable@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+00a68250	?g_pixelFormatInfo@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009f3230	?g_pixelFormatInfo@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009f32a0	?g_pixelFormatInfo@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009f3310	?g_pixelFormatInfo@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+00a698f0	?g_pixelFormatInfo@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009fa280	?g_pixelFormatInfo@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009fa340	?g_pixelFormatInfo@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+009bf600	?g_PixelFormatTable@@3PAUSPixelFormatInfo@@A	?GD3DFormats@@3QBVCD3DFormatInfo@@B

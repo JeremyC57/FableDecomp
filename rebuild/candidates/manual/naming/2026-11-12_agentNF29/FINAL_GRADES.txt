@@ -1,0 +1,78 @@
+00406610 CUserProfileManager::GetManualSaveFileName RELOCATION_MATCH flags= [] | test: 00406610 LINK_FAIL
+00408340 CUserProfileManager::SetSoundAsMuted RELOCATION_MATCH flags= [] | test: 00408340 PASS
+0041c5e0 CChangingStateComponent::ChangedStateLastUpdate MATCH flags= [] | test: 0041c5e0 PASS
+00438230 CPlayerGui::ClearGui RELOCATION_MATCH flags= [] | test: 00438230 PASS
+004baef0 _global::DeleteObject_CActiveQuest_004baef0 RELOCATION_MATCH flags= [] | test: 004baef0 FAIL
+004bb200 CCountedPointer_004baef0::Reset RELOCATION_MATCH flags= [] | test: 004bb200 PASS
+0052c730 NUISystem::CChangingStateComponent::Initialise RELOCATION_MATCH flags= [] | test: 0052c730 PASS
+0052c780 NUISystem::CChangingStateComponent::vfunc_138 MATCH flags= [] | test: 0052c780 PASS
+0052cab0 NUISystem::CChangingStateComponent::AddChildDynamically RELOCATION_MATCH flags= [] | test: 0052cab0 PASS
+00543d30 NUISystem::CParticleEffect::Initialise RELOCATION_MATCH flags= [] | test: 00543d30 PASS
+00543df0 NUISystem::CParticleEffect::ChangeState RELOCATION_MATCH flags= [] | test: 00543df0 PASS
+00543ee0 NUISystem::CParticleEffect::Draw RELOCATION_MATCH flags= [] | test: 00543ee0 PASS
+00554110 NUISystem::CMorphingSprite::InternalChanged RELOCATION_MATCH flags= [] | test: 00554110 PASS
+005546f0 NUISystem::CMorphingSprite::ProcessChangeState RELOCATION_MATCH flags= [] | test: 005546f0 PASS
+005e9b10 CTCTavernGame::HideMesh MATCH flags= [] | test: 005e9b10 FAIL
+0063dfd0 CWorldMap::UpdateAllEdges RELOCATION_MATCH flags= [] | test: 0063dfd0 PASS
+00643d5d NPlayerGui::CDrawBase::ScaleAlpha RELOCATION_MATCH flags= [] | test: 00643d5d FAIL
+00643d8c CPlayerGui::AddHitByMelee RELOCATION_MATCH flags= [] | test: 00643d8c PASS
+00645099 NPlayerGui::CDrawAbilityButtons::DrawButton RELOCATION_MATCH flags= [] | test: 00645099 PASS
+006451dd NPlayerGui::CDrawAbilityButtons::DrawEffects RELOCATION_MATCH flags= [] | test: 006451dd PASS
+00645605 _unattributed::GetTarget_00645605 RELOCATION_MATCH flags= [] | test: 00645605 PASS
+0064be45 NPlayerGui::CDrawMeleeActionButtonEffects::Update RELOCATION_MATCH flags= [] | test: 0064be45 PASS
+00658ec3 CTCVillage::BuildingContainsCorrectVillagers RELOCATION_MATCH flags= [] | test: 00658ec3 PASS
+0065d624 _global::IsThingAlive_ptr_0065d624 MATCH flags= [] | test: 0065d624 FAIL
+00760910 CTCShapeManager::GetPrincipalVector RELOCATION_MATCH flags= [] | test: 00760910 PASS
+007617a0 CShape::EditorDrawHighlightPoints RELOCATION_MATCH flags= [] | test: 007617a0 PASS
+00761b10 CTCShapeManager::DrawPreparePrimitivesForRendering RELOCATION_MATCH flags= [] | test: 00761b10 PASS
+007b9090 CTCTavernTable::FreePoint RELOCATION_MATCH flags= [] | test: 007b9090 PASS
+007fefc0 CTCNamedUserActionPoints::GetName RELOCATION_MATCH flags= [] | test: 007fefc0 LINK_FAIL
+0081ef30 CMap::SetEngineThemeAtIncludingExtraCells RELOCATION_MATCH flags= [] | test: 0081ef30 PASS
+00989b00 CShaderRenderManager::SetUserVertexShaderConstant MATCH flags= [] | test: 00989b00 PASS
+009b4ff0 std::vector<CDefinitionManager::CInstantiatedDefInfo *, std::allocator<CDefinitionManager::CInstantiatedDefInfo *>>::_M_fill_insert RELOCATION_MATCH flags= [] | test: 009b4ff0 PASS
+009be930 CDisplayManager::IsValidRenderTargetFormat RELOCATION_MATCH flags= [] | test: 009be930 PASS
+009bebb0 CDisplayManager::GetClosestDepthBufferFormat RELOCATION_MATCH flags= [] | test: 009bebb0 PASS
+009bf600 CDisplayManager::GetClosestMode RELOCATION_MATCH flags= [] | test: 009bf600 PASS
+009e3940 CPixelFormat::IsCompressed RELOCATION_MATCH flags= [] | test: 009e3940 PASS
+009e3970 CPixelFormat::IsSigned RELOCATION_MATCH flags= [] | test: 009e3970 PASS
+009f3230 CSurface::InitialiseAsImage RELOCATION_MATCH flags= [] | test: 009f3230 PASS
+009f32a0 CSurface::InitialiseAsDepthBuffer RELOCATION_MATCH flags= [] | test: 009f32a0 PASS
+009f3310 CSurface::InitialiseAsRenderTarget RELOCATION_MATCH flags= [] | test: 009f3310 PASS
+009fa280 CTexture::Initialise RELOCATION_MATCH flags= [] | test: 009fa280 PASS
+009fa340 CTexture::LoadFromBitmapFile RELOCATION_MATCH flags= [] | test: 009fa340 PASS
+00a68250 CVolumeTexture::CreateTexture RELOCATION_MATCH flags= [] | test: 00a68250 PASS
+00a698f0 CTextureManager::CalculateTextureSize RELOCATION_MATCH flags= [] | test: 00a698f0 PASS
+00a91180 C3DPrimitive2::ConvertToVBFormatAnimated RELOCATION_MATCH flags= [] | test: 00a91180 PASS
+00aeaaf0 NParticleEngine::GetParticleEmitterManager RELOCATION_MATCH flags= [] | test: 00aeaaf0 FAIL
+00bdda50 CLocalDetailCacheMap::CQuadTreeElement::RemoveObjectCollections MATCH flags= [] | test: 00bdda50 PASS
+00bddcb0 CLocalDetailCacheMap::CQuadTreeElement::OnPostRelocation RELOCATION_MATCH flags= [] | test: 00bddcb0 PASS
+00bde020 CLocalDetailCacheMap::CQuadTreeElement::UnloadStaticContents RELOCATION_MATCH flags= [] | test: 00bde020 PASS
+00bdf9e0 CLocalDetailCacheMap::CObjectCacheGroupCollection::`scalar deleting destructor' RELOCATION_MATCH flags= [] | test: 00bdf9e0 PASS
+00be8f10 std::vector::_M_insert_overflow RELOCATION_MATCH flags= [] | test: 00be8f10 PASS
+00be8ff0 _global::PushBack_dword_00be8ff0 RELOCATION_MATCH flags= [] | test: 00be8ff0 PASS
+00bf38f0 CEngineLandscapePatch::Clear RELOCATION_MATCH flags= [] | test: 00bf38f0 PASS
+00bf5d30 CEngineLandscapePatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] | test: 00bf5d30 PASS
+00bf6530 CLandscapeBackgroundTreeNode::StartTreeLoadTask RELOCATION_MATCH flags= [] | test: 00bf6530 PASS
+00bf65b0 CLandscapeBackgroundTreeNode::StartPatchLoadTask RELOCATION_MATCH flags= [] | test: 00bf65b0 PASS
+00bf6a30 CLandscapeBackgroundTreeNode::MarkTreeAsInvisibleLastFrame RELOCATION_MATCH flags= [] | test: 00bf6a30 PASS
+00bf6ac0 CLandscapeBackgroundTreeNode::UpdateParentChainVisibilityFlag MATCH flags= [] | test: 00bf6ac0 PASS
+00bf6b70 CLandscapeBackgroundTreeNode::OnPostRelocation RELOCATION_MATCH flags= [] | test: 00bf6b70 PASS
+00bf6bf0 CLandscapeBackgroundTreeNode::TreeHasLoadTasks RELOCATION_MATCH flags= [] | test: 00bf6bf0 PASS
+00bf71d0 CLandscapeBackgroundTreeNode::Render RELOCATION_MATCH flags= [] | test: 00bf71d0 PASS
+00bf73a0 CLandscapeBackgroundTreeNode::~CLandscapeBackgroundTreeNode RELOCATION_MATCH flags= [] | test: 00bf73a0 PASS
+00bf8ce0 CLandscapeBackgroundTreeNode::`scalar deleting destructor' RELOCATION_MATCH flags= [] | test: 00bf8ce0 PASS
+00bf9b90 CLocalDetailPrimitiveMeshZSpriteBatch::OnPostRelocation RELOCATION_MATCH flags= [] | test: 00bf9b90 PASS
+00bfbc50 CLocalDetailPrimitiveRepeatedMesh::`scalar deleting destructor' RELOCATION_MATCH flags= [] | test: 00bfbc50 PASS
+00bfc410 CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip RELOCATION_MATCH flags= [] | test: 00bfc410 PASS
+00bfc510 CPatchTesselationEdgeStrip::SetMovableResourceHandler RELOCATION_MATCH flags= [] | test: 00bfc510 PASS
+00bfdd70 CLandscapeLayerMesh::OnPostRelocation RELOCATION_MATCH flags= [] | test: 00bfdd70 PASS
+00bfde20 CLandscapeLayerMesh::~CLandscapeLayerMesh RELOCATION_MATCH flags= [] | test: 00bfde20 PASS
+DONE
+# Test follow-up after the loop (row sources unchanged; the loop's vt.py checks the `<addr>_TEST PASS` pattern only):
+# 00406610: test respelled (rows/00406610_test.cpp: CWideString + engine/CUserProfileManager.h) -> vt.py 00406610 PASS (catalog pattern '00406610_TEST PASS')
+# 007fefc0: test respelled (rows/007fefc0_test.cpp: GetName(long, CCharString&)) -> PASS with catalog pattern 'OK_007fefc0' (linked with the row obj)
+# 004baef0 PASS 'OK_004baef0'; 005e9b10 PASS 'OK_0x005e9b10'; 00643d5d PASS 'PARITY_OK'; 0065d624 PASS 'IA_65d624_OK'; 00aeaaf0 PASS 'PASS_00aeaaf0'
+#   (repo tests unchanged and self-contained; their catalog PassPattern differs from vt.py's, which is why the loop printed FAIL)
+# Result: 69/69 rows MATCH or RELOCATION_MATCH with the overlay; 69/69 tests PASS under their catalog PassPattern.
+# 006e13e0 and 00af5010 were graded RELOCATION_MATCH + PASS in the loop but withdrawn afterwards (parked/: they turned a global stand-in into a
+#   local NParticleEngine::CParticleEmitterManager model while engine/CParticleEmitterManager.h exists) -- not handed back.

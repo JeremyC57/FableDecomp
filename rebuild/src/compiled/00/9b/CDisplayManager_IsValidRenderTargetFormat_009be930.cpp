@@ -28,12 +28,8 @@ class CPixelFormat { public:
     long FormatIndex;                  // +0
 };
 
-struct SPixelFormatInfo {              // 36-byte format table entry
-    long          m_d3dFormat;         // +0 D3DFORMAT
-    unsigned char _rest[0x20];
-};
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_PixelFormatTable)
 
-extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
 
 class CDisplayManager { public:
     unsigned char _pad[0x54];          // +0x00 vptr, SystemManager, PRenderManager, surfaces, back-buffer copy texture
@@ -51,7 +47,7 @@ class CDisplayManager { public:
 
 static inline long GetD3DFormat(const CPixelFormat& format)
 {
-    return g_PixelFormatTable[format.FormatIndex].m_d3dFormat;
+    return GD3DFormats[format.FormatIndex].D3DFormat;
 }
 
 bool CDisplayManager::IsValidRenderTargetFormat(const CPixelFormat& renderTargetFormat, const CPixelFormat& depthStencilFormat)

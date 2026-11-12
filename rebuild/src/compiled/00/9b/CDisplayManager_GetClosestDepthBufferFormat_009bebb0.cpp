@@ -54,6 +54,7 @@ class CDisplayManager { public:
     void*         D3DDevice;                       // +0x58
     long          DeviceType;                      // +0x5c D3DDeviceCaps.DeviceType
     unsigned long AdapterOrdinal;                  // +0x60 D3DDeviceCaps.AdapterOrdinal
+private:   // name-fix pass (2026-11-12): private in both PDBs (ABE), so the compiled symbol matches the Leaf line (was public: QBE)
     CPixelFormat GetClosestDepthBufferFormat(const _D3DDISPLAYMODE& mode, long bitDepth) const;
 };
 
