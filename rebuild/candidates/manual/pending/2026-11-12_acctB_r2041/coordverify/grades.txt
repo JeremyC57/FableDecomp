@@ -1,0 +1,1 @@
+006ab820 CThingPlayerCreature::ResolveFacingDirection RELOCATION_MATCH flags= []
