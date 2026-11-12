@@ -24,6 +24,9 @@ class CGameDefinitionManager;class CWorld;
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETTHINGMANAGER
 class CThingManager;
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PEEKWORLD
+class CWorld;
+#endif
 // Original Ego_r TPI0x221c9; native factories and calls prove vtable slots40-42.
 // Complete native sizea8 after the three retail container reductions.
 class CCreatureActionBase : public CBaseObject {
@@ -187,6 +190,13 @@ protected:
     const CGameDefinitionManager& PeekDefinitionManager() const;       // 0x00692910
     CWorld& GetWorld();                                                  // 0x00692940
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PEEKWORLD
+    // Retail opt-in (wf9, row 0x00867B40 CCombatAction_GenericStrikeResponseKnockdown::FinishAction): Ego_r.pdb protected const accessor
+    // ?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ (Ego_r 0x005192B0, right after GetWorld 0x005192A0), out of line in retail at
+    // 0x00692950 (`add ecx,8 ; call GetPItem ; mov ecx,eax ; jmp CThing::PeekWorld 0x004C7AB0`). Declaration only.
+protected:
+    const CWorld& PeekWorld() const;                                     // 0x00692950
+#endif
 #if defined(FABLE_RETAIL_CCREATUREACTIONBASE_HASPERFORMEDACTION) && !defined(FABLE_RETAIL_EXPRESSION_FRAME)
     // Retail opt-in (chunk Q17, row 0x008BF500): Ego_r.pdb ?HasPerformedAction@CCreatureActionBase@@QBE_NXZ (public const), out of line in
     // retail at 0x006925A0 (`mov al,[ecx+62h] ; ret`). Declaration only (the EXPRESSION_FRAME opt-in declares the same member).
@@ -210,6 +220,18 @@ public:
     // out of line in retail at 0x00692980 (`add ecx,8 ; call GetPItem 0x00A01B50 ; mov eax,[0x013B8A1C] ; ret`).
 protected:
     CThingManager& GetThingManager();                                    // 0x00692980
+#endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_SETANIMATION
+    // Retail opt-in (wf7, row 0x00847DF0 CCreatureAction_UseLamp::Initialise): Ego_r.pdb ?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z
+    // (protected), out of line in retail at 0x00693030 (landed). Declaration only.
+protected:
+    void SetAnimation(const class CAnimationEntry& anim, float a, float b);   // 0x00693030
+#endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETTOTALTIMEWORLDFRAMES
+    // Retail opt-in (wf7, row 0x00847DF0): Ego_r.pdb ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ (public const), out of line in
+    // retail at 0x006925B0 (`mov eax,[ecx+10h] ; ret`: TotalTime). Declaration only.
+public:
+    long GetTotalTimeWorldFrames() const;                                // 0x006925B0
 #endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_SETPITEMREMOVED
     // agentNF19 (row 0x0072D360): Ego_r.pdb 0x00525E80 / FableWin.pdb 0x01DD0230

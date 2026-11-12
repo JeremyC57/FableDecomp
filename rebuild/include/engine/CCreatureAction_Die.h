@@ -6,6 +6,21 @@
 // Retail evidence: 1 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_DIE
+// Retail opt-in (wf9, row 0x00867B40 CCombatAction_GenericStrikeResponseKnockdown::FinishAction): the polymorphic retail class.
+// RTTI .?AVCCreatureAction_Die@@ : CCreatureActionBase (vtable 0x01287FC4), sizeof 0xAC = CCreatureActionBase 0xA8 + the flip flag;
+// Ego_r.pdb ??0CCreatureAction_Die@@QAE@AAVCThingCreatureBase@@_N@Z (retail 0x008ED650, `ret 8`). No user destructor: a temporary
+// is destroyed by a direct call of ~CCreatureActionBase 0x00693EF0. Needs engine/CCreatureActionBase.h (retail branch) first.
+class CCreatureAction_Die : public CCreatureActionBase {
+public:
+    CCreatureAction_Die(CThingCreatureBase& creature, bool flip_facing);   // 0x008ED650
+    virtual void PerformAction();
+protected:
+    virtual CCreatureActionBase* Clone() const;
+    bool Flip;                                                     // +0xA8
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_Die)==0xac);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -55,4 +70,5 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_Die) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_Die, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_Die, Flip) == 0xa8);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_DIE
 #endif // FABLE_ENGINE_CCREATUREACTION_DIE_H

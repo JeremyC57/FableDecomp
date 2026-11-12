@@ -1,0 +1,8 @@
+00867b40	CCombatAction_GenericStrikeResponseKnockdown::FinishAction	DIFFER(468v465) vs registered oracle; RELOCATION_MATCH vs true 468 retail bytes (strict headers too)	19	attempt 3 confirmed again: registered oracle is cut 3 bytes short inside the last add esp,128h (465, real 468; ghidra_out/coverage.tsv also says 468); code byte-exact; land from ready/ after the length fix
+00762ba0	CTCShapeManager::OnSerialise	RELOCATION_MATCH	4	load arm first, single tail; two header opt-ins
+00a12ab0	CPhysicsMeshObject::PeekRoughProportionOfSphereContainedInVolume	RELOCATION_MATCH	45	float result through a folded double expression (* 1.0): inferred spelling, see NOTES
+00a90900	N3DPrimitive::CDeviceIndependent::AddTriangleList	RELOCATION_MATCH	12	shared headers + FABLE_RETAIL_STLP_VECTOR
+008dc720	NCreatureMode::CModeDragonStrafeBurninate::StartBeamEffect	RELOCATION_MATCH	4	shared-header port of twin 0x008DB620, real GetSubDef/GetEffectFromString bodies
+006f3a30	std::_S_sort	RELOCATION_MATCH	5	_S_merge body visible + shared STLport header opt-in
+0085d180	NThingMap::CThingMap::InitMapwhoLevels	RELOCATION_MATCH	55	shared headers + FABLE_RETAIL_STLP_VECTOR; second arm written `else if (size != -1)` gives the retail inline split; no flags
+008c6860	CCreatureAction_TrollThrowProjectile::PerformAction	RELOCATION_MATCH	17	named null ability local per branch; CDefString member; visible GetSubDef/GetDef bodies

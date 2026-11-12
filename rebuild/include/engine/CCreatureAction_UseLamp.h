@@ -6,6 +6,28 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_USELAMP
+// Retail opt-in (wf7, row 0x00847DF0 Initialise): the real class on the retail CCreatureActionBase (0xa8 bytes; needs
+// FABLE_RETAIL_CCREATUREACTIONBASE and engine/CIntelligentPointer.h with FABLE_RETAIL_CINTELLIGENTPOINTER first). Ego_r.pdb:
+// ??0CCreatureAction_UseLamp@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z, ?IsToHaveEmptyHands@..@@UBE_NXZ, ?PerformAction@..@@UAEXXZ
+// (0x00847FB0), ?Clone@..@@UBEPAVCCreatureActionBase@@XZ, ?Initialise@..@@UAEXXZ (0x00847DF0, vtable 0x0127486C slot 12);
+// PObjectToUse CIntelligentPointer<CThing> +0xa8. Declarations only.
+#include "engine/CCreatureActionBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CThingCreatureBase;
+class CCreatureAction_UseLamp : public CCreatureActionBase {
+public:
+    CCreatureAction_UseLamp(CThingCreatureBase& creature, CThing& object);
+    virtual void PerformAction();                                        // 0x00847FB0
+    virtual CCreatureActionBase* Clone() const;
+    virtual void Initialise();                                           // 0x00847DF0
+    virtual bool IsToHaveEmptyHands() const;
+protected:
+    CIntelligentPointer<CThing> PObjectToUse;                            // +0xa8
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UseLamp) == 0xb0);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -54,4 +76,5 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UseLamp) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseLamp, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseLamp, PObjectToUse) == 0xa8);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_USELAMP
 #endif // FABLE_ENGINE_CCREATUREACTION_USELAMP_H

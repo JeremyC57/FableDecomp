@@ -28,6 +28,12 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;
     virtual CCharString GetClassTypeName() const;
     bool IsPosInAnyShape(const C3DVector&) const;
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_ONSERIALISE
+    // Retail opt-in (wf9, row 0x00762BA0): the class's override of CTCBase slot 1, Ego_r.pdb 0x00773C30
+    // ?OnSerialise@CTCShapeManager@@UAEXAAVCPersistContext@@_N@Z (public virtual; retail vtable 0x0126A2A4 slot 1 = 0x00762BA0).
+    // Declaration only: no layout or vtable change (the slot already exists in CTCBase).
+    virtual void OnSerialise(CPersistContext&, bool);   // 0x00762BA0
+#endif
 #ifdef FABLE_RETAIL_CTCSHAPEMANAGER_GETPRINCIPALVECTOR
     // Retail opt-in (wf3, row 0x00761980 evidence probe): ?GetPrincipalVector@CTCShapeManager@@QBE_NAAVC3DVector@@@Z 0x00760910
     // (Ego_r.pdb 0x00772130 + FableWin.pdb). Declaration only: no layout change.

@@ -13,6 +13,14 @@ for f in glob.glob('rebuild/candidates/manual/pending/*/RESERVED.tsv'):
         a=l.split('\t')[0].lower().replace('0x','')
         if re.fullmatch(r'[0-9a-f]{8}',a): res.add(a)
 landed=set(l.split('\t',1)[0] for l in open('rebuild/oracles/auto-re-candidates.tsv'))
+# The row length is the corrected extent of PARKED_INDEX.tsv (corr=<addr>:<len>, else ext=<len>), never the parked grade string:
+# 0x00867B40's `468v465` had been graded against a truncated oracle (landing er).
+corr={}
+for l in open('rebuild/candidates/manual/PARKED_INDEX.tsv',errors='replace'):
+    m=re.search(r'corr=([0-9a-f]{8}):(\d+)',l); e=re.search(r'ext=(\d+)',l); a=l.split('\t',1)[0].lower()
+    if m and m.group(1)==a: corr[a]=int(m.group(2))
+    elif e: corr.setdefault(a,int(e.group(1)))
+pool=[[corr.get(x[1],x[0])]+list(x[1:]) for x in pool]
 take=[]; rest=[]
 for x in pool:
     t,a,rc,nl,d,p=x

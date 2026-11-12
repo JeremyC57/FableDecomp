@@ -142,6 +142,16 @@ public:
     void AttachAugmentationToSlot(long augmentationDefIndex, long slot);   // 0x00768120
     static float __fastcall GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations);   // 0x007661C0
     static CWideString __fastcall GetAugmentationName(long augmentationDefIndex);   // 0x00765F90 ?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z
+#ifdef FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_SLOTS
+    // Retail opt-in (row 0x005BE8F3 NInventory::CTCInventoryBase::CreateInventoryObject): the slot accessors, Ego_r.pdb / FableWin.pdb
+    // ?GetNumberOfSlots@CTCObjectAugmentations@@QBEJXZ (0x00765D80), ?GetMaximumNumberOfSlots@CTCObjectAugmentations@@QBEJXZ (0x00765D90),
+    // ?AddNewSlot@CTCObjectAugmentations@@QAEXXZ (0x00766D70), ?RemoveAugmentationFromSlot@CTCObjectAugmentations@@QAEXJ@Z (0x007681D0);
+    // all out of line in retail (landed rows). Declarations only: no layout change.
+    long GetNumberOfSlots() const;                                   // 0x00765D80
+    long GetMaximumNumberOfSlots() const;                            // 0x00765D90
+    void AddNewSlot();                                               // 0x00766D70
+    void RemoveAugmentationFromSlot(long slot);                      // 0x007681D0
+#endif
 #ifdef FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_GETAUGMENTATIONS
     // Retail opt-in (row 0x00868CE0 CHitParameters::SetWeapon): Ego_r.pdb
     // ?GetAugmentations@CTCObjectAugmentations@@QBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z, out of line in retail at 0x00766920 (landed).

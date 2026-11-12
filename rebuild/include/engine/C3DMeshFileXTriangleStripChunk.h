@@ -17,6 +17,11 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEXTRIANGLESTRIPCHUNK_ACCESSORS
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XTST"; }                  // literal @ 0x0129DF60 (PDB ?GetStaticChunkType@C3DMeshFileXTriangleStripChunk@@SIPBDXZ)
+    unsigned long GetCount() const { return StripVertices.size(); }                            // PDB ?GetCount@C3DMeshFileXTriangleStripChunk@@QBEKXZ (inline)
+    unsigned long GetStripVertex(unsigned long index) const { return StripVertices[index]; }   // PDB ?GetStripVertex@C3DMeshFileXTriangleStripChunk@@QBEKK@Z (inline)
+#endif
     CArray<unsigned short> StripVertices; // +0x10
 };
 FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXTriangleStripChunk) == 0x1C);

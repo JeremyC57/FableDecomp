@@ -1,0 +1,9 @@
+008b0b60	CCombatSequenceGeneric::OnCreateSpecial	RELOCATION_MATCH	11	shared headers + visible called ctor + GetString() + creator/enum locals
+0x0094F480	CAIStateGroup_BalverineJumpAtFleeingEnemy::IsRunnable	RELOCATION_MATCH	15	GetCreature() accessor at every use, nested ifs, slot 29 = GetPBestEnemyCreatureForAttack
+005f6793	CTCInventoryAbilities::CycleAssignedExpressions	RELOCATION_MATCH	9	real GetPrioritisedExpressionDefs body + STLP_VECTOR_PUSHBACK_NOINLINE visible; /O1 /Oy-
+00847df0	CCreatureAction_UseLamp::Initialise	RELOCATION_MATCH	4	shared headers + anim ref local + operator* refs + implicit filter dtor
+0x0097D6F0	CAIStateGroupBase::AIAction_LookAtThing	RELOCATION_MATCH	9	ported to shared headers; thing.Get()==&GetCreature() operand order
+006ad3c0	CThingPlayerCreature::ApplyRelativeMovementAcceleration	RELOCATION_MATCH	5	physics local before GetCurrentMode; acceleration*scale inline in both arms; ACCELERATIONMAP header opt-in + ORIGINAL_VTABLE
+007735d0	CTCShop::GetAttitudeBuyPriceMultiplier	RELOCATION_MATCH	33	shared headers + named manager/keeper references in the keeper block; 2 new header opt-ins
+00773790	CTCShop::GetAttitudeSellPriceMultiplier	RELOCATION_MATCH	157	attempt 2: reactions reference + keeper pointer as two named locals before GetThingAttitudeToPlayer; strict headers pass; test PASS; overlay engine/CTCHeroStats.h (GetTradeSkill declaration)
+007fd650	CTCDPhysicalObstruction::FrameUpdate	RELOCATION_MATCH	10	operator+ lift + shared headers + visible out-of-line line ctor

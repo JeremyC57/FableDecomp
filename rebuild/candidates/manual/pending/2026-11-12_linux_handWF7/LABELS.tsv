@@ -1,0 +1,16 @@
+0x004DDAE5	GetPBestEnemyCreatureForAttack	CTCTargetingAI
+0x008645E0	IsAwareOfThing	NCreatureAI
+0x004C73D0	GetPos	CThing
+0x00668B60	CIntelligentPointer	CIntelligentPointer<CThingCreatureBase>
+0x00668B80	operator=	CIntelligentPointer<CThingCreatureBase>
+0x006650E0	IsPosInViewAngle	CThingCreatureBase
+01382998	g_TradeSkillAttitudeScale (descriptive; float 0.84f, .data)	_global
+00773790	GetAttitudeSellPriceMultiplier	CTCShop
+007735d0	GetAttitudeBuyPriceMultiplier	CTCShop
+0057c239	GetTradeSkill	CTCHeroStats
+00701840	GetThingAttitudeToPlayer	COpinionReactionManager
+00487dc0	GetPControlledCreature	CPlayer
+00449960	GetMainPlayer	CPlayerManager
+00686d50	PeekPlayerManager	CTCBase
+00686a80	PeekWorld	CTCBase
+006869d0	GetDefinitionManager	CTCBase

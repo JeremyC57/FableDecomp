@@ -17837,7 +17837,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006f3530	for_each	std	__fastcall	CRotateThing	3	_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,CRotateThing	1	yes	accepted									
 006f3570	GetAllThingsInRoughArea<CThingObject,std::vector<const CThing*>,CThingFilter_None>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
 006f37b0	GetAllThingsInRoughArea<CThingBuilding,std::vector<const CThing*>,CThingFilter_None>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_IsPotentialCustomer *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
-006f3a30	sort	std::list	unknown	undefined	0		0	yes	accepted									
+006f3a30	_S_sort<const CThingCreatureBase*,allocator<const CThingCreatureBase*>,CThingCompare_Nearest>	std	unknown	undefined	0		0	yes	accepted									
 006f3c20	operator=	std::vector<CDefendingCombatantInfo::CProng>	unknown	undefined	0		0	yes	accepted									
 006f3f00	_M_insert_overflow_006f3f00	std::vector<PackedRecordWithIntelligentPointer28>	unknown	undefined	0		0	yes	accepted									
 006f40a0	__uninitialized_copy	std	__fastcall	CMusicEntry *	4	CMusicEntry *,CMusicEntry *,CMusicEntry *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -18961,7 +18961,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00725ec0	GetImpulse	CTCPhysicsControlled	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00725ef0	`scalar_deleting_destructor'	CTCPhysicsControlled	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_00725ef0.cpp
 00725f10	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
-00726160	operator()	CApplyAdditionalImpulseIfInCombatAndTooClose	__thiscall	void	2	CApplyAdditionalImpulseIfInCombatAndTooClose *,CThing *	1	yes	accepted									
+00726160	operator()	CApplyAdditionalPlayerImpulseToPlayerIfInsideUnpushableCreature	__thiscall	void	2	CApplyAdditionalImpulseIfInCombatAndTooClose *,CThing *	1	yes	accepted									
 00726340	operator()	CApplyAdditionalPlayerImpulseIfTooClose	__thiscall	void	2	CApplyAdditionalPlayerImpulseIfTooClose *,CThing *	1	yes	accepted									
 00726610	for_each	_global	__fastcall	CApplyAdditionalImpulseIfInCombatAndTooClose	3	CThingCreatureBase * *,CThingCreatureBase * *,CApplyAdditionalImpulseIfInCombatAndTooClose	1	yes	accepted									
 00726660	for_each	std	__fastcall	CAddDefNamesToComboBox	3	pair<long,CCharString> *,pair<long,CCharString> *,CAddDefNamesToComboBox	1	yes	accepted									
@@ -25616,7 +25616,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0085cfe0	GetMemoryFootprint	NThingMap::CThingMap	__thiscall	long	1	CThingMap *	1	yes	accepted									
 0085d010	GetAllThings	NThingMap::CThingMap	__thiscall	void	2	CThingMap *,set<CTCMapwho*,std::less<CTCMapwho*>,std::allocator<CTCMapwho*>_> *	1	yes	accepted									
 0085d0a0	~CThingMap	NThingMap::CThingMap	__thiscall	void	1	CThingMap *	1	yes	accepted									
-0085d180	InitMapwhoLevels	CThingMap	__thiscall	void	1	CThingMap *	1	yes	accepted									
+0085d180	InitMapwhoLevels	NThingMap::CThingMap	__thiscall	void	1	CThingMap *	1	yes	accepted									
 0085d370	CThingMap	NThingMap::CThingMap	__thiscall	undefined	3	CThingMap *,CThingMapManager *,C2DBoxI *	0	yes	accepted									
 0085d680	fill	std	__fastcall	void	3	CTextureManagerPoolInfo *,CTextureManagerPoolInfo *,CTextureManagerPoolInfo *	1	yes	accepted									
 0085d6c0	Fill_Elem0x4_0085d6c0	_global	__fastcall	void	3	ENavigatorType *,ENavigatorType *,ENavigatorType *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\85\global_fillENavigatorTypeENavigatorType_0085d6c0.cpp
@@ -25843,7 +25843,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008679c0	CCombatAction_GenericStrikeResponseKnockdown	CCombatAction_GenericStrikeResponseKnockdown	__thiscall	undefined	5	CCombatAction_GenericStrikeResponseKnockdown *,CThingCreatureBase *,CThing *,C3DVector *,C3DVector *	0	yes	accepted									
 00867a70	CCombatAction_GenericStrikeResponseKnockdown	CCombatAction_GenericStrikeResponseKnockdown	__thiscall	undefined	4	CCombatAction_GenericStrikeResponseKnockdown *,CThingCreatureBase *,CThing *,CCharString *	0	yes	accepted									
 00867af0	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	__thiscall	undefined	3	CCombatAction_GenericStrikeResponseKnockdownRecoverBase *,CThingCreatureBase *,bool	0	yes	accepted									
-00867b40	CCombatAction_GenericStrikeResponseKnockdown::FinishAction	CCombatAction_GenericStrikeResponseKnockdown	__thiscall	void	1	CCombatAction_GenericStrikeResponseKnockdown *	1	yes	accepted									
+00867b40	FinishAction	CCombatAction_GenericStrikeResponseKnockdown	__thiscall	void	1	CCombatAction_GenericStrikeResponseKnockdown *	1	yes	accepted									
 00867d20	CCombatAction_GenericResponseToExplosion::FinishAction	CCombatAction_GenericResponseToExplosion	__thiscall	void	1	CCombatAction_GenericResponseToExplosion *	1	yes	accepted									
 00867f20	`scalar_deleting_destructor'	CCreatureAction_BeStunned	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\86\CLandscapeBackgroundPatch_vectordeletingdestructor_00867f20.cpp
 00867f40	`scalar_deleting_destructor'	CCreatureAction_BeDazed	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\86\CLandscapeBackgroundPatch_vectordeletingdestructor_00867f40.cpp
@@ -29299,7 +29299,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008dc600	OnActivate	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dc660	OnDeactivate	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dc6c0	OnActivate	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008dc720	StartBeamEffect	CModeDragonStrafeBurninate	__thiscall	void	1	CModeDragonStrafeBurninate *	1	yes	accepted									
+008dc720	StartBeamEffect	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	void	1	CModeDragonStrafeBurninate *	1	yes	accepted									
 008dc900	UpdateBeam	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	void	2	CModeDragonStrafeBurninate *,float	1	yes	accepted									
 008dcb00	OnDeactivate	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dcb60	ExtinguishFlames	CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
@@ -38502,7 +38502,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a90700	C3DPrimitive2	C3DPrimitive2	__thiscall	undefined	1	C3DPrimitive2 *	0	yes	accepted									
 00a90790	~C3DPrimitive2	C3DPrimitive2	__thiscall	void	1	CQuadTreeElement *	1	yes	accepted									
 00a90860	Sizeof	C3DPrimitive2	__thiscall	ulong	1	C3DPrimitive2 *	1	yes	accepted									
-00a90900	AddTriangleList	CDeviceIndependent	__thiscall	void	2	CDeviceIndependent *,C3DMeshFileTrianglesChunk *	1	yes	accepted									
+00a90900	AddTriangleList	N3DPrimitive::CDeviceIndependent	__thiscall	void	2	CDeviceIndependent *,C3DMeshFileTrianglesChunk *	1	yes	accepted									
 00a90ae0	InitialiseFromMeshFileData	CAnimatedBlock	__thiscall	void	3	CAnimatedBlock *,C3DMeshFileXAnimatedPrimitiveBlockChunk *,bool	1	yes	accepted									
 00a90d60	RemapBoneIndices	N3DPrimitive::CDeviceIndependent	unknown	undefined	0		0	yes	accepted									
 00a90f00	RemapBoneIndices	C3DPrimitive2	__thiscall	void	2	C3DPrimitive2 *,map<unsigned_long,unsigned_long,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,unsigned_long>_>_> *	1	yes	accepted									

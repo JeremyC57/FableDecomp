@@ -31,6 +31,9 @@ class C3DVector;
 enum ECollideType;                                                      // MS forward enum (chunk 794)
 #endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT_POSITION
+class C3DVector;
+#endif
 #include "engine/CDefPointer.h"
 #include "engine/CThingShotDef.h"
 class CMeleeCombatAbilityDef;
@@ -53,6 +56,14 @@ public:
     // the members they fill (AccuracyPercentage, DamageMultiplier, ShotBuildupTime; descriptive).
     void Init(CDefPointer<const CThingShotDef> def, CThing* shooter, CThing* weapon, const CThing* target, float accuracy,
               float damageMultiplier, float buildupTime, const CDefPointer<const CMeleeCombatAbilityDef>& ability);   // 0x007C0690
+#endif
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT_POSITION
+    // Retail opt-in (wf9, row 0x008C6860 CCreatureAction_TrollThrowProjectile::PerformAction): the target-position overload, Ego_r.pdb
+    // (0x007BE730) / FableWin.pdb (0x017D75C1)
+    // ?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1ABVC3DVector@@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z,
+    // out of line in retail at 0x007BF790. Declaration only; needs FABLE_RETAIL_CTCSHOTDEFINITIONBASE_INIT. Parameter names as the overload above.
+    void Init(CDefPointer<const CThingShotDef> def, CThing* shooter, CThing* weapon, const C3DVector& target, float accuracy,
+              float damageMultiplier, float buildupTime, const CDefPointer<const CMeleeCombatAbilityDef>& ability);   // 0x007BF790
 #endif
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ONHITBYMELEE
     // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): the first two virtuals CTCShotDefinitionBase adds after CTCBase's 28

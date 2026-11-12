@@ -1,0 +1,271 @@
+==== 0x00867B40
+15:48 00867b40 grade v1.cpp DIFFER(472v465) hunks=9 -- ported onto shared headers, GetTC expanded
+15:48 00867b40 grade v2.cpp DIFFER(495v465) hunks=17 -- named info local; def via GetPBaseDef
+15:48 00867b40 grade v3.cpp DIFFER(495v465) hunks=17 -- named info local; def via GetPBaseDef
+15:48 00867b40 grade v2.cpp DIFFER(468v465) hunks=1 -- PeekBaseDef inline body opt-in
+15:51 00867b40 grade v4.cpp DIFFER(468v465) hunks=1 -- final source vs REGISTERED oracle (465 bytes, truncated)
+15:51 00867b40 grade v4.cpp RELOCATION_MATCH -- final source vs CORRECTED oracle (468 bytes read from Fable.exe, shadow S under W)
+15:52 00867b40 grade v5.cpp SRC_FAIL -- strict headers, corrected oracle: v5 = C3DAnimationInfo from the shared header, v4 = local view
+15:52 00867b40 grade v4.cpp RELOCATION_MATCH -- strict headers, corrected oracle: v5 = C3DAnimationInfo from the shared header, v4 = local view
+00867b40 probe 1 why does v5 (shared C3DAnimationInfo.h) fail to compile -> see errors
+15:52 00867b40 grade v6.cpp SRC_FAIL -- strict, corrected oracle: C3DAnimationInfo from shared header with the CMeshDataBank retail chain
+15:52 00867b40 grade v7.cpp RELOCATION_MATCH -- strict, corrected oracle: C3DAnimationInfo from shared header with the CMeshDataBank retail chain
+15:53 00867b40 grade 00867b40.cpp RELOCATION_MATCH -- FINAL source, strict headers, CORRECTED 468-byte oracle (shadow S under W)
+15:53 00867b40 grade 00867b40.cpp DIFFER(468v465) hunks=1 -- FINAL source vs REGISTERED 465-byte oracle: only the truncated tail differs
+15:53 00867b40 grade 00867b40.cpp DIFFER(468v465) hunks=1 -- differ copy (Grade line added) vs registered oracle
+16:26 00867b40 grade a1.cpp DIFFER(468v465) hunks=1 -- attempt2 baseline: best source of attempt 1 vs registered oracle
+16:27 00867b40 grade 00867b40.cpp RELOCATION_MATCH -- attempt2 probe: final source vs CORRECTED 468-byte oracle (shadow S under W)
+16:27 00867b40 grade 00867b40.cpp RELOCATION_MATCH -- attempt2 probe: same, LANDVERIFY_STRICT_HEADERS=1
+16:27 00867b40 grade 00867b40.cpp DIFFER(468v465) hunks=1 -- attempt2: final source vs REGISTERED 465-byte oracle (truncated mid-instruction; unmatchable)
+00867b40 probe 2 is the registered oracle really cut? independent PE read of Fable.exe -> yes: 468 bytes real, registered 465 is a strict prefix ending inside add esp,128h (next exe bytes 00 00 c3 cc)
+00867b40 probe 3 is the cut systematic in wf9? -> no: of 10 rows only 00867b40 and 005be8f3 are not followed by padding/boundary
+16:39 00867b40 grade b1.cpp ERROR -- attempt3 baseline: best source vs registered oracle
+16:39 00867b40 grade b1.cpp DIFFER(468v465) hunks=1 -- attempt3 baseline: best source vs registered oracle
+16:39 00867b40 grade b1.cpp RELOCATION_MATCH -- attempt3 probe: same source vs 468 exe bytes (shadow S under W), strict headers
+00867b40 probe 4 does the repo record the true length anywhere? -> yes: ghidra_out/coverage.tsv line 22133 says 468; wf9 oracle still 465 (attempt 3)
+16:51 00867b40 grade 00867b40.cpp RELOCATION_MATCH -- landing: Die::Flip (PDB name), 468-byte oracle
+
+==== 0x00762BA0
+15:43 00762ba0 grade a1.cpp DIFFER(488v468) hunks=33 -- ported onto shared headers; bounds spellings
+15:43 00762ba0 grade a2.cpp DIFFER(456v468) hunks=15 -- ported onto shared headers; bounds spellings
+15:43 00762ba0 grade a3.cpp DIFFER(456v468) hunks=15 -- ported onto shared headers; bounds spellings
+15:43 00762ba0 grade b1.cpp RELOCATION_MATCH -- load first: else / early return / numShapes at top
+15:44 00762ba0 grade 00762ba0.cpp RELOCATION_MATCH -- final source, strict headers
+15:44 00762ba0 grade 00762ba0.cpp RELOCATION_MATCH -- final source, strict headers (after addmatch)
+16:23 00762ba0 grade src.cpp RELOCATION_MATCH -- 
+16:23 00762ba0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00A12AB0
+15:44 00a12ab0 grade v1.cpp DIFFER(463v468) hunks=8 -- ported: named copy / GetMesh() temp / scaled local + GetMesh
+15:44 00a12ab0 grade v2.cpp DIFFER(463v468) hunks=8 -- ported: named copy / GetMesh() temp / scaled local + GetMesh
+15:44 00a12ab0 grade v3.cpp DIFFER(468v468) hunks=2 -- ported: named copy / GetMesh() temp / scaled local + GetMesh
+15:44 00a12ab0 grade v4.cpp DIFFER(468v468) hunks=2 -- scaled local + named copy / RELEASE_INNER / DTOR_DIRECT
+15:44 00a12ab0 grade v5.cpp DIFFER(468v468) hunks=2 -- scaled local + named copy / RELEASE_INNER / DTOR_DIRECT
+15:44 00a12ab0 grade v6.cpp DIFFER(468v468) hunks=2 -- scaled local + named copy / RELEASE_INNER / DTOR_DIRECT
+15:45 00a12ab0 grade v7.cpp DIFFER(468v468) hunks=2 -- result local with GetMesh temp / result local named copy / radius*=OO_Scale
+15:45 00a12ab0 grade v8.cpp DIFFER(468v468) hunks=10 -- result local with GetMesh temp / result local named copy / radius*=OO_Scale
+15:45 00a12ab0 grade v9.cpp DIFFER(468v468) hunks=5 -- result local with GetMesh temp / result local named copy / radius*=OO_Scale
+15:45 00a12ab0 grade v12.cpp DIFFER(468v468) hunks=10 -- v8 again for hunks / inner-scope mesh + outer result / reuse scaled_radius for result
+15:45 00a12ab0 grade v11.cpp DIFFER(468v468) hunks=2 -- v8 again for hunks / inner-scope mesh + outer result / reuse scaled_radius for result
+15:45 00a12ab0 grade v10.cpp DIFFER(468v468) hunks=2 -- v8 again for hunks / inner-scope mesh + outer result / reuse scaled_radius for result
+15:46 00a12ab0 grade v13.cpp DIFFER(468v468) hunks=2 -- RELEASE_MEMBER+RELEASE_DELETES / const-ref bound GetMesh temp / diagnostic raw ptr
+15:46 00a12ab0 grade v14.cpp DIFFER(468v468) hunks=10 -- RELEASE_MEMBER+RELEASE_DELETES / const-ref bound GetMesh temp / diagnostic raw ptr
+15:46 00a12ab0 grade v15.cpp DIFFER(461v468) hunks=3 -- RELEASE_MEMBER+RELEASE_DELETES / const-ref bound GetMesh temp / diagnostic raw ptr
+15:46 00a12ab0 grade v14.cpp DIFFER(468v468) hunks=10 -- v14 hunks view
+15:46 00a12ab0 grade v16.cpp DIFFER(468v468) hunks=6 -- copy first, then scaled local
+15:47 00a12ab0 grade v3.cpp DIFFER(468v468) hunks=2 /G5 -- v3 with /G5
+15:47 00a12ab0 grade v3.cpp DIFFER(470v468) hunks=4 /G7 -- v3 with /G7
+15:47 00a12ab0 grade v3.cpp DIFFER(468v468) hunks=2 /Oa -- v3 with /Oa
+15:49 00a12ab0 grade v9.cpp DIFFER(468v468) hunks=5 -- v9 hunks view (radius*=OO_Scale)
+15:49 00a12ab0 grade v2.cpp DIFFER(463v468) hunks=8 -- v2 hunks view (arg expr)
+15:49 00a12ab0 grade d1.cpp DIFFER(466v468) hunks=9 -- diag: result into radius param / address-taken result / array result
+15:49 00a12ab0 grade d2.cpp DIFFER(468v468) hunks=10 -- diag: result into radius param / address-taken result / array result
+15:49 00a12ab0 grade d3.cpp DIFFER(468v468) hunks=10 -- diag: result into radius param / address-taken result / array result
+15:52 00a12ab0 grade d2.cpp DIFFER(468v468) hunks=10 -- d2 hunks view
+15:53 00a12ab0 grade d4.cpp DIFFER(476v468) hunks=10 -- PROBE (not a candidate): volatile result -> does test hoist above an explicit store?
+15:54 00a12ab0 grade p1.cpp DIFFER(468v468) hunks=8 -- double result local / result*1.0f / (float)(double) cast
+15:54 00a12ab0 grade p2.cpp DIFFER(468v468) hunks=2 -- double result local / result*1.0f / (float)(double) cast
+15:54 00a12ab0 grade p3.cpp DIFFER(468v468) hunks=2 -- double result local / result*1.0f / (float)(double) cast
+15:55 00a12ab0 grade o1.cpp DIFFER(468v468) hunks=2 -- decl order: local first / scaled declared at top / result declared at top
+15:55 00a12ab0 grade o2.cpp DIFFER(468v468) hunks=2 -- decl order: local first / scaled declared at top / result declared at top
+15:55 00a12ab0 grade o3.cpp DIFFER(468v468) hunks=10 -- decl order: local first / scaled declared at top / result declared at top
+15:57 00a12ab0 grade q1.cpp DIFFER(468v468) hunks=13 -- PROBE: inline helper with by-value counted pointer param (GetMesh() / Mesh)
+15:57 00a12ab0 grade q2.cpp DIFFER(468v468) hunks=13 -- PROBE: inline helper with by-value counted pointer param (GetMesh() / Mesh)
+15:57 00a12ab0 grade w4.cpp DIFFER(468v468) hunks=2 -- wf8 overlay names (v4 body) / twin 0x00A128E0 real body earlier in TU
+15:57 00a12ab0 grade w5.cpp DIFFER(468v468) hunks=2 -- wf8 overlay names (v4 body) / twin 0x00A128E0 real body earlier in TU
+15:58 00a12ab0 grade p1.cpp SRC_FAIL -- p1 hunks view (double result)
+15:58 00a12ab0 grade r2.cpp DIFFER(468v468) hunks=2 -- return (scaled_radius = call) / return (result = call)
+15:58 00a12ab0 grade r3.cpp DIFFER(468v468) hunks=10 -- return (scaled_radius = call) / return (result = call)
+15:58 00a12ab0 grade r1.cpp DIFFER(468v468) hunks=8 -- double result local (tail view)
+15:59 00a12ab0 grade r4.cpp DIFFER(466v468) hunks=25 -- GetMesh temp + double result / *1.0 double / long double cast
+15:59 00a12ab0 grade r5.cpp RELOCATION_MATCH -- GetMesh temp + double result / *1.0 double / long double cast
+15:59 00a12ab0 grade t1.cpp RELOCATION_MATCH -- named mesh + *1.0 / cast chain / 1.0* named mesh
+16:00 00a12ab0 grade 00a12ab0.cpp RELOCATION_MATCH -- final source, strict headers
+16:30 00a12ab0 grade src.cpp RELOCATION_MATCH -- 
+16:30 00a12ab0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00726160
+15:55 00726160 grade v1.cpp SRC_FAIL -- port onto shared headers, sibling idioms
+15:55 00726160 grade v1.cpp SRC_FAIL -- accessors
+15:55 00726160 grade v1.cpp SRC_FAIL -- IsSolidToThing opt-in, GetWorld()
+15:56 00726160 grade v1.cpp DIFFER(467v469) hunks=10 -- PeekWorld()
+15:56 00726160 grade v2.cpp DIFFER(469v469) hunks=3 -- player_pos ref first; solid local; radius order
+15:56 00726160 grade v3.cpp DIFFER(469v469) hunks=3 -- player_pos ref first; solid local; radius order
+15:56 00726160 grade v4.cpp DIFFER(471v469) hunks=6 -- player_pos ref first; solid local; radius order
+15:56 00726160 grade v5.cpp DIFFER(469v469) hunks=3 -- radii: += / named locals P first / named locals thing first
+15:56 00726160 grade v6.cpp DIFFER(469v469) hunks=3 -- radii: += / named locals P first / named locals thing first
+15:56 00726160 grade v7.cpp DIFFER(469v469) hunks=3 -- radii: += / named locals P first / named locals thing first
+15:57 00726160 grade v8.cpp DIFFER(470v469) hunks=9 -- C3DVector delta = GetPos() - GetPosition(); radius order; dz local
+15:57 00726160 grade v9.cpp DIFFER(470v469) hunks=9 -- C3DVector delta = GetPos() - GetPosition(); radius order; dz local
+15:57 00726160 grade v10.cpp DIFFER(469v469) hunks=3 -- C3DVector delta = GetPos() - GetPosition(); radius order; dz local
+15:57 00726160 grade v11.cpp DIFFER(469v469) hunks=3 -- PROBE-on-row: inline helper arg order (throwaway) / player local
+15:57 00726160 grade v12.cpp DIFFER(469v469) hunks=3 -- PROBE-on-row: inline helper arg order (throwaway) / player local
+15:57 00726160 grade v13.cpp DIFFER(469v469) hunks=3 -- PROBE-on-row: inline helper arg order (throwaway) / player local
+15:57 00726160 grade draft_original.cpp DIFFER(473v469) hunks=15 -- baseline: old draft residue (hunks)
+15:58 00726160 grade v14.cpp DIFFER(469v469) hunks=7 -- early returns like old draft / || / mixed
+15:58 00726160 grade v15.cpp DIFFER(469v469) hunks=7 -- early returns like old draft / || / mixed
+15:58 00726160 grade v16.cpp DIFFER(469v469) hunks=7 -- early returns like old draft / || / mixed
+15:58 00726160 grade v17.cpp DIFFER(469v469) hunks=3 -- thing physics local (less complex right side) / two-step sums
+15:58 00726160 grade v18.cpp DIFFER(469v469) hunks=3 -- thing physics local (less complex right side) / two-step sums
+15:58 00726160 grade v19.cpp DIFFER(469v469) hunks=3 -- thing physics local (less complex right side) / two-step sums
+15:58 00726160 grade v20.cpp DIFFER(469v469) hunks=3 -- radii declared first+assigned / float dx dy / dz local before radii
+15:58 00726160 grade v21.cpp DIFFER(469v469) hunks=23 -- radii declared first+assigned / float dx dy / dz local before radii
+15:58 00726160 grade v22.cpp DIFFER(469v469) hunks=3 -- radii declared first+assigned / float dx dy / dz local before radii
+15:59 00726160 grade p1.cpp DIFFER(469v469) hunks=3 -- PROBE (not landable: protected->public): direct members / GetRadius only / GetPhysicsTC only
+15:59 00726160 grade p2.cpp DIFFER(469v469) hunks=3 -- PROBE (not landable: protected->public): direct members / GetRadius only / GetPhysicsTC only
+15:59 00726160 grade p3.cpp DIFFER(469v469) hunks=3 -- PROBE (not landable: protected->public): direct members / GetRadius only / GetPhysicsTC only
+15:59 00726160 grade p4.cpp DIFFER(469v469) hunks=3 -- non-const op() probe / GetTC<T>(&solid) default / expanded
+15:59 00726160 grade v24.cpp RELOCATION_MATCH -- non-const op() probe / GetTC<T>(&solid) default / expanded
+15:59 00726160 grade 00726160.cpp RELOCATION_MATCH -- final source with header comment, strict headers
+16:00 00726160 grade 00726160.cpp RELOCATION_MATCH -- final: private GetPushRotationExtentDegrees, strict headers
+16:28 00726160 grade src.cpp RELOCATION_MATCH -- 
+16:28 00726160 grade src.cpp SRC_FAIL -- 
+
+==== 0x00A90900
+16:02 00a90900 grade a1.cpp DIFFER(471v471) hunks=17 -- port onto shared headers, PDB accessor names, SetStaticCast strip, FROM_RAW list
+16:03 00a90900 grade b1.cpp DIFFER(471v471) hunks=17 -- triangle resize inline depth: direct resize(n) / resize(n,T()) / accessor with explicit T()
+16:03 00a90900 grade b2.cpp DIFFER(471v471) hunks=17 -- triangle resize inline depth: direct resize(n) / resize(n,T()) / accessor with explicit T()
+16:03 00a90900 grade b3.cpp DIFFER(471v471) hunks=17 -- triangle resize inline depth: direct resize(n) / resize(n,T()) / accessor with explicit T()
+16:05 00a90900 grade c1.cpp DIFFER(471v471) hunks=17 -- slot packing: named blank triangle at top / raw new_list local / named FF result in block
+16:05 00a90900 grade c2.cpp DIFFER(471v471) hunks=17 -- slot packing: named blank triangle at top / raw new_list local / named FF result in block
+16:05 00a90900 grade c3.cpp DIFFER(470v471) hunks=17 -- slot packing: named blank triangle at top / raw new_list local / named FF result in block
+16:06 00a90900 grade d1.cpp DIFFER(471v471) hunks=17 -- push_back nesting: direct / CARRAY_PUSHBACK wrapper / CARRAY begin() index
+16:06 00a90900 grade d2.cpp DIFFER(471v471) hunks=17 -- push_back nesting: direct / CARRAY_PUSHBACK wrapper / CARRAY begin() index
+16:06 00a90900 grade d3.cpp DIFFER(471v471) hunks=17 -- push_back nesting: direct / CARRAY_PUSHBACK wrapper / CARRAY begin() index
+16:07 00a90900 grade e1.cpp RELOCATION_MATCH -- callee visibility: FABLE_RETAIL_STLP_VECTOR (+_C) bodies of _M_fill_insert/_M_insert_overflow visible
+16:07 00a90900 grade 00a90900.cpp RELOCATION_MATCH -- final source, strict headers
+16:08 00a90900 grade 00a90900.cpp RELOCATION_MATCH -- final source with engine/C3DBoundingSphere.h, strict headers
+16:35 00a90900 grade src.cpp RELOCATION_MATCH -- 
+16:35 00a90900 grade src.cpp SRC_FAIL -- 
+16:42 00a90900 grade 00a90900.cpp RELOCATION_MATCH -- repair: Groups -> CArray<CCountedPointer<C3DGroup2> >
+16:42 00a90900 grade 00a90900.cpp RELOCATION_MATCH -- repair: strict regrade
+16:44 00a90900 grade src.cpp RELOCATION_MATCH -- 
+16:44 00a90900 grade src.cpp SRC_FAIL -- 
+
+==== 0x008DC720
+16:01 008dc720 grade v1.cpp RELOCATION_MATCH -- twin FireBeam source adapted (stand-ins still in, baseline)
+16:02 008dc720 grade v2.cpp SRC_FAIL -- ported onto shared headers, real GetSubDef/GetEffect bodies
+16:03 008dc720 grade v2.cpp RELOCATION_MATCH -- ported onto shared headers incl CModeBase + emitter FULL
+16:03 008dc720 grade 008dc720.cpp RELOCATION_MATCH -- final source, strict headers
+16:32 008dc720 grade src.cpp RELOCATION_MATCH -- 
+16:32 008dc720 grade src.cpp RELOCATION_MATCH -- 
+16:49 008dc720 grade nv.cpp RELOCATION_MATCH -- landing: drop novtable
+
+==== 0x006F3A30
+16:05 006f3a30 grade v1.cpp DIFFER(496v481) hunks=35 -- port onto shared stlport header + FABLE_RETAIL_STLP_LIST_SORT opt-in, verbatim STLport 4.6 _S_sort
+16:06 006f3a30 grade v2.cpp SRC_FAIL -- _S_merge body visible (STLport verbatim): v2 comparator inline body via CThingCreatureBase.h, v3 comparator specialisation declared out of line
+16:06 006f3a30 grade v3.cpp SRC_FAIL -- _S_merge body visible (STLport verbatim): v2 comparator inline body via CThingCreatureBase.h, v3 comparator specialisation declared out of line
+16:06 006f3a30 grade v2.cpp RELOCATION_MATCH -- _S_merge body visible, comparator operator() declared only via header opt-in
+16:06 006f3a30 grade 006f3a30.cpp RELOCATION_MATCH -- final source with header comment
+16:07 006f3a30 grade 006f3a30.cpp RELOCATION_MATCH -- strict-headers regrade of final source (unused MERGE_DECL switch removed from overlay)
+16:34 006f3a30 grade src.cpp RELOCATION_MATCH -- 
+16:34 006f3a30 grade src.cpp SRC_FAIL -- 
+16:41 006f3a30 grade 006f3a30.cpp RELOCATION_MATCH -- repair: comment states retail comparator quirk
+16:41 006f3a30 grade 006f3a30.cpp RELOCATION_MATCH -- repair: strict regrade
+16:43 006f3a30 grade src.cpp RELOCATION_MATCH -- 
+16:43 006f3a30 grade src.cpp SRC_FAIL -- 
+
+==== 0x0085D180
+16:09 0085d180 grade v1.cpp DIFFER(560v481) hunks=31 -- port to shared headers; 1-arg resizes; v2 RESIZE_OUTOFLINE; v3 raw BRX-TLX
+16:09 0085d180 grade v2.cpp DIFFER(394v481) hunks=19 -- port to shared headers; 1-arg resizes; v2 RESIZE_OUTOFLINE; v3 raw BRX-TLX
+16:09 0085d180 grade v3.cpp DIFFER(544v481) hunks=31 -- port to shared headers; 1-arg resizes; v2 RESIZE_OUTOFLINE; v3 raw BRX-TLX
+16:11 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 -- STLP_VECTOR visible _M_fill_insert; v2 +RESIZE_OUTOFLINE; v3 direct LayerInfo[i].Size
+16:11 0085d180 grade v2.cpp DIFFER(378v481) hunks=18 -- STLP_VECTOR visible _M_fill_insert; v2 +RESIZE_OUTOFLINE; v3 direct LayerInfo[i].Size
+16:11 0085d180 grade v3.cpp DIFFER(540v481) hunks=35 -- STLP_VECTOR visible _M_fill_insert; v2 +RESIZE_OUTOFLINE; v3 direct LayerInfo[i].Size
+16:12 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 -- explicit 2-arg resize at site3 / site4 / both (inline depth)
+16:12 0085d180 grade v2.cpp DIFFER(531v481) hunks=29 -- explicit 2-arg resize at site3 / site4 / both (inline depth)
+16:12 0085d180 grade v3.cpp DIFFER(531v481) hunks=29 -- explicit 2-arg resize at site3 / site4 / both (inline depth)
+16:12 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 -- resize via insert() wrapper (real STLport spelling); v2 size decl first; v3 raw extents
+16:12 0085d180 grade v2.cpp DIFFER(531v481) hunks=29 -- resize via insert() wrapper (real STLport spelling); v2 size decl first; v3 raw extents
+16:12 0085d180 grade v3.cpp DIFFER(528v481) hunks=31 -- resize via insert() wrapper (real STLport spelling); v2 size decl first; v3 raw extents
+0085d180 probe 1 does an inline budget exist (extra resize sites before site 4) -> see below
+16:16 0085d180 grade v1.cpp DIFFER(378v481) hunks=18 /d2inlT40 -- natural form, /d2inlT40
+16:16 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 /d2inlT60 -- natural form, /d2inlT60
+16:16 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 /d2inlT74 -- natural form, /d2inlT74
+16:16 0085d180 grade v1.cpp DIFFER(512v481) hunks=28 /d2inlT90 -- natural form, /d2inlT90
+16:16 0085d180 grade v1.cpp DIFFER(378v481) hunks=18 /d2inlT42 -- natural form, /d2inlT42
+16:16 0085d180 grade v1.cpp DIFFER(442v481) hunks=18 /d2inlT44 -- natural form, /d2inlT44
+16:16 0085d180 grade v1.cpp DIFFER(482v481) hunks=27 /d2inlT46 -- natural form, /d2inlT46
+16:16 0085d180 grade v1.cpp DIFFER(482v481) hunks=27 /d2inlT48 -- natural form, /d2inlT48
+16:16 0085d180 grade v1.cpp DIFFER(482v481) hunks=27 /d2inlT50 -- natural form, /d2inlT50
+16:16 0085d180 grade v1.cpp DIFFER(482v481) hunks=27 /d2inlT52 -- natural form, /d2inlT52
+16:16 0085d180 grade v1.cpp DIFFER(482v481) hunks=27 /d2inlT54 -- natural form, /d2inlT54
+16:16 0085d180 grade v1.cpp DIFFER(482v481) hunks=27 /d2inlT56 -- natural form, /d2inlT56
+16:16 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 /d2inlT58 -- natural form, /d2inlT58
+16:16 0085d180 grade v1.cpp DIFFER(482v481) hunks=27 /d2inlT50 -- natural form, /d2inlT50 full diff
+0085d180 probe 2 which sites inline at /d2inlT43-45 -> see NOTES
+16:17 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 -- site frequency: v1 while loop; v2 continue in -1 arm; v3 inverted !=
+16:17 0085d180 grade v2.cpp DIFFER(531v481) hunks=29 -- site frequency: v1 while loop; v2 continue in -1 arm; v3 inverted !=
+16:17 0085d180 grade v3.cpp DIFFER(528v481) hunks=31 -- site frequency: v1 while loop; v2 continue in -1 arm; v3 inverted !=
+16:17 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 -- site frequency: v1 while loop; v2 continue in -1 arm; v3 inverted !=
+16:17 0085d180 grade v2.cpp DIFFER(531v481) hunks=29 -- site frequency: v1 while loop; v2 continue in -1 arm; v3 inverted !=
+16:17 0085d180 grade v3.cpp DIFFER(534v481) hunks=24 -- site frequency: v1 while loop; v2 continue in -1 arm; v3 inverted !=
+0085d180 probe 3 does our TU's standalone resize<Cell> COMDAT expand erase (T44) -> see NOTES
+0085d180 probe 4 does an earlier-compiled resize<Cell> (explicit instantiation / earlier user) change the site split at default T -> see next line of log
+0085d180 probe 5 T sweep 57..130 natural form -> T57 FFER(457v481) flags= ['/d2inlT5 calls=4;T66 FFER(531v481) flags= ['/d2inlT6 calls=4;T73 FFER(531v481) flags= ['/d2inlT7 calls=4;T74 FFER(531v481) flags= ['/d2inlT7 calls=4;T75 FFER(531v481) flags= ['/d2inlT7 calls=4;T78 FFER(531v481) flags= ['/d2inlT7 calls=4;T82 FFER(528v481) flags= ['/d2inlT8 calls=4;T86 FFER(528v481) flags= ['/d2inlT8 calls=4;T90 FFER(512v481) flags= ['/d2inlT9 calls=4;T100
+16:22 0085d180 grade n1.cpp DIFFER(457v481) hunks=10 /d2inlT57 -- natural form, /d2inlT57
+16:22 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 /d2inlT57 -- T57: explicit 2-arg at site 4; v1 size local first; v2 direct LayerInfo[i].Size; v3 both sites explicit
+16:22 0085d180 grade v2.cpp DIFFER(540v481) hunks=35 /d2inlT57 -- T57: explicit 2-arg at site 4; v1 size local first; v2 direct LayerInfo[i].Size; v3 both sites explicit
+16:22 0085d180 grade v3.cpp DIFFER(531v481) hunks=29 /d2inlT57 -- T57: explicit 2-arg at site 4; v1 size local first; v2 direct LayerInfo[i].Size; v3 both sites explicit
+0085d180 probe 6 standalone A3 (1-arg) / B3 (2-arg) resize<Cell> bodies at T57 and T74 in our TU -> see NOTES
+0085d180 probe 7 cost of resize<Cell> 2-arg at f=1 (straight-line probe fn), n variable vs n=1 -> T74 ProbeN DIFFER(29v76) flags calls=1;T74 ProbeOne DIFFER(26v76) flags calls=1;T76 ProbeN DIFFER(29v76) flags calls=1;T76 ProbeOne DIFFER(26v76) flags calls=1;T78 ProbeN DIFFER(29v76) flags calls=1;T78 ProbeOne DIFFER(26v76) flags calls=1;T80 ProbeN DIFFER(29v76) flags calls=1;T80 ProbeOne DIFFER(90v76) flags calls=1;T82 ProbeN DIFFER(87v76) flags calls=1;T82 ProbeOne DIFFER(90v76) flags calls=1;
+0085d180 probe 8 T sweep 59..72 natural form -> T59 FFER(531v481) fl calls=4;T61 FFER(531v481) fl calls=4;T63 FFER(531v481) fl calls=4;T65 FFER(531v481) fl calls=4;T67 FFER(531v481) fl calls=4;T68 FFER(531v481) fl calls=4;T69 FFER(531v481) fl calls=4;T70 FFER(531v481) fl calls=4;T71 FFER(531v481) fl calls=4;T72 FFER(531v481) fl calls=4;
+0085d180 probe 9 at which T does standalone resize<Cell> expand erase -> T58 B3 r::resize DIFFER(66v76) flags= [';T62 B3 r::resize DIFFER(66v76) flags= [';T66 B3 r::resize DIFFER(66v76) flags= [';T70 B3 r::resize RELOCATION_MATCH flags=;T72 B3 r::resize RELOCATION_MATCH flags=;T73 B3 r::resize RELOCATION_MATCH flags=;
+0085d180 probe 10 site factor of resize<Cell> in a for body and in for+if/else arms -> T68 ProbeFor DIFFER(111v76) flag calls=1;T68 ProbeArms DIFFER(200v76) flag calls=1;T70 ProbeFor DIFFER(111v76) flag calls=1;T70 ProbeArms DIFFER(200v76) flag calls=1;T72 ProbeFor DIFFER(111v76) flag calls=1;T72 ProbeArms DIFFER(200v76) flag calls=1;T74 ProbeFor DIFFER(111v76) flag calls=1;T74 ProbeArms DIFFER(200v76) flag calls=1;T76 ProbeFor DIFFER(111v76) flag calls=1;T76 ProbeArms DIFFER(200v76) flag calls=1;T78 ProbeFor DIFFER(111v76) flag calls=1;T78 ProbeArms DIFFER(200v76) flag calls=1;T80 ProbeFor DIFFER(111v76) flag calls=1;T80 ProbeArms DIFFER(200v76) flag calls=1;
+0085d180 probe 11 does removing the Cells.resize temp (its dtor loop precedes the main loop) cool site 4 at T74 -> q1 FFER(502v481) fl calls=3;q2 FFER(504v481) fl calls=3;q3 FFER(475v481) fl calls=2;
+16:28 0085d180 grade v1.cpp DIFFER(531v481) hunks=29 -- inline_depth(1) at site 4; v1 size local first; v2 NoThings first; v3 cond on LayerInfo[i].Size, size local in else arm
+16:28 0085d180 grade v2.cpp DIFFER(531v481) hunks=29 -- inline_depth(1) at site 4; v1 size local first; v2 NoThings first; v3 cond on LayerInfo[i].Size, size local in else arm
+16:28 0085d180 grade v3.cpp DIFFER(531v481) hunks=29 -- inline_depth(1) at site 4; v1 size local first; v2 NoThings first; v3 cond on LayerInfo[i].Size, size local in else arm
+16:29 0085d180 grade v1.cpp DIFFER(504v481) hunks=30 -- v1 inline_depth(0) + explicit 2-arg at site 4 (size first); v2 inline_depth(2) 1-arg; v3 as v1 NoThings first
+16:29 0085d180 grade v2.cpp DIFFER(531v481) hunks=29 -- v1 inline_depth(0) + explicit 2-arg at site 4 (size first); v2 inline_depth(2) 1-arg; v3 as v1 NoThings first
+16:29 0085d180 grade v3.cpp DIFFER(504v481) hunks=30 -- v1 inline_depth(0) + explicit 2-arg at site 4 (size first); v2 inline_depth(2) 1-arg; v3 as v1 NoThings first
+16:29 0085d180 grade v1.cpp DIFFER(504v481) hunks=30 -- repeat v1 inline_depth(0)+2-arg for full diff
+0085d180 probe 12 which branch/loop shapes keep resize<Cell> called at T74 -> T74 ProbeA DIFFER(45v76) flags calls=1 2;T74 ProbeB DIFFER(73v76) flags calls=1 2;T74 ProbeC DIFFER(91v76) flags calls=1 2;T74 ProbeD DIFFER(145v76) flag calls=1 4;T74 ProbeE DIFFER(148v76) flag calls=1 4;
+0085d180 probe 13 margin of site 4 at T71/T73 without the leading resize sites -> q3 T71 FFER(475v481) fl calls=2;q3 T73 FFER(475v481) fl calls=2;q1 T73 FFER(502v481) fl calls=3;q1 T71 FFER(502v481) fl calls=3;
+16:31 0085d180 grade v1.cpp DIFFER(470v481) hunks=9 -- branch probability: v1 cond a||a; v2 size==-1||LayerInfo[i].Size==-1; v3 a&&true
+16:31 0085d180 grade v2.cpp DIFFER(470v481) hunks=9 -- branch probability: v1 cond a||a; v2 size==-1||LayerInfo[i].Size==-1; v3 a&&true
+16:31 0085d180 grade v3.cpp DIFFER(531v481) hunks=29 -- branch probability: v1 cond a||a; v2 size==-1||LayerInfo[i].Size==-1; v3 a&&true
+16:31 0085d180 grade v1.cpp DIFFER(534v481) hunks=24 -- branch probability: v1 switch(size) case -1/default; v2 else if(size!=-1); v3 else if(size>0) [diagnostic]
+16:31 0085d180 grade v2.cpp DIFFER(470v481) hunks=5 -- branch probability: v1 switch(size) case -1/default; v2 else if(size!=-1); v3 else if(size>0) [diagnostic]
+16:31 0085d180 grade v3.cpp DIFFER(478v481) hunks=6 -- branch probability: v1 switch(size) case -1/default; v2 else if(size!=-1); v3 else if(size>0) [diagnostic]
+16:32 0085d180 grade v1.cpp DIFFER(470v481) hunks=5 -- else-if split found; loop top: v1 cond on LayerInfo[i].Size + local in else arm; v2 fully direct; v3 size local declared first
+16:32 0085d180 grade v2.cpp DIFFER(470v481) hunks=36 -- else-if split found; loop top: v1 cond on LayerInfo[i].Size + local in else arm; v2 fully direct; v3 size local declared first
+16:32 0085d180 grade v3.cpp RELOCATION_MATCH -- else-if split found; loop top: v1 cond on LayerInfo[i].Size + local in else arm; v2 fully direct; v3 size local declared first
+16:33 0085d180 grade 0085d180.cpp RELOCATION_MATCH -- final source (else-if form, size local first), default flags
+16:33 0085d180 grade 0085d180.cpp RELOCATION_MATCH -- final source, LANDVERIFY_STRICT_HEADERS=1
+16:33 0085d180 grade 0085d180.cpp RELOCATION_MATCH -- final source, additions-only overlay, LANDVERIFY_STRICT_HEADERS=1
+16:40 0085d180 grade src.cpp RELOCATION_MATCH -- 
+16:40 0085d180 grade src.cpp SRC_FAIL -- 
+
+==== 0x005BE8F3
+16:10 005be8f3 grade v1.cpp DIFFER(480v482) hunks=17 -- port onto shared headers, GetTC out-param, same-TU IS_THING_ALIVE
+16:11 005be8f3 grade v2a.cpp RELOCATION_MATCH -- max evaluated first as a local: a) min(max,(long)size) b) two locals c) count=min(count,size)
+16:11 005be8f3 grade 005be8f3.cpp RELOCATION_MATCH -- final source with header comment, strict headers
+16:36 005be8f3 grade src.cpp RELOCATION_MATCH -- 
+16:36 005be8f3 grade src.cpp SRC_FAIL -- 
+
+==== 0x008C6860
+16:16 008c6860 grade v1.cpp SRC_FAIL -- port onto shared headers, visible GetSubDef/GetDef bodies
+16:17 008c6860 grade v1.cpp DIFFER(512v482) hunks=43 -- port onto shared headers, visible GetSubDef/GetDef bodies (compile fix)
+16:17 008c6860 grade v1.cpp DIFFER(483v482) hunks=36 -- PeekBaseDef().GetSubDef
+16:18 008c6860 grade v2.cpp DIFFER(512v482) hunks=39 -- CDefString member: block-local name via conversion / temp arg / GetString()
+16:18 008c6860 grade v3.cpp DIFFER(489v482) hunks=39 -- CDefString member: block-local name via conversion / temp arg / GetString()
+16:18 008c6860 grade v4.cpp DIFFER(489v482) hunks=39 -- CDefString member: block-local name via conversion / temp arg / GetString()
+16:18 008c6860 grade v4.cpp DIFFER(489v482) hunks=39 -- v4 alone (GetString() block local) full diff
+16:18 008c6860 grade v5.cpp DIFFER(481v482) hunks=38 -- ability in own block / temp per branch / block+COUNTREF
+16:18 008c6860 grade v6.cpp DIFFER(490v482) hunks=3 -- ability in own block / temp per branch / block+COUNTREF
+16:18 008c6860 grade v7.cpp DIFFER(497v482) hunks=42 -- ability in own block / temp per branch / block+COUNTREF
+16:19 008c6860 grade v8.cpp DIFFER(489v482) hunks=39 -- ability as const-ref-bound temp / NULL_DEF local / v5 again for diff
+16:19 008c6860 grade v9.cpp DIFFER(489v482) hunks=39 -- ability as const-ref-bound temp / NULL_DEF local / v5 again for diff
+16:19 008c6860 grade v5.cpp DIFFER(481v482) hunks=38 -- ability as const-ref-bound temp / NULL_DEF local / v5 again for diff
+16:21 008c6860 grade v10.cpp DIFFER(481v482) hunks=38 -- block: ref-bound temp / copy-init from temp / named local per branch
+16:21 008c6860 grade v11.cpp DIFFER(481v482) hunks=38 -- block: ref-bound temp / copy-init from temp / named local per branch
+16:21 008c6860 grade v12.cpp RELOCATION_MATCH -- block: ref-bound temp / copy-init from temp / named local per branch
+16:22 008c6860 grade 008c6860.cpp RELOCATION_MATCH -- final source (v12 + header comment), strict headers
+16:38 008c6860 grade src.cpp RELOCATION_MATCH -- 
+16:38 008c6860 grade src.cpp SRC_FAIL -- 
+16:42 008c6860 grade 008c6860.cpp RELOCATION_MATCH -- repair: GetShotAccuracyPercentage const (QBEJXZ)
+16:42 008c6860 grade 008c6860.cpp RELOCATION_MATCH -- repair: strict regrade
+16:46 008c6860 grade src.cpp RELOCATION_MATCH -- 
+16:46 008c6860 grade src.cpp SRC_FAIL -- 
+

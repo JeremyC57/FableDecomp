@@ -8,6 +8,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BALVERINEJUMPATFLEEINGENEMY
+// Retail opt-in (wf7 row 0x0094F480 IsRunnable): the real class instead of the flat generated struct. Ego_r.pdb: derives
+// CAIStateGroupBase (0x14), PTarget +0x14 CIntelligentPointer<CThingCreatureBase>, WaitUntilWorldFrameForNextAttempt +0x1C.
+// Virtuals from the vtable 0x0128C0F8 (rtti-vtables.tsv): slot 11 IsRunnable 0x0094F480, slot 12 Update 0x0094F730,
+// slot 13 InitStateGroup 0x0094F170 (Ego_r ?IsRunnable@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAE_NXZ: protected virtual).
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThingCreatureBase;
+class CAIStateGroup_BalverineJumpAtFleeingEnemy : public CAIStateGroupBase {
+protected:
+    virtual bool IsRunnable();                               // slot 11 0x0094F480
+    virtual void Update();                                   // slot 12 0x0094F730
+    virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x0094F170
+    CIntelligentPointer<CThingCreatureBase> PTarget;         // +0x14
+    long          WaitUntilWorldFrameForNextAttempt;         // +0x1c
+};
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_BalverineJumpAtFleeingEnemy {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -24,5 +41,7 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BalverineJumpAtFleeingEnemy) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BalverineJumpAtFleeingEnemy, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BalverineJumpAtFleeingEnemy, PTarget) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BalverineJumpAtFleeingEnemy, WaitUntilWorldFrameForNextAttempt) == 0x1c);
+
+#endif // FABLE_RETAIL_CAISTATEGROUP_BALVERINEJUMPATFLEEINGENEMY
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_BALVERINEJUMPATFLEEINGENEMY_H

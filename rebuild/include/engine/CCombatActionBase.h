@@ -232,6 +232,13 @@ public:
     virtual void Initialise();
     void SetCombatAnimation(const CCharString&);
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_GETPCOMBATACTIONFROMENUM
+    // Per-TU opt-in (wf7, row 0x008B0B60 CCombatSequenceGeneric::OnCreateSpecial): the static factory, as the first branch declares it
+    // (Ego_r.pdb ?GetPCombatActionFromEnum@CCombatActionBase@@SI?AV?$CCountedPointer@VCCombatActionBase@@@@W4EActionRegisteredType@@AAVCThingCreatureBase@@1@Z,
+    // landed 0x00857430). Declaration only; needs engine/CCountedPointer.h and engine/EActionRegisteredType.h first.
+public:
+    static CCountedPointer<CCombatActionBase> FABLE_FASTCALL GetPCombatActionFromEnum(EActionRegisteredType type, CThingCreatureBase& creature, CThingCreatureBase& target);   // 0x00857430
+#endif
 protected: unsigned char _pad_0xa8[0x6c];
 };
 #endif

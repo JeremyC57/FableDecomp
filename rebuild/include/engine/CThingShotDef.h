@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CTHINGSHOTDEF_H
 #define FABLE_ENGINE_CTHINGSHOTDEF_H
 #include "engine/CParentDefClassBase.h"
+#ifdef FABLE_RETAIL_CTHINGSHOTDEF_DEFSTRING
+#include "engine/CDefString.h"
+#endif
 // Retail opt-in (Codex 2026-11-10): RTTI vtable01234e2c proves CParentDefClassBase;
 // the PDB field sequence is four bytes earlier after its STLport vector shrinks.
 // Parent size39h aligns the first float Speed at3ch, as GetInitialVelocity007befb0.
@@ -17,7 +20,14 @@ public:
     float         HitThingShieldDamage;                      // +0x58
     bool          CauseDamage;                               // +0x5c
     unsigned char _pad_0x5d[0x3];                            // +0x5d
+#ifdef FABLE_RETAIL_CTHINGSHOTDEF_DEFSTRING
+    // Opt-in (wf9, row 0x008C6860 CCreatureAction_TrollThrowProjectile::PerformAction): the member with its Ego_r.pdb type and name
+    // (CDefString ShotDefinitionClassName), so callers reach the class name through CDefString's own inline conversion / GetString.
+    // Needs FABLE_RETAIL_CDEFSTRINGTABLE and FABLE_RETAIL_CCHARSTRING. Same offset and size.
+    CDefString    ShotDefinitionClassName;                   // +0x60
+#else
     long          ShotDefinitionClassName_TablePos;          // +0x60 CDefString::TablePos
+#endif
     float         ShotOffsetAngleRange_HighValue;            // +0x64 CFloatRange::HighValue
     float         ShotOffsetAngleRange_LowValue;             // +0x68 CFloatRange::LowValue
     float         ShotOffsetRadiusRange_HighValue;           // +0x6c CFloatRange::HighValue

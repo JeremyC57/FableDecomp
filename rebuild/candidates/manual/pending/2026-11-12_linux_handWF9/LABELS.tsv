@@ -1,0 +1,29 @@
+00692950	PeekWorld	CCreatureActionBase
+004c7ab0	PeekWorld	CThing
+00867b40	FinishAction	CCombatAction_GenericStrikeResponseKnockdown
+00762620	StatOnSerialise	NShape::CShape
+004c73d0	GetPos	CThing
+00686d20	PeekWorldMap	CTCBase
+00a6ca80	PeekRoughProportionOfSphereContained	CPhysicsMesh
+00a90900	AddTriangleList	N3DPrimitive::CDeviceIndependent
+00abc440	GetList	C3DMeshFileTrianglesChunk
+00aba370	GetCount	C3DMeshFileTrianglesChunk
+00a97a50	resize	std::vector<C3DTriangle2>
+00aa7f40	FindFirstSubChunkOfType	CChunkedFileSuperChunk
+00a97be0	_M_insert_overflow	std::vector<CIVCountedPointer<N3DPrimitive::CTriangleList> >
+005149f0	_M_fill_insert	std::vector<unsigned short>
+006f3a30	_S_sort	std
+006f04c0	_S_merge	std
+006f4040	sort	std::list
+0085e870	resize	std::vector<NThingMap::CMapwhoLevelInfo>
+0085ed20	resize	std::vector<std::vector<NThingMap::CThingMapCell> >
+0085e8d0	resize	std::vector<NThingMap::CThingMapCell>
+0085e970	resize	std::vector<NThingMap::CThingMapCell> (one-argument wrapper, 27 bytes, uncalled)
+0085ed90	resize	std::vector<std::vector<NThingMap::CThingMapCell> > (one-argument wrapper, uncalled)
+0085e6c0	_M_fill_insert	std::vector<NThingMap::CThingMapCell>
+013ba848	MaxLayers	NThingMap
+0137dad8	LayerInfo	NThingMap
+007bf790	?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1ABVC3DVector@@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	NThingShot::CTCShotDefinitionBase
+007c0690	?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1PBV4@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	NThingShot::CTCShotDefinitionBase
+00663b10	?GetShotAccuracyPercentage@CThingCreatureBase@@QAEJXZ	CThingCreatureBase
+00692940	?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ	CCreatureActionBase

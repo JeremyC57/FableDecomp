@@ -10,6 +10,11 @@
 // +0x1CD, LastThingCollisionPosition +0x1D9; Ego_r +0x1F8 / +0x1F9 / +0x205), so the class is packed to 1 with the PDB's alignment
 // gaps spelled out. Allocation size 0x208 (Create 0x006AC910 `push 208h`): the last dword is not in the Ego_r member list.
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ACCELERATIONMAP
+// Opt-in (wf7, row 0x006AD3C0 ApplyRelativeMovementAcceleration): RelativeMovementAccelerationComponents typed as the Ego_r.pdb
+// member type map<EGameAction,pair<C3DVector,long> > (STLport, 0xC bytes in retail) instead of the opaque byte array.
+#include "stlport/fable_map.h"
+#endif
 enum EControlledMovementType;
 enum EMovementBandType;
 enum ECombatZone;
@@ -79,7 +84,11 @@ protected:
     float MaxSprintingSpeed;                                 // +0x19c
     float MaxFlyingSpeed;                                    // +0x1a0
     float MaxStrafingSpeed;                                  // +0x1a4
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ACCELERATIONMAP
+    std::map<EGameAction, std::pair<C3DVector, long> > RelativeMovementAccelerationComponents;   // +0x1a8 (STLport, 0xC)
+#else
     unsigned char RelativeMovementAccelerationComponents[0xc];   // +0x1a8 map<EGameAction,pair<C3DVector,long> > (STLport, 0xC)
+#endif
     C3DVector RelativeMovementAcceleration;                  // +0x1b4
     C3DVector LastRelativeMovementAcceleration;              // +0x1c0
     bool CollidedWithThing;                                  // +0x1cc

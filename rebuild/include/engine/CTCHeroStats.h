@@ -33,6 +33,12 @@ public:void InformOfEvent(const NHeroStatModifierEvent::CBase&);
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
+#ifdef FABLE_RETAIL_CTCHEROSTATS_TRADESKILL
+    // Retail opt-in (wf7, rows 0x007735D0 CTCShop::GetAttitudeBuyPriceMultiplier and 0x00773790 GetAttitudeSellPriceMultiplier):
+    // Ego_r.pdb (0x0056E5CA) + FableWin.pdb ?GetTradeSkill@CTCHeroStats@@QBEMXZ, out of line in retail at 0x0057C239 (landed).
+    // Declaration only.
+    float GetTradeSkill() const;                                         // 0x0057C239
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_CRIME_REPORT
     // Both original PDB types and native0057d9fd/0057daf5/0057dc22.
     void UpdateOutstandingCrimes(const CCharString&);

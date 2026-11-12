@@ -24,6 +24,12 @@ class CCombatSequenceDef;
 class CCombatSequenceGeneric : public CCombatSequenceBase {
 public:
     CCombatSequenceGeneric(CThingCreatureBase& creature, CThingCreatureBase& target, CDefPointer<const CCombatSequenceDef>& def);
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCEGENERIC_ONCREATESPECIAL
+    // Retail opt-in (wf7, row 0x008B0B60): vtable 0x01261D74 slot 19 (the last; the base vtable 0x01278FEC has 19 slots), both PDBs
+    // ?OnCreateSpecial@CCombatSequenceGeneric@@UAEXABV?$map@VCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z...@std@@@Z.
+    // The includer supplies stlport/fable_map.h and CCharString.
+    virtual void OnCreateSpecial(const std::map<CCharString, CCombatSequenceBase* (FABLE_FASTCALL*)(CThingCreatureBase&, CThingCreatureBase&)>& specials);   // 0x008B0B60
+#endif
     CDefPointer<const CCombatSequenceDef> Def;                           // +0x28
 };
 FABLE_STATIC_ASSERT(sizeof(CCombatSequenceGeneric) == 0x2c);

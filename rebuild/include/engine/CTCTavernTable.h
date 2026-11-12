@@ -24,6 +24,12 @@ public:
     bool GetServingPoint(CThing& creature, C3DVector& pos, CRightHandedSet& rh_set, long& action_point_index, long& seat_index,
                          CThingObject** tankard, ServingMode mode, bool reserve);                  // 0x007B8CC0
     void FreeServingPoint(long action_point_index);                                               // 0x007B9090
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_FREESEAT
+    // Retail opt-in (wf7, row 0x009486D0 CAIStateGroup_GoToPub::FreeSeat): Ego_r.pdb / FableWin.pdb
+    // ?FreeSeat@CTCTavernTable@@QAEXJJ@Z (Ego_r 0x007B7A20, retail 0x007B8AA0, landed), out of line: the row pushes the group's
+    // ActionPointIndex then its SeatIndex (0x0094873C). Declaration only.
+    void FreeSeat(long seat_index, long action_point_index);                                      // 0x007B8AA0
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNTABLE_SEATS
     // Nested opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): Ego_r.pdb / FableWin.pdb
     // ?SetSeatState@CTCTavernTable@@QAEXJ_N@Z (Ego_r 0x007B7610, retail 0x007B8530) and ?GetFood@CTCTavernTable@@QAEPAVCThingObject@@J@Z

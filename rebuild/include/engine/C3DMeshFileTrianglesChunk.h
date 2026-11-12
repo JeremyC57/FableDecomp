@@ -17,6 +17,10 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILETRIANGLESCHUNK_ACCESSORS
+    const C3DTriangle2* GetList() const;            // 0x00ABC440 (Ego_r ?GetList@C3DMeshFileTrianglesChunk@@QBEPBVC3DTriangle2@@XZ)
+    unsigned long GetCount() const;                 // 0x00ABA370 (Ego_r ?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ)
+#endif
     CArray<C3DTriangle2> TriangleList;              // +0x2C
 };
 FABLE_STATIC_ASSERT(sizeof(C3DMeshFileTrianglesChunk) == 0x38);

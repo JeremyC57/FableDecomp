@@ -35,6 +35,12 @@ public:
  // 0x007617A0 (Ego_r.pdb + FableWin.pdb). Non-virtual declaration only: no layout change.
  void EditorDrawHighlightPoints(const CEnginePrimitivePrepareInfo&,const CWorldMap&,const C3DVector&,const CRGBColour&);   // 0x007617A0
 #endif
+#ifdef FABLE_RETAIL_NSHAPE_CSHAPE_STATONSERIALISE
+ // Retail opt-in (wf9, row 0x00762BA0 CTCShapeManager::OnSerialise): Ego_r.pdb 0x007736A0 + FableWin.pdb
+ // ?StatOnSerialise@CShape@NShape@@SIXAAVCTCShapeManager@@AAVCPersistContext@@JABVC2DCoordI@@AAVC2DBoxF@@@Z (public static
+ // __fastcall), out of line in retail at 0x00762620. Declaration only: no layout change.
+ static void FABLE_FASTCALL StatOnSerialise(CTCShapeManager&,CPersistContext&,long,const C2DCoordI&,class C2DBoxF&);   // 0x00762620
+#endif
  CTCShapeManager& Owner;
  std::vector<C3DVector> Points;
  std::vector<std::vector<C3DVector>::iterator> SelectedPoints;

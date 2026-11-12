@@ -16,8 +16,17 @@
 enum EOpinionAttitudeType;enum EOpinionReactionType;class CTCOpinionSource;
 #endif
 class CThing; class CWorld; class CThingAICreature; class CReactionMatch; class COpinionReactionManagerDef;
+#if defined(FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYER) && !defined(FABLE_RETAIL_CTCWIFE_MARRY)
+enum EOpinionAttitudeType;
+#endif
 class COpinionReactionManager {
 public:
+#if defined(FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYER) && !defined(FABLE_RETAIL_CTCWIFE_MARRY)
+    // Retail opt-in (wf7, row 0x007735D0 CTCShop::GetAttitudeBuyPriceMultiplier): Ego_r.pdb
+    // ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z alone (out of line, 0x00701840),
+    // for rows that do not want the rest of FABLE_RETAIL_CTCWIFE_MARRY. Declaration only.
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing&)const;   // 0x00701840
+#endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing&)const;
     EOpinionAttitudeType GetAttitudeType(const CThing& thing,const CTCOpinionSource* source)const {

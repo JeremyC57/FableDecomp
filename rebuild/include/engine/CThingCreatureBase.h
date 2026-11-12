@@ -60,6 +60,11 @@ public:
 #ifdef FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
 public:bool IsThingInFOV(const CThing&,bool)const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISPOSINVIEWANGLE
+// Retail opt-in (wf7, row 0x0097D6F0 CAIStateGroupBase::AIAction_LookAtThing): Ego_r.pdb / FableWin.pdb
+// ?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z (out of line, retail 0x006650E0). Declaration only.
+public:bool IsPosInViewAngle(const C3DVector& pos,float angle,bool,bool)const;   // 0x006650E0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEIGHTZBELOW
 // Retail opt-in (chunk Q6, row 0x00912840): Ego_r.pdb / FableWin.pdb ?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z
 // (public const), out of line in retail (0x00666D40). Declaration only.
@@ -209,6 +214,12 @@ public:
     // slot 36; the derived CThingPlayerCreature override calls it directly). Declarations only: no layout change.
     long GetNavigationLevelAt(const C3DVector& pos) const;               // 0x00661D20
     // Ego_r.pdb ?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ (out of line, 0x00661ED0).
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETSHOTACCURACYPERCENTAGE
+    // Opt-in (wf9, row 0x008C6860 CCreatureAction_TrollThrowProjectile::PerformAction): Ego_r.pdb 0x0053E950 / FableWin.pdb
+    // 0x017CE205, 0x01D8C0B0 ?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ (const), out of line in retail at
+    // 0x00663B10 (landed row, whose leaf is still the non-const QAEJXZ spelling -- see NAME_FIXES). Declaration only.
+    long GetShotAccuracyPercentage() const;                              // 0x00663B10
+#endif
     CCombatManager& GetCombatManager();                                  // 0x00661ED0
     // Chunk 774 (rows 0x007A4520 CTCWillEnflame::PlaySoundW, ...): Ego_r.pdb 0x0053CF90 / FableWin.pdb 0x01D9C460
     // ?MakeNoise@CThingCreatureBase@@QAEXABVCCharString@@@Z, out of line in retail at 0x00662110 (landed row). Declaration only.

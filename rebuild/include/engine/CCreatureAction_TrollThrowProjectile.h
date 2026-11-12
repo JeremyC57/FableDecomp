@@ -9,6 +9,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE
+// Retail opt-in (wf9, row 0x008C6860 CCreatureAction_TrollThrowProjectile::PerformAction): RTTI : CCombatActionBase (retail sizeof 0x114),
+// own members from +0x114 with the Ego_r.pdb names (PShot, TargetPos, UseTargetPos, ShotAlpha; Ego_r offsets less the 0x18 base shrink).
+// Ego_r.pdb name set / vtable 0x01281694: Initialise 0x008C64F0, FrameUpdate 0x008C67A0, PerformAction 0x008C6860 (slot 3),
+// FinishAction 0x008C6A50 (all UAE, public virtual). Needs engine/CCombatActionBase.h with FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+// (and its prerequisites) and engine/C3DVector.h.
+#include "engine/CCombatActionBase.h"
+class CCreatureAction_TrollThrowProjectile : public CCombatActionBase {
+public:
+    virtual void Initialise();                                           // 0x008C64F0
+    virtual void FrameUpdate();                                          // 0x008C67A0
+    virtual void PerformAction();                                        // slot 3 0x008C6860
+    virtual void FinishAction();                                         // slot 4 0x008C6A50
+protected:
+    CIntelligentPointer<CThing> PShot;                                   // +0x114
+    C3DVector     TargetPos;                                             // +0x11c
+    bool          UseTargetPos;                                          // +0x128
+    long          ShotAlpha;                                             // +0x12c
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollThrowProjectile) == 0x130);
+#else
+
 #pragma pack(push, 1)
 class CCreatureAction_TrollThrowProjectile {
 public:
@@ -92,4 +114,5 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Z) 
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, UseTargetPos) == 0x128);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, ShotAlpha) == 0x12c);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE
 #endif // FABLE_ENGINE_CCREATUREACTION_TROLLTHROWPROJECTILE_H

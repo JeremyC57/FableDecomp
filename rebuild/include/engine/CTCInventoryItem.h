@@ -40,6 +40,12 @@ class CTCInventoryItem : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_ITEM; }   // ?StatGetInterfaceType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@XZ
     void ReturnToInventory();                                 // 0x005D8E50
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_CONNECTTOINVENTORY
+    // Nested opt-in (row 0x005BE8F3 NInventory::CTCInventoryBase::CreateInventoryObject): Ego_r.pdb / FableWin.pdb
+    // ?ConnectToInventory@CTCInventoryItem@@QAEXAAVCTCInventoryBase@NInventory@@@Z, out of line at 0x005D8E40 (16 bytes, stores the
+    // inventory into PInventory +0x10; Ego_r donor 0x00559DA0 directly before ReturnToInventory, as in retail). Declaration only.
+    void ConnectToInventory(NInventory::CTCInventoryBase& inventory);   // 0x005D8E40
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
     // Nested opt-in (chunk 867, rows 0x005AF64E BuyItem / 0x005B01FE SellItemPC): the three static `__fastcall` CInventoryItemDef
     // field accessors, each `GetDef<CInventoryItemDef>(defIndex)` + one field read (Ego_r.pdb layout: InventoryCategory +0x3c,

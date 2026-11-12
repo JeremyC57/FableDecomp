@@ -1,0 +1,11 @@
+address	name	evidence
+008B0B60	?OnCreateSpecial@CCombatSequenceGeneric@@UAEXABV?$map@VCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@ZU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@5@@std@@@Z	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+009486D0	?FreeSeat@CAIStateGroup_GoToPub@@IAEXXZ	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+0094F480	?IsRunnable@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAE_NXZ	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+005F6793	?CycleAssignedExpressions@CTCInventoryAbilities@@QAEX_N@Z	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+00847DF0	?Initialise@CCreatureAction_UseLamp@@UAEXXZ	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+0097D6F0	?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+006AD3C0	?ApplyRelativeMovementAcceleration@CThingPlayerCreature@@QAEXABVC3DVector@@W4EGameAction@@@Z	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+007735D0	?GetAttitudeBuyPriceMultiplier@CTCShop@@QBEMXZ	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+00773790	?GetAttitudeSellPriceMultiplier@CTCShop@@QBEMXZ	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs
+007FD650	?FrameUpdate@CTCDPhysicalObstruction@@UAEXXZ	workflow wf7 (landing es): RELOCATION_MATCH, two PDBs

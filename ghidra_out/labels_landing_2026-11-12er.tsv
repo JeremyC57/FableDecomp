@@ -1,0 +1,11 @@
+address	name	evidence
+00867B40	?FinishAction@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+00762BA0	?OnSerialise@CTCShapeManager@@UAEXAAVCPersistContext@@_N@Z	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+00A12AB0	?PeekRoughProportionOfSphereContainedInVolume@CPhysicsMeshObject@@QBEMABVCCharString@@ABVC3DVector@@M@Z	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+00726160	??RCApplyAdditionalPlayerImpulseToPlayerIfInsideUnpushableCreature@@QBEXPAVCThing@@@Z	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+00A90900	?AddTriangleList@CDeviceIndependent@N3DPrimitive@@AAEXABVC3DMeshFileTrianglesChunk@@@Z	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+008DC720	?StartBeamEffect@CModeDragonStrafeBurninate@NCreatureMode@@AAEXXZ	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+006F3A30	??$_S_sort@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@VCThingCompare_Nearest@@@std@@YIXAAV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@0@VCThingCompare_Nearest@@@Z	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+0085D180	?InitMapwhoLevels@CThingMap@NThingMap@@IAEXXZ	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+005BE8F3	?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs
+008C6860	?PerformAction@CCreatureAction_TrollThrowProjectile@@UAEXXZ	workflow wf9 (landing er): RELOCATION_MATCH, two PDBs

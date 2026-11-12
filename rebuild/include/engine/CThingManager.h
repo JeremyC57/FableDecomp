@@ -20,8 +20,9 @@ class CThingSearchTools;                                        // chunk 765
 class CEnginePrimitivePrepareInfo;                              // chunk 734: PreparePrimitivesForEngine's parameter
 #endif
 class CThingManager : public CClassFactory {
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CTHINGMANAGER_ISDRAWCOMBATCOLLISIONDEBUG)
 // Evidence: both original PDB type records and donor OnHit/helper disassembly.
+// (wf7, row 0x007FD650: FABLE_RETAIL_CTHINGMANAGER_ISDRAWCOMBATCOLLISIONDEBUG = this accessor alone.)
 public:
 bool IsDrawCombatCollisionDebug()const{return DrawCombatCollisionDebug;}
 #endif

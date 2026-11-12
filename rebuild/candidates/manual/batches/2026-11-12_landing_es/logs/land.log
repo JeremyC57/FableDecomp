@@ -1,0 +1,43 @@
+addr       parity           behav  name
+008b0b60   RELOCATION_MATCH PASS   OnCreateSpecial
+009486d0   RELOCATION_MATCH PASS   FreeSeat
+0094f480   WARN RELOC_NAME: ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+0094f480   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCThingCreatureBase@@@@QAEAAV0@ABV0@@Z -> 00668b80 labelled '_global::CIntelligentPointer_Assign_00668b80'
+0094f480   RELOCATION_MATCH PASS   IsRunnable
+005f6793   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005f6793   RELOCATION_MATCH PASS   CycleAssignedExpressions
+00847df0   RELOCATION_MATCH PASS   Initialise
+0097d6f0   WARN RELOC_NAME: ?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z -> 006650e0 labelled 'CThingCreatureBase::CanSeeTarget'
+0097d6f0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097d6f0   RELOCATION_MATCH PASS   AIAction_LookAtThing
+006ad3c0   WARN RELOC_NAME: ?PeekWorld@CThing@@IBEABVCWorld@@XZ -> 004c7ab0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7ab0'
+006ad3c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006ad3c0   RELOCATION_MATCH PASS   ApplyRelativeMovementAcceleration
+007735d0   RELOCATION_MATCH PASS   GetAttitudeBuyPriceMultiplier
+00773790   RELOCATION_MATCH PASS   GetAttitudeSellPriceMultiplier
+007fd650   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 10
+  008b0b60 RELOCATION_MATCH CCombatSequenceGeneric::OnCreateSpecial
+  009486d0 RELOCATION_MATCH CAIStateGroup_GoToPub::FreeSeat
+  0094f480 RELOCATION_MATCH CAIStateGroup_BalverineJumpAtFleeingEnemy::IsRunnable
+  005f6793 RELOCATION_MATCH CTCInventoryAbilities::CycleAssignedExpressions
+  00847df0 RELOCATION_MATCH CCreatureAction_UseLamp::Initialise
+  0097d6f0 RELOCATION_MATCH CAIStateGroupBase::AIAction_LookAtThing
+  006ad3c0 RELOCATION_MATCH CThingPlayerCreature::ApplyRelativeMovementAcceleration
+  007735d0 RELOCATION_MATCH CTCShop::GetAttitudeBuyPriceMultiplier
+  00773790 RELOCATION_MATCH CTCShop::GetAttitudeSellPriceMultiplier
+  007fd650 RELOCATION_MATCH CTCDPhysicalObstruction::FrameUpdate
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CCombatSequenceGeneric_OnCreateSpecial_008b0b60
+  CAIStateGroupGoToPub_FreeSeat_009486d0
+  CAIStateGroupBalverineJumpAtFleeingEnemy_IsRunnable_0094f480
+  CTCInventoryAbilities_CycleAssignedExpressions_005f6793
+  CCreatureActionUseLamp_Initialise_00847df0
+  CAIStateGroupBase_AIActionLookAtThing_0097d6f0
+  CThingPlayerCreature_ApplyRelativeMovementAcceleration_006ad3c0
+  CTCShop_GetAttitudeBuyPriceMultiplier_007735d0
+  CTCShop_GetAttitudeSellPriceMultiplier_00773790
+  CTCDPhysicalObstruction_FrameUpdate_007fd650
+rc=0

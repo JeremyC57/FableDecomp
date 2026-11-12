@@ -8,6 +8,11 @@ class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase {
 public:
     CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase&,const CThing*,const C3DVector&,const C3DVector&);
     virtual ~CCombatAction_GenericStrikeResponseKnockdown();
+#ifdef FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN_FINISHACTION
+    // Retail opt-in (wf9, row 0x00867B40): Ego_r.pdb ?FinishAction@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ (public virtual
+    // override; vtable 0x01277344 slot 4). Declaration only: an override, no new slot, no layout change.
+    virtual void FinishAction();                                         // 0x00867B40
+#endif
 private: virtual CCreatureActionBase* Clone() const;
 private:
     unsigned char AnimName[4],PThingThatHit[8],PointOfHit[12];

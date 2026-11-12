@@ -12,6 +12,9 @@
 #include "engine/CTCBase.h"
 #include "engine/CTCDriverBase.h"
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_FRAMEUPDATE
+#include "engine/CEnginePrimitiveHandle.h"
+#endif
 class CTCDPhysicalObstruction : public CTCDriverBase {
 public:
     virtual void OnInitialActivate();                    // slot 6 0x007FD3C0
@@ -31,7 +34,20 @@ public:
     long          LifeTimer;                             // +0x24
     float         Radius;                                // +0x28
     unsigned char ThingsToIgnoreObstruction[0xc];        // +0x2c vector<CIntelligentPointer<CThing> >
+#ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_FRAMEUPDATE
+    // Retail opt-in (wf7, row 0x007FD650 FrameUpdate): the three debug line handles typed (Ego_r.pdb line1 / line2 / line3,
+    // CEnginePrimitiveHandle, 8 bytes each: same 0x18 bytes), the slot 9 override ?FrameUpdate@CTCDPhysicalObstruction@@UAEXXZ and
+    // the private ?UpdateAdditionalImpulse@CTCDPhysicalObstruction@@AAEXXZ (0x007FD580). Declarations only, no layout change.
+    CEnginePrimitiveHandle line1;                        // +0x38
+    CEnginePrimitiveHandle line2;                        // +0x40
+    CEnginePrimitiveHandle line3;                        // +0x48
+    virtual void FrameUpdate();                          // slot 9 0x007FD650
+private:
+    void UpdateAdditionalImpulse();                      // 0x007FD580
+public:
+#else
     unsigned char Lines[0x18];                           // +0x38 line1, line2, line3 (CEnginePrimitiveHandle)
+#endif
 #ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00762ba0   RELOCATION_MATCH PASS   OnSerialise
+00a12ab0   RELOCATION_MATCH PASS   PeekRoughProportionOfSphereContainedInVolume
+  WARN leaf 'operator()' matches no symbol in 00726160.obj; graded the largest function
+  WARN leaf 'operator()' matches no symbol in 00726160.obj; graded the largest function
+00726160   RELOCATION_MATCH PASS   operator()
+00a90900   WARN RELOC_NAME: ?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ -> 00aba370 labelled 'CWorldMap::DrawGetNoMaps'
+00a90900   RELOCATION_MATCH PASS   AddTriangleList
+008dc720   RELOCATION_MATCH PASS   StartBeamEffect
+006f3a30   WARN RELOC_NAME: ??_F?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@QAEXXZ -> 006f2bb0 labelled 'CRetailList_node0xc::Initialise'
+006f3a30   WARN RELOC_NAME: ??_H@YGXPAXIHP6EPAX0@Z@Z -> 004038c0 labelled '`vector_constructor_iterator''
+006f3a30   RELOCATION_MATCH PASS   _S_sort
+0085d180   WARN RELOC_NAME: ?_M_fill_insert@?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@QAEXPAVCThingMapCell@NThingMap@@IABV34@@Z -> 0085e6c0 labelled 'std::vector::std::vector::Insert_range'
+0085d180   RELOCATION_MATCH PASS   InitMapwhoLevels
+005be8f3   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
+005be8f3   WARN RELOC_NAME: ?ConnectToInventory@CTCInventoryItem@@QAEXAAVCTCInventoryBase@NInventory@@@Z -> 005d8e40 labelled '_global::SetMember_dword0x10_005d8e40'
+005be8f3   RELOCATION_MATCH PASS   CreateInventoryObject
+008c6860   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 9
+  00762ba0 RELOCATION_MATCH CTCShapeManager::OnSerialise
+  00a12ab0 RELOCATION_MATCH CPhysicsMeshObject::PeekRoughProportionOfSphereContainedInVolume
+  00726160 RELOCATION_MATCH CApplyAdditionalPlayerImpulseToPlayerIfInsideUnpushableCreature::operator()
+  00a90900 RELOCATION_MATCH N3DPrimitive::CDeviceIndependent::AddTriangleList
+  008dc720 RELOCATION_MATCH NCreatureMode::CModeDragonStrafeBurninate::StartBeamEffect
+  006f3a30 RELOCATION_MATCH std::_S_sort
+  0085d180 RELOCATION_MATCH NThingMap::CThingMap::InitMapwhoLevels
+  005be8f3 RELOCATION_MATCH CTCInventoryBase::CreateInventoryObject
+  008c6860 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::PerformAction
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CTCShapeManager_OnSerialise_00762ba0
+  CPhysicsMeshObject_PeekRoughProportionOfSphereContainedInVolume_00a12ab0
+  CApplyAdditionalPlayerImpulseToPlayerIfInsideUnpushableCreature_operator_00726160
+  N3DPrimitiveCDeviceIndependent_AddTriangleList_00a90900
+  NCreatureModeCModeDragonStrafeBurninate_StartBeamEffect_008dc720
+  std_Ssort_006f3a30
+  NThingMapCThingMap_InitMapwhoLevels_0085d180
+  CTCInventoryBase_CreateInventoryObject_005be8f3
+  CCreatureActionTrollThrowProjectile_PerformAction_008c6860
+rc=0
+addr       parity           behav  name
+00867b40   WARN RELOC_NAME: ?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ -> 00692950 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+00867b40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00867b40   RELOCATION_MATCH PASS   FinishAction
+
+WINS: 1
+  00867b40 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdown::FinishAction
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCombatActionGenericStrikeResponseKnockdown_FinishAction_00867b40
+rc=0

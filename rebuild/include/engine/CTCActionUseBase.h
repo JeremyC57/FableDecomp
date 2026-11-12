@@ -21,6 +21,12 @@ class CTCActionUseBase : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ON_ACTION_USE; }
     bool IsUsable() const { return Usable; }                             // PLACEHOLDER accessor name (inline member read in the row)
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_ANIMGROUPNAME
+    // Retail opt-in (wf7, row 0x00847DF0 CCreatureAction_UseLamp::Initialise): Ego_r.pdb / FableWin.pdb
+    // ?GetActionUseAnimationGroupName@CTCActionUseBase@@QBE?AVCCharString@@XZ (public const, by-value CCharString), out of line in
+    // retail at 0x007EABA0 (landed). Declaration only; needs fable_string.h (FABLE_RETAIL_CCHARSTRING) first.
+    CCharString GetActionUseAnimationGroupName() const;                  // 0x007EABA0
+#endif
 #ifdef FABLE_RETAIL_CTCACTIONUSEBASE_DTOR
     // Retail opt-in (agentNF20, 2026-11-11, the CTCActionUse* / CTCCarriedActionUse* scalar deleting destructors 0x004DBF76..0x004DCF8B):
     // Ego_r.pdb ??0CTCActionUseBase@@QAE@AAVCThing@@@Z and FableWin.pdb ??1CTCActionUseBase@@UAE@XZ. The destructor is 0x004DA967 (it

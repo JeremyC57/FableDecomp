@@ -14,7 +14,7 @@
 #ifdef FABLE_RETAIL_STLP_UNINIT_FILL_N_FORCEINLINE
 #include "fable_compiler.h"
 #endif
-#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP)
+#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -849,6 +849,27 @@ public:
     }
 #endif
 };
+#ifdef FABLE_RETAIL_STLP_LIST_SORT
+// Per-TU opt-in (wf9, row 0x006F3A30 _S_sort<const CThingCreatureBase*, allocator, CThingCompare_Nearest>): STLport 4.6 _list.h
+// _List_global / _list.c _Transfer (the six-store splice under `position != last`), for list::splice below.
+template<class _Dummy> class _List_global {
+public:
+    typedef _List_node_base _Node;
+    static void _Transfer(_List_node_base* __position,_List_node_base* __first,_List_node_base* __last);
+};
+template<class _Dummy> void _List_global<_Dummy>::_Transfer(_List_node_base* __position,_List_node_base* __first,_List_node_base* __last) {
+    if(__position!=__last) {
+        __last->_M_prev->_M_next=__position;
+        __first->_M_prev->_M_next=__last;
+        __position->_M_prev->_M_next=__first;
+        _Node* __tmp=__position->_M_prev;
+        __position->_M_prev=__last->_M_prev;
+        __last->_M_prev=__first->_M_prev;
+        __first->_M_prev=__tmp;
+    }
+}
+typedef _List_global<bool> _List_global_inst;
+#endif
 template<class _Tp,class _Alloc=allocator<_Tp> > class list : public _List_base<_Tp,_Alloc> {
 public:
     typedef _Tp value_type;
@@ -986,12 +1007,68 @@ public:
     // 0x0084ACE0, FableWin.pdb name set); a row that needs the same-TU body defines it as an explicit specialisation.
     void remove(const _Tp& __val);
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_SORT
+    // Per-TU opt-in (wf9, row 0x006F3A30): STLport 4.6 _list.h swap(list&), splice(iterator, list&, iterator) and the member
+    // template sort(_StrictWeakOrdering) (`_S_sort(*this, __comp);`, retail forwarder 0x006F4040).
+    void swap(list<_Tp,_Alloc>& __x) { _List_node<_Tp>* __tmp=this->_M_node._M_data; this->_M_node._M_data=__x._M_node._M_data; __x._M_node._M_data=__tmp; }
+    void splice(iterator __position,list<_Tp,_Alloc>&,iterator __i) {
+        iterator __j=__i;
+        ++__j;
+        if(__position==__i || __position==__j) return;
+        _List_global_inst::_Transfer(__position._M_node,__i._M_node,__j._M_node);
+    }
+    template<class _StrictWeakOrdering> void sort(_StrictWeakOrdering __comp) { _S_sort(*this,__comp); }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE
     // chunk 767 (row 0x0082A380 CMiniMapDisplay::RemoveMarker): STLport 4.6 _list.h member template remove_if(_Predicate), declared
     // only: retail tail-jumps to the out-of-line instantiation (0x0082C770, ??$remove_if@VCIsMarkerBoundToThing@CMiniMapDisplay@@@..).
     template<class _Predicate> void remove_if(_Predicate pred);
 #endif
 };
+#ifdef FABLE_RETAIL_STLP_LIST_SORT
+// Per-TU opt-in (wf9, row 0x006F3A30): STLport 4.6 _list.c _S_merge (body visible; retail calls the instance out of line, 0x006F04C0)
+// and _S_sort, free templates (__fastcall in the /Gr STL TUs: the list(s) in ecx/edx, the comparator by value on the stack).
+template<class _Tp,class _Alloc,class _StrictWeakOrdering>
+void FABLE_STLP_FASTCALL _S_merge(list<_Tp,_Alloc>& __that,list<_Tp,_Alloc>& __x,_StrictWeakOrdering __comp) {
+    typedef typename list<_Tp,_Alloc>::iterator _Literator;
+    _Literator __first1=__that.begin();
+    _Literator __last1=__that.end();
+    _Literator __first2=__x.begin();
+    _Literator __last2=__x.end();
+    while(__first1!=__last1 && __first2!=__last2)
+        if(__comp(*__first2,*__first1)) {
+            _Literator __next=__first2;
+            _List_global_inst::_Transfer(__first1._M_node,__first2._M_node,(++__next)._M_node);
+            __first2=__next;
+        }
+        else
+            ++__first1;
+    if(__first2!=__last2) _List_global_inst::_Transfer(__last1._M_node,__first2._M_node,__last2._M_node);
+}
+template<class _Tp,class _Alloc,class _StrictWeakOrdering>
+void FABLE_STLP_FASTCALL _S_sort(list<_Tp,_Alloc>& __that,_StrictWeakOrdering __comp) {
+    // Do nothing if the list has length 0 or 1.
+    if(__that._M_node._M_data->_M_next!=__that._M_node._M_data &&
+       (__that._M_node._M_data->_M_next)->_M_next!=__that._M_node._M_data) {
+        list<_Tp,_Alloc> __carry;
+        list<_Tp,_Alloc> __counter[64];
+        int __fill=0;
+        while(!__that.empty()) {
+            __carry.splice(__carry.begin(),__that,__that.begin());
+            int __i=0;
+            while(__i<__fill && !__counter[__i].empty()) {
+                _S_merge(__counter[__i],__carry,__comp);
+                __carry.swap(__counter[__i++]);
+            }
+            __carry.swap(__counter[__i]);
+            if(__i==__fill) ++__fill;
+        }
+        for(int __i=1;__i<__fill;++__i)
+            _S_merge(__counter[__i],__counter[__i-1],__comp);
+        __that.swap(__counter[__fill-1]);
+    }
+}
+#endif
 // _bitset.h / _range_errors.h (no-exceptions branch)
 template<size_t _Nw> struct _Base_bitset {
     typedef unsigned long _WordT;

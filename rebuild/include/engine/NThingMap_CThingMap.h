@@ -6,6 +6,10 @@
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
 #include "engine/CRGBColour.h"
 #endif
+#if defined(FABLE_RETAIL_CTHINGMAP_LAYERINFO) && !defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST)
+// wf9 opt-in FABLE_RETAIL_CTHINGMAP_LAYERINFO (row 0x0085D180): NThingMap::CLayerInfo / LayerInfo[] alone, without the UPDATE_LIST helpers.
+#include "engine/CRGBColour.h"
+#endif
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
 #include "engine/C2DBoxI.h"
@@ -25,7 +29,13 @@ public:
 // Layout: original 0x24263, complete record.
 class CThingMapCell{
 public:
+#ifdef FABLE_RETAIL_CTHINGMAP_INLINE_CTORS
+ // wf9 opt-in (row 0x0085D180 InitMapwhoLevels): Ego_r.pdb ??0CThingMapCell@NThingMap@@QAE@XZ, inline in retail (the zeroed 4-byte
+ //   resize temporaries at 0x0085D224 / 0x0085D30F; no out-of-line copy bound in Fable.exe).
+ CThingMapCell():PFirstNode(0){}
+#else
  CThingMapCell();
+#endif
  void Clear();
  const NThingMap::CMapwhoNode * GetPFirstNode() const{return PFirstNode;}
  NThingMap::CMapwhoNode * PFirstNode;
@@ -38,7 +48,13 @@ public:
  long ScaleShift;
  long NoThings;
  CMapwhoLevelInfo(const NThingMap::CMapwhoLevelInfo & p0);
+#ifdef FABLE_RETAIL_CTHINGMAP_INLINE_CTORS
+ // wf9 opt-in (row 0x0085D180): Ego_r.pdb ??0CMapwhoLevelInfo@NThingMap@@QAE@XZ, inline and empty in retail (the resize value
+ //   temporary at 0x0085D18E is passed uninitialised).
+ CMapwhoLevelInfo(){}
+#else
  CMapwhoLevelInfo();
+#endif
 };
 // Layout: complete original Ego24288/FW262d0; native52 after two vector reductions.
 class CThingMap:public CBaseClassNonCopyable{
@@ -87,6 +103,10 @@ FABLE_STATIC_ASSERT(sizeof(CThingMap)==52);
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
 class CLayerInfo {public:long Size,ScaleShift;CRGBColour UsedColour,UnusedColour;};
 extern const CLayerInfo LayerInfo[];
+#endif
+#if defined(FABLE_RETAIL_CTHINGMAP_LAYERINFO) && !defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST)
+class CLayerInfo {public:long Size,ScaleShift;CRGBColour UsedColour,UnusedColour;};
+extern const CLayerInfo LayerInfo[];                         // 0x0137DAD8
 #endif
 extern long MaxLayers;
 }

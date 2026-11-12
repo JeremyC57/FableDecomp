@@ -1,0 +1,370 @@
+==== 0x008B0B60
+14:57 008b0b60 grade v1.cpp DIFFER(479v432) hunks=24 -- port onto shared headers; PushAction call vs inline lines
+14:57 008b0b60 grade v2.cpp DIFFER(479v432) hunks=24 -- port onto shared headers; PushAction call vs inline lines
+14:57 008b0b60 grade v3.cpp DIFFER(430v432) hunks=4 -- visible called ctor, const find inline, name spellings GetString()/direct-init/cast
+14:57 008b0b60 grade v4.cpp DIFFER(459v432) hunks=16 -- visible called ctor, const find inline, name spellings GetString()/direct-init/cast
+14:57 008b0b60 grade v5.cpp DIFFER(459v432) hunks=16 -- visible called ctor, const find inline, name spellings GetString()/direct-init/cast
+14:58 008b0b60 grade v6.cpp RELOCATION_MATCH -- creator local; enum local after/before action / const ref
+14:58 008b0b60 grade v9.cpp RELOCATION_MATCH -- strict: shared enum header; local vs shared CCombatActionBase
+14:58 008b0b60 grade v10.cpp SRC_FAIL -- strict: shared CCombatActionBase.h (FABLE_RETAIL_LEADER_INITIALISE branch)
+14:59 008b0b60 grade v11.cpp SRC_FAIL -- strict: shared CCombatActionBase.h default branch + GETPCOMBATACTIONFROMENUM opt-in
+14:59 008b0b60 grade v12.cpp RELOCATION_MATCH -- strict: + FABLE_RETAIL_BASE_OBJECT / FABLE_RETAIL_CCREATUREACTIONBASE
+15:00 008b0b60 grade final.cpp RELOCATION_MATCH -- final source with header comment, strict
+15:46 008b0b60 grade src.cpp RELOCATION_MATCH -- 
+15:47 008b0b60 grade src.cpp SRC_FAIL -- 
+16:05 008b0b60 grade v13.cpp RELOCATION_MATCH -- repair: CloneActions(*sequence) inline real body
+16:05 008b0b60 grade v13.cpp RELOCATION_MATCH -- repair: strict
+16:10 008b0b60 grade src.cpp RELOCATION_MATCH -- 
+16:10 008b0b60 grade src.cpp SRC_FAIL -- 
+
+==== 0x009486D0
+14:55 009486d0 grade a1.cpp SRC_FAIL -- port onto shared headers, real names, =0 vs explicit temp
+14:55 009486d0 grade a2.cpp SRC_FAIL -- port onto shared headers, real names, =0 vs explicit temp
+14:55 009486d0 grade a1.cpp DIFFER(432v432) hunks=3 -- port onto shared headers with retail CThing chain, =0 vs explicit temp
+14:55 009486d0 grade a2.cpp DIFFER(432v432) hunks=3 -- port onto shared headers with retail CThing chain, =0 vs explicit temp
+14:55 009486d0 grade b1.cpp DIFFER(436v432) hunks=17 -- compare operand order: swapped / local held / operator==(thing, ptr)
+14:55 009486d0 grade b2.cpp RELOCATION_MATCH -- compare operand order: swapped / local held / operator==(thing, ptr)
+14:56 009486d0 grade final.cpp RELOCATION_MATCH -- final: CTCTavernTable from shared header via FREESEAT opt-in
+14:57 009486d0 grade final.cpp RELOCATION_MATCH -- strict-headers regrade of final
+15:45 009486d0 grade src.cpp RELOCATION_MATCH -- 
+15:45 009486d0 grade src.cpp SRC_FAIL -- 
+16:04 009486d0 grade v_a.cpp SRC_FAIL -- repair: ThingAlive.h template + Pos/RHSet members
+16:04 009486d0 grade v_b.cpp RELOCATION_MATCH -- repair: ThingAlive.h template + COMPARE_NULL_INT + Pos/RHSet
+16:04 009486d0 grade 009486d0.cpp RELOCATION_MATCH -- repair: final, strict headers
+16:07 009486d0 grade src.cpp RELOCATION_MATCH -- 
+16:07 009486d0 grade src.cpp SRC_FAIL -- 
+
+==== 0x0094F480
+14:59 0094f480 grade v1.cpp SRC_FAIL -- port onto shared headers, creature local before ahead
+14:59 0094f480 grade v1.cpp DIFFER(444v437) hunks=12 -- port: ORIGINAL_VTABLE + GetPosition/GetLastPosition accessors
+15:00 0094f480 grade v1.cpp DIFFER(441v437) hunks=12 -- slot29=GetPBestEnemyCreatureForAttack; v2 no creature local; v3 GetTC(T**)
+15:00 0094f480 grade v2.cpp DIFFER(446v437) hunks=32 -- slot29=GetPBestEnemyCreatureForAttack; v2 no creature local; v3 GetTC(T**)
+15:00 0094f480 grade v3.cpp DIFFER(446v437) hunks=32 -- slot29=GetPBestEnemyCreatureForAttack; v2 no creature local; v3 GetTC(T**)
+15:01 0094f480 grade v4.cpp DIFFER(434v437) hunks=2 -- nested ifs single return false; v4 default C3DVector; v5 +no creature local; v6 RETAIL_C3DVECTOR
+15:01 0094f480 grade v5.cpp DIFFER(439v437) hunks=24 -- nested ifs single return false; v4 default C3DVector; v5 +no creature local; v6 RETAIL_C3DVECTOR
+15:01 0094f480 grade v6.cpp DIFFER(434v437) hunks=4 -- nested ifs single return false; v4 default C3DVector; v5 +no creature local; v6 RETAIL_C3DVECTOR
+15:02 0094f480 grade v7.cpp SRC_FAIL -- v7: creature-load CSE split (v7 ref via GetCreature; v8 toEnemy via GetCreature; v9 local before toEnemy)
+15:02 0094f480 grade v8.cpp SRC_FAIL -- v8: creature-load CSE split (v7 ref via GetCreature; v8 toEnemy via GetCreature; v9 local before toEnemy)
+15:02 0094f480 grade v9.cpp SRC_FAIL -- v9: creature-load CSE split (v7 ref via GetCreature; v8 toEnemy via GetCreature; v9 local before toEnemy)
+15:03 0094f480 grade v7.cpp DIFFER(434v437) hunks=4 -- v7: creature-load CSE split (v7 ref via GetCreature; v8 toEnemy via GetCreature; v9 local before toEnemy) +MEMBERS
+15:03 0094f480 grade v8.cpp DIFFER(434v437) hunks=4 -- v8: creature-load CSE split (v7 ref via GetCreature; v8 toEnemy via GetCreature; v9 local before toEnemy) +MEMBERS
+15:03 0094f480 grade v9.cpp DIFFER(434v437) hunks=2 -- v9: creature-load CSE split (v7 ref via GetCreature; v8 toEnemy via GetCreature; v9 local before toEnemy) +MEMBERS
+15:04 0094f480 grade v5.cpp DIFFER(439v437) hunks=24 -- v5 again (no creature local) to read its shape
+15:07 0094f480 grade v10.cpp DIFFER(442v437) hunks=17 -- v10: local placement x which uses go through local (v10 p2 A,B expr; v11 p1 A,B expr; v12 p1 A local B expr)
+15:07 0094f480 grade v11.cpp DIFFER(440v437) hunks=19 -- v11: local placement x which uses go through local (v10 p2 A,B expr; v11 p1 A,B expr; v12 p1 A local B expr)
+15:07 0094f480 grade v12.cpp DIFFER(436v437) hunks=5 -- v12: local placement x which uses go through local (v10 p2 A,B expr; v11 p1 A,B expr; v12 p1 A local B expr)
+15:08 0094f480 grade v13.cpp RELOCATION_MATCH -- v13: GetCreature() accessor everywhere / in ahead only, no local
+15:08 0094f480 grade v14.cpp DIFFER(437v437) hunks=2 -- v14: GetCreature() accessor everywhere / in ahead only, no local
+15:08 0094f480 grade 0094f480.cpp RELOCATION_MATCH -- final source, strict headers
+15:51 0094f480 grade src.cpp RELOCATION_MATCH -- 
+15:51 0094f480 grade src.cpp SRC_FAIL -- 
+
+==== 0x005F6793
+15:01 005f6793 grade v1.cpp DIFFER(493v442) hunks=38 -- port onto headers, twin shape, empty test first
+15:02 005f6793 grade v1.cpp DIFFER(444v442) hunks=29 /O1 /Oy- -- v1 with /O1 /Oy- flags
+15:02 005f6793 grade v2.cpp DIFFER(440v442) hunks=14 /O1 /Oy- -- hoist size by hand: after original_level / it uninit / before original_level
+15:02 005f6793 grade v3.cpp DIFFER(440v442) hunks=14 /O1 /Oy- -- hoist size by hand: after original_level / it uninit / before original_level
+15:02 005f6793 grade v4.cpp DIFFER(455v442) hunks=32 /O1 /Oy- -- hoist size by hand: after original_level / it uninit / before original_level
+15:02 005f6793 grade v5.cpp DIFFER(440v442) hunks=14 /O1 /Oy- -- iterator advance spelling: it=it+n / std::advance / begin()+n
+15:02 005f6793 grade v6.cpp SRC_FAIL /O1 /Oy- -- iterator advance spelling: it=it+n / std::advance / begin()+n
+15:02 005f6793 grade v7.cpp DIFFER(440v442) hunks=14 /O1 /Oy- -- iterator advance spelling: it=it+n / std::advance / begin()+n
+15:03 005f6793 grade v8.cpp DIFFER(440v442) hunks=14 /O1 /Oy- -- advance: &expressions[level] / if-else begin()+level
+15:03 005f6793 grade v9.cpp DIFFER(445v442) hunks=15 /O1 /Oy- -- advance: &expressions[level] / if-else begin()+level
+15:04 005f6793 grade v10.cpp DIFFER(444v442) hunks=24 /O1 /Oy- -- compiler-hoisted size: twin order probe / if(!empty){} wrap / it declared uninit
+15:04 005f6793 grade v11.cpp DIFFER(436v442) hunks=32 /O1 /Oy- -- compiler-hoisted size: twin order probe / if(!empty){} wrap / it declared uninit
+15:04 005f6793 grade v12.cpp DIFFER(444v442) hunks=29 /O1 /Oy- -- compiler-hoisted size: twin order probe / if(!empty){} wrap / it declared uninit
+15:04 005f6793 grade v13.cpp DIFFER(444v442) hunks=29 /O1 /Oy- -- callee body visible: GetPrioritisedExpressionDefs / GetNumAssignableSpecialMoveButtons real bodies in TU
+15:04 005f6793 grade v14.cpp DIFFER(444v442) hunks=29 /O1 /Oy- -- callee body visible: GetPrioritisedExpressionDefs / GetNumAssignableSpecialMoveButtons real bodies in TU
+15:05 005f6793 grade v15.cpp DIFFER(449v442) hunks=29 /O1 /Oy- -- probe: which twin statement triggers the size hoist (clamp / modulo / full twin shape)
+15:05 005f6793 grade v16.cpp DIFFER(462v442) hunks=37 /O1 /Oy- -- probe: which twin statement triggers the size hoist (clamp / modulo / full twin shape)
+15:05 005f6793 grade v17.cpp DIFFER(466v442) hunks=32 /O1 /Oy- -- probe: which twin statement triggers the size hoist (clamp / modulo / full twin shape)
+15:05 005f6793 grade v18.cpp RELOCATION_MATCH /O1 /Oy- -- GetPrioritisedExpressionDefs real body + push_back body visible (noinline / plain inline)
+15:06 005f6793 grade 005f6793.cpp RELOCATION_MATCH /O1 /Oy- -- final source, strict headers
+15:49 005f6793 grade src.cpp DIFFER(516v442) hunks=38 /O1 /Oy- -- 
+15:49 005f6793 grade src.cpp DIFFER(516v442) hunks=38 /O1 /Oy- -- 
+15:49 005f6793 grade src.cpp DIFFER(516v442) hunks=38 /O1 /Oy- -- 
+15:50 005f6793 grade src.cpp RELOCATION_MATCH /O1 /Oy- -- 
+15:50 005f6793 grade src.cpp RELOCATION_MATCH /O1 /Oy- -- 
+16:05 005f6793 grade forloop.cpp DIFFER(530v442) hunks=42 -- repair: plain for loop check
+16:05 005f6793 grade forloop.cpp DIFFER(441v442) hunks=6 /O1 /Oy- -- repair: plain for loop check
+16:06 005f6793 grade 005f6793.cpp RELOCATION_MATCH /O1 /Oy- -- repair: comments (descriptive Get2DEmitter, loop justification)
+16:06 005f6793 grade 005f6793.cpp RELOCATION_MATCH /O1 /Oy- -- repair: strict headers
+16:08 005f6793 grade src.cpp RELOCATION_MATCH /O1 /Oy- -- 
+16:08 005f6793 grade src.cpp RELOCATION_MATCH /O1 /Oy- -- 
+
+==== 0x00847DF0
+15:09 00847df0 grade v1.cpp SRC_FAIL -- port onto shared headers, operator* refs
+15:10 00847df0 grade v1.cpp SRC_FAIL -- port onto shared headers, operator* refs (original vtable)
+15:10 00847df0 grade v1.cpp DIFFER(444v442) hunks=16 -- filter ctor via GetCRC inline / accessor form
+15:10 00847df0 grade v2.cpp DIFFER(444v442) hunks=16 -- filter ctor via GetCRC inline / accessor form
+15:11 00847df0 grade v1.cpp RELOCATION_MATCH -- implicit filter dtor; anim ref local (v1) / nested (v2)
+15:11 00847df0 grade 00847df0.cpp RELOCATION_MATCH -- final source, strict headers
+15:12 00847df0 grade 00847df0.cpp RELOCATION_MATCH -- final source, strict headers (repo cwd)
+15:56 00847df0 grade src.cpp RELOCATION_MATCH -- 
+15:56 00847df0 grade src.cpp SRC_FAIL -- 
+
+==== 0x0097D6F0
+15:12 0097d6f0 grade v1.cpp SRC_FAIL -- port to shared headers; pos if/else vs ternary; GetCreature twice
+15:12 0097d6f0 grade v2.cpp SRC_FAIL -- port to shared headers; pos if/else vs ternary; GetCreature twice
+15:12 0097d6f0 grade v3.cpp SRC_FAIL -- port to shared headers; pos if/else vs ternary; GetCreature twice
+15:12 0097d6f0 grade v1.cpp DIFFER(444v444) hunks=1 -- retail CThing chain defines
+15:12 0097d6f0 grade v2.cpp DIFFER(424v444) hunks=13 -- retail CThing chain defines
+15:12 0097d6f0 grade v3.cpp DIFFER(444v444) hunks=1 -- retail CThing chain defines
+15:12 0097d6f0 grade v4.cpp RELOCATION_MATCH -- swap compare operands: thing.Get()==&GetCreature(); operator== raw; != && form
+15:14 0097d6f0 grade 0097d6f0.cpp ERROR -- final: shared EAIAction.h enumerators, header comment
+15:14 0097d6f0 grade 0097d6f0.cpp RELOCATION_MATCH -- final: shared EAIAction.h enumerators, header comment
+15:15 0097d6f0 grade 0097d6f0.cpp RELOCATION_MATCH -- strict-headers regrade of final
+15:59 0097d6f0 grade src.cpp RELOCATION_MATCH -- 
+15:59 0097d6f0 grade src.cpp SRC_FAIL -- 
+16:06 0097d6f0 grade 0097d6f0.cpp RELOCATION_MATCH -- repair: CNavigationInput::MovementType as EMovementType
+16:06 0097d6f0 grade 0097d6f0.cpp RELOCATION_MATCH -- repair: strict regrade
+16:12 0097d6f0 grade src.cpp RELOCATION_MATCH -- 
+16:12 0097d6f0 grade src.cpp SRC_FAIL -- 
+
+==== 0x006AD3C0
+15:17 006ad3c0 grade v1.cpp DIFFER(438v447) hunks=40 -- port onto shared headers, typed map opt-in; v2 float& turn
+15:17 006ad3c0 grade v2.cpp DIFFER(438v447) hunks=40 -- port onto shared headers, typed map opt-in; v2 float& turn
+15:18 006ad3c0 grade v1b.cpp DIFFER(441v447) hunks=40 -- ORIGINAL_VTABLE for slot 87
+15:18 006ad3c0 grade v3.cpp DIFFER(471v447) hunks=27 -- v3 physics local; v4 +inline acceleration*scale both arms; v5 only inline scale
+15:18 006ad3c0 grade v4.cpp RELOCATION_MATCH -- v3 physics local; v4 +inline acceleration*scale both arms; v5 only inline scale
+15:19 006ad3c0 grade 006ad3c0.cpp RELOCATION_MATCH -- final source with header comment, strict headers
+15:19 006ad3c0 grade 006ad3c0.cpp RELOCATION_MATCH -- final source, strict headers (regrade after comment fix)
+16:00 006ad3c0 grade src.cpp RELOCATION_MATCH -- 
+16:00 006ad3c0 grade src.cpp SRC_FAIL -- 
+
+==== 0x007735D0
+15:14 007735d0 grade v1.cpp SRC_FAIL -- port onto shared headers, single body
+15:14 007735d0 grade v1.cpp DIFFER(430v448) hunks=22 -- port onto shared headers, single body (fix includes)
+15:14 007735d0 grade v1.cpp DIFFER(430v448) hunks=22 -- same, full listing
+15:16 007735d0 grade v2.cpp DIFFER(430v448) hunks=22 -- v2 multiplier decl at top; v3 end()!=it; v4 multiplier=1 at top
+15:16 007735d0 grade v3.cpp DIFFER(430v448) hunks=22 -- v2 multiplier decl at top; v3 end()!=it; v4 multiplier=1 at top
+15:16 007735d0 grade v4.cpp DIFFER(430v448) hunks=22 -- v2 multiplier decl at top; v3 end()!=it; v4 multiplier=1 at top
+15:17 007735d0 grade v5.cpp DIFFER(438v448) hunks=26 -- nesting: v5 if(GetSubDef){..} ; v6 house negated nest; v7 single return multiplier=1
+15:17 007735d0 grade v6.cpp DIFFER(438v448) hunks=26 -- nesting: v5 if(GetSubDef){..} ; v6 house negated nest; v7 single return multiplier=1
+15:17 007735d0 grade v7.cpp DIFFER(402v448) hunks=28 -- nesting: v5 if(GetSubDef){..} ; v6 house negated nest; v7 single return multiplier=1
+15:18 007735d0 grade v8.cpp SRC_FAIL -- v8 no GETTC_EXPANDED; v9 thing local; v10 hero HasTC explicit
+15:18 007735d0 grade v9.cpp DIFFER(430v448) hunks=22 -- v8 no GETTC_EXPANDED; v9 thing local; v10 hero HasTC explicit
+15:18 007735d0 grade v10.cpp DIFFER(430v448) hunks=22 -- v8 no GETTC_EXPANDED; v9 thing local; v10 hero HasTC explicit
+15:20 007735d0 grade v11.cpp DIFFER(430v448) hunks=22 -- map const find visibility: v11 CONSTFIND_TEMPLATE_BODY; v12 CONSTFIND; v13 FIND_TEMPLATE
+15:20 007735d0 grade v12.cpp DIFFER(430v448) hunks=22 -- map const find visibility: v11 CONSTFIND_TEMPLATE_BODY; v12 CONSTFIND; v13 FIND_TEMPLATE
+15:20 007735d0 grade v13.cpp DIFFER(430v448) hunks=22 -- map const find visibility: v11 CONSTFIND_TEMPLATE_BODY; v12 CONSTFIND; v13 FIND_TEMPLATE
+15:23 007735d0 grade v14.cpp DIFFER(430v448) hunks=22 -- ref-count weights: v14 shopDef raw ptr local; v15 map reference local; v16 thingDef raw ptr local
+15:23 007735d0 grade v15.cpp DIFFER(430v448) hunks=22 -- ref-count weights: v14 shopDef raw ptr local; v15 map reference local; v16 thingDef raw ptr local
+15:23 007735d0 grade v16.cpp DIFFER(430v448) hunks=22 -- ref-count weights: v14 shopDef raw ptr local; v15 map reference local; v16 thingDef raw ptr local
+007735d0 probe 1 which part sets this/PT/thingDef/zero roles -> see NOTES
+15:23 007735d0 grade v17.cpp DIFFER(430v448) hunks=22 -- keeper access: v17 reference local; v18 PShopKeeper.Get()/->/* ; v19 inline helper by ref
+15:23 007735d0 grade v18.cpp SRC_FAIL -- keeper access: v17 reference local; v18 PShopKeeper.Get()/->/* ; v19 inline helper by ref
+15:23 007735d0 grade v19.cpp DIFFER(430v448) hunks=22 -- keeper access: v17 reference local; v18 PShopKeeper.Get()/->/* ; v19 inline helper by ref
+007735d0 probe 2 which element of the keeper block flips this/PT -> see NOTES
+15:24 007735d0 grade v20.cpp DIFFER(430v448) hunks=22 -- manager temp as variable: v20 ref local; v21 ptr local; v22 world ref local
+15:24 007735d0 grade v21.cpp DIFFER(430v448) hunks=22 -- manager temp as variable: v20 ref local; v21 ptr local; v22 world ref local
+15:24 007735d0 grade v22.cpp DIFFER(430v448) hunks=22 -- manager temp as variable: v20 ref local; v21 ptr local; v22 world ref local
+15:25 007735d0 grade v23.cpp DIFFER(430v448) hunks=22 -- CDefPointer release spelling: v23 default; v24 COUNTREF; v25 POINTEE
+15:25 007735d0 grade v24.cpp DIFFER(462v448) hunks=23 -- CDefPointer release spelling: v23 default; v24 COUNTREF; v25 POINTEE
+15:25 007735d0 grade v25.cpp DIFFER(430v448) hunks=22 -- CDefPointer release spelling: v23 default; v24 COUNTREF; v25 POINTEE
+007735d0 probe 3 house spellings h1 && / h2 bool owned / h3 house=0 -> roles unchanged?
+007735d0 probe 4 PT kept live past GetSubDef (artificial) -> see roles
+15:28 007735d0 grade pl_b.cpp DIFFER(466v448) hunks=13 -- PROBE artificial late PT use on success path (not a candidate)
+007735d0 probe 5 unused inline param keeps PT live? / thingDef declared before house check -> see roles
+007735d0 probe 6 house GetTC forms h4 default PeekTC(&p) / h5 HasTC+GetTC(id) ref / h6 HasTC&&PeekTC -> roles
+007735d0 probe 7 named locals combos (thing ptr, keeper ref/ptr, thingBase, keeper ref at top) -> roles
+007735d0 probe 8 GetDef/GetSubDef body visibility (v26 no GetDef body, v27 no GetSubDef body, v28 neither) -> roles
+15:34 007735d0 grade v26.cpp DIFFER(450v448) hunks=20 -- GetDef decl-only (no GLOBAL_BODY), GetSubDef body visible
+007735d0 probe 9 slot order vs declaration order of thingDef/shopDef -> see NOTES
+007735d0 probe 10 cond nesting/keeper/hero spellings t3..t7 -> roles
+15:38 007735d0 grade t7.cpp RELOCATION_MATCH -- keeper block locals: t7 world+manager+keeper refs; t8 manager+keeper refs; t9 manager ref only
+15:38 007735d0 grade t8.cpp RELOCATION_MATCH -- t8 manager+keeper refs (no world ref)
+15:39 007735d0 grade 007735d0.cpp RELOCATION_MATCH -- final source (t8 + header comment)
+15:39 007735d0 grade 007735d0.cpp RELOCATION_MATCH -- final source, strict headers regrade
+16:02 007735d0 grade src.cpp RELOCATION_MATCH -- 
+16:02 007735d0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00773790
+15:21 00773790 grade v1.cpp SRC_FAIL -- port onto shared headers, flat body
+15:21 00773790 grade v1.cpp SRC_FAIL -- port onto shared headers, flat body (fix macros)
+15:21 00773790 grade v1.cpp DIFFER(430v448) hunks=22 -- port onto shared headers, flat body (creature chain macros)
+15:22 00773790 grade v1.cpp DIFFER(430v448) hunks=22 -- same as grade 1 (full listing)
+15:23 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- end()!=it / end local / thing local
+15:23 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- end()!=it / end local / thing local
+15:23 00773790 grade v4.cpp DIFFER(430v448) hunks=22 -- end()!=it / end local / thing local
+15:23 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- house test in inline helper (if / &&) ; && in place
+15:23 00773790 grade v3.cpp DIFFER(397v448) hunks=36 -- house test in inline helper (if / &&) ; && in place
+15:23 00773790 grade v4.cpp DIFFER(430v448) hunks=22 -- house test in inline helper (if / &&) ; && in place
+15:24 00773790 grade v2.cpp DIFFER(411v448) hunks=28 -- multiplier=1.0f var, single return after if(GetSubDef) (3 decl positions)
+15:24 00773790 grade v3.cpp DIFFER(411v448) hunks=28 -- multiplier=1.0f var, single return after if(GetSubDef) (3 decl positions)
+15:24 00773790 grade v4.cpp DIFFER(411v448) hunks=28 -- multiplier=1.0f var, single return after if(GetSubDef) (3 decl positions)
+15:25 00773790 grade v2.cpp SRC_FAIL -- goto owned / HasTC+PeekTC with thing ref
+15:25 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- goto owned / HasTC+PeekTC with thing ref
+15:25 00773790 grade v4.cpp DIFFER(443v448) hunks=30 -- old draft regrade for its shape
+15:26 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- find visibility: CONSTFIND_TEMPLATE_BODY / CONSTFIND / FIND_TEMPLATE
+15:26 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- find visibility: CONSTFIND_TEMPLATE_BODY / CONSTFIND / FIND_TEMPLATE
+15:26 00773790 grade v4.cpp DIFFER(430v448) hunks=22 -- find visibility: CONSTFIND_TEMPLATE_BODY / CONSTFIND / FIND_TEMPLATE
+15:27 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- decl order: shopDef first / both before GetDef / both at top
+15:27 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- decl order: shopDef first / both before GetDef / both at top
+15:27 00773790 grade v4.cpp DIFFER(430v448) hunks=32 -- decl order: shopDef first / both before GetDef / both at top
+15:27 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- hero && / inverted house wrap / non-expanded GetTC
+15:27 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- hero && / inverted house wrap / non-expanded GetTC
+15:27 00773790 grade v4.cpp SRC_FAIL -- hero && / inverted house wrap / non-expanded GetTC
+15:29 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- end compare forms (v2)
+15:29 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- end compare forms (v3)
+15:29 00773790 grade v4.cpp DIFFER(430v448) hunks=22 -- end compare forms (v4)
+15:30 00773790 grade v2.cpp DIFFER(8v448) hunks=3 -- PROBE-ish: whole body in inline helper (shop) / +bool sell / +member pointers (private->public hack, experiment only)
+15:30 00773790 grade v3.cpp DIFFER(14v448) hunks=3 -- PROBE-ish: whole body in inline helper (shop) / +bool sell / +member pointers (private->public hack, experiment only)
+15:30 00773790 grade v4.cpp DIFFER(14v448) hunks=3 -- PROBE-ish: whole body in inline helper (shop) / +bool sell / +member pointers (private->public hack, experiment only)
+15:30 00773790 grade v2.cpp DIFFER(430v448) hunks=24 -- PROBE-ish: whole body in forceinline helper (shop) / +bool sell / +member pointers
+15:30 00773790 grade v3.cpp DIFFER(430v448) hunks=24 -- PROBE-ish: whole body in forceinline helper (shop) / +bool sell / +member pointers
+15:30 00773790 grade v4.cpp DIFFER(430v448) hunks=24 -- PROBE-ish: whole body in forceinline helper (shop) / +bool sell / +member pointers
+15:30 00773790 grade v2.cpp DIFFER(450v448) hunks=20 -- without GetDef body / without GetSubDef body / without both
+15:30 00773790 grade v3.cpp DIFFER(487v448) hunks=29 -- without GetDef body / without GetSubDef body / without both
+15:30 00773790 grade v4.cpp DIFFER(495v448) hunks=23 -- without GetDef body / without GetSubDef body / without both
+15:31 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- CDefPointer Release variants: default / COUNTREF / POINTEE
+15:31 00773790 grade v3.cpp DIFFER(462v448) hunks=23 -- CDefPointer Release variants: default / COUNTREF / POINTEE
+15:31 00773790 grade v4.cpp DIFFER(476v448) hunks=27 -- CDefPointer Release variants: default / COUNTREF / POINTEE
+15:32 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- TU context: Buy twin before / after / explicit template instantiation before
+15:32 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- TU context: Buy twin before / after / explicit template instantiation before
+15:32 00773790 grade v4.cpp DIFFER(430v448) hunks=22 -- TU context: Buy twin before / after / explicit template instantiation before
+15:33 00773790 grade v2.cpp DIFFER(370v448) hunks=31 -- PROBE: does P (ParentThing temp) interact with D? no house block / constant def index
+15:33 00773790 grade v3.cpp DIFFER(434v448) hunks=23 -- PROBE: does P (ParentThing temp) interact with D? no house block / constant def index
+15:33 00773790 grade v3.cpp DIFFER(434v448) hunks=23 -- PROBE: constant def index (listing)
+15:34 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- axes: GetShopKeeper()/Get()->/def local ; GetParentThing().index / hero const PeekTC / reactions local
+15:34 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- axes: GetShopKeeper()/Get()->/def local ; GetParentThing().index / hero const PeekTC / reactions local
+15:34 00773790 grade v4.cpp DIFFER(430v448) hunks=22 -- axes: GetShopKeeper()/Get()->/def local ; GetParentThing().index / hero const PeekTC / reactions local
+15:34 00773790 grade v5.cpp DIFFER(430v448) hunks=22 -- axes: GetShopKeeper()/Get()->/def local ; GetParentThing().index / hero const PeekTC / reactions local
+15:34 00773790 grade v6.cpp DIFFER(430v448) hunks=22 -- axes: GetShopKeeper()/Get()->/def local ; GetParentThing().index / hero const PeekTC / reactions local
+15:34 00773790 grade v7.cpp DIFFER(430v448) hunks=22 -- axes: GetShopKeeper()/Get()->/def local ; GetParentThing().index / hero const PeekTC / reactions local
+15:36 00773790 grade v2.cpp DIFFER(432v448) hunks=32 -- thingDef declared at function top (scope overlap with house key)
+15:37 00773790 grade va.cpp DIFFER(430v448) hunks=22 -- slot-order sweep: nested block all / nested shopDef / attitude+it fn scope ; mult top / thingDef<CDefClassBase> / else block
+15:37 00773790 grade vb.cpp DIFFER(430v448) hunks=22 -- slot-order sweep: nested block all / nested shopDef / attitude+it fn scope ; mult top / thingDef<CDefClassBase> / else block
+15:37 00773790 grade vc.cpp DIFFER(430v448) hunks=22 -- slot-order sweep: nested block all / nested shopDef / attitude+it fn scope ; mult top / thingDef<CDefClassBase> / else block
+15:37 00773790 grade vd.cpp DIFFER(430v448) hunks=22 -- slot-order sweep: nested block all / nested shopDef / attitude+it fn scope ; mult top / thingDef<CDefClassBase> / else block
+15:37 00773790 grade ve.cpp DIFFER(430v448) hunks=22 -- slot-order sweep: nested block all / nested shopDef / attitude+it fn scope ; mult top / thingDef<CDefClassBase> / else block
+15:37 00773790 grade vf.cpp DIFFER(430v448) hunks=22 -- slot-order sweep: nested block all / nested shopDef / attitude+it fn scope ; mult top / thingDef<CDefClassBase> / else block
+15:37 00773790 grade va.cpp DIFFER(430v448) hunks=22 -- slot sweep listing va
+15:37 00773790 grade vb.cpp DIFFER(430v448) hunks=22 -- slot sweep listing vb
+15:37 00773790 grade vc.cpp DIFFER(430v448) hunks=22 -- slot sweep listing vc
+15:37 00773790 grade vd.cpp DIFFER(430v448) hunks=22 -- slot sweep listing vd
+15:37 00773790 grade ve.cpp DIFFER(430v448) hunks=22 -- slot sweep listing ve
+15:37 00773790 grade vf.cpp DIFFER(430v448) hunks=22 -- slot sweep listing vf
+15:38 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- find body visible (v2: +AUGMENTATION noinline / plain)
+15:38 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- find body visible (v3: +AUGMENTATION noinline / plain)
+15:39 00773790 grade p1.cpp DIFFER(425v448) hunks=31 -- PROBE p1: which candidate blocks D from esi (keeper local / no hero block / no keeper block)
+15:39 00773790 grade p2.cpp DIFFER(333v448) hunks=27 -- PROBE p2: which candidate blocks D from esi (keeper local / no hero block / no keeper block)
+15:39 00773790 grade p3.cpp DIFFER(332v448) hunks=26 -- PROBE p3: which candidate blocks D from esi (keeper local / no hero block / no keeper block)
+15:40 00773790 grade p4.cpp DIFFER(427v448) hunks=20 -- PROBE p4: T use count (PeekWorld / PeekPlayerManager off this)
+15:40 00773790 grade p5.cpp DIFFER(436v448) hunks=32 -- PROBE p5: T use count (PeekWorld / PeekPlayerManager off this)
+15:40 00773790 grade p6.cpp DIFFER(424v448) hunks=20 -- PROBE p6: T use count (PeekWorld / PeekPlayerManager off this)
+15:40 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /Oa -- flag sweep /Oa: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:40 00773790 grade n1.cpp DIFFER(450v448) hunks=23 /Oa -- flag sweep /Oa: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n2.cpp DIFFER(495v448) hunks=24 /Oa -- flag sweep /Oa: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /Ow -- flag sweep /Ow: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n1.cpp DIFFER(450v448) hunks=20 /Ow -- flag sweep /Ow: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n2.cpp DIFFER(495v448) hunks=23 /Ow -- flag sweep /Ow: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade v1.cpp DIFFER(431v448) hunks=22 /G7 -- flag sweep /G7: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n1.cpp DIFFER(440v448) hunks=23 /G7 -- flag sweep /G7: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n2.cpp DIFFER(474v448) hunks=24 /G7 -- flag sweep /G7: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /GS -- flag sweep /GS: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n1.cpp DIFFER(450v448) hunks=20 /GS -- flag sweep /GS: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n2.cpp DIFFER(495v448) hunks=23 /GS -- flag sweep /GS: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade v1.cpp DIFFER(535v448) hunks=32 /EHsc -- flag sweep /EHsc: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n1.cpp DIFFER(555v448) hunks=32 /EHsc -- flag sweep /EHsc: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n2.cpp DIFFER(600v448) hunks=29 /EHsc -- flag sweep /EHsc: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade v1.cpp DIFFER(408v448) hunks=36 /Oy- -- flag sweep /Oy-: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n1.cpp DIFFER(434v448) hunks=39 /Oy- -- flag sweep /Oy-: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade n2.cpp DIFFER(472v448) hunks=28 /Oy- -- flag sweep /Oy-: v1 / no GetDef body / no GetDef+GetSubDef bodies
+15:41 00773790 grade s1.cpp DIFFER(418v448) hunks=32 -- pragma optimize s
+15:42 00773790 grade p7.cpp DIFFER(438v448) hunks=26 -- found-path likelihood: if(found){...return m;} return 1 / bool found / ==false else
+15:42 00773790 grade p8.cpp DIFFER(430v448) hunks=22 -- found-path likelihood: if(found){...return m;} return 1 / bool found / ==false else
+15:42 00773790 grade p9.cpp DIFFER(430v448) hunks=22 -- found-path likelihood: if(found){...return m;} return 1 / bool found / ==false else
+15:45 00773790 grade v1.cpp DIFFER(430v448) hunks=22 -- LowerBound body visibility: v1 control (overlay) / non-const opaque / const opaque
+15:45 00773790 grade v2.cpp DIFFER(433v448) hunks=24 -- LowerBound body visibility: v1 control (overlay) / non-const opaque / const opaque
+15:45 00773790 grade v3.cpp DIFFER(445v448) hunks=29 -- LowerBound body visibility: v1 control (overlay) / non-const opaque / const opaque
+15:45 00773790 grade v4.cpp DIFFER(448v448) hunks=32 -- LowerBound both opaque
+15:46 00773790 grade p10.cpp DIFFER(426v448) hunks=19 -- PROBE p10: T use vs call (free-function PeekWorld / GetDefinitionManager / PeekPlayerManager)
+15:46 00773790 grade p11.cpp DIFFER(426v448) hunks=18 -- PROBE p11: T use vs call (free-function PeekWorld / GetDefinitionManager / PeekPlayerManager)
+15:46 00773790 grade p12.cpp DIFFER(437v448) hunks=32 -- PROBE p12: T use vs call (free-function PeekWorld / GetDefinitionManager / PeekPlayerManager)
+15:47 00773790 grade p13.cpp DIFFER(436v448) hunks=22 -- PROBE p13: P kept live past D's def (store thing to a global after GetDef / after multiplier init)
+15:47 00773790 grade p14.cpp DIFFER(446v448) hunks=25 -- PROBE p14: P kept live past D's def (store thing to a global after GetDef / after multiplier init)
+15:50 00773790 grade n1.cpp DIFFER(430v448) hunks=22 -- non-expanded PeekTC<T>/GetTC<T> (HasTC + Components.Find): default / ORIGINAL_CHAIN / FORCEINLINE_FIND
+15:50 00773790 grade n2.cpp DIFFER(430v448) hunks=22 -- non-expanded PeekTC<T>/GetTC<T> (HasTC + Components.Find): default / ORIGINAL_CHAIN / FORCEINLINE_FIND
+15:50 00773790 grade n3.cpp DIFFER(430v448) hunks=22 -- non-expanded PeekTC<T>/GetTC<T> (HasTC + Components.Find): default / ORIGINAL_CHAIN / FORCEINLINE_FIND
+15:51 00773790 grade p15.cpp DIFFER(446v448) hunks=26 -- PROBE p15: P live across GetSubDef (store in nf block / after call)
+15:51 00773790 grade p16.cpp DIFFER(450v448) hunks=32 -- PROBE p16: P live across GetSubDef (store in nf block / after call)
+15:53 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /G5 -- flag sweep /G5 on v1
+15:53 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /G6 -- flag sweep /G6 on v1
+15:53 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /GB -- flag sweep /GB on v1
+15:53 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /Ox -- flag sweep /Ox on v1
+15:53 00773790 grade v1.cpp DIFFER(434v448) hunks=23 /Op -- flag sweep /Op on v1
+15:53 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /Ob1 -- flag sweep /Ob1 on v1
+15:53 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /GX- -- flag sweep /GX- on v1
+15:54 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /GR- -- flag sweep /GR- on v1
+15:54 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /Oi- -- flag sweep /Oi- on v1
+15:54 00773790 grade v1.cpp DIFFER(430v448) hunks=22 /Gy- -- flag sweep /Gy- on v1
+15:54 00773790 grade v1.cpp DIFFER(418v448) hunks=32 /Os -- flag sweep /Os on v1
+15:56 00773790 grade b1.cpp DIFFER(491v448) hunks=38 -- b1: hero early returns (two / combined) ; keeper nested ifs
+15:56 00773790 grade b2.cpp DIFFER(489v448) hunks=34 -- b2: hero early returns (two / combined) ; keeper nested ifs
+15:56 00773790 grade b3.cpp DIFFER(430v448) hunks=22 -- b3: hero early returns (two / combined) ; keeper nested ifs
+15:56 00773790 grade p17.cpp DIFFER(228v448) hunks=16 -- PROBE p17: no keeper + no hero blocks: is D before Z by refs (D=esi?)
+15:58 00773790 grade c1.cpp DIFFER(430v448) hunks=22 -- c1: D born in the GetDef statement tree (comma) / GetDef result kept
+15:58 00773790 grade c2.cpp DIFFER(450v448) hunks=29 -- c2: D born in the GetDef statement tree (comma) / GetDef result kept
+15:59 00773790 grade 00773790.cpp DIFFER(430v448) hunks=22 -- final hand-back source (v1 + header comment)
+16:07 00773790 grade base.cpp DIFFER(430v448) hunks=22 -- attempt2 control
+16:12 00773790 grade v1.cpp DIFFER(430v448) hunks=22 -- a2: visible noinline bodies GetPControlledCreature / GetMainPlayer const / both
+16:12 00773790 grade v2.cpp DIFFER(430v448) hunks=22 -- a2: visible noinline bodies GetPControlledCreature / GetMainPlayer const / both
+16:12 00773790 grade v3.cpp DIFFER(430v448) hunks=22 -- a2: visible noinline bodies GetPControlledCreature / GetMainPlayer const / both
+16:23 00773790 probe q1 extra thingDef use (after GetSubDef / at end / found path start): does T take esi first? -> see regs
+16:23 00773790 probe q2 extra thingDef use (after GetSubDef / at end / found path start): does T take esi first? -> see regs
+16:23 00773790 probe q3 extra thingDef use (after GetSubDef / at end / found path start): does T take esi first? -> see regs
+16:24 00773790 grade k1.cpp DIFFER(430v448) hunks=22 -- a2: keeper via fastcall operator!=(ptr,int) / operator-> / !(==0)
+16:24 00773790 grade k2.cpp DIFFER(430v448) hunks=22 -- a2: keeper via fastcall operator!=(ptr,int) / operator-> / !(==0)
+16:25 00773790 grade k3.cpp DIFFER(430v448) hunks=22 -- a2: keeper via fastcall operator!=(ptr,int) / operator-> / !(==0)
+16:26 00773790 probe r1 (&PSK uses 2 / none / + this-1): which candidate keeps T off esi -> see NOTES
+16:26 00773790 probe r2 (&PSK uses 2 / none / + this-1): which candidate keeps T off esi -> see NOTES
+16:27 00773790 probe r3 (&PSK uses 2 / none / + this-1): which candidate keeps T off esi -> see NOTES
+16:27 00773790 probe r4 (&PSK uses 2 / none / + this-1): which candidate keeps T off esi -> see NOTES
+16:27 00773790 grade n1.cpp DIFFER(430v448) hunks=22 -- a2: re-look at no-GetDef-body variant n1
+16:28 00773790 grade g1.cpp DIFFER(450v448) -- a2: no GetDef body, full listing inspected
+16:33 00773790 grade f1.cpp DIFFER(430v448) hunks=22 -- a2: STLP_TREE_CONSTFIND + obj symbol check (does find body reach the TU?)
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /Z7 -- a2 flag sweep /Z7
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /Zi -- a2 flag sweep /Zi
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /GT -- a2 flag sweep /GT
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /GA -- a2 flag sweep /GA
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /Oi -- a2 flag sweep /Oi
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /O1 /Ot -- a2 flag sweep /O1 /Ot
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /Gr -- a2 flag sweep /Gr
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /GF -- a2 flag sweep /GF
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /vmg -- a2 flag sweep /vmg
+16:35 00773790 grade base.cpp SRC_FAIL /Zp4 -- a2 flag sweep /Zp4
+16:35 00773790 grade base.cpp DIFFER(430v448) hunks=22 /J -- a2 flag sweep /J
+16:35 00773790 probe qfe: base.cpp under the QFE-4035 compiler binaries -> see NOTES
+16:40 00773790 grade d1.cpp DIFFER(430v448) hunks=22 -- a2: keeper via direct GetPItem x3 / reference local / base pointer local
+16:40 00773790 grade d2.cpp DIFFER(430v448) hunks=22 -- a2: keeper via direct GetPItem x3 / reference local / base pointer local
+16:40 00773790 grade d3.cpp DIFFER(430v448) hunks=22 -- a2: keeper via direct GetPItem x3 / reference local / base pointer local
+16:42 00773790 grade x1.cpp DIFFER(430v448) hunks=22 -- a2 PROBE x1: ParentThing and &PShopKeeper held in ONE variable (same symbol hypothesis)
+16:42 00773790 probe x1: PT and &PSK as one symbol -> see grade line above
+16:43 00773790 probe s5: reaction temp with an extra use (+ this-1): does K move to edi? -> see NOTES
+16:43 00773790 probe s6: reaction temp with an extra use (+ this-1): does K move to edi? -> see NOTES
+16:43 00773790 grade t1.cpp RELOCATION_MATCH -- a2: reactions + keeper locals as separate statements (ref / ptr / world local)
+16:44 00773790 grade 00773790.cpp RELOCATION_MATCH -- a2: final source (t1 + header comment)
+16:44 00773790 grade 00773790.cpp RELOCATION_MATCH -- a2: strict-headers regrade of the final source
+16:45 00773790 grade 00773790.cpp RELOCATION_MATCH -- a2: final source, comment wording only, strict headers
+16:46 00773790 grade src.cpp RELOCATION_MATCH -- 
+16:46 00773790 grade src.cpp SRC_FAIL -- 
+16:47 00773790 grade 00773790.cpp RELOCATION_MATCH -- repair: overlay rebuilt on current CTCHeroStats.h (keeps PROPERTYOWNED)
+16:47 00773790 grade 00773790.cpp RELOCATION_MATCH -- repair: strict headers regrade
+16:48 00773790 grade src.cpp RELOCATION_MATCH -- 
+16:48 00773790 grade src.cpp SRC_FAIL -- 
+
+==== 0x007FD650
+15:41 007fd650 grade v1.cpp SRC_FAIL -- port to shared headers, 3-arg SetPersistentPrimitive, visible ctor vs declared
+15:41 007fd650 grade v2.cpp SRC_FAIL -- port to shared headers, 3-arg SetPersistentPrimitive, visible ctor vs declared
+15:42 007fd650 grade v1.cpp DIFFER(449v448) hunks=28 -- port: fix compile (Get(), persistent base macro)
+15:42 007fd650 grade v2.cpp DIFFER(437v448) hunks=45 -- port: fix compile (Get(), persistent base macro)
+15:42 007fd650 grade v1.cpp DIFFER(449v448) hunks=28 -- v1 full diff view
+15:42 007fd650 grade a1.cpp DIFFER(448v448) hunks=28 -- a1 refs start/end; a2 line3 via inline Lift helper; a3 all via Lift
+15:42 007fd650 grade a2.cpp DIFFER(449v448) hunks=28 -- a1 refs start/end; a2 line3 via inline Lift helper; a3 all via Lift
+15:42 007fd650 grade a3.cpp RELOCATION_MATCH -- a1 refs start/end; a2 line3 via inline Lift helper; a3 all via Lift
+15:43 007fd650 grade b1.cpp RELOCATION_MATCH -- b1 operator+ C3DVector(0,0,2) temp; b2 named const up vector
+15:44 007fd650 grade 007fd650.cpp RELOCATION_MATCH -- final source, strict headers
+16:03 007fd650 grade src.cpp RELOCATION_MATCH -- 
+16:03 007fd650 grade src.cpp SRC_FAIL -- 
+
