@@ -1,0 +1,8 @@
+address	name	module
+00846dd0	CCreatureAction_PerformExpression::FinishAction	CCreatureAction_PerformExpression
+0084b010	NEntityEvents::CEventExpressionPerformedTo::CEventExpressionPerformedTo	NEntityEvents::CEventExpressionPerformedTo
+009a3c20	CStreamingFontBank::CStreamingFontBank	CStreamingFontBank
+009cc2a0	CBankFile::ReadEntryData	CBankFile
+00981410	CAIStateGroupBase::AIAction_InteractWith	CAIStateGroupBase
+0090c870	CThingFilter_IsValidGossipee::CThingFilter_IsValidGossipee	CThingFilter_IsValidGossipee
+00770fa0	CTCSolidToThing::AddThingNotSolidTo	CTCSolidToThing

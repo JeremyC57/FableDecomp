@@ -109,6 +109,11 @@ public:
     // ?GetEntryDataSize@CBankFile@@QBEKK@Z (0x00B19F40 = retail 0x009CC240, next to GetEntryDataType 0x009CC210), out of line.
     unsigned long GetEntryDataSize(unsigned long index) const;           // 0x009CC240
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_READENTRYDATA
+    // Retail opt-in (chunk Q26, row 0x009A3C20 CStreamingFontBank::CStreamingFontBank): Ego_r.pdb / FableWin.pdb
+    // ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z (retail 0x009CC2A0), out of line: entry index, byte offset, buffer, size.
+    void ReadEntryData(unsigned long index, unsigned long offset, void* buffer, unsigned long size);   // 0x009CC2A0
+#endif
 };
 #pragma pack(pop)
 

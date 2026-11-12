@@ -1,0 +1,8 @@
+address	name	evidence
+00846DD0	CCreatureAction_PerformExpression::FinishAction	chunk Q26 (landing du): 
+0084B010	NEntityEvents::CEventExpressionPerformedTo::CEventExpressionPerformedTo	chunk Q26 (landing du): 
+009A3C20	CStreamingFontBank::CStreamingFontBank	chunk Q26 (landing du): 
+009CC2A0	CBankFile::ReadEntryData	chunk Q26 (landing du): 
+00981410	CAIStateGroupBase::AIAction_InteractWith	chunk Q26 (landing du): 
+0090C870	CThingFilter_IsValidGossipee::CThingFilter_IsValidGossipee	chunk Q26 (landing du): 
+00770FA0	CTCSolidToThing::AddThingNotSolidTo	chunk Q26 (landing du): 

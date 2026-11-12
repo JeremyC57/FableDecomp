@@ -38723,3 +38723,4 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@0@Z	004b4e30	004b5ee0
 ??$GetDef@VCCarrySlotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCarrySlotDef@@@@@Z	006a3060	007fc210
 ?SetFacingAngleAndDummy@CTCKrakenTentacle@@QAEXMABVCCharString@@@Z	007f15d0	007fc210
+?IsCreatureValidFollower@CTCFollowed@@QBE_NABVCThingAICreature@@PA_N@Z	006d4e60	00846dd0

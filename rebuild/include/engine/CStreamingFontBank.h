@@ -28,6 +28,11 @@ public:
     virtual void PrepareToRender(bool = true) const;                     // slot 3 0x009A1720
     virtual bool Preload(const CWideString& text, bool) const;           // slot 4 0x009A2000
     virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture = 0) const;   // slot 5 0x009A25D0
+#ifdef FABLE_RETAIL_CSTREAMINGFONTBANK_CTOR
+    // Retail opt-in (chunk Q26, row 0x009A3C20): Ego_r.pdb ??0CStreamingFontBank@@QAE@PAVCStreamingFontDataBank@@K@Z
+    // (also in FableWin.pdb), the constructor that reads the font entry `index` of the data bank.
+    CStreamingFontBank(CStreamingFontDataBank* bank, unsigned long index);   // 0x009A3C20
+#endif
 protected:
     CStreamingFontDataBank* data_bank;                                   // +0x10
     GlyphBank*              glyphBankCache;                              // +0x14

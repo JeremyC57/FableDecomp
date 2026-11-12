@@ -1,0 +1,9 @@
+address	name	grade	grades_used	note
+009a3c20	CStreamingFontBank::CStreamingFontBank	DIFFER(1298v1298)	8	ported onto shared headers (fixed 3 of 4 draft residues); glyph-loop i/j register swap remains
+00b1a870	NParticleEngine::CPSCLight::DatabaseSerialise	DIFFER(1310v1310)	7	ported (4 of the 7 were compile fixes); one folded xor operand remains
+0090e5d0	CAIStateGroup_BanditGossip::Update	DIFFER(1367v1367)	2	far (about 70 hunks); needs a full shared-header port (CFilter_Bind3 query, AIAction_InteractWith)
+00eb40c0	CMurderTwistAssassin::DoWatchingForTrouble	DIFFER(1601v1601)	1	baseline only: shared early-exit block placement; not ported
+006ec850	CCombatWheel::PopulateCombatRings	DIFFER(1606v1606)	2	frame slot sharing (0x3c v 0x30); not ported
+00a8ad40	C3DMesh2::LoadBinary	DIFFER(1621v1621)	3	count/size register allocation; not ported
+00846dd0	CCreatureAction_PerformExpression::FinishAction	RELOCATION_MATCH	6	ported onto the Q25 sibling framework; GetInstantiationName / IsRespondingToFollowAndWait / 0x20-byte event fixed it; VC7.1 + g++ tests PASS; strict regrade clean
+00d39960	NScript::CQ_FireHeartScript::StartRound	DIFFER(1774v1774)	4	post-loop terminate block placement; alt form moves the block but swaps the tail merges

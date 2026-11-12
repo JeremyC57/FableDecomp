@@ -60,6 +60,12 @@ public:
     // ?StatGetTypeFlags@CThingAICreature@@SIKXZ (static fastcall, inline in retail: the type test `not eax ; test al,1Fh`, 0x00934E9D).
     static unsigned long __fastcall StatGetTypeFlags() { return 0x1f; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_ISRESPONDINGTOFOLLOWANDWAIT
+    // Retail opt-in (chunk Q26, row 0x00846DD0 CCreatureAction_PerformExpression::FinishAction): Ego_r.pdb
+    // ?IsRespondingToFollowAndWait@CThingAICreature@@QBE_NXZ (no out-of-line copy in retail: the caller tests bit 2 of +0x1C9 in place,
+    // `test byte ptr [eax+1C9h],bl` with bl = 4 at 0x0084710D). A declaration with its body only: no layout change.
+    bool IsRespondingToFollowAndWait() const { return RespondingToFollowAndWait; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_STATGETTYPE
     // Nested opt-in (chunk 853, row 0x0050A650): FableWin.pdb ?StatGetType@CThingAICreature@@SIJXZ (inline); retail
     // GetAllLeafThings<CThingAICreature> 0x00516830 scans type list 1 (`push 1 ; call PeekTypeList`). No layout change.

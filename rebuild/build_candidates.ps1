@@ -393411,6 +393411,13 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupRecoverStealableItem_Update_009658b0_test.cpp'
         PassPattern = '009658b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00846dd0'
+        Module = 'CCreatureAction_PerformExpression'
+        Source = '00/84/CCreatureActionPerformExpression_FinishAction_00846dd0.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpression_FinishAction_00846dd0_test.cpp'
+        PassPattern = '00846dd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
