@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004a6e30   WARN RELOC_NAME: ??0CFactionManager@@QAE@ABVCWorld@@@Z -> 006b97e0 labelled 'CWorld_InitFactions'
+004a6e30   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0ABU__false_type@0@@Z -> 004ad9e0 labelled 'std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CFaction>> *>'
+004a6e30   WARN RELOC_NAME: ?Init@CCombatManager@@QAEXXZ -> 006e8300 labelled 'CCombatManager::ResetDialogue'
+004a6e30   RELOCATION_MATCH PASS   Init
+
+WINS: 1
+  004a6e30 RELOCATION_MATCH CWorld::?Init@CWorld@@UAEXXZ

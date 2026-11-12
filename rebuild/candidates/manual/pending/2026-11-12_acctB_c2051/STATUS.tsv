@@ -1,0 +1,6 @@
+address	grade	bytes	test	grades_used	notes
+004a6e30	RELOCATION_MATCH	2259v2259	PASS (g++ + VC7.1)	p1:1	first full draft matched; vland RELOCATION_MATCH (3 RELOC_NAME warnings = catalog labels fixed in LABELS/NAME_FIXES)
+0042ec7c	DIFFER	2179v2191	PASS (g++; differ/0042ec7c.test.cpp)	p1:18 (+2 c2 traces, 1 forced-prio what-if, 1 tuple count)	IN PROGRESS (hand-over in place): 587/624 frame-masked equal. Root residue: c2 hoists the shared constant &NBankFileManager::GBankFileManager into the bank-if test block (ours 0x0042EE43 `mov edi,R` before `je`); retail sinks it into the bank block (0x0042EE7D) and a skip-path block (0x0042EF2E) and keeps it in edi through the main loop (re-set 0x0042F20A). Knock-ons: return-false block placed after the CXMVPlayerBuffers alloc instead of after the bank block; display / Preload vtable / &m_attractModeTimer / &m_inputDelayTimer take edi (retail: frame slot / re-lea ecx). Frame swap i [ebp+6Ch] v error_string [ebp+68h] in the movie loop.
+0087f3a0	NOT_ATTEMPTED	-v2422	-	0	not started (one-row-at-a-time rule; Run still open)
+00a7af60	NOT_ATTEMPTED	-v2503	-	0	not started
+00821a80	NOT_ATTEMPTED	-v2648	-	0	not started

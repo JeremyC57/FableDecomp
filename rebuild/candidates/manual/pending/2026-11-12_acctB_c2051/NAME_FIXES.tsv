@@ -1,0 +1,9 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+004ADD30	??$checked_delete@VCGameTimeManager@@@boost@@YIXPAVCGameTimeManager@@@Z	FableWin.pdb ??$checked_delete@V<T>@@@boost@@YIX template copies; emitted by CWorld::Init 0x004A6E30 (vland RELOCATION_MATCH)	?CheckedDeleteGameTimeManager@@YIXPAVCGameTimeManager@@@Z
+004AE080	??$checked_delete@VCBulletTimeManager@@@boost@@YIXPAVCBulletTimeManager@@@Z	same	?CheckedDeleteBulletTimeManager@@YIXPAVCBulletTimeManager@@@Z
+004AE810	??$checked_delete@VCScriptConversationManager@@@boost@@YIXPAVCScriptConversationManager@@@Z	same	?CheckedDeleteScriptConversationManager@@YIXPAVCScriptConversationManager@@@Z
+0041DF10	?SetInput@CManager@NUISystem@@QAEXW4EInputType@12@@Z	Ego_r.pdb spelling (EInputType nested in CManager, as engine/NUISystem_CManager.h declares it)	?SetInput@CManager@NUISystem@@QAEXW4EInputType@2@@Z
+006E8300	?Init@CCombatManager@@QAEXXZ	Ego_r.pdb; body (see LABELS.tsv)	CCombatManager::ResetDialogue (catalog label)
+006F5C10	?StatRegisterClass@CCreatureActionBase@@SIXXZ	Ego_r.pdb/FableWin.pdb	StatRegisterClass (catalog, global)
+013BAB10	?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A	CSkeletalMorphResourceManager is a CTBaseSingleton<CSkeletalMorphResourceManager> (Ego_r.pdb ??0?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@IAE@XZ, ?Get@..@@SIAAV..@XZ); the shared engine/CTBaseSingleton.h names the static PClass; CWorld::Init expands Get() on it	?Instance@CSkeletalMorphResourceManager@@2V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A; ?g_SkeletalMorphResourceManager@@3V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A; ?g_pointer_013bab10@@3UCCountedPointerStatic@@A
+00595A03	?CanStartAttractMode@CFrontEndManager@NUISystem@@QAE_NXZ	see LABELS.tsv (context-proven, parked row)	?IsBlockingControllerMessage@CFrontEndManager@@QAE_NXZ

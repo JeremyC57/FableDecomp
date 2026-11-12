@@ -1,0 +1,13 @@
+004a6e30	g1	first full draft (typed CWorld members, shared headers + opt-ins, /Gr)	RELOCATION_MATCH	all	-
+0042ec7c	g1	first draft (y off)	DIFFER(2190v2191)	-	frame prologue mov ebp,esp
+0042ec7c	g2	drop optimize(y,off)	DIFFER(2171v2191)	456	CRGBColour copy called
+0042ec7c	g3	FORCEINLINE CRGBColour copy opt-in	DIFFER(2183v2191)	574fm	edi const &GBankFileManager not live across middle
+0042ec7c	g4	bank ref local + init={0}	DIFFER(2180v2191)	583fm	same edi residue
+0042ec7c	g5	bank ptr local (no change)	DIFFER(2180v2191)	583fm	edi residue
+0042ec7c	g6	CFrontendGameComponentInit inline ctor; index named	DIFFER(2179v2191)	587fm	edi residue
+0042ec7c	g7	named const CMovieInfo& in loop	DIFFER(2179v2191)	587fm	no change
+0042ec7c	g8-g11	for(;;)+breaks / display ref / bank ptr at entry / sizeof bound (batch)	DIFFER(2179v2191) x4	587fm	all identical; c2 trace: const &GBankFileManager (#20) referenced in block 10 (join before bank if), conflicts with movie-loop pointer #54 (edi) -> split; retail sinks the materialization into the bank block and the skip path. forced prio 300 = worse (loop ptr loses edi)
+0042ec7c	g12	diag (not a candidate): leave-path bank code removed -> no hoisted mov edi in the bank-if test block	DIFFER(1834v2191)	-	proves the hoist comes from the constant shared with the leave path
+0042ec7c	g13-g15	block-local CBankFileManager& in the first block / direct calls / `== true` test (batch)	DIFFER(2179/2179/2180)	588/587/586fm	no change
+0042ec7c	g16	bool play_movies guard	DIFFER(2179v2191)	588fm	no change
+0042ec7c	g17-g18	block-local CBankFileManager& in the leave block (with / without one in the first block)	DIFFER(2179v2191)	588/587fm	no change: c2 folds every alias of the constant
