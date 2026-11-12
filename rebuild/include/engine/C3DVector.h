@@ -337,7 +337,13 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS)
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS_XYZ)
+    // Retail opt-in (chunk Q20, row 0x008B7040 CCreatureAction_JumpOutFromCover::Initialise): the components read into locals first, then
+    // the squared length summed in X, Y, Z source order. There the inlined Normalise of the member JumpDirection loads X, Y, Z
+    // (0x008B7047..0x008B705E) and forms Z*Z, Y*Y, X*X with the three pops after the store (0x008B707E..0x008B7088); the one-line
+    // default / SQUAREDMAGNITUDE_XYZ bodies load Z, Y, X and pop once early there. Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float x=X;float y=Y;float z=Z;float one_on_magnitude=GFFastOneOverSqrt(x*x+y*y+z*z);X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS)
     // Retail opt-in (chunk Q9, row 0x0092B900 CAIStateGroup_OnHeroPush::Update): the components read into locals first, then the
     // squared length summed Z, X, Y. There the inlined Normalise loads X, Y, Z (0x0092B95F..0x0092B969) and sums Z*Z, X*X, Y*Y
     // (0x0092B96C `fld st(0) ; fmul st(1)`, 0x0092B970 `fld st(3) ; fmul st(4)`, 0x0092B976 `fld st(2) ; fmul st(3)`); every

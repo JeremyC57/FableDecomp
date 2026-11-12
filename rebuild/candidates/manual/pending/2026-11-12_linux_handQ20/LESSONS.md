@@ -1,0 +1,10 @@
+- Porting a parked local-model row onto the shared engine headers fixed register-pair swaps by itself on two rows (0x008B7040 ebp/ebx, 0x009FB750 ebx/ebp); port before probing allocation residues.
+- A thrice-repeated per-member block (0x007B0360) is one FABLE_FORCEINLINE private member helper taking the member by reference: it gives the member address in esi and the created thing in ebx as retail.
+- An out-of-class `inline` template member (CGenericVertex<T>::SetRHWFromZ) four times in one function is NOT inlined by VC7.1 (473-byte body); FABLE_FORCEINLINE it.
+- Normalise that loads X, Y, Z and pops all three copies after the store is the locals body (`float x=X;...GFFastOneOverSqrt(x*x+y*y+z*z)`), not the one-line SQUAREDMAGNITUDE form (C3DVector NORMALISE_LOCALS_XYZ).
+- A store-and-reload of the inverse length (`fstp [esp+14h] ; fmul [esp+14h]`) is a named `float one_on_magnitude = GFFastOneOverSqrt(v.GetSquaredMagnitude()); v *= one_on_magnitude;` -- the Normalise call keeps it in st(0).
+- `atan2` / `fmod` in a VC7.1 row: include <math.h>, `#pragma intrinsic(atan2, fmod)`, cast arguments to double (extern float decls give C2666).
+- `operator*=` on C3DVector returns const in the shared header: `return *this *= f;` in a member body fails C2440.
+- A `height * rowBytes` spelled inline twice (vector size and Read size) instead of a `total` local moved the row count from ebp to ebx (0x009FB750).
+- CPixelFormat from a file's CPixelFormatInit is the FableWin inline ctor that only calls Initialise (no -1 default store); the header's default ctor gives +16 bytes.
+- In the shot InitMovement TU, commutative FP operand order (magnitude X*X first, cross pair, `fld dir.X ; fmul speed`) did not follow source order under any spelling tried: treat as compiler canonicalisation, do not spend grades on it.

@@ -1,0 +1,16 @@
+address	name	module	evidence
+0x007B0360	CTCFishingSpot::FrameUpdate	CTCFishingSpot	Ego_r.pdb + FableWin.pdb ?FrameUpdate@CTCFishingSpot@@UAEXXZ; vtable 0x0126D51C slot 9; RELOCATION_MATCH (Q20)
+0x008B7040	CCreatureAction_JumpOutFromCover::Initialise	CCreatureAction_JumpOutFromCover	Ego_r.pdb + FableWin.pdb ?Initialise@CCreatureAction_JumpOutFromCover@@UAEXXZ; vtable 0x0129888C slot 12; RELOCATION_MATCH (Q20)
+0x00A14040	C3DVector::RotateXY	C3DVector	Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z; manifest; 10+ landed decls; called 3x by 0x008B7040
+0x007BEDD0	NThingShot::CTCShotDefinitionBase::GetShootAtPos	NThingShot::CTCShotDefinitionBase	Ego_r + FableWin ?GetShootAtPos@CTCShotDefinitionBase@NThingShot@@IBE?AVC3DVector@@XZ; manifest; shared header decl
+0x0066F9B0	CTCPhysicsBase::SetVelocity	CTCPhysicsBase	Ego_r.pdb ?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z; manifest; landed body (store Velocity, SetAsMoving(true))
+0x007BE7EA	CDefClassBase::GetSubDef<CThingMultiArrowShotDef>	CDefClassBase	manifest; called from 0x007BCF7F; body = CDefClassBase_GetSubDef.h NOINLINE shape
+0x007BE92E	CDefClassBase::GetSubDef<CThingDrainLifeShotDef>	CDefClassBase	manifest; landed; called from 0x007BD845
+0x009E1E10	GFVXToAX	_global	Ego_r + FableWin ?GFVXToAX@@YIMM@Z; manifest; landed decls (GFAXToVX is 0x009E1DA0)
+0x009E1E40	GFVYToAY	_global	Ego_r + FableWin ?GFVYToAY@@YIMM@Z; manifest; landed decls (GFAYToVY is 0x009E1DD0)
+0x009DC030	CRenderManager2D::Add2DTri	CRenderManager2D	Ego_r.pdb ?Add2DTri@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z; called 2x by 0x009DDC60 (and landed Draw2DLine)
+0x009E3640	CPixelFormat::Initialise(const CPixelFormatInit&)	CPixelFormat	Ego_r.pdb ?Initialise@CPixelFormat@@QAEXABVCPixelFormatInit@@@Z; manifest; FableWin inline ctor calls it
+0x009E3940	CPixelFormat::IsCompressed	CPixelFormat	Ego_r.pdb ?IsCompressed@CPixelFormat@@QBE_NXZ; manifest
+0x009FB750	CTexture::LoadFromDataStreamToPreallocatedSurface	CTexture	Ego_r + FableWin ?LoadFromDataStreamToPreallocatedSurface@CTexture@@QAEXAAVCDataInputStream@@@Z; catalog
+0x007BCF7F	NThingShot::CTCShotDefinitionMultiArrow::InitMovement	NThingShot::CTCShotDefinitionMultiArrow	Ego_r + FableWin ?InitMovement@CTCShotDefinitionMultiArrow@NThingShot@@MAEXXZ; vtable slot 33
+0x007BD845	NThingShot::CTCShotDefinitionDrainLife::InitMovement	NThingShot::CTCShotDefinitionDrainLife	Ego_r + FableWin ?InitMovement@CTCShotDefinitionDrainLife@NThingShot@@MAEXXZ; vtable slot 33

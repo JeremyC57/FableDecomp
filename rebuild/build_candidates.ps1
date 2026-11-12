@@ -393313,6 +393313,20 @@ $catalog = @(
         TestSource = '00/8e/NCreatureModeCModeScreamerSuperAttack_FrameUpdate_008e16a0_test.cpp'
         PassPattern = '008e16a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007b0360'
+        Module = 'CTCFishingSpot'
+        Source = '00/7b/CTCFishingSpot_FrameUpdate_007b0360.cpp'
+        TestSource = '00/7b/CTCFishingSpot_FrameUpdate_007b0360_test.cpp'
+        PassPattern = '007b0360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b7040'
+        Module = 'CCreatureAction_JumpOutFromCover'
+        Source = '00/8b/CCreatureActionJumpOutFromCover_Initialise_008b7040.cpp'
+        TestSource = '00/8b/CCreatureActionJumpOutFromCover_Initialise_008b7040_test.cpp'
+        PassPattern = '008b7040_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

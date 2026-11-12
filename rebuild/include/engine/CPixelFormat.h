@@ -20,6 +20,16 @@ public:
  // the landed bound spelling). Declaration only; the FABLE_RETAIL_CPIXELFORMAT_CONVERT branch keeps the inline body.
  unsigned long GetByteColourDepth() const;                      // 0x009E3800
 #endif
+#ifdef FABLE_RETAIL_CPIXELFORMAT_INIT
+ // Retail opt-in (chunk Q20, row 0x009FB750 CTexture::LoadFromDataStreamToPreallocatedSurface): Ego_r.pdb
+ // ?Initialise@CPixelFormat@@QAEXABVCPixelFormatInit@@@Z (retail 0x009E3640, from the texture file's 6-byte CPixelFormatInit) and
+ // ?IsCompressed@CPixelFormat@@QBE_NXZ (retail 0x009E3940), both out of line. Declarations only: no layout change.
+ // FableWin.pdb ??0CPixelFormat@@QAE@ABVCPixelFormatInit@@@Z (debug copy 0x03087A20, 28 bytes: Initialise only, no -1 store;
+ // inline in release: 0x009FB7B5 pushes the init and calls Initialise on the uninitialised local).
+ CPixelFormat(const class CPixelFormatInit& init) { Initialise(init); }
+ void Initialise(const class CPixelFormatInit& init);           // 0x009E3640
+ bool IsCompressed() const;                                     // 0x009E3940
+#endif
 #ifdef FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
  unsigned long GetColourDepth()const;
 #endif

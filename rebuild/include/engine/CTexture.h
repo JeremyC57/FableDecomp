@@ -34,6 +34,11 @@ public:
     class CSurfaceLockedRect Lock(unsigned long level, unsigned long flags);   // 0x009FA450
     void Unlock(unsigned long level);                                    // 0x009F9DE0
 #endif
+#ifdef FABLE_RETAIL_CTEXTURE_LOADFROMDATASTREAM
+    // Retail opt-in (chunk Q20, row 0x009FB750): Ego_r.pdb ?LoadFromDataStreamToPreallocatedSurface@CTexture@@QAEXAAVCDataInputStream@@@Z
+    // (public, `ret 4`). Declaration only: no layout change.
+    void LoadFromDataStreamToPreallocatedSurface(class CDataInputStream& in);   // 0x009FB750
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_SIZED
     // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb
     // ??0CTexture@@QAE@ABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@@Z, inline in retail (0x00AB95A2: the +4 word's top

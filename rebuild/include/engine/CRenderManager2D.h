@@ -89,6 +89,15 @@ private:
     void Add2DLine(const CTVertexRHWColSpecTex1&,const CTVertexRHWColSpecTex1&,long,CTexture*);   // 0x009DC2C0
 public:
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DBOXWITHZ
+    // Retail opt-in (chunk Q20, row 0x009DDC60): Ego_r.pdb / FableWin.pdb ?Draw2DBoxWithZ@CRenderManager2D@@QAE_NABVC2DBoxF@@MABVCRGBColour@@K@Z
+    // (public, `ret 10h`) and the private ?Add2DTri@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z it queues the
+    // two triangles with (retail 0x009DC030, landed). Declarations only: no layout change.
+    bool Draw2DBoxWithZ(const C2DBoxF&,float,const CRGBColour&,unsigned long);   // 0x009DDC60
+private:
+    void Add2DTri(const CTVertexRHWColSpecTex1&,const CTVertexRHWColSpecTex1&,const CTVertexRHWColSpecTex1&,long,CTexture*);   // 0x009DC030
+public:
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D_VIEWPORTBOXFLOAT
     // Retail opt-in (chunk 784, row 0x00BC6DB0 CEnginePrimitiveManagerText::RenderSubPrimitive): the out-of-line viewport box getter
     // 0x00A0AAA0 (`ret`, returns the address of the float viewport box), called on NEngineInternal::GPRenderManager (0x01436E18) there and

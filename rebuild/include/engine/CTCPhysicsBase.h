@@ -281,6 +281,13 @@ protected:
     CWorldMap& GetWorldMap();                                          // 0x006AF620
     const CWorldMap& GetWorldMap() const;                              // 0x006AF630
 #endif
+#if defined(FABLE_RETAIL_CTCPHYSICSBASE_SETVELOCITY_OUTOFLINE) && !(defined(FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING) && defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION))
+    // Retail opt-in (chunk Q20, rows 0x007BCF7F / 0x007BD845 InitMovement): Ego_r.pdb ?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+    // called out of line there (0x007BD188 `call 0x0066F9B0`, the landed body: store Velocity, then SetAsMoving(true)). Declaration
+    // only; the inline body under SETASMOVING + CTCSHOTDEFINITIONBASE_COLLISION is the 0x007C1000 TU's.
+public:
+    void SetVelocity(const C3DVector& velocity);                       // 0x0066F9B0
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_APPLYACCELERATION
     // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
     // (retail 0x006B0210, non-virtual). Declaration only: no layout change.

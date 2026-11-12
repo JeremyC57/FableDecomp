@@ -1,0 +1,37 @@
+# date	address	source/variant	result	note
+2026-11-12 04:0x	007b0360	differ draft (baseline)	DIFFER(773v773)	parked esi/ebx swap in blocks 2-3
+2026-11-12 04:03	007b0360	work/007b0360.cpp (shared-header port, FABLE_FORCEINLINE member helper)	RELOCATION_MATCH	
+2026-11-12 04:05	009ddc60	work/009ddc60.cpp (port, out-of-class inline SetRHWFromZ)	DIFFER(473v899)	SetRHWFromZ not inlined
+2026-11-12 04:06	009ddc60	FABLE_FORCEINLINE SetRHWFromZ	DIFFER(899v899)	top/right slot swap
+2026-11-12 04:06	009ddc60	C2DBoxF screen copy	DIFFER(918v899)	worse
+2026-11-12 04:06	009ddc60	plain order (v1)	DIFFER(899v899)	kept as best
+2026-11-12 04:06	009ddc60	all-from-box locals	DIFFER(918v899)	worse
+2026-11-12 04:10	008b7040	work/008b7040.cpp (port)	SRC_FAIL	C2666 fmod overloads
+2026-11-12 04:10	008b7040	math.h + double casts	DIFFER(770v770)	ebp/ebx swap gone; Normalise load order
+2026-11-12 04:10	008b7040	NORMALISE_LOCALS variant	DIFFER(768v770)	
+2026-11-12 04:11	008b7040	return *this*=	SRC_FAIL	C2440 operator*= returns const
+2026-11-12 04:11	008b7040	inline normalise of toTarget	DIFFER(768v770)	
+2026-11-12 04:11	008b7040	overlay NORMALISE_LOCALS_XYZ	DIFFER(770v770)	fst/fmulp vs fstp/fmul on toTarget
+2026-11-12 04:12	008b7040	named one_on_magnitude + *=	RELOCATION_MATCH	
+2026-11-12 04:15	007bcf7f	work/007bcf7f.cpp (port)	SRC_FAIL	C2535 AccurateNormalise redeclared; C2248 private AccuracyPercentage/PShotDef
+2026-11-12 04:16	007bcf7f	SHOTACCESSORS overlay	SRC_FAIL	C2039 GetPDefFromGlobalIndex (needs CDEFINITIONMANAGER/CRESOURCELIST)
+2026-11-12 04:16	007bcf7f	+ defs	DIFFER(831v808)	
+2026-11-12 04:17	007bcf7f	v3 (GETSUBDEF_NOINLINE, MAGNITUDE_SQRTF)	DIFFER(808v808)	FP operand order + slot packing
+2026-11-12 04:18	007bd845	work/007bd845.cpp (port)	DIFFER(642v642)	
+2026-11-12 04:19	007bd845	ACCURATE_MAGNITUDE	DIFFER(642v642)	no change
+2026-11-12 04:19	007bd845	magnitude before dir	DIFFER(656v642)	worse
+2026-11-12 04:20	007bd845	unnamed velocity temp	DIFFER(642v642)	randomise slot fixed, frame 0x50 (reverted)
+2026-11-12 04:22	009fb750	work/009fb750.cpp (port)	SRC_FAIL	C2039 member missing -> LOADFROMDATASTREAM opt-in
+2026-11-12 04:22	009fb750	+ opt-in	DIFFER(805v789)	default CPixelFormat ctor stores -1
+2026-11-12 04:22	009fb750	CPIXELFORMAT_INIT ctor	DIFFER(789v789)	ebx/ebp swap
+2026-11-12 04:23	009fb750	height*rowBytes inline (best)	DIFFER(789v789)	ebx/ebp fixed; width hoist + eax/edx
+2026-11-12 04:23	009fb750	no width local	DIFFER(789v789)	worse
+2026-11-12 04:23	009fb750	src/dst declaration swap	DIFFER(789v789)	worse
+2026-11-12 04:24	009fb750	row<height loop	DIFFER(799v789)	worse
+2026-11-12 04:26	009ddc60	C2DBoxF member-wise struct local	DIFFER(902v899)	slot order right, frame 0x94 v 0x90
+2026-11-12 04:28	007b0360	final verify	RELOCATION_MATCH	
+2026-11-12 04:28	008b7040	final verify	RELOCATION_MATCH	
+2026-11-12 04:28	009ddc60	final verify (v1)	DIFFER(899v899)	12 lines
+2026-11-12 04:28	007bcf7f	final verify (v3)	DIFFER(808v808)	90 lines
+2026-11-12 04:28	007bd845	final verify	DIFFER(642v642)	28 lines
+2026-11-12 04:28	009fb750	final verify (best)	DIFFER(789v789)	14 lines
