@@ -8,10 +8,14 @@ length, residue_class, pending; args.scratch = $S; the copy first run on 2026-11
    runs out, a fresh agent continues with its notes (up to 3 per row); a row is never dropped silently.
 3. **Verify** (Opus, two independent lenses): mechanical (strict regrade, VC7.1 test, purity, local models, stand-in bodies, overlay,
    formats, reserved rows) and evidence (name from two sources, callee spellings, a test that can fail, faithfulness).
-4. **Repair** (Fable since 2026-11-12, when the owner lifted the Fable usage block; Opus before) once, then re-verify.
+4. **Repair** (Opus) once, then re-verify.
 The coordinator still lands (three-way header merge, vland --land, records): the workflow only produces verified hand-backs.
 
-Model rule (owner, 2026-11-12): workflow agents are Opus 5.5 unless Fable 5.2 is needed; authoring is the stage that needs Fable.
+Model rule (owner, 2026-11-12, latest): every workflow launched from now on is Opus 5.5 ONLY -- scout, author, verify, repair, naming.
+No Fable unless absolutely necessary: `author_rows.js` takes `args.authorModel = 'fable'` for that case, and the coordinator sets it
+only for rows that Opus authors could not match after their three attempts, row by row, and says so in the batch README.
+(History: wf1..wf9 ran with Fable authors -- 62 of 62 rows matched in wf1..wf6. Workflows already running when the rule changed
+were left to finish; wf10 was restarted on Opus.)
 Before a run: put each row's draft in `$S/w22/<wf>/<addr>/differ/<addr>.cpp`, cut the oracle with chunk_pool/oracle_from_exe.py,
 copy `WF_BRIEF.md` to `$S/w22/WF_BRIEF.md` and lane_tools/fast/*.py to `$S/tools/`. Concurrency is capped at CPUs - 2.
 

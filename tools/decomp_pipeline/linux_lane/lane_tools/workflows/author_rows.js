@@ -3,15 +3,18 @@ export const meta = {
   description: 'Byte-match ten parked rows: scout identities, author each row until it matches (fresh agent with notes if needed), verify with two independent lenses, repair once',
   phases: [
     { title: 'Scout', detail: 'prove each row\'s name, signature, callees and visible callee bodies', model: 'opus' },
-    { title: 'Author', detail: 'rapid-fire port + grade until the row matches (up to 3 agents per row, notes carried over)', model: 'fable' },
+    { title: 'Author', detail: 'rapid-fire port + grade until the row matches (up to 3 agents per row, notes carried over)', model: 'opus' },
     { title: 'Verify', detail: 'mechanical lens + evidence lens on every matched row', model: 'opus' },
-    { title: 'Repair', detail: 'fix verifier findings while keeping the match, then re-verify', model: 'fable' },
+    { title: 'Repair', detail: 'fix verifier findings while keeping the match, then re-verify', model: 'opus' },
   ],
 }
 
 const S = args.scratch   // the lane scratch directory ($S)
 const WF = args.wf   // the run's directory name under $S/w22 (e.g. 'wf2')
 const ROWS = args.rows
+// Owner rule (2026-11-12, latest): every stage runs on Opus. Pass args.authorModel = 'fable' ONLY for rows that Opus authors could
+// not match after their three attempts (the 'absolutely necessary' case); the coordinator decides that per row, never by default.
+const AUTHOR_MODEL = args.authorModel === 'fable' ? 'fable' : 'opus'
 const MAX_ATTEMPTS = 3
 const ENV = `Start EVERY Bash call with exactly:\n  export S=${S}; source $S/wine/env.sh >/dev/null 2>&1; export S; export W=$S/w22/${WF}/ADDR; cd /home/user/FableDecomp\n(with ADDR replaced by your row's 8-hex address). Every Bash call must exit 0 (end pipelines with \`; true\`) and must not print a Python traceback. The repo /home/user/FableDecomp is READ-ONLY for you: never run git, never write under it, never land anything. Write only under $W.`
 
@@ -109,7 +112,7 @@ const results = await pipeline(
   async (prev, r) => {
     const history = []
     for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-      const a = await agent(authorPrompt(r, attempt, history), { label: `author:${r.addr}#${attempt}`, phase: 'Author', schema: AUTHOR_SCHEMA, model: 'fable' })
+      const a = await agent(authorPrompt(r, attempt, history), { label: `author:${r.addr}#${attempt}`, phase: 'Author', schema: AUTHOR_SCHEMA, model: AUTHOR_MODEL })
       if (!a) { history.push({ grade: 'agent did not finish', residue: 'unknown (read $W/NOTES.md and ATTEMPTS.log)', ideas_tried: 'see ATTEMPTS.log', next_idea: 'see NOTES.md' }); continue }
       if (a.status === 'MATCH') return { scout: prev && prev.scout, author: a, attempts: attempt, history }
       history.push(a)
@@ -124,7 +127,7 @@ const results = await pipeline(
     let issues = await verifyBoth(r, a, 1)
     if (issues.length) {
       log(`${r.addr}: verifiers raised ${issues.length} issue(s) -- repairing`)
-      const fixed = await agent(repairPrompt(r, a, issues), { label: `repair:${r.addr}`, phase: 'Repair', schema: AUTHOR_SCHEMA, model: 'fable' })
+      const fixed = await agent(repairPrompt(r, a, issues), { label: `repair:${r.addr}`, phase: 'Repair', schema: AUTHOR_SCHEMA, model: AUTHOR_MODEL })
       if (fixed && fixed.status === 'MATCH') {
         a = Object.assign({}, a, fixed)
         issues = await verifyBoth(r, a, 2)

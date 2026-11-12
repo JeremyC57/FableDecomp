@@ -15,8 +15,8 @@ compiles under VC7.1 to the retail bytes (MATCH / RELOCATION_MATCH), with a beha
 names. One row is worked until it matches; rows are never dropped silently.
 
 ## Roles and models (owner rule)
-- Workflow agents are Opus unless Fable is needed. Authoring and row repair need Fable (`model: 'fable'`: both edit code that must
-  keep or reach a byte match); scouts, verifiers and naming agents are Opus (a different model also gives a more independent read).
+- Every workflow agent is Opus (scout, author, verify, repair, naming). No Fable unless absolutely necessary: `author_rows.js`
+  accepts `args.authorModel = 'fable'`, to be used only for rows that Opus authors could not match after their three attempts.
 - Agents never run git, never write under the repo, never land. They work in `$S/w22/<wf>/<addr>/` (S = your scratchpad).
 - Every Bash call (yours and theirs) exits 0 (`; true`); never pipe a grader into `head` (redirect to a file).
 
@@ -41,14 +41,14 @@ names. One row is worked until it matches; rows are never dropped silently.
 Per row, as a pipeline (no barrier between rows):
 1. **Scout (Opus):** proves name, signature, callees, member offsets, which callee BODIES retail's compiler could see, sibling
    landed rows -> `DOSSIER.md`. No compiles.
-2. **Author (Fable, rapid fire):** starts from `differ/<addr>.cpp`, ports the draft onto the shared headers (opt-ins in an overlay
+2. **Author (Opus, rapid fire):** starts from `differ/<addr>.cpp`, ports the draft onto the shared headers (opt-ins in an overlay
    copy under `hdr/`), and grades with `fg.py` on every tool call (up to three variants per call) until the row matches; writes the
    test (`vt.py` must PASS) and registers with `addmatch.py`. If its budget runs out a fresh author continues from its notes (up
    to three). No grade limit; no switching rows.
 3. **Verify (two independent Opus lenses):** mechanical (strict regrade, VC7.1 test, purity, local models, stand-in bodies,
    overlay = repo header + additions, reserved rows) and evidence (name from two sources, callee spellings against relocation
    targets, a test that can fail, faithful claims).
-4. **Repair (Fable) once**, then re-verify. Result per row: VERIFIED, MATCH_WITH_OPEN_ISSUES, DIFFER or PIPELINE_ERROR.
+4. **Repair (Opus) once**, then re-verify. Result per row: VERIFIED, MATCH_WITH_OPEN_ISSUES, DIFFER or PIPELINE_ERROR.
 
 Launch one: `python3 $S/tools/prep_wf.py <wfN> 10` (cuts the next ten pool rows into `$S/w22/<wfN>/<addr>/`), then
 `python3 $L/chunk_pool/oracle_from_exe.py $S/w22/<wfN>/rows.tsv <wfN>` and write each row's line to `<addr>/oracle.tsv` (scratch
@@ -69,7 +69,7 @@ and about 50 agents. Start the next workflow as soon as one finishes.
 3. Decide per row:
    - VERIFIED and scans clean -> land.
    - Small open issue (a comment claim, an unexplained specifier, a missing "descriptive name" note) -> fix it in the payload, regrade.
-   - Real issue (signature against the PDB, test edits the body under test) -> send the row back: one Fable repair agent with the
+   - Real issue (signature against the PDB, test edits the body under test) -> send the row back: one Opus repair agent with the
      exact findings, then two fresh Opus verifiers (evidence lens + an adversarial lens on any new claim), then land.
    - Matches only with another function's UNPROVEN body visible -> hold it back (never a stand-in body), put that callee into the
      next workflow, and when it lands regrade the held row with the landed row's real body copied verbatim.
