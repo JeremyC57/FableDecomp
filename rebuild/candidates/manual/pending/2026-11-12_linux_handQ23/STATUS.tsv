@@ -1,0 +1,7 @@
+address	name	grade	grades_used	note
+006c1250	CTCBuyableHouse::FrameUpdate	RELOCATION_MATCH	4	ported onto shared headers; HasTC forceinline opt-in + PeekVillagePeople const_iterators (grade 4 = final strict-header regrade)
+0063f7c0	CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>,CThingFindNavigationLayerAt>	DIFFER(785v785)	2	ported onto shared headers; one residue: post-node-loop reload order (TLX first in retail), same as Q19 twin 0x008780D0; 20 toy spellings tried
+00a1d290	CNavigatorAStar::CalculateRoute	DIFFER(not regraded)	0	not ported: needs CAStarState/CPriorityQueue/CNavigatorQueueManager shared models; budget
+00814260	CTCBoastingPodium::OnInitialActivate	RELOCATION_MATCH	4	ported; GetParentThing() (not ParentThing) fixed register rotation (grade 4 = final strict-header regrade)
+00584b86	CTCInventory::AssignThingPC	DIFFER(not regraded)	0	not ported: budget
+00622a00	CTCInventoryQuests::OpenInventory	DIFFER(not regraded)	0	not ported: budget

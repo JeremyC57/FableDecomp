@@ -74,3 +74,11 @@
 - (agentFAM10, 2026-11-12) The CCountedPointer<T>::DeleteData identity comes from the `mov [eax+4], addr` in Reset/ctor, and FableWin.pdb has an exact Reset(T*) name to cross-check it.
 - (agentFAM10, 2026-11-12) Old catalog tests that model a stand-in still pass when the row is renamed, so only change the test when the behaviour model is wrong.
 - (landing do, 2026-11-12) A shared-header DEFAULT change is allowed only with every landed includer (transitively) rechecked in the same landing: collect them by following #include chains from the header, add them to the recheck payload (mk_recheck_payload.py covers only changed files).
+- (chunk Q23, 2026-11-12) HasTC in a large function: plain inline materialises the bitset test into a stack byte once the inline budget is spent; retail tests in place -> FABLE_FORCEINLINE opt-in (FABLE_RETAIL_CTHING_HASTC_FORCEINLINE).
+- (chunk Q23, 2026-11-12) STLport list: non-const iterator has a user copy ctor (args built in their stack slots); const_iterator copies trivially (plain pushes). Reach the const list via the PDB's const Peek accessor (PeekVillagePeople() const).
+- (chunk Q23, 2026-11-12) A by-value return used as a temporary (GetPhysicsMeshObject().X()) vs a named local moves the destructor and argument order; retail matched the named local.
+- (chunk Q23, 2026-11-12) Empty cell-box test: `TLX==BRX || TLY==BRY` (edge compare) not `width==0` -- the difference form keeps the width live via CSE.
+- (chunk Q23, 2026-11-12) GetParentThing() vs the raw ParentThing member changes VC7.1 scheduling / register rotation: 00814260's whole 839v839 residue went away with GetParentThing().
+- (chunk Q23, 2026-11-12) Toy compiles (asm listing of one PROC, no grade spent) are the cheap way to sweep spellings for a register/scheduling residue.
+- (chunk Q23, 2026-11-12) The ForEachInRoughArea post-node-loop reload order (retail TLX,BRX,BRY,map; ours BRX,BRY,map,TLX) survived 20 spellings here and on Q19's twin 0x008780D0: likely needs the real CThingSearchTools body/inline structure, not a local spelling.
+- (chunk Q23, 2026-11-12) Every ForEachInRoughArea instance in Ego_r/FableWin is QBE with `const Proc&`; finders keep running state in mutable members.

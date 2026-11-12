@@ -1,0 +1,8 @@
+- HasTC in a large function: plain inline materialises the bitset test into a stack byte once the inline budget is spent; retail tests in place -> FABLE_FORCEINLINE opt-in (FABLE_RETAIL_CTHING_HASTC_FORCEINLINE).
+- STLport list: non-const iterator has a user copy ctor (args built in their stack slots); const_iterator copies trivially (plain pushes). Reach the const list via the PDB's const Peek accessor (PeekVillagePeople() const).
+- A by-value return used as a temporary (GetPhysicsMeshObject().X()) vs a named local moves the destructor and argument order; retail matched the named local.
+- Empty cell-box test: `TLX==BRX || TLY==BRY` (edge compare) not `width==0` -- the difference form keeps the width live via CSE.
+- GetParentThing() vs the raw ParentThing member changes VC7.1 scheduling / register rotation: 00814260's whole 839v839 residue went away with GetParentThing().
+- Toy compiles (asm listing of one PROC, no grade spent) are the cheap way to sweep spellings for a register/scheduling residue.
+- The ForEachInRoughArea post-node-loop reload order (retail TLX,BRX,BRY,map; ours BRX,BRY,map,TLX) survived 20 spellings here and on Q19's twin 0x008780D0: likely needs the real CThingSearchTools body/inline structure, not a local spelling.
+- Every ForEachInRoughArea instance in Ego_r/FableWin is QBE with `const Proc&`; finders keep running state in mutable members.

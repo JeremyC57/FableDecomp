@@ -51,6 +51,11 @@ public:
     CThingPhysical(unsigned long type);                                  // 0x005296B0
 #endif
     const C3DVector& PeekPos() const;
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_STATTYPEFLAGS
+    // Retail opt-in (chunk Q23, row 0x0063F7C0 ForEachInRoughArea<CThingPhysical, ...>): FableWin.pdb ?StatGetTypeFlags@CThingPhysical@@SIKXZ
+    // (static fastcall), inline in retail: the rough-area scan's type test `and edx,3 ; cmp dl,3` (0x0063F92B). Body only.
+    static unsigned long FABLE_FASTCALL StatGetTypeFlags() { return 3; }
+#endif
     float GetHealth() const { return Health; }
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_MAXHEALTH
     float GetMaxHealth()const{return MaxHealth;}

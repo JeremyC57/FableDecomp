@@ -215,6 +215,13 @@ public:
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& orientation,
                         float scale) const;                  // 0x004C08C0
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_DUMMYOBJECTNAMES
+    // Retail opt-in (chunk Q23, row 0x00814260 CTCBoastingPodium::OnInitialActivate): Ego_r.pdb
+    // ?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z,
+    // out of line in retail at 0x004BDB40 (catalog name agrees; `lea ecx,[names] ; push ecx ; mov ecx,appearance ; call`). Needs
+    // std::vector (stlport/fable_containers.h) and CCharString at the point of use. Declaration only: no layout change.
+    void GetAllDummyObjectNames(std::vector<CCharString>& names) const;   // 0x004BDB40
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCALPOS
     // Nested opt-in (chunk 768, row 0x00753380 CTCLook::FrameUpdateHeadInterested): Ego_r.pdb / FableWin.pdb
     // ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z (out of line, retail 0x004C11D0). Declaration only.

@@ -38707,3 +38707,14 @@ _NAV_QUAD_TREE_FILE_VERSION	0129dcc8	00a78b20
 ?GetExpressionsListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z	005f4c8f	005f519f
 ?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z	005eeff2	005f519f
 ?push_back@?$list@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXABVCWideString@@@Z	005f8f6f	005f519f
+??$count_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@VHasBuildingAsHomeOrWork@@@std@@YGJU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@0VHasBuildingAsHomeOrWork@@@Z	006600ec	006c1250
+?CreateDressingSignPost@CTCBuyableHouse@@AAEXXZ	006c0f70	006c1250
+?CreateRentMoney@CTCBuyableHouse@@AAEXXZ	006c0c90	006c1250
+?Pause@CSubtitleRenderer@@QAEX_N@Z	0048dd94	006c1250
+?SetupDressingAtLevel@CTCBuyableHouse@@QAEXJ@Z	006c0330	006c1250
+??$sort@PAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@std@@YIXPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@0@0V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@Z	006a3f20	00814260
+?BOASTING_DRUM_DEF_NAME@?A0xa774ebe1@@3VCCharString@@B	013baf28	00814260
+?BOASTING_POSITION_NAME_PREFIX@?A0xa774ebe1@@3VCCharString@@B	013baf24	00814260
+?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	004bdb40	00814260
+?SetBoastingPodium@CTCBoastingPosition@@QAEXAAVCThing@@@Z	008147d0	00814260
+?push_back@?$vector@U?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@V?$allocator@U?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@@2@@std@@QAEXABU?$pair@JV?$CIntelligentPointer@VCThing@@@@@2@@Z	006a3cd0	00814260

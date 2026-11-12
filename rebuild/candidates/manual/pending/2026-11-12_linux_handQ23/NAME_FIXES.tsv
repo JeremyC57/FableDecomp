@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+008147d0	?SetBoastingPodium@CTCBoastingPosition@@QAEXAAVCThing@@@Z	FableWin.pdb signature; body assigns a CIntelligentPointer<CThing> of the arg into PBoastingPodium +0x0C; called on the TCI_BOASTING_POSITION component from CTCBoastingPodium::OnInitialActivate at 0x00814482	_unattributed::AssignTarget_008147d0 (landed file unattributed_AssignTarget008147d0_008147d0.cpp)
+006c1250	?FrameUpdate@CTCBuyableHouse@@UAEXXZ	Ego_r.pdb + FableWin.pdb; CTCBase vtable slot 9 = FrameUpdate (CTCBuyableHouse vtable 0x0125D6A4)	CTCBuyableHouse::Update (batch), CTCBuyableHouse::vfunc_9 (catalog); nothing landed uses either
+00a12890	?IsPointContainedInBoundingBox@CPhysicsMeshObject@@QBE_NABVC3DVector@@@Z	Ego_r.pdb; call on a GetPhysicsMeshObject temporary at 0x0063F9A4	CMainGameComponent::BeginInputLoading (propagated catalog label)

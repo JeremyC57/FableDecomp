@@ -260,7 +260,56 @@ public:
     template<class T,class Container,class Filter>
     void GetAllThingsInRoughArea(const C2DBoxI&,const Filter&,Container&) const;
 #endif
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_BODY) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
+    // Retail opt-in (chunk Q23, row 0x0063F7C0, the CFilter_Bind3<CThingFilter_IsNot, CThingFilter_HasNavigationInformation,
+    // CThingFilter_OverlappingBoundingBox> / CThingFindNavigationLayerAt instance): the ForEachInRoughArea<T,Filter,Proc> body with the
+    // PDB signature -- every Ego_r.pdb / FableWin.pdb instance (the Bind2 / Bind3 navigation-layer pair, the FrameUpdateThing and
+    // CThingFindHeightZBelowAt ones) is QBE and takes the functor as `const Proc&` (ABV), unlike the declaration below. The scan is the
+    // GetAllThingsInRoughArea body of FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA (needed: the search statics and
+    // GetAllThingMapsInArea; and CLIPAREA, CTCMAPWHO_SEARCHID, T::StatGetTypeFlags at the point of instantiation), with the map loop's end
+    // read from the member (0x0063F811 `cmp esi,[ebp+10h]`, as ROUGHAREA_THISEND) and the inline PeekCell (FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE),
+    // calling proc on each filtered thing and returning whether any call returned true (retail: `mov byte ptr [esp+13h],1`). The empty
+    // cell-box test compares the edges (`cmp edx,esi ; je`, 0x0063F88A): the difference form keeps the width live for the x loop.
+    template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,const Proc& proc) const {
+        bool result=false;
+        std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+        GetAllThingMapsInArea(area,maps);
+        ++NoLookups;
+        NoThingsScanned=0;
+        ++SearchID;
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=AreaMaps.end();++it) {
+            const NThingMap::CThingMap& map=**it;
+            C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+            for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
+                long shift=NThingMap::LayerInfo[layer].ScaleShift;
+                C2DBoxI cells;
+                cells.TLX=local.TLX>>shift;
+                cells.TLY=local.TLY>>shift;
+                cells.BRX=((local.BRX-1)>>shift)+1;
+                cells.BRY=((local.BRY-1)>>shift)+1;
+                if(cells.TLX==cells.BRX || cells.TLY==cells.BRY)
+                    continue;
+                for(long y=cells.TLY;y<cells.BRY;++y) {
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+                    for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
+                        for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
+                            CTCMapwho* who=node->PMapwho;
+                            if(who->GetSearchID()<SearchID) {
+                                who->SetSearchID(SearchID);
+                                CThing& thing=who->GetParentThing();
+                                unsigned long mask=T::StatGetTypeFlags();
+                                if((thing.GetTypeFlags()&mask)==mask && filter(static_cast<const T&>(thing)) && proc(thing))
+                                    result=true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        maps.clear();
+        return result;
+    }
+#elif defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA)
     // Chunk 847 (row 0x0063E590 CWorldMap::GetNavigationLayerAt): Ego_r.pdb ??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@
     // VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@
     // QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@...@@AAVCThingFindNavigationLayerAt@@@Z and the CFilter_Bind3<CThingFilter_IsNot, ...> twin

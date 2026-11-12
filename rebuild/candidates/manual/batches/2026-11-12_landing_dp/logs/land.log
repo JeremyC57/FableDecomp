@@ -1,0 +1,13 @@
+addr       parity           behav  name
+006c1250   RELOCATION_MATCH PASS   FrameUpdate
+00814260   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00814260   WARN RELOC_NAME: ?SetBoastingPodium@CTCBoastingPosition@@QAEXAAVCThing@@@Z -> 008147d0 labelled '_unattributed::AssignTarget_008147d0'
+00814260   RELOCATION_MATCH PASS   OnInitialActivate
+
+WINS: 2
+  006c1250 RELOCATION_MATCH CTCBuyableHouse::FrameUpdate
+  00814260 RELOCATION_MATCH CTCBoastingPodium::OnInitialActivate
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCBuyableHouse_FrameUpdate_006c1250
+  CTCBoastingPodium_OnInitialActivate_00814260

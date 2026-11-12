@@ -393348,6 +393348,20 @@ $catalog = @(
         TestSource = '00/a7/CNavQuadTree_SaveToFile_00a78b20_test.cpp'
         PassPattern = '00a78b20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006c1250'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_FrameUpdate_006c1250.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_FrameUpdate_006c1250_test.cpp'
+        PassPattern = '006c1250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00814260'
+        Module = 'CTCBoastingPodium'
+        Source = '00/81/CTCBoastingPodium_OnInitialActivate_00814260.cpp'
+        TestSource = '00/81/CTCBoastingPodium_OnInitialActivate_00814260_test.cpp'
+        PassPattern = '00814260_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -68,6 +68,14 @@ public:
     CThingAICreature* GetGuardFollowingPlayer() { return reinterpret_cast<CIntelligentPointer<CThingAICreature>*>(GuardFollowingPlayer)->Get(); }
 #endif
     FABLE_FORCEINLINE CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+#ifdef FABLE_RETAIL_CTCVILLAGE_PEEKVILLAGEPEOPLE
+    // Retail opt-in (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate, expanding IsHouseBeingUsed): FableWin.pdb
+    // ?PeekVillagePeople@CTCVillage@@QBEABV?$list@V?$CIntelligentPointer@VCThingAICreature@@@@...@std@@XZ (inline in Ego_r and retail:
+    // the caller reads the list's node word +0x2C in place, 0x006C1443). Its const_iterators are what retail passes to count_if (the
+    // const iterator's copy is trivial, so the arguments are plain pushes; the non-const iterator's user copy constructor builds them
+    // in their stack slots). No layout change.
+    const std::list<CIntelligentPointer<CThingAICreature> >& PeekVillagePeople() const { return VillagePeople; }
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_BRIBE
     // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?GetCostToBribe@CTCVillage@@QAEJXZ, out of line in retail (0x006588CF:
     // `mov eax,[ecx+94h] ; mov eax,[eax+0F8h] ; ret`, PDef's CVillageDef::BribeCost; landed as _global::GetMember_dword0x94_deref0xf8).

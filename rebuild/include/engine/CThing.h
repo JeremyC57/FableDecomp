@@ -297,7 +297,13 @@ public:
     // Native0076efeb and0076f1d6 materialise the component-presence boolean.
     bool HasTC(ETCInterfaceType type) const { const bool& found=UsingComponents.test(type); return found; }
 #else
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CTHING_HASTC_FORCEINLINE)
+    // FABLE_RETAIL_CTHING_HASTC_FORCEINLINE (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate): the same __forceinline HasTC
+    // under its own opt-in name. Retail tests the UsingComponents word in place in that large function (`test dword ptr [eax+28h],
+    // 80000h` TCI_SHOP, `mov ecx,[eax+34h] ; test ch,8` TCI_TAVERN, `test byte ptr [eax+24h],8` TCI_VILLAGE_MEMBER at 0x006C130C ..
+    // 0x006C1409); plain inline leaves the test() result materialised in a stack byte (`shr ; and cl,1 ; mov [esp+0Bh],cl`) once the
+    // function's inline budget is spent. Like GetTC<T> / PeekTC<T> (owner decision 2026-11-01): no out-of-line copy in Ego_r.pdb or
+    // Fable.exe. No layout change.
     FABLE_FORCEINLINE
 #endif
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }

@@ -49,6 +49,14 @@ public:
     C3DVector GetBoundingBoxXEdge() const;
     C3DVector GetBoundingBoxYEdge() const;
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVIGATION
+    // Retail opt-in (chunk Q23, row 0x0063F7C0 ForEachInRoughArea<CThingPhysical, CFilter_Bind3<...>, CThingFindNavigationLayerAt>):
+    // Ego_r.pdb ?GetNavigationLevelAt@CPhysicsMeshObject@@QBEJABVC3DVector@@@Z and ?IsPointContainedInBoundingBox@CPhysicsMeshObject@@
+    // QBE_NABVC3DVector@@@Z, out of line in retail at 0x00A11D10 / 0x00A12890 (the catalog's CMainGameComponent::BeginInputLoading at
+    // 0x00A12890 is a propagated label; calls at 0x0063F9EB / 0x0063F9A4 on a GetPhysicsMeshObject temporary). Declarations only.
+    long GetNavigationLevelAt(const C3DVector& pos) const;               // 0x00A11D10
+    bool IsPointContainedInBoundingBox(const C3DVector& pos) const;      // 0x00A12890
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_CENTRE
     // Nested opt-in (chunk 760, row 0x00A11AE0): Ego_r.pdb ?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ.
     C3DVector GetBoundingBoxCentre() const;                              // 0x00A11AE0

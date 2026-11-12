@@ -27,6 +27,14 @@ public:
     bool          BoastOn;                                   // +0x2c
     bool          HeroInsideRadius;                          // +0x2d
     unsigned char PParticleEffect[0xa];                      // +0x2e CIntelligentPointer<CThing>
+#ifdef FABLE_RETAIL_CTCBOASTINGPOSITION_SETBOASTINGPODIUM
+    // Retail opt-in (chunk Q23, row 0x00814260 CTCBoastingPodium::OnInitialActivate): FableWin.pdb
+    // ?SetBoastingPodium@CTCBoastingPosition@@QAEXAAVCThing@@@Z, out of line in retail at 0x008147D0 (catalog
+    // `_unattributed::AssignTarget_008147d0`: a CIntelligentPointer<CThing> temporary of the podium assigned into PBoastingPodium +0x0C;
+    // the podium calls it on its TCI_BOASTING_POSITION component, 0x00814482). Declaration only: no layout change.
+public:
+    void SetBoastingPodium(class CThing& podium);            // 0x008147D0
+#endif
 #ifdef FABLE_RETAIL_CTCBOASTINGPOSITION_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
