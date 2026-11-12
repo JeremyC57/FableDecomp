@@ -1,0 +1,17 @@
+address	name	module
+00eb40c0	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoWatchingForTrouble	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin
+00d39960	NScript::CQ_FireHeartScript::StartRound	NScript::CQ_FireHeartScript
+006ec850	CDefendingCombatantInfo::CCombatWheel::Init	CDefendingCombatantInfo::CCombatWheel
+006ec7d0	CDefendingCombatantInfo::CCombatWheel::AddRing	CDefendingCombatantInfo::CCombatWheel
+006e8b60	CDefendingCombatantInfo::CCombatRing::Reset	CDefendingCombatantInfo::CCombatRing
+006ebf70	CDefendingCombatantInfo::CCombatRing::AssignAttackersToRing	CDefendingCombatantInfo::CCombatRing
+00a8ad40	C3DMesh2::LoadBinary	C3DMesh2
+00995b10	CMemoryDataInputStream::ReadCompressed	CMemoryDataInputStream
+0090e5d0	CAIStateGroup_BanditGossip::Update	CAIStateGroup_BanditGossip
+0090ebe0	CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>,CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee> > >	CMessageEventManager
+007304c0	IS_THING_DEAD	global
+006a1540	CTCCarrying::IsThingCarryingWeapon	CTCCarrying
+0062e900	CCombatActionBase::~CCombatActionBase	CCombatActionBase
+0050f410	CIntelligentPointer<CThingAICreature>::CIntelligentPointer<CThingAICreature>	CIntelligentPointer<CThingAICreature>
+01375550	CMainGameComponent::ConstantFPS	CMainGameComponent
+0049d870	CWorld::GetFrame	CWorld

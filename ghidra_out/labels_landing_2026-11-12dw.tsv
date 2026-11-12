@@ -1,0 +1,17 @@
+address	name	evidence
+00EB40C0	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoWatchingForTrouble	chunk Q27 (landing dw): 
+00D39960	NScript::CQ_FireHeartScript::StartRound	chunk Q27 (landing dw): 
+006EC850	CDefendingCombatantInfo::CCombatWheel::Init	chunk Q27 (landing dw): 
+006EC7D0	CDefendingCombatantInfo::CCombatWheel::AddRing	chunk Q27 (landing dw): 
+006E8B60	CDefendingCombatantInfo::CCombatRing::Reset	chunk Q27 (landing dw): 
+006EBF70	CDefendingCombatantInfo::CCombatRing::AssignAttackersToRing	chunk Q27 (landing dw): 
+00A8AD40	C3DMesh2::LoadBinary	chunk Q27 (landing dw): 
+00995B10	CMemoryDataInputStream::ReadCompressed	chunk Q27 (landing dw): 
+0090E5D0	CAIStateGroup_BanditGossip::Update	chunk Q27 (landing dw): 
+0090EBE0	CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>,CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee> > >	chunk Q27 (landing dw): 
+007304C0	IS_THING_DEAD	chunk Q27 (landing dw): 
+006A1540	CTCCarrying::IsThingCarryingWeapon	chunk Q27 (landing dw): 
+0062E900	CCombatActionBase::~CCombatActionBase	chunk Q27 (landing dw): 
+0050F410	CIntelligentPointer<CThingAICreature>::CIntelligentPointer<CThingAICreature>	chunk Q27 (landing dw): 
+01375550	CMainGameComponent::ConstantFPS	chunk Q27 (landing dw): 
+0049D870	CWorld::GetFrame	chunk Q27 (landing dw): 

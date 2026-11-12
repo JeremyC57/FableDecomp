@@ -393418,6 +393418,20 @@ $catalog = @(
         TestSource = '00/84/CCreatureActionPerformExpression_FinishAction_00846dd0_test.cpp'
         PassPattern = '00846dd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00eb40c0'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoWatchingForTrouble_00eb40c0.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoWatchingForTrouble_00eb40c0_test.cpp'
+        PassPattern = '00eb40c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d39960'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_StartRound_00d39960.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_StartRound_00d39960_test.cpp'
+        PassPattern = '00d39960_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

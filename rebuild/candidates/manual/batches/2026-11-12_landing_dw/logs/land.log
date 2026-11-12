@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00eb40c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00eb40c0   RELOCATION_MATCH PASS   DoWatchingForTrouble
+00d39960   RELOCATION_MATCH PASS   StartRound
+
+WINS: 2
+  00eb40c0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoWatchingForTrouble
+  00d39960 RELOCATION_MATCH NScript::CQ_FireHeartScript::StartRound
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoWatchingForTrouble_00eb40c0
+  NScriptCQFireHeartScript_StartRound_00d39960

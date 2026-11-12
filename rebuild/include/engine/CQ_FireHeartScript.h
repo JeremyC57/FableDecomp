@@ -46,6 +46,11 @@ public:
     void PlayCutscene(CCharString);                                      // 0x00D39330
     void StartRound();                                                   // 0x00D39960
     void DisableFollowers();                                             // 0x00D3A050
+#ifdef FABLE_RETAIL_CQ_FIREHEARTSCRIPT_TRIGGERPROPHETCOMMENT
+    // Retail opt-in (chunk Q27, row 0x00D39960 StartRound): Ego_r.pdb / FableWin.pdb
+    // ?TriggerProphetComment@CQ_FireHeartScript@NScript@@QAEXABVCCharString@@@Z, landed row 0x00D38400.
+    void TriggerProphetComment(const CCharString&);                      // 0x00D38400
+#endif
     bool QuestStartScreenShown;                                          // +0x48
     bool MissionSucceeded;                                               // +0x49
     bool MissionFailed;                                                  // +0x4a
