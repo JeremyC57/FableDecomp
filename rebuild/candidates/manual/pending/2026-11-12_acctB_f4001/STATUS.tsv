@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+00ce7670	RELOCATION_MATCH	32057v32057	PASS	14 (g01-g14) + 3 prefix checks (p01-p03)	NScript::CGameflowScript::Main; Flags /d2inlT89690 (Inline-budget, smallest N; T89689 differs at 0x00CEE922); needs the overlay hdr (new engine/CGameflowScript.h, opt-in in engine/CScriptGameResourceObjectBase.h); vland RELOCATION_MATCH PASS

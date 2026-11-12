@@ -1,0 +1,8 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00988020	?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z	Ego_r.pdb + FableWin.pdb (the only spelling in both name sets); engine/CShaderRenderManager.h	?ApplyVertexShader@CShaderRenderManager@@QAEXPAVCVertexShader@@_N@Z (bound by 0x00B5E700); ?ApplyVertexShader@CShaderRenderManager@@QAEXPBVCVertexShader@@J@Z (0x00B54310)
+0x00988140	?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z	Ego_r.pdb + FableWin.pdb; engine/CShaderRenderManager.h	?ApplyPixelShader@CShaderRenderManager@@QAEXPAVCPixelShader@@@Z (0x00B5E700); ?ApplyPixelShader@CShaderRenderManager@@QAEXPBVCPixelShader@@@Z (0x00B54310)
+0x009881F0	?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z	Ego_r.pdb + FableWin.pdb; engine/CShaderRenderManager.h	?SetWorldTransform@CShaderRenderManager@@QAEXPBVCMatrix3x4@@@Z (0x00B67480)
+0x00989B50	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVCRGBFloatColour@@@Z	Ego_r.pdb + FableWin.pdb overload list; this row passes a CRGBFloatColour built from the decal CRGBColour (0x00BB8BB0..0x00BB8BB6)	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKPBVC4DVector@@@Z (0x00B63010)
+0x0098B930	?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z	Ego_r.pdb + FableWin.pdb (private AAE)	?SetVSConstants@CShaderRenderManager@@QAEXJPBXK@Z (0x00B99670)
+0x00989700	?UpdateCameraPos@CShaderRenderManager@@AAEXXZ	Ego_r.pdb + FableWin.pdb; PrepareForRender flags & 4 with UpdateFlags & 8	?UpdateFlag8State@CShaderRenderManager@@QAEXXZ (0x009E1280)
+0x00A0AF40	?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z	Ego_r.pdb + FableWin.pdb; landed self-symbol of 0x00A0AF40	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z (0x00BB8090 RenderMeshDecalStencilClear)

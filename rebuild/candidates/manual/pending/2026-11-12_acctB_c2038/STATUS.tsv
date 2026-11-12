@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+00bb8750	RELOCATION_MATCH	1951v1951	PASS (g++ and VC7.1)	pass1: 4 (passes 2-3 not needed)	matched at grade 3 (v3), grade 4 = the final src file via gall.sh; read-only vland RELOCATION_MATCH + behaviour PASS (only WARN RELOC_NAME on NEngineInternal::GPCamera v label g_pEngineCamera, established spelling); retail_asm grade expected (GFFloatToLongFloor x2 / Ceil x2 via the shared helpers, Retail-asm block + per-site attempts table in the source)
