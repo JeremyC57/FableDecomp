@@ -70,6 +70,11 @@ public:
     bool IsValid() const { return PD3DTexture != 0; }
     IDirect3DTexture9* GetD3DTexture() const { return PD3DTexture; }
     C2DExtentsI GetDimensions(unsigned long mipmapLevel) const;
+#ifdef FABLE_RETAIL_CTEXTURE_GETWIDTH
+    // Retail opt-in (chunk Q32, row 0x009FC950): Ego_r.pdb / FableWin.pdb ?GetWidth@CTexture@@QBEKK@Z, inline in retail (the row calls
+    // GetDimensions 0x009F9DB0 into a frame C2DExtentsI and reads its first word, `mov eax,[eax]`). No layout change.
+    unsigned long GetWidth(unsigned long mipmapLevel) const { return GetDimensions(mipmapLevel).X; }
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_BLTTORENDERTARGET
     // Retail opt-in (chunk 783): Ego_r.pdb 0x00B6A840 ?BltToRenderTargetWithGPU@CTexture@@QBEX_N00@Z = retail 0x009FA780 (`ret 0Ch`).
     void BltToRenderTargetWithGPU(bool fullRenderTarget, bool scaleHalf, bool pointSample) const;   // 0x009FA780

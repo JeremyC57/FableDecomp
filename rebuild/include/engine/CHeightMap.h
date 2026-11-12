@@ -32,6 +32,16 @@ private:
     {
         return Cells[GetIndexIntoCells(pos.X, pos.Y, SizeXIncludingExtraCells, SizeYIncludingExtraCells)];
     }
+#ifdef FABLE_RETAIL_CHEIGHTMAP_GETCELL
+    // Chunk Q28 (row 0x008F70F0, whose TU holds the real body of CMap::ZeroAllUnusedThemePaletteEntries 0x008F6FC0): FableWin.pdb
+    // ?GetCell@CHeightMap@@QAEAAVCHeightMapCell@@ABVC2DCoordI@@@Z (public; no out-of-line copy in Ego_r.pdb or Fable.exe: 0x008F6FC0
+    // expands it as `Cells[(SizeY - y) * (SizeX + 1) + x]`, rows stored top-down). CMap reads SizeX / SizeY in place there although
+    // the PDB accessors GetSizeX / GetSizeY are private: CMap is taken to be a friend (inference from those bytes). No layout change.
+    friend class CMap;
+public:
+    CHeightMapCell& GetCell(const C2DCoordI& pos) { return Cells[(SizeY - pos.Y) * (SizeX + 1) + pos.X]; }
+private:
+#endif
 
     CWorld*                     World;                          // +0x004
     CMap*                       Map;                            // +0x008

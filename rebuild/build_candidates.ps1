@@ -393474,6 +393474,63 @@ $catalog = @(
         TestSource = '00/9d/CBankFileAsyncData_Abort_009d6350_test.cpp'
         PassPattern = '009d6350_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00eb3ba0'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_AttackHero_00eb3ba0.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_AttackHero_00eb3ba0_test.cpp'
+        PassPattern = '00eb3ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd2a90'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitiveAnimatedMesh_InitialiseBoneScalings_00bd2a90.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitiveAnimatedMesh_InitialiseBoneScalings_00bd2a90_test.cpp'
+        PassPattern = '00bd2a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00958b20'
+        Module = 'CAIStateGroup_MinionReactToCrime'
+        Source = '00/95/CAIStateGroupMinionReactToCrime_OnReplace_00958b20.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToCrime_OnReplace_00958b20_test.cpp'
+        PassPattern = '00958b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00465c54'
+        Module = 'CCombatAbilityBlockDefBase'
+        Source = '00/46/CCombatAbilityBlockDefBase_Transfer_00465c54.cpp'
+        TestSource = '00/46/CCombatAbilityBlockDefBase_Transfer_00465c54_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS39'
+        PassPattern = '00465c54_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fc950'
+        Module = 'CGraphicFrameData'
+        Source = '00/9f/CGraphicFrameData_InitialiseAsSurface_009fc950.cpp'
+        TestSource = '00/9f/CGraphicFrameData_InitialiseAsSurface_009fc950_test.cpp'
+        PassPattern = '009fc950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00722740'
+        Module = 'CTCSmokeGenerator'
+        Source = '00/72/CTCSmokeGenerator_FrameUpdate_00722740.cpp'
+        TestSource = '00/72/CTCSmokeGenerator_FrameUpdate_00722740_test.cpp'
+        PassPattern = '00722740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f70f0'
+        Module = 'CMap'
+        Source = '00/8f/CMap_AddThemeDefIndexToPalette_008f70f0.cpp'
+        TestSource = '00/8f/CMap_AddThemeDefIndexToPalette_008f70f0_test.cpp'
+        PassPattern = '008f70f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a69b70'
+        Module = 'CTextureManager'
+        Source = '00/a6/CTextureManager_AllocateTexture_00a69b70.cpp'
+        TestSource = '00/a6/CTextureManager_AllocateTexture_00a69b70_test.cpp'
+        PassPattern = '00a69b70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

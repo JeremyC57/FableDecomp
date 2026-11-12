@@ -9,6 +9,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE
+// Chunk Q28 (row 0x00A69B70 CTextureManager::AllocateTexture): CPreallocTexturePool (Ego_r.pdb 88 bytes with a 16-byte CArray; retail
+// stride 0x54 = `imul eax,eax,54h` at 0x00A69BA2): Count +0x3C, MaxSize +0x40, PoolIndex +0x44, Textures CArray<CIVCountedPointer<
+// CManagedTextureData> > +0x48 (12 bytes); the first 0x3C bytes are unnamed in the PDB extract (opaque). ?Allocate@CPreallocTexturePool@@
+// QAEPAVCManagedTextureData@@XZ is retail 0x00A69830. No shared header for the pool yet.
+class CManagedTexture;class CManagedTextureData;class CManagedTextureOwner;class CPixelFormat;
+class CPreallocTexturePool {
+public:
+    CManagedTextureData* Allocate();                                     // 0x00A69830
+    unsigned char _pad_0x00[0x3c];                                       // +0x00 (unnamed in the PDB extract)
+    unsigned long Count;                                                 // +0x3c
+    unsigned long MaxSize;                                               // +0x40
+    long          PoolIndex;                                             // +0x44
+    unsigned char Textures[0xc];                                         // +0x48 CArray<CIVCountedPointer<CManagedTextureData> >
+};
+#endif
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
 class CGraphicFrame;class CManagedTexture;
@@ -30,10 +46,25 @@ public:
     unsigned char _pad_0x05[0x3];                            // +0x05
     unsigned long PoolCount;                                 // +0x08
     unsigned long PreallocSizes[16];                         // +0x0c
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE
+    CPreallocTexturePool PreallocPools[16];                  // +0x4c
+#else
     unsigned char PreallocPools[0x540];                      // +0x4c CPreallocTexturePool[16]
+#endif
     unsigned long FailedAllocations[16];                     // +0x58c
     long          BufferSize;                                // +0x5cc
     void*         TextureBuffer;                             // +0x5d0
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE
+    // Chunk Q28: Ego_r.pdb / FableWin.pdb ?AllocateTexture@CTextureManager@@QAE_NAAVCManagedTexture@@KKJABVCPixelFormat@@PAVCManagedTextureOwner@@@Z,
+    // ?GetPoolIndex@CTextureManager@@AAEJK@Z (retail 0x00A69730) and ?CalculateTextureSize@CTextureManager@@SIKKK_NABVCPixelFormat@@@Z
+    // (static __fastcall, retail 0x00A698F0). Declarations only.
+    bool AllocateTexture(CManagedTexture& texture, unsigned long width, unsigned long height, long mip_levels, const CPixelFormat& format,
+                         CManagedTextureOwner* owner);               // 0x00A69B70
+    static unsigned long __fastcall CalculateTextureSize(unsigned long width, unsigned long height, bool flag, const CPixelFormat& format);   // 0x00A698F0
+private:
+    long GetPoolIndex(unsigned long size);                           // 0x00A69730
+public:
+#endif
 };
 #pragma pack(pop)
 

@@ -95,7 +95,20 @@ public:
 private:
     iterator _M_insert(_Rb_tree_node_base*,_Rb_tree_node_base*,const V&,_Rb_tree_node_base* =0);
 public:
+#ifdef FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
+    // Per-TU opt-in (chunk Q32, row 0x00465C54 CCombatAbilityBlockDefBase::Transfer; like FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE):
+    // STLport's inline tree constructor and destructor, which VC7.1 called as COMDATs in that size TU -- the set<EWeaponClass> tree
+    // ctor 0x00451ADD (`push &alloc ; push &pred ; call`, base ctor 0x00451303 then _M_empty_initialize) and dtor 0x00451B07
+    // (clear 0x004512DA, then the header node freed). STLport's bodies, visible but kept out of line (like
+    // FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE): VC7.1 then knows they keep no reference to the caller's empty less/allocator
+    // temporaries and packs those into a dead argument slot (0x00465CE6 `lea eax,[ebp+0Bh]` twice).
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
     _Rb_tree(const Compare& c,const A& a):_Rb_tree_base<V,A>(a),_M_node_count(0),_M_key_compare(c){_M_empty_initialize();}
+#else
+    _Rb_tree(const Compare& c,const A& a):_Rb_tree_base<V,A>(a),_M_node_count(0),_M_key_compare(c){_M_empty_initialize();}
+#endif
     _Rb_tree& operator=(const _Rb_tree&);
     size_t size() const { return _M_node_count; }
 #ifdef FABLE_RETAIL_STLP_SET_EMPTY
@@ -105,7 +118,14 @@ public:
 private:
     void _M_empty_initialize(){this->_M_header._M_data->_M_color=false;this->_M_header._M_data->_M_parent=0;this->_M_header._M_data->_M_left=this->_M_header._M_data;this->_M_header._M_data->_M_right=this->_M_header._M_data;}
 public:
+#ifdef FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
     ~_Rb_tree(){clear();}
+#else
+    ~_Rb_tree(){clear();}
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN
     FABLE_FORCEINLINE   // with map::begin below
 #endif

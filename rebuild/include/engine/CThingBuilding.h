@@ -67,6 +67,11 @@ public:
     virtual bool UseHighDetailQuadTree() const;                          // 0x0082D870 ?UseHighDetailQuadTree@CThingBuilding@@UBE_NXZ
     void GetReverbSettings(EReverbEnvironmentType& type, float& level) const;   // 0x0082D8C0 ?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z
 #endif
+#ifdef FABLE_RETAIL_CTHINGBUILDING_FORCEOPENCOUNT
+    // Retail opt-in (chunk Q32, row 0x00958B20 CAIStateGroup_MinionReactToCrime::OnReplace): Ego_r.pdb / FableWin.pdb
+    // ?DecrementForceOpenCount@CThingBuilding@@QAEXXZ, inline in retail (`dec dword ptr [eax+0D0h]` on ForceOpenCount, 0x00958B4A).
+    void DecrementForceOpenCount() { --ForceOpenCount; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGBUILDING
     void SetOverrideAutomaticLocking(bool value) { OverrideAutomaticLocking = value; }   // FableWin ?SetOverrideAutomaticLocking@CThingBuilding@@QAEX_N@Z (inline)
     void LockAllDoors(bool lock, bool immediately);                  // 0x0082DB00 ?LockAllDoors@CThingBuilding@@QAEX_N0@Z (Ego_r / FableWin)

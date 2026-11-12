@@ -20,6 +20,11 @@ class CEngineInternalPrimitiveAnimatedMesh:public CEngineInternalPrimitiveMeshBa
 public:
  virtual void CalcInterpolatedObjectTransform(CMatrix3x4&,float,bool)const;
  virtual void InitialiseSimulation(const C3DMeshInfo*,const C3DMesh2&);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_BONESCALINGS
+ // Retail opt-in (chunk Q32, row 0x00BD2A90): Ego_r.pdb / FableWin.pdb ?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z
+ // (public const; retail 0x00BD2A90, called from 0x00B83798). Being const, it fills the Cache through a mutable member (below).
+ void InitialiseBoneScalings(const C3DMesh2&) const;
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE
  C3DAnimationInterpolator Anim;
 #else
@@ -36,6 +41,10 @@ public:
  // Both PDBs: CCache owns only map<unsigned long,CArray<C3DVector> > BoneScalings.
  // Native STLport map12 shrinks Cache+0xd4 to12, placing full RenderInfo72 at0xe0.
  class CCache {public:std::map<unsigned long,CArray<C3DVector> > BoneScalings;};
+ // (FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_BONESCALINGS: the const InitialiseBoneScalings 0x00BD2A90 inserts into it.)
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_BONESCALINGS
+ mutable
+#endif
  CCache Cache;
 #else
  unsigned char Orientation[52]; // Original C3DOrientationInterpolator

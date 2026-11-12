@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00722740   RELOCATION_MATCH PASS   FrameUpdate
+008f70f0   RELOCATION_MATCH PASS   AddThemeDefIndexToPalette
+00a69b70   RELOCATION_MATCH PASS   AllocateTexture
+
+WINS: 3
+  00722740 RELOCATION_MATCH CTCSmokeGenerator::FrameUpdate
+  008f70f0 RELOCATION_MATCH CMap::AddThemeDefIndexToPalette
+  00a69b70 RELOCATION_MATCH CTextureManager::AllocateTexture
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCSmokeGenerator_FrameUpdate_00722740
+  CMap_AddThemeDefIndexToPalette_008f70f0
+  CTextureManager_AllocateTexture_00a69b70

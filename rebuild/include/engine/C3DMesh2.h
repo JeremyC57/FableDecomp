@@ -23,6 +23,13 @@ public:
     unsigned long GetVertexCount() const;                                // 0x00A89320
     unsigned long GetTriangleCount() const;                              // 0x00A89350
 #endif
+#ifdef FABLE_RETAIL_C3DMESH2_BONES
+    // Retail opt-in (chunk Q32, row 0x00BD2A90 CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings): Ego_r.pdb / FableWin.pdb
+    // ?GetBoneCount@C3DMesh2@@QBEKXZ and ?GetBone@C3DMesh2@@QBEPBVC3DBone2@@K@Z, inline (BoneCount +0x98 / Bones +0x9C read in
+    // place, 0x00BD2AC3 / 0x00BD2B10; C3DBone2 is 0x3C bytes in Ego_r).
+    unsigned long GetBoneCount() const { return BoneCount; }
+    const C3DBone2* GetBone(unsigned long index) const { return &Bones[index]; }
+#endif
     unsigned char UnmodelledBase[0x7c];long MemoryHandle,PrimMemoryHandle,BoneNameMemoryHandle;
     unsigned long MaterialCount;C3DMeshMaterial* Materials;unsigned long PrimitiveCount;C3DPrimitive2* Primitives;
     unsigned long BoneCount;C3DBone2* Bones;C3DKeyframe* BoneKeyframes;unsigned short* BoneNameIndices;char* BoneNameData;unsigned long BoneNameDataSize;

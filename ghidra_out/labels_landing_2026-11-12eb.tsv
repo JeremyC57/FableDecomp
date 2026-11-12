@@ -1,0 +1,5 @@
+address	name	evidence
+00CD23B9	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	chunk Q32 (landing eb): 
+00958770	?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z	chunk Q32 (landing eb): 
+006821E0	?SetOpinionDeedMask@CTCCreatureOpinionOfHero@@QAEXJ@Z	chunk Q32 (landing eb): 
+00BD2A90	?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z	chunk Q32 (landing eb): 

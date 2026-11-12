@@ -1,0 +1,5 @@
+address	name	grade	grades_used	note
+008f70f0	CMap::AddThemeDefIndexToPalette	RELOCATION_MATCH	20	two store arms, each: unsigned long copy of the index, iterator = begin() advanced by it for ThemeDefIndex, operator[] for the used flag; if (index != 0) {...} else {...}
+00a69b70	CTextureManager::AllocateTexture	RELOCATION_MATCH	29	adopting Reset (forced inline, overlay) + texture.Data->AddRef(); named size local for CalculateTextureSize
+008031e0	CTCTargetingPlayer::GetPBestThingForMeleeAttack	DIFFER(150v152)	21	in progress: parent goes through the dying this register (ebx) in retail; see differ/008031e0.cpp line 2
+006b05a0	CTCPhysicsBase::CreatePPhysicsMeshInfo	DIFFER(110v110)	0	untouched this chunk (Q28 best in differ/)

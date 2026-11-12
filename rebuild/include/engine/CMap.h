@@ -22,6 +22,12 @@ public:
     CThemePaletteEntry(unsigned long themeDefIndex, bool used) : ThemeDefIndex(themeDefIndex), ThemePaletteIndexUsed(used) {}
     unsigned long ThemeDefIndex;                                         // +0x00
     bool ThemePaletteIndexUsed;                                          // +0x04
+#ifdef FABLE_RETAIL_CTHEMEPALETTEENTRY_ACCESSORS
+    // Chunk Q28 (row 0x008F70F0): FableWin.pdb inline accessors ?SetThemePaletteIndexUsed@CThemePaletteEntry@@QAEX_N@Z and
+    // ?IsThemeUsed@CThemePaletteEntry@@QBE_NXZ (no out-of-line copy in Ego_r.pdb or Fable.exe). No layout change.
+    void SetThemePaletteIndexUsed(bool used) { ThemePaletteIndexUsed = used; }
+    bool IsThemeUsed() const { return ThemePaletteIndexUsed; }
+#endif
 };
 #endif
 class CAFile;class CScriptedMapBrush;class CScriptedMapBrushInit;
@@ -57,6 +63,18 @@ protected:
     // Ego_r.pdb donor order 0x008545D0 / 0x00854600 / 0x00854630 / 0x00854760 = retail (inline) / 0x008F6F90 / 0x008F6FC0 /
     // 0x008F70F0. GetThemePaletteIndexFromThemeDefIndex is inlined at its only retail call (no out-of-line copy is bound);
     // FindUnusedThemePaletteEntryIndex is inline at its first call there and called out of line (0x008F6F90) at its second.
+#ifdef FABLE_RETAIL_CMAP_THEMEPALETTE_GETINDEX_NONCONST
+    // Chunk Q28 (row 0x008F70F0): Ego_r.pdb / FableWin.pdb spell it ?GetThemePaletteIndexFromThemeDefIndex@CMap@@IAEEK@Z
+    // (protected, non-const, iterator over the non-const vector). Same body.
+    unsigned char GetThemePaletteIndexFromThemeDefIndex(unsigned long themeDefIndex)
+    {
+        unsigned long index = 0;
+        for (std::vector<CThemePaletteEntry>::iterator it = ThemePaletteEntryList.begin(); it != ThemePaletteEntryList.end(); ++it, ++index)
+            if (index > 0 && it->ThemeDefIndex == themeDefIndex)
+                return (unsigned char)index;
+        return 0;
+    }
+#else
     unsigned char GetThemePaletteIndexFromThemeDefIndex(unsigned long themeDefIndex) const
     {
         unsigned long index = 0;
@@ -65,6 +83,12 @@ protected:
                 return (unsigned char)index;
         return 0;
     }
+#endif
+#ifdef FABLE_RETAIL_CMAP_FINDUNUSED_OUTOFLINE
+    // Chunk Q28 (row 0x008F70F0): declared only; the TU defines the body out of class (retail 0x008F6F90 precedes the row in the same
+    // object and VC7.1 expands it at the first call there only).
+    unsigned char FindUnusedThemePaletteEntryIndex();                    // 0x008F6F90
+#else
     unsigned char FindUnusedThemePaletteEntryIndex()                     // 0x008F6F90 ?FindUnusedThemePaletteEntryIndex@CMap@@IAEEXZ
     {
         unsigned long index = 0;
@@ -73,6 +97,7 @@ protected:
                 return (unsigned char)index;
         return 0;
     }
+#endif
     void ZeroAllUnusedThemePaletteEntries();                             // 0x008F6FC0
 public:
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); // 0x008F70F0

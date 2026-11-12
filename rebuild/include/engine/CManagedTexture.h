@@ -12,6 +12,12 @@ public:
     bool IsValid() const {return !Data.IsNull();}
     unsigned long Sizeof() const;
 #endif
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE
+    // Chunk Q28 (row 0x00A69B70 CTextureManager::AllocateTexture): the manager resets Data in place (`mov esi,[esp+14h] ; mov
+    // ecx,[esi+4]` ... `mov [esi+4],ebx`), and no PDB accessor of CManagedTexture sets it: CTextureManager is taken to be a friend
+    // (inference from those bytes). No layout change.
+    friend class CTextureManager;
+#endif
 private:
     CIVCountedPointer<CManagedTextureData> Data;
 };
