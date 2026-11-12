@@ -85,6 +85,14 @@ public:
  // FableWin.pdb ?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z (0x009E3DF0). Declaration only: no layout change.
  void ConvertPFDDataToRGB(const unsigned char* data,class CRGBColour& colour) const;   // 0x009E3DF0
 #endif
+#ifdef FABLE_RETAIL_CPIXELFORMAT_SIGNED
+ // Retail opt-in (workflow wf10, row 0x009F4390 CSurface::CopyFromMemory): Ego_r.pdb ?IsEquivalent@CPixelFormat@@QBE_NABV1@@Z (0x009E37F0)
+ // and ?IsSigned@CPixelFormat@@QBE_NXZ (0x009E3970), both called out of line; FableWin.pdb ?GetAsD3DPixelFormat@CPixelFormat@@QBE?AW4_D3DFORMAT@@XZ
+ // (debug only, inline in release: 0x009F4562 `mov eax,[ebp] ; lea edx,[eax+eax*8] ; mov eax,[edx*4+GD3DFormats]`).
+ bool IsEquivalent(const CPixelFormat& other) const;            // 0x009E37F0
+ bool IsSigned() const;                                         // 0x009E3970
+ _D3DFORMAT GetAsD3DPixelFormat() const {return GD3DFormats[FormatIndex].D3DFormat;}
+#endif
 };
 #endif
 #else

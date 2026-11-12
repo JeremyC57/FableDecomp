@@ -28,6 +28,10 @@ public:
  long GetActionFrequency()const{return ActionFrequency;}
  float GetActionFrequencyVariation()const{return (ActionFrequencyVariation);}
 public: unsigned long ThankingPhrase;
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GETTHANKINGPHRASE
+    // FableWin.pdb ?GetThankingPhrase@CTCAIScratchpad@@QBEKXZ (inline in retail; row 0x00949380 CAIStateGroup_GoToPub::ThankBarmaid).
+    unsigned long GetThankingPhrase() const { return ThankingPhrase; }
+#endif
 public: unsigned long IgnoringPhrase;
 public: C3DVector WanderCentrePoint;
 public: float WanderMinDistance;

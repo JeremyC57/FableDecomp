@@ -22,6 +22,12 @@
 class CWorld;
 class CThing;
 namespace NSpeechGainManager {
+#ifdef FABLE_RETAIL_NSPEECHGAINMANAGER_ONDIALOGUESTART
+    // Opt-in (wf10 row 0x006E3580 CTCTalk::PlaySpeech): Ego_r.pdb / FableWin.pdb
+    // ?OnDialogueStart@NSpeechGainManager@@YI_NABVCWorld@@AAVCThing@@KW4EDialogueLayer@1@@Z (retail 0x006E31E0, __fastcall). Declaration only.
+enum EDialogueLayer;
+bool __fastcall OnDialogueStart(const CWorld& world, CThing& thing, unsigned long sampleID, EDialogueLayer layer);   // 0x006E31E0
+#endif
 
 class CDialogueLayerDef : public CDefClassBase {
 public:

@@ -5,6 +5,9 @@
 #include "engine/CAnimInit.h"
 template<class T,class L>inline void FABLE_FASTCALL GFLimitLower(T& value,const L& lower){if(value<lower)value=lower;}
 class CAnimateThing;
+#ifdef FABLE_RETAIL_CANIMSET_UPDATEDISTANCE
+class C3DAnimationInfo;
+#endif
 class CTransitionBlendAlpha{public:float CurrentAlpha,LastAlpha;CTransitionBlendAlpha(float a,float b):CurrentAlpha(a),LastAlpha(b){}};
 class CAnimSet{friend class CAnimateThing;public:
 #ifdef FABLE_RETAIL_LOOK_HEAD_ANIM
@@ -28,6 +31,14 @@ class CAnimSet{friend class CAnimateThing;public:
  CAnimFrameInfo GetFrame()const{return CAnimFrameInfo(CurrentPercentageComplete,LastPercentageComplete);}
 #endif
 private:
+#ifdef FABLE_RETAIL_CANIMSET_UPDATEDISTANCE
+ // Retail opt-in (row 0x0070CE10): Ego_r.pdb ?UpdateDistanceMoved@CAnimSet@@AAEXM@Z, ?PeekAnimInfo@CAnimSet@@ABEABVC3DAnimationInfo@@F@Z
+ // and ?UpdatePercentageCompleteTo@CAnimSet@@AAEXM@Z (FableWin.pdb 0x01E9BFF0 / 0x01E9B410 / 0x01E9BA00). The two helpers are
+ // expanded inline in retail; their bodies are defined (inline) in the TU that needs them.
+ inline const C3DAnimationInfo& PeekAnimInfo(short anim)const;
+ inline void UpdatePercentageCompleteTo(float percentage);
+ void UpdateDistanceMoved(float distance);
+#endif
  void Init(CAnimateThing&,const CAnimInit&,float);
 EAnimUpdateMode UpdateMode;
 std::vector<short,std::allocator<short> > Anims;

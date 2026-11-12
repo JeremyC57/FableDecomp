@@ -1,0 +1,10 @@
+address	name	evidence
+00808E40	??RCThingFilter_IsValidTargetForPlayerCreature	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+0070CE10	?UpdateDistanceMoved@CAnimSet@@AAEXM@Z	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+00949380	?ThankBarmaid@CAIStateGroup_GoToPub@@IAE_NXZ	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+006E3580	?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@AAVCASoundBank@@J_NABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@11@Z	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+00966AF0	?GetBar@CAIStateGroup_TavernServer@@QAE_NXZ	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+006992A0	?PreparePrimitivesForRendering@CGameCameraManager@@UBEXABVCEnginePrimitivePrepareInfo@@@Z	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+008F0EB0	?CardsTurning@CTCTavernGameCardBase@@UAEXXZ	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+00929340	?Update@CAIStateGroup_BanditPlayDice@@MAEXXZ	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs
+009F4390	?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0ABVCPixelFormat@@JK@Z	workflow wf10 (landing ev): RELOCATION_MATCH, two PDBs

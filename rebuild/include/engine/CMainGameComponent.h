@@ -135,6 +135,12 @@ protected:
     bool AllowRender;                               // +0x161E1
     bool Rendered;                                  // +0x161E2
     long DebugNoFramesUnableToRender;               // +0x161E4
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_SERVERFRAME_OUTOFLINE) && !defined(FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES)
+    // Opt-in (wf10 row 0x006E3580 CTCTalk::PlaySpeech): Ego_r.pdb / FableWin.pdb ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ called out
+    // of line in retail at 0x00416225 (`mov eax,[ecx+48h] ; ret`, the COMDAT the CTCTalk TU calls). Declaration only.
+public:
+    long GetCurrentServerFrame() const;                                  // 0x00416225
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
     // Retail opt-in (Codex pass 17): original accessors/callees proven by both
     // PDBs and debug UpdateFromEventPackageSet 018A7E6D.

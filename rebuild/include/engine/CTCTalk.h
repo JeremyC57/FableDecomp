@@ -49,6 +49,17 @@ public:
     float GetCurrentSpeechDuration() const;                              // 0x006E2840
     void SetAttitude(EConversationAttitude attitude) { Attitude = attitude; }
 #endif
+#ifdef FABLE_RETAIL_CTCTALK_PLAYSPEECH
+    // Nested opt-in (wf10 row 0x006E3580 PlaySpeech): Ego_r.pdb / FableWin.pdb ?PlayLipMovement@CTCTalk@@QAEXAAVCASoundBank@@J@Z (0x006E29A0),
+    // ?SetAsUsingNarrator@CTCTalk@@QAEXABVCCharString@@@Z (0x006E2CF0; inline body below, expanded in PlaySpeech),
+    // private ?GetSpeechDurationInFrames@CTCTalk@@ABEJJ@Z (0x006E2940) and ?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z (0x006E28D0).
+    void PlayLipMovement(CASoundBank& bank, long sample);                // 0x006E29A0
+    void SetAsUsingNarrator(const CCharString& narrator);                // 0x006E2CF0
+private:
+    long GetSpeechDurationInFrames(long sample) const;                   // 0x006E2940
+    void StopCurrentSpeech(class CTCSoundPlayer* player);                // 0x006E28D0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCTALK_LIPSYNC
     // Opt-in (chunk 1024, row 0x006E2ED0): Ego_r.pdb / FableWin.pdb private members ?GetSpeechBank@CTCTalk@@ABEABVCASoundBank@@XZ
     // (inline in retail: `mov eax,[esi+24h] ; test eax,eax ; jne` else CTCBase::PeekSampleBank 0x00686D70), ?GetPLipSyncBank@CTCTalk@@ABEPBVCLipSyncDataBank@@XZ
@@ -80,5 +91,23 @@ public:
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTalk)==0x3c);
+#ifdef FABLE_RETAIL_CTCTALK_PLAYSPEECH_INLINES
+// Nested opt-in (wf10 row 0x006E3580): the bodies of IsTalking (out-of-line copy 0x006E28A0) and SetAsUsingNarrator (0x006E2CF0),
+// which retail's CTCTalk TU expands in PlaySpeech. Needs CMainGameComponent (GetCurrentServerFrame out of line), CGameDefinitionManager
+// (PeekGlobalDef), CGlobalDef and the STLport find dispatch.
+inline bool CTCTalk::IsTalking() const
+{
+    return CMainGameComponent::Get()->GetCurrentServerFrame() - SampleStartedFrame < SampleDurationFrames;
+}
+inline void CTCTalk::SetAsUsingNarrator(const CCharString& narrator)
+{
+    if (IsPureAISpeaker) {
+        const CGlobalDef& global_def = CGameDefinitionManager::Get().PeekGlobalDef();
+        const CCharString* last = global_def.PermittedAINarrators.end();
+        if (std::find(global_def.PermittedAINarrators.begin(), last, narrator) == last)
+            IsPureAISpeaker = false;
+    }
+}
+#endif
 
 #endif

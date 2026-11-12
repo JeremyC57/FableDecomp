@@ -1,0 +1,40 @@
+addr       parity           behav  name
+  WARN leaf 'operator()' matches no symbol in 00808e40.obj; graded the largest function
+  WARN leaf 'operator()' matches no symbol in 00808e40.obj; graded the largest function
+00808e40   RELOCATION_MATCH PASS   operator()
+0070ce10   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0070ce10   RELOCATION_MATCH PASS   UpdateDistanceMoved
+00949380   WARN RELOC_NAME: ?SetBarmaid@CTCTavernTankard@@QAEXPAVCThingAICreature@@@Z -> 0094b400 labelled 'CTCTavernTankard::SetPBarmaid'
+00949380   RELOCATION_MATCH PASS   ThankBarmaid
+006e3580   WARN RELOC_NAME: ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ -> 00416225 labelled '_global::GetMember_dword0x48_00416225'
+006e3580   RELOCATION_MATCH PASS   PlaySpeech
+00966af0   WARN RELOC_NAME: ??1?$_List_base@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+00966af0   RELOCATION_MATCH PASS   GetBar
+006992a0   RELOCATION_MATCH PASS   PreparePrimitivesForRendering
+008f0eb0   RELOCATION_MATCH PASS   CardsTurning
+00929340   RELOCATION_MATCH PASS   Update
+009f4390   WARN RELOC_ALIAS: _D3DXLoadSurfaceFromMemory@40 -> 00bfefc8 is the import thunk 'D3DX9_25.DLL::D3DXLoadSurfaceFromMemory'
+009f4390   RELOCATION_MATCH PASS   CopyFromMemory
+
+WINS: 9
+  00808e40 RELOCATION_MATCH CThingFilter_IsValidTargetForPlayerCreature::operator()
+  0070ce10 RELOCATION_MATCH CAnimSet::UpdateDistanceMoved
+  00949380 RELOCATION_MATCH CAIStateGroup_GoToPub::ThankBarmaid
+  006e3580 RELOCATION_MATCH CTCTalk::PlaySpeech
+  00966af0 RELOCATION_MATCH CAIStateGroup_TavernServer::GetBar
+  006992a0 RELOCATION_MATCH CGameCameraManager::PreparePrimitivesForRendering
+  008f0eb0 RELOCATION_MATCH CTCTavernGameCardBase::CardsTurning
+  00929340 RELOCATION_MATCH CAIStateGroup_BanditPlayDice::Update
+  009f4390 RELOCATION_MATCH CSurface::CopyFromMemory
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CThingFilterIsValidTargetForPlayerCreature_operator_00808e40
+  CAnimSet_UpdateDistanceMoved_0070ce10
+  CAIStateGroupGoToPub_ThankBarmaid_00949380
+  CTCTalk_PlaySpeech_006e3580
+  CAIStateGroupTavernServer_GetBar_00966af0
+  CGameCameraManager_PreparePrimitivesForRendering_006992a0
+  CTCTavernGameCardBase_CardsTurning_008f0eb0
+  CAIStateGroupBanditPlayDice_Update_00929340
+  CSurface_CopyFromMemory_009f4390
+rc=0

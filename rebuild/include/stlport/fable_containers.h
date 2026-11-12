@@ -371,7 +371,13 @@ public:
     typedef size_t size_type;
     typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _IsPODType;
     explicit vector(const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(a) { }
-#ifdef FABLE_RETAIL_STLP_VECTOR_FILL_OUTOFLINE
+#if defined(FABLE_RETAIL_STLP_VECTOR_FILL_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (row 0x0070CE10 CAnimSet::UpdateDistanceMoved): the fill constructor's body is visible to the TU but called
+    // out of line (COMDAT vector<float> 0x004516E7).
+    __declspec(noinline) vector(size_type n,const _Tp& value,const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(n,a) {
+        this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
+    }
+#elif defined(FABLE_RETAIL_STLP_VECTOR_FILL_OUTOFLINE)
     // Per-TU opt-in (agentFAM10, 2026-11-12, row 0x004538EB COpinionSet::COpinionSet; like FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE): that
     // size-optimised TU calls the fill constructor's COMDAT (vector<float> 0x004516E7, `ret 0Ch`, with the value and allocator
     // temporaries in the caller's frame) where the body below would be expanded. Declaration only.

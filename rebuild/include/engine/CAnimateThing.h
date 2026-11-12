@@ -28,6 +28,10 @@ class CAnimateThing {public:
  void Update(const CAnimateThingUpdate& update);                       // 0x0070E8B0
 #endif
  void GetAllCombinationAnims(std::vector<CAnimSet*>&);
+#ifdef FABLE_RETAIL_CANIMATETHING_GETTHINGSCALE
+ // Retail opt-in (row 0x0070CE10): FableWin.pdb ?GetThingScale@CAnimateThing@@QBEMXZ, inline in retail (the caller reads Scale +0x88).
+ float GetThingScale()const{return Scale;}
+#endif
 #ifdef FABLE_RETAIL_CANIMATETHING_CLEARALLANIMS
  // Retail opt-in (agentNF11, row 0x0070B4D0): Ego_r.pdb / FableWin.pdb ?ClearAllAnims@CAnimateThing@@QAEXXZ, out of line at 0x0070EC30
  // (landed with that leaf). Declaration only.

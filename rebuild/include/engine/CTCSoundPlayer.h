@@ -42,6 +42,13 @@ public:
     // three bools as 1, 0, 0). Declaration only.
     unsigned long PlayAttachedSample(const class CSoundPair& sound, const class CSoundInit& init, bool, bool, bool);   // 0x0066B280
 #endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_BANKSAMPLE
+    // Opt-in (wf10 row 0x006E3580 CTCTalk::PlaySpeech): FableWin.pdb ?PlayAttachedSample@CTCSoundPlayer@@QAEKAAVCASoundBank@@ABVCSoundPair@@ABVCSoundInit@@_N33@Z
+    // (retail 0x0066B300, landed; FableWin.pdb 0x01E7FCA0 and Ego_r.pdb 0x00574680 both spell _N33: CASoundBank takes back-reference slot 0, so bool is slot 3) and Ego_r.pdb / FableWin.pdb ?SetSpecificSamplePitch@CTCSoundPlayer@@QAEXKM@Z (retail 0x0066AFA0, landed).
+    // Declarations only.
+    unsigned long PlayAttachedSample(class CASoundBank& bank, const class CSoundPair& sound, const class CSoundInit& init, bool, bool, bool);   // 0x0066B300
+    void SetSpecificSamplePitch(unsigned long sampleID, float pitch);   // 0x0066AFA0
+#endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VOICENAME
     // Opt-in (chunk 765, row 0x0066A9D0): Ego_r.pdb / FableWin.pdb ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z (VoiceName +0x14).
     void SetVoiceName(const CCharString&);                               // 0x0066A9D0

@@ -91,7 +91,13 @@ public:
  void SetMaxNumberOfDangerThings(long p0);
  bool IsDangerThing(const CThing & p0) const;
  bool IsRunningAwayFromCombat() const;
+#ifdef FABLE_RETAIL_CTCSTEALTH_ISINDANGER
+ // Retail opt-in (row 0x00808E40): FableWin.pdb ?IsInDanger@CTCStealth@@QBE_NXZ, inline in retail (`mov ecx,[eax+34h] ; test ecx,ecx ; jge`);
+ // OnCreate / ClearDangerStatus reset InDangerCoolOffTimer to -1 (= not in danger).
+ bool IsInDanger() const { return InDangerCoolOffTimer >= 0; }
+#else
  bool IsInDanger() const;
+#endif
  bool IsAbleToFlourishDangerThings() const;
  bool IsAvailableForAttack() const;
 private:

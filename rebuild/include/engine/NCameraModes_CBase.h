@@ -51,7 +51,13 @@ public:
  const NCameraModes::CPhysicsState & GetLookAtPhase() const;
  NCameraModes::CPhysicsState & GetLookAtPhase();
  void SetLookAtPhase(const NCameraModes::CPhysicsState & p0);
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_GETPOSITION_INLINE
+ // wf10 opt-in (row 0x006992A0): Ego_r.pdb ?GetPosition@CBase@NCameraModes@@QBEABVC3DVector@@XZ, inline in retail
+ // (CGameCameraManager::PreparePrimitivesForRendering reads GoTo.Position at mode +0x54 in place).
+ const C3DVector & GetPosition() const { return GoTo.Position; }
+#else
  const C3DVector & GetPosition() const;
+#endif
  void SetPosition(const C3DVector & p0);
  const C3DVector & GetObservedPos() const;
  void SetObservedPos(const C3DVector & p0);

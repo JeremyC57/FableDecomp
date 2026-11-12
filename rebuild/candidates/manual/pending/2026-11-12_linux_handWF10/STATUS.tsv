@@ -1,0 +1,2 @@
+008f0eb0	CTCTavernGameCardBase::CardsTurning	RELOCATION_MATCH	10	shared headers + one sum loop + block-scoped sound string + return in 0x19 branch
+00641c30	CTCLight::OnAppearanceDraw	DIFFER(502v490)	1	repair: match withdrawn; it needed an unverified, non-matching, reserved CTCLight::DrawLight 0x006414A0 body in the TU. Blocked on DrawLight landing as its own row.

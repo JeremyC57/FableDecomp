@@ -12,6 +12,17 @@ class CTCExclusiveUse;
 enum EAIActionReturn;                                                    // MS forward enum
 class CAIStateGroup_BanditPlayDice : public CAIStateGroupBase {
 protected:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BANDITPLAYDICE_VIRTUALS
+    // Overlay opt-in (wf10, row 0x00929340 CAIStateGroup_BanditPlayDice::Update): vtable 0x0128AD54 slots 12..16 in front of Act
+    // (slot 17), Ego_r.pdb protected virtuals ?Update@..@@MAEXXZ, ?InitStateGroup@..@@MAEXABVCWorld@@AAVCThingAICreature@@@Z,
+    // ?GetDiceGame@..@@MAEPAVCTCDiceGame@@XZ (14, 0x00929220), ?GetMarkerType@..@@MAEJXZ (15, 0x00928550),
+    // ?PutWeaponAway@..@@MAE_NXZ (16, 0x008FE7D5). Update calls slots 16 / 17 virtually. Needs FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+    virtual void Update();                                               // slot 12 0x00929340
+    virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x009284B0
+    virtual CTCDiceGame* GetDiceGame();                                  // slot 14 0x00929220
+    virtual long GetMarkerType();                                        // slot 15 0x00928550
+    virtual bool PutWeaponAway();                                        // slot 16 0x008FE7D5
+#endif
     virtual EAIActionReturn Act();                                       // 0x009285D0
     CTCExclusiveUse* DiceGamePosition;                                   // +0x14
     CTCDiceGame*     DiceGame;                                           // +0x18

@@ -17,6 +17,9 @@ public:
  // WalkToServingPoint / Update is retail's 0x00966CF0 .. 0x00967D40 run). The bodies a row needs inline (WanderWithinTavern,
  // FreeServingPoint, WalkToBar, WalkToServingPoint: same-TU bodies VC7.1 expands into Update) are defined by that row.
  EAIActionReturn WanderWithinTavern();                                  // 0x00966AD0
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TAVERNSERVER_GETBAR
+ bool GetBar();                                                         // 0x00966AF0
+#endif
  bool IsCarryingJug();                                                  // 0x00966CF0
  bool GetServingPoint();                                                // 0x00966DA0
  void FreeServingPoint();                                               // 0x009670A0

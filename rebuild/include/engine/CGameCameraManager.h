@@ -85,6 +85,12 @@ class CCPPointerInfo;
 class CDefPointeeBase;
 struct CScriptModuleBase;
 class CWorld;
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_DEBUGPOINTS
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+#include "engine/CRGBColour.h"
+class CEnginePrimitivePrepareInfo;
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMPOINTS
 // Retail opt-in (chunk 754, row 0x00699130 ResetFlags): AvailableCamPoints typed as Ego_r.pdb types it, the STLport 4.6
 // list<CIntelligentPointer<CThing> > (4 bytes: the header-node pointer), and the private ResetFlags (Ego_r.pdb
@@ -168,6 +174,12 @@ public:
     // fastcall helper 0x006BF770), out of line in retail at 0x00698B20 (it forwards the observed thing +0x100 and the def +0x134 to the
     // helper 0x00698A30). Declaration only.
     void PlayCameraSoundThroughObservedThing(const CCharString& name) const;   // 0x00698B20
+#endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_DEBUGPOINTS
+    // wf10 opt-in (row 0x006992A0): Ego_r.pdb / FableWin.pdb ?PreparePrimitivesForRendering@CGameCameraManager@@UBEXABVCEnginePrimitivePrepareInfo@@@Z,
+    // slot 2 of the retail vtable 0x0125C754 (CAIGameCameraBase override). Use with FABLE_RETAIL_CGAMECAMERAMANAGER_ANGLES (the
+    // compiler's vptr replaces the flattened __vftable word; no vtable is emitted from the declarations).
+    virtual void PreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) const;   // slot 2 0x006992A0
 #endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ANGLES
     // Nested opt-in (chunk 765, rows 0x0069E1B0 / 0x0069E1C0): Ego_r.pdb / FableWin.pdb ?GetAngleXY@CGameCameraManager@@UBEMXZ /
@@ -267,7 +279,11 @@ public:
     unsigned char      _pad_0x153[0x1];                      // +0x153
     long               DrawDebugGraphics;                    // +0x154
     unsigned long      DebugPersistFrame;                    // +0x158
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_DEBUGPOINTS
+    std::list<std::pair<C3DVector,CRGBColour> > DebugPoints;     // +0x15c (Ego_r.pdb type; STLport list = header-node pointer)
+#else
     unsigned char      DebugPoints[0x4];                     // +0x15c list<std::pair<C3DVector,CRGBColour>,std::allocator<std::pair<C3DVector,CRGBColour>_>_>
+#endif
 };
 #pragma pack(pop)
 

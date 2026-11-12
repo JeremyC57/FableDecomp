@@ -394284,6 +394284,69 @@ $catalog = @(
         TestSource = '00/77/CTCShop_GetSaleItemsToPlace_00773ee0_test.cpp'
         PassPattern = '00773ee0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00808e40'
+        Module = 'CThingFilter_IsValidTargetForPlayerCreature'
+        Source = '00/80/CThingFilterIsValidTargetForPlayerCreature_operator_00808e40.cpp'
+        TestSource = '00/80/CThingFilterIsValidTargetForPlayerCreature_operator_00808e40_test.cpp'
+        PassPattern = '00808e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070ce10'
+        Module = 'CAnimSet'
+        Source = '00/70/CAnimSet_UpdateDistanceMoved_0070ce10.cpp'
+        TestSource = '00/70/CAnimSet_UpdateDistanceMoved_0070ce10_test.cpp'
+        PassPattern = '0070ce10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00949380'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_ThankBarmaid_00949380.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_ThankBarmaid_00949380_test.cpp'
+        PassPattern = '00949380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e3580'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_PlaySpeech_006e3580.cpp'
+        TestSource = '00/6e/CTCTalk_PlaySpeech_006e3580_test.cpp'
+        PassPattern = '006e3580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00966af0'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_GetBar_00966af0.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_GetBar_00966af0_test.cpp'
+        PassPattern = '00966af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006992a0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_PreparePrimitivesForRendering_006992a0.cpp'
+        TestSource = '00/69/CGameCameraManager_PreparePrimitivesForRendering_006992a0_test.cpp'
+        PassPattern = '006992a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f0eb0'
+        Module = 'CTCTavernGameCardBase'
+        Source = '00/8f/CTCTavernGameCardBase_CardsTurning_008f0eb0.cpp'
+        TestSource = '00/8f/CTCTavernGameCardBase_CardsTurning_008f0eb0_test.cpp'
+        PassPattern = '008f0eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00929340'
+        Module = 'CAIStateGroup_BanditPlayDice'
+        Source = '00/92/CAIStateGroupBanditPlayDice_Update_00929340.cpp'
+        TestSource = '00/92/CAIStateGroupBanditPlayDice_Update_00929340_test.cpp'
+        PassPattern = '00929340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f4390'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_CopyFromMemory_009f4390.cpp'
+        TestSource = '00/9f/CSurface_CopyFromMemory_009f4390_test.cpp'
+        PassPattern = '009f4390_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -34,7 +34,13 @@ public:
  // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
  // (0x00B46C70 = the landed retail 0x009F2F90, hidden result) and ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z
  // (0x00B46AA0 = the landed retail 0x009F2DD0). Needs C2DExtentsI / CWideString complete at the call. Declarations only.
+#ifdef FABLE_RETAIL_CSURFACE_DIMENSIONS_INLINE
+ // Per-TU inline opt-in (workflow wf10, row 0x009F4390 CSurface::CopyFromMemory): CSurface.cpp expands GetDimensions in place (the
+ // GetDesc call and the desc read; one GetDesc per GetWidth / GetHeight at 0x009F43C5 / 0x009F43DB). Needs engine/Direct3DSurface9.h.
+ C2DExtentsI GetDimensions() const {_D3DSURFACE_DESC desc;PD3DSurface->GetDesc(&desc);return C2DExtentsI(desc.Width,desc.Height);}
+#else
  C2DExtentsI GetDimensions() const;                       // 0x009F2F90
+#endif
  bool LoadFromBitmapFileToPreallocatedSurface(const class CWideString& filename, unsigned long filter);   // 0x009F2DD0
  // FableWin.pdb ?GetWidth@CSurface@@QBEKXZ / ?GetHeight@CSurface@@QBEKXZ (debug only, inline in release: Output 0x00494900 calls
  // GetDimensions 0x009F2F90 once per extent and keeps the one field). Needs C2DExtentsI complete before the include.
@@ -59,7 +65,19 @@ public:
 #endif
 #endif
 #endif
-#ifdef FABLE_RETAIL_CSURFACE_PIXELFORMAT
+#ifdef FABLE_RETAIL_CSURFACE_COPYFROMMEMORY_BODY
+ // Retail opt-in (workflow wf10, row 0x009F4390 CSurface::CopyFromMemory): CSurface.cpp expands GetPixelFormat (out-of-line copy
+ // 0x009F2F60) in place: GetDesc, then the CPixelFormat(_D3DFORMAT) constructor (Initialise 0x009E3830, no -1 store). Ego_r.pdb
+ // private ?CanDoProperSignedConversion@CSurface@@AAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z (0x009F35D0) and
+ // ?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z (0x009F36E0), public
+ // ?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0J@Z (0x009F3B00). Needs CPixelFormat complete and engine/Direct3DSurface9.h.
+ CPixelFormat GetPixelFormat() const {_D3DSURFACE_DESC desc;PD3DSurface->GetDesc(&desc);return CPixelFormat(desc.Format);}
+ void CopyFromMemory(const class C2DBoxI* destRect, const void* source, const class C2DBoxI* sourceRect, long sourcePitch);   // 0x009F3B00
+private:
+ bool CanDoProperSignedConversion(const class C2DBoxI* destRect, const class C2DBoxI* sourceRect, const class CPixelFormat& sourceFormat);   // 0x009F35D0
+ void CopyFromUnsignedDataToSignedSurface(const void* source, const class CPixelFormat& sourceFormat, long sourcePitch);   // 0x009F36E0
+public:
+#elif defined(FABLE_RETAIL_CSURFACE_PIXELFORMAT)
  // chunk 751 (row 0x009BEE40): Ego_r.pdb ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ (0x009F2F60, by value through the hidden
  // pointer). Needs CPixelFormat complete (engine/CPixelFormat.h) before the include.
  CPixelFormat GetPixelFormat() const;

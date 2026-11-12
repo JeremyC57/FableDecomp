@@ -77,6 +77,13 @@ public:
     };
     C3DAnimationInfo(unsigned long index, unsigned long, CMeshDataBank* bank);
     virtual ~C3DAnimationInfo();
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_MOVEMENT
+    // Retail opt-in (row 0x0070CE10 CAnimSet::UpdateDistanceMoved): FableWin.pdb ?GetMovementVector@C3DAnimationInfo@@QBE?AVC3DVector@@XZ
+    // and ?GetMovementDistance@C3DAnimationInfo@@QBEMXZ (0x01D8C5A0; no Ego_r copy, expanded inline in retail: the caller loads
+    // MovementVector +0x18 (Z, Y, X) and takes its magnitude in place).
+    C3DVector GetMovementVector() const { return MovementVector; }
+    float GetMovementDistance() const { return MovementVector.GetMagnitude(); }
+#endif
     bool IsLoading() const { return !Data.IsNull() && Data->FileData.Data; }
     void BeginLoading(bool) const;                                       // 0x00A26730
     void TouchAnimation() const;                                         // 0x00A26A50

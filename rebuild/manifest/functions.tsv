@@ -15871,7 +15871,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00699090	SetAutomaticCameraControl	CGameCameraManager	__thiscall	void	1	CGameCameraManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\CGameCameraManager_SetAutomaticCameraControl_00699090.cpp
 00699130	ResetFlags	CGameCameraManager	__thiscall	void	1	CGameCameraManager *	1	yes	accepted									
 006991f0	AddCameraPoint	CGameCameraManager	unknown	undefined	0		0	yes	accepted									
-006992a0	?PreparePrimitivesForRendering@CGameCameraManager@@UBEXABVCEnginePrimitivePrepareInfo@@@Z	CGameCameraManager	__thiscall	void	2	CGameCameraManager *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
+006992a0	PreparePrimitivesForRendering	CGameCameraManager	__thiscall	void	2	CGameCameraManager *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 006994f0	IsObservedThingInMelee	CGameCameraManager	__thiscall	bool	1	CGameCameraManager *	1	yes	accepted									
 00699560	SetEarthquakeAt	_global	__thiscall	void	5	CGameCameraManager *,C3DVector *,float,float,bool	1	yes	accepted									
 00699670	UpdateHeightLimits	CGameCameraManager	__thiscall	void	1	CGameCameraManager *	1	yes	accepted									
@@ -31578,7 +31578,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00929020	?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ	CAIStateGroup_BanditPlayDice	__thiscall	bool	1	CAIStateGroup_BanditPlayDice *	1	yes	accepted									
 00929220	GetDiceGame	CAIStateGroup_BanditPlayDice	__thiscall	CTCDiceGame *	1	CAIStateGroup_BanditPlayDice *	1	yes	accepted									
 009292b0	GetDiceGame	CAIStateGroup_BanditPlot	__thiscall	CTCDiceGame *	1	CAIStateGroup_BanditPlot *	1	yes	accepted									
-00929340	CAIStateGroup_BanditPlayDice::Update	CAIStateGroup_BanditPlayDice	__thiscall	void	1	CAIStateGroup_BanditPlayDice *	1	yes	accepted									
+00929340	Update	CAIStateGroup_BanditPlayDice	__thiscall	void	1	CAIStateGroup_BanditPlayDice *	1	yes	accepted									
 00929550	SetCurrentPlayer	CTCDiceGame	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 00929640	Initialise	CAIStateGroup_MinionGuardGreetPlayer	__thiscall	void	6	CAIStateGroupBase *,CAIBrain *,CThingAICreature *,long,EScriptAIPriority,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\92\CAIStateGroupMinionGuardGreetPlayer_InitialiseCAIStateGroupMinionGuardGreetPlayerUAE_00929640.cpp
 00929650	IsRunnable	CAIStateGroup_MinionGuardGreetPlayer	__thiscall	bool	1	CAIStateGroup_MinionGuardGreetPlayer *	1	yes	accepted									
