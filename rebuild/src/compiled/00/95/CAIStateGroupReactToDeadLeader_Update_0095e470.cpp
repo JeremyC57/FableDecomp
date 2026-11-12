@@ -4,7 +4,7 @@
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 // CThingCreatureBase::PeekPos @ 0x006A4D00, CTCCreatureNavigation::GetNearestFleePosition @ 0x006CB840,
 // AIAction_MoveToPosProximity @ 0x0097E890, IsStopping @ 0x008FD010, CThing::PeekPos @ 0x004C73D0, Terminate @ 0x008FCF40.
-// Data: the frame budget g_scaled_013bb738 @ 0x013BB738; 400.0f @ 0x0125D824; 20.0f / 1.0f immediates.
+// Data: the frame budget TOTAL_FRAMES_TO_RUN (was g_scaled_013bb738) @ 0x013BB738; 400.0f @ 0x0125D824; 20.0f / 1.0f immediates.
 // Layout: local model (PBrain +4; brain PCreature +0x18; PEnemy +0x14 CIntelligentPointer<CThingCreatureBase>, FramesRunning +0x1c;
 // thing presence bits +0x20, interface map +0x44; interface 7 = CTCCreatureNavigation).
 // Shape: the navigation lookup inlines the vector-map lower_bound (len/2 halving) on the word-local HasTC; the enemy is cleared
@@ -98,7 +98,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-extern long g_scaled_013bb738;                  // 0x013BB738 frame budget
+namespace { extern const long TOTAL_FRAMES_TO_RUN; }                  // 0x013BB738 frame budget
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -131,11 +131,11 @@ void CAIStateGroup_ReactToDeadLeader::Update()
             do {
                 result = AIAction_MoveToPosProximity(2, fleePos, 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
                 ++FramesRunning;
-            } while (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < g_scaled_013bb738 && result == 4);
+            } while (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < TOTAL_FRAMES_TO_RUN && result == 4);
         }
         if (result != 2)
             PEnemy = CIntelligentPointer<CThingCreatureBase>(0);
-        if (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < g_scaled_013bb738) {
+        if (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < TOTAL_FRAMES_TO_RUN) {
             const CThing* creature = GetCreature();
             const CThing* enemy = PEnemy.GetPItem();
             if ((enemy->GetPos() - creature->GetPos()).GetSquaredMagnitude() > 400.0f)

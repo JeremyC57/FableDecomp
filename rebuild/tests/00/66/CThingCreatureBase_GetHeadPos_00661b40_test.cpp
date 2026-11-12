@@ -33,9 +33,9 @@ FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { 
 
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public: void* PStringData; };
-extern CCharString g_CCharString_013bac54;              // "EYE_SET_L"
-extern CCharString g_CCharString_013bac48;              // "focus_eye_01"
-extern CCharString g_CCharString_013bac50;              // "TARGET_CURSOR_POINT"
+extern const CCharString EYE_LEFT_DUMMY_OBJECT_NAME;              // "EYE_SET_L"
+extern const CCharString MAIN_FOCAL_POSITION_NAME;              // "focus_eye_01"
+extern const CCharString TARGETING_CURSOR_POSITION_NAME;              // "TARGET_CURSOR_POINT"
 
 struct CTCGraphicAppearance {
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* pos, float scale);   // 0x004C0560
@@ -67,9 +67,9 @@ C3DVector CThingCreatureBase::GetHeadPos(bool recalculate) const
         flags = 0x21;
     C3DVector pos;
     CRightHandedSet set;
-    if (!GetGraphicAppearance()->GetDummyObject(g_CCharString_013bac54, 0, flags, &pos, &set, 1.0f)
-        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac48, 0, flags, &pos, 1.0f)
-        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac50, 0, flags, &pos, 1.0f)) {
+    if (!GetGraphicAppearance()->GetDummyObject(EYE_LEFT_DUMMY_OBJECT_NAME, 0, flags, &pos, &set, 1.0f)
+        && !GetGraphicAppearance()->GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, flags, &pos, 1.0f)
+        && !GetGraphicAppearance()->GetHelperPoint(TARGETING_CURSOR_POSITION_NAME, 0, flags, &pos, 1.0f)) {
         pos = GetPosition();
         pos.Z += 1.5f;
     }
@@ -79,16 +79,16 @@ C3DVector CThingCreatureBase::GetHeadPos(bool recalculate) const
 }
 
 
-CCharString g_CCharString_013bac54, g_CCharString_013bac48, g_CCharString_013bac50;
+const CCharString EYE_LEFT_DUMMY_OBJECT_NAME = { 0 }, MAIN_FOCAL_POSITION_NAME = { 0 }, TARGETING_CURSOR_POSITION_NAME = { 0 };
 static C3DVector g_pos(10.0f, 20.0f, 30.0f);
 const C3DVector& CThing::GetPosition() const { return g_pos; }
 static int g_have = 0; static unsigned long g_flags = 99; static int g_calls = 0;
 bool CTCGraphicAppearance::GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set, float scale)
-{ ++g_calls; g_flags = flags; if (&name == &g_CCharString_013bac54 && g_have == 1 && index == 0 && scale == 1.0f) { *pos = C3DVector(11.0f, 21.0f, 32.0f); return true; } return false; }
+{ ++g_calls; g_flags = flags; if (&name == &EYE_LEFT_DUMMY_OBJECT_NAME && g_have == 1 && index == 0 && scale == 1.0f) { *pos = C3DVector(11.0f, 21.0f, 32.0f); return true; } return false; }
 bool CTCGraphicAppearance::GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* pos, float scale)
 { ++g_calls; if (g_flags != flags) g_flags = 77; if (index != 0 || scale != 1.0f) return false;
-  if (&name == &g_CCharString_013bac48 && g_have == 2) { *pos = C3DVector(12.0f, 22.0f, 33.0f); return true; }
-  if (&name == &g_CCharString_013bac50 && g_have == 3) { *pos = C3DVector(13.0f, 23.0f, 34.0f); return true; }
+  if (&name == &MAIN_FOCAL_POSITION_NAME && g_have == 2) { *pos = C3DVector(12.0f, 22.0f, 33.0f); return true; }
+  if (&name == &TARGETING_CURSOR_POSITION_NAME && g_have == 3) { *pos = C3DVector(13.0f, 23.0f, 34.0f); return true; }
   return false; }
 #define CHECK(c) if (!(c)) { std::printf("00661b40_TEST FAIL line %d\n", __LINE__); return 1; }
 

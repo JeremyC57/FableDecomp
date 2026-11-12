@@ -5,7 +5,7 @@
 //   (landed) has the same task / village / use-object machinery.
 // Callees: CBaseIntelligentPointer GetPItem 0x00A01B50 / ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10, CTCVillageMember::
 //   GetPVillage 0x007EE540, CTCVillage::SetHornTaskAsAcceptedByThing 0x006584F9 / SetHornTaskAsCompleted 0x0065A00F, CThing::GetPos
-//   0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0 (g_CCharString_013bac9c "ACTION_POINT"),
+//   0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0 (ACTION_POINT, was g_CCharString_013bac9c),
 //   CAIStateGroupBase::AIAction_MoveToPosProximity 0x0097E890 (DELTA_NOTIONAL_ZERO 0x0129BA3C) / AIAction_PerformActionAndWait
 //   0x0097DB70 / Terminate 0x008FCF40, CCreatureAction_UseObject ctor 0x0069F230 (~CCreatureActionBase 0x00693EF0), the task's
 //   IsCreatureAssignedToTask (slot 7, +0x1c).
@@ -56,7 +56,7 @@
 #include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_VillageTaskHorn.h"
 #include "engine/CCreatureAction_UseObject.h"
-extern CCharString g_CCharString_013bac9c;              // 0x013BAC9C ("ACTION_POINT"; the landed initializer 0x0121E960 spelling)
+extern const CCharString ACTION_POINT;              // 0x013BAC9C ("ACTION_POINT"; the landed initializer 0x0121E960 spelling)
 extern const float DELTA_NOTIONAL_ZERO;                 // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (1e-4f)
 
 void CAIStateGroup_VillageTaskHorn::Update()
@@ -68,7 +68,7 @@ void CAIStateGroup_VillageTaskHorn::Update()
             horn->GetPos();                     // retail calls the position getter and drops the result (0x009409BD)
             C3DVector action_pos;
             CRightHandedSet rhset;
-            horn->GetTCGraphicAppearance()->GetDummyObject(g_CCharString_013bac9c, 0, 0, action_pos, rhset, 1.0f);
+            horn->GetTCGraphicAppearance()->GetDummyObject(ACTION_POINT, 0, 0, action_pos, rhset, 1.0f);
             EAIActionReturn ret;
             do {
                 bool nav_route_calculated = false;

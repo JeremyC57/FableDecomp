@@ -14,7 +14,7 @@ class CCharString {
 public:
     void* PStringData;
 };
-CCharString g_CCharString_013bac9c;
+CCharString ACTION_POINT;
 struct CTCGraphicAppearance {
     const CCharString* lastName; long lastIndex; CRightHandedSet* lastOrientation; float lastScale;
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
@@ -85,7 +85,7 @@ class CTCSingleUserActionPoints { public:
 
 bool CTCSingleUserActionPoints::IsActionPointOccupied(CThing* user, C3DVector* position, CRightHandedSet* orientation, long index)
 {
-    ParentThing->GraphicAppearance->GetDummyObject(g_CCharString_013bac9c, index, 0, position, orientation, 1.0f);
+    ParentThing->GraphicAppearance->GetDummyObject(ACTION_POINT, index, 0, position, orientation, 1.0f);
     C2DCoordI coord((long)position->X, (long)position->Y);
     C2DBoxI area(coord, coord);
     CThingCreatureBase* found;
@@ -106,7 +106,7 @@ int main()
     C3DVector pos; CRightHandedSet* orient = (CRightHandedSet*)0x77;
     bool r = points.IsActionPointOccupied(&user, &pos, orient, 2);
     if (!r) bad |= 1;
-    if (appearance.lastName != &g_CCharString_013bac9c || appearance.lastIndex != 2 || appearance.lastOrientation != orient || appearance.lastScale != 1.0f) bad |= 2;
+    if (appearance.lastName != &ACTION_POINT || appearance.lastIndex != 2 || appearance.lastOrientation != orient || appearance.lastScale != 1.0f) bad |= 2;
     if (tools.lastArea.TLX != 12 || tools.lastArea.TLY != -3 || tools.lastArea.BRX != 12 || tools.lastArea.BRY != -3) bad |= 4;
     if (tools.notA != &owner || tools.notB != &user || tools.rangePos.X != pos.X || tools.rangePos.Y != pos.Y || tools.range != 0.5f) bad |= 8;
     tools.result = false;

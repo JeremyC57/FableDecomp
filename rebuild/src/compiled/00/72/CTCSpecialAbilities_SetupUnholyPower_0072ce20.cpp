@@ -8,7 +8,7 @@
 //   operator new @ 0x00BFEA1A (0x114 bytes), CCreatureAction_CastUnholyPowerSpell(CThingCreatureBase*) @ 0x008BD280 (x2),
 //   CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (x2) / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
 //   (CIntelligentPointer<CThing> vtable 0x01238C6C), CCreatureAction_SheatheItemToInventory_ForUnholyPower(CThingCreatureBase*,
-//   const CCharString&, CCreatureActionBase*, long) @ 0x0069F0C0 with g_CCharString_013bad30 @ 0x013BAD30, its destructor
+//   const CCharString&, CCreatureActionBase*, long) @ 0x0069F0C0 with SHEATH_ACTION_NAME (was g_CCharString_013bad30) @ 0x013BAD30, its destructor
 //   @ 0x0072D430, CThingCreatureBase::SetCurrentAction(CCreatureActionBase*) @ 0x006644F0 (x2), ~CCombatActionBase @ 0x0062E900.
 // Layout: CTCSpecialAbilities Creature +0x18; retail CThing interface bitset +0x20 (0x46 = byte +0x28 bit 6), map +0x44, dead
 //   bit +0x91; the cast action's item pointer (CIntelligentPointer<CThing>) +0x2C (named descriptively).
@@ -22,7 +22,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
-extern CCharString g_CCharString_013bad30;              // 0x013BAD30
+namespace { extern CCharString SHEATH_ACTION_NAME; }              // 0x013BAD30
 
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -79,7 +79,7 @@ bool CTCSpecialAbilities::SetupUnholyPower()
     if (item && !item->IsDead()) {
         CCreatureAction_CastUnholyPowerSpell* cast = new CCreatureAction_CastUnholyPowerSpell(Creature);
         cast->PItem = item;
-        CCreatureAction_SheatheItemToInventory_ForUnholyPower sheathe(Creature, g_CCharString_013bad30, cast, 0);
+        CCreatureAction_SheatheItemToInventory_ForUnholyPower sheathe(Creature, SHEATH_ACTION_NAME, cast, 0);
         return Creature->SetCurrentAction(sheathe);
     }
     return Creature->SetCurrentAction(CCreatureAction_CastUnholyPowerSpell(Creature));

@@ -23,6 +23,15 @@ public:
     // out of line in retail at 0x009B0AC0 (landed); called 111 times by RegisterTCs on CGameDefinitionManager::Get(). Declaration only.
     void AddDefClass(const class CDefClassInit& init);                 // 0x009B0AC0
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_COMPILEDDEFDIR
+    // agentFAM09 opt-in (row 0x01224050, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CDefinitionManager::CompiledDefDirectory'' (default CWideString at 0x013CA7DC; the static setter
+    // ?SetCompiledDefDirectory@CDefinitionManager@@SIXABVCWideString@@@Z writes it); protected static per Anniv360 Test PDB (third
+    // source) ?CompiledDefDirectory@CDefinitionManager@@1VCWideString@@A. Static member: no layout change.
+protected:
+    static CWideString CompiledDefDirectory;                             // 0x013CA7DC
+public:
+#endif
     virtual ~CDefinitionManager();
     long GetGlobalIndexFromClassIndex(const CCharString&,long) const;
     template<class T> bool GetDef(long,CDefPointer<const T>*) const;

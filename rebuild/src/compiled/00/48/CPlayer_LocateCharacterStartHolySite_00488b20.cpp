@@ -34,7 +34,7 @@ private: public:
     void* PStringData;
     const unsigned short* GetAsCharArray() const;               // 0x0099AF10
 };
-extern CWideString g_CWideString_013b866c;         // 0x013B866C (the character start holy site name)
+extern CWideString GForceStartingHolySite;         // 0x013B866C (the character start holy site name)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -196,13 +196,13 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
     CRetailVector<CThing*> sites;
     CopyHolySites(owner->HolySites.begin(), owner->HolySites.end(), back_inserter(sites));
     if (!RespawnValid) {
-        CThing** found = std::find_if(sites.begin(), sites.end(), std::bind2nd(std::ptr_fun(&IsThingScriptNamed), ((CWideString*)&g_CWideString_013b866c)->ToCharString()));
+        CThing** found = std::find_if(sites.begin(), sites.end(), std::bind2nd(std::ptr_fun(&IsThingScriptNamed), ((CWideString*)&GForceStartingHolySite)->ToCharString()));
         if (found != sites.end()) {
             *site = *found;
             return true;
         }
         CCharString message;
-        message.Sprintf("*** WARNING : failed to find a holy site with ScriptName %S", g_CWideString_013b866c.GetAsCharArray());
+        message.Sprintf("*** WARNING : failed to find a holy site with ScriptName %S", GForceStartingHolySite.GetAsCharArray());
         RespawnPos = C3DVector(0.0f, 0.0f, 0.0f);
     }
     CThing* best = 0;

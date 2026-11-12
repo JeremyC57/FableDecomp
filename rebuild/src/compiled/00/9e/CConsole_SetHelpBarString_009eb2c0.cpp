@@ -7,7 +7,7 @@
 //          0x009BA080; CParsedItem accessors 0x009B9880 / 0x009B9870 (both `lea eax,[ecx+8]`, labelled
 //          CModeBlock::GetAnimFilter); CConsole::FindInput(const CCharString&) 0x009EB220 (labelled
 //          StringMap_FindLowerBoundAndToLower); the input's virtual slot 4 (+0x10, GetHelp, CCharString by value).
-//          Globals: the "(" string g_CCharString_013caa48 (0x013CAA48), the "" literal 0x0122D70E.
+//          Globals: the "(" string OPEN_BRACKET (was g_CCharString_013caa48) (0x013CAA48), the "" literal 0x0122D70E.
 //
 // Shape: GetData's "" (0x0129AAF4) is an extern array so the "" literal (0x0122D70E) does not pool with it. The parser reads a by-value copy of the front entry; the item is a 12-byte {type, value, text} local.
 // The "(" test is an inline CCharString::operator==(char) (null data is false, else the strcmp intrinsic
@@ -52,7 +52,7 @@ public:
         return strcmp(PStringData->PData, text) == 0;
     }
 };
-extern CCharString g_CCharString_013caa48;  // 0x013CAA48 ("(")
+namespace { extern CCharString OPEN_BRACKET; }  // 0x013CAA48 ("(")
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
@@ -114,7 +114,7 @@ void CConsole_Retail::SetHelpBarString()
     CParsedItem item;
     if (parser.ReadNextItem(item) && item.Type == 2) {
         CConsoleInputBase* input = FindInput(item.GetString());
-        if (!(parser.ReadNextItem(item) && item.Type == 1) || item.GetSymbol() == g_CCharString_013caa48.GetData()[0]) {
+        if (!(parser.ReadNextItem(item) && item.Type == 1) || item.GetSymbol() == OPEN_BRACKET.GetData()[0]) {
             if (input) {
                 HelpBarString = input->GetHelp();
                 return;

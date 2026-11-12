@@ -7,7 +7,7 @@
 //          _Destroy_range 0x006F2300 + free 0x00BFEA14 inline); the attackers map's insert 0x006F1EF0;
 //          CDefinitionManager::GetDef<CAttackPatternDef>(const CCharString&, CDefPointer&) 0x006F0E10 (same-TU
 //          stand-in below) on the world's manager (+0x20, +0x10); ResetDefenderAttackPattern(CCombatantInfo&,
-//          CDefPointer) 0x006E8C30. Global: the "ATTACK_PATTERN_CONTINUOUS" string g_CCharString_013babb0.
+//          CDefPointer) 0x006E8C30. Global: the "ATTACK_PATTERN_CONTINUOUS" string DEFAULT_ATTACK_PATTERN_DEF_NAME (was g_CCharString_013babb0).
 //
 // Shape: the new record is a named local (Parent and Attacked stored after its ctor) copied into a pair temporary
 // for insert; both are destroyed inline, and the insert result is a named pair read after the temporary dies. The def pointer is loaded once after GetDef (the stand-in shows its
@@ -20,7 +20,7 @@ extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 class CCharString { public:
     void* m_pData;
 };
-extern CCharString g_CCharString_013babb0;  // 0x013BABB0 ("ATTACK_PATTERN_CONTINUOUS")
+namespace { extern CCharString DEFAULT_ATTACK_PATTERN_DEF_NAME; }  // 0x013BABB0 ("ATTACK_PATTERN_CONTINUOUS")
 
 class CDefPointeeBase { public:                    // a counted definition object
     virtual void v000();
@@ -191,7 +191,7 @@ void CCombatManager::RegisterAttackedCombatant(CThingCreatureBase& attacker, CTh
     CCombatantInfo& info = it->value;
     info.DefenderInfo.Attackers.insert(SAttackerValue(attacker.GetUID(), &attacker));
     CAttackPatternPointer pattern;
-    World->DefinitionManager->GetDef(g_CCharString_013babb0, pattern);
+    World->DefinitionManager->GetDef(DEFAULT_ATTACK_PATTERN_DEF_NAME, pattern);
     ResetDefenderAttackPattern(info, pattern);
     attacked.IsAttackedCombatant = true;
 }

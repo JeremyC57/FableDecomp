@@ -5,7 +5,7 @@
 //   GlobalThingLoadingBehaviour test (+0x80) and WorldMap (+0x28) match the CThingManager constructor 0x00523540.
 //   Catalog label "LoadGlobalThingBatch" is descriptive (label correction).
 // Callees: malloc 0x00BFEA0E (the set header), CCharString copy 0x0099EC30 (CLevelLoader::GetLoadAllSectionName inline: a copy of
-//   CLevelLoader::LoadAllSectionName "XXX_ALL" 0x013BAB08, bound g_CCharString_013bab08), set<CCharString>'s
+//   CLevelLoader::LoadAllSectionName "XXX_ALL" 0x013BAB08, was bound as g_CCharString_013bab08), set<CCharString>'s
 //   _Rb_tree::insert_unique 0x004AC380, ~CCharString 0x0099EAE0, CWorldMap::GetLoadableSections() const slot 26 (+0x68,
 //   0x004FF490; the by-value set is built straight into LoadFromFile's argument slot), CThingManager::LoadFromFile 0x00521AE0,
 //   CThingManager::ActivateThings(const vector<CThing*>&) 0x0051E2F0, free 0x00BFEA14, _Rb_tree::_M_erase 0x004ABA70 (private),
@@ -143,10 +143,10 @@ public:
 };
 enum EGlobalThingLoadingBehaviour { GLOBAL_THING_LOADING_BEHAVIOUR_0, GLOBAL_THING_LOADING_BEHAVIOUR_1 };
 
-extern CCharString g_CCharString_013bab08;                  // 0x013BAB08 = CLevelLoader::LoadAllSectionName ("XXX_ALL")
 class CLevelLoader {
 public:
-    static CCharString __fastcall GetLoadAllSectionName() { return g_CCharString_013bab08; }   // FableWin.pdb, inline here
+    static CCharString LoadAllSectionName;                     // 0x013BAB08 ("XXX_ALL"; was g_CCharString_013bab08)
+    static CCharString __fastcall GetLoadAllSectionName() { return LoadAllSectionName; }   // FableWin.pdb, inline here
 };
 
 class CThingManager {

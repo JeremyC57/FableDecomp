@@ -40,7 +40,7 @@
 #include "engine/CMeshDataBank.h"
 #include "engine/CTCDoor.h"
 
-extern const CCharString g_DoorOpenAnimName;                   // 0x013BAD34 ("DOOR_OPEN")
+namespace { extern const CCharString SDoorOpenAnim; }                   // 0x013BAD34 ("DOOR_OPEN")
 
 void CTCDoor::UpdateOpenStatusTriggerTypeScript()
 {
@@ -49,7 +49,7 @@ void CTCDoor::UpdateOpenStatusTriggerTypeScript()
             Open(true);
             CDefPointer<const CAppearanceDef> appearance;
             ParentThing->PeekBaseDef().GetSubDef(&appearance);
-            const CAnimationEntry& entry = appearance->Animation.GetAnim(g_DoorOpenAnimName, 0, CAnimFilterNoGroup());
+            const CAnimationEntry& entry = appearance->Animation.GetAnim(SDoorOpenAnim, 0, CAnimFilterNoGroup());
             GetWorld().GetMeshBank()->PeekAnimation(entry.BankIndex);
         } else {
             Close();

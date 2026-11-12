@@ -142946,533 +142946,533 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01219f20'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b85e0_01219f20.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b85e0_01219f20_test.cpp'
+        Source = '01/21/staticinit_GVersionString_01219f20.cpp'
+        TestSource = '01/21/staticinit_GVersionString_01219f20_test.cpp'
         PassPattern = '01219f20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a000'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8670_0121a000.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8670_0121a000_test.cpp'
+        Source = '01/21/staticinit_GDummyObjectFilter_0121a000.cpp'
+        TestSource = '01/21/staticinit_GDummyObjectFilter_0121a000_test.cpp'
         PassPattern = '0121a000_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a050'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b86f4_0121a050.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b86f4_0121a050_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a050.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a050_test.cpp'
         PassPattern = '0121a050_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a070'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b86f8_0121a070.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b86f8_0121a070_test.cpp'
+        Source = '01/21/staticinit_GDebugPlaySpeechForNarratorName_0121a070.cpp'
+        TestSource = '01/21/staticinit_GDebugPlaySpeechForNarratorName_0121a070_test.cpp'
         PassPattern = '0121a070_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a0b0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8700_0121a0b0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8700_0121a0b0_test.cpp'
+        Source = '01/21/staticinit_NGlobalConsoleLastSpeechSubString_0121a0b0.cpp'
+        TestSource = '01/21/staticinit_NGlobalConsoleLastSpeechSubString_0121a0b0_test.cpp'
         PassPattern = '0121a0b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a0d0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8704_0121a0d0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8704_0121a0d0_test.cpp'
+        Source = '01/21/staticinit_NGlobalConsoleLastSpeechSymbol_0121a0d0.cpp'
+        TestSource = '01/21/staticinit_NGlobalConsoleLastSpeechSymbol_0121a0d0_test.cpp'
         PassPattern = '0121a0d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a0f0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8708_0121a0f0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8708_0121a0f0_test.cpp'
+        Source = '01/21/staticinit_NGlobalConsoleGConsoleDebugString_0121a0f0.cpp'
+        TestSource = '01/21/staticinit_NGlobalConsoleGConsoleDebugString_0121a0f0_test.cpp'
         PassPattern = '0121a0f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a2f0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8778_0121a2f0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8778_0121a2f0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a2f0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a2f0_test.cpp'
         PassPattern = '0121a2f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a330'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8788_0121a330.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8788_0121a330_test.cpp'
+        Source = '01/21/staticinit_GUIFONTNAME_0121a330.cpp'
+        TestSource = '01/21/staticinit_GUIFONTNAME_0121a330_test.cpp'
         PassPattern = '0121a330_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a3c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b89d4_0121a3c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b89d4_0121a3c0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a3c0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a3c0_test.cpp'
         PassPattern = '0121a3c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a650'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8a7c_0121a650.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8a7c_0121a650_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a650.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a650_test.cpp'
         PassPattern = '0121a650_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121df30'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013ba878_0121df30.cpp'
-        TestSource = '01/21/staticinit_gCCharString013ba878_0121df30_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121df30.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121df30_test.cpp'
         PassPattern = '0121df30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121df50'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013ba87c_0121df50.cpp'
-        TestSource = '01/21/staticinit_gCCharString013ba87c_0121df50_test.cpp'
+        Source = '01/21/staticinit_MISSINGANIMSHOWIFSTARTSWITH_0121df50.cpp'
+        TestSource = '01/21/staticinit_MISSINGANIMSHOWIFSTARTSWITH_0121df50_test.cpp'
         PassPattern = '0121df50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121df90'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013ba884_0121df90.cpp'
-        TestSource = '01/21/staticinit_gCCharString013ba884_0121df90_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121df90.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121df90_test.cpp'
         PassPattern = '0121df90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121dfc0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013ba894_0121dfc0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013ba894_0121dfc0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121dfc0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121dfc0_test.cpp'
         PassPattern = '0121dfc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121dfe0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013ba898_0121dfe0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013ba898_0121dfe0_test.cpp'
+        Source = '01/21/staticinit_UNKNOWNTHREATOPINIONSOURCE_0121dfe0.cpp'
+        TestSource = '01/21/staticinit_UNKNOWNTHREATOPINIONSOURCE_0121dfe0_test.cpp'
         PassPattern = '0121dfe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e0c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baaf8_0121e0c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baaf8_0121e0c0_test.cpp'
+        Source = '01/21/staticinit_MAINSIGNPOSTDEFNAME_0121e0c0.cpp'
+        TestSource = '01/21/staticinit_MAINSIGNPOSTDEFNAME_0121e0c0_test.cpp'
         PassPattern = '0121e0c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e0e0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baafc_0121e0e0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baafc_0121e0e0_test.cpp'
+        Source = '01/21/staticinit_DRESSINGSIGNPOSTDEFNAME_0121e0e0.cpp'
+        TestSource = '01/21/staticinit_DRESSINGSIGNPOSTDEFNAME_0121e0e0_test.cpp'
         PassPattern = '0121e0e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e100'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab00_0121e100.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab00_0121e100_test.cpp'
+        Source = '01/21/staticinit_MAINOWNEDSIGNPOSTDEFNAME_0121e100.cpp'
+        TestSource = '01/21/staticinit_MAINOWNEDSIGNPOSTDEFNAME_0121e100_test.cpp'
         PassPattern = '0121e100_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e120'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab04_0121e120.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab04_0121e120_test.cpp'
+        Source = '01/21/staticinit_MAINRENTSIGNPOSTDEFNAME_0121e120.cpp'
+        TestSource = '01/21/staticinit_MAINRENTSIGNPOSTDEFNAME_0121e120_test.cpp'
         PassPattern = '0121e120_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e140'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab08_0121e140.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab08_0121e140_test.cpp'
+        Source = '01/21/staticinit_CLevelLoaderLoadAllSectionName_0121e140.cpp'
+        TestSource = '01/21/staticinit_CLevelLoaderLoadAllSectionName_0121e140_test.cpp'
         PassPattern = '0121e140_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e160'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab0c_0121e160.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab0c_0121e160_test.cpp'
+        Source = '01/21/staticinit_CLevelLoaderGlobalSectionName_0121e160.cpp'
+        TestSource = '01/21/staticinit_CLevelLoaderGlobalSectionName_0121e160_test.cpp'
         PassPattern = '0121e160_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e190'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab18_0121e190.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab18_0121e190_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e190.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e190_test.cpp'
         PassPattern = '0121e190_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e1b0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab1c_0121e1b0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab1c_0121e1b0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e1b0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e1b0_test.cpp'
         PassPattern = '0121e1b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e1d0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab28_0121e1d0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab28_0121e1d0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e1d0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e1d0_test.cpp'
         PassPattern = '0121e1d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e1f0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab2c_0121e1f0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab2c_0121e1f0_test.cpp'
+        Source = '01/21/staticinit_CTCWifeMarriageEnabledMaleVoice_0121e1f0.cpp'
+        TestSource = '01/21/staticinit_CTCWifeMarriageEnabledMaleVoice_0121e1f0_test.cpp'
         PassPattern = '0121e1f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e380'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bab80_0121e380.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bab80_0121e380_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e380.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e380_test.cpp'
         PassPattern = '0121e380_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e420'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013babb0_0121e420.cpp'
-        TestSource = '01/21/staticinit_gCCharString013babb0_0121e420_test.cpp'
+        Source = '01/21/staticinit_DEFAULTATTACKPATTERNDEFNAME_0121e420.cpp'
+        TestSource = '01/21/staticinit_DEFAULTATTACKPATTERNDEFNAME_0121e420_test.cpp'
         PassPattern = '0121e420_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e460'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013babc8_0121e460.cpp'
-        TestSource = '01/21/staticinit_gCCharString013babc8_0121e460_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e460.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121e460_test.cpp'
         PassPattern = '0121e460_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e5c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac18_0121e5c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac18_0121e5c0_test.cpp'
+        Source = '01/21/staticinit_CTCDayOrNightOnlySupportDAYONLYSUFFIX_0121e5c0.cpp'
+        TestSource = '01/21/staticinit_CTCDayOrNightOnlySupportDAYONLYSUFFIX_0121e5c0_test.cpp'
         PassPattern = '0121e5c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e5e0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac1c_0121e5e0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac1c_0121e5e0_test.cpp'
+        Source = '01/21/staticinit_CTCDayOrNightOnlySupportNIGHTONLYSUFFIX_0121e5e0.cpp'
+        TestSource = '01/21/staticinit_CTCDayOrNightOnlySupportNIGHTONLYSUFFIX_0121e5e0_test.cpp'
         PassPattern = '0121e5e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e600'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac30_0121e600.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac30_0121e600_test.cpp'
+        Source = '01/21/staticinit_PRIMARYHOLDABLEWEAPONDUMMYOBJECTNAME_0121e600.cpp'
+        TestSource = '01/21/staticinit_PRIMARYHOLDABLEWEAPONDUMMYOBJECTNAME_0121e600_test.cpp'
         PassPattern = '0121e600_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e620'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac34_0121e620.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac34_0121e620_test.cpp'
+        Source = '01/21/staticinit_SECONDARYHOLDABLEWEAPONDUMMYOBJECTNAME_0121e620.cpp'
+        TestSource = '01/21/staticinit_SECONDARYHOLDABLEWEAPONDUMMYOBJECTNAME_0121e620_test.cpp'
         PassPattern = '0121e620_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e640'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac38_0121e640.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac38_0121e640_test.cpp'
+        Source = '01/21/staticinit_STARTWEAPONPOINTNAME_0121e640.cpp'
+        TestSource = '01/21/staticinit_STARTWEAPONPOINTNAME_0121e640_test.cpp'
         PassPattern = '0121e640_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e660'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac3c_0121e660.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac3c_0121e660_test.cpp'
+        Source = '01/21/staticinit_ENDWEAPONPOINTNAME_0121e660.cpp'
+        TestSource = '01/21/staticinit_ENDWEAPONPOINTNAME_0121e660_test.cpp'
         PassPattern = '0121e660_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e680'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac40_0121e680.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac40_0121e680_test.cpp'
+        Source = '01/21/staticinit_STARTWEAPONPOINTNAME2_0121e680.cpp'
+        TestSource = '01/21/staticinit_STARTWEAPONPOINTNAME2_0121e680_test.cpp'
         PassPattern = '0121e680_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e6a0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac44_0121e6a0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac44_0121e6a0_test.cpp'
+        Source = '01/21/staticinit_ENDWEAPONPOINTNAME2_0121e6a0.cpp'
+        TestSource = '01/21/staticinit_ENDWEAPONPOINTNAME2_0121e6a0_test.cpp'
         PassPattern = '0121e6a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e6c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac48_0121e6c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac48_0121e6c0_test.cpp'
+        Source = '01/21/staticinit_MAINFOCALPOSITIONNAME_0121e6c0.cpp'
+        TestSource = '01/21/staticinit_MAINFOCALPOSITIONNAME_0121e6c0_test.cpp'
         PassPattern = '0121e6c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e6e0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac4c_0121e6e0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac4c_0121e6e0_test.cpp'
+        Source = '01/21/staticinit_CAMERAFOCALPOSITIONNAME_0121e6e0.cpp'
+        TestSource = '01/21/staticinit_CAMERAFOCALPOSITIONNAME_0121e6e0_test.cpp'
         PassPattern = '0121e6e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e700'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac50_0121e700.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac50_0121e700_test.cpp'
+        Source = '01/21/staticinit_TARGETINGCURSORPOSITIONNAME_0121e700.cpp'
+        TestSource = '01/21/staticinit_TARGETINGCURSORPOSITIONNAME_0121e700_test.cpp'
         PassPattern = '0121e700_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e720'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac54_0121e720.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac54_0121e720_test.cpp'
+        Source = '01/21/staticinit_EYELEFTDUMMYOBJECTNAME_0121e720.cpp'
+        TestSource = '01/21/staticinit_EYELEFTDUMMYOBJECTNAME_0121e720_test.cpp'
         PassPattern = '0121e720_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e740'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac58_0121e740.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac58_0121e740_test.cpp'
+        Source = '01/21/staticinit_EYERIGHTDUMMYOBJECTNAME_0121e740.cpp'
+        TestSource = '01/21/staticinit_EYERIGHTDUMMYOBJECTNAME_0121e740_test.cpp'
         PassPattern = '0121e740_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e760'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac5c_0121e760.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac5c_0121e760_test.cpp'
+        Source = '01/21/staticinit_HEADPOSHELPERNAME_0121e760.cpp'
+        TestSource = '01/21/staticinit_HEADPOSHELPERNAME_0121e760_test.cpp'
         PassPattern = '0121e760_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e780'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac60_0121e780.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac60_0121e780_test.cpp'
+        Source = '01/21/staticinit_MOUTHDUMMYOBJECTNAME_0121e780.cpp'
+        TestSource = '01/21/staticinit_MOUTHDUMMYOBJECTNAME_0121e780_test.cpp'
         PassPattern = '0121e780_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e7a0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac64_0121e7a0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac64_0121e7a0_test.cpp'
+        Source = '01/21/staticinit_STRIKEEVENTWEAPONSTARTIDENTIFIER_0121e7a0.cpp'
+        TestSource = '01/21/staticinit_STRIKEEVENTWEAPONSTARTIDENTIFIER_0121e7a0_test.cpp'
         PassPattern = '0121e7a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e7c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac68_0121e7c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac68_0121e7c0_test.cpp'
+        Source = '01/21/staticinit_STRIKEEVENTWEAPONENDIDENTIFIER_0121e7c0.cpp'
+        TestSource = '01/21/staticinit_STRIKEEVENTWEAPONENDIDENTIFIER_0121e7c0_test.cpp'
         PassPattern = '0121e7c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e7e0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac6c_0121e7e0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac6c_0121e7e0_test.cpp'
+        Source = '01/21/staticinit_STRIKEEVENTSTARTIDENTIFIER_0121e7e0.cpp'
+        TestSource = '01/21/staticinit_STRIKEEVENTSTARTIDENTIFIER_0121e7e0_test.cpp'
         PassPattern = '0121e7e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e800'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac70_0121e800.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac70_0121e800_test.cpp'
+        Source = '01/21/staticinit_STRIKEEVENTENDIDENTIFIER_0121e800.cpp'
+        TestSource = '01/21/staticinit_STRIKEEVENTENDIDENTIFIER_0121e800_test.cpp'
         PassPattern = '0121e800_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e820'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac74_0121e820.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac74_0121e820_test.cpp'
+        Source = '01/21/staticinit_STRIKEEVENTRESETCOMBO_0121e820.cpp'
+        TestSource = '01/21/staticinit_STRIKEEVENTRESETCOMBO_0121e820_test.cpp'
         PassPattern = '0121e820_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e840'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac78_0121e840.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac78_0121e840_test.cpp'
+        Source = '01/21/staticinit_STRIKEEVENTBEGINLEGACY_0121e840.cpp'
+        TestSource = '01/21/staticinit_STRIKEEVENTBEGINLEGACY_0121e840_test.cpp'
         PassPattern = '0121e840_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e860'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac7c_0121e860.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac7c_0121e860_test.cpp'
+        Source = '01/21/staticinit_STRIKEEVENTENDLEGACY_0121e860.cpp'
+        TestSource = '01/21/staticinit_STRIKEEVENTENDLEGACY_0121e860_test.cpp'
         PassPattern = '0121e860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e880'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac80_0121e880.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac80_0121e880_test.cpp'
+        Source = '01/21/staticinit_SECONDARYSTRIKEEVENTBEGINLEGACY_0121e880.cpp'
+        TestSource = '01/21/staticinit_SECONDARYSTRIKEEVENTBEGINLEGACY_0121e880_test.cpp'
         PassPattern = '0121e880_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e8a0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac84_0121e8a0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac84_0121e8a0_test.cpp'
+        Source = '01/21/staticinit_SECONDARYSTRIKEEVENTENDLEGACY_0121e8a0.cpp'
+        TestSource = '01/21/staticinit_SECONDARYSTRIKEEVENTENDLEGACY_0121e8a0_test.cpp'
         PassPattern = '0121e8a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e8c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac88_0121e8c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac88_0121e8c0_test.cpp'
+        Source = '01/21/staticinit_STRIKEACTIONFINISHED_0121e8c0.cpp'
+        TestSource = '01/21/staticinit_STRIKEACTIONFINISHED_0121e8c0_test.cpp'
         PassPattern = '0121e8c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e8e0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac8c_0121e8e0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac8c_0121e8e0_test.cpp'
+        Source = '01/21/staticinit_ACTIONLATESTSTARTTIME_0121e8e0.cpp'
+        TestSource = '01/21/staticinit_ACTIONLATESTSTARTTIME_0121e8e0_test.cpp'
         PassPattern = '0121e8e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e900'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac90_0121e900.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac90_0121e900_test.cpp'
+        Source = '01/21/staticinit_ACTIONPAUSEONTHISFRAME_0121e900.cpp'
+        TestSource = '01/21/staticinit_ACTIONPAUSEONTHISFRAME_0121e900_test.cpp'
         PassPattern = '0121e900_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e920'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac94_0121e920.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac94_0121e920_test.cpp'
+        Source = '01/21/staticinit_NAVIGATIONTRANSITIONPOINT_0121e920.cpp'
+        TestSource = '01/21/staticinit_NAVIGATIONTRANSITIONPOINT_0121e920_test.cpp'
         PassPattern = '0121e920_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e940'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac98_0121e940.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac98_0121e940_test.cpp'
+        Source = '01/21/staticinit_BUILDINGBOUNDRY_0121e940.cpp'
+        TestSource = '01/21/staticinit_BUILDINGBOUNDRY_0121e940_test.cpp'
         PassPattern = '0121e940_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e960'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bac9c_0121e960.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bac9c_0121e960_test.cpp'
+        Source = '01/21/staticinit_ACTIONPOINT_0121e960.cpp'
+        TestSource = '01/21/staticinit_ACTIONPOINT_0121e960_test.cpp'
         PassPattern = '0121e960_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e980'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baca0_0121e980.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baca0_0121e980_test.cpp'
+        Source = '01/21/staticinit_ACTIONPOINT01_0121e980.cpp'
+        TestSource = '01/21/staticinit_ACTIONPOINT01_0121e980_test.cpp'
         PassPattern = '0121e980_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e9a0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baca4_0121e9a0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baca4_0121e9a0_test.cpp'
+        Source = '01/21/staticinit_ACTIONPOINTSWAB01_0121e9a0.cpp'
+        TestSource = '01/21/staticinit_ACTIONPOINTSWAB01_0121e9a0_test.cpp'
         PassPattern = '0121e9a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e9c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baca8_0121e9c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baca8_0121e9c0_test.cpp'
+        Source = '01/21/staticinit_ACTIONPOINTSWAB02_0121e9c0.cpp'
+        TestSource = '01/21/staticinit_ACTIONPOINTSWAB02_0121e9c0_test.cpp'
         PassPattern = '0121e9c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121e9e0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacac_0121e9e0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacac_0121e9e0_test.cpp'
+        Source = '01/21/staticinit_ACTIONPOINTADJUST01_0121e9e0.cpp'
+        TestSource = '01/21/staticinit_ACTIONPOINTADJUST01_0121e9e0_test.cpp'
         PassPattern = '0121e9e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ea00'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacb0_0121ea00.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacb0_0121ea00_test.cpp'
+        Source = '01/21/staticinit_ACTIONPOINTBEDSTARTNAME_0121ea00.cpp'
+        TestSource = '01/21/staticinit_ACTIONPOINTBEDSTARTNAME_0121ea00_test.cpp'
         PassPattern = '0121ea00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ea20'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacb4_0121ea20.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacb4_0121ea20_test.cpp'
+        Source = '01/21/staticinit_SHOTCREATIONDUMMY_0121ea20.cpp'
+        TestSource = '01/21/staticinit_SHOTCREATIONDUMMY_0121ea20_test.cpp'
         PassPattern = '0121ea20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ea40'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacb8_0121ea40.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacb8_0121ea40_test.cpp'
+        Source = '01/21/staticinit_SHOTCREATIONPOINT_0121ea40.cpp'
+        TestSource = '01/21/staticinit_SHOTCREATIONPOINT_0121ea40_test.cpp'
         PassPattern = '0121ea40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ea60'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacbc_0121ea60.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacbc_0121ea60_test.cpp'
+        Source = '01/21/staticinit_WEAPONSCABBARDPOS_0121ea60.cpp'
+        TestSource = '01/21/staticinit_WEAPONSCABBARDPOS_0121ea60_test.cpp'
         PassPattern = '0121ea60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ea80'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacc0_0121ea80.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacc0_0121ea80_test.cpp'
+        Source = '01/21/staticinit_CHIMNEYFOCUSSTARTNAME_0121ea80.cpp'
+        TestSource = '01/21/staticinit_CHIMNEYFOCUSSTARTNAME_0121ea80_test.cpp'
         PassPattern = '0121ea80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eaa0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacc4_0121eaa0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacc4_0121eaa0_test.cpp'
+        Source = '01/21/staticinit_OBJECTGROUPPREFIX_0121eaa0.cpp'
+        TestSource = '01/21/staticinit_OBJECTGROUPPREFIX_0121eaa0_test.cpp'
         PassPattern = '0121eaa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eac0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacc8_0121eac0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacc8_0121eac0_test.cpp'
+        Source = '01/21/staticinit_MESHLIGHTPOINTNAME_0121eac0.cpp'
+        TestSource = '01/21/staticinit_MESHLIGHTPOINTNAME_0121eac0_test.cpp'
         PassPattern = '0121eac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eae0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baccc_0121eae0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baccc_0121eae0_test.cpp'
+        Source = '01/21/staticinit_MESHFLAREPOINTNAME_0121eae0.cpp'
+        TestSource = '01/21/staticinit_MESHFLAREPOINTNAME_0121eae0_test.cpp'
         PassPattern = '0121eae0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eb00'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacd0_0121eb00.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacd0_0121eb00_test.cpp'
+        Source = '01/21/staticinit_PERFORMACTION_0121eb00.cpp'
+        TestSource = '01/21/staticinit_PERFORMACTION_0121eb00_test.cpp'
         PassPattern = '0121eb00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eb20'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacd4_0121eb20.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacd4_0121eb20_test.cpp'
+        Source = '01/21/staticinit_CASTFIREBALL_0121eb20.cpp'
+        TestSource = '01/21/staticinit_CASTFIREBALL_0121eb20_test.cpp'
         PassPattern = '0121eb20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eb40'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacd8_0121eb40.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacd8_0121eb40_test.cpp'
+        Source = '01/21/staticinit_CUTSCENEEVENTPREFIX_0121eb40.cpp'
+        TestSource = '01/21/staticinit_CUTSCENEEVENTPREFIX_0121eb40_test.cpp'
         PassPattern = '0121eb40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eb60'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacdc_0121eb60.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacdc_0121eb60_test.cpp'
+        Source = '01/21/staticinit_STABPOS_0121eb60.cpp'
+        TestSource = '01/21/staticinit_STABPOS_0121eb60_test.cpp'
         PassPattern = '0121eb60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eb80'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bace0_0121eb80.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bace0_0121eb80_test.cpp'
+        Source = '01/21/staticinit_COMBATACTIONEVENTALLOWMOVEMENTINTERRUPT_0121eb80.cpp'
+        TestSource = '01/21/staticinit_COMBATACTIONEVENTALLOWMOVEMENTINTERRUPT_0121eb80_test.cpp'
         PassPattern = '0121eb80_TEST PASS'
     }
     [pscustomobject]@{
@@ -143492,239 +143492,239 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121ebe0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacec_0121ebe0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacec_0121ebe0_test.cpp'
+        Source = '01/21/staticinit_CARRYSLOTLEFTHAND_0121ebe0.cpp'
+        TestSource = '01/21/staticinit_CARRYSLOTLEFTHAND_0121ebe0_test.cpp'
         PassPattern = '0121ebe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ec00'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacf0_0121ec00.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacf0_0121ec00_test.cpp'
+        Source = '01/21/staticinit_CARRYSLOTRIGHTHAND_0121ec00.cpp'
+        TestSource = '01/21/staticinit_CARRYSLOTRIGHTHAND_0121ec00_test.cpp'
         PassPattern = '0121ec00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ec20'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacf4_0121ec20.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacf4_0121ec20_test.cpp'
+        Source = '01/21/staticinit_CARRYSLOTPRIMARYSHEATHE_0121ec20.cpp'
+        TestSource = '01/21/staticinit_CARRYSLOTPRIMARYSHEATHE_0121ec20_test.cpp'
         PassPattern = '0121ec20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ec40'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacf8_0121ec40.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacf8_0121ec40_test.cpp'
+        Source = '01/21/staticinit_CARRYSLOTSECONDARYSHEATHE_0121ec40.cpp'
+        TestSource = '01/21/staticinit_CARRYSLOTSECONDARYSHEATHE_0121ec40_test.cpp'
         PassPattern = '0121ec40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ec60'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bacfc_0121ec60.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bacfc_0121ec60_test.cpp'
+        Source = '01/21/staticinit_CARRYSLOTBELT_0121ec60.cpp'
+        TestSource = '01/21/staticinit_CARRYSLOTBELT_0121ec60_test.cpp'
         PassPattern = '0121ec60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ecc0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad2c_0121ecc0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad2c_0121ecc0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121ecc0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121ecc0_test.cpp'
         PassPattern = '0121ecc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ece0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad30_0121ece0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad30_0121ece0_test.cpp'
+        Source = '01/21/staticinit_SHEATHACTIONNAME_0121ece0.cpp'
+        TestSource = '01/21/staticinit_SHEATHACTIONNAME_0121ece0_test.cpp'
         PassPattern = '0121ece0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ed00'
         Module = '_static_init'
-        Source = '01/21/staticinit_gDoorOpenAnimName_0121ed00.cpp'
-        TestSource = '01/21/staticinit_gDoorOpenAnimName_0121ed00_test.cpp'
+        Source = '01/21/staticinit_SDoorOpenAnim_0121ed00.cpp'
+        TestSource = '01/21/staticinit_SDoorOpenAnim_0121ed00_test.cpp'
         PassPattern = '0121ed00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ed20'
         Module = '_static_init'
-        Source = '01/21/staticinit_gDoorCloseAnimName_0121ed20.cpp'
-        TestSource = '01/21/staticinit_gDoorCloseAnimName_0121ed20_test.cpp'
+        Source = '01/21/staticinit_SDoorCloseAnim_0121ed20.cpp'
+        TestSource = '01/21/staticinit_SDoorCloseAnim_0121ed20_test.cpp'
         PassPattern = '0121ed20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ed40'
         Module = '_static_init'
-        Source = '01/21/staticinit_gClockHandTurnName_0121ed40.cpp'
-        TestSource = '01/21/staticinit_gClockHandTurnName_0121ed40_test.cpp'
+        Source = '01/21/staticinit_SClockTurnAnim_0121ed40.cpp'
+        TestSource = '01/21/staticinit_SClockTurnAnim_0121ed40_test.cpp'
         PassPattern = '0121ed40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ed90'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad5c_0121ed90.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad5c_0121ed90_test.cpp'
+        Source = '01/21/staticinit_CLOCKWISE90_0121ed90.cpp'
+        TestSource = '01/21/staticinit_CLOCKWISE90_0121ed90_test.cpp'
         PassPattern = '0121ed90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121edb0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad60_0121edb0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad60_0121edb0_test.cpp'
+        Source = '01/21/staticinit_ANTICLOCKWISE90_0121edb0.cpp'
+        TestSource = '01/21/staticinit_ANTICLOCKWISE90_0121edb0_test.cpp'
         PassPattern = '0121edb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121edd0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad64_0121edd0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad64_0121edd0_test.cpp'
+        Source = '01/21/staticinit_CLOCKWISE180_0121edd0.cpp'
+        TestSource = '01/21/staticinit_CLOCKWISE180_0121edd0_test.cpp'
         PassPattern = '0121edd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121edf0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad68_0121edf0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad68_0121edf0_test.cpp'
+        Source = '01/21/staticinit_ANTICLOCKWISE180_0121edf0.cpp'
+        TestSource = '01/21/staticinit_ANTICLOCKWISE180_0121edf0_test.cpp'
         PassPattern = '0121edf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ee30'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad8c_0121ee30.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad8c_0121ee30_test.cpp'
+        Source = '01/21/staticinit_CLOSEDSTRINGNAME_0121ee30.cpp'
+        TestSource = '01/21/staticinit_CLOSEDSTRINGNAME_0121ee30_test.cpp'
         PassPattern = '0121ee30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ee50'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bad90_0121ee50.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bad90_0121ee50_test.cpp'
+        Source = '01/21/staticinit_LINESTRINGNAME_0121ee50.cpp'
+        TestSource = '01/21/staticinit_LINESTRINGNAME_0121ee50_test.cpp'
         PassPattern = '0121ee50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eed0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bada4_0121eed0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bada4_0121eed0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121eed0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121eed0_test.cpp'
         PassPattern = '0121eed0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eef0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bada8_0121eef0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bada8_0121eef0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121eef0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121eef0_test.cpp'
         PassPattern = '0121eef0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ef10'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013badac_0121ef10.cpp'
-        TestSource = '01/21/staticinit_gCCharString013badac_0121ef10_test.cpp'
+        Source = '01/21/staticinit_QUESTCARDPOSMARKERNAMEPREFIX_0121ef10.cpp'
+        TestSource = '01/21/staticinit_QUESTCARDPOSMARKERNAMEPREFIX_0121ef10_test.cpp'
         PassPattern = '0121ef10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ef50'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baddc_0121ef50.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baddc_0121ef50_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121ef50.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121ef50_test.cpp'
         PassPattern = '0121ef50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121efa0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bade4_0121efa0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bade4_0121efa0_test.cpp'
+        Source = '01/21/staticinit_BOASTINGCROWDHOOKQUESTNAME_0121efa0.cpp'
+        TestSource = '01/21/staticinit_BOASTINGCROWDHOOKQUESTNAME_0121efa0_test.cpp'
         PassPattern = '0121efa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121efc0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bade8_0121efc0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bade8_0121efc0_test.cpp'
+        Source = '01/21/staticinit_BOASTINGCROWDMEMBERSCRIPTNAME_0121efc0.cpp'
+        TestSource = '01/21/staticinit_BOASTINGCROWDMEMBERSCRIPTNAME_0121efc0_test.cpp'
         PassPattern = '0121efc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121efe0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013badec_0121efe0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013badec_0121efe0_test.cpp'
+        Source = '01/21/staticinit_BOASTINGCROWDMARKERSCRIPTNAME_0121efe0.cpp'
+        TestSource = '01/21/staticinit_BOASTINGCROWDMARKERSCRIPTNAME_0121efe0_test.cpp'
         PassPattern = '0121efe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f0a0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bae08_0121f0a0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bae08_0121f0a0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f0a0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f0a0_test.cpp'
         PassPattern = '0121f0a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f0c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bae0c_0121f0c0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bae0c_0121f0c0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f0c0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f0c0_test.cpp'
         PassPattern = '0121f0c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f240'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bae6c_0121f240.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bae6c_0121f240_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f240.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f240_test.cpp'
         PassPattern = '0121f240_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f470'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baf0c_0121f470.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baf0c_0121f470_test.cpp'
+        Source = '01/21/staticinit_DECAPITATIONDUMMYOBJECTNAME_0121f470.cpp'
+        TestSource = '01/21/staticinit_DECAPITATIONDUMMYOBJECTNAME_0121f470_test.cpp'
         PassPattern = '0121f470_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f4b0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baf24_0121f4b0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baf24_0121f4b0_test.cpp'
+        Source = '01/21/staticinit_BOASTINGPOSITIONNAMEPREFIX_0121f4b0.cpp'
+        TestSource = '01/21/staticinit_BOASTINGPOSITIONNAMEPREFIX_0121f4b0_test.cpp'
         PassPattern = '0121f4b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f4d0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baf28_0121f4d0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baf28_0121f4d0_test.cpp'
+        Source = '01/21/staticinit_BOASTINGDRUMDEFNAME_0121f4d0.cpp'
+        TestSource = '01/21/staticinit_BOASTINGDRUMDEFNAME_0121f4d0_test.cpp'
         PassPattern = '0121f4d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f570'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baf40_0121f570.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baf40_0121f570_test.cpp'
+        Source = '01/21/staticinit_DEADANIMNAME_0121f570.cpp'
+        TestSource = '01/21/staticinit_DEADANIMNAME_0121f570_test.cpp'
         PassPattern = '0121f570_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f5f0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baf58_0121f5f0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baf58_0121f5f0_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f5f0.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f5f0_test.cpp'
         PassPattern = '0121f5f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f610'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baf5c_0121f610.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baf5c_0121f610_test.cpp'
+        Source = '01/21/staticinit_CWeaponDefTooHeavyAnimationGroupName_0121f610.cpp'
+        TestSource = '01/21/staticinit_CWeaponDefTooHeavyAnimationGroupName_0121f610_test.cpp'
         PassPattern = '0121f610_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f640'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bafa0_0121f640.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bafa0_0121f640_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f640.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f640_test.cpp'
         PassPattern = '0121f640_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f660'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bafa4_0121f660.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bafa4_0121f660_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f660.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f660_test.cpp'
         PassPattern = '0121f660_TEST PASS'
     }
     [pscustomobject]@{
@@ -143737,652 +143737,652 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121f760'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013bafd4_0121f760.cpp'
-        TestSource = '01/21/staticinit_gCCharString013bafd4_0121f760_test.cpp'
+        Source = '01/21/staticinit_DEFAULTSLEEPANIMNAME_0121f760.cpp'
+        TestSource = '01/21/staticinit_DEFAULTSLEEPANIMNAME_0121f760_test.cpp'
         PassPattern = '0121f760_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f810'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baff4_0121f810.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baff4_0121f810_test.cpp'
+        Source = '01/21/staticinit_NCombatActionHelpersWeaponPosLeftFootHelperName_0121f810.cpp'
+        TestSource = '01/21/staticinit_NCombatActionHelpersWeaponPosLeftFootHelperName_0121f810_test.cpp'
         PassPattern = '0121f810_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f830'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013baff8_0121f830.cpp'
-        TestSource = '01/21/staticinit_gCCharString013baff8_0121f830_test.cpp'
+        Source = '01/21/staticinit_NCombatActionHelpersWeaponPosRightFootHelperName_0121f830.cpp'
+        TestSource = '01/21/staticinit_NCombatActionHelpersWeaponPosRightFootHelperName_0121f830_test.cpp'
         PassPattern = '0121f830_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221860'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb668_01221860.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb668_01221860_test.cpp'
+        Source = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01221860.cpp'
+        TestSource = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01221860_test.cpp'
         PassPattern = '01221860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221880'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb66c_01221880.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb66c_01221880_test.cpp'
+        Source = '01/22/staticinit_SITONFLOORANIMNAME_01221880.cpp'
+        TestSource = '01/22/staticinit_SITONFLOORANIMNAME_01221880_test.cpp'
         PassPattern = '01221880_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012218a0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb670_012218a0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb670_012218a0_test.cpp'
+        Source = '01/22/staticinit_GETUPFROMFLOORANIMNAME_012218a0.cpp'
+        TestSource = '01/22/staticinit_GETUPFROMFLOORANIMNAME_012218a0_test.cpp'
         PassPattern = '012218a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012218c0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb674_012218c0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb674_012218c0_test.cpp'
+        Source = '01/22/staticinit_LOGDEFNAME_012218c0.cpp'
+        TestSource = '01/22/staticinit_LOGDEFNAME_012218c0_test.cpp'
         PassPattern = '012218c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012218e0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb678_012218e0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb678_012218e0_test.cpp'
+        Source = '01/22/staticinit_PICKUPANIMNAME_012218e0.cpp'
+        TestSource = '01/22/staticinit_PICKUPANIMNAME_012218e0_test.cpp'
         PassPattern = '012218e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221900'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb67c_01221900.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb67c_01221900_test.cpp'
+        Source = '01/22/staticinit_HOLDINGLOGANIMNAME_01221900.cpp'
+        TestSource = '01/22/staticinit_HOLDINGLOGANIMNAME_01221900_test.cpp'
         PassPattern = '01221900_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221920'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb680_01221920.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb680_01221920_test.cpp'
+        Source = '01/22/staticinit_PUTLOGINBONFIREANIMNAME_01221920.cpp'
+        TestSource = '01/22/staticinit_PUTLOGINBONFIREANIMNAME_01221920_test.cpp'
         PassPattern = '01221920_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221940'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb684_01221940.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb684_01221940_test.cpp'
+        Source = '01/22/staticinit_SUCCESSSTRING_01221940.cpp'
+        TestSource = '01/22/staticinit_SUCCESSSTRING_01221940_test.cpp'
         PassPattern = '01221940_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221960'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb688_01221960.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb688_01221960_test.cpp'
+        Source = '01/22/staticinit_FAILURESTRING_01221960.cpp'
+        TestSource = '01/22/staticinit_FAILURESTRING_01221960_test.cpp'
         PassPattern = '01221960_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221980'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb690_01221980.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb690_01221980_test.cpp'
+        Source = '01/22/staticinit_TEXTTOSAY_01221980.cpp'
+        TestSource = '01/22/staticinit_TEXTTOSAY_01221980_test.cpp'
         PassPattern = '01221980_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012219a0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb694_012219a0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb694_012219a0_test.cpp'
+        Source = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_012219a0.cpp'
+        TestSource = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_012219a0_test.cpp'
         PassPattern = '012219a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012219c0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6c0_012219c0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6c0_012219c0_test.cpp'
+        Source = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_012219c0.cpp'
+        TestSource = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_012219c0_test.cpp'
         PassPattern = '012219c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012219e0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6c4_012219e0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6c4_012219e0_test.cpp'
+        Source = '01/22/staticinit_HEEDSTRING_012219e0.cpp'
+        TestSource = '01/22/staticinit_HEEDSTRING_012219e0_test.cpp'
         PassPattern = '012219e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221a00'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6c8_01221a00.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6c8_01221a00_test.cpp'
+        Source = '01/22/staticinit_IGNORESTRING_01221a00.cpp'
+        TestSource = '01/22/staticinit_IGNORESTRING_01221a00_test.cpp'
         PassPattern = '01221a00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221a20'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6cc_01221a20.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6cc_01221a20_test.cpp'
+        Source = '01/22/staticinit_RUNAWAYSTRING_01221a20.cpp'
+        TestSource = '01/22/staticinit_RUNAWAYSTRING_01221a20_test.cpp'
         PassPattern = '01221a20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221a40'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6d0_01221a40.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6d0_01221a40_test.cpp'
+        Source = '01/22/staticinit_SEENMINORCRIMESTRING_01221a40.cpp'
+        TestSource = '01/22/staticinit_SEENMINORCRIMESTRING_01221a40_test.cpp'
         PassPattern = '01221a40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221a60'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6d4_01221a60.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6d4_01221a60_test.cpp'
+        Source = '01/22/staticinit_SEENMODERATECRIMESTRING_01221a60.cpp'
+        TestSource = '01/22/staticinit_SEENMODERATECRIMESTRING_01221a60_test.cpp'
         PassPattern = '01221a60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221a80'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6d8_01221a80.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6d8_01221a80_test.cpp'
+        Source = '01/22/staticinit_SEENSERIOUSCRIMESTRING_01221a80.cpp'
+        TestSource = '01/22/staticinit_SEENSERIOUSCRIMESTRING_01221a80_test.cpp'
         PassPattern = '01221a80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221aa0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6dc_01221aa0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6dc_01221aa0_test.cpp'
+        Source = '01/22/staticinit_SITONCHAIRANIMNAME_01221aa0.cpp'
+        TestSource = '01/22/staticinit_SITONCHAIRANIMNAME_01221aa0_test.cpp'
         PassPattern = '01221aa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221ac0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6e0_01221ac0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6e0_01221ac0_test.cpp'
+        Source = '01/22/staticinit_GETUPFROMCHAIRANIMNAME_01221ac0.cpp'
+        TestSource = '01/22/staticinit_GETUPFROMCHAIRANIMNAME_01221ac0_test.cpp'
         PassPattern = '01221ac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221ae0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6e4_01221ae0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6e4_01221ae0_test.cpp'
+        Source = '01/22/staticinit_SITONBENCHANIMNAME_01221ae0.cpp'
+        TestSource = '01/22/staticinit_SITONBENCHANIMNAME_01221ae0_test.cpp'
         PassPattern = '01221ae0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221b00'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6e8_01221b00.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6e8_01221b00_test.cpp'
+        Source = '01/22/staticinit_GETUPFROMBENCHANIMNAME_01221b00.cpp'
+        TestSource = '01/22/staticinit_GETUPFROMBENCHANIMNAME_01221b00_test.cpp'
         PassPattern = '01221b00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221b20'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6ec_01221b20.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6ec_01221b20_test.cpp'
+        Source = '01/22/staticinit_SITONFLOORANIMNAME_01221b20.cpp'
+        TestSource = '01/22/staticinit_SITONFLOORANIMNAME_01221b20_test.cpp'
         PassPattern = '01221b20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221b40'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb6f0_01221b40.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb6f0_01221b40_test.cpp'
+        Source = '01/22/staticinit_GETUPFROMFLOORANIMNAME_01221b40.cpp'
+        TestSource = '01/22/staticinit_GETUPFROMFLOORANIMNAME_01221b40_test.cpp'
         PassPattern = '01221b40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221bb0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb704_01221bb0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb704_01221bb0_test.cpp'
+        Source = '01/22/staticinit_SITONFLOORANIMNAME_01221bb0.cpp'
+        TestSource = '01/22/staticinit_SITONFLOORANIMNAME_01221bb0_test.cpp'
         PassPattern = '01221bb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221bd0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb708_01221bd0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb708_01221bd0_test.cpp'
+        Source = '01/22/staticinit_GETUPFROMFLOORANIMNAME_01221bd0.cpp'
+        TestSource = '01/22/staticinit_GETUPFROMFLOORANIMNAME_01221bd0_test.cpp'
         PassPattern = '01221bd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221c20'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb71c_01221c20.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb71c_01221c20_test.cpp'
+        Source = '01/22/staticinit_PICKUPANIMNAMELEVEL1_01221c20.cpp'
+        TestSource = '01/22/staticinit_PICKUPANIMNAMELEVEL1_01221c20_test.cpp'
         PassPattern = '01221c20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221c40'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb720_01221c40.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb720_01221c40_test.cpp'
+        Source = '01/22/staticinit_PUTCRATEINPILEANIMNAMELEVEL1_01221c40.cpp'
+        TestSource = '01/22/staticinit_PUTCRATEINPILEANIMNAMELEVEL1_01221c40_test.cpp'
         PassPattern = '01221c40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221c60'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb724_01221c60.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb724_01221c60_test.cpp'
+        Source = '01/22/staticinit_PICKUPANIMNAMELEVEL2_01221c60.cpp'
+        TestSource = '01/22/staticinit_PICKUPANIMNAMELEVEL2_01221c60_test.cpp'
         PassPattern = '01221c60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221c80'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb728_01221c80.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb728_01221c80_test.cpp'
+        Source = '01/22/staticinit_PUTCRATEINPILEANIMNAMELEVEL2_01221c80.cpp'
+        TestSource = '01/22/staticinit_PUTCRATEINPILEANIMNAMELEVEL2_01221c80_test.cpp'
         PassPattern = '01221c80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221ca0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb72c_01221ca0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb72c_01221ca0_test.cpp'
+        Source = '01/22/staticinit_NAMEOFBITCHINBOWL_01221ca0.cpp'
+        TestSource = '01/22/staticinit_NAMEOFBITCHINBOWL_01221ca0_test.cpp'
         PassPattern = '01221ca0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221cd0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb734_01221cd0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb734_01221cd0_test.cpp'
+        Source = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01221cd0.cpp'
+        TestSource = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01221cd0_test.cpp'
         PassPattern = '01221cd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221d00'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bb740_01221d00.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bb740_01221d00_test.cpp'
+        Source = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01221d00.cpp'
+        TestSource = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01221d00_test.cpp'
         PassPattern = '01221d00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01223c60'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bc3a0_01223c60.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bc3a0_01223c60_test.cpp'
+        Source = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01223c60.cpp'
+        TestSource = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01223c60_test.cpp'
         PassPattern = '01223c60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01223c90'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bc3a8_01223c90.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bc3a8_01223c90_test.cpp'
+        Source = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01223c90.cpp'
+        TestSource = '01/22/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_01223c90_test.cpp'
         PassPattern = '01223c90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01223cc0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bc440_01223cc0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bc440_01223cc0_test.cpp'
+        Source = '01/22/staticinit_CShaderStatsNoneStr_01223cc0.cpp'
+        TestSource = '01/22/staticinit_CShaderStatsNoneStr_01223cc0_test.cpp'
         PassPattern = '01223cc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224170'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013caa30_01224170.cpp'
-        TestSource = '01/22/staticinit_gCCharString013caa30_01224170_test.cpp'
+        Source = '01/22/staticinit_GNullName_01224170.cpp'
+        TestSource = '01/22/staticinit_GNullName_01224170_test.cpp'
         PassPattern = '01224170_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012241d0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013caa48_012241d0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013caa48_012241d0_test.cpp'
+        Source = '01/22/staticinit_OPENBRACKET_012241d0.cpp'
+        TestSource = '01/22/staticinit_OPENBRACKET_012241d0_test.cpp'
         PassPattern = '012241d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012241f0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013caa4c_012241f0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013caa4c_012241f0_test.cpp'
+        Source = '01/22/staticinit_CLOSEBRACKET_012241f0.cpp'
+        TestSource = '01/22/staticinit_CLOSEBRACKET_012241f0_test.cpp'
         PassPattern = '012241f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224210'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013caa50_01224210.cpp'
-        TestSource = '01/22/staticinit_gCCharString013caa50_01224210_test.cpp'
+        Source = '01/22/staticinit_SEPARATOR_01224210.cpp'
+        TestSource = '01/22/staticinit_SEPARATOR_01224210_test.cpp'
         PassPattern = '01224210_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012242d0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013d27e4_012242d0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013d27e4_012242d0_test.cpp'
+        Source = '01/22/staticinit_GNullName_012242d0.cpp'
+        TestSource = '01/22/staticinit_GNullName_012242d0_test.cpp'
         PassPattern = '012242d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224680'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString01436ec4_01224680.cpp'
-        TestSource = '01/22/staticinit_gCCharString01436ec4_01224680_test.cpp'
+        Source = '01/22/staticinit_SeaStaticMapBankFileName_01224680.cpp'
+        TestSource = '01/22/staticinit_SeaStaticMapBankFileName_01224680_test.cpp'
         PassPattern = '01224680_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012246a0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString01436ec8_012246a0.cpp'
-        TestSource = '01/22/staticinit_gCCharString01436ec8_012246a0_test.cpp'
+        Source = '01/22/staticinit_WaterStaticMapBankFileName_012246a0.cpp'
+        TestSource = '01/22/staticinit_WaterStaticMapBankFileName_012246a0_test.cpp'
         PassPattern = '012246a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012246c0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString01436ecc_012246c0.cpp'
-        TestSource = '01/22/staticinit_gCCharString01436ecc_012246c0_test.cpp'
+        Source = '01/22/staticinit_CommonStaticMapHeaderEntryName_012246c0.cpp'
+        TestSource = '01/22/staticinit_CommonStaticMapHeaderEntryName_012246c0_test.cpp'
         PassPattern = '012246c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a1f4'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8740_0121a1f4.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8740_0121a1f4_test.cpp'
+        Source = '01/21/staticinit_DEMOCOMBATSTRENGTHQUEST_0121a1f4.cpp'
+        TestSource = '01/21/staticinit_DEMOCOMBATSTRENGTHQUEST_0121a1f4_test.cpp'
         PassPattern = '0121a1f4_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a211'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8744_0121a211.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8744_0121a211_test.cpp'
+        Source = '01/21/staticinit_DEMOCOMBATSKILLQUEST_0121a211.cpp'
+        TestSource = '01/21/staticinit_DEMOCOMBATSKILLQUEST_0121a211_test.cpp'
         PassPattern = '0121a211_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a22e'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8748_0121a22e.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8748_0121a22e_test.cpp'
+        Source = '01/21/staticinit_DEMOCOMBATWILLQUEST_0121a22e.cpp'
+        TestSource = '01/21/staticinit_DEMOCOMBATWILLQUEST_0121a22e_test.cpp'
         PassPattern = '0121a22e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a24b'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b874c_0121a24b.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b874c_0121a24b_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFESHOPPINGQUEST_0121a24b.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFESHOPPINGQUEST_0121a24b_test.cpp'
         PassPattern = '0121a24b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a268'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8750_0121a268.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8750_0121a268_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFEGUILDQUEST_0121a268.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFEGUILDQUEST_0121a268_test.cpp'
         PassPattern = '0121a268_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a285'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8754_0121a285.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8754_0121a285_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFEGOODARRIVALQUEST_0121a285.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFEGOODARRIVALQUEST_0121a285_test.cpp'
         PassPattern = '0121a285_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a2a2'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8758_0121a2a2.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8758_0121a2a2_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFEEVILARRIVALQUEST_0121a2a2.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFEEVILARRIVALQUEST_0121a2a2_test.cpp'
         PassPattern = '0121a2a2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a2bf'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b875c_0121a2bf.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b875c_0121a2bf_test.cpp'
+        Source = '01/21/staticinit_DEFAULTFRONTENDFONT_0121a2bf.cpp'
+        TestSource = '01/21/staticinit_DEFAULTFRONTENDFONT_0121a2bf_test.cpp'
         PassPattern = '0121a2bf_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a36c'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8798_0121a36c.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8798_0121a36c_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a36c.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121a36c_test.cpp'
         PassPattern = '0121a36c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a790'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8af8_0121a790.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8af8_0121a790_test.cpp'
+        Source = '01/21/staticinit_EASYKEY_0121a790.cpp'
+        TestSource = '01/21/staticinit_EASYKEY_0121a790_test.cpp'
         PassPattern = '0121a790_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a7ad'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b0c_0121a7ad.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b0c_0121a7ad_test.cpp'
+        Source = '01/21/staticinit_DEFAULTDEATHRECOVERYMARKERNAME_0121a7ad.cpp'
+        TestSource = '01/21/staticinit_DEFAULTDEATHRECOVERYMARKERNAME_0121a7ad_test.cpp'
         PassPattern = '0121a7ad_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a87b'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b38_0121a87b.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b38_0121a87b_test.cpp'
+        Source = '01/21/staticinit_CrimeTotalText_0121a87b.cpp'
+        TestSource = '01/21/staticinit_CrimeTotalText_0121a87b_test.cpp'
         PassPattern = '0121a87b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a898'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b3c_0121a898.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b3c_0121a898_test.cpp'
+        Source = '01/21/staticinit_CrimeTimeLeftText_0121a898.cpp'
+        TestSource = '01/21/staticinit_CrimeTimeLeftText_0121a898_test.cpp'
         PassPattern = '0121a898_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a8c1'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b4c_0121a8c1.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b4c_0121a8c1_test.cpp'
+        Source = '01/21/staticinit_TITLENAME_0121a8c1.cpp'
+        TestSource = '01/21/staticinit_TITLENAME_0121a8c1_test.cpp'
         PassPattern = '0121a8c1_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a8de'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b50_0121a8de.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b50_0121a8de_test.cpp'
+        Source = '01/21/staticinit_ITEMDESCRIPTIONSTRING_0121a8de.cpp'
+        TestSource = '01/21/staticinit_ITEMDESCRIPTIONSTRING_0121a8de_test.cpp'
         PassPattern = '0121a8de_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a8fb'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b54_0121a8fb.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b54_0121a8fb_test.cpp'
+        Source = '01/21/staticinit_ITEMNAMETABLESTRING_0121a8fb.cpp'
+        TestSource = '01/21/staticinit_ITEMNAMETABLESTRING_0121a8fb_test.cpp'
         PassPattern = '0121a8fb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a918'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b58_0121a918.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b58_0121a918_test.cpp'
+        Source = '01/21/staticinit_ITEMICONSTRING_0121a918.cpp'
+        TestSource = '01/21/staticinit_ITEMICONSTRING_0121a918_test.cpp'
         PassPattern = '0121a918_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a935'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b60_0121a935.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b60_0121a935_test.cpp'
+        Source = '01/21/staticinit_SPECSUBTITLE_0121a935.cpp'
+        TestSource = '01/21/staticinit_SPECSUBTITLE_0121a935_test.cpp'
         PassPattern = '0121a935_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a952'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b64_0121a952.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b64_0121a952_test.cpp'
+        Source = '01/21/staticinit_BUYSUBTITLE_0121a952.cpp'
+        TestSource = '01/21/staticinit_BUYSUBTITLE_0121a952_test.cpp'
         PassPattern = '0121a952_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a96f'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b68_0121a96f.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b68_0121a96f_test.cpp'
+        Source = '01/21/staticinit_SELLSUBTITLE_0121a96f.cpp'
+        TestSource = '01/21/staticinit_SELLSUBTITLE_0121a96f_test.cpp'
         PassPattern = '0121a96f_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a98c'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b6c_0121a98c.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b6c_0121a98c_test.cpp'
+        Source = '01/21/staticinit_WANTEDSUBTITLE_0121a98c.cpp'
+        TestSource = '01/21/staticinit_WANTEDSUBTITLE_0121a98c_test.cpp'
         PassPattern = '0121a98c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a9a9'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b70_0121a9a9.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b70_0121a9a9_test.cpp'
+        Source = '01/21/staticinit_WEAPONSSUBTITLE_0121a9a9.cpp'
+        TestSource = '01/21/staticinit_WEAPONSSUBTITLE_0121a9a9_test.cpp'
         PassPattern = '0121a9a9_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a9c6'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b74_0121a9c6.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b74_0121a9c6_test.cpp'
+        Source = '01/21/staticinit_CLOTHESSUBTITLE_0121a9c6.cpp'
+        TestSource = '01/21/staticinit_CLOTHESSUBTITLE_0121a9c6_test.cpp'
         PassPattern = '0121a9c6_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a9e3'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b78_0121a9e3.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b78_0121a9e3_test.cpp'
+        Source = '01/21/staticinit_ITEMSSUBTITLE_0121a9e3.cpp'
+        TestSource = '01/21/staticinit_ITEMSSUBTITLE_0121a9e3_test.cpp'
         PassPattern = '0121a9e3_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aa00'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b7c_0121aa00.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b7c_0121aa00_test.cpp'
+        Source = '01/21/staticinit_SELLITEMDESCSTRING_0121aa00.cpp'
+        TestSource = '01/21/staticinit_SELLITEMDESCSTRING_0121aa00_test.cpp'
         PassPattern = '0121aa00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aa1d'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b80_0121aa1d.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b80_0121aa1d_test.cpp'
+        Source = '01/21/staticinit_BUYITEMDESCSTRING_0121aa1d.cpp'
+        TestSource = '01/21/staticinit_BUYITEMDESCSTRING_0121aa1d_test.cpp'
         PassPattern = '0121aa1d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aa3a'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b84_0121aa3a.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b84_0121aa3a_test.cpp'
+        Source = '01/21/staticinit_WANTEDITEMDESCSTRING_0121aa3a.cpp'
+        TestSource = '01/21/staticinit_WANTEDITEMDESCSTRING_0121aa3a_test.cpp'
         PassPattern = '0121aa3a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aa57'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b88_0121aa57.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b88_0121aa57_test.cpp'
+        Source = '01/21/staticinit_SELLITEMICONSTRING_0121aa57.cpp'
+        TestSource = '01/21/staticinit_SELLITEMICONSTRING_0121aa57_test.cpp'
         PassPattern = '0121aa57_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aa74'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b8c_0121aa74.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b8c_0121aa74_test.cpp'
+        Source = '01/21/staticinit_BUYITEMICONSTRING_0121aa74.cpp'
+        TestSource = '01/21/staticinit_BUYITEMICONSTRING_0121aa74_test.cpp'
         PassPattern = '0121aa74_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aa91'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b90_0121aa91.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b90_0121aa91_test.cpp'
+        Source = '01/21/staticinit_WANTEDITEMICONSTRING_0121aa91.cpp'
+        TestSource = '01/21/staticinit_WANTEDITEMICONSTRING_0121aa91_test.cpp'
         PassPattern = '0121aa91_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aaae'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b94_0121aaae.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b94_0121aaae_test.cpp'
+        Source = '01/21/staticinit_CATEGORYCHILDSELLLISTSTRING_0121aaae.cpp'
+        TestSource = '01/21/staticinit_CATEGORYCHILDSELLLISTSTRING_0121aaae_test.cpp'
         PassPattern = '0121aaae_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aacb'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b98_0121aacb.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b98_0121aacb_test.cpp'
+        Source = '01/21/staticinit_CLOTHINGTITLESTRING_0121aacb.cpp'
+        TestSource = '01/21/staticinit_CLOTHINGTITLESTRING_0121aacb_test.cpp'
         PassPattern = '0121aacb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aae8'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8b9c_0121aae8.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8b9c_0121aae8_test.cpp'
+        Source = '01/21/staticinit_CLOTHINGDESCSTRING_0121aae8.cpp'
+        TestSource = '01/21/staticinit_CLOTHINGDESCSTRING_0121aae8_test.cpp'
         PassPattern = '0121aae8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ab05'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8ba0_0121ab05.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8ba0_0121ab05_test.cpp'
+        Source = '01/21/staticinit_CLOTHINGICONSTRING_0121ab05.cpp'
+        TestSource = '01/21/staticinit_CLOTHINGICONSTRING_0121ab05_test.cpp'
         PassPattern = '0121ab05_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ab22'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8ba4_0121ab22.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8ba4_0121ab22_test.cpp'
+        Source = '01/21/staticinit_BANKHANDLE_0121ab22.cpp'
+        TestSource = '01/21/staticinit_BANKHANDLE_0121ab22_test.cpp'
         PassPattern = '0121ab22_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ab5a'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8bac_0121ab5a.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8bac_0121ab5a_test.cpp'
+        Source = '01/21/staticinit_WEAPONDESCRIPTIONSTRING_0121ab5a.cpp'
+        TestSource = '01/21/staticinit_WEAPONDESCRIPTIONSTRING_0121ab5a_test.cpp'
         PassPattern = '0121ab5a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ab77'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8bb0_0121ab77.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8bb0_0121ab77_test.cpp'
+        Source = '01/21/staticinit_AUGDESCRIPTIONSTRING_0121ab77.cpp'
+        TestSource = '01/21/staticinit_AUGDESCRIPTIONSTRING_0121ab77_test.cpp'
         PassPattern = '0121ab77_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ab94'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8bb4_0121ab94.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8bb4_0121ab94_test.cpp'
+        Source = '01/21/staticinit_WEAPONTITLESTRING_0121ab94.cpp'
+        TestSource = '01/21/staticinit_WEAPONTITLESTRING_0121ab94_test.cpp'
         PassPattern = '0121ab94_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121abb1'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8bb8_0121abb1.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8bb8_0121abb1_test.cpp'
+        Source = '01/21/staticinit_AUGMENTATIONSLEFTDESCRIPTIONSTRINGM_0121abb1.cpp'
+        TestSource = '01/21/staticinit_AUGMENTATIONSLEFTDESCRIPTIONSTRINGM_0121abb1_test.cpp'
         PassPattern = '0121abb1_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121abce'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8bbc_0121abce.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8bbc_0121abce_test.cpp'
+        Source = '01/21/staticinit_AUGMENTATIONSLEFTDESCRIPTIONSTRINGR_0121abce.cpp'
+        TestSource = '01/21/staticinit_AUGMENTATIONSLEFTDESCRIPTIONSTRINGR_0121abce_test.cpp'
         PassPattern = '0121abce_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121abeb'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8bc0_0121abeb.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8bc0_0121abeb_test.cpp'
+        Source = '01/21/staticinit_AUGMENTATIONSMENUENTRYNAME_0121abeb.cpp'
+        TestSource = '01/21/staticinit_AUGMENTATIONSMENUENTRYNAME_0121abeb_test.cpp'
         PassPattern = '0121abeb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f000'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013badf0_0121f000.cpp'
-        TestSource = '01/21/staticinit_gCCharString013badf0_0121f000_test.cpp'
+        Source = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f000.cpp'
+        TestSource = '01/21/staticinit_REACTIONMANAGERDEFINSTANTIATIONNAME_0121f000_test.cpp'
         PassPattern = '0121f000_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f01d'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013badf4_0121f01d.cpp'
-        TestSource = '01/21/staticinit_gCCharString013badf4_0121f01d_test.cpp'
+        Source = '01/21/staticinit_STrapUntriggeredAnimName_0121f01d.cpp'
+        TestSource = '01/21/staticinit_STrapUntriggeredAnimName_0121f01d_test.cpp'
         PassPattern = '0121f01d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f03a'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013badf8_0121f03a.cpp'
-        TestSource = '01/21/staticinit_gCCharString013badf8_0121f03a_test.cpp'
+        Source = '01/21/staticinit_STrapTrigger_0121f03a.cpp'
+        TestSource = '01/21/staticinit_STrapTrigger_0121f03a_test.cpp'
         PassPattern = '0121f03a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f057'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013badfc_0121f057.cpp'
-        TestSource = '01/21/staticinit_gCCharString013badfc_0121f057_test.cpp'
+        Source = '01/21/staticinit_STrapReset_0121f057.cpp'
+        TestSource = '01/21/staticinit_STrapReset_0121f057_test.cpp'
         PassPattern = '0121f057_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224c50'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString0143e8ec_01224c50.cpp'
-        TestSource = '01/22/staticinit_gCCharString0143e8ec_01224c50_test.cpp'
+        Source = '01/22/staticinit_CScriptThingNullString_01224c50.cpp'
+        TestSource = '01/22/staticinit_CScriptThingNullString_01224c50_test.cpp'
         PassPattern = '01224c50_TEST PASS'
     }
     [pscustomobject]@{
@@ -144689,64 +144689,64 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01219ee0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b7d5c_01219ee0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b7d5c_01219ee0_test.cpp'
+        Source = '01/21/staticinit_RelaunchSaveGameName_01219ee0.cpp'
+        TestSource = '01/21/staticinit_RelaunchSaveGameName_01219ee0_test.cpp'
         PassPattern = '01219ee0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01219f60'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b865c_01219f60.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b865c_01219f60_test.cpp'
+        Source = '01/21/staticinit_GInputFileName_01219f60.cpp'
+        TestSource = '01/21/staticinit_GInputFileName_01219f60_test.cpp'
         PassPattern = '01219f60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01219f80'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8660_01219f80.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8660_01219f80_test.cpp'
+        Source = '01/21/staticinit_GEventPackageFileName_01219f80.cpp'
+        TestSource = '01/21/staticinit_GEventPackageFileName_01219f80_test.cpp'
         PassPattern = '01219f80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01219fa0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8664_01219fa0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8664_01219fa0_test.cpp'
+        Source = '01/21/staticinit_GPacketFileName_01219fa0.cpp'
+        TestSource = '01/21/staticinit_GPacketFileName_01219fa0_test.cpp'
         PassPattern = '01219fa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01219fc0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8668_01219fc0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8668_01219fc0_test.cpp'
+        Source = '01/21/staticinit_GForceLevel_01219fc0.cpp'
+        TestSource = '01/21/staticinit_GForceLevel_01219fc0_test.cpp'
         PassPattern = '01219fc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a020'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8674_0121a020.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8674_0121a020_test.cpp'
+        Source = '01/21/staticinit_GRunLUAScript_0121a020.cpp'
+        TestSource = '01/21/staticinit_GRunLUAScript_0121a020_test.cpp'
         PassPattern = '0121a020_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a090'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b86fc_0121a090.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b86fc_0121a090_test.cpp'
+        Source = '01/21/staticinit_NGlobalConsoleXBPerfLogFileName_0121a090.cpp'
+        TestSource = '01/21/staticinit_NGlobalConsoleXBPerfLogFileName_0121a090_test.cpp'
         PassPattern = '0121a090_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a310'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b877c_0121a310.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b877c_0121a310_test.cpp'
+        Source = '01/21/staticinit_ScriptDebugString_0121a310.cpp'
+        TestSource = '01/21/staticinit_ScriptDebugString_0121a310_test.cpp'
         PassPattern = '0121a310_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a610'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8a50_0121a610.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8a50_0121a610_test.cpp'
+        Source = '01/21/staticinit_CSubtitledMessageMostRecentGroupQueried_0121a610.cpp'
+        TestSource = '01/21/staticinit_CSubtitledMessageMostRecentGroupQueried_0121a610_test.cpp'
         PassPattern = '0121a610_TEST PASS'
     }
     [pscustomobject]@{
@@ -144759,36 +144759,36 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121a6f0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8ae4_0121a6f0.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8ae4_0121a6f0_test.cpp'
+        Source = '01/21/staticinit_ConsoleVarScoreboardUserName_0121a6f0.cpp'
+        TestSource = '01/21/staticinit_ConsoleVarScoreboardUserName_0121a6f0_test.cpp'
         PassPattern = '0121a6f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a710'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8ae8_0121a710.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8ae8_0121a710_test.cpp'
+        Source = '01/21/staticinit_ConsoleVarScoreboardPassword_0121a710.cpp'
+        TestSource = '01/21/staticinit_ConsoleVarScoreboardPassword_0121a710_test.cpp'
         PassPattern = '0121a710_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a730'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8aec_0121a730.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8aec_0121a730_test.cpp'
+        Source = '01/21/staticinit_ConsoleVarScoreboardSelectedClan_0121a730.cpp'
+        TestSource = '01/21/staticinit_ConsoleVarScoreboardSelectedClan_0121a730_test.cpp'
         PassPattern = '0121a730_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a750'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8af0_0121a750.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8af0_0121a750_test.cpp'
+        Source = '01/21/staticinit_ConsoleVarScoreboardServerIPAddress_0121a750.cpp'
+        TestSource = '01/21/staticinit_ConsoleVarScoreboardServerIPAddress_0121a750_test.cpp'
         PassPattern = '0121a750_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a770'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCCharString013b8af4_0121a770.cpp'
-        TestSource = '01/21/staticinit_gCCharString013b8af4_0121a770_test.cpp'
+        Source = '01/21/staticinit_ConsoleVarServerScoresAgent_0121a770.cpp'
+        TestSource = '01/21/staticinit_ConsoleVarServerScoresAgent_0121a770_test.cpp'
         PassPattern = '0121a770_TEST PASS'
     }
     [pscustomobject]@{
@@ -144829,8 +144829,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01223d80'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013bca10_01223d80.cpp'
-        TestSource = '01/22/staticinit_gCCharString013bca10_01223d80_test.cpp'
+        Source = '01/22/staticinit_NFileCurrentPath_01223d80.cpp'
+        TestSource = '01/22/staticinit_NFileCurrentPath_01223d80_test.cpp'
         PassPattern = '01223d80_TEST PASS'
     }
     [pscustomobject]@{
@@ -144857,8 +144857,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01224050'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013ca7dc_01224050.cpp'
-        TestSource = '01/22/staticinit_gCCharString013ca7dc_01224050_test.cpp'
+        Source = '01/22/staticinit_CDefinitionManagerCompiledDefDirectory_01224050.cpp'
+        TestSource = '01/22/staticinit_CDefinitionManagerCompiledDefDirectory_01224050_test.cpp'
         PassPattern = '01224050_TEST PASS'
     }
     [pscustomobject]@{
@@ -144871,15 +144871,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01224190'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013caa34_01224190.cpp'
-        TestSource = '01/22/staticinit_gCCharString013caa34_01224190_test.cpp'
+        Source = '01/22/staticinit_CSymbolMapCurrentFilename_01224190.cpp'
+        TestSource = '01/22/staticinit_CSymbolMapCurrentFilename_01224190_test.cpp'
         PassPattern = '01224190_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012242f0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013d27e8_012242f0.cpp'
-        TestSource = '01/22/staticinit_gCCharString013d27e8_012242f0_test.cpp'
+        Source = '01/22/staticinit_CCRCSymbolMapCurrentFilename_012242f0.cpp'
+        TestSource = '01/22/staticinit_CCRCSymbolMapCurrentFilename_012242f0_test.cpp'
         PassPattern = '012242f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -148049,36 +148049,36 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01219ec0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b7d54_01219ec0.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b7d54_01219ec0_test.cpp'
+        Source = '01/21/staticinit_CUserProfileManagermstrProfileName_01219ec0.cpp'
+        TestSource = '01/21/staticinit_CUserProfileManagermstrProfileName_01219ec0_test.cpp'
         PassPattern = '01219ec0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01219fe0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b866c_01219fe0.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b866c_01219fe0_test.cpp'
+        Source = '01/21/staticinit_GForceStartingHolySite_01219fe0.cpp'
+        TestSource = '01/21/staticinit_GForceStartingHolySite_01219fe0_test.cpp'
         PassPattern = '01219fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a3e0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b89d8_0121a3e0.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b89d8_0121a3e0_test.cpp'
+        Source = '01/21/staticinit_GResetProgressTipText_0121a3e0.cpp'
+        TestSource = '01/21/staticinit_GResetProgressTipText_0121a3e0_test.cpp'
         PassPattern = '0121a3e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a400'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b89dc_0121a400.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b89dc_0121a400_test.cpp'
+        Source = '01/21/staticinit_GResetProgressTipTitleText_0121a400.cpp'
+        TestSource = '01/21/staticinit_GResetProgressTipTitleText_0121a400_test.cpp'
         PassPattern = '0121a400_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121df70'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013ba880_0121df70.cpp'
-        TestSource = '01/21/staticinit_gCWideString013ba880_0121df70_test.cpp'
+        Source = '01/21/staticinit_MISSINGANIMEMOTETEXT_0121df70.cpp'
+        TestSource = '01/21/staticinit_MISSINGANIMEMOTETEXT_0121df70_test.cpp'
         PassPattern = '0121df70_TEST PASS'
     }
     [pscustomobject]@{
@@ -148091,36 +148091,36 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121ee90'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013bad98_0121ee90.cpp'
-        TestSource = '01/21/staticinit_gCWideString013bad98_0121ee90_test.cpp'
+        Source = '01/21/staticinit_MISSINGAUGMENTATIONTEXT_0121ee90.cpp'
+        TestSource = '01/21/staticinit_MISSINGAUGMENTATIONTEXT_0121ee90_test.cpp'
         PassPattern = '0121ee90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121eeb0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013bad9c_0121eeb0.cpp'
-        TestSource = '01/21/staticinit_gCWideString013bad9c_0121eeb0_test.cpp'
+        Source = '01/21/staticinit_MISSINGEMPTYTEXT_0121eeb0.cpp'
+        TestSource = '01/21/staticinit_MISSINGEMPTYTEXT_0121eeb0_test.cpp'
         PassPattern = '0121eeb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f530'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013baf38_0121f530.cpp'
-        TestSource = '01/21/staticinit_gCWideString013baf38_0121f530_test.cpp'
+        Source = '01/21/staticinit_minimapFilePathArtist_0121f530.cpp'
+        TestSource = '01/21/staticinit_minimapFilePathArtist_0121f530_test.cpp'
         PassPattern = '0121f530_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f550'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013baf3c_0121f550.cpp'
-        TestSource = '01/21/staticinit_gCWideString013baf3c_0121f550_test.cpp'
+        Source = '01/21/staticinit_minimapFilePathProgmr_0121f550.cpp'
+        TestSource = '01/21/staticinit_minimapFilePathProgmr_0121f550_test.cpp'
         PassPattern = '0121f550_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01223da0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCWideString013bca24_01223da0.cpp'
-        TestSource = '01/22/staticinit_gCWideString013bca24_01223da0_test.cpp'
+        Source = '01/22/staticinit_CWideStringNullString_01223da0.cpp'
+        TestSource = '01/22/staticinit_CWideStringNullString_01223da0_test.cpp'
         PassPattern = '01223da0_TEST PASS'
     }
     [pscustomobject]@{
@@ -148133,57 +148133,57 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121a11c'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b8720_0121a11c.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b8720_0121a11c_test.cpp'
+        Source = '01/21/staticinit_DEMOWORLDNAME_0121a11c.cpp'
+        TestSource = '01/21/staticinit_DEMOWORLDNAME_0121a11c_test.cpp'
         PassPattern = '0121a11c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a137'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b8724_0121a137.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b8724_0121a137_test.cpp'
+        Source = '01/21/staticinit_DEMOCOMBATSTRENGTHHOLYSITE_0121a137.cpp'
+        TestSource = '01/21/staticinit_DEMOCOMBATSTRENGTHHOLYSITE_0121a137_test.cpp'
         PassPattern = '0121a137_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a152'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b8728_0121a152.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b8728_0121a152_test.cpp'
+        Source = '01/21/staticinit_DEMOCOMBATSKILLHOLYSITE_0121a152.cpp'
+        TestSource = '01/21/staticinit_DEMOCOMBATSKILLHOLYSITE_0121a152_test.cpp'
         PassPattern = '0121a152_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a16d'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b872c_0121a16d.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b872c_0121a16d_test.cpp'
+        Source = '01/21/staticinit_DEMOCOMBATWILLHOLYSITE_0121a16d.cpp'
+        TestSource = '01/21/staticinit_DEMOCOMBATWILLHOLYSITE_0121a16d_test.cpp'
         PassPattern = '0121a16d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a188'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b8730_0121a188.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b8730_0121a188_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFESHOPPINGHOLYSITE_0121a188.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFESHOPPINGHOLYSITE_0121a188_test.cpp'
         PassPattern = '0121a188_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a1a3'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b8734_0121a1a3.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b8734_0121a1a3_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFEGUILDHOLYSITE_0121a1a3.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFEGUILDHOLYSITE_0121a1a3_test.cpp'
         PassPattern = '0121a1a3_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a1be'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b8738_0121a1be.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b8738_0121a1be_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFEGOODARRIVALHOLYSITE_0121a1be.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFEGOODARRIVALHOLYSITE_0121a1be_test.cpp'
         PassPattern = '0121a1be_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121a1d9'
         Module = '_static_init'
-        Source = '01/21/staticinit_gCWideString013b873c_0121a1d9.cpp'
-        TestSource = '01/21/staticinit_gCWideString013b873c_0121a1d9_test.cpp'
+        Source = '01/21/staticinit_DEMOTOWNLIFEEVILARRIVALHOLYSITE_0121a1d9.cpp'
+        TestSource = '01/21/staticinit_DEMOTOWNLIFEEVILARRIVALHOLYSITE_0121a1d9_test.cpp'
         PassPattern = '0121a1d9_TEST PASS'
     }
     [pscustomobject]@{
@@ -156323,379 +156323,379 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121ee10'
         Module = '_static_init'
-        Source = '01/21/staticinit_gcos013bad6c_0121ee10.cpp'
-        TestSource = '01/21/staticinit_gcos013bad6c_0121ee10_test.cpp'
+        Source = '01/21/staticinit_COS45_0121ee10.cpp'
+        TestSource = '01/21/staticinit_COS45_0121ee10_test.cpp'
         PassPattern = '0121ee10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f630'
         Module = '_static_init'
-        Source = '01/21/staticinit_gcos013baf94_0121f630.cpp'
-        TestSource = '01/21/staticinit_gcos013baf94_0121f630_test.cpp'
+        Source = '01/21/staticinit_NCreatureAICOSOFTHEANGLENEEDEDTOFACEGUARD_0121f630.cpp'
+        TestSource = '01/21/staticinit_NCreatureAICOSOFTHEANGLENEEDEDTOFACEGUARD_0121f630_test.cpp'
         PassPattern = '0121f630_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012245f0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01436e00_012245f0.cpp'
-        TestSource = '01/22/staticinit_gcos01436e00_012245f0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012245f0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012245f0_test.cpp'
         PassPattern = '012245f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224630'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01436e0c_01224630.cpp'
-        TestSource = '01/22/staticinit_gcos01436e0c_01224630_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224630.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224630_test.cpp'
         PassPattern = '01224630_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224650'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01436eb8_01224650.cpp'
-        TestSource = '01/22/staticinit_gcos01436eb8_01224650_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224650.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224650_test.cpp'
         PassPattern = '01224650_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224670'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01436ec0_01224670.cpp'
-        TestSource = '01/22/staticinit_gcos01436ec0_01224670_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224670.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224670_test.cpp'
         PassPattern = '01224670_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012247e0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01437808_012247e0.cpp'
-        TestSource = '01/22/staticinit_gcos01437808_012247e0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012247e0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012247e0_test.cpp'
         PassPattern = '012247e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224800'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01437810_01224800.cpp'
-        TestSource = '01/22/staticinit_gcos01437810_01224800_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224800.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224800_test.cpp'
         PassPattern = '01224800_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224820'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01437818_01224820.cpp'
-        TestSource = '01/22/staticinit_gcos01437818_01224820_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224820.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224820_test.cpp'
         PassPattern = '01224820_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224860'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos01437834_01224860.cpp'
-        TestSource = '01/22/staticinit_gcos01437834_01224860_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224860.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224860_test.cpp'
         PassPattern = '01224860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224880'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143783c_01224880.cpp'
-        TestSource = '01/22/staticinit_gcos0143783c_01224880_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224880.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224880_test.cpp'
         PassPattern = '01224880_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012248a0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos014378b0_012248a0.cpp'
-        TestSource = '01/22/staticinit_gcos014378b0_012248a0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012248a0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012248a0_test.cpp'
         PassPattern = '012248a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012248f0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143b8d4_012248f0.cpp'
-        TestSource = '01/22/staticinit_gcos0143b8d4_012248f0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012248f0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012248f0_test.cpp'
         PassPattern = '012248f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224920'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143b96c_01224920.cpp'
-        TestSource = '01/22/staticinit_gcos0143b96c_01224920_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224920.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224920_test.cpp'
         PassPattern = '01224920_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224940'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143b974_01224940.cpp'
-        TestSource = '01/22/staticinit_gcos0143b974_01224940_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224940.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224940_test.cpp'
         PassPattern = '01224940_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224960'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143b98c_01224960.cpp'
-        TestSource = '01/22/staticinit_gcos0143b98c_01224960_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224960.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224960_test.cpp'
         PassPattern = '01224960_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224990'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143ba98_01224990.cpp'
-        TestSource = '01/22/staticinit_gcos0143ba98_01224990_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224990.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224990_test.cpp'
         PassPattern = '01224990_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012249b0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143baa0_012249b0.cpp'
-        TestSource = '01/22/staticinit_gcos0143baa0_012249b0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012249b0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012249b0_test.cpp'
         PassPattern = '012249b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012249d0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143baa8_012249d0.cpp'
-        TestSource = '01/22/staticinit_gcos0143baa8_012249d0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012249d0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012249d0_test.cpp'
         PassPattern = '012249d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012249f0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143bab0_012249f0.cpp'
-        TestSource = '01/22/staticinit_gcos0143bab0_012249f0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012249f0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_012249f0_test.cpp'
         PassPattern = '012249f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a10'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143bab8_01224a10.cpp'
-        TestSource = '01/22/staticinit_gcos0143bab8_01224a10_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a10.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a10_test.cpp'
         PassPattern = '01224a10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a30'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143bac0_01224a30.cpp'
-        TestSource = '01/22/staticinit_gcos0143bac0_01224a30_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a30.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a30_test.cpp'
         PassPattern = '01224a30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a50'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143bacc_01224a50.cpp'
-        TestSource = '01/22/staticinit_gcos0143bacc_01224a50_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a50.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a50_test.cpp'
         PassPattern = '01224a50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a70'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143bad4_01224a70.cpp'
-        TestSource = '01/22/staticinit_gcos0143bad4_01224a70_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a70.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a70_test.cpp'
         PassPattern = '01224a70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a90'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143badc_01224a90.cpp'
-        TestSource = '01/22/staticinit_gcos0143badc_01224a90_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a90.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224a90_test.cpp'
         PassPattern = '01224a90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224ab0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143bae4_01224ab0.cpp'
-        TestSource = '01/22/staticinit_gcos0143bae4_01224ab0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224ab0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224ab0_test.cpp'
         PassPattern = '01224ab0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224ad0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143baec_01224ad0.cpp'
-        TestSource = '01/22/staticinit_gcos0143baec_01224ad0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224ad0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224ad0_test.cpp'
         PassPattern = '01224ad0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224af0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gcos0143baf4_01224af0.cpp'
-        TestSource = '01/22/staticinit_gcos0143baf4_01224af0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224af0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANCOSINE_01224af0_test.cpp'
         PassPattern = '01224af0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012245e0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01436dfc_012245e0.cpp'
-        TestSource = '01/22/staticinit_gsin01436dfc_012245e0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_012245e0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_012245e0_test.cpp'
         PassPattern = '012245e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224620'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01436e08_01224620.cpp'
-        TestSource = '01/22/staticinit_gsin01436e08_01224620_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224620.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224620_test.cpp'
         PassPattern = '01224620_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224640'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01436eb4_01224640.cpp'
-        TestSource = '01/22/staticinit_gsin01436eb4_01224640_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224640.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224640_test.cpp'
         PassPattern = '01224640_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224660'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01436ebc_01224660.cpp'
-        TestSource = '01/22/staticinit_gsin01436ebc_01224660_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224660.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224660_test.cpp'
         PassPattern = '01224660_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012247d0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01437804_012247d0.cpp'
-        TestSource = '01/22/staticinit_gsin01437804_012247d0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_012247d0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_012247d0_test.cpp'
         PassPattern = '012247d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012247f0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143780c_012247f0.cpp'
-        TestSource = '01/22/staticinit_gsin0143780c_012247f0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_012247f0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_012247f0_test.cpp'
         PassPattern = '012247f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224810'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01437814_01224810.cpp'
-        TestSource = '01/22/staticinit_gsin01437814_01224810_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224810.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224810_test.cpp'
         PassPattern = '01224810_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224850'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01437830_01224850.cpp'
-        TestSource = '01/22/staticinit_gsin01437830_01224850_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224850.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224850_test.cpp'
         PassPattern = '01224850_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224870'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin01437838_01224870.cpp'
-        TestSource = '01/22/staticinit_gsin01437838_01224870_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224870.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224870_test.cpp'
         PassPattern = '01224870_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224890'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin014378ac_01224890.cpp'
-        TestSource = '01/22/staticinit_gsin014378ac_01224890_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224890.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224890_test.cpp'
         PassPattern = '01224890_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012248e0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143b8d0_012248e0.cpp'
-        TestSource = '01/22/staticinit_gsin0143b8d0_012248e0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_012248e0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_012248e0_test.cpp'
         PassPattern = '012248e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224910'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143b968_01224910.cpp'
-        TestSource = '01/22/staticinit_gsin0143b968_01224910_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224910.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224910_test.cpp'
         PassPattern = '01224910_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224930'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143b970_01224930.cpp'
-        TestSource = '01/22/staticinit_gsin0143b970_01224930_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224930.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224930_test.cpp'
         PassPattern = '01224930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224950'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143b988_01224950.cpp'
-        TestSource = '01/22/staticinit_gsin0143b988_01224950_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224950.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224950_test.cpp'
         PassPattern = '01224950_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224980'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143ba94_01224980.cpp'
-        TestSource = '01/22/staticinit_gsin0143ba94_01224980_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224980.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224980_test.cpp'
         PassPattern = '01224980_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012249a0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143ba9c_012249a0.cpp'
-        TestSource = '01/22/staticinit_gsin0143ba9c_012249a0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_012249a0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_012249a0_test.cpp'
         PassPattern = '012249a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012249c0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143baa4_012249c0.cpp'
-        TestSource = '01/22/staticinit_gsin0143baa4_012249c0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_012249c0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_012249c0_test.cpp'
         PassPattern = '012249c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '012249e0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143baac_012249e0.cpp'
-        TestSource = '01/22/staticinit_gsin0143baac_012249e0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_012249e0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_012249e0_test.cpp'
         PassPattern = '012249e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a00'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143bab4_01224a00.cpp'
-        TestSource = '01/22/staticinit_gsin0143bab4_01224a00_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a00.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a00_test.cpp'
         PassPattern = '01224a00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a20'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143babc_01224a20.cpp'
-        TestSource = '01/22/staticinit_gsin0143babc_01224a20_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a20.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a20_test.cpp'
         PassPattern = '01224a20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a40'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143bac8_01224a40.cpp'
-        TestSource = '01/22/staticinit_gsin0143bac8_01224a40_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a40.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a40_test.cpp'
         PassPattern = '01224a40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a60'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143bad0_01224a60.cpp'
-        TestSource = '01/22/staticinit_gsin0143bad0_01224a60_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a60.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a60_test.cpp'
         PassPattern = '01224a60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224a80'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143bad8_01224a80.cpp'
-        TestSource = '01/22/staticinit_gsin0143bad8_01224a80_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a80.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224a80_test.cpp'
         PassPattern = '01224a80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224aa0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143bae0_01224aa0.cpp'
-        TestSource = '01/22/staticinit_gsin0143bae0_01224aa0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224aa0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224aa0_test.cpp'
         PassPattern = '01224aa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224ac0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143bae8_01224ac0.cpp'
-        TestSource = '01/22/staticinit_gsin0143bae8_01224ac0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224ac0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224ac0_test.cpp'
         PassPattern = '01224ac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01224ae0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gsin0143baf0_01224ae0.cpp'
-        TestSource = '01/22/staticinit_gsin0143baf0_01224ae0_test.cpp'
+        Source = '01/22/staticinit_WATERMESHVERTSPANSINE_01224ae0.cpp'
+        TestSource = '01/22/staticinit_WATERMESHVERTSPANSINE_01224ae0_test.cpp'
         PassPattern = '01224ae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -158767,43 +158767,43 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121e3d0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gscaled013bab90_0121e3d0.cpp'
-        TestSource = '01/21/staticinit_gscaled013bab90_0121e3d0_test.cpp'
+        Source = '01/21/staticinit_MINSPEECHFRAMES_0121e3d0.cpp'
+        TestSource = '01/21/staticinit_MINSPEECHFRAMES_0121e3d0_test.cpp'
         PassPattern = '0121e3d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ed60'
         Module = '_static_init'
-        Source = '01/21/staticinit_gscaled013bad40_0121ed60.cpp'
-        TestSource = '01/21/staticinit_gscaled013bad40_0121ed60_test.cpp'
+        Source = '01/21/staticinit_DEFAULTUNARMEDCOMBATIDLECOUNT_0121ed60.cpp'
+        TestSource = '01/21/staticinit_DEFAULTUNARMEDCOMBATIDLECOUNT_0121ed60_test.cpp'
         PassPattern = '0121ed60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121f800'
         Module = '_static_init'
-        Source = '01/21/staticinit_gscaled013bafec_0121f800.cpp'
-        TestSource = '01/21/staticinit_gscaled013bafec_0121f800_test.cpp'
+        Source = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGWAVEANIMS_0121f800.cpp'
+        TestSource = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGWAVEANIMS_0121f800_test.cpp'
         PassPattern = '0121f800_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221c10'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb714_01221c10.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb714_01221c10_test.cpp'
+        Source = '01/22/staticinit_TIMETOLEAVESHOUTMESSAGE_01221c10.cpp'
+        TestSource = '01/22/staticinit_TIMETOLEAVESHOUTMESSAGE_01221c10_test.cpp'
         PassPattern = '01221c10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221cc0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb730_01221cc0.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb730_01221cc0_test.cpp'
+        Source = '01/22/staticinit_TIMETOLEAVEBETWEENSPEAKING_01221cc0.cpp'
+        TestSource = '01/22/staticinit_TIMETOLEAVEBETWEENSPEAKING_01221cc0_test.cpp'
         PassPattern = '01221cc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01223c80'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bc3a4_01223c80.cpp'
-        TestSource = '01/22/staticinit_gscaled013bc3a4_01223c80_test.cpp'
+        Source = '01/22/staticinit_TIMETOLEAVESHOUTMESSAGE_01223c80.cpp'
+        TestSource = '01/22/staticinit_TIMETOLEAVESHOUTMESSAGE_01223c80_test.cpp'
         PassPattern = '01223c80_TEST PASS'
     }
     [pscustomobject]@{
@@ -158914,8 +158914,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121f7c0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gscaled013bafe0_0121f7c0.cpp'
-        TestSource = '01/21/staticinit_gscaled013bafe0_0121f7c0_test.cpp'
+        Source = '01/21/staticinit_JACKFADEDOWNTIME_0121f7c0.cpp'
+        TestSource = '01/21/staticinit_JACKFADEDOWNTIME_0121f7c0_test.cpp'
         PassPattern = '0121f7c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -158935,29 +158935,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01221b80'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb6f8_01221b80.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb6f8_01221b80_test.cpp'
+        Source = '01/22/staticinit_RANGETIMETOSIT_01221b80.cpp'
+        TestSource = '01/22/staticinit_RANGETIMETOSIT_01221b80_test.cpp'
         PassPattern = '01221b80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221ba0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb700_01221ba0.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb700_01221ba0_test.cpp'
+        Source = '01/22/staticinit_RANGETIMETOLEAVEBETWEENSITTINGS_01221ba0.cpp'
+        TestSource = '01/22/staticinit_RANGETIMETOLEAVEBETWEENSITTINGS_01221ba0_test.cpp'
         PassPattern = '01221ba0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221c00'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb710_01221c00.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb710_01221c00_test.cpp'
+        Source = '01/22/staticinit_RANGETIMETOLEAVEBETWEENSITTINGS_01221c00.cpp'
+        TestSource = '01/22/staticinit_RANGETIMETOLEAVEBETWEENSITTINGS_01221c00_test.cpp'
         PassPattern = '01221c00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221cf0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb738_01221cf0.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb738_01221cf0_test.cpp'
+        Source = '01/22/staticinit_TOTALFRAMESTORUN_01221cf0.cpp'
+        TestSource = '01/22/staticinit_TOTALFRAMESTORUN_01221cf0_test.cpp'
         PassPattern = '01221cf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -159068,22 +159068,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121f7d0'
         Module = '_static_init'
-        Source = '01/21/staticinit_gscaled013bafe4_0121f7d0.cpp'
-        TestSource = '01/21/staticinit_gscaled013bafe4_0121f7d0_test.cpp'
+        Source = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGCOMBIDLEANIMS_0121f7d0.cpp'
+        TestSource = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGCOMBIDLEANIMS_0121f7d0_test.cpp'
         PassPattern = '0121f7d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221b90'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb6fc_01221b90.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb6fc_01221b90_test.cpp'
+        Source = '01/22/staticinit_MINTIMETOLEAVEBETWEENSITTINGS_01221b90.cpp'
+        TestSource = '01/22/staticinit_MINTIMETOLEAVEBETWEENSITTINGS_01221b90_test.cpp'
         PassPattern = '01221b90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '01221bf0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gscaled013bb70c_01221bf0.cpp'
-        TestSource = '01/22/staticinit_gscaled013bb70c_01221bf0_test.cpp'
+        Source = '01/22/staticinit_MINTIMETOLEAVEBETWEENSITTINGS_01221bf0.cpp'
+        TestSource = '01/22/staticinit_MINTIMETOLEAVEBETWEENSITTINGS_01221bf0_test.cpp'
         PassPattern = '01221bf0_TEST PASS'
     }
     [pscustomobject]@{

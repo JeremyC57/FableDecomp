@@ -69,12 +69,12 @@ class CMainGameComponent { public:
     static CMainGameComponent* __fastcall Get() { static CMainGameComponent c; return &c; }
     const NGameText::CDataBank& GetTextBank() const { return g_bank; }
 };
-CWideString g_CWideString_013bad98(999);
+namespace { CWideString MISSING_AUGMENTATION_TEXT(999); }
 class CTCObjectAugmentations { public:
     static CWideString __fastcall GetAugmentationName(long augmentation_def_index);
 };
 // ---- row body (verbatim) ----
-extern CWideString g_CWideString_013bad98;       // 0x013BAD98 L"Missing augmentation name!"
+namespace { extern CWideString MISSING_AUGMENTATION_TEXT; }       // 0x013BAD98 L"Missing augmentation name!"
 
 CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long augmentation_def_index)
 {
@@ -84,7 +84,7 @@ CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long augmenta
     def->GetSubDef(&augmentation);
     if (augmentation->Name > 0)
         return CMainGameComponent::Get()->GetTextBank().GetPTextEntry(augmentation->Name, true)->GetText();
-    return g_CWideString_013bad98;
+    return MISSING_AUGMENTATION_TEXT;
 }
 // ---- harness ----
 int main()

@@ -47,8 +47,8 @@ protected:
 };
 #include "engine/CCountedPointer.h"
 extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;                  // 0x013BAC30
-extern CCharString g_CCharString_013bac34;                  // 0x013BAC34
-extern CCharString g_CCharString_013bac48;                  // 0x013BAC48
+extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;                  // 0x013BAC34
+extern const CCharString MAIN_FOCAL_POSITION_NAME;                  // 0x013BAC48
 class C3DMeshStats { public:
     bool HasHelperPoint(unsigned long key) const;           // 0x00A2EA20
     bool HasDummyObject(unsigned long key) const;           // 0x00A2EA60
@@ -125,7 +125,7 @@ void CThingCreatureDef::Validate(const CValidateDefinitionInitBase& init, const 
 {
     CValidateResources* resources = init.Resources;
     CCharString dummyName(PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME);
-    CCharString helperName(g_CCharString_013bac34);
+    CCharString helperName(SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME);
     const C3DMeshInfo* mesh = 0;
     if (Graphic.Type == 5) {
         CMeshDataBank* bank = resources->MeshBank;
@@ -137,5 +137,5 @@ void CThingCreatureDef::Validate(const CValidateDefinitionInitBase& init, const 
     Graphic.Type != 4 || appearance->Animation.AnimExists("DEFAULT", CAnimFilterNoGroup());
     if (PrimaryMeleeWeaponDef)
         !mesh || mesh->GetMeshStats()->HasDummyObject(dummyName.GetCRC());
-    !mesh || mesh->GetMeshStats()->HasHelperPoint(g_CCharString_013bac48.GetCRC());
+    !mesh || mesh->GetMeshStats()->HasHelperPoint(MAIN_FOCAL_POSITION_NAME.GetCRC());
 }

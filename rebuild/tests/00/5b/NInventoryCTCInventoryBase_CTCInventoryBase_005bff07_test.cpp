@@ -32,7 +32,7 @@ template <class T> class CCountedPointer { public:
 class CCharString { public:
     void* m_pData;
 };
-extern CCharString g_CCharString_013b8ba4;      // 0x013B8BA4 "GBANK_MAIN"
+namespace { extern CCharString BANK_HANDLE; }      // 0x013B8BA4 "GBANK_MAIN"
 struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80
     CPixelFormat  CompressedAlpha;              // +0x00
     CPixelFormat  CompressedAlpha2;             // +0x04
@@ -188,7 +188,7 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
     params.Flag1c = false;
     params.Flag28 = false;
     CGraphicBankManager* manager = GFGetSystemManager()->GraphicBankManager;
-    GraphicManager = manager->CreateAndInitialize(g_CCharString_013b8ba4, &params, true, true).GetPItem();
+    GraphicManager = manager->CreateAndInitialize(BANK_HANDLE, &params, true, true).GetPItem();
     AddToGlobalUpdateTCs();
 }
 
@@ -197,7 +197,7 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-CCharString g_CCharString_013b8ba4;
+namespace { CCharString BANK_HANDLE; }
 static long g_log[16]; static int g_n = 0;
 static CGraphicBankParams* g_params = 0; static const CCharString* g_name = 0; static int g_added = 0, g_dtor = 0;
 static CThing* g_parent = 0;
@@ -239,7 +239,7 @@ int main()
     if (g_parent != thing || inv->ParentThing != thing || g_added != 1 || g_dtor < 1) ok = 0;   // VC /Od copies the stub's return local (no NRVO), so >= 1
     if (g_n != 6) ok = 0;
     for (int i = 0; i < 6 && i < g_n; ++i) if (g_log[i] != i + 1) ok = 0;
-    if (g_name != &g_CCharString_013b8ba4) ok = 0;
+    if (g_name != &BANK_HANDLE) ok = 0;
     if (inv->GraphicManager != (CGraphicDataBank*)&g_bankObj) ok = 0;
     if (inv->InventoryOpen || inv->OldIntervalDescInitialised || inv->Dying || inv->CategoryMoving) ok = 0;
     if (inv->MenuArrowHighlightsCategoryUp != 1 || inv->TriggerStateRight != 1 || inv->MenuArrowHighlightsItemDn != 1) ok = 0;

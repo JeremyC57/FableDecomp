@@ -60,7 +60,7 @@ class CThingPlayerCreature : public CThing { };
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                 // 0x00405F00
 
-extern CCharString g_CCharString_013b8b60;                                // "Spec_Subtitle"
+namespace { extern CCharString SPEC_SUBTITLE; }                                // "Spec_Subtitle"
 
 // Same-TU body of the def lookup retail's TU holds (out of line in retail: GetDef<CUIMiscThingsDef> 0x0042B312), as the landed
 // CTCInventoryWeapons::ConstructScreen 0x005C8459: VC7.1 sees it only writes through the out pointer.
@@ -132,7 +132,7 @@ CComponent* CTCInventoryTrade::ConstructSpecialShopList(const std::vector<std::p
         buyText->SetValue(priceText, true, true);
         CCountedPointer<CComponent> subtitle(manager->CreateComponent("UI_ONE_OFF_SUBTITLE", false));
         CText* subtitleText = static_cast<CText*>(subtitle.Get());
-        subtitleText->SetName(g_CCharString_013b8b60);
+        subtitleText->SetName(SPEC_SUBTITLE);
         subtitleText->SetValue(priceText, true, true);
         buyEntry->AddChild(subtitle);
         CCharString guideSymbol;

@@ -9,7 +9,7 @@
 // Identity (proven): Ego_r.pdb donor order IsRunnable (0x00982960) / IsStillRunnable (0x00982A70) / Update (0x00982AB0)
 //   = retail IsRunnable 0x0095E350 / this row / the landed Update 0x0095E470; the label agrees.
 // Callees: CAIStateGroupBase::IsStopping() const 0x008FD010, CBaseIntelligentPointer::GetPItem() const 0x00A01B50 (twice).
-// Data: the frame budget g_scaled_013bb738 @ 0x013BB738 (the landed static initializer 0x01221CF0 and Update 0x0095E470).
+// Data: the frame budget TOTAL_FRAMES_TO_RUN (was g_scaled_013bb738) @ 0x013BB738 (the landed static initializer 0x01221CF0 and Update 0x0095E470).
 // Layout: Ego_r.pdb CAIStateGroup_ReactToDeadLeader: PEnemy CIntelligentPointer<CThingCreatureBase> +0x14, FramesRunning +0x1C.
 // Shape: `if (!IsStopping() && IS_THING_ALIVE(PEnemy)) { if (FramesRunning >= budget) return false; return true; } return false;`
 //   with the enemy pointer address kept in esi.
@@ -72,7 +72,7 @@ protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000
     bool IsStopping() const;                            // 0x008FD010
 };
-extern long g_scaled_013bb738;                          // 0x013BB738 frame budget
+namespace { extern const long TOTAL_FRAMES_TO_RUN; }                          // 0x013BB738 frame budget
 
 class CAIStateGroup_ReactToDeadLeader : public CAIStateGroupBase {
 protected:
@@ -89,7 +89,7 @@ template <class T> FABLE_FORCEINLINE bool IS_THING_ALIVE(const T& p)
 bool CAIStateGroup_ReactToDeadLeader::IsStillRunnable() const
 {
     if (!IsStopping() && IS_THING_ALIVE(PEnemy)) {
-        if (FramesRunning < g_scaled_013bb738)
+        if (FramesRunning < TOTAL_FRAMES_TO_RUN)
             return true;
     }
     return false;

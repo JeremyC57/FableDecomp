@@ -8,7 +8,7 @@ class CCharString { public:
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-CCharString g_CCharString_013caa30("NULL");
+CCharString GNullName("NULL");
 struct SSetIterator { void* m_pNode; };
 struct SSetInsertResult { SSetIterator first; bool second; SSetInsertResult() { } };
 struct CCharStringSet {
@@ -44,7 +44,7 @@ void CSymbolMap::AddSymbolDirty(const CCharString& name, long val)
 {
     if (CheckForDuplicateSymbols)
         NamesUsed.insert(name);
-    SLONGMap.Add(name, CSymbolInfo(g_CCharString_013caa30, name, val));
+    SLONGMap.Add(name, CSymbolInfo(GNullName, name, val));
 }
 int main()
 {
@@ -53,7 +53,7 @@ int main()
     CSymbolMap m; std::memset(&m, 0, sizeof(m)); g_dirtyAtPush = &m.SLONGMap.Dirty;
     m.CheckForDuplicateSymbols = false; m.AddSymbolDirty(n, 7);
     if (m.NamesUsed.m_count != 0 || g_pushes != 1 || !m.SLONGMap.Dirty || g_dirtyBefore || g_live != base) { std::printf("009e5420_TEST FAIL\n"); return 1; }
-    const char* wantGroup = g_CCharString_013caa30.m_pData;
+    const char* wantGroup = GNullName.m_pData;
     if (g_pushed[0].key != n.m_pData || g_pushed[0].entry != n.m_pData || g_pushed[0].group != wantGroup || g_pushed[0].val != 7
         || g_pushed[0].liveAtPush != base + 5) { std::printf("009e5420_TEST FAIL\n"); return 1; }
     m.SLONGMap.Dirty = false; m.CheckForDuplicateSymbols = true; m.AddSymbolDirty(n, 7);

@@ -1,0 +1,400 @@
+address	old_catalog_name	status	binders_respelled	note
+01219f20	_static_init::g_CCharString_013b85e0	done	0	-> GVersionString
+0121a000	_static_init::g_CCharString_013b8670	done	0	-> GDummyObjectFilter
+0121a050	_static_init::g_CCharString_013b86f4	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a070	_static_init::g_CCharString_013b86f8	done	0	-> GDebugPlaySpeechForNarratorName
+0121a0b0	_static_init::g_CCharString_013b8700	done	0	-> NGlobalConsole::LastSpeechSubString
+0121a0d0	_static_init::g_CCharString_013b8704	done	0	-> NGlobalConsole::LastSpeechSymbol
+0121a0f0	_static_init::g_CCharString_013b8708	done	0	-> NGlobalConsole::GConsoleDebugString
+0121a2f0	_static_init::g_CCharString_013b8778	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a330	_static_init::g_CCharString_013b8788	done	1	-> GUI_FONT_NAME
+0121a3c0	_static_init::g_CCharString_013b89d4	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a650	_static_init::g_CCharString_013b8a7c	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121df30	_static_init::g_CCharString_013ba878	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121df50	_static_init::g_CCharString_013ba87c	done	0	-> MISSING_ANIM_SHOW_IF_STARTS_WITH
+0121df90	_static_init::g_CCharString_013ba884	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121dfc0	_static_init::g_CCharString_013ba894	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121dfe0	_static_init::g_CCharString_013ba898	done	0	-> UNKNOWN_THREAT_OPINION_SOURCE
+0121e0c0	_static_init::g_CCharString_013baaf8	done	0	-> MAIN_SIGN_POST_DEF_NAME
+0121e0e0	_static_init::g_CCharString_013baafc	done	0	-> DRESSING_SIGN_POST_DEF_NAME
+0121e100	_static_init::g_CCharString_013bab00	done	0	-> MAIN_OWNED_SIGN_POST_DEF_NAME
+0121e120	_static_init::g_CCharString_013bab04	done	0	-> MAIN_RENT_SIGN_POST_DEF_NAME
+0121e140	_static_init::g_CCharString_013bab08	done	2	-> CLevelLoader::LoadAllSectionName
+0121e160	_static_init::g_CCharString_013bab0c	done	0	-> CLevelLoader::GlobalSectionName
+0121e190	_static_init::g_CCharString_013bab18	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e1b0	_static_init::g_CCharString_013bab1c	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e1d0	_static_init::g_CCharString_013bab28	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e1f0	_static_init::g_CCharString_013bab2c	partial	0	-> CTCWife::MarriageEnabledMaleVoice; binder 0x008330D0 left (row has a local CCharString model; respell needs a header migration)
+0121e380	_static_init::g_CCharString_013bab80	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e420	_static_init::g_CCharString_013babb0	done	1	-> DEFAULT_ATTACK_PATTERN_DEF_NAME
+0121e460	_static_init::g_CCharString_013babc8	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e5c0	_static_init::g_CCharString_013bac18	done	0	-> CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX
+0121e5e0	_static_init::g_CCharString_013bac1c	done	0	-> CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX
+0121e600	_static_init::g_CCharString_013bac30	done	0	-> PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME
+0121e620	_static_init::g_CCharString_013bac34	done	1	-> SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME
+0121e640	_static_init::g_CCharString_013bac38	done	1	-> START_WEAPON_POINT_NAME
+0121e660	_static_init::g_CCharString_013bac3c	done	1	-> END_WEAPON_POINT_NAME
+0121e680	_static_init::g_CCharString_013bac40	done	1	-> START_WEAPON_POINT_NAME_2
+0121e6a0	_static_init::g_CCharString_013bac44	done	1	-> END_WEAPON_POINT_NAME_2
+0121e6c0	_static_init::g_CCharString_013bac48	done	4	-> MAIN_FOCAL_POSITION_NAME
+0121e6e0	_static_init::g_CCharString_013bac4c	done	1	-> CAMERA_FOCAL_POSITION_NAME
+0121e700	_static_init::g_CCharString_013bac50	done	2	-> TARGETING_CURSOR_POSITION_NAME
+0121e720	_static_init::g_CCharString_013bac54	done	1	-> EYE_LEFT_DUMMY_OBJECT_NAME
+0121e740	_static_init::g_CCharString_013bac58	done	0	-> EYE_RIGHT_DUMMY_OBJECT_NAME
+0121e760	_static_init::g_CCharString_013bac5c	done	0	-> HEAD_POS_HELPER_NAME
+0121e780	_static_init::g_CCharString_013bac60	done	0	-> MOUTH_DUMMY_OBJECT_NAME
+0121e7a0	_static_init::g_CCharString_013bac64	done	0	-> STRIKE_EVENT_WEAPON_START_IDENTIFIER
+0121e7c0	_static_init::g_CCharString_013bac68	done	0	-> STRIKE_EVENT_WEAPON_END_IDENTIFIER
+0121e7e0	_static_init::g_CCharString_013bac6c	done	0	-> STRIKE_EVENT_START_IDENTIFIER
+0121e800	_static_init::g_CCharString_013bac70	done	0	-> STRIKE_EVENT_END_IDENTIFIER
+0121e820	_static_init::g_CCharString_013bac74	done	0	-> STRIKE_EVENT_RESET_COMBO
+0121e840	_static_init::g_CCharString_013bac78	done	0	-> STRIKE_EVENT_BEGIN_LEGACY
+0121e860	_static_init::g_CCharString_013bac7c	done	0	-> STRIKE_EVENT_END_LEGACY
+0121e880	_static_init::g_CCharString_013bac80	done	0	-> SECONDARY_STRIKE_EVENT_BEGIN_LEGACY
+0121e8a0	_static_init::g_CCharString_013bac84	done	0	-> SECONDARY_STRIKE_EVENT_END_LEGACY
+0121e8c0	_static_init::g_CCharString_013bac88	done	0	-> STRIKE_ACTION_FINISHED
+0121e8e0	_static_init::g_CCharString_013bac8c	done	0	-> ACTION_LATEST_START_TIME
+0121e900	_static_init::g_CCharString_013bac90	done	0	-> ACTION_PAUSE_ON_THIS_FRAME
+0121e920	_static_init::g_CCharString_013bac94	done	0	-> NAVIGATION_TRANSITION_POINT
+0121e940	_static_init::g_CCharString_013bac98	done	0	-> BUILDING_BOUNDRY
+0121e960	_static_init::g_CCharString_013bac9c	done	2	-> ACTION_POINT
+0121e980	_static_init::g_CCharString_013baca0	done	0	-> ACTION_POINT_01
+0121e9a0	_static_init::g_CCharString_013baca4	done	0	-> ACTION_POINT_SWAB_01
+0121e9c0	_static_init::g_CCharString_013baca8	done	0	-> ACTION_POINT_SWAB_02
+0121e9e0	_static_init::g_CCharString_013bacac	done	0	-> ACTION_POINT_ADJUST_01
+0121ea00	_static_init::g_CCharString_013bacb0	done	0	-> ACTION_POINT_BED_START_NAME
+0121ea20	_static_init::g_CCharString_013bacb4	done	1	-> SHOT_CREATION_DUMMY
+0121ea40	_static_init::g_CCharString_013bacb8	done	0	-> SHOT_CREATION_POINT
+0121ea60	_static_init::g_CCharString_013bacbc	done	0	-> WEAPON_SCABBARD_POS
+0121ea80	_static_init::g_CCharString_013bacc0	done	1	-> CHIMNEY_FOCUS_START_NAME
+0121eaa0	_static_init::g_CCharString_013bacc4	done	0	-> OBJECT_GROUP_PREFIX
+0121eac0	_static_init::g_CCharString_013bacc8	done	0	-> MESH_LIGHT_POINT_NAME
+0121eae0	_static_init::g_CCharString_013baccc	done	0	-> MESH_FLARE_POINT_NAME
+0121eb00	_static_init::g_CCharString_013bacd0	done	0	-> PERFORM_ACTION
+0121eb20	_static_init::g_CCharString_013bacd4	done	0	-> CAST_FIREBALL
+0121eb40	_static_init::g_CCharString_013bacd8	done	0	-> CUT_SCENE_EVENT_PREFIX
+0121eb60	_static_init::g_CCharString_013bacdc	done	1	-> STAB_POS
+0121eb80	_static_init::g_CCharString_013bace0	done	0	-> COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT
+0121ebe0	_static_init::g_CCharString_013bacec	done	0	-> CARRY_SLOT_LEFT_HAND
+0121ec00	_static_init::g_CCharString_013bacf0	done	0	-> CARRY_SLOT_RIGHT_HAND
+0121ec20	_static_init::g_CCharString_013bacf4	done	0	-> CARRY_SLOT_PRIMARY_SHEATHE
+0121ec40	_static_init::g_CCharString_013bacf8	done	0	-> CARRY_SLOT_SECONDARY_SHEATHE
+0121ec60	_static_init::g_CCharString_013bacfc	done	0	-> CARRY_SLOT_BELT
+0121ecc0	_static_init::g_CCharString_013bad2c	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121ece0	_static_init::g_CCharString_013bad30	done	2	-> SHEATH_ACTION_NAME
+0121ed00	_static_init::g_DoorOpenAnimName	done	4	-> SDoorOpenAnim
+0121ed20	_static_init::g_DoorCloseAnimName	done	3	-> SDoorCloseAnim
+0121ed40	_static_init::g_ClockHandTurnName	done	2	-> SClockTurnAnim
+0121ed90	_static_init::g_CCharString_013bad5c	done	0	-> CLOCKWISE_90
+0121edb0	_static_init::g_CCharString_013bad60	done	0	-> ANTI_CLOCKWISE_90
+0121edd0	_static_init::g_CCharString_013bad64	done	0	-> CLOCKWISE_180
+0121edf0	_static_init::g_CCharString_013bad68	done	0	-> ANTI_CLOCKWISE_180
+0121ee30	_static_init::g_CCharString_013bad8c	done	0	-> CLOSED_STRING_NAME
+0121ee50	_static_init::g_CCharString_013bad90	done	0	-> LINE_STRING_NAME
+0121eed0	_static_init::g_CCharString_013bada4	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121eef0	_static_init::g_CCharString_013bada8	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121ef10	_static_init::g_CCharString_013badac	done	0	-> QUEST_CARD_POS_MARKER_NAME_PREFIX
+0121ef50	_static_init::g_CCharString_013baddc	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121efa0	_static_init::g_CCharString_013bade4	done	0	-> BOASTING_CROWD_HOOK_QUEST_NAME
+0121efc0	_static_init::g_CCharString_013bade8	done	0	-> BOASTING_CROWD_MEMBER_SCRIPT_NAME
+0121efe0	_static_init::g_CCharString_013badec	done	0	-> BOASTING_CROWD_MARKER_SCRIPT_NAME
+0121f0a0	_static_init::g_CCharString_013bae08	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f0c0	_static_init::g_CCharString_013bae0c	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f240	_static_init::g_CCharString_013bae6c	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f470	_static_init::g_CCharString_013baf0c	done	0	-> DECAPITATION_DUMMY_OBJECT_NAME
+0121f4b0	_static_init::g_CCharString_013baf24	done	0	-> BOASTING_POSITION_NAME_PREFIX
+0121f4d0	_static_init::g_CCharString_013baf28	done	0	-> BOASTING_DRUM_DEF_NAME
+0121f570	_static_init::g_CCharString_013baf40	done	1	-> DEAD_ANIM_NAME
+0121f5f0	_static_init::g_CCharString_013baf58	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f610	_static_init::g_CCharString_013baf5c	done	0	-> CWeaponDef::TooHeavyAnimationGroupName
+0121f640	_static_init::g_CCharString_013bafa0	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f660	_static_init::g_CCharString_013bafa4	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f740	_static_init::g_CCharString_013bafcc	rejected	0	unknown: CCharString "%%%NULL" 0x013BAFCC; no PDB initializer name matches it in the TU run
+0121f760	_static_init::g_CCharString_013bafd4	done	0	-> DEFAULT_SLEEP_ANIM_NAME
+0121f810	_static_init::g_CCharString_013baff4	done	1	-> NCombatActionHelpers::WeaponPosLeftFootHelperName
+0121f830	_static_init::g_CCharString_013baff8	done	1	-> NCombatActionHelpers::WeaponPosRightFootHelperName
+01221860	_static_init::g_CCharString_013bb668	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01221880	_static_init::g_CCharString_013bb66c	done	0	-> SIT_ON_FLOOR_ANIM_NAME
+012218a0	_static_init::g_CCharString_013bb670	done	1	-> GET_UP_FROM_FLOOR_ANIM_NAME
+012218c0	_static_init::g_CCharString_013bb674	done	1	-> LOG_DEF_NAME
+012218e0	_static_init::g_CCharString_013bb678	done	1	-> PICK_UP_ANIM_NAME
+01221900	_static_init::g_CCharString_013bb67c	done	1	-> HOLDING_LOG_ANIM_NAME
+01221920	_static_init::g_CCharString_013bb680	done	1	-> PUT_LOG_IN_BONFIRE_ANIM_NAME
+01221940	_static_init::g_CCharString_013bb684	done	0	-> SUCCESS_STRING
+01221960	_static_init::g_CCharString_013bb688	done	0	-> FAILURE_STRING
+01221980	_static_init::g_CCharString_013bb690	done	0	-> TEXT_TO_SAY
+012219a0	_static_init::g_CCharString_013bb694	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+012219c0	_static_init::g_CCharString_013bb6c0	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+012219e0	_static_init::g_CCharString_013bb6c4	done	0	-> HEED_STRING
+01221a00	_static_init::g_CCharString_013bb6c8	done	0	-> IGNORE_STRING
+01221a20	_static_init::g_CCharString_013bb6cc	done	0	-> RUN_AWAY_STRING
+01221a40	_static_init::g_CCharString_013bb6d0	done	0	-> SEEN_MINOR_CRIME_STRING
+01221a60	_static_init::g_CCharString_013bb6d4	done	0	-> SEEN_MODERATE_CRIME_STRING
+01221a80	_static_init::g_CCharString_013bb6d8	done	0	-> SEEN_SERIOUS_CRIME_STRING
+01221aa0	_static_init::g_CCharString_013bb6dc	done	0	-> SIT_ON_CHAIR_ANIM_NAME
+01221ac0	_static_init::g_CCharString_013bb6e0	done	0	-> GET_UP_FROM_CHAIR_ANIM_NAME
+01221ae0	_static_init::g_CCharString_013bb6e4	done	0	-> SIT_ON_BENCH_ANIM_NAME
+01221b00	_static_init::g_CCharString_013bb6e8	done	0	-> GET_UP_FROM_BENCH_ANIM_NAME
+01221b20	_static_init::g_CCharString_013bb6ec	done	0	-> SIT_ON_FLOOR_ANIM_NAME
+01221b40	_static_init::g_CCharString_013bb6f0	done	0	-> GET_UP_FROM_FLOOR_ANIM_NAME
+01221bb0	_static_init::g_CCharString_013bb704	done	1	-> SIT_ON_FLOOR_ANIM_NAME
+01221bd0	_static_init::g_CCharString_013bb708	done	0	-> GET_UP_FROM_FLOOR_ANIM_NAME
+01221c20	_static_init::g_CCharString_013bb71c	done	0	-> PICK_UP_ANIM_NAME_LEVEL1
+01221c40	_static_init::g_CCharString_013bb720	done	0	-> PUT_CRATE_IN_PILE_ANIM_NAME_LEVEL1
+01221c60	_static_init::g_CCharString_013bb724	done	0	-> PICK_UP_ANIM_NAME_LEVEL2
+01221c80	_static_init::g_CCharString_013bb728	done	0	-> PUT_CRATE_IN_PILE_ANIM_NAME_LEVEL2
+01221ca0	_static_init::g_CCharString_013bb72c	done	0	-> NAME_OF_BITCHIN_BOWL
+01221cd0	_static_init::g_CCharString_013bb734	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01221d00	_static_init::g_CCharString_013bb740	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01223c60	_static_init::g_CCharString_013bc3a0	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01223c90	_static_init::g_CCharString_013bc3a8	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01223cc0	_static_init::g_CCharString_013bc440	done	0	-> CShaderStats::NoneStr
+01224170	_static_init::g_CCharString_013caa30	done	1	-> GNullName
+012241d0	_static_init::g_CCharString_013caa48	done	1	-> OPEN_BRACKET
+012241f0	_static_init::g_CCharString_013caa4c	done	0	-> CLOSE_BRACKET
+01224210	_static_init::g_CCharString_013caa50	done	0	-> SEPARATOR
+012242d0	_static_init::g_CCharString_013d27e4	done	0	-> GNullName
+01224680	_static_init::g_CCharString_01436ec4	done	0	-> SeaStaticMapBankFileName
+012246a0	_static_init::g_CCharString_01436ec8	done	0	-> WaterStaticMapBankFileName
+012246c0	_static_init::g_CCharString_01436ecc	done	0	-> CommonStaticMapHeaderEntryName
+0121a1f4	_static_init::g_CCharString_013b8740	done	0	-> DEMO_COMBAT_STRENGTH_QUEST
+0121a211	_static_init::g_CCharString_013b8744	done	0	-> DEMO_COMBAT_SKILL_QUEST
+0121a22e	_static_init::g_CCharString_013b8748	done	0	-> DEMO_COMBAT_WILL_QUEST
+0121a24b	_static_init::g_CCharString_013b874c	done	0	-> DEMO_TOWNLIFE_SHOPPING_QUEST
+0121a268	_static_init::g_CCharString_013b8750	done	0	-> DEMO_TOWNLIFE_GUILD_QUEST
+0121a285	_static_init::g_CCharString_013b8754	done	0	-> DEMO_TOWNLIFE_GOOD_ARRIVAL_QUEST
+0121a2a2	_static_init::g_CCharString_013b8758	done	0	-> DEMO_TOWNLIFE_EVIL_ARRIVAL_QUEST
+0121a2bf	_static_init::g_CCharString_013b875c	done	0	-> DEFAULT_FRONT_END_FONT
+0121a36c	_static_init::g_CCharString_013b8798	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a790	_static_init::g_CCharString_013b8af8	done	0	-> EASY_KEY
+0121a7ad	_static_init::g_CCharString_013b8b0c	done	0	-> DEFAULT_DEATH_RECOVERY_MARKER_NAME
+0121a87b	_static_init::g_CCharString_013b8b38	done	0	-> CrimeTotalText
+0121a898	_static_init::g_CCharString_013b8b3c	done	0	-> CrimeTimeLeftText
+0121a8c1	_static_init::g_CCharString_013b8b4c	done	0	-> TITLE_NAME
+0121a8de	_static_init::g_CCharString_013b8b50	done	0	-> ITEM_DESCRIPTION_STRING
+0121a8fb	_static_init::g_CCharString_013b8b54	done	0	-> ITEM_NAME_TABLE_STRING
+0121a918	_static_init::g_CCharString_013b8b58	done	0	-> ITEM_ICON_STRING
+0121a935	_static_init::g_CCharString_013b8b60	done	2	-> SPEC_SUBTITLE
+0121a952	_static_init::g_CCharString_013b8b64	done	1	-> BUY_SUBTITLE
+0121a96f	_static_init::g_CCharString_013b8b68	done	1	-> SELL_SUBTITLE
+0121a98c	_static_init::g_CCharString_013b8b6c	done	0	-> WANTED_SUBTITLE
+0121a9a9	_static_init::g_CCharString_013b8b70	done	4	-> WEAPONS_SUBTITLE
+0121a9c6	_static_init::g_CCharString_013b8b74	done	4	-> CLOTHES_SUBTITLE
+0121a9e3	_static_init::g_CCharString_013b8b78	done	4	-> ITEMS_SUBTITLE
+0121aa00	_static_init::g_CCharString_013b8b7c	done	0	-> SELL_ITEM_DESC_STRING
+0121aa1d	_static_init::g_CCharString_013b8b80	done	0	-> BUY_ITEM_DESC_STRING
+0121aa3a	_static_init::g_CCharString_013b8b84	done	0	-> WANTED_ITEM_DESC_STRING
+0121aa57	_static_init::g_CCharString_013b8b88	done	0	-> SELL_ITEM_ICON_STRING
+0121aa74	_static_init::g_CCharString_013b8b8c	done	0	-> BUY_ITEM_ICON_STRING
+0121aa91	_static_init::g_CCharString_013b8b90	done	0	-> WANTED_ITEM_ICON_STRING
+0121aaae	_static_init::g_CCharString_013b8b94	done	1	-> CATEGORY_CHILD_SELL_LIST_STRING
+0121aacb	_static_init::g_CCharString_013b8b98	done	0	-> CLOTHING_TITLE_STRING
+0121aae8	_static_init::g_CCharString_013b8b9c	done	0	-> CLOTHING_DESC_STRING
+0121ab05	_static_init::g_CCharString_013b8ba0	done	0	-> CLOTHING_ICON_STRING
+0121ab22	_static_init::g_CCharString_013b8ba4	done	1	-> BANK_HANDLE
+0121ab5a	_static_init::g_CCharString_013b8bac	done	0	-> WEAPON_DESCRIPTION_STRING
+0121ab77	_static_init::g_CCharString_013b8bb0	done	0	-> AUG_DESCRIPTION_STRING
+0121ab94	_static_init::g_CCharString_013b8bb4	done	0	-> WEAPON_TITLE_STRING
+0121abb1	_static_init::g_CCharString_013b8bb8	done	0	-> AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M
+0121abce	_static_init::g_CCharString_013b8bbc	done	0	-> AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R
+0121abeb	_static_init::g_CCharString_013b8bc0	done	0	-> AUGMENTATIONS_MENU_ENTRY_NAME
+0121f000	_static_init::g_CCharString_013badf0	done	0	-> REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f01d	_static_init::g_CCharString_013badf4	done	0	-> STrapUntriggeredAnimName
+0121f03a	_static_init::g_CCharString_013badf8	done	0	-> STrapTrigger
+0121f057	_static_init::g_CCharString_013badfc	done	0	-> STrapReset
+01224c50	_static_init::g_CCharString_0143e8ec	done	0	-> CScriptThing::NullString
+01219eb0	_static_init::g_CStatic_012288d0_012288d0	rejected	0	stand-in type: atexit-only CStatic; candidate CUserProfileManager::PClass (CCountedPointer), type not modelled
+0121a040	_static_init::g_CStatic_012289b0_012289b0	rejected	0	stand-in type: atexit-only; candidate GForcedStaticMapUpdateList (CArray<CCharString>), type not modelled
+0121a350	_static_init::g_CStatic_01228b30_01228b30	rejected	0	stand-in type: atexit-only; candidate CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, type not modelled
+0121a3a0	_static_init::g_CStatic_01228bb0_01228bb0	rejected	0	stand-in type: atexit-only; candidate CProgressDisplay::PFont, type not modelled
+0121a3b0	_static_init::g_CStatic_01228bf0_01228bf0	rejected	0	stand-in type: atexit-only; candidate CGameJoystickManager::PClass, type not modelled
+0121a420	_static_init::g_CStatic_01228c60_01228c60	rejected	0	stand-in type: atexit-only; candidate GOldAutoSaveProgressDisplay, type not modelled
+0121a430	_static_init::g_CStatic_01228ca0_01228ca0	rejected	0	stand-in type: atexit-only; candidate CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, type not modelled
+0121ae20	_static_init::g_CStatic_01229030_01229030	rejected	0	stand-in type: atexit-only; candidate CTCInventoryItem::MostRecentThingDef, type not modelled
+0121ae30	_static_init::g_CStatic_01229060_01229060	rejected	0	stand-in type: atexit-only; candidate CTCInventoryItem::MostRecentInventoryItemDef, type not modelled
+0121ae80	_static_init::g_CStatic_01229120_01229120	rejected	0	stand-in type: atexit-only; candidate CAnimationEntry::RegisteredComponentsByType, type not modelled
+0121dfb0	_static_init::g_CStatic_01229210_01229210	rejected	0	stand-in type: atexit-only; order ambiguous between two Ego_r candidates
+0121e000	_static_init::g_CStatic_00687180_013ba89c	rejected	0	stand-in type: candidate CTCBase::RegisteredTCs, type not modelled
+0121e0b0	_static_init::g_CStatic_01229340_01229340	rejected	0	stand-in type: atexit-only; order ambiguous
+0121e180	_static_init::g_CStatic_01229400_01229400	rejected	0	stand-in type: atexit-only; order ambiguous
+0121e3e0	_static_init::g_CStatic_012294f0_012294f0	rejected	0	stand-in type: atexit-only; candidate NSpeechGainManager::LayerCount, type not modelled
+0121e410	_static_init::g_CStatic_01229530_01229530	rejected	0	stand-in type: atexit-only; candidate NSpeechGainManager::LayerResponseTimes, type not modelled
+0121e440	_static_init::g_CStatic_01229560_01229560	rejected	0	stand-in type: atexit-only; unknown
+0121e450	_static_init::g_CStatic_012295a0_012295a0	rejected	0	stand-in type: atexit-only; unknown
+0121ec80	_static_init::g_CStatic_01229990_01229990	rejected	0	stand-in type: atexit-only; candidate NTCScriptedControl::CActionTalkBase::DefaultCameraTags, type not modelled
+0121ed70	_static_init::g_CStatic_01229a20_01229a20	rejected	0	stand-in type: atexit-only; candidate CTCCreatureModeManager::RegisteredModes, type not modelled
+0121ed80	_static_init::g_CStatic_01229a10_0122ffcc	rejected	0	stand-in type: atexit-only; candidate CTCCreatureModeManager::CModeBase::BaseFilter, type not modelled
+0121ee20	_static_init::g_CStatic_01229ab0_01229ab0	rejected	0	stand-in type: atexit-only; candidate CTCShapeManager::RegisteredInstantiations, type not modelled
+01223ee0	_static_init::g_CStatic_009f9f70_013c5a80	rejected	0	stand-in type: unknown object 0x013C5A80
+01223ef0	_static_init::g_CStatic_0122a660_0122a660	rejected	0	stand-in type: atexit-only; unknown
+01224070	_static_init::g_CStatic_0122a6c0_0122a6c0	rejected	0	stand-in type: atexit-only; candidate CTBaseSingleton<CFileInstaller>::PClass, type not modelled
+01224080	_static_init::g_CStatic_0122a700_0122a700	rejected	0	stand-in type: atexit-only; candidate CXMVPlayer::PlayerFont, type not modelled
+01224090	_static_init::g_CStatic_0122a740_0122a740	rejected	0	stand-in type: atexit-only; candidate CMovieSubtitles::PFont, type not modelled
+01224160	_static_init::g_CStatic_0122a830_0122a830	rejected	0	stand-in type: atexit-only; candidate CTBaseSingletonNoDefaultAlloc<CDriveManager>::PClass, type not modelled
+012241b0	_static_init::g_CStatic_0122a890_0122a890	rejected	0	stand-in type: atexit-only; candidate NProgressDisplay::PProgressDisplay, type not modelled
+012241c0	_static_init::g_CStatic_0122a900_0122a900	rejected	0	stand-in type: atexit-only; candidate CTBaseSingleton<CConsole>::PClass, type not modelled
+01224230	_static_init::g_CStatic_0122a960_0122a960	rejected	0	stand-in type: atexit-only; candidate CTBaseSingleton<CCodeSectionManager>::PClass, type not modelled
+01224240	_static_init::g_CStatic_0122a9a0_0122a9a0	rejected	0	stand-in type: atexit-only; candidate CMemoryAllocator::Deallocator, type not modelled
+01224290	_static_init::g_CStatic_0122aa00_0122aa00	rejected	0	stand-in type: atexit-only; candidate CPhysicsMesh::SingleInstanceCollisionSet, type not modelled
+012242a0	_static_init::g_CStatic_0122aa40_0122aa40	rejected	0	stand-in type: atexit-only; unknown
+01224310	_static_init::g_CStatic_0122aa80_0122aa80	rejected	0	stand-in type: atexit-only; candidate CSuspendableProcessMicrothread::ProcessStack, type not modelled
+012243c0	_static_init::g_CStatic_0122aab0_0122aab0	rejected	0	stand-in type: atexit-only; unknown
+01224420	_static_init::g_CStatic_0122aaf0_0122aaf0	rejected	0	stand-in type: atexit-only; unknown
+012244b0	_static_init::g_CStatic_0122ab70_0122ab70	rejected	0	stand-in type: atexit-only; unknown
+012244c0	_static_init::g_CStatic_0122abb0_0122abb0	rejected	0	stand-in type: atexit-only; unknown
+012244d0	_static_init::g_CStatic_0122abf0_0122abf0	rejected	0	stand-in type: atexit-only; unknown
+012244e0	_static_init::g_CStatic_0122ac30_0122ac30	rejected	0	stand-in type: atexit-only; unknown
+012248d0	_static_init::g_CStatic_0122ad80_0122ad80	rejected	0	stand-in type: atexit-only; unknown
+01224cd0	_static_init::g_CStatic_0122aeb0_0122aeb0	rejected	0	stand-in type: atexit-only; unknown
+01219ee0	_static_init::g_CCharString_013b7d5c	done	0	-> RelaunchSaveGameName
+01219f60	_static_init::g_CCharString_013b865c	done	0	-> GInputFileName
+01219f80	_static_init::g_CCharString_013b8660	done	0	-> GEventPackageFileName
+01219fa0	_static_init::g_CCharString_013b8664	done	0	-> GPacketFileName
+01219fc0	_static_init::g_CCharString_013b8668	done	0	-> GForceLevel
+0121a020	_static_init::g_CCharString_013b8674	done	0	-> GRunLUAScript
+0121a090	_static_init::g_CCharString_013b86fc	done	0	-> NGlobalConsole::XBPerfLogFileName
+0121a310	_static_init::g_CCharString_013b877c	done	0	-> ScriptDebugString
+0121a610	_static_init::g_CCharString_013b8a50	done	0	-> CSubtitledMessage::MostRecentGroupQueried
+0121a630	_static_init::g_CStatic_00a38500_013b8a54	rejected	0	stand-in type: candidate `anonymous namespace'::AttitudeSymbols (CCRCSymbolMap), class not modelled
+0121a6f0	_static_init::g_CCharString_013b8ae4	done	0	-> ConsoleVarScoreboardUserName
+0121a710	_static_init::g_CCharString_013b8ae8	done	0	-> ConsoleVarScoreboardPassword
+0121a730	_static_init::g_CCharString_013b8aec	done	0	-> ConsoleVarScoreboardSelectedClan
+0121a750	_static_init::g_CCharString_013b8af0	done	0	-> ConsoleVarScoreboardServerIPAddress
+0121a770	_static_init::g_CCharString_013b8af4	done	0	-> ConsoleVarServerScoresAgent
+0121eca0	_static_init::g_CCharString_013bad28	rejected	0	unknown: default-constructed CCharString 0x013BAD28; no matching name in the TU run
+0121ef30	_static_init::g_CStatic_009e5200_013badb4	rejected	0	stand-in type: candidate DoorTypeSymbolMap (CSymbolMap), class not modelled in this row
+01223ce0	_static_init::g_CStatic_0098dd10_013bc444	rejected	0	stand-in type: candidate `anonymous namespace'::ShaderStats (CShaderStats), class not modelled
+01223d00	_static_init::g_CShaderRenderManager_013bc470	rejected	0	stand-in class: candidate CShaderRenderManager::SingletonInstance (private ?SingletonInstance@CShaderRenderManager@@0V1@A), not modelled
+01223d20	_static_init::g_CThreadedFileManager_013bc870	rejected	0	stand-in class: candidate CThreadedFile::Manager (?Manager@CThreadedFile@@0VCThreadedFileManager@@A), not modelled
+01223d80	_static_init::g_CCharString_013bca10	done	0	-> NFile::CurrentPath
+01224010	_static_init::g_CStatic_009a7ac0_013ca79c	rejected	0	stand-in type: candidate NBankFileManager::GBankFileManager (CBankFileManager), class not modelled
+01224050	_static_init::g_CCharString_013ca7dc	done	0	-> CDefinitionManager::CompiledDefDirectory
+01224190	_static_init::g_CCharString_013caa34	done	0	-> CSymbolMap::CurrentFilename
+012242f0	_static_init::g_CCharString_013d27e8	done	0	-> CCRCSymbolMap::CurrentFilename
+01224b00	_static_init::g_CStatic_00c1c810_0143bafc	rejected	0	stand-in type: third-party library object (libpk), no PDB name
+01224b20	_static_init::g_CStatic_00c1c810_0143bb14	rejected	0	stand-in type: third-party library object (libpk), no PDB name
+01224b80	_static_init::g_CStatic_00c3c8a0_0143bc00	rejected	0	stand-in type: third-party library object (libpk), no PDB name
+01224ba0	_static_init::g_CStatic_00c3d7d0_0143bb58	rejected	0	stand-in type: third-party library object (libpk), no PDB name
+01224be0	_static_init::g_CStatic_00c5d0a0_0143bf88	rejected	0	stand-in type: third-party library object (libpk), no PDB name
+01224c00	_static_init::g_CStatic_00c5d0a0_0143bf68	rejected	0	stand-in type: third-party library object (libpk), no PDB name
+01219ec0	_static_init::g_CWideString_013b7d54	done	0	-> CUserProfileManager::m_strProfileName
+01219fe0	_static_init::g_CWideString_013b866c	done	1	-> GForceStartingHolySite
+0121a3e0	_static_init::g_CWideString_013b89d8	done	0	-> GResetProgressTipText
+0121a400	_static_init::g_CWideString_013b89dc	done	0	-> GResetProgressTipTitleText
+0121df70	_static_init::g_CWideString_013ba880	done	0	-> MISSING_ANIM_EMOTE_TEXT
+0121ee70	_static_init::g_CStatic_0099ec30_013bad94	rejected	0	stand-in type: candidate LEGACY_SHAPE_TYPE (a copy of CLOSED_STRING_NAME), built with stand-in type CStatic_0099ec30
+0121ee90	_static_init::g_CWideString_013bad98	done	1	-> MISSING_AUGMENTATION_TEXT
+0121eeb0	_static_init::g_CWideString_013bad9c	done	0	-> MISSING_EMPTY_TEXT
+0121f530	_static_init::g_CWideString_013baf38	done	0	-> minimapFilePathArtist
+0121f550	_static_init::g_CWideString_013baf3c	done	0	-> minimapFilePathProgmr
+01223da0	_static_init::g_CWideString_013bca24	done	0	-> CWideString::NullString
+01224b60	_static_init::g_CStatic_00c0bfe0_0143bb3c	rejected	0	stand-in type: third-party library object (libpk), no PDB name
+0121a11c	_static_init::g_CWideString_013b8720	done	0	-> DEMO_WORLD_NAME
+0121a137	_static_init::g_CWideString_013b8724	done	0	-> DEMO_COMBAT_STRENGTH_HOLY_SITE
+0121a152	_static_init::g_CWideString_013b8728	done	0	-> DEMO_COMBAT_SKILL_HOLY_SITE
+0121a16d	_static_init::g_CWideString_013b872c	done	0	-> DEMO_COMBAT_WILL_HOLY_SITE
+0121a188	_static_init::g_CWideString_013b8730	done	0	-> DEMO_TOWNLIFE_SHOPPING_HOLY_SITE
+0121a1a3	_static_init::g_CWideString_013b8734	done	0	-> DEMO_TOWNLIFE_GUILD_HOLY_SITE
+0121a1be	_static_init::g_CWideString_013b8738	done	0	-> DEMO_TOWNLIFE_GOOD_ARRIVAL_HOLY_SITE
+0121a1d9	_static_init::g_CWideString_013b873c	done	0	-> DEMO_TOWNLIFE_EVIL_ARRIVAL_HOLY_SITE
+0121a440	_static_init::g_list_013b8a24	rejected	0	list: candidate CThing::TCsToBeRemoved (list<pair<CIntelligentPointer<CThing>,CTCBase*>>), element type and class static not modelled
+0121a6d0	_static_init::g_list_013b8ad4	rejected	0	list: candidate NUISystem::CHoverable::GAlreadyHovered, not modelled
+0121e010	_static_init::g_list_013ba8ac	rejected	0	list: candidate CTCBase::GlobalUpdateTCs, not modelled
+0121e3f0	_static_init::g_list_013baba0	rejected	0	list: candidate NSpeechGainManager::ActiveDialogue, not modelled
+0121f3f0	_static_init::g_list_013baef8	rejected	0	list: candidate CTCAvoidRegionExit::ExitMarkers, not modelled
+0121f410	_static_init::g_list_013baefc	rejected	0	list: candidate CTCAvoidRegionExit::EntranceMarkers, not modelled
+0121f490	_static_init::g_list_013baf14	rejected	0	list: candidate CTCAISummon::AllSummonedCreatures, not modelled
+01221840	_static_init::g_list_013bb664	rejected	0	list: unknown
+01224320	_static_init::g_list_013d2834	rejected	0	list: candidate CNavigatorExternalInterface::AgentLists, not modelled
+0121ae40	_static_init::g_tree_013b8c1c	rejected	0	tree: candidate CAnimationEntry::RegisteredComponentsByToken, not modelled
+0121e030	_static_init::g_tree_013ba8bc	rejected	0	tree: candidate CCreatureActionBase::RegisteredActionEvents, not modelled
+0121e070	_static_init::g_tree_013ba8c8	rejected	0	tree: candidate CCreatureActionBase::RegisteredActions, not modelled
+0121f0e0	_static_init::g_tree_013bae2c	rejected	0	tree: unknown
+0121f120	_static_init::g_tree_013bae38	rejected	0	tree: unknown
+0121f160	_static_init::g_tree_013bae44	rejected	0	tree: unknown
+0121f1a0	_static_init::g_tree_013bae50	rejected	0	tree: unknown
+0121f1e0	_static_init::g_tree_013bae5c	rejected	0	tree: unknown
+0121f430	_static_init::g_tree_013baf00	rejected	0	tree: candidate CTCAvoidRegionExit::DistMap, not modelled
+0121f4f0	_static_init::g_tree_013baf2c	rejected	0	tree: candidate NHitLocations::CHitLocation::RegisteredHitLocationCodelets, not modelled
+0121f680	_static_init::g_tree_013bafa8	rejected	0	tree: unknown
+0121f6c0	_static_init::g_tree_013bafb4	rejected	0	tree: unknown
+0121f700	_static_init::g_tree_013bafc0	rejected	0	tree: unknown
+01223d40	_static_init::g_tree_013bca04	rejected	0	tree: candidate CAFile::DebugReadOnlyDrives, not modelled
+012240c0	_static_init::g_tree_013ca86c	rejected	0	tree: candidate NProfileTimer::ProfilingInfo, not modelled
+0121a110	_static_init::g_CStatic_01228a50_01228a50	rejected	0	stand-in type: atexit-only; candidate `error` (Ego_r name), type not modelled
+0121a360	_static_init::g_CStatic_01228b70_01228b70	rejected	0	stand-in type: atexit-only; candidate CPlayerGui::PGuiDef, type not modelled
+0121a8b5	_static_init::g_CStatic_01228f14_01228f14	rejected	0	stand-in type: atexit-only; candidate CTCInventory::ContextSensitivePreferredItems, type not modelled
+0121ae90	_static_init::g_CStatic_01229090_01229090	rejected	0	stand-in type: atexit-only; candidate CAnimationEntry::Defaults, type not modelled
+0121df10	_static_init::g_CStatic_01229190_01229190	rejected	0	stand-in type: atexit-only; order ambiguous
+01224c99	_static_init::g_CStatic_0122ae7e_0122ae7e	rejected	0	stand-in type: atexit-only; candidate pGlobalScriptDef, type not modelled
+0121ee10	_static_init::g_cos_013bad6c	done	0	-> COS_45
+0121f630	_static_init::g_cos_013baf94	done	0	-> NCreatureAI::COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD
+012245f0	_static_init::g_cos_01436e00	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224630	_static_init::g_cos_01436e0c	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224650	_static_init::g_cos_01436eb8	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224670	_static_init::g_cos_01436ec0	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+012247e0	_static_init::g_cos_01437808	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224800	_static_init::g_cos_01437810	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224820	_static_init::g_cos_01437818	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224860	_static_init::g_cos_01437834	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224880	_static_init::g_cos_0143783c	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+012248a0	_static_init::g_cos_014378b0	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+012248f0	_static_init::g_cos_0143b8d4	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224920	_static_init::g_cos_0143b96c	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224940	_static_init::g_cos_0143b974	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224960	_static_init::g_cos_0143b98c	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224990	_static_init::g_cos_0143ba98	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+012249b0	_static_init::g_cos_0143baa0	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+012249d0	_static_init::g_cos_0143baa8	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+012249f0	_static_init::g_cos_0143bab0	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224a10	_static_init::g_cos_0143bab8	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224a30	_static_init::g_cos_0143bac0	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224a50	_static_init::g_cos_0143bacc	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224a70	_static_init::g_cos_0143bad4	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224a90	_static_init::g_cos_0143badc	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224ab0	_static_init::g_cos_0143bae4	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224ad0	_static_init::g_cos_0143baec	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+01224af0	_static_init::g_cos_0143baf4	done	0	-> WATER_MESH_VERT_SPAN_COSINE
+012245e0	_static_init::g_sin_01436dfc	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224620	_static_init::g_sin_01436e08	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224640	_static_init::g_sin_01436eb4	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224660	_static_init::g_sin_01436ebc	done	0	-> WATER_MESH_VERT_SPAN_SINE
+012247d0	_static_init::g_sin_01437804	done	0	-> WATER_MESH_VERT_SPAN_SINE
+012247f0	_static_init::g_sin_0143780c	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224810	_static_init::g_sin_01437814	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224850	_static_init::g_sin_01437830	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224870	_static_init::g_sin_01437838	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224890	_static_init::g_sin_014378ac	done	0	-> WATER_MESH_VERT_SPAN_SINE
+012248e0	_static_init::g_sin_0143b8d0	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224910	_static_init::g_sin_0143b968	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224930	_static_init::g_sin_0143b970	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224950	_static_init::g_sin_0143b988	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224980	_static_init::g_sin_0143ba94	done	0	-> WATER_MESH_VERT_SPAN_SINE
+012249a0	_static_init::g_sin_0143ba9c	done	0	-> WATER_MESH_VERT_SPAN_SINE
+012249c0	_static_init::g_sin_0143baa4	done	0	-> WATER_MESH_VERT_SPAN_SINE
+012249e0	_static_init::g_sin_0143baac	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224a00	_static_init::g_sin_0143bab4	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224a20	_static_init::g_sin_0143babc	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224a40	_static_init::g_sin_0143bac8	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224a60	_static_init::g_sin_0143bad0	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224a80	_static_init::g_sin_0143bad8	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224aa0	_static_init::g_sin_0143bae0	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224ac0	_static_init::g_sin_0143bae8	done	0	-> WATER_MESH_VERT_SPAN_SINE
+01224ae0	_static_init::g_sin_0143baf0	done	0	-> WATER_MESH_VERT_SPAN_SINE
+0121e3d0	_static_init::g_scaled_013bab90	done	0	-> MIN_SPEECH_FRAMES
+0121ed60	_static_init::g_scaled_013bad40	done	0	-> DEFAULT_UNARMED_COMBAT_IDLE_COUNT
+0121f800	_static_init::g_scaled_013bafec	done	0	-> CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS
+01221c10	_static_init::g_scaled_013bb714	done	1	-> TIME_TO_LEAVE_SHOUT_MESSAGE
+01221cc0	_static_init::g_scaled_013bb730	done	0	-> TIME_TO_LEAVE_BETWEEN_SPEAKING
+01223c80	_static_init::g_scaled_013bc3a4	done	0	-> TIME_TO_LEAVE_SHOUT_MESSAGE
+0121ec90	_static_init::g_scaled_013bad24	rejected	0	unknown: long = FPS * 1 (0x013BAD24); no matching name in the TU run
+0121f7c0	_static_init::g_scaled_013bafe0	done	0	-> JACK_FADE_DOWN_TIME
+01224c30	_static_init::g_scaled_0143e8c4	rejected	0	unknown: float copy at 0x0143E8C4; no matching name proven
+01224c40	_static_init::g_scaled_0143e8c0	rejected	0	unknown: float copy at 0x0143E8C0; no matching name proven
+01221b80	_static_init::g_scaled_013bb6f8	done	0	-> RANGE_TIME_TO_SIT
+01221ba0	_static_init::g_scaled_013bb700	done	0	-> RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS
+01221c00	_static_init::g_scaled_013bb710	done	0	-> RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS
+01221cf0	_static_init::g_scaled_013bb738	done	2	-> TOTAL_FRAMES_TO_RUN
+0121f7d0	_static_init::g_scaled_013bafe4	done	0	-> CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS
+01221b90	_static_init::g_scaled_013bb6fc	done	0	-> MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS
+01221bf0	_static_init::g_scaled_013bb70c	done	0	-> MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS

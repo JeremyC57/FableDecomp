@@ -149,6 +149,13 @@ private:
     void SetAttractionIcon(bool show, float value, unsigned char type);   // 0x006CFC90 ?SetAttractionIcon@CTCWife@@AAEX_NME@Z
     void CheckAppearanceChanges(CThingPlayerCreature& hero); // 0x006D1250 ?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z
     static const CCharString CourtingAdviceGroupNames[4];
+#ifdef FABLE_RETAIL_CTCWIFE_MALEVOICE
+    // agentFAM09 opt-in (row 0x0121E1F0, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CTCWife::MarriageEnabledMaleVoice'' ("AM3" at 0x013BAB2C), public static const per Anniv360 Test PDB (third source)
+    // ?MarriageEnabledMaleVoice@CTCWife@@2VCCharString@@B. Static member: no layout change.
+public:
+    static const CCharString MarriageEnabledMaleVoice;                   // 0x013BAB2C
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCWife) == 0xec);
 #else // flattened Ego_r layout (the landed default)

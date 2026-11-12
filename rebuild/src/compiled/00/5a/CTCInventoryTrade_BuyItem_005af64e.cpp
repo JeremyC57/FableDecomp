@@ -124,11 +124,11 @@ CWideString FABLE_FASTCALL GFIntToWideString(long value);                 // 0x0
 // The CTCInventoryTrade TU's file-scope subtitle / list names (dynamic initialisers landed as staticinit rows): the component names
 // of the per-category subtitles the category totals are mirrored into, the sell total's subtitle and the per-branch sell list. No
 // PDB spelling (file statics); the landed extern spellings are kept.
-extern CCharString g_CCharString_013b8b68;                                // "Sell_Subtitle"
-extern CCharString g_CCharString_013b8b70;                                // "Weapons_Subtitle"
-extern CCharString g_CCharString_013b8b74;                                // "Clothes_Subtitle"
-extern CCharString g_CCharString_013b8b78;                                // "Items_Subtitle"
-extern CCharString g_CCharString_013b8b94;                                // "Category_Child_Sell_List"
+namespace { extern CCharString SELL_SUBTITLE; }                                // "Sell_Subtitle"
+namespace { extern CCharString WEAPONS_SUBTITLE; }                                // "Weapons_Subtitle"
+namespace { extern CCharString CLOTHES_SUBTITLE; }                                // "Clothes_Subtitle"
+namespace { extern CCharString ITEMS_SUBTITLE; }                                // "Items_Subtitle"
+namespace { extern CCharString CATEGORY_CHILD_SELL_LIST_STRING; }                                // "Category_Child_Sell_List"
 
 // Same-TU bodies of the callees retail emits in this TU and calls out of line (CTCInventoryTrade.cpp): with them visible VC7.1 knows
 // the def handles' addresses do not escape (their scope-end releases are the fused `dec [ecx+4] ; jne` with the null store dropped)
@@ -272,19 +272,19 @@ void CTCInventoryTrade::BuyItem(CComponent* entry, long count)
                 text = sellEntry->FindChild("UI_TRADING_ITEMS_TEXT");
                 total = (TotNumItemsToSell += count);
                 totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_ITEMS") + xString;
-                subtitleName = g_CCharString_013b8b78;
+                subtitleName = ITEMS_SUBTITLE;
                 break;
             case ITEM_MENU_TYPE_WEAPONS:
                 text = sellEntry->FindChild("UI_TRADING_WEAPONS_TEXT");
                 total = (TotNumWeaponsToSell += count);
                 totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_WEAPONS") + xString;
-                subtitleName = g_CCharString_013b8b70;
+                subtitleName = WEAPONS_SUBTITLE;
                 break;
             case ITEM_MENU_TYPE_CLOTHES:
                 text = sellEntry->FindChild("UI_TRADING_CLOTHING_TEXT");
                 total = (TotNumClothesToSell += count);
                 totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_CLOTHING") + xString;
-                subtitleName = g_CCharString_013b8b74;
+                subtitleName = CLOTHES_SUBTITLE;
                 break;
             }
             if (text) {
@@ -297,7 +297,7 @@ void CTCInventoryTrade::BuyItem(CComponent* entry, long count)
             totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_SELL") + xString;
             totalText += GFIntToWideString(TotNumItemsToSell + TotNumWeaponsToSell + TotNumClothesToSell);
             static_cast<CText*>(sellEntry->FindChild("UI_TRADING_SELL_TEXT"))->SetValue(totalText, true, true);
-            static_cast<CText*>(sellEntry->FindChild(g_CCharString_013b8b68))->SetValue(totalText, true, true);
+            static_cast<CText*>(sellEntry->FindChild(SELL_SUBTITLE))->SetValue(totalText, true, true);
 
             // the hero's sell record of this item, if one is still in stock: the existing entry grows by the amount bought
             bool found = false;
@@ -337,14 +337,14 @@ void CTCInventoryTrade::BuyItem(CComponent* entry, long count)
                     AddSellItemToList(itemDefIndex, count, listIt->second, static_cast<CViewport*>(textArea), true);
                 } else {
                     CList* list;
-                    if (CComponent* existingList = branch->FindChild(g_CCharString_013b8b94)) {
+                    if (CComponent* existingList = branch->FindChild(CATEGORY_CHILD_SELL_LIST_STRING)) {
                         list = static_cast<CList*>(existingList);
                         AddSellItemToList(itemDefIndex, count, list, static_cast<CViewport*>(textArea), true);
                     } else {
                         // the branch's first sellable item: a sub-list of its own under the branch
                         CCountedPointer<CComponent> newList(CManager::GetInstance()->CreateComponent("UI_SUB_LIST", false));
                         list = static_cast<CList*>(newList.Data);
-                        list->SetName(g_CCharString_013b8b94);
+                        list->SetName(CATEGORY_CHILD_SELL_LIST_STRING);
                         list->InitialiseOffsets(1);
                         AddSellItemToList(itemDefIndex, count, list, static_cast<CViewport*>(textArea), false);
                         branch->AddChildDynamically(newList);

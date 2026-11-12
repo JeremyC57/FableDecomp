@@ -13,7 +13,7 @@
 //   IsEditorActive (slot 9; the result unused in the release build), then `new`s every stat bar and draw illustrator into its counted
 //   pointer through the out-of-line CCountedPointer<T>::Reset(T*) COMDATs.
 // Callees: CSubtitleRenderer(const CGraphicDataBank&) 0x0049166E, CFontManager::GetFont 0x009E2C80 (PFontManager 0x013B838C, font name
-//   g_CCharString_013b8788 "ENG_ARIAL_16"), CBaseClass() 0x0099A2D0, malloc 0x00BFEA0E (list heads), vector<long>::resize 0x004428F0,
+//   GUI_FONT_NAME (was g_CCharString_013b8788) "ENG_ARIAL_16"), CBaseClass() 0x0099A2D0, malloc 0x00BFEA0E (list heads), vector<long>::resize 0x004428F0,
 //   vector<float>::resize 0x00442770, operator new 0x00BFEA1A, CManager(CWorld&) 0x0066EAB7, free 0x00BFEA14, operator delete 0x00BFE9BC,
 //   CGameDefinitionManager::Get 0x0044C6B0, CDefinitionManager::GetDef<CPlayerGuiDef> 0x0043FF30, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   the stat bar / illustrator ctors and Reset COMDATs listed at each line, CDrawBase ctor 0x0064CC65, CWideString() 0x0099AED0.
@@ -59,7 +59,7 @@ public:
     CCountedPointer<CFontBank> GetFont(const CCharString& name);         // 0x009E2C80 ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z
 };
 extern CFontManager* PFontManager;                                       // 0x013B838C
-extern CCharString g_CCharString_013b8788;                               // 0x013B8788 "ENG_ARIAL_16" (the PlayerGui TU's font name static)
+namespace { extern CCharString GUI_FONT_NAME; }                               // 0x013B8788 "ENG_ARIAL_16" (the PlayerGui TU's font name static)
 
 namespace NPlayerGui {
 // List elements (Ego_r.pdb sizes; only the node size matters to the list constructors here).
@@ -120,7 +120,7 @@ const CPlayerGuiDef& __fastcall CPlayerGui::PeekGuiDef()
 CPlayerGui::CPlayerGui(const CMainGameComponent& component, CWorld& world, CGamePlayerInterface& inputInterface,
                        CPlayerManager& playerManager, const CGraphicDataBank& graphics)
     : World(&world), PlayerManager(&playerManager), InputInterface(&inputInterface), Component(&component), Graphics(&graphics),
-      SubtitleRenderer(graphics), PFont(PFontManager->GetFont(g_CCharString_013b8788)),
+      SubtitleRenderer(graphics), PFont(PFontManager->GetFont(GUI_FONT_NAME)),
       ShowSpecialAbilityButtons(false), ShowSpecialAbilityButtonsAbilities(true), SpecialSelected(false), SpecialDeselected(false),
       AbilityButtonScale(0.0f), NormalToSpecial(false), SpecialToNormal(false),
       DrawGui(true), OldDrawGui(true), GuiMode((EPlayerGuiMode)0), FadeInTimer(0.0f), ForcedClosed(false), ShowTime(true),

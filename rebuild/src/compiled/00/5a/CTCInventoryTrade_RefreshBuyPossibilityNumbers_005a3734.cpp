@@ -94,11 +94,11 @@ CWideString FABLE_FASTCALL GFIntToWideString(long value);                 // 0x0
 
 // The CTCInventoryTrade TU's file-scope subtitle names (dynamic initialisers landed as staticinit rows; no PDB spelling, the landed
 // extern spellings are kept): the buy total's, the specials total's and the three category totals' subtitle components.
-extern CCharString g_CCharString_013b8b60;                                // "Spec_Subtitle"
-extern CCharString g_CCharString_013b8b64;                                // "Buy_Subtitle"
-extern CCharString g_CCharString_013b8b70;                                // "Weapons_Subtitle"
-extern CCharString g_CCharString_013b8b74;                                // "Clothes_Subtitle"
-extern CCharString g_CCharString_013b8b78;                                // "Items_Subtitle"
+namespace { extern CCharString SPEC_SUBTITLE; }                                // "Spec_Subtitle"
+namespace { extern CCharString BUY_SUBTITLE; }                                // "Buy_Subtitle"
+namespace { extern CCharString WEAPONS_SUBTITLE; }                                // "Weapons_Subtitle"
+namespace { extern CCharString CLOTHES_SUBTITLE; }                                // "Clothes_Subtitle"
+namespace { extern CCharString ITEMS_SUBTITLE; }                                // "Items_Subtitle"
 
 // Same-TU body of GetMenuBranchFromDefIndex 0x0059B79A (as the landed BuyItem 0x005AF64E has it): with it visible VC7.1 knows the
 // out-parameter is only written inside the call. Not inlined under /Os; only the row is graded.
@@ -201,21 +201,21 @@ void CTCInventoryTrade::RefreshBuyPossibilityNumbers()
         CWideString totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_CLOTHING") + xString;
         totalText += GFIntToWideString(TotNumClothesToBuy);
         static_cast<CText*>(text)->SetValue(totalText, true, true);
-        static_cast<CText*>(buyEntry->FindChild(g_CCharString_013b8b74))->SetValue(totalText, true, true);
+        static_cast<CText*>(buyEntry->FindChild(CLOTHES_SUBTITLE))->SetValue(totalText, true, true);
         text = buyEntry->FindChild("UI_TRADING_WEAPONS_TEXT");
         totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_WEAPONS") + xString;
         totalText += GFIntToWideString(TotNumWeaponsToBuy);
         static_cast<CText*>(text)->SetValue(totalText, true, true);
-        static_cast<CText*>(buyEntry->FindChild(g_CCharString_013b8b70))->SetValue(totalText, true, true);
+        static_cast<CText*>(buyEntry->FindChild(WEAPONS_SUBTITLE))->SetValue(totalText, true, true);
         text = buyEntry->FindChild("UI_TRADING_ITEMS_TEXT");
         totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_ITEMS") + xString;
         totalText += GFIntToWideString(TotNumItemsToBuy);
         static_cast<CText*>(text)->SetValue(totalText, true, true);
-        static_cast<CText*>(buyEntry->FindChild(g_CCharString_013b8b78))->SetValue(totalText, true, true);
+        static_cast<CText*>(buyEntry->FindChild(ITEMS_SUBTITLE))->SetValue(totalText, true, true);
         totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_BUY") + xString;
         totalText += GFIntToWideString(TotNumWeaponsToBuy + TotNumItemsToBuy + TotNumClothesToBuy);
         static_cast<CText*>(buyEntry->FindChild("UI_TRADING_BUY_TEXT"))->SetValue(totalText, true, true);
-        static_cast<CText*>(buyEntry->FindChild(g_CCharString_013b8b64))->SetValue(totalText, true, true);
+        static_cast<CText*>(buyEntry->FindChild(BUY_SUBTITLE))->SetValue(totalText, true, true);
     } else {
         CComponent* specialEntry = Components[0]->FindChild("UI_SPECIALSHOP_MENU_BUY_ENTRY");
         CComponent* text = specialEntry->FindChild("UI_SPECIALSHOP_BUY_TEXT");
@@ -223,6 +223,6 @@ void CTCInventoryTrade::RefreshBuyPossibilityNumbers()
         totalText += CTCInventoryStats::GetXString();
         totalText += GFIntToWideString(TotSpecialItemsToBuy);
         static_cast<CText*>(text)->SetValue(totalText, true, true);
-        static_cast<CText*>(specialEntry->FindChild(g_CCharString_013b8b60))->SetValue(totalText, true, true);
+        static_cast<CText*>(specialEntry->FindChild(SPEC_SUBTITLE))->SetValue(totalText, true, true);
     }
 }

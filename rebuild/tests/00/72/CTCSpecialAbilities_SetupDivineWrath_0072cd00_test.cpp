@@ -3,7 +3,7 @@
 #include <cstring>
 class CTCBase { public: virtual ~CTCBase() {} };
 class CCharString { public: const char* text; };
-static CCharString g_CCharString_013bad30 = { "SHEATHE_SLOT" };
+static CCharString SHEATH_ACTION_NAME = { "SHEATHE_SLOT" };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
@@ -67,7 +67,7 @@ bool CTCSpecialAbilities::SetupDivineWrath()
     if (item && !(item->m_flags91 & 1)) {
         CCreatureAction_CastDivineWrathSpell* cast = new CCreatureAction_CastDivineWrathSpell(Creature);
         cast->PItem = item;
-        CCreatureAction_SheatheItemToInventory_ForDivineWrath sheathe(Creature, g_CCharString_013bad30, cast, 0);
+        CCreatureAction_SheatheItemToInventory_ForDivineWrath sheathe(Creature, SHEATH_ACTION_NAME, cast, 0);
         return Creature->SetCurrentAction(sheathe);
     }
     return Creature->SetCurrentAction(CCreatureAction_CastDivineWrathSpell(Creature));

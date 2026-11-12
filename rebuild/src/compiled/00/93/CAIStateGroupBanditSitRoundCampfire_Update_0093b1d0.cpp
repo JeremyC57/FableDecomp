@@ -301,7 +301,7 @@ public:
     virtual ~CCreatureAction_SitDown();                 // 0x008ABAA0
 };
 
-extern CCharString g_CCharString_013bb704;              // 0x013BB704 "ST_SIT_ON_FLOOR"
+namespace { extern CCharString SIT_ON_FLOOR_ANIM_NAME; }              // 0x013BB704 "ST_SIT_ON_FLOOR"
 
 enum EAIActionReturn { };
 enum EAIActionRepeat { };
@@ -379,7 +379,7 @@ void CAIStateGroup_BanditSitRoundCampfire::Update()
         Terminate();
         return;
     }
-    const CAnimationEntry& anim = GetCreature().GetRandomAnimFromNameWithFilter(g_CCharString_013bb704, CAnimFilterAnyGroup());
+    const CAnimationEntry& anim = GetCreature().GetRandomAnimFromNameWithFilter(SIT_ON_FLOOR_ANIM_NAME, CAnimFilterAnyGroup());
     CCountedPointer<NCreatureMode::CModeSitBase> sitMode(new NCreatureMode::CModeSitFloor(GetCreature(), anim.GroupName));
     Sitting = true;
     if (AIAction_PerformAction(CCreatureAction_SitDown(GetCreature(), anim, sitMode)) != 2) {

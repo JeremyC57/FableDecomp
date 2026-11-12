@@ -45,6 +45,13 @@ public:
     static CCharString LoadAllSectionName;                               // 0x013BAB08
     static CCharString __fastcall GetLoadAllSectionName() { return LoadAllSectionName; }
 #endif
+#ifdef FABLE_RETAIL_CLEVELLOADER_GLOBALSECTION
+    // agentFAM09 opt-in (row 0x0121E160, its dynamic initializer): both PDB name sets carry `dynamic initializer for
+    // 'CLevelLoader::GlobalSectionName'' right after LoadAllSectionName ("NULL" at 0x013BAB0C) and Ego_r.pdb
+    // ?GetGlobalSectionName@CLevelLoader@@SI?AVCCharString@@XZ; public static per Anniv360 Test PDB (third source)
+    // ?GlobalSectionName@CLevelLoader@@2VCCharString@@A. Declaration only: no layout change.
+    static CCharString GlobalSectionName;                                // 0x013BAB0C
+#endif
     void Add(const CCountedPointer<CObject>& object);                    // 0x006C2120
 private:
     std::list<CCountedPointer<CObject> > ObjectList;                     // +0x14

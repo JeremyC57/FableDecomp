@@ -72,9 +72,9 @@ class CThingPlayerCreature : public CThing { };
 
 CWideString FABLE_FASTCALL GFIntToWideString(long value);                 // 0x00405F00
 
-extern CCharString g_CCharString_013b8b70;                                // "Weapons_Subtitle"
-extern CCharString g_CCharString_013b8b74;                                // "Clothes_Subtitle"
-extern CCharString g_CCharString_013b8b78;                                // "Items_Subtitle"
+namespace { extern CCharString WEAPONS_SUBTITLE; }                                // "Weapons_Subtitle"
+namespace { extern CCharString CLOTHES_SUBTITLE; }                                // "Clothes_Subtitle"
+namespace { extern CCharString ITEMS_SUBTITLE; }                                // "Items_Subtitle"
 
 #pragma auto_inline(off)
 template <class T> long __fastcall CBasicString<T>::Compare(const T* a, const T* b)
@@ -207,15 +207,15 @@ void CTCInventoryTrade::ConstructActualWantedInventoryPC()
         if (entryName == "PC_TRADING_MENU_CLOTHING_ENTRY") {
             subtitleText = textBank.GetTextBySymbol("TEXT_GUI_MENU_CLOTHING") + xString;
             subtitleText += GFIntToWideString(TotNumClothesWanted);
-            pSubtitle->SetName(g_CCharString_013b8b74);
+            pSubtitle->SetName(CLOTHES_SUBTITLE);
         } else if (entryName == "PC_TRADING_MENU_WEAPONS_ENTRY") {
             subtitleText = textBank.GetTextBySymbol("TEXT_GUI_MENU_WEAPONS") + xString;
             subtitleText += GFIntToWideString(TotNumWeaponsWanted);
-            pSubtitle->SetName(g_CCharString_013b8b70);
+            pSubtitle->SetName(WEAPONS_SUBTITLE);
         } else if (entryName == "PC_TRADING_MENU_ITEMS_ENTRY") {
             subtitleText = textBank.GetTextBySymbol("TEXT_GUI_MENU_ITEMS") + xString;
             subtitleText += GFIntToWideString(TotNumItemsWanted);
-            pSubtitle->SetName(g_CCharString_013b8b78);
+            pSubtitle->SetName(ITEMS_SUBTITLE);
         }
         pSubtitleText->SetValue(subtitleText, true, true);
         entries[i]->AddChildDynamically(pSubtitle);

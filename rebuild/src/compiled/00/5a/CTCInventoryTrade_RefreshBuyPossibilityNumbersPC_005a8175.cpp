@@ -87,9 +87,9 @@ CWideString FABLE_FASTCALL GFIntToWideString(long value);                 // 0x0
 
 // The CTCInventoryTrade TU's file-scope subtitle names (dynamic initialisers landed as staticinit rows; no PDB spelling, the landed
 // extern spellings are kept): the three category totals' subtitle components.
-extern CCharString g_CCharString_013b8b70;                                // "Weapons_Subtitle"
-extern CCharString g_CCharString_013b8b74;                                // "Clothes_Subtitle"
-extern CCharString g_CCharString_013b8b78;                                // "Items_Subtitle"
+namespace { extern CCharString WEAPONS_SUBTITLE; }                                // "Weapons_Subtitle"
+namespace { extern CCharString CLOTHES_SUBTITLE; }                                // "Clothes_Subtitle"
+namespace { extern CCharString ITEMS_SUBTITLE; }                                // "Items_Subtitle"
 
 
 void CTCInventoryTrade::RefreshBuyPossibilityNumbersPC()
@@ -155,17 +155,17 @@ void CTCInventoryTrade::RefreshBuyPossibilityNumbersPC()
         CWideString totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_CLOTHING") + xString;
         totalText += GFIntToWideString(TotNumClothesToBuy);
         static_cast<CText*>(text)->SetValue(totalText, true, true);
-        static_cast<CText*>(PCurrentOpenTradeMenu->FindChild(g_CCharString_013b8b74))->SetValue(totalText, true, true);
+        static_cast<CText*>(PCurrentOpenTradeMenu->FindChild(CLOTHES_SUBTITLE))->SetValue(totalText, true, true);
         text = PCurrentOpenTradeMenu->FindChild("PC_TEXT_WEAPONS");
         totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_WEAPONS") + xString;
         totalText += GFIntToWideString(TotNumWeaponsToBuy);
         static_cast<CText*>(text)->SetValue(totalText, true, true);
-        static_cast<CText*>(PCurrentOpenTradeMenu->FindChild(g_CCharString_013b8b70))->SetValue(totalText, true, true);
+        static_cast<CText*>(PCurrentOpenTradeMenu->FindChild(WEAPONS_SUBTITLE))->SetValue(totalText, true, true);
         text = PCurrentOpenTradeMenu->FindChild("PC_TEXT_ITEMS");
         totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_ITEMS") + xString;
         totalText += GFIntToWideString(TotNumItemsToBuy);
         static_cast<CText*>(text)->SetValue(totalText, true, true);
-        static_cast<CText*>(PCurrentOpenTradeMenu->FindChild(g_CCharString_013b8b78))->SetValue(totalText, true, true);
+        static_cast<CText*>(PCurrentOpenTradeMenu->FindChild(ITEMS_SUBTITLE))->SetValue(totalText, true, true);
         totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_BUY") + xString;
         totalText += GFIntToWideString(TotNumWeaponsToBuy + TotNumItemsToBuy + TotNumClothesToBuy);
         static_cast<CText*>(buyEntry->FindChild("PC_TRADING_BUY_TEXT"))->SetValue(totalText, true, true);

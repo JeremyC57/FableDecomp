@@ -15,10 +15,10 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 // CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
-extern CCharString g_CCharString_013bb674;      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
-extern CCharString g_CCharString_013bb678;      // "ST_WORK_GET_CRATE"
-extern CCharString g_CCharString_013bb67c;      // "ST_HOLDING_CRATE"
-extern CCharString g_CCharString_013bb680;      // "ST_WORK_PUT_CRATE"
+namespace { extern CCharString LOG_DEF_NAME; }      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
+namespace { extern CCharString PICK_UP_ANIM_NAME; }      // "ST_WORK_GET_CRATE"
+namespace { extern CCharString HOLDING_LOG_ANIM_NAME; }      // "ST_HOLDING_CRATE"
+namespace { extern CCharString PUT_LOG_IN_BONFIRE_ANIM_NAME; }      // "ST_WORK_PUT_CRATE"
 
 struct __true_type { };
 template <class T> struct vector {              // STLport vector<T> (retail 12 bytes)
@@ -119,10 +119,10 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
     const CTCCarrying* carrying;
     PBrain->PCreature->PeekTC(TCI_CARRYING, &carrying);
     if (carrying->GetThingInPrimarySlot() == 0) {
-        GetPDefinitionManager()->GetDefGlobalIndexFromName(g_CCharString_013bb674);
-        PBrain->PCreature->GetAnimFromName(g_CCharString_013bb67c, 0);
+        GetPDefinitionManager()->GetDefGlobalIndexFromName(LOG_DEF_NAME);
+        PBrain->PCreature->GetAnimFromName(HOLDING_LOG_ANIM_NAME, 0);
         vector<const CCharString*> getAnims;
-        getAnims.push_back(&g_CCharString_013bb678);
+        getAnims.push_back(&PICK_UP_ANIM_NAME);
         bool failed = !FetchGoods(CIntelligentPointer<CThing>(pile), 3.5f, getAnims, CAIFilterBase(), 0);
         if (failed) {
             Terminate();
@@ -131,7 +131,7 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
     }
     {
         vector<const CCharString*> putAnims;
-        putAnims.push_back_inline(&g_CCharString_013bb680);
+        putAnims.push_back_inline(&PUT_LOG_IN_BONFIRE_ANIM_NAME);
         PlaceGoods(CIntelligentPointer<CThing>(fire), 4.0f, putAnims, CAIFilterBase(), 0);
         Terminate();
     }

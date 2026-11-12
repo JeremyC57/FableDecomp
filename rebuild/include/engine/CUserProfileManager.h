@@ -1,5 +1,8 @@
 #ifndef FABLE_ENGINE_CUSERPROFILEMANAGER_H
 #define FABLE_ENGINE_CUSERPROFILEMANAGER_H
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME
+#include "fable_string.h"
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
 #include "fable_string.h"
 #endif
@@ -20,6 +23,14 @@ public:
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_UIBACKGROUND
     // Retail opt-in (Codex pass19): both PDBs and donor01885a90/native004075c0.
     void RenderUIBackground(float);
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME
+    // agentFAM09 opt-in (row 0x01219EC0, its dynamic initializer): the profile file name, Ego_r.pdb / FableWin.pdb `dynamic
+    // initializer for 'CUserProfileManager::m_strProfileName'', L"Profile.bin" at 0x013B7D54; private static per Anniv360 Test PDB
+    // (third source) ?m_strProfileName@CUserProfileManager@@0VCWideString@@A. Declaration only: no layout change.
+private:
+    static CWideString m_strProfileName;                                  // 0x013B7D54
+public:
 #endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS

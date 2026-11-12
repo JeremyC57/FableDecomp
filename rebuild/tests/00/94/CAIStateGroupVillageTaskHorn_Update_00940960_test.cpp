@@ -10,7 +10,7 @@ enum EMovementType { AI_MOVEMENT_WALKING = 3 };
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCharString { public: const char* s; };
-static CCharString g_CCharString_013bac9c = { "ACTION_POINT" };
+static const CCharString ACTION_POINT = { "ACTION_POINT" };
 static const float DELTA_NOTIONAL_ZERO = 0.0001f;
 class CThing;
 struct CTCGraphicAppearance {
@@ -61,7 +61,7 @@ void CAIStateGroup_VillageTaskHorn::Update()
             horn->GetPos();
             C3DVector action_pos;
             CRightHandedSet rhset;
-            horn->GetTCGraphicAppearance()->GetDummyObject(g_CCharString_013bac9c, 0, 0, action_pos, rhset, 1.0f);
+            horn->GetTCGraphicAppearance()->GetDummyObject(ACTION_POINT, 0, 0, action_pos, rhset, 1.0f);
             EAIActionReturn ret;
             do {
                 bool nav_route_calculated = false;

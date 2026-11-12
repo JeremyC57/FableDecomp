@@ -27,7 +27,7 @@ template <class T> class CCountedPointer { public:
 class CCharString { public:
     void* m_pData;
 };
-extern CCharString g_CCharString_013b8ba4;      // 0x013B8BA4 "GBANK_MAIN"
+namespace { extern CCharString BANK_HANDLE; }      // 0x013B8BA4 "GBANK_MAIN"
 struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80
     CPixelFormat  CompressedAlpha;              // +0x00
     CPixelFormat  CompressedAlpha2;             // +0x04
@@ -184,7 +184,7 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
     params.Flag1c = false;
     params.Flag28 = false;
     CGraphicBankManager* manager = GFGetSystemManager()->GraphicBankManager;
-    GraphicManager = manager->CreateAndInitialize(g_CCharString_013b8ba4, &params, true, true).GetPItem();
+    GraphicManager = manager->CreateAndInitialize(BANK_HANDLE, &params, true, true).GetPItem();
     AddToGlobalTCs();
 }
 

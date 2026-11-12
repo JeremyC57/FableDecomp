@@ -44,7 +44,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-extern const CCharString g_DoorCloseAnimName;   // 0x013BAD38
+namespace { extern const CCharString SDoorCloseAnim; }   // 0x013BAD38
 class CAnimationEntry { public: long AnimIndex; };
 class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;
@@ -211,7 +211,7 @@ void CTCDoor_Methods::Close()
     CThingBaseDef* baseDef = Parent()->GetPBaseDef();
     CDefPointer<CAnimatingObjectDef> def;
     baseDef->GetSubDef(&def);
-    const CAnimationEntry* entry = def->Animation.GetAnimation(g_DoorCloseAnimName, 0, CAnimFilterNoGroup());
+    const CAnimationEntry* entry = def->Animation.GetAnimation(SDoorCloseAnim, 0, CAnimFilterNoGroup());
     CAnimInit init(6, 0, entry->AnimIndex, 1, false, 0, 100);
     animate.SetMainAnim(init, 1, 0);
     CTCSwitchableNavigation* navigation;
@@ -238,7 +238,7 @@ static void L(const char* s) { strcat(g_log, s); strcat(g_log, ";"); }
 static const char* g_lastText;
 CCharString::CCharString(const char* text, long) { PStringData = (void*)text; g_lastText = text; }
 CCharString::~CCharString() {}
-const CCharString g_DoorCloseAnimName("ANIM");
+namespace { const CCharString SDoorCloseAnim("ANIM"); }
 bool CAnimFilterBase::Accept(const CAnimationEntry*) const { return true; }
 CAnimFilterBase* CAnimFilterBase::Clone() const { return 0; }
 bool CAnimFilterNoGroup::Accept(const CAnimationEntry*) const { return true; }
@@ -372,7 +372,7 @@ int main()
     door->Opening = true; door->Closing = false; obstacle.Enabled = false; Reset();
     door->Close();
     CHECK(strcmp(g_log, "complex;sound;subdef;getanim;setmain;blocking;event;force;") == 0);
-    CHECK(g_complexThis == &complex && strcmp(g_sound, "DOOR_CLOSE") == 0 && g_animName == &g_DoorCloseAnimName && g_animIndex == 0 && g_animSet == (char*)&animDef + 0x34);
+    CHECK(g_complexThis == &complex && strcmp(g_sound, "DOOR_CLOSE") == 0 && g_animName == &SDoorCloseAnim && g_animIndex == 0 && g_animSet == (char*)&animDef + 0x34);
     CHECK(g_setArgs[0] == 6 && g_setArgs[1] == 0 && g_setArgs[2] == 17 && g_setArgs[3] == 1 && g_setArgs[4] == 0 && g_setArgs[5] == 0 && g_setArgs[6] == 100);
     CHECK(g_mainMode == 1 && g_mainDelay == 0 && g_force == 1);
     CHECK(door->Opening == false && door->Closing == true && g_blocking == 1 && obstacle.Enabled == true && g_event == 0x66);

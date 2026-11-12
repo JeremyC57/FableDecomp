@@ -36,6 +36,16 @@ public:
 #endif
         CWorld& GetWorld() const;                                                                 // 0x0073A680
 #endif
+#ifdef FABLE_RETAIL_CMODEBASE_NOFRAMES
+    // agentFAM09 opt-in (rows 0x0121F7D0 / 0x0121F800, their dynamic initializers): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_{COMB_IDLE,IDLE,WAVE}_ANIMS'' (0x013BAFE4 / 0x013BAFE8 / 0x013BAFEC,
+    // FPS*6 / *12 / *3); private static const long per Anniv360 Test PDB (third source) ?NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS@
+    // CModeBase@CTCCreatureModeManager@@0JB. Static members: no layout change.
+    private:
+        static const long NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS;      // 0x013BAFE4
+        static const long NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS;           // 0x013BAFE8
+        static const long NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS;           // 0x013BAFEC
+#endif
     protected:
         CThing& ParentThing;
         unsigned char WeaponBasedFilter[12]; // Original CAnimFilterOfGroup.

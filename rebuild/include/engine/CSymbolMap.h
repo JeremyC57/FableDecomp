@@ -18,6 +18,14 @@ class CSymbolMap : public CBaseClassNonCopyable {
 public:
     CSymbolMap();
     virtual ~CSymbolMap();
+#if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_CURRENTFILENAME)
+    // agentFAM09 opt-in (row 0x01224190, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CSymbolMap::CurrentFilename'' (default CWideString at 0x013CAA34, after the TU's GNullName); protected static per
+    // Anniv360 Test PDB (third source) ?CurrentFilename@CSymbolMap@@1VCWideString@@A. Static member: no layout change.
+protected:
+    static CWideString CurrentFilename;                                  // 0x013CAA34
+public:
+#endif
 #ifdef FABLE_RETAIL_CSYMBOLMAP
     // Chunk 740 (row 0x00B027D0 CPSCRenderMesh::DatabaseSerialise): the nested symbol record (Ego_r TPI CSymbolMap::CSymbolInfo,
     // 12 bytes: GroupName +0, EntryName +4, Val +8; FableWin.pdb mangles it `VCSymbolInfo@1@`, nested and class-keyed) and the

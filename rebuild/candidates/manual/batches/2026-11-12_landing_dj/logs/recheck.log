@@ -1,0 +1,1365 @@
+addr       parity           behav  name
+0043b570   WARN SHARED_HEADER_AVAILABLE CFontManager
+0043b570   RELOCATION_MATCH PASS   CPlayerGui::CPlayerGui
+00488b20   WARN SHARED_HEADER_AVAILABLE C3DVector
+00488b20   WARN SHARED_HEADER_AVAILABLE CThing
+00488b20   WARN SHARED_HEADER_AVAILABLE CThingManager
+00488b20   WARN SHARED_HEADER_AVAILABLE CPlayer
+00488b20   WARN RELOC_NAME: ??$CopyHolySites@USThingListIterator@@U?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@@@YI?AU?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@USThingListIterator@@0U0@@Z -> 0048d5c0 labelled '_global::CopyFlaggedThings'
+00488b20   RELOCATION_MATCH PASS   CPlayer::LocateCharacterStartHolySite
+004c11f0   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPosIfLoaded
+00521240   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00521240   WARN SHARED_HEADER_AVAILABLE CASuspendableProcess
+00521240   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00521240   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+00521240   WARN SHARED_HEADER_AVAILABLE CThingManager
+00521240   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00521240   RELOCATION_MATCH PASS   CThingManager::LoadEntitiesBinary
+005223f0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005223f0   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+005223f0   WARN SHARED_HEADER_AVAILABLE CThingManager
+005223f0   RELOCATION_MATCH PASS   CThingManager::LoadLoadableGlobalThingsFromFile
+005a29f4   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a29f4   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005a29f4   RELOCATION_MATCH PASS   CTCInventoryTrade::ConstructSpecialShopList
+005a3734   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a3734   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a3734   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshBuyPossibilityNumbers
+005a5b31   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a5b31   WARN RELOC_NAME: ??1?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005a5b31   RELOCATION_MATCH PASS   CTCInventoryTrade::ConstructActualWantedInventoryPC
+005a8175   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a8175   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a8175   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshBuyPossibilityNumbersPC
+005af64e   WARN RELOC_CONFLICT: ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ -> 00449970 here, 00449960 in landed 007b0880
+005af64e   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005af64e   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005af64e   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005af64e   RELOCATION_MATCH PASS   CTCInventoryTrade::BuyItem
+005bff07   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+005bff07   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005bff07   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+005bff07   WARN SHARED_HEADER_AVAILABLE CSystemManager
+005bff07   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bff07   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+005bff07   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+005bff07   WARN RELOC_NAME: ??0CGraphicBankParams@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+005bff07   WARN RELOC_NAME: ?GetBestCompressedAlphaTextureFormat_009be830@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be830 labelled 'CDisplayManager::GetBestCompressedOpaqueTextureFormat'
+005bff07   WARN RELOC_NAME: ?GetBestCompressedAlphaTextureFormat3@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be8b0 labelled 'CDisplayManager::GetBestCompressedBooleanAlphaTextureFormat'
+005bff07   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@PAUCGraphicBankParams@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+005bff07   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::CTCInventoryBase
+00661b40   WARN SHARED_HEADER_AVAILABLE C3DVector
+00661b40   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00661b40   WARN SHARED_HEADER_AVAILABLE CThing
+00661b40   RELOCATION_MATCH PASS   CThingCreatureBase::GetHeadPos
+00670d50   WARN SHARED_HEADER_AVAILABLE CCRC
+00670d50   WARN SHARED_HEADER_AVAILABLE C3DMeshStats
+00670d50   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00670d50   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00670d50   WARN SHARED_HEADER_AVAILABLE CValidateDefinitionInitBase
+00670d50   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+00670d50   WARN SHARED_HEADER_AVAILABLE CAnimationSet
+00670d50   WARN SHARED_HEADER_AVAILABLE CEngineGraphic
+00670d50   RELOCATION_MATCH PASS   CThingCreatureDef::Validate
+006ed270   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006ed270   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006ed270   WARN SHARED_HEADER_AVAILABLE CWorld
+006ed270   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006ed270   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo
+006ed270   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo
+006ed270   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+006ed270   WARN SHARED_HEADER_AVAILABLE CCombatManager
+006ed270   RELOCATION_MATCH PASS   CCombatManager::RegisterAttackedCombatant
+00722590   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00722590   WARN SHARED_HEADER_AVAILABLE CThing
+00722590   RELOCATION_MATCH PASS   CTCSmokeGenerator::CreatePositions
+0072cd00   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0072cd00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0072cd00   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities
+0072cd00   RELOCATION_MATCH PASS   CTCSpecialAbilities::SetupDivineWrath
+0072ce20   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0072ce20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0072ce20   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities
+0072ce20   RELOCATION_MATCH PASS   CTCSpecialAbilities::SetupUnholyPower
+007306c0   WARN SHARED_HEADER_AVAILABLE CDefString
+007306c0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+007306c0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+007306c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+007306c0   WARN SHARED_HEADER_AVAILABLE CAnimationSet
+007306c0   WARN SHARED_HEADER_AVAILABLE CAnimInit
+007306c0   WARN SHARED_HEADER_AVAILABLE CAnimateThing
+007306c0   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex
+007306c0   WARN SHARED_HEADER_AVAILABLE CTCSwitchableNavigation
+007306c0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007306c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007306c0   WARN SHARED_HEADER_AVAILABLE CThing
+007306c0   WARN SHARED_HEADER_AVAILABLE CDoorDef
+007306c0   WARN RELOC_NAME: ?Reset@CAnimateThing@@QAEXXZ -> 0070ec30 labelled 'CAnimateThing::ClearAllAnims'
+007306c0   WARN RELOC_NAME: ?SDoorOpenAnim@?A0x5e7525cf@@3VCCharString@@B -> 013bad34 labelled 'g_DoorOpenAnimName'
+007306c0   WARN RELOC_NAME: ?SDoorCloseAnim@?A0x5e7525cf@@3VCCharString@@B -> 013bad38 labelled 'g_DoorCloseAnimName'
+007306c0   WARN RELOC_NAME: ?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z -> 00787580 labelled 'CTCSwitchableNavigation::SetAsBlockingNavigation'
+007306c0   RELOCATION_MATCH PASS   CTCDoor::OnInitialActivate
+00730c00   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+00730c00   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+00730c00   WARN SHARED_HEADER_AVAILABLE CAnimationSet
+00730c00   WARN SHARED_HEADER_AVAILABLE CAnimInit
+00730c00   WARN SHARED_HEADER_AVAILABLE CAnimateThing
+00730c00   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex
+00730c00   WARN SHARED_HEADER_AVAILABLE CTCSwitchableNavigation
+00730c00   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00730c00   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00730c00   WARN SHARED_HEADER_AVAILABLE CThing
+00730c00   WARN SHARED_HEADER_AVAILABLE CDoorDef
+00730c00   WARN RELOC_NAME: ?SDoorOpenAnim@?A0x0ea647d4@@3VCCharString@@B -> 013bad34 labelled 'g_DoorOpenAnimName'
+00730c00   WARN RELOC_NAME: ?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z -> 00787580 labelled 'CTCSwitchableNavigation::SetAsBlockingNavigation'
+00730c00   RELOCATION_MATCH PASS   CTCDoor::Open
+00730dd0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+00730dd0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+00730dd0   WARN SHARED_HEADER_AVAILABLE CAnimationSet
+00730dd0   WARN SHARED_HEADER_AVAILABLE CAnimInit
+00730dd0   WARN SHARED_HEADER_AVAILABLE CAnimateThing
+00730dd0   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex
+00730dd0   WARN SHARED_HEADER_AVAILABLE CTCSwitchableNavigation
+00730dd0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00730dd0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00730dd0   WARN SHARED_HEADER_AVAILABLE CThing
+00730dd0   WARN SHARED_HEADER_AVAILABLE CDoorDef
+00730dd0   WARN RELOC_NAME: ?SDoorCloseAnim@?A0xef037bc1@@3VCCharString@@B -> 013bad38 labelled 'g_DoorCloseAnimName'
+00730dd0   WARN RELOC_NAME: ?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z -> 00787580 labelled 'CTCSwitchableNavigation::SetAsBlockingNavigation'
+00730dd0   RELOCATION_MATCH PASS   CTCDoor::Close
+007310c0   WARN RELOC_NAME: ?SDoorOpenAnim@?A0xc70739e2@@3VCCharString@@B -> 013bad34 labelled 'g_DoorOpenAnimName'
+007310c0   RELOCATION_MATCH PASS   CTCDoor::UpdateOpenStatusTriggerTypeScript
+00732850   WARN RELOC_NAME: ?SClockTurnAnim@?A0xfa34f163@@3VCCharString@@A -> 013bad3c labelled 'g_ClockHandTurnName'
+00732850   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+00732850   RELOCATION_MATCH PASS   CTCClock::OnInitialActivate
+00765f90   RELOCATION_MATCH PASS   CTCObjectAugmentations::GetAugmentationName
+0076eb00   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+0076eb00   RELOCATION_MATCH PASS   CTCWeaponTrail::InitialiseTrails
+007c25a0   WARN SHARED_HEADER_AVAILABLE CCRC
+007c25a0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+007c25a0   WARN SHARED_HEADER_AVAILABLE CThingShotDef
+007c25a0   WARN SHARED_HEADER_AVAILABLE CThing
+007c25a0   RELOCATION_MATCH PASS   CTCShotDefinitionBase::InitAttachedEffects
+007ea2f0   RELOCATION_MATCH PASS   NTargeting::GetTargetingPositionOnThing
+007feaf0   WARN SHARED_HEADER_AVAILABLE CThing
+007feaf0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+007feaf0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot
+007feaf0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange
+007feaf0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+007feaf0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007feaf0   WARN SHARED_HEADER_AVAILABLE CWorld
+007feaf0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007feaf0   RELOCATION_MATCH PASS   CTCSingleUserActionPoints::IsActionPointOccupied
+00835e30   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00835e30   RELOCATION_MATCH PASS   CThingDeadCreature::SetupDeadAnimation
+008f78e0   RELOCATION_MATCH PASS   NCombatActionHelpers::GetDustCreationHelperNames
+00910570   WARN SHARED_HEADER_AVAILABLE CSoundPair
+00910570   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00910570   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00910570   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00910570   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+00910570   RELOCATION_MATCH PASS   CAIStateGroup_MinionListenToStory::StandUp
+00917130   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+00917130   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00917130   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00917130   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00917130   WARN RELOC_NAME: ?GetPLogPile@CAIStateGroup_ThrowLogsOnFire@@QAEPAVCThing@@XZ -> 00917050 labelled 'CAIStateGroup_ThrowLogsOnFire::GetPNearestFreeLogPile'
+00917130   WARN RELOC_NAME: ?GetPBonfire@CAIStateGroup_ThrowLogsOnFire@@QAEPAVCThing@@XZ -> 009170b0 labelled 'CAIStateGroup_ThrowLogsOnFire::GetPNearestBonfire'
+00917130   WARN RELOC_NAME: ?GetPDefinitionManager@CAIStateGroupBase@@QBEPAVCDefinitionManager@@XZ -> 008fcfb0 labelled 'CAIStateGroupBase::PeekDefinitionManager'
+00917130   RELOCATION_MATCH PASS   CAIStateGroup_ThrowLogsOnFire::Update
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CCRC
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CDefString
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0093b1d0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0093b1d0   WARN SHARED_HEADER_AVAILABLE C2DVector
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0093b1d0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0093b1d0   RELOCATION_MATCH PASS   CAIStateGroup_BanditSitRoundCampfire::Update
+0093dfc0   WARN SHARED_HEADER_AVAILABLE CThing
+0093dfc0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0093dfc0   WARN SHARED_HEADER_AVAILABLE CMessageEventManager
+0093dfc0   WARN SHARED_HEADER_AVAILABLE CWorld
+0093dfc0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093dfc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093dfc0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby2::AlertAlliesInVicinity
+00940960   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00940960   RELOCATION_MATCH PASS   CAIStateGroup_VillageTaskHorn::Update
+0095e430   WARN SHARED_HEADER_AVAILABLE CBaseClass
+0095e430   RELOCATION_MATCH PASS   CAIStateGroup_ReactToDeadLeader::IsStillRunnable
+0095e470   WARN SHARED_HEADER_AVAILABLE CThing
+0095e470   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation
+0095e470   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095e470   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095e470   RELOCATION_MATCH PASS   CAIStateGroup_ReactToDeadLeader::Update
+009e5420   WARN SHARED_HEADER_AVAILABLE CVectorMap
+009e5420   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+009e5420   RELOCATION_MATCH PASS   CSymbolMap::AddSymbolDirty
+009eb2c0   WARN SHARED_HEADER_AVAILABLE CParsedItem
+009eb2c0   WARN RELOC_NAME: ?FindInput@CConsole_Retail@@QAEPAVCConsoleInputBase@@ABVCCharString@@@Z -> 009eb220 labelled 'CConsole_Retail::GetRegisteredConsoleInput'
+009eb2c0   RELOCATION_MATCH PASS   CConsole::SetHelpBarString
+01219ec0   WARN RELOC_CONFLICT: _$E2 -> 012288c0 here, 01228930 in landed 01219f00
+01219ec0   WARN RELOC_NAME: _$E2 -> 012288c0 labelled '_global::AtexitDtor_CCharString_at_013b7d54_012288c0'
+01219ec0   RELOCATION_MATCH PASS   _static_init::CUserProfileManager::m_strProfileName
+01219ee0   WARN RELOC_CONFLICT: _$E2 -> 01228910 here, 01228930 in landed 01219f00
+01219ee0   WARN RELOC_NAME: _$E2 -> 01228910 labelled '_global::AtexitDtor_CCharString_at_013b7d5c_01228910'
+01219ee0   RELOCATION_MATCH PASS   _static_init::RelaunchSaveGameName
+01219f20   WARN RELOC_CONFLICT: _$E2 -> 01228920 here, 01228930 in landed 01219f00
+01219f20   WARN RELOC_NAME: _$E2 -> 01228920 labelled '_global::AtexitDtor_CCharString_at_013b85e0_01228920'
+01219f20   RELOCATION_MATCH PASS   _static_init::GVersionString
+01219f60   WARN RELOC_CONFLICT: _$E2 -> 01228940 here, 01228930 in landed 01219f00
+01219f60   WARN RELOC_NAME: _$E2 -> 01228940 labelled '_global::AtexitDtor_CCharString_at_013b865c_01228940'
+01219f60   RELOCATION_MATCH PASS   _static_init::GInputFileName
+01219f80   WARN RELOC_CONFLICT: _$E2 -> 01228950 here, 01228930 in landed 01219f00
+01219f80   WARN RELOC_NAME: _$E2 -> 01228950 labelled '_global::AtexitDtor_CCharString_at_013b8660_01228950'
+01219f80   RELOCATION_MATCH PASS   _static_init::GEventPackageFileName
+01219fa0   WARN RELOC_CONFLICT: _$E2 -> 01228960 here, 01228930 in landed 01219f00
+01219fa0   WARN RELOC_NAME: _$E2 -> 01228960 labelled '_global::AtexitDtor_CCharString_at_013b8664_01228960'
+01219fa0   RELOCATION_MATCH PASS   _static_init::GPacketFileName
+01219fc0   WARN RELOC_CONFLICT: _$E2 -> 01228970 here, 01228930 in landed 01219f00
+01219fc0   WARN RELOC_NAME: _$E2 -> 01228970 labelled '_global::AtexitDtor_CCharString_at_013b8668_01228970'
+01219fc0   RELOCATION_MATCH PASS   _static_init::GForceLevel
+01219fe0   WARN RELOC_CONFLICT: _$E2 -> 01228980 here, 01228930 in landed 01219f00
+01219fe0   WARN RELOC_NAME: _$E2 -> 01228980 labelled '_global::AtexitDtor_CCharString_at_013b866c_01228980'
+01219fe0   RELOCATION_MATCH PASS   _static_init::GForceStartingHolySite
+0121a000   WARN RELOC_CONFLICT: _$E2 -> 01228990 here, 01228930 in landed 01219f00
+0121a000   WARN RELOC_NAME: _$E2 -> 01228990 labelled '_global::AtexitDtor_CCharString_at_013b8670_01228990'
+0121a000   RELOCATION_MATCH PASS   _static_init::GDummyObjectFilter
+0121a020   WARN RELOC_CONFLICT: _$E2 -> 012289a0 here, 01228930 in landed 01219f00
+0121a020   WARN RELOC_NAME: _$E2 -> 012289a0 labelled '_global::AtexitDtor_CCharString_at_013b8674_012289a0'
+0121a020   RELOCATION_MATCH PASS   _static_init::GRunLUAScript
+0121a050   WARN RELOC_CONFLICT: _$E2 -> 012289f0 here, 01228930 in landed 01219f00
+0121a050   WARN RELOC_NAME: _$E2 -> 012289f0 labelled '_global::AtexitDtor_CCharString_at_013b86f4_012289f0'
+0121a050   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a070   WARN RELOC_CONFLICT: _$E2 -> 01228a00 here, 01228930 in landed 01219f00
+0121a070   WARN RELOC_NAME: _$E2 -> 01228a00 labelled '_global::AtexitDtor_CCharString_at_013b86f8_01228a00'
+0121a070   RELOCATION_MATCH PASS   _static_init::GDebugPlaySpeechForNarratorName
+0121a090   WARN RELOC_CONFLICT: _$E2 -> 01228a10 here, 01228930 in landed 01219f00
+0121a090   WARN RELOC_NAME: _$E2 -> 01228a10 labelled '_global::AtexitDtor_CCharString_at_013b86fc_01228a10'
+0121a090   RELOCATION_MATCH PASS   _static_init::NGlobalConsole::XBPerfLogFileName
+0121a0b0   WARN RELOC_CONFLICT: _$E2 -> 01228a20 here, 01228930 in landed 01219f00
+0121a0b0   WARN RELOC_NAME: _$E2 -> 01228a20 labelled '_global::AtexitDtor_CCharString_at_013b8700_01228a20'
+0121a0b0   RELOCATION_MATCH PASS   _static_init::NGlobalConsole::LastSpeechSubString
+0121a0d0   WARN RELOC_CONFLICT: _$E2 -> 01228a30 here, 01228930 in landed 01219f00
+0121a0d0   WARN RELOC_NAME: _$E2 -> 01228a30 labelled '_global::AtexitDtor_CCharString_at_013b8704_01228a30'
+0121a0d0   RELOCATION_MATCH PASS   _static_init::NGlobalConsole::LastSpeechSymbol
+0121a0f0   WARN RELOC_CONFLICT: _$E2 -> 01228a40 here, 01228930 in landed 01219f00
+0121a0f0   WARN RELOC_NAME: _$E2 -> 01228a40 labelled '_global::AtexitDtor_CCharString_at_013b8708_01228a40'
+0121a0f0   RELOCATION_MATCH PASS   _static_init::NGlobalConsole::GConsoleDebugString
+0121a11c   WARN RELOC_CONFLICT: _$E2 -> 01228a51 here, 01228930 in landed 01219f00
+0121a11c   WARN RELOC_NAME: _$E2 -> 01228a51 labelled '_global::AtexitDtor_CCharString_at_013b8720_01228a51'
+0121a11c   RELOCATION_MATCH PASS   _static_init::DEMO_WORLD_NAME
+0121a137   WARN RELOC_CONFLICT: _$E2 -> 01228a5b here, 01228930 in landed 01219f00
+0121a137   WARN RELOC_NAME: _$E2 -> 01228a5b labelled '_global::AtexitDtor_CCharString_at_013b8724_01228a5b'
+0121a137   RELOCATION_MATCH PASS   _static_init::DEMO_COMBAT_STRENGTH_HOLY_SITE
+0121a152   WARN RELOC_CONFLICT: _$E2 -> 01228a65 here, 01228930 in landed 01219f00
+0121a152   WARN RELOC_NAME: _$E2 -> 01228a65 labelled '_global::AtexitDtor_CCharString_at_013b8728_01228a65'
+0121a152   RELOCATION_MATCH PASS   _static_init::DEMO_COMBAT_SKILL_HOLY_SITE
+0121a16d   WARN RELOC_CONFLICT: _$E2 -> 01228a6f here, 01228930 in landed 01219f00
+0121a16d   WARN RELOC_NAME: _$E2 -> 01228a6f labelled '_global::AtexitDtor_CCharString_at_013b872c_01228a6f'
+0121a16d   RELOCATION_MATCH PASS   _static_init::DEMO_COMBAT_WILL_HOLY_SITE
+0121a188   WARN RELOC_CONFLICT: _$E2 -> 01228a79 here, 01228930 in landed 01219f00
+0121a188   WARN RELOC_NAME: _$E2 -> 01228a79 labelled '_global::AtexitDtor_CCharString_at_013b8730_01228a79'
+0121a188   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_SHOPPING_HOLY_SITE
+0121a1a3   WARN RELOC_CONFLICT: _$E2 -> 01228a83 here, 01228930 in landed 01219f00
+0121a1a3   WARN RELOC_NAME: _$E2 -> 01228a83 labelled '_global::AtexitDtor_CCharString_at_013b8734_01228a83'
+0121a1a3   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_GUILD_HOLY_SITE
+0121a1be   WARN RELOC_CONFLICT: _$E2 -> 01228a8d here, 01228930 in landed 01219f00
+0121a1be   WARN RELOC_NAME: _$E2 -> 01228a8d labelled '_global::AtexitDtor_CCharString_at_013b8738_01228a8d'
+0121a1be   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_GOOD_ARRIVAL_HOLY_SITE
+0121a1d9   WARN RELOC_CONFLICT: _$E2 -> 01228a97 here, 01228930 in landed 01219f00
+0121a1d9   WARN RELOC_NAME: _$E2 -> 01228a97 labelled '_global::AtexitDtor_CCharString_at_013b873c_01228a97'
+0121a1d9   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_EVIL_ARRIVAL_HOLY_SITE
+0121a1f4   WARN RELOC_CONFLICT: _$E2 -> 01228aa1 here, 01228930 in landed 01219f00
+0121a1f4   WARN RELOC_NAME: _$E2 -> 01228aa1 labelled '_global::AtexitDtor_CCharString_at_013b8740_01228aa1'
+0121a1f4   RELOCATION_MATCH PASS   _static_init::DEMO_COMBAT_STRENGTH_QUEST
+0121a211   WARN RELOC_CONFLICT: _$E2 -> 01228aab here, 01228930 in landed 01219f00
+0121a211   WARN RELOC_NAME: _$E2 -> 01228aab labelled '_global::AtexitDtor_CCharString_at_013b8744_01228aab'
+0121a211   RELOCATION_MATCH PASS   _static_init::DEMO_COMBAT_SKILL_QUEST
+0121a22e   WARN RELOC_CONFLICT: _$E2 -> 01228ab5 here, 01228930 in landed 01219f00
+0121a22e   WARN RELOC_NAME: _$E2 -> 01228ab5 labelled '_global::AtexitDtor_CCharString_at_013b8748_01228ab5'
+0121a22e   RELOCATION_MATCH PASS   _static_init::DEMO_COMBAT_WILL_QUEST
+0121a24b   WARN RELOC_CONFLICT: _$E2 -> 01228abf here, 01228930 in landed 01219f00
+0121a24b   WARN RELOC_NAME: _$E2 -> 01228abf labelled '_global::AtexitDtor_CCharString_at_013b874c_01228abf'
+0121a24b   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_SHOPPING_QUEST
+0121a268   WARN RELOC_CONFLICT: _$E2 -> 01228ac9 here, 01228930 in landed 01219f00
+0121a268   WARN RELOC_NAME: _$E2 -> 01228ac9 labelled '_global::AtexitDtor_CCharString_at_013b8750_01228ac9'
+0121a268   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_GUILD_QUEST
+0121a285   WARN RELOC_CONFLICT: _$E2 -> 01228ad3 here, 01228930 in landed 01219f00
+0121a285   WARN RELOC_NAME: _$E2 -> 01228ad3 labelled '_global::AtexitDtor_CCharString_at_013b8754_01228ad3'
+0121a285   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_GOOD_ARRIVAL_QUEST
+0121a2a2   WARN RELOC_CONFLICT: _$E2 -> 01228add here, 01228930 in landed 01219f00
+0121a2a2   WARN RELOC_NAME: _$E2 -> 01228add labelled '_global::AtexitDtor_CCharString_at_013b8758_01228add'
+0121a2a2   RELOCATION_MATCH PASS   _static_init::DEMO_TOWNLIFE_EVIL_ARRIVAL_QUEST
+0121a2bf   WARN RELOC_CONFLICT: _$E2 -> 01228ae7 here, 01228930 in landed 01219f00
+0121a2bf   WARN RELOC_NAME: _$E2 -> 01228ae7 labelled '_global::AtexitDtor_CCharString_at_013b875c_01228ae7'
+0121a2bf   RELOCATION_MATCH PASS   _static_init::DEFAULT_FRONT_END_FONT
+0121a2f0   WARN RELOC_CONFLICT: _$E2 -> 01228b00 here, 01228930 in landed 01219f00
+0121a2f0   WARN RELOC_NAME: _$E2 -> 01228b00 labelled '_global::AtexitDtor_CCharString_at_013b8778_01228b00'
+0121a2f0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a310   WARN RELOC_CONFLICT: _$E2 -> 01228b10 here, 01228930 in landed 01219f00
+0121a310   WARN RELOC_NAME: _$E2 -> 01228b10 labelled '_global::AtexitDtor_CCharString_at_013b877c_01228b10'
+0121a310   RELOCATION_MATCH PASS   _static_init::ScriptDebugString
+0121a330   WARN RELOC_CONFLICT: _$E2 -> 01228b20 here, 01228930 in landed 01219f00
+0121a330   WARN RELOC_NAME: _$E2 -> 01228b20 labelled '_global::AtexitDtor_CCharString_at_013b8788_01228b20'
+0121a330   RELOCATION_MATCH PASS   _static_init::GUI_FONT_NAME
+0121a36c   WARN RELOC_CONFLICT: _$E2 -> 01228b98 here, 01228930 in landed 01219f00
+0121a36c   WARN RELOC_NAME: _$E2 -> 01228b98 labelled '_global::AtexitDtor_CCharString_at_013b8798_01228b98'
+0121a36c   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a3c0   WARN RELOC_CONFLICT: _$E2 -> 01228c30 here, 01228930 in landed 01219f00
+0121a3c0   WARN RELOC_NAME: _$E2 -> 01228c30 labelled '_global::AtexitDtor_CCharString_at_013b89d4_01228c30'
+0121a3c0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a3e0   WARN RELOC_CONFLICT: _$E2 -> 01228c40 here, 01228930 in landed 01219f00
+0121a3e0   WARN RELOC_NAME: _$E2 -> 01228c40 labelled '_global::AtexitDtor_CCharString_at_013b89d8_01228c40'
+0121a3e0   RELOCATION_MATCH PASS   _static_init::GResetProgressTipText
+0121a400   WARN RELOC_CONFLICT: _$E2 -> 01228c50 here, 01228930 in landed 01219f00
+0121a400   WARN RELOC_NAME: _$E2 -> 01228c50 labelled '_global::AtexitDtor_CCharString_at_013b89dc_01228c50'
+0121a400   RELOCATION_MATCH PASS   _static_init::GResetProgressTipTitleText
+0121a610   WARN RELOC_CONFLICT: _$E2 -> 01228dc0 here, 01228930 in landed 01219f00
+0121a610   WARN RELOC_NAME: _$E2 -> 01228dc0 labelled '_global::AtexitDtor_CCharString_at_013b8a50_01228dc0'
+0121a610   RELOCATION_MATCH PASS   _static_init::CSubtitledMessage::MostRecentGroupQueried
+0121a650   WARN RELOC_CONFLICT: _$E2 -> 01228de0 here, 01228930 in landed 01219f00
+0121a650   WARN RELOC_NAME: _$E2 -> 01228de0 labelled '_global::AtexitDtor_CCharString_at_013b8a7c_01228de0'
+0121a650   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121a6f0   WARN RELOC_CONFLICT: _$E2 -> 01228e60 here, 01228930 in landed 01219f00
+0121a6f0   WARN RELOC_NAME: _$E2 -> 01228e60 labelled '_global::AtexitDtor_CCharString_at_013b8ae4_01228e60'
+0121a6f0   RELOCATION_MATCH PASS   _static_init::ConsoleVarScoreboardUserName
+0121a710   WARN RELOC_CONFLICT: _$E2 -> 01228e70 here, 01228930 in landed 01219f00
+0121a710   WARN RELOC_NAME: _$E2 -> 01228e70 labelled '_global::AtexitDtor_CCharString_at_013b8ae8_01228e70'
+0121a710   RELOCATION_MATCH PASS   _static_init::ConsoleVarScoreboardPassword
+0121a730   WARN RELOC_CONFLICT: _$E2 -> 01228e80 here, 01228930 in landed 01219f00
+0121a730   WARN RELOC_NAME: _$E2 -> 01228e80 labelled '_global::AtexitDtor_CCharString_at_013b8aec_01228e80'
+0121a730   RELOCATION_MATCH PASS   _static_init::ConsoleVarScoreboardSelectedClan
+0121a750   WARN RELOC_CONFLICT: _$E2 -> 01228e90 here, 01228930 in landed 01219f00
+0121a750   WARN RELOC_NAME: _$E2 -> 01228e90 labelled '_global::AtexitDtor_CCharString_at_013b8af0_01228e90'
+0121a750   RELOCATION_MATCH PASS   _static_init::ConsoleVarScoreboardServerIPAddress
+0121a770   WARN RELOC_CONFLICT: _$E2 -> 01228ea0 here, 01228930 in landed 01219f00
+0121a770   WARN RELOC_NAME: _$E2 -> 01228ea0 labelled '_global::AtexitDtor_CCharString_at_013b8af4_01228ea0'
+0121a770   RELOCATION_MATCH PASS   _static_init::ConsoleVarServerScoresAgent
+0121a790   WARN RELOC_CONFLICT: _$E2 -> 01228eb0 here, 01228930 in landed 01219f00
+0121a790   WARN RELOC_NAME: _$E2 -> 01228eb0 labelled '_global::AtexitDtor_CCharString_at_013b8af8_01228eb0'
+0121a790   RELOCATION_MATCH PASS   _static_init::EASY_KEY
+0121a7ad   WARN RELOC_CONFLICT: _$E2 -> 01228eba here, 01228930 in landed 01219f00
+0121a7ad   WARN RELOC_NAME: _$E2 -> 01228eba labelled '_global::AtexitDtor_CCharString_at_013b8b0c_01228eba'
+0121a7ad   RELOCATION_MATCH PASS   _static_init::DEFAULT_DEATH_RECOVERY_MARKER_NAME
+0121a87b   WARN RELOC_CONFLICT: _$E2 -> 01228ec4 here, 01228930 in landed 01219f00
+0121a87b   WARN RELOC_NAME: _$E2 -> 01228ec4 labelled '_global::AtexitDtor_CCharString_at_013b8b38_01228ec4'
+0121a87b   RELOCATION_MATCH PASS   _static_init::CrimeTotalText
+0121a898   WARN RELOC_CONFLICT: _$E2 -> 01228ece here, 01228930 in landed 01219f00
+0121a898   WARN RELOC_NAME: _$E2 -> 01228ece labelled '_global::AtexitDtor_CCharString_at_013b8b3c_01228ece'
+0121a898   RELOCATION_MATCH PASS   _static_init::CrimeTimeLeftText
+0121a8c1   WARN RELOC_CONFLICT: _$E2 -> 01228eec here, 01228930 in landed 01219f00
+0121a8c1   WARN RELOC_NAME: _$E2 -> 01228eec labelled '_global::AtexitDtor_CCharString_at_013b8b4c_01228eec'
+0121a8c1   RELOCATION_MATCH PASS   _static_init::TITLE_NAME
+0121a8de   WARN RELOC_CONFLICT: _$E2 -> 01228ef6 here, 01228930 in landed 01219f00
+0121a8de   WARN RELOC_NAME: _$E2 -> 01228ef6 labelled '_global::AtexitDtor_CCharString_at_013b8b50_01228ef6'
+0121a8de   RELOCATION_MATCH PASS   _static_init::ITEM_DESCRIPTION_STRING
+0121a8fb   WARN RELOC_CONFLICT: _$E2 -> 01228f00 here, 01228930 in landed 01219f00
+0121a8fb   WARN RELOC_NAME: _$E2 -> 01228f00 labelled '_global::AtexitDtor_CCharString_at_013b8b54_01228f00'
+0121a8fb   RELOCATION_MATCH PASS   _static_init::ITEM_NAME_TABLE_STRING
+0121a918   WARN RELOC_CONFLICT: _$E2 -> 01228f0a here, 01228930 in landed 01219f00
+0121a918   WARN RELOC_NAME: _$E2 -> 01228f0a labelled '_global::AtexitDtor_CCharString_at_013b8b58_01228f0a'
+0121a918   RELOCATION_MATCH PASS   _static_init::ITEM_ICON_STRING
+0121a935   WARN RELOC_CONFLICT: _$E2 -> 01228f25 here, 01228930 in landed 01219f00
+0121a935   WARN RELOC_NAME: _$E2 -> 01228f25 labelled '_global::AtexitDtor_CCharString_at_013b8b60_01228f25'
+0121a935   RELOCATION_MATCH PASS   _static_init::SPEC_SUBTITLE
+0121a952   WARN RELOC_CONFLICT: _$E2 -> 01228f2f here, 01228930 in landed 01219f00
+0121a952   WARN RELOC_NAME: _$E2 -> 01228f2f labelled '_global::AtexitDtor_CCharString_at_013b8b64_01228f2f'
+0121a952   RELOCATION_MATCH PASS   _static_init::BUY_SUBTITLE
+0121a96f   WARN RELOC_CONFLICT: _$E2 -> 01228f39 here, 01228930 in landed 01219f00
+0121a96f   WARN RELOC_NAME: _$E2 -> 01228f39 labelled '_global::AtexitDtor_CCharString_at_013b8b68_01228f39'
+0121a96f   RELOCATION_MATCH PASS   _static_init::SELL_SUBTITLE
+0121a98c   WARN RELOC_CONFLICT: _$E2 -> 01228f43 here, 01228930 in landed 01219f00
+0121a98c   WARN RELOC_NAME: _$E2 -> 01228f43 labelled '_global::AtexitDtor_CCharString_at_013b8b6c_01228f43'
+0121a98c   RELOCATION_MATCH PASS   _static_init::WANTED_SUBTITLE
+0121a9a9   WARN RELOC_CONFLICT: _$E2 -> 01228f4d here, 01228930 in landed 01219f00
+0121a9a9   WARN RELOC_NAME: _$E2 -> 01228f4d labelled '_global::AtexitDtor_CCharString_at_013b8b70_01228f4d'
+0121a9a9   RELOCATION_MATCH PASS   _static_init::WEAPONS_SUBTITLE
+0121a9c6   WARN RELOC_CONFLICT: _$E2 -> 01228f57 here, 01228930 in landed 01219f00
+0121a9c6   WARN RELOC_NAME: _$E2 -> 01228f57 labelled '_global::AtexitDtor_CCharString_at_013b8b74_01228f57'
+0121a9c6   RELOCATION_MATCH PASS   _static_init::CLOTHES_SUBTITLE
+0121a9e3   WARN RELOC_CONFLICT: _$E2 -> 01228f61 here, 01228930 in landed 01219f00
+0121a9e3   WARN RELOC_NAME: _$E2 -> 01228f61 labelled '_global::AtexitDtor_CCharString_at_013b8b78_01228f61'
+0121a9e3   RELOCATION_MATCH PASS   _static_init::ITEMS_SUBTITLE
+0121aa00   WARN RELOC_CONFLICT: _$E2 -> 01228f6b here, 01228930 in landed 01219f00
+0121aa00   WARN RELOC_NAME: _$E2 -> 01228f6b labelled '_global::AtexitDtor_CCharString_at_013b8b7c_01228f6b'
+0121aa00   RELOCATION_MATCH PASS   _static_init::SELL_ITEM_DESC_STRING
+0121aa1d   WARN RELOC_CONFLICT: _$E2 -> 01228f75 here, 01228930 in landed 01219f00
+0121aa1d   WARN RELOC_NAME: _$E2 -> 01228f75 labelled '_global::AtexitDtor_CCharString_at_013b8b80_01228f75'
+0121aa1d   RELOCATION_MATCH PASS   _static_init::BUY_ITEM_DESC_STRING
+0121aa3a   WARN RELOC_CONFLICT: _$E2 -> 01228f7f here, 01228930 in landed 01219f00
+0121aa3a   WARN RELOC_NAME: _$E2 -> 01228f7f labelled '_global::AtexitDtor_CCharString_at_013b8b84_01228f7f'
+0121aa3a   RELOCATION_MATCH PASS   _static_init::WANTED_ITEM_DESC_STRING
+0121aa57   WARN RELOC_CONFLICT: _$E2 -> 01228f89 here, 01228930 in landed 01219f00
+0121aa57   WARN RELOC_NAME: _$E2 -> 01228f89 labelled '_global::AtexitDtor_CCharString_at_013b8b88_01228f89'
+0121aa57   RELOCATION_MATCH PASS   _static_init::SELL_ITEM_ICON_STRING
+0121aa74   WARN RELOC_CONFLICT: _$E2 -> 01228f93 here, 01228930 in landed 01219f00
+0121aa74   WARN RELOC_NAME: _$E2 -> 01228f93 labelled '_global::AtexitDtor_CCharString_at_013b8b8c_01228f93'
+0121aa74   RELOCATION_MATCH PASS   _static_init::BUY_ITEM_ICON_STRING
+0121aa91   WARN RELOC_CONFLICT: _$E2 -> 01228f9d here, 01228930 in landed 01219f00
+0121aa91   WARN RELOC_NAME: _$E2 -> 01228f9d labelled '_global::AtexitDtor_CCharString_at_013b8b90_01228f9d'
+0121aa91   RELOCATION_MATCH PASS   _static_init::WANTED_ITEM_ICON_STRING
+0121aaae   WARN RELOC_CONFLICT: _$E2 -> 01228fa7 here, 01228930 in landed 01219f00
+0121aaae   WARN RELOC_NAME: _$E2 -> 01228fa7 labelled '_global::AtexitDtor_CCharString_at_013b8b94_01228fa7'
+0121aaae   RELOCATION_MATCH PASS   _static_init::CATEGORY_CHILD_SELL_LIST_STRING
+0121aacb   WARN RELOC_CONFLICT: _$E2 -> 01228fb1 here, 01228930 in landed 01219f00
+0121aacb   WARN RELOC_NAME: _$E2 -> 01228fb1 labelled '_global::AtexitDtor_CCharString_at_013b8b98_01228fb1'
+0121aacb   RELOCATION_MATCH PASS   _static_init::CLOTHING_TITLE_STRING
+0121aae8   WARN RELOC_CONFLICT: _$E2 -> 01228fbb here, 01228930 in landed 01219f00
+0121aae8   WARN RELOC_NAME: _$E2 -> 01228fbb labelled '_global::AtexitDtor_CCharString_at_013b8b9c_01228fbb'
+0121aae8   RELOCATION_MATCH PASS   _static_init::CLOTHING_DESC_STRING
+0121ab05   WARN RELOC_CONFLICT: _$E2 -> 01228fc5 here, 01228930 in landed 01219f00
+0121ab05   WARN RELOC_NAME: _$E2 -> 01228fc5 labelled '_global::AtexitDtor_CCharString_at_013b8ba0_01228fc5'
+0121ab05   RELOCATION_MATCH PASS   _static_init::CLOTHING_ICON_STRING
+0121ab22   WARN RELOC_CONFLICT: _$E2 -> 01228fcf here, 01228930 in landed 01219f00
+0121ab22   WARN RELOC_NAME: _$E2 -> 01228fcf labelled '_global::AtexitDtor_CCharString_at_013b8ba4_01228fcf'
+0121ab22   RELOCATION_MATCH PASS   _static_init::BANK_HANDLE
+0121ab5a   WARN RELOC_CONFLICT: _$E2 -> 01228fe3 here, 01228930 in landed 01219f00
+0121ab5a   WARN RELOC_NAME: _$E2 -> 01228fe3 labelled '_global::AtexitDtor_CCharString_at_013b8bac_01228fe3'
+0121ab5a   RELOCATION_MATCH PASS   _static_init::WEAPON_DESCRIPTION_STRING
+0121ab77   WARN RELOC_CONFLICT: _$E2 -> 01228fed here, 01228930 in landed 01219f00
+0121ab77   WARN RELOC_NAME: _$E2 -> 01228fed labelled '_global::AtexitDtor_CCharString_at_013b8bb0_01228fed'
+0121ab77   RELOCATION_MATCH PASS   _static_init::AUG_DESCRIPTION_STRING
+0121ab94   WARN RELOC_CONFLICT: _$E2 -> 01228ff7 here, 01228930 in landed 01219f00
+0121ab94   WARN RELOC_NAME: _$E2 -> 01228ff7 labelled '_global::AtexitDtor_CCharString_at_013b8bb4_01228ff7'
+0121ab94   RELOCATION_MATCH PASS   _static_init::WEAPON_TITLE_STRING
+0121abb1   WARN RELOC_CONFLICT: _$E2 -> 01229001 here, 01228930 in landed 01219f00
+0121abb1   WARN RELOC_NAME: _$E2 -> 01229001 labelled '_global::AtexitDtor_CCharString_at_013b8bb8_01229001'
+0121abb1   RELOCATION_MATCH PASS   _static_init::AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M
+0121abce   WARN RELOC_CONFLICT: _$E2 -> 0122900b here, 01228930 in landed 01219f00
+0121abce   WARN RELOC_NAME: _$E2 -> 0122900b labelled '_global::AtexitDtor_CCharString_at_013b8bbc_0122900b'
+0121abce   RELOCATION_MATCH PASS   _static_init::AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R
+0121abeb   WARN RELOC_CONFLICT: _$E2 -> 01229015 here, 01228930 in landed 01219f00
+0121abeb   WARN RELOC_NAME: _$E2 -> 01229015 labelled '_global::AtexitDtor_CCharString_at_013b8bc0_01229015'
+0121abeb   RELOCATION_MATCH PASS   _static_init::AUGMENTATIONS_MENU_ENTRY_NAME
+0121df30   WARN RELOC_CONFLICT: _$E2 -> 012291d0 here, 01228930 in landed 01219f00
+0121df30   WARN RELOC_NAME: _$E2 -> 012291d0 labelled '_global::AtexitDtor_CCharString_at_013ba878_012291d0'
+0121df30   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121df50   WARN RELOC_CONFLICT: _$E2 -> 012291e0 here, 01228930 in landed 01219f00
+0121df50   WARN RELOC_NAME: _$E2 -> 012291e0 labelled '_global::AtexitDtor_CCharString_at_013ba87c_012291e0'
+0121df50   RELOCATION_MATCH PASS   _static_init::MISSING_ANIM_SHOW_IF_STARTS_WITH
+0121df70   WARN RELOC_CONFLICT: _$E2 -> 012291f0 here, 01228930 in landed 01219f00
+0121df70   WARN RELOC_NAME: _$E2 -> 012291f0 labelled '_global::AtexitDtor_CCharString_at_013ba880_012291f0'
+0121df70   RELOCATION_MATCH PASS   _static_init::MISSING_ANIM_EMOTE_TEXT
+0121df90   WARN RELOC_CONFLICT: _$E2 -> 01229200 here, 01228930 in landed 01219f00
+0121df90   WARN RELOC_NAME: _$E2 -> 01229200 labelled '_global::AtexitDtor_CCharString_at_013ba884_01229200'
+0121df90   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121dfc0   WARN RELOC_CONFLICT: _$E2 -> 01229240 here, 01228930 in landed 01219f00
+0121dfc0   WARN RELOC_NAME: _$E2 -> 01229240 labelled '_global::AtexitDtor_CCharString_at_013ba894_01229240'
+0121dfc0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121dfe0   WARN RELOC_CONFLICT: _$E2 -> 01229250 here, 01228930 in landed 01219f00
+0121dfe0   WARN RELOC_NAME: _$E2 -> 01229250 labelled '_global::AtexitDtor_CCharString_at_013ba898_01229250'
+0121dfe0   RELOCATION_MATCH PASS   _static_init::UNKNOWN_THREAT_OPINION_SOURCE
+0121e0c0   WARN RELOC_CONFLICT: _$E2 -> 012293a0 here, 01228930 in landed 01219f00
+0121e0c0   WARN RELOC_NAME: _$E2 -> 012293a0 labelled '_global::AtexitDtor_CCharString_at_013baaf8_012293a0'
+0121e0c0   RELOCATION_MATCH PASS   _static_init::MAIN_SIGN_POST_DEF_NAME
+0121e0e0   WARN RELOC_CONFLICT: _$E2 -> 012293b0 here, 01228930 in landed 01219f00
+0121e0e0   WARN RELOC_NAME: _$E2 -> 012293b0 labelled '_global::AtexitDtor_CCharString_at_013baafc_012293b0'
+0121e0e0   RELOCATION_MATCH PASS   _static_init::DRESSING_SIGN_POST_DEF_NAME
+0121e100   WARN RELOC_CONFLICT: _$E2 -> 012293c0 here, 01228930 in landed 01219f00
+0121e100   WARN RELOC_NAME: _$E2 -> 012293c0 labelled '_global::AtexitDtor_CCharString_at_013bab00_012293c0'
+0121e100   RELOCATION_MATCH PASS   _static_init::MAIN_OWNED_SIGN_POST_DEF_NAME
+0121e120   WARN RELOC_CONFLICT: _$E2 -> 012293d0 here, 01228930 in landed 01219f00
+0121e120   WARN RELOC_NAME: _$E2 -> 012293d0 labelled '_global::AtexitDtor_CCharString_at_013bab04_012293d0'
+0121e120   RELOCATION_MATCH PASS   _static_init::MAIN_RENT_SIGN_POST_DEF_NAME
+0121e140   WARN RELOC_CONFLICT: _$E2 -> 012293e0 here, 01228930 in landed 01219f00
+0121e140   WARN RELOC_NAME: _$E2 -> 012293e0 labelled '_global::AtexitDtor_CCharString_at_013bab08_012293e0'
+0121e140   RELOCATION_MATCH PASS   _static_init::CLevelLoader::LoadAllSectionName
+0121e160   WARN RELOC_CONFLICT: _$E2 -> 012293f0 here, 01228930 in landed 01219f00
+0121e160   WARN RELOC_NAME: _$E2 -> 012293f0 labelled '_global::AtexitDtor_CCharString_at_013bab0c_012293f0'
+0121e160   RELOCATION_MATCH PASS   _static_init::CLevelLoader::GlobalSectionName
+0121e190   WARN RELOC_CONFLICT: _$E2 -> 01229440 here, 01228930 in landed 01219f00
+0121e190   WARN RELOC_NAME: _$E2 -> 01229440 labelled '_global::AtexitDtor_CCharString_at_013bab18_01229440'
+0121e190   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e1b0   WARN RELOC_CONFLICT: _$E2 -> 01229450 here, 01228930 in landed 01219f00
+0121e1b0   WARN RELOC_NAME: _$E2 -> 01229450 labelled '_global::AtexitDtor_CCharString_at_013bab1c_01229450'
+0121e1b0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e1d0   WARN RELOC_CONFLICT: _$E2 -> 01229460 here, 01228930 in landed 01219f00
+0121e1d0   WARN RELOC_NAME: _$E2 -> 01229460 labelled '_global::AtexitDtor_CCharString_at_013bab28_01229460'
+0121e1d0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e1f0   WARN RELOC_CONFLICT: _$E2 -> 01229470 here, 01228930 in landed 01219f00
+0121e1f0   WARN RELOC_NAME: _$E2 -> 01229470 labelled '_global::AtexitDtor_CCharString_at_013bab2c_01229470'
+0121e1f0   RELOCATION_MATCH PASS   _static_init::CTCWife::MarriageEnabledMaleVoice
+0121e380   WARN RELOC_CONFLICT: _$E2 -> 012294c0 here, 01228930 in landed 01219f00
+0121e380   WARN RELOC_NAME: _$E2 -> 012294c0 labelled '_global::AtexitDtor_CCharString_at_013bab80_012294c0'
+0121e380   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e3d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0121e3d0   RELOCATION_MATCH PASS   _static_init::MIN_SPEECH_FRAMES
+0121e420   WARN RELOC_CONFLICT: _$E2 -> 01229550 here, 01228930 in landed 01219f00
+0121e420   WARN RELOC_NAME: _$E2 -> 01229550 labelled '_global::AtexitDtor_CCharString_at_013babb0_01229550'
+0121e420   RELOCATION_MATCH PASS   _static_init::DEFAULT_ATTACK_PATTERN_DEF_NAME
+0121e460   WARN RELOC_CONFLICT: _$E2 -> 012295e0 here, 01228930 in landed 01219f00
+0121e460   WARN RELOC_NAME: _$E2 -> 012295e0 labelled '_global::AtexitDtor_CCharString_at_013babc8_012295e0'
+0121e460   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121e5c0   WARN RELOC_CONFLICT: _$E2 -> 01229610 here, 01228930 in landed 01219f00
+0121e5c0   WARN RELOC_NAME: _$E2 -> 01229610 labelled '_global::AtexitDtor_CCharString_at_013bac18_01229610'
+0121e5c0   RELOCATION_MATCH PASS   _static_init::CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX
+0121e5e0   WARN RELOC_CONFLICT: _$E2 -> 01229620 here, 01228930 in landed 01219f00
+0121e5e0   WARN RELOC_NAME: _$E2 -> 01229620 labelled '_global::AtexitDtor_CCharString_at_013bac1c_01229620'
+0121e5e0   RELOCATION_MATCH PASS   _static_init::CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX
+0121e600   WARN RELOC_CONFLICT: _$E2 -> 01229650 here, 01228930 in landed 01219f00
+0121e600   WARN RELOC_NAME: _$E2 -> 01229650 labelled '_global::AtexitDtor_CCharString_at_013bac30_01229650'
+0121e600   RELOCATION_MATCH PASS   _static_init::PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME
+0121e620   WARN RELOC_CONFLICT: _$E2 -> 01229660 here, 01228930 in landed 01219f00
+0121e620   WARN RELOC_NAME: _$E2 -> 01229660 labelled '_global::AtexitDtor_CCharString_at_013bac34_01229660'
+0121e620   RELOCATION_MATCH PASS   _static_init::SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME
+0121e640   WARN RELOC_CONFLICT: _$E2 -> 01229670 here, 01228930 in landed 01219f00
+0121e640   WARN RELOC_NAME: _$E2 -> 01229670 labelled '_global::AtexitDtor_CCharString_at_013bac38_01229670'
+0121e640   RELOCATION_MATCH PASS   _static_init::START_WEAPON_POINT_NAME
+0121e660   WARN RELOC_CONFLICT: _$E2 -> 01229680 here, 01228930 in landed 01219f00
+0121e660   WARN RELOC_NAME: _$E2 -> 01229680 labelled '_global::AtexitDtor_CCharString_at_013bac3c_01229680'
+0121e660   RELOCATION_MATCH PASS   _static_init::END_WEAPON_POINT_NAME
+0121e680   WARN RELOC_CONFLICT: _$E2 -> 01229690 here, 01228930 in landed 01219f00
+0121e680   WARN RELOC_NAME: _$E2 -> 01229690 labelled '_global::AtexitDtor_CCharString_at_013bac40_01229690'
+0121e680   RELOCATION_MATCH PASS   _static_init::START_WEAPON_POINT_NAME_2
+0121e6a0   WARN RELOC_CONFLICT: _$E2 -> 012296a0 here, 01228930 in landed 01219f00
+0121e6a0   WARN RELOC_NAME: _$E2 -> 012296a0 labelled '_global::AtexitDtor_CCharString_at_013bac44_012296a0'
+0121e6a0   RELOCATION_MATCH PASS   _static_init::END_WEAPON_POINT_NAME_2
+0121e6c0   WARN RELOC_CONFLICT: _$E2 -> 012296b0 here, 01228930 in landed 01219f00
+0121e6c0   WARN RELOC_NAME: _$E2 -> 012296b0 labelled '_global::AtexitDtor_CCharString_at_013bac48_012296b0'
+0121e6c0   RELOCATION_MATCH PASS   _static_init::MAIN_FOCAL_POSITION_NAME
+0121e6e0   WARN RELOC_CONFLICT: _$E2 -> 012296c0 here, 01228930 in landed 01219f00
+0121e6e0   WARN RELOC_NAME: _$E2 -> 012296c0 labelled '_global::AtexitDtor_CCharString_at_013bac4c_012296c0'
+0121e6e0   RELOCATION_MATCH PASS   _static_init::CAMERA_FOCAL_POSITION_NAME
+0121e700   WARN RELOC_CONFLICT: _$E2 -> 012296d0 here, 01228930 in landed 01219f00
+0121e700   WARN RELOC_NAME: _$E2 -> 012296d0 labelled '_global::AtexitDtor_CCharString_at_013bac50_012296d0'
+0121e700   RELOCATION_MATCH PASS   _static_init::TARGETING_CURSOR_POSITION_NAME
+0121e720   WARN RELOC_CONFLICT: _$E2 -> 012296e0 here, 01228930 in landed 01219f00
+0121e720   WARN RELOC_NAME: _$E2 -> 012296e0 labelled '_global::AtexitDtor_CCharString_at_013bac54_012296e0'
+0121e720   RELOCATION_MATCH PASS   _static_init::EYE_LEFT_DUMMY_OBJECT_NAME
+0121e740   WARN RELOC_CONFLICT: _$E2 -> 012296f0 here, 01228930 in landed 01219f00
+0121e740   WARN RELOC_NAME: _$E2 -> 012296f0 labelled '_global::AtexitDtor_CCharString_at_013bac58_012296f0'
+0121e740   RELOCATION_MATCH PASS   _static_init::EYE_RIGHT_DUMMY_OBJECT_NAME
+0121e760   WARN RELOC_CONFLICT: _$E2 -> 01229700 here, 01228930 in landed 01219f00
+0121e760   WARN RELOC_NAME: _$E2 -> 01229700 labelled '_global::AtexitDtor_CCharString_at_013bac5c_01229700'
+0121e760   RELOCATION_MATCH PASS   _static_init::HEAD_POS_HELPER_NAME
+0121e780   WARN RELOC_CONFLICT: _$E2 -> 01229710 here, 01228930 in landed 01219f00
+0121e780   WARN RELOC_NAME: _$E2 -> 01229710 labelled '_global::AtexitDtor_CCharString_at_013bac60_01229710'
+0121e780   RELOCATION_MATCH PASS   _static_init::MOUTH_DUMMY_OBJECT_NAME
+0121e7a0   WARN RELOC_CONFLICT: _$E2 -> 01229720 here, 01228930 in landed 01219f00
+0121e7a0   WARN RELOC_NAME: _$E2 -> 01229720 labelled '_global::AtexitDtor_CCharString_at_013bac64_01229720'
+0121e7a0   RELOCATION_MATCH PASS   _static_init::STRIKE_EVENT_WEAPON_START_IDENTIFIER
+0121e7c0   WARN RELOC_CONFLICT: _$E2 -> 01229730 here, 01228930 in landed 01219f00
+0121e7c0   WARN RELOC_NAME: _$E2 -> 01229730 labelled '_global::AtexitDtor_CCharString_at_013bac68_01229730'
+0121e7c0   RELOCATION_MATCH PASS   _static_init::STRIKE_EVENT_WEAPON_END_IDENTIFIER
+0121e7e0   WARN RELOC_CONFLICT: _$E2 -> 01229740 here, 01228930 in landed 01219f00
+0121e7e0   WARN RELOC_NAME: _$E2 -> 01229740 labelled '_global::AtexitDtor_CCharString_at_013bac6c_01229740'
+0121e7e0   RELOCATION_MATCH PASS   _static_init::STRIKE_EVENT_START_IDENTIFIER
+0121e800   WARN RELOC_CONFLICT: _$E2 -> 01229750 here, 01228930 in landed 01219f00
+0121e800   WARN RELOC_NAME: _$E2 -> 01229750 labelled '_global::AtexitDtor_CCharString_at_013bac70_01229750'
+0121e800   RELOCATION_MATCH PASS   _static_init::STRIKE_EVENT_END_IDENTIFIER
+0121e820   WARN RELOC_CONFLICT: _$E2 -> 01229760 here, 01228930 in landed 01219f00
+0121e820   WARN RELOC_NAME: _$E2 -> 01229760 labelled '_global::AtexitDtor_CCharString_at_013bac74_01229760'
+0121e820   RELOCATION_MATCH PASS   _static_init::STRIKE_EVENT_RESET_COMBO
+0121e840   WARN RELOC_CONFLICT: _$E2 -> 01229770 here, 01228930 in landed 01219f00
+0121e840   WARN RELOC_NAME: _$E2 -> 01229770 labelled '_global::AtexitDtor_CCharString_at_013bac78_01229770'
+0121e840   RELOCATION_MATCH PASS   _static_init::STRIKE_EVENT_BEGIN_LEGACY
+0121e860   WARN RELOC_CONFLICT: _$E2 -> 01229780 here, 01228930 in landed 01219f00
+0121e860   WARN RELOC_NAME: _$E2 -> 01229780 labelled '_global::AtexitDtor_CCharString_at_013bac7c_01229780'
+0121e860   RELOCATION_MATCH PASS   _static_init::STRIKE_EVENT_END_LEGACY
+0121e880   WARN RELOC_CONFLICT: _$E2 -> 01229790 here, 01228930 in landed 01219f00
+0121e880   WARN RELOC_NAME: _$E2 -> 01229790 labelled '_global::AtexitDtor_CCharString_at_013bac80_01229790'
+0121e880   RELOCATION_MATCH PASS   _static_init::SECONDARY_STRIKE_EVENT_BEGIN_LEGACY
+0121e8a0   WARN RELOC_CONFLICT: _$E2 -> 012297a0 here, 01228930 in landed 01219f00
+0121e8a0   WARN RELOC_NAME: _$E2 -> 012297a0 labelled '_global::AtexitDtor_CCharString_at_013bac84_012297a0'
+0121e8a0   RELOCATION_MATCH PASS   _static_init::SECONDARY_STRIKE_EVENT_END_LEGACY
+0121e8c0   WARN RELOC_CONFLICT: _$E2 -> 012297b0 here, 01228930 in landed 01219f00
+0121e8c0   WARN RELOC_NAME: _$E2 -> 012297b0 labelled '_global::AtexitDtor_CCharString_at_013bac88_012297b0'
+0121e8c0   RELOCATION_MATCH PASS   _static_init::STRIKE_ACTION_FINISHED
+0121e8e0   WARN RELOC_CONFLICT: _$E2 -> 012297c0 here, 01228930 in landed 01219f00
+0121e8e0   WARN RELOC_NAME: _$E2 -> 012297c0 labelled '_global::AtexitDtor_CCharString_at_013bac8c_012297c0'
+0121e8e0   RELOCATION_MATCH PASS   _static_init::ACTION_LATEST_START_TIME
+0121e900   WARN RELOC_CONFLICT: _$E2 -> 012297d0 here, 01228930 in landed 01219f00
+0121e900   WARN RELOC_NAME: _$E2 -> 012297d0 labelled '_global::AtexitDtor_CCharString_at_013bac90_012297d0'
+0121e900   RELOCATION_MATCH PASS   _static_init::ACTION_PAUSE_ON_THIS_FRAME
+0121e920   WARN RELOC_CONFLICT: _$E2 -> 012297e0 here, 01228930 in landed 01219f00
+0121e920   WARN RELOC_NAME: _$E2 -> 012297e0 labelled '_global::AtexitDtor_CCharString_at_013bac94_012297e0'
+0121e920   RELOCATION_MATCH PASS   _static_init::NAVIGATION_TRANSITION_POINT
+0121e940   WARN RELOC_CONFLICT: _$E2 -> 012297f0 here, 01228930 in landed 01219f00
+0121e940   WARN RELOC_NAME: _$E2 -> 012297f0 labelled '_global::AtexitDtor_CCharString_at_013bac98_012297f0'
+0121e940   RELOCATION_MATCH PASS   _static_init::BUILDING_BOUNDRY
+0121e960   WARN RELOC_CONFLICT: _$E2 -> 01229800 here, 01228930 in landed 01219f00
+0121e960   WARN RELOC_NAME: _$E2 -> 01229800 labelled '_global::AtexitDtor_CCharString_at_013bac9c_01229800'
+0121e960   RELOCATION_MATCH PASS   _static_init::ACTION_POINT
+0121e980   WARN RELOC_CONFLICT: _$E2 -> 01229810 here, 01228930 in landed 01219f00
+0121e980   WARN RELOC_NAME: _$E2 -> 01229810 labelled '_global::AtexitDtor_CCharString_at_013baca0_01229810'
+0121e980   RELOCATION_MATCH PASS   _static_init::ACTION_POINT_01
+0121e9a0   WARN RELOC_CONFLICT: _$E2 -> 01229820 here, 01228930 in landed 01219f00
+0121e9a0   WARN RELOC_NAME: _$E2 -> 01229820 labelled '_global::AtexitDtor_CCharString_at_013baca4_01229820'
+0121e9a0   RELOCATION_MATCH PASS   _static_init::ACTION_POINT_SWAB_01
+0121e9c0   WARN RELOC_CONFLICT: _$E2 -> 01229830 here, 01228930 in landed 01219f00
+0121e9c0   WARN RELOC_NAME: _$E2 -> 01229830 labelled '_global::AtexitDtor_CCharString_at_013baca8_01229830'
+0121e9c0   RELOCATION_MATCH PASS   _static_init::ACTION_POINT_SWAB_02
+0121e9e0   WARN RELOC_CONFLICT: _$E2 -> 01229840 here, 01228930 in landed 01219f00
+0121e9e0   WARN RELOC_NAME: _$E2 -> 01229840 labelled '_global::AtexitDtor_CCharString_at_013bacac_01229840'
+0121e9e0   RELOCATION_MATCH PASS   _static_init::ACTION_POINT_ADJUST_01
+0121ea00   WARN RELOC_CONFLICT: _$E2 -> 01229850 here, 01228930 in landed 01219f00
+0121ea00   WARN RELOC_NAME: _$E2 -> 01229850 labelled '_global::AtexitDtor_CCharString_at_013bacb0_01229850'
+0121ea00   RELOCATION_MATCH PASS   _static_init::ACTION_POINT_BED_START_NAME
+0121ea20   WARN RELOC_CONFLICT: _$E2 -> 01229860 here, 01228930 in landed 01219f00
+0121ea20   WARN RELOC_NAME: _$E2 -> 01229860 labelled '_global::AtexitDtor_CCharString_at_013bacb4_01229860'
+0121ea20   RELOCATION_MATCH PASS   _static_init::SHOT_CREATION_DUMMY
+0121ea40   WARN RELOC_CONFLICT: _$E2 -> 01229870 here, 01228930 in landed 01219f00
+0121ea40   WARN RELOC_NAME: _$E2 -> 01229870 labelled '_global::AtexitDtor_CCharString_at_013bacb8_01229870'
+0121ea40   RELOCATION_MATCH PASS   _static_init::SHOT_CREATION_POINT
+0121ea60   WARN RELOC_CONFLICT: _$E2 -> 01229880 here, 01228930 in landed 01219f00
+0121ea60   WARN RELOC_NAME: _$E2 -> 01229880 labelled '_global::AtexitDtor_CCharString_at_013bacbc_01229880'
+0121ea60   RELOCATION_MATCH PASS   _static_init::WEAPON_SCABBARD_POS
+0121ea80   WARN RELOC_CONFLICT: _$E2 -> 01229890 here, 01228930 in landed 01219f00
+0121ea80   WARN RELOC_NAME: _$E2 -> 01229890 labelled '_global::AtexitDtor_CCharString_at_013bacc0_01229890'
+0121ea80   RELOCATION_MATCH PASS   _static_init::CHIMNEY_FOCUS_START_NAME
+0121eaa0   WARN RELOC_CONFLICT: _$E2 -> 012298a0 here, 01228930 in landed 01219f00
+0121eaa0   WARN RELOC_NAME: _$E2 -> 012298a0 labelled '_global::AtexitDtor_CCharString_at_013bacc4_012298a0'
+0121eaa0   RELOCATION_MATCH PASS   _static_init::OBJECT_GROUP_PREFIX
+0121eac0   WARN RELOC_CONFLICT: _$E2 -> 012298b0 here, 01228930 in landed 01219f00
+0121eac0   WARN RELOC_NAME: _$E2 -> 012298b0 labelled '_global::AtexitDtor_CCharString_at_013bacc8_012298b0'
+0121eac0   RELOCATION_MATCH PASS   _static_init::MESH_LIGHT_POINT_NAME
+0121eae0   WARN RELOC_CONFLICT: _$E2 -> 012298c0 here, 01228930 in landed 01219f00
+0121eae0   WARN RELOC_NAME: _$E2 -> 012298c0 labelled '_global::AtexitDtor_CCharString_at_013baccc_012298c0'
+0121eae0   RELOCATION_MATCH PASS   _static_init::MESH_FLARE_POINT_NAME
+0121eb00   WARN RELOC_CONFLICT: _$E2 -> 012298d0 here, 01228930 in landed 01219f00
+0121eb00   WARN RELOC_NAME: _$E2 -> 012298d0 labelled '_global::AtexitDtor_CCharString_at_013bacd0_012298d0'
+0121eb00   RELOCATION_MATCH PASS   _static_init::PERFORM_ACTION
+0121eb20   WARN RELOC_CONFLICT: _$E2 -> 012298e0 here, 01228930 in landed 01219f00
+0121eb20   WARN RELOC_NAME: _$E2 -> 012298e0 labelled '_global::AtexitDtor_CCharString_at_013bacd4_012298e0'
+0121eb20   RELOCATION_MATCH PASS   _static_init::CAST_FIREBALL
+0121eb40   WARN RELOC_CONFLICT: _$E2 -> 012298f0 here, 01228930 in landed 01219f00
+0121eb40   WARN RELOC_NAME: _$E2 -> 012298f0 labelled '_global::AtexitDtor_CCharString_at_013bacd8_012298f0'
+0121eb40   RELOCATION_MATCH PASS   _static_init::CUT_SCENE_EVENT_PREFIX
+0121eb60   WARN RELOC_CONFLICT: _$E2 -> 01229900 here, 01228930 in landed 01219f00
+0121eb60   WARN RELOC_NAME: _$E2 -> 01229900 labelled '_global::AtexitDtor_CCharString_at_013bacdc_01229900'
+0121eb60   RELOCATION_MATCH PASS   _static_init::STAB_POS
+0121eb80   WARN RELOC_CONFLICT: _$E2 -> 01229910 here, 01228930 in landed 01219f00
+0121eb80   WARN RELOC_NAME: _$E2 -> 01229910 labelled '_global::AtexitDtor_CCharString_at_013bace0_01229910'
+0121eb80   RELOCATION_MATCH PASS   _static_init::COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT
+0121ebe0   WARN RELOC_CONFLICT: _$E2 -> 01229940 here, 01228930 in landed 01219f00
+0121ebe0   WARN RELOC_NAME: _$E2 -> 01229940 labelled '_global::AtexitDtor_CCharString_at_013bacec_01229940'
+0121ebe0   RELOCATION_MATCH PASS   _static_init::CARRY_SLOT_LEFT_HAND
+0121ec00   WARN RELOC_CONFLICT: _$E2 -> 01229950 here, 01228930 in landed 01219f00
+0121ec00   WARN RELOC_NAME: _$E2 -> 01229950 labelled '_global::AtexitDtor_CCharString_at_013bacf0_01229950'
+0121ec00   RELOCATION_MATCH PASS   _static_init::CARRY_SLOT_RIGHT_HAND
+0121ec20   WARN RELOC_CONFLICT: _$E2 -> 01229960 here, 01228930 in landed 01219f00
+0121ec20   WARN RELOC_NAME: _$E2 -> 01229960 labelled '_global::AtexitDtor_CCharString_at_013bacf4_01229960'
+0121ec20   RELOCATION_MATCH PASS   _static_init::CARRY_SLOT_PRIMARY_SHEATHE
+0121ec40   WARN RELOC_CONFLICT: _$E2 -> 01229970 here, 01228930 in landed 01219f00
+0121ec40   WARN RELOC_NAME: _$E2 -> 01229970 labelled '_global::AtexitDtor_CCharString_at_013bacf8_01229970'
+0121ec40   RELOCATION_MATCH PASS   _static_init::CARRY_SLOT_SECONDARY_SHEATHE
+0121ec60   WARN RELOC_CONFLICT: _$E2 -> 01229980 here, 01228930 in landed 01219f00
+0121ec60   WARN RELOC_NAME: _$E2 -> 01229980 labelled '_global::AtexitDtor_CCharString_at_013bacfc_01229980'
+0121ec60   RELOCATION_MATCH PASS   _static_init::CARRY_SLOT_BELT
+0121ecc0   WARN RELOC_CONFLICT: _$E2 -> 012299c0 here, 01228930 in landed 01219f00
+0121ecc0   WARN RELOC_NAME: _$E2 -> 012299c0 labelled '_global::AtexitDtor_CCharString_at_013bad2c_012299c0'
+0121ecc0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121ece0   WARN RELOC_CONFLICT: _$E2 -> 012299d0 here, 01228930 in landed 01219f00
+0121ece0   WARN RELOC_NAME: _$E2 -> 012299d0 labelled '_global::AtexitDtor_CCharString_at_013bad30_012299d0'
+0121ece0   RELOCATION_MATCH PASS   _static_init::SHEATH_ACTION_NAME
+0121ed00   WARN RELOC_NAME: _SDoorOpenAnim -> 013bad34 labelled 'g_DoorOpenAnimName'
+0121ed00   WARN RELOC_CONFLICT: _$E2 -> 012299e0 here, 01228930 in landed 01219f00
+0121ed00   WARN RELOC_NAME: _$E2 -> 012299e0 labelled '_global::AtexitDtor_CCharString_at_013bad34_012299e0'
+0121ed00   RELOCATION_MATCH PASS   _static_init::SDoorOpenAnim
+0121ed20   WARN RELOC_NAME: _SDoorCloseAnim -> 013bad38 labelled 'g_DoorCloseAnimName'
+0121ed20   WARN RELOC_CONFLICT: _$E2 -> 012299f0 here, 01228930 in landed 01219f00
+0121ed20   WARN RELOC_NAME: _$E2 -> 012299f0 labelled '_global::AtexitDtor_CCharString_at_013bad38_012299f0'
+0121ed20   RELOCATION_MATCH PASS   _static_init::SDoorCloseAnim
+0121ed40   WARN RELOC_NAME: ?SClockTurnAnim@?A0x8bfc7b6f@@3VCCharString@@A -> 013bad3c labelled 'g_ClockHandTurnName'
+0121ed40   WARN RELOC_CONFLICT: _$E2 -> 01229a00 here, 01228930 in landed 01219f00
+0121ed40   WARN RELOC_NAME: _$E2 -> 01229a00 labelled '_global::AtexitDtor_CCharString_at_013bad3c_01229a00'
+0121ed40   RELOCATION_MATCH PASS   _static_init::SClockTurnAnim
+0121ed60   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0121ed60   RELOCATION_MATCH PASS   _static_init::DEFAULT_UNARMED_COMBAT_IDLE_COUNT
+0121ed90   WARN RELOC_CONFLICT: _$E2 -> 01229a40 here, 01228930 in landed 01219f00
+0121ed90   WARN RELOC_NAME: _$E2 -> 01229a40 labelled '_global::AtexitDtor_CCharString_at_013bad5c_01229a40'
+0121ed90   RELOCATION_MATCH PASS   _static_init::CLOCKWISE_90
+0121edb0   WARN RELOC_CONFLICT: _$E2 -> 01229a50 here, 01228930 in landed 01219f00
+0121edb0   WARN RELOC_NAME: _$E2 -> 01229a50 labelled '_global::AtexitDtor_CCharString_at_013bad60_01229a50'
+0121edb0   RELOCATION_MATCH PASS   _static_init::ANTI_CLOCKWISE_90
+0121edd0   WARN RELOC_CONFLICT: _$E2 -> 01229a60 here, 01228930 in landed 01219f00
+0121edd0   WARN RELOC_NAME: _$E2 -> 01229a60 labelled '_global::AtexitDtor_CCharString_at_013bad64_01229a60'
+0121edd0   RELOCATION_MATCH PASS   _static_init::CLOCKWISE_180
+0121edf0   WARN RELOC_CONFLICT: _$E2 -> 01229a70 here, 01228930 in landed 01219f00
+0121edf0   WARN RELOC_NAME: _$E2 -> 01229a70 labelled '_global::AtexitDtor_CCharString_at_013bad68_01229a70'
+0121edf0   RELOCATION_MATCH PASS   _static_init::ANTI_CLOCKWISE_180
+0121ee10   RELOCATION_MATCH PASS   _static_init::COS_45
+0121ee30   WARN RELOC_CONFLICT: _$E2 -> 01229a80 here, 01228930 in landed 01219f00
+0121ee30   WARN RELOC_NAME: _$E2 -> 01229a80 labelled '_global::AtexitDtor_CCharString_at_013bad8c_01229a80'
+0121ee30   RELOCATION_MATCH PASS   _static_init::CLOSED_STRING_NAME
+0121ee50   WARN RELOC_CONFLICT: _$E2 -> 01229a90 here, 01228930 in landed 01219f00
+0121ee50   WARN RELOC_NAME: _$E2 -> 01229a90 labelled '_global::AtexitDtor_CCharString_at_013bad90_01229a90'
+0121ee50   RELOCATION_MATCH PASS   _static_init::LINE_STRING_NAME
+0121ee90   WARN RELOC_CONFLICT: _$E2 -> 01229ad0 here, 01228930 in landed 01219f00
+0121ee90   WARN RELOC_NAME: _$E2 -> 01229ad0 labelled '_global::AtexitDtor_CCharString_at_013bad98_01229ad0'
+0121ee90   RELOCATION_MATCH PASS   _static_init::MISSING_AUGMENTATION_TEXT
+0121eeb0   WARN RELOC_CONFLICT: _$E2 -> 01229ae0 here, 01228930 in landed 01219f00
+0121eeb0   WARN RELOC_NAME: _$E2 -> 01229ae0 labelled '_global::AtexitDtor_CCharString_at_013bad9c_01229ae0'
+0121eeb0   RELOCATION_MATCH PASS   _static_init::MISSING_EMPTY_TEXT
+0121eed0   WARN RELOC_CONFLICT: _$E2 -> 01229af0 here, 01228930 in landed 01219f00
+0121eed0   WARN RELOC_NAME: _$E2 -> 01229af0 labelled '_global::AtexitDtor_CCharString_at_013bada4_01229af0'
+0121eed0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121eef0   WARN RELOC_CONFLICT: _$E2 -> 01229b00 here, 01228930 in landed 01219f00
+0121eef0   WARN RELOC_NAME: _$E2 -> 01229b00 labelled '_global::AtexitDtor_CCharString_at_013bada8_01229b00'
+0121eef0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121ef10   WARN RELOC_CONFLICT: _$E2 -> 01229b10 here, 01228930 in landed 01219f00
+0121ef10   WARN RELOC_NAME: _$E2 -> 01229b10 labelled '_global::AtexitDtor_CCharString_at_013badac_01229b10'
+0121ef10   RELOCATION_MATCH PASS   _static_init::QUEST_CARD_POS_MARKER_NAME_PREFIX
+0121ef50   WARN RELOC_CONFLICT: _$E2 -> 01229b30 here, 01228930 in landed 01219f00
+0121ef50   WARN RELOC_NAME: _$E2 -> 01229b30 labelled '_global::AtexitDtor_CCharString_at_013baddc_01229b30'
+0121ef50   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121efa0   WARN RELOC_CONFLICT: _$E2 -> 01229b50 here, 01228930 in landed 01219f00
+0121efa0   WARN RELOC_NAME: _$E2 -> 01229b50 labelled '_global::AtexitDtor_CCharString_at_013bade4_01229b50'
+0121efa0   RELOCATION_MATCH PASS   _static_init::BOASTING_CROWD_HOOK_QUEST_NAME
+0121efc0   WARN RELOC_CONFLICT: _$E2 -> 01229b60 here, 01228930 in landed 01219f00
+0121efc0   WARN RELOC_NAME: _$E2 -> 01229b60 labelled '_global::AtexitDtor_CCharString_at_013bade8_01229b60'
+0121efc0   RELOCATION_MATCH PASS   _static_init::BOASTING_CROWD_MEMBER_SCRIPT_NAME
+0121efe0   WARN RELOC_CONFLICT: _$E2 -> 01229b70 here, 01228930 in landed 01219f00
+0121efe0   WARN RELOC_NAME: _$E2 -> 01229b70 labelled '_global::AtexitDtor_CCharString_at_013badec_01229b70'
+0121efe0   RELOCATION_MATCH PASS   _static_init::BOASTING_CROWD_MARKER_SCRIPT_NAME
+0121f000   WARN RELOC_CONFLICT: _$E2 -> 01229b80 here, 01228930 in landed 01219f00
+0121f000   WARN RELOC_NAME: _$E2 -> 01229b80 labelled '_global::AtexitDtor_CCharString_at_013badf0_01229b80'
+0121f000   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f01d   WARN RELOC_CONFLICT: _$E2 -> 01229b8a here, 01228930 in landed 01219f00
+0121f01d   WARN RELOC_NAME: _$E2 -> 01229b8a labelled '_global::AtexitDtor_CCharString_at_013badf4_01229b8a'
+0121f01d   RELOCATION_MATCH PASS   _static_init::STrapUntriggeredAnimName
+0121f03a   WARN RELOC_CONFLICT: _$E2 -> 01229b94 here, 01228930 in landed 01219f00
+0121f03a   WARN RELOC_NAME: _$E2 -> 01229b94 labelled '_global::AtexitDtor_CCharString_at_013badf8_01229b94'
+0121f03a   RELOCATION_MATCH PASS   _static_init::STrapTrigger
+0121f057   WARN RELOC_CONFLICT: _$E2 -> 01229b9e here, 01228930 in landed 01219f00
+0121f057   WARN RELOC_NAME: _$E2 -> 01229b9e labelled '_global::AtexitDtor_CCharString_at_013badfc_01229b9e'
+0121f057   RELOCATION_MATCH PASS   _static_init::STrapReset
+0121f0a0   WARN RELOC_CONFLICT: _$E2 -> 01229bc0 here, 01228930 in landed 01219f00
+0121f0a0   WARN RELOC_NAME: _$E2 -> 01229bc0 labelled '_global::AtexitDtor_CCharString_at_013bae08_01229bc0'
+0121f0a0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f0c0   WARN RELOC_CONFLICT: _$E2 -> 01229bd0 here, 01228930 in landed 01219f00
+0121f0c0   WARN RELOC_NAME: _$E2 -> 01229bd0 labelled '_global::AtexitDtor_CCharString_at_013bae0c_01229bd0'
+0121f0c0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f240   WARN RELOC_CONFLICT: _$E2 -> 01229dc0 here, 01228930 in landed 01219f00
+0121f240   WARN RELOC_NAME: _$E2 -> 01229dc0 labelled '_global::AtexitDtor_CCharString_at_013bae6c_01229dc0'
+0121f240   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f470   WARN RELOC_CONFLICT: _$E2 -> 01229ee0 here, 01228930 in landed 01219f00
+0121f470   WARN RELOC_NAME: _$E2 -> 01229ee0 labelled '_global::AtexitDtor_CCharString_at_013baf0c_01229ee0'
+0121f470   RELOCATION_MATCH PASS   _static_init::DECAPITATION_DUMMY_OBJECT_NAME
+0121f4b0   WARN RELOC_CONFLICT: _$E2 -> 01229f10 here, 01228930 in landed 01219f00
+0121f4b0   WARN RELOC_NAME: _$E2 -> 01229f10 labelled '_global::AtexitDtor_CCharString_at_013baf24_01229f10'
+0121f4b0   RELOCATION_MATCH PASS   _static_init::BOASTING_POSITION_NAME_PREFIX
+0121f4d0   WARN RELOC_CONFLICT: _$E2 -> 01229f20 here, 01228930 in landed 01219f00
+0121f4d0   WARN RELOC_NAME: _$E2 -> 01229f20 labelled '_global::AtexitDtor_CCharString_at_013baf28_01229f20'
+0121f4d0   RELOCATION_MATCH PASS   _static_init::BOASTING_DRUM_DEF_NAME
+0121f530   WARN RELOC_CONFLICT: _$E2 -> 01229f90 here, 01228930 in landed 01219f00
+0121f530   WARN RELOC_NAME: _$E2 -> 01229f90 labelled '_global::AtexitDtor_CCharString_at_013baf38_01229f90'
+0121f530   RELOCATION_MATCH PASS   _static_init::minimapFilePathArtist
+0121f550   WARN RELOC_CONFLICT: _$E2 -> 01229fa0 here, 01228930 in landed 01219f00
+0121f550   WARN RELOC_NAME: _$E2 -> 01229fa0 labelled '_global::AtexitDtor_CCharString_at_013baf3c_01229fa0'
+0121f550   RELOCATION_MATCH PASS   _static_init::minimapFilePathProgmr
+0121f570   WARN RELOC_CONFLICT: _$E2 -> 01229fb0 here, 01228930 in landed 01219f00
+0121f570   WARN RELOC_NAME: _$E2 -> 01229fb0 labelled '_global::AtexitDtor_CCharString_at_013baf40_01229fb0'
+0121f570   RELOCATION_MATCH PASS   _static_init::DEAD_ANIM_NAME
+0121f5f0   WARN RELOC_CONFLICT: _$E2 -> 0122a060 here, 01228930 in landed 01219f00
+0121f5f0   WARN RELOC_NAME: _$E2 -> 0122a060 labelled '_global::AtexitDtor_CCharString_at_013baf58_0122a060'
+0121f5f0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f610   WARN RELOC_CONFLICT: _$E2 -> 0122a070 here, 01228930 in landed 01219f00
+0121f610   WARN RELOC_NAME: _$E2 -> 0122a070 labelled '_global::AtexitDtor_CCharString_at_013baf5c_0122a070'
+0121f610   RELOCATION_MATCH PASS   _static_init::CWeaponDef::TooHeavyAnimationGroupName
+0121f630   RELOCATION_MATCH PASS   _static_init::NCreatureAI::COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD
+0121f640   WARN RELOC_CONFLICT: _$E2 -> 0122a080 here, 01228930 in landed 01219f00
+0121f640   WARN RELOC_NAME: _$E2 -> 0122a080 labelled '_global::AtexitDtor_CCharString_at_013bafa0_0122a080'
+0121f640   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f660   WARN RELOC_CONFLICT: _$E2 -> 0122a090 here, 01228930 in landed 01219f00
+0121f660   WARN RELOC_NAME: _$E2 -> 0122a090 labelled '_global::AtexitDtor_CCharString_at_013bafa4_0122a090'
+0121f660   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121f760   WARN RELOC_CONFLICT: _$E2 -> 0122a1d0 here, 01228930 in landed 01219f00
+0121f760   WARN RELOC_NAME: _$E2 -> 0122a1d0 labelled '_global::AtexitDtor_CCharString_at_013bafd4_0122a1d0'
+0121f760   RELOCATION_MATCH PASS   _static_init::DEFAULT_SLEEP_ANIM_NAME
+0121f7c0   RELOCATION_MATCH PASS   _static_init::JACK_FADE_DOWN_TIME
+0121f7d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0121f7d0   RELOCATION_MATCH PASS   _static_init::CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS
+0121f800   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0121f800   RELOCATION_MATCH PASS   _static_init::CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS
+0121f810   WARN RELOC_CONFLICT: _$E2 -> 0122a1e0 here, 01228930 in landed 01219f00
+0121f810   WARN RELOC_NAME: _$E2 -> 0122a1e0 labelled '_global::AtexitDtor_CCharString_at_013baff4_0122a1e0'
+0121f810   RELOCATION_MATCH PASS   _static_init::NCombatActionHelpers::WeaponPosLeftFootHelperName
+0121f830   WARN RELOC_CONFLICT: _$E2 -> 0122a1f0 here, 01228930 in landed 01219f00
+0121f830   WARN RELOC_NAME: _$E2 -> 0122a1f0 labelled '_global::AtexitDtor_CCharString_at_013baff8_0122a1f0'
+0121f830   RELOCATION_MATCH PASS   _static_init::NCombatActionHelpers::WeaponPosRightFootHelperName
+01221860   WARN RELOC_CONFLICT: _$E2 -> 0122a240 here, 01228930 in landed 01219f00
+01221860   WARN RELOC_NAME: _$E2 -> 0122a240 labelled '_global::AtexitDtor_CCharString_at_013bb668_0122a240'
+01221860   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01221880   WARN RELOC_CONFLICT: _$E2 -> 0122a250 here, 01228930 in landed 01219f00
+01221880   WARN RELOC_NAME: _$E2 -> 0122a250 labelled '_global::AtexitDtor_CCharString_at_013bb66c_0122a250'
+01221880   RELOCATION_MATCH PASS   _static_init::SIT_ON_FLOOR_ANIM_NAME
+012218a0   WARN RELOC_CONFLICT: _$E2 -> 0122a260 here, 01228930 in landed 01219f00
+012218a0   WARN RELOC_NAME: _$E2 -> 0122a260 labelled '_global::AtexitDtor_CCharString_at_013bb670_0122a260'
+012218a0   RELOCATION_MATCH PASS   _static_init::GET_UP_FROM_FLOOR_ANIM_NAME
+012218c0   WARN RELOC_CONFLICT: _$E2 -> 0122a270 here, 01228930 in landed 01219f00
+012218c0   WARN RELOC_NAME: _$E2 -> 0122a270 labelled '_global::AtexitDtor_CCharString_at_013bb674_0122a270'
+012218c0   RELOCATION_MATCH PASS   _static_init::LOG_DEF_NAME
+012218e0   WARN RELOC_CONFLICT: _$E2 -> 0122a280 here, 01228930 in landed 01219f00
+012218e0   WARN RELOC_NAME: _$E2 -> 0122a280 labelled '_global::AtexitDtor_CCharString_at_013bb678_0122a280'
+012218e0   RELOCATION_MATCH PASS   _static_init::PICK_UP_ANIM_NAME
+01221900   WARN RELOC_CONFLICT: _$E2 -> 0122a290 here, 01228930 in landed 01219f00
+01221900   WARN RELOC_NAME: _$E2 -> 0122a290 labelled '_global::AtexitDtor_CCharString_at_013bb67c_0122a290'
+01221900   RELOCATION_MATCH PASS   _static_init::HOLDING_LOG_ANIM_NAME
+01221920   WARN RELOC_CONFLICT: _$E2 -> 0122a2a0 here, 01228930 in landed 01219f00
+01221920   WARN RELOC_NAME: _$E2 -> 0122a2a0 labelled '_global::AtexitDtor_CCharString_at_013bb680_0122a2a0'
+01221920   RELOCATION_MATCH PASS   _static_init::PUT_LOG_IN_BONFIRE_ANIM_NAME
+01221940   WARN RELOC_CONFLICT: _$E2 -> 0122a2b0 here, 01228930 in landed 01219f00
+01221940   WARN RELOC_NAME: _$E2 -> 0122a2b0 labelled '_global::AtexitDtor_CCharString_at_013bb684_0122a2b0'
+01221940   RELOCATION_MATCH PASS   _static_init::SUCCESS_STRING
+01221960   WARN RELOC_CONFLICT: _$E2 -> 0122a2c0 here, 01228930 in landed 01219f00
+01221960   WARN RELOC_NAME: _$E2 -> 0122a2c0 labelled '_global::AtexitDtor_CCharString_at_013bb688_0122a2c0'
+01221960   RELOCATION_MATCH PASS   _static_init::FAILURE_STRING
+01221980   WARN RELOC_CONFLICT: _$E2 -> 0122a2d0 here, 01228930 in landed 01219f00
+01221980   WARN RELOC_NAME: _$E2 -> 0122a2d0 labelled '_global::AtexitDtor_CCharString_at_013bb690_0122a2d0'
+01221980   RELOCATION_MATCH PASS   _static_init::TEXT_TO_SAY
+012219a0   WARN RELOC_CONFLICT: _$E2 -> 0122a2e0 here, 01228930 in landed 01219f00
+012219a0   WARN RELOC_NAME: _$E2 -> 0122a2e0 labelled '_global::AtexitDtor_CCharString_at_013bb694_0122a2e0'
+012219a0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+012219c0   WARN RELOC_CONFLICT: _$E2 -> 0122a300 here, 01228930 in landed 01219f00
+012219c0   WARN RELOC_NAME: _$E2 -> 0122a300 labelled '_global::AtexitDtor_CCharString_at_013bb6c0_0122a300'
+012219c0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+012219e0   WARN RELOC_CONFLICT: _$E2 -> 0122a310 here, 01228930 in landed 01219f00
+012219e0   WARN RELOC_NAME: _$E2 -> 0122a310 labelled '_global::AtexitDtor_CCharString_at_013bb6c4_0122a310'
+012219e0   RELOCATION_MATCH PASS   _static_init::HEED_STRING
+01221a00   WARN RELOC_CONFLICT: _$E2 -> 0122a320 here, 01228930 in landed 01219f00
+01221a00   WARN RELOC_NAME: _$E2 -> 0122a320 labelled '_global::AtexitDtor_CCharString_at_013bb6c8_0122a320'
+01221a00   RELOCATION_MATCH PASS   _static_init::IGNORE_STRING
+01221a20   WARN RELOC_CONFLICT: _$E2 -> 0122a330 here, 01228930 in landed 01219f00
+01221a20   WARN RELOC_NAME: _$E2 -> 0122a330 labelled '_global::AtexitDtor_CCharString_at_013bb6cc_0122a330'
+01221a20   RELOCATION_MATCH PASS   _static_init::RUN_AWAY_STRING
+01221a40   WARN RELOC_CONFLICT: _$E2 -> 0122a340 here, 01228930 in landed 01219f00
+01221a40   WARN RELOC_NAME: _$E2 -> 0122a340 labelled '_global::AtexitDtor_CCharString_at_013bb6d0_0122a340'
+01221a40   RELOCATION_MATCH PASS   _static_init::SEEN_MINOR_CRIME_STRING
+01221a60   WARN RELOC_CONFLICT: _$E2 -> 0122a350 here, 01228930 in landed 01219f00
+01221a60   WARN RELOC_NAME: _$E2 -> 0122a350 labelled '_global::AtexitDtor_CCharString_at_013bb6d4_0122a350'
+01221a60   RELOCATION_MATCH PASS   _static_init::SEEN_MODERATE_CRIME_STRING
+01221a80   WARN RELOC_CONFLICT: _$E2 -> 0122a360 here, 01228930 in landed 01219f00
+01221a80   WARN RELOC_NAME: _$E2 -> 0122a360 labelled '_global::AtexitDtor_CCharString_at_013bb6d8_0122a360'
+01221a80   RELOCATION_MATCH PASS   _static_init::SEEN_SERIOUS_CRIME_STRING
+01221aa0   WARN RELOC_CONFLICT: _$E2 -> 0122a370 here, 01228930 in landed 01219f00
+01221aa0   WARN RELOC_NAME: _$E2 -> 0122a370 labelled '_global::AtexitDtor_CCharString_at_013bb6dc_0122a370'
+01221aa0   RELOCATION_MATCH PASS   _static_init::SIT_ON_CHAIR_ANIM_NAME
+01221ac0   WARN RELOC_CONFLICT: _$E2 -> 0122a380 here, 01228930 in landed 01219f00
+01221ac0   WARN RELOC_NAME: _$E2 -> 0122a380 labelled '_global::AtexitDtor_CCharString_at_013bb6e0_0122a380'
+01221ac0   RELOCATION_MATCH PASS   _static_init::GET_UP_FROM_CHAIR_ANIM_NAME
+01221ae0   WARN RELOC_CONFLICT: _$E2 -> 0122a390 here, 01228930 in landed 01219f00
+01221ae0   WARN RELOC_NAME: _$E2 -> 0122a390 labelled '_global::AtexitDtor_CCharString_at_013bb6e4_0122a390'
+01221ae0   RELOCATION_MATCH PASS   _static_init::SIT_ON_BENCH_ANIM_NAME
+01221b00   WARN RELOC_CONFLICT: _$E2 -> 0122a3a0 here, 01228930 in landed 01219f00
+01221b00   WARN RELOC_NAME: _$E2 -> 0122a3a0 labelled '_global::AtexitDtor_CCharString_at_013bb6e8_0122a3a0'
+01221b00   RELOCATION_MATCH PASS   _static_init::GET_UP_FROM_BENCH_ANIM_NAME
+01221b20   WARN RELOC_CONFLICT: _$E2 -> 0122a3b0 here, 01228930 in landed 01219f00
+01221b20   WARN RELOC_NAME: _$E2 -> 0122a3b0 labelled '_global::AtexitDtor_CCharString_at_013bb6ec_0122a3b0'
+01221b20   RELOCATION_MATCH PASS   _static_init::SIT_ON_FLOOR_ANIM_NAME
+01221b40   WARN RELOC_CONFLICT: _$E2 -> 0122a3c0 here, 01228930 in landed 01219f00
+01221b40   WARN RELOC_NAME: _$E2 -> 0122a3c0 labelled '_global::AtexitDtor_CCharString_at_013bb6f0_0122a3c0'
+01221b40   RELOCATION_MATCH PASS   _static_init::GET_UP_FROM_FLOOR_ANIM_NAME
+01221b80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221b80   RELOCATION_MATCH PASS   _static_init::RANGE_TIME_TO_SIT
+01221b90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221b90   RELOCATION_MATCH PASS   _static_init::MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS
+01221ba0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221ba0   RELOCATION_MATCH PASS   _static_init::RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS
+01221bb0   WARN RELOC_CONFLICT: _$E2 -> 0122a3d0 here, 01228930 in landed 01219f00
+01221bb0   WARN RELOC_NAME: _$E2 -> 0122a3d0 labelled '_global::AtexitDtor_CCharString_at_013bb704_0122a3d0'
+01221bb0   RELOCATION_MATCH PASS   _static_init::SIT_ON_FLOOR_ANIM_NAME
+01221bd0   WARN RELOC_CONFLICT: _$E2 -> 0122a3e0 here, 01228930 in landed 01219f00
+01221bd0   WARN RELOC_NAME: _$E2 -> 0122a3e0 labelled '_global::AtexitDtor_CCharString_at_013bb708_0122a3e0'
+01221bd0   RELOCATION_MATCH PASS   _static_init::GET_UP_FROM_FLOOR_ANIM_NAME
+01221bf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221bf0   RELOCATION_MATCH PASS   _static_init::MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS
+01221c00   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221c00   RELOCATION_MATCH PASS   _static_init::RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS
+01221c10   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221c10   RELOCATION_MATCH PASS   _static_init::TIME_TO_LEAVE_SHOUT_MESSAGE
+01221c20   WARN RELOC_CONFLICT: _$E2 -> 0122a3f0 here, 01228930 in landed 01219f00
+01221c20   WARN RELOC_NAME: _$E2 -> 0122a3f0 labelled '_global::AtexitDtor_CCharString_at_013bb71c_0122a3f0'
+01221c20   RELOCATION_MATCH PASS   _static_init::PICK_UP_ANIM_NAME_LEVEL1
+01221c40   WARN RELOC_CONFLICT: _$E2 -> 0122a400 here, 01228930 in landed 01219f00
+01221c40   WARN RELOC_NAME: _$E2 -> 0122a400 labelled '_global::AtexitDtor_CCharString_at_013bb720_0122a400'
+01221c40   RELOCATION_MATCH PASS   _static_init::PUT_CRATE_IN_PILE_ANIM_NAME_LEVEL1
+01221c60   WARN RELOC_CONFLICT: _$E2 -> 0122a410 here, 01228930 in landed 01219f00
+01221c60   WARN RELOC_NAME: _$E2 -> 0122a410 labelled '_global::AtexitDtor_CCharString_at_013bb724_0122a410'
+01221c60   RELOCATION_MATCH PASS   _static_init::PICK_UP_ANIM_NAME_LEVEL2
+01221c80   WARN RELOC_CONFLICT: _$E2 -> 0122a420 here, 01228930 in landed 01219f00
+01221c80   WARN RELOC_NAME: _$E2 -> 0122a420 labelled '_global::AtexitDtor_CCharString_at_013bb728_0122a420'
+01221c80   RELOCATION_MATCH PASS   _static_init::PUT_CRATE_IN_PILE_ANIM_NAME_LEVEL2
+01221ca0   WARN RELOC_CONFLICT: _$E2 -> 0122a430 here, 01228930 in landed 01219f00
+01221ca0   WARN RELOC_NAME: _$E2 -> 0122a430 labelled '_global::AtexitDtor_CCharString_at_013bb72c_0122a430'
+01221ca0   RELOCATION_MATCH PASS   _static_init::NAME_OF_BITCHIN_BOWL
+01221cc0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221cc0   RELOCATION_MATCH PASS   _static_init::TIME_TO_LEAVE_BETWEEN_SPEAKING
+01221cd0   WARN RELOC_CONFLICT: _$E2 -> 0122a440 here, 01228930 in landed 01219f00
+01221cd0   WARN RELOC_NAME: _$E2 -> 0122a440 labelled '_global::AtexitDtor_CCharString_at_013bb734_0122a440'
+01221cd0   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01221cf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01221cf0   RELOCATION_MATCH PASS   _static_init::TOTAL_FRAMES_TO_RUN
+01221d00   WARN RELOC_CONFLICT: _$E2 -> 0122a450 here, 01228930 in landed 01219f00
+01221d00   WARN RELOC_NAME: _$E2 -> 0122a450 labelled '_global::AtexitDtor_CCharString_at_013bb740_0122a450'
+01221d00   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01223c60   WARN RELOC_CONFLICT: _$E2 -> 0122a480 here, 01228930 in landed 01219f00
+01223c60   WARN RELOC_NAME: _$E2 -> 0122a480 labelled '_global::AtexitDtor_CCharString_at_013bc3a0_0122a480'
+01223c60   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01223c80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+01223c80   RELOCATION_MATCH PASS   _static_init::TIME_TO_LEAVE_SHOUT_MESSAGE
+01223c90   WARN RELOC_CONFLICT: _$E2 -> 0122a490 here, 01228930 in landed 01219f00
+01223c90   WARN RELOC_NAME: _$E2 -> 0122a490 labelled '_global::AtexitDtor_CCharString_at_013bc3a8_0122a490'
+01223c90   RELOCATION_MATCH PASS   _static_init::REACTION_MANAGER_DEF_INSTANTIATION_NAME
+01223cc0   WARN RELOC_CONFLICT: _$E2 -> 0122a4a0 here, 01228930 in landed 01219f00
+01223cc0   WARN RELOC_NAME: _$E2 -> 0122a4a0 labelled '_global::AtexitDtor_CCharString_at_013bc440_0122a4a0'
+01223cc0   RELOCATION_MATCH PASS   _static_init::CShaderStats::NoneStr
+01223d80   WARN RELOC_CONFLICT: _$E2 -> 0122a4e0 here, 01228930 in landed 01219f00
+01223d80   WARN RELOC_NAME: _$E2 -> 0122a4e0 labelled '_global::AtexitDtor_CCharString_at_013bca10_0122a4e0'
+01223d80   RELOCATION_MATCH PASS   _static_init::NFile::CurrentPath
+01223da0   WARN RELOC_CONFLICT: _$E2 -> 0122a550 here, 01228930 in landed 01219f00
+01223da0   WARN RELOC_NAME: _$E2 -> 0122a550 labelled 'CWideString::DestroyNullString'
+01223da0   RELOCATION_MATCH PASS   _static_init::CWideString::NullString
+01224050   WARN RELOC_CONFLICT: _$E2 -> 0122a6b0 here, 01228930 in landed 01219f00
+01224050   WARN RELOC_NAME: _$E2 -> 0122a6b0 labelled '_global::AtexitDtor_CCharString_at_013ca7dc_0122a6b0'
+01224050   RELOCATION_MATCH PASS   _static_init::CDefinitionManager::CompiledDefDirectory
+01224170   WARN RELOC_CONFLICT: _$E2 -> 0122a870 here, 01228930 in landed 01219f00
+01224170   WARN RELOC_NAME: _$E2 -> 0122a870 labelled '_global::AtexitDtor_CCharString_at_013caa30_0122a870'
+01224170   RELOCATION_MATCH PASS   _static_init::GNullName
+01224190   WARN RELOC_CONFLICT: _$E2 -> 0122a880 here, 01228930 in landed 01219f00
+01224190   WARN RELOC_NAME: _$E2 -> 0122a880 labelled '_global::AtexitDtor_CCharString_at_013caa34_0122a880'
+01224190   RELOCATION_MATCH PASS   _static_init::CSymbolMap::CurrentFilename
+012241d0   WARN RELOC_CONFLICT: _$E2 -> 0122a8d0 here, 01228930 in landed 01219f00
+012241d0   WARN RELOC_NAME: _$E2 -> 0122a8d0 labelled '_global::AtexitDtor_CCharString_at_013caa48_0122a8d0'
+012241d0   RELOCATION_MATCH PASS   _static_init::OPEN_BRACKET
+012241f0   WARN RELOC_CONFLICT: _$E2 -> 0122a8e0 here, 01228930 in landed 01219f00
+012241f0   WARN RELOC_NAME: _$E2 -> 0122a8e0 labelled '_global::AtexitDtor_CCharString_at_013caa4c_0122a8e0'
+012241f0   RELOCATION_MATCH PASS   _static_init::CLOSE_BRACKET
+01224210   WARN RELOC_CONFLICT: _$E2 -> 0122a8f0 here, 01228930 in landed 01219f00
+01224210   WARN RELOC_NAME: _$E2 -> 0122a8f0 labelled '_global::AtexitDtor_CCharString_at_013caa50_0122a8f0'
+01224210   RELOCATION_MATCH PASS   _static_init::SEPARATOR
+012242d0   WARN RELOC_CONFLICT: _$E2 -> 0122aa60 here, 01228930 in landed 01219f00
+012242d0   WARN RELOC_NAME: _$E2 -> 0122aa60 labelled '_global::AtexitDtor_CCharString_at_013d27e4_0122aa60'
+012242d0   RELOCATION_MATCH PASS   _static_init::GNullName
+012242f0   WARN RELOC_CONFLICT: _$E2 -> 0122aa70 here, 01228930 in landed 01219f00
+012242f0   WARN RELOC_NAME: _$E2 -> 0122aa70 labelled '_global::AtexitDtor_CCharString_at_013d27e8_0122aa70'
+012242f0   RELOCATION_MATCH PASS   _static_init::CCRCSymbolMap::CurrentFilename
+012245e0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+012245f0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224620   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224630   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224640   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224650   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224660   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224670   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224680   WARN RELOC_CONFLICT: _$E2 -> 0122acd0 here, 01228930 in landed 01219f00
+01224680   WARN RELOC_NAME: _$E2 -> 0122acd0 labelled '_global::AtexitDtor_CCharString_at_01436ec4_0122acd0'
+01224680   RELOCATION_MATCH PASS   _static_init::SeaStaticMapBankFileName
+012246a0   WARN RELOC_CONFLICT: _$E2 -> 0122ace0 here, 01228930 in landed 01219f00
+012246a0   WARN RELOC_NAME: _$E2 -> 0122ace0 labelled '_global::AtexitDtor_CCharString_at_01436ec8_0122ace0'
+012246a0   RELOCATION_MATCH PASS   _static_init::WaterStaticMapBankFileName
+012246c0   WARN RELOC_CONFLICT: _$E2 -> 0122acf0 here, 01228930 in landed 01219f00
+012246c0   WARN RELOC_NAME: _$E2 -> 0122acf0 labelled '_global::AtexitDtor_CCharString_at_01436ecc_0122acf0'
+012246c0   RELOCATION_MATCH PASS   _static_init::CommonStaticMapHeaderEntryName
+012247d0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+012247e0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+012247f0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224800   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224810   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224820   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224850   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224860   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224870   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224880   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224890   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+012248a0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+012248e0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+012248f0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224910   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224920   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224930   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224940   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224950   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224960   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224980   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224990   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+012249a0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+012249b0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+012249c0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+012249d0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+012249e0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+012249f0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224a00   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224a10   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224a20   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224a30   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224a40   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224a50   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224a60   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224a70   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224a80   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224a90   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224aa0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224ab0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224ac0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224ad0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224ae0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_SINE
+01224af0   RELOCATION_MATCH PASS   _static_init::WATER_MESH_VERT_SPAN_COSINE
+01224c50   WARN RELOC_CONFLICT: _$E2 -> 0122ae60 here, 01228930 in landed 01219f00
+01224c50   WARN RELOC_NAME: _$E2 -> 0122ae60 labelled '_global::AtexitDtor_CCharString_at_0143e8ec_0122ae60'
+01224c50   RELOCATION_MATCH PASS   _static_init::CScriptThing::NullString
+012299e0   WARN RELOC_NAME: ?SDoorOpenAnim@?A0xf22b0a87@@3VCCharString@@B -> 013bad34 labelled 'g_DoorOpenAnimName'
+012299e0   WARN STANDIN_LEAF ?GlobalMethodTailThunk_012299e0@@YIXXZ (catalog _global::AtexitDtor_CCharString_at_013bad34_012299e0; address-only name)
+012299e0   RELOCATION_MATCH PASS   _global::AtexitDtor_CCharString_at_013bad34_012299e0
+012299f0   WARN RELOC_NAME: ?SDoorCloseAnim@?A0xea0ba4e8@@3VCCharString@@B -> 013bad38 labelled 'g_DoorCloseAnimName'
+012299f0   WARN STANDIN_LEAF ?GlobalMethodTailThunk_012299f0@@YIXXZ (catalog _global::AtexitDtor_CCharString_at_013bad38_012299f0; address-only name)
+012299f0   RELOCATION_MATCH PASS   _global::AtexitDtor_CCharString_at_013bad38_012299f0
+01229a00   WARN RELOC_NAME: ?SClockTurnAnim@?A0x1b028281@@3VCCharString@@A -> 013bad3c labelled 'g_ClockHandTurnName'
+01229a00   WARN STANDIN_LEAF ?GlobalMethodTailThunk_01229a00@@YIXXZ (catalog _global::AtexitDtor_CCharString_at_013bad3c_01229a00; address-only name)
+01229a00   RELOCATION_MATCH PASS   _global::AtexitDtor_CCharString_at_013bad3c_01229a00
+
+WINS: 348
+  0043b570 RELOCATION_MATCH CPlayerGui::??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+  00488b20 RELOCATION_MATCH CPlayer::?LocateCharacterStartHolySite@CPlayer@@
+  004c11f0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPosIfLoaded
+  00521240 RELOCATION_MATCH CThingManager::?LoadEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataInputStream@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z
+  005223f0 RELOCATION_MATCH CThingManager::?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z
+  005a29f4 RELOCATION_MATCH CTCInventoryTrade::?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z
+  005a3734 RELOCATION_MATCH CTCInventoryTrade::?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ
+  005a5b31 RELOCATION_MATCH CTCInventoryTrade::?ConstructActualWantedInventoryPC@CTCInventoryTrade@@AAEXXZ
+  005a8175 RELOCATION_MATCH CTCInventoryTrade::?RefreshBuyPossibilityNumbersPC@CTCInventoryTrade@@AAEXXZ
+  005af64e RELOCATION_MATCH CTCInventoryTrade::?BuyItem@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+  005bff07 RELOCATION_MATCH NInventory::CTCInventoryBase::??0CTCInventoryBase
+  00661b40 RELOCATION_MATCH CThingCreatureBase::?GetHeadPos@CThingCreatureBase@@QBE?AVC3DVector@@_N@Z
+  00670d50 RELOCATION_MATCH CThingCreatureDef::?Validate@CThingCreatureDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+  006ed270 RELOCATION_MATCH CCombatManager::RegisterAttackedCombatant
+  00722590 RELOCATION_MATCH CTCSmokeGenerator::CreatePositions
+  0072cd00 RELOCATION_MATCH CTCSpecialAbilities::?SetupDivineWrath
+  0072ce20 RELOCATION_MATCH CTCSpecialAbilities::?SetupUnholyPower
+  007306c0 RELOCATION_MATCH CTCDoor::OnInitialActivate
+  00730c00 RELOCATION_MATCH CTCDoor::Open
+  00730dd0 RELOCATION_MATCH CTCDoor::Close
+  007310c0 RELOCATION_MATCH CTCDoor::?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ
+  00732850 RELOCATION_MATCH CTCClock::?OnInitialActivate@CTCClock@@UAEXXZ
+  00765f90 RELOCATION_MATCH CTCObjectAugmentations::?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z
+  0076eb00 RELOCATION_MATCH CTCWeaponTrail::?InitialiseTrails@CTCWeaponTrail@@AAEXXZ
+  007c25a0 RELOCATION_MATCH CTCShotDefinitionBase::InitAttachedEffects
+  007ea2f0 RELOCATION_MATCH NTargeting::?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z
+  007feaf0 RELOCATION_MATCH CTCSingleUserActionPoints::IsActionPointOccupied
+  00835e30 RELOCATION_MATCH CThingDeadCreature::?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ
+  008f78e0 RELOCATION_MATCH NCombatActionHelpers::?GetDustCreationHelperNames@NCombatActionHelpers@@YI_NABVCThing@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+  00910570 RELOCATION_MATCH CAIStateGroup_MinionListenToStory::?StandUp@CAIStateGroup_MinionListenToStory@@
+  00917130 RELOCATION_MATCH CAIStateGroup_ThrowLogsOnFire::Update
+  0093b1d0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?Update@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ
+  0093dfc0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby2@@
+  00940960 RELOCATION_MATCH CAIStateGroup_VillageTaskHorn::?Update@CAIStateGroup_VillageTaskHorn@@UAEXXZ
+  0095e430 RELOCATION_MATCH CAIStateGroup_ReactToDeadLeader::?IsStillRunnable@CAIStateGroup_ReactToDeadLeader@@IBE_NXZ
+  0095e470 RELOCATION_MATCH CAIStateGroup_ReactToDeadLeader::Update
+  009e5420 RELOCATION_MATCH CSymbolMap::AddSymbolDirty
+  009eb2c0 RELOCATION_MATCH CConsole::SetHelpBarString
+  01219ec0 RELOCATION_MATCH _static_init::_$E1
+  01219ee0 RELOCATION_MATCH _static_init::_$E1
+  01219f20 RELOCATION_MATCH _static_init::_$E1
+  01219f60 RELOCATION_MATCH _static_init::_$E1
+  01219f80 RELOCATION_MATCH _static_init::_$E1
+  01219fa0 RELOCATION_MATCH _static_init::_$E1
+  01219fc0 RELOCATION_MATCH _static_init::_$E1
+  01219fe0 RELOCATION_MATCH _static_init::_$E1
+  0121a000 RELOCATION_MATCH _static_init::_$E1
+  0121a020 RELOCATION_MATCH _static_init::_$E1
+  0121a050 RELOCATION_MATCH _static_init::_$E1
+  0121a070 RELOCATION_MATCH _static_init::_$E1
+  0121a090 RELOCATION_MATCH _static_init::_$E1
+  0121a0b0 RELOCATION_MATCH _static_init::_$E1
+  0121a0d0 RELOCATION_MATCH _static_init::_$E1
+  0121a0f0 RELOCATION_MATCH _static_init::_$E1
+  0121a11c RELOCATION_MATCH _static_init::_$E1
+  0121a137 RELOCATION_MATCH _static_init::_$E1
+  0121a152 RELOCATION_MATCH _static_init::_$E1
+  0121a16d RELOCATION_MATCH _static_init::_$E1
+  0121a188 RELOCATION_MATCH _static_init::_$E1
+  0121a1a3 RELOCATION_MATCH _static_init::_$E1
+  0121a1be RELOCATION_MATCH _static_init::_$E1
+  0121a1d9 RELOCATION_MATCH _static_init::_$E1
+  0121a1f4 RELOCATION_MATCH _static_init::_$E1
+  0121a211 RELOCATION_MATCH _static_init::_$E1
+  0121a22e RELOCATION_MATCH _static_init::_$E1
+  0121a24b RELOCATION_MATCH _static_init::_$E1
+  0121a268 RELOCATION_MATCH _static_init::_$E1
+  0121a285 RELOCATION_MATCH _static_init::_$E1
+  0121a2a2 RELOCATION_MATCH _static_init::_$E1
+  0121a2bf RELOCATION_MATCH _static_init::_$E1
+  0121a2f0 RELOCATION_MATCH _static_init::_$E1
+  0121a310 RELOCATION_MATCH _static_init::_$E1
+  0121a330 RELOCATION_MATCH _static_init::_$E1
+  0121a36c RELOCATION_MATCH _static_init::_$E1
+  0121a3c0 RELOCATION_MATCH _static_init::_$E1
+  0121a3e0 RELOCATION_MATCH _static_init::_$E1
+  0121a400 RELOCATION_MATCH _static_init::_$E1
+  0121a610 RELOCATION_MATCH _static_init::_$E1
+  0121a650 RELOCATION_MATCH _static_init::_$E1
+  0121a6f0 RELOCATION_MATCH _static_init::_$E1
+  0121a710 RELOCATION_MATCH _static_init::_$E1
+  0121a730 RELOCATION_MATCH _static_init::_$E1
+  0121a750 RELOCATION_MATCH _static_init::_$E1
+  0121a770 RELOCATION_MATCH _static_init::_$E1
+  0121a790 RELOCATION_MATCH _static_init::_$E1
+  0121a7ad RELOCATION_MATCH _static_init::_$E1
+  0121a87b RELOCATION_MATCH _static_init::_$E1
+  0121a898 RELOCATION_MATCH _static_init::_$E1
+  0121a8c1 RELOCATION_MATCH _static_init::_$E1
+  0121a8de RELOCATION_MATCH _static_init::_$E1
+  0121a8fb RELOCATION_MATCH _static_init::_$E1
+  0121a918 RELOCATION_MATCH _static_init::_$E1
+  0121a935 RELOCATION_MATCH _static_init::_$E1
+  0121a952 RELOCATION_MATCH _static_init::_$E1
+  0121a96f RELOCATION_MATCH _static_init::_$E1
+  0121a98c RELOCATION_MATCH _static_init::_$E1
+  0121a9a9 RELOCATION_MATCH _static_init::_$E1
+  0121a9c6 RELOCATION_MATCH _static_init::_$E1
+  0121a9e3 RELOCATION_MATCH _static_init::_$E1
+  0121aa00 RELOCATION_MATCH _static_init::_$E1
+  0121aa1d RELOCATION_MATCH _static_init::_$E1
+  0121aa3a RELOCATION_MATCH _static_init::_$E1
+  0121aa57 RELOCATION_MATCH _static_init::_$E1
+  0121aa74 RELOCATION_MATCH _static_init::_$E1
+  0121aa91 RELOCATION_MATCH _static_init::_$E1
+  0121aaae RELOCATION_MATCH _static_init::_$E1
+  0121aacb RELOCATION_MATCH _static_init::_$E1
+  0121aae8 RELOCATION_MATCH _static_init::_$E1
+  0121ab05 RELOCATION_MATCH _static_init::_$E1
+  0121ab22 RELOCATION_MATCH _static_init::_$E1
+  0121ab5a RELOCATION_MATCH _static_init::_$E1
+  0121ab77 RELOCATION_MATCH _static_init::_$E1
+  0121ab94 RELOCATION_MATCH _static_init::_$E1
+  0121abb1 RELOCATION_MATCH _static_init::_$E1
+  0121abce RELOCATION_MATCH _static_init::_$E1
+  0121abeb RELOCATION_MATCH _static_init::_$E1
+  0121df30 RELOCATION_MATCH _static_init::_$E1
+  0121df50 RELOCATION_MATCH _static_init::_$E1
+  0121df70 RELOCATION_MATCH _static_init::_$E1
+  0121df90 RELOCATION_MATCH _static_init::_$E1
+  0121dfc0 RELOCATION_MATCH _static_init::_$E1
+  0121dfe0 RELOCATION_MATCH _static_init::_$E1
+  0121e0c0 RELOCATION_MATCH _static_init::_$E1
+  0121e0e0 RELOCATION_MATCH _static_init::_$E1
+  0121e100 RELOCATION_MATCH _static_init::_$E1
+  0121e120 RELOCATION_MATCH _static_init::_$E1
+  0121e140 RELOCATION_MATCH _static_init::_$E1
+  0121e160 RELOCATION_MATCH _static_init::_$E1
+  0121e190 RELOCATION_MATCH _static_init::_$E1
+  0121e1b0 RELOCATION_MATCH _static_init::_$E1
+  0121e1d0 RELOCATION_MATCH _static_init::_$E1
+  0121e1f0 RELOCATION_MATCH _static_init::_$E1
+  0121e380 RELOCATION_MATCH _static_init::_$E1
+  0121e3d0 RELOCATION_MATCH _static_init::_$E1
+  0121e420 RELOCATION_MATCH _static_init::_$E1
+  0121e460 RELOCATION_MATCH _static_init::_$E1
+  0121e5c0 RELOCATION_MATCH _static_init::_$E1
+  0121e5e0 RELOCATION_MATCH _static_init::_$E1
+  0121e600 RELOCATION_MATCH _static_init::_$E1
+  0121e620 RELOCATION_MATCH _static_init::_$E1
+  0121e640 RELOCATION_MATCH _static_init::_$E1
+  0121e660 RELOCATION_MATCH _static_init::_$E1
+  0121e680 RELOCATION_MATCH _static_init::_$E1
+  0121e6a0 RELOCATION_MATCH _static_init::_$E1
+  0121e6c0 RELOCATION_MATCH _static_init::_$E1
+  0121e6e0 RELOCATION_MATCH _static_init::_$E1
+  0121e700 RELOCATION_MATCH _static_init::_$E1
+  0121e720 RELOCATION_MATCH _static_init::_$E1
+  0121e740 RELOCATION_MATCH _static_init::_$E1
+  0121e760 RELOCATION_MATCH _static_init::_$E1
+  0121e780 RELOCATION_MATCH _static_init::_$E1
+  0121e7a0 RELOCATION_MATCH _static_init::_$E1
+  0121e7c0 RELOCATION_MATCH _static_init::_$E1
+  0121e7e0 RELOCATION_MATCH _static_init::_$E1
+  0121e800 RELOCATION_MATCH _static_init::_$E1
+  0121e820 RELOCATION_MATCH _static_init::_$E1
+  0121e840 RELOCATION_MATCH _static_init::_$E1
+  0121e860 RELOCATION_MATCH _static_init::_$E1
+  0121e880 RELOCATION_MATCH _static_init::_$E1
+  0121e8a0 RELOCATION_MATCH _static_init::_$E1
+  0121e8c0 RELOCATION_MATCH _static_init::_$E1
+  0121e8e0 RELOCATION_MATCH _static_init::_$E1
+  0121e900 RELOCATION_MATCH _static_init::_$E1
+  0121e920 RELOCATION_MATCH _static_init::_$E1
+  0121e940 RELOCATION_MATCH _static_init::_$E1
+  0121e960 RELOCATION_MATCH _static_init::_$E1
+  0121e980 RELOCATION_MATCH _static_init::_$E1
+  0121e9a0 RELOCATION_MATCH _static_init::_$E1
+  0121e9c0 RELOCATION_MATCH _static_init::_$E1
+  0121e9e0 RELOCATION_MATCH _static_init::_$E1
+  0121ea00 RELOCATION_MATCH _static_init::_$E1
+  0121ea20 RELOCATION_MATCH _static_init::_$E1
+  0121ea40 RELOCATION_MATCH _static_init::_$E1
+  0121ea60 RELOCATION_MATCH _static_init::_$E1
+  0121ea80 RELOCATION_MATCH _static_init::_$E1
+  0121eaa0 RELOCATION_MATCH _static_init::_$E1
+  0121eac0 RELOCATION_MATCH _static_init::_$E1
+  0121eae0 RELOCATION_MATCH _static_init::_$E1
+  0121eb00 RELOCATION_MATCH _static_init::_$E1
+  0121eb20 RELOCATION_MATCH _static_init::_$E1
+  0121eb40 RELOCATION_MATCH _static_init::_$E1
+  0121eb60 RELOCATION_MATCH _static_init::_$E1
+  0121eb80 RELOCATION_MATCH _static_init::_$E1
+  0121ebe0 RELOCATION_MATCH _static_init::_$E1
+  0121ec00 RELOCATION_MATCH _static_init::_$E1
+  0121ec20 RELOCATION_MATCH _static_init::_$E1
+  0121ec40 RELOCATION_MATCH _static_init::_$E1
+  0121ec60 RELOCATION_MATCH _static_init::_$E1
+  0121ecc0 RELOCATION_MATCH _static_init::_$E1
+  0121ece0 RELOCATION_MATCH _static_init::_$E1
+  0121ed00 RELOCATION_MATCH _static_init::_$E1
+  0121ed20 RELOCATION_MATCH _static_init::_$E1
+  0121ed40 RELOCATION_MATCH _static_init::_$E1
+  0121ed60 RELOCATION_MATCH _static_init::_$E1
+  0121ed90 RELOCATION_MATCH _static_init::_$E1
+  0121edb0 RELOCATION_MATCH _static_init::_$E1
+  0121edd0 RELOCATION_MATCH _static_init::_$E1
+  0121edf0 RELOCATION_MATCH _static_init::_$E1
+  0121ee10 RELOCATION_MATCH _static_init::_$E1
+  0121ee30 RELOCATION_MATCH _static_init::_$E1
+  0121ee50 RELOCATION_MATCH _static_init::_$E1
+  0121ee90 RELOCATION_MATCH _static_init::_$E1
+  0121eeb0 RELOCATION_MATCH _static_init::_$E1
+  0121eed0 RELOCATION_MATCH _static_init::_$E1
+  0121eef0 RELOCATION_MATCH _static_init::_$E1
+  0121ef10 RELOCATION_MATCH _static_init::_$E1
+  0121ef50 RELOCATION_MATCH _static_init::_$E1
+  0121efa0 RELOCATION_MATCH _static_init::_$E1
+  0121efc0 RELOCATION_MATCH _static_init::_$E1
+  0121efe0 RELOCATION_MATCH _static_init::_$E1
+  0121f000 RELOCATION_MATCH _static_init::_$E1
+  0121f01d RELOCATION_MATCH _static_init::_$E1
+  0121f03a RELOCATION_MATCH _static_init::_$E1
+  0121f057 RELOCATION_MATCH _static_init::_$E1
+  0121f0a0 RELOCATION_MATCH _static_init::_$E1
+  0121f0c0 RELOCATION_MATCH _static_init::_$E1
+  0121f240 RELOCATION_MATCH _static_init::_$E1
+  0121f470 RELOCATION_MATCH _static_init::_$E1
+  0121f4b0 RELOCATION_MATCH _static_init::_$E1
+  0121f4d0 RELOCATION_MATCH _static_init::_$E1
+  0121f530 RELOCATION_MATCH _static_init::_$E1
+  0121f550 RELOCATION_MATCH _static_init::_$E1
+  0121f570 RELOCATION_MATCH _static_init::_$E1
+  0121f5f0 RELOCATION_MATCH _static_init::_$E1
+  0121f610 RELOCATION_MATCH _static_init::_$E1
+  0121f630 RELOCATION_MATCH _static_init::_$E1
+  0121f640 RELOCATION_MATCH _static_init::_$E1
+  0121f660 RELOCATION_MATCH _static_init::_$E1
+  0121f760 RELOCATION_MATCH _static_init::_$E1
+  0121f7c0 RELOCATION_MATCH _static_init::_$E1
+  0121f7d0 RELOCATION_MATCH _static_init::_$E1
+  0121f800 RELOCATION_MATCH _static_init::_$E1
+  0121f810 RELOCATION_MATCH _static_init::_$E1
+  0121f830 RELOCATION_MATCH _static_init::_$E1
+  01221860 RELOCATION_MATCH _static_init::_$E1
+  01221880 RELOCATION_MATCH _static_init::_$E1
+  012218a0 RELOCATION_MATCH _static_init::_$E1
+  012218c0 RELOCATION_MATCH _static_init::_$E1
+  012218e0 RELOCATION_MATCH _static_init::_$E1
+  01221900 RELOCATION_MATCH _static_init::_$E1
+  01221920 RELOCATION_MATCH _static_init::_$E1
+  01221940 RELOCATION_MATCH _static_init::_$E1
+  01221960 RELOCATION_MATCH _static_init::_$E1
+  01221980 RELOCATION_MATCH _static_init::_$E1
+  012219a0 RELOCATION_MATCH _static_init::_$E1
+  012219c0 RELOCATION_MATCH _static_init::_$E1
+  012219e0 RELOCATION_MATCH _static_init::_$E1
+  01221a00 RELOCATION_MATCH _static_init::_$E1
+  01221a20 RELOCATION_MATCH _static_init::_$E1
+  01221a40 RELOCATION_MATCH _static_init::_$E1
+  01221a60 RELOCATION_MATCH _static_init::_$E1
+  01221a80 RELOCATION_MATCH _static_init::_$E1
+  01221aa0 RELOCATION_MATCH _static_init::_$E1
+  01221ac0 RELOCATION_MATCH _static_init::_$E1
+  01221ae0 RELOCATION_MATCH _static_init::_$E1
+  01221b00 RELOCATION_MATCH _static_init::_$E1
+  01221b20 RELOCATION_MATCH _static_init::_$E1
+  01221b40 RELOCATION_MATCH _static_init::_$E1
+  01221b80 RELOCATION_MATCH _static_init::_$E1
+  01221b90 RELOCATION_MATCH _static_init::_$E1
+  01221ba0 RELOCATION_MATCH _static_init::_$E1
+  01221bb0 RELOCATION_MATCH _static_init::_$E1
+  01221bd0 RELOCATION_MATCH _static_init::_$E1
+  01221bf0 RELOCATION_MATCH _static_init::_$E1
+  01221c00 RELOCATION_MATCH _static_init::_$E1
+  01221c10 RELOCATION_MATCH _static_init::_$E1
+  01221c20 RELOCATION_MATCH _static_init::_$E1
+  01221c40 RELOCATION_MATCH _static_init::_$E1
+  01221c60 RELOCATION_MATCH _static_init::_$E1
+  01221c80 RELOCATION_MATCH _static_init::_$E1
+  01221ca0 RELOCATION_MATCH _static_init::_$E1
+  01221cc0 RELOCATION_MATCH _static_init::_$E1
+  01221cd0 RELOCATION_MATCH _static_init::_$E1
+  01221cf0 RELOCATION_MATCH _static_init::_$E1
+  01221d00 RELOCATION_MATCH _static_init::_$E1
+  01223c60 RELOCATION_MATCH _static_init::_$E1
+  01223c80 RELOCATION_MATCH _static_init::_$E1
+  01223c90 RELOCATION_MATCH _static_init::_$E1
+  01223cc0 RELOCATION_MATCH _static_init::_$E1
+  01223d80 RELOCATION_MATCH _static_init::_$E1
+  01223da0 RELOCATION_MATCH _static_init::_$E1
+  01224050 RELOCATION_MATCH _static_init::_$E1
+  01224170 RELOCATION_MATCH _static_init::_$E1
+  01224190 RELOCATION_MATCH _static_init::_$E1
+  012241d0 RELOCATION_MATCH _static_init::_$E1
+  012241f0 RELOCATION_MATCH _static_init::_$E1
+  01224210 RELOCATION_MATCH _static_init::_$E1
+  012242d0 RELOCATION_MATCH _static_init::_$E1
+  012242f0 RELOCATION_MATCH _static_init::_$E1
+  012245e0 RELOCATION_MATCH _static_init::_$E1
+  012245f0 RELOCATION_MATCH _static_init::_$E1
+  01224620 RELOCATION_MATCH _static_init::_$E1
+  01224630 RELOCATION_MATCH _static_init::_$E1
+  01224640 RELOCATION_MATCH _static_init::_$E1
+  01224650 RELOCATION_MATCH _static_init::_$E1
+  01224660 RELOCATION_MATCH _static_init::_$E1
+  01224670 RELOCATION_MATCH _static_init::_$E1
+  01224680 RELOCATION_MATCH _static_init::_$E1
+  012246a0 RELOCATION_MATCH _static_init::_$E1
+  012246c0 RELOCATION_MATCH _static_init::_$E1
+  012247d0 RELOCATION_MATCH _static_init::_$E1
+  012247e0 RELOCATION_MATCH _static_init::_$E1
+  012247f0 RELOCATION_MATCH _static_init::_$E1
+  01224800 RELOCATION_MATCH _static_init::_$E1
+  01224810 RELOCATION_MATCH _static_init::_$E1
+  01224820 RELOCATION_MATCH _static_init::_$E1
+  01224850 RELOCATION_MATCH _static_init::_$E1
+  01224860 RELOCATION_MATCH _static_init::_$E1
+  01224870 RELOCATION_MATCH _static_init::_$E1
+  01224880 RELOCATION_MATCH _static_init::_$E1
+  01224890 RELOCATION_MATCH _static_init::_$E1
+  012248a0 RELOCATION_MATCH _static_init::_$E1
+  012248e0 RELOCATION_MATCH _static_init::_$E1
+  012248f0 RELOCATION_MATCH _static_init::_$E1
+  01224910 RELOCATION_MATCH _static_init::_$E1
+  01224920 RELOCATION_MATCH _static_init::_$E1
+  01224930 RELOCATION_MATCH _static_init::_$E1
+  01224940 RELOCATION_MATCH _static_init::_$E1
+  01224950 RELOCATION_MATCH _static_init::_$E1
+  01224960 RELOCATION_MATCH _static_init::_$E1
+  01224980 RELOCATION_MATCH _static_init::_$E1
+  01224990 RELOCATION_MATCH _static_init::_$E1
+  012249a0 RELOCATION_MATCH _static_init::_$E1
+  012249b0 RELOCATION_MATCH _static_init::_$E1
+  012249c0 RELOCATION_MATCH _static_init::_$E1
+  012249d0 RELOCATION_MATCH _static_init::_$E1
+  012249e0 RELOCATION_MATCH _static_init::_$E1
+  012249f0 RELOCATION_MATCH _static_init::_$E1
+  01224a00 RELOCATION_MATCH _static_init::_$E1
+  01224a10 RELOCATION_MATCH _static_init::_$E1
+  01224a20 RELOCATION_MATCH _static_init::_$E1
+  01224a30 RELOCATION_MATCH _static_init::_$E1
+  01224a40 RELOCATION_MATCH _static_init::_$E1
+  01224a50 RELOCATION_MATCH _static_init::_$E1
+  01224a60 RELOCATION_MATCH _static_init::_$E1
+  01224a70 RELOCATION_MATCH _static_init::_$E1
+  01224a80 RELOCATION_MATCH _static_init::_$E1
+  01224a90 RELOCATION_MATCH _static_init::_$E1
+  01224aa0 RELOCATION_MATCH _static_init::_$E1
+  01224ab0 RELOCATION_MATCH _static_init::_$E1
+  01224ac0 RELOCATION_MATCH _static_init::_$E1
+  01224ad0 RELOCATION_MATCH _static_init::_$E1
+  01224ae0 RELOCATION_MATCH _static_init::_$E1
+  01224af0 RELOCATION_MATCH _static_init::_$E1
+  01224c50 RELOCATION_MATCH _static_init::_$E1
+  012299e0 RELOCATION_MATCH _global::?GlobalMethodTailThunk_012299e0@@YIXXZ
+  012299f0 RELOCATION_MATCH _global::?GlobalMethodTailThunk_012299f0@@YIXXZ
+  01229a00 RELOCATION_MATCH _global::?GlobalMethodTailThunk_01229a00@@YIXXZ

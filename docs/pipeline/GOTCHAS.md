@@ -26,3 +26,9 @@
 - (chunk Q19, 2026-11-12) Overlay header copies go stale when the repo header changes mid-chunk: diff each overlay against the repo before hand-back and re-merge (CTCVillage.h ISWORKTIME).
 - (chunk Q19, 2026-11-12) c2prio: five source spellings that keep the same split-piece ids keep the same post-loop reload order; change creation order instead (0x008780D0).
 - (landing di, 2026-11-12) An agent oracle cut from Fable.exe with the row length can carry trailing int3 padding: q.py strips it but vland does not (DIFFER(732v736)); strip 0xCC/0x90 before landing. Agent tests checked only under g++ can still FAIL under VC7.1 (no C++03 value-initialisation for `T()`).
+- (agentFAM09, 2026-11-12) Static-initializer rows grade with leaf `_$E1` (VC7.1), not `??__E<name>@@YAXXZ`; keep the `??__E` form only for the RENAMES column.
+- (agentFAM09, 2026-11-12) Anniv debug types drop `const` on class-type globals; only the public mangled name (`@@B`) proves const, and anonymous-namespace objects have none.
+- (agentFAM09, 2026-11-12) Map a run of unnamed initializers by TU: inside one TU Ego_r, FableWin and retail keep the same order, but TU link order differs between builds.
+- (agentFAM09, 2026-11-12) Binder respelling with a regex must split code from comments and treat multi-declarator and aggregate-initialised test definitions by hand.
+- (agentFAM09, 2026-11-12) Before respelling a class static into a binder row, check that row for local models of CCharString / the class; a header include then needs a migration.
+- (agentFAM09, 2026-11-12) reloc_bindings lists only the first caller, so a grep of the address in rebuild/src finds descriptive alias spellings (NAME_FIXES) that the placeholder grep misses.

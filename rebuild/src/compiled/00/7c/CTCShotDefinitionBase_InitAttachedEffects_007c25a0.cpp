@@ -9,7 +9,7 @@
 //   CTCDParticleEmitter::AttachToThing 0x006E0BE0, CRC CCRC::Calc 0x004014A0, physics virtual slot 70 (+0x118),
 //   CBaseClass ctor 0x0099A2D0, push_back 0x0076B120, SetEmitterUpdateParameters 0x006E11A0, ~CParticleUpdateParameters 0x006E2500.
 // Layout: as the landed UpdateEffects 0x007C2480 (same TU); PShotDef +0x38 (CThingShotDef AttachedContinuousEffect +0x48,
-//   UseEndTimeLineOnContinousEffect +0x50, PDB minus 4); CThing appearance +0x64; g_CCharString_013bacb4 = "SHOT_CREATION_DUMMY".
+//   UseEndTimeLineOnContinousEffect +0x50, PDB minus 4); CThing appearance +0x64; SHOT_CREATION_DUMMY (was g_CCharString_013bacb4) = "SHOT_CREATION_DUMMY".
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -67,7 +67,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-extern CCharString g_CCharString_013bacb4;              // 0x013BACB4 "SHOT_CREATION_DUMMY"
+extern const CCharString SHOT_CREATION_DUMMY;              // 0x013BACB4 "SHOT_CREATION_DUMMY"
 class CTCDParticleEmitter {
 public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
@@ -224,8 +224,8 @@ void CTCShotDefinitionBase::InitAttachedEffects()
     CCharString helperName;
     CThingAppearance* appearance = ParentThing->Appearance;
     long attachType;
-    if (appearance->HasDummyObject(g_CCharString_013bacb4)) {
-        helperName = g_CCharString_013bacb4;
+    if (appearance->HasDummyObject(SHOT_CREATION_DUMMY)) {
+        helperName = SHOT_CREATION_DUMMY;
         attachType = 10;
     } else if (appearance->HasHelperPoint("weapon_pos_a")) {
         helperName = "weapon_pos_a";
