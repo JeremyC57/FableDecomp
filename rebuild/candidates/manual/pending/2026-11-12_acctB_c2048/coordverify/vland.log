@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b64550   RELOCATION_MATCH PASS   RenderSunFlare
+
+WINS: 1
+  00b64550 RELOCATION_MATCH CEngineSkyRenderer::?RenderSunFlare@CEngineSkyRenderer@@AAEXXZ

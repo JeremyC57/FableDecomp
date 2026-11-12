@@ -1,0 +1,5 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00989B00	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z	Ego_r.pdb 0x00AE6350 (overload run C3DVector+M, C4DVector, MMMM, CRGBFloatColour); engine/CShaderRenderManager.h; RenderClouds 0x00B658D3 pushes (0, x, y, z, w)	?SetVertexShaderConstant@CShaderRenderManager@@QAEXJMMMM@Z (bound by landed 0x00B52160; in neither PDB)
+0x009FE620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	Ego_r.pdb and FableWin.pdb spell it const (QBE); one landed binding uses it	?BeginLoading@CGraphicInfoFrame@@QAEXKK@Z, ?BeginLoading@CGraphicInfoFrame@NUISystem@@QAEXKK@Z
+0x009FF8D0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	Ego_r.pdb / FableWin.pdb (reference, const)	?GetFrame@CGraphicInfo@@QAE_NPAVCGraphicFrame@@KKK@Z
+0x00B63530	?RenderScreenSpaceSprite@CEngineSkyRenderer@@AAEXPBVCTexture@@MMMMVCRGBColour@@@Z	FableWin.pdb (4 floats, not C2DVectors; private; class CEngineSkyRenderer)	landed row CEngineSkyRenderer_RenderScreenSpaceSprite_00b63530.cpp (CEngineSkyRenderer_Methods, C2DVector arguments)
