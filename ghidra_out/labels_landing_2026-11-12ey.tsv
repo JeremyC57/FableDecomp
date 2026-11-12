@@ -1,0 +1,8 @@
+address	name	evidence
+007F0F40	?ReturnToDesiredPos@CTCKrakenTentacle@@AAEX_N@Z	workflow wf13 (landing ey): RELOCATION_MATCH, two PDBs
+006B08F0	?OnSerialise@CTCPhysicsBase@@UAEXAAVCPersistContext@@_N@Z	workflow wf13 (landing ey): RELOCATION_MATCH, two PDBs
+00731EA0	?OnAppearanceDraw@CTCSpotLight@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z	workflow wf13 (landing ey): RELOCATION_MATCH, two PDBs
+009341C0	?TagTarget@CAIStateGroup_MinionKidGroupTag@@AAEXXZ	workflow wf13 (landing ey): RELOCATION_MATCH, two PDBs
+00754050	?UpdateTurningAnims@CTCLook@@QAEXXZ	workflow wf13 (landing ey): RELOCATION_MATCH, two PDBs
+00951D60	?IntoHover@CAIStateGroup_JackDragon@@AAEXXZ	workflow wf13 (landing ey): RELOCATION_MATCH, two PDBs
+009CCEF0	?FindIndicesByFilename@CBankFile@@QBE?AV?$CArray@K@@ABVCCharString@@J_N@Z	workflow wf13 (landing ey): RELOCATION_MATCH, two PDBs
