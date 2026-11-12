@@ -77,28 +77,38 @@ Never run `cd` into the scratchpad; keep the repo as cwd. Never commit. Never mo
   dtor + `operator delete`; VC evaluates call arguments right to left; a by-value class argument with a user
   copy constructor is built in its stack slot (`push ecx ; mov ecx,esp ; mov [ecx],eax`).
 
-## Stay on task: keep trying to match the real row (user rule, 2026-11-12)
+## Stay on task: one row at a time, until it MATCHES (user rules, 2026-11-12)
 
-The user watches these chunks. Their rule: keep trying to MATCH the row by editing and grading it; do not get stuck testing small
-bits over and over. Recent chunks made about 300 tool calls for about 17 grades, and one row took 96 toy compiles and still did not
-match. Work like this instead:
+The user watches these chunks. Their rules: keep trying to MATCH the row by editing and grading it; do not get stuck testing small
+bits over and over; and **do not switch rows until the row you are on grades as a match. If you skipped a row earlier, go back to
+it.**
 
-1. **Per row, the loop is: read the draft and its residue note -> edit the source -> grade it with q.py -> read the diff -> edit ->
-   grade.** A real grade of the real row is the unit of work. Try your ideas ON THE ROW, not on toys.
-2. **First grade early.** Grade each row within about 12 tool calls of starting it (read draft, read the headers you need, port,
-   grade). Do not study a row for dozens of calls before the first grade.
-3. **Grades are not rationed** (this replaces the old 10-per-row cap): spend up to about 30 grades on a row while each grade tries a
-   NEW idea. Stop a row when 6 grades in a row leave the residue unchanged or you are out of ideas: record the best source with an
-   honest line-2 residue note and start the next row.
-4. **Toy / probe compiles are capped at 5 per row** (toy functions, c2prio runs, spelling sweeps, `/FAs` listings of side files).
-   Each probe must answer one stated question and be followed by a real grade that uses the answer. Never sweep dozens of spellings
-   in a toy: if you want to try a spelling, try it in the row and grade the row.
-5. **Reach EVERY row in the chunk.** Keep an eye on the whole chunk: a row with 0 grades at hand-back breaks this rule.
-6. **No side quests.** Do not build tooling, re-verify landed rows, survey the codebase, re-derive names the brief or the notes
-   already give, or polish documentation mid-chunk. Read only what the current row needs. Write NOTES / LESSONS once, at the end.
-7. **ATTEMPTS.log has one line per grade AND one line per probe** (`<addr> grade N <result> <idea tried>` /
-   `<addr> probe N <question> -> <answer>`), so the ratio is visible. The final report starts with: rows reached, grades, probes,
-   tool calls.
+1. **One row at a time, in the brief's order. You may not start the next row until the current row grades MATCH or
+   RELOCATION_MATCH.** There is no "leave it and move on": a chunk that matches two rows and never opens the rest is fine; a chunk
+   that touches every row and matches none is not.
+2. **If you left a row as DIFFER earlier in this chunk, go back to it now** (earliest first) and stay on it until it matches, before
+   doing anything else.
+3. **Per row, the loop is: read the draft and its residue note -> port onto the shared headers and fix the identities -> grade with
+   q.py -> read the diff -> edit -> grade.** A real grade of the real row is the unit of work. Try your ideas ON THE ROW, not on
+   toys. First grade within about 12 tool calls of starting the row.
+4. **Grades are not rationed.** Keep grading while each grade tries a NEW idea.
+5. **When you feel out of ideas, do not switch rows -- change the level of the idea.** Re-read the retail disassembly of the whole
+   function from the top and re-derive the source structure instead of patching the draft: statement order, which locals exist and
+   where they are declared, scopes and blocks, early returns vs fall-through, which callees are inline (and their real bodies, in the
+   TU or the header), parameter and return types, `const`, signedness, by-value vs by-reference, the class's real base and member
+   types, the TU's pragmas/flags (`/Oy-`, `optimize("s")`, `/Gr`, `/EHsc`). Check every callee and member identity against Ego_r and
+   FableWin again. Read how the nearest landed sibling rows (same class, same TU, same shape) are spelled and copy their idioms.
+   A residue that "looks like a compiler tie" has usually been a wrong source-level fact in this project.
+6. **Toy / probe compiles are capped at 5 per row** (toy functions, c2prio runs, spelling sweeps, `/FAs` listings of side files).
+   Each probe must answer one stated question and be followed by a real grade that uses the answer.
+7. **No side quests.** No tooling, no re-verifying landed rows, no surveys, no polishing documentation mid-chunk. Read only what
+   the current row needs. Write NOTES / LESSONS once, at the end.
+8. **Hand back only when** every row matches, or your working budget is nearly spent while still on a row. In that case hand back
+   with that row's best source, an exact residue note and the list of ideas already tried (so the next agent does not repeat them),
+   and the unopened rows listed as untouched.
+9. **ATTEMPTS.log has one line per grade AND one line per probe** (`<addr> grade N <result> <idea tried>` /
+   `<addr> probe N <question> -> <answer>`). The final report starts with: rows matched, row in progress (grades spent on it),
+   rows untouched, probes, tool calls.
 
 ## Output
 Write `$S/w22/<your-dir>/payload.json` as {"result":{"authored":[ {address, module, name, source_cpp, test_cpp, pass_pattern, flags(optional list)} ... ]}}
