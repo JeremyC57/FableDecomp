@@ -42,6 +42,19 @@ public:
  void SetProximityForArrival(float proximity) {ProximityForArrival=proximity;}
  void SetGoal(const C2DVector &, const C2DVector &);
  bool IsCurrentNavigabilityBetter();
+#ifdef FABLE_RETAIL_CSTEERINGAGENT_ACCESSORS
+ // Retail opt-in (chunk Q17, row 0x00A87700 CSBCAgents::Process): the FableWin.pdb inline accessors (no Ego_r.pdb or Fable.exe copy),
+ // the bodies the landed CSBAgents::Process 0x00A873E0 models: ?GetTarget@CSteeringAgent@@QBEPBV1@XZ (slot 14 GetPThingToNotAvoid),
+ // ?IsPlayer@CSteeringAgent@@QBE_NXZ (slot 20), ?GetPosition@CSteeringAgent@@QBE?AVC2DVector@@XZ (slot 8 PeekNavigatorPosition2D),
+ // ?GetRadius@CSteeringAgent@@QBEM_N@Z (slot 6 PeekNavigatorRadius), ?IsWandering@CSteeringAgent@@QBE_NXZ (+0x5C) and
+ // ?GetAvoidDynamicObstacles@CSteeringAgent@@QBE_NXZ (+0x60). No layout change.
+ const CSteeringAgent* GetTarget() const {return NavigatorInterface->GetPThingToNotAvoid();}
+ bool IsPlayer() const {return NavigatorInterface->IsPlayer();}
+ C2DVector GetPosition() const {return NavigatorInterface->PeekNavigatorPosition2D();}
+ float GetRadius(bool physical) const {return NavigatorInterface->PeekNavigatorRadius(physical);}
+ bool IsWandering() const {return Wandering;}
+ bool GetAvoidDynamicObstacles() const {return AvoidDynamicObstacles;}
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CSteeringAgent)==0x68);
 #endif

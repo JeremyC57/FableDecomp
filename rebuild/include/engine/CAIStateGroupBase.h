@@ -96,6 +96,13 @@ protected:
 #endif
     EAIActionReturn AIAction_PerformActionAndWait(const class CCreatureActionBase& action, bool wait);   // 0x0097DB70
 #endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_PROJECTILESTRAFE) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
+    // Nested opt-in (chunk Q17, row 0x009711D0 CAIStateGroup_CreatureUseCoverBase::MoveIntoCover): Ego_r.pdb
+    // ?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z
+    // (protected; retail 0x0097F3A0), declaration only.
+    EAIActionReturn AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat repeat, C3DVector pos, CIntelligentPointer<const CThing> target,
+        bool& nav_route_calculated, EMovementType movement, bool param);   // 0x0097F3A0
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
     // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): Ego_r.pdb / FableWin.pdb
     // ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z (protected; retail 0x0097DA40).

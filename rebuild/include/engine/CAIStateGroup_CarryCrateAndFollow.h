@@ -8,6 +8,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW
+// Retail opt-in (chunk Q17, row 0x00966030 CAIStateGroup_CarryCrateAndFollow::OnReplace): the polymorphic retail class over
+// CAIStateGroupBase (RTTI .?AVCAIStateGroup_CarryCrateAndFollow@@ : CAIStateGroupBase; Ego_r.pdb members, sizeof 0x38, the same in
+// retail: no container member). OnReplace is Ego_r.pdb ?OnReplace@CAIStateGroup_CarryCrateAndFollow@@UAEXXZ (public virtual, slot 10).
+// Needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS and FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CAIStateGroup_CarryCrateAndFollow : public CAIStateGroupBase {
+public:
+    virtual void OnReplace();                                            // slot 10 0x00966030
+protected:
+    CIntelligentPointer<CThing> PCrate;                                  // +0x14
+    CIntelligentPointer<CThing> PPreviouslyCarriedItem;                  // +0x1c
+    CIntelligentPointer<CThing> PThingToFollow;                          // +0x24
+    bool GotActionPoint;                                                 // +0x2c
+    long ActionPointIndex;                                               // +0x30
+    long PickUpActionID;                                                 // +0x34
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_CarryCrateAndFollow {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -34,4 +56,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, GotActionPoint) 
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, ActionPointIndex) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CarryCrateAndFollow, PickUpActionID) == 0x34);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW
 #endif // FABLE_ENGINE_CAISTATEGROUP_CARRYCRATEANDFOLLOW_H

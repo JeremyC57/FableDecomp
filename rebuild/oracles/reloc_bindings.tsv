@@ -38804,3 +38804,12 @@ __aullrem	00bfebb0	00770e80
 ?SetConsoleTextColour@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	009eaa50	009ed190
 ?_M_insert_overflow@?$vector@W4EGenericVarType@@V?$allocator@W4EGenericVarType@@@std@@@std@@IAEXPAW4EGenericVarType@@ABW43@ABU__false_type@2@I_N@Z	009ef900	009ed190
 ?clear@?$_List_base@VCConsoleCommandLine@@V?$allocator@VCConsoleCommandLine@@@std@@@std@@QAEXXZ	009ee7b0	009ed190
+?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ	006621c0	0093c030
+?IsStillRunnable@CAIStateGroup_SeekScriptTarget@@ABE_NXZ	0093bfa0	0093c030
+?PlayBattleCry@CombatDialogueManager@@QAE_NAAVCThingCreatureBase@@@Z	008af850	0093c030
+??$GetAllThingsInRoughArea@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	008e3eb0	0095b820
+??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z	0095cb80	0095b820
+?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ	0095a420	0095b820
+??0CCreatureAction_DuckAndCover@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@@Z	009717a0	009711d0
+?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z	0097f3a0	009711d0
+?g_SBCAgentsDisabled@@3_NA	013d2d56	00a87700

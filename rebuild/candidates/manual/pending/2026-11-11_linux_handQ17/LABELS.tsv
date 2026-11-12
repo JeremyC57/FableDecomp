@@ -1,0 +1,26 @@
+address	name	evidence
+0x009711D0	?MoveIntoCover@CAIStateGroup_CreatureUseCoverBase@@IAE_NABVC3DVector@@@Z	Ego_r 0x00996020 + FableWin 0x02B85EF0; Q17 RELOCATION_MATCH
+0x00966030	?OnReplace@CAIStateGroup_CarryCrateAndFollow@@UAEXXZ	Ego_r 0x0098A8D0 + FableWin 0x02C3EA30; Q17 RELOCATION_MATCH
+0x00965640	?OnReplace@CAIStateGroup_RecoverStealableItem@@UAEXXZ	Ego_r 0x00989F00 + FableWin 0x02C3C280; Q17 RELOCATION_MATCH
+0x0093C030	?Update@CAIStateGroup_SeekScriptTarget@@UAEXXZ	Ego_r 0x0095F6C0 + FableWin 0x02B813C0; Q17 RELOCATION_MATCH
+0x00795090	?FinalCleanup@CTCUnholyPower@@AAEXXZ	Ego_r 0x0079A190 + FableWin 0x02693670; byte twin of landed CTCDivineWrath::FinalCleanup 0x0078FAF0; Q17 RELOCATION_MATCH
+0x0095B820	?Spawn@CAIStateGroup_HoverHornetQueen@@IAEXXZ	Ego_r 0x00980490 + FableWin 0x02C11E50; Q17 RELOCATION_MATCH
+0x00A87700	?Process@CSBCAgents@@UAE_NPBVCSteeringAgent@@@Z	Ego_r 0x00C42590 + FableWin 0x03482D20; Q17 RELOCATION_MATCH
+0x00555A90	?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z	Ego_r 0x005CED60 + FableWin 0x022ACED0; callees HideComponent/UnhideComponent agree
+0x008BF500	?FinishAction@CCreatureAction_GenericFireProjectileWeapon@@UAEXXZ	Ego_r 0x008F76A0 + FableWin 0x02A02040; vtable 0x0127F384 slot 4
+0x008BF280	?PerformAction@CCreatureAction_GenericFireProjectileWeapon@@UAEXXZ	Ego_r 0x008F73E0 + FableWin 0x02A019F0; vtable 0x0127F384 slot 3
+0x0097F3A0	?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z	Ego_r 0x0084A590 + FableWin 0x02890AB0; call target in RELOCATION_MATCH 0x009711D0
+0x009717A0	??0CCreatureAction_DuckAndCover@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@@Z	Ego_r 0x00996650 + FableWin 0x02B86570; call target in RELOCATION_MATCH 0x009711D0
+0x0093BFA0	?IsStillRunnable@CAIStateGroup_SeekScriptTarget@@ABE_NXZ	Ego_r 0x0095F610 + FableWin 0x02B81150; call target in RELOCATION_MATCH 0x0093C030
+0x0095A420	?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ	Ego_r 0x0097ECE0 + FableWin 0x02C0FEC0; call target in RELOCATION_MATCH 0x0095B820
+0x008AF850	?PlayBattleCry@CombatDialogueManager@@QAE_NAAVCThingCreatureBase@@@Z	Ego_r 0x008EEC70 + FableWin 0x02A473F0; call target in RELOCATION_MATCH 0x0093C030
+0x006621C0	?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ	Ego_r 0x0053D040 + FableWin 0x01D9E200; call target in RELOCATION_MATCH 0x0093C030
+0x0095CB80	??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z	Ego_r 0x00981460 + FableWin 0x02C123A0; call target in RELOCATION_MATCH 0x0095B820
+0x007AF310	?SetHelperCreature@CTCBoss@@QAEXAAVCThingAICreature@@@Z	Ego_r 0x007B0CE0 + FableWin 0x026D14C0; call target in RELOCATION_MATCH 0x0095B820
+0x006925A0	?HasPerformedAction@CCreatureActionBase@@QBE_NXZ	Ego_r 0x00518EF0 + FableWin 0x01DB9210; call target in RELOCATION_MATCH 0x00966030 / 0x00965640
+0x00692620	?GetActionID@CCreatureActionBase@@QBEJXZ	Ego_r 0x00518F80 + FableWin 0x01DB93F0; call target in RELOCATION_MATCH 0x00966030 / 0x00965640
+0x00A141D0	?Rotate@C2DVector@@QAEXM@Z	Ego_r 0x00B81B20 + FableWin 0x031D7400; call target in RELOCATION_MATCH 0x00A87700
+0x007FEF40	?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z	Ego_r 0x007EF000 + FableWin 0x02588640; call target in RELOCATION_MATCH 0x00966030 / 0x00965640
+0x006A19B0	?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z	Ego_r 0x006C6880 + FableWin 0x022163F0; call target in RELOCATION_MATCH 0x00966030 / 0x00965640
+0x006EBDD0	?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	Ego_r 0x00715550 + FableWin 0x0241F8B0
+0x013D2D56	g_SBCAgentsDisabled	DESCRIPTIVE (no original name found in Ego_r/FableWin/FSE/EgoCore): the bool CSBCAgents::Process tests first (0x00A87700) to pass Input straight through

@@ -9,6 +9,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
+// Retail opt-in (chunk Q17, row 0x009711D0 CAIStateGroup_CreatureUseCoverBase::MoveIntoCover): the polymorphic retail class.
+// RTTI (vtable 0x0128D31C): CAIStateGroup_CreatureUseCoverBase : CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase. Members
+// Ego_r.pdb (struct_layouts_egor.tsv, sizeof 0x50) with the retail 12-byte STLport vector (ValidPositionsFound +0x48, PDB +0x4C);
+// PCoverThing sits at +0x1F because the intelligent-pointer classes are byte-packed (engine/CIntelligentPointer.h). CoverList is
+// opaque here (vector<CIntelligentPointer<CThing> >, 0xC). Member functions: the Ego_r.pdb name set (protected, IAE).
+// Needs FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE (+ its CAIStateGroupBase / CIntelligentPointer retail branches) and
+// engine/C3DVector.h. The flattened layout below stays the default.
+#include "engine/CAIStateGroup_EnemyCreatureBase.h"
+#include "engine/C3DVector.h"
+class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBase {
+protected:
+    bool MoveIntoCover(const C3DVector& cover_pos);                      // 0x009711D0 ?MoveIntoCover@CAIStateGroup_CreatureUseCoverBase@@IAE_NABVC3DVector@@@Z
+    bool DuckBehindCover(bool param);                                    // 0x009713E0
+    bool HasDiveAnim;                                                    // +0x1c
+    bool HasJumpOutAnims;                                                // +0x1d
+    bool TimingCritical;                                                 // +0x1e
+    CIntelligentPointer<CThing> PCoverThing;                             // +0x1f
+    unsigned char _pad_0x27[0x1];                                        // +0x27
+    unsigned char CoverList[0xc];                                        // +0x28 vector<CIntelligentPointer<CThing> >
+    bool FailedToFindCover;                                              // +0x34
+    long FailedTime;                                                     // +0x38
+    C3DVector FailedToFindCoverAt;                                       // +0x3c
+    long ValidPositionsFound;                                            // +0x48
+};
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_CreatureUseCoverBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -48,4 +75,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCov
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Z) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, ValidPositionsFound) == 0x48);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATUREUSECOVERBASE_H

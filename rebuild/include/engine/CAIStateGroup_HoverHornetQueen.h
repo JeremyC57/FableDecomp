@@ -9,6 +9,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN
+// Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): the polymorphic retail class. RTTI
+// .?AVCAIStateGroup_HoverHornetQueen@@ : CAIStateGroup_HoverMovementBase : CAIStateGroup_EnemyCreatureBase (PTargetThing +0x14).
+// Members Ego_r.pdb with the retail 12-byte STLport vectors (sizeof 0x68); the two vectors and the direction enum are opaque here.
+// Member functions: the Ego_r.pdb name set (IsStillRunnable 0x0095A420 and Spawn are protected, IAE). Needs
+// FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE and engine/C3DVector.h.
+#include "engine/CAIStateGroup_HoverMovementBase.h"
+#include "engine/C3DVector.h"
+class CThing;
+class CAIStateGroup_HoverHornetQueen : public CAIStateGroup_HoverMovementBase {
+protected:
+    bool IsStillRunnable();                                              // 0x0095A420 ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@IAE_NXZ
+    void Spawn();                                                        // 0x0095B820 ?Spawn@CAIStateGroup_HoverHornetQueen@@IAEXXZ
+    C3DVector StartPos;                                                  // +0x1c
+    C3DVector ArenaCentrePos;                                            // +0x28
+    bool bOneTime;                                                       // +0x34
+    CThing* PEmitter;                                                    // +0x38
+    CThing* PEmitter2;                                                   // +0x3c
+    unsigned char Things[0xc];                                           // +0x40 vector<CIntelligentPointer<CThing> >
+    long CurrentCirclePoint;                                             // +0x4c
+    unsigned char CircleMarkers[0xc];                                    // +0x50 vector<CIntelligentPointer<CThing> >
+    long EnemyKnockDownFrame;                                            // +0x5c
+    bool TimingCritical;                                                 // +0x60
+    unsigned char RouteDirection[0x4];                                   // +0x64 eWaspDirection
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverHornetQueen) == 0x68);
+#else
+
 class CThing;
 
 #pragma pack(push, 1)
@@ -58,4 +86,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueen, EnemyKnockDownFrame
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueen, TimingCritical) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueen, RouteDirection) == 0x64);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEEN
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERHORNETQUEEN_H

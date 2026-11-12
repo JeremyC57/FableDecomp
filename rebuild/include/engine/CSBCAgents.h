@@ -8,6 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSB
+// Retail opt-in (chunk Q17, row 0x00A87700): the polymorphic retail class, RTTI .?AVCSBCAgents@@ : CSBConstraint : CSBInput : CSB.
+// Ego_r.pdb Agents +0x18 (vector<const CSteeringAgent*>*) and ?Process@CSBCAgents@@UAE_NPBVCSteeringAgent@@@Z. Needs stlport/fable_containers.h.
+#include "engine/CSBConstraint.h"
+class CSBCAgents : public CSBConstraint {
+public:
+    virtual bool Process(const CSteeringAgent* agent);                   // 0x00A87700
+protected:
+    std::vector<const CSteeringAgent*>* Agents;                          // +0x18
+};
+FABLE_STATIC_ASSERT(sizeof(CSBCAgents) == 0x1c);
+#else
+
 #pragma pack(push, 1)
 struct CSBCAgents {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -24,4 +37,5 @@ FABLE_STATIC_ASSERT(sizeof(CSBCAgents) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CSBCAgents, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CSBCAgents, Agents) == 0x18);
 
+#endif // FABLE_RETAIL_CSB
 #endif // FABLE_ENGINE_CSBCAGENTS_H

@@ -31,6 +31,11 @@ public:
     bool IsMeleeWeapon() const;                              // 0x005DAA00
     bool IsProjectileWeapon() const;                         // 0x005DAA40
     bool IsUsableBy(const CThing&) const;                    // 0x005DAB10
+#ifdef FABLE_RETAIL_CTCWEAPON_READYPROJECTILE
+    // Retail opt-in (chunk Q17, row 0x008BF500): ?ReadyProjectile@CTCWeapon@@QAEXXZ, out of line at 0x005DA4E0. The name is the landed
+    // binding's (in neither PDB name set). Declaration only.
+    void ReadyProjectile();                                  // 0x005DA4E0
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_TARGETINGRANGE
     // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): Ego_r.pdb ?GetTargetingRange@CTCWeapon@@QBEJXZ (Ego_r
     // 0x0063A6D0), out of line in retail at 0x005DA890 (Ego_r donor order GetTargetingRange / TargetingFOV / IsAnalogueLoading at a

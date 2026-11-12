@@ -187,6 +187,18 @@ protected:
     const CGameDefinitionManager& PeekDefinitionManager() const;       // 0x00692910
     CWorld& GetWorld();                                                  // 0x00692940
 #endif
+#if defined(FABLE_RETAIL_CCREATUREACTIONBASE_HASPERFORMEDACTION) && !defined(FABLE_RETAIL_EXPRESSION_FRAME)
+    // Retail opt-in (chunk Q17, row 0x008BF500): Ego_r.pdb ?HasPerformedAction@CCreatureActionBase@@QBE_NXZ (public const), out of line in
+    // retail at 0x006925A0 (`mov al,[ecx+62h] ; ret`). Declaration only (the EXPRESSION_FRAME opt-in declares the same member).
+public:
+    bool HasPerformedAction() const;                                     // 0x006925A0
+#endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETACTIONID
+    // Retail opt-in (chunk Q17, rows 0x00966030 / 0x00965640 OnReplace): Ego_r.pdb / FableWin.pdb ?GetActionID@CCreatureActionBase@@QBEJXZ
+    // (public), out of line in retail at 0x00692620. Declaration only.
+public:
+    long GetActionID() const;                                            // 0x00692620
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETTHINGMANAGER
     // agentNF16 (row 0x00692980): Ego_r.pdb / FableWin.pdb protected accessor ?GetThingManager@CCreatureActionBase@@IAEAAVCThingManager@@XZ,
     // out of line in retail at 0x00692980 (`add ecx,8 ; call GetPItem 0x00A01B50 ; mov eax,[0x013B8A1C] ; ret`).
@@ -231,6 +243,13 @@ private:
  std::vector<CCountedPointer<NCreatureAction::CActionEventBase>,std::allocator<CCountedPointer<NCreatureAction::CActionEventBase> > > ActionEvents;
  std::map<long,CCharString,std::less<long>,std::allocator<std::pair<long const ,CCharString> > > CutSceneEvents;
  std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > DependentThings;
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETDEPENDENTTHINGS
+ // Retail opt-in (chunk Q17, row 0x008BF500 CCreatureAction_GenericFireProjectileWeapon::FinishAction): FableWin.pdb
+ // ?GetDependentThings@CCreatureActionBase@@IAEAAV?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@XZ
+ // (protected, 0x02A023E0; no Ego_r.pdb or Fable.exe copy: inline, the row reads DependentThings +0x9C / +0xA0 in place).
+protected:
+ std::vector<CIntelligentPointer<CThing> >& GetDependentThings() { return DependentThings; }
+#endif
 #elif defined(FABLE_RETAIL_CCREATUREACTIONBASE_PRECEEDING)
 public:
     // Ego_r221ae public non-const reference accessor; FableWin0281d460.

@@ -1,0 +1,21 @@
+address	name	grade	grades_used	note
+0x009711D0	CAIStateGroup_CreatureUseCoverBase::MoveIntoCover	RELOCATION_MATCH	1	ported onto shared headers (new CREATUREUSECOVERBASE class, DuckAndCover header, PROJECTILESTRAFE, GFGetWorld2DDistance); the this esi/edi swap went away
+0x00966030	CAIStateGroup_CarryCrateAndFollow::OnReplace	RELOCATION_MATCH	1	port + GETSUBDEF_NOINLINE visible GetSubDef body (CDefPointer release loses its null test) + named slot_thing local compared first
+0x00965640	CAIStateGroup_RecoverStealableItem::OnReplace	RELOCATION_MATCH	1	port, sibling spelling of 0x00966030
+0x0093C030	CAIStateGroup_SeekScriptTarget::Update	RELOCATION_MATCH	1	port onto shared headers (CVECTORMAP_INLINE_LOWERBOUND, GFRandom, GetPDialogueDef); do/while action loop
+0x00795090	CTCUnholyPower::FinalCleanup	RELOCATION_MATCH	1	copy of the landed twin 0x0078FAF0 CTCDivineWrath::FinalCleanup spelling with its /d2inlT62 flag
+0x0095B820	CAIStateGroup_HoverHornetQueen::Spawn	RELOCATION_MATCH	1	port + ROUGHAREABODY; named def_index local + filter temporary in the call fixes the 0x13c/0x138 frame
+0x00A87700	CSBCAgents::Process	RELOCATION_MATCH	1	port onto new CSB/CSBConstraint/CKinematic headers; Output.SetVector(...) instead of a CKinematic temporary fixes the x87 tail
+0x008BF500	CCreatureAction_GenericFireProjectileWeapon::FinishAction	DIFFER(412v412)	1	ported; LowerBound key-address scratch register in both GetTC lookups (2x2 instrs)
+0x00555A90	NUISystem::CScrollableList::UpdateVisibleList	DIFFER(595v595)	1	ported; register colouring only (12 hunks / 42 lines)
+0x00805600	CTCTargetingPlayer::FrameUpdate	DIFFER(641v641) (prior)	0	not ported: callee identities 0x0085EE10 / 0x004379D0 unproven
+0x00878430	CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	DIFFER(673v673) (prior)	0	not ported: needs CThingFilter_HasTrackName header + CThingTrackNode type flags
+0x009871C0	CThingSearchTools::GetPFirstThingInRoughArea<CFilter_Bind4<...>,const CThingAICreature>	DIFFER(614v614) (prior)	0	not ported: no shared GetPFirstThingInRoughArea body
+0x00DE3CE0	NScript::CQ_RansomVictimScript::CNPCComment::Main	DIFFER(676v676) (prior)	0	not ported this wave
+0x00649E8B	NPlayerGui::CDrawFishingGame::Draw	DIFFER(469v469) (prior)	0	not ported this wave
+0x0065C5BB	CTCVillage::UpdateMirroredCrimeData	DIFFER(421v421) (prior)	0	not ported this wave
+0x006C1250	CTCBuyableHouse::Update (vfunc 9)	DIFFER(638v638) (prior)	0	not ported this wave
+0x007BD845	NThingShot::CTCShotDefinitionDrainLife::InitMovement	DIFFER(642v642) (prior)	0	not ported this wave
+0x008CDD40	CCreatureAction_ReleaseTimeSpell::FinishAction	DIFFER(430v430) (prior)	0	not ported this wave
+0x008E16A0	NCreatureMode::CModeScreamerSuperAttack::FrameUpdate	DIFFER(552v552) (prior)	0	not ported this wave
+0x0096CD70	CAIStateGroup_EatAtTable::Update	DIFFER(578v578) (prior)	0	not ported this wave

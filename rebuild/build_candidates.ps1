@@ -393185,6 +393185,56 @@ $catalog = @(
         TestSource = '00/95/CAIStateGroupMinionBehaviourCrowdBase_Update_00957db0_test.cpp'
         PassPattern = '00957db0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00795090'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_FinalCleanup_00795090.cpp'
+        TestSource = '00/79/CTCUnholyPower_FinalCleanup_00795090_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT62'
+        PassPattern = '00795090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093c030'
+        Module = 'CAIStateGroup_SeekScriptTarget'
+        Source = '00/93/CAIStateGroupSeekScriptTarget_Update_0093c030.cpp'
+        TestSource = '00/93/CAIStateGroupSeekScriptTarget_Update_0093c030_test.cpp'
+        PassPattern = '0093c030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095b820'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_Spawn_0095b820.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_Spawn_0095b820_test.cpp'
+        PassPattern = '0095b820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00965640'
+        Module = 'CAIStateGroup_RecoverStealableItem'
+        Source = '00/96/CAIStateGroupRecoverStealableItem_OnReplace_00965640.cpp'
+        TestSource = '00/96/CAIStateGroupRecoverStealableItem_OnReplace_00965640_test.cpp'
+        PassPattern = '00965640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00966030'
+        Module = 'CAIStateGroup_CarryCrateAndFollow'
+        Source = '00/96/CAIStateGroupCarryCrateAndFollow_OnReplace_00966030.cpp'
+        TestSource = '00/96/CAIStateGroupCarryCrateAndFollow_OnReplace_00966030_test.cpp'
+        PassPattern = '00966030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009711d0'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/97/CAIStateGroupCreatureUseCoverBase_MoveIntoCover_009711d0.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_MoveIntoCover_009711d0_test.cpp'
+        PassPattern = '009711d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a87700'
+        Module = 'CSBCAgents'
+        Source = '00/a8/CSBCAgents_Process_00a87700.cpp'
+        TestSource = '00/a8/CSBCAgents_Process_00a87700_test.cpp'
+        PassPattern = '00a87700_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

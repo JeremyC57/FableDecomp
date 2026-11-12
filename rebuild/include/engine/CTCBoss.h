@@ -31,6 +31,11 @@ public:
  void ClearEffects();
  void AddEffect(CThing&);
 #endif
+#ifdef FABLE_RETAIL_CTCBOSS_SETHELPER
+ // Retail opt-in (chunk Q17, row 0x0095B820): Ego_r.pdb ?SetHelperCreature@CTCBoss@@QAEXAAVCThingAICreature@@@Z (out of line at
+ // 0x007AF310). Declaration only.
+ void SetHelperCreature(CThingAICreature& helper);                       // 0x007AF310
+#endif
 #ifdef FABLE_RETAIL_CTCBOSS_LIVINGHELPERS
  // Retail opt-in (chunk Q3, rows 0x008E20F0 / 0x008E24F0 CModeGuildmasterPowerUpShield / Speed::FrameUpdate): Ego_r.pdb
  // ?CountLivingHelpers@CTCBoss@@QAEJXZ (retail 0x007AEEC0; the landed Heal FrameUpdate 0x008DFFD0 calls it too). Declaration only.

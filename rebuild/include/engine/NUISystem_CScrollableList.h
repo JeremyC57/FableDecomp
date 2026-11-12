@@ -23,6 +23,16 @@ protected:
     CComponent* PDownArrow;                                         // +0x174
     bool UpArrowActive;                                             // +0x178
     bool DownArrowActive;                                           // +0x179
+#ifdef FABLE_RETAIL_CSCROLLABLELIST_VISIBLELIST
+    // Retail opt-in (Q17, row 0x00555A90 UpdateVisibleList): Ego_r.pdb protected members
+    // ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z (retail 0x00555440, landed),
+    // ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z (retail 0x005556F0, landed) and
+    // ?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z (retail 0x00555A90). Declarations only; no layout change.
+protected:
+    void HideComponent(CComponent* component, float position_time, float fade_time, C2DVector position, unsigned char alpha);
+    void UnhideComponent(CComponent* component, float position_time, float fade_time, C2DVector position);
+    void UpdateVisibleList(float move_time, float fade_time);
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NUISystem::CScrollableList) == 0x17c);

@@ -19,7 +19,8 @@ public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&)
  void UnLockAbilitiyMutex(){AbilityMutexLock=false;CurrentAbility=(EHeroAbility)0;}
  static void FABLE_FASTCALL FadeOrKillEffect(CIntelligentPointer<CThing>&);
 #endif
-#ifdef FABLE_RETAIL_DIVINE_FINALCLEANUP
+#if defined(FABLE_RETAIL_DIVINE_FINALCLEANUP) && !defined(FABLE_RETAIL_CTCUNHOLYPOWER_CANCELFORCUTSCENE)
+ // (chunk Q17, row 0x00795090: the guard lets one TU define both opt-ins; the CANCELFORCUTSCENE branch above declares the same member.)
  static void FABLE_FASTCALL FadeOrKillEffect(CIntelligentPointer<CThing>&);
 #endif
 private:class CUndeadFollower;bool AbilityMutexLock,UsingBed;EHeroAbility CurrentAbility;

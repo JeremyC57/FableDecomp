@@ -8,6 +8,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSB
+// Retail opt-in (chunk Q17, row 0x00A87700 CSBCAgents::Process): the polymorphic retail class (RTTI .?AVCSB@@, no base). Ego_r.pdb:
+// CKinematic Output +0x04, ?ShouldIgnoreAgent@CSB@@QAE_NPBVCSteeringAgent@@00@Z (0x00A87260) and
+// ?GetDistanceBetweenAgents@CSB@@QAEMPBVCSteeringAgent@@0_N@Z (0x00A872F0), both landed; FableWin.pdb ?GetOutput@CSB@@QAEABVC2DVector@@XZ.
+// Virtuals: ?Process@..@@UAE_NPBVCSteeringAgent@@@Z (the derived overrides), ?GetType@..@@UAE?AW4ESB_TYPE@CSB@@XZ, ?Reset@CSB@@UAEXXZ,
+// ?CreateLineList@CSB@@UAEX..@Z; the slot order is not proven here (no row calls them through the vtable), so only Process is
+// declared. Needs engine/CKinematic.h.
+#include "engine/CKinematic.h"
+class CSteeringAgent;
+class CSB {
+public:
+    virtual bool Process(const CSteeringAgent* agent) = 0;
+    const C2DVector& GetOutput() { return Output.GetVector(); }
+    bool ShouldIgnoreAgent(const CSteeringAgent* agent, const CSteeringAgent* other, const CSteeringAgent* target);   // 0x00A87260
+    float GetDistanceBetweenAgents(const CSteeringAgent* agent, const CSteeringAgent* other, bool relative);           // 0x00A872F0
+protected:
+    CKinematic Output;                                                   // +0x04
+};
+FABLE_STATIC_ASSERT(sizeof(CSB) == 0xc);
+#else
+
 #pragma pack(push, 1)
 class CSB {
 public:
@@ -20,4 +41,5 @@ FABLE_STATIC_ASSERT(sizeof(CSB) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CSB, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CSB, Output) == 0x4);
 
+#endif // FABLE_RETAIL_CSB
 #endif // FABLE_ENGINE_CSB_H

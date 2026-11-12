@@ -246,6 +246,15 @@ public:
     void SetSerialisationSectionName(const CCharString& name) { SerialisationSectionName=name; }
 #endif
     void Kill(bool); // Ego_r original public member; native004c9b80.
+#ifdef FABLE_RETAIL_CTHING_LEVELPERSISTENCE
+    // Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): FableWin.pdb ?SetAsLevelPersistent@CThing@@QAEX_N@Z
+    // (0x01CEFC40; no Ego_r.pdb or Fable.exe copy: inline, the bit-4 store into +0x92 at 0x0095B986) and, unless the LOADSINGLE branch
+    // above already declares it, ?IsToKillOnLevelUnload@CThing@@QBE_NXZ (`test byte ptr [ecx+93h],4`, 0x0095B90A). No layout change.
+    void SetAsLevelPersistent(bool persistent) { LevelPersistent=persistent; }
+#if !(defined(FABLE_RETAIL_CTHING_LOADSINGLE) && !defined(FABLE_RETAIL_CTHING_ORIGINAL_VTABLE))
+    bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }
+#endif
+#endif
     CTCBase* AddTC(const CCharString&,bool,const CTCParamsBase*);
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
     const CThingBaseDef& PeekBaseDef() const;                    // inline in retail: body `return *PBaseDef;` defined after CThingBaseDef is complete

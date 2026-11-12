@@ -187,6 +187,11 @@ public:
     // out of line in retail at 0x00662650 (`mov ecx,ebp ; call 0x00662650` before the open-chest SetCurrentAction). Declaration only.
     void FinishCurrentAction();                                          // 0x00662650
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FREETOFINISH
+    // Retail opt-in (chunk Q17, row 0x0093C030): Ego_r.pdb ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ (public const), out of
+    // line in retail at 0x006621C0. Declaration only: no layout change.
+    bool IsFreeToFinishAction() const;                                   // 0x006621C0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
     void AddQueuedAction(const CCreatureActionBase&);
 #endif

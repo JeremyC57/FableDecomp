@@ -80,6 +80,11 @@ public:
     {
         return fabs(X-vector.X)<=DELTA_NOTIONAL_ZERO && fabs(Y-vector.Y)<=DELTA_NOTIONAL_ZERO;
     }
+#ifdef FABLE_RETAIL_C2DVECTOR_ROTATE
+    // Retail opt-in (chunk Q17, row 0x00A87700 CSBCAgents::Process): Ego_r.pdb ?Rotate@C2DVector@@QAEXM@Z (the angle in revolutions:
+    // fpatan, scaled by 1/(2 pi), plus the turn, then fsin / fcos), out of line in retail at 0x00A141D0. Declaration only.
+    void Rotate(float revolutions);                                          // 0x00A141D0
+#endif
 #ifdef FABLE_RETAIL_C2DVECTOR_NORMALISE
     // Retail opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb / FableWin.pdb ?Normalise@C2DVector@@QAEAAV1@XZ
     // (out of line in retail, 0x00A14540, landed; `lea ecx,[esp+38h] ; call 0x00A14540` at 0x00A1C164) and FableWin

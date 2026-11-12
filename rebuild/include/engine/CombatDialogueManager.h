@@ -54,6 +54,16 @@ private:
  // Retail opt-in (chunk 755, row 0x008AF500): Ego_r.pdb ?AttemptToSpeak@CombatDialogueManager@@AAEXXZ (private; declaration only).
  void AttemptToSpeak();
 #endif
+#ifdef FABLE_RETAIL_COMBATDIALOGUEMANAGER_SPEECH
+ // Retail opt-in (chunk Q17, row 0x0093C030 CAIStateGroup_SeekScriptTarget::Update): the FABLE_RETAIL_LEADER_INITIALISE branch's
+ // members, Ego_r.pdb ?SaySpeech@CombatDialogueManager@@QAE_NAAVCThingCreatureBase@@K@Z (0x008AFC40), ?PlayBattleCry@..@@QAE_NAAVCThingCreatureBase@@@Z
+ // (0x008AF850), both out of line, and the inline by-value GetPDialogueDef (the add-ref with a null test, the release whose null test
+ // VC7.1 folds, 0x0093C0EE..0x0093C106; as the landed 0x009713E0 DuckBehindCover). No layout change.
+public:
+ bool SaySpeech(CThingCreatureBase& creature,unsigned long speech);
+ bool PlayBattleCry(CThingCreatureBase& creature);
+ CDefPointer<const CCombatDialogueDef> GetPDialogueDef(){return PDialogueDef;}
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CombatDialogueManager)==0x24);
 #endif

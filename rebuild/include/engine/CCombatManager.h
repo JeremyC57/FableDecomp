@@ -11,8 +11,21 @@ class C3DVector; class CThing; enum ECombatZone;
 #endif
 class CCombatManager:public CBaseClassNonCopyable {
 public:
-#ifdef FABLE_RETAIL_LEADER_INITIALISE
+#if defined(FABLE_RETAIL_LEADER_INITIALISE) || defined(FABLE_RETAIL_CCOMBATMANAGER_DIALOGUE)
+ // FABLE_RETAIL_CCOMBATMANAGER_DIALOGUE (chunk Q17, row 0x0093C030): the same Ego_r.pdb inline accessor
+ // ?GetCombatDialogueManager@CCombatManager@@QAEAAVCombatDialogueManager@@XZ (`lea ecx,[eax+38h]`, 0x0093C11B) without the LEADER opt-in.
  CombatDialogueManager& GetCombatDialogueManager(){return DialogueManager;}
+#endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_ISATTACKING
+ // Retail opt-in (chunk Q17, row 0x008BF500): ?IsCreatureAttacking@CCombatManager@@QAE_NABVCThingCreatureBase@@@Z, out of line at
+ // 0x006E92C0 (the Combatants lookup of the creature's UID, then its AttackerInfo.Attacked). The name is the landed binding's (in neither
+ // PDB name set). Declaration only.
+ bool IsCreatureAttacking(const CThingCreatureBase& creature);           // 0x006E92C0
+#endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_UNSHEATH
+ // Retail opt-in (chunk Q17, row 0x0093C030): Ego_r.pdb ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+ // (out of line at 0x006EBDD0). Declaration only; needs engine/EUnsheatheWeaponType.h.
+ void CreatureUnsheathWeapon(CThingCreatureBase& creature, EUnsheatheWeaponType type);   // 0x006EBDD0
 #endif
  void RegisterCombatant(CThingCreatureBase&,CThingCreatureBase&,bool);
  void DeregisterCombatant(CThingCreatureBase&);

@@ -8,6 +8,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_RECOVERSTEALABLEITEM
+// Retail opt-in (chunk Q17, row 0x00965640 CAIStateGroup_RecoverStealableItem::OnReplace): the polymorphic retail class over
+// CAIStateGroupBase (RTTI .?AVCAIStateGroup_RecoverStealableItem@@ : CAIStateGroupBase; Ego_r.pdb members, sizeof 0x40, the same in
+// retail). OnReplace is Ego_r.pdb ?OnReplace@CAIStateGroup_RecoverStealableItem@@UAEXXZ (public virtual, slot 10).
+// Needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS and FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CAIStateGroup_RecoverStealableItem : public CAIStateGroupBase {
+public:
+    virtual void OnReplace();                                            // slot 10 0x00965640
+protected:
+    CIntelligentPointer<CThing> PStealableItem;                          // +0x14
+    CIntelligentPointer<const CThing> PTargetPoint;                      // +0x1c
+    CIntelligentPointer<CThing> PPreviouslyCarriedItem;                  // +0x24
+    bool GotActionPoint;                                                 // +0x2c
+    long ActionPointIndex;                                               // +0x30
+    bool ReachedDestination;                                             // +0x34
+    long PickUpActionID;                                                 // +0x38
+    bool NeedsCleanup;                                                   // +0x3c
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_RecoverStealableItem) == 0x40);
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_RecoverStealableItem {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -40,4 +64,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RecoverStealableItem, ReachedDestinat
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RecoverStealableItem, PickUpActionID) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RecoverStealableItem, NeedsCleanup) == 0x3c);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_RECOVERSTEALABLEITEM
 #endif // FABLE_ENGINE_CAISTATEGROUP_RECOVERSTEALABLEITEM_H

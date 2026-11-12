@@ -16,4 +16,15 @@ inline bool FABLE_FASTCALL GFWorld3DDistanceSmallerThan(const C3DVector& pos1,co
  return sqr_dist<sqr_comp;
 }
 #endif
+#ifdef FABLE_RETAIL_GFGETWORLD2DDISTANCE
+// Retail opt-in (chunk Q17, row 0x009711D0): FableWin.pdb ?GFGetWorld2DDistance@@YIMABVC3DVector@@0@Z (0x025B03E0), inline in
+// retail (0x0097131E: Y difference, then X difference, both squared, fsqrt). Same local-style body as GFWorld2DDistanceSmallerThan.
+#include <math.h>
+inline float FABLE_FASTCALL GFGetWorld2DDistance(const C3DVector& pos1,const C3DVector& pos2) {
+ float dy=pos1.Y-pos2.Y;
+ float dx=pos1.X-pos2.X;
+ float sqr_dist=dx*dx+dy*dy;
+ return (float)sqrt(sqr_dist);
+}
+#endif
 #endif
