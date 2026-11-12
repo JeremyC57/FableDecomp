@@ -10,7 +10,7 @@
 //   0x004365B0 (PeekTC, TCI_ENTITY_MODE_MANAGER 49), CTCCreatureModeManager::GetCurrentMode() const 0x0073A6E0 (CModeBase slot 1
 //   GetType), CThingCreatureBase::FinishCurrentAction 0x00662650 / GetRandomAnimFromNameWithFilter 0x00662EF0 / SetCurrentAction
 //   0x006644F0, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CDefString::GetString 0x00415DD0, operator new
-//   0x00BFEA1A, NCreatureMode::CModeSitFloor ctor 0x008AC3C0, CCountedPointer<NCreatureMode::CModeSitBase> ctor 0x008AB380 /
+//   0x00BFEA1A, NCreatureMode::CModeSitFloor ctor 0x008AC3C0, CCountedPointer<NCreatureMode::CModeSitFloor> ctor 0x008AB380 /
 //   dtor 0x008AB3D0, CCreatureAction_SitDown ctor 0x008AB9D0 / dtor 0x008ABAA0, CCreatureAction_GetUpFromSitting ctor 0x00860150,
 //   ~CCombatActionBase 0x0062E900; CAnimFilterAnyGroup vtable 0x0127261C (inline ctor / dtor).
 // Model: shared headers (overlay: new CCreatureAction_GetUpFromSitting.h, CAnimFilterAnyGroup.h, NCreatureMode_CModeSitFloor.h;
@@ -18,10 +18,14 @@
 // Shape: the mode-manager pointer is uninitialised (the absent-component path reads the stale slot, as retail 0x008A8CD6); the
 //   sit mode's group name is the implicit CDefString -> CCharString conversion, its forwarder expanded around the out-of-line
 //   GetString (retail takes the temporary's address after the call, 0x008A8D5E, and sets the conditional-destroy flag after it;
-//   an explicit GetString() pushes the call's eax and sets the flag first); the CCountedPointer<CModeSitBase> ctor
+//   an explicit GetString() pushes the call's eax and sets the flag first); the CCountedPointer<CModeSitFloor> ctor
 //   and dtor are retail's same-TU COMDATs (0x008AB380 / 0x008AB3D0) called, not expanded, with visible bodies (VISIBLE_CALLED_CTOR /
 //   _DTOR): only then does VC7.1 pack the sit mode into the dead name temporary's slot (frame 0x12C, not 0x130) and copy it into
 //   the by-value argument without re-reading Info (local-model park: DIFFER(472v472) frame slots).
+// Name fix (agentNF27, 2026-11-12, RELOC_CONFLICT land1011dn): the floor mode is held in a CCountedPointer<NCreatureMode::CModeSitFloor>
+//   (0x008AB380 / 0x008AB3D0 store / free DeleteData<CModeSitFloor> 0x008AA810; CCountedPointer<CModeSitBase>'s ctor and dtor are
+//   0x0094B3A0 / 0x008AB320); SitDown's by-value CCountedPointer<CModeSitBase> is built by the header's converting member template
+//   (FableWin.pdb ??$?0VCModeSitFloor@NCreatureMode@@@?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@ABV?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@@Z).
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CCLASS
@@ -74,7 +78,7 @@ void CGameScriptInterface::EntitySetAsSittingOnFloor(const CScriptThing& thing, 
             return;
         creature->FinishCurrentAction();
         const CAnimationEntry& anim = creature->GetRandomAnimFromNameWithFilter("ST_SIT_ON_FLOOR", CAnimFilterAnyGroup());
-        CCountedPointer<NCreatureMode::CModeSitBase> sitMode(new NCreatureMode::CModeSitFloor(*creature, anim.GroupName));
+        CCountedPointer<NCreatureMode::CModeSitFloor> sitMode(new NCreatureMode::CModeSitFloor(*creature, anim.GroupName));
         creature->SetCurrentAction(CCreatureAction_SitDown(*creature, anim, sitMode));
     }
     else {

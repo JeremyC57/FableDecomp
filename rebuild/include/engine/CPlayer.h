@@ -181,6 +181,12 @@ public:
     // ...QAEXJ@Z are long-typed stand-ins, as AddMode above). Declaration only.
     void RemoveMode(EPlayerMode mode);                           // 0x00634190
 #endif
+#ifdef FABLE_RETAIL_PLAYER_INITIALISEIFUNINITIALISED
+    // Nested opt-in (agentNF27, 2026-11-12, row 0x006E7630 CScriptGameResourceObjectMovie ctor): Ego_r.pdb (0x004955E0) and
+    // FableWin.pdb (0x01ACEE50) ?InitialiseIfUninitialised@CPlayer@@QAEXXZ, out of line in retail at 0x00488A80 (the row's
+    // `mov ecx,edi ; call 0x00488A80` on GetPlayer's result). Declaration only.
+    void InitialiseIfUninitialised();                            // 0x00488A80
+#endif
 #ifdef FABLE_RETAIL_PLAYER_FREEZECONTROLS
     // Nested opt-in (agentFAM10, 2026-11-12): Ego_r.pdb (0x00492870 / 0x00492890 / 0x004928A0 / 0x004928C0) and FableWin.pdb
     // (0x01ACA940 / 0x01ACAAC0 / 0x01ACAAE0 / 0x01ACAB10) ?UnfreezeControls / ?FreezeControls / ?SpecialAbilityUnfreezeControls /

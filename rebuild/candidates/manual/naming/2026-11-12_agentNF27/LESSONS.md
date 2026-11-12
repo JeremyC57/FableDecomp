@@ -1,0 +1,5 @@
+- reloc_bindings.tsv lists only the first caller per symbol; a source grep plus a baseline grade of every caller is what finds stand-in binders.
+- A chained `a->Get().Method(args)` lets VC7.1 push the args before the getter call; retail's getter-first order needs a named reference local.
+- Overlay headers go stale while other chunks land: diff each overlay copy against the repo (`<` lines) before hand-back and re-base.
+- Plain function declarations mangle without template args; declare STL helpers as templates (fill_n) to get the retail ??$ spelling.
+- When a shared header and a sibling opt-in both declare a member, guard the second declaration with #ifndef on the first macro.

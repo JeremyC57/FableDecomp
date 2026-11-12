@@ -82,3 +82,9 @@
 - (chunk Q23, 2026-11-12) Toy compiles (asm listing of one PROC, no grade spent) are the cheap way to sweep spellings for a register/scheduling residue.
 - (chunk Q23, 2026-11-12) The ForEachInRoughArea post-node-loop reload order (retail TLX,BRX,BRY,map; ours BRX,BRY,map,TLX) survived 20 spellings here and on Q19's twin 0x008780D0: likely needs the real CThingSearchTools body/inline structure, not a local spelling.
 - (chunk Q23, 2026-11-12) Every ForEachInRoughArea instance in Ego_r/FableWin is QBE with `const Proc&`; finders keep running state in mutable members.
+- (agentNF27, 2026-11-12) reloc_bindings.tsv lists only the first caller per symbol; a source grep plus a baseline grade of every caller is what finds stand-in binders.
+- (agentNF27, 2026-11-12) A chained `a->Get().Method(args)` lets VC7.1 push the args before the getter call; retail's getter-first order needs a named reference local.
+- (agentNF27, 2026-11-12) Overlay headers go stale while other chunks land: diff each overlay copy against the repo (`<` lines) before hand-back and re-base.
+- (agentNF27, 2026-11-12) Plain function declarations mangle without template args; declare STL helpers as templates (fill_n) to get the retail ??$ spelling.
+- (agentNF27, 2026-11-12) When a shared header and a sibling opt-in both declare a member, guard the second declaration with #ifndef on the first macro.
+- (landing dq, 2026-11-12) Check a hand-back RENAMES section 1 before batch_rerow: the name column must be the method only. `Class::Method` there produces doubled catalog names (`CPlayer::CPlayer::FreezeControls`).

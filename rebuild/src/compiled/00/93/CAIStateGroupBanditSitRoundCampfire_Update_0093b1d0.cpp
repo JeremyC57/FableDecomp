@@ -1,5 +1,10 @@
 // CAIStateGroup_BanditSitRoundCampfire::Update() -- claim a free seat at the campfire, walk to it, face the fire, sheathe any weapon and sit on the floor
 // Leaf: ?Update@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ
+// Name fix (agentNF27, 2026-11-12, RELOC_CONFLICT land1011dn): the floor mode is held in a CCountedPointer<NCreatureMode::CModeSitFloor>:
+//   0x008AB380 / 0x008AB3D0 are CCountedPointer<CModeSitFloor>'s (T*) ctor and dtor (they store / free DeleteData 0x008AA810, the
+//   deleter 0x0090F830 stores next to `new CModeSitFloor`), while CCountedPointer<CModeSitBase>'s are 0x0094B3A0 / 0x008AB320
+//   (0x0096CD70); FableWin.pdb has the converting copy CCountedPointer<CModeSitBase>(const CCountedPointer<CModeSitFloor>&) that
+//   builds SitDown's by-value argument.
 // Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000); the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 //
@@ -13,7 +18,7 @@
 // CTCCreatureNavigation (TC 7, const LowerBound 0x004365B0) says it is navigable; GotSeatPos; MoveToPos; LookAtPos
 // (pos + seat forward); if carrying a weapon, PerformActionAndWait(CCreatureAction_SheatheWeapons); then a random
 // "ST_SIT_ON_FLOOR" anim (CAnimFilterAnyGroup), a CModeSitFloor on the anim's group wrapped in a
-// CCountedPointer<NCreatureMode::CModeSitBase>, Sitting, PerformAction(CCreatureAction_SitDown), SitMain, Terminate.
+// CCountedPointer<NCreatureMode::CModeSitFloor> (passed to SitDown as a CCountedPointer<CModeSitBase>), Sitting, PerformAction(CCreatureAction_SitDown), SitMain, Terminate.
 // Every failing step is `Terminate(); return;`.
 //
 // Callees: CWorld::GetFrame 0x0049D870, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap LowerBound
@@ -24,13 +29,13 @@
 // CCreatureAction_SheatheWeapons ctor 0x008CC370, AIAction_PerformActionAndWait 0x0097DB70, ~CCombatActionBase
 // 0x0062E900, CThingCreatureBase::GetRandomAnimFromNameWithFilter 0x00662EF0, operator new 0x00BFEA1A,
 // CDefStringTable::GetString 0x009D49B0, CModeSitBase ctor 0x008D7CA0, CCharString ctor/operator=/dtor
-// 0x0099E4B0/0x0099EFB0/0x0099EAE0, CCRC::Calc 0x004014A0, CCountedPointer<CModeSitBase> ctor 0x008AB380 / dtor
+// 0x0099E4B0/0x0099EFB0/0x0099EAE0, CCRC::Calc 0x004014A0, CCountedPointer<CModeSitFloor> ctor 0x008AB380 / dtor
 // 0x008AB3D0, CCreatureAction_SitDown ctor 0x008AB9D0 / dtor 0x008ABAA0, AIAction_PerformAction 0x0097D8B0,
 // SitMain 0x0093AD70, CAIStateGroupBase::Terminate 0x008FCF40.
 //
 // Shape notes: the frame packing (one 12-byte slot at esp+0x10 shared by the TC keys, the C2DVector temps, the seat
 // offset, `forward`, the filter temporary and `sitMode`) only comes out with same-TU noinline stand-ins for the
-// CCountedPointer<CModeSitBase> ctor and dtor (GOTCHAS R&D I-3); with them declared only, `sitMode` keeps its own
+// CCountedPointer<CModeSitFloor> ctor and dtor (GOTCHAS R&D I-3); with them declared only, `sitMode` keeps its own
 // slot and the frame is 0x170. The stand-in bodies follow retail 0x008AB380 / 0x008AB3D0 and are not graded.
 // [esp+0x20] is the conditional-temporary flag word (bit0 the SheatheWeapons temporary, bit1 the CCharString from
 // the anim's GroupName inside the new-expression). 0x013BB704 is (anonymous namespace)::SIT_ON_FLOOR_ANIM_NAME
@@ -217,8 +222,8 @@ template <class T> class CCountedPointer {
 public:
     T*              Data;
     CCPPointerInfo* Info;
-    static void __fastcall DeleteData(void* data);      // 0x008AA810 (<CModeSitBase>)
-    __declspec(noinline) CCountedPointer(T* data)       // 0x008AB380 (<CModeSitBase>), same-TU stand-in
+    static void __fastcall DeleteData(void* data);      // 0x008AA810 (<CModeSitFloor>)
+    __declspec(noinline) CCountedPointer(T* data)       // 0x008AB380 (<CModeSitFloor>), same-TU stand-in
     {
         Data = data;
         if (data) {
@@ -233,7 +238,10 @@ public:
             Info = 0;
     }
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __declspec(noinline) ~CCountedPointer()             // 0x008AB3D0 (<CModeSitBase>), same-TU stand-in
+    // FableWin.pdb ??$?0VCModeSitFloor@NCreatureMode@@@?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@ABV?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@@Z:
+    // the converting copy (inline here, as engine/CCountedPointer.h's member template)
+    template <class U> CCountedPointer(const CCountedPointer<U>& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    __declspec(noinline) ~CCountedPointer()             // 0x008AB3D0 (<CModeSitFloor>), same-TU stand-in
     {
         if (Info) {
             --Info->RefCount;
@@ -380,7 +388,7 @@ void CAIStateGroup_BanditSitRoundCampfire::Update()
         return;
     }
     const CAnimationEntry& anim = GetCreature().GetRandomAnimFromNameWithFilter(SIT_ON_FLOOR_ANIM_NAME, CAnimFilterAnyGroup());
-    CCountedPointer<NCreatureMode::CModeSitBase> sitMode(new NCreatureMode::CModeSitFloor(GetCreature(), anim.GroupName));
+    CCountedPointer<NCreatureMode::CModeSitFloor> sitMode(new NCreatureMode::CModeSitFloor(GetCreature(), anim.GroupName));
     Sitting = true;
     if (AIAction_PerformAction(CCreatureAction_SitDown(GetCreature(), anim, sitMode)) != 2) {
         Terminate();

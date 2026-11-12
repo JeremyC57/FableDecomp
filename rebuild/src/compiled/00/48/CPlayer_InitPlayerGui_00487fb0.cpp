@@ -30,12 +30,17 @@ class CPlayerGui { public:
     void Open();                                            // 0x004374B0
 };
 
-struct CPlayerGuiHolder {                                   // the global owning pointer @ 0x013B8790
-    CPlayerGui* m_pGui;
-    void Reset(CPlayerGui* gui);                            // 0x004195AF
-    CPlayerGui* operator->() const { return m_pGui; }
-};
-extern CPlayerGuiHolder g_PlayerGui;                        // 0x013B8790
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the global owning pointer @ 0x013B8790 is
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass (established ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A,
+//   Ego_r / FableWin `dynamic initializer for 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass''), set through the inline static Set
+//   (FableWin.pdb ?Set@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIXPAVCPlayerGui@@@Z, FABLE_RETAIL_SINGLETON_SET) = its out-of-line
+//   Reset 0x004195AF, FableWin.pdb ?Reset@?$CCountedPointer@VCPlayerGui@@@@QAEXPAVCPlayerGui@@@Z (stores DeleteData<CPlayerGui> 0x00419091;
+//   declared only here, FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL), and read back through the inline Get
+//   (?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ). Were the stand-ins g_PlayerGui / CPlayerGuiHolder::Reset.
+#define FABLE_RETAIL_SINGLETON_SET
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
 
 struct CPlayer_Methods : CPlayer {
     void InitPlayerGui();
@@ -47,8 +52,8 @@ void CPlayer_Methods::InitPlayerGui()
     if (number == reinterpret_cast<CPlayerManagerCalls*>(PlayerManager)->GetMainPlayerNumber()) {
         CGamePlayerInterface* playerInterface;
         CGraphicDataBank* bank;
-        g_PlayerGui.Reset(new CPlayerGui(Component, World, playerInterface = PlayerInterface, PlayerManager,
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(new CPlayerGui(Component, World, playerInterface = PlayerInterface, PlayerManager,
                                          bank = reinterpret_cast<CMainGameComponentBank*>(Component)->GraphicDataBank));
-        g_PlayerGui->Open();
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
     }
 }

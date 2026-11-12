@@ -3552,9 +3552,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004516e7'
-        Module = 'CTCEnemy'
-        Source = '00/45/CTCEnemy_SetFaction_004516e7.cpp'
-        TestSource = '00/45/CTCEnemy_SetFaction_004516e7_test.cpp'
+        Module = 'std::vector<float,std::allocator<float> >'
+        Source = '00/45/stdvector_vector_004516e7.cpp'
+        TestSource = '00/45/stdvector_vector_004516e7_test.cpp'
         PassPattern = 'CTCEnemy_004516e7_TEST PASS'
     }
     [pscustomobject]@{
@@ -28697,9 +28697,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008aa810'
-        Module = '_global'
-        Source = '00/8a/global_DeleteData_008aa810.cpp'
-        TestSource = '00/8a/global_DeleteData_008aa810_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitFloor>'
+        Source = '00/8a/CCountedPointer_DeleteData_008aa810.cpp'
+        TestSource = '00/8a/CCountedPointer_DeleteData_008aa810_test.cpp'
         PassPattern = 'AUTO_TINY_008aa810_TEST PASS'
     }
     [pscustomobject]@{
@@ -34150,9 +34150,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a12890'
-        Module = 'CMainGameComponent'
-        Source = '00/a1/CMainGameComponent_BeginInputLoading_00a12890.cpp'
-        TestSource = '00/a1/CMainGameComponent_BeginInputLoading_00a12890_test.cpp'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_IsPointContainedInBoundingBox_00a12890.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_IsPointContainedInBoundingBox_00a12890_test.cpp'
         PassPattern = '00a12890_TEST PASS'
     }
     [pscustomobject]@{
@@ -85121,16 +85121,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008ab320'
-        Module = '_global'
-        Source = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab320.cpp'
-        TestSource = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab320_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitBase>'
+        Source = '00/8a/CCountedPointer_CCountedPointer_008ab320.cpp'
+        TestSource = '00/8a/CCountedPointer_CCountedPointer_008ab320_test.cpp'
         PassPattern = 'PASS_008ab320'
     }
     [pscustomobject]@{
         Address = '008ab3d0'
-        Module = '_global'
-        Source = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab3d0.cpp'
-        TestSource = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab3d0_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitFloor>'
+        Source = '00/8a/CCountedPointer_CCountedPointer_008ab3d0.cpp'
+        TestSource = '00/8a/CCountedPointer_CCountedPointer_008ab3d0_test.cpp'
         PassPattern = 'PASS_008ab3d0'
     }
     [pscustomobject]@{
@@ -93564,16 +93564,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00449a30'
-        Module = 'CEngine'
-        Source = '00/44/CEngine_GetEditorAnimation_00449a30.cpp'
-        TestSource = '00/44/CEngine_GetEditorAnimation_00449a30_test.cpp'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_FreezePlayerControls_00449a30.cpp'
+        TestSource = '00/44/CPlayerManager_FreezePlayerControls_00449a30_test.cpp'
         PassPattern = 'PASS_00449a30'
     }
     [pscustomobject]@{
         Address = '00449a50'
-        Module = 'CEngine'
-        Source = '00/44/CEngine_GetEditorAnimation_00449a50.cpp'
-        TestSource = '00/44/CEngine_GetEditorAnimation_00449a50_test.cpp'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_UnfreezePlayerControls_00449a50.cpp'
+        TestSource = '00/44/CPlayerManager_UnfreezePlayerControls_00449a50_test.cpp'
         PassPattern = 'PASS_00449a50'
     }
     [pscustomobject]@{
@@ -105003,9 +105003,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00938060'
-        Module = '_gapscan'
-        Source = '00/93/gapscan_sub00938060_00938060.cpp'
-        TestSource = '00/93/gapscan_sub00938060_00938060_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitBase>'
+        Source = '00/93/CCountedPointer_DeleteData_00938060.cpp'
+        TestSource = '00/93/CCountedPointer_DeleteData_00938060_test.cpp'
         PassPattern = 'PASS_00938060'
     }
     [pscustomobject]@{
@@ -148881,9 +148881,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040f1b0'
-        Module = 'CCountedPointer_0040d830'
-        Source = '00/40/CCountedPointer0040d830_Reset_0040f1b0.cpp'
-        TestSource = '00/40/CCountedPointer0040d830_Reset_0040f1b0_test.cpp'
+        Module = 'CCountedPointer<CUserProfileManager>'
+        Source = '00/40/CCountedPointer_Reset_0040f1b0.cpp'
+        TestSource = '00/40/CCountedPointer_Reset_0040f1b0_test.cpp'
         PassPattern = '0040f1b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -149273,9 +149273,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00938070'
-        Module = 'CCountedPointer_00938060'
-        Source = '00/93/CCountedPointer00938060_Reset_00938070.cpp'
-        TestSource = '00/93/CCountedPointer00938060_Reset_00938070_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitBase>'
+        Source = '00/93/CCountedPointer_Reset_00938070.cpp'
+        TestSource = '00/93/CCountedPointer_Reset_00938070_test.cpp'
         PassPattern = '00938070_TEST PASS'
     }
     [pscustomobject]@{
@@ -149301,30 +149301,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a6fd0'
-        Module = 'CCountedPointer_009a6ba0'
-        Source = '00/9a/CCountedPointer009a6ba0_Reset_009a6fd0.cpp'
-        TestSource = '00/9a/CCountedPointer009a6ba0_Reset_009a6fd0_test.cpp'
+        Module = 'CCountedPointer<CDisplayManager>'
+        Source = '00/9a/CCountedPointer_Reset_009a6fd0.cpp'
+        TestSource = '00/9a/CCountedPointer_Reset_009a6fd0_test.cpp'
         PassPattern = '009a6fd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009a7180'
-        Module = 'CCountedPointer_009a6bd0'
-        Source = '00/9a/CCountedPointer009a6bd0_Reset_009a7180.cpp'
-        TestSource = '00/9a/CCountedPointer009a6bd0_Reset_009a7180_test.cpp'
+        Module = 'CCountedPointer<CInputManager>'
+        Source = '00/9a/CCountedPointer_Reset_009a7180.cpp'
+        TestSource = '00/9a/CCountedPointer_Reset_009a7180_test.cpp'
         PassPattern = '009a7180_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009a71f0'
-        Module = 'CCountedPointer_009a6be0'
-        Source = '00/9a/CCountedPointer009a6be0_Reset_009a71f0.cpp'
-        TestSource = '00/9a/CCountedPointer009a6be0_Reset_009a71f0_test.cpp'
+        Module = 'CCountedPointer<CGraphicBankManager>'
+        Source = '00/9a/CCountedPointer_Reset_009a71f0.cpp'
+        TestSource = '00/9a/CCountedPointer_Reset_009a71f0_test.cpp'
         PassPattern = '009a71f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009a7260'
-        Module = 'CCountedPointer_009a6bf0'
-        Source = '00/9a/CCountedPointer009a6bf0_Reset_009a7260.cpp'
-        TestSource = '00/9a/CCountedPointer009a6bf0_Reset_009a7260_test.cpp'
+        Module = 'CCountedPointer<CMeshBankManager>'
+        Source = '00/9a/CCountedPointer_Reset_009a7260.cpp'
+        TestSource = '00/9a/CCountedPointer_Reset_009a7260_test.cpp'
         PassPattern = '009a7260_TEST PASS'
     }
     [pscustomobject]@{
@@ -149336,16 +149336,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a7340'
-        Module = 'CCountedPointer_009a6c10'
-        Source = '00/9a/CCountedPointer009a6c10_Reset_009a7340.cpp'
-        TestSource = '00/9a/CCountedPointer009a6c10_Reset_009a7340_test.cpp'
+        Module = 'CCountedPointer<CFontManager>'
+        Source = '00/9a/CCountedPointer_Reset_009a7340.cpp'
+        TestSource = '00/9a/CCountedPointer_Reset_009a7340_test.cpp'
         PassPattern = '009a7340_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009a73d0'
-        Module = 'CCountedPointer_009a6c20'
-        Source = '00/9a/CCountedPointer009a6c20_Reset_009a73d0.cpp'
-        TestSource = '00/9a/CCountedPointer009a6c20_Reset_009a73d0_test.cpp'
+        Module = 'CCountedPointer<CDriveManager>'
+        Source = '00/9a/CCountedPointer_Reset_009a73d0.cpp'
+        TestSource = '00/9a/CCountedPointer_Reset_009a73d0_test.cpp'
         PassPattern = '009a73d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -149364,16 +149364,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a002e0'
-        Module = 'CCountedPointer_009ffd20'
-        Source = '00/a0/CCountedPointer009ffd20_Reset_00a002e0.cpp'
-        TestSource = '00/a0/CCountedPointer009ffd20_Reset_00a002e0_test.cpp'
+        Module = 'CCountedPointer<CTextureManager>'
+        Source = '00/a0/CCountedPointer_Reset_00a002e0.cpp'
+        TestSource = '00/a0/CCountedPointer_Reset_00a002e0_test.cpp'
         PassPattern = '00a002e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a01aa0'
-        Module = 'CCountedPointer_00a018d0'
-        Source = '00/a0/CCountedPointer00a018d0_Reset_00a01aa0.cpp'
-        TestSource = '00/a0/CCountedPointer00a018d0_Reset_00a01aa0_test.cpp'
+        Module = 'CCountedPointer<CCRCSymbolMap>'
+        Source = '00/a0/CCountedPointer_Reset_00a01aa0.cpp'
+        TestSource = '00/a0/CCountedPointer_Reset_00a01aa0_test.cpp'
         PassPattern = '00a01aa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -149385,9 +149385,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a29800'
-        Module = 'CCountedPointer_00a281b0'
-        Source = '00/a2/CCountedPointer00a281b0_Reset_00a29800.cpp'
-        TestSource = '00/a2/CCountedPointer00a281b0_Reset_00a29800_test.cpp'
+        Module = 'CCountedPointer<C3DAnimationManager>'
+        Source = '00/a2/CCountedPointer_Reset_00a29800.cpp'
+        TestSource = '00/a2/CCountedPointer_Reset_00a29800_test.cpp'
         PassPattern = '00a29800_TEST PASS'
     }
     [pscustomobject]@{
@@ -149406,9 +149406,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a29f50'
-        Module = 'CCountedPointer_00a28510'
-        Source = '00/a2/CCountedPointer00a28510_Reset_00a29f50.cpp'
-        TestSource = '00/a2/CCountedPointer00a28510_Reset_00a29f50_test.cpp'
+        Module = 'CCountedPointer<C3DQuadricBasedMeshOptimiser>'
+        Source = '00/a2/CCountedPointer_Reset_00a29f50.cpp'
+        TestSource = '00/a2/CCountedPointer_Reset_00a29f50_test.cpp'
         PassPattern = '00a29f50_TEST PASS'
     }
     [pscustomobject]@{
@@ -149651,9 +149651,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b3e4a0'
-        Module = 'CCountedPointer_00b3e070'
-        Source = '00/b3/CCountedPointer00b3e070_Reset_00b3e4a0.cpp'
-        TestSource = '00/b3/CCountedPointer00b3e070_Reset_00b3e4a0_test.cpp'
+        Module = 'CCountedPointer<CMovableResourceMemoryPool>'
+        Source = '00/b3/CCountedPointer_Reset_00b3e4a0.cpp'
+        TestSource = '00/b3/CCountedPointer_Reset_00b3e4a0_test.cpp'
         PassPattern = '00b3e4a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -149931,9 +149931,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007642c0'
-        Module = 'CCountedPointer_00763a10'
-        Source = '00/76/CCountedPointer00763a10_Reset_007642c0.cpp'
-        TestSource = '00/76/CCountedPointer00763a10_Reset_007642c0_test.cpp'
+        Module = 'CCountedPointer<NShape::CShape>'
+        Source = '00/76/CCountedPointer_Reset_007642c0.cpp'
+        TestSource = '00/76/CCountedPointer_Reset_007642c0_test.cpp'
         PassPattern = '007642c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -149952,9 +149952,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00834e40'
-        Module = 'CCountedPointer_00834a10'
-        Source = '00/83/CCountedPointer00834a10_Reset_00834e40.cpp'
-        TestSource = '00/83/CCountedPointer00834a10_Reset_00834e40_test.cpp'
+        Module = 'CCountedPointer<CAIBrain>'
+        Source = '00/83/CCountedPointer_Reset_00834e40.cpp'
+        TestSource = '00/83/CCountedPointer_Reset_00834e40_test.cpp'
         PassPattern = '00834e40_TEST PASS'
     }
     [pscustomobject]@{
@@ -150036,9 +150036,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a29fc0'
-        Module = 'CCountedPointer_00a28520'
-        Source = '00/a2/CCountedPointer00a28520_Reset_00a29fc0.cpp'
-        TestSource = '00/a2/CCountedPointer00a28520_Reset_00a29fc0_test.cpp'
+        Module = 'CCountedPointer<C3DMeshStripifier>'
+        Source = '00/a2/CCountedPointer_Reset_00a29fc0.cpp'
+        TestSource = '00/a2/CCountedPointer_Reset_00a29fc0_test.cpp'
         PassPattern = '00a29fc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -150120,9 +150120,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ab5e80'
-        Module = 'CCountedPointer_00ab5df0'
-        Source = '00/ab/CCountedPointer00ab5df0_Reset_00ab5e80.cpp'
-        TestSource = '00/ab/CCountedPointer00ab5df0_Reset_00ab5e80_test.cpp'
+        Module = 'CCountedPointer<CSurface>'
+        Source = '00/ab/CCountedPointer_Reset_00ab5e80.cpp'
+        TestSource = '00/ab/CCountedPointer_Reset_00ab5e80_test.cpp'
         PassPattern = '00ab5e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -150155,9 +150155,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af6010'
-        Module = 'CCountedPointer_00af5cd0'
-        Source = '00/af/CCountedPointer00af5cd0_Reset_00af6010.cpp'
-        TestSource = '00/af/CCountedPointer00af5cd0_Reset_00af6010_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CPSCBase>'
+        Source = '00/af/CCountedPointer_Reset_00af6010.cpp'
+        TestSource = '00/af/CCountedPointer_Reset_00af6010_test.cpp'
         PassPattern = '00af6010_TEST PASS'
     }
     [pscustomobject]@{
@@ -150197,9 +150197,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b82a50'
-        Module = 'CCountedPointer_00b825d0'
-        Source = '00/b8/CCountedPointer00b825d0_Reset_00b82a50.cpp'
-        TestSource = '00/b8/CCountedPointer00b825d0_Reset_00b82a50_test.cpp'
+        Module = 'CCountedPointer<CParticleSimulation>'
+        Source = '00/b8/CCountedPointer_Reset_00b82a50.cpp'
+        TestSource = '00/b8/CCountedPointer_Reset_00b82a50_test.cpp'
         PassPattern = '00b82a50_TEST PASS'
     }
     [pscustomobject]@{
@@ -150302,9 +150302,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008ab380'
-        Module = 'CCountedPointer_008aa810'
-        Source = '00/8a/CCountedPointer008aa810_CCountedPointer008aa810_008ab380.cpp'
-        TestSource = '00/8a/CCountedPointer008aa810_CCountedPointer008aa810_008ab380_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitFloor>'
+        Source = '00/8a/CCountedPointer_CCountedPointer_008ab380.cpp'
+        TestSource = '00/8a/CCountedPointer_CCountedPointer_008ab380_test.cpp'
         PassPattern = '008ab380_TEST PASS'
     }
     [pscustomobject]@{
@@ -179950,9 +179950,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0094b3a0'
-        Module = '_unattributed'
-        Source = '00/94/unattributed_CCountedPointer0094b3a0_0094b3a0.cpp'
-        TestSource = '00/94/unattributed_CCountedPointer0094b3a0_0094b3a0_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitBase>'
+        Source = '00/94/CCountedPointer_CCountedPointer_0094b3a0.cpp'
+        TestSource = '00/94/CCountedPointer_CCountedPointer_0094b3a0_test.cpp'
         PassPattern = '0094b3a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -182699,16 +182699,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00487140'
-        Module = '_unattributed'
-        Source = '00/48/unattributed_CallWith200487140_00487140.cpp'
-        TestSource = '00/48/unattributed_CallWith200487140_00487140_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_FreezeControls_00487140.cpp'
+        TestSource = '00/48/CPlayer_FreezeControls_00487140_test.cpp'
         PassPattern = '00487140_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00487170'
-        Module = '_unattributed'
-        Source = '00/48/unattributed_CallWith200487170_00487170.cpp'
-        TestSource = '00/48/unattributed_CallWith200487170_00487170_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_SpecialAbilityFreezeControls_00487170.cpp'
+        TestSource = '00/48/CPlayer_SpecialAbilityFreezeControls_00487170_test.cpp'
         PassPattern = '00487170_TEST PASS'
     }
     [pscustomobject]@{
@@ -209478,9 +209478,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050eef0'
-        Module = '_unattributed'
-        Source = '00/50/unattributed_CanBlockNavigatingCreatureFilter_0050eef0.cpp'
-        TestSource = '00/50/unattributed_CanBlockNavigatingCreatureFilter_0050eef0_test.cpp'
+        Module = 'CThingFilter_HasNavigationInformation'
+        Source = '00/50/CThingFilterHasNavigationInformation_operator_0050eef0.cpp'
+        TestSource = '00/50/CThingFilterHasNavigationInformation_operator_0050eef0_test.cpp'
         PassPattern = '0050eef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -219875,9 +219875,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040d2a0'
-        Module = 'CTBaseSingleton<CUserProfileManager>'
-        Source = '00/40/CUserProfileManagerSingleton_Get_0040d2a0.cpp'
-        TestSource = '00/40/CUserProfileManagerSingleton_Get_0040d2a0_test.cpp'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_Get_0040d2a0.cpp'
+        TestSource = '00/40/CUserProfileManager_Get_0040d2a0_test.cpp'
         PassPattern = '0040d2a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -259178,9 +259178,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004195af'
-        Module = '_global'
-        Source = '00/41/CCountedPointerCPolymorphicData004195AF_Reset_004195af.cpp'
-        TestSource = '00/41/CCountedPointerCPolymorphicData004195AF_Reset_004195af_test.cpp'
+        Module = 'CCountedPointer<CPlayerGui>'
+        Source = '00/41/CCountedPointer_Reset_004195af.cpp'
+        TestSource = '00/41/CCountedPointer_Reset_004195af_test.cpp'
         PassPattern = '004195af_TEST PASS'
     }
     [pscustomobject]@{
@@ -265265,9 +265265,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007624e0'
-        Module = 'NShape::CShapeManager'
-        Source = '00/76/NShapeCShapeManager_CreateShape_007624e0.cpp'
-        TestSource = '00/76/NShapeCShapeManager_CreateShape_007624e0_test.cpp'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_GetInstantiationFromEnum_007624e0.cpp'
+        TestSource = '00/76/CTCShapeManager_GetInstantiationFromEnum_007624e0_test.cpp'
         PassPattern = '007624e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -291328,16 +291328,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0063f150'
-        Module = 'CThingFilter_BlockerBoundsContainPoint'
-        Source = '00/63/CThingFilterBlockerBoundsContainPoint_operator_0063f150.cpp'
-        TestSource = '00/63/CThingFilterBlockerBoundsContainPoint_operator_0063f150_test.cpp'
+        Module = 'CFilter_Bind2<CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>'
+        Source = '00/63/CFilterBind2_operator_0063f150.cpp'
+        TestSource = '00/63/CFilterBind2_operator_0063f150_test.cpp'
         PassPattern = '0063f150_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0063f1e0'
-        Module = 'CThingFilter_IsNotAndBlockerBoundsContainPoint'
-        Source = '00/63/CThingFilterIsNotAndBlockerBoundsContainPoint_operator_0063f1e0.cpp'
-        TestSource = '00/63/CThingFilterIsNotAndBlockerBoundsContainPoint_operator_0063f1e0_test.cpp'
+        Module = 'CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>'
+        Source = '00/63/CFilterBind3_operator_0063f1e0.cpp'
+        TestSource = '00/63/CFilterBind3_operator_0063f1e0_test.cpp'
         PassPattern = '0063f1e0_TEST PASS'
     }
     [pscustomobject]@{

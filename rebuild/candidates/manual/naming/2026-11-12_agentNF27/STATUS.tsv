@@ -1,0 +1,58 @@
+address	change	grade	test	grades_used	note
+0x0040D2A0	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	4	PClass via hdr fable_user_profile.h opt-in FABLE_RETAIL_CUSERPROFILEMANAGER_PCLASS; new test (catalog test models the stand-ins, LINK_FAIL)
+0x0040F1B0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x004195AF	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00449A30	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	3	opt-in FABLE_RETAIL_CPLAYERMANAGER_FREEZEPLAYERCONTROLS; new test
+0x00449A50	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	3	opt-in FABLE_RETAIL_CPLAYERMANAGER_FREEZEPLAYERCONTROLS; new test
+0x004516E7	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	2	local STLport model as landed 0x00477428 (vector<void*> copy ctor); new test (catalog test modelled the stand-in)
+0x00487140	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	1	engine/CPlayer.h FABLE_RETAIL_PLAYER_FREEZECONTROLS (FAM10 overlay); new test
+0x00487170	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	1	engine/CPlayer.h FABLE_RETAIL_PLAYER_FREEZECONTROLS (FAM10 overlay); new test
+0x00487FB0	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set/Get (FABLE_RETAIL_SINGLETON_SET); row itself still on CPlayer_Methods
+0x004887C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	carrier keeps SetupInitialPlayerMode (self name still CPlayer_Methods, see NOTES); GetCurrentMode/RemoveMode/AddMode from engine/CPlayer.h
+0x0050EEF0	self rename + callee respell	MATCH	PASS (catalog test)	1	shared CThingPhysical/CTCPhysicsBase retail layouts replace the local vtable models; catalog test kept
+0x00636E50	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	AddMode moved onto the row's local CPlayer (header-derived) class; self name still CPlayer_Methods, see NOTES
+0x0063F150	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	4	local filter classes CThingFilter_HasNavigationInformation / _OverlappingBoundingBox (no shared header exists); new test
+0x0063F1E0	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	3	as 0x0063F150 plus engine/CThingFilter_IsNot.h + CFilter_Bind3.h; new test
+0x006E7630	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CPlayerCalls/CPlayerManagerCalls carriers removed; hdr CPlayer.h opt-in FABLE_RETAIL_PLAYER_INITIALISEIFUNINITIALISED
+0x007624E0	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	2	opt-in FABLE_RETAIL_CTCSHAPEMANAGER_GETINSTANTIATIONFROMENUM; CBasicShape/CTrack ctors still local models (no headers); EShape enumerator names descriptive
+0x007642C0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x007A71B0	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	local CPlayer -> engine/CPlayer.h; SpecialAbilityFreezeControls()
+0x007A9E40	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	local CPlayer -> engine/CPlayer.h; SpecialAbilityFreezeControls()
+0x008266E0	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	HasNavigationInformation::operator() declared with const CThingPhysical&
+0x00833010	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CBrainPointer -> CCountedPointer<CAIBrain>
+0x00834E40	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x0088DF80	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	CDigTarget / FableHeroResolve stand-ins replaced by CPlayerManager::GetMainPlayer + CPlayer::AddMode(PLAYER_MODE_DIGGING)
+0x008A8C60	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	sitMode is CCountedPointer<CModeSitFloor>
+0x008AA810	self rename + callee respell	MATCH	PASS (catalog test)	3	
+0x008AB320	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	2	
+0x008AB380	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	2	
+0x008AB3D0	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	2	
+0x0090F830	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	DeleteData<CModeSitFloor> spelled
+0x00938060	self rename + callee respell	MATCH	PASS (catalog test)	3	
+0x00938070	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	2	
+0x0093B1D0	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	converting ctor; CModeSitFloor ctor/dtor
+0x0094B3A0	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	2	
+0x009A6610	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CPDisplay/CPInput/CPGraphic/CPMesh/CPFont/CPDrive wrappers -> CCountedPointer<T> / CTBaseSingletonNoDefaultAlloc; CPSound/CPProfile kept (unproven)
+0x009A6FD0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x009A7180	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x009A71F0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x009A7260	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x009A7340	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x009A73D0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x009FEA20	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CTextureManagerPointer -> CCountedPointer<CTextureManager>
+0x00A002E0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00A01950	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CCountedSymbolMap -> CCountedPointer<CCRCSymbolMap>
+0x00A01AA0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00A12890	self rename + callee respell	RELOCATION_MATCH	PASS (new test)	2	callee IsSpherePartContainedInBoundingBox via hdr CPhysicsMeshObject.h opt-in; new test
+0x00A27030	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	three pointer wrappers -> CCountedPointer<T>; CAMERA_DECL
+0x00A29800	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00A29F50	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00A29FC0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00AB5390	callee respell	RELOCATION_MATCH	PASS (new test)	3	MouseCursor as CCountedPointer<CSurface> via hdr candidates/mouse_dx_accessors_compiled.h opt-in; new test
+0x00AB5E80	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00AF4530	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CCountedPointer.h included at file scope (was inside namespace NParticleEngine)
+0x00AF4EE0	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CCountedPointer.h included at file scope (was inside namespace NParticleEngine)
+0x00AF6010	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00B3E4A0	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	
+0x00B82100	callee respell	RELOCATION_MATCH	PASS (catalog test)	2	CParticleSimPointer typedef of CCountedPointer<CParticleSimulation>
+0x00B82A50	self rename (explicit Reset instantiation) + DeleteData callee respell	RELOCATION_MATCH	PASS (catalog test)	1	

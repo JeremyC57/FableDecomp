@@ -7,6 +7,12 @@
 #ifdef FABLE_RETAIL_CTCSHAPEMANAGER_TRACK
 namespace NShape { class CTrack; }
 #endif
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_GETINSTANTIATIONFROMENUM
+#include "engine/CCountedPointer.h"
+#include "engine/C3DVector.h"
+#include "stlport/fable_containers.h"
+namespace NShape { class CShape; enum EShape; }
+#endif
 #endif
 // Ego_r TPI0x2cd5b; original CTCBase and vector reduction put complete native extent at30.
 class CTCShapeManager : public CTCBase {
@@ -23,6 +29,13 @@ public:
     // Retail opt-in (chunk 754, row 0x0087B840 NCameraModes::CTrack::OnInitLeaf): Ego_r.pdb
     // ?GetBestTrack@CTCShapeManager@@QBE_NPAPBVCTrack@NShape@@@Z, out of line at 0x00761B50. Declaration only: no layout change.
     bool GetBestTrack(const NShape::CTrack** track) const;   // 0x00761B50
+#endif
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_GETINSTANTIATIONFROMENUM
+    // Nested opt-in (agentNF27, 2026-11-12, row 0x007624E0): Ego_r.pdb (0x00773560, right after the CTrack / CBasicShape ctors
+    // 0x00772F80 / 0x00773480 = retail 0x00761F40 / 0x00762440) + FableWin.pdb
+    // ?GetInstantiationFromEnum@CTCShapeManager@@QAE?AV?$CCountedPointer@VCShape@NShape@@@@W4EShape@NShape@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+    // (by-value counted pointer through the hidden result, `ret 0Ch`). Declaration only: no layout change.
+    CCountedPointer<NShape::CShape> GetInstantiationFromEnum(NShape::EShape type, std::vector<C3DVector>& points);   // 0x007624E0
 #endif
 #endif
 private:

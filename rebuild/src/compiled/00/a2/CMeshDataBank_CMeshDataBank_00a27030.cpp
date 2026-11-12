@@ -79,6 +79,12 @@ struct CULongArray : CArray<unsigned long> {
     }
 };
 
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the three members are the shared CCountedPointer<T> and their out-of-line
+//   Resets are FableWin.pdb ?Reset@?$CCountedPointer@VC3DQuadricBasedMeshOptimiser@@@@QAEXPAVC3DQuadricBasedMeshOptimiser@@@Z 0x00A29F50,
+//   ...@VC3DMeshStripifier@@... 0x00A29FC0 and ...@VC3DAnimationManager@@... 0x00A29800 (each stores its DeleteData 0x00A28510 /
+//   0x00A28520 / 0x00A281B0), were the stand-in wrappers CMeshOptimiserPointer / CMeshStripifierPointer / CAnimationManagerPointer.
+//   Reset is declared only (FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL): retail calls the COMDATs.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
 #include "engine/CCountedPointer.h"
 
 class CMeshDataBank;
@@ -115,15 +121,6 @@ class C3DMeshInfo;
 class CPhysicsMeshInfo;
 class C3DAnimationInfo;
 
-struct CMeshOptimiserPointer : CCountedPointer<C3DQuadricBasedMeshOptimiser> {
-    void Reset(C3DQuadricBasedMeshOptimiser* item);  // 0x00A29F50
-};
-struct CMeshStripifierPointer : CCountedPointer<C3DMeshStripifier> {
-    void Reset(C3DMeshStripifier* item);            // 0x00A29FC0
-};
-struct CAnimationManagerPointer : CCountedPointer<C3DAnimationManager> {
-    void Reset(C3DAnimationManager* item);          // 0x00A29800
-};
 
 template <class T> struct scoped_ptr {
     T* ptr;
@@ -187,15 +184,15 @@ class CMeshDataBank : public CBankFile { public:
     CArray<C3DAnimationInfo>                    AnimationInfoBuffer;     // +0x3a4
     CArray<CCountedPointer<CMeshDataBankEntry> > DynamicInfoBuffer;      // +0x3b0
     CCharString                                 AnimationEnumType;       // +0x3bc
-    CAnimationManagerPointer                    AnimationManager;        // +0x3c0
+    CCountedPointer<C3DAnimationManager>        AnimationManager;        // +0x3c0
     CLipSyncMap                                 LipSyncAnimations;       // +0x3c8
     CGraphicDataBank*                           TextureBank;             // +0x3d4
     bool                                        DP3BumpEnable;           // +0x3d8
     CULongArray                                 GroupBlockSizes;         // +0x3dc
     unsigned long                               MaxBonesPerVertex;       // +0x3e8
     unsigned long                               MaxParticleMeshFacesToRepeat; // +0x3ec
-    CMeshOptimiserPointer                       MeshOptimiser;           // +0x3f0
-    CMeshStripifierPointer                      MeshStripifier;          // +0x3f8
+    CCountedPointer<C3DQuadricBasedMeshOptimiser> MeshOptimiser;           // +0x3f0
+    CCountedPointer<C3DMeshStripifier>          MeshStripifier;          // +0x3f8
     float                                       MaximumLODErrors[4];     // +0x400
     float                                       MiminumLODReductionPercent; // +0x410
     unsigned long                               MiminumLODReductionFaces;   // +0x414

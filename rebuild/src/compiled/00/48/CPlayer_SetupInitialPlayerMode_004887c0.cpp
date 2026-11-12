@@ -14,9 +14,10 @@
 // that reads and rewrites the vector words by value, so the vector does not escape (start kept in edi, zero stores live); the spirit is the uninitialised
 // `T* tc; if (HasTC) tc = GetTC;` local (stale value = the search key's frame word).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_REMOVEMODE
 #include "engine/CPlayer.h"
 
-typedef long EPlayerMode;
 extern "C" void free(void* p);                         // 0x00BFEA14 (MSVCR71)
 
 class CTCBase;
@@ -103,25 +104,25 @@ class CTCCoopSpirit { public:                                 // TC type 0xc7
     void SetMaster(CPlayer* master);                   // 0x0066FA50
 };
 
+// GetCurrentMode 0x00633BE0, RemoveMode 0x00634190 and AddMode 0x006345C0 are the shared engine/CPlayer.h declarations
+// (?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ / ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z /
+// ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z, Ego_r.pdb + FableWin.pdb), inherited by the carrier.
 struct CPlayer_Methods : CPlayer {
-    EPlayerMode GetCurrentMode();                      // 0x00633BE0
-    void RemoveMode(EPlayerMode mode);                 // 0x00634190
-    void AddMode(EPlayerMode mode, bool b);            // 0x006345C0
     void SetupInitialPlayerMode();
 };
 
 void CPlayer_Methods::SetupInitialPlayerMode()
 {
     long number = Number;
-    EPlayerMode mode = (number != ((CPlayerManager*)PlayerManager)->GetMainPlayerNumber()) ? 0x18 : 1;
+    EPlayerMode mode = (EPlayerMode)((number != ((CPlayerManager*)PlayerManager)->GetMainPlayerNumber()) ? 0x18 : 1);
     bool frontEnd = false;
     if (GetCurrentMode() == 0x1b) {
         frontEnd = true;
-        RemoveMode(0x1b);
+        RemoveMode((EPlayerMode)0x1b);
     }
     AddMode(mode, true);
     if (frontEnd)
-        AddMode(0x1b, false);
+        AddMode((EPlayerMode)0x1b, false);
     vector<CThing*> spirits;
     ((CWorld_Retail*)World)->PThingSearchTools->GetAllThings(0xc7, spirits);
     unsigned long count = spirits.size();

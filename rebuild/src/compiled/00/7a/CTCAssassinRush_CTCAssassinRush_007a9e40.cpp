@@ -71,11 +71,13 @@ public:
     long GetAbilityLevel(long ability);             // 0x005EDE93 (EHeroAbility)
 };
 
-class CPlayer {
-public:
-    void SetModeState(long mode, long state);       // 0x006345C0
-    void StopChargeMode();                          // 0x00487170: SetModeState(0x12, 0)
-};
+// Respell (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the callee 0x00487170 was bound as ?StopChargeMode@CPlayer@@QAEXXZ on a local CPlayer;
+//   Ego_r.pdb and FableWin.pdb name it ?SpecialAbilityFreezeControls@CPlayer@@QAEXXZ (AddMode(PLAYER_MODE_SPECIAL_ABILITY_FREEZE_CONTROLS,
+//   false), the last of the Unfreeze / Freeze / SpecialAbilityUnfreeze / SpecialAbilityFreeze block), declared in engine/CPlayer.h under
+//   FABLE_RETAIL_PLAYER_FREEZECONTROLS; the shared CPlayer replaces the local model (its SetModeState stand-in was unused).
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_FREEZECONTROLS
+#include "engine/CPlayer.h"
 
 class CThing {
 public:
@@ -194,7 +196,7 @@ CTCAssassinRush::CTCAssassinRush(CThing* parent)
             state->Active = true;
             state->Mode = 0xd;
         }
-        ParentThing->GetPlayer().StopChargeMode();
+        ParentThing->GetPlayer().SpecialAbilityFreezeControls();
     }
     const CThing* parentThing = ParentThing;
     if (parentThing->HasTC(0x6f))

@@ -57,6 +57,18 @@ public:
     long GetNavigationLevelAt(const C3DVector& pos) const;               // 0x00A11D10
     bool IsPointContainedInBoundingBox(const C3DVector& pos) const;      // 0x00A12890
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_BOUNDINGBOXCONTAINS
+    // Retail opt-in (agentNF27, rows 0x00A12890 / 0x0063F150 / 0x0063F1E0): Ego_r.pdb / FableWin.pdb
+    // ?IsSpherePartContainedInBoundingBox@CPhysicsMeshObject@@QBE_NABVC3DVector@@M@Z (retail 0x00A11F20: the radius scaled by OO_Scale
+    // +0x3C, the point taken into mesh space by the inverse PositionMatrix), the callee of IsPointContainedInBoundingBox 0x00A12890
+    // (`push 0 ; push pos ; call 0x00A11F20` with ecx passed through, i.e. the sphere test with a zero radius). IsPointContainedIn-
+    // BoundingBox is declared here too unless FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVIGATION (above) already declares it. Declarations
+    // only: no layout change.
+    bool IsSpherePartContainedInBoundingBox(const C3DVector& pos, float radius) const;   // 0x00A11F20
+#ifndef FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVIGATION
+    bool IsPointContainedInBoundingBox(const C3DVector& pos) const;                      // 0x00A12890
+#endif
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_CENTRE
     // Nested opt-in (chunk 760, row 0x00A11AE0): Ego_r.pdb ?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ.
     C3DVector GetBoundingBoxCentre() const;                              // 0x00A11AE0

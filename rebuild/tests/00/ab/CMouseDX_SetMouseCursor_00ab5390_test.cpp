@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+#define FABLE_RETAIL_CMOUSEDX_MOUSECURSOR
 #include "candidates/mouse_dx_accessors_compiled.h"
+// Behaviour model (agentNF27): MouseCursor is CCountedPointer<CSurface>; the test defines its out-of-line Reset and checks that the
+// cursor primitive receives the new surface's PD3DSurface word.
 
-static CCountedSurfaceRep g_rep;
+static int g_d3dSurfaceToken;
 static CSurface* g_copiedSurface;
 static CMousePrimitiveHierarchy g_hierarchy;
 static CMousePrimitiveSlotOwner g_owner;
@@ -10,14 +13,14 @@ static CMouseEnginePrimitive g_primitive;
 static CMousePrimitiveDispatch g_dispatch;
 static int g_resetCalls, g_resolveCalls, g_surfaceCalls, g_enableCalls;
 
-CSurface::CSurface(const CSurface& other) { memcpy(Storage, other.Storage, sizeof(Storage)); }
+CSurface::CSurface(const CSurface& other) { memcpy(this, &other, sizeof(CSurface)); }
 
-void CCountedSurfacePointer::Reset(CSurface* surface)
+template <> void CCountedPointer<CSurface>::Reset(CSurface* surface)
 {
     ++g_resetCalls;
     g_copiedSurface = surface;
-    g_rep.Value = surface;
-    Rep = &g_rep;
+    Data = surface;
+    Info = 0;
 }
 
 CMousePrimitiveHierarchy* ResolveMousePrimitiveHierarchy()
@@ -30,7 +33,7 @@ static void __stdcall SetSurface(
     CMouseEnginePrimitive* primitive, int zeroA, int zeroB, void* surface)
 {
     ++g_surfaceCalls;
-    if (primitive != &g_primitive || zeroA != 0 || zeroB != 0 || surface != g_copiedSurface)
+    if (primitive != &g_primitive || zeroA != 0 || zeroB != 0 || surface != &g_d3dSurfaceToken || surface != g_copiedSurface->PD3DSurface)
         g_surfaceCalls = -100;
 }
 
@@ -47,7 +50,8 @@ int main()
     CMouseDX* mouse = reinterpret_cast<CMouseDX*>(mouseStorage);
     fable_u8 sourceStorage[sizeof(CSurface)];
     CSurface& source = *reinterpret_cast<CSurface*>(sourceStorage);
-    memset(source.Storage, 0x5A, sizeof(source.Storage));
+    memset(&source, 0x5A, sizeof(CSurface));
+    source.PD3DSurface = &g_d3dSurfaceToken;
     memset(&g_dispatch, 0, sizeof(g_dispatch));
     g_dispatch.SetCursorSurface = SetSurface;
     g_dispatch.SetCursorEnabled = SetEnabled;
@@ -59,7 +63,7 @@ int main()
     mouse->DisableCursorWarp = 0;
     mouse->SetMouseCursor(source);
     if (g_resetCalls != 1 || g_resolveCalls != 0 || g_copiedSurface == 0) return 1;
-    if (memcmp(g_copiedSurface->Storage, source.Storage, sizeof(source.Storage)) != 0) return 2;
+    if (memcmp(g_copiedSurface, &source, sizeof(CSurface)) != 0) return 2;
     delete g_copiedSurface;
 
     mouse->DisableCursorWarp = 1;

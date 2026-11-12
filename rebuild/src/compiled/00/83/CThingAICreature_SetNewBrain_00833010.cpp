@@ -55,15 +55,17 @@ class CAIBrain { public:                                    // 0xA8 bytes
     unsigned char _body[0xa8];
     CAIBrain(CDisplayEngine* display, CWorld* world, CThingManager* things, CPlayerManager* players, CThingAICreature* owner, CDefPointer def);   // 0x0088C160
 };
-struct CBrainPointer {                               // CCountedPointer<CAIBrain>
-    void Reset(CAIBrain* brain);                     // 0x00834E40
-};
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the brain pointer is the shared CCountedPointer<CAIBrain> (Ego_r.pdb
+//   CThingAICreature::PBrain); its out-of-line Reset 0x00834E40 is FableWin.pdb ?Reset@?$CCountedPointer@VCAIBrain@@@@QAEXPAVCAIBrain@@@Z
+//   (stores DeleteData<CAIBrain> 0x00834A10), was the stand-in ?Reset@CBrainPointer@@. Declared only (FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"
 class CThingAICreature { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad54[0x154];
-    CBrainPointer PBrain;                            // +0x1a8
+    CCountedPointer<CAIBrain> PBrain;                // +0x1a8
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
