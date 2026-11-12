@@ -24,6 +24,12 @@ public:
     virtual void ClearPrimitives();
     virtual void ClearPrimitivesIfNecessary();
     bool IsDrawing() const { return Drawing; }
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_SETASDRAWING
+    // Retail opt-in (chunk Q22, row 0x00649E8B CDrawFishingGame::Draw): FableWin.pdb ?SetAsDrawing@CDrawBase@NPlayerGui@@QAEX_N@Z
+    // (named in this header's comment above; no out-of-line copy in Ego_r.pdb or Fable.exe: the row stores Drawing +0x18 in place,
+    // `mov byte ptr [edi+18h],1` at 0x00649EFB). No layout change.
+    void SetAsDrawing(bool drawing) { Drawing = drawing; }
+#endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES
     // Retail opt-in (chunk 867, row 0x0064BFBA CDrawHighlightingTargetingCursor::Draw): Ego_r.pdb ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z
     // (out of line at 0x00643D5D; the landed DrawIcon 0x00645292 calls it as the sprite alpha), declaration only; and PrimitiveHandles as

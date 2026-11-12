@@ -88,6 +88,13 @@ protected:
     // in retail at 0x0097F870 (the inline WanderWithinTavern pushes the pub, then 3 = AI_MOVEMENT_WALKING). Declaration only.
     EAIActionReturn AIAction_MinionWander(EMovementType movement, class CThingBuilding* building);   // 0x0097F870
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTIONONCE
+    // Nested opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): Ego_r.pdb
+    // ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (protected; Ego_r 0x00848680,
+    // retail 0x0097D8B0, the catalog label), out of line; the row passes a temporary action and tests the result against 2.
+    // Declaration only.
+    EAIActionReturn AIAction_PerformAction(const class CCreatureActionBase& action);   // 0x0097D8B0
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
     // Nested opt-in (chunk 758, row 0x0096AE50 CAIStateGroup_WhisperRetreat::UseWill): Ego_r.pdb / FableWin.pdb
     // ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (protected; retail 0x0097DB70).

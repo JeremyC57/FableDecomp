@@ -74,6 +74,13 @@ public:
         }
     }
 #endif
+#ifdef FABLE_RETAIL_CAFILE_WRITEVAR
+    // Nested opt-in (chunk Q22, row 0x00A78B20 CNavQuadTree::SaveToFile): FableWin.pdb ??$WriteVar@J@CAFile@@QAEXABJ@Z /
+    // ??$WriteVar@M@.. / ??$WriteVar@I@.. (CNavQuadTree::SaveToFile calls them; no out-of-line copy in Fable.exe): retail expands
+    // each to `push 0 ; push sizeof(T) ; push &var ; call [vtbl+10h]` (Write, no alignment branch; as the landed
+    // CNavBlockedQuadTreeNode::SaveToFile 0x00A76950 model).
+    template<class T> void WriteVar(const T& var) { Write(&var,sizeof(T),0); }
+#endif
     virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;
     virtual void Close()=0;
     virtual void Read(void*,long,CASuspendableProcess*)=0;

@@ -38699,3 +38699,13 @@ _LEFT_FORTY_FIVE_DEGREES_ORIENTATION	0137cfa4	0121aca0
 _BACKWARDS_FORTY_FIVE_DEGREES_ORIENTATION	013b8bfc	0121ad80
 _BACKWARDS_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION	0137d01c	0121adc0
 _BACKWARDS_LEFT_FORTY_FIVE_DEGREES_ORIENTATION	0137d034	0121adf0
+??0CModeSitTavernStool@NCreatureMode@@QAE@AAVCThing@@@Z	0094b530	0096cd70
+?Eat@CAIStateGroup_EatAtTable@@IAE_NPAVCThing@@@Z	0096c9a0	0096cd70
+?GetSeat@CAIStateGroup_EatAtTable@@IAE_NXZ	0096cb40	0096cd70
+?SetSeatState@CTCTavernTable@@QAEXJ_N@Z	007b8530	0096cd70
+?WalkTo@CAIStateGroup_EatAtTable@@IAE_NVC3DVector@@VCRightHandedSet@@@Z	0096c880	0096cd70
+??$for_each@PBVCNavigationPosition@@VCSaveNavigationPositionToFile@@@std@@YI?AVCSaveNavigationPositionToFile@@PBVCNavigationPosition@@0V1@@Z	00a7e440	00a78b20
+?_M_erase@?$_Rb_tree@PBVCANavQuadTreeNode@@U?$pair@QBVCANavQuadTreeNode@@J@std@@U?$_Select1st@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@U?$less@PBVCANavQuadTreeNode@@@3@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QBVCANavQuadTreeNode@@J@std@@@2@@Z	00a7e300	00a78b20
+?insert_unique@?$_Rb_tree@PBVCANavQuadTreeNode@@U?$pair@QBVCANavQuadTreeNode@@J@std@@U?$_Select1st@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@U?$less@PBVCANavQuadTreeNode@@@3@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@QBVCANavQuadTreeNode@@J@std@@U?$_Nonconst_traits@U?$pair@QBVCANavQuadTreeNode@@J@std@@@2@@std@@_N@2@ABU?$pair@QBVCANavQuadTreeNode@@J@2@@Z	00a819b0	00a78b20
+_NAV_QUAD_TREE_FILE_END_MARKER	0129dccc	00a78b20
+_NAV_QUAD_TREE_FILE_VERSION	0129dcc8	00a78b20

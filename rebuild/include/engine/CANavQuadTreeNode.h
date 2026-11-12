@@ -17,6 +17,10 @@
 class CNavRegion;
 class CAFile;
 template <class T, int N> class CSmallVector;
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE
+#include "stlport/fable_map.h"
+enum ENavQuadTreeNeighbours { };                     // FableWin.pdb W4ENavQuadTreeNeighbours (enumerators not recovered)
+#endif
 // chunk 736: the per-level node side table GetSize reads (float[] @ 0x0129DCAC: 32, 16, 8, 4, 2, 1, 0.5); no PDB data symbol
 // (descriptive; the spelling of the landed 0x00A76640 / 0x00A76CC0 rows).
 extern const float g_QuadTreeLevelSizes[];
@@ -61,6 +65,23 @@ public:
     virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;   // slot 15
     // slots 16..22 (SetUpNeighboursWithLeaf, SetUpNeighbours, CalculateChildrenNeighbours, RemoveNeighbours, AddToIndexTable,
     // SaveToFile, ConvertIndexesToPointers) are not called through this model; not declared.
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE
+    // Nested opt-in (chunk Q22, row 0x00A78B20 CNavQuadTree::SaveToFile): slots 16..22 in PDB order, all protected in FableWin.pdb
+    // (`MAE` / `MBE`: ?SetUpNeighboursWithLeaf@CANavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAV1@@Z, ?SetUpNeighbours@..@@MAEX..,
+    // ?CalculateChildrenNeighbours@..@@MAEXXZ, ?RemoveNeighbours@..@@MAEXXZ, ?AddToIndexTable@..@@MBEXAAJAAV?$map@PBVCANavQuadTreeNode@@J..,
+    // ?SaveToFile@CANavQuadTreeNode@@MBEXAAVCAFile@@ABV?$map@..@@_NABVC2DVector@@@Z, ?ConvertIndexesToPointers@..@@MAEXABV?$map@JPAV..).
+    // The friend CNavQuadTree calls slots 20 / 21 (`call [edx+50h]` 0x00A78CA0, `call [edx+54h]` 0x00A78CFE). The neighbour-side
+    // enum's enumerators are not recovered (no PDB enum record on disk); declared without them.
+protected:
+    virtual void SetUpNeighboursWithLeaf(enum ENavQuadTreeNeighbours, CANavQuadTreeNode*);                  // slot 16
+    virtual void SetUpNeighbours(enum ENavQuadTreeNeighbours, CANavQuadTreeNode*);                          // slot 17
+    virtual void CalculateChildrenNeighbours();                                                             // slot 18
+    virtual void RemoveNeighbours();                                                                        // slot 19
+    virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const;                   // slot 20 (+0x50)
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;   // slot 21 (+0x54)
+    virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&);                       // slot 22
+public:
+#endif
     // Ego_r ?GetSize@CANavQuadTreeNode@@QBEMXZ (out of line in Ego_r, inline in retail) and ?GetAreaCovering@CANavQuadTreeNode@@
     // QBE?AVC2DBoxF@@XZ (retail 0x00A763B0; CNavQuadTree::IsAreaClear 0x00A78E20 expands it: `fld size[level] ; fmul 0.5 ; fst`).
 #ifdef FABLE_RETAIL_CANAVQUADTREENODE_GETSIZE_OUTOFLINE

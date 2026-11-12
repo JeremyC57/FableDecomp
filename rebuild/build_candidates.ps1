@@ -393334,6 +393334,20 @@ $catalog = @(
         TestSource = '00/b3/CEngineInternalAttachedPrimitive_GetParentTransformAnimatedMesh_00b39080_test.cpp'
         PassPattern = '00b39080_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0096cd70'
+        Module = 'CAIStateGroup_EatAtTable'
+        Source = '00/96/CAIStateGroupEatAtTable_Update_0096cd70.cpp'
+        TestSource = '00/96/CAIStateGroupEatAtTable_Update_0096cd70_test.cpp'
+        PassPattern = '0096cd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a78b20'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_SaveToFile_00a78b20.cpp'
+        TestSource = '00/a7/CNavQuadTree_SaveToFile_00a78b20_test.cpp'
+        PassPattern = '00a78b20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

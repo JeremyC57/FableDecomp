@@ -1,0 +1,9 @@
+- VC7.1 /O2 implies /Ob2: same-TU out-of-line member functions (no `inline`) are auto-inlined into the row, so define the real helper bodies in the TU instead of forceinline copies -- that alone fixed 4 register rotations in 0x006C1250.
+- `bool failed = Call(...) != X; if (!failed)` gives `setne bl` + test; `if (Call(...) == X)` inline gives sete/branch -- spell the flag when retail materialises it (0x0096CD70).
+- Porting a local model onto shared headers can fix frame packing outright (0x0096CD70, 0x00A78B20 matched on the port): visible same-TU bodies tell c2 the addresses do not escape.
+- A std::for_each instance that is __fastcall in retail does not need /Gr on the row: fable_algorithm.h declares for_each FABLE_FASTCALL (0x00A78B20 matched with and without /Gr).
+- STLport list::size() under FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE gives the head-in-edx / walker-in-eax count loop (`mov eax,[edx] ; xor ecx,ecx ; cmp ; je ; mov eax,[eax] ; inc ecx`).
+- CAFile::WriteVar<T>(const T&) is `Write(&var, sizeof(T), 0)` in retail (no alignment branch, unlike ReadVar); the size temporary of a `WriteVar(x.size())` is a separate stack word reused across writes.
+- Two implicit CCharString temporaries in one full-expression sequence share a frame slot under VC7.1 even where retail split them (0x00649E8B); neither nested blocks nor extra temps reproduce retail's split -- don't spend grades on it.
+- Wine cl hangs on `#error`: run a `cpp` pre-pass for #error before every grade (cpp.sh).
+- A by-value functor with a user-copy-ctor member (C2DVector) is built in the outgoing argument area (`sub esp,0Ch ; mov eax,esp`) and the member's source address stays live in a callee-saved register for later reuse (0x00A78B20 ebx = &MapPos).

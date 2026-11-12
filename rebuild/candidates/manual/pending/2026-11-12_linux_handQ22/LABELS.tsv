@@ -1,0 +1,7 @@
+address	name	module
+006c1250	FrameUpdate	CTCBuyableHouse
+00a819b0	insert_unique	std::_Rb_tree<const CANavQuadTreeNode*,std::pair<const CANavQuadTreeNode* const,long>,std::_Select1st<std::pair<const CANavQuadTreeNode* const,long> >,std::less<const CANavQuadTreeNode*>,std::allocator<std::pair<const CANavQuadTreeNode* const,long> > >
+00a7e300	_M_erase	std::_Rb_tree<const CANavQuadTreeNode*,std::pair<const CANavQuadTreeNode* const,long>,std::_Select1st<std::pair<const CANavQuadTreeNode* const,long> >,std::less<const CANavQuadTreeNode*>,std::allocator<std::pair<const CANavQuadTreeNode* const,long> > >
+00a12890	IsPointContainedInBoundingBox	CPhysicsMeshObject
+0063f150	operator()<CThingPhysical>	CFilter_Bind2<CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>
+0063f1e0	operator()<CThingPhysical>	CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>

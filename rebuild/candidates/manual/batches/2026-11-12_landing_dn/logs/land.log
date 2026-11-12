@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0096cd70   WARN RELOC_CONFLICT: ??0?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@PAVCModeSitBase@NCreatureMode@@@Z -> 0094b3a0 here, 008ab380 in landed 0093b1d0
+0096cd70   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@XZ -> 008ab320 here, 008ab3d0 in landed 0093b1d0
+0096cd70   WARN RELOC_NAME: ??1?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@XZ -> 008ab320 labelled '_global::CCountedPointer_Release_008ab320'
+0096cd70   RELOCATION_MATCH PASS   Update
+00a78b20   RELOCATION_MATCH PASS   SaveToFile
+
+WINS: 2
+  0096cd70 RELOCATION_MATCH CAIStateGroup_EatAtTable::Update
+  00a78b20 RELOCATION_MATCH CNavQuadTree::SaveToFile
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupEatAtTable_Update_0096cd70
+  CNavQuadTree_SaveToFile_00a78b20
