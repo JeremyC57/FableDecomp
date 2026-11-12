@@ -1,5 +1,8 @@
 # acctB hand-back, near-miss retry of chunk 2044: both animation rows matched as a pair
 
+> **SUPERSEDED for the row sources and tests of 0x00A9F540 and 0x00AA0090 by `2026-11-12_acctB_u3022`** (one helper text set for the three
+> C3DAnimationManager rows; land the rows from there). The notes and evidence below stay valid as history.
+
 Chunk 2044 matched 0x00A9F540 and parked its blended twin 0x00AA0090. Two near-miss agents (Opus 5.5) continued in the
 same directory; the second closed the pair. Re-verified by the acctB local coordinator. Nothing is landed.
 

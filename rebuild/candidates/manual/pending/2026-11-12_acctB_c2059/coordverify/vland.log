@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00bc25f0   WARN RELOC_NAME: ?BeginLoadingTextures@C3DMeshInfo@@QBEXW4EBankLoadPriority@@@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00bc25f0   WARN RELOC_NAME: ?SetupShadowHWAsDepthBuffer@CEngineScreenEffectDisplacementRenderer@@QAEXPBVCMatrix3x4@@@Z -> 00b86a00 labelled '_global::Nop_ret4_00b86a00'
+00bc25f0   RELOCATION_MATCH PASS   RenderSubPrimitive
+
+WINS: 1
+  00bc25f0 RELOCATION_MATCH CEnginePrimitiveManagerParticleMeshGroup::?RenderSubPrimitive@CEnginePrimitiveManagerParticleMeshGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z

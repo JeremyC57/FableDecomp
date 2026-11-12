@@ -1,0 +1,62 @@
+1	c01.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub		first draft	
+2	c01.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub		draft+bankfile	
+3	c01.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 751  ratio 0.7885	draft+reslist	@@ retail 00bc25f0 (replace)  - 00bc25f0 sub esp, 0x68  + 00bc25f0 sub esp, 0x6c 
+4	c01.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 786  ratio 0.8179	forceinline Apply helpers	@@ retail 00bc25f0 (replace)  - 00bc25f0 sub esp, 0x68  + 00bc25f0 sub esp, 0x6c 
+5	c02.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 842  ratio 0.8775	failed in block	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L955 
+6	c03.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 732  ratio 0.7527	failed block + direct index	@@ retail 00bc25f0 (replace)  - 00bc25f0 sub esp, 0x68  + 00bc25f0 sub esp, 0x6c 
+7	c02.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 842  ratio 0.8775	regrade-for-diff	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L955 
+8	c04.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 919  ratio 0.9573	c04	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+9	c05.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 791  ratio 0.8240	c05	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+10	c06.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 843  ratio 0.8786	c06	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L955 
+11	c07.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 920  ratio 0.9583	c04+c06	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+12	c08.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 921  ratio 0.9594	c08	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+13	c09.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 905  ratio 0.9427	c09	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+14	c10.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 891  ratio 0.9281	c10	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+15	c08.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 921  ratio 0.9594	regrade	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+16	c11.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	c11	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+17	c12.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 921  ratio 0.9594	c12	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+18	c13.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 919  ratio 0.9573	c13	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+19	c11.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	regrade	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+20	r1.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=1 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+21	r2.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=2 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+22	r3.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=3 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+23	r4.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=4 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+24	r5.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=5 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+25	r6.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=6 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+26	r7.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=7 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+27	r8.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler k=8 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+28	r1.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=1 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+29	r2.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=2 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+30	r3.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=3 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+31	r4.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=4 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+32	r5.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=5 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+33	r6.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=6 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+34	r7.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=7 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+35	r8.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler2 k=8 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+36	c14.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 869  ratio 0.9010	SETRENDERSTATE_DESIRED	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L965 
+37	c11.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	regrade-c11	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+38	k2.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler const-long k=2 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+39	k4.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler const-long k=4 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+40	k6.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler const-long k=6 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+41	k8.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler const-long k=8 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+42	k12.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	ruler const-long k=12 (diagnostic)	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+43	k16.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 869  ratio 0.9010	ruler const-long k=16 (diagnostic)	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L965 
+44	k20.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 869  ratio 0.9010	ruler const-long k=20 (diagnostic)	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L965 
+45	k24.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 869  ratio 0.9010	ruler const-long k=24 (diagnostic)	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L965 
+46	k28.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 869  ratio 0.9010	ruler const-long k=28 (diagnostic)	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L965 
+47	k32.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 869  ratio 0.9010	ruler const-long k=32 (diagnostic)	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L965 
+48	c11b.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 943  ratio 0.9823	c11b	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+49	c15.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	c15	
+50	c16.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 954  ratio 0.9938	c16	@@ retail 00bc2731 (replace)  - 00bc2731 test esi, eax  + 00bc2731 test eax, esi 
+51	c15.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	regrade-c15	
+52	c17.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	RenderUtil statics plain inline	
+53	c18.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 722  ratio 0.7644	SetupBlendOpState plain inline	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L925 
+54	c15.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	hdrA ApplyDisplacement plain	
+55	c15.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 866  ratio 0.9082	hdrB ApplyMeshPointLight plain	@@ retail 00bc2604 (replace)  - 00bc2604 je L956  + 00bc2604 je L943 
+56	c19.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	c17 + ApplyDisplacement plain	
+57	00bc25f0.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	src final	
+58	e1.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	edge ruler k=1 (diagnostic)	
+59	e2.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	edge ruler k=2 (diagnostic)	
+60	e4.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	edge ruler k=4 (diagnostic)	
+61	e8.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	edge ruler k=8 (diagnostic)	
+62	00bc25f0.cpp	00bc25f0 CEnginePrimitiveManagerParticleMeshGroup::RenderSub	eq 960  ratio 1.0000	src without Flags line	

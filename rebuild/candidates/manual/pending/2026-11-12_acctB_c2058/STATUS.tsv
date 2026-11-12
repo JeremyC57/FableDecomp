@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+00563920	RELOCATION_MATCH	3143v3143	PASS	15	7 logged candidate grades + 8 full-row diagnostic probes (grades.log); vland RELOCATION_MATCH PASS (RELOC_NAME / RELOC_CONFLICT warnings only, see NOTES.md); behaviour test PASS under g++ (tall.sh) and VC7.1 (tall.py)

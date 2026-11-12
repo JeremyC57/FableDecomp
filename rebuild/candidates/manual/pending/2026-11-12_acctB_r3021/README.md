@@ -1,5 +1,8 @@
 # acctB hand-back, row 0x00A9EB90 C3DAnimationManager::BlendAnimations: matched (was parked with one operand differing)
 
+> **SUPERSEDED for the row sources and tests of 0x00A9EB90 by `2026-11-12_acctB_u3022`** (one helper text set for the three
+> C3DAnimationManager rows; land the rows from there). The notes and evidence below stay valid as history.
+
 | address | result | notes |
 |---|---|---|
 | 0x00A9EB90 `?BlendAnimations@C3DAnimationManager@@AAEXPAVC3DKeyframe@@PBV2@KM@Z` | RELOCATION_MATCH 1337v1337, test PASS (g++ and VC7.1) | grade `retail_asm` through the shared rdtsc / fistp helpers, as parked. 65 grades this pass (`grades.log`) |
@@ -23,8 +26,8 @@ it every landed user regrades unchanged (0x00A22530, 0x00AA3390, 0x00AA3560, 0x0
 the pending 0x00AA0090 still matches, **but the pending twin 0x00A9F540 (`2026-11-12_acctB_r2044`) then differs** in
 the 4-term Dot order of its expanded BlendWith (0x00A9FA56..0x00A9FA87); that row matched with the one-line text.
 Both rows keep the helper as a row-local copy, so each hand-back matches as staged, but retail had one text. Do not
-land a shared-header body for `GFFastArcCos` from either row until this is settled; acctB is working on one helper
-set that matches 0x00A9EB90, 0x00A9F540 and 0x00AA0090 together and will re-stage whichever row changes.
+land a shared-header body for `GFFastArcCos` from either row until this is settled; this is now settled in
+`2026-11-12_acctB_u3022`.
 
 ## Other notes
 

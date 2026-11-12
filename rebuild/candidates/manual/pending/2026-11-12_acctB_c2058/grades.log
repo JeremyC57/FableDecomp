@@ -1,0 +1,15 @@
+1	c01.cpp	00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI DIFFE	built 3898B/1102i  equal-instr 483  ratio 0.4884	first draft	@@ retail 0056392f (replace)  - 0056392f push edi  - 00563930 mov edi, ecx 
+2	c09.cpp	00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI DIFFE	built 3159B/879i  equal-instr 751  ratio 0.8558	HasTC + GetTC (extra halving), RELEASEDATA dtor	@@ retail 00563973 (replace)  - 00563973 mov byte ptr [esp + 0x27], cl  - 00563977 je L869 
+3	c10.cpp	00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI RELOC	built 3143B/876i  equal-instr 876  ratio 1.0000	p05 dup-screen test + size<=0 + named outer find iterator	
+4	c11.cpp	00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI RELOC	built 3143B/876i  equal-instr 876  ratio 1.0000	if (frame) around the activity loop (folded null test = loop-entry halving), no dup test	
+5	c12.cpp	00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI RELOC	built 3143B/876i  equal-instr 876  ratio 1.0000	c11 without RELEASEDATA	
+6	c13.cpp	00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI RELOC	built 3143B/876i  equal-instr 876  ratio 1.0000	guard spelled !(size() > 0)	
+7	c14.cpp	00563920 CTCHeroOnlineScoreboard::DisplayScoreboardGUI RELOC	built 3143B/876i  equal-instr 876  ratio 1.0000	final clean: positive guard, enum names, header comment	
+8	probe/p05.cpp	(full-row probe)	diagnostic: duplicate PScoreboardScreen test (first full match of instructions, frame off) 3142v3143
+9	probe/p06.cpp	(full-row probe)	diagnostic: || inventory == 0 after the deref (folds) RELOCATION_MATCH
+10	probe/p07.cpp	(full-row probe)	diagnostic: this == 0 || (folds) RELOCATION_MATCH
+11	probe/p08.cpp	(full-row probe)	diagnostic: repeated menu test (folds) RELOCATION_MATCH
+12	probe/n1.cpp	(full-row probe)	diagnostic: || inventory == 0 before the deref (emits cmp) 3151v3143
+13	probe/n2.cpp	(full-row probe)	diagnostic: inventory == 0 first in the menu test (emits) 3151v3143
+14	probe/w1.cpp	(full-row probe)	if (frame) around the loop RELOCATION_MATCH
+15	probe/w2.cpp	(full-row probe)	if (list) around the loop RELOCATION_MATCH

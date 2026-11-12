@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00563920   WARN RELOC_NAME: ?ActivityEnumToCharString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@ABW4EOnlineScoreboardActivity@1@@Z -> 0055e7c0 labelled 'CNameTable_0055e7c0::GetEntryName'
+00563920   WARN RELOC_NAME: ??$find@U?$_List_iterator@VCClanMember@CTCHeroOnlineScoreboard@@U?$_Nonconst_traits@VCClanMember@CTCHeroOnlineScoreboard@@@std@@@std@@VCWideString@@@std@@YI?AU?$_List_iterator@VCClanMember@CTCHeroOnlineScoreboard@@U?$_Nonconst_traits@VCClanMember@CTCHeroOnlineScoreboard@@@std@@@0@U10@0ABVCWideString@@@Z -> 00567a40 labelled 'CTCCameraPointScripted::GetLookDirection'
+00563920   WARN RELOC_NAME: ??1?$CCountedPointer@VCTexture@@@@QAE@XZ -> 0041bc90 labelled '_global::CCountedPointer_Release_0041bc90'
+00563920   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00570332
+00563920   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 here, 00429160 in landed 0056f615
+00563920   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429b72'
+00563920   RELOCATION_MATCH PASS   DisplayScoreboardGUI
+
+WINS: 1
+  00563920 RELOCATION_MATCH CTCHeroOnlineScoreboard::?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ

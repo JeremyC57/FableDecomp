@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+00821a80	RELOCATION_MATCH	2648v2648	PASS (g++ + VC7.1)	41 full-row grades (23 before the context hand-over, 18 after) + free diagnostics (c2prio traces, ~60 one-second probe compiles, fwsize)	CMap::LoadFromFile /GS; closed by: visible out-of-line vector::_M_insert_overflow, file_palette bound before the ThingUIDCount copy, if/else assignments of size_x/size_y, SetDynamicCast re-reading the source handle (overlay opt-ins); 11 landed rows regraded unchanged under the overlay

@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00821a80   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00821a80   RELOCATION_MATCH PASS   LoadFromFile
+
+WINS: 1
+  00821a80 RELOCATION_MATCH CMap::?LoadFromFile@CMap@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z
