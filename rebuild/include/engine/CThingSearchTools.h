@@ -314,7 +314,14 @@ public:
     // VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@
     // QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@...@@AAVCThingFindNavigationLayerAt@@@Z and the CFilter_Bind3<CThingFilter_IsNot, ...> twin
     // (out of line in retail: 0x0063F4B0 the Bind2, 0x0063F7C0 the Bind3 instantiation). Declaration only: no layout change.
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_CONSTPROC
+    // Nested opt-in (agentFAM11, 2026-11-12, queue land1011dp): the declaration with the PDB signature -- every Ego_r.pdb / FableWin.pdb
+    // ForEachInRoughArea instance is QBE and takes the functor as `const Proc&` (ABV), e.g. the Bind2 navigation-layer instance
+    // 0x0063F4B0 and its Bind3 twin 0x0063F7C0 (whose landed body, FOREACHINROUGHAREA_BODY, already has `const Proc&`).
+    template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,const Proc& proc) const;
+#else
     template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,Proc& proc) const;
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA
     // Nested opt-in (chunk 853, row 0x0050A650 CWorldMap::GetMapNavigationAreaInit): Ego_r.pdb ??$GetAllTCsInRoughArea@VCTCCreatureGenerator@@

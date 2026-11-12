@@ -1,0 +1,10 @@
+tag	address	status	binders_respelled	note
+land1011do	00419086	done	0	ported onto engine/CAEnvironmentInteraction.h + engine/CCountedPointer.h; MATCH, test PASS
+land1011do	00718080	done	0	ported onto the new overlay header engine/NTCScriptedControl_CScriptConversation.h (the class is NTCScriptedControl::CScriptConversation, not ::CScriptConversation); MATCH, test PASS
+land1011do	00af5cd0	done	0	ported onto engine/CPSCBase.h + engine/CCountedPointer.h; MATCH, test PASS
+land1011dp	008147d0	done	0	renamed to CTCBoastingPosition::SetBoastingPodium (PBOASTINGPODIUM opt-in); the only binder 0x00814260 already binds this spelling; RELOCATION_MATCH, test PASS
+land1011dp	0063e590	done	1	claim verified (every Ego_r / FableWin ForEachInRoughArea instance is QBE with ABV Proc); 0x0063E590 respelled through FOREACHINROUGHAREA_CONSTPROC, now binds ABV for 0x0063F4B0 / 0x0063F7C0; RELOCATION_MATCH, test PASS
+NF27 leftovers	(six CUserProfileManager::Get binders)	not done	0	recorded in NOTES.md: the binders model CUserProfileManager through stand-ins; respelling needs the real class header path per binder
+NF27 leftovers	004887c0 / 00636e50	not done	0	recorded: CPlayer::SetupInitialPlayerMode / InitModes self names need a FABLE_RETAIL_PLAYER private-member opt-in
+NF27 leftovers	013caa28 / 013b7d4c	not done	0	recorded: the global stand-ins need their owning headers proven
+NF27 leftovers	engine/CCountedPointer.h ~124	not done	0	comment-only fix (0x008AB3D0 is ??1?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@QAE@XZ, not CModeSitBase); the overlay rule allows #ifdef additions only, so it is recorded, not edited

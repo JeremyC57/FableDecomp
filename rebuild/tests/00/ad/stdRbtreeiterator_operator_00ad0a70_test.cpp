@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 // std::_Rb_tree_iterator::operator++(int) -- Return the old iterator and advance to its successor.
-// Leaf: ??E?$_Rb_tree_iterator@VCUnprovenValue_00ad0a70@@U?$_Nonconst_traits@VCUnprovenValue_00ad0a70@@@std@@@std@@QAE?AU01@H@Z
-class CUnprovenValue_00ad0a70;
+// Leaf: ??E?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@std@@QAE?AU01@H@Z
 namespace std {
 struct _Rb_tree_node_base {
     bool _M_color;
@@ -24,7 +23,7 @@ public:
         return x;
     }
 };
-template<class Value> struct _Nonconst_traits {};
+template<class Value> struct _Const_traits {};
 struct _Rb_tree_base_iterator { _Rb_tree_node_base* _M_node; };
 template<class Value,class Traits> struct _Rb_tree_iterator : public _Rb_tree_base_iterator {
     typedef _Rb_tree_iterator<Value,Traits> _Self;
@@ -36,7 +35,7 @@ template<class Value,class Traits> struct _Rb_tree_iterator : public _Rb_tree_ba
         return old;
     }
 };
-template _Rb_tree_iterator<CUnprovenValue_00ad0a70,_Nonconst_traits<CUnprovenValue_00ad0a70> > _Rb_tree_iterator<CUnprovenValue_00ad0a70,_Nonconst_traits<CUnprovenValue_00ad0a70> >::operator++(int);
+template _Rb_tree_iterator<unsigned long,_Const_traits<unsigned long> > _Rb_tree_iterator<unsigned long,_Const_traits<unsigned long> >::operator++(int);
 }
 
 int main() {
@@ -45,7 +44,7 @@ int main() {
     h._M_parent=&n2;h._M_left=&n1;h._M_right=&n4;
     n2._M_parent=&h;n2._M_left=&n1;n2._M_right=&n4;
     n1._M_parent=&n2;n4._M_parent=&n2;n4._M_left=&n3;n3._M_parent=&n4;
-    typedef std::_Rb_tree_iterator<CUnprovenValue_00ad0a70,std::_Nonconst_traits<CUnprovenValue_00ad0a70> > Iterator;
+    typedef std::_Rb_tree_iterator<unsigned long,std::_Const_traits<unsigned long> > Iterator;
     Iterator it;it._M_node=&n1;Iterator old=it++;
     int ok=old._M_node==&n1 && it._M_node==&n2;
     old=it++;ok=ok && old._M_node==&n2 && it._M_node==&n3;

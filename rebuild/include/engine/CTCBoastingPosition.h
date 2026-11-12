@@ -16,7 +16,14 @@ public:
 #endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
+#ifdef FABLE_RETAIL_CTCBOASTINGPOSITION_PBOASTINGPODIUM
+    // Retail opt-in (agentFAM11, 2026-11-12, row 0x008147D0 SetBoastingPodium): the member typed as Ego_r.pdb gives it,
+    // CIntelligentPointer<CThing> (8 bytes, packed; needs engine/CIntelligentPointer.h with FABLE_RETAIL_CINTELLIGENTPOINTER
+    // included first). Same size and offset as the opaque bytes of the #else branch.
+    CIntelligentPointer<CThing> PBoastingPodium;            // +0x0c
+#else
     unsigned char PBoastingPodium[0x8];                      // +0x0c CIntelligentPointer<CThing>
+#endif
     float         OrbPosition_X;                             // +0x14 C3DVector::X
     float         OrbPosition_Y;                             // +0x18 C3DVector::Y
     float         OrbPosition_Z;                             // +0x1c C3DVector::Z
