@@ -8,7 +8,7 @@
 // 0x0099EC70 (by-value result); "" 0x0129AAF4.
 // Layout: engine/CTCBuyableHouse.h agrees with retail (CurrentDressLevel +0x1C, FrameToNextCheckIfWeNeedToCreateAnything +0x34);
 // a local model adds the CTCBase ParentThing +4; interface-0x21 component list header +0x0C
-// (landed CountMoneyBags 0x006C04D0 model); CThing script name +0x78, dead flag +0x91.
+// (landed CountMoneyBags 0x006C04D0 model); CThing::ScriptData +0x78 (agentNF32: was mis-named ScriptName; the shared header's ScriptName is +0x74), dead flag +0x91.
 // Shape: the list head is a named local (cached in ebx, spilled once) and the prefix a named CCharString local for the walk; CCharString's inline GetPString/Length (null data =
 // "" / 0) feed _strnicmp and GetSubString; the digit scan is an index loop re-testing Length() each pass.
 extern "C" int __cdecl _strnicmp(const char* a, const char* b, unsigned int n);   // 0x00F3FB90
@@ -53,7 +53,7 @@ class CThing { public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad_0x54[0x24];
-    CCharString   ScriptName;                           // +0x78
+    CCharString   ScriptData;                           // +0x78 (engine/CThing.h: ScriptName +0x74, ScriptData +0x78; Ego_r ScriptName/ScriptData adjacent)
     unsigned char _pad_0x7c[0x91 - 0x7c];
     unsigned char m_stateFlags;                         // +0x91 (bit 0 = dead)
     void SetInLimbo(bool limbo);                        // 0x004C8CF0
@@ -92,7 +92,7 @@ void CTCBuyableHouse::SetupDressingAtLevel(long level)
         for (SThingNode* node = head->next; node != head; node = node->next) {
             CThing* thing = node->thing.Get();
             if (thing && !(thing->m_stateFlags & 1)) {
-                CCharString& name = thing->ScriptName;
+                CCharString& name = thing->ScriptData;
                 if (_strnicmp(name.GetPString(), prefix.GetPString(), prefix.Length()) == 0) {
                     if (level == -1) {
                         thing->SetInLimbo(false);

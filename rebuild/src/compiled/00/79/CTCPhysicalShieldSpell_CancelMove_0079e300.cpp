@@ -1,7 +1,7 @@
 // CTCPhysicalShieldSpell::CancelMove() -- play the def's cancel sound (player-flagged for a player owner), play the "END" effect on the owner, stop being pausable and remove the shield component (0x93) from the owner
 // Leaf: CancelMove
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079E300, 155 bytes.
-// Callees: CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable 0x013CA828, CTCPhysicalShieldSpell::PlaySound
+// Callees: CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable 0x013CA828, CTCPhysicalShieldSpell::PlaySoundW
 //   (const CCharString&, bool) @ 0x0079DE00 (landed under the propagated label "CTCBulletTime::PlaySoundW"), CCharString::~CCharString
 //   @ 0x0099EAE0, CCharString::CCharString(const char*, long) @ 0x0099EBF0, CTCPhysicalShieldSpell::PlayEffect @ 0x0079DEB0,
 //   CThing::RemoveTC(long) @ 0x004C9840 (catalog "CBaseObject::OnPropertyChanged").
@@ -30,7 +30,9 @@ class CTCPhysicalShieldSpell { public:
     const CSpecialAbilitiesPhysicalShieldDef* PDef;   // +0x0c CDefPointer
     unsigned char _pad10[0x34];
     bool    Pausable;                           // +0x44
-    unsigned long PlaySound(const CCharString& sound, bool player);   // 0x0079DE00
+protected:
+    unsigned long PlaySoundW(const CCharString& sound, bool player);   // 0x0079DE00 (Ego_r / FableWin ?PlaySoundW@CTCPhysicalShieldSpell@@IAEKABVCCharString@@_N@Z, protected)
+public:
     void PlayEffect(long effect, const CCharString& boneName, const CCharString& type, CThing* target, long flags);   // 0x0079DEB0
     void CancelMove();
 };
@@ -40,7 +42,7 @@ void CTCPhysicalShieldSpell::CancelMove()
     CThing* owner = ParentThing;
     {
         CCharString sound = GDefStringTable.GetString(PDef->CancelSound);
-        PlaySound(sound, owner->GetType() == 2);
+        PlaySoundW(sound, owner->GetType() == 2);
     }
     {
         CCharString type("", -1);

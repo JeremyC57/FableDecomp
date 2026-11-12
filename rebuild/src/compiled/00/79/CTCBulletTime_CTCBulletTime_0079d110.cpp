@@ -166,7 +166,9 @@ class CTCBulletTime : public CTCBase { public:
         if (ParentThing->GetTC(TCI_SOUND_PLAYER, &emitter))
             emitter->StopSample(sound);
     }
-    unsigned long PlaySoundW(const CCharString& sound, unsigned long flags);   // 0x0079CE80
+private:
+    unsigned long PlaySoundW(const CCharString& sound, bool loop);   // 0x0079CE80 (Ego_r / FableWin ?PlaySoundW@CTCBulletTime@@AAEKABVCCharString@@_N@Z, private)
+public:
     virtual ~CTCBulletTime();
 };
 
@@ -181,7 +183,7 @@ CTCBulletTime::~CTCBulletTime()
         CWorld* world = (&GetWorld());
         world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(PDef->FilterRemoveMode, ScreenFilterKey);
         CCharString sound = GDefStringTable.GetString(PDef->EndSoundStringID);
-        PlaySoundW(sound, 1);
+        PlaySoundW(sound, true);
     }
     CIntelligentPointer<NParticleEngine::CParticleEmitter>& effect = m_tpLoopingEffect;
     if (effect.GetPItem() && !effect.GetPItem()->IsDead()) {

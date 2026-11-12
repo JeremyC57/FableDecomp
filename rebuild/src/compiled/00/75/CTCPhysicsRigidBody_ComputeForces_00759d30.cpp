@@ -7,7 +7,7 @@
 // Layout: retail Body.OneOverMass +0xa0 (PDB +0xac: the three STLport vectors at +0x40/+0x50/+0x60 are 12 bytes in release,
 //          not 16, so engine/CTCPhysicsRigidBody.h does not hold); CRigidBodyConfig as the PDB (CMVelocity +0x3c, CMForce +0x54,
 //          Torque +0x60, AngularVelocity +0x9c).
-// Shape: inline C3DVector::Zero (`X = Y = Z = 0`, stored Z,Y,X) and member operator+= keep &Torque in edi; the Z kick,
+// Shape: inline C3DVector::Clear (`X = Y = Z = 0`, stored Z,Y,X) and member operator+= keep &Torque in edi; the Z kick,
 //          gravity and drag are expressions of the inline ctor.
 enum EInputEventType { EIET_NONE = 0 };
 enum EInputKey { EIK_NONE = 0 };
@@ -23,24 +23,13 @@ class CInputManager { public:
 };
 extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    void Zero() { X = Y = Z = 0.0f; }
-    void operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; }
-    C3DVector& AccurateNormalise();                              // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
-struct CRigidBodyConfig {
-    C3DVector     CMPosition;                      // +0x00
-    unsigned char Orientation[0x30];               // +0x0c
-    C3DVector     CMVelocity;                      // +0x3c
-    C3DVector     AngularMomentum;                 // +0x48
-    C3DVector     CMForce;                         // +0x54
-    C3DVector     Torque;                          // +0x60
-    unsigned char InverseWorldInertiaTensor[0x30]; // +0x6c
-    C3DVector     AngularVelocity;                 // +0x9c
-};
+// agentNF32 (2026-11-12): CRigidBodyConfig is the nested CRigidBody::CRigidBodyConfig of engine/CRigidBody.h and ComputeForces is
+//   private, as both PDBs spell it (Ego_r + FableWin ?ComputeForces@CTCPhysicsRigidBody@@AAEXAAVCRigidBodyConfig@CRigidBody@@@Z) and as
+//   the caller Simulate 0x0075AD50 binds it; the local C3DVector / CRigidBodyConfig stand-ins replaced by engine/C3DVector.h (Clear =
+//   the old inline Zero, X = Y = Z = 0) and engine/CRigidBody.h.
+#define FABLE_RETAIL_C3DVECTOR_CLEAR
+#include "engine/C3DVector.h"
+#include "engine/CRigidBody.h"
 class CWorld { public:
     unsigned long* GetWorldSeed() const;                // 0x0049D810
 };
@@ -68,13 +57,15 @@ class CTCPhysicsRigidBody : public CTCPhysicsBase {
 public:
     unsigned char _pad04[0xa0 - 0x04];
     float         OneOverMass;                     // +0xa0 (Body)
-    void ComputeForces(CRigidBodyConfig& config);
+    typedef CRigidBody::CRigidBodyConfig CRigidBodyConfig;
+private:
+    void ComputeForces(CRigidBodyConfig& config);  // private in Ego_r + FableWin
 };
 
 void CTCPhysicsRigidBody::ComputeForces(CRigidBodyConfig& config)
 {
-    config.Torque.Zero();
-    config.CMForce.Zero();
+    config.Torque.Clear();
+    config.CMForce.Clear();
     CInputEvent event;
     if (GPInputManager->m_enabled && GPInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x2e, event)) {
         config.CMForce.Z += 25.0f / OneOverMass;

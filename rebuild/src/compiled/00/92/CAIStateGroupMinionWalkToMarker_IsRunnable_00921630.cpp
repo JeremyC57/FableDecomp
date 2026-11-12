@@ -9,6 +9,9 @@
 // @ 0x0056D050 (filter, out thing), ~CCharString @ 0x0099EAE0 (twice).
 // Shape: a NAMED CCharString copy of the component's marker name, then the filter holding its own copy (inline copy
 // ctor) in an inner block; the bool result is declared outside it (kept in bl across both destructors). No engine header for this class.
+// Component (agentNF32, 2026-11-12): interface 0xAA is CTCAIScratchpad (ETCInterfaceType TCI_AI_SCRATCHPAD = 170), read through
+//   engine/CTCAIScratchpad.h: ScriptingStateGroup +0x38 and TargetName +0x50 (Ego_r struct_layouts CTCAIScratchpad +56 / +80); was the
+//   local stand-in CTCWalkToMarker { Mode, MarkerName }.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 #include "fable_compiler.h"
 class CTCBase;
@@ -21,6 +24,7 @@ class CWorld;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
+#include "engine/CTCAIScratchpad.h"                 // the interface-0xAA component (TCI_AI_SCRATCHPAD)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CAIBrain { public:
@@ -66,13 +70,6 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CTCWalkToMarker {                        // the interface-0xAA component
-    unsigned char _pad[0x38];
-    long Mode;                                  // +0x38
-    unsigned char _pad_0x3c[0x14];
-    CCharString MarkerName;                     // +0x50
-};
-
 class CThingFilter_HasScriptName { public:
     CCharString ScriptName;
     CThingFilter_HasScriptName(const CCharString& name) : ScriptName(name) { }
@@ -88,12 +85,12 @@ struct CAIStateGroup_MinionWalkToMarker : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionWalkToMarker::IsRunnable()
 {
-    CTCWalkToMarker* walk;
+    CTCAIScratchpad* walk;
     PBrain->PCreature->GetTC(TCI_AI_SCRATCHPAD, &walk);
-    if (walk->Mode == 8 || walk->Mode == 9) {
+    if (walk->ScriptingStateGroup == 8 || walk->ScriptingStateGroup == 9) {
         bool found;
         {
-            CCharString name(walk->MarkerName);
+            CCharString name(walk->TargetName);
             CThingFilter_HasScriptName filter(name);
             CThing* marker;
             found = PeekThingSearchTools().GetPFirstThing(filter, &marker);

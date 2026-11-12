@@ -1,5 +1,5 @@
 // CAIStateGroup_JackOfBladesBase::IsStillRunnable() -- Jack keeps fighting while his target and the arena centre exist.
-// Leaf: ?IsStillRunnable@CAIStateGroup_JackOfBladesBase@@QAE_NXZ
+// Leaf: ?IsStillRunnable@CAIStateGroup_JackOfBladesBase@@IAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00971B00, length 85 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice on PTargetThing at +0x24, twice on PArenaCentre
 // at +0x1c), CAIStateGroupBase::IsStopping @ 0x008FD010.
@@ -38,7 +38,8 @@ struct CAIStateGroup_JackOfBladesBase : CAIStateGroupBase {
     CIntelligentPointer<CThing> PSwordEmitter;      // +0x14 CIntelligentPointer<CThing>
     CIntelligentPointer<CThing> PArenaCentre;       // +0x1c CIntelligentPointer<CThing>
     CIntelligentPointer<CThing> PTargetThing;       // +0x24 CIntelligentPointer<CThingCreatureBase>
-    bool IsStillRunnable();
+protected:
+    bool IsStillRunnable();                         // protected in both PDBs (Ego_r 0x00996980, FableWin 0x02BE5100)
 };
 
 bool CAIStateGroup_JackOfBladesBase::IsStillRunnable()

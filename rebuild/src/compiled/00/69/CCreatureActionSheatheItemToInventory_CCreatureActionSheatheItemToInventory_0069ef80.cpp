@@ -63,22 +63,21 @@ class CCreatureActionBase { public:                           // retail sizeof 0
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, const CAnimationEntry& animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
-void __fastcall DeleteCreatureAction(void* object);    // 0x00668610: the per-type deleter stored in the block
-
 struct SCountBlock {
     long  m_references;                                // +0
     void (__fastcall* m_pfnDestroy)(void*);            // +4
     void* m_pObject;                                   // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(DeleteCreatureAction), m_pObject(object) { }
+    SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) { }
 };
 
 template <class T> class CCountedPointer { public:
     T*           m_pObject;                            // +0
     SCountBlock* m_pCount;                             // +4
+    static void __fastcall DeleteData(void* data);     // 0x00668610 for T = CCreatureActionBase (FableWin.pdb ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z)
     CCountedPointer(T* object) : m_pObject(object)
     {
         if (object)
-            m_pCount = new SCountBlock(m_pObject);
+            m_pCount = new SCountBlock(DeleteData, m_pObject);
         else
             m_pCount = 0;
     }

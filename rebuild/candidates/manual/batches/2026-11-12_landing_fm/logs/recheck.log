@@ -1,0 +1,132 @@
+addr       parity           behav  name
+00416225   MATCH            PASS   CMainGameComponent::GetCurrentServerFrame
+0042b312   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0042b312   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042b312   RELOCATION_MATCH PASS   CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>
+004428f0   RELOCATION_MATCH PASS   std::vector<long,std::allocator<long> >::resize
+00493911   RELOCATION_MATCH PASS   std::_List_base<const CMessageEvent*,std::allocator<const CMessageEvent*> >::clear
+004df885   WARN RELOC_NAME: ??1?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE@XZ -> 004dd2b1 labelled 'std::list<T_004dd2b1>::~list'
+004df885   RELOCATION_MATCH PASS   std::map<long,long,std::less<long>,std::allocator<std::pair<const long,long> > >::~map
+005b16ff   RELOCATION_MATCH PASS   std::_Rb_tree_iterator<std::pair<const long,long>,std::_Const_traits<std::pair<const long,long> > >::operator++
+006590a0   RELOCATION_MATCH PASS   CTCVillage::InvalidateAndClearAllSecuritySweepTasks
+006590bf   RELOCATION_MATCH PASS   CTCVillage::EndSecuritySweep
+00659c32   WARN SHARED_HEADER_AVAILABLE CWorld
+00659c32   WARN SHARED_HEADER_AVAILABLE CTCBase
+00659c32   RELOCATION_MATCH PASS   CTCVillage::StartSecuritySweep
+0065c08a   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065c08a   WARN SHARED_HEADER_AVAILABLE CWorld
+0065c08a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0065c08a   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065c08a   RELOCATION_MATCH PASS   CTCVillage::UpdateSecuritySweepTasks
+00668610   MATCH            PASS   CCountedPointer<CCreatureActionBase>::DeleteData
+00686df0   RELOCATION_MATCH PASS   CTCBase::RemoveFromGlobalTCs
+0069ef80   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0069ef80   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+0069ef80   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0069ef80   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0069ef80   WARN RELOC_NAME: ?GetAnimationFromName@@YIABVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z -> 006924b0 labelled 'CCreatureActionBase::GetRandomAnimFromName'
+0069ef80   RELOCATION_MATCH PASS   CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory
+006c0330   WARN SHARED_HEADER_AVAILABLE CWorld
+006c0330   WARN RELOC_ALIAS: __strnicmp -> 00f3fb90 is the import thunk 'MSVCR71.DLL::_strnicmp'
+006c0330   RELOCATION_MATCH PASS   CTCBuyableHouse::SetupDressingAtLevel
+007044b0   MATCH            PASS   CCountedPointer<CScriptThing>::DeleteData
+00741db0   WARN SHARED_HEADER_AVAILABLE CCRC
+00741db0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup
+00741db0   WARN SHARED_HEADER_AVAILABLE CModeStandBase
+00741db0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00741db0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00741db0   RELOCATION_MATCH PASS   NCreatureMode::CModeIntangible::CModeIntangible
+00759d30   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00759d30   WARN SHARED_HEADER_AVAILABLE CInputManager
+00759d30   WARN SHARED_HEADER_AVAILABLE CWorld
+00759d30   WARN SHARED_HEADER_AVAILABLE CTCBase
+00759d30   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::ComputeForces
+00759ec0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00759ec0   WARN SHARED_HEADER_AVAILABLE CRigidBody
+00759ec0   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::CalculateVertices
+0075ad50   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::Simulate
+0075aec0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0075aec0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+0075aec0   WARN SHARED_HEADER_AVAILABLE C3DMeshObject
+0075aec0   WARN SHARED_HEADER_AVAILABLE CRigidBody
+0075aec0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0075aec0   WARN RELOC_NAME: ?g_framesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0075aec0   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::Move
+0075ba30   RELOCATION_MATCH PASS   CRigidBody::CRigidBodyConfig::operator=
+0076b120   RELOCATION_MATCH PASS   CArray<std::pair<unsigned long,C3DVector> >::push_back
+0079ce80   RELOCATION_MATCH PASS   CTCBulletTime::PlaySoundW
+0079d110   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+0079d110   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+0079d110   WARN SHARED_HEADER_AVAILABLE CEnvironment
+0079d110   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager
+0079d110   WARN SHARED_HEADER_AVAILABLE CWorld
+0079d110   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+0079d110   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+0079d110   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesBulletTimeDef
+0079d110   WARN SHARED_HEADER_AVAILABLE CTCBase
+0079d110   WARN RELOC_NAME: ?RemoveBulletTimeSlowdown@CBulletTimeManager@@QAEXK@Z -> 004c6140 labelled 'CTimeMultiplierController_004c6140::RemoveRequest'
+0079d110   WARN RELOC_NAME: ?StopSample@CTCSoundEmitter@@QAEXK@Z -> 0066add0 labelled 'CTCSoundPlayer::StopAttachedSound'
+0079d110   WARN RELOC_NAME: ?RemoveFilter_006b83f0@CEnvironmentSpellEffects@@QAEXJPAX@Z -> 006b83f0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+0079d110   RELOCATION_MATCH PASS   CTCBulletTime::~CTCBulletTime
+0079de00   RELOCATION_MATCH PASS   CTCPhysicalShieldSpell::PlaySoundW
+0079e300   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+0079e300   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesPhysicalShieldDef
+0079e300   WARN SHARED_HEADER_AVAILABLE CTCPhysicalShieldSpell
+0079e300   RELOCATION_MATCH PASS   CTCPhysicalShieldSpell::CancelMove
+0079eb30   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+0079eb30   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesPhysicalShieldDef
+0079eb30   WARN SHARED_HEADER_AVAILABLE CTCPhysicalShieldSpell
+0079eb30   RELOCATION_MATCH PASS   CTCPhysicalShieldSpell::FrameUpdate
+007e8310   RELOCATION_MATCH PASS   NTCMessages::CMessageOnSetThingOwner::CMessageOnSetThingOwner
+008ce1b0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+008ce1b0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008ce1b0   RELOCATION_MATCH PASS   CCreatureAction_CastAssassinRush::CCreatureAction_CastAssassinRush
+00921630   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00921630   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00921630   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName
+00921630   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00921630   RELOCATION_MATCH PASS   CAIStateGroup_MinionWalkToMarker::IsRunnable
+00971b00   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00971b00   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00971b00   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesBase::IsStillRunnable
+009f1d20   WARN RELOC_ALIAS: _isspace -> 00bfedbe is the import thunk 'MSVCR71.DLL::isspace'
+009f1d20   RELOCATION_MATCH PASS   InitializeMemorySystem
+009f2fc0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f2fc0   RELOCATION_MATCH PASS   CSurface::GetByteLength
+00a66730   RELOCATION_MATCH PASS   CMemoryAllocatorBase::operator new
+
+WINS: 34
+  00416225 MATCH CMainGameComponent::?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ
+  0042b312 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+  004428f0 RELOCATION_MATCH std::vector<long,std::allocator<long> >::?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z
+  00493911 RELOCATION_MATCH std::_List_base<const CMessageEvent*,std::allocator<const CMessageEvent*> >::?clear@?$_List_base@PBVCMessageEvent@@V?$allocator@PBVCMessageEvent@@@std@@@std@@QAEXXZ
+  004df885 RELOCATION_MATCH std::map<long,long,std::less<long>,std::allocator<std::pair<const long,long> > >::??1?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE@XZ
+  005b16ff RELOCATION_MATCH std::_Rb_tree_iterator<std::pair<const long,long>,std::_Const_traits<std::pair<const long,long> > >::??E?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Const_traits@U?$pair@$$CBJJ@std@@@2@@std@@QAEAAU01@XZ
+  006590a0 RELOCATION_MATCH CTCVillage::?InvalidateAndClearAllSecuritySweepTasks@CTCVillage@@AAEXXZ
+  006590bf RELOCATION_MATCH CTCVillage::?EndSecuritySweep@CTCVillage@@QAEXXZ
+  00659c32 RELOCATION_MATCH CTCVillage::StartSecuritySweep
+  0065c08a RELOCATION_MATCH CTCVillage::UpdateSecuritySweepTasks
+  00668610 MATCH CCountedPointer<CCreatureActionBase>::?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z
+  00686df0 RELOCATION_MATCH CTCBase::?RemoveFromGlobalTCs@CTCBase@@QAEXXZ
+  0069ef80 RELOCATION_MATCH CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory
+  006c0330 RELOCATION_MATCH CTCBuyableHouse::SetupDressingAtLevel
+  007044b0 MATCH CCountedPointer<CScriptThing>::?DeleteData@?$CCountedPointer@VCScriptThing@@@@SIXPAX@Z
+  00741db0 RELOCATION_MATCH NCreatureMode::CModeIntangible::??0CModeIntangible
+  00759d30 RELOCATION_MATCH CTCPhysicsRigidBody::ComputeForces
+  00759ec0 RELOCATION_MATCH CTCPhysicsRigidBody::CalculateVertices
+  0075ad50 RELOCATION_MATCH CTCPhysicsRigidBody::Simulate
+  0075aec0 RELOCATION_MATCH CTCPhysicsRigidBody::?Move@CTCPhysicsRigidBody@@UAEXXZ
+  0075ba30 RELOCATION_MATCH CRigidBody::CRigidBodyConfig::??4CRigidBodyConfig@CRigidBody@@QAEAAV01@ABV01@@Z
+  0076b120 RELOCATION_MATCH CArray<std::pair<unsigned long,C3DVector> >::?push_back@?$CArray@U?$pair@KVC3DVector@@@std@@@@QAEXABU?$pair@KVC3DVector@@@std@@@Z
+  0079ce80 RELOCATION_MATCH CTCBulletTime::?PlaySoundW@CTCBulletTime@@AAEKABVCCharString@@_N@Z
+  0079d110 RELOCATION_MATCH CTCBulletTime::??1CTCBulletTime
+  0079de00 RELOCATION_MATCH CTCPhysicalShieldSpell::?PlaySoundW@CTCPhysicalShieldSpell@@IAEKABVCCharString@@_N@Z
+  0079e300 RELOCATION_MATCH CTCPhysicalShieldSpell::CancelMove
+  0079eb30 RELOCATION_MATCH CTCPhysicalShieldSpell::?FrameUpdate@CTCPhysicalShieldSpell@@QAEXXZ
+  007e8310 RELOCATION_MATCH NTCMessages::CMessageOnSetThingOwner::??0CMessageOnSetThingOwner@NTCMessages@@QAE@PAVCThing@@@Z
+  008ce1b0 RELOCATION_MATCH CCreatureAction_CastAssassinRush::??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z
+  00921630 RELOCATION_MATCH CAIStateGroup_MinionWalkToMarker::?IsRunnable@CAIStateGroup_MinionWalkToMarker@@UAE_NXZ
+  00971b00 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?IsStillRunnable@CAIStateGroup_JackOfBladesBase@@IAE_NXZ
+  009f1d20 RELOCATION_MATCH _global::?InitializeMemorySystem@@YIXXZ
+  009f2fc0 RELOCATION_MATCH CSurface::?GetByteLength@CSurface@@QBEKXZ
+  00a66730 RELOCATION_MATCH CMemoryAllocatorBase::??2CMemoryAllocatorBase@@SIPAXI@Z

@@ -1,5 +1,10 @@
 // CDefinitionManager::GetDef<T>(long, CDefPointer&) -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false; frame-pointer size TU
+// Leaf: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042B312, oracle length 98 bytes.
+// Name (agentNF32, 2026-11-12; was the placeholder CDefinitionManager::GetDef_0042b312(long, CDefPointer<const CDefClassBase>&)):
+//   FableWin.pdb 0x01A526F0 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+//   (const member template, def pointer out by pointer); the landed 0x0047A9F0 (CGameDefinitionManager::Get) binds this address under
+//   that symbol (rebuild/oracles/reloc_bindings.tsv).
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
@@ -66,21 +71,37 @@ template <class T> class CDefPointer { public:
         }
         return *this;
     }
+    template <class U> FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer<U>& other)   // the same body from the base def type
+    {
+        if (m_p != other.m_p) {
+            if (m_p) {
+                m_p->Release();
+                m_p = 0;
+            }
+            m_p = other.m_p;
+            if (m_p)
+                ++m_p->m_count;
+        }
+        return *this;
+    }
 };
 
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef_0042b312(long index, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;
 };
 
-bool CDefinitionManager::GetDef_0042b312(long index, CDefPointer<const CDefClassBase>& out)
+template <class T> bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
 {
     if (index <= 0)
         return false;
     CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
     if (def.m_p) {
-        out = def;
+        *out = def;
         return true;
     }
     return false;
 }
+
+namespace NUISystem { class CUIMiscThingsDef; }
+template bool CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>(long, CDefPointer<const NUISystem::CUIMiscThingsDef>*) const;

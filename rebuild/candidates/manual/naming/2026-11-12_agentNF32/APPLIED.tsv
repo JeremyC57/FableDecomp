@@ -1,0 +1,28 @@
+tag	address	status	binders_respelled	note
+land1011fe	00971b00	done	0	self access fix (protected); caller 0x00972CC0 already protected
+land1011ff	00a66730	done	0	self onto engine/CMemoryAllocatorBase.h opt-in; caller 0x009F20B0 already right
+land1011ff	009f1d20	partial	0	self now __fastcall (?InitializeMemorySystem@@YIXXZ, as binder 0x009F20B0); the anonymous namespace (?A0xcf4a15dd) cannot be spelled across two row TUs (NOTES)
+land1011fg	00493911	done	0	self (descriptive-by-library); caller 0x00493BDD already right
+land1011fg	007044b0	partial	0	self done; binder 0x00704A80 (local non-template CCountedPointer model) left (NOTES)
+land1011fg	00875fb0	partial	0	busy: 0x00875FB0 is in BUSY.txt; not touched
+land1011fg	006924b0	partial	0	~50 landed sources reach 0x006924B0 through free stand-ins; the protected static (K) needs each caller on a CCreatureActionBase-derived model -- too large for a short pass (NOTES)
+land1011fh	007e8310	done	0	self onto NTCMessages::CMessageOnSetThingOwner (model of 0x007E8590); no other binder of the ctor
+land1011fh	006c0330	partial	1	PORT: member respelled in the row's local CThing model only; the move onto engine/CThing.h (ScriptName +0x74 / ScriptData +0x78) is still to do. the row's local CThing model member respelled ScriptName -> ScriptData (+0x78); header move not attempted
+land1011fh	00921630	done	1	row moved onto engine/CTCAIScratchpad.h (ScriptingStateGroup / TargetName); local CTCWalkToMarker removed
+land1011fh	009f2fc0	done	0	self onto engine/CSurface.h retail class + overlay opt-in FABLE_RETAIL_CSURFACE_GETBYTELENGTH; callers already right
+land1011fh	008ce1b0	partial	0	self done; binder 0x008C2550 (same-TU CCountedPointer_CCreatureActionBase stand-in ctor for frame packing) left (NOTES)
+land1011fh	0042b312	done	0	self (const member template, pointer out); caller 0x0047A9F0 already right
+land1011fh	004428f0	partial	0	self done (descriptive-by-library) + callee 0x00440F00 now ?_M_fill_insert; 15 stand-in binders left (NOTES)
+land1011fh	00416225	done	0	verified (Ego_r + FableWin + Ego_r order + layout); self renamed; ICF stand-in binders listed in NOTES
+land1011fh	00668610	partial	2	self done; 0x0069EF80 / 0x00741DB0 respelled; 0x00668D90 / 0x0069F0F0 (stand-in classes) left
+land1011fh	00686d90	done	0	verified (Ego_r 0x006B2180 + FableWin 0x021915D0); every landed binder already spells Peek; only the manifest label is wrong (no row at 0x00686D90)
+land1011fi	006590bf	done	0	self onto engine/CTCVillage.h; caller 0x007E2A60 already right
+land1011fi	006590a0	done	2	self (private member) + 0x00659C32 / 0x0065C08A access respelled
+land1011fi	00686df0	done	0	self onto engine/CTCBase.h; caller 0x005C00A0 already right
+land1011fi	00a358f0	partial	0	busy: 0x00A358F0 is in BUSY.txt; not touched
+land1011fi	0075ba30	done	3	self onto engine/CRigidBody.h + 0x0075AD50 (with its PDB-private callees); scope widened (not a queue entry, both PDBs): Simulate 0x0075AD50 private, its binder 0x0075AEC0 respelled; self row ComputeForces 0x00759D30 renamed to the private nested-config spelling 0x0075AD50 binds; self row CalculateVertices 0x00759EC0 made private (as 0x0075B000 / 0x0075AD50 bind it)
+land1011fi	0076b120	partial	0	self onto engine/CArray.h; stand-in-class binders 0x007C2480 (CVectorParamVector@NParticleEngine) / 0x008F7950 (NDust008f7950) left
+land1011fi	0079ce80	done	1	self onto engine/CTCBulletTime.h + CTCSoundPlayer.h; 0x0079D110 respelled
+land1011fi	0079de00	done	2	self onto engine/CTCPhysicalShieldSpell.h; 0x0079E300 / 0x0079EB30 respelled (0x0079EC10 already right)
+land1011fi	005b16ff	done	0	self (descriptive-by-library); caller 0x006CF530 already right
+land1011fi	004df885	done	0	self named by target (tree dtor 0x004DD2B1) + callers (0x006E7D50 ScriptTimers, 0x006CF530); descriptive-by-library

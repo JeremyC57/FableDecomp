@@ -49,7 +49,9 @@ class CTCVillage : public CTCBase { public:
     unsigned char  _pad_0x60[0x54];
     bool           SecuritySweepUrgent;     // +0xB4
     float          InitialSecuritySweepRadius;  // +0xB8
-    void InvalidateAndClearAllSecuritySweepTasks();   // 0x006590A0
+private:
+    void InvalidateAndClearAllSecuritySweepTasks();   // 0x006590A0 (private: Ego_r / FableWin ?InvalidateAndClearAllSecuritySweepTasks@CTCVillage@@AAEXXZ)
+public:
     void CalculateSecuritySweepTasks();     // 0x00659800
     void StartSecuritySweep(bool urgent);
 };

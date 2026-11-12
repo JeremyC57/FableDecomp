@@ -99,6 +99,11 @@ public:
  void Unlock()const{PD3DSurface->UnlockRect();}
  unsigned long GetByteLength()const;                      // 0x009F2FC0
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_GETBYTELENGTH
+ // Retail opt-in (agentNF32, 2026-11-12, row 0x009F2FC0 itself): Ego_r.pdb 0x00B46CA0 / FableWin.pdb 0x030C5F90 ?GetByteLength@CSurface@@QBEKXZ;
+ // the row defines it beside GetPixelFormat (FABLE_RETAIL_CSURFACE_PIXELFORMAT). Declaration only; do not combine with _LOCK / _CLEAR.
+ unsigned long GetByteLength()const;                      // 0x009F2FC0
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_SWIZZLE
  // Retail opt-in (agentNF20, 2026-11-11, rows 0x009F4330 / 0x009F4360): Ego_r.pdb (0x00B48030 / 0x00B48060, the order of retail) +
  // FableWin.pdb ?Swizzle@CSurface@@QAEXK@Z / ?Unswizzle@CSurface@@QAEXK@Z; the PC bodies only lock (Lock 0x009F33E0) and Unlock.

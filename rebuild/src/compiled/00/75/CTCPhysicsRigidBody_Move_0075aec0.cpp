@@ -81,6 +81,8 @@ class CTCPhysicsRigidBody : public CTCPhysicsBase { public:
     virtual void Move();                                    // slot 87 (overrides CTCPhysicsBase::Move)
     unsigned char _pad40[0xA0 - 0x40];                      // CollisionNormal .. OffsetVector
     CRigidBody Body;                                        // +0xA0
+private:
+    // Private in Ego_r.pdb 0x00769E60 + FableWin.pdb 0x025C0C40 (?Simulate@CTCPhysicsRigidBody@@AAEXM@Z; agentNF32 access respelling).
     void Simulate(float deltaTime);                         // 0x0075AD50
 };
 

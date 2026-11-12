@@ -36,7 +36,9 @@ class CTCPhysicalShieldSpell { public:
     unsigned char _pad20[0x44 - 0x20];
     bool    Pausable;                           // +0x44
     bool    Paused;                             // +0x45
-    unsigned long PlaySound(const CCharString& sound, bool player);   // 0x0079DE00
+protected:
+    unsigned long PlaySoundW(const CCharString& sound, bool player);   // 0x0079DE00 (Ego_r / FableWin ?PlaySoundW@CTCPhysicalShieldSpell@@IAEKABVCCharString@@_N@Z, protected)
+public:
     void PlayEffect(long effect, const CCharString& boneName, const CCharString& type, CThing* target, long flags);   // 0x0079DEB0
     void PlayShieldEffects(CThingCreatureBase* creature);   // 0x0079E420
     void FrameUpdate();
@@ -55,7 +57,7 @@ void CTCPhysicalShieldSpell::FrameUpdate()
         if (--CurShieldFadeOutTimer <= 0) {
             {
                 CCharString sound = GDefStringTable.GetString(PDef->EndSound);
-                PlaySound(sound, owner->GetType() == 2);
+                PlaySoundW(sound, owner->GetType() == 2);
             }
             {
                 CCharString type("", -1);

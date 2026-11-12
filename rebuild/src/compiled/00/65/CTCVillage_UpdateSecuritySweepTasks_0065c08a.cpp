@@ -60,7 +60,9 @@ class CTCVillage : public CTCBase { public:
     unsigned char _pad_0x20[0x3c];
     CTaskList     SecuritySweepTasks;           // +0x5c list<CCountedPointer<CVillageTaskSecuritySweep> >
     bool IsHeroCriminal();                      // 0x0065BFCE
-    void InvalidateAndClearAllSecuritySweepTasks();   // 0x006590A0
+private:
+    void InvalidateAndClearAllSecuritySweepTasks();   // 0x006590A0 (private: Ego_r / FableWin ?InvalidateAndClearAllSecuritySweepTasks@CTCVillage@@AAEXXZ)
+public:
     void CalculateSecuritySweepTasks();         // 0x00659800
     void UpdateSecuritySweepTasks();
 };

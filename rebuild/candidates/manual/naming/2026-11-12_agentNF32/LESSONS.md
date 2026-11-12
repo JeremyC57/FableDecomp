@@ -1,0 +1,7 @@
+- A 5-byte `jmp` COMDAT for a container destructor is the implicit ~map tail-calling an out-of-line ~_Rb_tree; `#pragma optimize("s")` + fable_map.h reproduces it (0x004DF885).
+- A queued "protected static" callee (K) cannot be respelled in free-function stand-in callers; only derived-class models can call it -- check access before counting binders.
+- Moving one parameter type onto its shared header respells every sibling callee that takes it: take their PDB spellings (access included) in the same edit (0x0075AD50).
+- A local template CCountedPointer<T> gets the PDB DeleteData spelling by adding a static member and passing it into the count block; same bytes (0x0069EF80, 0x00741DB0).
+- Header opt-ins often depend on another opt-in defined before the FIRST include of a dependency (C3DVECTOR_CLEAR before C3DVector.h); put defines at the top.
+- An anonymous-namespace PDB name cannot be shared between two row TUs; fix the calling convention and record the namespace as a gap.
+- An access fix on a row's own name changes its mangled leaf: grep reloc_bindings for the old symbol and respell every landed binder, and check each landed self row of a callee whose spelling the row changes.

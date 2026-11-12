@@ -1,5 +1,5 @@
 // CSurface::GetByteLength() -- size of the surface's pixel data in bytes: one GetDesc for the dimensions, the pixel format (GetPixelFormat, inlined) for the bits per pixel, then depth * Width * Height / 8
-// Leaf: ?GetByteLength@CSurface_Methods@@QBEKXZ
+// Leaf: ?GetByteLength@CSurface@@QBEKXZ
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F2FC0, length 75 bytes.
@@ -9,9 +9,10 @@
 // inlined GetPixelFormat's own description (+0x24); the depth is multiplied straight from the frame by Height
 // then Width (`imul eax,[esp+24h] ; imul eax,[esp+20h]`) and `shr eax,3` (unsigned). GetPixelFormat
 // (0x009F2F60) is defined in the same TU and auto-inlined (/Ob2), as in retail.
-// Model: engine/CSurface.h (+4 PD3DSurface) with a methods struct.
+// Model: engine/CSurface.h retail class (+4 PD3DSurface; FABLE_RETAIL_CSURFACE_PIXELFORMAT + _GETBYTELENGTH declare both members).
+// Name (agentNF32, 2026-11-12): Ego_r.pdb 0x00B46CA0 + FableWin.pdb 0x030C5F90 ?GetByteLength@CSurface@@QBEKXZ; the landed 0x009FDCB0 binds this
+//   address under that symbol (rebuild/oracles/reloc_bindings.tsv). Was the stand-in CSurface_Methods.
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
-#include "engine/CSurface.h"
 
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
     _D3DFORMAT Format;                          // +0x00 D3DFORMAT
@@ -53,19 +54,19 @@ public:
     unsigned long GetColourDepth() const;   // 0x009E3820
 };
 
-struct CSurface_Methods : CSurface {
-    CPixelFormat GetPixelFormat() const;
-    unsigned long GetByteLength() const;
-};
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_PIXELFORMAT
+#define FABLE_RETAIL_CSURFACE_GETBYTELENGTH
+#include "engine/CSurface.h"
 
-CPixelFormat CSurface_Methods::GetPixelFormat() const
+CPixelFormat CSurface::GetPixelFormat() const
 {
     D3DSURFACE_DESC_Local desc;
     PD3DSurface->GetDesc(&desc);
     return CPixelFormat(desc.Format);
 }
 
-unsigned long CSurface_Methods::GetByteLength() const
+unsigned long CSurface::GetByteLength() const
 {
     D3DSURFACE_DESC_Local desc;
     PD3DSurface->GetDesc(&desc);

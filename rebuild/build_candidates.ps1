@@ -28655,9 +28655,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00668610'
-        Module = '_global'
-        Source = '00/66/global_DeleteData_00668610.cpp'
-        TestSource = '00/66/global_DeleteData_00668610_test.cpp'
+        Module = 'CCountedPointer<CCreatureActionBase>'
+        Source = '00/66/CCountedPointer_DeleteData_00668610.cpp'
+        TestSource = '00/66/CCountedPointer_DeleteData_00668610_test.cpp'
         PassPattern = 'AUTO_TINY_00668610_TEST PASS'
     }
     [pscustomobject]@{
@@ -28669,9 +28669,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007044b0'
-        Module = '_global'
-        Source = '00/70/global_DeleteData_007044b0.cpp'
-        TestSource = '00/70/global_DeleteData_007044b0_test.cpp'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/70/CCountedPointer_DeleteData_007044b0.cpp'
+        TestSource = '00/70/CCountedPointer_DeleteData_007044b0_test.cpp'
         PassPattern = 'AUTO_TINY_007044b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -35368,9 +35368,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b16ff'
-        Module = '_global'
-        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b16ff.cpp'
-        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b16ff_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<const long,long>,std::_Const_traits<std::pair<const long,long> > >'
+        Source = '00/5b/stdRbtreeiterator_operator_005b16ff.cpp'
+        TestSource = '00/5b/stdRbtreeiterator_operator_005b16ff_test.cpp'
         PassPattern = '005b16ff_TEST PASS'
     }
     [pscustomobject]@{
@@ -35599,9 +35599,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a66730'
-        Module = '_global'
-        Source = '00/a6/global_operatornew_00a66730.cpp'
-        TestSource = '00/a6/global_operatornew_00a66730_test.cpp'
+        Module = 'CMemoryAllocatorBase'
+        Source = '00/a6/CMemoryAllocatorBase_operatornew_00a66730.cpp'
+        TestSource = '00/a6/CMemoryAllocatorBase_operatornew_00a66730_test.cpp'
         PassPattern = '00a66730_TEST PASS'
     }
     [pscustomobject]@{
@@ -75145,9 +75145,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004df885'
-        Module = '_global'
-        Source = '00/4d/CActiveFile_OnReadFinished_004df885.cpp'
-        TestSource = '00/4d/CActiveFile_OnReadFinished_004df885_test.cpp'
+        Module = 'std::map<long,long,std::less<long>,std::allocator<std::pair<const long,long> > >'
+        Source = '00/4d/stdmap_map_004df885.cpp'
+        TestSource = '00/4d/stdmap_map_004df885_test.cpp'
         PassPattern = 'PASS_004df885'
     }
     [pscustomobject]@{
@@ -75726,9 +75726,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006590bf'
-        Module = '_global'
-        Source = '00/65/CTCVillage_InvalidateAndClearAllSecuritySweepTasks_006590bf.cpp'
-        TestSource = '00/65/CTCVillage_InvalidateAndClearAllSecuritySweepTasks_006590bf_test.cpp'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_EndSecuritySweep_006590bf.cpp'
+        TestSource = '00/65/CTCVillage_EndSecuritySweep_006590bf_test.cpp'
         PassPattern = 'PASS_006590bf'
     }
     [pscustomobject]@{
@@ -76916,9 +76916,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00416225'
-        Module = '_global'
-        Source = '00/41/CWorld_DrawGetEnvironment_00416225.cpp'
-        TestSource = '00/41/CWorld_DrawGetEnvironment_00416225_test.cpp'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_GetCurrentServerFrame_00416225.cpp'
+        TestSource = '00/41/CMainGameComponent_GetCurrentServerFrame_00416225_test.cpp'
         PassPattern = 'PASS_00416225'
     }
     [pscustomobject]@{
@@ -86346,9 +86346,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00493911'
-        Module = '_global'
-        Source = '00/49/CGuiControlTreePane_SortTreeRecursively_00493911.cpp'
-        TestSource = '00/49/CGuiControlTreePane_SortTreeRecursively_00493911_test.cpp'
+        Module = 'std::_List_base<const CMessageEvent*,std::allocator<const CMessageEvent*> >'
+        Source = '00/49/stdListbase_clear_00493911.cpp'
+        TestSource = '00/49/stdListbase_clear_00493911_test.cpp'
         PassPattern = 'PASS_00493911'
     }
     [pscustomobject]@{
@@ -145752,9 +145752,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e8310'
-        Module = 'CMessageOnSetThingOwner'
-        Source = '00/7e/CMessageOnSetThingOwner_CMessageOnSetThingOwner_007e8310.cpp'
-        TestSource = '00/7e/CMessageOnSetThingOwner_CMessageOnSetThingOwner_007e8310_test.cpp'
+        Module = 'NTCMessages::CMessageOnSetThingOwner'
+        Source = '00/7e/NTCMessagesCMessageOnSetThingOwner_CMessageOnSetThingOwner_007e8310.cpp'
+        TestSource = '00/7e/NTCMessagesCMessageOnSetThingOwner_CMessageOnSetThingOwner_007e8310_test.cpp'
         PassPattern = '007e8310_TEST PASS'
     }
     [pscustomobject]@{
@@ -175862,9 +175862,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004428f0'
-        Module = '_global'
-        Source = '00/44/global_ResizeCRetailVector004428f0_004428f0.cpp'
-        TestSource = '00/44/global_ResizeCRetailVector004428f0_004428f0_test.cpp'
+        Module = 'std::vector<long,std::allocator<long> >'
+        Source = '00/44/stdvector_resize_004428f0.cpp'
+        TestSource = '00/44/stdvector_resize_004428f0_test.cpp'
         PassPattern = '004428f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -177046,8 +177046,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0042b312'
         Module = 'CDefinitionManager'
-        Source = '00/42/CDefinitionManager_GetDef0042b312_0042b312.cpp'
-        TestSource = '00/42/CDefinitionManager_GetDef0042b312_0042b312_test.cpp'
+        Source = '00/42/CDefinitionManager_GetDef_0042b312.cpp'
+        TestSource = '00/42/CDefinitionManager_GetDef_0042b312_test.cpp'
         PassPattern = '0042b312_TEST PASS'
     }
     [pscustomobject]@{
@@ -211291,9 +211291,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079de00'
-        Module = 'CTCBulletTime'
-        Source = '00/79/CTCBulletTime_PlaySoundW_0079de00.cpp'
-        TestSource = '00/79/CTCBulletTime_PlaySoundW_0079de00_test.cpp'
+        Module = 'CTCPhysicalShieldSpell'
+        Source = '00/79/CTCPhysicalShieldSpell_PlaySoundW_0079de00.cpp'
+        TestSource = '00/79/CTCPhysicalShieldSpell_PlaySoundW_0079de00_test.cpp'
         PassPattern = '0079de00_TEST PASS'
     }
     [pscustomobject]@{
@@ -242686,9 +242686,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075ba30'
-        Module = 'CRigidBodyConfig'
-        Source = '00/75/CRigidBodyConfig_operator_0075ba30.cpp'
-        TestSource = '00/75/CRigidBodyConfig_operator_0075ba30_test.cpp'
+        Module = 'CRigidBody::CRigidBodyConfig'
+        Source = '00/75/CRigidBodyCRigidBodyConfig_operator_0075ba30.cpp'
+        TestSource = '00/75/CRigidBodyCRigidBodyConfig_operator_0075ba30_test.cpp'
         PassPattern = '0075ba30_TEST PASS'
     }
     [pscustomobject]@{
@@ -354674,9 +354674,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0076b120'
-        Module = 'std::vector'
-        Source = '00/76/stdvector_pushback_0076b120.cpp'
-        TestSource = '00/76/stdvector_pushback_0076b120_test.cpp'
+        Module = 'CArray<std::pair<unsigned long,C3DVector> >'
+        Source = '00/76/CArray_pushback_0076b120.cpp'
+        TestSource = '00/76/CArray_pushback_0076b120_test.cpp'
         PassPattern = '0076b120_TEST PASS'
     }
     [pscustomobject]@{

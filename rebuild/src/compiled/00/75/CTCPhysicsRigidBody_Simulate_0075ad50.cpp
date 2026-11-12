@@ -15,6 +15,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
     return (last == first) ? result
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
+#define FABLE_RETAIL_C3DVECTOR_CLEAR                // engine/CRigidBody.h Reset() needs C3DVector::Clear
 #include "engine/C3DVector.h"
 inline C3DVector* CopyVectors(C3DVector* first, C3DVector* last, C3DVector* result)
 {
@@ -37,16 +38,17 @@ struct CLongVector {                                // STLport vector<long>
     long* _M_end_of_storage;
     void clear() { _M_finish = (long*)CopyTrivial(_M_finish, _M_finish, _M_start); }
 };
-struct CRigidBodyConfig {
-    unsigned char _d[0xb4];
-    CRigidBodyConfig& operator=(const CRigidBodyConfig& other);   // 0x0075BA30
-};
-enum ECollideState { COLLIDE_PENETRATING = 0, COLLIDE_COLLIDING = 1, COLLIDE_CLEAR = 2 };
+// CRigidBody::CRigidBodyConfig (agentNF32, 2026-11-12; was a top-level opaque struct): the nested class of engine/CRigidBody.h, its
+//   implicit operator= called out of line (0x0075BA30 ??4CRigidBodyConfig@CRigidBody@@QAEAAV01@ABV01@@Z, Ego_r 0x0076AA50 / FableWin 0x025C0AF0).
+#define FABLE_RETAIL_CRIGIDBODYCONFIG_ASSIGN_OUTOFLINE
+#include "engine/CRigidBody.h"
 extern float g_physicsTargetTime;                  // 0x013BAD70
 extern float g_physicsReachedTime;                 // 0x013BAD74
 extern float g_physicsStepTime;                    // 0x013BAD78
 class CTCPhysicsRigidBody {
 public:
+    enum ECollideState { COLLIDE_PENETRATING = 0, COLLIDE_COLLIDING = 1, COLLIDE_CLEAR = 2 };   // nested (both PDBs: W4ECollideState@1@)
+    typedef CRigidBody::CRigidBodyConfig CRigidBodyConfig;
     virtual void v00();
     unsigned char    _pad04[0x40 - 0x04];
     CVectorVector    CollisionNormal;              // +0x40
@@ -54,6 +56,9 @@ public:
     unsigned char    _pad58[0xf0 - 0x58];
     CRigidBodyConfig CurrentConfig;                // +0xf0 (Body.CurrentConfig)
     CRigidBodyConfig LastConfig;                   // +0x1a4 (Body.LastConfig)
+    // Private in Ego_r.pdb and FableWin.pdb (AAE): ComputeForces / Integrate / CalculateVertices / CheckForCollisions /
+    // ResolveCollisions / Simulate (agentNF32 respelling; 0x0075B000 binds CalculateVertices under the same private spelling).
+private:
     void ComputeForces(CRigidBodyConfig& config);  // 0x00759D30
     void Integrate(float deltaTime);               // 0x00759F80
     void CalculateVertices(CRigidBodyConfig& config);            // 0x00759EC0

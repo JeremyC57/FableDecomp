@@ -42,6 +42,7 @@ struct CRigidBody {
 struct CTCPhysicsRigidBody {
     unsigned char _pad00[0xa0];
     CRigidBody Body;                                   // +0xa0
+private:                                               // private in Ego_r + FableWin (AAE; agentNF32 access respelling, as 0x0075B000 / 0x0075AD50 bind it)
     void CalculateVertices(CRigidBody::CRigidBodyConfig& config);
 };
 

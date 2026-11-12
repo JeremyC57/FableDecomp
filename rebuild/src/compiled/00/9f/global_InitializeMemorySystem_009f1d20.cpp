@@ -1,5 +1,8 @@
 // InitializeMemorySystem() -- read boot.ini into a GlobalAlloc buffer and walk it as `name = value` lines (skipping leading whitespace, `//` comment lines and trailing whitespace, then trimming around the first '='); nothing is kept from the parse in retail, so only the scan (its isspace calls) survives before the buffer is freed
-// Leaf: ?InitializeMemorySystem@@
+// Leaf: ?InitializeMemorySystem@@YIXXZ
+// Name: Ego_r.pdb 0x00B458B0 / FableWin.pdb 0x030BCA50 ?InitializeMemorySystem@?A0xcf4a15dd@@YIXXZ (anonymous-namespace __fastcall
+//   in the allocator TU). Spelled __fastcall here as caller 0x009F20B0 binds it (?InitializeMemorySystem@@YIXXZ); the anonymous
+//   namespace cannot be spelled across two row TUs (its ?A0x hash is per-TU and an unreferenced internal function is not emitted).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F1D20, 347 bytes, no arguments, plain `ret`. Single caller: 0x009F20E3 in the
 //   constructor at 0x009F20B0 (it initialises and enters a critical section at 0x013CAA70 first, then clears its tables),
 //   so the catalog label "InitializeMemorySystem" names the caller's purpose; the body is a boot.ini reader whose
@@ -31,7 +34,7 @@ inline char* FindChar(char* p, char* end, char ch)
     return p;
 }
 
-void InitializeMemorySystem()
+void __fastcall InitializeMemorySystem()
 {
     void* file = CreateFileA("boot.ini", 0x80000000, 1, 0, 3, 0x08000000, 0);
     if (file == (void*)-1) {

@@ -108,25 +108,24 @@ struct SCountBlock {                       // 12 bytes, operator new'd
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object);
+    SCountBlock(void (__fastcall* destroy)(void*), void* object);
 };
 
-void __fastcall CountedDestroy(void* object);   // 0x00668610 (type-erased delete of the counted object)
-
-inline SCountBlock::SCountBlock(void* object)
-    : m_references(1), m_pfnDestroy(CountedDestroy), m_pObject(object)
+inline SCountBlock::SCountBlock(void (__fastcall* destroy)(void*), void* object)
+    : m_references(1), m_pfnDestroy(destroy), m_pObject(object)
 {
 }
 
 template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
     T*           m_pObject;                // +0
     SCountBlock* m_pCount;                 // +4
+    static void __fastcall DeleteData(void* data);   // 0x00668610 for T = CCreatureActionBase (FableWin.pdb ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z)
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
     CCountedPointer(T* object)
     {
         m_pObject = object;
         if (object)
-            m_pCount = new SCountBlock(m_pObject);
+            m_pCount = new SCountBlock(DeleteData, m_pObject);
         else
             m_pCount = 0;
     }
