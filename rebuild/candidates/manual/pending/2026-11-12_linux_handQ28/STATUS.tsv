@@ -1,0 +1,9 @@
+address	name	grade	grades_used	note
+0x006B05A0	CTCPhysicsBase::CreatePPhysicsMeshInfo	DIFFER(110v110)	10	ported (CTCPhysicsBase/CWorld/CMeshDataBank/C3DMeshInfo/CEngineGraphic); push vs mov ecx,esi order at both virtual calls
+0x008031E0	CTCTargetingPlayer::GetPBestThingForMeleeAttack	DIFFER(150v152)	13	ported (CTCTargetingPlayer/CThing/CPlayer/CTCTargeted/CTCEnemy); only the parent-through-ebx argument copy left
+0x009B00D0	CParentDefClassBase::AddSubDef	RELOCATION_MATCH	3	ported (CParentDefClassBase typed members, CVectorMap Insert/Update, CCharString::GetCRC, CSubDefInfo(long,long))
+0x008F70F0	CMap::AddThemeDefIndexToPalette	DIFFER(144v164)	9	ported (CMap THEMEPALETTE + real ZeroAllUnusedThemePaletteEntries body via CHeightMap GetCell); store tails merged
+0x00997880	NFile::GetItemFromPath	RELOCATION_MATCH	2	the landed CDriveManager twin 0x009E4CB0 body as the NFile __fastcall
+0x00AEB790	NParticleEngine::CParticleEmitterManager::Create2DEmitter	DIFFER(198v171)	3	ported (CParticleEmitter/List/Manager/Database, CCountedPointer, C3DOrientationInterpolator); needs the real Insert body in the TU
+0x004BE3E0	NGraphicAppearance::CTCGraphicAppearance::IsResourcesLoaded	RELOCATION_MATCH	2	ported; GetAllMeshes + IsResourcesLoadedForMesh real bodies expanded
+0x00A69B70	CTextureManager::AllocateTexture	DIFFER(170v176)	6	ported (CTextureManager/CManagedTexture/CManagedTextureData/CIVCountedPointer Reset); register colouring + add-ref copy

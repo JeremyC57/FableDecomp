@@ -393432,6 +393432,27 @@ $catalog = @(
         TestSource = '00/d3/NScriptCQFireHeartScript_StartRound_00d39960_test.cpp'
         PassPattern = '00d39960_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009b00d0'
+        Module = 'CParentDefClassBase'
+        Source = '00/9b/CParentDefClassBase_AddSubDef_009b00d0.cpp'
+        TestSource = '00/9b/CParentDefClassBase_AddSubDef_009b00d0_test.cpp'
+        PassPattern = '009b00d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00997880'
+        Module = 'NFile'
+        Source = '00/99/NFile_GetItemFromPath_00997880.cpp'
+        TestSource = '00/99/NFile_GetItemFromPath_00997880_test.cpp'
+        PassPattern = '00997880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004be3e0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_IsResourcesLoaded_004be3e0.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_IsResourcesLoaded_004be3e0_test.cpp'
+        PassPattern = '004be3e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

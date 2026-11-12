@@ -44,6 +44,14 @@ public:
     public:
         long DefIndex;                                                   // +0x00
         long OriginalParentDefIndex;                                     // +0x04
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_SUBDEFINFO_CTOR
+        // Chunk Q28 (row 0x009B00D0 CParentDefClassBase::AddSubDef): FableWin.pdb ??0CSubDefInfo@CDefClassBase@@QAE@JJ@Z (inline in
+        // retail: the row stores the two parameters straight into the pair) and ??0CSubDefInfo@CDefClassBase@@QAE@XZ (its body is not
+        // in retail bytes this row reads: declared only). No layout change.
+        CSubDefInfo();
+        CSubDefInfo(long def_index, long original_parent_def_index)
+            : DefIndex(def_index), OriginalParentDefIndex(original_parent_def_index) { }
+#endif
     };
     CDefClassBase(const CDefClassBase&);                                 // 0x0046644C
 #ifndef FABLE_RETAIL_CDEFCLASSBASE_IMPLICIT_ASSIGN

@@ -24,6 +24,19 @@ class CGraphicDataBank;
 #endif
 class C3DMeshInfo : public CMeshDataBankEntry {
 public:
+#ifdef FABLE_RETAIL_C3DMESHINFO_ISLOADED
+    // Chunk Q28 (row 0x004BE3E0 CTCGraphicAppearance::IsResourcesLoaded): Ego_r.pdb ?IsLoaded@C3DMeshInfo@@QBE_NXZ (retail 0x00A23E40)
+    // and ?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z (retail 0x00A256F0), both out of line. Declarations only: no layout change.
+    bool IsLoaded() const;                                               // 0x00A23E40
+    void BeginLoading(unsigned long priority, bool wait, bool load_textures) const;   // 0x00A256F0
+#endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_PHYSICSMESH
+    // Chunk Q28 (row 0x006B05A0 CTCPhysicsBase::CreatePPhysicsMeshInfo): Ego_r.pdb ?HasPhysicsMesh@C3DMeshInfo@@QBE_NXZ (retail
+    // 0x00A23C40) and ?PeekPhysicsMesh@C3DMeshInfo@@QBEPBVCPhysicsMeshInfo@@XZ (retail 0x00A24A70), both out of line.
+    // Declarations only: no layout change.
+    bool HasPhysicsMesh() const;                                         // 0x00A23C40
+    const class CPhysicsMeshInfo* PeekPhysicsMesh() const;               // 0x00A24A70
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_GETMESHSTATS
     CCountedPointer<const C3DMeshStats> GetMeshStats()const;
 #endif
