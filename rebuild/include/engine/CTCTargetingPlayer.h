@@ -109,6 +109,12 @@ public:
     virtual CThing* GetPTargetLockedThing() const;         // slot 36, 0x004E2328
 public:
 #endif // FABLE_RETAIL_CTCTARGETINGPLAYER_VSLOTS3
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_MELEE
+// Chunk Q28 (row 0x008031E0): Ego_r.pdb / FableWin.pdb ?GetPBestThingForMeleeAttack@CTCTargetingPlayer@@UBEPAVCThing@@XZ, slot 28
+// of the vtable 0x0124280C (its only reference, 0x0124287C). Declaration only (an override of the CTCTargetingBase virtual).
+public:
+    virtual CThing* GetPBestThingForMeleeAttack() const;   // slot 28, 0x008031E0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargetingPlayer) == 0xf8);
 #else

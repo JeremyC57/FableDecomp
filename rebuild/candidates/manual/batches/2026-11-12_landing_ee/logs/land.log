@@ -1,0 +1,8 @@
+addr       parity           behav  name
+008031e0   RELOCATION_MATCH PASS   GetPBestThingForMeleeAttack
+
+WINS: 1
+  008031e0 RELOCATION_MATCH CTCTargetingPlayer::GetPBestThingForMeleeAttack
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCTargetingPlayer_GetPBestThingForMeleeAttack_008031e0

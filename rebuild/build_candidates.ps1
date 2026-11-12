@@ -393545,6 +393545,13 @@ $catalog = @(
         TestSource = '00/6b/CTCPhysicsBase_CreatePPhysicsMeshInfo_006b05a0_test.cpp'
         PassPattern = '006b05a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008031e0'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/80/CTCTargetingPlayer_GetPBestThingForMeleeAttack_008031e0.cpp'
+        TestSource = '00/80/CTCTargetingPlayer_GetPBestThingForMeleeAttack_008031e0_test.cpp'
+        PassPattern = '008031e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

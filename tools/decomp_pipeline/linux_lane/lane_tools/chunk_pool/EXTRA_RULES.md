@@ -300,3 +300,7 @@ headers, never as asm in the row.
 - The name-fix queue stays: every landing still records landed names it proves wrong (NAME_FIXES_QUEUE.tsv). Clear the queue in one short pass at about 30 entries, or at once for a binding conflict (one symbol bound to two addresses).
 - Author agents still spell every name in a NEW row right the first time (the rule above); pausing naming does not relax that.
 - Run two author agents instead of one author plus one naming agent.
+
+## Inferred statements (owner, 2026-11-12)
+- When the retail bytes prove a source construct existed but not its exact wording, an inferred statement may land if the row then behaves exactly as retail (the bytes match and the statement cannot change the result).
+- Mark it in the source header (`// Inferred:` + the retail bytes that require it + what was ruled out) and in the batch README. Prefer a wording a programmer could plausibly have written (e.g. a test whose arm was compiled out).
