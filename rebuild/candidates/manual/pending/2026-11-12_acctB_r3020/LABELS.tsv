@@ -1,0 +1,5 @@
+00a12ee0	CPhysicsMeshObject::GetNavigationLevelVolumes	Ego_r + FableWin ?GetNavigationLevelVolumes@CPhysicsMeshObject@@QBEXAAV?$CVectorMap@JV?$CCountedPointer@VCContainmentVolume@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@@@Z; 1118v1144 shape match
+00a42140	CPlane::Initialise	Ego_r + FableWin ?Initialise@CPlane@@QAE_NABVC3DVector@@M@Z; called from 0x00A13094 with (normal, normal.Dot(point))
+00a752d0	CContainmentVolume::CContainmentVolume	already bound (vtable 0x0129DC94, RTTI .?AVCContainmentVolume@@); ctor after new(0x10) at 0x00A13195
+00a755c0	CContainmentVolume::Initialise	Ego_r + FableWin ?Initialise@CContainmentVolume@@QAE_NPBVCPlane@@KPAVCMovableResourceMemoryPool@@@Z; called at 0x00A131E1 with (planes, plane_count, 0)
+00a14440	C3DVector::AccurateNormalise	bound landed spelling ?AccurateNormalise@C3DVector@@QAEAAV1@XZ (Ego_r + FableWin); called at 0x00A12FFA with ecx = the rotated normal

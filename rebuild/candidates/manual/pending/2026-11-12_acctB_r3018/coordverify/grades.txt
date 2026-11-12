@@ -1,0 +1,1 @@
+007d6870 CTCTavernGameCardPairs::vfunc_28 RELOCATION_MATCH flags= []

@@ -1,0 +1,2 @@
+address	name	evidence
+00a9eb90	?BlendAnimations@C3DAnimationManager@@AAEXPAVC3DKeyframe@@PBV2@KM@Z	Ego_r.pdb; `ret 10h`; four landed callers bind it (chunk 2001)

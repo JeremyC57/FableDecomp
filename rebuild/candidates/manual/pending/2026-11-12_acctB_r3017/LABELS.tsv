@@ -1,0 +1,6 @@
+address	name	evidence
+0x00BB1F50	?CalculateVertexNormals@CEngineClothRenderer@@AAEXABVCParticleSimulation@@ABVCParticleProgram@@@Z	Ego_r 0x00A67E10 + FableWin 0x02E76000; GetNormalBuffer call, VertexNormals +0x84
+0x00BB1E90	?GetNormalBuffer@CEngineClothRenderer@@AAEPAVC4DVector@@K@Z	Ego_r 0x00A67D30 + FableWin 0x02E73500; body (NormalBufferSize / Pool / NormalBuffer)
+0x00A5C300	?GFClear4DVectors@NVectorMath@@YAXPAVC4DVector@@KABV2@@Z	bound spelling; FableWin NVectorMath
+0x00A5C360	?GFNormalise3DVectors@NVectorMath@@YAXPBVC4DVector@@KPAV2@KK@Z	bound spelling
+0x013D2880	g_SSEAvailable	established spelling (reloc_bindings; NVectorMath.h overlay); read at 0x00BB2057

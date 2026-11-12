@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a9eb90   RELOCATION_MATCH PASS   BlendAnimations
+
+WINS: 1
+  00a9eb90 RELOCATION_MATCH C3DAnimationManager::?BlendAnimations@C3DAnimationManager@@AAEXPAVC3DKeyframe@@PBV2@KM@Z

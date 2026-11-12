@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00a12ee0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCContainmentVolume@@@@SIXPAX@Z -> 00a110d0 labelled '_global::DeleteViaVtable0_00a110d0'
+00a12ee0   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@U12@HV?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@0@00HV?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@Z -> 008274b0 labelled 'std::__introsort_loop<std::pair<long, CCountedPointer<CContainmentVolume>> *, std::pair<long, CCountedPointer<CContainmentVolume>>, int, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume>>>'
+00a12ee0   WARN RELOC_NAME: ??$__insertion_sort@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@0@0V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@Z -> 008270e0 labelled 'std::__insertion_sort<std::pair<long, CCountedPointer<CContainmentVolume>> *, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume>>>'
+00a12ee0   WARN RELOC_NAME: ??$__unguarded_insertion_sort_aux@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@U12@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@0@00V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@Z -> 00825b40 labelled '_global::_Copy_impl<CNavigationPosition*,CNavigationPosition*>'
+00a12ee0   RELOCATION_MATCH PASS   GetNavigationLevelVolumes
+
+WINS: 1
+  00a12ee0 RELOCATION_MATCH CPhysicsMeshObject::?GetNavigationLevelVolumes@CPhysicsMeshObject@@QBEXAAV?$CVectorMap@JV?$CCountedPointer@VCContainmentVolume@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@@@Z
