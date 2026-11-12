@@ -27,3 +27,6 @@ A row that matches only with another function's unproven body visible is held ba
 Other workflows here: `verify_handback_evidence.js` (one Opus evidence verifier per matched row of an agent hand-back; args
 scratch, dir, rows) and `name_fix_queue_pass.js` (short naming pass over the name-fix queue: apply, adversarial verify, one repair;
 args scratch, agent = the prepared `$S/w22/<agent>/` directory with BRIEF.md, QUEUE.tsv, BUSY.txt).
+
+Run `bash lane_tools/fast/cl_watchdog.sh 300` in the background beside any author lane: it kills Wine compiler processes older than
+five minutes (orphans of timed-out graders that otherwise hold a core each for hours).
