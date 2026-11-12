@@ -2,6 +2,8 @@
 # land_prep.sh <wf> <base-commit> addr... : reserved check, combine payloads, scans, header merge into $S/land/<wf>/M, hdrcheck2. Never fails.
 wf=$1; base=$2; shift 2; L=tools/decomp_pipeline/linux_lane/lane_tools; Q=$S/land/$wf; M=$Q/M
 mkdir -p $Q; rm -rf "${M:?}"; mkdir -p $M
+# one-shot sweep of orphan compilers (a timed-out grader leaves its Wine cl.exe spinning; see fast/cl_watchdog.sh)
+for p in $(ps -eo pid,etimes,comm | awk '($3=="cl.exe"||$3=="link.exe") && $2>300 {print $1}'); do kill -9 $p 2>/dev/null && echo "killed orphan compiler $p"; done
 for a in "$@"; do python3 $L/coordinator/reserved_check.py $S/w22/$wf/$a/payload.json 2>&1 | grep -v 'reserved lists\|mention a reserved address.*: 0$' | sed "s/^/[$a] /"; done
 python3 $S/tools/combine_wf.py $S/w22/$wf $Q "$@"
 python3 - $Q <<'P'

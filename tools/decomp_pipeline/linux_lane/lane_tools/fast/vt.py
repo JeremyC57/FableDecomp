@@ -2,6 +2,21 @@
 """vt.py <addr> <test.cpp> [row.obj] -- build and run a behaviour test with the LANDER's own check (VC7.1 under Wine).
 Prints `<addr> PASS|FAIL|TCC_FAIL|LINK_FAIL` (+ the first compiler errors on TCC_FAIL). Always exits 0."""
 import os, sys
+
+def _sweep_orphan_compilers(max_age=300):
+    """Kill Wine cl.exe / link.exe older than max_age seconds: orphans of timed-out graders spin at 100% CPU for hours."""
+    try:
+        import subprocess as _sp, os as _os, signal as _sig
+        out = _sp.run(['ps', '-eo', 'pid,etimes,comm'], capture_output=True, text=True, timeout=10).stdout
+        for line in out.split('\n')[1:]:
+            c = line.split()
+            if len(c) >= 3 and c[2] in ('cl.exe', 'link.exe') and c[1].isdigit() and int(c[1]) > max_age:
+                try: _os.kill(int(c[0]), _sig.SIGKILL)
+                except Exception: pass
+    except Exception:
+        pass
+_sweep_orphan_compilers()
+
 try:
     sys.path.insert(0, 'tools/decomp_pipeline'); import verify_and_land as V
     from pathlib import Path
