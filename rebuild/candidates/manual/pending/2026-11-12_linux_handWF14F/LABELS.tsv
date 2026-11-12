@@ -1,0 +1,6 @@
+0x009F20B0	CMemoryAllocator::CMemoryAllocator	CMemoryAllocator
+0x00A66730	CMemoryAllocatorBase::operator new	CMemoryAllocatorBase
+0x00A65FF0	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize
+0x00A65930	CMemoryAllocatorVariableSize::CMemoryAllocatorVariableSize	CMemoryAllocatorVariableSize
+0x00A65D40	CMemoryAllocatorFixedSize::GetAllocationSize	CMemoryAllocatorFixedSize
+0x009F1D20	InitializeMemorySystem	_global

@@ -38946,3 +38946,7 @@ __imp__GetFileSizeEx@8	0143fd5c	009c4440
 ?HasWeaponTrailPoints@CTCWeaponTrail@@QBE_NXZ	0076e4a0	007bf510
 ?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@IAE_NXZ	00972340	00972cc0
 ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z	006ea450	00972cc0
+??0CMemoryAllocatorFixedSize@@QAE@PAXKKKKK@Z	00a65ff0	009f20b0
+??0CMemoryAllocatorVariableSize@@QAE@PAXJ0JKKK@Z	00a65930	009f20b0
+??2CMemoryAllocatorBase@@SIPAXI@Z	00a66730	009f20b0
+?InitializeMemorySystem@@YIXXZ	009f1d20	009f20b0

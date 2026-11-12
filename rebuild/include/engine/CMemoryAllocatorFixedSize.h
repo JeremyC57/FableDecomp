@@ -8,6 +8,49 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CMEMORYALLOCATORFIXEDSIZE_CLASS
+// Retail opt-in (wf14f, row 0x009F20B0): the real class instead of the flat field projection below -- Ego_r.pdb
+// CMemoryAllocatorFixedSize derives from CMemoryAllocatorBase (0xc1c) and adds the fields +0xc1c..+0xc48 (same names and
+// offsets as the projection); constructor ??0CMemoryAllocatorFixedSize@@QAE@PAXKKKKK@Z (retail 0x00A65FF0, landed) and the
+// virtual overrides as the landed constructor row declares them. Declarations only; needs
+// FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE (the polymorphic CMemoryAllocatorBase).
+#include "engine/CMemoryAllocatorBase.h"
+class CMemoryAllocatorFixedSize : public CMemoryAllocatorBase {
+protected:
+    class CMemoryAreaChunk;
+    CMemoryAreaChunk* PFirstChunk;               // +0xc1c
+    CMemoryAreaChunk* PLastChunk;                // +0xc20
+    CMemoryAreaChunk* PCurrentAllocatorChunk;    // +0xc24
+    unsigned long     AreaSize;                  // +0xc28
+    unsigned long     StatAreaSize;              // +0xc2c
+    unsigned long     ChunkHeaderSize;           // +0xc30
+    unsigned long     NoAreasPerChunk;           // +0xc34
+    unsigned long     ChunkSize;                 // +0xc38
+    unsigned long     Flags;                     // +0xc3c
+    unsigned long     InternalFlags;             // +0xc40
+    unsigned long     ExtraMemUsedByOS;          // +0xc44
+    long              NoEmptyChunks;             // +0xc48
+public:
+    CMemoryAllocatorFixedSize(void* heap,unsigned long chunk_size,unsigned long area_size,unsigned long alignment,unsigned long flags,unsigned long internal_flags);
+    virtual unsigned long GetNoAllocatedAreas();
+    virtual unsigned long GetNoFreeAreas();
+    virtual void Validate();
+    virtual ~CMemoryAllocatorFixedSize();
+    virtual void* Allocate(unsigned long);
+    virtual void Deallocate(void*);
+    virtual unsigned long GetAllocationSizeIncludingHeader(void*);
+    virtual void* GetAllocatedArea(long);
+    virtual unsigned long GetHeaderOverhead();
+    virtual unsigned long GetLargestFreeAreaSize();
+    virtual unsigned long GetAllocationSize(void*);
+    virtual void ConsolidateFreeAreas();
+    virtual unsigned long GetTotalMemoryControlledByAllocator();
+    virtual unsigned long GetTotalMemoryAllocated();
+    virtual unsigned long GetAllAllocatedAreas(void**,unsigned long);
+    virtual float GetFragmentation();
+};
+FABLE_STATIC_ASSERT(sizeof(CMemoryAllocatorFixedSize) == 0xc4c);
+#else
 struct CMemoryAreaChunk;
 
 #pragma pack(push, 1)
@@ -817,4 +860,5 @@ FABLE_STATIC_ASSERT(offsetof(CMemoryAllocatorFixedSize, InternalFlags) == 0xc40)
 FABLE_STATIC_ASSERT(offsetof(CMemoryAllocatorFixedSize, ExtraMemUsedByOS) == 0xc44);
 FABLE_STATIC_ASSERT(offsetof(CMemoryAllocatorFixedSize, NoEmptyChunks) == 0xc48);
 
+#endif // FABLE_RETAIL_CMEMORYALLOCATORFIXEDSIZE_CLASS
 #endif // FABLE_ENGINE_CMEMORYALLOCATORFIXEDSIZE_H

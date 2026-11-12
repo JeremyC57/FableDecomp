@@ -1,0 +1,206 @@
+==== 0x009F20B0
+18:39 009f20b0 grade v1.cpp DIFFER(596v598) hunks=35 -- draft no forceinline; fixed tested twice
+18:39 009f20b0 grade v2.cpp DIFFER(626v598) hunks=31 -- draft no forceinline; fixed tested twice
+18:40 009f20b0 grade v1.cpp DIFFER(596v598) hunks=35 -- v1 view
+18:40 009f20b0 grade v3.cpp DIFFER(596v598) hunks=35 -- GetAllocationSize(void*); IsAllocatorFixedSize member; i decl
+18:40 009f20b0 grade v4.cpp DIFFER(596v598) hunks=35 -- GetAllocationSize(void*); IsAllocatorFixedSize member; i decl
+18:40 009f20b0 grade v5.cpp DIFFER(596v598) hunks=35 -- GetAllocationSize(void*); IsAllocatorFixedSize member; i decl
+18:41 009f20b0 grade v6.cpp DIFFER(596v598) hunks=35 -- top-declared int counters
+18:41 009f20b0 grade v7.cpp DIFFER(596v598) hunks=35 -- top-declared int counters
+18:41 009f20b0 grade v8.cpp DIFFER(596v598) hunks=35 -- top-declared int counters
+18:41 009f20b0 grade v3.cpp DIFFER(601v598) hunks=33 /G7 -- flag /G7
+18:41 009f20b0 grade v3.cpp DIFFER(596v598) hunks=35 /G5 -- flag /G5
+18:41 009f20b0 grade v3.cpp DIFFER(596v598) hunks=35 /Ox -- flag /Ox
+18:41 009f20b0 grade p1.cpp DIFFER(596v598) hunks=27 -- PROBE: heap forced to memory -> does zero take ebx?
+18:42 009f20b0 grade v9.cpp DIFFER(610v598) hunks=28 -- type=0 declared at top (live zero through loop1)
+18:42 009f20b0 grade v10.cpp DIFFER(610v598) hunks=28 -- type=0 declared at top (live zero through loop1)
+18:42 009f20b0 grade v11.cpp DIFFER(610v598) hunks=29 -- type=0 declared at top (live zero through loop1)
+18:42 009f20b0 grade p1.cpp DIFFER(596v598) hunks=27 -- PROBE view
+18:43 009f20b0 grade v12.cpp DIFFER(596v598) hunks=35 -- explicit info ptr; nested if; allocator temp
+18:43 009f20b0 grade v13.cpp DIFFER(596v598) hunks=35 -- explicit info ptr; nested if; allocator temp
+18:43 009f20b0 grade v14.cpp DIFFER(596v598) hunks=35 -- explicit info ptr; nested if; allocator temp
+18:43 009f20b0 grade v15.cpp DIFFER(598v598) hunks=35 -- loop2 shapes: found flag; indexed; size<max+2
+18:43 009f20b0 grade v16.cpp DIFFER(604v598) hunks=36 -- loop2 shapes: found flag; indexed; size<max+2
+18:43 009f20b0 grade v17.cpp DIFFER(608v598) hunks=34 -- loop2 shapes: found flag; indexed; size<max+2
+18:44 009f20b0 grade v18.cpp DIFFER(596v598) hunks=35 -- ==true; bool from expr; no type local
+18:44 009f20b0 grade v19.cpp DIFFER(596v598) hunks=35 -- ==true; bool from expr; no type local
+18:44 009f20b0 grade v20.cpp DIFFER(595v598) hunks=40 -- ==true; bool from expr; no type local
+18:45 009f20b0 grade p2.cpp DIFFER(596v598) hunks=34 -- PROBE: extra zero stores in loop1 -> zero reg?
+18:45 009f20b0 grade v9.cpp DIFFER(610v598) hunks=28 -- v9 view
+18:45 009f20b0 grade v21.cpp DIFFER(596v598) hunks=35 -- all locals at top, 3 orders
+18:45 009f20b0 grade v22.cpp DIFFER(596v598) hunks=35 -- all locals at top, 3 orders
+18:45 009f20b0 grade v23.cpp DIFFER(596v598) hunks=35 -- all locals at top, 3 orders
+18:45 009f20b0 grade p3.cpp DIFFER(596v598) hunks=29 -- PROBE heap mem + extra zero use
+18:46 009f20b0 grade v24.cpp DIFFER(596v598) hunks=45 -- loop1 indexed; indexed w/o locals
+18:46 009f20b0 grade v25.cpp DIFFER(579v598) hunks=40 -- loop1 indexed; indexed w/o locals
+18:46 009f20b0 grade v25.cpp DIFFER(579v598) hunks=40 -- v25 view
+18:47 009f20b0 grade v26.cpp DIFFER(596v598) hunks=35 -- one counter i for loop1 and loop2
+18:47 009f20b0 grade pv_g.cpp DIFFER(980v598) hunks=47 -- pragmas g off / w / a
+18:47 009f20b0 grade pv_w.cpp DIFFER(603v598) hunks=35 -- pragmas g off / w / a
+18:47 009f20b0 grade pv_a.cpp DIFFER(603v598) hunks=35 -- pragmas g off / w / a
+18:47 009f20b0 grade v28.cpp DIFFER(610v598) hunks=28 -- long type=0 at top
+18:47 009f20b0 grade v29.cpp DIFFER(610v598) hunks=28 -- long type=0 at top
+18:47 009f20b0 grade v30.cpp DIFFER(610v598) hunks=28 -- long type=0 at top
+18:48 009f20b0 grade v31.cpp DIFFER(596v598) hunks=35 -- InitializeMemorySystem real body in TU (Q32 lesson)
+18:48 009f20b0 grade v32.cpp DIFFER(596v598) hunks=35 -- InitializeMemorySystem real body in TU (Q32 lesson)
+18:48 009f20b0 grade v33.cpp DIFFER(596v598) hunks=35 -- inline Init/Enter/LeaveSynchronisation statics (+IsAllocatorFixedSize)
+18:48 009f20b0 grade v34.cpp DIFFER(596v598) hunks=35 -- inline Init/Enter/LeaveSynchronisation statics (+IsAllocatorFixedSize)
+18:49 009f20b0 grade v35.cpp DIFFER(596v598) hunks=35 -- loop2 nested if; explicit int64 check; ulong type
+18:49 009f20b0 grade v36.cpp DIFFER(596v598) hunks=35 -- loop2 nested if; explicit int64 check; ulong type
+18:49 009f20b0 grade v37.cpp DIFFER(596v598) hunks=35 -- loop2 nested if; explicit int64 check; ulong type
+18:49 009f20b0 grade v3.cpp DIFFER(673v598) hunks=37 /EHsc -- /EHsc (no class op delete)
+18:50 009f20b0 grade p5.cpp SRC_FAIL -- PROBE inline helper creating sub-allocators
+18:50 009f20b0 grade p5.cpp DIFFER(596v598) hunks=35 -- PROBE inline helper creating sub-allocators
+18:50 009f20b0 grade v38.cpp DIFFER(596v598) hunks=37 -- stmt orders in loop1; no bool local
+18:50 009f20b0 grade v39.cpp DIFFER(596v598) hunks=35 -- stmt orders in loop1; no bool local
+18:50 009f20b0 grade v40.cpp DIFFER(596v598) hunks=36 -- stmt orders in loop1; no bool local
+18:51 009f20b0 grade v41.cpp DIFFER(595v598) hunks=35 -- loop2: entry ref; table ref; ulong a
+18:51 009f20b0 grade v42.cpp DIFFER(596v598) hunks=35 -- loop2: entry ref; table ref; ulong a
+18:51 009f20b0 grade v43.cpp DIFFER(596v598) hunks=35 -- loop2: entry ref; table ref; ulong a
+18:51 009f20b0 grade p6.cpp DIFFER(580v598) hunks=36 -- PROBE zeroing loops instead of memset
+18:52 009f20b0 grade v44.cpp DIFFER(596v598) hunks=35 -- i shared between loop1 and inner a
+18:52 009f20b0 grade v45.cpp DIFFER(596v598) hunks=35 -- i shared between loop1 and inner a
+18:52 009f20b0 grade v46.cpp DIFFER(614v598) hunks=30 -- type=0 set just before loop1
+18:52 009f20b0 grade v47.cpp DIFFER(614v598) hunks=30 -- type=0 set just before loop1
+18:52 009f20b0 grade v48.cpp DIFFER(614v598) hunks=30 -- type=0 set just before loop1
+18:53 009f20b0 grade v49.cpp DIFFER(596v598) hunks=35 -- (void*)0 args
+18:53 009f20b0 grade v50.cpp DIFFER(596v598) hunks=34 -- maxSize read before AllocatorExists test
+18:53 009f20b0 grade v51.cpp DIFFER(596v598) hunks=34 -- maxSize read before AllocatorExists test
+18:53 009f20b0 grade v50.cpp DIFFER(596v598) hunks=34 -- v50 view
+18:53 009f20b0 grade v52.cpp DIFFER(596v598) hunks=34 -- int a; maxSize+1 local; ++maxSize
+18:53 009f20b0 grade v53.cpp DIFFER(598v598) hunks=35 -- int a; maxSize+1 local; ++maxSize
+18:53 009f20b0 grade v54.cpp DIFFER(608v598) hunks=35 -- int a; maxSize+1 local; ++maxSize
+18:53 009f20b0 grade v53.cpp DIFFER(598v598) hunks=35 -- v53 view
+19:25 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 -- baseline attempt2
+19:26 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 -- baseline view
+19:26 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 /GS -- TU flag /GS (sibling InternalAllocate)
+19:27 009f20b0 grade v28.cpp DIFFER(610v598) hunks=28 -- view v28 type=0 at top
+19:28 009f20b0 grade b1.cpp DIFFER(596v598) hunks=34 -- a/size declared =0 at top
+19:28 009f20b0 grade b2.cpp DIFFER(596v598) hunks=34 -- a/size declared =0 at top
+19:28 009f20b0 grade b3.cpp DIFFER(596v598) hunks=34 -- a/size declared =0 at top
+19:29 009f20b0 grade b1.cpp DIFFER(596v598) hunks=34 -- g_AllocatorInfo sized / defined in TU
+19:29 009f20b0 grade b2.cpp DIFFER(596v598) hunks=34 -- g_AllocatorInfo sized / defined in TU
+19:29 009f20b0 grade b3.cpp DIFFER(596v598) hunks=34 -- g_AllocatorInfo sized / defined in TU
+19:29 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 /Ob1 -- flag /Ob1
+19:29 009f20b0 grade a1.cpp DIFFER(558v598) hunks=42 /Os -- flag /Os
+19:29 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 /Op -- flag /Op
+19:30 009f20b0 grade p3.cpp DIFFER(596v598) hunks=29 -- view p3
+19:30 009f20b0 grade p8.cpp DIFFER(626v598) hunks=37 -- PROBE heap+i volatile: does zero web extend into loop1?
+009f20b0 probe 1 heap+i volatile -> see grade
+19:30 009f20b0 grade c1.cpp DIFFER(596v598) hunks=34 -- loop1 do-while / while ++i first / goto
+19:30 009f20b0 grade c2.cpp DIFFER(614v598) hunks=42 -- loop1 do-while / while ++i first / goto
+19:30 009f20b0 grade c3.cpp DIFFER(596v598) hunks=34 -- loop1 do-while / while ++i first / goto
+19:31 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 -- PROBE QFE4035 compiler
+19:31 009f20b0 grade v2.cpp DIFFER(626v598) hunks=31 -- view v2 fixed twice
+19:32 009f20b0 grade e1.cpp DIFFER(596v598) hunks=34 -- allocator temp + 2nd if(fixed) threading; else-if(!fixed)
+19:32 009f20b0 grade e2.cpp DIFFER(596v598) hunks=34 -- allocator temp + 2nd if(fixed) threading; else-if(!fixed)
+19:32 009f20b0 grade e3.cpp DIFFER(596v598) hunks=34 -- allocator temp + 2nd if(fixed) threading; else-if(!fixed)
+19:32 009f20b0 grade e1.cpp DIFFER(596v598) hunks=34 -- view e1
+19:33 009f20b0 grade f1.cpp DIFFER(596v598) hunks=37 -- 2nd fixed test variants: info re-read / no bool / in-branch stores
+19:33 009f20b0 grade f2.cpp DIFFER(596v598) hunks=37 -- 2nd fixed test variants: info re-read / no bool / in-branch stores
+19:33 009f20b0 grade f3.cpp DIFFER(626v598) hunks=30 -- 2nd fixed test variants: info re-read / no bool / in-branch stores
+19:34 009f20b0 grade g1.cpp DIFFER(596v598) hunks=34 -- ternary new + 2nd test; const bool; continue on !fixed
+19:34 009f20b0 grade g2.cpp DIFFER(596v598) hunks=34 -- ternary new + 2nd test; const bool; continue on !fixed
+19:34 009f20b0 grade g3.cpp DIFFER(596v598) hunks=34 -- ternary new + 2nd test; const bool; continue on !fixed
+19:35 009f20b0 grade h1.cpp DIFFER(596v598) hunks=34 -- e1 + ulong fixed / ==true / && form
+19:35 009f20b0 grade h2.cpp DIFFER(596v598) hunks=34 -- e1 + ulong fixed / ==true / && form
+19:35 009f20b0 grade h3.cpp DIFFER(596v598) hunks=34 -- e1 + ulong fixed / ==true / && form
+19:36 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 /G6 -- flag /G6
+19:36 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 /GB -- flag /GB
+19:36 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 /G6 /Gs -- flag /G6 /Gs
+19:36 009f20b0 grade a1.cpp DIFFER(603v598) hunks=33 /Oa -- flag /Oa
+19:37 009f20b0 grade p9.cpp DIFFER(596v598) hunks=34 -- PROBE explicit null check + placement new (double null check)
+009f20b0 probe 2 heap from global: does zero win loop1 body?
+19:38 009f20b0 grade k1.cpp DIFFER(596v598) hunks=34 -- zero as a named void* base local (top / before loop / in loop)
+19:38 009f20b0 grade k2.cpp DIFFER(596v598) hunks=34 -- zero as a named void* base local (top / before loop / in loop)
+19:38 009f20b0 grade k3.cpp DIFFER(596v598) hunks=34 -- zero as a named void* base local (top / before loop / in loop)
+19:38 009f20b0 grade p11.cpp DIFFER(594v598) hunks=27 -- PROBE v28(type=0 top) + heap volatile: does type take ebx w/ zero subst?
+19:39 009f20b0 grade a1.cpp DIFFER(603v598) hunks=33 /Oa -- view /Oa
+009f20b0 probe 3 heap+i globals: zero in loop1 body when ebx free?
+19:41 009f20b0 grade q1.cpp DIFFER(596v598) hunks=26 -- PROBE heap volatile + i variants (does zero beat i?)
+19:41 009f20b0 grade q2.cpp DIFFER(596v598) hunks=26 -- PROBE heap volatile + i variants (does zero beat i?)
+19:41 009f20b0 grade q3.cpp DIFFER(596v598) hunks=26 -- PROBE heap volatile + i variants (does zero beat i?)
+19:41 009f20b0 grade p13.cpp DIFFER(598v598) hunks=24 -- PROBE placement-new explicit null checks + heap global: zero beats i?
+19:41 009f20b0 grade r1.cpp SRC_FAIL -- loop1 body as inline member helper (by value / by ref)
+19:41 009f20b0 grade r2.cpp SRC_FAIL -- loop1 body as inline member helper (by value / by ref)
+19:41 009f20b0 grade r3.cpp SRC_FAIL -- loop1 body as inline member helper (by value / by ref)
+19:42 009f20b0 grade r1.cpp DIFFER(419v598) hunks=24 -- loop1 body as inline member helper (by value / by ref)
+19:42 009f20b0 grade r2.cpp DIFFER(436v598) hunks=24 -- loop1 body as inline member helper (by value / by ref)
+19:42 009f20b0 grade r3.cpp DIFFER(415v598) hunks=24 -- loop1 body as inline member helper (by value / by ref)
+19:42 009f20b0 grade a1.cpp DIFFER(596v598) hunks=34 /Gr -- TU /Gr (fastcall default, PDB YI)
+19:42 009f20b0 grade e1.cpp DIFFER(596v598) hunks=34 /Gr -- TU /Gr (fastcall default, PDB YI)
+19:42 009f20b0 grade p14.cpp DIFFER(610v598) hunks=28 -- PROBE loop2 type=0 at top used as the loop1 zero
+19:44 009f20b0 grade m1.cpp DIFFER(596v598) hunks=31 -- zero-use count lever: bool used once after merge / extra zero tests
+19:44 009f20b0 grade m2.cpp DIFFER(596v598) hunks=35 -- zero-use count lever: bool used once after merge / extra zero tests
+19:44 009f20b0 grade m3.cpp DIFFER(596v598) hunks=34 -- zero-use count lever: bool used once after merge / extra zero tests
+19:44 009f20b0 grade n1.cpp DIFFER(596v598) hunks=34 -- variable arm ends in continue; fixed tail after if
+19:44 009f20b0 grade n2.cpp DIFFER(596v598) hunks=32 -- variable arm ends in continue; fixed tail after if
+19:44 009f20b0 grade n3.cpp DIFFER(596v598) hunks=34 -- variable arm ends in continue; fixed tail after if
+19:45 009f20b0 grade s1.cpp DIFFER(596v598) hunks=34 -- e1 with bool/allocator declared at function scope
+19:45 009f20b0 grade s2.cpp DIFFER(596v598) hunks=34 -- e1 with bool/allocator declared at function scope
+19:45 009f20b0 grade s3.cpp DIFFER(596v598) hunks=34 -- e1 with bool/allocator declared at function scope
+19:52 009f20b0 grade t1.cpp DIFFER(596v598) hunks=34 -- protected ctor; allocator=0 dead init
+19:52 009f20b0 grade t2.cpp DIFFER(596v598) hunks=34 -- protected ctor; allocator=0 dead init
+19:52 009f20b0 grade t3.cpp DIFFER(596v598) hunks=34 -- protected ctor; allocator=0 dead init
+19:52 009f20b0 grade t4.cpp DIFFER(596v598) hunks=34 -- probe: address-taken heap/i/bool via inline Ref()
+19:52 009f20b0 grade t5.cpp DIFFER(596v598) hunks=34 -- probe: address-taken heap/i/bool via inline Ref()
+19:52 009f20b0 grade t6.cpp DIFFER(596v598) hunks=34 -- probe: address-taken heap/i/bool via inline Ref()
+19:53 009f20b0 grade u1.cpp DIFFER(596v598) hunks=34 -- e1 protected, view
+19:53 009f20b0 grade w1.cpp DIFFER(596v598) hunks=32 -- e1 threading: per-arm const bool; re-test IsFixedSize; ulong&2
+19:53 009f20b0 grade w2.cpp DIFFER(596v598) hunks=37 -- e1 threading: per-arm const bool; re-test IsFixedSize; ulong&2
+19:53 009f20b0 grade w3.cpp DIFFER(592v598) hunks=32 -- e1 threading: per-arm const bool; re-test IsFixedSize; ulong&2
+19:54 009f20b0 grade x1.cpp DIFFER(596v598) hunks=34 -- loop1 body wrapped in if(MaxAllocSize!=0); !MaxAllocSize
+19:54 009f20b0 grade x2.cpp DIFFER(596v598) hunks=34 -- loop1 body wrapped in if(MaxAllocSize!=0); !MaxAllocSize
+19:54 009f20b0 grade x3.cpp DIFFER(596v598) hunks=34 -- loop1 body wrapped in if(MaxAllocSize!=0); !MaxAllocSize
+19:54 009f20b0 grade y1.cpp DIFFER(596v598) hunks=32 -- variable arm first (!fixedSize)
+19:55 009f20b0 grade t1.cpp DIFFER(596v598) hunks=34 -- view t1 full
+19:56 009f20b0 grade z2.cpp DIFFER(596v598) hunks=34 -- e1 merge + continue on !fixed; w2 view
+19:56 009f20b0 grade w2.cpp DIFFER(596v598) hunks=37 -- e1 merge + continue on !fixed; w2 view
+19:59 009f20b0 grade pa.cpp DIFFER(586v598) hunks=34 -- probe: tail MemoryAuditBuffer=0 extends const0 range (removed / nonzero)
+19:59 009f20b0 grade pb.cpp DIFFER(598v598) hunks=35 -- probe: tail MemoryAuditBuffer=0 extends const0 range (removed / nonzero)
+20:00 009f20b0 grade pc.cpp DIFFER(354v598) hunks=5 -- probe: no loop 2 -> does loop1 zero take ebx
+20:00 009f20b0 grade l1.cpp DIFFER(614v598) hunks=33 -- loop2 const-0 candidate identity: ulong a; int vars; ternary minSize
+20:00 009f20b0 grade l2.cpp DIFFER(596v598) hunks=34 -- loop2 const-0 candidate identity: ulong a; int vars; ternary minSize
+20:00 009f20b0 grade l3.cpp DIFFER(598v598) hunks=34 -- loop2 const-0 candidate identity: ulong a; int vars; ternary minSize
+20:01 009f20b0 grade l3.cpp DIFFER(598v598) hunks=34 -- view l3
+20:01 009f20b0 grade pd.cpp DIFFER(611v598) hunks=24 -- probe: heap address-taken
+20:02 009f20b0 grade pe.cpp DIFFER(621v598) hunks=38 -- probe: heap and i address-taken
+20:04 009f20b0 grade z1.cpp DIFFER(596v598) hunks=34 -- zero variable t feeding loop2 type init
+20:04 009f20b0 grade z2.cpp DIFFER(596v598) hunks=34 -- zero variable t feeding loop2 type init
+20:05 009f20b0 grade s1.cpp DIFFER(596v598) hunks=34 -- i shared: loop1 counter = loop2 inner counter (same symbol)
+20:08 009f20b0 grade m1.cpp DIFFER(592v598) hunks=35 -- inner IsFixedSize test spellings (const0 ref per block)
+20:08 009f20b0 grade m2.cpp DIFFER(592v598) hunks=35 -- inner IsFixedSize test spellings (const0 ref per block)
+20:08 009f20b0 grade m3.cpp DIFFER(592v598) hunks=35 -- inner IsFixedSize test spellings (const0 ref per block)
+20:09 009f20b0 grade final.cpp DIFFER(596v598) hunks=34 -- final best = t1 (protected ctor)
+20:09 009f20b0 grade b1.cpp SRC_FAIL -- loop 2 in an inline member returning bool
+20:09 009f20b0 grade b1.cpp DIFFER(371v598) hunks=7 -- loop 2 in an inline member returning bool
+20:09 009f20b0 grade b2.cpp DIFFER(371v598) hunks=7 -- loop 2 in an inline member returning bool
+20:09 009f20b0 grade b1.cpp DIFFER(596v598) hunks=34 /d2inlS1000 -- probe: inline loop-2 member with larger inline budget
+20:21 009f20b0 grade g0.cpp DIFFER(596v598) hunks=34 -- baseline parked draft
+20:21 009f20b0 grade g0.cpp DIFFER(596v598) hunks=34 -- baseline again (full diff view)
+20:32 009f20b0 grade h1.cpp DIFFER(600v598) hunks=26 -- PROBE hack: extra size ref at depth 3 to make size outrank a (test unified theory a->ebx => const0 split early)
+009f20b0 probe 1 when is const 0 split once a takes ebx -> see h1.trace
+20:34 009f20b0 grade h2.cpp DIFFER(616v598) hunks=25 -- PROBE hack: h1 + one more zero store in block 1 so const-0 piece (-26) outranks heap (-18)
+009f20b0 probe 2 h2 (extra zero store) piece prio vs heap -> see h2.trace
+20:35 009f20b0 grade j1.cpp RELOCATION_MATCH -- loop 2: store+break written out in BOTH arms (fixed-range match / variable) so size outranks a before tail merging
+20:38 009f20b0 grade p1.cpp DIFFER(598v598) hunks=7 -- ported onto shared headers (4 opt-ins); fixed-size test via IsAllocatorFixedSize(i)/(a) | raw expr | mixed
+20:38 009f20b0 grade p2.cpp DIFFER(594v598) hunks=5 -- ported onto shared headers (4 opt-ins); fixed-size test via IsAllocatorFixedSize(i)/(a) | raw expr | mixed
+20:38 009f20b0 grade p3.cpp DIFFER(598v598) hunks=7 -- ported onto shared headers (4 opt-ins); fixed-size test via IsAllocatorFixedSize(i)/(a) | raw expr | mixed
+20:38 009f20b0 grade p1.cpp DIFFER(598v598) hunks=7 -- ported, IsAllocatorFixedSize(i)/(a) (view diff)
+20:39 009f20b0 grade c1.cpp DIFFER(604v598) hunks=35 -- IsAllocatorFixedSize(a) with loop 2 fully indexed | both loops indexed | ref bound after Flags test
+20:39 009f20b0 grade c2.cpp DIFFER(604v598) hunks=45 -- IsAllocatorFixedSize(a) with loop 2 fully indexed | both loops indexed | ref bound after Flags test
+20:39 009f20b0 grade c3.cpp DIFFER(598v598) hunks=9 -- IsAllocatorFixedSize(a) with loop 2 fully indexed | both loops indexed | ref bound after Flags test
+20:39 009f20b0 grade e1.cpp DIFFER(598v598) hunks=7 -- loop 2 base +0x14 hunt: info bound with (ulong)a | minSize via (&info)[-1] | raw bool local
+20:39 009f20b0 grade e2.cpp DIFFER(598v598) hunks=7 -- loop 2 base +0x14 hunt: info bound with (ulong)a | minSize via (&info)[-1] | raw bool local
+20:39 009f20b0 grade e4.cpp RELOCATION_MATCH -- loop 2 base +0x14 hunt: info bound with (ulong)a | minSize via (&info)[-1] | raw bool local
+20:39 009f20b0 grade f2.cpp DIFFER(598v598) hunks=7 -- consistency: both loops via IsAllocatorFixedSize with bool local | both loops raw bool local
+20:39 009f20b0 grade f1.cpp RELOCATION_MATCH -- consistency: both loops via IsAllocatorFixedSize with bool local | both loops raw bool local
+20:40 009f20b0 grade z2.cpp RELOCATION_MATCH -- STRICT_HEADERS: final port, raw bool local both loops; z2 = size check written out without the IsValidSize helper, z1 = with helper
+20:41 009f20b0 grade 009f20b0.cpp RELOCATION_MATCH -- FINAL strict-headers regrade of 009f20b0.cpp
+20:43 009f20b0 grade src.cpp RELOCATION_MATCH -- 
+20:43 009f20b0 grade src.cpp SRC_FAIL -- 
+20:43 009f20b0 grade src.cpp SRC_FAIL -- 
+20:43 009f20b0 grade src.cpp DIFFER(598v598) hunks=9 -- 
+20:43 009f20b0 grade src.cpp SRC_FAIL -- 
+20:43 009f20b0 grade src.cpp SRC_FAIL -- 
+

@@ -81,6 +81,29 @@ protected:
     CMemoryArea* GetTreeAreaWithSizeGreaterThanOrEqualTo(long size) const;
 public:
 #endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_CTOR
+    // Retail opt-in (wf14f, row 0x009F20B0): the constructor (Ego_r.pdb ??0CMemoryAllocatorVariableSize@@QAE@PAXJ0JKKK@Z,
+    // retail 0x00A65930, landed) and the class's virtual overrides (Ego_r.pdb U-members), so the class is concrete and
+    // can be created with new. Declarations only; needs FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE (polymorphic base).
+    CMemoryAllocatorVariableSize(void* heap,long min_chunk_size,void* pbase,long initial_size,unsigned long alignment,unsigned long flags,unsigned long internal_flags);
+    virtual ~CMemoryAllocatorVariableSize();
+#ifndef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOCATE
+    virtual void* Allocate(unsigned long size);
+#endif
+    virtual void Deallocate(void*);
+    virtual unsigned long GetAllAllocatedAreas(void**,unsigned long);
+    virtual unsigned long GetAllocationSize(void*);
+    virtual unsigned long GetAllocationSizeIncludingHeader(void*);
+    virtual unsigned long GetLargestFreeAreaSize();
+    virtual unsigned long GetTotalMemoryControlledByAllocator();
+    virtual unsigned long GetTotalMemoryAllocated();
+    virtual unsigned long GetNoFreeAreas();
+    virtual unsigned long GetNoAllocatedAreas();
+    virtual float GetFragmentation();
+    virtual void* GetAllocatedArea(long);
+    virtual unsigned long GetHeaderOverhead();
+    virtual void Validate();
+#endif
     long InternalAlloc(long no_bytes,void** pdata);
 protected:
     CMemoryAreaChunk* NewChunk(long request_size);

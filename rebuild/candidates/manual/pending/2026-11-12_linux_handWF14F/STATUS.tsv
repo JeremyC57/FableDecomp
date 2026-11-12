@@ -1,0 +1,1 @@
+0x009F20B0	CMemoryAllocator::CMemoryAllocator	RELOCATION_MATCH	19	loop-2 entry store + break written in both arms (tails merged after allocation) flips a/size and frees ebx for the zero constant; ported onto 4 header opt-ins

@@ -394621,6 +394621,13 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupJackOfBladesStage1_MeleeCombat_00972cc0_test.cpp'
         PassPattern = '00972cc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009f20b0'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_CMemoryAllocator_009f20b0.cpp'
+        TestSource = '00/9f/CMemoryAllocator_CMemoryAllocator_009f20b0_test.cpp'
+        PassPattern = '009f20b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

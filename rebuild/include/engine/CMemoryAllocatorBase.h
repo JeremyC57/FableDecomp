@@ -34,6 +34,11 @@ public:
  virtual unsigned long GetHeaderOverhead()=0;
  virtual void ConsolidateFreeAreas();
  virtual void Validate()=0;
+#ifdef FABLE_RETAIL_CMEMORYALLOCATORBASE_OPERATOR_NEW
+ // Retail opt-in (wf14f, row 0x009F20B0): Ego_r.pdb ??2CMemoryAllocatorBase@@SIPAXI@Z (retail 0x00A66730, landed),
+ // public static __fastcall class allocation function. Declaration only.
+ static void* FABLE_FASTCALL operator new(unsigned int size);
+#endif
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOCATE
  // Retail opt-in (Codex pass 17): original SetCurrentAlignment body, both PDBs.
  void SetCurrentAlignment(){CurrentAlignmentShift=AlignmentShift;CurrentAlignment=Alignment;}
