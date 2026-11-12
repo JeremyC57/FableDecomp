@@ -15,8 +15,8 @@ compiles under VC7.1 to the retail bytes (MATCH / RELOCATION_MATCH), with a beha
 names. One row is worked until it matches; rows are never dropped silently.
 
 ## Roles and models (owner rule)
-- Workflow agents are Opus unless Fable is needed. Authoring needs Fable (`model: 'fable'`); scouts, verifiers, repair and naming
-  agents are Opus.
+- Workflow agents are Opus unless Fable is needed. Authoring and row repair need Fable (`model: 'fable'`: both edit code that must
+  keep or reach a byte match); scouts, verifiers and naming agents are Opus (a different model also gives a more independent read).
 - Agents never run git, never write under the repo, never land. They work in `$S/w22/<wf>/<addr>/` (S = your scratchpad).
 - Every Bash call (yours and theirs) exits 0 (`; true`); never pipe a grader into `head` (redirect to a file).
 
@@ -48,7 +48,7 @@ Per row, as a pipeline (no barrier between rows):
 3. **Verify (two independent Opus lenses):** mechanical (strict regrade, VC7.1 test, purity, local models, stand-in bodies,
    overlay = repo header + additions, reserved rows) and evidence (name from two sources, callee spellings against relocation
    targets, a test that can fail, faithful claims).
-4. **Repair (Opus) once**, then re-verify. Result per row: VERIFIED, MATCH_WITH_OPEN_ISSUES, DIFFER or PIPELINE_ERROR.
+4. **Repair (Fable) once**, then re-verify. Result per row: VERIFIED, MATCH_WITH_OPEN_ISSUES, DIFFER or PIPELINE_ERROR.
 
 Launch one: `python3 $S/tools/prep_wf.py <wfN> 10` (cuts the next ten pool rows into `$S/w22/<wfN>/<addr>/`), then
 `python3 $L/chunk_pool/oracle_from_exe.py $S/w22/<wfN>/rows.tsv <wfN>` and write each row's line to `<addr>/oracle.tsv` (scratch

@@ -5,7 +5,7 @@ export const meta = {
     { title: 'Scout', detail: 'prove each row\'s name, signature, callees and visible callee bodies', model: 'opus' },
     { title: 'Author', detail: 'rapid-fire port + grade until the row matches (up to 3 agents per row, notes carried over)', model: 'fable' },
     { title: 'Verify', detail: 'mechanical lens + evidence lens on every matched row', model: 'opus' },
-    { title: 'Repair', detail: 'fix verifier findings while keeping the match, then re-verify', model: 'opus' },
+    { title: 'Repair', detail: 'fix verifier findings while keeping the match, then re-verify', model: 'fable' },
   ],
 }
 
@@ -124,7 +124,7 @@ const results = await pipeline(
     let issues = await verifyBoth(r, a, 1)
     if (issues.length) {
       log(`${r.addr}: verifiers raised ${issues.length} issue(s) -- repairing`)
-      const fixed = await agent(repairPrompt(r, a, issues), { label: `repair:${r.addr}`, phase: 'Repair', schema: AUTHOR_SCHEMA, model: 'opus' })
+      const fixed = await agent(repairPrompt(r, a, issues), { label: `repair:${r.addr}`, phase: 'Repair', schema: AUTHOR_SCHEMA, model: 'fable' })
       if (fixed && fixed.status === 'MATCH') {
         a = Object.assign({}, a, fixed)
         issues = await verifyBoth(r, a, 2)

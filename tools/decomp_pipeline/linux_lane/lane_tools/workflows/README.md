@@ -8,7 +8,7 @@ length, residue_class, pending; args.scratch = $S; the copy first run on 2026-11
    runs out, a fresh agent continues with its notes (up to 3 per row); a row is never dropped silently.
 3. **Verify** (Opus, two independent lenses): mechanical (strict regrade, VC7.1 test, purity, local models, stand-in bodies, overlay,
    formats, reserved rows) and evidence (name from two sources, callee spellings, a test that can fail, faithfulness).
-4. **Repair** (Opus) once, then re-verify.
+4. **Repair** (Fable since 2026-11-12, when the owner lifted the Fable usage block; Opus before) once, then re-verify.
 The coordinator still lands (three-way header merge, vland --land, records): the workflow only produces verified hand-backs.
 
 Model rule (owner, 2026-11-12): workflow agents are Opus 5.5 unless Fable 5.2 is needed; authoring is the stage that needs Fable.
