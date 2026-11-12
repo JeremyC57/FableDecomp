@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a9f540   RELOCATION_MATCH PASS   CalcMeshTransformations
+
+WINS: 1
+  00a9f540 RELOCATION_MATCH C3DAnimationManager::?CalcMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@PBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z
