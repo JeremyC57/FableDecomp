@@ -275,12 +275,54 @@ template<class T> void CPersistContext::Transfer(T& value)
 template<class T> void CPersistContext::TransferVector(std::vector<T,std::allocator<T> >& value)
 {
     CheckCRC("");
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOR_NODEFAULT
+    // Nested opt-in (wf16f row 0x006D8F10 CHeroExperienceDef::Transfer): both binary modes are cases and the default is a braced
+    // unreachable block (a NODEFAULT / ASSERT(false) style macro: `{ __assume(0); }`). Same bytes for the transfer itself (`sub eax,2 ;
+    // je` with no `dec eax ; jne`), but the braced block keeps a dead-end default block alive up to register allocation, so a
+    // callee-saved register used by these transfers cannot have its restore hoisted -- which is what lets VC7.1 shrink-wrap a
+    // second register between them (retail `push ebp` 0x006D9064 / `pop ebp` 0x006D91A3). A bare `default: __assume(0);` is
+    // pruned early and does not (693 v 692).
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        GFSerialiseVectorBinaryIn(*PLoadStream,value);
+        break;
+    case MODE_SAVE_BINARY:
+        GFSerialiseVectorBinaryOut(*PSaveStream,value);
+        break;
+    default: {
+#ifdef _MSC_VER
+        __assume(0);
+#endif
+        break;
+    }
+    }
+#else
     switch (Mode) {
     case MODE_LOAD_BINARY:
         GFSerialiseVectorBinaryIn(*PLoadStream,value);
         break;
     default:
         GFSerialiseVectorBinaryOut(*PSaveStream,value);
+        break;
+    }
+#endif
+}
+#endif
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERMAP_BINARY_BODY
+// Retail opt-in (wf16 row 0x006D8F10 CHeroExperienceDef::Transfer): the shared body of the one-argument member template
+// ??$TransferMap@<V>@<K>@CPersistContext@@QAEXAAV?$map@...@std@@@Z as the landed out-of-line copies spell it (0x0046FA22 etc.):
+// CheckCRC(""), MODE_LOAD_BINARY -> GFSerialiseMapBinaryIn, MODE_SAVE_BINARY -> GFSerialiseMapBinaryOut (`sub eax,2 ; je ; dec eax ; jne`).
+template<class V,class K,class C> void FABLE_FASTCALL GFSerialiseMapBinaryIn(CMemoryDataInputStream&,std::map<K,V,C,std::allocator<std::pair<const K,V> > >&);
+template<class V,class K,class C> void FABLE_FASTCALL GFSerialiseMapBinaryOut(CDataOutputStream&,const std::map<K,V,C,std::allocator<std::pair<const K,V> > >&);
+template<class V,class K> void CPersistContext::TransferMap(std::map<K,V,std::less<K>,std::allocator<std::pair<const K,V> > >& map)
+{
+    CheckCRC("");
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        GFSerialiseMapBinaryIn(*PLoadStream,map);
+        break;
+    case MODE_SAVE_BINARY:
+        GFSerialiseMapBinaryOut(*PSaveStream,map);
         break;
     }
 }

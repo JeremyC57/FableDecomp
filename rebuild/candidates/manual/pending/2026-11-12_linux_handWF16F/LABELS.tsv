@@ -1,0 +1,11 @@
+0x006D8F10	Transfer	CHeroExperienceDef
+0x00466A75	GFSerialiseVectorBinaryOut<long>	_global
+0x00466AA7	GFSerialiseVectorBinaryIn<long>	_global
+0x006DAE40	GFSerialiseMapBinaryOut<CDefString,long,std::less<long> >	_global
+0x006DBA50	GFSerialiseMapBinaryIn<CDefString,long,std::less<long> >	_global
+0x006DC350	GFSerialiseMapBinaryOut<CComboMultiplierData,long,std::less<long> >	_global
+0x006DCFA0	GFSerialiseMapBinaryIn<CComboMultiplierData,long,std::less<long> >	_global
+0x006DC450	GFSerialiseMapBinaryOut<CHeroStatIncreaseData,EDamageAttribute,std::less<EDamageAttribute> >	_global
+0x006DD1C0	GFSerialiseMapBinaryIn<CHeroStatIncreaseData,EDamageAttribute,std::less<EDamageAttribute> >	_global
+0x006DC550	GFSerialiseVectorBinaryOut<CAttackHistoryCombo>	_global
+0x006DD580	GFSerialiseVectorBinaryIn<CAttackHistoryCombo>	_global

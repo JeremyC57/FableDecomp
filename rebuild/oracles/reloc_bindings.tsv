@@ -39014,3 +39014,11 @@ __strnicmp	00f3fb90	006c0330
 ?PlayShieldEffects@CTCPhysicalShieldSpell@@QAEXPAVCThingCreatureBase@@@Z	0079e420	0079eb30
 ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	0056d050	00921630
 __imp__CreateFileA@28	0143fd48	009f1d20
+??$GFSerialiseMapBinaryIn@VCComboMultiplierData@@JU?$less@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@JVCComboMultiplierData@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@3@@std@@@Z	006dcfa0	006d8f10
+??$GFSerialiseMapBinaryIn@VCDefString@@JU?$less@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@JVCDefString@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@3@@std@@@Z	006dba50	006d8f10
+??$GFSerialiseMapBinaryIn@VCHeroStatIncreaseData@@W4EDamageAttribute@@U?$less@W4EDamageAttribute@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EDamageAttribute@@VCHeroStatIncreaseData@@U?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@4@@std@@@Z	006dd1c0	006d8f10
+??$GFSerialiseMapBinaryOut@VCComboMultiplierData@@JU?$less@J@std@@@@YIXAAVCDataOutputStream@@ABV?$map@JVCComboMultiplierData@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@3@@std@@@Z	006dc350	006d8f10
+??$GFSerialiseMapBinaryOut@VCDefString@@JU?$less@J@std@@@@YIXAAVCDataOutputStream@@ABV?$map@JVCDefString@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@3@@std@@@Z	006dae40	006d8f10
+??$GFSerialiseMapBinaryOut@VCHeroStatIncreaseData@@W4EDamageAttribute@@U?$less@W4EDamageAttribute@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EDamageAttribute@@VCHeroStatIncreaseData@@U?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@4@@std@@@Z	006dc450	006d8f10
+??$GFSerialiseVectorBinaryIn@VCAttackHistoryCombo@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@std@@@std@@@Z	006dd580	006d8f10
+??$GFSerialiseVectorBinaryOut@VCAttackHistoryCombo@@@@YIXAAVCDataOutputStream@@AAV?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@std@@@std@@@Z	006dc550	006d8f10

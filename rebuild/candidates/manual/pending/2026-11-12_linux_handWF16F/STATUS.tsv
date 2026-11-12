@@ -1,0 +1,1 @@
+006d8f10	CHeroExperienceDef::Transfer	RELOCATION_MATCH	152	wf16f pass 4: TransferVector braced __assume(0) default (dead-end block) + CPersistTraits<float> class; strict headers OK; test PASS; repair pass: callee comment proves 0x00466A75 <long>, NAME_FIXES +5 (0x00466A75, 0x006DC350, 0x006DCFA0, 0x006DC550, 0x006DD580), code unchanged

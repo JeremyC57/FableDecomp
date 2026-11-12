@@ -1,0 +1,335 @@
+==== 0x006D8F10
+21:04 006d8f10 grade v0.cpp DIFFER(693v692) hunks=8 -- baseline draft
+21:05 006d8f10 grade v1.cpp SRC_FAIL -- port to shared headers, one-arg Transfer/TransferVector/TransferMap
+21:05 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- port: +CDataOutputStream include, CDefString defines
+21:06 006d8f10 grade v2.cpp DIFFER(178v692) hunks=16 -- pragma s / y / t
+21:06 006d8f10 grade v3.cpp DIFFER(693v692) hunks=8 -- pragma s / y / t
+21:06 006d8f10 grade v4.cpp DIFFER(693v692) hunks=8 -- pragma s / y / t
+21:06 006d8f10 grade v5.cpp DIFFER(693v692) hunks=8 -- ref local / block scope / traits ctor
+21:06 006d8f10 grade v6.cpp DIFFER(693v692) hunks=8 -- ref local / block scope / traits ctor
+21:06 006d8f10 grade v7.cpp DIFFER(178v692) hunks=16 -- ref local / block scope / traits ctor
+21:07 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /EHsc -- flag /EHsc
+21:07 006d8f10 grade v1.cpp DIFFER(178v692) hunks=16 /Ob1 -- flag /Ob1
+21:07 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /G6 -- flag /G6
+21:08 006d8f10 grade v1.cpp DIFFER(685v692) hunks=22 -- probe hA if-else shape
+21:08 006d8f10 grade v1.cpp DIFFER(709v692) hunks=32 -- probe hB if-else shape
+21:08 006d8f10 grade v1.cpp DIFFER(697v692) hunks=16 -- probe hC if-else shape
+21:09 006d8f10 grade v8.cpp DIFFER(693v692) hunks=8 -- region probe: do-while0 / inline helper / for-once
+21:09 006d8f10 grade v9.cpp DIFFER(403v692) hunks=2 -- region probe: do-while0 / inline helper / for-once
+21:09 006d8f10 grade v10.cpp DIFFER(707v692) hunks=13 -- region probe: do-while0 / inline helper / for-once
+probe forceinline helper region -> 006d8f10 CHeroExperienceDef::CHeroExperienceDef::Transfer DIFFER(693v692) flags= []
+21:10 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- map switch shape hD
+21:10 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- map switch shape hE
+21:10 006d8f10 grade v1.cpp DIFFER(709v692) hunks=24 -- map switch shape hF
+probe visible-stub GFSerialise bodies (map / map+vector) -> see outs
+probe QFE4035 compiler -> 006d8f10 CHeroExperienceDef::CHeroExperienceDef::Transfer DIFFER(693v692) flags= []
+21:13 006d8f10 grade v1.cpp DIFFER(697v692) hunks=12 -- vector switch shape hG
+21:13 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- vector switch shape hJ
+21:13 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- vector switch shape hK
+21:13 006d8f10 grade v1.cpp DIFFER(697v692) hunks=12 -- hG view
+21:14 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /Ox -- flag /Ox
+21:14 006d8f10 grade v1.cpp ERROR /GL -- flag /GL
+21:14 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /Oa -- flag /Oa
+21:14 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /GS -- flag /GS
+21:14 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /Ow -- flag /Ow
+21:14 006d8f10 grade y1.cpp SRC_FAIL -- trailing empty if/switch/for probes
+21:14 006d8f10 grade y2.cpp SRC_FAIL -- trailing empty if/switch/for probes
+21:14 006d8f10 grade y3.cpp DIFFER(693v692) hunks=8 -- trailing empty if/switch/for probes
+21:16 006d8f10 grade c1.cpp DIFFER(693v692) hunks=10 -- stats ref/pointer local at top; context alias
+21:16 006d8f10 grade c2.cpp DIFFER(693v692) hunks=10 -- stats ref/pointer local at top; context alias
+21:16 006d8f10 grade c3.cpp DIFFER(693v692) hunks=8 -- stats ref/pointer local at top; context alias
+21:16 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- return arms hL
+21:16 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- return arms hM
+21:16 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- return arms hN
+21:17 006d8f10 grade d1.cpp DIFFER(693v692) hunks=8 -- inline-defined Transfer / pragma g reset
+21:17 006d8f10 grade d2.cpp DIFFER(693v692) hunks=8 -- inline-defined Transfer / pragma g reset
+21:17 006d8f10 grade m1.cpp DIFFER(691v692) hunks=15 -- probe: macro-expanded bodies (protected->public hack)
+21:18 006d8f10 grade v1.cpp DIFFER(706v692) hunks=9 -- float traits temp placement hQ
+21:18 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- float traits temp placement hR
+21:18 006d8f10 grade v1.cpp SRC_FAIL -- float traits temp placement hS
+21:18 006d8f10 grade v1.cpp DIFFER(706v692) hunks=9 -- hQ view
+21:19 006d8f10 grade v1.cpp DIFFER(713v692) hunks=18 /G7 -- flag /G7
+21:19 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /G5 -- flag /G5
+21:19 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 /arch:SSE -- flag /arch:SSE
+21:19 006d8f10 grade g1.cpp DIFFER(693v692) hunks=8 -- maps via Transfer<T> + CPersistTraits<map> traits local (all / stat only / combos only)
+21:19 006d8f10 grade g2.cpp DIFFER(693v692) hunks=8 -- maps via Transfer<T> + CPersistTraits<map> traits local (all / stat only / combos only)
+21:19 006d8f10 grade g3.cpp DIFFER(693v692) hunks=8 -- maps via Transfer<T> + CPersistTraits<map> traits local (all / stat only / combos only)
+21:20 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- probe unused traits local in map/vector bodies hT
+21:20 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- probe unused traits local in map/vector bodies hU
+21:21 006d8f10 grade k1.cpp DIFFER(693v692) hunks=8 -- tie-break perturbations: func before / after / param name
+21:21 006d8f10 grade k2.cpp DIFFER(693v692) hunks=8 -- tie-break perturbations: func before / after / param name
+21:21 006d8f10 grade k3.cpp DIFFER(693v692) hunks=8 -- tie-break perturbations: func before / after / param name
+21:21 006d8f10 grade l1.cpp DIFFER(693v692) hunks=8 -- block scope + ref/pointer local for stats
+21:21 006d8f10 grade l2.cpp DIFFER(693v692) hunks=8 -- block scope + ref/pointer local for stats
+21:21 006d8f10 grade l3.cpp DIFFER(693v692) hunks=8 -- block scope + ref/pointer local for stats
+21:22 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- CPersistTraits<float> explicit class spec hV
+21:22 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- CPersistTraits<float> explicit class spec hW
+21:22 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- CPersistTraits<float> class spec, const float& out
+21:22 006d8f10 grade 006d8f10.cpp DIFFER(693v692) hunks=8 -- final best (ported v1)
+21:32 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 -- attempt2 baseline
+21:33 006d8f10 grade w1.cpp DIFFER(693v692) hunks=14 /Op -- flag /Op
+21:33 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Zi -- flag /Zi
+21:33 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Ob2 -- flag /Ob2
+21:33 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Oi -- flag /Oi
+21:34 006d8f10 grade w21.cpp DIFFER(685v692) hunks=22 -- vector body layered refs / 3-way switch with dup default
+21:34 006d8f10 grade w22.cpp DIFFER(697v692) hunks=12 -- vector body layered refs / 3-way switch with dup default
+21:34 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /GX -- 
+21:34 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Gy -- 
+21:34 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /GR- -- 
+21:34 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Zp4 -- 
+21:34 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Og -- 
+21:34 006d8f10 grade w1.cpp DIFFER(700v692) hunks=13 /Oy- -- 
+21:34 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Gm -- 
+21:36 006d8f10 grade w31.cpp SRC_FAIL -- probe: visible float TransferBinaryIn body noinline / auto_inline off
+21:36 006d8f10 grade w32.cpp SRC_FAIL -- probe: visible float TransferBinaryIn body noinline / auto_inline off
+21:36 006d8f10 grade w31.cpp DIFFER(693v692) hunks=8 -- probe: visible float TransferBinaryIn body noinline / auto_inline off
+21:36 006d8f10 grade w32.cpp DIFFER(693v692) hunks=8 -- probe: visible float TransferBinaryIn body noinline / auto_inline off
+21:37 006d8f10 grade w41.cpp DIFFER(1043v692) hunks=23 -- 3-arg TransferMap(name,map,default) with V() temp defaults (all/stat only/null ref)
+21:37 006d8f10 grade w42.cpp DIFFER(931v692) hunks=12 -- 3-arg TransferMap(name,map,default) with V() temp defaults (all/stat only/null ref)
+21:37 006d8f10 grade w43.cpp DIFFER(693v692) hunks=8 -- 3-arg TransferMap(name,map,default) with V() temp defaults (all/stat only/null ref)
+21:37 006d8f10 grade w51.cpp DIFFER(703v692) hunks=17 -- probe: tail = M / F / V V
+21:37 006d8f10 grade w52.cpp DIFFER(712v692) hunks=20 -- probe: tail = M / F / V V
+21:37 006d8f10 grade w53.cpp DIFFER(742v692) hunks=14 -- probe: tail = M / F / V V
+21:40 006d8f10 grade w81.cpp DIFFER(693v692) hunks=8 -- V via Transfer(name,vector&) layer -> TransferVector / own body / all vectors
+21:40 006d8f10 grade w82.cpp DIFFER(693v692) hunks=8 -- V via Transfer(name,vector&) layer -> TransferVector / own body / all vectors
+21:40 006d8f10 grade w83.cpp DIFFER(693v692) hunks=8 -- V via Transfer(name,vector&) layer -> TransferVector / own body / all vectors
+21:40 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /EHa -- 
+21:40 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /GX- -- 
+21:41 006d8f10 grade w1.cpp DIFFER(178v692) hunks=16 /O1 -- 
+21:41 006d8f10 grade w1.cpp DIFFER(693v692) hunks=8 /Ot -- 
+21:42 006d8f10 grade wb1.cpp DIFFER(693v692) hunks=8 -- probe: empty dtor on CPersistTraits (EH-edge IR only)
+21:42 006d8f10 grade wb1.cpp DIFFER(609v692) hunks=9 /EHsc -- 
+21:42 006d8f10 grade wb1.cpp DIFFER(609v692) hunks=9 /GX -- 
+21:42 006d8f10 grade wb1.cpp DIFFER(609v692) hunks=9 /EHsc -- 
+21:42 006d8f10 grade w1.cpp DIFFER(693v692) hunks=14 /Op -- 
+21:43 006d8f10 grade 006d8f10.cpp DIFFER(693v692) hunks=8 -- attempt2 final regrade (overlay probes removed)
+21:49 006d8f10 grade f1.cpp DIFFER(693v692) hunks=8 /GA -- flag /GA
+21:49 006d8f10 grade f1.cpp DIFFER(693v692) hunks=8 /Gr -- flag /Gr
+21:49 006d8f10 grade f1.cpp DIFFER(693v692) hunks=8 /Gz -- flag /Gz
+21:49 006d8f10 grade f1.cpp DIFFER(693v692) hunks=8 /vd0 -- flag /vd0
+21:49 006d8f10 grade f1.cpp SRC_FAIL /Za -- flag /Za
+21:49 006d8f10 grade f1.cpp DIFFER(693v692) hunks=8 /J -- flag /J
+21:49 006d8f10 grade f1.cpp DIFFER(693v692) hunks=8 /QIfist -- flag /QIfist
+21:49 006d8f10 grade f1.cpp DIFFER(178v692) hunks=16 /Os -- flag /Os
+21:50 006d8f10 grade g1.cpp DIFFER(689v692) hunks=10 -- probe: last vector expanded with function-level return arms
+21:50 006d8f10 grade g2.cpp DIFFER(689v692) hunks=9 -- probe: last vector expanded with function-level return arms
+21:50 006d8f10 grade g3.cpp DIFFER(689v692) hunks=10 -- probe: last vector expanded with function-level return arms
+21:50 006d8f10 grade g2.cpp DIFFER(689v692) hunks=9 -- g2 view
+21:50 006d8f10 grade h1.cpp DIFFER(499v692) hunks=7 -- probe: inline helper around combos 9..12 / 9..13 / 8..12
+21:50 006d8f10 grade h2.cpp DIFFER(454v692) hunks=4 -- probe: inline helper around combos 9..12 / 9..13 / 8..12
+21:50 006d8f10 grade h3.cpp DIFFER(454v692) hunks=4 -- probe: inline helper around combos 9..12 / 9..13 / 8..12
+21:51 006d8f10 grade j1.cpp SRC_FAIL -- probe: visible side-effecting GFSerialise bodies (map/map+vec/vec) auto_inline off
+21:51 006d8f10 grade j2.cpp SRC_FAIL -- probe: visible side-effecting GFSerialise bodies (map/map+vec/vec) auto_inline off
+21:51 006d8f10 grade j3.cpp SRC_FAIL -- probe: visible side-effecting GFSerialise bodies (map/map+vec/vec) auto_inline off
+21:51 006d8f10 grade j1.cpp SRC_FAIL -- j1 err
+21:51 006d8f10 grade j1.cpp DIFFER(837v692) hunks=30 -- probe: visible side-effecting GFSerialise bodies (map/map+vec/vec) auto_inline off
+21:51 006d8f10 grade j2.cpp DIFFER(704v692) hunks=36 -- probe: visible side-effecting GFSerialise bodies (map/map+vec/vec) auto_inline off
+21:51 006d8f10 grade j3.cpp DIFFER(560v692) hunks=14 -- probe: visible side-effecting GFSerialise bodies (map/map+vec/vec) auto_inline off
+21:52 006d8f10 grade j1.cpp DIFFER(693v692) hunks=8 -- probe: visible side-effecting GFSerialise bodies noinline (map/map+vec/vec)
+21:52 006d8f10 grade j2.cpp DIFFER(693v692) hunks=8 -- probe: visible side-effecting GFSerialise bodies noinline (map/map+vec/vec)
+21:52 006d8f10 grade j3.cpp DIFFER(693v692) hunks=8 -- probe: visible side-effecting GFSerialise bodies noinline (map/map+vec/vec)
+21:54 006d8f10 grade k1.cpp DIFFER(696v692) hunks=15 -- probe: last transfer swapped to a lower-offset member (k1)
+21:54 006d8f10 grade k2.cpp DIFFER(703v692) hunks=17 -- probe: last transfer swapped to a lower-offset member (k2)
+21:54 006d8f10 grade k3.cpp DIFFER(712v692) hunks=20 -- probe: last transfer swapped to a lower-offset member (k3)
+21:54 006d8f10 grade k1.cpp DIFFER(696v692) hunks=15 -- probe view k1
+21:54 006d8f10 grade k2.cpp DIFFER(703v692) hunks=17 -- probe view k2
+21:54 006d8f10 grade k3.cpp DIFFER(712v692) hunks=20 -- probe view k3
+21:56 006d8f10 grade l1.cpp DIFFER(705v692) hunks=50 -- bodies: mode local / IsBinary nest / reordered arms
+21:56 006d8f10 grade l2.cpp SRC_FAIL -- bodies: mode local / IsBinary nest / reordered arms
+21:56 006d8f10 grade l3.cpp DIFFER(685v692) hunks=15 -- bodies: mode local / IsBinary nest / reordered arms
+21:56 006d8f10 grade l2.cpp SRC_FAIL -- l2 err
+21:56 006d8f10 grade l2.cpp DIFFER(751v692) hunks=60 -- bodies: IsBinary nest
+21:56 006d8f10 grade n2.cpp DIFFER(693v692) hunks=8 -- probe: macro with ref local per transfer
+21:57 006d8f10 grade r1.cpp DIFFER(707v692) hunks=9 -- probe: region interior floats/vectors/1map (r1)
+21:57 006d8f10 grade r2.cpp DIFFER(657v692) hunks=10 -- probe: region interior floats/vectors/1map (r2)
+21:57 006d8f10 grade r3.cpp DIFFER(543v692) hunks=9 -- probe: region interior floats/vectors/1map (r3)
+21:57 006d8f10 grade r1.cpp DIFFER(707v692) hunks=9 -- view r1
+21:57 006d8f10 grade r2.cpp DIFFER(657v692) hunks=10 -- view r2
+21:59 006d8f10 grade vimdfd.cpp DIFFER(685v692) hunks=22 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimdfi.cpp DIFFER(689v692) hunks=28 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimdfs.cpp DIFFER(685v692) hunks=22 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimifd.cpp DIFFER(701v692) hunks=44 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimifi.cpp DIFFER(705v692) hunks=50 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimifs.cpp DIFFER(701v692) hunks=44 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimsfd.cpp DIFFER(685v692) hunks=22 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimsfi.cpp DIFFER(689v692) hunks=28 -- grid: body spelling combos (vector/map/float)
+21:59 006d8f10 grade vimsfs.cpp DIFFER(685v692) hunks=22 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmdfd.cpp DIFFER(693v692) hunks=8 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmdfi.cpp DIFFER(697v692) hunks=16 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmdfs.cpp DIFFER(693v692) hunks=8 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmifd.cpp DIFFER(709v692) hunks=32 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmifi.cpp DIFFER(713v692) hunks=40 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmifs.cpp DIFFER(709v692) hunks=32 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmsfd.cpp DIFFER(693v692) hunks=8 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmsfi.cpp DIFFER(697v692) hunks=16 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade vsmsfs.cpp DIFFER(693v692) hunks=8 -- grid: body spelling combos (vector/map/float)
+22:00 006d8f10 grade a.cpp DIFFER(693v692) hunks=8 -- switch extra empty cases (CLEAR / text) and vector SAVE+default label
+22:00 006d8f10 grade b.cpp DIFFER(693v692) hunks=8 -- switch extra empty cases (CLEAR / text) and vector SAVE+default label
+22:00 006d8f10 grade c.cpp DIFFER(693v692) hunks=8 -- switch extra empty cases (CLEAR / text) and vector SAVE+default label
+22:01 006d8f10 grade o1.cpp DIFFER(693v692) hunks=8 -- float traits: before CheckCRC / per-case local / temporaries
+22:01 006d8f10 grade o2.cpp DIFFER(693v692) hunks=8 -- float traits: before CheckCRC / per-case local / temporaries
+22:01 006d8f10 grade o3.cpp DIFFER(706v692) hunks=9 -- float traits: before CheckCRC / per-case local / temporaries
+probe-pass3 summary appended
+22:05 006d8f10 grade a0.cpp DIFFER(693v692) hunks=8 -- pass4 baseline regrade
+22:07 006d8f10 grade r1.cpp DIFFER(707v692) hunks=9 -- pass4 view r1 to locate wrapped push/pop
+22:09 006d8f10 probe t1 tail-length sweep -> DIFFER(794v692)
+22:09 006d8f10 probe t2 tail-length sweep -> DIFFER(840v692)
+22:09 006d8f10 probe t3 tail-length sweep -> DIFFER(854v692)
+22:09 006d8f10 probe t1 [123ABfgSILORSC12] tail-length sweep -> DIFFER(794v692) 8f14:push_ebp 9077:lea_ebp, 9210:pop_ebp 9222:pop_ebp 
+22:09 006d8f10 probe t2 [123ABfgSILORSC123] tail-length sweep -> DIFFER(840v692) 8f14:push_ebp 907b:lea_ebp, 923e:pop_ebp 9250:pop_ebp 
+22:09 006d8f10 probe t3 [123ABfgSILORSCAB1] tail-length sweep -> DIFFER(854v692) 8f14:push_ebp 907b:lea_ebp, 924c:pop_ebp 925e:pop_ebp 
+22:09 006d8f10 probe t4 [123ABfgSISLC] tail-length sweep -> DIFFER(590v692) 9064:push_ebp 906c:lea_ebp, 910a:pop_ebp 
+22:09 006d8f10 probe t5 [123ABfgSISC] tail-length sweep -> DIFFER(543v692) 8f11:push_ebp 906c:lea_ebp, 911b:pop_ebp 912a:pop_ebp 
+22:09 006d8f10 probe t6 [123ABfgSILORSLC] tail-length sweep -> DIFFER(746v692) 8f11:push_ebp 90cf:lea_ebp, 91e6:pop_ebp 91f5:pop_ebp 
+22:09 006d8f10 probe t7 [SILORSC] tail-length sweep -> DIFFER(361v692) 8f10:push_ebp 8f20:lea_ebp, 9067:pop_ebp 9075:pop_ebp 
+22:09 006d8f10 probe t8 [SISC] tail-length sweep -> DIFFER(211v692) 8f10:push_ebp 8f20:lea_ebp, 8fd1:pop_ebp 8fdf:pop_ebp 
+22:09 006d8f10 probe t9 [123ABfgSILSLC] tail-length sweep -> DIFFER(635v692) 9064:push_ebp 906c:lea_ebp, 9137:pop_ebp 
+22:09 006d8f10 probe u1 [fgSILORSC] region6 tail sweep distinct members -> DIFFER(468v692) 8f11:push_ebp 8f8b:lea_ebp, 90d0:pop_ebp 90df:pop_ebp 
+22:09 006d8f10 probe u2 [fgSILORSC1] region6 tail sweep distinct members -> DIFFER(510v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:09 006d8f10 probe u3 [fgSILORSC12] region6 tail sweep distinct members -> DIFFER(553v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:09 006d8f10 probe u4 [fgSILORSC123] region6 tail sweep distinct members -> DIFFER(596v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:09 006d8f10 probe u5 [fgSILORSC123AB] region6 tail sweep distinct members -> DIFFER(692v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:09 006d8f10 probe u6 [SILORS123ABfgC] region6 tail sweep distinct members -> DIFFER(693v692) 8f11:push_ebp 8f21:lea_ebp, 91b1:pop_ebp 91c0:pop_ebp 
+22:09 006d8f10 probe u7 [fgSILOSRC] region6 tail sweep distinct members -> DIFFER(467v692) 8f83:push_ebp 8f8b:lea_ebp, 908f:pop_ebp 
+22:09 006d8f10 probe u8 [fgSILSORC] region6 tail sweep distinct members -> DIFFER(467v692) 8f83:push_ebp 8f8b:lea_ebp, 905c:pop_ebp 
+22:09 006d8f10 probe u9 [fgSISLORC] region6 tail sweep distinct members -> DIFFER(467v692) 8f83:push_ebp 8f8b:lea_ebp, 9029:pop_ebp 
+22:09 006d8f10 probe ua [fgSSILORC] region6 tail sweep distinct members -> DIFFER(465v692) 
+22:09 006d8f10 probe ub [SILORSAB] region6 tail sweep distinct members -> DIFFER(412v692) 8f11:push_ebp 8f21:lea_ebp, 9096:pop_ebp 90a7:pop_ebp 
+22:11 006d8f10 probe v1 [SILORSC1] prefix-length sweep with tail 2 -> DIFFER(405v692) 8f11:push_ebp 8f21:lea_ebp, 9091:pop_ebp 90a0:pop_ebp 
+22:11 006d8f10 probe v2 [fSILORSC1] prefix-length sweep with tail 2 -> DIFFER(457v692) 8f4e:push_ebp 8f56:lea_ebp, 908d:pop_ebp 
+22:11 006d8f10 probe v3 [1SILORSC2] prefix-length sweep with tail 2 -> DIFFER(447v692) 8f44:push_ebp 8f4c:lea_ebp, 9083:pop_ebp 
+22:11 006d8f10 probe v4 [ASILORSC1] prefix-length sweep with tail 2 -> DIFFER(452v692) 8f49:push_ebp 8f51:lea_ebp, 9088:pop_ebp 
+22:11 006d8f10 probe v5 [fgSILORSf] prefix-length sweep with tail 2 -> DIFFER(487v692) 8f12:push_ebp 8f90:lea_ebp, 90d7:pop_ebp 90f1:pop_ebp 
+22:11 006d8f10 probe v6 [fgSILORSA] prefix-length sweep with tail 2 -> DIFFER(470v692) 8f11:push_ebp 8f8b:lea_ebp, 90d0:pop_ebp 90e1:pop_ebp 
+22:11 006d8f10 probe v7 [12SILORSC] prefix-length sweep with tail 2 -> DIFFER(448v692) 8f11:push_ebp 8f77:lea_ebp, 90bc:pop_ebp 90cb:pop_ebp 
+22:11 006d8f10 probe v8 [fgSILORSCA] prefix-length sweep with tail 2 -> DIFFER(515v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:11 006d8f10 probe v9 [fgSILORSAC] prefix-length sweep with tail 2 -> DIFFER(515v692) 8f83:push_ebp 8f8b:lea_ebp, 90bf:pop_ebp 
+22:12 006d8f10 probe e1 [fgSILORSC + context.CheckCRC("");] tail shape -> SRC_FAIL 
+22:12 006d8f10 probe e2 [fgSILORSC + if (context.Mode == 2) context.CheckCRC("");] tail shape -> SRC_FAIL 
+22:12 006d8f10 probe e3 [fgSILORSC + if (context.Mode == 2) context.CheckCRC(""); else context.CheckCRC("x");] tail shape -> SRC_FAIL 
+22:12 006d8f10 probe e4 [fgSILORSC + if (context.Mode == 2) return;] tail shape -> SRC_FAIL 
+22:12 006d8f10 probe e5 [fgSILORS + context.CheckCRC(""); context.CheckCRC("");] tail shape -> SRC_FAIL 
+22:12 006d8f10 probe e6 [fgSILORS + context.CheckCRC(""); if (context.Mode == 2) context.CheckCRC("");] tail shape -> SRC_FAIL 
+22:12 006d8f10 probe e1 [fgSILORSC + ProbeOpaque();] tail shape -> DIFFER(478v692) 8f11:push_ebp 8f8b:lea_ebp, 90d5:pop_ebp 90e9:pop_ebp 
+22:12 006d8f10 probe e2 [fgSILORSC + if (gProbe == 2) ProbeOpaque();] tail shape -> DIFFER(477v692) 8f11:push_ebp 8f8b:lea_ebp, 90e1:pop_ebp 
+22:12 006d8f10 probe e3 [fgSILORSC + if (gProbe == 2) ProbeOpaque(); else gProbe = 5;] tail shape -> DIFFER(490v692) 8f11:push_ebp 8f8b:lea_ebp, 90e1:pop_ebp 
+22:12 006d8f10 probe e4 [fgSILORSC + if (gProbe == 2) return; ProbeOpaque();] tail shape -> DIFFER(477v692) 8f11:push_ebp 8f8b:lea_ebp, 90e1:pop_ebp 
+22:12 006d8f10 probe e5 [fgSILORS + ProbeOpaque(); ProbeOpaque();] tail shape -> DIFFER(442v692) 8f11:push_ebp 8f8b:lea_ebp, 90aa:pop_ebp 90c5:pop_ebp 
+22:12 006d8f10 probe e6 [fgSILORS + ProbeOpaque(); if (gProbe == 2) ProbeOpaque();] tail shape -> DIFFER(436v692) 8f11:push_ebp 8f8b:lea_ebp, 90b8:pop_ebp 
+22:12 006d8f10 probe e7 [fgSILORS + if (gProbe == 2) ProbeOpaque(); ProbeOpaque(); ] tail shape -> DIFFER(436v692) 8f11:push_ebp 8f8b:lea_ebp, 90b3:pop_ebp 
+22:12 006d8f10 probe e8 [fgSILORS + gProbe = 1;] tail shape -> DIFFER(442v692) 8f11:push_ebp 8f8b:lea_ebp, 90a0:pop_ebp 90bb:pop_ebp 
+22:13 006d8f10 probe e9 [fgSILORSC + gProbe = (int)this;] this live after C? -> DIFFER(479v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:13 006d8f10 probe ea [fgSILORSC + gProbe = (int)&context;] this live after C? -> DIFFER(480v692) 8f11:push_ebp 8f8b:lea_ebp, 90d6:pop_ebp 90eb:pop_ebp 
+22:13 006d8f10 probe eb [fgSILORSC + if (gProbe == 2) gProbe = (int)this; else ProbeOpaque();] this live after C? -> DIFFER(489v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:13 006d8f10 probe ec [fgSILORSC + if (gProbe == 2) gProbe = (int)&context; else ProbeOpaque();] this live after C? -> DIFFER(490v692) 8f11:push_ebp 8f8b:lea_ebp, 90e9:pop_ebp 90f5:pop_ebp 
+22:14 006d8f10 probe x1 [fgSILORS + gProbe = (int)this;] ebx-encloses vs this-alive -> DIFFER(434v692) 8f11:push_ebp 8f8b:lea_ebp, 90a6:pop_ebp 90bd:pop_ebp 
+22:14 006d8f10 probe x2 [fgSILORS + ProbeOpaque(); gProbe = (int)this;] ebx-encloses vs this-alive -> DIFFER(444v692) 8f11:push_ebp 8f8b:lea_ebp, 90ab:pop_ebp 90c7:pop_ebp 
+22:14 006d8f10 probe x3 [fgSILORS + if (gProbe == 2) gProbe = (int)this; else ProbeOpaque();] ebx-encloses vs this-alive -> DIFFER(444v692) 8f11:push_ebp 8f8b:lea_ebp, 90bb:pop_ebp 90c7:pop_ebp 
+22:14 006d8f10 probe x4 [fgSILORS + if (gProbe == 2) ProbeOpaque(); else ProbeOpaque(); if (gProbe == 2) gProbe = (int)this; else ProbeOpaque();] ebx-encloses vs this-alive -> DIFFER(458v692) 8f83:push_ebp 8f8b:lea_ebp, 90b3:pop_ebp 
+22:18 006d8f10 probe y1 [fgSILORSC + gProbe = (int)this; ProbeOpaque();] edi dead early; generic diamonds after -> DIFFER(489v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:18 006d8f10 probe y2 [fgSILORS + if (gProbe == 2) ProbeOpaque(); else gProbe = 5; if (gProbe == 3) ProbeOpaque(); else gProbe = 6;] edi dead early; generic diamonds after -> DIFFER(458v692) 8f11:push_ebp 8f8b:lea_ebp, 90b3:pop_ebp 
+22:18 006d8f10 probe y3 [fgSILORS + if (gProbe == 2) ProbeOpaque(); else gProbe = 5; if (gProbe == 3) ProbeOpaque(); else gProbe = 6; if (gProbe == 4) ProbeOpaque(); else gProbe = 7;] edi dead early; generic diamonds after -> DIFFER(472v692) 8f11:push_ebp 8f8b:lea_ebp, 90b3:pop_ebp 
+22:18 006d8f10 probe y4 [fgSILORSC + if (gProbe == 2) ProbeOpaque(); else gProbe = 5; if (gProbe == 3) ProbeOpaque(); else gProbe = 6;] edi dead early; generic diamonds after -> DIFFER(504v692) 8f11:push_ebp 8f8b:lea_ebp, 90e1:pop_ebp 
+22:18 006d8f10 probe y5 [fgSILORSC + if (gProbe == 2) ProbeOpaque(); else gProbe = 5; if (gProbe == 3) ProbeOpaque(); else gProbe = 6; if (gProbe == 4) ProbeOpaque(); else gProbe = 7;] edi dead early; generic diamonds after -> DIFFER(518v692) 8f11:push_ebp 8f8b:lea_ebp, 90e1:pop_ebp 
+22:18 006d8f10 probe y6 [fgSILORS + if (gProbe == 2) ProbeOpaque(); else gProbe = 5;] edi dead early; generic diamonds after -> DIFFER(444v692) 8f11:push_ebp 8f8b:lea_ebp, 90b3:pop_ebp 
+22:18 006d8f10 probe y7 [fgSILORS + if (gProbe == 2) ProbeOpaque(); else gProbe = 5; ProbeOpaque();] edi dead early; generic diamonds after -> DIFFER(454v692) 8f11:push_ebp 8f8b:lea_ebp, 90b3:pop_ebp 
+22:21 006d8f10 probe z1 [fgSILORS + if (gProbe == 2) gProbe = (int)this; else ProbeOpaque(); gProbe = (int)this + 1;] edi-live-into-J1 vs edi-dies-in-D1 -> DIFFER(438v692) 8f11:push_ebp 8f8b:lea_ebp, 90c1:pop_ebp 
+22:21 006d8f10 probe z2 [fgSILORS + if (gProbe == 2) gProbe = (int)&context; else ProbeOpaque();] edi-live-into-J1 vs edi-dies-in-D1 -> DIFFER(444v692) 8f11:push_ebp 8f8b:lea_ebp, 90bb:pop_ebp 90c7:pop_ebp 
+22:21 006d8f10 probe z3 [fgSILORS + if (gProbe == 2) ProbeOpaque(); else gProbe = 5; if (gProbe == 3) gProbe = (int)&context; else ProbeOpaque();] edi-live-into-J1 vs edi-dies-in-D1 -> DIFFER(468v692) 8f11:push_ebp 8f8b:lea_ebp, 90c9:pop_ebp 90df:pop_ebp 
+22:21 006d8f10 probe z4 [fgSILORS + if (gProbe == 2) gProbe = (int)&context; else ProbeOpaque(); if (gProbe == 3) gProbe = (int)&context; else ProbeOpaque();] edi-live-into-J1 vs edi-dies-in-D1 -> DIFFER(466v692) 8f11:push_ebp 8f8b:lea_ebp, 90d1:pop_ebp 90dd:pop_ebp 
+22:21 006d8f10 probe z5 [fgSILORS + if (gProbe == 2) gProbe = (int)this; else ProbeOpaque(); if (gProbe == 3) gProbe = (int)&context; else ProbeOpaque();] edi-live-into-J1 vs edi-dies-in-D1 -> DIFFER(466v692) 8f11:push_ebp 8f8b:lea_ebp, 90d1:pop_ebp 90dd:pop_ebp 
+22:21 006d8f10 probe z6 [fgSILORS + if (gProbe == 2) gProbe = (int)&context; else ProbeOpaque(); if (gProbe == 3) gProbe = (int)this; else ProbeOpaque();] edi-live-into-J1 vs edi-dies-in-D1 -> DIFFER(466v692) 8f11:push_ebp 8f8b:lea_ebp, 90d1:pop_ebp 90dd:pop_ebp 
+22:24 006d8f10 probe w1 [fgSILORSC + gProbe = (int)&AttackHistoryCombos;] T_C live after last diamond -> DIFFER(480v692) 8f11:push_ebp 8f8b:lea_ebp, 90d6:pop_ebp 90eb:pop_ebp 
+22:24 006d8f10 probe w2 [fgSILORSC + gProbe = (int)&AttackHistoryCombos; ProbeOpaque();] T_C live after last diamond -> DIFFER(490v692) 8f11:push_ebp 8f8b:lea_ebp, 90db:pop_ebp 90f5:pop_ebp 
+22:24 006d8f10 probe w3 [fgSILORSC + ProbeOpaque(); gProbe = (int)&AttackHistoryCombos;] T_C live after last diamond -> DIFFER(490v692) 8f11:push_ebp 8f8b:lea_ebp, 90db:pop_ebp 90f5:pop_ebp 
+22:24 006d8f10 probe w4 [fgSILORSCC] C twice -> DIFFER(508v692) 8f11:push_ebp 8f8b:lea_ebp, 90f8:pop_ebp 9107:pop_ebp 
+22:27 006d8f10 probe q1 [fgSILORS + gProbe = (int)&ComboMultiplierRunningHitsIncrease; context.TransferVector(AttackHistoryCombos);] ebx ref placement (theory E) -> DIFFER(474v692) 8f11:push_ebp 8f8b:lea_ebp, 90d6:pop_ebp 90e5:pop_ebp 
+22:27 006d8f10 probe q2 [fgSILORS + context.TransferVector(AttackHistoryCombos); gProbe = (int)&ComboMultiplierRunningHitsIncrease;] ebx ref placement (theory E) -> DIFFER(479v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:27 006d8f10 probe q3 [fgSILOR + gProbe = (int)&ComboMultiplierRunningHitsIncrease; context.TransferMap(StatIncreasePerHitType); context.TransferVector(AttackHistoryCombos);] ebx ref placement (theory E) -> DIFFER(474v692) 8f11:push_ebp 8f8b:lea_ebp, 90d6:pop_ebp 90e5:pop_ebp 
+22:30 006d8f10 grade s1.cpp DIFFER(693v692) hunks=8 -- stale c2 state probe: a big ebx-late function before/after Transfer
+22:30 006d8f10 grade s2.cpp DIFFER(693v692) hunks=8 -- stale c2 state probe: a big ebx-late function before/after Transfer
+22:30 006d8f10 grade s3.cpp DIFFER(693v692) hunks=8 -- stale c2 state probe: a big ebx-late function before/after Transfer
+22:33 006d8f10 probe q4 [fgSILORSC + context.TransferVector(*(std::vector<long>*)gProbe);] fresh ebx lifetime after D1 (not live across) -> DIFFER(514v692) 8f11:push_ebp 8f8b:lea_ebp, 90fe:pop_ebp 910d:pop_ebp 
+22:33 006d8f10 probe q5 [fgSILORS + context.TransferVector(*(std::vector<long>*)gProbe);] fresh ebx lifetime after D1 (not live across) -> DIFFER(468v692) 8f11:push_ebp 8f8b:lea_ebp, 90d0:pop_ebp 90df:pop_ebp 
+22:33 006d8f10 probe q6 [fgSILORS + context.TransferVector(*(std::vector<long>*)gProbe); context.TransferVector(AttackHistoryCombos);] fresh ebx lifetime after D1 (not live across) -> DIFFER(513v692) 8f83:push_ebp 8f8b:lea_ebp, 90c2:pop_ebp 
+22:34 006d8f10 probe scan retail for hoisted pop ebp with ebx dead after -> no capstone/pefile No module named 'pefile'
+22:34 006d8f10 probe scan retail for hoisted pop ebp with ebx dead after -> 75 candidates
+22:36 006d8f10 grade i1.cpp DIFFER(693v692) hunks=8 -- instantiation-order probe: earlier function instantiates Stat map / Combo vector templates before CDefString map
+22:36 006d8f10 grade i2.cpp DIFFER(693v692) hunks=8 -- instantiation-order probe: earlier function instantiates Stat map / Combo vector templates before CDefString map
+22:36 006d8f10 grade i3.cpp DIFFER(693v692) hunks=8 -- instantiation-order probe: earlier function instantiates Stat map / Combo vector templates before CDefString map
+22:40 006d8f10 grade c1.cpp DIFFER(709v692) hunks=10 -- float traits ctor (FABLE_RETAIL_CPERSISTTRAITS) with/without visible noinline TransferBinaryIn<float> body
+22:40 006d8f10 grade c2.cpp SRC_FAIL -- float traits ctor (FABLE_RETAIL_CPERSISTTRAITS) with/without visible noinline TransferBinaryIn<float> body
+22:40 006d8f10 grade c3.cpp SRC_FAIL -- float traits ctor (FABLE_RETAIL_CPERSISTTRAITS) with/without visible noinline TransferBinaryIn<float> body
+22:41 006d8f10 grade c2.cpp DIFFER(693v692) hunks=8 -- float traits ctor + visible TransferBinaryIn<float> body: inline noinline / plain noinline / auto_inline off
+22:41 006d8f10 grade c3.cpp DIFFER(693v692) hunks=8 -- float traits ctor + visible TransferBinaryIn<float> body: inline noinline / plain noinline / auto_inline off
+22:41 006d8f10 grade c4.cpp DIFFER(693v692) hunks=8 -- float traits ctor + visible TransferBinaryIn<float> body: inline noinline / plain noinline / auto_inline off
+22:41 006d8f10 grade k1.cpp DIFFER(693v692) hunks=8 -- register-summary probe: explicit specialisations of the last vector's In/Out callees (bodies using all callee-saved regs) before/after Transfer
+22:41 006d8f10 grade k2.cpp DIFFER(693v692) hunks=8 -- register-summary probe: explicit specialisations of the last vector's In/Out callees (bodies using all callee-saved regs) before/after Transfer
+22:41 006d8f10 grade k3.cpp DIFFER(693v692) hunks=8 -- register-summary probe: explicit specialisations of the last vector's In/Out callees (bodies using all callee-saved regs) before/after Transfer
+22:46 006d8f10 probe scan2 non-loop wraps with ebx dead before ebp's last ref -> 24 non-loop wraps with ebx last ref before ebp last ref
+22:48 006d8f10 probe p1 [fgSISLSOSRSC] T_S priority (more uses) vs register choice and wrap -> DIFFER(603v692) 8f11:push_ebp 8f8b:lea_ebp, 9157:pop_ebp 9166:pop_ebp 
+22:48 006d8f10 probe p2 [fgSSSILORSC] T_S priority (more uses) vs register choice and wrap -> DIFFER(558v692) 8f11:push_ebp 8f8b:lea_ebp, 912a:pop_ebp 9139:pop_ebp 
+22:49 006d8f10 probe p3 [fgSILORSSSC] T_S priority (more uses) vs register choice and wrap -> DIFFER(558v692) 8f11:push_ebp 8f8b:lea_ebp, 912a:pop_ebp 9139:pop_ebp 
+22:49 006d8f10 probe p4 [fgSILSORSC] T_S priority (more uses) vs register choice and wrap -> DIFFER(513v692) 8f11:push_ebp 8f8b:lea_ebp, 90fd:pop_ebp 910c:pop_ebp 
+22:49 006d8f10 probe p5 [fgSSILORSC] T_S priority (more uses) vs register choice and wrap -> DIFFER(513v692) 8f11:push_ebp 8f8b:lea_ebp, 90fd:pop_ebp 910c:pop_ebp 
+22:49 006d8f10 probe x1 early-return before/inside region (ebx post-dominator theory) -> DIFFER(705v692) 9071:push_ebp 9079:lea_ebp, 91b0:pop_ebp 
+22:49 006d8f10 probe x2 early-return before/inside region (ebx post-dominator theory) -> DIFFER(705v692) 9071:push_ebp 9079:lea_ebp, 91b0:pop_ebp 
+22:49 006d8f10 probe x3 early-return before/inside region (ebx post-dominator theory) -> DIFFER(706v692) 8f11:push_ebp 906c:lea_ebp, 91be:pop_ebp 91cd:pop_ebp 
+22:50 006d8f10 grade n1.cpp DIFFER(710v692) hunks=13 -- TransferVector switch with case SAVE + default: __assume(0) (unreachable default = dead-end block before the region)
+22:51 006d8f10 probe w1 early-return at top / after transfer 1 (bypass vs ebx post-dominance) -> DIFFER(706v692) 8f21:push_ebp 9079:lea_ebp, 91bd:pop_ebp 91cc:pop_ebp 
+22:51 006d8f10 probe w2 early-return at top / after transfer 1 (bypass vs ebx post-dominance) -> DIFFER(705v692) 9071:push_ebp 9079:lea_ebp, 91b0:pop_ebp 
+22:51 006d8f10 probe w3 early-return at top / after transfer 1 (bypass vs ebx post-dominance) -> DIFFER(707v692) 8f18:push_ebp 907a:lea_ebp, 91bf:pop_ebp 91ce:pop_ebp 
+22:51 006d8f10 probe w4 early-return at top / after transfer 1 (bypass vs ebx post-dominance) -> DIFFER(712v692) 9078:push_ebp 9080:lea_ebp, 91b7:pop_ebp 
+22:53 006d8f10 grade r1.cpp DIFFER(693v692) hunks=8 -- inline bodies with return statements: vector both arms / vector load arm only / float cases (inlined-return-as-exit theory)
+22:53 006d8f10 grade r2.cpp DIFFER(693v692) hunks=8 -- inline bodies with return statements: vector both arms / vector load arm only / float cases (inlined-return-as-exit theory)
+22:53 006d8f10 grade r3.cpp DIFFER(693v692) hunks=8 -- inline bodies with return statements: vector both arms / vector load arm only / float cases (inlined-return-as-exit theory)
+22:55 006d8f10 grade a1.cpp DIFFER(693v692) hunks=8 -- vector default __assume(0) + CPersistTraits<float> class spec (const float& out; a2 adds ctor + visible In body); a3 = spec only
+22:55 006d8f10 grade a2.cpp DIFFER(693v692) hunks=8 -- vector default __assume(0) + CPersistTraits<float> class spec (const float& out; a2 adds ctor + visible In body); a3 = spec only
+22:55 006d8f10 grade a3.cpp DIFFER(693v692) hunks=8 -- vector default __assume(0) + CPersistTraits<float> class spec (const float& out; a2 adds ctor + visible In body); a3 = spec only
+22:58 006d8f10 grade d1.cpp DIFFER(697v692) hunks=12 -- vector switch: duplicate SAVE/default arms; if+return then switch; explicit case list
+22:58 006d8f10 grade d2.cpp DIFFER(685v692) hunks=22 -- vector switch: duplicate SAVE/default arms; if+return then switch; explicit case list
+22:58 006d8f10 grade d3.cpp DIFFER(560v692) hunks=14 -- vector switch: duplicate SAVE/default arms; if+return then switch; explicit case list
+22:59 006d8f10 grade y1.cpp DIFFER(693v692) hunks=8 -- inline depth probe: CDefString maps via an extra inline wrapper (all / only R) vs Stat via wrapper
+22:59 006d8f10 grade y2.cpp DIFFER(693v692) hunks=8 -- inline depth probe: CDefString maps via an extra inline wrapper (all / only R) vs Stat via wrapper
+22:59 006d8f10 grade y3.cpp DIFFER(693v692) hunks=8 -- inline depth probe: CDefString maps via an extra inline wrapper (all / only R) vs Stat via wrapper
+23:03 006d8f10 grade v1.cpp DIFFER(693v692) hunks=8 -- vector default arm: __assume(0) before/after an Out call; __assume(Mode is 2 or 3) before the switch
+23:03 006d8f10 grade v2.cpp DIFFER(724v692) hunks=8 -- vector default arm: __assume(0) before/after an Out call; __assume(Mode is 2 or 3) before the switch
+23:03 006d8f10 grade v3.cpp DIFFER(713v692) hunks=19 -- vector default arm: __assume(0) before/after an Out call; __assume(Mode is 2 or 3) before the switch
+23:03 006d8f10 grade v2.cpp DIFFER(724v692) hunks=8 -- view v2 (Out; __assume(0) default arm)
+23:05 006d8f10 grade f1.cpp DIFFER(686v692) hunks=2 -- Transfer<T> switch default as empty dead end: empty inline + __assume(0) / empty noreturn inline / noreturn inline + break
+23:05 006d8f10 grade f2.cpp DIFFER(686v692) hunks=2 -- Transfer<T> switch default as empty dead end: empty inline + __assume(0) / empty noreturn inline / noreturn inline + break
+23:05 006d8f10 grade f3.cpp DIFFER(686v692) hunks=2 -- Transfer<T> switch default as empty dead end: empty inline + __assume(0) / empty noreturn inline / noreturn inline + break
+23:06 006d8f10 grade g1.cpp DIFFER(686v692) hunks=2 -- float default arm: do/if/__assume(0) ; __assume(Mode is 2 or 3) ; for(;;) __assume(0)
+23:06 006d8f10 grade g2.cpp DIFFER(693v692) hunks=8 -- float default arm: do/if/__assume(0) ; __assume(Mode is 2 or 3) ; for(;;) __assume(0)
+23:06 006d8f10 grade g3.cpp DIFFER(686v692) hunks=2 -- float default arm: do/if/__assume(0) ; __assume(Mode is 2 or 3) ; for(;;) __assume(0)
+23:10 006d8f10 grade h1.cpp DIFFER(687v692) hunks=10 -- floats 2-way genuine (case 2 / default Out) vs case 2, case 3, default __assume(0)
+23:10 006d8f10 grade h2.cpp DIFFER(687v692) hunks=10 -- floats 2-way genuine (case 2 / default Out) vs case 2, case 3, default __assume(0)
+23:11 006d8f10 grade v1.cpp RELOCATION_MATCH -- VECTOR switch: case LOAD, case SAVE, default = indirect unreachable (do/if/__assume(0) ; empty inline + __assume(0) ; empty noreturn inline)
+23:11 006d8f10 grade v1.cpp RELOCATION_MATCH -- vector default arm: do { if (!(false)) { __assume(0); } } while (0); break;
+23:11 006d8f10 grade v2.cpp RELOCATION_MATCH -- vector default arm: ProbeEmptyInline(); __assume(0);
+23:11 006d8f10 grade v3.cpp RELOCATION_MATCH -- vector default arm: ProbeNoReturnEmpty(); break;
+23:11 006d8f10 grade v4.cpp DIFFER(693v692) -- vector default arm: ( __assume(0) ); break;
+23:11 006d8f10 grade v5.cpp RELOCATION_MATCH -- vector default arm: if (!(false)) __assume(0); break;
+23:11 006d8f10 grade v6.cpp RELOCATION_MATCH -- vector default arm: do { __assume(0); } while (0); break;
+23:11 006d8f10 grade v7.cpp RELOCATION_MATCH -- vector default arm: { __assume(0); } break;
+23:11 006d8f10 grade v8.cpp DIFFER(693v692) -- vector default arm: __assume(0); break;
+23:11 006d8f10 grade v9.cpp DIFFER(693v692) -- vector default arm: __assume(false); break;
+23:11 006d8f10 grade v10.cpp RELOCATION_MATCH -- vector default arm: if (!false) { __assume(0); } break;
+23:12 006d8f10 grade m1.cpp RELOCATION_MATCH -- overlay opt-ins: TransferVector braced __assume(0) default + CPersistTraits<float> class (const float& out)
+23:13 006d8f10 grade src_006d8f10.cpp RELOCATION_MATCH -- final source (header comment added)
+23:13 006d8f10 grade src_006d8f10.cpp RELOCATION_MATCH -- final source, strict headers regrade
+23:14 006d8f10 grade src_006d8f10.cpp RELOCATION_MATCH -- final regrade after tidy
+23:15 006d8f10 grade src.cpp RELOCATION_MATCH -- 
+23:15 006d8f10 grade src.cpp SRC_FAIL -- 
+23:15 006d8f10 grade src.cpp SRC_FAIL -- 
+23:15 006d8f10 grade src.cpp DIFFER(394v692) hunks=14 -- 
+23:15 006d8f10 grade src.cpp DIFFER(706v692) hunks=7 -- 
+23:18 006d8f10 grade src_006d8f10.cpp RELOCATION_MATCH -- repair: baseline before edits
+23:19 006d8f10 grade src_006d8f10.cpp RELOCATION_MATCH -- repair: callee comment proves 0x00466A75 is <long> (comment only)
+23:19 006d8f10 grade src_006d8f10.cpp RELOCATION_MATCH -- repair: strict headers regrade after comment edit
+23:20 006d8f10 grade src.cpp RELOCATION_MATCH -- 
+23:20 006d8f10 grade src.cpp SRC_FAIL -- 
+23:20 006d8f10 grade src.cpp SRC_FAIL -- 
+23:20 006d8f10 grade src.cpp DIFFER(394v692) hunks=14 -- 
+23:20 006d8f10 grade src.cpp DIFFER(706v692) hunks=7 -- 
+

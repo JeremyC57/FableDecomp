@@ -53,6 +53,26 @@ template<> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& i
  long tval=is.ReadSLONG();val=tval;
 }
 #endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_CLASS
+// Retail opt-in (wf16f row 0x006D8F10 CHeroExperienceDef::Transfer): the float traits as their own class, because the float writer
+// takes its value by const reference (FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@M@@QAEXAAVCDataOutputStream@@ABM@Z; the
+// generic template passes T by value) and writes through CDataOutputStream::WriteFloat 0x00993EE0, inline (retail 0x006D9014:
+// `mov eax,[ebx] ; mov ecx,[esi+0x28] ; push eax ; call 0x993EE0`). The other members are the Ego_r.pdb / FableWin.pdb set:
+// ?TransferBinaryIn@?$CPersistTraits@M@@QAEXAAVCMemoryDataInputStream@@AAM@Z (0x0040EFB0), ...QAEMAAVCMemoryDataInputStream@@@Z,
+// ?TransferIn@...AAVCPersistContext@@AAVCStringParser@@AAM@Z, ?TransferOut@...AAVCPersistContext@@AAVCCharString@@ABM@Z.
+// DefaultVal is left uninitialised here: the retail inline expansions store nothing into the traits object (the PDB constructor's
+// store only disappears when the body of TransferBinaryIn is visible to the includer).
+#include "engine/CDataOutputStream.h"
+template<> class CPersistTraits<float> {
+public:
+    float DefaultVal;
+    void TransferBinaryIn(CMemoryDataInputStream&,float&);
+    float TransferBinaryIn(CMemoryDataInputStream&);
+    void TransferBinaryOut(CDataOutputStream& stream,const float& value) { stream.WriteFloat(value); }
+    void TransferIn(CPersistContext&,CStringParser&,float&);
+    void TransferOut(CPersistContext&,CCharString&,const float&);
+};
+#endif
 template<> class CPersistTraits<unsigned __int64> {
 public:
     unsigned __int64 DefaultVal;

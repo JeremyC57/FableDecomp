@@ -394828,6 +394828,13 @@ $catalog = @(
         TestSource = '00/95/CAIStateGroupHoverWander_Update_00959bf0_test.cpp'
         PassPattern = '00959bf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006d8f10'
+        Module = 'CHeroExperienceDef'
+        Source = '00/6d/CHeroExperienceDef_Transfer_006d8f10.cpp'
+        TestSource = '00/6d/CHeroExperienceDef_Transfer_006d8f10_test.cpp'
+        PassPattern = '006d8f10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
