@@ -1,0 +1,9 @@
+address	name	evidence
+007c6e50	?FrameUpdate@CTCTurncoatSpell@@UAEXXZ	Ego_r.pdb + FableWin.pdb name sets; Ego_r donor order StopTurncoatingEffects/FrameUpdate/FinalCleanup = retail 0x007C6DA0/0x007C6E50/0x007C7560; vtable 0x0126E5C4 slot 9
+00dcd350	?Main@CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb name sets; CTeamSpawn vtable 0x012DB2D4 slot 1 (stored by the landed ctor 0x00DCD160)
+0072ac40	?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z	Ego_r/FableWin name sets (CTCSpecialAbilities donor order CreateParticleEffect, FadeOrKillEffect(CIntelligentPointer&), FadeOrKillEffect(CThing*)); retail 0x0072AB70 / 0x0072ABD0 / 0x0072AC40; body: ecx null/dead test then particle-emitter fade; already bound in reloc_bindings.tsv
+0072ab70	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z	Ego_r/FableWin; donor order above; bound in reloc_bindings.tsv
+007c76d0	?SetTurncoatOriginator@CTCTurncoat@@QAEXPAVCThing@@@Z	Ego_r/FableWin (FableWin COMDAT right after the spell FrameUpdate; Ego_r 0x007C6510 after OnRemove as retail); body assigns a CIntelligentPointer<CThing> temporary to +0x24 TurncoatOriginator, ret 4
+00792350	??$GetDef@VCHeroAbilityDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@Z	Ego_r/FableWin name sets; the callers (0x007C7485, 0x00795991, 0x007903F1) read CHeroAbilityDef Stat +0x40 / StatExperienceGainedOnUse +0x7C through the out handle after GetDef("HERO_ABILITY_...")
+00dcda80	?MakeTeamMemberComment@CQ_OrchardFarmRaidScript@NScript@@QAE_NABVCCharString@@AAVCScriptThing@@W4ERaidComment@12@@Z	Ego_r/FableWin name sets (the only spelling); manifest param types CCharString*, CScriptThing*, ERaidComment
+006d8300	?AddTrainableStatExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z	Ego_r.pdb + FableWin.pdb name sets (only spelling); landed row 0x006D8300 CTCHeroExperience_AddTrainableStatExperience

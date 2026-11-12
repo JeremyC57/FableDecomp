@@ -1,0 +1,6 @@
+addr       parity           behav  name
+007c6e50   WARN RELOC_NAME: ?SetTurncoatOriginator@CTCTurncoat@@QAEXPAVCThing@@@Z -> 007c76d0 labelled '_unattributed::AssignTarget_007c76d0'
+007c6e50   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 1
+  007c6e50 RELOCATION_MATCH CTCTurncoatSpell::?FrameUpdate@CTCTurncoatSpell@@UAEXXZ
