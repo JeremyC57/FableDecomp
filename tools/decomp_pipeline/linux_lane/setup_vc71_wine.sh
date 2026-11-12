@@ -23,7 +23,9 @@ if [ ! -f "$DDK/bin/x86/cl.exe" ]; then
   git -C "$LANE/winddk" sparse-checkout set '/3790.1830/bin/x86/' '/3790.1830/inc/crt/' '/3790.1830/lib/crt/i386/' \
       '/3790.1830/lib/wnet/i386/kernel32.lib' '/3790.1830/lib/wnet/i386/user32.lib' '/3790.1830/lib/wnet/i386/uuid.lib' \
       '/3790.1830/lib/wnet/i386/bufferoverflowu.lib'
-  git -C "$LANE/winddk" checkout HEAD -- .
+  # A plain checkout honours the sparse patterns; `checkout HEAD -- .` does not (git 2.43 then fetches the whole multi-GB
+  # tree and runs out of disk).
+  git -C "$LANE/winddk" checkout
 fi
 
 VC=$LANE/vc71
