@@ -36,7 +36,22 @@
 - (0x00B64FA0) A plain-inline helper newly layered under a FABLE_FORCEINLINE one can be refused in other rows (ReleaseData called out of
   line in RenderSunFlare / RenderOuterSky): regrade every row of the TU after a helper refit.
 
+- (0x00B64FA0, session 4) The SetRenderState bookmark test/or order (GOTCHAS "lane gap") has two transitions over the 12 blocks: the front
+  one moves with the function's NAMED-SYMBOL count (any named local, dead or live, anywhere; also named locals inside expanded inline
+  helpers: one in SetRenderState = one per expansion), the back one with the constants' spelling (C3DVector-based C4DVectors), never with
+  dead locals. Ruler: append N `const long deadK = K;` (diagnostic only) and read the pattern with bin/orsweep.sh; then supply N names
+  naturally. Closed by FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED (`const unsigned long desired_state = state.DesiredState;`).
+- (0x00B64FA0) Helper layering without a named local (CastToBase, ~CCountedPointer -> ReleaseData, GetTexture through Get) adds records
+  but not named symbols and did not move the front transition; a helper call layer in an inline (pointer Release through IsNull()) moved it
+  by about one band.
+- (0x00B64FA0) FableWin: CIVCountedPointer<CFrameData>::Release 17i (= `if (!IsNull()) { Object->Release(); Object = 0; }`), pointee
+  Release 24i (= named `unsigned long count`, self-delete), private CastToBase 10i/24b (= `CIVCountedPointeeBase* base = object; return
+  base;`), listed right after Release in the CFrameData pointer's COMDAT run.
+
 Review at landing:
+- 0x00B64FA0 RenderClouds RELOCATION_MATCH needs the session-4 opt-ins (RELEASE_ISNULL, RELEASE_COUNT, SETRENDERSTATE_DESIRED) and the
+  hdr/ copy of CIVCountedPointeeBase.h; define the same three in 0x00B64550 (cand/s74_00b64550.cpp) for one body per helper.
+- Rename the repo label g_textureUVModeToD3D (0x01396DC8) to CRenderStateManager::D3DTextureUVModeTable (vland RELOC_NAME warning).
 - 0x00B64FA0 parked at 2688v2688 (needs the c2031/r3014 overlay + this chunk's two opt-ins); its diagnostic probe/v/se40.cpp (dead locals) is
   NOT deliverable.
 - 0x00B64550 RenderSunFlare: RELOCATION_MATCH (session 3); needs the overlay incl. FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_SUMS.

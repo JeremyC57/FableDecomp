@@ -1,5 +1,8 @@
 addr       parity           behav  name
 00b64550   RELOCATION_MATCH PASS   RenderSunFlare
+00b64fa0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b64fa0   RELOCATION_MATCH PASS   RenderClouds
 
-WINS: 1
+WINS: 2
   00b64550 RELOCATION_MATCH CEngineSkyRenderer::?RenderSunFlare@CEngineSkyRenderer@@AAEXXZ
+  00b64fa0 RELOCATION_MATCH CEngineSkyRenderer::?RenderClouds@CEngineSkyRenderer@@AAEXM@Z

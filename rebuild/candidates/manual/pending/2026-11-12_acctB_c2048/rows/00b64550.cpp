@@ -20,6 +20,9 @@
 // Globals: g_pOcclusionManager 0x01436E5C, g_pEngineLightingManager 0x01436E9C, g_pEngineCamera 0x01436EA0 (bound spellings; no PDB data names),
 //   g_pEngineWorldMap 0x01436E8C, NEngineInternal::GPResourceManager 0x01436E98, GPRenderManager 0x01436E18.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED
 // Shared helper bodies (session 3): the FableWin-sized helper opt-ins below are the set RenderClouds 0x00B64FA0's best source uses, so the
 // three CEngineSkyRenderer rows see one body per helper; this row matches with or without them (grades 48 and 98).
 #define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_INLINE

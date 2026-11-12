@@ -118,6 +118,24 @@ FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& frame, unsigne
                 }
             }
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME_EARLYRETURN
+            // Nested opt-in (chunk 2048, session 4): the loaded level returned first, then the finer-level request. FableWin.pdb
+            // ?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z is 146 debug instructions / 461 bytes (/EHsc); plain VC7.1
+            // /Od /EHsc of this text gives 146 / 462, the if / else text 147 / 464 (its dead join jump). Same semantics.
+            if (mipmap_level >= (unsigned long)Data->CurrentMipmapLevel) {
+                frame = Data->Frame;
+                return true;
+            }
+            Data->BeginLoading(mipmap_level, flags);
+#ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
+            if (!(flags & 16) || !Data->IsLoading()) {
+#else
+            if (!(flags & 16) || !Data->FileData.Get()) {
+#endif
+                frame = Data->Frame;
+                return true;
+            }
+#else
             if (mipmap_level < (unsigned long)Data->CurrentMipmapLevel) {
                 Data->BeginLoading(mipmap_level, flags);
 #ifdef FABLE_RETAIL_CFRAMEDATA_ISLOADING
@@ -132,6 +150,7 @@ FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& frame, unsigne
                 frame = Data->Frame;
                 return true;
             }
+#endif
         }
         Data->BeginLoading(mipmap_level, flags);
     } else {

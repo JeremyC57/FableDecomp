@@ -6,3 +6,4 @@ address	name	evidence
 0x009FE620	?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z	Ego_r.pdb / FableWin.pdb (const QBE); RenderSunFlare 0x00B649D7 / 0x00B64DB2 (push 0 ; push 0 on the info frame)
 0x009FF8D0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	Ego_r.pdb / FableWin.pdb; RenderSunFlare 0x00B64A3E (flags 1) / 0x00B64E35 (flags 0)
 0x00B64550	CEngineSkyRenderer::RenderSunFlare	FableWin ?RenderSunFlare@CEngineSkyRenderer@@AAEXXZ + Ego_r 0x00A17F00 (RELOCATION_MATCH)
+0x00B64FA0	CEngineSkyRenderer::RenderClouds	FableWin ?RenderClouds@CEngineSkyRenderer@@AAEXM@Z + Ego_r 0x00A15F60 (RELOCATION_MATCH, session 4)

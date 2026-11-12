@@ -1,10 +1,9 @@
 // CEngineSkyRenderer::RenderClouds(float interpolate) -- draw the two cloud layers: inside a render-state capture block read the interpolated environment's first theme channel, fetch frame 0 of the four cloud textures (texture sets 2 and 1, textures 0 / 1; a missing id or a frame that is not loaded yet gives the engine's zero-RGBA texture and counts as missing), return when all four are missing, apply the cloud pixel shader, upload (1 - blend 0) of sets 2 / 1 as pixel constants 5 / 6 and colour 7 with w 1 as constant 7, wrap UV modes on stages 0..3, premultiplied-alpha blending (ONE, INV_SRC_ALPHA, blending on, alpha test off), apply the cloud vertex shader, interpolate the two cloud scroll vectors from their history and upload them as user vertex constant 0, flush the shader state and draw the cloud mesh indexed with the four textures
-// Grade: DIFFER(2688v2688) -- 731/734 instructions equal (session 3 grade 103, cand/c43.cpp); only SetTextureUVModeV(2) differs: retail
-//   `test eax,ecx ; or ecx,eax ; mov [esi+8],ecx` (or <bookmark>,<mask>), ours `test ecx,eax ; or eax,ecx ; mov [esi+8],eax`. Per-block or
-//   pattern retail BBAAABBBBBBB, ours BBAAAABBBBBBB-1 (block 6 A). The residue is the c2 record-id tie (dead-local proof, NOTES.md); this
-//   source reached it through FableWin-sized helper bodies (C2DVector named results, ReleaseData, TouchFrame layering, direct accessors,
-//   IsLoading `!IsNull()`, TouchTexture through Get, PSConstTable[index], capture block inline bodies) plus C3DVector-based constants and
-//   the CRGBFloatColour GetR/G/B accessors (FableWin names). See NOTES.md session 3.
+// Grade: RELOCATION_MATCH (2688v2688, 734/734; session 4 grade 149, cand/c74.cpp). The twelve SetRenderState expansions' bookmark test / or
+//   operand order (retail BBAAABBBBBBB) is a c2 record-id tie decided by the function's named-symbol / IL amount: closed with the pixel
+//   constants 5 / 6 spelled as the matched sibling RenderOuterSky spells constant 5 (C4DVector(b, b, b, b)), the FableWin-count releases
+//   (FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL + CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT) and SetRenderState's named desired_state
+//   (FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED, FITTED). RenderSunFlare / RenderOuterSky stay RELOCATION_MATCH with these.
 // Leaf: ?RenderClouds@CEngineSkyRenderer@@AAEXM@Z
 // Inline-budget: FABLE_FORCEINLINE Lionhead header helpers as in the matched sibling 0x00B65A20 RenderOuterSky (PeekGraphicInfoFrame, GetFrame,
 //   TouchTexture, TouchResource, ~CGraphicFrame; owner 2026-11-01 rule, retail copies uncalled), the same overlay headers.
@@ -49,6 +48,9 @@
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED
 #define FABLE_RETAIL_CMOVABLERESOURCE
 #define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
 #define FABLE_RETAIL_CGRAPHICFRAME
@@ -120,8 +122,8 @@ void CEngineSkyRenderer::RenderClouds(float interpolate)
     float blend0 = 1.0f - params.ThemeChannels[0].TextureSets[2].Blends[0];
     float blend1 = 1.0f - params.ThemeChannels[0].TextureSets[1].Blends[0];
     CRGBFloatColour colour = params.ThemeChannels[0].Colours[7];
-    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(C3DVector(blend0, blend0, blend0), blend0));
-    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(C3DVector(blend1, blend1, blend1), blend1));
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(blend0, blend0, blend0, blend0));
+    NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(blend1, blend1, blend1, blend1));
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(7, C4DVector(C3DVector(colour.GetR(), colour.GetG(), colour.GetB()), 1.0f));
     NEngineInternal::GPRenderManager->SetTextureUVModeU(0, TEXTURE_UV_WRAP);
     NEngineInternal::GPRenderManager->SetTextureUVModeV(0, TEXTURE_UV_WRAP);

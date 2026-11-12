@@ -74,3 +74,13 @@ Still DIFF against FableWin (not fitted): TouchFrame +5/+19, CIVCountedPointer<C
 retail's cold path has no AddRef: adopt form kept), CIVCountedPointeeBase::Release (24/58; RELEASE_DELETES form gives 23/56), C2DVector operator+.
 Rows: FableWin is /EHsc -- plain /Od /EHsc (bin/fwsize_x.py, FW_EXTRA=/EHsc) brings GetFrame to 147/464 (FableWin 146/461; plain /Od 136/413)
 and the rows to RenderClouds 348 v 366, RenderOuterSky 208 v 219, RenderSunFlare 442 v 473: most of the "row text gap" is EH bookkeeping.
+
+## Chunk 2048 session 4 additions (opt-ins only; default texts unchanged). Regrades: RenderClouds 0x00B64FA0 RELOCATION_MATCH (src, grade 155);
+## RenderSunFlare RELOCATION_MATCH with the three used opt-ins (grade 150) and without (151); RenderOuterSky RELOCATION_MATCH with (152, 153) and without (154).
+| header | opt-in | what | evidence |
+|---|---|---|---|
+| engine/CIVCountedPointeeBase.h (new copy of the repo header) | `FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT` | `long Release() const { unsigned long count = --IVRefCount; if (count == 0) { Delete(); return 0; } return count; }` | FableWin ?Release@CIVCountedPointeeBase@@QBEJXZ 24i/58b; this text 24i/61b (count SAME, FableWin is VC10). Used by RenderClouds. |
+| engine/CIVCountedPointer.h | `FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL` (needs RELEASE_COUNT) | `void Release() { if (!IsNull()) { Object->Release(); Object = 0; } }` | FableWin ?Release@?$CIVCountedPointer@VCFrameData..@@QAEXXZ 17i/50b; this text 17i/45b (count SAME). Same semantics. Used by RenderClouds. |
+| engine/CRenderStateManager.h | `FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED` | SetRenderState reads `const unsigned long desired_state = state.DesiredState;` for the unchanged test | FITTED: code-identical; one named symbol per expansion decides the bookmark or-order tie (RenderClouds). FableWin's 213i debug body has asserts. |
+| engine/CIVCountedPointer.h | `FABLE_RETAIL_CIVCOUNTEDPOINTER_CASTTOBASE` (with RESET_ADOPT) | Reset stores `CastToBase(object)`; private CastToBase | FableWin ?CastToBase@?$CIVCountedPointer@VCFrameData..@@AAE.. 10i/24b SAME. NOT used (no effect on the row). |
+| engine/CGraphicInfo.h | `FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME_EARLYRETURN` | GetFrame returns the loaded level first | FableWin GetFrame 146i /EHsc (this text 146i/462b). NOT used: changes RenderClouds' block layout. |

@@ -327,6 +327,26 @@ private:
     static _D3DRENDERSTATETYPE D3DTextureCoordWrapStageTable[8];
     // ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z: skip an unchanged value; otherwise bookmark the old value once per
     // capture block (the state's mask bit), store the new one and queue the state for RealiseRenderState.
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_SETRENDERSTATE_DESIRED
+    // Nested opt-in (chunk 2048, rows 0x00B64FA0 RenderClouds / 0x00B64550 RenderSunFlare / 0x00B65A20 RenderOuterSky): the state's desired
+    // value read into a named local for the unchanged test. Code-identical to the default text; the extra named symbol per expansion is
+    // what decides the bookmark test / or operand order of the twelve expansions in RenderClouds (the GOTCHAS "lane gap": a c2 record-id
+    // tie). FITTED (FableWin.pdb's debug SetRenderState, 213 instructions, carries assert code: its size proves nothing here).
+    FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state)
+    {
+        const unsigned long desired_state = state.DesiredState;
+        if (desired_state != value) {
+            if ((state.BookmarkMask & CurrentBookmarkMask) == 0) {
+                state.BookmarkMask |= CurrentBookmarkMask;
+                StateStack[StateStackSize].State = &state;
+                StateStack[StateStackSize].Value = state.DesiredState;
+                ++StateStackSize;
+            }
+            state.DesiredState = value;
+            AddStateToUpdateList(state);
+        }
+    }
+#else
     FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state)
     {
         if (state.DesiredState != value) {
@@ -340,6 +360,7 @@ private:
             AddStateToUpdateList(state);
         }
     }
+#endif
     // ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
     FABLE_FORCEINLINE void AddStateToUpdateList(CStateInfo& state)
     {

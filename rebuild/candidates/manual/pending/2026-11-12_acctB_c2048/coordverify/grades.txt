@@ -1,1 +1,2 @@
 00b64550 CEngineSkyRenderer::RenderSunFlare RELOCATION_MATCH flags= []
+00b64fa0 CEngineSkyRenderer::RenderClouds RELOCATION_MATCH flags= []

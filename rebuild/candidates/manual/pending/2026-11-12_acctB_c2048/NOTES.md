@@ -1,10 +1,8 @@
-# Hand chunk 2048 (CEngineSkyRenderer): 1 of 2 byte-exact -- IN-PLACE HAND-OVER (session 3, context limit); owner: continue until BOTH match
+# Hand chunk 2048 (CEngineSkyRenderer): 2 of 2 byte-exact (session 4, 2026-11-12)
 
-Resume here: 0x00B64550 RenderSunFlare MATCHED (RELOCATION_MATCH, src/00b64550.cpp + test/00b64550.cpp, PASS g++ / VC7.1).
-0x00B64FA0 RenderClouds best = differ/00b64fa0.cpp (= cand/c43.cpp, 2688v2688, 731/734: ONE SetRenderState block left, SetTextureUVModeV(2),
-or-pattern ours BBAAAABBBBBB v retail BBAAABBBBBBB) + differ/00b64fa0.test.cpp (PASS). Grade with bin/gr.sh <addr> <src> "<note>".
-Free size oracle: python3 /opt/fable_lane/tools/fwsize.py <src> [regex] (bin/fwsize_x.py with FW_EXTRA=/EHsc for rows: FableWin is /EHsc).
-Session 3 section at the END of this file (grades 33..115).
+Both rows RELOCATION_MATCH with behaviour tests PASS under g++ and VC7.1; read-only vland: both RELOCATION_MATCH + PASS (one RELOC_NAME
+warning, below). 0x00B64550 RenderSunFlare = src/00b64550.cpp (unchanged since session 3). 0x00B64FA0 RenderClouds = src/00b64fa0.cpp
+(= cand/c74.cpp, grade 149 / 155). Session 4 section at the END of this file. Old drafts moved from differ/ to cand/differ_*.
 
 ## What matched (1)
 - 0x00B64550 CEngineSkyRenderer::RenderSunFlare RELOCATION_MATCH (session 3, grade 46; src grade 114). Shape: see session 3.
@@ -172,3 +170,41 @@ Possible spelling (not needed): FableWin lists ?GFMakeOccluderRetrivalID@@YIKW4O
   (RenderClouds 348 v 366, RenderOuterSky 208 v 219, RenderSunFlare 442 v 473; all ~2.7 bytes/instr: small ops) -- a construct shared by the
   three rows; may be VC10 codegen. (3) Other FableWin accessors on the constants path (blend reads, C4DVector / C3DVector forms).
 - Names: GetR/GetG/GetB (FableWin), ReleaseData (FableWin private, labelled `Clear` in FableWin.exe.signatures.tsv), CIVCountedPointer::Get (FableWin).
+
+## Session 4 (agent2048-d, 2026-11-12): RenderClouds 0x00B64FA0 RELOCATION_MATCH (grades 117..155, one line each in grades.log)
+### What closed it
+- The residue was the SetRenderState bookmark `test` / `or` operand order of block 6 (SetTextureUVModeV(2)). Per-block pattern = two
+  transitions: the FRONT one (where the B-run of blocks 1-2 ends) moves with the function's count of NAMED SYMBOLS (any named local:
+  const longs, enum constants, references, dead or live, anywhere in the function, also named locals of expanded inline helpers); the
+  BACK one (end of the A-run) moves with the constants' spelling (C3DVector-based C4DVectors move it), never with dead locals.
+- Steps: (1) constants 5 / 6 back to `C4DVector(blend, blend, blend, blend)` (the spelling the matched sibling RenderOuterSky uses for its
+  constant 5): back transition right, front AABBA (cand/c47.cpp). (2) Ruler (diagnostic only, probe/ruler/): c47 + 12..20 dead locals =
+  BBAAAB.. (retail); + 12..40 dead `const long`s on d13 = retail; qc12 graded RELOCATION_MATCH (grade 143, NOT deliverable).
+  (3) FableWin-count releases (pointer Release through IsNull(), pointee Release with a named `count` and self-delete; instruction counts
+  SAME): front ABBAA (d13). (4) One named local in SetRenderState (12 expansions = 12 named symbols): `const unsigned long desired_state
+  = state.DesiredState; if (desired_state != value) ...` -> BBAAABBBBBBB, RELOCATION_MATCH (s3 grade 144; in hdr as opt-ins: c74 grade 149).
+- Shared helper bodies changed (opt-ins, hdr/README.md session 4): FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL,
+  FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT (new hdr copy of CIVCountedPointeeBase.h), FABLE_RETAIL_CRENDERSTATEMANAGER_
+  SETRENDERSTATE_DESIRED. Regrades with the three opt-ins: RenderSunFlare RELOCATION_MATCH (cand/s74_00b64550.cpp, grade 150; src
+  without them 151), RenderOuterSky RELOCATION_MATCH (cand/s74_ros_fits.cpp 152, cand/s74_00b65a20.cpp = r3014 + opt-ins 153; r3014
+  as is 154). One body per helper: src/00b64550.cpp was left untouched (instruction); at landing define the three opt-ins in it too
+  (cand/s74_00b64550.cpp is that file, graded RELOCATION_MATCH).
+- Also added (unused by any row, opt-in only): FABLE_RETAIL_CIVCOUNTEDPOINTER_CASTTOBASE (Reset through private CastToBase: FableWin
+  10i/24b SAME, Reset 15/38 v 18/47), FABLE_RETAIL_CGRAPHICINFOFRAME_GETFRAME_EARLYRETURN (GetFrame /EHsc 146i = FableWin count, but it
+  changes RenderClouds' block layout: not used).
+### FITTED v PROVEN (RenderClouds)
+- PROVEN by FableWin size (fwsize SAME, bytes or count): all session-3 helper fits (hdr/README.md), CIVCountedPointer<CFrameData>::Release
+  (17i; 45 v 50 bytes), CIVCountedPointeeBase::Release (24i; 61 v 58 bytes) -- counts only, bytes differ (FableWin is VC10).
+- FITTED: SetRenderState's named `desired_state` (FableWin's 213-instruction debug body carries assert code, so its size proves nothing;
+  the text is code-identical to the default and was chosen because it gives retail's or-order), constants 5 / 6 as C4DVector(b,b,b,b)
+  (the matched sibling's spelling, natural), constant 7 as C4DVector(C3DVector(colour.GetR(), GetG(), GetB()), 1.0f) (session 3).
+### Things that did not move block 6 (session 4, all graded)
+CCountedPointer dtor through ReleaseData (c54), CastToBase Reset (c57), enclosing `if (num_missing != 4)` (c55), loop arms swapped (c56),
+colour as const reference (c58: code change), C4DVector(GetR..,1) (c59: BBBAAA), theme-channel reference (c60: code change), GetFrame early
+return (c61: layout change), CloudVector += (c62: code change), int i / i++ / += 1 / frame first (c63-66), release-body variants on c43
+(c67-c72), named colour C3DVector (c73), TouchFrame variants (tA code change, tB none). Dead locals on c43 move only the front transition.
+### Remaining review items
+- vland RELOC_NAME warning: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 0x01396DC8 is labelled 'g_textureUVModeToD3D' in the repo
+  labels (chunk 723's descriptive name; engine/CRenderStateManager.h says these tables are the PDB DATA records). Rename the label at landing.
+- The GOTCHAS "lane gap" (bookmark or-order, parked rows 0x00B70230 / 0x00B761D0 / 0x00B751F0, chunk 792) is the same front/back mechanism:
+  try SETRENDERSTATE_DESIRED there (it adds one named symbol per expansion) plus a const-long ruler to measure the distance.

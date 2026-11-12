@@ -49,7 +49,17 @@ public:
     // CMapFilenames (IVRefCount 1 from its constructor) is stored after the release with no AddRef (0x00AC5A86 / 0x00AC5F16:
     // `mov [edi+0x34],ebp` right after the release block, no `inc [ebp+4]`). The AddRef of the branch below is unproven
     // (its only landed users pass 0).
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_CASTTOBASE
+    // Nested opt-in (chunk 2048, session 4): FableWin.pdb private ?CastToBase@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@AAEPAVCIVCountedPointeeBase@@PAV..@Z
+    // (10 debug instructions / 24 bytes, listed right after ?Release@ in the CFrameData pointer's COMDAT run) stores the new pointer
+    // through the base conversion; plain VC7.1 /Od of `CIVCountedPointeeBase* base = object; return base;` gives 10 / 24 (fwsize SAME).
+    void Reset(T* object) { Release(); Object = CastToBase(object); }
+private:
+    CIVCountedPointeeBase* CastToBase(T* object) { CIVCountedPointeeBase* base = object; return base; }
+public:
+#else
     void Reset(T* object) { Release(); Object = object; }
+#endif
 #else
     void Reset(T* object) { Release(); Object = object; if (Object) Object->AddRef(); }
 #endif
@@ -86,7 +96,18 @@ public:
 #endif
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
-#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
+    // Nested opt-in (chunk 2048, row 0x00B64FA0 RenderClouds; needs FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT, the pointee deletes
+    // itself): FableWin.pdb ?Release@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QAEXXZ (0x01D2FB90) is 17 debug instructions /
+    // 50 bytes; plain VC7.1 /Od of this text gives 17 / 45 (instruction count SAME), the RELEASE_MEMBER text 15 / 38, the default 22 / 59.
+    // Same semantics as the default branch (zero store inside the null test, after the release: 0x00B65A14).
+    void Release() {
+        if (!IsNull()) {
+            Object->Release();
+            Object = 0;
+        }
+    }
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER)
     // Nested opt-in (chunk 851, row 0x00A9BBE0 C3DMeshFileLoader ctor, the C3DMeshFileEngineMaterialChunk temporary's MapFilenames
     // at 0x00A9C4BF): the pointee's own Release deletes it (FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES); retail loads the
     // count before it copies the pointer into ecx (`mov edi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edi`), which the local-copy
