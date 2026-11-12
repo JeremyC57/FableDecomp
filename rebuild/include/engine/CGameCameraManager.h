@@ -104,6 +104,11 @@ class CThing; class C3DVector;
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_RELEASESCRIPTEDCONTROL
+    // Q19 opt-in (row 0x008CDD40 CCreatureAction_ReleaseTimeSpell::FinishAction): Ego_r.pdb ?ReleaseScriptedControl@CGameCameraManager@@QAEXXZ
+    // (public, out of line at 0x00698950, landed). Declaration only: no layout change.
+    void ReleaseScriptedControl();                                       // 0x00698950
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INSIDETHING
     // agentQ7 (2026-11-11, row 0x00697490): Ego_r.pdb / FableWin.pdb ?IsPosCameraInsideThing@CGameCameraManager@@QBE_NABVCThing@@ABVC3DVector@@@Z,
     // public, const, out of line in retail (473 bytes, `ret 8`). Declaration only: no layout change.

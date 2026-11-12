@@ -15,6 +15,9 @@ class CThing;
 // 0x00659C7E), and FableWin.pdb's inline ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (by value: retail's
 // two add-ref copies of +0x94 at 0x0065BD59). Same offsets and sizes as the opaque members of the branch below.
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
+#include "stlport/fable_map.h"
+#endif
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CDefPointer.h"
@@ -81,6 +84,11 @@ public:
     // ?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z (retail 0x00658EA0, out of line).
     CVillageTaskCarryCrate* GetBestCrateTaskForThing(const CThing& thing);   // 0x00658EA0
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
+    // Q19 opt-in (row 0x0065C5BB): Ego_r.pdb ?UpdateMirroredCrimeData@CTCVillage@@QAEXXZ (public). The same opt-in types
+    //   PlayersCrimes below as the Ego_r.pdb set<long> (STLport three-word tree; needs FABLE_RETAIL_STLP_SET for begin()/end()).
+    void UpdateMirroredCrimeData();                          // 0x0065C5BB
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CRIMES
     // Retail opt-in (agentNF14, row 0x0065C1FC): Ego_r.pdb ?RemoveCrime@CTCVillage@@QAEXJ@Z (retail 0x0065C146, out of line) and
     // ?RemoveCrimeIfApologisable@CTCVillage@@QAEXJ@Z (0x0065C1FC), both public. Declarations only: no layout change.
@@ -137,7 +145,11 @@ public:
     std::list<CCountedPointer<CVillageTaskPickCrops> > CropTasks; // +0x58
     std::list<CCountedPointer<CVillageTaskSecuritySweep> > SecuritySweepTasks; // +0x5c
     std::list<CCountedPointer<CVillageTaskCarryCrate> > CrateTasks; // +0x60
+#ifdef FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
+    std::set<long>   PlayersCrimes;                          // +0x64 (Q19 opt-in: the Ego_r.pdb type)
+#else
     unsigned char    PlayersCrimes[0xc];                     // +0x64 set<long,std::less<long>,std::allocator<long>_>
+#endif
     std::list<CIntelligentPointer<CThingMarker> > VillageMarkers;    // +0x70
     std::list<CIntelligentPointer<CThing> > VillageDummies;          // +0x74
     bool             Initialised;                            // +0x78

@@ -15,3 +15,14 @@
 - (agentNF25b, 2026-11-12) engine/CVillageDef.h needs FABLE_RETAIL_CDEFSTRINGTABLE + BASE_OBJECT + CINTELLIGENTPOINTER + CCOUNTEDPOINTER; without CDEFSTRINGTABLE wine cl hangs on the #error (kill by PID, run a gcc `cpp` pre-pass first).
 - (agentNF25b, 2026-11-12) A catalog byte scan for E8/E9 rel32 targets (rebuild/oracles/auto-re-candidates.tsv) finds every binder when no Fable.exe is on disk; reloc_bindings only lists the first caller per spelling.
 - (agentNF25b, 2026-11-12) Porting an entity-script Main onto engine/CEntityScriptBase.h needs `private: virtual void Main();` (PDB EAE); a public non-virtual Main hides the base and emits QAE.
+- (chunk Q19, 2026-11-12) STLport set loop with `this` kept live and `end()` reloaded each pass: hoist `iterator end = s.end();` into a local first (0x0065C5BB).
+- (chunk Q19, 2026-11-12) STLport `std::set` model has no `const_iterator`: use `::iterator` (SRC_FAIL otherwise); syntax-precheck with cl /Zs before grading.
+- (chunk Q19, 2026-11-12) GFFastOneOverSqrt Newton step one PAREN tuple off: NEWTON_SQUARE_PAREN `(3.0f-((r*r)*value))*r*0.5f` sits between NEWTON_PAREN and NEWTON_GROUPED (0x0079B6F0).
+- (chunk Q19, 2026-11-12) Newton spellings move the region cut in whole tuples; if PAREN is one late and SQUARE/STEP_PAREN one early, the fix is elsewhere (0x00837220).
+- (chunk Q19, 2026-11-12) CDefPointer local released with a null store / own frame slot where retail has in-place `dec [ecx+4]` and a shared slot: put the GetDef<T> / GetSubDef<T> body in the same TU, `__declspec(noinline)` (0x008C4FD0, 0x0079B6F0).
+- (chunk Q19, 2026-11-12) CVectorMap::Insert called out of line where retail expands push_back in place: FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE (0x008E16A0).
+- (chunk Q19, 2026-11-12) Retail enters a counted loop body with no first test: write a do-while (0x008C4FD0, 0x008C511B).
+- (chunk Q19, 2026-11-12) IS_THING_ALIVE on a CIntelligentPointer member needs CINTELLIGENTPOINTER_COMPARE_NULL_INT + _DEREFERENCE (0x008CDD40).
+- (chunk Q19, 2026-11-12) Overlay header copies go stale when the repo header changes mid-chunk: diff each overlay against the repo before hand-back and re-merge (CTCVillage.h ISWORKTIME).
+- (chunk Q19, 2026-11-12) c2prio: five source spellings that keep the same split-piece ids keep the same post-loop reload order; change creation order instead (0x008780D0).
+- (landing di, 2026-11-12) An agent oracle cut from Fable.exe with the row length can carry trailing int3 padding: q.py strips it but vland does not (DIFFER(732v736)); strip 0xCC/0x90 before landing. Agent tests checked only under g++ can still FAIL under VC7.1 (no C++03 value-initialisation for `T()`).

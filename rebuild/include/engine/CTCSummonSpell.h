@@ -43,6 +43,10 @@ private:
     C3DVector GetValidTeleportPos(const CThing* thing);                                              // 0x0079AA90
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_RESETMINIONPOS
+    // Q19 opt-in (row 0x0079B6F0): Ego_r.pdb ?ResetMinionPos@CTCSummonSpell@@QAEXXZ (public, out of line). Declaration only.
+    void ResetMinionPos();                                                                           // 0x0079B6F0
+#endif
 #ifdef FABLE_RETAIL_CTCSUMMONSPELL_MINION
     // Retail opt-in (chunk 1012, row 0x008A8260 CGameScriptInterface::GetHeroSummonedCreaturesList): Ego_r.pdb / FableWin.pdb
     // ?GetSummonedCreature@CTCSummonSpell@@QBE?AV?$CIntelligentPointer@VCThingAICreature@@@@XZ, inline in retail: the caller's local is

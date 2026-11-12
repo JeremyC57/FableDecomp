@@ -1,0 +1,10 @@
+- STLport set loop with `this` kept live and `end()` reloaded each pass: hoist `iterator end = s.end();` into a local first (0x0065C5BB).
+- STLport `std::set` model has no `const_iterator`: use `::iterator` (SRC_FAIL otherwise); syntax-precheck with cl /Zs before grading.
+- GFFastOneOverSqrt Newton step one PAREN tuple off: NEWTON_SQUARE_PAREN `(3.0f-((r*r)*value))*r*0.5f` sits between NEWTON_PAREN and NEWTON_GROUPED (0x0079B6F0).
+- Newton spellings move the region cut in whole tuples; if PAREN is one late and SQUARE/STEP_PAREN one early, the fix is elsewhere (0x00837220).
+- CDefPointer local released with a null store / own frame slot where retail has in-place `dec [ecx+4]` and a shared slot: put the GetDef<T> / GetSubDef<T> body in the same TU, `__declspec(noinline)` (0x008C4FD0, 0x0079B6F0).
+- CVectorMap::Insert called out of line where retail expands push_back in place: FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE (0x008E16A0).
+- Retail enters a counted loop body with no first test: write a do-while (0x008C4FD0, 0x008C511B).
+- IS_THING_ALIVE on a CIntelligentPointer member needs CINTELLIGENTPOINTER_COMPARE_NULL_INT + _DEREFERENCE (0x008CDD40).
+- Overlay header copies go stale when the repo header changes mid-chunk: diff each overlay against the repo before hand-back and re-merge (CTCVillage.h ISWORKTIME).
+- c2prio: five source spellings that keep the same split-piece ids keep the same post-loop reload order; change creation order instead (0x008780D0).

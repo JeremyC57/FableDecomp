@@ -34,6 +34,15 @@ extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013
 // that the epilogue pops interleave with the final Normalise as retail does (0x006A51F1 `pop edi` ahead of `fmul [eax]`, `pop
 // esi / pop ebp / pop ebx` ahead of its `fstp`). Body only: default path unchanged.
 FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return ((3.0f-((r*r)*value))*r)*0.5f;}
+#elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_SQUARE_PAREN)
+// Q19 opt-in (rows 0x0079B6F0 CTCSummonSpell::ResetMinionPos, 0x00837220 CThingTrackNode::UpdateFacingDirection): the same body with
+// the Newton step's square and product parenthesised, `(3.0f-((r*r)*value))`. Same instructions; two no-code PAREN tuples (one more
+// than NEWTON_PAREN, one fewer than NEWTON_GROUPED) put VC7.1's scheduling-region cut where retail has it. Body only: default path
+// unchanged.
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-((r*r)*value))*r*0.5f;}
+#elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_STEP_PAREN)
+// Q19 opt-in (same rows): the other two-tuple spelling, `((3.0f-(r*r*value))*r)*0.5f`. Body only: default path unchanged.
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return ((3.0f-(r*r*value))*r)*0.5f;}
 #elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN)
 // Retail opt-in (chunk 892, row 0x00963880 CAIStateGroup_VersusScorpionKing::IsScorpionChargingAtMe): the same body with the
 // Newton step's product parenthesised, `(3.0f-(r*r*value))`. Same instructions; the extra parenthesis is one more no-code PAREN tuple

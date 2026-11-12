@@ -38764,3 +38764,5 @@ __aullrem	00bfebb0	00770e80
 ?IsThereACratePutDownTask@CTCVillage@@QAE_NXZ	00658e09	009444e0
 ?FoundMessageIsThingHitBy@@YI_NPAVCScriptThing@@0@Z	00cbe0c7	00efb8c0
 ?FadeEntityOut@CBenTestScriptsScript@NScript@@QAEXABVCScriptThing@@_N@Z	00efe9f0	00efe8d0
+??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z	0074d220	008c4fd0
+??0CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@QAE@PAXAAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z	0069f1f0	008cdd40

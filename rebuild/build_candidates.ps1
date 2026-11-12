@@ -393278,6 +393278,41 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVTalentlessBardScript_WatchForResetWanderCentre_00ed94d0_test.cpp'
         PassPattern = '00ed94d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0065c5bb'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_UpdateMirroredCrimeData_0065c5bb.cpp'
+        TestSource = '00/65/CTCVillage_UpdateMirroredCrimeData_0065c5bb_test.cpp'
+        PassPattern = '0065c5bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079b6f0'
+        Module = 'CTCSummonSpell'
+        Source = '00/79/CTCSummonSpell_ResetMinionPos_0079b6f0.cpp'
+        TestSource = '00/79/CTCSummonSpell_ResetMinionPos_0079b6f0_test.cpp'
+        PassPattern = '0079b6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c4fd0'
+        Module = 'CCreatureAction_ScorpionSummon'
+        Source = '00/8c/CCreatureActionScorpionSummon_CreateBabies_008c4fd0.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionSummon_CreateBabies_008c4fd0_test.cpp'
+        PassPattern = '008c4fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cdd40'
+        Module = 'CCreatureAction_ReleaseTimeSpell'
+        Source = '00/8c/CCreatureActionReleaseTimeSpell_FinishAction_008cdd40.cpp'
+        TestSource = '00/8c/CCreatureActionReleaseTimeSpell_FinishAction_008cdd40_test.cpp'
+        PassPattern = '008cdd40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e16a0'
+        Module = 'NCreatureMode::CModeScreamerSuperAttack'
+        Source = '00/8e/NCreatureModeCModeScreamerSuperAttack_FrameUpdate_008e16a0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScreamerSuperAttack_FrameUpdate_008e16a0_test.cpp'
+        PassPattern = '008e16a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

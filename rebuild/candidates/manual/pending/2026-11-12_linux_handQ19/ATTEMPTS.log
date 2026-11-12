@@ -1,0 +1,27 @@
+# date	address	source/variant	result	note
+2026-11-12 03:2x	008780d0	work/008780d0.cpp (Q18 port, baseline)	DIFFER(680v680)	reload order edx/edi/esi; then 5 c2prio probes (not grades): MAPPTR MAPAFTER LONGS THINGPTR NOWHO, same split-piece order
+2026-11-12 03:31	00837220	work/00837220.cpp (Q18 port, default Newton)	DIFFER(716v716)	8 hunks: mov edx,17Ch late, cross-product load order, PhysicsTC vtable load hoisted
+2026-11-12 03:3x	00837220	work/PAREN	DIFFER(716v716)	NEWTON_PAREN, same residues (kept as best)
+2026-11-12 03:3x	00837220	work/GROUPED	DIFFER(716v716)	NEWTON_GROUPED, same 8 hunks
+2026-11-12 03:3x	00837220	work/PXG	DIFFER(716v716)	PAREN + C3DVECTOR_CROSS_X_GROUP, cross product unchanged
+2026-11-12 03:3x	00837220	work/SQ	DIFFER(716v716)	NEWTON_SQUARE_PAREN: mov edx,17Ch one tuple early
+2026-11-12 03:3x	00837220	work/ST	DIFFER(716v716)	NEWTON_STEP_PAREN: mov edx,17Ch one tuple early
+2026-11-12 03:3x	00837220	work/UNION	DIFFER(716v716)	ORIGINAL_UNION, same residues
+2026-11-12 03:37	0065c5bb	0065c5bb.cpp v1	DIFFER(426v421)	this kept live, loop end reloaded per iteration
+2026-11-12 03:37	0065c5bb	0065c5bb.cpp v2	SRC_FAIL	std::set has no const_iterator in the STLport model (precheck added to g.sh after this)
+2026-11-12 03:38	0065c5bb	0065c5bb.cpp v3	RELOCATION_MATCH	end() hoisted to a local, ::iterator
+2026-11-12 03:40	0079b6f0	0079b6f0.cpp v1	DIFFER	def/effect block outside the minion-alive check
+2026-11-12 03:41	0079b6f0	0079b6f0.cpp v2	DIFFER	control flow right; offset reused as direction; Newton scheduling residue only
+2026-11-12 03:4x	0079b6f0	NEWTON_PAREN	DIFFER	scheduling cut one tuple short
+2026-11-12 03:4x	0079b6f0	NEWTON_GROUPED	DIFFER	cut one tuple too far
+2026-11-12 03:4x	0079b6f0	rs/0079b6f0.cpp NEWTON_SQUARE_PAREN	RELOCATION_MATCH	new C3DVector opt-in
+2026-11-12 03:45	008c4fd0	008c4fd0.cpp v1	DIFFER(740v722)	frame slots + CDefPointer release form (GetDef<T> out of TU)
+2026-11-12 03:46	008c4fd0	008c4fd0.cpp v2	RELOCATION_MATCH	same-TU noinline GetDef<CCreatureGenerationFamilyDef> body
+2026-11-12 03:49	008cdd40	008cdd40.cpp v1	RELOCATION_MATCH	first grade
+2026-11-12 03:51	008e16a0	008e16a0.cpp v1	DIFFER(469v552)	CVectorMap::Insert called out of line
+2026-11-12 03:53	008e16a0	008e16a0.cpp v2	RELOCATION_MATCH	CVECTORMAP_INSERT_FORCEINLINE
+2026-11-12 late	0065c5bb	src/0065c5bb.cpp re-verify	RELOCATION_MATCH	after re-merging CTCVillage.h onto the repo's new ISWORKTIME version
+2026-11-12 late	0079b6f0	src/0079b6f0.cpp re-verify	RELOCATION_MATCH	final overlay
+2026-11-12 late	008c4fd0	src/008c4fd0.cpp re-verify	RELOCATION_MATCH	final overlay
+2026-11-12 late	008cdd40	src/008cdd40.cpp re-verify	RELOCATION_MATCH	final overlay
+2026-11-12 late	008e16a0	src/008e16a0.cpp re-verify	RELOCATION_MATCH	final overlay

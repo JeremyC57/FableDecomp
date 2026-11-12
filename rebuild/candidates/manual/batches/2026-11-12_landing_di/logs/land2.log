@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0079b6f0   RELOCATION_MATCH PASS   ResetMinionPos
+008c4fd0   RELOCATION_MATCH PASS   CreateBabies
+008cdd40   WARN RELOC_NAME: ?GetTimeMultiplier@CTCBulletTime@@QBEMXZ -> 0079c740 labelled '_unattributed::GetFloatThrough_0x20_0x12c_0079c740'
+008cdd40   WARN RELOC_NAME: ?insert_unique@?$_Rb_tree@PAXU?$pair@QAXM@std@@U?$_Select1st@U?$pair@QAXM@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXM@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@QAXM@std@@U?$_Nonconst_traits@U?$pair@QAXM@std@@@2@@std@@_N@2@ABU?$pair@QAXM@2@@Z -> 00580d21 labelled 'CTCHaste::PausedSetInsert'
+008cdd40   RELOCATION_MATCH PASS   FinishAction
+008e16a0   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 4
+  0079b6f0 RELOCATION_MATCH CTCSummonSpell::?ResetMinionPos@CTCSummonSpell@@QAEXXZ
+  008c4fd0 RELOCATION_MATCH CCreatureAction_ScorpionSummon::?CreateBabies@CCreatureAction_ScorpionSummon@@AAEXXZ
+  008cdd40 RELOCATION_MATCH CCreatureAction_ReleaseTimeSpell::?FinishAction@CCreatureAction_ReleaseTimeSpell@@UAEXXZ
+  008e16a0 RELOCATION_MATCH NCreatureMode::CModeScreamerSuperAttack::?FrameUpdate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCSummonSpell_ResetMinionPos_0079b6f0
+  CCreatureActionScorpionSummon_CreateBabies_008c4fd0
+  CCreatureActionReleaseTimeSpell_FinishAction_008cdd40
+  NCreatureModeCModeScreamerSuperAttack_FrameUpdate_008e16a0
