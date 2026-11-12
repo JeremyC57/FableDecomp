@@ -393925,6 +393925,13 @@ $catalog = @(
         TestSource = '00/7b/CTCTavernTable_GetEatingPoint_007b8b10_test.cpp'
         PassPattern = '007b8b10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b4260'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_ActivateMultipleQuests_004b4260.cpp'
+        TestSource = '00/4b/CQuestManager_ActivateMultipleQuests_004b4260_test.cpp'
+        PassPattern = '004b4260_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

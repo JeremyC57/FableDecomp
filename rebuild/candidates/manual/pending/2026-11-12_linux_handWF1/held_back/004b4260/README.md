@@ -8,3 +8,5 @@ To land: match 0x004B3CE0 first (the body in 004b4260.cpp is the best starting d
 The overlay headers this row needs are in hdr/ (CQuestManager.h opt-in FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS,
 CScriptInfo.h opt-in FABLE_RETAIL_CSCRIPTINFO_FASTCALL_ALLOC); they are NOT landed. Fix the parameter names of the header
 declaration to (quest_names, game_script, load_resources) when landing.
+
+**Resolved 2026-11-12 (landing en):** 0x004B3CE0 landed in landing em; this row was regraded with that real body and landed.

@@ -38792,3 +38792,6 @@ _ONE_OVER_360	01238e00	00878b60
 ?GetTavernTimes@CTCVillage@@QBE_NAAM0@Z	00658c5b	0065aa6f
 ?IsTavernTime@CTCVillage@@QBE_NXZ	00658c0a	0065aa6f
 ?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z	007fefc0	007b8b10
+?ActivateQuests@CQuestManager@@AAEXABV?$CArray@VCActivateQuestInfo@CQuestManager@@@@@Z	004b3ce0	004b4260
+?GetPScriptInfo@CScriptInfoManager@@QAEPAVCScriptInfo@@ABVCCharString@@@Z	00cb5ad0	004b4260
+?push_back@?$vector@VCActivateQuestInfo@CQuestManager@@V?$allocator@VCActivateQuestInfo@CQuestManager@@@std@@@std@@QAEXABVCActivateQuestInfo@CQuestManager@@@Z	004bb720	004b4260
