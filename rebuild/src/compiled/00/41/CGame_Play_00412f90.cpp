@@ -11,6 +11,9 @@
 //   InitialWorldHolySiteName, InitialQuestName, SaveGameName}; the front-end init blocks are one zeroed long.
 // Shape: each front-end arm calls Start() itself (VC7.1 tail-merges the two calls into the shared join; a single Start()
 //   after the inner if/else leaves arm 2 forming its init address in edx); the component pointer doubles as Run's out parameter (so it lives in the frame from the start); `new` with the null-tested constructor call; the init block's zero store is shared by both front-end arms.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B7D5C RelaunchSaveGameName (global; initializer 0x01219EE0), was g_MainGameStartupPath.
 class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
@@ -52,7 +55,7 @@ class CNewFrontendGameComponent : public CGameComponent { public:
 extern bool g_bCompileFrontendDefinitions;              // 0x013B8648
 extern bool g_bStartMainGame;                           // 0x013B8605
 extern bool g_bUseLegacyFrontend;                       // 0x013B8642
-extern CWideString g_MainGameStartupPath;               // 0x013B7D5C
+extern CWideString RelaunchSaveGameName;               // 0x013B7D5C
 extern CGameComponent* g_pRetiredGameComponent;         // 0x013B7D58
 
 class CGame { public:
@@ -71,7 +74,7 @@ void CGame::Play()
         CNewFrontendGameComponent::CompileDefs();
     if (g_bStartMainGame) {
         CMainGameComponentInit init;
-        init.SaveGameName = g_MainGameStartupPath;
+        init.SaveGameName = RelaunchSaveGameName;
         component = new CMainGameComponent(this, init);
         component->Start();
     } else {

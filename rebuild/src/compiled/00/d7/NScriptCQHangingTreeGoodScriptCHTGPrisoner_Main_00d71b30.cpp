@@ -14,6 +14,8 @@
 //   GuardsCalledAfterMe +0x29.
 // Naming wave 35: identity reg 00d6f592 "HTG_Prisoner" in 00d6f4b0; Alloc 00d71980; vtable 012d28a0 slot 1; PDB ?Main@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHTG_Prisoner::Main (wave3/labels_alloc.tsv); PDB ?Main@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHTG_Prisoner@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_HangingTreeGoodScript moved into NScript); same bytes.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (?NullString@CScriptThing@@2VCCharString@@A, the
+//   engine/CScriptThing.h spelling; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); was g_EmptyString.
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -25,7 +27,6 @@ class CCharString { public:
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
-extern const CCharString g_EmptyString;                // 0x0143E8EC
 struct CScriptThingImpl {                              // the game-side thing behind CScriptThing::PImp
     virtual void i000() const;
     virtual const CCharString& GetDataString() const;   // slot 1 (+0x4)
@@ -49,7 +50,7 @@ protected:
     static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
 public:
     virtual void s001() const; virtual void s002() const;
-    virtual const CCharString& GetDataString() const { return !PImp.Data ? g_EmptyString : PImp.Data->GetDataString(); }   // slot 3 (+0xc)
+    virtual const CCharString& GetDataString() const { return !PImp.Data ? CScriptThing::NullString : PImp.Data->GetDataString(); }   // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }   // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;
@@ -69,6 +70,8 @@ public:
     CScriptThing() { }
     virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
+public:
+    static CCharString NullString;                  // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

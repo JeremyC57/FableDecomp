@@ -14,7 +14,7 @@
 //   long, long, float) 0x006B3800; NGraphicAppearance::CTCGraphicAppearance::SetLightingChannel 0x004BFB40; CDefClassBase::GetSubDef
 //   <CSpecialEffectsDef> 0x00669580; CSpecialEffectsDef::GetEffectFromString 0x00669D30; CThing::GetPos 0x004C73D0;
 //   CTCDParticleEmitter::Create(long, long, float, const C3DVector&, bool) 0x006E11F0 / AttachToThing 0x006E0BE0 / SetAlwaysUpdate
-//   0x006E0590; CTCSpecialAbilities::CreateParticleEffect 0x0072AB70; PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC30 / g_LeftHandAttachmentName
+//   0x006E0590; CTCSpecialAbilities::CreateParticleEffect 0x0072AB70; PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC30 / SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME
 //   0x013BAC34; CDefStringTable::GetString 0x009D49B0 on GDefStringTable 0x013CA828; CTCUnholyPower::PlaySoundW 0x007940F0;
 //   CCharString 0x0099EBF0 / ~ 0x0099EAE0. All names are Ego_r.pdb / FableWin.pdb spellings.
 // Layout: Ego_r.pdb CTCUnholyPower with retail STLport sizes, as the landed dtor 0x00794AC0 (PDef +0x0C .. PObstruction +0xC8, size 0xD0).
@@ -31,6 +31,9 @@
 //   the hand-effect index. The small / large ring indices are function-scope locals zeroed before GetSubDef; the hand and dark-faces
 //   indices are block locals (they take the large index's slot, the hand temporaries the small one's).
 // Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_LeftHandAttachmentName.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -106,7 +109,7 @@ public:
     void SetAlwaysUpdate(bool always);                     // 0x006E0590
 };
 extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;              // 0x013BAC30
-extern CCharString g_LeftHandAttachmentName;               // 0x013BAC34
+extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;               // 0x013BAC34
 
 template <class T> inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
 {
@@ -248,7 +251,7 @@ CTCUnholyPower::CTCUnholyPower(CThing& thing)
                 if (IS_THING_ALIVE(HandEffect2)) {
                     CTCDParticleEmitter* emitter = 0;
                     HandEffect2->GetTC(TCI_PARTICLE_EMITTER, &emitter);
-                    emitter->AttachToThing(GetParentThing(), 10, g_LeftHandAttachmentName, 0, 0);
+                    emitter->AttachToThing(GetParentThing(), 10, SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0);
                 }
             }
         }

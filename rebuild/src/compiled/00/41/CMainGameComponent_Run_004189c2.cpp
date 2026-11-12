@@ -21,6 +21,9 @@
 // Shape: the frame-pointer size TU of the landed InitGraphics rows; the region pointer is an inline by-value getter
 //   whose discarded result is copied and dropped (`inc ; dec ; jne` on the pointee through AddRef/Release members);
 //   the frame start time is read into a local before the second clock call; Running is cleared before *next is stored.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B865C GInputFileName (global; initializer 0x01219F60), was g_EventPackageFileName.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
@@ -97,7 +100,7 @@ extern CDisplayManager* GPDisplayManager;         // 0x013B8390
 extern CMemoryAllocator* g_pMemoryAllocator;       // 0x013CAA90
 extern bool g_LoadEventPackages;                   // 0x013B85F6
 extern bool g_SaveEventPackages;                   // 0x013B85F5
-extern CWideString g_EventPackageFileName;         // 0x013B865C
+extern CWideString GInputFileName;         // 0x013B865C
 extern bool g_PresentationInterval;                // 0x013B8628
 extern CGameComponent* g_pLastComponent;           // 0x013B7D58
 
@@ -141,9 +144,9 @@ bool CMainGameComponent::Run(CGameComponent** next)
     Quit = false;
     LastRenderFrameStartTime = GetCurrentGameTime();
     if (g_LoadEventPackages)
-        BeginInputLoading(g_EventPackageFileName);
+        BeginInputLoading(GInputFileName);
     else if (g_SaveEventPackages)
-        BeginOutputSaving(g_EventPackageFileName);
+        BeginOutputSaving(GInputFileName);
     if (g_PresentationInterval)
         GPDisplayManager->ChangePresentationInterval(g_PresentationInterval, 1, true);
     else {

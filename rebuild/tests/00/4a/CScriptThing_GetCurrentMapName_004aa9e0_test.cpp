@@ -1,9 +1,10 @@
 #include <cstdio>
 #include <cstring>
+#define FABLE_RETAIL_CSCRIPTTHING_NULLSTRING
 #include "engine/CScriptThing.h"
 class CCharString { public: char* p; CCharString(const char* s) { p = (char*)s; } CCharString() { p = 0; } };
 char g_default[] = "DefaultMap";
-const char* kDefaultMapName = g_default;
+CCharString CScriptThing::NullString(g_default);   // 0x0143E8EC
 char g_named[] = "NamedMap";
 struct CScriptThingVirtuals {
     virtual void v0() {}
@@ -23,7 +24,7 @@ struct CScriptThing_Methods : CScriptThing {
 CCharString CScriptThing_Methods::GetCurrentMapName() {
     CScriptThingVirtuals* p = (CScriptThingVirtuals*)this->PImp_Data;
     if (p == 0) {
-        return CCharString(kDefaultMapName);
+        return NullString;
     }
     return p->getName();
 }

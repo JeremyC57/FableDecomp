@@ -7,13 +7,17 @@
 // (OnInitialActivate, GOTCHAS chunk 160).
 // Callees: CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(const CCharString&) @ 0x004AF350 on CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
 // @ 0x013B89FC (CCharString by hidden pointer), Compare_00411570 @ 0x00411570 (`__fastcall`, the inlined CCharString equality),
-// ~CCharString @ 0x0099EAE0. Globals: g_DayOnlySuffix @ 0x013BAC18, g_NightOnlySuffix @ 0x013BAC1C (as the landed
+// ~CCharString @ 0x0099EAE0. Globals: CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX @ 0x013BAC18, CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX @ 0x013BAC1C (as the landed
 // GetSectionNameSuffix 0x00702AC0).
 // Layout: Ego_r.pdb CTCDayOrNightOnlySupport DayNightOrBoth +0x0c; retail CThing SerialisationSectionName +0x58 (PDB +0x68).
 // Shape: the suffix is a named local; the inline CCharString operator== over references (same block -> equal; both blocks
 // set with equal length -> `Compare(...) ? false : true`, the 8-bit `neg ; sbb al,al ; inc al`); three returns, each with its
 // own inline destructor call. The suffix block stays in esi across Compare only with Compare's real body (landed 0x00411570)
 // compiled above under `auto_inline(off)`, as the landed CTCCameraPointScriptedSpline::HasMessage 0x0075D2B0.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the suffix globals are the public static consts of CTCDayOrNightOnlySupport (Ego_r.pdb +
+//   FableWin.pdb `dynamic initializer for 'CTCDayOrNightOnlySupport::...'', initializers landed by agentFAM09; Anniv360 @@2VCCharString@@B):
+//   0x013BAC18 CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX ("DayOnly", initializer 0x0121E5C0), was g_DayOnlySuffix.
+//   0x013BAC1C CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX ("NightOnly", initializer 0x0121E5E0), was g_NightOnlySuffix.
 class CCharStringData { public:                                // the shared string block
     const char*   m_pData;                              // +0x00
     unsigned long m_length;                             // +0x04
@@ -47,8 +51,6 @@ class CCharString { public:
         return false;
     }
 };
-extern CCharString g_DayOnlySuffix;                     // 0x013BAC18 "DayOnly"
-extern CCharString g_NightOnlySuffix;                   // 0x013BAC1C "NightOnly"
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
     static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
@@ -63,6 +65,8 @@ class CThing { public:
     CCharString   SerialisationSectionName;             // +0x58
 };
 class CTCDayOrNightOnlySupport { public:
+    static const CCharString DAY_ONLY_SUFFIX;     // 0x013BAC18 ?DAY_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "DayOnly"
+    static const CCharString NIGHT_ONLY_SUFFIX;   // 0x013BAC1C ?NIGHT_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "NightOnly"
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
@@ -73,11 +77,11 @@ class CTCDayOrNightOnlySupport { public:
 void CTCDayOrNightOnlySupport::vfunc_6()
 {
     CCharString suffix = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetDayOrNightOnlyStringFromFullSectionName(ParentThing->SerialisationSectionName);
-    if (suffix == g_DayOnlySuffix) {
+    if (suffix == CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX) {
         DayNightOrBoth = 1;
         return;
     }
-    if (suffix == g_NightOnlySuffix) {
+    if (suffix == CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX) {
         DayNightOrBoth = 2;
         return;
     }

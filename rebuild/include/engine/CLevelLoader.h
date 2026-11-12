@@ -51,6 +51,11 @@ public:
     // ?GetGlobalSectionName@CLevelLoader@@SI?AVCCharString@@XZ; public static per Anniv360 Test PDB (third source)
     // ?GlobalSectionName@CLevelLoader@@2VCCharString@@A. Declaration only: no layout change.
     static CCharString GlobalSectionName;                                // 0x013BAB0C
+#ifdef FABLE_RETAIL_CLEVELLOADER_GETGLOBALSECTION
+    // Nested opt-in (agentNF26, 2026-11-12, row 0x004CA010 CThing::ConstructFromParams): Ego_r.pdb ?GetGlobalSectionName@CLevelLoader@@SI?AVCCharString@@XZ,
+    // inline in retail (a by-value copy of GlobalSectionName through CCharString(const CCharString&) 0x0099EC30).
+    static CCharString __fastcall GetGlobalSectionName() { return GlobalSectionName; }
+#endif
 #endif
     void Add(const CCountedPointer<CObject>& object);                    // 0x006C2120
 private:

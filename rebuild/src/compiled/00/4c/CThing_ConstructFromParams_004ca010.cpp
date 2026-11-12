@@ -22,16 +22,16 @@
 class CTCBase;
 class CTCParamsBase;
 
-class CCharString { public:
-    void* m_pStringData;
-    CCharString(const char* text, long length);      // 0x0099EBF0
-    CCharString(const CCharString& other);           // 0x0099EC30
-    ~CCharString();                                  // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-
-extern CCharString g_DefaultSerialisationSectionName;   // 0x013BAB0C
-inline CCharString GetDefaultSerialisationSectionName() { return g_DefaultSerialisationSectionName; }
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BAB0C is the public static CLevelLoader::GlobalSectionName ("NULL"; Ego_r.pdb +
+//   FableWin.pdb `dynamic initializer for 'CLevelLoader::GlobalSectionName'', initializer 0x0121E160 landed by agentFAM09), read through the
+//   inline Ego_r.pdb accessor ?GetGlobalSectionName@CLevelLoader@@SI?AVCCharString@@XZ; both from engine/CLevelLoader.h (FAM09's GLOBALSECTION
+//   opt-in plus the accessor opt-in), and CCharString (ctor (const char*, long) 0x0099EBF0, copy 0x0099EC30, dtor 0x0099EAE0, operator=
+//   0x0099EFB0) now from fable_string.h. Was g_DefaultSerialisationSectionName and a local GetDefaultSerialisationSectionName() over a
+//   local CCharString model.
+#define FABLE_RETAIL_CLEVELLOADER
+#define FABLE_RETAIL_CLEVELLOADER_GLOBALSECTION
+#define FABLE_RETAIL_CLEVELLOADER_GETGLOBALSECTION   // hdr overlay (agentNF26)
+#include "engine/CLevelLoader.h"
 
 class CThingBaseDef { public:
     unsigned char _pad00[0x68];
@@ -128,7 +128,7 @@ bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long ma
     RenderListPrev = 0;
     UpdateListNext = 0;
     UpdateListPrev = 0;
-    SerialisationSectionName = GetDefaultSerialisationSectionName();
+    SerialisationSectionName = CLevelLoader::GetGlobalSectionName();
     LevelPersistent = false;
     if (DefGlobalIndex > 0)
         CThing::GetPCurrentThingManager()->DefinitionManager->GetDef(DefGlobalIndex, &PBaseDef);

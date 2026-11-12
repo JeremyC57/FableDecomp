@@ -8,6 +8,9 @@
 // Layout: Ego_r.pdb CModeSleepBed (0x34): Filter +0x1c, SleepAnimName +0x28, PRemoveAction +0x2c (as landed 0x0084B7C0,
 // the three-argument overload). Shape: one-argument overload of that constructor; the counted pointer's inline ctor
 // zeroes both words through the register VC already zeroed for the filter's null test.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAFD4 DEFAULT_SLEEP_ANIM_NAME (anonymous namespace; initializer 0x0121F760), was g_defaultSleepAnimName.
 class CThing;
 class CBaseObject;
 
@@ -52,7 +55,7 @@ class CCreatureActionBase;
 struct SCountBlock;
 #include "engine/CCountedPointer.h"
 
-extern CCharString g_defaultSleepAnimName;   // 0x013BAFD4
+namespace { extern CCharString DEFAULT_SLEEP_ANIM_NAME; }   // 0x013BAFD4
 
 namespace NCreatureMode {
 
@@ -67,7 +70,7 @@ class CModeSleepBed : public CModeBase { public:         // vtable 0x01275760
 CModeSleepBed::CModeSleepBed(CThing* thing)
     : CModeBase(thing)
     , Filter("SLEEP_BED")
-    , SleepAnimName(g_defaultSleepAnimName)
+    , SleepAnimName(DEFAULT_SLEEP_ANIM_NAME)
 {
 }
 

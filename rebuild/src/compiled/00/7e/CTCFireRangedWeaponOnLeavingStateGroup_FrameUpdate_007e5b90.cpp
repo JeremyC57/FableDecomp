@@ -6,8 +6,8 @@
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (the creature's CTCCarrying, type 0x46 =
 // bit 6 of the bitset word +0x28) and the non-const copy @ 0x0040F020 (the carried thing's CTCWeapon, type 0x48 = bit 8,
 // `test ch,1`), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CTCWeapon::IsProjectileWeapon @ 0x005DAA40,
-// CTCWeapon::IsProjectileWeaponLoaded @ 0x005DA980, CTCWeapon member @ 0x005DA4C0 (one store: +0x18 = 1; label
-// "CXMVPlaybackInfo" is propagated, name descriptive), CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (twice),
+// CTCWeapon::IsProjectileWeaponLoaded @ 0x005DA980, CTCWeapon::SetAimingTimeOverride @ 0x005DA4C0 (one store: AimingTimeOverride
+// +0x18 = 1), CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (twice),
 // CTCBase::GetWorld @ 0x00686A70 (twice), CCombatManager::GetNextActionForCreature @ 0x006EB600,
 // CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0, CThingCreatureBase::SetCurrentAction @ 0x006644F0,
 // CCombatManager::SetCreatureAsAttemptedToPerformedAction @ 0x006EA540, CThing::RemoveTC(long) @ 0x004C9840.
@@ -18,6 +18,9 @@
 // first (nested inside it, VC sinks the esi push below the entry); the creature's lookup goes through a const thing, so it reaches the
 // const LowerBound; the world is taken into a local before the last call so it is fetched ahead of the pushes. The lookup key and the `performed` flag share the single `push ecx` frame word.
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
+// Name fix (agentNF26, 2026-11-12): 0x005DA4C0 is Ego_r.pdb + FableWin.pdb ?SetAimingTimeOverride@CTCWeapon@@QAEXXZ (Ego_r donor order
+//   IsAimedForLongEnough / SetAimingTimeOverride / SetAiming / ResetAiming = retail 0x005DA490 / 4C0 / 4D0 / 4E0); was SetFireRequested
+//   (in neither PDB).
 #include "fable_compiler.h"
 class CTCBase;
 // Name fix (naming agent NF21, 2026-11-11): CThingCreatureBase::SetCurrentAction 0x006644F0 takes a const CCreatureActionBase&
@@ -82,7 +85,7 @@ class CTCCarrying { public:
 class CTCWeapon { public:
     bool IsProjectileWeapon() const;                  // 0x005DAA40
     bool IsProjectileWeaponLoaded() const;   // Ego_r/FableWin ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (agentNF16)            // 0x005DA980
-    void SetFireRequested();                    // 0x005DA4C0 (+0x18 = 1)
+    void SetAimingTimeOverride();               // 0x005DA4C0 (AimingTimeOverride +0x18 = 1)
 };
 
 class CCombatManager { public:
@@ -122,7 +125,7 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
             CTCWeapon* weapon;
             if (item && !(item->Flags91 & 1) && item->GetInterface(&weapon, 0x48)) {
                 if (weapon->IsProjectileWeapon() && weapon->IsProjectileWeaponLoaded()) {
-                    weapon->SetFireRequested();
+                    weapon->SetAimingTimeOverride();
                     QuitOut = false;
                 }
             }

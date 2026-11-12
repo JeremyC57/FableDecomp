@@ -14,6 +14,9 @@
 //          interface-0x13 component's held-item intelligent pointer at +0x141 (descriptive); the weapon's flag byte +0x91.
 // Shape: the barred test wraps the body (the `xor al,al` arm sits last); the default cast is a temporary of the
 //          SetCurrentAction call, the sheathe action a named local; both lookups are the ternary GetInterface (this in ebp).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAD30 SHEATH_ACTION_NAME (anonymous namespace; initializer 0x0121ECE0), was g_sheatheForAbilityName.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -71,7 +74,7 @@ public:
     ~CCreatureAction_CastStrengthBerserk();         // 0x0062E900
 };
 class CCharString { public: void* m_pData; };
-extern const CCharString g_sheatheForAbilityName;   // 0x013BAD30
+namespace { extern CCharString SHEATH_ACTION_NAME; }   // 0x013BAD30
 class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase {
 public:
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* creature, const CCharString& name, CCreatureActionBase* followUp, long flags);   // 0x0069EF80
@@ -102,7 +105,7 @@ bool CTCSpecialAbilities::SetupBerserk()
                 if (weapon == item) {
                     CCreatureAction_CastStrengthBerserk* berserk = new CCreatureAction_CastStrengthBerserk(Creature);
                     berserk->SetPItemRemoved(item);
-                    CCreatureAction_SheatheItemToInventory action(Creature, g_sheatheForAbilityName, berserk, 0);
+                    CCreatureAction_SheatheItemToInventory action(Creature, SHEATH_ACTION_NAME, berserk, 0);
                     return Creature->SetCurrentAction(action);
                 }
             }

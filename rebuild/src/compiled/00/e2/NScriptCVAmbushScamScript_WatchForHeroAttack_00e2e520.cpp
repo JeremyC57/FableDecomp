@@ -19,6 +19,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (?NullString@CScriptThing@@2VCCharString@@A, the
+//   engine/CScriptThing.h spelling; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); was g_EmptyCharString.
 #include <string.h>
 #pragma intrinsic(strcmp)
 #pragma auto_inline(off)
@@ -65,7 +67,6 @@ class CCharString { public:
         return PStringData->Data == text;
     }
 };
-extern const CCharString g_EmptyCharString;              // 0x0143E8EC
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -122,7 +123,7 @@ class CScriptThing : public CBaseClass { public:                          // vta
     const CCharString& GetDataString() const
     {
         if (!PImp.Data)
-            return g_EmptyCharString;
+            return CScriptThing::NullString;
         return PImp.Data->GetDataString();
     }
     bool IsAlive() const                                    // 0x004AB130
@@ -149,6 +150,8 @@ class CScriptThing : public CBaseClass { public:                          // vta
             return false;
         return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker);
     }
+public:
+    static CCharString NullString;                  // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

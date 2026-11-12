@@ -52,7 +52,7 @@ class CThingCreatureBase : public CThing {
 public:
     bool registered, busy, accepts;
     CCombatActionBase* current;
-    bool IsRegisteredCombatant() { return registered; }
+    bool IsInMeleeAsAttacker() const { return registered; }
     bool IsPerformingAnyAction() { return busy; }
     bool SetCurrentAction(CCombatActionBase* action) { if (!accepts) return false; current = action; return true; }
 };
@@ -62,7 +62,7 @@ class CTCWeapon { public:
     bool projectile, loaded, fire;
     bool IsProjectileWeapon() { return projectile; }
     bool IsProjectileWeaponLoaded() { return loaded; }
-    void SetFireRequested() { fire = true; }
+    void SetAimingTimeOverride() { fire = true; }
 };
 
 static int g_attemptCalls = 0;
@@ -101,7 +101,7 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
             CTCWeapon* weapon;
             if (item && !(item->Flags91 & 1) && item->GetInterface(&weapon, 0x48)) {
                 if (weapon->IsProjectileWeapon() && weapon->IsProjectileWeaponLoaded()) {
-                    weapon->SetFireRequested();
+                    weapon->SetAimingTimeOverride();
                     QuitOut = false;
                 }
             }
@@ -109,9 +109,9 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
     }
     if (!QuitOut) {
         CThingCreatureBase* creature = (CThingCreatureBase*)ParentThing;
-        if (creature->IsRegisteredCombatant()) {
+        if (creature->IsInMeleeAsAttacker()) {
             CCombatActionBase* action = GetWorld()->GetPCombatManager()->GetNextActionForCreature(creature);
-            if (creature->IsRegisteredCombatant()) {
+            if (creature->IsInMeleeAsAttacker()) {
                 bool performed = false;
                 if (action && !creature->IsPerformingAnyAction() && creature->SetCurrentAction(action))
                     performed = true;

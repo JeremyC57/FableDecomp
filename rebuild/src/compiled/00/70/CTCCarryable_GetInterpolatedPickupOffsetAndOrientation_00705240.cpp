@@ -5,7 +5,7 @@
 //         Ego_r.pdb: `?GetInterpolatedPickupOffsetAndOrientation@CTCCarryable@@ABEXAAVC3DVector@@AAVCRightHandedSet@@_NM@Z`.
 // Callees: NGraphicAppearance::CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector&,
 //          CRightHandedSet&, float) const @ 0x004C08C0 (twice; hand names PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME @ 0x013BAC30 and
-//          g_LeftHandAttachmentName @ 0x013BAC34, as the sibling GetInterpolatedPickupOffsetAndOrientationAt 0x00705190),
+//          SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME @ 0x013BAC34, as the sibling GetInterpolatedPickupOffsetAndOrientationAt 0x00705190),
 //          CTCPhysicsBase::GetPosition(float) const @ 0x0049D150 (out-of-line copy on the left-hand path; the
 //          right-hand path inlines it), the physics component's virtual slot 72 GetRHSet (+0x120).
 // Layout: CTCBase ParentThing +0x04; retail CThing PhysicsTC +0x60, PTCGraphicAppearance +0x64 (PDB +0x70/+0x74);
@@ -18,11 +18,14 @@
 //        with direct ParentThing->member chains VC7.1 colours ParentThing differently on the two paths and cross-jumps
 //        their identical `offset = temp` copies into one shared tail.
 // Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_LeftHandAttachmentName.
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;           // 0x013BAC30
-extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
+extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;            // 0x013BAC34
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                       // +0x00
@@ -74,7 +77,7 @@ void CTCCarryable::GetInterpolatedPickupOffsetAndOrientation(C3DVector& offset, 
         flags = 0x21;
     if (GetGraphicAppearance()->GetDummyObject(PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, flags, dummy, orientation, t))
         offset = dummy - GetPhysics()->GetPosition(t);
-    else if (GetGraphicAppearance()->GetDummyObject(g_LeftHandAttachmentName, 0, flags, dummy, orientation, t))
+    else if (GetGraphicAppearance()->GetDummyObject(SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, flags, dummy, orientation, t))
         offset = dummy - GetPhysics()->GetPosition(t);
     else {
         offset = C3DVector(0.0f, 0.0f, 0.0f);

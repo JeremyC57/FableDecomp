@@ -12,6 +12,9 @@
 //   counters are not in the initialiser list.
 // Shape: declaration-order initialiser list; the RegionTime resize passes the literal 0 so the `const long&` temporary (in the dead
 //   owner slot) is pushed before the map-count calls; the handle's derived ctor is force-inlined after its out-of-line base.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B8B0C DEFAULT_DEATH_RECOVERY_MARKER_NAME (anonymous namespace; initializer 0x0121A7AD), was g_HeroGuildRecoveryMarker.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -23,7 +26,7 @@ class CCharString { public:
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();
 };
-extern CCharString g_HeroGuildRecoveryMarker;        // 0x013B8B0C ("HERO_GUILD_RECOVERY_MARKER")
+namespace { extern CCharString DEFAULT_DEATH_RECOVERY_MARKER_NAME; }        // 0x013B8B0C ("HERO_GUILD_RECOVERY_MARKER")
 
 struct CCrimeMap {                                   // map<CCharString, MirroredCriminalStatus> (retail 12 bytes)
     void* _M_header[3];
@@ -224,7 +227,7 @@ CTCHeroStats::CTCHeroStats(CThing* owner)
       HeroStatsExperience(), RegionTime(), NumberOfTimesUsedAbility(), TotalSpentExperience(0), NumLoversAcquired(0),
       NumWeddings(0), NumSpousesMurdered(0), NumSpousesDied(0), NumDivorces(0), NumSex(0), HadScriptedSex(false),
       HadScriptedGaySex(false), BiggestFish(0.0f), HousePositions(), InfiniteStamina(false),
-      DeathRecoveryMarkerName(g_HeroGuildRecoveryMarker), FailQuestOnDeath(true), BestTimePairs(0.0f),
+      DeathRecoveryMarkerName(DEFAULT_DEATH_RECOVERY_MARKER_NAME), FailQuestOnDeath(true), BestTimePairs(0.0f),
       BestTimeSorting(0.0f), BestScoreBlackjack(0.0f), BestScoreCoinGolfOakVale(0.0f),
       BestScoreCoinGolfSnowSpire(0.0f), BestScoreShoveHaPenny(0.0f), BestTimeGuessTheAddition(0.0f),
       PrizeGivenPairs(false), PrizeGivenSorting(false), PrizeGivenBlackjack(false), PrizeGivenCoinGolfOakVale(false),

@@ -24,6 +24,10 @@
 //   child and hand it to the viewport.
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B8B80 BUY_ITEM_DESC_STRING (anonymous namespace; initializer 0x0121AA1D), was g_BuyItemDescriptionString.
+//   0x013B8B7C SELL_ITEM_DESC_STRING (anonymous namespace; initializer 0x0121AA00), was g_SellItemDescriptionString.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 #pragma optimize("y", off)
@@ -148,8 +152,8 @@ public:
 
 }
 
-extern CCharString g_BuyItemDescriptionString;                                        // 0x013B8B80
-extern CCharString g_SellItemDescriptionString;                                       // 0x013B8B7C
+namespace { extern CCharString BUY_ITEM_DESC_STRING; }                                        // 0x013B8B80
+namespace { extern CCharString SELL_ITEM_DESC_STRING; }                                       // 0x013B8B7C
 
 namespace std {
 template <class _Tp> class vector {
@@ -182,26 +186,26 @@ void CTCInventoryTrade::RefreshDescriptions()
         (NUISystem::CViewport*)Components[0]->FindChild(CCharString("UI_SCROLLING_VIEWPORT_TEXT_AREA"));
     for (std::map<NUISystem::CComponent*, std::pair<long, long> >::iterator it = ItemsToBuy.begin();
          it != ItemsToBuy.end(); ++it) {
-        NUISystem::CComponent* oldDescription = (*it).first->FindChild(g_BuyItemDescriptionString);
+        NUISystem::CComponent* oldDescription = (*it).first->FindChild(BUY_ITEM_DESC_STRING);
         if (oldDescription != 0) {
             NUISystem::CDeletion deletion;
             deletion.Method = NUISystem::DELETION_METHOD_1;
             oldDescription->SetDeletion(deletion);
             CCountedPointer<NUISystem::CComponent> description(ConstructTradeDescription((*it).second.first, 1, true, false));
-            description->SetName(g_BuyItemDescriptionString);
+            description->SetName(BUY_ITEM_DESC_STRING);
             (*it).first->AddChild(description);
             viewport->AddFakeChild(description.Get());
         }
     }
     for (std::map<NUISystem::CComponent*, std::pair<long, long> >::iterator it2 = ItemsToSell.begin();
          it2 != ItemsToSell.end(); ++it2) {
-        NUISystem::CComponent* oldDescription = (*it2).first->FindChild(g_SellItemDescriptionString);
+        NUISystem::CComponent* oldDescription = (*it2).first->FindChild(SELL_ITEM_DESC_STRING);
         if (oldDescription != 0) {
             NUISystem::CDeletion deletion;
             deletion.Method = NUISystem::DELETION_METHOD_1;
             oldDescription->SetDeletion(deletion);
             CCountedPointer<NUISystem::CComponent> description(ConstructTradeDescription((*it2).second.first, 1, false, false));
-            description->SetName(g_SellItemDescriptionString);
+            description->SetName(SELL_ITEM_DESC_STRING);
             (*it2).first->AddChild(description);
             viewport->AddFakeChild(description.Get());
         }

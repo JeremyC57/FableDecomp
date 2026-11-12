@@ -15,8 +15,11 @@
 //          is only shifted by the delay when an event set it (>= 0).
 // Members (retail layout, Ego_r.pdb names): TotalTime +0x10, ActionTime +0x14, PAnimEntry +0x74, HasPerformAction +0xde
 // (PDB +0xf2: retail CCreatureActionBase is 0xa8 bytes), so `this` is modelled locally.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BACD0 PERFORM_ACTION (global, const; initializer 0x0121EB00), was g_performActionEventName.
 class CCharString;
-extern CCharString g_performActionEventName;    // 0x013BACD0 ("PERFORM_ACTION")
+extern const CCharString PERFORM_ACTION;    // 0x013BACD0 ("PERFORM_ACTION")
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -76,8 +79,8 @@ void CCombatActionBase::InitialiseActionTimes()
     TotalTime = 0;
     long animID = PAnimEntry->AnimID;
     CAnimManager_Calls* manager = GetAnimManager();
-    if (manager->AnimHasEvent(animID, g_performActionEventName)) {
-        ActionTime = (long)(manager->GetEventTimeInSeconds(animID, g_performActionEventName) * framesPerSecond) + TotalTime;
+    if (manager->AnimHasEvent(animID, PERFORM_ACTION)) {
+        ActionTime = (long)(manager->GetEventTimeInSeconds(animID, PERFORM_ACTION) * framesPerSecond) + TotalTime;
         HasPerformAction = true;
     }
     TotalTime = (long)(PCreature.GetPItem()->GetAnimDuration(animID) * framesPerSecond + TotalTime);

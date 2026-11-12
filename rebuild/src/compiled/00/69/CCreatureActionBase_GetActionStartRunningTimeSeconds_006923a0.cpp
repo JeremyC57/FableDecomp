@@ -10,10 +10,13 @@
 // across the second manager call and multiplied by that call's result.
 // engine/CCreatureActionBase.h (PDB) only supplies the vtable-less layout; the virtual slots are
 // reached through a vtable-shaped view of `this` as in the landed UpdateActionRunningTime.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC8C ACTION_LATEST_START_TIME (global, const; initializer 0x0121E8E0), was g_startRunningEventName_013bac8c.
 #include "engine/CCreatureActionBase.h"
 
 class CCharString;
-extern CCharString g_startRunningEventName_013bac8c;   // 0x013BAC8C
+extern const CCharString ACTION_LATEST_START_TIME;   // 0x013BAC8C
 
 struct CAnimManager_Calls {                    // CManager (anim manager)
     bool  AnimHasEvent(unsigned long animID, const CCharString& eventName);              // 0x006F9720
@@ -53,9 +56,9 @@ float CCreatureActionBase_Methods::GetActionStartRunningTimeSeconds()
     long animID = self->GetAnimID();
     if (animID > 0) {
         CAnimManager_Calls* manager = GetAnimManager_006f90b0();
-        if (manager->AnimHasEvent(animID, g_startRunningEventName_013bac8c)) {
+        if (manager->AnimHasEvent(animID, ACTION_LATEST_START_TIME)) {
             float runningTime = self->GetActionRunningTimeSeconds();
-            return manager->GetEventTimeInSeconds(animID, g_startRunningEventName_013bac8c) * runningTime;
+            return manager->GetEventTimeInSeconds(animID, ACTION_LATEST_START_TIME) * runningTime;
         }
     }
     return -1.0f;

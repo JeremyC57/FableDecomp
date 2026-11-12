@@ -63,24 +63,27 @@ public:
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
+namespace NFile {
+extern CWideString CurrentPath;                                                                // 0x013BCA10
+CWideString __fastcall CalcCurrentPath();                                                       // 0x009974A0
+}
+
 class CAFile
 {
 public:
-    static CWideString CurrentPath;                                                             // 0x013BCA10
-    static CWideString __fastcall GetWorkingDirectory();                                        // 0x009974A0
     static CWideString __fastcall GetCurrentPath();
 };
 
 CWideString __fastcall CAFile::GetCurrentPath()
 {
-    CWideStringData* data = CurrentPath.PStringData;
+    CWideStringData* data = NFile::CurrentPath.PStringData;
     if ((data == 0 && wcscmp(WEMPTY, WEMPTY) == 0) || (data != 0 && data->Data == WEMPTY))
-        CurrentPath = GetWorkingDirectory();
-    return CurrentPath;
+        NFile::CurrentPath = NFile::CalcCurrentPath();
+    return NFile::CurrentPath;
 }
 
 // ---- test harness ----
-// Stubs: the CWideString members count copies and references; GetWorkingDirectory hands out a fixed data block.
+// Stubs: the CWideString members count copies and references; NFile::CalcCurrentPath hands out a fixed data block.
 static int g_cwd = 0, g_copies = 0, g_compares = 0;
 static wchar16 g_text[4] = { 'a', 'b', 'c', 0 };
 static CWideStringData g_cwdData;
@@ -95,8 +98,8 @@ template <> int __cdecl std::__char_traits_base<wchar16, wchar16>::compare(const
     for (unsigned long i = 0; i < n; ++i) if (a[i] != b[i]) return a[i] < b[i] ? -1 : 1;
     return 0;
 }
-CWideString __fastcall CAFile::GetWorkingDirectory() { ++g_cwd; return *(const CWideString*)&g_cwdPtr; }
-CWideString CAFile::CurrentPath(*(const CWideString*)&g_nullPtr);
+CWideString __fastcall NFile::CalcCurrentPath() { ++g_cwd; return *(const CWideString*)&g_cwdPtr; }
+CWideString NFile::CurrentPath(*(const CWideString*)&g_nullPtr);
 int main()
 {
     int ok = 1;
@@ -105,7 +108,7 @@ int main()
     // 1: no data block -> wcscmp(WEMPTY, WEMPTY) == 0 -> filled from the working directory
     {
         CWideString r = CAFile::GetCurrentPath();
-        if (g_cwd != 1 || CAFile::CurrentPath.PStringData != &g_cwdData || r.PStringData != &g_cwdData) ok = 0;
+        if (g_cwd != 1 || NFile::CurrentPath.PStringData != &g_cwdData || r.PStringData != &g_cwdData) ok = 0;
     }
     // 2: non-empty path -> returned as is, no refill, no compare (size test fails first)
     {

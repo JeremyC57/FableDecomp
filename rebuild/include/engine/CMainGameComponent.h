@@ -181,6 +181,14 @@ public:
     unsigned long* GetWorldSeed() const { return const_cast<unsigned long*>(&WorldSeed); }
 #endif
     static long __fastcall GetConstantFPS() { return ConstantFPS; }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITLUA
+    // Opt-in (agentNF26, 2026-11-12, row 0x004BBC00 and its caller 0x00416953 PostInit): Ego_r.pdb + FableWin.pdb protected
+    // ?InitLUA@CMainGameComponent@@IAEXABVCCharString@@@Z, out of line and empty in retail at 0x004BBC00 (`ret 4`; Ego_r's copy is the same
+    // 3-byte body, signature hash 57b80449b3ee4b71); PostInit passes GRunLUAScript (0x013B8674). Declaration only.
+protected:
+    void InitLUA(const class CCharString& script);                 // 0x004BBC00
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKER_UPDATE
     CASoundBank& GetSampleBank() const {return *PSampleBank;} // Both original PDBs; FableWin01b50310.
 #endif

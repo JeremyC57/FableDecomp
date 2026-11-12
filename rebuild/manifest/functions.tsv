@@ -4982,7 +4982,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004bbba0	`scalar_deleting_destructor'	CQuestManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\CLandscapeBackgroundPatch_vectordeletingdestructor_004bbba0.cpp
 004bbbc0	Sort	CVectorMap<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> >	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\CGuiVarTransferBool_TransferToGui_004bbbc0.cpp
 004bbbe0	SortIfDirty	CVectorMap<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> >	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\CTCVillage_OnInitialActivate_004bbbe0.cpp
-004bbc00	Nop_ret4_004bbc00	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\E2_E2_004bbc00.cpp
+004bbc00	InitLUA	CMainGameComponent	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\E2_E2_004bbc00.cpp
 004bbe10	Set	CRightHandedSet	__thiscall	undefined	3	CRightHandedSet *,C3DVector *,C3DVector *	0	yes	accepted									
 004bbf00	GetRenderPositionForThing	_global	unknown	undefined	0		0	yes	accepted									
 004bbfc0	SetGraphicBank	NGraphicAppearance::CTCGraphicAppearance	__fastcall	void	1	CThingManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\global_SetCurrentThingManager_004bbfc0.cpp
@@ -12204,8 +12204,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005da240	GetSubDef<CExpressionSubDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 005da300	GetSubDef<CTrophyDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 005da3c0	GetSubDef<CCarriedReadableDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
-005da490	Comparison_Float_WithEpsilon	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\global_ComparisonFloatWithEpsilon_005da490.cpp
-005da4c0	Member_5da4c0	CTCWeapon	__thiscall	undefined	1	CXMVPlaybackInfo *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CXMVPlaybackInfo_CXMVPlaybackInfo_005da4c0.cpp
+005da490	IsAimedForLongEnough	CTCWeapon	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\global_ComparisonFloatWithEpsilon_005da490.cpp
+005da4c0	SetAimingTimeOverride	CTCWeapon	__thiscall	undefined	1	CXMVPlaybackInfo *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CXMVPlaybackInfo_CXMVPlaybackInfo_005da4c0.cpp
 005da4d0	SetAiming	CTCWeapon	__thiscall	void	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCWeapon_SetAiming_005da4d0.cpp
 005da4e0	ResetAiming	CTCWeapon	__thiscall	void	1	CGhostGrannySon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CGhostGrannySon_Init_005da4e0.cpp
 005da4f0	FrameUpdate	CTCWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -14178,8 +14178,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006588dc	IncreaseHeroEnemyOfGuardsUntil	CTCVillage	__thiscall	void	2	CTCVillage *,long	1	yes	accepted									
 0065890b	ClearOutNullMembers	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted									
 00658a02	GetFirstUnAssignedPatrolTask	CTCVillage	__thiscall	CVillageTaskPatrol *	1	CTCVillage *	1	yes	accepted									
-00658a35	IsCookTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658a35.cpp
-00658a80	IsCookTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658a80.cpp
+00658a35	IsSchoolTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658a35.cpp
+00658a80	IsStoryTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658a80.cpp
 00658acb	GetSchoolTimes	CTCVillage	__thiscall	bool	3	CTCVillage *,float *,float *	1	yes	accepted									
 00658b20	IsWorkTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658b20.cpp
 00658b6b	IsCookTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted									
@@ -21759,7 +21759,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0079c660	CancelForCutscene	CTCBulletTime	__thiscall	void	1	CTCBulletTime *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\CTCBulletTime_CancelForCutscene_0079c660.cpp
 0079c680	GetBulletTimeRemainingPercentage	CTCBulletTime_Methods	__thiscall	float	1	CTCBulletTime *	1	yes	accepted									
 0079c6d0	GetBulletTimeElapsedTicks	CTCBulletTime_Methods	__thiscall	long	1	CTCBulletTime *	1	yes	accepted									
-0079c740	GetFloatThrough_0x20_0x12c_0079c740	_unattributed	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
+0079c740	GetTimeMultiplier	CTCBulletTime	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
 0079c750	PlayCreatureOnHitEffect	CTCBulletTime	__thiscall	void	2	CTCBulletTime *,CThingCreatureBase *	1	yes	accepted									
 0079c880	FrameUpdate	CTCBulletTime	__thiscall	void	1	CTCBulletTime *	1	yes	accepted									
 0079cc80	PlayEffect	CTCBulletTime	__thiscall	void	5	CTCBulletTime *,CIntelligentPointer<CThing> *,CCharString *,CThingCreatureBase *,long	1	yes	accepted									
@@ -57051,14 +57051,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121abeb	AUGMENTATIONS_MENU_ENTRY_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ac08	`dynamic initializer for 'REACTION_MANAGER_DEF_INSTANTIATION_NAME'`	`anonymous namespace'	unknown	undefined	0		0			discovered	gapscan							
 0121ac30	`dynamic initializer for 'FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	unknown	undefined	0		0	yes	accepted									
-0121ac70	$E_InventoryOrientationRHSet2	_global	unknown	undefined	0		0			discovered	gapscan							
-0121aca0	$E_InventoryOrientationRHSet3	_global	unknown	undefined	0		0			discovered	gapscan							
+0121ac70	RIGHT_FORTY_FIVE_DEGREES_ORIENTATION	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121aca0	LEFT_FORTY_FIVE_DEGREES_ORIENTATION	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121acd0	`dynamic initializer for 'UPSIDE_DOWN_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	unknown	undefined	0		0	yes	accepted									
 0121ad20	`dynamic initializer for 'UPSIDE_DOWN_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	__fastcall	void	0		1	yes	accepted									
 0121ad50	`dynamic initializer for 'UPSIDE_DOWN_LEFT_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	__fastcall	void	0		1	yes	accepted									
-0121ad80	$E_InventoryOrientationRHSet9	_global	unknown	undefined	0		0			discovered	gapscan							
-0121adc0	$E_InventoryOrientationRHSet10	_global	unknown	undefined	0		0			discovered	gapscan							
-0121adf0	$E_InventoryOrientationRHSet11	_global	unknown	undefined	0		0			discovered	gapscan							
+0121ad80	BACKWARDS_FORTY_FIVE_DEGREES_ORIENTATION	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121adc0	BACKWARDS_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121adf0	BACKWARDS_LEFT_FORTY_FIVE_DEGREES_ORIENTATION	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ae20	g_CStatic_01229030_01229030	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ae30	g_CStatic_01229060_01229060	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ae40	g_tree_013b8c1c	_static_init	unknown	undefined	0		0			discovered	gapscan							

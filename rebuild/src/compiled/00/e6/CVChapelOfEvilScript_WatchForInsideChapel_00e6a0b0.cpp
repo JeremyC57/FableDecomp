@@ -12,6 +12,8 @@
 //   the out-of-line destructor (terminate checks as `do { if (...) return; } while (0);`; VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md)).
 //   The loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }`: a `while (!IsActiveThreadTerminating())` loop
 //   tail-merges the two inline destructor exits the other way round. ~CScriptThing is plain inline.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (?NullString@CScriptThing@@2VCCharString@@A, the
+//   engine/CScriptThing.h spelling; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); was g_EmptyCharString.
 #include <string.h>
 #pragma intrinsic(strcmp)
 template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
@@ -46,7 +48,6 @@ class CCharString { public:
         return PStringData->Data == text;
     }
 };
-extern const CCharString g_EmptyCharString;              // 0x0143E8EC
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -54,7 +55,7 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return g_EmptyCharString; return PImp.Data->GetDefName(); }
+inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return CScriptThing::NullString; return PImp.Data->GetDefName(); }
 inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }

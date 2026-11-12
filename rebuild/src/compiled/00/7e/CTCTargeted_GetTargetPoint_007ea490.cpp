@@ -8,9 +8,12 @@
 // Layout: CThing::PTCGraphicAppearance at retail +0x64 (PDB +0x74). CTCTargeted per engine/CTCTargeted.h (members unused here).
 // Shape: the appearance is a named local read before the pushes; the helper point is a local returned through the user copy ctor (`fld X ; fstp [eax]`, Y/Z dword moves); the fallback passes the
 // hidden pointer straight to the helper (args right to left: radius, thing, then the GetWorld call).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC50 TARGETING_CURSOR_POSITION_NAME (global, const; initializer 0x0121E700), was g_TargetHelperName.
 #include "engine/C3DVector.h"
 class CCharString { public: void* m_pData; };
-extern CCharString g_TargetHelperName;          // 0x013BAC50
+extern const CCharString TARGETING_CURSOR_POSITION_NAME;          // 0x013BAC50
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& out, float scale) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
@@ -46,7 +49,7 @@ C3DVector CTCTargeted::GetTargetPoint(long index, float radius) const
     if (index >= 0) {
         NGraphicAppearance::CTCGraphicAppearance* appearance = ParentThing->PTCGraphicAppearance;
         C3DVector point;
-        if (appearance->GetHelperPoint(g_TargetHelperName, index, 0x20, point, 1.0f))
+        if (appearance->GetHelperPoint(TARGETING_CURSOR_POSITION_NAME, index, 0x20, point, 1.0f))
             return point;
     }
     const CThing& thing = *ParentThing;

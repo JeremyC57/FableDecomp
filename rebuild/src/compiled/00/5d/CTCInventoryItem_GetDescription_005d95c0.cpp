@@ -14,12 +14,15 @@
 // (eax) but the ItemDescription field is loaded twice (`test ecx,ecx`/`jbe`, then `mov edx,[eax+34h]`) -- a plain
 // `def` local or a bool flag CSEs the field into one load (107v110). The entry temporary's release is the
 // DecRef()/GetRefCount() pair (load/dec/store, `test edx,edx`), its dead null store dropped.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 #include "engine/CInventoryItemDef.h"
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_emptyWideString;                   // 0x013BCA24
 class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) const;                    // slot 0
     virtual void Delete() const;                              // slot 1
@@ -84,5 +87,5 @@ CWideString __fastcall CTCInventoryItem::GetDescription(long defIndex)
             return bank->GetPTextEntry(textIndex, true).Object->GetText();
         }
     }
-    return g_emptyWideString;
+    return CWideString::NullString;
 }

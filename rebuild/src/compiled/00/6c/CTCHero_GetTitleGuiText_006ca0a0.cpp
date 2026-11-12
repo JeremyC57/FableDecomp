@@ -11,12 +11,15 @@
 // GetRefCount sit on the ref-count base at +4 (`mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test ; mov [eax],edx`).
 // The tag is read twice from the def (test, then argument): the CSE gives retail's `mov eax,ecx` copy; a named local does not.
 // Layout: Ego_r.pdb CTCHero: PHeroTitleSubDef +0x18 (CDefPointer<const CHeroTitleDef>); CHeroTitleDef::HeroTitleGuiTag +0x2c.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString_013bca24.
 class CWideString {
 public:
     void* PStringData;
     CWideString(const CWideString& other);      // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_emptyWideString_013bca24;    // 0x013BCA24
 
 struct CRefCounted {
     mutable long m_count;
@@ -86,5 +89,5 @@ CWideString CTCHero::GetTitleGuiText() const
         if (entry.Data)
             return entry->GetText();
     }
-    return g_emptyWideString_013bca24;
+    return CWideString::NullString;
 }

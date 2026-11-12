@@ -8,10 +8,13 @@
 // Shape: the physics pointer for the test and the virtual call is a named local (loaded straight into the dead
 //   this-register ecx); the getter re-reads the member after the virtual call. The mesh object is a 0x40-byte frame local (`sub esp,40h`) built in place by the by-value getter; the
 //   bool result rides in bl across its destructor; the 0.0f tolerance is pushed as an immediate 0.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC98 BUILDING_BOUNDRY (global, const; initializer 0x0121E940), was g_containmentVolumeName.
 class CCharString;
 class C3DVector;
 
-extern CCharString g_containmentVolumeName;     // 0x013BAC98
+extern const CCharString BUILDING_BOUNDRY;     // 0x013BAC98
 
 class CPhysicsMeshObject { public:
     unsigned char _body[0x40 - 4];
@@ -55,7 +58,7 @@ bool CThingBuilding::IsPointInside(const C3DVector& pos) const
     CTCPhysicsBase* physics = m_pPhysics;
     if (physics && physics->GetPhysicsMesh()) {
         CPhysicsMeshObject mesh = m_pPhysics->GetPhysicsMeshObject();
-        return mesh.IsInContainmentVolume(g_containmentVolumeName, pos, 0.0f);
+        return mesh.IsInContainmentVolume(BUILDING_BOUNDRY, pos, 0.0f);
     }
     return false;
 }

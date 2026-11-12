@@ -5,6 +5,10 @@
 // RTTI pointers1237f1c/123e7d8 slot0 deleting dtors48a4f0/4d6915, genuine virtual base destructor.
 // intelligent pointer ctor/set A01B10/A01B90; speech981EA0; terminate8FCF40.
 // Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BB684 SUCCESS_STRING (anonymous namespace; initializer 0x01221940), was g_ApologyAccepted.
+//   0x013BB688 FAILURE_STRING (anonymous namespace; initializer 0x01221960), was g_ApologyRejected.
 #define CAIStateGroupBase CAIStateGroupBaseLayout
 #include "engine/CAIStateGroupBase.h"
 #undef CAIStateGroupBase
@@ -38,8 +42,8 @@ class CBaseObject;
 struct CBaseIntelligentPointer { void* Handle; CBaseIntelligentPointer(); virtual ~CBaseIntelligentPointer(); void SetPItem(CBaseObject* item); CThing* GetPItem() const; };
 struct CIntelligentConstThing : CBaseIntelligentPointer { CIntelligentConstThing(CThing* p) { SetPItem((CBaseObject*)p); } CIntelligentConstThing(const CIntelligentConstThing& p) { SetPItem((CBaseObject*)p.GetPItem()); } };
 struct CIntelligentCreature : CBaseIntelligentPointer { CIntelligentCreature(CThing* p) { SetPItem((CBaseObject*)p); } CIntelligentCreature(const CIntelligentCreature& p) { SetPItem((CBaseObject*)p.GetPItem()); } };
-extern CCharString g_ApologyAccepted; // 0x13BB684
-extern CCharString g_ApologyRejected; // 0x13BB688
+namespace { extern CCharString SUCCESS_STRING; } // 0x13BB684
+namespace { extern CCharString FAILURE_STRING; } // 0x13BB688
 struct CAIStateGroup_MinionReactToApology : CAIStateGroupBase {
  CPlayerManagerMethods* GetPPlayerManager(); 
  long AIAction_SpeakAISpeechToTarget(long,CIntelligentCreature,CIntelligentConstThing,const CCharString&,bool,long);
@@ -52,8 +56,8 @@ void CAIStateGroup_MinionReactToApology::Update() {
   const CEventApologyReceived* apology=events->GetApology();
   if(apology) {
    CThing* hero=GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
-   if(apology->Accepted) AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,g_ApologyAccepted,true,0x93);
-   else AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,g_ApologyRejected,true,0x93);
+   if(apology->Accepted) AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,SUCCESS_STRING,true,0x93);
+   else AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,FAILURE_STRING,true,0x93);
   }
  }
  Terminate();

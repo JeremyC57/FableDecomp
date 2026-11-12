@@ -10,6 +10,9 @@
 // the temporary lives in the 8-byte frame (base ctor, its vtable, SetPItem), the inline assignment
 // is SetPItem(other.GetPItem()) on the member, and the temporary's destructor is the base one (the
 // derived pointer template declares no destructor, so no vtable store on the way out).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAAFC DRESSING_SIGN_POST_DEF_NAME (anonymous namespace, const; initializer 0x0121E0E0), was g_DressingSignPostDefName.
 
 class CThing;
 class CBaseObject;
@@ -34,7 +37,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // vtable 0x01238C6
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-extern const CCharString g_DressingSignPostDefName;   // 0x013BAAFC
+namespace { extern const CCharString DRESSING_SIGN_POST_DEF_NAME; }   // 0x013BAAFC
 
 #pragma pack(push, 1)
 class CTCBuyableHouse
@@ -56,5 +59,5 @@ public:
 
 void CTCBuyableHouse::CreateDressingSignPost()
 {
-    DressingSignPost = CIntelligentPointer<CThing>(CreateSignPost(g_DressingSignPostDefName, false));
+    DressingSignPost = CIntelligentPointer<CThing>(CreateSignPost(DRESSING_SIGN_POST_DEF_NAME, false));
 }

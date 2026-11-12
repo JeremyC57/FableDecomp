@@ -15,10 +15,14 @@
 //   GFAYToVY 0x009E1DD0 (inline GetVFontMaxHeight); CCharString::ToWideString 0x0099E480; GFIntToWideString 0x00405F00; the
 //   CWideString operator+ trio 0x0099BE70 / 0x0099BF30 / 0x0099BFF0, CWideString(const wchar_t*) 0x0099B6B0, ~CWideString 0x0099B510.
 // Globals: GPDisplayManager 0x013B8390, PRenderManager 0x013B8384, VIRTUAL_SCREEN_WIDTH / VIRTUAL_SCREEN_HEIGHT 0x013961E8 /
-//   0x013961F0, the version string 0x013B85E0 (landed spelling FableFullBuildVersion; probably Ego_r GVersionString, see NOTES),
-//   g_WorldToLoad 0x013B8668 (landed GFParseCommandLine spelling).
+//   0x013961F0, the version string 0x013B85E0 (landed spelling GVersionString; probably Ego_r GVersionString, see NOTES),
+//   GForceLevel 0x013B8668 (landed GFParseCommandLine spelling).
 // Layout: Ego_r.pdb CFrontendGameComponent with the retail offsets of the landed siblings (MainFont +0x1E04, ProfileNames +0x1E0C,
 //   SaveNames +0x1E1C, WorldNames +0x1E30, CursorHighlight +0x1E44, SplashScreen +0x1E58); no engine/ header exists.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B85E0 GVersionString (global; initializer 0x01219F20), was FableFullBuildVersion.
+//   0x013B8668 GForceLevel (global; initializer 0x01219FC0), was g_WorldToLoad.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CFONTBANK
@@ -67,8 +71,8 @@ extern CDisplayManager* GPDisplayManager;                                // 0x01
 extern CRenderManager* PRenderManager;                                   // 0x013B8384
 extern double VIRTUAL_SCREEN_WIDTH;                                      // 0x013961E8
 extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x013961F0
-extern CCharString FableFullBuildVersion;                                // 0x013B85E0
-extern CWideString g_WorldToLoad;                                        // 0x013B8668
+extern CCharString GVersionString;                                // 0x013B85E0
+extern CWideString GForceLevel;                                        // 0x013B8668
 
 namespace NGameComponentHelpers { enum ECursorMovement { }; }
 enum EGameMode { };
@@ -139,10 +143,10 @@ void CFrontendGameComponent::Output()
                          // schedule ahead of the `fadd` that steps y (every `y += MainFont->GetVFontMaxHeight()` spelling keeps it after)
     switch (Mode) {
     case 1:
-        PRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Fable " + FableFullBuildVersion.ToWideString(), *MainFont, normal_colour, 0);
+        PRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Fable " + GVersionString.ToWideString(), *MainFont, normal_colour, 0);
         y = GFAYToVY(32.0f);
         colour = CursorHighlight == 1 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"1 - Single Player [" + g_WorldToLoad + L"]", *MainFont, colour, 0);
+        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"1 - Single Player [" + GForceLevel + L"]", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 2 ? highlight_colour : normal_colour;

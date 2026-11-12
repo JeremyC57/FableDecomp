@@ -5,7 +5,7 @@
 // actions (terminating when the enemy dies or a pump neither succeeds nor waits) until the group stops, stops
 // being runnable, leaves combat, drifts from its combat position, or the manager says it is ready to attack.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096EA50, length 187 bytes.
-// Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (twice), the brain world accessor @ 0x008FCFC0
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (twice), the brain world accessor @ 0x008FCFC0
 // (combat manager at +0x4c), CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450 /
 // IsAttackerReadyToAttack @ 0x006E93C0, AIAction_PumpCombatActions @ 0x0097D980, CBaseIntelligentPointer::GetPItem
 // (inlined IS_THING_ALIVE on PEnemy +0x14), Terminate @ 0x008FCF40, IsStopping @ 0x008FD010, this->IsStillRunnable
@@ -13,6 +13,8 @@
 // Shape: the creature is a named local read before the world call both times; a do/while whose PEnemy address is
 // hoisted into ebp above the aligned loop head; every bail-out is a plain `return` (shared epilogue).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+//   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
 class CTCBase;
 class CThing;
 class CWorld;
@@ -142,7 +144,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
 
 class CThingCreatureBase { public:
-    bool IsRegisteredCombatant();               // 0x00662410 (manifest label C3DAnimationBlendState::AddCombinationBlend propagated)
+    bool IsInMeleeAsAttacker() const;         // 0x00662410 (Ego_r/FableWin ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ; manifest label C3DAnimationBlendState::AddCombinationBlend propagated)
 };
 
 enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETURN_SUCCEEDED, AI_ACTION_RETURN_3, AI_ACTION_RETURN_4 };
@@ -163,7 +165,7 @@ struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBase {
 
 void CAIStateGroup_MeleeCombatNearby::AttackEnemy()
 {
-    if (((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()) {
+    if (((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         const CWorld& world = GetWorld();
         world.CombatManager->SetAttackerAsReadyToAttack(creature, true);
@@ -176,7 +178,7 @@ void CAIStateGroup_MeleeCombatNearby::AttackEnemy()
             return;
         if (!IsStillRunnable(true))
             return;
-        if (!((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant())
+        if (!((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker())
             return;
         if (!IsEnemyCreatureNearCombatPosition())
             return;

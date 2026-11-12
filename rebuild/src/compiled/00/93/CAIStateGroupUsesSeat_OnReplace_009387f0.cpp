@@ -13,13 +13,17 @@
 //          destroyed around the get-up call.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with PSeat +0x14,
 //          the seat flag +0x1c, sitting +0x1d, the action point index +0x20 and the alternate flag +0x30 (descriptive).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BB6E8 GET_UP_FROM_BENCH_ANIM_NAME (anonymous namespace; initializer 0x01221B00), was g_GetUpNameAlternate.
+//   0x013BB6E0 GET_UP_FROM_CHAIR_ANIM_NAME (anonymous namespace; initializer 0x01221AC0), was g_GetUpName.
 #include "fable_compiler.h"
 class CCharStringData;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
-extern CCharString g_GetUpName;                 // 0x013BB6E0 (descriptive)
-extern CCharString g_GetUpNameAlternate;        // 0x013BB6E8 (descriptive)
+namespace { extern CCharString GET_UP_FROM_CHAIR_ANIM_NAME; }                 // 0x013BB6E0 (descriptive)
+namespace { extern CCharString GET_UP_FROM_BENCH_ANIM_NAME; }        // 0x013BB6E8 (descriptive)
 class CTCBase;
 
 #include "engine/CVectorMap.h"
@@ -104,7 +108,7 @@ void CAIStateGroup_UsesSeat::OnReplace()
     ActionPointIndex = -1;
     if (Sitting) {
         long movement = (AlternateGetUp != 0) + 8;
-        CCharString anim(AlternateGetUp ? g_GetUpNameAlternate : g_GetUpName);
+        CCharString anim(AlternateGetUp ? GET_UP_FROM_BENCH_ANIM_NAME : GET_UP_FROM_CHAIR_ANIM_NAME);
         CBrainOutput output;
         if (!GetUpFromSitting(GetCreature(), movement, &anim, PBrain)) {
             CTCCreatureModeManager* modes;

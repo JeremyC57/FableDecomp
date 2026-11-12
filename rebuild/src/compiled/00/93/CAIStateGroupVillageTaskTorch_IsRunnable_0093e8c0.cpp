@@ -12,8 +12,11 @@
 // named local before reaching its torch pointer (`lea ecx,[eax+8]`), and the pointer assignment reads the source item into
 // a local before SetPItem (so `&PTask` is formed after the GetPItem call, as retail).
 // Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BACA0 ACTION_POINT_01 (global, const; initializer 0x0121E980), was g_TorchDummyName.
 class CCharString { public: void* PStringData; };
-extern CCharString g_TorchDummyName;            // 0x013BACA0 (dynamically initialised global name)
+extern const CCharString ACTION_POINT_01;            // 0x013BACA0 (dynamically initialised global name)
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 struct CTCGraphicAppearance {
@@ -85,7 +88,7 @@ bool CAIStateGroup_VillageTaskTorch::IsRunnable()
                 CTCGraphicAppearance* appearance = torch->PTCGraphicAppearance;
                 C3DVector position(0, 0, 0);
                 CRightHandedSet orientation;
-                if (!appearance->GetDummyObject(g_TorchDummyName, 0, 0, &position, &orientation, 1.0f))
+                if (!appearance->GetDummyObject(ACTION_POINT_01, 0, 0, &position, &orientation, 1.0f))
                     PTask = 0;
             }
         }

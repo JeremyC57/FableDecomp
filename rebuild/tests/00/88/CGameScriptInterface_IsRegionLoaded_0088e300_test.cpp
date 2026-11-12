@@ -1,68 +1,43 @@
+// Behaviour test for CGameScriptInterface::IsRegionLoaded @ 0x0088e300 (standalone model): the world map is fetched twice through
+// CWorld slot 13 (PeekWorldMap); the answer is GetRegionNumberFromName(name) == GetLoadedRegion().
 #include <cstdio>
 
 class CCharString;
-class CIDrawEnvironment;
+static long g_region_from_name;
+static long g_loaded_region;
+static int g_peek_calls;
 
 class CWorldMap { public:
-    CIDrawEnvironment* GetRegionNumberFromName(const CCharString& regionName);
+    long GetRegionNumberFromName(const CCharString&) const { return g_region_from_name; }
+    long GetLoadedRegion() const { return g_loaded_region; }
 };
 class CWorld { public:
-    CIDrawEnvironment* DrawGetEnvironment();
+    CWorldMap Map;
+    const CWorldMap& PeekWorldMap() const { ++g_peek_calls; return Map; }
 };
-struct WorldProvider { void** vtable; };
 class CGameScriptInterface { public:
-    WorldProvider* worldProvider;
-    bool IsRegionLoaded(const CCharString& regionName) const;
+    CWorld* World;
+    bool IsRegionLoaded(const CCharString& regionName) const
+    {
+        long region = World->PeekWorldMap().GetRegionNumberFromName(regionName);
+        long current = World->PeekWorldMap().GetLoadedRegion();
+        return (bool)(region == current);
+    }
 };
-typedef void* (__fastcall* GetWorldObjectFn)(WorldProvider* self);
 
-static void* g_env_region;
-static void* g_env_current;
-static int g_getworld_calls;
-
-static void* __fastcall FakeGetWorld(WorldProvider* self) { g_getworld_calls++; return self; }
-
-CIDrawEnvironment* CWorldMap::GetRegionNumberFromName(const CCharString& rn) {
-    return (CIDrawEnvironment*)g_env_region;
-}
-CIDrawEnvironment* CWorld::DrawGetEnvironment() {
-    return (CIDrawEnvironment*)g_env_current;
-}
-
-bool CGameScriptInterface::IsRegionLoaded(const CCharString& regionName) const
+int main()
 {
-    WorldProvider* wp = this->worldProvider;
-    CIDrawEnvironment* regionEnv =
-        ((CWorldMap*)((GetWorldObjectFn)wp->vtable[0x34 / 4])(wp))->GetRegionNumberFromName(regionName);
-
-    WorldProvider* wp2 = this->worldProvider;
-    CIDrawEnvironment* currentEnv =
-        ((CWorld*)((GetWorldObjectFn)wp2->vtable[0x34 / 4])(wp2))->DrawGetEnvironment();
-
-    return (bool)(regionEnv == currentEnv);
-}
-
-int main() {
-    void* vt[16];
-    for (int i = 0; i < 16; i++) vt[i] = 0;
-    vt[0x34/4] = (void*)(&(FakeGetWorld));
-    WorldProvider wp;
-    WorldProvider* pwp = &(wp);
-    pwp->vtable = vt;
+    CWorld world;
     CGameScriptInterface gsi;
-    gsi.worldProvider = pwp;
-    CGameScriptInterface* pgsi = &(gsi);
-    CCharString* dummy = 0;
-
-    g_env_region = (void*)0x1000; g_env_current = (void*)0x1000; g_getworld_calls = 0;
-    bool loaded = pgsi->IsRegionLoaded(*dummy);
-    bool ok = loaded && (g_getworld_calls == 2);
-
-    g_env_region = (void*)0x1000; g_env_current = (void*)0x2000;
-    bool notLoaded = pgsi->IsRegionLoaded(*dummy);
+    gsi.World = &world;
+    const CCharString* name = 0;
+    g_region_from_name = 7; g_loaded_region = 7; g_peek_calls = 0;
+    bool loaded = gsi.IsRegionLoaded(*name);
+    bool ok = loaded && g_peek_calls == 2;
+    g_region_from_name = 7; g_loaded_region = 3;
+    bool notLoaded = gsi.IsRegionLoaded(*name);
     ok = ok && !notLoaded;
-
-    if (ok) printf("REGION_LOADED_OK\n");
-    else printf("FAIL loaded=%d notLoaded=%d calls=%d\n", (int)loaded, (int)notLoaded, g_getworld_calls);
+    if (ok) std::printf("REGION_LOADED_OK\n");
+    else std::printf("FAIL loaded=%d notLoaded=%d calls=%d\n", (int)loaded, (int)notLoaded, g_peek_calls);
     return 0;
 }

@@ -15,6 +15,11 @@
 // Layout: `this` from engine/CTCBuyableHouse.h (`#define` include pattern); MainSignPost is the header's opaque 8-byte
 //   CIntelligentPointer<CThing> at +0x24, viewed through its real type with a reinterpret_cast in each arm (a reference local
 //   to it makes VC7.1 keep &MainSignPost in esi instead of `this`: 10 lines off).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAB04 MAIN_RENT_SIGN_POST_DEF_NAME (anonymous namespace, const; initializer 0x0121E120), was g_RentSignPostDefName.
+//   0x013BAB00 MAIN_OWNED_SIGN_POST_DEF_NAME (anonymous namespace, const; initializer 0x0121E100), was g_OwnedSignPostDefName.
+//   0x013BAAF8 MAIN_SIGN_POST_DEF_NAME (anonymous namespace, const; initializer 0x0121E0C0), was g_MainSignPostDefName.
 #define CTCBuyableHouse CTCBuyableHouseLayout
 #include "engine/CTCBuyableHouse.h"
 #undef CTCBuyableHouse
@@ -42,9 +47,9 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-extern const CCharString g_MainSignPostDefName;          // 0x013BAAF8 "OBJECT_BUYABLE_HOUSE_MAIN_SIGNPOST"
-extern const CCharString g_OwnedSignPostDefName;         // 0x013BAB00 "OBJECT_BUYABLE_HOUSE_OWNED_SIGNPOST"
-extern const CCharString g_RentSignPostDefName;          // 0x013BAB04 "OBJECT_BUYABLE_HOUSE_RENT_SIGNPOST"
+namespace { extern const CCharString MAIN_SIGN_POST_DEF_NAME; }          // 0x013BAAF8 "OBJECT_BUYABLE_HOUSE_MAIN_SIGNPOST"
+namespace { extern const CCharString MAIN_OWNED_SIGN_POST_DEF_NAME; }         // 0x013BAB00 "OBJECT_BUYABLE_HOUSE_OWNED_SIGNPOST"
+namespace { extern const CCharString MAIN_RENT_SIGN_POST_DEF_NAME; }          // 0x013BAB04 "OBJECT_BUYABLE_HOUSE_RENT_SIGNPOST"
 
 class CTCBuyableHouse : public CTCBuyableHouseLayout {
 private:
@@ -56,10 +61,10 @@ void CTCBuyableHouse::CreateMainSignPost()
 {
     if (OwnedByPlayer) {
         if (Rented)
-            reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost) = CIntelligentPointer<CThing>(CreateSignPost(g_RentSignPostDefName, true));
+            reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost) = CIntelligentPointer<CThing>(CreateSignPost(MAIN_RENT_SIGN_POST_DEF_NAME, true));
         else
-            reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost) = CIntelligentPointer<CThing>(CreateSignPost(g_OwnedSignPostDefName, true));
+            reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost) = CIntelligentPointer<CThing>(CreateSignPost(MAIN_OWNED_SIGN_POST_DEF_NAME, true));
     }
     else
-        reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost) = CIntelligentPointer<CThing>(CreateSignPost(g_MainSignPostDefName, true));
+        reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost) = CIntelligentPointer<CThing>(CreateSignPost(MAIN_SIGN_POST_DEF_NAME, true));
 }

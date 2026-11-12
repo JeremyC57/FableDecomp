@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA8970, 624 bytes, `ret 4` (the by-value comment is destroyed here).
 // Callees: CScriptThing::GetDataString 0x004AA900 (inline at the first call, out of line at the second), ~CScriptThing
 //   0x004AA840, vector<CScriptThing> dtor 0x008AC970 (out of line on the two terminating exits), CCharString operator+
-//   0x0099F690 / 0x0099F600 / 0x0099F570, CCharString copy 0x0099EC30 from g_EmptyString 0x0143E8EC, rand 0x00BFEB16,
+//   0x0099F690 / 0x0099F600 / 0x0099F570, CCharString copy 0x0099EC30 from CScriptThing::NullString 0x0143E8EC, rand 0x00BFEB16,
 //   free 0x00BFEA14; through the quest's interface (+0x40): GetHero (70), GetFollowingEntityList (231),
 //   TextEntryExists (358), AddNewConversation (364), AddPersonToConversation (365), AddLineToConversation (366).
 // Shape: the RestartMarker vector model (plain-inline destructor, DestroyRange + free); VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) decides the
@@ -12,6 +12,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (?NullString@CScriptThing@@2VCCharString@@A, the
+//   engine/CScriptThing.h spelling; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); was g_EmptyString.
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
@@ -19,7 +21,6 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-extern CCharString g_EmptyString;                       // 0x0143E8EC
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
@@ -51,9 +52,11 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     virtual CCharString GetDataString() const           // 0x004AA900
     {
         if (!PImp.Data)
-            return g_EmptyString;
+            return CScriptThing::NullString;
         return PImp.Data->GetDataString();
     }
+public:
+    static CCharString NullString;                  // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };
 
 template<class T> FABLE_FORCEINLINE void DestroyRange(T* first, T* last)

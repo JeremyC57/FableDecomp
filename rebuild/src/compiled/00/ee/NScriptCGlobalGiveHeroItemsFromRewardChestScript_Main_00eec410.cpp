@@ -15,6 +15,8 @@
 // Shape: the target's IsAlive / GetDefName are the inline CScriptThing virtuals expanded on the local.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00eec750 at 00cda0dd with name "Global_GiveHeroItemsFromRewardChest"; Alloc news + stores script vtable 012f5730; PDB ?Alloc@CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CGlobal_GiveHeroItemsFromRewardChestScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGlobal_GiveHeroItemsFromRewardChestScript@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (?NullString@CScriptThing@@2VCCharString@@A, the
+//   engine/CScriptThing.h spelling; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); was g_EmptyString.
 #include "fable_compiler.h"
 class CCharString;
 class C3DVector;
@@ -964,7 +966,6 @@ struct CScriptThingImp {
  virtual void i70(); virtual void i71(); virtual void i72(); virtual void i73(); virtual void i74();
  virtual bool IsAlive() const;                       // slot 75 (+0x12c)
 };
-extern CCharString g_EmptyString;                    // 0x0143E8EC
 static inline bool IsThingAlive(const CScriptThing& t)
 {
  const CScriptThingImp* imp = (const CScriptThingImp*)t.PImp.Data;
@@ -974,7 +975,7 @@ static inline CCharString DefNameOf(const CScriptThing& t)
 {
  const CScriptThingImp* imp = (const CScriptThingImp*)t.PImp.Data;
  if (imp == 0)
-  return g_EmptyString;
+  return CScriptThing::NullString;
  return imp->GetDefName();
 }
 namespace NScript {

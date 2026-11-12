@@ -1634,15 +1634,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00658a35'
         Module = 'CTCVillage'
-        Source = '00/65/CTCVillage_IsCookTime_00658a35.cpp'
-        TestSource = '00/65/CTCVillage_IsCookTime_00658a35_test.cpp'
+        Source = '00/65/CTCVillage_IsSchoolTime_00658a35.cpp'
+        TestSource = '00/65/CTCVillage_IsSchoolTime_00658a35_test.cpp'
         PassPattern = 'CTCVillage_00658a35_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00658a80'
         Module = 'CTCVillage'
-        Source = '00/65/CTCVillage_IsCookTime_00658a80.cpp'
-        TestSource = '00/65/CTCVillage_IsCookTime_00658a80_test.cpp'
+        Source = '00/65/CTCVillage_IsStoryTime_00658a80.cpp'
+        TestSource = '00/65/CTCVillage_IsStoryTime_00658a80_test.cpp'
         PassPattern = 'CTCVillage_00658a80_TEST PASS'
     }
     [pscustomobject]@{
@@ -31224,9 +31224,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005da490'
-        Module = '_global'
-        Source = '00/5d/global_ComparisonFloatWithEpsilon_005da490.cpp'
-        TestSource = '00/5d/global_ComparisonFloatWithEpsilon_005da490_test.cpp'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_IsAimedForLongEnough_005da490.cpp'
+        TestSource = '00/5d/CTCWeapon_IsAimedForLongEnough_005da490_test.cpp'
         PassPattern = 'OK_0x005da490'
     }
     [pscustomobject]@{
@@ -67859,8 +67859,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005da4c0'
         Module = 'CTCWeapon'
-        Source = '00/5d/CXMVPlaybackInfo_CXMVPlaybackInfo_005da4c0.cpp'
-        TestSource = '00/5d/CXMVPlaybackInfo_CXMVPlaybackInfo_005da4c0_test.cpp'
+        Source = '00/5d/CTCWeapon_SetAimingTimeOverride_005da4c0.cpp'
+        TestSource = '00/5d/CTCWeapon_SetAimingTimeOverride_005da4c0_test.cpp'
         PassPattern = 'OK_005da4c0'
     }
     [pscustomobject]@{
@@ -68488,9 +68488,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004bbc00'
-        Module = '_global'
-        Source = '00/4b/E2_E2_004bbc00.cpp'
-        TestSource = '00/4b/E2_E2_004bbc00_test.cpp'
+        Module = 'CMainGameComponent'
+        Source = '00/4b/CMainGameComponent_InitLUA_004bbc00.cpp'
+        TestSource = '00/4b/CMainGameComponent_InitLUA_004bbc00_test.cpp'
         PassPattern = 'OK_004bbc00'
     }
     [pscustomobject]@{
@@ -158997,9 +158997,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079c740'
-        Module = '_unattributed'
-        Source = '00/79/_unattributed_GetFloatThrough_0x20_0x12c_0079c740_0079c740.cpp'
-        TestSource = '00/79/_unattributed_GetFloatThrough_0x20_0x12c_0079c740_0079c740_test.cpp'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_GetTimeMultiplier_0079c740.cpp'
+        TestSource = '00/79/CTCBulletTime_GetTimeMultiplier_0079c740_test.cpp'
         PassPattern = '0079c740_TEST PASS'
     }
     [pscustomobject]@{
@@ -385514,37 +385514,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121ad80'
-        Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet9_0121ad80.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet9_0121ad80_test.cpp'
+        Module = '_static_init''
+        Source = '01/21/staticinit_BACKWARDSFORTYFIVEDEGREESORIENTATION_0121ad80.cpp'
+        TestSource = '01/21/staticinit_BACKWARDSFORTYFIVEDEGREESORIENTATION_0121ad80_test.cpp'
         PassPattern = '0121ad80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ac70'
-        Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet2_0121ac70.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet2_0121ac70_test.cpp'
+        Module = '_static_init''
+        Source = '01/21/staticinit_RIGHTFORTYFIVEDEGREESORIENTATION_0121ac70.cpp'
+        TestSource = '01/21/staticinit_RIGHTFORTYFIVEDEGREESORIENTATION_0121ac70_test.cpp'
         PassPattern = '0121ac70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121aca0'
-        Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet3_0121aca0.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet3_0121aca0_test.cpp'
+        Module = '_static_init''
+        Source = '01/21/staticinit_LEFTFORTYFIVEDEGREESORIENTATION_0121aca0.cpp'
+        TestSource = '01/21/staticinit_LEFTFORTYFIVEDEGREESORIENTATION_0121aca0_test.cpp'
         PassPattern = '0121aca0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121adc0'
-        Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet10_0121adc0.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet10_0121adc0_test.cpp'
+        Module = '_static_init''
+        Source = '01/21/staticinit_BACKWARDSRIGHTFORTYFIVEDEGREESORIENTATION_0121adc0.cpp'
+        TestSource = '01/21/staticinit_BACKWARDSRIGHTFORTYFIVEDEGREESORIENTATION_0121adc0_test.cpp'
         PassPattern = '0121adc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121adf0'
-        Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet11_0121adf0.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet11_0121adf0_test.cpp'
+        Module = '_static_init''
+        Source = '01/21/staticinit_BACKWARDSLEFTFORTYFIVEDEGREESORIENTATION_0121adf0.cpp'
+        TestSource = '01/21/staticinit_BACKWARDSLEFTFORTYFIVEDEGREESORIENTATION_0121adf0_test.cpp'
         PassPattern = '0121adf0_TEST PASS'
     }
     [pscustomobject]@{

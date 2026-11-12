@@ -14,6 +14,9 @@
 //          +0x2c (string assign, one-test CRC over the temporary); the counted pointer is the landed `Object(object)`,
 //          `if/else` block form (new re-reading Object), passed by value to the action ctor.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BB66C SIT_ON_FLOOR_ANIM_NAME (anonymous namespace; initializer 0x01221880), was g_SitAnimName.
 #include "fable_compiler.h"
 class CCharStringData { public: const char* Chars; long Length; };
 class CCharString { public:
@@ -39,7 +42,7 @@ class CAnimationEntry { public:
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08
 };
-extern CCharString g_SitAnimName;               // 0x013BB66C
+namespace { extern CCharString SIT_ON_FLOOR_ANIM_NAME; }               // 0x013BB66C
 class CAnimFilterBase { public:
     virtual void v00();                         // vtable 0x0122FFCC
     ~CAnimFilterBase() { }
@@ -145,7 +148,7 @@ protected:
 
 bool CAIStateGroup_MinionListenToStory::SitDown()
 {
-    CAnimationEntry* anim = GetCreature()->GetRandomAnimFromNameWithFilter(g_SitAnimName, CAnimFilterSit());
+    CAnimationEntry* anim = GetCreature()->GetRandomAnimFromNameWithFilter(SIT_ON_FLOOR_ANIM_NAME, CAnimFilterSit());
     CCountedPointer<CModeSitBase> mode(new CModeSitListen(this, anim->GroupName));
     if (IsStopping())
         return false;

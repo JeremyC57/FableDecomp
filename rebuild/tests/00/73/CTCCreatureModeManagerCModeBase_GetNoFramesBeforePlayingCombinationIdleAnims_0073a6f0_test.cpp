@@ -206,18 +206,17 @@ namespace NCreatureMode {enum EMode {DescriptiveModeZero=0};}
 class CTCCreatureModeManager {public:class CModeBase {public:void* TypeTable;CThing* ParentThing;
 CThing& GetParentThing()const{return *ParentThing;}
 protected:long GetNoFramesBeforePlayingCombinationIdleAnims(NCreatureMode::EMode);friend struct TestAccess;
+private:static const long NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS;   // 0x013BAFE4
 };};
-// Label: default timing global name remains descriptive; retail address 013bafe4.
-extern long g_DefaultFrames_013bafe4;
 long CTCCreatureModeManager::CModeBase::GetNoFramesBeforePlayingCombinationIdleAnims(NCreatureMode::EMode mode){
- long frames=g_DefaultFrames_013bafe4;
+ long frames=NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS;
  if(mode==(NCreatureMode::EMode)0x24)frames=CTCBerserk::GetNumFramesBeforeCrazyIdle();
  if(g_pThingManager->World->PBulletTimeManager_ptr->IsBulletTimeActive() && GetParentThing().IsAffectedByBulletTime())
   return (long)(g_pThingManager->World->PBulletTimeManager_ptr->GetBulletTimeSlowdownMultiplier()*frames);
  return frames;
 }
 
-CThingManager* g_pThingManager;long g_DefaultFrames_013bafe4=8;
+CThingManager* g_pThingManager;const long CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS=8;
 static int specials,affectedCalls,multiplierCalls,bad;static bool affected;static float scale;static const CThing* expected;static const CBulletTimeManager* expectedBullet;
 long __fastcall CTCBerserk::GetNumFramesBeforeCrazyIdle(){++specials;return 12;}
 bool CThing::IsAffectedByBulletTime()const{++affectedCalls;if(this!=expected)bad=1;return affected;}

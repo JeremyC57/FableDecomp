@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00916910, length 300 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the +0x170 school pointer), IsInSchoolHours @ 0x00916790,
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x23 = CTCVillager; the bitset test's bool materialised
-// to a frame byte), GFGetPVillageInterface @ 0x007EE540 (x2), CTCVillage::IsCookTime @ 0x00658A35,
+// to a frame byte), GFGetPVillageInterface @ 0x007EE540 (x2), CTCVillage::IsSchoolTime @ 0x00658A35,
 // AIAction_MoveToThingProximity @ 0x0097E380 (by-value CIntelligentPointer<const CThing> built in its slot, vtable
 // 0x01237F1C), Terminate @ 0x008FCF40.
 // Shape: `do { if (!valid) { Terminate(); return; } r = Move(...); } while (r == 4);` (the exits tail-merge with the
@@ -224,8 +224,12 @@ class CThingBuilding : public CThing { public:
 };
 struct CThingPos : CThing {
 };
+// Name fix (agentNF26, 2026-11-12): CTCVillage::IsSchoolTime 0x00658A35 is ?IsSchoolTime@CTCVillage@@QBE_NXZ (Ego_r.pdb + FableWin.pdb; body
+//   IsTimeBetween over CVillageDef SchoolStartTimes +0x54 / SchoolDuration +0x60); was IsCookTime on a CTCVillageS stand-in; now the shared
+//   engine/CTCVillage.h (flattened view, SCHOOLSTORYTIME opt-in).
 struct CTCVillager;
-class CTCVillage;
+#define FABLE_RETAIL_CTCVILLAGE_SCHOOLSTORYTIME      // hdr overlay (agentNF26): flattened engine/CTCVillage.h declares IsSchoolTime const
+#include "engine/CTCVillage.h"
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 struct CThingSchoolKid : CThing {
     unsigned char _pad94[0x170 - 0x94];
@@ -247,9 +251,6 @@ struct CAIStateGroup_StayNearSchool : CAIStateGroupBase {
     bool IsRunnable();
     virtual void Update();
 };
-struct CTCVillageS {
-    bool IsCookTime();                          // 0x00658A35 (manifest name; the village's school/cook hours test)
-};
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
@@ -270,7 +271,7 @@ void CAIStateGroup_StayNearSchool::Update()
             CTCVillager* villager;
             if (!current || (current->m_flags91 & 1) || !GetCreature()->GetInterfaceT(&villager, 0x23)
                     || !((CTCVillageMember*)villager)->GetPVillage()
-                    || !((CTCVillageS*)((CTCVillageMember*)villager)->GetPVillage())->IsCookTime()) {
+                    || !((CTCVillageMember*)villager)->GetPVillage()->IsSchoolTime()) {
                 self->Terminate();
                 return;
             }

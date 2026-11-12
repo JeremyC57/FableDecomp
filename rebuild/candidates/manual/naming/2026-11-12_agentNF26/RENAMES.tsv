@@ -1,0 +1,135 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x005DA4C0	CTCWeapon	SetAimingTimeOverride	?SetAimingTimeOverride@CTCWeapon@@QAEXXZ	CTCWeapon::Member_5da4c0	?M@C005da4c0@@QAEXXZ	Ego_r.pdb + FableWin.pdb ?SetAimingTimeOverride@CTCWeapon@@QAEXXZ; Ego_r donor order IsAimedForLongEnough/SetAimingTimeOverride/SetAiming/ResetAiming = retail 0x005DA490/4C0/4D0/4E0; body mov byte [ecx+18h],1 = AimingTimeOverride +0x18 = true; graded MATCH on engine/CTCWeapon.h (AIMING opt-in)
+0x005DA490	CTCWeapon	IsAimedForLongEnough	?IsAimedForLongEnough@CTCWeapon@@QBE_NM@Z	Comparison_Float_WithEpsilon	Comparison_Float_WithEpsilon	Ego_r.pdb + FableWin.pdb ?IsAimedForLongEnough@CTCWeapon@@QBE_NM@Z; first of the Ego_r aiming block; body reads AimingTimeOverride +0x18 then AimingTime +0x14 / CMainGameComponent::ConstantFPS against the float arg, ret 4; RELOCATION_MATCH on engine/CTCWeapon.h + CMainGameComponent.h
+0x00658A35	CTCVillage	IsSchoolTime	?IsSchoolTime@CTCVillage@@QBE_NXZ	CTCVillage::IsCookTime	IsCookTime	Ego_r.pdb + FableWin.pdb ?IsSchoolTime@CTCVillage@@QBE_NXZ; body IsTimeBetween(CVillageDef SchoolStartTimes +0x54, SchoolDuration +0x60); Ego_r order IsSchoolTime, IsStoryTime = retail order; RELOCATION_MATCH on engine/CTCVillage.h + CVillageDef.h
+0x00658A80	CTCVillage	IsStoryTime	?IsStoryTime@CTCVillage@@QBE_NXZ	CTCVillage::IsCookTime	IsCookTime	Ego_r.pdb + FableWin.pdb ?IsStoryTime@CTCVillage@@QBE_NXZ; body IsTimeBetween(CVillageDef StoryStartTimes +0x44, StoryDuration +0x50); second of the pair after IsSchoolTime; RELOCATION_MATCH on engine/CTCVillage.h + CVillageDef.h
+0x0079C740	CTCBulletTime	GetTimeMultiplier	?GetTimeMultiplier@CTCBulletTime@@QBEMXZ	_unattributed::GetFloatThrough_0x20_0x12c_0079c740	?GetFloatThrough_0x20_0x12c_0079c740@_unattributed@@	Ego_r.pdb + FableWin.pdb ?GetTimeMultiplier@CTCBulletTime@@QBEMXZ, already declared at 0x0079C740 in engine/CTCBulletTime.h; body returns PDef->HeroCombatSlowness (CSpecialAbilitiesBulletTimeDef +0x12C via the def pointer +0x20); MATCH on the shared headers
+0x004BBC00	CMainGameComponent	InitLUA	?InitLUA@CMainGameComponent@@IAEXABVCCharString@@@Z	_global::Nop_ret4_004bbc00	?M@C004bbc00@@QAEXH@Z	Ego_r.pdb + FableWin.pdb protected ?InitLUA@CMainGameComponent@@IAEXABVCCharString@@@Z; Ego_r body is the same 3-byte ret 4 (signature hash 57b80449b3ee4b71); sole caller CMainGameComponent::PostInit 0x00416953 passes GRunLUAScript 0x013B8674; MATCH on engine/CMainGameComponent.h (INITLUA opt-in). Extra fix found while respelling 0x00416953 (was CMainGameComponent::Register(CRegistration*) there)
+0x0121AC70	`anonymous namespace'	`dynamic initializer for 'RIGHT_FORTY_FIVE_DEGREES_ORIENTATION''	_$E1	_global::$E_InventoryOrientationRHSet2	_$E1	catalog name only (row source already names the object; no row change): Ego_r.pdb + FableWin.pdb CTCInventoryItem TU initializer order FORTY_FIVE, RIGHT_, LEFT_, UPSIDE_DOWN_, UPSIDE_DOWN_RIGHT_, UPSIDE_DOWN_LEFT_, BACKWARDS_, BACKWARDS_RIGHT_, BACKWARDS_LEFT_ = retail .CRT$XCU 0x0121AC30..0x0121ADF0 (the other four already carry these names); stores land in the 24-byte CRightHandedSet slots 0x0137CF70 + 0x18*k in the same order (this one writes Up words of slot k=1)
+0x0121ACA0	`anonymous namespace'	`dynamic initializer for 'LEFT_FORTY_FIVE_DEGREES_ORIENTATION''	_$E1	_global::$E_InventoryOrientationRHSet3	_$E1	catalog name only (row source already names the object; no row change): Ego_r.pdb + FableWin.pdb CTCInventoryItem TU initializer order FORTY_FIVE, RIGHT_, LEFT_, UPSIDE_DOWN_, UPSIDE_DOWN_RIGHT_, UPSIDE_DOWN_LEFT_, BACKWARDS_, BACKWARDS_RIGHT_, BACKWARDS_LEFT_ = retail .CRT$XCU 0x0121AC30..0x0121ADF0 (the other four already carry these names); stores land in the 24-byte CRightHandedSet slots 0x0137CF70 + 0x18*k in the same order (this one writes Up words of slot k=2)
+0x0121AD80	`anonymous namespace'	`dynamic initializer for 'BACKWARDS_FORTY_FIVE_DEGREES_ORIENTATION''	_$E1	_global::$E_InventoryOrientationRHSet9	_$E1	catalog name only (row source already names the object; no row change): Ego_r.pdb + FableWin.pdb CTCInventoryItem TU initializer order FORTY_FIVE, RIGHT_, LEFT_, UPSIDE_DOWN_, UPSIDE_DOWN_RIGHT_, UPSIDE_DOWN_LEFT_, BACKWARDS_, BACKWARDS_RIGHT_, BACKWARDS_LEFT_ = retail .CRT$XCU 0x0121AC30..0x0121ADF0 (the other four already carry these names); stores land in the 24-byte CRightHandedSet slots 0x0137CF70 + 0x18*k in the same order (this one writes Up words of slot k=6)
+0x0121ADC0	`anonymous namespace'	`dynamic initializer for 'BACKWARDS_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION''	_$E1	_global::$E_InventoryOrientationRHSet10	_$E1	catalog name only (row source already names the object; no row change): Ego_r.pdb + FableWin.pdb CTCInventoryItem TU initializer order FORTY_FIVE, RIGHT_, LEFT_, UPSIDE_DOWN_, UPSIDE_DOWN_RIGHT_, UPSIDE_DOWN_LEFT_, BACKWARDS_, BACKWARDS_RIGHT_, BACKWARDS_LEFT_ = retail .CRT$XCU 0x0121AC30..0x0121ADF0 (the other four already carry these names); stores land in the 24-byte CRightHandedSet slots 0x0137CF70 + 0x18*k in the same order (this one writes Up words of slot k=7)
+0x0121ADF0	`anonymous namespace'	`dynamic initializer for 'BACKWARDS_LEFT_FORTY_FIVE_DEGREES_ORIENTATION''	_$E1	_global::$E_InventoryOrientationRHSet11	_$E1	catalog name only (row source already names the object; no row change): Ego_r.pdb + FableWin.pdb CTCInventoryItem TU initializer order FORTY_FIVE, RIGHT_, LEFT_, UPSIDE_DOWN_, UPSIDE_DOWN_RIGHT_, UPSIDE_DOWN_LEFT_, BACKWARDS_, BACKWARDS_RIGHT_, BACKWARDS_LEFT_ = retail .CRT$XCU 0x0121AC30..0x0121ADF0 (the other four already carry these names); stores land in the 24-byte CRightHandedSet slots 0x0137CF70 + 0x18*k in the same order (this one writes Up words of slot k=8)
+# Section 2
+0x00416056	?InitEventPackageLoading@CMainGameComponent@@QAE_NPAX@Z	?InitEventPackageLoading@CMainGameComponent@@IAE_NPBG@Z
+0x004160CC	?InitEventPackageSaving@CMainGameComponent@@QAE_NPAX@Z	?InitEventPackageSaving@CMainGameComponent@@IAE_NPBG@Z
+0x004BBC00	?Register@CMainGameComponent@@QAEXPAUCRegistration@@@Z	?InitLUA@CMainGameComponent@@IAEXABVCCharString@@@Z
+0x004FB150	?DrawGetEnvironment@CWorldEnvironment@@QAEPAVCIDrawEnvironment@@XZ	?GetLoadedRegion@CWorldMap@@QBEJXZ
+0x004FC210	?GetRegionNumberFromName@CWorldMapLookup@@QAEPAVCIDrawEnvironment@@ABVCCharString@@@Z	?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z
+0x005DA4C0	?SetFireRequested@CTCWeapon@@QAEXXZ	?SetAimingTimeOverride@CTCWeapon@@QAEXXZ
+0x00658620	?CheckCookTime@@YG_NPAX0@Z	?IsTimeBetween@CTCVillage@@QBE_NABV?$vector@JV?$allocator@J@std@@@std@@J@Z
+0x00658620	?DoCookCheck@@YG_NPAHH@Z	?IsTimeBetween@CTCVillage@@QBE_NABV?$vector@JV?$allocator@J@std@@@std@@J@Z
+0x00658A35	?IsCookTime@CTCVillageS@@QAE_NXZ	?IsSchoolTime@CTCVillage@@QBE_NXZ
+0x00658A35	?IsSchoolTime@CTCVillage@@QAE_NXZ	?IsSchoolTime@CTCVillage@@QBE_NXZ
+0x00658A80	?IsCookTime@CTCVillage@@QAE_NXZ	?IsStoryTime@CTCVillage@@QBE_NXZ
+0x00662410	?IsRegisteredCombatant@CThingCreatureBase@@QAE_NXZ	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+0x00662410	?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+0x009974A0	?GetWorkingDirectory@CAFile@@SI?AVCWideString@@XZ	?CalcCurrentPath@NFile@@YI?AVCWideString@@XZ
+0x0099AF00	?GetPtr@GObj@@QAEPAXXZ	??BCWideString@@QBEPBGXZ
+0x0099EC30	??0CCharString@@QAE@PBD@Z	??0CCharString@@QAE@ABV0@@Z
+0x013B7D54	?g_ProfileFileName@@3VCWideString@@A	?m_strProfileName@CUserProfileManager@@0VCWideString@@A
+0x013B7D5C	?g_MainGameStartupPath@@3VCWideString@@A	?RelaunchSaveGameName@@3VCWideString@@A
+0x013B85E0	?FableFullBuildVersion@@3VCCharString@@A	?GVersionString@@3VCCharString@@A
+0x013B865C	?g_EventPackageFileName@@3VCWideString@@A	?GInputFileName@@3VCWideString@@A
+0x013B8660	?g_obj@@3UGObj@@A	?GEventPackageFileName@@3VCWideString@@A
+0x013B8668	?g_WorldToLoad@@3VCWideString@@A	?GForceLevel@@3VCWideString@@A
+0x013B866C	?g_WorldToLoad2@@3VCWideString@@A	?GForceStartingHolySite@@3VCWideString@@A
+0x013B8674	?g_Registration@@3UCRegistration@@A	?GRunLUAScript@@3VCCharString@@A
+0x013B86F8	?g_DebugNarrator@@3VCCharString@@A	?GDebugPlaySpeechForNarratorName@@3VCCharString@@A
+0x013B875C	?g_FrontEndMenuFontName@@3VCCharString@@A	?DEFAULT_FRONT_END_FONT@?A0xdb28a9bb@@3VCCharString@@A
+0x013B89D8	?g_progressTitle@@3VCWideString@@A	?GResetProgressTipText@@3VCWideString@@A
+0x013B89DC	?g_progressText@@3VCWideString@@A	?GResetProgressTipTitleText@@3VCWideString@@A
+0x013B8AF0	?g_ScoreboardServer@@3VCCharString@@A	?ConsoleVarScoreboardServerIPAddress@@3VCCharString@@A
+0x013B8AF4	?g_ScoreboardPage@@3VCCharString@@A	?ConsoleVarServerScoresAgent@@3VCCharString@@A
+0x013B8B0C	?g_HeroGuildRecoveryMarker@@3VCCharString@@A	?DEFAULT_DEATH_RECOVERY_MARKER_NAME@?A0xd68e5b81@@3VCCharString@@A
+0x013B8B0C	?g_glob@@3HA	?DEFAULT_DEATH_RECOVERY_MARKER_NAME@?A0xb1b17279@@3VCCharString@@A
+0x013B8B7C	?g_SellItemDescriptionString@@3VCCharString@@A	?SELL_ITEM_DESC_STRING@?A0x58827638@@3VCCharString@@A
+0x013B8B7C	?g_SellItemDescriptionString@@3VCCharString@@A	?SELL_ITEM_DESC_STRING@?A0xda737c66@@3VCCharString@@A
+0x013B8B80	?g_BuyItemDescriptionString@@3VCCharString@@A	?BUY_ITEM_DESC_STRING@?A0x58827638@@3VCCharString@@A
+0x013B8B80	?g_BuyItemDescriptionString@@3VCCharString@@A	?BUY_ITEM_DESC_STRING@?A0xf8a8bd27@@3VCCharString@@A
+0x013B8BB8	?g_AugmentationsLeftDescriptionM@@3VCCharString@@A	?AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M@?A0x84123286@@3VCCharString@@B
+0x013B8BBC	?g_AugmentationsLeftDescriptionR@@3VCCharString@@A	?AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R@?A0x84123286@@3VCCharString@@B
+0x013BAAF8	?g_MainSignPostDefName@@3VCCharString@@B	?MAIN_SIGN_POST_DEF_NAME@?A0xdc8fad0a@@3VCCharString@@B
+0x013BAAFC	?g_DressingSignPostDefName@@3VCCharString@@B	?DRESSING_SIGN_POST_DEF_NAME@?A0xe4d16bf1@@3VCCharString@@B
+0x013BAB00	?g_OwnedSignPostDefName@@3VCCharString@@B	?MAIN_OWNED_SIGN_POST_DEF_NAME@?A0xdc8fad0a@@3VCCharString@@B
+0x013BAB04	?g_RentSignPostDefName@@3VCCharString@@B	?MAIN_RENT_SIGN_POST_DEF_NAME@?A0xdc8fad0a@@3VCCharString@@B
+0x013BAB0C	?g_DefaultSerialisationSectionName@@3VCCharString@@A	?GlobalSectionName@CLevelLoader@@2VCCharString@@A
+0x013BAB90	?g_DefaultSpeechDurationFrames@@3JA	?MIN_SPEECH_FRAMES@?A0x4782d3f9@@3JB
+0x013BAC18	?g_DayOnlySuffix@@3VCCharString@@A	?DAY_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B
+0x013BAC1C	?g_NightOnlySuffix@@3VCCharString@@A	?NIGHT_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B
+0x013BAC34	?g_BurntHelperB@@3VCCharString@@B	?SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B
+0x013BAC34	?g_LeftHandAttachmentName@@3VCCharString@@A	?SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B
+0x013BAC48	?g_FocalPointHelperName@@3VCCharString@@B	?MAIN_FOCAL_POSITION_NAME@@3VCCharString@@B
+0x013BAC48	?g_helperFocal_013bac48@@3VCCharString@@B	?MAIN_FOCAL_POSITION_NAME@@3VCCharString@@B
+0x013BAC4C	?g_CameraStickHelperName@@3VCCharString@@A	?CAMERA_FOCAL_POSITION_NAME@@3VCCharString@@B
+0x013BAC4C	?g_helperCameraFocal_013bac4c@@3VCCharString@@B	?CAMERA_FOCAL_POSITION_NAME@@3VCCharString@@B
+0x013BAC50	?g_TargetHelperName@@3VCCharString@@A	?TARGETING_CURSOR_POSITION_NAME@@3VCCharString@@B
+0x013BAC64	?PrimaryPrefix@ComboStrikes@@3UCCharString@1@A	?STRIKE_EVENT_WEAPON_START_IDENTIFIER@@3VCCharString@@B
+0x013BAC64	?g_StrikeEventExcludedPrefix@@3VCCharString@@A	?STRIKE_EVENT_WEAPON_START_IDENTIFIER@@3VCCharString@@B
+0x013BAC68	?SecondaryPrefix@ComboStrikes@@3UCCharString@1@A	?STRIKE_EVENT_WEAPON_END_IDENTIFIER@@3VCCharString@@B
+0x013BAC6C	?PrimaryAlternative@ComboStrikes@@3UCCharString@1@A	?STRIKE_EVENT_START_IDENTIFIER@@3VCCharString@@B
+0x013BAC6C	?g_StrikeEventPrefix@@3VCCharString@@A	?STRIKE_EVENT_START_IDENTIFIER@@3VCCharString@@B
+0x013BAC6C	?g_StrikeStart@@3VCCharString@@A	?STRIKE_EVENT_START_IDENTIFIER@@3VCCharString@@B
+0x013BAC70	?SecondaryAlternative@ComboStrikes@@3UCCharString@1@A	?STRIKE_EVENT_END_IDENTIFIER@@3VCCharString@@B
+0x013BAC70	?g_StrikeEnd@@3VCCharString@@A	?STRIKE_EVENT_END_IDENTIFIER@@3VCCharString@@B
+0x013BAC74	?g_strikeEventResetComboEventName@@3VCCharString@@A	?STRIKE_EVENT_RESET_COMBO@@3VCCharString@@B
+0x013BAC78	?BothFlags@ComboStrikes@@3UCCharString@1@A	?STRIKE_EVENT_BEGIN_LEGACY@@3VCCharString@@B
+0x013BAC78	?g_CombatStrikeEvent@@3VCCharString@@A	?STRIKE_EVENT_BEGIN_LEGACY@@3VCCharString@@B
+0x013BAC78	?g_StrikeEventName0@@3VCCharString@@A	?STRIKE_EVENT_BEGIN_LEGACY@@3VCCharString@@B
+0x013BAC7C	?SecondFlag@ComboStrikes@@3UCCharString@1@A	?STRIKE_EVENT_END_LEGACY@@3VCCharString@@B
+0x013BAC7C	?g_CombatStop@@3VCCharString@@A	?STRIKE_EVENT_END_LEGACY@@3VCCharString@@B
+0x013BAC80	?FirstFlag@ComboStrikes@@3UCCharString@1@A	?SECONDARY_STRIKE_EVENT_BEGIN_LEGACY@@3VCCharString@@B
+0x013BAC80	?g_CombatStrikeEvent2@@3VCCharString@@A	?SECONDARY_STRIKE_EVENT_BEGIN_LEGACY@@3VCCharString@@B
+0x013BAC80	?g_StrikeEventName1@@3VCCharString@@A	?SECONDARY_STRIKE_EVENT_BEGIN_LEGACY@@3VCCharString@@B
+0x013BAC84	?NeitherFlag@ComboStrikes@@3UCCharString@1@A	?SECONDARY_STRIKE_EVENT_END_LEGACY@@3VCCharString@@B
+0x013BAC84	?g_CombatStop2@@3VCCharString@@A	?SECONDARY_STRIKE_EVENT_END_LEGACY@@3VCCharString@@B
+0x013BAC88	?g_combtActionFinishedEventName@@3VCCharString@@A	?STRIKE_ACTION_FINISHED@@3VCCharString@@B
+0x013BAC8C	?g_startRunningEventName_013bac8c@@3VCCharString@@A	?ACTION_LATEST_START_TIME@@3VCCharString@@B
+0x013BAC98	?g_containmentVolumeName@@3VCCharString@@A	?BUILDING_BOUNDRY@@3VCCharString@@B
+0x013BACA0	?g_TorchDummyName@@3VCCharString@@A	?ACTION_POINT_01@@3VCCharString@@B
+0x013BACD0	?g_performActionEventName@@3VCCharString@@A	?PERFORM_ACTION@@3VCCharString@@B
+0x013BACE0	?g_allowMovementInterruptEventName@@3VCCharString@@A	?COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT@@3VCCharString@@B
+0x013BAD30	?g_StrikeResponseName@@3VCCharString@@B	?SHEATH_ACTION_NAME@?A0x8eb1f0b6@@3VCCharString@@A
+0x013BAD30	?g_sheatheForAbilityName@@3VCCharString@@B	?SHEATH_ACTION_NAME@?A0x86beedea@@3VCCharString@@A
+0x013BAD40	?g_7332d0@@3HA	?DEFAULT_UNARMED_COMBAT_IDLE_COUNT@?A0x6fb2967c@@3JB
+0x013BAD40	?g_UnarmedCombatIdleFrames@@3JA	?DEFAULT_UNARMED_COMBAT_IDLE_COUNT@?A0x8f4d0415@@3JB
+0x013BAF38	?g_MiniMapDataDirectory@@3VCWideString@@A	?minimapFilePathArtist@@3VCWideString@@A
+0x013BAF3C	?g_MiniMapCacheDirectory@@3VCWideString@@A	?minimapFilePathProgmr@@3VCWideString@@A
+0x013BAF5C	?g_emptyCharString@@3VCCharString@@A	?TooHeavyAnimationGroupName@CWeaponDef@@2VCCharString@@B
+0x013BAF94	?g_RunningAwayDotThreshold@@3MA	?COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD@NCreatureAI@@3MB
+0x013BAFD4	?g_defaultSleepAnimName@@3VCCharString@@A	?DEFAULT_SLEEP_ANIM_NAME@?A0xcd10915b@@3VCCharString@@A
+0x013BAFE4	?g_DefaultFrames_013bafe4@@3JA	?NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB
+0x013BAFEC	?g_DefaultFrames_013bafec@@3JA	?NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB
+0x013BB66C	?g_SitAnimName@@3VCCharString@@A	?SIT_ON_FLOOR_ANIM_NAME@?A0x5472a6a8@@3VCCharString@@A
+0x013BB684	?g_ApologyAccepted@@3VCCharString@@A	?SUCCESS_STRING@?A0x694a745f@@3VCCharString@@A
+0x013BB688	?g_ApologyRejected@@3VCCharString@@A	?FAILURE_STRING@?A0x694a745f@@3VCCharString@@A
+0x013BB6E0	?g_GetUpName@@3VCCharString@@A	?GET_UP_FROM_CHAIR_ANIM_NAME@?A0x5a779be4@@3VCCharString@@A
+0x013BB6E0	?g_GetUpName@@3VCCharString@@A	?GET_UP_FROM_CHAIR_ANIM_NAME@?A0xf7cfcd0c@@3VCCharString@@A
+0x013BB6E8	?g_GetUpNameAlternate@@3VCCharString@@A	?GET_UP_FROM_BENCH_ANIM_NAME@?A0x5a779be4@@3VCCharString@@A
+0x013BB6E8	?g_GetUpNameAlternate@@3VCCharString@@A	?GET_UP_FROM_BENCH_ANIM_NAME@?A0xf7cfcd0c@@3VCCharString@@A
+0x013BB708	?g_SitStandUpAnim@@3VCCharString@@A	?GET_UP_FROM_FLOOR_ANIM_NAME@?A0x394f3897@@3VCCharString@@A
+0x013BB70C	?g_SitDelayBase@@3KA	?MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS@?A0x394f3897@@3JB
+0x013BB710	?g_SitDelayRange@@3KA	?RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS@?A0x394f3897@@3JB
+0x013BB730	?g_pubFidgetInterval@@3JA	?TIME_TO_LEAVE_BETWEEN_SPEAKING@?A0xc5496ab8@@3JB
+0x013BC3A4	?g_AlertAlliesMessageDelay@@3KA	?TIME_TO_LEAVE_SHOUT_MESSAGE@?A0x9338367e@@3JB
+0x013BCA10	?CurrentPath@CAFile@@0VCWideString@@A	?CurrentPath@NFile@@3VCWideString@@A
+0x013BCA10	?CurrentPath@CAFile@@2VCWideString@@A	?CurrentPath@NFile@@3VCWideString@@A
+0x013BCA24	?Empty_013bca24@@3VCWideString@@A	?NullString@CWideString@@2V1@A
+0x013BCA24	?g_EmptyWideString@@3VCWideString@@A	?NullString@CWideString@@2V1@A
+0x013BCA24	?g_EmptyWideString@@3VCWideString@@B	?NullString@CWideString@@2V1@A
+0x013BCA24	?g_emptyWideString@@3VCWideString@@A	?NullString@CWideString@@2V1@A
+0x013BCA24	?g_emptyWideString@@3VCWideString@@B	?NullString@CWideString@@2V1@A
+0x013BCA24	?g_emptyWideString_013bca24@@3VCWideString@@A	?NullString@CWideString@@2V1@A
+0x013BCA24	?g_emptyWideString_013bca24@@3VCWideString@@B	?NullString@CWideString@@2V1@A
+0x013CA7DC	?g_CompiledDefsDirectory@@3VCWideString@@A	?CompiledDefDirectory@CDefinitionManager@@1VCWideString@@A
+0x013CAA34	?g_CurrentSymbolFile@@3VCWideString@@A	?CurrentFilename@CSymbolMap@@1VCWideString@@A
+0x01436EC4	?g_WaterBankSymbol@@3VCCharString@@A	?SeaStaticMapBankFileName@@3VCCharString@@A
+0x01436EC8	?g_GlobalMapEntrySymbol_01436ec8@@3VCCharString@@A	?WaterStaticMapBankFileName@@3VCCharString@@A
+0x01436ECC	?g_GlobalMapEntrySymbol@@3VCCharString@@A	?CommonStaticMapHeaderEntryName@@3VCCharString@@A
+0x0143E8EC	?g_EmptyCharString@@3VCCharString@@A	?NullString@CScriptThing@@2VCCharString@@A
+0x0143E8EC	?g_EmptyCharString@@3VCCharString@@B	?NullString@CScriptThing@@2VCCharString@@A
+0x0143E8EC	?g_EmptyString@@3VCCharString@@A	?NullString@CScriptThing@@2VCCharString@@A
+0x0143E8EC	?g_EmptyString@@3VCCharString@@B	?NullString@CScriptThing@@2VCCharString@@A
+0x0143E8EC	?g_def_004aa8b0@@3HA	?NullString@CScriptThing@@2VCCharString@@A
+0x0143E8EC	?kDefaultMapName@@3QBDB	?NullString@CScriptThing@@2VCCharString@@A
+0x0143E8EC	?kHomeMapName@@3QBDB	?NullString@CScriptThing@@2VCCharString@@A

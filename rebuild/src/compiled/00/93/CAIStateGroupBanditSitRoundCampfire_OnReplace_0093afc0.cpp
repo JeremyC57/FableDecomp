@@ -5,6 +5,13 @@
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the inline Random() reads the range into a local after GFROR13 and before
 //   the seed store (the store may alias the range global, so source order fixes the schedule: load, compare, store, div).
 // Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BB708 GET_UP_FROM_FLOOR_ANIM_NAME (anonymous namespace; initializer 0x01221BD0), was g_SitStandUpAnim.
+//   0x013BB70C MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS (anonymous namespace, const long ConstantFPS * 10; initializer 0x01221BF0), was g_SitDelayBase
+//     (unsigned long).
+//   0x013BB710 RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS (anonymous namespace, const long ConstantFPS * 50; initializer 0x01221C00), was
+//     g_SitDelayRange (unsigned long).
 #include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -98,9 +105,9 @@ struct CCreatureAction_StandUp : CCombatActionBase {   // vtable 0x01276C2C
     bool m_118;
     CCreatureAction_StandUp(CThingCreatureBase* owner) : CCombatActionBase(owner, 50, CSoundPair()), m_114(0), m_118(false) { }
 };
-extern CCharString g_SitStandUpAnim;            // 0x013BB708
-extern unsigned long g_SitDelayBase;            // 0x013BB70C
-extern unsigned long g_SitDelayRange;           // 0x013BB710
+namespace { extern CCharString GET_UP_FROM_FLOOR_ANIM_NAME; }            // 0x013BB708
+namespace { extern const long MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS; }     // 0x013BB70C
+namespace { extern const long RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS; }   // 0x013BB710
 
 
 class CTCCreatureModeManager { public:
@@ -128,7 +135,7 @@ protected:
     const CWorld& PeekWorld() const;            // 0x008FCFA0
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
 public:
-    unsigned long Random(const unsigned long& range) const
+    unsigned long Random(const long& range) const        // range: RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS (const long), read through the reference
     {
         unsigned long* seed = GetPWorldSeed();
         *seed = *seed * 0x24a1 + 0x24df;
@@ -164,11 +171,11 @@ void CAIStateGroup_BanditSitRoundCampfire::OnReplace()
         modes = (CTCCreatureModeManager*)((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
     if (Sitting || modes->GetCurrentMode().GetType() == 10) {
         PeekWorld();
-        unsigned long delay = Random(g_SitDelayRange);
-        FrameToNextSitOnSeat = CWorld::GetFrame() + g_SitDelayBase + delay;
+        unsigned long delay = Random(RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS);
+        FrameToNextSitOnSeat = CWorld::GetFrame() + MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS + delay;
         CBrainOutput output;
         CCreatureAction_StandUp action(GetCreature());
-        action.SetCombatAnimation(g_SitStandUpAnim);
+        action.SetCombatAnimation(GET_UP_FROM_FLOOR_ANIM_NAME);
         if (GetCreature()->IsFreeToPerformAction(action)) {
             output.SetAction(action);
             PBrain->SetOutput(output);

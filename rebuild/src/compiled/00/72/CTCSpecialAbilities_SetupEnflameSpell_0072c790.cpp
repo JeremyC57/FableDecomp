@@ -9,6 +9,9 @@
 // Layout (local model): CTCSpecialAbilities creature +0x18; CThing TC bitset +0x20 (8 = +0x21 bit 0, 0x46 = +0x28 bit 6),
 //   interface map +0x44, flags +0x6c (8 / 0x20), Dead +0x91 bit 0; CPlayer lock flag +0x20a; the cast action's weapon
 //   pointer +0x2c; g_13bad30 the strike-response name.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAD30 SHEATH_ACTION_NAME (anonymous namespace; initializer 0x0121ECE0), was g_StrikeResponseName.
 #include <stddef.h>
 void* operator new(size_t size);                       // 0x00BFEA1A
 class CThing;
@@ -95,7 +98,7 @@ class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
     ~CCreatureAction_CastWillEnflameSpell();            // 0x0062E900
 };
 class CCharString { public: void* m_data; };
-extern const CCharString g_StrikeResponseName;         // 0x013BAD30
+namespace { extern CCharString SHEATH_ACTION_NAME; }         // 0x013BAD30
 class CCombatAction_GenericStrikeResponse { public:
     unsigned char _pad[0x110];
     CCombatAction_GenericStrikeResponse(CThing* creature, const CCharString& name, CCombatActionBase* action, long flags);   // 0x0069F060
@@ -136,7 +139,7 @@ bool CTCSpecialAbilities::SetupEnflameSpell()
     {
         CCreatureAction_CastWillEnflameSpell* action = new CCreatureAction_CastWillEnflameSpell(Creature, target, lock, 0);
         action->Weapon.SetPItem(CIntelligentPointer<CThing>(weapon).GetPItem());
-        CCombatAction_GenericStrikeResponse response(Creature, g_StrikeResponseName, action, 0);
+        CCombatAction_GenericStrikeResponse response(Creature, SHEATH_ACTION_NAME, action, 0);
         return Creature->SetCurrentAction(*(CCombatActionBase*)&response);
     }
     return Creature->SetCurrentAction(CCreatureAction_CastWillEnflameSpell(Creature, target, lock, 0));

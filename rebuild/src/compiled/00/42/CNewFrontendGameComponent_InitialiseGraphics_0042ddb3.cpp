@@ -2,6 +2,9 @@
 // Leaf: ?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B875C DEFAULT_FRONT_END_FONT (anonymous namespace; initializer 0x0121A2BF), was g_FrontEndMenuFontName.
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #pragma optimize("s", on)
 #pragma optimize("y", off)
@@ -74,7 +77,7 @@ class CFontManager;
 extern CFontManager* PFontManager;                     // 0x013B838C
 class CGraphicBankManager;
 extern CGraphicBankManager* PGraphicBankManager;   // 0x013B837C
-extern CCharString g_FrontEndMenuFontName;         // 0x013B875C
+namespace { extern CCharString DEFAULT_FRONT_END_FONT; }         // 0x013B875C
 
 class CNewFrontendGameComponent { public:
     unsigned char                     _pad00[0x10];
@@ -86,7 +89,7 @@ class CNewFrontendGameComponent { public:
 
 bool CNewFrontendGameComponent::InitialiseGraphics()
 {
-    m_pMenuFont = ((CFontBank*)PFontManager)->GetFont(g_FrontEndMenuFontName);
+    m_pMenuFont = ((CFontBank*)PFontManager)->GetFont(DEFAULT_FRONT_END_FONT);
     CGraphicDataBankInit init;
     CSystemManager* system;
     system = GFGetSystemManager();

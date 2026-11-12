@@ -1,0 +1,98 @@
+object_va	wrong_spelling	correct_name	defining_row	files	note
+0x013B7D54	g_ProfileFileName	CUserProfileManager::m_strProfileName	0x01219EC0	2	descriptive alias in landed binders; respell to the PDB name
+0x013B7D5C	g_MainGameStartupPath	RelaunchSaveGameName	0x01219EE0	1	descriptive alias in landed binders; respell to the PDB name
+0x013B85E0	FableFullBuildVersion	GVersionString	0x01219F20	3	descriptive alias in landed binders; respell to the PDB name
+0x013B865C	g_EventPackageFileName	GInputFileName	0x01219F60	1	descriptive alias in landed binders; respell to the PDB name
+0x013B8660	g_obj	GEventPackageFileName	0x01219F80	74	descriptive alias in landed binders; respell to the PDB name
+0x013B8668	g_WorldToLoad	GForceLevel	0x01219FC0	4	descriptive alias in landed binders; respell to the PDB name
+0x013B866C	g_WorldToLoad2	GForceStartingHolySite	0x01219FE0	1	descriptive alias in landed binders; respell to the PDB name
+0x013B8674	g_Registration	GRunLUAScript	0x0121A020	1	descriptive alias in landed binders; respell to the PDB name
+0x013B86F8	g_DebugNarrator	GDebugPlaySpeechForNarratorName	0x0121A070	2	descriptive alias in landed binders; respell to the PDB name
+0x013B875C	g_FrontEndMenuFontName	DEFAULT_FRONT_END_FONT	0x0121A2BF	2	descriptive alias in landed binders; respell to the PDB name
+0x013B89D8	g_progressTitle	GResetProgressTipText	0x0121A3E0	1	descriptive alias in landed binders; respell to the PDB name
+0x013B89DC	g_progressText	GResetProgressTipTitleText	0x0121A400	2	descriptive alias in landed binders; respell to the PDB name
+0x013B8AF0	g_ScoreboardServer	ConsoleVarScoreboardServerIPAddress	0x0121A750	1	descriptive alias in landed binders; respell to the PDB name
+0x013B8AF4	g_ScoreboardPage	ConsoleVarServerScoresAgent	0x0121A770	1	descriptive alias in landed binders; respell to the PDB name
+0x013B8B0C	g_HeroGuildRecoveryMarker	DEFAULT_DEATH_RECOVERY_MARKER_NAME	0x0121A7AD	1	descriptive alias in landed binders; respell to the PDB name
+0x013B8B0C	g_glob	DEFAULT_DEATH_RECOVERY_MARKER_NAME	0x0121A7AD	8	descriptive alias in landed binders; respell to the PDB name
+0x013B8B7C	g_SellItemDescriptionString	SELL_ITEM_DESC_STRING	0x0121AA00	2	descriptive alias in landed binders; respell to the PDB name
+0x013B8B80	g_BuyItemDescriptionString	BUY_ITEM_DESC_STRING	0x0121AA1D	2	descriptive alias in landed binders; respell to the PDB name
+0x013B8BB8	g_AugmentationsLeftDescriptionM	AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M	0x0121ABB1	2	descriptive alias in landed binders; respell to the PDB name
+0x013B8BBC	g_AugmentationsLeftDescriptionR	AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R	0x0121ABCE	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAAF8	g_MainSignPostDefName	MAIN_SIGN_POST_DEF_NAME	0x0121E0C0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAAFC	g_DressingSignPostDefName	DRESSING_SIGN_POST_DEF_NAME	0x0121E0E0	3	descriptive alias in landed binders; respell to the PDB name
+0x013BAB00	g_OwnedSignPostDefName	MAIN_OWNED_SIGN_POST_DEF_NAME	0x0121E100	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAB04	g_RentSignPostDefName	MAIN_RENT_SIGN_POST_DEF_NAME	0x0121E120	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAB0C	g_DefaultSerialisationSectionName	CLevelLoader::GlobalSectionName	0x0121E160	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAB90	g_DefaultSpeechDurationFrames	MIN_SPEECH_FRAMES	0x0121E3D0	4	descriptive alias in landed binders; respell to the PDB name
+0x013BAC18	g_DayOnlySuffix	CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX	0x0121E5C0	13	descriptive alias in landed binders; respell to the PDB name
+0x013BAC1C	g_NightOnlySuffix	CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX	0x0121E5E0	13	descriptive alias in landed binders; respell to the PDB name
+0x013BAC34	g_BurntHelperB	SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME	0x0121E620	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC34	g_LeftHandAttachmentName	SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME	0x0121E620	10	descriptive alias in landed binders; respell to the PDB name
+0x013BAC48	g_FocalPointHelperName	MAIN_FOCAL_POSITION_NAME	0x0121E6C0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC48	g_helperFocal_013bac48	MAIN_FOCAL_POSITION_NAME	0x0121E6C0	6	descriptive alias in landed binders; respell to the PDB name
+0x013BAC4C	g_CameraStickHelperName	CAMERA_FOCAL_POSITION_NAME	0x0121E6E0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC4C	g_helperCameraFocal_013bac4c	CAMERA_FOCAL_POSITION_NAME	0x0121E6E0	6	descriptive alias in landed binders; respell to the PDB name
+0x013BAC50	g_TargetHelperName	TARGETING_CURSOR_POSITION_NAME	0x0121E700	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC64	?PrimaryPrefix@ComboStrikes@@3UCCharString@1@A	STRIKE_EVENT_WEAPON_START_IDENTIFIER	0x0121E7A0	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC64	g_StrikeEventExcludedPrefix	STRIKE_EVENT_WEAPON_START_IDENTIFIER	0x0121E7A0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC68	?SecondaryPrefix@ComboStrikes@@3UCCharString@1@A	STRIKE_EVENT_WEAPON_END_IDENTIFIER	0x0121E7C0	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC6C	?PrimaryAlternative@ComboStrikes@@3UCCharString@1@A	STRIKE_EVENT_START_IDENTIFIER	0x0121E7E0	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC6C	g_StrikeEventPrefix	STRIKE_EVENT_START_IDENTIFIER	0x0121E7E0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC6C	g_StrikeStart	STRIKE_EVENT_START_IDENTIFIER	0x0121E7E0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC70	?SecondaryAlternative@ComboStrikes@@3UCCharString@1@A	STRIKE_EVENT_END_IDENTIFIER	0x0121E800	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC70	g_StrikeEnd	STRIKE_EVENT_END_IDENTIFIER	0x0121E800	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC74	g_strikeEventResetComboEventName	STRIKE_EVENT_RESET_COMBO	0x0121E820	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC78	?BothFlags@ComboStrikes@@3UCCharString@1@A	STRIKE_EVENT_BEGIN_LEGACY	0x0121E840	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC78	g_CombatStrikeEvent	STRIKE_EVENT_BEGIN_LEGACY	0x0121E840	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC78	g_StrikeEventName0	STRIKE_EVENT_BEGIN_LEGACY	0x0121E840	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC7C	?SecondFlag@ComboStrikes@@3UCCharString@1@A	STRIKE_EVENT_END_LEGACY	0x0121E860	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC7C	g_CombatStop	STRIKE_EVENT_END_LEGACY	0x0121E860	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC80	?FirstFlag@ComboStrikes@@3UCCharString@1@A	SECONDARY_STRIKE_EVENT_BEGIN_LEGACY	0x0121E880	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC80	g_CombatStrikeEvent2	SECONDARY_STRIKE_EVENT_BEGIN_LEGACY	0x0121E880	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC80	g_StrikeEventName1	SECONDARY_STRIKE_EVENT_BEGIN_LEGACY	0x0121E880	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC84	?NeitherFlag@ComboStrikes@@3UCCharString@1@A	SECONDARY_STRIKE_EVENT_END_LEGACY	0x0121E8A0	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BAC84	g_CombatStop2	SECONDARY_STRIKE_EVENT_END_LEGACY	0x0121E8A0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC88	g_combtActionFinishedEventName	STRIKE_ACTION_FINISHED	0x0121E8C0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC8C	g_startRunningEventName_013bac8c	ACTION_LATEST_START_TIME	0x0121E8E0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAC98	g_containmentVolumeName	BUILDING_BOUNDRY	0x0121E940	2	descriptive alias in landed binders; respell to the PDB name
+0x013BACA0	g_TorchDummyName	ACTION_POINT_01	0x0121E980	2	descriptive alias in landed binders; respell to the PDB name
+0x013BACD0	g_performActionEventName	PERFORM_ACTION	0x0121EB00	1	descriptive alias in landed binders; respell to the PDB name
+0x013BACE0	g_allowMovementInterruptEventName	COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT	0x0121EB80	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAD30	g_StrikeResponseName	SHEATH_ACTION_NAME	0x0121ECE0	1	descriptive alias in landed binders; respell to the PDB name
+0x013BAD30	g_sheatheForAbilityName	SHEATH_ACTION_NAME	0x0121ECE0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAD40	g_7332d0	DEFAULT_UNARMED_COMBAT_IDLE_COUNT	0x0121ED60	2	binding looks unrelated to this object (check the caller before respelling)
+0x013BAD40	g_UnarmedCombatIdleFrames	DEFAULT_UNARMED_COMBAT_IDLE_COUNT	0x0121ED60	1	descriptive alias in landed binders; respell to the PDB name
+0x013BAF38	g_MiniMapDataDirectory	minimapFilePathArtist	0x0121F530	1	descriptive alias in landed binders; respell to the PDB name
+0x013BAF3C	g_MiniMapCacheDirectory	minimapFilePathProgmr	0x0121F550	1	descriptive alias in landed binders; respell to the PDB name
+0x013BAF5C	g_emptyCharString	CWeaponDef::TooHeavyAnimationGroupName	0x0121F610	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAF94	g_RunningAwayDotThreshold	NCreatureAI::COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD	0x0121F630	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAFD4	g_defaultSleepAnimName	DEFAULT_SLEEP_ANIM_NAME	0x0121F760	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAFE4	g_DefaultFrames_013bafe4	CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS	0x0121F7D0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BAFEC	g_DefaultFrames_013bafec	CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS	0x0121F800	2	descriptive alias in landed binders; respell to the PDB name
+0x013BB66C	g_SitAnimName	SIT_ON_FLOOR_ANIM_NAME	0x01221880	2	descriptive alias in landed binders; respell to the PDB name
+0x013BB684	g_ApologyAccepted	SUCCESS_STRING	0x01221940	2	descriptive alias in landed binders; respell to the PDB name
+0x013BB688	g_ApologyRejected	FAILURE_STRING	0x01221960	2	descriptive alias in landed binders; respell to the PDB name
+0x013BB6E0	g_GetUpName	GET_UP_FROM_CHAIR_ANIM_NAME	0x01221AC0	2	descriptive alias in landed binders; respell to the PDB name
+0x013BB6E8	g_GetUpNameAlternate	GET_UP_FROM_BENCH_ANIM_NAME	0x01221B00	2	descriptive alias in landed binders; respell to the PDB name
+0x013BB708	g_SitStandUpAnim	GET_UP_FROM_FLOOR_ANIM_NAME	0x01221BD0	1	descriptive alias in landed binders; respell to the PDB name
+0x013BB70C	g_SitDelayBase	MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS	0x01221BF0	1	descriptive alias in landed binders; respell to the PDB name
+0x013BB710	g_SitDelayRange	RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS	0x01221C00	1	descriptive alias in landed binders; respell to the PDB name
+0x013BB730	g_pubFidgetInterval	TIME_TO_LEAVE_BETWEEN_SPEAKING	0x01221CC0	1	descriptive alias in landed binders; respell to the PDB name
+0x013BC3A4	g_AlertAlliesMessageDelay	TIME_TO_LEAVE_SHOUT_MESSAGE	0x01223C80	1	descriptive alias in landed binders; respell to the PDB name
+0x013BCA10	?CurrentPath@CAFile@@0VCWideString@@A	NFile::CurrentPath	0x01223D80	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BCA10	?CurrentPath@CAFile@@2VCWideString@@A	NFile::CurrentPath	0x01223D80	0	landed binding spells a different symbol for this object; respell to the PDB name
+0x013BCA24	Empty_013bca24	CWideString::NullString	0x01223DA0	5	descriptive alias in landed binders; respell to the PDB name
+0x013BCA24	g_EmptyWideString	CWideString::NullString	0x01223DA0	29	descriptive alias in landed binders; respell to the PDB name
+0x013BCA24	g_emptyWideString	CWideString::NullString	0x01223DA0	14	descriptive alias in landed binders; respell to the PDB name
+0x013BCA24	g_emptyWideString_013bca24	CWideString::NullString	0x01223DA0	4	descriptive alias in landed binders; respell to the PDB name
+0x013CA7DC	g_CompiledDefsDirectory	CDefinitionManager::CompiledDefDirectory	0x01224050	2	descriptive alias in landed binders; respell to the PDB name
+0x013CAA34	g_CurrentSymbolFile	CSymbolMap::CurrentFilename	0x01224190	1	descriptive alias in landed binders; respell to the PDB name
+0x01436EC4	g_WaterBankSymbol	SeaStaticMapBankFileName	0x01224680	1	descriptive alias in landed binders; respell to the PDB name
+0x01436EC8	g_GlobalMapEntrySymbol_01436ec8	WaterStaticMapBankFileName	0x012246A0	1	descriptive alias in landed binders; respell to the PDB name
+0x01436ECC	g_GlobalMapEntrySymbol	CommonStaticMapHeaderEntryName	0x012246C0	1	descriptive alias in landed binders; respell to the PDB name
+0x0143E8EC	g_EmptyCharString	CScriptThing::NullString	0x01224C50	16	descriptive alias in landed binders; respell to the PDB name
+0x0143E8EC	g_EmptyString	CScriptThing::NullString	0x01224C50	31	descriptive alias in landed binders; respell to the PDB name
+0x0143E8EC	g_def_004aa8b0	CScriptThing::NullString	0x01224C50	2	binding looks unrelated to this object (check the caller before respelling)
+0x0143E8EC	kDefaultMapName	CScriptThing::NullString	0x01224C50	2	binding looks unrelated to this object (check the caller before respelling)
+0x0143E8EC	kHomeMapName	CScriptThing::NullString	0x01224C50	2	binding looks unrelated to this object (check the caller before respelling)

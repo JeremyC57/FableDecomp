@@ -1,5 +1,7 @@
 // CSymbolMap::LoadFromFile(const CWideString& filename) -- reset the symbol map, read the whole file into a zero-terminated buffer, strip // and /* */ comments, parse it, sort the symbol table and drop spare capacity
 // Leaf: ?LoadFromFile@CSymbolMap@@QAE_NABVCWideString@@@Z
+// Name fix (agentNF26, FAM09): the current file name @ 0x013CAA34 is CSymbolMap::CurrentFilename (protected static; Anniv
+//   ?CurrentFilename@CSymbolMap@@1VCWideString@@A, FAM09 initializer 0x01224190), was g_CurrentSymbolFile.
 // Lever (chunk 840): the whole-file read is an inline helper taking the file object by reference (ReadWholeFile): the buffer is
 //   then an inlinee local and VC7.1 ranks the file-size member reload as the SIB base of the terminator store (retail
 //   `mov byte ptr [eax+esi],0`; every spelling with the buffer as a local of LoadFromFile gives `[esi+eax]`, the same rule as
@@ -31,7 +33,7 @@ public:
     CWideString& operator=(const CWideString& other);      // 0x0099B7D0
     CWideString& operator=(const unsigned short* text);    // 0x0099B800
 };
-extern CWideString g_CurrentSymbolFile;                    // 0x013CAA34
+// CSymbolMap::CurrentFilename (protected static CWideString @ 0x013CAA34) is declared in the class below.
 void __fastcall GFRemoveComments(char* buffer, const char* start, const char* end);   // 0x00A60410
 class CBaseClassNonCopyable {
 public:
@@ -100,6 +102,9 @@ public:
     void*            __vftable;                            // +0x00
     CSymbolVectorMap SLONGMap;                             // +0x04
     CNameSet         NamesUsed;                            // +0x14
+protected:
+    static CWideString CurrentFilename;                    // 0x013CAA34 (Anniv ?CurrentFilename@CSymbolMap@@1VCWideString@@A)
+public:
     bool ParseBuffer(char* buffer);                        // 0x009E5AD0
     bool LoadFromFile(const CWideString& filename);
 };
@@ -118,7 +123,7 @@ bool CSymbolMap::LoadFromFile(const CWideString& filename)
     bool ok = false;
     SLONGMap.clear();
     NamesUsed.clear();
-    g_CurrentSymbolFile = filename;
+    CurrentFilename = filename;
     CDiskFileWin32 file;
     file.Open(filename, FILE_ACCESS_READ, 2);
     char* buffer = ReadWholeFile(file);
@@ -129,7 +134,7 @@ bool CSymbolMap::LoadFromFile(const CWideString& filename)
         ok = true;
     SLONGMap.Sort();
     SLONGMap.DeallocateUnusedMemory();
-    g_CurrentSymbolFile = (const unsigned short*)L"";
+    CurrentFilename = (const unsigned short*)L"";
     if (buffer)
         free(buffer);
     return ok;

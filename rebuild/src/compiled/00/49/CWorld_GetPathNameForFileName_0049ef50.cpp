@@ -16,6 +16,8 @@
 //   `continue` form of the parked source gave VC7.1 another flow graph and the six CWideString locals got the reverse
 //   slot order. The CWideString == CWideString compare reads both data blocks into locals first (retail's
 //   x = baseName in eax/edx, y = fileName in ecx/esi register choice).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #include "fable_compiler.h"
 #define CWorld CWorldLayout
 #include "engine/CWorld.h"
@@ -85,8 +87,9 @@ class CWideString { public:
         const CWideStringData* a = PStringData; const CWideStringData* b = other.PStringData;
         return a->Data == b->Data;
     }
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_EmptyWideString;             // 0x013BCA24
 CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);   // 0x0099BF30
 class CAFile { public:
     class CFileScanInfo { public:
@@ -128,5 +131,5 @@ CWideString CWorld::GetPathNameForFileName(const CWideString& fileName) const
             }
         } while (CAFile::ScanNextFile(pattern, info, dirName));
     }
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

@@ -132,6 +132,9 @@ class CCPPointerInfo;
 #ifdef FABLE_RETAIL_CSCRIPTTHING_NULLCOORD
 class C3DVector;
 #endif
+#ifdef FABLE_RETAIL_CSCRIPTTHING_NULLSTRING
+class CCharString;
+#endif
 
 #pragma pack(push, 1)
 class CScriptThing {
@@ -146,6 +149,13 @@ public:
 protected:
     static C3DVector NullCoord;                              // 0x0143E8E0
 public:
+#endif
+#ifdef FABLE_RETAIL_CSCRIPTTHING_NULLSTRING
+    // Per-TU opt-in (agentNF26, 2026-11-12, FAM09 follow-up) for the flattened view: the static empty string the null-PImp branches of
+    // GetName / GetDefName / GetDataString / GetCurrentMapName / GetHomeMapName return or copy, 0x0143E8EC (Ego_r.pdb + FableWin.pdb
+    // `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50). Spelled as the retail branch above declares it
+    // (?NullString@CScriptThing@@2VCCharString@@A, the access the landed binders use). No layout change.
+    static CCharString NullString;                           // 0x0143E8EC
 #endif
 };
 #pragma pack(pop)

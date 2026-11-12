@@ -10,13 +10,17 @@
 // propagated remove_if), operator delete 0x00BFE9BC, RemoveActiveQuestCardAndMakeAvailableAgain(const CCharString&,
 // bool) 0x004B0B90, IsQuestActive 0x004AF610, CWorld::GetThingManager (slot 3) / GetWorldMap (slot 12),
 // CThingManager::DeleteThingsWithSectionName 0x0051FC20, operator+ 0x0099F600 / 0x0099F570 (`__fastcall`), "%"
-// 0x01239434, g_DayOnlySuffix 0x013BAC18 / g_NightOnlySuffix 0x013BAC1C, set<CCharString> ctor 0x004AD460 / insert
+// 0x01239434, CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX 0x013BAC18 / CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX 0x013BAC1C, set<CCharString> ctor 0x004AD460 / insert
 // 0x004AC380 / dtor 0x004AD4A0, CWorldMap::UpdateNavMaps 0x00501990, the static counted manager pointer 0x013CAA68
 // (operator new 0x00BFEA1A, ctor 0x009F0320, Reset 0x00413590), its Contains(CCharString) 0x009F0570 / section handle
 // lookup (CCharString) 0x009F0500 (name unconfirmed) / UnloadSection(unsigned long) 0x009F02F0.
 // Layout: retail STLport CQuestManager (ActiveQuests +0x38, BetweenStartAndEndScreenQuests +0x4c, World +0x7c,
 // PQuestCurrentlyRunning +0x88, DayActive +0x8c, NightActive +0x8d, NumberOfQuestsBetweenStartAndFinishScreens +0x98);
 // CActiveQuest (landed ctor 0x004B0310): ID +0, PScript +8, LoadedResources +0x25, QuestName +0x30.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the suffix globals are the public static consts of CTCDayOrNightOnlySupport (Ego_r.pdb +
+//   FableWin.pdb `dynamic initializer for 'CTCDayOrNightOnlySupport::...'', initializers landed by agentFAM09; Anniv360 @@2VCCharString@@B):
+//   0x013BAC18 CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX ("DayOnly", initializer 0x0121E5C0), was g_DayOnlySuffix.
+//   0x013BAC1C CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX ("NightOnly", initializer 0x0121E5E0), was g_NightOnlySuffix.
 #include "fable_compiler.h"
 #include <new>
 void __cdecl operator delete(void* p);              // 0x00BFE9BC
@@ -29,8 +33,10 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-extern CCharString g_DayOnlySuffix;                 // 0x013BAC18 "DayOnly"
-extern CCharString g_NightOnlySuffix;               // 0x013BAC1C "NightOnly"
+class CTCDayOrNightOnlySupport { public:                   // the day/night-only suffix statics (class key V, both PDBs)
+    static const CCharString DAY_ONLY_SUFFIX;     // 0x013BAC18 ?DAY_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "DayOnly"
+    static const CCharString NIGHT_ONLY_SUFFIX;   // 0x013BAC1C ?NIGHT_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "NightOnly"
+};
 __declspec(noinline) CCharString* __fastcall FindString(CCharString* first, CCharString* last, const CCharString& val,
                                    const random_access_iterator_tag&)   // 0x004B8E40
 {
@@ -211,9 +217,9 @@ void CQuestManager::DeactivateQuest(CCountedPointer<CActiveQuest> quest, unsigne
     if (!IsQuestActive(questName) && !(reason & 1)) {
         World->GetThingManager()->DeleteThingsWithSectionName(sectionName);
         if (DayActive)
-            World->GetThingManager()->DeleteThingsWithSectionName(sectionName + "%" + g_DayOnlySuffix);
+            World->GetThingManager()->DeleteThingsWithSectionName(sectionName + "%" + CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX);
         if (NightActive)
-            World->GetThingManager()->DeleteThingsWithSectionName(sectionName + "%" + g_NightOnlySuffix);
+            World->GetThingManager()->DeleteThingsWithSectionName(sectionName + "%" + CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX);
         if (loadedResources) {
             CSectionSet sections;
             for (CQuestNode* node = ActiveQuests.m_node->next; node != ActiveQuests.m_node; node = node->next)

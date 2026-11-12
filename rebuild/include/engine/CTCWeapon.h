@@ -43,6 +43,15 @@ public:
     // FABLE_RETAIL_CTCWEAPON_READYPROJECTILE spelling (in neither PDB). Declaration only.
     void ResetAiming();                                      // 0x005DA4E0
 #endif
+#ifdef FABLE_RETAIL_CTCWEAPON_AIMING
+    // Opt-in (agentNF26, 2026-11-12): Ego_r.pdb + FableWin.pdb ?IsAimedForLongEnough@CTCWeapon@@QBE_NM@Z and
+    // ?SetAimingTimeOverride@CTCWeapon@@QAEXXZ, out of line at 0x005DA490 / 0x005DA4C0 (Ego_r donor order IsAimedForLongEnough /
+    // SetAimingTimeOverride / SetAiming / ResetAiming = retail 0x005DA490 / 4C0 / 4D0 / 4E0). IsAimedForLongEnough reads AimingTimeOverride
+    // +0x18, then AimingTime +0x14 over CMainGameComponent::ConstantFPS against the argument (`ret 4`); SetAimingTimeOverride stores
+    // AimingTimeOverride = true. Declarations only.
+    bool IsAimedForLongEnough(float time) const;             // 0x005DA490
+    void SetAimingTimeOverride();                            // 0x005DA4C0
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_TARGETINGRANGE
     // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): Ego_r.pdb ?GetTargetingRange@CTCWeapon@@QBEJXZ (Ego_r
     // 0x0063A6D0), out of line in retail at 0x005DA890 (Ego_r donor order GetTargetingRange / TargetingFOV / IsAnalogueLoading at a

@@ -11,6 +11,9 @@
 //   0x013B86F8, the text language 0x013B86C0 (descriptive names).
 // Shape: the target's text bank is a named local taken before the first narrator call (retail keeps it in edi, pushed at
 //   entry, and reuses it for the "_1_5" retry); each call re-fetches the bank handle by value.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B86F8 GDebugPlaySpeechForNarratorName (global; initializer 0x0121A070), was g_DebugNarrator.
 #include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
@@ -113,7 +116,7 @@ private: public:
     CPlayerManager* PlayerManager;                       // +0x1c
     const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
 };
-extern CCharString g_DebugNarrator;                      // 0x013B86F8
+extern CCharString GDebugPlaySpeechForNarratorName;                      // 0x013B86F8
 extern long g_TextLanguage;                              // 0x013B86C0
 template <class T, long TYPE> FABLE_FORCEINLINE T* GetComponent(const CThing* thing)
 {
@@ -132,7 +135,7 @@ void CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(CStringSet& en
     entries.clear();
     const CThing* hero;
     CThing* target;
-    if (g_DebugNarrator == "" && (hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature()) != 0
+    if (GDebugPlaySpeechForNarratorName == "" && (hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature()) != 0
         && !(hero->LifeFlags & 1) && (hero->UsingComponents[0] & 0x100)
         && (target = GetComponent<CTCTargeting, 8>(hero)->GetTarget()) != 0 && (target->ThingTypeFlags & 0x10)) {
         if (target->UsingComponents[0] & 0x8000) {
@@ -145,6 +148,6 @@ void CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(CStringSet& en
             }
         }
     } else {
-        CMainGameComponent::Get()->TextBank->GetAllTextEntriesForNarrator(g_DebugNarrator, entries, g_TextLanguage);
+        CMainGameComponent::Get()->TextBank->GetAllTextEntriesForNarrator(GDebugPlaySpeechForNarratorName, entries, g_TextLanguage);
     }
 }

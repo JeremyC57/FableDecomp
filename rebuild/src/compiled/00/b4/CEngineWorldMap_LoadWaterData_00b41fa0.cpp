@@ -13,9 +13,12 @@
 //   loader that feeds CEngineWaterRenderer::LoadNonPatchData(CMemoryDataInputStream&, CMemoryDataInputStream&)).
 // Shape: the async entry is a counted pointer whose dtor clears both words after the release; the data size is read through
 //   the entry (bank +4, index +8); CMemoryDataInputStream is 0x1c bytes in retail (two of them fix the 0x58 frame).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x01436EC8 WaterStaticMapBankFileName (global; initializer 0x012246A0), was g_GlobalMapEntrySymbol_01436ec8.
 extern "C" void __cdecl free(void* block);
 class CCharString { public: void* PStringData; };
-extern CCharString g_GlobalMapEntrySymbol_01436ec8;   // 0x01436EC8
+extern CCharString WaterStaticMapBankFileName;   // 0x01436EC8
 struct CByteBuffer {
     unsigned char* First; unsigned char* Last; unsigned char* End;
     CByteBuffer(unsigned long size);               // 0x00411910
@@ -88,7 +91,7 @@ class CEngineWorldMap { public:
 };
 void CEngineWorldMap::LoadWaterData()
 {
-    unsigned long index = StaticMapFile.FindIndexBySymbol(g_GlobalMapEntrySymbol_01436ec8);
+    unsigned long index = StaticMapFile.FindIndexBySymbol(WaterStaticMapBankFileName);
     if (!index)
         return;
     CBankFileEntryUpdateData* record = Entries[index];

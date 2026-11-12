@@ -17,6 +17,8 @@
 //   ~Pathname, then only ~CBaseClass: CBaseClassNonCopyable declares no destructor); the method calls on the local
 //   are direct. The caption buffer is `new wchar_t[length]` read with `length` bytes; the named caption is returned
 //   by copy (no NRVO), the bad-length arm returns a copy of the empty string after its own Close().
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #include <stddef.h>
 void* __cdecl operator new[](unsigned int size);            // 0x00BFEB22
 void __cdecl operator delete[](void* block);                // 0x00BFEB1C
@@ -28,8 +30,9 @@ public:
     CWideString(const wchar_t* text);                       // 0x0099B6B0
     CWideString(const CWideString& other);                  // 0x0099B720
     ~CWideString();                                         // 0x0099B510
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_EmptyWideString;                 // 0x013BCA24
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
@@ -82,5 +85,5 @@ CWideString __fastcall CTCPhotojournalCapture::GetDescription(const CWideString&
         return description;
     }
     file.Close();
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

@@ -36,7 +36,7 @@ class CWideString { public:                                   // non-POD (user c
     CWideString();                                     // 0x0099B4D0 (not called here)
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
-extern CWideString g_CompiledDefsDirectory;           // 0x013CA7DC
+// CDefinitionManager::CompiledDefDirectory (protected static CWideString @ 0x013CA7DC) is declared in the class below.
 template <class T> struct CAllocator { CAllocator() {} CAllocator(const CAllocator&) {} };
 template <class T> struct CAllocProxy : CAllocator<T> {
     T* _M_data;
@@ -120,11 +120,14 @@ public:
     unsigned long                              DependencyCheckCRC;    // +0xbc
     bool                                       UseSafeBinaryFormat;   // +0xc0
     CRetailMap<CRecompiledDefNode>             RecompiledDefs;        // +0xc4
+protected:
+    static CWideString                         CompiledDefDirectory;  // 0x013CA7DC
+public:
     CDefinitionManager(const CWideString& compiledFileName, void (__cdecl* errorCallback)(CCharString*));
 };
 
 CDefinitionManager::CDefinitionManager(const CWideString& compiledFileName, void (__cdecl* errorCallback)(CCharString*))
-    : CResourceList(), ErrorCallback(errorCallback), CurrentFilename(), CompiledFileName(g_CompiledDefsDirectory + compiledFileName),
+    : CResourceList(), ErrorCallback(errorCallback), CurrentFilename(), CompiledFileName(CompiledDefDirectory + compiledFileName),
       RecompiledDefs()
 {
     UseSafeBinaryFormat = false;
@@ -144,7 +147,10 @@ static int g_strCtors = 0, g_strDtors = 0; static const char* g_lastText;
 CCharString::CCharString() { PStringData = (void*)0x5151; ++g_strCtors; }
 CCharString::CCharString(const char* text, long length) { PStringData = (void*)text; g_lastText = text; CHECK(length == -1); }
 CCharString::~CCharString() { ++g_strDtors; }
-CWideString g_CompiledDefsDirectory;
+CWideString CDefinitionManager::CompiledDefDirectory;
+struct CDefinitionManagerPeek : CDefinitionManager {     // test-only: reaches the protected static's address
+    static const CWideString* PeekCompiledDefDirectory() { return &CompiledDefDirectory; }
+};
 CWideString::CWideString() { PStringData = 0; }
 static const CWideString* g_plusLeft; static const CWideString* g_plusRight; static int g_plusCalls = 0;
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right)
@@ -177,7 +183,7 @@ int main()
     CHECK(*(unsigned long*)(p + 0xbc) == 0xcdcdcdcd);                 // DependencyCheckCRC untouched
     CHECK(m->ErrorCallback == ErrCb && m->UseSafeBinaryFormat == false);
     CHECK(g_strCtors == 1 && m->CurrentFilename.PStringData == (void*)0x5151);
-    CHECK(g_plusCalls == 1 && g_plusLeft == &g_CompiledDefsDirectory && g_plusRight == &name && m->CompiledFileName.PStringData == (void*)0x7777);
+    CHECK(g_plusCalls == 1 && g_plusLeft == CDefinitionManagerPeek::PeekCompiledDefDirectory() && g_plusRight == &name && m->CompiledFileName.PStringData == (void*)0x7777);
     CHECK(m->RecompiledDefs._M_node_count == 0 && m->RecompiledDefs._M_header != 0);
     CHECK(m->RecompiledDefs._M_header->_M_color == 0 && m->RecompiledDefs._M_header->_M_parent == 0);
     CHECK(m->RecompiledDefs._M_header->_M_left == m->RecompiledDefs._M_header && m->RecompiledDefs._M_header->_M_right == m->RecompiledDefs._M_header);

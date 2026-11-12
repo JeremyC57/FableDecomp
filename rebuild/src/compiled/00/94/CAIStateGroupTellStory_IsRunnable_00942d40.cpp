@@ -7,7 +7,7 @@
 //          @ 0x004365B0 (const, the creature) / @ 0x0040F020 (the workplace) for the inlined interface-0x23 (CTCVillager)
 //          lookups, GFGetPVillageInterface @ 0x007EE540 (x3; manifest "IS_THING_ALIVE<...>" is wrong),
 //          CThingBuilding::PeekPMaterial @ 0x0082D2D0 (CDefPointer by hidden pointer, inline release through slot 1),
-//          CTCVillage::IsCookTime @ 0x00658A80, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
+//          CTCVillage::IsStoryTime @ 0x00658A80, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 //          CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall), CDefinitionManager::GetDefGlobalIndexFromName
 //          @ 0x009AD410, CThing::GetPos @ 0x004C73D0, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
 //          CThingSearchTools::GetPBestThing<CThingFilter_HasDefGlobalIndex, CThingCompare_Nearest, CThing> @ 0x009107B0.
@@ -258,6 +258,8 @@ class CThingBuilding : public CThing { public:
 };
 struct CThingPos : CThing {
 };
+// Name fix (agentNF26, 2026-11-12): CTCVillage::IsStoryTime 0x00658A80 is ?IsStoryTime@CTCVillage@@QBE_NXZ (Ego_r.pdb + FableWin.pdb; body
+//   IsTimeBetween over CVillageDef StoryStartTimes +0x44 / StoryDuration +0x50); was IsCookTime (a propagated label).
 struct CTCVillager;
 class CTCVillage;
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
@@ -266,7 +268,7 @@ struct CThingVillagerBase : CThing {
     CBaseIntelligentPointer PWorkplace;         // +0x170
 };
 class CTCVillage { public:
-    bool IsCookTime();                          // 0x00658A80
+    bool IsStoryTime() const;                   // 0x00658A80
 };
 class CCharString { public:
     void* PStringData;
@@ -314,7 +316,7 @@ bool CAIStateGroup_TellStory::IsRunnable()
             if (material.Object) {
                 if ((material->Flags & 4) && home->HasTC(0x23)) {
                     CTCVillager* homeVillager = (CTCVillager*)home->FindEntry(0x23)->second;
-                    if (((CTCVillageMember*)homeVillager)->GetPVillage() && ((CTCVillageMember*)homeVillager)->GetPVillage()->IsCookTime()) {
+                    if (((CTCVillageMember*)homeVillager)->GetPVillage() && ((CTCVillageMember*)homeVillager)->GetPVillage()->IsStoryTime()) {
                         long index;
                         {
                             CCharString name("STORY_PLACE_MARKER");

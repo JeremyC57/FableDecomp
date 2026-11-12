@@ -15,7 +15,10 @@
 // Shape: the two state bools and the previous values live in frame bytes; the abilities are walked with STLport's inline
 // `_M_increment` on the node pointer, end re-read from the header each pass; the ability data pointer is a named local read at
 // the top of each pass (retail loads it before the timer test).
-extern long g_UnarmedCombatIdleFrames;                     // 0x013BAD40
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAD40 DEFAULT_UNARMED_COMBAT_IDLE_COUNT (anonymous namespace, const; initializer 0x0121ED60), was g_UnarmedCombatIdleFrames.
+namespace { extern const long DEFAULT_UNARMED_COMBAT_IDLE_COUNT; }                     // 0x013BAD40
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -117,7 +120,7 @@ void CTCCombat::UpdateCombatTimers()
     PerformingAction = performing;
     PerformingStrikeAction = strike;
     if (wasPerforming && wasStrike)
-        UnarmedCombatIdleCountdown = g_UnarmedCombatIdleFrames;
+        UnarmedCombatIdleCountdown = DEFAULT_UNARMED_COMBAT_IDLE_COUNT;
     else if (UnarmedCombatIdleCountdown)
         --UnarmedCombatIdleCountdown;
     if (BlockCounterTimer >= 0)

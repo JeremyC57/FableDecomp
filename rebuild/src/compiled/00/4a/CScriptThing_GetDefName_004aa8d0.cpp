@@ -10,13 +10,16 @@
 // read into esi once for both arms. Null arm: the out-of-line CCharString copy constructor
 // @ 0x0099EC30 builds the result from the global; else the virtual (slot 2, `call [eax+8h]`)
 // writes the result through the forwarded hidden pointer.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (Ego_r.pdb + FableWin.pdb `dynamic initializer
+//   for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09), reached through the hdr opt-in
+//   FABLE_RETAIL_CSCRIPTTHING_NULLSTRING on the flattened engine/CScriptThing.h; was g_EmptyString.
+#define FABLE_RETAIL_CSCRIPTTHING_NULLSTRING   // hdr overlay (agentNF26)
 #include "engine/CScriptThing.h"
 
 class CCharString { public:
     char* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30 (out of line in retail; fable_string.h would inline it)
 };
-extern CCharString g_EmptyString;                    // 0x0143E8EC (static CCharString(""), initialiser 0x01224C50)
 
 struct CScriptThingVirtuals {                       // vtable view of the implementation object
     virtual void v0();
@@ -32,6 +35,6 @@ CCharString CScriptThing_Methods::GetDefName() const
 {
     const CScriptThingVirtuals* imp = (const CScriptThingVirtuals*)PImp_Data;
     if (imp == 0)
-        return g_EmptyString;
+        return NullString;
     return imp->GetDefName();
 }

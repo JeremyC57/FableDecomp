@@ -194,7 +194,7 @@ class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
 };
 class CThingCreatureBase : public CThing { public:
-    bool IsRegisteredCombatant();               // 0x00662410
+    bool IsInMeleeAsAttacker() const;         // 0x00662410
     CCombatManager* GetCombatManager();         // 0x00661ED0
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
@@ -222,7 +222,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace()
     }
     CThingCreatureBase* creature = GetCreature();
     if (creature && !(creature->m_flags91 & 1)) {
-        if (creature->IsRegisteredCombatant())
+        if (creature->IsInMeleeAsAttacker())
             GetCreature()->GetCombatManager()->DeregisterCombatant(GetCreature());
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetInterface(&modes, 0x31))
@@ -259,7 +259,7 @@ static bool g_registered; static CThingCreatureBase* g_creature;
 // the miss path of the fire-point lookup calls through a never-written local: the stub does not touch `this`
 void CTCFirePoint::SetUser(CThing* user) { logf("SetUser(%ld,%ld)", (long)(this == &g_firePoint), (long)(user == 0)); }
 void CCombatManager::DeregisterCombatant(CThingCreatureBase* creature) { logf("Deregister(%ld,%ld)", (long)(this == &g_manager), (long)(creature == g_creature)); }
-bool CThingCreatureBase::IsRegisteredCombatant() { logf("IsRegisteredCombatant"); return g_registered; }
+bool CThingCreatureBase::IsInMeleeAsAttacker() const { logf("IsInMeleeAsAttacker"); return g_registered; }
 CCombatManager* CThingCreatureBase::GetCombatManager() { logf("GetCombatManager"); return &g_manager; }
 void CTCCreatureModeManager::RemoveMode(unsigned long mode) { logf("RemoveMode(%ld,%ld)", (long)(this == &g_modes), (long)mode); }
 
@@ -286,13 +286,13 @@ int main()
     group->PFirePoint.m_pItem = point; point->m_presentBits[5] = 1UL << 12;
     brain.PCreature = g_creature; g_creature->m_presentBits[1] = 1UL << 17; g_registered = true; g_log[0] = 0;
     group->CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace();
-    CHECK(strcmp(g_log, "SetUser(1,1);ctor;SetPItem(0);SetPItem(0);dtor;IsRegisteredCombatant;GetCombatManager;Deregister(1,1);RemoveMode(1,25);") == 0);
+    CHECK(strcmp(g_log, "SetUser(1,1);ctor;SetPItem(0);SetPItem(0);dtor;IsInMeleeAsAttacker;GetCombatManager;Deregister(1,1);RemoveMode(1,25);") == 0);
     CHECK(group->PFirePoint.m_pItem == 0);
 
     // 3. dead fire point (+0x91 bit 0): left alone; unregistered creature without a mode manager: nothing more
     group->PFirePoint.m_pItem = point; point->m_flags91 = 1; g_registered = false; g_creature->m_presentBits[1] = 0; g_log[0] = 0;
     group->CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace();
-    CHECK(strcmp(g_log, "IsRegisteredCombatant;") == 0);
+    CHECK(strcmp(g_log, "IsInMeleeAsAttacker;") == 0);
     CHECK(group->PFirePoint.m_pItem == point);
 
     // 4. dead creature: skipped entirely; live fire point released
@@ -304,7 +304,7 @@ int main()
     group->PFirePoint.m_pItem = point; point->m_presentBits[5] = 0; g_creature->m_flags91 = 0; g_log[0] = 0;
     group->CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace();
     CHECK(strncmp(g_log, "SetUser(", 8) == 0);
-    CHECK(strstr(g_log, ",1);ctor;SetPItem(0);SetPItem(0);dtor;IsRegisteredCombatant;") != 0);
+    CHECK(strstr(g_log, ",1);ctor;SetPItem(0);SetPItem(0);dtor;IsInMeleeAsAttacker;") != 0);
 
     // 6. lower-bound end-slot pick: the 0xAC bit set with no 0xAC entry
     static CInterfaceMap::SEntry pointEntries2[2] = { {0x40, (CTCBase*)0x22}, {0, (CTCBase*)&g_firePoint} };

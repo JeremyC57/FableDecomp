@@ -1,0 +1,107 @@
+tag	address	status	binders_respelled	note
+land1011dh	0x008780D0	partial	0	claim verified (Ego_r + FableWin name, body); the row itself is not landed and its only landed binder 0x00878390 is BUSY: nothing respelled, record only
+land1011dh	0x005DA4C0	done	1	self row renamed (MATCH); binder 0x007E5B90 respelled (row + test)
+land1011dh	0x005DA490	done	0	self row renamed (RELOCATION_MATCH); no landed caller references it
+land1011dh	0x00658A35	done	2	self row renamed; binders 0x0090FC50 (const), 0x00916910 (stand-in CTCVillageS -> shared flattened engine/CTCVillage.h)
+land1011dh	0x00658A80	done	3	self row renamed; binders 0x00910100, 0x00942D40, 0x00942EE0
+land1011dh	0x00662410	partial	6	respelled 0x008D8EA0 0x0093DDE0 0x0093E090 0x0095D3A0 0x0096EA50 0x0096EDB0; left: stand-in classes 0x0093DCD0 (CCreatureCombatView), 0x0093E2D0 / 0x0095B280 (IsCombatant on local CThing), 0x0095D070 (CThingPos::CanAttackNow), 0x00962A90 (CThingAICreature); BUSY 0x007355F0, 0x0096EC10; every other landed caller already spells IsInMeleeAsAttacker
+land1011di	0x0079C740	done	0	self row renamed (MATCH) on engine/CTCBulletTime.h; its binders are already correct (0x008CDD40) or BUSY (0x006A02B0)
+land1011di	0x004FB150	done	1	binder 0x0088E300 respelled onto engine/CWorld.h + CWorldMap.h; other rows mention GetCurrentRegionNumber only in comments
+# Part 2: FAM09_FIXES.tsv lines (object_va, wrong_spelling -> correct_name)
+FAM09	0x013B7D54	done	1	g_ProfileFileName -> CUserProfileManager::m_strProfileName 
+FAM09	0x013B7D5C	done	1	g_MainGameStartupPath -> RelaunchSaveGameName 
+FAM09	0x013B85E0	done	1	FableFullBuildVersion -> GVersionString 
+FAM09	0x013B865C	done	1	g_EventPackageFileName -> GInputFileName 
+FAM09	0x013B8660	done	1	g_obj -> GEventPackageFileName 
+FAM09	0x013B8668	done	3	g_WorldToLoad -> GForceLevel 
+FAM09	0x013B866C	done	1	g_WorldToLoad2 -> GForceStartingHolySite 
+FAM09	0x013B8674	done	1	g_Registration -> GRunLUAScript 
+FAM09	0x013B86F8	done	1	g_DebugNarrator -> GDebugPlaySpeechForNarratorName 
+FAM09	0x013B875C	done	1	g_FrontEndMenuFontName -> DEFAULT_FRONT_END_FONT 
+FAM09	0x013B89D8	done	1	g_progressTitle -> GResetProgressTipText 
+FAM09	0x013B89DC	done	1	g_progressText -> GResetProgressTipTitleText 
+FAM09	0x013B8AF0	done	1	g_ScoreboardServer -> ConsoleVarScoreboardServerIPAddress 
+FAM09	0x013B8AF4	done	1	g_ScoreboardPage -> ConsoleVarServerScoresAgent 
+FAM09	0x013B8B0C	done	1	g_HeroGuildRecoveryMarker -> DEFAULT_DEATH_RECOVERY_MARKER_NAME 
+FAM09	0x013B8B0C	done	1	g_glob -> DEFAULT_DEATH_RECOVERY_MARKER_NAME 
+FAM09	0x013B8B7C	done	2	g_SellItemDescriptionString -> SELL_ITEM_DESC_STRING 
+FAM09	0x013B8B80	done	2	g_BuyItemDescriptionString -> BUY_ITEM_DESC_STRING 
+FAM09	0x013B8BB8	done	1	g_AugmentationsLeftDescriptionM -> AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M 
+FAM09	0x013B8BBC	done	1	g_AugmentationsLeftDescriptionR -> AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R 
+FAM09	0x013BAAF8	done	1	g_MainSignPostDefName -> MAIN_SIGN_POST_DEF_NAME 
+FAM09	0x013BAAFC	done	1	g_DressingSignPostDefName -> DRESSING_SIGN_POST_DEF_NAME 
+FAM09	0x013BAB00	done	1	g_OwnedSignPostDefName -> MAIN_OWNED_SIGN_POST_DEF_NAME 
+FAM09	0x013BAB04	done	1	g_RentSignPostDefName -> MAIN_RENT_SIGN_POST_DEF_NAME 
+FAM09	0x013BAB0C	done	1	g_DefaultSerialisationSectionName -> CLevelLoader::GlobalSectionName 
+FAM09	0x013BAB90	done	1	g_DefaultSpeechDurationFrames -> MIN_SPEECH_FRAMES 
+FAM09	0x013BAC18	partial	6	g_DayOnlySuffix -> CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX row 0x012295F0 left: atexit thunk of the g_AutoTinyReverseLoopObjects family, type not modelled (atexit-family follow-up)
+FAM09	0x013BAC1C	done	6	g_NightOnlySuffix -> CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX 
+FAM09	0x013BAC34	done	1	g_BurntHelperB -> SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 
+FAM09	0x013BAC34	done	6	g_LeftHandAttachmentName -> SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 
+FAM09	0x013BAC48	done	1	g_FocalPointHelperName -> MAIN_FOCAL_POSITION_NAME 
+FAM09	0x013BAC48	done	1	g_helperFocal_013bac48 -> MAIN_FOCAL_POSITION_NAME 
+FAM09	0x013BAC4C	done	1	g_CameraStickHelperName -> CAMERA_FOCAL_POSITION_NAME 
+FAM09	0x013BAC4C	done	1	g_helperCameraFocal_013bac4c -> CAMERA_FOCAL_POSITION_NAME 
+FAM09	0x013BAC50	done	1	g_TargetHelperName -> TARGETING_CURSOR_POSITION_NAME 
+FAM09	0x013BAC64	none	1	?PrimaryPrefix@ComboStrikes@@3UCCharString@1@A -> STRIKE_EVENT_WEAPON_START_IDENTIFIER no landed binder (files=0)
+FAM09	0x013BAC64	done	1	g_StrikeEventExcludedPrefix -> STRIKE_EVENT_WEAPON_START_IDENTIFIER 
+FAM09	0x013BAC68	none	1	?SecondaryPrefix@ComboStrikes@@3UCCharString@1@A -> STRIKE_EVENT_WEAPON_END_IDENTIFIER no landed binder (files=0)
+FAM09	0x013BAC6C	none	1	?PrimaryAlternative@ComboStrikes@@3UCCharString@1@A -> STRIKE_EVENT_START_IDENTIFIER no landed binder (files=0)
+FAM09	0x013BAC6C	done	1	g_StrikeEventPrefix -> STRIKE_EVENT_START_IDENTIFIER 
+FAM09	0x013BAC6C	done	1	g_StrikeStart -> STRIKE_EVENT_START_IDENTIFIER 
+FAM09	0x013BAC70	none	1	?SecondaryAlternative@ComboStrikes@@3UCCharString@1@A -> STRIKE_EVENT_END_IDENTIFIER no landed binder (files=0)
+FAM09	0x013BAC70	done	1	g_StrikeEnd -> STRIKE_EVENT_END_IDENTIFIER 
+FAM09	0x013BAC74	done	1	g_strikeEventResetComboEventName -> STRIKE_EVENT_RESET_COMBO 
+FAM09	0x013BAC78	none	1	?BothFlags@ComboStrikes@@3UCCharString@1@A -> STRIKE_EVENT_BEGIN_LEGACY no landed binder (files=0)
+FAM09	0x013BAC78	done	1	g_CombatStrikeEvent -> STRIKE_EVENT_BEGIN_LEGACY 
+FAM09	0x013BAC78	done	1	g_StrikeEventName0 -> STRIKE_EVENT_BEGIN_LEGACY 
+FAM09	0x013BAC7C	none	1	?SecondFlag@ComboStrikes@@3UCCharString@1@A -> STRIKE_EVENT_END_LEGACY no landed binder (files=0)
+FAM09	0x013BAC7C	done	1	g_CombatStop -> STRIKE_EVENT_END_LEGACY 
+FAM09	0x013BAC80	none	1	?FirstFlag@ComboStrikes@@3UCCharString@1@A -> SECONDARY_STRIKE_EVENT_BEGIN_LEGACY no landed binder (files=0)
+FAM09	0x013BAC80	done	1	g_CombatStrikeEvent2 -> SECONDARY_STRIKE_EVENT_BEGIN_LEGACY 
+FAM09	0x013BAC80	done	1	g_StrikeEventName1 -> SECONDARY_STRIKE_EVENT_BEGIN_LEGACY 
+FAM09	0x013BAC84	none	1	?NeitherFlag@ComboStrikes@@3UCCharString@1@A -> SECONDARY_STRIKE_EVENT_END_LEGACY no landed binder (files=0)
+FAM09	0x013BAC84	done	1	g_CombatStop2 -> SECONDARY_STRIKE_EVENT_END_LEGACY 
+FAM09	0x013BAC88	done	1	g_combtActionFinishedEventName -> STRIKE_ACTION_FINISHED 
+FAM09	0x013BAC8C	done	1	g_startRunningEventName_013bac8c -> ACTION_LATEST_START_TIME 
+FAM09	0x013BAC98	done	1	g_containmentVolumeName -> BUILDING_BOUNDRY 
+FAM09	0x013BACA0	done	1	g_TorchDummyName -> ACTION_POINT_01 
+FAM09	0x013BACD0	done	1	g_performActionEventName -> PERFORM_ACTION 
+FAM09	0x013BACE0	done	1	g_allowMovementInterruptEventName -> COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT 
+FAM09	0x013BAD30	done	1	g_StrikeResponseName -> SHEATH_ACTION_NAME 
+FAM09	0x013BAD30	done	1	g_sheatheForAbilityName -> SHEATH_ACTION_NAME 
+FAM09	0x013BAD40	done	1	g_7332d0 -> DEFAULT_UNARMED_COMBAT_IDLE_COUNT 
+FAM09	0x013BAD40	done	1	g_UnarmedCombatIdleFrames -> DEFAULT_UNARMED_COMBAT_IDLE_COUNT 
+FAM09	0x013BAF38	done	1	g_MiniMapDataDirectory -> minimapFilePathArtist 
+FAM09	0x013BAF3C	done	1	g_MiniMapCacheDirectory -> minimapFilePathProgmr 
+FAM09	0x013BAF5C	done	1	g_emptyCharString -> CWeaponDef::TooHeavyAnimationGroupName 
+FAM09	0x013BAF94	done	1	g_RunningAwayDotThreshold -> NCreatureAI::COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD 
+FAM09	0x013BAFD4	done	1	g_defaultSleepAnimName -> DEFAULT_SLEEP_ANIM_NAME 
+FAM09	0x013BAFE4	done	1	g_DefaultFrames_013bafe4 -> CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS 
+FAM09	0x013BAFEC	done	1	g_DefaultFrames_013bafec -> CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS 
+FAM09	0x013BB66C	done	1	g_SitAnimName -> SIT_ON_FLOOR_ANIM_NAME 
+FAM09	0x013BB684	done	1	g_ApologyAccepted -> SUCCESS_STRING 
+FAM09	0x013BB688	done	1	g_ApologyRejected -> FAILURE_STRING 
+FAM09	0x013BB6E0	done	2	g_GetUpName -> GET_UP_FROM_CHAIR_ANIM_NAME 
+FAM09	0x013BB6E8	done	2	g_GetUpNameAlternate -> GET_UP_FROM_BENCH_ANIM_NAME 
+FAM09	0x013BB708	done	1	g_SitStandUpAnim -> GET_UP_FROM_FLOOR_ANIM_NAME 
+FAM09	0x013BB70C	done	1	g_SitDelayBase -> MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS 
+FAM09	0x013BB710	done	1	g_SitDelayRange -> RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS 
+FAM09	0x013BB730	done	1	g_pubFidgetInterval -> TIME_TO_LEAVE_BETWEEN_SPEAKING 
+FAM09	0x013BC3A4	done	1	g_AlertAlliesMessageDelay -> TIME_TO_LEAVE_SHOUT_MESSAGE 
+FAM09	0x013BCA10	none	1	?CurrentPath@CAFile@@0VCWideString@@A -> NFile::CurrentPath no landed binder (files=0)
+FAM09	0x013BCA10	none	1	?CurrentPath@CAFile@@2VCWideString@@A -> NFile::CurrentPath no landed binder (files=0)
+FAM09	0x013BCA24	done	3	Empty_013bca24 -> CWideString::NullString 
+FAM09	0x013BCA24	done	15	g_EmptyWideString -> CWideString::NullString 
+FAM09	0x013BCA24	done	12	g_emptyWideString -> CWideString::NullString 
+FAM09	0x013BCA24	done	4	g_emptyWideString_013bca24 -> CWideString::NullString 
+FAM09	0x013CA7DC	done	1	g_CompiledDefsDirectory -> CDefinitionManager::CompiledDefDirectory 
+FAM09	0x013CAA34	done	1	g_CurrentSymbolFile -> CSymbolMap::CurrentFilename 
+FAM09	0x01436EC4	done	1	g_WaterBankSymbol -> SeaStaticMapBankFileName 
+FAM09	0x01436EC8	done	1	g_GlobalMapEntrySymbol_01436ec8 -> WaterStaticMapBankFileName 
+FAM09	0x01436ECC	done	1	g_GlobalMapEntrySymbol -> CommonStaticMapHeaderEntryName 
+FAM09	0x0143E8EC	done	4	g_EmptyCharString -> CScriptThing::NullString 
+FAM09	0x0143E8EC	done	8	g_EmptyString -> CScriptThing::NullString 
+FAM09	0x0143E8EC	done	1	g_def_004aa8b0 -> CScriptThing::NullString 
+FAM09	0x0143E8EC	done	1	kDefaultMapName -> CScriptThing::NullString 
+FAM09	0x0143E8EC	done	1	kHomeMapName -> CScriptThing::NullString 

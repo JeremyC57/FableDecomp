@@ -109,6 +109,19 @@ public:
 public:
     bool IsCurfewTime() const;                               // 0x00658D5D
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_SCHOOLSTORYTIME
+    // Opt-in (agentNF26, 2026-11-12, rows 0x00658A35 / 0x00658A80 and their binders): Ego_r.pdb + FableWin.pdb
+    // ?IsSchoolTime@CTCVillage@@QBE_NXZ and ?IsStoryTime@CTCVillage@@QBE_NXZ, out of line at 0x00658A35 (IsTimeBetween over
+    // CVillageDef::SchoolStartTimes +0x54 / SchoolDuration +0x60) and 0x00658A80 (StoryStartTimes +0x44 / StoryDuration +0x50); Ego_r
+    // order IsSchoolTime, IsStoryTime (0x0069A9A4 / 0x0069A9F1) = retail order. IsTimeBetween (0x00658620) is declared here only when
+    // FABLE_RETAIL_CTCVILLAGE_ISWORKTIME does not already declare it. Declarations only.
+public:
+#ifndef FABLE_RETAIL_CTCVILLAGE_ISWORKTIME
+    bool IsTimeBetween(const std::vector<long>& start_times, long duration) const;   // 0x00658620
+#endif
+    bool IsSchoolTime() const;                               // 0x00658A35
+    bool IsStoryTime() const;                                // 0x00658A80
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_ISWORKTIME
     // Opt-in (agentNF25b, 2026-11-12, row 0x00658B20 and its binders): Ego_r.pdb + FableWin.pdb ?IsWorkTime@CTCVillage@@QBE_NXZ (out of line at
     // 0x00658B20: IsTimeBetween over CVillageDef::WorkStartTimes +0x64 / WorkDuration +0x70; Ego_r order IsWorkTime, IsCookTime = retail
@@ -287,6 +300,12 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCVillage {
 public:
+#ifdef FABLE_RETAIL_CTCVILLAGE_SCHOOLSTORYTIME
+    // Opt-in (agentNF26, 2026-11-12) for the flattened view, same declarations as the retail branch's block: Ego_r.pdb + FableWin.pdb
+    // ?IsSchoolTime@CTCVillage@@QBE_NXZ (0x00658A35) and ?IsStoryTime@CTCVillage@@QBE_NXZ (0x00658A80). Declarations only; no layout change.
+    bool IsSchoolTime() const;                               // 0x00658A35
+    bool IsStoryTime() const;                                // 0x00658A80
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08

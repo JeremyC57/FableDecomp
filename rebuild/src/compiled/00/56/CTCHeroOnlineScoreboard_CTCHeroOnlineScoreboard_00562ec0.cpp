@@ -13,6 +13,10 @@
 // Shape: the STLport container models of the landed CTCObjectAugmentations ctor 0x007673C0 (_Rb_tree_base allocating its header in
 // the body, _Rb_tree zeroing the count then initialising the header through the re-read member; _Vector_base with the alloc proxy);
 // the STLport list constructor builds its sentinel in a local before storing it; one `xor ebx,ebx` zero register throughout.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B8AF0 ConsoleVarScoreboardServerIPAddress (global; initializer 0x0121A750), was g_ScoreboardServer.
+//   0x013B8AF4 ConsoleVarServerScoresAgent (global; initializer 0x0121A770), was g_ScoreboardPage.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 class CThing;
 
@@ -104,8 +108,8 @@ struct CHttpScopedPtr {                                 // scoped_ptr<LHNetworkL
 struct CComponent;
 struct CActivity;
 
-extern CCharString g_ScoreboardServer;                  // 0x013B8AF0 (descriptive: the clan web host)
-extern CCharString g_ScoreboardPage;                    // 0x013B8AF4 (descriptive: the script path)
+extern CCharString ConsoleVarScoreboardServerIPAddress;                  // 0x013B8AF0 (descriptive: the clan web host)
+extern CCharString ConsoleVarServerScoresAgent;                    // 0x013B8AF4 (descriptive: the script path)
 extern bool        g_bScoreboardInitialised;            // 0x013B8AE0
 
 class CTCHeroOnlineScoreboard : public CTCBase { public:              // vtable 0x0124DB34
@@ -133,8 +137,8 @@ CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard(CThing* thing)
     : CTCBase(thing), ScoreboardState(0), TaskState(100), PScoreboardScreen(0), PClanMenuEntry(0), PConnectingMessage(0),
       PConnectingMessage1(0)
 {
-    g_ScoreboardServer = "fableclangw.lionhead.com";
-    g_ScoreboardPage = "/index.php";
+    ConsoleVarScoreboardServerIPAddress = "fableclangw.lionhead.com";
+    ConsoleVarServerScoresAgent = "/index.php";
     if (!g_bScoreboardInitialised)
         g_bScoreboardInitialised = true;
     AddToGlobalTCs();

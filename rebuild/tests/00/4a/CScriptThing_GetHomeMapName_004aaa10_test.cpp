@@ -15,15 +15,16 @@ class CScriptThing { public:
     unsigned char _pad_0x0[0x4];
     CInner* inner;
     CCharString GetHomeMapName();
+    static CCharString NullString;           // 0x0143E8EC
 };
 
-const char kHomeMapName[] = "HOME_MAP";
+CCharString CScriptThing::NullString("HOME_MAP");
 
 CCharString CScriptThing::GetHomeMapName()
 {
     CInner* inner = this->inner;
     if (inner == 0)
-        return CCharString(kHomeMapName);
+        return NullString;
     return inner->GetName();
 }
 

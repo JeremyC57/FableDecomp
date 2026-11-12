@@ -11,14 +11,17 @@
 // store), the bool lands in the dead high byte of the index slot, the temporary in [ebp-8] and its release is the inlined long form
 // (`mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0`) of the CItem module. The second temporary is homed in the dead index
 // slot ([ebp+0Ch], the index itself lives in edi).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_emptyWideString;              // 0x013BCA24
 struct CIVRefCounted {                             // the count sits at +4 behind the vptr
     mutable unsigned long IVRefCount;
     void DecRef() const { --IVRefCount; }
@@ -80,6 +83,6 @@ CWideString CTCInventoryBase::GetInventoryText(long textIndex)
         if (found)
             return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }
-    return g_emptyWideString;
+    return CWideString::NullString;
 }
 }

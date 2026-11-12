@@ -132,7 +132,7 @@ unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsSchoolTime();                        // 0x00658A35
+    bool IsSchoolTime() const;                  // 0x00658A35
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
@@ -181,7 +181,7 @@ void CAIStateGroupBase::v15() { } void CAIStateGroupBase::v16() { } void CAIStat
 void CBaseIntelligentPointer::v00() { }
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager) { ++villageCalls; villageArg = villager; return &villageObj; }
-bool CTCVillage::IsSchoolTime() { ++schoolCalls; return school; }
+bool CTCVillage::IsSchoolTime() const { ++schoolCalls; return school; }
 bool CThingCreatureHome::AutoPlaceNearBuilding(CThingBuilding* building, float radius)
 { ++placeCalls; placeThis = this; placeBuilding = building; placeRadius = radius; return placed; }
 

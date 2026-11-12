@@ -12,12 +12,15 @@
 // Shape: the shape of the CTCHero::GetTitleGuiText row (0x006CA0A0, wave 25): the tag read twice (test, argument) gives the
 //   `mov eax,ecx` copy; the counted entry's dtor has a null test and calls the inline ReleaseTemporary (DecRef / GetRefCount on
 //   the ref-count base at +4).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString_013bca24.
 class CWideString {
 public:
     void* PStringData;
     CWideString(const CWideString& other);      // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_emptyWideString_013bca24;    // 0x013BCA24
 
 struct CRefCounted {
     mutable long m_count;
@@ -87,5 +90,5 @@ CWideString CTCQuestCard::GetSuccessSummary() const
         if (entry.Data)
             return entry->GetText();
     }
-    return g_emptyWideString_013bca24;
+    return CWideString::NullString;
 }

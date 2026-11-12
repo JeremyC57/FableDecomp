@@ -10,6 +10,8 @@
 // Model: engine/CItem.h; the counted temporaries and their inlined release (`mov ecx,eax ; add eax,4 ; dec [eax] ;
 // cmp [eax],0`) exactly as the landed CItem::GetMaximumNumberOfItems 0x005BD931; both temporaries share the frame word
 // [ebp-4]; the text bank is read into a local before the argument pushes. Pragmas: the CItem module's frame-pointer size TU.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -17,8 +19,9 @@
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_emptyWideString;              // 0x013BCA24
 struct CIVCountedPointeeVirtual {
     virtual void Destroy(int flags) const;               // slot 0
     virtual void Delete() const;                         // slot 1
@@ -77,11 +80,11 @@ struct CItem_Methods : CItem {
 CWideString CItem_Methods::GetItemDescription() const
 {
     if (NumberOfItems == 0)
-        return g_emptyWideString;
+        return CWideString::NullString;
     long textIndex = GetInventoryItemDef().Object->DescriptionTextIndex;
     if (textIndex > 0) {
         CDataBank* bank = CMainGameComponent::Get()->TextBank;
         return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }
-    return g_emptyWideString;
+    return CWideString::NullString;
 }
