@@ -8,3 +8,7 @@
   CTHINGGAMEOBJECT, CTHINGCREATUREBASE, CTHINGPLAYERCREATURE); same-TU GetDef/GetSubDef template bodies under auto_inline(off) as 0x5C90FC.
 - Names: GetDef<T> at 0x42AF3C written as GetDef<CThingBaseDef> (manifest label; T otherwise unproven). Dossier NAME_FIXES confirmed in use
   (GetBoughtPrice, GetInventoryType, GetBuildingThing, GetTrainableStatLevel, GetGlobalIndexFromClassIndex, ToCharString, CTCShop::GetQuantity).
+- Repair (verifier findings, all applied, still RELOCATION_MATCH incl. strict headers): `weaponDef->Class == WC_HEAVY` (EWeaponClass, same
+  `cmp [eax+2Ch],2`); test comment fixed + loss case (bought 95 / sell 80 -> "Loss: 15", B/G tint) and profit-0 case (kills `>= 0`->`> 0`
+  mutant, checked); NAME_FIXES.tsv gains 0x005BE8D3 -> GetPerItemDataForItem@CTCInventoryBase (pre-existing collision with 0x005BEAD5
+  GetBoughtPrice, queue the respelling) and the 0x005BEAD5 GetBoughtPrice binding.

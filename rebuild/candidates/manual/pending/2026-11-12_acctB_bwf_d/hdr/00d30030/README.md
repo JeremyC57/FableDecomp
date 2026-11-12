@@ -1,0 +1,4 @@
+# Header overlay for row 0x00D30030 (full copies of the current repo headers + opt-ins only)
+- engine/CScriptGameResourceObjectBase.h: FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTBASE_OUTOFLINE_CTOR -- declares the default ctor (COMDAT 0x006E7A60, ??0CScriptGameResourceObjectBase@@QAE@XZ) so the expanded MovieBase ctor calls it (retail 0x00D315EC / 0x00D3173E `call 0x006E7A60; mov [..],0x01260EF4; zero PImp`).
+- stlport/fable_containers.h: FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE -- STLport 4.6 _alloc.h allocator<T>::deallocate forwarding to __malloc_alloc<0>::deallocate (`free(p)`); no code change, an inline layer that row 0x00D30030 needs for c2's growth counter.
+- stlport/fable_containers.h: FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND -- the chunk-883 opt-in text (agent4007 overlay, row 0x006096E0): _STLP_alloc_proxy::allocate / deallocate through __stl_alloc_rebind; same purpose.

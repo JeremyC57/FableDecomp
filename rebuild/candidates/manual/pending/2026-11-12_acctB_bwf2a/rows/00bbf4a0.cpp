@@ -23,6 +23,25 @@
 //   two-local text (14i/38b debug), which gives retail's `cmp esi,28h` before the second fild.
 // Retail-asm: 0x00BC010D fistp dword ptr [esp+24h] (GFFloatToLongNear inside GFFastCos; engine/GFFloatToLongNear.h)
 // Retail-asm: 0x00BC0159 fistp dword ptr [esp+2Ch] (GFFloatToLongNear inside GFFastSin; engine/GFFloatToLongNear.h)
+// Bodies in this file: CEnginePrimitiveRenderUtil::ApplyVertexShader / ApplyPixelShader / GetCurrentCamera / SetupBlendOpState /
+//   SetupAlphaBlendingStatesFromBlendMode are declared by the shared opt-in FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL
+//   (engine/CEnginePrimitiveRenderUtil.h: "the including row defines the inline bodies") and are copied verbatim from the sibling row
+//   0x00BC25F0 CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive (not yet landed: /opt/fable_lane/w22/agent2059/src/00bc25f0.cpp,
+//   its 'Inline-budget' lines). Visible-body facts: FableWin.pdb has only debug copies (SetupBlendOpState 0x02EAC160 78b/25i,
+//   ApplyVertexShader 0x02E74E10 28b/12i, GetCurrentCamera 0x02E74B40 10b/5i), Ego_r.pdb and Fable.exe have none, and this body never
+//   calls them: it calls CShaderRenderManager::ApplyVertexShader 0x00988020 directly (0x00BBF7F9, 0x00BBFA04, 0x00BBFDFD, 0x00BBFE34),
+//   reads g_pEngineCamera inline (0x00BBFF0A) and reads CRenderStateManager::D3DBlendOpModeTable inline (0x00BBF600, 0x00BBFA36).
+// Inline-budget (measured on this row, repair grades): SetupBlendOpState and SetupAlphaBlendingStatesFromBlendMode are FABLE_FORCEINLINE
+//   as in 0x00BC25F0, whose c2 trace measured the same two helpers (variable-argument sites: SetupAlphaBlendingStatesFromBlendMode c1 693,
+//   over c2's hard 450 cap; SetupBlendOpState c1 154, f 0.0312, score 836: refused as plain inline); this row has the same variable-argument
+//   sites (group->BlendOp / group->BlendMode) and as plain inline it grades DIFFER(3225v4169), 81 hunks.
+//   GFFastSin (and GFFastCos through the overlay opt-in FABLE_RETAIL_GFFASTCOS_FORCEINLINE) is FABLE_FORCEINLINE: retail expands both
+//   (their fistp sites 0x00BC010D / 0x00BC0159 sit in this body, while the out-of-line copies 0x00A14840 / 0x00A147E0 exist); with
+//   GFFastSin plain inline the row grades DIFFER(4005v4169), 59 hunks (frame `sub esp,30h` v retail's 38h).
+// Names: GFDebugPDynamicCast comes from the shared template in engine/CThing.h (FableWin
+//   ??$GFDebugPDynamicCast@PAVCEnginePrimitiveManager@@PAVCEnginePrimitiveManagerParticleGroup@@...). g_pDisplacementRenderer_01436e38 is the
+//   established landed spelling of 0x01436E38 (CEngine::Initialise 0x00B26360 stores `new CEngineScreenEffectDisplacementRenderer` there;
+//   also 0x00B24500, 0x00BC25F0); no PDB / string / FSE / EgoCore name exists for it (descriptive, see NOTES.md and NAME_FIXES.tsv).
 // Flags: none
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
@@ -82,6 +101,7 @@
 #include "engine/CRenderManager.h"
 #include "engine/CShaderRenderManager.h"
 #include "engine/GFFastCos.h"
+#include "engine/CThing.h"                                  // GFDebugPDynamicCast (shared template, CThing.h:47)
 
 namespace NEngineInternal { extern CRenderManager* GPRenderManager; }                  // 0x01436E18
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }      // 0x01436E14
@@ -92,7 +112,6 @@ extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38
 extern CEngineCamera* g_pEngineCamera;                                                 // 0x01436EA0
 extern long g_particleSpriteRenderEnabled_0139b6e0;                                    // 0x0139B6E0 (descriptive)
 
-template<class From,class To> inline To __fastcall GFDebugPDynamicCast(From value,To) { return static_cast<To>(value); }
 
 // GFFastSin: the landed body of 0x00A147E0 (global_GFFastSin_00a147e0.cpp), expanded here.
 FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)

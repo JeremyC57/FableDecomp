@@ -9,3 +9,7 @@
 - Names: params itemDefIndex/count/buying/special are descriptive (no PDB has them). 0x007726B0 is CTCShop::GetQuantity const
   (Ego_r ?GetQuantity@CTCShop@@QBEJJ@Z 0x0077F780, then GetMaxStock 0x0077F7F0 / GetDaysTillRestock 0x0077F860 at the retail 0x70
   spacing 0x007726B0/0x00772720/0x00772790; FableWin same name) -- the landed GetStockQuantity is wrong (NAME_FIXES.tsv).
+- Repair (verifier findings, all applied): NAME_FIXES.tsv now also hands back 0x005BEAD5 GetBoughtPrice, 0x005D99D0 GetInventoryType,
+  0x005BC4C4 GetBuildingThing (the vland RELOC_NAME warnings) and 0x0042B312 GetDef<CUIMiscThingsDef> (FableWin mangled name); source
+  comment fixed (movzx ax,al at 0x005AE4EA) and caller list adds NUISystem::CManager::Action 0x0041E6D3 (xref.py: 0x00425095/0x004256FF/
+  0x00425CFF). Comments only: still RELOCATION_MATCH, strict regrade OK, vt PASS.

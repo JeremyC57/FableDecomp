@@ -1,0 +1,3 @@
+address	grade	bytes	test	module	name	flags	notes
+00607330	RELOCATION_MATCH	9124	PASS (VC7.1, lander check)	CTCInventoryMap	ConstructLogbookList		purity clean; 0 stale overlay header(s)
+00d30030	RELOCATION_MATCH	8589	PASS (VC7.1, lander check)	NScript::CQ_EndGameBossBattleScript	JackOfBladesBossBattle	/d2inlS25	purity clean; 0 stale overlay header(s)

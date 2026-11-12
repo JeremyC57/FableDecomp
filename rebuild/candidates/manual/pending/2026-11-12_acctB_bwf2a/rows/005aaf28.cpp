@@ -281,7 +281,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructTradeDescriptionClothing(long
             GetDefinitionManager().GetDef(itemDefIndex, &thingDef);
             CDefPointer<const CWeaponDef> weaponDef;
             thingDef->GetSubDef(&weaponDef);
-            if (weaponDef->Class == 2) {
+            if (weaponDef->Class == WC_HEAVY) {
                 CTCHeroExperience* experience;
                 CTCInventoryExperience* experienceInventory;
                 if (ParentThing->GetTC(&experience) && ParentThing->GetTC(TCI_INVENTORY_EXPERIENCE, &experienceInventory)) {

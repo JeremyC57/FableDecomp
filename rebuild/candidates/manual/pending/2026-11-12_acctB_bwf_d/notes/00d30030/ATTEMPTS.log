@@ -1,0 +1,180 @@
+18:52 00d30030 grade v1.cpp SRC_FAIL -- first full draft
+18:52 00d30030 grade v1.cpp DIFFER(10757v8589) hunks=373 -- first full draft + def defines
+18:54 00d30030 grade v2.cpp DIFFER(10757v8589) hunks=373 -- explicit inst ~vector / class vector before row (cost rule)
+18:54 00d30030 grade v3.cpp DIFFER(10757v8589) hunks=373 -- explicit inst ~vector / class vector before row (cost rule)
+18:58 00d30030 grade v4.cpp DIFFER(8629v8589) hunks=307 -- if (n>0) guard round every limbo loop
+18:59 00d30030 grade v6.cpp SRC_FAIL -- v4 + movie FORCEINLINE_CTOR
+18:59 00d30030 grade v6.cpp DIFFER(8597v8589) hunks=250 -- movie FORCEINLINE_CTOR (spec decl before include) / without
+18:59 00d30030 grade v7.cpp DIFFER(8629v8589) hunks=307 -- movie FORCEINLINE_CTOR (spec decl before include) / without
+18:59 00d30030 grade v6.cpp DIFFER(8597v8589) hunks=250 -- regrade v6 for counts
+19:01 00d30030 grade v9.cpp DIFFER(8645v8589) hunks=304 -- CCountedPointer<CST>::op= declared out of line (v9 inline op=, v8 implicit)
+19:01 00d30030 grade v8.cpp DIFFER(8645v8589) hunks=304 -- CCountedPointer<CST>::op= declared out of line (v9 inline op=, v8 implicit)
+19:04 00d30030 grade v10.cpp DIFFER(8629v8589) hunks=262 -- GROBase ctor out of line + movie FORCEINLINE; +forced op=; +RGB 3-arg
+19:04 00d30030 grade v11.cpp DIFFER(8632v8589) hunks=261 -- GROBase ctor out of line + movie FORCEINLINE; +forced op=; +RGB 3-arg
+19:04 00d30030 grade v12.cpp DIFFER(8629v8589) hunks=262 -- GROBase ctor out of line + movie FORCEINLINE; +forced op=; +RGB 3-arg
+19:04 00d30030 grade v11.cpp DIFFER(8632v8589) hunks=261 -- regrade v11
+19:04 00d30030 grade v13.cpp DIFFER(8632v8589) hunks=215 -- v11 + forced RGB 4-arg ctor (overlay opt-in)
+19:05 00d30030 grade v14.cpp DIFFER(6024v8589) hunks=270 -- guarded do-while loops (i=0 inside / before guard)
+19:05 00d30030 grade v15.cpp DIFFER(6056v8589) hunks=273 -- guarded do-while loops (i=0 inside / before guard)
+19:05 00d30030 grade v13.cpp DIFFER(8632v8589) hunks=215 -- regrade v13 for hunks
+19:07 00d30030 grade v16.cpp DIFFER(8669v8589) hunks=217 -- 2nd pass unguarded; 1st pass guard spellings (i=0 first / 0<n)
+19:07 00d30030 grade v17.cpp DIFFER(8685v8589) hunks=196 -- 2nd pass unguarded; 1st pass guard spellings (i=0 first / 0<n)
+19:07 00d30030 grade v18.cpp DIFFER(8669v8589) hunks=218 -- 2nd pass unguarded; 1st pass guard spellings (i=0 first / 0<n)
+19:07 00d30030 grade v16.cpp DIFFER(8669v8589) hunks=217 -- regrade v16 for counts
+19:07 00d30030 grade v16.cpp DIFFER(8669v8589) hunks=217 -- v16 hunks
+19:08 00d30030 grade v19.cpp DIFFER(8653v8589) hunks=198 -- per-loop long i
+19:11 00d30030 grade v20.cpp DIFFER(9493v8589) hunks=302 -- no guard on L1 / L1+L2
+19:11 00d30030 grade v21.cpp DIFFER(10301v8589) hunks=261 -- no guard on L1 / L1+L2
+19:12 00d30030 grade v22.cpp DIFFER(10181v8589) hunks=293 -- guards only L1+L2 / only L2 / L1-L3
+19:12 00d30030 grade v23.cpp DIFFER(10461v8589) hunks=309 -- guards only L1+L2 / only L2 / L1-L3
+19:12 00d30030 grade v24.cpp DIFFER(9349v8589) hunks=281 -- guards only L1+L2 / only L2 / L1-L3
+19:12 00d30030 grade v25.cpp DIFFER(6056v8589) hunks=273 -- while loops (no guard) pass1 / both passes
+19:12 00d30030 grade v26.cpp DIFFER(6056v8589) hunks=273 -- while loops (no guard) pass1 / both passes
+19:13 00d30030 grade v27.cpp DIFFER(8725v8589) hunks=319 -- guard spellings >=1 / !=0 / loop i!=n
+19:13 00d30030 grade v28.cpp DIFFER(8653v8589) hunks=198 -- guard spellings >=1 / !=0 / loop i!=n
+19:13 00d30030 grade v29.cpp DIFFER(8653v8589) hunks=196 -- guard spellings >=1 / !=0 / loop i!=n
+19:14 00d30030 grade v30.cpp DIFFER(8653v8589) hunks=198 -- guards >0 on L1/L2, !=0 on L3-L6 (single tests everywhere)
+19:14 00d30030 grade v31.cpp DIFFER(8653v8589) hunks=198 -- guard probes: if(Game) / if(this) all / if(this) L3-L6
+19:14 00d30030 grade v32.cpp DIFFER(8685v8589) hunks=196 -- guard probes: if(Game) / if(this) all / if(this) L3-L6
+19:15 00d30030 grade v33.cpp DIFFER(8653v8589) hunks=199 -- guard probes: if(Game) / if(this) all / if(this) L3-L6
+probe1: does the first wait's bool block ebx for const 0
+19:17 00d30030 grade v34.cpp DIFFER(8653v8589) hunks=199 -- first wait spelling: ==false / explicit CCharString / all waits ==false
+19:17 00d30030 grade v35.cpp DIFFER(8637v8589) hunks=210 -- first wait spelling: ==false / explicit CCharString / all waits ==false
+19:17 00d30030 grade v36.cpp DIFFER(8653v8589) hunks=199 -- first wait spelling: ==false / explicit CCharString / all waits ==false
+19:20 00d30030 grade v37.cpp DIFFER(8653v8589) hunks=199 -- counts declared together before GetAlls / at top
+19:20 00d30030 grade v38.cpp DIFFER(8653v8589) hunks=199 -- counts declared together before GetAlls / at top
+19:21 00d30030 grade 00d30030.cpp DIFFER(8653v8589) hunks=199 -- differ copy regrade
+19:21 00d30030 grade v39.cpp DIFFER(8653v8589) hunks=199 -- spawn flag scope {} / named watcher / SetTeleporting(0)
+19:21 00d30030 grade v40.cpp DIFFER(8653v8589) hunks=200 -- spawn flag scope {} / named watcher / SetTeleporting(0)
+19:21 00d30030 grade v41.cpp DIFFER(8653v8589) hunks=199 -- spawn flag scope {} / named watcher / SetTeleporting(0)
+21:14 00d30030 grade b0.cpp DIFFER(8653v8589) hunks=199 -- attempt2 baseline regrade
+21:16 00d30030 grade ng.cpp DIFFER(10853v8589) hunks=338 -- no guards / do-while(0) round pass1 loops / all loops
+21:16 00d30030 grade d1.cpp DIFFER(12565v8589) hunks=393 -- no guards / do-while(0) round pass1 loops / all loops
+21:16 00d30030 grade d2.cpp DIFFER(12565v8589) hunks=393 -- no guards / do-while(0) round pass1 loops / all loops
+21:17 00d30030 grade f_while.cpp DIFFER(6056v8589) hunks=273 -- pass1 loop forms: while / for-inc-in-body / outer i
+21:17 00d30030 grade f_forinc.cpp DIFFER(6056v8589) hunks=273 -- pass1 loop forms: while / for-inc-in-body / outer i
+21:17 00d30030 grade f_outer.cpp DIFFER(10853v8589) hunks=338 -- pass1 loop forms: while / for-inc-in-body / outer i
+21:17 00d30030 grade f_gi.cpp DIFFER(8685v8589) hunks=196 -- pass1 loop forms: i before guard / n>i / guarded do-while
+21:17 00d30030 grade f_rev.cpp DIFFER(10853v8589) hunks=340 -- pass1 loop forms: i before guard / n>i / guarded do-while
+21:17 00d30030 grade f_gw.cpp DIFFER(6056v8589) hunks=273 -- pass1 loop forms: i before guard / n>i / guarded do-while
+21:17 00d30030 grade b0.cpp DIFFER(8653v8589) hunks=199 -- count calls b0
+21:17 00d30030 grade f_while.cpp DIFFER(6056v8589) hunks=273 -- count calls f_while
+21:17 00d30030 grade ng.cpp DIFFER(10853v8589) hunks=338 -- count calls ng
+21:17 00d30030 grade f_gi.cpp DIFFER(8685v8589) hunks=196 -- regrade f_gi for diff
+21:18 00d30030 grade g1.cpp DIFFER(8685v8589) hunks=196 -- gi+pass2 i-before / i inside guard block / i-before no guard
+21:18 00d30030 grade g2.cpp DIFFER(8653v8589) hunks=198 -- gi+pass2 i-before / i inside guard block / i-before no guard
+21:18 00d30030 grade g3.cpp DIFFER(10853v8589) hunks=338 -- gi+pass2 i-before / i inside guard block / i-before no guard
+21:19 00d30030 grade best.cpp DIFFER(8685v8589) hunks=196 -- regrade best before fmap
+21:23 00d30030 grade r1.cpp DIFFER(8685v8589) hunks=196 -- late three as const& bound temporaries
+21:28 00d30030 grade t1.cpp DIFFER(8685v8589) hunks=196 -- TRetVoid _Fail_Val returns: with gi guards / plain for / while pass1
+21:28 00d30030 grade t2.cpp DIFFER(9709v8589) hunks=152 -- TRetVoid _Fail_Val returns: with gi guards / plain for / while pass1
+21:28 00d30030 grade t3.cpp DIFFER(9757v8589) hunks=228 -- TRetVoid _Fail_Val returns: with gi guards / plain for / while pass1
+21:28 00d30030 grade t2.cpp DIFFER(9709v8589) hunks=152 -- t2 regrade for counts
+21:30 00d30030 grade pz400.cpp DIFFER(8541v8589) hunks=50 -- PROBE: extra caller growth (empty inline calls) before everything
+21:30 00d30030 grade pz450.cpp DIFFER(8493v8589) hunks=196 -- PROBE: extra caller growth (empty inline calls) before everything
+21:30 00d30030 grade pz500.cpp DIFFER(8445v8589) hunks=131 -- PROBE: extra caller growth (empty inline calls) before everything
+21:30 00d30030 grade pz400.cpp DIFFER(8541v8589) hunks=50 -- PROBE pz400 regrade
+21:31 00d30030 grade pe1.cpp DIFFER(8605v8589) hunks=41 -- PROBE pz400 + erase(begin,end) / -RGB force / -movie force
+21:31 00d30030 grade pe2.cpp DIFFER(8605v8589) hunks=190 -- PROBE pz400 + erase(begin,end) / -RGB force / -movie force
+21:31 00d30030 grade pe3.cpp DIFFER(8509v8589) hunks=185 -- PROBE pz400 + erase(begin,end) / -RGB force / -movie force
+21:31 00d30030 grade pe1.cpp DIFFER(8605v8589) hunks=41 -- PROBE pe1 regrade
+21:32 00d30030 grade w1.cpp DIFFER(8685v8589) hunks=206 -- CWideScreenMagicPauseEntities RAII + _Fail_Val: plain / forceinline ctor / no loop guards
+21:32 00d30030 grade w2.cpp DIFFER(8685v8589) hunks=196 -- CWideScreenMagicPauseEntities RAII + _Fail_Val: plain / forceinline ctor / no loop guards
+21:32 00d30030 grade w3.cpp DIFFER(9741v8589) hunks=284 -- CWideScreenMagicPauseEntities RAII + _Fail_Val: plain / forceinline ctor / no loop guards
+21:33 00d30030 grade m1.cpp DIFFER(8685v8589) hunks=196 -- CLevelScriptBase original reference members (Game. / MasterScriptData.)
+21:33 00d30030 grade po1.cpp DIFFER(8685v8589) hunks=196 -- PROBE: is the inline growth counter TU-global (400 empty inlines in another function before / after)
+21:33 00d30030 grade po2.cpp DIFFER(8685v8589) hunks=196 -- PROBE: is the inline growth counter TU-global (400 empty inlines in another function before / after)
+21:33 00d30030 grade pw340.cpp DIFFER(8669v8589) hunks=240 -- PROBE window: base growth N empty inlines (w2 + erase)
+21:33 00d30030 grade pw370.cpp DIFFER(8637v8589) hunks=236 -- PROBE window: base growth N empty inlines (w2 + erase)
+21:33 00d30030 grade pw430.cpp DIFFER(8573v8589) hunks=271 -- PROBE window: base growth N empty inlines (w2 + erase)
+21:34 00d30030 grade pw390.cpp DIFFER(8621v8589) hunks=115 -- PROBE window w2+erase N=390/400/410
+21:34 00d30030 grade pw400.cpp DIFFER(8621v8589) hunks=170 -- PROBE window w2+erase N=390/400/410
+21:34 00d30030 grade pw410.cpp DIFFER(8589v8589) hunks=148 -- PROBE window w2+erase N=390/400/410
+21:34 00d30030 grade pt390.cpp DIFFER(8605v8589) hunks=41 -- PROBE window t1+erase N=390/400/410
+21:34 00d30030 grade pt400.cpp DIFFER(8605v8589) hunks=41 -- PROBE window t1+erase N=390/400/410
+21:34 00d30030 grade pt410.cpp DIFFER(8605v8589) hunks=41 -- PROBE window t1+erase N=390/400/410
+21:34 00d30030 grade pw410.cpp DIFFER(8589v8589) hunks=148 -- PROBE pw410 regrade
+21:34 00d30030 grade pt330.cpp DIFFER(8653v8589) hunks=162 -- PROBE window t1+erase N=330/360
+21:34 00d30030 grade pt360.cpp DIFFER(8653v8589) hunks=162 -- PROBE window t1+erase N=330/360
+21:34 00d30030 grade pt440.cpp DIFFER(8557v8589) hunks=193 -- PROBE window t1+erase N=440/470
+21:34 00d30030 grade pt470.cpp DIFFER(8557v8589) hunks=193 -- PROBE window t1+erase N=440/470
+21:37 00d30030 grade ma0.cpp DIFFER(8685v8589) hunks=196 -- STLport __malloc_alloc<0>::deallocate layer (+probe 0/100/200)
+21:37 00d30030 grade ma100.cpp DIFFER(8685v8589) hunks=196 -- STLport __malloc_alloc<0>::deallocate layer (+probe 0/100/200)
+21:37 00d30030 grade ma200.cpp DIFFER(8653v8589) hunks=162 -- STLport __malloc_alloc<0>::deallocate layer (+probe 0/100/200)
+21:37 00d30030 grade ma230.cpp DIFFER(8653v8589) hunks=162 -- PROBE window with malloc_alloc layer: 230/260/300
+21:37 00d30030 grade ma260.cpp DIFFER(8605v8589) hunks=41 -- PROBE window with malloc_alloc layer: 230/260/300
+21:37 00d30030 grade ma300.cpp DIFFER(8605v8589) hunks=41 -- PROBE window with malloc_alloc layer: 230/260/300
+21:39 00d30030 grade wm150.cpp DIFFER(8685v8589) hunks=208 -- PROBE RAII(plain ctor)+malloc layer+erase window 150/200/250
+21:39 00d30030 grade wm200.cpp DIFFER(8621v8589) hunks=235 -- PROBE RAII(plain ctor)+malloc layer+erase window 150/200/250
+21:39 00d30030 grade wm250.cpp DIFFER(8621v8589) hunks=235 -- PROBE RAII(plain ctor)+malloc layer+erase window 150/200/250
+21:39 00d30030 grade h1.cpp DIFFER(8605v8589) hunks=40 -- PROBE base: health compare spellings !(h<=10) / 10<h / !(phase==4||h<=10)
+21:39 00d30030 grade h2.cpp DIFFER(8605v8589) hunks=41 -- PROBE base: health compare spellings !(h<=10) / 10<h / !(phase==4||h<=10)
+21:39 00d30030 grade h3.cpp DIFFER(8605v8589) hunks=40 -- PROBE base: health compare spellings !(h<=10) / 10<h / !(phase==4||h<=10)
+21:39 00d30030 grade h1.cpp DIFFER(8605v8589) hunks=40 -- PROBE h1 regrade full
+21:40 00d30030 grade mv1.cpp DIFFER(8557v8589) hunks=13 -- PROBE base: MovieBase FORCEINLINE_CTOR (implicit dtor) / + no GROBase outofline ctor
+21:40 00d30030 grade mv2.cpp DIFFER(8557v8589) hunks=13 -- PROBE base: MovieBase FORCEINLINE_CTOR (implicit dtor) / + no GROBase outofline ctor
+21:40 00d30030 grade mv2.cpp DIFFER(8557v8589) hunks=13 -- PROBE mv2 regrade full
+21:43 00d30030 grade wt_forbreak.cpp DIFFER(8621v8589) hunks=259 -- wait loops as for(;;){if(c)break;} / while(true) / for(;c;) (no probe)
+21:43 00d30030 grade wt_whiletrue.cpp DIFFER(9245v8589) hunks=281 -- wait loops as for(;;){if(c)break;} / while(true) / for(;c;) (no probe)
+21:43 00d30030 grade wt_forcond.cpp DIFFER(8637v8589) hunks=170 -- wait loops as for(;;){if(c)break;} / while(true) / for(;c;) (no probe)
+21:45 00d30030 grade nd1.cpp DIFFER(8685v8589) hunks=195 -- visible noinline ~CCountedPointer<MovieBase> body: +forced movie ctor/dtor / +forced ctor only / forced both + PROBE base
+21:45 00d30030 grade nd2.cpp DIFFER(8637v8589) hunks=170 -- visible noinline ~CCountedPointer<MovieBase> body: +forced movie ctor/dtor / +forced ctor only / forced both + PROBE base
+21:45 00d30030 grade nd3.cpp DIFFER(8605v8589) hunks=40 -- visible noinline ~CCountedPointer<MovieBase> body: +forced movie ctor/dtor / +forced ctor only / forced both + PROBE base
+21:45 00d30030 grade nd3.cpp DIFFER(8605v8589) hunks=40 -- nd3 full
+21:46 00d30030 grade base2.cpp DIFFER(8637v8589) hunks=170 /Ox -- flag probe /Ox
+21:46 00d30030 grade base2.cpp DIFFER(8637v8589) hunks=170 /Ob1 -- flag probe /Ob1
+21:46 00d30030 grade base2.cpp ERROR /GL -- flag probe /GL
+21:47 00d30030 grade base2.cpp DIFFER(8637v8589) hunks=170 -- legit combo: _Fail_Val+erase+malloc layer+h3 + movie ctor-only / +GROBase outofline / both forced
+21:47 00d30030 grade base3.cpp DIFFER(8637v8589) hunks=170 -- legit combo: _Fail_Val+erase+malloc layer+h3 + movie ctor-only / +GROBase outofline / both forced
+21:47 00d30030 grade base4.cpp DIFFER(8685v8589) hunks=195 -- legit combo: _Fail_Val+erase+malloc layer+h3 + movie ctor-only / +GROBase outofline / both forced
+21:47 00d30030 grade mv2.cpp DIFFER(8557v8589) hunks=13 /d2inlS12 -- PROBE base: inline S param /d2inlS12
+21:47 00d30030 grade mv2.cpp DIFFER(8557v8589) hunks=13 /d2inlS15 -- PROBE base: inline S param /d2inlS15
+21:47 00d30030 grade mv2.cpp DIFFER(8557v8589) hunks=13 /d2inlS20 -- PROBE base: inline S param /d2inlS20
+21:48 00d30030 grade it1v.cpp DIFFER(8557v8589) hunks=13 -- PROBE base: ITT spelling it1v
+21:48 00d30030 grade it2v.cpp DIFFER(8557v8589) hunks=99 -- PROBE base: ITT spelling it2v
+21:48 00d30030 grade it3v.cpp DIFFER(8557v8589) hunks=99 -- PROBE base: ITT spelling it3v
+21:50 00d30030 grade vt0.cpp DIFFER(8637v8589) hunks=170 -- STLport __value_type layer (+probe 0/100/150)
+21:50 00d30030 grade vt100.cpp DIFFER(8669v8589) hunks=125 -- STLport __value_type layer (+probe 0/100/150)
+21:50 00d30030 grade vt150.cpp DIFFER(8605v8589) hunks=136 -- STLport __value_type layer (+probe 0/100/150)
+21:50 00d30030 grade vt200.cpp DIFFER(8557v8589) hunks=13 -- PROBE window with value_type layer
+21:50 00d30030 grade vt230.cpp DIFFER(8509v8589) hunks=167 -- PROBE window with value_type layer
+21:50 00d30030 grade vt260.cpp DIFFER(8509v8589) hunks=167 -- PROBE window with value_type layer
+21:50 00d30030 grade b3p200.cpp DIFFER(8605v8589) hunks=136 -- PROBE window base3 (no value_type layer)
+21:50 00d30030 grade b3p230.cpp DIFFER(8605v8589) hunks=136 -- PROBE window base3 (no value_type layer)
+21:50 00d30030 grade b3p260.cpp DIFFER(8557v8589) hunks=13 -- PROBE window base3 (no value_type layer)
+21:50 00d30030 grade rv0.cpp DIFFER(8669v8589) hunks=125 -- CCountedPointer ReleaseData layer + value_type + malloc (+probe 0/100/150)
+21:50 00d30030 grade rv100.cpp DIFFER(8557v8589) hunks=13 -- CCountedPointer ReleaseData layer + value_type + malloc (+probe 0/100/150)
+21:50 00d30030 grade rv150.cpp DIFFER(8509v8589) hunks=167 -- CCountedPointer ReleaseData layer + value_type + malloc (+probe 0/100/150)
+21:50 00d30030 grade rb0.cpp DIFFER(8637v8589) hunks=170 -- CCountedPointer ReleaseData layer + malloc (+probe 0/150/200)
+21:50 00d30030 grade rb150.cpp DIFFER(8557v8589) hunks=13 -- CCountedPointer ReleaseData layer + malloc (+probe 0/150/200)
+21:50 00d30030 grade rb200.cpp DIFFER(8557v8589) hunks=13 -- CCountedPointer ReleaseData layer + malloc (+probe 0/150/200)
+21:52 00d30030 grade ar0.cpp DIFFER(8374v8589) hunks=258 -- +STLport alloc_proxy rebind layer (chunk 883 opt-in) + malloc + value_type + ReleaseData (+probe 0/30/60)
+21:52 00d30030 grade ar30.cpp DIFFER(8374v8589) hunks=258 -- +STLport alloc_proxy rebind layer (chunk 883 opt-in) + malloc + value_type + ReleaseData (+probe 0/30/60)
+21:52 00d30030 grade ar60.cpp DIFFER(8326v8589) hunks=356 -- +STLport alloc_proxy rebind layer (chunk 883 opt-in) + malloc + value_type + ReleaseData (+probe 0/30/60)
+21:52 00d30030 grade ra.cpp DIFFER(8605v8589) hunks=136 -- rebind layer combos: +ReleaseData / alone / +malloc
+21:52 00d30030 grade rbb.cpp DIFFER(8669v8589) hunks=125 -- rebind layer combos: +ReleaseData / alone / +malloc
+21:52 00d30030 grade rc.cpp DIFFER(8557v8589) hunks=13 -- rebind layer combos: +ReleaseData / alone / +malloc
+21:52 00d30030 grade rc.cpp DIFFER(8557v8589) hunks=13 -- rc full diff
+21:53 00d30030 grade rc.cpp DIFFER(8589v8589) hunks=113 /d2inlS40 -- movie dtor flag probe /d2inlS40
+21:53 00d30030 grade rc.cpp DIFFER(26598v8589) hunks=150 /d2inlS100 -- movie dtor flag probe /d2inlS100
+21:53 00d30030 grade rc.cpp DIFFER(23974v8589) hunks=168 /d2inlT700000 -- movie dtor flag probe /d2inlT700000
+21:53 00d30030 grade rc.cpp DIFFER(8557v8589) hunks=13 /d2inlS20 -- movie dtor flag probe /d2inlS20
+21:53 00d30030 grade rc.cpp DIFFER(8589v8589) hunks=7 /d2inlS26 -- movie dtor flag probe /d2inlS26
+21:53 00d30030 grade rc.cpp DIFFER(8589v8589) hunks=7 /d2inlS33 -- movie dtor flag probe /d2inlS33
+21:53 00d30030 grade rc.cpp DIFFER(8589v8589) hunks=7 /d2inlS26 -- rc /d2inlS26 full
+21:53 00d30030 grade rc.cpp DIFFER(8557v8589) hunks=13 /d2inlS21 -- S threshold search /d2inlS21
+21:53 00d30030 grade rc.cpp DIFFER(8557v8589) hunks=13 /d2inlS23 -- S threshold search /d2inlS23
+21:53 00d30030 grade rc.cpp DIFFER(8557v8589) hunks=13 /d2inlS24 -- S threshold search /d2inlS24
+21:53 00d30030 grade rc.cpp DIFFER(8589v8589) hunks=7 /d2inlS25 -- S threshold search /d2inlS25
+21:54 00d30030 grade x1.cpp RELOCATION_MATCH /d2inlS25 -- epilogue: ActivateQuest(+Logbook,+Morality) inside each morality branch, /d2inlS25
+21:54 00d30030 grade m1.cpp RELOCATION_MATCH /d2inlS25 -- MATCH candidate regrade
+21:55 00d30030 grade y1.cpp RELOCATION_MATCH /d2inlS25 -- drop forced helpers under S25: y1 (y1 no RGB force, y2 implicit op=, y3 both)
+21:55 00d30030 grade y2.cpp RELOCATION_MATCH /d2inlS25 -- drop forced helpers under S25: y2 (y1 no RGB force, y2 implicit op=, y3 both)
+21:55 00d30030 grade y3.cpp RELOCATION_MATCH /d2inlS25 -- drop forced helpers under S25: y3 (y1 no RGB force, y2 implicit op=, y3 both)
+21:55 00d30030 grade m1.cpp DIFFER(8557v8589) hunks=9 /d2inlS24 -- S24 must fail (smallest N proof)
+21:55 00d30030 grade y3.cpp DIFFER(8554v8589) hunks=11 /d2inlS24 -- y3 at S24 (smallest-N proof)
+21:55 00d30030 grade y3.cpp RELOCATION_MATCH /d2inlS25 -- y3 regrade S25
+21:55 00d30030 grade z1.cpp DIFFER(10189v8589) hunks=309 /d2inlS25 -- natural loop forms under the matched config: plain for / while
+21:55 00d30030 grade z2.cpp DIFFER(6040v8589) hunks=248 /d2inlS25 -- natural loop forms under the matched config: plain for / while
+21:56 00d30030 grade f00d30030.cpp RELOCATION_MATCH /d2inlS25 -- final source regrade
+21:56 00d30030 grade f00d30030.cpp RELOCATION_MATCH /d2inlS25 -- strict-headers regrade

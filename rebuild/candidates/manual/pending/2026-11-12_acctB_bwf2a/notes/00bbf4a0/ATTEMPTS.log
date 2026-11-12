@@ -54,3 +54,15 @@
 17:44 00bbf4a0 grade final.cpp RELOCATION_MATCH -- final source (no CMatrix3x4 overlay, header comment)
 17:45 00bbf4a0 grade final.cpp RELOCATION_MATCH -- strict headers regrade
 17:45 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- final strict regrade, minimal overlay
+20:22 00bbf4a0 grade src.cpp ERROR -- 
+20:22 00bbf4a0 grade src.cpp ERROR -- 
+20:22 00bbf4a0 grade src.cpp RELOCATION_MATCH -- 
+20:24 00bbf4a0 grade src.cpp RELOCATION_MATCH -- 
+20:26 00bbf4a0 grade src.cpp TIMEOUT -- 
+20:28 00bbf4a0 grade src.cpp TIMEOUT -- 
+23:14 00bbf4a0 grade v1.cpp RELOCATION_MATCH -- repair: CThing.h cast; probe plain-inline GFFastSin / Setup*
+23:14 00bbf4a0 grade v2.cpp DIFFER(4005v4169) hunks=59 -- probe: GFFastSin plain inline
+23:14 00bbf4a0 grade v3.cpp DIFFER(3225v4169) hunks=81 -- probe: Setup* plain inline
+23:15 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- repair: CThing.h cast, body/inline-budget/name comments
+23:15 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- repair: strict headers
+23:15 00bbf4a0 grade 00bbf4a0.cpp RELOCATION_MATCH -- repair: comment wording

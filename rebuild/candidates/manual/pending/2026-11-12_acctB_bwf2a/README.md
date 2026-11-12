@@ -34,3 +34,10 @@ Base for the header overlays: `FullDecomp` at `bb0dc27e9` (merged into `FullDeco
   the opt-ins). Rows without a folder need no header change. Two rows may add an opt-in for the same inline: compare at landing.
 - `notes/<addr>/`: the scout's `DOSSIER.md` / `OUTLINE.md`, the author's `NOTES.md` (what made it match, name fixes with
   evidence, made-up names) and `ATTEMPTS.log` (one line per grade).
+
+## Update (23:20 UTC): three rows re-staged after the workflow's repair pass
+
+0x005AAF28, 0x005AD571 and 0x00BBF4A0 were changed by the Opus repair agents (verifier findings: incomplete NAME_FIXES, an
+enum compared as a number, a test comment, undeclared made-up names, local helper bodies). The repaired rows are staged here
+(rows, notes, payload) and re-verified by the coordinator: RELOCATION_MATCH + PASS under strict headers, purity clean. The
+`RELOC_CONFLICT` on 0x00BBF4A0 (`D3DAlphaFuncModeTable`) is unchanged and still needs a decision at landing.

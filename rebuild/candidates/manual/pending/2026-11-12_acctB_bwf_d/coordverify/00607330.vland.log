@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00607330   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00607330   RELOCATION_MATCH PASS   ConstructLogbookList
+
+WINS: 1
+  00607330 RELOCATION_MATCH CTCInventoryMap::ConstructLogbookList

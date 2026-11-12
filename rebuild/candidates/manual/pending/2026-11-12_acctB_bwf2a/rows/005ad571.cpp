@@ -7,7 +7,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005AD571, 4414 bytes, thiscall `ret 10h`, frame pointer (`optimize("y",off)`), /Os TU
 //   (`optimize("s",on)`, as the same-TU 0x005A3E47 / 0x005AE6AF), no EH frame.
 // Identity: Ego_r.pdb / FableWin.pdb ?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z; callers
-//   RefreshDescriptions 0x005AE6AF, RefreshBuyDescriptionsPC 0x005AE9DE, RefreshSellDescriptionsPC 0x005AEAEE. Parameter names are
+//   RefreshDescriptions 0x005AE6AF, RefreshBuyDescriptionsPC 0x005AE9DE, RefreshSellDescriptionsPC 0x005AEAEE, and
+//   NUISystem::CManager::Action 0x0041E6D3 (three calls: 0x00425095, 0x004256FF, 0x00425CFF). Parameter names are
 //   descriptive (no PDB has them).
 // Callees: CTCInventoryItem::IsWeapon 0x005D97F0 / IsClothing 0x005D9C60 / GetInventoryType 0x005D99D0,
 //   ConstructTradeDescriptionWeapon 0x005A9CBE / ConstructTradeDescriptionClothing 0x005AAF28, NUISystem::CManager::GetInstance
@@ -31,7 +32,7 @@
 //   reused `CText* line` local (one variable for all lines: separate per-line locals each took their own frame slot and shifted the
 //   whole temporary area by 4 bytes) + `text = ...` + AddChild + SetValue. The combat def is declared then assigned from
 //   GetPHeroCombatDef() (`inc ; inc ; dec`, 0x005AE35A). `text = NGameText::ConstructString(fmt, args)` assigns the bool result
-//   through operator=(wchar_t) (retail `movzx ax,al`, 0x005AE4F7) -- as the original source did.
+//   through operator=(wchar_t) (retail `movzx ax,al` at 0x005AE4EA, call at 0x005AE4F2) -- as the original source did.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)

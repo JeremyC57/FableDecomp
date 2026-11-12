@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00d30030   RELOCATION_MATCH PASS   JackOfBladesBossBattle
+
+WINS: 1
+  00d30030 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::JackOfBladesBossBattle

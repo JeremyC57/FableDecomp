@@ -77,11 +77,24 @@ int main()
     if (a.size() != 7 || a[0].text != "Cost: 120 (100)" || a[0].B != 100 || a[0].G != 100 || a[0].R != 200
         || a[2].text != "Owned: 2" || a[3].text != "In stock: 3/5" || a[4].text != "Delivery: none"
         || a[5].text != "Stat1 level 3 required" || a[6].text != "Plain") { std::printf("005aaf28_TEST FAIL\n"); return 1; }
-    // selling for less than bought: loss line tinted B,G; no owned / no heavy line; delivery days
+    // selling for more than bought: profit line tinted B,R; no owned / no heavy line; delivery days
     shop.days = 2;
     std::vector<Line> b = Construct(shop, inv, hero, 100, false, false, true);
     if (b.size() != 6 || b[0].text != "Cost: 80 (100)" || b[0].B != 100 || b[0].G != 100 || b[1].text != "Profit: 30"
         || b[1].R != 100 || b[4].text != "Delivery: 2 days") { std::printf("005aaf28_TEST FAIL\n"); return 1; }
+    // selling for less than bought (bought 95, sells at 80): loss line with -profit, tinted B,G, R untouched
+    inv.bought = 95;
+    std::vector<Line> l = Construct(shop, inv, hero, 100, false, false, true);
+    if (l.size() != 6 || l[1].text != "Loss: 15" || l[1].B != 100 || l[1].G != 100 || l[1].R != 200) {
+        std::printf("005aaf28_TEST FAIL\n"); return 1;
+    }
+    // selling at exactly the bought price: profit 0 is a profit line, untinted
+    inv.bought = 80;
+    std::vector<Line> z = Construct(shop, inv, hero, 100, false, false, true);
+    if (z.size() != 6 || z[1].text != "Profit: 0" || z[1].B != 200 || z[1].G != 200 || z[1].R != 200) {
+        std::printf("005aaf28_TEST FAIL\n"); return 1;
+    }
+    inv.bought = 50;
     // special item cheaper than default: price tinted B,G, then the item description only
     std::vector<Line> c = Construct(shop, inv, hero, 100, true, true, false);
     if (c.size() != 2 || c[0].text != "Price: 80 (100)" || c[0].G != 100 || c[0].R != 200 || c[1].text != "A hat") {
