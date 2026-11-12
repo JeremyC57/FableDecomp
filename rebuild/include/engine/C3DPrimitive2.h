@@ -7,6 +7,21 @@
 #include "boost/scoped_ptr.h"
 #include "engine/CIndexBuffer.h"
 #endif
+#ifdef FABLE_RETAIL_CANIMATEDBLOCK_DATA
+// Retail opt-in (wf4, row 0x00A90040 N3DPrimitive::CAnimatedBlock::ConvertToVBFormatBump; needs FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS):
+// types CAnimatedBlock::Data (+0x2C) as Ego_r.pdb's CIVCountedPointer<CAnimatedBlock::CDeviceIndependent>, adds that nested pointee
+// (Ego_r 40 bytes with 16-byte CArrays, retail 0x20: CIVCountedPointeeBase +0, CArray<unsigned long> VertexList +0x08,
+// CArray<C3DIndexedBoneWeight> BoneWeights +0x14) and declares the two private converters
+// ?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z (0x00A8FF50) and
+// ?ConvertToVBFormatBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1Bump@@AAVCDeviceIndependent@2@@Z (0x00A90040).
+// No layout change (Data stays 4 bytes at +0x2C).
+#include "engine/CIVCountedPointer.h"
+#include "engine/CArray.h"
+#include "engine/C3DIndexedBoneWeight.h"
+class CTVertexNormBlend4Tex1;
+class CTVertexNormBlend4Tex1Bump;
+namespace N3DPrimitive { class CDeviceIndependent; }
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS
 // Retail opt-in (chunk F2, row 0x00BCFB00): Ego_r.pdb N3DPrimitive::CAnimatedBlock (0x30 bytes, : CBaseBlock per the shared
 // PrimitiveCount / StartIndex / IsStrip prefix the row reads at +0 / +4 / +8): BoneConstantsFixupOffset +0x0C, VertexCount +0x10,
@@ -26,7 +41,20 @@ public:
     bool PalettedFlag;                                                   // +0x16
     unsigned char GroupCount;                                            // +0x17
     unsigned char Groups[18];                                            // +0x18
+#ifdef FABLE_RETAIL_CANIMATEDBLOCK_DATA
+    class CDeviceIndependent : public CIVCountedPointeeBase {
+    public:
+        CArray<unsigned long> VertexList;                                // +0x08
+        CArray<C3DIndexedBoneWeight> BoneWeights;                        // +0x14
+    };
+    CIVCountedPointer<CDeviceIndependent> Data;                          // +0x2C
+private:
+    void ConvertToVBFormatNonBump(CTVertexNormBlend4Tex1* out, N3DPrimitive::CDeviceIndependent& mesh);     // 0x00A8FF50
+    void ConvertToVBFormatBump(CTVertexNormBlend4Tex1Bump* out, N3DPrimitive::CDeviceIndependent& mesh);    // 0x00A90040
+public:
+#else
     unsigned char Data[4];                                               // +0x2C CIVCountedPointer<CAnimatedBlock::CDeviceIndependent>
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(N3DPrimitive::CAnimatedBlock)==0x30);

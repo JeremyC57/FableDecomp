@@ -215,6 +215,30 @@ public:
 #endif
     iterator insert_unique(iterator,const V&);
     Compare key_comp()const{return _M_key_compare;}
+#ifdef FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
+    // Per-TU opt-in (wf4, row 0x004B3CE0 CQuestManager::ActivateQuests): STLport 4.6 _tree.h spelling -- lower_bound / upper_bound /
+    // equal_range are inline wrappers over the out-of-line `_Base_ptr _M_lower_bound(const key_type&) const` / `_M_upper_bound`
+    // (retail 0x004B9D00 / 0x004B9D50 for the CCharString-keyed trees, both landed), erase(iterator, iterator) is the out-of-line
+    // 0x004B9C10 (landed) and erase(const key_type&) is `equal_range ; distance ; erase(first, last)`. Replaces the expanded walks
+    // of the default path and of FABLE_RETAIL_STLP_TREE_ERASE_KEY for this TU (do not define both).
+private:
+    _Rb_tree_node_base* _M_lower_bound(const K& key) const;
+    _Rb_tree_node_base* _M_upper_bound(const K& key) const;
+public:
+    iterator lower_bound(const K& key) { return iterator(static_cast<_Link_type>(_M_lower_bound(key))); }
+    const_iterator lower_bound(const K& key) const { return const_iterator(static_cast<_Link_type>(_M_lower_bound(key))); }
+    iterator upper_bound(const K& key) { return iterator(static_cast<_Link_type>(_M_upper_bound(key))); }
+    const_iterator upper_bound(const K& key) const { return const_iterator(static_cast<_Link_type>(_M_upper_bound(key))); }
+    pair<iterator,iterator> equal_range(const K& key) { return pair<iterator,iterator>(lower_bound(key),upper_bound(key)); }
+    pair<const_iterator,const_iterator> equal_range(const K& key) const { return pair<const_iterator,const_iterator>(lower_bound(key),upper_bound(key)); }
+    void erase(iterator first,iterator last);
+    size_t erase(const K& key) {
+        pair<iterator,iterator> p=equal_range(key);
+        size_t n=distance(p.first,p.second);
+        erase(p.first,p.second);
+        return n;
+    }
+#else
     iterator lower_bound(const K& key) {
         _Link_type y=this->_M_header._M_data;
         _Link_type x=_M_root();
@@ -224,6 +248,7 @@ public:
         }
         return iterator(y);
     }
+#endif
 #if defined(FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY)
     // Retail opt-in (chunk 1016, row 0x006D8790 CTCHeroExperience::AddSuccessfulStrikeOfType): owner decision D1 (2026-11-03) with the
     // body visible -- STLport 4.6.1 _tree.h `template <class _KT> const_iterator find(const _KT& __k) const { return
@@ -273,7 +298,7 @@ public:
     void erase(iterator position);
 #endif
 #endif
-#ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY) && !defined(FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE)
     // Retail opt-in (chunk 867, row 0x005B01FE CTCInventoryTrade::SellItemPC): STLport 4.6 _tree.h upper_bound / equal_range and
     // _tree.c `size_type erase(const key_type&)` (equal_range, distance, erase(first, last); returns the number removed) and
     // `void erase(iterator, iterator)` (clear() for the whole range, else erase(first++) until last). The bodies are visible, as in
@@ -472,6 +497,14 @@ public:
 #endif
     pair<iterator,bool> insert(const K& value){typedef typename _Rep_type::iterator RepIterator;pair<RepIterator,bool> p=_M_t.insert_unique(value);return pair<iterator,bool>((const iterator&)p.first,p.second);}
     size_t erase(const K& value){return _M_t.erase(value);}
+#ifdef FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
+    // (same opt-in, wf4 row 0x004B3CE0) STLport 4.6 _set.h lower_bound / upper_bound / equal_range (const, forwarding to the tree) and
+    // erase(iterator, iterator) (`_M_t.erase((_Rep_iterator&)__first, (_Rep_iterator&)__last)`).
+    iterator lower_bound(const K& x) const { return _M_t.lower_bound(x); }
+    iterator upper_bound(const K& x) const { return _M_t.upper_bound(x); }
+    pair<iterator,iterator> equal_range(const K& x) const { return _M_t.equal_range(x); }
+    void erase(iterator first,iterator last){typedef typename _Rep_type::iterator RepIterator;_M_t.erase((RepIterator&)first,(RepIterator&)last);}
+#endif
 #ifdef FABLE_RETAIL_STLP_SET_FIND
     // Retail opt-in (chunk 848, row 0x00B2D9F0): STLport 4.6 _set.h `iterator find(const key_type& x) const { return _M_t.find(x); }`
     // (inline; the tree's const find stays the out-of-line call 0x00B2EB20). Pair with FABLE_RETAIL_STLP_SET for end().

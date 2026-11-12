@@ -1093,6 +1093,11 @@ template<class _RandomAccessIter> void sort(_RandomAccessIter,_RandomAccessIter)
 #endif
 template<class _RandomAccessIter,class _RandomNumberGenerator>
 void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter,_RandomNumberGenerator&);
+#ifdef FABLE_RETAIL_STLP_RANDOM_SHUFFLE_2ARG
+// Per-TU opt-in (wf4, row 0x008F10B0 CTCTavernGameCardBase::ShuffleCards): STLport 4.6 _algo.h two-argument random_shuffle, declared
+// only; retail calls the CCard** instantiation out of line as __fastcall (first ecx, last edx; 0x007D7860, landed with /Gr).
+template<class _RandomAccessIter> void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter);
+#endif
 #ifdef FABLE_RETAIL_STLP_BACK_INSERTER
 // Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise; the landed 0x007B3760 CTCGuard::OnSerialise models the same
 // locally): STLport 4.6 _iterator.h back_insert_iterator / back_inserter, and _algobase.h copy() declared only. Retail calls the copy

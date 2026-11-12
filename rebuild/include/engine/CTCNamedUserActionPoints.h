@@ -34,6 +34,11 @@ class CRightHandedSet;
 class CTCUserActionPointBase : public CTCBase {
 public:
     bool GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long& index);      // 0x007FEDE0
+#ifdef FABLE_RETAIL_CTCUSERACTIONPOINTBASE_SETFREE
+    // Nested opt-in (wf4, row 0x007B8B10 CTCTavernTable::GetEatingPoint): Ego_r.pdb / FableWin.pdb
+    // ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z (Ego_r 0x007EF000, retail 0x007FEF40, landed), out of line.
+    void SetActionPointAsFree(long index);                               // 0x007FEF40
+#endif
     virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const;   // slot 28 (+0x70)
 protected:
     bool IsActionPointIndexBlocked(long index);                          // 0x007FEC30
@@ -47,6 +52,11 @@ protected:
 class CTCNamedUserActionPoints : public CTCUserActionPointBase {
 public:
     virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const;   // 0x007FF0C0
+#ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_GETNAME
+    // Nested opt-in (wf4, row 0x007B8B10): Ego_r.pdb / FableWin.pdb ?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z
+    // (Ego_r 0x007F2830, retail 0x007FEFC0), out of line; the name comes back through the reference.
+    void GetName(long index, CCharString& name);                         // 0x007FEFC0
+#endif
     bool GetFullNamedActionPoint(CThing& thing, CCharString name, long& index, long start);                     // 0x007FEFE0
     bool GetFreeNamedActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& orientation, CCharString name, long& index,
                                  long start, bool checkBlocked);                                                // 0x007FF190

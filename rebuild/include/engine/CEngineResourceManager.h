@@ -69,6 +69,11 @@ public:
         return *reinterpret_cast<const class CEngineVSConstantLayoutLightsBones*>(VSConstantLayoutLightsBones);
     }
 #endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_GETSTIPLEFADETEXTURE
+    // Retail opt-in (row 0x00BBCC70): FableWin.pdb ?GetStipleFadeTexture@CEngineResourceManager@@QAEAAVCTexture@@XZ, inline in
+    // retail (SetupPixelShader takes the member's address: `mov ecx,[GPResourceManager] ; add ecx,2AACh`). The member stays opaque.
+    class CTexture& GetStipleFadeTexture() { return *(class CTexture*)StipleFadeTexture; }
+#endif
     CGPUScratchBufferTextureManager& GetGPUScratchBufferTextureManager()
     {
         return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;

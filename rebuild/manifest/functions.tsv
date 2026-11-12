@@ -4809,7 +4809,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004b3900	AddQuestRegion	CQuestManager	__thiscall	void	3	CQuestManager *,CCharString const &,CRegion const *	1	yes	accepted									
 004b39b0	ClearQuestPersistScript	CQuestManager	__thiscall	void	2	CQuestManager *,CCharString *	1	yes	accepted									
 004b3a20	DeactivateQuest	CQuestManager	__thiscall	void	3	CQuestManager *,CCountedPointer<CQuestManager::CActiveQuest>,ulong	1	yes	accepted									
-004b3ce0	CQuestManager::ActivateQuests	CQuestManager	unknown	undefined	0		0	yes	accepted									
+004b3ce0	ActivateQuests	CQuestManager	unknown	undefined	0		0	yes	accepted									
 004b41f0	ClearAll	NQuestManager::CRuntimeQuestPersistence	unknown	undefined	0		0	yes	accepted									
 004b4260	ActivateMultipleQuests	CQuestManager	__thiscall	bool	4	CQuestManager *,CArray<CCharString> *,bool,bool	1	yes	accepted									
 004b43d0	DeactivateQuest	CQuestManager	__thiscall	void	3	CQuestManager *,CCharString *,ulong	1	yes	accepted									

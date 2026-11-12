@@ -24,6 +24,11 @@ private:
  float ComputeSubContractionCost(const CSubContraction&,const C3DVector&);
 #endif
  C3DVector MakeOrthogonal(const C3DVector& vect,const C3DVector& normal)const;
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_JOINADJACENTFACES
+ // Retail opt-in (row 0x00AC8AE0): Ego_r.pdb 0x00C61CA0 / FableWin.pdb ?JoinAdjacentFaces@COptimisedPrimitive@QuadricOptimiserInternals@@AAE_NKK@Z
+ // (private, non-const). Declaration only; no layout change.
+ bool JoinAdjacentFaces(unsigned long face_a,unsigned long face_b);                                 // 0x00AC8AE0
+#endif
 #ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_METHODS
  // Retail opt-in (chunk Q15, rows 0x00AC7CB0 / 0x00AC7300 / 0x00ACD960): Ego_r.pdb name set of the class (access and const from the
  // decorations: ABE = private const, AAE = private, QAE = public). Declarations only; no layout change.

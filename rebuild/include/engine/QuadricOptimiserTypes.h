@@ -27,8 +27,20 @@ class CSubContraction {public:unsigned long Index1,Index2;};
 class COptimisedFace {public:
  unsigned long VertexIndices[3];unsigned long UniqueVertexIndices[3];long Edges[3];C3DVector UTangent,VTangent;bool Exists;
  unsigned long OutputIndex;long Segment;
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDFACE_HASUNIQUEVERTEX
+ // Retail opt-in (row 0x00AC8AE0): FableWin.pdb ?HasUniqueVertex@COptimisedFace@QuadricOptimiserInternals@@QBE_NK@Z (Ego_r 0x00C5F860),
+ // inline in retail (expanded six times in JoinAdjacentFaces; compare order U[0], U[1], U[2]).
+ bool HasUniqueVertex(unsigned long unique_vertex)const{return UniqueVertexIndices[0]==unique_vertex||UniqueVertexIndices[1]==unique_vertex||UniqueVertexIndices[2]==unique_vertex;}
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(COptimisedFace)==0x48);
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDEDGE
+// Retail opt-in (row 0x00AC8AE0): Ego_r.pdb COptimisedEdge (16 bytes): FaceA +0, FaceB +4, UniqueVertex1 +8, UniqueVertex2 +0Ch.
+class COptimisedEdge {public:
+ unsigned long FaceA,FaceB,UniqueVertex1,UniqueVertex2;
+};
+FABLE_STATIC_ASSERT(sizeof(COptimisedEdge)==0x10);
+#endif
 #endif
 FABLE_STATIC_ASSERT(sizeof(CQuadric)==0x58);
 FABLE_STATIC_ASSERT(sizeof(COptimisedVertex)==0xb8);

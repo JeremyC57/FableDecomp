@@ -1,0 +1,48 @@
+addr       parity           behav  name
+004b3ce0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@SIXPAX@Z -> 004baef0 labelled '_global::DeleteObject_CActiveQuest_004baef0'
+004b3ce0   WARN RELOC_NAME: ?erase@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QAEIABVCCharString@@@Z -> 004bb270 labelled 'std::std::map_find_lower_upper'
+004b3ce0   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z -> 004b9d00 labelled 'std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound'
+004b3ce0   RELOCATION_MATCH PASS   ActivateQuests
+00a90040   RELOCATION_MATCH PASS   ConvertToVBFormatBump
+0064546f   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0064546f   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+0064546f   RELOCATION_MATCH PASS   DrawEffectAtPos
+  WARN leaf 'operator()' matches no symbol in 008565e0.obj; graded the largest function
+  WARN leaf 'operator()' matches no symbol in 008565e0.obj; graded the largest function
+008565e0   RELOCATION_MATCH PASS   operator()
+00ac8ae0   RELOCATION_MATCH PASS   JoinAdjacentFaces
+008f10b0   WARN RELOC_NAME: ??$random_shuffle@PAPAVCCard@@@std@@YIXPAPAVCCard@@0@Z -> 007d7860 labelled '_global::Algorithm_FisherYatesShuffle'
+008f10b0   RELOCATION_MATCH PASS   ShuffleCards
+00addbe0   RELOCATION_MATCH PASS   BuildFromSubSpheres
+0065a41c   RELOCATION_MATCH PASS   GetFineAmountForCurrentCrimes
+0065aa6f   RELOCATION_MATCH PASS   IsTimeToGoToTavern
+00bbcc70   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00bbcc70   RELOCATION_MATCH PASS   SetupPixelShader
+007b8b10   RELOCATION_MATCH PASS   GetEatingPoint
+
+WINS: 11
+  004b3ce0 RELOCATION_MATCH CQuestManager::ActivateQuests
+  00a90040 RELOCATION_MATCH N3DPrimitive::CAnimatedBlock::ConvertToVBFormatBump
+  0064546f RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::DrawEffectAtPos
+  008565e0 RELOCATION_MATCH CThingFilter_CombatIsStrikeToStrike::operator()
+  00ac8ae0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::JoinAdjacentFaces
+  008f10b0 RELOCATION_MATCH CTCTavernGameCardBase::ShuffleCards
+  00addbe0 RELOCATION_MATCH C3DBoundingSphere::BuildFromSubSpheres
+  0065a41c RELOCATION_MATCH CTCVillage::GetFineAmountForCurrentCrimes
+  0065aa6f RELOCATION_MATCH CTCVillage::IsTimeToGoToTavern
+  00bbcc70 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::SetupPixelShader
+  007b8b10 RELOCATION_MATCH CTCTavernTable::GetEatingPoint
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  CQuestManager_ActivateQuests_004b3ce0
+  N3DPrimitiveCAnimatedBlock_ConvertToVBFormatBump_00a90040
+  NPlayerGuiCDrawQuickAccessIcons_DrawEffectAtPos_0064546f
+  CThingFilterCombatIsStrikeToStrike_operator_008565e0
+  QuadricOptimiserInternalsCOptimisedPrimitive_JoinAdjacentFaces_00ac8ae0
+  CTCTavernGameCardBase_ShuffleCards_008f10b0
+  C3DBoundingSphere_BuildFromSubSpheres_00addbe0
+  CTCVillage_GetFineAmountForCurrentCrimes_0065a41c
+  CTCVillage_IsTimeToGoToTavern_0065aa6f
+  CEnginePrimitiveManagerParticleGroup_SetupPixelShader_00bbcc70
+  CTCTavernTable_GetEatingPoint_007b8b10
+rc=0

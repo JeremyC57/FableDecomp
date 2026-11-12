@@ -75,7 +75,12 @@ public: C3DVector GetPackPosition();
 public: void UpdatePointerScale();
 public: virtual ~CTCTavernGameCardBase();
 public: CTCTavernGameCardBase& operator=(const CTCTavernGameCardBase&);
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_RHSET
+// Opt-in (wf4, row 0x008F10B0): the member with its Ego_r.pdb type (24 bytes); the includer includes engine/CRightHandedSet.h first.
+protected: CRightHandedSet GamePositionRHSet;
+#else
 protected: unsigned char GamePositionRHSet[24]; // Original CRightHandedSet.
+#endif
 protected: C3DVector GamePositionPos;
 protected: long GamePositionActionPointIndex;
 protected: float MinX;

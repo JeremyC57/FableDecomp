@@ -20,6 +20,10 @@
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
 #include "engine/C2DVector.h"
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+// Retail opt-in (row 0x0064546F CDrawQuickAccessIcons::DrawEffectAtPos): QuickAccessEffectOffset typed as its Ego_r.pdb type C2DVector at retail +0x6F0.
+#include "engine/C2DVector.h"
+#endif
 #include "rebuild_abi.h"
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
 #include "stlport/fable_containers.h"
@@ -492,8 +496,12 @@ public:
     long             QuickAccessLampEffect;                  // +0x6e4
     long             QuickAccessGuildSealEffect;             // +0x6e8
     long             QuickAccessMainGuildSealEffect;         // +0x6ec
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+    C2DVector        QuickAccessEffectOffset;                // +0x6f0 (row 0x0064546F opt-in)
+#else
     float            QuickAccessEffectOffset_X;              // +0x6f0 C2DVector::X
     float            QuickAccessEffectOffset_Y;              // +0x6f4 C2DVector::Y
+#endif
     float            QuickAccessAbilityCrossOffset_X;        // +0x6f8 C2DVector::X
     float            QuickAccessAbilityCrossOffset_Y;        // +0x6fc C2DVector::Y
     long             HotBarSingleGraphic;                    // +0x700
@@ -1154,8 +1162,12 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMenuGraphic) == 0x6e0);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessLampEffect) == 0x6e4);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessGuildSealEffect) == 0x6e8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMainGuildSealEffect) == 0x6ec);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset) == 0x6f0);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset_X) == 0x6f0);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset_Y) == 0x6f4);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessAbilityCrossOffset_X) == 0x6f8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessAbilityCrossOffset_Y) == 0x6fc);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarSingleGraphic) == 0x700);

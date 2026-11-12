@@ -26,6 +26,11 @@ public:
     // line in retail at 0x00ADD690 (the axis-aligned box centre, then the largest squared distance from it). Declaration only.
     void FastBuildFromPoints(const C3DVector* points,long count);
 #endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_BUILDFROMSUBSPHERES
+    // Retail opt-in (wf4, row 0x00ADDBE0): Ego_r.pdb / FableWin.pdb ?BuildFromSubSpheres@C3DBoundingSphere@@QAEXPBV1@J@Z, out of
+    // line in retail at 0x00ADDBE0 (box around the sub-spheres, centre on it, radius grown to enclose each). Declaration only.
+    void BuildFromSubSpheres(const C3DBoundingSphere* spheres,long count);
+#endif
     C3DVector Center;
     float Radius;
 };

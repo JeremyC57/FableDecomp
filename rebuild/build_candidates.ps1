@@ -393847,6 +393847,84 @@ $catalog = @(
         TestSource = '00/84/CCreatureActionPickUpGenericBox_PerformAction_00848b70_test.cpp'
         PassPattern = '00848b70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b3ce0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_ActivateQuests_004b3ce0.cpp'
+        TestSource = '00/4b/CQuestManager_ActivateQuests_004b3ce0_test.cpp'
+        PassPattern = '004b3ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a90040'
+        Module = 'N3DPrimitive::CAnimatedBlock'
+        Source = '00/a9/N3DPrimitiveCAnimatedBlock_ConvertToVBFormatBump_00a90040.cpp'
+        TestSource = '00/a9/N3DPrimitiveCAnimatedBlock_ConvertToVBFormatBump_00a90040_test.cpp'
+        PassPattern = '00a90040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064546f'
+        Module = 'NPlayerGui::CDrawQuickAccessIcons'
+        Source = '00/64/NPlayerGuiCDrawQuickAccessIcons_DrawEffectAtPos_0064546f.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuickAccessIcons_DrawEffectAtPos_0064546f_test.cpp'
+        PassPattern = '0064546f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008565e0'
+        Module = 'CThingFilter_CombatIsStrikeToStrike'
+        Source = '00/85/CThingFilterCombatIsStrikeToStrike_operator_008565e0.cpp'
+        TestSource = '00/85/CThingFilterCombatIsStrikeToStrike_operator_008565e0_test.cpp'
+        PassPattern = '008565e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac8ae0'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_JoinAdjacentFaces_00ac8ae0.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_JoinAdjacentFaces_00ac8ae0_test.cpp'
+        PassPattern = '00ac8ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f10b0'
+        Module = 'CTCTavernGameCardBase'
+        Source = '00/8f/CTCTavernGameCardBase_ShuffleCards_008f10b0.cpp'
+        TestSource = '00/8f/CTCTavernGameCardBase_ShuffleCards_008f10b0_test.cpp'
+        PassPattern = '008f10b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00addbe0'
+        Module = 'C3DBoundingSphere'
+        Source = '00/ad/C3DBoundingSphere_BuildFromSubSpheres_00addbe0.cpp'
+        TestSource = '00/ad/C3DBoundingSphere_BuildFromSubSpheres_00addbe0_test.cpp'
+        PassPattern = '00addbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065a41c'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_GetFineAmountForCurrentCrimes_0065a41c.cpp'
+        TestSource = '00/65/CTCVillage_GetFineAmountForCurrentCrimes_0065a41c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0065a41c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065aa6f'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_IsTimeToGoToTavern_0065aa6f.cpp'
+        TestSource = '00/65/CTCVillage_IsTimeToGoToTavern_0065aa6f_test.cpp'
+        PassPattern = '0065aa6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbcc70'
+        Module = 'CEnginePrimitiveManagerParticleGroup'
+        Source = '00/bb/CEnginePrimitiveManagerParticleGroup_SetupPixelShader_00bbcc70.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerParticleGroup_SetupPixelShader_00bbcc70_test.cpp'
+        PassPattern = '00bbcc70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b8b10'
+        Module = 'CTCTavernTable'
+        Source = '00/7b/CTCTavernTable_GetEatingPoint_007b8b10.cpp'
+        TestSource = '00/7b/CTCTavernTable_GetEatingPoint_007b8b10_test.cpp'
+        PassPattern = '007b8b10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

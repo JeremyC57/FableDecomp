@@ -37,6 +37,14 @@ public:long GetFrameBribeEnds()const{return FrameBribeEnds;}
 private:void UpdateHornTasks();void RemoveThingFromAllTasks(const CThing&);
 #endif
 public:
+#ifdef FABLE_RETAIL_CTCVILLAGE_TAVERNTIMES
+    // Retail opt-in (row 0x0065AA6F CTCVillage::IsTimeToGoToTavern): Ego_r.pdb / FableWin.pdb ?IsTavernTime@CTCVillage@@QBE_NXZ
+    // (retail 0x00658C0A), ?GetTavernTimes@CTCVillage@@QBE_NAAM0@Z (retail 0x00658C5B) and
+    // ?IsTimeToGoToTavern@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_NM@Z (retail 0x0065AA6F), all out of line. Declarations only.
+    bool IsTavernTime() const;                                           // 0x00658C0A
+    bool GetTavernTimes(float& start, float& end) const;                 // 0x00658C5B
+    bool IsTimeToGoToTavern(CThingAICreature* creature, const CWorld& world, bool run, float speed);   // 0x0065AA6F
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_TCI
     // Original FableWin01901440; native00488684 type34.
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_VILLAGE;}
@@ -96,6 +104,12 @@ public:
     // Q19 opt-in (row 0x0065C5BB): Ego_r.pdb ?UpdateMirroredCrimeData@CTCVillage@@QAEXXZ (public). The same opt-in types
     //   PlayersCrimes below as the Ego_r.pdb set<long> (STLport three-word tree; needs FABLE_RETAIL_STLP_SET for begin()/end()).
     void UpdateMirroredCrimeData();                          // 0x0065C5BB
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_FINEAMOUNT
+    // Retail opt-in (wf4, row 0x0065A41C): Ego_r.pdb + FableWin.pdb ?GetFineAmountForCurrentCrimes@CTCVillage@@QAEJXZ (public, non-const,
+    // out of line at 0x0065A41C; bound by PayFines 0x0065C760, IsHeroCriminal 0x0065BFCE and others). Declaration only: no layout change.
+public:
+    long GetFineAmountForCurrentCrimes();                    // 0x0065A41C
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CRIMES
     // Retail opt-in (agentNF14, row 0x0065C1FC): Ego_r.pdb ?RemoveCrime@CTCVillage@@QAEXJ@Z (retail 0x0065C146, out of line) and
