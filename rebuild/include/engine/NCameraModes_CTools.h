@@ -26,6 +26,10 @@ class CThingGameObject;
 namespace NCameraModes {
 class CTools {
 public:
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_LANDSCAPEFROMTO
+    // Ego_r.pdb ?GetLandscapePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z (const). Declaration only.
+    bool GetLandscapePointIntersectionFromTo(const C3DVector& from,const C3DVector& to,C3DVector& hitPos,C3DVector& hitNormal,bool includeWater) const;   // 0x00875550
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE
     // Retail opt-in (Codex pass 17): original donor template and arithmetic at0x02889720.
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_OUTOFLINE

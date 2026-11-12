@@ -8,6 +8,9 @@
 class CCharString;
 class CWideString;
 class CRGBColour;
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READDATEANDTIME
+class CDateAndTime;
+#endif
 class C3DVector;
 #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READ2DVECTOR
 class C2DVector;
@@ -54,6 +57,11 @@ public:
     // Chunk 739 (CPSCUpdateNormal::ReadBinary 0x00B0B860): FableWin.pdb ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ, out of
     // line in retail (0x009950F0, hidden result pointer; the landed CDataInputStream_Read3DVector_009950f0 row).
     C3DVector Read3DVector();
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READDATEANDTIME
+    // Nested opt-in (row 0x00A60D40 CChecksumCacheFile::Open): Ego_r.pdb / FableWin.pdb ?ReadDateAndTime@CDataInputStream@@QAE?AVCDateAndTime@@XZ,
+    // out of line in retail (0x00995770, hidden result pointer; the landed CDataInputStream_ReadDateAndTime_00995770 row).
+    CDateAndTime ReadDateAndTime();                                  // 0x00995770
+#endif
 #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READ2DVECTOR
     // Nested opt-in (chunk 1018, row 0x00475DFA GFSerialiseVectorBinaryIn<C2DVector>): Ego_r.pdb / FableWin.pdb
     // ?Read2DVector@CDataInputStream@@QAE?AVC2DVector@@XZ, out of line in retail (0x00995030, hidden result pointer:

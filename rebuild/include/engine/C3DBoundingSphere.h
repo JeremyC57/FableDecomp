@@ -14,6 +14,11 @@ public:
     // (PreparePrimitivesForEngine builds the sphere in place from GetBoundingInfo's centre / radius, 0x004A20F6..0x004A2134).
     C3DBoundingSphere(const C3DVector& center, float radius) : Center(center), Radius(radius) { }
 #endif
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_COPY
+    // Retail opt-in (wf15, row 0x00BDF100): FableWin.pdb ??0C3DBoundingSphere@@QAE@ABV0@@Z (memberwise; inline in retail,
+    // alternating copy registers at 0x00BDF241 / landed 0x00BDFE70).
+    C3DBoundingSphere(const C3DBoundingSphere& other) : Center(other.Center), Radius(other.Radius) { }
+#endif
     void AccurateBuildFromPoints(const std::vector<C3DVector>&,float);
 #ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
     // Retail opt-in (Codex 2026-11-10): FableWin GetCenter at02ca7de0 returns

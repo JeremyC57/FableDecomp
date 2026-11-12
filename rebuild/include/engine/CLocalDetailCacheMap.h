@@ -50,6 +50,11 @@ public:
     virtual ~CQuadTreeElement();
     virtual void RelocateData(long,void*,void*,long);
     virtual bool CanRelocateData(long) const;
+#ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_CALCBOUNDINGSPHERE
+    // Retail opt-in (wf15, row 0x00BDF100): Ego_r.pdb / FableWin.pdb
+    // ?CalcBoundingSphereAndFadeDistanceFromChildren@CQuadTreeElement@CLocalDetailCacheMap@@QAEXXZ.
+    void CalcBoundingSphereAndFadeDistanceFromChildren();
+#endif
 private:
     CObjectCacheGroupCollection* ObjectCacheGroupCollections;
     CQuadTreeElement* Children[4];
@@ -70,5 +75,16 @@ private:
     bool Loading:1;
 };
 FABLE_STATIC_ASSERT(sizeof(CLocalDetailCacheMap::CQuadTreeElement)==76);
+#ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_CALCBOUNDINGSPHERE
+// Retail opt-in (wf15, row 0x00BDF100): Ego_r.pdb CObjectCacheGroupCollection (vptr +0, Next +4, BoundingSphere +8,
+// MaxFadeDistance +0x18, PrimitiveTypeMask +0x1C, ...); retail is 0x38 bytes (no SourceObjectCount). Leading members only.
+class CLocalDetailCacheMap::CObjectCacheGroupCollection : public CMovableResource {
+public:
+    CObjectCacheGroupCollection* Next;
+    C3DBoundingSphere BoundingSphere;
+    float MaxFadeDistance;
+    unsigned long PrimitiveTypeMask;
+};
+#endif
 #endif
 #endif // FABLE_ENGINE_CLOCALDETAILCACHEMAP_H

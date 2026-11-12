@@ -90,6 +90,13 @@ public:
     void SetAbilityToButton(EHeroAbility ability, long button, bool flag);                                       // 0x005F6423
     long GetNumAssignableSpecialMoveButtons() const;                                                             // 0x005EDCF0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_AVAILABILITY
+    // Opt-in (wf15, row 0x005F6BD6 SetAbilityAsAvailable): Ego_r.pdb + FableWin.pdb ?IsAbilityAvailable@CTCInventoryAbilities@@QBE_N
+    // W4EHeroAbility@@@Z (0x005EDF08, landed) and ?GetNumAssignedReceivedAbilities@CTCInventoryAbilities@@QBEJXZ (0x005EE146, landed):
+    // both defined earlier in retail's TU and expanded inline in SetAbilityAsAvailable.
+    bool IsAbilityAvailable(EHeroAbility ability) const;                                                         // 0x005EDF08
+    long GetNumAssignedReceivedAbilities() const;                                                                // 0x005EE146
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_PRIORITISED
     // Opt-in (agentSND, 2026-11-10, rows 0x005F64DD / 0x005F6793 CycleAssignedAbilities / CycleAssignedExpressions): Ego_r.pdb +
     // FableWin.pdb spellings, out of line in retail: ?GetPrioritisedAbilityDefs@CTCInventoryAbilities@@QBEXAAV?$vector@V?$CDefPointer@

@@ -165,6 +165,11 @@ FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
 // Original FableWin02179d3e: compare the two base GetPItem results.
 template<class T> inline bool FABLE_FASTCALL operator==(const CIntelligentPointer<T>& first,const CIntelligentPointer<T>& second){return first.GetPItem()==second.GetPItem();}
 #endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_EQUAL_MIXED
+// wf15 row 0x007BF510: __find 0x007C2980 compares a CIntelligentPointer<const CThing> element with a CIntelligentPointer<CThing>
+// value by their two GetPItem results (0x00A01B50 twice).
+template<class T,class U> inline bool FABLE_FASTCALL operator==(const CIntelligentPointer<T>& first,const CIntelligentPointer<U>& second){return first.GetPItem()==second.GetPItem();}
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_EQUAL_RAW
 // FableWin01cfe990, exact free comparison: pointer first, raw base item second.
 template<class T> inline bool FABLE_FASTCALL operator==(const CIntelligentPointer<T>& pointer,const CBaseObject* item) { return pointer.GetPItem()==item; }

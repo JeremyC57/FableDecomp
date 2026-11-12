@@ -1,0 +1,10 @@
+address	name	evidence
+00BDF100	?CalcBoundingSphereAndFadeDistanceFromChildren@CQuadTreeElement@CLocalDetailCacheMap@@QAEXXZ	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+005F6BD6	?SetAbilityAsAvailable@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N1@Z	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+00A60D40	?Open@CChecksumCacheFile@@QAEXABVCWideString@@@Z	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+0091DDD0	?Update@CAIStateGroup_HoverAllAroundTest@@UAEXXZ	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+008DB810	?UpdateBeam@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+005FBAA0	?GetRelativePosOnMiniMap@CTCInventoryMap@@IBEXAAVCRegion@@ABVC3DVector@@AAVC2DVector@@@Z	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+007CD9A0	?FrameUpdate@CTCBurntEffect@@UAEXXZ	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+00B211B0	?InterpolateTo@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXABV123@M@Z	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs
+007BF510	?OnCollision@CTCShotDefinitionBase@NThingShot@@UAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	workflow wf15 (landing fd): RELOCATION_MATCH, two PDBs

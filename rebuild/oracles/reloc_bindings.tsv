@@ -38931,3 +38931,16 @@ __imp__GetFileSizeEx@8	0143fd5c	009c4440
 ?ProcessEmbeddedGraphicTags@CSubtitleRenderer@@AAEXXZ	00492381	00492973
 ?ProcessEmbeddedHighlightTags@CSubtitleRenderer@@AAEXXZ	00491ad2	00492973
 ?push_back@?$deque@VCSetTextInfo@CSubtitleRenderer@@V?$allocator@VCSetTextInfo@CSubtitleRenderer@@@std@@@std@@QAEXABVCSetTextInfo@CSubtitleRenderer@@@Z	004941c0	00492973
+?$S1@?1??CalcBoundingSphereAndFadeDistanceFromChildren@CQuadTreeElement@CLocalDetailCacheMap@@QAEXXZ@4IA	0143b984	00bdf100
+?BuildFromSubSpheres@C3DBoundingSphere@@QAEXPBV1@J@Z	00addbe0	00bdf100
+?resize@?$vector@VC3DBoundingSphere@@V?$allocator@VC3DBoundingSphere@@@std@@@std@@QAEXI@Z	00be0140	00bdf100
+??$find@PAW4EHeroAbility@@W41@@std@@YIPAW4EHeroAbility@@PAW41@0ABW41@@Z	005f8150	005f6bd6
+?LowerBound@?$CVectorMap@JW4EHeroAbility@@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@@QAEPAU?$pair@JW4EHeroAbility@@@std@@ABJ@Z	005f7f4c	005f6bd6
+?erase@?$vector@U?$pair@JW4EHeroAbility@@@std@@V?$allocator@U?$pair@JW4EHeroAbility@@@std@@@2@@std@@QAEPAU?$pair@JW4EHeroAbility@@@2@PAU32@@Z	005f87c0	005f6bd6
+?erase@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@PAW43@@Z	005f8750	005f6bd6
+?ReadDateAndTime@CDataInputStream@@QAE?AVCDateAndTime@@XZ	00995770	00a60d40
+?ReadNullTerminatedString@CDataInputStream@@UAE?AVCCharString@@XZ	00994c80	00a60d40
+?GetLandscapePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z	00875550	008db810
+?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z	005beb57	005fbaa0
+??$__find@PAV?$CIntelligentPointer@$$CBVCThing@@@@V?$CIntelligentPointer@VCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PAV1@0ABV?$CIntelligentPointer@VCThing@@@@ABUrandom_access_iterator_tag@0@@Z	007c2980	007bf510
+?HasWeaponTrailPoints@CTCWeaponTrail@@QBE_NXZ	0076e4a0	007bf510

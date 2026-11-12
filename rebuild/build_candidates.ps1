@@ -394551,6 +394551,69 @@ $catalog = @(
         TestSource = '00/49/CSubtitleRenderer_SetText_00492973_test.cpp'
         PassPattern = '00492973_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bdf100'
+        Module = 'CLocalDetailCacheMap::CQuadTreeElement'
+        Source = '00/bd/CLocalDetailCacheMapCQuadTreeElement_CalcBoundingSphereAndFadeDistanceFromChildren_00bdf100.cpp'
+        TestSource = '00/bd/CLocalDetailCacheMapCQuadTreeElement_CalcBoundingSphereAndFadeDistanceFromChildren_00bdf100_test.cpp'
+        PassPattern = '00bdf100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f6bd6'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_SetAbilityAsAvailable_005f6bd6.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_SetAbilityAsAvailable_005f6bd6_test.cpp'
+        PassPattern = '005f6bd6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60d40'
+        Module = 'CChecksumCacheFile'
+        Source = '00/a6/CChecksumCacheFile_Open_00a60d40.cpp'
+        TestSource = '00/a6/CChecksumCacheFile_Open_00a60d40_test.cpp'
+        PassPattern = '00a60d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091ddd0'
+        Module = 'CAIStateGroup_HoverAllAroundTest'
+        Source = '00/91/CAIStateGroupHoverAllAroundTest_Update_0091ddd0.cpp'
+        TestSource = '00/91/CAIStateGroupHoverAllAroundTest_Update_0091ddd0_test.cpp'
+        PassPattern = '0091ddd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008db810'
+        Module = 'NCreatureMode::CModeDragonFireBeam'
+        Source = '00/8d/NCreatureModeCModeDragonFireBeam_UpdateBeam_008db810.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDragonFireBeam_UpdateBeam_008db810_test.cpp'
+        PassPattern = '008db810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fbaa0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_GetRelativePosOnMiniMap_005fbaa0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_GetRelativePosOnMiniMap_005fbaa0_test.cpp'
+        PassPattern = '005fbaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cd9a0'
+        Module = 'CTCBurntEffect'
+        Source = '00/7c/CTCBurntEffect_FrameUpdate_007cd9a0.cpp'
+        TestSource = '00/7c/CTCBurntEffect_FrameUpdate_007cd9a0_test.cpp'
+        PassPattern = '007cd9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b211b0'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_InterpolateTo_00b211b0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_InterpolateTo_00b211b0_test.cpp'
+        PassPattern = '00b211b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bf510'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/7b/NThingShotCTCShotDefinitionBase_OnCollision_007bf510.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionBase_OnCollision_007bf510_test.cpp'
+        PassPattern = '007bf510_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

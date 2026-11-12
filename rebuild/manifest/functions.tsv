@@ -31351,7 +31351,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0091db50	GetEnemy	CAIStateGroup_EnemyCreatureBase	__thiscall	CThingCreatureBase *	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted									
 0091dd30	IsRunnable	CAIStateGroup_EnemyCreatureBase	__thiscall	bool	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted									
 0091dda0	IsThingDead_0091dda0	_global	__fastcall	bool	1	CIntelligentPointer<CThingPhysical_const_> *	1	yes	accepted									
-0091ddd0	?Update@CAIStateGroup_HoverAllAroundTest@@UAEXXZ	CAIStateGroup_HoverAllAroundTest	__thiscall	void	1	CAIStateGroup_HoverAllAroundTest *	1	yes	accepted									
+0091ddd0	Update	CAIStateGroup_HoverAllAroundTest	__thiscall	void	1	CAIStateGroup_HoverAllAroundTest *	1	yes	accepted									
 0091e050	Update	CAIStateGroup_HoverAttack	__thiscall	void	1	CAIStateGroup_HoverAttack *	1	yes	accepted									
 0091e270	IsEnemyRunningAway	CAIStateGroup_HoverAttack	__thiscall	bool	1	CAIStateGroup_HoverAttack *	1	yes	accepted									
 0091e480	IsRunnableLeaf	CAIStateGroup_HoverAttackUnlessTargetIsFleeing	__thiscall	bool	1	CAIStateGroup_HoverAttackUnlessTargetIsFleeing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CAIStateGroupHoverAttackUnlessTargetIsFleeing_IsRunnableLeaf_0091e480.cpp

@@ -38,6 +38,18 @@ public:
     // retail (0x0086D240 for <long, CRandomAppearanceMorph::CSkeletalMorph>). Declaration only.
     void GetKeyList(std::vector<K>& keys) const;
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_VALFIND
+    // Retail opt-in (wf15, row 0x005F6BD6 CTCInventoryAbilities::SetAbilityAsAvailable): FableWin.pdb
+    // ??$ValFind@W4EHeroAbility@@@?$CVectorMap@JW4EHeroAbility@@..@@QAE?AV?$_Vector_iterator.. (0x018580E0): the linear search by
+    // value, expanded inline in retail's size TU (cursor loaded before last, `jmp cond`, early return, then last).
+    template<class V2> FABLE_FORCEINLINE iterator ValFind(const V2& value) {
+        iterator it=this->begin();
+        iterator last=this->end();
+        for(;it!=last;++it)
+            if(it->second==value)return it;
+        return last;
+    }
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
     // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
     // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under

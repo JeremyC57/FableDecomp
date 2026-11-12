@@ -46,6 +46,10 @@ public:
 // Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
 public:
 bool GetLastProjectileWeaponTrailPoints(std::vector<std::pair<C3DVector,C3DVector> >&)const;
+#ifdef FABLE_RETAIL_CTCWEAPONTRAIL_HASPOINTS
+// Ego_r ?HasWeaponTrailPoints@CTCWeaponTrail@@QBE_NXZ (0x0076E4A0); caller 0x007BF510 OnCollision.
+bool HasWeaponTrailPoints()const;
+#endif
 #endif
 #endif
 private:

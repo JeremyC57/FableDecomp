@@ -79,10 +79,56 @@ template<class It,class T> inline It FABLE_FASTCALL __find(It first,It last,cons
  }
 }
 template<class It,class T> inline It FABLE_FASTCALL find(It first,It last,const T& value) {
+#elif defined(FABLE_RETAIL_STLP_FIND_NOINLINE_BODY)
+// Retail opt-in (wf15 row 0x007BF510 CTCShotDefinitionBase::OnCollision): the same STLport 4.6 _algobase.c body, called out of
+// line (__find<CIntelligentPointer<const CThing>*,CIntelligentPointer<CThing> > 0x007C2980) but visible to the caller's TU, so
+// VC7.1 knows it never touches the tag and homes the empty tag on a live argument slot (lea eax,[esp+28h] at 0x007BF555; a
+// bare declaration homes it on the dead thing slot instead).
+template<class It,class T> __declspec(noinline) It FABLE_FASTCALL __find(It first,It last,const T& value,const random_access_iterator_tag&){
+ typename iterator_traits<It>::difference_type trip_count=(last-first)>>2;
+ for(;trip_count>0;--trip_count){
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+ }
+ switch(last-first){
+ case 3:if(*first==value)return first;++first;
+ case 2:if(*first==value)return first;++first;
+ case 1:if(*first==value)return first;++first;
+ case 0:default:return last;
+ }
+}
+template<class It,class T> inline It find(It first,It last,const T& value) {
 #else
 template<class It,class T> It FABLE_FASTCALL __find(It first,It last,const T& value,const random_access_iterator_tag&);
 template<class It,class T> inline It find(It first,It last,const T& value) {
 #endif
+    return __find(first,last,value,random_access_iterator_tag());
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_FIND_NOINLINE_BODY_FORWARDER
+// Retail opt-in (wf15, row 0x005F6BD6 CTCInventoryAbilities::SetAbilityAsAvailable): STLport 4.6 _algobase.h find / _algobase.c
+// __find with BOTH bodies visible in the TU but called out of line (not to be combined with FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH,
+// whose FABLE_RETAIL_STLP_FIND_NOINLINE_BODY arm keeps the forwarder inline) (find<EHeroAbility*, EHeroAbility> 0x005F8150, a `__fastcall`
+// forwarder, `ret 4`; __find 0x005F7ACC, `ret 8`, both landed). The caller then knows neither writes memory nor keeps &val, so
+// it keeps the searched value in a register and reuses `last` after the call (0x005F6DD3..0x005F6DEC).
+template<class It,class T> __declspec(noinline) It FABLE_FASTCALL __find(It first,It last,const T& value,const random_access_iterator_tag&){
+ typename iterator_traits<It>::difference_type trip_count=(last-first)>>2;
+ for(;trip_count>0;--trip_count){
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+  if(*first==value)return first;++first;
+ }
+ switch(last-first){
+ case 3:if(*first==value)return first;++first;
+ case 2:if(*first==value)return first;++first;
+ case 1:if(*first==value)return first;++first;
+ case 0:default:return last;
+ }
+}
+template<class It,class T> __declspec(noinline) It FABLE_FASTCALL find(It first,It last,const T& value) {
     return __find(first,last,value,random_access_iterator_tag());
 }
 #endif
