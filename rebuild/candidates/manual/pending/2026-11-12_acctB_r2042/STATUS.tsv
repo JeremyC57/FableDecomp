@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+007f2dc0	RELOCATION_MATCH	1942v1942	PASS (test/007f2dc0.cpp: g++ + VC7.1)	pass1:5 (4 + 1 volatile diagnostic, never delivered); pass2:5 (g06-g07 authoring agent, g08-g10 continuation); 10 in all	matched at g10 (src/007f2dc0.cpp): `long timer = Timer;` + `const bool has_life_time = PDef->LifeTime > 0.0f;` keeps retail's Timer frame copy (a join between def and use stops VC7.1 forwarding it); `float range = PDef->Range;` gives the area radius load ahead of the C2DCoordI Y store; vland RELOCATION_MATCH PASS (RELOC_NAME warnings only)
