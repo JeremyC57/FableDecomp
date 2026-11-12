@@ -38889,3 +38889,5 @@ _D3DXLoadSurfaceFromMemory@40	00bfefc8	009f4390
 ??$sort@PAPAVCThing@@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@0VCThingCompare_BestForTargeting2@@@Z	007fae60	007f9960
 ??$GetSubDef@VCFireballSpellLevelDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFireballSpellLevelDef@@@@@Z	007be88c	007bde31
 ??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z	007d4bd0	007d2cc0
+??$GetDef@VCControlsDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCControlsDef@@@@@Z	00410820	004085f0
+?g_StartupDefinitionManagerInstance@@3V?$CCountedPointer@VCStartupDefinitionManager@@@@A	013b8760	004085f0

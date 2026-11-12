@@ -45,3 +45,9 @@ engine/CFireballSpellLevelDef.h: FABLE_RETAIL_CFIREBALLSPELLLEVELDEF -- polymorp
 
 engine/CUserProfileManager.h: FABLE_RETAIL_CUSERPROFILEMANAGER_RESETASSIGNEDINPUTS (nested in PASSIVEINPUTS) adds AssignedInputsAggressive +0x60 and ResetAssignedInputs().
 
+
+## 0x004085F0 (landing ex, after repair 3)
+
+engine/CUserProfileManager.h: FABLE_RETAIL_CUSERPROFILEMANAGER_RESETASSIGNEDINPUTS (nested in PASSIVEINPUTS) adds AssignedInputsAggressive +0x60 and ResetAssignedInputs().
+engine/CStartupDefinitionManager.h: FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_ISALLOCATED (nested in CSTARTUPDEFINITIONMANAGER) adds static __fastcall bool IsAllocated() (FableWin ?IsAllocated@CStartupDefinitionManager@@SI_NXZ 0x018377B4/0x01888A60), inline `!g_StartupDefinitionManagerInstance.IsNull()` over the counted pointer 0x013B8760 (descriptive global name). (Repair 3; the row also defines the existing FABLE_RETAIL_CGAMEDEFINITIONMANAGER to hide the non-retail CGameDefinitionManager::GetDef -- no overlay copy needed.)
+

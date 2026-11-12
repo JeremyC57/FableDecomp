@@ -394410,6 +394410,13 @@ $catalog = @(
         TestSource = '00/7d/CTCTavernGameCoinGolf_EnableCourse_007d2cc0_test.cpp'
         PassPattern = '007d2cc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004085f0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_ResetAssignedInputs_004085f0.cpp'
+        TestSource = '00/40/CUserProfileManager_ResetAssignedInputs_004085f0_test.cpp'
+        PassPattern = '004085f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -142,6 +142,12 @@ public:
     void RedefineControlPassive(const CActionInputControl& new_control,const CActionInputControl& old_control,long index);   // 0x00407CD0
     unsigned char _pad_pi_0x00[0x54];                                    // vptr, CBaseClass, ProfileName .. the option values
     std::vector<CActionInputControl> AssignedInputsPassive;              // +0x54
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RESETASSIGNEDINPUTS
+    // Retail opt-in (wf12 row 0x004085F0): Ego_r.pdb / FableWin.pdb ?ResetAssignedInputs@CUserProfileManager@@QAEXXZ (public) and the
+    // Ego_r.pdb member AssignedInputsAggressive (vector<CActionInputControl>, Ego_r +100, retail +0x60 behind the 12-byte passive vector).
+    std::vector<CActionInputControl> AssignedInputsAggressive;           // +0x60
+    void ResetAssignedInputs();                                          // 0x004085F0
+#endif
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_TARGETINGSTATUS
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the targeting-status pair the row

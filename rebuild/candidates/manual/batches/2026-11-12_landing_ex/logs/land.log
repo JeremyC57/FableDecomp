@@ -1,0 +1,9 @@
+addr       parity           behav  name
+004085f0   RELOCATION_MATCH PASS   ResetAssignedInputs
+
+WINS: 1
+  004085f0 RELOCATION_MATCH CUserProfileManager::ResetAssignedInputs
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CUserProfileManager_ResetAssignedInputs_004085f0
+rc=0
