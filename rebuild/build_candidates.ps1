@@ -394628,6 +394628,71 @@ $catalog = @(
         TestSource = '00/9f/CMemoryAllocator_CMemoryAllocator_009f20b0_test.cpp'
         PassPattern = '009f20b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007e4e30'
+        Module = 'CTCBetting'
+        Source = '00/7e/CTCBetting_FrameUpdate_007e4e30.cpp'
+        TestSource = '00/7e/CTCBetting_FrameUpdate_007e4e30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '007e4e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e8590'
+        Module = 'CTCOwnedEntity'
+        Source = '00/7e/CTCOwnedEntity_SetPOwner_007e8590.cpp'
+        TestSource = '00/7e/CTCOwnedEntity_SetPOwner_007e8590_test.cpp'
+        PassPattern = '007e8590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00922010'
+        Module = 'CAIStateGroup_MinionWalkToMarker'
+        Source = '00/92/CAIStateGroupMinionWalkToMarker_Update_00922010.cpp'
+        TestSource = '00/92/CAIStateGroupMinionWalkToMarker_Update_00922010_test.cpp'
+        PassPattern = '00922010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af5090'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_ClearParticle_00af5090.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_ClearParticle_00af5090_test.cpp'
+        PassPattern = '00af5090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb2140'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Main_00eb2140.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Main_00eb2140_test.cpp'
+        PassPattern = '00eb2140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f3b00'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_CopyFromMemory_009f3b00.cpp'
+        TestSource = '00/9f/CSurface_CopyFromMemory_009f3b00_test.cpp'
+        PassPattern = '009f3b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c71aa'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionNoDamageNorWeight_005c71aa.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionNoDamageNorWeight_005c71aa_test.cpp'
+        PassPattern = '005c71aa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009735d0'
+        Module = 'CAIStateGroup_JackOfBladesBase'
+        Source = '00/97/CAIStateGroupJackOfBladesBase_RushToPos_009735d0.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesBase_RushToPos_009735d0_test.cpp'
+        PassPattern = '009735d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00803d60'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/80/CTCTargetingPlayer_UpdateProjectileTargeting_00803d60.cpp'
+        TestSource = '00/80/CTCTargetingPlayer_UpdateProjectileTargeting_00803d60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT68'
+        PassPattern = '00803d60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

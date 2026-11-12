@@ -434,6 +434,16 @@ public:
     // ?GetPlayerNumber@CThing@@QBEKXZ (Ego_r.pdb / FableWin.pdb), inline in retail (`movsx eax,byte ptr [ecx+90h]`, 0x005C37CC).
     unsigned long GetPlayerNumber() const { return PlayerNumber; }
     void SetInLimbo(bool);                                       // 0x004C8CF0 ?SetInLimbo@CThing@@QAEX_N@Z (Ego_r.pdb / FableWin.pdb)
+#ifdef FABLE_RETAIL_CTHING_SENDMESSAGEW
+    // Retail opt-in (w22 wf16 row 0x007E8590 CTCOwnedEntity::SetPOwner): Ego_r.pdb / FableWin.pdb ?SendMessageW@CThing@@QAEXABVCMessageBase@NTCMessages@@@Z
+    // (the `W` is the windows.h SendMessage macro baked into the name). Declaration only.
+    void SendMessageW(const NTCMessages::CMessageBase&);         // 0x004C7820
+#endif
+#ifdef FABLE_RETAIL_CTHING_GETSCRIPTDATA
+    // Retail opt-in (w22 wf16 row 0x007E8590): FableWin.pdb ?GetScriptData@CThing@@QBEABVCCharString@@XZ (0x017FB4DF / 0x01F944B0), inline in
+    // retail (0x007E8786 `add eax,78h ; mov eax,[eax]`: ScriptData +0x78, after ScriptName +0x74).
+    const CCharString& GetScriptData() const { return ScriptData; }
+#endif
     // Retail (2026-11-03, chunk 720 row 0x0065B854 CTCVillage::AddThingToVillage; was FABLE_RETAIL_CTHING_VILLAGE, folded into this class branch at landing): ?HasScriptThing@CThing@@QBE_NXZ (Ego_r.pdb
     // 0x004C9A30; out of line in retail at 0x004C7E70, `mov ecx,esi; call`) and FableWin.pdb's inline
     // ?SetPersistOnUnloadWhenInLimbo@CThing@@QAEX_N@Z (0x0215EDB0, emitted in the CTCVillage TU right after AddThingToVillage;

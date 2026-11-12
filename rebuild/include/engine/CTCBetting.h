@@ -23,6 +23,12 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x007E5910
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCBETTING_FRAMEUPDATE
+    // Opt-in (wf16 row 0x007E4E30): Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCBetting@@UAEXXZ, vtable 0x01270624 slot 9.
+    // Declaration only (no layout change; the vtable already exists).
+public:
+    virtual void FrameUpdate();           // slot 9, 0x007E4E30
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCBetting)==0x3c);
 #else

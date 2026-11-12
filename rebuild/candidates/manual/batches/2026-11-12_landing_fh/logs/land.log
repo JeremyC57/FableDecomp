@@ -1,0 +1,38 @@
+addr       parity           behav  name
+007e4e30   WARN RELOC_NAME: ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ -> 00416225 labelled '_global::GetMember_dword0x48_00416225'
+007e4e30   RELOCATION_MATCH PASS   FrameUpdate
+007e8590   WARN RELOC_ALIAS: __strnicmp -> 00f3fb90 is the import thunk 'MSVCR71.DLL::_strnicmp'
+007e8590   RELOCATION_MATCH PASS   SetPOwner
+00922010   RELOCATION_MATCH PASS   Update
+00af5090   RELOCATION_MATCH PASS   ClearParticle
+00eb2140   RELOCATION_MATCH PASS   Main
+009f3b00   RELOCATION_MATCH PASS   CopyFromMemory
+005c71aa   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
+005c71aa   RELOCATION_MATCH PASS   ConstructWeaponDescriptionNoDamageNorWeight
+009735d0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z -> 00668610 labelled '_global::DeleteViaVtable0_00668610'
+009735d0   RELOCATION_MATCH PASS   RushToPos
+00803d60   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00803d60   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_IsInFOV@@VCThingFilter_IsNot@@V?$unary_negate@VCThingFilter_In2DRange@@@std@@V?$unary_negate@VCThingFilter_ShotFiredByThing@?A0x8ad21bd2@@@4@VCThingFilter_ViableProjectileAimingTarget@?A0x8ad21bd2@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind5@VCThingFilter_IsInFOV@@VCThingFilter_IsNot@@V?$unary_negate@VCThingFilter_In2DRange@@@std@@V?$unary_negate@VCThingFilter_ShotFiredByThing@?A0x8ad21bd2@@@4@VCThingFilter_ViableProjectileAimingTarget@?A0x8ad21bd2@@@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 0080a550 labelled 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303::CThingFilter_IsAffectedByExplosions>_>'
+00803d60   RELOCATION_MATCH PASS   UpdateProjectileTargeting
+
+WINS: 9
+  007e4e30 RELOCATION_MATCH CTCBetting::FrameUpdate
+  007e8590 RELOCATION_MATCH CTCOwnedEntity::SetPOwner
+  00922010 RELOCATION_MATCH CAIStateGroup_MinionWalkToMarker::Update
+  00af5090 RELOCATION_MATCH NParticleEngine::CParticleSystem::ClearParticle
+  00eb2140 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::Main
+  009f3b00 RELOCATION_MATCH CSurface::CopyFromMemory
+  005c71aa RELOCATION_MATCH CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight
+  009735d0 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::RushToPos
+  00803d60 RELOCATION_MATCH CTCTargetingPlayer::UpdateProjectileTargeting
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CTCBetting_FrameUpdate_007e4e30
+  CTCOwnedEntity_SetPOwner_007e8590
+  CAIStateGroupMinionWalkToMarker_Update_00922010
+  NParticleEngineCParticleSystem_ClearParticle_00af5090
+  NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Main_00eb2140
+  CSurface_CopyFromMemory_009f3b00
+  CTCInventoryWeapons_ConstructWeaponDescriptionNoDamageNorWeight_005c71aa
+  CAIStateGroupJackOfBladesBase_RushToPos_009735d0
+  CTCTargetingPlayer_UpdateProjectileTargeting_00803d60

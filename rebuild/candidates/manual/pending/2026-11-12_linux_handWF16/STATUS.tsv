@@ -1,0 +1,3 @@
+00922010	CAIStateGroup_MinionWalkToMarker::Update	RELOCATION_MATCH	16	shared headers + group local + Nearest operator() visible
+005c71aa	CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight	RELOCATION_MATCH	125	sibling 6b26 form + FABLE_RETAIL_STLP_VECTOR
+006d8f10	CHeroExperienceDef::Transfer	DIFFER(693v692)	~90	ebp shrink-wrap placement only

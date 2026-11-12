@@ -1,0 +1,10 @@
+address	name	evidence
+007E4E30	?FrameUpdate@CTCBetting@@UAEXXZ	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+007E8590	?SetPOwner@CTCOwnedEntity@@QAEXPAVCThing@@@Z	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+00922010	?Update@CAIStateGroup_MinionWalkToMarker@@MAEXXZ	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+00AF5090	?ClearParticle@CParticleSystem@NParticleEngine@@QAEXAAV?$_List_iterator@V?$_List_val@PAVCParticle@NParticleEngine@@V?$allocator@PAVCParticle@NParticleEngine@@@std@@@std@@@std@@@Z	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+00EB2140	?Main@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@EAEXXZ	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+009F3B00	?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0J@Z	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+005C71AA	?ConstructWeaponDescriptionNoDamageNorWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N@Z	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+009735D0	?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs
+00803D60	?UpdateProjectileTargeting@CTCTargetingPlayer@@IAEXXZ	workflow wf16 (landing fh): RELOCATION_MATCH, two PDBs

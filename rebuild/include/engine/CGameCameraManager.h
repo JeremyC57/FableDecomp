@@ -79,6 +79,12 @@ public:
 #endif
  NCameraModes::CTools& GetCameraTools(){return CamTools;}
  NCameraModes::CBase* GetCameraMode(){return CurrentMode.Get();}
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_GETCAMERA
+ // wf16 opt-in (row 0x00803D60): FableWin.pdb ?GetCamera@CGameCameraManager@@QAEAAVCCamera@@XZ / QBEABV, expanded in retail
+ // (the row reads Camera.WorldPosition at manager +0x04 and calls CCamera::GetFOV with ecx = manager+4).
+ CCamera& GetCamera(){return Camera;}
+ const CCamera& GetCamera() const{return Camera;}
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CGameCameraManager)==0x160);
 #else

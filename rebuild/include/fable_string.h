@@ -367,6 +367,12 @@ public:
     // __forceinline: the size-optimised CSubtitleRenderer TU expands it in place where a plain inline body is called out of line.
     FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
 #endif
+#ifdef FABLE_RETAIL_CCHARSTRING_STARTSWITHCASEINSENSITIVE
+    // Retail opt-in (w22 wf16 row 0x007E8590 CTCOwnedEntity::SetPOwner): FableWin.pdb ?StartsWithCaseInsensitive@CCharString@@QBE_NABV1@@Z
+    // (no Ego_r / retail out-of-line copy), inline in retail: 0x007E8789..0x007E87C6 the prefix data / length from one null test, this
+    // string's data, _strnicmp 0x00F3FB90.
+    FABLE_FORCEINLINE bool StartsWithCaseInsensitive(const CCharString& prefix) const { return _strnicmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_ENDSWITH
     // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): FableWin.pdb ?EndsWith@CCharString@@QBE_NABV1@@Z
     // (0x0187F050; no out-of-line retail copy is bound), inline in retail: 0x004993E2..0x0049945D takes the two lengths (a negative

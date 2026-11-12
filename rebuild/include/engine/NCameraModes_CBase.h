@@ -48,8 +48,15 @@ public:
  const NCameraModes::CPhysicsState & GetGoToPhase() const;
  NCameraModes::CPhysicsState & GetGoToPhase();
  void SetGoToPhase(const NCameraModes::CPhysicsState & p0);
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_LOOKATPHASE_INLINE
+ // wf16 opt-in (row 0x00803D60 CTCTargetingPlayer::UpdateProjectileTargeting): GetLookAtPhase inline in retail (the row reads
+ // LookAt.Position at mode +0x10 in place: `mov eax,[mgr+98h] ; fld [eax+18h] ; add eax,10h`).
+ const NCameraModes::CPhysicsState & GetLookAtPhase() const { return LookAt; }
+ NCameraModes::CPhysicsState & GetLookAtPhase() { return LookAt; }
+#else
  const NCameraModes::CPhysicsState & GetLookAtPhase() const;
  NCameraModes::CPhysicsState & GetLookAtPhase();
+#endif
  void SetLookAtPhase(const NCameraModes::CPhysicsState & p0);
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_GETPOSITION_INLINE
  // wf10 opt-in (row 0x006992A0): Ego_r.pdb ?GetPosition@CBase@NCameraModes@@QBEABVC3DVector@@XZ, inline in retail

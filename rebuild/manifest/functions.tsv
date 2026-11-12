@@ -31411,7 +31411,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009216e0	CAIStateGroup_MinionFollowThing::IsRunnable	CAIStateGroup_MinionFollowThing	__thiscall	bool	1	CAIStateGroup_MinionFollowThing *	1	yes	accepted									
 00921870	Cleanup	CAIStateGroup_MinionFollowThing	__thiscall	void	1	CAIStateGroup_MinionFollowThing *	1	yes	accepted									
 00921990	?Update@CAIStateGroup_MinionFollowThing@@MAEXXZ	CAIStateGroup_MinionFollowThing	__thiscall	void	1	CAIStateGroup_MinionFollowThing *	1	yes	accepted									
-00922010	?Update@CAIStateGroup_MinionWalkToMarker@@MAEXXZ	CAIStateGroup_MinionWalkToMarker	__thiscall	void	1	CAIStateGroup_MinionWalkToMarker *	1	yes	accepted									
+00922010	Update	CAIStateGroup_MinionWalkToMarker	__thiscall	void	1	CAIStateGroup_MinionWalkToMarker *	1	yes	accepted									
 00922320	GetPBestThing<CThingFilter_HasScriptName, CThingCompare_Nearest, CThing>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CThingFilter_HasDefGlobalIndex *,CThingCompare_Nearest *,CThing * *	1	yes	accepted									
 009223a0	GetPBestThing<CFilter_Bind3<CThingFilter_HasTC, CThingFilter_InRegion, CThingFilter_IsRegionEntranceActive >, CThingCompare_Nearest, CThing>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CFilter_Bind3<CThingFilter_HasTC,CThingFilter_InRegion,CThingFilter_IsRegionEntranceActive> *,CThingCompare_Nearest *,CThing * *	1	yes	accepted									
 00922440	GetEvent	CTCEntityEvents	__thiscall	bool	3	CTCEntityEvents *,CEventChildHurtGoToMother * *,CIsEventOfType *	1	yes	accepted									

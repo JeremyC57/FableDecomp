@@ -352,7 +352,13 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS_XYZ)
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_ZYX)
+    // Overlay opt-in (row 0x009735D0 CAIStateGroup_JackOfBladesBase::RushToPos): the squared length written Z, Y, X with each square
+    // in its own parentheses. VC7.1 keeps the parenthesised squares as separate common subexpressions (0x00973609..0x0097361D: Z*Z,
+    // Y*Y, X*X computed and spilled first) and does not merge this sum with the later GetMagnitude sum of the same vector (summed
+    // again from the spilled squares before the fsqrt at 0x009736B8); the default body shares the whole sum. Body only.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float one_on_magnitude=GFFastOneOverSqrt((Z*Z)+(Y*Y)+(X*X));X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS_XYZ)
     // Retail opt-in (chunk Q20, row 0x008B7040 CCreatureAction_JumpOutFromCover::Initialise): the components read into locals first, then
     // the squared length summed in X, Y, Z source order. There the inlined Normalise of the member JumpDirection loads X, Y, Z
     // (0x008B7047..0x008B705E) and forms Z*Z, Y*Y, X*X with the three pops after the store (0x008B707E..0x008B7088); the one-line

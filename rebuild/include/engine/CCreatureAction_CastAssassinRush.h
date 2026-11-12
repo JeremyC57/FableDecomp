@@ -8,6 +8,40 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH
+// Overlay opt-in (row 0x009735D0 RushToPos): retail class on the shared CCombatActionBase (0x114), Ego_r member names. Retail is
+// byte-packed (pack(1)): the landed ctor 0x008CE1B0 writes Override [esi+0x114] and Dir [esi+0x115/0x119/0x11D], and the landed copy
+// ctor 0x008CEF50 puts Dir at +0x115; then 3 unnamed bytes +0x121, Distance +0x124, Level +0x128, FinalAction +0x12C,
+// UseCollision +0x134, IsZTargetting +0x135, sizeof 0x138 (= the generated pack(1) layout below). Implicit inline destructor.
+#include "engine/CCombatActionBase.h"
+#include "engine/CCountedPointer.h"
+#pragma pack(push, 1)
+class CCreatureAction_CastAssassinRush:public CCombatActionBase {
+public:
+ // Both PDBs: ??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z
+ // (Ego_r 0x00905670, FableWin 0x017C5939 / 0x029F92D0); retail 0x008CE1B0.
+ CCreatureAction_CastAssassinRush(CThingCreatureBase&,const C3DVector&,float,bool,long,CCountedPointer<CCreatureActionBase>);
+private:
+ bool Override;
+ C3DVector Dir;
+ unsigned char _pad_0x121[0x3];
+ float Distance;
+ long Level;
+ CCountedPointer<CCreatureActionBase> FinalAction;
+ bool UseCollision,IsZTargetting;
+ unsigned char _pad_0x136[0x2];
+ friend struct CCreatureAction_CastAssassinRush_LayoutCheck;
+};
+#pragma pack(pop)
+struct CCreatureAction_CastAssassinRush_LayoutCheck {
+ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,Override)==0x114);
+ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,Dir)==0x115);
+ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,Distance)==0x124);
+ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,FinalAction)==0x12C);
+ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,UseCollision)==0x134);
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastAssassinRush)==0x138);
+#else
 
 class CCPPointerInfo;
 class CCreatureActionBase;
@@ -50,4 +84,5 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, FinalAction_Info)
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, UseCollision) == 0x134);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, IsZTargetting) == 0x135);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTASSASSINRUSH_H

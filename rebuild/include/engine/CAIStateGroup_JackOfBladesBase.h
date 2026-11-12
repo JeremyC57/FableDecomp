@@ -22,6 +22,10 @@ protected:
  void Summon(long,bool);
  bool HasEnemyBeenKnockedDown();
  EAIActionReturn RushToPos(const C3DVector&);
+#elif defined(FABLE_RETAIL_JACKOFBLADESBASE_RUSHTOPOS)
+ // Overlay opt-in (row 0x009735D0): Ego_r/FableWin ?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z
+ // without the rest of the Jack Stage1 TU switch.
+ EAIActionReturn RushToPos(const C3DVector&);
 #endif
  CIntelligentPointer<CThing> PSwordEmitter,PArenaCentre;
  CIntelligentPointer<CThingCreatureBase> PTargetThing;

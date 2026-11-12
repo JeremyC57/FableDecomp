@@ -15,6 +15,11 @@ class CTCSolidToThing : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SOLID_TO_THING; }
     void AddThingNotSolidTo(const CThing* thing);                    // 0x00770FA0
+#ifdef FABLE_RETAIL_CTCSOLIDTOTHING_REMOVETHINGNOTSOLIDTO
+    // Overlay opt-in (row 0x009735D0): Ego_r.pdb / FableWin.pdb ?RemoveThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z, out of
+    // line at 0x00770F20 (landed). Declaration only; no layout change.
+    void RemoveThingNotSolidTo(const CThing* thing);                 // 0x00770F20
+#endif
 #ifdef FABLE_RETAIL_CTCSOLIDTOTHING_ISSOLIDTOTHING
     // Retail opt-in (wf9, row 0x00726160): Ego_r.pdb / FableWin.pdb ?IsSolidToThing@CTCSolidToThing@@QBE_NPBVCThing@@@Z, out of
     // line at 0x00770DE0 (landed). Declaration only; no layout change.

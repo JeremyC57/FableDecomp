@@ -92,6 +92,13 @@ public:
   return GetPixelFormat().GetColourDepth()*desc.Width*desc.Height/8;
  }
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_LOCK
+ // Retail opt-in (wf16, row 0x009F3B00 CSurface::CopyFromMemory 4-arg): Lock 0x009F33E0 + inline Unlock, GetByteLength 0x009F2FC0
+ // called out of line (Ego_r.pdb ?GetByteLength@CSurface@@QBEKXZ). Declarations only (no inline GetByteLength body, unlike _CLEAR).
+ CSurfaceLockedRect Lock(unsigned long);
+ void Unlock()const{PD3DSurface->UnlockRect();}
+ unsigned long GetByteLength()const;                      // 0x009F2FC0
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_SWIZZLE
  // Retail opt-in (agentNF20, 2026-11-11, rows 0x009F4330 / 0x009F4360): Ego_r.pdb (0x00B48030 / 0x00B48060, the order of retail) +
  // FableWin.pdb ?Swizzle@CSurface@@QAEXK@Z / ?Unswizzle@CSurface@@QAEXK@Z; the PC bodies only lock (Lock 0x009F33E0) and Unlock.

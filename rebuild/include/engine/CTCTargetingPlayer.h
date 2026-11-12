@@ -34,6 +34,10 @@ protected:
     float GetFOVToBeInToBeTargetable()const;
 #endif
     void UpdateTargetedPositionRandomWalk();                    // 0x00803540
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_PROJECTILE
+    // wf16 opt-in (row 0x00803D60): Ego_r.pdb 0x007FF010 / FableWin.pdb 0x024CF520 ?UpdateProjectileTargeting@CTCTargetingPlayer@@IAEXXZ.
+    void UpdateProjectileTargeting();                           // 0x00803D60
+#endif
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
 private:
     static bool PlayerTargetingLineOfSightTest,PlayerTargetingBuildingVolumeTest;

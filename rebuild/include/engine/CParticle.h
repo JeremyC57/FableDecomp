@@ -110,6 +110,30 @@ public:
         ParentHandleList[list] = parent;
     }
 #endif
+#ifdef FABLE_RETAIL_CPARTICLE_CLEARPARTICLE
+    // Opt-in (row 0x00AF5090 CParticleSystem::ClearParticle): FableWin.pdb accessors, inline in retail (debug COMDATs 0x02F18DA0..
+    // 0x02F18ED0, same instruction counts as the CDecal twins of FABLE_RETAIL_CDECAL_CLEAR): ?GetParentHandle@CParticle@NParticleEngine@@
+    // QBE_NJAAVCEnginePrimitiveHandle@@@Z, ?GetPrimID@...@QBE_NJJAAJ@Z (FABLE_RETAIL_CPARTICLE_SPRITE has the same body),
+    // ?ClearParentHandle@...@QAEXJ@Z (FABLE_FORCEINLINE: VC7.1's inline budget otherwise calls it), ?ClearAll@...@QAEXXZ.
+    bool GetParentHandle(long group, CEnginePrimitiveHandle& handle) const {
+        if (ParentHandleList.size() > group) { handle = ParentHandleList[group]; return !handle.IsNull(); }
+        return false;
+    }
+#ifndef FABLE_RETAIL_CPARTICLE_SPRITE
+    bool GetPrimID(long list, long index, long& id) const
+    {
+        if (PrimIDList.size() > (unsigned long)list && PrimIDList[list].size() > (unsigned long)index) {
+            id = PrimIDList[list][index];
+            return id >= 0;
+        }
+        return false;
+    }
+#endif
+    FABLE_FORCEINLINE void ClearParentHandle(long group) {
+        if (ParentHandleList.size() > group) { ParentHandleList[group].Clear(); PrimIDList[group].clear(); }
+    }
+    void ClearAll() { ParentHandleList.clear(); PrimIDList.clear(); }
+#endif
 private:
  CQuaternion Orientation,OrientationChange;
  float Angle;signed char AngleChange;

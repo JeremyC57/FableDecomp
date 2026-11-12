@@ -15,6 +15,15 @@ public:
     // inline (TCI_THING_OWNER = 0x21 folds into AddThingToVillage's GetTC lookup at 0x0065BC57). No layout change.
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_THING_OWNER; }
 #endif
+#ifdef FABLE_RETAIL_CTCTHINGOWNER_OWNEDOBJECTS
+    // Retail opt-in (w22 wf16 row 0x007E8590 CTCOwnedEntity::SetPOwner): Ego_r.pdb / FableWin.pdb ?AddOwnedObject@CTCThingOwner@@AAEXAAVCThing@@@Z /
+    // ?RemoveOwnedObject@CTCThingOwner@@AAEXAAVCThing@@@Z (private; CTCOwnedEntity is the caller, so a friend). Declarations only.
+    friend class CTCOwnedEntity;
+private:
+    void RemoveOwnedObject(CThing&);                             // 0x0071B1B0
+    void AddOwnedObject(CThing&);                                // 0x0071B300
+public:
+#endif
     const std::list<CIntelligentPointer<CThing> >& GetObjectList() const { return ObjectList; }
     std::list<CIntelligentPointer<CThing> >& GetObjectList() { return ObjectList; }
 };
