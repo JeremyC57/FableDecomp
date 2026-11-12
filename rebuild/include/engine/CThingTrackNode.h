@@ -17,6 +17,10 @@ public: static CClass* __fastcall Alloc();
 #ifdef FABLE_RETAIL_CTHINGTRACKNODE_FLIP
     void FlipTrackDirection(); // Ego_r public nonconst ?FlipTrackDirection@CThingTrackNode@@QAEXXZ
 #endif
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_UPDATEFACING
+    // Opt-in (chunk Q18, row 0x00837220): Ego_r.pdb / FableWin.pdb ?UpdateFacingDirection@CThingTrackNode@@QAEXXZ (public). Declaration only.
+    void UpdateFacingDirection();                                       // 0x00837220
+#endif
 #ifdef FABLE_RETAIL_CTHINGTRACKNODE_LINK
     // Opt-in (chunk Q16, row 0x008378D0): Ego_r.pdb / FableWin.pdb ?SetAsLinkedTo@CThingTrackNode@@QAEXPAV1@@Z (public). Declaration only.
     void SetAsLinkedTo(CThingTrackNode* other);                         // 0x008378D0

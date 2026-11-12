@@ -38802,3 +38802,7 @@ __aullrem	00bfebb0	00770e80
 ??0CDefClassBase@@QAE@ABV0@@Z	0046644c	00f25dd0
 ??_7CArenaCreatureDef@@6B@	012fb358	00f25dd0
 ??1CUnknown@@UAE@XZ	00ca7780	00caf480
+?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z	00555440	00555a90
+?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z	005556f0	00555a90
+?push_back@?$vector@VCBlendedEnvironmentTheme@NEnvironmentInternal@@V?$allocator@VCBlendedEnvironmentTheme@NEnvironmentInternal@@@std@@@std@@QAEXABVCBlendedEnvironmentTheme@NEnvironmentInternal@@@Z	0088a350	008886e0
+?MakeNPCComment@CQ_RansomVictimScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ENPCComment@@@Z	00de3f90	00de3ce0

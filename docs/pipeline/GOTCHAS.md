@@ -1,10 +1,10 @@
 
-- (agentFAM08, 2026-11-12) The whole CVtable_ family has no RTTI: settle each vtable from its storing ctor / allocator, its named slots and reloc_bindings, not vtable-4.
-- (agentFAM08, 2026-11-12) reloc_bindings often already binds the right ??0 spelling to a placeholder ctor (the def-class default ctors): grep the address first.
-- (agentFAM08, 2026-11-12) The script-info registration (CScriptInfoManager::AddScript calls) pairs each script's literal name with its script and master-data allocators: it names data classes and a script's CLevelScriptBase<T>.
-- (agentFAM08, 2026-11-12) `new Derived` with the abstract base's constructor defined inline emits the base vtable and its ??_G (no out-of-line ctor needed).
-- (agentFAM08, 2026-11-12) An implicit derived destructor whose base destructor is also implicit is NOT expanded into ??_G by VC7.1 here (CActiveEntityScript<T>), though retail did; decl-only opt-ins, /Ob2, /EHsc did not change it -- stop after two tries.
-- (agentFAM08, 2026-11-12) PDB ??_E spellings can differ from retail: trust the body (bit 0 only = ??_G).
-- (agentFAM08, 2026-11-12) Landed EH funclet rows #include their parent's source by path: renaming a parent row's file breaks them.
-- (agentFAM08, 2026-11-12) A g++ -fsyntax-only pass (64-bit, ignoring the ptr32 static asserts) catches missing prerequisite macros before a Wine grade.
-- (landing de, 2026-11-12) A generic vland --recheck-landed payload grades an EH funclet row against its whole parent (DIFFER even when untouched); recheck funclets with lane_tools/recheck.py, which reads the `funclet block offset` from the source.
+- (chunk Q18, 2026-11-12) Rotation tie (eax/ecx v ecx/edx on a key address): name the intermediate pointer (`CThingCreatureBase* target = ...;`) to take one temporary out of VC7.1's scratch rotation -- 0x008BF500 FinishAction.
+- (chunk Q18, 2026-11-12) A CCountedPointer element read via `.Get()` instead of `.Data` flips the scratch register pick in a loop -- 0x00555A90 UpdateVisibleList.
+- (chunk Q18, 2026-11-12) Entity-script Main with in-loop terminating returns: `for(;;)` with `if (IsActiveThreadTerminating()) return;` first, not `while (!IsActiveThreadTerminating())` (9 hunks -> match) -- 0x00DE3CE0.
+- (chunk Q18, 2026-11-12) An inline `operator=` on a large POD expands to `rep movsd`; when retail calls the out-of-line copy, declare it (opt-in) instead of defining it -- 0x008886E0 (0x006B5DF0).
+- (chunk Q18, 2026-11-12) Inlined null-safe bool wrapper tested with `cmp al,bl` instead of retail's `test al,al`: spell it `return PImp.Get() && PImp->IsAlive();`, not two returns -- 0x00ED94D0.
+- (chunk Q18, 2026-11-12) CIsThingAlive temporary built in place (vtable store + copy ctor) needs the ctor defined inline in the row and FABLE_RETAIL_CPREDICATEBASE_NOVTABLE -- 0x00ED94D0.
+- (chunk Q18, 2026-11-12) Script watcher dtor expansion per exit: `do { if (...) return; } while (0);` expands the by-value CScriptThing dtor, plain `if` calls 0x004AA840 (sibling 0x00ED9790 rule, again at 0x00ED94D0).
+- (chunk Q18, 2026-11-12) c2prio cannot find a template instance by its full mangled leaf: pass `--func <plain method name>` -- 0x008780D0.
+- (chunk Q18, 2026-11-12) cl spins (timeout) on an `#error` deep in the def headers: run a g++ -fsyntax-only precheck first; fable_script_def_global.h needs FABLE_RETAIL_DEF_CLASS_BASE + FABLE_RETAIL_CDEFSTRINGTABLE -- 0x00DE3CE0 / 0x00ED94D0.

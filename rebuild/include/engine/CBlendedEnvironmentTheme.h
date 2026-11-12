@@ -16,6 +16,12 @@ public:
     void Blend(CBlendedEnvironmentTheme&,const CBlendedEnvironmentTheme&,float) const;
     void CompactTextureSet(CIDrawEnvironmentTextureSet&,long) const;
     void SetAsWeightedBlendOfThemes(const CArray<CBlendedEnvironmentTheme>&,const CArray<float>&);
+#ifdef FABLE_RETAIL_CBLENDEDENVIRONMENTTHEME_ASSIGN
+    // Retail opt-in (Q18, row 0x008886E0 BlendInLevel): Ego_r.pdb / FableWin.pdb ??4CBlendedEnvironmentTheme@NEnvironmentInternal@@QAEAAV01@ABV01@@Z,
+    //   out of line in retail at 0x006B5DF0 (`call 0x006B5DF0` for `result = base`; the implicit member-wise copy of the CArray
+    //   members). Declaration only; without it this header's trivially-copyable model inlines a `rep movsd`.
+    CBlendedEnvironmentTheme& operator=(const CBlendedEnvironmentTheme&);   // 0x006B5DF0
+#endif
     float TimeOfDay;
     CRGBFloatColour Colours[19];
     float Scalers[30];

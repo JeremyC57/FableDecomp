@@ -50,7 +50,10 @@ public:
  long GetNoThingsInMapwhoLevel(long p0) const;
  void Validate();
  long GetMemoryFootprint() const;
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+// Q18 opt-in FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE (rows 0x006FE7C0 / 0x008780D0): the same inline PeekCell body without the
+//   UPDATE_LIST chain (FableWin.pdb ?PeekCell@CThingMap@NThingMap@@QBEABVCThingMapCell@2@EKK@Z, expanded in retail: `movzx eax,byte
+//   ptr [layer]` then the layer*20 / layer*12 offsets, 0x008781B0).
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE)
  const NThingMap::CThingMapCell & PeekCell(unsigned char p0, unsigned long p1, unsigned long p2) const{return Cells[p0][MapwhoLevelInfo[p0].Extents.X*p2+p1];}
 #else
  const NThingMap::CThingMapCell & PeekCell(unsigned char p0, unsigned long p1, unsigned long p2) const;
@@ -134,6 +137,12 @@ public:
     const C2DBoxI& GetArea() const { return Area; }
 #endif
     virtual ~CThingMap();                                    // slot 0 (scalar deleting dtor 0x0085ECF0)
+#ifdef FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE
+    // Q18 opt-in (rows 0x006FE7C0 / 0x008780D0): FableWin.pdb ?PeekCell@CThingMap@NThingMap@@QBEABVCThingMapCell@2@EKK@Z, inline in
+    //   retail (0x008781B0 `movzx eax,byte ptr [esp+14h]`: the layer narrowed to the unsigned char parameter, then the layer*20 /
+    //   layer*12 element offsets). Body only: no layout change.
+    const CThingMapCell& PeekCell(unsigned char layer, unsigned long x, unsigned long y) const { return Cells[layer][MapwhoLevelInfo[layer].Extents.X*y+x]; }
+#endif
     std::vector<CMapwhoLevelInfo>              MapwhoLevelInfo;   // +0x04
     CThingMapManager*                          Manager;           // +0x10
     std::vector<std::vector<CThingMapCell> >   Cells;             // +0x14

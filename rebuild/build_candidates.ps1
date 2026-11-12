@@ -393235,6 +393235,49 @@ $catalog = @(
         TestSource = '00/a8/CSBCAgents_Process_00a87700_test.cpp'
         PassPattern = '00a87700_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00555a90'
+        Module = 'NUISystem::CScrollableList'
+        Source = '00/55/NUISystemCScrollableList_UpdateVisibleList_00555a90.cpp'
+        TestSource = '00/55/NUISystemCScrollableList_UpdateVisibleList_00555a90_test.cpp'
+        PassPattern = '00555a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008886e0'
+        Module = 'NEnvironmentInternal::CEnvironmentThemePriorityStackEntry'
+        Source = '00/88/NEnvironmentInternalCEnvironmentThemePriorityStackEntry_BlendInLevel_008886e0.cpp'
+        TestSource = '00/88/NEnvironmentInternalCEnvironmentThemePriorityStackEntry_BlendInLevel_008886e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '008886e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008bf500'
+        Module = 'CCreatureAction_GenericFireProjectileWeapon'
+        Source = '00/8b/CCreatureActionGenericFireProjectileWeapon_FinishAction_008bf500.cpp'
+        TestSource = '00/8b/CCreatureActionGenericFireProjectileWeapon_FinishAction_008bf500_test.cpp'
+        PassPattern = '008bf500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009644f0'
+        Module = 'CAIStateGroup_StealStealableItem'
+        Source = '00/96/CAIStateGroupStealStealableItem_OnReplace_009644f0.cpp'
+        TestSource = '00/96/CAIStateGroupStealStealableItem_OnReplace_009644f0_test.cpp'
+        PassPattern = '009644f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de3ce0'
+        Module = 'NScript::CQ_RansomVictimScript::CNPCComment'
+        Source = '00/de/NScriptCQRansomVictimScriptCNPCComment_Main_00de3ce0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCNPCComment_Main_00de3ce0_test.cpp'
+        PassPattern = '00de3ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed94d0'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_WatchForResetWanderCentre_00ed94d0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_WatchForResetWanderCentre_00ed94d0_test.cpp'
+        PassPattern = '00ed94d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

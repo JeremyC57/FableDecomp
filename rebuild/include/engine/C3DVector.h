@@ -314,6 +314,11 @@ public:
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z (0x00B81930),
     // out of line in retail at 0x00A14040 (395 bytes, the sin/cos rotation about Z). A declaration only.
     void RotateXY(float angle);                                          // 0x00A14040
+#ifdef FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES
+    // Retail opt-in (chunk Q18, row 0x00837220 CThingTrackNode::UpdateFacingDirection): Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z, out of
+    // line in retail at 0x00A14260 (landed; thiscall, two floats, `ret 8`). A declaration only.
+    void Rotate(float angle_xy, float angle_yz);                         // 0x00A14260
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ACCURATENORMALISE
     // Retail opt-in (chunk 1023, row 0x00B67270 CEngineLandscapeRenderer::BuildBlendingTables): Ego_r.pdb / FableWin.pdb
     // ?AccurateNormalise@C3DVector@@QAEAAV1@XZ, out of line in retail at 0x00A14440 (the landed bound spelling; called with ecx = the

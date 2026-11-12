@@ -1,0 +1,21 @@
+address	name	grade	grades_used	note
+008bf500	CCreatureAction_GenericFireProjectileWeapon::FinishAction	RELOCATION_MATCH	1	Q17 port; lever: named `target` local for the attacked creature (one rotation temporary fewer: eax/ecx key-address registers as retail)
+00555a90	NUISystem::CScrollableList::UpdateVisibleList	RELOCATION_MATCH	1	Q17 port; lever: Children[i].Get() (FableWin CCountedPointer<CComponent>::Get) instead of the member read
+00de3ce0	NScript::CQ_RansomVictimScript::CNPCComment::Main	RELOCATION_MATCH	1	ported onto CQ_RansomVictimScript.h (+NPCCOMMENT opt-in); lever: for(;;) with the terminating return first (the while(!...) form gave 9 hunks); mixed inline/out-of-line ~CScriptThing via scoped inline_depth (Inline-budget note)
+008886e0	NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::BlendInLevel	RELOCATION_MATCH	1	ported onto the sibling 0x008884D0 opt-ins (/Gr); lever: CBlendedEnvironmentTheme::operator= declared out of line (0x006B5DF0) instead of the rep movsd copy
+009644f0	CAIStateGroup_StealStealableItem::OnReplace	RELOCATION_MATCH	1	ported: new retail CAIStateGroup_StealStealableItem opt-in + CThing::SetAsDeathPersistent; sibling 0x00965640 spelling plus the KillSelfAndStealableItemAfterReachingDestination tail
+00ed94d0	NScript::CV_TalentlessBardScript::WatchForResetWanderCentre	RELOCATION_MATCH	1	ported onto a new NScript_CV_TalentlessBardScript.h; levers: IsAlive as `PImp.Get() && PImp->IsAlive()` (test al,al; the two-return form gives cmp al,bl), inline CIsThingAlive ctor, sibling WatchForAttack's do{}while(0) exits
+008780d0	CThingSearchTools::GetAllThingsInRoughArea<CThingBuilding,std::list<const CThingBuilding*>,CFilter_Bind2<CThingFilter_IsOfType,CThingFilter_OverlappingSphere> >	DIFFER(680v680)	1	identity corrected (catalog said GetPBestThingInRoughArea<...IsNot,CIsVeryCloseMotionlessCreature...>); ported; residue: reload order after the node loop (retail edx/edi/esi, ours edi/esi/edx)
+006fe7c0	CThingSearchTools::GetAllThingsInRoughArea<CThingGameObject,std::list<CThingGameObject*>,CFilter_Bind2<CThingFilter_MinAllowedRadius,CThingFilter_OverlappingSphere> >	DIFFER(680v680)	1	ported (new CThingFilter_MinAllowedRadius.h); same single residue as 0x008780D0 at 0x006FE9BD
+00837220	CThingTrackNode::UpdateFacingDirection	DIFFER(716v716)	1	ported; 3 scheduling residues: third Normalise mov edx,17Ch one tuple late, cross product third component operand load order, PhysicsTC vtable load hoisted
+00a78b20	CNavQuadTree::SaveToFile	DIFFER(678v678)	0	NOT PORTED (prior local model); prior residue: functor built in the argument area before the MapPos loads; layer count register
+00540320	NUISystem::CEditBox::KeyPressed	DIFFER(755v755)	0	NOT PORTED (prior local model); prior residue: three vptr-load scratch registers swapped, sub edi,5 vs add edi,-5
+00649e8b	NPlayerGui::CDrawFishingGame::Draw	DIFFER	0	NOT PORTED (prior local model); probe ratio 0.910, 12 hunks
+0065c5bb	CTCVillage::UpdateMirroredCrimeData	DIFFER(421v421)	0	NOT PORTED (prior local model); probe ratio 0.637
+006c1250	CTCBuyableHouse::Update	DIFFER(638v638)	0	NOT PORTED (prior local model); prior residue: register rotation (retail edx/eax, ours eax/ecx)
+007bd845	NThingShot::CTCShotDefinitionDrainLife::InitMovement	DIFFER(642v642)	0	NOT PORTED (prior local model); prior residue: x87 operand orders and a shared temporary slot
+008cdd40	CCreatureAction_ReleaseTimeSpell::FinishAction	DIFFER(430v430)	0	NOT PORTED (prior local model); probe 21 hunks; port plan in NOTES
+008e16a0	NCreatureMode::CModeScreamerSuperAttack::FrameUpdate	DIFFER	0	NOT PORTED (prior local model); probe ratio 0.873, 18 hunks
+0096cd70	CAIStateGroup_EatAtTable::Update	DIFFER	0	NOT PORTED (prior local model); probe ratio 0.732
+0079b6f0	CTCSummonSpell::ResetMinionPos	DIFFER(732v732)	0	NOT PORTED (prior local model); probe ratio 0.819
+008c4fd0	CCreatureAction_ScorpionSummon::CreateBabies	DIFFER(723v722)	0	NOT PORTED (prior local model); prior residue: three frame slots shifted one word, one byte longer

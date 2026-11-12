@@ -482,6 +482,11 @@ public:
     bool IsKillLocked() const { return KillLocked != 0; }
     bool IsGloballyLoaded() const { return GloballyLoaded != 0; }
     bool IsDeathPersistent() const { return DeathPersistent != 0; }
+#ifdef FABLE_RETAIL_CTHING_SETASDEATHPERSISTENT   // nested in FABLE_RETAIL_CTHING_STATEACCESS
+    // Retail opt-in (Q18, row 0x009644F0 CAIStateGroup_StealStealableItem::OnReplace): FableWin.pdb ?SetAsDeathPersistent@CThing@@QAEXXZ,
+    //   inline in retail (0x00964751 `or byte ptr [edi+93h],2` = DeathPersistent, bit 17 of the +0x91 run). Body only: no layout change.
+    void SetAsDeathPersistent() { DeathPersistent = true; }
+#endif
 protected:
     void UpdateThingScanInclusion();                             // 0x004C8C00 ?UpdateThingScanInclusion@CThing@@IAEXXZ (3 rows)
     const CPlayerManager& PeekPlayerManager() const;             // 0x004C79F0 ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ (3 rows)

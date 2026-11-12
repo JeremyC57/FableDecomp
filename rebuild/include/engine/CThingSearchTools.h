@@ -162,7 +162,13 @@ public:
         ++NoLookups;
         NoThingsScanned=0;
         ++SearchID;
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_THISEND
+        // Q18 opt-in (rows 0x006FE7C0 / 0x008780D0, the std::list instances): the loop's end is read from the member
+        //   (0x00878115 `cmp esi,[ebp+10h]` = this->AreaMaps._M_finish, with `this` and &AreaMaps both kept: ebp / ebx).
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=AreaMaps.end();++it) {
+#else
         for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
+#endif
             const NThingMap::CThingMap& map=**it;
             C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
             for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
@@ -175,7 +181,7 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
-#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE)
                     const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
 #else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];

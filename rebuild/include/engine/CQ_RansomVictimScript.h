@@ -8,6 +8,13 @@
 #include "engine/CEntityScriptBase.h"
 #include "engine/CTimer.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#ifdef FABLE_RETAIL_CQ_RANSOMVICTIMSCRIPT_NPCCOMMENT
+// Retail opt-in (Q18, row 0x00DE3CE0 CNPCComment::Main): the global enum of MakeNPCComment's third parameter (Ego_r.pdb /
+//   FableWin.pdb ...W4ENPCComment@@@Z: a global enum, not nested). The enumerator names are not in any source we hold: these are
+//   the landed MakeNPCComment row's (0x00DE3F90) descriptive names, value 1 = the father's-guard comment that also lets the other
+//   NPC answer.
+enum ENPCComment { NPC_COMMENT_VICTIM, NPC_COMMENT_GUARD };
+#endif
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_RansomVictimScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
@@ -29,6 +36,11 @@ public:
     //   CScriptThing> (vtable 0x012DD860, Func +0x34 = 0x00DE81B0; thread name "ParentClass." + "CheckVictimHit"); Ego_r.pdb
     //   ?CheckVictimHit@CQ_RansomVictimScript@NScript@@QAEXVCScriptThing@@@Z, the landed row 0x00DE81B0. Declaration only.
     void CheckVictimHit(CScriptThing);                                   // 0x00DE81B0
+#endif
+#ifdef FABLE_RETAIL_CQ_RANSOMVICTIMSCRIPT_NPCCOMMENT
+    // Ego_r.pdb ?MakeNPCComment@CQ_RansomVictimScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ENPCComment@@@Z (landed
+    //   0x00DE3F90, `ret 0Ch`). Declaration only.
+    bool MakeNPCComment(const CCharString&, const CScriptThing&, ENPCComment);   // 0x00DE3F90
 #endif
     bool QuestStartScreened; // +48
     bool MissionSucceeded; // +49
