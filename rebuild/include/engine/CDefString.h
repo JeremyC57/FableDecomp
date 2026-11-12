@@ -93,6 +93,11 @@ public:
  // in retail at 0x0044FC00 (the only PDB spelling of the four bound to it). Declaration only.
  void TransferBinaryIn(CDataInputStream& stream);                       // 0x0044FC00
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_NE_CHARSTRING
+ // Opt-in (wf14, row 0x0076C9A0 CTCEnemy::OnSerialise): Ego_r.pdb ??9CDefString@@QBE_NABVCCharString@@@Z (0x0077B970), retail
+ // 0x0076D640 (out of line, emitted in the CTCEnemy TU). Declaration only.
+ bool operator!=(const CCharString& text) const;                       // 0x0076D640
+#endif
 private:
  long TablePos;
 };

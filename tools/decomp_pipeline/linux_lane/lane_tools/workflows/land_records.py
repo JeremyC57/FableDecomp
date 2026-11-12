@@ -29,8 +29,8 @@ for name in ('LABELS.tsv','NAME_FIXES.tsv','STATUS.tsv'):
 t=f'# Workflow {wf} verdicts (two independent Opus lenses per row: mechanical + evidence; one Opus repair pass)\n\n'
 for a in rows+other:
     r=res[a]
-    t+=f"## {a} -- {r['status']}, author attempts {r['attempts']}\n\n- What made it match: {r['what_made_it_match']}\n"
-    for o in r['open_issues']: t+=f"- OPEN at hand-back: {o}\n"
+    t+=f"## {a} -- {r.get('status')}, author attempts {r.get('attempts')}\n\n- What made it match: {r.get('what_made_it_match') or (r.get('last') or {}).get('what_made_it_match') or 'not matched: ' + str((r.get('last') or {}).get('residue', ''))}\n"
+    for o in (r.get('open_issues') or []): t+=f"- OPEN at hand-back: {o}\n"
     t+='\n'
 open(P+'/EVIDENCE_VERDICTS.md','w').write(t)
 with open(f'ghidra_out/labels_landing_2026-11-12{letter}.tsv','w') as f:

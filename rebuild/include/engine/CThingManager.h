@@ -90,6 +90,13 @@ public:
     // (retail 0x0051EAB0, landed).
     void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info);   // 0x0051EAB0
 #endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_PEEKPLAYERMANAGER
+    // Opt-in (wf14, row 0x004C9920 CThing::IsAffectedByBulletTime): FableWin.pdb ?PeekPlayerManager@CThingManager@@QBEABVCPlayerManager@@XZ
+    // (0x01CF6220) / ?GetPlayerManager@CThingManager@@QAEAAVCPlayerManager@@XZ (0x01CF6260), inline in retail (`mov ecx,[ecx+30h]`
+    // at 0x004C9956). No layout change.
+    const CPlayerManager& PeekPlayerManager() const { return PlayerManager; }
+    CPlayerManager& GetPlayerManager() { return PlayerManager; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_ACCESSORS
     // Opt-in (chunk 765, rows 0x004C7A50 / 0x004C7A60 / 0x004C7BC0 / 0x00686A90 / 0x00520C70): Ego_r.pdb / FableWin.pdb public
     // members, out of line in retail in Ego_r's donor order: ?GetSerialiseVersion@CThingManager@@QBEJXZ 0x0051E2D0 (+0xD8),

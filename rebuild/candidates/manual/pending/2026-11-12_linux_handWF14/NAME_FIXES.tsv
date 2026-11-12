@@ -1,0 +1,1 @@
+0x00705170	?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ	Ego_r.pdb + FableWin.pdb; engine/CTCCarryable.h; row 0x004C9920 calls it const on the carryable TC	GetCarrier, GetCurrentSelectedEntryData

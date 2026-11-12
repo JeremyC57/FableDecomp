@@ -69,6 +69,10 @@ public:CParticleSystem();virtual ~CParticleSystem();
  void GetInverseSystemTransform(CMatrix3x4&)const;
  std::list<CParticle*>::iterator DeleteParticle(std::list<CParticle*>::iterator&);
  CDecal* AllocateDecal();
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_CLEARDECAL
+ // Opt-in (row 0x00AF5430): Ego_r.pdb + FableWin.pdb ?ClearDecal@CParticleSystem@NParticleEngine@@QAEXAAV?$_List_iterator@..CDecal..@std@@@Z.
+ void ClearDecal(std::list<CDecal*>::iterator&);
+#endif
  void TransformVectorIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformVector(v);}}
  void TransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetSystemTransform(t);t.TransformPoint(v);}}
  void InverseTransformPosIfLocal(C3DVector& v)const{if(StayWithEmitter){CMatrix3x4 t;GetInverseSystemTransform(t);t.TransformPoint(v);}}

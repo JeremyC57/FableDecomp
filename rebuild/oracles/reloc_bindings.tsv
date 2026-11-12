@@ -38909,3 +38909,17 @@ _D3DXLoadSurfaceFromMemory@40	00bfefc8	009f4390
 ??$find@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@?$_Rb_tree@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@PAU123@U?$_Identity@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$less@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@V?$allocator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@@std@@QBE?AU?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Const_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@1@ABQAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@Z	008839e0	00881a40
 ??$find@PAVCThing@@@?$_Rb_tree@PAVCThing@@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$_Select1st@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@3@U?$less@PAVCThing@@@3@V?$allocator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@2@@1@ABQAVCThing@@@Z	00883860	00881a40
 ??A?$map@PAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$less@PAVCThing@@@std@@V?$allocator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@7@@std@@QAEAAVCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@ABQAVCThing@@@Z	00884c70	00881a40
+??$GetAllThingsInRoughArea@$$CBVCThingDeadCreature@@V?$vector@PBVCThingDeadCreature@@V?$allocator@PBVCThingDeadCreature@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThingDeadCreature@@V?$allocator@PBVCThingDeadCreature@@@std@@@std@@@Z	009595c0	00959800
+??$GetAllThingsInRoughArea@$$CBVCThingObject@@V?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@std@@@Z	00959380	00959800
+?IsFading@CTCFadeOutAndIn@@QBE_NXZ	0049d310	004c9920
+?IsUnderScriptControl@CThing@@QBE_NXZ	004c8c90	004c9920
+?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z	005eedcf	006ac430
+?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z	00582027	006ac430
+?GetTutorialCategory@CTCInventoryItem@@QBE?AW4ETutorialCategory@@XZ	005d92b0	006ac430
+??9CDefString@@QBE_NABVCCharString@@@Z	0076d640	0076c9a0
+?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ	00b67510	00b68da0
+?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ	00b67480	00b68da0
+?_M_fill_insert@?$vector@UCSubPatchSorterEntry@CEngineLandscapeRenderer@@V?$allocator@UCSubPatchSorterEntry@CEngineLandscapeRenderer@@@std@@@std@@QAEXPAUCSubPatchSorterEntry@CEngineLandscapeRenderer@@IABU34@@Z	00b6c840	00b68da0
+??0CCreatureAction_PlayHopscotch@@QAE@AAVCThingCreatureBase@@@Z	00941b20	00941690
+?SetDirtyDiscError@CFileInstaller@@KIX_N@Z	009c3530	009c4440
+__imp__GetFileSizeEx@8	0143fd5c	009c4440

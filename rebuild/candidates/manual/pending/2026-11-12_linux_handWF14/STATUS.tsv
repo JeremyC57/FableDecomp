@@ -1,0 +1,5 @@
+004c9920	CThing::IsAffectedByBulletTime	RELOCATION_MATCH	4	shared headers + FableWin inline accessors
+00760e70	NShape::CTrack::GetMinDistanceToTrack	RELOCATION_MATCH	~72	C2DVector(dir) view for the perpendicular; C2DBoxF box before cur
+006ac430	CThingPlayerCreature::LearnExpression	RELOCATION_MATCH	30	GetDef real body same-TU + DummyObject as CDefIndex
+00af5430	NParticleEngine::CParticleSystem::ClearDecal	RELOCATION_MATCH	55	RELEASE_INNER + __copy decl + CDecal accessors
+009c4440	CFileInstaller::IsFileCopyNecessary	RELOCATION_MATCH	~70	/d2inlT120; inline real SetDirtyDiscError; tree const find body

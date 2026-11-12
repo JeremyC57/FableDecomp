@@ -151,9 +151,29 @@ public:
     unsigned long          StateUpdateFlags;                             // +0xe4
     long                   SelfIlluminationAmbientPercentage;            // +0xe8
     // Ego_r.pdb / FableWin.pdb setters with no out-of-line copy in retail (0x00BBE090 expands them; FableWin debug bodies only):
+    // Correction (0x00B68DA0): SetEnableFadedShadowFactor DOES have an out-of-line copy in retail, 0x00B66EB0
+    // (`mov eax,[ecx+4694h] ; cmp eax,1 ; je ; xor al,al ; ... cmp al,[ecx+0CEh]`): its real body starts with
+    // `if (PeekGlobalShadowMode() != 1) enable = false;` -- that guard needs ShadowMode (+0x4694), so it is modelled under
+    // FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD (requires _MEMBERS); the default body below leaves it out (with a
+    // constant `false` argument, as in RestoreDefaultPrimitiveParameters, the guard is dead code anyway).
     // ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z, ?SetCurrentEnvironmentThemeChannel@CEngineLightingManager@@
     // QAEXABVCEnginePrimitiveThemeChannelDesc@@@Z, ?SetSelfIlluminationAmbient@CEngineLightingManager@@QAEXJ@Z and
     // ?RestoreDefaultPrimitiveParameters@CEngineLightingManager@@QAEXXZ (the three resets in this order, 0x00BBE922..0x00BBE9BB).
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SETFADED_SHADOWGUARD
+    // FableWin ?PeekGlobalShadowMode@CEngineLightingManager@@QBE?AW4ELightingManagerShadowMode@@XZ (inline).
+    FABLE_FORCEINLINE ELightingManagerShadowMode PeekGlobalShadowMode() const { return ShadowMode; }
+    // FableWin ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z, the PDB body (out-of-line copy 0x00B66EB0).
+    // Inline-budget: retail 0x00B68DA0 RenderSortedPatches expands this setter, guard included, at its call sites.
+    FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
+    {
+        if (PeekGlobalShadowMode() != (ELightingManagerShadowMode)1)
+            enable = false;
+        if (enable != FadedShadowDiffuseFactorEnabled) {
+            FadedShadowDiffuseFactorEnabled = enable;
+            StateUpdateFlags |= 1;
+        }
+    }
+#else
     FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
     {
         if (FadedShadowDiffuseFactorEnabled != enable) {
@@ -161,6 +181,7 @@ public:
             StateUpdateFlags |= 1;
         }
     }
+#endif
     FABLE_FORCEINLINE void SetCurrentEnvironmentThemeChannel(const CEnginePrimitiveThemeChannelDesc& channel)
     {
         if (CurrentThemeChannel.ChannelIndex0 != channel.ChannelIndex0 || CurrentThemeChannel.ChannelIndex1 != channel.ChannelIndex1 ||

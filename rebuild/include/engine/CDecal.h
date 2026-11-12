@@ -19,6 +19,26 @@ public:
     static void* __fastcall operator new(unsigned int);
     static void __fastcall operator delete(void*);
     float GetInterpolatedLifetimerInSeconds(float) const;
+#ifdef FABLE_RETAIL_CDECAL_CLEAR
+    // Opt-in (row 0x00AF5430 CParticleSystem::ClearDecal): FableWin.pdb accessors, all inline in retail (no retail copies):
+    // ?GetParentHandle@CDecal@NParticleEngine@@QBE_NJAAVCEnginePrimitiveHandle@@@Z, ?GetPrimID@CDecal@NParticleEngine@@QBE_NJJAAJ@Z,
+    // ?ClearParentHandle@CDecal@NParticleEngine@@QAEXJ@Z, ?ClearAll@CDecal@NParticleEngine@@QAEXXZ. The bounds tests are written
+    // size-first (retail `cmp size,group ; jbe`). ClearParentHandle is forced inline: retail expands it in ClearDecal's loop
+    // (0x00AF555A..0x00AF55D3), VC7.1's inline budget otherwise calls it there. ClearAll's PrimIDList.clear() calls the
+    // out-of-line vector<CArray<long> >::erase 0x00AF7910; ParentHandleList.clear() expands (needs the __copy 0x00440260 declared).
+    bool GetParentHandle(long group, CEnginePrimitiveHandle& handle) const {
+        if (ParentHandleList.size() > group) { handle = ParentHandleList[group]; return !handle.IsNull(); }
+        return false;
+    }
+    bool GetPrimID(long group, long index, long& id) const {
+        if (PrimIDList.size() > group && PrimIDList[group].size() > index) { id = PrimIDList[group][index]; return id >= 0; }
+        return false;
+    }
+    FABLE_FORCEINLINE void ClearParentHandle(long group) {
+        if (ParentHandleList.size() > group) { ParentHandleList[group].Clear(); PrimIDList[group].clear(); }
+    }
+    void ClearAll() { ParentHandleList.clear(); PrimIDList.clear(); }
+#endif
 #ifdef FABLE_RETAIL_CDECAL_UPDATE
  // Both PDB accessors; native B0E66x onward uses these exact field locations.
     void SetPosition(const C3DVector& position) { Position = position; }

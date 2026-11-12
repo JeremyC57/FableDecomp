@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00959800   RELOCATION_MATCH PASS   IsRunnable
+004c9920   RELOCATION_MATCH PASS   IsAffectedByBulletTime
+00760e70   RELOCATION_MATCH PASS   GetMinDistanceToTrack
+006ac430   WARN RELOC_NAME: ?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z -> 005eedcf labelled '_global::Forward_Vector_PushBack_member0x1bc_005eedcf'
+006ac430   RELOCATION_MATCH PASS   LearnExpression
+0076c9a0   RELOCATION_MATCH PASS   OnSerialise
+00af5430   RELOCATION_MATCH PASS   ClearDecal
+00b68da0   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b68da0   RELOCATION_MATCH PASS   RenderSortedPatches
+00941690   RELOCATION_MATCH PASS   Update
+009c4440   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009c4440   WARN RELOC_NAME: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ -> 0099ed10 labelled 'CCharString::ToLower'
+009c4440   RELOCATION_MATCH PASS   IsFileCopyNecessary
+
+WINS: 9
+  00959800 RELOCATION_MATCH CAIStateGroup_HoverWanderAroundThing::IsRunnable
+  004c9920 RELOCATION_MATCH CThing::IsAffectedByBulletTime
+  00760e70 RELOCATION_MATCH NShape::CTrack::GetMinDistanceToTrack
+  006ac430 RELOCATION_MATCH CThingPlayerCreature::LearnExpression
+  0076c9a0 RELOCATION_MATCH CTCEnemy::OnSerialise
+  00af5430 RELOCATION_MATCH NParticleEngine::CParticleSystem::ClearDecal
+  00b68da0 RELOCATION_MATCH CEngineLandscapeRenderer::RenderSortedPatches
+  00941690 RELOCATION_MATCH CAIStateGroup_KidPlayHopscotch::Update
+  009c4440 RELOCATION_MATCH CFileInstaller::IsFileCopyNecessary
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupHoverWanderAroundThing_IsRunnable_00959800
+  CThing_IsAffectedByBulletTime_004c9920
+  NShapeCTrack_GetMinDistanceToTrack_00760e70
+  CThingPlayerCreature_LearnExpression_006ac430
+  CTCEnemy_OnSerialise_0076c9a0
+  NParticleEngineCParticleSystem_ClearDecal_00af5430
+  CEngineLandscapeRenderer_RenderSortedPatches_00b68da0
+  CAIStateGroupKidPlayHopscotch_Update_00941690
+  CFileInstaller_IsFileCopyNecessary_009c4440

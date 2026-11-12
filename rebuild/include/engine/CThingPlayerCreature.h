@@ -27,6 +27,14 @@ class CCreatureAbilityDef;
 class CEnginePrimitivePrepareInfo;
 #pragma pack(push, 1)
 class CThingPlayerCreature : public CThingCreatureBase {
+
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_EXPRESSIONS
+public:
+    // Opt-in (row 0x006AC430): Ego_r.pdb / FableWin.pdb ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z 0x006AC390 and
+    // ?LearnExpression@CThingPlayerCreature@@QAE_NABVCCharString@@J_N@Z 0x006AC430. Declarations only: no layout change.
+    bool IsExpressionAvailable(const CCharString& expressionName) const;          // 0x006AC390
+    bool LearnExpression(const CCharString& expressionName, long quickAccessSlot, bool silent);   // 0x006AC430
+#endif
 public:
     CThingPlayerCreature();
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingPlayerCreature@@SIPAVCClass@@XZ.
@@ -157,6 +165,14 @@ FABLE_STATIC_ASSERT(sizeof(CThingPlayerCreature)==0x208);
 // Original sole base CThingCreatureBase; native Create006ac91c allocates208.
 // Complete original tail ControlPos through MovementBandType is unused here.
 class CThingPlayerCreature:public CThingCreatureBase {
+
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_EXPRESSIONS
+public:
+    // Opt-in (row 0x006AC430): Ego_r.pdb / FableWin.pdb ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z 0x006AC390 and
+    // ?LearnExpression@CThingPlayerCreature@@QAE_NABVCCharString@@J_N@Z 0x006AC430. Declarations only: no layout change.
+    bool IsExpressionAvailable(const CCharString& expressionName) const;          // 0x006AC390
+    bool LearnExpression(const CCharString& expressionName, long quickAccessSlot, bool silent);   // 0x006AC430
+#endif
 private: unsigned char _pad_0x160[0xa8];
 public: CThingPlayerCreature();
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE

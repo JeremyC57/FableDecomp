@@ -54,6 +54,10 @@ public:
     void ConstructPCExpressionCategoryList(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long, long> >& items,
                                            NUISystem::CComponent* parent, const CCharString& ringPicture, const CCharString& guideSymbol);   // 0x005F45B5
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LEARNEDEXPRESSION
+    // Opt-in (row 0x006AC430): Ego_r.pdb / FableWin.pdb ?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z, out of line at 0x005EEDCF.
+    void AddLearnedExpression(long expressionIndex);                                             // 0x005EEDCF
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SCREEN
     // Retail opt-in (Codex 2026-11-10): Ego_r/FableWin exact names; vtable1256ad4 slot77.
     virtual NUISystem::CComponent* ConstructScreen(NUISystem::CComponent* parent); //005f519f

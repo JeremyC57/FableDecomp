@@ -113,6 +113,15 @@ public:
     // only caller 0x00BE5D20 passes the patch's slot word and the patch). A declaration only: no layout change.
     void RegisterSubPatchForZSorting(long& index, CLandscapeBackgroundPatch* patch);    // 0x00B67E30
 #endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_RENDERSORTED
+    // Retail opt-in (row 0x00B68DA0): Ego_r.pdb / FableWin.pdb ?RenderSortedPatches@CEngineLandscapeRenderer@@AAEXXZ,
+    // ?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ, ?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ (all private).
+private:
+    void SetupCommonStates();                                            // 0x00B67480
+    void PostRenderClearRenderStates();                                  // 0x00B67510
+    void RenderSortedPatches();                                          // 0x00B68DA0
+public:
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_PEEKTHEME
     // Retail opt-in (row 0x00BEAB40 CWaterPatchMesh::GetWaterType): FableWin.pdb inline accessor
     // ?PeekTheme@CEngineLandscapeRenderer@@QBEABUCLandscapeTheme@@K@Z (expanded at 0x00BEAC00: `mov ecx,[renderer+4B8h] ; imul edx,38h`).

@@ -50,7 +50,13 @@ public:
  void SetAlwaysUpdate(bool p0);
  C3DVector GetEmitterPosition() const;
  void EnterTimelineEnd();
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_ATTACHED_INLINE
+ // Opt-in (wf14, row 0x004C9920 CThing::IsAffectedByBulletTime): FableWin.pdb ?IsAlwaysUpdating@CTCDParticleEmitter@@QBE_NXZ (0x01CF7300)
+ // inline in retail (`movzx eax,byte ptr [eax+45h] ; shr eax,1` at 0x004C9B41). No layout change.
+ bool IsAlwaysUpdating() const { return AlwaysUpdate; }
+#else
  bool IsAlwaysUpdating() const;
+#endif
 #ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_GETPEMITTER_INLINE
  // Retail opt-in (chunk Q3, row 0x007CCF50): Ego_r.pdb ?GetPEmitter@CTCDParticleEmitter@@QBEPAVCParticleEmitter@NParticleEngine@@XZ is
  // inline in retail (no out-of-line copy is bound; 0x007CD239 `lea ecx,[ebp+14h] ; call GetPItem` reads PEmitter in place).
@@ -58,7 +64,13 @@ public:
 #else
  NParticleEngine::CParticleEmitter * GetPEmitter() const;
 #endif
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_ATTACHED_INLINE
+ // FableWin.pdb ?PeekPThingAttachedTo@CTCDParticleEmitter@@QBEPBVCThing@@XZ (0x01CF7320, placed right after IsAffectedByBulletTime):
+ // inline in retail (`lea edi,[eax+1Ch] ; call GetPItem 0x00A01B50`, three times at 0x004C9A01..0x004C9A24). No layout change.
+ const CThing * PeekPThingAttachedTo() const { return PAttachedToThing.Get(); }
+#else
  const CThing * PeekPThingAttachedTo() const;
+#endif
 protected:
  void ClearAttachments();
  bool IsParticleCreationDisabled() const;

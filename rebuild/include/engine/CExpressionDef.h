@@ -81,6 +81,9 @@ enum EExpressionInventoryType {                                      // enumerat
     EXPRESSION_INVENTORY_TYPE_ALIGNMENT = 2,
     EXPRESSION_INVENTORY_TYPE_STEALTH = 3
 };
+#ifdef FABLE_RETAIL_CEXPRESSIONDEF_DEFINDEX
+#include "engine/CDefIndex.h"
+#endif
 class CPersistContext;
 class CExpressionDef : public CParentDefClassBase {
 public:
@@ -101,7 +104,12 @@ public:
     CDefString    SpriteOverrideText;                                // +0x64
     CDefString    SoundCriteria;                                     // +0x68
     CDefString    LoopSoundCriteria;                                 // +0x6c
+#ifdef FABLE_RETAIL_CEXPRESSIONDEF_DEFINDEX
+    // Opt-in (row 0x006AC430): the Ego_r.pdb member type CDefIndex (engine/CDefIndex.h, one long, inline operator long).
+    CDefIndex     DummyObject;                                       // +0x70
+#else
     long          DummyObject;                                       // +0x70 CDefIndex (one long, CDefIndex::Val)
+#endif
     EGameEventType GameEventType;                                    // +0x74
     CDefString    ScriptName;                                        // +0x78
     bool          ScriptLoadResources;                               // +0x7c

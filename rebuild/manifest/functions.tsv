@@ -31936,7 +31936,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00941520	InitStateGroup	CAIStateGroup_KidPlayHopscotch	__thiscall	void	3	CAIStateGroup_KidPlayHopscotch *,CWorld *,CThingAICreature *	1	yes	accepted									
 00941550	OnActivate	CAIStateGroup_KidPlayHopscotch	__thiscall	void	1	CAIStateGroup_KidPlayHopscotch *	1	yes	accepted									
 009415b0	Cleanup	CAIStateGroup_KidPlayHopscotch	__thiscall	void	1	CAIStateGroup_KidPlayHopscotch *	1	yes	accepted									
-00941690	CAIStateGroup_KidPlayHopscotch::Update	CAIStateGroup_KidPlayHopscotch	__thiscall	void	1	CAIStateGroup_KidPlayHopscotch *	1	yes	accepted									
+00941690	Update	CAIStateGroup_KidPlayHopscotch	__thiscall	void	1	CAIStateGroup_KidPlayHopscotch *	1	yes	accepted									
 00941900	?IsRunnable@CAIStateGroup_KidPlayHopscotch@@MAE_NXZ	CAIStateGroup_KidPlayHopscotch	__thiscall	bool	1	CAIStateGroup_KidPlayHopscotch *	1	yes	accepted									
 00941b20	CCreatureAction_PlayHopscotch	CCreatureAction_PlayHopscotch	__thiscall	undefined	2	CCreatureAction_AlertToPlayer *,CThingAICreature *	0	yes	accepted									
 00941b90	PerformAction	CCreatureAction_PlayHopscotch	__thiscall	void	1	CCreatureAction_PlayHopscotch *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CCreatureActionPlayHopscotch_PerformAction_00941b90.cpp
@@ -32357,7 +32357,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00959260	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00959380	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
 009595c0	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_IsPotentialCustomer *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
-00959800	?IsRunnable@CAIStateGroup_HoverWanderAroundThing@@UAE_NXZ	CAIStateGroup_HoverWanderAroundThing	__thiscall	bool	1	CAIStateGroup_HoverWanderAroundThing *	1	yes	accepted									
+00959800	IsRunnable	CAIStateGroup_HoverWanderAroundThing	__thiscall	bool	1	CAIStateGroup_HoverWanderAroundThing *	1	yes	accepted									
 00959a60	Update	CAIStateGroup_HoverWanderAroundThing	__thiscall	void	1	CAIStateGroup_HoverWanderAroundThing *	1	yes	accepted									
 00959bf0	?Update@CAIStateGroup_HoverWander@@UAEXXZ	CAIStateGroup_HoverWander	__thiscall	void	1	CAIStateGroup_HoverWander *	1	yes	accepted									
 00959ee0	Initialise	CAIStateGroup_HoverKeepInArea	__thiscall	void	6	CAIStateGroup_HoverKeepInArea *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted									

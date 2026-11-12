@@ -1,0 +1,10 @@
+address	name	evidence
+00959800	?IsRunnable@CAIStateGroup_HoverWanderAroundThing@@UAE_NXZ	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+004C9920	?IsAffectedByBulletTime@CThing@@QBE_NXZ	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+00760E70	?GetMinDistanceToTrack@CTrack@NShape@@ABE_NABVC3DVector@@AAM@Z	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+006AC430	?LearnExpression@CThingPlayerCreature@@QAE_NABVCCharString@@J_N@Z	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+0076C9A0	?OnSerialise@CTCEnemy@@MAEXAAVCPersistContext@@_N@Z	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+00AF5430	?ClearDecal@CParticleSystem@NParticleEngine@@QAEXAAV?$_List_iterator@V?$_List_val@PAVCDecal@NParticleEngine@@V?$allocator@PAVCDecal@NParticleEngine@@@std@@@std@@@std@@@Z	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+00B68DA0	?RenderSortedPatches@CEngineLandscapeRenderer@@AAEXXZ	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+00941690	?Update@CAIStateGroup_KidPlayHopscotch@@MAEXXZ	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs
+009C4440	?IsFileCopyNecessary@CFileInstaller@@IBE_NAAV?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@@Z	workflow wf14 (landing fb): RELOCATION_MATCH, two PDBs

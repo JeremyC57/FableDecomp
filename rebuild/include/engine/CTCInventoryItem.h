@@ -114,6 +114,11 @@ public:
     // 0x005D8D50). The parameter names are descriptive (the PDB name sets keep none). Declaration only: no layout change.
     bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_TUTORIALCATEGORY
+    // Opt-in (row 0x006AC430): Ego_r.pdb / FableWin.pdb ?GetTutorialCategory@CTCInventoryItem@@QBE?AW4ETutorialCategory@@XZ, out of
+    // line at 0x005D92B0. Declaration only.
+    enum ETutorialCategory GetTutorialCategory() const;                               // 0x005D92B0
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISAUGMENTATION
     // Nested opt-in (chunk 900, rows 0x005C8459 / 0x005C9A95 CTCInventoryWeapons::ConstructScreen(PC)): Ego_r.pdb
     // ?IsAugmentation@CTCInventoryItem@@SI_NJ@Z, the static `__fastcall` def-index test, out of line in retail at 0x005D9870 (both

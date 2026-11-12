@@ -303,6 +303,10 @@ public:
     void SetThingAsQuickAccessItem(long thingIndex, long slot, bool assign);                     // 0x00584157
     void AssignThingPC(long thingIndex, unsigned long slot, NUISystem::CComponent* container);    // 0x00584B86
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_NEXTFREESLOT
+    // Opt-in (row 0x006AC430): Ego_r.pdb / FableWin.pdb ?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z, out of line at 0x00582027.
+    long GetQuickAccessNextFreeSlot(long thingIndex) const;                                     // 0x00582027
+#endif
     void OpenInventoryShortcut(long screen);
     void DeleteMenuComponents();                                     // 0x00587A41
     void OpenPCInventoryMenu();                                      // 0x0058807D

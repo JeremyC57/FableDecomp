@@ -9,6 +9,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_PLAYHOPSCOTCH
+// Retail opt-in (wf14, row 0x00941690 CAIStateGroup_KidPlayHopscotch::Update): the real class derives from CCreatureActionBase
+// (Fable.exe RTTI; the landed ctor 0x00941B20 ??0CCreatureAction_PlayHopscotch@@QAE@AAVCThingCreatureBase@@@Z adds no member: sizeof 0xa8).
+#include "engine/CCreatureActionBase.h"
+class CThingCreatureBase;
+class CCreatureAction_PlayHopscotch : public CCreatureActionBase {
+public:
+    CCreatureAction_PlayHopscotch(CThingCreatureBase& owner);                // 0x00941B20
+    virtual void PerformAction();                                            // 0x00941B90..0x00941CC0 (same TU, out of line)
+    virtual CCreatureActionBase* Clone() const;
+};
+#else
 #pragma pack(push, 1)
 class CCreatureAction_PlayHopscotch {
 public:
@@ -21,4 +33,5 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayHopscotch) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayHopscotch, __vftable) == 0x0);
 
+#endif
 #endif // FABLE_ENGINE_CCREATUREACTION_PLAYHOPSCOTCH_H

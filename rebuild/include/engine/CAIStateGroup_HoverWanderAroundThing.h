@@ -8,6 +8,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERWANDERAROUNDTHING
+// Retail opt-in (wf14, row 0x00959800 IsRunnable): the polymorphic class. Base CAIStateGroup_HoverMovementBase (Update 0x00959A60,
+// size 0x1c; needs FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE), Ego_r.pdb member PThing CIntelligentPointer<const CThingGameObject>
+// +0x1c, size 0x24. Vtable 0x0128D1BC slot 11 ?IsRunnable@CAIStateGroup_HoverWanderAroundThing@@UAE_NXZ (Ego_r 0x0097DF80 /
+// FableWin 0x017E945B). Needs FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroup_HoverMovementBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThingGameObject;
+class CAIStateGroup_HoverWanderAroundThing : public CAIStateGroup_HoverMovementBase {
+public:
+    virtual bool IsRunnable();                                      // 0x00959800
+protected:
+    CIntelligentPointer<const CThingGameObject> PThing;             // +0x1c
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverWanderAroundThing) == 0x24);
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_HoverWanderAroundThing {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -25,4 +42,5 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverWanderAroundThing) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverWanderAroundThing, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverWanderAroundThing, PThing) == 0x1c);
 
+#endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERWANDERAROUNDTHING_H
