@@ -1,0 +1,14 @@
+007f67c0 grade 1 DIFFER(235v235) first port onto shared headers (CTCTargetingAI ATTACK, C2DBoxI radius ctor, ToC2DCoordI, GFFilter_Bind4, std::not1, T=CThingAICreature): box arithmetic now matches; only the zero store of pbest is scheduled one insn before the fld
+007f67c0 grade 2 DIFFER(235v235) pbest declared just before the search call: zero store moves after the box stores
+007f67c0 grade 3 DIFFER(235v235) pbest declared first (before GetPos): zero store moves before the GetPos call
+007f67c0 grade 4 DIFFER(235v235) default C2DBoxI(coord,radius) ctor (Initialise) with pbest after pos: same as grade 1 (store before fld)
+007f67c0 grade 5 RELOCATION_MATCH GetPBestThingInRoughArea template body visible (FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY + Bind4 operator()), pbest after pos
+007f67c0 grade 6 RELOCATION_MATCH final src, default leaf, LANDVERIFY_STRICT_HEADERS=1 also RELOCATION_MATCH; test PASS VC7.1 + g++
+00878be0 grade 1 DIFFER(207v244) port onto NCameraModes_CBase (CYLINDER) + packed CProjectileWeapon members, const, PhysicsTC GetPosition reference; 0.5*0.0 folded, temps via eax
+00878be0 grade 2 DIFFER(220v244) GFGetInterpolatedValue(1,1,t) + by-value pos copy: position loads match; *0.0 still folded, T read via eax, sum order differs
+00878be0 grade 3 DIFFER(224v244) named cam_offset local (T read via esp now) and /2.0f: offset block matches; still *0.0 folded, extra mov ecx,esi before GetObservedThing, sum order
+00878be0 grade 4 DIFFER(222v244) landed GetCamPosOffsetXY body out of line in TU (auto_inline off): ecx reload gone; left: *0.0 folded, final sum spill order
+00878be0 grade 5 DIFFER(222v244) C3DVECTOR_ADD_XY_GROUP: pos loads reorder, no help (reverted)
+00878be0 grade 6 DIFFER(277v244) --flags /Op: keeps fdiv and stores every float; wrong
+00878be0 grade 7 DIFFER(228v244) named float t local: *0.0 now kept; only final sum differs (retail spills P.X and both S.X/S.Y)
+00878be0 handback: stopped on coordinator request after grade 7

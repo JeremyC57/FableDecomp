@@ -77,6 +77,38 @@ Never run `cd` into the scratchpad; keep the repo as cwd. Never commit. Never mo
   dtor + `operator delete`; VC evaluates call arguments right to left; a by-value class argument with a user
   copy constructor is built in its stack slot (`push ecx ; mov ecx,esp ; mov [ecx],eax`).
 
+## Rapid fire (user rule, 2026-11-12): go fast, grade constantly, until the row matches
+
+The user wants this lane to run as fast as possible and still produce real byte matches. There is NO grade limit. Work like this:
+
+1. **Every tool call ends in a grade.** Make the edit and grade it in the SAME Bash call (write the file with a heredoc or a small
+   python patch, then run the fast grader). Do not spend a call only reading, only thinking or only editing while a row is open,
+   except the first look at a row.
+2. **Use the shared fast tools; do not write your own helpers:**
+   - `W=<your chunk dir> python3 $S/tools/fg.py <addr> '<mangled leaf>' v1.cpp [v2.cpp v3.cpp] [--flags ...] --note "<idea>"`
+     grades up to 3 variants of the row in one call (one after another), prints one result line each plus only the differing
+     hunks of the best one, and logs every grade to $W/ATTEMPTS.log for you. Unsure between two or three spellings? Write them all
+     as variants and grade them together instead of reasoning about which is right.
+   - `python3 $S/tools/vt.py <addr> <test.cpp>` builds and runs a test with the lander's own VC7.1 check.
+   - `python3 $S/tools/addmatch.py $W <addr> '<module>' '<method>' <src.cpp> <test.cpp> [--flags ...]` writes a matched row into
+     payload.json / oracle.tsv in the landing formats.
+3. **Short loop, short thoughts.** Read the hunks fg.py printed, form ONE hypothesis in a sentence, edit, grade. No essays between
+   grades, no re-reading whole files (grep the line you need), no re-deriving what the brief or the notes already give. Keep at
+   most a one-line note per grade (the `--note`).
+4. **First grade within 5 tool calls of opening a row** (read the draft and its residue line, read retail with xdis once, port,
+   grade). Fix compile errors by grading again at once, not by inspecting headers at length.
+5. **Still one row at a time, and no switching until it grades MATCH / RELOCATION_MATCH.** When ten grades in a row leave the
+   same residue, change the LEVEL of the idea (callee body visibility, the real structure from the disassembly, identities, the
+   TU's flags -- the check-list in this brief) rather than trying an eleventh spelling of the same thing.
+6. **The moment a row matches:** write its behaviour test (small but real: it must exercise the function's logic), check it with
+   vt.py, regrade once with `LANDVERIFY_STRICT_HEADERS=1`, run addmatch.py, and open the next row in the same breath. Tests,
+   notes and documentation are never written before the match.
+7. **Speed never buys a rule:** no `__asm` / naked / `_emit` / `register` / bare `__forceinline`, no local model of a class that
+   has a shared header (add an opt-in to the header in your overlay), no stand-in bodies, exact PDB names, no git, nothing written
+   under the repo, every Bash call exits 0 with no traceback on screen, one compile at a time (fg.py already does that).
+8. **Hand-back notes are short:** NOTES.md = for each matched row two lines (what made it match; headers / flags it needs), for the
+   row in progress the exact residue and the ideas tried; LESSONS.md = one line per new lesson; hdr/README.md = one line per opt-in.
+
 ## Stay on task: one row at a time, until it MATCHES (user rules, 2026-11-12)
 
 The user watches these chunks. Their rules: keep trying to MATCH the row by editing and grading it; do not get stuck testing small
@@ -99,8 +131,8 @@ it.**
    types, the TU's pragmas/flags (`/Oy-`, `optimize("s")`, `/Gr`, `/EHsc`). Check every callee and member identity against Ego_r and
    FableWin again. Read how the nearest landed sibling rows (same class, same TU, same shape) are spelled and copy their idioms.
    A residue that "looks like a compiler tie" has usually been a wrong source-level fact in this project.
-6. **Toy / probe compiles are capped at 5 per row** (toy functions, c2prio runs, spelling sweeps, `/FAs` listings of side files).
-   Each probe must answer one stated question and be followed by a real grade that uses the answer.
+6. **Try ideas on the row, not on toys.** A toy / probe compile (toy function, c2prio run, `/FAs` listing of a side file) is for one
+   stated question that the row itself cannot answer, and is followed at once by a real grade that uses the answer.
 7. **No side quests.** No tooling, no re-verifying landed rows, no surveys, no polishing documentation mid-chunk. Read only what
    the current row needs. Write NOTES / LESSONS once, at the end.
 8. **Hand back only when** every row matches, or your working budget is nearly spent while still on a row. In that case hand back

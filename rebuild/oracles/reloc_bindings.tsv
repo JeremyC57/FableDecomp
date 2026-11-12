@@ -38734,3 +38734,4 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?FindUnusedThemePaletteEntryIndex@CMap@@IAEEXZ	008f6f90	008f70f0
 ?ZeroAllUnusedThemePaletteEntries@CMap@@IAEXXZ	008f6fc0	008f70f0
 ?CreateTexture@CManagedTextureData@@QAE_NKKJABVCPixelFormat@@@Z	00a697a0	00a69b70
+??$GetPBestThingInRoughArea@V?$CFilter_Bind4@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_In2DRangeLimit@@VCThingFilter_CanSeeEachOther@@V?$unary_negate@VCThingFilter_IsUnconscious@@@std@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsAvailableForCreatureInteraction@@VCThingFilter_In2DRangeLimit@@VCThingFilter_CanSeeEachOther@@V?$unary_negate@VCThingFilter_IsUnconscious@@@std@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z	007f70d0	007f67c0

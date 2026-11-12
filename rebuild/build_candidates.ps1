@@ -393531,6 +393531,13 @@ $catalog = @(
         TestSource = '00/a6/CTextureManager_AllocateTexture_00a69b70_test.cpp'
         PassPattern = '00a69b70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007f67c0'
+        Module = 'CTCTargetingAI'
+        Source = '00/7f/CTCTargetingAI_GetPBestCreatureForInteractionTypeWithinRangeLim_007f67c0.cpp'
+        TestSource = '00/7f/CTCTargetingAI_GetPBestCreatureForInteractionTypeWithinRangeLim_007f67c0_test.cpp'
+        PassPattern = '007f67c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

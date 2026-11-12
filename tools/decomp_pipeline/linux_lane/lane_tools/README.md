@@ -41,3 +41,6 @@ Resume recipe: `docs/HANDOFF.md`.
 - `coordinator/hdrcheck.py` now also reports `LOSES_OPTINS=` (FABLE_RETAIL_* opt-ins in the repo copy that an overlay would drop).
 - `q.py` raises Python's csv field limit (oracle rows over 64 KB, e.g. 0x00CBFB7D).
 - Chunk 892's scheduler / operand-order tools: `rebuild/candidates/manual/pending/2026-11-09_linux_hand892/tools/` (README there).
+
+## fast/ (author agents, 2026-11-12)
+`fast/fg.py` grades up to three variants of one row per call and prints only the differing hunks; `fast/vt.py` runs a behaviour test with the lander's VC7.1 check; `fast/addmatch.py` writes a matched row into payload.json / oracle.tsv. Copy all three to `$S/tools/` when a lane is set up.
