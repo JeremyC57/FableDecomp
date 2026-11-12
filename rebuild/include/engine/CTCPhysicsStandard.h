@@ -81,6 +81,10 @@ public:
     virtual const CRightHandedSet& GetLastRHSet() const;            // slot 73, 0x00724BE0
     virtual bool IsPushableByHero() const;                          // slot 83, 0x00724CF0
     virtual void SetAsPushableByHero(bool);                         // slot 84, 0x00724D00
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_SETPHYSICSMESHBANKINDEX
+    // Row 0x00724630: Ego_r / FableWin ?SetPhysicsMeshBankIndex@CTCPhysicsStandard@@UAEXJ@Z (public virtual), slot 85 of 0x01265F84.
+    virtual void SetPhysicsMeshBankIndex(long index);               // slot 85, 0x00724630
+#endif
     virtual void SetScaleFromOwner();                               // slot 86, 0x007236A0
     virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const; // slot 93, 0x00724D20
 protected:

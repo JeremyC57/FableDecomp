@@ -20,6 +20,12 @@
 #include "fable_string.h"
 #include "stlport/fable_map.h"
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
+// Retail opt-in (wf18, row 0x009CE5E0 CBankFile::AddEntryMultipleFiles; needs FABLE_RETAIL_CBANKFILE_FILENAMEINDICES): typed
+// Checksums / UpdateData / PackedValid / OldSymbolIndices (Ego_r.pdb member types), the inline EntryExists body (retail
+// out-of-line copy 0x009CC190, expanded in place by that row) and the private InitEntry 0x009CE050.
+class CBankFileEntryUpdateData;
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CCountedPointer.h"
@@ -85,13 +91,21 @@ public:
 #else
     unsigned char               Symbols[0xc];                // +0x08 CArray<CCharString>
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
+    CArray<unsigned long>       Checksums;                   // +0x14
+#else
     unsigned char               Checksums[0xc];              // +0x14 CArray<unsigned_long>
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
     CArray<CRuntimeData>        RuntimeData;                 // +0x20
 #else
     unsigned char               RuntimeData[0xc];            // +0x20 CArray<CBankFile::CRuntimeData>
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
+    CArray<CBankFileEntryUpdateData*> UpdateData;            // +0x2c
+#else
     unsigned char               UpdateData[0xc];             // +0x2c CArray<CBankFileEntryUpdateData_*>
+#endif
     unsigned char               PackedDataOffset[0x10];      // +0x38 CPackedUIntArray
     unsigned char               PackedDataSize[0x10];        // +0x48 CPackedUIntArray
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
@@ -99,7 +113,11 @@ public:
 #else
     unsigned char               PackedDataType[0x10];        // +0x58 CPackedUIntArray
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
+    CPackedUIntArray            PackedValid;                 // +0x68
+#else
     unsigned char               PackedValid[0x10];           // +0x68 CPackedUIntArray
+#endif
     unsigned long               OpenFlags;                   // +0x78
     CDiskFileWin32*             BankFile_Data;               // +0x7c CCountedPointer<CDiskFileWin32>::Data
     CCPPointerInfo*             BankFile_Info;               // +0x80 CCountedPointer<CDiskFileWin32>::Info
@@ -119,7 +137,11 @@ public:
     unsigned long               FileInformationSize;         // +0xa4
     unsigned long               FileSize;                    // +0xa8
     unsigned char               SymbolIndices[0xc];          // +0xac map<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
+#ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
+    std::map<CCharString,unsigned long> OldSymbolIndices;    // +0xb8
+#else
     unsigned char               OldSymbolIndices[0xc];       // +0xb8 map<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
     std::multimap<CCharString,unsigned long> FilenameIndices; // +0xc4
 #else
@@ -156,6 +178,21 @@ public:
     CArray<unsigned long> FindIndicesByFilename(const CCharString& path, long type, bool excludeUnassigned) const;   // 0x009CCEF0
 private:
     CCharString ConvertPathToFilename(const CCharString& path) const;    // 0x009CBE10
+public:
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES
+    // Ego_r.pdb ?EntryExists@CBankFile@@QBE_NK@Z: the landed body of 0x009CC190, expanded inline by AddEntryMultipleFiles 0x009CE5E0.
+    bool EntryExists(unsigned long index) const
+    {
+        if (index != 0 && index < Size) {
+            if (PackedValid.GetSize())
+                return PackedValid[index - 1] != 0;
+            return RuntimeData[index].Valid;
+        }
+        return false;
+    }
+private:
+    void InitEntry(unsigned long index, const CCharString& symbol, const CCharString& filename);   // 0x009CE050 (PDB AAEXKABVCCharString@@0@Z)
 public:
 #endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE

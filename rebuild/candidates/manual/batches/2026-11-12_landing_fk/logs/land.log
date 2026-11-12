@@ -1,0 +1,49 @@
+addr       parity           behav  name
+008a7a70   RELOCATION_MATCH PASS   TeleportAllFollowersToHeroPosition
+00724630   WARN RELOC_NAME: ?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ -> 004bbff0 labelled 'CMap::DrawGetSeaLevel'
+00724630   WARN RELOC_NAME: ?RemoveFromMapwho@CTCMapwho@@QAEXXZ -> 0071a730 labelled 'CTCMapwho::OnDie'
+00724630   RELOCATION_MATCH PASS   SetPhysicsMeshBankIndex
+009ce5e0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009ce5e0   RELOCATION_MATCH PASS   AddEntryMultipleFiles
+00627400   RELOCATION_MATCH PASS   ConstructExpressionCategoryList
+007eb6a0   WARN RELOC_NAME: ?SetActionPermittedToSneak@CTCStealth@@QAEXPBVCCreatureActionBase@@@Z -> 00747030 labelled 'CDrawEnvironmentUser_00747030::SetWorld'
+007eb6a0   RELOCATION_MATCH PASS   OnActionUse
+00959f80   RELOCATION_MATCH PASS   Update
+0094f180   WARN RELOC_NAME: ?GetHitParams@CEventHitBase@NEntityEvents@@QBEABVCHitParameters@@XZ -> 00810f40 labelled '_global::GetMember_dword0x8_00810f40'
+0094f180   WARN RELOC_NAME: ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+0094f180   RELOCATION_MATCH PASS   IsRunnable
+00ac53f0   WARN RELOC_NAME: ?GetSelfIllumination@C3DMeshFileMaterialExtChunk@@QBEKXZ -> 00abfdc0 labelled 'CWorld::DrawGetEnvironment'
+00ac53f0   RELOCATION_MATCH PASS   C3DMeshFileEngineMaterialChunk
+007e6450   RELOC_JUMPTABLE: +2e8 $L6867 -> 007e64cf here, retail 007e64dd
+007e6450   RELOC_JUMPTABLE: +2ec $L6868 -> 007e64d6 here, retail 007e64cf
+007e6450   RELOC_JUMPTABLE: +2f0 $L6869 -> 007e64dd here, retail 007e64d6
+007e6450   RELOC_IDENTITY   -      UpdateTints
+
+WINS: 8
+  008a7a70 RELOCATION_MATCH CGameScriptInterface::TeleportAllFollowersToHeroPosition
+  00724630 RELOCATION_MATCH CTCPhysicsStandard::SetPhysicsMeshBankIndex
+  009ce5e0 RELOCATION_MATCH CBankFile::AddEntryMultipleFiles
+  00627400 RELOCATION_MATCH CTCQuickAccessMenu::ConstructExpressionCategoryList
+  007eb6a0 RELOCATION_MATCH CTCActionUseSearch::OnActionUse
+  00959f80 RELOCATION_MATCH CAIStateGroup_HoverKeepInArea::Update
+  0094f180 RELOCATION_MATCH CAIStateGroup_BalverineCornered::IsRunnable
+  00ac53f0 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::C3DMeshFileEngineMaterialChunk
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_TeleportAllFollowersToHeroPosition_008a7a70
+  CTCPhysicsStandard_SetPhysicsMeshBankIndex_00724630
+  CBankFile_AddEntryMultipleFiles_009ce5e0
+  CTCQuickAccessMenu_ConstructExpressionCategoryList_00627400
+  CTCActionUseSearch_OnActionUse_007eb6a0
+  CAIStateGroupHoverKeepInArea_Update_00959f80
+  CAIStateGroupBalverineCornered_IsRunnable_0094f180
+  C3DMeshFileEngineMaterialChunk_C3DMeshFileEngineMaterialChunk_00ac53f0
+---- second run: 0x007E6450 after the case-order fix ----
+addr       parity           behav  name
+007e6450   RELOCATION_MATCH PASS   UpdateTints
+
+WINS: 1
+  007e6450 RELOCATION_MATCH CTCOracleMinigame::UpdateTints
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCOracleMinigame_UpdateTints_007e6450

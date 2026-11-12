@@ -394756,6 +394756,71 @@ $catalog = @(
         TestSource = '00/75/CTCPhysicsRigidBody_ResolveCollisions_0075a7a0_test.cpp'
         PassPattern = '0075a7a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008a7a70'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_TeleportAllFollowersToHeroPosition_008a7a70.cpp'
+        TestSource = '00/8a/CGameScriptInterface_TeleportAllFollowersToHeroPosition_008a7a70_test.cpp'
+        PassPattern = '008a7a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00724630'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_SetPhysicsMeshBankIndex_00724630.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_SetPhysicsMeshBankIndex_00724630_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00724630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ce5e0'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_AddEntryMultipleFiles_009ce5e0.cpp'
+        TestSource = '00/9c/CBankFile_AddEntryMultipleFiles_009ce5e0_test.cpp'
+        PassPattern = '009ce5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00627400'
+        Module = 'CTCQuickAccessMenu'
+        Source = '00/62/CTCQuickAccessMenu_ConstructExpressionCategoryList_00627400.cpp'
+        TestSource = '00/62/CTCQuickAccessMenu_ConstructExpressionCategoryList_00627400_test.cpp'
+        PassPattern = '00627400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eb6a0'
+        Module = 'CTCActionUseSearch'
+        Source = '00/7e/CTCActionUseSearch_OnActionUse_007eb6a0.cpp'
+        TestSource = '00/7e/CTCActionUseSearch_OnActionUse_007eb6a0_test.cpp'
+        PassPattern = '007eb6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00959f80'
+        Module = 'CAIStateGroup_HoverKeepInArea'
+        Source = '00/95/CAIStateGroupHoverKeepInArea_Update_00959f80.cpp'
+        TestSource = '00/95/CAIStateGroupHoverKeepInArea_Update_00959f80_test.cpp'
+        PassPattern = '00959f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094f180'
+        Module = 'CAIStateGroup_BalverineCornered'
+        Source = '00/94/CAIStateGroupBalverineCornered_IsRunnable_0094f180.cpp'
+        TestSource = '00/94/CAIStateGroupBalverineCornered_IsRunnable_0094f180_test.cpp'
+        PassPattern = '0094f180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac53f0'
+        Module = 'C3DMeshFileEngineMaterialChunk'
+        Source = '00/ac/C3DMeshFileEngineMaterialChunk_C3DMeshFileEngineMaterialChunk_00ac53f0.cpp'
+        TestSource = '00/ac/C3DMeshFileEngineMaterialChunk_C3DMeshFileEngineMaterialChunk_00ac53f0_test.cpp'
+        PassPattern = '00ac53f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e6450'
+        Module = 'CTCOracleMinigame'
+        Source = '00/7e/CTCOracleMinigame_UpdateTints_007e6450.cpp'
+        TestSource = '00/7e/CTCOracleMinigame_UpdateTints_007e6450_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '007e6450_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

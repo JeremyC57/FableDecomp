@@ -8,6 +8,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERKEEPINAREA
+// Retail opt-in (wf18, row 0x00959F80 Update): the polymorphic class. Base CAIStateGroup_HoverMovementBase (size 0x1c; needs
+// FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE), Ego_r.pdb member StartPos C3DVector +0x1c, size 0x28. Vtable 0x0128C6F4 slot 12
+// ?Update@CAIStateGroup_HoverKeepInArea@@UAEXXZ (Ego_r 0x0097E7B0 / FableWin 0x0182FF41).
+#include "engine/C3DVector.h"
+#include "engine/CAIStateGroup_HoverMovementBase.h"
+class CAIStateGroup_HoverKeepInArea : public CAIStateGroup_HoverMovementBase {
+public:
+    virtual void Update();                                          // 0x00959F80
+protected:
+    C3DVector StartPos;                                             // +0x1c
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverKeepInArea) == 0x28);
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_HoverKeepInArea {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -28,5 +43,7 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, StartPos_X) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, StartPos_Y) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, StartPos_Z) == 0x24);
+
+#endif // FABLE_RETAIL_CAISTATEGROUP_HOVERKEEPINAREA
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERKEEPINAREA_H

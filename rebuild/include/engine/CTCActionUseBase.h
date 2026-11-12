@@ -50,6 +50,11 @@ private:
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
 public:
     virtual void OnActionUse(CThing&);  // slot 28, 0x007EAB90
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_ISTHISTHEFT
+    // wf18 (row 0x007EB6A0 CTCActionUseSearch::OnActionUse): Ego_r.pdb / FableWin.pdb ?IsThisTheft@CTCActionUseBase@@QBE_NXZ, out of line
+    // in retail at 0x007EACB0 (landed). Declaration only.
+    bool IsThisTheft() const;  // 0x007EACB0
+#endif
 public:
     virtual bool IsUsableWhileThingPerformingAction() const;  // slot 30, 0x004DA961
 public:

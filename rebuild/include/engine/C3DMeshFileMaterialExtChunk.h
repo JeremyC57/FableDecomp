@@ -15,6 +15,9 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEMATERIALEXTCHUNK_METHODS
+    unsigned long GetSelfIllumination() const;                         // 0x00ABFDC0 (out of line in retail's TU)
+#endif
 private:
     unsigned long SelfIllumination;
 };

@@ -1,0 +1,10 @@
+address	name	evidence
+008A7A70	?TeleportAllFollowersToHeroPosition@CGameScriptInterface@@UBEXXZ	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+00724630	?SetPhysicsMeshBankIndex@CTCPhysicsStandard@@UAEXJ@Z	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+009CE5E0	?AddEntryMultipleFiles@CBankFile@@UAEXABVCCharString@@KABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+00627400	?ConstructExpressionCategoryList@CTCQuickAccessMenu@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@@Z	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+007EB6A0	?OnActionUse@CTCActionUseSearch@@UAEXAAVCThing@@@Z	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+00959F80	?Update@CAIStateGroup_HoverKeepInArea@@UAEXXZ	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+0094F180	?IsRunnable@CAIStateGroup_BalverineCornered@@MAE_NXZ	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+00AC53F0	??0C3DMeshFileEngineMaterialChunk@@QAE@ABVC3DMeshFileMaterialChunk@@@Z	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs
+007E6450	?UpdateTints@CTCOracleMinigame@@QAEXXZ	workflow wf18 (landing fk): RELOCATION_MATCH, two PDBs

@@ -35,6 +35,10 @@ private:
     float OO_Scale;
 public:
     virtual ~CPhysicsMeshObject();
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_ZEDGE
+    // wf18 (row 0x007EB6A0): Ego_r.pdb ?GetBoundingBoxZEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ, out of line at 0x00A11BA0 (landed).
+    C3DVector GetBoundingBoxZEdge() const;  // 0x00A11BA0
+#endif
     bool HasContainmentVolume(const CCharString&) const;
     bool GetPointIntersectionFromTo(const C3DVector&,const C3DVector&,CMeshIntersectionData&) const;
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_SPHEREINTERSECTION

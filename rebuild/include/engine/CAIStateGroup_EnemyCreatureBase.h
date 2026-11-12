@@ -14,6 +14,17 @@
 #include "engine/CIntelligentPointer.h"
 class CAIStateGroup_EnemyCreatureBase:public CAIStateGroupBase {
 protected:CIntelligentPointer<CThingCreatureBase> PTargetThing;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+    // vtable slots 14..21 (CAIStateGroup_HoverWander vtable 0x0128C5D4: 0x008FE0EE..0x008FE102; manifest labels, GetCombatMinDistance Ego_r ?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ)
+    virtual void Init();
+    virtual bool IsRunnableLeaf();
+    virtual void OnActivateLeaf();
+    virtual void CleanupLeaf();
+    virtual float GetCombatProximity() const;
+    virtual float GetCombatMinDistance() const;
+    virtual bool IsCombatStateGroup() const;
+    virtual bool IsRequireDirectAwarenessOfThing() const;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_EnemyCreatureBase)==0x1c);
 #else

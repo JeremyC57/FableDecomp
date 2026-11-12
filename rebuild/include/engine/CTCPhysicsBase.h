@@ -230,6 +230,16 @@ bool IsMoving()const{return Moving;}
     C3DVector GetMapwhoPosition() const {C3DVector pos=Position+GetOffsetVector();return pos;}
 #endif
     void GetBoundingInfo(C3DVector&,float&) const;
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_CALCULATERADIUS
+    // Row 0x00724630: Ego_r / FableWin ?CalculateRadius@CTCPhysicsBase@@IBEMXZ (protected, out of line 0x006AFE20) and
+    // ?GetMapwhoPosition@CTCPhysicsBase@@QBE?AVC3DVector@@XZ called out of line (0x006AFCB0). Declarations only.
+#ifndef FABLE_RETAIL_CTCPHYSICSBASE_MAPWHOPOSITION
+    C3DVector GetMapwhoPosition() const;                             // 0x006AFCB0
+#endif
+protected:
+    float CalculateRadius() const;                                   // 0x006AFE20
+public:
+#endif
     const C3DVector& GetPosition() const { return Position; }
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_INTERPOLATED_POSITION
     // Retail opt-in (Codex pass17): original const value-return overload;0049d150.

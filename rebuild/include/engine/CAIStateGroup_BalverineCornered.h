@@ -8,6 +8,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BALVERINECORNERED
+// Retail opt-in (wf18 row 0x0094F180 IsRunnable): the real class instead of the flat generated struct. Ego_r.pdb: derives
+// CAIStateGroupBase (0x14), PTarget +0x14 / PLastJumpTarget +0x1C CIntelligentPointer<CThingCreatureBase>, TimeOfLastJump +0x24,
+// LandPos +0x28. Vtable 0x0128C0BC slot 11 IsRunnable 0x0094F180 (?IsRunnable@CAIStateGroup_BalverineCornered@@MAE_NXZ);
+// ?GetLandPos@CAIStateGroup_BalverineCornered@@ABE?AVC3DVector@@ABVCThing@@@Z 0x0094F090.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThing;
+class CThingCreatureBase;
+class CAIStateGroup_BalverineCornered : public CAIStateGroupBase {
+protected:
+    virtual bool IsRunnable();                               // slot 11 0x0094F180
+    virtual void Update();                                   // slot 12 0x0094F640
+    virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x0094F080
+private:
+    C3DVector GetLandPos(const CThing& target) const;        // 0x0094F090
+protected:
+    CIntelligentPointer<CThingCreatureBase> PTarget;         // +0x14
+    CIntelligentPointer<CThingCreatureBase> PLastJumpTarget; // +0x1c
+    unsigned long TimeOfLastJump;                            // +0x24
+    C3DVector     LandPos;                                   // +0x28
+};
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_BalverineCornered {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -32,5 +56,6 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BalverineCornered, TimeOfLastJump) ==
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BalverineCornered, LandPos_X) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BalverineCornered, LandPos_Y) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BalverineCornered, LandPos_Z) == 0x30);
+#endif // FABLE_RETAIL_CAISTATEGROUP_BALVERINECORNERED
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_BALVERINECORNERED_H

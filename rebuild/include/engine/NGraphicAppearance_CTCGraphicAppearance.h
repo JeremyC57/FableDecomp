@@ -214,6 +214,11 @@ public:
     bool HasDummyObject(const CCharString& name) const;      // 0x004BE2C0
     void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_REMOVETINT
+    // Retail opt-in (row 0x007E6450 CTCOracleMinigame::UpdateTints): Ego_r.pdb ?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z
+    // (retail 0x004BFAE0, out of line; FableWin 0x01D0A000). Declaration only: no layout change.
+    void RemoveTintColour(void* owner);                       // 0x004BFAE0
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_DUMMYOBJECT
     // Retail opt-in (chunk 794, row 0x007DE710 CTCWallMount::AttachObject): Ego_r.pdb
     // ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z, out of line in
@@ -227,6 +232,11 @@ public:
     // out of line in retail at 0x004BDB40 (catalog name agrees; `lea ecx,[names] ; push ecx ; mov ecx,appearance ; call`). Needs
     // std::vector (stlport/fable_containers.h) and CCharString at the point of use. Declaration only: no layout change.
     void GetAllDummyObjectNames(std::vector<CCharString>& names) const;   // 0x004BDB40
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FULLSCALE
+ // Row 0x00724630: Ego_r 0x004BF740 / FableWin 0x01D0A3C0 ?GetFullScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ, out of line at
+ // retail 0x004BBFF0 (`fld [ecx+4Ch] ; fmul [ecx+34h]`, Scale at +0x34). Declaration only: no layout change.
+ float GetFullScale()const;                                 // 0x004BBFF0
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCALPOS
     // Nested opt-in (chunk 768, row 0x00753380 CTCLook::FrameUpdateHeadInterested): Ego_r.pdb / FableWin.pdb

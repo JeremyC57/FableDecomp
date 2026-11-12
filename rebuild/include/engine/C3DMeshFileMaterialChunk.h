@@ -9,6 +9,11 @@
 #include "engine/CChunkedFileSuperChunk.h"
 #include "engine/CRGBColour.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_C3DMESHFILEMATERIALCHUNK_METHODS
+#include "engine/CCountedPointer.h"
+class C3DMeshFileMapChunk;
+class C3DMeshFileMaterialExtChunk;
+#endif
 class C3DMeshFileMaterialChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileMaterialChunk();
@@ -17,6 +22,16 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEMATERIALCHUNK_METHODS
+    // Opt-in (row 0x00AC53F0): Ego_r.pdb / FableWin.pdb public members; the getters are inline, the finders out of line.
+    long GetMaterialIndex() const { return MaterialIndex; }            // ?GetMaterialIndex@C3DMeshFileMaterialChunk@@QBEJXZ
+    const CCharString GetName() const { return Name; }                 // ?GetName@C3DMeshFileMaterialChunk@@QBE?BVCCharString@@XZ
+    bool GetTwoSided() const { return TwoSided; }                      // ?GetTwoSided@C3DMeshFileMaterialChunk@@QBE_NXZ
+    bool HasExtendedProperties() const;                                // 0x00ABFCD0
+    CCountedPointer<const C3DMeshFileMaterialExtChunk> GetExtendedProperties() const;   // 0x00AC0B70
+    CCountedPointer<const C3DMeshFileMapChunk> FindFirstMap() const;   // 0x00AC0E50
+    CCountedPointer<const C3DMeshFileMapChunk> FindNextMap(const CCountedPointer<const C3DMeshFileMapChunk>&) const;   // 0x00AC0EE0
+#endif
 private:
     long MaterialIndex;
     bool TwoSided;

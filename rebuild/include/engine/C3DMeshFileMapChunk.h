@@ -16,6 +16,11 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEMAPCHUNK_METHODS
+    // Opt-in (row 0x00AC53F0): FableWin.pdb inline getters.
+    EMaterialMapType GetType() const { return MapType; }               // ?GetType@C3DMeshFileMapChunk@@QBE?AW4EMaterialMapType@@XZ
+    const CCharString GetFilename() const { return Filename; }         // ?GetFilename@C3DMeshFileMapChunk@@QBE?BVCCharString@@XZ
+#endif
 private:
     EMaterialMapType MapType;
     CCharString MapDescription;

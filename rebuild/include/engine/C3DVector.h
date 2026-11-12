@@ -157,6 +157,11 @@ public:
 #else
     FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{return C3DVector(X*scale,Y*scale,Z*scale);}
 #endif
+#if defined(FABLE_RETAIL_C3DVECTOR_CROSSWITHUP) && !defined(FABLE_RETAIL_C3DVECTOR_ANGLE_BODIES)
+    // Retail opt-in (row 0x00959BF0): FableWin.pdb ?CrossWithUp@C3DVector@@QBE?AV1@XZ (debug copy 0x01FA1780), the same body as the
+    // FABLE_RETAIL_C3DVECTOR_ANGLE_BODIES copy; expanded in CAIStateGroup_HoverWander::Update (fchs of X, Z = 0.0f).
+    FABLE_VECTOR_INLINE C3DVector CrossWithUp() const {return C3DVector(Y,-X,0.0f);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED
     // Retail opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z
     // (componentwise product; no out-of-line copy in retail, expanded at 0x00A8981C: `fld this.k ; fmul scale.k` per axis).

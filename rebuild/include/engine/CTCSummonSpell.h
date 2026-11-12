@@ -28,6 +28,9 @@ class CWorldMap;
 #endif
 #include "engine/CDefPointer.h"
 #include "engine/CIntelligentPointer.h"
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_GETSUMMONEDCREATURE_FORCEINLINE
+#include "fable_compiler.h"
+#endif
 class CSpecialAbilitiesSummonSpellDef; class CThingAICreature;
 #endif
 class CTCSummonSpell : public CTCBase {
@@ -54,6 +57,10 @@ public:
     // needs FABLE_RETAIL_CINTELLIGENTPOINTER_COPY). Members from Ego_r.pdb CTCSummonSpell (PDef +0x0C, JustReleased +0x10, Minion +0x11:
     // CBaseIntelligentPointer is pack(1)); retail agrees at +0x0C (GetResetCreatureManaCost `mov eax,[ecx+0Ch]`) and +0x11 (0x008A82D3
     // `lea ecx,[edi+11h]`). The members after Minion are not modelled (pointer use only).
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_GETSUMMONEDCREATURE_FORCEINLINE
+    // Per-TU inline opt-in (wf18, row 0x008A7A70): CGameScriptInterface.cpp expands this getter past VC7.1's inline budget.
+    FABLE_FORCEINLINE
+#endif
     CIntelligentPointer<CThingAICreature> GetSummonedCreature() const { return Minion; }
 private:
     CDefPointer<const CSpecialAbilitiesSummonSpellDef> PDef;             // +0x0c

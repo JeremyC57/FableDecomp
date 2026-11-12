@@ -126,6 +126,10 @@ public:
     unsigned char                 _pad_0x15c[0x4];           // +0x15c
     unsigned char                 _pad_0x160[0x4];           // +0x160
 #endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKPHYSICSMESHINFO
+    // Row 0x00724630: Ego_r / FableWin ?PeekPhysicsMeshInfo@CMeshDataBank@@QBEPBVCPhysicsMeshInfo@@K@Z, out of line 0x00A24250.
+    const class CPhysicsMeshInfo* PeekPhysicsMeshInfo(unsigned long index) const;   // 0x00A24250
+#endif
     C3DMeshFileXLoader*           MeshLoader_ptr;            // +0x164 scoped_ptr<C3DMeshFileXLoader>::ptr
 #ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
 // Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.

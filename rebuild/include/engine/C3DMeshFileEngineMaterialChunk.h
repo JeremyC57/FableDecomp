@@ -14,6 +14,9 @@
 #include "engine/CChunkedFileSuperChunk.h"
 #include "engine/CIVCountedPointeeBase.h"
 #include "engine/CIVCountedPointer.h"
+#ifdef FABLE_RETAIL_C3DMESHFILEENGINEMATERIALCHUNK_FROM_MATERIAL
+class C3DMeshFileMaterialChunk;
+#endif
 class C3DMeshFileEngineMaterialChunk : public CChunkedFileSuperChunk {
 public:
     class CMapFilenames : public CIVCountedPointeeBase {
@@ -26,6 +29,9 @@ public:
         CCharString IlluminationMap;                                    // +0x14
     };
     C3DMeshFileEngineMaterialChunk();                                   // 0x00AC56F0
+#ifdef FABLE_RETAIL_C3DMESHFILEENGINEMATERIALCHUNK_FROM_MATERIAL
+    C3DMeshFileEngineMaterialChunk(const C3DMeshFileMaterialChunk&);    // 0x00AC53F0
+#endif
     virtual const CCharString GetChunkDescription() const;              // 0x00AC6270
     virtual const CCharString GetChunkInfo() const;                     // 0x00AC51D0
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);   // 0x00AC5770

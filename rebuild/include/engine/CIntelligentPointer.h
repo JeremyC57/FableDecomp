@@ -4,6 +4,9 @@
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_FORCEINLINE_CTOR
 #include "fable_compiler.h"
 #endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_FORCEINLINE
+#include "fable_compiler.h"
+#endif
 #include "rebuild_abi.h"
 class CBaseObject;
 class CBaseObjectPointer;
@@ -76,6 +79,11 @@ public:
 #if (defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_ORIGINAL_CHAIN))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)))
     CIntelligentPointer& operator=(const CIntelligentPointer& other){SetPointer(other.GetPointer());return *this;}
 #else
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_FORCEINLINE
+    // Per-TU opt-in (wf18 row 0x0094F180 CAIStateGroup_BalverineCornered::IsRunnable): that TU expands both `PX = target` assignments
+    // in place (0x0094F41E / 0x0094F443: GetPItem on the temporary, SetPItem) past VC7.1's caller-size inline budget.
+    FABLE_FORCEINLINE
+#endif
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 #endif
     // Chunk 755 row 0x00729F60 (OnInitialActivate, 0x0072A061..0x0072A06E) also uses this form; some TUs keep an out-of-line

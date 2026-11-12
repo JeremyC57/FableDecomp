@@ -25,6 +25,9 @@ public: static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return T
 public: void Deactivate();                                               // 0x00625920
 #endif
 private: void ConstructItemCategoryList(CWideString &,NUISystem::CList *,std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > &,NUISystem::CComponent *,bool);
+#ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_EXPRESSIONS
+private: void ConstructExpressionCategoryList(CWideString &,NUISystem::CList *,std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > &,NUISystem::CComponent *);
+#endif
 private: void ContructItemLists(std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > &,NUISystem::CList *,NUISystem::CComponent *,CCountedPointer<NUISystem::CComponent> &);
 private: void ContructItemLists(std::map<long,long,std::less<long>,std::allocator<std::pair<long const ,long> > > &,NUISystem::CList *,NUISystem::CComponent *,CCountedPointer<NUISystem::CComponent> &);
 private: bool Active;

@@ -23341,7 +23341,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007eb570	OnActionUse	CTCActionUseMapTable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007eb5d0	Clone	CCreatureAction_PlayerInteractionViewQuests	__thiscall	CCreatureActionBase *	1	CCreatureAction_PlayerInteractionViewQuests *	1	yes	accepted									
 007eb600	CCreatureAction_PlayerInteractionViewQuests	CCreatureAction_PlayerInteractionViewQuests	__thiscall	undefined	2	CCreatureAction_PickUpJug *,CCreatureAction_PickUpJug *	0	yes	accepted									
-007eb6a0	CTCActionUseSearch::vfunc_28	CTCActionUseSearch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007eb6a0	OnActionUse	CTCActionUseSearch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007eb990	Dtor_CCreatureActionBaseBase_007eb990	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb990.cpp
 007eb9b0	OnActionUse	CTCActionUseBlowHorn	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007eba20	CCreatureAction_LookThroughWindow	CCreatureAction_LookThroughWindow	__thiscall	undefined	2	CCreatureAction_AlertToPlayer *,CThingAICreature *	0	yes	accepted									
@@ -27413,7 +27413,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008a78e0	ClearActiveGossipCategories	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A78E0_global_ClearActiveGossipCategories_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearActiveGossipCategories_008a78e0.cpp
 008a7930	ClearIsGossipForPlayer	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7930_global_ClearIsGossipForPlayer_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearIsGossipForPlayer_008a7930.cpp
 008a7980	EntityStopFollowing	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7980_global_EntityStopFollowing_CGameScriptInterface_UBEXABVCScriptThing_Z.cpp				
-008a7a70	?TeleportAllFollowersToHeroPosition@CGameScriptInterface@@UBEXXZ	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted									
+008a7a70	TeleportAllFollowersToHeroPosition	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted									
 008a7d60	GetThingWithScriptName	CGameScriptInterface	__thiscall	CScriptThing	2	CGameScriptInterface *,CCharString *	1	yes	accepted									
 008a7e00	GetRandomThingWithScriptName	CGameScriptInterface	__thiscall	CScriptThing	2	CGameScriptInterface *,CCharString *	1	yes	accepted									
 008a7ec0	EntitySetThingAsAllyOfThing	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7EC0_global_EntitySetThingAsAllyOfThing_CGameScriptInterface_UBEXABVCScriptThing_0_Z.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_EntitySetThingAsAllyOfThing_008a7ec0.cpp
@@ -32148,7 +32148,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0094f080	InitStateGroup	CAIStateGroup_BalverineCornered	__thiscall	void	3	CAIStateGroup_BalverineCornered *,CWorld const &,CThingAICreature &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CAIStateGroupBalverineCornered_InitStateGroup_0094f080.cpp
 0094f090	GetLandPos	CAIStateGroup_BalverineCornered	__thiscall	C3DVector	2	CAIStateGroup_BalverineCornered *,CThing *	1	yes	accepted									
 0094f170	InitStateGroup	CAIStateGroup_BalverineJumpAtFleeingEnemy	__thiscall	void	3	CAIStateGroup_BalverineJumpAtFleeingEnemy *,CWorld const &,CThingAICreature &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CAIStateGroupBalverineJumpAtFleeingEnemy_InitStateGroup_0094f170.cpp
-0094f180	?IsRunnable@CAIStateGroup_BalverineCornered@@MAE_NXZ	CAIStateGroup_BalverineCornered	__thiscall	bool	1	CAIStateGroup_BalverineCornered *	1	yes	accepted									
+0094f180	IsRunnable	CAIStateGroup_BalverineCornered	__thiscall	bool	1	CAIStateGroup_BalverineCornered *	1	yes	accepted									
 0094f480	?IsRunnable@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAE_NXZ	CAIStateGroup_BalverineJumpAtFleeingEnemy	__thiscall	bool	1	CAIStateGroup_BalverineJumpAtFleeingEnemy *	1	yes	accepted									
 0094f640	Update	CAIStateGroup_BalverineCornered	__thiscall	void	1	CAIStateGroup_BalverineCornered *	1	yes	accepted									
 0094f730	Update	CAIStateGroup_BalverineJumpAtFleeingEnemy	__thiscall	void	1	CAIStateGroup_BalverineJumpAtFleeingEnemy *	1	yes	accepted									
@@ -32362,7 +32362,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00959bf0	?Update@CAIStateGroup_HoverWander@@UAEXXZ	CAIStateGroup_HoverWander	__thiscall	void	1	CAIStateGroup_HoverWander *	1	yes	accepted									
 00959ee0	Initialise	CAIStateGroup_HoverKeepInArea	__thiscall	void	6	CAIStateGroup_HoverKeepInArea *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted									
 00959f30	IsRunnable	CAIStateGroup_HoverKeepInArea	__thiscall	bool	1	CAIStateGroup_HoverKeepInArea *	1	yes	accepted									
-00959f80	?Update@CAIStateGroup_HoverKeepInArea@@UAEXXZ	CAIStateGroup_HoverKeepInArea	__thiscall	void	1	CAIStateGroup_HoverKeepInArea *	1	yes	accepted									
+00959f80	Update	CAIStateGroup_HoverKeepInArea	__thiscall	void	1	CAIStateGroup_HoverKeepInArea *	1	yes	accepted									
 0095a270	Initialise	CAIStateGroup_HoverAttackArea	__thiscall	void	6	CAIStateGroup_HoverAttackArea *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted									
 0095a2c0	IsRunnable	CAIStateGroup_HoverAttackArea	__thiscall	bool	1	CAIStateGroup_HoverAttackArea *	1	yes	accepted									
 0095a380	Initialise	CAIStateGroup_HoverHornetQueenTakeDamage	__thiscall	void	6	CAIStateGroup_HoverHornetQueenTakeDamage *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted									

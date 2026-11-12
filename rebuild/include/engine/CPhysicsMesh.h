@@ -6,6 +6,10 @@
 #include "rebuild_abi.h"
 #include "engine/CIVCountedPointeeBase.h"
 #include "engine/C3DBoundingSphere.h"
+#ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDS
+#include "engine/C3DBoundingBox.h"
+#include "engine/CCircle.h"
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATION
 #include "engine/CVectorMap.h"
 class C3DMeshVolume;
@@ -22,6 +26,13 @@ public:
     // Ego_r.pdb / FableWin.pdb ?GetNavigationLevelAt@CPhysicsMesh@@QBEJABVC3DVector@@@Z (out of line at retail 0x00A73D10).
     const CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> >& GetNavigationContainmentVolumes() const { return NavigationContainmentVolumes; }
     long GetNavigationLevelAt(const C3DVector& position) const;   // 0x00A73D10
+#endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDS
+    // Row 0x00724630: FableWin.pdb inline ?GetBoundingBox@CPhysicsMesh@@QBEABVC3DBoundingBox@@XZ and
+    // ?GetBoundingCircle@CPhysicsMesh@@QBEABVCCircle@@XZ (the members below at +0x84 / +0x9c; CCircle from engine/CCircle.h).
+    // No layout change.
+    const C3DBoundingBox& GetBoundingBox() const { return BoundingBox; }
+    const CCircle& GetBoundingCircle() const { return BoundingCircle; }
 #endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_CONTAINMENTVOLUME
     // ?IsInContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@ABVC3DVector@@M@Z, out of line at retail 0x00A6CA20 (landed), and
@@ -52,8 +63,13 @@ private:
 #endif
     unsigned char ContainmentVolumes[16];              //0x64 CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >
     C3DBoundingSphere BoundingSphere;                  //0x74
+#ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDS
+    C3DBoundingBox BoundingBox;                        //0x84
+    CCircle BoundingCircle;                            //0x9c
+#else
     unsigned char BoundingBox[24];                    //0x84 C3DBoundingBox
     unsigned char BoundingCircle[12];                 //0x9c CCircle
+#endif
     C3DVector CentreOfGravity;                         //0xa8
     unsigned char RootSegment[8];                     //0xb4 CCountedPointer<const CIPhysicsFacesSegmentBase>
     class CMovableResourceMemoryPool* MemoryPool;       //0xbc

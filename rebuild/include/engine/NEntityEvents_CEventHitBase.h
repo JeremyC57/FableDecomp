@@ -55,6 +55,10 @@ public:
     virtual ~CEventHitBase();                            // slot 0
     CThing* GetPHitBy() const;                           // 0x00810FC0 PHitParams->PThingHitting
     CThing* GetPWeaponUsed() const;                      // 0x00810FD0 PHitParams->PWeapon
+#ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTHITBASE_GETHITPARAMS
+    // wf18 row 0x0094F180: Ego_r ?GetHitParams@CEventHitBase@NEntityEvents@@QBEABVCHitParameters@@XZ, out of line in retail (0x00810F40).
+    const CHitParameters& GetHitParams() const;                    // 0x00810F40
+#endif
 #ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3
 // agentFAM05 (2026-11-11): the retail virtual of CEventHitBase this declaration lacks, declaration only (no layout change). Slot 5 of the TLC vtable
 // 0x01272344 (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
