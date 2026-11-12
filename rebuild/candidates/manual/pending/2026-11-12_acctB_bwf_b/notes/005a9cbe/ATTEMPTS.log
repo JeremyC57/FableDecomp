@@ -1,0 +1,13 @@
+19:37 005a9cbe grade a1.cpp TIMEOUT -- first full draft
+19:37 005a9cbe grade a1.cpp SRC_FAIL -- first full draft
+19:38 005a9cbe grade a1.cpp SRC_FAIL -- first full draft, ToCharString
+19:38 005a9cbe grade a1.cpp DIFFER(4799v4714) hunks=204 -- first full draft, kinds
+19:38 005a9cbe grade a2.cpp DIFFER(4785v4714) hunks=204 -- op!= CWideString; a3 if/else single return
+19:38 005a9cbe grade a3.cpp DIFFER(4711v4714) hunks=101 -- op!= CWideString; a3 if/else single return
+19:39 005a9cbe grade a3.cpp DIFFER(4711v4714) hunks=101 -- a3 rerun full diff
+19:40 005a9cbe grade a3.cpp DIFFER(4711v4714) hunks=101 -- public decl; a4 ternary PC/UI in loop
+19:40 005a9cbe grade a4.cpp DIFFER(4730v4714) hunks=176 -- public decl; a4 ternary PC/UI in loop
+19:41 005a9cbe grade a3.cpp DIFFER(4711v4714) hunks=101 -- a3 regrade for full map
+19:41 005a9cbe grade a5.cpp RELOCATION_MATCH -- one CText* line variable for every text line
+19:42 005a9cbe grade 005a9cbe.cpp RELOCATION_MATCH -- final source with header
+19:43 005a9cbe grade 005a9cbe.cpp RELOCATION_MATCH -- strict regrade

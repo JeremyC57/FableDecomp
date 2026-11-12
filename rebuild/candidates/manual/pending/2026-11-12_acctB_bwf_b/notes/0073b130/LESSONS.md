@@ -1,0 +1,1 @@
+- CVectorMap Insert(key,value): make_pair vs value_type temp changes VC7.1's push_back inline budget split (0x0073B130: value_type 75 expanded, make_pair 70 = retail); grade both.

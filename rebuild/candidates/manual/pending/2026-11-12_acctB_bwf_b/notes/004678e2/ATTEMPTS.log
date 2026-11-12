@@ -1,0 +1,4 @@
+19:50 004678e2 grade v1.cpp SRC_FAIL -- first full draft from OUTLINE
+19:50 004678e2 grade v1.cpp SRC_FAIL -- add CDefStringTable/CCharString defines
+19:51 004678e2 grade v1.cpp RELOCATION_MATCH -- FABLE_RETAIL_DEF_CLASS_BASE (real virtual base)
+19:51 004678e2 grade src.cpp RELOCATION_MATCH -- strict regrade final
