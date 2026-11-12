@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00f2a250   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  00f2a250 RELOCATION_MATCH CScriptDef::??4CScriptDef@@QAEAAV0@ABV0@@Z
