@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00643d0c	?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	Ego_r.pdb 0x00686C09 / FableWin.pdb 0x020D9289 name sets; the landed row 0x00643D0C Leaf; __fastcall hidden C2DVector result (ecx) + const C2DVector& (edx), called so by 0x0064EDD5	?GFAPositionToScreen@@YIXPAVC2DVector@@PBV1@@Z (reloc_bindings.tsv, bound by landed row 0x00658020)
