@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0049f4c0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@@@CPersistContext@@QAEXPBDAAW4ESaveType@@ABW41@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+0049f4c0   RELOCATION_MATCH PASS   SaveGameStateInternal
+004a21f0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004a21f0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@@@CPersistContext@@QAEXPBDAAW4ESaveType@@ABW41@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+004a21f0   WARN RELOC_NAME: ?LoadGameState@CFactionManager@@QAEXAAVCPersistContext@@@Z -> 006b9610 labelled 'CFaction_LoadFromPersist'
+004a21f0   RELOCATION_MATCH PASS   LoadGameStateInternal
+
+WINS: 2
+  0049f4c0 RELOCATION_MATCH CWorld::?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+  004a21f0 RELOCATION_MATCH CWorld::?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
