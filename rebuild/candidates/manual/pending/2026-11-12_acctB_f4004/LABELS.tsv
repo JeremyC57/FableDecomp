@@ -1,0 +1,11 @@
+address	name	evidence
+00f2d6e0	CScriptDef::Transfer	Ego_r.pdb + FableWin.pdb ?Transfer@CScriptDef@@UAEXAAVCPersistContext@@@Z; 944 keyed transfers of the 943 CScriptDef members; RELOCATION_MATCH (chunk 4004)
+007e37c0	CPersistContext::GetDefaultVal<CDefString>	FableWin.pdb ??$GetDefaultVal@VCDefString@@@CPersistContext@@KI?AVCDefString@@XZ; VC7.1 instance of the template is the same 9 bytes; its 35 callers (0x00F2EA95..0x00F2F55B) are the expanded Transfer<CDefString>(name, value) of row 0x00F2D6E0, whose long / float / CCharString twins call GetDefaultVal<T>
+007e3aa0	CPersistContext::Transfer<CDefString>	??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@@Z (two-argument form); 10 sites of row 0x00F2D6E0 pass CDefString members; body stores -1 as the default
+00f333b0	CPersistContext::TransferVector<CDefString>	??$TransferVector@VCDefString@@@CPersistContext@@QAEXPBDAAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z; 12 sites of row 0x00F2D6E0 pass std::vector<CDefString> members; emitted right after that row; TransferVector<long> is 0x005815D6
+004107e0	CPersistContext::Transfer<float>	??$Transfer@M@CPersistContext@@QAEXPBDAAM@Z (two-argument form); 190 sites of row 0x00F2D6E0 pass float members; already bound so by row 0x0057E2F1
+004110b0	CPersistContext::Transfer<long>	??$Transfer@J@CPersistContext@@QAEXPBDAAJ@Z (two-argument form); 254 sites of row 0x00F2D6E0 pass long members
+00411010	CPersistContext::Transfer<CCharString>	??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@@Z (two-argument form); 12 sites of row 0x00F2D6E0 pass CCharString members
+0040e160	CPersistContext::GetDefaultVal<long>	??$GetDefaultVal@J@CPersistContext@@KIJXZ; 293 sites of row 0x00F2D6E0 (also bound so by row 0x00CDC070); catalog name ReturnZero_ret0 is descriptive
+0040e250	CPersistContext::GetDefaultVal<float>	??$GetDefaultVal@M@CPersistContext@@KIMXZ; 95 sites of row 0x00F2D6E0 (also bound so by row 0x00CDC070); catalog name GetConstFloat_0 is descriptive
+009bac80	CPersistContext::TransferVectorSaveText	Ego_r.pdb + FableWin.pdb ?TransferVectorSaveText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z (not called by this row; declared in the overlay header)

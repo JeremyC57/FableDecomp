@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00f2d6e0   WARN RELOC_NAME: ??$GetDefaultVal@J@CPersistContext@@KIJXZ -> 0040e160 labelled '_global::ReturnZero_ret0_0040e160'
+00f2d6e0   WARN RELOC_NAME: ??$GetDefaultVal@M@CPersistContext@@KIMXZ -> 0040e250 labelled '_global::GetConstFloat_0_0040e250'
+00f2d6e0   WARN RELOC_NAME: ??$GetDefaultVal@VCDefString@@@CPersistContext@@KI?AVCDefString@@XZ -> 007e37c0 labelled 'CDefString::CDefString'
+00f2d6e0   RELOCATION_MATCH PASS   Transfer
+
+WINS: 1
+  00f2d6e0 RELOCATION_MATCH CScriptDef::?Transfer@CScriptDef@@UAEXAAVCPersistContext@@@Z
