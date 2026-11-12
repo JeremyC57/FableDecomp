@@ -1,4 +1,6 @@
 // CConsole::NextCommandGuess() -- step the command guess: unless the front line still equals (case-insensitively) the lower-cased user entry, advance GuessPos through the registered inputs and show the next input whose name starts with the user entry, else leave guess mode
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EB0D0, 327 bytes (336 with padding).
 // Callees: CCharString copy ctor 0x0099EC30, ToLower 0x0099ED10 (by value), dtor 0x0099EAE0, operator= 0x0099EFB0;
 //          _stricmp 0x00BFEBA8, strncmp 0x00BFEAF8; the map iterator's operator++ 0x009EE470 (manifest
@@ -28,7 +30,7 @@ class CCharString { public:
     CCharString(const CCharString& other);  // 0x0099EC30
     ~CCharString();                         // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString ToLower() const;            // 0x0099ED10
+    CCharString GetAsLowerCase() const;            // 0x0099ED10
     const char* GetData() const
     {
         if (PStringData == 0)
@@ -94,7 +96,7 @@ struct CConsole_Retail {
 
 void CConsole_Retail::NextCommandGuess()
 {
-    CCharString userEntry = BackCommandLine.GetEntry().ToLower();
+    CCharString userEntry = BackCommandLine.GetEntry().GetAsLowerCase();
     bool unchanged = FrontCommandLine.GetEntry().IsEqualNoCase(userEntry);
     if (unchanged)
         return;

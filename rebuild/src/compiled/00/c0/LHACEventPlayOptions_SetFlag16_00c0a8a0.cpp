@@ -1,6 +1,6 @@
-// CBitMaskPair_00c0a8c0::SetFlag16(unsigned long index, bool set) -- set or clear bit `index` (of 16) in the 16-bit state mask at +0x4c and mark it in the touched mask at +0x2a through the shared __fastcall bit helper
+// LHA::CEventPlayOptions::SetFlag16(unsigned long index, bool set) -- set or clear bit `index` (of 16) in the 16-bit state mask at +0x4c and mark it in the touched mask at +0x2a through the shared __fastcall bit helper
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0A8A0, length 24 bytes (`ret 8`).
-// Leaf: ?SetFlag16@CBitMaskPair_00c0a8c0@@QAEXK_N@Z
+// Leaf: ?SetFlag16@CEventPlayOptions@LHA@@QAEXK_N@Z
 // Naming (sweep1, 2026-10-25): was landed as a global `bool __fastcall IsTurningBody(CTCLook* self, int /*edx*/, void* A,
 //   char B)` stand-in (the manifest's CTCLook::IsTurningBody is propagated over byte-identical neighbours, as the landed
 //   twin's comment says); descriptive name. It is the 16-bit twin of the landed CBitMaskPair_00c0a8c0::SetFlag 0x00C0A8C0
@@ -13,19 +13,17 @@
 // stack word, here +0x2a -- and sets or clears it in the FIRST, here +0x4c).
 // Shape: a member forwarding to a `__fastcall` free function -- the byte argument goes to dl, the member addresses are
 // pushed right to left (+0x2a first), and the index is re-read into ecx after the pushes.
+// Naming (agentNF31, 2026-11-12): class respelled CBitMaskPair_00c0a8c0 -> LHA::CEventPlayOptions (Ego_r struct_layouts_egor:
+//   WhichGainSendFaders +0x2a, WhichPitchSendFaders +0x2c, Params (+0x30) GainSendFaders +0x4c / PitchSendFaders +0x4e = the
+//   words this body passes; both callers build the object with ??0CEventPlayOptions@LHA@@QAE@XZ 0x00C0A790 and the landed
+//   caller 0x00AABD50 already binds this spelling through engine/LHA_CEventPlayOptions.h). Method name stays descriptive
+//   (no PDB carries LHA member functions).
+#define FABLE_RETAIL_LHA_CEVENTPLAYOPTIONS_SENDFADERS
+#include "engine/LHA_CEventPlayOptions.h"
+
 void __fastcall SetMaskBit16(unsigned long index, bool set, unsigned short* pMask, unsigned short* pTouched);   // 0x00C0AEE0
 
-struct CBitMaskPair_00c0a8c0 {
-    unsigned char  _pad[0x2a];
-    unsigned short m_touchedMask16;                // +0x2a (ORed with every bit that was set or cleared)
-    unsigned short m_touchedMask;                  // +0x2c (the 8-bit pair's, SetFlag 0x00C0A8C0)
-    unsigned char  _pad2e[0x4c - 0x2e];
-    unsigned short m_stateMask16;                  // +0x4c (the bit is set or cleared here)
-    unsigned short m_stateMask;                    // +0x4e (the 8-bit pair's)
-    void SetFlag16(unsigned long index, bool set);
-};
-
-void CBitMaskPair_00c0a8c0::SetFlag16(unsigned long index, bool set)
+void LHA::CEventPlayOptions::SetFlag16(unsigned long index, bool set)
 {
-    SetMaskBit16(index, set, &m_stateMask16, &m_touchedMask16);
+    SetMaskBit16(index, set, &Params.GainSendFaders, &WhichGainSendFaders);
 }

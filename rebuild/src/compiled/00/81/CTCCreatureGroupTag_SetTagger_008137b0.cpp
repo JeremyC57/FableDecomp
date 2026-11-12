@@ -1,5 +1,8 @@
 // CTCCreatureGroupTag::SetTagger(const CThing* tagger) -- record an active member as the tagger (UID + frame); always returns false
-// Leaf: ?SetTagger@CTCCreatureGroupTag@@QAE_NPBVCThing@@@Z
+// Leaf: ?SetTagger@CTCCreatureGroupTag@@QAE_NPBVCThingAICreature@@@Z
+// Naming (agentNF31, 2026-11-12): parameter respelled const CThing* -> const CThingAICreature* (Ego_r.pdb 0x00811460 + FableWin.pdb
+//   0x026C3B20 ?SetTagger@CTCCreatureGroupTag@@QAE_NPBVCThingAICreature@@@Z; the landed caller 0x009341C0 binds it). The creature
+//   converts to const CThing* for IsActiveMember / GetUniqueID through engine/CThingAICreature.h (single inheritance, no adjustment).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008137B0, length 45 bytes (+3 int3). Callers: the minion kid group-tag AI
 // state (0x009341AE, 0x00934381).
@@ -7,9 +10,20 @@
 // Shape: both exits end in `xor al,al` -- the function's bool result is a constant false (the effect is the two stores).
 // TaggerUID (+0x28, unsigned __int64) is copied dword by dword from CThing::UniqueID (+0x18), then TaggedFrame (+0x30)
 // takes the current frame. PDB names: CTCCreatureGroupTag {TaggerUID +0x28, TaggedFrame +0x30}, sizeof 0x38.
-#include "engine/CThing.h"
-
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CThingAICreature.h"
+
 #include "engine/CIntelligentPointer.h"
 
 class CGroupMemberData { public:
@@ -59,13 +73,13 @@ class CTCCreatureGroupTag : public CTCCreatureGroup { public:
     unsigned __int64 TaggerUID;             // +0x28
     unsigned long TaggedFrame;              // +0x30
     bool ChooseNewTagger();                 // 0x008137E0
-    bool SetTagger(const CThing* tagger);
+    bool SetTagger(const CThingAICreature* tagger);
     bool RemoveMember(const CThing* member);
     bool DeactivateMember(const CThing* member);
     CThing* GetTagger();
 };
 
-bool CTCCreatureGroupTag::SetTagger(const CThing* tagger)
+bool CTCCreatureGroupTag::SetTagger(const CThingAICreature* tagger)
 {
     if (IsActiveMember(tagger)) {
         TaggerUID = tagger->GetUniqueID();

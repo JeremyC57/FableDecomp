@@ -1,4 +1,6 @@
 // CDefinitionManager::CheckDependencies(const CWideStringVector&) -- when dependency checking is on, open the <compiled file>.cks checksum file beside the compiled definitions, look up the stored checksum of every source file the path list matches (keyed by lower-cased name), sort by name and CRC the checksums into DependencyCheckCRC (left 0 when checking is off)
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B05F0, length 705 bytes (`ret 4`).
 // Callees: CWideString() 0x0099AED0 / ~CWideString 0x0099B510 / ConvertToCharString 0x0099B2C0 / operator+ 0x0099BE70 / operator+(const wchar_t*)
 //   0x0099BF30 (__fastcall), SplitPath 0x00997620 (__fastcall), CCharString copy ctor 0x0099EC30 / ~CCharString 0x0099EAE0 / ToLower 0x0099ED10,
@@ -22,7 +24,7 @@ class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString ToLower() const;                        // 0x0099ED10
+    CCharString GetAsLowerCase() const;                        // 0x0099ED10
 };
 class CWideString {
 public:
@@ -161,7 +163,7 @@ void CDefinitionManager::CheckDependencies(const CWideStringVector& paths)
         CFileScanState scan;
         if (ScanFirstFile(*path, scan, fileName)) {
             do {
-                files.Add(((CWideString*)&fileName)->ToCharString().ToLower(), ((CChecksumCacheFile*)&checksums)->GetChecksum(fileName));
+                files.Add(((CWideString*)&fileName)->ToCharString().GetAsLowerCase(), ((CChecksumCacheFile*)&checksums)->GetChecksum(fileName));
             } while (ScanNextFile(*path, scan, fileName));
         }
     }

@@ -1,0 +1,39 @@
+tag	address	status	binders_respelled	note
+land1011eu	00c0a8a0	done	0	self row onto LHA::CEventPlayOptions (caller 0x00AABD50 already right)
+land1011eu	00c0a8c0	done	0	self row onto LHA::CEventPlayOptions (caller already right)
+land1011eu	00aac870	done	0	self T -> CSoundEmitterLH::CActiveSound (caller already right)
+land1011eu	00aab8b0	done	0	self signature respelled (caller already right)
+land1011eu	00982210	done	0	self ctor respelled onto shared headers (caller 0x009810B0 already right)
+land1011eu	008fcfa0	partial	0	self done; 4 stand-in binders left (NOTES)
+land1011eu	007046d0	partial	0	self done; binder 0x00704A80 left (NOTES)
+land1011eu	007045f0	done	0	self done (caller already right)
+land1011eu	008d0250	done	0	self done (caller already right); callee InitFromThing respelled
+land1011eu	004c7e50	partial	0	self done; 11 stand-in binders left (NOTES)
+land1011ev	0094b400	done	1	self + 0x00967B40
+land1011ev	008764e0	done	1	0x007617A0
+land1011ew	00a69b20	done	1	self + 0x009FE550 (its local CManagedTexture model respelled to the const& return; RELOCATION_MATCH)
+land1011ew	00a69ad0	done	0	self (callers already right); callee 0x00A69A80 respelled ReleaseTexture
+land1011ew	009ff220	partial	1	0x009FF860 done (moved onto the header); 0x009FF6B0 / 0x009FF710 left (NOTES)
+land1011ew	006625c0	partial	0	authoring (self row is a semantic stand-in; caller already right)
+land1011ew	006625e0	partial	0	authoring (self row is a semantic stand-in; caller already right)
+land1011ew	007f9c00	partial	0	authoring (member template on CThingSearchTools with STLport vector / CFilter_Bind3; caller already right)
+land1011ew	00410820	done	0	self (caller already right)
+land1011ew	013b8760	partial	2	correct name is CStartupDefinitionManager::PClass (not the queued descriptive name); 0x004085F0 / 0x0043368D done; 0x004336B0 / 0x01228AF1 left
+land1011ey	004c7580	done	0	self + test rewritten (caller already right)
+land1011ey	007324a0	done	0	self (caller already right)
+land1011ey	004c4160	done	0	self (caller already right)
+land1011ey	008137b0	done	1	self + 0x00934120
+land1011ey	00950c30	partial	0	self needs the header move + callee respellings (CModeDragonFlying ctor, AddMode); caller already right
+land1011ey	0094fdf0	done	0	self access fix (caller already right)
+land1011ey	0099ed10	partial	10	self + 10 CCharString binders; stand-in-class binders 0x009CCDF0 / 0x009EC5E0 / 0x009EB590 left
+land1011fa	00883860	done	0	self (caller already right); descriptive-by-library
+land1011fb	00705170	done	1	self + 0x008D0730
+land1011fb	005eedcf	partial	0	name verified (Ego_r 0x0057DAFE + FableWin 0x01EBECB4); self rename needs the CTCInventoryAbilities header move (retail +0x1BC member unmapped)
+land1011fb	01436e9c	rejected	0	see REJECTED.tsv
+land1011fb	0099af00	done	0	label check: ??BCWideString@@QBEPBGXZ is the PDB ??BCWideString@@QBEPB_WXZ with wchar_t as unsigned short; no change
+land1011fc	00493bc2	done	0	self (caller already right); descriptive-by-library
+land1011fc	00493bdd	done	0	self (caller already right); descriptive-by-library
+land1011fd	005f8150	done	0	self (caller already right); descriptive-by-library
+land1011fd	0073a680	partial	0	self done; 8 stand-in binders left (NOTES)
+land1011fd	005beb57	done	0	self (caller already right)
+land1011fd	007c2980	done	0	self (caller already right)

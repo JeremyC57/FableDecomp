@@ -1,5 +1,7 @@
 // CAIStateGroup_MinionKidGroupTag::OnActivate() -- put the kid in creature mode 1 (remembering whether this
 // Leaf: ?OnActivate@CAIStateGroup_MinionKidGroupTag@@UAEXXZ
+// Naming (agentNF31, 2026-11-12): callee 0x008137B0 respelled SetTagger(CThing*) -> SetTagger(const CThingAICreature*) (Ego_r.pdb
+//   0x00811460 + FableWin.pdb 0x026C3B20); the brain's creature (Ego_r CAIBrain::Creature, CThingAICreature, +0x18) is passed as is.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // state group added it), register the kid with the tag game and make it the tagger when it started the game or
 // nobody is "it".
@@ -79,6 +81,7 @@ public:
     bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
+class CThingAICreature;
 class CTCCreatureGroupTag { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -89,7 +92,7 @@ class CTCCreatureGroupTag { public:
     virtual void v30();
     virtual void AddPlayer(CThing* creature);   // slot 31 (+0x7c)
     CThing* GetTagger();                        // 0x008138E0
-    bool SetTagger(CThing* creature);           // 0x008137B0
+    bool SetTagger(const CThingAICreature* tagger);   // 0x008137B0 Ego_r / FableWin ?SetTagger@CTCCreatureGroupTag@@QAE_NPBVCThingAICreature@@@Z
 };
 
 struct CAIStateGroup_MinionKidGroupTag : CAIStateGroupBase {
@@ -113,5 +116,5 @@ void CAIStateGroup_MinionKidGroupTag::OnActivate()
     }
     PTCGroupTag->AddPlayer(PBrain->PCreature);
     if (InitiatedTag || PTCGroupTag->GetTagger() == 0)
-        PTCGroupTag->SetTagger(PBrain->PCreature);
+        PTCGroupTag->SetTagger((const CThingAICreature*)PBrain->PCreature);   // Ego_r CAIBrain::Creature +0x18 is the CThingAICreature (this local model types it CThing)
 }

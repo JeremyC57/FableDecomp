@@ -1,4 +1,4 @@
-// CDefinitionManager::GetDef<T>(const CCharString&, CDefPointer&) -- GetPDefFromInstantiationName @ 0x009ADA40 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
+// CDefinitionManager::GetDef<CControlsDef>(const CCharString&, CDefPointer<const CControlsDef>*) const -- GetPDefFromInstantiationName @ 0x009ADA40 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00410820, oracle length 104 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -16,6 +16,13 @@
 // test and the def is kept in ecx for the virtual call. The manifest
 // label names one instantiation; the def type is opaque. One of 14 bodies of this shape.
 // Name fix (agentNF6 2026-11-10): CDefinitionManager::GetPDefFromInstantiationName 0x009ADA40 is ?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z (Ego_r.pdb / FableWin.pdb; const, returns the class template CDefPointer<const CDefClassBase>). The row's own GetDef<T> identity (one of the 42 PDB GetDef-by-name instantiations) is still unresolved.
+// Leaf: ??$GetDef@VCControlsDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCControlsDef@@@@@Z
+// Naming (agentNF31, 2026-11-12): was CDefinitionManager::GetDef_00410820(const CCharString&, CDefPointer<const CDefClassBase>&).
+//   FableWin.pdb _fablewin_api.tsv 0x017F2709 / 0x01897270 ??$GetDef@VCControlsDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCControlsDef@@@@@Z
+//   (const member template, out handle by pointer); the landed caller ResetAssignedInputs 0x004085F0 binds this symbol, passing the
+//   FABLE_PC_CONTROL_SCHEME_GDD* names and reading CControlsDef::Controls from the out handle. The row keeps its pre-existing
+//   local CDefPointer model (engine/CDefPointer.h's release shapes differ, NF30), with the converting assignment the template
+//   body needs (same inline body as the same-type one).
 #include "fable_string.h"
 
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
@@ -65,19 +72,35 @@ template <class T> class CDefPointer { public:   // CDefPointer<T> (Ego_r.pdb / 
         }
         return *this;
     }
+    template <class U> CDefPointer& operator=(const CDefPointer<U>& other)   // converting form of the same inline body
+    {
+        if (m_p != other.m_p) {
+            if (m_p) {
+                m_p->Release();
+                m_p = 0;
+            }
+            m_p = other.m_p;
+            if (m_p)
+                ++m_p->m_count;
+        }
+        return *this;
+    }
 };
 
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString& name) const;   // 0x009ADA40 (hidden result pointer)
-    bool GetDef_00410820(const CCharString& name, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;
 };
 
-bool CDefinitionManager::GetDef_00410820(const CCharString& name, CDefPointer<const CDefClassBase>& out)
+template <class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer<const T>* out) const
 {
     CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
     if (def.m_p) {
-        out = def;
+        *out = def;
         return true;
     }
     return false;
 }
+
+class CControlsDef;
+template bool CDefinitionManager::GetDef<CControlsDef>(const CCharString& name, CDefPointer<const CControlsDef>* out) const;

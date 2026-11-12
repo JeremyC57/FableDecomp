@@ -59,7 +59,11 @@ class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& position) const;  // 0x0063A300 ?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
 };
 void __fastcall EditorDrawSphere(CEnginePrimitivePrepareInfo* info, const C3DVector& position, const C3DVector& colour, float radius);   // 0x00875FB0
-void __fastcall EditorDrawCross(CEnginePrimitivePrepareInfo* info, const C3DVector& position, float size);   // 0x008764E0
+namespace NCameraModes {
+// agentNF31 2026-11-12: was the stand-in EditorDrawCross(CEnginePrimitivePrepareInfo*, ...); Ego_r.pdb 0x0085D1F0 + FableWin.pdb
+//   0x029C4CB0 ?DrawPyramid@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@M@Z (landed caller 0x006992A0 binds it).
+void __fastcall DrawPyramid(const CEnginePrimitivePrepareInfo& info, const C3DVector& pos, float size);   // 0x008764E0
+}
 struct CPointVector { C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage; };
 struct CPointIteratorVector { C3DVector** _M_start; C3DVector** _M_finish; C3DVector** _M_end_of_storage; };
 namespace NShape {
@@ -88,6 +92,6 @@ void NShape::CShape::EditorDrawHighlightPoints(const CEnginePrimitivePrepareInfo
     for (C3DVector** sel = SelectedPoints._M_start; sel != SelectedPoints._M_finish; ++sel) {
         C3DVector point = **sel;
         point.Z = worldMap.GetGroundSizeZAt(point) + 0.15f;
-        EditorDrawCross(const_cast<CEnginePrimitivePrepareInfo*>(&info), point, 0.25f);
+        NCameraModes::DrawPyramid(info, point, 0.25f);
     }
 }

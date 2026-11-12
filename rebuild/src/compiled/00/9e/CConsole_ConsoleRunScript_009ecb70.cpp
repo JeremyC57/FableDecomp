@@ -1,4 +1,6 @@
 // CConsole::ConsoleRunScript(CConsole& console, const std::vector<CGenericVar>& args) -- console command handler: take args[0] as a config file name, append ".ini" unless it already ends in it (case-insensitively), and execute the file
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Leaf: ?ConsoleRunScript@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009ECB70, 255 bytes, public static `__fastcall` (console in ecx, args in edx), `ret`.
 // Identity (proven): CConsole::Initialise 0x009ED190 registers this handler (`mov [edi+18h],9ECB70h`) beside the landed
@@ -27,7 +29,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString ToLower() const;                        // 0x0099ED10
+    CCharString GetAsLowerCase() const;                        // 0x0099ED10
     const CCharString& operator+=(const char* text);          // 0x0099F100
     CWideString ToWideString() const;                   // 0x0099E480
     long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
@@ -86,7 +88,7 @@ void __fastcall CConsole::ConsoleRunScript(CConsole& console, const std::vector<
     bool hasExtension;
     {
         CCharString extension(".ini");
-        hasExtension = fileName.ToLower().EndsWith(extension);
+        hasExtension = fileName.GetAsLowerCase().EndsWith(extension);
     }
     if (!hasExtension)
         fileName += ".ini";

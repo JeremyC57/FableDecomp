@@ -1,4 +1,7 @@
-// CCharString::ToLower() const -- copy of the string with every character passed through tolower (copy-on-write: a shared block is cloned first)
+// CCharString::GetAsLowerCase() const -- copy of the string with every character passed through tolower (copy-on-write: a shared block is cloned first)
+// Leaf: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099ED10, length 271 bytes (hidden result pointer, `ret 4`).
 // Callees: CCharString::UnassignString @ 0x0099E9B0 (landed; its body is repeated above under
 //          `auto_inline(off)` so VC7.1 knows what it clobbers), operator new @ 0x00BFEA1A, CBasicString<char>
@@ -79,7 +82,7 @@ public:
         }
     }
     long GetLength() const { return PStringData ? (long)PStringData->Data.StringLength : 0; }
-    CCharString ToLower() const;
+    CCharString GetAsLowerCase() const;
 };
 
 #pragma auto_inline(off)
@@ -97,7 +100,7 @@ void CCharString::UnassignString()
 }
 #pragma auto_inline(on)
 
-CCharString CCharString::ToLower() const
+CCharString CCharString::GetAsLowerCase() const
 {
     CCharString result(*this);
     result.MakeOwnCopyOfData();

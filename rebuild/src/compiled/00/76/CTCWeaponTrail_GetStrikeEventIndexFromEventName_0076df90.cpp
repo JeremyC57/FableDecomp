@@ -1,4 +1,6 @@
 // CTCWeaponTrail::GetStrikeEventIndexFromEventName(const CCharString& name) -- map an animation strike-event name to a weapon-trail helper index: two fixed names give 0/1, names under the event prefix (and not the excluded prefix) are lower-cased, turned into "weapon_pos_<suffix>" and looked up in the trail's helper-name table
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Leaf: GetStrikeEventIndexFromEventName
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076DF90, length 448 bytes, `ret 4`.
 // Callees: Compare 0x00411570 (__fastcall; its landed body is repeated above under auto_inline(off) so VC7.1 knows it writes no
@@ -56,7 +58,7 @@ class CCharString { public:
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->Data.PData; }
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Data.StringLength; }
     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
-    CCharString ToLower() const;                            // 0x0099ED10
+    CCharString GetAsLowerCase() const;                            // 0x0099ED10
     FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
@@ -89,7 +91,7 @@ long CTCWeaponTrail::GetStrikeEventIndexFromEventName(const CCharString& name)
     if (strncmp(name.GetString(), STRIKE_EVENT_WEAPON_START_IDENTIFIER.GetString(), STRIKE_EVENT_WEAPON_START_IDENTIFIER.GetLength()) == 0)
         return 0;
     if (strncmp(name.GetString(), STRIKE_EVENT_START_IDENTIFIER.GetString(), STRIKE_EVENT_START_IDENTIFIER.GetLength()) == 0) {
-        CCharString suffix = name.GetSubString(STRIKE_EVENT_START_IDENTIFIER.GetLength(), name.GetLength()).ToLower();
+        CCharString suffix = name.GetSubString(STRIKE_EVENT_START_IDENTIFIER.GetLength(), name.GetLength()).GetAsLowerCase();
         CCharString eventName = "weapon_pos_" + suffix;
         for (long i = 0; i < NoStrikeEvents; ++i) {
             if (StrikeEvents[i].Name == eventName)

@@ -1,4 +1,6 @@
 // CFileInstaller::IsCompressedFilename(const CWideString&,CWideString&) -- replace recognized compressed extensions.
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Leaf: IsCompressedFilename
 // Retail009C46B0,240bytes. Donor CFileInstaller CompressedFileTypes+b4 -> native+94 (smaller STL).
 // Calls CAFile::SplitPath997620, wide ctors99AED0/dtors99B510, conversion99B2C0,
@@ -10,7 +12,7 @@
 #undef CWideString
 #undef CCharString
 class CWideString;
-class CCharString:public CCharStringCore { public:CCharString();CCharString(const char*,long);~CCharString();CCharString ToLower() const;CWideString ToWideString() const;};
+class CCharString:public CCharStringCore { public:CCharString();CCharString(const char*,long);~CCharString();CCharString GetAsLowerCase() const;CWideString ToWideString() const;};
 class CWideString:public CWideStringCore {
 public:
     CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
@@ -25,7 +27,7 @@ bool CFileInstaller::IsCompressedFilename(const CWideString& filename,CWideStrin
  bool result;
  { CWideString stem,extension;
  CAFile::SplitPath(filename,0,0,&stem,&extension);
- CExtensionNode* found=CompressedFileTypes.find(((CWideString*)&extension)->ToCharString().ToLower());
+ CExtensionNode* found=CompressedFileTypes.find(((CWideString*)&extension)->ToCharString().GetAsLowerCase());
  if(found!=CompressedFileTypes.Head){
  output=stem+found->second.ToWideString();result=true;
  }else{output=stem+extension;result=false;}

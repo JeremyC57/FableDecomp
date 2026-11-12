@@ -3,55 +3,33 @@
 // Callees: UploadFrame @ 0x009FF220 (on `this`, 0; a bool in al), CIVCountedPointeeBase virtual slot 1 (Delete) when the count reaches zero. Shape: the inlined
 // `CIVCountedPointer::operator=(0)` (GOTCHAS wave 24h: the release through a local pointee copy, its zero store inside the null test, then the assignment's
 // unconditional zero store); the pointer address `owner+8` formed with `add esi,8`.
-class CIVCountedPointeeBase { public:
-    virtual void Destroy(int flags);               // slot 0
-    virtual void Delete();                         // slot 1
-    unsigned long IVRefCount;                      // +4
-};
+// Leaf: ?OnResourceLoaded@CFrameData@CGraphicInfoFrame@@UAEXXZ
+// Naming (agentNF31, 2026-11-12): moved off the local top-level CFrameData stand-in (UploadFrame(long)) onto engine/CGraphicInfoFrame.h,
+//   whose nested CGraphicInfoFrame::CFrameData declares ?UploadFrame@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z (Ego_r.pdb 0x00B5B6D0 +
+//   FableWin.pdb 0x031285A0: the parameter is bool); +0x1c = Frame (CGraphicFrame::FrameData), +0x30 = FileData, +0x40 =
+//   GraphicInfoFrame (its Data +8, a mutable CIVCountedPointer<CFrameData>), Ego_r layout.
+#define FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+#define FABLE_RETAIL_CFRAMEDATA_UPLOADFRAME
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#include "engine/CGraphicInfo.h"
+#include "engine/GFSizeof.h"
+#include "engine/CGraphicInfoFrame.h"
 
-struct CIVCountedPointer {
-    CIVCountedPointeeBase* Object;
-    void Release()
-    {
-        CIVCountedPointeeBase* old = Object;
-        if (old) {
-            if (--old->IVRefCount == 0)
-                old->Delete();
-            Object = 0;
-        }
-    }
-    CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
-    {
-        Release();
-        Object = object;
-        if (object)
-            ++object->IVRefCount;
-        return *this;
-    }
-};
-
-struct CFrameOwner_009ff860 {
-    unsigned char     _pad[8];
-    CIVCountedPointer m_data;                      // +0x08
-};
-
-struct CFrameData {
-    unsigned char         _pad[0x1c];
-    void*                 m_pGraphic;              // +0x1c
-    unsigned char         _pad20[0x10];
-    void*                 m_pAsyncRead;            // +0x30
-    unsigned char         _pad34[0xc];
-    CFrameOwner_009ff860* m_pOwner;                // +0x40
-    bool UploadFrame(long flags);                  // 0x009FF220
-    void OnResourceLoaded();
-};
-
-void CFrameData::OnResourceLoaded()
+void CGraphicInfoFrame::CFrameData::OnResourceLoaded()
 {
-    if (m_pAsyncRead) {
-        if (!UploadFrame(0)) {
-            if (!m_pGraphic)
-                m_pOwner->m_data = 0;
+    if (!FileData.IsNull()) {
+        if (!UploadFrame(false)) {
+            if (!Frame.FrameData)
+                GraphicInfoFrame->Data.Reset(0);
         }
     }
 }

@@ -1,4 +1,6 @@
 // CCRC::CalcFromPathname(const CCharString& pathname) -- CRC-32 of a pathname's lower-cased file name and extension (the directory and drive ignored)
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Leaf: ?CalcFromPathname@CCRC@@SIKABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009914E0, length 186 bytes, plain `ret` (static __fastcall, pathname in ecx).
 // PDB (Ego_r donor 0x00AEAA70, FableWin): ?CalcFromPathname@CCRC@@SIKABVCCharString@@@Z (beside CCRC::CalcFromString,
@@ -28,7 +30,7 @@ public:
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString ToLower() const;                // 0x0099ED10
+    CCharString GetAsLowerCase() const;                // 0x0099ED10
     const char* GetPString() const { return PStringData == 0 ? g_EmptyString : PStringData->PData; }
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
 };
@@ -61,5 +63,5 @@ unsigned long __fastcall CCRC::CalcFromPathname(const CCharString& pathname)
     CCharString ext;
     CAFile::SplitPath(pathname, 0, 0, &name, &ext);
     file = name + ext;
-    return CalcFromString(file.ToLower());
+    return CalcFromString(file.GetAsLowerCase());
 }

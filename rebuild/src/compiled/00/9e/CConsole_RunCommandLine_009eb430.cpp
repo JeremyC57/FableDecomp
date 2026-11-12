@@ -1,4 +1,6 @@
 // CConsole::RunCommandLine() -- parse the front command line and run it: the first item must be a string naming a registered input (looked up lower-cased), which is executed with a copy of the whole line; otherwise report "unknown input - <name>" or "command line was not a string" to the user
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EB430, 345 bytes (352 with padding).
 // Callees: CCharString copy ctor 0x0099EC30, CCharString(const char*, long) 0x0099EBF0, default ctor 0x0099E4B0,
 //          dtor 0x0099EAE0, ToLower 0x0099ED10, `__fastcall` operator+(const char*, const CCharString&) 0x0099F690;
@@ -25,7 +27,7 @@ class CCharString { public:
     CCharString();                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);  // 0x0099EC30
-    CCharString ToLower() const;            // 0x0099ED10
+    CCharString GetAsLowerCase() const;            // 0x0099ED10
     ~CCharString();                         // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     const CCharString& operator=(const char* text);     // 0x0099EFE0
@@ -122,7 +124,7 @@ void CConsole::RunCommandLine()
     if (parser.ReadNextItem(item)) {
         if (item.Type == 2) {
             CCharString name = item.GetString();
-            SInputNode* it = FindInput(name.ToLower());
+            SInputNode* it = FindInput(name.GetAsLowerCase());
             CConsoleInputBase* input = it != RegisteredConsoleInputs._M_header ? it->second.Object : 0;
             if (!input)
                 SendMessageToUser("unknown input - " + name);

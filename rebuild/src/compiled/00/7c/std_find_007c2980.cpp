@@ -1,5 +1,9 @@
-// std::__find(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, const CIntelligentPointer<const CThing>& val, const random_access_iterator_tag&) -- STLport random-access find: four-way unrolled scan of a shot's hit-things list for the entry naming the same thing as val
-// Leaf: ??$__find@
+// std::__find(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, const CIntelligentPointer<CThing>& val, const random_access_iterator_tag&) -- STLport random-access find: four-way unrolled scan of a shot's hit-things list for the entry naming the same thing as val
+// Leaf: ??$__find@PAV?$CIntelligentPointer@$$CBVCThing@@@@V?$CIntelligentPointer@VCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PAV1@0ABV?$CIntelligentPointer@VCThing@@@@ABUrandom_access_iterator_tag@0@@Z
+// Naming (agentNF31, 2026-11-12): the value type respelled CIntelligentPointer<const CThing> -> CIntelligentPointer<CThing>: the caller
+//   0x007BF510 (OnCollision) builds the value with the CIntelligentPointer<CThing> vtable 0x01238C6C (ctor 0x004A96F0; the <const CThing>
+//   vtable is 0x01237F1C, stored at 0x007C0FC8 for the element type) and that landed caller binds this symbol (RELOCATION_MATCH).
+//   Descriptive-by-library (STLport __find; the PDBs are Dinkumware builds). The engine operator== takes the two pointer types.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C2980, 249 bytes, /Gr `__fastcall` (first ecx, last edx), `ret 8`
 //   (the value reference + the tag reference).
@@ -18,8 +22,8 @@ class CThing;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-template <class T>
-inline bool operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b)
+template <class T, class U>
+inline bool operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<U>& b)
 {
     return a.GetPItem() == b.GetPItem();
 }
@@ -64,6 +68,6 @@ _RandomAccessIter __fastcall __find(_RandomAccessIter __first, _RandomAccessIter
 
 template CIntelligentPointer<const CThing>* __fastcall __find(CIntelligentPointer<const CThing>*,
                                                               CIntelligentPointer<const CThing>*,
-                                                              const CIntelligentPointer<const CThing>&,
+                                                              const CIntelligentPointer<CThing>&,
                                                               const random_access_iterator_tag&);
 }

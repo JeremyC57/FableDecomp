@@ -15,6 +15,11 @@ public:
     void SetOwner(CManagedTextureOwner* owner) { Owner = owner; }
     bool CreateTexture(unsigned long width, unsigned long height, long mip_levels, const class CPixelFormat& format);   // 0x00A697A0
 #endif
+#ifdef FABLE_RETAIL_CMANAGEDTEXTUREDATA_RELEASETEXTURE
+    // Opt-in (agentNF31, row 0x00A69AD0 CManagedTexture::Release): Ego_r.pdb 0x00B7D190 / FableWin.pdb 0x03185260
+    // ?ReleaseTexture@CManagedTextureData@@QAEXXZ, the landed row at 0x00A69A80; called out of line. Declaration only.
+    void ReleaseTexture();                                                // 0x00A69A80
+#endif
 private:
     unsigned short Width,Height;
     CCountedPointer<CTexture> Texture;

@@ -1,4 +1,6 @@
 // CGameScriptThing::IsBeingCarriedBy(const CCharString& name) const -- true when this live thing is being carried (its carryable component, kind 0x47, has a carrying component) and either no name is given or the carrier's script name equals `name`
+// Naming (agentNF31, 2026-11-12): callee 0x00705170 respelled CTCCarryable::GetCarrier() -> GetPCarriedByThing() const returning
+//   const CThing* (Ego_r.pdb 0x00725060 + FableWin.pdb 0x02603B60); the result is read through this row's flattened CThingRetail view.
 // Leaf: IsBeingCarriedBy
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D0730, 233 bytes, `ret 4`.
@@ -99,10 +101,11 @@ struct CThingRetail {
     }
 };
 class CTCCarrying;
+class CThing;   // the real class; CThingRetail below is this row's flattened view of it
 class CTCCarryable { public:                              // component kind 0x47
     unsigned char _base[0x10];                     // CTCBase {vptr, ParentThing, flags} + ForceFragility
     CTCCarrying*  PCarryingTC;                     // +0x10
-    CThingRetail* GetCarrier() const;              // 0x00705170
+    const CThing* GetPCarriedByThing() const;      // 0x00705170 Ego_r / FableWin ?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ
 };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -120,7 +123,7 @@ bool CGameScriptThingMethods::IsBeingCarriedBy(const CCharString& name) const
             if (thing->HasTC(0x47)) {
                 CTCCarryable* carryable = (CTCCarryable*)thing->m_tcs.Find(0x47);
                 if (carryable->PCarryingTC)
-                    return name == "" || name == carryable->GetCarrier()->ScriptName;
+                    return name == "" || name == ((const CThingRetail*)carryable->GetPCarriedByThing())->ScriptName;
             }
         }
     }

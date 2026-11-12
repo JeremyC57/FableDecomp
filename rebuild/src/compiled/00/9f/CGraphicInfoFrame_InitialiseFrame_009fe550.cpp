@@ -49,7 +49,7 @@ struct SharedFrame {
 class CManagedTexture {
 public:
     bool Release();   // 0x00A69AD0 (Ego_r.pdb ?Release@CManagedTexture@@QAE_NXZ)
-private: public: void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&);  };
+private: public: void* VTable; CIVCountedPointeeBase* Data; const CManagedTexture& operator=(const CManagedTexture&);  };   // 0x00A69B20 (Ego_r.pdb 0x00B7D230 / FableWin.pdb 0x017AC0C9: const reference return)
 class CGraphicInfoFrame;
 template <class T> struct ResourcePointer { T* Object;
  FABLE_FORCEINLINE void Assign(T* p) { if(Object) { IVRelease((CIVCountedPointeeBase*)Object); Object=0; } Object=p; }

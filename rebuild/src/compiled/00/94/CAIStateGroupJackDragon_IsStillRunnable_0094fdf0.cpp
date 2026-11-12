@@ -1,5 +1,8 @@
 // CAIStateGroup_JackDragon::IsStillRunnable() -- the dragon fight continues while the enemy lives and nothing stops the group.
-// Leaf: ?IsStillRunnable@CAIStateGroup_JackDragon@@QAE_NXZ
+// Leaf: ?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ
+// Naming (agentNF31, 2026-11-12): access only, public -> private: Ego_r.pdb egor_signatures 0x009747B0 + FableWin.pdb
+//   _fablewin_api 0x017C1E60 / 0x02BD9900 ?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ; engine/CAIStateGroup_JackDragon.h
+//   declares it private and the landed caller IntoHover 0x00951D60 binds this spelling.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094FDF0, length 55 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, on PEnemy at +0x14), CAIStateGroupBase::
 // IsStopping @ 0x008FD010.
@@ -38,6 +41,7 @@ public:
 
 struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
+private:
     bool IsStillRunnable();
 };
 

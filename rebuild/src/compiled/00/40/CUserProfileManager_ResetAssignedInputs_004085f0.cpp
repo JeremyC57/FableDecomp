@@ -12,8 +12,8 @@
 //   CThingFilterIsValidTargetForPlayerCreature 0x00808E40; DESCRIPTIVE, no PDB data name), 0x013B85F3 g_bAggressiveModeAvailable,
 //   CMainGameComponent::PMainGameComponent 0x013B86A0 (inline Get). The presence test `mov eax,[0x013B8760] ; test eax,eax ; je` (0x00408636 / 0x004086D8 / 0x004087AE) is the inlined FableWin
 //   ?IsAllocated@CStartupDefinitionManager@@SI_NXZ (0x018377B4 / 0x01888A60; overlay opt-in FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_
-//   ISALLOCATED) over the counted pointer 0x013B8760 that owns the singleton (DESCRIPTIVE g_StartupDefinitionManagerInstance: no PDB
-//   data name; Get 0x0043368D is `mov eax,[0x013B8760] ; ret`, its atexit dtor 0x01228AF1 -> CCountedPointer<...>::ReleaseData 0x00433CC0).
+//   ISALLOCATED) over the counted pointer 0x013B8760 that owns the singleton (CStartupDefinitionManager::PClass: FableWin.pdb
+//   dynamic initializer / atexit destructor names, agentNF31 overlay opt-in PCLASS; Get 0x0043368D is `mov eax,[0x013B8760] ; ret`, its atexit dtor 0x01228AF1 -> CCountedPointer<...>::ReleaseData 0x00433CC0).
 // GetDef reads unqualified in both branches: FABLE_RETAIL_CGAMEDEFINITIONMANAGER hides the header's non-retail
 //   CGameDefinitionManager::GetDef(long, CDefPointer<T>&) (absent from Ego_r / FableWin), so the call resolves to the base
 //   CDefinitionManager::GetDef<CControlsDef> exactly as in the startup branch.
@@ -38,6 +38,7 @@
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_BODY   // same-TU body of GetDef<T>(const CCharString&, ...) (0x00410820)
 #define FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER
 #define FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_ISALLOCATED   // inline static IsAllocated() (FableWin 0x01888A60)
+#define FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_PCLASS   // agentNF31: 0x013B8760 = CStartupDefinitionManager::PClass (FableWin.pdb dynamic initializer / atexit names + Anniversary publics; overlay opt-in)
 #define FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
 #define FABLE_RETAIL_CUSERPROFILEMANAGER_RESETASSIGNEDINPUTS
 #define FABLE_RETAIL_STLP_VECTOR_C   // required: the vector<CActionInputControl>::operator= call 0x00411B90 (569v557 without it; VECTOR_ASSIGN matches too)

@@ -1,5 +1,8 @@
 // CAIStateGroup_TavernServer::FillTankard() -- with a live tankard and jug: pin the server, claim the tankard, play the pour action, wait up to 4 seconds while the serving point stays valid, fill the tankard, use a jug serving, play the second action, free the bar point and unpin
 // Leaf: FillTankard
+// Naming (agentNF31, 2026-11-12): the tankard callee 0x0094B400 respelled from the stand-in CTCTankard::SetUser(CThing*) to
+//   CTCTavernTankard::SetBarmaid(CThingAICreature*) (Ego_r.pdb 0x0096F7D0 + FableWin.pdb 0x017C46E2; Ego_r CTCTavernTankard
+//   Fullness +0x0c, PBarmaid +0x34); the argument is the state group's AI creature (GetAICreature, the same PBrain +0x18 load).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -38,10 +41,12 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     }
     return false;
 }
-struct CTCTankard {                             // interface 0xba
+class CThingAICreature;
+class CTCTavernTankard {                        // interface 0xba (TCI_TAVERN_TANKARD); Ego_r.pdb sizeof 60, no engine header
+public:
     unsigned char _pad[0xc];
-    float FillLevel;                            // +0x0c
-    void SetUser(CThing* user);                 // 0x0094B400
+    float Fullness;                             // +0x0c (Ego_r)
+    void SetBarmaid(CThingAICreature* barmaid); // 0x0094B400 Ego_r / FableWin ?SetBarmaid@CTCTavernTankard@@QAEXPAVCThingAICreature@@@Z
 };
 struct CTCJug {                                 // interface 0xbb
     unsigned char _pad[0xc];
@@ -104,9 +109,9 @@ bool CAIStateGroup_TavernServer::FillTankard()
         return false;
     }
     SetPushableByHero(false);
-    CTCTankard* tankard;
+    CTCTavernTankard* tankard;
     PTankard.Get()->GetTC(TCI_TAVERN_TANKARD, &tankard);
-    tankard->SetUser(PBrain->PCreature);
+    tankard->SetBarmaid(GetAICreature());
     if (AIAction_PerformActionAndWait(CCreatureAction_FillTankardFromJug(GetAICreature()), false) != 2) {
         FreeBarPoint_009670a0();
         SetPushableByHero(true);
@@ -121,7 +126,7 @@ bool CAIStateGroup_TavernServer::FillTankard()
             return false;
         }
     } while (endFrame > CWorld::GetFrame() && IsServingPointValid());
-    tankard->FillLevel = 1.0f;
+    tankard->Fullness = 1.0f;
     CTCJug* jug;
     PJug.Get()->GetTC(TCI_TAVERN_JUG, &jug);
     jug->Servings--;

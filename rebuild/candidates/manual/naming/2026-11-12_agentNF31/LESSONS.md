@@ -1,0 +1,7 @@
+- A "no PDB data name" claim can be wrong: FableWin.pdb names static data through `dynamic initializer for '...'` / `dynamic atexit destructor for '...'` entries -- grep those before calling a global descriptive (0x013B8760 = CStartupDefinitionManager::PClass).
+- The Anniversary PDB alone never proves a name: 0x01436E9C GPLightingManager stays unproven until Ego_r / FableWin show it.
+- A landed caller often already holds the self row's real body in its TU (0x009810B0 for 0x00982210): copy it onto the shared headers instead of re-authoring.
+- An STLport COMDAT row with a 300-line local model can usually become a 5-line explicit instantiation of stlport/fable_*.h using the caller's opt-ins (0x00883860 MATCH first try).
+- Byte-identical neighbours (0x00705170 / 0x00705180) follow the Ego_r order of const / non-const twins; check the next address before picking an overload.
+- CIVCountedPointer `operator=(0)`'s double zero store is the header's Reset(0) under FABLE_RETAIL_CIVCOUNTEDPOINTER (0x00A69AD0, 0x009FF860).
+- Diff the old and new objects' relocation symbols for every changed row: it finds the callee respellings that belong in RENAMES section 2.

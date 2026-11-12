@@ -1,0 +1,48 @@
+address	change	grade	test	grades_used	note
+0x00C0A8A0	self class CBitMaskPair_00c0a8c0 -> LHA::CEventPlayOptions (shared header opt-in SENDFADERS)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x00C0A8C0	self class CBitMaskPair_00c0a8c0 -> LHA::CEventPlayOptions (shared header opt-in SENDFADERS)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x00AAC870	self T CUnprovenPointee_00aac870 -> CSoundEmitterLH::CActiveSound	RELOCATION_MATCH	unchanged	1	
+0x00AAB8B0	self ctor signature -> (long, CASoundBank&, const CCharString&, float, bool, bool); shared headers	RELOCATION_MATCH	unchanged (self-contained model)	2	
+0x00982210	self ctor -> Ego_r/FableWin signature, row moved onto shared headers (body = 0x009810B0 same-TU copy)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x008FCFA0	self GetPThingWorld stand-in -> CAIStateGroupBase::PeekWorld const on shared headers	MATCH	unchanged (self-contained model)	3	
+0x007045F0	self CCountedPointer_007044b0::Reset -> CCountedPointer<CScriptThing>::Reset (header template instantiation)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x007046D0	self CMeshDataBank_007046d0::SetAnimationMemoryPool -> CScriptThing::SetImplementation (shared headers)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x008D0250	self ctor (CWorld*, CThing*) public -> private (CWorld&, const CThing&); callee InitFromThing -> private (const CThing&)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x004C7E50	self __fastcall Ctor_CPredicate_And_NScript stand-in -> CThing::GetScriptThing const (engine/CThing.h, CQuestManager.h)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x0094B400	self CClass_0094b400::AssignTarget_0094b400 -> CTCTavernTankard::SetBarmaid (CIntelligentPointer.h retail ASSIGN)	RELOCATION_MATCH	unchanged (self-contained model)	3	
+0x00967B40	callee CTCTankard::SetUser(CThing*) -> CTCTavernTankard::SetBarmaid(CThingAICreature*)	RELOCATION_MATCH	unchanged	2	
+0x007617A0	callee EditorDrawCross -> NCameraModes::DrawPyramid(const CEnginePrimitivePrepareInfo&, const C3DVector&, float)	RELOCATION_MATCH	unchanged	1	
+0x00A69B20	self CIVCountedHandle_00a69b20::operator= -> CManagedTexture::operator= (const& return; engine/CManagedTexture.h)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009FE550	callee CManagedTexture::operator= return CManagedTexture& -> const CManagedTexture& (existing local model; binds ??4CManagedTexture@@QAEABV0@ABV0@@Z)	RELOCATION_MATCH	unchanged (self-contained model)	1	repair pass
+0x00A69AD0	self CFrameDataHandle::Clear -> CManagedTexture::Release; callee Close@CFrameData -> CManagedTextureData::ReleaseTexture (overlay opt-in)	RELOCATION_MATCH	unchanged (verbatim old-source model)	2	
+0x009FF860	self (top-level CFrameData stand-in, ?OnResourceLoaded@CFrameData@@QAEXXZ) -> CGraphicInfoFrame::CFrameData::OnResourceLoaded virtual on engine/CGraphicInfoFrame.h; callee UploadFrame(long) -> nested UploadFrame(bool)	RELOCATION_MATCH	unchanged (self-contained model)	2	
+0x00410820	self GetDef_00410820 -> CDefinitionManager::GetDef<CControlsDef> const member template (out by pointer)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x004085F0	global g_StartupDefinitionManagerInstance -> CStartupDefinitionManager::PClass (overlay opt-in PCLASS)	RELOCATION_MATCH	unchanged	1	
+0x0043368D	global int g_value_013b8760 + local class -> CStartupDefinitionManager::PClass on the shared header (overlay opt-in PCLASS)	RELOCATION_MATCH	unchanged	1	
+0x004C7580	self __fastcall stand-in CThing_SetCurrentMapNumber -> CThing::SetCurrentMapNumber(long) on engine/CThing.h	MATCH	rewritten (links the row object; no inline asm), PASS	1	catalog PassPattern OK_0x004c7580 still printed
+0x007324A0	self CEnginePrimitiveLine ctor -> CEnginePrimitiveShadowedSpotLight ctor (type 16, sizeof 0x38, Ego_r members)	MATCH	unchanged (self-contained model)	1	
+0x004C4160	self SPrimitiveHandleHolder_004c4160 dtor -> NGraphicAppearance::CPrimitive::~CPrimitive on shared headers	RELOCATION_MATCH	unchanged (self-contained model)	3	
+0x008137B0	self param const CThing* -> const CThingAICreature* (retail CThing/CThingAICreature headers)	RELOCATION_MATCH	unchanged (self-contained model)	3	
+0x00934120	callee SetTagger(CThing*) -> SetTagger(const CThingAICreature*)	RELOCATION_MATCH	unchanged	1	
+0x0094FDF0	self access public -> private (AAE)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x0099ED10	self ToLower -> CCharString::GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009914E0	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x0076DF90	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009B05F0	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009AF480	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009AEF60	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009C46B0	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009EB0D0	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009EB220	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009ECB70	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x009EB430	callee CCharString::ToLower -> GetAsLowerCase	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x00883860	self placeholder _Rb_tree<CUnprovenKey..>::find -> STLport _Rb_tree<CThing*, pair<CThing* const, CThingGraphicByPassFlagState> ..>::find<CThing*> (explicit instantiation of stlport/fable_map.h)	MATCH	unchanged (self-contained model)	1	descriptive-by-library
+0x00705170	self __fastcall GetCurrentSelectedEntryData stand-in -> CTCCarryable::GetPCarriedByThing const (engine/CTCCarryable.h)	MATCH	unchanged (self-contained model)	1	
+0x008D0730	callee CTCCarryable::GetCarrier -> GetPCarriedByThing const	RELOCATION_MATCH	unchanged	1	
+0x00493BC2	self __fastcall ListNode_Create_CircularSentinel -> STLport _List_base<const CMessageEvent*>::_List_base(const allocator&) (explicit instantiation)	RELOCATION_MATCH	unchanged (self-contained model)	1	descriptive-by-library
+0x00493BDD	self placeholder list_T_00493bdd dtor -> STLport _List_base<const CMessageEvent*>::~_List_base; callee 0x00493911 -> _List_base<..>::clear	RELOCATION_MATCH	unchanged (self-contained model)	1	descriptive-by-library
+0x005F8150	self stand-in vector<EWeaponClass>::_Umove -> STLport std::find<EHeroAbility*, EHeroAbility> (explicit instantiation; callee __find 0x005F7ACC under its landed leaf)	RELOCATION_MATCH	unchanged (self-contained model)	1	descriptive-by-library
+0x0073A680	self free GetDisplayEngine() -> CTCCreatureModeManager::CModeBase::GetWorld const (shared headers; overlay opt-in CThingManager GETWORLD)	RELOCATION_MATCH	unchanged (self-contained model)	1	
+0x005BEB57	self signature -> const, CRegion&, unsigned long (Ego_r/FableWin)	RELOCATION_MATCH	unchanged (verbatim old-source model)	1	
+0x007C2980	self value type CIntelligentPointer<const CThing> -> CIntelligentPointer<CThing> (operator== over both pointer types)	RELOCATION_MATCH	unchanged (self-contained model)	1	descriptive-by-library
+0x0099AF00	none (label check: same symbol)	-	-	0	

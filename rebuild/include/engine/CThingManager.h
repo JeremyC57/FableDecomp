@@ -44,6 +44,12 @@ public:
     // in retail (the World reference +0x24 read in place, 0x006C881D). Member function only: no layout change.
     const CWorld& PeekWorld() const { return World; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_GETWORLD
+    // Opt-in (agentNF31 name-fix pass, row 0x0073A680 CTCCreatureModeManager::CModeBase::GetWorld): FableWin.pdb
+    // ?GetWorld@CThingManager@@QAEAAVCWorld@@XZ (0x01CF63E0; _fablewin_api 0x017CB8C0), the non-const twin of PeekWorld, inline in
+    // retail (the World reference +0x24 read in place). Member function only: no layout change.
+    CWorld& GetWorld() { return World; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
     // Retail opt-in (chunk 846, row 0x0051FD80 LoadSingleThing): the same Ego_r.pdb member with its body. Retail keeps an out-of-line
     // copy at 0x0051ED80 and expands it in LoadSingleThing (`lea esi,[ebx+58h] ; call 00527D80h` = the landed UIDToThingMap _M_find,

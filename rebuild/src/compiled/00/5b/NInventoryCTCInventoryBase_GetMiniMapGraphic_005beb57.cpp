@@ -1,5 +1,8 @@
 // CTCInventoryBase::GetMiniMapGraphic(const CRegion* region) -- the mini-map graphic index for `region` from the GUI def's graphic table (0 when the region's graphic is not in the table); when it is the prison courtyard and the living hero stands above the courtyard's upper floor height, the second courtyard graphic is returned instead
-// Leaf: ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QAEJPBVCRegion@@@Z
+// Leaf: ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z
+// Naming (agentNF31, 2026-11-12): signature respelled (const CRegion*) non-const returning long -> const member taking CRegion&
+//   returning unsigned long: Ego_r.pdb 0x00620EC7 + FableWin.pdb 0x01823160 / 0x0236E25F
+//   ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z; the landed caller 0x005FBAA0 binds this symbol.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BEB57, length 233 bytes (`ret 4`). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: PeekGuiDef @ 0x00438570 (`__fastcall`; MiniMapGraphics -- map<CCharString,long> -- at retail +0x94C), map::find
@@ -80,14 +83,14 @@ protected:
 
 namespace NInventory {
 class CTCInventoryBase : public CTCBase { public:
-    long GetMiniMapGraphic(const CRegion* region);
+    unsigned long GetMiniMapGraphic(CRegion& region) const;
 };
-long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
+unsigned long CTCInventoryBase::GetMiniMapGraphic(CRegion& region) const
 {
     CPlayerGuiDef* guiDef = PeekGuiDef();
     long graphic = 0;
     bool isPrisonCourtyard = false;
-    SGraphicNode* found = guiDef->MiniMapGraphics.find(region->MiniMapGraphic);
+    SGraphicNode* found = guiDef->MiniMapGraphics.find(region.MiniMapGraphic);
     if (found != guiDef->MiniMapGraphics.end()) {
         graphic = found->Value;
         SGraphicNode* courtyard;

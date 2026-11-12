@@ -1,4 +1,6 @@
 // CDefinitionManager::DoCompilePathList(const CWideStringVector&, long) -- second definition pass: for every directory spec in the path list, scan the matching files (names lower-cased), sort them, then for each file read it whole into a NUL-terminated buffer, strip // and /* */ comments, record its pathname as the current file name and compile the text
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009AF480, length 605 bytes (`ret 8`).
 // Callees: as CreateSymbolsFromPathList 0x009AEF60 (strings, file scan, _M_insert_overflow 0x00412330 same-TU stand-in, std::sort 0x009B8440,
 //   CDiskFileWin32 0x0099AD80 / Read 0x0099A960 / Close 0x0099A920, ~CBaseClassNonCopyable 0x0099A300, GFRemoveComments 0x00A60410, CRT free 0x00BFEA14),
@@ -22,7 +24,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString ToLower() const;                        // 0x0099ED10
+    CCharString GetAsLowerCase() const;                        // 0x0099ED10
     class CWideString ToWideString() const;            // 0x0099E480
 };
 class CWideString {
@@ -146,7 +148,7 @@ void CDefinitionManager::DoCompilePathList(const std::vector<CWideString>& paths
         std::vector<CWideString> files;
         if (ScanFirstFile(*path, scan, fileName)) {
             do {
-                files.push_back(((CWideString*)&fileName)->ToCharString().ToLower().ToWideString());
+                files.push_back(((CWideString*)&fileName)->ToCharString().GetAsLowerCase().ToWideString());
             } while (ScanNextFile(*path, scan, fileName));
         }
         long count = files.size();

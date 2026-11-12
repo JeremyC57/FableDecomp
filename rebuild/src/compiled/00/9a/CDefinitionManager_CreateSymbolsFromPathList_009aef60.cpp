@@ -1,4 +1,6 @@
 // CDefinitionManager::CreateSymbolsFromPathList(const CWideStringVector&, long) -- first definition pass: for every directory spec in the path list, scan the matching files (names lower-cased), sort them, then for each file read it whole into a NUL-terminated buffer, strip // and /* */ comments, record its pathname as the current file name and parse the text for symbols; finally finalise both symbol tables
+// Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
+//   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009AEF60, length 625 bytes (`ret 8`).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator= 0x0099EFB0 / ToLower 0x0099ED10 / ToWideString 0x0099E480,
 //   CWideString() 0x0099AED0 / copy ctor 0x0099B720 / ~CWideString 0x0099B510 / ConvertToCharString 0x0099B2C0, ScanFirstFile 0x00999C50 /
@@ -29,7 +31,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString ToLower() const;                        // 0x0099ED10
+    CCharString GetAsLowerCase() const;                        // 0x0099ED10
     class CWideString ToWideString() const;            // 0x0099E480
 };
 class CWideString {
@@ -153,7 +155,7 @@ void CDefinitionManager::CreateSymbolsFromPathList(const std::vector<CWideString
         std::vector<CWideString> files;
         if (ScanFirstFile(*path, scan, fileName)) {
             do {
-                files.push_back(((CWideString*)&fileName)->ToCharString().ToLower().ToWideString());
+                files.push_back(((CWideString*)&fileName)->ToCharString().GetAsLowerCase().ToWideString());
             } while (ScanNextFile(*path, scan, fileName));
         }
         long count = files.size();
