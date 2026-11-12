@@ -1,0 +1,10 @@
+addr       parity           behav  name
+009c47a0   WARN RELOC_NAME: ?GetAsUpperCase@CCharString@@QBE?AV1@XZ -> 0099ee20 labelled 'CCharString::ToUpper'
+009c47a0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@SIXPAX@Z -> 009c6640 labelled 'SCountedWideStringPair_009c6640::DeleteObject'
+009c47a0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+009c47a0   WARN RELOC_NAME: ??0CFileInfo@CFileInstaller@@QAE@ABVCWideString@@0J_N1@Z -> 009c3130 labelled 'CFileInstallerEntry_009c3130::CFileInstallerEntry_009c3130'
+009c47a0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+009c47a0   RELOCATION_MATCH PASS   AddFile
+
+WINS: 1
+  009c47a0 RELOCATION_MATCH CFileInstaller::?AddFile@CFileInstaller@@QAEXABVCCharString@@0PBV?$CArray@VCCharString@@@@_N@Z
