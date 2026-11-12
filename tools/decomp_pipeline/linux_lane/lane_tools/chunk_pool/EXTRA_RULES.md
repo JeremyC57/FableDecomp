@@ -294,3 +294,9 @@ headers, never as asm in the row.
 - Bytes the build takes DIRECTLY from a library (grade `toolchain_library`: VS 2003 CRT objects, import thunks, a vendor's assembled `.asm`) get no naming work.
 - Library code this project reconstructed by hand (vendor rows written as C++) gets a LIGHT renaming only: readable descriptive names so the code can be followed, marked as made-up in NOTES. Do not spend naming agents hunting exact names for it.
 - Engine rows keep the full rule above: exact PDB spelling, two sources.
+
+## Naming is paused (owner, 2026-11-12)
+- Placeholder-family naming waits until byte matching is done. Do not launch naming agents for `sub_<addr>`, `_unattributed::`, `CUnproven*`, `vfunc_N` or address-suffixed names.
+- The name-fix queue stays: every landing still records landed names it proves wrong (NAME_FIXES_QUEUE.tsv). Clear the queue in one short pass at about 30 entries, or at once for a binding conflict (one symbol bound to two addresses).
+- Author agents still spell every name in a NEW row right the first time (the rule above); pausing naming does not relax that.
+- Run two author agents instead of one author plus one naming agent.
