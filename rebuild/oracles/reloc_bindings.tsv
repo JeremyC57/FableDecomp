@@ -38758,3 +38758,13 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	00863e70	00863ca0
 ??$GetDef@VCAttackPatternDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCAttackPatternDef@@@@@Z	006f0e80	006ea0c0
 ?ResetDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@V?$CDefPointer@$$CBVCAttackPatternDef@@@@@Z	006e8c30	006ea0c0
+?GetAugmentations@CTCObjectAugmentations@@QBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z	00766920	00868ce0
+?_M_insert_overflow@?$vector@W4EObjectAugmentationType@@V?$allocator@W4EObjectAugmentationType@@@std@@@std@@IAEXPAW4EObjectAugmentationType@@ABW43@ABU__false_type@2@I_N@Z	00869ac0	00868ce0
+??0CCombatAction_WillHealRelease@@QAE@AAVCThingCreatureBase@@@Z	008c3930	008c2ad0
+??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0042abca	005f11a9
+?GetFOV@CCamera@@QBEMXZ	00a0beb0	006978d0
+?AttackHero@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ	00eb53a0	00eb3f40
+?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ	00eb4f80	00eb3f40
+?DoWatchingForTrouble@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ	00eb40c0	00eb3f40
+?DoesAssassinTrustHero@CV_MurderTwistFinalScript@NScript@@QAE_NXZ	00eb03a0	00eb3f40
+??4?$CIntelligentPointer@VCThingObject@@@@QAEAAV0@ABV0@@Z	007b82c0	008d5300

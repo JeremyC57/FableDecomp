@@ -14,6 +14,10 @@ class CArmourDef;class CThingGameObject;
 #include "engine/EDamageAttribute.h"
 #include "stlport/fable_map.h"
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
+#include "engine/EObjectAugmentationType.h"
+#include "stlport/fable_containers.h"
+#endif
 class CHitParameters {
 #ifdef FABLE_ONHIT_TEST_ACCESS
     friend class COnHitFixture;
@@ -33,7 +37,13 @@ private:
 #else
     unsigned char DamageMap[12]; // Original std::map<EDamageAttribute,float>.
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
+    // Retail opt-in (row 0x00868CE0 CHitParameters::SetWeapon): the real member type, Ego_r.pdb
+    // std::vector<EObjectAugmentationType> (12-byte STLport vector at +0x3C; push_back expanded inline at 0x00868DCC..0x00868DFC).
+    std::vector<EObjectAugmentationType> Augmentations;
+#else
     unsigned char Augmentations[12]; // Original std::vector<EObjectAugmentationType>.
+#endif
     NHitLocations::CHitLocation* PHitLocation;
     CDefPointer<const CMaterialDef> PHitMaterialDef;
     CIntelligentPointer<CThing> PThingHitting,PWeapon;
@@ -94,6 +104,11 @@ void SetCreateParticleEffectOnHit(bool value){CreateParticleEffectOnHit=value;}
     CHitParameters();                                                    // 0x007A3BC0
     ~CHitParameters();                                                   // 0x00789358
     void SetThingHitting(CThing& thing);                                 // 0x008685F0
+#endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_SETWEAPON
+    // Retail opt-in (row 0x00868CE0): Ego_r.pdb ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z, out of line in retail (callers
+    // 0x00838BED / 0x00838FB2). Declaration only: no layout change.
+    void SetWeapon(CThing& weapon);                                      // 0x00868CE0
 #endif
     void SetKnockDown(bool value) { KnockDown=value; }
     void SetDecapitate(bool value) { Decapitate=value; }

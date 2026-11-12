@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00868ce0   RELOCATION_MATCH PASS   SetWeapon
+00e2eac0   RELOCATION_MATCH PASS   TricksterApproach
+005590c0   RELOCATION_MATCH PASS   OnLeftClicked
+00541fd0   RELOCATION_MATCH PASS   GetDataFromDef
+008c2ad0   WARN RELOC_NAME: ?SetAICast@CTCHealLife@@QAEXJ@Z -> 007c3ea0 labelled '_global::SetMember_dword0x18_007c3ea0'
+008c2ad0   RELOCATION_MATCH PASS   FinishAction
+005f11a9   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005f11a9   WARN RELOC_NAME: ?erase@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@@2@@Z -> 0057926b labelled 'ListNode_RemoveByData'
+005f11a9   RELOCATION_MATCH PASS   UnAssignAbility
+006978d0   RELOCATION_MATCH PASS   GetInterpolatedCamera
+00eb3f40   WARN RELOC_NAME: ?AttackHero@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ -> 00eb53a0 labelled 'CMurderTwistSheriff::Init'
+00eb3f40   RELOCATION_MATCH PASS   Main
+008d5300   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 9
+  00868ce0 RELOCATION_MATCH CHitParameters::SetWeapon
+  00e2eac0 RELOCATION_MATCH NScript::CV_AmbushScamScript::TricksterApproach
+  005590c0 RELOCATION_MATCH NUISystem::CScrollBarOutside::OnLeftClicked
+  00541fd0 RELOCATION_MATCH NUISystem::CIconText::GetDataFromDef
+  008c2ad0 RELOCATION_MATCH CCombatAction_WillHealInto::FinishAction
+  005f11a9 RELOCATION_MATCH CTCInventoryAbilities::UnAssignAbility
+  006978d0 RELOCATION_MATCH CGameCameraManager::GetInterpolatedCamera
+  00eb3f40 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::Main
+  008d5300 RELOCATION_MATCH CCreatureAction_ReloadMissileWeapon::PerformAction
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CHitParameters_SetWeapon_00868ce0
+  NScriptCVAmbushScamScript_TricksterApproach_00e2eac0
+  NUISystemCScrollBarOutside_OnLeftClicked_005590c0
+  NUISystemCIconText_GetDataFromDef_00541fd0
+  CCombatActionWillHealInto_FinishAction_008c2ad0
+  CTCInventoryAbilities_UnAssignAbility_005f11a9
+  CGameCameraManager_GetInterpolatedCamera_006978d0
+  NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Main_00eb3f40
+  CCreatureActionReloadMissileWeapon_PerformAction_008d5300
+rc=0

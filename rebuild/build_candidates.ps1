@@ -393707,6 +393707,69 @@ $catalog = @(
         TestSource = '00/6e/CCombatManager_UpdateDefenderAttackPattern_006ea0c0_test.cpp'
         PassPattern = '006ea0c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00868ce0'
+        Module = 'CHitParameters'
+        Source = '00/86/CHitParameters_SetWeapon_00868ce0.cpp'
+        TestSource = '00/86/CHitParameters_SetWeapon_00868ce0_test.cpp'
+        PassPattern = '00868ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2eac0'
+        Module = 'NScript::CV_AmbushScamScript'
+        Source = '00/e2/NScriptCVAmbushScamScript_TricksterApproach_00e2eac0.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScript_TricksterApproach_00e2eac0_test.cpp'
+        PassPattern = '00e2eac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005590c0'
+        Module = 'NUISystem::CScrollBarOutside'
+        Source = '00/55/NUISystemCScrollBarOutside_OnLeftClicked_005590c0.cpp'
+        TestSource = '00/55/NUISystemCScrollBarOutside_OnLeftClicked_005590c0_test.cpp'
+        PassPattern = '005590c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00541fd0'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_GetDataFromDef_00541fd0.cpp'
+        TestSource = '00/54/NUISystemCIconText_GetDataFromDef_00541fd0_test.cpp'
+        PassPattern = '00541fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2ad0'
+        Module = 'CCombatAction_WillHealInto'
+        Source = '00/8c/CCombatActionWillHealInto_FinishAction_008c2ad0.cpp'
+        TestSource = '00/8c/CCombatActionWillHealInto_FinishAction_008c2ad0_test.cpp'
+        PassPattern = '008c2ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f11a9'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_UnAssignAbility_005f11a9.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_UnAssignAbility_005f11a9_test.cpp'
+        PassPattern = '005f11a9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006978d0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_GetInterpolatedCamera_006978d0.cpp'
+        TestSource = '00/69/CGameCameraManager_GetInterpolatedCamera_006978d0_test.cpp'
+        PassPattern = '006978d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb3f40'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Main_00eb3f40.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Main_00eb3f40_test.cpp'
+        PassPattern = '00eb3f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d5300'
+        Module = 'CCreatureAction_ReloadMissileWeapon'
+        Source = '00/8d/CCreatureActionReloadMissileWeapon_PerformAction_008d5300.cpp'
+        TestSource = '00/8d/CCreatureActionReloadMissileWeapon_PerformAction_008d5300_test.cpp'
+        PassPattern = '008d5300_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

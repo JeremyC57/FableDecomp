@@ -1,0 +1,9 @@
+00868ce0	CHitParameters::SetWeapon	RELOCATION_MATCH	3	index local before the def pointer; shared headers + 3 overlay opt-ins
+00e2eac0	NScript::CV_AmbushScamScript::TricksterApproach	RELOCATION_MATCH	1062	matches at default flags; two reconstructed constructs that emit no instructions of their own (dead-arm terminate check one do-while(0) deeper; folded ?: statement for the unused flag word) -- see NOTES
+005590c0	NUISystem::CScrollBarOutside::OnLeftClicked	RELOCATION_MATCH	18	C2DBoxI local + operator*(float) + GetBRPos/GetTLPos + else-if (tail duplicated by the compiler)
+00541fd0	NUISystem::CIconText::GetDataFromDef	RELOCATION_MATCH	3	ported onto shared headers, twin of 0x0054ED90
+0x008C2AD0	CCombatAction_WillHealInto::FinishAction	RELOCATION_MATCH	11	ported onto shared headers; AddTC result a named local; effect block-scoped
+006978d0	CGameCameraManager::GetInterpolatedCamera	RELOCATION_MATCH	37	by-value up/forward copies + parenthesised GFGetInterpolatedValue calls; overlay CCamera.h (FOV) + CGameCameraManager.h (decl)
+00eb3f40	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::Main	RELOCATION_MATCH	11	matches with two reconstructed dead-code lines (identical if/else arms on trust; optimiser-folded conditional temporary) -- see NOTES
+008d5300	CCreatureAction_ReloadMissileWeapon::PerformAction	RELOCATION_MATCH	2	port onto shared headers; no flags, no overlay
+009adc90	CDefinitionManager::InstantiateDef	RELOCATION_MATCH	5	ported onto shared headers; long indices; record built in its own statement

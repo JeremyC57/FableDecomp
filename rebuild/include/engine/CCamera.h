@@ -20,6 +20,13 @@ public:
     void PointAt(const C3DVector&);
 #endif
     float GetHorizontalFOV() const;                                      // 0x00A0BE90
+#ifdef FABLE_RETAIL_CCAMERA_FOV
+    // Retail opt-in (wf2, row 0x006978D0 CGameCameraManager::GetInterpolatedCamera): Ego_r.pdb / FableWin.pdb ?GetFOV@CCamera@@QBEMXZ
+    // (Ego_r 0x00B4C9A0, retail 0x00A0BEB0, landed) and ?SetFOV@CCamera@@QAEXMM@Z (Ego_r 0x00B4C9C0, retail 0x00A0BED0, landed).
+    // Declarations only: no layout change.
+    float GetFOV() const;                                                // 0x00A0BEB0
+    void SetFOV(float horizontal_fov, float vertical_fov);               // 0x00A0BED0
+#endif
 #ifdef FABLE_RETAIL_CCAMERA_ANGLES
     // Opt-in (chunk 765, rows 0x0069E1B0 / 0x0069E1C0): Ego_r.pdb / FableWin.pdb ?GetAngleXY@CCamera@@QBEMXZ / ?GetAngleYZ@CCamera@@QBEMXZ,
     // out of line in retail at 0x00A0C380 / 0x00A0C3E0 (Ego_r 0x00B4CF00 / 0x00B4CF70). Declarations only.

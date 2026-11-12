@@ -59,6 +59,11 @@ private:
  unsigned long DebugPersistFrame;
  unsigned char DebugPoints[4];
  void UpdateRightStickLookAround();
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INTERPOLATEDCAMERA
+ // Retail opt-in (wf2, row 0x006978D0): Ego_r.pdb / FableWin.pdb ?GetInterpolatedCamera@CGameCameraManager@@ABE?AVCCamera@@MABV2@0@Z
+ // (private, const, out of line in retail at 0x006978D0; its only caller is GetRenderCamera 0x00697F30). Declaration only: no layout change.
+ CCamera GetInterpolatedCamera(float interpolate, const CCamera& camera, const CCamera& old_camera) const;   // 0x006978D0
+#endif
 public:
  NCameraModes::CTools& GetCameraTools(){return CamTools;}
  NCameraModes::CBase* GetCameraMode(){return CurrentMode.Get();}

@@ -1,0 +1,10 @@
+address	name	evidence
+00868CE0	?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+00E2EAC0	?TricksterApproach@CV_AmbushScamScript@NScript@@QAEXXZ	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+005590C0	?OnLeftClicked@CScrollBarOutside@NUISystem@@UAEXXZ	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+00541FD0	?GetDataFromDef@CIconText@NUISystem@@QAEXXZ	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+008C2AD0	?FinishAction@CCombatAction_WillHealInto@@UAEXXZ	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+005F11A9	?UnAssignAbility@CTCInventoryAbilities@@QAEXK@Z	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+006978D0	?GetInterpolatedCamera@CGameCameraManager@@ABE?AVCCamera@@MABV2@0@Z	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+00EB3F40	?Main@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@EAEXXZ	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs
+008D5300	?PerformAction@CCreatureAction_ReloadMissileWeapon@@UAEXXZ	workflow wf2 (landing ei): RELOCATION_MATCH, two PDBs

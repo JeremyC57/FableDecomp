@@ -115,6 +115,11 @@ public: virtual void AddActionsListenIgnoreOnList(NUISystem::CComponent *,NUISys
 // inline in retail (~CMouseCursor 0x0055C510 and CMouseCursor(long) 0x0055C650 store PMouseCursor +0xB8 in place). No layout change.
 public: void SetMouseCursor(NUISystem::CComponent* cursor) { PMouseCursor = cursor; }
 #endif
+#ifdef FABLE_RETAIL_CMANAGER_GETMOUSECURSOR
+// Opt-in (wf2, row 0x005590C0 CScrollBarOutside::OnLeftClicked): FableWin.pdb ?GetMouseCursor@CManager@NUISystem@@QAEPAVCComponent@2@XZ,
+// inline in retail (the row reads PMouseCursor +0xB8 in place: `mov ecx,[eax+0B8h]`; landed 0x0055A5D0 / 0x0055A5B0 spell it the same). No layout change.
+public: NUISystem::CComponent* GetMouseCursor() { return PMouseCursor; }
+#endif
 protected: CCountedPointer<CGraphicDataBank> PGraphicsBank;
 protected: CCountedPointer<CMeshDataBank> PMeshBank;
 protected: CInputManager * PInputManager;
