@@ -1,0 +1,1 @@
+006aca30 CThingPlayerCreature::OnCollisionWithObject RELOCATION_MATCH flags= []
