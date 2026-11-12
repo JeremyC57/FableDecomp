@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00550dc0   RELOCATION_MATCH PASS   Draw
+
+WINS: 1
+  00550dc0 RELOCATION_MATCH NUISystem::CTable::?Draw@CTable@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z

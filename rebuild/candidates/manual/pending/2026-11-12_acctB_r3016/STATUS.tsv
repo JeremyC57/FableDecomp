@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+00550dc0	RELOCATION_MATCH	1399v1399	PASS (g++ tall.sh and VC7.1 tall.py)	pass1: 3 (g01 baseline re-grade of prior/3005 source DIFFER(1399v1399); g02 probe/v1.cpp RELOCATION_MATCH; g03 src/00550dc0.cpp via gall.sh RELOCATION_MATCH); ~40 free packer traces + offline replays on top	matched: the table colour is a named variable that the loop reuses for each child product (UpdateColour-style names parent_colour / colour / render_colour); vland read-only: RELOCATION_MATCH PASS, no warnings
