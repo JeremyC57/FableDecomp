@@ -58,3 +58,20 @@
   revision lists no such helper) -- the bytes prove an extra inline level on the houses side, not which form; (2) the changed SHARED body
   in engine/GFPackFloat.h (parenthesised return); (3) the same-TU ConvertMap body in the row file (pair-landing with 0x005CD6B7: the
   landed row uses local stand-in classes); (4) the predecessor's GFRoundFloatNear.h was a duplicate of the shared helper and is gone.
+
+## Third agent (row 0x005CE0E6 ConstructPersonalityList matched: RELOCATION_MATCH 15910 v 15910, 3 grades)
+- (twin rows) Once one of two platform twins (PC / console page builders) is matched from a generator, the other is a head swap: the
+  console head came statement for statement from the LANDED console sibling of the same class (0x005D6748 ConstructExperienceList: the
+  change-state back action on the dummy menu entry), the body from the shared statement spec. First whole-function compile 4971 / 4978
+  instructions, second exact. Every row-1 lever (same-TU ConvertMap body, the named `float biggestFish` statement, GFRoundFloatNear(x, 1),
+  the inline sum getter, the parenthesised helper return) carried over unchanged -- match the harder twin first, then generate the other.
+- (text differences between twins) Do not assume the twins' texts are identical: the console page ends the chicken-kick line with TWO
+  newLine operands (0x005D042E `push eax ; push eax` and one more operator+ call) where the PC page has one. A 19-byte size gap with only
+  one statement in the frame-masked diff was exactly that.
+- (asm table for a twin) When the twin's fistp sites are the same expressions on the same members, prove "same site shape" on retail (the
+  frame-masked instruction windows round each site are equal) and list the twin's addresses against the existing fragments; no new
+  fragment compiles are needed.
+- (lane) Running a tool that imports verify_and_land WITHOUT sourcing the lane env first creates a stray `D:\Documents\FableTLC` directory
+  tree in the current directory (the Windows default work path) -- always source $S/wine/env.sh first; remove the empty tree if it appears.
+- Review at landing: the same four items as row 1 (GetNumberOfBuildingsOwned FITTED / descriptive, the changed shared GFPackFloat.h body,
+  the same-TU ConvertMap body = pair-landing with 0x005CD6B7, no GFRoundFloatNear.h); both personality rows need them together.

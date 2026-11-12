@@ -31,3 +31,8 @@ Debt / to check at landing:
   lives in the row source (values 0 / 2 / 4 are what retail pushes; the other two enumerator names are fitted to fill the gaps).
 - Regrades: the opt-in headers leave defaults untouched (new macros). The one NON-opt-in change (GFPackFloat.h) was regraded against its
   only landed includer 0x00AFBCE0 (RELOCATION_MATCH with and without the overlay) and out of line against 0x00AF8D50.
+
+Third agent (row 0x005CE0E6 ConstructPersonalityList, RELOCATION_MATCH): NO header change. The console row uses the same opt-ins as the PC
+row plus the existing repo header engine/NUISystem_CActionParamState.h (FABLE_RETAIL_CACTIONPARAMSTATE, as the landed 0x005D6748) in
+place of the ULONG / SLONG parameter headers. Regraded under this overlay after the row matched: 0x005D1F0C RELOCATION_MATCH (read-only
+vland PASS), landed 0x00AFBCE0 RELOCATION_MATCH, landed 0x00B027D0 RELOCATION_MATCH.

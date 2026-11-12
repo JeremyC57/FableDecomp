@@ -1,5 +1,7 @@
 # chunk 4006 -- NOTES (kept current; hand-over in place)
 
+**STATE (third agent, final): BOTH ROWS MATCHED. 0x005D1F0C RELOCATION_MATCH (second agent), 0x005CE0E6 RELOCATION_MATCH (third agent, section "Row 2 MATCHED" at the end). Nothing is open.**
+
 Rows (both CTCInventoryStats, vtable 0x01254ADC):
 - 0x005D1F0C slot 89, 17,873 bytes = `?ConstructPersonalityListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z`
 - 0x005CE0E6 slot 86, 15,910 bytes = `?ConstructPersonalityList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z`
@@ -52,7 +54,7 @@ Best source = probe/base.cpp (generated; `python3 tools/gen.py probe/base.cpp pc
 ## State (first agent; superseded by the CONTINUATION block above)
 Row 1: best source = `probe/base.cpp` (generated: `python3 tools/gen.py probe/base.cpp pc`; spec in tools/gen.py,
 head in tools/head_pc.inc). See grades.log for the grade history and the section "Residues" below.
-Row 2: NOT STARTED (no source). `map/st1.txt` holds its decoded statements; the statistics body is the same as row 1
+Row 2: (historical; MATCHED since, see "Row 2 MATCHED" at the end) not started then. `map/st1.txt` holds its decoded statements; the statistics body is the same as row 1
 with CreateTitle (0x005CCF0E) instead of CreateTitlePC and no AddParam action blocks. gen.py has a `console` mode
 switch but `tools/head_console.inc` is not written.
 
@@ -61,6 +63,8 @@ switch but `tools/head_console.inc` is not written.
 - `calls.py <0|1>` -> map/calls<row>.txt; `map.py <row>` -> map/ev<row>.txt (one line per call, operands symbolic,
   frame slots Lp<hex>/Lm<hex> = [ebp +/- hex]); `st.py <row>` -> map/st<row>.txt (text quads merged; 1073 / 743 lines).
 - `gen.py <out.cpp> [pc|console]`: source from the statement spec; optional tools/patch_pc.txt (`<line>\t<text>`).
+  Heads: tools/head_pc.inc (row 1), tools/head_console.inc (row 2). `gentest.py <src> <test> [0|1]` (row 2: test_main_console.inc +
+  CONSOLE_MOCK), `mut.sh` (row 1) / `mut_console.sh` (row 2).
 - `cc.py <src> <tag>`: compile to tmp/b/<tag>/x.obj (tags starting 'h' = row 2 leaf, else row 1).
 - `pd.py <tag> [--frame] [--lo X --hi Y] [--max N] [-n ctx] [--sum]`: relocation-masked instruction diff v retail;
   `--frame` masks `[ebp +/- N]`.
@@ -228,10 +232,59 @@ renownLevel, goodness, ...); the enum EOpinion gap names (first agent); `float b
 (retail order of the two statements is proven by the code order 0x005D4B45 v 0x005D4B6B, the name is not).
 Descriptive (made-up) names: CTCHeroStats::GetNumberOfBuildingsOwned; local variable names; OPINION_AGREEABLENESS / OPINION_RENOWN.
 
-### Row 2 hand-over (0x005CE0E6, NOT_ATTEMPTED, untouched)
+### Row 2 hand-over (second agent's note; historical -- the row is MATCHED, see "Row 2 MATCHED" at the end)
 Everything row 1 needed applies to row 2 (same TU, same statistics body; retail row 2 shows the same loop entry choice 0x005CE981,
 the same NUMBUILDINGS `lea edx,[eax+ecx]` 0x005D00AB): the ConvertMap body ahead of the row (ConvertMap precedes row 2 in retail too),
 `float biggestFish` as its own statement, GFRoundFloatNear(x, 1) for the three times, GetNumberOfBuildingsOwned, the overlay
 GFPackFloat.h. gen.py already has all of it in the shared statement spec; write tools/head_console.inc (CreateTitle 0x005CCF0E,
 the console component strings from map/st1.txt, no AddParam action blocks) and extend gentest.py's CFG with row 1 (rtok.py takes the
 row number). Tags starting with `h` select row 2 in cc.py / pd.py / m.sh.
+
+## Row 2 MATCHED (third agent): 0x005CE0E6 ConstructPersonalityList, RELOCATION_MATCH 15910 v 15910, 4978 / 4978 instructions
+Three whole-function grades (grades.log h01..h03), no trace needed:
+- h01 = `python3 tools/gen.py probe/hbase.cpp console` with the new tools/head_console.inc: 15891 v 15910, 4971 / 4978 instructions equal
+  (frame-masked and exact differ only in the `sub esp` size and one statement).
+- h02: the console page ends the chicken-kick line with a blank line -- `... + T("METRES") + newLine + newLine;` (retail 0x005D042E
+  `lea eax,[ebp+58h] ; push eax ; push eax`, one more operator+ 0x005D04E5). gen.py emits the second `+ newLine` in console mode only.
+  15910 v 15910, 4978 / 4978 exact.
+- h03: src/005ce0e6.cpp (the generated file with the final head comments): q.py with the Leaf RELOCATION_MATCH; its same-TU ConvertMap copy
+  RELOCATION_MATCH against 0x005CD6B7.
+Head of the console row (tools/head_console.inc) = the landed console twin 0x005D6748's back action: `CCountedPointer<CAction>
+backAction(new CAction); backAction->ActionType = UI_ACTION_TYPE_CHANGESTATE; backAction->UIActionParams.push_back(parent->FindChild(
+"UI_TOP_LEVEL_MENU_SCREEN")); backAction->UIActionParams.push_back(new CActionParamState(1)); CComponent* dummyEntry = list->FindChild(
+"UI_STATS_PERS_DUMMY_MENU_ENTRY"); if (dummyEntry) dummyEntry->AddActionOnBack(backAction);` then `screen = list->FindChild(
+"UI_STATS_PERSONALITY_SCREEN")`, container "UI_PERSONALITY_COMPONENT_CONTAINER", slider container
+"UI_STATS_EXP_STATIC_SLIDER_CONTAINER_NOT_SCROLLING"; no `frame->AddPositionChild`. The dead `GetTC(TCI_HERO_EXPERIENCE, &heroExperience)`
+is there as in the PC row (0x005CE140).
+Regenerate: `python3 tools/gen.py src/005ce0e6.cpp console` (row 1: `python3 tools/gen.py <out> pc` still reproduces src/005d1f0c.cpp
+byte for byte); test: `python3 tools/gentest.py src/005ce0e6.cpp test/005ce0e6.cpp 1` (CFG row 1, tools/test_main_console.inc, the
+CONSOLE_MOCK replacements; `gentest.py src/005d1f0c.cpp <out> 0` still reproduces test/005d1f0c.cpp byte for byte); mutations:
+`bash tools/mut_console.sh test/005ce0e6.cpp` (23 of 23 fail).
+Checks done on the final file:
+- q.py (Leaf as third argument): RELOCATION_MATCH. `tools/rel.py h03 --odd`: 171 symbols, 171 retail targets, 0 inconsistencies; the
+  symbol set is row 1's minus CAction::AddParam / the ULONG and SLONG parameter vtables, plus CreateTitle 0x005CCF0E (26 sites) and
+  ??_7CActionParamState@NUISystem@@6B@ 0x012366EC (bound "same").
+- read-only vland on payload.json (both rows): 005ce0e6 RELOCATION_MATCH PASS, 005d1f0c RELOCATION_MATCH PASS; five RELOC_NAME warnings
+  per row (the catalog labels of 0x0057D23B, 0x005D84B6, 0x005D864B, 0x0057AA1B, 0x00429160 -- all in LABELS.tsv / NAME_FIXES.tsv or
+  STLport instances); no RELOC_IDENTITY. Work directory deleted.
+- Behaviour test: g++ PASS, VC7.1 PASS (tall.py 005ce0e6); kRetail = 101 retail statements cut by tools/rtok.py from row 2's own
+  disassembly (skip = the NONE arm 0x005CEEC6..0x005CEF21); runs 2-4 take the other arms (no dummy entry -> no action; no top-level
+  menu screen -> null first parameter; no slider container; no screen).
+- purity.classify(src/005ce0e6.cpp) = retail_asm. Retail-asm sites: 0x005D0428, 0x005D05B2, 0x005D0AD6, 0x005D0BF9, 0x005D0D1C (near),
+  0x005D0740, 0x005D0875, 0x005D09AA (floor); probe/asm/tbl/table.md lists them beside row 1's sites (mktable.py regenerated it from the
+  existing result files; no new fragment: the frame-masked 12-instruction windows round each fistp equal the twin site's).
+- Inline-budget (measured for THIS row, tools/inl/hplain.txt = c2 inline trace of probe/hplain.cpp, the helper as plain inline): size 48,
+  penalty 0, frequency 13.5 at each of the five sites (decisions 125 / 127 / 132 / 134 / 136 of 175), refused with no score.
+- Headers: NOTHING under hdr/ was changed for row 2. Regraded all the same under the overlay: row 1 (vland RELOCATION_MATCH PASS), the
+  landed 0x00AFBCE0 RELOCATION_MATCH and 0x00B027D0 RELOCATION_MATCH.
+
+### FITTED v PROVEN (row 2)
+PROVEN: the name / signature (both PDB name sets, vtable slot 86); the head (the same statements as the landed console twin 0x005D6748,
+bytes equal); every callee binding (171 / 171); CreateTitle at the 26 title sites; the statement list and order (behaviour test against
+the retail statement cut); the second `newLine` of the chicken-kick line (two pushes of the same operand, one more operator+ call); the
+same-TU ConvertMap body, GFRoundFloatNear at the five sites and the fish weight in its own statement (as row 1: the same retail shapes at
+0x005CE981, 0x005D040D, 0x005D0591).
+FITTED (carried over from row 1, nothing new): CTCHeroStats::GetNumberOfBuildingsOwned (descriptive name; 0x005D00AB `lea edx,[eax+ecx]`
+needs one more inline level on the houses side), the parenthesised return of the shared GFRoundFloatNear, the local names (backAction and
+dummyEntry are the landed twin's local names; biggestFish, totalExperience, percentage, renownLevel, goodness ...), the EOpinion gap names.
+Descriptive (made-up) names: none new in row 2.

@@ -1,17 +1,17 @@
-# acctB hand-back, Fable-lane chunk 4006 (1 of 2 rows matched; row 2 in work)
+# acctB hand-back, Fable-lane chunk 4006 (2 of 2 rows matched)
 
-Two agents (Fable 5.2) worked this chunk in the same directory; the second closed row 1. Re-verified by the acctB local
+Three agents (Fable 5.2) worked this chunk in the same directory; the second closed row 1, the third row 2. Re-verified by the acctB local
 coordinator. Nothing is landed.
 
 | address | result | notes |
 |---|---|---|
 | 0x005D1F0C `?ConstructPersonalityListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z` | RELOCATION_MATCH 17873v17873 (5617/5617 instructions), test PASS (g++ and VC7.1) | grade `retail_asm` (8 bare `fistp` sites through the shared helpers; table in `ASM_ATTEMPTS_TABLE.md`). No flags. About 86 whole-function grades |
-| 0x005CE0E6 `?ConstructPersonalityList@CTCInventoryStats@@...` | NOT_ATTEMPTED | 15,910 bytes; a continuation agent is on it in the same directory with the same headers |
+| 0x005CE0E6 `?ConstructPersonalityList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z` | RELOCATION_MATCH 15910v15910 (4978/4978 instructions), test PASS (g++ and VC7.1) | the console twin of row 1, from the same generator with a different head; matched at its second grade. Grade `retail_asm` (8 sites, same shapes as row 1; listed in `ASM_ATTEMPTS_TABLE.md`). No flags, no header change |
 
 Coordinator re-verification (cl 13.10.3077 under Wine, `FABLE_HDR_OVERLAY=hdr/`): `coordverify/` (grade, both test runs,
-read-only vland: 1 win, no RELOC_IDENTITY / RELOC_CONFLICT / NOT_GENUINE; five `WARN RELOC_NAME`, all catalog labels
-that differ from the PDB names, listed in `LABELS.tsv`). Padded-struct grep clean. Grade the row with the Leaf as the
-third q.py argument (the catalog name is `vfunc_89`).
+read-only vland: 2 wins, no RELOC_IDENTITY / RELOC_CONFLICT / NOT_GENUINE; five `WARN RELOC_NAME`, all catalog labels
+that differ from the PDB names, per row, listed in `LABELS.tsv`). Padded-struct grep clean. Grade each row with the Leaf
+as the third q.py argument (the catalog names are `vfunc_89` / `vfunc_86`).
 
 ## Review items
 
@@ -48,7 +48,13 @@ third q.py argument (the catalog name is `vfunc_89`).
    (landed stand-in spelling `GetNumberOfRegionsVisited`), 0x0057D23B `UpdateAppearanceStats`, 0x00429160
    `CCountedPointer<NUISystem::CAction>::ReleaseData`, and the two `std::_List_base` COMDATs.
 
+9. **Row 2 (0x005CE0E6)** carries the same review items as row 1 (items 1 to 4 apply to both rows together) and adds
+   none: its head is statement for statement the back action of the landed console sibling 0x005D6748, its only
+   difference from the shared statistics body is a second `newLine` on the chicken-kick line (retail 0x005D042E
+   `push eax ; push eax`). `LABELS.tsv` gains 0x005CE0E6 and 0x005CCF0E `CreateTitle`. I regraded row 1 and both landed
+   includers of `GFPackFloat.h` after row 2 was added: all RELOCATION_MATCH.
+
 ## How to land
 
-`rows/005d1f0c.cpp` + `rows/005d1f0c.test.cpp` with `hdr/engine/`, then `payload.json` through your usual vland. The
+Both rows together: `rows/005d1f0c.*` and `rows/005ce0e6.*` with `hdr/engine/`, then `payload.json` through your usual vland. The
 source is machine-generated from a statement map (agent's `tools/gen.py`); the generated file is what is handed in.
