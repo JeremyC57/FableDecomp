@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+0097bda0	RELOCATION_MATCH	2009v2009	PASS (test/0097bda0.cpp: g++ tall.sh and VC7.1 tall.py)	pass1: 8 (predecessor); pass2: 1 (g09); pass3 (rapid-fire): 134 graded compiles (grades.log 10..143, incl. dead-local ruler sweeps and diff regrades) + ~80 free probes (dots.sh, c2 record-id traces, fwsize, fragments)	matched: far arm tail-strike case first (`ChargeCount >= N || Health <= (HL - D)`), parenthesised `(HL - D)` at both tail tests, FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN, by-value `C3DVector facing` + side test `to_enemy.Dot(C3DVector(facing.Y, -facing.X, 0.0f))`; all FITTED; vland RELOCATION_MATCH PASS
+00bb8750	NOT_ATTEMPTED	-	-	0	not this chunk's row any more: matched elsewhere (coordinator, 2026-11-12); nothing here

@@ -17,8 +17,13 @@
   test was the PDB's inline default ctor (??0CFrontendGameComponentInit@@QAE@XZ).
 - (0x0042EC7C) `v[rand() % (long)v.size()]` through a def pointer: one expression CSEs the def pointer across rand(); retail
   reloads it -> a named `long index = ...;` statement first.
-- (0x0042EC7C, open) c2 hoists a constant address used in two separate if-blocks to their common dominator (`mov edi,imm` in the
-  test block); retail sank the def into the first block and a skip-path block. Not yet reproduced (see NOTES.md).
+- (0x0042EC7C, matched) A constant address used in an if-block and again much later (`&GBankFileManager`): VC7.1 always anchors it in
+  the if-test block; retail's "load at first use + load on the skip path + reload after a loop-body block" is the allocator SPLITTING
+  that constant while edi stays free in the blocks between. What freed edi was an unrelated statement in between:
+  `p->Preload(CWideString(L"..."), true)` loads p's vtable before the temporary's constructor into a callee-saved register; a named
+  block-scoped `{ CWideString glyphs(L"..."); p->Preload(glyphs, true); }` loads it after the constructor into eax (retail
+  0x0042EFBE). When a callee-saved register goes to the "wrong" value over a long stretch, look at the OTHER candidates in that
+  stretch (unnamed argument temporaries reorder object / vtable loads) before reshaping the code that uses the value.
 
 Review at landing:
 - NAME_FIXES.tsv: three landed checked_delete stand-ins, SetInput's enum scope, CCombatManager::Init, StatRegisterClass,

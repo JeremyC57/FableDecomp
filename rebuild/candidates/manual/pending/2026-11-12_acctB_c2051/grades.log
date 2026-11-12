@@ -11,3 +11,8 @@
 0042ec7c	g13-g15	block-local CBankFileManager& in the first block / direct calls / `== true` test (batch)	DIFFER(2179/2179/2180)	588/587/586fm	no change
 0042ec7c	g16	bool play_movies guard	DIFFER(2179v2191)	588fm	no change
 0042ec7c	g17-g18	block-local CBankFileManager& in the leave block (with / without one in the first block)	DIFFER(2179v2191)	588/587fm	no change: c2 folds every alias of the constant
+0042ec7c	g19-g22	r01 direct GBankFileManager. calls / r02 static inline OpenFrontEndBanks (refused: call) / r03 same FORCEINLINE / r04 if(!f){}else{bank} (batch)	DIFFER(2179/1965/2179/2179)	587/508/587/587fm	no change except r02 (helper called)
+0042ec7c	g23-g30	diagnostics d1/d2/d3/D1/D2/E1 (movie block / return false / guard / attract / movie body removed; not candidates) + c2 traces	DIFFER	-	bank const split pieces depend on movie loop + init competitors
+0042ec7c	g31-g34	c01 named block-scoped glyph string for Preload / c02 display at top / c03 xmv_buffers at top / c06 music_offset outside loop (batch)	RELOCATION_MATCH / DIFFER x3	all / 587fm	c01 MATCHES: `{ CWideString glyphs(L"..."); m_pMenuFont->Preload(glyphs, true); }`
+0042ec7c	final	src/0042ec7c.cpp (c01 + header comments) via gall.sh; tall.sh + tall.py PASS; vland RELOCATION_MATCH + behaviour PASS (4 RELOC_NAME/ALIAS warnings: catalog labels, rand thunk)	RELOCATION_MATCH	all	-
+0087f3a0	-	started: retail decoded (NOTES.md outline), no graded draft (hand-over in place)	-	-	-

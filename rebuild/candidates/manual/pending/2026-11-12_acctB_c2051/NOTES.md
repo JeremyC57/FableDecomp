@@ -1,6 +1,6 @@
-# Hand chunk 2051 (CWorld .. CNewFrontendGameComponent): 1 of 5 byte-exact (hand-over in place on 0x0042EC7C)
+# Hand chunk 2051 (CWorld .. CMap): 2 of 5 byte-exact
 
-## What matched (1)
+## What matched (2)
 - **0x004A6E30 CWorld::Init** (src/004a6e30.cpp, test/004a6e30.cpp; RELOCATION_MATCH at the FIRST full grade, vland
   RELOCATION_MATCH, tests PASS under g++ and VC7.1). `// Flags: /Gr` (the TU's free functions and boost::checked_delete<T> are
   __fastcall). Shape: the landed PostInit 0x004A6550 pattern (StartProfile / DisplayProgress per subsystem) plus
@@ -12,40 +12,73 @@
   shared header for the skeletal-morph singleton; (4) CClassTypeInit's inline ctor (TypeID byte from the long navigator-type global);
   (5) the stack CGameNavigatorManagerExternalInterface temporary with an inline ctor and empty inline virtual dtor.
 
-## In progress -- 0x0042EC7C CNewFrontendGameComponent::Run (best: differ/0042ec7c.cpp, DIFFER(2179v2191), 587/624 frame-masked)
-- TU: `#pragma optimize("s", on)` only (adding `("y", off)` loses the biased `lea ebp,[esp-74h]` frame), `// Flags: /Gr`.
-- Matched so far: the whole movie table (CMovieInfo aggregate, Ego_r.pdb), the movie loop body (needed the CRGBColour copy ctor
-  forced: hdr CRGBColour.h FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_COPY -- in a size TU the plain copy ctor is refused with no score;
-  `// Inline-budget:` line still to be added to the source when it matches), SetClearColour / SetSkipOnAnyButton statics, bank
-  open / close blocks, the init / main loop / attract-movie block / language switch, the three exit paths
-  (CFrontendGameComponentInit's inline ctor ??0CFrontendGameComponentInit@@QAE@XZ fixed the zero store; a separate
-  `long index = rand() % (long)size();` statement fixed the def-pointer reload).
-- Exact remaining difference (relocation + frame masked):
-  retail 0x0042EE43 `je L189` / 0x0042EE7D `mov edi,offset GBankFileManager` (inside the bank block, after the first temporaries)
-  / 0x0042EF20 `jmp L190` + return-false block (0x0042EF22 call ~CWideString; xor al,al; jmp epilogue) / 0x0042EF2E `mov edi,offset
-  GBankFileManager` (skip path) -- ours: `mov edi,R` hoisted before the `je` in the test block, no skip-path block, the return-false
-  block laid out after the CXMVPlayerBuffers allocation (ours 0x0042EF93). Then in the init-frontend block ours keeps the Preload
-  vtable, `display`, &m_attractModeTimer, &m_inputDelayTimer in edi where retail has the constant in edi (display in [ebp+70h], two
-  `lea ecx,[esi+100h]` / `lea ecx,[esi+120h]`), and retail re-sets edi after the attract block (0x0042F20A); ours re-materialises
-  it only in the leave block (0x0042F308). Plus a frame swap in the movie loop: i [ebp+6Ch] / error_string [ebp+68h] in retail,
-  the other way round in ours.
-- Measured (c2 traces, tools/c2p, tools/c2pf, tools/pk/tc.py): Run is 702 tuples (regime 0, every block w=1 in the size TU); the
-  constant (#20) is "referenced, cost 0" in block 10 (the bank-if test) together with L"pc\\" and L"frontend.big" -- c2 hoists the
-  constants that the first bank block shares with the leave-frontend bank block to their common dominator; removing the
-  leave-path bank code removes the hoist (diagnostic g12). Forcing the constant's priority to 300 gives it edi unsplit but
-  steals edi from the movie-loop pointer (worse, 528 equal). So the lever is the hoist / def placement, not the priority.
-- Tried with no effect: reference / pointer local for the bank manager (function scope, block scope), `for(;;)` + breaks for the main
-  loop, named `const CMovieInfo&`, `sizeof` loop bound, display as reference, `== true` test, bool guard local, direct calls.
-- Next ideas: (1) find what makes VC7.1 sink a shared constant instead of hoisting it (try the first bank block's three calls
-  written through a temporary CWideString path local, or OpenRetailBank's first argument built in a named local, so the block's
-  first constant use moves after a call; try the leave block's bank code before `CTBaseSingleton<CFileInstaller>::Release()` vs
-  after; try `NBankFileManager::GBankFileManager` reached through an inline static accessor if one turns up in FableWin's COMDAT
-  list for this TU); (2) a short c2 trace of where the global-CSE pass (not the allocator) inserts the constant's def; (3) the
-  i / error_string frame swap usually follows from the same live-range change -- recheck after (1).
+- **0x0042EC7C CNewFrontendGameComponent::Run** (src/0042ec7c.cpp, test/0042ec7c.cpp; RELOCATION_MATCH 2191v2191, tests PASS
+  under g++ and VC7.1; rel.py: every call / data target equals retail, 11 name-only differences against stale bound spellings ->
+  NAME_FIXES.tsv). `#pragma optimize("s", on)` alone (biased `lea ebp,[esp-74h]` frame), `// Flags: /Gr` (the TU's own free
+  functions GPlayMusic / InstallationComplete are YI in both PDBs), CRGBColour copy forced (opt-in, `// Inline-budget:` line:
+  c2 size 31 savings 5 -> 26 > the size-TU limit 15, refused with no score). The last residue (12 bytes, the bank manager address
+  hoisted into the bank-if test block, no skip-path load, display / timers / Preload vtable in edi, return-false block misplaced)
+  was ONE statement shape: the menu-font glyph string is a NAMED block-scoped local --
+  `{ CWideString glyphs(L"ABC...()"); m_pMenuFont->Preload(glyphs, true); }`. With the unnamed temporary the font's vtable is
+  loaded ahead of the string constructor into a callee-saved register, and that candidate pushes &GBankFileManager out of edi for
+  the init block and main loop (c2 then splits the constant into a bank-block piece and a leave-block piece). FITTED (one source
+  shape among several that compile alike; proven only by the full-row grade).
+  Continuation measurements kept in tmp/*.trace (c2 colouring traces) and probe/k/ (structural probes): VC7.1 places a constant
+  shared by an if-block and a later block at the if-test block (idom of the join) whatever the else arm holds; what retail shows
+  (first-use load + skip-path load + reload after the attract block) is the allocator's split of that constant when edi is free
+  in the init block -- i.e. decided by the init block's other candidates, not by the bank code.
 
-## Not started (one-row-at-a-time rule; Run is still open)
-- 0x0087F3A0 CCombatAction_KickThingOnGround::PerformAction (2422 B): landed siblings Initialise 0x0087E860, GetNextPos 0x0087E770,
-  FinishAction 0x0087EBD0 (models); 34 CBaseIntelligentPointer::GetPItem calls, x87 maths with a fast inverse-sqrt table, CHitParameters.
+## Not started / in progress (one row at a time)
+- 0x0087F3A0 CCombatAction_KickThingOnGround::PerformAction (2422 B; virtual, `sub esp,0C4h`, plain `ret`, single exit at
+  0x0087FD0B) -- STARTED by the continuation agent (decoded outline below, no graded draft yet). Retail disassembly:
+  tmp/pa_retail.txt. Models: landed siblings Initialise 0x0087E860 / FinishAction 0x0087EBD0 / GetNextPos 0x0087E770 (local
+  CCombatActionBase model: PCreature +0x08, PTarget +0xA8, MoveToPos +0x114, Movement +0x120, MaxRunningSpeed +0x12C; retail
+  sits 0x18 below the PDB offsets) -- the hand-in must use the shared headers (engine/CCombatActionBase.h has opt-ins,
+  engine/CThing.h with FABLE_RETAIL_CTHING_GETTC_EXPANDED, engine/CIntelligentPointer.h, engine/CKickableDef.h,
+  engine/CHitParameters.h, engine/CTCHeroExperience.h). Decoded flow (this in [esp+3Ch], &PCreature in [esp+24h], ebx = 0):
+  1. `pos = PCreature->GetPos()`; `dy = pos.Y - MoveToPos.Y; dx = pos.X - MoveToPos.X; if (dx*dx + dy*dy > C[0x01277D30]) return;`
+     `if (fabs(PCreature->GetPos().Z - MoveToPos.Z) > C[0x0122DED8]) return; if (!IS_THING_ALIVE(PTarget)) return;`
+  2. bool [esp+1Bh] = target HasTC 0x42 (+0x28 bit 2); if so GetTC(0x42) (LowerBound 0x0040F020) ->
+     CTCEntityEvents::AddEvent 0x008113C0 (`new NEntityEvents::CEventKillLocked` = new(8), +4 = 0, vtable 0x01277B5C; landed ctor
+     0x0087FED0 expanded).
+  3. `CDefPointer<CKickableDef> kickable_def` ([esp+38h] = 0, ebp after): target def handle +0x70 (inc/dec [p+4] refcount) ->
+     GetSubDef<CKickableDef> 0x006AE260; `kickable = got && kickable_def->+0x40 (shot def id) != 0`.
+  4. kickable: [esp+1Bh] = 1; if (target +0x6C & 8) target->SetAttackedByCreature(PCreature) 0x006624F0.
+     not kickable: if (target +0x6C & 8) { CHitParameters hit(0, PCreature, 0) (ctor 0x0087FF60); hit.AddDamageWithAttribute(1,
+     1.0f) 0x00868CA0; target->virtual slot 65 (+0x104)(hit); ~CHitParameters 0x00789358 } else if (target type byte +0x10 == 13)
+     { CDefPointer<CAppearanceDef> via +0x70 handle GetSubDef 0x0042B0A2 + conditional-destruction flags ([esp+1Ch] = 2 / 4 / 8:
+     a `&&` with temporaries: `GetSubDef(&appearance) && appearance->AnimSet(+0x34).AnimExists(CCharString(str 0x01277D10),
+     CAnimFilter... (vtable 0x0122FFDC, field 0xE))` 0x005DC2E0); if it exists: second AnimExists with the target's own filter
+     (+0xD0) picks the filter, `GetRandomAnim(CCharString(same), *GetWorld()->GetWorldSeed(), filter, -1)` 0x005DCC00, the
+     target's animating TC (0x83: +0x30 bit 3, else AddTC(CCharString(str 0x0123C260), 0, 0)) ->PlayAnimation(anim[0], 0, 0)
+     0x007F9010, target->SetAsRenderedThisFrame(2) 0x004C7590; release appearance }.
+  5. 0x0087F79D: if (target type == 5) target->ResetDieOffTimer() 0x00702CE0; if (!kickable_def) return;
+  6. if (kickable) { CDefPointer<CThingShotDef> shot_def: GetWorld()->DefinitionManager(+0x10)->GetDefShot(kickable_def->+0x40,
+     &shot_def) 0x0078B230; shot TC = target->AddTC(shot_def->+0x60 CDefString::GetString() 0x00415DD0, true, 0);
+     facing = PCreature physics(+0x60)->virtual +0x118 (GetFacing, hidden C3DVector); three floats = 0; if PCreature HasTC
+     0x68 (+0x2C bit 8: CTCHeroExperience) and !PCreature->IsChild() 0x00661F70: strength = (float)GetTrainableStatLevel(0) /
+     (float)GetTrainableStatMaxLevel(0) (0x006D6520 / 0x006D6770); movement copy (this +0x120); delta = target pos - creature pos;
+     fast inverse sqrt through the 0x013CE558 table + one Newton step (constants 0x0122DED4, 0x0122F59C) -> unit direction; the
+     movement projected onto it (dot X,Y,Z; x87 order Y, X, Z); speed = |projected| / MaxRunningSpeed; skill = ((float)
+     level(3) + 1) / ((float)max(3) + 1) * speed }; r = GFFloatRandom(def +0x3C, seed) 0x004978A0 + def +0x38; velocity =
+     facing * r, height = a*def+0x34 + b*def+0x30 + c*def+0x2C + def+0x28, start = target pos + (vx, vy, vz*height...);
+     CTCShotDefinitionBase::Init(CDefPointerByValue<CThingShotDef>(shot_def), PCreature, 0, &start, 50.0f, 1.0f, 0, &null
+     ability) 0x007BF790; target HasTC 0x31 (+0x24 bit 17) -> CTCCreatureModeManager::AddMode(0x39) 0x0073AE10;
+     tc = target->AddTC(CCharString(str 0x0123A014), false, 0); if (tc) { tc +0x28 = 1; SetRotationInfo(C3DVector(0,0,1),
+     0.15f, 5.0f) 0x0072A530 }; CTCDParticleEmitter::Create(shot_def +0x40, target pos + (0, 0, C[0x01238170]), false)
+     0x006E0880; release shot_def }
+  7. 0x0087FC74: if (def +0x44 || def +0x4C) and PCreature HasTC 0x51 (+0x28 bit 17: CTCHeroOpinionDeedLog) and !def +0x48 and
+     def +0x44: PostDeed(def +0x44, PCreature->GetPos(), PTarget, 0, 7, 0, 0, 0, 0, 0) 0x006C6990; release kickable_def.
+  Spelling hints found while decoding: the def-handle copies with `inc [p+4]` before GetSubDef are the by-value
+  `CThing::GetPBaseDef()` temporary (engine/CThing.h); `test byte [thing+6Ch],8` is `GetTypeFlags() & 8` (ThingTypeFlags +0x6C);
+  the step-4 anim block's flags 2/4/8 are conditional destruction of `GetPBaseDef()` / `CCharString(...)` / `CAnimFilterNoGroup()`
+  temporaries in one `&&` -- copy the include / define set of the landed CThingAICreature::AnimExists 0x00830F20
+  (FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS, FABLE_RETAIL_CANIMFILTER, engine/CAnimFilterNoGroup.h, CAppearanceDef Animation
+  +0x34); the inverse square root is engine/C3DVector.h's FABLE_FORCEINLINE GFFastOneOverSqrt (FABLE_RETAIL_C3DVECTOR, table
+  0x013CE558, `(3.0f - r*r*v)*r*0.5f`), probably through C3DVector::Normalise; CKickableDef members (engine/CKickableDef.h):
+  BaseDistanceToTravel +0x28, StrengthScaleRange +0x2C, SpeedScaleRange +0x30, BaseSpeedScaleRange +0x34, RandomBase +0x38,
+  RandomRange +0x3C, ShotToAttach +0x40, OpinionDeedType +0x44, OpinionDeedFaction +0x48, OpinionDeedTypeToEnemies +0x4C.
+  Next: name every callee (two sources), write the full draft over the shared headers, grade, iterate.
 - 0x00A7AF60 CNavQuadTree::LoadFromFile (2503 B): `and esp,-8` frame, CCachedFile reads, STLport vector inserts; landed CNavQuadTree
   ctor 0x00A7A760 and many CNavQuadTree / CANavQuadTreeNode rows in 0x00A7xxxx for the model.
 - 0x00821A80 CMap::LoadFromFile (2648 B): /GS; same TU as the landed CMap::LoadBrushesFromFile 0x00821010 (copy its defines and

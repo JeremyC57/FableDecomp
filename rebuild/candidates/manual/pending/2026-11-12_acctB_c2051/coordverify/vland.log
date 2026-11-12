@@ -1,8 +1,14 @@
 addr       parity           behav  name
+0042ec7c   WARN RELOC_NAME: ?CanStartAttractMode@CFrontEndManager@NUISystem@@QAE_NXZ -> 00595a03 labelled '_global::ReturnFalse_ret0_00595a03'
+0042ec7c   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0042ec7c   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+0042ec7c   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+0042ec7c   RELOCATION_MATCH PASS   Run
 004a6e30   WARN RELOC_NAME: ??0CFactionManager@@QAE@ABVCWorld@@@Z -> 006b97e0 labelled 'CWorld_InitFactions'
 004a6e30   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0ABU__false_type@0@@Z -> 004ad9e0 labelled 'std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CFaction>> *>'
 004a6e30   WARN RELOC_NAME: ?Init@CCombatManager@@QAEXXZ -> 006e8300 labelled 'CCombatManager::ResetDialogue'
 004a6e30   RELOCATION_MATCH PASS   Init
 
-WINS: 1
+WINS: 2
+  0042ec7c RELOCATION_MATCH CNewFrontendGameComponent::?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
   004a6e30 RELOCATION_MATCH CWorld::?Init@CWorld@@UAEXXZ

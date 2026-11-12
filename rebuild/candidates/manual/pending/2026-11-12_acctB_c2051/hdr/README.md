@@ -25,3 +25,7 @@ Opt-in blocks in copies of repo headers (each documented at the block with its e
   fable_retail_banks.h _CLOSERETAILBANK, NUISystem_CUIScreenUnitConverter.h _RESETDIMENSIONS, CRGBColour.h
   _FORCEINLINE_COPY (same copy body, FABLE_FORCEINLINE; size TU refuses the plain inline).
 No shared inline body text was changed on a default path, so no landed row needs a regrade.
+
+Continuation agent (2026-11-12): no header text changed. The matched Run uses FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_COPY with its
+`// Inline-budget:` line (c2 inline trace: copy ctor size 31, savings 5 -> 26 > size-TU limit 15, refused with no score). CWorld::Init
+regraded RELOCATION_MATCH under the same overlay.

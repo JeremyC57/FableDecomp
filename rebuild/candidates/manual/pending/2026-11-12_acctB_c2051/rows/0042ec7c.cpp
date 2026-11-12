@@ -1,14 +1,29 @@
 // CNewFrontendGameComponent::Run(CGameComponent** next_component) -- the front end's main loop: play the three start-up movies, open the front-end banks, start the front end, run input / update / draw (with the 120 s attract-mode movie) until quit, then hand over to the developer front end or the main game
-// Grade: DIFFER(2179v2191) -- 587/624 instructions equal (frame-masked); &NBankFileManager::GBankFileManager is not kept in edi from the first bank block through the main loop (retail 0x0042EE7D / 0x0042EF2E / 0x0042F20A), so display / timer addresses / Preload vtable take edi and the return-false block is laid out after the CXMVPlayerBuffers allocation
 // Leaf: ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042EC7C, 2191 bytes, `ret 4` (CGameComponent vtable slot 2; Ego_r.pdb / FableWin.pdb
-//   ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z). Size TU with a frame pointer (`#pragma optimize("s", on)` +
-//   `("y", off)`, as the landed Init2 0x0042E98F): `lea ebp,[esp-74h]`, `pop ecx` after operator new. /Gr (GPlayMusic, GFGetTime,
-//   GFPlayFullScreenXBoxMovie and the NResourceDirectoryNames getters are __fastcall).
+//   ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z). Size TU: `#pragma optimize("s", on)` alone gives the biased
+//   frame `lea ebp,[esp-74h]` (adding ("y", off) as the small landed siblings do loses it; GOTCHAS chunk 247) and `pop ecx` after
+//   operator new.
+// Flags evidence (/Gr): the TU's own free functions are __fastcall with no keyword in the source: Ego_r.pdb / FableWin.pdb
+//   ?GPlayMusic@@YIXM@Z and ?InstallationComplete@@YI_NXZ (both defined in this TU, FableWin COMDAT order right before Run), the
+//   statics ?SetClearColour@CXMVPlayer@@SIXVCRGBColour@@@Z / ?SetSkipOnAnyButton@CXMVPlayer@@SIX_N@Z, and every free callee
+//   (GFGetTime YINXZ, GFPlayFullScreenXBoxMovie, the NResourceDirectoryNames getters YI?AVCWideString@@XZ); same flag as the matched
+//   chunk-2051 row CWorld::Init 0x004A6E30.
+// Inline-budget: CRGBColour's copy constructor (FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_COPY, the default body forced). Measured with
+//   the c2 inline trace (c2.dll 0x1078D1AA) on this file with the plain body: decision 3 of 32 in Run, ??0CRGBColour@@QAE@ABV0@@Z
+//   size 31, savings 5 -> cost 26, over the size-TU plain-inline limit 15, refused with no score (the four-byte constructor
+//   ??0CRGBColour@@QAE@EEEE@Z, size 32 savings 26 -> 6, is expanded). Plain body: DIFFER(2179v2191) 568/624, the by-value
+//   SetClearColour(movie.ClearColour) argument copied by a call; retail copies the four bytes in place (0x0042ED68..0x0042ED7C).
 // Shape: CMovieInfo movies[3] (Ego_r.pdb aggregate) played in a counted loop guarded by the two start-up flags; the clear colour
 //   goes through the inline static CXMVPlayer::SetClearColour (by value: the byte-wise CRGBColour copy, 0x0042ED68); the movie error
 //   string lands in the front-end manager when a movie fails. The main loop is `while (Update() != 2 && !Quit)`.
+// Allocation: the menu-font glyph string is a NAMED local in its own block (`{ CWideString glyphs(L"..."); m_pMenuFont->Preload(glyphs,
+//   true); }`). With the unnamed temporary (`Preload(CWideString(L"..."), true)`) VC7.1 loads m_pMenuFont's vtable before the string
+//   constructor into a callee-saved one, which outranks &NBankFileManager::GBankFileManager for edi: the bank manager address
+//   is then hoisted into the bank-if test block and re-materialised in the leave block (DIFFER 2179v2191, 587/624). Named, the
+//   address lives in edi from the first OpenRetailBank (0x0042EE7D) through the main loop to the leave-frontend banks, with the
+//   skip-path load 0x0042EF2E and the reload after the attract movie 0x0042F20A, exactly as retail.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_COPY
 #define FABLE_RETAIL_CWIDESTRING
@@ -119,12 +134,11 @@ bool CNewFrontendGameComponent::Run(CGameComponent** next_component)
         }
     }
 
-    CBankFileManager* bank_file_manager = &NBankFileManager::GBankFileManager;
     if (g_bRuntimeLevelFiles) {
         CWideString platform(L"pc\\");
-        bank_file_manager->OpenRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + platform + L"frontend.big", true);
-        bank_file_manager->OpenRetailBank(NResourceDirectoryNames::GetHDDialogueDir() + L"text.big", false);
-        bank_file_manager->OpenRetailBank(NResourceDirectoryNames::GetShaderBankDir() + platform + L"shaders.big", false);
+        NBankFileManager::GBankFileManager.OpenRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + platform + L"frontend.big", true);
+        NBankFileManager::GBankFileManager.OpenRetailBank(NResourceDirectoryNames::GetHDDialogueDir() + L"text.big", false);
+        NBankFileManager::GBankFileManager.OpenRetailBank(NResourceDirectoryNames::GetShaderBankDir() + platform + L"shaders.big", false);
     }
 
     Running = true;
@@ -136,7 +150,10 @@ bool CNewFrontendGameComponent::Run(CGameComponent** next_component)
     NProfileTimer::StartProfile("Init frontend", 0);
     CXMVPlayerBuffers* xmv_buffers = new CXMVPlayerBuffers;
     PFontManager->SetLoadFontGlyphsAsynchronously(false);
-    m_pMenuFont->Preload(CWideString(L"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()"), true);
+    {
+        CWideString glyphs(L"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()");
+        m_pMenuFont->Preload(glyphs, true);
+    }
     CDisplayManager* display = GFGetSystemManager()->GetDisplayManager();
     PRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 255), 0);
     display->SwapScreens();
@@ -207,11 +224,11 @@ bool CNewFrontendGameComponent::Run(CGameComponent** next_component)
             PSoundManager->StopMusic(500);
         if (g_bRuntimeLevelFiles) {
             CWideString platform(L"pc\\");
-            bank_file_manager->CloseRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + platform + L"frontend.big");
-            bank_file_manager->OpenRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + L"graphics.big", true);
-            bank_file_manager->OpenRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + platform + L"textures.big", true);
-            bank_file_manager->OpenRetailBank(NResourceDirectoryNames::GetHDDialogueDir() + L"dialogue.big", false);
-            bank_file_manager->OpenRetailBank(NResourceDirectoryNames::GetHDMiscDir() + platform + L"effects.big", false);
+            NBankFileManager::GBankFileManager.CloseRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + platform + L"frontend.big");
+            NBankFileManager::GBankFileManager.OpenRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + L"graphics.big", true);
+            NBankFileManager::GBankFileManager.OpenRetailBank(NResourceDirectoryNames::GetGraphicBankDir() + platform + L"textures.big", true);
+            NBankFileManager::GBankFileManager.OpenRetailBank(NResourceDirectoryNames::GetHDDialogueDir() + L"dialogue.big", false);
+            NBankFileManager::GBankFileManager.OpenRetailBank(NResourceDirectoryNames::GetHDMiscDir() + platform + L"effects.big", false);
         }
         CTBaseSingleton<CFileInstaller>::Release();
         CMainGameComponentInit init;

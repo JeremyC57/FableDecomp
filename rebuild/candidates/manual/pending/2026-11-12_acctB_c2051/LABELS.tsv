@@ -32,3 +32,4 @@ address	name	evidence
 00404490	?Release@?$CTBaseSingleton@VCFileInstaller@@@@SIXXZ	Ego_r.pdb; landed body resets the static counted pointer 0x013CA818 (catalog Release_013ca818)
 0042DB80	?SetClearColour@CXMVPlayer@@SIXVCRGBColour@@@Z	Ego_r.pdb; uncalled inline copy storing 0x013961E0 (expanded in Run)
 0042DB90	?SetSkipOnAnyButton@CXMVPlayer@@SIX_N@Z	Ego_r.pdb CXMVPlayer static bool setters: SetLeftAlignText / SetNoHangulWordWrap are the called copies 0x009BC890 / 0x009BC8A0 (fed from config bytes); this one is set only around the front-end movies (context; by elimination)
+0042EC7C	?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z	Ego_r.pdb + FableWin.pdb; CGameComponent vtable slot 2 of CNewFrontendGameComponent; RELOCATION_MATCH (chunk 2051 continuation)
