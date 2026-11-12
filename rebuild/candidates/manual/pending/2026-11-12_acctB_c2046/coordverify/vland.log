@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00d77690   RELOCATION_MATCH PASS   DoCutscene
+00d92380   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d92380   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d77690 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?DoCutscene@CQ_HangingTreeGoodScript@NScript@@QAEXJ@Z
+  00d92380 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeTorrent::?Main@CHobbeTorrent@CQ_HobbeCaveScript@NScript@@EAEXXZ

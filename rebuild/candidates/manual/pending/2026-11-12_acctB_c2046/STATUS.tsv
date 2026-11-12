@@ -1,0 +1,3 @@
+address	grade	bytes	test	grades_used	notes
+00d92380	RELOCATION_MATCH	1468v1468	PASS	pass1: 2 (g01 DIFFER 1532v1468, g02 match)	erase out-of-line via shared opt-in FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE (Inline-budget line); overlay opt-in FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CHOBBETORRENT
+00d77690	RELOCATION_MATCH	3064v3064	PASS	pass1: 2 (h01 DIFFER 3102v3064, h02 match)	shared opt-in FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR (Inline-budget line) + out-of-line ~CCountedPointer<MovieBase> declaration; no overlay header

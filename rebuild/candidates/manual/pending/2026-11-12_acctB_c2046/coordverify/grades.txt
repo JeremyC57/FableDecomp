@@ -1,0 +1,2 @@
+00d77690 NScript::CQ_HangingTreeGoodScript::DoCutscene RELOCATION_MATCH flags= []
+00d92380 NScript::CQ_HobbeCaveScript::CHobbeTorrent::Main RELOCATION_MATCH flags= []
