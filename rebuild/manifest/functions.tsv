@@ -43145,7 +43145,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be6880	BuildDefaultSection	CLandscapeBackgroundPatch	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
 00be6f70	Render	CLandscapeBackgroundPatch	__thiscall	bool	2	CLandscapeBackgroundPatch *,bool	1	yes	accepted	PASS	primary			D:\Documents\FableTLC\lift\reports\primary\code\00\be\0x00BE6F70_CLandscapeBackgroundPatch_Render.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CLandscapeBackgroundPatch_Render_00be6f70.cpp
 00be79d0	RenderWithOcclusion	CLandscapeBackgroundPatch	__thiscall	void	3	CLandscapeBackgroundPatch *,long *,bool *	1	yes	accepted									
-00be7be0	Render	_global	__thiscall	void	4	CLandscapeBackgroundPatch *,bool,long *,bool *	1	yes	accepted									
+00be7be0	Render	CLandscapeBackgroundPatch	__thiscall	void	4	CLandscapeBackgroundPatch *,bool,long *,bool *	1	yes	accepted									
 00be7d70	Load	CLandscapeBackgroundPatch	__thiscall	bool	4	CLandscapeBackgroundPatch *,CDataInputStream *,float,float	1	yes	accepted	FAIL	retry			D:\Documents\FableTLC\lift\reports\retry\code\00\be\0x00BE7D70_CLandscapeBackgroundPatch_Load.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CLandscapeBackgroundPatch_Load_00be7d70.cpp
 00be8920	LoadCompressed	CLandscapeBackgroundPatch	__thiscall	bool	4	CLandscapeBackgroundPatch *,CMemoryDataInputStream *,float,float	1	yes	accepted	PASS	retry			D:\Documents\FableTLC\lift\reports\retry\code\00\be\0x00BE8920_CLandscapeBackgroundPatch_LoadCompressed.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CLandscapeBackgroundPatch_LoadCompressed_00be8920.cpp
 00be8b00	size	CArray<CUnprovenElement4_00be8b00>	unknown	undefined	0		0			discovered	gapscan							

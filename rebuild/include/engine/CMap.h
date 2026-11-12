@@ -17,6 +17,9 @@ class CGameDefinitionManager;class CWorld;
 #include "stlport/fable_containers.h"
 #include "boost/scoped_ptr.h"
 class CGameMap;class CHeightMap;
+#ifdef FABLE_RETAIL_CMAP_ENGINEACCESSORS
+#include "engine/CHeightMap.h"
+#endif
 class CThemePaletteEntry {
 public:
     CThemePaletteEntry(unsigned long themeDefIndex, bool used) : ThemeDefIndex(themeDefIndex), ThemePaletteIndexUsed(used) {}
@@ -99,6 +102,29 @@ protected:
     }
 #endif
     void ZeroAllUnusedThemePaletteEntries();                             // 0x008F6FC0
+#ifdef FABLE_RETAIL_CMAP_ENGINEACCESSORS
+    // wf3 (row 0x0081F240 CMap::CopyPos): the per-cell engine theme / blend accessors of the map's height map.
+    // FableWin.pdb ?GetEngineThemeAtIncludingExtraCells@CMap@@IBEKJJK@Z, ?GetEngineBlendAtIncludingExtraCells@CMap@@IBEEJJK@Z,
+    // ?SetEngineBlendAtIncludingExtraCells@CMap@@IAEXJJEK@Z (inline in retail: Ego_r 0x00679D40 / 0x00679E10 / 0x00679C60 have no
+    // retail copy), ?SetEngineThemeAtIncludingExtraCells@CMap@@IAEXJJKK@Z (retail 0x0081EF30, out of line) and
+    // ?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z (retail 0x0081F240). Needs FABLE_RETAIL_CHEIGHTMAP_GETCELL and
+    // FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS (engine/CHeightMap.h is included above the class). No layout change.
+protected:
+    void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, unsigned long layer);   // 0x0081EF30
+    unsigned long GetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long layer) const
+    {
+        return ThemePaletteEntryList[HeightMap->GetCell(C2DCoordI(x, y)).GetEngineThemePaletteIndex(layer)].ThemeDefIndex;
+    }
+    unsigned char GetEngineBlendAtIncludingExtraCells(long x, long y, unsigned long index) const
+    {
+        return HeightMap->GetCell(C2DCoordI(x, y)).GetEngineBlend(index);
+    }
+    void SetEngineBlendAtIncludingExtraCells(long x, long y, unsigned char blend, unsigned long index)
+    {
+        HeightMap->GetCell(C2DCoordI(x, y)).SetEngineBlend(blend, index);
+    }
+    void CopyPos(const CMap& source, const C2DCoordI& from, const C2DCoordI& to);   // 0x0081F240
+#endif
 public:
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); // 0x008F70F0
 #endif

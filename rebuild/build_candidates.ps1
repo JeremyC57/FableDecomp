@@ -393777,6 +393777,76 @@ $catalog = @(
         TestSource = '00/9a/CDefinitionManager_InstantiateDef_009adc90_test.cpp'
         PassPattern = '009adc90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00931200'
+        Module = 'CAIStateGroup_MinionReactToCriminal'
+        Source = '00/93/CAIStateGroupMinionReactToCriminal_IsStillValid_00931200.cpp'
+        TestSource = '00/93/CAIStateGroupMinionReactToCriminal_IsStillValid_00931200_test.cpp'
+        PassPattern = '00931200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009dc6e0'
+        Module = 'CRenderManager2D'
+        Source = '00/9d/CRenderManager2D_Draw2DTexture_009dc6e0.cpp'
+        TestSource = '00/9d/CRenderManager2D_Draw2DTexture_009dc6e0_test.cpp'
+        PassPattern = '009dc6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00761980'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_DrawShapes_00761980.cpp'
+        TestSource = '00/76/CTCShapeManager_DrawShapes_00761980_test.cpp'
+        PassPattern = '00761980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a89740'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_GetHelperPointPositionAnimated_00a89740.cpp'
+        TestSource = '00/a8/C3DMesh2_GetHelperPointPositionAnimated_00a89740_test.cpp'
+        PassPattern = '00a89740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009122a0'
+        Module = 'CBezierCurve'
+        Source = '00/91/CBezierCurve_GetPointOnCurve_009122a0.cpp'
+        TestSource = '00/91/CBezierCurve_GetPointOnCurve_009122a0_test.cpp'
+        PassPattern = '009122a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be7be0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_Render_00be7be0.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_Render_00be7be0_test.cpp'
+        PassPattern = '00be7be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081f240'
+        Module = 'CMap'
+        Source = '00/81/CMap_CopyPos_0081f240.cpp'
+        TestSource = '00/81/CMap_CopyPos_0081f240_test.cpp'
+        PassPattern = '0081f240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00646580'
+        Module = 'NPlayerGui::CDrawMeleeActionButtonEffects'
+        Source = '00/64/NPlayerGuiCDrawMeleeActionButtonEffects_Draw_00646580.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawMeleeActionButtonEffects_Draw_00646580_test.cpp'
+        PassPattern = '00646580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052c920'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_ProcessChangeState_0052c920.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_ProcessChangeState_0052c920_test.cpp'
+        PassPattern = '0052c920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00848b70'
+        Module = 'CCreatureAction_PickUpGenericBox'
+        Source = '00/84/CCreatureActionPickUpGenericBox_PerformAction_00848b70.cpp'
+        TestSource = '00/84/CCreatureActionPickUpGenericBox_PerformAction_00848b70_test.cpp'
+        PassPattern = '00848b70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

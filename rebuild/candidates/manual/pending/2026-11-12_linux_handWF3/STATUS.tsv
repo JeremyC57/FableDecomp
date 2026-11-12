@@ -1,0 +1,8 @@
+009dc6e0	CRenderManager2D::Draw2DTexture	RELOCATION_MATCH	21	X/Y block, U/V block, then per vertex Z=0; SetRHWFromZ(); Spec; Diffuse
+00761980	CTCShapeManager::DrawShapes	RELOCATION_MATCH	291	pass 3: parent thing named in a reference before the lifted vector (CThing& parent = GetParentThing();) -- scratch-register rotation makes X and Y reload; inferred statement flagged in the source; strict-header regrade OK; test PASS
+0x00A89740	C3DMesh2::GetHelperPointPositionAnimated	RELOCATION_MATCH	24	ported to shared headers; TransformPoint ZYX left-to-right sums opt-in
+009122a0	CBezierCurve::GetPointOnCurve	RELOCATION_MATCH	18	GFSqr squares + named result local; overlay CBezierCurve.h opt-in
+00be7be0	CLandscapeBackgroundPatch::Render	RELOCATION_MATCH	33	PDB inline helpers AddBackgroundWaterPatchToRenderList / AddMidgroundSeaPatchToRenderList (by-value patch) in a header opt-in; strict headers OK; test PASS
+0081f240	CMap::CopyPos	RELOCATION_MATCH	5	PDB inline helpers on shared headers + signed layer counter
+0x00646580	NPlayerGui::CDrawMeleeActionButtonEffects::Draw	RELOCATION_MATCH	43	ported onto shared headers; inverted if/else; named anchored + sum + C2DVector(position) copy (inference, marked); GFAnchorToBottomRight real body visible in TU
+0052c920	NUISystem::CChangingStateComponent::ProcessChangeState	RELOCATION_MATCH	4	shared headers + colour delta as copy (FABLE_RETAIL_CRGBCOLOUR) then channel -=; strict OK; test PASS

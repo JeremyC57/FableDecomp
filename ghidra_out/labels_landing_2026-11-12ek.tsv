@@ -1,0 +1,11 @@
+address	name	evidence
+00931200	?IsStillValid@CAIStateGroup_MinionReactToCriminal@@UBE_NXZ	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+009DC6E0	?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@AAVCTexture@@K@Z	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+00761980	?DrawShapes@CTCShapeManager@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@@Z	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+00A89740	?GetHelperPointPositionAnimated@C3DMesh2@@UBE?AVC3DVector@@ABVC3DHelperPoint@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@@Z	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+009122A0	?GetPointOnCurve@CBezierCurve@@QBE?AVC3DVector@@M@Z	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+00BE7BE0	?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+0081F240	?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+00646580	?Draw@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+0052C920	?ProcessChangeState@CChangingStateComponent@NUISystem@@MAEXXZ	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs
+00848B70	?PerformAction@CCreatureAction_PickUpGenericBox@@UAEXXZ	workflow wf3 (landing ek): RELOCATION_MATCH, two PDBs

@@ -38769,3 +38769,15 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?DoesAssassinTrustHero@CV_MurderTwistFinalScript@NScript@@QAE_NXZ	00eb03a0	00eb3f40
 ??4?$CIntelligentPointer@VCThingObject@@@@QAEAAV0@ABV0@@Z	007b82c0	008d5300
 ?GetPDefClassInfo@CDefinitionManager@@IAEPAVCDefClassInfo@1@ABVCCharString@@@Z	009ad580	009adc90
+?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ	00930ee0	00931200
+?Add2DTri@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z	009dc030	009dc6e0
+?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z	009e1e70	009dc6e0
+?EditorDrawHighlightPoints@CShape@NShape@@QAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z	007617a0	00761980
+?CalcBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@ABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z	00aa0fa0	00a89740
+?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	00be6f70	00be7be0
+?RenderWithOcclusion@CLandscapeBackgroundPatch@@AAEXAAJAA_N@Z	00be79d0	00be7be0
+?_M_insert_overflow@?$vector@PAVCEngineWaterBackgroundSubPatch@@V?$allocator@PAVCEngineWaterBackgroundSubPatch@@@std@@@std@@IAEXPAPAVCEngineWaterBackgroundSubPatch@@ABQAV3@ABU__true_type@2@I_N@Z	00be8f10	00be7be0
+?push_back@?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@QAEXABQAVCEngineWaterBackgroundSubPatch@@@Z	00be8ff0	00be7be0
+?SetEngineThemeAtIncludingExtraCells@CMap@@IAEXJJKK@Z	0081ef30	0081f240
+?ClearEffects@CDrawBase@NPlayerGui@@SIXAAV?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@@Z	006445ba	00646580
+?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	00643d0c	00646580

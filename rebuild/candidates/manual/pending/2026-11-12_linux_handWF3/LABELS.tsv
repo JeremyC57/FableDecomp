@@ -1,0 +1,25 @@
+00761980	DrawShapes	CTCShapeManager
+00760910	GetPrincipalVector	CTCShapeManager
+007617A0	EditorDrawHighlightPoints	NShape::CShape
+00686A80	PeekWorld	CTCBase
+004C73D0	GetPos	CThing
+004C3090	CEnginePrimitiveLine	CEnginePrimitiveLine
+0x00AA0FA0	C3DAnimationManager::CalcBoneTransformation	C3DAnimationManager
+0x00A89740	C3DMesh2::GetHelperPointPositionAnimated	C3DMesh2
+0x00BE7BE0	Render	CLandscapeBackgroundPatch
+0x00BE9030	AddMidgroundSeaPatchToRenderList	CEngineWaterRenderer
+0x00BE9080	AddBackgroundWaterPatchToRenderList	CEngineWaterRenderer
+0x00BE8FF0	push_back	CArray<CEngineWaterBackgroundSubPatch*>
+0x00BE8F10	_M_insert_overflow	std::vector<CEngineWaterBackgroundSubPatch*>
+0x0081F240	CMap::CopyPos	CMap
+0x0081EF30	CMap::SetEngineThemeAtIncludingExtraCells	CMap
+0x00646580	?Draw@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	NPlayerGui::CDrawMeleeActionButtonEffects
+0x00643D5D	?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z	NPlayerGui::CDrawBase
+0x00643D0C	?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	NPlayerGui
+0x006445BA	?ClearEffects@CDrawBase@NPlayerGui@@SIXAAV?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@@Z	NPlayerGui::CDrawBase
+0x00AEAAF0	NParticleEngine::GetParticleEmitterManager (FableWin.pdb)	NParticleEngine
+0052c920	ProcessChangeState	NUISystem::CChangingStateComponent
+0052ceb0	GetState	NUISystem::CChangingStateComponent
+0052ea30	ChangePositionDelta	NUISystem::CComponent
+0052ec20	ChangeZoomDelta	NUISystem::CComponent
+005305a0	ChangeColourDelta	NUISystem::CComponent

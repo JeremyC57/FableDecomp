@@ -166,6 +166,21 @@ public:
         point.Y=E12*xx+E22*yy+E32*zz+E42;
         point.Z=E13*xx+E23*yy+E33*zz+E43;
     }
+#elif defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_ZYX_SUMS)
+    // Nested opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): all three rows as plain left-to-right sums in
+    // Z, Y, X order, `E3k*zz+E2k*yy+E1k*xx+E4k`. Both expansions there (0x00A89768.. on the bone's LocalizationMatrix, 0x00A89831.. on
+    // the animated bone transformation) sum `fld E3k ; fmul z ; fld E2k ; fmul y ; faddp ; fld E1k ; fmul x ; faddp ; fadd E4k` per
+    // row. The parenthesised default emits the same instructions there but schedules the epilogue's result-pointer load and
+    // `pop esi` four x87 instructions early (389v389); this unparenthesised form is byte-exact. A fourth retail context for the
+    // same inline body (see the Open note above). Body only: default path unchanged.
+    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
+        const float xx=point.X;
+        const float yy=point.Y;
+        const float zz=point.Z;
+        point.X=E31*zz+E21*yy+E11*xx+E41;
+        point.Y=E32*zz+E22*yy+E12*xx+E42;
+        point.Z=E33*zz+E23*yy+E13*xx+E43;
+    }
 #else
     FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
         const float xx=point.X;

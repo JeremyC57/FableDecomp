@@ -198,6 +198,13 @@ public:
     // Retail opt-in (Codex2026-11-10): settled00438010 and both PDB signatures.
     void Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,EEngine2DLayer,bool);
 #endif
+#if defined(FABLE_RETAIL_CPLAYERGUI_ISSHOWSPECIALABILITYBUTTONS) && defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
+public:
+    // Retail opt-in (wf3, row 0x00646580 NPlayerGui::CDrawMeleeActionButtonEffects::Draw): FableWin.pdb
+    // ?IsShowSpecialAbilityButtons@CPlayerGui@@QBE_NXZ (0x0180822F / 0x020F5B83), inline in retail: the row reads the flag in place
+    // (`mov eax,[esi+4] ; cmp byte ptr [eax+250h],bl` at 0x0064658D). Needs FABLE_RETAIL_CPLAYERGUI_MEMBERS (the named member). No layout change.
+    bool IsShowSpecialAbilityButtons() const { return ShowSpecialAbilityButtons; }
+#endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CPlayerGui@@QAEX_N@Z (retail 0x0043A080,
     // landed) and ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z (0x004378C0, the forward to PDrawMiniMap +0x160), both on Get().

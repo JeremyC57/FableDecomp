@@ -153,6 +153,11 @@ public:
 #else
     FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{return C3DVector(X*scale,Y*scale,Z*scale);}
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED
+    // Retail opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z
+    // (componentwise product; no out-of-line copy in retail, expanded at 0x00A8981C: `fld this.k ; fmul scale.k` per axis).
+    FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{return C3DVector(X*scale.X,Y*scale.Y,Z*scale.Z);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}

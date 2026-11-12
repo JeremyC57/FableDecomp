@@ -8,6 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOCRIMINAL
+// Retail opt-in (workflow wf3, row 0x00931200 CAIStateGroup_MinionReactToCriminal::IsStillValid): the polymorphic retail class over
+// CAIStateGroupBase (RTTI .?AVCAIStateGroup_MinionReactToCriminal@@ : CAIStateGroupBase, vtable 0x0128B1F4; Ego_r.pdb members, sizeof
+// 0x30, the same in retail). IsStillValid is Ego_r.pdb / FableWin.pdb ?IsStillValid@CAIStateGroup_MinionReactToCriminal@@UBE_NXZ
+// (public virtual const, slot 5); IsValid is ?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ (private const, retail 0x00930EE0).
+// The three *InsideHouse flags are written by the const IsStillValid, so they are `mutable` here (the PDBs do not record it).
+// Needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS and FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThingPlayerCreature;
+class CThingBuilding;
+class CAIStateGroup_MinionReactToCriminal : public CAIStateGroupBase {
+public:
+    virtual bool IsStillValid() const;                                   // slot 5 0x00931200
+private:
+    bool IsValid() const;                                                // 0x00930EE0
+    CIntelligentPointer<CThingPlayerCreature> PHero;                     // +0x14
+    CIntelligentPointer<CThingBuilding> PHome;                           // +0x1c
+    long FrameLastLeftStategroup;                                        // +0x24
+    long FrameToNextSpeak;                                               // +0x28
+    bool OverrodeLocking;                                                // +0x2c
+    mutable bool HeroInsideHouse;                                        // +0x2d
+    mutable bool MeInsideHouse;                                          // +0x2e
+    mutable bool GuardInsideHouse;                                       // +0x2f
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_MinionReactToCriminal {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -37,4 +65,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, HeroInsideHous
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, MeInsideHouse) == 0x2e);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCriminal, GuardInsideHouse) == 0x2f);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOCRIMINAL
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTOCRIMINAL_H

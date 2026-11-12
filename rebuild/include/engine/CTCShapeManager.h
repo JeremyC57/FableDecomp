@@ -2,6 +2,14 @@
 #define FABLE_ENGINE_CTCSHAPEMANAGER_H
 #include "engine/CTCBase.h"
 #include "engine/C2DBoxF.h"
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_DRAWSHAPES
+// Retail opt-in (wf3, row 0x00761980 CTCShapeManager::DrawShapes): the typed shape containers and the private DrawShapes declaration.
+#include "engine/CCountedPointer.h"
+#include "engine/C3DVector.h"
+#include "stlport/fable_containers.h"
+namespace NShape { class CShape; }
+class CEnginePrimitivePrepareInfo;
+#endif
 #ifdef FABLE_RETAIL_CTCSHAPEMANAGER
 #include "engine/ETCInterfaceType.h"
 #ifdef FABLE_RETAIL_CTCSHAPEMANAGER_TRACK
@@ -20,6 +28,11 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;
     virtual CCharString GetClassTypeName() const;
     bool IsPosInAnyShape(const C3DVector&) const;
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_GETPRINCIPALVECTOR
+    // Retail opt-in (wf3, row 0x00761980 evidence probe): ?GetPrincipalVector@CTCShapeManager@@QBE_NAAVC3DVector@@@Z 0x00760910
+    // (Ego_r.pdb 0x00772130 + FableWin.pdb). Declaration only: no layout change.
+    bool GetPrincipalVector(C3DVector&) const;   // 0x00760910
+#endif
 #ifdef FABLE_RETAIL_CTCSHAPEMANAGER
     // Retail opt-in (chunk 728, row 0x0074B770 CTCCreatureGenerator::InitialiseCreatureGenerator): the inline static type query every
     // CTC defines (StatGetInterfaceType, no out-of-line copy for this class in either PDB); retail GetInterfaceType returns 0x44 and
@@ -39,8 +52,17 @@ public:
 #endif
 #endif
 private:
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_DRAWSHAPES
+    // Ego_r.pdb members PersistantShapes (vector<CCountedPointer<NShape::CShape> >, retail +0x0c) and SelectedShape (its iterator,
+    // retail +0x18), typed; and ?DrawShapes@CTCShapeManager@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@@Z 0x00761980
+    // (Ego_r.pdb 0x00772C30 + FableWin.pdb). Same layout as the opaque default (12 + 4 bytes).
+    std::vector<CCountedPointer<NShape::CShape> > PersistantShapes;
+    std::vector<CCountedPointer<NShape::CShape> >::iterator SelectedShape;
+    void DrawShapes(const CEnginePrimitivePrepareInfo&, const C3DVector&);   // 0x00761980
+#else
     unsigned char PersistantShapes[12]; // vector<CCountedPointer<NShape::CShape> >
     unsigned char SelectedShape[4]; // Original STLport vector iterator
+#endif
     bool Activated,NewShapeActivated,LeavingShape;
     C2DBoxF ClosedShapeBounds;
 #ifdef FABLE_RETAIL_CTCSHAPEMANAGER_VSLOTS

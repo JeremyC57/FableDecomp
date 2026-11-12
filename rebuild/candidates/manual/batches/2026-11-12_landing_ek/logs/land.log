@@ -1,0 +1,39 @@
+addr       parity           behav  name
+00931200   RELOCATION_MATCH PASS   IsStillValid
+009dc6e0   RELOCATION_MATCH PASS   Draw2DTexture
+00761980   RELOCATION_MATCH PASS   DrawShapes
+00a89740   RELOCATION_MATCH PASS   GetHelperPointPositionAnimated
+009122a0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+009122a0   RELOCATION_MATCH PASS   GetPointOnCurve
+00be7be0   RELOCATION_MATCH PASS   Render
+0081f240   RELOCATION_MATCH PASS   CopyPos
+00646580   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+00646580   RELOCATION_MATCH PASS   Draw
+0052c920   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0052c920   RELOCATION_MATCH PASS   ProcessChangeState
+00848b70   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 10
+  00931200 RELOCATION_MATCH CAIStateGroup_MinionReactToCriminal::IsStillValid
+  009dc6e0 RELOCATION_MATCH CRenderManager2D::Draw2DTexture
+  00761980 RELOCATION_MATCH CTCShapeManager::DrawShapes
+  00a89740 RELOCATION_MATCH C3DMesh2::GetHelperPointPositionAnimated
+  009122a0 RELOCATION_MATCH CBezierCurve::GetPointOnCurve
+  00be7be0 RELOCATION_MATCH CLandscapeBackgroundPatch::Render
+  0081f240 RELOCATION_MATCH CMap::CopyPos
+  00646580 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::Draw
+  0052c920 RELOCATION_MATCH NUISystem::CChangingStateComponent::ProcessChangeState
+  00848b70 RELOCATION_MATCH CCreatureAction_PickUpGenericBox::PerformAction
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupMinionReactToCriminal_IsStillValid_00931200
+  CRenderManager2D_Draw2DTexture_009dc6e0
+  CTCShapeManager_DrawShapes_00761980
+  C3DMesh2_GetHelperPointPositionAnimated_00a89740
+  CBezierCurve_GetPointOnCurve_009122a0
+  CLandscapeBackgroundPatch_Render_00be7be0
+  CMap_CopyPos_0081f240
+  NPlayerGuiCDrawMeleeActionButtonEffects_Draw_00646580
+  NUISystemCChangingStateComponent_ProcessChangeState_0052c920
+  CCreatureActionPickUpGenericBox_PerformAction_00848b70
+rc=0

@@ -11,6 +11,10 @@ public:
     C3DVector Point2;                                                    // +0x0c
     C3DVector Point3;                                                    // +0x18
     C3DVector Point4;                                                    // +0x24
+#ifdef FABLE_RETAIL_CBEZIERCURVE_GETPOINTONCURVE
+    // FableWin/Ego_r: ?GetPointOnCurve@CBezierCurve@@QBE?AVC3DVector@@M@Z (retail 0x009122A0).
+    C3DVector GetPointOnCurve(float t) const;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CBezierCurve) == 0x30);
 #endif // FABLE_ENGINE_CBEZIERCURVE_H

@@ -1,0 +1,494 @@
+==== 0x00931200
+10:53 00931200 grade a1.cpp SRC_FAIL -- port onto shared headers, mutable flags, GetCreature ref local
+10:53 00931200 grade a1.cpp SRC_FAIL -- port onto shared headers, mutable flags, GetCreature ref local
+10:53 00931200 grade a1.cpp DIFFER(391v387) hunks=8 -- port onto shared headers, mutable flags, GetCreature ref local
+10:54 00931200 grade a2.cpp RELOCATION_MATCH -- include order so GetCreature inlines / PBrain->GetCreature()
+10:54 00931200 grade 00931200.cpp RELOCATION_MATCH -- final source, strict headers
+11:46 00931200 grade src.cpp RELOCATION_MATCH -- 
+11:46 00931200 grade src.cpp SRC_FAIL -- 
+
+==== 0x009DC6E0
+10:50 009dc6e0 grade a1.cpp DIFFER(384v388) hunks=11 -- ported to shared headers; a1 draft order, a2 retail store order, a3 hybrid
+10:50 009dc6e0 grade a2.cpp DIFFER(394v388) hunks=18 -- ported to shared headers; a1 draft order, a2 retail store order, a3 hybrid
+10:50 009dc6e0 grade a3.cpp DIFFER(374v388) hunks=16 -- ported to shared headers; a1 draft order, a2 retail store order, a3 hybrid
+10:50 009dc6e0 grade b1.cpp DIFFER(384v388) hunks=10 -- U/V block separate: b1 after pos, b2 after mode, b3 before pos
+10:50 009dc6e0 grade b2.cpp DIFFER(406v388) hunks=7 -- U/V block separate: b1 after pos, b2 after mode, b3 before pos
+10:50 009dc6e0 grade b3.cpp DIFFER(400v388) hunks=11 -- U/V block separate: b1 after pos, b2 after mode, b3 before pos
+10:51 009dc6e0 grade c1.cpp DIFFER(384v388) hunks=11 -- inline setters SetXYZ/SetRHW/SetColour/SetU1V1: c1 per vertex, c2 per setter, c3 RHW last
+10:51 009dc6e0 grade c2.cpp DIFFER(380v388) hunks=18 -- inline setters SetXYZ/SetRHW/SetColour/SetU1V1: c1 per vertex, c2 per setter, c3 RHW last
+10:51 009dc6e0 grade c3.cpp DIFFER(389v388) hunks=16 -- inline setters SetXYZ/SetRHW/SetColour/SetU1V1: c1 per vertex, c2 per setter, c3 RHW last
+10:52 009dc6e0 grade e1.cpp DIFFER(390v388) hunks=17 -- UV block before v0.Z/RHW (immediates before eax-zero lifetime); e1 XY retail order, e2 UV first, e3 XY per-vertex
+10:52 009dc6e0 grade e2.cpp DIFFER(390v388) hunks=17 -- UV block before v0.Z/RHW (immediates before eax-zero lifetime); e1 XY retail order, e2 UV first, e3 XY per-vertex
+10:52 009dc6e0 grade e3.cpp DIFFER(390v388) hunks=16 -- UV block before v0.Z/RHW (immediates before eax-zero lifetime); e1 XY retail order, e2 UV first, e3 XY per-vertex
+10:53 009dc6e0 grade f1.cpp DIFFER(392v388) hunks=15 -- v3.RHW shares v1 temp: f1 chained v1=v3=g, f2 three consecutive reads, f3 v3.RHW=v1.RHW
+10:53 009dc6e0 grade f2.cpp DIFFER(390v388) hunks=19 -- v3.RHW shares v1 temp: f1 chained v1=v3=g, f2 three consecutive reads, f3 v3.RHW=v1.RHW
+10:53 009dc6e0 grade f3.cpp DIFFER(392v388) hunks=15 -- v3.RHW shares v1 temp: f1 chained v1=v3=g, f2 three consecutive reads, f3 v3.RHW=v1.RHW
+10:54 009dc6e0 grade g1.cpp DIFFER(390v388) hunks=20 -- XY statement permutations on e3 base: g1 ABDCEFHG, g2 ABCEDFGH, g3 ABCEFHDG
+10:54 009dc6e0 grade g2.cpp DIFFER(388v388) hunks=18 -- XY statement permutations on e3 base: g1 ABDCEFHG, g2 ABCEDFGH, g3 ABCEFHDG
+10:54 009dc6e0 grade g3.cpp DIFFER(392v388) hunks=19 -- XY statement permutations on e3 base: g1 ABDCEFHG, g2 ABCEDFGH, g3 ABCEFHDG
+10:54 009dc6e0 grade h1.cpp DIFFER(390v388) hunks=16 -- h1 SetRHWFromZ in e3 positions, h2 per-vertex Z/SetRHWFromZ/Spec/Diffuse, h3 RHW read order v1,v3,v2
+10:54 009dc6e0 grade h2.cpp RELOCATION_MATCH -- h1 SetRHWFromZ in e3 positions, h2 per-vertex Z/SetRHWFromZ/Spec/Diffuse, h3 RHW read order v1,v3,v2
+10:55 009dc6e0 grade 009dc6e0.cpp RELOCATION_MATCH -- final source (h2 spelled out), strict headers
+11:46 009dc6e0 grade src.cpp RELOCATION_MATCH -- 
+11:46 009dc6e0 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00761980
+10:57 00761980 grade v1.cpp SRC_FAIL -- port onto shared headers, typed STLport vector iterator, PDB const refs
+10:57 00761980 grade v2.cpp SRC_FAIL -- port onto shared headers, typed STLport vector iterator, PDB const refs
+10:57 00761980 grade v3.cpp SRC_FAIL -- port onto shared headers, typed STLport vector iterator, PDB const refs
+10:57 00761980 grade v1.cpp SRC_FAIL -- port onto shared headers (CTCBASE opt-ins), typed STLport iterator, PDB const refs
+10:57 00761980 grade v2.cpp SRC_FAIL -- port onto shared headers (CTCBASE opt-ins), typed STLport iterator, PDB const refs
+10:57 00761980 grade v3.cpp SRC_FAIL -- port onto shared headers (CTCBASE opt-ins), typed STLport iterator, PDB const refs
+10:57 00761980 grade v1.cpp DIFFER(375v389) hunks=8 -- port onto shared headers (+CWORLD opt-in)
+10:57 00761980 grade v2.cpp DIFFER(375v389) hunks=8 -- port onto shared headers (+CWORLD opt-in)
+10:57 00761980 grade v3.cpp DIFFER(375v389) hunks=8 -- port onto shared headers (+CWORLD opt-in)
+10:58 00761980 grade v4.cpp DIFFER(375v389) hunks=8 -- v4 C3DVECTOR opt-in copy ctor body; v5 declare+assign; v6 both
+10:58 00761980 grade v5.cpp DIFFER(381v389) hunks=5 -- v4 C3DVECTOR opt-in copy ctor body; v5 declare+assign; v6 both
+10:58 00761980 grade v6.cpp DIFFER(381v389) hunks=5 -- v4 C3DVECTOR opt-in copy ctor body; v5 declare+assign; v6 both
+10:59 00761980 grade v7.cpp DIFFER(381v389) hunks=5 -- assign-copy: v7 first declared before loop; v8 at loop body top; v9 front()
+10:59 00761980 grade v8.cpp DIFFER(381v389) hunks=5 -- assign-copy: v7 first declared before loop; v8 at loop body top; v9 front()
+10:59 00761980 grade v9.cpp DIFFER(381v389) hunks=5 -- assign-copy: v7 first declared before loop; v8 at loop body top; v9 front()
+11:00 00761980 grade v10.cpp DIFFER(375v389) hunks=8 -- top from first by copy: v10 copy then Z+=0.15; v11 first+C3DVector(0,0,0.15); v12 v10 with C3DVECTOR opt-in
+11:00 00761980 grade v11.cpp DIFFER(375v389) hunks=8 -- top from first by copy: v10 copy then Z+=0.15; v11 first+C3DVector(0,0,0.15); v12 v10 with C3DVECTOR opt-in
+11:00 00761980 grade v12.cpp DIFFER(375v389) hunks=8 -- top from first by copy: v10 copy then Z+=0.15; v11 first+C3DVector(0,0,0.15); v12 v10 with C3DVECTOR opt-in
+11:02 00761980 grade v13.cpp DIFFER(375v389) hunks=8 -- late-folded identity: v13 first + C3DVector(0,0,1)*0.15f; v14 named offset local; v15 top=first; top+=C3DVector(0,0,0.15)
+11:02 00761980 grade v14.cpp DIFFER(375v389) hunks=8 -- late-folded identity: v13 first + C3DVector(0,0,1)*0.15f; v14 named offset local; v15 top=first; top+=C3DVector(0,0,0.15)
+11:02 00761980 grade v15.cpp DIFFER(375v389) hunks=8 -- late-folded identity: v13 first + C3DVector(0,0,1)*0.15f; v14 named offset local; v15 top=first; top+=C3DVector(0,0,0.15)
+11:02 00761980 grade v16.cpp DIFFER(381v389) hunks=5 -- assigned first + v16 top copy-ctor then Z+=; v17 first+C3DVector(0,0,.15); v18 top assigned then Z+=
+11:02 00761980 grade v17.cpp DIFFER(381v389) hunks=5 -- assigned first + v16 top copy-ctor then Z+=; v17 first+C3DVector(0,0,.15); v18 top assigned then Z+=
+11:02 00761980 grade v18.cpp DIFFER(373v389) hunks=17 -- assigned first + v16 top copy-ctor then Z+=; v17 first+C3DVector(0,0,.15); v18 top assigned then Z+=
+11:03 00761980 grade p1.cpp DIFFER(381v389) hunks=5 -- PROBE: does an implicit (trivial) C3DVector copy ctor give the unforwarded block copy? (probe overlay, not a candidate)
+11:04 00761980 grade v19.cpp DIFFER(364v389) hunks=23 -- late identity via operator/: v19 first/1.0f + off; v20 first + off/1.0f; v21 first + C3DVector(0,0,3)/20
+11:04 00761980 grade v20.cpp DIFFER(375v389) hunks=8 -- late identity via operator/: v19 first/1.0f + off; v20 first + off/1.0f; v21 first + C3DVector(0,0,3)/20
+11:04 00761980 grade v21.cpp DIFFER(375v389) hunks=8 -- late identity via operator/: v19 first/1.0f + off; v20 first + off/1.0f; v21 first + C3DVector(0,0,3)/20
+11:04 00761980 grade v19.cpp DIFFER(364v389) hunks=23 -- re-view v19 (first/1.0f + off) hunks
+11:05 00761980 grade p2.cpp DIFFER(397v389) hunks=23 -- PROBE: does a really address-escaped first (assigned) give retail's unforwarded ecx/edx/eax block copy? (not a candidate)
+11:06 00761980 grade p3.cpp DIFFER(382v389) hunks=12 -- PROBE: point pair as a local array C3DVector[2] (block copy into an array element): p3 memberwise lift, p4 copy then Z+=
+11:06 00761980 grade p4.cpp DIFFER(386v389) hunks=11 -- PROBE: point pair as a local array C3DVector[2] (block copy into an array element): p3 memberwise lift, p4 copy then Z+=
+11:06 00761980 grade p3.cpp DIFFER(382v389) hunks=12 -- re-view p3 hunks (array, memberwise lift)
+11:07 00761980 grade p5.cpp DIFFER(381v389) hunks=5 -- PROBE: memcpy intrinsic copy into first (is an opaque block copy what retail has?)
+11:08 00761980 grade v22.cpp DIFFER(375v389) hunks=8 -- identity on the element itself: v22 *begin/1.0f + off (no named first); v23 first=*begin/1.0f, ctor lift; v24 first=*begin/1.0f, + off
+11:08 00761980 grade v23.cpp DIFFER(375v389) hunks=8 -- identity on the element itself: v22 *begin/1.0f + off (no named first); v23 first=*begin/1.0f, ctor lift; v24 first=*begin/1.0f, + off
+11:08 00761980 grade v24.cpp DIFFER(375v389) hunks=8 -- identity on the element itself: v22 *begin/1.0f + off (no named first); v23 first=*begin/1.0f, ctor lift; v24 first=*begin/1.0f, + off
+11:11 00761980 grade p6.cpp DIFFER(375v389) hunks=8 -- PROBE block boundary between the point copy and the lift: p6 do{}while(0); p7 empty if(ParentThing); p8 for(;;){break;}
+11:11 00761980 grade p7.cpp DIFFER(375v389) hunks=8 -- PROBE block boundary between the point copy and the lift: p6 do{}while(0); p7 empty if(ParentThing); p8 for(;;){break;}
+11:11 00761980 grade p8.cpp DIFFER(375v389) hunks=8 -- PROBE block boundary between the point copy and the lift: p6 do{}while(0); p7 empty if(ParentThing); p8 for(;;){break;}
+11:12 00761980 grade v25.cpp DIFFER(375v389) hunks=8 -- lifted point as a temporary inside the ctor argument list: v25 C3DVector(first.X,first.Y,first.Z+.15); v26 first + C3DVector(0,0,.15); v27 *begin + C3DVector(0,0,.15) no named first
+11:12 00761980 grade v26.cpp DIFFER(375v389) hunks=8 -- lifted point as a temporary inside the ctor argument list: v25 C3DVector(first.X,first.Y,first.Z+.15); v26 first + C3DVector(0,0,.15); v27 *begin + C3DVector(0,0,.15) no named first
+11:12 00761980 grade v27.cpp DIFFER(349v389) hunks=15 -- lifted point as a temporary inside the ctor argument list: v25 C3DVector(first.X,first.Y,first.Z+.15); v26 first + C3DVector(0,0,.15); v27 *begin + C3DVector(0,0,.15) no named first
+11:13 00761980 grade p9.cpp DIFFER(382v389) hunks=12 -- PROBE non-SROA block copy + barrier: p9 array[2] with named red between; p10 array[1] + lift temp in arg list; p11 array[1] + named top
+11:13 00761980 grade p10.cpp DIFFER(381v389) hunks=5 -- PROBE non-SROA block copy + barrier: p9 array[2] with named red between; p10 array[1] + lift temp in arg list; p11 array[1] + named top
+11:13 00761980 grade p11.cpp DIFFER(381v389) hunks=5 -- PROBE non-SROA block copy + barrier: p9 array[2] with named red between; p10 array[1] + lift temp in arg list; p11 array[1] + named top
+11:14 00761980 grade v1.cpp DIFFER(390v389) hunks=26 /Op -- TU flag /Op (float consistency: homes and reloads float copies): v1 ctor copy+ctor lift, v5 assigned first, v10 top=first; Z+=
+11:14 00761980 grade v5.cpp DIFFER(390v389) hunks=26 /Op -- TU flag /Op (float consistency: homes and reloads float copies): v1 ctor copy+ctor lift, v5 assigned first, v10 top=first; Z+=
+11:15 00761980 grade v10.cpp DIFFER(373v389) hunks=19 /Op -- TU flag /Op (float consistency: homes and reloads float copies): v1 ctor copy+ctor lift, v5 assigned first, v10 top=first; Z+=
+11:16 00761980 grade v28.cpp SRC_FAIL -- inline bool NShape::CShape::GetStartPoint(C3DVector&) const (FableWin.pdb) fills the start point: v28 ctor lift; v29 top=start; Z+=; v30 start + C3DVector(0,0,.15)
+11:16 00761980 grade v29.cpp SRC_FAIL -- inline bool NShape::CShape::GetStartPoint(C3DVector&) const (FableWin.pdb) fills the start point: v28 ctor lift; v29 top=start; Z+=; v30 start + C3DVector(0,0,.15)
+11:16 00761980 grade v30.cpp SRC_FAIL -- inline bool NShape::CShape::GetStartPoint(C3DVector&) const (FableWin.pdb) fills the start point: v28 ctor lift; v29 top=start; Z+=; v30 start + C3DVector(0,0,.15)
+11:16 00761980 grade v28.cpp DIFFER(381v389) hunks=5 -- inline bool NShape::CShape::GetStartPoint(C3DVector&) const (pos=*Points.begin()): v28 ctor lift; v29 top=start; Z+=; v30 start + C3DVector(0,0,.15)
+11:16 00761980 grade v29.cpp DIFFER(381v389) hunks=5 -- inline bool NShape::CShape::GetStartPoint(C3DVector&) const (pos=*Points.begin()): v28 ctor lift; v29 top=start; Z+=; v30 start + C3DVector(0,0,.15)
+11:16 00761980 grade v30.cpp DIFFER(381v389) hunks=5 -- inline bool NShape::CShape::GetStartPoint(C3DVector&) const (pos=*Points.begin()): v28 ctor lift; v29 top=start; Z+=; v30 start + C3DVector(0,0,.15)
+11:17 00761980 grade v31.cpp DIFFER(381v389) hunks=5 -- GetStartPoint body forms: v31 if(!empty){pos=..;return true;}return false; v32 bool found local; v33 size()==0 / Points[0]
+11:17 00761980 grade v32.cpp DIFFER(381v389) hunks=5 -- GetStartPoint body forms: v31 if(!empty){pos=..;return true;}return false; v32 bool found local; v33 size()==0 / Points[0]
+11:17 00761980 grade v33.cpp DIFFER(382v389) hunks=31 -- GetStartPoint body forms: v31 if(!empty){pos=..;return true;}return false; v32 bool found local; v33 size()==0 / Points[0]
+11:18 00761980 grade v34.cpp DIFFER(370v389) hunks=32 -- GetStartPoint with the condition tested twice (copy guarded, result returned separately): v34 bool found=!empty; v35 re-evaluated !empty; v36 bool empty local
+11:18 00761980 grade v35.cpp DIFFER(379v389) hunks=22 -- GetStartPoint with the condition tested twice (copy guarded, result returned separately): v34 bool found=!empty; v35 re-evaluated !empty; v36 bool empty local
+11:18 00761980 grade v36.cpp DIFFER(370v389) hunks=32 -- GetStartPoint with the condition tested twice (copy guarded, result returned separately): v34 bool found=!empty; v35 re-evaluated !empty; v36 bool empty local
+11:19 00761980 grade v37.cpp DIFFER(381v389) hunks=5 -- GetStartPoint(start) + v37 lift temp in arg list; v38 named red between copy and lift; v39 start declared before the loop
+11:19 00761980 grade v38.cpp DIFFER(381v389) hunks=5 -- GetStartPoint(start) + v37 lift temp in arg list; v38 named red between copy and lift; v39 start declared before the loop
+11:19 00761980 grade v39.cpp DIFFER(381v389) hunks=5 -- GetStartPoint(start) + v37 lift temp in arg list; v38 named red between copy and lift; v39 start declared before the loop
+00761980 probe 1 view v34 full listing (bool found form) -> see next note
+11:20 00761980 grade v40.cpp DIFFER(381v389) hunks=5 -- GetStartPoint body as an expression (late-threaded bool): v40 ?: with comma; v41 && with comma; v42 iterator local form
+11:20 00761980 grade v41.cpp DIFFER(381v389) hunks=5 -- GetStartPoint body as an expression (late-threaded bool): v40 ?: with comma; v41 && with comma; v42 iterator local form
+11:20 00761980 grade v42.cpp DIFFER(365v389) hunks=26 -- GetStartPoint body as an expression (late-threaded bool): v40 ?: with comma; v41 && with comma; v42 iterator local form
+00761980 probe 2 array[2] dest + named ctor lift: does the reload appear? -> see listing
+00761980 probe 3 v28 with /Op full listing -> see notes
+00761980 probe 4 GetStartPoint(start) with start really escaped (extern call) -> see notes
+11:23 00761980 grade v43.cpp DIFFER(379v389) hunks=22 -- copy in one conditional block, lift after a join: v43 two identical empty() tests; v44 GetStartPoint result ignored then empty() test; v45 has_start flag
+11:23 00761980 grade v44.cpp DIFFER(379v389) hunks=22 -- copy in one conditional block, lift after a join: v43 two identical empty() tests; v44 GetStartPoint result ignored then empty() test; v45 has_start flag
+11:23 00761980 grade v45.cpp DIFFER(381v389) hunks=5 -- copy in one conditional block, lift after a join: v43 two identical empty() tests; v44 GetStartPoint result ignored then empty() test; v45 has_start flag
+00761980 probe 5 view v43 listing (two tests) -> copy shape
+11:24 00761980 grade v46.cpp DIFFER(381v389) hunks=5 -- early-out forms: v46 if(!GetStartPoint(start)) continue; v47 bool has_start then continue; v48 empty() continue then GetStartPoint ignoring result
+11:24 00761980 grade v47.cpp DIFFER(381v389) hunks=5 -- early-out forms: v46 if(!GetStartPoint(start)) continue; v47 bool has_start then continue; v48 empty() continue then GetStartPoint ignoring result
+11:24 00761980 grade v48.cpp DIFFER(380v389) hunks=21 -- early-out forms: v46 if(!GetStartPoint(start)) continue; v47 bool has_start then continue; v48 empty() continue then GetStartPoint ignoring result
+11:25 00761980 grade v49.cpp DIFFER(365v389) hunks=33 -- same condition value branched on twice (register operands): v49 iterator locals pb/pe tested twice; v50 const bool has_points tested twice
+11:25 00761980 grade v50.cpp DIFFER(370v389) hunks=32 -- same condition value branched on twice (register operands): v49 iterator locals pb/pe tested twice; v50 const bool has_points tested twice
+00761980 probe 6 view v49 listing (iterator locals tested twice)
+11:26 00761980 grade p14.cpp DIFFER(381v389) hunks=5 -- PROBE register pressure: keep the shape pointer live past the copy with a codeless use (__assume): p14 after lift; p15 after AddPrimitive; p16 before lift
+11:26 00761980 grade p15.cpp DIFFER(381v389) hunks=5 -- PROBE register pressure: keep the shape pointer live past the copy with a codeless use (__assume): p14 after lift; p15 after AddPrimitive; p16 before lift
+11:26 00761980 grade p16.cpp DIFFER(381v389) hunks=5 -- PROBE register pressure: keep the shape pointer live past the copy with a codeless use (__assume): p14 after lift; p15 after AddPrimitive; p16 before lift
+11:26 00761980 grade v51.cpp DIFFER(378v389) hunks=21 -- lift computed after the join, before the has_start test (dead on the empty path): v51 ctor lift; v52 start + C3DVector(0,0,.15); v53 start.Z += .15 in place
+11:26 00761980 grade v52.cpp DIFFER(378v389) hunks=21 -- lift computed after the join, before the has_start test (dead on the empty path): v51 ctor lift; v52 start + C3DVector(0,0,.15); v53 start.Z += .15 in place
+11:26 00761980 grade v53.cpp DIFFER(350v389) hunks=21 -- lift computed after the join, before the has_start test (dead on the empty path): v51 ctor lift; v52 start + C3DVector(0,0,.15); v53 start.Z += .15 in place
+11:27 00761980 grade p17.cpp DIFFER(382v389) hunks=12 -- PROBE unsplit + address-taken: GetStartPoint(pts[0]) into a local C3DVector[2]: p17 memberwise lift into pts[1]; p18 pts[1]=C3DVector(...); p19 pts[1]=pts[0]; Z+=
+11:27 00761980 grade p18.cpp DIFFER(381v389) hunks=25 -- PROBE unsplit + address-taken: GetStartPoint(pts[0]) into a local C3DVector[2]: p17 memberwise lift into pts[1]; p18 pts[1]=C3DVector(...); p19 pts[1]=pts[0]; Z+=
+11:27 00761980 grade p19.cpp DIFFER(386v389) hunks=11 -- PROBE unsplit + address-taken: GetStartPoint(pts[0]) into a local C3DVector[2]: p17 memberwise lift into pts[1]; p18 pts[1]=C3DVector(...); p19 pts[1]=pts[0]; Z+=
+00761980 probe 7 does inline GetStartPoint reproduce sibling 0x00760910 GetPrincipalVector? -> see notes
+11:28 00761980 grade p20.cpp DIFFER(381v389) hunks=5 -- PROBE codeless call barrier between copy and lift (__noop, the release form of a debug macro): p20 __noop(start.X); p21 __noop(); p22 __noop(&start)
+11:28 00761980 grade p21.cpp DIFFER(381v389) hunks=5 -- PROBE codeless call barrier between copy and lift (__noop, the release form of a debug macro): p20 __noop(start.X); p21 __noop(); p22 __noop(&start)
+11:28 00761980 grade p22.cpp DIFFER(381v389) hunks=5 -- PROBE codeless call barrier between copy and lift (__noop, the release form of a debug macro): p20 __noop(start.X); p21 __noop(); p22 __noop(&start)
+11:30 00761980 grade v54.cpp DIFFER(376v389) hunks=22 -- GetStartPoint(start) + division by a unit constant (GOTCHAS 219): v54 start/1.0f + off; v55 (start+off)/1.0f; v56 top = start/1.0f; top.Z += .15
+11:30 00761980 grade v55.cpp DIFFER(378v389) hunks=22 -- GetStartPoint(start) + division by a unit constant (GOTCHAS 219): v54 start/1.0f + off; v55 (start+off)/1.0f; v56 top = start/1.0f; top.Z += .15
+11:30 00761980 grade v56.cpp DIFFER(381v389) hunks=6 -- GetStartPoint(start) + division by a unit constant (GOTCHAS 219): v54 start/1.0f + off; v55 (start+off)/1.0f; v56 top = start/1.0f; top.Z += .15
+11:30 00761980 grade v57.cpp DIFFER(365v389) hunks=26 -- GetStartPoint body as a loop that returns on the first point (join kept until the dead back edge goes): v57 for+return; v58 while+return; v59 for+found+break
+11:30 00761980 grade v58.cpp DIFFER(365v389) hunks=26 -- GetStartPoint body as a loop that returns on the first point (join kept until the dead back edge goes): v57 for+return; v58 while+return; v59 for+found+break
+11:30 00761980 grade v59.cpp DIFFER(365v389) hunks=26 -- GetStartPoint body as a loop that returns on the first point (join kept until the dead back edge goes): v57 for+return; v58 while+return; v59 for+found+break
+00761980 probe 8 view v48 listing (empty() continue, then GetStartPoint result ignored)
+11:33 00761980 grade v60.cpp DIFFER(373v389) hunks=16 -- lift as a block ASSIGNMENT top = start (implicit operator=) then Z: v60 top.Z += .15; v61 top.Z = start.Z + .15; v62 start, top declared together
+11:33 00761980 grade v61.cpp DIFFER(395v389) hunks=13 -- lift as a block ASSIGNMENT top = start (implicit operator=) then Z: v60 top.Z += .15; v61 top.Z = start.Z + .15; v62 start, top declared together
+11:33 00761980 grade v62.cpp DIFFER(373v389) hunks=17 -- lift as a block ASSIGNMENT top = start (implicit operator=) then Z: v60 top.Z += .15; v61 top.Z = start.Z + .15; v62 start, top declared together
+00761980 probe 9 view v60 listing (top = start block assign)
+00761980 probe 10 view v57 listing (loop-shaped GetStartPoint)
+11:34 00761980 grade v28.cpp DIFFER(375v389) hunks=22 /Oa -- TU flag /Oa (no-alias: the store into start no longer kills the second empty() test): v28 plain GetStartPoint; v43 two empty() tests; v44 GetStartPoint ignored + empty() test
+11:34 00761980 grade v43.cpp DIFFER(365v389) hunks=22 /Oa -- TU flag /Oa (no-alias: the store into start no longer kills the second empty() test): v28 plain GetStartPoint; v43 two empty() tests; v44 GetStartPoint ignored + empty() test
+11:34 00761980 grade v44.cpp DIFFER(365v389) hunks=22 /Oa -- TU flag /Oa (no-alias: the store into start no longer kills the second empty() test): v28 plain GetStartPoint; v43 two empty() tests; v44 GetStartPoint ignored + empty() test
+11:36 00761980 grade v128.cpp DIFFER(381v389) hunks=5 -- C3DVector alignment 1 (FABLE_RETAIL_C3DVECTOR_PACKED, the owner-approved original packing): v128 GetStartPoint; v101 copy ctor; v105 assigned first
+11:36 00761980 grade v101.cpp DIFFER(375v389) hunks=8 -- C3DVector alignment 1 (FABLE_RETAIL_C3DVECTOR_PACKED, the owner-approved original packing): v128 GetStartPoint; v101 copy ctor; v105 assigned first
+11:36 00761980 grade v105.cpp DIFFER(381v389) hunks=5 -- C3DVector alignment 1 (FABLE_RETAIL_C3DVECTOR_PACKED, the owner-approved original packing): v128 GetStartPoint; v101 copy ctor; v105 assigned first
+11:38 00761980 grade p23.cpp DIFFER(381v389) hunks=5 -- PROBE lift inside a one-trip loop (loop-header join removed after propagation?): p23 for(i<1) around lift+draw; p24 do{}while(0); p25 for(i<1) around lift only
+11:38 00761980 grade p24.cpp DIFFER(381v389) hunks=5 -- PROBE lift inside a one-trip loop (loop-header join removed after propagation?): p23 for(i<1) around lift+draw; p24 do{}while(0); p25 for(i<1) around lift only
+11:38 00761980 grade p25.cpp DIFFER(380v389) hunks=24 -- PROBE lift inside a one-trip loop (loop-header join removed after propagation?): p23 for(i<1) around lift+draw; p24 do{}while(0); p25 for(i<1) around lift only
+11:38 00761980 grade p26.cpp DIFFER(389v389) hunks=9 -- PROBE (not a candidate: volatile rule): lift reads start through a volatile reference -- is unforwarded reads the ONLY missing fact?
+11:40 00761980 grade 00761980.cpp DIFFER(381v389) hunks=5 -- best source saved (GetStartPoint + ctor lift), probe bodies removed from the overlay
+11:41 00761980 grade v63.cpp DIFFER(381v389) hunks=5 -- identities that may fold later than x+0.0f: v63 start - C3DVector(0,0,-.15); v64 start + C3DVector(-0.0,-0.0,.15); v65 top=start; top -= C3DVector(0,0,-.15)
+11:41 00761980 grade v64.cpp DIFFER(381v389) hunks=5 -- identities that may fold later than x+0.0f: v63 start - C3DVector(0,0,-.15); v64 start + C3DVector(-0.0,-0.0,.15); v65 top=start; top -= C3DVector(0,0,-.15)
+11:41 00761980 grade v65.cpp SRC_FAIL -- identities that may fold later than x+0.0f: v63 start - C3DVector(0,0,-.15); v64 start + C3DVector(-0.0,-0.0,.15); v65 top=start; top -= C3DVector(0,0,-.15)
+11:41 00761980 grade v66.cpp DIFFER(373v389) hunks=19 /Op -- /Op with a lift that needs no by-value float temp: v66 memberwise Z,Y,X; v67 memberwise X,Y,Z; v68 top = start; top.Z += .15
+11:42 00761980 grade v67.cpp DIFFER(373v389) hunks=19 /Op -- /Op with a lift that needs no by-value float temp: v66 memberwise Z,Y,X; v67 memberwise X,Y,Z; v68 top = start; top.Z += .15
+11:42 00761980 grade v68.cpp DIFFER(373v389) hunks=19 /Op -- /Op with a lift that needs no by-value float temp: v66 memberwise Z,Y,X; v67 memberwise X,Y,Z; v68 top = start; top.Z += .15
+11:43 00761980 grade v69.cpp DIFFER(381v389) hunks=5 -- CRGBColour 3-arg ctor / Initialise chain (FABLE_RETAIL_CRGBCOLOUR) as an indirect-store kill: v69 named top; v70 lift temp in arg list; v71 named red between copy and lift
+11:43 00761980 grade v70.cpp DIFFER(381v389) hunks=5 -- CRGBColour 3-arg ctor / Initialise chain (FABLE_RETAIL_CRGBCOLOUR) as an indirect-store kill: v69 named top; v70 lift temp in arg list; v71 named red between copy and lift
+11:43 00761980 grade v71.cpp DIFFER(381v389) hunks=5 -- CRGBColour 3-arg ctor / Initialise chain (FABLE_RETAIL_CRGBCOLOUR) as an indirect-store kill: v69 named top; v70 lift temp in arg list; v71 named red between copy and lift
+11:43 00761980 grade 00761980.cpp DIFFER(381v389) hunks=5 -- final regrade of the saved best source
+11:54 00761980 grade a1.cpp DIFFER(381v389) hunks=5 -- baseline regrade
+11:59 00761980 grade b1.cpp DIFFER(381v389) hunks=5 -- PROBE codeless address-taken use of start between copy and lift: b1 empty inline by const ref; b2 empty inline by pointer; b3 dead pointer local
+11:59 00761980 grade b2.cpp DIFFER(381v389) hunks=5 -- PROBE codeless address-taken use of start between copy and lift: b1 empty inline by const ref; b2 empty inline by pointer; b3 dead pointer local
+11:59 00761980 grade b3.cpp DIFFER(381v389) hunks=5 -- PROBE codeless address-taken use of start between copy and lift: b1 empty inline by const ref; b2 empty inline by pointer; b3 dead pointer local
+12:00 00761980 grade p2.cpp DIFFER(397v389) hunks=23 -- re-view p2 (escaped start) hunks
+12:01 00761980 grade p3.cpp DIFFER(382v389) hunks=12 -- re-view p3 (array[2]) hunks
+12:06 00761980 grade d1.cpp DIFFER(381v389) hunks=10 -- PROBE dead branch folded by the optimizer between copy and lift: d1 inline-false guarding an escaping call; d2 inline-false guarding a store; d3 never-written static bool guarding a call
+12:06 00761980 grade d2.cpp DIFFER(381v389) hunks=5 -- PROBE dead branch folded by the optimizer between copy and lift: d1 inline-false guarding an escaping call; d2 inline-false guarding a store; d3 never-written static bool guarding a call
+12:06 00761980 grade d3.cpp DIFFER(393v389) hunks=21 -- PROBE dead branch folded by the optimizer between copy and lift: d1 inline-false guarding an escaping call; d2 inline-false guarding a store; d3 never-written static bool guarding a call
+12:06 00761980 grade d1.cpp DIFFER(381v389) hunks=10 -- re-view d1 hunks
+12:08 00761980 grade e1.cpp DIFFER(381v389) hunks=5 -- PROBE second copy stage start->v before the lift (copy chain folded late?): e1 user copy ctor local v; e2 by-value inline param, user copy ctor; e3 by-value inline param, implicit copy
+12:08 00761980 grade e2.cpp DIFFER(381v389) hunks=5 -- PROBE second copy stage start->v before the lift (copy chain folded late?): e1 user copy ctor local v; e2 by-value inline param, user copy ctor; e3 by-value inline param, implicit copy
+12:08 00761980 grade e3.cpp DIFFER(381v389) hunks=5 -- PROBE second copy stage start->v before the lift (copy chain folded late?): e1 user copy ctor local v; e2 by-value inline param, user copy ctor; e3 by-value inline param, implicit copy
+12:09 00761980 grade f1.cpp DIFFER(454v389) hunks=27 -- PROBE late-merged identical arms after the copy (label between copy and lift, 0x008031E0 style): f1 if(it==SelectedShape) both arms lift+draw; f2 if(ParentThing) both arms; f3 reference ternary start:start
+12:09 00761980 grade f2.cpp DIFFER(438v389) hunks=26 -- PROBE late-merged identical arms after the copy (label between copy and lift, 0x008031E0 style): f1 if(it==SelectedShape) both arms lift+draw; f2 if(ParentThing) both arms; f3 reference ternary start:start
+12:09 00761980 grade f3.cpp DIFFER(381v389) hunks=5 -- PROBE late-merged identical arms after the copy (label between copy and lift, 0x008031E0 style): f1 if(it==SelectedShape) both arms lift+draw; f2 if(ParentThing) both arms; f3 reference ternary start:start
+12:10 00761980 grade g1.cpp DIFFER(417v389) hunks=24 -- PROBE lift duplicated in two identical arms (same variables, merged late): g1 top = C3DVector(...) both arms; g2 memberwise both arms; g3 ternary lift constant
+12:10 00761980 grade g2.cpp DIFFER(391v389) hunks=25 -- PROBE lift duplicated in two identical arms (same variables, merged late): g1 top = C3DVector(...) both arms; g2 memberwise both arms; g3 ternary lift constant
+12:10 00761980 grade g3.cpp DIFFER(381v389) hunks=5 -- PROBE lift duplicated in two identical arms (same variables, merged late): g1 top = C3DVector(...) both arms; g2 memberwise both arms; g3 ternary lift constant
+12:11 00761980 grade h1.cpp DIFFER(381v389) hunks=5 -- PROBE conditional jump to the next statement between copy and lift (0x008031E0 style): h1 inline void with early return; h2 do{if(c)break;}while(0); h3 if(c) goto next
+12:11 00761980 grade h2.cpp DIFFER(381v389) hunks=5 -- PROBE conditional jump to the next statement between copy and lift (0x008031E0 style): h1 inline void with early return; h2 do{if(c)break;}while(0); h3 if(c) goto next
+12:11 00761980 grade h3.cpp DIFFER(381v389) hunks=5 -- PROBE conditional jump to the next statement between copy and lift (0x008031E0 style): h1 inline void with early return; h2 do{if(c)break;}while(0); h3 if(c) goto next
+12:16 00761980 grade v1.cpp DIFFER(375v389) hunks=8 -- re-view v1 (copy ctor from *begin) hunks
+12:18 00761980 grade i1.cpp DIFFER(381v389) hunks=5 -- PROBE GetStartPoint behind a second inline level (bool threaded twice): i1 plain forwarder; i2 forwarder with its own early return; i3 int-returning forwarder
+12:18 00761980 grade i2.cpp DIFFER(381v389) hunks=5 -- PROBE GetStartPoint behind a second inline level (bool threaded twice): i1 plain forwarder; i2 forwarder with its own early return; i3 int-returning forwarder
+12:18 00761980 grade i3.cpp DIFFER(381v389) hunks=5 -- PROBE GetStartPoint behind a second inline level (bool threaded twice): i1 plain forwarder; i2 forwarder with its own early return; i3 int-returning forwarder
+12:21 00761980 grade k1.cpp DIFFER(365v389) -- PROBE v49 join (pb/pe locals tested twice) with lift order: k1 memberwise X,Y,Z; k2 copy ctor + Z+=; k3 memberwise Z,Y,X
+12:21 00761980 grade k2.cpp DIFFER(365v389) -- PROBE v49 join (pb/pe locals tested twice) with lift order: k1 memberwise X,Y,Z; k2 copy ctor + Z+=; k3 memberwise Z,Y,X
+12:21 00761980 grade k3.cpp DIFFER(367v389) -- PROBE v49 join (pb/pe locals tested twice) with lift order: k1 memberwise X,Y,Z; k2 copy ctor + Z+=; k3 memberwise Z,Y,X
+12:22 00761980 grade m1.cpp DIFFER(381v389) hunks=5 -- PROBE late-folded guard around lift+draw: m1 float constant division compare; m2 null test of &start; m3 start.Z == start.Z
+12:22 00761980 grade m2.cpp DIFFER(381v389) hunks=5 -- PROBE late-folded guard around lift+draw: m1 float constant division compare; m2 null test of &start; m3 start.Z == start.Z
+12:22 00761980 grade m3.cpp DIFFER(384v389) hunks=22 -- PROBE late-folded guard around lift+draw: m1 float constant division compare; m2 null test of &start; m3 start.Z == start.Z
+12:23 00761980 grade a1.cpp DIFFER(381v389) hunks=5 /G5 -- TU flag sweep on the best source: /G5
+12:23 00761980 grade a1.cpp DIFFER(379v389) hunks=10 /G7 -- TU flag sweep on the best source: /G7
+12:23 00761980 grade a1.cpp DIFFER(381v389) hunks=5 /Ox -- TU flag sweep on the best source: /Ox
+12:23 00761980 grade a1.cpp DIFFER(381v389) hunks=5 /Ob1 -- TU flag sweep on the best source: /Ob1
+12:23 00761980 grade a1.cpp ERROR /GL -- TU flag sweep on the best source: /GL
+12:23 00761980 grade a1.cpp DIFFER(381v389) hunks=5 /Ow -- TU flag sweep on the best source: /Ow
+12:23 00761980 grade a1.cpp DIFFER(381v389) hunks=5 /Og- /Og -- TU flag sweep on the best source: /Og- /Og
+12:24 00761980 grade a1.cpp DIFFER(381v389) hunks=5 /O1 /Ot -- TU flag sweep on the best source: /O1 /Ot
+12:25 00761980 grade v61.cpp DIFFER(395v389) hunks=13 -- re-view v61 (top = start; top.Z = start.Z + .15) hunks
+12:26 00761980 grade n1.cpp DIFFER(385v389) hunks=13 -- scalar stage 1 (user copy ctor from *begin) + BLOCK stage 2 (top = start, implicit operator=), as landed 0x00989CB0 site 0x0098A42E: n1 top.Z = start.Z + .15; n2 top.Z += .15; n3 3-float ctor stage 1
+12:26 00761980 grade n2.cpp DIFFER(385v389) hunks=12 -- scalar stage 1 (user copy ctor from *begin) + BLOCK stage 2 (top = start, implicit operator=), as landed 0x00989CB0 site 0x0098A42E: n1 top.Z = start.Z + .15; n2 top.Z += .15; n3 3-float ctor stage 1
+12:26 00761980 grade n3.cpp DIFFER(385v389) hunks=13 -- scalar stage 1 (user copy ctor from *begin) + BLOCK stage 2 (top = start, implicit operator=), as landed 0x00989CB0 site 0x0098A42E: n1 top.Z = start.Z + .15; n2 top.Z += .15; n3 3-float ctor stage 1
+12:27 00761980 grade q1.cpp DIFFER(386v389) hunks=26 -- PROBE stage 2 reads through a const-reference inline parameter (0x0098A42E shape): q1 block v = src on named start; q2 block v = src on a copy-ctor temporary; q3 scalar reads of a copy-ctor temporary
+12:27 00761980 grade q2.cpp DIFFER(372v389) hunks=21 -- PROBE stage 2 reads through a const-reference inline parameter (0x0098A42E shape): q1 block v = src on named start; q2 block v = src on a copy-ctor temporary; q3 scalar reads of a copy-ctor temporary
+12:27 00761980 grade q3.cpp DIFFER(375v389) hunks=8 -- PROBE stage 2 reads through a const-reference inline parameter (0x0098A42E shape): q1 block v = src on named start; q2 block v = src on a copy-ctor temporary; q3 scalar reads of a copy-ctor temporary
+12:30 00761980 grade r1.cpp DIFFER(375v389) hunks=8 -- PROBE float-typed memberwise stage 1 through a reference (as a user operator= would give): r1 inline start getter + ctor lift; r2 + copy ctor/Z+= lift; r3 memberwise in the body
+12:30 00761980 grade r2.cpp DIFFER(375v389) hunks=8 -- PROBE float-typed memberwise stage 1 through a reference (as a user operator= would give): r1 inline start getter + ctor lift; r2 + copy ctor/Z+= lift; r3 memberwise in the body
+12:30 00761980 grade r3.cpp DIFFER(375v389) hunks=8 -- PROBE float-typed memberwise stage 1 through a reference (as a user operator= would give): r1 inline start getter + ctor lift; r2 + copy ctor/Z+= lift; r3 memberwise in the body
+12:32 00761980 grade v54.cpp DIFFER(376v389) hunks=22 -- re-view v54-56 (/1.0f late-fold forms with GetStartPoint) hunks
+12:32 00761980 grade v55.cpp DIFFER(378v389) hunks=22 -- re-view v54-56 (/1.0f late-fold forms with GetStartPoint) hunks
+12:32 00761980 grade v56.cpp DIFFER(381v389) hunks=6 -- re-view v54-56 (/1.0f late-fold forms with GetStartPoint) hunks
+12:34 00761980 grade s1.cpp DIFFER(381v389) hunks=5 -- late-folded ZERO in the offset (x + 0 folded after forwarding): s1 start + C3DVector(0,0,.15f)/1.0f; s2 + C3DVector(0,0,.3f)/2.0f; s3 + C3DVector(0,0,1)/(1/.15f)
+12:34 00761980 grade s2.cpp DIFFER(381v389) hunks=5 -- late-folded ZERO in the offset (x + 0 folded after forwarding): s1 start + C3DVector(0,0,.15f)/1.0f; s2 + C3DVector(0,0,.3f)/2.0f; s3 + C3DVector(0,0,1)/(1/.15f)
+12:34 00761980 grade s3.cpp DIFFER(381v389) hunks=5 -- late-folded ZERO in the offset (x + 0 folded after forwarding): s1 start + C3DVector(0,0,.15f)/1.0f; s2 + C3DVector(0,0,.3f)/2.0f; s3 + C3DVector(0,0,1)/(1/.15f)
+12:37 00761980 grade t1.cpp DIFFER(381v389) hunks=6 -- callee-body visibility (Q32 lesson): t1 CEnginePrimitiveLine ctor 0x004C3090 real body visible, noinline; t2 CThing::GetPos 0x004C73D0 real body visible, noinline; t3 both
+12:37 00761980 grade t2.cpp SRC_FAIL -- callee-body visibility (Q32 lesson): t1 CEnginePrimitiveLine ctor 0x004C3090 real body visible, noinline; t2 CThing::GetPos 0x004C73D0 real body visible, noinline; t3 both
+12:37 00761980 grade t3.cpp SRC_FAIL -- callee-body visibility (Q32 lesson): t1 CEnginePrimitiveLine ctor 0x004C3090 real body visible, noinline; t2 CThing::GetPos 0x004C73D0 real body visible, noinline; t3 both
+12:37 00761980 grade t2.cpp SRC_FAIL -- callee-body visibility: t2 CThing::GetPos 0x004C73D0 real body visible noinline; t3 GetPos + line ctor both visible
+12:37 00761980 grade t3.cpp SRC_FAIL -- callee-body visibility: t2 CThing::GetPos 0x004C73D0 real body visible noinline; t3 GetPos + line ctor both visible
+12:37 00761980 grade t2.cpp DIFFER(381v389) hunks=5 -- callee-body visibility: t2 CThing::GetPos 0x004C73D0 real body visible noinline; t3 GetPos + line ctor both visible
+12:37 00761980 grade t3.cpp DIFFER(381v389) hunks=6 -- callee-body visibility: t2 CThing::GetPos 0x004C73D0 real body visible noinline; t3 GetPos + line ctor both visible
+12:38 00761980 grade u1.cpp DIFFER(381v389) hunks=6 -- line ctor visible (t1) + lift spellings: u1 C3DVector(x,y,z+.15) temp in the arg list; u2 start + C3DVector(0,0,.15f) in the arg list; u3 named top = start + C3DVector(0,0,.15f)
+12:38 00761980 grade u2.cpp DIFFER(381v389) hunks=6 -- line ctor visible (t1) + lift spellings: u1 C3DVector(x,y,z+.15) temp in the arg list; u2 start + C3DVector(0,0,.15f) in the arg list; u3 named top = start + C3DVector(0,0,.15f)
+12:38 00761980 grade u3.cpp DIFFER(381v389) hunks=6 -- line ctor visible (t1) + lift spellings: u1 C3DVector(x,y,z+.15) temp in the arg list; u2 start + C3DVector(0,0,.15f) in the arg list; u3 named top = start + C3DVector(0,0,.15f)
+12:39 00761980 grade w1.cpp DIFFER(381v389) hunks=7 -- PAREN tuples in the lift (81-tuple scheduling region / float PAREN nodes): w1 (Z+.15); w2 (X),(Y),(Z+.15); w3 (X),(Y),((Z)+.15)
+12:39 00761980 grade w2.cpp DIFFER(381v389) hunks=7 -- PAREN tuples in the lift (81-tuple scheduling region / float PAREN nodes): w1 (Z+.15); w2 (X),(Y),(Z+.15); w3 (X),(Y),((Z)+.15)
+12:39 00761980 grade w3.cpp DIFFER(381v389) hunks=7 -- PAREN tuples in the lift (81-tuple scheduling region / float PAREN nodes): w1 (Z+.15); w2 (X),(Y),(Z+.15); w3 (X),(Y),((Z)+.15)
+12:41 00761980 grade x1.cpp DIFFER(381v389) hunks=6 -- line ctor visible (t1) + lift re-tests: x1 copy ctor + Z+=; x2 top = start + Z+=; x3 copy ctor + += C3DVector(0,0,.15f)
+12:41 00761980 grade x2.cpp DIFFER(373v389) hunks=15 -- line ctor visible (t1) + lift re-tests: x1 copy ctor + Z+=; x2 top = start + Z+=; x3 copy ctor + += C3DVector(0,0,.15f)
+12:41 00761980 grade x3.cpp DIFFER(381v389) hunks=6 -- line ctor visible (t1) + lift re-tests: x1 copy ctor + Z+=; x2 top = start + Z+=; x3 copy ctor + += C3DVector(0,0,.15f)
+12:41 00761980 grade y1.cpp DIFFER(382v389) hunks=8 -- line ctor visible + local C3DVector pts[2] (array alias class): y1 memberwise lift; y2 pts[1] = C3DVector(...); y3 pts[1] = pts[0]; Z +=
+12:41 00761980 grade y2.cpp DIFFER(381v389) hunks=24 -- line ctor visible + local C3DVector pts[2] (array alias class): y1 memberwise lift; y2 pts[1] = C3DVector(...); y3 pts[1] = pts[0]; Z +=
+12:41 00761980 grade y3.cpp DIFFER(396v389) hunks=10 -- line ctor visible + local C3DVector pts[2] (array alias class): y1 memberwise lift; y2 pts[1] = C3DVector(...); y3 pts[1] = pts[0]; Z +=
+12:42 00761980 grade z1.cpp DIFFER(373v389) hunks=15 -- line ctor visible + BLOCK stage 2 with a longer-lived vector: z1 start at function scope, top = start; Z+=; z2 same, top.Z = start.Z+.15; z3 top at function scope
+12:42 00761980 grade z2.cpp DIFFER(395v389) hunks=12 -- line ctor visible + BLOCK stage 2 with a longer-lived vector: z1 start at function scope, top = start; Z+=; z2 same, top.Z = start.Z+.15; z3 top at function scope
+12:42 00761980 grade z3.cpp DIFFER(373v389) hunks=15 -- line ctor visible + BLOCK stage 2 with a longer-lived vector: z1 start at function scope, top = start; Z+=; z2 same, top.Z = start.Z+.15; z3 top at function scope
+12:43 00761980 grade 00761980.cpp DIFFER(381v389) hunks=6 -- best source saved: a1 + line ctor body visible out of line (red colour stores now match retail)
+12:44 00761980 grade ab1.cpp DIFFER(397v389) -- PROBE (extra call, not a candidate) start really captured with the line ctor visible: ab1 escape before the loop; ab2 escape in the loop before GetStartPoint; ab3 escape after AddPrimitive
+12:44 00761980 grade ab2.cpp DIFFER(396v389) -- PROBE (extra call, not a candidate) start really captured with the line ctor visible: ab1 escape before the loop; ab2 escape in the loop before GetStartPoint; ab3 escape after AddPrimitive
+12:44 00761980 grade ab3.cpp DIFFER(394v389) -- PROBE (extra call, not a candidate) start really captured with the line ctor visible: ab1 escape before the loop; ab2 escape in the loop before GetStartPoint; ab3 escape after AddPrimitive
+12:45 00761980 grade ac1.cpp DIFFER(365v389) hunks=34 -- join family re-run with the line ctor visible: ac1 v49 (pb/pe locals tested twice); ac2 v43 (two empty() tests); ac3 v48 (empty() continue + GetStartPoint ignored)
+12:45 00761980 grade ac2.cpp DIFFER(379v389) hunks=21 -- join family re-run with the line ctor visible: ac1 v49 (pb/pe locals tested twice); ac2 v43 (two empty() tests); ac3 v48 (empty() continue + GetStartPoint ignored)
+12:45 00761980 grade ac3.cpp DIFFER(380v389) hunks=20 -- join family re-run with the line ctor visible: ac1 v49 (pb/pe locals tested twice); ac2 v43 (two empty() tests); ac3 v48 (empty() continue + GetStartPoint ignored)
+12:46 00761980 grade t1.cpp DIFFER(390v389) hunks=26 /Op -- /Op with the line ctor visible: t1 ctor lift; x1 copy ctor + Z+=; x3 copy ctor + += C3DVector(0,0,.15f)
+12:46 00761980 grade x1.cpp DIFFER(373v389) hunks=17 /Op -- /Op with the line ctor visible: t1 ctor lift; x1 copy ctor + Z+=; x3 copy ctor + += C3DVector(0,0,.15f)
+12:46 00761980 grade x3.cpp DIFFER(401v389) hunks=12 /Op -- /Op with the line ctor visible: t1 ctor lift; x1 copy ctor + Z+=; x3 copy ctor + += C3DVector(0,0,.15f)
+12:46 00761980 grade ad1.cpp DIFFER(381v389) hunks=6 -- line ctor visible + lift through C3DVector::Initialise (FableWin ?Initialise@C3DVector@@QAEXMMM@Z): ad1 Initialise(x,y,z+.15); ad2 ctor(x,y,z) then Z+=; ad3 Initialise(x,y,z) then Z+=
+12:46 00761980 grade ad2.cpp DIFFER(381v389) hunks=6 -- line ctor visible + lift through C3DVector::Initialise (FableWin ?Initialise@C3DVector@@QAEXMMM@Z): ad1 Initialise(x,y,z+.15); ad2 ctor(x,y,z) then Z+=; ad3 Initialise(x,y,z) then Z+=
+12:46 00761980 grade ad3.cpp DIFFER(381v389) hunks=6 -- line ctor visible + lift through C3DVector::Initialise (FableWin ?Initialise@C3DVector@@QAEXMMM@Z): ad1 Initialise(x,y,z+.15); ad2 ctor(x,y,z) then Z+=; ad3 Initialise(x,y,z) then Z+=
+12:46 00761980 grade ae1.cpp DIFFER(381v389) hunks=6 -- GetStartPoint as an out-of-class definition in the TU (auto-inlined non-inline member): ae1 non-inline, early return; ae2 out-of-class inline; ae3 non-inline, if(!empty) form
+12:46 00761980 grade ae2.cpp DIFFER(381v389) hunks=6 -- GetStartPoint as an out-of-class definition in the TU (auto-inlined non-inline member): ae1 non-inline, early return; ae2 out-of-class inline; ae3 non-inline, if(!empty) form
+12:46 00761980 grade ae3.cpp DIFFER(381v389) hunks=6 -- GetStartPoint as an out-of-class definition in the TU (auto-inlined non-inline member): ae1 non-inline, early return; ae2 out-of-class inline; ae3 non-inline, if(!empty) form
+12:47 00761980 grade af1.cpp DIFFER(389v389) hunks=12 -- operator+ with the grouped X/Y sums (FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP: PAREN nodes keep X+0 and Y+0 as late-folded stages): af1 start + C3DVector(0,0,.15f) in the arg list, ctor visible; af2 named top, ctor visible; af3 named top, ctor declaration only
+12:47 00761980 grade af2.cpp DIFFER(389v389) hunks=12 -- operator+ with the grouped X/Y sums (FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP: PAREN nodes keep X+0 and Y+0 as late-folded stages): af1 start + C3DVector(0,0,.15f) in the arg list, ctor visible; af2 named top, ctor visible; af3 named top, ctor declaration only
+12:47 00761980 grade af3.cpp DIFFER(389v389) hunks=13 -- operator+ with the grouped X/Y sums (FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP: PAREN nodes keep X+0 and Y+0 as late-folded stages): af1 start + C3DVector(0,0,.15f) in the arg list, ctor visible; af2 named top, ctor visible; af3 named top, ctor declaration only
+12:47 00761980 grade ag1.cpp DIFFER(389v389) hunks=12 -- grouped (PAREN) identity stages on X and Y, ctor visible: ag1 start + C3DVector(-0.0f,-0.0f,.15f) grouped operator+; ag2 start - C3DVector(0,0,-.15f) grouped operator-; ag3 ctor((X-0.0f),(Y-0.0f),Z+.15f)
+12:47 00761980 grade ag2.cpp DIFFER(389v389) hunks=12 -- grouped (PAREN) identity stages on X and Y, ctor visible: ag1 start + C3DVector(-0.0f,-0.0f,.15f) grouped operator+; ag2 start - C3DVector(0,0,-.15f) grouped operator-; ag3 ctor((X-0.0f),(Y-0.0f),Z+.15f)
+12:47 00761980 grade ag3.cpp DIFFER(381v389) hunks=6 -- grouped (PAREN) identity stages on X and Y, ctor visible: ag1 start + C3DVector(-0.0f,-0.0f,.15f) grouped operator+; ag2 start - C3DVector(0,0,-.15f) grouped operator-; ag3 ctor((X-0.0f),(Y-0.0f),Z+.15f)
+12:49 00761980 grade ai1.cpp DIFFER(389v389) hunks=10 -- late-folded identity stages on X and Y in ctor-argument order (GOTCHAS 219), ctor visible: ai1 (float)(X*1.0),(float)(Y*1.0); ai2 (float)(X+0.0),(float)(Y+0.0); ai3 grouped sums with a named offset vector
+12:49 00761980 grade ai2.cpp DIFFER(389v389) hunks=10 -- late-folded identity stages on X and Y in ctor-argument order (GOTCHAS 219), ctor visible: ai1 (float)(X*1.0),(float)(Y*1.0); ai2 (float)(X+0.0),(float)(Y+0.0); ai3 grouped sums with a named offset vector
+12:49 00761980 grade ai3.cpp DIFFER(389v389) hunks=12 -- late-folded identity stages on X and Y in ctor-argument order (GOTCHAS 219), ctor visible: ai1 (float)(X*1.0),(float)(Y*1.0); ai2 (float)(X+0.0),(float)(Y+0.0); ai3 grouped sums with a named offset vector
+12:50 00761980 grade ak1.cpp DIFFER(373v389) hunks=17 -- PROBE (mechanism): X and Y read as integer bits (type-punned, as 0x006824FC): ak1 order X,Y,Z; ak2 order Z,Y,X; ak3 grouped operator+ with start at function scope
+12:50 00761980 grade ak2.cpp DIFFER(373v389) hunks=17 -- PROBE (mechanism): X and Y read as integer bits (type-punned, as 0x006824FC): ak1 order X,Y,Z; ak2 order Z,Y,X; ak3 grouped operator+ with start at function scope
+12:50 00761980 grade ak3.cpp DIFFER(389v389) hunks=12 -- PROBE (mechanism): X and Y read as integer bits (type-punned, as 0x006824FC): ak1 order X,Y,Z; ak2 order Z,Y,X; ak3 grouped operator+ with start at function scope
+12:51 00761980 grade 00761980.cpp DIFFER(381v389) hunks=6 -- final regrade of the saved best source (pass 2)
+12:54 00761980 grade ba0.cpp DIFFER(381v389) hunks=6 -- pass3 baseline regrade of best source
+12:54 00761980 grade ba0.cpp DIFFER(390v389) hunks=26 /Op -- /Op view: ba0 ctor lift; bb1 memberwise Z,Y,X; bb2 memberwise X,Y,Z
+12:54 00761980 grade bb1.cpp DIFFER(373v389) hunks=17 /Op -- /Op view: ba0 ctor lift; bb1 memberwise Z,Y,X; bb2 memberwise X,Y,Z
+12:54 00761980 grade bb2.cpp DIFFER(373v389) hunks=17 /Op -- /Op view: ba0 ctor lift; bb1 memberwise Z,Y,X; bb2 memberwise X,Y,Z
+12:56 00761980 grade bc1.cpp DIFFER(381v389) hunks=6 -- second block copy with Z overwritten from start: bc1 copy ctor + top.Z = start.Z+.15; bc2 assign + same; bc3 memberwise Z,Y,X (ctor visible)
+12:56 00761980 grade bc2.cpp DIFFER(395v389) hunks=12 -- second block copy with Z overwritten from start: bc1 copy ctor + top.Z = start.Z+.15; bc2 assign + same; bc3 memberwise Z,Y,X (ctor visible)
+12:56 00761980 grade bc3.cpp DIFFER(387v389) hunks=7 -- second block copy with Z overwritten from start: bc1 copy ctor + top.Z = start.Z+.15; bc2 assign + same; bc3 memberwise Z,Y,X (ctor visible)
+12:56 00761980 grade bc3.cpp DIFFER(387v389) hunks=7 -- view bc3 memberwise Z,Y,X
+12:56 00761980 grade bc2.cpp DIFFER(395v389) hunks=12 -- view bc2 assign + top.Z = start.Z+.15
+12:59 00761980 grade bd1.cpp DIFFER(379v389) hunks=21 -- join family + memberwise Z,Y,X lift (does the block equal retail's?): bd1 two empty tests; bd2 GetStartPoint result unused + empty test; bd3 empty-continue + GetStartPoint
+12:59 00761980 grade bd2.cpp DIFFER(379v389) hunks=21 -- join family + memberwise Z,Y,X lift (does the block equal retail's?): bd1 two empty tests; bd2 GetStartPoint result unused + empty test; bd3 empty-continue + GetStartPoint
+12:59 00761980 grade bd3.cpp DIFFER(380v389) hunks=20 -- join family + memberwise Z,Y,X lift (does the block equal retail's?): bd1 two empty tests; bd2 GetStartPoint result unused + empty test; bd3 empty-continue + GetStartPoint
+13:03 00761980 grade be1.cpp DIFFER(387v389) hunks=7 -- PROBE mechanism: GetStartPoint through a pointer local (indirect struct assign at local-opt time?): be1 + ZYX memberwise; be2 ctor lift reading through the pointer; be3 ctor lift reading start
+13:03 00761980 grade be2.cpp DIFFER(381v389) hunks=6 -- PROBE mechanism: GetStartPoint through a pointer local (indirect struct assign at local-opt time?): be1 + ZYX memberwise; be2 ctor lift reading through the pointer; be3 ctor lift reading start
+13:03 00761980 grade be3.cpp DIFFER(381v389) hunks=6 -- PROBE mechanism: GetStartPoint through a pointer local (indirect struct assign at local-opt time?): be1 + ZYX memberwise; be2 ctor lift reading through the pointer; be3 ctor lift reading start
+13:04 00761980 grade bf1.cpp DIFFER(381v389) hunks=6 -- memberwise lift orders, ctor visible: bf1 XYZ; bf2 YXZ; bf3 ZXY
+13:04 00761980 grade bf2.cpp DIFFER(387v389) hunks=7 -- memberwise lift orders, ctor visible: bf1 XYZ; bf2 YXZ; bf3 ZXY
+13:04 00761980 grade bf3.cpp DIFFER(381v389) hunks=6 -- memberwise lift orders, ctor visible: bf1 XYZ; bf2 YXZ; bf3 ZXY
+13:04 00761980 grade bf4.cpp DIFFER(387v389) hunks=7 -- memberwise lift orders, ctor visible: bf4 YZX; bf5 XZY
+13:04 00761980 grade bf5.cpp DIFFER(381v389) hunks=6 -- memberwise lift orders, ctor visible: bf4 YZX; bf5 XZY
+13:05 00761980 grade bg1.cpp DIFFER(387v389) hunks=7 -- memberwise copy Z,Y,X then top.Z += .15
+13:05 00761980 grade bf2.cpp DIFFER(387v389) hunks=7 -- view bf2 YXZ
+13:05 00761980 grade bf4.cpp DIFFER(387v389) hunks=7 -- view bf4 YZX
+13:07 00761980 grade y1.cpp DIFFER(382v389) hunks=8 -- re-view y1 (pts[2] memberwise lift)
+13:07 00761980 grade bh1.cpp DIFFER(388v389) hunks=10 -- ZYX memberwise lift: bh1 on C3DVector pts[2]; bh2 start at function scope; bh3 top at function scope
+13:07 00761980 grade bh2.cpp DIFFER(387v389) hunks=7 -- ZYX memberwise lift: bh1 on C3DVector pts[2]; bh2 start at function scope; bh3 top at function scope
+13:07 00761980 grade bh3.cpp DIFFER(387v389) hunks=7 -- ZYX memberwise lift: bh1 on C3DVector pts[2]; bh2 start at function scope; bh3 top at function scope
+13:07 00761980 grade bh1.cpp DIFFER(388v389) hunks=10 -- view bh1 pts[2] + ZYX
+13:09 00761980 grade bf1.cpp DIFFER(373v389) hunks=17 /Op -- /Op view bf1 memberwise XYZ
+13:10 00761980 grade bi1.cpp DIFFER(381v389) hunks=6 -- offset vector at FUNCTION scope (zeros known only by global const-prop -> X+0 / Y+0 fold after local forwarding?): bi1 start + offset; bi2 const offset; bi3 ctor with member sums
+13:10 00761980 grade bi2.cpp DIFFER(381v389) hunks=6 -- offset vector at FUNCTION scope (zeros known only by global const-prop -> X+0 / Y+0 fold after local forwarding?): bi1 start + offset; bi2 const offset; bi3 ctor with member sums
+13:10 00761980 grade bi3.cpp DIFFER(381v389) hunks=6 -- offset vector at FUNCTION scope (zeros known only by global const-prop -> X+0 / Y+0 fold after local forwarding?): bi1 start + offset; bi2 const offset; bi3 ctor with member sums
+13:12 00761980 grade g2.cpp DIFFER(391v389) hunks=25 -- re-view g2 (memberwise lift duplicated in two arms)
+13:13 00761980 grade bj1.cpp DIFFER(365v389) hunks=23 -- PROBE (0x008031E0 mechanism): the block copy duplicated in two identical arms, merged late -> label between copy and lift: bj1 reg compare + ctor lift; bj2 reg compare + ZYX; bj3 it==SelectedShape + ZYX
+13:13 00761980 grade bj2.cpp DIFFER(371v389) hunks=23 -- PROBE (0x008031E0 mechanism): the block copy duplicated in two identical arms, merged late -> label between copy and lift: bj1 reg compare + ctor lift; bj2 reg compare + ZYX; bj3 it==SelectedShape + ZYX
+13:13 00761980 grade bj3.cpp DIFFER(374v389) hunks=24 -- PROBE (0x008031E0 mechanism): the block copy duplicated in two identical arms, merged late -> label between copy and lift: bj1 reg compare + ctor lift; bj2 reg compare + ZYX; bj3 it==SelectedShape + ZYX
+13:14 00761980 grade bk1.cpp DIFFER(387v389) hunks=8 -- ZYX memberwise + PAREN tuples round the Z sum (region cut probe): bk1 x1; bk2 x3; bk3 x6
+13:14 00761980 grade bk2.cpp DIFFER(387v389) hunks=9 -- ZYX memberwise + PAREN tuples round the Z sum (region cut probe): bk1 x1; bk2 x3; bk3 x6
+13:14 00761980 grade bk3.cpp DIFFER(387v389) hunks=8 -- ZYX memberwise + PAREN tuples round the Z sum (region cut probe): bk1 x1; bk2 x3; bk3 x6
+13:17 00761980 grade bm1.cpp DIFFER(387v389) hunks=6 -- PROBE read order vs store order: bm1 swapped fields (not a candidate); bm2 reads Y,X stores X,Y; bm3 reads X,Y stores Y,X
+13:17 00761980 grade bm2.cpp DIFFER(381v389) hunks=6 -- PROBE read order vs store order: bm1 swapped fields (not a candidate); bm2 reads Y,X stores X,Y; bm3 reads X,Y stores Y,X
+13:17 00761980 grade bm3.cpp DIFFER(387v389) hunks=7 -- PROBE read order vs store order: bm1 swapped fields (not a candidate); bm2 reads Y,X stores X,Y; bm3 reads X,Y stores Y,X
+13:18 00761980 grade bn1.cpp DIFFER(373v389) hunks=17 -- PROBE (mechanism, casts are not a candidate): X,Y moved as an 8-byte block: bn1 C2DVector block then Z; bn2 Z then block; bn3 __int64 copy
+13:18 00761980 grade bn2.cpp DIFFER(373v389) hunks=17 -- PROBE (mechanism, casts are not a candidate): X,Y moved as an 8-byte block: bn1 C2DVector block then Z; bn2 Z then block; bn3 __int64 copy
+13:18 00761980 grade bn3.cpp DIFFER(373v389) hunks=17 -- PROBE (mechanism, casts are not a candidate): X,Y moved as an 8-byte block: bn1 C2DVector block then Z; bn2 Z then block; bn3 __int64 copy
+13:22 00761980 grade bp1.cpp DIFFER(377v389) hunks=10 -- PROBE (no lift, mechanism only): pure component copies in order: bp1 Z,Y,X; bp2 Y,Z,X; bp3 Z,X,Y -- which components are reloaded
+13:22 00761980 grade bp2.cpp DIFFER(379v389) hunks=10 -- PROBE (no lift, mechanism only): pure component copies in order: bp1 Z,Y,X; bp2 Y,Z,X; bp3 Z,X,Y -- which components are reloaded
+13:23 00761980 grade bp3.cpp DIFFER(381v389) hunks=10 -- PROBE (no lift, mechanism only): pure component copies in order: bp1 Z,Y,X; bp2 Y,Z,X; bp3 Z,X,Y -- which components are reloaded
+13:26 00761980 grade bq1.cpp DIFFER(381v389) -- PROBE dead-assignment if between copy and lift (branch emptied only by dead-store elimination): bq1 float dead + ctor lift; bq2 + ZYX; bq3 int dead, reg compare + ZYX
+13:26 00761980 grade bq2.cpp DIFFER(387v389) -- PROBE dead-assignment if between copy and lift (branch emptied only by dead-store elimination): bq1 float dead + ctor lift; bq2 + ZYX; bq3 int dead, reg compare + ZYX
+13:26 00761980 grade bq3.cpp DIFFER(387v389) -- PROBE dead-assignment if between copy and lift (branch emptied only by dead-store elimination): bq1 float dead + ctor lift; bq2 + ZYX; bq3 int dead, reg compare + ZYX
+13:27 00761980 grade bs1.cpp RELOCATION_MATCH  -- ParentThing read into a named local BEFORE the lift (rotation: ecx taken between the block copy and the X/Y reads): bs1 CThing* + ctor lift; bs2 CThing* + ZYX; bs3 CThing& + ctor lift
+13:27 00761980 grade bs2.cpp DIFFER(385v389)  -- ParentThing read into a named local BEFORE the lift (rotation: ecx taken between the block copy and the X/Y reads): bs1 CThing* + ctor lift; bs2 CThing* + ZYX; bs3 CThing& + ctor lift
+13:27 00761980 grade bs3.cpp RELOCATION_MATCH  -- ParentThing read into a named local BEFORE the lift (rotation: ecx taken between the block copy and the X/Y reads): bs1 CThing* + ctor lift; bs2 CThing* + ZYX; bs3 CThing& + ctor lift
+13:27 00761980 grade bt1.cpp RELOCATION_MATCH -- parent thing named before the lift: bt1 CThing& parent = GetParentThing(); bt2 const CThing&; bs3 CThing& parent = *ParentThing
+13:28 00761980 grade 00761980.cpp RELOCATION_MATCH -- final source (header comment rewritten): CThing& parent = GetParentThing() before the lift
+13:29 00761980 grade 00761980.cpp RELOCATION_MATCH -- STRICT_HEADERS regrade of the final source
+13:30 00761980 grade src.cpp RELOCATION_MATCH -- 
+13:30 00761980 grade src.cpp SRC_FAIL -- 
+
+==== 0x00A89740
+10:57 00a89740 grade v1.cpp ERROR -- port to shared headers: in-place TransformPoint x2 + GetScaled (scale.GetScaled(pos) / pos.GetScaled(scale) / early-return)
+10:57 00a89740 grade v2.cpp ERROR -- port to shared headers: in-place TransformPoint x2 + GetScaled (scale.GetScaled(pos) / pos.GetScaled(scale) / early-return)
+10:57 00a89740 grade v3.cpp ERROR -- port to shared headers: in-place TransformPoint x2 + GetScaled (scale.GetScaled(pos) / pos.GetScaled(scale) / early-return)
+10:57 00a89740 grade v1.cpp DIFFER(389v389) hunks=3 -- port to shared headers: in-place TransformPoint x2 + GetScaled (scale.GetScaled(pos) / pos.GetScaled(scale) / early-return)
+10:57 00a89740 grade v2.cpp DIFFER(389v389) hunks=3 -- port to shared headers: in-place TransformPoint x2 + GetScaled (scale.GetScaled(pos) / pos.GetScaled(scale) / early-return)
+10:57 00a89740 grade v3.cpp DIFFER(385v389) hunks=6 -- port to shared headers: in-place TransformPoint x2 + GetScaled (scale.GetScaled(pos) / pos.GetScaled(scale) / early-return)
+10:58 00a89740 grade v4.cpp DIFFER(389v389) hunks=4 -- named bone local / decl order transform,scale first / ==-1 return else
+10:58 00a89740 grade v5.cpp DIFFER(389v389) hunks=3 -- named bone local / decl order transform,scale first / ==-1 return else
+10:58 00a89740 grade v6.cpp DIFFER(385v389) hunks=5 -- named bone local / decl order transform,scale first / ==-1 return else
+10:59 00a89740 grade v7.cpp DIFFER(381v389) hunks=20 -- pos at top + single return / 2nd TransformPoint body written out / return C3DVector(pos)
+10:59 00a89740 grade v8.cpp DIFFER(389v389) hunks=5 -- pos at top + single return / 2nd TransformPoint body written out / return C3DVector(pos)
+10:59 00a89740 grade v9.cpp DIFFER(389v389) hunks=3 -- pos at top + single return / 2nd TransformPoint body written out / return C3DVector(pos)
+10:59 00a89740 grade v8.cpp DIFFER(389v389) hunks=5 -- written-out 2nd transform: baseline / outer parens / all parens (PAREN tuples move the scheduling cut?)
+10:59 00a89740 grade v10.cpp DIFFER(389v389) hunks=5 -- written-out 2nd transform: baseline / outer parens / all parens (PAREN tuples move the scheduling cut?)
+10:59 00a89740 grade v11.cpp DIFFER(389v389) hunks=4 -- written-out 2nd transform: baseline / outer parens / all parens (PAREN tuples move the scheduling cut?)
+11:00 00a89740 grade v12.cpp DIFFER(389v389) -- assignment-form copy ctor (UPDATE_LIST) [mul dword ptr [esp + 8]|addp st(1)|add dword ptr [esp + 0x50]|ov eax, dword ptr [esp + 0x60]|ld dword ptr [esp + 0x48]|]
+11:00 00a89740 grade v13.cpp DIFFER(365v389) -- scaled named local from GetScaled, transform it, return it [ld dword ptr [esp + 0x3c]|mul dword ptr [esp + 0x18]|addp st(1)|ov eax, dword ptr [esp + 0x60]|ld dword ptr [esp + 0x30]|]
+11:00 00a89740 grade v14.cpp DIFFER(365v389) -- result = GetScaled copy-init [ld dword ptr [esp + 0x3c]|mul dword ptr [esp + 0x18]|addp st(1)|ov eax, dword ptr [esp + 0x60]|ld dword ptr [esp + 0x30]|]
+11:01 00a89740 grade tA.cpp DIFFER(389v389) -- TransformPoint row spelling variant A (exploration body macro) [17 difflines, mov eax at line  (retail )]
+11:01 00a89740 grade tB.cpp RELOCATION_MATCH -- TransformPoint row spelling variant B (exploration body macro) [1 difflines, mov eax at line  (retail )]
+11:01 00a89740 grade tC.cpp DIFFER(389v389) -- TransformPoint row spelling variant C (exploration body macro) [25 difflines, mov eax at line  (retail )]
+11:01 00a89740 grade tD.cpp DIFFER(389v389) -- TransformPoint row spelling variant D (exploration body macro) [19 difflines, mov eax at line  (retail )]
+11:01 00a89740 grade tE.cpp DIFFER(389v389) -- TransformPoint row spelling variant E (exploration body macro) [11 difflines, mov eax at line  (retail )]
+11:01 00a89740 grade tF.cpp DIFFER(389v389) -- TransformPoint row spelling variant F (exploration body macro) [25 difflines, mov eax at line  (retail )]
+11:02 00a89740 grade 00a89740.cpp RELOCATION_MATCH -- final source: named opt-in FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_ZYX_SUMS (left-to-right E3k*zz+E2k*yy+E1k*xx+E4k)
+11:02 00a89740 grade 00a89740.cpp RELOCATION_MATCH -- strict-headers regrade of the final source
+11:48 00a89740 grade src.cpp RELOCATION_MATCH -- 
+11:48 00a89740 grade src.cpp SRC_FAIL -- 
+
+==== 0x009122A0
+11:04 009122a0 grade v1.cpp SRC_FAIL -- port to shared headers; v2 float pow overload; v3 SCALE_X_PAREN
+11:04 009122a0 grade v2.cpp DIFFER(358v390) hunks=13 -- port to shared headers; v2 float pow overload; v3 SCALE_X_PAREN
+11:04 009122a0 grade v3.cpp SRC_FAIL -- port to shared headers; v2 float pow overload; v3 SCALE_X_PAREN
+11:05 009122a0 grade v1.cpp DIFFER(362v390) hunks=24 -- v1 named omt local; v2 pow(x,2) int overload for squares; v3 unparenthesised (1-t)*(1-t)
+11:05 009122a0 grade v2.cpp DIFFER(453v390) hunks=27 -- v1 named omt local; v2 pow(x,2) int overload for squares; v3 unparenthesised (1-t)*(1-t)
+11:05 009122a0 grade v3.cpp DIFFER(382v390) hunks=15 -- v1 named omt local; v2 pow(x,2) int overload for squares; v3 unparenthesised (1-t)*(1-t)
+11:05 009122a0 grade v1.cpp DIFFER(358v390) hunks=13 -- v1 ADD_XY_GROUP; v2 SCALE_X_PAREN; v3 both
+11:05 009122a0 grade v2.cpp DIFFER(358v390) hunks=15 -- v1 ADD_XY_GROUP; v2 SCALE_X_PAREN; v3 both
+11:05 009122a0 grade v3.cpp DIFFER(358v390) hunks=15 -- v1 ADD_XY_GROUP; v2 SCALE_X_PAREN; v3 both
+11:06 009122a0 grade v1.cpp DIFFER(374v390) hunks=7 -- inline Square(float) helper for the squares: v1 both, v2 only (1-t), v3 template const-ref
+11:06 009122a0 grade v2.cpp DIFFER(374v390) hunks=9 -- inline Square(float) helper for the squares: v1 both, v2 only (1-t), v3 template const-ref
+11:06 009122a0 grade v3.cpp DIFFER(366v390) hunks=29 -- inline Square(float) helper for the squares: v1 both, v2 only (1-t), v3 template const-ref
+11:06 009122a0 grade v1.cpp DIFFER(374v390) hunks=7 -- Square helper + v1 ADD_XY_GROUP; v2 SCALE_X_PAREN; v3 named result local
+11:06 009122a0 grade v2.cpp DIFFER(374v390) hunks=9 -- Square helper + v1 ADD_XY_GROUP; v2 SCALE_X_PAREN; v3 named result local
+11:06 009122a0 grade v3.cpp RELOCATION_MATCH -- Square helper + v1 ADD_XY_GROUP; v2 SCALE_X_PAREN; v3 named result local
+11:07 009122a0 grade v1.cpp RELOCATION_MATCH -- final spelling with shared GFSqr helper: v1 both squares, v2 t*t written out
+11:07 009122a0 grade 009122a0.cpp RELOCATION_MATCH -- strict-headers regrade of final source
+11:07 009122a0 grade v2.cpp DIFFER(390v390) hunks=2 -- side check: t*t written out instead of GFSqr(t)
+11:49 009122a0 grade src.cpp RELOCATION_MATCH -- 
+11:49 009122a0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00BE7BE0
+11:09 00be7be0 grade v1.cpp DIFFER(320v391) hunks=15 -- ported to shared headers, switch, if/else per arm, CArray push_back; v2 overflow body visible
+11:09 00be7be0 grade v2.cpp DIFFER(320v391) hunks=15 -- ported to shared headers, switch, if/else per arm, CArray push_back; v2 overflow body visible
+11:11 00be7be0 grade v1.cpp DIFFER(238v391) hunks=16 -- PDB inlines AddMidgroundSeaPatchToRenderList/AddBackgroundWaterPatchToRenderList(by-value patch, bool), IsSea, IsEmpty, HasWater; v1 dispatch in Render, v2 Background nests Mid
+11:11 00be7be0 grade v2.cpp DIFFER(186v391) hunks=12 -- PDB inlines AddMidgroundSeaPatchToRenderList/AddBackgroundWaterPatchToRenderList(by-value patch, bool), IsSea, IsEmpty, HasWater; v1 dispatch in Render, v2 Background nests Mid
+11:11 00be7be0 grade v1.cpp DIFFER(238v391) hunks=16 -- v1 again, full listing
+11:12 00be7be0 grade v1.cpp DIFFER(234v391) hunks=10 -- water-only branch textually first: v1 if/else, v2 early return, v3 if/else + nested Background->Mid
+11:12 00be7be0 grade v2.cpp DIFFER(234v391) hunks=10 -- water-only branch textually first: v1 if/else, v2 early return, v3 if/else + nested Background->Mid
+11:12 00be7be0 grade v3.cpp DIFFER(194v391) hunks=9 -- water-only branch textually first: v1 if/else, v2 early return, v3 if/else + nested Background->Mid
+11:12 00be7be0 grade v1.cpp DIFFER(238v391) hunks=16 -- Mid = ternary list select + one push_back; v1 dispatch in Render, v2 nested, v3 water-only first
+11:12 00be7be0 grade v2.cpp DIFFER(186v391) hunks=12 -- Mid = ternary list select + one push_back; v1 dispatch in Render, v2 nested, v3 water-only first
+11:12 00be7be0 grade v3.cpp DIFFER(234v391) hunks=10 -- Mid = ternary list select + one push_back; v1 dispatch in Render, v2 nested, v3 water-only first
+11:12 00be7be0 grade v1.cpp DIFFER(238v391) hunks=16 -- inline budget probes: v1 raw tests in main, v2 no CArray wrapper (vector::push_back), v3 both
+11:13 00be7be0 grade v2.cpp DIFFER(238v391) hunks=16 -- inline budget probes: v1 raw tests in main, v2 no CArray wrapper (vector::push_back), v3 both
+11:13 00be7be0 grade v3.cpp DIFFER(238v391) hunks=16 -- inline budget probes: v1 raw tests in main, v2 no CArray wrapper (vector::push_back), v3 both
+11:13 00be7be0 grade v1.cpp DIFFER(208v391) hunks=12 -- PROBE (not candidate sources): v1 constant false at main Mid site, v2 variable arg at water-only site -- is inlining tied to the constant argument
+11:13 00be7be0 grade v2.cpp DIFFER(172v391) hunks=18 -- PROBE (not candidate sources): v1 constant false at main Mid site, v2 variable arg at water-only site -- is inlining tied to the constant argument
+11:14 00be7be0 grade v1.cpp DIFFER(314v391) hunks=10 -- FABLE_FORCEINLINE on Mid/Background (header-style): v1 ternary Mid, v2 if/else Mid, v3 ternary + nested
+11:14 00be7be0 grade v2.cpp DIFFER(314v391) hunks=25 -- FABLE_FORCEINLINE on Mid/Background (header-style): v1 ternary Mid, v2 if/else Mid, v3 ternary + nested
+11:14 00be7be0 grade v3.cpp DIFFER(387v391) hunks=21 -- FABLE_FORCEINLINE on Mid/Background (header-style): v1 ternary Mid, v2 if/else Mid, v3 ternary + nested
+11:14 00be7be0 grade v3.cpp DIFFER(387v391) hunks=21 -- v3 again for listing (forceinline, ternary Mid, Background nests Mid)
+11:15 00be7be0 grade v1.cpp DIFFER(387v391) hunks=15 -- overflow visibility: v1 body visible, v2 body visible + STLP_VECTOR, v3 decl-only + STLP_VECTOR
+11:15 00be7be0 grade v2.cpp DIFFER(387v391) hunks=15 -- overflow visibility: v1 body visible, v2 body visible + STLP_VECTOR, v3 decl-only + STLP_VECTOR
+11:15 00be7be0 grade v3.cpp DIFFER(387v391) hunks=21 -- overflow visibility: v1 body visible, v2 body visible + STLP_VECTOR, v3 decl-only + STLP_VECTOR
+11:16 00be7be0 grade v1.cpp DIFFER(388v391) hunks=10 -- IsEmpty test inside the list helpers (param copy before PolyCount test): v1 both helpers test, v2 Background tests + Render local in water-only, v3 early-return style
+11:16 00be7be0 grade v2.cpp DIFFER(388v391) hunks=15 -- IsEmpty test inside the list helpers (param copy before PolyCount test): v1 both helpers test, v2 Background tests + Render local in water-only, v3 early-return style
+11:16 00be7be0 grade v3.cpp DIFFER(388v391) hunks=10 -- IsEmpty test inside the list helpers (param copy before PolyCount test): v1 both helpers test, v2 Background tests + Render local in water-only, v3 early-return style
+11:16 00be7be0 grade v1.cpp RELOCATION_MATCH -- Mid = if/else with two push_back expansions (tail-merged), IsEmpty in helpers: v1 nested ifs, v2 early returns
+11:17 00be7be0 grade final.cpp RELOCATION_MATCH -- final.cpp = helpers moved into the header overlay; v2 = row-local helpers as plain inline (is forceinline needed)
+11:17 00be7be0 grade v2.cpp SRC_FAIL -- row-local helpers as plain inline (is forceinline needed)
+11:18 00be7be0 grade v2.cpp DIFFER(180v391) hunks=12 -- header helpers as plain inline (is the force-inline needed)
+11:18 00be7be0 grade final.cpp RELOCATION_MATCH -- final.cpp after header comment/macro edit
+11:19 00be7be0 grade final.cpp RELOCATION_MATCH -- strict-headers regrade of final.cpp
+11:19 00be7be0 grade 00be7be0.cpp RELOCATION_MATCH -- final source (comment-only edit), strict headers
+11:50 00be7be0 grade src.cpp RELOCATION_MATCH -- 
+11:50 00be7be0 grade src.cpp SRC_FAIL -- 
+11:50 00be7be0 grade src.cpp SRC_FAIL -- 
+11:50 00be7be0 grade src.cpp SRC_FAIL -- 
+11:50 00be7be0 grade src.cpp SRC_FAIL -- 
+
+==== 0x0081F240
+11:21 0081f240 grade v1.cpp DIFFER(392v392) hunks=1 -- ported to shared headers; PDB inline helpers; blend as 2 calls / loop j / shared i
+11:21 0081f240 grade v2.cpp DIFFER(392v392) hunks=1 -- ported to shared headers; PDB inline helpers; blend as 2 calls / loop j / shared i
+11:21 0081f240 grade v3.cpp DIFFER(392v392) hunks=1 -- ported to shared headers; PDB inline helpers; blend as 2 calls / loop j / shared i
+11:21 0081f240 grade v4.cpp RELOCATION_MATCH -- signed long loop counter (jl); blend 2 calls / signed loop
+11:22 0081f240 grade 0081f240.cpp RELOCATION_MATCH -- final source with header comment, strict headers
+11:51 0081f240 grade src.cpp RELOCATION_MATCH -- 
+11:51 0081f240 grade src.cpp SRC_FAIL -- 
+
+==== 0x00646580
+11:25 00646580 grade v1.cpp SRC_FAIL -- port onto shared headers, dossier structure
+11:25 00646580 grade v1.cpp SRC_FAIL -- port onto shared headers (fix opt-ins)
+11:25 00646580 grade v1.cpp SRC_FAIL -- port onto shared headers (more opt-ins)
+11:25 00646580 grade v1.cpp DIFFER(392v393) hunks=22 -- IsShowSpecialAbilityButtons accessor opt-in
+11:26 00646580 grade v2.cpp DIFFER(392v393) hunks=22 -- sprite position as named local before the sprite statement (3 spellings)
+11:26 00646580 grade v3.cpp DIFFER(398v393) hunks=21 -- sprite position as named local before the sprite statement (3 spellings)
+11:26 00646580 grade v4.cpp DIFFER(398v393) hunks=20 -- sprite position as named local before the sprite statement (3 spellings)
+11:26 00646580 grade v2.cpp DIFFER(392v393) hunks=22 -- regrade v2 for full diff
+11:27 00646580 grade v5.cpp DIFFER(385v393) hunks=20 -- offset + GFAnchor(pos) operand order; retail packed C2DVector
+11:27 00646580 grade v6.cpp DIFFER(385v393) hunks=18 -- offset + GFAnchor(pos) operand order; retail packed C2DVector
+11:27 00646580 grade v7.cpp DIFFER(391v393) hunks=14 -- offset + GFAnchor(pos) operand order; retail packed C2DVector
+11:28 00646580 grade v8.cpp DIFFER(392v393) hunks=10 -- if(!show){..}else{=0}; anchored named local variants
+11:28 00646580 grade v9.cpp DIFFER(393v393) hunks=3 -- if(!show){..}else{=0}; anchored named local variants
+11:28 00646580 grade v10.cpp DIFFER(387v393) hunks=10 -- if(!show){..}else{=0}; anchored named local variants
+11:29 00646580 grade v11.cpp DIFFER(399v393) hunks=14 -- anchored lifetime: block scope / explicit temp copy / const ref
+11:29 00646580 grade v12.cpp DIFFER(392v393) hunks=10 -- anchored lifetime: block scope / explicit temp copy / const ref
+11:29 00646580 grade v13.cpp DIFFER(393v393) hunks=3 -- anchored lifetime: block scope / explicit temp copy / const ref
+11:30 00646580 grade v14.cpp DIFFER(411v393) hunks=14 -- v14 full diff view (v14 = block scope + copy)
+11:30 00646580 grade v8.cpp DIFFER(392v393) hunks=10 -- v8 full diff view (v14 = block scope + copy)
+11:30 00646580 grade v10.cpp DIFFER(387v393) hunks=10 -- v10 full diff view (v14 = block scope + copy)
+11:32 00646580 grade v15.cpp DIFFER(387v393) hunks=5 -- probe: no copy with named anchored / inline helper scoping anchored (with+without copy)
+11:32 00646580 grade v16.cpp DIFFER(388v393) hunks=7 -- probe: no copy with named anchored / inline helper scoping anchored (with+without copy)
+11:32 00646580 grade v17.cpp DIFFER(376v393) hunks=8 -- probe: no copy with named anchored / inline helper scoping anchored (with+without copy)
+11:32 00646580 grade v16.cpp DIFFER(388v393) hunks=7 -- v16 diff view (inline helper + copy)
+11:35 00646580 grade v18.cpp DIFFER(401v393) hunks=18 -- position = GFAnchor(P) += offset (operator+= on the returned temporary), 3 spellings
+11:35 00646580 grade v19.cpp DIFFER(410v393) hunks=15 -- position = GFAnchor(P) += offset (operator+= on the returned temporary), 3 spellings
+11:35 00646580 grade v20.cpp DIFFER(401v393) hunks=18 -- position = GFAnchor(P) += offset (operator+= on the returned temporary), 3 spellings
+11:37 00646580 grade v21.cpp DIFFER(405v393) hunks=13 -- position(offset); {anchored; position += anchored;} block scope (copy / no copy / no block)
+11:37 00646580 grade v22.cpp DIFFER(399v393) hunks=14 -- position(offset); {anchored; position += anchored;} block scope (copy / no copy / no block)
+11:37 00646580 grade v23.cpp DIFFER(405v393) hunks=7 -- position(offset); {anchored; position += anchored;} block scope (copy / no copy / no block)
+11:39 00646580 grade v24.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:39 00646580 grade v25.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:39 00646580 grade v26.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:39 00646580 grade v24.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:39 00646580 grade v25.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:39 00646580 grade v26.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:39 00646580 grade v24.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:39 00646580 grade v25.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:40 00646580 grade v26.cpp SRC_FAIL -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:40 00646580 grade v24.cpp DIFFER(392v393) hunks=10 -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:40 00646580 grade v25.cpp RELOCATION_MATCH -- GFAnchorToBottomRight real body visible in TU (auto_inline off): temp+copy / named / temp no copy
+11:41 00646580 grade 00646580.cpp RELOCATION_MATCH -- final source: def vectors via FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH opt-in
+11:41 00646580 grade 00646580.cpp RELOCATION_MATCH -- final source, strict headers
+11:52 00646580 grade src.cpp RELOCATION_MATCH -- 
+11:53 00646580 grade src.cpp SRC_FAIL -- 
+
+==== 0x0052C920
+11:44 0052c920 grade v1.cpp DIFFER(393v395) hunks=9 -- port to shared headers; colour: 4-arg ctor / copy+channel -= / member-wise RGAB
+11:44 0052c920 grade v2.cpp RELOCATION_MATCH -- port to shared headers; colour: 4-arg ctor / copy+channel -= / member-wise RGAB
+11:44 0052c920 grade f_noyx.cpp RELOCATION_MATCH -- final source with header comment; without / with _SQUAREDMAGNITUDE_YX
+11:44 0052c920 grade 0052c920.cpp RELOCATION_MATCH -- final source, strict headers regrade
+11:55 0052c920 grade src.cpp RELOCATION_MATCH -- 
+11:55 0052c920 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00848B70
+11:44 00848b70 grade v1.cpp SRC_FAIL -- port onto shared headers, IS_THING_ALIVE template, PeekBaseDef().GetSubDef
+11:45 00848b70 grade v1.cpp DIFFER(390v402) hunks=15 -- port + PCREATURE opt-in
+11:45 00848b70 grade v2.cpp RELOCATION_MATCH -- nested if/else with FinishAction in else arms
+11:45 00848b70 grade 00848b70.cpp RELOCATION_MATCH -- final source with header comment
+11:46 00848b70 grade 00848b70.cpp RELOCATION_MATCH -- strict headers regrade
+11:57 00848b70 grade src.cpp RELOCATION_MATCH -- 
+11:57 00848b70 grade src.cpp RELOCATION_MATCH -- 
+

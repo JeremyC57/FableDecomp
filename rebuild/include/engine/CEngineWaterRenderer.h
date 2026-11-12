@@ -61,6 +61,14 @@ public:
     virtual unsigned long PeekSceneFilterFlags() const;                  // slot 10 0x00B7ED70
     virtual bool SetEffectQuality(const CEngineVideoOptionsDef& def);    // slot 13 0x00B6D6A0
     void ReleaseSeaBuffers();                                            // 0x00B6D480 ?ReleaseSeaBuffers@CEngineWaterRenderer@@QAEXXZ
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_ADDTORENDERLIST
+    // Opt-in (wf3, row 0x00BE7BE0 CLandscapeBackgroundPatch::Render): FableWin.pdb
+    // ?AddMidgroundSeaPatchToRenderList@CEngineWaterRenderer@@QAEXQAVCEngineWaterBackgroundSubPatch@@_N@Z and
+    // ?AddBackgroundWaterPatchToRenderList@CEngineWaterRenderer@@QAEXQAVCEngineWaterBackgroundSubPatch@@_N@Z (public, by-value pointer
+    // + bool); retail expands both in their only caller 0x00BE7BE0. Declarations here; the inline bodies follow the class.
+    void AddMidgroundSeaPatchToRenderList(CEngineWaterBackgroundSubPatch* const patch, bool alphaed);
+    void AddBackgroundWaterPatchToRenderList(CEngineWaterBackgroundSubPatch* const patch, bool alphaed);
+#endif
 private:
     void BuildConstantBuffers();                                         // 0x00B6EDF0 ?BuildConstantBuffers@CEngineWaterRenderer@@AAEXXZ
     void DeleteConstantBuffers();                                        // 0x00B6D4B0 ?DeleteConstantBuffers@CEngineWaterRenderer@@AAEXXZ
@@ -154,6 +162,57 @@ public:
     CCountedPointer<CBankFileAsyncData> LoadingSea;                      // +0x5b8
     float                WaterBumpFactor;                                // +0x5c0
 };
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_ADDTORENDERLIST
+// Opt-in bodies (wf3, row 0x00BE7BE0; names FableWin.pdb). Retail also holds an out-of-line copy of each, unreferenced and not in
+// the manifest: 0x00BE9030 (sea helper, `ret 8`) and 0x00BE9080 (background helper with the sea helper expanded in it, `ret 8`);
+// the bodies below follow those copies statement for statement (PolyCount test first in both, the 3/4/5 test, the type-8 test, four
+// out-of-line push_back calls 0x00BE90FB..0x00BE9138). Needs FABLE_RETAIL_CARRAY_PUSHBACK (CArray<T>::push_back, out of line at 0x00BE8FF0) and the
+// sub-patch accessors (switched on here; include this header before any other include of engine/CEngineWaterBackgroundSubPatch.h).
+// Both take the sub-patch by value and pass its address to push_back(const T&): each expansion stores the pointer to its own copy
+// (0x00BE7C2D and 0x00BE7C55, 0x00BE7D1F). The sea helper is two push_back statements, not a list select: retail cross-jumps the
+// two expansions (0x00BE7C95 `add ecx,25Ch ; jmp 0BE7C61h`) and keeps the element size 4 in esi for both.
+// FABLE_FORCEINLINE (owner decision 2026-11-08, inline budget): VC7.1's /Ob2 heuristic leaves both helpers out of line at a call
+// with a non-constant `alphaed`; retail expanded them there (0x00BE7C37..0x00BE7D0D), so that TU's budget differed. Same bodies.
+// FABLE_RETAIL_CENGINEWATERRENDERER_ADDTORENDERLIST_PLAIN_INLINE keeps them plain `inline` (for a TU that emits the out-of-line copies).
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_ADDTORENDERLIST_PLAIN_INLINE
+#define FABLE_WATER_RENDER_LIST_INLINE inline
+#else
+#define FABLE_WATER_RENDER_LIST_INLINE FABLE_FORCEINLINE
+#endif
+#ifndef FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_ACCESSORS
+#define FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_ACCESSORS
+#endif
+#include "engine/CEngineWaterBackgroundSubPatch.h"
+FABLE_WATER_RENDER_LIST_INLINE void CEngineWaterRenderer::AddMidgroundSeaPatchToRenderList(CEngineWaterBackgroundSubPatch* const patch, bool alphaed)
+{
+    if (!patch->IsEmpty()) {
+        if (alphaed)
+            SeaAlphaedMidgroundRenderList.push_back(patch);
+        else
+            SeaMidgroundRenderList.push_back(patch);
+    }
+}
+FABLE_WATER_RENDER_LIST_INLINE void CEngineWaterRenderer::AddBackgroundWaterPatchToRenderList(CEngineWaterBackgroundSubPatch* const patch, bool alphaed)
+{
+    if (!patch->IsEmpty()) {
+        if (patch->IsSea())
+            AddMidgroundSeaPatchToRenderList(patch, alphaed);
+        else {
+            if (patch->WaterType == 8) {                     // ice
+                if (alphaed)
+                    IceAlphaedBackgroundRenderList.push_back(patch);
+                else
+                    IceBackgroundRenderList.push_back(patch);
+            } else {
+                if (alphaed)
+                    AlphaedBackgroundRenderList.push_back(patch);
+                else
+                    BackgroundRenderList.push_back(patch);
+            }
+        }
+    }
+}
+#endif
 FABLE_STATIC_ASSERT(sizeof(CEngineWaterRenderer) == 0x5c4);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundIndexBuffers) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundVertexShader) == 0xbc);

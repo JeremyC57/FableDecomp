@@ -11,6 +11,10 @@
 #include "engine/CEnginePrimitiveHandle.h"
 #endif
 class CPlayerGui; class CPlayerManager; class CWorld; class CMainGameComponent; class CGraphicDataBank; class CEnginePrimitiveHandle;
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS
+template<class T> class CIntelligentPointer;
+namespace NParticleEngine { class CParticleEmitter; }
+#endif
 namespace NPlayerGui {
 class CDrawBase {
 public:
@@ -43,6 +47,12 @@ public:
     // the vector of CEnginePrimitiveHandle objects it is (8-byte elements: the row passes `&PrimitiveHandles[1]` as `[this+1Ch]+8` to
     // CIEngine::SetPersistentPrimitive and for_each's Clear over begin()..end()).
     unsigned char ScaleAlpha(unsigned char alpha) const;                 // 0x00643D5D
+#endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS
+    // Retail opt-in (wf3, row 0x00646580 CDrawMeleeActionButtonEffects::Draw): Ego_r.pdb / FableWin.pdb
+    // ?ClearEffects@CDrawBase@NPlayerGui@@SIXAAV?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@...@Z, static
+    // __fastcall, out of line at 0x006445BA (landed; the row calls it as `lea ecx,[esi+28h] ; call`). Declaration only.
+    static void FABLE_FASTCALL ClearEffects(std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >& effects);   // 0x006445BA
 #endif
 protected:
     CPlayerGui* PlayerGui;                                               // +0x04
