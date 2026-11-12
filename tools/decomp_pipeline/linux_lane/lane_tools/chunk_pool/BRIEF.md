@@ -77,6 +77,27 @@ Never run `cd` into the scratchpad; keep the repo as cwd. Never commit. Never mo
   dtor + `operator delete`; VC evaluates call arguments right to left; a by-value class argument with a user
   copy constructor is built in its stack slot (`push ecx ; mov ecx,esp ; mov [ecx],eax`).
 
+## Stay on task: author and grade (user rule, 2026-11-12)
+
+The user watches these chunks and has asked that authoring agents AUTHOR AND GRADE rather than run hundreds of side tests with no
+grades. Recent chunks made about 300 tool calls for about 17 grades, and one row took 96 toy compiles and still did not match. Work
+like this instead:
+
+1. **Per row, the loop is: read the draft and its residue note -> edit the source -> grade it with q.py -> read the diff -> edit ->
+   grade.** A real grade of the real row is the unit of work. Nothing else counts as progress.
+2. **First grade early.** Grade each row within about 12 tool calls of starting it (read draft, read the headers you need, port,
+   grade). Do not study a row for dozens of calls before the first grade.
+3. **Toy / probe compiles are capped at 5 per row** (toy functions, c2prio runs, spelling sweeps, `/FAs` listings of side files),
+   and only after the row has 2 real grades. Each probe must answer one stated question and be followed by a real grade that uses
+   the answer. Never sweep dozens of spellings in a toy: if 5 probes do not move the residue, it is a compiler tie -- write the
+   line-2 note and move on.
+4. **Row budget: about 40 tool calls and 10 grades.** When either runs out, record the best source with an honest line-2 residue note
+   and start the next row. Reach EVERY row in the chunk; a row with 0 grades at hand-back is a failure of this rule.
+5. **No side quests.** Do not build tooling, re-verify landed rows, survey the codebase, re-derive names that the brief or the notes
+   already give, or polish documentation mid-chunk. Read only what the current row needs. Write NOTES / LESSONS once, at the end.
+6. **ATTEMPTS.log has one line per grade AND one line per probe** (`<addr> grade N <result>` / `<addr> probe N <question> -> <answer>`),
+   so the ratio is visible. The final report starts with: rows reached, grades, probes, tool calls.
+
 ## Output
 Write `$S/w22/<your-dir>/payload.json` as {"result":{"authored":[ {address, module, name, source_cpp, test_cpp, pass_pattern, flags(optional list)} ... ]}}
 including only the functions that graded MATCH/RELOCATION_MATCH (list the DIFFER ones with their best
