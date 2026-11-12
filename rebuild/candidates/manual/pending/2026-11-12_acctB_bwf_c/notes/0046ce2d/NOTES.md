@@ -1,0 +1,4 @@
+## 0x0046CE2D CPlayerGuiDef::operator= -- RELOCATION_MATCH (grade 1)
+- Made it match: implicit operator= emitted from `CPlayerGuiDef::Copy` (`*this = *static_cast<const CPlayerGuiDef*>(def);`) with the whole retail class from the new overlay opt-in FABLE_RETAIL_CPLAYERGUIDEF_CLASS (members from members.tsv, real types), `#pragma optimize("s", on)`.
+- Needs: hdr/engine/CPlayerGuiDef.h (FABLE_RETAIL_CPLAYERGUIDEF_CLASS), FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_STLP_VECTOR_ASSIGN; no flags. Test PASS (vt.py), strict regrade RELOCATION_MATCH.
+- Name fixes (see DOSSIER section 2/3): landed 0x0046CE28 spells Copy as free `CPlayerGuiDef_Copy` / `CPlayerGuiDef_Copy_impl`; real `?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z` and `??4CPlayerGuiDef@@QAEAAV0@ABV0@@Z` (Ego_r.pdb + vtable 0x012352DC slot 19). 0x0046ED15 / 0x0046F06A / 0x00432EE9 landed spellings also wrong per DOSSIER.

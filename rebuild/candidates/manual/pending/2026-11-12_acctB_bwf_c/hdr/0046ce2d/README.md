@@ -1,0 +1,1 @@
+engine/CPlayerGuiDef.h: FABLE_RETAIL_CPLAYERGUIDEF_CLASS -- whole retail class (CParentDefClassBase base, 461 members with real types in retail offset order, all offsets asserted); needs FABLE_RETAIL_DEF_CLASS_BASE + FABLE_RETAIL_STLP_VECTOR_ASSIGN (row 0x0046CE2D).

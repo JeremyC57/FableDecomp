@@ -1,0 +1,4 @@
+- c5e5f30: a TU-mate's /d2inl* flags are not the TU's flags -- on a 6.5 KB row they flipped every call-v-expand decision; grade with and without them first.
+- c5e5f30: a register/frame-size residue across a switch of CreateComponent arms closed by holding the result as the type CreateComponent returns (CComponent*) and casting at the use (CList::AddNonScrollingChild).
+- c5e5f30: `xor edi,edi; cmp eax,edi; mov [info],edi; je; ... inc [eax]` after a CCountedPointer copy = default ctor + SetStaticCast (ShareData), not the copy ctor.
+- c5e5f30: two-arm `push ecx; mov ecx,esp; push -1; push strA|strB` joined before the CCharString ctor = an if/else of two whole calls (tail-merged), not `cond ? "A" : "B"`.

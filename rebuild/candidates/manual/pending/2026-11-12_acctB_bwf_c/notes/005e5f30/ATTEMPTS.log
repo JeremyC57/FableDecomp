@@ -1,0 +1,13 @@
+21:00 005e5f30 grade v1.cpp SRC_FAIL /GS /d2inlT60 /d2inlS48 -- first full draft
+21:00 005e5f30 grade v1.cpp SRC_FAIL /GS /d2inlT60 /d2inlS48 -- first full draft compile
+21:03 005e5f30 grade v1.cpp DIFFER(6264v6580) hunks=276 /GS /d2inlT60 /d2inlS48 -- first full draft (compiles)
+21:04 005e5f30 grade v1.cpp DIFFER(6568v6580) hunks=242 /GS -- no inl flags
+21:04 005e5f30 grade v1.cpp DIFFER(6200v6580) hunks=264 /GS /d2inlT60 -- flags /d2inlT60
+21:04 005e5f30 grade v1.cpp DIFFER(6600v6580) hunks=244 /GS /d2inlS48 -- flags /d2inlS48
+21:04 005e5f30 grade v1.cpp DIFFER(6568v6580) hunks=242 /GS -- no inl flags, view
+21:06 005e5f30 grade v2.cpp DIFFER(6592v6580) hunks=236 /GS -- if/else FindChild/Reset arms, viewport=0, list dtor outofline, named cursor
+21:07 005e5f30 grade v3.cpp DIFFER(6572v6580) hunks=17 /GS -- icon FindChild per arm; v3 pmenu CComponent*
+21:07 005e5f30 grade v4.cpp DIFFER(6600v6580) hunks=223 /GS -- icon FindChild per arm; v3 pmenu CComponent*
+21:07 005e5f30 grade v3.cpp DIFFER(6572v6580) hunks=17 /GS -- v3 view
+21:08 005e5f30 grade v5.cpp RELOCATION_MATCH /GS -- pmesh default ctor + SetStaticCast / operator=
+21:08 005e5f30 grade final.cpp RELOCATION_MATCH /GS -- final source, strict headers

@@ -1,0 +1,4 @@
+address	grade	bytes	test	module	name	flags	notes
+0046ce2d	RELOCATION_MATCH	7312	PASS (VC7.1, lander check)	CPlayerGuiDef	operator=		purity clean; 0 stale overlay header(s)
+005e5f30	RELOCATION_MATCH	6580	PASS (VC7.1, lander check)	CTCQuestCompletionUI	ActivateReal	/GS	purity clean; 0 stale overlay header(s)
+004830a1	RELOCATION_MATCH	7896	PASS (VC7.1, lander check)	CTCInGameMenu	OpenInGameMenu	/GS	purity clean; 0 stale overlay header(s)

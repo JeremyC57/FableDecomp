@@ -1,0 +1,1 @@
+LESSON 004830a1: an explicit CWideString(L"..") temporary argument vs the implicit conversion changes evaluation order (temp built first, address pushed) and can flip a 7.9 KB function's whole register allocation -- check temporaries' spelling before any register work.

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+  WARN leaf 'operator=' matches no symbol in 0046ce2d.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0046ce2d.obj; graded the largest function
+0046ce2d   WARN RELOC_NAME: ??4?$vector@VCQuickAccessItemButtonGuiDef@@V?$allocator@VCQuickAccessItemButtonGuiDef@@@std@@@std@@QAEAAV01@ABV01@@Z -> 0046ed15 labelled 'Vector<CQuickAccessItemButtonGuiDef>::Assign'
+0046ce2d   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  0046ce2d RELOCATION_MATCH CPlayerGuiDef::operator=

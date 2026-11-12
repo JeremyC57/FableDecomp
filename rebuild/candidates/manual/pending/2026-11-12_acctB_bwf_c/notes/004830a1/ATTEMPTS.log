@@ -1,0 +1,73 @@
+18:29 004830a1 grade v1.cpp SRC_FAIL -- first full draft
+18:33 004830a1 grade v1.cpp TIMEOUT -- defines fix
+18:34 004830a1 grade v1.cpp SRC_FAIL -- defines fix 2
+18:34 004830a1 grade v1.cpp SRC_FAIL -- qualify CManager
+18:34 004830a1 grade v1.cpp SRC_FAIL -- string eq + gui close defines
+18:34 004830a1 grade v1.cpp DIFFER(8146v7896) hunks=526 -- CPLAYERGUI define
+18:35 004830a1 grade v1.cpp DIFFER(8200v7896) hunks=532 -- forceinline wide eq
+18:35 004830a1 grade v1.cpp DIFFER(8200v7896) hunks=532 /GS -- with /GS flag
+18:35 004830a1 grade v2.cpp DIFFER(7914v7896) hunks=367 -- s alone (no y off)
+18:37 004830a1 grade v3.cpp DIFFER(7860v7896) hunks=410 -- sprite local, size-(dbg?0:1), implicit wide temp
+18:37 004830a1 grade v4.cpp DIFFER(7861v7896) hunks=492 -- sprite local, size-(dbg?0:1), implicit wide temp
+18:37 004830a1 grade v3.cpp DIFFER(7860v7896) hunks=410 -- v3 regrade for nd
+18:37 004830a1 grade v5.cpp DIFFER(7886v7896) hunks=376 -- v2 + sprite local only
+18:37 004830a1 grade v6.cpp DIFFER(7860v7896) hunks=410 -- v2 + size-(dbg?0:1) only
+18:37 004830a1 grade v7.cpp DIFFER(7935v7896) hunks=477 -- named debug flag + count, if(!debug)--count
+18:38 004830a1 grade v2.cpp DIFFER(7914v7896) hunks=367 -- v2 baseline regrade
+18:39 004830a1 grade v8.cpp DIFFER(7916v7896) hunks=367 -- long i signed compare
+18:39 004830a1 grade v9.cpp DIFFER(7914v7896) hunks=367 -- long i unsigned compare
+18:39 004830a1 grade v10.cpp DIFFER(7914v7896) hunks=367 -- text.Get()->SetValue
+18:39 004830a1 grade v11.cpp DIFFER(7914v7896) hunks=367 -- (*text).SetValue
+18:40 004830a1 grade v12.cpp DIFFER(7914v7896) hunks=367 -- savePicture block spellings
+18:40 004830a1 grade v13.cpp DIFFER(7914v7896) hunks=367 -- savePicture block spellings
+18:40 004830a1 grade v14.cpp DIFFER(7886v7896) hunks=376 -- savePicture block spellings
+18:41 004830a1 grade v15.cpp DIFFER(7878v7896) hunks=295 -- inline CMenuEntry casts (save / load / both)
+18:41 004830a1 grade v16.cpp DIFFER(7919v7896) hunks=354 -- inline CMenuEntry casts (save / load / both)
+18:41 004830a1 grade v17.cpp DIFFER(7902v7896) hunks=432 -- inline CMenuEntry casts (save / load / both)
+18:41 004830a1 grade v18.cpp DIFFER(7914v7896) hunks=367 -- one CMenuEntry* local for save+load entries
+18:41 004830a1 grade v19.cpp DIFFER(7914v7896) hunks=367 -- one CMenuEntry* local for save+load entries
+18:41 004830a1 grade v20.cpp DIFFER(7911v7896) hunks=353 -- load-confirm locals inline (list / title / both)
+18:41 004830a1 grade v21.cpp DIFFER(7914v7896) hunks=395 -- load-confirm locals inline (list / title / both)
+18:41 004830a1 grade v22.cpp DIFFER(7906v7896) hunks=393 -- load-confirm locals inline (list / title / both)
+18:42 004830a1 grade v23.cpp DIFFER(7865v7896) hunks=547 -- savePicture: sprite local / scoped / GetInstance
+18:42 004830a1 grade v24.cpp DIFFER(7865v7896) hunks=547 -- savePicture: sprite local / scoped / GetInstance
+18:42 004830a1 grade v25.cpp DIFFER(7927v7896) hunks=355 -- savePicture: sprite local / scoped / GetInstance
+18:43 004830a1 grade p26.cpp DIFFER(7922v7896) hunks=455 -- PROBE volatile saveEntry / +load-confirm locals
+18:43 004830a1 grade p27.cpp DIFFER(7913v7896) hunks=331 -- PROBE volatile saveEntry / +load-confirm locals
+18:43 004830a1 grade v28.cpp DIFFER(7849v7896) hunks=415 -- save-slot count spellings
+18:43 004830a1 grade v29.cpp DIFFER(7940v7896) hunks=509 -- save-slot count spellings
+18:43 004830a1 grade v30.cpp DIFFER(7856v7896) hunks=459 -- save-slot count spellings
+18:44 004830a1 grade v31.cpp DIFFER(7940v7896) hunks=509 -- debug flag then size then if-dec / offset local
+18:44 004830a1 grade v32.cpp DIFFER(7948v7896) hunks=507 -- debug flag then size then if-dec / offset local
+18:44 004830a1 grade v33.cpp DIFFER(7919v7896) hunks=354 -- unused valid as expr / save entry var reused / both
+18:44 004830a1 grade v34.cpp DIFFER(7919v7896) hunks=354 -- unused valid as expr / save entry var reused / both
+18:44 004830a1 grade v35.cpp DIFFER(7919v7896) hunks=354 -- unused valid as expr / save entry var reused / both
+18:46 004830a1 grade v16.cpp DIFFER(7919v7896) hunks=354 /GS -- v16 with /GS
+18:46 004830a1 grade v16.cpp DIFFER(7916v7896) hunks=379 /Gr -- v16 with /Gr
+18:46 004830a1 grade v44.cpp DIFFER(7919v7896) hunks=354 -- const manager / menu / area
+18:46 004830a1 grade v45.cpp DIFFER(7919v7896) hunks=354 -- const manager / menu / area
+18:46 004830a1 grade v46.cpp DIFFER(7919v7896) hunks=354 -- const manager / menu / area
+18:48 004830a1 grade v48.cpp DIFFER(7919v7896) hunks=354 -- AddUIActionParam(self) spellings
+18:48 004830a1 grade v49.cpp DIFFER(7919v7896) hunks=354 -- AddUIActionParam(self) spellings
+18:48 004830a1 grade v50.cpp DIFFER(7919v7896) hunks=354 -- AddUIActionParam(self) spellings
+20:48 004830a1 grade a1.cpp DIFFER(7919v7896) hunks=354 -- attempt2 baseline regrade
+20:49 004830a1 grade b1.cpp DIFFER(7940v7896) hunks=509 -- P5 named dbg+n ternary / size-!dbg / long slots if-dec
+20:49 004830a1 grade b2.cpp DIFFER(7858v7896) hunks=416 -- P5 named dbg+n ternary / size-!dbg / long slots if-dec
+20:49 004830a1 grade b3.cpp DIFFER(7940v7896) hunks=509 -- P5 named dbg+n ternary / size-!dbg / long slots if-dec
+20:50 004830a1 grade b4.cpp DIFFER(7858v7896) hunks=416 -- P5 size-(dbg==false) / size-(dbg^1) / size-1+dbg
+20:50 004830a1 grade b5.cpp DIFFER(7859v7896) hunks=416 -- P5 size-(dbg==false) / size-(dbg^1) / size-1+dbg
+20:50 004830a1 grade b6.cpp DIFFER(7847v7896) hunks=415 -- P5 size-(dbg==false) / size-(dbg^1) / size-1+dbg
+20:51 004830a1 grade c1.cpp DIFFER(7901v7896) hunks=88 -- loop-head SetValue: implicit L-conv / scoped named / static_cast ref
+20:51 004830a1 grade c2.cpp DIFFER(7901v7896) hunks=88 -- loop-head SetValue: implicit L-conv / scoped named / static_cast ref
+20:51 004830a1 grade c3.cpp DIFFER(7919v7896) hunks=354 -- loop-head SetValue: implicit L-conv / scoped named / static_cast ref
+20:51 004830a1 grade d1.cpp DIFFER(7856v7896) hunks=501 -- P5 on c1: size-!dbg / size-(dbg?0:1) / named dbg+slots if-dec
+20:51 004830a1 grade d2.cpp DIFFER(7856v7896) hunks=501 -- P5 on c1: size-!dbg / size-(dbg?0:1) / named dbg+slots if-dec
+20:51 004830a1 grade d3.cpp DIFFER(7924v7896) hunks=536 -- P5 on c1: size-!dbg / size-(dbg?0:1) / named dbg+slots if-dec
+20:52 004830a1 grade e1.cpp DIFFER(7901v7896) hunks=88 -- P5: !dbg?n-1:n / if-else two calls / long casts
+20:52 004830a1 grade e2.cpp DIFFER(7893v7896) hunks=86 -- P5: !dbg?n-1:n / if-else two calls / long casts
+20:52 004830a1 grade e3.cpp DIFFER(7901v7896) hunks=88 -- P5: !dbg?n-1:n / if-else two calls / long casts
+20:52 004830a1 grade f1.cpp DIFFER(7893v7896) hunks=84 -- hasSignature declared before signaturePath
+20:52 004830a1 grade g1.cpp RELOCATION_MATCH -- loadMenuEntry local for 3 calls / 2 / 1+3
+20:52 004830a1 grade g2.cpp DIFFER(7896v7896) hunks=62 -- loadMenuEntry local for 3 calls / 2 / 1+3
+20:52 004830a1 grade g3.cpp DIFFER(7896v7896) hunks=62 -- loadMenuEntry local for 3 calls / 2 / 1+3
+20:53 004830a1 grade final.cpp RELOCATION_MATCH -- strict regrade final

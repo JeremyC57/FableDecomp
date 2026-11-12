@@ -1,0 +1,4 @@
+0x004830A1	?OpenInGameMenu@CTCInGameMenu@@QAEXXZ	Ego_r 0x0048FB01 follows OpenInGameMenuPC; plain ret (no args); landed caller 0x00636270 declares OpenInGameMenu()	CTCInGameMenu::OpenInGameMenuPC (manifest label)
+0x00449980	?GetMainPlayerJoystickDeviceNumber@CPlayerManager@@QBEJXZ	Ego_r 0x00445140 right after GetMainPlayer; retail right after GetMainPlayer 0x00449970	global_Catch0042ae0a_00449980
+0x00485AEF	?clear@?$_Rb_tree@VCWideString@@...(map<CWideString,bool> Signatures clear)	called with ecx=this+0xE0 (CTCInGameMenu::Signatures)	CTCCarryable_OnKill_00485aef
+0x0042BED4	??0CDeletion@NUISystem@@QAE@XZ	constructs the CDeletion local before SetDeletion (copy ctor 0x0042CD84, list dtor 0x0042ABCA)	CAction::CAction (scout label)

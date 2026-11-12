@@ -1,0 +1,4 @@
+00603000	CTCInventoryMap::CreateMiniMapMarkers	CTCInventoryMap
+004b0160	CQuestManager::OnQuestFinishScreenDisplayed	CQuestManager
+005d9730	CTCInventoryItem::GetStartingRightHandedSet	CTCInventoryItem
+005e8f50	std::map<long,unsigned long>::erase	std

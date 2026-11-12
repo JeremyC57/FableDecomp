@@ -1,0 +1,9 @@
+addr       parity           behav  name
+005e5f30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005e5f30   WARN RELOC_NAME: ?erase@?$map@JKU?$less@J@std@@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBJK@std@@U?$_Nonconst_traits@U?$pair@$$CBJK@std@@@2@@2@@Z -> 005e8f50 labelled '_unattributed::Remove_005e8f50'
+005e5f30   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+005e5f30   WARN RELOC_NAME: ?OnQuestStartScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z -> 004b2fe0 labelled 'CQuestManager::AddActivatedQuestName'
+005e5f30   RELOCATION_MATCH PASS   ActivateReal
+
+WINS: 1
+  005e5f30 RELOCATION_MATCH CTCQuestCompletionUI::ActivateReal

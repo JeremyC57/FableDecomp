@@ -1,0 +1,2 @@
+0046ce28	?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z	FableWin.exe.signatures.tsv + vtable 0x012352DC slot 19	CPlayerGuiDef_Copy
+0046ce2d	??4CPlayerGuiDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb 0x00480662 (7318 bytes) + only caller Copy 0x0046CE28	CParentDefClassBase::operator= (manifest), CPlayerGuiDef_Copy_impl

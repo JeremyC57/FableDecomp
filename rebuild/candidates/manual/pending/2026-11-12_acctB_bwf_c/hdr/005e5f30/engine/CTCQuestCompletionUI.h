@@ -1,0 +1,170 @@
+#ifndef FABLE_ENGINE_CTCQUESTCOMPLETIONUI_H
+#define FABLE_ENGINE_CTCQUESTCOMPLETIONUI_H
+// CTCQuestCompletionUI (new shared header, chunk 1010b, row 0x00896B60 CGameScriptInterface::KickOffQuestStartScreen): the hero's
+// quest start / completion screen component. RTTI .?AVCTCQuestCompletionUI@@ : CTCBase : CBaseClassNonCopyable : CBaseClass
+// (ghidra_out/rtti_bases.tsv); interface TCI_QUEST_COMPLETION_UI 252 (`cmp [eax],0FCh` 0x00896BA2; HasTC = bit 28 of the +0x3C
+// word). Layout: Ego_r.pdb member order and types (struct_layouts_egor.tsv, 0xF0) with retail STLport container sizes (vector
+// 0xC, list 4, map 0xC): Active +0x0C, Quitting +0x1C, QuittingFadeOut +0xC0 -- the three flags KickOffQuestStartScreen polls
+// (0x00896C6D / 0x00896C74 / 0x00896C7B); size 0xD8 (the double LastRenderTime keeps 8-byte alignment). Members whose types
+// need other headers stay opaque byte runs with the type in a comment.
+// Methods (Ego_r.pdb / FableWin.pdb spellings): Activate(CompletionType, const CCharString&, bool, const CWideString&, bool)
+// out of line at 0x005E4740, SaveInitialValues(const CCharString&) 0x005E4860; the FableWin-only (inline in the release build)
+// accessors IsActive / IsQuitting / IsQuittingFadeOut read the flags (bodies per the bytes above). The CompletionType
+// enumerators are not in either PDB name set (0 = the quest start screen: KickOffQuestStartScreen passes 0).
+// Needs FABLE_RETAIL_CTCBASE (engine/CTCBase.h).
+#include "rebuild_abi.h"
+#include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+#include "engine/NUISystem_CComponent.h"
+#include "stlport/fable_containers.h"
+#endif
+#if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
+#include "fable_string.h"
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ACTIVATEREAL
+#include "stlport/fable_map.h"
+namespace NUISystem { class CText; }
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+#include "engine/CQuestCardDef.h"
+#include "engine/CQuestManager.h"
+#include "engine/CDefPointer.h"
+#endif
+class CCharString;
+class CWideString;
+class CTCQuestCompletionUI : public CTCBase {
+public:
+#if defined(_MSC_VER)
+    enum CompletionType;
+#else
+    enum CompletionType { };
+#endif
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_QUEST_COMPLETION_UI; }
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    // Retail opt-in (Codex pass19): both PDB leaves and vtable0125589c slot11.
+    virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&);
+#endif
+    void Activate(CompletionType completion, const CCharString& scriptName, bool b1, const CWideString& summary, bool b2);   // 0x005E4740
+#if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
+    // Retail opt-in (Codex pass20): original PDB accessor; native004b2a6b assigns ScriptName+0x50.
+    void SetScriptName(const CCharString& script_name){ScriptName=script_name;}
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ACTIVATEREAL
+    // Ego_r.pdb / FableWin.pdb ?ActivateReal@CTCQuestCompletionUI@@QAEXXZ (retail 0x005E5F30, called by GlobalUpdate 0x005E7E25).
+    void ActivateReal();
+#endif
+    void SaveInitialValues(const CCharString& scriptName);                                                                    // 0x005E4860
+    bool IsActive() const { return Active; }                             // FableWin ?IsActive@CTCQuestCompletionUI@@QBE_NXZ
+    bool IsQuitting() const { return Quitting; }                         // FableWin ?IsQuitting@CTCQuestCompletionUI@@QBE_NXZ
+    bool IsQuittingFadeOut() const { return QuittingFadeOut; }           // FableWin ?IsQuittingFadeOut@CTCQuestCompletionUI@@QBE_NXZ
+private:
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    // Both original PDBs; native005e7123 passes the component in the one stack argument.
+    void GetQuestDescription(NUISystem::CComponent* pcontainer);
+#endif
+    bool          Active;                                                // +0x0c
+    bool          ReallyActive;                                          // +0x0d
+    unsigned char _pad_0x0e[0x2];                                        // +0x0e
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    std::vector<NUISystem::CComponent*> Components;
+#else
+    unsigned char Components[0xc];                                       // +0x10 std::vector<NUISystem::CComponent*>
+#endif
+    bool          Quitting;                                              // +0x1c
+    bool          WaitingForRegionLoad;                                  // +0x1d
+    bool          WaitingForPlayerControl;                               // +0x1e
+    bool          WaitingForBoastProcessing;                             // +0x1f
+    long          Completion;                                            // +0x20 CompletionType
+    unsigned long Frame;                                                 // +0x24
+    long          FrameStartedBoastProcessing;                           // +0x28
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CDefPointer<const CQuestCardDef> PCardDef;
+#else
+    unsigned char PCardDef[0x4];                                         // +0x2c CDefPointer<const CQuestCardDef>
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    std::list<CQuestManager::CBoast> Boasts;
+#else
+    unsigned char Boasts[0x4];                                           // +0x30 std::list<CQuestManager::CBoast>
+#endif
+    unsigned long RenderedObjectDef;                                     // +0x34
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString QuestSummary;
+#else
+    unsigned char QuestSummary[0x4];                                     // +0x38 CWideString
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString SuccessSummary;
+#else
+    unsigned char SuccessSummary[0x4];                                   // +0x3c CWideString
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString QuestObjective;
+#else
+    unsigned char QuestObjective[0x4];                                   // +0x40 CWideString
+#endif
+    unsigned char _pad_0x44[0x4];                                        // +0x44
+    double        LastRenderTime;                                        // +0x48
+#if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
+    CCharString ScriptName;
+#else
+    unsigned char ScriptName[0x4];                                       // +0x50 CCharString
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString FailureReason;
+#else
+    unsigned char FailureReason[0x4];                                    // +0x54 CWideString
+#endif
+    long          GoldReward;                                            // +0x58
+    long          RenownReward;                                          // +0x5c
+    long          TargetGoldGained;                                      // +0x60
+    long          InitialGold;                                           // +0x64
+    long          TargetExperienceGained;                                // +0x68
+    long          InitialExperience;                                     // +0x6c
+    long          TargetRenownGained;                                    // +0x70
+    long          InitialRenown;                                         // +0x74
+    float         ExperienceGainedDisplayed;                             // +0x78
+    float         RenownGainedDisplayed;                                 // +0x7c
+    float         GoldGainedDisplayed;                                   // +0x80
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ACTIVATEREAL
+    std::map<long,unsigned long> StartQuestExperience;                   // +0x84
+    std::map<long,unsigned long> StartQuestGold;                         // +0x90
+    std::map<long,unsigned long> StartQuestRenown;                       // +0x9c
+    NUISystem::CText* PRenownText;                                       // +0xa8
+    NUISystem::CText* PGoldText;                                         // +0xac
+    NUISystem::CText* PExperienceText;                                   // +0xb0
+#else
+    unsigned char StartQuestExperience[0xc];                             // +0x84 std::map<long,unsigned long>
+    unsigned char StartQuestGold[0xc];                                   // +0x90 std::map<long,unsigned long>
+    unsigned char StartQuestRenown[0xc];                                 // +0x9c std::map<long,unsigned long>
+    void*         PRenownText;                                           // +0xa8 CText*
+    void*         PGoldText;                                             // +0xac CText*
+    void*         PExperienceText;                                       // +0xb0 CText*
+#endif
+    float         AccumFadeTime;                                         // +0xb4
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    NUISystem::CComponent* PFrame;
+#else
+    void*         PFrame;                                                // +0xb8 NUISystem::CComponent*
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    NUISystem::CComponent* PBlack;
+#else
+    void*         PBlack;                                                // +0xbc NUISystem::CComponent*
+#endif
+    bool          QuittingFadeOut;                                       // +0xc0
+    long          QuestCardDef;                                          // +0xc4
+    unsigned long ExperienceCountingSound;                               // +0xc8
+    unsigned long GoldCountingSound;                                     // +0xcc
+    unsigned long RenownCountingSound;                                   // +0xd0
+    bool          CanTeleportToGuildMember;                              // +0xd4
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x005E9750
+public:
+#endif
+};
+FABLE_STATIC_ASSERT(sizeof(CTCQuestCompletionUI) == 0xd8);
+#endif // FABLE_ENGINE_CTCQUESTCOMPLETIONUI_H
