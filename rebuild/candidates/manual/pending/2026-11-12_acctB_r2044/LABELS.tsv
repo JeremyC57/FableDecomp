@@ -1,0 +1,13 @@
+address	name	evidence
+00aa0090	?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	Ego_r + FableWin; ret 20h; caller 0x00AA09F0
+00a9f540	?CalcMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@PBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	Ego_r + FableWin; ret 18h; graded RELOCATION_MATCH
+00a9d700	?GetAlphaWeight@C3DAnimationStateAlpha@@QBEMXZ	FableWin COMDAT name (after CalcMeshTransformations); body fld [ecx+10h] = AlphaWeight +0x10 (Ego_r)
+00a9d710	ApplyPartialAnimation (file static)	FableWin/Ego_r undecorated static name; body = if (enabled) GetKeyframeInterpolate into the keyframe, LTCG convention
+00a9d980	ApplyRelativeAnimation (file static)	FableWin/Ego_r static name; body = !IsIdentity -> GetKeyframeInterpolate + operator*= + position add (expanded in both rows)
+00a9d9e0	ApplyRelativeAnimationAlpha (file static)	FableWin/Ego_r static name; SetSlerpFromIdentity expansion
+00a9dc20	ApplyPartialAnimationAlpha (file static)	FableWin/Ego_r static name (catalog label agrees); BlendWith expansion
+00a88c10	??XCQuaternion@@QAEABV0@ABV0@@Z	Ego_r + FableWin operator*=; ret 4; landed (manifest operator*=)
+00a52650	?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z	Ego_r + FableWin; landed row
+00a9dfa0	?ApplyBoneMorphDisplacement@C3DAnimationManager@@ABEXPAVC3DKeyframe@@PBVC3DVector@@ABVC3DMesh2@@@Z	Ego_r; 3 args
+00a9e1e0	?ApplyParentTransformations@C3DAnimationManager@@ABEXPBVC3DKeyframe@@PAVCMatrix4x4@@ABVC3DMesh2@@_N@Z	Ego_r; 4 args
+00a9d750	?ApplyBoneMorphScaling@C3DAnimationManager@@ABEXPBVC3DVector@@PAVCMatrix4x4@@K_N@Z	Ego_r; 4 args
