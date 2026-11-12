@@ -1,0 +1,5 @@
+addr       parity           behav  name
+005f6e40   RELOCATION_MATCH PASS   OnSerialise
+
+WINS: 1
+  005f6e40 RELOCATION_MATCH CTCInventoryAbilities::?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z

@@ -1,0 +1,9 @@
+address	name	evidence
+0x005F6E40	?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z	Ego_r.pdb + FableWin.pdb (public virtual); only reference vtable 0x01256AD4 slot 1 (0x01256AD8) = the CTCInventory* OnSerialise slot; tail call of the base NInventory::CTCInventoryBase::OnSerialise 0x005BFD5E with the same (context, bool); strings HeroAbility / AbilityLevels / AbilityButton / ReceivedAbilities
+0x005F7F4C	?LowerBound@?$CVectorMap@JW4EHeroAbility@@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@@QAEPAU?$pair@JW4EHeroAbility@@@std@@ABJ@Z	see NAME_FIXES.tsv
+0x005F8F89	?erase@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@PAW43@0@Z	see NAME_FIXES.tsv
+0x005F9BCD	?push_back@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXABW4EHeroAbility@@@Z	see NAME_FIXES.tsv
+0x005F9DF8	?resize@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXIABW4EHeroAbility@@@Z	see NAME_FIXES.tsv
+0x0043336A	?erase@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@PAV3@0@Z	see NAME_FIXES.tsv
+0x009AD390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z	see NAME_FIXES.tsv
+(inline)	?IsSerialisingAboutToLoadHeroState@CWorld@@QBE_NXZ	FableWin.pdb 0x01D3BD00 (absent from Ego_r.pdb: inline in release); reads CWorld::SerialisingAboutToLoadHeroState +0x101 (Ego_r layout, engine/CWorld.h); retail 0x005F70AB / 0x005F70F4 / 0x005F7282 / 0x005F72EE / 0x005F73CB `cmp byte ptr [eax+101h],0` after PeekWorld

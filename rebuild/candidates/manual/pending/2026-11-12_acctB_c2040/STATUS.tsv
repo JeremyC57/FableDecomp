@@ -1,0 +1,2 @@
+address	grade	bytes	test	grades_used	notes
+005f6e40	RELOCATION_MATCH	1746v1746	PASS	pass1: 8 (g1..g6 q.py + g7, g8 gall.sh regrades of the final src after comment-only edits); pass2: 0; pass3: 0	matched at grade 5 (g5), final comment/stand-in-body edit regraded g6, g7, g8; read-only vland RELOCATION_MATCH + behaviour PASS, no RELOC_IDENTITY
