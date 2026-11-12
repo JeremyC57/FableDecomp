@@ -15,8 +15,20 @@ class CDefPointeeBase;
 struct CEnginePrimitive2DSprite;
 namespace NParticleEngine { class CParticleEmitter; }
 #endif
+#ifdef FABLE_RETAIL_CTCBULLETTIME_PLAYEFFECT
+// Opt-in (wf11 row 0x0079CC80 CTCBulletTime::PlayEffect): PDef typed as its Ego_r.pdb CDefPointer<CSpecialAbilitiesBulletTimeDef const>
+// (same +0x20 slot) and the private PlayEffect (Ego_r/FableWin ?PlayEffect@CTCBulletTime@@AAEXPAV?$CIntelligentPointer@VCThing@@@@ABVCCharString@@PAVCThingCreatureBase@@J@Z).
+#include "engine/CDefPointer.h"
+#include "fable_string.h"
+class CSpecialAbilitiesBulletTimeDef;
+class CThing;
+#endif
 class CTCBulletTime : public CTCBase {
 #ifdef FABLE_RETAIL_CTCBULLETTIME_MEMBERS
+#ifdef FABLE_RETAIL_CTCBULLETTIME_PLAYEFFECT
+private:
+    void PlayEffect(CIntelligentPointer<CThing>* effect, const CCharString& name, CThingCreatureBase* target, long attachType);   // 0x0079CC80
+#endif
 public:
     void Pause();                                                        // 0x0079CF30
 private:
@@ -26,7 +38,11 @@ public:                                                  // members public as in
     long                      BulletTimeAbilityLevel;        // +0x10
     CEnginePrimitive2DSprite* DisplacementMask;              // +0x14
     unsigned char             DisplacementEffectPrimitive[0x8]; // +0x18 CEnginePrimitiveHandle
+#ifdef FABLE_RETAIL_CTCBULLETTIME_PLAYEFFECT
+    CDefPointer<const CSpecialAbilitiesBulletTimeDef> PDef;  // +0x20
+#else
     CDefPointeeBase*          PDef_Object;                   // +0x20 CDefPointer<CSpecialAbilitiesBulletTimeDef const>::Object
+#endif
     long                      m_nLevel;                      // +0x24
     long                      m_nTimeMultiplier;             // +0x28
     float                     m_fDuration;                   // +0x2c

@@ -21,6 +21,9 @@ class CThing;
 class CWorld;
 
 class CGameScriptThing : public CScriptThing {
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_MANAGER_FRIEND
+    friend class CGameScriptThingManager;                                // the private ctors' only caller (CreateScriptThing / ctor)
+#endif
 private:
     CGameScriptThing(CWorld& world);                                     // ??0CGameScriptThing@@AAE@AAVCWorld@@@Z
     CGameScriptThing(CWorld& world, const CThing& thing);                // ??0CGameScriptThing@@AAE@AAVCWorld@@ABVCThing@@@Z

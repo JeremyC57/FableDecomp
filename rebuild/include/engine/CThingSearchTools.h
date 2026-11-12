@@ -21,6 +21,11 @@ protected:
     CThingManager& ThingManager;
     std::vector<NThingMap::CThingMap*> AreaMaps;
 public:
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTLEAF_DECL
+    // Opt-in (wf11, row 0x009810B0): GetPBestLeafThing<Filter,Compare,T> declared only -- the caller calls the template COMDAT
+    // (0x009823D0 for <CThingFilter_AICreatureHasProperty,CThingCompare_Nearest,CThingAICreature>).
+    template<class Filter,class Compare,class T> bool GetPBestLeafThing(const Filter& filter,const Compare& compare,T** out) const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTLEAF
     // Both PDB instantiations, native0048cb50 (T village) /0048cbd0 (T const village).
     template<class Filter,class Compare,class T>

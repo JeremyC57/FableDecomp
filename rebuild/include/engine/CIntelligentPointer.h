@@ -89,6 +89,12 @@ public:
     // AIAction_PerformActionTargetFaceAndWait at 0x00960646. Declaration only: callers call the COMDAT.
     CIntelligentPointer(const CIntelligentPointer& other);
 #endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
+    // Opt-in (wf11, row 0x009810B0 AIAction_FindAGuardAndGiveMessage): the converting constructor from another instantiation INLINE
+    // (0x0098117E..0x009811A1: base ctor 0x00A01B10, vptr 0x0125AAEC, GetPItem 0x00A01B50 on the source, SetPItem 0x00A01B90 --
+    // the same body as the out-of-line COMDAT of the CONVERT branch).
+    template<class U> CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT
     // Retail opt-in (chunk 795, row 0x0092FAB0): the converting constructor from another instantiation, out of line in retail
     // (0x00930D20 CIntelligentPointer<const CThing> from CIntelligentPointer<CThingPlayerCreature>: the base ctor 0x00A01B10, the

@@ -1,0 +1,11 @@
+address	name	evidence
+008DA410	?OnActivate@CModeScreamerAggressive@NCreatureMode@@UAEXXZ	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+0079CC80	?PlayEffect@CTCBulletTime@@AAEXPAV?$CIntelligentPointer@VCThing@@@@ABVCCharString@@PAVCThingCreatureBase@@J@Z	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+00AABD50	?PlaySoundEvent@CSoundEmitterLH@@UAEKAAVCASoundBank@@ABVCCharString@@_NABVCSoundInit@@_N@Z	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+009810B0	?AIAction_FindAGuardAndGiveMessage@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@V?$CDefPointer@$$CBVCMessageEventDef@@@@VC3DVector@@J@Z	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+00A44F40	?CombineMorph@C3DSkeletalMorphTarget@@QAEXABV1@M@Z	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+00D38D20	?RunVillagerComments@CQ_FireHeartScript@NScript@@QAEXXZ	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+00704860	?CreateScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@ABVCThing@@@Z	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+00A5B370	?Read@CCachedFile@@UAEXPAXJPAVCASuspendableProcess@@@Z	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+00E36750	?DoCountDown@CV_ArcheryCompetitionScript@NScript@@QAEXJ@Z	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs
+00773EE0	?GetSaleItemsToPlace@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ	workflow wf11 (landing eu): RELOCATION_MATCH, two PDBs

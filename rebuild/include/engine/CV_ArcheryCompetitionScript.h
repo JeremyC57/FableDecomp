@@ -22,6 +22,9 @@ public:
     void WatchForQuestFinished();
     void WatchForOwnerKilled();
     void WatchForSignpostConditions();
+#ifdef FABLE_RETAIL_CV_ARCHERYCOMPETITIONSCRIPT_DOCOUNTDOWN
+    void DoCountDown(long);
+#endif
 
     long Score; // +0x48
     bool IsOwnerDead; // +0x4c

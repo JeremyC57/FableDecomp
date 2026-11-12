@@ -394214,6 +394214,76 @@ $catalog = @(
         TestSource = '00/86/CCombatActionGenericStrikeResponseKnockdown_FinishAction_00867b40_test.cpp'
         PassPattern = '00867b40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008da410'
+        Module = 'NCreatureMode::CModeScreamerAggressive'
+        Source = '00/8d/NCreatureModeCModeScreamerAggressive_OnActivate_008da410.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScreamerAggressive_OnActivate_008da410_test.cpp'
+        PassPattern = '008da410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079cc80'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_PlayEffect_0079cc80.cpp'
+        TestSource = '00/79/CTCBulletTime_PlayEffect_0079cc80_test.cpp'
+        PassPattern = '0079cc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aabd50'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_PlaySoundEvent_00aabd50.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_PlaySoundEvent_00aabd50_test.cpp'
+        PassPattern = '00aabd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009810b0'
+        Module = 'CAIStateGroupBase'
+        Source = '00/98/CAIStateGroupBase_AIActionFindAGuardAndGiveMessage_009810b0.cpp'
+        TestSource = '00/98/CAIStateGroupBase_AIActionFindAGuardAndGiveMessage_009810b0_test.cpp'
+        PassPattern = '009810b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44f40'
+        Module = 'C3DSkeletalMorphTarget'
+        Source = '00/a4/C3DSkeletalMorphTarget_CombineMorph_00a44f40.cpp'
+        TestSource = '00/a4/C3DSkeletalMorphTarget_CombineMorph_00a44f40_test.cpp'
+        PassPattern = '00a44f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d38d20'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_RunVillagerComments_00d38d20.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_RunVillagerComments_00d38d20_test.cpp'
+        PassPattern = '00d38d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00704860'
+        Module = 'CGameScriptThingManager'
+        Source = '00/70/CGameScriptThingManager_CreateScriptThing_00704860.cpp'
+        TestSource = '00/70/CGameScriptThingManager_CreateScriptThing_00704860_test.cpp'
+        PassPattern = '00704860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5b370'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_Read_00a5b370.cpp'
+        TestSource = '00/a5/CCachedFile_Read_00a5b370_test.cpp'
+        PassPattern = '00a5b370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e36750'
+        Module = 'NScript::CV_ArcheryCompetitionScript'
+        Source = '00/e3/NScriptCVArcheryCompetitionScript_DoCountDown_00e36750.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScript_DoCountDown_00e36750_test.cpp'
+        PassPattern = '00e36750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00773ee0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_GetSaleItemsToPlace_00773ee0.cpp'
+        TestSource = '00/77/CTCShop_GetSaleItemsToPlace_00773ee0_test.cpp'
+        PassPattern = '00773ee0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

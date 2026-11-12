@@ -1,0 +1,43 @@
+addr       parity           behav  name
+008da410   RELOCATION_MATCH PASS   OnActivate
+0079cc80   RELOCATION_MATCH PASS   PlayEffect
+00aabd50   WARN RELOC_NAME: ??0CSampleQueryLH@@QAE@PAXPBX@Z -> 00c08720 labelled 'CVtable_012b1a54::CVtable_012b1a54'
+00aabd50   WARN RELOC_NAME: ??1CSampleQueryLH@@QAE@XZ -> 00c08780 labelled '_global::SetMemberConst_00c08780'
+00aabd50   WARN RELOC_NAME: ??1?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@QAE@XZ -> 00aac870 labelled '_global::CCountedPointer_Release_00aac870'
+00aabd50   RELOCATION_MATCH PASS   PlaySoundEvent
+009810b0   RELOCATION_MATCH PASS   AIAction_FindAGuardAndGiveMessage
+00a44f40   RELOCATION_MATCH PASS   CombineMorph
+00d38d20   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d38d20   RELOCATION_MATCH PASS   RunVillagerComments
+00704860   WARN RELOC_NAME: ?SetImplementation@CScriptThing@@QAEXV?$CCountedPointer@VCScriptThing@@@@@Z -> 007046d0 labelled 'CMeshDataBank_007046d0::SetAnimationMemoryPool'
+00704860   RELOCATION_MATCH PASS   CreateScriptThing
+00a5b370   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00a5b370   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+00a5b370   RELOCATION_MATCH PASS   Read
+00e36750   RELOCATION_MATCH PASS   DoCountDown
+00773ee0   RELOCATION_MATCH PASS   GetSaleItemsToPlace
+
+WINS: 10
+  008da410 RELOCATION_MATCH NCreatureMode::CModeScreamerAggressive::OnActivate
+  0079cc80 RELOCATION_MATCH CTCBulletTime::PlayEffect
+  00aabd50 RELOCATION_MATCH CSoundEmitterLH::PlaySoundEvent
+  009810b0 RELOCATION_MATCH CAIStateGroupBase::AIAction_FindAGuardAndGiveMessage
+  00a44f40 RELOCATION_MATCH C3DSkeletalMorphTarget::CombineMorph
+  00d38d20 RELOCATION_MATCH NScript::CQ_FireHeartScript::RunVillagerComments
+  00704860 RELOCATION_MATCH CGameScriptThingManager::CreateScriptThing
+  00a5b370 RELOCATION_MATCH CCachedFile::Read
+  00e36750 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::DoCountDown
+  00773ee0 RELOCATION_MATCH CTCShop::GetSaleItemsToPlace
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NCreatureModeCModeScreamerAggressive_OnActivate_008da410
+  CTCBulletTime_PlayEffect_0079cc80
+  CSoundEmitterLH_PlaySoundEvent_00aabd50
+  CAIStateGroupBase_AIActionFindAGuardAndGiveMessage_009810b0
+  C3DSkeletalMorphTarget_CombineMorph_00a44f40
+  NScriptCQFireHeartScript_RunVillagerComments_00d38d20
+  CGameScriptThingManager_CreateScriptThing_00704860
+  CCachedFile_Read_00a5b370
+  NScriptCVArcheryCompetitionScript_DoCountDown_00e36750
+  CTCShop_GetSaleItemsToPlace_00773ee0
+rc=0

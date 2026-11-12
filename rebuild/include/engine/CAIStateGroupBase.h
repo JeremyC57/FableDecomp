@@ -161,6 +161,19 @@ protected:
     EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker,
         CIntelligentPointer<const CThing> target, unsigned long speech, bool interrupt, long priority);            // 0x009812C0
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD
+    // Opt-in (wf11, row 0x009810B0): Ego_r.pdb / FableWin.pdb nested ?CAIFilterBase@CAIStateGroupBase@@ (vptr only; the
+    // filter test is the virtual operator() const) and the protected members
+    // ?AIAction_FleeToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@V?$CIntelligentPointer@$$CBVCThingCreatureBase@@@@MABVCCreatureActionBase@@ABVCAIFilterBase@1@@Z (0x009804A0)
+    // and ?AIAction_FindAGuardAndGiveMessage@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@V?$CDefPointer@$$CBVCMessageEventDef@@@@VC3DVector@@J@Z (0x009810B0).
+public:
+    class CAIFilterBase { public: virtual bool operator()() const = 0; };
+protected:
+    EAIActionReturn AIAction_FleeToThingProximity(CIntelligentPointer<const class CThingCreatureBase> thing, float proximity,
+        const class CCreatureActionBase& action, const CAIFilterBase& filter);   // 0x009804A0
+    EAIActionReturn AIAction_FindAGuardAndGiveMessage(CDefPointer<const class CMessageEventDef> message, C3DVector position,
+        long parameter);   // 0x009810B0
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
     // Chunk 756 (row 0x009104D0): Ego_r.pdb ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (0x008FCFA0) and
     // ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ (0x008FD000), protected, out of line in retail.

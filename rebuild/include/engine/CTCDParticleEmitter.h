@@ -116,6 +116,10 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_PARTICLE_EMITTER; }
     void SetAlwaysUpdate(bool always_update);                                                          // 0x006E0590
     void AttachToThing(CThing& thing, long attach_type, const CCharString& helper_name, long helper_index, float offset);   // 0x006E0BE0
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
+    // Ego_r ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z (retail 0x006E0880, static __fastcall). Needs C3DVector.h.
+    static CThing* __fastcall Create(long effect, const C3DVector& pos, bool flag);
+#endif
 };
 #endif
 #endif

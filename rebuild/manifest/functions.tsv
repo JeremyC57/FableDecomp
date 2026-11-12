@@ -29275,7 +29275,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008da0f0	Spike	NCreatureMode::CModeScorpionKingTailPlunge	__thiscall	void	1	CModeScorpionKingTailPlunge *	1	yes	accepted									
 008da2e0	OnActivate	NCreatureMode::CModeScorpionKingExhausted	__thiscall	void	1	CModeScorpionKingExhausted *	1	yes	accepted									
 008da3b0	OnDeactivate	NCreatureMode::CModeScorpionKingExhausted	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008da410	OnActivate	CModeScreamerAggressive	__thiscall	void	1	CModeScreamerAggressive *	1	yes	accepted									
+008da410	OnActivate	NCreatureMode::CModeScreamerAggressive	__thiscall	void	1	CModeScreamerAggressive *	1	yes	accepted									
 008da610	FrameUpdate	NCreatureMode::CModeScreamerAggressive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008da690	OnDeactivate	NCreatureMode::CModeScreamerAggressive	__thiscall	void	1	CModeScreamerAggressive *	1	yes	accepted									
 008da7a0	OnDeactivate	NCreatureMode::CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
@@ -37374,7 +37374,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a5b200	GetLength	CCachedFile	__thiscall	long	1	CCachedFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CCachedFile_GetLength_00a5b200.cpp
 00a5b210	OpenFromFile	CCachedFile	__thiscall	void	3	CCachedFile *,CAFile *,CASuspendableProcess *	1	yes	accepted									
 00a5b260	Open	CCachedFile	__thiscall	void	4	CCachedFile *,CWideString *,FileAccessType,ulong	1	yes	accepted									
-00a5b370	?Read@CCachedFile@@UAEXPAXJPAVCASuspendableProcess@@@Z	CCachedFile	__thiscall	void	4	CCachedFile *,void *,long,CASuspendableProcess *	1	yes	accepted									
+00a5b370	Read	CCachedFile	__thiscall	void	4	CCachedFile *,void *,long,CASuspendableProcess *	1	yes	accepted									
 00a5b590	CCachedFile	CCachedFile	__thiscall	undefined	1	C3DMeshObject *	0	yes	accepted									
 00a5b650	Copy	CCachedFile	__thiscall	void	2	CCachedFile *,CCachedFile *	1	yes	accepted									
 00a5b710	Clone	CCachedFile	__thiscall	CAFile *	1	CCachedFile *	1	yes	accepted									
@@ -39003,7 +39003,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aabc50	IsSamplePlaying	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aabca0	RemoveInactiveSounds	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
 00aabd40	Update	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00aabd50	VSlot4	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
+00aabd50	PlaySoundEvent	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
 00aabf60	CSoundEmitterLH::vfunc_3	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aac1d0	PlayAtmos	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aac2e0	StopAllSamples	CSoundEmitterLH	__thiscall	EMiniGameType	1	CDrawQuestInfo *	1	yes	accepted									

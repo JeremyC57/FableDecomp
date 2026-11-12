@@ -46,6 +46,17 @@ private:
 public:
 public:
     virtual ~CCreatureActionBase();
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ANIMCTOR
+    // Opt-in (wf11, row 0x009810B0): Ego_r.pdb ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z
+    // (retail 0x00693B30, out of line) and the protected static __fastcall
+    // ?GetRandomAnimFromName@CCreatureActionBase@@KIABVCAnimationEntry@@ABVCThingCreatureBase@@ABVCCharString@@@Z (0x006924B0, landed);
+    // both used by the same-TU CCreatureAction_SendMessage constructor 0x00982210. Declarations only.
+    CCreatureActionBase(CThingCreatureBase& creature, float speed, float blendTime, const class CAnimationEntry& animation,
+        const class CSoundPair& sound, long a, long b);                 // 0x00693B30
+protected:
+    static const class CAnimationEntry& __fastcall GetRandomAnimFromName(const CThingCreatureBase& creature, const CCharString& name);   // 0x006924B0
+public:
+#endif
 public:
     virtual void EditUpdate(float);
 public:

@@ -9,6 +9,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SHOWFEAR_DERIVED
+// Opt-in (wf11, row 0x009810B0): the polymorphic retail class (vtable 0x0127344C; RTTI base CCreatureActionBase; adds no data, sizeof
+// 0xA8) with Ego_r.pdb ??0CCreatureAction_ShowFear@@QAE@AAVCThingAICreature@@@Z (0x00842270, out of line, landed). Needs the retail
+// engine/CCreatureActionBase.h (FABLE_RETAIL_CCREATUREACTIONBASE) first.
+class CThingAICreature;
+class CCreatureAction_ShowFear : public CCreatureActionBase {
+public:
+    CCreatureAction_ShowFear(CThingAICreature& creature);              // 0x00842270
+    virtual void PerformAction();
+    virtual CCreatureActionBase* Clone() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ShowFear) == 0xa8);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ShowFear {
 public:
@@ -21,4 +34,5 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ShowFear) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ShowFear, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_SHOWFEAR_DERIVED
 #endif // FABLE_ENGINE_CCREATUREACTION_SHOWFEAR_H

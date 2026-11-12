@@ -1,0 +1,2 @@
+0079cc80	CTCBulletTime::PlayEffect	RELOCATION_MATCH	20	GetSubDef written in both arms (hoisted by VC7.1)
+009810b0	CAIStateGroupBase::AIAction_FindAGuardAndGiveMessage	RELOCATION_MATCH	25	SendMessage ctor real body noinline in TU; shared headers + 5 overlay opt-ins

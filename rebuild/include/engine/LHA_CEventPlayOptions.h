@@ -13,6 +13,10 @@ class CEventPlayOptions {public:
  unsigned short WhichParams,WhichCallbacks,WhichGainSendFaders,WhichPitchSendFaders;
  CResourceOptions Params;
  CEventPlayOptions();
+#ifdef FABLE_RETAIL_LHA_CEVENTPLAYOPTIONS_SENDFADERS
+ void SetFlag16(unsigned long index,bool set); // 0x00C0A8A0 (descriptive name; landed as CBitMaskPair_00c0a8c0::SetFlag16, see NAME_FIXES.tsv) (WhichGainSendFaders +0x2a / Params.GainSendFaders +0x4c)
+ void SetFlag(unsigned long index,bool set);   // 0x00C0A8C0 (descriptive name; landed as CBitMaskPair_00c0a8c0::SetFlag, see NAME_FIXES.tsv) (WhichPitchSendFaders +0x2c / Params.PitchSendFaders +0x4e)
+#endif
 };
 }
 #endif

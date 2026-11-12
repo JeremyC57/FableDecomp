@@ -77,6 +77,13 @@ public:
 private:
 #endif
  bool ReadyForMelee;long CurFlourishTimer;
+#ifdef FABLE_RETAIL_CTCCOMBAT_READYFORMELEE
+ // Retail opt-in (row 0x008DA410 CModeScreamerAggressive::OnActivate): Ego_r/FableWin ?SetIsReadyForMelee@CTCCombat@@QAEX_N@Z, inline
+ // (the caller stores `mov byte [eax+80h],1` on the GetTC<CTCCombat> result). Access only; no layout change.
+public:
+ void SetIsReadyForMelee(bool ready){ReadyForMelee=ready;}
+private:
+#endif
  std::vector<CIntelligentPointer<CThing> > FlourishParticles;bool IsInMiddleOfFlourishAction;
  CCombatManager& GetCombatManager(){return CombatManager;}
  CThingCreatureBase& GetParentCreature(){return *ParentCreature;}

@@ -1,0 +1,403 @@
+==== 0x008DA410
+16:56 008da410 grade v1.cpp SRC_FAIL -- port onto shared headers
+16:57 008da410 grade v1.cpp DIFFER(509v511) hunks=31 -- port: macros fixed, SetIsReadyForMelee, PeekBaseDef
+16:57 008da410 grade v2.cpp DIFFER(503v511) hunks=10 -- pcombat uninit late / =0 late / effect first
+16:57 008da410 grade v3.cpp DIFFER(501v511) hunks=12 -- pcombat uninit late / =0 late / effect first
+16:57 008da410 grade v4.cpp DIFFER(503v511) hunks=12 -- pcombat uninit late / =0 late / effect first
+16:57 008da410 grade v5.cpp RELOCATION_MATCH -- implicit literal->CCharString conversion
+16:58 008da410 grade 008da410.cpp RELOCATION_MATCH -- final strict regrade
+17:31 008da410 grade src.cpp RELOCATION_MATCH -- 
+17:35 008da410 grade src.cpp TIMEOUT -- 
+
+==== 0x0079CC80
+17:00 0079cc80 grade v1.cpp TIMEOUT -- ported onto shared headers, GetSubDef body visible
+17:00 0079cc80 grade v1.cpp SRC_FAIL -- ported onto shared headers, GetSubDef body visible
+17:00 0079cc80 grade v1.cpp DIFFER(510v512) hunks=15 -- ported; compare-null-int; defmgr hdr
+17:02 0079cc80 grade v2.cpp DIFFER(517v512) hunks=18 -- body visibility: no GetSubDef body / no GetEffect body / neither
+17:02 0079cc80 grade v3.cpp DIFFER(510v512) hunks=15 -- body visibility: no GetSubDef body / no GetEffect body / neither
+17:02 0079cc80 grade v4.cpp DIFFER(517v512) hunks=18 -- body visibility: no GetSubDef body / no GetEffect body / neither
+17:02 0079cc80 grade v5.cpp DIFFER(510v512) hunks=15 -- 0.0f / index first / explicit null test
+17:02 0079cc80 grade v6.cpp DIFFER(510v512) hunks=15 -- 0.0f / index first / explicit null test
+17:02 0079cc80 grade v7.cpp DIFFER(510v512) hunks=15 -- 0.0f / index first / explicit null test
+17:03 0079cc80 grade v8.cpp DIFFER(510v512) hunks=15 -- Release POINTEE / COUNTREF / thing local arm2
+17:03 0079cc80 grade v9.cpp DIFFER(489v512) hunks=25 -- Release POINTEE / COUNTREF / thing local arm2
+17:03 0079cc80 grade v10.cpp DIFFER(510v512) hunks=29 -- Release POINTEE / COUNTREF / thing local arm2
+17:03 0079cc80 grade v11.cpp DIFFER(331v512) hunks=29 -- on v10: optimize s / index first / release pointee
+17:03 0079cc80 grade v12.cpp DIFFER(510v512) hunks=29 -- on v10: optimize s / index first / release pointee
+17:03 0079cc80 grade v13.cpp DIFFER(510v512) hunks=29 -- on v10: optimize s / index first / release pointee
+17:04 0079cc80 grade v14.cpp DIFFER(510v512) hunks=29 -- on v10: emitter fn-scope / +thing fn-scope / emitter before GetSubDef
+17:04 0079cc80 grade v15.cpp DIFFER(510v512) hunks=29 -- on v10: emitter fn-scope / +thing fn-scope / emitter before GetSubDef
+17:04 0079cc80 grade v16.cpp DIFFER(510v512) hunks=29 -- on v10: emitter fn-scope / +thing fn-scope / emitter before GetSubDef
+17:04 0079cc80 grade v17.cpp DIFFER(512v512) hunks=9 -- on v10: GetSubDef in each arm / !effect / GetSubDef outer if
+17:04 0079cc80 grade v18.cpp DIFFER(510v512) hunks=29 -- on v10: GetSubDef in each arm / !effect / GetSubDef outer if
+17:04 0079cc80 grade v19.cpp DIFFER(501v512) hunks=29 -- on v10: GetSubDef in each arm / !effect / GetSubDef outer if
+17:04 0079cc80 grade v17.cpp DIFFER(512v512) hunks=9 -- regrade v17 show hunks
+17:05 0079cc80 grade v20.cpp RELOCATION_MATCH -- hoist: direct temp / index first / both
+17:05 0079cc80 grade PlayEffect_0079cc80.cpp RELOCATION_MATCH -- final strict regrade
+17:37 0079cc80 grade src.cpp RELOCATION_MATCH -- 
+17:37 0079cc80 grade src.cpp SRC_FAIL -- 
+17:49 0079cc80 grade PlayEffect_0079cc80.cpp RELOCATION_MATCH -- repair: attribute GetSubDef template body to 0x007941D0 row
+17:49 0079cc80 grade PlayEffect_0079cc80.cpp RELOCATION_MATCH -- repair: strict regrade
+17:56 0079cc80 grade src.cpp RELOCATION_MATCH -- 
+17:56 0079cc80 grade src.cpp SRC_FAIL -- 
+
+==== 0x00AABD50
+17:06 00aabd50 grade v1.cpp SRC_FAIL -- port onto shared headers
+17:07 00aabd50 grade v1.cpp DIFFER(514v515) hunks=22 -- port onto shared headers + CCHARSTRING
+17:07 00aabd50 grade v2.cpp DIFFER(514v515) hunks=22 -- Is3D ternary / init alias / &&
+17:07 00aabd50 grade v3.cpp DIFFER(514v515) hunks=22 -- Is3D ternary / init alias / &&
+17:07 00aabd50 grade v4.cpp DIFFER(514v515) hunks=29 -- Is3D ternary / init alias / &&
+17:07 00aabd50 grade v5.cpp DIFFER(514v515) hunks=28 -- options statement order
+17:07 00aabd50 grade v6.cpp DIFFER(492v515) hunks=29 -- options statement order
+17:07 00aabd50 grade v7.cpp DIFFER(514v515) hunks=25 -- options statement order
+17:08 00aabd50 grade v1.cpp DIFFER(514v515) hunks=22 -- regrade v1 full diff
+17:08 00aabd50 grade v8.cpp DIFFER(514v515) hunks=22 -- head-relative vector copy spellings
+17:08 00aabd50 grade v9.cpp DIFFER(509v515) hunks=12 -- head-relative vector copy spellings
+17:08 00aabd50 grade v10.cpp DIFFER(515v515) hunks=9 -- head-relative vector copy spellings
+17:08 00aabd50 grade v10.cpp DIFFER(515v515) hunks=9 -- v10 full
+17:08 00aabd50 grade v11.cpp DIFFER(515v515) hunks=9 -- event manager inline expr / bank ref local / EmitterId ternary
+17:08 00aabd50 grade v12.cpp DIFFER(515v515) hunks=9 -- event manager inline expr / bank ref local / EmitterId ternary
+17:08 00aabd50 grade v13.cpp DIFFER(515v515) hunks=7 -- event manager inline expr / bank ref local / EmitterId ternary
+17:09 00aabd50 grade v14.cpp DIFFER(515v515) hunks=7 -- bank ptr arg / named new local / bank accessor
+17:09 00aabd50 grade v15.cpp DIFFER(515v515) hunks=7 -- bank ptr arg / named new local / bank accessor
+17:09 00aabd50 grade v16.cpp RELOCATION_MATCH -- bank ptr arg / named new local / bank accessor
+17:09 00aabd50 grade 00aabd50.cpp RELOCATION_MATCH -- final strict regrade
+17:39 00aabd50 grade src.cpp RELOCATION_MATCH -- 
+17:39 00aabd50 grade src.cpp SRC_FAIL -- 
+17:54 00aabd50 grade src.cpp RELOCATION_MATCH -- repair: descriptive-name marks + CEventPlayOptions setter name fix
+17:54 00aabd50 grade src.cpp RELOCATION_MATCH -- repair: strict regrade
+17:59 00aabd50 grade src.cpp RELOCATION_MATCH -- 
+17:59 00aabd50 grade src.cpp SRC_FAIL -- 
+18:11 00aabd50 grade 00aabd50.cpp RELOCATION_MATCH -- landing: plain while form (verifier)
+
+==== 0x009810B0
+17:04 009810b0 grade v1.cpp TIMEOUT -- port onto shared headers
+17:04 009810b0 grade v1.cpp SRC_FAIL -- port onto shared headers (inlined head)
+17:05 009810b0 grade v1.cpp DIFFER(576v521) hunks=19 -- port onto shared headers, public CAIFilterBase
+17:05 009810b0 grade v1.cpp DIFFER(576v521) hunks=19 -- regrade for full diff
+17:05 009810b0 grade v2.cpp DIFFER(569v521) hunks=25 -- inline convert ctor; release variants default/POINTEE/SELFDELETING
+17:05 009810b0 grade v3.cpp DIFFER(569v521) hunks=25 -- inline convert ctor; release variants default/POINTEE/SELFDELETING
+17:05 009810b0 grade v4.cpp DIFFER(454v521) hunks=19 -- inline convert ctor; release variants default/POINTEE/SELFDELETING
+17:06 009810b0 grade v5.cpp DIFFER(569v521) hunks=25 -- SELFDELETING/POINTEE + CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+17:06 009810b0 grade v6.cpp DIFFER(501v521) hunks=23 -- SELFDELETING/POINTEE + CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+17:06 009810b0 grade rA.cpp DIFFER(474v521) hunks=24 -- release spellings A/B/C
+17:06 009810b0 grade rB.cpp DIFFER(474v521) hunks=24 -- release spellings A/B/C
+17:08 009810b0 grade rA.cpp DIFFER(474v521) hunks=24 -- release spellings A/B/C (fixed elif)
+17:08 009810b0 grade rB.cpp DIFFER(474v521) hunks=24 -- release spellings A/B/C (fixed elif)
+17:08 009810b0 grade rC.cpp DIFFER(567v521) hunks=27 -- release spellings A/B/C (fixed elif)
+17:09 009810b0 grade g1.cpp DIFFER(569v521) hunks=16 -- guardPointer default+Set / copy-init
+17:09 009810b0 grade g2.cpp DIFFER(569v521) hunks=25 -- guardPointer default+Set / copy-init
+17:10 009810b0 grade h1.cpp DIFFER(474v521) hunks=15 -- g1 + release A / COUNTREF / SELFDELETING+DELETES
+17:10 009810b0 grade h2.cpp DIFFER(474v521) hunks=14 -- g1 + release A / COUNTREF / SELFDELETING+DELETES
+17:10 009810b0 grade h3.cpp DIFFER(569v521) hunks=16 -- g1 + release A / COUNTREF / SELFDELETING+DELETES
+17:11 009810b0 grade iD.cpp DIFFER(569v521) hunks=16 -- release D(dec;test) E(post-dec==1) F(null first)
+17:11 009810b0 grade iE.cpp DIFFER(471v521) hunks=15 -- release D(dec;test) E(post-dec==1) F(null first)
+17:11 009810b0 grade iF.cpp DIFFER(546v521) hunks=40 -- release D(dec;test) E(post-dec==1) F(null first)
+17:14 009810b0 grade g1.cpp DIFFER(569v521) hunks=18 /Oa -- g1 + /Oa
+17:15 009810b0 grade j1.cpp DIFFER(438v521) hunks=10 -- SendMessage ctor real body out of line in TU (alias visibility)
+17:15 009810b0 grade j2.cpp DIFFER(521v521) hunks=7 -- ctor __declspec(noinline) instead of auto_inline pragma
+17:16 009810b0 grade k1.cpp DIFFER(521v521) hunks=7 -- C3DVECTOR retail / named compare / pos ref local
+17:16 009810b0 grade k2.cpp DIFFER(521v521) hunks=7 -- C3DVECTOR retail / named compare / pos ref local
+17:16 009810b0 grade k3.cpp DIFFER(521v521) hunks=3 -- C3DVECTOR retail / named compare / pos ref local
+17:16 009810b0 grade k4.cpp DIFFER(521v521) hunks=3 -- guard decl order vs pos / creature local
+17:16 009810b0 grade k5.cpp RELOCATION_MATCH -- guard decl order vs pos / creature local
+17:16 009810b0 grade k5.cpp RELOCATION_MATCH -- strict regrade k5, CDefPointer overlay removed
+17:17 009810b0 grade m1.cpp RELOCATION_MATCH -- shared CCreatureActionBase.h + ShowFear overlay opt-ins
+17:17 009810b0 grade final.cpp RELOCATION_MATCH -- final source with header comment
+17:18 009810b0 grade final.cpp RELOCATION_MATCH -- strict regrade final
+17:42 009810b0 grade src.cpp RELOCATION_MATCH -- 
+17:42 009810b0 grade src.cpp SRC_FAIL -- 
+17:43 009810b0 grade src.cpp SRC_FAIL -- 
+
+==== 0x00A44F40
+17:12 00a44f40 grade v1.cpp DIFFER(516v525) hunks=20 -- port to shared headers + vector insert outofline
+17:12 00a44f40 grade v2.cpp DIFFER(516v525) hunks=20 -- port to shared headers + vector insert outofline
+17:12 00a44f40 grade v1.cpp DIFFER(516v525) hunks=20 -- regrade v1 to see full diff
+17:13 00a44f40 grade v3.cpp DIFFER(516v525) hunks=21 -- swap ==, ctor body assign, ref local
+17:13 00a44f40 grade v4.cpp DIFFER(516v525) hunks=21 -- swap ==, ctor body assign, ref local
+17:13 00a44f40 grade v5.cpp DIFFER(474v525) hunks=23 -- swap ==, ctor body assign, ref local
+17:14 00a44f40 grade v6.cpp DIFFER(516v525) hunks=20 -- ctor defined after; SetScaling accessor after/before
+17:14 00a44f40 grade v7.cpp DIFFER(516v525) hunks=20 -- ctor defined after; SetScaling accessor after/before
+17:14 00a44f40 grade v8.cpp DIFFER(516v525) hunks=20 -- ctor defined after; SetScaling accessor after/before
+17:15 00a44f40 grade va.cpp DIFFER(559v525) hunks=24 -- no source ref / source pointer
+17:15 00a44f40 grade vb.cpp DIFFER(516v525) hunks=20 -- no source ref / source pointer
+17:15 00a44f40 grade vd.cpp DIFFER(516v525) hunks=20 -- default CCharString stand-in; named delta
+17:15 00a44f40 grade ve.cpp DIFFER(516v525) hunks=20 -- default CCharString stand-in; named delta
+17:15 00a44f40 grade vf.cpp DIFFER(516v525) hunks=20 -- i/t types long/uint
+17:15 00a44f40 grade vg.cpp DIFFER(516v525) hunks=20 -- i/t types long/uint
+17:15 00a44f40 grade vh.cpp DIFFER(516v525) hunks=20 -- i/t types long/uint
+17:16 00a44f40 grade vi.cpp DIFFER(415v525) hunks=22 -- pragma s; pragma g off
+17:16 00a44f40 grade vj.cpp DIFFER(897v525) hunks=14 -- pragma s; pragma g off
+17:16 00a44f40 grade v1.cpp DIFFER(539v525) hunks=24 /Op -- /Op
+17:17 00a44f40 grade v1.cpp DIFFER(516v525) hunks=20 /Ow -- flag /Ow
+17:17 00a44f40 grade v1.cpp DIFFER(510v525) hunks=27 /Oa -- flag /Oa
+17:17 00a44f40 grade vk.cpp DIFFER(516v525) hunks=20 -- value-init morph; user copy ctor/op=; PROBE escape
+17:17 00a44f40 grade vl.cpp DIFFER(516v525) hunks=20 -- value-init morph; user copy ctor/op=; PROBE escape
+17:17 00a44f40 grade vm.cpp DIFFER(537v525) hunks=17 -- value-init morph; user copy ctor/op=; PROBE escape
+17:18 00a44f40 grade vn.cpp DIFFER(468v525) hunks=25 -- default ctor initialises Scaling to (1,1,1)
+17:18 00a44f40 grade vo.cpp DIFFER(468v525) hunks=25 -- default ctor initialises Scaling to (1,1,1)
+17:18 00a44f40 grade vp.cpp DIFFER(516v525) hunks=20 -- default ctor initialises Scaling to (1,1,1)
+17:18 00a44f40 grade v1.cpp DIFFER(599v525) hunks=21 /EHsc -- /EHsc
+17:19 00a44f40 grade vq.cpp DIFFER(504v525) hunks=20 -- delta vs morph.Scaling; a=a+b
+17:19 00a44f40 grade vr.cpp DIFFER(540v525) hunks=30 -- delta vs morph.Scaling; a=a+b
+17:19 00a44f40 grade vs.cpp DIFFER(516v525) hunks=20 -- accessors; CompareCRCs inline
+17:19 00a44f40 grade vu.cpp DIFFER(516v525) hunks=20 -- accessors; CompareCRCs inline
+17:20 00a44f40 grade probe1.cpp DIFFER(516v525) hunks=20 -- PROBE: C3DVector ops plain inline
+17:20 00a44f40 grade probe2.cpp DIFFER(516v525) hunks=20 -- PROBE: C3DVector ops plain inline
+17:21 00a44f40 grade r1.cpp DIFFER(516v525) hunks=20 -- decl order of i/t; while loop
+17:21 00a44f40 grade r2.cpp DIFFER(516v525) hunks=20 -- decl order of i/t; while loop
+17:21 00a44f40 grade r3.cpp DIFFER(516v525) hunks=20 -- decl order of i/t; while loop
+probe 1 delta removed -> see output
+17:22 00a44f40 grade x1.cpp DIFFER(516v525) hunks=20 -- default ctor non-inline in .cpp (auto-inlined /Ob2) before/after
+17:22 00a44f40 grade x2.cpp DIFFER(516v525) hunks=20 -- default ctor non-inline in .cpp (auto-inlined /Ob2) before/after
+17:23 00a44f40 grade y1.cpp DIFFER(516v525) hunks=19 -- morph via pointer / reference
+17:23 00a44f40 grade y2.cpp DIFFER(516v525) hunks=19 -- morph via pointer / reference
+17:23 00a44f40 grade z1.cpp DIFFER(516v525) hunks=20 -- PROBE: empty do-while(0) BB boundaries (release ASSERT expansion?)
+17:23 00a44f40 grade z2.cpp DIFFER(516v525) hunks=20 -- PROBE: empty do-while(0) BB boundaries (release ASSERT expansion?)
+17:24 00a44f40 grade v1.cpp DIFFER(507v525) hunks=22 /G7 -- flag /G7
+17:24 00a44f40 grade v1.cpp DIFFER(516v525) hunks=20 /G6 -- flag /G6
+17:24 00a44f40 grade v1.cpp DIFFER(516v525) hunks=20 /G5 -- flag /G5
+17:25 00a44f40 grade w1.cpp DIFFER(516v525) hunks=20 -- named one; named delta copy; placement copy (probe)
+17:25 00a44f40 grade w2.cpp DIFFER(516v525) hunks=20 -- named one; named delta copy; placement copy (probe)
+17:25 00a44f40 grade w3.cpp DIFFER(468v525) hunks=25 -- named one; named delta copy; placement copy (probe)
+17:25 00a44f40 grade s3.cpp DIFFER(540v525) hunks=31 -- SetScaling(GetScaling()+delta)
+17:25 00a44f40 grade s1.cpp DIFFER(600v525) hunks=19 -- SetScaling(GetScaling()+delta)
+17:25 00a44f40 grade s2.cpp DIFFER(492v525) hunks=14 -- SetScaling(GetScaling()+delta)
+probe 2 source from opaque call -> loads still hoisted?
+probe 3 field addresses escaped
+17:27 00a44f40 grade p1.cpp DIFFER(415v525) hunks=22 -- pragma t off / w on / p on
+17:27 00a44f40 grade p2.cpp DIFFER(516v525) hunks=20 -- pragma t off / w on / p on
+17:27 00a44f40 grade p3.cpp DIFFER(539v525) hunks=24 -- pragma t off / w on / p on
+probe 4 /EHsc miss-arm shape
+17:28 00a44f40 grade a1.cpp DIFFER(516v525) hunks=14 -- i++ in insert arg; ref alias
+17:28 00a44f40 grade a2.cpp DIFFER(516v525) hunks=19 -- i++ in insert arg; ref alias
+17:28 00a44f40 grade a1.cpp DIFFER(516v525) hunks=14 -- a1 full diff
+17:29 00a44f40 grade a1.cpp DIFFER(516v525) hunks=14 -- a1 full diff tail
+17:29 00a44f40 grade 00a44f40.cpp DIFFER(516v525) hunks=14 -- final best (shared headers, i++ in insert arg)
+17:46 00a44f40 grade b0.cpp DIFFER(516v525) hunks=14 -- rebaseline attempt2
+17:46 00a44f40 grade b0.cpp DIFFER(516v525) hunks=14 -- full diff view
+17:47 00a44f40 grade b0.cpp DIFFER(516v525) hunks=14 -- QFE4035 compiler
+17:49 00a44f40 grade c1.cpp DIFFER(516v525) hunks=14 -- block boundaries: do-while0 / if-true / switch around setup
+17:49 00a44f40 grade c2.cpp DIFFER(516v525) hunks=14 -- block boundaries: do-while0 / if-true / switch around setup
+17:49 00a44f40 grade c3.cpp DIFFER(516v525) hunks=14 -- block boundaries: do-while0 / if-true / switch around setup
+17:50 00a44f40 grade d1.cpp DIFFER(516v525) hunks=14 -- user dtor / full init list / copy ctor+dtor
+17:50 00a44f40 grade d2.cpp DIFFER(516v525) hunks=14 -- user dtor / full init list / copy ctor+dtor
+17:50 00a44f40 grade d3.cpp DIFFER(516v525) hunks=14 -- user dtor / full init list / copy ctor+dtor
+17:50 00a44f40 grade e1.cpp DIFFER(516v525) hunks=14 -- GetBoneMorphs accessor / +GetNameCRC,GetScaling / hoisted ref
+17:50 00a44f40 grade e2.cpp DIFFER(516v525) hunks=14 -- GetBoneMorphs accessor / +GetNameCRC,GetScaling / hoisted ref
+17:50 00a44f40 grade e3.cpp DIFFER(554v525) hunks=26 -- GetBoneMorphs accessor / +GetNameCRC,GetScaling / hoisted ref
+17:51 00a44f40 grade f1.cpp DIFFER(516v525) hunks=14 -- insert body visible, noinline
+17:51 00a44f40 grade f2.cpp DIFFER(516v525) hunks=14 -- insert body visible, noinline
+17:52 00a44f40 grade b0.cpp DIFFER(516v525) hunks=14 -- view our miss arm
+17:53 00a44f40 grade g1.cpp DIFFER(535v525) hunks=23 -- DIAG: volatile BoneNameCRC
+17:53 00a44f40 grade h1.cpp DIFFER(516v525) hunks=14 /EHsc -- /EHsc + nothrow callees (EH state block boundaries, no frame)
+17:54 00a44f40 grade j1.cpp DIFFER(516v525) hunks=13 -- DIAG pointer var to morph
+17:54 00a44f40 grade j1.cpp DIFFER(516v525) hunks=13 -- DIAG view
+17:54 00a44f40 grade k1.cpp DIFFER(468v525) hunks=20 -- C3DVector user operator=
+17:54 00a44f40 grade k2.cpp DIFFER(468v525) hunks=20 -- C3DVector user operator=
+17:55 00a44f40 grade l1.cpp DIFFER(526v525) hunks=16 -- PROBE: morph address stored to global -> alias?
+17:56 00a44f40 grade m1.cpp DIFFER(516v525) hunks=14 -- PROBE __assume block boundaries in miss arm
+17:56 00a44f40 grade m2.cpp DIFFER(516v525) hunks=14 -- PROBE __assume block boundaries in miss arm
+17:56 00a44f40 grade m3.cpp DIFFER(516v525) hunks=14 -- PROBE __assume block boundaries in miss arm
+17:57 00a44f40 grade b0.cpp DIFFER(516v525) hunks=14 /Ob1 -- flag /Ob1
+17:57 00a44f40 grade b0.cpp DIFFER(516v525) hunks=14 /Ox -- flag /Ox
+17:57 00a44f40 grade b0.cpp DIFFER(415v525) hunks=22 /Os -- flag /Os
+17:58 00a44f40 grade n1.cpp DIFFER(516v525) hunks=13 -- PROBE placement-new null-test boundary
+17:58 00a44f40 grade h2.cpp DIFFER(516v525) hunks=14 /EHsc -- /EHsc + only insert nothrow / only CCharString nothrow
+17:58 00a44f40 grade h3.cpp DIFFER(599v525) hunks=21 /EHsc -- /EHsc + only insert nothrow / only CCharString nothrow
+17:58 00a44f40 grade p1.cpp DIFFER(516v525) hunks=18 -- default ctor body assigns Scaling = (1,1,1)
+17:58 00a44f40 grade p2.cpp DIFFER(516v525) hunks=18 -- default ctor body assigns Scaling = (1,1,1)
+17:59 00a44f40 grade q1.cpp DIFFER(516v525) hunks=14 -- insert plain inline visible
+18:00 00a44f40 grade r1.cpp DIFFER(516v525) hunks=14 -- miss-first if forms
+18:00 00a44f40 grade r2.cpp DIFFER(516v525) hunks=15 -- miss-first if forms
+18:00 00a44f40 grade r3.cpp DIFFER(516v525) hunks=14 -- miss-first if forms
+18:00 00a44f40 grade b0.cpp DIFFER(516v525) hunks=14 -- rebuild obj for view
+18:00 00a44f40 grade s1.cpp DIFFER(516v525) hunks=14 -- CArray::At(i) for this list
+18:00 00a44f40 grade s2.cpp DIFFER(516v525) hunks=14 -- CArray::At(i) for this list
+18:00 00a44f40 grade s3.cpp DIFFER(516v525) hunks=14 -- CArray::At(i) for this list
+18:01 00a44f40 grade t1.cpp DIFFER(531v525) hunks=15 -- PROBE source re-derived after ctor
+18:01 00a44f40 grade u1.cpp DIFFER(526v525) hunks=22 -- source ref re-bound in miss scope before morph
+18:01 00a44f40 grade u1.cpp DIFFER(526v525) hunks=22 -- view u1
+18:01 00a44f40 grade u2.cpp DIFFER(559v525) hunks=28 -- no outer source ref; arms bind; hit operand order
+18:01 00a44f40 grade u3.cpp DIFFER(559v525) hunks=28 -- no outer source ref; arms bind; hit operand order
+18:01 00a44f40 grade u4.cpp DIFFER(525v525) hunks=23 -- no outer source ref; arms bind; hit operand order
+18:02 00a44f40 grade u4.cpp DIFFER(525v525) hunks=23 -- view u4
+18:02 00a44f40 grade v1.cpp DIFFER(526v525) hunks=22 -- hit test via GetNameCRC
+18:02 00a44f40 grade v2.cpp DIFFER(526v525) hunks=22 -- hit test via GetNameCRC
+18:02 00a44f40 grade v3.cpp DIFFER(525v525) hunks=23 -- hit test via GetNameCRC
+18:02 00a44f40 grade w1.cpp DIFFER(525v525) hunks=23 -- hit test != forms
+18:02 00a44f40 grade w2.cpp DIFFER(525v525) hunks=23 -- hit test != forms
+18:02 00a44f40 grade w3.cpp DIFFER(526v525) hunks=22 -- hit test != forms
+18:02 00a44f40 grade w1.cpp DIFFER(525v525) hunks=23 -- view w1
+18:03 00a44f40 grade x1.cpp DIFFER(526v525) hunks=22 -- hit test with existing ref / continue
+18:03 00a44f40 grade x2.cpp DIFFER(525v525) hunks=23 -- hit test with existing ref / continue
+18:03 00a44f40 grade x3.cpp DIFFER(525v525) hunks=23 -- hit test with existing ref / continue
+18:03 00a44f40 grade y1.cpp DIFFER(525v525) hunks=23 -- i/t declaration forms on w1
+18:03 00a44f40 grade y2.cpp DIFFER(525v525) hunks=23 -- i/t declaration forms on w1
+18:03 00a44f40 grade y3.cpp DIFFER(537v525) hunks=26 -- i/t declaration forms on w1
+18:03 00a44f40 grade z1.cpp DIFFER(485v525) hunks=27 -- ref locals for arrays on w1
+18:03 00a44f40 grade z2.cpp DIFFER(524v525) hunks=23 -- ref locals for arrays on w1
+18:04 00a44f40 grade aa1.cpp DIFFER(525v525) hunks=29 -- i increment placement on w1
+18:04 00a44f40 grade aa2.cpp DIFFER(525v525) hunks=29 -- i increment placement on w1
+18:04 00a44f40 grade aa3.cpp DIFFER(525v525) hunks=23 -- i increment placement on w1
+18:04 00a44f40 grade bb1.cpp DIFFER(525v525) hunks=23 -- hit arm rebinding too
+18:04 00a44f40 grade bb2.cpp DIFFER(526v525) hunks=22 -- hit arm rebinding too
+18:04 00a44f40 grade bb3.cpp DIFFER(525v525) hunks=23 -- hit arm rebinding too
+18:04 00a44f40 grade cc1.cpp DIFFER(539v525) hunks=25 -- miss arm source mix
+18:04 00a44f40 grade cc2.cpp DIFFER(552v525) hunks=31 -- miss arm source mix
+18:04 00a44f40 grade cc3.cpp DIFFER(525v525) hunks=23 -- miss arm source mix
+18:05 00a44f40 grade dd1.cpp DIFFER(526v525) hunks=22 -- hit test crc local forms
+18:05 00a44f40 grade dd2.cpp DIFFER(526v525) hunks=22 -- hit test crc local forms
+18:05 00a44f40 grade dd3.cpp DIFFER(526v525) hunks=22 -- hit test crc local forms
+18:05 00a44f40 grade ee1.cpp DIFFER(534v525) hunks=30 -- existing ref before test
+18:05 00a44f40 grade ee2.cpp DIFFER(534v525) hunks=30 -- existing ref before test
+18:05 00a44f40 grade ee3.cpp DIFFER(526v525) hunks=22 -- existing ref before test
+18:06 00a44f40 grade u1.cpp DIFFER(526v525) hunks=22 -- view u1 obj
+18:06 00a44f40 grade ff1.cpp DIFFER(525v525) hunks=23 -- hit test alt comparisons
+18:06 00a44f40 grade ff2.cpp DIFFER(530v525) hunks=21 -- hit test alt comparisons
+18:06 00a44f40 grade ff3.cpp DIFFER(525v525) hunks=23 -- hit test alt comparisons
+18:06 00a44f40 grade ff1.cpp DIFFER(525v525) hunks=23 -- view ff1
+18:06 00a44f40 grade u2.cpp DIFFER(559v525) hunks=28 -- view u2 obj
+18:07 00a44f40 grade gg1.cpp DIFFER(525v525) hunks=23 -- CARRAY off on new base
+18:07 00a44f40 grade gg2.cpp DIFFER(526v525) hunks=22 -- CARRAY off on new base
+18:07 00a44f40 grade z1.cpp DIFFER(485v525) hunks=27 -- view z1 obj
+18:07 00a44f40 grade w1.cpp DIFFER(525v525) hunks=23 -- QFE compiler on new base
+18:07 00a44f40 grade u1.cpp DIFFER(526v525) hunks=22 -- QFE compiler on new base
+18:07 00a44f40 grade ii1.cpp DIFFER(556v525) hunks=24 -- early return / do-while outer
+18:07 00a44f40 grade ii2.cpp DIFFER(525v525) hunks=23 -- early return / do-while outer
+18:08 00a44f40 grade jj1.cpp DIFFER(525v525) hunks=6 -- crc local at loop top
+18:08 00a44f40 grade jj2.cpp DIFFER(541v525) hunks=36 -- crc local at loop top
+18:08 00a44f40 grade jj1.cpp DIFFER(525v525) hunks=6 -- view jj1
+18:08 00a44f40 grade kk1.cpp RELOCATION_MATCH -- insert arg forms on jj1
+18:09 00a44f40 grade final.cpp RELOCATION_MATCH -- final cleaned, no overlay
+18:09 00a44f40 grade final.cpp RELOCATION_MATCH -- strict regrade
+18:10 00a44f40 grade src.cpp RELOCATION_MATCH -- 
+18:10 00a44f40 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00D38D20
+17:10 00d38d20 grade v1.cpp DIFFER(530v526) hunks=3 -- port onto shared headers
+17:10 00d38d20 grade v2.cpp DIFFER(530v526) hunks=3 -- port onto shared headers
+17:11 00d38d20 grade a.cpp DIFFER(536v526) hunks=2 -- outer for(;;)break / count for(;;) / final check without return
+17:11 00d38d20 grade b.cpp DIFFER(530v526) hunks=3 -- outer for(;;)break / count for(;;) / final check without return
+17:11 00d38d20 grade c.cpp DIFFER(546v526) hunks=3 -- outer for(;;)break / count for(;;) / final check without return
+17:11 00d38d20 grade d.cpp RELOCATION_MATCH -- TRetVoid _Fail_Val first / after vector / explicit final return
+17:11 00d38d20 grade RunVillagerComments_00d38d20.cpp RELOCATION_MATCH -- final source strict
+17:41 00d38d20 grade src.cpp RELOCATION_MATCH -- 
+17:41 00d38d20 grade src.cpp RELOCATION_MATCH -- 
+17:41 00d38d20 grade src_inline.cpp RELOCATION_MATCH -- 
+
+==== 0x00704860
+17:24 00704860 grade v1.cpp DIFFER(551v531) hunks=25 -- local model, const CThing&, named CScriptThingInfo info + push_back(info)
+17:25 00704860 grade v2.cpp DIFFER(551v531) hunks=25 -- uid assigned after Reset
+17:25 00704860 grade v3.cpp DIFFER(551v531) hunks=25 -- uid assigned after Reset
+17:25 00704860 grade v2.cpp DIFFER(551v531) hunks=25 -- v2 full diff view
+17:25 00704860 grade v4.cpp DIFFER(534v531) hunks=6 -- visible noinline Reset (v4) + SetImp (v5) bodies
+17:25 00704860 grade v5.cpp DIFFER(534v531) hunks=6 -- visible noinline Reset (v4) + SetImp (v5) bodies
+17:27 00704860 grade p1.cpp SRC_FAIL -- ported onto shared headers; FindScriptThing inline (p1) vs direct loop (p2)
+17:27 00704860 grade p2.cpp SRC_FAIL -- ported onto shared headers; FindScriptThing inline (p1) vs direct loop (p2)
+17:27 00704860 grade p1.cpp DIFFER(531v531) hunks=10 -- ported + includes; Find inline (p1) vs loop (p2)
+17:27 00704860 grade p2.cpp DIFFER(551v531) hunks=21 -- ported + includes; Find inline (p1) vs loop (p2)
+17:27 00704860 grade p3.cpp DIFFER(528v531) hunks=10 -- slot of found-path CScriptThing: !Find first (p3), if/else (p4), one shared local (p5)
+17:27 00704860 grade p4.cpp RELOCATION_MATCH -- slot of found-path CScriptThing: !Find first (p3), if/else (p4), one shared local (p5)
+17:28 00704860 grade 00704860.cpp RELOCATION_MATCH -- final strict regrade
+17:44 00704860 grade src.cpp RELOCATION_MATCH -- 
+17:45 00704860 grade src.cpp SRC_FAIL -- 
+17:45 00704860 grade src.cpp SRC_FAIL -- 
+17:45 00704860 grade src.cpp RELOCATION_MATCH -- 
+17:45 00704860 grade src_noreset.cpp RELOCATION_MATCH -- 
+17:55 00704860 grade src.cpp RELOCATION_MATCH -- repair: drop CCountedPointer overlay, define, SetImplementation body
+17:55 00704860 grade src.cpp RELOCATION_MATCH -- repair: strict headers
+18:05 00704860 grade src.cpp RELOCATION_MATCH -- 
+18:05 00704860 grade src.cpp SRC_FAIL -- 
+
+==== 0x00A5B370
+17:19 00a5b370 grade v1.cpp SRC_FAIL -- port onto CAFile/CArray/CCountedPointer; v2 pos-first refill2
+17:19 00a5b370 grade v2.cpp SRC_FAIL -- port onto CAFile/CArray/CCountedPointer; v2 pos-first refill2
+17:19 00a5b370 grade v3.cpp SRC_FAIL -- port onto CAFile/CArray/CCountedPointer; v2 pos-first refill2
+17:19 00a5b370 grade v1.cpp DIFFER(487v534) hunks=18 -- shared CCharString
+17:19 00a5b370 grade v2.cpp DIFFER(476v534) hunks=29 -- shared CCharString
+17:19 00a5b370 grade v3.cpp DIFFER(476v534) hunks=29 -- shared CCharString
+17:19 00a5b370 grade m1.cpp DIFFER(521v534) hunks=21 -- named message locals
+17:19 00a5b370 grade m2.cpp DIFFER(516v534) hunks=23 -- named message locals
+17:20 00a5b370 grade a1.cpp DIFFER(517v534) hunks=22 -- refill1 length-first spellings
+17:20 00a5b370 grade a2.cpp DIFFER(517v534) hunks=22 -- refill1 length-first spellings
+17:20 00a5b370 grade a3.cpp DIFFER(529v534) hunks=33 -- refill1 length-first spellings
+17:21 00a5b370 grade a3.cpp DIFFER(529v534) hunks=33 -- a3 diff view
+17:21 00a5b370 grade b1.cpp DIFFER(533v534) hunks=33 -- dst local pointer variants
+17:21 00a5b370 grade b2.cpp DIFFER(533v534) hunks=33 -- dst local pointer variants
+17:21 00a5b370 grade b3.cpp DIFFER(529v534) hunks=33 -- dst local pointer variants
+17:21 00a5b370 grade b1.cpp DIFFER(533v534) hunks=33 -- b1 view
+17:21 00a5b370 grade c1.cpp DIFFER(529v534) hunks=33 -- inner body order variants
+17:21 00a5b370 grade c2.cpp DIFFER(531v534) hunks=33 -- inner body order variants
+17:21 00a5b370 grade c3.cpp DIFFER(529v534) hunks=33 -- inner body order variants
+17:21 00a5b370 grade d1.cpp SRC_FAIL -- loop-local copies of size/dst
+17:21 00a5b370 grade d2.cpp SRC_FAIL -- loop-local copies of size/dst
+17:21 00a5b370 grade d3.cpp DIFFER(529v534) hunks=25 -- loop-local copies of size/dst
+17:22 00a5b370 grade d1.cpp DIFFER(534v534) hunks=4 -- size copy local for loop
+17:22 00a5b370 grade d2.cpp DIFFER(531v534) hunks=26 -- size copy local for loop
+17:22 00a5b370 grade d4.cpp DIFFER(529v534) hunks=33 -- size copy local for loop
+17:22 00a5b370 grade e1.cpp DIFFER(536v534) hunks=3 -- dst local at top
+17:22 00a5b370 grade e2.cpp DIFFER(536v534) hunks=3 -- dst local at top
+17:22 00a5b370 grade e3.cpp DIFFER(534v534) hunks=4 -- dst local at top
+17:22 00a5b370 grade f1.cpp DIFFER(536v534) hunks=3 -- copy statement spellings with out local
+17:22 00a5b370 grade f2.cpp DIFFER(534v534) hunks=3 -- copy statement spellings with out local
+17:22 00a5b370 grade f3.cpp DIFFER(536v534) hunks=3 -- copy statement spellings with out local
+17:22 00a5b370 grade g1.cpp DIFFER(536v534) hunks=3 -- out local type variants
+17:22 00a5b370 grade g2.cpp DIFFER(536v534) hunks=3 -- out local type variants
+17:22 00a5b370 grade g3.cpp DIFFER(536v534) hunks=3 -- out local type variants
+17:22 00a5b370 grade h1.cpp DIFFER(534v534) hunks=2 -- inner compare spellings
+17:22 00a5b370 grade h2.cpp DIFFER(536v534) hunks=3 -- inner compare spellings
+17:22 00a5b370 grade h3.cpp DIFFER(536v534) hunks=3 -- inner compare spellings
+17:23 00a5b370 grade i1.cpp DIFFER(534v534) hunks=2 -- compare spellings 2
+17:23 00a5b370 grade i2.cpp DIFFER(536v534) hunks=3 -- compare spellings 2
+17:23 00a5b370 grade i3.cpp RELOCATION_MATCH -- compare spellings 2
+17:23 00a5b370 grade final.cpp RELOCATION_MATCH -- final strict
+17:43 00a5b370 grade src.cpp RELOCATION_MATCH -- 
+17:43 00a5b370 grade src.cpp RELOCATION_MATCH -- 
+17:55 00a5b370 grade final.cpp RELOCATION_MATCH -- repair: enumerator NullDestination -> NullParameter
+17:55 00a5b370 grade final.cpp RELOCATION_MATCH -- repair: strict headers
+18:03 00a5b370 grade src.cpp RELOCATION_MATCH -- 
+18:03 00a5b370 grade src.cpp RELOCATION_MATCH -- 
+
+==== 0x00E36750
+17:29 00e36750 grade v1.cpp DIFFER(479v536) hunks=19 -- port to headers + inline_depth on returns
+17:29 00e36750 grade v2.cpp DIFFER(557v536) hunks=26 -- drop end inline_depth / none
+17:29 00e36750 grade v3.cpp DIFFER(529v536) hunks=8 -- drop end inline_depth / none
+17:29 00e36750 grade v4.cpp DIFFER(530v536) hunks=8 -- named CCharString / early return / implicit conv
+17:29 00e36750 grade v5.cpp DIFFER(541v536) hunks=3 -- named CCharString / early return / implicit conv
+17:29 00e36750 grade v6.cpp DIFFER(541v536) hunks=3 -- named CCharString / early return / implicit conv
+17:29 00e36750 grade v7.cpp DIFFER(558v536) hunks=26 -- inline_depth(0) on post-wait+inloop returns (+post-loop)
+17:29 00e36750 grade v8.cpp DIFFER(531v536) hunks=26 -- inline_depth(0) on post-wait+inloop returns (+post-loop)
+17:30 00e36750 grade v9.cpp DIFFER(541v536) hunks=7 -- post-wait as if(!T){rest} / else / nested
+17:30 00e36750 grade v10.cpp DIFFER(541v536) hunks=3 -- post-wait as if(!T){rest} / else / nested
+17:34 00e36750 grade v11.cpp TIMEOUT -- post-wait as if(!T){rest} / else / nested
+17:35 00e36750 grade v12.cpp DIFFER(402v536) hunks=36 -- optimize s / y off
+17:35 00e36750 grade v13.cpp DIFFER(523v536) hunks=27 -- optimize s / y off
+17:35 00e36750 grade v17.cpp DIFFER(558v536) hunks=26 -- inline_depth(0) returns + forceinline ~CTimer
+17:35 00e36750 grade v18.cpp DIFFER(531v536) hunks=26 -- inline_depth(0) returns + forceinline ~CTimer
+17:36 00e36750 grade v20.cpp DIFFER(536v536) hunks=8 -- do-while(0) wrappers around wait
+17:36 00e36750 grade v21.cpp DIFFER(536v536) hunks=8 -- do-while(0) wrappers around wait
+17:36 00e36750 grade v23.cpp DIFFER(530v536) hunks=11 -- do-while(0) region placements
+17:36 00e36750 grade v24.cpp DIFFER(530v536) hunks=7 -- do-while(0) region placements
+17:36 00e36750 grade v25.cpp DIFFER(536v536) hunks=8 -- do-while(0) region placements
+17:37 00e36750 grade v26.cpp DIFFER(541v536) hunks=3 -- inline_depth 1/2/0 on post-wait return only
+17:37 00e36750 grade v27.cpp DIFFER(541v536) hunks=3 -- inline_depth 1/2/0 on post-wait return only
+17:37 00e36750 grade v28.cpp DIFFER(567v536) hunks=34 -- inline_depth 1/2/0 on post-wait return only
+17:38 00e36750 grade v29.cpp DIFFER(541v536) hunks=3 -- ==true / if-do-while countdown / for(;;) wait
+17:38 00e36750 grade v30.cpp DIFFER(541v536) hunks=3 -- ==true / if-do-while countdown / for(;;) wait
+17:38 00e36750 grade v31.cpp DIFFER(541v536) hunks=3 -- ==true / if-do-while countdown / for(;;) wait
+17:39 00e36750 grade v25.cpp DIFFER(536v536) hunks=8 -- recheck v25
+17:39 00e36750 grade v25.cpp DIFFER(536v536) hunks=8 -- recheck v25
+17:39 00e36750 grade v32.cpp RELOCATION_MATCH -- TRetVoid _Fail_Val returns (positions)
+17:40 00e36750 grade 00e36750.cpp RELOCATION_MATCH -- final strict
+17:50 00e36750 grade src.cpp RELOCATION_MATCH -- 
+17:50 00e36750 grade src.cpp SRC_FAIL -- 
+
+==== 0x00773EE0
+17:30 00773ee0 grade a.cpp SRC_FAIL -- port to shared headers, pushback noinline/outofline
+17:30 00773ee0 grade b.cpp SRC_FAIL -- port to shared headers, pushback noinline/outofline
+17:30 00773ee0 grade a.cpp RELOCATION_MATCH -- port to shared headers, IsNull; pushback noinline/outofline
+17:31 00773ee0 grade CTCShop_GetSaleItemsToPlace_00773ee0.cpp RELOCATION_MATCH -- final source strict regrade
+17:47 00773ee0 grade src.cpp RELOCATION_MATCH -- 
+17:47 00773ee0 grade src.cpp RELOCATION_MATCH -- 
+
