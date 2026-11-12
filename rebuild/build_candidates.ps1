@@ -393538,6 +393538,13 @@ $catalog = @(
         TestSource = '00/7f/CTCTargetingAI_GetPBestCreatureForInteractionTypeWithinRangeLim_007f67c0_test.cpp'
         PassPattern = '007f67c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b05a0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_CreatePPhysicsMeshInfo_006b05a0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_CreatePPhysicsMeshInfo_006b05a0_test.cpp'
+        PassPattern = '006b05a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

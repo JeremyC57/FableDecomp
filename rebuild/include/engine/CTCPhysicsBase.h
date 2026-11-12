@@ -294,6 +294,13 @@ public:
 public:
     void ApplyAcceleration(const C3DVector& acceleration);
 #endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_CREATEPPHYSICSMESHINFO
+    // Chunk Q28 (row 0x006B05A0): Ego_r.pdb / FableWin.pdb ?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z
+    // (protected, non-virtual). Declaration only: no layout change.
+protected:
+    void CreatePPhysicsMeshInfo(const class CEngineGraphic& graphic);   // 0x006B05A0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
 #else

@@ -1,0 +1,7 @@
+- A value loaded into the dying `this` register and then copied to ecx (`mov ebx,[ebx+4] ; mov edx,esi ; mov ecx,ebx`) is a variable with a second use that left no bytes: a compare whose two arms are the same statement is deleted only after register allocation (0x008031E0).
+- Every single-use spelling of a load (locals, references, wrappers, functors, by-value copies, dead stores) is forwarded straight into the argument register by VC7.1; do not try an eleventh one -- add or find the second use (0x008031E0).
+- A pointer wrapper with a null test is a quick probe for "is this a 2-use variable": if the registers become retail's plus `test r,r ; je`, the mechanism is proven and only the code-free second use is left to find (0x008031E0).
+- `mov edx,[esi] ; mov ecx,esi ; push eax ; call [edx+N]` (this before the push; 12 of 1,942 sites) means the call sat in two identical arms that were merged late: write the shared tail out once per branch of the preceding type test (0x006B05A0).
+- A residue at TWO sites of one function wants ONE cause common to both: look for the branch whose arms contain both sites before giving each site its own trick (0x006B05A0).
+- FableWin.pdb comes from a later compiler (std::forward / rvalue-reference names): its /Od body sizes do not constrain the VC7.1 source.
+- `xdis.py ... | head` prints a BrokenPipe traceback (add `2>/dev/null`), and a notes heredoc with backticks must be quoted (`<<'EOF'`) or bash runs the fragments.

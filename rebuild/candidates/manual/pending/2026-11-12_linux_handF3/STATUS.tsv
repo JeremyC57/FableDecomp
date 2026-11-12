@@ -1,0 +1,3 @@
+address	name	grade	grades_used	note
+008031e0	CTCTargetingPlayer::GetPBestThingForMeleeAttack	RELOCATION_MATCH	38	parent reference local + code-free second use after the call (identical-arm compare); inference flagged in the header
+006b05a0	CTCPhysicsBase::CreatePPhysicsMeshInfo	RELOCATION_MATCH	20	tail written out in both arms of the graphic-type test

@@ -1,0 +1,3 @@
+address	name	module
+008031E0	?GetPBestThingForMeleeAttack@CTCTargetingPlayer@@UBEPAVCThing@@XZ	CTCTargetingPlayer
+006B05A0	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z	CTCPhysicsBase
