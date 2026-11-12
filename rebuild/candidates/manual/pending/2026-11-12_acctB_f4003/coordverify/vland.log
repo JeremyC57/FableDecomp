@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00cd52d0   WARN RELOC_NAME: ?CheckSectionIsNotAlreadyRegistered@CScriptInfoManager@@IAEXVCCharString@@@Z -> 00cb5ac0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00cd52d0   RELOCATION_MATCH PASS   RegisterScripts
+
+WINS: 1
+  00cd52d0 RELOCATION_MATCH CScriptInfoManager::?RegisterScripts@CScriptInfoManager@@IAEXXZ
