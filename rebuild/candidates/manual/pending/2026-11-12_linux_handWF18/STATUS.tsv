@@ -1,6 +1,0 @@
-008a7a70	CGameScriptInterface::TeleportAllFollowersToHeroPosition	RELOCATION_MATCH	~45	while minion loop + forceinline getter opt-in + scalar dx/dy distance
-00724630	CTCPhysicsStandard::SetPhysicsMeshBankIndex	DIFFER(742v741)	~200	box centre X operand order only
-00724630	CTCPhysicsStandard::SetPhysicsMeshBankIndex	RELOCATION_MATCH	2318	operator delete(PPhysicsMeshInfo) spelling flips box X order; /EHsc
-009ce5e0	CBankFile::AddEntryMultipleFiles	RELOCATION_MATCH	13	early return in hit arm; resize outofline opt-in
-00627400	CTCQuickAccessMenu::ConstructExpressionCategoryList	RELOCATION_MATCH	2	sibling 626e40 idiom port
-0x00AC53F0	C3DMeshFileEngineMaterialChunk::C3DMeshFileEngineMaterialChunk	RELOCATION_MATCH	32	CalculateMapFlags real body out of line + case fix

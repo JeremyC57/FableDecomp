@@ -8,6 +8,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERWANDER
+// Retail opt-in (row 0x00959BF0): RTTI/Ego_r base CAIStateGroup_HoverMovementBase, no own data (sizeof 0x1c, as above).
+// Ego_r ?Update@CAIStateGroup_HoverWander@@UAEXXZ (public virtual, vtable 0x0128C5D4 slot 12).
+// Needs FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE (and its prerequisites) before inclusion.
+#include "engine/CAIStateGroup_HoverMovementBase.h"
+class CAIStateGroup_HoverWander : public CAIStateGroup_HoverMovementBase {
+public:
+    virtual void Update();
+    // FableWin.pdb ?IsCombatStateGroup@CAIStateGroup_HoverWander@@UBE_NXZ (_fablewin_api.tsv / FableWin.exe.signatures.tsv 0x01811FCD;
+    // retail vtable 0x0128C5D4 slot 20 = 0x00900C13, Fable.exe.signatures.tsv). Public virtual const override; declaration only.
+    virtual bool IsCombatStateGroup() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverWander) == 0x1c);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_HoverWander {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -18,4 +32,5 @@ struct CAIStateGroup_HoverWander {
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverWander) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverWander, __vftable) == 0x0);
 
+#endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERWANDER_H

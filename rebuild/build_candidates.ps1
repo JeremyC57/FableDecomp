@@ -394821,6 +394821,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '007e6450_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00959bf0'
+        Module = 'CAIStateGroup_HoverWander'
+        Source = '00/95/CAIStateGroupHoverWander_Update_00959bf0.cpp'
+        TestSource = '00/95/CAIStateGroupHoverWander_Update_00959bf0_test.cpp'
+        PassPattern = '00959bf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -32359,7 +32359,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009595c0	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_IsPotentialCustomer *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 00959800	IsRunnable	CAIStateGroup_HoverWanderAroundThing	__thiscall	bool	1	CAIStateGroup_HoverWanderAroundThing *	1	yes	accepted									
 00959a60	Update	CAIStateGroup_HoverWanderAroundThing	__thiscall	void	1	CAIStateGroup_HoverWanderAroundThing *	1	yes	accepted									
-00959bf0	?Update@CAIStateGroup_HoverWander@@UAEXXZ	CAIStateGroup_HoverWander	__thiscall	void	1	CAIStateGroup_HoverWander *	1	yes	accepted									
+00959bf0	Update	CAIStateGroup_HoverWander	__thiscall	void	1	CAIStateGroup_HoverWander *	1	yes	accepted									
 00959ee0	Initialise	CAIStateGroup_HoverKeepInArea	__thiscall	void	6	CAIStateGroup_HoverKeepInArea *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted									
 00959f30	IsRunnable	CAIStateGroup_HoverKeepInArea	__thiscall	bool	1	CAIStateGroup_HoverKeepInArea *	1	yes	accepted									
 00959f80	Update	CAIStateGroup_HoverKeepInArea	__thiscall	void	1	CAIStateGroup_HoverKeepInArea *	1	yes	accepted									

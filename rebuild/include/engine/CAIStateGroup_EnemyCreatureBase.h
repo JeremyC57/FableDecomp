@@ -15,14 +15,27 @@
 class CAIStateGroup_EnemyCreatureBase:public CAIStateGroupBase {
 protected:CIntelligentPointer<CThingCreatureBase> PTargetThing;
 #ifdef FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
-    // vtable slots 14..21 (CAIStateGroup_HoverWander vtable 0x0128C5D4: 0x008FE0EE..0x008FE102; manifest labels, GetCombatMinDistance Ego_r ?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ)
+    // Vtable slots 14..21 (row 0x00959BF0; CAIStateGroup_HoverWander vtable 0x0128C5D4 slots 14..21 = 0x008FE0EE..0x008FE102).
+    // Slots 14..19 and 21: FableWin.pdb (ghidra_out/fablewin_pdb_names.tsv 0x02B103E8..0x02B106C4) names all seven on
+    // CAIStateGroup_EnemyCreatureBase with exactly the access/constness declared here (MAE = protected virtual, MBE = protected
+    // virtual const), and the retail signature transfer (naming_stragglers/Fable.exe.signatures.tsv) puts them at the slot
+    // addresses 0x008FE0EE Init, 0x008FE0EF IsRunnableLeaf, 0x008FE0F2 OnActivateLeaf, 0x008FE0F3 CleanupLeaf, 0x008FE0F4
+    // GetCombatProximity, 0x008FE0FB GetCombatMinDistance, 0x008FE102 IsRequireDirectAwarenessOfThing. The Ego_r extract
+    // (egor_signatures.tsv / ego_r.exe.signatures.tsv) has only ?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ.
     virtual void Init();
     virtual bool IsRunnableLeaf();
     virtual void OnActivateLeaf();
     virtual void CleanupLeaf();
     virtual float GetCombatProximity() const;
     virtual float GetCombatMinDistance() const;
+public:
+    // Slot 20 -- INFERRED placement. No PDB (Ego_r, FableWin) has an IsCombatStateGroup symbol for CAIStateGroup_EnemyCreatureBase,
+    // CAIStateGroupBase or CAIStateGroup_HoverMovementBase; only the 15 derived classes do, all `public: virtual bool ... const`
+    // (?IsCombatStateGroup@<derived>@@UBE_NXZ, e.g. CAIStateGroup_HoverWander FableWin 0x01811FCD, retail slot 20 = 0x00900C13).
+    // Declared here only so slot 21 and the HoverMovementBase slot 22 land at the retail offsets; public to match the derived
+    // overrides (the access does not change any vtable offset or any landed mangled name).
     virtual bool IsCombatStateGroup() const;
+protected:
     virtual bool IsRequireDirectAwarenessOfThing() const;
 #endif
 };
