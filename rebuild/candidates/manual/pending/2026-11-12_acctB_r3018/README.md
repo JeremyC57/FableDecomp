@@ -26,6 +26,8 @@ Re-verified by the acctB local coordinator (cl 13.10.3077 under Wine, `FABLE_HDR
 - **vland RELOC_NAME** (landed labels differ from the spellings bound here): 0x00A0D390
   `CProcessedInput::SetAsPerformedEvent` (label `NScript::CV_SickChildScript::CWomanToAttract::Init`), 0x00687D00
   `CInputProcessGameBase::GetControlMovementFromGameActionEvent` (label `GetEventGameActionVector`), 0x0129BA3C
-  `DELTA_NOTIONAL_ZERO` (label `EPSILON`). Evidence in `NOTES.md` / `NAME_FIXES.tsv`.
+  `DELTA_NOTIONAL_ZERO` (label `EPSILON`). The member spellings are in both PDB name sets
+  (`ghidra_out/egor_pdb_names.tsv`, `fablewin_pdb_names.tsv`); the row header comment lists the addresses. The agent
+  left no `NAME_FIXES.tsv`, so check these three at landing.
 - **Made-up name:** `UseCardBaseInput` 0x01383C3F stays descriptive; locals are descriptive.
 - **Headers:** the chunk 2016 overlay unchanged.
