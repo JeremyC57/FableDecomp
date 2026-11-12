@@ -125,7 +125,7 @@ class CThing { public:
     CThingBaseDef* PBaseDef;                                   // +0x70
     const C3DVector& GetPos() const;                      // 0x004C73D0
     void AddAndCopyTC(const CTCBase& tc, bool activate);       // 0x004C9F60 (Ego_r.pdb, by reference)
-    CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const class CTCParamsBase* params);   // 0x004C9D60 (Ego_r.pdb; name fix NF21)
     bool HasTC(long type) { return m_present.test(type); }
     template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {

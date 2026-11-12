@@ -6,11 +6,14 @@
 // Callees: CBaseIntelligentPointer() 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90;
 //   CThing::GetPos() const 0x004C73D0; CreateParticleEffect(long, const C3DVector*) 0x0072AB70 (`__fastcall`);
 //   LowerBound 0x0040F020 (interface 0x4B particle emitter); CTCDParticleEmitter::AttachToThing 0x006E0BE0 with
-//   PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC30 / g_LeftHandAttachmentName 0x013BAC34. CIntelligentPointer<CThing> vtable 0x01238C6C.
+//   PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC30 / SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC34. CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout (retail CTCWillLightning, the PDB list/pointer members 0xc larger): WeaponState +0x0c, LeftHandAnim +0x10,
 //   PrimaryHandEffect +0x20, SecondaryHandEffect +0x24, m_lsState +0x6c, m_cbpPlayer +0x70, m_tpLeftHandEffect +0x78,
 //   m_tpRightHandEffect +0x80.
 // Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_LeftHandAttachmentName.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -19,7 +22,7 @@ class CCharString { public:
     void* PStringData;
 };
 extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;   // 0x013BAC30
-extern CCharString g_LeftHandAttachmentName;    // 0x013BAC34
+extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;    // 0x013BAC34
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -130,6 +133,6 @@ void CTCWillLightning::StartHandEffects()
     if (IS_THING_ALIVE(m_tpLeftHandEffect)) {
         CTCDParticleEmitter* emitter = 0;
         ((CThing*)m_tpLeftHandEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-        emitter->AttachToThing(*(((CThing*)m_cbpPlayer.GetPItem())), 10, g_LeftHandAttachmentName, 0, 0.0f);
+        emitter->AttachToThing(*(((CThing*)m_cbpPlayer.GetPItem())), 10, SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0.0f);
     }
 }

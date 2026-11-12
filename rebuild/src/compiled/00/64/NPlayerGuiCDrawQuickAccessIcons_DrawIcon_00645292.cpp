@@ -17,15 +17,15 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DCoordF {
-    float X, Y;
-    C2DCoordF(const C2DVector& v) : X(v.X), Y(v.Y) {}
-};
+// Name fix (naming agent NF21, 2026-11-11): the position constructor 0x00493AC2 takes const C2DVector& and the PDB enums
+//   (Ego_r.pdb 0x0049C7E3 / FableWin.pdb 0x01A663FC ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KK
+//   W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z); enums forward-declared as in the shared engine headers.
+enum EEngine2DLayer; enum EEnginePrimitiveBlendMode; enum EEngineInterpolationSet;
 class CEnginePrimitive2DSprite {
 public:
     unsigned char _body[0x54];
-    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DCoordF& pos, long layer, unsigned long graphic, unsigned long b, long blend,
-                             long interpolation, float scaleX, float scaleY, unsigned char alpha, unsigned char red, unsigned char green,
+    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DVector& pos, EEngine2DLayer layer, unsigned long graphic, unsigned long b,
+                             EEnginePrimitiveBlendMode blend, EEngineInterpolationSet interpolation, float scaleX, float scaleY, unsigned char alpha, unsigned char red, unsigned char green,
                              unsigned char blue, unsigned long e, const C2DVector& uv0, const C2DVector& uv1);   // 0x00493AC2
 };
 class CEnginePrimitiveRenderer {
@@ -89,7 +89,7 @@ void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, co
         unsigned char backAlpha = alpha;
         if (backGraphic == def->QuickAccessEmptyBackGraphic)
             backAlpha = (unsigned char)(backAlpha * 0.5f);
-        CEnginePrimitive2DSprite back(0, pos, 0x45, backGraphic, 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(backAlpha), 0xff, 0xff, 0xff, 0,
+        CEnginePrimitive2DSprite back(0, C2DVector(pos.X, pos.Y), (EEngine2DLayer)0x45, backGraphic, 0, (EEnginePrimitiveBlendMode)2, (EEngineInterpolationSet)0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(backAlpha), 0xff, 0xff, 0xff, 0,
                                       C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Renderer->AddPrimitive(&Handles[7], back, 0xc0);
     }
@@ -97,7 +97,7 @@ void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, co
         float iconAlpha = alpha * fade;
         if (PGameUI->ForceOpaque && alpha < 0xff)
             iconAlpha = selected ? 255.0f : 0.0f;
-        CEnginePrimitive2DSprite icon(0, pos, 0x44, iconGraphic, 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha((unsigned char)iconAlpha), 0xff, 0xff,
+        CEnginePrimitive2DSprite icon(0, C2DVector(pos.X, pos.Y), (EEngine2DLayer)0x44, iconGraphic, 0, (EEnginePrimitiveBlendMode)2, (EEngineInterpolationSet)0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha((unsigned char)iconAlpha), 0xff, 0xff,
                                       0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Renderer->AddPrimitive(&handles[index], icon, 0xc0);
     }

@@ -45,6 +45,10 @@ struct C2DVectorValue {
     C2DVectorValue(float x, float y) : X(x), Y(y) { }
 };
 
+// Name fix (naming agent NF21, 2026-11-11): the constructor's enum parameters keep their PDB enum types (Ego_r.pdb 0x005452F0 /
+//   FableWin.pdb 0x01D8E9A0 ??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMW4EEnginePrimitiveBlendMode@@EEEEM
+//   W4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z); forward-declared as in the shared engine headers.
+enum EEnginePrimitiveBlendMode; enum EEngineInterpolationSet; enum EEnginePrimitiveBlendOp;
 struct CEnginePrimitiveSprite : CEnginePrimitive {
     C3DVector                    WorldPos;               // +0x0c
     unsigned long                BankIndex;              // +0x18
@@ -59,16 +63,16 @@ struct CEnginePrimitiveSprite : CEnginePrimitive {
     long                         BlendOp;                // +0x3c EEnginePrimitiveBlendOp
     C2DVectorValue               Offset;                 // +0x40   sizeof == 0x48
     CEnginePrimitiveSprite(const C3DVector& worldPos, unsigned long bankIndex, unsigned long frame,
-                           unsigned short flags, float angle, float sizeX, float sizeY, long blendMode,
+                           unsigned short flags, float angle, float sizeX, float sizeY, EEnginePrimitiveBlendMode blendMode,
                            unsigned char alpha, unsigned char red, unsigned char green, unsigned char blue,
-                           float fadeStart, long interpolationSet, long blendOp);
+                           float fadeStart, EEngineInterpolationSet interpolationSet, EEnginePrimitiveBlendOp blendOp);
 };
 
 CEnginePrimitiveSprite::CEnginePrimitiveSprite(const C3DVector& worldPos, unsigned long bankIndex, unsigned long frame,
                                                unsigned short flags, float angle, float sizeX, float sizeY,
-                                               long blendMode, unsigned char alpha, unsigned char red,
+                                               EEnginePrimitiveBlendMode blendMode, unsigned char alpha, unsigned char red,
                                                unsigned char green, unsigned char blue, float fadeStart,
-                                               long interpolationSet, long blendOp)
+                                               EEngineInterpolationSet interpolationSet, EEnginePrimitiveBlendOp blendOp)
     : CEnginePrimitive(7, interpolationSet)              // ENGINE_PRIMITIVE_SPRITE
     , WorldPos(worldPos)
     , BankIndex(bankIndex)

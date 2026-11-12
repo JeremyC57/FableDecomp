@@ -6,6 +6,7 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifndef FABLE_RETAIL_CTCPHYSICSRIGIDBODY // agentFAM04 (2026-11-11)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -52,5 +53,44 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, OldRHSet) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, OffsetVector_X) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, OffsetVector_Y) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, Body) == 0xa0);
+#else // FABLE_RETAIL_CTCPHYSICSRIGIDBODY
+// Retail opt-in FABLE_RETAIL_CTCPHYSICSRIGIDBODY (agentFAM04, 2026-11-11): the polymorphic retail class. Fable.exe RTTI
+// .?AVCTCPhysicsRigidBody@@ (vtable 0x0126996C) : CTCPhysicsBase (engine/CTCPhysicsBase.h FABLE_RETAIL_CTCPHYSICSBASE, needs
+// FABLE_RETAIL_CTCBASE). Members: the Ego_r.pdb names and types at the offsets above (STLport 12-byte vectors); Body (CRigidBody)
+// stays opaque. Overrides: the CTCPhysicsBase virtuals the rows define (slots from the TLC vtable aligned with the Xbox 360 Test
+// PDB order, agentFAM03; spellings Ego_r / FableWin ?<name>@CTCPhysicsRigidBody@@). No layout change against the flat branch.
+#include "engine/CTCPhysicsBase.h"
+#include "engine/C2DVector.h"
+#include "engine/CRightHandedSet.h"
+#include "stlport/fable_containers.h"
+class CThing;
+class CThingPhysicsMeshInfo;
+class CTCPhysicsRigidBody : public CTCPhysicsBase {
+public:
+    virtual C2DVector GetOffsetVector() const;                      // slot 28, 0x0075BFF0
+    virtual bool IsAffectedByGravity() const;                       // slot 48, 0x0075BFE0
+    virtual bool CanCollideWithThings() const;                      // slot 57, 0x0075BF90
+    virtual bool CanCollideWithThingsOneWay() const;                // slot 58, 0x0075BFA0
+    virtual bool CanCollideWithLandscape() const;                   // slot 59, 0x0075BFB0
+    virtual bool CanInteractWithThings() const;                     // slot 60, 0x0075BFC0
+    virtual void SetFacingAngleXY(float);                           // slot 66, 0x0075BF40
+    virtual void SetFacingAngleYZ(float);                           // slot 67, 0x0075BF50
+    virtual void SetFacingAngleXZ(float);                           // slot 68, 0x0075BF60
+    virtual C3DVector GetFacingVector() const;                      // slot 70, 0x00759B20
+    virtual const CRightHandedSet& GetRHSet() const;                // slot 72, 0x0075BF70
+    virtual const CRightHandedSet& GetLastRHSet() const;            // slot 73, 0x0075BF80
+    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const; // slot 93, 0x0075BFD0
+protected:
+    std::vector<C3DVector> CollisionNormal;                         // +0x40
+    std::vector<long> CollidingVertexIndex;                         // +0x4c
+    std::vector<CThing*> Collidors;                                 // +0x58
+    CThingPhysicsMeshInfo* PPhysicsMeshInfo;                        // +0x64
+    CRightHandedSet RHSet;                                          // +0x68
+    CRightHandedSet OldRHSet;                                       // +0x80
+    C2DVector OffsetVector;                                         // +0x98
+    unsigned char Body[0x1b8];                                      // +0xa0 CRigidBody
+};
+FABLE_STATIC_ASSERT(sizeof(CTCPhysicsRigidBody) == 0x258);
+#endif // FABLE_RETAIL_CTCPHYSICSRIGIDBODY
 
 #endif // FABLE_ENGINE_CTCPHYSICSRIGIDBODY_H

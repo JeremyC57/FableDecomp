@@ -1,0 +1,36 @@
+00eb40c0 grade 1 DIFFER(1581v1601) port onto CV_MurderTwistFinalScript.h + DoDealWithHero model, all else-if
+00eb40c0 grade 2 RELOCATION_MATCH talk arm falls through (no else), threat/hit else-if
+00d39960 grade 1 DIFFER(1774v1774) port onto CQ_FireHeartScript/CTimer/CSpawnedFunc headers; same post-loop block residue
+00d39960 grade 2 RELOCATION_MATCH TRetVoid _Fail_Val + return _Fail_Val.Return() at every exit (script-macro spelling)
+006ec850 grade 1 SRC_FAIL port1 onto CDefendingCombatantInfo/CThing/CTCCombat/STLport map+list (define order, missing accessor)
+006ec850 grade 2 DIFFER(1654v1606) port1 compiles: frame 0x3c, vector erase copy inlined (trivial CCombatRing assign), num_to_move branches, list front reloads
+006ec850 grade 3 DIFFER(1606v1606) VECTOR_ASSIGN decl (copy call), num_to_move if, list iterator erase: frame 0x3c v 0x30 + final ||-test block order
+006ec850 grade 4 DIFFER(1606v1606) braces on else arm: unchanged
+006ec850 grade 5 DIFFER(?) static inline IsUsingMeleeWeapon helper (returns): frame 0x34, list not in ebx, melee flag shape differs
+006ec850 grade 6 DIFFER(1606v1606) regrade of g4 (helper reverted): only residue is frame 0x3c v 0x30 (pair temps not sharing the GetTC key slot); ||-test hunk was a diff-alignment artefact
+006ec850 grade 7 DIFFER(1606v1606) named insert results in each arm: unchanged
+006ec850 grade 8 DIFFER(1606v1606) map::insert out of line (overlay probe opt-in): unchanged; opt-in removed
+006ec850 grade 9 DIFFER(1606v1606) default PeekTC<T>(&out) (key = unnamed temporary): same bytes, same frame
+00a8ad40 grade 1 SRC_FAIL port1: redundant CDataInputStream slot overlay (header already has them); overlay dropped
+00a8ad40 grade 2 DIFFER(1589v1621) port compiles; static inline IsValidSize called out of line for the 3rd check; count spill residue
+00a8ad40 grade 3 DIFFER(1525v1621) checks spelled as inline (__int64) casts: folded away (retail keeps the xor/jl/jg sequences)
+00a8ad40 grade 4 DIFFER(1621v1621) size checks via __int64 locals: length matches; residue = count register allocation + primData slot (0x28 v 0x14) + push ebp position
+00a8ad40 grade 5 DIFFER(1605v1621) unsigned short count locals: worse, reverted
+00a8ad40 grade 6 DIFFER(1621v1621) sizes declared at the top: unchanged
+00a8ad40 grade 7 DIFFER(1621v1621) primSize index term first: unchanged
+00a8ad40 probe 1 does a forced-inline IsValidSize(__int64) helper change the count registers? -> no, identical to the __int64-local spelling (1 SRC_FAIL run without the overlay env)
+00a8ad40 grade 8 DIFFER(1621v1621) MemoryPool store before the lock flag: prologue order differs the other way; reverted
+0090e5d0 grade 1 SRC_FAIL port1 onto CAIStateGroupBase/CMessageEvent*/CThingAICreature headers: missing opt-ins (world manager, FPS accessor, carrying, RemoveTC)
+0090e5d0 grade 2 SRC_FAIL compile fixes (world manager / FPS / carrying / RemoveTC opt-ins)
+0090e5d0 grade 3 SRC_FAIL ICE C1001 at the FindMostRecentMessage statement
+0090e5d0 probe 2 is the ICE from the explicit FindMostRecentMessage specialization declaration? -> yes; without it the row compiles (1399v1367)
+0090e5d0 grade 4 DIFFER(1399v1367) compiles without the explicit specialization decl: about 40 hunks
+0090e5d0 grade 5 DIFFER(1348v1367) float 0.0027777f (retail 0x3b360a13), solid TC via GetTC(type), nested unsheathe if
+0090e5d0 grade 6 DIFFER(1347v1367) unsheathe failure as Terminate+return (tail-merged)
+0090e5d0 grade 7 DIFFER(1362v1367) ptc_gossip_other declared with ptc_gossip at the top: 10 hunks (frame, temp slots, solid-TC regs)
+0090e5d0 grade 8 DIFFER(1362v1367) solid TC as if(!GetTC(&p)) p=AddTC(...): unchanged
+0090e5d0 grade 9 DIFFER(1362v1367) ptc_solid=0 declared at the top: unchanged
+0090e5d0 grade 10 DIFFER(1314v1367) named TGossipRequestFilter local instead of the temporary: worse (40 hunks), reverted
+0090e5d0 grade 11 DIFFER(1362v1367) reached declared outside the move loop: worse (13 hunks), reverted; stopped (best = grade 9 source)
+00eb40c0 grade 3 RELOCATION_MATCH strict-header regrade after replacing the local enum with engine/ETextGroupSelectionMethod.h
+00d39960 grade 3 RELOCATION_MATCH strict-header regrade (LANDVERIFY_STRICT_HEADERS=1)

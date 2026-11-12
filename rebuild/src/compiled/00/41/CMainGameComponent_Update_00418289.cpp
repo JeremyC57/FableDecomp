@@ -18,7 +18,7 @@
 //   CWorld::IsPaused (inline +0xA4) / UpdateInputRelatedInterpolation 0x0049D9E0 / GetFrame 0x0049D870; CNetworkClient::IsLocal (inline
 //   LocalGame +0x2662) / GetGameEventPackageSet 0x004AEBA0; CInputManager::IsLoadingEvents / IsSavingEvents (inline +0x38 / +0x39);
 //   CGameEvent(long) / AddUBYTE (inline) -> AddData 0x009F1760; GFGetTime 0x009E1BC0; Sleep (IAT 0x0143FE1C).
-// Globals: PInputManager 0x013B8388; 0x013B8610 (debug sleep per frame), 0x013B86AC (set when this function paused the game),
+// Globals: GPInputManager 0x013B8388; 0x013B8610 (debug sleep per frame), 0x013B86AC (set when this function paused the game),
 //   0x013B8630 and 0x013B7D70 (landed spellings g_ForceRenderFrames / g_RenderFrame_013b7d70): no PDB data symbols, descriptive names.
 // Shape: the subtitle renderer reference is taken before IsControllerDisconnected (retail loads the singleton into edi first,
 //   0x004182CE); the event type 9 is the pause-game event (enumerator name not in the extracts); the update-time stores use the
@@ -52,7 +52,7 @@
 #include "engine/GFFPUSetRoundingNearest.h"
 #include "engine/GFGetTime.h"
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);   // IAT 0x0143FE1C
-extern CInputManager* PInputManager;                 // 0x013B8388 ?PInputManager@@3PAVCInputManager@@A
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 extern long g_FrameSleepMilliseconds;                // 0x013B8610 (no PDB data symbol: descriptive)
 extern bool g_ControllerDisconnectPaused;            // 0x013B86AC (no PDB data symbol: descriptive)
 extern long g_ForceRenderFrames;                     // 0x013B8630 (landed spelling, CMainGameComponent::Render 0x00417001)
@@ -100,7 +100,7 @@ void CMainGameComponent::Update()
             SignalFrameUpdate();
         }
     } else {
-        if (Client.IsLocal() && CurrentServerFrame > 1 && !PInputManager->IsLoadingEvents() && !PInputManager->IsSavingEvents()) {
+        if (Client.IsLocal() && CurrentServerFrame > 1 && !GPInputManager->IsLoadingEvents() && !GPInputManager->IsSavingEvents()) {
             long difference = GetFrameDifferenceFromCurrent(CurrentServerFrame);
             if (g_ForceRenderFrames == 0 && difference > 15) {
                 CurrentServerFrame += difference;

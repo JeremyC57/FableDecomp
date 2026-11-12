@@ -91,9 +91,10 @@ private: public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* m_pItem;
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;          // 0x00A01B50 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
 };
 
 class CPlayer { public:
@@ -132,7 +133,7 @@ struct CModeStandBase {                     // retail sizeof 0x68
     virtual void v00();
     CThing*       ParentThing;              // +0x04
     unsigned char _body[0x60];
-    void OnDeactivate();                    // 0x00861D00
+    virtual void OnDeactivate();            // 0x00861D00 ?OnDeactivate@CModeStandBase@@UAEXXZ (Ego_r/FableWin; vtable 0x01276D8C slot 6)
 };
 
 namespace NCreatureMode {
@@ -150,7 +151,7 @@ void CModeCreatureIsProjectile::OnDeactivate()
     long index = ParentThing->Brain->DefGlobalIndex;
     CDefString brain = CMainGameComponent::Get()->PeekDefinitionManager().GetDefNameFromGlobalIndex(index);
     if (brain == "BRAIN_CHICKEN") {
-        CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPHero().GetPItem();
+        CThing* hero = (CThing*)(CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPHero().GetPItem());
         if (hero && !hero->m_dead) {
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);

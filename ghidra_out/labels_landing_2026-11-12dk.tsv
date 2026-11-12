@@ -1,0 +1,16 @@
+address	name	evidence
+007B0360	CTCFishingSpot::FrameUpdate	chunk Q20 (landing dk): Ego_r.pdb + FableWin.pdb ?FrameUpdate@CTCFishingSpot@@UAEXXZ; vtable 0x0126D51C slot 9; RELOCATION_MATCH (Q20)
+008B7040	CCreatureAction_JumpOutFromCover::Initialise	chunk Q20 (landing dk): Ego_r.pdb + FableWin.pdb ?Initialise@CCreatureAction_JumpOutFromCover@@UAEXXZ; vtable 0x0129888C slot 12; RELOCATION_MATCH (Q20)
+00A14040	C3DVector::RotateXY	chunk Q20 (landing dk): Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z; manifest; 10+ landed decls; called 3x by 0x008B7040
+007BEDD0	NThingShot::CTCShotDefinitionBase::GetShootAtPos	chunk Q20 (landing dk): Ego_r + FableWin ?GetShootAtPos@CTCShotDefinitionBase@NThingShot@@IBE?AVC3DVector@@XZ; manifest; shared header decl
+0066F9B0	CTCPhysicsBase::SetVelocity	chunk Q20 (landing dk): Ego_r.pdb ?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z; manifest; landed body (store Velocity, SetAsMoving(true))
+007BE7EA	CDefClassBase::GetSubDef<CThingMultiArrowShotDef>	chunk Q20 (landing dk): manifest; called from 0x007BCF7F; body = CDefClassBase_GetSubDef.h NOINLINE shape
+007BE92E	CDefClassBase::GetSubDef<CThingDrainLifeShotDef>	chunk Q20 (landing dk): manifest; landed; called from 0x007BD845
+009E1E10	GFVXToAX	chunk Q20 (landing dk): Ego_r + FableWin ?GFVXToAX@@YIMM@Z; manifest; landed decls (GFAXToVX is 0x009E1DA0)
+009E1E40	GFVYToAY	chunk Q20 (landing dk): Ego_r + FableWin ?GFVYToAY@@YIMM@Z; manifest; landed decls (GFAYToVY is 0x009E1DD0)
+009DC030	CRenderManager2D::Add2DTri	chunk Q20 (landing dk): Ego_r.pdb ?Add2DTri@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z; called 2x by 0x009DDC60 (and landed Draw2DLine)
+009E3640	CPixelFormat::Initialise(const CPixelFormatInit&)	chunk Q20 (landing dk): Ego_r.pdb ?Initialise@CPixelFormat@@QAEXABVCPixelFormatInit@@@Z; manifest; FableWin inline ctor calls it
+009E3940	CPixelFormat::IsCompressed	chunk Q20 (landing dk): Ego_r.pdb ?IsCompressed@CPixelFormat@@QBE_NXZ; manifest
+009FB750	CTexture::LoadFromDataStreamToPreallocatedSurface	chunk Q20 (landing dk): Ego_r + FableWin ?LoadFromDataStreamToPreallocatedSurface@CTexture@@QAEXAAVCDataInputStream@@@Z; catalog
+007BCF7F	NThingShot::CTCShotDefinitionMultiArrow::InitMovement	chunk Q20 (landing dk): Ego_r + FableWin ?InitMovement@CTCShotDefinitionMultiArrow@NThingShot@@MAEXXZ; vtable slot 33
+007BD845	NThingShot::CTCShotDefinitionDrainLife::InitMovement	chunk Q20 (landing dk): Ego_r + FableWin ?InitMovement@CTCShotDefinitionDrainLife@NThingShot@@MAEXXZ; vtable slot 33

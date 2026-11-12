@@ -137,7 +137,7 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
 class CPlayer { public:
-    long GetCurrentMode();                                     // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                                     // 0x00633BE0
     void RemoveMode(EPlayerMode mode);                                // 0x00634190
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared

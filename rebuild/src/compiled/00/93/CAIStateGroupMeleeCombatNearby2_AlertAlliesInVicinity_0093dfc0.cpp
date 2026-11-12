@@ -11,7 +11,7 @@
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50 (PEnemy +0x14, twice), CTCPerceiveThing::GetPerceivedThing 0x007446A0,
 //   PeekWorld 0x008FCFA0 / GetWorld 0x008FCFC0, CMessageEventManager::FindMostRecentMessage<IsOfType> 0x004AB8B0,
 //   CThingPhysical::PeekPos 0x006A4D00, CMessageEventManager::AddMessage 0x00687540; global 0x013BB714 (this TU's
-//   `frames per second * 5`, landed as g_scaled_013bb714).
+//   `frames per second * 5`, landed as TIME_TO_LEAVE_SHOUT_MESSAGE (was g_scaled_013bb714)).
 // Layout: Ego_r.pdb CTCPerceiveThing LineOfSight +0x2d, Smelt +0x31; PEnemy +0x14 as the landed Update 0x0093E5E0.
 // Shape: the GetInterface `if` (the key's `push ecx` slot later reused by the IsOfType filter), the perceived-thing
 //   compare, `LineOfSight || Smelt`, the !Find guard, then AddMessage(0xC, lifespan, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
@@ -78,7 +78,7 @@ public:
     CMessageEventManager* GetPMessageManager() const { return m_pMessageManager; }
 };
 
-extern long g_scaled_013bb714;                  // 0x013BB714 (frames per second * 5, this TU's dynamic initializer)
+namespace { extern const long TIME_TO_LEAVE_SHOUT_MESSAGE; }                  // 0x013BB714 (frames per second * 5, this TU's dynamic initializer)
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -118,7 +118,7 @@ bool CAIStateGroup_MeleeCombatNearby2::AlertAlliesInVicinity()
     if (PeekWorld().GetPMessageManager()->FindMostRecentMessage(CMessageEventFilter_IsOfType(0xc)))
         return true;
     CThing* creature = PBrain->PCreature;
-    GetWorld().GetPMessageManager()->AddMessage((EMessageEventType)(0xc), g_scaled_013bb714, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
+    GetWorld().GetPMessageManager()->AddMessage((EMessageEventType)(0xc), TIME_TO_LEAVE_SHOUT_MESSAGE, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
                                                   reinterpret_cast<CThing*>(PEnemy.GetPItem()), 0.0f, 36.0f, 0);
     return true;
 }

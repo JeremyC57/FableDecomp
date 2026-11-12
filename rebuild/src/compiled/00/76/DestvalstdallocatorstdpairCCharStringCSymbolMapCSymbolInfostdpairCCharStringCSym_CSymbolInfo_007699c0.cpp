@@ -4,6 +4,7 @@
 //   std::pair<CCharString, CSymbolMap::CSymbolInfo>
 // Retail 0x007699c0. Pair + CSymbolInfo destructors inline; leaf CCharString /
 // CBaseIntelligentPointer destructors are out-of-line -> call/jmp.
+// Name fix (agentNF23): the member's destructor binds the PDB spelling ??1CBaseIntelligentPointer@@UAE@XZ (virtual; Ego_r.pdb / FableWin.pdb) through engine/CIntelligentPointer.h, replacing the local non-virtual model; the explicit call is qualified so it stays direct.
 
 class CCharString {
 public:
@@ -11,11 +12,8 @@ public:
     char* m_p;               // sizeof == 4
 };
 
-class CBaseIntelligentPointer {
-public:
-    ~CBaseIntelligentPointer();  // 0xa01c10 (direct member destruction)
-    void* m_p;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer: vptr + PData, virtual ~ @ 0x00A01C10
 
 struct CSymbolInfo {
     CCharString name;             // +0
@@ -33,7 +31,7 @@ struct SymPair {
 // ecx carries _Ptr in retail.
 void __fastcall Dest_val_CSymbolInfo___(SymPair* _Ptr)
 {
-    _Ptr->second.ptr.~CBaseIntelligentPointer();
+    _Ptr->second.ptr.CBaseIntelligentPointer::~CBaseIntelligentPointer();   // qualified: direct call 0x00A01C10, as retail
     _Ptr->second.name.~CCharString();
     _Ptr->first.~CCharString();
 }

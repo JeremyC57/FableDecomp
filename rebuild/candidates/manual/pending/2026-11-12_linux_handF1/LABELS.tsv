@@ -1,0 +1,14 @@
+address	name	module
+00878430	??$GetAllThingsInRoughArea@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	CThingSearchTools
+00877720	?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z	NCameraModes::CTools
+00878be0	?GetPosFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z	NCameraModes::CProjectileWeapon
+009e3b60	?ConvertPFDToRGB@CPixelFormat@@QBEXABVCPFDColour@@AAVCRGBColour@@@Z	CPixelFormat
+00ad9770	?RemoveAllSubsets@CVertexGroupBlockList@@QAEXXZ	CVertexGroupBlockList
+00ad8ca0	?IsProperSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z	CVertexGroupBlock
+00bc2480	?Update@CEngineInternalPrimitiveParticleMesh@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleMesh
+00801920	?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@W4EIdleStateGroup@@@Z	CTCIdleScheduler
+00686da0	?GetPWorldSeed@CTCBase@@IBEPAKXZ	CTCBase
+00407cd0	?RedefineControlPassive@CUserProfileManager@@QAEXABVCActionInputControl@@0J@Z	CUserProfileManager
+0040ed10	?GetDirection@CActionInputControl@@QBE?AW4EActionDirection@1@XZ	CActionInputControl
+0040eda0	?IsSameActionAndButton@CActionInputControl@@QBE_NABV1@@Z	CActionInputControl
+013baf1c	GDefaultIdlePeriod (descriptive; data, read only by 0x00801920)	_global

@@ -17,7 +17,11 @@
 #include "engine/CDefPointer.h"
 #include "engine/EHeroExperienceStatCategory.h"
 class CMeleeCombatAbilityDef;
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+namespace NHitLocations{class CHitLocation;}
+#else
 class CHitLocation;
+#endif
 #endif
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
@@ -33,6 +37,10 @@ class CMeleeCombatAbilityDef;
 #endif
 namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SHOT_DEFINITION;}
@@ -59,14 +67,35 @@ public:
 public:
     virtual bool GetStatToModifyOnHit(EHeroExperienceStatCategory& category); // slot30
     virtual float GetShotDamage() const; // slot31
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+public:virtual long GetWeaponTrailGraphic()const;
+protected:
+ virtual void InitMovement();virtual void InitAttachedEffects();virtual void UpdateMovement();virtual void UpdateFacingDirection();
+ virtual void UpdateCollision(bool&);virtual void UpdateEffects();virtual void UpdateCreatureAwarenessOfMe();virtual void OnSubShotTrigger();virtual void OnPassingTarget();
+ virtual bool IsNegatedHit()const;virtual bool IsCreateParticleEffectOnHit()const;
+ void OnCollisionProper(bool& killed_me);
+#else
 protected:
     virtual void UpdateFacingDirection(); // slot32
     virtual void InitMovement(); // slot33
+#endif
     C3DVector GetShootAtPos() const; // 007bedd0, Ego_r protected const IBE
+#endif
+#if defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_SHOTACCESSORS) && defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT)
+    // Retail opt-in (chunk Q20, rows 0x007BCF7F MultiArrow / 0x007BD845 DrainLife InitMovement): the protected inline accessors
+    // Ego_r.pdb / FableWin.pdb ?GetShotAccuracyPercentage@CTCShotDefinitionBase@NThingShot@@IBEJXZ (the float AccuracyPercentage +0x40
+    // truncated to long: `fld [ebx+40h] ; call _ftol`, 0x007BCFDF) and ?GetShotDef@CTCShotDefinitionBase@NThingShot@@IBEABVCThingShotDef@@XZ
+    // (the def behind PShotDef +0x38: `mov ecx,[ebx+38h]`, 0x007BD0B4); no out-of-line copy in Fable.exe. Body only: no layout change.
+protected:
+    long GetShotAccuracyPercentage() const { return (long)AccuracyPercentage; }
+    const CThingShotDef& GetShotDef() const { return *PShotDef; }
 #endif
 protected:
     CIntelligentPointer<CThing> PEffect;                                // +0x0c
     std::vector<CIntelligentPointer<const CThing> > HitThingsList;      // +0x14
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+private:
+#endif
     CIntelligentPointer<const CThing> PTargetThing;                     // +0x20
     CIntelligentPointer<CThing> PShooter;                               // +0x28
     CIntelligentPointer<CThing> PWeapon;                                // +0x30
@@ -88,9 +117,31 @@ protected:
     C3DVector BestCollisionNormal; //7c
     CIntelligentPointer<CThing> PBestCollisionThing; //88
     ECollideType BestCollisionType; //90
-    CHitLocation* PBestCollisionHitLocation; //94
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+    NHitLocations::CHitLocation* PBestCollisionHitLocation;
+#else
+    CHitLocation* PBestCollisionHitLocation;
+#endif //94
     bool MultiArrowShotType; //98
 #endif
+#ifdef FABLE_RETAIL_NTHINGSHOT_CTCSHOTDEFINITIONBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+protected:
+    virtual void OnPassingTarget();  // slot 41, 0x004D5483
+protected:
+    virtual bool IsNegatedHit() const;  // slot 42, 0x004D5484
+protected:
+    virtual bool IsCreateParticleEffectOnHit() const;  // slot 43, 0x004D5487
+public:
+#endif
+#ifdef FABLE_RETAIL_NTHINGSHOT_CTCSHOTDEFINITIONBASE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void OnKill();  // slot 14, 0x007BED00
+public:
+#endif // FABLE_RETAIL_NTHINGSHOT_CTCSHOTDEFINITIONBASE_VSLOTS3
 };
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT
 FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionBase)==0x9c);

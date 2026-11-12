@@ -10,10 +10,11 @@
 // the CombatSequences vector of 8-byte counted pointers with first at +0x28). The three values are read
 // into callee-saved registers up front (parent edi, attacked ebp, sequence esi). Two exits: the first
 // condition's body returns, the second is the fall-through `if`.
+// Name fix (agentNF24): 0x006621C0 respelled CThingCreatureBase::IsFreeToFinishAction() const (Ego_r/FableWin ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ; was non-const)
 class CThing;
 
 class CThingCreatureBase { public:
-    bool IsFreeToFinishAction();            // 0x006621C0
+    bool IsFreeToFinishAction() const;            // 0x006621C0
     void FinishCurrentAction();             // 0x00662650
 public:
     bool IsPerformingAnyAction() const;   // 0x006622A0

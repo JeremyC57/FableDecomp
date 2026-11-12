@@ -75,3 +75,8 @@ Pool chunks NA067-NA076 (100 rows, `pending/2026-11-02_codex_pass11/RESERVED.tsv
 Three more 100-row sections, handed to Codex one at a time as it finishes the previous one: pass 12 = NA077-NA086, pass 13 = NA087-NA096,
 pass 14 = NA097-NA106 (released to in-house cuts 2026-11-03, `RELEASED.tsv`) (`pending/2026-11-02_codex_pass{12,13,14}/RESERVED.tsv`), reserved until 2026-11-30. In-house cuts go NA061-NA066,
 then NA107 onward. The owner paused in-house chunk launches on 2026-11-02 after chunk 717.
+
+## Reserved rows
+`python3 reserved_check.py <payload.json | rows-dir | rows.tsv>` before every landing and before cutting a chunk: it reports rows that are in any
+`pending/*/RESERVED.tsv` (working tree and origin/FullDecomp-B) and rows that mention a reserved address. A reserved row is never landed here;
+a row that defines a stand-in body for a reserved function is held back.

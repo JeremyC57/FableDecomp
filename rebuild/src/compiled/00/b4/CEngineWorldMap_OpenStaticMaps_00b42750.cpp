@@ -20,6 +20,10 @@
 // Shape: the progress text is an implicit conversion temporary; the state-2 loop passes the folded constant 2; the open
 //   result is kept in bl across the pool and water calls; the single state store after the if/else is duplicated by VC
 //   into each exit (storing ebp, not the propagated 2), which separate early-return stores do not reproduce.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x01436EC4 SeaStaticMapBankFileName (global; initializer 0x01224680), was g_WaterBankSymbol.
+//   0x01436ECC CommonStaticMapHeaderEntryName (global; initializer 0x012246C0), was g_GlobalMapEntrySymbol.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -64,8 +68,8 @@ class CEngineWaterRenderer { public:
     void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString symbol);   // 0x00B6D4D0
 };
 extern CEngineWaterRenderer* g_pEngineWaterRenderer;   // 0x01436E54
-extern CCharString g_WaterBankSymbol;                  // 0x01436EC4
-extern CCharString g_GlobalMapEntrySymbol;             // 0x01436ECC
+extern CCharString SeaStaticMapBankFileName;                  // 0x01436EC4
+extern CCharString CommonStaticMapHeaderEntryName;             // 0x01436ECC
 
 class CEngineMap { public:
     enum STATIC_MAP_OPEN_STATE { STATIC_MAP_CLOSED, STATIC_MAP_RETAIL, STATIC_MAP_DEVELOPMENT };
@@ -107,8 +111,8 @@ void CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state)
         StaticMapFile.SetMemoryPool(g_pEngine_01436e98->MemoryPool);
         if (!opened)
             return;
-        g_pEngineWaterRenderer->OpenStaticMapForUse(&StaticMapFile, g_WaterBankSymbol);
-        long entry = StaticMapFile.FindIndexBySymbol(g_GlobalMapEntrySymbol);
+        g_pEngineWaterRenderer->OpenStaticMapForUse(&StaticMapFile, SeaStaticMapBankFileName);
+        long entry = StaticMapFile.FindIndexBySymbol(CommonStaticMapHeaderEntryName);
         if (entry > 0)
             OpenMapFile(entry);
         else {

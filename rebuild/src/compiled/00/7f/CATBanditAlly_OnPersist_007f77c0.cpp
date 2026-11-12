@@ -12,20 +12,19 @@
 // GOTCHAS). The second argument is unused by this body. Member types follow the default's
 // store width. One of 9 bodies of this shape.
 class CPersistContext { public:
-    void Transfer_004045c0(const char* name, signed char& value, const signed char& defaultValue);   // 0x004045C0
-    void Transfer_004106f0(const char* name, long& value, const long& defaultValue);   // 0x004106F0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 Transfer<bool>, 0x004106F0 Transfer<unsigned long> (agentNF19: Ego_r/FableWin ??$Transfer@_N@.. / ??$Transfer@K@..)
 };
 
 struct CAT_BanditAlly {
     unsigned char _pad[0x20];
-    signed char m_20;                 // +0x20 "DeactivateAfterSetTime"
+    bool m_20;                        // +0x20 "DeactivateAfterSetTime"
     unsigned char _pad2[0x3];
-    long m_24;                        // +0x24 "FramesAfterActivationToDeactivate"
+    unsigned long m_24;               // +0x24 "FramesAfterActivationToDeactivate"
     void OnPersist(CPersistContext* context, long unused);
 };
 
 void CAT_BanditAlly::OnPersist(CPersistContext* context, long unused)
 {
-    context->Transfer_004045c0("DeactivateAfterSetTime", m_20, 0);
-    context->Transfer_004106f0("FramesAfterActivationToDeactivate", m_24, 0);
+    context->Transfer<bool>("DeactivateAfterSetTime", m_20, false);
+    context->Transfer<unsigned long>("FramesAfterActivationToDeactivate", m_24, 0);
 }

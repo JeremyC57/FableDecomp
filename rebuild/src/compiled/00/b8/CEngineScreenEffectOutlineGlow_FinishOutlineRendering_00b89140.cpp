@@ -24,7 +24,7 @@ class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
     void SetViewport(void* viewport);              // 0x009BEF80
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 struct CTexturePool_00f36f00 {
     void Release(long texture);                    // 0x00F36F00
@@ -46,8 +46,8 @@ void CEngineScreenEffectOutlineGlow_Finish::FinishOutlineRendering()
         OutlineRenderingCaptureBlock_Open = false;
         g_pRenderStateManager->RestoreCaptureBlock();
         CRenderTarget* target = (CRenderTarget*)OldRenderTarget;
-        g_pDisplayManager_01436e1c->SetRenderTarget(target);
-        g_pDisplayManager_01436e1c->SetViewport(&OldViewport_TLX);
+        NEngineInternal::GPDisplayManager->SetRenderTarget(target);
+        NEngineInternal::GPDisplayManager->SetViewport(&OldViewport_TLX);
         target->Uninitialise();
         if (!IsActive()) {
             g_pEngine_01436e98->m_texturePool.Release(OutlineTextureHandle);

@@ -1,0 +1,9 @@
+address	name	evidence
+008147D0	CTCBoastingPosition::SetBoastingPodium	chunk Q23 (landing dp): 
+0048DD94	CSubtitleRenderer::Pause	chunk Q23 (landing dp): 
+00A12890	CPhysicsMeshObject::IsPointContainedInBoundingBox	chunk Q23 (landing dp): 
+00A11D10	CPhysicsMeshObject::GetNavigationLevelAt	chunk Q23 (landing dp): 
+004BDB40	NGraphicAppearance::CTCGraphicAppearance::GetAllDummyObjectNames	chunk Q23 (landing dp): 
+006C1250	CTCBuyableHouse::FrameUpdate	chunk Q23 (landing dp): 
+00814260	CTCBoastingPodium::OnInitialActivate	chunk Q23 (landing dp): 
+0063F7C0	CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>,CThingFindNavigationLayerAt>	chunk Q23 (landing dp): 

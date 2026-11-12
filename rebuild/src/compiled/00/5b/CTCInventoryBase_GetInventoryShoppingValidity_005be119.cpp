@@ -20,6 +20,7 @@
 // Layout: retail CTCInventoryBase PShopKeeper (CThing*) +0xB8; the shop component (type 0x53) holds the keeper
 //   creature's intelligent pointer at +0x10; the type-2 component's X / Y at +0x0C / +0x10; retail CThing bitset +0x20,
 //   interface map +0x44.
+// Name fix (agentNF24): 0x006621C0 respelled CThingCreatureBase::IsFreeToFinishAction() const (Ego_r/FableWin ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ; was non-const)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <math.h>
@@ -36,7 +37,7 @@ class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {
 
 class CThingCreatureBase : public CThing {
 public:
-    bool IsFreeToFinishAction();                            // 0x006621C0
+    bool IsFreeToFinishAction() const;                            // 0x006621C0
     void FinishCurrentAction();                             // 0x00662650
 };
 class CThingPlayerCreature : public CThing { };

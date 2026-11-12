@@ -6,6 +6,11 @@
 // Callees: GetWorldFrame() @ 0x0049D870, CTCWife::SetAttractionIcon(bool, float, unsigned char) @ 0x006CFC90.
 // Layout: engine/CTCWife.h FrameGotMarriedToThePlayer +0x20, NeedsToChangeBrain +0x26.
 // Shape: as 0x006D03E0 -- `wedding frame <= now`, the three pushes, the flag store last.
+// Name fix (naming agent NF21, 2026-11-11): was the derived stand-in CTCWife_State, which mangled the private
+//   ?SetAttractionIcon@CTCWife@@AAEX_NME@Z (Ego_r.pdb + FableWin.pdb, 0x006CFC90) as CTCWife_State::SetAttractionIcon; now the
+//   retail engine/CTCWife.h (FABLE_RETAIL_CTCWIFE) member, with IsMarriedToThePlayer written inline as retail inlines it here.
+// Leaf: ?OnInitialActivate@CTCWife@@UAEXXZ
+#define FABLE_RETAIL_CTCWIFE
 #include "engine/CTCWife.h"
 
 class CWorld {
@@ -13,20 +18,11 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                                       // 0x0049D870
 
-struct CTCWife_State : CTCWife {
-    bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
-    void SetAttractionIcon(bool show, float scale, unsigned char alpha);   // 0x006CFC90
-    void InitWifeNonpersistentState()
-    {
-        if (IsMarriedToThePlayer()) {
-            SetAttractionIcon(true, 0.5f, 255);
-            NeedsToChangeBrain = true;
-        }
-    }
-    void OnInitialActivate();
-};
-
-void CTCWife_State::OnInitialActivate()
+void CTCWife::OnInitialActivate()
 {
-    InitWifeNonpersistentState();
+    // InitWifeNonpersistentState() inlined
+    if (FrameGotMarriedToThePlayer <= CWorld::GetFrame()) {   // the inline IsMarriedToThePlayer
+        SetAttractionIcon(true, 0.5f, 255);
+        NeedsToChangeBrain = true;
+    }
 }

@@ -23,7 +23,13 @@ class CThingBuilding;
 class CThingAICreature;
 enum EMarriageState;                                         // MS forward enum (the row defines the enumerators it uses)
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+namespace NHeroStatModifierEvent {class CBase;}
+#endif
 class CTCHeroStats : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:void InformOfEvent(const NHeroStatModifierEvent::CBase&);
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
@@ -169,6 +175,13 @@ public:
     long             Morality;                                           // +0x28
     bool             MoralityChangingEnabled;                            // +0x2c
     float            Age;                                                // +0x30
+#ifdef FABLE_RETAIL_CTCHEROSTATS_AGE
+    // Retail opt-in (chunk Q8, row 0x006D8980 CTCHeroExperience::UpgradeTrainableStat): Ego_r.pdb / FableWin.pdb
+    // ?SetAge@CTCHeroStats@@QAEXM@Z (out of line at retail 0x0057B05F) and FableWin.pdb ?GetAge@CTCHeroStats@@QBEMXZ (inline: the
+    // row reads +0x30 in place). No layout change.
+    void SetAge(float age);                                              // 0x0057B05F
+    float GetAge() const { return Age; }
+#endif
     float            SunTan;                                             // +0x34
     float            Fatness;                                            // +0x38
     long             Money;                                              // +0x3c
@@ -280,6 +293,23 @@ private:unsigned char _before_stamina[0x58-sizeof(CTCBase)];
 #else
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x005814C3
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x005814C6
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005814A8
+public:
+#endif // FABLE_RETAIL_CTCHEROSTATS_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);
 #endif

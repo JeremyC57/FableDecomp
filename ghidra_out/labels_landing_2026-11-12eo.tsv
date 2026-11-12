@@ -1,0 +1,11 @@
+address	name	evidence
+009ADAE0	?InstantiateSubDef@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@ABVCCharString@@K@Z	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+00499AA0	?StartProgress@CProgressDisplay@@UAEX_N00000@Z	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+00EF4320	?Main@CMeanBandit@CPersonalScript_EmptyScript@NScript@@EAEXXZ	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+00A11D10	?GetNavigationLevelAt@CPhysicsMeshObject@@QBEJABVC3DVector@@@Z	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+007F53B0	?FrameUpdate@CTCSoundAtmosphere@@UAEXXZ	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+009692C0	?ReceivePayment@CAIStateGroup_TavernKeeper@@QAE_NXZ	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+0094D780	?Initialise@CAIStateGroup_TrollBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+0064C869	?Draw@CDrawSpiritTargetingCursor@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+0095E0B0	?Update@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MAEXXZ	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs
+00A11F20	?IsSpherePartContainedInBoundingBox@CPhysicsMeshObject@@QBE_NABVC3DVector@@M@Z	workflow wf5 (landing eo): RELOCATION_MATCH, two PDBs

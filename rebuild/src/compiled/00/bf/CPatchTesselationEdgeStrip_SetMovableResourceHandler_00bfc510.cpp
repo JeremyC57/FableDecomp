@@ -9,11 +9,10 @@ class CMovableResource;
 class CEngineLandscapeMemoryManager { public:
     void SetMovableResourceHandler(void* block, CMovableResource* handler);   // 0x00BD9AB0
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
+//   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 template <class T>
 class CEdgeStipVertexArray { public:
@@ -22,7 +21,7 @@ class CEdgeStipVertexArray { public:
     void SetMovableResourceHandler(CMovableResource* handler)
     {
         if (Data)
-            g_pEngine_01436ea8->m_pLandscapeMemory->SetMovableResourceHandler(Data, handler);
+            g_pLandscapeRenderer->MemoryManager->SetMovableResourceHandler(Data, handler);
     }
 };
 

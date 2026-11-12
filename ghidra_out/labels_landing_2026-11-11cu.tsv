@@ -1,0 +1,7 @@
+address	name	evidence
+00DD9520	?SplittingUpCutscene@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ	chunk Q12 (landing cu): Ego_r.pdb + FableWin.pdb; plays "CS_MOTHER_SPLITTING_UP" at "OUTRO_SPLITTING_UP"; reloc_bindings already bind it (the draft's PrisonEscape spelling was descriptive)
+008B6AD0	?Initialise@CCreatureAction_MidAttackSide@@UAEXXZ	chunk Q12 (landing cu): Ego_r.pdb + FableWin.pdb; RTTI CCreatureAction_MidAttackSide : CCombatActionBase; ends calling CCombatActionBase::Initialise 0x00857520
+007BC004	?InitMovement@CTCShotDefinitionNymphFun@NThingShot@@UAEXXZ	chunk Q12 (landing cu): Ego_r.pdb + FableWin.pdb; RTTI NymphFun : CTCShotDefinitionProjectile (vtable slot 33)
+009DD960	?Draw2DLine@CRenderManager2D@@QAE_NABVC2DVector@@0ABVCRGBColour@@K@Z	chunk Q12 (landing cu): Ego_r.pdb + FableWin.pdb (reloc_bindings agree)
+009DC2C0	?Add2DLine@CRenderManager2D@@AAEXABVCTVertexRHWColSpecTex1@@0JPAVCTexture@@@Z	chunk Q12 (landing cu): Ego_r.pdb (0x00B2FE90, the Add2DTri / Draw2D* donor order) and called by Draw2DLine with (v0, v1, mode, 0) at 0x009DDA34
+008574D0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	chunk Q12 (landing cu): Ego_r.pdb + reloc_bindings; the old 0x008B6AD0 draft called it SetAnimationName (descriptive, never landed)

@@ -9,6 +9,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_GENERICFIREPROJECTILEWEAPON
+// Retail opt-in (chunk Q17, row 0x008BF500 CCreatureAction_GenericFireProjectileWeapon::FinishAction): RTTI : CCombatActionBase (retail
+// sizeof 0x114: no own members). Ego_r.pdb name set: ??0..@@QAE@AAVCThingCreatureBase@@0@Z, Initialise / PerformAction / FinishAction
+// (UAE, public virtual; vtable 0x0127F384 slots 3 PerformAction 0x008BF280 and 4 FinishAction 0x008BF500), Clone and
+// GetIsToFaceTargetCone (UBE). Needs engine/CCombatActionBase.h with FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION.
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;
+class CCreatureAction_GenericFireProjectileWeapon : public CCombatActionBase {
+public:
+    CCreatureAction_GenericFireProjectileWeapon(CThingCreatureBase& creature, CThingCreatureBase& target);
+    virtual void Initialise();
+    virtual void PerformAction();                                        // slot 3 0x008BF280
+    virtual void FinishAction();                                         // slot 4 0x008BF500
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GenericFireProjectileWeapon) == 0x114);
+#else
+
 #pragma pack(push, 1)
 class CCreatureAction_GenericFireProjectileWeapon {
 public:
@@ -30,4 +47,5 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GenericFireProjectileWeapon) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_GenericFireProjectileWeapon, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_GENERICFIREPROJECTILEWEAPON
 #endif // FABLE_ENGINE_CCREATUREACTION_GENERICFIREPROJECTILEWEAPON_H

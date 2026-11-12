@@ -42,7 +42,7 @@ struct SMessageNode {
 };
 class CMessageEventFilter_IsOfType { public:
     fable_i32 Type;
-    bool operator()(CMessageEvent* event) const;               // 0x006af1c0
+    bool operator()(const CMessageEvent& event) const;         // 0x006af1c0 Ego_r/FableWin ??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
 };
 class CThing;
 class CMessageEventFilter_IsTargettedAtThing { public:
@@ -110,7 +110,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_WaitForMessage(
             SMessageNode* node = head->next;
             while (node != head) {
                 CMessageEvent* event = &node->Event;
-                if (typeFilter(event)) {
+                if (typeFilter(*event)) {
                     found = event;
                     break;
                 }

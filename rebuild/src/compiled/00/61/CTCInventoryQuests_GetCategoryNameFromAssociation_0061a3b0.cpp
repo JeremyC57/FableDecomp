@@ -8,10 +8,12 @@
 // CWideString::CWideString(const CWideString&) @ 0x0099B720 from the empty-string global 0x013BCA24.
 // Shape: the inline IsThingAlive test (null, dead bit 0 of +0x91) and the bitset test share the empty-string arm; the
 // GetInterface key is homed in the dead `thing` slot.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CWIDESTRING_NULLSTRING   // fable_string.h: public static CWideString::NullString
 #include "engine/CThing.h"
-extern const CWideString g_EmptyWideString;     // 0x013BCA24
 
 class CTCBase;
 
@@ -34,5 +36,5 @@ CWideString CTCInventoryQuests::GetCategoryNameFromAssociation(CThing* thing) co
     const CTCQuestCard* questCard;
     if (IsThingAlive(thing) && thing->PeekTC(TCI_QUEST_CARD, &questCard))
         return questCard->GetQuestName();
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

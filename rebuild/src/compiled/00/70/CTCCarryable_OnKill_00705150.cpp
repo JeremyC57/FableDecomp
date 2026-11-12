@@ -1,27 +1,16 @@
-// CTCCarryable::OnKill() -- when the carryable is held, tell the carrier's CTCCarrying component to drop this thing
-// Leaf: OnKill
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00705150, length 19 bytes. CTCCarryable vtable 0x0123B35C slot 14.
-// Callees: CTCCarrying::RemoveThing(CThing*) @ 0x006A19B0 (`ret 4`; landed in this chunk).
-// Identity: slot 14 of the CTCBase-derived vtables is OnKill (CTCCarrying/CTCInventory/CTCVillage/...
-// carry that label at the same slot); the manifest's "vfunc_14" is the placeholder.
-// Layout: engine/CTCBase.h (vptr, ParentThing +4, ToBeRemoved +8, IsInGlobalUpdateTCs +9) and the
-// Ego_r.pdb CTCCarryable members (ForceFragility +0xc, PCarryingTC +0x10).
-// Shape: `this` is parked in eax so ecx can carry the carrier; the null test guards the member call,
-// which is not tail-called (the pushed argument keeps the `call ; ret`).
-#include "engine/CTCBase.h"
-
-class CTCCarrying { public:
-    void RemoveThing(CThing* thing);                // 0x006A19B0
-};
-
-class CTCCarryable : public CTCBase { public:
-    bool          ForceFragility;                   // +0x0c
-    CTCCarrying*  PCarryingTC;                      // +0x10
-    void OnKill();
-};
-
+// CTCCarryable::OnKill() -- when the carryable is held, the carrier's CTCCarrying component drops it
+// Leaf: ?OnKill@CTCCarryable@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00705150, thiscall, `ret`.
+// Identity (agentFAM03 proof, re-verified by agentFAM05): slot 14 of CTCCarryable's vtable 0x0123B35C (the slot holds this body in 1 vtable(s), owner CTCCarryable); the Xbox 360 Test PDB virtual order (third source) aligned on 13 TLC-named slots of that vtable puts OnKill(void) at this slot [gap kind GS]; Ego_r/FableWin name set: ?OnKill@CTCCarryable@@UAEXXZ; `ret` matches the signature.
+// Was: CTCCarryable::vfunc_14 (rebuild/src/compiled/00/70/CTCCarryable_OnKill_00705150.cpp).
+#define FABLE_RETAIL_CTCCARRYABLE_VSLOTS3
+#define FABLE_RETAIL_CTCCARRYING_REMOVETHING
+#define FABLE_RETAIL_CTCBASE
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCCarryable.h"
+#include "engine/CTCCarrying.h"
 void CTCCarryable::OnKill()
 {
     if (PCarryingTC)
-        PCarryingTC->RemoveThing(ParentThing);
+        PCarryingTC->RemoveThing(*ParentThing);
 }

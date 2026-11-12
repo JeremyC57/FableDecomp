@@ -1,0 +1,274 @@
+addr       parity           behav  name
+0041c590   MATCH            PASS   NUISystem::CComponent::SetPAcceptButton
+0042c300   RELOCATION_MATCH PASS   std::_Rb_tree<long, std::pair<long const, EEngine2DLayer>, std::_Select1st<std::pair<long const, EEngine2DLayer>>, std::less<long>, std::allocator<std::pair<long const, EEngine2DLayer>>>::insert_unique
+004c2a40   MATCH            PASS   std::_Rb_tree_iterator<std::pair<void *const, CRGBColour>, std::_Nonconst_traits<std::pair<void *const, CRGBColour>>>::operator--
+004c6580   MATCH            PASS   std::_Rb_tree_iterator<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>, std::_Nonconst_traits<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>>::operator--
+004d3f40   MATCH            PASS   CTCDNone::IsDriverType
+004d4222   MATCH            PASS   CTCDNavigationSeed::IsDriverType
+004d428e   MATCH            PASS   CTCDInternalMarker::IsDriverType
+004d42e2   MATCH            PASS   CTCDRegionEntrance::IsDriverType
+004d8164   MATCH            PASS   CTCDCameraPoint::IsDriverType
+004db3cb   MATCH            PASS   CTCDRumble::IsDriverType
+004df1bc   MATCH            PASS   CTCDPhysicalObstruction::IsDriverType
+004e07d6   MATCH            PASS   CTCDHeroSuit::IsDriverType
+004e3158   MATCH            PASS   CTCDExplosion::IsDriverType
+004e3467   MATCH            PASS   CTCDExplosiveTrail::IsDriverType
+004e7d41   MATCH            PASS   NInventory::CTCInventoryBase::ProcessButtonWhitePressed
+004e7d42   MATCH            PASS   NInventory::CTCInventoryBase::ProcessButtonWhiteReleased
+004e7d44   MATCH            PASS   NInventory::CTCInventoryBase::ProcessAugmentAction
+004e7d45   MATCH            PASS   NInventory::CTCInventoryBase::ProcessQuestActivateAction
+004e7d48   MATCH            PASS   NInventory::CTCInventoryBase::IncrementQuestCardItemSelection
+004e7d49   MATCH            PASS   NInventory::CTCInventoryBase::DecrementQuestCardItemSelection
+004e7d4a   MATCH            PASS   NInventory::CTCInventoryBase::GetIsEnabled
+004e7d62   MATCH            PASS   NInventory::CTCInventoryBase::GetComponents
+0050df80   MATCH            PASS   std::_Rb_tree_iterator<char, std::_Nonconst_traits<char>>::operator--
+00513880   RELOCATION_MATCH PASS   std::_Rb_tree<char, char, std::_Identity<char>, std::less<char>, std::allocator<char>>::_M_insert
+0052e720   MATCH            PASS   NUISystem::CComponent::ChangeState
+0052e730   MATCH            PASS   NUISystem::CComponent::ChangedState
+0052e740   MATCH            PASS   NUISystem::CComponent::ChangeState
+0052e7e0   RELOCATION_MATCH PASS   NUISystem::CComponent::GetUpdateTime
+0052e940   MATCH            PASS   NUISystem::CComponent::GetRenderPosition
+0052e950   MATCH            PASS   NUISystem::CComponent::GetRenderZoom
+0052e960   MATCH            PASS   NUISystem::CComponent::GetRenderColour
+0052f040   MATCH            PASS   NUISystem::CComponent::AddActionOnLeftClicked
+0052f050   MATCH            PASS   NUISystem::CComponent::AddActionOnLeftUnclicked
+0052f060   MATCH            PASS   NUISystem::CComponent::AddActionOnLeftHeld
+0052f070   MATCH            PASS   NUISystem::CComponent::AddActionOnRightClicked
+0052f080   MATCH            PASS   NUISystem::CComponent::AddActionOnDropped
+0052f090   MATCH            PASS   NUISystem::CComponent::AddActionOnDroppedNowhere
+0052f0a0   MATCH            PASS   NUISystem::CComponent::AddActionOnDraggedUp
+0052f0b0   MATCH            PASS   NUISystem::CComponent::AddActionOnDraggedDown
+0052f0c0   MATCH            PASS   NUISystem::CComponent::AddActionOnHovered
+0052f0d0   MATCH            PASS   NUISystem::CComponent::AddActionOnUnhovered
+0052f150   MATCH            PASS   NUISystem::CComponent::ClearHandle
+0052f160   MATCH            PASS   NUISystem::CComponent::SetParentViewport
+0052f430   MATCH            PASS   NUISystem::CComponent::RemoveFromHoveredList
+0053e8a0   MATCH            PASS   NUISystem::CMenuEntry::IsClickable
+005419f0   RELOCATION_MATCH PASS   NUISystem::CIconText::CanScroll
+0054a380   MATCH            PASS   NUISystem::CTextSlider::SetPAcceptButton
+0054c130   MATCH            PASS   NUISystem::CSlider::SetPAcceptButton
+0054e190   MATCH            PASS   NUISystem::CClickable::IsClickable
+005532f0   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@std@@QAEAAU01@XZ (catalog std::_Rb_tree_iterator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>, std::_Nonconst_traits<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>::operator--; names another function)
+005532f0   MATCH            PASS   std::_Rb_tree_iterator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>, std::_Nonconst_traits<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>::operator--
+00566260   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@@2@@std@@QAEAAU01@XZ (catalog std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CTexture>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CTexture>>>>::operator--; names another function)
+00566260   MATCH            PASS   std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CTexture>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CTexture>>>>::operator--
+0056cd10   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@@2@@std@@QAEAAU01@XZ (catalog std::_Rb_tree_iterator<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>, std::_Nonconst_traits<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>>>::operator--; names another function)
+0056cd10   MATCH            PASS   std::_Rb_tree_iterator<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>, std::_Nonconst_traits<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>>>::operator--
+0056e593   MATCH            PASS   CTCInventoryExperience::GetPlayerMode
+0056e597   MATCH            PASS   CTCInventoryExperience::GetScreenType
+0056f615   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0056f615   RELOCATION_MATCH PASS   CTCInventoryExperience::AddSoundAction
+005791e5   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+005791e5   RELOCATION_MATCH PASS   CCountedPointer<NUISystem::CAction>::Reset
+0057a260   MATCH            PASS   CTCInventoryExperience::IsInventoryScreen
+00581a0d   MATCH            PASS   CTCInventory::GetPlayerMode
+00581a11   MATCH            PASS   CTCInventory::GetScreenType
+005940ec   RELOCATION_MATCH PASS   std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent *>, std::_Select1st<std::pair<long const, NUISystem::CComponent *>>, std::less<long>, std::allocator<std::pair<long const, NUISystem::CComponent *>>>::insert_unique
+0059b35c   RELOCATION_MATCH PASS   std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>, std::less<FRONTEND_SCREEN>, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>>::insert_unique
+0059b6e0   MATCH            PASS   CTCInventoryTrade::GetPlayerMode
+0059b6e4   MATCH            PASS   CTCInventoryTrade::GetScreenType
+005b2a37   RELOCATION_MATCH PASS   std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>::insert_unique
+005b3073   MATCH            PASS   CTCInventoryTrade::IsInventoryScreen
+005b34cd   MATCH            PASS   CTCInventoryClothing::GetPlayerMode
+005b34d1   MATCH            PASS   CTCInventoryClothing::GetScreenType
+005bb5ef   RELOCATION_MATCH PASS   std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long>>, std::less<EClothingSuitPart>, std::allocator<std::pair<EClothingSuitPart const, long>>>::insert_unique
+005c2e1d   MATCH            PASS   CTCInventoryWeapons::GetPlayerMode
+005c2e21   MATCH            PASS   CTCInventoryWeapons::GetScreenType
+005cc6eb   MATCH            PASS   CTCInventoryStats::GetPlayerMode
+005cc6ef   MATCH            PASS   CTCInventoryStats::GetScreenType
+005cd074   WARN SHARED_HEADER_AVAILABLE CManager
+005cd074   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats
+005cd074   RELOCATION_MATCH PASS   NInventory::CTCInventoryStats::ConstructScreen
+005e8c40   MATCH            PASS   std::_Rb_tree_iterator<std::pair<long const, unsigned long>, std::_Nonconst_traits<std::pair<long const, unsigned long>>>::operator--
+005edce7   MATCH            PASS   CTCInventoryAbilities::GetPlayerMode
+005edceb   MATCH            PASS   CTCInventoryAbilities::GetScreenType
+005ee99d   WARN SHARED_HEADER_AVAILABLE CThing
+005ee99d   WARN SHARED_HEADER_AVAILABLE CTCInventory
+005ee99d   WARN SHARED_HEADER_AVAILABLE CHeroAbilityDef
+005ee99d   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005ee99d   WARN SHARED_HEADER_AVAILABLE CPlayer
+005ee99d   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005ee99d   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005ee99d   WARN SHARED_HEADER_AVAILABLE CTCBase
+005ee99d   RELOCATION_MATCH PASS   CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue
+005f9853   RELOCATION_MATCH PASS   std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, NUISystem::CComponent *>, std::_Select1st<std::pair<EHeroAbility const, NUISystem::CComponent *>>, std::less<EHeroAbility>, std::allocator<std::pair<EHeroAbility const, NUISystem::CComponent *>>>::insert_unique
+005fa590   MATCH            PASS   CTCInventoryMap::IsInventoryScreen
+005fa8e0   MATCH            PASS   CTCInventoryMap::GetPlayerMode
+005fa8f0   MATCH            PASS   CTCInventoryMap::GetScreenType
+00613eb0   MATCH            PASS   std::_Rb_tree_iterator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>, std::_Nonconst_traits<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>>>::operator--
+00613f70   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@QAEAAU01@XZ (catalog std::_Rb_tree_iterator<std::pair<long const, std::pair<long, long>>, std::_Nonconst_traits<std::pair<long const, std::pair<long, long>>>>::operator--; names another function)
+00613f70   MATCH            PASS   std::_Rb_tree_iterator<std::pair<long const, std::pair<long, long>>, std::_Nonconst_traits<std::pair<long const, std::pair<long, long>>>>::operator--
+00619fd0   MATCH            PASS   CTCInventoryQuests::IsInventoryScreen
+0061a000   MATCH            PASS   CTCInventoryQuests::GetPlayerMode
+0061a010   MATCH            PASS   CTCInventoryQuests::GetScreenType
+0064b668   WARN SHARED_HEADER_AVAILABLE CThing
+0064b668   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064b668   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuickAccessIcons::ClearSoundEffects
+00687cb0   RELOCATION_MATCH PASS   CInputProcessGameBase::IsQuickAccessEventInQueue
+0068e450   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068e450   RELOCATION_MATCH PASS   CInputProcessQuickAccessItems::Update
+006dfe50   MATCH            PASS   CTCDParticleEmitter::CreateAdditionalTCs
+006e1d30   MATCH            PASS   CTCDParticleEmitter::IsDriverType
+007120d0   RELOCATION_MATCH PASS   CCreatureAction_PickUpGenericBox::~CCreatureAction_PickUpGenericBox
+0072daa0   MATCH            PASS   CTCInventoryMagic::GetPlayerMode
+0072dab0   MATCH            PASS   CTCInventoryMagic::GetScreenType
+00773c90   WARN SHARED_HEADER_AVAILABLE CASoundBank
+00773c90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00773c90   WARN SHARED_HEADER_AVAILABLE CSoundPair
+00773c90   WARN SHARED_HEADER_AVAILABLE CSoundInit
+00773c90   WARN SHARED_HEADER_AVAILABLE CTCShop
+00773c90   RELOCATION_MATCH PASS   CTCShop::SetAlarm
+00778d50   MATCH            PASS   CTCDNavigationSeed::CreateAdditionalTCs
+00778e60   MATCH            PASS   CTCDRegionEntrance::CreateAdditionalTCs
+00778f90   MATCH            PASS   CTCDRegionExit::CreateAdditionalTCs
+00779940   MATCH            PASS   CTCDRegionExit::IsDriverType
+0077ab90   MATCH            PASS   CTCDExperienceOrb::IsDriverType
+007e8860   MATCH            PASS   CTCDCameraPoint::CreateAdditionalTCs
+007e9020   MATCH            PASS   std::_Rb_tree_iterator<std::pair<CThing *const, float>, std::_Nonconst_traits<std::pair<CThing *const, float>>>::operator--
+007e9b40   RELOCATION_MATCH PASS   std::_Rb_tree<CThing *, std::pair<CThing *const, float>, std::_Select1st<std::pair<CThing *const, float>>, std::less<CThing *>, std::allocator<std::pair<CThing *const, float>>>::_M_insert
+00847520   RELOCATION_MATCH PASS   CCreatureAction_PerformExpressionExtended::FinishAction
+009a1090   WARN SHARED_HEADER_AVAILABLE CTexture
+009a1090   RELOCATION_MATCH PASS   CStreamingFontBank::~CStreamingFontBank
+009c1fe0   MATCH            PASS   std::_Rb_tree_iterator<ESurfaceMultisampleType, std::_Nonconst_traits<ESurfaceMultisampleType>>::operator--
+009c2440   RELOCATION_MATCH PASS   std::_Rb_tree<ESurfaceMultisampleType, ESurfaceMultisampleType, std::_Identity<ESurfaceMultisampleType>, std::less<ESurfaceMultisampleType>, std::allocator<ESurfaceMultisampleType>>::_M_insert
+009d74e0   MATCH            PASS   std::_Rb_tree_iterator<CBankFileAsyncData *, std::_Nonconst_traits<CBankFileAsyncData *>>::operator--
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   WARN RELOC_NAME: ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b26360   RELOCATION_MATCH PASS   CEngine::Initialise
+00b33010   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b33010   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00b33010   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b33010   WARN SHARED_HEADER_AVAILABLE CCamera
+00b33010   WARN RELOC_NAME: ?RenderOcclusionLayer@CEnginePrimitiveRenderer@@QAEXXZ -> 00b32610 labelled 'CEnginePrimitiveRenderer::RenderNonsortedPrimitives'
+00b33010   WARN RELOC_NAME: ?g_pOcclusionRenderer@@3PAUCEngineOcclusionRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b33010   WARN RELOC_NAME: ?GetRenderInfo@CEngineOcclusionRenderer@@QAE?AUSSceneRenderInfo@@XZ -> 00b38890 labelled 'CEngineShadowRenderer::PeekSceneData'
+00b33010   WARN RELOC_NAME: ?RenderOcclusion@CEngineScene@@QAEXJAAY0BDA@$$CBE@Z -> 00b94060 labelled 'CEngineScene::RenderSceneShadowBuffer'
+00b33010   WARN RELOC_NAME: ?RenderList@CEngineSubPrimitiveRenderer@@QAEXJ_N@Z -> 00b849f0 labelled 'CEngineSubPrimitiveRenderer::RenderType'
+00b33010   WARN RELOC_NAME: ?GetListSize@CEngineSubPrimitiveRenderer@@QAEKJ@Z -> 00b842b0 labelled 'CEngineSubPrimitiveRenderer::GetCount'
+00b33010   WARN RELOC_NAME: ?ClearList@CEngineSubPrimitiveRenderer@@QAEXJ@Z -> 00b847b0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00b33010   WARN RELOC_NAME: ?BeginShadows@CEngineShadowRenderer@@QAE_NXZ -> 00b87680 labelled 'CEngineScreenEffectDisplacementRenderer::BeginDisplacementRendering'
+00b33010   WARN RELOC_NAME: ?EndShadows@CEngineShadowRenderer@@QAEXXZ -> 00b869a0 labelled 'CEngineScreenEffectDisplacementRenderer::FinishDisplacementRendering'
+00b33010   WARN RELOC_NAME: ?g_pLightingManager_01436ea0@@3PAVCEngineLightingManager@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b33010   WARN RELOC_NAME: ?RenderLit@CEngineScene@@QAEXJPAVCEngineLightingManager@@J_N@Z -> 00b942a0 labelled 'CEngineScene::RenderSceneAndCheckVisibility'
+00b33010   WARN RELOC_NAME: ?BeginShadowCasters@CEngineShadowRenderer@@QAEXXZ -> 00b871b0 labelled 'CEngineScreenEffectDisplacementRenderer::BeginDisplacementStencilRendering'
+00b33010   WARN RELOC_NAME: ?EndShadowCasters@CEngineShadowRenderer@@QAEXXZ -> 00b86bb0 labelled 'AddToInterface'
+00b33010   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer::Render
+00b96020   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@std@@QAEAAU01@XZ (catalog std::_Rb_tree_iterator<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>, std::_Nonconst_traits<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>>>::operator--; names another function)
+00b96020   MATCH            PASS   std::_Rb_tree_iterator<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>, std::_Nonconst_traits<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>>>::operator--
+00b96070   WARN STANDIN_LEAF ??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@2@@std@@QAEAAU01@XZ (catalog std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CEngineSceneMap>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>::operator--; names another function)
+00b96070   MATCH            PASS   std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CEngineSceneMap>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>::operator--
+
+WINS: 112
+  0041c590 MATCH NUISystem::CComponent::?SetPAcceptButton@CComponent@NUISystem@@UAEXPAV12@@Z
+  0042c300 RELOCATION_MATCH std::_Rb_tree<long, std::pair<long const, EEngine2DLayer>, std::_Select1st<std::pair<long const, EEngine2DLayer>>, std::less<long>, std::allocator<std::pair<long const, EEngine2DLayer>>>::?insert_unique@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@2@U32@ABU?$pair@$$CBJW4EEngine2DLayer@@@2@@Z
+  004c2a40 MATCH std::_Rb_tree_iterator<std::pair<void *const, CRGBColour>, std::_Nonconst_traits<std::pair<void *const, CRGBColour>>>::??F?$_Rb_tree_iterator@U?$pair@QAXVCRGBColour@@@std@@U?$_Nonconst_traits@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@QAEAAU01@XZ
+  004c6580 MATCH std::_Rb_tree_iterator<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>, std::_Nonconst_traits<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>>::??F?$_Rb_tree_iterator@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@U?$_Nonconst_traits@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@@std@@QAEAAU01@XZ
+  004d3f40 MATCH CTCDNone::?IsDriverType@CTCDNone@@UBE_NJ@Z
+  004d4222 MATCH CTCDNavigationSeed::?IsDriverType@CTCDNavigationSeed@@UBE_NJ@Z
+  004d428e MATCH CTCDInternalMarker::?IsDriverType@CTCDInternalMarker@@UBE_NJ@Z
+  004d42e2 MATCH CTCDRegionEntrance::?IsDriverType@CTCDRegionEntrance@@UBE_NJ@Z
+  004d8164 MATCH CTCDCameraPoint::?IsDriverType@CTCDCameraPoint@@UBE_NJ@Z
+  004db3cb MATCH CTCDRumble::?IsDriverType@CTCDRumble@@UBE_NJ@Z
+  004df1bc MATCH CTCDPhysicalObstruction::?IsDriverType@CTCDPhysicalObstruction@@UBE_NJ@Z
+  004e07d6 MATCH CTCDHeroSuit::?IsDriverType@CTCDHeroSuit@@UBE_NJ@Z
+  004e3158 MATCH CTCDExplosion::?IsDriverType@CTCDExplosion@@UBE_NJ@Z
+  004e3467 MATCH CTCDExplosiveTrail::?IsDriverType@CTCDExplosiveTrail@@UBE_NJ@Z
+  004e7d41 MATCH NInventory::CTCInventoryBase::?ProcessButtonWhitePressed@CTCInventoryBase@NInventory@@UAEXXZ
+  004e7d42 MATCH NInventory::CTCInventoryBase::?ProcessButtonWhiteReleased@CTCInventoryBase@NInventory@@UAEXXZ
+  004e7d44 MATCH NInventory::CTCInventoryBase::?ProcessAugmentAction@CTCInventoryBase@NInventory@@UAEXXZ
+  004e7d45 MATCH NInventory::CTCInventoryBase::?ProcessQuestActivateAction@CTCInventoryBase@NInventory@@UAE_NXZ
+  004e7d48 MATCH NInventory::CTCInventoryBase::?IncrementQuestCardItemSelection@CTCInventoryBase@NInventory@@UAEXXZ
+  004e7d49 MATCH NInventory::CTCInventoryBase::?DecrementQuestCardItemSelection@CTCInventoryBase@NInventory@@UAEXXZ
+  004e7d4a MATCH NInventory::CTCInventoryBase::?GetIsEnabled@CTCInventoryBase@NInventory@@UBE_NXZ
+  004e7d62 MATCH NInventory::CTCInventoryBase::?GetComponents@CTCInventoryBase@NInventory@@UAEAAV?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@XZ
+  0050df80 MATCH std::_Rb_tree_iterator<char, std::_Nonconst_traits<char>>::??F?$_Rb_tree_iterator@DU?$_Nonconst_traits@D@std@@@std@@QAEAAU01@XZ
+  00513880 RELOCATION_MATCH std::_Rb_tree<char, char, std::_Identity<char>, std::less<char>, std::allocator<char>>::?_M_insert@?$_Rb_tree@DDU?$_Identity@D@std@@U?$less@D@2@V?$allocator@D@2@@std@@AAE?AU?$_Rb_tree_iterator@DU?$_Nonconst_traits@D@std@@@2@PAU_Rb_tree_node_base@2@0ABD0@Z
+  0052e720 MATCH NUISystem::CComponent::?ChangeState@CComponent@NUISystem@@UAEXKM@Z
+  0052e730 MATCH NUISystem::CComponent::?ChangedState@CComponent@NUISystem@@UAE_NXZ
+  0052e740 MATCH NUISystem::CComponent::?ChangeState@CComponent@NUISystem@@UAEXAAVCUIState@2@@Z
+  0052e7e0 RELOCATION_MATCH NUISystem::CComponent::?GetUpdateTime@CComponent@NUISystem@@UBEMXZ
+  0052e940 MATCH NUISystem::CComponent::?GetRenderPosition@CComponent@NUISystem@@UBEABVC2DVector@@XZ
+  0052e950 MATCH NUISystem::CComponent::?GetRenderZoom@CComponent@NUISystem@@UBEABVC2DVector@@XZ
+  0052e960 MATCH NUISystem::CComponent::?GetRenderColour@CComponent@NUISystem@@UBEABVCRGBColour@@XZ
+  0052f040 MATCH NUISystem::CComponent::?AddActionOnLeftClicked@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f050 MATCH NUISystem::CComponent::?AddActionOnLeftUnclicked@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f060 MATCH NUISystem::CComponent::?AddActionOnLeftHeld@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f070 MATCH NUISystem::CComponent::?AddActionOnRightClicked@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f080 MATCH NUISystem::CComponent::?AddActionOnDropped@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f090 MATCH NUISystem::CComponent::?AddActionOnDroppedNowhere@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f0a0 MATCH NUISystem::CComponent::?AddActionOnDraggedUp@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f0b0 MATCH NUISystem::CComponent::?AddActionOnDraggedDown@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f0c0 MATCH NUISystem::CComponent::?AddActionOnHovered@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f0d0 MATCH NUISystem::CComponent::?AddActionOnUnhovered@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  0052f150 MATCH NUISystem::CComponent::?ClearHandle@CComponent@NUISystem@@UAEXXZ
+  0052f160 MATCH NUISystem::CComponent::?SetParentViewport@CComponent@NUISystem@@UAEXPAV12@@Z
+  0052f430 MATCH NUISystem::CComponent::?RemoveFromHoveredList@CComponent@NUISystem@@UAEXXZ
+  0053e8a0 MATCH NUISystem::CMenuEntry::?IsClickable@CMenuEntry@NUISystem@@UBE_NXZ
+  005419f0 RELOCATION_MATCH NUISystem::CIconText::?CanScroll@CIconText@NUISystem@@UAEM_NAAVC2DBoxF@@@Z
+  0054a380 MATCH NUISystem::CTextSlider::?SetPAcceptButton@CTextSlider@NUISystem@@UAEXPAVCComponent@2@@Z
+  0054c130 MATCH NUISystem::CSlider::?SetPAcceptButton@CSlider@NUISystem@@UAEXPAVCComponent@2@@Z
+  0054e190 MATCH NUISystem::CClickable::?IsClickable@CClickable@NUISystem@@UBE_NXZ
+  005532f0 MATCH std::_Rb_tree_iterator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>, std::_Nonconst_traits<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@std@@QAEAAU01@XZ
+  00566260 MATCH std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CTexture>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CTexture>>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@@2@@std@@QAEAAU01@XZ
+  0056cd10 MATCH std::_Rb_tree_iterator<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>, std::_Nonconst_traits<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@@2@@std@@QAEAAU01@XZ
+  0056e593 MATCH CTCInventoryExperience::?GetPlayerMode@CTCInventoryExperience@@UBE?AW4EPlayerMode@@XZ
+  0056e597 MATCH CTCInventoryExperience::?GetScreenType@CTCInventoryExperience@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  0056f615 RELOCATION_MATCH CTCInventoryExperience::?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z
+  005791e5 RELOCATION_MATCH CCountedPointer<NUISystem::CAction>::?Reset@?$CCountedPointer@VCAction@NUISystem@@@@QAEXPAVCAction@NUISystem@@@Z
+  0057a260 MATCH CTCInventoryExperience::?IsInventoryScreen@CTCInventoryExperience@@UBE_NXZ
+  00581a0d MATCH CTCInventory::?GetPlayerMode@CTCInventory@@UBE?AW4EPlayerMode@@XZ
+  00581a11 MATCH CTCInventory::?GetScreenType@CTCInventory@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  005940ec RELOCATION_MATCH std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent *>, std::_Select1st<std::pair<long const, NUISystem::CComponent *>>, std::less<long>, std::allocator<std::pair<long const, NUISystem::CComponent *>>>::?insert_unique@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBJPAVCComponent@NUISystem@@@2@@Z
+  0059b35c RELOCATION_MATCH std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>, std::less<FRONTEND_SCREEN>, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>>::?insert_unique@?$_Rb_tree@W4FRONTEND_SCREEN@@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4FRONTEND_SCREEN@@@3@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@2@@Z
+  0059b6e0 MATCH CTCInventoryTrade::?GetPlayerMode@CTCInventoryTrade@@UBE?AW4EPlayerMode@@XZ
+  0059b6e4 MATCH CTCInventoryTrade::?GetScreenType@CTCInventoryTrade@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  005b2a37 RELOCATION_MATCH std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>::?insert_unique@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@2@U32@ABU?$pair@$$CBJJ@2@@Z
+  005b3073 MATCH CTCInventoryTrade::?IsInventoryScreen@CTCInventoryTrade@@UBE_NXZ
+  005b34cd MATCH CTCInventoryClothing::?GetPlayerMode@CTCInventoryClothing@@UBE?AW4EPlayerMode@@XZ
+  005b34d1 MATCH CTCInventoryClothing::?GetScreenType@CTCInventoryClothing@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  005bb5ef RELOCATION_MATCH std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long>>, std::less<EClothingSuitPart>, std::allocator<std::pair<EClothingSuitPart const, long>>>::?insert_unique@?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@J@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@J@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@J@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EClothingSuitPart@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EClothingSuitPart@@J@std@@@2@@2@U32@ABU?$pair@$$CBW4EClothingSuitPart@@J@2@@Z
+  005c2e1d MATCH CTCInventoryWeapons::?GetPlayerMode@CTCInventoryWeapons@@UBE?AW4EPlayerMode@@XZ
+  005c2e21 MATCH CTCInventoryWeapons::?GetScreenType@CTCInventoryWeapons@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  005cc6eb MATCH CTCInventoryStats::?GetPlayerMode@CTCInventoryStats@@UBE?AW4EPlayerMode@@XZ
+  005cc6ef MATCH CTCInventoryStats::?GetScreenType@CTCInventoryStats@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  005cd074 RELOCATION_MATCH NInventory::CTCInventoryStats::ConstructScreen
+  005e8c40 MATCH std::_Rb_tree_iterator<std::pair<long const, unsigned long>, std::_Nonconst_traits<std::pair<long const, unsigned long>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBJK@std@@U?$_Nonconst_traits@U?$pair@$$CBJK@std@@@2@@std@@QAEAAU01@XZ
+  005edce7 MATCH CTCInventoryAbilities::?GetPlayerMode@CTCInventoryAbilities@@UBE?AW4EPlayerMode@@XZ
+  005edceb MATCH CTCInventoryAbilities::?GetScreenType@CTCInventoryAbilities@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  005ee99d RELOCATION_MATCH CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue
+  005f9853 RELOCATION_MATCH std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, NUISystem::CComponent *>, std::_Select1st<std::pair<EHeroAbility const, NUISystem::CComponent *>>, std::less<EHeroAbility>, std::allocator<std::pair<EHeroAbility const, NUISystem::CComponent *>>>::?insert_unique@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@2@@Z
+  005fa590 MATCH CTCInventoryMap::?IsInventoryScreen@CTCInventoryMap@@UBE_NXZ
+  005fa8e0 MATCH CTCInventoryMap::?GetPlayerMode@CTCInventoryMap@@UBE?AW4EPlayerMode@@XZ
+  005fa8f0 MATCH CTCInventoryMap::?GetScreenType@CTCInventoryMap@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  00613eb0 MATCH std::_Rb_tree_iterator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>, std::_Nonconst_traits<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@@2@@std@@QAEAAU01@XZ
+  00613f70 MATCH std::_Rb_tree_iterator<std::pair<long const, std::pair<long, long>>, std::_Nonconst_traits<std::pair<long const, std::pair<long, long>>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@QAEAAU01@XZ
+  00619fd0 MATCH CTCInventoryQuests::?IsInventoryScreen@CTCInventoryQuests@@UBE_NXZ
+  0061a000 MATCH CTCInventoryQuests::?GetPlayerMode@CTCInventoryQuests@@UBE?AW4EPlayerMode@@XZ
+  0061a010 MATCH CTCInventoryQuests::?GetScreenType@CTCInventoryQuests@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  0064b668 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::ClearSoundEffects
+  00687cb0 RELOCATION_MATCH CInputProcessGameBase::?IsQuickAccessEventInQueue@CInputProcessGameBase@@IBE_NJW4EInputButtonEventType@@@Z
+  0068e450 RELOCATION_MATCH CInputProcessQuickAccessItems::Update
+  006dfe50 MATCH CTCDParticleEmitter::?CreateAdditionalTCs@CTCDParticleEmitter@@UAEXXZ
+  006e1d30 MATCH CTCDParticleEmitter::?IsDriverType@CTCDParticleEmitter@@UBE_NJ@Z
+  007120d0 RELOCATION_MATCH CCreatureAction_PickUpGenericBox::??1CCreatureAction_PickUpGenericBox@@UAE@XZ
+  0072daa0 MATCH CTCInventoryMagic::?GetPlayerMode@CTCInventoryMagic@@UBE?AW4EPlayerMode@@XZ
+  0072dab0 MATCH CTCInventoryMagic::?GetScreenType@CTCInventoryMagic@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  00773c90 RELOCATION_MATCH CTCShop::SetAlarm
+  00778d50 MATCH CTCDNavigationSeed::?CreateAdditionalTCs@CTCDNavigationSeed@@UAEXXZ
+  00778e60 MATCH CTCDRegionEntrance::?CreateAdditionalTCs@CTCDRegionEntrance@@UAEXXZ
+  00778f90 MATCH CTCDRegionExit::?CreateAdditionalTCs@CTCDRegionExit@@UAEXXZ
+  00779940 MATCH CTCDRegionExit::?IsDriverType@CTCDRegionExit@@UBE_NJ@Z
+  0077ab90 MATCH CTCDExperienceOrb::?IsDriverType@CTCDExperienceOrb@@UBE_NJ@Z
+  007e8860 MATCH CTCDCameraPoint::?CreateAdditionalTCs@CTCDCameraPoint@@UAEXXZ
+  007e9020 MATCH std::_Rb_tree_iterator<std::pair<CThing *const, float>, std::_Nonconst_traits<std::pair<CThing *const, float>>>::??F?$_Rb_tree_iterator@U?$pair@QAVCThing@@M@std@@U?$_Nonconst_traits@U?$pair@QAVCThing@@M@std@@@2@@std@@QAEAAU01@XZ
+  007e9b40 RELOCATION_MATCH std::_Rb_tree<CThing *, std::pair<CThing *const, float>, std::_Select1st<std::pair<CThing *const, float>>, std::less<CThing *>, std::allocator<std::pair<CThing *const, float>>>::?_M_insert@?$_Rb_tree@PAVCThing@@U?$pair@QAVCThing@@M@std@@U?$_Select1st@U?$pair@QAVCThing@@M@std@@@3@U?$less@PAVCThing@@@3@V?$allocator@U?$pair@QAVCThing@@M@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAVCThing@@M@std@@U?$_Nonconst_traits@U?$pair@QAVCThing@@M@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCThing@@M@2@0@Z
+  00847520 RELOCATION_MATCH CCreatureAction_PerformExpressionExtended::?FinishAction@CCreatureAction_PerformExpressionExtended@@UAEXXZ
+  009a1090 RELOCATION_MATCH CStreamingFontBank::??1CStreamingFontBank@@UAE@XZ
+  009c1fe0 MATCH std::_Rb_tree_iterator<ESurfaceMultisampleType, std::_Nonconst_traits<ESurfaceMultisampleType>>::??F?$_Rb_tree_iterator@W4ESurfaceMultisampleType@@U?$_Nonconst_traits@W4ESurfaceMultisampleType@@@std@@@std@@QAEAAU01@XZ
+  009c2440 RELOCATION_MATCH std::_Rb_tree<ESurfaceMultisampleType, ESurfaceMultisampleType, std::_Identity<ESurfaceMultisampleType>, std::less<ESurfaceMultisampleType>, std::allocator<ESurfaceMultisampleType>>::?_M_insert@?$_Rb_tree@W4ESurfaceMultisampleType@@W41@U?$_Identity@W4ESurfaceMultisampleType@@@std@@U?$less@W4ESurfaceMultisampleType@@@3@V?$allocator@W4ESurfaceMultisampleType@@@3@@std@@AAE?AU?$_Rb_tree_iterator@W4ESurfaceMultisampleType@@U?$_Nonconst_traits@W4ESurfaceMultisampleType@@@std@@@2@PAU_Rb_tree_node_base@2@0ABW4ESurfaceMultisampleType@@0@Z
+  009d74e0 MATCH std::_Rb_tree_iterator<CBankFileAsyncData *, std::_Nonconst_traits<CBankFileAsyncData *>>::??F?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@std@@QAEAAU01@XZ
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b33010 RELOCATION_MATCH CEnginePrimitiveRenderer::?Render@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+  00b96020 MATCH std::_Rb_tree_iterator<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>, std::_Nonconst_traits<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@std@@QAEAAU01@XZ
+  00b96070 MATCH std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CEngineSceneMap>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>::??F?$_Rb_tree_iterator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@2@@std@@QAEAAU01@XZ

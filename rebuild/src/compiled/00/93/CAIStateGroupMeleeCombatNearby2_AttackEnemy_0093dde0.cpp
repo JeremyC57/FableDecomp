@@ -1,7 +1,7 @@
 // CAIStateGroup_MeleeCombatNearby2::AttackEnemy() -- mark the creature ready to attack, then while not stopping (and still runnable, a combatant and within ring range of the target) post a pump-combat-actions brain output looking at the enemy and yield; terminate if the group starts stopping
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DDE0, length 479 bytes (+ int3 padding).
-// Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (three times), the brain world accessor @ 0x008FCFC0
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (three times), the brain world accessor @ 0x008FCFC0
 // (combat manager +0x4c), CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450, CCombatManager::IsCreatureInAttackRingSector @
 // 0x006E94D0, CAIStateGroupBase::IsStopping @ 0x008FD010, own virtual slot 14 IsStillRunnable(bool), CBaseIntelligentPointer
 // ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, operator delete @ 0x00BFE9BC (the
@@ -13,6 +13,8 @@
 // temporary inside the loop gives the `and esp,-8` frame.
 // Layout: CBrainOutput from Ego_r.pdb (landed 0x00835620 / 0x006D60C0 models); the state group is local (the engine
 // header flattens the base), PEnemy +0x14.
+// Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+//   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
 #include "fable_compiler.h"
 class CThing;
 
@@ -105,7 +107,7 @@ inline CBrainOutput::~CBrainOutput()
 }
 
 class CThingCreatureBase { public:
-    bool IsRegisteredCombatant();               // 0x00662410
+    bool IsInMeleeAsAttacker() const;         // 0x00662410
 };
 
 class CCombatManager { public:
@@ -155,7 +157,7 @@ struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
 
 void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
 {
-    if (PBrain->PCreature->IsRegisteredCombatant()) {
+    if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = &GetWorld();
         world->CombatManager->SetAttackerAsReadyToAttack(creature, true);
@@ -163,9 +165,9 @@ void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
     while (!IsStopping()) {
         if (!IsStillRunnable(true))
             return;
-        if (!PBrain->PCreature->IsRegisteredCombatant())
+        if (!PBrain->PCreature->IsInMeleeAsAttacker())
             return;
-        if (!PBrain->PCreature->IsRegisteredCombatant())
+        if (!PBrain->PCreature->IsInMeleeAsAttacker())
             return;
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = &GetWorld();

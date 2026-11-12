@@ -45,6 +45,15 @@ class CTexture;
 class CGraphicFrameData {
 public:
     CTexture* GetTexture() const {return PTexture.Data;}
+#ifdef FABLE_RETAIL_CGRAPHICFRAMEDATA_INITIALISEASSURFACE
+    // Retail opt-in (chunk Q32, row 0x009FC950): Ego_r.pdb ?InitialiseAsSurface@CGraphicFrameData@@QAE_NABV?$CCountedPointer@VCTexture@@@@JJ_N1@Z
+    // (retail 0x009FC950, tail-called by CGraphicFrame::InitialiseAsSurface 0x009FCB20) and the inline FableWin.pdb / Ego_r.pdb
+    // ?GetWidth@CGraphicFrameData@@QBEKXZ / ?GetHeight@CGraphicFrameData@@QBEKXZ (the row reads Width +0x14 / Height +0x16 with
+    // movzx in place). No layout change.
+    bool InitialiseAsSurface(const CCountedPointer<CTexture>& texture, long width, long height, bool alpha, bool booleanAlpha);
+    unsigned long GetWidth() const { return Width; }
+    unsigned long GetHeight() const { return Height; }
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     unsigned long Sizeof() const;
 #endif

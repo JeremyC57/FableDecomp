@@ -137,8 +137,10 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vtable 0x012
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
-struct CThingCreature : CThing {
-    bool IsPerformingAnyAction();               // 0x006622A0
+// Name fix (naming agent NF21, 2026-11-11): both callees are CThingCreatureBase members (Ego_r.pdb / FableWin.pdb):
+//   ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ 0x006622A0 and ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ.
+class CThingCreatureBase : public CThing { public:
+    bool IsPerformingAnyAction() const;         // 0x006622A0
     void FinishCurrentAction();                 // 0x00662650
 };
 struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
@@ -150,7 +152,7 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     C3DVector JugPos;                           // +0x38
     CRightHandedSet JugRHSet;                   // +0x44
     long JugSlot;                               // +0x5c
-    CThingCreature* GetAICreature() const { return (CThingCreature*)PBrain->PCreature; }
+    CThingCreatureBase* GetAICreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     bool IsCarryingJug();                       // 0x009687B0 (manifest CAIStateGroup_TavernServer::IsCarryingJug)
     void FreeBarPoint();                        // 0x00968950
     virtual void OnReplace();

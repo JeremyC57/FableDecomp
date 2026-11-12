@@ -23,6 +23,9 @@ class CParticleSimulationRenderData;
 class CParticleDistanceConstraint;
 #endif
 class CMovableResourceMemoryPool;
+#ifdef FABLE_RETAIL_CPARTICLESIMULATION_READFROMFILE
+class CDataInputStream;
+#endif
 class CParticleSimulation : public CMovableResource {
     friend class CParticleProgram;
 public:
@@ -41,6 +44,19 @@ public:
 private:
     // FableWin.pdb ?SatisfyDistanceConstraints@CParticleSimulation@@AAEXPBVCParticleDistanceConstraint@@K@Z, retail 0x00ADF960.
     void SatisfyDistanceConstraints(const CParticleDistanceConstraint* constraints, unsigned long count);
+public:
+#endif
+#ifdef FABLE_RETAIL_CPARTICLESIMULATION_READFROMFILE
+    // Overlay opt-in (chunkQ24, row 0x00AE1BC0): FableWin.pdb / Ego_r.pdb
+    // ?ReadFromFile@CParticleSimulation@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z (retail 0x00AE1BC0),
+    // ?AllocateArrays@CParticleSimulation@@AAE_NAAVCMovableResourceMemoryPool@@@Z (private, 0x00ADF2A0) and
+    // ?ReadVectorArray@CParticleSimulation@@KIXPAVC4DVector@@KAAVCDataInputStream@@M@Z (protected static __fastcall, 0x00AE1730);
+    // the landed rows 0x00ADF2A0 / 0x00AE1730 bind both callees.
+    bool ReadFromFile(CDataInputStream& in, CMovableResourceMemoryPool& pool);
+private:
+    bool AllocateArrays(CMovableResourceMemoryPool& pool);
+protected:
+    static void __fastcall ReadVectorArray(C4DVector* vectors, unsigned long count, CDataInputStream& in, float w);
 public:
 #endif
     CCountedPointer<CParticleSimulationRenderData> RenderData;

@@ -12,9 +12,23 @@ class CEngineLandscapeMap;
 class CIndexBuffer;
 class CVertexBufferWin32;
 
+#ifdef FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_ACCESSORS
+#ifndef FABLE_EWATERTYPE_DEFINED
+#define FABLE_EWATERTYPE_DEFINED
+enum EWaterType { WATER_TYPE_NONE = 0 };                    // W4EWaterType@@ (enumerators unproven)
+#endif
+#endif
 #pragma pack(push, 1)
 class CEngineWaterBackgroundSubPatch {
 public:
+#ifdef FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_ACCESSORS
+    // Opt-in (wf3, row 0x00BE7BE0): FableWin.pdb ?IsSea@CEngineWaterBackgroundSubPatch@@QBE?B_NXZ and
+    // ?IsEmpty@CEngineWaterBackgroundSubPatch@@QBE_NXZ (inline in retail), and WaterType typed as its PDB enum.
+    // IsSea: water types 3, 4 and 5 (the three compares at 0x00BE7C3A..0x00BE7C4B); IsEmpty: no polygons (`cmp word ptr [edx+30h],0 ;
+    // jbe` 0x00BE7C28). Enumerator names are unproven, so the values stay numeric.
+    const bool IsSea() const { return WaterType == 3 || WaterType == 4 || WaterType == 5; }
+    bool IsEmpty() const { return !(PolyCount > 0); }
+#endif
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     CEngineLandscapeMap* Map;                                // +0x04
     CIndexBuffer*        IndexBuffer;                        // +0x08
@@ -26,7 +40,11 @@ public:
     unsigned short       BridgePolyCount[4];                 // +0x34
     bool                 RenderBlended;                      // +0x3c
     unsigned char        _pad_0x3d[0x3];                     // +0x3d
+#ifdef FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_ACCESSORS
+    EWaterType           WaterType;                          // +0x40
+#else
     unsigned char        WaterType[0x4];                     // +0x40 EWaterType
+#endif
     bool                 DeletableBuffers;                   // +0x44
     unsigned char        _pad_0x45[0x3];                     // +0x45
     unsigned long        OcclusionID;                        // +0x48

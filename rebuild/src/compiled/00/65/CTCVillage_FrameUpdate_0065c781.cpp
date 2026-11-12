@@ -1,5 +1,5 @@
 // CTCVillage::FrameUpdate() -- per-frame village upkeep: prune members, refresh tasks and crowds, run the def's task updaters, crimes and enemy status; every 30 frames switch the village lights with the day and recount the working villagers; play the curfew / cook-time change announcement near the hero; then update the curfew
-// Leaf: ?FrameUpdate@CTCVillage
+// Leaf: ?FrameUpdate@CTCVillage@@QAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x20] removed re-padded by-value maps +8.
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
@@ -8,6 +8,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C781, 1002 bytes, plain `ret`, ebp frame (size TU, `optimize("s",on)`).
 // Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h, GetPSoundBank(const CCharString&) 0x009917E0
 //   (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP, Anniversary name); was a local CSymbolMap::FindFirstSymbolWithVal.
+// Name fix (agentNF24): 0x00658DB3 respelled CTCVillage::IsCurfewTime() const (Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ, the landed row's own leaf) (was IsCurfewTime_00658db3)
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -196,7 +197,7 @@ class CTCVillage : public CTCBase { public:
     unsigned char _pad8c[0x94 - 0x8c];
     CVillageDef* PDef;                          // +0x94
     unsigned char _pad98[0xb0 - 0x98];
-    bool WasCookTime;                           // +0xb0
+    bool WorkTimeAccordingToCrier;                           // +0xb0
     bool WasCurfewTime;                         // +0xb1
     unsigned char _padb2;
     bool AnnouncementsDisabled;                 // +0xb3
@@ -211,8 +212,8 @@ public:
     void SetEnemyToHeroStatus();                // 0x0065A852
     void RemoveTimedoutCrimes();                // 0x0065A7A9
     void UpdateMirroredCrimeData();             // 0x0065C5BB
-    bool IsCurfewTime_00658db3();                        // 0x00658DB3
-    bool IsCookTime_00658b20();                          // 0x00658B20
+    bool IsCurfewTime() const;                  // 0x00658DB3 Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ
+    bool IsWorkTime() const;   // 0x00658B20 ?IsWorkTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin; agentNF25b)
     void UpdateCurfew();                        // 0x0065AD37
     void FrameUpdate();
 };
@@ -268,10 +269,10 @@ void CTCVillage::FrameUpdate()
     if (PDef->HasCurfewAnnouncements && !AnnouncementsDisabled) {
         CCharString text(0);
         bool was = WasCurfewTime;
-        if (was != IsCurfewTime_00658db3())
+        if (was != IsCurfewTime())
             text = was ? PDef->CurfewStartText : PDef->CurfewEndText;
-        was = WasCookTime;
-        if (was != IsCookTime_00658b20())
+        was = WorkTimeAccordingToCrier;
+        if (was != IsWorkTime())
             text = was ? PDef->CookStartText : PDef->CookEndText;
         if (text != "") {
             CTextBank* bank = CMainGameComponent::Get()->PTextBank;
@@ -279,8 +280,8 @@ void CTCVillage::FrameUpdate()
             bool exists = bank->EntryExists(id);
             CGroupEntryRef::CEntry* entry = bank->GetPGroupEntry(id, false).Object;
             if (entry || !exists) {
-                WasCurfewTime = IsCurfewTime_00658db3();
-                WasCookTime = IsCookTime_00658b20();
+                WasCurfewTime = IsCurfewTime();
+                WorkTimeAccordingToCrier = IsWorkTime();
                 if (entry) {
                     CASoundBank* soundBank = PSoundManager->GetPSoundBank(entry->BankName);
                     if (soundBank) {

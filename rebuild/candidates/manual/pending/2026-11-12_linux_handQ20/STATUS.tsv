@@ -1,0 +1,21 @@
+address	name	grade	grades_used	note
+007b0360	CTCFishingSpot::FrameUpdate	RELOCATION_MATCH	2	ported onto shared CTCBase/CThing/CIntelligentPointer/CTCDParticleEmitter (_FULL); one FABLE_FORCEINLINE member helper x3 fixed the parked esi/ebx swap; local CTCFishingSpot class (no shared header)
+008b7040	CCreatureAction_JumpOutFromCover::Initialise	RELOCATION_MATCH	8	ported onto shared headers (+ overlay NORMALISE_LOCALS_XYZ and new CCreatureAction_JumpOutFromCover.h); port alone removed the target/&PCreature ebp/ebx swap
+009ddc60	CRenderManager2D::Draw2DBoxWithZ	DIFFER(899v899)	7	ported; frame-slot swap only (top/right at esp+14h/18h swapped)
+007bcf7f	NThingShot::CTCShotDefinitionMultiArrow::InitMovement	DIFFER(808v808)	6	ported; FP operand order (magnitude X*X first, one cross pair, velocity fld/fmul) + fall/shortfall slot packing
+007bd845	NThingShot::CTCShotDefinitionDrainLife::InitMovement	DIFFER(642v642)	5	ported; same FP operand-order residue as MultiArrow + randomise temp slot + two scheduling slots
+009fb750	CTexture::LoadFromDataStreamToPreallocatedSurface	DIFFER(789v789)	8	ported (ebx/ebp swap fixed); width load hoisted + row-copy eax/edx swap
+00a78b20	CNavQuadTree::SaveToFile	SKIPPED	0	not ported (Q19 leftover, budget)
+00540320	NUISystem::CEditBox::KeyPressed	SKIPPED	0	not ported (Q19 leftover, budget)
+00649e8b	NPlayerGui::CDrawFishingGame::Draw	SKIPPED	0	not ported (Q19 leftover, budget)
+006c1250	CTCBuyableHouse::Update	SKIPPED	0	not ported (Q19 leftover, budget)
+0096cd70	CAIStateGroup_EatAtTable::Update	SKIPPED	0	not ported (Q19 leftover, budget)
+0063f7c0	CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind3<...>,CThingFindNavigationLayerAt>	SKIPPED	0	needs CThingSearchTools.h body opt-in; sibling reload-order residue unfixable (Q19)
+00489d40	CPlayer::CreateCharacter	SKIPPED	0	needs many CPlayer retail opt-ins
+00a1d290	CNavigatorAStar::CalculateRoute	SKIPPED	0	not ported (budget)
+00814260	CTCBoastingPodium::OnInitialActivate	SKIPPED	0	assessed: needs CTCBoastingPosition class, GetAllDummyObjectNames opt-in, CStringParser
+00b39080	CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh	SKIPPED	0	deep mesh/stats model gaps
+00584b86	CTCInventory::AssignThingPC	SKIPPED	0	not ported (budget)
+00622a00	CTCInventoryQuests::OpenInventory	SKIPPED	0	not ported (budget)
+007daef0	CTCTavernGameCardBlackjack::DealCard	SKIPPED	0	no CTCTavernGameCardBase/Blackjack retail headers
+00b4a700	CEnginePrimitiveRenderer2D::Render	SKIPPED	0	not ported (budget)

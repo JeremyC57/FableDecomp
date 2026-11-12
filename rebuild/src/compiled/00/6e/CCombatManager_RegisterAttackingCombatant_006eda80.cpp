@@ -8,6 +8,7 @@
 //   result in place, so the dropped result shares the find-key frame slot (frame 0xF8 as retail); find has its real
 //   same-TU body and LowerBound a same-TU body.
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 
@@ -48,21 +49,20 @@ class CTCStealth { public:                         // interface 0x36
 };
 
 struct SCountBlock;
-struct CSequencePointer {                   // CCountedPointer<CCombatSequenceBase>
-    void* m_pObject;
-    SCountBlock* m_pCount;
-};
+class CCombatSequenceBase;
+#include "engine/CCountedPointer.h"
 struct CRetailAllocator {
     CRetailAllocator() { }
 };
-void __fastcall DestroyRange_CountedPointer_006f2300(CSequencePointer* first, CSequencePointer* last, const CRetailAllocator& al);   // 0x006F2300
+// std::__false_type and the declaration-only std::__destroy_aux come from stlport/fable_containers.h (via engine/CArray.h)
+// with FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL: 0x006F2300 std::__destroy_aux<CCountedPointer<CCombatSequenceBase>*>.
 struct CSequenceVector {                    // retail vector<CCountedPointer<CCombatSequenceBase>>, 12 bytes
-    CSequencePointer* _M_start;
-    CSequencePointer* _M_finish;
-    CSequencePointer* _M_end_of_storage;
+    CCountedPointer<CCombatSequenceBase>* _M_start;
+    CCountedPointer<CCombatSequenceBase>* _M_finish;
+    CCountedPointer<CCombatSequenceBase>* _M_end_of_storage;
     ~CSequenceVector()
     {
-        DestroyRange_CountedPointer_006f2300(_M_start, _M_finish, CRetailAllocator());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }

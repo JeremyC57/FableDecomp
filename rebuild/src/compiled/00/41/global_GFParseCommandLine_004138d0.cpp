@@ -9,7 +9,7 @@
 // ToWideString 0x0099E480, CWideString::operator= 0x0099B7D0 / operator!=(const wchar_t*) 0x0099B150 / dtor 0x0099B510, the
 // parser's comment-list dtor 0x004046B0 and ~CBaseClass 0x0099A2E0.
 // Data: options "-" "staticmap" "\"" "q" "build_retail_static_maps" "enable_map_optimizations" (0x0122E630..0x0122E5E8,
-// 0x0122DF24); g_WorldToLoad 0x013B8668, g_bCompileFrontendDefinitions 0x013B8648, g_bRuntimeLevelFiles 0x013B8616,
+// 0x0122DF24); GForceLevel 0x013B8668, g_bCompileFrontendDefinitions 0x013B8648, g_bRuntimeLevelFiles 0x013B8616,
 // g_bStartMainGame 0x013B8605 (names as landed elsewhere); 0x013B864A / 0x013B864B / 0x01375490 / 0x0137548F / 0x0137544A
 // named descriptively.
 // Shape: the option compares are an inline case-insensitive equality taking `const CCharString&`, so each literal is an
@@ -17,6 +17,9 @@
 // the call-result temporaries (explicit `CCharString("...")` temporaries interleave with them, 894v894 with every slot
 // shifted); the parser's file name is an explicit `CCharString("")` (constructed after the last argument is pushed).
 // The build_retail_static_maps arm's last store is cross-jumped into the enable_map_optimizations arm.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B8668 GForceLevel (global; initializer 0x01219FC0), was g_WorldToLoad.
 #include <stddef.h>
 extern "C" int __cdecl _stricmp(const char* a, const char* b);   // 0x00BFEBA8
 
@@ -82,7 +85,7 @@ public:
     long ReadAsInteger();                          // 0x009BA540
 };
 
-extern CWideString g_WorldToLoad;                  // 0x013B8668
+extern CWideString GForceLevel;                  // 0x013B8668
 extern bool g_bCompileFrontendDefinitions;         // 0x013B8648
 extern bool g_bBuildRetailStaticMaps;              // 0x013B864A
 extern bool g_bEnableMapOptimisations;             // 0x013B864B
@@ -105,8 +108,8 @@ void GFParseCommandLine(char* commandLine)
                 if (!parser.ReadAsStringUntilString("\"", &item))
                     break;
                 parser.ReadAsSymbol();
-                g_WorldToLoad = parser.ReadAsStringUntilString("\"").ToWideString();
-                if (g_WorldToLoad != (const unsigned short*)L"") {
+                GForceLevel = parser.ReadAsStringUntilString("\"").ToWideString();
+                if (GForceLevel != (const unsigned short*)L"") {
                     worldSpecified = true;
                     g_bCompileFrontendDefinitions = true;
                 }

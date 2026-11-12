@@ -30,5 +30,12 @@ public:
     std::list<std::pair<CIntelligentPointer<CThingObject>, bool> > Items;   // +0x0c
     std::vector<long> PickedUpItems;                                     // +0x10
 #endif
+#ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x007CBD70
+public:
+#endif
 };
 #endif

@@ -8,8 +8,7 @@
 // Shape: a switch on the D3DFORMAT (an if-chain lays the DXT1 arm out first; retail has it last), then
 //   `while (width > 0 || height > 0) { size += max(width, min) * max(height, min); if (!mipmaps) break; halve }`,
 //   then `size * bitsPerPixel / 8` (unsigned).
-struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
-extern SPixelFormatInfo g_pixelFormatInfo[];                 // 0x0129BA40
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_pixelFormatInfo)
 
 class CPixelFormat {
 public:
@@ -28,7 +27,7 @@ unsigned long __fastcall CTextureManager::CalculateTextureSize(unsigned long wid
 {
     unsigned long minSize = 1;
     unsigned long bitsPerPixel;
-    switch (g_pixelFormatInfo[format.FormatIndex].d3dFormat) {
+    switch (GD3DFormats[format.FormatIndex].D3DFormat) {
     case 0x31545844:                                         // 'DXT1'
         bitsPerPixel = 4;
         minSize = 4;

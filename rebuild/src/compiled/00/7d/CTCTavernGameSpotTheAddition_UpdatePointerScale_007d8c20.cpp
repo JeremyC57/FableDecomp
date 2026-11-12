@@ -49,7 +49,8 @@ class CTavernGameDef : public CDefVirtual { public:
     float PointerPhaseSpeed;                                // +0x1a0
     void Release() { if (--m_count == 0) Destroy(); }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->Release(); }
@@ -60,7 +61,7 @@ class CTCTavernGame { public:
     unsigned char _pad_0x04[0xc0 - 0x04];
     long          TavernGameState;                          // +0xc0
     unsigned char _pad_0xc4[0xf0 - 0xc4];
-    void GetDef(CDefPointer* out);                          // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);                          // 0x005EA000
 };
 struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     unsigned char _pad_0xf0[0x104 - 0xf0];
@@ -80,7 +81,7 @@ void CTCTavernGameSpotTheAddition::UpdatePointerScale()
             if (PointerScale < 0.1f)
                 PointerScale = 0.1f;
             else if (PointerScale < 1.0f) {
-                CDefPointer def;
+                CDefPointer<const CTavernGameDef> def;
                 GetDef(&def);
                 PointerScale *= def->PointerPhaseSpeed;
             }
@@ -91,7 +92,7 @@ void CTCTavernGameSpotTheAddition::UpdatePointerScale()
         if (PointerScale < 0.1f)
             PointerScale = 0.0f;
         else {
-            CDefPointer def;
+            CDefPointer<const CTavernGameDef> def;
             GetDef(&def);
             PointerScale /= def->PointerPhaseSpeed;
         }

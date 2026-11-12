@@ -1,11 +1,13 @@
 // CThingObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other) -- after the game-object handler, a breakable object hit hard enough (or by a flagged thing) is killed and spawns its def's debris thing
-// Leaf: OnCollision
+// Leaf: ?OnCollision@CThingObject@@QAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@ABJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007037D0, length 247 bytes (+ int3 padding), `ret 10h`.
 // Callees: CThingGameObject::OnCollision @ 0x00839080 (landed), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const
 // @ 0x004365B0 (the inlined GetTC of kind 0x47 = bit 7 of CThing+0x28), CThing virtual slot 54 (+0xd8, bool),
-// CThing::Kill(bool) @ 0x004C9B80, CDefClassBase::GetSubDef<T> @ 0x005CC10E on the base def (+0x70),
+// CThing::Kill(bool) @ 0x004C9B80, CDefClassBase::GetSubDef<CCarryableDef> const @ 0x005CC10E on the base def (+0x70; agentNF25b:
+// the body pushes the 'CCarryableDef' literal, so the sub-def is the carryable def and +0x34 its Ego_r OnKillFX, not a made-up
+// CDebrisDef::DebrisThingDef; engine/CDefClassBase_GetSubDef.h under the per-TU no-inline opt-in),
 // CThing::GetPos() const @ 0x004C73D0, the thing factory @ 0x006E0880 (`__fastcall`, (long, const C3DVector*, bool)
 // as the landed CTCResurrectionItem::OnItemUsed 0x007F04C0), the sub-def's virtual slot 1 (destroy) on the last release.
 // Layout (retail CThing, local model): component bits +0x20, interface map +0x44, the other thing's component +0x60
@@ -34,71 +36,17 @@ struct COtherComponent {
     unsigned char DoesNotBreakObjects : 1;                     // +0x3c bit 0
 };
 
-struct CDefObject {
-    virtual void v00();
-    virtual void Destroy();                                    // slot 1 (+0x04)
-    long m_refCount;                                           // +0x04
-};
-struct CDebrisDef : CDefObject {
-    unsigned char _pad08[0x34 - 0x08];
-    long          DebrisThingDef;                              // +0x34
-};
-FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object && DecRefToZero(Object->m_refCount)) Object->Destroy(); }
-    T* operator->() const { return Object; }
-    CDefPointer& operator=(const CDefPointer& other)
-    {
-        if (Object != other.Object) {
-            if (Object) {
-                if (--Object->m_refCount == 0)
-                    Object->Destroy();
-                Object = 0;
-            }
-            Object = other.Object;
-            if (Object)
-                ++Object->m_refCount;
-        }
-        return *this;
-    }
-};
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    ~CCharString();                                            // 0x0099EAE0
-};
-class CDefinitionManager { public:
-    CDefPointer<CDebrisDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
-};
-class CDefClassBase { public:
-    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
-    virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
-    virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
-    virtual long* GetSubDefIndex(const CCharString& name);     // slot 14 (+0x38)
-    unsigned char _pad04[0x1c - 4];
-    CDefinitionManager* m_pManager;                            // +0x1c
-    bool GetSubDef(CDefPointer<CDebrisDef>* out);              // 0x005CC10E
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef<T> 0x005CC10E (the landed GetSubDef body shape, as in 0x00848730): VC7.1 then knows
-// the def pointer's address does not escape (retail's LTCG knowledge), so the def stays in edi across the calls.
-bool CDefClassBase::GetSubDef(CDefPointer<CDebrisDef>* out)
-{
-    long* pIndex;
-    {
-        CCharString name("CDebrisDef");
-        pIndex = GetSubDefIndex(name);
-    }
-    if (pIndex) {
-        CDefPointer<CDebrisDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
-        *out = result;
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CCARRYABLEDEF_ONKILLFX   // hdr overlay (agentNF25b)
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
@@ -181,7 +129,7 @@ void CThingObject::OnCollision(ECollideType type, const C3DVector& position, con
         Kill(true);
     else
         return;
-    CDefPointer<CDebrisDef> def;
-    if (PBaseDef->GetSubDef(&def) && def->DebrisThingDef)
-        CTCDParticleEmitter::Create(def->DebrisThingDef, *(&GetPos()), false);
+    CDefPointer<const CCarryableDef> def;
+    if (PBaseDef->GetSubDef(&def) && def->OnKillFX)
+        CTCDParticleEmitter::Create(def->OnKillFX, *(&GetPos()), false);
 }

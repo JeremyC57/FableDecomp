@@ -50,11 +50,11 @@ template<class T> class CCountedPointer { public:
 
 extern void FABLE_FASTCALL CEngineInternalPrimitiveBase_ClearPrimitiveList(CEngineInternalPrimitiveBase* first); // 0x00B8FEE0
 
-struct EmptyRangeTag {};
-extern void FABLE_FASTCALL DestroyManagerRange(
-    CCountedPointer<CEnginePrimitiveManager>* first,
-    CCountedPointer<CEnginePrimitiveManager>* last,
-    EmptyRangeTag* tag); // 0x00B38930
+namespace std {
+struct __false_type {};
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00B38930 (std::__destroy_aux<CCountedPointer<CEnginePrimitiveManager>*>)
+}
 
 struct CManagerPointerArray {
     CCountedPointer<CEnginePrimitiveManager>* Start;
@@ -63,8 +63,8 @@ struct CManagerPointerArray {
 
     ~CManagerPointerArray()
     {
-        EmptyRangeTag tag;
-        DestroyManagerRange(Start, Finish, &tag);
+        std::__false_type tag;
+        std::__destroy_aux(Start, Finish, tag);
         if (Start != 0)
             free(Start);
     }

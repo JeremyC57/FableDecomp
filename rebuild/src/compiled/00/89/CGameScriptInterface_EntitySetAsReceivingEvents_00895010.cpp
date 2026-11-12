@@ -66,7 +66,9 @@ struct CInterfaceMap_Retail {                       // CVectorMap<ETCInterfaceTy
 };
 class CTCParamsBase;
 class CTCBase;
+enum ETCInterfaceType { };                          // CTCBase interface type (values unused here)
 class CThing { public:
+    void RemoveTC(ETCInterfaceType type);           // 0x004C9840 ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z (Ego_r/FableWin; the label "CBaseObject::OnPropertyChanged" is propagated)
     CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60 (Ego_r.pdb ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z)
 };
 struct CThing_Retail {
@@ -101,7 +103,6 @@ struct CThing_Retail {
     unsigned char         m_marryableToHero : 1;    //        bit 4
     unsigned char         m_1c9_5 : 3;
     CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
-    void RemoveTC(long interfaceType);              // 0x004C9840 (the label "CBaseObject::OnPropertyChanged" is propagated)
     void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
     void SheatheAllWeapons();                       // 0x006647F0 (CThingCreatureBase)
     void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
@@ -149,7 +150,7 @@ bool CGameScriptInterface::EntitySetAsReceivingEvents(const CScriptThing& thing,
                 return true;
             }
         } else if (entity->HasInterface(0x42)) {
-            entity->RemoveTC(0x42);
+            ((CThing*)entity)->RemoveTC((ETCInterfaceType)0x42);   // the CThing_Retail view is the same object
             return true;
         }
     }

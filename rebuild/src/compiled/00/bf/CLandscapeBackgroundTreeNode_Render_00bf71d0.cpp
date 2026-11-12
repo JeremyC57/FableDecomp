@@ -2,7 +2,7 @@
 // Leaf: Render@CLandscapeBackgroundTreeNode
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF71D0, length 403 bytes (`ret 4`).
-// Callees: itself (both branch halves, flags 0), CLandscapeBackgroundPatch::Render(bool, long*, bool*) @ 0x00BE7BE0,
+// Callees: itself (both branch halves, flags 0), ?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z @ 0x00BE7BE0 (FableWin.pdb + Ego_r.pdb: bool, long&, bool&),
 //   MarkTreeAsInvisibleLastFrame @ 0x00BF6A30 (landed); the sub node's IsPatch (slot 4) through the inline GetPatch /
 //   GetSplitBranch (0x00BF6130 / 0x00BF6160).
 // Layout: the retail CLandscapeBackgroundTreeNode model (0xE8 bytes, Ego_r.pdb offsets - 8) copied from the landed
@@ -27,11 +27,8 @@ class CMovableResource { public:                          // landscape-memory re
 class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the unused stand-in engine global (SEngine_01436ea8 / g_pEngine_01436ea8, 0x01436EA8 = g_pLandscapeRenderer)
+//   declaration was removed; this function does not read it.
 struct SLandscapeMapHeader {
     unsigned char  _pad00[0x60];
     unsigned short OriginX;                        // +0x60
@@ -97,7 +94,7 @@ class CLandscapeBackgroundTreeNode : public CMovableResource { public:
     void Render(unsigned long flags);
 };
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
-    void Render(bool force, long* count, bool* changed);   // 0x00BE7BE0 (manifest parameter types)
+    void Render(bool force, long& count, bool& changed);   // 0x00BE7BE0 ?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z
     unsigned char _pad04[0x114];
     unsigned char LODBand;                         // +0x118
 };
@@ -129,7 +126,7 @@ void CLandscapeBackgroundTreeNode::Render(unsigned long flags)
         if (patch) {
             long count = 0;
             bool changed = false;
-            patch->Render(false, &count, &changed);
+            patch->Render(false, count, changed);
         } else if (branch) {
             branch->LeftBranch.Render(0);
             branch->RightBranch.Render(0);

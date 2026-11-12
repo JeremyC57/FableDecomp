@@ -12,7 +12,14 @@ public:
     C3DOrientationInterpolator();
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);   // 0x005508D0
     C3DOrientationInterpolator(const C3DOrientationInterpolator&);
+#ifndef FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_IMPLICIT_DTOR
     virtual ~C3DOrientationInterpolator() { }
+#else
+    // Opt-in (chunk Q28, row 0x00AEB790 CParticleEmitterManager::Create2DEmitter): the destructor is the implicit one (virtual through
+    // CBaseClass; FableWin.pdb's ??1C3DOrientationInterpolator@@UAE@XZ is that compiler-generated destructor): the temporary passed to
+    // SetOrientation is destroyed by a direct ~CBaseClass 0x0099A2E0 call with no vptr store (0x00AEB80D), which a user-declared
+    // `{ }` keeps (`mov [esp+10h],offset vftable`).
+#endif
     CRightHandedSet StartOrientation;                                    // +0x04
     CRightHandedSet EndOrientation;                                      // +0x1c
 };

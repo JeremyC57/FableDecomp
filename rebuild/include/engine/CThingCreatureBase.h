@@ -25,6 +25,11 @@ enum ESex;
 class CCreatureAbilityDef;class CSoundPair;
 #endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Evidence: both original PDB type records and donor OnHit/helper disassembly.
+public:
+void PerformBlockedReaction(CThingCreatureBase*,bool);
+#endif
 #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
 public: CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
 #endif
@@ -55,6 +60,11 @@ public:
 #ifdef FABLE_RETAIL_UPDATE_NEAREST_INTERESTING
 public:bool IsThingInFOV(const CThing&,bool)const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEIGHTZBELOW
+// Retail opt-in (chunk Q6, row 0x00912840): Ego_r.pdb / FableWin.pdb ?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z
+// (public const), out of line in retail (0x00666D40). Declaration only.
+public:float GetHeightZBelowAt(const C3DVector& pos,bool,bool)const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHEALTH
 public:
  void SetHealth(float health){Health=health;}
@@ -71,6 +81,9 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
 public:
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ const CCombatTypeDef& GetCombatTypeDef()const;
+#endif
  CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const;
  long GetCombatType()const;
 #endif
@@ -173,6 +186,11 @@ public:
     // Nested opt-in (chunk 1010, row 0x00896390 CGameScriptInterface::OpenChest): FableWin.pdb ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ,
     // out of line in retail at 0x00662650 (`mov ecx,ebp ; call 0x00662650` before the open-chest SetCurrentAction). Declaration only.
     void FinishCurrentAction();                                          // 0x00662650
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FREETOFINISH
+    // Retail opt-in (chunk Q17, row 0x0093C030): Ego_r.pdb ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ (public const), out of
+    // line in retail at 0x006621C0. Declaration only: no layout change.
+    bool IsFreeToFinishAction() const;                                   // 0x006621C0
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
     void AddQueuedAction(const CCreatureActionBase&);
@@ -288,6 +306,38 @@ public:
 protected:
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x00663C40
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void DrawUpdate(CInterpolationInfo const *);  // slot 26, 0x00661A40
+public:
+    virtual bool IsHidden() const;  // slot 50, 0x0052AB80
+public:
+    virtual long GetMaterialOnHitByMelee() const;  // slot 70, 0x00661D00
+public:
+    virtual bool IsNewAttackerGreaterThreat(CThingCreatureBase const &, CThingCreatureBase const &) const;  // slot 74, 0x0052AB90
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingCreatureBase virtuals (TLC vtable slots aligned with the Xbox 360 Test PDB order;
+// Ego_r.pdb / FableWin.pdb spellings) and the protected non-virtual
+// ?GetMovementSpeedFromCreatureMode@CThingCreatureBase@@IBEMABVC3DVector@@W4EMovementType@@@Z (out of line at 0x00663BA0; the
+// CThingAICreature hover-speed overrides call it with AI_MOVEMENT_HOVER_SLOW / _MEDIUM / _FAST). Declarations only (no layout
+// change). Needs EMovementType declared (engine/EMovementType.h).
+public:
+    virtual void CopyGameState(const CThing&);                           // slot 7, 0x006619D0
+    virtual void ForceAnim(long, bool);                                  // slot 68, 0x00663E90
+    virtual void ForceAnim(const CCharString&, bool);                    // slot 69, 0x006635D0
+protected:
+    virtual unsigned long GetPhonemeAnim(const CCharString&) const;      // slot 71, 0x00666850
+public:
+    virtual bool IsWillable() const;                                     // slot 75, 0x00661FD0
+protected:
+    float GetMovementSpeedFromCreatureMode(const C3DVector&, EMovementType) const;   // 0x00663BA0
+public:
+#endif // FABLE_RETAIL_CTHINGCREATUREBASE_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase)==0x160);
 #ifdef FABLE_ENGINE_CTHINGCREATUREDEF_H

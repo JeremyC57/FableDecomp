@@ -97,6 +97,9 @@ public:
 protected:
     virtual void Validate() const;                                                                           //  1 0x007E72C0
 public:
+#ifdef FABLE_RETAIL_CSCRIPTRESOURCE_ORIGINAL_ACCESS
+private: // Both original full class records: PImp is private.
+#endif
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;                                        // +0x08
 };
 FABLE_STATIC_ASSERT(sizeof(CScriptGameResourceObjectScriptedThingBase) == 0x10);

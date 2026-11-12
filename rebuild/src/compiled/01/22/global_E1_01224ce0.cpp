@@ -1,4 +1,4 @@
-// _global::$E1() -- dynamic initializer of the CCharString array NScript::CQ_SunnyvaleMasterData::RelationSuffixes[3] @ 0x0143E934: default-constructs the three strings and registers the array's exit cleanup
+// _global::$E1() -- dynamic initializer of the CCharString array NPCAttitudeStrings[3] @ 0x0143E934: default-constructs the three strings and registers the array's exit cleanup
 // Leaf: _$E1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01224CE0, 45 bytes (+ padding), plain `ret`, reached from the .CRT$XCU table; catalog
 //   "sub_01224ce0" was a gap-scan placeholder.
@@ -10,7 +10,8 @@
 //   calling ~CCharString 0x0099EAE0; catalog "CFontBankStateBlock::CreateCRC" there is a wrong propagated label).
 // Shape: VC7.1 expands the array construction in place (no `vector constructor iterator`): a down-counted 3-step loop over the
 //   4-byte elements (esi = element, edi = count), then `push _$E2 ; call _atexit ; add esp,4`.
-#define FABLE_RETAIL_CQ_SUNNYVALEMASTERDATA_RELATION_STATICS
-#include "engine/CQ_SunnyvaleMasterData.h"
+// Names (agentNF22, Codex pass 21 NAME_FIXES land1011cr): the array is the global ?NPCAttitudeStrings@@3PAVCCharString@@A (Ego_r
+//   PUBLIC32 + typed GDATA32 CCharString[3]; its neighbour 0x0143E928 is ?NPCAttitudes@@3PAJA), not a CQ_SunnyvaleMasterData static.
+#include "fable_string.h"
 
-CCharString NScript::CQ_SunnyvaleMasterData::RelationSuffixes[3];
+CCharString NPCAttitudeStrings[3];                     // 0x0143E934 ?NPCAttitudeStrings@@3PAVCCharString@@A

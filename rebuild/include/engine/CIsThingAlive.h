@@ -21,6 +21,9 @@ public:
     virtual bool operator()() const;                                     // slot 0  0x00CDF120
     virtual CPredicateBase* Clone() const;                               // slot 1  0x00CDF130
     virtual ~CIsThingAlive();                                            // slot 2  0x00CDF160 (scalar deleting); 0x00E241B0
+#ifdef FABLE_RETAIL_CISTHINGALIVE_ORIGINAL_ACCESS
+private: // Both complete original PDB types: Thing is private; see sol_cisthingalive_original_types.json.
+#endif
     CScriptThing Thing;                                                  // +0x04
 };
 }

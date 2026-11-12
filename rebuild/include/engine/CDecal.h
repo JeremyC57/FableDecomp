@@ -19,6 +19,18 @@ public:
     static void* __fastcall operator new(unsigned int);
     static void __fastcall operator delete(void*);
     float GetInterpolatedLifetimerInSeconds(float) const;
+#ifdef FABLE_RETAIL_CDECAL_UPDATE
+ // Both PDB accessors; native B0E66x onward uses these exact field locations.
+    void SetPosition(const C3DVector& position) { Position = position; }
+    void SetRightHandedSet(const CRightHandedSet& set) { RHSet = set; }
+    void SetLandscapeOnlyDecal(bool landscape) { LandscapeOnlyDecal = landscape; }
+    void SetLifetimer(long lifetimer) { Lifetimer = lifetimer; }
+    void SetMaxLife(long maxLife) { MaxLife = maxLife; }
+    void SetFlickerIndex(unsigned char index) { FlickerIndex = index; }
+    void SetFlickerTimeOffset(unsigned char offset) { FlickerTimeOffset = offset; }
+    void Activate() { Active = true; }
+private:
+#endif
     C3DVector                             Position;                      // +0x04
     CRightHandedSet                       RHSet;                         // +0x10
     long                                  Lifetimer;                     // +0x28

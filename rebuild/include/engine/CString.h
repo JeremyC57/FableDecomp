@@ -63,6 +63,13 @@ public:
     CString() { Init(); }
     CString Left(int nCount) const;
 #endif
+#ifdef FABLE_RETAIL_CSTRING_MAKEUPPER
+    // agentNF19 (row 0x00C0C910): MFC strcore.cpp `void CString::MakeUpper() { CopyBeforeWrite(); _tcsupr(m_pchData); }`
+    // (?MakeUpper@CString@@QAEXXZ, the spelling caller 0x00C2E610 binds) and CopyBeforeWrite 0x00C0BE20 (?CopyBeforeWrite@CString@@QAEXXZ,
+    // bound by 0x00C0C630: `cmp [data-0Ch],1 ; jle` = unshare when nRefs > 1). Declarations only: no layout change.
+    void CopyBeforeWrite();                                  // 0x00C0BE20
+    void MakeUpper();                                        // 0x00C0C910
+#endif
 #ifdef FABLE_RETAIL_CSTRING_SPAN
     // Chunk 897 (rows 0x00C0E2C0 / 0x00C0E310): MFC strcore.cpp `CString::SpanIncluding(LPCTSTR) const`
     // (?SpanIncluding@CString@@QBE?AV1@PBD@Z) and `SpanExcluding` (?SpanExcluding@CString@@QBE?AV1@PBD@Z):

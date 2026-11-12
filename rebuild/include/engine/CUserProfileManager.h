@@ -1,10 +1,17 @@
 #ifndef FABLE_ENGINE_CUSERPROFILEMANAGER_H
 #define FABLE_ENGINE_CUSERPROFILEMANAGER_H
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME
+#include "fable_string.h"
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
 #include "fable_string.h"
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
 #include "fable_string.h"
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+#include "engine/CActionInputControl.h"
+#include "stlport/fable_containers.h"
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
 #include "engine/CDisplayModeDesc.h"
@@ -17,9 +24,30 @@
 class CUserProfileManager {
 public:
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x0040D830 CCountedPointer<CUserProfileManager>::DeleteData): the class is polymorphic
+    // (RTTI vtable .?AVCUserProfileManager@@ stored by the ctor 0x0040CEC0) and vtable slot 0 is its scalar deleting destructor (the
+    // deleter's `push 1; call [eax]`). Declaration only, for a row that models no members: the VOLUME / SCOREBOARD layout opt-ins
+    // already count the vptr in their leading pad, so do not combine them with this one.
+    virtual ~CUserProfileManager();
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_UIBACKGROUND
     // Retail opt-in (Codex pass19): both PDBs and donor01885a90/native004075c0.
     void RenderUIBackground(float);
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME
+    // agentFAM09 opt-in (row 0x01219EC0, its dynamic initializer): the profile file name, Ego_r.pdb / FableWin.pdb `dynamic
+    // initializer for 'CUserProfileManager::m_strProfileName'', L"Profile.bin" at 0x013B7D54; private static per Anniv360 Test PDB
+    // (third source) ?m_strProfileName@CUserProfileManager@@0VCWideString@@A. Declaration only: no layout change.
+private:
+    static CWideString m_strProfileName;                                  // 0x013B7D54
+public:
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+    // Retail opt-in (chunk F2, row 0x00406AE0): Ego_r.pdb / FableWin.pdb ?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z
+    // (0x00406610) and ?GetManualSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@J@Z (0x00406AE0). Declarations only.
+    CWideString GetManualSaveFileName(long slot) const;                  // 0x00406610
+    CWideString GetManualSaveDisplayName(long slot) const;               // 0x00406AE0
 #endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
@@ -66,6 +94,12 @@ public:
     void SetDefaultValuesVideo();                                        // 0x004093E0
     void CaptureBackBufferForUIBackground();                             // 0x00406CC0
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYDIALOG
+    // agentQ7 (2026-11-11, row 0x0047E9AE CTCInGameMenu::GlobalUpdate): FableWin.pdb ?SetDisplayDialogOnOptionsChanged@CUserProfileManager@@QAEX_N@Z,
+    // inline in retail (the row writes the byte +0x34 in place twice around Apply / Save). The member (Ego_r.pdb DisplayDialogOnOptionsChanged
+    // +0x34, before the first STLport vector, so the same offset in retail) stays opaque here, as in the SETTERS block's accessors.
+    void SetDisplayDialogOnOptionsChanged(bool display) { reinterpret_cast<bool*>(this)[0x34] = display; }
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
     // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
     // ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ, out of
@@ -92,6 +126,23 @@ public:
     float MusicVolumeNewProfile;                                         // +0xe8
     float DialogueVolumeNewProfile;                                      // +0xec
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETSOUNDASMUTED
+    // agentNF29 name-fix opt-in (row 0x00408340 itself): Ego_r.pdb 0x004062F0 + FableWin.pdb 0x0187E2D0
+    // ?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z (public, bool). Declaration only: no layout change.
+    void SetSoundAsMuted(bool muted);                                    // 0x00408340
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+    // Retail opt-in (chunk F1, row 0x00407CD0): FableWin.pdb / Ego_r.pdb ?RedefineControlPassive@CUserProfileManager@@QAEXABVCActionInputControl@@0J@Z
+    // (0x00407CD0), ?ApplyValues@CUserProfileManager@@IAEXXZ (0x00407370, landed; PROTECTED in both PDBs) and the Ego_r.pdb member AssignedInputsPassive
+    // (vector<CActionInputControl>, +0x54 in both; retail reads its start / finish at [this+54h] / [this+58h]). Not combinable with the
+    // other layout blocks (own pad).
+protected:
+    void ApplyValues();                                                  // 0x00407370 (IAE: protected)
+public:
+    void RedefineControlPassive(const CActionInputControl& new_control,const CActionInputControl& old_control,long index);   // 0x00407CD0
+    unsigned char _pad_pi_0x00[0x54];                                    // vptr, CBaseClass, ProfileName .. the option values
+    std::vector<CActionInputControl> AssignedInputsPassive;              // +0x54
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_TARGETINGSTATUS
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the targeting-status pair the row
     // selects by UseNewProfileValues (`cmp byte [eax+0Ch],0 ; mov al,[eax+134h] / [eax+6Ch]`): Ego_r.pdb ShowTargetingStatus (+0x74
@@ -103,6 +154,24 @@ public:
     bool ShowTargetingStatus;                                            // +0x6c
     unsigned char _pad_ts_0x6d[0x134 - 0x6d];                            // EffectsDetail .. CameraSensitivityNewProfile
     bool ShowTargetingStatusNewProfile;                                  // +0x134
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_AUDIODEFAULTS
+    // agentNF28 repair opt-in (row 0x004083B0 ?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ, Ego_r.pdb 0x00406350 / FableWin.pdb
+    // 0x01881DC0; declared in the SETTERS block): the audio option members the row writes, Ego_r.pdb names and offsets (before the
+    // first STLport vector, so the same offsets in retail: SoundVolume +0x24 .. DialogueVolume +0x2C, UsingHeadPhones +0x30,
+    // SoundsMuted +0x31; retail 0x004083B2..0x004083C9), and the protected ?ApplyValues@CUserProfileManager@@IAEXXZ (0x00407370)
+    // the row tail-calls. Not combinable with the other layout blocks (own pad).
+#ifndef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+protected:
+    void ApplyValues();                                                  // 0x00407370 (IAE: protected)
+public:
+#endif
+    unsigned char _pad_ad_0x00[0x24];                                    // vptr, CBaseClass, ProfileName .. HUDAlpha
+    float SoundVolume;                                                   // +0x24
+    float MusicVolume;                                                   // +0x28
+    float DialogueVolume;                                                // +0x2c
+    bool UsingHeadPhones;                                                // +0x30
+    bool SoundsMuted;                                                    // +0x31
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
     // Nested opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest): the scoreboard settings and

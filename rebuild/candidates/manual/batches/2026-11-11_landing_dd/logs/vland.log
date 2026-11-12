@@ -1,0 +1,12 @@
+00795090   RELOCATION_MATCH PASS   FinalCleanup
+0093c030   RELOCATION_MATCH PASS   Update
+0095b820   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z -> 008e3eb0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature, std::vector<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_HasDefGlobalIndex>'
+0095b820   RELOCATION_MATCH PASS   Spawn
+00965640   WARN RELOC_NAME: ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z -> 007fef40 labelled 'CTCUserActionPointBase::FreeActionPoint'
+00965640   RELOCATION_MATCH PASS   OnReplace
+00966030   WARN RELOC_NAME: ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z -> 007fef40 labelled 'CTCUserActionPointBase::FreeActionPoint'
+00966030   RELOCATION_MATCH PASS   OnReplace
+009711d0   RELOCATION_MATCH PASS   MoveIntoCover
+00a87700   RELOCATION_MATCH PASS   Process
+WINS: 7
+LANDED 7 wins into src/compiled + tests + catalog + oracle

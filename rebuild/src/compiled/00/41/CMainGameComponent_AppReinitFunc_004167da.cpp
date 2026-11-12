@@ -10,6 +10,9 @@
 // (0x00416365), GetWidth being the inline GetDimensions().X (0x009F2F90, C2DExtentsI by hidden pointer).
 // Layout: Ego_r.pdb CMainGameComponent PDisplayEngine +0x28 (as 0x0041799B); CDisplayManager BackBufferSurface +0x2c
 // (CSurface, engine/CSurface.h); CPixelFormat (engine/CPixelFormat.h) and C2DExtentsI {X, Y} returned through memory.
+// Names (agentNF20, 2026-11-11): the shared engine/CSurface.h / CPixelFormat.h spellings -- ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
+// (Ego_r + FableWin), ?GetHeight@CSurface@@QBEKXZ, ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ, ?GetColourDepth@CPixelFormat@@QBEKXZ
+// (were the CSurface_Methods / CPixelFormat_Methods stand-ins).
 // Shape: frame-pointer size TU; GetWidth is an inline accessor (forced: the size TU would keep it out of line) -- the
 // inlined argument is evaluated first and its C2DExtentsI temporary keeps its own slot (`sub esp,0Ch`); a plain
 // `GetDimensions().X` argument or local shares the slot with the CPixelFormat temporary. The surface address stays in edi
@@ -17,28 +20,21 @@
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-#include "engine/CSurface.h"
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_BITMAP
+#define FABLE_RETAIL_CSURFACE_PIXELFORMAT
+#define FABLE_RETAIL_CSURFACE_GETWIDTH_FORCEINLINE
+#define FABLE_RETAIL_CSURFACE_GETHEIGHT_OUTOFLINE
+#include "engine/Direct3DSurface9.h"
+#include "engine/C2DExtentsI.h"
 #include "engine/CPixelFormat.h"
-class C2DExtentsI {
-public:
-    long X;
-    long Y;
-    C2DExtentsI() {}
-};
-struct CPixelFormat_Methods : CPixelFormat {
-    CPixelFormat_Methods() {}
-    unsigned long GetColourDepth() const;                // 0x009E3820
-};
-struct CSurface_Methods : CSurface {
-    const C2DExtentsI GetDimensions() const;             // 0x009F2F90
-    const CPixelFormat_Methods GetPixelFormat() const;   // 0x009F2F60
-    FABLE_FORCEINLINE unsigned long GetWidth() const { return GetDimensions().X; }
-    unsigned long GetHeight() const;                     // 0x00415BF0 (out of line: GetDimensions().Y)
-};
+#include "engine/CSurface.h"
 class CDisplayManager {
 public:
     unsigned char    _pad00[0x2c];
-    CSurface_Methods BackBufferSurface;                  // +0x2c
+    CSurface         BackBufferSurface;                  // +0x2c
 };
 extern CDisplayManager* GPDisplayManager;               // 0x013B8390
 class CDisplayEngine {
@@ -58,6 +54,6 @@ void __fastcall CMainGameComponent::AppReinitFunc(void* component)
 {
     CMainGameComponent* game = (CMainGameComponent*)component;
     game->PDisplayEngine->PreChangeResolution();
-    const CSurface_Methods& surface = GPDisplayManager->BackBufferSurface;
+    const CSurface& surface = GPDisplayManager->BackBufferSurface;
     game->PostChangeResolution(surface.GetWidth(), surface.GetHeight(), GPDisplayManager->BackBufferSurface.GetPixelFormat().GetColourDepth());
 }

@@ -1,0 +1,61 @@
+09:42 008031e0 grade a1.cpp SRC_FAIL -- a1 static inline helper (Q33 g3 repro to read its call site); a2 parent ptr local reassigned 0 after call
+09:42 008031e0 grade a2.cpp DIFFER(150v152) hunks=2 -- a1 static inline helper (Q33 g3 repro to read its call site); a2 parent ptr local reassigned 0 after call
+09:43 008031e0 grade a1.cpp DIFFER(85v152) hunks=12 -- a1 static inline helper (Q33 g3 repro to read its call site)
+09:44 008031e0 grade b1.cpp DIFFER(150v152) hunks=2 -- b1 dead store to targeted between parent ref and call; b2 parent via pointer-to-local; b3 array of two things
+09:44 008031e0 grade b2.cpp DIFFER(150v152) hunks=2 -- b1 dead store to targeted between parent ref and call; b2 parent via pointer-to-local; b3 array of two things
+09:44 008031e0 grade b3.cpp DIFFER(150v152) hunks=2 -- b1 dead store to targeted between parent ref and call; b2 parent via pointer-to-local; b3 array of two things
+09:47 008031e0 grade base.cpp DIFFER(152v152) hunks=18 /Oa -- base with flags /Oa
+09:47 008031e0 grade base.cpp DIFFER(150v152) hunks=2 /Ow -- base with flags /Ow
+09:47 008031e0 grade base.cpp DIFFER(150v152) hunks=2 /Og /Oi /Ot /Oy /Ob2 /Gs /GF /Gy -- base with flags /Og /Oi /Ot /Oy /Ob2 /Gs /GF /Gy
+008031e0 probe 1 /Od size of base vs FableWin 200 bytes/66 instr -> see next
+008031e0 probe 1 /Od size vs FableWin 200 bytes/66 instr: base 206/70; s1..s4 see NOTES
+09:54 008031e0 grade m1.cpp DIFFER(160v152) hunks=1 -- m1 pointer wrapper with null checks; m2 two-def parent (if/else same value); m3 parent set inside for(;;) break
+09:54 008031e0 grade m2.cpp DIFFER(162v152) hunks=7 -- m1 pointer wrapper with null checks; m2 two-def parent (if/else same value); m3 parent set inside for(;;) break
+09:54 008031e0 grade m3.cpp DIFFER(150v152) hunks=2 -- m1 pointer wrapper with null checks; m2 two-def parent (if/else same value); m3 parent set inside for(;;) break
+09:55 008031e0 grade n1.cpp DIFFER(150v152) hunks=2 -- wrapper whose null check is on the thing only (eliminated late): n1 ref+ptr if-return, n2 ptr+ptr, n3 ref+ptr &&
+09:55 008031e0 grade n2.cpp DIFFER(150v152) hunks=2 -- wrapper whose null check is on the thing only (eliminated late): n1 ref+ptr if-return, n2 ptr+ptr, n3 ref+ptr &&
+09:55 008031e0 grade n3.cpp DIFFER(150v152) hunks=2 -- wrapper whose null check is on the thing only (eliminated late): n1 ref+ptr if-return, n2 ptr+ptr, n3 ref+ptr &&
+09:56 008031e0 grade o1.cpp DIFFER(150v152) hunks=2 -- pointer wrapper: o1 a==0&&b==0, o2 b==0&&a==0, o3 b==0||a==0 (parent test made irrelevant late?)
+09:56 008031e0 grade o2.cpp DIFFER(150v152) hunks=2 -- pointer wrapper: o1 a==0&&b==0, o2 b==0&&a==0, o3 b==0||a==0 (parent test made irrelevant late?)
+09:56 008031e0 grade o3.cpp DIFFER(160v152) hunks=1 -- pointer wrapper: o1 a==0&&b==0, o2 b==0&&a==0, o3 b==0||a==0 (parent test made irrelevant late?)
+09:58 008031e0 grade p1.cpp DIFFER(177v152) hunks=10 -- mechanism: pointer wrapper with __assume on the parent (p1 a!=0, p2 a&&b, p3 if(a==0)__assume(0))
+09:58 008031e0 grade p2.cpp DIFFER(177v152) hunks=10 -- mechanism: pointer wrapper with __assume on the parent (p1 a!=0, p2 a&&b, p3 if(a==0)__assume(0))
+09:58 008031e0 grade p3.cpp DIFFER(150v152) hunks=2 -- mechanism: pointer wrapper with __assume on the parent (p1 a!=0, p2 a&&b, p3 if(a==0)__assume(0))
+09:58 008031e0 grade q1.cpp DIFFER(150v152) hunks=2 -- mechanism: parent used on the dead thing==0 path of a pointer wrapper (q1 return a->IsDead, q2 b?*b:*a, q3 return a==0)
+09:58 008031e0 grade q2.cpp DIFFER(150v152) hunks=2 -- mechanism: parent used on the dead thing==0 path of a pointer wrapper (q1 return a->IsDead, q2 b?*b:*a, q3 return a==0)
+09:58 008031e0 grade q3.cpp DIFFER(150v152) hunks=2 -- mechanism: parent used on the dead thing==0 path of a pointer wrapper (q1 return a->IsDead, q2 b?*b:*a, q3 return a==0)
+09:59 008031e0 grade r1.cpp DIFFER(150v152) hunks=2 -- functor copied by value into an inline template (r1 ref member, r2 ptr member), r3 explicit struct copy
+09:59 008031e0 grade r2.cpp DIFFER(150v152) hunks=2 -- functor copied by value into an inline template (r1 ref member, r2 ptr member), r3 explicit struct copy
+09:59 008031e0 grade r3.cpp DIFFER(150v152) hunks=2 -- functor copied by value into an inline template (r1 ref member, r2 ptr member), r3 explicit struct copy
+10:00 008031e0 grade t1.cpp DIFFER(150v152) hunks=2 -- t1 GetTC ORIGINAL_CHAIN instead of EXPANDED; t2 default GetTC
+10:00 008031e0 grade t2.cpp DIFFER(150v152) hunks=2 -- t1 GetTC ORIGINAL_CHAIN instead of EXPANDED; t2 default GetTC
+10:02 008031e0 grade u1.cpp DIFFER(150v152) hunks=2 -- u1 CTCBase::ParentThing as a reference member (CThing&)
+10:02 008031e0 grade w1.cpp RELOCATION_MATCH -- mechanism: second parent use in a compare whose arms are identical (w1 after call, w2 in return 0 ternary, w3 duplicated arms before call)
+10:03 008031e0 grade x1.cpp DIFFER(150v152) hunks=2 -- which dead post-call parent uses match: x1 empty-body if, x2 parent.IsDead() identical arms, x3 compare on the return-0 side
+10:03 008031e0 grade x2.cpp DIFFER(164v152) hunks=8 -- which dead post-call parent uses match: x1 empty-body if, x2 parent.IsDead() identical arms, x3 compare on the return-0 side
+10:03 008031e0 grade x3.cpp DIFFER(150v152) hunks=2 -- which dead post-call parent uses match: x1 empty-body if, x2 parent.IsDead() identical arms, x3 compare on the return-0 side
+10:04 008031e0 grade 008031e0.cpp RELOCATION_MATCH -- final source (w1 + header comment), strict headers
+10:07 006b05a0 grade pb.cpp DIFFER(110v110) hunks=4 -- base with flags []
+10:07 006b05a0 grade pb.cpp DIFFER(110v110) hunks=4 /G5 -- base with flags [/G5]
+10:07 006b05a0 grade pb.cpp DIFFER(110v110) hunks=4 /G7 -- base with flags [/G7]
+10:07 006b05a0 grade pb.cpp DIFFER(110v110) hunks=4 /GB -- base with flags [/GB]
+10:07 006b05a0 grade pb.cpp DIFFER(110v110) hunks=4 /G4 -- base with flags [/G4]
+10:08 006b05a0 grade z1.cpp SRC_FAIL -- z1 args through const reference locals to the members; z2 calls through CTCPhysicsBase& self; z3 pointer locals + if/else
+10:08 006b05a0 grade z2.cpp DIFFER(110v110) hunks=4 -- z1 args through const reference locals to the members; z2 calls through CTCPhysicsBase& self; z3 pointer locals + if/else
+10:08 006b05a0 grade z3.cpp DIFFER(110v110) hunks=4 -- z1 args through const reference locals to the members; z2 calls through CTCPhysicsBase& self; z3 pointer locals + if/else
+10:12 006b05a0 grade f1.cpp DIFFER(110v110) hunks=4 -- f1 early return on IsNull; f2 inverted HasPhysicsMesh with (*PhysicsDef).; f3 value locals for both args
+10:12 006b05a0 grade f2.cpp DIFFER(110v110) hunks=4 -- f1 early return on IsNull; f2 inverted HasPhysicsMesh with (*PhysicsDef).; f3 value locals for both args
+10:12 006b05a0 grade f3.cpp DIFFER(110v110) hunks=4 -- f1 early return on IsNull; f2 inverted HasPhysicsMesh with (*PhysicsDef).; f3 value locals for both args
+10:13 006b05a0 grade g1.cpp DIFFER(110v110) hunks=4 -- mechanism: arg in a 2-use variable (g1 dead identical-arm compare after each call); g2 one shared value variable
+10:13 006b05a0 grade g2.cpp DIFFER(110v110) hunks=4 -- mechanism: arg in a 2-use variable (g1 dead identical-arm compare after each call); g2 one shared value variable
+10:14 006b05a0 grade h1.cpp DIFFER(148v110) hunks=4 -- mechanism: late-deleted compare with identical call arms on the value (h1 both sites) / on the mesh pointer (h2 site 1)
+10:14 006b05a0 grade h2.cpp DIFFER(136v110) hunks=5 -- mechanism: late-deleted compare with identical call arms on the value (h1 both sites) / on the mesh pointer (h2 site 1)
+10:18 006b05a0 grade i1.cpp DIFFER(110v110) hunks=2 -- learning grades (site 1 only): i1 index in a variable with a late-deleted compare; i2 leaf arg in edi; i3 leaf arg = call result in eax
+10:18 006b05a0 grade i2.cpp DIFFER(107v110) hunks=4 -- learning grades (site 1 only): i1 index in a variable with a late-deleted compare; i2 leaf arg in edi; i3 leaf arg = call result in eax
+10:18 006b05a0 grade i3.cpp DIFFER(107v110) hunks=5 -- learning grades (site 1 only): i1 index in a variable with a late-deleted compare; i2 leaf arg in edi; i3 leaf arg = call result in eax
+10:21 006b05a0 grade j1.cpp RELOCATION_MATCH -- tail duplicated per graphic type: j1 whole tail in both arms (if/else-if), j2 only the mesh half duplicated, j3 switch with whole tail per case
+10:22 006b05a0 grade 006b05a0.cpp RELOCATION_MATCH -- final source (j1: tail written out per graphic type), strict headers
+10:22 008031e0 grade R1.cpp DIFFER(150v152) hunks=2 -- row 1 revisit after the row 2 lesson (duplicated code merged late): R1 smashable+enemy tests per GetTC outcome, R2 same as && chains, R3 positive enemy test + return 0
+10:22 008031e0 grade R2.cpp DIFFER(150v152) hunks=2 -- row 1 revisit after the row 2 lesson (duplicated code merged late): R1 smashable+enemy tests per GetTC outcome, R2 same as && chains, R3 positive enemy test + return 0
+10:22 008031e0 grade R3.cpp DIFFER(160v152) hunks=3 -- row 1 revisit after the row 2 lesson (duplicated code merged late): R1 smashable+enemy tests per GetTC outcome, R2 same as && chains, R3 positive enemy test + return 0
+10:00 008031e0 probe 1 /Od size of the draft (206 bytes / 70 instr) vs FableWin debug copy (200 / 66) -> not usable: FableWin.pdb is a later-compiler build

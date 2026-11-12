@@ -69,7 +69,9 @@ struct CMouseDX {
     bool                  Acquired;                 // +0x3424
     unsigned char         _pad3425[0x343c - 0x3425];// MouseStep, NonExclusiveOld*
     bool                  ExclusiveMode;            // +0x343c
-    void ResetNonExclusiveMouse();                  // 0x00AB5030
+protected:
+    void ResetNonExclusiveMouse();                  // 0x00AB5030 Ego_r/FableWin ?ResetNonExclusiveMouse@CMouseDX@@IAEXXZ (protected)
+public:
     virtual bool SetExclusiveMode(bool exclusive);
 };
 

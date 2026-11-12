@@ -8,11 +8,15 @@
 // Shape: the found arm returns the local through C3DVector's user memberwise copy ctor (`fld/fstp` X, integer Y/Z); each
 // lookup has its own `return pos;` (VC cross-jumps the two copies into one block) -- a `found` flag or `||` gives the
 // second out-pointer lea in ecx and swaps the Y/Z copy registers.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC4C CAMERA_FOCAL_POSITION_NAME (global, const; initializer 0x0121E6E0), was g_helperCameraFocal_013bac4c.
+//   0x013BAC48 MAIN_FOCAL_POSITION_NAME (global, const; initializer 0x0121E6C0), was g_helperFocal_013bac48.
 #include "engine/C3DVector.h"
 class CCharString { public: void* PStringData; };
 class CThing;
-extern const CCharString g_helperCameraFocal_013bac4c;   // 0x013BAC4C
-extern const CCharString g_helperFocal_013bac48;         // 0x013BAC48
+extern const CCharString CAMERA_FOCAL_POSITION_NAME;   // 0x013BAC4C
+extern const CCharString MAIN_FOCAL_POSITION_NAME;         // 0x013BAC48
 
 namespace NGraphicAppearance {
 class CTCGraphicAppearance {
@@ -27,9 +31,9 @@ public:
 C3DVector CTCGraphicAppearance::GetCameraFocalPos(float time) const
 {
     C3DVector pos;
-    if (GetHelperPoint(g_helperCameraFocal_013bac4c, 0, 4, pos, time))
+    if (GetHelperPoint(CAMERA_FOCAL_POSITION_NAME, 0, 4, pos, time))
         return pos;
-    if (GetHelperPoint(g_helperFocal_013bac48, 0, 4, pos, time))
+    if (GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, 4, pos, time))
         return pos;
     return GetFocalPos(time);
 }

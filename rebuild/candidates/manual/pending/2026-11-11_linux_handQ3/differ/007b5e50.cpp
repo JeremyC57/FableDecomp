@@ -1,0 +1,2 @@
+// CTCWaterWader::FrameUpdate @ 0x007B5E50 (catalog row, 1099 bytes) -- no source: not authored
+// Grade: NOT_REACHED (0 grades) -- read only: an ebp-framed size-TU function (`#pragma optimize("s", on)` candidates: `push ebp ; mov ebp,esp`): water-ripple emitter create / attach / release around three CIntelligentPointer<CThing> temporaries (0x00A01B10 / 0x00A01B90 / 0x00A01C10), GetTC(TCI_PARTICLE_EMITTER) through LowerBound, CTCDParticleEmitter::Create(const CCharString&, const C3DVector&, bool) 0x006E0970.

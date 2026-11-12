@@ -5,6 +5,10 @@
 //   slot like retail's link-time code generation (declaration only: three slots, 0x34 frame).
 // Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the suffix globals are the public static consts of CTCDayOrNightOnlySupport (Ego_r.pdb +
+//   FableWin.pdb `dynamic initializer for 'CTCDayOrNightOnlySupport::...'', initializers landed by agentFAM09; Anniv360 @@2VCCharString@@B):
+//   0x013BAC18 CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX ("DayOnly", initializer 0x0121E5C0), was g_DayOnlySuffix.
+//   0x013BAC1C CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX ("NightOnly", initializer 0x0121E5E0), was g_NightOnlySuffix.
 #define CQuestManager CQuestManagerDonor
 #include "engine/CQuestManager.h"
 #undef CQuestManager
@@ -16,8 +20,10 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-extern CCharString g_DayOnlySuffix;                  // 0x013BAC18 "DayOnly"
-extern CCharString g_NightOnlySuffix;                // 0x013BAC1C "NightOnly"
+class CTCDayOrNightOnlySupport { public:                   // the day/night-only suffix statics (class key V, both PDBs)
+    static const CCharString DAY_ONLY_SUFFIX;     // 0x013BAC18 ?DAY_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "DayOnly"
+    static const CCharString NIGHT_ONLY_SUFFIX;   // 0x013BAC1C ?NIGHT_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "NightOnly"
+};
 
 struct CSectionNode { unsigned char Color; CSectionNode* Parent; CSectionNode* Left; CSectionNode* Right; CCharString Value; };
 struct CSectionInsertResult { CSectionNode* Position; bool Inserted; CSectionInsertResult() {} };
@@ -92,11 +98,11 @@ void CQuestManager::LoadResourcesForQuests(const CCharStringVector& questSection
         const CCharString& section = questSections[i];
         sections.Insert(section);
         if (DayActive) {
-            CCharString dayName = section + "%" + g_DayOnlySuffix;
+            CCharString dayName = section + "%" + CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX;
             sections.Insert(dayName);
         }
         if (NightActive) {
-            CCharString nightName = section + "%" + g_NightOnlySuffix;
+            CCharString nightName = section + "%" + CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX;
             sections.Insert(nightName);
         }
     }

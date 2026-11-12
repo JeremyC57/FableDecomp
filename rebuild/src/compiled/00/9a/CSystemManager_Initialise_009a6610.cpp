@@ -80,7 +80,24 @@ class CDisplayManager { public:                       // 0x2c8 bytes
     void AddDeviceResetCallback(CDeviceResetCallback* callback);   // 0x009C0190
     bool Init(const CDisplayManagerInit& init, bool exclusive);    // 0x009C0E50
 };
-class CInputManagerDX { public: unsigned char _body[0x84]; CInputManagerDX(const CInputManagerInit& init, bool exclusive); };   // 0x00A60050
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the counted pointers are the shared CCountedPointer<T> (Ego_r.pdb CSystemManager:
+//   LibDebugManager CCountedPointer<CDebugManager>, PInputManager <CInputManager>, PDisplayManager <CDisplayManager>, PGraphicBankManager
+//   <CGraphicBankManager>, PMeshBankManager <CMeshBankManager>, PFontManager <CFontManager>) and the drive manager is the singleton
+//   CTBaseSingletonNoDefaultAlloc<CDriveManager>::PClass at 0x013CAA28 (Ego_r / FableWin `dynamic initializer for
+//   'CTBaseSingletonNoDefaultAlloc<CDriveManager>::PClass''; FableWin ?Set@?$CTBaseSingletonNoDefaultAlloc@VCDriveManager@@@@SIXPAVCDriveManager@@@Z
+//   inline = its Reset, FABLE_RETAIL_SINGLETON_SET). Their out-of-line Resets are the FableWin.pdb
+//   ?Reset@?$CCountedPointer@V<T>@@@@QAEXPAV<T>@@@Z COMDATs 0x009A6FD0 (CDisplayManager), 0x009A7180 (CInputManager: the new CInputManagerDX
+//   passes up-cast), 0x009A73D0 (CDriveManager), 0x009A7340 (CFontManager), 0x009A71F0 (CGraphicBankManager), 0x009A7260 (CMeshBankManager),
+//   each storing its DeleteData (FAM10), declared only (FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL); were the stand-in wrappers
+//   CPDisplay / CPInput / CPDrive / CPFont / CPGraphic / CPMesh and the global g_DriveManager. The sound and profile pointers keep
+//   their stand-in wrappers (CPSound 0x009A72D0, CPProfile 0x009A7510: T not proven, not in the FAM10 list).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#define FABLE_RETAIL_SINGLETON_SET
+#include "engine/CCountedPointer.h"
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+#include "engine/CInputManager.h"
+class CDebugManager;
+class CInputManagerDX : public CInputManager { public: unsigned char _own[0x84 - 0x80]; CInputManagerDX(const CInputManagerInit& init, bool exclusive); };   // 0x00A60050
 struct CSoundManager { unsigned char _body[0x80]; CSoundManager(const void* init, bool exclusive); };                  // 0x00A3EF00
 class CFontManager { public: unsigned char _body[0x3c]; CFontManager(const CCharString& bank, const CCharString& streamingBank); };   // 0x009E2E30
 class CGraphicBankManager { public: unsigned char _body[8]; CGraphicBankManager(); };   // 0x009F8690
@@ -92,18 +109,7 @@ class CDriveManager { public:                             // 8 bytes, vtable 0x0
     CDriveManager() { }
     long Initialise(CSystemManager* owner);        // 0x009E4AD0
 };
-class CInputManager;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountBlock* Info;
-};
-struct CPDisplay : CCountedPointer<CDisplayManager> { void Reset(CDisplayManager* p); };     // 0x009A6FD0
-struct CPInput : CCountedPointer<CInputManagerDX> { void Reset(CInputManagerDX* p); };       // 0x009A7180
-struct CPDrive : CCountedPointer<CDriveManager> { void Reset(CDriveManager* p); };           // 0x009A73D0
 struct CPSound : CCountedPointer<CSoundManager> { void Reset(CSoundManager* p); };           // 0x009A72D0
-struct CPFont : CCountedPointer<CFontManager> { void Reset(CFontManager* p); };              // 0x009A7340
-struct CPGraphic : CCountedPointer<CGraphicBankManager> { void Reset(CGraphicBankManager* p); };   // 0x009A71F0
-struct CPMesh : CCountedPointer<CMeshBankManager> { void Reset(CMeshBankManager* p); };      // 0x009A7260
 struct CPProfile : CCountedPointer<CProfileManager> { void Reset(CProfileManager* p); };     // 0x009A7510
 class CInitBaseClass { public:
     virtual void v00();
@@ -116,7 +122,6 @@ extern "C" __declspec(dllimport) void* __stdcall ConvertThreadToFiber(void* para
 extern "C" __declspec(dllimport) long __stdcall CoInitialize(void* reserved);                        // [0x01440644]
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(_RTL_CRITICAL_SECTION* cs); // [0x0143FEE4]
 extern "C" __declspec(dllimport) void* __stdcall GetCurrentProcess();                                // [0x0143FD6C]
-extern CPDrive g_DriveManager;                     // 0x013CAA28
 extern CScratchBuffer g_ScratchBuffer;             // 0x013CB498
 extern unsigned char g_SystemInitialiseCount;      // 0x013CA608
 bool __cdecl DefaultErrorFunc(long code);          // 0x009A5260
@@ -131,14 +136,14 @@ class CSystemManager : public CInitBaseClass { public:
     bool PreferPrimaryDevice;                           // +0x30
     _RTL_CRITICAL_SECTION CriticalSection;              // +0x34
     void* MainFibre;                                    // +0x4c
-    CCountedPointer<void> LibDebugManager;              // +0x50
-    CPInput PInputManager;                              // +0x58
-    CPDisplay PDisplayManager;                          // +0x60
+    CCountedPointer<CDebugManager> LibDebugManager;     // +0x50
+    CCountedPointer<CInputManager> PInputManager;       // +0x58
+    CCountedPointer<CDisplayManager> PDisplayManager;   // +0x60
     void* DebugManager;                                 // +0x68
-    CPGraphic PGraphicBankManager;                      // +0x6c
-    CPMesh PMeshBankManager;                            // +0x74
+    CCountedPointer<CGraphicBankManager> PGraphicBankManager;   // +0x6c
+    CCountedPointer<CMeshBankManager> PMeshBankManager; // +0x74
     CPSound PSoundManager;                              // +0x7c
-    CPFont PFontManager;                                // +0x84
+    CCountedPointer<CFontManager> PFontManager;         // +0x84
     bool WindowInitialised;                             // +0x8c
     bool DDrawInitialised;                              // +0x8d
     bool ExclusiveMode;                                 // +0x8e
@@ -238,8 +243,8 @@ long CSystemManager::Initialise(const CSystemManagerInit& init)
         }
         if (init.Flags & 1)
             PInputManager.Reset(new CInputManagerDX(init.InputManagerInit, ExclusiveMode));
-        g_DriveManager.Reset(new CDriveManager);
-        long result = g_DriveManager.Data->Initialise(this);
+        CTBaseSingletonNoDefaultAlloc<CDriveManager>::Set(new CDriveManager);
+        long result = CTBaseSingletonNoDefaultAlloc<CDriveManager>::Get().Initialise(this);
         if (result != 1) {
             Uninitialise();
             return result;

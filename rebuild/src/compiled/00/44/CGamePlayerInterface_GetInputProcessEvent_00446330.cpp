@@ -10,7 +10,7 @@
 //   FlagEventAsProcessed 0x009F55C0 (labels_familypass7 + its store-insert body); CPlayerManager::GetPlayerNumberFromJoystickDeviceNumber 0x00449990;
 //   the input process's virtual ProcessInput (slot 4) / ProcessWhilePaused (slot 7) / IsInputEventToBeSentToThisInputProcess (slot 8) as in the landed
 //   CInputProcessManager::PreparePrimitivesForEngine 0x00A0D6B0; CMainGameComponent::IsEditorActive (slot 9, 0x004197B0).
-// Globals: CMainGameComponent::Get() 0x013B86A0, PInputManager 0x013B8388 (ESTABLISHED_SPELLINGS).
+// Globals: CMainGameComponent::Get() 0x013B86A0, GPInputManager 0x013B8388 (ESTABLISHED_SPELLINGS).
 // Shape: the input-process scan is the landed 0x00A0D6B0 CLinkedListScanInfo model (StartScanAtHead / ScanForward / RemoveScanInfo through the
 //   list, so the no-previous-scan branch stores FirstScanInfo through `this` and the empty-list path threads into it). Here the scan info is reused
 //   per event, so RemoveScanInfo's trailing resets (Started, NextScan, PreviousScan, List) survive (they are dead in 0x00A0D6B0) and the head step
@@ -64,7 +64,7 @@ class CInputManager { public:
     bool IsEventProcessed(const CInputEvent& event) const;                                       // 0x009F4B10
     void FlagEventAsProcessed(const CInputEvent& event);                                         // 0x009F55C0
 };
-extern CInputManager* PInputManager;               // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 
 class CProcessedInput : public CProcessedInputLayout { public:
     CProcessedInput()                              // ??0CProcessedInput@@QAE@XZ (inline): each CGameEvent ctor (inline) sets Player -1, Valid false
@@ -174,17 +174,17 @@ bool CGamePlayerInterface::GetInputProcessEvent(CProcessedInput& processedInput)
     bool altDown = false;
     if (CMainGameComponent::Get() && !CMainGameComponent::Get()->IsEditorActive()) {
         CInputEvent query;
-        altDown = PInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x38, query);
+        altDown = GPInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x38, query);
     }
     long bestPriority = 0;
     bool found = false;
     CInputEventScanInfo eventScan;
-    for (bool more = PInputManager->EventScanStart(eventScan, event); more; more = PInputManager->EventScanNext(eventScan, event)) {
+    for (bool more = GPInputManager->EventScanStart(eventScan, event); more; more = GPInputManager->EventScanNext(eventScan, event)) {
         if (altDown && event.GetDeviceType() == 2 && event.GetKey() == 0xf)
             continue;
         if (event.GetType() == 0)
             continue;
-        if (PInputManager->IsEventProcessed(event))
+        if (GPInputManager->IsEventProcessed(event))
             continue;
         for (CAInputProcess* process = InputProcessList().StartScanAtHead(&scan); process; process = InputProcessList().ScanForward(&scan)) {
             result.Clear();
@@ -203,18 +203,18 @@ bool CGamePlayerInterface::GetInputProcessEvent(CProcessedInput& processedInput)
                 }
                 break;
             case 2:
-                PInputManager->FlagEventAsProcessed(event);
+                GPInputManager->FlagEventAsProcessed(event);
                 goto endScan;
             }
         }
     endScan:
         InputProcessList().RemoveScanInfo(&scan);
     }
-    PInputManager->EventScanEnd(eventScan);
+    GPInputManager->EventScanEnd(eventScan);
     if (found) {
         processedInput = bestResult;
         if (bestEvent.GetType())
-            PInputManager->FlagEventAsProcessed(bestEvent);
+            GPInputManager->FlagEventAsProcessed(bestEvent);
         return true;
     }
     return false;

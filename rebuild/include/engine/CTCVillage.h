@@ -15,6 +15,9 @@ class CThing;
 // 0x00659C7E), and FableWin.pdb's inline ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (by value: retail's
 // two add-ref copies of +0x94 at 0x0065BD59). Same offsets and sizes as the opaque members of the branch below.
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
+#include "stlport/fable_map.h"
+#endif
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CDefPointer.h"
@@ -34,6 +37,14 @@ public:long GetFrameBribeEnds()const{return FrameBribeEnds;}
 private:void UpdateHornTasks();void RemoveThingFromAllTasks(const CThing&);
 #endif
 public:
+#ifdef FABLE_RETAIL_CTCVILLAGE_TAVERNTIMES
+    // Retail opt-in (row 0x0065AA6F CTCVillage::IsTimeToGoToTavern): Ego_r.pdb / FableWin.pdb ?IsTavernTime@CTCVillage@@QBE_NXZ
+    // (retail 0x00658C0A), ?GetTavernTimes@CTCVillage@@QBE_NAAM0@Z (retail 0x00658C5B) and
+    // ?IsTimeToGoToTavern@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_NM@Z (retail 0x0065AA6F), all out of line. Declarations only.
+    bool IsTavernTime() const;                                           // 0x00658C0A
+    bool GetTavernTimes(float& start, float& end) const;                 // 0x00658C5B
+    bool IsTimeToGoToTavern(CThingAICreature* creature, const CWorld& world, bool run, float speed);   // 0x0065AA6F
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_TCI
     // Original FableWin01901440; native00488684 type34.
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_VILLAGE;}
@@ -44,6 +55,13 @@ public:
 #ifdef FABLE_RETAIL_CTCVILLAGE_TORCHTASK
     bool SetTorchTaskAsAcceptedByThing(CVillageTaskTorch&,const CThing&);
     void SetTorchTaskAsCompleted(CIntelligentPointer<CVillageTaskTorch>);
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_HORNTASK
+    // Retail opt-in (chunk Q11, row 0x00940960 CAIStateGroup_VillageTaskHorn::Update): Ego_r.pdb
+    // ?SetHornTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskHorn@@ABVCThing@@@Z (retail 0x006584F9) and
+    // ?SetHornTaskAsCompleted@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskHorn@@@@@Z (retail 0x0065A00F), out of line.
+    bool SetHornTaskAsAcceptedByThing(CVillageTaskHorn&,const CThing&);
+    void SetHornTaskAsCompleted(CIntelligentPointer<CVillageTaskHorn>);
 #endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     void DetachFromDummyVillager(CThing*);
@@ -58,6 +76,14 @@ public:
     CThingAICreature* GetGuardFollowingPlayer() { return reinterpret_cast<CIntelligentPointer<CThingAICreature>*>(GuardFollowingPlayer)->Get(); }
 #endif
     FABLE_FORCEINLINE CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+#ifdef FABLE_RETAIL_CTCVILLAGE_PEEKVILLAGEPEOPLE
+    // Retail opt-in (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate, expanding IsHouseBeingUsed): FableWin.pdb
+    // ?PeekVillagePeople@CTCVillage@@QBEABV?$list@V?$CIntelligentPointer@VCThingAICreature@@@@...@std@@XZ (inline in Ego_r and retail:
+    // the caller reads the list's node word +0x2C in place, 0x006C1443). Its const_iterators are what retail passes to count_if (the
+    // const iterator's copy is trivial, so the arguments are plain pushes; the non-const iterator's user copy constructor builds them
+    // in their stack slots). No layout change.
+    const std::list<CIntelligentPointer<CThingAICreature> >& PeekVillagePeople() const { return VillagePeople; }
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_BRIBE
     // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?GetCostToBribe@CTCVillage@@QAEJXZ, out of line in retail (0x006588CF:
     // `mov eax,[ecx+94h] ; mov eax,[eax+0F8h] ; ret`, PDef's CVillageDef::BribeCost; landed as _global::GetMember_dword0x94_deref0xf8).
@@ -74,6 +100,17 @@ public:
     // ?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z (retail 0x00658EA0, out of line).
     CVillageTaskCarryCrate* GetBestCrateTaskForThing(const CThing& thing);   // 0x00658EA0
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
+    // Q19 opt-in (row 0x0065C5BB): Ego_r.pdb ?UpdateMirroredCrimeData@CTCVillage@@QAEXXZ (public). The same opt-in types
+    //   PlayersCrimes below as the Ego_r.pdb set<long> (STLport three-word tree; needs FABLE_RETAIL_STLP_SET for begin()/end()).
+    void UpdateMirroredCrimeData();                          // 0x0065C5BB
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_FINEAMOUNT
+    // Retail opt-in (wf4, row 0x0065A41C): Ego_r.pdb + FableWin.pdb ?GetFineAmountForCurrentCrimes@CTCVillage@@QAEJXZ (public, non-const,
+    // out of line at 0x0065A41C; bound by PayFines 0x0065C760, IsHeroCriminal 0x0065BFCE and others). Declaration only: no layout change.
+public:
+    long GetFineAmountForCurrentCrimes();                    // 0x0065A41C
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CRIMES
     // Retail opt-in (agentNF14, row 0x0065C1FC): Ego_r.pdb ?RemoveCrime@CTCVillage@@QAEXJ@Z (retail 0x0065C146, out of line) and
     // ?RemoveCrimeIfApologisable@CTCVillage@@QAEXJ@Z (0x0065C1FC), both public. Declarations only: no layout change.
@@ -88,6 +125,33 @@ public:
     void NotifyHasApologised();                              // 0x006585EE
     void CreateDummyVillagersIfNecessary();                  // 0x00658603
     bool GetIsHeroEnemyOfGuards();                           // 0x00658604
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_CURFEW
+    // Retail opt-in (chunk Q15, row 0x0090C900): Ego_r.pdb ?IsCurfewTime@CTCVillage@@QBE_NXZ (out of line, 0x00658D5D). Declaration only.
+public:
+    bool IsCurfewTime() const;                               // 0x00658D5D
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_SCHOOLSTORYTIME
+    // Opt-in (agentNF26, 2026-11-12, rows 0x00658A35 / 0x00658A80 and their binders): Ego_r.pdb + FableWin.pdb
+    // ?IsSchoolTime@CTCVillage@@QBE_NXZ and ?IsStoryTime@CTCVillage@@QBE_NXZ, out of line at 0x00658A35 (IsTimeBetween over
+    // CVillageDef::SchoolStartTimes +0x54 / SchoolDuration +0x60) and 0x00658A80 (StoryStartTimes +0x44 / StoryDuration +0x50); Ego_r
+    // order IsSchoolTime, IsStoryTime (0x0069A9A4 / 0x0069A9F1) = retail order. IsTimeBetween (0x00658620) is declared here only when
+    // FABLE_RETAIL_CTCVILLAGE_ISWORKTIME does not already declare it. Declarations only.
+public:
+#ifndef FABLE_RETAIL_CTCVILLAGE_ISWORKTIME
+    bool IsTimeBetween(const std::vector<long>& start_times, long duration) const;   // 0x00658620
+#endif
+    bool IsSchoolTime() const;                               // 0x00658A35
+    bool IsStoryTime() const;                                // 0x00658A80
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_ISWORKTIME
+    // Opt-in (agentNF25b, 2026-11-12, row 0x00658B20 and its binders): Ego_r.pdb + FableWin.pdb ?IsWorkTime@CTCVillage@@QBE_NXZ (out of line at
+    // 0x00658B20: IsTimeBetween over CVillageDef::WorkStartTimes +0x64 / WorkDuration +0x70; Ego_r order IsWorkTime, IsCookTime = retail
+    // 0x00658B20, 0x00658B6B) and ?IsTimeBetween@CTCVillage@@QBE_NABV?$vector@JV?$allocator@J@std@@@std@@J@Z (0x00658620, landed).
+    // Declarations only.
+public:
+    bool IsTimeBetween(const std::vector<long>& start_times, long duration) const;   // 0x00658620
+    bool IsWorkTime() const;                                 // 0x00658B20
 #endif
 private:
 #ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
@@ -116,7 +180,11 @@ public:
     std::list<CCountedPointer<CVillageTaskPickCrops> > CropTasks; // +0x58
     std::list<CCountedPointer<CVillageTaskSecuritySweep> > SecuritySweepTasks; // +0x5c
     std::list<CCountedPointer<CVillageTaskCarryCrate> > CrateTasks; // +0x60
+#ifdef FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
+    std::set<long>   PlayersCrimes;                          // +0x64 (Q19 opt-in: the Ego_r.pdb type)
+#else
     unsigned char    PlayersCrimes[0xc];                     // +0x64 set<long,std::less<long>,std::allocator<long>_>
+#endif
     std::list<CIntelligentPointer<CThingMarker> > VillageMarkers;    // +0x70
     std::list<CIntelligentPointer<CThing> > VillageDummies;          // +0x74
     bool             Initialised;                            // +0x78
@@ -157,6 +225,29 @@ public:
     unsigned char    GuardWarningHero[0x8];                  // +0xdc CIntelligentPointer<CThingAICreature>
     bool             CurrentIsHeroCriminal;                  // +0xe4
     unsigned char    _pad_0xe5[0x3];                         // +0xe5
+#ifdef FABLE_RETAIL_CTCVILLAGE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00661245
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00661248
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual overrides this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets. SetVillageLimbo: Ego_r.pdb
+// ?SetVillageLimbo@CTCVillage@@QAEX_N@Z, out of line at 0x0065C36E (the landed binding); RemoveThingAndUpdateCameraPoints: Ego_r.pdb
+// ?RemoveThingAndUpdateCameraPoints@CTCVillage@@QAEXPAVCThing@@@Z, retail 0x0065B6DD (landed).
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x0066122A
+public:
+    virtual void OnInitialActivate();  // slot 6, 0x0065CE88
+    void SetVillageLimbo(bool limbo);  // 0x0065C36E
+    void RemoveThingAndUpdateCameraPoints(CThing* thing);  // 0x0065B6DD
+public:
+#endif // FABLE_RETAIL_CTCVILLAGE_VSLOTS3
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CTCVillage) == 0xe8);
@@ -231,6 +322,12 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCVillage {
 public:
+#ifdef FABLE_RETAIL_CTCVILLAGE_SCHOOLSTORYTIME
+    // Opt-in (agentNF26, 2026-11-12) for the flattened view, same declarations as the retail branch's block: Ego_r.pdb + FableWin.pdb
+    // ?IsSchoolTime@CTCVillage@@QBE_NXZ (0x00658A35) and ?IsStoryTime@CTCVillage@@QBE_NXZ (0x00658A80). Declarations only; no layout change.
+    bool IsSchoolTime() const;                               // 0x00658A35
+    bool IsStoryTime() const;                                // 0x00658A80
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08

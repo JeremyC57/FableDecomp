@@ -1,0 +1,8 @@
+addr       parity           behav  name
+006b05a0   RELOCATION_MATCH PASS   CreatePPhysicsMeshInfo
+
+WINS: 1
+  006b05a0 RELOCATION_MATCH CTCPhysicsBase::CreatePPhysicsMeshInfo
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCPhysicsBase_CreatePPhysicsMeshInfo_006b05a0

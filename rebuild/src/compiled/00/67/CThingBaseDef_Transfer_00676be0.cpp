@@ -73,20 +73,31 @@ public:
     CMemoryDataInputStream* m_pLoadStream;              // +0x24
     CDataOutputStream*      m_pSaveStream;              // +0x28
     protected: void CheckCRC(const char* name); public:                    // 0x00404500
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
-    template<class T> void Transfer(const char* name, T& value, const T& defaultValue)
-    {
-        CheckCRC(name);
-        switch (m_mode) {
-        case 2:
-            CPersistTraits<T>().TransferBinaryIn(*m_pLoadStream, value);
-            break;
-        case 3:
-            CPersistTraits<T>::TransferBinaryOut(m_pSaveStream, value);
-            break;
-        }
-    }
+    template<class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
+
+// agentNF19: Transfer<bool> is out of line in retail (0x004045C0, Ego_r/FableWin ??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z),
+// while this TU expands the long / float / CDefString / CThingComponentSet transfers in place. The member template stays a
+// declaration (so the bool call binds the out-of-line instance) and the expanded types get the same body as inline explicit
+// specializations. (A declared bool specialization next to an in-class inline body hits a VC7.1 internal compiler error.)
+#define NF19_TRANSFER_INLINE(T) \
+template<> inline void CPersistContext::Transfer<T>(const char* name, T& value, const T& defaultValue) \
+{ \
+    CheckCRC(name); \
+    switch (m_mode) { \
+    case 2: \
+        CPersistTraits<T>().TransferBinaryIn(*m_pLoadStream, value); \
+        break; \
+    case 3: \
+        CPersistTraits<T>::TransferBinaryOut(m_pSaveStream, value); \
+        break; \
+    } \
+}
+NF19_TRANSFER_INLINE(CThingComponentSet)
+NF19_TRANSFER_INLINE(long)
+NF19_TRANSFER_INLINE(float)
+NF19_TRANSFER_INLINE(CDefString)
+#undef NF19_TRANSFER_INLINE
 
 #pragma pack(push, 1)
 class CThingBaseDef {

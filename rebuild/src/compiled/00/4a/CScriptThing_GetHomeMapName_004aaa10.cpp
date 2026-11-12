@@ -1,7 +1,11 @@
 
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (Ego_r.pdb + FableWin.pdb `dynamic initializer
+//   for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); the null branch copies it with the out-of-line
+//   CCharString(const CCharString&) 0x0099EC30 (a public static of the row's CScriptThing model, spelled as engine/CScriptThing.h declares
+//   it). Was kHomeMapName (a char array) through CCharString(const char*), neither of which retail references.
 class CCharString { public:
     char* p;
-    CCharString(const char* s);
+    CCharString(const CCharString& other);   // copy 0x0099EC30
 };
 
 struct CInner {
@@ -21,14 +25,13 @@ class CScriptThing { public:
     unsigned char _pad_0x0[0x4];
     CInner* inner;
     CCharString GetHomeMapName();
+    static CCharString NullString;           // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };
-
-extern const char kHomeMapName[];
 
 CCharString CScriptThing::GetHomeMapName()
 {
     CInner* inner = this->inner;
     if (inner == 0)
-        return CCharString(kHomeMapName);
+        return NullString;
     return inner->GetName();
 }

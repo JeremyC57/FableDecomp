@@ -1,4 +1,5 @@
-// CAIStateGroup_SeekScriptTarget::IsStillRunnable() -- the enemy is alive, still the creature's script target (the
+// CAIStateGroup_SeekScriptTarget::IsStillRunnable() const -- the enemy is alive, still the creature's script target (the
+// Leaf: ?IsStillRunnable@CAIStateGroup_SeekScriptTarget@@ABE_NXZ
 // targeting component's slot 29) and the component's pointer at +0x40 is set.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093BFA0, length 142 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x004365B0 (inlined GetInterface, type 8, bit 8 of the bitset dword at +0x20:
@@ -10,6 +11,7 @@
 // compare, `mov al,1` / shared `xor al,al`. PEnemy is the engine header name (the header flattens the base so the
 // class is modelled locally); the component's members are descriptive.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF24): own symbol made private const, as both PDBs spell it: ?IsStillRunnable@CAIStateGroup_SeekScriptTarget@@ABE_NXZ (was public non-const QAE); landed 0x0093C030 binds it
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -146,10 +148,11 @@ struct CThingB {
 
 struct CAIStateGroup_SeekScriptTarget : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;             // +0x14 CIntelligentPointer<CThing>
-    bool IsStillRunnable();
+private:   // Ego_r 0x0095F610 / FableWin 0x02B81150: private const (ABE)
+    bool IsStillRunnable() const;
 };
 
-bool CAIStateGroup_SeekScriptTarget::IsStillRunnable()
+bool CAIStateGroup_SeekScriptTarget::IsStillRunnable() const
 {
     CTCScriptTargeting* pTargeting;
     ((CThingB*)PBrain->PCreature)->GetInterface(&pTargeting, 8);

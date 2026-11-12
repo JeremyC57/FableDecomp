@@ -23,7 +23,7 @@
 #include "engine/Direct3D9Types.h"
 #include "engine/CDisplayManager.h"
 
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 void CEngineInternalPrimitive2DViewport::Update(const CEnginePrimitive& primitive, unsigned long)
 {
@@ -36,7 +36,7 @@ void CEngineInternalPrimitive2DViewport::Update(const CEnginePrimitive& primitiv
     AlphaMaskInfo.AlphaMaskBank = viewport.AlphaMaskBank;
     AlphaMaskInfo.AlphaMaskBankIndex = viewport.AlphaMaskBankIndex;
     AlphaMaskInfo.AlphaMaskClipBox = viewport.AlphaMaskClipBox;
-    C2DExtentsI dims = g_pDisplayManager_01436e1c->GetRenderTargetDimensions();
+    C2DExtentsI dims = NEngineInternal::GPDisplayManager->GetRenderTargetDimensions();
     float invHalfWidth = 1.0f / (dims.X * 0.5f);
     float invHalfHeight = 1.0f / (dims.Y * 0.5f);
     float right = (invHalfWidth * viewport.AlphaMaskClipBox.BRX) - 1.0f;

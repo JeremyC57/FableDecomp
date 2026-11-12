@@ -8,7 +8,6 @@
 #pragma intrinsic(fabs)
 
 extern const float DELTA_NOTIONAL_ZERO;            // 0x0129BA3C (0.0001f)
-extern const float g_One;                 // 0x0122DED8 (1.0f)
 
 class CQuaternion { public:
     float X, Y, Z, W;
@@ -20,7 +19,7 @@ bool CQuaternion::IsIdentity() const
     if (fabs(X) < DELTA_NOTIONAL_ZERO &&
         fabs(Y) < DELTA_NOTIONAL_ZERO &&
         fabs(Z) < DELTA_NOTIONAL_ZERO &&
-        fabs(W - g_One) < DELTA_NOTIONAL_ZERO)
+        fabs(W - 1.0f) < DELTA_NOTIONAL_ZERO)
         return true;
     return false;
 }

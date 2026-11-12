@@ -144,7 +144,7 @@ struct CChangingStateComponent {                   // the polymorphic root: the 
     virtual void v132();
     virtual void v133();
     virtual void v134();
-    virtual const SStateInfo_005546f0* GetStateInfo(long state);   // slot 135 (+0x21c)
+    virtual const SStateInfo_005546f0* GetState(long state);   // slot 135 (+0x21c) 0x0052CEB0 GetState (Ego_r.pdb / FableWin.pdb ?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z; name-fix 2026-11-12)
     virtual void v136();
     virtual void v137();
     virtual void v138();
@@ -178,7 +178,7 @@ class CMorphingSprite : public CChangingStateComponent { public:
 void CMorphingSprite::ProcessChangeState()
 {
     CChangingStateComponent::ProcessChangeState();
-    if (GetStateInfo(m_currentState)->m_flags & 8)
+    if (GetState(m_currentState)->m_flags & 8)
         ApplyMorph(m_stateMorphs[m_currentState], m_morphWord);
 }
 }

@@ -21,7 +21,7 @@ class CInputManager { public:
     long          m_enabled;                       // +0x28 (descriptive)
     bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent& event) const;   // 0x009F50A0 (Ego_r.pdb const, reference)
 };
-extern CInputManager* PInputManager;             // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class C3DVector { public:
     float X, Y, Z;
@@ -76,7 +76,7 @@ void CTCPhysicsRigidBody::ComputeForces(CRigidBodyConfig& config)
     config.Torque.Zero();
     config.CMForce.Zero();
     CInputEvent event;
-    if (PInputManager->m_enabled && PInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x2e, event)) {
+    if (GPInputManager->m_enabled && GPInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x2e, event)) {
         config.CMForce.Z += 25.0f / OneOverMass;
         config.Torque.X = GFFloatRandom(100.0f, GetWorld().GetWorldSeed());
         config.Torque.Y = GFFloatRandom(100.0f, GetWorld().GetWorldSeed());

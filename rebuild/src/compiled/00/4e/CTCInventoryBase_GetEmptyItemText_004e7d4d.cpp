@@ -7,17 +7,20 @@
 // constructed by its own dynamic initialiser).
 // Shape: a by-value class result: the hidden result pointer is the first stack argument (`mov ecx,[esp+4]`), re-read for the
 // return value (`mov eax,[esp+4]`), `ret 8` for it plus the unused argument; `this` is never read.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #pragma optimize("s", on)
 class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);                       // 0x0099B720
     ~CWideString();                                              // 0x0099B510
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_EmptyWideString;                            // 0x013BCA24
 struct CTCInventoryBase_Retail {
     CWideString GetEmptyItemText(long itemType);
 };
 CWideString CTCInventoryBase_Retail::GetEmptyItemText(long itemType)
 {
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+006A7600	??RCThingFilter_IsCreatureThreatTo@@QBE_NABVCThingCreatureBase@@@Z	ONE source + body, verify before use: Ego_r.pdb order 0x005A2F80 AICreatureHasProperty / 0x005A2FA0 CreatureCanHearThing / 0x005A2FB0 IsCreatureThreatTo = retail 0x006A75D0 / 0x006A75F0 / 0x006A7600; body is AreThingsEnemies(*member, arg)	manifest label std::_Cons_val<...CParticleMorphs::CEntry...> (propagated from a byte-identical body)

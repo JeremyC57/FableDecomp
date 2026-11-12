@@ -9,7 +9,6 @@
 // product at a time); the three deltas are loaded first, then the products are summed z, y, x; the compare materialises an int.
 #include "engine/C3DVector.h"
 
-extern const float g_fZero;                         // 0x0122DEDC
 
 #include "engine/CThing.h"
 
@@ -26,5 +25,5 @@ bool CThingFilter_MakesLineWithPosInDirectionOfLine::operator()(CThing* thing) c
     delta.X = pos.X - Pos.X;
     delta.Y = pos.Y - Pos.Y;
     delta.Z = pos.Z - Pos.Z;
-    return delta.X * Line.X + delta.Y * Line.Y + delta.Z * Line.Z > g_fZero;
+    return delta.X * Line.X + delta.Y * Line.Y + delta.Z * Line.Z > 0.0f;
 }

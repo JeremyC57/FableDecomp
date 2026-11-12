@@ -1,0 +1,90 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00407370	CUserProfileManager	ApplyValues	?ApplyValues@CUserProfileManager@@IAEXXZ	CUserProfileManager::ApplyValues	?ApplyValues@CUserProfileManager@@QAEXXZ	Ego_r.pdb + FableWin.pdb spell it protected (IAE); binders 00408340 / 004083b0 (SetDefaultValuesAudio) respelled
+0x004083B0	CUserProfileManager	SetDefaultValuesAudio	?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ	CUserProfileManager::SetDefaultValuesGameplay	?CUserProfileManager_SetDefaultValuesGameplay@@YIXPAVCUserProfileManager@@@Z	Ego_r.pdb 0x00406350 / FableWin.pdb 0x01881DC0 ?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ; engine/CUserProfileManager.h SETTERS puts Audio at 0x004083B0 and Gameplay at 0x00408360; reloc_bindings binds the Audio symbol to 004083b0 (first caller 0041e6d3); body sets Sound/Music/Dialogue volumes, SoundsMuted, UsingHeadPhones then ApplyValues; hdr opt-in FABLE_RETAIL_CUSERPROFILEMANAGER_AUDIODEFAULTS
+0x00669D30	CSpecialEffectsDef	GetEffectFromString	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	CSpecialEffectsDef::GetEffectFromString	CalcAndLookup	both PDBs; body = the shared engine/CSpecialEffectsDef header body (FABLE_RETAIL_SKYBEAM_ORIGINAL), emitted through a member-pointer global
+0x00687A70	CInputProcessGameBase	AddToInterface	?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z	CInputProcessGameBase::AddToInterface	AddToInterface	both PDBs; was a CInputProcessGameBase_Methods stand-in; stores PGamePlayerInterface then calls CAInputProcess::AddToInterface
+0x00688A60	CInputProcessTargetLockRightStickTargetSelect	AddToInterface	?AddToInterface@CInputProcessTargetLockRightStickTargetSelect@@UAE_NAAVCInputProcessManager@@@Z	CInputProcessTargetLockRightStickTargetSelect::AddToInterface	AddToInterface	both PDBs; was a free base_ati stand-in leaf; hdr opt-in FABLE_RETAIL_CINPUTPROCESSTARGETLOCKRIGHTSTICKTARGETSELECT_ADDTOINTERFACE
+0x0068EAF0	CInputProcessWatchForWillChargeUpThirdPersonModeTermination	AddToInterface	?AddToInterface@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z	CInputProcessWatchForWillChargeUpThirdPersonModeTermination::AddToInterface	AddToInterface	Ego_r.pdb 0x006BAD70 / FableWin.pdb 0x021E9A10; leaf was unmangled on a made-up WatchForBase class; rebuilt on engine/CInputProcessWatchForWillChargeUpThirdPersonModeTermination.h with the new FABLE_RETAIL_CINPUTPROCESSWATCHFORWILLCHARGEUPTHIRDPERSONMODETERMINATION_ADDTOINTERFACE opt-in (QuitModeTimer +0x28)
+0x00697F30	CGameCameraManager	GetRenderCamera	?GetRenderCamera@CGameCameraManager@@UBE?AVCCamera@@M@Z	CGameCameraManager::GetRenderCamera	GetRenderCamera	both PDBs; body = GetInterpolatedCamera(interpolation, Camera, OldCamera); hdr opt-in FABLE_RETAIL_CGAMECAMERAMANAGER_GETRENDERCAMERA
+0x006A7600	CThingFilter_IsCreatureThreatTo	operator()	??RCThingFilter_IsCreatureThreatTo@@QBE_NABVCThingCreatureBase@@@Z	std::_Cons_val<...pair<EHeroMorphType,CParticleMorphs::CEntry>...>	CEntry>_const&>	both PDBs; body = CTCEnemy::AreThingsEnemies(*Creature, thing); binder 0084f850 already spells it
+0x006B08E0	CTCPhysicsBase	SetPhysicsMeshInfoFromGraphic	?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z	CTCPhysicsBase::CreatePPhysicsMeshInfo	CreatePPhysicsMeshInfo	Ego_r.pdb + FableWin.pdb; calls CreatePPhysicsMeshInfo; hdr opt-in FABLE_RETAIL_CTCPHYSICSBASE_SETPHYSICSMESHINFOFROMGRAPHIC
+0x0078B2A0		IS_THING_ALIVE<CIntelligentPointer<CThingObject> >	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@YI_NABV?$CIntelligentPointer@VCThingObject@@@@@Z	_global::IsThingAlive_0078b2a0	?IsThingAlive_0078b2a0@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z	FableWin.pdb 0x01DE6D80 exact mangling (not in Ego_r.pdb); callers' pointers (Bar, food, PTable, PAmmo) are CThingObject; explicit instantiation of engine/ThingAlive.h
+0x007C3EA0	CTCHealLife	SetAICast	?SetAICast@CTCHealLife@@QAEXJ@Z	_global::SetMember_dword0x18_007c3ea0	?M@C_007c3ea0@@QAEXK@Z	both PDBs; Ego_r layout SpellLevel/AICast at +0x18 matches the store
+0x008685F0	CHitParameters	SetThingHitting	?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z	CHitParameters::SetThingHitting	SetThingHitting	both PDBs; PThingHitting = &thing (engine/CHitParameters.h)
+0x009B4BD0	std::vector<CDefinitionManager::CInstantiatedDefInfo*>	_M_insert_overflow	?_M_insert_overflow@?$vector@PAVCInstantiatedDefInfo@CDefinitionManager@@V?$allocator@PAVCInstantiatedDefInfo@CDefinitionManager@@@std@@@std@@IAEXPAPAVCInstantiatedDefInfo@CDefinitionManager@@ABQAV34@ABU__true_type@2@I_N@Z	std::vector::_M_insert_overflow	?_M_insert_overflow@?$vector@PAVCUnprovenElement_009b4bd0@@V?$allocator@PAVCUnprovenElement_009b4bd0@@@std@@@std@@IAEX	no PDB mangling (retail is STLport, the PDBs Dinkumware); sole caller _M_fill_insert 0x009B4FF0 of the same vector (already binds this leaf); Ego_r InstantiatedDefs CArray<CInstantiatedDefInfo*> +0xBC = retail +0xA4
+0x009D5A90	CBankFileAsync	RestartAbortedReads	?RestartAbortedReads@CBankFileAsync@@AAEXXZ	CBankFileAsync::RestartReads	RestartReads	both PDBs (private); binder 009d5b60 respelled
+0x009F0570	CCodeSectionManager	IsSectionRegisteredLongName	?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z	CCodeSectionManager::Contains	Contains	both PDBs; Ego_r layout LongNameToHandle at retail +0x10, the map the body reads (as GetHandleFromLongName 0x009F0500); binder 004b3a20 respelled
+0x00AE9450	CCountedPointer<NParticleEngine::CParticleEmitter>	CCountedPointer	??0?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	CCountedPointer_00ae91d0::CCountedPointer_00ae91d0	CCountedPointer_00ae91d0	FableWin.pdb has the exact ctor mangling, and Ego_r.pdb has the CCountedPointer<NParticleEngine::CParticleEmitter> instantiation (27 members); the ctor stores DeleteData 0x00AE91D0 of the same instantiation; explicit instantiation
+0x00CD2770	CScriptGameResourceObjectScriptedThingBase	Release	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	CScriptGameResourceObjectScriptedThingBase::Release	Clear	both PDBs; body PImp.ReleaseData(); PImp.Data = 0; 00eb53a0 binds it
+0x00EB53A0	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	AttackHero	?AttackHero@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ	CMurderTwistSheriff::Init	Init	FableWin.pdb exact mangling; Ego_r.pdb has the CMurderTwistAssassin class (IsFeelingThreatened / OnPredicateFail / Alloc); built through the shared header ASSASSIN opt-in
+# Section 2
+0x00408340	?SoundMutedChanged@@YAXXZ	?ApplyValues@CUserProfileManager@@IAEXXZ
+0x004083B0	?CUserProfileManager_Helper@@YIXPAVCUserProfileManager@@@Z	?ApplyValues@CUserProfileManager@@IAEXXZ
+0x004B3A20	?Contains@CCodeSectionManager@@QAE_NVCCharString@@@Z	?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z
+0x00542330	?UpdateFont@CIconText@NUISystem@@QAEXXZ	?GetDataFromDef@CIconText@NUISystem@@QAEXXZ
+0x00669D30	?Find@CCRCMap@@QAEPAUSCRCMapIterator@@PAU2@ABK@Z	?find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Const_traits@U?$pair@$$CBKJ@std@@@2@@2@ABK@Z
+0x00669D30	?g_EmptyString@@3QBDB	?NullChar@CCharString@@1DB
+0x00687A70	?Helper@CInputProcessGameBase_Methods@@QAE_NPAVCInputProcessManager@@@Z	?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z
+0x00688A60	?base_ati@@YIXPAVCInputProcessTargetLockRightStickTargetSelect@@@Z	?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z
+0x0068EAF0	?AddToInterface@CInputProcessWatchForBaseThirdPersonModeTermination@@QAE_NAAVCInputProcessManager@@@Z	?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z
+0x00697F30	?Helper6978d0@CGameCameraManagerMethods@@QBE?AVCCamera@@MPAUCameraState@@0@Z	?GetInterpolatedCamera@CGameCameraManager@@ABE?AVCCamera@@MABV2@0@Z
+0x006A7600	?cons_construct@@YIXPAXPAUPair@@@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z
+0x006B08E0	_ForwardTarget_006b05a0	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z
+0x00799900	?GetThingSearchTools@CTCShopKeeper@@QBEPAVCThingSearchTools@@XZ	?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ
+0x00799900	?GetPBestThingInRoughArea@CThingSearchTools@@QAE_NABVC2DBoxI@@ABVCThingFilter_IsPotentialCustomer@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z	?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsPotentialCustomer@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z
+0x00799900	?GetPFirstThingInRoughArea@CThingSearchTools@@QAE_NABVC2DBoxI@@ABVCThingFilter_IsPotentialCustomer@@PAPAVCThingCreatureBase@@@Z	?GetPFirstThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsPotentialCustomer@@PAPAVCThingCreatureBase@@@Z
+0x007A69F0	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z	?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z
+0x007BA3C0	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@VCCharString@@PAJJ_N@Z	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z
+0x007BA550	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@VCCharString@@PAJJ_N@Z	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z
+0x007BE0F9	?SetHitter@CHitParameters@@QAEXPAVCThing@@@Z	?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z
+0x007D83C0	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@VCCharString@@PAJJ_N@Z	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z
+0x007E92D0	?GetThingSearchTools@CTCBase@@QBEPAVCThingSearchTools@@XZ	?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ
+0x007E92D0	?GetAllThings@CThingSearchTools@@QAEXABUCFilter_Bind2@@AAUCThingList@@@Z	?GetAllThings@CThingSearchTools@@QBEXABUCFilter_Bind2@@AAUCThingList@@@Z
+0x007E92D0	?GetAllThings@CThingSearchTools@@QAEXABUCThingFilter_HasTCOfLeafType@@AAUCThingList@@@Z	?GetAllThings@CThingSearchTools@@QBEXABUCThingFilter_HasTCOfLeafType@@AAUCThingList@@@Z
+0x00811760	?SetWeapon@CHitParameters@@QAEXPAVCThing@@@Z	?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z
+0x00838BC0	?SetWeapon@CHitParameters@@QAEXPAVCThing@@@Z	?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z
+0x008685F0	??_7CIntelligentPointer@@6B@	??_7?$CIntelligentPointer@VCThing@@@@6B@
+0x00878B60	?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@QBE?AVC3DVector@@M@Z	?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z
+0x008DDD70	?SetState@CTCHealLife@@QAEXJ@Z	?SetAICast@CTCHealLife@@QAEXJ@Z
+0x008EC9C0	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z	?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z
+0x008F1250	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@VCCharString@@PAJJ_N@Z	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z
+0x009236C0	?IS_THING_ALIVE@@YI_NABUCIntelligentPointerThingObject@@@Z	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@YI_NABV?$CIntelligentPointer@VCThingObject@@@@@Z
+0x009672C0	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@VCCharString@@PAJJ_N@Z	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z
+0x00967650	?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABVCBaseIntelligentPointer@@@Z	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@YI_NABV?$CIntelligentPointer@VCThingObject@@@@@Z
+0x00968860	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@VCCharString@@PAJJ_N@Z	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z
+0x009BE590	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009BE610	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009BE6C0	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009BE750	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009BEBB0	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009D5B60	?KickPendingReads@CBankFileAsync@@QAEXXZ	?RestartAbortedReads@CBankFileAsync@@AAEXXZ
+0x009D61F0	?HasReadFinished@CThreadedFile@@QAE_NK@Z	?RemoveObject@CThreadedFile@@QAE_NK@Z
+0x009D61F0	?Free_00a62ed0@CHandleBasedMemoryPool@@QAEXJ@Z	?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z
+0x009E3790	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009E3830	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009E3870	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x009FBBD0	?ConvertPFDDataToRGB@CPixelFormat@@QBEXPAEPAVCRGBColour@@@Z	?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z
+0x00A2F190	?Free_00a62ed0@CHandleBasedMemoryPool@@QAEXJ@Z	?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z
+0x00A68370	?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	?GD3DFormats@@3QBVCD3DFormatInfo@@B
+0x00AE9450	?Destroy_00ae91d0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@SIXPAX@Z
+0x00BDD8E0	?g_pEngine_01436ea8@@3PAUCEngineGlobal_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BDF9B0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BE5BB0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BEA7E0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BEAA00	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF36C0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF3790	?g_pEngine_01436ea8@@3PAUCEngineGlobal_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF6260	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF62E0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF8C10	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF8D10	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF9900	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF9980	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF9A00	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BF9B40	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BFD160	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BFD3B0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BFDC90	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BFDCC0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00BFDD40	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+0x00CD2770	@SubHelper@4	?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXXZ

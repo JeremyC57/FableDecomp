@@ -13,8 +13,10 @@
 //   `if (p) free(p)`); the empty tag temporaries share the dead `x` argument slot and __copy's null distance
 //   pointer is pushed once ahead of the size() >= xlen test for both remaining arms.
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
+}
 
 class CDefPointeeBase { public:
     virtual void v00();
@@ -27,17 +29,23 @@ template <class T> class CDefPointer { public:                 // 4 bytes
 };
 typedef CDefPointer<const CThingBaseDef> TDefPtr;
 
-TDefPtr* __fastcall __uninitialized_copy(const TDefPtr* first, const TDefPtr* last, TDefPtr* result, const __false_type&);   // 0x0071EA10
-TDefPtr* __fastcall __copy(const TDefPtr* first, const TDefPtr* last, TDefPtr* result, const random_access_iterator_tag&, int*);   // 0x0071F430
-void __fastcall __destroy_aux(TDefPtr* first, TDefPtr* last, const __false_type&);   // 0x005B26E9
+// STLport 4.6 helpers (namespace std, the templates retail instantiates; agentNF20 2026-11-11: were non-template global stand-ins).
+namespace std {
+template <class _InputIter, class _ForwardIter>
+_ForwardIter __fastcall __uninitialized_copy(_InputIter first, _InputIter last, _ForwardIter result, const __false_type&);   // 0x0071EA10
+template <class _RandomAccessIter, class _OutputIter, class _Distance>
+_OutputIter __fastcall __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result, const random_access_iterator_tag&, _Distance*);   // 0x0071F430
+template <class _ForwardIter>
+void __fastcall __destroy_aux(_ForwardIter first, _ForwardIter last, const __false_type&);   // 0x005B26E9
+}
 
-inline TDefPtr* __copy_ptrs(const TDefPtr* first, const TDefPtr* last, TDefPtr* result, const __false_type&)
+inline TDefPtr* __copy_ptrs(const TDefPtr* first, const TDefPtr* last, TDefPtr* result, const std::__false_type&)
 {
-    return __copy(first, last, result, random_access_iterator_tag(), (int*)0);
+    return std::__copy(first, last, result, std::random_access_iterator_tag(), (int*)0);
 }
 inline void _Destroy(TDefPtr* first, TDefPtr* last)
 {
-    __destroy_aux(first, last, __false_type());
+    std::__destroy_aux(first, last, std::__false_type());
 }
 
 struct CDefPointerVector {                              // STLport vector<CDefPointer<const CThingBaseDef> > (12 bytes)
@@ -67,11 +75,11 @@ CDefPointerVector& CDefPointerVector::operator=(const CDefPointerVector& x)
             _M_start = tmp;
             _M_end_of_storage = _M_start + xlen;
         } else if (size() >= xlen) {
-            TDefPtr* i = __copy_ptrs(x._M_start, x._M_finish, _M_start, __false_type());
+            TDefPtr* i = __copy_ptrs(x._M_start, x._M_finish, _M_start, std::__false_type());
             _Destroy(i, _M_finish);
         } else {
-            __copy_ptrs(x._M_start, x._M_start + size(), _M_start, __false_type());
-            __uninitialized_copy(x._M_start + size(), x._M_finish, _M_finish, __false_type());
+            __copy_ptrs(x._M_start, x._M_start + size(), _M_start, std::__false_type());
+            std::__uninitialized_copy((const TDefPtr*)x._M_start + size(), (const TDefPtr*)x._M_finish, _M_finish, std::__false_type());
         }
         _M_finish = _M_start + xlen;
     }

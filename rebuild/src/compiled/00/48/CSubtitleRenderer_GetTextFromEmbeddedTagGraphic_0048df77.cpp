@@ -1,6 +1,8 @@
 // CSubtitleRenderer::GetTextFromEmbeddedTagGraphic(long graphic) const -- the localised controller-side caption for an embedded button graphic: TEXT_GUI_CONTROLLER_LEFT for the A/X/D-pad-left graphics, TEXT_GUI_CONTROLLER_RIGHT for B/Y/D-pad-right, else the empty wide string
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048DF77, 155 bytes; `ret 8` (hidden result + graphic).
@@ -15,8 +17,9 @@ class CWideString {
 public:
     unsigned short* m_pData;
     CWideString(const CWideString& other);         // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_EmptyWideString;        // 0x013BCA24
 class CCharString {
 public:
     void* m_pStringData;
@@ -77,5 +80,5 @@ CWideString CSubtitleRenderer::GetTextFromEmbeddedTagGraphic(long graphic) const
         tag = "TEXT_GUI_CONTROLLER_RIGHT";
     if (tag != "")
         return CMainGameComponent::Get()->TextBank->GetTextBySymbol(tag);
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTHINGSEARCHTOOLS_H
 #define FABLE_ENGINE_CTHINGSEARCHTOOLS_H
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS
@@ -10,7 +11,7 @@ namespace NThingMap { class CThingMap;class CThingMapManager; }
 class CThingSearchTools {
 protected:
     const std::list<CClass*>& PeekTypeList(long)const;
-#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY)
+#if (defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY))) || (!defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && (defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY)))
     // Chunk 756 (row 0x0049C700): Ego_r.pdb ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z
     // (protected const, out of line in retail at 0x0049C700).
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap& map,const C2DBoxI& area)const;
@@ -161,7 +162,13 @@ public:
         ++NoLookups;
         NoThingsScanned=0;
         ++SearchID;
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_THISEND
+        // Q18 opt-in (rows 0x006FE7C0 / 0x008780D0, the std::list instances): the loop's end is read from the member
+        //   (0x00878115 `cmp esi,[ebp+10h]` = this->AreaMaps._M_finish, with `this` and &AreaMaps both kept: ebp / ebx).
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=AreaMaps.end();++it) {
+#else
         for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
+#endif
             const NThingMap::CThingMap& map=**it;
             C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
             for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
@@ -174,7 +181,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE)
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -220,7 +231,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -245,12 +260,68 @@ public:
     template<class T,class Container,class Filter>
     void GetAllThingsInRoughArea(const C2DBoxI&,const Filter&,Container&) const;
 #endif
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_BODY) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
+    // Retail opt-in (chunk Q23, row 0x0063F7C0, the CFilter_Bind3<CThingFilter_IsNot, CThingFilter_HasNavigationInformation,
+    // CThingFilter_OverlappingBoundingBox> / CThingFindNavigationLayerAt instance): the ForEachInRoughArea<T,Filter,Proc> body with the
+    // PDB signature -- every Ego_r.pdb / FableWin.pdb instance (the Bind2 / Bind3 navigation-layer pair, the FrameUpdateThing and
+    // CThingFindHeightZBelowAt ones) is QBE and takes the functor as `const Proc&` (ABV), unlike the declaration below. The scan is the
+    // GetAllThingsInRoughArea body of FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA (needed: the search statics and
+    // GetAllThingMapsInArea; and CLIPAREA, CTCMAPWHO_SEARCHID, T::StatGetTypeFlags at the point of instantiation), with the map loop's end
+    // read from the member (0x0063F811 `cmp esi,[ebp+10h]`, as ROUGHAREA_THISEND) and the inline PeekCell (FABLE_RETAIL_CTHINGMAP_PEEKCELL_INLINE),
+    // calling proc on each filtered thing and returning whether any call returned true (retail: `mov byte ptr [esp+13h],1`). The empty
+    // cell-box test compares the edges (`cmp edx,esi ; je`, 0x0063F88A): the difference form keeps the width live for the x loop.
+    template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,const Proc& proc) const {
+        bool result=false;
+        std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+        GetAllThingMapsInArea(area,maps);
+        ++NoLookups;
+        NoThingsScanned=0;
+        ++SearchID;
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=AreaMaps.end();++it) {
+            const NThingMap::CThingMap& map=**it;
+            C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+            for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
+                long shift=NThingMap::LayerInfo[layer].ScaleShift;
+                C2DBoxI cells;
+                cells.TLX=local.TLX>>shift;
+                cells.TLY=local.TLY>>shift;
+                cells.BRX=((local.BRX-1)>>shift)+1;
+                cells.BRY=((local.BRY-1)>>shift)+1;
+                if(cells.TLX==cells.BRX || cells.TLY==cells.BRY)
+                    continue;
+                for(long y=cells.TLY;y<cells.BRY;++y) {
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+                    for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
+                        for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
+                            CTCMapwho* who=node->PMapwho;
+                            if(who->GetSearchID()<SearchID) {
+                                who->SetSearchID(SearchID);
+                                CThing& thing=who->GetParentThing();
+                                unsigned long mask=T::StatGetTypeFlags();
+                                if((thing.GetTypeFlags()&mask)==mask && filter(static_cast<const T&>(thing)) && proc(thing))
+                                    result=true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        maps.clear();
+        return result;
+    }
+#elif defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA)
     // Chunk 847 (row 0x0063E590 CWorldMap::GetNavigationLayerAt): Ego_r.pdb ??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@
     // VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@
     // QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@...@@AAVCThingFindNavigationLayerAt@@@Z and the CFilter_Bind3<CThingFilter_IsNot, ...> twin
     // (out of line in retail: 0x0063F4B0 the Bind2, 0x0063F7C0 the Bind3 instantiation). Declaration only: no layout change.
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_CONSTPROC
+    // Nested opt-in (agentFAM11, 2026-11-12, queue land1011dp): the declaration with the PDB signature -- every Ego_r.pdb / FableWin.pdb
+    // ForEachInRoughArea instance is QBE and takes the functor as `const Proc&` (ABV), e.g. the Bind2 navigation-layer instance
+    // 0x0063F4B0 and its Bind3 twin 0x0063F7C0 (whose landed body, FOREACHINROUGHAREA_BODY, already has `const Proc&`).
+    template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,const Proc& proc) const;
+#else
     template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,Proc& proc) const;
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA
     // Nested opt-in (chunk 853, row 0x0050A650 CWorldMap::GetMapNavigationAreaInit): Ego_r.pdb ??$GetAllTCsInRoughArea@VCTCCreatureGenerator@@
@@ -291,7 +362,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -328,7 +403,11 @@ public:
                 if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
                     continue;
                 for(long y=cells.TLY;y<cells.BRY;++y) {
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+                    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
                     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
                     for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
                         for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
                             CTCMapwho* who=node->PMapwho;
@@ -372,7 +451,11 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area,const Filte
    C2DBoxI cells(local.TLX>>shift,local.TLY>>shift,((local.BRX-1)>>shift)+1,((local.BRY-1)>>shift)+1);
    if(cells.BRX-cells.TLX==0||cells.BRY-cells.TLY==0)continue;
    for(long y=cells.TLY;y<cells.BRY;++y){
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#else
     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+#endif
     for(long x=cells.TLX;x<cells.BRX;++x,++cell){
      for(const NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext){
       CTCMapwho* who=node->PMapwho;

@@ -30,14 +30,20 @@ struct __false_type { __false_type() { } };
 typedef NEnvironmentInternal::CBlendedEnvironmentTheme CTheme;
 // Same-TU stand-ins for the out-of-line /Gr callees (GOTCHAS empty-tag rule): real bodies, never inlined, the tag
 // parameter unnamed -- VC7.1 then homes both __false_type temporaries on n's dead argument slot as retail.
+template <class _InputIter, class _ForwardIter>
+_ForwardIter __fastcall __uninitialized_copy(_InputIter first, _InputIter last, _ForwardIter result, const __false_type&);
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator first, _ForwardIterator last, const __false_type&);
 #pragma auto_inline(off)
-__declspec(noinline) CTheme* __fastcall __uninitialized_copy(CTheme* first, CTheme* last, CTheme* result, const __false_type&)   // 0x00889700
+template <>
+__declspec(noinline) CTheme* __fastcall __uninitialized_copy<CTheme*, CTheme*>(CTheme* first, CTheme* last, CTheme* result, const __false_type&)   // 0x00889700
 {
     for (; first != last; ++first, ++result)
         new (result) CTheme(*first);
     return result;
 }
-__declspec(noinline) void __fastcall __destroy_aux(CTheme* first, CTheme* last, const __false_type&)                            // 0x006B67A0
+template <>
+__declspec(noinline) void __fastcall __destroy_aux<CTheme*>(CTheme* first, CTheme* last, const __false_type&)   // 0x006B67A0
 {
     for (; first != last; ++first)
         first->~CTheme();

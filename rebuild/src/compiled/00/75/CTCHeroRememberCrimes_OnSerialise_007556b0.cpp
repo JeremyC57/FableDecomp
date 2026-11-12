@@ -37,7 +37,7 @@ public:
 class CPersistContext {
 public:
     template <class _Tp, class _Key> void TransferMap(const char* name, std::map<_Key, _Tp>& map, const _Tp& defaultValue);   // 0x00756D00 for <pair<long, long>, CCharString>
-    void Transfer(const char* name, signed char& value, const signed char& defaultValue);            // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);    // 0x004045C0 <bool> (agentNF19: Ego_r/FableWin ??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z)
 };
 
 class CTCHeroRememberCrimes {
@@ -45,7 +45,7 @@ public:
     virtual void v00();
     unsigned char _pad_0x04[0x8];              // +0x04 CTCBase
     std::map<CCharString, std::pair<long, long> > RegionNamesToCrimeDurationAndFine;   // +0x0C
-    signed char   HasPaidTheFine;              // +0x18 (PDB +0x1C, bool)
+    bool          HasPaidTheFine;              // +0x18 (PDB +0x1C, bool)
 
 protected:
     virtual void OnSerialise(CPersistContext& context, bool loading);
@@ -55,5 +55,5 @@ void CTCHeroRememberCrimes::OnSerialise(CPersistContext& context, bool loading)
 {
     context.TransferMap("RegionNamesToCrimeDurationAndFine", RegionNamesToCrimeDurationAndFine,
                         std::pair<long, long>(0, 0));
-    context.Transfer("HasPaidTheFine", HasPaidTheFine, 0);
+    context.Transfer<bool>("HasPaidTheFine", HasPaidTheFine, false);
 }

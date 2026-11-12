@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D5560, 359 bytes (`ret 4`, CWideString by hidden pointer);
 // CTCTavernGameCardSorting vtable 0x0126F5B4 slot 46 (GetAdditionalInfo, as ShoveHaPenny 0x007CFF40, landed).
 // Callees: CTCTavernGameCardBase::GetCardDef(CDefPointer<const CTavernGameCardBaseDef>*) 0x008F0B20;
-//          CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; GFIntToCharString(long) 0x0099F830 (`__fastcall`,
+//          CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; GFIntToCharString(long) 0x0099F830 (`__fastcall`,
 //          hidden result in ecx); CCharString::ToWideString() const 0x0099E480; CTCTavernGame::GetText(unsigned long)
 //          0x005E9E70; operator+(const CWideString&, const CWideString&) 0x0099BE70 and operator+(const CWideString&,
 //          const wchar_t*) 0x0099BF30 (both `__fastcall`); ~CWideString 0x0099B510; ~CCharString 0x0099EAE0; the defs'
@@ -61,7 +61,8 @@ class CTavernGameCardBaseDef : public CDefBase { public:
     unsigned char _pad_0x08[0x64];
     CRetailVector<CCardPositionsDef> CardOrders;   // +0x6c
 };
-struct CDefPointer {                            // CDefPointer<const CTavernGameDef>
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)                            // CDefPointer<const CTavernGameDef>
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -84,7 +85,7 @@ class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0x20];
     long          NumRounds;                    // +0x24
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70
 };
 struct CTCTavernGameCardBase : CTCTavernGame {
@@ -98,8 +99,8 @@ CWideString CTCTavernGameCardSorting::GetAdditionalInfo()
 {
     CCardDefPointer cardDef;
     GetCardDef(&cardDef);
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     return GetText(def->AdditionalInfo) + GFIntToCharString(cardDef->CardOrders.size() - NumRounds + 1).ToWideString()
          + L"/" + GFIntToCharString(cardDef->CardOrders.size()).ToWideString();
 }

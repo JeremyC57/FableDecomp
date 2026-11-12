@@ -1,0 +1,8 @@
+address	name	evidence
+0x009F3010	?ReadOnlyLock@CSurface@@QBE?AVCSurfaceLockedRect@@K@Z	Ego_r.pdb 0x00B46CF0 + FableWin.pdb 0x0181C595; row bytes are the landed Lock 0x009F33E0 twin plus `or ecx,10h` (D3DLOCK_READONLY); src/009f3010.cpp MATCH
+0x006AB430	?GetMovementBandTypeFromJoytickMagnitude@CThingPlayerCreature@@IBE?AW4EMovementBandType@@M@Z	Ego_r.pdb 0x00547210 + FableWin.pdb 0x018221C0 ("Joytick" is the PDB spelling); src/006ab430.cpp RELOCATION_MATCH
+0x00E1CAE0	?MonitorMazePhases@CQ_WizardBattleScript@NScript@@QAEXAAVCScriptThing@@@Z	Ego_r.pdb 0x00E63B80 + FableWin.pdb 0x039016C0; reads MazeDefeated +0x4F, writes MazePhase +0x50 (Ego_r layout - 0x14); src/00e1cae0.cpp RELOCATION_MATCH
+0x0092B900	?Update@CAIStateGroup_OnHeroPush@@UAEXXZ	Ego_r.pdb 0x0094EAB0 + FableWin.pdb 0x017B14F2; reads PushDir +0x14 and the TCI_ON_HERO_PUSH component; src/0092b900.cpp RELOCATION_MATCH
+0x0092ACE0	?GoToLibrary@CAIStateGroup_ApprenticeHero@@IAE_NXZ	Ego_r.pdb 0x0094DED0 + FableWin.pdb 0x02C6B220; calls GetObjectWithScriptName 0x00929FC0 with "LibraryMarker"; differ/0092ace0.cpp 389v389
+0x00F35C60	?PerlinNoise@CNoise@NFractal@@QBEMABVC2DVector@@@Z	Ego_r.pdb 0x00BC7400 + FableWin.pdb 0x017D62A7; reads P[] / G2[] at the Ego_r CNoise offsets; differ/00f35c60.cpp
+0x009F2F90	?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ	Ego_r.pdb 0x00B46C70 + FableWin.pdb 0x017C00D8; expanded inside 0x009F3010 (same TU); see NAME_FIXES.tsv

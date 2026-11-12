@@ -1,0 +1,30 @@
+source	address	symbol	status	binders_respelled	note
+QUEUE land1011dn	0x0063F150	CFilter_Bind2<CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>::operator()<CThingPhysical>	done	0	self rename; no landed binders (callers expand it or are unlanded)
+QUEUE land1011dn	0x0063F1E0	CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>::operator()<CThingPhysical>	done	0	self rename; no landed binders
+QUEUE land1011dn	0x00A12890	CPhysicsMeshObject::IsPointContainedInBoundingBox	done	0	self rename; callee IsSpherePartContainedInBoundingBox 0x00A11F20 spelled; binders 0x0063F150 / Q23's 0x0063F7C0 already used the right spelling
+QUEUE land1011dn	0x0094B3A0	RELOC_CONFLICT CCountedPointer<CModeSitBase/CModeSitFloor> ctor/dtor	done	3	resolved: 0x0094B3A0/0x008AB320 = CModeSitBase ctor/dtor, 0x008AB380/0x008AB3D0 = CModeSitFloor ctor/dtor, DeleteData 0x00938060 (Base) / 0x008AA810 (Floor), Reset 0x00938070 (Base); 7 self rows renamed; binders 0x0093B1D0, 0x008A8C60, 0x0090F830
+FAM10	0x007642C0	CCountedPointer<NShape::CShape>::Reset	done	1	0x007624E0 (also self-renamed to CTCShapeManager::GetInstantiationFromEnum)
+FAM10	0x00A01AA0	CCountedPointer<CCRCSymbolMap>::Reset	done	1	0x00A01950
+FAM10	0x00A29800	CCountedPointer<C3DAnimationManager>::Reset	done	1	0x00A27030
+FAM10	0x00A29F50	CCountedPointer<C3DQuadricBasedMeshOptimiser>::Reset	done	1	0x00A27030
+FAM10	0x00A29FC0	CCountedPointer<C3DMeshStripifier>::Reset	done	1	0x00A27030
+FAM10	0x009A71F0	CCountedPointer<CGraphicBankManager>::Reset	done	1	0x009A6610
+FAM10	0x0040F1B0	CCountedPointer<CUserProfileManager>::Reset	done	1	0x0040D2A0 (self-renamed CUserProfileManager::Get); other Get binders listed in NOTES
+FAM10	0x004195AF	CCountedPointer<CPlayerGui>::Reset	done	1	0x00487FB0
+FAM10	0x00834E40	CCountedPointer<CAIBrain>::Reset	done	1	0x00833010
+FAM10	0x009A6FD0	CCountedPointer<CDisplayManager>::Reset	done	1	0x009A6610
+FAM10	0x009A7180	CCountedPointer<CInputManager>::Reset	done	1	0x009A6610
+FAM10	0x009A7260	CCountedPointer<CMeshBankManager>::Reset	done	1	0x009A6610
+FAM10	0x009A7340	CCountedPointer<CFontManager>::Reset	done	1	0x009A6610
+FAM10	0x009A73D0	CCountedPointer<CDriveManager>::Reset	done	1	0x009A6610
+FAM10	0x00A002E0	CCountedPointer<CTextureManager>::Reset	done	1	0x009FEA20; return type checked: void in both PDBs, the stand-in's reference return was never used
+FAM10	0x00AB5E80	CCountedPointer<CSurface>::Reset	done	1	0x00AB5390
+FAM10	0x00B3E4A0	CCountedPointer<CMovableResourceMemoryPool>::Reset	partial	0	self row renamed; binder 0x00B3B240 left: its stand-in CMemoryPool = CMovableResourceMemoryPool and its ctor 0x00A62E20 / Initialise 0x00A02570 callees are stand-ins too (see NOTES)
+FAM10	0x00B82A50	CCountedPointer<CParticleSimulation>::Reset	done	1	0x00B82100
+FAM10	0x00AF6010	CCountedPointer<NParticleEngine::CPSCBase>::Reset	done	2	0x00AF4530, 0x00AF4EE0 (CCountedPointer.h moved out of namespace NParticleEngine)
+FAM10	0x00487140	CPlayer::FreezeControls	done	1	self rename; binder 0x00449A30 (self-renamed CPlayerManager::FreezePlayerControls)
+FAM10	0x00487170	CPlayer::SpecialAbilityFreezeControls	done	2	self rename; binders 0x007A71B0, 0x007A9E40
+FAM10	0x00634190	CPlayer::RemoveMode	done	2	0x004887C0, 0x006E7630; every other landed caller already binds the PDB spelling; BUSY callers 0x00487120/0x00487150/0x008DA7A0/0x0062BEF0 not touched
+FAM10	0x006345C0	CPlayer::AddMode	done	6	0x00487140, 0x00487170, 0x004887C0, 0x00636E50, 0x006E7630, 0x0088DF80
+FAM10	0x004516E7	std::vector<float>::vector(size_type, const float&, const allocator&)	partial	0	self row renamed (catalog CTCEnemy::SetFaction); BUSY binder 0x004538EB already right; binder 0x00453210 left: its own identity is unproven (see NOTES)
+extra	0x0050EEF0	CThingFilter_HasNavigationInformation::operator()	done	1	self rename (Ego_r + FableWin); binder 0x008266E0 (const CThing& -> const CThingPhysical&)

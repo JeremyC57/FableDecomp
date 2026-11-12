@@ -11,6 +11,7 @@
 // Shape: the history list is cleared twice (body, then ~_List_base), each node through CConsoleCommandLine's virtual
 //   destructor (`push 0 ; call [vtbl]`); CConsoleCommandLine's destructor is implicit, so its inlined copies store no vtable;
 //   the input-map walk is STLport's inline _M_increment, and the counted pointer clears Info before Data.
+// Name fix (agentNF23): the three map trees are STLport 4.6 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc> (map uses _Select1st<value_type>): the _M_erase calls now bind the landed rows' spellings for 0x009EECC0 / 0x009AA830 / 0x009EF6E0 (queue land1011da); the model had dropped the _KeyOfValue parameter. pair gains first_type for _Select1st.
 extern "C" void __cdecl free(void* block);                          // 0x00BFEA14
 
 namespace std {
@@ -32,8 +33,13 @@ template <class _Tp> struct less {
 };
 
 template <class _T1, class _T2> struct pair {
+    typedef _T1 first_type;
+    typedef _T2 second_type;
     _T1 first;
     _T2 second;
+};
+template <class _Pair> struct _Select1st {                       // STLport 4.6 <stl/_function.h> (the map's key-of-value)
+    const typename _Pair::first_type& operator()(const _Pair& __x) const { return __x.first; }
 };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
@@ -131,7 +137,7 @@ public:
     _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_header;
 };
 
-template <class _Key, class _Value, class _Compare, class _Alloc>
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 class _Rb_tree : public _Rb_tree_base<_Value, _Alloc> {
 public:
     typedef _Rb_tree_node<_Value>* _Link_type;
@@ -169,7 +175,7 @@ template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = all
 class map {
 public:
     typedef pair<const _Key, _Tp> value_type;
-    typedef _Rb_tree<_Key, value_type, _Compare, _Alloc> _Rep_type;
+    typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
     typedef typename _Rep_type::iterator iterator;
     iterator begin() { return _M_t.begin(); }
     iterator end() { return _M_t.end(); }

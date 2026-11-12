@@ -9,6 +9,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_QUEENHORNETSHOOTBABIES
+// Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): RTTI .?AVCCreatureAction_QueenHornetShootBabies@@
+// : CCombatActionBase (retail sizeof 0x114: no own members). Ego_r.pdb ??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z
+// (out of line at 0x0095CB80, `ret 8`). No user-declared destructor: the temporary's compiler-generated destructor calls
+// ~CCombatActionBase 0x0062E900 (0x0095B86C). Needs engine/CCombatActionBase.h (FABLE_RETAIL_CCREATUREACTIONBASE).
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;
+class CCreatureAction_QueenHornetShootBabies : public CCombatActionBase {
+public:
+    CCreatureAction_QueenHornetShootBabies(CThingCreatureBase& queen, CThingCreatureBase& target);   // 0x0095CB80
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_QueenHornetShootBabies) == 0x114);
+#else
+
 #pragma pack(push, 1)
 class CCreatureAction_QueenHornetShootBabies {
 public:
@@ -30,4 +44,5 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_QueenHornetShootBabies) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_QueenHornetShootBabies, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_QUEENHORNETSHOOTBABIES
 #endif // FABLE_ENGINE_CCREATUREACTION_QUEENHORNETSHOOTBABIES_H

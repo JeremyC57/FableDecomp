@@ -73,9 +73,11 @@ class CAIStateGroupBase { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
+// Name fix (agentNF26, 2026-11-12): CTCVillage::IsSchoolTime 0x00658A35 is ?IsSchoolTime@CTCVillage@@QBE_NXZ (Ego_r.pdb + FableWin.pdb; body
+//   IsTimeBetween over CVillageDef SchoolStartTimes +0x54 / SchoolDuration +0x60); was IsSchoolTime non-const.
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsSchoolTime();                        // 0x00658A35
+    bool IsSchoolTime() const;                  // 0x00658A35
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 

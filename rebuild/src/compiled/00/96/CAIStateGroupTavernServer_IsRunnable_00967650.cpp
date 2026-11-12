@@ -40,7 +40,7 @@ namespace N_0065e133 { namespace N_007b82c0 { struct CIntelligentPointerConstThi
     CIntelligentPointerConstThing(CThing* item);    // 0x0065E133
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x007B82C0
 }; } using N_007b82c0::CIntelligentPointerConstThing; } using N_0065e133::CIntelligentPointerConstThing;
-FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointerThing& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())
@@ -48,7 +48,8 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-bool __fastcall IS_THING_ALIVE_Pointer_0078b2a0(const CBaseIntelligentPointer& p);   // 0x0078B2A0 (IS_THING_ALIVE<CIntelligentPointer<T>>)
+class CThingObject;
+template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // IS_THING_ALIVE<CIntelligentPointer<CThingObject> > 0x0078B2A0 (FableWin 0x01DE6D80)
 
 class CThingAICreature { public:
     unsigned char _pad[0x170];
@@ -63,7 +64,7 @@ struct CAIStateGroupTavernServerMethods : CAIStateGroup_TavernServer {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
     CIntelligentPointerConstThing& Jug() { return *(CIntelligentPointerConstThing*)PJug; }
-    CBaseIntelligentPointer& Bar() { return *(CBaseIntelligentPointer*)PBar; }
+    CIntelligentPointer<CThingObject>& Bar() { return *(CIntelligentPointer<CThingObject>*)PBar; }
     CIntelligentPointerThing& Pub() { return *(CIntelligentPointerThing*)PPub; }
     bool IsCarryingJug();                       // 0x00966CF0
     bool GetBar();                              // 0x00966AF0
@@ -84,7 +85,7 @@ bool CAIStateGroupTavernServerMethods::IsRunnable()
         if (!((CThing*)Pub().GetPItem()))
             Pub() = CIntelligentPointerThing(((CThing*)((CThingAICreature*)GetCreature())->PWorkplace.GetPItem()));
         if (IS_THING_ALIVE(Pub()) && village
-            && (IS_THING_ALIVE_Pointer_0078b2a0(Bar()) || GetBar())
+            && (IS_THING_ALIVE<CIntelligentPointer<CThingObject> >(Bar()) || GetBar())
             && (ServingActionPointIndex != -1 || GetServingPoint())) {
             FreeServingPoint();
             if (GetJug()) {

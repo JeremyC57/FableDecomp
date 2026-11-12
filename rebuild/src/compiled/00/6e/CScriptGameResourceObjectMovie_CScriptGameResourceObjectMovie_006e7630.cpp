@@ -12,20 +12,16 @@
 // ScriptInterface +0x10, SetConversationInputProcess +0x14; engine/CGameScriptInterface.h gives PlayerManager (+0x14) and
 // CurrentPlayer (+0x1c). Shape: the test and the player lookup use the ARGUMENTS (cl, eax), not the stored members.
 #include "engine/CGameScriptInterface.h"
+#include "engine/EPlayerMode.h"
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_REMOVEMODE
+#define FABLE_RETAIL_PLAYER_INITIALISEIFUNINITIALISED
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
-
-enum EPlayerMode { PLAYER_MODE_2 = 2, PLAYER_MODE_1B = 0x1b };
-
-struct CPlayerCalls : CPlayer {                // CPlayer (engine/CPlayer.h layout) plus the three members called here
-    void InitialiseIfUninitialised();          // 0x00488A80
-    void RemoveMode(EPlayerMode mode);         // 0x00634190
-    void AddMode(EPlayerMode mode, bool flag); // 0x006345C0
-};
-
-struct CPlayerManagerCalls : CPlayerManager {  // engine/CPlayerManager.h layout plus the lookup
-    CPlayerCalls* GetPlayer(long player);      // 0x004498C0
-};
+// CPlayerManager::GetPlayer 0x004498C0 (?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z) and CPlayer::InitialiseIfUninitialised
+// 0x00488A80 / RemoveMode 0x00634190 / AddMode 0x006345C0 (?InitialiseIfUninitialised@CPlayer@@QAEXXZ,
+// ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z; Ego_r.pdb + FableWin.pdb) are the
+// shared engine/CPlayerManager.h / engine/CPlayer.h declarations.
 
 struct SCountBlock;
 struct CCountedPointerRetail {                 // {object, count block}
@@ -57,9 +53,9 @@ CScriptGameResourceObjectMovie::CScriptGameResourceObjectMovie(CGameScriptInterf
     : ScriptInterface(scriptInterface), SetConversationInputProcess(setConversationInputProcess)
 {
     if (setConversationInputProcess) {
-        CPlayerCalls* player = static_cast<CPlayerManagerCalls*>(scriptInterface->PlayerManager)->GetPlayer(scriptInterface->CurrentPlayer);
-        player->InitialiseIfUninitialised();
-        player->RemoveMode(PLAYER_MODE_2);
-        player->AddMode(PLAYER_MODE_1B, false);
+        CPlayer& player = scriptInterface->PlayerManager->GetPlayer(scriptInterface->CurrentPlayer);
+        player.InitialiseIfUninitialised();
+        player.RemoveMode(PLAYER_MODE_Z_TARGET);
+        player.AddMode(PLAYER_MODE_CUT_SCENE, false);
     }
 }

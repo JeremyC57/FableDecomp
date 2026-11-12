@@ -1,0 +1,8 @@
+- Probe the codegen (compile + objdump against allinfo) before grading: 136 rows took 157 grades because the shape was settled first.
+- A `#error` in a header hangs Wine cl: a probe with no output after 120 s means a missing prerequisite macro (CDefPointer.h needs FABLE_RETAIL_DEF_CLASS_BASE).
+- Check the access letter of the proven leaf (UAE / MAE / EAE / ABE) against the header: two repo headers had the wrong access.
+- Out-of-order _VSLOTS blocks are fine for leaf bodies but not for bodies that call virtuals; declare the vtable in slot order for those.
+- `if (x == 1) return y; return 0;` and `switch` differ in VC7.1 codegen; `long r = 0; switch (x) { case 1: r = y; break; } return r;` gives `dec ; jne`.
+- A `CWorld* world = &GetWorld();` local changed register allocation to match retail where the chained expression did not.
+- String keys of OnSerialise rows: read them from Fable.exe (work/rstr.py) rather than trusting the landed source's literals.
+- Catalog tests that are __fastcall shims never test the row and fail under g++; replace them with a portable twin when the row is respelled.

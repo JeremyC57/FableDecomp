@@ -1,8 +1,9 @@
-// CAIStateGroup_WorkBase::IsInWorkHours() -- true when the creature's village says it is cook time (villager interface 0x23 -> village)
+// CAIStateGroup_WorkBase::IsInWorkHours() -- true when the creature's village says it is work time (villager interface 0x23 -> village)
+// Leaf: ?IsInWorkHours@CAIStateGroup_WorkBase@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091A6F0, length 83 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (the creature's interface lookup, type 0x23 = bit 3 of the dword at +0x24),
-// GFGetPVillageInterface @ 0x007EE540 (__fastcall on the CTCVillager component), CTCVillage::IsCookTime @ 0x00658B20.
+// GFGetPVillageInterface @ 0x007EE540 (__fastcall on the CTCVillager component), CTCVillage::IsWorkTime @ 0x00658B20.
 // Shape: the GetTC<T>() inline of the landed CAIStateGroup_MinionWatchFires::InitStateGroup @ 0x009365E0 (bitset
 // test, LowerBound on a named map pointer kept in esi, the end/greater-key fallback) on PBrain->Creature; the
 // looked-up component goes straight to the getter; both nulls fall to the shared `xor al,al` tail and the
@@ -38,7 +39,7 @@ class CThing { public:
 };
 
 class CTCVillage { public:
-    bool IsCookTime_00658b20();                                  // 0x00658B20
+    bool IsWorkTime() const;   // 0x00658B20 ?IsWorkTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin; agentNF25b)
 };
 
 struct CTCVillager;
@@ -70,7 +71,7 @@ bool CAIStateGroup_WorkBase::IsInWorkHours()
     if (PBrain->Creature->GetInterface(&pComponent, 0x23)) {
         CTCVillage* pOwner = ((CTCVillageMember*)pComponent)->GetPVillage();
         if (pOwner != 0) {
-            if (pOwner->IsCookTime_00658b20())
+            if (pOwner->IsWorkTime())
                 return true;
         }
     }

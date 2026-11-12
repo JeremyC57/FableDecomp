@@ -12,6 +12,8 @@
 // component pointer); tried a reference local, a split declaration and a same-TU counted-pointer ctor body for the esi load.
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
@@ -22,8 +24,9 @@ class CWideString { public:
     ~CWideString();                                               // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // Ego_r/FableWin ??4CWideString@@QAEABV0@ABV0@@Z (agentNF16)             // 0x0099B7D0
     const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_EmptyWideString;                       // 0x013BCA24
 namespace { extern const CWideString NEWLINE; }                  // 0x013B8BA8 (`anonymous namespace'::NEWLINE of this TU, L"\n"; ESTABLISHED_SPELLINGS)
 class CTCInventoryItem { public:
     static CWideString __fastcall GetDetails(long defIndex);      // 0x005D9630 (Ego_r.pdb ?GetDetails@CTCInventoryItem@@SI?AVCWideString@@J@Z)
@@ -118,7 +121,7 @@ CCountedPointer<NUISystem::CComponent> CTCInventoryWeapons::ConstructWieldEntryP
     CDataBank* guideBank = CMainGameComponent::Get()->TextBank;
     NUISystem::CComponent* descriptionComponent = description.Data;
     CCharString guide(melee ? "TEXT_GUI_MENUGUIDE_WEAPONS_MELEE_WIELD_PC" : "TEXT_GUI_MENUGUIDE_WEAPONS_RANGED_WIELD_PC");
-    CWideString guideText(g_EmptyWideString);
+    CWideString guideText(CWideString::NullString);
     guideText = guideBank->GetTextBySymbol(guide);
     guideText += NEWLINE;
     guideText += NEWLINE;

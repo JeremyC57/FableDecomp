@@ -35,6 +35,12 @@ public:
     const class CANavQuadTreeNode* GetNodeAt(const class C2DVector& position, unsigned char layer) const;   // 0x00A14F70
 #endif
 #endif
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_ISACTIONPOINT
+    // Nested opt-in (chunk 875, row 0x00A1E5C0 CNavigatorAStar::CalculateAndMoveToPosProximity): Ego_r.pdb / FableWin.pdb
+    // ?IsActionPoint@CNavigatorManager@@QBE_NABVC2DVector@@@Z, out of line at 0x00A150A0 (`push edx ; call 0x00A150A0` with
+    // ecx = NavigationManager, 0x00A1E6A7). Declaration only.
+    bool IsActionPoint(const class C2DVector& position) const;           // 0x00A150A0
+#endif
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                       _pad_0x04[0xc];      // +0x04
     unsigned char                       _pad_0x10[0x4];      // +0x10

@@ -17,7 +17,11 @@ public:
  bool IsPosInside(const C3DVector & p0) const;
  C3DVector GetClosestPointToPos2D(const C3DVector & p0, C3DVector & p1) const;
  void GetBoundingSphere(C3DVector& centre,float& radius)const{PDef->PhysicalPrimitive.PPrimitive->GetBoundingSphere(*POwnerThing,centre,radius);}
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+ const CDefPointer<CArmourDef const > & GetArmourDef()const{return PArmourDef;}
+#else
  const CDefPointer<CArmourDef const > & GetArmourDef() const;
+#endif
  void SetArmourDef(const CDefPointer<CArmourDef const > & p0);
  void ResetDefaultArmourDef();
  bool IsDefaultLocation() const;

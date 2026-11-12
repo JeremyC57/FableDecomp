@@ -59,7 +59,17 @@ private:
  unsigned long DebugPersistFrame;
  unsigned char DebugPoints[4];
  void UpdateRightStickLookAround();
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INTERPOLATEDCAMERA
+ // Retail opt-in (wf2, row 0x006978D0): Ego_r.pdb / FableWin.pdb ?GetInterpolatedCamera@CGameCameraManager@@ABE?AVCCamera@@MABV2@0@Z
+ // (private, const, out of line in retail at 0x006978D0; its only caller is GetRenderCamera 0x00697F30). Declaration only: no layout change.
+ CCamera GetInterpolatedCamera(float interpolate, const CCamera& camera, const CCamera& old_camera) const;   // 0x006978D0
+#endif
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_GETRENDERCAMERA
+ // NF28 opt-in (row 0x00697F30): Ego_r.pdb 0x006BECB0 / FableWin.pdb ?GetRenderCamera@CGameCameraManager@@UBE?AVCCamera@@M@Z, the
+ // override of CAIGameCameraBase slot 1 (pure there). Declaration only: no layout change.
+ virtual CCamera GetRenderCamera(float interpolation) const;   // 0x00697F30
+#endif
  NCameraModes::CTools& GetCameraTools(){return CamTools;}
  NCameraModes::CBase* GetCameraMode(){return CurrentMode.Get();}
 };
@@ -94,9 +104,33 @@ template <class T> class CCountedPointer;
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMTOOLS_TYPED
 #include "engine/NCameraModes_CTools.h"
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
+// agentFAM05 (2026-11-11): the forward declaration the camera-point declarations below need.
+class CThing;
+#endif // FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INSIDETHING
+class CThing; class C3DVector;
+#endif
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_RELEASESCRIPTEDCONTROL
+    // Q19 opt-in (row 0x008CDD40 CCreatureAction_ReleaseTimeSpell::FinishAction): Ego_r.pdb ?ReleaseScriptedControl@CGameCameraManager@@QAEXXZ
+    // (public, out of line at 0x00698950, landed). Declaration only: no layout change.
+    void ReleaseScriptedControl();                                       // 0x00698950
+#endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_INSIDETHING
+    // agentQ7 (2026-11-11, row 0x00697490): Ego_r.pdb / FableWin.pdb ?IsPosCameraInsideThing@CGameCameraManager@@QBE_NABVCThing@@ABVC3DVector@@@Z,
+    // public, const, out of line in retail (473 bytes, `ret 8`). Declaration only: no layout change.
+    bool IsPosCameraInsideThing(const CThing& thing, const C3DVector& pos) const;   // 0x00697490
+#endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
+// agentFAM05 (2026-11-11): the two camera-point list members (Ego_r.pdb / FableWin.pdb ?AddCameraPoint@CGameCameraManager@@QAEXAAVCThing@@@Z
+// 0x006991F0 and ?RemoveCameraPoint@CGameCameraManager@@QAEXAAVCThing@@@Z 0x006984A0, both landed). Declarations only.
+public:
+    void AddCameraPoint(CThing&);                            // 0x006991F0
+    void RemoveCameraPoint(CThing&);                         // 0x006984A0
+#endif // FABLE_RETAIL_CGAMECAMERAMANAGER_ADDCAMERAPOINT
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_SCRIPTEDMODE
     // Retail opt-in (chunk 1026, row 0x00716B30): FableWin.pdb ?IsUsingScriptedCameraMode@CGameCameraManager@@QBE_NXZ, out of line at
     // 0x00697AE0 (landed). A declaration only.

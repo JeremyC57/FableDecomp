@@ -5,13 +5,14 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound const @ 0x004365B0 (creature lookups 0x30,
 // 8, 0x34, 0xAA) and @ 0x0040F020 (the enemy's 0x36 = CTCStealth), IsAbleToBeEngagedInCombat @ 0x0085FBC0 (__fastcall),
 // the 8 component's virtual slot 29 (+0x74, combat target), CTCPerceiveThing::GetPerceivedThing @ 0x007446A0 /
-// CanSeeOrSmellPerceivedThing @ 0x00661600 / GetDirectAwareness @ 0x00744430, IsRegisteredCombatant @ 0x00662410,
+// CanSeeOrSmellPerceivedThing @ 0x00661600 / IsAwarenessOfThingDirect @ 0x00744430, IsRegisteredCombatant @ 0x00662410,
 // CThing::GetPos @ 0x004C73D0, IsEnemyRunningAway @ 0x0093D3A0, CTCStealth::SetAsRunningAwayFromCombat @ 0x007470E0.
 // Layout: local model (PBrain +4; brain PCreature +0x18; PEnemy +0x14; presence bits +0x20, interface map +0x44, dead bit +0x91;
 // 0x30 component engaged byte +0x80; 0xAA component range float +0x64).
 // Shape: masked-test GetInterface lookups used unchecked (a miss reads an undefined slot); the early checks nest so they share one
 // `return false` tail (early returns duplicate the epilogue and shrink-wrap esi); the combat target is a named local compared as
 // `PEnemy == target`; one bool result kept in bl; vector subtract / squared length must be __forceinline.
+// Name fix (agentNF24): 0x00744430 respelled CTCPerceiveThing::IsAwarenessOfThingDirect() const (Ego_r/FableWin ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ; was GetDirectAwareness)
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -66,7 +67,7 @@ struct CTCCombatTarget {                        // interface 8
 class CTCPerceiveThing { public:                       // interface 0x34
     const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
     bool CanSeeOrSmellPerceivedThing();         // 0x00661600
-    bool GetDirectAwareness();                  // 0x00744430
+    bool IsAwarenessOfThingDirect() const;      // 0x00744430 Ego_r ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ
 };
 struct CTCCombatRange {                         // interface 0xAA
     unsigned char _pad[0x64];
@@ -128,7 +129,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool checkCombatant)
                 bool result = true;
                 CTCPerceiveThing* perceive;
                 if (((const CThing*)GetCreature())->GetInterface(&perceive, 0x34) && perceive->GetPerceivedThing() == PEnemy.GetPItem())
-                    result = perceive->CanSeeOrSmellPerceivedThing() || perceive->GetDirectAwareness();
+                    result = perceive->CanSeeOrSmellPerceivedThing() || perceive->IsAwarenessOfThingDirect();
                 if (result) {
                     if (checkCombatant)
                         result = GetCreature()->IsInMeleeAsAttacker();

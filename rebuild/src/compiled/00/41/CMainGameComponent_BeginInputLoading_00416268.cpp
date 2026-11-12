@@ -4,6 +4,6 @@
 // function ignores any incoming this.
 struct CLoader { void Begin(const char* name, int arg); };
 class CInputManager;
-extern CInputManager* PInputManager;    // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 extern const char g_Name[];  // 0x013B85E4
-void __stdcall BeginInputLoading(int arg) { ((CLoader*)PInputManager)->Begin(g_Name, arg); }
+void __stdcall BeginInputLoading(int arg) { ((CLoader*)GPInputManager)->Begin(g_Name, arg); }

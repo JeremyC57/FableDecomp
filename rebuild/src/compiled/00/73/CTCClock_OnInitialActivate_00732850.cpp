@@ -46,7 +46,7 @@
 #include "engine/CDefinitionManager.h"
 #include "engine/CTCClock.h"
 
-extern CCharString g_ClockHandTurnName;                      // 0x013BAD3C ("CLOCKHAND_TURN")
+namespace { extern CCharString SClockTurnAnim; }                      // 0x013BAD3C ("CLOCKHAND_TURN")
 
 void CTCClock::OnInitialActivate()
 {
@@ -57,7 +57,7 @@ void CTCClock::OnInitialActivate()
     const CThingBaseDef* base_def = ParentThing->GetPBaseDef().Get();
     CDefPointer<const CAppearanceDef> appearance;
     base_def->GetSubDef(&appearance);
-    const CAnimationEntry& entry = appearance->Animation.GetAnim(g_ClockHandTurnName, 0, CAnimFilterNoGroup());
+    const CAnimationEntry& entry = appearance->Animation.GetAnim(SClockTurnAnim, 0, CAnimFilterNoGroup());
     CAnimInit init(0, 0, entry.BankIndex, ANIM_UPDATE_FROM_SPEED, true, 0, 100);
     animation.Init(init);
 }

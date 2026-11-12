@@ -15,6 +15,8 @@ class CCharString { public:
     void* Data;
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
+extern long        NPCAttitudes[3];                 // 0x0143E928 ?NPCAttitudes@@3PAJA (Ego_r PUBLIC32 + GDATA32 long[3])
+extern CCharString NPCAttitudeStrings[3];           // 0x0143E934 ?NPCAttitudeStrings@@3PAVCCharString@@A ("", "_LIKE", "_HATE")
 namespace NScript {
 class CQ_SunnyvaleMasterData { public:
     void*         _vfptr;                            // +0x00 CScriptDataBase vptr
@@ -162,8 +164,6 @@ class CQ_SunnyvaleMasterData { public:
     void*         BoastRegions[3];                   // +0x134 vector<CCharString> (retail STLport 12 bytes)
     bool          SingingStonesInSync;               // +0x140
     void Init();
-    static long        RelationCounters[3];             // 0x0143E928 (unnamed statics, transferred together)
-    static CCharString RelationSuffixes[3];             // 0x0143E934 ("", "_LIKE", "_HATE")
 };
 
 void CQ_SunnyvaleMasterData::Init()
@@ -171,12 +171,12 @@ void CQ_SunnyvaleMasterData::Init()
     PostSavePosition = 0;
     HenchmanOverrideState = 0;
     HenchmanSacrificedBodge = false;
-    RelationSuffixes[0] = "";
-    RelationSuffixes[1] = "_LIKE";
-    RelationSuffixes[2] = "_HATE";
-    RelationCounters[0] = 0;
-    RelationCounters[1] = 0;
-    RelationCounters[2] = 0;
+    NPCAttitudeStrings[0] = "";
+    NPCAttitudeStrings[1] = "_LIKE";
+    NPCAttitudeStrings[2] = "_HATE";
+    NPCAttitudes[0] = 0;
+    NPCAttitudes[1] = 0;
+    NPCAttitudes[2] = 0;
     HauntedBarrowFieldsCompleted = false;
     GrannyMemoryReturned = false;
     IsLunaHuman = false;

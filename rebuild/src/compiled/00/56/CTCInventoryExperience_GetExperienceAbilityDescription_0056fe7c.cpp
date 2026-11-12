@@ -10,11 +10,15 @@
 // Layout: CHeroAbilityDef description table pointer +0x60 and maxed-out description +0x6c (retail offsets);
 //   CThing interface bitset +0x20 and interface map +0x44 as in the landed GetInterface users. Local model: the
 //   engine/ headers for these classes do not declare the methods called here.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CWideString { public: void* PStringData; CWideString(const CWideString&); ~CWideString(); };
-extern CWideString g_EmptyWideString;                   // 0x013BCA24
+class CWideString { public: void* PStringData; CWideString(const CWideString&); ~CWideString(); 
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
+};
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 class CDefPointeeBase { public: virtual void VFunc00(); virtual void Release(); long RefCount; };
@@ -70,7 +74,7 @@ CWideString CTCInventoryExperience::GetExperienceAbilityDescription(long ability
 {
     CTCInventoryAbilities* abilities;
     if (!ParentThing->GetInterface(&abilities, 0x6f))
-        return g_EmptyWideString;
+        return CWideString::NullString;
     CDefPointer<const CHeroAbilityDef> def = abilities->GetAbilityPDef((EHeroAbility)ability);
     long textId;
     if (level == abilities->GetAbilityMaximumLevel((EHeroAbility)ability) + 1)
@@ -79,5 +83,5 @@ CWideString CTCInventoryExperience::GetExperienceAbilityDescription(long ability
         textId = def.Object->Descriptions[level];
     if (textId)
         return GetInventoryText(textId);
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

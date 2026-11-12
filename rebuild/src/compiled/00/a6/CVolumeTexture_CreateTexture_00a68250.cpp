@@ -24,8 +24,7 @@ struct IDirect3DVolumeTexture9;
 extern "C" long __stdcall D3DXCreateVolumeTexture(IDirect3DDevice9* device, unsigned long width, unsigned long height,
     unsigned long depth, unsigned long mipLevels, unsigned long usage, long format, long pool, IDirect3DVolumeTexture9** out);  // 0x00BFEFF2
 struct C3DVectorI { long X, Y, Z; };
-struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
-extern SPixelFormatInfo g_pixelFormatInfo[];                 // 0x0129BA40
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_pixelFormatInfo)
 class CPixelFormat { public: long m_format; };
 class CVolumeTexture { public:
     virtual ~CVolumeTexture();
@@ -37,6 +36,6 @@ class CVolumeTexture { public:
 bool CVolumeTexture::CreateTexture(const C3DVectorI& size, unsigned long mipLevels, unsigned long usage, const CPixelFormat& format, long pool, long)
 {
     IDirect3DDevice9* device = GFGetSystemManager()->m_pRender->m_pDevice;
-    long d3dFormat = g_pixelFormatInfo[format.m_format].d3dFormat;
+    long d3dFormat = GD3DFormats[format.m_format].D3DFormat;
     return D3DXCreateVolumeTexture(device, size.X, size.Y, size.Z, mipLevels, usage, d3dFormat, pool, &m_pTexture) >= 0 ? true : false;
 }

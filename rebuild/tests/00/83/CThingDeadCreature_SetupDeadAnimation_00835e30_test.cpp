@@ -143,7 +143,7 @@ class CThingDeadCreature : public CThing { public:
     void SetupDeadAnimation();
 };
 // ---- row body (verbatim) ----
-extern CCharString g_CCharString_013baf40;                   // 0x013BAF40 ("STANDARD_DEAD")
+namespace { extern CCharString DEAD_ANIM_NAME; }                   // 0x013BAF40 ("STANDARD_DEAD")
 
 void CThingDeadCreature::SetupDeadAnimation()
 {
@@ -154,10 +154,10 @@ void CThingDeadCreature::SetupDeadAnimation()
     PBaseDef->GetSubDef(&appearance);
     const CAnimationSet& animations = appearance->Animation;
     const CAnimationEntry* entry = 0;
-    if (animations.AnimExists(g_CCharString_013baf40, *PAnimFilter))
-        entry = &animations.GetRandomAnim(g_CCharString_013baf40, *GetPWorldSeed(), *PAnimFilter, -1);
-    else if (animations.AnimExists(g_CCharString_013baf40, CAnimFilterNoGroup()))
-        entry = &animations.GetRandomAnim(g_CCharString_013baf40, *GetPWorldSeed(), CAnimFilterNoGroup(), -1);
+    if (animations.AnimExists(DEAD_ANIM_NAME, *PAnimFilter))
+        entry = &animations.GetRandomAnim(DEAD_ANIM_NAME, *GetPWorldSeed(), *PAnimFilter, -1);
+    else if (animations.AnimExists(DEAD_ANIM_NAME, CAnimFilterNoGroup()))
+        entry = &animations.GetRandomAnim(DEAD_ANIM_NAME, *GetPWorldSeed(), CAnimFilterNoGroup(), -1);
     if (entry) {
         long anim = entry->BankIndex;
         animation.ClearAllAnims();
@@ -181,7 +181,7 @@ static void SetupThing(const char* name, long bank)
     app.Animation.Entries[0] = e0; app.Animation.Entries[1] = e1; app.Animation.Count = 2;
     memset(&thing, 0, sizeof(thing)); thing.PBaseDef.Object = &thingDef;
 }
-CCharString g_CCharString_013baf40("STANDARD_DEAD");
+namespace { CCharString DEAD_ANIM_NAME("STANDARD_DEAD"); }
 int main()
 {
     // 1: the creature's own filter (kind 7) accepts the second STANDARD_DEAD entry

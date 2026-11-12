@@ -63,7 +63,7 @@ class CThing : public CThingLookup { public:
 };
 class CThingCreatureBase : public CThing { public:
     bool Registered;
-    bool IsRegisteredCombatant() const { return Registered; }
+    bool IsInMeleeAsAttacker() const { return Registered; }
 };
 class CTCLook : public CTCBase { public:
     const C3DVector* At;
@@ -90,7 +90,7 @@ struct CModeBlock : CModeBase {
     {
         CTCLook* look;
         if (ParentThing->GetInterface(&look, 0x43)) {
-            if (PCreature->IsRegisteredCombatant()) {
+            if (PCreature->IsInMeleeAsAttacker()) {
                 CCombatManager* combatManager = GetWorld()->CombatManager;
                 CCombatantInfo* info = combatManager->GetCombatantInfo(PCreature);
                 if (info->AttackerInfo.Attacked != 0 && !(info->AttackerInfo.Attacked->m_flags91 & 1))

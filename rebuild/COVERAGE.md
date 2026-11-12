@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-11-11T10:25:35+00:00`
+Generated: `2026-11-12T15:21:31+00:00`
 
 ## Landed reconstruction (live)
 
@@ -8,16 +8,16 @@ From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`
 
 | Measure | Landed | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
-| Original catalog functions landed, genuine C++ | 47,656 | 49,567 | 96.145% | Byte-matching C++ (no hand-written asm bake; `retail_asm` and `toolchain_library` rows included) for the original analysis catalog |
-| All known functions landed, genuine C++ | 55,711 | 57,835 | 96.327% | Adds the gap-scan and boundary functions found later |
-| Retail function bytes reproduced, genuine C++ | 7,039,605 | 10,150,833 | 69.350% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
-| Retail `.text` bytes reproduced, genuine C++ | 7,039,605 | 14,858,408 | 47.378% | Against the whole `.text` section (includes padding and inline data) |
-| Landed rows using retail inline asm (grade `retail_asm`) | 233 | 55,712 | — | Counted as genuine: the original used asm (docs/pipeline/ASM_RULES.md); retail itself ran the asm (owner rule 2026-10-24) |
-| Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | 450 | 55,712 | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |
-| Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 55,712 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
+| Original catalog functions landed, genuine C++ | 47,807 | 49,567 | 96.449% | Byte-matching C++ (no hand-written asm bake; `retail_asm` and `toolchain_library` rows included) for the original analysis catalog |
+| All known functions landed, genuine C++ | 55,889 | 57,835 | 96.635% | Adds the gap-scan and boundary functions found later |
+| Retail function bytes reproduced, genuine C++ | 7,280,498 | 10,145,993 | 71.757% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
+| Retail `.text` bytes reproduced, genuine C++ | 7,280,498 | 14,858,408 | 48.999% | Against the whole `.text` section (includes padding and inline data) |
+| Landed rows using retail inline asm (grade `retail_asm`) | 234 | 55,890 | — | Counted as genuine: the original used asm (docs/pipeline/ASM_RULES.md); retail itself ran the asm (owner rule 2026-10-24) |
+| Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | 450 | 55,890 | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |
+| Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 55,890 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
 | — of which third-party vendor code compiled from unmodified source (`// Vendor-library:` stub) | 9 | 450 | — | zlib 1.2.1 / LZO 1.08 / libogg 1.1.1 / libvorbis 1.0.1 TUs rebuilt from the fetched vendor tree with the recorded flags (`tools/decomp_pipeline/libsig/vendor_libs.tsv`; owner direction 2026-11-08) |
-| Landed hand-written rows the vendor build also proves (`// Vendor-proof:` line) | 602 | 55,712 | — | Genuine C++ kept as written and labelled as library: the unmodified vendor TU compiles to the same bytes (owner 2026-11-08: keep, label as library) |
-| Landed rows that are hand-written asm bakes | 1 | 55,712 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |
+| Landed hand-written rows the vendor build also proves (`// Vendor-proof:` line) | 602 | 55,890 | — | Genuine C++ kept as written and labelled as library: the unmodified vendor TU compiles to the same bytes (owner 2026-11-08: keep, label as library) |
+| Landed rows that are hand-written asm bakes | 1 | 55,890 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |
 
 ### Game code vs library code
 
@@ -25,12 +25,12 @@ Every known function is placed by `docs/pipeline/LIBRARY_MAP.tsv` (its `category
 
 | Code origin | Landed genuine | Known functions | Coverage | Genuine bytes | Bytes coverage |
 |---|---:|---:|---:|---:|---:|
-| Fable game code | 50,324 | 52,339 | 96.150% | 6,427,241 | 67.766% |
+| Fable game code | 50,502 | 52,339 | 96.490% | 6,668,134 | 70.342% |
 | Lionhead in-house libraries | 4,135 | 4,239 | 97.547% | 423,277 | 88.902% |
 | Third-party vendor code | 812 | 814 | 99.754% | 182,713 | 99.382% |
 | VC7.1 toolchain (CRT, import thunks) | 440 | 443 | 99.323% | 6,374 | 98.531% |
 
-## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-09-07)
+## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-11-11)
 
 Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux lane does not refresh it, so the compile, parity and match rows below stop at that date; use the live table above for landing progress.
 
@@ -62,7 +62,7 @@ Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux l
 
 ## Interpretation
 
-The reverse-engineering database is near complete. Landed byte-matching C++ covers 96.145% of the original catalog by function count but 69.350% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
+The reverse-engineering database is near complete. Landed byte-matching C++ covers 96.449% of the original catalog by function count but 71.757% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
 
 The clean-decompile sweep predates later function discovery, so its denominator is 49,082 while the current catalog contains 49,568 functions. The dashboard does not silently extrapolate the missing 486 measurements.
 

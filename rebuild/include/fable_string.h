@@ -98,6 +98,12 @@ class CCharStringData
     CBasicString<char> Data;
 protected:
     long NoRefs;
+#ifdef FABLE_RETAIL_CCHARSTRINGDATA_FRIEND
+    // agentNF22 (row 0x0099EFB0 CCharString::operator=(const CCharString&)): NoRefs is protected in the Ego_r TPI, yet the
+    // CCharString members share the data block by bumping it in place (operator= 0x0099EFB0 `inc dword ptr [eax+0Dh]`, the copy
+    // constructor 0x0099EC30 the same) -- CCharString is a friend.
+    friend class CCharString;
+#endif
 };
 #else
 class CCharStringData
@@ -150,6 +156,10 @@ public:
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
     bool operator!=(const wchar_t* other) const;
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    // Both original PDBs; native0099b0f0, called at005e50a2.
+    bool operator!=(const CWideString& other) const;
+#endif
 
     static CWideString FABLE_FASTCALL CreateFromCharString(
         const CCharString& text);
@@ -197,7 +207,11 @@ public:
     static CWideString NullString;                             // 0x013BCA24
 #endif
 
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+protected: // Both original TPI records: this conversion constructor is protected.
+#else
 private:
+#endif
     explicit CWideString(const CCharString& text);
 #ifndef FABLE_RETAIL_CWIDESTRING
     void UnassignString();
@@ -239,6 +253,15 @@ protected:
     CWideStringData* PStringData;                              // +0x00 (Ego_r TPI: protected PStringData)
 #else
 private:
+#ifdef FABLE_RETAIL_CWIDESTRING_NOSTRINGS
+    // agentNF22 (Codex pass 21 NAME_FIXES land1011cr): 0x013BCA20 is the protected static instance counter
+    // ?NoStrings@CWideString@@1JA (both PDBs: PUBLIC + protected-long TPI; the retail branch above declares it the same way);
+    // the ctors 0x0099AED0 / 0x0099B6B0 / 0x0099B720 increment and the dtor 0x0099B510 decrements it. Replaces the extern
+    // g_CWideStringInstanceCount_013BCA20 below for the default-branch rows that opt in.
+protected:
+    static long NoStrings;
+private:
+#endif
 
     CWideStringData* storage_;
 #endif
@@ -412,6 +435,11 @@ public:
     operator const char*() const;
     const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
+#ifdef FABLE_RETAIL_CCHARSTRING_ASSIGN_CHAR
+    // Retail opt-in (chunk Q25, row 0x00489D40 CPlayer::CreateCharacter): Ego_r.pdb ??4CCharString@@QAEABV0@D@Z, out of line in
+    // retail at 0x0099F040 (landed; the {c, 0} buffer assign). CreateCharacter calls it with a zero-extended byte. Declaration only.
+    const CCharString& operator=(char c);                       // 0x0099F040
+#endif
     CWideString ToWideString() const;
 #ifdef FABLE_RETAIL_CCHARSTRING_GETASUPPERCASE
     // Retail opt-in (chunk 855, row 0x00490BE0 CSubtitleRenderer::GetGraphicFromEmbeddedTag): Ego_r.pdb 0x00AFA710 / FableWin.pdb

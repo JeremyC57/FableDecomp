@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009576D0, length 123 bytes. No callers and no vtable slot (it follows
 // OnActivate @ 0x009576C0 in the same catalogue row, split via the skipped-row ledger, chunk 906); the manifest label
 // "Piece_009576d0" is the ledger placeholder and the name here is descriptive.
-// Callees: CTCPerceiveThing::GetDirectAwareness @ 0x00744430 (reads the bool at +0x30; manifest label
+// Callees: CTCPerceiveThing::IsAwarenessOfThingDirect @ 0x00744430 (reads the bool at +0x30; manifest label
 // "CTCInventoryBase::GetCanItemBeQuickAssigned" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 on
 // PTargetThing (+0x14), CThing::GetPosition @ 0x004C73D0 (returns a pointer into the thing's transform; manifest
 // label "CVertexBufferWin32::DoSizeof" is propagated). Constants: 0.0f @ 0x0122DEDC, 25.0f @ 0x0123003C.
@@ -15,6 +15,7 @@
 // then compared with 25.0f (`test ah,5 ; jp`).
 // Model: local. CAIStateGroupBase: PBrain +0x04 (CAIBrain: Creature +0x18). CTCPerceiveThing: AwarenessTimer +0x18,
 // LineOfSight +0x2d, DirectAwareness +0x30.
+// Name fix (agentNF24): 0x00744430 respelled CTCPerceiveThing::IsAwarenessOfThingDirect() const (Ego_r/FableWin ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ; was GetDirectAwareness)
 #include "engine/C3DVector.h"
 
 #include "engine/CThing.h"
@@ -31,7 +32,7 @@ class CTCPerceiveThing { public:
     bool          LineOfSight;                     // +0x2d
     unsigned char _pad2e[2];
     bool          DirectAwareness;                 // +0x30
-    bool GetDirectAwareness();                     // 0x00744430
+    bool IsAwarenessOfThingDirect() const;         // 0x00744430 Ego_r ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ
 };
 
 class CBaseObject;
@@ -51,7 +52,7 @@ struct CAIStateGroupBehaviourBase {
 
 int CAIStateGroupBehaviourBase::IsTargetSeenWithinCloseRange()
 {
-    if (PTCPerception->AwarenessTimer != 0.0f && PTCPerception->GetDirectAwareness() && PTCPerception->LineOfSight) {
+    if (PTCPerception->AwarenessTimer != 0.0f && PTCPerception->IsAwarenessOfThingDirect() && PTCPerception->LineOfSight) {
         CThing* creature = PBrain->Creature;
         const C3DVector* targetPos = &PTargetThing.Get()->GetPos();
         const C3DVector* creaturePos = &creature->GetPos();

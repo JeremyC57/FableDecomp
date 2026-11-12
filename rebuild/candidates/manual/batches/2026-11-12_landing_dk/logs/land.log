@@ -1,0 +1,12 @@
+addr       parity           behav  name
+007b0360   RELOCATION_MATCH PASS   FrameUpdate
+008b7040   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+008b7040   RELOCATION_MATCH PASS   Initialise
+
+WINS: 2
+  007b0360 RELOCATION_MATCH CTCFishingSpot::?FrameUpdate@CTCFishingSpot@@UAEXXZ
+  008b7040 RELOCATION_MATCH CCreatureAction_JumpOutFromCover::?Initialise@CCreatureAction_JumpOutFromCover@@UAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCFishingSpot_FrameUpdate_007b0360
+  CCreatureActionJumpOutFromCover_Initialise_008b7040

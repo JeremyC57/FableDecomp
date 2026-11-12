@@ -30,6 +30,12 @@ public:
     CTCCarrying*  PCarryingTC;                                       // +0x10
     float         OffsetCoordRelativeToAttachToDummy[3];             // +0x14 C3DVector
     float         OffsetAmount;                                      // +0x20
+#ifdef FABLE_RETAIL_CTCCARRYABLE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual overrides this declaration lacks, declaration only (needs the polymorphic FABLE_RETAIL_CTCBASE; no layout
+// change). Slots of the TLC vtable 0x0123B35C (agentFAM03 proof, re-verified by agentFAM05); Ego_r / FableWin spellings.
+    virtual void OnKill();                                           // slot 14 0x00705150
+    virtual void OnInitialActivate();                                // slot 6  0x00705C30
+#endif // FABLE_RETAIL_CTCCARRYABLE_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCarryable) == 0x24);
 #endif // FABLE_ENGINE_CTCCARRYABLE_H

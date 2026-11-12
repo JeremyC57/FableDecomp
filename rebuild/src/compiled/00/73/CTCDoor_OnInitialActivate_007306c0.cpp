@@ -10,7 +10,7 @@
 // <CAnimatingObjectDef> @ 0x0042B0A2, CAnimationSet::GetAnimation @ 0x005DC340 (CAnimFilterNoGroup temporary),
 // CAnimInit::Set @ 0x0070C050, CTCSwitchableNavigation::SetBlocking @ 0x00787580, the event sink's slot 85, the thing's
 // slot 59, CThing::SetForceFrameUpdate @ 0x004C7C60.
-// Globals: g_DoorOpenAnimName 0x013BAD34, g_DoorCloseAnimName 0x013BAD38 (CCharString).
+// Globals: SDoorOpenAnim (was g_DoorOpenAnimName) 0x013BAD34, SDoorCloseAnim (was g_DoorCloseAnimName) 0x013BAD38 (CCharString).
 // Model: the landed CTCDoor::Open (0x00730C00): engine/CTCDoor.h (+0x04 ParentThing, +0x10 CurrentOpen, +0x20 PDef);
 // CDoorDef TriggerType +0x28, open/close events +0x30/+0x34; CThing type byte +0x10, event sink +0x60, PBaseDef +0x70.
 // Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
@@ -28,8 +28,8 @@ class CCharString { public:
     CCharString(const CCharString& other);                     // 0x0099EC30
     ~CCharString();                                            // 0x0099EAE0
 };
-extern const CCharString g_DoorOpenAnimName;    // 0x013BAD34
-extern const CCharString g_DoorCloseAnimName;   // 0x013BAD38
+namespace { extern const CCharString SDoorOpenAnim; }    // 0x013BAD34
+namespace { extern const CCharString SDoorCloseAnim; }   // 0x013BAD38
 class CDefString { public:
     long Index;
     CDefString() {}
@@ -276,7 +276,7 @@ void CTCDoor_Methods::OnInitialActivate()
     CThingBaseDef* baseDef = Parent()->GetPBaseDef();
     CDefPointer<CAnimatingObjectDef> def;
     baseDef->GetSubDef(&def);
-    const CAnimationEntry* entry = def->Animation.GetAnimation(CurrentOpen ? g_DoorOpenAnimName : g_DoorCloseAnimName, 0, CAnimFilterNoGroup());
+    const CAnimationEntry* entry = def->Animation.GetAnimation(CurrentOpen ? SDoorOpenAnim : SDoorCloseAnim, 0, CAnimFilterNoGroup());
     CAnimInit init(6, 0, entry->AnimIndex, 1, false, 0, 100);
     animate.SetMainAnim(init);
     animate.CurrentPercentageComplete = 1.0f;

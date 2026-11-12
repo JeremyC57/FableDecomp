@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00584b86   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00584b86   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+00584b86   RELOCATION_MATCH PASS   AssignThingPC
+009289b0   WARN RELOC_NAME: ?SetCurrentPlayer@CTCDiceGame@@QAEXPAVCThing@@@Z -> 00929550 labelled '_unattributed::AssignTarget_00929550'
+009289b0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+009289b0   RELOCATION_MATCH PASS   Act
+
+WINS: 2
+  00584b86 RELOCATION_MATCH CTCInventory::AssignThingPC
+  009289b0 RELOCATION_MATCH CAIStateGroup_BanditPlot::Act
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCInventory_AssignThingPC_00584b86
+  CAIStateGroupBanditPlot_Act_009289b0

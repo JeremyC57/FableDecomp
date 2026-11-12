@@ -30,8 +30,9 @@ class CTCWife { public:                                            // retail lay
     bool                 ReceivedWeddingRing;               // +0x91 (PDB +0x95)
     bool IsCourtingHero() const;                            // 0x006CF890
     bool IsInLoveWithHero() const { return IsCourtingHero() && OpinionAttitude == OPINION_ATTITUDE_LOVE; }   // 0x006CF900 out of line
-    CThingBuilding* FindMaritalHome() const;                // 0x006CFAA0
     bool IsWillingToMarry() const;
+private:
+    CThingBuilding* FindMaritalHome() const;                // 0x006CFAA0 ?FindMaritalHome@CTCWife@@ABEPAVCThingBuilding@@XZ (private)
 };
 
 bool CTCWife::IsWillingToMarry() const

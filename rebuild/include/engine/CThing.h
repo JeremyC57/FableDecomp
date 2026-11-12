@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTHING_H
 #define FABLE_ENGINE_CTHING_H
 #include "fable_compiler.h"
@@ -44,6 +45,10 @@ namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
 template<class From,class To> inline To __fastcall GFDebugPDynamicCast(From value,To) { return static_cast<To>(value); }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+// Original donor024CFED8 instantiates this checked cast; debug checks vanish in retail.
+template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
+#endif
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 class CPersistContext;class CMemoryDataInputStream;class CInterpolationInfo;class CThingInfo;class CEditEngineDrawInfo;class CThingDrawInformation;class CThingPhysicalDebugInfo;class CEnginePrimitivePrepareInfo;enum ECollideType;
 #endif
@@ -241,6 +246,15 @@ public:
     void SetSerialisationSectionName(const CCharString& name) { SerialisationSectionName=name; }
 #endif
     void Kill(bool); // Ego_r original public member; native004c9b80.
+#ifdef FABLE_RETAIL_CTHING_LEVELPERSISTENCE
+    // Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): FableWin.pdb ?SetAsLevelPersistent@CThing@@QAEX_N@Z
+    // (0x01CEFC40; no Ego_r.pdb or Fable.exe copy: inline, the bit-4 store into +0x92 at 0x0095B986) and, unless the LOADSINGLE branch
+    // above already declares it, ?IsToKillOnLevelUnload@CThing@@QBE_NXZ (`test byte ptr [ecx+93h],4`, 0x0095B90A). No layout change.
+    void SetAsLevelPersistent(bool persistent) { LevelPersistent=persistent; }
+#if !(defined(FABLE_RETAIL_CTHING_LOADSINGLE) && !defined(FABLE_RETAIL_CTHING_ORIGINAL_VTABLE))
+    bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }
+#endif
+#endif
     CTCBase* AddTC(const CCharString&,bool,const CTCParamsBase*);
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
     const CThingBaseDef& PeekBaseDef() const;                    // inline in retail: body `return *PBaseDef;` defined after CThingBaseDef is complete
@@ -283,7 +297,23 @@ public:
     // Native0076efeb and0076f1d6 materialise the component-presence boolean.
     bool HasTC(ETCInterfaceType type) const { const bool& found=UsingComponents.test(type); return found; }
 #else
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CTHING_HASTC_FORCEINLINE)
+    // FABLE_RETAIL_CTHING_HASTC_FORCEINLINE (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate): the same __forceinline HasTC
+    // under its own opt-in name. Retail tests the UsingComponents word in place in that large function (`test dword ptr [eax+28h],
+    // 80000h` TCI_SHOP, `mov ecx,[eax+34h] ; test ch,8` TCI_TAVERN, `test byte ptr [eax+24h],8` TCI_VILLAGE_MEMBER at 0x006C130C ..
+    // 0x006C1409); plain inline leaves the test() result materialised in a stack byte (`shr ; and cl,1 ; mov [esp+0Bh],cl`) once the
+    // function's inline budget is spent. Like GetTC<T> / PeekTC<T> (owner decision 2026-11-01): no out-of-line copy in Ego_r.pdb or
+    // Fable.exe. No layout change.
+    FABLE_FORCEINLINE
+#endif
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    // Original FableWin donor024db630: presence, GetTC, exact class-name equality.
+    template<class T> FABLE_FORCEINLINE bool HasTC()const {
+        if(!HasTC(T::StatGetInterfaceType()))return false;
+        return GetTC(T::StatGetInterfaceType()).GetClassTypeName()==T::StatGetClassTypeName();
+    }
+#endif
 #endif
     // GetTC<T> / PeekTC<T>: __forceinline (owner decision 2026-11-01, EXTRA_RULES): Ego_r.pdb (the release build) has no
     // ??$GetTC@ / ??$PeekTC@ instantiation (FableWin.pdb, debug: 267 / 159), Fable.exe has no out-of-line copy, and plain
@@ -458,6 +488,11 @@ public:
     bool IsKillLocked() const { return KillLocked != 0; }
     bool IsGloballyLoaded() const { return GloballyLoaded != 0; }
     bool IsDeathPersistent() const { return DeathPersistent != 0; }
+#ifdef FABLE_RETAIL_CTHING_SETASDEATHPERSISTENT   // nested in FABLE_RETAIL_CTHING_STATEACCESS
+    // Retail opt-in (Q18, row 0x009644F0 CAIStateGroup_StealStealableItem::OnReplace): FableWin.pdb ?SetAsDeathPersistent@CThing@@QAEXXZ,
+    //   inline in retail (0x00964751 `or byte ptr [edi+93h],2` = DeathPersistent, bit 17 of the +0x91 run). Body only: no layout change.
+    void SetAsDeathPersistent() { DeathPersistent = true; }
+#endif
 protected:
     void UpdateThingScanInclusion();                             // 0x004C8C00 ?UpdateThingScanInclusion@CThing@@IAEXXZ (3 rows)
     const CPlayerManager& PeekPlayerManager() const;             // 0x004C79F0 ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ (3 rows)
@@ -523,6 +558,10 @@ public:
     static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }
     static const CThingManager* __fastcall PeekPCurrentThingManager() { return PCurrentThingManager; }
 protected:
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    // Both original PDBs protected member; donor01ceeb10 forwards this exact static accessor.
+    CThingManager& GetThingManager(){return *GetPCurrentThingManager();}
+#endif
     CThingSearchTools& GetThingSearchTools();                    // 0x004C7A50
     const CThingSearchTools& PeekThingSearchTools() const;       // 0x004C7A60
     void CheckUID() const;                                       // 0x004C7BC0

@@ -1,0 +1,33 @@
+address	assigned_length	corrected_length	corrected_end_exclusive	omitted_byte_count	excluded_tail_kind	evidence
+0x005e4be0	4944	4939	0x005e5f2b	5	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x007c1000	4512	4510	0x007c219e	2	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00804020	5600	5587	0x008055f3	13	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00975bb0	4720	4624	0x00976dc0	96	neighbouring_code_or_data	4606 code bytes, two internal alignment bytes and sixteen switch-table bytes; next function begins00976DC0.
+0x00afcc30	5616	5274	0x00afe0ca	342	neighbouring_code_or_data	Complete PreparePrimitives ends exclusively00AFE0CA; six alignment bytes precede neighbouring code at00AFE0D0.
+0x00b0dc20	5616	5602	0x00b0f202	14	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00b13530	5280	5268	0x00b149c4	12	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00cf4ec0	6176	6164	0x00cf66d4	12	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00d01630	5184	5178	0x00d02a6a	6	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00d09010	5872	5864	0x00d0a6f8	8	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00d0c410	5376	5373	0x00d0d90d	3	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00d0d910	4928	4752	0x00d0eba0	176	neighbouring_code_or_data	Complete Main includes switch entries at00D0EB90; next separate spawned SuspendableProcess begins00D0EBA0.
+0x00d1b200	6112	6100	0x00d1c9d4	12	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00d2d930	5104	5094	0x00d2ed16	10	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00d3e2e0	9648	9440	0x00d407c0	208	neighbouring_code_or_data	9440 includes all four five-entry jump tables; separate CSpeedFriend allocator begins00D407C0; original9648 also covers helper bodies.
+0x00d56790	6160	6151	0x00d57f97	9	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00d62480	6208	6195	0x00d63cb3	13	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00db5330	6160	6148	0x00db6b34	12	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00dbb310	6640	6639	0x00dbccff	1	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00ddf090	4608	4599	0x00de0287	9	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00de2610	4432	4420	0x00de3754	12	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00de6c20	5520	5511	0x00de81a7	9	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00de8370	4896	4894	0x00de968e	2	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00e2ff00	8576	8567	0x00e32077	9	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00e7c8e0	5360	5358	0x00e7ddce	2	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00e90be0	4928	4914	0x00e91f12	14	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00e93eb0	5328	5321	0x00e95379	7	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00e9e420	5920	5915	0x00e9fb3b	5	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00ebcf70	5584	5572	0x00ebe534	12	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00ec68a0	5968	5962	0x00ec7fea	6	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00ec8300	6400	6394	0x00ec9bfa	6	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.
+0x00ec9d30	4720	4708	0x00ecaf94	12	alignment_only	Complete selected native function extent; remaining assigned suffix is alignment only.

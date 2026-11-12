@@ -1,5 +1,8 @@
 // CAIStateGroup_BanditPlayDice::Act() -- play the watching-into animation, then until a random 375..674 frames pass either take a turn at the dice game (pick, throw, maybe win/lose, release the turn) or keep playing, then play the watching-out-of animation
-// Leaf: ?Act@CAIStateGroup_BanditPlayDice@@QAE?AW4EAIActionReturn@@XZ
+// Leaf: ?Act@CAIStateGroup_BanditPlayDice@@MAE?AW4EAIActionReturn@@XZ
+// Spelling (FAM12): Ego_r.pdb / FableWin.pdb ?Act@CAIStateGroup_BanditPlayDice@@MAE?AW4EAIActionReturn@@XZ (protected virtual, like the
+//   override 0x009289B0 ?Act@CAIStateGroup_BanditPlot@@MAE...); EAIActionReturn from engine/EAIAction.h (PDB enumerators); the callee
+//   0x0097DB70 is ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (both PDBs).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009285D0, 992 bytes (aligned frame, no EH frame).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCreatureAction_PlayAnimation ctor 0x008424F0,
 //   AIAction_PerformActionAndWait 0x0097DB70, ~CCreatureActionBase 0x00693EF0, GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890,
@@ -48,7 +51,7 @@ class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
-enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
+#include "engine/EAIAction.h"
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
@@ -67,7 +70,9 @@ class CAIStateGroupBase { public:
         *seed = GFROR13(*seed);
         return *seed % range;
     }
-    EAIActionReturn AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
+    protected:
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool stopWhenReplaced);   // 0x0097DB70
+    public:
 };
 struct CAIStateGroup_BanditPlayDice : CAIStateGroupBase {
     void* DiceGamePosition;                     // +0x14
@@ -75,14 +80,15 @@ struct CAIStateGroup_BanditPlayDice : CAIStateGroupBase {
     long FrameToInitiate;                       // +0x1c
     long FrameToJoin;                           // +0x20
     bool WasCarryingWeapon;                     // +0x24
-    EAIActionReturn Act();
+protected:
+    virtual EAIActionReturn Act();
 };
 
 EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
 {
-    EAIActionReturn result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
+    EAIActionReturn result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
         "ST_DICEGAME_WATCHING_INTO", CSoundPair(), false, true, false, 0, 0), false);
-    if (result != AI_ACTION_DONE)
+    if (result != AI_ACTION_FINISHED)
         return result;
     unsigned long wait = Random(300);
     long endFrame = CWorld::GetFrame() + wait + 375;
@@ -92,28 +98,28 @@ EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
             CThing* player = GetCreature();
             CTCDiceGame* game = DiceGame;
             game->CurrentPlayer = CIntelligentPointer<CThing>(player);
-            AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_PICKING_DICE",
+            AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_PICKING_DICE",
                 CSoundPair(), false, true, false, 0, 0), false);
-            result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
+            result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
                 "ST_DICEGAME_PLAYING_THROW", CSoundPair(), false, true, false, 0, 0), false);
             switch (rand() % 5) {
             case 0:
-                result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
+                result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
                     "ST_DICEGAME_PLAYING_WIN", CSoundPair(), false, true, false, 0, 0), false);
                 break;
             case 1:
-                result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
+                result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
                     "ST_DICEGAME_PLAYING_LOSE", CSoundPair(), false, true, false, 0, 0), false);
                 break;
             }
             CTCDiceGame* table = DiceGame;
             table->CurrentPlayer = CIntelligentPointer<CThing>(0);
         } else
-            result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_PLAYING",
+            result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_PLAYING",
                 CSoundPair(), false, true, false, 0, 0), false);
-        if (result != AI_ACTION_DONE)
+        if (result != AI_ACTION_FINISHED)
             return result;
     }
-    return AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_WATCHING_OUTOF",
+    return AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_WATCHING_OUTOF",
         CSoundPair(), false, true, false, 0, 0), false);
 }

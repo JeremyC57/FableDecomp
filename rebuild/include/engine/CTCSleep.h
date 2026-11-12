@@ -13,6 +13,12 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;
     virtual CCharString GetClassTypeName() const;
     long GetLastFrameWokeUp() { return LastFrameWokeUp; }
+#ifdef FABLE_RETAIL_CTCSLEEP_FASTTRACK
+    // chunk Q15 (row 0x0092E130): Ego_r.pdb ?GetFastTrack@CTCSleep@@QAE_NXZ (out of line, 0x0092C3B0) and
+    // ?GetIsReadyToSleep@CTCSleep@@QAE_NXZ (inline in retail: CAIStateGroup_MinionSleep::IsRunnable reads +0Ch).
+    bool GetFastTrack();
+    bool GetIsReadyToSleep() { return IsReadyToSleep; }
+#endif
 protected:
     bool IsReadyToSleep;
     bool FastTrack;

@@ -40,11 +40,15 @@ float __stdcall GFVYToAY(float y);                           // 0x009E1E40
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 
 class CEnginePrimitiveHandle { public: unsigned long Data[2]; };
+// Name fix (naming agent NF21, 2026-11-11): the position constructor 0x00493AC2 takes the PDB enums (Ego_r.pdb 0x0049C7E3 /
+//   FableWin.pdb 0x01A663FC ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@
+//   W4EEngineInterpolationSet@@MMEEEEK11@Z); forward-declared as in the shared engine headers.
+enum EEngine2DLayer; enum EEnginePrimitiveBlendMode; enum EEngineInterpolationSet;
 class CEnginePrimitive2DSprite {
 public:
     unsigned char _body[0x54];
-    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DVector& pos, long layer, unsigned long graphic, unsigned long b, long blend,
-                             long interpolation, float scaleX, float scaleY, unsigned char alpha, unsigned char red, unsigned char green,
+    CEnginePrimitive2DSprite(unsigned __int64 id, const C2DVector& pos, EEngine2DLayer layer, unsigned long graphic, unsigned long b,
+                             EEnginePrimitiveBlendMode blend, EEngineInterpolationSet interpolation, float scaleX, float scaleY, unsigned char alpha, unsigned char red, unsigned char green,
                              unsigned char blue, unsigned long e, const C2DVector& uv0, const C2DVector& uv1);   // 0x00493AC2
 };
 class CEnginePrimitiveRenderer {
@@ -113,7 +117,7 @@ void CSubtitleRenderer::DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareIn
     for (unsigned long i = 0; i < EmbeddedGraphics.size(); ++i) {
         if (AllCharactersDisplayed || TextCharactersShowing > EmbeddedGraphics[i].CharIndex) {
             C2DVector pos = EmbeddedGraphics[i].Offset + def->ControllerGraphicOffset + C2DVector(GFVXToAX_009e1e10(box.TLX), GFVYToAY(box.TLY));
-            CEnginePrimitive2DSprite sprite(0, pos, 0x45, EmbeddedGraphics[i].Graphic, 0, 2, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0,
+            CEnginePrimitive2DSprite sprite(0, pos, (EEngine2DLayer)0x45, EmbeddedGraphics[i].Graphic, 0, (EEnginePrimitiveBlendMode)2, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0,
                                             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             info.Renderer->AddPrimitive(&EmbeddedPrimitiveHandles[i], sprite, 0xc0);
             CWideString text = GetTextFromEmbeddedTagGraphic(EmbeddedGraphics[i].Graphic);

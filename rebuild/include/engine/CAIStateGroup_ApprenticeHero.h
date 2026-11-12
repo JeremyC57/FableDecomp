@@ -42,6 +42,11 @@ protected:
     // (protected; called by GetDummy 0x0092A0C0 and LookAtMap 0x0092AFE0). Declaration only: no layout change.
     CThingGameObject* GetObjectWithScriptName(const CCharString& script_name);   // 0x00929FC0
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_GOTOLIBRARY
+    // Nested opt-in (chunk Q9, row 0x0092ACE0): FableWin.pdb ?GoToLibrary@CAIStateGroup_ApprenticeHero@@IAE_NXZ (protected, debug
+    // copy 0x02C6B220). Declaration only: no layout change.
+    bool GoToLibrary();                                                  // 0x0092ACE0
+#endif
 public:
     long              NextFramePractice;                                 // +0x14
     CThingGameObject* PDummy;                                            // +0x18

@@ -1,10 +1,12 @@
 // CBankFileAsyncData::~CBankFileAsyncData() -- unless aborted: under the bank's critical section, drop this request from the bank's instance and restart sets, spin (unlocking around Sleep(0)) until any outstanding threaded read has finished, and give the pool handle back; then return an internally allocated buffer to the global allocator (destroying the allocator when it empties and is flagged to die) and run the base destructors
 // Leaf: ??1CBankFileAsyncData@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D61F0, length 348 bytes (+ int3 padding), ebp frame aligned to 8, plain ret.
+// NF28 (2026-11-12, queue land1011dz): callees respelled HasReadFinished -> CThreadedFile::RemoveObject, Free_00a62ed0 ->
+//          CMovableResourceMemoryPool::FreeResource (shared header).
 // Callees: CCriticalSectionLock ctor @ 0x00A62920 / Unlock @ 0x00A62960 / Lock @ 0x00A62980 / dtor @ 0x00A629A0,
-//          set<CBankFileAsyncData*>::erase(const key&) @ 0x009D7F40 (_Rb_tree, twice), CThreadedFile::HasReadFinished(ulong)
+//          set<CBankFileAsyncData*>::erase(const key&) @ 0x009D7F40 (_Rb_tree, twice), CThreadedFile::RemoveObject(ulong)
 //          @ 0x0098EC90 (a thunk onto the global thread manager that ignores `this`), Sleep (kernel32 import 0x0143FE1C,
-//          hoisted into edi), CHandleBasedMemoryPool::Free @ 0x00A62ED0, GFEnterAllocatorLock @ 0x009F2000 /
+//          hoisted into edi), CMovableResourceMemoryPool::FreeResource @ 0x00A62ED0, GFEnterAllocatorLock @ 0x009F2000 /
 //          GFLeaveAllocatorLock @ 0x009F2010, CMemoryAllocator::InternalDeallocate @ 0x009F2920 / GetAllocationCount
 //          @ 0x009F1F10 / ~CMemoryAllocator @ 0x009F2310 / operator delete @ 0x009F1F90 (the landed
 //          GFFreeFromGlobalAllocator body, inlined), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300. Vtables 0x0129B8B4 (primary) /
@@ -18,7 +20,13 @@
 //          8-aligned (`and esp,-8`); the wait is a peeled test plus a do-while that unlocks around Sleep(0), the threaded
 //          file reached through an inline accessor so the object loads before the UID push (a direct member chain pushes
 //          first); the buffer free is the inlined GFFreeFromGlobalAllocator with the buffer read into edi before the lock.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL_FREERESOURCE
 #include "fable_compiler.h"
+#include "engine/CMovableResourceMemoryPool.h"   // FreeResource 0x00A62ED0 (Ego_r.pdb / FableWin.pdb ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);   // import 0x0143FE1C
 
 struct CRITICAL_SECTION_Fable { unsigned char _body[0x18]; };
@@ -56,10 +64,9 @@ FABLE_FORCEINLINE void GFFreeFromGlobalAllocator(void* block)
     GFLeaveAllocatorLock();
 }
 
-class CHandleBasedMemoryPool { public: void Free_00a62ed0(long handle); };   // 0x00A62ED0
 class CThreadedFile {
 public:
-    bool HasReadFinished(unsigned long readUID);   // 0x0098EC90
+    bool RemoveObject(unsigned long uid);          // 0x0098EC90 ?RemoveObject@CThreadedFile@@QAE_NK@Z (Ego_r.pdb / FableWin.pdb)
 };
 class CBankFileAsyncData;
 struct CAsyncDataSet {                             // set<CBankFileAsyncData*> (STLport _Rb_tree)
@@ -79,10 +86,7 @@ class CBankFileAsync { public:
     CThreadedFile* GetThreadedFile() const { return ThreadedFile; }
 };
 
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
-};
+// CBaseClassNonCopyable: engine/CBaseClassNonCopyable.h (via the pool header); ~CBaseClassNonCopyable 0x0099A300.
 struct CThreadedFileRequest {                      // the second base (vtable 0x0129B860): the file thread's callback interface
     virtual ~CThreadedFileRequest() { }
 };
@@ -93,7 +97,7 @@ public:
     unsigned long           Length;                // +0x10
     unsigned long           SkipBytes;             // +0x14
     unsigned long           ThreadedFileUID;       // +0x18
-    CHandleBasedMemoryPool* MemoryPool;            // +0x1c
+    CMovableResourceMemoryPool* MemoryPool;        // +0x1c
     long                    MemoryHandle;          // +0x20
     unsigned long           InternalAllocatedBufferSize;   // +0x24
     CBankFileAsync*         BankFile;              // +0x28
@@ -112,16 +116,16 @@ CBankFileAsyncData::~CBankFileAsyncData()
         BankFile->AsyncDataInstances.erase(this);
         BankFile->ReadsToRestart.erase(this);
         if (ThreadedFileUID) {
-            if (!BankFile->GetThreadedFile()->HasReadFinished(ThreadedFileUID)) {
+            if (!BankFile->GetThreadedFile()->RemoveObject(ThreadedFileUID)) {
                 do {
                     lock.Unlock();
                     Sleep(0);
                     lock.Lock();
-                } while (!BankFile->GetThreadedFile()->HasReadFinished(ThreadedFileUID));
+                } while (!BankFile->GetThreadedFile()->RemoveObject(ThreadedFileUID));
             }
         }
         if (MemoryPool && MemoryHandle != -1) {
-            MemoryPool->Free_00a62ed0(MemoryHandle);
+            MemoryPool->FreeResource(MemoryHandle);
             MemoryHandle = -1;
             Buffer = 0;
             Data = 0;

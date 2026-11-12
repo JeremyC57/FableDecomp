@@ -1,5 +1,7 @@
 // CTCQuestCompletionUI::Activate(CompletionType type, const CCharString& scriptName, bool arg, const CWideString& failureReason, bool canTeleport) -- open the quest-completion screen for a script: (type 3 first closes the boast UI) store the script name, failure text and teleport flag, activate against the script's active quest card, and on a type-0 completion drop the script's accepted boasts
-// Leaf: ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@@ABVCCharString@@_NABVCWideString@@2@Z
+// Leaf: ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@ABVCCharString@@_NABVCWideString@@2@Z
+// agentNF20 (2026-11-11): CompletionType is the class's nested enum (Ego_r.pdb / FableWin.pdb W4CompletionType@1@ in both Activate
+//   overloads: this row and the callee 0x005E4430 ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
@@ -42,8 +44,8 @@ class CQuestManager { public:
 public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString&) const;   // 0x004B0C80
 };
-enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
 class CTCQuestCompletionUI { public:
+    enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };   // enumerator names descriptive
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x50 - 0x08];

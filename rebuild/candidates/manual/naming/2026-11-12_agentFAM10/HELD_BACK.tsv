@@ -1,0 +1,4 @@
+address	reason
+0x00419086	DeleteData row adds a NEW local model of CAEnvironmentInteraction (shared header exists): port onto engine/CAEnvironmentInteraction.h
+0x00718080	DeleteData row adds a NEW local model of CScriptConversation (shared header exists)
+0x00AF5CD0	DeleteData row adds a NEW local model of CPSCBase (shared header exists)

@@ -1,0 +1,11 @@
+address	name	evidence
+009F5690	??0CInputEventPackage@@QAE@AAVCAFile@@@Z	chunk Q8 (landing cm): FableWin.pdb / Ego_d ctor name set; the body fills this from the CAFile (catalog label Save is the neighbour ?Save@CInputEventPackage@@QAEXAAVCAFile@@@Z)
+006A4FB0	?GetFirstCollision@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z	chunk Q8 (landing cm): Ego_r.pdb 0x00684030 + reloc_bindings (caller 0x006A5460); matched
+0095D0E0	?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ	chunk Q8 (landing cm): Ego_r.pdb 0x009818A0 (protected, non-virtual); matched
+006D8980	?UpgradeTrainableStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@@Z	chunk Q8 (landing cm): Ego_r.pdb + FableWin.pdb name sets
+006D8170	?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z	chunk Q8 (landing cm): Ego_r/FableWin name set; called by 0x006D8980 with (stat, false)
+006D83B0	?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z	chunk Q8 (landing cm): Ego_r/FableWin name set; called by 0x006D8980 with (true)
+0057B05F	?SetAge@CTCHeroStats@@QAEXM@Z	chunk Q8 (landing cm): Ego_r.pdb 0x0056E879 name set; called by 0x006D8980 with Age + CGlobalDef::AgeIncreasePerLevelUp
+00989830	?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z	chunk Q8 (landing cm): Ego_r.pdb + FableWin.pdb (see NAME_FIXES.tsv)
+00ADD690	?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z	chunk Q8 (landing cm): Ego_r.pdb 0x00BF9FD0 + FableWin.pdb 0x0338AD30
+00A443A0	?GFGetShortestDistance2DSquaredBetweenPointAndLine@@YIMABVC2DVector@@00AAM@Z	landing cm respell: Ego_r.pdb 0x00B99AC0 + FableWin.pdb 0x0320C970, the only PDB function of this signature; 3D twin 0x00A442E0 directly before it

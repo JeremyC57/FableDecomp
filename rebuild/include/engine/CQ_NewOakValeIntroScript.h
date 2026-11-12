@@ -30,7 +30,11 @@ class CQ_SunnyvaleMasterData;
 #pragma pack(push, 1)
 class CQ_NewOakValeIntroScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BARRELMAN_THERESA
+    enum EBadDeeds { BD_BARREL_BREAKING=0, BD_DERELICTION_OF_DUTY=1, BD_VIOLENCE=2, BD_TEDDY_TO_BULLY=3, BD_CONCEALED_AFFAIR=4, BD_NUMBER_OF_BAD_DEEDS_POSSIBLE=5 };
+#else
     enum EBadDeeds { };
+#endif
     CQ_NewOakValeIntroScript(CScriptDataBase*, CGameScriptInterfaceBase&);  // 0x00DAAC00
     virtual void RegisterMain();                                         // 0x00DAACE0
     virtual void Main();                                                 // 0x00DABAC0
@@ -93,6 +97,9 @@ public:
     unsigned char _pad101[3];
     CTimer TalkIntermittentTimer;                                        // +0x104
     CTimer WatchTimer;                                                   // +0x108
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BARRELMAN_THERESA
+    class CNOVI_BarrelMan;
+#endif
     class CNOVI_LiveFather;                                              // Alloc 0x00DAC2C0
     class CNOVI_Theresa;                                                 // Alloc 0x00DAC420
     class CNOVI_Guard;                                                   // Alloc 0x00DAC580
@@ -267,6 +274,82 @@ protected:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Guard) == 0x1c);
+#endif
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BARRELMAN_THERESA
+// Retail opt-in (chunk 813): the BarrelMan and Theresa entity scripts. Ego_r.pdb layouts (struct_layouts_egor.tsv, entity offsets
+// equal retail's: CEntityScriptBase is 0x14 in both): CNOVI_BarrelMan 36 bytes (ComplainedAboutStock +0x1c, HeroLetMeDown +0x1d,
+// OverheardYet +0x1e, MyPhase +0x20, original EMyPhase names and private field access proved by both original PDB records), CNOVI_Theresa 32 bytes (spoken_already +0x1c, DoneIntro +0x1d); retail Main 0x00DB5330 / 0x00DB97A0 read these offsets.
+// Entity vtables 0x012D9014 (BarrelMan: 0 scalar deleting dtor 0x00DB5310, 1 Main 0x00DB5330, 2 Init 0x00DB5260, 3 GetParentScript
+// 0x00DB5250; Alloc 0x00DB51B0 stores it) and 0x012D83A4 (Theresa: 0 0x00DAC4D0, 1 Main 0x00DB97A0, 2 Init 0x00DAC4F0, 3
+// GetParentScript 0x00DAC4C0; Alloc 0x00DAC420); Main / Init are private (Ego_r.pdb / FableWin.pdb
+// ?Main@CNOVI_BarrelMan@CQ_NewOakValeIntroScript@NScript@@EAEXXZ, ?Main@CNOVI_Theresa@CQ_NewOakValeIntroScript@NScript@@EAEXXZ).
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_BarrelMan : public CEntityScriptBase {
+public:
+    typedef CQ_NewOakValeIntroScript TParentClass;
+    CNOVI_BarrelMan(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DB51B0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DB5250
+    CQ_SunnyvaleMasterData* GetMasterData();
+private:
+    virtual void Main();                                                 // 0x00DB5330
+    virtual void Init();                                                 // 0x00DB5260
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    enum EMyPhase { PHASE_WAITING=0, PHASE_WALKING_AWAY=1, PHASE_AWAY=2, PHASE_RETURNING=3, PHASE_RETURNED=4, PHASE_OVER=5 };
+    bool ComplainedAboutStock;                                           // +0x1c
+    bool HeroLetMeDown;                                                  // +0x1d
+    bool OverheardYet;                                                   // +0x1e
+    EMyPhase MyPhase;                                                    // +0x20
+};
+class CQ_NewOakValeIntroScript::CNOVI_Theresa : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DAC420
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DAC4C0
+private:
+    virtual void Main();                                                 // 0x00DB97A0
+    virtual void Init();                                                 // 0x00DAC4F0
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool spoken_already;                                                 // +0x1c
+    bool DoneIntro;                                                      // +0x1d
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan) == 0x24);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa) == 0x20);
+#endif
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_BULLY // Retail opt-in (Codex pass 21): original PDB nested owner and native Alloc/vtable; rebased hand811 model.
+// Retail opt-in (chunk 811): the NOVI_Bully entity script. Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets equal
+// retail's: CEntityScriptBase is 0x14 in both): CNOVI_Bully 44 bytes (ParentClass +0x14, PMasterData +0x18, InitialHealth +0x1c,
+// HitsTaken +0x20, DoneIntro +0x24, SaidPieceAboutAttackingVictim +0x25, SpokenOnFirstProximity +0x26, IntimidateSpeechLoop
+// +0x28); retail Main 0x00DBB310 reads these offsets. Entity vtable 0x012D879C (0 scalar deleting dtor 0x00DAED10, 1 Main
+// 0x00DBB310, 2 Init 0x00DAED30, 3 GetParentScript 0x00DAED00) that Alloc 0x00DAEC60 stores; Main / Init are private virtual and
+// GivenTeddy 0x00DBCD00 private (Ego_r.pdb ?Main@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@EAEXXZ,
+// ?GivenTeddy@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@AAEXXZ).
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_Bully : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DAEC60
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DAED00
+private:
+    virtual void Main();                                                 // 0x00DBB310
+    virtual void Init();                                                 // 0x00DAED30
+    void GivenTeddy();                                                   // 0x00DBCD00
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    long InitialHealth;                                                  // +0x1c
+    long HitsTaken;                                                      // +0x20
+    bool DoneIntro;                                                      // +0x24
+    bool SaidPieceAboutAttackingVictim;                                  // +0x25
+    bool SpokenOnFirstProximity;                                         // +0x26
+    long IntimidateSpeechLoop;                                           // +0x28
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Bully) == 0x2c);
 #endif
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript) == 0x10c);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Villager) == 0x20);

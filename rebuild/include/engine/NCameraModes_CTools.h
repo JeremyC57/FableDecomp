@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_NCAMERAMODES_CTOOLS_H
 #define FABLE_ENGINE_NCAMERAMODES_CTOOLS_H
 // New header (chunk 724 round 3). NCameraModes::CTools, the camera helper owned by CGameCameraManager (Ego_r.pdb
@@ -18,6 +19,10 @@ class CWorld;
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD
 #include "engine/CGameCameraManager.h"
 #endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_POTENTIALFIELD
+#include "engine/C3DVector.h"
+class CThingGameObject;
+#endif
 namespace NCameraModes {
 class CTools {
 public:
@@ -30,7 +35,12 @@ public:
     {return (current_val*weight+new_val)/(weight+1.0f);}
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    enum ELOSTest { TEST_THINGS=1,TEST_LANDSCAPE=2,TEST_THEMES=4,TEST_CREATURES=8,TEST_PASSABILITY=16,TEST_ALL_BUT_CREATURES=7,TEST_ALL=15 };
+    bool IsLineOfSight(const C3DVector&,const C3DVector&,C3DVector&,C3DVector&,float&,const CThing**,ELOSTest,bool)const;
+#else
     enum ELOSTest { };
+#endif
     bool GetThingPointIntersectionFromTo(const std::vector<const CThing*>&, const C3DVector&, const C3DVector&, C3DVector&,
         C3DVector&, const CThing**, bool, ELOSTest) const;           // 0x008771A0
     // chunk 724c: the thing-vector IsLineOfSight overload, Ego_r ?IsLineOfSight@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@...
@@ -41,8 +51,25 @@ public:
     // chunk 751 (row 0x00878390): Ego_r.pdb / FableWin.pdb member template
     // ??$GetThingsOfType@VCThingBuilding@@@CTools@NCameraModes@@QBEXAAV?$list@PBVCThingBuilding@@...@std@@JABVC3DVector@@M@Z.
     template<class T> void GetThingsOfType(std::list<const T*>& things,long type,const C3DVector& pos,float radius) const;
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_STANDARDTHINGS
+    // Retail opt-in (chunk F1, row 0x00877720): FableWin.pdb / Ego_r.pdb
+    // ?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z.
+    void GetStandardThings(std::list<const CThing*>& things,const C3DVector& pos,float radius) const;
+#endif
     // Chunk 756 (row 0x00875F00): Ego_r.pdb ?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z.
     float GetMeshExtent(const CThing& thing) const;
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_POTENTIALFIELD
+    // Retail opt-in (chunk Q14, row 0x00876CA0): Ego_r.pdb ?PotentialField@CTools@NCameraModes@@QBEMABVC3DVector@@0MM@Z (Ego_r
+    // 0x0085BE80; no out-of-line copy in retail: expanded in 0x00876CA0 and the landed 0x00876E10, the body the latter models,
+    // parameter names as NCameraModes::CPhysicsForceModelBase's copy) and
+    // ?PotentialFieldBufferObjects@CTools@NCameraModes@@QBE?AVC3DVector@@ABV3@ABV?$list@PBVCThingGameObject@@...@std@@@Z (Ego_r
+    // 0x0085D8B0; retail 0x00876CA0). No layout change.
+    float PotentialField(const C3DVector& pos,const C3DVector& source,float scale,float r_prime) const
+    {
+        return (scale*0.1f)/((pos-source).GetMagnitude()-r_prime);
+    }
+    C3DVector PotentialFieldBufferObjects(const C3DVector& field_is_at,const std::list<const CThingGameObject*>& objects) const;   // 0x00876CA0
 #endif
 private:
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD

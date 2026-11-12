@@ -64,7 +64,6 @@ class CThing { public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad50[0x60 - 0x50];
     CTCPhysicsBase* PPhysics;                   // +0x60
-    bool IsPerformingAnyAction();               // 0x006622A0 (CThingCreatureBase)
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -91,6 +90,11 @@ class CThing { public:
         }
         return false;
     }
+};
+// Name fix (naming agent NF21, 2026-11-11): 0x006622A0 is ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb /
+//   FableWin.pdb), reached through the scripted creature (CThingCreatureBase derives from CThing).
+class CThingCreatureBase : public CThing { public:
+    bool IsPerformingAnyAction() const;         // 0x006622A0
 };
 class CTCCarrying;
 class CTCCarryable { public:                           // interface 0x47
@@ -246,7 +250,7 @@ void CActionMoveTo::Update()
     CTCCreatureNavigation* nav;
     if (!parent->GetInterface(&nav, 7))
         return;
-    if (parent->IsPerformingAnyAction())
+    if (static_cast<CThingCreatureBase*>(parent)->IsPerformingAnyAction())
         return;
     CNavigationInput input;
     if (UseTargetThing) {

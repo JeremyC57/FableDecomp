@@ -19,6 +19,8 @@
 // CUserProfileManager's signed-in user name +0x110 and password +0x114 (CWideString).
 // Shape: GetSignedInUserName/GetSignedInPassword are inline by-value CCharString getters, compared to "" with the
 // inline CCharString==; the `||` gives the conditional-temporary flags word.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 #include "fable_compiler.h"
 #include <new>
 extern "C" int __cdecl strcmp(const char* a, const char* b);
@@ -59,8 +61,9 @@ private: public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_emptyWideString;             // 0x013BCA24
 
 namespace NGameText {
 class CDataBank { public:
@@ -338,6 +341,6 @@ void CTCHeroOnlineScoreboard::ShowScoreboard()
             return;
         }
         ScoreboardState = 1;
-        SelectedClan = g_emptyWideString;
+        SelectedClan = CWideString::NullString;
     }
 }

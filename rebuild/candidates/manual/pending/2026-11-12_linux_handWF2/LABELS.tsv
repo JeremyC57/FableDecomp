@@ -1,0 +1,13 @@
+0x006E0880	?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z	CTCDParticleEmitter
+0x007C3EA0	?SetAICast@CTCHealLife@@QAEXJ@Z	CTCHealLife
+0x008C2AD0	?FinishAction@CCombatAction_WillHealInto@@UAEXXZ	CCombatAction_WillHealInto
+0x006978D0	GetInterpolatedCamera	CGameCameraManager
+0x00A0BEB0	GetFOV	CCamera
+0x00A0BED0	SetFOV	CCamera
+0x00A0BE30	SetView	CCamera
+0x0049D380	CCamera	CCamera
+00eb53a0	AttackHero	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin
+00cd2770	Release	CScriptGameResourceObjectScriptedThingBase
+00f35b10	SetPredicate	CEntityScriptBase
+00f35b30	IsActiveThreadTerminating	CEntityScriptBase
+00cd23b9	IsValid	CScriptGameResourceObjectScriptedThingBase

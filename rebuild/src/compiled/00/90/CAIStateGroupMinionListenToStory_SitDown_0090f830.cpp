@@ -14,6 +14,14 @@
 //          +0x2c (string assign, one-test CRC over the temporary); the counted pointer is the landed `Object(object)`,
 //          `if/else` block form (new re-reading Object), passed by value to the action ctor.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BB66C SIT_ON_FLOOR_ANIM_NAME (anonymous namespace; initializer 0x01221880), was g_SitAnimName.
+// Name fix (agentNF27, 2026-11-12, RELOC_CONFLICT land1011dn): the deleter the inline count block stores, 0x008AA810, is
+//   ?DeleteData@?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@SIXPAX@Z (FableWin.pdb; stored by the CCountedPointer<CModeSitFloor>
+//   ctor 0x008AB380; the mode built here has CModeSitFloor's vtable 0x01267BBC), was the free stand-in DeleteSitMode. The mode and
+//   action models stay local stand-ins (CModeSitListen = NCreatureMode::CModeSitFloor, CModeSitBase without its namespace, the SitDown
+//   ctor's parameter types): moving them onto engine/NCreatureMode_CModeSitFloor.h / CCreatureAction_SitDown.h is a rewrite of the row.
 #include "fable_compiler.h"
 class CCharStringData { public: const char* Chars; long Length; };
 class CCharString { public:
@@ -39,7 +47,7 @@ class CAnimationEntry { public:
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08
 };
-extern CCharString g_SitAnimName;               // 0x013BB66C
+namespace { extern CCharString SIT_ON_FLOOR_ANIM_NAME; }               // 0x013BB66C
 class CAnimFilterBase { public:
     virtual void v00();                         // vtable 0x0122FFCC
     ~CAnimFilterBase() { }
@@ -81,16 +89,12 @@ struct CModeSitListen : CModeSitBase {          // 0x38 bytes
     FABLE_FORCEINLINE CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim);
     virtual void v00();
 };
-void __fastcall DeleteSitMode(void* object);   // 0x008AA810
-struct CCountBlock {
-    long Count;
-    void (__fastcall* Deleter)(void*);
-    void* Object;
-    CCountBlock(void* object) { Object = object; Count = 1; Deleter = DeleteSitMode; }
-};
+namespace NCreatureMode { class CModeSitFloor; }
+struct CCountBlock;
 template <class T> class CCountedPointer { public:
     T* Object;
     CCountBlock* Block;
+    static void __fastcall DeleteData(void* data);   // CCountedPointer<NCreatureMode::CModeSitFloor>: 0x008AA810
     CCountedPointer(T* object) : Object(object)
     {
         if (object)
@@ -110,6 +114,12 @@ template <class T> class CCountedPointer { public:
             delete Block;
         }
     }
+};
+struct CCountBlock {
+    long Count;
+    void (__fastcall* Deleter)(void*);
+    void* Object;
+    CCountBlock(void* object) { Object = object; Count = 1; Deleter = &CCountedPointer<NCreatureMode::CModeSitFloor>::DeleteData; }
 };
 class CCreatureActionBase { public:
     void* __vftable;
@@ -145,7 +155,7 @@ protected:
 
 bool CAIStateGroup_MinionListenToStory::SitDown()
 {
-    CAnimationEntry* anim = GetCreature()->GetRandomAnimFromNameWithFilter(g_SitAnimName, CAnimFilterSit());
+    CAnimationEntry* anim = GetCreature()->GetRandomAnimFromNameWithFilter(SIT_ON_FLOOR_ANIM_NAME, CAnimFilterSit());
     CCountedPointer<CModeSitBase> mode(new CModeSitListen(this, anim->GroupName));
     if (IsStopping())
         return false;

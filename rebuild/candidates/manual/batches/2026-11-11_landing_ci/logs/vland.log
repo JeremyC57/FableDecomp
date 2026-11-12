@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00912840   RELOCATION_MATCH PASS   AddRandomBezierCurveToPath
+00a66fd0   WARN RELOC_NAME: ?SetAsRightMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03dc0 labelled 'CInputEvent::SetAsMiddleMouseButtonHeld'
+00a66fd0   WARN RELOC_NAME: ?SetAsMiddleMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03e70 labelled 'CInputEvent::SetAsRightMouseButtonHeld'
+00a66fd0   WARN RELOC_NAME: ?push_back@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ -> 009e4aa0 labelled 'CKeyedOwner_009e4aa0::Register'
+00a66fd0   RELOCATION_MATCH PASS   ProcessMaintainedEventsFromEvent
+
+WINS: 2
+  00912840 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::?AddRandomBezierCurveToPath@CAIStateGroup_FlyingThingBase@@IAE_NAAV?$deque@VCBezierCurve@@V?$allocator@VCBezierCurve@@@std@@@std@@@Z
+  00a66fd0 RELOCATION_MATCH CMouse::?ProcessMaintainedEventsFromEvent@CMouse@@IAEXPBVCInputEvent@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupFlyingThingBase_AddRandomBezierCurveToPath_00912840
+  CMouse_ProcessMaintainedEventsFromEvent_00a66fd0

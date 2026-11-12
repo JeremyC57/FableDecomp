@@ -19,12 +19,12 @@ class CInputManager {
 public:
     bool IsJoystickEventInQueue(EInputEventType type, long index, CInputEvent& event, long player) const;  // 0x009F4C60
 };
-extern CInputManager* PInputManager;                   // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 struct CInputTypeMouseWheelMovementEvent_Methods : CInputTypeMouseWheelMovementEvent {
     bool IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const;
 };
 bool CInputTypeMouseWheelMovementEvent_Methods::IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const
 {
     CInputEvent event;
-    return PInputManager->IsJoystickEventInQueue(INPUT_EVENT_TYPE_MOUSE_WHEEL_MOVEMENT, 0, event, player);
+    return GPInputManager->IsJoystickEventInQueue(INPUT_EVENT_TYPE_MOUSE_WHEEL_MOVEMENT, 0, event, player);
 }

@@ -37,8 +37,10 @@ public:
     CAnimateThing& GetAnimation();   // 0x0070B460
 };
 enum { HEAD_ANIM_HORIZONTAL = 11, HEAD_ANIM_VERTICAL = 12 };
-extern long g_lookHeadAnimHorizontal;                // 0x013BACE4
-extern long g_lookHeadAnimVertical;                  // 0x013BACE8
+class CCharString;
+enum ECreatureAnim;                                  // MS forward enum (Ego_r.pdb)
+extern CCharString g_CCharString_013bace4;           // 0x013BACE4 Ego_r.pdb initializer order: ST_HEAD_TURN_H (spelling of the landed definition row 0x0121EBA0)
+extern CCharString g_CCharString_013bace8;           // 0x013BACE8 Ego_r.pdb initializer order: ST_HEAD_TURN_V (spelling of the landed definition row 0x0121EBC0)
 extern const float g_zero;                           // 0x0122DEDC
 
 class CTCLook { public:
@@ -51,8 +53,9 @@ class CTCLook { public:
     bool          FirstTimeThrough;                  // +0xcc
     void InitialiseHeadAnims();                      // 0x00752640
     bool IsInsideAnimationRange();                   // 0x00751BC0
-    void UpdateHeadCreatureAnim(long* headAnim, long type, CAnimateThing& animation);   // 0x00752F30
     void ImplementHeadSettings();
+private:
+    void UpdateHeadCreatureAnim(const CCharString& name, ECreatureAnim type, CAnimateThing* animation);   // 0x00752F30 Ego_r/FableWin ?UpdateHeadCreatureAnim@CTCLook@@AAEXABVCCharString@@W4ECreatureAnim@@PAVCAnimateThing@@@Z
 };
 void CTCLook::ImplementHeadSettings()
 {
@@ -69,7 +72,7 @@ void CTCLook::ImplementHeadSettings()
         animation.RemoveCombinationAnimsOfType(HEAD_ANIM_VERTICAL);
         animation.RemoveCombinationAnimsOfType(HEAD_ANIM_HORIZONTAL);
     } else {
-        UpdateHeadCreatureAnim(&g_lookHeadAnimVertical, HEAD_ANIM_VERTICAL, animation);
-        UpdateHeadCreatureAnim(&g_lookHeadAnimHorizontal, HEAD_ANIM_HORIZONTAL, animation);
+        UpdateHeadCreatureAnim(g_CCharString_013bace8, (ECreatureAnim)HEAD_ANIM_VERTICAL, &animation);
+        UpdateHeadCreatureAnim(g_CCharString_013bace4, (ECreatureAnim)HEAD_ANIM_HORIZONTAL, &animation);
     }
 }

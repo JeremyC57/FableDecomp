@@ -18,6 +18,30 @@ private:
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_EXPLOSION; }
     CDefPointer<const CExplosionDef> GetPExplosionDef() const { return PExplosionDef; }
+#ifdef FABLE_RETAIL_CTCDEXPLOSION_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004E3165
+public:
+#endif
+#if defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION) || defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+// Retail opt-in (Codex pass21): both original PDB types and donor OnHit/026FD4F0.
+public:
+static CThing* FABLE_FASTCALL Create(long,const C3DVector&);
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+void SetThingAsImmune(CThing&);
+#endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+void SetSpecificThingToHit(CThing&);
+#endif
+#endif
+#ifdef FABLE_RETAIL_CTCDEXPLOSION_DRIVERSLOTS
+// agentFAM13 (2026-11-12): CTCDriverBase virtuals this driver overrides but this declaration lacks (TLC vtable slot 28 IsDriverType,
+// slot 29 CreateAdditionalTCs, as engine/CTCDriverBase.h); spellings from the Ego_r / FableWin name sets. Declaration only.
+public:
+    virtual bool IsDriverType(long type) const;
+#endif // FABLE_RETAIL_CTCDEXPLOSION_DRIVERSLOTS
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDExplosion)==0x78);
 #endif

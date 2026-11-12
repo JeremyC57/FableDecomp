@@ -1,0 +1,68 @@
+008f70f0 grade 1 DIFFER(144v164) Q28 best source regraded (baseline)
+008f70f0 grade 2 DIFFER(142v164) flat early-return, ZeroAll arm first with its own store+return, first-free store last
+008f70f0 grade 3 DIFFER(145v164) nested, index as unsigned long local (no shl CSE, xor al,al appears; test on the wide value)
+008f70f0 grade 4 DIFFER(145v164) nested, index as long local (same as grade 3)
+008f70f0 grade 5 DIFFER(142v164) flat, arms textually different via SetThemePaletteIndexUsed accessor (IL-identical, merged)
+008f70f0 grade 6 DIFFER(176v164) nested, separate tail for the ZeroAll arm, first-free tail stores in reverse order (tails separate: tail1 still reloads the start, shl CSE per tail; tail2 epilogue interleave = retail)
+008f70f0 grade 7 DIFFER(141v164) nested, wide local `unsigned long i = index` before the stores: tail = retail's tail2 exactly (mov edx ; movzx ecx,al ; [edx+ecx*8]) but merged
+008f70f0 grade 8 DIFFER(146v164) as 7 with a wide local per tail (tails still merge: tail1 reloads the start)
+008f70f0 grade 9 DIFFER(147v164) if(index != 0){store} else {ZeroAll...} -- layout = retail (tail1 last, je back to the call), tails merged
+008f70f0 probe 1 does tail1 CSE the start into edi with no ZeroAll/second search at all? -> no (reload even with one path and no call)
+008f70f0 grade 10 DIFFER(197v164) first search as a hand loop with the store inside (LICM theory) -> no, FindUnused inlined twice
+008f70f0 grade 11 DIFFER(142v164) nested, ZeroAll arm `if (index != 0) {store; return index;} return 0;`
+008f70f0 grade 12 DIFFER(147v164) as 9 + FindUnused tests !it->IsThemeUsed() (FableWin inline accessor; overlay FABLE_RETAIL_CMAP_FINDUNUSED_ISTHEMEUSED): no change
+008f70f0 grade 13 DIFFER(147v164) as 9 with Get and FindUnused declared only (overlay FABLE_RETAIL_CMAP_GETINDEX_OUTOFLINE) and defined out of class in the TU (auto-inline): same
+008f70f0 grade 14 DIFFER(141v164) as 9 with /Oa: one address, no reload (retail reloads: not /Oa)
+008f70f0 probe 2 which toy spellings make the store after an inline search reuse the start register? -> only a start pointer LOCAL taken before the search (T4: `E* s = v.begin(); idx = Find(); s[idx].d = k; v[idx].u = true` gives `mov [edx+edi],esi`); even with no loop at all (T1) VC7.1 reloads the member for v[idx]
+008f70f0 probe 3 does an iterator/pointer LOCAL assigned from begin() inside the tail reuse the start register? -> yes (U1 `E* p = v.begin(); p[idx]` and U5 `it = v.begin(); it += idx` both store through edi); `(v.begin()+idx)->` and `v.begin()[idx]` reload
+008f70f0 grade 15 DIFFER(168v164) if/else tails, each `it = begin(); it += index; it->ThemeDefIndex = k; v[index].Used = true`: tail1 now stores through edi like retail (tails separate); left shl CSE + tail order/ret0 layout
+008f70f0 grade 16 DIFFER(147v164) as 15 with `CThemePaletteEntry& entry = v[index]` for the first store: reload, merged
+008f70f0 grade 17 DIFFER(147v164) as 15 with `iterator it = begin() + index` (one initializer): reload, merged (only a bare `it = begin()` variable is CSE'd)
+008f70f0 grade 18 DIFFER(164v164) nested + per-tail wide local and `it = begin(); it += i; it->ThemeDefIndex = k; v[i].Used = true`: tail CONTENTS = retail (tail1 via edi, no shl); left: block layout (ret0 inline, tail1 shares Get-found epilogue)
+008f70f0 grade 19 RELOCATION_MATCH if (index != 0) {tail} else {ZeroAll; index = Find(); if (index != 0) {tail} else return 0;} return index; tail = `unsigned long i = index; iterator it = begin(); it += i; it->ThemeDefIndex = k; v[i].Used = true`
+008f70f0 grade 20 DIFFER(164v164) same tails in the nested if(index==0){...return 0; tail} else {tail} order: layout differs
+00a69b70 grade 1 DIFFER(170v176) Q28 best regraded (baseline)
+00a69b70 grade 2 DIFFER(149v176) natural Reset (no FORCEINLINE/CASTTOBASE) with /Ob2: still a call, registers = retail
+00a69b70 grade 3 DIFFER(170v176) forced Reset + default two-level Release (no RELEASE_MEMBER/RELEASE_DELETES): same as baseline
+00a69b70 grade 4 DIFFER(170v176) forced Reset + RELEASE_INNER: same
+00a69b70 grade 5 DIFFER(170v176) AddRef spelled IVRefCount++ (overlay probe macro): same inc [esi+4]
+00a69b70 grade 6 DIFFER(170v176) AddRef spelled IVRefCount = IVRefCount + 1: same
+00a69b70 grade 7 DIFFER(152v176) Reset ADOPT (Ego_r form, chunk 850) + texture_data->AddRef(): Reset called, inc [esi+4]
+00a69b70 grade 8 DIFFER(160v176) Reset ADOPT + texture.Data->AddRef(): the add-ref = retail's (operator-> copy, load/inc/store interleaved with the pops); Reset still a call
+00a69b70 probe 1 why is the ADOPT Reset not inlined (W4 + /w44710 listing)? -> no C4710 note; Reset emitted as a COMDAT and called
+00a69b70 grade 9 DIFFER(160v176) as 8 + #pragma inline_depth(255): Reset still a call
+00a69b70 grade 10 DIFFER(176v176) ADOPT Reset forced inline (overlay nested FORCEINLINE under RESET_ADOPT) + texture.Data->AddRef(): every instruction = retail; left: callee-saved permutation (retail this esi / pool edi / data ebx; ours edi / ebx / esi)
+00a69b70 grade 11 DIFFER(176v176) as 10 + RELEASE_MEMBER/RELEASE_DELETES: same permutation
+00a69b70 grade 12 DIFFER(176v176) as 10 + RELEASE_INNER: same permutation
+00a69b70 grade 13 DIFFER(176v176) as 10 + Reset through CastToBase (FableWin private inline): same permutation
+00a69b70 grade 14 DIFFER(176v176) as 10 with texture.Data.Get()->AddRef() (FableWin Get): same permutation
+00a69b70 grade 15-18 DIFFER natural (unforced) ADOPT Reset with RELEASE_MEMBER+DELETES / INNER / pointee-DELETES (160: call) and RELEASE_MEMBER alone (169: inlined, but no Delete -- wrong semantics)
+00a69b70 probe 2 does VC7.1 inline the adopting Reset (with its Delete) in toy callers? -> yes in simple callers (Reset only; Allocate+Reset+AddRef), NO in the AllocateTexture-shaped caller (GetIdx, early return, Allocate, d && Create, Reset, AddRef, ++fails)
+00a69b70 probe 3 which part of the caller stops VC7.1 inlining Reset? -> the combination: dropping the -1 early return (F1) or the CreateTexture call (F5) lets it inline; nested ifs (F3), no fail tail (F2), no AddRef (F4) do not
+00a69b70 grade 19 DIFFER(138v176) natural ADOPT, body as if (pool_index != -1) {...} return false: Reset a call
+00a69b70 grade 20 DIFFER(158v176) natural ADOPT, single exit bool result: Reset a call
+00a69b70 grade 21 DIFFER(160v176) natural ADOPT, fail test first (data == 0 || !CreateTexture) then the success tail: Reset a call
+00a69b70 grade 22-23 DIFFER(160v176) natural ADOPT with /Ob2, /Ox: Reset a call
+00a69b70 grade 24 DIFFER(160v176) natural ADOPT Reset + Release forced inline (overlay RELEASE_FORCEINLINE): Reset still a call
+00a69b70 grade 25 DIFFER(176v176) forced ADOPT + nested ifs: same permutation
+00a69b70 grade 26 DIFFER(176v176) forced ADOPT + CPreallocTexturePool& pool local: same permutation
+00a69b70 grade 27 RELOCATION_MATCH forced ADOPT + texture.Data->AddRef() + named `unsigned long size` local for CalculateTextureSize + FailedAllocations[pool_index]++
+00a69b70 grade 28 DIFFER(170v176) forced ADOPT + texture_data->AddRef(): inc [esi+4]
+00a69b70 grade 29 RELOCATION_MATCH final source (size local, ++FailedAllocations), strict headers too
+008031e0 grade 1 DIFFER(150v152) Q28 best regraded (baseline)
+008031e0 grade 2 DIFFER(152v152) const CThing& parent at the top of the else block: loaded into this's register before the TC lookup (too early)
+008031e0 grade 3-5 DIFFER(150v152) parent ref local after the targetable test / pointer local after the smashable test / parent local at the top used for PeekPlayer only: all load straight into ecx
+008031e0 probe 1 (Q31) do a ref local / bool local / inline member wrapper / base-pointer copy put the parent through the this register in a toy? -> no, all load straight into ecx
+008031e0 probe 2 pointer-param inline wrapper / == false / T::IsEnemyOf inline member / ternary / one-condition return: parent through a callee-saved register? -> no, all ecx
+008031e0 grade 6 DIFFER(152v152) one parent ref at the top for PeekPlayer and the enemy test: loaded once into ebx (retail reloads)
+008031e0 grade 7 DIFFER(160v152) p_thing = 0 instead of return 0 (single exit)
+008031e0 grade 8 DIFFER(150v152) one && condition for the three tests
+008031e0 grade 9 DIFFER(150v152) parent ref at the top for PeekPlayer + a second ref before the enemy test
+008031e0 grade 10 DIFFER(150v152) smashable || enemies -> return p_thing; return 0
+008031e0 grade 11 DIFFER(150v152) bool is_valid_target = targetable || smashable || enemies
+008031e0 grade 12 DIFFER(150v152) *static_cast<const CThing*>(p_thing) second argument
+008031e0 grade 13 DIFFER(150v152) CThing& thing = *p_thing for the else-branch tests and the call
+008031e0 grade 14 DIFFER(152v152) parent + thing refs at the top of the else branch
+008031e0 grade 15-16 DIFFER(150v152) const_cast non-const GetParentThing at the enemy call / at the PeekPlayer call
+008031e0 grade 17-20 DIFFER /G7 (145), /G5 (150), /GB (150), #pragma optimize("s") (158): not a flag
+008031e0 grade 21 DIFFER(150v152) default GetTC (no GETTC_EXPANDED): same

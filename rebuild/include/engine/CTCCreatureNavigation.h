@@ -32,6 +32,11 @@ private:
     float           CurrentSpeed;                            // +0x5c
 public:
     void InterruptNavigation();
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_VSLOTS
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (needs the polymorphic FABLE_RETAIL_CTCBASE; no layout
+// change). Slot 8 of the TLC vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+    virtual bool HasFrameUpdate() const;                                 // slot 8 0x006CD560
+#endif // FABLE_RETAIL_CTCCREATURENAVIGATION_VSLOTS
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_ISNAVIGATING
     // Retail opt-in (agentNF14, row 0x006CB8F0): Ego_r.pdb ?IsCurrentlyNavigating@CTCCreatureNavigation@@QBE_NXZ (public const), right
     // after GetNearestNavigablePosTo as in the Ego_r donor order (0x00701340 / 0x00701360 = retail 0x006CB8E0 / 0x006CB8F0); it reads

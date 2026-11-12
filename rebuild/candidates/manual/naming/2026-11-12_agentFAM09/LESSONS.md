@@ -1,0 +1,6 @@
+- Static-initializer rows grade with leaf `_$E1` (VC7.1), not `??__E<name>@@YAXXZ`; keep the `??__E` form only for the RENAMES column.
+- Anniv debug types drop `const` on class-type globals; only the public mangled name (`@@B`) proves const, and anonymous-namespace objects have none.
+- Map a run of unnamed initializers by TU: inside one TU Ego_r, FableWin and retail keep the same order, but TU link order differs between builds.
+- Binder respelling with a regex must split code from comments and treat multi-declarator and aggregate-initialised test definitions by hand.
+- Before respelling a class static into a binder row, check that row for local models of CCharString / the class; a header include then needs a migration.
+- reloc_bindings lists only the first caller, so a grep of the address in rebuild/src finds descriptive alias spellings (NAME_FIXES) that the placeholder grep misses.

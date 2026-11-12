@@ -39,7 +39,7 @@ class CThingManager { public:
     bool NonScriptedEntitesPauseMode;            // +0x54
     unsigned char _pad55[0x80 - 0x55];
     long GlobalThingLoadingBehaviour;            // +0x80
-    void OnThingCreated();                       // 0x0051E2E0 (name not recovered)
+    bool IsSerialisingGameState() const;         // 0x0051E2E0 ?IsSerialisingGameState@CThingManager@@QBE_NXZ (Ego_r/FableWin; `mov al,[ecx+9Ah] ; ret`; the result is unused here)
 };
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -136,7 +136,7 @@ bool CThing::OnCreate()
         LevelPersistent = true;
         GameStatePersisted = true;
     }
-    CThing::GetPCurrentThingManager()->OnThingCreated();
+    CThing::GetPCurrentThingManager()->IsSerialisingGameState();
     if (PTCDriver)
         PTCDriver->OnThingCreated();
     CComponentVector components(Components);

@@ -53,11 +53,10 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* m_pItem;
-    void* m_pInfo;
+struct CBaseIntelligentPointer {                        // vptr +0x00
+    void* m_pInfo;                                      // +0x04
     CBaseObject* GetPItem() const;                           // 0x00A01B50
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10 Ego_r/FableWin ??1CBaseIntelligentPointer@@UAE@XZ (virtual)
 };
 template <class T> class CIntelligentPointer;
 template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:

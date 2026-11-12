@@ -54,7 +54,7 @@ class CEngineLocalLightArray;
 class CEngineLightingManager : public CEngineLightingManagerDonor {
  public:
 };
-extern CEngineLightingManager* g_pLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 struct CEngineInternalPrimitive2DStaticMesh {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -91,7 +91,7 @@ class CDisplayManager { public:
     unsigned char _pad[0x1f4];
     long          ViewportTLX, ViewportTLY, ViewportBRX, ViewportBRY;   // +0x1f4
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 struct C2DClipInfo {
     long          Active;                          // +0x00
@@ -158,7 +158,7 @@ void CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive(CEngineInternalPri
     if (!Enable)
         return;
     CEngineInternalPrimitive2DStaticMesh& mesh = (CEngineInternalPrimitive2DStaticMesh&)primitive;
-    CDisplayManager* display = g_pDisplayManager_01436e1c;
+    CDisplayManager* display = NEngineInternal::GPDisplayManager;
     if (mesh.ScreenTLX > display->ViewportBRX || mesh.ScreenBRX < display->ViewportTLX ||
         mesh.ScreenTLY > display->ViewportBRY || mesh.ScreenBRY < display->ViewportTLY)
         return;
@@ -193,7 +193,7 @@ void CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive(CEngineInternalPri
         AddGeneratedObjects(&mesh);
         if (meshPointer.Object->HasSimulation)
             mesh.InitialiseSimulation(mesh.MeshInfo, meshPointer.Object);
-        mesh.LightArray = g_pLightingManager->EmptyLightArray;
+        mesh.LightArray = NEngineInternal::GPLightingManager->EmptyLightArray;
         for (unsigned long i = 0; i < meshPointer.Object->SubMeshCount; ++i) {
             CSubMesh* subMesh = &meshPointer.Object->SubMeshes[i];
             CMeshMaterial& material = meshPointer.Object->Materials[subMesh->MaterialIndex];

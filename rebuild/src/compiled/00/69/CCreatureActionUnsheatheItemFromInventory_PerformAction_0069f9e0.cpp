@@ -1,5 +1,5 @@
 // CCreatureAction_UnsheatheItemFromInventory::PerformAction() -- unless the carrying component is busy: drop or remove whatever is in the primary slot (dropping weapons, letting a 0x1a component react when the item is not carried), and clear the slot; then, when the item to unsheathe is alive, prepare the weapon sheathes, put it into the carry slot its CCarryableDef names and refresh the sheathes; finally clear the melee flourish, restart the current mode and put the main player in aggressive mode
-// Leaf: ?PerformAction@CCreatureAction_UnsheatheItemFromInventory
+// Leaf: ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069F9E0, length 596 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020, CTCCarrying::
@@ -14,7 +14,7 @@
 //   +0x70, dead flag +0x91; CCarryableDef carry slot +0x28. Model: the landed CCreatureAction_SheatheItemToInventory::
 //   PerformAction 0x0069F4F0 and CCreatureAction_GetPlateFromCupboard::PerformAction 0x00848500.
 // Shape: inline GetCreature()/GetItem() accessors everywhere (retail spills &PCreature, keeps `this` in ebp); a same-TU
-//   noinline GetSubDef<CCarryableDef> stand-in keeps the carry def in edi; the def pointer is declared before the item
+//   noinline GetSubDef<CCarryableDef> body (engine/CDefClassBase_GetSubDef.h, agentNF25b) keeps the carry def in edi; the def pointer is declared before the item
 //   local (zero store before the GetPItem call) and its release has no null test (retail dereferences it unchecked).
 #include "fable_compiler.h"
 class CTCBase;
@@ -25,32 +25,16 @@ class CPlayer { public:
     bool IsMainPlayer();                                     // 0x00487520
     void SetAggressiveMode(bool aggressive);                 // 0x00487EB0
 };
-class CCarryableDef { public:
-    virtual void v00();
-    virtual void Destroy();                                  // slot 1
-    long RefCount;                                           // +0x04
-    unsigned char _pad08[0x28 - 0x08];
-    long CarrySlot;                                          // +0x28
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CCarryableDef>* out);         // 0x005CC10E
-};
-CCarryableDef* FindCarryableDef(const CDefClassBase* def);   // stand-in: the sub def lookup (not graded here)
-#pragma auto_inline(off)
-// Same-TU body of GetSubDef<CCarryableDef> (VC7.1 then knows the def pointer's address does not escape).
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
-{
-    CCarryableDef* def = FindCarryableDef(this);
-    out->Object = def;
-    return def != 0;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];                         // +0x20
@@ -103,7 +87,7 @@ public:
 };
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;                         // 0x006A1440
-    void RemoveThing(CThing* thing);                         // 0x006A19B0
+    void RemoveThing(CThing& thing);                         // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     bool IsCarryingThing(CThing* thing);                     // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool drop);           // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
@@ -150,7 +134,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
         if (held->HasTC(0x48))
             DropWeapon(held, carrying, GetCreature());
         else
-            carrying->RemoveThing(held);
+            carrying->RemoveThing(*held);
         if (held->HasTC(0x1a)) {
             CTC1A* tc = held->GetTC<CTC1A>(0x1a);
             if (!carrying->IsCarryingThing(held))
@@ -168,10 +152,10 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
                 weapons->PrepareWeaponSheathing();
             }
         }
-        CDefPointer<CCarryableDef> carryDef;
+        CDefPointer<const CCarryableDef> carryDef;
         CThing* item = GetItem();
         item->m_pDef->GetSubDef(&carryDef);
-        carrying->PutThingInCarrySlot(*GetItem(), carryDef->CarrySlot, true);
+        carrying->PutThingInCarrySlot(*GetItem(), carryDef->ActiveCarrySlot, true);
         if (weapons)
             weapons->RefreshSheathedWeapons();
     }

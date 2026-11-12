@@ -12,14 +12,22 @@
 #pragma pack(push, 1)
 class CMeshBankManager {
 public:
+#ifdef FABLE_RETAIL_CMESHBANKMANAGER_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x009A6BF0 CCountedPointer<CMeshBankManager>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CMeshBankManager();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char MeshDataBanks[0x4];                        // +0x08 list<CMeshBankManager::CMeshDataBankInfo,std::allocator<CMeshBankManager::CMeshDataBankInfo>_>
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CMeshBankManager) == 0xc);
+#ifndef FABLE_RETAIL_CMESHBANKMANAGER_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CMeshBankManager, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CMeshBankManager, MeshDataBanks) == 0x8);
 
 #endif // FABLE_ENGINE_CMESHBANKMANAGER_H

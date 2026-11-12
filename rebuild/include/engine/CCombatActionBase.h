@@ -1,6 +1,6 @@
 #ifndef FABLE_ENGINE_CCOMBATACTIONBASE_H
 #define FABLE_ENGINE_CCOMBATACTIONBASE_H
-#if defined(FABLE_RETAIL_LEADER_INITIALISE) || defined(FABLE_RETAIL_KRAKEN_ROAR) || defined(FABLE_RETAIL_BRIAR_ROSE)
+#if defined(FABLE_RETAIL_LEADER_INITIALISE) || defined(FABLE_RETAIL_KRAKEN_ROAR) || defined(FABLE_RETAIL_BRIAR_ROSE) || defined(FABLE_RETAIL_JACK_STAGE1_UPDATE)
 #include "engine/CCreatureActionBase.h"
 #include "engine/CDefPointer.h"
 #include "engine/CCountedPointer.h"

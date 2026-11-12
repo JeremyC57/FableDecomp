@@ -11,10 +11,11 @@ namespace NGameText {
 //   enclosing if); va_arg is read inside the body before ++index, while key is still alive. The default CWideString
 //   constructor is only declared here (retail calls 0x0099AED0 in another TU; an in-TU body lets VC reuse ecx).
 struct CWideStringData{unsigned short*text;unsigned length,capacity;int refs;};
-extern int g_CWideStringInstanceCount_013BCA20;
-struct CWideString {CWideStringData* data;CWideString();CWideString(const CWideString&);CWideString(const char*);CWideString(const unsigned short*);CWideString&operator+=(const CWideString&);~CWideString();void UnassignString();void __cdecl Format(const unsigned short*,...);bool Contains(const CWideString&)const;void Replace(const CWideString&,const CWideString&);};
-__declspec(noinline) CWideString::CWideString(const CWideString&other):data(0){++g_CWideStringInstanceCount_013BCA20;if(&other!=this&&other.data!=data){if(data)UnassignString();if(other.data){data=other.data;++data->refs;}}}
-__declspec(noinline) CWideString::~CWideString(){CWideStringData*storage=data;if(storage){--storage->refs;if(storage->refs<=0){storage=data;if(storage){if(storage->text)free(storage->text);delete storage;}}data=0;}--g_CWideStringInstanceCount_013BCA20;}
+struct CWideString {CWideStringData* data;CWideString();CWideString(const CWideString&);CWideString(const char*);CWideString(const unsigned short*);CWideString&operator+=(const CWideString&);~CWideString();void UnassignString();void __cdecl Format(const unsigned short*,...);bool Contains(const CWideString&)const;void Replace(const CWideString&,const CWideString&);protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
+};
+__declspec(noinline) CWideString::CWideString(const CWideString&other):data(0){++NoStrings;if(&other!=this&&other.data!=data){if(data)UnassignString();if(other.data){data=other.data;++data->refs;}}}
+__declspec(noinline) CWideString::~CWideString(){CWideStringData*storage=data;if(storage){--storage->refs;if(storage->refs<=0){storage=data;if(storage){if(storage->text)free(storage->text);delete storage;}}data=0;}--NoStrings;}
 extern const unsigned short Empty[]; // retail129a8e0 UTF16 empty string
 __declspec(noinline) bool CWideString::Contains(const CWideString&rhs)const{const unsigned short*needle=rhs.data?rhs.data->text:Empty;const unsigned short*haystack=data?data->text:Empty;return wcsstr((const wchar_t*)haystack,(const wchar_t*)needle)!=0;}
 __declspec(noinline) CWideString __fastcall operator+(const unsigned short*left,const CWideString&right){CWideString result(left);result+=right;return result;}

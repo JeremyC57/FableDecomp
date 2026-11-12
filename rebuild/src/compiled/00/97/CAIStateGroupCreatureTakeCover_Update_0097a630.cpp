@@ -60,7 +60,7 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* thing)
     return false;
 }
 class CTCPerceiveThing { public:
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;    // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
 };
 class CSoundPair { public:

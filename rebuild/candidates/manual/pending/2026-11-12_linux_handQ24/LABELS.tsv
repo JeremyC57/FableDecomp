@@ -1,0 +1,11 @@
+address	name	module
+00929550	SetCurrentPlayer	CTCDiceGame
+005bc4b2	GetSelectedCategoryIndex	NInventory::CTCInventoryBase
+005bc4b6	SetSelectedCategoryIndex	NInventory::CTCInventoryBase
+0066e799	SelectScreenOfType	NHeroInformationScreens::CManager
+0042aa29	CCountedPointer	CCountedPointer<NUISystem::CAction>
+0077dbc0	GetQuestCards	CTCHeroCentre
+00621a20	InitialiseQuestCardList	CTCInventoryQuests
+00584157	SetThingAsQuickAccessItem	CTCInventory
+009d4ce0	SaveTable	CDefStringTable
+00994b40	GetLength	CMemoryDataOutputStream

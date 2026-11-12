@@ -206,18 +206,17 @@ namespace NCreatureMode {enum EMode {DescriptiveModeZero=0};}
 class CTCCreatureModeManager {public:class CModeBase {public:void* TypeTable;CThing* ParentThing;
 CThing& GetParentThing()const{return *ParentThing;}
 protected:long GetNoFramesBeforePlayingWaveAnims(NCreatureMode::EMode);friend struct TestAccess;
+private:static const long NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS;   // 0x013BAFEC
 };};
-// Label: default timing global name remains descriptive; retail address 013bafec.
-extern long g_DefaultFrames_013bafec;
 long CTCCreatureModeManager::CModeBase::GetNoFramesBeforePlayingWaveAnims(NCreatureMode::EMode mode){
- long frames=g_DefaultFrames_013bafec;
+ long frames=NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS;
  if(mode==(NCreatureMode::EMode)0x24)frames=CTCBerserk::GetNumFramesBeforeCrazyIdle();
  if(g_pThingManager->World->PBulletTimeManager_ptr->IsBulletTimeActive() && GetParentThing().IsAffectedByBulletTime())
   return (long)(g_pThingManager->World->PBulletTimeManager_ptr->GetBulletTimeSlowdownMultiplier()*frames);
  return frames;
 }
 
-CThingManager* g_pThingManager;long g_DefaultFrames_013bafec=8;
+CThingManager* g_pThingManager;const long CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS=8;
 static int specials,affectedCalls,multiplierCalls,bad;static bool affected;static float scale;static const CThing* expected;static const CBulletTimeManager* expectedBullet;
 long __fastcall CTCBerserk::GetNumFramesBeforeCrazyIdle(){++specials;return 12;}
 bool CThing::IsAffectedByBulletTime()const{++affectedCalls;if(this!=expected)bad=1;return affected;}

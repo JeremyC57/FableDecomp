@@ -23,6 +23,10 @@
 // Shape: the TGA name goes through an inline helper taking the CCharString by value (the GetName copy and the appended
 //   string die right after ToWideString, whose result pointer is pushed after the append); the two time locals are
 //   declared cache-first and assigned from GetFileModifiedTime temporaries (rep movsd), the .wld time is initialised directly.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAF38 minimapFilePathArtist (global; initializer 0x0121F530), was g_MiniMapDataDirectory.
+//   0x013BAF3C minimapFilePathProgmr (global; initializer 0x0121F550), was g_MiniMapCacheDirectory.
 class CWideString { public:
     void* Data;
     CWideString(const unsigned short* text);            // 0x0099B6B0
@@ -50,8 +54,8 @@ class CDateAndTime { public:
 };
 CDateAndTime __fastcall GetFileModifiedTime(const CWideString& path);    // 0x009992A0
 
-extern CWideString g_MiniMapDataDirectory;              // 0x013BAF38
-extern CWideString g_MiniMapCacheDirectory;             // 0x013BAF3C
+extern CWideString minimapFilePathArtist;              // 0x013BAF38
+extern CWideString minimapFilePathProgmr;             // 0x013BAF3C
 
 class CWorldMap;
 class CWorld { public:
@@ -104,15 +108,15 @@ void CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CWorldRegion* re
                                                           bool regenerate)
 {
     RegionMinimap.Initialise();
-    if (!CAFile::PathExists(g_MiniMapDataDirectory))
-        CreateDirectory(g_MiniMapDataDirectory);
-    if (!CAFile::PathExists(g_MiniMapCacheDirectory))
-        CreateDirectory(g_MiniMapCacheDirectory);
+    if (!CAFile::PathExists(minimapFilePathArtist))
+        CreateDirectory(minimapFilePathArtist);
+    if (!CAFile::PathExists(minimapFilePathProgmr))
+        CreateDirectory(minimapFilePathProgmr);
     CWorldMap* worldMap = CMainGameComponent::Get()->World->GetWorldMap();
     RegionMinimap.InitialiseRegionMinimapSize(worldMap, region);
     CWideString tgaName = ToWide(region->GetName() + ".tga");
-    CWideString cachePath = g_MiniMapCacheDirectory + tgaName;
-    CWideString dataPath = g_MiniMapDataDirectory + tgaName;
+    CWideString cachePath = minimapFilePathProgmr + tgaName;
+    CWideString dataPath = minimapFilePathArtist + tgaName;
     CDateAndTime cacheTime;
     CDateAndTime dataTime;
     CWideString levelsDir(L"Data\\Levels\\");

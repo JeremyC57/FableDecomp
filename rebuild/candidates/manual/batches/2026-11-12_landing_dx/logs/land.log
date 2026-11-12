@@ -1,0 +1,15 @@
+addr       parity           behav  name
+009b00d0   RELOCATION_MATCH PASS   AddSubDef
+00997880   WARN RELOC_ALIAS: _wcscat -> 00bfed5e is the import thunk 'MSVCR71.DLL::wcscat'
+00997880   RELOCATION_MATCH PASS   GetItemFromPath
+004be3e0   RELOCATION_MATCH PASS   IsResourcesLoaded
+
+WINS: 3
+  009b00d0 RELOCATION_MATCH CParentDefClassBase::AddSubDef
+  00997880 RELOCATION_MATCH NFile::GetItemFromPath
+  004be3e0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::IsResourcesLoaded
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CParentDefClassBase_AddSubDef_009b00d0
+  NFile_GetItemFromPath_00997880
+  NGraphicAppearanceCTCGraphicAppearance_IsResourcesLoaded_004be3e0

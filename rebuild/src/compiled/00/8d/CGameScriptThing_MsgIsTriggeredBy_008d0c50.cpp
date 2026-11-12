@@ -17,6 +17,8 @@
 //   (strcmp("", "") / block compare) as in the landed MsgIsKilledBy 0x008D04E0; both hits return true directly. The
 //   component key is a TEMPORARY (`LowerBound(66)` through the const-long reference): a named `long key` keeps its own
 //   frame word, so the events pointer (spilled around the inline repe cmpsb) cannot reuse it and the frame grows by 4.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (?NullString@CScriptThing@@2VCCharString@@A, the
+//   engine/CScriptThing.h spelling; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); was g_EmptyString.
 #include "fable_compiler.h"
 #include <string.h>
 #include "engine/CGameScriptThing.h"
@@ -64,7 +66,6 @@ class CCharString { public:
         return false;
     }
 };
-extern CCharString g_EmptyString;                       // 0x0143E8EC
 
 struct CScriptThingImp {                                // vtable view of the pimpl object
     virtual void v0();
@@ -76,11 +77,13 @@ class CScriptThing { public:                                   // vtable 0x01238
     {
         const CScriptThingImp* imp = (const CScriptThingImp*)PImp_Data;
         if (imp == 0)
-            return g_EmptyString;
+            return CScriptThing::NullString;
         return imp->GetName();
     }
     void* PImp_Data;
     void* PImp_Info;
+public:
+    static CCharString NullString;                  // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };
 
 class CTCBase;

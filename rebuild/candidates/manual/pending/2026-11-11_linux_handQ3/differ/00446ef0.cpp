@@ -1,0 +1,2 @@
+// CGamePlayerInterface::SetControlScheme @ 0x00446EF0 (catalog row, 1174 bytes) -- no source: not authored
+// Grade: NOT_REACHED (0 grades) -- read only: four vector erase(begin, end) expansions (0x00448300 / 0x00448860), CCountedPointer assignment, a 0x1C-byte action-binding loop with `new` of nine small polymorphic input classes (vtables 0x012317A8..0x012318A4) and CVectorMap inserts: needs the input-action class family first.

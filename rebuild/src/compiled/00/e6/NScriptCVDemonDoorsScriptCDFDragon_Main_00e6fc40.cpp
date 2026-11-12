@@ -21,7 +21,7 @@
 //   0x00E6F040; CGameScriptInterfaceBase slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 81 GetNearestWithDefName,
 //   162 GetHeroRenownLevel, 264 GetHealth, 276 ActivateQuest, 370 StartMovieSequence, 379 PauseAllNonScriptedEntities, 477
 //   SetThingPersistent, 516 EntitySetAsDamageable, 517 EntitySetAsKillable, 526 EntitySetAsToAddToComboMultiplierWhenHit, 567
-//   SetRegionExitAsActive; CScriptThing slot 27 MsgIsTalkedToBy; 0.0f g_fZero 0x0122DEDC (the TU's sibling spelling).
+//   SetRegionExitAsActive; CScriptThing slot 27 MsgIsTalkedToBy; 0.0f 0.0f 0x0122DEDC (the TU's sibling spelling).
 // Model: shared headers only (engine/CV_DemonDoorsScript.h: CDF_Dragon with the CV_DemonDoorsScript& ParentClass +0x14;
 //   CEntityScriptBase Game +0x04 / Me +0x08; the CBaseObject-family handle headers with their implicit ctors / dtors;
 //   CWideScreenMagicPauseEntities, the RAII pause whose Game lives in edi). Shape = the landed sibling CDF_ShineLight::Main
@@ -46,7 +46,6 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST = 0, SCRIPT_AI_PRIORITY_LOW =
                          SCRIPT_AI_PRIORITY_HIGH = 3, SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 template <> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();   // 0x006E7AB0 (out of line in retail)
-extern const float g_fZero;                                  // 0x0122DEDC (0.0f)
 
 void NScript::CV_DemonDoorsScript::CDF_Dragon::Main()
 {
@@ -83,7 +82,7 @@ void NScript::CV_DemonDoorsScript::CDF_Dragon::Main()
             switch (Game->GetHeroRenownLevel()) {
             case 0:
             case 1:
-                if (Game->GetHealth(dragon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(dragon.GetScriptThing()) > 0.0f) {
                     dragon.Speak(Game->GetHero(), "TEXT_QST_088_DRAGON_RENOWN_ZERO", GROUP_SELECT_NONE, false, true, false);
                     while (dragon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -96,7 +95,7 @@ void NScript::CV_DemonDoorsScript::CDF_Dragon::Main()
                 break;
             case 2:
             case 3:
-                if (Game->GetHealth(dragon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(dragon.GetScriptThing()) > 0.0f) {
                     dragon.Speak(Game->GetHero(), "TEXT_QST_088_DRAGON_RENOWN_ONE", GROUP_SELECT_NONE, false, true, false);
                     while (dragon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -109,7 +108,7 @@ void NScript::CV_DemonDoorsScript::CDF_Dragon::Main()
                 break;
             case 4:
             case 5:
-                if (Game->GetHealth(dragon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(dragon.GetScriptThing()) > 0.0f) {
                     dragon.Speak(Game->GetHero(), "TEXT_QST_088_DRAGON_RENOWN_TWO", GROUP_SELECT_NONE, false, true, false);
                     while (dragon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -121,7 +120,7 @@ void NScript::CV_DemonDoorsScript::CDF_Dragon::Main()
                 }
                 break;
             case 6:
-                if (Game->GetHealth(dragon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(dragon.GetScriptThing()) > 0.0f) {
                     dragon.Speak(Game->GetHero(), "TEXT_QST_088_DRAGON_RENOWN_THREE", GROUP_SELECT_NONE, false, true, false);
                     while (dragon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -133,7 +132,7 @@ void NScript::CV_DemonDoorsScript::CDF_Dragon::Main()
                 }
                 break;
             case 7:
-                if (Game->GetHealth(dragon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(dragon.GetScriptThing()) > 0.0f) {
                     dragon.Speak(Game->GetHero(), "TEXT_QST_088_DRAGON_RENOWN_FOUR", GROUP_SELECT_NONE, false, true, false);
                     while (dragon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();

@@ -12,6 +12,10 @@
 //   @ 0x00BFEA14.
 // Data: 0x013B8BB8 "Augmentations_Left_Description_M", 0x013B8BBC "Augmentations_Left_Description_R" (CCharString).
 // Layout: retail CTCInventoryWeapons WeaponsList +0x17C (as the landed ctor 0x005C3947).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B8BB8 AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M (anonymous namespace, const; initializer 0x0121ABB1), was g_AugmentationsLeftDescriptionM.
+//   0x013B8BBC AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R (anonymous namespace, const; initializer 0x0121ABCE), was g_AugmentationsLeftDescriptionR.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -23,8 +27,8 @@ class CCharString { public:
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
 };
-extern CCharString g_AugmentationsLeftDescriptionM;         // 0x013B8BB8
-extern CCharString g_AugmentationsLeftDescriptionR;         // 0x013B8BBC
+namespace { extern const CCharString AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M; }         // 0x013B8BB8
+namespace { extern const CCharString AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R; }         // 0x013B8BBC
 class CWideStringData;
 class CWideString { public:
     CWideStringData* PStringData;
@@ -120,14 +124,14 @@ void CTCInventoryWeapons::RefreshAugmentationsLeftDescriptions()
             if (CTCInventoryItem::IsAugmentation(items[i].first))
                 augmentations.push_back(items[i]);
         CComponentList components;
-        WeaponsList->FindChildren(g_AugmentationsLeftDescriptionM, components);
+        WeaponsList->FindChildren(AUGMENTATIONS_LEFT_DESCRIPTION_STRING_M, components);
         for (SComponentNode* n = components._M_node->_M_next, *end = components._M_node; n != end; n = n->_M_next) {
             NUISystem::CComponent* component = n->_M_data;
             CWideString text;
             ConstructAugmentationsLeftDescription(text, augmentations, true);
             component->SetText(text, true, true);
         }
-        WeaponsList->FindChildren(g_AugmentationsLeftDescriptionR, components);
+        WeaponsList->FindChildren(AUGMENTATIONS_LEFT_DESCRIPTION_STRING_R, components);
         for (SComponentNode* n = components._M_node->_M_next, *end = components._M_node; n != end; n = n->_M_next) {
             NUISystem::CComponent* component = n->_M_data;
             CWideString text;

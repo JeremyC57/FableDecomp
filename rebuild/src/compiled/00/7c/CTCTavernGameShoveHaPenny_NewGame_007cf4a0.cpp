@@ -8,11 +8,11 @@
 //        float zero through an integer register when another zero store needs it; both forms
 //        -- long and float Score -- grade RELOCATION_MATCH).
 struct CTCTavernGameCoinBase {
-    unsigned char _pad[0x2c];
+    virtual void NewGame();             // 0x008EF170 ?NewGame@CTCTavernGameCoinBase@@UAEXXZ (vtable slot 31; Ego_r/FableWin); the vptr is +0x00
+    unsigned char _pad[0x28];
     float Score;                        // +0x2c (CTCTavernGame)
     unsigned char _pad_0x30[0x118];
     long m_numShoves;                   // +0x148
-    void NewGame();                     // 0x008EF170
     void SetState(long state);          // 0x005E9B20
 };
 

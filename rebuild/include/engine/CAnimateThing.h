@@ -45,6 +45,13 @@ class CAnimateThing {public:
  void Init(const CAnimInit& init);                                     // 0x0070D920
 #endif
  void ClearUseAnimFromFile(){AnimFromFileInfo.Active=false;}
+#ifdef FABLE_RETAIL_CANIMATETHING_MESHANIMS
+// agentFAM05 (2026-11-11): Ego_r.pdb / FableWin.pdb ?GetInterpolatedMeshAnim@CAnimateThing@@QBEXAAVC3DAnimationBlendState@@M@Z and
+// ?GetMeshAnims@CAnimateThing@@QBEXAAVC3DAnimationBlendState@@0@Z, out of line at 0x0070E650 / 0x0070E6A0 (the CTCAnimationComplex
+// slot 28 / 29 overrides 0x0070B440 / 0x0070B450 tail-jump to them with ecx = PAnimation). Declarations only.
+ void GetInterpolatedMeshAnim(C3DAnimationBlendState& state, float time) const;   // 0x0070E650
+ void GetMeshAnims(C3DAnimationBlendState& state, C3DAnimationBlendState& blend) const;   // 0x0070E6A0
+#endif // FABLE_RETAIL_CANIMATETHING_MESHANIMS
 private:
  CCompleteAnimation CurrentAnim;
  std::list<CDelayedAnimation> DelayedAnimQueue;

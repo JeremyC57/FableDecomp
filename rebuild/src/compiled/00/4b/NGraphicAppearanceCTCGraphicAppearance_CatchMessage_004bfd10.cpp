@@ -1,6 +1,9 @@
 // NGraphicAppearance::CTCGraphicAppearance::CatchMessage(const NTCMessages::CMessageOnSetThingOwner& message) -- unless the appearance def overrides its lighting channel, take the new owner's lighting channel (carried things included) and pass it to every live owned thing's appearance
 // Retry 10b (getsw sweep, FIXES B-15): the base def is read through an inline getter `GetBaseDef()`; the plain member read gives the parked register/scheduling difference.
-// Leaf: CatchMessage
+// Leaf: ?CatchMessage@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCMessageOnSetThingOwner@NTCMessages@@@Z
+// Identity (agentFAM06): Ego_r.pdb / FableWin.pdb ?CatchMessage@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCMessageOnSetThingOwner@NTCMessages@@@Z;
+//   the only caller is NGraphicAppearance::CTCGraphicAppearance::HandleMessage 0x004C01E0 (bound to this spelling). Source unchanged
+//   but for the full leaf. Catalog CIVCountedPointer_Attach was a placeholder.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //
 // Retail 0x004BFD10, 272 bytes incl. padding (`ret 4`). Ego_r.pdb `?CatchMessage@CTCGraphicAppearance@NGraphicAppearance@@

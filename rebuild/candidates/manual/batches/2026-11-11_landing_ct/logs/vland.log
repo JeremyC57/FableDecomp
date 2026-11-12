@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00940960   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00940960   RELOCATION_MATCH PASS   Update
+00d33280   RELOCATION_MATCH PASS   Main
+00ddc070   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00940960 RELOCATION_MATCH CAIStateGroup_VillageTaskHorn::?Update@CAIStateGroup_VillageTaskHorn@@UAEXXZ
+  00d33280 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CSwordVoid::?Main@CSwordVoid@CQ_EndGameBossBattleScript@NScript@@EAEXXZ
+  00ddc070 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard::?Main@CPrisonRaceWinningPostGuard@CQ_PrisonRaceScript@NScript@@EAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupVillageTaskHorn_Update_00940960
+  NScriptCQEndGameBossBattleScriptCSwordVoid_Main_00d33280
+  NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_Main_00ddc070

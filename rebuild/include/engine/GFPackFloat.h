@@ -21,7 +21,11 @@ FABLE_FORCEINLINE float __fastcall GFRoundFloatNear(float value, long places)
     float scale = 1.0f;
     for (long i = places; i != 0; --i)
         scale *= 10.0f;
+#ifdef FABLE_RETAIL_GFROUNDFLOATNEAR_GROUP_PRODUCT
+    return GFFloatToLongNear((value * scale)) / scale;
+#else
     return GFFloatToLongNear(value * scale) / scale;
+#endif
 }
 FABLE_FORCEINLINE unsigned long __fastcall GFPackFloat(float value, unsigned long numBits, float minValue, float maxValue, unsigned long numDecimalPlaces)
 {
@@ -31,6 +35,10 @@ FABLE_FORCEINLINE unsigned long __fastcall GFPackFloat(float value, unsigned lon
 FABLE_FORCEINLINE float __fastcall GFUnpackFloat(unsigned long packed, unsigned long numBits, float minValue, float maxValue, unsigned long numDecimalPlaces)
 {
     float normalised = packed / ((float)(long)(1 << numBits) - 1.0f);
+#ifdef FABLE_RETAIL_GFUNPACKFLOAT_GROUP_PRODUCT
+    return GFRoundFloatNear((normalised * (maxValue - minValue)) + minValue, numDecimalPlaces);
+#else
     return GFRoundFloatNear(normalised * (maxValue - minValue) + minValue, numDecimalPlaces);
+#endif
 }
 #endif

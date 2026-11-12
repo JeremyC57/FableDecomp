@@ -1,0 +1,9 @@
+004b3ce0	CQuestManager::ActivateQuests	RELOCATION_MATCH	122	no flags; strict OK; vt PASS; 4 probes; overlay hdr/ (3 headers)
+00a90040	N3DPrimitive::CAnimatedBlock::ConvertToVBFormatBump	RELOCATION_MATCH	14	grouped Cross (COLLISION opt-in) + sibling idiom on shared headers ; repair: test reaches -1 branch and VTangents-read mutant fails; PeekVertex (not in PDBs) removed
+0064546f	NPlayerGui::CDrawQuickAccessIcons::DrawEffectAtPos	RELOCATION_MATCH	21	shared headers + vector members + forceinline IsNonZero/operator!= + offset reference + implicit pointer temporaries
+008565e0	CThingFilter_CombatIsStrikeToStrike::operator()	RELOCATION_MATCH	23	shared headers; SetDynamicCast local; explicit dot; if-return bitfield
+0x008F10B0	CTCTavernGameCardBase::ShuffleCards	RELOCATION_MATCH	6	real GetCardDef/GetPackPosition bodies in TU + visible GetSubDef template + pos+= + RELEASE_POINTEE
+00addbe0	C3DBoundingSphere::BuildFromSubSpheres	RELOCATION_MATCH	42	scalar bounds, GetRadius() in loop 1, dy*dy+(dx*dx+dz*dz); header opt-in FABLE_RETAIL_C3DBOUNDINGSPHERE_BUILDFROMSUBSPHERES
+0065aa6f	CTCVillage::IsTimeToGoToTavern	RELOCATION_MATCH	62	function-scope target + start/end block + startFrames; shared headers with 2 overlay opt-ins
+00bbcc70	CEnginePrimitiveManagerParticleGroup::SetupPixelShader	RELOCATION_MATCH	2	port onto shared headers + GetStipleFadeTexture opt-in; no flags
+007b8b10	CTCTavernTable::GetEatingPoint	RELOCATION_MATCH	4	shared headers: GETTC_EXPANDED + INLINE_LOWERBOUND; new opt-ins CTCTAVERNTABLE_LAYOUT, SETFREE, GETNAME

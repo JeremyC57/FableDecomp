@@ -1,5 +1,5 @@
 // CTCWife::SetAttractionIcon(bool show, float scale, unsigned char alpha) -- shows (or clears) the wife's attraction emote icon: the just-married icon while the marriage frame has passed, else the ring or no-ring courting icon; refreshes the player GUI when the icon's visibility changes
-// Leaf: SetAttractionIcon
+// Leaf: ?SetAttractionIcon@CTCWife@@AAEX_NME@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -71,6 +71,7 @@ class CTCWife : public CTCBase { public:
     unsigned char _pad_0x24[0x6d];
     bool          ReceivedWeddingRing;          // +0x91
     bool IsMarriageFrameReached() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }   // inline helper (descriptive)
+private:
     void SetAttractionIcon(bool show, float scale, unsigned char alpha);
 };
 

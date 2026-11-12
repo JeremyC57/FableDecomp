@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00e40e80   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e40e80   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e40e80 RELOCATION_MATCH NScript::CV_BordelloScript::CMagicman::?Main@CMagicman@CV_BordelloScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVBordelloScriptCMagicman_Main_00e40e80

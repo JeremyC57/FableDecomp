@@ -68,19 +68,28 @@ struct CByteVector {
     }
     ~CByteVector() { if (first) free(first); }
 };
-struct CDeviceIndependent;
-struct CAnimatedVertexWithNormals { unsigned char bytes[0x38]; };
-struct CAnimatedVertex { unsigned char bytes[0x28]; };
-struct CAnimatedBlock {                            // Layout: Ego_r.pdb CAnimatedBlock, size 0x30
+// Name-fix pass (2026-11-12): the two block converters are the private N3DPrimitive::CAnimatedBlock members of both PDBs (Ego_r.pdb
+//   0x00BD1DA0 / 0x00BD1EC0, FableWin.pdb; landed rows 0x00A8FF50 / 0x00A90040 under these names), taking the vertex buffer and the
+//   device-independent mesh by reference; were TransformVertices / TransformVerticesWithNormals on a global CAnimatedBlock stand-in.
+class CTVertexNormBlend4Tex1Bump { public: unsigned char bytes[0x38]; };
+class CTVertexNormBlend4Tex1 { public: unsigned char bytes[0x28]; };
+class C3DPrimitive2;
+namespace N3DPrimitive {
+class CDeviceIndependent;
+class CAnimatedBlock { public:                     // Layout: Ego_r.pdb CAnimatedBlock, size 0x30
     unsigned char pad0[0x10];
     unsigned long VertexCount;                     // +0x10
     unsigned char pad14[0x1c];
-    void TransformVerticesWithNormals(CAnimatedVertexWithNormals*, const CDeviceIndependent*); // 0x00A90040
-    void TransformVertices(CAnimatedVertex*, const CDeviceIndependent*);                       // 0x00A8FF50
+private:
+    friend class ::C3DPrimitive2;
+    void ConvertToVBFormatBump(CTVertexNormBlend4Tex1Bump*, CDeviceIndependent&);     // 0x00A90040 ?ConvertToVBFormatBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1Bump@@AAVCDeviceIndependent@2@@Z
+    void ConvertToVBFormatNonBump(CTVertexNormBlend4Tex1*, CDeviceIndependent&);      // 0x00A8FF50 ?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z
 };
+}
+using N3DPrimitive::CAnimatedBlock;
 class C3DPrimitive2 { public:                             // Layout: retail offsets (Ego_r.pdb - 4)
     unsigned char pad0[0x2c];
-    CDeviceIndependent* Data;                      // +0x2c
+    N3DPrimitive::CDeviceIndependent* Data;        // +0x2c
     unsigned char pad30[0x18];
     unsigned long AnimatedBlockCount;              // +0x48
     CAnimatedBlock* AnimatedBlocks;                // +0x4c
@@ -118,9 +127,9 @@ void C3DPrimitive2::ConvertToVBFormatAnimated(void* destination, unsigned long s
     for (unsigned long i = 0; i < AnimatedBlockCount; ++i) {
         CAnimatedBlock& block = AnimatedBlocks[i];
         if (flags & 2)
-            block.TransformVerticesWithNormals((CAnimatedVertexWithNormals*)transformed + vertexOffset, Data);
+            block.ConvertToVBFormatBump((CTVertexNormBlend4Tex1Bump*)transformed + vertexOffset, *Data);
         else
-            block.TransformVertices((CAnimatedVertex*)transformed + vertexOffset, Data);
+            block.ConvertToVBFormatNonBump((CTVertexNormBlend4Tex1*)transformed + vertexOffset, *Data);
         vertexOffset += block.VertexCount;
     }
     if (flags != convertedFormat)

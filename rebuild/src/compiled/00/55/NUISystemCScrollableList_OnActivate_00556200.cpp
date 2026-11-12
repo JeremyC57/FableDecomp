@@ -1,5 +1,5 @@
 // NUISystem::CScrollableList::OnActivate() -- refresh the visible list, reset the scroll timer, register the list's three input events and hand the list and both scroll arrows to the front-end manager
-// Leaf: OnActivate
+// Leaf: ?OnActivate@CScrollableList@NUISystem@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00556200, length 160 bytes (147 + int3 padding).
 // Vtable: 0x0124A72C (NUISystem::CScrollableList) slot 140.
 // Callees: CScrollableList::UpdateVisibleList(float, float) @ 0x00555A90,
@@ -37,8 +37,9 @@ class CScrollableList : public CComponent { public:
     float       ScrollTimer;                         // +0x16c
     CComponent* PUpArrow;                            // +0x170
     CComponent* PDownArrow;                          // +0x174
-    void UpdateVisibleList(float a, float b);        // 0x00555A90
     void OnActivate();
+protected:
+    void UpdateVisibleList(float move_time, float fade_time);   // 0x00555A90 ?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z (protected, Ego_r + FableWin; agentNF25b)
 };
 
 void CScrollableList::OnActivate()

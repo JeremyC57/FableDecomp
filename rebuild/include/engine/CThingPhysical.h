@@ -51,6 +51,11 @@ public:
     CThingPhysical(unsigned long type);                                  // 0x005296B0
 #endif
     const C3DVector& PeekPos() const;
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_STATTYPEFLAGS
+    // Retail opt-in (chunk Q23, row 0x0063F7C0 ForEachInRoughArea<CThingPhysical, ...>): FableWin.pdb ?StatGetTypeFlags@CThingPhysical@@SIKXZ
+    // (static fastcall), inline in retail: the rough-area scan's type test `and edx,3 ; cmp dl,3` (0x0063F92B). Body only.
+    static unsigned long FABLE_FASTCALL StatGetTypeFlags() { return 3; }
+#endif
     float GetHealth() const { return Health; }
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_MAXHEALTH
     float GetMaxHealth()const{return MaxHealth;}
@@ -62,6 +67,11 @@ public:
     bool IsToRespondToHits() const { return RespondToHits; }
     bool IsKillable() const { return Killable; }
     bool IsDamageable() const { return Damageable; }
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Evidence: both original PDB type records and donor OnHit/helper disassembly.
+public:
+bool IsToNegateAllHits()const{return NegateAllHits;}
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_EVADEALLHITS
     // Nested opt-in (chunk 1016, row 0x0085FA00 NCreatureMode::IsToEvadeAllHits): FableWin.pdb ?IsToEvadeAllHits@CThingPhysical@@QBE_NXZ,
     // inline in retail (`test byte ptr [thing+0BCh],8`, bit 3 of the +0xBC flag run). Body only: no layout change.
@@ -76,6 +86,12 @@ public:
     // Chunk 724 round 3 (row 0x008771A0): Ego_r.pdb ?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ,
     // out of line at retail 0x006A5AB0 (catalog name; `mov ecx,edi ; call` in CTools::GetThingPointIntersectionFromTo).
     bool IsThingAbleToComeBetweenCameraAndObservedThing() const;   // 0x006A5AB0
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_FIRSTCOLLISION
+    // Retail opt-in (chunk Q8, row 0x006A4FB0): Ego_r.pdb ?GetFirstCollision@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z (public
+    // const), out of line at retail 0x006A4FB0 (called at 0x006A5469). Declaration only: no layout change.
+    bool GetFirstCollision(float radius, const C3DVector& from, const C3DVector& delta, C3DVector& hit_position,
+                           C3DVector& hit_normal) const;                // 0x006A4FB0
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_SERIALISE
     // Retail opt-in (agentNF9, row 0x007030C0 CThingObject::SerialiseGameState, which calls it by name): Ego_r.pdb / FableWin.pdb
     // ?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z (public virtual, CThingPhysical vtable 0x01244E84 slot 3 =
@@ -87,6 +103,39 @@ public:
     // override of CThing's, FABLE_RETAIL_CTHING_LEVELSCRIPT; vtable entry 0x00E44E94 file offset). A declaration only.
     virtual bool ConstructFromLevelScript(const char* script);   // 0x006A5D90
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x00529730
+public:
+    virtual unsigned long GetProperties() const;  // slot 48, 0x00529740
+public:
+    virtual bool IsCrop() const;  // slot 49, 0x00529750
+public:
+    virtual bool IsHidden() const;  // slot 50, 0x00529760
+public:
+    virtual bool IsTargetedByPlayer(long) const;  // slot 51, 0x00529770
+public:
+    virtual void SetTargetedByPlayer(long);  // slot 52, 0x00529780
+public:
+    virtual void ClearTargetedByPlayer(long);  // slot 53, 0x00529790
+public:
+    virtual bool CanBlockUpperLevelNavigatingCreature() const;  // slot 56, 0x005297B0
+public:
+    virtual bool UseHighDetailQuadTree() const;  // slot 57, 0x005297C0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingPhysical overrides of CThing virtuals (TLC vtable slots aligned with the Xbox 360
+// Test PDB order; Ego_r.pdb / FableWin.pdb spellings). Declaration only (no layout change). Needs CThingPhysicalDebugInfo declared.
+public:
+    virtual void CopyGameState(const CThing&);                           // slot 7, 0x006A4B70
+    virtual bool DrawGetPhysicsDebugInfo(class CThingPhysicalDebugInfo&) const;   // slot 35, 0x006A4E70
+    virtual bool CanBlockNavigatingCreature() const;                     // slot 55, 0x006A4D90
+public:
+#endif // FABLE_RETAIL_CTHINGPHYSICAL_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingPhysical)==0xc0);
 #else

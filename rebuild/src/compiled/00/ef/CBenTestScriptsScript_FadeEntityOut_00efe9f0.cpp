@@ -12,7 +12,6 @@ class CScriptThing;
 
 extern const float g_fadeStartAlpha;     // 0x013AC868 (255.0f)
 extern const float g_fadeAlphaStep;      // 0x013AC864
-extern const float g_zero;               // 0x0122DEDC (0.0f)
 
 struct CQuestCalls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
@@ -100,7 +99,7 @@ public:
 void CBenTestScriptsScript::FadeEntityOut(const CScriptThing* thing, bool hideAtEnd)
 {
     float alpha = g_fadeStartAlpha;
-    while (alpha > g_zero) {
+    while (alpha > 0.0f) {
         PQuest->SetThingAlpha(thing, alpha, true);
         alpha -= g_fadeAlphaStep;
         PQuest->Tick();

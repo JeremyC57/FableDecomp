@@ -64,7 +64,9 @@ class CAIStateGroupBase { public:
 struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {
     unsigned char _pad14[0x10];
     C3DVector StartPos;                            // +0x24
-    bool GetRandomFlightPos(const C3DVector* centre, float radius, C3DVector* out, bool flag);   // 0x00912700
+protected:
+    bool GetRandomFlightPos(const C3DVector& centre, float radius, C3DVector& out, bool flag) const;   // 0x00912700 ?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z (Ego_r: protected const)
+public:
     long ExecuteFlyingPath(const C3DVector* target);   // 0x009130D0
 };
 
@@ -75,7 +77,7 @@ struct CAIStateGroup_ButterflyWander : CAIStateGroup_FlyingThingBase {
 void CAIStateGroup_ButterflyWander::Update()
 {
     C3DVector target;
-    if (!GetRandomFlightPos(&StartPos, 15.0f, &target, true)) {
+    if (!GetRandomFlightPos(StartPos, 15.0f, target, true)) {
         Terminate();
         return;
     }

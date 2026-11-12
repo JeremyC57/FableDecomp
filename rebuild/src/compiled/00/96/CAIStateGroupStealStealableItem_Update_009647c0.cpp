@@ -30,8 +30,7 @@ template <class T> class CIntelligentPointer;
 template <> class CIntelligentPointer<const CThing> : public CBaseIntelligentPointer { public:   // Ego_r: PEscapePoint is CIntelligentPointer<CThing const>
 };
 typedef CIntelligentPointer<const CThing> CIntelligentPointerConstThing;
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>& p);        // 0x004CC340
-template <class T> bool __fastcall IS_THING_ALIVE(const T& p);              // 0x0069CE20 = IS_THING_ALIVE<CIntelligentPointer<const CThing> > (Ego_r / FableWin)
+template <class T> bool __fastcall IS_THING_ALIVE(const T& p);              // Ego_r / FableWin: T = CIntelligentPointer<CThing> 0x004CC340, CIntelligentPointer<const CThing> 0x0069CE20
 struct CTCUserActionPointBase {
     bool GetFreeActionPoint(CThingCreatureBase* creature, C3DVector* pos, CRightHandedSet* set, long* index);   // 0x007FEDE0
 };

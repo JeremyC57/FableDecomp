@@ -56,12 +56,32 @@ public:
  const C3DVector & GetObservedPos() const;
  void SetObservedPos(const C3DVector & p0);
  void SetFOV(float p0);
+#ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
  float GetFOV() const;
+#else // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
+ // agentFAM04 (2026-11-11): Ego_r.pdb ?GetFOV@CBase@NCameraModes@@QBEMXZ, inline in retail (CRotateAround::GetDefaultFOV 0x0087BD40 reads CameraFOV +0x84 in place).
+ float GetFOV() const { return CameraFOV; }
+#endif // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
  void SetRollAngle(float p0);
+#ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
  float GetRollAngle() const;
+#else // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
+ // agentFAM04 (2026-11-11): inline in retail (CRotateAround / CZTargetNew::GetDefaultRollAngle 0x0087BD50 / 0x00871E80 read RollAngle +0x88 in place).
+ float GetRollAngle() const { return RollAngle; }
+#endif // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
  void SetObservedPositionZOffset(float p0);
+#ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
  float GetObservedPositionZOffset() const;
+#else // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
+ // agentFAM04 (2026-11-11): inline in retail (GetDefaultObservedPositionZOffset 0x0087BD60 / 0x00871E90 read +0x8c in place).
+ float GetObservedPositionZOffset() const { return ObservedPositionZOffset; }
+#endif // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
+#ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
  const CDefPointer<CCameraModeDef const > & GetCameraModeDef() const;
+#else // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
+ // agentFAM04 (2026-11-11): inline in retail (CBase::GetDefaultRollAngle 0x0084D7A0 reads the def pointer +0x44 in place).
+ const CDefPointer<CCameraModeDef const > & GetCameraModeDef() const { return PCameraModeDef; }
+#endif // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS
  virtual float GetDefaultFOV() const;
  virtual float GetDefaultRollAngle() const;
  virtual float GetDefaultObservedPositionZOffset() const;
@@ -108,6 +128,29 @@ private:
  C2DVector RightStickVector;
  C2DVector LeftStickVector;
  bool ViewOccluded;
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual void OnCameraInsideObservedThing();  // slot 3, 0x0056E150
+public:
+    virtual bool IsUseRightStickLookAround() const;  // slot 4, 0x0056E160
+public:
+    virtual bool IsShortenOnOcclusion() const;  // slot 6, 0x0056E170
+public:
+    virtual bool IsAvoidLandscape() const;  // slot 9, 0x0056E180
+public:
+    virtual bool IsFOVChange() const;  // slot 10, 0x0056E190
+public:
+    virtual bool IsTrackMeleeOpponents() const;  // slot 11, 0x0056E1A0
+public:
+    virtual bool IsFinished() const;  // slot 13, 0x0056E1B0
+public:
+    virtual bool IsStringAndCage() const;  // slot 14, 0x0056E1C0
+public:
+    virtual void Recentre();  // slot 16, 0x0056E1D0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
 }
@@ -205,6 +248,29 @@ private:
 #else
     CGameCameraManager* CameraManager;                   // +0x40
 #endif
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual void OnCameraInsideObservedThing();  // slot 3, 0x0056E150
+public:
+    virtual bool IsUseRightStickLookAround() const;  // slot 4, 0x0056E160
+public:
+    virtual bool IsShortenOnOcclusion() const;  // slot 6, 0x0056E170
+public:
+    virtual bool IsAvoidLandscape() const;  // slot 9, 0x0056E180
+public:
+    virtual bool IsFOVChange() const;  // slot 10, 0x0056E190
+public:
+    virtual bool IsTrackMeleeOpponents() const;  // slot 11, 0x0056E1A0
+public:
+    virtual bool IsFinished() const;  // slot 13, 0x0056E1B0
+public:
+    virtual bool IsStringAndCage() const;  // slot 14, 0x0056E1C0
+public:
+    virtual void Recentre();  // slot 16, 0x0056E1D0
+public:
 #endif
 };
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES

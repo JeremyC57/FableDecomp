@@ -27,6 +27,11 @@ public:
  void ClearEffects();
  void AddEffect(CThing&);
 #endif
+#ifdef FABLE_RETAIL_CTCBOSS_LIVINGHELPERS
+ // Retail opt-in (chunk Q3, rows 0x008E20F0 / 0x008E24F0 CModeGuildmasterPowerUpShield / Speed::FrameUpdate): Ego_r.pdb
+ // ?CountLivingHelpers@CTCBoss@@QAEJXZ (retail 0x007AEEC0; the landed Heal FrameUpdate 0x008DFFD0 calls it too). Declaration only.
+ long CountLivingHelpers();
+#endif
 private:
  CDefPointer<const CBossDef> PBossDef;
  long GenericCounter,StrikesSinceHit,currentBossPhase,NextWeapon;

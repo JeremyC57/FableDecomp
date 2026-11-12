@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+008780d0	CThingSearchTools::GetAllThingsInRoughArea<CThingBuilding,...IsOfType,OverlappingSphere>	DIFFER(680v680)	1	ported (Q18); one residue: post-loop reload order edx/edi/esi (BRX/map/BRY) vs ours edi/esi/edx; c2prio: same split-piece order for 5 spellings
+006fe7c0	CThingSearchTools::GetAllThingsInRoughArea<CThingGameObject,...MinAllowedRadius,OverlappingSphere>	DIFFER(680v680)	0	same template body and residue as 0x008780D0
+00837220	CThingTrackNode::UpdateFacingDirection	DIFFER(716v716)	7	ported (Q18); three scheduling residues kept; SQUARE_PAREN/STEP_PAREN move mov edx,17Ch one tuple early, PAREN/GROUPED/UNION/CROSS_X_GROUP no change
+00a78b20	CNavQuadTree::SaveToFile	SKIPPED	0	not ported (local model)
+00540320	NUISystem::CEditBox::KeyPressed	SKIPPED	0	not ported (huge local CComponent virtual list; needs CEditBox/CComponent headers)
+00649e8b	NPlayerGui::CDrawFishingGame::Draw	SKIPPED	0	not ported (local model of CTCFishing/CDrawQuestInfo/CPlayer)
+0065c5bb	CTCVillage::UpdateMirroredCrimeData	RELOCATION_MATCH	4	port; levers: end() hoisted to a local (frees this), std::set iterator; CTCVillage MIRROREDCRIMES opt-in types PlayersCrimes; #pragma optimize y off / s on (1 SRC_FAIL, 1 re-verify)
+006c1250	CTCBuyableHouse::Update	SKIPPED	0	not ported
+007bd845	NThingShot::CTCShotDefinitionDrainLife::InitMovement	SKIPPED	0	not ported (heavy)
+008cdd40	CCreatureAction_ReleaseTimeSpell::FinishAction	RELOCATION_MATCH	2	port; real class opt-in, named CCharString animation, haste tail of landed 0x006A02B0 (1 re-verify)
+008e16a0	NCreatureMode::CModeScreamerSuperAttack::FrameUpdate	RELOCATION_MATCH	3	port; lever: CVectorMap INSERT_FORCEINLINE (both push_backs expanded in place) (1 re-verify)
+0096cd70	CAIStateGroup_EatAtTable::Update	SKIPPED	0	not ported (heavy)
+0079b6f0	CTCSummonSpell::ResetMinionPos	RELOCATION_MATCH	6	port; levers: effect block inside the minion-alive check, offset reused as the direction, NEWTON_SQUARE_PAREN (1 re-verify)
+008c4fd0	CCreatureAction_ScorpionSummon::CreateBabies	RELOCATION_MATCH	3	port; levers: same-TU noinline GetDef<CCreatureGenerationFamilyDef> body, do-while creature loop (1 re-verify)

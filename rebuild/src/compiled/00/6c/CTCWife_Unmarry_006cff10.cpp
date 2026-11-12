@@ -88,7 +88,7 @@ class CTCHeroStats { public:
     void SetMarriageState(CThingAICreature* spouse, long state);   // 0x0057BC6E
 };
 class CTCBuyableHouse { public:                        // interface type 0xD5
-    void SetOccupant(CThing* occupant);         // 0x006D3C40 (name not recovered)
+    void SetWifeLivingHere(CThing* wife);       // 0x006D3C40 ?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z (FableWin.pdb; stores CIntelligentPointer<CThing> WifeLivingHere +0x38)
     void SetRented(bool rented);                // 0x006C1150
 };
 class CTCWife { public:
@@ -100,8 +100,9 @@ class CTCWife { public:
     bool JustMarried;                           // +0x25
     bool NeedsToChangeBrain;                    // +0x26
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
-    void SetAttractionIcon(bool show, float scale, unsigned char alpha);   // 0x006CFC90
     void Unmarry(bool keepHouseUnrented);
+private:
+    void SetAttractionIcon(bool show, float scale, unsigned char alpha);   // 0x006CFC90 ?SetAttractionIcon@CTCWife@@AAEX_NME@Z (private)
 };
 
 void CTCWife::Unmarry(bool keepHouseUnrented)
@@ -111,7 +112,7 @@ void CTCWife::Unmarry(bool keepHouseUnrented)
         if (creature->HomeBuilding.GetPItem()) {
             CTCBuyableHouse* house = 0;
             creature->HomeBuilding.GetPItem()->GetInterface(&house, 0xd5);
-            house->SetOccupant(0);
+            house->SetWifeLivingHere(0);
             house->SetRented(true);
             if (keepHouseUnrented)
                 house->SetRented(false);

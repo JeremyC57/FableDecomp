@@ -38,7 +38,7 @@ class CWideString { public:
     CCharString ConvertToCharString() const;       // 0x0099B2C0
     const unsigned short* GetAsCharArray() const;               // 0x0099AF10
 };
-extern CWideString g_CWideString_013b866c;         // 0x013B866C (the character start holy site name)
+extern CWideString GForceStartingHolySite;         // 0x013B866C (the character start holy site name)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -170,13 +170,13 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
     CRetailVector<CThing*> sites;
     CopyHolySites(owner->HolySites.begin(), owner->HolySites.end(), back_inserter(sites));
     if (!RespawnValid) {
-        CThing** found = find_if(sites.begin(), sites.end(), bind2nd(ptr_fun(&IsThingScriptNamed), g_CWideString_013b866c.ConvertToCharString()));
+        CThing** found = find_if(sites.begin(), sites.end(), bind2nd(ptr_fun(&IsThingScriptNamed), GForceStartingHolySite.ConvertToCharString()));
         if (found != sites.end()) {
             *site = *found;
             return true;
         }
         CCharString message;
-        message.Format("*** WARNING : failed to find a holy site with ScriptName %S", g_CWideString_013b866c.GetAsCharArray());
+        message.Format("*** WARNING : failed to find a holy site with ScriptName %S", GForceStartingHolySite.GetAsCharArray());
         RespawnPos = C3DVector(0.0f, 0.0f, 0.0f);
     }
     CThing* best = 0;
@@ -210,7 +210,7 @@ static const char* g_startName = "HS_Start";
 static const unsigned short g_wide[] = { 'H', 'S', 0 };
 CCharString CWideString::ConvertToCharString() const { CCharString r; r.PStringData = (void*)g_startName; return r; }
 const unsigned short* CWideString::GetAsCharArray() const { return g_wide; }
-CWideString g_CWideString_013b866c;
+CWideString GForceStartingHolySite;
 static CThing g_things[8]; static const char* g_names[8]; static C3DVector g_pos[8]; static int g_named;
 const C3DVector& CThing::GetPosition() const { return g_pos[this - g_things]; }
 bool __fastcall IsThingScriptNamed(CThing* thing, CCharString name)

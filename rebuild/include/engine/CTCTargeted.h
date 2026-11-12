@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCTARGETED_H
 #define FABLE_ENGINE_CTCTARGETED_H
 #ifdef FABLE_RETAIL_CTCTARGETED
@@ -17,6 +18,11 @@ enum ETargetingType;                                                     // MS f
 class CTCTargeted : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TARGETED; }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    long GetNumTargetPoints()const;
+    C3DVector GetTargetPoint(long,float)const;
+    bool IsValidTargetWithoutLOS()const{return ValidTargetWithoutLOS;}
+#endif
     unsigned long GetTargetingFlags() const { return TargetingFlags; }
     bool IsZTargetable() const { if (TargetingFlags & 4) return true; return false; }   // two-return form: only it folds to `test byte ptr [eax+0Ch],4` under VC7.1 (the `!= 0` / `?:` forms emit shr/test)
     // Chunk 755 (row 0x00729F60 CTCActionUseScriptedHook::OnInitialActivate): FableWin.pdb ?SetTargetable@CTCTargeted@@QAEX_N@Z (inline in
@@ -41,6 +47,22 @@ private:
     bool UseTargetGlow;                                      // +0x11
     bool ValidTargetWithoutLOS;                              // +0x12
     CDefPointer<const CTargetingDef> PTargetingDef;          // +0x14
+#ifdef FABLE_RETAIL_CTCTARGETED_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x004DA936
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCTARGETED_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets
+// (?OnSerialise@CTCTargeted@@MAEXAAVCPersistContext@@_N@Z: protected).
+protected:
+    virtual void OnSerialise(CPersistContext&, bool);  // slot 1, 0x007EA550
+public:
+#endif // FABLE_RETAIL_CTCTARGETED_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargeted) == 0x18);
 #else

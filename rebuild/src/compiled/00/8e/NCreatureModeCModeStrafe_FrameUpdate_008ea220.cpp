@@ -55,7 +55,7 @@ class CInputManager { public:
     CJoystickDevice* GetJoystick(long n) const { return Joysticks[n].Device; }
 };
 
-extern CInputManager* PInputManager;     // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
     virtual void v00();
@@ -85,7 +85,7 @@ void CModeStrafe::FrameUpdate()
             fraction = 1.0f;
         PullBackAmount = fraction;
         RumbleParam = (float)pow(fraction, 3.0);
-        PInputManager->GetJoystick(ParentThing->GetJoystickDeviceNumber())->Rumble(2, CRumbleParams(RumbleParam), 0);
+        GPInputManager->GetJoystick(ParentThing->GetJoystickDeviceNumber())->Rumble(2, CRumbleParams(RumbleParam), 0);
     }
 }
 

@@ -44,5 +44,22 @@ public: unsigned long GetBlendingIndex(unsigned long) const;
 public: void SetRHWFromZ();
 };
 class CTVertexRHWColSpecTex1:public CGenericVertex<CTVertexRHWColSpecTex1Base> {};
+#ifdef FABLE_RETAIL_CGENERICVERTEX_SETRHWFROMZ
+// Retail opt-in (chunk Q20, row 0x009DDC60 CRenderManager2D::Draw2DBoxWithZ): FableWin.pdb
+// ?SetRHWFromZ@?$CGenericVertex@VCTVertexRHWColSpecTex1Base@@@@QAEXXZ (debug copy 0x01AE1FD0, 139 bytes), inline in release: the
+// 2D TU's screen RHW float 0x0139652C (landed spelling g_ScreenRHW) for Z in [0, 0.01), its negation for Z in [-0.01, 0), else 1/Z
+// (retail 0x009DDCCE..0x009DDD70, expanded once per vertex).
+#include "fable_compiler.h"
+extern float g_ScreenRHW;                                                // 0x0139652C
+template<class T> FABLE_FORCEINLINE void CGenericVertex<T>::SetRHWFromZ()
+{
+    if (this->Z >= 0.0f && this->Z < 0.01f)
+        this->RHW = g_ScreenRHW;
+    else if (this->Z >= -0.01f && this->Z < 0.0f)
+        this->RHW = -g_ScreenRHW;
+    else
+        this->RHW = 1.0f / this->Z;
+}
+#endif
 FABLE_STATIC_ASSERT(sizeof(CTVertexRHWColSpecTex1)==32);
 #endif

@@ -127,7 +127,6 @@ public:
 };
 }
 using NScript::CQ_BanditCampScript;
-extern const float g_fZero;                             // 0x0122DEDC (0.0f)
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -183,7 +182,7 @@ void NScript::CQ_BanditCampScript::CGate1GuardInner::Main()
                 Game->StartMovieSequence("", movie);
                 CGameScriptInterface* game = Game;
                 game->PauseAllNonScriptedEntities(true);
-                if (Game->GetHealth(guard.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(guard.GetScriptThing()) > 0.0f) {
                     guard.Speak(Game->GetHero(), "TEXT_QST_009_BANDIT1B_ASIDE", (ETextGroupSelectionMethod)0, false, true, false);
                     while (guard.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -225,7 +224,7 @@ void NScript::CQ_BanditCampScript::CGate1GuardInner::Main()
                 Game->StartMovieSequence("", movie);
                 CGameScriptInterface* game = Game;
                 game->PauseAllNonScriptedEntities(true);
-                if (Game->GetHealth(guard.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(guard.GetScriptThing()) > 0.0f) {
                     guard.Speak(Game->GetHero(), "TEXT_QST_009_BANDIT1B_ATTACKED_NEW", (ETextGroupSelectionMethod)0, false, true, false);
                     while (guard.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();

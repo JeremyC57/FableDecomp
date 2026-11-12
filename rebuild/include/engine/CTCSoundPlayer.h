@@ -8,6 +8,10 @@ class CThingSoundEmitter;
 #include "engine/ETCInterfaceType.h"
 #endif
 class CTCSoundPlayer : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void PlayCollisionSound(const C3DVector&,const CDefPointer<const CMaterialDef>&,const CDefPointer<const CMaterialDef>&);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER
     // Retail opt-in (chunk 751, row 0x007E0D00 CTCEffectOnDie::OnDie): FableWin.pdb ?StatGetInterfaceType@CTCSoundPlayer@@SI?AW4ETCInterfaceType@@XZ
@@ -22,6 +26,16 @@ public:
     void StopAttachedSound(unsigned long); // Both original PDBs; native0066add0.
 #endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_RELEASELOOPINGSOUND
+    // Nested opt-in (chunk Q25, row 0x00847520): Ego_r.pdb / FableWin.pdb ?ReleaseAttachedLoopingSound@CTCSoundPlayer@@QAEXK@Z, out of
+    // line in retail at 0x0066AD90. Declaration only.
+    void ReleaseAttachedLoopingSound(unsigned long soundID);             // 0x0066AD90
+#endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_STOPALLATTACHED
+    // agentFAM13 (2026-11-12, row 0x00773C90 CTCShop::SetAlarm): Ego_r.pdb / FableWin.pdb ?StopAllAttachedSounds@CTCSoundPlayer@@QAEXXZ,
+    // out of line in retail at 0x0066AEB0 (the landed caller 0x00773C90 binds it). Declaration only.
+    void StopAllAttachedSounds();                                        // 0x0066AEB0
+#endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE
     // Opt-in (agentNF12, 2026-11-11, rows 0x0083DDC0 / 0x0083DF20): Ego_r.pdb / FableWin.pdb
     // ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z (retail 0x0066B280, out of line; the callers push the
@@ -52,6 +66,21 @@ protected:
     CCharString VoiceName,ExtraTag;
     short AnimCriteriaClipDistance;
     long LastMaterialIndex;
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0066C2C0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void BulletTimeFrameUpdate();  // slot 10, 0x0066A910
+public:
+#endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCSoundPlayer)==36);
 #endif

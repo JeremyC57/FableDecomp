@@ -14,7 +14,7 @@ class CBrainOutput { public:
         LookFlags = lookFlags;
     }
 };
-class CThingCreatureBase { public: int combatant; bool IsRegisteredCombatant() { return combatant != 0; } };
+class CThingCreatureBase { public: int combatant; bool IsInMeleeAsAttacker() const { return combatant != 0; } };
 static int g_ready, g_inRange[16], g_ir;
 class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase*, bool ready) { if (ready) ++g_ready; }
@@ -41,7 +41,7 @@ struct CAIStateGroup_MeleeCombatNearby2 {
 
 void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
 {
-    if (PBrain->PCreature->IsRegisteredCombatant()) {
+    if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = GetPWorld();
         world->CombatManager->SetAttackerAsReadyToAttack(creature, true);
@@ -49,9 +49,9 @@ void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
     while (!IsStopping()) {
         if (!IsStillRunnable(true))
             return;
-        if (!PBrain->PCreature->IsRegisteredCombatant())
+        if (!PBrain->PCreature->IsInMeleeAsAttacker())
             return;
-        if (!PBrain->PCreature->IsRegisteredCombatant())
+        if (!PBrain->PCreature->IsInMeleeAsAttacker())
             return;
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = GetPWorld();

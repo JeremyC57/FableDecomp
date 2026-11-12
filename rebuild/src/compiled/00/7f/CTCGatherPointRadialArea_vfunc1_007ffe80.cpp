@@ -9,18 +9,18 @@
 // default built in a dword stack temporary. The member name is taken from the
 // persisted key; the member type is any 4-byte scalar (`long` models it). One of 16 bodies.
 class CPersistContext { public:
-    void Transfer_00410620(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410620 = Transfer<float> (agentNF19: Ego_r/FableWin ??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z; it writes through the float writer 0x00993EE0)
 };
 
 struct CTCGatherPointRadialArea {
     unsigned char _pad[0x18];        // after the vptr; members not touched here
-    long m_GatherRadius;                        // +0x1c
+    float m_GatherRadius;                       // +0x1c (a float: the transfer is Transfer<float>)
     virtual void v00();
     virtual void vfunc_1(CPersistContext* context);
 };
 
 void CTCGatherPointRadialArea::vfunc_1(CPersistContext* context)
 {
-    long defaultValue = 0;
-    context->Transfer_00410620("GatherRadius", m_GatherRadius, defaultValue);
+    float defaultValue = 0.0f;
+    context->Transfer<float>("GatherRadius", m_GatherRadius, defaultValue);
 }

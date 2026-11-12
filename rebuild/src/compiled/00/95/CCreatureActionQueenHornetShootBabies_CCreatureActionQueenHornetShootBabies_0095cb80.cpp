@@ -1,4 +1,5 @@
-// CCreatureAction_QueenHornetShootBabies::CCreatureAction_QueenHornetShootBabies(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, thing, 150, GetSoundPair(owner, SWORD_SWING)), then the name SPAWN through the setter @ 0x008574D0
+// CCreatureAction_QueenHornetShootBabies::CCreatureAction_QueenHornetShootBabies(CThingCreatureBase&, CThingCreatureBase&) --
+// Leaf: ??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z base CCombatActionBase(owner, thing, 150, GetSoundPair(owner, SWORD_SWING)), then the name SPAWN through the setter @ 0x008574D0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095CB80, oracle length 124 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -11,6 +12,7 @@
 // @ 0x00857F30 with the action code 150 (0x96); the string temporary dies after the base
 // constructor, then this class's vtable (0x0129519C, rtti-vtables.tsv) is stored and a scoped CCharString passed to the setter @ 0x008574D0 (its manifest label is propagated).
 // One of 10 bodies of this shape.
+// Name fix (agentNF24): own symbol takes two CThingCreatureBase references, as both PDBs spell it: ??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z (was (CThingCreatureBase*, CThing*)); landed 0x0095B820 binds it via engine/CCreatureAction_QueenHornetShootBabies.h
 class CThingCreatureBase;
 class CThing;
 
@@ -36,11 +38,11 @@ class CCombatActionBase { public:
 
 class CCreatureAction_QueenHornetShootBabies : public CCombatActionBase { public:
     virtual void v00();
-    CCreatureAction_QueenHornetShootBabies(CThingCreatureBase* owner, CThing* thing);
+    CCreatureAction_QueenHornetShootBabies(CThingCreatureBase& owner, CThingCreatureBase& thing);   // Ego_r 0x00981460 / FableWin 0x02C123A0
 };
 
-CCreatureAction_QueenHornetShootBabies::CCreatureAction_QueenHornetShootBabies(CThingCreatureBase* owner, CThing* thing)
-    : CCombatActionBase(owner, thing, 150, GetSoundPair(owner, "SWORD_SWING"))
+CCreatureAction_QueenHornetShootBabies::CCreatureAction_QueenHornetShootBabies(CThingCreatureBase& owner, CThingCreatureBase& thing)
+    : CCombatActionBase(&owner, (CThing*)&thing, 150, GetSoundPair(&owner, "SWORD_SWING"))
 {
     {
         CCharString name("SPAWN", -1);      // scoped named local (a bare temporary would reuse eax, GOTCHAS)

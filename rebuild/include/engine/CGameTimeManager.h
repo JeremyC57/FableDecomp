@@ -79,6 +79,14 @@ class CMainGameComponent;
 class CGameTimeManager {
 public:
     long GetDayCount() const { return DayCount; }                   // ?GetDayCount@CGameTimeManager@@QBEJXZ (inline)
+#ifdef FABLE_RETAIL_CGAMETIMEMANAGER_DAYSPEED
+    // Retail opt-in (row 0x0065AA6F CTCVillage::IsTimeToGoToTavern): FableWin.pdb ?GetDaySpeed@CGameTimeManager@@QBEMXZ (0x01E6B1CF,
+    // next to PeekGameTimeManager 0x01E6B1B6), inline in retail (`mov eax,[world+1Ch] ; fdiv dword ptr [eax+10h]`). Pairing with
+    // TimeStep +0x10: it is the member the day-speed setter writes (ConsoleSetDaySpeed 0x006BB940, AlterDaySpeed expanded in
+    // place: `fld 1.0f-pool ; fdiv [arg+18h] ; fstp [ecx+10h]`) and the only float const getter of the FableWin.pdb member set
+    // besides GetTime / GetVillageTime; the body is inferred from those two facts (no out-of-line copy to read). No layout change.
+    float GetDaySpeed() const { return TimeStep; }
+#endif
 private:
     CWorld*             World;                                      // +0x00
     CMainGameComponent* GameComponent;                              // +0x04

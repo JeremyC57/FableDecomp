@@ -17,5 +17,12 @@ protected:
     CRightHandedSet Rhset;                                               // +0x0c
     C3DVector Pos;                                                       // +0x24
     bool ForceVisible;                                                   // +0x30
+#ifdef FABLE_RETAIL_CTCBOB_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00787A30
+public:
+#endif
 };
 #endif

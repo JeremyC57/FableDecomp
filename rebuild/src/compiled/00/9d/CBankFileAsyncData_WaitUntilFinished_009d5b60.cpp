@@ -34,7 +34,9 @@ class CBankFileAsync { public:
     bool DisableAsync;                           // +0x149
     unsigned char _pad3[2];
     CRITICAL_SECTION_Fable m_section;            // +0x14c
-    void KickPendingReads();                     // 0x009D5A90
+private:
+    friend class CBankFileAsyncData;
+    void RestartAbortedReads();                  // 0x009D5A90 ?RestartAbortedReads@CBankFileAsync@@AAEXXZ (Ego_r.pdb / FableWin.pdb, private; NF28 was KickPendingReads)
 };
 
 class CBankFileAsyncData { public:
@@ -63,7 +65,7 @@ bool CBankFileAsyncData::WaitUntilFinished()
         if (!SetupBuffer(true))
             return false;
         m_completionPending = false;
-        m_pBank->KickPendingReads();
+        m_pBank->RestartAbortedReads();
         lock.Unlock();
         m_pBank->ThreadedFile->WaitForRead(ThreadedFileUID);
     }

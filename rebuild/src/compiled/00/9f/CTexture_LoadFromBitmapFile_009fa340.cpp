@@ -14,7 +14,8 @@
 //   AllocationSource = 0); width/height default to D3DX_DEFAULT (-1) and the format to D3DFMT_UNKNOWN unless given; the
 //   device is a named local fetched after them (kept in esi, `this` spilled); the result is tested by two separate
 //   `return false` statements (`jl ; je`), each destroying the path; the reported size is a C2DExtentsI temporary copy.
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_pixelFormatInfo)
+// (name-fix NF29: the local _D3DFORMAT enum is now engine/Direct3D9Types.h, pulled in by engine/CD3DFormatInfo.h)
 namespace N_0099af00 { struct CWideString {
     void* PData;
     ~CWideString();                                         // 0x0099B510
@@ -49,8 +50,6 @@ extern "C" long __stdcall D3DXCreateTextureFromFileExW(IDirect3DDevice9* device,
     unsigned long width, unsigned long height, unsigned long mipLevels, unsigned long usage, long format, long pool,
     unsigned long filter, unsigned long mipFilter, unsigned long colorKey, D3DXIMAGE_INFO* srcInfo, void* palette,
     IDirect3DTexture9** texture);           // 0x00BFEFD4
-struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
-extern SPixelFormatInfo g_pixelFormatInfo[];                 // 0x0129BA40
 class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI() {}
@@ -98,7 +97,7 @@ bool CTexture::LoadFromBitmapFile(const CWideString& filename, const C2DExtentsI
         height = size->Y;
     }
     if (format)
-        d3dFormat = g_pixelFormatInfo[format->FormatIndex].d3dFormat;
+        d3dFormat = GD3DFormats[format->FormatIndex].D3DFormat;
     IDirect3DDevice9* device = GFGetSystemManager()->m_pRender->m_pDevice;
     D3DXIMAGE_INFO imageInfo;
     long result = D3DXCreateTextureFromFileExW(device, path, width, height,

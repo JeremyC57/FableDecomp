@@ -1,0 +1,10 @@
+// std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CThingCreatureBase*>, std::_Select1st<std::pair<unsigned __int64 const, CThingCreatureBase*> >, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CThingCreatureBase*> > >::_M_erase(std::_Rb_tree_node<std::pair<unsigned __int64 const, CThingCreatureBase*> >*) -- STLport 4.6 _M_erase (stlport/fable_map.h)
+// Leaf: ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006EFC70, oracle length 51 bytes.
+// Identity: (1) the landed caller 0x006F1BF0 (std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CThingCreatureBase *>, std::_Select1st<std::pair<unsigned __int64 const, CThingCreatureBase *>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CThingCreatureBase *>>>::erase) binds this tree's _M_erase (spelled public QAE; STLport 4.6 _M_erase is private: AAE here, a binder spelling to fix) (rebuild/oracles/reloc_bindings.tsv); (2) Ego_r.pdb / FableWin.pdb carry the map<_KPAVCThingCreatureBase@@> instantiation (_Tmap_traits@_KPAVCThingCreatureBase@@U?$less@).
+// Model: the shared stlport/fable_map.h (STLport 4.6 _tree.h / _tree.c; FABLE_RETAIL_STLP_MAP); the explicit instantiation emits the member as
+//   its own COMDAT. Replaces the generated stand-in (was _unattributed, a descriptive placeholder class).
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+class CThingCreatureBase;
+template void std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CThingCreatureBase*>, std::_Select1st<std::pair<unsigned __int64 const, CThingCreatureBase*> >, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CThingCreatureBase*> > >::_M_erase(std::_Rb_tree_node<std::pair<unsigned __int64 const, CThingCreatureBase*> >*);

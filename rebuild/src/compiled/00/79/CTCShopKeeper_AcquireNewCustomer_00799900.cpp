@@ -49,16 +49,16 @@ class CThingCompare_Nearest { public:
 };
 class CThingSearchTools { public:
     bool GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_IsPotentialCustomer& filter,
-                                  const CThingCompare_Nearest& compare, CThingCreatureBase** out);   // 0x0079A050
+                                  const CThingCompare_Nearest& compare, CThingCreatureBase** out) const;   // 0x0079A050
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_IsPotentialCustomer& filter,
-                                   CThingCreatureBase** out);                                         // 0x0079A280
+                                   CThingCreatureBase** out) const;                                   // 0x0079A280
 };
-class CTCShopKeeper { public:
-    void* __vftable;
-    CThing* ParentThing;                           // +0x04 (CTCBase)
-    unsigned char _pad08[0x0c - 0x08];
+// CTCBase: engine/CTCBase.h (FABLE_RETAIL_CTCBASE): PeekThingSearchTools 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ
+//   (Ego_r.pdb / FableWin.pdb; NF28: was spelled CTCShopKeeper::GetThingSearchTools() const returning a pointer).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
+class CTCShopKeeper : public CTCBase { public:     // vptr +0x00, ParentThing +0x04 (CTCBase, 0x0c)
     CIntelligentPointerCreature Customer;          // +0x0c
-    CThingSearchTools* GetThingSearchTools() const;   // 0x00686D90 (CTCBase)
     CTCShop* GetShopTC();                          // 0x00798F50
     void AddNewCustomer(CIntelligentPointerCreature customer);   // 0x00798D90
     void EmptyCustomerList();                      // 0x00798E10
@@ -71,16 +71,16 @@ void CTCShopKeeper::AcquireNewCustomer()
     if (!shop)
         return;
     C3DVector shopPos = shop->ParentThing->GetPos();
-    const C3DVector& pos = ParentThing->GetPos();
+    const C3DVector& pos = GetParentThing().GetPos();
     long x = (long)pos.X;
     long y = (long)pos.Y;
     C2DBoxI area(x - 15, y - 15, x + 15, y + 15);
     CThingCreatureBase* customer = 0;
-    GetThingSearchTools()->GetPBestThingInRoughArea(area, CThingFilter_IsPotentialCustomer(this, false),
+    PeekThingSearchTools().GetPBestThingInRoughArea(area, CThingFilter_IsPotentialCustomer(this, false),
         CThingCompare_Nearest(shopPos), &customer);
     Customer = CIntelligentPointerCreature(customer);
     if (Customer.GetPItem())
         AddNewCustomer(Customer);
-    else if (!GetThingSearchTools()->GetPFirstThingInRoughArea(area, CThingFilter_IsPotentialCustomer(this, true), &customer))
+    else if (!PeekThingSearchTools().GetPFirstThingInRoughArea(area, CThingFilter_IsPotentialCustomer(this, true), &customer))
         EmptyCustomerList();
 }

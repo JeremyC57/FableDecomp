@@ -18,6 +18,14 @@
 //   which leaves the last equality stored to a dead byte (`mov [ebp+0Bh],al`).
 // Layout: retail CTCMeleeTrap StrikeAnimation +0x61 (PDB +0x6D; the trap base is 12 bytes smaller in retail, as the
 //   landed 0x00788555 PlayingContinuous +0x60); CAnimationEntry +0x00 the animation id.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC6C STRIKE_EVENT_START_IDENTIFIER (global, const; initializer 0x0121E7E0), was g_StrikeStart.
+//   0x013BAC78 STRIKE_EVENT_BEGIN_LEGACY (global, const; initializer 0x0121E840), was g_CombatStrikeEvent.
+//   0x013BAC80 SECONDARY_STRIKE_EVENT_BEGIN_LEGACY (global, const; initializer 0x0121E880), was g_CombatStrikeEvent2.
+//   0x013BAC70 STRIKE_EVENT_END_IDENTIFIER (global, const; initializer 0x0121E800), was g_StrikeEnd.
+//   0x013BAC7C STRIKE_EVENT_END_LEGACY (global, const; initializer 0x0121E860), was g_CombatStop.
+//   0x013BAC84 SECONDARY_STRIKE_EVENT_END_LEGACY (global, const; initializer 0x0121E8A0), was g_CombatStop2.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -74,12 +82,12 @@ class CCharString { public:
         return false;
     }
 };
-extern CCharString g_StrikeStart;                           // 0x013BAC6C
-extern CCharString g_StrikeEnd;                             // 0x013BAC70
-extern CCharString g_CombatStrikeEvent;                     // 0x013BAC78
-extern CCharString g_CombatStop;                            // 0x013BAC7C
-extern CCharString g_CombatStrikeEvent2;                    // 0x013BAC80
-extern CCharString g_CombatStop2;                           // 0x013BAC84
+extern const CCharString STRIKE_EVENT_START_IDENTIFIER;                           // 0x013BAC6C
+extern const CCharString STRIKE_EVENT_END_IDENTIFIER;                             // 0x013BAC70
+extern const CCharString STRIKE_EVENT_BEGIN_LEGACY;                     // 0x013BAC78
+extern const CCharString STRIKE_EVENT_END_LEGACY;                            // 0x013BAC7C
+extern const CCharString SECONDARY_STRIKE_EVENT_BEGIN_LEGACY;                    // 0x013BAC80
+extern const CCharString SECONDARY_STRIKE_EVENT_END_LEGACY;                           // 0x013BAC84
 
 namespace std {
 template <class T> class allocator { };
@@ -141,9 +149,9 @@ void CTCMeleeTrap::InitialiseStrikeAnimation(const CAnimationEntry& entry)
     CWorld* world = (&GetWorld());
     ((CMeshDataBank*)(world->PAnimationBank))->PeekAnimation(entry.Animation);
     for (CCharString* it = names._M_start; it != names._M_finish; ++it) {
-        if (it->StartsWith(g_StrikeStart) || *it == g_CombatStrikeEvent || *it == g_CombatStrikeEvent2)
+        if (it->StartsWith(STRIKE_EVENT_START_IDENTIFIER) || *it == STRIKE_EVENT_BEGIN_LEGACY || *it == SECONDARY_STRIKE_EVENT_BEGIN_LEGACY)
             StrikeAnimation = true;
-        else if (it->StartsWith(g_StrikeEnd) || *it == g_CombatStop || *it == g_CombatStop2) {
+        else if (it->StartsWith(STRIKE_EVENT_END_IDENTIFIER) || *it == STRIKE_EVENT_END_LEGACY || *it == SECONDARY_STRIKE_EVENT_END_LEGACY) {
         }
     }
 }

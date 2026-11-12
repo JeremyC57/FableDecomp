@@ -2,7 +2,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- re-graded unchanged against the registered retry oracle (the earlier x87-order DIFFER no longer reproduces)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B201D0, length 240 bytes (`ret 4`; manifest label correct).
-// Callees: CParticleSystem::GetSystemTransform @ 0x00AF3D80 (&PParentEmitter->Transform) and GetInverseSystemTransform
+// Callees: CParticleSystem::PeekEmitterTransform @ 0x00AF3D80 (PParentEmitter->Transform) and GetInverseSystemTransform
 //          @ 0x00AF3DA0 (&PParentEmitter->InverseTransform, emitter +0xe0); both labelled "CVertexBufferWin32::DoSizeof"
 //          (propagated).
 // Layout: CMatrix3x4 as the landed GetUnscaledWorldTransform 0x00B05840 (twelve floats: rows, then the translation);
@@ -20,14 +20,15 @@ namespace NParticleEngine {
 class CParticleSystem { public:
     unsigned char m_pad00[0x60];
     C3DVector     Scale;                           // +0x60
-    const CMatrix3x4* GetSystemTransform() const;           // 0x00AF3D80
     const CMatrix3x4* GetInverseSystemTransform() const;    // 0x00AF3DA0
     void GetInverseSystemTransformWithTranslate(CMatrix3x4* result);
+private:
+    const CMatrix3x4& PeekEmitterTransform() const;         // 0x00AF3D80 ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ
 };
 
 void CParticleSystem::GetInverseSystemTransformWithTranslate(CMatrix3x4* result)
 {
-    CMatrix3x4 transform = *GetSystemTransform();
+    CMatrix3x4 transform = PeekEmitterTransform();
     *result = *GetInverseSystemTransform();
     result->m[9]  = -(result->m[0] * transform.m[9] + result->m[3] * transform.m[10] + result->m[6] * transform.m[11]);
     result->m[10] = -(result->m[1] * transform.m[9] + result->m[4] * transform.m[10] + result->m[7] * transform.m[11]);

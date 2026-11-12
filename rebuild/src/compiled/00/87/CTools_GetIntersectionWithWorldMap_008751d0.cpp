@@ -7,14 +7,16 @@
 //   0.0f 0x0122DEDC.
 // Shape: `return hits > 0 ? true : false;` (the plain comparison zeroes eax before the setg); the hit arm resets
 //   remaining to the initial start-end vector, so the loop runs on while the march has not passed the end.
+// Name fix (agentNF23, queue land1011cy): 0x0063AB10 is ?GetGroundFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z (Ego_r 0x006E7420 /
+//   FableWin 0x024A4450), declared by engine/CWorldMap.h; was a local GetGroundFaceNormalAt(const C3DVector*) const.
 // Layout: CTools first member the owner (+0x00) whose +0x74 object hands out the world map (slot 13).
 #include <math.h>
 #pragma intrinsic(sqrt)
 #include "engine/C3DVector.h"
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-class CWorldMap { public:
-    C3DVector GetGroundFaceNormalAt(const C3DVector* position) const;   // 0x0063AB10
-};
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_GROUNDFACENORMAL
+#include "engine/CWorldMap.h"                                           // GetGroundFaceNormalAt(const C3DVector&) const 0x0063AB10
 struct CWorldMapOwner {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -60,7 +62,7 @@ bool CTools::GetIntersectionWithWorldMap(const C3DVector& start, const C3DVector
             to = next;
             remaining = initial;
             *position = (to + from) * 0.5f;
-            *normal = map->GetGroundFaceNormalAt(position);
+            *normal = map->GetGroundFaceNormalAt(*position);
             ++hits;
         } else {
             from = next;

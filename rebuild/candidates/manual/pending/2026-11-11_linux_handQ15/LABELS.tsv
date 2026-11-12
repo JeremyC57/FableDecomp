@@ -1,0 +1,13 @@
+address	name	evidence
+0092e130	?IsRunnable@CAIStateGroup_MinionSleep@@UAE_NXZ	Ego_r.pdb name set (vtable slot 11 override); RELOCATION_MATCH in Q15 with CAIStateGroup_GoToBed::IsRunnable 0x0092D6F0 called qualified
+00713d50	?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z	Ego_r.pdb name set (private); caller Update 0x00713EE0 (landed, same spelling); RELOCATION_MATCH in Q15
+00738a80	??$GetEvent@$$CBVCEventHitBy@NEntityEvents@@V?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@CTCEntityEvents@@QBE_NPAPBVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@Z	Ego_r.pdb + FableWin.pdb name sets (the only GetEvent instance with that filter); body calls 0x00810F80 (melee), 0x00810F50 (blocked, negated) and 0x00810FC0 (GetPHitBy) compared with the filter's HitBy
+0090c900	??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z	Ego_r.pdb name set; ctor 0x0090C870 landed beside it
+0086b9d0	?GetRandomSkeletalMorph@CRandomAppearanceMorph@@IBEXAAKAAVCMorphSet@1@@Z	Ego_r.pdb name set (protected const); caller GetRandomMorphSet 0x0086BF7F
+0086b900	?AddSkeletalMorphToMorphSet@CRandomAppearanceMorph@@IBEXAAKABVCSkeletalMorph@1@AAVCMorphSet@1@@Z	Ego_r.pdb + FableWin.pdb; the only CRandomAppearanceMorph member taking (seed&, const CSkeletalMorph&, CMorphSet&); called from 0x0086B9D0 with exactly those arguments (was the draft's invented CreateRandomMorphEntry)
+0086d240	?GetKeyList@?$CVectorMap@JVCSkeletalMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@JVCSkeletalMorph@CRandomAppearanceMorph@@@@@@QBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb; 0x0086B9D0 calls it on SkeletalMorphs (+0x18) with the local vector<long>
+00ac7cb0	?GetFaceNormal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABVCOptimisedFace@2@@Z	Ego_r.pdb name set; caller ComputeVertexCost 0x00AC8C80 (landed, same spelling)
+00ac7300	?FindTextureTangent@COptimisedPrimitive@QuadricOptimiserInternals@@AAE?AVC3DVector@@ABV3@00MMM@Z	Ego_r.pdb name set; caller FindFaceTextureTangents 0x00AC7E10 (landed)
+00acd960	?Optimise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXM@Z	Ego_r.pdb + FableWin.pdb (the only public void(float) member); reloc_bindings binds it from COptimisedMesh::Optimise 0x00ACDAE0; catalog name Optimise
+00658d5d	?IsCurfewTime@CTCVillage@@QBE_NXZ	Ego_r.pdb + FableWin.pdb (only spelling, const); 0x0090C900 calls it through PTCVillage
+00810fc0	?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	Ego_r.pdb + FableWin.pdb; existing label (chunk 767); 0x00738A80 calls it inside CIsHitEventHitBy

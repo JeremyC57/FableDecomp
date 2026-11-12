@@ -21,6 +21,9 @@
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}; Ego_r.pdb CRingFighter ParentClass +0x14; parent
 //   CV_FisticuffsClubScript (PDB - 0x14) TylerInFight +0x54, TimeOut +0x56, RingCleared +0x57, RoundStarted +0x58,
 //   EverybodyAttack +0x8c, CheerNumber +0xac, BooNumber +0xb0.
+// Name fix (agentNF24, land1011de): the local CIsThingAlive / CIsFlagFalse / CAndPredicate models replaced by the shared NScript
+//   predicate headers: 0x012EA43C binds ??_7CIsVariableFalse@NScript@@6B@ (was ??_7CIsFlagFalse@@6B@), 0x012EA430 / 0x00E7E020 the
+//   CPredicate_And<CIsThingAlive,CIsVariableFalse> vtable / ctor (was CAndPredicate).
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
@@ -43,31 +46,17 @@ void operator delete(void* p);                          // 0x00BFE9BC
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
-#include "engine/CPredicateBase.h"                    // NScript::CPredicateBase, vtable 0x012C2FF4
-namespace NScript {
-class CIsThingAlive : public CPredicateBase { public:               // vtable 0x012C32F0
-    CScriptThing Thing;                                 // +0x04
-    CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
-    virtual ~CIsThingAlive();                                   // 0x00E241B0
-    virtual bool operator()() const;
-    virtual NScript::CPredicateBase* Clone() const;
-};
-}
+// NScript predicates: the shared models (agentNF24, land1011de): CIsThingAlive (vtable 0x012C32F0, ~ 0x00E241B0; its CScriptThing ctor
+// is inline in retail), CIsVariableFalse (vtable 0x012EA43C, the const bool& at +4) and their And (vtable 0x012EA430, ctor 0x00E7E020,
+// destroyed inline: opt-in FABLE_RETAIL_CPREDICATE_AND_INLINE_DTOR) over CPredicateBase (vtable 0x012C2FF4).
+#define FABLE_RETAIL_CPREDICATE_AND_INLINE_DTOR
+#include "engine/CIsThingAlive.h"
+#include "engine/CIsVariableFalse.h"
+#include "engine/CPredicate_And.h"
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 using NScript::CIsThingAlive;
-struct CIsFlagFalse : NScript::CPredicateBase {                // vtable 0x012EA43C
-    const bool* Flag;                                   // +0x04
-    CIsFlagFalse(const bool* flag) : Flag(flag) {}
-    virtual bool operator()() const;
-    virtual NScript::CPredicateBase* Clone() const;
-};
-struct CAndPredicate : NScript::CPredicateBase {               // vtable 0x012EA430
-    CIsThingAlive First;                                // +0x04
-    CIsFlagFalse  Second;                               // +0x14
-    CAndPredicate(const CIsThingAlive& first, const CIsFlagFalse& second);   // 0x00E7E020
-    ~CAndPredicate() {}
-    virtual bool operator()() const;
-    virtual NScript::CPredicateBase* Clone() const;
-};
+using NScript::CIsVariableFalse;
+using NScript::CPredicate_And;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
@@ -138,9 +127,9 @@ private:
 void CV_FisticuffsClubScript::CRingFighter::Main()
 {
     {
-        CIsFlagFalse notAttacking(&ParentClass->EverybodyAttack);
+        CIsVariableFalse notAttacking(ParentClass->EverybodyAttack);
         CIsThingAlive alive(Me);
-        CAndPredicate both(alive, notAttacking);
+        CPredicate_And<CIsThingAlive, CIsVariableFalse> both(alive, notAttacking);
         SetPredicate(both);
     }
     Game->NewScriptFrame();

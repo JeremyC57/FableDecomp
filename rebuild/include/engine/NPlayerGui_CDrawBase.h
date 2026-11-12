@@ -11,6 +11,10 @@
 #include "engine/CEnginePrimitiveHandle.h"
 #endif
 class CPlayerGui; class CPlayerManager; class CWorld; class CMainGameComponent; class CGraphicDataBank; class CEnginePrimitiveHandle;
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS
+template<class T> class CIntelligentPointer;
+namespace NParticleEngine { class CParticleEmitter; }
+#endif
 namespace NPlayerGui {
 class CDrawBase {
 public:
@@ -20,16 +24,40 @@ public:
     // out of line at 0x0064CC65 (the inline CDrawNPCName ctor calls it: `push illustrators ; push gui ; call`). Declaration only.
     CDrawBase(CPlayerGui& playerGui, std::vector<CDrawBase*>& illustrators);   // 0x0064CC65
 #endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_IMPLICIT_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, the CCountedPointer<NPlayerGui::CDraw*>::DeleteData rows 0x00443580..0x00443A60): retail
+    // expands the destruction inside each deleter with no vptr store -- only the PrimitiveHandles vector's teardown is left (every
+    // handle's virtual destructor, slot 0 flag 0, then free of the block) before operator delete: the implicit destructor, so none is
+    // declared here. Default unchanged.
+#else
     ~CDrawBase();
+#endif
     virtual void ClearPrimitives();
     virtual void ClearPrimitivesIfNecessary();
     bool IsDrawing() const { return Drawing; }
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_SETASDRAWING
+    // Retail opt-in (chunk Q22, row 0x00649E8B CDrawFishingGame::Draw): FableWin.pdb ?SetAsDrawing@CDrawBase@NPlayerGui@@QAEX_N@Z
+    // (named in this header's comment above; no out-of-line copy in Ego_r.pdb or Fable.exe: the row stores Drawing +0x18 in place,
+    // `mov byte ptr [edi+18h],1` at 0x00649EFB). No layout change.
+    void SetAsDrawing(bool drawing) { Drawing = drawing; }
+#endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES
     // Retail opt-in (chunk 867, row 0x0064BFBA CDrawHighlightingTargetingCursor::Draw): Ego_r.pdb ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z
     // (out of line at 0x00643D5D; the landed DrawIcon 0x00645292 calls it as the sprite alpha), declaration only; and PrimitiveHandles as
     // the vector of CEnginePrimitiveHandle objects it is (8-byte elements: the row passes `&PrimitiveHandles[1]` as `[this+1Ch]+8` to
     // CIEngine::SetPersistentPrimitive and for_each's Clear over begin()..end()).
     unsigned char ScaleAlpha(unsigned char alpha) const;                 // 0x00643D5D
+#endif
+#if defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_SCALEALPHA) && !defined(FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES)
+    // Retail opt-in (agentNF29 name-fix, row 0x00643D5D itself): the same ScaleAlpha declaration as the HANDLES opt-in, without the
+    // CEnginePrimitiveHandle element type (the row's own TU needs only PlayerGui). No layout change.
+    unsigned char ScaleAlpha(unsigned char alpha) const;                 // 0x00643D5D
+#endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CLEAREFFECTS
+    // Retail opt-in (wf3, row 0x00646580 CDrawMeleeActionButtonEffects::Draw): Ego_r.pdb / FableWin.pdb
+    // ?ClearEffects@CDrawBase@NPlayerGui@@SIXAAV?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@...@Z, static
+    // __fastcall, out of line at 0x006445BA (landed; the row calls it as `lea ecx,[esi+28h] ; call`). Declaration only.
+    static void FABLE_FASTCALL ClearEffects(std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >& effects);   // 0x006445BA
 #endif
 protected:
     CPlayerGui* PlayerGui;                                               // +0x04

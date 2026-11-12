@@ -19,7 +19,6 @@
 #include "engine/CBulletTimeManager.h"
 class CWorld { public: static long __fastcall GetFrame(); };                         // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
-extern const float g_bulletTimeRatioNumerator;  // 0x0122DED8
 
 float CBulletTimeManager::ConvertInterpolateToBulletTimeInterpolate(float interpolate) const
 {
@@ -28,7 +27,7 @@ float CBulletTimeManager::ConvertInterpolateToBulletTimeInterpolate(float interp
     long  frames;
     {
         float scale = GetBulletTimeSlowdownMultiplier();
-        ratio = g_bulletTimeRatioNumerator / scale;
+        ratio = 1.0f / scale;
         frames = CWorld::GetFrame();
         divisor = (long)scale;
     }

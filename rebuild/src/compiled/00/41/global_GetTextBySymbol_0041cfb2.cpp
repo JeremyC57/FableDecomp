@@ -4,13 +4,15 @@
 //   edi, `mov eax,edi ; ret 4`), so the parked "link-time custom convention" gap is disproved. Retail: Fable.exe @ 0x0041CFB2, 138
 //   bytes, ebp frame (the TU's /Oy- /Os pragmas). Callees: NGameText::CDataBank::GetTextBySymbol 0x009C95E0, CWideString operator!=
 //   0x0099B0F0 / copy ctor 0x0099B720 / dtor 0x0099B510, CWideString::CreateFromCharString 0x0099B6A0. Globals: CMainGameComponent::Get()
-//   0x013B86A0 (Ego_r CMainGameComponent::PTextBank +0x14), g_pFrontEndGame 0x013B871C (+0x60), g_emptyWideString 0x013BCA24.
+//   0x013B86A0 (Ego_r CMainGameComponent::PTextBank +0x14), g_pFrontEndGame 0x013B871C (+0x60), CWideString::NullString 0x013BCA24.
 // Leaf: GetTextBySymbol
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Lane gap: retail calls GetTextBySymbol 0x0041CFB2 with a link-time-generated convention (the CWideString result pointer in
 //   edi, `mov eax,edi ; ret 4`), which a single-TU VC7.1 compile cannot emit; this source uses the standard hidden pointer.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -25,8 +27,9 @@ public:
     ~CWideString();                                     // 0x0099B510
     bool operator!=(const CWideString& other) const;    // 0x0099B0F0
     static CWideString __fastcall CreateFromCharString(const CCharString& text);   // 0x0099B6A0
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_emptyWideString;             // 0x013BCA24
 namespace NGameText {
 class CDataBank {
 public:
@@ -54,12 +57,12 @@ static __declspec(noinline) CWideString __stdcall GetTextBySymbol(const CCharStr
 {
     if (CMainGameComponent::Get()) {
         CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol(symbol);
-        if (text != g_emptyWideString)
+        if (text != CWideString::NullString)
             return text;
     }
     if (g_pFrontEndGame) {
         CWideString text = g_pFrontEndGame->PTextBank->GetTextBySymbol(symbol);
-        if (text != g_emptyWideString)
+        if (text != CWideString::NullString)
             return text;
     }
     return CWideString::CreateFromCharString(symbol);

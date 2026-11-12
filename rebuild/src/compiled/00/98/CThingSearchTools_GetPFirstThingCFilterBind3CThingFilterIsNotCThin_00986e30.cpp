@@ -67,28 +67,28 @@ class CThingAICreature : public CThingCreatureBase { public:
 
 class CThingFilter_IsNot { public:
     const CThing* Excluded;
-    bool operator()(const CThing* thing) const;      // 0x006A76A0
+    bool operator()(const CThing& thing) const;      // 0x006A76A0 Ego_r/FableWin ??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z
 };
 class CThingFilter_IsCreatureType { public:                // inline: the creature's category getter == Type
     long Type;
-    bool operator()(const CThingCreatureBase* creature) const { return creature->GetCreatureCategory() == Type; }
+    bool operator()(const CThingCreatureBase& creature) const { return creature.GetCreatureCategory() == Type; }   // Ego_r ??RCThingFilter_IsCreatureType@@QBE_NABVCThingCreatureBase@@@Z
 };
 class CThingFilter_In2DRange { public:
     float X, Y, RangeSq;
-    bool operator()(const CThing* thing) const;      // 0x006A76B0
+    bool operator()(const CThing& thing) const;      // 0x006A76B0 Ego_r/FableWin ??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z
 };
 template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
-    template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing); }
+    template <class T> bool operator()(T* thing) const { return First(*thing) && Second(*thing); }
 };
 template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;
     CFilter_Bind3(const A& a, const B& b, const C& c) : First(a), Second(b), Third(c) {}
-    template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing) && Third(thing); }
+    template <class T> bool operator()(T* thing) const { return First(*thing) && Second(*thing) && Third(*thing); }
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {

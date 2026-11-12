@@ -22,7 +22,14 @@ C3DVector FABLE_FASTCALL GetStabPosOnThing(CThing&);
 // Full original Ego_r0x28491, native vector12 yields76bytes.
 class CTCStealth:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCSTEALTH_SETSNEAKING
+ // Retail opt-in (chunk Q15, row 0x00713D50): FableWin.pdb ?StatGetInterfaceType@CTCStealth@@SI?AW4ETCInterfaceType@@XZ and
+ // ?SetSneaking@CTCStealth@@QAEX_N@Z (debug copies only; no Ego_r.pdb copy, expanded in retail: 0x00713DC9 `mov byte ptr [eax+0Fh],1`,
+ // the bitset test of type 54 = bit 22 of +24h). Bodies only, no layout change.
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_STEALTH; }
+#else
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
+#endif
  virtual ETCInterfaceType GetInterfaceType() const;
  static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
  static CCharString FABLE_FASTCALL StatGetClassTypeName();
@@ -62,7 +69,11 @@ public:
  #endif
  bool IsSneakToggleSet() const;
  float GetSneakingSpeed() const;
+#ifdef FABLE_RETAIL_CTCSTEALTH_SETSNEAKING
+ void SetSneaking(bool p0) { Sneaking = p0; }
+#else
  void SetSneaking(bool p0);
+#endif
  #ifdef FABLE_RETAIL_CTCSTEALTH_SNEAKTOGGLE
  void SetSneakingToggleSet(bool p0) { SneakingToggleSet = p0; }
  #else

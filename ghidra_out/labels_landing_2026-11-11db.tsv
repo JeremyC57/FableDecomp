@@ -1,0 +1,20 @@
+address	name	evidence
+00957DB0	?Update@CAIStateGroup_MinionBehaviourCrowdBase@@UAEXXZ	chunk Q16 (landing db): Ego_r.pdb; vtable 0x0128C494 slot 12 (+ derived 0x0128D16C); RELOCATION_MATCH
+00774730	?SellItem@CTCShop@@QAEXJ@Z	chunk Q16 (landing db): Ego_r.pdb; RELOCATION_MATCH
+008378D0	?SetAsLinkedTo@CThingTrackNode@@QAEXPAV1@@Z	chunk Q16 (landing db): Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH
+00744430	?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ	chunk Q16 (landing db): Ego_r.pdb; body `mov al,[ecx+30h]; ret` (returns member DirectAwareness +0x30); called from 0x00957DB0 match
+00A96100	??0?$CArray@K@@QAE@I@Z	chunk Q16 (landing db): FableWin.pdb; body three zero stores + malloc(n*4) + rep stosd, ret 4; called from 0x00A90260 / 0x00F3ABF0
+00F3ABF0	?CalcCompressionScript@CRangeCompressor@@AAEJAAV?$CArray@UCScriptEntry@CRangeCompressor@@@@PBEJJJ@Z	chunk Q16 (landing db): Ego_r.pdb + FableWin.pdb; six recursive self-calls
+00A90260	?CreateDegenerateTriangleIndexBuffer@C3DPrimitive2@@AAE_NXZ	chunk Q16 (landing db): Ego_r.pdb
+0128C494	??_7CAIStateGroup_MinionBehaviourCrowdBase@@6B@	chunk Q16 (landing db): vtable; slot 12 = 0x00957DB0 (Update), slots 14-17 pure (derived PodiumEmoteNeutral 0x0128D16C)
+0090C900	??RCThingFilter_IsValidGossipee@@QBE_NABVCThingAICreature@@@Z	chunk Q16 (landing db): Ego_r.pdb (Q15, re-checked)
+00649E8B	?Draw@CDrawFishingGame@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	chunk Q16 (landing db): Ego_r.pdb
+0093C030	?Update@CAIStateGroup_SeekScriptTarget@@UAEXXZ	chunk Q16 (landing db): Ego_r.pdb
+009711D0	?MoveIntoCover@CAIStateGroup_CreatureUseCoverBase@@IAE_NABVC3DVector@@@Z	chunk Q16 (landing db): Ego_r.pdb
+008E16A0	?FrameUpdate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	chunk Q16 (landing db): Ego_r.pdb
+0096CD70	?Update@CAIStateGroup_EatAtTable@@MAEXXZ	chunk Q16 (landing db): Ego_r.pdb
+00795090	?FinalCleanup@CTCUnholyPower@@AAEXXZ	chunk Q16 (landing db): Ego_r.pdb; vtable 0x0126BFDC is CTCUnholyPower (catalog CTCDivineWrath label propagated from the byte-near twin 0x0078FAF0)
+00555A90	?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z	chunk Q16 (landing db): Ego_r.pdb
+00966030	?OnReplace@CAIStateGroup_CarryCrateAndFollow@@UAEXXZ	chunk Q16 (landing db): Ego_r.pdb
+00A87700	?Process@CSBCAgents@@UAE_NPBVCSteeringAgent@@@Z	chunk Q16 (landing db): Ego_r.pdb
+0095B820	?Spawn@CAIStateGroup_HoverHornetQueen@@IAEXXZ	chunk Q16 (landing db): Ego_r.pdb

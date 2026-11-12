@@ -5,6 +5,7 @@ class CThing;
 class CThingCreatureBase;
 class CTCSoundPlayer;
 class CBaseObject { public: virtual ~CBaseObject() {} };
+enum ETCInterfaceType { };                  // CTCBase interface type (values unused here)
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     CBaseObject* GetPItem() const;
@@ -77,7 +78,7 @@ class CThing : public CBaseObject { public:
         if (first==last || interfaceType<first->Type) first=last;
         return (CTCSoundPlayer*)first->Component;
     }
-    void RemoveTC(unsigned long); // 0x004C9840
+    void RemoveTC(ETCInterfaceType type); // 0x004C9840 ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z (Ego_r/FableWin)
 };
 struct CEffect : CThing {};
 class CCreatureActionBase { public: virtual ~CCreatureActionBase() {} };
@@ -107,7 +108,7 @@ struct CModeStandBase {
     CVector<CIntelligentPointer<CThing> > HitThings; // +a8
     unsigned char _padB4[0x10];
     long LoopingSound; // +c4
-    void OnDeactivate(); // CModeStandBase::OnDeactivate, 0x00861D00
+    virtual void OnDeactivate(); // CModeStandBase::OnDeactivate, 0x00861D00 ?OnDeactivate@CModeStandBase@@UAEXXZ (Ego_r/FableWin; vtable 0x01276D8C slot 6)
 };
 struct CModeThunderLightningStorm : CModeStandBase {
     void OnDeactivate();
@@ -146,7 +147,7 @@ void CModeThunderLightningStorm::OnDeactivate()
     KillLive(PHandGlow);
 
     if (ParentThing->HasTC(0xee))
-        ParentThing->RemoveTC(0xee);
+        ParentThing->RemoveTC((ETCInterfaceType)0xee);
 
     long sound=LoopingSound;
     if (sound != g_InvalidSoundHandle_0129D25C) {

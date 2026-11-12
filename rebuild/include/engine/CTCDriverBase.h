@@ -15,6 +15,15 @@ public:
  virtual void CreateAdditionalTCs();
  virtual ~CTCDriverBase();
  CTCDriverBase& operator=(const CTCDriverBase&);
+#ifdef FABLE_RETAIL_CTCDRIVERBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsDriver() const;  // slot 24, 0x004D3F28
+public:
+    virtual void CreateAdditionalTCs();  // slot 29, 0x004D3F2B
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDriverBase)==12);
 #else
@@ -32,6 +41,15 @@ public: CTCDriverBase(CThing&);
     // CTCDNavigationSeed 0x004D4222 `cmp [esp+4],15h ; sete al`); the rough-area TCD scans call it (0x00518900 `push 19h ; call [edx+70h]`).
 public:
     virtual bool IsDriverType(long type) const;                          // slot 28 (+0x70)
+#endif
+#ifdef FABLE_RETAIL_CTCDRIVERBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsDriver() const;  // slot 24, 0x004D3F28
+public:
+    virtual void CreateAdditionalTCs();  // slot 29, 0x004D3F2B
+public:
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDriverBase)==0xc);

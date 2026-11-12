@@ -8,6 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_SEEKSCRIPTTARGET
+// Retail opt-in (chunk Q17, row 0x0093C030 CAIStateGroup_SeekScriptTarget::Update): the polymorphic retail class over CAIStateGroupBase
+// (RTTI .?AVCAIStateGroup_SeekScriptTarget@@ : CAIStateGroupBase; Ego_r.pdb member PEnemy +0x14, sizeof 0x1C). Ego_r.pdb names:
+// ?Update@CAIStateGroup_SeekScriptTarget@@UAEXXZ (public virtual, slot 12) and ?IsStillRunnable@CAIStateGroup_SeekScriptTarget@@ABE_NXZ
+// (private const, out of line at 0x0093BFA0). Needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS and FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CAIStateGroup_SeekScriptTarget : public CAIStateGroupBase {
+public:
+    virtual void Update();                                               // slot 12 0x0093C030
+private:
+    bool IsStillRunnable() const;                                        // 0x0093BFA0
+    CIntelligentPointer<CThing> PEnemy;                                  // +0x14
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekScriptTarget) == 0x1c);
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_SeekScriptTarget {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -23,4 +41,5 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekScriptTarget) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SeekScriptTarget, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SeekScriptTarget, PEnemy) == 0x14);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_SEEKSCRIPTTARGET
 #endif // FABLE_ENGINE_CAISTATEGROUP_SEEKSCRIPTTARGET_H

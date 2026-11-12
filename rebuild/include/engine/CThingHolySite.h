@@ -34,6 +34,13 @@ public:
     virtual bool SerialiseGameState(CPersistContext& context);           // 0x0083BB40 ?SerialiseGameState@CThingHolySite@@UAE_NAAVCPersistContext@@@Z
     virtual bool ConstructFromLevelScript(const char* script);           // 0x0083BBA0 ?ConstructFromLevelScript@CThingHolySite@@UAE_NPBD@Z
 #endif
+#ifdef FABLE_RETAIL_CTHINGHOLYSITE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x00529AA0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingHolySite)==0xd8);
 #endif

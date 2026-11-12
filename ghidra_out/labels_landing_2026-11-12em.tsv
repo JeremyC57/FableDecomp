@@ -1,0 +1,12 @@
+address	name	evidence
+004B3CE0	?ActivateQuests@CQuestManager@@AAEXABV?$CArray@VCActivateQuestInfo@CQuestManager@@@@@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+00A90040	?ConvertToVBFormatBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1Bump@@AAVCDeviceIndependent@2@@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+0064546F	?DrawEffectAtPos@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVC2DCoordI@@JJ@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+008565E0	??RCThingFilter_CombatIsStrikeToStrike@?A0x	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+00AC8AE0	?JoinAdjacentFaces@COptimisedPrimitive@QuadricOptimiserInternals@@AAE_NKK@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+008F10B0	?ShuffleCards@CTCTavernGameCardBase@@UAEXXZ	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+00ADDBE0	?BuildFromSubSpheres@C3DBoundingSphere@@QAEXPBV1@J@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+0065A41C	?GetFineAmountForCurrentCrimes@CTCVillage@@QAEJXZ	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+0065AA6F	?IsTimeToGoToTavern@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_NM@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+00BBCC70	?SetupPixelShader@CEnginePrimitiveManagerParticleGroup@@QAEXKABVCPixelShader@@0@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs
+007B8B10	?GetEatingPoint@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z	workflow wf4 (landing em): RELOCATION_MATCH, two PDBs

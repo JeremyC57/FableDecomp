@@ -12,6 +12,12 @@ class CCharString;
 class CFontBank;
 class CFontManager {
 public:
+#ifdef FABLE_RETAIL_CFONTMANAGER_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x009A6C10 CCountedPointer<CFontManager>::DeleteData): the class is polymorphic
+    // (RTTI vtable of the ctor 0x009E2E30) and vtable slot 0 is its scalar deleting destructor (the deleter's `push 1; call [eax]`).
+    // Declaration only; the members stay unmodelled.
+    virtual ~CFontManager();
+#endif
     CCountedPointer<CFontBank> GetFont(const CCharString& name);         // 0x009E2C80
 };
 extern CFontManager* PFontManager;                                       // 0x013B838C

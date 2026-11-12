@@ -12,6 +12,7 @@
 // Model: local, as the landed CConsole siblings (CConsole::CConsole 0x009ECD80, NGlobalConsole::Initialise 0x00419D90): no CConsole
 //   header exists and engine/CConsoleCommandBase.h is data-only (no vptr, no ctors). Layout from the landed CConsole::CConsole.
 //   EGenericVarType enumerator names are descriptive (1 long, 2 unsigned long, 5 string: the CGenericVarRef union order).
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private (mangled AAE, the landed _M_erase row's own spelling, queue land1011da); was public (QAE).
 #include <new>
 #define FABLE_RETAIL_CCHARSTRING
 #include "fable_string.h"
@@ -103,7 +104,9 @@ public:
     _Rb_tree_node<_Value>* _M_header;
     unsigned int           _M_node_count;
     _Compare               _M_key_compare;
+private:                                                  // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Rb_tree_node<_Value>* __x);           // 0x009EF6E0
+public:
     void clear()
     {
         if (_M_node_count != 0) {

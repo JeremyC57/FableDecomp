@@ -60,6 +60,12 @@ public:
     // ?StatGetTypeFlags@CThingAICreature@@SIKXZ (static fastcall, inline in retail: the type test `not eax ; test al,1Fh`, 0x00934E9D).
     static unsigned long __fastcall StatGetTypeFlags() { return 0x1f; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_ISRESPONDINGTOFOLLOWANDWAIT
+    // Retail opt-in (chunk Q26, row 0x00846DD0 CCreatureAction_PerformExpression::FinishAction): Ego_r.pdb
+    // ?IsRespondingToFollowAndWait@CThingAICreature@@QBE_NXZ (no out-of-line copy in retail: the caller tests bit 2 of +0x1C9 in place,
+    // `test byte ptr [eax+1C9h],bl` with bl = 4 at 0x0084710D). A declaration with its body only: no layout change.
+    bool IsRespondingToFollowAndWait() const { return RespondingToFollowAndWait; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_STATGETTYPE
     // Nested opt-in (chunk 853, row 0x0050A650): FableWin.pdb ?StatGetType@CThingAICreature@@SIJXZ (inline); retail
     // GetAllLeafThings<CThingAICreature> 0x00516830 scans type list 1 (`push 1 ; call PeekTypeList`). No layout change.
@@ -222,6 +228,48 @@ private:
     bool AllowedToFollowHero:1, RegionFollowingOverriddenFromScript:1, RespondingToFollowAndWait:1,
         CanBeCourted:1, CanBeMarried:1;                                  // +0x1C9 (Ego_r 0x1F9; CanBeCourted bit 3 / CanBeMarried bit 4 landed)
     unsigned char _pad_0x1ca[0xe];                                       // +0x1CA Suspenders (opaque)
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x00835900
+public:
+    virtual bool DrawIsDisplayingInformation() const;  // slot 33, 0x0082FE90
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x00835910
+protected:
+    virtual bool IsNewAttackerGreaterThreat(CThingCreatureBase const &, CThingCreatureBase const &) const;  // slot 74, 0x00830110
+public:
+    virtual bool IsControlled() const;  // slot 76, 0x00835950
+public:
+    virtual bool IsPlayerCharacter() const;  // slot 77, 0x00835940
+public:
+    virtual bool IsToUnsheatheItemsAfterCutscenes() const;  // slot 88, 0x00835930
+public:
+    virtual bool FeelsGravity() const;  // slot 91, 0x00835920
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingAICreature overrides (TLC vtable 0x0127293C slots aligned with the Xbox 360 Test
+// PDB order; Ego_r.pdb / FableWin.pdb spellings). Declarations only (no layout change).
+protected:
+    virtual void OnSetInLimbo(bool);                                     // slot 14, 0x008337B0
+public:
+    virtual void SetPositionUsingBrain();                                // slot 45, 0x00830350
+    virtual unsigned long GetProperties() const;                         // slot 48, 0x00830140
+    virtual float GetMaxPushingSpeed(const C3DVector&) const;            // slot 78, 0x00830310
+    virtual float GetMaxFlyingSpeed(const C3DVector&) const;             // slot 83, 0x00830090
+    virtual float GetMaxHoverSpeedSlow(const C3DVector&) const;          // slot 84, 0x008300A0
+    virtual float GetMaxHoverSpeedMedium(const C3DVector&) const;        // slot 85, 0x008300B0
+    virtual float GetMaxHoverSpeedFast(const C3DVector&) const;          // slot 86, 0x008300C0
+    virtual float GetMaxAcceleration() const;                            // slot 87, 0x00830300
+protected:
+    virtual const class CEngineGraphic* GetCurrentGraphic() const;       // slot 90, 0x00830250
+public:
+    virtual float GetFOV() const;                                        // slot 92, 0x008302F0
+public:
+#endif // FABLE_RETAIL_CTHINGAICREATURE_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingAICreature) == 0x1d8);
 #else

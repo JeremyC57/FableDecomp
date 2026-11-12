@@ -1,0 +1,7 @@
+address	name	grade	grades_used	note
+00eb3ba0	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::AttackHero	RELOCATION_MATCH	46 (43 in Q29 + 3)	IsValid real body as an inline __declspec(noinline) member in the TU + seh_Guards[ID] written twice
+00bd2a90	CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings	RELOCATION_MATCH	16	shared headers + 3 overlays; GetMeshID temp key; FABLE_RETAIL_STLP_MAP (visible out-of-line map::operator[])
+00958b20	CAIStateGroup_MinionReactToCrime::OnReplace	RELOCATION_MATCH	4	retail class overlay; IS_THING_ALIVE + DecrementForceOpenCount; GetPOriginator<CThing> ORIGINAL; GetTC EXPANDED
+00465c54	CCombatAbilityBlockDefBase::Transfer	RELOCATION_MATCH	15	/d2inlS39 + optimize(s)/(y off); tree ctor/dtor visible but out of line (new per-TU opt-in)
+00722740	CTCSmokeGenerator::FrameUpdate	RELOCATION_MATCH	5	vector iterator loop, PeekCurrentPos const local, PeekBaseDef().GetSubDef (landed 0x00722D30 body in TU), unnamed CIntelligentPointer temp
+009fc950	CGraphicFrameData::InitialiseAsSurface	RELOCATION_MATCH	6	shared CGraphicFrameData + overlays; Width, Height, Pitch order; || of GetWidth()/GetHeight() vs texture->GetWidth(0)

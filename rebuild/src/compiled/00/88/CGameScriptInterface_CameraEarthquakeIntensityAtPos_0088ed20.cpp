@@ -1,8 +1,6 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/C3DVector.h"
 
-extern const float CGSI_Rumble_Zero;
-extern const float CGSI_Rumble_One;
 extern const float CGSI_Rumble_Hundred;
 
 extern void __fastcall CGSI_Rumble_Create(
@@ -18,17 +16,17 @@ void __fastcall CGameScriptInterface_CameraEarthquakeIntensityAtPos(
     float intensity,
     float radius)
 {
-    if (intensity < CGSI_Rumble_Zero)
+    if (intensity < 0.0f)
     {
         intensity = 0.0f;
     }
     else
     {
-        if (intensity > CGSI_Rumble_One)
+        if (intensity > 1.0f)
             intensity = 1.0f;
     }
 
-    if (radius < CGSI_Rumble_Zero)
+    if (radius < 0.0f)
     {
         radius = 0.0f;
     }

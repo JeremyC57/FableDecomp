@@ -5,7 +5,7 @@
 // Retail 0x008EC9C0, 135 bytes (`ret 4`). Ego_r.pdb `?ChangeMesh@CTCDegradableBase@@AAEXABVCEngineGraphic@@@Z`.
 // Callees: CTCGraphicAppearance::SetAsChanged(unsigned long) @ 0x004BF9E0, CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for interface 2, bit 2 of +0x20),
-// CTCPhysicsBase::CreatePPhysicsMeshInfo(const CEngineGraphic&) @ 0x006B08E0.
+// CTCPhysicsBase::SetPhysicsMeshInfoFromGraphic(const CEngineGraphic&) @ 0x006B08E0.
 // Layout: CEngineGraphic is the PDB's 14-byte record (BankIndex, AnimStep, RenderSizeX, AdditiveAlpha,
 // Type; packed to 2, so the implicit copy is three dwords and a word); retail CThing keeps its
 // graphic-appearance component at +0x64; retail CTCGraphicAppearance MainGraphic +0x44 (PDB +0x5c: the
@@ -43,7 +43,7 @@ struct CTCGraphicAppearance {
 using NGraphicAppearance::CTCGraphicAppearance;
 
 class CTCPhysicsBase { public:
-    void CreatePPhysicsMeshInfo(const CEngineGraphic& graphic);   // 0x006B08E0
+    void SetPhysicsMeshInfoFromGraphic(const CEngineGraphic& graphic);   // 0x006B08E0 ?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z (Ego_r.pdb / FableWin.pdb; NF28)
 };
 
 FABLE_FORCEINLINE CTCPhysicsBase* GetPhysics(CThing* thing)
@@ -63,5 +63,5 @@ void CTCDegradableBase::ChangeMesh(const CEngineGraphic& graphic)
 {
     ParentThing->GetTCGraphicAppearance()->MainGraphic = graphic;
     ParentThing->GetTCGraphicAppearance()->SetAsChanged(4);
-    GetPhysics(ParentThing)->CreatePPhysicsMeshInfo(graphic);
+    GetPhysics(ParentThing)->SetPhysicsMeshInfoFromGraphic(graphic);
 }

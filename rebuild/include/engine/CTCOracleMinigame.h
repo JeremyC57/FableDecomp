@@ -26,6 +26,11 @@ enum EOracleMinigameInput { };                                           // W4EO
 class CTCOracleMinigame : public CTCBase {
 public:
     virtual void FrameUpdate();                                          // slot 9 0x007E6750 ?FrameUpdate@CTCOracleMinigame@@UAEXXZ
+#ifdef FABLE_RETAIL_CTCORACLEMINIGAME_VSLOTS
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks (FABLE_RETAIL_CTCORACLEMINIGAME_CLASS branch), declaration only (no layout
+// change). Slot 8 of the TLC vtable 0x012707B4 (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+    virtual bool HasFrameUpdate() const;                                 // slot 8 0x007E7000
+#endif // FABLE_RETAIL_CTCORACLEMINIGAME_VSLOTS
     bool OutputsFiring();                                                // 0x007E5D00 ?OutputsFiring@CTCOracleMinigame@@QAE_NXZ
     void PlayGame();                                                     // 0x007E5D20
     unsigned long PlaySoundW(const CCharString&);                        // 0x007E60F0 ?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z

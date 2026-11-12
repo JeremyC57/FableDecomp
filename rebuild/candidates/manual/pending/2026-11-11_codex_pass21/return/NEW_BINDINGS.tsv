@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00db0600	?GivenTeddy@CNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@AAEXXZ	Both original PDB name sets; retail caller and landed neighbour body	
+0x00ed7580	?SuspendableProcess@?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@UAEXXZ	FableWin exact name; retail vtable012F3374 slot4 and body member pointer+34 owner+38 argument+3C	
+0x012dd860	??_7?$CSpawnedFunc1@VCQ_RansomVictimScript@NScript@@VCScriptThing@@@@6B@	Both original ctor names and full class types; native Main constructor stores+CheckVictimHit argument; native/donor slot4 process and field layout; SPAWN_VTABLE_AUDIT.json	
+0x012e2b00	??_7?$CSpawnedFunc1@VCV_AmbushScamScript@NScript@@VCScriptThing@@@@6B@	Both original constructor/type names; donor ctor03B1F4D0 table04607014, native/donor slot4 process with original Func/PClass/Par1 and StopRunning; canonical existing binding reaffirmed	
+0x012f3374	??_7?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@6B@	Both original PDB ctor types; native constructor stores at00ED6A85; slot4 actual member dispatcher00ED7580	

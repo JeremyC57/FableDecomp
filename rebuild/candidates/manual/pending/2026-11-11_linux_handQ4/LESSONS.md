@@ -1,0 +1,12 @@
+# Chunk Q4 lessons (GOTCHAS-ready; none produced a full match yet, each moved the measured diff)
+- `continue` for an early per-iteration failure makes VC7.1 emit its own destructor copy and jump to the latch (0x007CD162, CTCMultiStrike::ApplyEffectOnWeapon); an if/else nest shares one.
+- `for (long i = 0, point = 0; i < n; ++i, point += 2)` indexing `a[point]` / `a[point + 1]` gives retail's LFTR down-counter plus an i*8 induction variable (0x007CD335).
+- Zero-initialised locals are stored in declaration order: declare `long shortEffect = 0, longEffect = 0;` before the CDefPointer to get retail's store order (0x007CCF50).
+- Declaring both CTCDParticleEmitter* drivers before the GetTC calls gives the `test ch,8` mask test of the expanded GetTC (0x007CCF50).
+- A named `CIntelligentPointer<CThing> p(x); vec.push_back(p);` gives `lea / push`; a temporary in the call gives a different frame (0x007CCF50).
+- `C2DVector shadow; shadow = a + b;` (assignment, not initialisation) goes through temporaries and gives retail's 0x7C frame (0x00497FD0).
+- A class whose only destructor is implicit calls the base dtor directly; an inline empty `virtual ~T(){}` emits a vptr reset first (CWStringParser in 0x00497FD0).
+- A string literal bound to a `const CCharString&` parameter builds the temporary before the other args are pushed; an explicit `CCharString("x")` argument is built in push order (0x0078C900 AddTC).
+- `IS_THING_ALIVE(ptr)` with FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT reproduces retail's double GetPItem (0x0078CB84 / 0x0078CB8F, BerserkBodyEffect).
+- `if (GetSubDef(&d) && d->GetEffectFromString("lit", e))` is what makes VC7.1 emit the conditional-temporary flag word (bits 1/2/4) retail has at 0x0078CA0B; its register/memory home is still open (see differ/0078c900.cpp).
+- Measuring: c2prio.py priorities explain which local wins a callee-saved register; when retail homes a value in memory that ours splits across scratch regs (CHeightMap::Resize sizeX+1, 0x008F61A0), the fix is liveness, not order.

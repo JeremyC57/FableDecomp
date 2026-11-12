@@ -83,7 +83,8 @@ class CTavernGameDef : public CDefVirtual { public:
     CPrizeScoreDef* PrizeScores;             // +0x174 (vector _M_start)
     void Release() { if (--m_count == 0) Destroy(); }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->Release(); }
@@ -104,7 +105,7 @@ class CTCTavernGame { public:
     long          NumConsecutiveRoundsWon;   // +0xa4
     bool UpdateValues();                     // 0x005EA010
     void GetHeroStats(CTCHeroStats** stats); // 0x005EB4B0
-    void GetDef(CDefPointer* out);           // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);           // 0x005EA000
     void GivePrize();                        // 0x005EB590
 };
 struct CTCTavernGameShoveHaPenny : CTCTavernGame {
@@ -116,7 +117,7 @@ bool CTCTavernGameShoveHaPenny::UpdateValues()
     bool result = CTCTavernGame::UpdateValues();
     CTCHeroStats* stats = 0;
     GetHeroStats(&stats);
-    CDefPointer def;
+    CDefPointer<const CTavernGameDef> def;
     GetDef(&def);
     if (GameWon) {
         if (!stats->PrizeGivenShoveHaPenny && Score >= def->PrizeScores[0].Score) {

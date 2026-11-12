@@ -18,10 +18,9 @@ class CThing;
 
 #include "engine/C3DVector.h"
 
-class CMessageEvent;
-class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 takes the EMessageEventType enum (Ego_r.pdb / FableWin.pdb
+//   ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z); shared header.
+#include "engine/CMessageEventManager.h"
 
 class CWorld { public:
     unsigned char         _pad_0x00[0x60];
@@ -35,6 +34,6 @@ class CQuestManager : public CQuestManagerDonor {
 
 bool CQuestManager::ActivateFeat(long featIndex)
 {
-    World->PMessageEventManager->AddMessage(0x38, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, featIndex);
+    World->PMessageEventManager->AddMessage(MESSAGE_EVENT_FEAT_ACCEPTED, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, featIndex);
     return true;
 }

@@ -10,7 +10,7 @@ class C3DVector { public: float X, Y, Z; };
 class CThingCreatureBase { public:
     u64 UID;
     int combatant;
-    bool IsRegisteredCombatant() { return combatant != 0; }
+    bool IsInMeleeAsAttacker() const { return combatant != 0; }
 };
 static long g_frame;
 static int g_prefCalls, g_unreachable;
@@ -53,7 +53,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
         do {
             if (IsEnemyCreatureInCombatPosition())
                 return true;
-            if (!PBrain->PCreature->IsRegisteredCombatant())
+            if (!PBrain->PCreature->IsInMeleeAsAttacker())
                 return false;
             CThingCreatureBase* me = PBrain->PCreature;
             u64 uid = me->UID;
@@ -65,7 +65,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
             }
             long result = AIAction_MoveToPosProximity(2, pos, 0.5f, &arrived, 5, true, false, true, PEnemy.GetPItem(), false, 0.0f);
             if (result == 3) {
-                if (PBrain->PCreature->IsRegisteredCombatant()) {
+                if (PBrain->PCreature->IsInMeleeAsAttacker()) {
                     CThingCreatureBase* self = PBrain->PCreature;
                     CWorld* w = GetPWorld();
                     w->CombatManager->OnCombatPositionUnreachable(self);

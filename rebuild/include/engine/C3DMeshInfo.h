@@ -14,6 +14,9 @@ class C3DMeshStats;
 #include "engine/C3DBoundingSphere.h"
 #include "engine/CIVCountedPointer.h"
 #endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_LOADSTATS
+class C3DAnimationManager;
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_GETMESH
 #include "engine/CCountedPointer.h"
 class C3DMesh2;
@@ -21,8 +24,31 @@ class CGraphicDataBank;
 #endif
 class C3DMeshInfo : public CMeshDataBankEntry {
 public:
+#ifdef FABLE_RETAIL_C3DMESHINFO_ISLOADED
+    // Chunk Q28 (row 0x004BE3E0 CTCGraphicAppearance::IsResourcesLoaded): Ego_r.pdb ?IsLoaded@C3DMeshInfo@@QBE_NXZ (retail 0x00A23E40)
+    // and ?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z (retail 0x00A256F0), both out of line. Declarations only: no layout change.
+    bool IsLoaded() const;                                               // 0x00A23E40
+    void BeginLoading(unsigned long priority, bool wait, bool load_textures) const;   // 0x00A256F0
+#endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_PHYSICSMESH
+    // Chunk Q28 (row 0x006B05A0 CTCPhysicsBase::CreatePPhysicsMeshInfo): Ego_r.pdb ?HasPhysicsMesh@C3DMeshInfo@@QBE_NXZ (retail
+    // 0x00A23C40) and ?PeekPhysicsMesh@C3DMeshInfo@@QBEPBVCPhysicsMeshInfo@@XZ (retail 0x00A24A70), both out of line.
+    // Declarations only: no layout change.
+    bool HasPhysicsMesh() const;                                         // 0x00A23C40
+    const class CPhysicsMeshInfo* PeekPhysicsMesh() const;               // 0x00A24A70
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_GETMESHSTATS
     CCountedPointer<const C3DMeshStats> GetMeshStats()const;
+#endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_LOADSTATS
+    // Retail opt-in (chunk Q21, row 0x00B39080 CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh): Ego_r.pdb
+    // ?IsLoadedStats@C3DMeshInfo@@QBE_NXZ (retail 0x00A23E80) and ?BeginLoadingStats@C3DMeshInfo@@QBEX_N@Z (retail 0x00A24A80), both
+    // out of line; FableWin.pdb ?GetAnimationManager@C3DMeshInfo@@QBEAAVC3DAnimationManager@@XZ (0x02D86EB0; no Ego_r.pdb or retail
+    // copy: the caller reads Bank +0x04 then the bank's AnimationManager +0x3C0 in place, 0x00B39111..0x00B39117). Needs
+    // FABLE_RETAIL_CMESHDATABANK_GETANIMATIONMANAGER. Declarations and an inline body only: no layout change.
+    bool IsLoadedStats() const;                                          // 0x00A23E80
+    void BeginLoadingStats(bool high_priority) const;                    // 0x00A24A80
+    C3DAnimationManager& GetAnimationManager() const { return PeekBank()->GetAnimationManager(); }
 #endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_GETMESH
     // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb

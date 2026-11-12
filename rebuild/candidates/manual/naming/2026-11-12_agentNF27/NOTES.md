@@ -1,0 +1,30 @@
+# agentNF27 notes (2026-11-12)
+
+- All 57 changed rows grade MATCH or RELOCATION_MATCH with FABLE_HDR_OVERLAY=$W/hdr and pass their tests (STATUS.tsv). No claim was rejected.
+- Before landing, re-check against the repo: every row source was unchanged at hand-back time. engine/CPhysicsMeshObject.h was re-based onto Q23's FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVIGATION copy, and the three rows were re-graded.
+- RELOC_CONFLICT: the PDB name sets have only CCountedPointer<CModeSitBase> and <CModeSitFloor>, and Reset only for CModeSitBase.
+  - 0x00938070 (Reset) and 0x0094B3A0 store DeleteData 0x00938060.
+  - 0x0090F830 stores 0x008AA810 next to the CModeSitFloor vtable 0x01267BBC.
+  - FableWin has the converting ctor CCountedPointer<CModeSitBase>(const CCountedPointer<CModeSitFloor>&), which 0x0093B1D0 now uses.
+  - Result: 0x0094B3A0 / 0x008AB320 are the CModeSitBase ctor/dtor and 0x008AB380 / 0x008AB3D0 the CModeSitFloor ones.
+- Name fixes found but not applied (outside the entries, or BUSY):
+  - 0x004887C0 is ?SetupInitialPlayerMode@CPlayer@@AAEXXZ and 0x00636E50 is ?InitModes@CPlayer@@AAEXXZ (both PDBs; private). Both rows still define them on a CPlayer_Methods carrier; only their callees were respelled.
+  - 0x00487FB0 is also defined on CPlayer_Methods.
+  - The leftover CPlayer_Methods carriers need a FABLE_RETAIL_PLAYER opt-in declaring the private members to rename them.
+- Binders of 0x0040D2A0 CUserProfileManager::Get not respelled (they were not in the entries; first callers from reloc_bindings): 0x005BC6ED, 0x0088E090, 0x00581B33, 0x0071D3B0, 0x00555CF0, 0x0049D4B0.
+  - Global 0x013B7D4C is still spelled through the CCountedPointerStatic stand-ins at 0x00406DF0 / 0x012288D0.
+  - The 0x013CAA28 (CTBaseSingletonNoDefaultAlloc<CDriveManager>::PClass) spellings in 0x009A60D0, 0x00407040 and 0x00406E30 are still stand-ins.
+- 0x009A6610 keeps the CPSound / CPProfile wrappers. Their pointee types are not proven by two sources.
+- 0x007624E0 is now CTCShapeManager::GetInstantiationFromEnum.
+  - Its callees CBasicShape 0x00762440 / CTrack 0x00761F40 ctor rows still carry the old stand-in names (??0CBasicShape@NShape@@QAE@PAUCShapeManager@1@...).
+  - The two shape classes stay local models in the row (no shared header).
+  - EShape enumerator names SHAPE_BASIC / SHAPE_TRACK are descriptive.
+- 0x00B3B240 (binder of Reset<CMovableResourceMemoryPool> 0x00B3E4A0) is left. Its CMemoryPool stand-in is CMovableResourceMemoryPool, but its other callees (ctor 0x00A62E20, Initialise 0x00A02570) are stand-ins as well, so the row needs a class pass.
+- 0x00453210 (catalog CTCCameraPointScripted::GetLookDirection) binds the fill ctor 0x004516E7 as ?GetLookDirHelper@@YGXPAVC3DVector@@PAVCRightHandedSet@@PAE@Z. Left as is.
+  - The bytes are a `ret 8` thiscall wrapper: `vector<float>(n, val, allocator())` on `this`, with the allocator temporary in the high byte of the value argument slot. It has no callers.
+  - FableWin ??0?$CArray@M@@QAE@IABM@Z (CArray<float>(unsigned, const float&)) fits, but COMDAT folding hides T (any 4-byte POD gives the same bytes), and Ego_r has no such name. The self identity is unproven, so its callee cannot be respelled honestly.
+- 0x004516E7 is a size-optimised local STLport model, the same shape as the landed 0x00477428.
+  - Its callee names are the float instantiations (_Vector_base<float> 0x00450E3A, fill_n<float*,unsigned,float> 0x0043E060). Retail folded them with the void* / unsigned long instantiations landed under those names, so RELOC_NAME warnings are expected.
+- 0x0050EEF0's second retail caller 0x00823738 is not a landed row.
+- 0x0088DF80 needs the named local `CPlayer& player = PlayerManager->GetMainPlayer();`. The chained call schedules the AddMode pushes before GetMainPlayer (DIFFER).
+- NParticleEngine emitter-list stand-ins (0x00AEB990 family) were not touched.

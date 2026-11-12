@@ -78,7 +78,7 @@ class CMessageEvent { public:
 class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) {}
-    bool operator()(CMessageEvent* event) const;    // 0x006AF1C0
+    bool operator()(const CMessageEvent& event) const;    // 0x006AF1C0 Ego_r/FableWin ??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
 };
 struct SMessageNode {                               // list node: next, prev, then the event at +8
     SMessageNode* m_pNext;
@@ -93,7 +93,7 @@ class CMessageEventManager { public:
     {
         for (SMessageNode* node = m_pHead->m_pNext; node != m_pHead; node = node->m_pNext) {
             CMessageEvent* event = node->GetEvent();
-            if (filter(event))
+            if (filter(*event))
                 return event;
         }
         return 0;

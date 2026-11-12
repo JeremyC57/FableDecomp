@@ -21,8 +21,11 @@ class CActionParam;
 #include "engine/CCountedPointer.h"
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
-void __fastcall DestroyRange(CCountedPointer<NUISystem::CAction>* first, CCountedPointer<NUISystem::CAction>* last,
-                             const SNonscalarPtrIteratorTag& tag);   // 0x0054A1C0
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x0054A1C0 (std::__destroy_aux<T*>)
+}
 
 struct CActionVector {                             // vector<CCountedPointer<NUISystem::CAction>>
     CCountedPointer<NUISystem::CAction>* _M_start;
@@ -30,7 +33,7 @@ struct CActionVector {                             // vector<CCountedPointer<NUI
     CCountedPointer<NUISystem::CAction>* _M_end_of_storage;
     ~CActionVector()
     {
-        DestroyRange(_M_start, _M_finish, SNonscalarPtrIteratorTag());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }

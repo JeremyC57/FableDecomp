@@ -13,11 +13,8 @@ class CEngineLandscapeMemoryManager {
 public:
     void FreeVirtual(void* block);                       // 0x00BD9B90
 };
-struct SEngine_01436ea8 {
-    unsigned char _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6B0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;              // 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 class CMovableResource {                                 // vtable 0x0129B860
 public:
     CMovableResource();
@@ -29,7 +26,7 @@ class CObjectTypeCollection : public CMovableResource {
 public:
     CObjectTypeCollection() { }                                          // model device: emits the vtable (and ??_G) in this file
     virtual ~CObjectTypeCollection();                                    // 0x00BDDDA0
-    static void __fastcall operator delete(void* block) { g_pEngine_01436ea8->m_pLandscapeMemory->FreeVirtual(block); }
+    static void __fastcall operator delete(void* block) { g_pLandscapeRenderer->MemoryManager->FreeVirtual(block); }
 };
 };
 inline void* operator new(unsigned int, void* where) { return where; }

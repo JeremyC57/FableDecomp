@@ -1,0 +1,28 @@
+address	name	evidence
+00CBE0C0	?SetDSTGame@@YIXAAVCGameScriptInterfaceBase@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb; binds pDSTGame 0x0143E8F8 (entry 103)
+0121EBA0	??__EST_HEAD_TURN_H@@YAXXZ	agentNF22 (landing cx): anniv360.pdb ?ST_HEAD_TURN_H@@3VCCharString@@B (const; queue said @@A); dynamic initializer of 0x013BACE4
+0121EBC0	??__EST_HEAD_TURN_V@@YAXXZ	agentNF22 (landing cx): anniv360.pdb ?ST_HEAD_TURN_V@@3VCCharString@@B; dynamic initializer of 0x013BACE8
+008386E0	?SetCreator@CThingNoise@@QAEXABVCThing@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?SetCreator@CThingNoise@@QAEXABVCThing@@@Z; forwards to CTCNoise::SetCreator; queue entry 51; callee 0x00749880
+00A1DE30	?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z; queue entry 68
+00780410	?SetOnFire@CTCFlammable@@QAEXXZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb; queue entry 38; body walks FirePoints (+0x10) and Resistance
+00AF3D80	?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ; queue entry 72
+004C78A0	?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ECutsceneBehaviour parameter; queue entry 15
+0071AAB0	?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb nested CTCEmoteIcon::EEmotePriority parameter; queue entry 32
+00AF8F80	?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAM@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb (namespace, float&, const); queue entry 73
+00A471D0	?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@IBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb protected (IBE); queue entry 70
+00811830	??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb EHeroAbility parameter; queue entry 50
+00DB0600	?GivenTeddy@CNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@AAEXXZ	agentNF22 (landing cx): Ego_r.pdb private GivenTeddy; queue entry 107; body takes OBJECT_TEDDY_BEAR_UNGIVEABLE, sets TeddySolution "B"
+004ACB50	??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ??$GetTCDriver@VCTCDParticleEmitter@@@CThing; body tests bit 75 = TCI_PARTICLE_EMITTER (entry 12)
+007512C0	??$GetTCDriver@VCTCDExplosion@@@CThing@@QAE_NPAPAVCTCDExplosion@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ??$GetTCDriver@VCTCDExplosion@@@CThing; body tests bit 65 = TCI_EXPLOSION (entry 34)
+00633BE0	?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ; body PlayerModes.back() (entry 22)
+004874D0	?IsFirstPersonTargeting@CPlayer@@QBE_NXZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ; calls GetCurrentMode (entry 6)
+006EA430	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (entry 31)
+0099E4C0	??BCCharString@@QBEPBDXZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ??BCCharString@@QBEPBDXZ (entry 55)
+0099EFB0	??4CCharString@@QAEABV0@ABV0@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ??4CCharString@@QAEABV0@ABV0@@Z (entry 59)
+00445B80	?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ (entry 4); reads CControlsDef::ToggleZTarget +0x48
+004CC340	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YA_NABV?$CIntelligentPointer@VCThing@@@@@Z (entry 21)
+007E7450	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb virtual (UBE) (entry 45)
+007E7490	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb (entry 46)
+007E72F0	?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb (const C3DVector&, float, EScriptEntityMoveType, bool, bool) (entry 44)
+00ED7580	?SuspendableProcess@?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@UAEXXZ	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb; vtable 0x012F3374 slot 4 (entries 108/111)
+00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	agentNF22 (landing cx): Ego_r.pdb / FableWin.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z (protected static fastcall, entry 2)

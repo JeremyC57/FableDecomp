@@ -143,6 +143,23 @@ public:
   FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,SerialisedTeleporterUIDs)==0x200);
   FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,RegionsCorrespondances)==0x24c);
  }
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00619F40
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_HISCREEN
+// agentFAM13 (2026-11-12): the NHeroInformationScreens::CBase overrides this declaration lacks (the secondary vtable at +0x130,
+// slots 0 GetScreenName / 1 GetPlayerMode / 2 GetScreenType / 3 IsInventoryScreen, engine/NHeroInformationScreens_CBase.h);
+// spellings from the Ego_r / FableWin name sets. Declaration only (no layout change; the vtable exists).
+public:
+    virtual CWideString GetScreenName() const;
+    virtual EPlayerMode GetPlayerMode() const;
+    virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+    virtual bool IsInventoryScreen() const;
+#endif // FABLE_RETAIL_CTCINVENTORYMAP_HISCREEN
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap)==0x258);
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryMap::CUIMiniMapMarker)==28);

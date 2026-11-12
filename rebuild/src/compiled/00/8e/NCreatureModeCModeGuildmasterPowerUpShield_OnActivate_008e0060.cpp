@@ -53,6 +53,7 @@ template<class T> class CDefPointer { public:
 };
 class CDefinitionManager { public:
     CDefPointer<CSpecialEffectsDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10
+    long GetDefGlobalIndexFromName(const CCharString& name) const;      // 0x009AD410 (Ego_r + FableWin: CDefinitionManager, const)
 };
 class CDefClassBase { public:
     virtual void v00(); virtual void Destroy(); virtual void v08(); virtual void v0c(); virtual void v10();
@@ -126,9 +127,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
-class CGameDefinitionManager { public:
+class CGameDefinitionManager : public CDefinitionManager { public:   // RTTI: CGameDefinitionManager : CDefinitionManager
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
@@ -187,7 +187,7 @@ class CWorld { public:
     unsigned long* GetWorldSeed() const;                   // 0x0049D810
 };
 class CTCHealLife { public:
-    void SetState(long state);                        // 0x007C3EA0
+    void SetAICast(long spellLevel);                  // 0x007C3EA0 ?SetAICast@CTCHealLife@@QAEXJ@Z (Ego_r.pdb / FableWin.pdb; NF28: was SetState)
 };
 
 

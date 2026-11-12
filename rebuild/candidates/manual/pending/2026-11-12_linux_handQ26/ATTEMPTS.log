@@ -1,0 +1,33 @@
+07:38 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- port to shared headers
+07:38 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- start local, start+mem
+07:39 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- j declared before i loop
+07:39 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- i declared at function top
+07:39 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- integer add start+mem
+07:40 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- real GlyphBank/CStreamingGlyph types
+07:40 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- no length/data locals, GlyphBanks[i] reused
+07:40 009a3c20 009a3c20.cpp CStreamingFontBank::CStreamingFontBank DIFFER(1298v1298)   -- header declared first in body
+07:41 00b1a870 00b1a870.cpp CPSCLight::DatabaseSerialise SRC_FAIL   -- port to shared headers
+07:42 00b1a870 00b1a870.cpp CPSCLight::DatabaseSerialise SRC_FAIL   -- port to shared headers
+07:42 00b1a870 00b1a870.cpp CPSCLight::DatabaseSerialise SRC_FAIL   -- port to shared headers (+DEF_CLASS_BASE)
+07:42 00b1a870 00b1a870.cpp CPSCLight::DatabaseSerialise DIFFER(1283v1310)   -- port: offset asserts
+07:42 00b1a870 00b1a870.cpp CPSCLight::DatabaseSerialise DIFFER(1310v1310)   -- GETCRC_INLINE
+07:43 00b1a870 00b1a870.cpp CPSCLight::DatabaseSerialise DIFFER(1321v1310)  /Oa -- flag /Oa
+07:43 00b1a870 00b1a870.cpp CPSCLight::DatabaseSerialise DIFFER(1310v1310)   -- v != false write-back
+07:44 0090e5d0 0090e5d0.cpp CAIStateGroup_BanditGossip::?Update@CAIStateGroup_BanditGossip@@MAEXXZ DIFFER(1367v1367)   -- baseline draft
+07:44 00d39960 00d39960.cpp NScript::CQ_FireHeartScript::StartRound DIFFER(1774v1774)   -- baseline draft
+07:45 00d39960 00d39960.cpp NScript::CQ_FireHeartScript::StartRound DIFFER(1774v1774)   -- if(!T){X;return;} return;
+07:46 00d39960 00d39960.cpp NScript::CQ_FireHeartScript::StartRound DIFFER(1774v1774)   -- if(!T) X else return
+07:46 00d39960 00d39960.cpp NScript::CQ_FireHeartScript::StartRound DIFFER(1774v1774)   -- if(!T) X
+07:46 00eb40c0 00eb40c0.cpp CMurderTwistAssassin::DoWatchingForTrouble DIFFER(1601v1601)   -- baseline draft
+07:49 00846dd0 00846dd0.cpp CCreatureAction_PerformExpression::CCreatureAction_PerformExpression::FinishAction SRC_FAIL   -- port onto Q25 sibling framework
+07:50 00846dd0 00846dd0.cpp CCreatureAction_PerformExpression::CCreatureAction_PerformExpression::FinishAction SRC_FAIL   -- port: GetInstantiationName, IsRespondingToFollowAndWait
+07:50 00846dd0 00846dd0.cpp CCreatureAction_PerformExpression::CCreatureAction_PerformExpression::FinishAction SRC_FAIL   -- port: +list size, CDefString ==
+07:50 00846dd0 00846dd0.cpp CCreatureAction_PerformExpression::CCreatureAction_PerformExpression::FinishAction DIFFER(1659v1685)   -- port: defines first
+07:51 00846dd0 00846dd0.cpp CCreatureAction_PerformExpression::CCreatureAction_PerformExpression::FinishAction RELOCATION_MATCH   -- event members; else-arm temp Set/Get
+07:51 00a8ad40 00a8ad40.cpp C3DMesh2::LoadBinary DIFFER(1621v1621)   -- baseline draft
+07:51 00a8ad40 00a8ad40.cpp C3DMesh2::LoadBinary DIFFER(1605v1621)   -- ushort count locals
+07:52 00a8ad40 00a8ad40.cpp C3DMesh2::LoadBinary DIFFER(1603v1621)   -- primSize computed before mainSize
+07:52 006ec850 006ec850.cpp CCombatWheel::CCombatWheel::PopulateCombatRings DIFFER(1606v1606)   -- baseline draft
+07:52 006ec850 006ec850.cpp CCombatWheel::CCombatWheel::PopulateCombatRings DIFFER(1606v1606)   -- named insert results in blocks
+07:53 0090e5d0 0090e5d0.cpp CAIStateGroup_BanditGossip::?Update@CAIStateGroup_BanditGossip@@MAEXXZ DIFFER(1355v1367)   -- query as Bind3-style temporaries
+07:54 00846dd0 00846dd0.cpp CCreatureAction_PerformExpression::CCreatureAction_PerformExpression::FinishAction RELOCATION_MATCH   -- final regrade, LANDVERIFY_STRICT_HEADERS=1

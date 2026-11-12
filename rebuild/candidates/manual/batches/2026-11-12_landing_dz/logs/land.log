@@ -1,0 +1,11 @@
+addr       parity           behav  name
+007cc710   RELOCATION_MATCH PASS   ReleaseShot
+009d6350   RELOCATION_MATCH PASS   Abort
+
+WINS: 2
+  007cc710 RELOCATION_MATCH CTCMultiArrow::ReleaseShot
+  009d6350 RELOCATION_MATCH CBankFileAsyncData::Abort
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCMultiArrow_ReleaseShot_007cc710
+  CBankFileAsyncData_Abort_009d6350

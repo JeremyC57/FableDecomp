@@ -17,6 +17,13 @@
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
 #include "engine/C2DVector.h"
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+#include "engine/C2DVector.h"
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+// Retail opt-in (row 0x0064546F CDrawQuickAccessIcons::DrawEffectAtPos): QuickAccessEffectOffset typed as its Ego_r.pdb type C2DVector at retail +0x6F0.
+#include "engine/C2DVector.h"
+#endif
 #include "rebuild_abi.h"
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
 #include "stlport/fable_containers.h"
@@ -489,8 +496,12 @@ public:
     long             QuickAccessLampEffect;                  // +0x6e4
     long             QuickAccessGuildSealEffect;             // +0x6e8
     long             QuickAccessMainGuildSealEffect;         // +0x6ec
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+    C2DVector        QuickAccessEffectOffset;                // +0x6f0 (row 0x0064546F opt-in)
+#else
     float            QuickAccessEffectOffset_X;              // +0x6f0 C2DVector::X
     float            QuickAccessEffectOffset_Y;              // +0x6f4 C2DVector::Y
+#endif
     float            QuickAccessAbilityCrossOffset_X;        // +0x6f8 C2DVector::X
     float            QuickAccessAbilityCrossOffset_Y;        // +0x6fc C2DVector::Y
     long             HotBarSingleGraphic;                    // +0x700
@@ -521,11 +532,19 @@ public:
     long             AbilityButtonSheatheMaceGraphic;        // +0x77c
     long             AbilityButtonSheatheStickGraphic;       // +0x780
     long             AbilityButtonSheatheSwordGraphic;       // +0x784
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+    // Retail opt-in (wf3, row 0x00646580 NPlayerGui::CDrawMeleeActionButtonEffects::Draw): Ego_r.pdb types both members C2DVector; the row
+    // passes def+0x788 whole to GFAnchorToBottomRight (`lea edx,[edi+788h]`) and adds def+0x794 with C2DVector::operator+. Same layout.
+    C2DVector        AbilityButtonFlourishEffectPos;         // +0x788
+    long             AbilityButtonFlourishGraphic;           // +0x790
+    C2DVector        AbilityButtonFlourishGraphicOffset;     // +0x794
+#else
     float            AbilityButtonFlourishEffectPos_X;       // +0x788 C2DVector::X
     float            AbilityButtonFlourishEffectPos_Y;       // +0x78c C2DVector::Y
     long             AbilityButtonFlourishGraphic;           // +0x790
     float            AbilityButtonFlourishGraphicOffset_X;   // +0x794 C2DVector::X
     float            AbilityButtonFlourishGraphicOffset_Y;   // +0x798 C2DVector::Y
+#endif
     long             ABXYButtonMiddleGraphic;                // +0x79c
     float            ABXYAbilityLevelInitialOffset_X;        // +0x7a0 C2DVector::X
     float            ABXYAbilityLevelInitialOffset_Y;        // +0x7a4 C2DVector::Y
@@ -1143,8 +1162,12 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMenuGraphic) == 0x6e0);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessLampEffect) == 0x6e4);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessGuildSealEffect) == 0x6e8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessMainGuildSealEffect) == 0x6ec);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUICKACCESSEFFECTOFFSET
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset) == 0x6f0);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset_X) == 0x6f0);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessEffectOffset_Y) == 0x6f4);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessAbilityCrossOffset_X) == 0x6f8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuickAccessAbilityCrossOffset_Y) == 0x6fc);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HotBarSingleGraphic) == 0x700);
@@ -1175,11 +1198,23 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheBowGraphic) == 0
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheMaceGraphic) == 0x77c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheStickGraphic) == 0x780);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonSheatheSwordGraphic) == 0x784);
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishEffectPos_X) == 0x788);
+#endif
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishEffectPos_Y) == 0x78c);
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishEffectPos) == 0x788);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphicOffset) == 0x794);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphic) == 0x790);
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphicOffset_X) == 0x794);
+#endif
+#ifndef FABLE_RETAIL_CPLAYERGUIDEF_FLOURISH
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AbilityButtonFlourishGraphicOffset_Y) == 0x798);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYButtonMiddleGraphic) == 0x79c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelInitialOffset_X) == 0x7a0);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYAbilityLevelInitialOffset_Y) == 0x7a4);

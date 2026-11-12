@@ -31,6 +31,10 @@ public:
     class CGuildMasterGameFlow : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_GuildMasterScript&, CScriptDataBase*, const CScriptThing&); // 0x00E908D0
+#ifdef FABLE_RETAIL_CV_GUILDMASTERSCRIPT_GETMASTERDATA
+        // Original public method: both PDB spellings and donor Main 03A18455.
+        CQ_SunnyvaleMasterData* GetMasterData() { return PMasterData; }
+#endif
         virtual CScriptBase* GetParentScript() const;                    // 0x00E90970
     protected:
         CV_GuildMasterScript& ParentClass;                               // +0x14

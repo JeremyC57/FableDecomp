@@ -41,8 +41,14 @@ struct SAllocatorTag { SAllocatorTag() { } };
 
 class CInputEventPackage;
 void __fastcall Destroy_009f6e00(CInputEventPackage* first, CInputEventPackage* last, const SAllocatorTag& allocator);   // 0x009F6E00
-struct CJoystickPointer;
-void __fastcall Destroy_009f6750(CJoystickPointer* first, CJoystickPointer* last, const SAllocatorTag& allocator);       // 0x009F6750
+
+class CJoystick;
+#include "engine/CCountedPointer.h"
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x009F6750 (std::__destroy_aux<CCountedPointer<CJoystick>*>)
+}
 
 template<class T> struct CRangeVector {                     // vector whose elements are destroyed by an out-of-line range helper
     T* _M_start;
@@ -57,10 +63,10 @@ struct CInputEventPackageVector : CRangeVector<CInputEventPackage> {
             free(_M_start);
     }
 };
-struct CJoystickPointerVector : CRangeVector<CJoystickPointer> {   // vector<CCountedPointer<CJoystick>>
+struct CJoystickPointerVector : CRangeVector<CCountedPointer<CJoystick> > {   // vector<CCountedPointer<CJoystick>>
     ~CJoystickPointerVector()
     {
-        Destroy_009f6750(_M_start, _M_finish, SAllocatorTag());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }

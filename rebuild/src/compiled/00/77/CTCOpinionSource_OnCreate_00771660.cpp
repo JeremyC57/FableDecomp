@@ -16,6 +16,7 @@
 //   cursor copy; the reaction flags are `i >= 18` over an unsigned index; the source-list push_back is an inline insert
 //   at the sentinel taking the node pointer (a member push_back leaves a dead `add eax,71Ch` of the list address), with
 //   the intelligent-pointer temporary built before GetWorld() as the argument.
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
@@ -51,6 +52,7 @@ class COpinionSet { public:                                // retail 12 bytes
 };
 #include "engine/CCountedPointer.h"
 
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     virtual void v00();
@@ -58,13 +60,13 @@ public:
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     void* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(void* item);                      // 0x00A01B90
+    void SetPItem(CBaseObject* item);                      // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> vtable 0x01237F1C
 public:
     virtual void v00();
-    CIntelligentPointer(T* item) { SetPItem((void*)item); }
-    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
+    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)other.GetPItem()); }
 };
 
 template <class T> struct SListNode {

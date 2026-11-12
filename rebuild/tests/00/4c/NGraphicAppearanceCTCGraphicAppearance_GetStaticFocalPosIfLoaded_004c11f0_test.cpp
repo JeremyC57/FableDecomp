@@ -34,7 +34,7 @@ public:
 
 C3DVector __fastcall GetRenderPositionForThing(const CThing& thing, float interpolation);   // 0x004BBF00 (file-static)
 
-extern CCharString g_CCharString_013bac48;          // 0x013BAC48 "focus_eye_01"
+extern const CCharString MAIN_FOCAL_POSITION_NAME;          // 0x013BAC48 "focus_eye_01"
 
 namespace NGraphicAppearance {
 
@@ -63,7 +63,7 @@ bool CTCGraphicAppearance::GetStaticFocalPosIfLoaded(C3DVector& position) const
         position = GetRenderPositionForThing(*ParentThing, 1.0f) + CachedStaticFocalPosOffset;
         return true;
     }
-    if (GetHelperPoint(g_CCharString_013bac48, 0, 6, position, 1.0f)) {
+    if (GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, 6, position, 1.0f)) {
         CTCGraphicAppearance* self = const_cast<CTCGraphicAppearance*>(this);
         self->CachedStaticFocalPos = true;
         self->CachedStaticFocalPosOffset = position - GetRenderPositionForThing(*ParentThing, 1.0f);
@@ -76,7 +76,7 @@ bool CTCGraphicAppearance::GetStaticFocalPosIfLoaded(C3DVector& position) const
 
 // ---- test stubs for the retail callees ----
 class CCharString { public: const char* Text; };
-CCharString g_CCharString_013bac48 = { "focus_eye_01" };
+const CCharString MAIN_FOCAL_POSITION_NAME = { "focus_eye_01" };
 static C3DVector g_render; static bool g_helperFound; static C3DVector g_helperPos; static int g_helperCalls;
 static const char* g_helperName; static long g_helperFlags;
 C3DVector __fastcall GetRenderPositionForThing(const CThing&, float) { return g_render; }

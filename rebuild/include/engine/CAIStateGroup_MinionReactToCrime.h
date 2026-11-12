@@ -5,6 +5,50 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOCRIME
+// Retail opt-in (chunk Q32, row 0x00958B20 OnReplace): the polymorphic retail class. RTTI/vtables: OnReplace 0x00958B20 sits in two
+// .rdata vtables (0x0128C580 slot 10 and 0x0128C5BC, the derived CAIStateGroup_MinionReactToCrimeFromSleep). Members Ego_r.pdb
+// (no containers, so the Ego_r offsets are retail; OnReplace reads OpinionDeedHandle +0x14, GuardTold +0x18, DeedMaskApplied +0x1A,
+// ForceOpenBuilding +0x1B: the byte-packed CIntelligentPointer has alignment 1), sizeof 0x23. Methods: the Ego_r / FableWin name sets
+// (?OnReplace@..@@UAEXXZ, ?GetSomeoneElseGettingHelpMessage@..@@AAEPBVCMessageEvent@@J@Z private, retail 0x00958770).
+// All U*E (public) in Ego_r except the two private A*E helpers. Declarations only. Needs FABLE_RETAIL_CINTELLIGENTPOINTER. The flattened layout below stays the landed default.
+#ifndef FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#endif
+#ifndef FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#endif
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CMessageEvent;
+class CThingBuilding;
+class CThingAICreature;
+class CWorld;
+class CAIStateGroup_MinionReactToCrime : public CAIStateGroupBase {
+public:
+    CAIStateGroup_MinionReactToCrime();
+    virtual ~CAIStateGroup_MinionReactToCrime();
+    virtual void OnActivate();
+    virtual bool IsStillValid() const;
+    virtual void OnReplace();                                            // slot 10 0x00958B20
+    virtual bool IsRunnable();
+    virtual void Update();
+    virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
+private:
+    const CMessageEvent* GetSomeoneElseGettingHelpMessage(long handle);  // 0x00958770
+    bool IsGuardOnLevel() const;
+public:
+    long                              OpinionDeedHandle;                 // +0x14
+    bool                              GuardTold;                         // +0x18
+    bool                              AllowDuplicateReactToCrime;        // +0x19
+    bool                              DeedMaskApplied;                   // +0x1a
+    CIntelligentPointer<CThingBuilding> ForceOpenBuilding;               // +0x1b
+};
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, OpinionDeedHandle) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, ForceOpenBuilding) == 0x1b);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -30,5 +74,6 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, GuardTold) == 0x1
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, AllowDuplicateReactToCrime) == 0x19);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, DeedMaskApplied) == 0x1a);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToCrime, ForceOpenBuilding) == 0x1b);
+#endif
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTOCRIME_H

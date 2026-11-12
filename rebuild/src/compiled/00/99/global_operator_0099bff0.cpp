@@ -5,7 +5,7 @@
 // Callees: CWideString(const wchar_t*) @ 0x0099B6B0, CWideString::operator+=(const CWideString&) @ 0x0099B8D0,
 // CWideString::UnassignString() @ 0x0099B4D0 (out of line inside the inlined copy), free @ 0x00BFEA14 (the STLport
 // wstring buffer), operator delete @ 0x00BFE9BC (the 16-byte data block).
-// Globals: g_CWideStringInstanceCount @ 0x013BCA20 (+1 per constructor, -1 per destructor).
+// Globals: NoStrings @ 0x013BCA20 (+1 per constructor, -1 per destructor).
 // Shape: `CWideString result(left); result += right; return result;` -- VC7.1 has no NRVO, so the return copies
 // through the inline copy constructor (zero the block, count++, the inline operator= self/same-block tests, the
 // out-of-line UnassignString, share + NoRefs++) and then runs the local's inline destructor (NoRefs--, on zero free the
@@ -17,7 +17,6 @@
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
-extern long g_CWideStringInstanceCount;                 // 0x013BCA20
 extern unsigned short g_EmptyWideString[];              // 0x0129A8E0
 
 struct forward_iterator_tag {
@@ -60,7 +59,7 @@ public:
     CWideString(const wchar16* text);                   // 0x0099B6B0
     CWideString(const CWideString& other) : PStringData(0)
     {
-        ++g_CWideStringInstanceCount;
+        ++NoStrings;
         *this = other;
     }
     ~CWideString()
@@ -70,7 +69,7 @@ public:
                 delete PStringData;
             PStringData = 0;
         }
-        --g_CWideStringInstanceCount;
+        --NoStrings;
     }
     const CWideString& operator=(const CWideString& other)
     {
@@ -91,6 +90,8 @@ public:
     void UnassignString();                              // 0x0099B4D0
     void MakeOwnCopyOfData();                           // 0x0099B560
     CWideStringData* AllocStringData(const wchar16* text, long length);   // 0x0099B3C0
+protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
 };
 
 // ---- same-TU callee bodies (CWideString.cpp), defined before the graded function ----
@@ -120,7 +121,7 @@ __declspec(noinline) void CWideString::MakeOwnCopyOfData()
 
 __declspec(noinline) CWideString::CWideString(const wchar16* text) : PStringData(0)
 {
-    ++g_CWideStringInstanceCount;
+    ++NoStrings;
     if (text != 0 && *text != 0)
         PStringData = AllocStringData(text, -1);
 }

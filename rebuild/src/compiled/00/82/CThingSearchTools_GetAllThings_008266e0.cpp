@@ -98,7 +98,9 @@ class CThingFilter_BoundingBoxOverlapsMap { public:
 };
 class CThingFilter_HasNavigationInformation { public:
     long Data;
-    bool operator()(const CThing& thing) const;       // 0x0050EEF0
+    // ??RCThingFilter_HasNavigationInformation@@QBE_NABVCThingPhysical@@@Z (Ego_r.pdb 0x004E0840 + FableWin.pdb 0x01CDA8E0):
+    // takes the CThingPhysical (agentNF27, 2026-11-12; was spelled with a const CThing&).
+    bool operator()(const CThingPhysical& thing) const;   // 0x0050EEF0
 };
 template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;

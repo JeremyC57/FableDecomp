@@ -1,0 +1,445 @@
+addr       parity           behav  name
+00403600   MATCH            PASS   CCountedPointer<CAProgressDisplay>::DeleteData
+00403630   MATCH            PASS   CCountedPointer<CFileInstaller>::DeleteData
+00403650   MATCH            PASS   CCountedPointer<NGameText::CDataBank>::DeleteData
+0040d830   MATCH            PASS   CCountedPointer<CUserProfileManager>::DeleteData
+0040e240   MATCH            PASS   CPersistContext::GetDefaultVal<bool>
+0040e260   MATCH            PASS   CPersistContext::GetDefaultVal<unsigned long>
+004132f0   MATCH            PASS   CCountedPointer<CConsole>::DeleteData
+00413300   MATCH            PASS   CCountedPointer<CCodeSectionManager>::DeleteData
+00416056   WARN SHARED_HEADER_AVAILABLE CAFile
+00416056   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00416056   RELOCATION_MATCH PASS   CMainGameComponent::InitEventPackageLoading
+004160cc   WARN SHARED_HEADER_AVAILABLE CAFile
+004160cc   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004160cc   RELOCATION_MATCH PASS   CMainGameComponent::InitEventPackageSaving
+00419091   MATCH            PASS   CCountedPointer<CPlayerGui>::DeleteData
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CEngineGraphic
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimationSet
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCBoastUI
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CWorld
+0041e6d3   WARN RELOC_NAME: ?size@?$list@JV?$allocator@J@std@@@std@@QBEIXZ -> 0042b677 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ?size@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QBEIXZ -> 0042b636 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0041e6d3   WARN RELOC_NAME: ??$find@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@PAVCComponent@NUISystem@@@std@@YI?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U10@0ABQAVCComponent@NUISystem@@@Z -> 0042a291 labelled '_unattributed::CVector_0042a291'
+0041e6d3   WARN RELOC_NAME: ?erase@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@@Z -> 00429b52 labelled 'LinkedList_RemoveNode'
+0041e6d3   WARN RELOC_CONFLICT: ?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z -> 0040b050 here, 0040d2f0 in landed 0059697a
+0041e6d3   WARN RELOC_NAME: ?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z -> 0047d008 labelled '_global::SetMember_dword0x64_0047d008'
+0041e6d3   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0041e6d3   WARN RELOC_NAME: ?IsActive@CTCQuickAccessMenu@@QBE_NXZ -> 00625930 labelled '_global::GetMember_byte0xc_00625930'
+0041e6d3   WARN RELOC_NAME: ?IsQuitting@CTCQuickAccessMenu@@QBE_NXZ -> 00625940 labelled '_global::GetMember_byte0x1c_00625940'
+0041e6d3   WARN RELOC_NAME: ?DropQuest@CTCInventoryMap@@QAEXJ@Z -> 005fa900 labelled '_global::SetMember_dword0x1a4_005fa900'
+0041e6d3   WARN RELOC_NAME: ?find@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@ABK@Z -> 0042b6dc labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+0041e6d3   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAEAAU01@XZ -> 00429cfb labelled '_global::RbTreeIterator_PreIncrement_00429cfb'
+0041e6d3   WARN RELOC_NAME: ?clear@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAEXXZ -> 0042abe1 labelled 'CTCCarryable::OnKill'
+0041e6d3   WARN RELOC_NAME: ??1?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE@XZ -> 0042b755 labelled 'std::list<T_0042b755>::~list'
+0041e6d3   WARN RELOC_NAME: ?FlashQuickAccessDPadIcon@CPlayerGui@@QAEXJ_N@Z -> 00437a30 labelled '_global::Forward_ToggleFlash_via0x1d8_00437a30'
+0041e6d3   WARN RELOC_NAME: ?SetDefaultValuesGameplay@CUserProfileManager@@QAEXXZ -> 00408360 labelled 'CPlayerGui::ForceClose'
+0041e6d3   WARN RELOC_NAME: ?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ -> 004083b0 labelled 'CUserProfileManager::SetDefaultValuesGameplay'
+0041e6d3   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0041e6d3   WARN RELOC_NAME: ?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z -> 006096e0 labelled 'ConstructLogbookScreen'
+0041e6d3   WARN RELOC_NAME: ?ConstructStyleCardsScreen@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z -> 0058a724 labelled 'CTCInventory::GetStyleCardsListUIComponent'
+0041e6d3   WARN RELOC_NAME: ?ConstructQuestsScreenPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z -> 00601310 labelled 'ConstructQuestsScreen_MainMenu'
+0041e6d3   WARN RELOC_NAME: ?SetThingSlotToSwap@CTCInventory@@QAEXJ@Z -> 0041ca3e labelled '_global::SetMember_dword0x138_0041ca3e'
+0041e6d3   WARN RELOC_NAME: ?SetThingToAssign@CTCInventory@@QAEXJ@Z -> 0041ca31 labelled '_global::SetMember_dword0x134_0041ca31'
+0041e6d3   WARN RELOC_NAME: ?SetDescriptionScrollingOffset@CManager@NUISystem@@QAEXM@Z -> 0041cf33 labelled '_global::SetMember_dword0xc4_0041cf33'
+0041e6d3   WARN RELOC_NAME: ?SetSpellToAssign@CTCInventoryAbilities@@QAEXW4EHeroAbility@@@Z -> 0041c965 labelled '_global::SetMember_dword0x134_0041c965'
+0041e6d3   WARN RELOC_NAME: ?SetSpellSlotToSwap@CTCInventoryAbilities@@QAEXJ@Z -> 0041c972 labelled '_global::SetMember_dword0x138_0041c972'
+0041e6d3   WARN RELOC_NAME: ?SetComponentSlotToSwap@CTCInventoryAbilities@@QAEXPAVCComponent@NUISystem@@@Z -> 0041c994 labelled '_global::SetMember_dword0x13c_0041c994'
+0041e6d3   WARN RELOC_NAME: ?SetComponentSlotToSwap@CTCInventory@@QAEXPAVCComponent@NUISystem@@@Z -> 0041ca52 labelled '_global::SetMember_dword0x13c_0041ca52'
+0041e6d3   WARN RELOC_NAME: ?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ -> 0042b707 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ?SetDescriptionScrollingToMax@CManager@NUISystem@@QAEX_N@Z -> 0041cf1f labelled '_global::SetMember_byte0xc8_0041cf1f'
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2b9 labelled 'CCountedPointer<NUISystem::CMesh>::SetStaticCast<NUISystem::CComponent>'
+0041e6d3   WARN RELOC_NAME: ?GetWeaponDescriptionString@CTCInventoryWeapons@@SIABVCCharString@@XZ -> 005c2de1 labelled '_global::GetStaticAddr_013b8bac_005c2de1'
+0041e6d3   WARN RELOC_NAME: ?SetWeaponMappingToMenuEntry@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@J@Z -> 0042d405 labelled 'CTCInventoryClothing::SetClothingMappingToMenuEntry'
+0041e6d3   WARN RELOC_NAME: ?GetClothingDescriptionString@CTCInventoryClothing@@SIABVCCharString@@XZ -> 005b34c1 labelled '_global::GetStaticAddr_013b8b9c_005b34c1'
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2ca labelled 'CCountedPointer<NUISystem::CText>::SetStaticCast<NUISystem::CComponent>'
+0041e6d3   WARN RELOC_NAME: ?GetClothingIconString@CTCInventoryClothing@@SIABVCCharString@@XZ -> 005b34bb labelled '_global::GetStaticAddr_013b8ba0_005b34bb'
+0041e6d3   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+0041e6d3   WARN RELOC_NAME: ?GetItemDescriptionString@CTCInventory@@SIABVCCharString@@XZ -> 005819a1 labelled '_global::GetStaticAddr_013b8b50_005819a1'
+0041e6d3   WARN RELOC_NAME: ?GetItemNameTableString@CTCInventory@@SIABVCCharString@@XZ -> 00581995 labelled '_global::GetStaticAddr_013b8b54_00581995'
+0041e6d3   WARN RELOC_NAME: ?GetItemIconString@CTCInventory@@SIABVCCharString@@XZ -> 0058199b labelled '_global::GetStaticAddr_013b8b58_0058199b'
+0041e6d3   WARN RELOC_NAME: ?GetWeaponTitleString@CTCInventoryWeapons@@SIABVCCharString@@XZ -> 005c2de7 labelled '_global::GetStaticAddr_013b8bb4_005c2de7'
+0041e6d3   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
+0041e6d3   WARN RELOC_CONFLICT: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db here, 0042a2ca in landed 00558770
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db labelled 'CCountedPointer<NUISystem::CList>::SetStaticCast<NUISystem::CComponent>'
+0041e6d3   WARN RELOC_NAME: ?AddComponentToAvailableWeaponsEntries@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@@Z -> 0042bead labelled '_global::Forward_Std_List_PushFront_member0x198_0042bead'
+0041e6d3   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+0041e6d3   WARN RELOC_NAME: ?GetClothingTitleString@CTCInventoryClothing@@SIABVCCharString@@XZ -> 005b34c7 labelled '_global::GetStaticAddr_013b8b98_005b34c7'
+0041e6d3   WARN RELOC_NAME: ?GFStringsAreEqual@@YI_NPBG0@Z -> 00401490 labelled 'CEngineMap::PeekWaterHasType'
+0041e6d3   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0041e6d3   WARN RELOC_NAME: ?GetSellItemDescriptionString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6c2 labelled '_global::GetStaticAddr_013b8b7c_0059b6c2'
+0041e6d3   WARN RELOC_NAME: ?GetNumberOfSellItems@CTCInventoryTrade@@QBEJPAVCComponent@NUISystem@@@Z -> 0042cd3e labelled 'FID_conflict:max_size'
+0041e6d3   WARN RELOC_NAME: ?GetSellItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6bc labelled '_global::GetStaticAddr_013b8b88_0059b6bc'
+0041e6d3   WARN RELOC_NAME: ?RemoveFromItemSellList@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z -> 0042d437 labelled '_global::Forward_CompareAndCountAllocations_member0x20c_0042d437'
+0041e6d3   WARN RELOC_NAME: ?GetBuyItemDescriptionString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6ce labelled '_global::GetStaticAddr_013b8b80_0059b6ce'
+0041e6d3   WARN RELOC_NAME: ?GetNumberOfBuyItems@CTCInventoryTrade@@QBEJPAVCComponent@NUISystem@@@Z -> 0042cd61 labelled 'FID_conflict:max_size'
+0041e6d3   WARN RELOC_NAME: ?GetBuyItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6c8 labelled '_global::GetStaticAddr_013b8b8c_0059b6c8'
+0041e6d3   WARN RELOC_NAME: ?RemoveFromItemBuyList@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z -> 0042d44a labelled '_global::Forward_CompareAndCountAllocations_member0x200_0042d44a'
+0041e6d3   WARN RELOC_NAME: ?GetWantedItemDescriptionString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6da labelled '_global::GetStaticAddr_013b8b84_0059b6da'
+0041e6d3   WARN RELOC_NAME: ?GetWantedItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6d4 labelled '_global::GetStaticAddr_013b8b90_0059b6d4'
+0041e6d3   WARN RELOC_NAME: ?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@ABVCCharString@@@Z -> 0042bef2 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+0041e6d3   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QAEAAU01@XZ -> 00429cea labelled '_global::RbTreeIterator_PreIncrement_00429cea'
+0041e6d3   RELOCATION_MATCH PASS   NUISystem::CManager::Action
+00427216   RELOCATION_MATCH PASS   NUISystem::CManager::CreateTickSlider
+0042a2ca   RELOCATION_MATCH PASS   CCountedPointer<NUISystem::CText>::SetStaticCast<NUISystem::CComponent>
+0042f8a4   MATCH            PASS   CCountedPointer<CASoundBank>::DeleteData
+004361e0   MATCH            PASS   CCountedPointer<CEngineManager>::DeleteData
+00443580   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawSpiritsHealth>::DeleteData
+004435c0   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawScreenFade>::DeleteData
+00443600   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawMoney>::DeleteData
+00443640   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawRenown>::DeleteData
+00443680   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawMorality>::DeleteData
+004436c0   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawExperience>::DeleteData
+00443700   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawCrime>::DeleteData
+00443740   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawReceivedItems>::DeleteData
+00443780   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawFishingGame>::DeleteData
+004438f0   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawTargetInfo>::DeleteData
+00443a20   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawBettingHUD>::DeleteData
+00443a60   RELOCATION_MATCH PASS   CCountedPointer<NPlayerGui::CDrawProjectileTargetingCentre>::DeleteData
+004538eb   WARN RELOC_NAME: ??0?$vector@MV?$allocator@M@std@@@std@@QAE@IABMABV?$allocator@M@1@@Z -> 004516e7 labelled 'CTCEnemy::SetFaction'
+004538eb   RELOCATION_MATCH PASS   COpinionSet::COpinionSet
+0047e651   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0047e651   RELOCATION_MATCH PASS   CTCInGameMenu::VideoOptionsChanged
+0047e9ae   RELOCATION_MATCH PASS   CTCInGameMenu::GlobalUpdate
+00487120   RELOCATION_MATCH PASS   CPlayer::UnfreezeControls
+00487150   RELOCATION_MATCH PASS   CPlayer::SpecialAbilityUnfreezeControls
+0049bc20   MATCH            PASS   CCountedPointer<CGameJoystickManager>::DeleteData
+004a8220   MATCH            PASS   CCountedPointer<CQuestManager>::DeleteData
+004a8260   MATCH            PASS   CCountedPointer<CSkeletalMorphResourceManager>::DeleteData
+004b6ad0   MATCH            PASS   CCountedPointer<CScriptBase>::DeleteData
+004c24c0   RELOCATION_MATCH PASS   CCountedPointer<const C3DMeshStats>::~CCountedPointer
+0050bcc0   MATCH            PASS   CCountedPointer<CWADBank>::DeleteData
+0050c210   MATCH            PASS   CCountedPointer<CMap>::DeleteData
+0050c2e0   MATCH            PASS   CCountedPointer<CLevelLoader>::DeleteData
+0054ff50   MATCH            PASS   NUISystem::CText::GetDynamicSize
+0054ff90   MATCH            PASS   NUISystem::CText::MakeAvailable
+0054ffa0   MATCH            PASS   NUISystem::CText::MakeAvailableDynamically
+0056ad40   WARN RELOC_NAME: ?ForceClearGui@CPlayerGui@@QAEXXZ -> 004382c0 labelled 'CPlayerGui::PrepareForLoad'
+0056ad40   WARN RELOC_NAME: ?size@?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QBEIXZ -> 004b87d0 labelled 'CGuiControlTreePane::SortTreeRecursively'
+0056ad40   WARN RELOC_CONFLICT: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db here, 0042a2ca in landed 00558770
+0056ad40   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db labelled 'CCountedPointer<NUISystem::CList>::SetStaticCast<NUISystem::CComponent>'
+0056ad40   WARN RELOC_NAME: ??$?0PAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@?$pair@QAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@std@@QAE@ABU?$pair@PAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@1@@Z -> 0056cb60 labelled '_unattributed::SPairLongCSecond_004b73a0'
+0056ad40   WARN RELOC_NAME: ??1?$pair@QAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@std@@QAE@XZ -> 0056c840 labelled 'std::_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>'
+0056ad40   WARN RELOC_NAME: ??1?$pair@PAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@std@@QAE@XZ -> 0056c820 labelled 'std::_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>'
+0056ad40   WARN RELOC_NAME: ??$?0JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@QAE@ABU?$pair@JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@1@@Z -> 0056dab0 labelled '_unattributed::SPairLongCSecond_0056d490'
+0056ad40   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 here, 00429160 in landed 0056f615
+0056ad40   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429b72'
+0056ad40   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00570332
+0056ad40   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ -> 00429d8e here, 00429288 in landed 00570332
+0056ad40   WARN RELOC_NAME: ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ -> 00429d8e labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429d8e'
+0056ad40   WARN RELOC_NAME: ??1?$map@JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@@2@@std@@QAE@XZ -> 0056e4e0 labelled 'CRetailTree_erase0056de50::~CRetailTree_erase0056de50'
+0056ad40   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+0056ad40   WARN RELOC_NAME: ?IsBlocking@CTCCombat@@QBE_NXZ -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
+0056ad40   RELOCATION_MATCH PASS   CTCBoastUI::Activate
+0056c0f0   MATCH            PASS   CCountedPointer<NCameraModes::CBase>::DeleteData
+0058af10   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0058af10   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0058af10   WARN RELOC_NAME: ?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z -> 00556570 labelled '_global::SetMember_dword0x18c_00556570'
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCCharString@@V1@@std@@@1@@Z -> 0059326d labelled '_global::StdList_Ctor_0059326d'
+0058af10   WARN RELOC_NAME: ??$?0PBDPBD@?$pair@VCCharString@@V1@@std@@QAE@ABU?$pair@PBDPBD@1@@Z -> 00592495 labelled 'std::pair<const CCharString, CCharString>::pair'
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@1@@Z -> 00593288 labelled '_global::StdList_Ctor_00593288'
+0058af10   WARN RELOC_NAME: ?insert@?$list@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@U?$_Nonconst_traits@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@2@U32@ABU?$pair@PAVCComponent@NUISystem@@PAV12@@2@@Z -> 00593b1a labelled 'ListNode_Create'
+0058af10   WARN RELOC_NAME: ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ -> 00406880 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@XZ -> 005932a3 labelled 'std::list<T_005932a3>::~list'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@XZ -> 00593b03 labelled 'std::list<T_00593b03>::~list'
+0058af10   RELOCATION_MATCH PASS   CTCInventory::OpenPCOptionsMenu
+005a29f4   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a29f4   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005a29f4   RELOCATION_MATCH PASS   CTCInventoryTrade::ConstructSpecialShopList
+005a3734   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a3734   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a3734   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshBuyPossibilityNumbers
+005a5b31   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a5b31   WARN RELOC_NAME: ??1?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005a5b31   RELOCATION_MATCH PASS   CTCInventoryTrade::ConstructActualWantedInventoryPC
+005a8175   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a8175   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a8175   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshBuyPossibilityNumbersPC
+005a8c66   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a8c66   RELOCATION_MATCH PASS   CTCInventoryTrade::ConstructActualSpecialInventoryPC
+005af64e   WARN RELOC_CONFLICT: ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ -> 00449970 here, 00449960 in landed 007b0880
+005af64e   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005af64e   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005af64e   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005af64e   RELOCATION_MATCH PASS   CTCInventoryTrade::BuyItem
+005b0aac   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005b0aac   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005b0aac   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+005b0aac   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005b0aac   RELOCATION_MATCH PASS   CTCInventoryTrade::BuyItemPC
+005b690b   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+005b690b   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005b690b   RELOCATION_MATCH PASS   CTCInventoryClothing::RefreshDescriptions
+005b6a66   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005b6a66   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005b6a66   RELOCATION_MATCH PASS   CTCInventoryClothing::ConstructClothingListPC
+005b76d1   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005b76d1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005b76d1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005b76d1   WARN RELOC_NAME: ??1?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ -> 005bb090 labelled '_global::StdList_Dtor_005bb090'
+005b76d1   WARN RELOC_NAME: ??1?$vector@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@V?$allocator@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@2@@std@@QAE@XZ -> 005bc080 labelled '_global::StdList_Dtor_005bc080'
+005b76d1   RELOCATION_MATCH PASS   CTCInventoryClothing::ConstructScreen
+005b8743   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005b8743   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005b8743   WARN RELOC_NAME: ??1?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ -> 005bb090 labelled '_global::StdList_Dtor_005bb090'
+005b8743   WARN RELOC_NAME: ??1?$vector@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@V?$allocator@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@2@@std@@QAE@XZ -> 005bc080 labelled '_global::StdList_Dtor_005bc080'
+005b8743   RELOCATION_MATCH PASS   CTCInventoryClothing::ConstructScreenPC
+005c574e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005c574e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005c574e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+005c574e   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConstructAugEntry
+005c5f11   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005c5f11   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005c5f11   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+005c5f11   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConstructAugEntryPC
+005c8459   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled 'CCountedPointer<NUISystem::CComponent>::ReleaseData'
+005c8459   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005c8459   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConstructScreen
+005c90fc   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
+005c90fc   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConstructWeaponDescriptionContainer
+005c9a95   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled 'CCountedPointer<NUISystem::CComponent>::ReleaseData'
+005c9a95   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConstructScreenPC
+005cacb9   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+005cacb9   WARN RELOC_NAME: ?SetWeaponMappingToMenuEntry@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@J@Z -> 0042d405 labelled 'CTCInventoryClothing::SetClothingMappingToMenuEntry'
+005cacb9   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005cacb9   RELOCATION_MATCH PASS   CTCInventoryWeapons::RefreshWeaponDescriptions
+005e4be0   RELOCATION_MATCH PASS   CTCQuestCompletionUI::GetQuestDescription
+005ecf50   MATCH            PASS   CCountedPointer<NCameraModes::CScriptModuleBase>::DeleteData
+005f077f   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005f077f   RELOCATION_MATCH PASS   CTCInventoryAbilities::ContructItemLists
+005f1526   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005f1526   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005f1526   RELOCATION_MATCH PASS   CTCInventoryAbilities::ConstructPCItemLists
+005f3f7b   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005f3f7b   RELOCATION_MATCH PASS   CTCInventoryAbilities::ConstructExpressionCategoryList
+005f45b5   RELOCATION_MATCH PASS   CTCInventoryAbilities::ConstructPCExpressionCategoryList
+005f4c8f   RELOCATION_MATCH PASS   CTCInventoryAbilities::GetExpressionsListUIComponent
+005f519f   WARN RELOC_NAME: ??0?$_List_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z -> 005f8944 labelled 'StdList_Construct_005f8944'
+005f519f   WARN RELOC_NAME: ?push_back@?$list@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXABVCWideString@@@Z -> 005f8f6f labelled 'Lua_PushCClosure_005f8f6f'
+005f519f   RELOCATION_MATCH PASS   CTCInventoryAbilities::ConstructScreen
+0065d258   MATCH            PASS   CCountedPointer<CVillageTaskPatrol>::DeleteData
+0065d2b1   MATCH            PASS   CCountedPointer<CVillageTaskSecuritySweep>::DeleteData
+00672aa0   MATCH            PASS   CCountedPointer<CCreatureStatsDef>::DeleteData
+007180b0   MATCH            PASS   CCountedPointer<CTCCreatureModeManager::CModeBase>::DeleteData
+00763a10   MATCH            PASS   CCountedPointer<NShape::CShape>::DeleteData
+00786a20   MATCH            PASS   CCountedPointer<C3DSkeletalMorph>::DeleteData
+007a75f0   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities
+007a75f0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+007a75f0   WARN SHARED_HEADER_AVAILABLE CTCBattleCharge
+007a75f0   RELOCATION_MATCH PASS   CTCBattleCharge::FinalCleanup
+007aa370   WARN SHARED_HEADER_AVAILABLE CThing
+007aa370   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+007aa370   RELOCATION_MATCH PASS   CTCAssassinRush::CleanUpEffects
+00834a10   MATCH            PASS   CCountedPointer<CAIBrain>::DeleteData
+0085a5a0   MATCH            PASS   CCountedPointer<CCombatActionBase>::DeleteData
+008aa7e0   MATCH            PASS   CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::DeleteData
+008aa7f0   MATCH            PASS   CCountedPointer<CScriptGameResourceObjectMovieBase>::DeleteData
+00991e00   MATCH            PASS   CCountedPointer<CResourceBank>::DeleteData
+009a6ba0   MATCH            PASS   CCountedPointer<CDisplayManager>::DeleteData
+009a6bd0   MATCH            PASS   CCountedPointer<CInputManager>::DeleteData
+009a6be0   MATCH            PASS   CCountedPointer<CGraphicBankManager>::DeleteData
+009a6bf0   MATCH            PASS   CCountedPointer<CMeshBankManager>::DeleteData
+009a6c10   MATCH            PASS   CCountedPointer<CFontManager>::DeleteData
+009a6c20   MATCH            PASS   CCountedPointer<CDriveManager>::DeleteData
+009a9030   MATCH            PASS   CCountedPointer<CDiskFileWin32>::DeleteData
+009a9040   MATCH            PASS   CCountedPointer<CThreadedFile>::DeleteData
+009b0e90   MATCH            PASS   CCountedPointer<CSymbolMap>::DeleteData
+009e2960   MATCH            PASS   CCountedPointer<CFontDataBank>::DeleteData
+009e2970   MATCH            PASS   CCountedPointer<CStreamingFontDataBank>::DeleteData
+009ffd20   MATCH            PASS   CCountedPointer<CTextureManager>::DeleteData
+00a018d0   MATCH            PASS   CCountedPointer<CCRCSymbolMap>::DeleteData
+00a16270   MATCH            PASS   CCountedPointer<CNavQuadTree>::DeleteData
+00a281b0   MATCH            PASS   CCountedPointer<C3DAnimationManager>::DeleteData
+00a282f0   MATCH            PASS   CCountedPointer<C3DAnimation2>::DeleteData
+00a28510   MATCH            PASS   CCountedPointer<C3DQuadricBasedMeshOptimiser>::DeleteData
+00a28520   MATCH            PASS   CCountedPointer<C3DMeshStripifier>::DeleteData
+00a51180   MATCH            PASS   CCountedPointer<CSimpleMemoryPool>::DeleteData
+00a6acb0   MATCH            PASS   CCountedPointer<CVolumeTexture>::DeleteData
+00ab5df0   MATCH            PASS   CCountedPointer<CSurface>::DeleteData
+00ac3fd0   MATCH            PASS   CCountedPointer<CParticleProgram>::DeleteData
+00ae91c0   MATCH            PASS   CCountedPointer<NParticleEngine::CParticleDataBank>::DeleteData
+00b2de20   MATCH            PASS   CCountedPointer<CCompositeSurfaceCache>::DeleteData
+00b36060   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerStaticMeshes>::DeleteData
+00b36070   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes>::DeleteData
+00b36080   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes>::DeleteData
+00b36090   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites>::DeleteData
+00b360a0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerSprites>::DeleteData
+00b360b0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerFlareSprites>::DeleteData
+00b360c0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerWeaponTrails>::DeleteData
+00b360d0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::DeleteData
+00b360e0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerLines>::DeleteData
+00b360f0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerText>::DeleteData
+00b36100   MATCH            PASS   CCountedPointer<CEnginePrimitiveOcclusionGroupManager>::DeleteData
+00b36110   MATCH            PASS   CCountedPointer<CEnginePrimitiveGroupManager>::DeleteData
+00b36120   MATCH            PASS   CCountedPointer<CEnginePrimitiveChangerManager>::DeleteData
+00b36130   MATCH            PASS   CCountedPointer<CEngineClothRenderer>::DeleteData
+00b36140   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerParticleLineGroup>::DeleteData
+00b36150   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerParticleMeshGroup>::DeleteData
+00b36160   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerParticleSpriteGroup>::DeleteData
+00b36170   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerParticleSpriteTrailGroup>::DeleteData
+00b36180   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerParticleGroup>::DeleteData
+00b36190   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerDecal>::DeleteData
+00b361a0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup>::DeleteData
+00b361b0   MATCH            PASS   CCountedPointer<CEnginePrimitiveManagerWeatherMask>::DeleteData
+00b3e070   MATCH            PASS   CCountedPointer<CMovableResourceMemoryPool>::DeleteData
+00b4b020   MATCH            PASS   CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>::DeleteData
+00b4b030   MATCH            PASS   CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>::DeleteData
+00b4b040   MATCH            PASS   CCountedPointer<CEnginePrimitiveManager2DSprites>::DeleteData
+00b4b050   MATCH            PASS   CCountedPointer<CEnginePrimitive2DViewportManager>::DeleteData
+00b4b060   MATCH            PASS   CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::DeleteData
+00b825d0   MATCH            PASS   CCountedPointer<CParticleSimulation>::DeleteData
+00b95000   MATCH            PASS   CCountedPointer<CEngineSceneMap>::DeleteData
+00bb6330   MATCH            PASS   CCountedPointer<CParticleSimulationRenderData>::DeleteData
+
+WINS: 140
+  00403600 MATCH CCountedPointer<CAProgressDisplay>::?DeleteData@?$CCountedPointer@VCAProgressDisplay@@@@SIXPAX@Z
+  00403630 MATCH CCountedPointer<CFileInstaller>::?DeleteData@?$CCountedPointer@VCFileInstaller@@@@SIXPAX@Z
+  00403650 MATCH CCountedPointer<NGameText::CDataBank>::?DeleteData@?$CCountedPointer@VCDataBank@NGameText@@@@SIXPAX@Z
+  0040d830 MATCH CCountedPointer<CUserProfileManager>::?DeleteData@?$CCountedPointer@VCUserProfileManager@@@@SIXPAX@Z
+  0040e240 MATCH CPersistContext::??$GetDefaultVal@_N@CPersistContext@@KI_NXZ
+  0040e260 MATCH CPersistContext::??$GetDefaultVal@K@CPersistContext@@KIKXZ
+  004132f0 MATCH CCountedPointer<CConsole>::?DeleteData@?$CCountedPointer@VCConsole@@@@SIXPAX@Z
+  00413300 MATCH CCountedPointer<CCodeSectionManager>::?DeleteData@?$CCountedPointer@VCCodeSectionManager@@@@SIXPAX@Z
+  00416056 RELOCATION_MATCH CMainGameComponent::?InitEventPackageLoading@CMainGameComponent@@IAE_NPBG@Z
+  004160cc RELOCATION_MATCH CMainGameComponent::?InitEventPackageSaving@CMainGameComponent@@IAE_NPBG@Z
+  00419091 MATCH CCountedPointer<CPlayerGui>::?DeleteData@?$CCountedPointer@VCPlayerGui@@@@SIXPAX@Z
+  0041e6d3 RELOCATION_MATCH NUISystem::CManager::?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  00427216 RELOCATION_MATCH NUISystem::CManager::?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z
+  0042a2ca RELOCATION_MATCH CCountedPointer<NUISystem::CText>::??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  0042f8a4 MATCH CCountedPointer<CASoundBank>::?DeleteData@?$CCountedPointer@VCASoundBank@@@@SIXPAX@Z
+  004361e0 MATCH CCountedPointer<CEngineManager>::?DeleteData@?$CCountedPointer@VCEngineManager@@@@SIXPAX@Z
+  00443580 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawSpiritsHealth>::?DeleteData@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@SIXPAX@Z
+  004435c0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawScreenFade>::?DeleteData@?$CCountedPointer@VCDrawScreenFade@NPlayerGui@@@@SIXPAX@Z
+  00443600 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawMoney>::?DeleteData@?$CCountedPointer@VCDrawMoney@NPlayerGui@@@@SIXPAX@Z
+  00443640 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawRenown>::?DeleteData@?$CCountedPointer@VCDrawRenown@NPlayerGui@@@@SIXPAX@Z
+  00443680 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawMorality>::?DeleteData@?$CCountedPointer@VCDrawMorality@NPlayerGui@@@@SIXPAX@Z
+  004436c0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawExperience>::?DeleteData@?$CCountedPointer@VCDrawExperience@NPlayerGui@@@@SIXPAX@Z
+  00443700 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawCrime>::?DeleteData@?$CCountedPointer@VCDrawCrime@NPlayerGui@@@@SIXPAX@Z
+  00443740 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawReceivedItems>::?DeleteData@?$CCountedPointer@VCDrawReceivedItems@NPlayerGui@@@@SIXPAX@Z
+  00443780 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawFishingGame>::?DeleteData@?$CCountedPointer@VCDrawFishingGame@NPlayerGui@@@@SIXPAX@Z
+  004438f0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawTargetInfo>::?DeleteData@?$CCountedPointer@VCDrawTargetInfo@NPlayerGui@@@@SIXPAX@Z
+  00443a20 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawBettingHUD>::?DeleteData@?$CCountedPointer@VCDrawBettingHUD@NPlayerGui@@@@SIXPAX@Z
+  00443a60 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawProjectileTargetingCentre>::?DeleteData@?$CCountedPointer@VCDrawProjectileTargetingCentre@NPlayerGui@@@@SIXPAX@Z
+  004538eb RELOCATION_MATCH COpinionSet::??0COpinionSet@@QAE@XZ
+  0047e651 RELOCATION_MATCH CTCInGameMenu::?VideoOptionsChanged@CTCInGameMenu@@QAEXXZ
+  0047e9ae RELOCATION_MATCH CTCInGameMenu::?GlobalUpdate@CTCInGameMenu@@UAEX_N@Z
+  00487120 RELOCATION_MATCH CPlayer::?UnfreezeControls@CPlayer@@QAEXXZ
+  00487150 RELOCATION_MATCH CPlayer::?SpecialAbilityUnfreezeControls@CPlayer@@QAEXXZ
+  0049bc20 MATCH CCountedPointer<CGameJoystickManager>::?DeleteData@?$CCountedPointer@VCGameJoystickManager@@@@SIXPAX@Z
+  004a8220 MATCH CCountedPointer<CQuestManager>::?DeleteData@?$CCountedPointer@VCQuestManager@@@@SIXPAX@Z
+  004a8260 MATCH CCountedPointer<CSkeletalMorphResourceManager>::?DeleteData@?$CCountedPointer@VCSkeletalMorphResourceManager@@@@SIXPAX@Z
+  004b6ad0 MATCH CCountedPointer<CScriptBase>::?DeleteData@?$CCountedPointer@VCScriptBase@@@@SIXPAX@Z
+  004c24c0 RELOCATION_MATCH CCountedPointer<const C3DMeshStats>::??1?$CCountedPointer@$$CBVC3DMeshStats@@@@QAE@XZ
+  0050bcc0 MATCH CCountedPointer<CWADBank>::?DeleteData@?$CCountedPointer@VCWADBank@@@@SIXPAX@Z
+  0050c210 MATCH CCountedPointer<CMap>::?DeleteData@?$CCountedPointer@VCMap@@@@SIXPAX@Z
+  0050c2e0 MATCH CCountedPointer<CLevelLoader>::?DeleteData@?$CCountedPointer@VCLevelLoader@@@@SIXPAX@Z
+  0054ff50 MATCH NUISystem::CText::?GetDynamicSize@CText@NUISystem@@UBE?AVC2DVector@@XZ
+  0054ff90 MATCH NUISystem::CText::?MakeAvailable@CText@NUISystem@@UAEXXZ
+  0054ffa0 MATCH NUISystem::CText::?MakeAvailableDynamically@CText@NUISystem@@UAEXXZ
+  0056ad40 RELOCATION_MATCH CTCBoastUI::?Activate@CTCBoastUI@@QAEXXZ
+  0056c0f0 MATCH CCountedPointer<NCameraModes::CBase>::?DeleteData@?$CCountedPointer@VCBase@NCameraModes@@@@SIXPAX@Z
+  0058af10 RELOCATION_MATCH CTCInventory::?OpenPCOptionsMenu@CTCInventory@@QAEXXZ
+  005a29f4 RELOCATION_MATCH CTCInventoryTrade::?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z
+  005a3734 RELOCATION_MATCH CTCInventoryTrade::?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ
+  005a5b31 RELOCATION_MATCH CTCInventoryTrade::?ConstructActualWantedInventoryPC@CTCInventoryTrade@@AAEXXZ
+  005a8175 RELOCATION_MATCH CTCInventoryTrade::?RefreshBuyPossibilityNumbersPC@CTCInventoryTrade@@AAEXXZ
+  005a8c66 RELOCATION_MATCH CTCInventoryTrade::?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ
+  005af64e RELOCATION_MATCH CTCInventoryTrade::?BuyItem@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+  005b0aac RELOCATION_MATCH CTCInventoryTrade::?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+  005b690b RELOCATION_MATCH CTCInventoryClothing::?RefreshDescriptions@CTCInventoryClothing@@QAEXXZ
+  005b6a66 RELOCATION_MATCH CTCInventoryClothing::?ConstructClothingListPC@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@PAV23@W4EClothingSuitPart@@_N@Z
+  005b76d1 RELOCATION_MATCH CTCInventoryClothing::?ConstructScreen@CTCInventoryClothing@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005b8743 RELOCATION_MATCH CTCInventoryClothing::?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+  005c574e RELOCATION_MATCH CTCInventoryWeapons::?ConstructAugEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@NUISystem@@@Z
+  005c5f11 RELOCATION_MATCH CTCInventoryWeapons::?ConstructAugEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@NUISystem@@PAVCComponent@6@@Z
+  005c8459 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005c90fc RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescriptionContainer@CTCInventoryWeapons@@QBEXPAVCComponent@NUISystem@@JM@Z
+  005c9a95 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005cacb9 RELOCATION_MATCH CTCInventoryWeapons::?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ
+  005e4be0 RELOCATION_MATCH CTCQuestCompletionUI::?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z
+  005ecf50 MATCH CCountedPointer<NCameraModes::CScriptModuleBase>::?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z
+  005f077f RELOCATION_MATCH CTCInventoryAbilities::?ContructItemLists@CTCInventoryAbilities@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  005f1526 RELOCATION_MATCH CTCInventoryAbilities::?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  005f3f7b RELOCATION_MATCH CTCInventoryAbilities::?ConstructExpressionCategoryList@CTCInventoryAbilities@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z
+  005f45b5 RELOCATION_MATCH CTCInventoryAbilities::?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z
+  005f4c8f RELOCATION_MATCH CTCInventoryAbilities::?GetExpressionsListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+  005f519f RELOCATION_MATCH CTCInventoryAbilities::?ConstructScreen@CTCInventoryAbilities@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  0065d258 MATCH CCountedPointer<CVillageTaskPatrol>::?DeleteData@?$CCountedPointer@VCVillageTaskPatrol@@@@SIXPAX@Z
+  0065d2b1 MATCH CCountedPointer<CVillageTaskSecuritySweep>::?DeleteData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@SIXPAX@Z
+  00672aa0 MATCH CCountedPointer<CCreatureStatsDef>::?DeleteData@?$CCountedPointer@VCCreatureStatsDef@@@@SIXPAX@Z
+  007180b0 MATCH CCountedPointer<CTCCreatureModeManager::CModeBase>::?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z
+  00763a10 MATCH CCountedPointer<NShape::CShape>::?DeleteData@?$CCountedPointer@VCShape@NShape@@@@SIXPAX@Z
+  00786a20 MATCH CCountedPointer<C3DSkeletalMorph>::?DeleteData@?$CCountedPointer@VC3DSkeletalMorph@@@@SIXPAX@Z
+  007a75f0 RELOCATION_MATCH CTCBattleCharge::?FinalCleanup@CTCBattleCharge@@AAEXXZ
+  007aa370 RELOCATION_MATCH CTCAssassinRush::?CleanUpEffects@CTCAssassinRush
+  00834a10 MATCH CCountedPointer<CAIBrain>::?DeleteData@?$CCountedPointer@VCAIBrain@@@@SIXPAX@Z
+  0085a5a0 MATCH CCountedPointer<CCombatActionBase>::?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z
+  008aa7e0 MATCH CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@SIXPAX@Z
+  008aa7f0 MATCH CCountedPointer<CScriptGameResourceObjectMovieBase>::?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@SIXPAX@Z
+  00991e00 MATCH CCountedPointer<CResourceBank>::?DeleteData@?$CCountedPointer@VCResourceBank@@@@SIXPAX@Z
+  009a6ba0 MATCH CCountedPointer<CDisplayManager>::?DeleteData@?$CCountedPointer@VCDisplayManager@@@@SIXPAX@Z
+  009a6bd0 MATCH CCountedPointer<CInputManager>::?DeleteData@?$CCountedPointer@VCInputManager@@@@SIXPAX@Z
+  009a6be0 MATCH CCountedPointer<CGraphicBankManager>::?DeleteData@?$CCountedPointer@VCGraphicBankManager@@@@SIXPAX@Z
+  009a6bf0 MATCH CCountedPointer<CMeshBankManager>::?DeleteData@?$CCountedPointer@VCMeshBankManager@@@@SIXPAX@Z
+  009a6c10 MATCH CCountedPointer<CFontManager>::?DeleteData@?$CCountedPointer@VCFontManager@@@@SIXPAX@Z
+  009a6c20 MATCH CCountedPointer<CDriveManager>::?DeleteData@?$CCountedPointer@VCDriveManager@@@@SIXPAX@Z
+  009a9030 MATCH CCountedPointer<CDiskFileWin32>::?DeleteData@?$CCountedPointer@VCDiskFileWin32@@@@SIXPAX@Z
+  009a9040 MATCH CCountedPointer<CThreadedFile>::?DeleteData@?$CCountedPointer@VCThreadedFile@@@@SIXPAX@Z
+  009b0e90 MATCH CCountedPointer<CSymbolMap>::?DeleteData@?$CCountedPointer@VCSymbolMap@@@@SIXPAX@Z
+  009e2960 MATCH CCountedPointer<CFontDataBank>::?DeleteData@?$CCountedPointer@VCFontDataBank@@@@SIXPAX@Z
+  009e2970 MATCH CCountedPointer<CStreamingFontDataBank>::?DeleteData@?$CCountedPointer@VCStreamingFontDataBank@@@@SIXPAX@Z
+  009ffd20 MATCH CCountedPointer<CTextureManager>::?DeleteData@?$CCountedPointer@VCTextureManager@@@@SIXPAX@Z
+  00a018d0 MATCH CCountedPointer<CCRCSymbolMap>::?DeleteData@?$CCountedPointer@VCCRCSymbolMap@@@@SIXPAX@Z
+  00a16270 MATCH CCountedPointer<CNavQuadTree>::?DeleteData@?$CCountedPointer@VCNavQuadTree@@@@SIXPAX@Z
+  00a281b0 MATCH CCountedPointer<C3DAnimationManager>::?DeleteData@?$CCountedPointer@VC3DAnimationManager@@@@SIXPAX@Z
+  00a282f0 MATCH CCountedPointer<C3DAnimation2>::?DeleteData@?$CCountedPointer@VC3DAnimation2@@@@SIXPAX@Z
+  00a28510 MATCH CCountedPointer<C3DQuadricBasedMeshOptimiser>::?DeleteData@?$CCountedPointer@VC3DQuadricBasedMeshOptimiser@@@@SIXPAX@Z
+  00a28520 MATCH CCountedPointer<C3DMeshStripifier>::?DeleteData@?$CCountedPointer@VC3DMeshStripifier@@@@SIXPAX@Z
+  00a51180 MATCH CCountedPointer<CSimpleMemoryPool>::?DeleteData@?$CCountedPointer@VCSimpleMemoryPool@@@@SIXPAX@Z
+  00a6acb0 MATCH CCountedPointer<CVolumeTexture>::?DeleteData@?$CCountedPointer@VCVolumeTexture@@@@SIXPAX@Z
+  00ab5df0 MATCH CCountedPointer<CSurface>::?DeleteData@?$CCountedPointer@VCSurface@@@@SIXPAX@Z
+  00ac3fd0 MATCH CCountedPointer<CParticleProgram>::?DeleteData@?$CCountedPointer@VCParticleProgram@@@@SIXPAX@Z
+  00ae91c0 MATCH CCountedPointer<NParticleEngine::CParticleDataBank>::?DeleteData@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@SIXPAX@Z
+  00b2de20 MATCH CCountedPointer<CCompositeSurfaceCache>::?DeleteData@?$CCountedPointer@VCCompositeSurfaceCache@@@@SIXPAX@Z
+  00b36060 MATCH CCountedPointer<CEnginePrimitiveManagerStaticMeshes>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerStaticMeshes@@@@SIXPAX@Z
+  00b36070 MATCH CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerAnimatedMeshes@@@@SIXPAX@Z
+  00b36080 MATCH CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedStaticMeshes@@@@SIXPAX@Z
+  00b36090 MATCH CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedZSprites@@@@SIXPAX@Z
+  00b360a0 MATCH CCountedPointer<CEnginePrimitiveManagerSprites>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerSprites@@@@SIXPAX@Z
+  00b360b0 MATCH CCountedPointer<CEnginePrimitiveManagerFlareSprites>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerFlareSprites@@@@SIXPAX@Z
+  00b360c0 MATCH CCountedPointer<CEnginePrimitiveManagerWeaponTrails>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@SIXPAX@Z
+  00b360d0 MATCH CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@SIXPAX@Z
+  00b360e0 MATCH CCountedPointer<CEnginePrimitiveManagerLines>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerLines@@@@SIXPAX@Z
+  00b360f0 MATCH CCountedPointer<CEnginePrimitiveManagerText>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerText@@@@SIXPAX@Z
+  00b36100 MATCH CCountedPointer<CEnginePrimitiveOcclusionGroupManager>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@SIXPAX@Z
+  00b36110 MATCH CCountedPointer<CEnginePrimitiveGroupManager>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveGroupManager@@@@SIXPAX@Z
+  00b36120 MATCH CCountedPointer<CEnginePrimitiveChangerManager>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveChangerManager@@@@SIXPAX@Z
+  00b36130 MATCH CCountedPointer<CEngineClothRenderer>::?DeleteData@?$CCountedPointer@VCEngineClothRenderer@@@@SIXPAX@Z
+  00b36140 MATCH CCountedPointer<CEnginePrimitiveManagerParticleLineGroup>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleLineGroup@@@@SIXPAX@Z
+  00b36150 MATCH CCountedPointer<CEnginePrimitiveManagerParticleMeshGroup>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleMeshGroup@@@@SIXPAX@Z
+  00b36160 MATCH CCountedPointer<CEnginePrimitiveManagerParticleSpriteGroup>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteGroup@@@@SIXPAX@Z
+  00b36170 MATCH CCountedPointer<CEnginePrimitiveManagerParticleSpriteTrailGroup>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteTrailGroup@@@@SIXPAX@Z
+  00b36180 MATCH CCountedPointer<CEnginePrimitiveManagerParticleGroup>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleGroup@@@@SIXPAX@Z
+  00b36190 MATCH CCountedPointer<CEnginePrimitiveManagerDecal>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerDecal@@@@SIXPAX@Z
+  00b361a0 MATCH CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleDecalGroup@@@@SIXPAX@Z
+  00b361b0 MATCH CCountedPointer<CEnginePrimitiveManagerWeatherMask>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@SIXPAX@Z
+  00b3e070 MATCH CCountedPointer<CMovableResourceMemoryPool>::?DeleteData@?$CCountedPointer@VCMovableResourceMemoryPool@@@@SIXPAX@Z
+  00b4b020 MATCH CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@SIXPAX@Z
+  00b4b030 MATCH CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DAnimatedMeshes@@@@SIXPAX@Z
+  00b4b040 MATCH CCountedPointer<CEnginePrimitiveManager2DSprites>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DSprites@@@@SIXPAX@Z
+  00b4b050 MATCH CCountedPointer<CEnginePrimitive2DViewportManager>::?DeleteData@?$CCountedPointer@VCEnginePrimitive2DViewportManager@@@@SIXPAX@Z
+  00b4b060 MATCH CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DParticleGroup@@@@SIXPAX@Z
+  00b825d0 MATCH CCountedPointer<CParticleSimulation>::?DeleteData@?$CCountedPointer@VCParticleSimulation@@@@SIXPAX@Z
+  00b95000 MATCH CCountedPointer<CEngineSceneMap>::?DeleteData@?$CCountedPointer@VCEngineSceneMap@@@@SIXPAX@Z
+  00bb6330 MATCH CCountedPointer<CParticleSimulationRenderData>::?DeleteData@?$CCountedPointer@VCParticleSimulationRenderData@@@@SIXPAX@Z

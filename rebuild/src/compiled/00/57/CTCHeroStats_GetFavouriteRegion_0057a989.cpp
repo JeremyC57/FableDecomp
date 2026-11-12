@@ -13,6 +13,8 @@
 // the text bank is a named local read before the `best != -1` test (its load sits above the `je`). The found
 // path does not write the out index; the not-found path stores -1 and copies the empty wide string.
 // Layout: retail RegionTime vector {first, last} at +0x124 (PDB +0x130).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -26,9 +28,10 @@ class CCharString { public:
 class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const CWideString& other);           // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
 
-extern const CWideString g_EmptyWideString;          // 0x013BCA24
 
 namespace NGameText {
 class CDataBank { public:
@@ -92,5 +95,5 @@ CWideString CTCHeroStats::GetFavouriteRegion(long& region) const
     if (best != -1)
         return textBank->GetTextBySymbol(PeekWorldMap().GetRegion(best).GetDisplayName());
     region = -1;
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

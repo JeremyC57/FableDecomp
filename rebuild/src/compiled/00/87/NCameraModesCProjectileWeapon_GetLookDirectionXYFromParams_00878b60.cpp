@@ -38,8 +38,11 @@ class CBase { public:
     unsigned char _pad04[0x44 - 0x04];
     CDefPointer<const CCameraModeDef> PCameraModeDef;   // +0x44
 };
-class CProjectileWeapon : public CBase { public:                      // vtable 0x01277804
-    C3DVector GetCamPosOffsetXY(float phi) const;       // 0x00878A80
+class CProjectileWeapon : public CBase {                              // vtable 0x01277804
+private:
+    C3DVector GetCamPosOffsetXY(float phi) const;       // 0x00878A80 ?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z
+                                                        //   (Ego_r.pdb 0x00862CE0 / FableWin.pdb 0x029C9160: private const; NF28 was public)
+public:
     C3DVector GetLookDirectionXYFromParams(float phi, float heightParam) const;
 };
 #pragma pack(pop)

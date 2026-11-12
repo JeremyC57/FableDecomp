@@ -1,52 +1,27 @@
-#include <stdio.h>
-
+// Behaviour test for 0x0077B0B0 CTCActivationTrigger::OnKill() (agentFAM05; the catalog test's shim does not build under g++ and it
+// does not link the row). Self-contained on both compilers: the row's body, checking the receptor drops this trigger and the
+// pointer is cleared, and that a trigger with no receptor does nothing.
+#include <cstdio>
 class CTCActivationTrigger;
-
-struct Sub {
-    void destroy(CTCActivationTrigger* owner);
+class CTCActivationReceptorBase {
+public:
+    CTCActivationReceptorBase() : Removed(0) {}
+    void RemoveTrigger(CTCActivationTrigger& trigger) { Removed = &trigger; }
+    CTCActivationTrigger* Removed;
 };
-
-class CTCActivationTrigger { public:
-    char pad[0xc];
-    Sub* PTCReceptor;   // +0xc
+class CTCActivationTrigger {
+public:
+    CTCActivationTrigger(CTCActivationReceptorBase* receptor) : PTCReceptor(receptor) {}
+    void OnKill() { if (PTCReceptor) { PTCReceptor->RemoveTrigger(*this); PTCReceptor = 0; } }
+    CTCActivationReceptorBase* PTCReceptor;
 };
-
-static int g_destroyed = 0;
-static CTCActivationTrigger* g_owner = 0;
-static Sub* g_self = 0;
-
-void Sub::destroy(CTCActivationTrigger* owner)
-{
-    g_destroyed++;
-    g_owner = owner;
-    g_self = this;
-}
-
-void __fastcall CTCActivationTrigger_OnKill(CTCActivationTrigger* self)
-{
-    if (self->PTCReceptor) {
-        self->PTCReceptor->destroy(self);
-        self->PTCReceptor = 0;
-    }
-}
-
 int main()
 {
-    Sub theSub;
-    CTCActivationTrigger t;
-    Sub* subp = &theSub;
-    CTCActivationTrigger* tp = &t;
-    t.PTCReceptor = subp;
-
-    CTCActivationTrigger_OnKill(tp);
-    // fc had a value -> destroy called with owner=tp, this=subp, then fc=0
-    int ok = (g_destroyed == 1) && (g_owner == tp) && (g_self == subp) && (t.PTCReceptor == 0);
-
-    // second call: fc==0 -> no-op
-    CTCActivationTrigger_OnKill(tp);
-    ok = ok && (g_destroyed == 1) && (t.PTCReceptor == 0);
-
-    if (ok) printf("0077b0b0_TEST PASS\n");
-    else printf("0077b0b0_TEST FAIL d=%d\n", g_destroyed);
-    return 0;
+    CTCActivationReceptorBase receptor;
+    CTCActivationTrigger trigger(&receptor), lone(0);
+    trigger.OnKill();
+    lone.OnKill();
+    bool ok = receptor.Removed == &trigger && trigger.PTCReceptor == 0 && lone.PTCReceptor == 0;
+    std::printf(ok ? "0077b0b0_TEST PASS\n" : "0077b0b0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

@@ -1,0 +1,10 @@
+05:06 00649e8b 00649e8b_v1.cpp NPlayerGui::CDrawFishingGame::Draw DIFFER(469v469)   -- port onto shared headers
+05:07 00649e8b 00649e8b_v2.cpp NPlayerGui::CDrawFishingGame::Draw DIFFER(469v469)   -- nested block distance part
+05:10 00649e8b 00649e8b_v3.cpp NPlayerGui::CDrawFishingGame::Draw DIFFER(474v469)   -- mixed implicit/explicit CCharString temps
+05:12 00649e8b 00649e8b_v4.cpp NPlayerGui::CDrawFishingGame::Draw DIFFER(469v469)   -- SetAsDrawing inline
+05:26 0096cd70 0096cd70_v1.cpp CAIStateGroup_EatAtTable::Update DIFFER(578v578)   -- port onto shared headers
+05:26 0096cd70 0096cd70_v2.cpp CAIStateGroup_EatAtTable::Update RELOCATION_MATCH   -- failed flag local
+05:29 006c1250 006c1250_v1.cpp CTCBuyableHouse::Update DIFFER(638v638)   -- same-TU helper bodies auto-inlined, FrameUpdate
+05:29 006c1250 006c1250_v2.cpp CTCBuyableHouse::Update RELOCATION_MATCH   -- font via PeekComponent().PeekCutSceneMainFont() in the argument
+05:38 00a78b20 00a78b20_v1.cpp CNavQuadTree::SaveToFile RELOCATION_MATCH  /Gr -- port onto shared headers (/Gr)
+05:38 00a78b20 00a78b20_v2.cpp CNavQuadTree::SaveToFile RELOCATION_MATCH   -- no flags

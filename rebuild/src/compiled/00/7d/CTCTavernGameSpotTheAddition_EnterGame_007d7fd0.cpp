@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D7FD0, 234 bytes (plain `ret`); CTCTavernGameSpotTheAddition vtable
 // 0x0126F814 slot 29. Ego_r.pdb `?EnterGame@CTCTavernGameSpotTheAddition@@UAEXXZ`.
-// Callees: CTCTavernGame::EnterGame() 0x005EC0F0 (non-virtual base call); CTCTavernGame::GetTavernGameDef(CDefPointer*)
+// Callees: CTCTavernGame::EnterGame() 0x005EC0F0 (non-virtual base call); CTCTavernGame::GetDef(CDefPointer*)
 //          0x005EA000 (Ego_r.pdb GetDef, out of line in this TU); CDefStringTable::GetString(long) 0x009D49B0 on
 //          GDefStringTable 0x013CA828; CTCTavernGame::CameraUseCameraPoint(const CCharString&) 0x005EBFA0;
 //          ~CCharString 0x0099EAE0; CDefClassBase::GetSubDef<CTavernGameSpotTheAdditionDef> 0x007D9A80 (the inline
@@ -60,7 +60,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {                            // CDefPointer<const CTavernGameDef>
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)                            // CDefPointer<const CTavernGameDef>
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -127,7 +128,7 @@ class CTCTavernGame { public:
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0xe8];
     void EnterGame();                           // 0x005EC0F0
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     void CameraUseCameraPoint(const CCharString& name);   // 0x005EBFA0
     CThingObject* CreateGamePiece(long model);  // 0x005EA9B0
     static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
@@ -160,8 +161,8 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
 void CTCTavernGameSpotTheAddition::EnterGame()
 {
     CTCTavernGame::EnterGame();
-    CDefPointer gameDef;
-    GetTavernGameDef(&gameDef);
+    CDefPointer<const CTavernGameDef> gameDef;
+    CTCTavernGame::GetDef(&gameDef);
     {
         CCharString camera = GDefStringTable.GetString(gameDef->CameraName);
         CameraUseCameraPoint(camera);

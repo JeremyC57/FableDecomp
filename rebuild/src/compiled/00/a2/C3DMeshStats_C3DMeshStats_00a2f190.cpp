@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2F190, length 121 bytes (+ int3 padding).
 // Label correction: catalogued as CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip (propagated); called by the
 // scalar deleting destructor @ 0x00A353F0, slot 0 of C3DMeshStats's vtable 0x0129CF04 (the vtable stored first).
-// Callees: CHandleBasedMemoryPool::Free(long) @ 0x00A62ED0, CCharString::~CCharString @ 0x0099EAE0 (per generator, then
+// Callees: CMovableResourceMemoryPool::FreeResource(long) @ 0x00A62ED0, CCharString::~CCharString @ 0x0099EAE0 (per generator, then
 // Name), free @ 0x00BFEA14 (x2), _Destroy_range of the mesh-volume pairs @ 0x00A33720 (`__fastcall` first/last, the
 // iterator tag by reference at `lea [esp+7]`).
 // Layout: Ego_r.pdb C3DMeshStats (PDB 132 bytes, retail 0x7c with 12-byte containers): MemoryPool +0x04,
@@ -13,15 +13,14 @@
 // Shape: the body frees the handle unless it is -1; members then die in reverse order (the generator array's inline
 // destroy loop (bounds passed by value, the end cached in ebx) and free, the volume vector's range destroy and free, the name), then the CMovableResource base's inline
 // destructor stores its vtable 0x0129B860 and returns.
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL_FREERESOURCE
+#include "fable_compiler.h"
+#include "engine/CMovableResourceMemoryPool.h"   // FreeResource 0x00A62ED0 (Ego_r.pdb / FableWin.pdb ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-class CCharString { public:
-    void* m_pData;
-    ~CCharString();                                // 0x0099EAE0
-};
-class CHandleBasedMemoryPool { public:
-    void Free_00a62ed0(long handle);                        // 0x00A62ED0
-};
+// CCharString (fable_string.h, via the pool header): ~CCharString 0x0099EAE0.
 class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     ~CMovableResource() { }
@@ -71,7 +70,7 @@ struct CMeshVolumeMap {                            // CVectorMap<unsigned long, 
 struct CPreAllocVectorMap { void* m_p[4]; };       // pool-backed, nothing to destroy
 
 class C3DMeshStats : public CMovableResource { public:           // vtable 0x0129CF04, retail 0x7c bytes
-    CHandleBasedMemoryPool* MemoryPool;            // +0x04
+    CMovableResourceMemoryPool* MemoryPool;        // +0x04
     long                    StatsMemoryHandle;     // +0x08
     CCharString             Name;                  // +0x0c
     float                   BoundingSphere[4];     // +0x10
@@ -90,5 +89,5 @@ class C3DMeshStats : public CMovableResource { public:           // vtable 0x012
 C3DMeshStats::~C3DMeshStats()
 {
     if (StatsMemoryHandle != -1)
-        MemoryPool->Free_00a62ed0(StatsMemoryHandle);
+        MemoryPool->FreeResource(StatsMemoryHandle);
 }

@@ -21,11 +21,10 @@ class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CQuadTreeElement* owner);   // 0x00BD9AB0 (an empty `ret 8` in retail)
 };
 
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
+//   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 struct CQuadTreeElement {                          // CLocalDetailCacheMap::CQuadTreeElement, PDB layout (76 bytes)
     virtual ~CQuadTreeElement();                   // slot 0: the deleting destructor
@@ -51,7 +50,7 @@ struct CQuadTreeElement {                          // CLocalDetailCacheMap::CQua
 
 void CQuadTreeElement::OnPostRelocation()
 {
-    CEngineLandscapeMemoryManager* manager = g_pEngine_01436ea8->m_pLandscapeMemory;
+    CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
     for (long i = 0; i < 4; ++i) {
         if (Children[i])
             manager->RebindBlockOwner(Children[i], this);

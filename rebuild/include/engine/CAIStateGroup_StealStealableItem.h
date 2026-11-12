@@ -8,6 +8,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM
+// Retail opt-in (Q18, row 0x009644F0 CAIStateGroup_StealStealableItem::OnReplace): the polymorphic retail class over
+// CAIStateGroupBase (RTTI .?AVCAIStateGroup_StealStealableItem@@ : CAIStateGroupBase; Ego_r.pdb members, sizeof 0x3c, the same in
+// retail: the row reads ActionPointIndex +0x2c, GotActionPoint +0x30, ReachedDestination +0x31, PickUpActionID +0x34, NeedsCleanup
+// +0x38). OnReplace is Ego_r.pdb ?OnReplace@CAIStateGroup_StealStealableItem@@UAEXXZ (public virtual). Written like the Q17
+// sibling FABLE_RETAIL_CAISTATEGROUP_RECOVERSTEALABLEITEM. Needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS and FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CAIStateGroup_StealStealableItem : public CAIStateGroupBase {
+public:
+    virtual void OnReplace();                                            // 0x009644F0
+protected:
+    CIntelligentPointer<CThing> PStealableItem;                          // +0x14
+    CIntelligentPointer<const CThing> PEscapePoint;                      // +0x1c
+    CIntelligentPointer<CThing> PPreviouslyCarriedItem;                  // +0x24
+    long ActionPointIndex;                                               // +0x2c
+    bool GotActionPoint;                                                 // +0x30
+    bool ReachedDestination;                                             // +0x31
+    long PickUpActionID;                                                 // +0x34
+    bool NeedsCleanup;                                                   // +0x38
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_StealStealableItem) == 0x3c);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_StealStealableItem {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -38,5 +62,6 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, GotActionPoint) =
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, ReachedDestination) == 0x31);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, PickUpActionID) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_StealStealableItem, NeedsCleanup) == 0x38);
+#endif // retail branch
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_STEALSTEALABLEITEM_H

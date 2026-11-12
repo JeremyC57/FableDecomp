@@ -188,7 +188,7 @@ extern unsigned long g_RenderFrame_013b7d70;
 // vector headers each lose4 bytes in the retail STLport layout. The global
 // input-manager role is independently established by native input consumers.
 class CInputManager { public: unsigned char StateBeforeLoading[0x38]; bool Loading; };
-extern CInputManager* PInputManager;
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 extern CRenderManagerCore* g_RenderManagerCore_013b8384;
 extern double g_DeprecatedScreenWidth_013961e8;
 extern double g_DeprecatedScreenHeight_013961f0;
@@ -197,7 +197,7 @@ extern unsigned char g_BettingHudEnabled_013bae1d;
 void NDisplayView::CView3DBase::Render(const CInterpolationInfo& interpolation,bool finalPass)
 {
     if(g_RenderThrottleEnabled_013b860c && !g_RenderThrottlePaused_013b8629 &&
-       PInputManager->Loading && g_RenderFrame_013b7d70%15!=0)
+       GPInputManager->Loading && g_RenderFrame_013b7d70%15!=0)
         return;
 
     PEngine->SetWindow(&Window);

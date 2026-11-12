@@ -40,19 +40,19 @@ class CCRCSymbolMap { public:                                   // 0x24 bytes
     bool LoadFromFile(const CWideString& path, const CCharString& tag);   // 0x00A39010
     void SaveBinary(const CWideString& path);            // 0x00A382E0
 };
-class CCPPointerInfo;
-struct CCountedSymbolMap {                               // CCountedPointer<CCRCSymbolMap>
-    CCRCSymbolMap*  Data;
-    CCPPointerInfo* Info;
-    void Reset(CCRCSymbolMap* object);                   // 0x00A01AA0
-};
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the symbol map pointer is the shared CCountedPointer<CCRCSymbolMap> (Ego_r.pdb
+//   CASoundBank::PSymbolMap); its out-of-line Reset 0x00A01AA0 is FableWin.pdb ?Reset@?$CCountedPointer@VCCRCSymbolMap@@@@QAEXPAVCCRCSymbolMap@@@Z
+//   (it stores DeleteData<CCRCSymbolMap> 0x00A018D0), was the stand-in ?Reset@CCountedSymbolMap@@. Reset is declared only
+//   (FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL): retail calls the COMDAT.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"
 
 extern bool g_bLoadBinarySoundSymbols;                   // 0x013BC9F0
 extern bool g_bSaveBinarySoundSymbols;                   // 0x0138DD3B
 
 class CASoundBank { public:
     virtual ~CASoundBank();
-    CCountedSymbolMap PSymbolMap;                        // +0x04
+    CCountedPointer<CCRCSymbolMap> PSymbolMap;           // +0x04
     void InitSymbols(const CWideString& path);
 };
 

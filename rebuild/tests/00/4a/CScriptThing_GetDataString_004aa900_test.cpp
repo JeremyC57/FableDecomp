@@ -7,7 +7,6 @@ class CCharString { public:
     explicit CCharString(int id) : m_id(id) { }
     CCharString(const CCharString& other) : m_id(other.m_id) { }
 };
-CCharString g_EmptyString(0);
 
 struct CScriptThingVirtuals {
     virtual void v0() { }
@@ -21,6 +20,7 @@ class CScriptThing { public:                               // the handle: vptr, 
     void* __vftable;
     CScriptThingVirtuals* PImp_Data;
     void* PImp_Info;
+    static CCharString NullString;                       // 0x0143E8EC
     CCharString GetDataString() const;
 };
 
@@ -28,9 +28,11 @@ CCharString CScriptThing::GetDataString() const
 {
     const CScriptThingVirtuals* imp = PImp_Data;
     if (imp == 0)
-        return g_EmptyString;
+        return NullString;
     return imp->GetDataString();
 }
+
+CCharString CScriptThing::NullString(0);
 
 int main()
 {

@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0078f8f0   RELOCATION_MATCH PASS   CancelForCutscene
+00d43190   RELOCATION_MATCH PASS   Main
+00e6ad20   RELOCATION_MATCH PASS   WatchForAcolyteDeath
+00edc980   RELOCATION_MATCH PASS   WatchForAcolyteDeath
+
+WINS: 4
+  0078f8f0 RELOCATION_MATCH CTCDivineWrath::?CancelForCutscene@CTCDivineWrath@@QAEXXZ
+  00d43190 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CKillBird::?Main@CKillBird@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00e6ad20 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?WatchForAcolyteDeath@CV_ChapelOfEvilScript@NScript@@QAEXVCScriptThing@@@Z
+  00edc980 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?WatchForAcolyteDeath@CV_TempleOfLightScript@NScript@@QAEXVCScriptThing@@@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCDivineWrath_CancelForCutscene_0078f8f0
+  NScriptCQGuildTrainingScriptCKillBird_Main_00d43190
+  NScriptCVChapelOfEvilScript_WatchForAcolyteDeath_00e6ad20
+  NScriptCVTempleOfLightScript_WatchForAcolyteDeath_00edc980

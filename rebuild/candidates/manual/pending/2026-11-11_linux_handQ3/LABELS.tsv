@@ -1,0 +1,13 @@
+address	name	evidence
+0x00CDD6B0	?Main@CGlobal_TeleportToHeroGuildScript@NScript@@UAEXXZ	FableWin.pdb/Ego_r.pdb spelling + quest name string "Global_TeleportToHeroGuild" (DeactivateQuestLater arg); RELOCATION_MATCH
+0x0076EB00	?InitialiseTrails@CTCWeaponTrail@@AAEXXZ	Ego_r.pdb + "weapon_pos_" helper-name strings; RELOCATION_MATCH
+0x008E20F0	?FrameUpdate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ	Ego_r.pdb + ShieldFollowersRelease action vtable 0x01286B04 built at the end; RELOCATION_MATCH
+0x008E24F0	?FrameUpdate@CModeGuildmasterPowerUpSpeed@NCreatureMode@@UAEXXZ	Ego_r.pdb + SpeedUpFollowersRelease action vtable 0x01286C4C; RELOCATION_MATCH
+0x007CCF50	?ApplyEffectOnWeapon@CTCMultiStrike@@QAEXPAVCThing@@@Z	Ego_r.pdb/FableWin.pdb + WEAPON_EFFECT_SHORT/LONG_LEVELn strings + landed caller
+0x004BE3E0	?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z	Ego_r.pdb + call from matched 0x0076EB00 (reloc check 0 mismatches)
+0x004BE170	?HasHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z	Ego_r.pdb + Base/Tip helper tests in matched 0x0076EB00
+0x004BDA30	?GetAllHelperPointNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	Ego_r.pdb + vector<CCharString> out-arg in matched 0x0076EB00
+0x004BDE90	?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	Ego_r.pdb + (name, 1.0f)==2 test in matched 0x0076EB00
+0x007AEEC0	?CountLivingHelpers@CTCBoss@@QAEJXZ	Ego_r.pdb + call from matched 0x008E20F0/0x008E24F0
+0x00AED050	?GetApproximateTotalSplineLength@CParticleEmitter@NParticleEngine@@QAEMXZ	Ego_r.pdb + body sums per-system spline lengths; called twice by 0x007CCF50
+0x00AED600	?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z	Ego_r.pdb + (emitter, 2*t) call in 0x007CCF50 (DIFFER row; callee targets bind)

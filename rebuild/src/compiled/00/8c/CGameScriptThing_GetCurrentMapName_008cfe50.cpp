@@ -11,7 +11,6 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CWorldMap { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -40,5 +39,5 @@ CCharString CGameScriptThing::GetCurrentMapName() const
     long map = worldMap->GetMapNumberForRecord(m_record);
     if (map)
         return CCharString(worldMap->GetLevelScriptName(map));
-    return CCharString(g_emptyString_0122d70e, -1);
+    return CCharString("", -1);
 }

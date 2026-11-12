@@ -35,7 +35,7 @@ class CInputManager { public:
     CMouse*       PMouse;                                // +0x24 scoped_ptr<CMouse>
     CMouse* GetMouse() const { return PMouse; }
 };
-extern CInputManager* PInputManager;                  // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 struct CGamePlayerInterface_Methods : CGamePlayerInterface {
     CAFile& GetPacketFile() { return *reinterpret_cast<CAFile*>(PacketFile); }
     const C2DVector* GetLoadedMousePos() const { return reinterpret_cast<const C2DVector*>(LoadedInputEvent + 0x38); }
@@ -44,6 +44,6 @@ struct CGamePlayerInterface_Methods : CGamePlayerInterface {
 void CGamePlayerInterface_Methods::LoadInitialInfo()
 {
     GetPacketFile().Read(LoadedInputEvent, sizeof(LoadedInputEvent), 0);
-    if (PInputManager->GetMouse())
-        PInputManager->GetMouse()->SetPos(GetLoadedMousePos());
+    if (GPInputManager->GetMouse())
+        GPInputManager->GetMouse()->SetPos(GetLoadedMousePos());
 }

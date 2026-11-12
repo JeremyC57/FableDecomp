@@ -1,4 +1,6 @@
 // CDefinitionManager::CDefinitionManager(const CWideString& compiledFileName, void (*errorCallback)(CCharString*)) -- the definition manager: CResourceList root, empty path lists / symbol-map pointers / vector maps / arrays, the error callback, an empty current filename, the compiled file name = the compiled-defs directory + the argument, the empty recompiled-defs map, two fresh CSymbolMaps (the symbol map seeded with the "NULL" symbol and finalised), and the +0x34 word cleared
+// Name fix (agentNF26, FAM09): the compiled-def directory @ 0x013CA7DC is CDefinitionManager::CompiledDefDirectory (protected
+//   static; Anniv ?CompiledDefDirectory@CDefinitionManager@@1VCWideString@@A, FAM09 initializer 0x01224050), was g_CompiledDefsDirectory.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Naming wave 27 (family sym, chunk 695): CSymbolMap::UpdateDirty() const 0x009E5C30 (Ego_r.pdb + FableWin.pdb
 //   ?UpdateDirty@CSymbolMap@@QBEXXZ); was an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
@@ -32,7 +34,7 @@ class CWideString { public:                                   // non-POD (user c
     CWideString();                                     // 0x0099B4D0 (not called here)
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
-extern CWideString g_CompiledDefsDirectory;           // 0x013CA7DC
+// CDefinitionManager::CompiledDefDirectory (protected static CWideString @ 0x013CA7DC) is declared in the class below.
 template <class T> struct CAllocator { CAllocator() {} CAllocator(const CAllocator&) {} };
 template <class T> struct CAllocProxy : CAllocator<T> {
     T* _M_data;
@@ -110,11 +112,14 @@ public:
     unsigned long                              DependencyCheckCRC;    // +0xbc
     bool                                       UseSafeBinaryFormat;   // +0xc0
     CRetailMap<CRecompiledDefNode>             RecompiledDefs;        // +0xc4
+protected:
+    static CWideString                         CompiledDefDirectory;  // 0x013CA7DC (Anniv ?CompiledDefDirectory@CDefinitionManager@@1VCWideString@@A; Ego_r SetCompiledDefDirectory)
+public:
     CDefinitionManager(const CWideString& compiledFileName, void (__cdecl* errorCallback)(CCharString*));
 };
 
 CDefinitionManager::CDefinitionManager(const CWideString& compiledFileName, void (__cdecl* errorCallback)(CCharString*))
-    : CResourceList(), ErrorCallback(errorCallback), CurrentFilename(), CompiledFileName(g_CompiledDefsDirectory + compiledFileName),
+    : CResourceList(), ErrorCallback(errorCallback), CurrentFilename(), CompiledFileName(CompiledDefDirectory + compiledFileName),
       RecompiledDefs()
 {
     UseSafeBinaryFormat = false;

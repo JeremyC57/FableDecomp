@@ -5,11 +5,8 @@ class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
     void FreeBlock(void* block);                   // 0x00BDA0D0 (labelled "LandscapeLayerList::InsertNode")
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 struct CTextureOwner_00beaa00 {
     unsigned char _pad[0x10];
     void*         m_pBlock;                        // +0x10
@@ -19,7 +16,7 @@ struct CTextureOwner_00beaa00 {
 void CTextureOwner_00beaa00::ClearBlock()
 {
     if (m_pBlock) {
-        g_pEngine_01436ea8->m_pLandscapeMemory->FreeBlock(m_pBlock);
+        g_pLandscapeRenderer->MemoryManager->FreeBlock(m_pBlock);
         m_pBlock = 0;
     }
 }

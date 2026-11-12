@@ -67,6 +67,24 @@ public:
     // GetAllLeafThings<CThingObject> 0x00910A90 scans (`push 5 ; call PeekTypeList`).
     static long __fastcall StatGetType() { return 5; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGOBJECT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool CanBlockUpperLevelNavigatingCreature() const;  // slot 56, 0x00702CD0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGOBJECT_VSLOTS2
+// agentFAM04 (2026-11-11): retail CThingObject overrides (TLC vtable slots aligned with the Xbox 360 Test PDB order;
+// Ego_r.pdb / FableWin.pdb spellings, all public virtual). Declaration only (no layout change).
+public:
+    virtual bool IsEntitySerialisable() const;                           // slot 22, 0x00703470
+    virtual bool IsFragile() const;                                      // slot 54, 0x00703000
+    virtual bool CanBlockNavigatingCreature() const;                     // slot 55, 0x00702CC0
+    virtual bool IsCover() const;                                        // slot 64, 0x00703780
+    virtual long GetMaterialOnHitByMelee() const;                        // slot 70, 0x00703040
+public:
+#endif // FABLE_RETAIL_CTHINGOBJECT_VSLOTS2
 };
 FABLE_STATIC_ASSERT(sizeof(CThingObject)==0xe0);
 #endif

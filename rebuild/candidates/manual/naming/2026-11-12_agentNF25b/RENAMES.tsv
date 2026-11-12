@@ -1,0 +1,67 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x005DA4E0	CTCWeapon	ResetAiming	?ResetAiming@CTCWeapon@@QAEXXZ	sub_005da4e0	?Init@@YIXPAUCGhostGrannySon@@@Z	land1011df: Ego_r.pdb + FableWin.pdb ?ResetAiming@CTCWeapon@@QAEXXZ; body AimingTime +0x14 = -1, AimingTimeOverride +0x18 = false (Ego_r CTCWeapon); Ego_r donor order IsAimedForLongEnough/SetAimingTimeOverride/SetAiming/ResetAiming/FrameUpdate/IsMeleeWeaponClass = retail 0x005DA490/4C0/4D0/4E0/4F0/510; ReadyProjectile is in neither PDB
+0x008889C0	NEnvironmentInternal::CEnvironmentThemePriorityStack	CalculateTheme	?CalculateTheme@CEnvironmentThemePriorityStack@NEnvironmentInternal@@QAEXAAVCBlendedEnvironmentTheme@2@MABVCEnvironmentThemeResourcePallette@2@@Z	CEnvironmentThemePriorityStack::CalculateTheme	?CalculateTheme@CEnvironmentThemePriorityStack@@QAEXPAUCBlendedEnvironmentTheme@@MPAUCEnvironmentThemeResourcePallette@@@Z	land1011df (BlendInLevel entry): Ego_r.pdb + FableWin.pdb spelling (NEnvironmentInternal namespace, reference parameters); row moved onto engine/CEnvironmentThemePriorityStack.h, its callees now bind the PDB GetLevelTheme 0x008884D0 / BlendInLevel const 0x008886E0
+0x00658B20	CTCVillage	IsWorkTime	?IsWorkTime@CTCVillage@@QBE_NXZ	CTCVillage::IsCookTime	?CTCVillage_IsCookTime@@YI_NPAVCTCVillage@@@Z	NF24 follow-up: Ego_r.pdb + FableWin.pdb ?IsWorkTime@CTCVillage@@QBE_NXZ; body = IsTimeBetween(CVillageDef::WorkStartTimes +0x64, WorkDuration +0x70) (Ego_r +112/+128, 12-byte retail vectors); Ego_r order IsWorkTime, IsCookTime = retail 0x00658B20, 0x00658B6B (IsCookTime landed, Cook +0x74/+0x80)
+0x00EFB8C0	NScript::CHitSwitchTestScript::CHitSwitch	Main	?Main@CHitSwitch@CHitSwitchTestScript@NScript@@EAEXXZ	NScript::CHitSwitchTestScript::CHitSwitch::Main	?Main@CHitSwitch@CHitSwitchTestScript@NScript@@QAEXXZ	leaf only (catalog name unchanged): Ego_r.pdb ?Main@CHitSwitch@CHitSwitchTestScript@NScript@@EAEXXZ (private virtual slot 1); the row moved onto engine/CEntityScriptBase.h for the 0x00EF7AB0 port, so Main is the private override
+0x00EFE8D0	NScript::CBenTestScriptsScript::CFader	Main	?Main@CFader@CBenTestScriptsScript@NScript@@EAEXXZ	NScript::CBenTestScriptsScript::CFader::Main	?Main@CFader@CBenTestScriptsScript@NScript@@QAEXXZ	leaf only (catalog name unchanged): Ego_r.pdb ?Main@CFader@CBenTestScriptsScript@NScript@@EAEXXZ (private virtual slot 1); moved onto engine/CEntityScriptBase.h with the 0x00EF7AB0 port
+# Section 2
+0x00555CF0	?SetScroll@CScrollableList@NUISystem@@QAEXMM@Z	?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z
+0x00555EB0	?SetScroll@CScrollableList@NUISystem@@QAEXJJ@Z	?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z
+0x00556200	?UpdateVisibleList@CScrollableList@NUISystem@@QAEXMM@Z	?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z
+0x00557000	?UpdateVisibleList@CScrollableList@NUISystem@@QAEXMM@Z	?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z
+0x008889C0	?BlendInLevel@CEnvironmentThemePriorityStackEntry@@QAEXPAUCBlendedEnvironmentTheme@@PBU2@MPAUCEnvironmentThemeResourcePallette@@@Z	?BlendInLevel@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QBEXAAVCBlendedEnvironmentTheme@2@ABV32@MABVCEnvironmentThemeResourcePallette@2@@Z
+0x008889C0	?GetLevelTheme@CEnvironmentThemePriorityStackEntry@@QAEXPAUCBlendedEnvironmentTheme@@MPAUCEnvironmentThemeResourcePallette@@@Z	?GetLevelTheme@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXAAVCBlendedEnvironmentTheme@2@MABVCEnvironmentThemeResourcePallette@2@@Z
+0x00663B10	?IsCreatureAttacking@CCombatManager@@QAE_NABVCThingCreatureBase@@@Z	?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+0x0096EDB0	?IsCreatureAttacking@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z	?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+0x007FC820	?IsCreatureAttacking@CCombatManager@@QAE_NABVCThingCreatureBase@@@Z	?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+0x008BF500	?IsCreatureAttacking@CCombatManager@@QAE_NABVCThingCreatureBase@@@Z	?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+0x006EA450	?ReadyProjectile@CTCWeapon@@QAEXXZ	?ResetAiming@CTCWeapon@@QAEXXZ
+0x008BF500	?ReadyProjectile@CTCWeapon@@QAEXXZ	?ResetAiming@CTCWeapon@@QAEXXZ
+0x006648D0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x0069F9E0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x007153B0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x0078E9C0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x00793EC0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x00845CE0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x00848500	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x00848730	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x0084A350	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x0084A4A0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x008BA3C0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x009236C0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x007037D0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@UCDebrisDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x007EB110	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@UCPickUpDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x007EB1A0	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@UCPickUpDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x00966CF0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBUCJugDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x009687B0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBUCJugDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x00847AC0	?GetCarryable@CDefLookup@@QBE_NPAU?$DefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x0084A5F0	?GetCarryable@CDefLookup@@QBE_NPAU?$DefPointer@VCCarryableDef@@@@@Z	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+0x00966CF0	?HasItemWithID@CTCInventory@@QAE_NJ@Z	?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z
+0x009687B0	?HasItemWithID@CTCInventory@@QAE_NJ@Z	?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z
+0x0084A5F0	?IsCarrySlotEmpty@CTCCarrying@@QAE_NJ@Z	?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z
+0x00845CE0	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z (unchanged spelling; the local explicit specialisation is now the header template)
+0x00EFF4D0	??1CScriptThingFunctor_00ef7ab0@@QAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ
+0x00F01C50	??1CScriptThingFunctor_00ef7ab0@@QAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ
+0x00EFE700	??1CIsThingAliveEndGame@@QAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ
+0x00F1B220	??1CIsThingConscious@@QAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ
+0x00EFB360	??1CIsThingAlive@N_00ef7ab0@@QAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ
+0x00EFB8C0	??1CIsThingAlive@N_00ef7ab0@@QAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ
+0x00EFE8D0	??1CIsThingAlive@N_00ef7ab0@@QAE@XZ	??1CIsThingConscious@NScript@@UAE@XZ
+0x00EFF4D0	??_7CScriptThingFunctor_00ef7ab0@@6B@ (vtable 0x012C2FE8)	??_7CIsThingConscious@NScript@@6B@
+0x00F01C50	??_7CScriptThingFunctor_00ef7ab0@@6B@ (vtable 0x012C2FE8)	??_7CIsThingConscious@NScript@@6B@
+0x00EFE700	??_7CIsThingAliveEndGame@@6B@ (vtable 0x012C2FE8)	??_7CIsThingConscious@NScript@@6B@
+0x00F1B220	??_7CIsThingConscious@@6B@ (vtable 0x012C2FE8)	??_7CIsThingConscious@NScript@@6B@
+0x00EFB360	??_7CIsThingAlive@N_00ef7ab0@@6B@ (vtable 0x012C2FE8)	??_7CIsThingConscious@NScript@@6B@
+0x00EFB8C0	??_7CIsThingAlive@N_00ef7ab0@@6B@ (vtable 0x012C2FE8)	??_7CIsThingConscious@NScript@@6B@
+0x00EFE8D0	??_7CIsThingAlive@N_00ef7ab0@@6B@ (vtable 0x012C2FE8)	??_7CIsThingConscious@NScript@@6B@
+0x00EFB360	?SetPredicate@CProximityPodium@CProximityPodiumTestScript@NScript@@QAEXAAUCIsThingAlive@N_00ef7ab0@@@Z	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+0x00EFB8C0	?RegisterFilter@CHitSwitch@CHitSwitchTestScript@NScript@@QAEXAAUCIsThingAlive@N_00ef7ab0@@@Z	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+0x00EFE8D0	?RegisterFilter@CFader@CBenTestScriptsScript@NScript@@QAEXAAUCIsThingAlive@N_00ef7ab0@@@Z	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+0x00658E73	?ComputeB0@CTCVillage@@QAEDXZ	?IsWorkTime@CTCVillage@@QBE_NXZ
+0x0091A6F0	?IsCookTime_00658b20@CTCVillage@@QAE_NXZ	?IsWorkTime@CTCVillage@@QBE_NXZ
+0x009444E0	?IsCookTime_00658b20@CTCVillage@@QAE_NXZ	?IsWorkTime@CTCVillage@@QBE_NXZ
+0x0065C781	?IsCookTime_00658b20@CTCVillage@@QAE_NXZ	?IsWorkTime@CTCVillage@@QBE_NXZ
+0x0092B110	?IsCookTime@CTCVillage@@QAE_NXZ	?IsWorkTime@CTCVillage@@QBE_NXZ
+0x00929F10	?IsCookTime@CTCVillage@@QBE_NXZ	?IsWorkTime@CTCVillage@@QBE_NXZ
+0x00773950	?IsCookTime@CTCVillage@@QBE_NXZ	?IsWorkTime@CTCVillage@@QBE_NXZ
+0x00658B20	?CookTest@@YG_NPAXH@Z	?IsTimeBetween@CTCVillage@@QBE_NABV?$vector@JV?$allocator@J@std@@@std@@J@Z

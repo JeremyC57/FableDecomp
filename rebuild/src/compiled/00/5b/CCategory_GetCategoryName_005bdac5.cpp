@@ -9,6 +9,8 @@
 // `setne bl` result kept across the release) and read again through a second one that stays alive across the text
 // call (esi); the slot-76 call is the plain nested `PInventory->GetThingName(PAssociatedThing.GetPItem())`, so its
 // vtable is fetched before the inner GetPItem call.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail CCategory (sizeof 0x2C): engine/CCategory.h is the Ego_r.pdb layout with a 16-byte vector<CItem>; the shipped
@@ -55,8 +57,9 @@ class CWideString {
 public:
     void* PStringData;
     CWideString(const CWideString& other);    // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_EmptyWideString;         // 0x013BCA24
 struct CTCInventoryBase {
     virtual void v00();
     virtual void v01();
@@ -167,7 +170,7 @@ CWideString CCategory_Retail::GetCategoryName()
     if (PAssociatedThing.GetPItem() == 0) {
         if (PDef->CategoryName != 0)
             return PInventory->GetInventoryText(PDef->CategoryName);
-        return g_EmptyWideString;
+        return CWideString::NullString;
     }
     return PInventory->GetThingName(PAssociatedThing.GetPItem());
 }

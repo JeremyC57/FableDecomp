@@ -24,20 +24,22 @@ class CCharString { public:
 namespace NParticleEngine {
 
 class CPSCBase;
-typedef CPSCBase* (__cdecl *PSCAllocFunc)();
+// agentNF20 (2026-11-11): the factories are static __fastcall (both PDB name sets: ?Alloc@CPSC*@NParticleEngine@@SIPAVCPSCBase@2@XZ;
+//   Ego_r.pdb's `_func___cdecl_CPSCBase_ptr *` member type is the PDB's generic spelling), so AllocFunc holds __fastcall pointers.
+typedef CPSCBase* (__fastcall *PSCAllocFunc)();
 
 enum EPSCType { PSC_TYPE_0, PSC_TYPE_1, PSC_TYPE_2, PSC_TYPE_3, PSC_TYPE_4 };
 
-class CPSCRenderSprite   { public: static CPSCBase* Alloc(); };   // 0x00AF7D10
-class CPSCRenderMesh     { public: static CPSCBase* Alloc(); };   // 0x00AF7D80
-class CPSCSingleSprite   { public: static CPSCBase* Alloc(); };   // 0x00AF7DF0
-class CPSCUpdateNormal   { public: static CPSCBase* Alloc(); };   // 0x00AF7E60
-class CPSCEmitterGeneric { public: static CPSCBase* Alloc(); };   // 0x00AF7ED0
-class CPSCOrbit          { public: static CPSCBase* Alloc(); };   // 0x00AF7F40
-class CPSCAttractor      { public: static CPSCBase* Alloc(); };   // 0x00AF7FB0
-class CPSCLight          { public: static CPSCBase* Alloc(); };   // 0x00AF8020
-class CPSCSpline         { public: static CPSCBase* Alloc(); };   // 0x00AF8090
-class CPSCDecalRenderer  { public: static CPSCBase* Alloc(); };   // 0x00AF8100
+class CPSCRenderSprite   { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF7D10
+class CPSCRenderMesh     { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF7D80
+class CPSCSingleSprite   { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF7DF0
+class CPSCUpdateNormal   { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF7E60
+class CPSCEmitterGeneric { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF7ED0
+class CPSCOrbit          { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF7F40
+class CPSCAttractor      { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF7FB0
+class CPSCLight          { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF8020
+class CPSCSpline         { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF8090
+class CPSCDecalRenderer  { public: static CPSCBase* __fastcall Alloc(); };   // 0x00AF8100
 
 class CRegisteredPSCInfo { public:
     PSCAllocFunc AllocFunc;        // +0x00

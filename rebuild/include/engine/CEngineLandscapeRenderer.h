@@ -113,6 +113,11 @@ public:
     // only caller 0x00BE5D20 passes the patch's slot word and the patch). A declaration only: no layout change.
     void RegisterSubPatchForZSorting(long& index, CLandscapeBackgroundPatch* patch);    // 0x00B67E30
 #endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_PEEKTHEME
+    // Retail opt-in (row 0x00BEAB40 CWaterPatchMesh::GetWaterType): FableWin.pdb inline accessor
+    // ?PeekTheme@CEngineLandscapeRenderer@@QBEABUCLandscapeTheme@@K@Z (expanded at 0x00BEAC00: `mov ecx,[renderer+4B8h] ; imul edx,38h`).
+    const CLandscapeTheme& PeekTheme(unsigned long index) const { return LandscapeThemes[index]; }
+#endif
     CLandscapeGPUUpdateQueue       GPUUpdateQueue;                       // +0x00c
     CEngineLandscapeMeshBuilder    MeshBuilder;                          // +0x010
     float                          LODZBandsZ[8];                        // +0x498

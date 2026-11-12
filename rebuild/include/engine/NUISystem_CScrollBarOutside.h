@@ -14,6 +14,11 @@ public:
     CScrollBarOutside(const CScrollBarOutside&);
     virtual ~CScrollBarOutside();
     void GetDataFromDef();                                          // 0x00559230
+#ifdef FABLE_RETAIL_CSCROLLBAROUTSIDE_ONLEFTCLICKED
+    // Retail opt-in (wf2, row 0x005590C0): Ego_r.pdb / FableWin.pdb ?OnLeftClicked@CScrollBarOutside@NUISystem@@UAEXXZ, the override in
+    // slot 146 of the primary vtable 0x0124B54C (rtti-vtables.tsv). Declaration only: no layout or vtable change.
+    virtual void OnLeftClicked();                                   // 0x005590C0
+#endif
 protected:
     CComponent* PScrollBar;                                         // +0x194
     std::list<CCountedPointer<CAction> >* PActionsOnLeftClickedAbove; // +0x198

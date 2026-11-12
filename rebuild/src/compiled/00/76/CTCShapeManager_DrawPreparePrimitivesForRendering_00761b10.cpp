@@ -2,11 +2,11 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00761B10, length 52 bytes (+12 int3 padding); vtable CTCShapeManager 0x0126A2A4 slot 11.
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80 (the manifest label "CViewBase::GetDisplayEngine" is propagated), the
-// camera's virtual slot 11 (+0x2c, a C3DVector returned through the hidden pointer), CTCShapeManager::DrawShapes
-// (CEnginePrimitivePrepareInfo*, const C3DVector*) @ 0x00761980.
+// camera's virtual slot 11 (+0x2c, a C3DVector returned through the hidden pointer), the private
+// ?DrawShapes@CTCShapeManager@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@@Z @ 0x00761980 (Ego_r.pdb + FableWin.pdb).
 // Layout: engine/CWorld.h PCurrentGameCamera at +0x34.
 // Shape: the 12-byte position local is the hidden result slot of the virtual getter (a C3DVector with a user
-// constructor); DrawShapes takes its address; the prepare-info argument is re-read from its slot after the virtual call.
+// constructor); DrawShapes takes it by reference; the prepare-info argument is re-read from its slot after the virtual call.
 // The world (not the camera) is the named local and the camera member is read twice (test, then as `this`): VC CSEs it
 // straight into ecx; a camera pointer local is loaded into eax and copied (`mov ecx,eax`).
 #include "engine/C3DVector.h"
@@ -32,8 +32,9 @@ protected:
 };
 
 class CTCShapeManager : public CTCBase { public:
-    void DrawShapes(CEnginePrimitivePrepareInfo* info, const C3DVector* position);   // 0x00761980
     void DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info);
+private:
+    void DrawShapes(const CEnginePrimitivePrepareInfo& info, const C3DVector& viewPos);   // 0x00761980
 };
 
 void CTCShapeManager::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
@@ -41,6 +42,6 @@ void CTCShapeManager::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareI
     const CWorld* world = (&PeekWorld());
     if (world->PCurrentGameCamera) {
         C3DVector position = world->PCurrentGameCamera->GetPosition();
-        DrawShapes(info, &position);
+        DrawShapes(*info, position);
     }
 }

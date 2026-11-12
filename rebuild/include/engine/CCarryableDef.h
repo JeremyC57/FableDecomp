@@ -22,7 +22,14 @@ public:
     long          ActiveCarrySlot;                           // +0x28
     long          SecondaryActiveCarrySlot;                  // +0x2c
     long          PassiveCarrySlot;                          // +0x30
+#ifdef FABLE_RETAIL_CCARRYABLEDEF_ONKILLFX
+    // Nested opt-in (agentNF25b, row 0x007037D0 CThingObject::OnCollision): Ego_r.pdb OnKillFX (long, +0x34), the def index of the
+    // debris thing spawned when the object breaks (`mov eax,[edi+34h]`). Same layout.
+    long          OnKillFX;                                  // +0x34
+    unsigned char _tail_0x38[0x18];                          // +0x38 OffsetCoordRelativeToAttachToDummy .. IncludeInThingScansWhenCarried (opaque)
+#else
     unsigned char _tail_0x34[0x1c];                          // +0x34 OnKillFX .. IncludeInThingScansWhenCarried (opaque)
+#endif
 };
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlot) == 0x30);
 #else

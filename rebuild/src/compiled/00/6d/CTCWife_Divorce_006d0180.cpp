@@ -9,7 +9,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006D0180, 598 bytes (+ int3 padding), plain `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::Unmarry(bool) 0x006CFF10; LowerBound 0x0040F020;
 //   CTCCreatureOpinionOfHero::SetOpinionReactionMask 0x00681E30 / SetOpinionDeedMask 0x006822E0 / SetPersonalityOverride
-//   0x006820E0 / ClearAllKnownDeeds 0x00681A70 / ApplyOpinionTransientOffset 0x00682140; CTCBase::GetWorld 0x00686A70 (on the opinion
+//   0x006820E0 / ClearAllKnownDeeds 0x00681A70 / AdjustOpinionTransient 0x00682140; CTCBase::GetWorld 0x00686A70 (on the opinion
 //   TC) / CTCBase::GetPlayerManager 0x00686D40; CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature 0x00487DC0;
 //   CTCHeroStats::SetMarriageState 0x0057BC6E / GetMoralityMax 0x0057A67E / SetMorality 0x0057C2E6; the home's
 //   occupant getter 0x007EE540; the player GUI refresh 0x004378C0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790; CCharString 0x0099EBF0 /
@@ -63,6 +63,7 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 class CTCWife;
+enum EOpinion;                                  // MS forward enum (Ego_r.pdb)
 class CTCBase { public:
     virtual ~CTCBase();                         // slot 0 (0x00686830)
 protected:
@@ -80,7 +81,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
     void SetOpinionReactionMask(const CCharString& name);   // 0x00681E30
     void SetOpinionDeedMask(const CCharString& name);       // 0x006822E0
     void SetPersonalityOverride(const CCharString& name, bool force);   // 0x006820E0
-    void ApplyOpinionTransientOffset(long type, float amount, long a, long frames, float decay, bool ignorePersonality);   // 0x00682140 (6th parameter bool: retail tests it as a byte)
+    void AdjustOpinionTransient(EOpinion opinion, float amount, long a, long frames, float decay, bool ignorePersonality);   // 0x00682140 Ego_r/FableWin ?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z (6th parameter bool: retail tests it as a byte)
 private:
     void ClearAllKnownDeeds();                  // 0x00681A70 Ego_r/FableWin ?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@AAEXXZ (private)
 };
@@ -174,8 +175,8 @@ void CTCWife::Divorce()
         if (occupant) {
             CTCCreatureOpinionOfHero* other;
             if (occupant->Thing->GetInterface(&other, 0x4f)) {
-                other->ApplyOpinionTransientOffset(0, -1.0f, 0, CMainGameComponent::GetConstantFPS() * 300, 0.0f, 0);
-                other->ApplyOpinionTransientOffset(3, -2.0f, 0, CMainGameComponent::GetConstantFPS() * 300, -0.5f, 0);
+                other->AdjustOpinionTransient((EOpinion)0, -1.0f, 0, CMainGameComponent::GetConstantFPS() * 300, 0.0f, 0);
+                other->AdjustOpinionTransient((EOpinion)3, -2.0f, 0, CMainGameComponent::GetConstantFPS() * 300, -0.5f, 0);
             }
         }
     }

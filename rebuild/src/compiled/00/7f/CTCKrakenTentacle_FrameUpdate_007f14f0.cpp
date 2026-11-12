@@ -84,14 +84,14 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)   // the pointe
 class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
-extern const float g_one;                            // 0x0122DED8
 
-class CTCKrakenTentacle { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08();
+// agentNF19: the base is the shared retail CTCBase model (engine/CTCBase.h, FABLE_RETAIL_CTCBASE: vptr +0x00, ParentThing +0x04,
+// ToBeRemoved +0x08, size 0x0C), so the base call binds ?FrameUpdate@CTCBase@@UAEXXZ (0x006868A0, slot 9).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
+class CTCKrakenTentacle : public CTCBase { public:
     virtual void FrameUpdate();                      // slot 9
-    CThing*       ParentThing;                       // +0x04
-    unsigned char _pad08[0x08];
+    unsigned char _pad0c[0x04];
     CIntelligentPointer<CThing> PKraken;                 // +0x10
     unsigned char _pad18[0x28 - 0x18];
     bool          CanStrike;                         // +0x28
@@ -100,7 +100,6 @@ class CTCKrakenTentacle { public:
     long          QueuedStrikeTick;                  // +0x2c
     unsigned char _pad30[0x4c - 0x30];
     bool          DoneDeathStuff;                    // +0x4c
-    void FrameUpdate_Base();                         // 0x006868A0 (CTCBase::FrameUpdate)
     void CreateHeadEffect();                         // 0x007F0B10
     void RemoveObstruction();                        // 0x007F0810
     void TrackTarget();                              // 0x007F0C70
@@ -109,7 +108,7 @@ class CTCKrakenTentacle { public:
 };
 void CTCKrakenTentacle::FrameUpdate()
 {
-    FrameUpdate_Base();
+    CTCBase::FrameUpdate();
     CanStrike = false;
     if (!IS_THING_ALIVE(PKraken)) {
         ParentThing->Kill(false);
@@ -118,7 +117,7 @@ void CTCKrakenTentacle::FrameUpdate()
     {
         if (!DoneDeathStuff) {
             CThing* thing = ParentThing;
-            if (thing->EmergeFraction < g_one) {
+            if (thing->EmergeFraction < 1.0f) {
                 CTCCreatureFlags9* flags;
                 if (thing->GetInterface(&flags, 9))
                     flags->m_canBeTargeted = 0;

@@ -8,7 +8,7 @@
 //   CTCDPhysicalObstruction::Create(const C3DVector&, const C3DVector&, float) 0x007FD4B0 (static __fastcall; Ego_r.pdb
 //   `?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@@Z` / `?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z`,
 //   egor_signatures; catalog "GetFOVToBeInToBeTargetable" propagated); IS_THING_ALIVE(CThing* const&) 0x0040DCE0 and
-//   IS_THING_ALIVE<CThing*>(const CIntelligentPointer<CThing>&) 0x004CC340 (__fastcall, as landed); CThing::GetTCDriver
+//   IS_THING_ALIVE<CIntelligentPointer<CThing> >(const CIntelligentPointer<CThing>&) 0x004CC340 (__fastcall, as landed); CThing::GetTCDriver
 //   <CTCDExplosion> 0x007512C0 and <CTCDPhysicalObstruction> 0x007890EA (folded bodies, as landed);
 //   CTCDExplosion::SetThingAsImmune(CThing&) 0x0080CBF0; CBaseIntelligentPointer::GetPItem 0x00A01B50;
 //   CIntelligentPointer<CThing>(CThing*) 0x004A96F0, operator= 0x004A9760, ~CBaseIntelligentPointer 0x00A01C10;
@@ -75,8 +75,7 @@ public:
     unsigned char  _pad60[0x91 - 0x60];
     unsigned char  m_flags;                             // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
-    bool GetTCDriver(CTCDExplosion** out);              // 0x007512C0
-    bool GetTCDriver(CTCDPhysicalObstruction** out);    // 0x007890EA
+    template <class T> bool GetTCDriver(T** out);       // Ego_r ??$GetTCDriver@V<T>@@@CThing@@QAE_NPAPAV<T>@@@Z: CTCDExplosion 0x007512C0, CTCDPhysicalObstruction 0x007890EA
 };
 #pragma auto_inline(off)
 // Same-TU stand-ins for the out-of-line helpers (bodies as landed): VC7.1 then knows the frame words' addresses do not
@@ -89,7 +88,7 @@ template <> __declspec(noinline) bool __fastcall IS_THING_ALIVE<CThing*>(CThing*
         return true;
     return false;
 }
-__declspec(noinline) bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& pointer)   // 0x004CC340
+template <> __declspec(noinline) bool __fastcall IS_THING_ALIVE<CIntelligentPointer<CThing> >(const CIntelligentPointer<CThing>& pointer)   // 0x004CC340 (Ego_r/FableWin)
 {
     if (((CThing*)pointer.GetPItem()) != 0) {
         if ((((CThing*)pointer.GetPItem())->m_flags & 1) == 0)
@@ -97,7 +96,7 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntellig
     }
     return false;
 }
-__declspec(noinline) bool CThing::GetTCDriver(CTCDExplosion** out)                // 0x007512C0
+template <> __declspec(noinline) bool CThing::GetTCDriver<CTCDExplosion>(CTCDExplosion** out)                // 0x007512C0
 {
     if (m_usingBits & 2) {
         *out = (CTCDExplosion*)PTCDriver;
@@ -105,7 +104,7 @@ __declspec(noinline) bool CThing::GetTCDriver(CTCDExplosion** out)              
     }
     return false;
 }
-__declspec(noinline) bool CThing::GetTCDriver(CTCDPhysicalObstruction** out)      // 0x007890EA
+template <> __declspec(noinline) bool CThing::GetTCDriver<CTCDPhysicalObstruction>(CTCDPhysicalObstruction** out)      // 0x007890EA
 {
     if (m_usingBits & 0x2000) {
         *out = (CTCDPhysicalObstruction*)PTCDriver;
@@ -148,11 +147,11 @@ void CTCTrapBase::Trigger()
             CTCDExplosion* explosionDriver;
             explosion->GetTCDriver(&explosionDriver);
             for (CHitThing* it = HitThings.begin(); it != HitThings.end(); ++it)
-                if (IS_THING_ALIVE_004cc340(it->first))
+                if (IS_THING_ALIVE(it->first))
                     explosionDriver->SetThingAsImmune(*((CThing*)it->first.GetPItem()));
             long count = ImmuneThings.size();
             for (long i = 0; i < count; ++i)
-                if (IS_THING_ALIVE_004cc340(*(ImmuneThings.begin() + i)))
+                if (IS_THING_ALIVE(*(ImmuneThings.begin() + i)))
                     explosionDriver->SetThingAsImmune(*((CThing*)(ImmuneThings.begin() + i)->GetPItem()));
             if (PTrapDef->PhysicalObstructionDefIndex >= 0) {
                 float radius = explosionDriver->PhysicsRadius;

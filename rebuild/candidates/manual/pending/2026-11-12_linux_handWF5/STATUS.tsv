@@ -1,0 +1,7 @@
+009adae0	CDefinitionManager::InstantiateSubDef	RELOCATION_MATCH	8	inline SetAsTemplate(false) + shared headers
+00499aa0	CProgressDisplay::StartProgress	RELOCATION_MATCH	6	shared headers + implicit-conversion temporaries; no overlay, no flags
+00a11d10	CPhysicsMeshObject::GetNavigationLevelAt	RELOCATION_MATCH	49	named local + two-arg TransformPoint; Flags none; overlay CMatrix3x4.h + CPhysicsMesh.h
+007f53b0	CTCSoundAtmosphere::FrameUpdate	RELOCATION_MATCH	9	by-value inline HasAtmosGroup + CONSTFIND_TEMPLATE_BODY + GETDEF_INDEX_BODY; overlay FABLE_RETAIL_STLP_MULTIMAP_CONSTFIND
+0094d780	CAIStateGroup_TrollBase::Initialise	RELOCATION_MATCH	2	shared headers + real GetDef/GetSubDef template bodies visible (noinline); overlay opt-ins TROLLBASE, CEXPLOSIONDEF_MEMBERS
+0064c869	NPlayerGui::CDrawSpiritTargetingCursor::Draw	RELOCATION_MATCH	13	IS_THING_ALIVE real body visible out of line + port onto shared headers
+0095e0b0	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Update	RELOCATION_MATCH	7	early-return exits + shared headers + named fire result

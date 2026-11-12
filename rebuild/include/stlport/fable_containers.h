@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_STLPORT_CONTAINERS_H
 #define FABLE_STLPORT_CONTAINERS_H
 // STLport 4.6.2 excerpts: stl/type_traits.h, _iterator_base.h, _algobase.h, _construct.h, _uninitialized.h,
@@ -14,6 +15,16 @@
 #include "fable_compiler.h"
 #endif
 #if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP)
+#ifdef _MSC_VER
+#define FABLE_STLP_NOINLINE __declspec(noinline)
+#define FABLE_STLP_FASTCALL __fastcall
+#else
+#define FABLE_STLP_NOINLINE
+#define FABLE_STLP_FASTCALL
+#endif
+#endif
+#if (defined(FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_ERASE_NOINLINE)) && !defined(FABLE_STLP_NOINLINE)
+// Opt-ins (chunk Q6, row 0x00A66FD0): the visible-but-out-of-line list insert(iterator) / push_back() / erase(iterator) below.
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -134,10 +145,18 @@ template<class I,class O,class D> inline O __fastcall __copy(I first,I last,O re
 inline void* __copy_trivial(const void* first,const void* last,void* result) {
     return last==first?result:(char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
 }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
+#else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
+#endif
     return __copy(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
 }
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#endif
     return (Output)__copy_trivial(first,last,result);
 }
 template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T* result,const __true_type&) {
@@ -159,9 +178,22 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 }
 #endif
 // _construct.h
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class T,class U> inline void FABLE_FASTCALL _Construct(T* p,const U& v) { new(p) T(v); }
+template<class T> inline void FABLE_FASTCALL _Destroy(T* p) { p->~T(); }
+inline void FABLE_FASTCALL _Destroy(char*,char*) { }
+#else
 template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }
 inline void _Destroy(char*,char*) { }
+#endif
+#ifdef FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+// Retail opt-in (NF19, 2026-11-11): the nontrivial range destroy as the out-of-line /Gr COMDAT the caller only calls --
+// first/last in ecx/edx, the tag by reference on the stack (e.g. 0x006F2300 std::__destroy_aux<CCountedPointer<
+// CCombatSequenceBase>*>, called from CCombatManager::RegisterAttackingCombatant 0x006EDA80). Declaration only.
+#include "rebuild_abi.h"
+template<class I> void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&);
+#else
 #if defined(FABLE_RETAIL_STLP_DESTROY_AUX_NOINLINE) && defined(_MSC_VER)
 // Inline-budget: retain the actual nontrivial range destructor COMDAT call.
 template<class I> __declspec(noinline) void __destroy_aux(I first,I last,const __false_type&) {
@@ -170,17 +202,30 @@ template<class I> __declspec(noinline) void __destroy_aux(I first,I last,const _
 // Original native 0076a2a0 takes its range in ecx/edx and the tag on the stack.
 template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I> inline void FABLE_FASTCALL __destroy_aux(I first,I last,const __false_type&) {
+#else
 template<class I> inline void __destroy_aux(I first,I last,const __false_type&) {
+#endif
 #endif
 #endif
     for(;first!=last;++first) _Destroy(&*first);
 }
+#endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I> inline void FABLE_FASTCALL __destroy_aux(I,I,const __true_type&) { }
+#else
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
+#endif
 #ifdef FABLE_RETAIL_AUGMENTATION_PARTICLES
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I,class T> FABLE_FORCEINLINE void __destroy(I first,I last,T*) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I,class T> inline void FABLE_FASTCALL __destroy(I first,I last,T*) {
+#else
 template<class I,class T> inline void __destroy(I first,I last,T*) {
+#endif
 #endif
     typedef typename __type_traits<T>::has_trivial_destructor Trivial;
     __destroy_aux(first,last,Trivial());
@@ -189,7 +234,11 @@ template<class I,class T> inline void __destroy(I first,I last,T*) {
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I> inline void FABLE_FASTCALL _Destroy(I first,I last) {
+#else
 template<class I> inline void _Destroy(I first,I last) {
+#endif
 #endif
     __destroy(first,last,(typename iterator_traits<I>::value_type*)0);
 }
@@ -217,12 +266,20 @@ template<class I,class O> O __uninitialized_copy(I first,I last,O result,const _
 // Native 00769930/007698c0 take first/last in ecx/edx and result/tag on the stack.
 template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
+#else
 template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
+#endif
 #endif
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+template<class T> inline T* FABLE_FASTCALL __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
+#else
 template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
+#endif
     return (T*)__copy_trivial(first,last,result);
 }
 #ifdef FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
@@ -314,9 +371,16 @@ public:
     typedef size_t size_type;
     typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _IsPODType;
     explicit vector(const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(a) { }
+#ifdef FABLE_RETAIL_STLP_VECTOR_FILL_OUTOFLINE
+    // Per-TU opt-in (agentFAM10, 2026-11-12, row 0x004538EB COpinionSet::COpinionSet; like FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE): that
+    // size-optimised TU calls the fill constructor's COMDAT (vector<float> 0x004516E7, `ret 0Ch`, with the value and allocator
+    // temporaries in the caller's frame) where the body below would be expanded. Declaration only.
+    vector(size_type n,const _Tp& value,const _Alloc& a=_Alloc());
+#else
     vector(size_type n,const _Tp& value,const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(n,a) {
         this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
     }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
     // Per-TU opt-in (chunk 779, row 0x00BEAE50 CWaterPatchMesh::Load; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
     // vector(size_type n) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls
@@ -337,7 +401,11 @@ public:
     // (0x008A838C `mov ebp,[esp+18h] ; mov edi,[esp+14h]`, never reloaded).
     vector(const vector& x);
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    FABLE_FORCEINLINE vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
+#else
     vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
+#endif
         this->_M_finish=__uninitialized_copy((const _Tp*)x._M_start,(const _Tp*)x._M_finish,this->_M_start,typename __type_traits<_Tp>::is_POD_type());
     }
 #endif
@@ -395,6 +463,12 @@ public:
     void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
     _Tp& operator[](size_type n) { return *(begin()+n); }
     const _Tp& operator[](size_type n) const { return *(begin()+n); }
+#if defined(FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (chunk Q6, row 0x00542780 NUISystem::CIconText::AddIcon): the STLport push_back body below, visible but kept out
+    // of line, as the retail TU calls it (push_back<CEmbeddedIcon> 0x00543C90, whose body calls _M_insert_overflow 0x00543B70).
+    // Unlike the declaration-only FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE, c2 then knows push_back keeps no address of the value.
+    __declspec(noinline)
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
     // Per-TU opt-in (chunk 760, row 0x0086BE40 CRandomAppearanceMorph::GetRandomBodyParts; like
     // FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN): STLport's push_back is one inline body, which VC7.1
@@ -844,6 +918,15 @@ public:
     iterator insert(iterator position);
     void push_back() { insert(end()); }
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT_NOINLINE
+    // Per-TU opt-in (chunk Q6, row 0x00A66FD0 CMouse::ProcessMaintainedEventsFromEvent): STLport 4.6 _list.h `iterator
+    // insert(iterator __pos) { return insert(__pos, _Tp()); }` and `void push_back() { insert(end()); }`, bodies visible but kept
+    // out of line, as the retail TU calls them (list<CMaintainedEvent>::insert 0x009E4A20: the default value built in the frame,
+    // the node copy-constructed and linked, the value destroyed; push_back 0x009E4AA0). VC7.1 then knows neither keeps the list's
+    // nor the iterator's address.
+    FABLE_STLP_NOINLINE iterator insert(iterator position) { return insert(position,_Tp()); }
+    FABLE_STLP_NOINLINE void push_back() { insert(end()); }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST
     // Retail branch (chunk 726): STLport 4.6 _list.h size() / front() / push_front(). size() is distance(begin(), end())
     // with the input-iterator __distance loop inlined (NUISystem::CList::ChangeState 0x0053A0A1 counts the
@@ -865,6 +948,12 @@ public:
     const _Tp& back() const { const_iterator tmp=end(); return *(--tmp); }
     // chunk 749 (row 0x00549440 CTextSlider::ProcessEvent): STLport 4.6 _list.h erase(iterator) and pop_front() (`erase(begin())`);
     // retail calls the list<NUISystem::CList*> instances out of line (pop_front 0x0053C7D9 -> erase 0x0053C7B9).
+#ifdef FABLE_RETAIL_STLP_LIST_ERASE_NOINLINE
+    // Per-TU opt-in (chunk Q6, row 0x00A66FD0): the same body, kept out of line as the retail TU calls it
+    // (list<CMaintainedEvent>::erase 0x009E47E0: unlink, the element's virtual destructor, free; iterator by value, result by
+    // hidden pointer).
+    FABLE_STLP_NOINLINE
+#endif
     iterator erase(iterator position) {
         _List_node_base* next_node=position._M_node->_M_next;
         _List_node_base* prev_node=position._M_node->_M_prev;
@@ -1004,6 +1093,11 @@ template<class _RandomAccessIter> void sort(_RandomAccessIter,_RandomAccessIter)
 #endif
 template<class _RandomAccessIter,class _RandomNumberGenerator>
 void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter,_RandomNumberGenerator&);
+#ifdef FABLE_RETAIL_STLP_RANDOM_SHUFFLE_2ARG
+// Per-TU opt-in (wf4, row 0x008F10B0 CTCTavernGameCardBase::ShuffleCards): STLport 4.6 _algo.h two-argument random_shuffle, declared
+// only; retail calls the CCard** instantiation out of line as __fastcall (first ecx, last edx; 0x007D7860, landed with /Gr).
+template<class _RandomAccessIter> void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter);
+#endif
 #ifdef FABLE_RETAIL_STLP_BACK_INSERTER
 // Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise; the landed 0x007B3760 CTCGuard::OnSerialise models the same
 // locally): STLport 4.6 _iterator.h back_insert_iterator / back_inserter, and _algobase.h copy() declared only. Retail calls the copy

@@ -8,7 +8,7 @@
 //   PeekThingSearchTools @ 0x008FD000, GetPBestThing<HasDefGlobalIndex, Nearest> @ 0x009107B0 and the creature-filter
 //   FindThings @ 0x00943830 (both same-TU templates: noinline stand-ins here), the marker body's virtual slot 70 (+0x118,
 //   C3DVector by hidden pointer), CVectorMap::LowerBound const @ 0x004365B0 (interface 0x23), GFGetPVillageInterface
-//   @ 0x007EE540, CTCVillage::IsCookTime @ 0x00658A80, IsStopping @ 0x008FD010, GetPWorldSeed @ 0x008FCFD0 + GFROR13
+//   @ 0x007EE540, CTCVillage::IsStoryTime @ 0x00658A80, IsStopping @ 0x008FD010, GetPWorldSeed @ 0x008FCFD0 + GFROR13
 //   @ 0x00497890 (inline random step x3), MoveAndFace @ 0x009425F0, StandAndTalk @ 0x00942C70, StandAndAct @ 0x00942920
 //   (landed as StandAndAct(long); the caller passes a float), Terminate @ 0x008FCF40, free @ 0x00BFEA14 (vector storage).
 // Layout: the landed CAIStateGroup_TellStory::IsRunnable 0x00942D40 model; the marker's physics body (+0x60) holds its
@@ -63,9 +63,11 @@ class CThing { public:
         return has;
     }
 };
+// Name fix (agentNF26, 2026-11-12): CTCVillage::IsStoryTime 0x00658A80 is ?IsStoryTime@CTCVillage@@QBE_NXZ (Ego_r.pdb + FableWin.pdb; body
+//   IsTimeBetween over CVillageDef StoryStartTimes +0x44 / StoryDuration +0x50); was IsCookTime (a propagated label).
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsCookTime();                          // 0x00658A80
+    bool IsStoryTime() const;                   // 0x00658A80
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 class CCharString { public:
@@ -203,7 +205,7 @@ void CAIStateGroup_TellStory::Update()
             villager = (CTCVillager*)it->second;
         }
     }
-    while (((CTCVillageMember*)villager)->GetPVillage()->IsCookTime()) {
+    while (((CTCVillageMember*)villager)->GetPVillage()->IsStoryTime()) {
         if (IsStopping())
             break;
         CThingPtrVector listeners;

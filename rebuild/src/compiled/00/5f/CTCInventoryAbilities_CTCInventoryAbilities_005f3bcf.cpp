@@ -43,12 +43,17 @@ template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
 };
-struct SAbilityEntry {                             // pair<long, CDefPointer<const CHeroAbilityDef>>
-    long Level;
-    CDefPointer<CHeroAbilityDef> PDef;
-    SAbilityEntry(long level, const CDefPointer<CHeroAbilityDef>& def) : Level(level), PDef(def) {}
-    ~SAbilityEntry();                              // 0x005F8736
+// std::pair<long, CDefPointer<const CHeroAbilityDef> > (STLport, struct; agentNF20 2026-11-11: was the SAbilityEntry stand-in):
+// the inline (a, b) constructor and the out-of-line destructor FableWin.pdb ??1?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@QAE@XZ.
+namespace std {
+template <class _T1, class _T2> struct pair {
+    _T1 first;
+    _T2 second;
+    pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) {}
+    ~pair();                                       // 0x005F8736
 };
+}
+typedef std::pair<long, CDefPointer<const CHeroAbilityDef> > SAbilityEntry;
 struct CHeroAbilityDefEntryVector {                // vector<pair<long, CDefPointer<const CHeroAbilityDef>>>
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     CHeroAbilityDefEntryVector(unsigned long n, const SAbilityEntry& value, const SAllocator& allocator = SAllocator());   // 0x005F9BFE
@@ -120,7 +125,7 @@ CTCInventoryAbilities::CTCInventoryAbilities(CThing* thing)
       SpellToAssign(0), SpellSlotToSwap(0), PComponentSlotToSwap(0),
       WaitingToGiveTutorial(false), Initialised(false), CurrentSpecialAbilityUsedFromQuickAccess(false),
       ExperienceSpentOnAbilities(20, 0),
-      Abilities(20, SAbilityEntry(-1, CDefPointer<CHeroAbilityDef>()))
+      Abilities(20, SAbilityEntry(-1, CDefPointer<const CHeroAbilityDef>()))
 {
     CurrentAssignedAbilityLevel = -GetNumAssignableSpecialMoveButtons();
     CurrentAssignedExpressionLevel = -GetNumAssignableSpecialMoveButtons();

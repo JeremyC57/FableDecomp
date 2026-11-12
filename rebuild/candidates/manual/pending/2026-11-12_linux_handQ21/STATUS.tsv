@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+00b39080	CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh	RELOCATION_MATCH	6	ported onto the shared attached-primitive / animated-mesh / mesh-info / mesh-stats / matrix headers (6 overlay opt-ins); the port alone fixed the parked one-slot lea scheduling; the 6 include a final regrade and a no-overlay sanity SRC_FAIL
+00540320	NUISystem::CEditBox::KeyPressed	DIFFER(755v755)	7	ported onto NUISystem_CEditBox.h (+CText window-slot fix); residue: 3 vptr scratch regs eax/edx swapped, sub edi,5 vs add edi,-5
+007daef0	CTCTavernGameCardBlackjack::DealCard	DIFFER(904v904)	4	ported onto card_sorting_types.h + CTCTavernGame retail headers; same flip-branch register rotation residue
+00a78b20	CNavQuadTree::SaveToFile	DIFFER(678v678)	1	not ported (baseline regrade only)
+00649e8b	NPlayerGui::CDrawFishingGame::Draw	DIFFER(469v469)	1	not ported (baseline regrade only)
+006c1250	CTCBuyableHouse::FrameUpdate	DIFFER(638v638)	1	not ported; catalog name "Update" is wrong: vtable slot 9 = FrameUpdate
+0096cd70	CAIStateGroup_EatAtTable::Update	DIFFER(578v578)	1	not ported (baseline regrade only)
+0063f7c0	CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>,CThingFindNavigationLayerAt>	DIFFER(785v785)	1	not ported (baseline regrade only)
+00489d40	CPlayer::CreateCharacter	DIFFER(815v815)	1	not ported (baseline regrade only)
+00a1d290	CNavigatorAStar::CalculateRoute	DIFFER(817v817)	1	not ported (baseline regrade only)
+00814260	CTCBoastingPodium::OnInitialActivate	DIFFER(839v839)	1	not ported (baseline regrade only)
+00584b86	CTCInventory::AssignThingPC	DIFFER(854v854)	1	not ported (baseline regrade only)
+00622a00	CTCInventoryQuests::OpenInventory	DIFFER(877v877)	1	not ported (baseline regrade only)
+00b4a700	CEnginePrimitiveRenderer2D::Render	DIFFER(926v926)	1	not ported (baseline regrade only)

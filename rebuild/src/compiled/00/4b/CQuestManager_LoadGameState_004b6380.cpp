@@ -96,7 +96,6 @@ class CPersistContext { public:                           // Ego_r.pdb, 0x2c byt
     CMemoryDataInputStream* PLoadStream;           // +0x24
     void*                   PSaveStream;           // +0x28
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ""
 class CQuestManager { public:
     void LoadGameState(CStringParser& parser);     // 0x004B5500
     void TransferBoasts(CPersistContext& context); // 0x004B05C0
@@ -113,7 +112,7 @@ void CQuestManager::LoadGameState(CPersistContext& context)
         stream->ReadBuffer(buffer.GetData(), length);
         buffer[length] = 0;
         CCharString text((const char*)buffer.GetData(), -1);
-        CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+        CStringParser parser(text, 0, CCharString("", -1), 0);
         LoadGameState(parser);
     } else
         LoadGameState(*context.PParser);

@@ -25,9 +25,13 @@ public:
 };
 
 struct random_access_iterator_tag {};
-struct __false_type {};
+namespace std { struct __false_type {}; }
+using std::__false_type;
 
-void __fastcall __destroy_aux(CEnvironmentThemeDef* __first, CEnvironmentThemeDef* __last, const __false_type&);   // 0x00450B1B
+namespace std {
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00450B1B ??$__destroy_aux@PAVCEnvironmentThemeDef@@@std@@YIXPAVCEnvironmentThemeDef@@0ABU__false_type@0@@Z
+}
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
@@ -53,7 +57,7 @@ FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIt
 FABLE_FORCEINLINE void _Destroy(CEnvironmentThemeDef* __first, CEnvironmentThemeDef* __last)
 {
     __false_type __tag;
-    __destroy_aux(__first, __last, __tag);
+    std::__destroy_aux(__first, __last, __tag);
 }
 
 struct CEnvironmentThemeDefVector {

@@ -1,19 +1,19 @@
-// CTCShop::IsOpeningHours() -- false with no live shopkeeper; true when the shop def says the shop is always open; otherwise a villager shopkeeper keeps the village's hours (IsCookTime), anyone else is always open
+// CTCShop::IsOpeningHours() -- false with no live shopkeeper; true when the shop def says the shop is always open; otherwise a villager shopkeeper keeps the village's hours (IsWorkTime), anyone else is always open
 // Leaf: ?IsOpeningHours@CTCShop@@QBE_NXZ
 // Lever (chunk 840): `if (alwaysOpen) return true;` ahead of the villager block (instead of nesting the block under
 //   `if (!alwaysOpen)`) flips VC7.1's tie-break in the inline GetTC: the key address `lea ecx,[esp+18h]` now precedes
 //   `lea esi,[eax+44h]` as in retail (an IR-numbering tie; no GetTC/LowerBound spelling alone moved it). Same bytes otherwise.
 // Names (chunk 840): IsOpeningHours is const (Ego_r.pdb ?IsOpeningHours@CTCShop@@QBE_NXZ, engine/CTCShop.h); interface 0x23 is
 //   TCI_VILLAGE_MEMBER and 0x007EE540 is ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ (engine/CTCVillageMember.h; the
-//   parked rows' free `GFGetPVillageInterface(CTCVillager*)` was descriptive: NAME_FIXES); CTCVillage::IsCookTime is const
-//   (?IsCookTime@CTCVillage@@QBE_NXZ); the always-open byte is Ego_r.pdb CShopDef::AlwaysOpen (+0xAC in Ego_r, +0x9C in retail
+//   parked rows' free `GFGetPVillageInterface(CTCVillager*)` was descriptive: NAME_FIXES); CTCVillage::IsWorkTime is const
+//   (?IsWorkTime@CTCVillage@@QBE_NXZ; agentNF25b: was spelled IsCookTime, which is 0x00658B6B); the always-open byte is Ego_r.pdb CShopDef::AlwaysOpen (+0xAC in Ego_r, +0x9C in retail
 //   whose STLport containers are 12 bytes).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00773950, 324 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; CDefClassBase::GetSubDef(CDefPointer<const CShopDef>*)
 //          0x005130A0 (manifest label is a propagated byte twin; landed GetName 0x00772610 names it); CVectorMap<
 //          ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0x23 = word 1 bit 3, villager);
 //          GFGetPVillageInterface(CTCVillager*) 0x007EE540 (`__fastcall`; manifest "IS_THING_ALIVE<...>" is propagated);
-//          CTCVillage::IsCookTime() 0x00658B20; the defs' virtual slot 1 on release.
+//          CTCVillage::IsWorkTime() 0x00658B20; the defs' virtual slot 1 on release.
 // Layout (retail CTCShop, as the landed IsShopKeeperAvailable 0x00773AA0): ParentThing +0x04, PShopKeeper
 //          (CIntelligentPointer<CThingCreatureBase>) +0x10; CThing PDef +0x70; CShopDef always-open flag +0x9c (name
 //          unverified); the thing's interface bitset +0x20, map +0x44, dead flag bit 0 of +0x91.
@@ -111,7 +111,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 class CTCVillage {
 public:
-    bool IsCookTime() const;                    // 0x00658B20 ?IsCookTime@CTCVillage@@QBE_NXZ
+    bool IsWorkTime() const;   // 0x00658B20 ?IsWorkTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin; agentNF25b)
 };
 class CTCVillageMember {
 public:                       // interface TCI_VILLAGE_MEMBER = 0x23 (engine/CTCVillageMember.h)
@@ -141,7 +141,7 @@ bool CTCShop::IsOpeningHours() const
     CThing* keeper = reinterpret_cast<CThing*>(PShopKeeper.GetPItem());
     if (keeper->HasTC(0x23)) {
         if (CTCVillage* village = keeper->GetTC<CTCVillageMember>(0x23)->GetPVillage())
-            return village->IsCookTime();
+            return village->IsWorkTime();
     }
     return true;
 }

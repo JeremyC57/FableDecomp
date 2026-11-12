@@ -16,6 +16,7 @@
 //   the creature's def class is a named local so GetPItem is called before the out pointer is pushed.
 #include "fable_string.h"
 
+class CTCBase;
 class CTCParamsBase;
 
 class CTCHitOnCollision { public:                      // the component AddTC returns
@@ -166,7 +167,7 @@ class CThing { public:
     unsigned char _pad64[0x70 - 0x64];
     CDefClassBase* m_pDef;                      // +0x70
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
-    CTCHitOnCollision* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
 };
 
 class CBaseObject;
@@ -212,7 +213,7 @@ void CCreatureAction_BalverineLungeAttack::Initialise()
         CTCHitOnCollision* pHit;
         {
             CCharString name("CTCHitOnCollision", -1);
-            pHit = PCreature.GetPItem()->AddTC(name, false, 0);
+            pHit = (CTCHitOnCollision*)PCreature.GetPItem()->AddTC(name, false, 0);
         }
         pHit->m_hitsCreatures = true;
         pHit->m_hitsObjects = false;

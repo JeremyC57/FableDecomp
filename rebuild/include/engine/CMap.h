@@ -17,11 +17,20 @@ class CGameDefinitionManager;class CWorld;
 #include "stlport/fable_containers.h"
 #include "boost/scoped_ptr.h"
 class CGameMap;class CHeightMap;
+#ifdef FABLE_RETAIL_CMAP_ENGINEACCESSORS
+#include "engine/CHeightMap.h"
+#endif
 class CThemePaletteEntry {
 public:
     CThemePaletteEntry(unsigned long themeDefIndex, bool used) : ThemeDefIndex(themeDefIndex), ThemePaletteIndexUsed(used) {}
     unsigned long ThemeDefIndex;                                         // +0x00
     bool ThemePaletteIndexUsed;                                          // +0x04
+#ifdef FABLE_RETAIL_CTHEMEPALETTEENTRY_ACCESSORS
+    // Chunk Q28 (row 0x008F70F0): FableWin.pdb inline accessors ?SetThemePaletteIndexUsed@CThemePaletteEntry@@QAEX_N@Z and
+    // ?IsThemeUsed@CThemePaletteEntry@@QBE_NXZ (no out-of-line copy in Ego_r.pdb or Fable.exe). No layout change.
+    void SetThemePaletteIndexUsed(bool used) { ThemePaletteIndexUsed = used; }
+    bool IsThemeUsed() const { return ThemePaletteIndexUsed; }
+#endif
 };
 #endif
 class CAFile;class CScriptedMapBrush;class CScriptedMapBrushInit;
@@ -57,6 +66,18 @@ protected:
     // Ego_r.pdb donor order 0x008545D0 / 0x00854600 / 0x00854630 / 0x00854760 = retail (inline) / 0x008F6F90 / 0x008F6FC0 /
     // 0x008F70F0. GetThemePaletteIndexFromThemeDefIndex is inlined at its only retail call (no out-of-line copy is bound);
     // FindUnusedThemePaletteEntryIndex is inline at its first call there and called out of line (0x008F6F90) at its second.
+#ifdef FABLE_RETAIL_CMAP_THEMEPALETTE_GETINDEX_NONCONST
+    // Chunk Q28 (row 0x008F70F0): Ego_r.pdb / FableWin.pdb spell it ?GetThemePaletteIndexFromThemeDefIndex@CMap@@IAEEK@Z
+    // (protected, non-const, iterator over the non-const vector). Same body.
+    unsigned char GetThemePaletteIndexFromThemeDefIndex(unsigned long themeDefIndex)
+    {
+        unsigned long index = 0;
+        for (std::vector<CThemePaletteEntry>::iterator it = ThemePaletteEntryList.begin(); it != ThemePaletteEntryList.end(); ++it, ++index)
+            if (index > 0 && it->ThemeDefIndex == themeDefIndex)
+                return (unsigned char)index;
+        return 0;
+    }
+#else
     unsigned char GetThemePaletteIndexFromThemeDefIndex(unsigned long themeDefIndex) const
     {
         unsigned long index = 0;
@@ -65,6 +86,12 @@ protected:
                 return (unsigned char)index;
         return 0;
     }
+#endif
+#ifdef FABLE_RETAIL_CMAP_FINDUNUSED_OUTOFLINE
+    // Chunk Q28 (row 0x008F70F0): declared only; the TU defines the body out of class (retail 0x008F6F90 precedes the row in the same
+    // object and VC7.1 expands it at the first call there only).
+    unsigned char FindUnusedThemePaletteEntryIndex();                    // 0x008F6F90
+#else
     unsigned char FindUnusedThemePaletteEntryIndex()                     // 0x008F6F90 ?FindUnusedThemePaletteEntryIndex@CMap@@IAEEXZ
     {
         unsigned long index = 0;
@@ -73,7 +100,31 @@ protected:
                 return (unsigned char)index;
         return 0;
     }
+#endif
     void ZeroAllUnusedThemePaletteEntries();                             // 0x008F6FC0
+#ifdef FABLE_RETAIL_CMAP_ENGINEACCESSORS
+    // wf3 (row 0x0081F240 CMap::CopyPos): the per-cell engine theme / blend accessors of the map's height map.
+    // FableWin.pdb ?GetEngineThemeAtIncludingExtraCells@CMap@@IBEKJJK@Z, ?GetEngineBlendAtIncludingExtraCells@CMap@@IBEEJJK@Z,
+    // ?SetEngineBlendAtIncludingExtraCells@CMap@@IAEXJJEK@Z (inline in retail: Ego_r 0x00679D40 / 0x00679E10 / 0x00679C60 have no
+    // retail copy), ?SetEngineThemeAtIncludingExtraCells@CMap@@IAEXJJKK@Z (retail 0x0081EF30, out of line) and
+    // ?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z (retail 0x0081F240). Needs FABLE_RETAIL_CHEIGHTMAP_GETCELL and
+    // FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS (engine/CHeightMap.h is included above the class). No layout change.
+protected:
+    void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, unsigned long layer);   // 0x0081EF30
+    unsigned long GetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long layer) const
+    {
+        return ThemePaletteEntryList[HeightMap->GetCell(C2DCoordI(x, y)).GetEngineThemePaletteIndex(layer)].ThemeDefIndex;
+    }
+    unsigned char GetEngineBlendAtIncludingExtraCells(long x, long y, unsigned long index) const
+    {
+        return HeightMap->GetCell(C2DCoordI(x, y)).GetEngineBlend(index);
+    }
+    void SetEngineBlendAtIncludingExtraCells(long x, long y, unsigned char blend, unsigned long index)
+    {
+        HeightMap->GetCell(C2DCoordI(x, y)).SetEngineBlend(blend, index);
+    }
+    void CopyPos(const CMap& source, const C2DCoordI& from, const C2DCoordI& to);   // 0x0081F240
+#endif
 public:
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); // 0x008F70F0
 #endif

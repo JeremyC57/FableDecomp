@@ -58,7 +58,11 @@ struct CParticleEmitterManager {
     static CParticleEmitterManager* Get();                   // 0x00AEAAF0
     static CThing* __fastcall CreateEmitter(long defIndex, long param, float spacing, const C3DVector& pos, long flags);   // 0x006E11F0
 };
-void __fastcall CreateCameraShake(const C3DVector* position, long strength, long duration, long flags);   // 0x007F1B70
+enum EQuakeStrength { };                                  // agentNF19: CTCDRumble quake enums (values unused here)
+enum EQuakeLength { };
+class CTCDRumble { public:
+    static CThing* __fastcall Create(const C3DVector& position, EQuakeStrength strength, EQuakeLength length, bool flag);   // 0x007F1B70 ?Create@CTCDRumble@@SIPAVCThing@@ABVC3DVector@@W4EQuakeStrength@@W4EQuakeLength@@_N@Z (Ego_r 0x007EB500)
+};
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 class CTCBase
@@ -112,6 +116,6 @@ void CTCDExplosion::CreateStaticExplosion()
     }
     if (PExplosionDef->ShakeCamera) {
         C3DVector middle = (StartPos + EndPos) * 0.5f;
-        CreateCameraShake(&middle, PExplosionDef->ShakeStrength, PExplosionDef->ShakeDuration, 0);
+        CTCDRumble::Create(middle, (EQuakeStrength)PExplosionDef->ShakeStrength, (EQuakeLength)PExplosionDef->ShakeDuration, false);
     }
 }

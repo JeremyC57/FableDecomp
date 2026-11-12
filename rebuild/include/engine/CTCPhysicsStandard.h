@@ -27,8 +27,78 @@ protected:
     CRightHandedSet        RHSet;                            // +0x50
     CRightHandedSet        OldRHSet;                         // +0x68
     long                   RHSetLastFrameSet;                // +0x80
+#ifndef FABLE_RETAIL_CTCPHYSICSSTANDARD_FLAGS // agentFAM04 (2026-11-11)
     unsigned char          CollidesWithThings[0x1];          // +0x84 bitfield group: bool:1
     unsigned char          Impassable[0x3];                  // +0x85 bitfield group: bool:1
+#else // FABLE_RETAIL_CTCPHYSICSSTANDARD_FLAGS
+    // Ego_r.pdb CTCPhysicsStandard flag bits (struct_layouts_egor.tsv, `bool : 1` at +0x84 / +0x85, in declaration order); the
+    // retail getters test the same bits (IsAlwaysFacingMovementDirection 0x00724BF0 bit 0 of +0x84 .. IsPhysicsMeshImpassable
+    // 0x00724CE0 bit 7 of +0x85). Same layout as the opaque bytes (sizeof stays 0x88).
+    bool AlwaysFacingMovementDirection : 1;                  // +0x84 bit 0
+    bool AngledWithGround : 1;                               // bit 1
+    bool FeelsGravity : 1;                                   // bit 2
+    bool FeelsAirResistance : 1;                             // bit 3
+    bool OnGround : 1;                                       // bit 4
+    bool OnMesh : 1;                                         // bit 5
+    bool InteractsWithThings : 1;                            // bit 6
+    bool CollidesWithThings : 1;                             // bit 7
+    bool CollidesWithThingsOneWay : 1;                       // +0x85 bit 0
+    bool CollidesWithLandscape : 1;                          // bit 1
+    bool PhysicsEnabled : 1;                                 // bit 2
+    bool Immoveable : 1;                                     // bit 3
+    bool NavigationLayers : 1;                               // bit 4
+    bool PushableByHero : 1;                                 // bit 5
+    bool ExcludingCreatures : 1;                             // bit 6
+    bool Impassable : 1;                                     // bit 7
+#endif // FABLE_RETAIL_CTCPHYSICSSTANDARD_FLAGS
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_OVERRIDES
+// agentFAM04 (2026-11-11): CTCPhysicsBase overrides of CTCPhysicsStandard (vtable 0x01265F84) the declarations above
+// lack, in slot order; slots from the TLC vtable aligned with the Xbox 360 Test PDB order (agentFAM03), spellings Ego_r / FableWin
+// ?<name>@CTCPhysicsStandard@@. Overrides only: no vtable or layout change.
+protected:
+    virtual C2DVector GetOffsetVector() const;                      // slot 28, 0x00724D30
+public:
+    virtual bool IsPhysicsEnabled() const;                          // slot 37, 0x00724BA0
+    virtual void EnableGravity(bool);                               // slot 38, 0x007235E0
+    virtual bool IsGravityEnabled() const;                          // slot 39, 0x00724BB0
+    virtual bool HasNavigationLayers() const;                       // slot 42, 0x00724BC0
+    virtual bool IsAlwaysFacingMovementDirection() const;           // slot 47, 0x00724BF0
+    virtual bool IsAffectedByGravity() const;                       // slot 48, 0x00724C00
+    virtual bool IsAffectedByAir() const;                           // slot 49, 0x00724C10
+    virtual bool IsAngledWithGround() const;                        // slot 51, 0x00724C30
+    virtual bool IsImmoveable() const;                              // slot 52, 0x00724C40
+    virtual bool IsOnAnySurface() const;                            // slot 53, 0x00724C50
+    virtual bool IsOnMeshSurface() const;                           // slot 55, 0x00724C70
+    virtual bool IsOnGroundSurface() const;                         // slot 56, 0x00724C80
+    virtual bool CanCollideWithThings() const;                      // slot 57, 0x00724C90
+    virtual bool CanCollideWithThingsOneWay() const;                // slot 58, 0x00724CA0
+    virtual bool CanCollideWithLandscape() const;                   // slot 59, 0x00724CB0
+    virtual bool CanInteractWithThings() const;                     // slot 60, 0x00724CC0
+    virtual bool IsExcludingCreatures() const;                      // slot 61, 0x00724CD0
+    virtual bool IsPhysicsMeshImpassable() const;                   // slot 62, 0x00724CE0
+    virtual C3DVector GetFacingVector() const;                      // slot 70, 0x00723C00
+    virtual const CRightHandedSet& GetRHSet() const;                // slot 72, 0x00724BD0
+    virtual const CRightHandedSet& GetLastRHSet() const;            // slot 73, 0x00724BE0
+    virtual bool IsPushableByHero() const;                          // slot 83, 0x00724CF0
+    virtual void SetAsPushableByHero(bool);                         // slot 84, 0x00724D00
+    virtual void SetScaleFromOwner();                               // slot 86, 0x007236A0
+    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const; // slot 93, 0x00724D20
+protected:
+#endif // FABLE_RETAIL_CTCPHYSICSSTANDARD_OVERRIDES
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsAffectedByWind() const;  // slot 50, 0x00724C20
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_FLUSHONGROUND
+    // agentNF23 (2026-11-11, name-fix queue land1011cy): the override at 0x00723A10, Ego_r.pdb 0x0073A6D0 / FableWin.pdb 0x02527020
+    // ?SetRHSetAsFlushOnGround@CTCPhysicsStandard@@UAEXXZ (CTCPhysicsBase declares the slot). Declaration only (no layout change).
+public:
+    virtual void SetRHSetAsFlushOnGround();
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsStandard) == 0x88);
 #else // flattened Ego_r layout (the landed default)

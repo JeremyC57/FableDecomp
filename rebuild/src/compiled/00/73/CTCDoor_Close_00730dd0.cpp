@@ -23,7 +23,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-extern const CCharString g_DoorCloseAnimName;   // 0x013BAD38
+namespace { extern const CCharString SDoorCloseAnim; }   // 0x013BAD38
 class CAnimationEntry { public: long AnimIndex; };
 class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;
@@ -191,7 +191,7 @@ void CTCDoor_Methods::Close()
     CThingBaseDef* baseDef = Parent()->GetPBaseDef();
     CDefPointer<CAnimatingObjectDef> def;
     baseDef->GetSubDef(&def);
-    const CAnimationEntry* entry = def->Animation.GetAnimation(g_DoorCloseAnimName, 0, CAnimFilterNoGroup());
+    const CAnimationEntry* entry = def->Animation.GetAnimation(SDoorCloseAnim, 0, CAnimFilterNoGroup());
     CAnimInit init(6, 0, entry->AnimIndex, 1, false, 0, 100);
     animate.SetMainAnim(init, 1, 0);
     CTCSwitchableNavigation* navigation;

@@ -6,6 +6,8 @@
 // Leaf: ?SetValue@CIconText@NUISystem@@UAEXABVCWideString@@@Z
 // Local models: CWideString / CCharString as retail calls them (fable_string.h lacks the CWideString compare and the
 // CWideString -> CCharString conversion); Game/System text banks at +0x14 / +0x60 as the landed SetValue(ulong) 0x00542140.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was Empty_013bca24.
 class CWideString;
 class CCharString {
 public:
@@ -23,6 +25,8 @@ public:
  ~CWideString();                                     // 0x0099B510
  const CWideString& operator=(const CWideString&);         // 0x0099B7D0
  bool operator!=(const CWideString&) const;          // 0x0099B0F0
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
 namespace NGameText {
 class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
@@ -32,7 +36,6 @@ struct Game { unsigned char Pad[0x14]; CDataBank* TextBank; CDataBank* GetTextDa
 struct System { unsigned char Pad[0x60]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
 extern Game* Game_013b86a0;                          // 0x013B86A0
 extern System* System_013b871c;                      // 0x013B871C
-extern CWideString Empty_013bca24;                   // 0x013BCA24
 class C2DBoxF { public: float Left, Top, Right, Bottom; };
 namespace NUISystem {
 class CIconText { public:
@@ -77,13 +80,13 @@ void CIconText::SetValue(const CWideString& value)
 {
  if (Game_013b86a0) {
   CWideString text = Game_013b86a0->GetTextDataBank()->GetTextBySymbol(((CWideString*)&value)->ToCharString());
-  if (text != Empty_013bca24)
+  if (text != CWideString::NullString)
    Text = text;
   else
    Text = value;
  } else if (System_013b871c) {
   CWideString text = System_013b871c->GetTextDataBank()->GetTextBySymbol(((CWideString*)&value)->ToCharString());
-  if (text != Empty_013bca24)
+  if (text != CWideString::NullString)
    Text = text;
   else
    Text = value;

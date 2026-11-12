@@ -1,0 +1,7 @@
+- VC7.1 reuses a member load from before an inline search loop (vector start in edi) only through a VARIABLE assigned bare `begin()` (`it = v.begin(); it += n`); `v[n]`, `(v.begin()+n)->`, `&v[n]` always reload the member (0x008F70F0).
+- Two identical store tails in source are merged by VC7.1; retail's two different tails (one through the cached start, one reloading after a call) mean the claim was written in each arm with an iterator variable (0x008F70F0).
+- `v[uchar_index]` used twice CSEs `movzx ; shl ecx,3`; retail's `[edx+ecx*8]` twice means the index was widened into an `unsigned long` local first (0x008F70F0).
+- CIVCountedPointer::Reset adopts (chunk 850); a caller that hands over a pool object AddRefs after it -- through `ptr->AddRef()` (operator-> copy: `mov esi,ebx` + load/inc/store), not `raw->AddRef()` (`inc [ebx+4]`) (0x00A69B70).
+- VC7.1 inline budget: the same Reset body inlines in small callers but not after an early return + 4 calls; force-inline it in the shared header, then fix the register permutation with source facts (a named local for a nested call argument did it at 0x00A69B70).
+- A call nested as another call's argument vs. a named local can permute callee-saved registers (this/pool/data) without changing any instruction (0x00A69B70).
+- The PDB inline CTCTargetingPlayer::IsThingAnEnemy is retail 0x00802380: AreThingsEnemies(thing, parent) -- check argument order before using a PDB wrapper (0x008031E0).

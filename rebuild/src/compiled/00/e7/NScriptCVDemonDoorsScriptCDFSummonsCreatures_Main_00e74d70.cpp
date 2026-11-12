@@ -48,7 +48,6 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST = 0, SCRIPT_AI_PRIORITY_LOW =
                          SCRIPT_AI_PRIORITY_HIGH = 3, SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 bool FABLE_FASTCALL AreAllThingsInVectorDead(const std::vector<CScriptThing>& things);   // 0x00CBED00
-extern const float g_fZero;                                  // 0x0122DEDC (0.0f)
 
 void NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::Main()
 {
@@ -84,7 +83,7 @@ void NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::Main()
                 CScriptGameResourceObjectMovieBase movie;
                 Game->StartMovieSequence("", movie);
                 CWideScreenMagicPauseEntities pause(*Game);
-                if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                     face.Speak(Game->GetHero(), "TEXT_QST_088_SUMMON_WARNING", GROUP_SELECT_NONE, false, true, false);
                     while (face.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -107,7 +106,7 @@ void NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::Main()
                 if (answer == 1) {
                     if (IsActiveThreadTerminating())
                         return;
-                    if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+                    if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                         face.Speak(Game->GetHero(), "TEXT_QST_088_SUMMON_INTRO", GROUP_SELECT_NONE, false, true, false);
                         while (face.IsPerformingScriptTask()) {
                             Game->NewScriptFrame();
@@ -150,7 +149,7 @@ void NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::Main()
                     Game->StartMovieSequence("", movie);
                     CWideScreenMagicPauseEntities pause(*Game);
                     Game->Pause(2.0f);
-                    if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+                    if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                         face.Speak(Game->GetHero(), "TEXT_QST_088_SUMMON_OPENING", GROUP_SELECT_NONE, false, true, false);
                         while (face.IsPerformingScriptTask()) {
                             Game->NewScriptFrame();

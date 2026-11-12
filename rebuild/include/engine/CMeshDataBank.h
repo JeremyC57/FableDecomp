@@ -192,6 +192,11 @@ public:
     long                          UnloadableMeshMemory;      // +0x424
     long                          UnloadMeshFrameDelay;      // +0x428
     unsigned char                 StateBlock[0x34];          // +0x42c CMeshBankStateBlock
+#ifdef FABLE_RETAIL_CMESHDATABANK_GETANIMATIONMANAGER
+    // Retail opt-in (chunk Q21, row 0x00B39080): FableWin.pdb ?GetAnimationManager@CMeshDataBank@@QBEAAVC3DAnimationManager@@XZ
+    // (0x01B38250; inline in retail: `mov esi,[esi+3C0h]`, the counted pointer's Data, 0x00B39117). No layout change.
+    C3DAnimationManager& GetAnimationManager() const { return *AnimationManager_Data; }
+#endif
 #ifdef FABLE_RETAIL_CMESHDATABANK_PEEKANIMATION
     // Opt-in (chunk 1017, row 0x008365F0): Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z (retail 0x00A242C0,
     // reloc_bindings.tsv from landed 0x00861950). Declaration only.

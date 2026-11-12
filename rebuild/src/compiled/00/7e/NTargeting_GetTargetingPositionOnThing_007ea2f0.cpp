@@ -33,10 +33,10 @@
 #include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
 #include "engine/NTargeting.h"
 
-extern CCharString g_CCharString_013bac50;          // "TARGET_CURSOR_POINT" (landed static initialiser 0x0121E700)
-extern CCharString g_CCharString_013bac4c;          // landed static initialiser 0x0121E6E0
-extern CCharString g_CCharString_013bacdc;
-extern CCharString g_CCharString_013bac48;          // landed static initialiser 0x0121E6C0
+extern const CCharString TARGETING_CURSOR_POSITION_NAME;          // "TARGET_CURSOR_POINT" (landed static initialiser 0x0121E700)
+extern const CCharString CAMERA_FOCAL_POSITION_NAME;          // landed static initialiser 0x0121E6E0
+extern const CCharString STAB_POS;
+extern const CCharString MAIN_FOCAL_POSITION_NAME;          // landed static initialiser 0x0121E6C0
 
 C3DVector __fastcall NTargeting::GetTargetingPositionOnThing(const CWorld& world, const CThing& thing, float scale)
 {
@@ -45,13 +45,13 @@ C3DVector __fastcall NTargeting::GetTargetingPositionOnThing(const CWorld& world
     C3DVector pos;
     const NGraphicAppearance::CTCGraphicAppearance* appearance = thing.GetTCGraphicAppearance();
     if (appearance) {
-        if (appearance->GetHelperPoint(g_CCharString_013bac50, 0, 0x20, pos, scale))
+        if (appearance->GetHelperPoint(TARGETING_CURSOR_POSITION_NAME, 0, 0x20, pos, scale))
             return pos;
-        if (appearance->GetHelperPoint(g_CCharString_013bac4c, 0, 0x20, pos, scale))
+        if (appearance->GetHelperPoint(CAMERA_FOCAL_POSITION_NAME, 0, 0x20, pos, scale))
             return pos;
-        if (appearance->GetHelperPoint(g_CCharString_013bacdc, 0, 0x20, pos, scale))
+        if (appearance->GetHelperPoint(STAB_POS, 0, 0x20, pos, scale))
             return pos;
-        if (appearance->GetHelperPoint(g_CCharString_013bac48, 0, 0x20, pos, scale))
+        if (appearance->GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, 0x20, pos, scale))
             return pos;
     }
     pos = thing.GetPhysicsTC()->GetPosition(scale) + C3DVector(0.0f, 0.0f, 0.25f);

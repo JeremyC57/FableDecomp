@@ -33,7 +33,11 @@ template <class T> inline void _Destroy(T* first, T* last)   // STLport range de
         first->~T();
 }
 template <class T> struct allocator { allocator() {} };
-template <class T> void __fastcall _Destroy_range(T* first, T* last, const allocator<T>& alloc);   // 0x00696790 for this T
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00696790 for this T (std::__destroy_aux<T*>)
+}
 
 template <class T> struct CVectorBase {                 // STLport _Vector_base, 12 bytes
     T* _M_start;
@@ -45,7 +49,7 @@ template <class T> struct CInlineDestroyVector : CVectorBase<T> {      // vector
     ~CInlineDestroyVector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 template <class T> struct COutOfLineDestroyVector : CVectorBase<T> {   // vector<CCountedPointer<CActionEventBase> >
-    ~COutOfLineDestroyVector() { _Destroy_range(this->_M_start, this->_M_finish, allocator<T>()); }
+    ~COutOfLineDestroyVector() { std::__destroy_aux(this->_M_start, this->_M_finish, std::__false_type()); }
 };
 
 struct SRbTreeNodeBase {                                // STLport _Rb_tree_node_base

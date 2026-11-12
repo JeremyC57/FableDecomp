@@ -4,16 +4,18 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8EA0, 129 bytes (+ int3 padding), `ret`; vtable 0x01267C3C slot 3.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x43 = bit 3 of the bitset dword at +0x28 =
-//   CTCLook), CThingCreatureBase::IsRegisteredCombatant @ 0x00662410, CModeBase::GetWorld @ 0x0073A680 (combat manager
+//   CTCLook), CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410, CModeBase::GetWorld @ 0x0073A680 (combat manager
 //   at +0x4c), CCombatManager::GetCombatantInfo @ 0x006E9360, CThing::GetPos @ 0x004C73D0,
 //   CTCLook::LookAtPos(const C3DVector*, long priority) @ 0x00753E90, CModeBase::FrameUpdate @ 0x0073AC50 (qualified).
 // Name: FableWin.pdb `?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ` (slot 3).
 // Layout: CModeBase (retail 0x1c) ParentThing +0x04; CModeBlock PCreature +0x1c (Ego_r.pdb). CCombatantInfo (Ego_r.pdb):
 //   Parent +0, AttackerInfo +4 whose first member is Attacked.
 // Shape: the out-parameter GetInterface with the ternary entry pick (the landed CModeBlock::OnActivate 0x008D8CE0 model);
-//   the component stays in esi across the combat calls; IsRegisteredCombatant and GetCombatantInfo both take PCreature;
+//   the component stays in esi across the combat calls; IsInMeleeAsAttacker and GetCombatantInfo both take PCreature;
 //   the combat manager is a named local so GetWorld is called before PCreature is pushed; Attacked is re-read through
 //   the info pointer at each use (a named `attacked` local moves it from ecx to eax and adds a `mov ecx,eax`).
+// Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+//   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
 class CTCBase;
 
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -24,7 +26,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 #include "engine/C3DVector.h"
 
 class CThingCreatureBase : public CThing { public:
-    bool IsRegisteredCombatant() const;    // 0x00662410
+    bool IsInMeleeAsAttacker() const;    // 0x00662410
 };
 
 class CTCLook { public:                           // interface 0x43
@@ -65,7 +67,7 @@ void NCreatureMode::CModeBlock::FrameUpdate()
 {
     CTCLook* look;
     if (ParentThing->GetTC(TCI_LOOK, &look)) {
-        if (PCreature->IsRegisteredCombatant()) {
+        if (PCreature->IsInMeleeAsAttacker()) {
             CCombatManager* combatManager = GetWorld()->CombatManager;
             CCombatantInfo* info = combatManager->GetCombatantInfo(PCreature);
             if (info->AttackerInfo.Attacked != 0 && !info->AttackerInfo.Attacked->IsDead())

@@ -9,6 +9,10 @@
 // Shape: `ret 8` = hidden result + one argument; the two `dec eax ; je` tests are a two-case switch
 // (case 1 = day only, case 2 = night only) with the default (empty string) laid out first; the result
 // pointer is hoisted into esi/ecx above the dispatch.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the suffix globals are the public static consts of CTCDayOrNightOnlySupport (Ego_r.pdb +
+//   FableWin.pdb `dynamic initializer for 'CTCDayOrNightOnlySupport::...'', initializers landed by agentFAM09; Anniv360 @@2VCCharString@@B):
+//   0x013BAC18 CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX ("DayOnly", initializer 0x0121E5C0), was g_DayOnlySuffix.
+//   0x013BAC1C CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX ("NightOnly", initializer 0x0121E5E0), was g_NightOnlySuffix.
 class CCharString { public:
     void* m_pStringData;                                    // CCharStringData*
     CCharString(const char* text, long length);             // 0x0099EBF0 (-1 = strlen)
@@ -17,10 +21,10 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
-extern CCharString g_DayOnlySuffix;                         // 0x013BAC18 "DayOnly"
-extern CCharString g_NightOnlySuffix;                       // 0x013BAC1C "NightOnly"
 
 class CTCDayOrNightOnlySupport { public:
+    static const CCharString DAY_ONLY_SUFFIX;     // 0x013BAC18 ?DAY_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "DayOnly"
+    static const CCharString NIGHT_ONLY_SUFFIX;   // 0x013BAC1C ?NIGHT_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "NightOnly"
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     long          DayNightOrBoth;                           // +0x0c EDayNightOrBoth
@@ -31,9 +35,9 @@ CCharString CTCDayOrNightOnlySupport::GetSectionNameSuffix(const CCharString& na
 {
     switch (DayNightOrBoth) {
     case 1:
-        return name + g_DayOnlySuffix;
+        return name + CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX;
     case 2:
-        return name + g_NightOnlySuffix;
+        return name + CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX;
     }
     return CCharString("", -1);
 }

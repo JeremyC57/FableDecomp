@@ -35,12 +35,20 @@ public:
     // Nested opt-in (chunk 768, row 0x00969E70): FableWin.pdb ??0C2DVector@@QAE@ABVC3DVector@@@Z (the X / Y of a 3D position; inline in
     // retail; the body follows the class).
     C2DVector(const class C3DVector& v);
+#ifdef FABLE_RETAIL_C2DVECTOR_ASSIGN3D
+    void operator=(const class C3DVector& v);
+#endif
 #endif
     C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }
     C2DVector operator-(const C2DVector& vector) const { return C2DVector(X-vector.X,Y-vector.Y); }
     // lib_coord.hpp arithmetic used by Mass (row 008eec70; Codex pass 11 Mass model, parked row).
     const C2DVector operator-() const { return C2DVector(-X,-Y); }
+    #ifdef FABLE_RETAIL_NAVIGATORASTAR_PASS21
+    // Original PDB parameter spelling: VECTOR_MULTIPLY_LOCALS.txt.
+    const C2DVector operator*(float scale) const { return C2DVector(X*scale,Y*scale); }
+#else
     const C2DVector operator*(float scalar) const { return C2DVector(X*scalar,Y*scalar); }
+#endif
     const C2DVector& operator+=(const C2DVector& vector) { X+=vector.X; Y+=vector.Y; return *this; }
     // lib_coord.hpp division through the reciprocal (row 0x00547050 NUISystem::CScrollingComponent::UpdatePosition:
     // `fld 1.0 ; fdiv [time]` then two fmul; also the landed base 0x0052FFD0's local model).
@@ -72,6 +80,11 @@ public:
     {
         return fabs(X-vector.X)<=DELTA_NOTIONAL_ZERO && fabs(Y-vector.Y)<=DELTA_NOTIONAL_ZERO;
     }
+#ifdef FABLE_RETAIL_C2DVECTOR_ROTATE
+    // Retail opt-in (chunk Q17, row 0x00A87700 CSBCAgents::Process): Ego_r.pdb ?Rotate@C2DVector@@QAEXM@Z (the angle in revolutions:
+    // fpatan, scaled by 1/(2 pi), plus the turn, then fsin / fcos), out of line in retail at 0x00A141D0. Declaration only.
+    void Rotate(float revolutions);                                          // 0x00A141D0
+#endif
 #ifdef FABLE_RETAIL_C2DVECTOR_NORMALISE
     // Retail opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb / FableWin.pdb ?Normalise@C2DVector@@QAEAAV1@XZ
     // (out of line in retail, 0x00A14540, landed; `lea ecx,[esp+38h] ; call 0x00A14540` at 0x00A1C164) and FableWin
@@ -79,10 +92,19 @@ public:
     // DELTA_NOTIONAL_ZERO squared: `fld [129BA3Ch] ; fmul [129BA3Ch] ; fcompp ; test ah,5 ; jp`).
     C2DVector& Normalise();                                                  // 0x00A14540
     // FableWin ??XC2DVector@@QAEABV0@M@Z (scale in place; CullWayPoints scales the perpendicular in its own slot, 0x00A1C1FC..0x00A1C208).
+    #ifdef FABLE_RETAIL_NAVIGATORASTAR_PASS21
+    // Original PDB parameter spelling: VECTOR_MULTIPLY_LOCALS.txt.
+    const C2DVector& operator*=(float scale) { X*=scale; Y*=scale; return *this; }
+#else
     const C2DVector& operator*=(float scalar) { X*=scalar; Y*=scalar; return *this; }
+#endif
 #ifdef FABLE_RETAIL_C2DVECTOR_ISNONZERO_DIRECT
     bool IsNonZero() const { return X*X+Y*Y>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
 #else
+#ifdef FABLE_RETAIL_C2DVECTOR_ISNONZERO_FORCEINLINE
+    // Prior875 inline-budget evidence: native expands every site after natural and budget probes failed.
+    FABLE_FORCEINLINE
+#endif
     bool IsNonZero() const { return GetSquaredMagnitude()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
 #endif
 #endif
@@ -91,6 +113,9 @@ public:
 #ifdef FABLE_RETAIL_C2DVECTOR_FROM3D
 #include "engine/C3DVector.h"
 inline C2DVector::C2DVector(const C3DVector& v) : X(v.X),Y(v.Y) { }
+#ifdef FABLE_RETAIL_C2DVECTOR_ASSIGN3D
+inline void C2DVector::operator=(const C3DVector& v) {X=v.X;Y=v.Y;}
+#endif
 #endif
 #else
 class C2DVector {

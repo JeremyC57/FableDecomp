@@ -4,6 +4,14 @@
 // Retail opt-in (Codex pass 11 consolidation 2): needs FABLE_RETAIL_CRESOURCELIST and FABLE_RETAIL_DEF_CLASS_BASE.
 #include "engine/CResourceList.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
+#include "fable_string.h"
+#include "engine/CArray.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CDefString.h"
+#include "engine/CSymbolMap.h"
+#include "engine/CDefClassInit.h"
+#endif
 // Original Ego_r TPI0x9fbd: public CResourceList base; retail009b02e0
 // tears down complete native0xd0 object, with 12-byte STLport containers.
 class CDefClassBase;
@@ -11,6 +19,12 @@ class CDefString;
 class CDefinitionManager : public CResourceList {
     friend class CDefClassBase;
 public:
+#if defined(FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL) && !defined(FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF)
+    // agentNF28 (row 0x009B4BD0 vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow): the nested record named
+    // only, for TUs that use pointers to it without its layout (Ego_r.pdb CDefinitionManager::CInstantiatedDefInfo; InstantiatedDefs
+    // +0xA4 is CArray<CInstantiatedDefInfo*>). Declaration only, no layout change.
+    class CInstantiatedDefInfo;
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
     // Retail opt-in (agentNF3, rows 0x006B3600 / 0x006B3680 / 0x006B37A0 / 0x006B3800 / 0x006B38D0, the CEnvironment theme setters):
     // Ego_r.pdb / FableWin.pdb ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z (const), out of line in retail at
@@ -22,6 +36,15 @@ public:
     // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb / FableWin.pdb ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z,
     // out of line in retail at 0x009B0AC0 (landed); called 111 times by RegisterTCs on CGameDefinitionManager::Get(). Declaration only.
     void AddDefClass(const class CDefClassInit& init);                 // 0x009B0AC0
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_COMPILEDDEFDIR
+    // agentFAM09 opt-in (row 0x01224050, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CDefinitionManager::CompiledDefDirectory'' (default CWideString at 0x013CA7DC; the static setter
+    // ?SetCompiledDefDirectory@CDefinitionManager@@SIXABVCWideString@@@Z writes it); protected static per Anniv360 Test PDB (third
+    // source) ?CompiledDefDirectory@CDefinitionManager@@1VCWideString@@A. Static member: no layout change.
+protected:
+    static CWideString CompiledDefDirectory;                             // 0x013CA7DC
+public:
 #endif
     virtual ~CDefinitionManager();
     long GetGlobalIndexFromClassIndex(const CCharString&,long) const;
@@ -59,11 +82,61 @@ public:
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const;
 protected:
     CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long);
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
+    // Retail opt-in (wf2, row 0x009ADC90 CDefinitionManager::InstantiateDef): the two nested records (Ego_r TPI
+    // CDefinitionManager::CDefClassInfo: Name +0, AllocFunc +4, GlobalIndices +8, retail 20 bytes with the 12-byte STLport vector;
+    // CDefinitionManager::CInstantiatedDefInfo, 16 bytes: ClassName +0, InstantiationName +4, ClassIndex +8, PDef +0xC), the typed
+    // PSymbolMap / PDefinitionSymbolMap / InstantiatedDefs members (same offsets and sizes as the opaque default) and the two
+    // protected members ?GetPDefClassInfo@CDefinitionManager@@IAEPAVCDefClassInfo@1@ABVCCharString@@@Z 0x009AD580 and
+    // ?InstantiateDef@CDefinitionManager@@IAE_NABVCCharString@@0_N@Z 0x009ADC90 (Ego_r.pdb / FableWin.pdb).
+    // The record's constructors are FableWin.pdb's (debug, out of line there; inline in retail and absent from Ego_r.pdb's list):
+    // ??0CInstantiatedDefInfo@CDefinitionManager@@QAE@VCDefString@@0KABV?$CDefPointer@VCDefClassBase@@@@@Z (FableWin 0x03061650:
+    // two CDefString by value, an unsigned long and a `const CDefPointer<CDefClassBase>&`) and the default
+    // ??0CInstantiatedDefInfo@CDefinitionManager@@QAE@XZ (FableWin 0x0305D840; declared only, its body is not reconstructed). Public
+    // symbols carry no parameter names: class_name / instantiation_name / class_index / pdef are descriptive.
+    // Needs FABLE_RETAIL_CCHARSTRING, FABLE_RETAIL_CDEFSTRINGTABLE, FABLE_RETAIL_CSYMBOLMAP, FABLE_RETAIL_CDEFPOINTER_POINTER_CTOR_ADOPT.
+    class CDefClassInfo {
+    public:
+        CCharString Name;                                                // +0x00
+        CDefClassInit::TAllocFunc AllocFunc;                             // +0x04 (__fastcall: FableWin ??0CDefClassInit@@QAE@ABVCCharString@@P6IPAVCDefClassBase@@XZ@Z)
+        CArray<unsigned long> GlobalIndices;                             // +0x08
+    };
+    class CInstantiatedDefInfo {
+    public:
+        CInstantiatedDefInfo();                                          // FableWin 0x0305D840 (declaration only)
+        CInstantiatedDefInfo(CDefString class_name, CDefString instantiation_name, unsigned long class_index, const CDefPointer<CDefClassBase>& pdef)
+            : ClassName(class_name), InstantiationName(instantiation_name), ClassIndex(class_index), PDef(pdef) { }   // FableWin 0x03061650
+        CDefString ClassName;                                            // +0x00
+        CDefString InstantiationName;                                    // +0x04
+        unsigned long ClassIndex;                                        // +0x08
+        CDefPointer<CDefClassBase> PDef;                                 // +0x0c
+    };
+    CDefClassInfo* GetPDefClassInfo(const CCharString& name);            // 0x009AD580
+    bool InstantiateDef(const CCharString& class_name, const CCharString& instantiation_name, bool is_template);   // 0x009ADC90
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATESUBDEF
+    // Retail opt-in (wf5, row 0x009ADAE0 CDefinitionManager::InstantiateSubDef; needs FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF):
+    // Ego_r.pdb / FableWin.pdb ?InstantiateSubDef@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@ABVCCharString@@K@Z
+    // 0x009ADAE0 and ?LoadDef@CDefinitionManager@@IBEXK@Z 0x009AD6E0 (protected, const), plus the inline body of the protected
+    // non-const GetPDefFromGlobalIndex(long) (below the class; retail expands it inline in InstantiateSubDef and also keeps
+    // out-of-line copies at 0x009AD9E0 / 0x009ADA10). Declarations and an inline body only, no layout change.
+    CDefPointer<CDefClassBase> InstantiateSubDef(const CCharString& class_name, unsigned long parent_index);   // 0x009ADAE0
+    void LoadDef(unsigned long index) const;                             // 0x009AD6E0
+#endif
     unsigned char PDefTypeDebugInfoMap[4];
     unsigned char SymbolPathList[12],CompilePathList[12];
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
+    CCountedPointer<CSymbolMap> PSymbolMap,PDefinitionSymbolMap;
+#else
     unsigned char PSymbolMap[8],PDefinitionSymbolMap[8];
+#endif
     unsigned char NameCRCToIndexMap[16],DefClassInfo[16];
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
+    unsigned char CompressedDefData[12],CompressedOffsets[16];
+    CArray<CInstantiatedDefInfo*> InstantiatedDefs;
+#else
     unsigned char CompressedDefData[12],CompressedOffsets[16],InstantiatedDefs[12];
+#endif
     unsigned char ErrorCallback[4],CurrentFilename[4],CompiledFileName[4];
     unsigned long DependencyCheckCRC;
     bool UseSafeBinaryFormat;
@@ -71,6 +144,15 @@ protected:
     unsigned char RecompiledDefs[12];
 };
 FABLE_STATIC_ASSERT(sizeof(CDefinitionManager)==0xd0);
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATESUBDEF
+// ?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z (Ego_r.pdb / FableWin.pdb): make sure the
+// def is loaded, then hand out a counted copy of its record's handle (retail 0x009ADBE5..0x009ADBFF inside InstantiateSubDef).
+inline CDefPointer<CDefClassBase> CDefinitionManager::GetPDefFromGlobalIndex(long index)
+{
+    LoadDef(index);
+    return InstantiatedDefs[index]->PDef;
+}
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
 // Original FableWin01ccd240 and native00513160: genuine global-index lookup.
 #if defined(_MSC_VER)
@@ -178,6 +260,12 @@ struct _func___cdecl_void_CCharString_ptr;
 #pragma pack(push, 1)
 class CDefinitionManager {
 public:
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL
+    // agentNF28 (row 0x009B4BD0 vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow): the nested record named
+    // only, for TUs that use pointers to it without its layout (Ego_r.pdb CDefinitionManager::CInstantiatedDefInfo; InstantiatedDefs
+    // +0xA4 is CArray<CInstantiatedDefInfo*>). Declaration only, no layout change.
+    class CInstantiatedDefInfo;
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
     // Retail opt-in (agentNF3, rows 0x006B3600 / 0x006B3680 / 0x006B37A0 / 0x006B3800 / 0x006B38D0, the CEnvironment theme setters):
     // Ego_r.pdb / FableWin.pdb ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z (const), out of line in retail at

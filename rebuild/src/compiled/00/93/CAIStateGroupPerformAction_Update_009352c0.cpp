@@ -15,6 +15,7 @@
 // retail (PDB 0x130).
 // Shape: both lookups use the out-parameter GetInterface with the HasTC byte bound to a `const unsigned char&`; the
 // perception lookup goes through a const creature (const LowerBound); the misses read the never-written slots.
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -74,19 +75,20 @@ class CTCAIScratchpad { public:                        // interface 0xAA
     CCharString Action;                         // +0x48
     bool FaceHeroForAction;                     // +0x4c
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject* item);          // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // vtable 0x01237F1C
     virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem((CBaseObject*)item); }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {      // vtable 0x0123E7D8
     virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerCreature(CThingCreatureBase* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerCreature(CThingCreatureBase* item) { SetPItem((CBaseObject*)item); }
 };
 class CCreatureActionBase { public:
     virtual void v00();

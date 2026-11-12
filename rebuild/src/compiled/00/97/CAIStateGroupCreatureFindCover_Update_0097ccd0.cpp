@@ -47,7 +47,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCPerceiveThing { public:                       // interface 0x34
-    CThing* GetPerceivedThing();                // 0x007446A0
+    const CThing* GetPerceivedThing() const;    // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
 };
 class CBaseObject;

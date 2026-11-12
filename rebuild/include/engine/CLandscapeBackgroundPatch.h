@@ -32,6 +32,17 @@ enum LANDSCAPE_EDGE_STRIP_SIDE { };                      // W4LANDSCAPE_EDGE_STR
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase {   // vtable 0x012A803C
 public:
     CPatchTesselationEdgeStrip* GetEdgeStrip(LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BE5C60
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH_RENDER
+    // Opt-in (wf3, row 0x00BE7BE0): FableWin.pdb / Ego_r.pdb ?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z (public),
+    // ?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z and ?RenderWithOcclusion@CLandscapeBackgroundPatch@@AAEXAAJAA_N@Z (private;
+    // landed 0x00BE6F70 / 0x00BE79D0) -- declarations, parameter names descriptive -- and the inline ?HasWater@CLandscapeBackgroundPatch@@QAE_NXZ.
+    void Render(bool withOcclusion, long& queryHandle, bool& occluded);     // 0x00BE7BE0
+    bool HasWater() { return WaterSubPatch != 0; }                          // ?HasWater@CLandscapeBackgroundPatch@@QAE_NXZ (FableWin.pdb, 28 bytes there; inline in retail)
+private:
+    bool Render(bool withOcclusion);                                        // 0x00BE6F70
+    void RenderWithOcclusion(long& queryHandle, bool& occluded);            // 0x00BE79D0
+public:
+#endif
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
     CPatchTesselationEdgeStrip      EdgeStrips[4];           // +0x08
     CTexture*                       Texture;                 // +0xb8

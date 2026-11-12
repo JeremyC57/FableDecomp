@@ -1,0 +1,7 @@
+address	name	evidence
+0x00497FD0	?DisplayCenteredText@CProgressDisplay@@ABEXABVCFontBank@@ABVCWideString@@ABVC2DBoxF@@@Z	FableWin.pdb + Ego_r.pdb spelling; body draws centred multi-line text with three black shadows + white (CRGBColour 0,0,0 / 255,255,255), called twice by landed DrawRetailDisplay 0x00498490; TU neighbours FormatTextForVWindow 0x00497F80 (DIFFER row)
+0x0078C900	?InitAbility@CTCBerserk@@QAEXXZ	Ego_r.pdb / FableWin.pdb + existing label (chunk 772) + BERSERK / HERO_ABILITY_BEZERK_* strings (DIFFER row)
+0x006B8730	?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMMM@Z	Ego_r.pdb float overload + engine_api.tsv signature (this, float, ScreenEffectPriority, 6 floats; void*) + 8-arg call from 0x0078C900
+0x00A0C8E0	?Init@CWStringParser@@QAEXPB_W@Z	Ego_r.pdb + engine_api.tsv (CWStringParser*, wchar_t*); called by the inline ctor in 0x00497FD0
+0x00A0C910	?SkipWhitespace@CWStringParser@@QAEJXZ	Ego_r.pdb + engine_api.tsv (returns long); between-lines call in 0x00497FD0
+0x00A0CCD0	?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@_W@Z	Ego_r.pdb CWideString-returning overload + engine_api.tsv (hidden return, wchar_t '\n' arg) in 0x00497FD0

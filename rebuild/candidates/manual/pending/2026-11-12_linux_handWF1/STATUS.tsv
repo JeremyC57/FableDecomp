@@ -1,0 +1,10 @@
+00a114b0	CPhysicsMeshObject::SetPositionMatrix	RELOCATION_MATCH	92	pass 2: operator^ components parenthesised (FABLE_RETAIL_C3DVECTOR_CROSS_XYZ_GROUP) moves the first scheduling-region cut; 83 grades pass 1 + 9 pass 2
+007ff190	CTCNamedUserActionPoints::GetFreeNamedActionPoint	RELOCATION_MATCH	6	STLport erase via __copy_ptrs/__copy_trivial + shared headers (overlay opt-in FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS)
+00beab40	CWaterPatchMesh::GetWaterType	RELOCATION_MATCH	155	final.cpp; strict headers regrade RELOCATION_MATCH; test PASS (vt.py); no flags
+00bfa920	CLocalDetailPrimitiveMesh::AddObjectsToPrimitiveRenderer	RELOCATION_MATCH	17	shared headers + Peek accessors; Flags /d2inlT119 (inline-budget)
+009e3df0	CPixelFormat::ConvertPFDDataToRGB	RELOCATION_MATCH	2	FORMATREF pos-shift accessors + shared headers; first grade matched, second = strict regrade of final source
+007f5150	CTCSoundAtmosphereVillage::GetGain	RELOCATION_MATCH	12	shared headers + nested if(name==) + clamp by assignment; no flags
+00863ca0	CThingBodyReorienter::FillBodyReorientationPossibleIntersecting	RELOCATION_MATCH	21	ToC2DCoordI centre + named filter with user ctor + ROUGHAREABODY visible
+00688d40	CInputProcessZTarget::AddToInterface	RELOCATION_MATCH	2	shared headers + FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE opt-in; default CDefPointer Release
+006ea0c0	CCombatManager::UpdateDefenderAttackPattern	RELOCATION_MATCH	24	shared-header port + CONSTFIND + GETDEF_GLOBAL_BODY + named attacker local
+004b4260	CQuestManager::ActivateMultipleQuests	RELOCATION_MATCH	20	named scoped progress string + activated=true in both arms + real same-TU body of ActivateQuests 0x004B3CE0 (unlanded row, body not graded)

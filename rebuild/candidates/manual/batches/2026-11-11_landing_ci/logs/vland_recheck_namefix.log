@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a66fd0   WARN RELOC_CONFLICT: ?SetAsMiddleMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03dc0 here, 00a03e70 in landed 00a66fd0
+00a66fd0   WARN RELOC_CONFLICT: ?SetAsRightMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03e70 here, 00a03dc0 in landed 00a66fd0
+00a66fd0   WARN RELOC_NAME: ?push_back@?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ -> 009e4aa0 labelled 'CKeyedOwner_009e4aa0::Register'
+00a66fd0   RELOCATION_MATCH PASS   00a66fd0
+
+WINS: 1
+  00a66fd0 RELOCATION_MATCH m::?ProcessMaintainedEventsFromEvent@CMouse@@IAEXPBVCInputEvent@@@Z

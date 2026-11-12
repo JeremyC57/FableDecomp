@@ -7,7 +7,7 @@
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("STORY_PLACE_MARKER" @ 0x0128F5F0),
 // CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x23 = CTCVillager, bit 3 of the bitset dword at
-// +0x24), GFGetPVillageInterface @ 0x007EE540 (twice), CTCVillage::IsCookTime @ 0x00658A80,
+// +0x24), GFGetPVillageInterface @ 0x007EE540 (twice), CTCVillage::IsStoryTime @ 0x00658A80,
 // CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::GetPFirstThing<CThingFilter_HasDefGlobalIndex>
 // @ 0x00910740 (filter {def index} and the out thing in the 8-byte frame).
 // Shape: the def index is looked up first through a CCharString temporary; the out-thing slot shares the key word.
@@ -76,9 +76,11 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
 };
 
+// Name fix (agentNF26, 2026-11-12): CTCVillage::IsStoryTime 0x00658A80 is ?IsStoryTime@CTCVillage@@QBE_NXZ (Ego_r.pdb + FableWin.pdb; body
+//   IsTimeBetween over CVillageDef StoryStartTimes +0x44 / StoryDuration +0x50); was IsCookTime (a propagated label).
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsCookTime();                          // 0x00658A80
+    bool IsStoryTime() const;                   // 0x00658A80
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
@@ -105,5 +107,5 @@ bool CAIStateGroup_MinionListenToStory::IsRunnable()
     CThingFilter_HasDefGlobalIndex filter;
     CTCVillager* villager;
     return PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER, &villager) && ((CTCVillageMember*)villager)->GetPVillage() != 0
-        && ((CTCVillageMember*)villager)->GetPVillage()->IsCookTime() && FindMarker(filter, markerIndex);
+        && ((CTCVillageMember*)villager)->GetPVillage()->IsStoryTime() && FindMarker(filter, markerIndex);
 }

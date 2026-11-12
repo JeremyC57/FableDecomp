@@ -16,6 +16,7 @@
 // CCreatureActionBase 0xa8 bytes (aim 0xb0, fire 0xc8), CCombatActionBase 0x114 (play-combat-animation 0x118).
 // Shape: each practice step is `failed = name != "" && PerformActionAndWait(&Action(...), false) != 2;` (conditional
 // temporaries, ebx flag bits 1/2/4/8, the bool in a frame byte); the failure exits are gotos to one `success = false`.
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "fable_compiler.h"
 class CThing;
 class CCharString { public:
@@ -25,17 +26,18 @@ class CCharString { public:
     const CCharString& operator=(const char* text);            // 0x0099EFE0
     bool operator!=(const char* text) const;             // 0x0099E960
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject* item);          // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem((CBaseObject*)item); }
 };
 class CThingCreatureBase;
 class CCombatManager { public:

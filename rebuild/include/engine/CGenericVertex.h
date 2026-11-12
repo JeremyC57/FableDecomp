@@ -34,4 +34,14 @@ public:
     unsigned long GetBlendingIndex(unsigned long) const;
     void SetRHWFromZ();
 };
+#ifdef FABLE_RETAIL_CGENERICVERTEX_INLINE_SETTERS
+// Retail opt-in (wf4, row 0x00A90040 N3DPrimitive::CAnimatedBlock::ConvertToVBFormatBump): the bodies of the setters that row expands
+// inline (FableWin.pdb ?SetPosition@?$CGenericVertex@...@@QAEXABVC3DVector@@@Z, SetNormal, SetU1, SetV1; no out-of-line copy in
+// retail): field-by-field stores into the vertex base's X/Y/Z, NormalX/Y/Z, U1, V1. Bodies only; no layout change.
+#include "engine/C3DVector.h"
+template<class Base> inline void CGenericVertex<Base>::SetPosition(const C3DVector& p){this->X=p.X;this->Y=p.Y;this->Z=p.Z;}
+template<class Base> inline void CGenericVertex<Base>::SetNormal(const C3DVector& p){this->NormalX=p.X;this->NormalY=p.Y;this->NormalZ=p.Z;}
+template<class Base> inline void CGenericVertex<Base>::SetU1(float u){this->U1=u;}
+template<class Base> inline void CGenericVertex<Base>::SetV1(float v){this->V1=v;}
+#endif
 #endif

@@ -106,7 +106,6 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 namespace NScript {
 class CV_DemonDoorsScript {
 public:
@@ -175,7 +174,7 @@ void NScript::CV_DemonDoorsScript::CDF_GiveGift::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                 face.Speak(Game->GetHero(), "TEXT_QST_088_GIVE_GIFT_OPENING", (ETextGroupSelectionMethod)0, false, true, false);
                 while (face.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
@@ -205,7 +204,7 @@ void NScript::CV_DemonDoorsScript::CDF_GiveGift::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                 face.Speak(Game->GetHero(), "TEXT_QST_088_GIVE_GIFT_INTRO", (ETextGroupSelectionMethod)0, false, true, false);
                 while (face.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();

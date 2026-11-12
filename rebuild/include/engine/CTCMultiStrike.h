@@ -21,26 +21,57 @@ class CThing;
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
 class CSpecialAbilitiesMultiStrikeDef;
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+namespace NHitLocations {class CHitLocation;}
+#else
 class CHitLocation;
 #endif
+#endif
 class CTCMultiStrike : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+bool IsStrikeStarted()const{return StrikeStarted;}
+void StartMultiHit(const CHitParameters&,CThing*);
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_MULTI_STRIKE; }
     void ApplyEffectOnWeapon(CThing* weapon);                // 0x007CCF50
     void RemoveEffectOnWeapon(CThing* weapon);               // 0x007CC9E0
 #ifdef FABLE_RETAIL_CTCMULTISTRIKE_MEMBERS
     CTCMultiStrike(CThing& thing);                           // 0x007CD390
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+private:
+#endif
     CDefPointer<const CSpecialAbilitiesMultiStrikeDef> PDef;                 // +0x0C
     long SpellLevel;                                                         // +0x10
     bool StrikeStarted;                                                      // +0x14
     long DelayTimer;                                                         // +0x18
     long NumHits;                                                            // +0x1C
-    CHitLocation* PHitLocation;                                              // +0x20
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    NHitLocations::CHitLocation* PHitLocation;
+#else
+    CHitLocation* PHitLocation;
+#endif                                              // +0x20
     CIntelligentPointer<CThing> PWeapon;                                     // +0x24
     C3DVector PointOfHit;                                                    // +0x2C
     C3DVector HitDirection;                                                  // +0x38
     CIntelligentPointer<CThing> PTarget;                                     // +0x44
     std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > ParticleEffects;   // +0x4C
 #endif
+#ifdef FABLE_RETAIL_CTCMULTISTRIKE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007CD800
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCMULTISTRIKE_VSLOTS2
+// agentFAM04 (2026-11-11): retail virtuals and the non-virtual they call (Ego_r.pdb / FableWin.pdb spellings; TLC vtable slots aligned with the Xbox 360 Test PDB order). Declarations only (no layout change).
+public:
+    virtual void OnKill();                                               // slot 14, 0x007CCE00 (tail call to FinalCleanup)
+private:
+    void FinalCleanup();                                                 // 0x007CCD70 ?FinalCleanup@CTCMultiStrike@@AAEXXZ
+public:
+#endif // FABLE_RETAIL_CTCMULTISTRIKE_VSLOTS2
 };
 #endif // FABLE_ENGINE_CTCMULTISTRIKE_H

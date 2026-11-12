@@ -36,7 +36,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {
-    bool GetRandomFlightPos(const C3DVector& from, float radius, C3DVector* out, bool allowGround);   // 0x00912700
+protected:
+    bool GetRandomFlightPos(const C3DVector& from, float radius, C3DVector& out, bool allowGround) const;   // 0x00912700 ?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z (Ego_r: protected const)
+public:
     void ExecuteFlyingPath(const C3DVector& target);                                                  // 0x009130D0
 };
 
@@ -48,7 +50,7 @@ void CAIStateGroup_SmallBirdWander::Update()
 {
     C3DVector target;
     CThingAICreature* creature = PBrain->Creature;
-    if (!GetRandomFlightPos(creature->GetPos(), 15.0f, &target, true)) {
+    if (!GetRandomFlightPos(creature->GetPos(), 15.0f, target, true)) {
         Terminate();
         return;
     }

@@ -67,9 +67,25 @@ public:
     virtual bool UseHighDetailQuadTree() const;                          // 0x0082D870 ?UseHighDetailQuadTree@CThingBuilding@@UBE_NXZ
     void GetReverbSettings(EReverbEnvironmentType& type, float& level) const;   // 0x0082D8C0 ?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z
 #endif
+#ifdef FABLE_RETAIL_CTHINGBUILDING_FORCEOPENCOUNT
+    // Retail opt-in (chunk Q32, row 0x00958B20 CAIStateGroup_MinionReactToCrime::OnReplace): Ego_r.pdb / FableWin.pdb
+    // ?DecrementForceOpenCount@CThingBuilding@@QAEXXZ, inline in retail (`dec dword ptr [eax+0D0h]` on ForceOpenCount, 0x00958B4A).
+    void DecrementForceOpenCount() { --ForceOpenCount; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGBUILDING
     void SetOverrideAutomaticLocking(bool value) { OverrideAutomaticLocking = value; }   // FableWin ?SetOverrideAutomaticLocking@CThingBuilding@@QAEX_N@Z (inline)
     void LockAllDoors(bool lock, bool immediately);                  // 0x0082DB00 ?LockAllDoors@CThingBuilding@@QAEX_N0@Z (Ego_r / FableWin)
+#endif
+#ifdef FABLE_RETAIL_CTHINGBUILDING_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool DrawIsDisplayingInformation() const;  // slot 33, 0x0082D070
+public:
+    virtual bool IsAffectedByDamage() const;  // slot 47, 0x00529990
+public:
+    virtual unsigned long GetProperties() const;  // slot 48, 0x0082D0B0
+public:
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingBuilding)==0xd8);

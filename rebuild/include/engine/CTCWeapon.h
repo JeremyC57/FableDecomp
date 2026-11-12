@@ -18,6 +18,10 @@
 #endif
 class CThing;
 class CTCWeapon : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+long GetExplosionType()const;void IncrementNumThingsKilled(CThing*);
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_WEAPON; }
 #ifdef FABLE_RETAIL_CTCWEAPON_SETLOADED
@@ -27,6 +31,27 @@ public:
     bool IsMeleeWeapon() const;                              // 0x005DAA00
     bool IsProjectileWeapon() const;                         // 0x005DAA40
     bool IsUsableBy(const CThing&) const;                    // 0x005DAB10
+#ifdef FABLE_RETAIL_CTCWEAPON_READYPROJECTILE
+    // Retail opt-in (chunk Q17, row 0x008BF500): ?ReadyProjectile@CTCWeapon@@QAEXXZ, out of line at 0x005DA4E0. The name is the landed
+    // binding's (in neither PDB name set). Declaration only.
+    void ReadyProjectile();                                  // 0x005DA4E0
+#endif
+#ifdef FABLE_RETAIL_CTCWEAPON_RESETAIMING
+    // Opt-in (agentNF25b, 2026-11-12): Ego_r.pdb + FableWin.pdb ?ResetAiming@CTCWeapon@@QAEXXZ, out of line at 0x005DA4E0 (AimingTime
+    // +0x14 = -1, AimingTimeOverride +0x18 = false; Ego_r donor order IsAimedForLongEnough / SetAimingTimeOverride / SetAiming /
+    // ResetAiming / FrameUpdate / IsMeleeWeaponClass = retail 0x005DA490 / 4C0 / 4D0 / 4E0 / 4F0 / 510). Supersedes the
+    // FABLE_RETAIL_CTCWEAPON_READYPROJECTILE spelling (in neither PDB). Declaration only.
+    void ResetAiming();                                      // 0x005DA4E0
+#endif
+#ifdef FABLE_RETAIL_CTCWEAPON_AIMING
+    // Opt-in (agentNF26, 2026-11-12): Ego_r.pdb + FableWin.pdb ?IsAimedForLongEnough@CTCWeapon@@QBE_NM@Z and
+    // ?SetAimingTimeOverride@CTCWeapon@@QAEXXZ, out of line at 0x005DA490 / 0x005DA4C0 (Ego_r donor order IsAimedForLongEnough /
+    // SetAimingTimeOverride / SetAiming / ResetAiming = retail 0x005DA490 / 4C0 / 4D0 / 4E0). IsAimedForLongEnough reads AimingTimeOverride
+    // +0x18, then AimingTime +0x14 over CMainGameComponent::ConstantFPS against the argument (`ret 4`); SetAimingTimeOverride stores
+    // AimingTimeOverride = true. Declarations only.
+    bool IsAimedForLongEnough(float time) const;             // 0x005DA490
+    void SetAimingTimeOverride();                            // 0x005DA4C0
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_TARGETINGRANGE
     // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): Ego_r.pdb ?GetTargetingRange@CTCWeapon@@QBEJXZ (Ego_r
     // 0x0063A6D0), out of line in retail at 0x005DA890 (Ego_r donor order GetTargetingRange / TargetingFOV / IsAnalogueLoading at a
@@ -79,6 +104,22 @@ public:
     long             TimeWielded;                            // +0x20
     bool             Wielded;                                // +0x24
 #endif
+#ifdef FABLE_RETAIL_CTCWEAPON_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x005DAE10
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCWEAPON_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void FrameUpdate();  // slot 9, 0x005DA4F0
+    virtual void OnSerialise(CPersistContext&, bool);  // slot 1, 0x005DA9B0
+public:
+#endif // FABLE_RETAIL_CTCWEAPON_VSLOTS3
 };
 #ifdef FABLE_RETAIL_CTCWEAPON_MEMBERS
 FABLE_STATIC_ASSERT(sizeof(CTCWeapon) == 0x28);

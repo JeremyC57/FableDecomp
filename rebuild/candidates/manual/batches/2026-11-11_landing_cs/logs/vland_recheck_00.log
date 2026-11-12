@@ -1,0 +1,101 @@
+addr       parity           behav  name
+00415bd0   RELOCATION_MATCH FAIL   00415bd0
+00415bf0   RELOCATION_MATCH FAIL   00415bf0
+004167da   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+004167da   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+004167da   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004167da   RELOCATION_MATCH PASS   004167da
+004dbf56   RELOCATION_MATCH FAIL   004dbf56
+004dbfaf   WARN STANDIN_LEAF ??_GCTCActionUseTorch@@UAEPAXI@Z (catalog CTCActionUseTorch::`scalar_deleting_destructor'; names another function)
+004dbfaf   RELOCATION_MATCH PASS   004dbfaf
+004dbfe8   WARN STANDIN_LEAF ??_GCTCActionUseSign@@UAEPAXI@Z (catalog CTCActionUseSign::`scalar_deleting_destructor'; names another function)
+004dbfe8   RELOCATION_MATCH PASS   004dbfe8
+004dc082   WARN STANDIN_LEAF ??_GCTCActionUsePickUp@@UAEPAXI@Z (catalog CTCActionUsePickUp::`scalar_deleting_destructor'; names another function)
+004dc082   RELOCATION_MATCH PASS   004dc082
+004dc0bb   WARN STANDIN_LEAF ??_GCTCActionUsePickUpGenericBox@@UAEPAXI@Z (catalog CTCActionUsePickUpGenericBox::`scalar_deleting_destructor'; names another function)
+004dc0bb   RELOCATION_MATCH PASS   004dc0bb
+004dc0f4   WARN STANDIN_LEAF ??_GCTCActionUsePutInInventory@@UAEPAXI@Z (catalog CTCActionUsePutInInventory::`scalar_deleting_destructor'; names another function)
+004dc0f4   RELOCATION_MATCH PASS   004dc0f4
+004dc12d   WARN STANDIN_LEAF ??_GCTCActionUseMapTable@@UAEPAXI@Z (catalog CTCActionUseMapTable::`scalar_deleting_destructor'; names another function)
+004dc12d   RELOCATION_MATCH PASS   004dc12d
+004dc166   WARN STANDIN_LEAF ??_GCTCActionUseSearch@@UAEPAXI@Z (catalog CTCActionUseSearch::`scalar_deleting_destructor'; names another function)
+004dc166   RELOCATION_MATCH PASS   004dc166
+004dc19f   WARN STANDIN_LEAF ??_GCTCActionUseBlowHorn@@UAEPAXI@Z (catalog CTCActionUseBlowHorn::`scalar_deleting_destructor'; names another function)
+004dc19f   RELOCATION_MATCH PASS   004dc19f
+004dc1d8   WARN STANDIN_LEAF ??_GCTCActionUseWindow@@UAEPAXI@Z (catalog CTCActionUseWindow::`scalar_deleting_destructor'; names another function)
+004dc1d8   RELOCATION_MATCH PASS   004dc1d8
+004dc211   WARN STANDIN_LEAF ??_GCTCActionUseAcceptBoast@@UAEPAXI@Z (catalog CTCActionUseAcceptBoast::`scalar_deleting_destructor'; names another function)
+004dc211   RELOCATION_MATCH PASS   004dc211
+004dc24a   WARN STANDIN_LEAF ??_GCTCActionUseStartExtrapolationMorph@@UAEPAXI@Z (catalog CTCActionUseStartExtrapolationMorph::`scalar_deleting_destructor'; names another function)
+004dc24a   RELOCATION_MATCH PASS   004dc24a
+004dc2a0   WARN STANDIN_LEAF ??_GCTCActionUseKickChicken@@UAEPAXI@Z (catalog CTCActionUseKickChicken::`scalar_deleting_destructor'; names another function)
+004dc2a0   RELOCATION_MATCH PASS   004dc2a0
+004dc2bc   WARN STANDIN_LEAF ??_GCTCCarriedActionUseBase@@UAEPAXI@Z (catalog CTCCarriedActionUseBase::`scalar_deleting_destructor'; names another function)
+004dc2bc   RELOCATION_MATCH PASS   004dc2bc
+004dc2f5   WARN STANDIN_LEAF ??_GCTCCarriedActionUseLamp@@UAEPAXI@Z (catalog CTCCarriedActionUseLamp::`scalar_deleting_destructor'; names another function)
+004dc2f5   RELOCATION_MATCH PASS   004dc2f5
+004dc32e   WARN STANDIN_LEAF ??_GCTCCarriedActionUseDrop@@UAEPAXI@Z (catalog CTCCarriedActionUseDrop::`scalar_deleting_destructor'; names another function)
+004dc32e   RELOCATION_MATCH PASS   004dc32e
+004dc367   WARN STANDIN_LEAF ??_GCTCCarriedActionUseDropGenericBox@@UAEPAXI@Z (catalog CTCCarriedActionUseDropGenericBox::`scalar_deleting_destructor'; names another function)
+004dc367   RELOCATION_MATCH PASS   004dc367
+004dc3a0   WARN STANDIN_LEAF ??_GCTCCarriedActionUseGive@@UAEPAXI@Z (catalog CTCCarriedActionUseGive::`scalar_deleting_destructor'; names another function)
+004dc3a0   RELOCATION_MATCH PASS   004dc3a0
+004dc3d9   WARN STANDIN_LEAF ??_GCTCCarriedActionUseGiveBeer@@UAEPAXI@Z (catalog CTCCarriedActionUseGiveBeer::`scalar_deleting_destructor'; names another function)
+004dc3d9   RELOCATION_MATCH PASS   004dc3d9
+004dc412   WARN STANDIN_LEAF ??_GCTCCarriedActionUseGoldBag@@UAEPAXI@Z (catalog CTCCarriedActionUseGoldBag::`scalar_deleting_destructor'; names another function)
+004dc412   RELOCATION_MATCH PASS   004dc412
+004dc44b   WARN STANDIN_LEAF ??_GCTCCarriedActionUseShow@@UAEPAXI@Z (catalog CTCCarriedActionUseShow::`scalar_deleting_destructor'; names another function)
+004dc44b   RELOCATION_MATCH PASS   004dc44b
+004dc484   WARN STANDIN_LEAF ??_GCTCCarriedActionUseFood@@UAEPAXI@Z (catalog CTCCarriedActionUseFood::`scalar_deleting_destructor'; names another function)
+004dc484   RELOCATION_MATCH PASS   004dc484
+004dc4bd   WARN STANDIN_LEAF ??_GCTCCarriedActionUseFish@@UAEPAXI@Z (catalog CTCCarriedActionUseFish::`scalar_deleting_destructor'; names another function)
+004dc4bd   RELOCATION_MATCH PASS   004dc4bd
+004dc4f6   WARN STANDIN_LEAF ??_GCTCCarriedActionUsePotion@@UAEPAXI@Z (catalog CTCCarriedActionUsePotion::`scalar_deleting_destructor'; names another function)
+004dc4f6   RELOCATION_MATCH PASS   004dc4f6
+004dc52f   WARN STANDIN_LEAF ??_GCTCCarriedActionUseWallMount@@UAEPAXI@Z (catalog CTCCarriedActionUseWallMount::`scalar_deleting_destructor'; names another function)
+004dc52f   RELOCATION_MATCH PASS   004dc52f
+004dc568   WARN STANDIN_LEAF ??_GCTCCarriedActionUseTrophy@@UAEPAXI@Z (catalog CTCCarriedActionUseTrophy::`scalar_deleting_destructor'; names another function)
+004dc568   RELOCATION_MATCH PASS   004dc568
+004dc5ab   WARN STANDIN_LEAF ??_GCTCActionUseSwitch@@UAEPAXI@Z (catalog CTCActionUseSwitch::`scalar_deleting_destructor'; names another function)
+004dc5ab   RELOCATION_MATCH PASS   004dc5ab
+004dc69e   WARN STANDIN_LEAF ??_GCTCActionUseChest@@UAEPAXI@Z (catalog CTCActionUseChest::`scalar_deleting_destructor'; names another function)
+004dc69e   RELOCATION_MATCH PASS   004dc69e
+004dc805   WARN STANDIN_LEAF ??_GCTCCarriedActionUseExpression@@UAEPAXI@Z (catalog CTCCarriedActionUseExpression::`scalar_deleting_destructor'; names another function)
+004dc805   RELOCATION_MATCH PASS   004dc805
+004dc953   WARN STANDIN_LEAF ??_GCTCCarriedActionUseActivateQuest@@UAEPAXI@Z (catalog CTCCarriedActionUseActivateQuest::`scalar_deleting_destructor'; names another function)
+004dc953   RELOCATION_MATCH PASS   004dc953
+004dcb79   WARN STANDIN_LEAF ??_GCTCActionUseActivateQuest@@UAEPAXI@Z (catalog CTCActionUseActivateQuest::`scalar_deleting_destructor'; names another function)
+004dcb79   RELOCATION_MATCH PASS   004dcb79
+
+WINS: 31
+  004167da RELOCATION_MATCH m::?AppReinitFunc@CMainGameComponent@@KIXPAX@Z
+  004dbfaf RELOCATION_MATCH m::??_GCTCActionUseTorch@@UAEPAXI@Z
+  004dbfe8 RELOCATION_MATCH m::??_GCTCActionUseSign@@UAEPAXI@Z
+  004dc082 RELOCATION_MATCH m::??_GCTCActionUsePickUp@@UAEPAXI@Z
+  004dc0bb RELOCATION_MATCH m::??_GCTCActionUsePickUpGenericBox@@UAEPAXI@Z
+  004dc0f4 RELOCATION_MATCH m::??_GCTCActionUsePutInInventory@@UAEPAXI@Z
+  004dc12d RELOCATION_MATCH m::??_GCTCActionUseMapTable@@UAEPAXI@Z
+  004dc166 RELOCATION_MATCH m::??_GCTCActionUseSearch@@UAEPAXI@Z
+  004dc19f RELOCATION_MATCH m::??_GCTCActionUseBlowHorn@@UAEPAXI@Z
+  004dc1d8 RELOCATION_MATCH m::??_GCTCActionUseWindow@@UAEPAXI@Z
+  004dc211 RELOCATION_MATCH m::??_GCTCActionUseAcceptBoast@@UAEPAXI@Z
+  004dc24a RELOCATION_MATCH m::??_GCTCActionUseStartExtrapolationMorph@@UAEPAXI@Z
+  004dc2a0 RELOCATION_MATCH m::??_GCTCActionUseKickChicken@@UAEPAXI@Z
+  004dc2bc RELOCATION_MATCH m::??_GCTCCarriedActionUseBase@@UAEPAXI@Z
+  004dc2f5 RELOCATION_MATCH m::??_GCTCCarriedActionUseLamp@@UAEPAXI@Z
+  004dc32e RELOCATION_MATCH m::??_GCTCCarriedActionUseDrop@@UAEPAXI@Z
+  004dc367 RELOCATION_MATCH m::??_GCTCCarriedActionUseDropGenericBox@@UAEPAXI@Z
+  004dc3a0 RELOCATION_MATCH m::??_GCTCCarriedActionUseGive@@UAEPAXI@Z
+  004dc3d9 RELOCATION_MATCH m::??_GCTCCarriedActionUseGiveBeer@@UAEPAXI@Z
+  004dc412 RELOCATION_MATCH m::??_GCTCCarriedActionUseGoldBag@@UAEPAXI@Z
+  004dc44b RELOCATION_MATCH m::??_GCTCCarriedActionUseShow@@UAEPAXI@Z
+  004dc484 RELOCATION_MATCH m::??_GCTCCarriedActionUseFood@@UAEPAXI@Z
+  004dc4bd RELOCATION_MATCH m::??_GCTCCarriedActionUseFish@@UAEPAXI@Z
+  004dc4f6 RELOCATION_MATCH m::??_GCTCCarriedActionUsePotion@@UAEPAXI@Z
+  004dc52f RELOCATION_MATCH m::??_GCTCCarriedActionUseWallMount@@UAEPAXI@Z
+  004dc568 RELOCATION_MATCH m::??_GCTCCarriedActionUseTrophy@@UAEPAXI@Z
+  004dc5ab RELOCATION_MATCH m::??_GCTCActionUseSwitch@@UAEPAXI@Z
+  004dc69e RELOCATION_MATCH m::??_GCTCActionUseChest@@UAEPAXI@Z
+  004dc805 RELOCATION_MATCH m::??_GCTCCarriedActionUseExpression@@UAEPAXI@Z
+  004dc953 RELOCATION_MATCH m::??_GCTCCarriedActionUseActivateQuest@@UAEPAXI@Z
+  004dcb79 RELOCATION_MATCH m::??_GCTCActionUseActivateQuest@@UAEPAXI@Z

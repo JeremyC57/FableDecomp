@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00406ae0   RELOCATION_MATCH PASS   GetManualSaveDisplayName
+00909a00   RELOCATION_MATCH PASS   IsValid
+00bcfb00   RELOCATION_MATCH PASS   RenderPrimitiveBlocksIndexBuffer
+009d5bf0   RELOCATION_MATCH PASS   HandleFailedAllocation
+00be06b0   RELOCATION_MATCH PASS   AddRequest
+00b939e0   RELOCATION_MATCH PASS   CheckVisibilityResults
+
+WINS: 6
+  00406ae0 RELOCATION_MATCH CUserProfileManager::GetManualSaveDisplayName
+  00909a00 RELOCATION_MATCH CCombatSequence_WillForcePushLongRange::IsValid
+  00bcfb00 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveBlocksIndexBuffer
+  009d5bf0 RELOCATION_MATCH CBankFileAsync::HandleFailedAllocation
+  00be06b0 RELOCATION_MATCH CEngineStaticMapFileBlockManager::AddRequest
+  00b939e0 RELOCATION_MATCH CEngineSceneGrid::CheckVisibilityResults
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CUserProfileManager_GetManualSaveDisplayName_00406ae0
+  CCombatSequenceWillForcePushLongRange_IsValid_00909a00
+  CEnginePrimitiveManagerAnimatedMeshesBase_RenderPrimitiveBlocksIndexBuffer_00bcfb00
+  CBankFileAsync_HandleFailedAllocation_009d5bf0
+  CEngineStaticMapFileBlockManager_AddRequest_00be06b0
+  CEngineSceneGrid_CheckVisibilityResults_00b939e0

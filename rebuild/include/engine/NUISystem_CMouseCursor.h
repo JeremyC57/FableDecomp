@@ -15,6 +15,11 @@ public:
     CMouseCursor(const CMouseCursor&);
     virtual ~CMouseCursor();
     void GetDataFromDef();
+#ifdef FABLE_RETAIL_CMOUSECURSOR_GETPOSITION
+    // agentNF19 (row 0x0055C5D0): the GetPosition override (vtable 0x0124C22C slot 16; its body copies CComponent::GetPosition
+    // 0x0052E890, ?GetPosition@CComponent@NUISystem@@UBE?AVC2DVector@@XZ). Declaration only.
+    virtual C2DVector GetPosition() const;
+#endif
 };
 }
 #endif

@@ -1,0 +1,4 @@
+address	claimed_symbol	reason
+0x004460C0	?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z	Offsets disprove it. The body reads +0x7C4, which is QuickAccessItemButtons, so the landed name IsQuickAccessEventInQueue is right. The Assignable twin is 0x00445E90, which reads +0x7B8.
+0x00463F3C	??$TransferVector@W4EWeaponClass@@@CPersistContext@@QAEXAAV?$vector@W4EWeaponClass@@...@Z	The claimed mangling is in neither FableWin.pdb nor Ego_r.pdb. The PDB TransferVector takes (PBD, vector&), but retail is ret 4 with one argument, and its body is one of 24 folded identical bodies.
+0x00451ADD	set<EWeaponClass> _Rb_tree ctor / dtor pair 0x00451ADD / 0x00451B07	The tree ctor is folded (ICF), so the element-type instantiation cannot be proven. Both callers are trees and no unique element type follows from them.

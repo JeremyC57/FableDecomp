@@ -73,7 +73,7 @@ private: public:
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
-    CTCBase* AddTC(const CCharString& name, bool flag, void* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool flag, const class CTCParamsBase* params);   // 0x004C9D60 (Ego_r.pdb; name fix NF21)
     void SetAttackedByCreature(CThing* attacker);       // 0x006624F0
     void Kill(bool flag);                               // 0x004C9B80
 };
@@ -83,7 +83,7 @@ class CHitParameters { public:                                 // 0x60 bytes
     unsigned char _pad[0x60];
     CHitParameters();                                   // 0x007A3BC0
     ~CHitParameters();                                  // 0x00789358
-    void SetHitter(CThing* hitter);                     // 0x008685F0
+    void SetThingHitting(CThing& thing);                // 0x008685F0 ?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z (Ego_r.pdb / FableWin.pdb; NF28: was SetHitter(CThing*))
 };
 namespace NEntityEvents {
 class CEventBase { public: virtual ~CEventBase(); };
@@ -195,7 +195,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
                 if (thing->HasTC(0x42)) {
                     CTCEntityEvents* events = thing->GetTC<CTCEntityEvents>(0x42);
                     CHitParameters hit;
-                    hit.SetHitter(shooter);
+                    hit.SetThingHitting(*shooter);
                     events->AddEvent(new NEntityEvents::CEventHitBySpecialAbility(hit, 1));
                 }
                 pushed->SetUpForcePush(-away, PushForce, shooter);

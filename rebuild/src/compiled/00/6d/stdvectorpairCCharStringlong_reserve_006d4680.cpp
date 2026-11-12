@@ -38,7 +38,10 @@ template <class T> struct allocator {
 // Same-TU body of the out-of-line copy (the landed 0x006D3770 loop), non-template, noinline: VC7.1 then sees that the
 // empty tag is never read and homes it over the live `n` argument slot (`lea eax,[esp+18h]`) as retail does.
 #pragma auto_inline(off)
-__declspec(noinline) pair<CCharString, long>* __fastcall __uninitialized_copy(pair<CCharString, long>* first,
+template <class _InputIter, class _ForwardIter>
+_ForwardIter __fastcall __uninitialized_copy(_InputIter first, _InputIter last, _ForwardIter result, const __false_type&);
+template <>
+__declspec(noinline) pair<CCharString, long>* __fastcall __uninitialized_copy<pair<CCharString, long>*, pair<CCharString, long>*>(pair<CCharString, long>* first,
     pair<CCharString, long>* last, pair<CCharString, long>* result, const __false_type&)   // 0x006D3770
 {
     pair<CCharString, long>* cur = result;

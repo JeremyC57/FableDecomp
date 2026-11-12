@@ -1,0 +1,11 @@
+address	name	evidence
+00929550	SetCurrentPlayer	chunk Q24 (landing dr): 
+005BC4B2	GetSelectedCategoryIndex	chunk Q24 (landing dr): 
+005BC4B6	SetSelectedCategoryIndex	chunk Q24 (landing dr): 
+0066E799	SelectScreenOfType	chunk Q24 (landing dr): 
+0042AA29	CCountedPointer	chunk Q24 (landing dr): 
+0077DBC0	GetQuestCards	chunk Q24 (landing dr): 
+00621A20	InitialiseQuestCardList	chunk Q24 (landing dr): 
+00584157	SetThingAsQuickAccessItem	chunk Q24 (landing dr): 
+009D4CE0	SaveTable	chunk Q24 (landing dr): 
+00994B40	GetLength	chunk Q24 (landing dr): 

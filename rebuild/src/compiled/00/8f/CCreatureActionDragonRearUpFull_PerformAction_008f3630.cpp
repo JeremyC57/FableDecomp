@@ -24,6 +24,7 @@
 //   The FastInvSqrt Newton step must keep its explicit grouping (see the grade line): the plain left-to-right form emits
 //   the same instructions but stores X*r right after its fmul, ahead of the Init pushes.
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PShot at +0x114, PDB +0x12c).
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
@@ -220,19 +221,20 @@ struct CTCShotDefinitionBase {
     void AddHitThing(CThing* thing);                   // 0x007C0FB0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThingCreatureBase* m_pItem;
     CBaseIntelligentPointer();                         // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
     CThingCreatureBase* GetPItem() const;              // 0x00A01B50
-    void SetPItem(CThing* item);                       // 0x00A01B90
+    void SetPItem(CBaseObject* item);                       // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() { }
-    CIntelligentPointer(CThing* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)other.GetPItem()); return *this; }
 };
 
 class CCombatActionBase { public:

@@ -21,6 +21,10 @@ public:
     CUIStateDef();                                                   // 0x00630350
     CUIStateDef(const CUIStateDef&);                                 // 0x006250B0
     virtual ~CUIStateDef();                                          // 0x00624DC0
+#ifdef FABLE_RETAIL_CUISTATEDEF_VSLOTS
+// agentFAM04 (2026-11-11): retail CDefClassBase override missing here (vtable 0x0125871C slot 19, Ego_r / FableWin ?Copy@CUIStateDef@NUISystem@@UAEXPBVCDefClassBase@@@Z). Declaration only.
+    virtual void Copy(const CDefClassBase*);                        // slot 19, 0x00625340
+#endif // FABLE_RETAIL_CUISTATEDEF_VSLOTS
     unsigned char _pad_39[3];
     unsigned long GraphicIndex;                                      // +0x3c
     unsigned long StateChangeFlag;                                   // +0x40

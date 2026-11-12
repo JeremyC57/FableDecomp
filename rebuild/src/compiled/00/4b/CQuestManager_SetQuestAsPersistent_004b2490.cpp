@@ -50,7 +50,7 @@ struct CActiveQuestNode {                          // list node: next, prev, CCo
 class CQuestManager { public:
     unsigned char     _pad_0x00[0x38];
     CActiveQuestNode* ActiveQuests;                // +0x38 (head node)
-    CThing* GetActiveQuestCardFromScriptName(const CCharString& scriptName);   // 0x004B0C80
+    CThing* GetActiveQuestCardFromScriptName(const CCharString& scriptName) const;   // 0x004B0C80 Ego_r/FableWin ?GetActiveQuestCardFromScriptName@CQuestManager@@QBEPAVCThing@@ABVCCharString@@@Z
     void SetQuestAsPersistent(const CCharString& questName, bool persistent);
 };
 

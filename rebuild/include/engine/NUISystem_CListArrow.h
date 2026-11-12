@@ -13,6 +13,13 @@ public:
     CListArrow(long);
     CListArrow(const CListArrow&);
     virtual ~CListArrow();
+#ifdef FABLE_RETAIL_CLISTARROW_VSLOTS
+// agentFAM04 (2026-11-11): retail virtuals of vtable 0x01248F94 the declarations above lack (Ego_r / FableWin
+// ?SetMinToDraw@CListArrow@NUISystem@@UAEXJ@Z / ?SetMaxToDraw@CListArrow@NUISystem@@UAEXJ@Z, slots 149 / 150). Declarations only.
+public:
+    virtual void SetMinToDraw(long);                                // slot 149, 0x0054C320
+    virtual void SetMaxToDraw(long);                                // slot 150, 0x0054C330
+#endif // FABLE_RETAIL_CLISTARROW_VSLOTS
 #ifdef FABLE_RETAIL_CLISTARROW_MEMBERS
     // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x190 ; call operator new` before the
     // constructor 0x0054C1D0): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),

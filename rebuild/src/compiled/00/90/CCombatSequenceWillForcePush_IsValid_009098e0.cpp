@@ -10,7 +10,8 @@
 //   0x013B86A0 +0x1c, CBaseIntelligentPointer::GetPItem 0x00A01B50 (the player's character pointer +0x34),
 //   AreThingsEnemies 0x0076D2F0 (__fastcall), CThing::GetPos 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is
 //   propagated); 8.0f @ 0x0125916C.
-// Layout: sequence owner +0x1c (landed sibling OnCreate rows); the component's active byte +0xc.
+// Layout: CCombatSequenceBase::Creature +0x1c (landed sibling OnCreate rows); CTCAICreatureWillPowerIndicator::PoweredUp +0xc
+//   (NF28 2026-11-12, queue land1011ef: Ego_r.pdb member names; were a local CTCWillPower { Active } and m_pOwner).
 // Shape: positive nesting puts the no-component / inactive returns at the end; the hero comes through an inline
 //   GetCharacter() reference; the distance is the inline (a - b).GetLength() = sqrt(X*X + (Y*Y + Z*Z)) (evaluated Z, Y, X) kept on the FPU (fsqrt); `if (d < 8)
 //   return false; return true;`.
@@ -57,15 +58,17 @@ private: public:
     CPlayerManager* PlayerManager;              // +0x1c
 };
 
-struct CTCWillPower {                           // interface type 0xCE
+class CTCAICreatureWillPowerIndicator {         // interface type 0xCE (TCI_AICREATURE_WILL_POWER_INDICATOR); no shared header
     unsigned char _pad[0xc];
-    bool Active;                                // +0x0c
+    bool PoweredUp;                             // +0x0c (Ego_r.pdb CTCAICreatureWillPowerIndicator::PoweredUp)
+public:
+    bool IsPoweredUp() const { return PoweredUp; }   // FableWin.pdb ?IsPoweredUp@CTCAICreatureWillPowerIndicator@@QBE_NXZ (inline in retail)
 };
 
 class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
-    CThingCreatureBase* m_pOwner;               // +0x1c
+    CThingCreatureBase* Creature;               // +0x1c (Ego_r.pdb CCombatSequenceBase::Creature, +0x20 there)
 };
 
 struct CCombatSequence_WillForcePush : CCombatSequenceBase {
@@ -74,12 +77,12 @@ struct CCombatSequence_WillForcePush : CCombatSequenceBase {
 
 bool CCombatSequence_WillForcePush::IsValid()
 {
-    const CTCWillPower* willPower;
-    if (m_pOwner->PeekTC(TCI_AICREATURE_WILL_POWER_INDICATOR, &willPower)) {
-        if (willPower->Active) {
+    const CTCAICreatureWillPowerIndicator* willPower;
+    if (Creature->PeekTC(TCI_AICREATURE_WILL_POWER_INDICATOR, &willPower)) {
+        if (willPower->IsPoweredUp()) {
             CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetCharacter().Get();
-            if (!AreThingsEnemies(hero, m_pOwner)) {
-                if ((hero->GetPos() - m_pOwner->GetPos()).GetMagnitude() < 8.0f)
+            if (!AreThingsEnemies(hero, Creature)) {
+                if ((hero->GetPos() - Creature->GetPos()).GetMagnitude() < 8.0f)
                     return false;
             }
             return true;

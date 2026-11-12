@@ -1,0 +1,15 @@
+addr       parity           behav  name
+007120d0   RELOCATION_MATCH PASS   CCreatureAction_PickUpGenericBox::~CCreatureAction_PickUpGenericBox
+007fef40   RELOCATION_MATCH PASS   CTCUserActionPointBase::SetActionPointAsFree
+009644f0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::OnReplace
+00965640   RELOCATION_MATCH PASS   CAIStateGroup_RecoverStealableItem::OnReplace
+009658b0   RELOCATION_MATCH PASS   CAIStateGroup_RecoverStealableItem::Update
+00966030   RELOCATION_MATCH PASS   CAIStateGroup_CarryCrateAndFollow::OnReplace
+
+WINS: 6
+  007120d0 RELOCATION_MATCH CCreatureAction_PickUpGenericBox::??1CCreatureAction_PickUpGenericBox@@UAE@XZ
+  007fef40 RELOCATION_MATCH CTCUserActionPointBase::?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z
+  009644f0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?OnReplace@CAIStateGroup_StealStealableItem@@UAEXXZ
+  00965640 RELOCATION_MATCH CAIStateGroup_RecoverStealableItem::?OnReplace@CAIStateGroup_RecoverStealableItem@@UAEXXZ
+  009658b0 RELOCATION_MATCH CAIStateGroup_RecoverStealableItem::?Update@CAIStateGroup_RecoverStealableItem@@UAEXXZ
+  00966030 RELOCATION_MATCH CAIStateGroup_CarryCrateAndFollow::?OnReplace@CAIStateGroup_CarryCrateAndFollow@@UAEXXZ

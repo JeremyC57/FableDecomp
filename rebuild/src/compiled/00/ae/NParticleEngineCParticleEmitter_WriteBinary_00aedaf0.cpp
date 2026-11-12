@@ -10,16 +10,13 @@
 //   is the wider PDB view, so the class is modelled locally.
 // Shape: one stream call per field in the file order (not declaration order); ushort bits 11 and 7 are read as a word
 //   and a byte respectively, exactly as VC7.1 narrows bit-field loads; Priority is passed to WriteLong as `and ecx,7`.
+// Name fix (naming agent NF21, 2026-11-11): the stream calls are the retail CDataOutputStream members (Ego_r.pdb / FableWin.pdb
+//   WriteEBOOL 0x00993E30, WriteUBYTE 0x00993E50, WriteSLONG 0x00993EB0, WriteULONG 0x00993EA0, WriteFloat 0x00993EE0,
+//   WriteNullTerminatedString 0x00995AE0): the shared retail class replaces the CDataOutputStream_Methods stand-in.
+#include "rebuild_abi.h"
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM
+#define FABLE_RETAIL_CDATAOUTPUTSTREAM_WRITEUBYTE
 #include "engine/CDataOutputStream.h"
-class CCharString { public: void* m_pStringData; };
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                                    // 0x00993E30
-    void WriteUBYTE(unsigned char value);                           // 0x00993E50
-    void WriteLong(long value);                                     // 0x00993EB0
-    void WriteULong(unsigned long value);                           // 0x00993EA0
-    void WriteFloat(float value);                                   // 0x00993EE0
-    void WriteNullTerminatedString(const CCharString& text);        // 0x00995AE0
-};
 namespace NParticleEngine {
 class CParticleSystem { public:
     void WriteBinary(CDataOutputStream* out);                       // 0x00AF4240
@@ -74,8 +71,8 @@ class CParticleEmitter { public:
 };
 void CParticleEmitter::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
-    out->WriteULong(100);
+    CDataOutputStream* out = destination;
+    out->WriteULONG(100);
     out->WriteNullTerminatedString(Name);
     out->WriteEBOOL(Emitter2D);
     out->WriteEBOOL(PreWaterEffect);
@@ -89,13 +86,13 @@ void CParticleEmitter::WriteBinary(CDataOutputStream* destination)
     out->WriteFloat(FadeOutStart);
     out->WriteFloat(FadeInEnd);
     out->WriteFloat(FadeInStart);
-    out->WriteLong(Priority);
+    out->WriteSLONG(Priority);
     out->WriteEBOOL(DieIfOffsceen);
     out->WriteEBOOL(OffscreenUpdate);
     out->WriteEBOOL(ClipEffectToWeatherMask);
     out->WriteEBOOL(EnableDithering);
     out->WriteEBOOL(CalcBoundingSphereOnceOnly);
-    out->WriteULong(ParticleSystems_finish - ParticleSystems_start);
+    out->WriteULONG(ParticleSystems_finish - ParticleSystems_start);
     for (CParticleSystemPointer* it = ParticleSystems_start; it != ParticleSystems_finish; ++it) {
         (*it)->WriteBinary(destination);
         out->WriteUBYTE(0x26);

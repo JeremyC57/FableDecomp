@@ -31,6 +31,13 @@ public:
     float GainLevelMid;                                                  // +0x34
     float GainLevelLow;                                                  // +0x38
     float FocusShiftDistanceThreshold;                                   // +0x3c
+#ifdef FABLE_RETAIL_NSPEECHGAINMANAGER_CDIALOGUELAYERDEF_COPY
+// agentFAM05 (2026-11-11): the retail Copy override (CDefClassBase slot 19; TLC vtable, agentFAM03 proof, re-verified by agentFAM05) and the
+// out-of-line assignment it tail-calls (0x004663AE ??4CDialogueLayerDef@NSpeechGainManager@@QAEAAV01@ABV01@@Z, Ego_r name set and the
+// landed binding). Declarations only: no layout change.
+    virtual void Copy(const CDefClassBase*);                             // slot 19 0x0046656A
+    CDialogueLayerDef& operator=(const CDialogueLayerDef&);              // 0x004663AE
+#endif // FABLE_RETAIL_NSPEECHGAINMANAGER_CDIALOGUELAYERDEF_COPY
 };
 FABLE_STATIC_ASSERT(sizeof(CDialogueLayerDef) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CDialogueLayerDef, ResponseTimeSecsAttack) == 0x28);

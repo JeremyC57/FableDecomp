@@ -18,6 +18,10 @@ public:
     CSpellContainer(const CSpellContainer&);
     virtual ~CSpellContainer();
     void GetDataFromDef();
+#ifdef FABLE_RETAIL_CSPELLCONTAINER_VSLOTS
+// agentFAM04 (2026-11-11): retail CComponent override missing here (vtable 0x0124786C slot 64, Ego_r / FableWin ?RemoveChild@CSpellContainer@NUISystem@@UAEXK@Z). Declaration only.
+    virtual void RemoveChild(unsigned long);                        // slot 64, 0x00545610
+#endif // FABLE_RETAIL_CSPELLCONTAINER_VSLOTS
 #ifdef FABLE_RETAIL_CSPELLCONTAINER_VIRTUALS
     // Retail opt-in (chunk 800, row 0x00544D20 CSpellContainerList::ProcessEvent): the new virtuals of the primary vtable
     // 0x0124786C (rebuild/manifest/rtti-vtables.tsv slots 142..148), names Ego_r.pdb / FableWin.pdb ?..@CSpellContainer@NUISystem@@

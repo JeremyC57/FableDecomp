@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A69F0, length 180 bytes (+ int3 padding). __fastcall, `ret 4`.
 // Callees: NGraphicAppearance::CTCGraphicAppearance::SetAsChanged(unsigned long) @ 0x004BF9E0, CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound @ 0x0040F020 (interface 2 = the physics component, word 0 bit 2),
-//          CTCPhysicsBase::CreatePPhysicsMeshInfo(const CEngineGraphic&) @ 0x006B08E0, CBaseClass ctor/dtor @
+//          CTCPhysicsBase::SetPhysicsMeshInfoFromGraphic(const CEngineGraphic&) @ 0x006B08E0, CBaseClass ctor/dtor @
 //          0x0099A2D0/0x0099A2E0 (NTCMessages::CMessageOnMeshReplaced, vtable 0x0126CB54),
 //          CThing::SendMessageW(const NTCMessages::CMessageBase&) @ 0x004C7820.
 // Shape: the chosen mesh is a pointer into the def's 14-byte CEngineGraphic array (`imul 0Eh`, kept in ebx), copied into
@@ -47,7 +47,7 @@ public:
 
 class CTCPhysicsBase {                              // interface 2
 public:
-    void CreatePPhysicsMeshInfo(const CEngineGraphic& graphic);   // 0x006B08E0
+    void SetPhysicsMeshInfoFromGraphic(const CEngineGraphic& graphic);   // 0x006B08E0 ?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z (Ego_r.pdb / FableWin.pdb; NF28)
 };
 
 namespace NGraphicAppearance {
@@ -114,7 +114,7 @@ void CTCGraphicAppearanceReplaceableMesh::ReplaceMeshByIndex(unsigned long index
     const CEngineGraphic& mesh = PDef->Meshes[index];
     ParentThing->PTCGraphicAppearance->MainGraphic = mesh;
     ParentThing->PTCGraphicAppearance->SetAsChanged(4);
-    ParentThing->GetPhysicsTC()->CreatePPhysicsMeshInfo(mesh);
+    ParentThing->GetPhysicsTC()->SetPhysicsMeshInfoFromGraphic(mesh);
     ParentThing->SendMessageW(NTCMessages::CMessageOnMeshReplaced());
 }
 }

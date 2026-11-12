@@ -1,0 +1,9 @@
+- Default-mode VSLOTS declarations are fine for leaf bodies but give wrong slot offsets for virtual calls; use a header whose whole vtable is modelled (CThing ORIGINAL_VTABLE, CTCBase, CModeBase VIRTUALS) when the body calls a virtual.
+- FAM03's CThingCreatureBase VSLOTS needs `class CInterpolationInfo;` declared before the include (its DrawUpdate parameter).
+- STLport list front() is behind FABLE_RETAIL_STLP_LIST; CCountedPointer operator-> behind FABLE_RETAIL_CCOUNTEDPOINTER.
+- CTCBoss.h needs FABLE_RETAIL_C3DVECTOR_PACKED + engine/C3DVector.h (PhaseStartPos at alignment 1).
+- Check callee access in the PDB mangling (AAE / IAE / QAE): several landed binders use QAE for private cleanup helpers.
+- A landed prologue that renames the class (`#define CTCBulletTime CTCBulletTimeLayout`) is not reusable; pick the next one with the FABLE_RETAIL_<CLASS> macro.
+- One Wine cl hang (120 s timeout, no output) cleared on regrade with a fuller prologue; always run cl under timeout.
+- Catalog tests that are 32-bit source snapshots cannot run on a 64-bit g++ host; record them, do not rewrite them.
+- Group rows by shape and generate specs from a short table; 30-50 rows per bulk grade kept every row under 3 grades.

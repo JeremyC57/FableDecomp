@@ -12,9 +12,8 @@
 #include "fable_string.h"
 #include <string.h>
 struct StringDataMethods:CCharStringData{bool Equals(const char*)const;}; //004115A0 CBasicString<char>::operator==
-extern const char EmptyString[]; //0122D70E empty CBasicString fallback
-static FABLE_FORCEINLINE bool StringEquals(const CCharString&s,const char*t){CCharStringData*d=*reinterpret_cast<CCharStringData*const*>(&s);if(!d)return strcmp(t,EmptyString)==0;return static_cast<StringDataMethods*>(d)->Equals(t);}
+static FABLE_FORCEINLINE bool StringEquals(const CCharString&s,const char*t){CCharStringData*d=*reinterpret_cast<CCharStringData*const*>(&s);if(!d)return strcmp(t,"")==0;return static_cast<StringDataMethods*>(d)->Equals(t);}
 class CParsedItem{public:long Type;long Value;CCharString String;const CCharString& GetSymbol()const;const CCharString& GetString()const;}; //009B9870/009B9880
 class CStringParser{public:bool ReadNextItem(CParsedItem&);bool ReadAsStringUntilString(const CCharString&,CParsedItem&);}; //009BA080/009BA110
 class CGenericVarRef{public:long Type;CCharString*PData;private:bool ReadFromParserAsString(CStringParser&);};
-bool CGenericVarRef::ReadFromParserAsString(CStringParser&parser){CParsedItem item;if(!parser.ReadNextItem(item)||item.Type!=1)return false;CCharStringData*data=*reinterpret_cast<CCharStringData*const*>(&item.GetSymbol());if(!data){if(strcmp("\"",EmptyString)!=0)return false;}else{if(!static_cast<StringDataMethods*>(data)->Equals("\""))return false;}bool read;{CCharString delimiter("\"",-1);read=parser.ReadAsStringUntilString(delimiter,item);}if(!read)return false;*PData=item.GetString();parser.ReadNextItem(item);return true;}
+bool CGenericVarRef::ReadFromParserAsString(CStringParser&parser){CParsedItem item;if(!parser.ReadNextItem(item)||item.Type!=1)return false;CCharStringData*data=*reinterpret_cast<CCharStringData*const*>(&item.GetSymbol());if(!data){if(strcmp("\"","")!=0)return false;}else{if(!static_cast<StringDataMethods*>(data)->Equals("\""))return false;}bool read;{CCharString delimiter("\"",-1);read=parser.ReadAsStringUntilString(delimiter,item);}if(!read)return false;*PData=item.GetString();parser.ReadNextItem(item);return true;}

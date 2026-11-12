@@ -9,11 +9,8 @@ class CEngineLandscapeMemoryManager { public:
     void AppendFreeEdgeNode(void* block);          // 0x00BDA090
     void FreeBlock(void* block);                   // 0x00BDA0D0
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 class CMovableResource { public:
     virtual void v00();
 };
@@ -29,7 +26,7 @@ struct CLocalDetailPrimitiveRepeatedMesh : CMovableResource {   // vtable 0x012A
 
 void CLocalDetailPrimitiveRepeatedMesh::OnPostRelocation()
 {
-    CEngineLandscapeMemoryManager* manager = g_pEngine_01436ea8->m_pLandscapeMemory;
+    CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
     manager->RebindBlockOwner(m_pBlock50, this);
     manager->RebindBufferOwner(m_pBuffer54, this);
     manager->RebindBufferOwner(m_pBuffer44, this);

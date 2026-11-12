@@ -64,7 +64,7 @@ class CThingCreatureBase : public CThing {};
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 class CTCTurncoat { public:
     bool IsTurncoatable();                              // 0x007C7870
-    bool IsTurncoated();                                // 0x007C7890
+    bool IsTurncoated() const;                          // 0x007C7890 Ego_r/FableWin ?IsTurncoated@CTCTurncoat@@QBE_NXZ
 };
 class CTCTurncoatSpell { public:
     void SetPTarget(CThingCreatureBase* target);        // 0x007C6940

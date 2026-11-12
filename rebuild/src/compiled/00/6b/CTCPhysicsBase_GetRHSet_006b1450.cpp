@@ -7,6 +7,7 @@
 //   through the x87 (`fld ; fstp`), the remaining five dwords through ecx/edx -- a POD C3DVector copies all six as dwords.
 // Leaf: GetRHSet
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#define FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
 #include "engine/CTCPhysicsBase.h"
 
 #include "engine/C3DVector.h"
@@ -17,7 +18,6 @@ class CRightHandedSet { public:
     CRightHandedSet() { }
 };
 
-extern CRightHandedSet g_DefaultRHSet;      // 0x0137F9B4
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
     CRightHandedSet GetRHSet(float interpolation) const;
@@ -25,5 +25,5 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 
 CRightHandedSet CTCPhysicsBase_Methods::GetRHSet(float interpolation) const
 {
-    return g_DefaultRHSet;
+    return DummyRHSet;                      // CTCPhysicsBase::DummyRHSet 0x0137F9B4 (FableWin.pdb dynamic initializer)
 }

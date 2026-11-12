@@ -22,7 +22,12 @@ public:
 public: virtual void Copy(const CDefClassBase*);
 public: virtual unsigned long GetSizeofClass();
 public: static CDefClassBase* FABLE_FASTCALL Alloc();
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_TYPENAME
+// Opt-in (wf4, row 0x008F10B0): the inline body, as GetSubDef<CTavernGameCardBaseDef> 0x008F27A0 builds the literal in place (landed row).
+public: static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CTavernGameCardBaseDef", -1); }
+#else
 public: static CCharString FABLE_FASTCALL StatGetTypeName();
+#endif
 public: virtual void Transfer(CPersistContext&);
 public: CTavernGameCardBaseDef(const CTavernGameCardBaseDef&);
 public: CTavernGameCardBaseDef();
@@ -46,7 +51,13 @@ public: CTavernGameCardBaseDef& operator=(const CTavernGameCardBaseDef&);
     float         PackOffset_X;                              // +0x64 C2DVector::X
     float         PackOffset_Y;                              // +0x68 C2DVector::Y
     unsigned char CardOrders[0xc];                           // +0x6c vector<CCardPositionsDef,std::allocator<CCardPositionsDef>_>
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF_CARDPACK
+    // Opt-in (wf4, row 0x008F10B0 CTCTavernGameCardBase::ShuffleCards): the member with its Ego_r.pdb type (STLport vector, 0xc bytes;
+    // CCardDef is 0x44 bytes: ShuffleCards divides the range by 0x44 at 0x008F10E5). The includer includes engine/CCardDef.h first.
+    std::vector<CCardDef> CardPack;                          // +0x78
+#else
     unsigned char CardPack[0xc];                             // +0x78 vector<CCardDef,std::allocator<CCardDef>_>
+#endif
 };
 #else
 class CTavernGameCardBaseDef {

@@ -40,6 +40,15 @@ public:
 #else
     unsigned char NavPreferred[0x3];                         // +0x09 bitfield group: uchar:1
 #endif
+#ifdef FABLE_RETAIL_CHEIGHTMAPCELL_ACCESSORS
+    // wf3 (row 0x0081F240 CMap::CopyPos): FableWin.pdb inline accessors ?GetEngineThemePaletteIndex@CHeightMapCell@@QBEEJ@Z,
+    // ?SetEngineThemePaletteIndex@CHeightMapCell@@QAEXEJ@Z, ?GetEngineBlend@CHeightMapCell@@QBEEJ@Z, ?SetEngineBlend@CHeightMapCell@@QAEXEJ@Z
+    // (no out-of-line copy in Fable.exe). No layout change.
+    unsigned char GetEngineThemePaletteIndex(long i) const { return EngineThemePaletteIndex[i]; }
+    void SetEngineThemePaletteIndex(unsigned char index, long i) { EngineThemePaletteIndex[i] = index; }
+    unsigned char GetEngineBlend(long i) const { return EngineBlend[i]; }
+    void SetEngineBlend(unsigned char blend, long i) { EngineBlend[i] = blend; }
+#endif
 };
 #pragma pack(pop)
 

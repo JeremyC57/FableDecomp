@@ -103,7 +103,8 @@ template <> class CArray<CCharString> : public CCharStringVector { };
 
 class CQuestManager {
 public:
-    void* GetActiveQuestInfo(const CCharString* quest_name);   // 0x004B00C0 (the per-name step of ActivateMultipleQuests)
+    bool IsQuestRegistered(const CCharString& quest_name) const;   // 0x004B00C0 ?IsQuestRegistered@CQuestManager@@QBE_NABVCCharString@@@Z (Ego_r.pdb; landed row;
+                                                                 //   NF28: was GetActiveQuestInfo(const CCharString*)), the per-name step
     bool ActivateMultipleQuests(const CArray<CCharString>& quest_names, bool flag, bool load_resources);   // 0x004B4260
     bool ActivateQuest(const CCharString& quest_name, bool flag, bool load_resources);
 };
@@ -116,7 +117,7 @@ bool CQuestManager::ActivateMultipleQuests(const CArray<CCharString>& quest_name
 {
     bool activated = false;
     for (unsigned int i = 0; i < unsigned int(quest_names._M_finish - quest_names._M_start); ++i)
-        if (GetActiveQuestInfo(quest_names._M_start + i) && (flag || load_resources))
+        if (IsQuestRegistered(quest_names._M_start[i]) && (flag || load_resources))
             activated = true;
     return activated;
 }

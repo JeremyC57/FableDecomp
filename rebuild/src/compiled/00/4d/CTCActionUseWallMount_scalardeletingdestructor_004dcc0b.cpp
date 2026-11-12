@@ -1,9 +1,25 @@
+// CTCActionUseWallMount::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CTCActionUseWallMount (it only runs ~CTCActionUseBase 0x004DA967), then operator delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCTCActionUseWallMount@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004DCC0B, 28 bytes, thiscall, `ret 4`; slot 0 of the CTCActionUseWallMount vtable 0x012405AC (rtti-vtables.tsv).
+// Names (agentNF20, 2026-11-11; was a free __fastcall stand-in calling a *_Destruct / C3DAnimationBlendState stand-in): the destructor it
+//   calls is ??1CTCActionUseBase@@UAE@XZ 0x004DA967 (FableWin.pdb; shared engine/CTCActionUseBase.h, opt-in FABLE_RETAIL_CTCACTIONUSEBASE_DTOR),
+//   operator delete 0x00BFE9BC. Hierarchy (ghidra_out/rtti_bases.tsv): CTCActionUseWallMount : CTCActionUseBase.
+// Shape: VC7.1 emits the deleting destructor with the vtable, i.e. in a TU that constructs the class: MakeOne is that construction.
+//   No class between it and CTCActionUseBase adds a member with a destructor; local models: no engine header.
 #pragma optimize("s", on)
-extern void __fastcall CTCActionUseWallMount_Destruct(void* mount);
-void* __fastcall CTCActionUseWallMount_ScalarDeletingDestructor(void* mount, int, unsigned int flags)
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCACTIONUSEBASE_DTOR
+#include "engine/CTCActionUseBase.h"
+
+class CTCActionUseWallMount : public CTCActionUseBase {
+public:
+    CTCActionUseWallMount(CThing& thing) : CTCActionUseBase(thing) { }
+    virtual ETCInterfaceType GetInterfaceType() const;                   // CTCBase slot 21 (declared: the vtable is emitted here)
+    virtual CCharString GetClassTypeName() const;                        // CTCBase slot 22
+};
+
+void* MakeOne(CThing& thing)
 {
-    CTCActionUseWallMount_Destruct(mount);
-    if (flags & 1)
-        operator delete(mount);
-    return mount;
+    return new CTCActionUseWallMount(thing);
 }

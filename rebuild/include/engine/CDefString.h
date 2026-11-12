@@ -27,7 +27,15 @@ public:
 #else
  CDefString():TablePos(-1){}
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_CTOR_SETSTRING
+ // Opt-in (wf2, row 0x009ADC90 CDefinitionManager::InstantiateDef): the CCharString constructor is inline in retail and its body is
+ // one call of ?SetString@CDefString@@QAEXABVCCharString@@@Z 0x009D5060 (Ego_r.pdb / FableWin.pdb; landed), with no TablePos
+ // store before it (0x009ADCF6: `push ecx ; mov ecx,esp ; push name ; call 0x009D5060` builds the by-value argument in place).
+ void SetString(const CCharString& text);                               // 0x009D5060
+ CDefString(const CCharString& text){SetString(text);}
+#else
  CDefString(const CCharString&);
+#endif
 #if defined(FABLE_RETAIL_CDEFSTRING_FORCEINLINE_CONVERSION)
  // Per-TU inline opt-in (chunk 1010b, row 0x008A8C60 CGameScriptInterface::EntitySetAsSittingOnFloor): that TU expands the
  // conversion forwarder and calls GetString 0x00415DD0 out of line for an implicit conversion temporary (0x008A8D51..0x008A8D5E:

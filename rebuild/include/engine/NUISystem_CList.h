@@ -95,6 +95,11 @@ protected: std::vector<bool,std::allocator<bool> > ScrollingChildrenVisibility;
 // (the type); ChangeState 0x0053A0A1 walks it, reads its front and calls push_front 0x0053CA3C. Access is unproven
 // (the landed 0x005E41E0 clears it from outside the class), hence public.
 public: static std::list<NUISystem::CList *,std::allocator<NUISystem::CList *> > GPreviousSelected;
+#ifdef FABLE_RETAIL_CLIST_CLEARPREVIOUSSELECTED
+// Opt-in (agentFAM07): FableWin.pdb ?ClearPreviousSelected@CList@NUISystem@@SIXXZ (public static __fastcall), retail 0x0048573D
+// (`mov ecx, offset GPreviousSelected ; jmp _List_base::clear`, called by CTCQuestCompletionUI::GlobalUpdate 0x005E78F0).
+public: static void __fastcall ClearPreviousSelected();
+#endif
 #else
 protected: unsigned char ScrollingChildrenVisibility[16]; // actual STLport bit-vector, unused by this row.
 #endif

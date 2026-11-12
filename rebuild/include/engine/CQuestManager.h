@@ -43,14 +43,51 @@ inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val) 
 // header: Ego_r.pdb / FableWin.pdb ?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z (retail
 // 0x004B5080, landed), class key V (pdb_class_keys.tsv), retail size 0x20 (+0x0C .. +0x2C of CQuestManager; contents opaque here).
 #include "engine/CArray.h"
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+#include "engine/CVectorMap.h"
+#include "stlport/fable_map.h"
+#endif
 class CWorld;
 class CStringParser;
 namespace NQuestManager {
 class CRuntimeQuestPersistence {
 public:
     void LoadFromGameStateScript(CCharString& text);         // 0x004B5080
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // Nested opt-in (chunk Q25, row 0x004B5EE0 SaveGameState(CCharString&)): Ego_r.pdb / FableWin.pdb
+    // ?SetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@QAEXABVCCharString@@0@Z (retail 0x004B4E30) and
+    // ?SaveToGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z (retail 0x004AF450). Declarations only.
+    void SetQuestScriptPersistScript(const CCharString& quest_name, const CCharString& script);   // 0x004B4E30
+    void SaveToGameStateScript(CCharString& text);           // 0x004AF450
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+    // (wf1, row 0x004B4260, for the same-TU body of ActivateQuests 0x004B3CE0) the two CVectorMaps typed: retail 0x10 bytes each;
+    // Ego_r.pdb CVectorMap<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo, CKeyPairCompareLess<..> > (LowerBound
+    // 0x004B97D0). GetQuestScriptPersistScript (Ego_r.pdb ?GetQuestScriptPersistScript@CRuntimeQuestPersistence@NQuestManager@@QBEPBVCCharString@@ABV3@@Z)
+    // is expanded in ActivateQuests (0x004B3E99..0x004B3EE0: Find on the map at +0, `add esi,8` = the pair's +8); its twin
+    // GetQuestMasterDataPersistScript is out of line at 0x004B27F0 (map at +0x10, same +8). CPersistInfo's members and the two map
+    // names are Ego_r.pdb's (struct_layouts_egor.tsv: CPersistInfo 8 0 QuestName / 8 4 PersistScript; CRuntimeQuestPersistence
+    // PersistScripts / MasterDataPersistScripts; Ego_r's maps are 0x14, retail's 0x10 -- offsets follow retail).
+    class CPersistInfo {
+    public:
+        CCharString QuestName;                               // +0x00 (pair +4; Ego_r.pdb)
+        CCharString PersistScript;                           // +0x04 (pair +8; Ego_r.pdb)
+    };
+    const CCharString* GetQuestScriptPersistScript(const CCharString& quest_name) const
+    {
+        CVectorMap<CCharString, CPersistInfo>::const_iterator it = PersistScripts.Find(quest_name);
+        if (it != PersistScripts.end())
+            return &it->second.PersistScript;
+        return 0;
+    }
+    const CCharString* GetQuestMasterDataPersistScript(const CCharString& quest_name) const;   // 0x004B27F0
+private:
+    CVectorMap<CCharString, CPersistInfo> PersistScripts;       // +0x00 (Ego_r.pdb)
+    CVectorMap<CCharString, CPersistInfo> MasterDataPersistScripts;   // +0x10 (Ego_r.pdb)
+#else
 private:
     unsigned char _pad_0x00[0x20];
+#endif
 };
 }
 #endif
@@ -64,6 +101,19 @@ public:
         // Retail opt-in (Codex pass20): both PDBs and native004b29d4 use QuestName+0x30.
         const CCharString& GetName()const{return QuestName;}
 #endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+        // (wf1, for the same-TU body of ActivateQuests 0x004B3CE0) Ego_r.pdb ??0CActiveQuest@CQuestManager@@QAE@JABVCCharString@@ABVCScriptInfo@@
+        // PAVCScriptBase@@PAVCScriptDataBase@@_N@Z (out of line, retail 0x004B0310), ??0CActiveQuest@CQuestManager@@QAE@JABVCCharString@@_N@Z
+        // (expanded in ActivateQuests 0x004B4084..0x004B40B0: ID, zeroes, Persistent = true, LoadedResources, QuestName; MarkerPosition
+        // left alone), ??1CActiveQuest@CQuestManager@@QAE@XZ (0x004B9B90) and ?LoadFromGameState@CActiveQuest@CQuestManager@@QAEXABVCCharString@@@Z
+        // (expanded: `mov ecx,[quest+8] ; test ecx,ecx ; je ; push script ; call CScriptBase::LoadGameState`, 0x004B3FF9).
+        CActiveQuest(long id, const CCharString& quest_name, const CScriptInfo& script_info, CScriptBase* script,
+                     CScriptDataBase* script_data, bool loaded_resources);   // 0x004B0310
+        CActiveQuest(long id, const CCharString& quest_name, bool loaded_resources)
+            : ID(id), PScriptInfo(0), Persistent(true), LoadedResources(loaded_resources), QuestName(quest_name) { }
+        ~CActiveQuest();                                     // 0x004B9B90
+        void LoadFromGameState(const CCharString& script) { if (PScript.Data) PScript->LoadGameState(script); }
+#endif
     private:
         long ID;
         const CScriptInfo* PScriptInfo;
@@ -73,8 +123,16 @@ public:
         bool Persistent,LoadedResources;
         CCountedPointer<CScriptDataBase> PScriptData;
         CCharString QuestName;
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+        // (chunk Q25) CQuestManager::SaveGameState 0x004B5EE0 reads PScriptInfo +4, PScript +8, Persistent +0x24, PScriptData +0x28 and
+        // QuestName +0x30 in place (no accessor of these in either PDB): the owner is a friend.
+        friend class CQuestManager;
+#endif
     };
+#ifndef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // (chunk Q25: the SAVEGAMESTATE row uses the LOADGAMESTATE layout, which has no PQuestCurrentlyRunning member)
     CActiveQuest* GetPActiveQuest()const{return PQuestCurrentlyRunning;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_STARTSCREEN
     // Nested opt-in (chunk 1010b, row 0x00896B60 CGameScriptInterface::KickOffQuestStartScreen): Ego_r.pdb / FableWin.pdb
@@ -259,13 +317,64 @@ public:
         }
     };
     // Ego_r.pdb / FableWin.pdb ?ActivateMultipleQuests@CQuestManager@@QAE_NABV?$CArray@VCCharString@@@@_N1@Z (retail 0x004B4260).
-    bool ActivateMultipleQuests(const CArray<CCharString>& names, bool load_resources, bool from_saved_game);
+    bool ActivateMultipleQuests(const CArray<CCharString>& quest_names, bool game_script, bool load_resources);   // arg2 -> CActivateQuestInfo::GameScript (+8), arg3 -> LoadResources (+9)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+    // Opt-in (wf1, row 0x004B4260 ActivateMultipleQuests): the nested activation record (Ego_r.pdb CQuestManager::CActivateQuestInfo,
+    // 12 bytes: QuestName +0, PScriptInfo +4, GameScript +8, LoadResources +9; ??0CActivateQuestInfo@CQuestManager@@QAE@ABVCCharString@@
+    // PBVCScriptInfo@@_N2@Z, inline in retail), ScriptInfoManager typed at +0x78, and the two callees:
+    // ?IsQuestRegistered@CQuestManager@@QBE_NABVCCharString@@@Z (0x004B00C0) and the private
+    // ?ActivateQuests@CQuestManager@@AAEXABV?$CArray@VCActivateQuestInfo@CQuestManager@@@@@Z (0x004B3CE0).
+    class CActivateQuestInfo {
+    public:
+        CCharString  QuestName;                              // +0x0
+        CScriptInfo* PScriptInfo;                            // +0x4
+        bool         GameScript;                             // +0x8
+        bool         LoadResources;                          // +0x9
+        CActivateQuestInfo(const CCharString& quest_name, const CScriptInfo* script_info, bool game_script, bool load_resources)
+            : QuestName(quest_name), PScriptInfo((CScriptInfo*)script_info), GameScript(game_script), LoadResources(load_resources) { }
+    };
+    bool IsQuestRegistered(const CCharString& name) const;   // 0x004B00C0
+    // The callees of ActivateQuests (its real body sits ahead of ActivateMultipleQuests in the row's TU, as in the retail source file):
+    // Ego_r.pdb ?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z (0x004AF610), ?GetIndexFromRegisteredQuest@CQuestManager@@QBEJABVCCharString@@@Z
+    // (0x004AF740), and the private ?GetMasterScriptDataForScript@CQuestManager@@AAEPAVCScriptDataBase@@ABVCScriptInfo@@@Z (0x004AFA10),
+    // ?LoadMasterScriptDataFromGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z (0x004B3760),
+    // ?LoadResourcesForQuests@CQuestManager@@AAEXABV?$CArray@VCCharString@@@@@Z (0x004B2510).
+    bool IsQuestActive(const CCharString& quest_name) const; // 0x004AF610
+#ifndef FABLE_RETAIL_CQUESTMANAGER_COMPLETIONUI
+    long GetIndexFromRegisteredQuest(const CCharString& name) const;   // 0x004AF740
+#endif
+private:
+    void ActivateQuests(const CArray<CActivateQuestInfo>& quests);   // 0x004B3CE0
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEQUESTS
+    // (wf4, row 0x004B3CE0) Ego_r.pdb / FableWin.pdb ?AllocateQuestID@CQuestManager@@AAEJXZ (private; out of line in Ego_r at
+    // 0x004B4670, expanded in retail ActivateQuests at 0x004B3EFA and 0x004B4063: `mov eax,[this+84h] ; <id> ; inc eax ;
+    // mov [this+84h],eax`).
+    long AllocateQuestID() { return CurrentQuestID++; }
+#endif
+    CScriptDataBase* GetMasterScriptDataForScript(const CScriptInfo& script_info);   // 0x004AFA10
+    void LoadMasterScriptDataFromGameState(CScriptDataBase& script_data, const CCharString& quest_name);   // 0x004B3760
+    void LoadResourcesForQuests(const CArray<CCharString>& quest_names);   // 0x004B2510
+public:
+#endif
     // Ego_r.pdb / FableWin.pdb ?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z (retail 0x004B5500).
     void LoadGameState(CStringParser& parser);
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // (chunk Q25) Ego_r.pdb / FableWin.pdb ?SaveGameState@CQuestManager@@QAEXAAVCCharString@@@Z (retail 0x004B5EE0) and the private
+    // ?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z (retail 0x004B5030).
+    void SaveGameState(CCharString& text);
+private:
+    void SaveMasterScriptDataToGameState(CScriptDataBase& data, const CCharString& quest_name);   // 0x004B5030
+#endif
 private:
     unsigned char _pad_0x04[0x0c - 0x04];                    // +0x04 PGameScriptThingManager (CCountedPointer)
     NQuestManager::CRuntimeQuestPersistence RuntimeQuestPersistence;   // +0x0c (0x20 bytes)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SAVEGAMESTATE
+    // (chunk Q25, needs FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST) the two members typed, Ego_r.pdb types at the retail offsets.
+    std::vector<CCharString> RegisteredQuestNames;           // +0x2c
+    std::list<CCountedPointer<CActiveQuest> > ActiveQuests;  // +0x38
+#else
     unsigned char _pad_0x2c[0x3c - 0x2c];                    // +0x2c RegisteredQuestNames, ActiveQuests
+#endif
     std::list<std::pair<CCharString, unsigned long> > PendingQuestsToDeactivate;   // +0x3c
     std::vector<CCharString> CreatureGenerationDisabledQuests;   // +0x40
     std::vector<CCharString> BetweenStartAndEndScreenQuests; // +0x4c (Ego_r vector<CCharString>)
@@ -307,13 +416,38 @@ private:
     std::list<CBoast> AcceptedBoasts;                        // +0x6c
     std::list<CBoast> TempBoasts;                            // +0x70
 #ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+    unsigned char _pad_0x74[0x78 - 0x74];                    // +0x74 Objectives
+    CScriptInfoManager* ScriptInfoManager;                   // +0x78 (ActivateMultipleQuests 0x004B42E4 `mov ecx,[edi+78h]`)
+#else
     unsigned char _pad_0x74[0x7c - 0x74];                    // +0x74 Objectives, ScriptInfoManager
+#endif
     CWorld* World;                                           // +0x7c (LoadGameState: `mov ecx,[ebx+7Ch]`, virtual slot 3 GetThingManager)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+    unsigned char _pad_0x80[0x84 - 0x80];                    // +0x80 GameInterface
+    long CurrentQuestID;                                     // +0x84 (ActivateQuests 0x004B3EFA `mov eax,[ebp+84h] ; inc eax`)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEQUESTS
+    // Nested opt-in (wf4, row 0x004B3CE0 ActivateQuests, for the same-TU body of LoadResourcesForQuests 0x004B2510): Ego_r.pdb
+    // DayActive +0x8c / NightActive +0x8d (LoadResourcesForQuests 0x004B2510 reads both; the default branch below names them too).
+    unsigned char _pad_0x88[0x8c - 0x88];                    // +0x88 PQuestCurrentlyRunning
+    bool DayActive;                                          // +0x8c
+    bool NightActive;                                        // +0x8d
+    unsigned char _pad_0x8e[0x8f - 0x8e];                    // +0x8e WorldDestructed
+#else
+    unsigned char _pad_0x88[0x8f - 0x88];                    // +0x88 PQuestCurrentlyRunning .. WorldDestructed
+#endif
+#else
     unsigned char _pad_0x80[0x8f - 0x80];                    // +0x80 GameInterface .. WorldDestructed
+#endif
     bool QuestCardsNeedUpdating;                             // +0x8f (LoadGameState 0x004B556C `mov byte ptr [ebx+8Fh],0`)
     unsigned char _pad_0x90[0x98 - 0x90];                    // +0x90 HeroMapNumber, LastAutoSaveFrame
     long NumberOfQuestsBetweenStartAndFinishScreens;         // +0x98 (LoadGameState 0x004B5ECD)
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVATEMULTIPLEQUESTS
+    std::set<CCharString> QuestsWithResourcesLoadedThatAreNotActivated;   // +0x9c (Ego_r set<CCharString>; ActivateQuests `lea ecx,[ebp+9Ch]`)
+    unsigned char _pad_0xa8[0xb4 - 0xa8];                    // +0xa8 PMostRecentValidUsedTarget, PMostRecentValidUsedTargetName
+#else
     unsigned char _pad_0x9c[0xb4 - 0x9c];                    // +0x9c QuestsWithResourcesLoadedThatAreNotActivated .. PMostRecentValidUsedTargetName
+#endif
 #else
 #ifdef FABLE_RETAIL_CQUESTMANAGER_BOASTMADE
     unsigned char _pad_0x74[8];

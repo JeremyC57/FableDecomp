@@ -51,6 +51,11 @@ public:
     // ?SetupOutlineSmoothAlphaStencilMaskStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@@Z (a non-static member
     // that never reads `this`; retail `ret 4`).
     void SetupOutlineSmoothAlphaStencilMaskStates(const CEngineMeshEffectOutline& effect);   // 0x00BF01E0
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCILSTATES
+    // Nested opt-in (chunk Q25, row 0x00BF0B20): Ego_r.pdb / FableWin.pdb
+    // ?SetupOutlineStencilStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@M@Z (`this` unused; retail `ret 8`).
+    void SetupOutlineStencilStates(const CEngineMeshEffectOutline& effect, float scale);   // 0x00BF0B20
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderUtil) == 0x4);

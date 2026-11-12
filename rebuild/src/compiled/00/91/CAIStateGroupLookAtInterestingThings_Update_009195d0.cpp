@@ -90,7 +90,9 @@ class CAIStateGroupBase { public:
 };
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBase {
     long FrameToLook;                           // +0x14
-    CThing* FindInterestingThing();             // 0x00919240
+private:
+    CThing* FindInterestingThing();             // 0x00919240 Ego_r/FableWin ?FindInterestingThing@CAIStateGroup_LookAtInterestingThings@@AAEPAVCThing@@XZ (private)
+public:
     virtual void Update();
 };
 

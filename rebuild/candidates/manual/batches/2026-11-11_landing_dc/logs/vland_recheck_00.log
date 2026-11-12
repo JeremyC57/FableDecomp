@@ -1,0 +1,135 @@
+addr       parity           behav  name
+00440730   RELOCATION_MATCH PASS   00440730
+004855a3   RELOCATION_MATCH FAIL   004855a3
+004c2950   RELOCATION_MATCH PASS   004c2950
+004c4490   WARN SHARED_HEADER_AVAILABLE CEngineMeshEffect
+004c4490   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+004c4490   RELOCATION_MATCH PASS   004c4490
+005278a0   RELOCATION_MATCH PASS   005278a0
+00528440   RELOCATION_MATCH PASS   00528440
+00528d30   RELOCATION_MATCH PASS   00528d30
+00528ef0   RELOCATION_MATCH PASS   00528ef0
+0052d9a0   WARN SHARED_HEADER_AVAILABLE CObserver
+0052d9a0   RELOCATION_MATCH PASS   0052d9a0
+0052dca0   RELOCATION_MATCH PASS   0052dca0
+00534c60   RELOCATION_MATCH PASS   00534c60
+0056cb00   RELOCATION_MATCH PASS   0056cb00
+0056cfd0   RELOCATION_MATCH PASS   0056cfd0
+0056d3d0   RELOCATION_MATCH PASS   0056d3d0
+005e8c00   RELOCATION_MATCH PASS   005e8c00
+0061a500   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+0061a500   WARN SHARED_HEADER_AVAILABLE CQuestCardItem
+0061a500   RELOCATION_MATCH PASS   0061a500
+00623560   RELOCATION_MATCH PASS   00623560
+00630a10   RELOCATION_MATCH PASS   00630a10
+00646709   WARN SHARED_HEADER_AVAILABLE CBaseObject
+  WARN leaf '00646709' matches no symbol in 00646709.obj; graded the largest function
+  WARN leaf '00646709' matches no symbol in 00646709.obj; graded the largest function
+00646709   RELOCATION_MATCH PASS   00646709
+00696900   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@2@@Z (catalog std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>>::_M_erase; names another function)
+00696900   RELOCATION_MATCH PASS   00696900
+006aff00   WARN SHARED_HEADER_AVAILABLE CTCBase
+006aff00   WARN SHARED_HEADER_AVAILABLE CWorld
+006aff00   WARN SHARED_HEADER_AVAILABLE CThing
+006aff00   RELOCATION_MATCH PASS   006aff00
+006e5790   RELOCATION_MATCH PASS   006e5790
+006f0dd0   RELOCATION_MATCH PASS   006f0dd0
+006f1cb0   RELOCATION_MATCH PASS   006f1cb0
+006f2520   RELOCATION_MATCH PASS   006f2520
+007008c0   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager
+007008c0   WARN RELOC_NAME: ?PopSourceDef@CTCOpinionSource@@QAE_NXZ -> 00771510 labelled 'CStateStackOwner_00771510::PopState'
+007008c0   RELOCATION_MATCH PASS   007008c0
+00723a10   RELOCATION_MATCH PASS   00723a10
+00749880   RELOCATION_MATCH PASS   00749880
+007699c0   WARN STANDIN_LEAF ?Dest_val_CSymbolInfo___@@YIXPAUSymPair@@@Z (catalog std::_Destroy<AttackParticleAndEndPoints>; names another function)
+007699c0   RELOCATION_MATCH FAIL   007699c0
+0076bdd0   WARN SHARED_HEADER_AVAILABLE AttackParticleAndEndPoints
+0076bdd0   RELOCATION_MATCH PASS   0076bdd0
+00770e80   WARN SHARED_HEADER_AVAILABLE CWorld
+00770e80   WARN SHARED_HEADER_AVAILABLE CTCBase
+00770e80   RELOCATION_MATCH PASS   00770e80
+00771660   WARN SHARED_HEADER_AVAILABLE CList
+00771660   WARN SHARED_HEADER_AVAILABLE CWorld
+00771660   WARN SHARED_HEADER_AVAILABLE CThingBaseDef
+00771660   WARN SHARED_HEADER_AVAILABLE CThing
+00771660   WARN SHARED_HEADER_AVAILABLE CTCBase
+00771660   RELOCATION_MATCH PASS   00771660
+007afb90   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+007afb90   WARN RELOC_NAME: ??RCIsHitEventHitByMelee@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z -> 00810f80 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007afb90   RELOCATION_MATCH PASS   007afb90
+007c21a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007c21a0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007c21a0   WARN SHARED_HEADER_AVAILABLE CThingShotDef
+007c21a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007c21a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007c21a0   RELOCATION_MATCH PASS   007c21a0
+007de2e0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+007de2e0   WARN RELOC_NAME: ??RCIsHitEventHitByShot@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z -> 00810f70 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007de2e0   RELOCATION_MATCH PASS   007de2e0
+007eaf00   WARN STANDIN_LEAF ?DestroyMembers@CCreatureAction_007eaf00@@QAEXXZ (catalog _global::Dtor_CCreatureActionBaseBase_007eaf00; address-only name)
+007eaf00   RELOCATION_MATCH FAIL   007eaf00
+007eb990   WARN STANDIN_LEAF ?DestroyMembers@CCreatureAction_007eb990@@QAEXXZ (catalog _global::Dtor_CCreatureActionBaseBase_007eb990; address-only name)
+007eb990   RELOCATION_MATCH FAIL   007eb990
+007ed420   WARN STANDIN_LEAF ?DestroyMembers@CCreatureAction_007ed420@@QAEXXZ (catalog _global::Dtor_CCreatureActionBaseBase_007ed420; address-only name)
+007ed420   RELOCATION_MATCH FAIL   007ed420
+007edff0   WARN STANDIN_LEAF ?DestroyMembers@CCreatureAction_007edff0@@QAEXXZ (catalog _global::Dtor_CCreatureActionBaseBase_007edff0; address-only name)
+007edff0   RELOCATION_MATCH FAIL   007edff0
+007ee7a0   WARN STANDIN_LEAF ?DestroyMembers@CCreatureAction_007ee7a0@@QAEXXZ (catalog _global::Dtor_CCreatureActionBaseBase_007ee7a0; address-only name)
+007ee7a0   RELOCATION_MATCH FAIL   007ee7a0
+  WARN leaf '007f3ad0' matches no symbol in 007f3ad0.obj; graded the largest function
+  WARN leaf '007f3ad0' matches no symbol in 007f3ad0.obj; graded the largest function
+007f3ad0   RELOCATION_MATCH PASS   007f3ad0
+007fce10   RELOCATION_MATCH PASS   007fce10
+007ffdb0   WARN SHARED_HEADER_AVAILABLE CTCGatherPointBase
+007ffdb0   RELOCATION_MATCH PASS   007ffdb0
+007ffeb0   WARN SHARED_HEADER_AVAILABLE CTCGatherPointBase
+  WARN leaf '007ffeb0' matches no symbol in 007ffeb0.obj; graded the largest function
+  WARN leaf '007ffeb0' matches no symbol in 007ffeb0.obj; graded the largest function
+007ffeb0   RELOCATION_MATCH PASS   007ffeb0
+00834fd0   RELOCATION_MATCH PASS   00834fd0
+00835140   RELOCATION_MATCH PASS   00835140
+008353f0   RELOCATION_MATCH PASS   008353f0
+00835440   RELOCATION_MATCH PASS   00835440
+
+WINS: 41
+  00440730 RELOCATION_MATCH m::?clear@?$_List_base@VCMarkerInfo@CMiniMapDisplay@@V?$allocator@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXXZ
+  004c2950 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@PAXU?$pair@QAXVCRGBColour@@@std@@U?$_Select1st@U?$pair@QAXVCRGBColour@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAXVCRGBColour@@@std@@@2@@Z
+  004c4490 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@PAXU?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@U?$_Select1st@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@Z
+  005278a0 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThing@@@std@@@2@@Z
+  00528440 RELOCATION_MATCH m::?clear@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@QAEXXZ
+  00528d30 RELOCATION_MATCH m::??1?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@QAE@XZ
+  00528ef0 RELOCATION_MATCH m::?erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThing@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KPAVCThing@@@std@@@2@@2@0@Z
+  0052d9a0 RELOCATION_MATCH m::?IgnoreAllEvents@CObserver@NUISystem@@UAEXXZ
+  0052dca0 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@W4EEvent@NUISystem@@W412@U?$_Identity@W4EEvent@NUISystem@@@std@@U?$less@W4EEvent@NUISystem@@@4@V?$allocator@W4EEvent@NUISystem@@@4@@std@@AAEXPAU?$_Rb_tree_node@W4EEvent@NUISystem@@@2@@Z
+  00534c60 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@PAVCComponent@NUISystem@@PAV12@U?$_Identity@PAVCComponent@NUISystem@@@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@PAVCComponent@NUISystem@@@4@@std@@AAEXPAU?$_Rb_tree_node@PAVCComponent@NUISystem@@@2@@Z
+  0056cb00 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@PAVCMenuEntry@NUISystem@@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@U?$_Select1st@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@U?$less@PAVCMenuEntry@NUISystem@@@4@V?$allocator@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@2@@Z
+  0056cfd0 RELOCATION_MATCH m::?clear@?$_Rb_tree@PAVCMenuEntry@NUISystem@@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@U?$_Select1st@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@U?$less@PAVCMenuEntry@NUISystem@@@4@V?$allocator@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@@std@@QAEXXZ
+  0056d3d0 RELOCATION_MATCH m::??1?$_Rb_tree@PAVCMenuEntry@NUISystem@@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@U?$_Select1st@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@U?$less@PAVCMenuEntry@NUISystem@@@4@V?$allocator@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@4@@std@@QAE@XZ
+  005e8c00 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@JU?$pair@$$CBJK@std@@U?$_Select1st@U?$pair@$$CBJK@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJK@std@@@2@@Z
+  0061a500 RELOCATION_MATCH m::??1CTCInventoryQuests@@UAE@XZ
+  00623560 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@PAVCThing@@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@@3@U?$less@PAVCThing@@@3@V?$allocator@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@@2@@Z
+  00630a10 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@W4ETableSprites@NUISystem@@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@@4@U?$less@W4ETableSprites@NUISystem@@@4@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@@4@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@@2@@Z
+  00646709 RELOCATION_MATCH m::00646709
+  00696900 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@2@@Z
+  006aff00 RELOCATION_MATCH m::UpdateCollisionGroundIneractions
+  006e5790 RELOCATION_MATCH m::AddPersonToConversation
+  006f0dd0 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@2@@Z
+  006f1cb0 RELOCATION_MATCH m::?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@3@@std@@QAEXXZ
+  006f2520 RELOCATION_MATCH m::??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@P6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z@std@@@3@@std@@QAE@XZ
+  007008c0 RELOCATION_MATCH m::ClearOpinionSource
+  00723a10 RELOCATION_MATCH m::?SetRHSetAsFlushOnGround@CTCPhysicsStandard@@UAEXXZ
+  00749880 RELOCATION_MATCH m::?SetCreator@CTCNoise@@QAEXABVCThing@@@Z
+  0076bdd0 RELOCATION_MATCH m::?__destroy_aux@std@@YIXPAU?$CRetailVector@UAttackParticleAndEndPoints@FableDestroy_0076bdd0@@@FableDestroy_0076bdd0@@0ABU__false_type@@@Z
+  00770e80 RELOCATION_MATCH m::FrameUpdate
+  00771660 RELOCATION_MATCH m::?OnCreate@CTCOpinionSource@@UAEXXZ
+  007afb90 RELOCATION_MATCH m::GetEvent
+  007c21a0 RELOCATION_MATCH m::?Update@CTCShotDefinitionBase
+  007de2e0 RELOCATION_MATCH m::GetEvent
+  007f3ad0 RELOCATION_MATCH m::007f3ad0
+  007fce10 RELOCATION_MATCH m::GetEvent
+  007ffdb0 RELOCATION_MATCH m::?RemoveAsUser@CTCGatherPointBase@@QAEXABVCThing@@@Z
+  007ffeb0 RELOCATION_MATCH m::007ffeb0
+  00834fd0 RELOCATION_MATCH m::?_M_erase@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@AAEXPAU?$_Rb_tree_node@PAX@2@@Z
+  00835140 RELOCATION_MATCH m::?clear@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@QAEXXZ
+  008353f0 RELOCATION_MATCH m::??1?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@QAE@XZ
+  00835440 RELOCATION_MATCH m::?erase@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@QAEXU?$_Rb_tree_iterator@PAXU?$_Nonconst_traits@PAX@std@@@2@0@Z

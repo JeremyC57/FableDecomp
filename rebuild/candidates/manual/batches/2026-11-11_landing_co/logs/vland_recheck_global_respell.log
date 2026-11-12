@@ -1,0 +1,25 @@
+addr       parity           behav  name
+0092ae70   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0092ae70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0092ae70   WARN SHARED_HEADER_AVAILABLE CThing
+0092ae70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0092ae70   WARN SHARED_HEADER_AVAILABLE CAIBrain
+  WARN leaf '0092ae70' matches no symbol in 0092ae70.obj; graded the largest function
+  WARN leaf '0092ae70' matches no symbol in 0092ae70.obj; graded the largest function
+0092ae70   WARN RELOC_NAME: ?FindDummy@CAIStateGroupApprenticeHeroMethods@@QAEPAVCThingGameObject@@ABVCCharString@@@Z -> 00929fc0 labelled 'CAIStateGroupBase::GetObjectWithScriptName'
+0092ae70   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@PAVCThingGameObject@@@Z -> 0056c860 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0092ae70   RELOCATION_MATCH PASS   0092ae70
+0092a8a0   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0092a8a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0092a8a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0092a8a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092a8a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+  WARN leaf '0092a8a0' matches no symbol in 0092a8a0.obj; graded the largest function
+  WARN leaf '0092a8a0' matches no symbol in 0092a8a0.obj; graded the largest function
+0092a8a0   WARN RELOC_NAME: ?GiveCarriedObject@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@0@Z -> 008fd0a0 labelled 'CAIStateGroupBase::CreateItem'
+0092a8a0   WARN RELOC_NAME: ??0CCreatureAction_AimMissileWeapon@@QAE@PAVCThingCreatureBase@@@Z -> 00718710 labelled 'CCreatureAction_ReloadMissileWeapon::CCreatureAction_ReloadMissileWeapon'
+0092a8a0   RELOCATION_MATCH PASS   0092a8a0
+
+WINS: 2
+  0092ae70 RELOCATION_MATCH m::0092ae70
+  0092a8a0 RELOCATION_MATCH m::0092a8a0

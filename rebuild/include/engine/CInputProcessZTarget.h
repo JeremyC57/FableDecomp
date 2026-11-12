@@ -14,6 +14,10 @@ class CThing; class CThingPlayerCreature; class CHeroCombatDef;
 class CInputProcessZTarget : public CInputProcessGameBase {
 public:
     CInputProcessZTarget(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+    // Nested opt-in (wf1, row 0x00688D40): Ego_r.pdb ?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z (vtable 0x01238028 slot 1). Declaration only.
+    virtual bool AddToInterface(CInputProcessManager& manager);          // 0x00688D40
+#endif
     CIntelligentPointer<const CThingPlayerCreature> PCreature;   // +0x28
     CDefPointer<const CHeroCombatDef> PHeroCombatDef;              // +0x30
     long DeactivateHoldTimer;                                       // +0x34

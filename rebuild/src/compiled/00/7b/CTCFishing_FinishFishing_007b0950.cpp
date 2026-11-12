@@ -54,14 +54,15 @@ public:
 };
 
 class CThingPlayerCreature : public CThing { };
-class CMessageManager {
-public:
-    void AddMessage(long type, long frames, const C3DVector& pos, long a, long b, long c, long d, const CThing* thing);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb; Ego_r CWorld +0x60 PMessageEventManager),
+//   not a CMessageManager member: shared header; the fish goes in the long data dword.
+#include "rebuild_abi.h"
+#include "engine/CMessageEventManager.h"
 class CWorld {
 public:
     unsigned char _pad00[0x60];
-    CMessageManager* PMessages;                         // +0x60
+    CMessageEventManager* PMessages;                    // +0x60
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -75,9 +76,9 @@ public:
 protected:
     const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50
 public:
-    FABLE_FORCEINLINE void PostMessage(long type, const C3DVector& pos, const CThing* thing)
+    FABLE_FORCEINLINE void PostMessage(EMessageEventType type, const C3DVector& pos, const CThing* thing)
     {
-        GetWorld().PMessages->AddMessage(type, CMainGameComponent::GetConstantFPS(), pos, 0, 0, 0, 0, thing);
+        GetWorld().PMessages->AddMessage(type, CMainGameComponent::GetConstantFPS(), pos, 0, 0, 0.0f, 0.0f, (long)thing);
     }
 protected:
     CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
@@ -163,7 +164,7 @@ void CTCFishing::FinishFishing(bool caught)
     }
     C3DVector zero(0.0f, 0.0f, 0.0f);
     CWorld* world = &GetWorld();
-    world->PMessages->AddMessage(0x3f, CMainGameComponent::GetConstantFPS(), zero, 0, 0, 0, 0, fish);
+    world->PMessages->AddMessage(MESSAGE_EVENT_FISHING_GAME_FINISHED, CMainGameComponent::GetConstantFPS(), zero, 0, 0, 0.0f, 0.0f, (long)fish);
     if (Stage) {
         Stage = 0;
         StageInitialised = false;

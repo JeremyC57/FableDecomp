@@ -1,5 +1,15 @@
-// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (map<CUnprovenKey_006f2200*, CUnprovenValue_006f2200*>) STLport 4.6 node insert
-// Leaf: ?_M_insert@?$_Rb_tree@PAVCUnprovenKey_006f2200@@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@U?$_Select1st@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@@3@U?$less@PAVCUnprovenKey_006f2200@@@3@V?$allocator@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@U?$_Nonconst_traits@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@2@0@Z
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (map<CThingCreatureBase*, CAttackingCombatantInfo*>) STLport 4.6 node insert
+// Leaf: ?_M_insert@?$_Rb_tree@PAVCThingCreatureBase@@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@U?$_Select1st@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@3@U?$less@PAVCThingCreatureBase@@@3@V?$allocator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@2@0@Z
+// Types (proven, agentFAM11, 2026-11-12): map<CThingCreatureBase*, CAttackingCombatantInfo*> (node 0x18 = 0x10 + 4 + 4). Sources: (1) retail call chain: the landed
+//   map<CThingCreatureBase*, CAttackingCombatantInfo*>::erase(const key&) 0x006F3340 (proven types; called on the attackers map by
+//   AssignAttackersToRing 0x006EBF70) calls this tree's erase(first, last) 0x006F1CF0, which clears through _M_erase 0x006EFCE0; the
+//   ~_Rb_tree 0x006F1BA0, ~map 0x006F24D0 and clear 0x006F0BC0 call 0x006EFCE0, and CCombatWheel::PopulateCombatRings 0x006EC850 destroys
+//   its two local attacker maps (filled by insert_unique 0x006F2A40, passed to AssignAttackersToRing) through it; (2) Ego_r.pdb
+//   CDefendingCombatantInfo::CCombatRing::AssignAttackersToRing(..., map<CThingCreatureBase*, CAttackingCombatantInfo*>&) and
+//   CCombatWheel::Init(..., const map<CThingCreatureBase*, CAttackingCombatantInfo*>&); FableWin.pdb has ??0 / ??1 / clear / _Erase / erase
+//   of this map / tree.
+//   Was the placeholder std::_Rb_tree<CUnprovenKey_006f2200 *, std::pair<CUnprovenKey_006f2200 *const, CUnprovenValue_006f2200 *>, std::_Select1st<std::pair<CUnprovenKey_006f2200 *const, CUnprovenValue_006f2200 *>>, std::less<CUnprovenKey_006f2200 *>, std::allocator<std::pair<CUnprovenKey_006f2200 *const, CUnprovenValue_006f2200 *>>>::_M_insert (leaf ?_M_insert@?$_Rb_tree@PAVCUnprovenKey_006f2200@@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@U?$_Select1st@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@@3@U?$less@PAVCUnprovenKey_006f2200@@@3@V?$allocator@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@U?$_Nonconst_traits@U?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCUnprovenKey_006f2200@@PAVCUnprovenValue_006f2200@@@2@0@Z); name-only change: the
+//   same body, the placeholder types replaced by the proven ones.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F2200, 191 bytes, thiscall, `ret 14h` (the hidden iterator result pointer, then x, y, &v, w).
 // Identity (descriptive): its only caller is the insert_unique 0x006F2A40 (landed under the stand-in CRetailTree_006f2a40), used by CCombatWheel::PopulateCombatRings 0x006EC850 and CDefendingCombatantInfo::UpdateCombatState 0x006ECEA0 on a map with unsigned 4-byte keys and 4-byte values that no Ego_r.pdb member of those classes holds.
 // Callees: malloc 0x00BFEA0E (inline allocate, 0x18-byte node), std::_Rb_global<bool>::_Rebalance 0x0042971D (__cdecl).
@@ -7,8 +17,8 @@
 //   8-byte value (two dword moves behind placement new's null test); keys compare unsigned (`jb`).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
-class CUnprovenKey_006f2200;
-class CUnprovenValue_006f2200;
+class CThingCreatureBase;
+class CAttackingCombatantInfo;
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp> struct less { bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; } };
@@ -97,6 +107,6 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Base_ptr __x_,
     return iterator(__z);
 }
 }
-typedef std::pair<CUnprovenKey_006f2200* const, CUnprovenValue_006f2200*> TValue;
-typedef std::_Rb_tree<CUnprovenKey_006f2200*, TValue, std::_Select1st<TValue>, std::less<CUnprovenKey_006f2200*>, std::allocator<TValue> > TTree;
+typedef std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> TValue;
+typedef std::_Rb_tree<CThingCreatureBase*, TValue, std::_Select1st<TValue>, std::less<CThingCreatureBase*>, std::allocator<TValue> > TTree;
 template TTree::iterator TTree::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, const TValue&, std::_Rb_tree_node_base*);

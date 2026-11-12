@@ -47,7 +47,7 @@ class CParticleSystem { public:
     unsigned char _pad00[0x50];
     unsigned char Flags;                        // +0x50 (bit 6: local space)
     void GetSystemTransform(CMatrix3x4& matrix) const;          // 0x00AF2250 ?GetSystemTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z (Ego_r / FableWin)
-    void ScaleParticleDimensions(float& size);                  // 0x00AF8F80
+    void ScaleParticleDimensions(float& size) const;            // 0x00AF8F80 ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAM@Z
 };
 
 class CPSCBase { public:

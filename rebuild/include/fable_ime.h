@@ -51,6 +51,11 @@ namespace NUISystem
         static void FABLE_FASTCALL LoadIMESettings(CPersistContext& context);   // 0x00405350
         void Initialise(HWND__* window);                                    // 0x00405650
         void Shutdown();                                                    // 0x004051C0
+#ifdef FABLE_RETAIL_CIME_ISIMEACTIVE
+        // Retail opt-in (chunk Q21, row 0x00540320 NUISystem::CEditBox::KeyPressed): Ego_r.pdb ?IsIMEActive@CIME@NUISystem@@QBE_NXZ,
+        // out of line at 0x00404C50 (called at 0x005403BF on CIME::Get()). Declaration only.
+        bool IsIMEActive() const;                                           // 0x00404C50
+#endif
     private:
         void Reset();
         bool             EnableIME;                       // +0x00

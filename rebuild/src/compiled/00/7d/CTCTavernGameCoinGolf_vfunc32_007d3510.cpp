@@ -49,13 +49,12 @@ class CThing { public:
 };
 
 struct CTCTavernGameCoinBase {
-    void* __vftable;
+    virtual void NewRound();                        // 0x008EF180 ?NewRound@CTCTavernGameCoinBase@@UAEXXZ (vtable slot 32; Ego_r/FableWin); the vptr is +0x00
     CThing* m_pParentThing;                         // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x24];
     float Score;                                    // +0x2c
     unsigned char _pad_0x30[0x14c];
     long m_par;                                     // +0x17c (golf)
-    void vfunc_32();                                // 0x008EF180
     void SetState(long state);                      // 0x005E9B20
 };
 
@@ -66,7 +65,7 @@ class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
 
 void CTCTavernGameCoinGolf::vfunc_32()
 {
-    CTCTavernGameCoinBase::vfunc_32();
+    CTCTavernGameCoinBase::NewRound();
     CDefPointer defSlot;
     m_pParentThing->GetDefinition()->GetSubDef_007d4bd0(&defSlot);
     Score = 0;

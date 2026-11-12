@@ -27,11 +27,15 @@ namespace NCreatureMode {enum EMode {DescriptiveModeZero=0};}
 class CTCCreatureModeManager {public:class CModeBase {public:void* TypeTable;CThing* ParentThing;
 CThing& GetParentThing()const{return *ParentThing;}
 protected:long GetNoFramesBeforePlayingCombinationIdleAnims(NCreatureMode::EMode);friend struct TestAccess;
+private:static const long NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS;   // 0x013BAFE4 ?NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB
 };};
-// Label: default timing global name remains descriptive; retail address 013bafe4.
-extern long g_DefaultFrames_013bafe4;
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BAFE4 is the private static const long
+//   CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS (ConstantFPS * 6; Ego_r.pdb + FableWin.pdb `dynamic initializer
+//   for 'CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS'', initializer 0x0121F7D0 landed by agentFAM09; Anniv360
+//   private @@0JB), declared on the row's CModeBase model (engine/CTCCreatureModeManager.h has it under FABLE_RETAIL_CMODEBASE_NOFRAMES); was
+//   g_DefaultFrames_013bafe4.
 long CTCCreatureModeManager::CModeBase::GetNoFramesBeforePlayingCombinationIdleAnims(NCreatureMode::EMode mode){
- long frames=g_DefaultFrames_013bafe4;
+ long frames=NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS;
  if(mode==(NCreatureMode::EMode)0x24)frames=CTCBerserk::GetNumFramesBeforeCrazyIdle();
  if(CThing::GetPCurrentThingManager()->World->PBulletTimeManager_ptr->IsBulletTimeActive() && GetParentThing().IsAffectedByBulletTime())
   return (long)(CThing::GetPCurrentThingManager()->World->PBulletTimeManager_ptr->GetBulletTimeSlowdownMultiplier()*frames);

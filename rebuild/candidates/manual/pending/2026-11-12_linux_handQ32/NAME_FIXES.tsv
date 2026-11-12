@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00eb3ba0	?AttackHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ	only caller 0x00EB23B2 in CMurderTwistSheriffGuard::Main; +0x30 = guard ID (Ego_r); PDB order after DoSayingThankYouToHero 0x00EB3740 (chunk Q29)	CMurderTwistSheriff::Init (catalog/oracle label, propagated)

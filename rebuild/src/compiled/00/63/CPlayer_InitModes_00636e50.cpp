@@ -12,13 +12,15 @@
 #include "engine/CPlayer.h"
 #undef CPlayer
 
+enum EPlayerMode;                                    // MS forward enum, as engine/CPlayer.h's FABLE_RETAIL_PLAYER branch
+
 class CPlayer : public CPlayerLayout
 {
 public:
     bool IsMainPlayer() const;   // 0x00487520
+    // ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (Ego_r.pdb 0x00554BE0 + FableWin.pdb), the engine/CPlayer.h declaration.
+    void AddMode(EPlayerMode mode, bool exclusive);   // 0x006345C0
 };
-
-typedef long EPlayerMode;
 
 struct CInputProcessVirtuals {
     virtual void v00();
@@ -26,7 +28,6 @@ struct CInputProcessVirtuals {
 };
 
 struct CPlayer_Methods : CPlayer {
-    void AddMode(EPlayerMode mode, bool exclusive);   // 0x006345C0
     void InitModes();
 };
 
@@ -36,6 +37,6 @@ void CPlayer_Methods::InitModes()
         if (IsMainPlayer())
             reinterpret_cast<CInputProcessVirtuals*>(this->InputProcessMain_ptr)->AddToInterface(this->PlayerInterface);
         if (this->Local)
-            AddMode(0, true);
+            AddMode((EPlayerMode)0, true);
     }
 }

@@ -1,5 +1,9 @@
+// NPlayerGui::CDrawQuestInfo::CQuestInfoElement::Clear() -- body unchanged from the landed source, which already defines the proven leaf (catalog respell only)
+// Leaf: ?Clear@CQuestInfoElement@CDrawQuestInfo@NPlayerGui@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00644FE5, thiscall, `ret`.
+// Identity (agentFAM03 proof, re-verified by agentFAM04): slot 2 of NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick's vtable 0x0125A518 (the slot holds this body in 7 vtable(s), owner NPlayerGui::CDrawQuestInfo::CQuestInfoElement); the Xbox 360 Test PDB virtual order (third source) aligned on 1 TLC-named slots of that vtable puts Clear(void) at this slot [gap kind GS]; Ego_r/FableWin name set: ?Clear@CQuestInfoElement@CDrawQuestInfo@NPlayerGui@@UAEXXZ; `ret` matches the signature.
+// Was: NPlayerGui::CDrawQuestInfo::CQuestInfoElement::vfunc_2 (rebuild/src/compiled/00/64/NPlayerGuiCDrawQuestInfoCQuestInfoElement_Clear_00644fe5.cpp).
 // NPlayerGui::CDrawQuestInfo::CQuestInfoElement::Clear() -- release the element's primitives: clear every handle it owns (`for_each(PrimitiveHandles, mem_fun_ref(&CEnginePrimitiveHandle::Clear))`)
-// Leaf: Clear
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00644FE5, 23 bytes. Virtual slot 2 of NPlayerGui::CDrawQuestInfo::CQuestInfoElement's vtable
 // 0x0125A2B4 and of six derived element vtables (0x0125A44C..0x0125A520 reference it); slot 2 is the landed rows' Clear.
 // Callees: SGI for_each<CEnginePrimitiveHandle*, mem_fun_ref_t<void, CEnginePrimitiveHandle> > @ 0x0043F360 (/Gr `__fastcall`:

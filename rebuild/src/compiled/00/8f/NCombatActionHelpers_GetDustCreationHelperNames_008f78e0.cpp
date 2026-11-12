@@ -4,7 +4,7 @@
 //   label "CreateFootEffect_PushStrings" is descriptive; the FableWin PDB name set has
 //   `?GetDustCreationHelperNames@NCombatActionHelpers@@YI_NABVCThing@@AAV?$vector@VCCharString@@...@std@@@Z`.
 // Callees: CCharString copy ctor @ 0x0099EC30 (placement copy), vector<CCharString>::_M_insert_overflow @ 0x00433530.
-// Globals: the two file-static helper names g_CCharString_013baff4 "weapon_pos_left_foot" and g_CCharString_013baff8
+// Globals: the two file-static helper names NCombatActionHelpers::WeaponPosLeftFootHelperName (was g_CCharString_013baff4) "weapon_pos_left_foot" and NCombatActionHelpers::WeaponPosRightFootHelperName (was g_CCharString_013baff8)
 //   "weapon_pos_right_foot" (their landed dynamic initializers name them).
 // Shape: two inline STLport push_backs (`finish != end_of_storage` -> null-tested placement copy, `add [esi+4],4`, else
 //   _M_insert_overflow(finish, x, __false_type(), 1, true) with the empty tag in the `push ecx` frame word), then
@@ -19,8 +19,8 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-extern CCharString g_CCharString_013baff4;      // 0x013BAFF4 "weapon_pos_left_foot"
-extern CCharString g_CCharString_013baff8;      // 0x013BAFF8 "weapon_pos_right_foot"
+namespace NCombatActionHelpers { extern CCharString WeaponPosLeftFootHelperName; }      // 0x013BAFF4 "weapon_pos_left_foot"
+namespace NCombatActionHelpers { extern CCharString WeaponPosRightFootHelperName; }      // 0x013BAFF8 "weapon_pos_right_foot"
 
 namespace std {
 struct __false_type { __false_type() {} };
@@ -69,8 +69,8 @@ class CThing;
 namespace NCombatActionHelpers {
 bool __fastcall GetDustCreationHelperNames(const CThing& thing, std::vector<CCharString>& helperNames)
 {
-    helperNames.push_back(g_CCharString_013baff4);
-    helperNames.push_back(g_CCharString_013baff8);
+    helperNames.push_back(WeaponPosLeftFootHelperName);
+    helperNames.push_back(WeaponPosRightFootHelperName);
     return true;
 }
 }

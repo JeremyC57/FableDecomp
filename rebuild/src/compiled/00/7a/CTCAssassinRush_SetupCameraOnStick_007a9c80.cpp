@@ -11,11 +11,14 @@
 // Shape: C3DVector has a user copy constructor and no operator=, so each difference built by `return C3DVector(...)` lands in a
 // frame temporary and is copied through a `lea` pointer register; the hero position is copied by value (x, y on the x87
 // stack, z through the frame); the camera manager comes through an inline accessor so it loads straight into ecx.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC4C CAMERA_FOCAL_POSITION_NAME (global, const; initializer 0x0121E6E0), was g_CameraStickHelperName.
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
 };
-extern CCharString g_CameraStickHelperName;     // 0x013BAC4C
+extern const CCharString CAMERA_FOCAL_POSITION_NAME;     // 0x013BAC4C
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& position, float time) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
@@ -60,7 +63,7 @@ void CTCAssassinRush::SetupCameraOnStick()
     if (appearance == 0)
         return;
     C3DVector stick;
-    if (!appearance->GetHelperPoint(g_CameraStickHelperName, 0, 0, stick, 1.0f))
+    if (!appearance->GetHelperPoint(CAMERA_FOCAL_POSITION_NAME, 0, 0, stick, 1.0f))
         return;
     C3DVector heroPosition = ParentThing->GetPos();
     LocalRelativeVectorForCamera = stick - heroPosition;

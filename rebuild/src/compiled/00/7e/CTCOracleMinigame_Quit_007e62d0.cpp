@@ -39,7 +39,7 @@ class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
-    long GetCurrentMode();                      // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                      // 0x00633BE0
     void RemoveMode(EPlayerMode mode);                 // 0x00634190
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };

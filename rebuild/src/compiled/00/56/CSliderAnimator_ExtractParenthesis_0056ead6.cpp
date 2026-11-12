@@ -6,6 +6,8 @@
 // TU: `#pragma optimize("s", on)` + `("y", off)` (ebp frame, `leave`, one shared string-dtor exit).
 // Shape: the inline GetLength is `p == 0 ? 0 : p->m_length` (the tested pointer itself is the zero result).
 // Leaf: ExtractParenthesis
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
@@ -24,8 +26,9 @@ public:
 private: public:
     void* PStringData;
     CWideString(const CWideString& other);                     // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_EmptyWideString;                    // 0x013BCA24
 
 namespace NUISystem {
 class CText { public:
@@ -187,5 +190,5 @@ CWideString CSliderAnimator::ExtractParenthesis(NUISystem::CText* text)
         CCharString sub = s.GetSubString(pos, s.GetLength());
         return sub.ToWideString();
     }
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

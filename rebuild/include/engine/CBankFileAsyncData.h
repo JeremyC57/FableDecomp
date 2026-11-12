@@ -17,10 +17,27 @@ public:
     unsigned long GetLength()const{return Length;}
 #endif
     virtual ~CBankFileAsyncData();
+#ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_ABORT
+    // chunkQ29 (2026-11-12): Ego_r.pdb ?Abort@CBankFileAsyncData@@QAE_NXZ (retail 0x009D6350). Declaration only.
+    bool Abort();                                                        // 0x009D6350
+#endif
+#ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_CHANGELOADINGPRIORITY
+    // Retail opt-in (chunk F2, row 0x00BE06B0 CEngineStaticMapFileBlockManager::AddRequest): Ego_r.pdb
+    // ?ChangeLoadingPriority@CBankFileAsyncData@@QAEXW4EThreadedFilePriority@@@Z (retail 0x009D5630, landed). Declaration only.
+    void ChangeLoadingPriority(EThreadedFilePriority priority);          // 0x009D5630
+#endif
     virtual bool OnFileReadBegin(void**, EThreadedFilePriority);
     virtual void OnFileReadCompletion(bool);
     virtual void RelocateData(long,void*,void*,long);
     virtual bool CanRelocateData(long) const;
+#ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_FREEBUFFER
+    // Retail opt-in (chunk F2, row 0x009D5BF0 CBankFileAsync::HandleFailedAllocation, which resets a finished read and expands
+    // FreeBuffer): Ego_r.pdb ?FreeBuffer@CBankFileAsyncData@@AAEXXZ (private; retail's out-of-line copy is 0x009D5410, landed). The
+    // bank reads Finished / AllowRestart and calls the private FreeBuffer, so it is a friend (as CBankFileAsync befriends the data).
+    friend class CBankFileAsync;
+private:
+    void FreeBuffer();                                                   // 0x009D5410
+#endif
 private:
     CBankFileAsyncData(void*,unsigned long,CBankFileAsync&);
     CBankFileAsyncData(unsigned long,unsigned long,CMovableResourceMemoryPool*,CBankFileAsync&);

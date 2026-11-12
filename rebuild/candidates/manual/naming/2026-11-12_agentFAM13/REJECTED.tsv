@@ -1,0 +1,2 @@
+entry	address	reason
+land1011dt	0x004460C0	the claim's spelling ?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z for 0x004460C0 is wrong: the body scans QuickAccessItemButtons (+0x7c4, Ego_r.pdb) and its twin 0x00445E90 scans AssignableSpecialMoveButtons (+0x7b8); the landed row name IsQuickAccessEventInQueue is right and the binders were respelled to it instead

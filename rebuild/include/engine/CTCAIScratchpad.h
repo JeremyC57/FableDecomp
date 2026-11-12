@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCAISCRATCHPAD_H
 #define FABLE_ENGINE_CTCAISCRATCHPAD_H
 #include "engine/CTCBase.h"
@@ -8,6 +9,10 @@
 class CAIScratchpadDef;
 class CTCAIScratchpad:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+ static float GlobalTargetingDistanceOffset;
+ static float __fastcall GetGlobalTargetingDistanceOffset(){return GlobalTargetingDistanceOffset;}
+#endif
 #ifdef FABLE_RETAIL_CTCAISCRATCHPAD_BETTING
  // Both PDB original static names and FableWin getters02ac3ed0/3f50/3f90; native013bae1d/20/24.
  static bool BettingActive;
@@ -56,6 +61,13 @@ public: bool LookForFiniteTime;
 public: bool AvoidRegionExits;
 public: float TargetingDistanceOffset;
 private: CDefPointer<const CAIScratchpadDef> PDef;
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+protected:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x007ACDD0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCAIScratchpad)==0x84);
 #endif

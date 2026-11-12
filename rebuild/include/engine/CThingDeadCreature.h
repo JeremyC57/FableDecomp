@@ -37,6 +37,13 @@ protected:
     void SetupDeadAnimation();                                           // 0x00835E30
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x00836670
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingDeadCreature)==0xf0);
 #endif

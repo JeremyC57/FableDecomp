@@ -39,13 +39,14 @@ class CTCAssassinRush { public:
  void SetPTarget(CThing*,bool); //007A9AB0
  void SetFinalAction(CCountedAction); //008CEAE0; PDB906010; propagated CMeshDataBank label rejected
 };
+class CTCBase;
 class CTCParamsBase;
 enum ETCInterfaceType { };
 class CThing:public CClass { public:
  unsigned char _beforePhysics[0x4f];CPhysicsMethods* PPhysics;
  FABLE_FORCEINLINE CPhysicsMethods* GetPhysics()const{return PPhysics;}
  void RemoveTC(ETCInterfaceType); //004C9840
- CTCAssassinRush* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
+ CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -66,7 +67,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCAssassinRush,UseCollision)==0x9c);
 void CCreatureAction_CastAssassinRush::Initialise(){
  CCombatActionBase::Initialise();((CThing*)PCreature.GetPItem())->RemoveTC((ETCInterfaceType)(0xa9));
  CTCAssassinRush* rush;
- {CCharString name("CTCAssassinRush",-1);rush=((CThing*)PCreature.GetPItem())->AddTC(name,true,0);}
+ {CCharString name("CTCAssassinRush",-1);rush= (CTCAssassinRush*)((CThing*)PCreature.GetPItem())->AddTC(name,true,0);}
  CThing* target=((CThing*)PTarget.GetPItem());rush->SetPTarget(target,IsZTargetting);
  if(Override){
   rush->DashDistance=Distance;rush->UseCollision=UseCollision;

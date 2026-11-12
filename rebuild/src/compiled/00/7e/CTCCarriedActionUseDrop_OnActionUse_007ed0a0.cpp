@@ -27,7 +27,7 @@ class CThingAICreature : public CThing { public:
 };
 
 class CTCCarrying { public:
-    void RemoveThing(CThing* thing);                        // 0x006A19B0
+    void RemoveThing(CThing& thing);                        // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
 };
 
 class CCreatureActionBase { public:                                // retail sizeof 0xa8
@@ -61,5 +61,5 @@ void CTCCarriedActionUseDrop::OnActionUse(CThing& thing)
     if (ParentThing->HasTC(TCI_WEAPON) && (user->GetTypeFlags() & 8))
         user->SetCurrentAction(&CCreatureAction_AlertToPlayer(user));
     else
-        carrying->RemoveThing(ParentThing);
+        carrying->RemoveThing(*ParentThing);
 }

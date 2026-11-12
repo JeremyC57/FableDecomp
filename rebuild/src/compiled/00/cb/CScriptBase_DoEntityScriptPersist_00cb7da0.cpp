@@ -41,7 +41,6 @@ class CPersistContext { public:                           // retail 0x2c bytes, 
     CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
                     const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CEntityScriptBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void OnPersist(CPersistContext& context);   // slot 4 (+0x10)
@@ -63,7 +62,7 @@ void CScriptBase::DoEntityScriptPersist(CActiveEntityScriptBase& script, CCharSt
         script.Script->OnPersist(context);
     }
     else {
-        CStringParser parser(data, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+        CStringParser parser(data, 0, CCharString("", -1), 0);
         CPersistContext context(parser, 0, true, 0, 0, &data);
         script.Script->OnPersist(context);
     }

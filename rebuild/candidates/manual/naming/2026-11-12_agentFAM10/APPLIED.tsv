@@ -1,0 +1,8 @@
+tag	address	status	binders_respelled	note
+land1011dl	0x004C24C0	done	0	row respelled ??1?$CCountedPointer@$$CBVC3DMeshStats@@@@QAE@XZ (shared C3DMeshStats.h + CCountedPointer.h, RELOCATION_MATCH, catalog test PASS); its binder 0x00B39080 already binds that spelling
+land1011dl	0x006C1250	done	0	record only: ?FrameUpdate@CTCBuyableHouse@@UAEXXZ holds (vtable slot 9, Ego_r + FableWin); unlanded (Q22 owns it), no landed binder spells it wrong
+land1011dl	0x00B4A700	done	0	record only: ?Render@CEnginePrimitiveRenderer2D@@UAEXABVCEngineComponentRenderParams@@@Z holds; unlanded (parked), no landed binder spells it wrong
+land1011dl	0x0054FFB0	done	0	header engine/NUISystem_CText.h: slots 147-150 retail order made the default; all 34 landed includers MATCH/RELOCATION_MATCH with tests PASS (3 BUSY includers graded read-only); listed in hdr/README.md
+NF26-leftover	0x00416056	done	0	Leaf line PB_W -> PBG (also the twin 0x004160CC); both RELOCATION_MATCH, tests PASS; the binder 0x0041735A already binds PBG
+NF26-leftover	0x00662410	partial	0	IsInMeleeAsAttacker binders 0x0093DCD0 / 0x0093E2D0 / 0x0095B280 / 0x0095D070 / 0x00962A90 not respelled: their own classes are stand-ins with local CThing models (class unproven), so per brief rule 5 the gap is recorded (NOTES.md); correct symbol ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (engine/CThingCreatureBase.h)
+family-251	(104 rows)	partial	2	104 of 251 rows named and ported (STATUS.tsv / RENAMES.tsv section 1); binders respelled: 0x007A75F0, 0x007AA370 (callee 0x00487150); 147 left (NOTES.md)

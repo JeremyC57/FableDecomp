@@ -1,5 +1,8 @@
 // std::fill(NParticleEngine::CParticleEmitterInfo* first, NParticleEngine::CParticleEmitterInfo* last, const NParticleEngine::CParticleEmitterInfo& val) -- assign val to every emitter info of [first, last)
-// Leaf: fill
+// Leaf: ??$fill@PAVCParticleEmitterInfo@NParticleEngine@@V12@@std@@YIXPAVCParticleEmitterInfo@NParticleEngine@@0ABV12@@Z
+// Identity (agentFAM06): the only caller is vector<NParticleEngine::CParticleEmitterInfo>::_M_fill_insert 0x00AF2010 (bound to this
+//   spelling); Ego_r.pdb CParticleEmitterInfo is 12 bytes (Data CIVCountedPointer<CEmitterData>, Bank, Index), the stride here.
+//   Source unchanged but for the full leaf. Catalog CIVCountedPointer_Attach was a placeholder.
 // Retail: Fable.exe @ 0x00AF1C70, 78 bytes, `ret 4`: __fastcall (first ecx -> esi, last edx -> ebx, the value reference
 // on the stack -> edi). Only call site 0x00AF210D in the vector resize path at 0x00AF2010 (catalogued Vector_ResizeN).
 // Identity: the catalog's `_Fill<NGameText::CDataBankTextEntry*>` is propagated from the 8-byte twin 0x00A43890; this

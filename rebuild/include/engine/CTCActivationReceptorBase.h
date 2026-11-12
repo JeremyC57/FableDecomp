@@ -12,7 +12,9 @@
 #pragma pack(push, 1)
 class CTCActivationReceptorBase {
 public:
+#ifndef FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_VSLOTS
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     bool          Activated;                                 // +0x0c
@@ -24,11 +26,30 @@ public:
     unsigned char _pad_0x21[0x3];                            // +0x21
     unsigned long FramesAfterActivationToDeactivate;         // +0x24
     unsigned long FrameAtLastActivation;                     // +0x28
+#ifdef FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_REMOVETRIGGER
+// agentFAM05 (2026-11-11): Ego_r.pdb / FableWin.pdb ?RemoveTrigger@CTCActivationReceptorBase@@QAEXAAVCTCActivationTrigger@@@Z, out of line at
+// 0x007F7750 (CTCActivationTrigger::OnKill 0x0077B0B0 calls it with the trigger). Declaration only: no layout change.
+public:
+    void RemoveTrigger(class CTCActivationTrigger& trigger);              // 0x007F7750
+#endif // FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_REMOVETRIGGER
+#ifdef FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004DE647
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x004DE64A
+public:
+    virtual bool SetSelfTriggeringIfTriggerPresent();  // slot 30, 0x004DE678
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCActivationReceptorBase) == 0x2c);
+#ifndef FABLE_RETAIL_CTCACTIVATIONRECEPTORBASE_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCActivationReceptorBase, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCActivationReceptorBase, Activated) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCActivationReceptorBase, Triggers) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCActivationReceptorBase, LogicType) == 0x1c);

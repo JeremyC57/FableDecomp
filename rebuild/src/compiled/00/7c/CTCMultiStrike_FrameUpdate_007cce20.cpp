@@ -9,7 +9,7 @@
 //   "CWound_Constructor" is a forge autoname) / ~CHitParameters 0x00789358, CThingGameObject::GetMeleeHitParameters
 //   0x00838BC0, the target's virtual OnHit(CHitParameters&) (slot 65, +0x104), CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCEntityEvents 0x42), operator new 0x00BFEA1A (0x18),
-//   NEntityEvents::CEventHitBySpecialAbility(const CHitParameters&, long) 0x00811830 (ability 9),
+//   NEntityEvents::CEventHitBySpecialAbility(const CHitParameters&, EHeroAbility) 0x00811830 (HERO_ABILITY_DOUBLE_STRIKE 9),
 //   CTCEntityEvents::AddEvent 0x008113C0, CThing::RemoveTC(long) 0x004C9840 (0x87), _ftol 0x00BFEA70.
 // Globals: CMainGameComponent::GetConstantFPS() 0x01375550 (`fild`).
 // Layout: Ego_r.pdb CTCMultiStrike (PDef +0x0c, SpellLevel +0x10, StrikeStarted +0x14, DelayTimer +0x18, NumHits +0x1c,
@@ -25,6 +25,7 @@ class CThing;
 namespace NHitLocations { class CHitLocation; }
 
 #include "engine/C3DVector.h"
+#include "engine/EHeroAbility.h"
 
 class CHitParameters {                              // 0x60 bytes in retail
 public:
@@ -45,7 +46,7 @@ namespace NEntityEvents {
 class CEventHitBySpecialAbility : public NEntityEvents::CEventBase {   // 0x18 bytes, vtable 0x012723F0
 public:
     unsigned char _pad04[0x18 - 0x04];
-    CEventHitBySpecialAbility(const CHitParameters& params, long ability);   // 0x00811830
+    CEventHitBySpecialAbility(const CHitParameters& params, EHeroAbility ability);   // 0x00811830 ??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z
 };
 }
 class CTCEntityEvents {                             // interface 0x42
@@ -165,7 +166,7 @@ void CTCMultiStrike::FrameUpdate()
             target->OnHit(hit);
             if (target->HasTC(0x42)) {
                 CTCEntityEvents* events = target->GetTC<CTCEntityEvents>(0x42);
-                events->AddEvent(new NEntityEvents::CEventHitBySpecialAbility(hit, 9));
+                events->AddEvent(new NEntityEvents::CEventHitBySpecialAbility(hit, HERO_ABILITY_DOUBLE_STRIKE));
             }
         }
         ++NumHits;

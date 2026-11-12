@@ -19,6 +19,11 @@ template<class Dummy> class _Rb_global {
     typedef _Rb_tree_node_base* _Base_ptr;
 public:
     static void __cdecl _Rebalance(_Rb_tree_node_base*,_Rb_tree_node_base*&);
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE_BODY
+    // Nested opt-in (agentFAM12, the erase(first, last) rows 0x00638EE0 ..): STLport 4.6 _tree.c _Rb_global::_Rebalance_for_erase,
+    // out of line (0x0042A34E, landed ?_Rebalance_for_erase@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@AAPAU32@11@Z).
+    static _Rb_tree_node_base* __cdecl _Rebalance_for_erase(_Rb_tree_node_base*,_Rb_tree_node_base*&,_Rb_tree_node_base*&,_Rb_tree_node_base*&);
+#endif
     static _Rb_tree_node_base* __cdecl _M_decrement(_Rb_tree_node_base* _M_node) {
   if (_M_node->_M_color == false && _M_node->_M_parent->_M_parent == _M_node)
     _M_node = _M_node->_M_right;
@@ -90,7 +95,20 @@ public:
 private:
     iterator _M_insert(_Rb_tree_node_base*,_Rb_tree_node_base*,const V&,_Rb_tree_node_base* =0);
 public:
+#ifdef FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
+    // Per-TU opt-in (chunk Q32, row 0x00465C54 CCombatAbilityBlockDefBase::Transfer; like FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE):
+    // STLport's inline tree constructor and destructor, which VC7.1 called as COMDATs in that size TU -- the set<EWeaponClass> tree
+    // ctor 0x00451ADD (`push &alloc ; push &pred ; call`, base ctor 0x00451303 then _M_empty_initialize) and dtor 0x00451B07
+    // (clear 0x004512DA, then the header node freed). STLport's bodies, visible but kept out of line (like
+    // FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE): VC7.1 then knows they keep no reference to the caller's empty less/allocator
+    // temporaries and packs those into a dead argument slot (0x00465CE6 `lea eax,[ebp+0Bh]` twice).
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
     _Rb_tree(const Compare& c,const A& a):_Rb_tree_base<V,A>(a),_M_node_count(0),_M_key_compare(c){_M_empty_initialize();}
+#else
+    _Rb_tree(const Compare& c,const A& a):_Rb_tree_base<V,A>(a),_M_node_count(0),_M_key_compare(c){_M_empty_initialize();}
+#endif
     _Rb_tree& operator=(const _Rb_tree&);
     size_t size() const { return _M_node_count; }
 #ifdef FABLE_RETAIL_STLP_SET_EMPTY
@@ -100,7 +118,14 @@ public:
 private:
     void _M_empty_initialize(){this->_M_header._M_data->_M_color=false;this->_M_header._M_data->_M_parent=0;this->_M_header._M_data->_M_left=this->_M_header._M_data;this->_M_header._M_data->_M_right=this->_M_header._M_data;}
 public:
+#ifdef FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
     ~_Rb_tree(){clear();}
+#else
+    ~_Rb_tree(){clear();}
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN
     FABLE_FORCEINLINE   // with map::begin below
 #endif
@@ -190,6 +215,30 @@ public:
 #endif
     iterator insert_unique(iterator,const V&);
     Compare key_comp()const{return _M_key_compare;}
+#ifdef FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
+    // Per-TU opt-in (wf4, row 0x004B3CE0 CQuestManager::ActivateQuests): STLport 4.6 _tree.h spelling -- lower_bound / upper_bound /
+    // equal_range are inline wrappers over the out-of-line `_Base_ptr _M_lower_bound(const key_type&) const` / `_M_upper_bound`
+    // (retail 0x004B9D00 / 0x004B9D50 for the CCharString-keyed trees, both landed), erase(iterator, iterator) is the out-of-line
+    // 0x004B9C10 (landed) and erase(const key_type&) is `equal_range ; distance ; erase(first, last)`. Replaces the expanded walks
+    // of the default path and of FABLE_RETAIL_STLP_TREE_ERASE_KEY for this TU (do not define both).
+private:
+    _Rb_tree_node_base* _M_lower_bound(const K& key) const;
+    _Rb_tree_node_base* _M_upper_bound(const K& key) const;
+public:
+    iterator lower_bound(const K& key) { return iterator(static_cast<_Link_type>(_M_lower_bound(key))); }
+    const_iterator lower_bound(const K& key) const { return const_iterator(static_cast<_Link_type>(_M_lower_bound(key))); }
+    iterator upper_bound(const K& key) { return iterator(static_cast<_Link_type>(_M_upper_bound(key))); }
+    const_iterator upper_bound(const K& key) const { return const_iterator(static_cast<_Link_type>(_M_upper_bound(key))); }
+    pair<iterator,iterator> equal_range(const K& key) { return pair<iterator,iterator>(lower_bound(key),upper_bound(key)); }
+    pair<const_iterator,const_iterator> equal_range(const K& key) const { return pair<const_iterator,const_iterator>(lower_bound(key),upper_bound(key)); }
+    void erase(iterator first,iterator last);
+    size_t erase(const K& key) {
+        pair<iterator,iterator> p=equal_range(key);
+        size_t n=distance(p.first,p.second);
+        erase(p.first,p.second);
+        return n;
+    }
+#else
     iterator lower_bound(const K& key) {
         _Link_type y=this->_M_header._M_data;
         _Link_type x=_M_root();
@@ -199,6 +248,7 @@ public:
         }
         return iterator(y);
     }
+#endif
 #if defined(FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY)
     // Retail opt-in (chunk 1016, row 0x006D8790 CTCHeroExperience::AddSuccessfulStrikeOfType): owner decision D1 (2026-11-03) with the
     // body visible -- STLport 4.6.1 _tree.h `template <class _KT> const_iterator find(const _KT& __k) const { return
@@ -233,9 +283,22 @@ public:
     // Retail opt-in (chunk 778, row 0x00ACCBF0 COptimisedPrimitive::PerformSubContraction): STLport 4.6 _tree.h erase(iterator)
     // (rebalance, destroy, deallocate; out of line in retail: 0x00AD4CA0 map<unsigned long,CContractionReference>, 0x00AD3C30
     // multimap<float,CCountedPointer<CVertexPairContraction> >). Declaration only.
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE_BODY
+    // Nested opt-in (agentFAM12): STLport 4.6 _tree.h erase(iterator) with its body visible, expanded in the out-of-line
+    // erase(first, last) of FABLE_RETAIL_STLP_TREE_ERASE_KEY (0x00638EE0 set<long>, 0x007775B0 map<long,CShopItem>, 0x007E99F0
+    // map<CThing*,float>, 0x009D7760 set<CBankFileAsyncData*>, ..: _Rebalance_for_erase 0x0042A34E, _Destroy, deallocate, --count).
+    void erase(iterator position) {
+        _Link_type y=(_Link_type)_Rb_global_inst::_Rebalance_for_erase(position._M_node,this->_M_header._M_data->_M_parent,
+            this->_M_header._M_data->_M_left,this->_M_header._M_data->_M_right);
+        _Destroy(&y->_M_value_field);
+        this->_M_header.deallocate(y,1);
+        --_M_node_count;
+    }
+#else
     void erase(iterator position);
 #endif
-#ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
+#endif
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY) && !defined(FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE)
     // Retail opt-in (chunk 867, row 0x005B01FE CTCInventoryTrade::SellItemPC): STLport 4.6 _tree.h upper_bound / equal_range and
     // _tree.c `size_type erase(const key_type&)` (equal_range, distance, erase(first, last); returns the number removed) and
     // `void erase(iterator, iterator)` (clear() for the whole range, else erase(first++) until last). The bodies are visible, as in
@@ -254,6 +317,19 @@ public:
         return iterator(y);
     }
     pair<iterator,iterator> equal_range(const K& key) { return pair<iterator,iterator>(lower_bound(key),upper_bound(key)); }
+#ifdef FABLE_RETAIL_STLP_SET_UPPER_BOUND
+    // Retail opt-in (chunk F2, row 0x009D5BF0 CBankFileAsync::HandleFailedAllocation): STLport 4.6 _tree.h const upper_bound (the
+    // same walk as the non-const one, returning const_iterator), which _set.h's upper_bound forwards to; inline in retail.
+    const_iterator upper_bound(const K& key) const {
+        _Link_type y=this->_M_header._M_data;
+        _Link_type x=_M_root();
+        while(x!=0) {
+            if(_M_key_compare(key,_S_key(x))) {y=x;x=_S_left(x);}
+            else x=_S_right(x);
+        }
+        return const_iterator(y);
+    }
+#endif
     void erase(iterator first,iterator last) {
         if(first==begin()&&last==end()) clear();
         else while(first!=last) erase(first++);
@@ -334,6 +410,12 @@ private:
 public:
     typedef typename _Rep_type::const_iterator const_iterator;
     typedef typename _Rep_type::iterator iterator;
+#ifdef FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+    // Per-TU opt-in (chunk F1, row 0x00AD9770 CVertexGroupBlockList::RemoveAllSubsets; like FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE):
+    // STLport's map copy constructor is one inline body, which VC7.1 called as a COMDAT in that TU: map<unsigned long, long>::map(const
+    // map&) 0x00A96E40 (landed; call at 0x00AD97FB with ecx = &finish->GroupToIndexMap). Declaration only here.
+    map(const map& x);
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP
     // Retail branch (pass 12 header wave, 0x00E0A820): STLport 4.6 _map.h declares the no-argument constructor separately
     // (`map() : _M_t(_Compare(), allocator_type()) {}` and `explicit map(const _Compare&, const allocator_type& = ...)`), so a
@@ -415,6 +497,14 @@ public:
 #endif
     pair<iterator,bool> insert(const K& value){typedef typename _Rep_type::iterator RepIterator;pair<RepIterator,bool> p=_M_t.insert_unique(value);return pair<iterator,bool>((const iterator&)p.first,p.second);}
     size_t erase(const K& value){return _M_t.erase(value);}
+#ifdef FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
+    // (same opt-in, wf4 row 0x004B3CE0) STLport 4.6 _set.h lower_bound / upper_bound / equal_range (const, forwarding to the tree) and
+    // erase(iterator, iterator) (`_M_t.erase((_Rep_iterator&)__first, (_Rep_iterator&)__last)`).
+    iterator lower_bound(const K& x) const { return _M_t.lower_bound(x); }
+    iterator upper_bound(const K& x) const { return _M_t.upper_bound(x); }
+    pair<iterator,iterator> equal_range(const K& x) const { return _M_t.equal_range(x); }
+    void erase(iterator first,iterator last){typedef typename _Rep_type::iterator RepIterator;_M_t.erase((RepIterator&)first,(RepIterator&)last);}
+#endif
 #ifdef FABLE_RETAIL_STLP_SET_FIND
     // Retail opt-in (chunk 848, row 0x00B2D9F0): STLport 4.6 _set.h `iterator find(const key_type& x) const { return _M_t.find(x); }`
     // (inline; the tree's const find stays the out-of-line call 0x00B2EB20). Pair with FABLE_RETAIL_STLP_SET for end().
@@ -426,6 +516,11 @@ public:
     iterator begin() const { return _M_t.begin(); }
     iterator end() const { return _M_t.end(); }
     size_t size() const { return _M_t.size(); }
+#endif
+#ifdef FABLE_RETAIL_STLP_SET_UPPER_BOUND
+    // Retail opt-in (chunk F2, row 0x009D5BF0): STLport 4.6 _set.h `iterator upper_bound(const key_type& __x) const { return
+    // _M_t.upper_bound(__x); }`. Needs FABLE_RETAIL_STLP_TREE_ERASE_KEY (the tree's upper_bound block).
+    iterator upper_bound(const K& x) const { return _M_t.upper_bound(x); }
 #endif
 #ifdef FABLE_RETAIL_STLP_SET_EMPTY
     // Per-TU opt-in (chunk 849, row 0x00501450 CWorldMap::GenerateRegionConnectivityGraph): STLport 4.6 _set.h `bool empty() const
@@ -457,6 +552,15 @@ public:
     void clear(){_M_t.clear();}
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     void erase(iterator position){_M_t.erase(position);}
+#endif
+#ifdef FABLE_RETAIL_STLP_MULTIMAP_CONSTFIND
+    // Retail opt-in (wf5, row 0x007F53B0 CTCSoundAtmosphere::FrameUpdate): STLport 4.6 _map.h multimap
+    // `const_iterator find(const key_type& __x) const { return _M_t.find(__x); }` and `const_iterator end() const { return _M_t.end(); }`
+    // (both inline; retail calls the tree's _M_find<CCharString> 0x0042B467 on CSoundThemeDef::AtmosGroupMap and compares the node
+    // with the header word). Pair with FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY (or _CONSTFIND) for the tree's const find body.
+    typedef typename _Rep_type::const_iterator const_iterator;
+    const_iterator find(const K& x)const{return _M_t.find(x);}
+    const_iterator end()const{return _M_t.end();}
 #endif
 };
 }

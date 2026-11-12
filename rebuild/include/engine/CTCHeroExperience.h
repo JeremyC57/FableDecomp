@@ -29,6 +29,15 @@ class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHe
 class CHitParameters;
 #endif
 class CTCHeroExperience:public CTCBase{
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+void AddExperience(long);
+#endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void AddSuccessfulBlockParry();void SetAsHit();void AddSuccessfulStrikeWithHitParams(const CHitParameters&);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_TOTALSTAT
  // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb
@@ -106,6 +115,17 @@ public:
     long GetTrainableStatPossibleLevelUpAmount(EHeroTrainableStatType,float&);
     // Chunk 735 (AddAbilityToList(PC)): ?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z 0x006D7B80.
     long GetAbilityPossibleLevelUpAmount(EHeroAbility,float&);
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_UPGRADESTAT
+    // Retail opt-in (chunk Q8, row 0x006D8980): Ego_r.pdb / FableWin.pdb ?UpgradeTrainableStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@@Z
+    // (public, out of line at retail 0x006D8980) and the two private members it calls, out of line in retail:
+    // ?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z (0x006D8170) and
+    // ?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z (0x006D83B0). Declarations only: no layout change.
+    void UpgradeTrainableStat(EHeroTrainableStatType stat);              // 0x006D8980
+private:
+    void UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool silent);   // 0x006D8170
+    void OnStatLevelChange(bool silent);                                 // 0x006D83B0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_MODIFYLEVEL
     // Opt-in (chunk 1005, row 0x00576ED1 CTCInventoryExperience::UndoBuyStat): Ego_r.pdb / FableWin.pdb
     // ?ModifyTrainableStatLevel@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@J@Z, out of line at 0x006D6810.

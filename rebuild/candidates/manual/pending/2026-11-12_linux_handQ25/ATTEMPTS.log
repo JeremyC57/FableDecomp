@@ -1,0 +1,54 @@
+07:04 00489d40 00489d40.cpp CPlayer::CreateCharacter DIFFER(819v815)   -- port v1
+00489d40 probe a: ResetRHSet slot 32 + GetPControlledCreature same-TU body -> +0x80 and lea ecx,[eax+2Ch] (fixes 2 residues)
+00489d40 probe b: Get() only -> add/mov stays (GetPControlledCreature needed)
+00489d40 probe v1: tail block from name -> name moves into the param slot (no)
+00489d40 probe v2: no holy-site block -> extra slot (no)
+00489d40 probe v3: block from init -> name in param slot (no)
+00489d40 probe v4: block from the co-op offset to the end -> holySite and name share -76 as retail
+07:07 00489d40 00489d40.cpp CPlayer::CreateCharacter DIFFER(815v815)   -- v4 block + ResetRHSet + GetPControlledCreature
+00489d40 grade 2 DIFFER(815v815) v4 block: holySite/name share as retail, pos/init moved (pos -60)
+07:07 00489d40 00489d40.cpp CPlayer::CreateCharacter RELOCATION_MATCH   -- init declared before block
+00489d40 grade 3 RELOCATION_MATCH init declared before the co-op/creation block
+07:07 00489d40 00489d40.cpp CPlayer::CreateCharacter RELOCATION_MATCH   -- cleaned comments/indent
+00489d40 grade 4 RELOCATION_MATCH cleaned source (final)
+07:08 00847520 00847520_base.cpp CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended::FinishAction DIFFER(1122v1122)   -- baseline draft
+00847520 grade 1 DIFFER(1122v1122) baseline draft (ebp/edi swap of &PCreature)
+07:12 00847520 00847520.cpp CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended::FinishAction DIFFER(1108v1122)   -- port onto EXPRESSION_FRAME headers, Extended ctor, SetPItemRemoved
+00847520 grade 2 DIFFER(1108v1122) port onto EXPRESSION_FRAME shared headers; Extended 8-arg ctor; SetPItemRemoved
+07:12 00847520 00847520.cpp CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended::FinishAction DIFFER(1118v1122)   -- named null temp + named locals before ctor
+00847520 grade 3 DIFFER(1118v1122) named null temp + named locals before ctor: whole replacement half now matches; tail differs
+07:13 00847520 00847520.cpp CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended::FinishAction RELOCATION_MATCH   -- named emote text, script name, animation+sound locals
+00847520 grade 4 RELOCATION_MATCH named CWideString / script name / animation+sound locals
+07:15 004b5ee0 004b5ee0.cpp CQuestManager::SaveGameState RELOCATION_MATCH   -- port onto CQuestManager LOADGAMESTATE+ACTIVEQUEST+SAVEGAMESTATE
+004b5ee0 grade 1 RELOCATION_MATCH port onto CQuestManager.h LOADGAMESTATE+ACTIVEQUEST + new SAVEGAMESTATE opt-in (typed ActiveQuests)
+07:19 007fc210 007fc210.cpp CTCKraken::CreateTentacles DIFFER(1240v1245)   -- port onto CTCKraken/CKrakenDef/CTCTargeted/fable_containers
+007fc210 grade 1 DIFFER(1240v1245) port onto shared headers (IsEditorActive, SetTargetable, flag setters); this/zero ebx/ebp swap + frame
+07:19 007fc210 007fc210.cpp CTCKraken::CreateTentacles DIFFER(1255v1245)   -- min of size-1 and phase spelled inline (size twice)
+007fc210 grade 2 DIFFER(1255v1245) inline min(size-1, Phase) with size twice
+07:19 007fc210 007fc210.cpp CTCKraken::CreateTentacles RELOCATION_MATCH   -- GetDef<T> noinline body visible (GETDEF_GLOBAL_BODY)
+007fc210 grade 3 RELOCATION_MATCH GetDef<T> shared noinline body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY)
+07:22 009658b0 009658b0.cpp CAIStateGroup_RecoverStealableItem::CAIStateGroup_RecoverStealableItem::Update DIFFER(1266v1276)   -- port onto CAIStateGroupBase/GenericBox/CTCCarryable shared headers
+009658b0 grade 1 DIFFER(1266v1276) port onto shared headers: esi/edi swap gone; temp operator= and radius local remain
+07:23 009658b0 009658b0.cpp CAIStateGroup_RecoverStealableItem::CAIStateGroup_RecoverStealableItem::Update RELOCATION_MATCH   -- named previous-item local in a block; radius local
+009658b0 grade 2 RELOCATION_MATCH named previous-item CIntelligentPointer local in a block + radius local
+07:27 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- port onto shared render headers + GPScreenEffectOutlineGlow
+07:27 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- FABLE_RETAIL_CRGBCOLOUR Initialise copy
+07:27 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- inv_scale before colour copy
+07:27 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1280v1290)   -- no inv_scale local
+07:28 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1264v1290)   -- no colour copy: CRGBFloatColour(effect.Colour)
+07:28 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- named width locals
+07:28 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- 4-arg CRGBColour ctor
+07:28 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- glow pointer local first
+07:29 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- scale reassigned in place
+07:29 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- byte locals G,B,A,R
+07:29 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- glow local first, full diff view
+07:30 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- final: v1 restored (best)
+07:30 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- colour copy between the width locals
+07:30 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- colour + uploads in an inner block
+00bf0b20 summary: 14 grades, best = port onto shared headers (v1), residue 2-insn prologue schedule (G byte spill before push esi) unchanged by copy flavour/scope/locals; DIFFER(1290v1290)
+07:31 00489d40 00489d40.cpp CPlayer::CreateCharacter RELOCATION_MATCH   -- strict-header regrade
+07:31 00847520 00847520.cpp CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended::FinishAction RELOCATION_MATCH   -- strict-header regrade
+07:31 004b5ee0 004b5ee0.cpp CQuestManager::SaveGameState RELOCATION_MATCH   -- strict-header regrade
+07:31 007fc210 007fc210.cpp CTCKraken::CreateTentacles RELOCATION_MATCH   -- strict-header regrade
+07:31 009658b0 009658b0.cpp CAIStateGroup_RecoverStealableItem::CAIStateGroup_RecoverStealableItem::Update RELOCATION_MATCH   -- strict-header regrade
+07:31 00bf0b20 00bf0b20.cpp CEnginePrimitiveRenderUtil::SetupOutlineStencilStates DIFFER(1290v1290)   -- strict-header regrade

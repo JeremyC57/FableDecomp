@@ -56,6 +56,23 @@ public:
     long                     UpdateID;                                   // +0x18
     EDoorTriggerType         TriggerType;                                // +0x1c
     CDefPointer<const CDoorDef> PDef;                                    // +0x20
+#ifdef FABLE_RETAIL_CTCDOOR_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007312E0
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00731300
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCDOOR_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void BulletTimeFrameUpdate();  // slot 10, 0x007312F0
+public:
+#endif // FABLE_RETAIL_CTCDOOR_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDoor) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCDoor, Jammed) == 0xc);

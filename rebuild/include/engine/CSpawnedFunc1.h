@@ -13,15 +13,21 @@
 #else
 #include "engine/CSpawnedFuncBase.h"
 #if defined(_MSC_VER)
-#define FABLE_SPAWNEDFUNC_INLINE __forceinline
+#define FABLE_SPAWNEDFUNC_INLINE FABLE_FORCEINLINE
 #else
 #define FABLE_SPAWNEDFUNC_INLINE inline
 #endif
 template <class T, class P1> class CSpawnedFunc1 : public CSpawnedFuncBase {
 public:
+#ifdef FABLE_RETAIL_CSPAWNEDFUNC1_ORIGINAL_ACCESS
+    typedef void (T::*TSpawnedFunction)(P1);
+#endif
     FABLE_SPAWNEDFUNC_INLINE CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), P1 par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
     virtual void SuspendableProcess() { (PClass->*Func)(Par1); StopRunning = true; }   // slot 4 (retail: the call, then StopRunning)
+#ifdef FABLE_RETAIL_CSPAWNEDFUNC1_ORIGINAL_ACCESS
+protected:
+#endif
     void (T::*Func)(P1);                                                 // +0x34
     T* PClass;                                                           // +0x38
     P1 Par1;                                                             // +0x3C

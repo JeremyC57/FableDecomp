@@ -1,0 +1,7 @@
+- A landed caller's reloc binding plus a PDB name set is a cheap two-source proof: start each sub-family from reloc_bindings.tsv, not the body.
+- Generated `_unattributed` STL rows collapse to one explicit instantiation over stlport/fable_map.h; the stand-in bodies were already STLport-exact.
+- Binder spellings are often abbreviated (no allocator, single-arg iterator, public _M_erase): use them for the types, pin the Leaf from the object.
+- STLport erase(first,last) expands erase(iterator); the shared header needed an erase(iterator) body opt-in (_Rebalance_for_erase out of line).
+- VC7.1 rejects an explicit instantiation naming a private nested type (C2248), although the standard waives access there.
+- Put per-TU defines before stlport/fable_map.h: a later engine header's opt-in (e.g. STLP_MAP_EMPTY) is ignored once the map header is in.
+- A Leaf that names no symbol in the object still grades (fallback to the largest function): pin every Leaf from objdump -t.

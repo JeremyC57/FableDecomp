@@ -11,7 +11,13 @@
 #pragma pack(push, 1)
 class CGameJoystickManager {
 public:
+#ifdef FABLE_RETAIL_CGAMEJOYSTICKMANAGER_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x0049BC20 CCountedPointer<CGameJoystickManager>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CGameJoystickManager();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     long          MainPlayerJoystickDeviceNumber;            // +0x04
     bool          MainPlayerJoystickDeviceNumberSet;         // +0x08
     unsigned char _pad_0x09[0x3];                            // +0x09
@@ -19,7 +25,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CGameJoystickManager) == 0xc);
+#ifndef FABLE_RETAIL_CGAMEJOYSTICKMANAGER_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CGameJoystickManager, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CGameJoystickManager, MainPlayerJoystickDeviceNumber) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CGameJoystickManager, MainPlayerJoystickDeviceNumberSet) == 0x8);
 

@@ -1,4 +1,5 @@
-// CCreatureAction_DuckAndCover::CCreatureAction_DuckAndCover(CThingCreatureBase*, const C3DVector&) -- combat action with the SWORD_SWING sound pair (action code 150) that remembers the position to duck from
+// CCreatureAction_DuckAndCover::CCreatureAction_DuckAndCover(CThingCreatureBase&, const C3DVector&) --
+// Leaf: ??0CCreatureAction_DuckAndCover@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@@Z combat action with the SWORD_SWING sound pair (action code 150) that remembers the position to duck from
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009717A0, length 112 bytes, `ret 8`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair (__fastcall) @ 0x008561A0,
@@ -9,6 +10,7 @@
 //   into +0x114..+0x11c (ecx/edx/eax): three scalar members
 //   (a struct member is addressed once with `lea` and copied through it).
 // No engine header exists for this class; the retail CCombatActionBase is 0x114 bytes.
+// Name fix (agentNF24): own symbol takes the owner by reference, as both PDBs spell it: ??0CCreatureAction_DuckAndCover@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@@Z (was PAV); landed 0x009711D0 binds it through engine/CCreatureAction_DuckAndCover.h
 class CThingCreatureBase;
 
 class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
@@ -38,11 +40,11 @@ class CCreatureAction_DuckAndCover : public CCombatActionBase { public:   // vta
     float PosY;                             // +0x118   member would copy through `lea ecx,[esi+114h]`)
     float PosZ;                             // +0x11c
     virtual void v00();
-    CCreatureAction_DuckAndCover(CThingCreatureBase* owner, const C3DVector& pos);
+    CCreatureAction_DuckAndCover(CThingCreatureBase& owner, const C3DVector& pos);   // Ego_r 0x00996650 / FableWin 0x02B86570
 };
 
-CCreatureAction_DuckAndCover::CCreatureAction_DuckAndCover(CThingCreatureBase* owner, const C3DVector& pos)
-    : CCombatActionBase(owner, 150, GetSoundPair(owner, "SWORD_SWING"))
+CCreatureAction_DuckAndCover::CCreatureAction_DuckAndCover(CThingCreatureBase& owner, const C3DVector& pos)
+    : CCombatActionBase(&owner, 150, GetSoundPair(&owner, "SWORD_SWING"))
     , PosX(pos.X)
     , PosY(pos.Y)
     , PosZ(pos.Z)

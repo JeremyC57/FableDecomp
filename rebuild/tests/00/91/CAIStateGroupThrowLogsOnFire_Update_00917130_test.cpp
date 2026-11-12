@@ -52,10 +52,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-extern CCharString g_CCharString_013bb674;      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
-extern CCharString g_CCharString_013bb678;      // "ST_WORK_GET_CRATE"
-extern CCharString g_CCharString_013bb67c;      // "ST_HOLDING_CRATE"
-extern CCharString g_CCharString_013bb680;      // "ST_WORK_PUT_CRATE"
+namespace { extern CCharString LOG_DEF_NAME; }      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
+namespace { extern CCharString PICK_UP_ANIM_NAME; }      // "ST_WORK_GET_CRATE"
+namespace { extern CCharString HOLDING_LOG_ANIM_NAME; }      // "ST_HOLDING_CRATE"
+namespace { extern CCharString PUT_LOG_IN_BONFIRE_ANIM_NAME; }      // "ST_WORK_PUT_CRATE"
 
 struct __true_type { };
 template <class T> struct vector {              // STLport vector<T> (retail 12 bytes)
@@ -156,10 +156,10 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
     CTCCarrying* carrying;
     PBrain->PCreature->GetInterface(&carrying, 0x46);
     if (carrying->GetThingInPrimarySlot() == 0) {
-        GetPDefinitionManager()->GetDefGlobalIndexFromName(g_CCharString_013bb674);
-        PBrain->PCreature->GetAnimFromName(g_CCharString_013bb67c, 0);
+        GetPDefinitionManager()->GetDefGlobalIndexFromName(LOG_DEF_NAME);
+        PBrain->PCreature->GetAnimFromName(HOLDING_LOG_ANIM_NAME, 0);
         vector<const CCharString*> getAnims;
-        getAnims.push_back(&g_CCharString_013bb678);
+        getAnims.push_back(&PICK_UP_ANIM_NAME);
         bool failed = !FetchGoods(CIntelligentPointerThing(pile), 3.5f, getAnims, CAIFilterBase(), 0);
         if (failed) {
             Terminate();
@@ -168,7 +168,7 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
     }
     {
         vector<const CCharString*> putAnims;
-        putAnims.push_back_inline(&g_CCharString_013bb680);
+        putAnims.push_back_inline(&PUT_LOG_IN_BONFIRE_ANIM_NAME);
         PlaceGoods(CIntelligentPointerThing(fire), 4.0f, putAnims, CAIFilterBase(), 0);
         Terminate();
     }
@@ -183,10 +183,10 @@ static float g_fetchDist, g_placeDist;
 static const CCharString* g_fetchAnim; static const CCharString* g_placeAnim;
 static int g_fetchAnimCount, g_placeAnimCount;
 static const CCharString* g_defName; static const CCharString* g_animName;
-CCharString g_CCharString_013bb674("OBJECT_KNOTHOLE_LOG_MOVEABLE");
-CCharString g_CCharString_013bb678("ST_WORK_GET_CRATE");
-CCharString g_CCharString_013bb67c("ST_HOLDING_CRATE");
-CCharString g_CCharString_013bb680("ST_WORK_PUT_CRATE");
+namespace { CCharString LOG_DEF_NAME("OBJECT_KNOTHOLE_LOG_MOVEABLE"); }
+namespace { CCharString PICK_UP_ANIM_NAME("ST_WORK_GET_CRATE"); }
+namespace { CCharString HOLDING_LOG_ANIM_NAME("ST_HOLDING_CRATE"); }
+namespace { CCharString PUT_LOG_IN_BONFIRE_ANIM_NAME("ST_WORK_PUT_CRATE"); }
 CCharString::CCharString(const char* text, long) { m_pData = (void*)text; }
 CCharString::~CCharString() { }
 CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
@@ -252,15 +252,15 @@ int main()
     // C: already holding a log -> straight to the fire
     Reset(); g_fire = &fire; g_held = &log; group.Update();
     if (g_terminates != 1 || g_fetches || g_places != 1 || g_placeTarget != &fire || g_placeDist != 4.0f || g_placeAnimCount != 1 ||
-        g_placeAnim != &g_CCharString_013bb680 || g_defLookups) { ok = 0; printf("caseC\n"); }
+        g_placeAnim != &PUT_LOG_IN_BONFIRE_ANIM_NAME || g_defLookups) { ok = 0; printf("caseC\n"); }
     // D: empty hands, the fetch fails
     Reset(); g_held = 0; g_fetchResult = false; group.Update();
     if (g_terminates != 1 || g_fetches != 1 || g_places || g_fetchSource != &pile || g_fetchDist != 3.5f || g_fetchAnimCount != 1 ||
-        g_fetchAnim != &g_CCharString_013bb678 || g_defLookups != 1 || g_defName != &g_CCharString_013bb674 || g_animLookups != 1 ||
-        g_animName != &g_CCharString_013bb67c) { ok = 0; printf("caseD\n"); }
+        g_fetchAnim != &PICK_UP_ANIM_NAME || g_defLookups != 1 || g_defName != &LOG_DEF_NAME || g_animLookups != 1 ||
+        g_animName != &HOLDING_LOG_ANIM_NAME) { ok = 0; printf("caseD\n"); }
     // E: empty hands, the fetch succeeds -> fetch then place
     Reset(); g_fetchResult = true; group.Update();
-    if (g_terminates != 1 || g_fetches != 1 || g_places != 1 || g_placeTarget != &fire || g_placeAnim != &g_CCharString_013bb680) { ok = 0; printf("caseE\n"); }
+    if (g_terminates != 1 || g_fetches != 1 || g_places != 1 || g_placeTarget != &fire || g_placeAnim != &PUT_LOG_IN_BONFIRE_ANIM_NAME) { ok = 0; printf("caseE\n"); }
     if (ok) printf("00917130_TEST PASS\n");
     return ok ? 0 : 1;
 }

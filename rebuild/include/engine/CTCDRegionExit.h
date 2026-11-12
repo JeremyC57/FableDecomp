@@ -38,6 +38,22 @@ private:
 #else
     unsigned char    PEntranceConnectedTo[0x8];                          // +0x2a CIntelligentPointer<CThing>
 #endif
+#ifdef FABLE_RETAIL_CTCDREGIONEXIT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00779960
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00779950
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCDREGIONEXIT_DRIVERSLOTS
+// agentFAM13 (2026-11-12): CTCDriverBase virtuals this driver overrides but this declaration lacks (TLC vtable slot 28 IsDriverType,
+// slot 29 CreateAdditionalTCs, as engine/CTCDriverBase.h); spellings from the Ego_r / FableWin name sets. Declaration only.
+public:
+    virtual bool IsDriverType(long type) const;
+    virtual void CreateAdditionalTCs();
+#endif // FABLE_RETAIL_CTCDREGIONEXIT_DRIVERSLOTS
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDRegionExit) == 0x38);
 #endif

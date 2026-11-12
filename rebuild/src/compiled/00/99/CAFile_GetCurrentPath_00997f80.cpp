@@ -5,9 +5,9 @@
 // ScanNextFile 0x00999850) name it GetCurrentPath / GetCurrentWorkingDirectory.
 // Callees: wcscmp @ 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare @ 0x00403C60 (cdecl, inherited by char_traits<wchar_t>; manifest "MemCmp_Unsigned16"),
 // the working-directory reader @ 0x009974A0 (static `__fastcall`, `_wgetcwd` into a MAX_PATH buffer -> CWideString;
-// descriptive name GetWorkingDirectory), CWideString::operator=(const CWideString&) @ 0x0099B7D0, ~CWideString @
+// NFile::CalcCurrentPath, Ego_r ?CalcCurrentPath@NFile@@YI?AVCWideString@@XZ), CWideString::operator=(const CWideString&) @ 0x0099B7D0, ~CWideString @
 // 0x0099B510, CWideString(const CWideString&) @ 0x0099B720.
-// Globals: CAFile::CurrentPath (CWideString) @ 0x013BCA10; literal L"" @ 0x0122D70C.
+// Globals: NFile::CurrentPath (CWideString) @ 0x013BCA10; literal L"" @ 0x0122D70C.
 // Shape: one `return CurrentPath;` after `if ((data == 0 && wcscmp(L"", L"") == 0) || (data != 0 && data->Data == L""))
 // CurrentPath = GetWorkingDirectory();` -- VC7.1 threads the second null test, tail-duplicates the return copy into the
 // null path and pushes &CurrentPath before `mov ecx,esi` in both copies (two source-level `return CurrentPath;`
@@ -15,6 +15,9 @@
 // literal folds to 0, so the size test is `(finish - start) & ~1`, then the out-of-line traits compare over 0 chars).
 // Grade: RELOCATION_MATCH (agent902, 5th grade) -- a single tail-duplicated return; the goto form with two returns scheduled `mov ecx,esi` before the push (132v132).
 // Leaf: ?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ
+// Name fix (agentNF26, FAM09): 0x013BCA10 is NFile::CurrentPath (Ego_r + FableWin NFile initializer/atexit names, Anniv
+//   ?CurrentPath@NFile@@3VCWideString@@A), was CAFile::CurrentPath; 0x009974A0 is NFile::CalcCurrentPath (Ego_r + FableWin, the
+//   landed row), was CAFile::GetWorkingDirectory.
 #include "fable_compiler.h"
 #include <stddef.h>
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
@@ -63,18 +66,21 @@ public:
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
+namespace NFile {
+extern CWideString CurrentPath;                                                                // 0x013BCA10
+CWideString __fastcall CalcCurrentPath();                                                       // 0x009974A0
+}
+
 class CAFile
 {
 public:
-    static CWideString CurrentPath;                                                             // 0x013BCA10
-    static CWideString __fastcall GetWorkingDirectory();                                        // 0x009974A0
     static CWideString __fastcall GetCurrentPath();
 };
 
 CWideString __fastcall CAFile::GetCurrentPath()
 {
-    CWideStringData* data = CurrentPath.PStringData;
+    CWideStringData* data = NFile::CurrentPath.PStringData;
     if ((data == 0 && wcscmp(L"", L"") == 0) || (data != 0 && data->Data == L""))
-        CurrentPath = GetWorkingDirectory();
-    return CurrentPath;
+        NFile::CurrentPath = NFile::CalcCurrentPath();
+    return NFile::CurrentPath;
 }

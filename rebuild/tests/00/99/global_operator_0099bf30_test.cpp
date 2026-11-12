@@ -17,12 +17,11 @@ static int g_ok = 1;
 //   and delete the block, count--). The address-taking callees (CWideString.cpp) are same-TU noinline bodies so the local's
 //   address never escapes and its block pointer stays in esi across UnassignString (model of the landed sibling
 //   operator+(const unsigned short*, const CWideString&) 0x0099BFF0, which this file reuses verbatim).
-// Globals: g_CWideStringInstanceCount 0x013BCA20 (+1 per constructor, -1 per destructor).
+// Globals: NoStrings 0x013BCA20 (+1 per constructor, -1 per destructor).
 // Layout: CWideStringData = STLport basic_string<unsigned short> {_M_start, _M_finish, _M_end_of_storage} + NoRefs +0xC.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
-extern long g_CWideStringInstanceCount;                 // 0x013BCA20
 extern unsigned short g_EmptyWideString[];              // 0x0129A8E0
 
 struct forward_iterator_tag {
@@ -65,7 +64,7 @@ public:
     CWideString(const wchar16* text);                   // 0x0099B6B0
     CWideString(const CWideString& other) : PStringData(0)
     {
-        ++g_CWideStringInstanceCount;
+        ++NoStrings;
         *this = other;
     }
     ~CWideString()
@@ -75,7 +74,7 @@ public:
                 delete PStringData;
             PStringData = 0;
         }
-        --g_CWideStringInstanceCount;
+        --NoStrings;
     }
     const CWideString& operator=(const CWideString& other)
     {
@@ -97,6 +96,8 @@ public:
     void UnassignString();                              // 0x0099B4D0
     void MakeOwnCopyOfData();                           // 0x0099B560
     CWideStringData* AllocStringData(const wchar16* text, long length);   // 0x0099B3C0
+protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
 };
 
 // ---- same-TU callee bodies (CWideString.cpp), defined before the graded function ----
@@ -126,7 +127,7 @@ __declspec(noinline) void CWideString::MakeOwnCopyOfData()
 
 __declspec(noinline) CWideString::CWideString(const wchar16* text) : PStringData(0)
 {
-    ++g_CWideStringInstanceCount;
+    ++NoStrings;
     if (text != 0 && *text != 0)
         PStringData = AllocStringData(text, -1);
 }
@@ -163,7 +164,8 @@ CWideString __fastcall operator+(const CWideString& left, const wchar16* right)
 }
 // ---- end of embedded source ----
 // ---- stand-ins for the out-of-TU callees and globals ----
-long g_CWideStringInstanceCount = 0;
+long CWideString::NoStrings = 0;
+struct NoStringsProbe : CWideString { static long Count() { return NoStrings; } };   // reads the protected static counter
 unsigned short g_EmptyWideString[1] = { 0 };
 void CBasicStringW::_M_range_initialize(const wchar16* first, const wchar16* last, const forward_iterator_tag&)
 {
@@ -216,7 +218,7 @@ int main()
         CWideString d = empty + W("", b3);
         CHECK(d.PStringData == 0);
     }
-    CHECK(g_CWideStringInstanceCount == 0);
+    CHECK(NoStringsProbe::Count() == 0);
     if (g_ok) printf("0099bf30_TEST PASS\n");
     return g_ok ? 0 : 1;
 }

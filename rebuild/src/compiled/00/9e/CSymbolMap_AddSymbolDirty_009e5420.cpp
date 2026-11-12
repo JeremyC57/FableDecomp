@@ -4,7 +4,7 @@
 // Identity: Ego_r.pdb `?AddSymbolDirty@CSymbolMap@@QAEXABVCCharString@@J@Z` (the two-string overload is 0x009E54E0).
 // Callees: std::set<CCharString>::insert @ 0x004AC380 (pair<iterator,bool> result dropped), CCharString copy ctor
 //   @ 0x0099EC30, std::vector<pair<CCharString,CSymbolInfo> >::push_back @ 0x009E7AB0, ~CCharString @ 0x0099EAE0;
-//   global g_CCharString_013caa30 ("NULL", built by the landed dynamic initialiser) is the default group name.
+//   global GNullName (was g_CCharString_013caa30) ("NULL", built by the landed dynamic initialiser) is the default group name.
 // Layout (Ego_r.pdb CSymbolMap, retail-sized): SLONGMap +0x04 (CVectorMap: 12-byte vector, Compare +0x0c, Dirty +0x0d),
 //   NamesUsed +0x14 (12-byte set), CheckForDuplicateSymbols +0x20.
 // Shape (the module needs `__forceinline` on Add, the pair ctor and CSymbolInfo's memberwise copy): CVectorMap::Add (landed out of line at 0x009E7C00 for another caller) is inlined: the pair temporary is built from
@@ -16,7 +16,7 @@ class CCharString { public:
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
 };
-extern CCharString g_CCharString_013caa30;         // 0x013CAA30 ("NULL")
+extern CCharString GNullName;         // 0x013CAA30 ("NULL")
 struct SSetIterator { void* m_pNode; };
 struct SSetInsertResult {                          // pair<iterator, bool>
     SSetIterator first;
@@ -66,5 +66,5 @@ void CSymbolMap::AddSymbolDirty(const CCharString& name, long val)
 {
     if (CheckForDuplicateSymbols)
         NamesUsed.insert(name);
-    SLONGMap.Add(name, CSymbolInfo(g_CCharString_013caa30, name, val));
+    SLONGMap.Add(name, CSymbolInfo(GNullName, name, val));
 }

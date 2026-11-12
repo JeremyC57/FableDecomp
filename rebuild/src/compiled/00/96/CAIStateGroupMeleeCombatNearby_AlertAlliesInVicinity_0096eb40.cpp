@@ -43,7 +43,7 @@ class CTCPerceiveThing { public:                       // interface 0x34
     bool IgnoreFOVLineOfSight;                  // +0x2f
     bool DirectAwareness;                       // +0x30
     bool Smelt;                                 // +0x31
-    CThing* GetPerceivedThing() const;                // 0x007446A0
+    const CThing* GetPerceivedThing() const;          // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
 };
 class CMessageEvent;
 class CMessageEventFilter_IsOfType { public:
@@ -59,7 +59,7 @@ public:
     unsigned char _pad[0x60];
     CMessageEventManager* MessageEventManager;  // +0x60
 };
-extern unsigned long g_AlertAlliesMessageDelay; // 0x013BC3A4
+namespace { extern const long TIME_TO_LEAVE_SHOUT_MESSAGE; }   // 0x013BC3A4
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CAIBrain { public:
@@ -101,7 +101,7 @@ bool CAIStateGroup_MeleeCombatNearby::AlertAlliesInVicinity()
     }
     CThingCreatureBase* creature = GetCreature();
     CMessageEventManager* messages = GetWorld().MessageEventManager;
-    messages->AddMessage((EMessageEventType)(0xc), g_AlertAlliesMessageDelay, creature->PeekPos(), creature, reinterpret_cast<CThing*>(PEnemy.GetPItem()),
+    messages->AddMessage((EMessageEventType)(0xc), TIME_TO_LEAVE_SHOUT_MESSAGE, creature->PeekPos(), creature, reinterpret_cast<CThing*>(PEnemy.GetPItem()),
                          0.0f, 36.0f, 0);
     return true;
 }

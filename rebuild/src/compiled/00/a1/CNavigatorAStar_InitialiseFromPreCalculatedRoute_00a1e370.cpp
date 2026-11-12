@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1E370, 592 bytes (`ret 0Ch`).
 // Callees: list<pair<long, const CNavigatorBase*> >::remove_if<CIsNavigator> 0x00A155C0 (on the manager +0x2c), the state
-//   map's _M_erase 0x00A21640, free 0x00BFEA14, memmove 0x00BFEAE6, malloc 0x00BFEA0E, CalcWayPointWidths 0x00A1DE30,
+//   map's _M_erase 0x00A21640, free 0x00BFEA14, memmove 0x00BFEAE6, malloc 0x00BFEA0E, CalculateNavigableWidthOfLine 0x00A1DE30,
 //   CSteeringAgent::SetGoal 0x00A20970, the interface's slot 16 GetLayerAt (+0x40), CNavigatorManager::GetNodeAt 0x00A14F70;
 //   the in-progress search counter 0x013D27B0.
 // Layout (retail, Ego_r.pdb less 4 bytes per STLport container before the list, 8 for the 4-byte list): States map +0x24
@@ -188,7 +188,7 @@ class CNavigatorAStar { public:
     bool                         PartWayThroughAStar;        // +0xc1
     unsigned char                NoOfClockwiseTurns;         // +0xc2
     unsigned char                NoOfAntiClockwiseTurns;     // +0xc3
-    void CalcWayPointWidths(const C3DVector& from);          // 0x00A1DE30
+    void CalculateNavigableWidthOfLine(const C3DVector& from);   // 0x00A1DE30 ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVC3DVector@@@Z
     virtual void InitialiseFromPreCalculatedRoute(const C3DVector& from, const CRoutePointVector& route, const C3DVector& to);
 };
 
@@ -205,7 +205,7 @@ void CNavigatorAStar::InitialiseFromPreCalculatedRoute(const C3DVector& from, co
     PartWayThroughAStar = false;
     for (unsigned long i = 0; i < route.size(); ++i)
         Route.push_back(CNavWayPoint(route[i]));
-    CalcWayPointWidths(from);
+    CalculateNavigableWidthOfLine(from);
     SteeringAgent->SetGoal(Route._M_node->_M_next->_M_data,
                            Route.size() > 1 ? Route._M_node->_M_next->_M_next->_M_data : Route._M_node->_M_next->_M_data);
     StringLeadPosition = route[0].first;

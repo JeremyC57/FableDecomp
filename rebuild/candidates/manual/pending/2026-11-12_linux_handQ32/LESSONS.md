@@ -1,0 +1,7 @@
+- A tiny callee at an unaligned address among COMDATs is an inline emitted out of line: define its real body as `inline __declspec(noinline)` in the TU -- VC7.1 uses a select-any COMDAT's mod/ref (CSE across the call) but not its register summary (0x00EB3BA0).
+- Two locals swapping frame slots (one in the dead parameter word) is a callee-visibility fact: give c2 the out-of-line callee's real body (FABLE_RETAIL_STLP_MAP operator[], a noinline STLport tree ctor) so it knows the address-taken temporary does not escape (0x00BD2A90, 0x00465C54).
+- Empty less/allocator temporaries homed in a dead argument byte (`lea eax,[ebp+0Bh]` twice) mean the callee taking them is visible; declaration-only callees give them their own frame words (0x00465C54).
+- For a /Os def TU whose inline split is wrong under every /d2inlS, force the COMDATs retail calls out of line with a per-TU opt-in, then sweep S for the rest (0x00465C54: S39).
+- Shared-header ports first: three of the six rows matched on the first or second compiling port (0x00958B20, 0x00722740, 0x009FC950); the old drafts' "register ties" were model errors (raw pointer loop instead of the vector iterator, missing inline accessors).
+- When retail reads the same extents word for both compares, spell the evidence with the proven accessor twice (CTexture::GetWidth(0)) rather than inventing a buggy GetHeight body (0x009FC950).
+- Statement order of plain member stores can decide registers in a later merged bitfield update (Width, Height, Pitch, 0x009FC950).

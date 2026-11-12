@@ -15,7 +15,13 @@ class CVertexShader;
 #pragma pack(push, 1)
 class CEnginePrimitiveManagerRepeatedStaticMeshes {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x00B36080 CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CEnginePrimitiveManagerRepeatedStaticMeshes();
+#else
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
     unsigned char       _pad_0x0c[0x4];                      // +0x0c
@@ -44,7 +50,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerRepeatedStaticMeshes) == 0x94);
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShader) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, VertexShader) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, PixelShaderStippleAlpha) == 0x30);

@@ -10,6 +10,12 @@
 //   The inline c_str()/length() getters are written null-first (`PStringData == 0 ? "" : ...`) for retail's block order.
 // Layout: CCharString handle on the packed CCharStringData (PData +0, StringLength +4); the trail's table count +0x0c and
 //   8-byte entries (name first) at +0x54 -- local model (no engine header for CTCWeaponTrail).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC78 STRIKE_EVENT_BEGIN_LEGACY (global, const; initializer 0x0121E840), was g_StrikeEventName0.
+//   0x013BAC80 SECONDARY_STRIKE_EVENT_BEGIN_LEGACY (global, const; initializer 0x0121E880), was g_StrikeEventName1.
+//   0x013BAC64 STRIKE_EVENT_WEAPON_START_IDENTIFIER (global, const; initializer 0x0121E7A0), was g_StrikeEventExcludedPrefix.
+//   0x013BAC6C STRIKE_EVENT_START_IDENTIFIER (global, const; initializer 0x0121E7E0), was g_StrikeEventPrefix.
 #include "fable_compiler.h"
 #pragma auto_inline(off)
 long __fastcall Compare(const char* a, const char* b)       // 0x00411570 (landed body; same-TU so VC7.1 knows it writes no memory)
@@ -61,10 +67,10 @@ class CCharString { public:
     }
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-extern CCharString g_StrikeEventName0;                     // 0x013BAC78
-extern CCharString g_StrikeEventName1;                     // 0x013BAC80
-extern CCharString g_StrikeEventExcludedPrefix;            // 0x013BAC64
-extern CCharString g_StrikeEventPrefix;                    // 0x013BAC6C
+extern const CCharString STRIKE_EVENT_BEGIN_LEGACY;                     // 0x013BAC78
+extern const CCharString SECONDARY_STRIKE_EVENT_BEGIN_LEGACY;                     // 0x013BAC80
+extern const CCharString STRIKE_EVENT_WEAPON_START_IDENTIFIER;            // 0x013BAC64
+extern const CCharString STRIKE_EVENT_START_IDENTIFIER;                    // 0x013BAC6C
 struct CStrikeEvent { CCharString Name; long Data; };
 class CTCWeaponTrail { public:
     unsigned char _pad00[0x0c];
@@ -76,14 +82,14 @@ class CTCWeaponTrail { public:
 
 long CTCWeaponTrail::GetStrikeEventIndexFromEventName(const CCharString& name)
 {
-    if (name == g_StrikeEventName0)
+    if (name == STRIKE_EVENT_BEGIN_LEGACY)
         return 0;
-    if (name == g_StrikeEventName1)
+    if (name == SECONDARY_STRIKE_EVENT_BEGIN_LEGACY)
         return 1;
-    if (strncmp(name.GetString(), g_StrikeEventExcludedPrefix.GetString(), g_StrikeEventExcludedPrefix.GetLength()) == 0)
+    if (strncmp(name.GetString(), STRIKE_EVENT_WEAPON_START_IDENTIFIER.GetString(), STRIKE_EVENT_WEAPON_START_IDENTIFIER.GetLength()) == 0)
         return 0;
-    if (strncmp(name.GetString(), g_StrikeEventPrefix.GetString(), g_StrikeEventPrefix.GetLength()) == 0) {
-        CCharString suffix = name.GetSubString(g_StrikeEventPrefix.GetLength(), name.GetLength()).ToLower();
+    if (strncmp(name.GetString(), STRIKE_EVENT_START_IDENTIFIER.GetString(), STRIKE_EVENT_START_IDENTIFIER.GetLength()) == 0) {
+        CCharString suffix = name.GetSubString(STRIKE_EVENT_START_IDENTIFIER.GetLength(), name.GetLength()).ToLower();
         CCharString eventName = "weapon_pos_" + suffix;
         for (long i = 0; i < NoStrikeEvents; ++i) {
             if (StrikeEvents[i].Name == eventName)

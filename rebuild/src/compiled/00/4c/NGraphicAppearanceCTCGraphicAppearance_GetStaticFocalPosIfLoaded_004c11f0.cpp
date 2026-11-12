@@ -18,7 +18,7 @@ class CCharString;
 
 C3DVector __fastcall GetRenderPositionForThing(const CThing& thing, float interpolation);   // 0x004BBF00 (file-static)
 
-extern CCharString g_CCharString_013bac48;          // 0x013BAC48 "focus_eye_01"
+extern const CCharString MAIN_FOCAL_POSITION_NAME;          // 0x013BAC48 "focus_eye_01"
 
 namespace NGraphicAppearance {
 
@@ -47,7 +47,7 @@ bool CTCGraphicAppearance::GetStaticFocalPosIfLoaded(C3DVector& position) const
         position = GetRenderPositionForThing(*ParentThing, 1.0f) + CachedStaticFocalPosOffset;
         return true;
     }
-    if (GetHelperPoint(g_CCharString_013bac48, 0, 6, position, 1.0f)) {
+    if (GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, 6, position, 1.0f)) {
         CTCGraphicAppearance* self = const_cast<CTCGraphicAppearance*>(this);
         self->CachedStaticFocalPos = true;
         self->CachedStaticFocalPosOffset = position - GetRenderPositionForThing(*ParentThing, 1.0f);

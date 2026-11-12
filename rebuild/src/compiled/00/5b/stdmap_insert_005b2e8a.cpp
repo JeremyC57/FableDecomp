@@ -1,0 +1,11 @@
+// std::map<NUISystem::CComponent*, NUISystem::CList*, std::less<NUISystem::CComponent*>, std::allocator<std::pair<NUISystem::CComponent* const, NUISystem::CList*> > >::insert(std::_Rb_tree_iterator<std::pair<NUISystem::CComponent* const, NUISystem::CList*>, std::_Nonconst_traits<std::pair<NUISystem::CComponent* const, NUISystem::CList*> > >, std::pair<NUISystem::CComponent* const, NUISystem::CList*> const&) -- STLport 4.6 insert (stlport/fable_map.h)
+// Leaf: ?insert@?$map@PAVCComponent@NUISystem@@PAVCList@2@U?$less@PAVCComponent@NUISystem@@@std@@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@5@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@PAVCList@2@@2@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B2E8A, oracle length 29 bytes.
+// Identity: (1) the landed caller 0x005B3076 (std::map<NUISystem::CComponent *, NUISystem::CList *, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, NUISystem::CList *>>>::operator[]) binds this exact spelling (rebuild/oracles/reloc_bindings.tsv); (2) Ego_r.pdb / FableWin.pdb carry the map<PAVCComponent@NUISystem@@PAVCList@2@> instantiation (_Tmap_traits@PAVCComponent@NUISystem@@PAVCList@2@U?$less@).
+// Model: the shared stlport/fable_map.h (STLport 4.6 _tree.h / _tree.c; FABLE_RETAIL_STLP_MAP); the explicit instantiation emits the member as
+//   its own COMDAT. Replaces the generated stand-in (was _unattributed, a descriptive placeholder class).
+#pragma optimize("s",on)
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+namespace NUISystem { class CComponent; class CList; }
+template std::_Rb_tree_iterator<std::pair<NUISystem::CComponent* const, NUISystem::CList*>, std::_Nonconst_traits<std::pair<NUISystem::CComponent* const, NUISystem::CList*> > > std::map<NUISystem::CComponent*, NUISystem::CList*, std::less<NUISystem::CComponent*>, std::allocator<std::pair<NUISystem::CComponent* const, NUISystem::CList*> > >::insert(std::_Rb_tree_iterator<std::pair<NUISystem::CComponent* const, NUISystem::CList*>, std::_Nonconst_traits<std::pair<NUISystem::CComponent* const, NUISystem::CList*> > >, std::pair<NUISystem::CComponent* const, NUISystem::CList*> const&);

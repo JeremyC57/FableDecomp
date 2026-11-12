@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0065c5bb   RELOCATION_MATCH PASS   UpdateMirroredCrimeData
+0079b6f0   DIFFER(732v736)  FAIL   ResetMinionPos
+008c4fd0   DIFFER(722v736)  PASS   CreateBabies
+008cdd40   DIFFER(430v432)  PASS   FinishAction
+008e16a0   DIFFER(552v560)  PASS   FrameUpdate
+
+WINS: 1
+  0065c5bb RELOCATION_MATCH CTCVillage::?UpdateMirroredCrimeData@CTCVillage@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCVillage_UpdateMirroredCrimeData_0065c5bb

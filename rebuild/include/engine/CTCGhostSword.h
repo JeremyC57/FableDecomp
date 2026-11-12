@@ -25,6 +25,10 @@
 #include "engine/CIntelligentPointer.h"
 class CSpecialAbilitiesGhostSwordDef; class CThingAICreature;
 class CTCGhostSword : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static bool FABLE_FASTCALL IsThingGhostSword(const CThing*);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
     // Retail opt-in (Codex pass18): original Ego_r30739 public methods, native vtable126e494 slot9.
@@ -45,6 +49,16 @@ private:
     long SpellLevel; // +3c
     CIntelligentPointer<CThing> PItemRemoved; // +40
     bool CutSceneCancelled; // +48
+#endif
+#ifdef FABLE_RETAIL_CTCGHOSTSWORD_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007C66A0
+public:
+    virtual void OnKill();  // slot 14, 0x007C5460
+public:
 #endif
 };
 #ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME

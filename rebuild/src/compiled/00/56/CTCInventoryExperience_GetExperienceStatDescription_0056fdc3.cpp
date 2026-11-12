@@ -13,11 +13,15 @@
 // Shape: `this` is spilled to [ebp-4] (the lookup key takes [ebp-8]) because the component (ebx), the stat (esi) and the
 // def (edi) occupy the callee-saved registers; the maximum level is fetched before `level` is loaded and compared as
 // `level == max + 1`; the text id is a named local tested after the register pops.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CWideString { public: void* PStringData; CWideString(const CWideString&); ~CWideString(); };   // 0x0099B720 / 0x0099B510
-extern CWideString g_EmptyWideString;                   // 0x013BCA24
+class CWideString { public: void* PStringData; CWideString(const CWideString&); ~CWideString(); 
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
+};   // 0x0099B720 / 0x0099B510
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
 class CAbilityTrackLevelDef { public:                          // retail 0x48 bytes
     unsigned char _pad00[0x44];
@@ -97,5 +101,5 @@ CWideString CTCInventoryExperience::GetExperienceStatDescription(long stat, long
         textId = statsDef->StatLevels_first[stat].Abilities_first[level].Description;
     if (textId)
         return GetInventoryText(textId);
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

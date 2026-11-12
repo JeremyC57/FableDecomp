@@ -100,9 +100,15 @@ struct CRegionMinimap {
 #endif
     unsigned char RegionMinimapSurface[0x10];                // +0x24 CSurface
     unsigned char RegionMinimapTexture[0x8];                 // +0x34 CTexture
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_ILLUMINATION
+    // Retail opt-in (chunk Q14, row 0x0066C900 IlluminateRegionMinimapTheme): the Ego_r.pdb member as its real type, C3DVector
+    // IlluminationDirection +0x3C (copied word by word into the row's local at 0x0066C928..0x0066C946). Same bytes and offsets.
+    C3DVector     IlluminationDirection;                     // +0x3c
+#else
     float         IlluminationDirection_X;                   // +0x3c C3DVector::X
     float         IlluminationDirection_Y;                   // +0x40 C3DVector::Y
     float         IlluminationDirection_Z;                   // +0x44 C3DVector::Z
+#endif
     unsigned char RegionMinimapCellList[0xc];                // +0x48 vector<CRegionMinimap::RegionMinimapCellData,std::allocator<CRegionMinimap::RegionMinimapCellData>_>
     unsigned long MaxRegionMinimapThemeColours;              // +0x54
     unsigned char RegionMinimapThemeColour[0xc];             // +0x58 vector<CRGBColour,std::allocator<CRGBColour>_>
@@ -123,9 +129,13 @@ FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_BRY) == 0x20);
 #endif
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapSurface) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapTexture) == 0x34);
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_ILLUMINATION
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection) == 0x3c);
+#else
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_X) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_Y) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_Z) == 0x44);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapCellList) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, MaxRegionMinimapThemeColours) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapThemeColour) == 0x58);

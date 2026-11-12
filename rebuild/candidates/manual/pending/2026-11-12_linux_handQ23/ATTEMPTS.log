@@ -1,0 +1,10 @@
+05:52 006c1250 006c1250_v1.cpp CTCBuyableHouse::Update DIFFER(673v638)   -- port onto shared headers
+05:54 006c1250 006c1250_v2.cpp CTCBuyableHouse::Update RELOCATION_MATCH   -- HasTC forceinline + PeekVillagePeople const_iterators
+05:55 006c1250 006c1250_v3.cpp CTCBuyableHouse::Update RELOCATION_MATCH   -- Ego_r HasBuildingAs* (const CThing&) ctors, final spelling
+06:00 0063f7c0 0063f7c0_v1.cpp CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>,CThingFindNavigationLayerAt> DIFFER(780v785)   -- port onto shared headers (FOREACHINROUGHAREA_BODY)
+06:01 0063f7c0 0063f7c0_v2.cpp CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>,CThingFindNavigationLayerAt> DIFFER(785v785)   -- named CPhysicsMeshObject locals; edge-compare empty test
+06:08 00814260 00814260_v1.cpp CTCBoastingPodium::OnInitialActivate DIFFER(825v839)   -- port onto shared headers
+06:08 00814260 00814260_v2.cpp CTCBoastingPodium::OnInitialActivate DIFFER(839v839)   -- name reference block; named script-name string
+06:10 00814260 00814260_v3.cpp CTCBoastingPodium::OnInitialActivate RELOCATION_MATCH   -- GetParentThing() for the player number and SetBoastingPodium
+06:12 006c1250 006c1250.cpp CTCBuyableHouse::Update RELOCATION_MATCH   -- final src regrade (strict headers)
+06:12 00814260 00814260.cpp CTCBoastingPodium::OnInitialActivate RELOCATION_MATCH   -- final src regrade (strict headers)

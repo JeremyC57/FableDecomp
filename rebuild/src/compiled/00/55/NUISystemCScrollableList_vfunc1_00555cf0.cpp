@@ -1,4 +1,6 @@
 //00555cf0 NUISystem::CScrollableList::ProcessEvent.
+// Leaf: ?ProcessEvent@CScrollableList@NUISystem@@UAEXH@Z
+// Names (agentNF25b): the 0x00555A90 callee is Ego_r/FableWin protected ?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z (was a local public SetScroll).
 // Layout: secondary CObserver at+4; retailobserver20 versus donor24 (STLset shrink).
 #include "fable_compiler.h"
 #include "engine/CObserver.h"
@@ -103,7 +105,7 @@ virtual void PlaySoundW(CCharString&,long)=0;
 virtual void ManagerSlot41()=0;
 virtual DefPointer GetMiscThingsDef()=0;
 static CManager* __fastcall GetInstance();};
-class CScrollableList:public Component,public Observer { public:unsigned char BeforeChildren[0xb0-0x18];Vector Children;unsigned char BeforeTop[0x15c-0xbc];unsigned long Top,Visible;void SetScroll(float,float);void ProcessEvent(int);};
+class CScrollableList:public Component,public Observer { public:unsigned char BeforeChildren[0xb0-0x18];Vector Children;unsigned char BeforeTop[0x15c-0xbc];unsigned long Top,Visible;void ProcessEvent(int);protected:void UpdateVisibleList(float,float);};
 extern void* Game_013b86a0;class CRedefinerList { public:static bool __fastcall CanAcceptChanges();};struct CUserProfileManager {void Save();};CUserProfileManager* __fastcall GetUserProfileManager();
-void CScrollableList::ProcessEvent(int event){Observer::ProcessEvent(event);switch(event){case 16:case 36:if(Top>0){--Top;SetScroll(.2f,.2f);}break;case 17:case 37:if(Children.size()>Visible&&Top<Children.size()-Visible){++Top;SetScroll(.2f,.2f);}break;case 4:if(Game_013b86a0&&CRedefinerList::CanAcceptChanges()){if(MenuStack_013b8a98.size()>1){MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);CManager::GetInstance()->RemoveObserver(this);}CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundForward,1);CManager::GetInstance()->SetChange(0);GetUserProfileManager()->Save();}break;}}
+void CScrollableList::ProcessEvent(int event){Observer::ProcessEvent(event);switch(event){case 16:case 36:if(Top>0){--Top;UpdateVisibleList(.2f,.2f);}break;case 17:case 37:if(Children.size()>Visible&&Top<Children.size()-Visible){++Top;UpdateVisibleList(.2f,.2f);}break;case 4:if(Game_013b86a0&&CRedefinerList::CanAcceptChanges()){if(MenuStack_013b8a98.size()>1){MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);CManager::GetInstance()->RemoveObserver(this);}CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundForward,1);CManager::GetInstance()->SetChange(0);GetUserProfileManager()->Save();}break;}}
 }

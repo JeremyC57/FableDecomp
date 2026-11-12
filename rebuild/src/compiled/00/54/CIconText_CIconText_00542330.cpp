@@ -7,7 +7,7 @@
 // 0052CC50 is CChangingStateComponent ctor (manifest propagated CDraggableInto is wrong).
 // Native UI containers shrink CComponent348 donor ->308 retail and changing396 ->348.
 // Genuine virtual destructors in all3 bases create native vptr stores, no fake slots.
-// CWideString ctor0099AED0; CBaseClass ctor0099A2D0; UpdateFont00541FD0.
+// CWideString ctor0099AED0; CBaseClass ctor0099A2D0; GetDataFromDef00541FD0.
 #include "fable_string.h"
 #include "engine/_quarantine/CComponent.h"
 #include "engine/CObserver.h"
@@ -64,12 +64,12 @@ class CIconText : public CChangingStateComponent { public:
  fable_u8 NoRenderNextFrame;
  CIconText(long);
  virtual ~CIconText();
- void UpdateFont(); //00541FD0
+ void GetDataFromDef(); //00541FD0 ?GetDataFromDef@CIconText@NUISystem@@QAEXXZ (Ego_r.pdb 0x005BB900 / FableWin.pdb 0x02262EA0; NF28: was UpdateFont)
 };
 FABLE_STATIC_ASSERT(sizeof(CChangingStateComponent)==0x15c);
 CIconText::CIconText(long parent) : CChangingStateComponent(parent) {
  NoRenderNextFrame=0;
- UpdateFont();
+ GetDataFromDef();
  Unavailable=false;
 }
 }

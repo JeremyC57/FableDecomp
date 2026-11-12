@@ -20,11 +20,8 @@
 #include <string.h>
 
 struct CCharString { void* PStringData; };
-struct CThing;
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+class CThing;
+#include "engine/C3DVector.h"
 
 #include "engine/CCountedPointer.h"                         // CCountedPointer<T> / CCPPointerInfo (shared; Clear = ReleaseData)
 
@@ -113,9 +110,9 @@ struct CNavigatorManager {
     bool IsNavigationMapLoaded(long map) const;              // 0x00A14E80
     void RemoveNavigationMap(long map);                      // 0x00A155D0
 };
-struct CMessageEventManager {
-    void* AddMessage(long type, unsigned long distance, C3DVector* pos, CThing* source, CThing* extra, float a, float b, long c);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): shared header, shared C3DVector.
+#include "engine/CMessageEventManager.h"
 struct CWorld {
     virtual void _slot0();
     virtual void _slot1();
@@ -171,6 +168,6 @@ void CWorldMap::UnloadRegion(long region, bool b)
             World->NavigatorManager->RemoveNavigationMap(map);
     }
     LoadedRegion = 0;
-    World->MessageEventManager->AddMessage(0x27, 0x32, &C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, region);
+    World->MessageEventManager->AddMessage(MESSAGE_EVENT_REGION_UNLOADED, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, region);
     RegionUnloading = false;
 }

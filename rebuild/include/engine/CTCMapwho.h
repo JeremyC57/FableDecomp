@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCMAPWHO_H
 #define FABLE_ENGINE_CTCMAPWHO_H
 #ifdef FABLE_RETAIL_CTCMAPWHO
@@ -15,6 +16,9 @@ class C3DVector;
 #if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTCMAPWHO_STATTYPE)
 class CTCMapwho;
 #endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#include "engine/NThingMap_CThingMap.h"
+#else
 namespace NThingMap {
 class CThingMapCell;
 class CMapwhoNode {
@@ -25,6 +29,7 @@ public:
     CThingMapCell* PCell;                                    // +0x0c
 };
 }
+#endif
 class CTCMapwho : public CTCBase {
 public:
 #ifdef FABLE_RETAIL_CTCMAPWHO_STATTYPE

@@ -2,7 +2,7 @@
 // Leaf: ??0CTCTavernGameShoveHaPenny
 // Retail: Fable.exe @ 0x007D09C0, 122 bytes (`ret 4`). Vtable store 0x0126F2F4 = CTCTavernGameShoveHaPenny (rtti-vtables.tsv),
 //         so the catalog's CTCTavernGameCoinGolf label is a byte-twin propagation (the CoinGolf ctor is 0x007D49E0).
-// Callees: CTCTavernGame::CTCTavernGame(CThing*) 0x005EC8A0; CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000;
+// Callees: CTCTavernGame::CTCTavernGame(CThing*) 0x005EC8A0; CTCTavernGame::GetDef(CDefPointer*) 0x005EA000;
 //          _ftol 0x00BFEA70; the def's virtual slot 1 when its count reaches 0.
 // Layout: retail CTCTavernGameCoinBase = Ego_r.pdb minus 0x18: Arrow +0xf0, Coins (12-byte vector) +0xfc, Held +0x108;
 //         CTCTavernGame::TargetRound +0x9c (PDB +0xb8). Def: PrizeScores (8-byte {Score, Mult}) end pointer +0x178.
@@ -34,7 +34,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { Object->ReleaseTemporary(); }
@@ -57,7 +58,7 @@ class Coin { public: unsigned char _data[0x3c]; };
 class CTCTavernGame { public:
     CTCTavernGame(CThing* owner);              // 0x005EC8A0
     virtual void v00();
-    void GetTavernGameDef(CDefPointer* out);   // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);   // 0x005EA000
     unsigned char _pad_0x04[0x98];
     long          TargetRound;                 // +0x9c
     unsigned char _pad_0xa0[0x50];
@@ -80,7 +81,7 @@ struct CTCTavernGameShoveHaPenny : CTCTavernGameCoinBase {
 CTCTavernGameShoveHaPenny::CTCTavernGameShoveHaPenny(CThing* owner)
     : CTCTavernGameCoinBase(owner)
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     TargetRound = (long)(def->PrizeScoresEnd - 1)->Score;
 }

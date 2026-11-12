@@ -9,12 +9,15 @@
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020, CDefStringTable::GetString 0x009D49B0 (GDefStringTable
 //   0x013CA828), the sound component's PlaySound 0x0066BD00, CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580,
 //   CSpecialEffectsDef::GetEffectFromString 0x00669D30, CreateParticleEffect 0x0072AB70 (__fastcall),
-//   CTCDParticleEmitter::AttachToThing 0x006E0BE0 (bone 10, g_LeftHandAttachmentName 0x013BAC34).
+//   CTCDParticleEmitter::AttachToThing 0x006E0BE0 (bone 10, SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC34).
 // Layout: retail CCombatActionBase is 0x114 (Ego_r.pdb +0x18): Level +0x114 (PDB +0x12c); the multi-arrow def's cast sound
 //   (CDefString) at +0x60; CThing interface bitset +0x20, map +0x44, dead flag +0x91 bit 0.
 // Shape: the landed one-argument-longer sibling 0x008CE900 model (same-TU GetDef / GetSubDef / GetEffectFromString /
 //   LowerBound stand-ins so every out slot lands in the dead argument slots). The new tail is a single && chain
 //   `effect && !IsDead() && GetInterface(&emitter, 0x4b)`: a separate HasTC test before GetInterface tests the bit twice.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_LeftHandAttachmentName.
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -130,7 +133,7 @@ class CThingCreatureBase : public CThing {};
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
-extern CCharString g_LeftHandAttachmentName;          // 0x013BAC34
+extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;          // 0x013BAC34
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector* position);   // 0x0072AB70
 class CSoundPair { public:
     long First, Second;
@@ -192,7 +195,7 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
             CThing* effect = CreateParticleEffect(effectType, &GetCreature()->GetPos());
             CTCDParticleEmitter* emitter;
             if (effect && !effect->IsDead() && effect->GetInterface(&emitter, 0x4b))
-                emitter->AttachToThing(*GetCreature(), 10, g_LeftHandAttachmentName, 0, 0);
+                emitter->AttachToThing(*GetCreature(), 10, SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0);
         }
     }
 }

@@ -1,4 +1,5 @@
-// CThingCreatureBase::IsFreeToFinishAction() -- whether the current action may be finished now (no action, a finished one, one ready for interruption or of low priority; never a top-priority group-100 action)
+// CThingCreatureBase::IsFreeToFinishAction() const -- whether the current action may be finished now (no action, a finished one, one ready for interruption or of low priority; never a top-priority group-100 action)
+// Leaf: ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ
 // Grade: MATCH (retry 10, RTM 3077) -- the three `return true` conditions as ONE `||` chain inside the outer guard: VC7.1 then places the `mov al,1` tail after the `xor al,al` tail with every test jumping to it (`jl true`), as retail; three separate `if (..) return true;` statements inline the last one
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006621C0, 68 bytes (+ int3 padding).
 // Callees: CCreatureActionBase::IsActionReadyForInterruption, vtable slot 27 (`call [eax+6Ch]`; CCreatureActionBase
@@ -8,6 +9,7 @@
 // Shape: the second null test of the action (`test ecx,ecx` after the group check) is the inlined
 //   IsPerformingAnyAction() (landed 0x006622A0: action && !action->Finished); the priority is re-read through the
 //   member after the virtual call.
+// Name fix (agentNF24): own symbol made const, as both PDBs spell it: ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ (was QAE)
 class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -36,10 +38,10 @@ class CThingCreatureBase { public:
     {
         return PCurrentAction && PCurrentAction->InterruptionGroupID == 100 && PCurrentAction->InterruptionPriority >= 250;
     }
-    bool IsFreeToFinishAction();
+    bool IsFreeToFinishAction() const;              // Ego_r 0x0053D040 / FableWin 0x01D9E200: const
 };
 
-bool CThingCreatureBase::IsFreeToFinishAction()
+bool CThingCreatureBase::IsFreeToFinishAction() const
 {
     CCreatureActionBase* action = PCurrentAction;
     if (!(action && action->InterruptionGroupID == 100 && action->InterruptionPriority >= 250)) {

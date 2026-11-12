@@ -11,8 +11,12 @@
 // Shape: a named appearance local, an uninitialised CRightHandedSet and a GetCreature() accessor; the task is read into a
 // named local before reaching its torch pointer (`lea ecx,[eax+8]`), and the pointer assignment reads the source item into
 // a local before SetPItem (so `&PTask` is formed after the GetPItem call, as retail).
+// Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BACA0 ACTION_POINT_01 (global, const; initializer 0x0121E980), was g_TorchDummyName.
 class CCharString { public: void* PStringData; };
-extern CCharString g_TorchDummyName;            // 0x013BACA0 (dynamically initialised global name)
+extern const CCharString ACTION_POINT_01;            // 0x013BACA0 (dynamically initialised global name)
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 struct CTCGraphicAppearance {
@@ -22,13 +26,14 @@ class CThing { public:
     unsigned char _pad[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void* GetPItem() const;                     // 0x00A01B50
-    void SetPItem(void* item);                  // 0x00A01B90
+    void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
 struct CThingPointer : CBaseIntelligentPointer {
     CThing* GetThing() const { return (CThing*)GetPItem(); }
@@ -39,8 +44,8 @@ class CVillageTaskTorch { public:
 };
 struct CTaskPointer : CBaseIntelligentPointer { // CIntelligentPointer<CVillageTaskTorch>, vtable 0x0128B088
     virtual void v00();
-    CTaskPointer(CVillageTaskTorch* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CTaskPointer& operator=(const CTaskPointer& other) { void* item = other.GetPItem(); SetPItem(item); return *this; }
+    CTaskPointer(CVillageTaskTorch* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CTaskPointer& operator=(const CTaskPointer& other) { void* item = other.GetPItem(); SetPItem((CBaseObject*)item); return *this; }
     CVillageTaskTorch* GetTask() const { return (CVillageTaskTorch*)GetPItem(); }
 };
 class CThingAICreature;
@@ -83,7 +88,7 @@ bool CAIStateGroup_VillageTaskTorch::IsRunnable()
                 CTCGraphicAppearance* appearance = torch->PTCGraphicAppearance;
                 C3DVector position(0, 0, 0);
                 CRightHandedSet orientation;
-                if (!appearance->GetDummyObject(g_TorchDummyName, 0, 0, &position, &orientation, 1.0f))
+                if (!appearance->GetDummyObject(ACTION_POINT_01, 0, 0, &position, &orientation, 1.0f))
                     PTask = 0;
             }
         }

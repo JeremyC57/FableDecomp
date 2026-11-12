@@ -11,11 +11,10 @@ class CIVCountedPointeeBase { public:
 };
 
 
-extern const float g_threshold; // [0x122f59c]
 
 const C3DAnimationState& __fastcall C3DAnimationTransitionState_FindDominantAnimation(C3DAnimationTransitionState* self)
 {
-    if (self->Progress <= g_threshold)
+    if (self->Progress <= 0.5f)
         return self->StartState_Object->FindDominant();
     return self->EndState_Object->FindDominant();
 }

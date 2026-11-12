@@ -18,9 +18,10 @@ class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; m
 class CThing : public CThingPhysical { public:                             // engine/CThing.h exists but is not used: only the position accessor is modelled
 };
 
-class CMessageEventManager { public:
-    CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
-};
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): shared header.
+#include "rebuild_abi.h"
+#include "engine/CMessageEventManager.h"
 
 class CWorld { public:                             // engine/CWorld.h exists but is not used: only the manager pointer at +0x60 is read
     unsigned char _pad[0x60];
@@ -66,5 +67,5 @@ void CCreatureAction_GiveItemToThing::Initialise()
     CThing* pCreatureThing = PCreature.GetPItem();
     CThing* pCreature = PCreature.GetPItem();
     CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;   // named: retail resolves the manager (ebp) before the arguments
-    pManager->AddMessage(0x14, 0x10, &pCreature->PeekPos(), pCreatureThing, PReceivingThing.GetPItem(), 0.0f, 0.0f, 5);
+    pManager->AddMessage(MESSAGE_EVENT_PLAYER_INTERACTION, 0x10, pCreature->PeekPos(), pCreatureThing, PReceivingThing.GetPItem(), 0.0f, 0.0f, 5);
 }

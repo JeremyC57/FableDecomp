@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 // std::_Rb_tree_iterator::operator++(int) -- Return the old iterator and advance to its successor.
-// Leaf: ??E?$_Rb_tree_iterator@VCUnprovenValue_006ef560@@U?$_Nonconst_traits@VCUnprovenValue_006ef560@@@std@@@std@@QAE?AU01@H@Z
-class CUnprovenValue_006ef560;
+// Leaf: ??E?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@2@@std@@QAE?AU01@H@Z
+class CThingCreatureBase;
+class CAttackingCombatantInfo;
 namespace std {
+template<class _T1,class _T2> struct pair;
 struct _Rb_tree_node_base {
     bool _M_color;
     _Rb_tree_node_base* _M_parent;
@@ -36,7 +38,7 @@ template<class Value,class Traits> struct _Rb_tree_iterator : public _Rb_tree_ba
         return old;
     }
 };
-template _Rb_tree_iterator<CUnprovenValue_006ef560,_Nonconst_traits<CUnprovenValue_006ef560> > _Rb_tree_iterator<CUnprovenValue_006ef560,_Nonconst_traits<CUnprovenValue_006ef560> >::operator++(int);
+template _Rb_tree_iterator<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> ,_Nonconst_traits<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> > > _Rb_tree_iterator<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> ,_Nonconst_traits<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> > >::operator++(int);
 }
 
 int main() {
@@ -45,7 +47,7 @@ int main() {
     h._M_parent=&n2;h._M_left=&n1;h._M_right=&n4;
     n2._M_parent=&h;n2._M_left=&n1;n2._M_right=&n4;
     n1._M_parent=&n2;n4._M_parent=&n2;n4._M_left=&n3;n3._M_parent=&n4;
-    typedef std::_Rb_tree_iterator<CUnprovenValue_006ef560,std::_Nonconst_traits<CUnprovenValue_006ef560> > Iterator;
+    typedef std::_Rb_tree_iterator<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> ,std::_Nonconst_traits<std::pair<CThingCreatureBase* const, CAttackingCombatantInfo*> > > Iterator;
     Iterator it;it._M_node=&n1;Iterator old=it++;
     int ok=old._M_node==&n1 && it._M_node==&n2;
     old=it++;ok=ok && old._M_node==&n2 && it._M_node==&n3;

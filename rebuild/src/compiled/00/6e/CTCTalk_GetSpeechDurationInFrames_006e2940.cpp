@@ -15,6 +15,9 @@
 // Layout: CTCTalk (Ego_r.pdb) PSpeechBank +0x24; the 8-byte lip-sync entry holds its duration (float seconds) at +4.
 // Shape: GetPLipSyncBank inlined (its zero result threads straight to the default exit); `duration * fps` loads the
 //   converted global first (`fild ; fmul [eax+4]`); two `ret 4` exits.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAB90 MIN_SPEECH_FRAMES (anonymous namespace, const; initializer 0x0121E3D0), was g_DefaultSpeechDurationFrames.
 class CASoundBank;
 class CThing;
 
@@ -36,7 +39,7 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-extern long g_DefaultSpeechDurationFrames;                  // 0x013BAB90
+namespace { extern const long MIN_SPEECH_FRAMES; }                  // 0x013BAB90
 
 class CTCBase
 {
@@ -81,5 +84,5 @@ long CTCTalk::GetSpeechDurationInFrames(long sample) const
         if (entry)
             return (long)(entry->Duration * CMainGameComponent::GetConstantFPS());
     }
-    return g_DefaultSpeechDurationFrames;
+    return MIN_SPEECH_FRAMES;
 }

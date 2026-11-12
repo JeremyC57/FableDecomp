@@ -15,6 +15,10 @@ public:
  virtual void FrameUpdate();
  long GetBossPhase()const;
  void SetNextBossPhase(long,bool);
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ bool IsReadyForPhaseChange()const;
+#endif
+
  bool HasBossDef()const{return !PBossDef.IsNull();}
  const CBossDef& GetBossDef()const{return *PBossDef;}
 #ifdef FABLE_RETAIL_CTCBOSS_EFFECTS
@@ -26,6 +30,16 @@ public:
  long CountEffects();
  void ClearEffects();
  void AddEffect(CThing&);
+#endif
+#ifdef FABLE_RETAIL_CTCBOSS_SETHELPER
+ // Retail opt-in (chunk Q17, row 0x0095B820): Ego_r.pdb ?SetHelperCreature@CTCBoss@@QAEXAAVCThingAICreature@@@Z (out of line at
+ // 0x007AF310). Declaration only.
+ void SetHelperCreature(CThingAICreature& helper);                       // 0x007AF310
+#endif
+#ifdef FABLE_RETAIL_CTCBOSS_LIVINGHELPERS
+ // Retail opt-in (chunk Q3, rows 0x008E20F0 / 0x008E24F0 CModeGuildmasterPowerUpShield / Speed::FrameUpdate): Ego_r.pdb
+ // ?CountLivingHelpers@CTCBoss@@QAEJXZ (retail 0x007AEEC0; the landed Heal FrameUpdate 0x008DFFD0 calls it too). Declaration only.
+ long CountLivingHelpers();
 #endif
 private:
  CDefPointer<const CBossDef> PBossDef;

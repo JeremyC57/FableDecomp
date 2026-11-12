@@ -234,6 +234,11 @@ template <class T> class CCountedPointer;
 #endif
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORY_REVERTVIDEOCHANGES
+    // agentQ7 (2026-11-11, row 0x0047E9AE CTCInGameMenu::GlobalUpdate): Ego_r.pdb / FableWin.pdb ?RevertVideoChanges@CTCInventory@@QAEXXZ,
+    // out of line in retail at 0x00582754 (the in-game menu's 15-second video-options timeout calls it). Declaration only.
+    void RevertVideoChanges();                                                                    // 0x00582754
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_PCMENUS
     // Nested opt-in (chunk 867, row 0x00590F0B GetItemsListUIComponentPC; needs FABLE_RETAIL_CTCINVENTORY_QUICKACCESS for the
     // vector include): the PC inventory screen's items page and its per-category list builder, FableWin.pdb / Ego_r.pdb spellings
@@ -289,6 +294,14 @@ public:
                             CCountedPointer<NUISystem::CComponent>& actionsList);           // 0x0058A0C7
     void ConstructItemEntryPC(long defIndex, long count, NUISystem::CList* list, NUISystem::CComponent* owner,
                               CCountedPointer<NUISystem::CComponent>& actionsList);         // 0x0058E208
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_ASSIGNTHINGPC
+    // Nested opt-in (chunk Q24, row 0x00584B86): the PC quick-access slot assignment, Ego_r.pdb / FableWin.pdb spellings
+    //   ?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z                                             0x00584B86
+    //   ?SetThingAsQuickAccessItem@CTCInventory@@QAEXJJ_N@Z                                                      0x00584157
+    // (the second out of line in retail: `push 1 ; push slot ; push thing ; call 0x00584157`). Declarations only.
+    void SetThingAsQuickAccessItem(long thingIndex, long slot, bool assign);                     // 0x00584157
+    void AssignThingPC(long thingIndex, unsigned long slot, NUISystem::CComponent* container);    // 0x00584B86
 #endif
     void OpenInventoryShortcut(long screen);
     void DeleteMenuComponents();                                     // 0x00587A41
@@ -351,6 +364,31 @@ public:
 #endif
     float         AccumFadeTime;                             // +0x220
     unsigned char _pad_0x224[0x4];                           // +0x224
+#ifdef FABLE_RETAIL_CTCINVENTORY_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x00594BE4
+public:
+    virtual void OnChangeCategory();  // slot 37, 0x00594BE7
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x00594BC9
+public:
+#endif // FABLE_RETAIL_CTCINVENTORY_VSLOTS3
+#ifdef FABLE_RETAIL_CTCINVENTORY_HISCREEN
+// agentFAM13 (2026-11-12): the NHeroInformationScreens::CBase overrides this declaration lacks (the secondary vtable at +0x130,
+// slots 0 GetScreenName / 1 GetPlayerMode / 2 GetScreenType / 3 IsInventoryScreen, engine/NHeroInformationScreens_CBase.h);
+// spellings from the Ego_r / FableWin name sets. Declaration only (no layout change; the vtable exists).
+public:
+    virtual EPlayerMode GetPlayerMode() const;
+    virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+#endif // FABLE_RETAIL_CTCINVENTORY_HISCREEN
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventory) == 0x228);
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, PTop_Level_List) == 0x218);

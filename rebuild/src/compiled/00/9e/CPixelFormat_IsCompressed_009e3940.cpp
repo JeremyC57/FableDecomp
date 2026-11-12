@@ -11,12 +11,8 @@
 // ladder; an if-chain or a `||` expression does not. RELOCATION_MATCH.
 #include "engine/CPixelFormat.h"
 
-struct CPixelFormatDescriptor {
-    long          ChannelType;      // +0x00 ; 4,5,7 == compressed (DXT1/DXT3/DXT5 family), 6 == signed
-    unsigned char _rest[0x20];
-};
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local CPixelFormatDescriptor table g_PixelFormatDescriptors)
 
-extern CPixelFormatDescriptor g_PixelFormatDescriptors[];   // 0x0129BA44 (.rdata)
 
 struct CPixelFormat_Methods : CPixelFormat {
     bool IsCompressed() const;
@@ -26,7 +22,7 @@ bool CPixelFormat_Methods::IsCompressed() const
 {
     // Retail is a switch: `cmp 4 ; jl` / `cmp 5 ; jle` / `cmp 7 ; jne` is the compiler's
     // range split of the case set {4,5,7}; the equivalent if-chain emits 35 bytes.
-    switch (g_PixelFormatDescriptors[this->FormatIndex].ChannelType) {
+    switch (GD3DFormats[this->FormatIndex].PFType) {
     case 4: case 5: case 7:
         return true;
     default:

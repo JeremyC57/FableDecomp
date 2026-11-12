@@ -15,6 +15,16 @@ class CAInputProcess : public CBaseClassNonCopyable {
 public:
     CAInputProcess();                                                    // 0x00A0D290
     virtual ~CAInputProcess();                                           // slot 0
+#ifdef FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+    // Nested opt-in (wf1, row 0x00688D40 CInputProcessZTarget::AddToInterface): Ego_r.pdb ?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z
+    // (public virtual, slot 1 behind the destructor: CInputProcessZTarget vtable 0x01238028 slot 1 = 0x00688D40), out of line at 0x00A0D2B0. Declaration only.
+    virtual bool AddToInterface(CInputProcessManager& manager);          // 0x00A0D2B0, slot 1
+#endif
+#ifdef FABLE_RETAIL_CAINPUTPROCESS_REMOVEFROMINTERFACE
+    // Nested opt-in (agentFAM12, rows 0x006336E0 .. CPlayer::UninitMode<X>): Ego_r.pdb ?RemoveFromInterface@CAInputProcess@@QAEXXZ,
+    // out of line at 0x00A0D2D0 (called on the mode's input process). Declaration only.
+    void RemoveFromInterface();                                          // 0x00A0D2D0
+#endif
     CInputProcessManager* PPlayerInterface;                              // +0x04
     CBaseClass*           InputProcessListPos_Data;                      // +0x08 CLinkedListPosition::Data
     CLinkedListPosition*  InputProcessListPos_Next;                      // +0x0c CLinkedListPosition::Next

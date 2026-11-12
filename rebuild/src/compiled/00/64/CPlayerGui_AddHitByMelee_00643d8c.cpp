@@ -7,12 +7,12 @@
 // 0x00437990 (`mov ecx,[ecx+150h] ; jmp`, CGameUI's AddHitByMelee onto its CPlayerGui), called from 0x00667F48 with the game
 // UI 0x013B8790. Catalog label "InitParticleEmitter" is descriptive.
 // Callees: PeekGuiDef 0x00438570 (__fastcall, as in the landed DrawStatBox 0x00645CE9), CRightHandedSet(const C3DVector& up,
-// const C3DVector& forward) 0x00487050, NParticleEngine::CParticleEmitterManager::Get() 0x00AEAAF0, CreateEmitter(long,
+// const C3DVector& forward) 0x00487050, NParticleEngine::GetParticleEmitterManager() 0x00AEAAF0, CreateEmitter(long,
 // const C3DVector&, bool, const CRightHandedSet&) 0x00AEB6D0 (result dropped).
 // Layout: CPlayerGuiDef SmackEffect at +0x48C (Ego_r.pdb +0x4BC; twelve 16-byte PDB vectors before it are 12 bytes in
 // retail). `this`, attacker and victim are unused.
 // Shape: the def is fetched first (named local); CreateEmitter's arguments evaluate right to left, so the orientation
-// temporaries come first: forward (0,1,0), then up (0,0,1), then the set; Get() runs after the pushes.
+// temporaries come first: forward (0,1,0), then up (0,0,1), then the set; GetParticleEmitterManager() runs after the pushes.
 #pragma optimize("s", on)
 #include "engine/C3DVector.h"
 
@@ -32,10 +32,12 @@ namespace NParticleEngine {
 class CParticleEmitter;
 class CParticleEmitterManager {
 public:
-    static CParticleEmitterManager* Get();                            // 0x00AEAAF0
     CParticleEmitter* CreateEmitter(long effect, const C3DVector& pos, bool start,
                                     const CRightHandedSet& orientation);   // 0x00AEB6D0
 };
+// Name-fix pass (2026-11-12): Ego_r.pdb + FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ
+// (landed row 0x00AEAAF0); was the static CParticleEmitterManager::Get() stand-in.
+CParticleEmitterManager& __fastcall GetParticleEmitterManager();      // 0x00AEAAF0
 }
 
 class CThing;
@@ -48,6 +50,6 @@ public:
 void CPlayerGui::AddHitByMelee(CThing& attacker, CThing& victim, const C3DVector& pos)
 {
     const CPlayerGuiDef* def = PeekGuiDef();
-    NParticleEngine::CParticleEmitterManager::Get()->CreateEmitter(def->SmackEffect, pos, false,
+    NParticleEngine::GetParticleEmitterManager().CreateEmitter(def->SmackEffect, pos, false,
         CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f)));
 }

@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (std::map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> >) STLport 4.6 recursive subtree release: erase the right subtree, release the value (counted pointer, then key), free the node, continue left
-// Leaf: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@2@@Z
+// Leaf: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@2@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00696900, 108 bytes, thiscall `ret 4`; recursive; speed-optimised TU.
 // Identity (proven): the atexit destructor 0x01229280 of the static tree at 0x013BA8BC calls it; that static is read by RegisterActionEventTypes 0x006932B0 and CCreatureActionBase::InitialiseActionEvents 0x006946C0 -- Ego_r.pdb CCreatureActionBase::RegisteredActionEvents (static, dynamic initializer + atexit destructor), map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> >.
@@ -7,6 +7,7 @@
 //   ~CCountedPointer), CCharString::~CCharString 0x0099EAE0 (the key), free 0x00BFEA14 (allocator<_Node>::deallocate).
 // Shape (family M078, representative 0x004AD690): the landed STLport 4.6 `_tree.c` _M_erase model (0x00AD5240) with value
 //   pair<const CCharString, CCountedPointer<T> > -- the pair's implicit destructor releases +0x14/+0x18 then the key at +0x10.
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private, so VC7.1 mangles it AAE (the queue's spelling, agentFAM07's binders); was public (QAE).
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 class CCharString {                                     // 4 bytes (PStringData)
@@ -75,6 +76,7 @@ public:
 
     static _Link_type& _S_left(_Base_ptr __x) { return (_Link_type&)(__x->_M_left); }
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
+private:                                            // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);
 };
 

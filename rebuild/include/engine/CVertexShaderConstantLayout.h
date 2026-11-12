@@ -34,7 +34,13 @@ public:
     CShaderConstantRange GetSphereMapMatrix() const;
     CShaderConstantRange GetFogTransform() const;
     CShaderConstantRange GetTextureTransform(unsigned long) const;
+#ifdef FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT_GETBONEMATRICES_INLINE
+    // Retail opt-in (chunk F2, row 0x00BCFB00): FableWin.pdb ?GetBoneMatrices@CVertexShaderConstantLayout@@QBE?AVCShaderConstantRange@@XZ,
+    // expanded in retail (the row copies BoneMatrices +0xD4 of the resource manager's lights-and-bones layout into a temporary).
+    CShaderConstantRange GetBoneMatrices() const { return BoneMatrices; }
+#else
     CShaderConstantRange GetBoneMatrices() const;
+#endif
     CShaderConstantRange GetShadowTextureTransform();
     CShaderConstantRange GetShadowFadeTransform();
     CShaderConstantRange GetShadowFadeFactors();

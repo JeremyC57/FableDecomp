@@ -27,6 +27,13 @@ protected:
     void UntriggerMe();                                                  // 0x0083DF20
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsEntitySerialisable() const;  // slot 22, 0x00529C90
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingPhysicalSwitch)==0xd8);
 #ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_PEEKDEFINITION_SAMETU

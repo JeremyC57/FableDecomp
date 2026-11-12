@@ -22,6 +22,17 @@ public:
     CPlayer&       GetMainPlayer();                          // 0x00449970
     const CPlayer& GetMainPlayer() const;                    // 0x00449960
     long           GetMainPlayerNumber() const;              // 0x00449700
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_MULTIPLAYERCOLOUR
+    // Retail opt-in (wf5, row 0x0064C869): see the default branch below. Declaration only.
+    class ::CRGBColour GetMultiplayerColour(long number) const;      // 0x00449B60
+#endif
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_FREEZEPLAYERCONTROLS
+    // Retail opt-in (agentNF27, 2026-11-12, rows 0x00449A30 / 0x00449A50): Ego_r.pdb (0x00445230 / 0x00445280, right after
+    // IsPlayerAssociatedWithJoystickDeviceNumber 0x004451E0 = retail 0x004499E0) + FableWin.pdb ?FreezePlayerControls@CPlayerManager@@QAEXJ@Z
+    // and ?UnfreezePlayerControls@CPlayerManager@@QAEXJ@Z: GetPlayer(number).FreezeControls() / UnfreezeControls(). Declarations only.
+    void FreezePlayerControls(long number);                          // 0x00449A30
+    void UnfreezePlayerControls(long number);                        // 0x00449A50
+#endif
 private:
     CMainGameComponent*     Component;                       // +0x04
     CGameDefinitionManager* DefinitionManager;               // +0x08
@@ -70,6 +81,19 @@ public:
     CPlayer&       GetMainPlayer();                          // 0x00449970 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
     const CPlayer& GetMainPlayer() const;                    // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ
     long           GetMainPlayerNumber() const;              // 0x00449700 ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_MULTIPLAYERCOLOUR
+    // Retail opt-in (wf5, row 0x0064C869 NPlayerGui::CDrawSpiritTargetingCursor::Draw): Ego_r.pdb (0x004456F0) / FableWin.pdb
+    // ?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z, out of line at 0x00449B60 (landed; hidden result pointer, `ret 8`).
+    // Declaration only (include engine/CRGBColour.h before calling it).
+    class ::CRGBColour GetMultiplayerColour(long number) const;      // 0x00449B60
+#endif
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_FREEZEPLAYERCONTROLS
+    // Retail opt-in (agentNF27, 2026-11-12, rows 0x00449A30 / 0x00449A50): Ego_r.pdb (0x00445230 / 0x00445280, right after
+    // IsPlayerAssociatedWithJoystickDeviceNumber 0x004451E0 = retail 0x004499E0) + FableWin.pdb ?FreezePlayerControls@CPlayerManager@@QAEXJ@Z
+    // and ?UnfreezePlayerControls@CPlayerManager@@QAEXJ@Z: GetPlayer(number).FreezeControls() / UnfreezeControls(). Declarations only.
+    void FreezePlayerControls(long number);                          // 0x00449A30
+    void UnfreezePlayerControls(long number);                        // 0x00449A50
+#endif
 };
 #pragma pack(pop)
 

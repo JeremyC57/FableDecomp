@@ -10,7 +10,10 @@
 //   0x009B4BD0 (protected, as in STLport 4.6; atend defaulted false: `push 0`).
 // Shape: the inline uninitialized_fill_n -> __uninitialized_fill_n(__true_type) -> fill_n loop of a 4-byte value becomes
 //   `rep stosd`; fill is a same-TU noinline `__fastcall` body under auto_inline(off) (retail calls it out of line).
-class CDefinitionManager { public: class CInstantiatedDefInfo; };
+// Name-fix pass (2026-11-12): the shared engine/CDefinitionManager.h, declaration-only opt-in (as the sibling 0x009B4BD0), in place of
+//   the local CDefinitionManager shell.
+#define FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL
+#include "engine/CDefinitionManager.h"   // CDefinitionManager::CInstantiatedDefInfo (nested, declaration only)
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
 
 namespace std {

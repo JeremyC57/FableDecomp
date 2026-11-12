@@ -1,0 +1,5 @@
+- A COMDAT that retail never defines out of line (an implicit dtor) can be graded from its caller's TU by pinning `// Leaf:` to the COMDAT symbol.
+- Fixing a wrong name on a twin function means reading the member offset each twin scans; the PDB member order names them.
+- Anniversary publics carry data globals (NEngineInternal::GP*, anonymous-namespace lists) that Ego_r/FableWin name sets lack.
+- `pinleaf` rewrites the row after grading, so a row newer than its log is not a sign of an ungraded change; regrade to be sure.
+- Guard every throwaway python with a try or plain prints; asserts and missing modules (pefile) print tracebacks.

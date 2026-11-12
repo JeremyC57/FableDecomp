@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00F35E00	?InitPerlinNoise@CNoise@NFractal@@AAEXXZ	Ego_r.pdb 0x00BC7660 + FableWin.pdb 0x01856D12 (private, namespace NFractal); same object as PerlinNoise 0x00F35C60	?InitPerlinNoise@CNoise@@QAEXXZ
+0x009F2F90	?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ	Ego_r.pdb 0x00B46C70 + FableWin.pdb 0x017C00D8 (CSurface, returns C2DExtentsI by value, non-const return)	?GetDimensions@CSurface_Methods@@QBE?BVC2DExtentsI@@XZ; ?GetDimensions@CSurface_Methods@@QBE?AVC2DExtentsI@@XZ
+0x009F33E0	?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z	Ego_r.pdb 0x00B470E0 + FableWin.pdb 0x017B4B34; ReadOnlyLock 0x009F3010 is its byte twin	?Lock@CSurface_Methods@@QAE?AVCSurfaceLockedRect@@K@Z

@@ -5,8 +5,25 @@
 #include <stddef.h>
 class C3DBone2;class C3DKeyframe;class CMatrix4x4;
 // Complete donor244-byte member range, with native resource prefix8 bytes smaller: full size236.
+#ifdef FABLE_RETAIL_C3DMESH2_HELPERPOINTS
+// Retail opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): the retail base C3DMeshStats (0x7c,
+// engine/C3DMeshStats.h; needs FABLE_RETAIL_CMOVABLERESOURCE + FABLE_RETAIL_C3DMESHSTATS_DUMMYOBJECTS) in place of UnmodelledBase
+// (same offsets: MemoryHandle +0x7c .. MeshID +0xe8), and the Ego_r.pdb / FableWin.pdb virtual overrides (UBE) of vtable
+// 0x0129DEF0: slot 1 RelocateData 0x00A8B4C0, slots 4..9 the animated helper-point / dummy-object queries.
+#include "engine/C3DMeshStats.h"
+class C3DMesh2 : public C3DMeshStats {
+public:
+    virtual void RelocateData(long, void*, void*, long);                 // 0x00A8B4C0
+    virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,C3DAnimationManager&)const;   // 0x00A89740
+    virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&)const;   // 0x00A898D0
+    virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const;   // 0x00A89A70
+    virtual void GetDummyObjectPositionAnimated(const C3DDummyObject&,C3DVector&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const;   // 0x00A89E40
+    virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,C3DAnimationManager&,bool)const;   // 0x00A8A220
+    virtual void GetDummyObjectTransformAnimated(const C3DDummyObject&,CMatrix3x4&,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&,bool)const;   // 0x00A8A5F0
+#else
 class C3DMesh2 {
 public:
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
     const C3DMeshMaterial* GetMaterial(unsigned long index) const { return &Materials[index]; }
     C3DMeshMaterial* GetMaterial(unsigned long index) { return &Materials[index]; }
@@ -23,7 +40,17 @@ public:
     unsigned long GetVertexCount() const;                                // 0x00A89320
     unsigned long GetTriangleCount() const;                              // 0x00A89350
 #endif
-    unsigned char UnmodelledBase[0x7c];long MemoryHandle,PrimMemoryHandle,BoneNameMemoryHandle;
+#ifdef FABLE_RETAIL_C3DMESH2_BONES
+    // Retail opt-in (chunk Q32, row 0x00BD2A90 CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings): Ego_r.pdb / FableWin.pdb
+    // ?GetBoneCount@C3DMesh2@@QBEKXZ and ?GetBone@C3DMesh2@@QBEPBVC3DBone2@@K@Z, inline (BoneCount +0x98 / Bones +0x9C read in
+    // place, 0x00BD2AC3 / 0x00BD2B10; C3DBone2 is 0x3C bytes in Ego_r).
+    unsigned long GetBoneCount() const { return BoneCount; }
+    const C3DBone2* GetBone(unsigned long index) const { return &Bones[index]; }
+#endif
+#ifndef FABLE_RETAIL_C3DMESH2_HELPERPOINTS
+    unsigned char UnmodelledBase[0x7c];
+#endif
+    long MemoryHandle,PrimMemoryHandle,BoneNameMemoryHandle;
     unsigned long MaterialCount;C3DMeshMaterial* Materials;unsigned long PrimitiveCount;C3DPrimitive2* Primitives;
     unsigned long BoneCount;C3DBone2* Bones;C3DKeyframe* BoneKeyframes;unsigned short* BoneNameIndices;char* BoneNameData;unsigned long BoneNameDataSize;
     unsigned char InverseTransform[48];CMatrix4x4* BoneSpaceTransforms;bool ClothFlag,LockedFromMemoryRelocation;unsigned long MeshID;

@@ -14,6 +14,11 @@ class CEventTriggered : public CEventBase {
 public:
     CEventTriggered(CThing& triggered_by);                   // 0x0083CF20
     virtual ~CEventTriggered();
+#ifdef FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3
+// agentFAM05 (2026-11-11): the retail override of CEventBase slot 1 (TLC vtable 0x01273014; agentFAM03 proof, re-verified by agentFAM05), declaration
+// only (needs FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3 for EEventType and the base declaration; no layout change).
+    virtual EEventType GetType() const;                      // slot 1, 0x0083CF60
+#endif // FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3
     CIntelligentPointer<CThing> TriggeredBy;                 // +0x08
 };
 } // namespace NEntityEvents

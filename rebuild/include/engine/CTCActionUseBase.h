@@ -11,11 +11,24 @@
 #include "engine/CDefPointer.h"
 #include "engine/ETCInterfaceType.h"
 class CActionUseDef;
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
+// agentFAM05 (2026-11-11): the return type of GetWhenToActivate (mangled W4EWhenToActivate@@, a global enum; the enumerators are not in the name
+// sets, so the rows write the retail values as casts).
+enum EWhenToActivate { };
+#endif // FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
 #pragma pack(push, 1)
 class CTCActionUseBase : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ON_ACTION_USE; }
     bool IsUsable() const { return Usable; }                             // PLACEHOLDER accessor name (inline member read in the row)
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_DTOR
+    // Retail opt-in (agentNF20, 2026-11-11, the CTCActionUse* / CTCCarriedActionUse* scalar deleting destructors 0x004DBF76..0x004DCF8B):
+    // Ego_r.pdb ??0CTCActionUseBase@@QAE@AAVCThing@@@Z and FableWin.pdb ??1CTCActionUseBase@@UAE@XZ. The destructor is 0x004DA967 (it
+    // releases PActionUseDef +0x0C, then tail-jumps ~CTCBase 0x00686830); every derived class's implicit destructor reaches it directly.
+    // Declarations only: no layout change.
+    CTCActionUseBase(CThing& thing);
+    virtual ~CTCActionUseBase();                                         // slot 0 0x004DA967
+#endif
 #ifdef FABLE_RETAIL_CTCACTIONUSEBASE_ONCREATE
     // Retail opt-in (agentNF10, row 0x007EAC10): Ego_r.pdb / FableWin.pdb ?OnCreate@CTCActionUseBase@@UAEXXZ (CTCBase slot 4; the body
     // calls CTCBase::OnCreate 0x00686850, then GetDef<CThingBaseDef> 0x0042AF3C and GetSubDef<CActionUseDef> 0x007EAE40 into
@@ -26,6 +39,26 @@ private:
     CDefPointer<const CActionUseDef> PActionUseDef;                      // +0x0c
     bool Usable;                                                         // +0x10
     unsigned char _pad_0x11[3];                                          // +0x11
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual void OnActionUse(CThing&);  // slot 28, 0x007EAB90
+public:
+    virtual bool IsUsableWhileThingPerformingAction() const;  // slot 30, 0x004DA961
+public:
+    virtual bool IsToActuallyUseActionUseAsIntendedGoddammitWeReallyHaveGotOurselvesInAMess() const;  // slot 31, 0x004DA964
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtuals this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC vtable
+// 0x0123F09C (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x004DA959
+public:
+    virtual EWhenToActivate GetWhenToActivate() const;  // slot 29, 0x004DA95D
+public:
+#endif // FABLE_RETAIL_CTCACTIONUSEBASE_VSLOTS3
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CTCActionUseBase) == 0x14);

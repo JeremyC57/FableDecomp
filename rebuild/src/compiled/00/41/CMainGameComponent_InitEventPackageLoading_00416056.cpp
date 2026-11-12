@@ -1,5 +1,6 @@
 // CMainGameComponent::InitEventPackageLoading(const wchar_t* file_name) -- open the event-package file for reading and read its header; set LoadingEventPackages
-// Leaf: ?InitEventPackageLoading@CMainGameComponent@@IAE_NPB_W@Z
+// Leaf: ?InitEventPackageLoading@CMainGameComponent@@IAE_NPBG@Z
+// Fix (agentFAM10, 2026-11-12, NF26 leftover): the object spells the parameter PBG (const unsigned short*: the lane builds without /Zc:wchar_t), so the old `PB_W` leaf named no symbol and the grader fell back to the largest function; the landed binder 0x0041735A binds this PBG spelling. Ego_r.pdb's native-wchar_t spelling is ...@@IAE_NPB_W@Z.
 // Retail: Fable.exe @ 0x00416056, 80 bytes, `ret 4`; caller 0x004173C2 (passes the global name's `operator const wchar_t*`);
 // Ego_r.pdb ?InitEventPackageLoading@CMainGameComponent@@IAE_NPB_W@Z.
 // Body: EventPackageFile.Open(CWideString(file_name) (0x0099B6B0, homed in the dead argument slot), access 1, flags 2)

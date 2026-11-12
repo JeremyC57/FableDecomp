@@ -14,6 +14,9 @@
 // SetPItem 0x00A01B90 / ~CBaseIntelligentPointer 0x00A01C10; vector<CIntelligentPointer<CThing>>::push_back 0x004AD520.
 // Layout: the landed CTCBurntEffect ctor 0x007CDFE0 (PDef +0x0c, CurTime +0x10, fade times +0x14..+0x1c, Effects +0x20).
 // Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_BurntHelperB.
 #include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
@@ -109,7 +112,7 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;              // 0x013BAC30
-extern const CCharString g_BurntHelperB;              // 0x013BAC34
+extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;              // 0x013BAC34
 
 class CTCBurntEffect : public CTCBase { public:
     CSpecialAbilitiesBurntEffectDef* PDef;            // +0x0c
@@ -162,7 +165,7 @@ void CTCBurntEffect::Reset()
         if (effectB) {
             CTCDParticleEmitter* emitter = effectB->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(*ParentThing, 10, g_BurntHelperB, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0.0f);
         }
         CThing* effectC = CTCDParticleEmitter::Create(type, *(&position), false);
         if (effectC) {

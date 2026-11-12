@@ -1,0 +1,122 @@
+address	change	grade	test	grades_used	note
+00419086	port held DeleteData row onto shared headers	MATCH	PASS	1	Part 1
+00AF5CD0	port held DeleteData row onto shared headers	MATCH	PASS	1	Part 1
+00718080	port held DeleteData row onto new overlay header	MATCH	PASS	1	Part 1
+008147D0	rename to CTCBoastingPosition::SetBoastingPodium (PBOASTINGPODIUM opt-in)	RELOCATION_MATCH	PASS	1	Part 1
+0063E590	binder respell: ForEachInRoughArea const Proc& (FOREACHINROUGHAREA_CONSTPROC opt-in)	RELOCATION_MATCH	PASS	1	Part 1
+004B84A0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+004C1D40	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+004C3ED0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+004C65D0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00511CE0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00527480	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00527AC0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00527B10	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00527E60	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00528CF0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+0052E010	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00535610	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+0053CA3C	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+00553520	respell placeholder types to proven types (own name)	MATCH	PASS	2	test respelled to Test* names
+0056D130	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+0056D390	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+005794A1	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+005796FE	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00579958	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+0059388F	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00593BD6	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00593C5E	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+005BAA41	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	catalog test unchanged
+005E8FF0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+005F915D	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+005F91E5	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00613630	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00613CE0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	4	test respelled to Test* names
+00615610	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	4	test respelled to Test* names
+00616930	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00616A40	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	4	test respelled to Test* names
+00616A80	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	4	test respelled to Test* names
+00617270	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	4	test respelled to Test* names
+006172B0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	4	test respelled to Test* names
+00624160	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00630CC0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	2	test respelled to Test* names
+00638C30	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+0067B0B0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+0067B0E0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+0067B110	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00695C80	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006C5010	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006C51A0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006C8020	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006C8400	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006DA200	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006EF560	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006EFCE0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006F0030	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006F0080	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006F0300	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006F0350	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006F03A0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006F0BC0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006F1070	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+006F1B60	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006F1BA0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006F1CF0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	2	test respelled to Test* names
+006F2200	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006F2490	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+006F24D0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00755CB0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00776CF0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00777520	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00782E40	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+007ABAB0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+007AC720	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+007E9070	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+008126F0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+008127F0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+0082EE60	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00835060	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+008353B0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+0086F340	respell placeholder types to proven types (own name)	MATCH	PASS	1	catalog test unchanged
+00882EF0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00883D20	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+008AAB70	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+0098FF50	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+0098FFA0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+009904B0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00990540	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+009C1F70	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+009C25F0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+009C26E0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+009D7550	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+009EE1F0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00A20F50	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A215D0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A21B60	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A21BA0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A220A0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A220E0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A52210	respell placeholder types to proven types (own name)	MATCH	PASS	1	catalog test unchanged
+00A7E300	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A7E340	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A7E7B0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00A7F640	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A7F6B0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A806E0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A80720	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A80770	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A807B0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A80CE0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A81340	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A81380	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A813D0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A81410	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00A81A70	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00AC4290	respell placeholder types to proven types (own name)	MATCH	PASS	1	catalog test unchanged
+00AD0A70	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00AD0DA0	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00ADB5A0	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00B2EB20	respell placeholder types to proven types (own name)	MATCH	PASS	1	test respelled to Test* names
+00B3E890	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+00B96B20	respell placeholder types to proven types (own name)	RELOCATION_MATCH	PASS	1	test respelled to Test* names
+005F8C1F	attempted respell to map<CTCInventoryAbilities::EUISpellCategory, CComponent*>::_M_create_node	DIFFER(32v34)	-	1	NOT handed back: under /Os the shared fable_containers.h _Construct is not inlined (retail inlines it with the placement-new null test); the local model text cannot name the nested enum

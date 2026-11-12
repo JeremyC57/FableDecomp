@@ -1,0 +1,7 @@
+- Script rows (NScript, TRetVoid): spell every terminate exit `return _Fail_Val.Return();` with `TRetVoid _Fail_Val;` at the top; a bare `return;` moves the post-loop terminate block and splits the cleanup copies (00d39960).
+- A "block placement of the shared early exit" residue on a script state function can be a wrong `else`: check whether the arm falls through into the next test before tuning (00eb40c0).
+- Manifest labels on combat code can be made up: 0x006EC850 "PopulateCombatRings" is CDefendingCombatantInfo::CCombatWheel::Init in both PDBs.
+- VC7.1 does not share a frame slot between a PeekTC key temporary and later map insert_unique pair results when the source writes them as separate statements; braces/named results/out-of-line insert do not change it (006ec850).
+- 64-bit range checks (`x < 0 || x > 0x7fffffff` on a long widened to __int64) keep retail's xor/jl/jg only when written through an `__int64` local; an inline cast folds away (00a8ad40).
+- Declaring an explicit specialization of an in-class member template (FindMostRecentMessage<T>) ICEs VC7.1 with C1001; let the call instantiate it implicitly (0090e5d0).
+- Naming a CFilter_Bind3 query as a local instead of a temporary in the call shrinks the frame and rearranges every slot; retail passes the temporary (0090e5d0).

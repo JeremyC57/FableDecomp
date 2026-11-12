@@ -32,7 +32,13 @@ private:
  bool TurningToDummy;
  bool AllowTurn;
 public:
+#ifndef FABLE_RETAIL_CCREATUREACTION_USEOBJECT_IMPLICIT_DTOR
  virtual ~CCreatureAction_UseObject();
+#else
+ // Per-TU opt-in (chunk Q11, row 0x00940960 CAIStateGroup_VillageTaskHorn::Update): that TU expands the destructor of the
+ // UseObject temporary (PUsedThing's ~CBaseIntelligentPointer 0x00A01C10, then ~CCreatureActionBase 0x00693EF0, with no vtable
+ // store: the compiler-generated destructor) where the Torch TU calls its COMDAT 0x006290E0. No user-declared destructor.
+#endif
  CCreatureAction_UseObject & operator=(const CCreatureAction_UseObject & p0);
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UseObject)==224);

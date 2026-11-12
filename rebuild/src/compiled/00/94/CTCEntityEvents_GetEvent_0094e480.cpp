@@ -8,6 +8,7 @@
 // the counted pointer, the event base and the filters are local models (CEventBase from Ego_r.pdb).
 // Shape: the loop copies each counted pointer (count ++ / -- with the DeleteFunc + operator delete release on
 // both exits); rend() is re-read through `this` every iteration; *out is stored before the copy is released.
+// Name fix (agentNF23): the accessors are NEntityEvents::CEventHitBase's (Ego_r.pdb): 0x00810FC0 ?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ (Ego_r 0x008070E0 / FableWin 0x025A7C50) and 0x00810F00 ?IsKnockDown@CEventHitBase@NEntityEvents@@QBE_NXZ (Ego_r 0x00807020; the spelling 00970190 binds); was the stand-in CEventHitByMethods::GetAttacker / WasKnockedDown returning NEntityEvents::CThing*.
 #include "engine/CTCEntityEvents.h"
 
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
@@ -59,17 +60,19 @@ template <class A, class B> class CFilter_Bind2 { public:     // both filters, h
 };
 namespace NEntityEvents {
 // CEventHitBase accessors (out of line): the attacker and the knocked-down flag of the hit parameters.
-struct CThing;
-struct CEventHitByMethods : CEventBase {
-    CThing* GetAttacker() const;                      // 0x00810FC0: PHitParams->Attacker.GetPItem()
-    bool WasKnockedDown() const;                      // 0x00810F00: PHitParams byte +0x1a
+}
+class CThing;
+namespace NEntityEvents {
+class CEventHitBase : public CEventBase { public:   // Ego_r.pdb NEntityEvents::CEventHitBase (PHitParams +0x08)
+    CThing* GetPHitBy() const;                        // 0x00810FC0: PHitParams->PThingHitting.GetPItem()
+    bool IsKnockDown() const;                         // 0x00810F00: PHitParams byte +0x1a
 };
 class CIsHitEventHitAndKnockedDownBy { public:
     CThing* Attacker;
     bool operator()(const CEventBase& event) const
     {
-        const CEventHitByMethods& hit = (const CEventHitByMethods&)event;
-        return hit.GetAttacker() == Attacker && hit.WasKnockedDown();
+        const CEventHitBase& hit = (const CEventHitBase&)event;
+        return hit.GetPHitBy() == Attacker && hit.IsKnockDown();
     }
 };
 class CIsHitEventHitByExplosion { public:

@@ -9,7 +9,7 @@
 // +0x138, StatesToDo +0x13c, ParentUpdateTime +0x140, CurrentState +0x144, TargetState +0x148,
 // RequestedState +0x14c, UpdateTime +0x150, PreviousUpdateChanged +0x154, PreviousState +0x158.
 // The CComponent vtable slots used by this class: 48 (+0xc0) SetState(state), 49 (+0xc4) IsChanged(),
-// 65 (+0x104) GetComponentType(), 134 (+0x218) GetStateInfo(state), 135 (+0x21c) OnStateChanged(state).
+// 65 (+0x104) GetComponentType(), 134 (+0x218) GetState(state) const, 135 (+0x21c) GetState(state).
 struct SStateInfo {
     unsigned char Flags;                        // +0 bit 5 (0x20) / bit 6 (0x40) tested by the predicates
 };
@@ -153,8 +153,10 @@ struct CComponent {
     virtual void VSlot131();
     virtual void VSlot132();
     virtual void VSlot133();
-    virtual SStateInfo* GetStateInfo(unsigned long state);    // slot 134 (+0x218)
-    virtual void OnStateChanged(unsigned long state);         // slot 135 (+0x21c)
+    // Name-fix pass (2026-11-12): engine/NUISystem_CChangingStateComponent.h, Ego_r.pdb 0x005A7960 / 0x005A7990 + FableWin.pdb: both slots are
+    // GetState (MSVC lays overloaded virtuals out in reverse declaration order, so the non-const one comes first here, as in the header).
+    virtual SStateInfo* GetState(unsigned long state);              // slot 135 (+0x21c) 0x0052CEB0 ?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z
+    virtual const SStateInfo* GetState(unsigned long state) const;  // slot 134 (+0x218) ?GetState@CChangingStateComponent@NUISystem@@UBEPBVCUIState@2@K@Z
     unsigned char _pad_0x04[0x94];              // +0x004
     float m_timer0;                             // +0x098  three (progress, end) float pairs compared by
     float m_end0;                               // +0x09c  InternalChanged

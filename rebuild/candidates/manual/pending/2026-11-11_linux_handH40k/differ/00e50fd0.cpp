@@ -1,0 +1,320 @@
+// NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main() -- Beardy Baldy in Bowerstone South: start the parent's WatchForAttack thread, then each frame scold the hero when attacked or say a random line when the speech timer runs out, and walk the hairdo / beard / moustache phases when talked to; when the quest is complete give the experience, run to the exit marker and fade out
+// Grade: DIFFER(9850v9885) -- 99 masked lines, 45 hunks (224 before; chunk H40e, 2 grades: 9882v9885 / 128 lines, then this). The movie ctor / dtor and ~STB call-or-expand split is now retail's at every site: the main loop is `for (; !T && true; NSF)` (c2 gives a for body 2.5x instead of 5x when the condition is an `&&`, even when the second operand folds: the uniform 0.5 H40d asked for; attack ctor f 62.5 EXP, exits 31.2 / 15.6 EXP, 3.9 / 2.0 CALL, scene end 9.8 EXP, phase-0 ctor 3.5 CALL). Two source errors of the old draft fixed: the phase-0 intro test is `if (!ParentClass.IntroComplete) { INTRO1 } else { REMINDER }` (retail 0x00E51665 `jne` to the reminder arm) and the random-speech turn is `EntitySetFacingAngleTowardsThing(Game->GetHero(), Me, false)` (retail pushes &Me before the GetHero call, 0x00E51379). Left, all of one kind: (1) retail keeps the CScriptGameResourceObjectBase vtable 0x0126008C in ebp from the loop test through the attack scene and the loop exit (`mov ebp,0126008Ch` at 0x00E510FE / 0x00E534DC, stores at 0x00E512F7 / 0x00E5354D / 0x00E53580 / 0x00E535B0) and zero in scratch registers there (`xor eax,eax` 0x00E51139, `xor esi,esi` 0x00E5351E, `push 0`); ours gives ebp to const 0 (c2prio: piece #45 prio 0 allowed ebp only, the vtable constant's pieces dropped at refs 1) -- the exit-pad hunks (exit 2 cross-jumped into exit 1 by us, the two seh_me dtor copies in the other order) follow from that; (2) frame slot order: retail has the flags-home / string-temporary slot at +0x34 in front of `speech` (+0x38) and the phase movies (+0x3C), ours behind them (+0x48); retail zero-stores that slot TWICE at entry (0x00E50FDF from ebx, 0x00E50FE8 from ebp), ours once (the conditional-temporary flag word's home, $T in the /FA listing): one more compiler variable initialised to 0 at entry that leaves no other code
+// Next idea (chunk H40e; 6 of 10 grades used): find what gives retail's second entry store -- it is unique to this function among the 0x00CE0000..0x00F30000 bodies with a large frame (scan in NOTES.md) and it is NOT a second new-expression, a conditional temporary in an inlined callee, a folded `&&` / `||` / `?:` with a temporary, a never-set loop flag or an unused zero-initialised struct local (micro probes work/micro/m1..m9, all one store or none). Then re-read c2prio --trace for const 0 piece v the vtable constant (0xfe328c in the probe table): with the body at 5x (`for (;; NSF) { if (T) return; ...}`) the vtable constant does take ebp (8 refs) but three sites expand that retail calls, so the lever has to leave the frequencies alone. Same residue family as 0x00DB97A0 (zero v vtable register) H40f (2 grades: baseline 99 lines; plain `for (; !T; NSF)` with `AttackedByHero && true` and `QuestPhase == 0 && true` on the two arms instead of the loop condition = 10126v9885, 240 lines: worse, the per-arm fold does not reproduce the split). H40k (5 grades): baseline 99; /d2inlT73 and /d2inlT75 byte-identical (no site near the threshold); row-local inline ~CScriptThing neutral; a function-scope `long answer = 0;` neutral (dead store removed). The 2nd entry zero store (0x00E50FE8) goes into the flags-home slot that the `CCharString("")` temporary of the first AddSpawnedFunction reuses (0x00E510A9 / 0x00E510BC).
+// Leaf: ?Main@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@EAEXXZ
+#define FABLE_RETAIL_CPREDICATEBASE_NOVTABLE
+#define FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CV_BeardyBaldyScript.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+class CScriptGameResourceObjectMovieBase;
+template <> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();
+#include "engine/CScriptGameResourceObjectMovieBase.h"
+#include "engine/CGameScriptInterfaceBase.h"
+#include "engine/CWideScreenMagicPauseEntities.h"
+#include "engine/CSpawnedFunc1.h"
+#include "engine/CTimer.h"
+#include "engine/CScriptDef.h"
+#include "engine/CDefPointer.h"
+#include "engine/fable_script_distance.h"
+#include "engine/fable_script_fade.h"
+#include "engine/TRetVoid.h"
+enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
+enum ETextGroupSelectionMethod { GROUP_SELECT_NONE=0, GROUP_SELECT_RANDOM=1, GROUP_SELECT_RANDOM_NO_REPEAT=2, GROUP_SELECT_SEQUENTIAL=3, GROUP_SELECT_FIRST_ONLY=4 };
+enum EScriptEntityMoveType { ENTITY_MOVE_WALK=0, ENTITY_MOVE_RUN=1, ENTITY_MOVE_SNEAK=2 };
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
+extern CDefPointer<const CScriptDef> pGlobalScriptDef;   // 0x0143E90C
+inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+// SPEECH: the generated "say a line and wait for it" block (T-check at its end, after the WAIT loop).
+#pragma inline_depth(0)
+template<> __forceinline CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>::CSpawnedFunc1(const CCharString& name, unsigned long id, NScript::CV_BeardyBaldyScript* pclass, void (NScript::CV_BeardyBaldyScript::*func)(CScriptThing), CScriptThing par1)
+    : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
+#pragma inline_depth()
+#define BB_SPEAK(text, group) \
+    if (Game->GetHealth(seh_me.GetScriptThing()) > 0.0f) { \
+        seh_me.Speak(Game->GetHero(), text, group, false, true, false); \
+        while (seh_me.IsPerformingScriptTask()) { \
+            Game->NewScriptFrame(); \
+            if (IsActiveThreadTerminating()) return _Fail_Val.Return(); \
+        } \
+        if (IsActiveThreadTerminating()) return _Fail_Val.Return(); \
+    }
+#define BB_T if (IsActiveThreadTerminating()) return _Fail_Val.Return()
+#define BB_START_SCRIPTING \
+    if (seh_me.IsValid()) seh_me.Release(); \
+    while (!Game->StartScriptingEntity(Me, seh_me, SCRIPT_AI_PRIORITY_HIGHEST)) { \
+        Game->NewScriptFrame(); \
+        BB_T; \
+    } \
+    BB_T
+
+void NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main()
+{
+    TRetVoid _Fail_Val;
+    CScriptGameResourceObjectScriptedThingBase seh_me;
+    CCharString unusedText;
+    ParentClass.AddSpawnedFunction(new CSpawnedFunc1<CV_BeardyBaldyScript,CScriptThing>(CCharString("ParentClass.")+CCharString("WatchForAttack"),0,&ParentClass,&CV_BeardyBaldyScript::WatchForAttack,Me),CCharString(""));
+    for (; !IsActiveThreadTerminating() && true; Game->NewScriptFrame()) {
+        if (ParentClass.AttackedByHero) {
+            BB_T;
+            CScriptGameResourceObjectMovieBase attack_movie;
+            Game->StartMovieSequence("", attack_movie);
+            CWideScreenMagicPauseEntities PauseMyEntitiesPlease(*Game);
+            BB_START_SCRIPTING;
+            BB_SPEAK("TEXT_QST_014_ATTACK", GROUP_SELECT_RANDOM_NO_REPEAT)
+            if (seh_me.IsValid()) seh_me.Release();
+            ParentClass.AttackedByHero = false;
+            ParentClass.ResetRandomSpeechTime();
+        } else if (ParentClass.RandomSpeechTimer.GetTime() == 0) {
+            BB_T;
+            CCharString speech = GetRandomSpeech();
+            Game->NewScriptFrame();
+            BB_T;
+            Game->NewScriptFrame();
+            BB_T;
+            Game->EntitySetFacingAngleTowardsThing(Game->GetHero(), Me, false);
+            Game->NewScriptFrame();
+            BB_T;
+            Game->NewScriptFrame();
+            BB_T;
+            long conversation = Game->AddNewConversation(Me, false, false);
+            Game->AddPersonToConversation(conversation, Game->GetHero());
+            Game->AddLineToConversation(conversation, speech, false, Me, Game->GetHero());
+            ParentClass.ResetRandomSpeechTime();
+        }
+        if (ParentClass.QuestPhase == 0) {
+            BB_T;
+            if (ParentClass.InitialisePhase) {
+                BB_T;
+                ParentClass.SetWanderPointAndDistance(Me, Me.GetPos());
+                ParentClass.InitialisePhase = false;
+            }
+            if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
+                BB_T;
+                CScriptGameResourceObjectMovieBase movie;
+                Game->StartMovieSequence("", movie);
+                CWideScreenMagicPauseEntities PauseMyEntitiesPlease(*Game);
+                BB_START_SCRIPTING;
+                if (ParentClass.Phase1RequirementsComplete) {
+                    BB_T;
+                    BB_SPEAK("TEXT_QST_014_PHASE1_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT)
+                } else {
+                    BB_T;
+                    if (!ParentClass.IntroComplete) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE1_INTRO1", GROUP_SELECT_NONE)
+                        ParentClass.IntroComplete = true;
+                    } else {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE1_INTRO_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT)
+                    }
+                    Game->GiveHeroYesNoQuestion("TEXT_QST_014_QUEST_ON_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true);
+                    long answer = Game->MsgIsQuestionAnsweredYesOrNo();
+                    while (answer < 0) {
+                        Game->NewScriptFrame();
+                        BB_T;
+                        answer = Game->MsgIsQuestionAnsweredYesOrNo();
+                    }
+                    BB_T;
+                    ParentClass.ResetRandomSpeechTime();
+                    if (answer == 1) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE1_INTRO2", GROUP_SELECT_NONE)
+                        if (!Game->IsWearingHairstyle(Game->GetHero(), pGlobalScriptDef->BeardyBaldyHaircutStyle1)) {
+                            BB_T;
+                            Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyHaircutCard1, -1, false);
+                            ParentClass.RequiredHairdo = pGlobalScriptDef->BeardyBaldyHaircutStyle1;
+                        } else {
+                            BB_T;
+                            Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyHaircutCard2, -1, false);
+                            ParentClass.RequiredHairdo = pGlobalScriptDef->BeardyBaldyHaircutStyle2;
+                        }
+                        BB_SPEAK("TEXT_QST_014_PHASE1_INTRO3", GROUP_SELECT_NONE)
+                        ParentClass.Phase1RequirementsComplete = true;
+                    } else {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE1_DENIED", GROUP_SELECT_RANDOM_NO_REPEAT)
+                    }
+                }
+                if (seh_me.IsValid()) seh_me.Release();
+            }
+            if (ParentClass.Phase1RequirementsComplete) {
+                BB_T;
+                ParentClass.QuestPhase = 1;
+                ParentClass.InitialisePhase = true;
+            }
+        } else if (ParentClass.QuestPhase == 1) {
+            BB_T;
+            if (ParentClass.InitialisePhase) {
+                BB_T;
+                ParentClass.SetWanderPointAndDistance(Me, Me.GetPos());
+                ParentClass.InitialisePhase = false;
+            }
+            if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
+                BB_T;
+                CScriptGameResourceObjectMovieBase movie;
+                Game->StartMovieSequence("", movie);
+                CWideScreenMagicPauseEntities PauseMyEntitiesPlease(*Game);
+                BB_START_SCRIPTING;
+                if (ParentClass.Phase2RequirementsComplete) {
+                    BB_T;
+                    BB_SPEAK("TEXT_QST_014_PHASE2_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT)
+                } else {
+                    BB_T;
+                    if (Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredHairdo)) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE2_INTRO1", GROUP_SELECT_NONE)
+                        if (!Game->IsWearingHairstyle(Game->GetHero(), pGlobalScriptDef->BeardyBaldyBeardStyle1)) {
+                            BB_T;
+                            Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyBeardCard1, -1, false);
+                            ParentClass.RequiredBeard = pGlobalScriptDef->BeardyBaldyBeardStyle1;
+                        } else {
+                            BB_T;
+                            Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyBeardCard2, -1, false);
+                            ParentClass.RequiredBeard = pGlobalScriptDef->BeardyBaldyBeardStyle2;
+                        }
+                        BB_SPEAK("TEXT_QST_014_PHASE2_INTRO2", GROUP_SELECT_NONE)
+                        ParentClass.Phase2RequirementsComplete = true;
+                    } else {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE2_WRONG_HAIR", GROUP_SELECT_RANDOM_NO_REPEAT)
+                    }
+                }
+                if (seh_me.IsValid()) seh_me.Release();
+            }
+            if (ParentClass.Phase2RequirementsComplete) {
+                BB_T;
+                ParentClass.QuestPhase = 2;
+                ParentClass.InitialisePhase = true;
+            }
+        } else if (ParentClass.QuestPhase == 2) {
+            BB_T;
+            if (ParentClass.InitialisePhase) {
+                BB_T;
+                ParentClass.SetWanderPointAndDistance(Me, Me.GetPos());
+                ParentClass.InitialisePhase = false;
+            }
+            if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
+                BB_T;
+                CScriptGameResourceObjectMovieBase movie;
+                Game->StartMovieSequence("", movie);
+                CWideScreenMagicPauseEntities PauseMyEntitiesPlease(*Game);
+                BB_START_SCRIPTING;
+                if (ParentClass.Phase3RequirementsComplete) {
+                    BB_T;
+                    BB_SPEAK("TEXT_QST_014_PHASE3_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT)
+                } else {
+                    BB_T;
+                    if (!ParentClass.IsHeroWearingAnyBeard()) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE3_NO_BEARD", GROUP_SELECT_RANDOM_NO_REPEAT)
+                    } else if (Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredHairdo) && Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredBeard)) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE3_INTRO1", GROUP_SELECT_NONE)
+                        if (ParentClass.IsHeroWearingAnyTash()) {
+                            BB_T;
+                            BB_SPEAK("TEXT_QST_014_PHASE3_INTRO2", GROUP_SELECT_NONE)
+                        } else {
+                            BB_T;
+                            BB_SPEAK("TEXT_QST_014_PHASE3_INTRO3", GROUP_SELECT_NONE)
+                        }
+                        if (!Game->IsWearingHairstyle(Game->GetHero(), pGlobalScriptDef->BeardyBaldyTashStyle1)) {
+                            BB_T;
+                            Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyTashCard1, -1, false);
+                            ParentClass.RequiredTash = pGlobalScriptDef->BeardyBaldyTashStyle1;
+                        } else {
+                            BB_T;
+                            Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyTashCard2, -1, false);
+                            ParentClass.RequiredTash = pGlobalScriptDef->BeardyBaldyTashStyle2;
+                        }
+                        BB_SPEAK("TEXT_QST_014_PHASE3_INTRO4", GROUP_SELECT_NONE)
+                        ParentClass.Phase3RequirementsComplete = true;
+                    } else if (Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredHairdo) && !Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredBeard)) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE3_WRONG_BEARD", GROUP_SELECT_RANDOM_NO_REPEAT)
+                    } else if (!Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredHairdo) && Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredBeard)) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE3_WRONG_HAIR", GROUP_SELECT_RANDOM_NO_REPEAT)
+                    } else if (!Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredHairdo) && !Game->IsWearingHairstyle(Game->GetHero(), ParentClass.RequiredBeard)) {
+                        BB_T;
+                        BB_SPEAK("TEXT_QST_014_PHASE3_WRONG_HAIR_AND_BEARD", GROUP_SELECT_RANDOM_NO_REPEAT)
+                    }
+                }
+                if (seh_me.IsValid()) seh_me.Release();
+            }
+            if (ParentClass.Phase3RequirementsComplete) {
+                BB_T;
+                ParentClass.QuestPhase = 3;
+                ParentClass.InitialisePhase = true;
+            }
+        } else if (ParentClass.QuestPhase == 3) {
+            BB_T;
+            if (ParentClass.InitialisePhase) {
+                BB_T;
+                ParentClass.SetWanderPointAndDistance(Me, Me.GetPos());
+                ParentClass.InitialisePhase = false;
+            }
+            if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
+                BB_T;
+                CScriptGameResourceObjectMovieBase movie;
+                Game->StartMovieSequence("", movie);
+                CWideScreenMagicPauseEntities PauseMyEntitiesPlease(*Game);
+                BB_START_SCRIPTING;
+                if (!ParentClass.AllHairChanged) {
+                    BB_T;
+                    BB_SPEAK("TEXT_QST_014_END_NO_TASH", GROUP_SELECT_RANDOM_NO_REPEAT)
+                } else if (ParentClass.IsHeroWearingAnyBeard() && ParentClass.IsHeroWearingAnyTash() && ParentClass.IsHeroWearingAnyOddHairdo()) {
+                    BB_T;
+                    BB_SPEAK("TEXT_QST_014_END_FINALE1", GROUP_SELECT_NONE)
+                    Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyRewardObjectFullComplete, -1, false);
+                    ParentClass.QuestComplete = true;
+                } else if (ParentClass.IncorrectHairComboCount > 3 && ParentClass.AllHairChanged) {
+                    BB_T;
+                    BB_SPEAK("TEXT_QST_014_END_FINALE2", GROUP_SELECT_NONE)
+                    Game->GiveHeroObject(pGlobalScriptDef->BeardyBaldyRewardObjectHalfComplete, -1, false);
+                    ParentClass.QuestComplete = true;
+                } else {
+                    BB_T;
+                    ++ParentClass.IncorrectHairComboCount;
+                    BB_SPEAK("TEXT_QST_014_END_WRONG", GROUP_SELECT_RANDOM_NO_REPEAT)
+                }
+                if (seh_me.IsValid()) seh_me.Release();
+            }
+            if (ParentClass.QuestComplete) {
+                BB_T;
+                Game->GiveHeroExperience(pGlobalScriptDef->BeardyBaldyExperience);
+                Game->ClearThingHasInformation(Me);
+                BB_START_SCRIPTING;
+                CScriptThing exitPoint = Game->GetNearestWithScriptName(Me, "M_BB_ExitPoint");
+                if (exitPoint.IsAlive()) {
+                    BB_T;
+                    if (seh_me.IsValid()) {
+                        BB_T;
+                        seh_me.MoveToPosition(exitPoint.GetPos(), 1.0f, ENTITY_MOVE_RUN, false, true);
+                    }
+                    while (!IsDistanceBetweenThingsUnder(Me, exitPoint, 2.0f) && !Game->MsgOnRegionLoaded(unusedText)) {
+                        Game->NewScriptFrame();
+                        BB_T;
+                    }
+                    BB_T;
+                    FadeOutAndKillEntity(Me, 1.0f, false, true);
+                    ParentClass.BeardyBaldyLeft = true;
+                }
+            }
+        }
+    }
+}

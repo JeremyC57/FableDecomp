@@ -1,0 +1,16 @@
+address	local_class_with_shared_header
+0056ddc0	CQuestManager 
+00617140	CHeroLogBook 
+00619e30	C2DVector CRegion 
+0070b0a0	CEngineTextureDecal 
+00739a70	CCombatAbility 
+00777a00	CShopItem 
+00792b30	CTCDivineWrath 
+00797e30	CTCUnholyPower 
+008b0020	CCombatSequence_FodderMainAttack 
+008b0440	CCombatSequenceWhisperSortYourselfOut 
+008b04c0	CCombatSequence2StrikeCombo 
+009c2b00	C2DExtentsI CDisplayModeDesc 
+00b3e990	CEngineResourceManager 
+00b3e9d0	CEngineResourceManager 
+00b442e0	CEngineStaticMapFileBlockManager 

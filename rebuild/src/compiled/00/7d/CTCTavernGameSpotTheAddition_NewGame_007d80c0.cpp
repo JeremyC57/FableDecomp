@@ -58,7 +58,7 @@ class CTCTavernGame { public:
     unsigned char _pad_0x08[0x19];
     bool    GameWon;                            // +0x21
     unsigned char _pad_0x22[0xce];
-    void NewGameBase();                         // 0x005E9A70 (CTCTavernGame::NewGame)
+    virtual void NewGame();                     // 0x005E9A70 ?NewGame@CTCTavernGame@@UAEXXZ (vtable slot 31; Ego_r/FableWin)
     void SetState(long state);                  // 0x005E9B20
 };
 
@@ -78,7 +78,7 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
 
 void CTCTavernGameSpotTheAddition::NewGame()
 {
-    NewGameBase();
+    CTCTavernGame::NewGame();
     CDefClassBase* defClass = ParentThing->DefHolder;
     CDefPointer def;
     defClass->GetSubDef(&def);

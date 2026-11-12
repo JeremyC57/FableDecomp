@@ -21,7 +21,7 @@ public:
     void __cdecl Sprintf(const char*, ...);   // 0x0099F1F0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-extern CCharString g_CCharString_013bacc0;              // 0x013BACC0 "focus_chimney_"
+extern const CCharString CHIMNEY_FOCUS_START_NAME;              // 0x013BACC0 "focus_chimney_"
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
@@ -121,7 +121,7 @@ void CTCSmokeGenerator::CreatePositions()
         return;
     for (long i = 1; i < 10; ++i)
     {
-        CCharString prefix = CCharString("") + g_CCharString_013bacc0;
+        CCharString prefix = CCharString("") + CHIMNEY_FOCUS_START_NAME;
         CCharString number;
         if (i < 10)
             number.Sprintf("0%d", i);

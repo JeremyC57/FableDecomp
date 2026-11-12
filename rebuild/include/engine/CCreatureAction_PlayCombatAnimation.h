@@ -5,6 +5,13 @@
 #include "engine/CCombatActionBase.h"
 class CCreatureAction_PlayCombatAnimation:public CCombatActionBase {
 public:CCreatureAction_PlayCombatAnimation(CThingCreatureBase&,const CCharString&,bool);
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ CCreatureAction_PlayCombatAnimation(CThingCreatureBase&,CThingCreatureBase&,const CCharString&,bool);
+ virtual CCreatureActionBase* Clone()const;
+ virtual bool IsToFaceTarget()const;
+ virtual bool IsMovementUsingPhysics()const;
+ virtual bool IsAlwaysUseAnimationMovement()const;
+#endif
  void SetAlwaysUseMovementInAnim(bool value){AlwaysUseMovementInAnim=value;}
 private:bool FaceTarget,UsePhysics,AlwaysUseMovementInAnim;
 };

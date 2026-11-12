@@ -67,6 +67,11 @@ protected:
     template<class Filter> EAIActionReturn AIAction_WaitForMessageCallback(EAIActionRepeat,const Filter&,const CMessageEvent**);
 #endif
     bool IsStopping() const;                                             // 0x008FD010 ?IsStopping@CAIStateGroupBase@@IBE_NXZ
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_SETPUSHABLEBYHERO
+    // Nested opt-in (wf5 row 0x009692C0 CAIStateGroup_TavernKeeper::ReceivePayment): Ego_r.pdb / FableWin.pdb
+    // ?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z (protected), out of line in retail.
+    void SetPushableByHero(bool pushable);                               // 0x0097E330
+#endif
     unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
     // (protected; retail 0x0097E200).
@@ -75,12 +80,25 @@ protected:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat,C3DVector,bool&,EMovementType,bool,bool,const CThing*,bool,float);
     EAIActionReturn AIAction_LookAtPos(EAIActionRepeat,C3DVector,long,float);
 #endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY)
+    // Nested opt-in (chunk Q11, row 0x00940960 CAIStateGroup_VillageTaskHorn::Update): Ego_r.pdb
+    // ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+    // (protected; retail 0x0097E890), declaration only.
+    EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat,C3DVector,float,bool&,EMovementType,bool,bool,bool,const CThing*,bool,float);
+#endif
     EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
     // Opt-in (chunk 1024, row 0x00967D40 CAIStateGroup_TavernServer::Update): Ego_r.pdb / FableWin.pdb
     // ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z (protected), out of line
     // in retail at 0x0097F870 (the inline WanderWithinTavern pushes the pub, then 3 = AI_MOVEMENT_WALKING). Declaration only.
     EAIActionReturn AIAction_MinionWander(EMovementType movement, class CThingBuilding* building);   // 0x0097F870
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTIONONCE
+    // Nested opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): Ego_r.pdb
+    // ?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z (protected; Ego_r 0x00848680,
+    // retail 0x0097D8B0, the catalog label), out of line; the row passes a temporary action and tests the result against 2.
+    // Declaration only.
+    EAIActionReturn AIAction_PerformAction(const class CCreatureActionBase& action);   // 0x0097D8B0
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
     // Nested opt-in (chunk 758, row 0x0096AE50 CAIStateGroup_WhisperRetreat::UseWill): Ego_r.pdb / FableWin.pdb
@@ -89,6 +107,20 @@ protected:
     EAIActionReturn AIAction_PerformActionTargetFaceAndWait(const class CCreatureActionBase&,CIntelligentPointer<const CThing>,bool);
 #endif
     EAIActionReturn AIAction_PerformActionAndWait(const class CCreatureActionBase& action, bool wait);   // 0x0097DB70
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_PROJECTILESTRAFE) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
+    // Nested opt-in (chunk Q17, row 0x009711D0 CAIStateGroup_CreatureUseCoverBase::MoveIntoCover): Ego_r.pdb
+    // ?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z
+    // (protected; retail 0x0097F3A0), declaration only.
+    EAIActionReturn AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat repeat, C3DVector pos, CIntelligentPointer<const CThing> target,
+        bool& nav_route_calculated, EMovementType movement, bool param);   // 0x0097F3A0
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_PROJECTILESTRAFETHING) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
+    // Nested opt-in (wf5, row 0x0095E0B0 CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Update): Ego_r.pdb / FableWin.pdb
+    // ?AIAction_ProjectileAttackAndStrafeToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@1MAA_NW4EMovementType@@_N@Z
+    // (protected; retail 0x0097EF60, landed), declaration only.
+    EAIActionReturn AIAction_ProjectileAttackAndStrafeToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing,
+        CIntelligentPointer<const CThing> target, float proximity, bool& reached, EMovementType movement, bool param);   // 0x0097EF60
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
     // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): Ego_r.pdb / FableWin.pdb

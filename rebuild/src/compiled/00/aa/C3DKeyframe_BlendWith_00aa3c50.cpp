@@ -14,7 +14,7 @@
 //   C4DVector::Interpolate (engine/C4DVector.h retail opt-in: (v - *this) * t + *this through three temporaries).
 #include "fable_compiler.h"
 extern float g_ArcCosTable[1026];       // 0x013CB530
-extern float g_CosTable[1025];          // 0x013CD550
+extern float GFastCosTable[1025];      // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2*pi*k/1024), k = 0..1024)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 #include "engine/GFFloatToLongNear.h"
@@ -31,7 +31,7 @@ FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
     long i = GFFloatToLongNear(angle - 0.5f);
     float frac = angle - (float)i;
     i = (i - 256) & 0x3ff;
-    return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
+    return (1.0f - frac) * GFastCosTable[i] + frac * GFastCosTable[i + 1];
 }
 class CQuaternion { public: float X, Y, Z, W;
     float Dot(const CQuaternion& q) const { return X * q.X + Y * q.Y + Z * q.Z + W * q.W; }   // FableWin ?Dot@CQuaternion@@QBEMABV1@@Z

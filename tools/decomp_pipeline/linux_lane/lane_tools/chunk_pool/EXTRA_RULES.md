@@ -289,3 +289,18 @@ headers, never as asm in the row.
   priorities, enregistered globals, the frame packer, inline frequency, cross-jump edge order, x87 / scheduler order) and the
   measured dead ends. A park needs the measured reason for each residue, not a guess.
 - **Made-up names (owner, 2026-11-10):** "you can use a made up name only if you cant find original name anywhere, are consistent in the names usage, and the name is as accurate as you can make it and makes sense". Search every name source first (Ego_r / FableWin / Ego_d name sets, Fable.exe strings, refs/fse_api_manifest.json, EgoCore, the sibling repos); then one descriptive name per address used everywhere, saying what the body does (not `VirtualNN_<addr>`, not `*_Unproven`), marked "descriptive" in NOTES.md.
+
+## Library code and naming (owner, 2026-11-12)
+- Bytes the build takes DIRECTLY from a library (grade `toolchain_library`: VS 2003 CRT objects, import thunks, a vendor's assembled `.asm`) get no naming work.
+- Library code this project reconstructed by hand (vendor rows written as C++) gets a LIGHT renaming only: readable descriptive names so the code can be followed, marked as made-up in NOTES. Do not spend naming agents hunting exact names for it.
+- Engine rows keep the full rule above: exact PDB spelling, two sources.
+
+## Naming is paused (owner, 2026-11-12)
+- Placeholder-family naming waits until byte matching is done. Do not launch naming agents for `sub_<addr>`, `_unattributed::`, `CUnproven*`, `vfunc_N` or address-suffixed names.
+- The name-fix queue stays: every landing still records landed names it proves wrong (NAME_FIXES_QUEUE.tsv). Clear the queue in one short pass at about 30 entries, or at once for a binding conflict (one symbol bound to two addresses).
+- Author agents still spell every name in a NEW row right the first time (the rule above); pausing naming does not relax that.
+- Run two author agents instead of one author plus one naming agent.
+
+## Inferred statements (owner, 2026-11-12)
+- When the retail bytes prove a source construct existed but not its exact wording, an inferred statement may land if the row then behaves exactly as retail (the bytes match and the statement cannot change the result).
+- Mark it in the source header (`// Inferred:` + the retail bytes that require it + what was ruled out) and in the batch README. Prefer a wording a programmer could plausibly have written (e.g. a test whose arm was compiled out).

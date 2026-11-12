@@ -36,8 +36,8 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCNamedUserActionPoints { public:
-    bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
-                                 long flags, bool reserve);   // 0x007FF190
+    bool GetFreeNamedActionPoint(CThing& user, C3DVector& pos, CRightHandedSet& rh, CCharString name, long& index,
+                                 long flags, bool reserve);   // 0x007FF190 ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z (Ego_r.pdb; NF28: references)
 };
 struct CJugPointer { void* m_vfptr; void* m_pItem; };    // CIntelligentPointer<CThingObject>
 class CTCBase
@@ -67,7 +67,7 @@ bool CTCTavernBar::GetRandomBarSlot(CThing& creature, C3DVector& position, CRigh
     CCharString pointName("ACTION_POINT_BARMAN", -1);
     pointName += "_0";
     pointName += GFIntToCharString(slot + 1);
-    if (points->GetFreeNamedActionPoint(&creature, &position, &orientation, pointName, &actionPoint, 0, true))
+    if (points->GetFreeNamedActionPoint(creature, position, orientation, pointName, actionPoint, 0, true))
         return true;
     return false;
 }

@@ -19,5 +19,18 @@ private:
     bool                 Animating;                                      // +0x0c
     long                 CurrentAnimationPriority;                       // +0x10
     std::list<CAnimInit> QueuedAnims;                                    // +0x14
+#ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004DE87E
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCANIMATINGOBJECT_VSLOTS2
+// agentFAM04 (2026-11-11): retail virtuals and the non-virtual they call (Ego_r.pdb / FableWin.pdb spellings; TLC vtable slots aligned with the Xbox 360 Test PDB order). Declarations only (no layout change).
+public:
+    virtual void OnInitialActivate();                                    // slot 6, 0x007F90A0 (tail call to PlayDefaultAnimation)
+    virtual void BulletTimeFrameUpdate();                                // slot 10, 0x007F8BD0 (the slot-9 FrameUpdate)
+#endif // FABLE_RETAIL_CTCANIMATINGOBJECT_VSLOTS2
 };
 #endif

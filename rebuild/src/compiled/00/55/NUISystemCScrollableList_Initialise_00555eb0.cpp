@@ -1,14 +1,14 @@
 // NUISystem::CScrollableList::Initialise() -- the changing-state initialisation, then reset the scroll position, copy the item
 //   gap/height from the def, derive the visible item count (list height / item height) and, for each arrow definition in the
 //   def (up, then down), create the arrow component, attach it to the parent, initialise it and give it a scroll action
-//   (type 0x123, one long parameter 0x10 / 0x11) bound to this list; finally SetScroll(0, 0)
+//   (type 0x123, one long parameter 0x10 / 0x11) bound to this list; finally UpdateVisibleList(0, 0)
 // Leaf: ?Initialise@CScrollableList@NUISystem@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00555EB0, 834 bytes, plain ret. Label: the catalogue's "CChangingStateComponent::Initialize"
 //   is NUISystem::CScrollableList::Initialise (the landed CRedefinerList::Initialise 0x005566A0 calls it as its base).
 // Callees: CChangingStateComponent::Initialise 0x0052C730, CManager::GetInstance 0x0041E5F2 (static __fastcall),
 //   CManager::CreateComponent 0x0041D21B, CCountedPointer<CComponent>(CComponent*) 0x00429C15, CAction::CAction 0x0042BE50,
 //   CCountedPointer<CAction>(CAction*) 0x0042AA29, CAction::AddParam(CActionParam*, CCountedPointer<CAction>&) 0x0053FDE0,
-//   SetScroll 0x00555A90 (descriptive), operator new 0x00BFEA1A, malloc 0x00BFEA0E (list node), operator delete 0x00BFE9BC,
+//   UpdateVisibleList 0x00555A90 (protected, Ego_r + FableWin; was a descriptive SetScroll(long, long), agentNF25b), operator new 0x00BFEA1A, malloc 0x00BFEA0E (list node), operator delete 0x00BFE9BC,
 //   _ftol 0x00BFEA70; component slots 43 Initialise, 51/52 SetParent/GetParent, 59 AddChild, 80 (+0x140) AddAction,
 //   108 GetDef; CActionParamSLONG vtable 0x012366F4 (type 3).
 // Layout: the landed CRedefinerList::Initialise 0x005566A0 model (component slots, counted-pointer count block, CDefPointer
@@ -284,8 +284,9 @@ class CScrollableList : public CChangingStateComponent { public:
     unsigned char _pad16c[4];
     CComponent*   PUpArrow;                             // +0x170
     CComponent*   PDownArrow;                           // +0x174
-    void SetScroll(long position, long immediate);      // 0x00555A90
     void Initialise();
+protected:
+    void UpdateVisibleList(float move_time, float fade_time);   // 0x00555A90 Ego_r/FableWin ?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z
 };
 
 void CScrollableList::Initialise()
@@ -320,7 +321,7 @@ void CScrollableList::Initialise()
         action->AddParam(&ActionParamBase, action);
         arrow->AddAction(action);
     }
-    SetScroll(0, 0);
+    UpdateVisibleList(0.0f, 0.0f);
 }
 
 }

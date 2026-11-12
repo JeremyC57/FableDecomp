@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00eb3ba0   RELOCATION_MATCH PASS   AttackHero
+00bd2a90   RELOCATION_MATCH PASS   InitialiseBoneScalings
+00958b20   RELOCATION_MATCH PASS   OnReplace
+00465c54   WARN RELOC_NAME: ??$TransferVector@W4EWeaponClass@@@CPersistContext@@QAEXAAV?$vector@W4EWeaponClass@@V?$allocator@W4EWeaponClass@@@std@@@std@@@Z -> 00463f3c labelled 'CPersistContext::TransferBinary_00463f3c'
+00465c54   WARN RELOC_NAME: ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@ABU?$less@W4EWeaponClass@@@1@ABV?$allocator@W4EWeaponClass@@@1@@Z -> 00451add labelled 'CList_Initialize'
+00465c54   WARN RELOC_NAME: ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ -> 00451b07 labelled 'std::list<T_00451b07>::~list'
+00465c54   RELOCATION_MATCH PASS   Transfer
+009fc950   RELOCATION_MATCH PASS   InitialiseAsSurface
+
+WINS: 5
+  00eb3ba0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::AttackHero
+  00bd2a90 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings
+  00958b20 RELOCATION_MATCH CAIStateGroup_MinionReactToCrime::OnReplace
+  00465c54 RELOCATION_MATCH CCombatAbilityBlockDefBase::Transfer
+  009fc950 RELOCATION_MATCH CGraphicFrameData::InitialiseAsSurface
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_AttackHero_00eb3ba0
+  CEngineInternalPrimitiveAnimatedMesh_InitialiseBoneScalings_00bd2a90
+  CAIStateGroupMinionReactToCrime_OnReplace_00958b20
+  CCombatAbilityBlockDefBase_Transfer_00465c54
+  CGraphicFrameData_InitialiseAsSurface_009fc950

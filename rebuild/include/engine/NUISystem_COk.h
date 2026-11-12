@@ -10,6 +10,11 @@ namespace NUISystem {
 class COk : public CChangingStateComponent {
 public:
     COk(long);                                                       // 0x0041CB70
+#ifdef FABLE_RETAIL_COK_VSLOTS
+// agentFAM04 (2026-11-11): retail virtual of vtable 0x0122FAF4 (COk) the declaration above lacks (FableWin ?SetOkCallBack@COk@NUISystem@@UAEXP6IXXZ@Z, slot 142,
+// the first new virtual after CChangingStateComponent 0..141, as CYesNo::SetYesCallBack). Declaration only.
+    virtual void SetOkCallBack(void (__fastcall* callback)());      // slot 142, 0x0041CBD7
+#endif // FABLE_RETAIL_COK_VSLOTS
 protected:
     void (*OkCallback)();                                           // +0x15c (Ego_r +0x18c, a __cdecl void function pointer)
 };

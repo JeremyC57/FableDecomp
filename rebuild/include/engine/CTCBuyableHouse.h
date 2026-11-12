@@ -7,11 +7,18 @@
 // ?GetOwnedByPlayer@CTCBuyableHouse@@QBE_NXZ / ?GetRented@CTCBuyableHouse@@QBE_NXZ. The rest stays opaque (sizeof 0x4C as below).
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE
+#include "engine/CIntelligentPointer.h"
+#endif
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_FRAMEUPDATE
+#include "engine/CIntelligentPointer.h"
+class CThing;
+#endif
 class CBuyableHouseDef;
 class CTCBuyableHouse : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BUYABLE_HOUSE; }
-#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+#if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE)
     void SetWifeLivingHere(CThing*);
 #endif
     bool GetOwnedByPlayer() const { return OwnedByPlayer; }
@@ -21,7 +28,61 @@ private:
     bool IsScripted;                                         // +0x10
     bool OwnedByPlayer;                                      // +0x11
     bool Rented;                                             // +0x12
+#if defined(FABLE_RETAIL_CTCBUYABLEHOUSE_FRAMEUPDATE)
+    // Retail opt-in (chunk Q23, row 0x006C1250 ?FrameUpdate@CTCBuyableHouse@@UAEXXZ, CTCBase vtable slot 9): every Ego_r.pdb member
+    // after Rented with its real type (struct_layouts_egor.tsv; the same offsets as the generated branch below and the opaque pads of
+    // the branches that follow: DayNextRentIsDue +0x18, CurrentDressLevel +0x1C, MainSignPost +0x24 and DressingSignPost +0x2C
+    // (CIntelligentPointer<CThing>, read through GetPItem 0x00A01B50 at 0x006C1291 / 0x006C13D6), FrameToNextCheckIfWeNeedToCreateAnything
+    // +0x34, InitiallySetupDressLevel +0x40, VirtualMoneyBags +0x44, HasPreviouslyBeenBuyable +0x48), and the Ego_r.pdb / FableWin.pdb
+    // member functions FrameUpdate reaches (same spellings and access in both PDBs: public QBE IsHouseBeingUsed(bool) 0x006BFB10,
+    // GetRentsDue 0x006BF810, GetPriceForNextDressLevel 0x006BF920 and QAE SetupDressingAtLevel(long) 0x006C0330; private AAE
+    // NeedsMainSignPost 0x006BFB90, NeedsDressingSignPost (no retail copy: inlined everywhere), CreateMainSignPost 0x006C0F00,
+    // CreateDressingSignPost 0x006C0F70, CreateRentMoney 0x006C0C90). Includes FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE's WifeLivingHere
+    // (+0x38, same declaration); needs FABLE_RETAIL_CINTELLIGENTPOINTER (byte-packed pointer). No layout change.
+public:
+    virtual void FrameUpdate();                                          // slot 9  0x006C1250
+    void SetupDressingAtLevel(long level);                               // 0x006C0330
+    bool IsHouseBeingUsed(bool as_workplace) const;                      // 0x006BFB10
+    long GetRentsDue() const;                                            // 0x006BF810
+    long GetPriceForNextDressLevel() const;                              // 0x006BF920
+private:
+    bool NeedsMainSignPost();                                            // 0x006BFB90
+    bool NeedsDressingSignPost();                                        // (inline everywhere in retail)
+    void CreateMainSignPost();                                           // 0x006C0F00
+    void CreateDressingSignPost();                                       // 0x006C0F70
+    void CreateRentMoney();                                              // 0x006C0C90
+    long DaySomeoneWillMoveIn;                                           // +0x14
+    long DayNextRentIsDue;                                               // +0x18
+    long CurrentDressLevel;                                              // +0x1c
+    long MaxDressLevel;                                                  // +0x20
+    CIntelligentPointer<CThing> MainSignPost;                            // +0x24
+    CIntelligentPointer<CThing> DressingSignPost;                        // +0x2c
+    long FrameToNextCheckIfWeNeedToCreateAnything;                       // +0x34
+    CIntelligentPointer<CThing> WifeLivingHere;                          // +0x38
+    bool InitiallySetupDressLevel;                                       // +0x40
+    long VirtualMoneyBags;                                               // +0x44
+    bool HasPreviouslyBeenBuyable;                                       // +0x48
+    bool IsResidential;                                                  // +0x49
+#elif defined(FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE)
+    // Retail opt-in (naming agent NF21, row 0x006D3C40 SetWifeLivingHere): FableWin.pdb ?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z
+    // and ?GetWifeLivingHere@CTCBuyableHouse@@QBEPAVCThing@@XZ; Ego_r.pdb member CIntelligentPointer<CThing> WifeLivingHere +0x38 (the
+    // pointer the row assigns). Needs FABLE_RETAIL_CINTELLIGENTPOINTER (byte-packed pointer). No layout change.
+    unsigned char _pad_0x13[0x38 - 0x13];                    // +0x13 DaySomeoneWillMoveIn .. FrameToNextCheckIfWeNeedToCreateAnything (opaque)
+    CIntelligentPointer<CThing> WifeLivingHere;              // +0x38
+    unsigned char _pad_0x40[0x4c - 0x40];                    // +0x40 InitiallySetupDressLevel .. IsResidential (opaque)
+#else
     unsigned char _pad_0x13[0x4c - 0x13];                    // +0x13 DaySomeoneWillMoveIn .. IsResidential (opaque)
+#endif
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x006BF7A0
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x006BF7C0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCBuyableHouse) == 0x4c);
 #else

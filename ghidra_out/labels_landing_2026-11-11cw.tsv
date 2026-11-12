@@ -1,0 +1,4 @@
+address	name	evidence
+0092ACE0	?GoToLibrary@CAIStateGroup_ApprenticeHero@@IAE_NXZ	chunk Q13 (landing cw): FableWin.pdb (debug 0x02C6B220) + the graded object symbol (RELOCATION_MATCH); body walks to "LibraryMarker" and plays "ST_TRAINEE_PERUSE_LIBRARY"
+009DD960	?Draw2DLine@CRenderManager2D@@QAE_NABVC2DVector@@0ABVCRGBColour@@K@Z	chunk Q13 (landing cw): Ego_r.pdb + FableWin.pdb; graded object symbol (RELOCATION_MATCH); calls the private Add2DLine 0x009DC2C0
+00DD9520	?SplittingUpCutscene@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ	chunk Q13 (landing cw): Ego_r.pdb + FableWin.pdb; plays "CS_MOTHER_SPLITTING_UP" at "OUTRO_SPLITTING_UP"; reloc_bindings bind it

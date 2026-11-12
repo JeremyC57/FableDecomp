@@ -24,7 +24,7 @@ class CCharString {
 public:
     void* PStringData;
 };
-extern CCharString g_CCharString_013bac9c;              // 0x013BAC9C ("ACTION_POINT"; the landed initializer 0x0121E960 spelling)
+extern const CCharString ACTION_POINT;              // 0x013BAC9C ("ACTION_POINT"; the landed initializer 0x0121E960 spelling)
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
@@ -85,7 +85,7 @@ class CTCSingleUserActionPoints : public CTCBase { public:
 
 bool CTCSingleUserActionPoints::IsActionPointOccupied(CThing* user, C3DVector* position, CRightHandedSet* orientation, long index)
 {
-    ParentThing->GraphicAppearance->GetDummyObject(g_CCharString_013bac9c, index, 0, *position, *orientation, 1.0f);
+    ParentThing->GraphicAppearance->GetDummyObject(ACTION_POINT, index, 0, *position, *orientation, 1.0f);
     C2DCoordI coord((long)position->X, (long)position->Y);
     C2DBoxI area(coord, coord);
     CThingCreatureBase* found;

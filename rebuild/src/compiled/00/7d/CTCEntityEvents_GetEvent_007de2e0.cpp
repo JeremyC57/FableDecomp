@@ -8,6 +8,7 @@
 // sizes from Ego_r.pdb: the empty filters are 1 byte, the CFilter_BindN hold their filters by reference).
 // Shape: the loop copies each counted pointer (count ++ / -- with the DeleteFunc + operator delete release on
 // both exits); rend() is re-read through `this` every iteration; *out is stored before the copy is released.
+// Name fix (agentNF23): 0x00810FC0 is ?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ (Ego_r 0x008070E0 / FableWin 0x025A7C50; the landed row 0x00810FC0); was the local spelling GetPThingHitting.
 #include "engine/CTCEntityEvents.h"
 
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
@@ -35,7 +36,7 @@ struct CHitParameters;
 class CEventHitBase : public CEventBase { public:
     virtual bool IsFlourish() const;                  // slot 5: PHitParams->Flourish (+0x1d)
     CCountedPointer<CHitParameters> PHitParams;       // +0x08
-    CThing* GetPThingHitting() const;                 // 0x00810FC0: PHitParams->PThingHitting.GetPItem()
+    CThing* GetPHitBy() const;                        // 0x00810FC0: PHitParams->PThingHitting.GetPItem()
     CThing* GetPWeapon() const;                       // 0x00810FD0: PHitParams->PWeapon.GetPItem()
     bool IsKnockDown() const;                         // 0x00810F00: PHitParams->KnockDown (+0x1a)
     bool IsDecapitate() const;                        // 0x00810F10: PHitParams->Decapitate (+0x1b)
@@ -44,7 +45,7 @@ class CEventHitBase : public CEventBase { public:
 class CEventHitBy : public CEventHitBase { public: enum { EventType = 0x1 }; };              // GetType 0x0083AF50
 class CIsHitEventHitBy { public:                           // the hitting thing is the one held
     CThing* Thing;
-    bool operator()(const CEventHitBase* event) const { return event->GetPThingHitting() == Thing; }
+    bool operator()(const CEventHitBase* event) const { return event->GetPHitBy() == Thing; }
 };
 class CIsHitEventHitByShot { public:
     bool operator()(const CEventHitBase* event) const;   // 0x00810F70 (PHitParams damage-map shot test)

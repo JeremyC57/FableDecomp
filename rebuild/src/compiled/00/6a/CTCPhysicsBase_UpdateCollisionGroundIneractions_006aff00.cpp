@@ -4,8 +4,13 @@
 //   propagated), the world's virtual slot 12 (+0x30) = its world map (0x006AF620 is the same chain out of line),
 //   CWorldMap::GetGroundFaceNormalAt @ 0x0063AB10 (C3DVector by hidden pointer), the thing's virtual slot 41 (+0xa4).
 // Layout: engine/CTCPhysicsBase.h (+0x04 the parent thing).
-// Shape: the thing is read into a local BEFORE the world call (esi), the nested call's arguments (0, pos, &result) are pushed
-//   before the world-map virtual is called (VC evaluates the object expression after the arguments).
+// Shape: the thing is read into a local BEFORE the world call (esi); OnCollision's last argument (0, the other thing) is pushed
+//   first, then the nested call's arguments (pos, &result) before the world-map virtual is called (VC evaluates the object expression
+//   after the arguments).
+// Name fix (agentNF23, queue land1011cy): 0x0063AB10 is ?GetGroundFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z (Ego_r 0x006E7420 /
+//   FableWin 0x024A4450, `ret 8`: hidden result + position only), declared by engine/CWorldMap.h; the `push 0` belongs to
+//   CThing::OnCollision(ECollideType, const C3DVector&, const C3DVector&, CThing*) (Ego_r / FableWin ?OnCollision@CThing@@UAEXW4ECollideType@@ABVC3DVector@@1PAV1@@Z).
+//   Was GetGroundFaceNormalAt(const C3DVector&, long) (QAE, an extra argument).
 // Leaf: UpdateCollisionGroundIneractions
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CTCPhysicsBase CTCPhysicsBaseLayout
@@ -24,9 +29,9 @@ class CTCPhysicsBase : public CTCBase, public CTCPhysicsBaseLayout
 
 #include "engine/C3DVector.h"
 
-class CWorldMap { public:
-    C3DVector GetGroundFaceNormalAt(const C3DVector& pos, long flags);   // 0x0063AB10
-};
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_GROUNDFACENORMAL
+#include "engine/CWorldMap.h"                                             // GetGroundFaceNormalAt(const C3DVector&) const 0x0063AB10
 
 class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -42,7 +47,7 @@ class CThing { public:
     virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
     virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
     virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040();
-    virtual void OnCollision(long kind, const C3DVector& pos, const C3DVector& normal);   // slot 41 (+0xa4)
+    virtual void OnCollision(long kind, const C3DVector& pos, const C3DVector& normal, CThing* other);   // slot 41 (+0xa4)
 };
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
@@ -53,5 +58,5 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 void CTCPhysicsBase_Methods::UpdateCollisionGroundIneractions(const C3DVector& pos)
 {
     CThing* thing = GetThing();
-    thing->OnCollision(3, pos, GetWorld().GetWorldMap()->GetGroundFaceNormalAt(pos, 0));
+    thing->OnCollision(3, pos, GetWorld().GetWorldMap()->GetGroundFaceNormalAt(pos), 0);
 }

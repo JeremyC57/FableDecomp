@@ -3,13 +3,15 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E090, length 428 bytes (+ int3 padding).
 // Callees: the brain world accessor @ 0x008FCFC0 (combat manager +0x4c, three times), CCombatManager::GetPreferredPos @ 0x006EA770
 // (C3DVector by hidden pointer), CWorld::GetWorldFrame (static) @ 0x0049D870, own virtual slot 14 IsStillRunnable(bool),
-// IsEnemyCreatureInCombatPosition @ 0x0093DCD0, CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (twice), __aullrem
+// IsEnemyCreatureInCombatPosition @ 0x0093DCD0, CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (twice), __aullrem
 // @ 0x00BFEBB0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy +0x14), AIAction_MoveToPosProximity @ 0x0097E890,
 // CCombatManager @ 0x006E9D10 (autoname label only), CVectorMap::LowerBound inlined (navigation interface 7, result unused).
 // Shape: the UID is read through a named creature local before the static frame call (edi:ebx), the last frame lives in
 // ebp; the inline navigation lookup has no consumer, so only its binary-search loop survives.
 // Layout: engine/CAIStateGroup_MeleeCombatNearby2.h flattens the base; local model with its PEnemy (+0x14); CThing UID +0x18.
 // Name fix (agentNF6 2026-11-10): CCombatManager::GetPreferredPos 0x006EA770 is ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb): const, creature by reference.
+// Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+//   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -66,7 +68,7 @@ class CThing { public:
 };
 
 class CThingCreatureBase : public CThing { public:
-    bool IsRegisteredCombatant();               // 0x00662410
+    bool IsInMeleeAsAttacker() const;         // 0x00662410
 };
 
 class CBaseObject;
@@ -149,7 +151,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
         do {
             if (IsEnemyCreatureInCombatPosition())
                 return true;
-            if (!PBrain->PCreature->IsRegisteredCombatant())
+            if (!PBrain->PCreature->IsInMeleeAsAttacker())
                 return false;
             CThingCreatureBase* me = PBrain->PCreature;
             unsigned __int64 uid = me->UID;
@@ -162,7 +164,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
             PBrain->PCreature->GetInterface(&navigation, 7);
             long result = AIAction_MoveToPosProximity(2, pos, 0.5f, &arrived, 5, true, false, true, ((CThing*)PEnemy.GetPItem()), false, 0.0f);
             if (result == 3) {
-                if (PBrain->PCreature->IsRegisteredCombatant()) {
+                if (PBrain->PCreature->IsInMeleeAsAttacker()) {
                     CThingCreatureBase* self = PBrain->PCreature;
                     CWorld* w = &GetWorld();
                     w->CombatManager->OnCombatPositionUnreachable(self);

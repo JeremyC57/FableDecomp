@@ -1,0 +1,279 @@
+address	change	grade	test	grades_used	note
+0x004022b0	binders respelled (test changed)	RELOCATION_MATCH	PASS	2	entry 97; retargeted spellings at 0x013b8388
+0x0040ed10	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00411570	self-row rename/respell + binders	MATCH	PASS	1	entry 2
+0x00416268	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0041627f	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00416296	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00416392	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0041674a	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00416e78	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00418289	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0042dc63	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0042e3ee	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00437500	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8
+0x00445a60	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00445ae0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00445b40	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00445b80	self-row rename/respell + binders	MATCH	PASS	1	entry 4
+0x00446330	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x004874d0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	6	entry 22, entry 6; retargeted spellings at 0x00633be0
+0x004963a0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x004acb50	self-row rename/respell + binders	MATCH	PASS	1	entry 12, entry 12b
+0x004b3760	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x004b6380	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x004c6010	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8
+0x004c78a0	self-row rename/respell + binders	MATCH	PASS	1	entry 15, entry 15b
+0x004ca230	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x004cc340	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 21
+0x004df3cb	binders respelled	RELOCATION_MATCH	PASS	2	entry 84; retargeted spellings at 0x0122ded8
+0x00520570	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x00521ae0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x00557080	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x0055b890	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x005bc5c6	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x005faf50	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x00633be0	self-row rename/respell + binders	MATCH	PASS	1	entry 22, entry 22b
+0x00646709	binders respelled	RELOCATION_MATCH	PASS	1	entry 21, entry 66; retargeted spellings at 0x004cc340
+0x00662110	binders respelled	RELOCATION_MATCH	PASS	1	entry 51; retargeted spellings at 0x008386e0
+0x0066f320	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0066f3b0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0066f440	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0066f4d0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0066f630	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0066f6d0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0066f750	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00687730	binders respelled	RELOCATION_MATCH	PASS	1	entry 53; retargeted spellings at 0x0099a380
+0x00687ed0	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x00688c40	binders respelled	RELOCATION_MATCH	PASS	2	entry 4; retargeted spellings at 0x00445b80
+0x00688eb0	binders respelled	RELOCATION_MATCH	PASS	1	entry 4; retargeted spellings at 0x00445b80
+0x0068c760	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x0068fb90	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00690030	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x00697490	binders respelled	RELOCATION_MATCH	PASS	1	entry 89; retargeted spellings at 0x0129ba3c
+0x0069e980	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x006a7ad0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x006ab300	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x006ad580	binders respelled	RELOCATION_MATCH	PASS	1	entry 28, entry 36; retargeted spellings at 0x006ae5c0 0x0077a180
+0x006ba8b0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x006bb210	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8 0x0122dedc
+0x006bb720	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8 0x0122dedc
+0x006bbba0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x006cd9b0	binders respelled	RELOCATION_MATCH	PASS	2	entry 84; retargeted spellings at 0x0122ded8
+0x006cfe80	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x006d4fd0	binders respelled	RELOCATION_MATCH	PASS	1	entry 32; retargeted spellings at 0x0071aab0
+0x006d5050	binders respelled	RELOCATION_MATCH	PASS	1	entry 32; retargeted spellings at 0x0071aab0
+0x006ea430	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 31, entry 31b; retargeted spellings at 0x006ea2c0
+0x006eac50	binders respelled	RELOCATION_MATCH	PASS	2	entry 83
+0x00710540	binders respelled	RELOCATION_MATCH	PASS	1	entry 86; retargeted spellings at 0x0122f59c
+0x0071aab0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 32
+0x0071c9f0	binders respelled	RELOCATION_MATCH	PASS	1	entry 12, entry 22; retargeted spellings at 0x004acb50 0x00633be0
+0x00733100	binders respelled	RELOCATION_MATCH	PASS	2	entry 16; retargeted spellings at 0x004c7a10
+0x00734050	binders respelled	RELOCATION_MATCH	PASS	1	entry 31; retargeted spellings at 0x006ea430
+0x00744730	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x007479b0	binders respelled	RELOCATION_MATCH	PASS	1	entry 51; retargeted spellings at 0x008386e0
+0x0074e080	binders respelled	RELOCATION_MATCH	PASS	1	entry 84, entry 86; retargeted spellings at 0x0122ded8 0x0122f59c
+0x007508d0	binders respelled	RELOCATION_MATCH	PASS	1	entry 15; retargeted spellings at 0x004c78a0
+0x007512c0	self-row rename/respell + binders (test changed)	MATCH	PASS	1	entry 34, entry 34b
+0x00752640	binders respelled	RELOCATION_MATCH	PASS	1	entry 113, entry 114; retargeted spellings at 0x013bace4 0x013bace8
+0x00759d30	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x007617a0	binders respelled	RELOCATION_MATCH	PASS	1	entry 23; retargeted spellings at 0x0063a300
+0x00778fa0	binders respelled	RELOCATION_MATCH	PASS	1	entry 15; retargeted spellings at 0x004c78a0
+0x00780410	self-row rename/respell + binders (test changed)	MATCH	PASS	3	entry 38
+0x00787750	binders respelled	RELOCATION_MATCH	PASS	1	entry 15; retargeted spellings at 0x004c78a0
+0x00788229	binders respelled	RELOCATION_MATCH	PASS	2	entry 34, entry 21; retargeted spellings at 0x004cc340 0x007512c0
+0x007b0cd0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x007b1eb0	binders respelled	RELOCATION_MATCH	PASS	3	entry 17; retargeted spellings at 0x004c7a30
+0x007bc8fc	binders respelled	RELOCATION_MATCH	PASS	1	entry 67; retargeted spellings at 0x00a14440
+0x007bf3d0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x007cce20	binders respelled	RELOCATION_MATCH	PASS	1	entry 50; retargeted spellings at 0x00811830
+0x007dccb0	binders respelled	RELOCATION_MATCH	PASS	1	entry 67; retargeted spellings at 0x00a14440
+0x007dce40	binders respelled	RELOCATION_MATCH	PASS	1	entry 13; retargeted spellings at 0x004c3090
+0x007e00d0	binders respelled	RELOCATION_MATCH	PASS	1	entry 21, entry 25, entry 26; retargeted spellings at 0x004cc340
+0x007e5d20	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x007e62d0	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x007e72f0	self-row rename/respell + binders	MATCH	PASS	1	entry 44
+0x007e7450	self-row rename/respell + binders	MATCH	PASS	1	entry 45
+0x007e7490	self-row rename/respell + binders	RELOCATION_MATCH	PASS	2	entry 46
+0x007e78e0	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x007f14f0	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8
+0x007f1930	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x00811830	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 50
+0x008203a0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00825440	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00836260	binders respelled	RELOCATION_MATCH	PASS	2	entry 12, entry 20; retargeted spellings at 0x004acb50 0x004c9d60
+0x008386e0	self-row rename/respell + binders (test changed)	RELOCATION_MATCH	PASS	1	entry 51; retargeted spellings at 0x00749880
+0x00838ec0	binders respelled	RELOCATION_MATCH	PASS	1	entry 89; retargeted spellings at 0x0129ba3c
+0x00859660	binders respelled	RELOCATION_MATCH	PASS	1	entry 21; retargeted spellings at 0x004cc340
+0x008597a0	binders respelled	RELOCATION_MATCH	PASS	1	entry 21; retargeted spellings at 0x004cc340
+0x008717a0	binders respelled	RELOCATION_MATCH	PASS	1	entry 49; retargeted spellings at 0x0080cbf0
+0x0087ca30	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x0088dfa0	binders respelled	RELOCATION_MATCH	PASS	1	entry 22; retargeted spellings at 0x00633be0
+0x0088ed20	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8 0x0122dedc
+0x00892df0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x008b94a0	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008b95a0	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008b9c90	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008c0820	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008c3f90	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008c4040	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008c4250	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008c4680	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008c64f0	binders respelled	RELOCATION_MATCH	PASS	2	entry 62; retargeted spellings at 0x009ad410
+0x008c74f0	binders respelled	RELOCATION_MATCH	PASS	1	entry 49; retargeted spellings at 0x0080cbf0
+0x008cc8e0	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008cd470	binders respelled	RELOCATION_MATCH	PASS	1	entry 20; retargeted spellings at 0x004c9d60
+0x008cfe50	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x008cfeb0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x008d02c0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x008d9480	binders respelled	RELOCATION_MATCH	PASS	1	entry 32; retargeted spellings at 0x0071aab0
+0x008ddd70	binders respelled	RELOCATION_MATCH	PASS	1	entry 62; retargeted spellings at 0x009ad410
+0x008e0060	binders respelled	RELOCATION_MATCH	PASS	1	entry 62; retargeted spellings at 0x009ad410
+0x008e2b60	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x008e8ff0	binders respelled	RELOCATION_MATCH	PASS	2	entry 16, entry 22; retargeted spellings at 0x004c7a10 0x00633be0
+0x008ea220	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013b8388
+0x008ef400	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x008f2ae0	binders respelled	RELOCATION_MATCH	PASS	1	entry 86; retargeted spellings at 0x0122f59c
+0x00923510	binders respelled	RELOCATION_MATCH	PASS	2	entry 20; retargeted spellings at 0x004c9d60
+0x0092b800	binders respelled	RELOCATION_MATCH	PASS	1	entry 86; retargeted spellings at 0x0122f59c
+0x0095f580	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x009647c0	binders respelled	RELOCATION_MATCH	PASS	1	entry 21; retargeted spellings at 0x004cc340
+0x0096e700	binders respelled	RELOCATION_MATCH	PASS	3	entry 84; retargeted spellings at 0x0122ded8; the 1.0f literal add split into its own statement (one expression re-associated it after DELTA_NOTIONAL_ZERO: HARD RELOC_IDENTITY, fixed)
+0x009994a0	binders respelled	RELOCATION_MATCH	PASS	1	entry 98
+0x00999620	binders respelled	RELOCATION_MATCH	PASS	1	entry 98
+0x0099aed0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20
+0x0099b440	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20
+0x0099b510	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x013bca20
+0x0099b6b0	binders respelled (test changed)	RELOCATION_MATCH	PASS	2	entry 98; retargeted spellings at 0x013bca20
+0x0099b720	binders respelled (test changed)	RELOCATION_MATCH	PASS	2	entry 98; retargeted spellings at 0x013bca20
+0x0099bdb0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20
+0x0099be70	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20
+0x0099bf30	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20
+0x0099bff0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20
+0x0099c120	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20
+0x0099e4c0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 55; retargeted spellings at 0x0129aaf4
+0x0099efb0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 59; retargeted spellings at 0x0099e9b0
+0x009beaa0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x009c7a60	binders respelled	RELOCATION_MATCH	PASS	1	entry 98
+0x00a0db60	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00a13eb0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00a145c0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00a147e0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00a14840	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00a1bca0	binders respelled	RELOCATION_MATCH	PASS	1	entry 70, entry 71; retargeted spellings at 0x00a471d0 0x00a77780
+0x00a1de30	self-row rename/respell + binders (test changed)	RELOCATION_MATCH	PASS	2	entry 68
+0x00a1e030	binders respelled	RELOCATION_MATCH	PASS	1	entry 68; retargeted spellings at 0x00a1de30
+0x00a1e370	binders respelled	RELOCATION_MATCH	PASS	1	entry 68; retargeted spellings at 0x00a1de30
+0x00a22590	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00a471d0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 70, entry 70b
+0x00a63ee0	binders respelled	RELOCATION_MATCH	PASS	1	entry 83; retargeted spellings at 0x0122d70e
+0x00a88cb0	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8
+0x00a88d10	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00aa3390	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00aa3560	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00aa3c50	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00af2250	binders respelled	RELOCATION_MATCH	PASS	1	entry 72; retargeted spellings at 0x00af3d80
+0x00af3d80	self-row rename/respell + binders	MATCH	PASS	4	entry 72
+0x00af8f80	self-row rename/respell + binders	MATCH	PASS	1	entry 73, entry 73b
+0x00af9000	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00b05620	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00b05840	binders respelled	RELOCATION_MATCH	PASS	1	entry 72; retargeted spellings at 0x00af3d80
+0x00b05e10	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00b0a750	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00b0f8e0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00b109b0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00b187d0	binders respelled	RELOCATION_MATCH	PASS	2	entry 73; retargeted spellings at 0x00af8f80
+0x00b18af0	binders respelled	RELOCATION_MATCH	PASS	1	entry 73; retargeted spellings at 0x00af8f80
+0x00b1ad90	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013cd550
+0x00b201d0	binders respelled	RELOCATION_MATCH	PASS	1	entry 72; retargeted spellings at 0x00af3d80
+0x00b209c0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00b23ea0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b24690	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x01436e1c
+0x00b25d20	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b25d50	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b25d80	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b26360	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x01436e1c 0x01436e9c
+0x00b32300	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b32660	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x01436e1c
+0x00b32ad0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b4f510	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b662f0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b671a0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b67480	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b67510	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b7ad20	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b7c510	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b7f0f0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00b869a0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b87680	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b88ed0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b89140	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b89a20	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e1c
+0x00b991d0	binders respelled	RELOCATION_MATCH	PASS	1	entry 84; retargeted spellings at 0x0122ded8
+0x00b9e950	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x01436e1c 0x01436e9c
+0x00bad2e0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00bbc0b0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00bbc460	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x01436e9c
+0x00bd1f70	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x01436e1c 0x01436e9c
+0x00be1c10	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x01436e1c
+0x00be1e70	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x01436e1c
+0x00cb7cb0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x00cb7da0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x00cb8440	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x00cb8690	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122d70e
+0x00cbe0c0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00cdba10	binders respelled	RELOCATION_MATCH	PASS	2	entry 105, entry 106; retargeted spellings at 0x0143e928 0x0143e934
+0x00d02b80	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00d37530	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00d6ed60	binders respelled	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00d79d50	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00d7a360	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00d83470	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00d84bb0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00d86c30	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00da30b0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00daab70	binders respelled	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00db0600	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 107; retargeted spellings at 0x00db0660
+0x00dc3fc0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00df10d0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e0b020	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e1a800	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e1b1f0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e2a320	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e337c0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103, entry 104; retargeted spellings at 0x0143e8f8
+0x00e398f0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e3b320	binders respelled	RELOCATION_MATCH	PASS	1	entry 77; retargeted spellings at 0x00cbe2ff
+0x00e53c70	binders respelled	RELOCATION_MATCH	PASS	1	entry 103, entry 104; retargeted spellings at 0x0143e8f8
+0x00e54310	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e57aa0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e57bb0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00e5d0b0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00e62830	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e6ea30	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e6f1c0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e6f710	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e6fc40	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e71450	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e71980	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e73410	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e73930	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e74d70	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x0122dedc
+0x00e755f0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00e7e640	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00e9c360	binders respelled	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00e9cfd0	binders respelled	RELOCATION_MATCH	PASS	2	retargeted spellings at 0x0122dedc
+0x00e9fb40	binders respelled	RELOCATION_MATCH	PASS	1	entry 103; retargeted spellings at 0x0143e8f8
+0x00ea76e0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00ea80a0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00eae910	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00ed4b10	binders respelled	RELOCATION_MATCH	PASS	2	entry 103; retargeted spellings at 0x0143e8f8
+0x00ed7580	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 108, entry 111; retargeted spellings at 0x01231710 0x01238c8c
+0x00ee40f0	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00ee6c50	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00ee7a20	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x00ee8100	binders respelled	RELOCATION_MATCH	PASS	1	entry 103
+0x00efe9f0	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x0122dedc
+0x0121eba0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 113; retargeted spellings at 0x013bace4
+0x0121ebc0	self-row rename/respell + binders	RELOCATION_MATCH	PASS	1	entry 114; retargeted spellings at 0x013bace8
+0x01224ce0	binders respelled	RELOCATION_MATCH	PASS	1	entry 106; retargeted spellings at 0x0143e934
+0x0122a550	binders respelled	RELOCATION_MATCH	PASS	1	retargeted spellings at 0x013bca20

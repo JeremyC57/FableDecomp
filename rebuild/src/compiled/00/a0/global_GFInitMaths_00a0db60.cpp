@@ -21,7 +21,7 @@ extern "C" double __cdecl asin(double x);
 #pragma intrinsic(sqrt, cos, acos, asin)
 
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-extern float g_CosTable[1026];                      // 0x013CD550
+extern float GFastCosTable[1026];                  // 0x013CD550 ?GFastCosTable@@3PAMA (PDB float[1025]; this row's bound kept)
 extern float g_ACosTable[1028];                     // 0x013CB530
 extern float g_ASinTable[1028];                     // 0x013CC540
 
@@ -38,8 +38,8 @@ void __fastcall GFInitMaths()
     GFastOneOverSqrtTable[64] = 0xFF;
 
     for (i = 0; i < 1024; ++i)
-        g_CosTable[i] = (float)cos((float)(i * 2) * 0.0030679617f);
-    g_CosTable[1024] = g_CosTable[0];
+        GFastCosTable[i] = (float)cos((float)(i * 2) * 0.0030679617f);
+    GFastCosTable[1024] = GFastCosTable[0];
 
     for (i = 0; i < 1025; ++i)
         g_ACosTable[i] = (float)acos((float)i * 0.0019512195f - 1.0f);

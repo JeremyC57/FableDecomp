@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 class CMaterialDef { public: int refs; int destroyed; unsigned long Flags; void Release() { if (--refs == 0) ++destroyed; } };
-struct CVillage { bool cookTime; bool IsCookTime() { return cookTime; } };
+struct CVillage { bool cookTime; bool IsStoryTime() const { return cookTime; } };
 class CThing { public: CThing* workplace; bool hasVillager; CVillage* village; CMaterialDef* material; };
 static CVillage* GFGetPVillageInterface(CThing* t) { return t->village; }
 static int g_lookups = 0;
@@ -20,7 +20,7 @@ static bool IsRunnable(CThing* creature)
                 ++material->refs;
                 bool result = false;
                 if ((material->Flags & 4) && home->hasVillager) {
-                    if (GFGetPVillageInterface(home) && GFGetPVillageInterface(home)->IsCookTime()) {
+                    if (GFGetPVillageInterface(home) && GFGetPVillageInterface(home)->IsStoryTime()) {
                         int index = GetDefGlobalIndexFromName("STORY_PLACE_MARKER");
                         CThing* marker;
                         if (GetPBestThing(index, &marker)) result = true;

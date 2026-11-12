@@ -1,21 +1,19 @@
-// std::_Rb_tree::equal_range(const key_type& k) -- STLport tree equal_range over the 0x30-node tree of the 0x00776AA0 family: the lower and upper bound of a signed 4-byte key, returned as an iterator pair
-// Leaf: ?equal_range@?$_Rb_tree@
+// std::_Rb_tree::equal_range(const key_type& k) -- STLport tree equal_range over map<long, CShopItem>'s tree: the lower and upper bound of a signed 4-byte key, returned as an iterator pair
+// Leaf: ?equal_range@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@U12@@2@ABJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007776A0, 83 bytes, `ret 8` (thiscall: hidden pair<iterator,iterator> result + key
 //   reference).
 // Identity: STLport 4.6 `pair<iterator,iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(
 //   lower_bound(__x), upper_bound(__x)); }` with _M_lower_bound / _M_upper_bound inlined (arguments evaluate right to
 //   left, so the upper-bound walk comes first, into edi). Its only caller is 0x00777B43 in the tree's `erase(const key&)`
 //   0x00777B30 (equal_range, then __distance 0x00776CF0, then the landed range erase 0x007775B0, return the count), the
-//   same instantiation as the landed 0x00777520 constructor / 0x00777560 / 0x00777A40 rows: the key/value types are the
-//   per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_00776aa0 used there (signed key at node +0x10, node
-//   0x30). Catalog row was the placeholder `_gapscan::sub_007776a0`.
+//   same instantiation as the landed 0x00777520 constructor / 0x00777560 / 0x00777A40 rows: the key/value types are
+//   map<long, CShopItem>'s (FAM12: was the placeholders CUnprovenKey/Value/KeyOfValue_00776aa0; agentFAM07 / FAM11 proved this tree
+//   map<long, CShopItem> = CTCShop::Stock, Ego_r.pdb, and the landed erase 0x00777B30 binds this exact spelling; signed long key at
+//   node +0x10, node 0x30). Catalog row was the placeholder `_gapscan::sub_007776a0`.
 // Shape: the header pointer is loaded once (`mov ecx,[ecx]`) and doubles as both walks' "not found" node; signed
 //   compares (`jge` for `k < key(x)`, `jl` for `key(x) < k`). The iterator needs STLport's user copy constructor (from the
 //   non-const iterator): with the implicit one VC stores pair.second first and sinks pair.first below the pops.
-struct CUnprovenKey_00776aa0 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_00776aa0& __x, const CUnprovenKey_00776aa0& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_00776aa0 { CUnprovenKey_00776aa0 _M_key; unsigned char _M_unproven[28]; };
-struct CUnprovenKeyOfValue_00776aa0 { const CUnprovenKey_00776aa0& operator()(const CUnprovenValue_00776aa0& __v) const { return __v._M_key; } };
+#include "engine/CShopItem.h"
 
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
@@ -25,11 +23,17 @@ public:
     _Value _M_data;
 };
 template <class _T1, class _T2> struct pair {
+    typedef _T1 first_type;
+    typedef _T2 second_type;
     _T1 first;
     _T2 second;
     pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) { }
 };
 template <class _Arg1, class _Arg2, class _Result> struct binary_function { };
+template <class _Arg, class _Result> struct unary_function { };
+template <class _Pair> struct _Select1st : public unary_function<_Pair, typename _Pair::first_type> {
+    const typename _Pair::first_type& operator()(const _Pair& __x) const { return __x.first; }
+};
 template <class _Tp> struct less : public binary_function<_Tp, _Tp, bool> {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -112,7 +116,7 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_upper_bound(const _Key
     return __y;
 }
 
-typedef _Rb_tree<CUnprovenKey_00776aa0, CUnprovenValue_00776aa0, CUnprovenKeyOfValue_00776aa0,
-                 less<CUnprovenKey_00776aa0>, allocator<CUnprovenValue_00776aa0> > _Tree_00776aa0;
-template pair<_Tree_00776aa0::iterator, _Tree_00776aa0::iterator> _Tree_00776aa0::equal_range(const CUnprovenKey_00776aa0&);
+typedef _Rb_tree<long, pair<const long, CShopItem>, _Select1st<pair<const long, CShopItem> >,
+                 less<long>, allocator<pair<const long, CShopItem> > > _Tree_CShopItem;
+template pair<_Tree_CShopItem::iterator, _Tree_CShopItem::iterator> _Tree_CShopItem::equal_range(const long&);
 }

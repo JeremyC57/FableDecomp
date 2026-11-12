@@ -1,0 +1,6 @@
+address	name	grade	grades_used	note
+00eb40c0	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoWatchingForTrouble	RELOCATION_MATCH	3	ported onto CV_MurderTwistFinalScript.h + shared MovieBase/pause guard/TRetVoid; the talk arm falls through into the threat test (no else)
+006ec850	CDefendingCombatantInfo::CCombatWheel::Init	DIFFER(1606v1606)	9	ported (true identity Init, not PopulateCombatRings); only frame 0x3c v 0x30 remains (pair temps not sharing the GetTC key slot); 6+ unchanged grades
+00a8ad40	C3DMesh2::LoadBinary	DIFFER(1621v1621)	8	ported onto C3DMesh2/C3DMeshStats/CMemoryDataInputStream; count register allocation remains; stopped on the unchanged rule
+0090e5d0	CAIStateGroup_BanditGossip::Update	DIFFER(1362v1367)	11	full port (from about 70 hunks to 10); frame +8 temp slots, solid-TC register order, AddTC creature reload remain
+00d39960	NScript::CQ_FireHeartScript::StartRound	RELOCATION_MATCH	3	TRetVoid _Fail_Val + return _Fail_Val.Return() at every exit fixed the post-loop block placement

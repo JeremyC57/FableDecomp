@@ -8,7 +8,7 @@
 //   "Math_InterpolateSineLookup_Alt" is wrong in kind: the table holds cosines and this variant has no quarter-turn shift.
 // Globals: cosine table 0x013CD550 (see 0x00A0DBB0), 1024.0f 0x01230010, 0.5f 0x0122F59C, 1.0f 0x0122DED8.
 // Shape: identical to GFFastSin 0x00A147E0 without the `add eax,-256`.
-extern float g_CosTable[1025];          // 0x013CD550: cos(2*pi*k/1024), k = 0..1024
+extern float GFastCosTable[1025];      // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2*pi*k/1024), k = 0..1024)
 
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
 #include "engine/GFFloatToLongNear.h"
@@ -19,5 +19,5 @@ float __fastcall GFFastCos(float angle)
     long i = GFFloatToLongNear(angle - 0.5f);
     float frac = angle - (float)i;
     i &= 0x3ff;
-    return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
+    return (1.0f - frac) * GFastCosTable[i] + frac * GFastCosTable[i + 1];
 }

@@ -14,6 +14,11 @@
 #if defined(FABLE_RETAIL_CTCINGAMEMENU_OPENPC) || defined(FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD)
 namespace NUISystem { class CComponent; class CYesNo; }
 #endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS
+#ifndef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
+#error "CTCInGameMenu.h: FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS needs FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD (the native member layout)"
+#endif
+#endif
 class CTCInGameMenu : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_IN_GAME_MENU; }
@@ -28,6 +33,16 @@ public:
     // Retail opt-in (Codex pass19): both original PDB signatures and native offsets.
     void SetToSave(long);
     void PCSetToLoad(long);
+#endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS
+    // agentQ7 (2026-11-11, rows 0x0047E651 / 0x0047F30F / 0x0047E9AE): Ego_r.pdb / FableWin.pdb ?VideoOptionsChanged@CTCInGameMenu@@QAEXXZ,
+    // ?VideoOptionsNotAccepted@CTCInGameMenu@@QAEXXZ, ?SaveGame@CTCInGameMenu@@QAEXJ@Z (0x0047E196) and the CTCBase slot-26 override
+    // ?GlobalUpdate@CTCInGameMenu@@UAEX_N@Z, plus the two video dialogs and the revert timer at their retail offsets (Ego_r +0xD0 /
+    // +0xD4 / +0xE0, 0x20 lower with the 12-byte STLport vectors: the rows read +0xB0 / +0xB4 / +0xC0).
+    void VideoOptionsChanged();                                      // 0x0047E651
+    void VideoOptionsNotAccepted();                                  // 0x0047F30F
+    void SaveGame(long);                                             // 0x0047E196
+    virtual void GlobalUpdate(bool);                                 // 0x0047E9AE (slot 26)
 #endif
 private:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x0047F58B
@@ -45,9 +60,20 @@ private:
     std::vector<CCharString> FileRegionMiniMapNames;                 // +0x84
     std::vector<long>        FilePlayTimes;                          // +0x90
 #ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS
+    unsigned char _pad_0x9c[0xb0 - 0x9c];
+    NUISystem::CYesNo* PVideoOptionsNotAcceptedDialog;                // +0xb0
+    NUISystem::CYesNo* PVideoOptionsChangedDialog;                    // +0xb4
+#else
     unsigned char _pad_0x9c[0xb8 - 0x9c];
+#endif
     long SaveGameToLoad;
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_VIDEODIALOGS
+    unsigned char _pad_0xbc[0xc0 - 0xbc];
+    double VideoChangesTimer;                                        // +0xc0
+#else
     unsigned char _pad_0xbc[0xc8 - 0xbc];
+#endif
     long SaveGameIndex;
     long FramesToWaitToSave;
     NUISystem::CComponent* PSaveInProgress;
@@ -59,6 +85,14 @@ private:
     unsigned char _pad_0xf4[4];
 #else
     unsigned char _pad_0x9c[0xf8 - 0x9c];                            // +0x9c .. PYesNo (generated header below)
+#endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x0048616C
+public:
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInGameMenu) == 0xf8);

@@ -26,6 +26,11 @@ public:
   return &GFGetPrimitiveFromHandle(ParentHandle);
  }
  void UndoMatrixConversion(CMatrix3x4&)const;
+#ifdef FABLE_RETAIL_CENGINEINTERNALATTACHEDPRIMITIVE_PARENTTRANSFORM
+ // Retail opt-in (chunk Q21): Ego_r.pdb / FableWin.pdb ?GetParentTransformAnimatedMesh@CEngineInternalAttachedPrimitive@@QAE_NAAVCMatrix3x4@@M@Z
+ // (retail 0x00B39080). Declaration only.
+ bool GetParentTransformAnimatedMesh(CMatrix3x4&,float);
+#endif
  void RedoMatrixConversion(CMatrix3x4&)const;
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
  bool GetParentWorldSpaceBoundingSphereAnimatedMesh(C3DBoundingSphere&,float);

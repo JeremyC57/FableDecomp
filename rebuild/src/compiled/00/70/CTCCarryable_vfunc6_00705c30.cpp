@@ -16,6 +16,7 @@
 // right after the call and released by hand at the end (null test, `dec [edi+4] ; jne`). The
 // vector is the implicit C3DVector assignment, then the landed GetLengthSquared > eps*eps test
 // (0x008059F0 form).
+// Name fix (agentNF24): 0x005CC10E respelled the const member template CDefClassBase::GetSubDef<CCarryableDef> (Ego_r/FableWin ??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z, the landed row's own leaf; was non-template non-const)
 #include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C (0.0001f)
 
@@ -38,7 +39,7 @@ class CCarryableDef : public CDefPointeeBase { public:
 };
 
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<const CCarryableDef>* out);   // 0x005CC10E GetSubDef<CCarryableDef>
+    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x005CC10E GetSubDef<CCarryableDef> (Ego_r/FableWin const member template)
 };
 
 class CThing { public:

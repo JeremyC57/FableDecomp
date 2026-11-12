@@ -1,0 +1,84 @@
+// CInputProcessPhotojournalCapture::HasFrameUpdate() const -- returns true
+// Leaf: ?HasFrameUpdate@CInputProcessPhotojournalCapture@@UBE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00486C20, thiscall, `ret`.
+// Identity: slot 9 of CInputProcessPhotojournalCapture's vtable 0x01237EC8 (defined here: the slot holds this body in 1 vtable(s), all of CInputProcessPhotojournalCapture or derived); the Xbox 360 Test PDB virtual order (third source) aligned on 7 TLC-named slots of that vtable puts HasFrameUpdate(void) at this slot; Ego_r/FableWin name set: ?HasFrameUpdate@CInputProcessPhotojournalCapture@@UBE_NXZ; `ret` matches the signature.
+// Header: engine/CInputProcessPhotojournalCapture.h (opt-ins as in the landed row CPlayer_InitInterfaces_00488d10.cpp).
+#define FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_VSLOTS
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_INPUTPROCESSES
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_SCOPED_PTR_RESET
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CPlayer.h"
+#include "engine/CInputProcessBButtonExitMode.h"
+#include "engine/CInputProcessBetting.h"
+#include "engine/CInputProcessBlock.h"
+#include "engine/CInputProcessBoastUI.h"
+#include "engine/CInputProcessCameraLookAround.h"
+#include "engine/CInputProcessClickPastText.h"
+#include "engine/CInputProcessCombat.h"
+#include "engine/CInputProcessConsole.h"
+#include "engine/CInputProcessControlCreature.h"
+#include "engine/CInputProcessControlCreatureActivateZTarget.h"
+#include "engine/CInputProcessControlCreatureActivateZTargetOnPress.h"
+#include "engine/CInputProcessControlCreatureRightStick.h"
+#include "engine/CInputProcessControlFreeCamera.h"
+#include "engine/CInputProcessControlSpirit.h"
+#include "engine/CInputProcessCreatureMovement.h"
+#include "engine/CInputProcessCreatureMovementWatchForControlAngleChange.h"
+#include "engine/CInputProcessCreditsUI.h"
+#include "engine/CInputProcessCutScene.h"
+#include "engine/CInputProcessCycleSpecialCameraModes.h"
+#include "engine/CInputProcessDead.h"
+#include "engine/CInputProcessDebugControls.h"
+#include "engine/CInputProcessDigging.h"
+#include "engine/CInputProcessFireheartMinigame.h"
+#include "engine/CInputProcessFirstPerson.h"
+#include "engine/CInputProcessFirstPersonLookAround.h"
+#include "engine/CInputProcessFirstPersonTargeting.h"
+#include "engine/CInputProcessFishing.h"
+#include "engine/CInputProcessFreezeControls.h"
+#include "engine/CInputProcessHeroAbilitiesScreen.h"
+#include "engine/CInputProcessHeroInformationScreens.h"
+#include "engine/CInputProcessInGameMenu.h"
+#include "engine/CInputProcessInventory.h"
+#include "engine/CInputProcessInventoryClothing.h"
+#include "engine/CInputProcessInventoryExperienceScreen.h"
+#include "engine/CInputProcessInventoryMagicScreen.h"
+#include "engine/CInputProcessInventoryMapScreen.h"
+#include "engine/CInputProcessInventoryQuestsScreen.h"
+#include "engine/CInputProcessInventoryStatsScreen.h"
+#include "engine/CInputProcessInventoryTradeScreen.h"
+#include "engine/CInputProcessInventoryWeapons.h"
+#include "engine/CInputProcessJumpingAndRolling.h"
+#include "engine/CInputProcessLightning.h"
+#include "engine/CInputProcessMain.h"
+#include "engine/CInputProcessOracleMinigame.h"
+#include "engine/CInputProcessParalysed.h"
+#include "engine/CInputProcessPhotojournalCapture.h"
+#include "engine/CInputProcessProjectileTargetingAnalogueZoom.h"
+#include "engine/CInputProcessQuestCompletionUI.h"
+#include "engine/CInputProcessQuickAccessItems.h"
+#include "engine/CInputProcessQuickAccessMenu.h"
+#include "engine/CInputProcessRebootGame.h"
+#include "engine/CInputProcessSetRangedWeaponMode.h"
+#include "engine/CInputProcessSetRangedWeaponThirdPersonMode.h"
+#include "engine/CInputProcessSpecialAbilities.h"
+#include "engine/CInputProcessStrafe.h"
+#include "engine/CInputProcessTargetLockCycleTargets.h"
+#include "engine/CInputProcessTargetLockRightStickTargetSelect.h"
+#include "engine/CInputProcessTavernGame.h"
+#include "engine/CInputProcessToggleViewHeroMode.h"
+#include "engine/CInputProcessUseEnvironment.h"
+#include "engine/CInputProcessUseRangedWeapon.h"
+#include "engine/CInputProcessUseRangedWeaponZLock.h"
+#include "engine/CInputProcessWatchForRangedWeaponThirdPersonModeTermination.h"
+#include "engine/CInputProcessWatchForWillChargeUpThirdPersonModeTermination.h"
+#include "engine/CInputProcessYesNoQuestion.h"
+#include "engine/CInputProcessZTarget.h"
+bool CInputProcessPhotojournalCapture::HasFrameUpdate() const
+{
+    return true;
+}

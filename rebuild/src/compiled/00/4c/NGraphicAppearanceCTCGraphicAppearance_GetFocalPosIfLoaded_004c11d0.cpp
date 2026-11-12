@@ -12,6 +12,9 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC48 MAIN_FOCAL_POSITION_NAME (global, const; initializer 0x0121E6C0), was g_FocalPointHelperName.
 #include "engine/C3DVector.h"
 
 class CTCAnimationBase;
@@ -63,7 +66,7 @@ struct CComponentList {                                 // STLport list<CAGraphi
     CComponentListNode* m_head;
 };
 
-extern const CCharString g_FocalPointHelperName;        // 0x013BAC48
+extern const CCharString MAIN_FOCAL_POSITION_NAME;        // 0x013BAC48
 
 #pragma pack(push, 2)
 class CEngineGraphic { public:                                 // 14 bytes (PDB size 14)
@@ -110,7 +113,7 @@ class CTCGraphicAppearance { public:
 
 bool CTCGraphicAppearance::GetFocalPosIfLoaded(C3DVector* position, float time)
 {
-    return GetHelperPoint(g_FocalPointHelperName, 0, 2, *position, time) ? true : false;
+    return GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, 2, *position, time) ? true : false;
 }
 
 }

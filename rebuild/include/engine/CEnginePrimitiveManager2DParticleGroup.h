@@ -11,12 +11,20 @@
 #pragma pack(push, 1)
 class CEnginePrimitiveManager2DParticleGroup {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x00B4B060 CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CEnginePrimitiveManager2DParticleGroup();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _base_0x04[0x24];                          // +0x04 flattened base-class subobject(s)
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManager2DParticleGroup, __vftable) == 0x0);
+#endif
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_H

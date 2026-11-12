@@ -9,6 +9,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_RELEASETIMESPELL
+// Q19 opt-in (row 0x008CDD40 FinishAction): the polymorphic retail class, RTTI .?AVCCreatureAction_ReleaseTimeSpell@@ :
+// CCombatActionBase (retail 0x114) with the Ego_r.pdb member HasteKey (void*, Ego_r +300, retail +0x114; sizeof 0x118). Ego_r.pdb
+// ??0CCreatureAction_ReleaseTimeSpell@@QAE@PAXAAVCThingCreatureBase@@ABVCCharString@@@Z, ?FinishAction@..@@UAEXXZ (0x008CDD40),
+// ?Clone@..@@UBEPAVCCreatureActionBase@@XZ. Needs engine/CCombatActionBase.h (FABLE_RETAIL_CCREATUREACTIONBASE). The generated
+// opaque model stays in the #else.
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase; class CCharString;
+class CCreatureAction_ReleaseTimeSpell : public CCombatActionBase {
+public:
+    CCreatureAction_ReleaseTimeSpell(void* haste_key, CThingCreatureBase& creature, const CCharString& animation);
+    virtual void FinishAction();                                         // 0x008CDD40
+private:
+    virtual CCreatureActionBase* Clone() const;
+    void* HasteKey;                                                      // +0x114
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseTimeSpell) == 0x118);
+#else
+
 #pragma pack(push, 1)
 class CCreatureAction_ReleaseTimeSpell {
 public:
@@ -81,4 +100,5 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseTimeSpell) == 0x118);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ReleaseTimeSpell, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ReleaseTimeSpell, HasteKey) == 0x114);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_RELEASETIMESPELL
 #endif // FABLE_ENGINE_CCREATUREACTION_RELEASETIMESPELL_H

@@ -1,0 +1,110 @@
+addr       parity           behav  name
+005e4be0   RELOCATION_MATCH PASS   GetQuestDescription
+007c1000   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007c1000   WARN RELOC_NAME: ?SetCreator@CThingNoise@@QAEXABVCThing@@@Z -> 008386e0 labelled 'CThingNoise::PassToNoiseComponent'
+007c1000   RELOCATION_MATCH PASS   OnCollisionProper
+00804020   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_IsNot@@VCThingFilter_IsTargetable@@VCThingFilter_IsInTargetingRangeAndFOV@?A0x679bfd01@@VCThingFilter_IsInSameVolumeContextAsThing@@VCThingFilter_IsValidTargetForPlayerCreature@4@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind5@VCThingFilter_IsNot@@VCThingFilter_IsTargetable@@VCThingFilter_IsInTargetingRangeAndFOV@?A0x679bfd01@@VCThingFilter_IsInSameVolumeContextAsThing@@VCThingFilter_IsValidTargetForPlayerCreature@4@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 00809a70 labelled 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303::CThingFilter_IsAffectedByExplosions>_>'
+00804020   WARN RELOC_NAME: ??$__find_if@PAVCTargetPoint@NPlayerTargeting@@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0x679bfd01@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0x679bfd01@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@0V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0x679bfd01@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0x679bfd01@@@std@@@@ABUrandom_access_iterator_tag@0@@Z -> 00807c30 labelled 'std_remove_if_ByPredicate'
+00804020   WARN RELOC_NAME: ?erase@?$vector@VCTargetPoint@NPlayerTargeting@@V?$allocator@VCTargetPoint@NPlayerTargeting@@@std@@@std@@QAEPAVCTargetPoint@NPlayerTargeting@@PAV34@0@Z -> 00808520 labelled '_global::NPlayerTargeting_CTargetPoint_Vector_Assign'
+00804020   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00804020   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCTargetPoint@NPlayerTargeting@@PAV12@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PBV12@0PAV12@ABU__false_type@0@@Z -> 00807980 labelled '_global::UninitCopy_CTargetPoint_00807980'
+00804020   WARN RELOC_NAME: ?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ -> 00445b80 labelled '_global::GetMember_dword0x7a0_derefbyte0x48_00445b80'
+00804020   RELOCATION_MATCH PASS   UpdateTargetList
+00afcc30   NOT_GENUINE      -      PreparePrimitives
+00b13530   RELOCATION_MATCH PASS   DatabaseSerialise
+00d1b200   WARN RELOC_NAME: ??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ -> 00d15140 labelled 'CMainGameComponentInit::CMainGameComponentInit'
+00d1b200   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00d1b200   WARN RELOC_NAME: ?WatchForLeaderChargeGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ -> 00d1cac0 labelled 'NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled'
+00d1b200   RELOCATION_MATCH PASS   Main
+00d2d930   RELOCATION_MATCH PASS   Main
+00d3e2e0   RELOCATION_MATCH PASS   Main
+00d56790   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d56790   RELOCATION_MATCH PASS   Main
+00d62480   RELOCATION_MATCH PASS   Main
+00d706e0   RELOCATION_MATCH PASS   Main
+00daf080   RELOCATION_MATCH PASS   Main
+00db5330   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00db5330   RELOCATION_MATCH PASS   Main
+00dbb310   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dbb310   WARN RELOC_NAME: ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac2d0 labelled 'CUnprovenContainer_009ac2d0::CUnprovenContainer_009ac2d0'
+00dbb310   WARN RELOC_NAME: ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac310 labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+00dbb310   RELOCATION_MATCH PASS   Main
+00ddf090   RELOCATION_MATCH PASS   Main
+00de2610   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00de2610   RELOCATION_MATCH PASS   Main
+00de6c20   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00de6c20   RELOCATION_MATCH PASS   Main
+00e2ff00   RELOCATION_MATCH PASS   Main
+00e7c8e0   RELOCATION_MATCH PASS   Main
+00e90be0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e90be0   RELOCATION_MATCH PASS   Main
+00ebcf70   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00ebcf70   RELOCATION_MATCH PASS   Main
+00ec68a0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ec68a0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec68a0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00ec68a0   RELOCATION_MATCH PASS   Main
+00ec8300   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec8300   RELOCATION_MATCH PASS   Main
+00ec9d30   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec9d30   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ec9d30   RELOCATION_MATCH PASS   Main
+00ecf7f0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00ecf7f0   RELOCATION_MATCH PASS   Main
+00ed5f50   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00ed5f50   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ed5f50   RELOCATION_MATCH PASS   Main
+
+WINS: 25
+  005e4be0 RELOCATION_MATCH CTCQuestCompletionUI::?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z
+  007c1000 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::?OnCollisionProper@CTCShotDefinitionBase@NThingShot@@IAEXAA_N@Z
+  00804020 RELOCATION_MATCH CTCTargetingPlayer::?UpdateTargetList@CTCTargetingPlayer@@IAEXXZ
+  00b13530 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?DatabaseSerialise@CPSCEmitterGeneric@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00d1b200 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangLeader::?Main@CBH_GangLeader@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00d2d930 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades::?Main@CEndGameJackOfBlades@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+  00d3e2e0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::?Main@CApprenticeSpeedTest@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d56790 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::?Main@CMeleeOpponent@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ
+  00d62480 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::?Main@CArtifactThief@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+  00d706e0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?Main@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00daf080 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::?Main@CNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00db5330 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::?Main@CNOVI_BarrelMan@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00dbb310 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::?Main@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00ddf090 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::CPrisonWarden::?Main@CPrisonWarden@CQ_PrisonWardenGameScript@NScript@@EAEXXZ
+  00de2610 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsFatherGuard::?Main@CVictimsFatherGuard@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de6c20 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictim::?Main@CVictim@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00e2ff00 RELOCATION_MATCH NScript::CV_AmbushScamScript::CAS_Buddy::?Main@CAS_Buddy@CV_AmbushScamScript@NScript@@EAEXXZ
+  00e7c8e0 RELOCATION_MATCH NScript::CV_FishermanScript::CFisherman::?Main@CFisherman@CV_FishermanScript@NScript@@EAEXXZ
+  00e90be0 RELOCATION_MATCH NScript::CV_GuildMasterScript::CGuildMasterGameFlow::?Main@CGuildMasterGameFlow@CV_GuildMasterScript@NScript@@EAEXXZ
+  00ebcf70 RELOCATION_MATCH NScript::CV_OracleScript::CVO_OracleMarker::?Main@CVO_OracleMarker@CV_OracleScript@NScript@@EAEXXZ
+  00ec68a0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildsSister::?Main@CSickChildsSister@CV_SickChildScript@NScript@@EAEXXZ
+  00ec8300 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?Main@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+  00ec9d30 RELOCATION_MATCH NScript::CV_SickChildScript::CMansLover::?Main@CMansLover@CV_SickChildScript@NScript@@EAEXXZ
+  00ecf7f0 RELOCATION_MATCH NScript::CV_SickChildScript::CWomanToAttract::?Main@CWomanToAttract@CV_SickChildScript@NScript@@EAEXXZ
+  00ed5f50 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::CSwordCrowd::?Main@CSwordCrowd@CV_SwordInTheStoneScript@NScript@@EAEXXZ
+
+LANDED 25 wins into src/compiled + tests + catalog + oracle
+  CTCQuestCompletionUI_GetQuestDescription_005e4be0
+  NThingShotCTCShotDefinitionBase_OnCollisionProper_007c1000
+  CTCTargetingPlayer_UpdateTargetList_00804020
+  NParticleEngineCPSCEmitterGeneric_DatabaseSerialise_00b13530
+  NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200
+  NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930
+  NScriptCQGuildTrainingScriptCApprenticeSpeedTest_Main_00d3e2e0
+  NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Main_00d56790
+  NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_Main_00d62480
+  NScriptCQHangingTreeGoodScriptCHTGGuard_Main_00d706e0
+  NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_Main_00daf080
+  NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_Main_00db5330
+  NScriptCQNewOakValeIntroScriptCNOVIBully_Main_00dbb310
+  NScriptCQPrisonWardenGameScriptCPrisonWarden_Main_00ddf090
+  NScriptCQRansomVictimScriptCVictimsFatherGuard_Main_00de2610
+  NScriptCQRansomVictimScriptCVictim_Main_00de6c20
+  NScriptCVAmbushScamScriptCASBuddy_Main_00e2ff00
+  NScriptCVFishermanScriptCFisherman_Main_00e7c8e0
+  NScriptCVGuildMasterScriptCGuildMasterGameFlow_Main_00e90be0
+  NScriptCVOracleScriptCVOOracleMarker_Main_00ebcf70
+  NScriptCVSickChildScriptCSickChildsSister_Main_00ec68a0
+  NScriptCVSickChildScriptCManInLove_Main_00ec8300
+  NScriptCVSickChildScriptCMansLover_Main_00ec9d30
+  NScriptCVSickChildScriptCWomanToAttract_Main_00ecf7f0
+  NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50

@@ -24,16 +24,14 @@ class CGameTimeManager { public:
     float               SecondsLeftToFastForwardTime;   // +0x28
     void FastForwardTimeTo(float time, float seconds);
 };
-extern const float g_zero_0122dedc;                // 0x0122DEDC (0.0f)
-extern const float g_one_0122ded8;                 // 0x0122DED8 (1.0f)
 extern const float DELTA_NOTIONAL_ZERO;                // 0x0129BA3C (0.0001f)
 
 void CGameTimeManager::FastForwardTimeTo(float time, float seconds)
 {
-    if (time < g_zero_0122dedc)
-        time = g_zero_0122dedc;
-    else if (time > g_one_0122ded8)
-        time = g_one_0122ded8;
+    if (time < 0.0f)
+        time = 0.0f;
+    else if (time > 1.0f)
+        time = 1.0f;
     if (seconds > DELTA_NOTIONAL_ZERO) {
         TimeFastForwardingTo = time;
         FastForwardingToTime = true;

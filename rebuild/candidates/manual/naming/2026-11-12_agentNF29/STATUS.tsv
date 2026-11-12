@@ -1,0 +1,70 @@
+address	change	grade	test	grades_used	note
+00761b10	caller respell DrawShapes(const&,const&) private	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+007617a0	self rename NShape::CShape EditorDrawHighlightPoints const refs + AddPrimitive	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00760910	self rebuild on shared headers GetStartPoint (leaf full)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf71d0	caller respell Render(bool,long&,bool&) + unused SEngine_01436ea8 stand-in removed	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	3	final regrade RELOCATION_MATCH
+00be8ff0	self rename CArray<CEngineWaterBackgroundSubPatch*>::push_back	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00be8f10	self rename element CEngineWaterBackgroundSubPatch	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+0081ef30	self respell protected IAE + unsigned long layer	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+0063dfd0	caller respell CopyPos protected const (friend CWorldMap)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00643d5d	self rename ScaleAlpha member on shared headers (SCALEALPHA overlay opt-in)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	5	final regrade RELOCATION_MATCH
+0064be45	member respell FlourishEffect / PMeleeAbilityDef	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00645099	callee respell CIEngine::SetPersistentPrimitive via shared headers (row rebuilt on 00646580 header set)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+0052c780	vslot respell GetState x2 (slot 135 non-const call, slot 134 const)	MATCH	PASS (repo test, catalog PassPattern)	2	final regrade MATCH
+005546f0	vslot 135 respell GetStateInfo/GetStateData/OnStateChanged -> GetState	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00554110	vslot 135 respell GetStateInfo/GetStateData/OnStateChanged -> GetState	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00543d30	vslot 135 respell GetStateInfo/GetStateData/OnStateChanged -> GetState	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00543ee0	vslot 135 respell GetStateInfo/GetStateData/OnStateChanged -> GetState	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00543df0	vslot 135 respell GetStateInfo/GetStateData/OnStateChanged -> GetState	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+0052cab0	vslot 134/135 decl respell GetState pair	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+0052c730	vslot 134/135 decl respell GetState pair	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+0041c5e0	vslot 134/135 decl respell GetState pair	MATCH	PASS (repo test, catalog PassPattern)	2	final regrade MATCH
+004baef0	self rename CCountedPointer<CQuestManager::CActiveQuest>::DeleteData (explicit instantiation)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+004bb200	binder self rename CCountedPointer<CQuestManager::CActiveQuest>::Reset (stand-in class -> header)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00a91180	caller respell N3DPrimitive::CAnimatedBlock::ConvertToVBFormatBump / ConvertToVBFormatNonBump (private, refs)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00645605	self rename NPlayerGui::CDrawQuickAccessIcons::ClearEffects	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00438230	caller respell ClearDisplay -> ClearEffects (CDrawQuickAccessIcons)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+006451dd	enumerator respell ENGINE_2D_LAYER_0 (local enum)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00aeaaf0	self rename NParticleEngine::GetParticleEmitterManager (made-up GetGlobal)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00643d8c	caller respell NParticleEngine::GetParticleEmitterManager	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+005e9b10	self rename CTCTavernGame::HideMesh (static fastcall, shared headers)	MATCH	PASS (repo test, catalog PassPattern)	3	final regrade MATCH
+0065d624	self rename explicit instantiation IS_THING_ALIVE<CThingBuilding*>	MATCH	PASS (repo test, catalog PassPattern)	2	final regrade MATCH
+00658ec3	caller respell: stand-in body made the IS_THING_ALIVE<CThingBuilding*> specialization	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00989b00	self respell unsigned long index (Leaf QAEXKMMMM)	MATCH	PASS (repo test, catalog PassPattern)	2	final regrade MATCH
+007fefc0	self respell GetName(long, CCharString&)	RELOCATION_MATCH	PASS (respelled test rows/007fefc0_test.cpp, OK_007fefc0)	3	final regrade RELOCATION_MATCH
+007b9090	self rename CTCTavernTable::FreeServingPoint	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009bebb0	access fix: private (ABE) so the compiled symbol matches the Leaf	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00408340	self respell SetSoundAsMuted(bool) on shared header (SETSOUNDASMUTED overlay opt-in)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00406610	self: return type CWideString (fable_string.h) + shared CUserProfileManager.h SAVENAMES	RELOCATION_MATCH	PASS (respelled test rows/00406610_test.cpp)	4	final regrade RELOCATION_MATCH
+009b4ff0	local CDefinitionManager shell -> shared header CINSTANTIATEDEFINFO_DECL opt-in	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bdf9e0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf8ce0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bfbc50	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf9b90	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bdda50	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	MATCH	PASS (repo test, catalog PassPattern)	2	final regrade MATCH
+00bfdd70	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bddcb0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bde020	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bfde20	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf73a0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf5d30	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf6530	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bfc410	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bfc510	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf6b70	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf6ac0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	MATCH	PASS (repo test, catalog PassPattern)	2	final regrade MATCH
+00bf65b0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf38f0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf6a30	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00bf6bf0	g_pLandscapeRenderer respell (SEngine_01436ea8 / g_pEngine_01436ea8 -> engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009e3970	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009e3940	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009be930	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00a68250	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009f3230	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009f32a0	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009f3310	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+00a698f0	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009fa280	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	2	final regrade RELOCATION_MATCH
+009fa340	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	3	final regrade RELOCATION_MATCH
+009bf600	GD3DFormats respell (local format table -> engine/CD3DFormatInfo.h)	RELOCATION_MATCH	PASS (repo test, catalog PassPattern)	3	final regrade RELOCATION_MATCH

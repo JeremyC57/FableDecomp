@@ -1,9 +1,9 @@
 // CTCKraken::SetPhase(EKrakenBossPhase phase) -- record the phase and pass it to the boss component; phases 0/3 take the kraken out of combat, phases 1/2 put it in combat against a live target and (re)start the tentacles and head
-// Leaf: SetPhase
+// Leaf: ?SetPhase@CTCKraken@@QAEXJ@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FC820, 180 bytes incl. the four-entry jump table 0x007FC8C4 (`ret 4`).
-// Callees: CTCBase::GetWorld @ 0x00686A70, CTCBoss::SetNextBossPhase(long, bool) @ 0x007AEDA0, CCombatManager::IsCreatureAttacking
-// @ 0x006E92C0, DeregisterCombatant @ 0x006ED9C0, RegisterCombatant @ 0x006EDC50, IS_THING_ALIVE @ 0x004CC340 (`__fastcall`),
+// Callees: CTCBase::GetWorld @ 0x00686A70, CTCBoss::SetNextBossPhase(long, bool) @ 0x007AEDA0, CCombatManager::IsAttacker
+// @ 0x006E92C0 (const; was the descriptive IsCreatureAttacking, agentNF25b), DeregisterCombatant @ 0x006ED9C0, RegisterCombatant @ 0x006EDC50, IS_THING_ALIVE @ 0x004CC340 (`__fastcall`),
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCKraken::CreateTentacles @ 0x007FC210, RaiseSunkenTentacles @ 0x007FB610,
 // EndHeadEffects @ 0x007FB150 (the last three through the inline InitTentaclesAndHead, landed out of line at 0x007FC710).
 // Layout (retail; the VC6-style std::list is a single 4-byte head pointer, so CTCKraken sits 8 below Ego_r.pdb from +0x30): PTarget
@@ -16,7 +16,7 @@ class CThing;
 class CThingCreatureBase;
 
 class CCombatManager { public:
-    bool IsCreatureAttacking(const CThingCreatureBase& creature);               // 0x006E92C0
+    bool IsAttacker(const CThingCreatureBase& creature) const;                  // 0x006E92C0 ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r + FableWin)
     void DeregisterCombatant(CThingCreatureBase* creature);                     // 0x006ED9C0
     void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
 };
@@ -88,12 +88,12 @@ void CTCKraken::SetPhase(EKrakenBossPhase phase)
     switch (Phase) {
     case 0:
     case 3:
-        if (combat->IsCreatureAttacking(*thing))
+        if (combat->IsAttacker(*thing))
             combat->DeregisterCombatant(thing);
         break;
     case 1:
     case 2:
-        if (!combat->IsCreatureAttacking(*thing)) {
+        if (!combat->IsAttacker(*thing)) {
             if (IS_THING_ALIVE(PTarget)) {
                 CThing* target = ((CThing*)PTarget.GetPItem());
                 combat->RegisterCombatant(thing, target, false);

@@ -3,8 +3,8 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // deregistration while still registered) and drop creature mode 0x19 when it is in combat mode.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096EDB0, length 222 bytes (+ int3 padding). Vtable slot 9.
-// Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (three times), the brain world accessor
-// @ 0x008FCFC0 (combat manager +0x4c), CCombatManager::IsCreatureAttacking @ 0x006E92C0 (twice; the second call's
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (three times), the brain world accessor
+// @ 0x008FCFC0 (combat manager +0x4c), CCombatManager::IsAttacker @ 0x006E92C0 (const, by reference: Ego_r + FableWin; was IsCreatureAttacking(ptr), agentNF25b) (twice; the second call's
 // result unused; the same function, not a folded twin), CCombatManager::DeregisterCombatant @ 0x006ED9C0,
 // CThingCreatureBase::IsInCombatMode @ 0x006621A0, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface,
 // 0x31 = CTCCreatureModeManager), CTCCreatureModeManager::RemoveMode(ulong) @ 0x0073ABA0.
@@ -13,6 +13,8 @@
 // the plain member gives `mov ecx,[eax+0x4c]`;
 // the mode-manager lookup used unconditionally with the RemoveMode call duplicated on both paths.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+//   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
 class CTCBase;
 class CThing;
 class CWorld;
@@ -138,7 +140,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
 
 class CThingCreatureBase { public:
-    bool IsRegisteredCombatant();               // 0x00662410 (manifest label C3DAnimationBlendState::AddCombinationBlend propagated)
+    bool IsInMeleeAsAttacker() const;         // 0x00662410 (Ego_r/FableWin ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ; manifest label C3DAnimationBlendState::AddCombinationBlend propagated)
     bool IsInCombatMode();                      // 0x006621A0 (manifest label AreDefaultValsApplied propagated)
 };
 
@@ -147,7 +149,7 @@ enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETU
 class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);   // 0x006EA450
     bool IsAttackerReadyToAttack(CThingCreatureBase* attacker);                  // 0x006E93C0
-    bool IsCreatureAttacking(CThingCreatureBase* creature);                      // 0x006E92C0
+    bool IsAttacker(const CThingCreatureBase& creature) const;                   // 0x006E92C0 ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r + FableWin)
     void DeregisterCombatant(CThingCreatureBase* creature);                      // 0x006ED9C0
 };
 
@@ -170,16 +172,16 @@ void CAIStateGroup_MeleeCombatNearby::Cleanup()
 {
     CThingCreatureBase* creature;
     CWorld* world;
-    if (!((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()
+    if (!((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()
         || (creature = (CThingCreatureBase*)PBrain->PCreature, world = &GetWorld(),
-            world->GetPCombatManager()->IsCreatureAttacking(creature))) {
-        if (!((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()) {
+            world->GetPCombatManager()->IsAttacker(*creature))) {
+        if (!((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
             creature = (CThingCreatureBase*)PBrain->PCreature;
             world = &GetWorld();
-            world->CombatManager->IsCreatureAttacking(creature);   // retail calls 0x006E92C0 again (no ICF in this build: duplicate bodies stay separate)
+            world->CombatManager->IsAttacker(*creature);   // retail calls 0x006E92C0 again (no ICF in this build: duplicate bodies stay separate)
         }
     }
-    if (((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()) {
+    if (((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
         creature = (CThingCreatureBase*)PBrain->PCreature;
         world = &GetWorld();
         world->CombatManager->DeregisterCombatant(creature);

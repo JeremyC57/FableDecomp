@@ -19,8 +19,11 @@ struct CActionAllocator {                        // std::allocator<CCountedPoint
     CActionAllocator() { }
 };
 namespace NUISystem { class CAction; }
-void __fastcall DestroyActionRange(CCountedPointer<NUISystem::CAction>* first, CCountedPointer<NUISystem::CAction>* last,
-                                   const CActionAllocator& allocator);   // 0x0054A1C0
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x0054A1C0 (std::__destroy_aux<T*>)
+}
 template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB 16)
     T* _M_start;
     T* _M_finish;
@@ -30,7 +33,7 @@ template <class T> struct CRetailVector {        // STLport vector (12 bytes; PD
     T& operator[](unsigned int n) const { return *(begin() + n); }
     ~CRetailVector()
     {
-        DestroyActionRange(_M_start, _M_finish, CActionAllocator());
+        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
         if (_M_start)
             free(_M_start);
     }

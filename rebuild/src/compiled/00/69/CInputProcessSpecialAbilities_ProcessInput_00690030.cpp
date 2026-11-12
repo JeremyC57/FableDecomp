@@ -55,6 +55,7 @@ public:
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
+#include "engine/EPlayerMode.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -101,7 +102,7 @@ public:
     bool          AbilitiesEnabled;                // +0x218 (descriptive)
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
     const CThingPlayerCreature* PeekPControlledCreature() const;               // 0x00487DD0
-    long GetCurrentMode() const;                   // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                   // 0x00633BE0
 };
 class CGamePlayerInterface { public:
     long GetAssignableSpecialMoveIndexForEvent(const CInputEvent& event) const;   // 0x00445FA0

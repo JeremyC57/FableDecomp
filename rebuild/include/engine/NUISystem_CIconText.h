@@ -31,6 +31,21 @@ public:
         EIconFlags Flags;                                            // +0x08
         C2DVector Size;                                              // +0x0c
         C2DVector Offset;                                            // +0x14
+#ifdef FABLE_RETAIL_CICONTEXT_EMBEDDEDICON_CTOR
+        // Retail opt-in (chunk Q6, row 0x00542780 AddIcon): the inline constructor (Ego_r.pdb / FableWin.pdb
+        // ??0CEmbeddedIcon@CIconText@NUISystem@@QAE@XZ). Retail AddIcon builds the zero Offset, then the 40x40 Size, through
+        // C2DVector temporaries (0x00542791..0x005427DF) before storing the arguments.
+        CEmbeddedIcon() { Offset = C2DVector(0.0f, 0.0f); Size = C2DVector(40.0f, 40.0f); }
+#endif
+#ifdef FABLE_RETAIL_CICONTEXT_EMBEDDEDICON_ARGS_CTOR
+        // Retail opt-in (chunk Q6, row 0x00542780 AddIcon): an inline (graphic, char index, flags) constructor -- not in the PDB
+        // name sets (inline constructors leave no symbol); AddIcon's argument stores precede the Offset / Size temporaries.
+        CEmbeddedIcon(long graphic, long charIndex, EIconFlags flags) : Graphic(graphic), CharIndex(charIndex), Flags(flags)
+        {
+            Offset = C2DVector(0.0f, 0.0f);
+            Size = C2DVector(40.0f, 40.0f);
+        }
+#endif
     };
     CIconText(long);                                                 // 0x00542330
     CIconText(const CIconText&);
@@ -41,6 +56,10 @@ public:
     virtual void ChangeState(unsigned long);                         // slot 48, 0x005419E0
     virtual float CanScroll(bool, C2DBoxF&);                         // slot 88 (Ego_r ?CanScroll@CIconText@NUISystem@@UAEM_NAAVC2DBoxF@@@Z)
     virtual void MakeUnavailable();                                  // slot 92, 0x00543A80
+#ifdef FABLE_RETAIL_CICONTEXT_VSLOTS
+// agentFAM04 (2026-11-11): retail CComponent override missing above (vtable 0x012470CC slot 94, Ego_r / FableWin ?MakeAvailable@CIconText@NUISystem@@UAEXXZ). Declaration only.
+    virtual void MakeAvailable();                                    // slot 94, 0x00543AA0
+#endif // FABLE_RETAIL_CICONTEXT_VSLOTS
     virtual void MakeAvailableDynamically();                         // slot 95, 0x00543AB0
     virtual C2DVector GetDynamicSize() const;                        // slot 111, 0x00543A60
     virtual const CWideString& GetValue();                           // slot 142, 0x00543AC0

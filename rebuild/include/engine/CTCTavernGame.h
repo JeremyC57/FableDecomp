@@ -104,10 +104,20 @@ public:
     static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& rhSet, const C3DVector& offset,
                                         float forwardAngle, float upAngle);   // 0x005EABC0
 #endif
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_HIDEMESH
+    // Opt-in (wf4, row 0x008F10B0): Ego_r.pdb / FableWin.pdb ?HideMesh@CTCTavernGame@@SIXPAVCThing@@@Z (public static __fastcall). Declaration only.
+    static void __fastcall HideMesh(CThing* thing);                      // 0x005E9B10
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAME_CAMERAPOINT
     // Nested opt-in (chunk 768, row 0x005EBFA0): Ego_r.pdb / FableWin.pdb ?CameraUseCameraPoint@CTCTavernGame@@QAEXABVCCharString@@@Z
     // (public; the landed CTCTavernGameShoveHaPenny::EnterGame 0x007CF530 calls it). Declaration only.
     void CameraUseCameraPoint(const CCharString& name);                  // 0x005EBFA0
+#endif
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_REGISTERGAMEMASTER
+    // Nested opt-in (agentFAM12, row 0x0094D430): Ego_r.pdb / FableWin.pdb ?RegisterGameMaster@CTCTavernGame@@QAEXPAVCThingAICreature@@@Z
+    // (public; PGameMaster = CIntelligentPointer<CThingAICreature>(master) at +0xD0; the landed caller 0x0094D020 binds it). The row
+    // defines it.
+    void RegisterGameMaster(CThingAICreature* master);                   // 0x0094D430
 #endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE
     // Per-TU opt-in (chunk 765, row 0x005EA000): retail does keep an out-of-line GetDef at 0x005EA000 (`mov ecx,[ecx+4] ; mov ecx,[ecx+70h] ;

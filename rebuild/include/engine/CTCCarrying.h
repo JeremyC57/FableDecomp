@@ -77,5 +77,14 @@ public:
     // STLport vector by reference). Declaration only; needs std::vector (stlport/fable_containers.h) before this header.
     void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x004E74D9
+public:
+    virtual void FrameUpdate();  // slot 9, 0x006A0FE0
+public:
+#endif
 };
 #endif

@@ -99,3 +99,5 @@ placeholder classes (1,259 rows). Anniversary has RTTI with base-class lists for
     13 scope records.
   - Use it as a lookup for local types and original source files, not as a matching aid.
 - Usage rule unchanged. Parameter and local names are drafting hints. A function or class name still needs TLC confirmation.
+- Reading it: llvm-pdbutil refuses the 1 KB-block MSF; `tools/decomp_pipeline/linux_lane/lane_tools/anniv/repack4k.py in.pdb out.pdb`
+  rewrites it with 4 KB blocks (same streams), after which `llvm-pdbutil dump -summary/-publics/-modules/-symbols` work (2026-11-12).

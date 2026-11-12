@@ -13,6 +13,11 @@
 //   the type comparison is an inline bool helper on the component (`IsSameType`, descriptive): written as `a == b` in the
 //   `&&` chain VC evaluates the right call first, in the helper it calls `this` first and compares `cmp ecx,eax` like retail;
 //   C3DVector's user copy ctor next to the implicit operator= gives the `lea` pointer copy of Scale.
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): CCountedPointer is a global template (FableWin.pdb
+//   ?Reset@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXPAVCPSCBase@NParticleEngine@@@Z for 0x00AF6010, storing
+//   DeleteData<NParticleEngine::CPSCBase> 0x00AF5CD0): the shared header is included at file scope here, so the later include inside
+//   namespace NParticleEngine is a no-op (it had declared NParticleEngine::CCountedPointer, ?Reset@?$CCountedPointer@...@NParticleEngine@@).
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine {
 
 class CParticleSystem;

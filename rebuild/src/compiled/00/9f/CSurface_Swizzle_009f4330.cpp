@@ -5,70 +5,24 @@
 // Shape: the flags argument loaded before the 0x10-byte frame, the hidden result pointer pushed after it
 // (`lea ecx,[esp+8] ; push ecx`), `this` kept in esi then overwritten by the surface pointer, `ret 4`.
 // 0x009F4330 and 0x009F4360 are byte-identical twins (same callee, same frame).
-// Model: engine/CSurface.h (+4 PD3DSurface) with a methods struct; PDB CSurfaceLockedRect.
+// Leaf: ?Swizzle@CSurface@@QAEXK@Z
+// Name (agentNF20, 2026-11-11): Ego_r.pdb + FableWin.pdb ?Swizzle@CSurface@@QAEXK@Z (Ego_r address order Swizzle 0x00B48030,
+//   Unswizzle 0x00B48060 = retail 0x009F4330, 0x009F4360); Lock is ?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z (was the
+//   CSurface_Methods stand-in). Model: the shared engine/CSurface.h (FABLE_RETAIL_CSURFACE, _CLEAR: Lock / Unlock; opt-in _SWIZZLE).
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
+#define FABLE_RETAIL_CSURFACE
+#define FABLE_RETAIL_CSURFACE_PIXELFORMAT
+#define FABLE_RETAIL_CSURFACE_CLEAR
+#define FABLE_RETAIL_CSURFACE_SWIZZLE
+#include <stddef.h>
+#include "engine/Direct3DSurface9.h"
+#include "engine/CSurfaceLockedRect.h"
+#include "engine/CPixelFormat.h"
 #include "engine/CSurface.h"
 
-struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
-    unsigned long Format;                          // +0x00 D3DFORMAT
-    unsigned long Type;                            // +0x04
-    unsigned long Usage;                           // +0x08
-    unsigned long Pool;                            // +0x0c
-    unsigned long MultiSampleType;                 // +0x10
-    unsigned long MultiSampleQuality;              // +0x14
-    unsigned long Width;                           // +0x18
-    unsigned long Height;                          // +0x1c
-};
-
-// The COM surface (completes the header's forward declaration): IUnknown + IDirect3DResource9 slots.
-struct IDirect3DSurface9 {
-    virtual long __stdcall QueryInterface(const void* iid, void** object);   // slot 0
-    virtual unsigned long __stdcall AddRef();                                // slot 1 (+0x04)
-    virtual unsigned long __stdcall Release();                               // slot 2 (+0x08)
-    virtual long __stdcall GetDevice(void** device);                         // slot 3
-    virtual long __stdcall SetPrivateData(const void* guid, const void* data, unsigned long size, unsigned long flags);
-    virtual long __stdcall GetPrivateData(const void* guid, void* data, unsigned long* size);
-    virtual long __stdcall FreePrivateData(const void* guid);
-    virtual unsigned long __stdcall SetPriority(unsigned long priority);
-    virtual unsigned long __stdcall GetPriority();
-    virtual void __stdcall PreLoad();
-    virtual long __stdcall GetType();
-    virtual long __stdcall GetContainer(const void* iid, void** container);  // slot 11
-    virtual long __stdcall GetDesc(D3DSURFACE_DESC_Local* desc);             // slot 12 (+0x30)
-    virtual long __stdcall LockRect(void* lockedRect, const void* rect, unsigned long flags);   // slot 13 (+0x34)
-    virtual long __stdcall UnlockRect();                                     // slot 14 (+0x38)
-};
-
-class CRGBColour { public:                                // a 4-byte colour passed by value
-    unsigned char B, G, R, A;
-};
-
-class C2DExtentsI { public:
-    long Width;
-    long Height;
-};
-
-class CSurfaceLockedRect { public:                        // PDB CSurfaceLockedRect, 16 bytes
-    C2DExtentsI    Dimensions;                     // +0x00
-    long           Pitch;                          // +0x08
-    unsigned char* PMem;                           // +0x0c
-};
-
-// CPixelFormat with its D3DFORMAT constructor and depth queries (the engine header holds only the layout).
-struct CPixelFormatFromD3D {
-    long FormatIndex;                              // +0x00 (PDB CPixelFormat::FormatIndex)
-    CPixelFormatFromD3D(unsigned long d3dFormat);  // 0x009E3830 (CPixelFormat::Initialise / constructor)
-    unsigned long GetColourDepth() const;          // 0x009E3820 (bits per pixel)
-    unsigned long GetByteColourDepth() const;      // 0x009E3800 (bytes per pixel)
-    void WriteColour(CRGBColour colour, unsigned char* destination) const;   // 0x009E3F60 (encode one pixel)
-};
-
-struct CSurface_Methods : CSurface {
-    CSurfaceLockedRect Lock(unsigned long lockFlags);   // 0x009F33E0
-    void Swizzle(unsigned long lockFlags);
-};
-
-void CSurface_Methods::Swizzle(unsigned long lockFlags)
+void CSurface::Swizzle(unsigned long lockFlags)
 {
     CSurfaceLockedRect rect = Lock(lockFlags);
-    PD3DSurface->UnlockRect();
+    Unlock();
 }

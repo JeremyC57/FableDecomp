@@ -1,0 +1,51 @@
+00eb3ba0 grade 44 CMurderTwistSheriffGuard::AttackHero RELOCATION_MATCH   -- IsValid real body as an inline (COMDAT, select-any) __declspec(noinline) member in the TU + seh_Guards[ID] written twice
+00eb3ba0 grade 45 CMurderTwistSheriffGuard::AttackHero RELOCATION_MATCH   -- final source, strict headers (test PASS VC7.1 + g++)
+00bd2a90 grade 1 DIFFER(202v218) -- port onto CEngineInternalPrimitiveAnimatedMesh (ORIGINAL_CACHE, mutable Cache) + C3DAnimationBlendState HasSkeletalMorph/PeekSkeletalMorph, map operator[], resize OUTOFLINE
+00bd2a90 grade 2 DIFFER(218v218) -- key via mesh.GetMeshID() temp (frame now right; key/boneCount slots swapped)
+00bd2a90 grade 3 DIFFER(218v218) -- boneCount after the map lookup (worse: this in esi)
+00bd2a90 grade 4 DIFFER(218v218) -- regrade of grade-2 source (listing)
+00bd2a90 grade 5 DIFFER(218v218) -- named meshID local (no change)
+00bd2a90 grade 6 DIFFER(218v218) -- regrade of boneCount-after-lookup for listing (this in esi; slots unchanged)
+00bd2a90 grade 7 DIFFER(218v218) -- explicit resize(boneCount, C3DVector()) (no change)
+00bd2a90 grade 8 DIFFER(218v218) -- named C3DVector& in the loop (no change)
+00bd2a90 grade 9 DIFFER(218v218) -- int loop index (jle, worse)
+00bd2a90 grade 10 SRC_FAIL -- C3DMesh2 GetBoneCount/GetBone accessors (C3DBone2 incomplete in header)
+00bd2a90 grade 11 DIFFER(218v218) -- GetBoneCount/GetBone/GetNameCRC accessors (no change, kept)
+00bd2a90 grade 12 DIFFER(218v218) -- early return instead of if-block (no change)
+00bd2a90 grade 13 RELOCATION_MATCH -- FABLE_RETAIL_STLP_MAP (visible in-class operator[] kept out of line: key temp only read, packed into the param slot)
+00bd2a90 grade 14 RELOCATION_MATCH -- without FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE (resize stays out of line by itself; dropped)
+00bd2a90 grade 15 RELOCATION_MATCH -- final source, strict headers
+00958b20 grade 1 SRC_FAIL -- port onto shared headers (CDefClassBase.h missing)
+00958b20 grade 2 RELOCATION_MATCH -- port: CAIStateGroup_MinionReactToCrime retail overlay, IS_THING_ALIVE + DecrementForceOpenCount, GetPOriginator<CThing> ORIGINAL, GetTC EXPANDED, SetOpinionDeedMask(PDef->DeedMask)
+00958b20 grade 3 RELOCATION_MATCH -- final source (OnReplace public per Ego_r), strict headers
+00465c54 grade 1 DIFFER(176v226) -- port (chunk 1018 source) + tree ctor/dtor out-of-line opt-in, set range ctor temp, optimize s + y off (IsSaving and set range ctor called)
+00465c54 grade 2 DIFFER(220v226) -- no "s" pragma, y off: inline split right; residue is size-codegen (lea eax reuse, pop ecx, leave, cmp mem,ebx)
+00465c54 grade 3 DIFFER(176v226) /Os -- command-line /Os same as the pragma
+00465c54 grade 4 DIFFER(226v226) /d2inlS50 -- inline split right; only frame packing (end cache + pred/alloc temps not in the dead context slot)
+00465c54 grade 5 RELOCATION_MATCH /d2inlS50 -- tree ctor/dtor visible bodies kept out of line (noinline): empty temps + end cache packed into the dead context slot
+00465c54 grade 6 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer DIFFER(189v226) flags= ['/d2inlS20'] -- smallest-S sweep
+00465c54 grade 7 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer DIFFER(189v226) flags= ['/d2inlS30'] -- smallest-S sweep
+00465c54 grade 8 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer RELOCATION_MATCH flags= ['/d2inlS40'] -- smallest-S sweep
+00465c54 grade 9 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer DIFFER(189v226) flags= ['/d2inlS35'] -- smallest-S sweep
+00465c54 grade 10 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer DIFFER(189v226) flags= ['/d2inlS37'] -- smallest-S sweep
+00465c54 grade 11 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer DIFFER(189v226) flags= ['/d2inlS38'] -- smallest-S sweep
+00465c54 grade 12 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer RELOCATION_MATCH flags= ['/d2inlS39'] -- smallest-S sweep
+00465c54 grade 13 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer RELOCATION_MATCH flags= ['/d2inlS39'] -- final source, strict headers
+00722740 grade 1 DIFFER(230v228) -- baseline: hand758 shared-header draft (def scoped in an inner block)
+00722740 grade 2 SRC_FAIL -- port: std::vector iterator loop, PeekCurrentPos, PeekBaseDef (camera opt-in / protected PBaseDef)
+00722740 grade 3 RELOCATION_MATCH -- port: vector<CGenerationPos>::iterator loop, GetWorld().GetGameCamera()->PeekCurrentPos() into a const local, GetParentThing().PeekBaseDef().GetSubDef(&def) (landed 0x00722D30 body in TU, auto_inline off), def to the end of the if-block, unnamed CIntelligentPointer temporary assigned
+00722740 grade 4 CTCSmokeGenerator::FrameUpdate RELOCATION_MATCH flags= [] -- final source, strict headers
+009fc950 grade 1 DIFFER(230v230) -- port: CGraphicFrame.h CGraphicFrameData (+InitialiseAsSurface/GetWidth/GetHeight opt-in), CTexture::GetWidth(level) opt-in, || form; only the flag-merge registers differ
+009fc950 grade 2 DIFFER(230v230) -- statement order: height_first
+009fc950 grade 3 RELOCATION_MATCH -- statement order: width_height_pitch
+009fc950 grade 4 DIFFER(230v230) -- statement order: boolalpha_first
+009fc950 grade 5 CGraphicFrameData::InitialiseAsSurface RELOCATION_MATCH flags= [] -- final source, strict headers
+00eb3ba0 grade 3 CMurderTwistSheriff::Init RELOCATION_MATCH flags= [] -- final regrade of all rows (strict headers, final overlay)
+00bd2a90 grade 16 CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings RELOCATION_MATCH flags= [] -- final regrade of all rows (strict headers, final overlay)
+00958b20 grade 4 CAIStateGroup_MinionReactToCrime::CAIStateGroup_MinionReactToCrime::OnReplace RELOCATION_MATCH flags= [] -- final regrade of all rows (strict headers, final overlay)
+00465c54 grade 14 CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer RELOCATION_MATCH flags= ['/d2inlS39'] -- final regrade of all rows (strict headers, final overlay)
+00722740 grade 5 CTCSmokeGenerator::FrameUpdate RELOCATION_MATCH flags= [] -- final regrade of all rows (strict headers, final overlay)
+009fc950 grade 6 CGraphicFrameData::InitialiseAsSurface RELOCATION_MATCH flags= [] -- final regrade of all rows (strict headers, final overlay)
+00722740 grade 5 SRC_FAIL -- shared engine/CDefinitionManager.h instead of the local stub (static assert line 82)
+00722740 grade 6 CTCSmokeGenerator::FrameUpdate RELOCATION_MATCH flags= [] -- + FABLE_RETAIL_CRESOURCELIST / CRESOURCE / STLP_LIST (CDefinitionManager.h prerequisites)
+00722740 test VC71 PASS g++ PASS after the CDefinitionManager.h fix

@@ -9,16 +9,21 @@ struct SScalarTag { SScalarTag() { } };
 
 struct CRetailVector_pod { void* m_pFirst; void* m_pLast; void* m_pEnd; ~CRetailVector_pod() { if (m_pFirst) free(m_pFirst); } };
 
-struct CCountedPointer_00762480 { void* m_pObject; void* m_pCount; };
-void __fastcall DestroyRange_00764ee0(CCountedPointer_00762480* first, CCountedPointer_00762480* last, const SScalarTag& tag);   // 0x00764EE0
+namespace NShape { class CSubdivisionTriangle; }
+#include "engine/CCountedPointer.h"
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00764EE0 (std::__destroy_aux<CCountedPointer<NShape::CSubdivisionTriangle>*>)
+}
 
 struct CRetailVector_counted {                     // VC6 vector of counted pointers: destroy the range, free the block
-    CCountedPointer_00762480* m_pFirst;
-    CCountedPointer_00762480* m_pLast;
-    CCountedPointer_00762480* m_pEnd;
+    CCountedPointer<NShape::CSubdivisionTriangle>* m_pFirst;
+    CCountedPointer<NShape::CSubdivisionTriangle>* m_pLast;
+    CCountedPointer<NShape::CSubdivisionTriangle>* m_pEnd;
     ~CRetailVector_counted()
     {
-        DestroyRange_00764ee0(m_pFirst, m_pLast, SScalarTag());
+        std::__destroy_aux(m_pFirst, m_pLast, std::__false_type());
         if (m_pFirst)
             free(m_pFirst);
     }

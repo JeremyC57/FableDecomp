@@ -1,0 +1,11 @@
+- Check the PDB for a free/namespace twin of a landed member: NFile::GetItemFromPath 0x00997880 is the landed CDriveManager::GetItemFromPath body as a __fastcall free function (MATCH, no edits).
+- A row that "looks like" inline loops over a component list and a per-item check is often two real PDB inline members (GetAllMeshes + IsResourcesLoadedForMesh): writing them as the PDB members fixed a register residue a flat draft could not (0x004BE3E0).
+- An `if (!p || p->IsDead())`-style flat condition versus the nested shape with separate `return p` tests changes which callee-saved register the thing gets; try the PDB-style early `return p_thing` tests per accept reason (0x008031E0).
+- A Dead/Alive bool bitfield: `!IsDead()` (Dead != 0) gives `test byte [..],1 ; jne`; IsAlive (`!Dead`) gives `mov cl ; not cl ; test cl,1` (0x008031E0).
+- A missing ecx reload after an out-of-line same-TU call means the callee's real body is in the TU (VC7.1 knows it keeps ecx): 0x008F70F0 needed the landed ZeroAllUnusedThemePaletteEntries body above it.
+- Check which CMap member a body reads: +0x1A7C is HeightMap (CHeightMap: Cells +0x10, SizeX +0x204, SizeY +0x208), not GameMap (0x008F6FC0).
+- `mov edx,[esi] ; mov ecx,esi ; push eax` before a virtual call is almost unique in Fable.exe (3 sites); VC7.1 RTM emits `push eax` first for every spelling tried (0x006B05A0): stop early.
+- When an inline counted-pointer Reset is left as a call, the callee-saved colouring can match retail exactly; forcing it inline then moves the registers: the row's remaining residue is in how retail expanded the add-ref (0x00A69B70).
+- The xdis.py helper raises BrokenPipe when piped to head: send its stderr to /dev/null.
+- A counted-pointer local whose (T*) ctor retail CALLS (a COMDAT): use FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR, not the declaration-only CALLED_CTOR; with the body visible VC7.1 keeps the local tracked, so the inline dtor's release becomes `dec [esi] ; jne` with the block in esi (0x00AEB790).
+- C3DOrientationInterpolator temporaries destroyed by a bare ~CBaseClass call (no vptr store) need the implicit destructor, not a user `{ }` (0x00AEB790).

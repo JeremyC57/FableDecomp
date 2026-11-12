@@ -13,7 +13,15 @@
 // Ego_r22ff3 and donor022127b0: original public virtual FinishAction and private HasteKey.
 #include "engine/CCreatureAction_UnsheatheItemFromInventory.h"
 class CCreatureAction_UnsheatheItemFromInventoryWithHasteAction:public CCreatureAction_UnsheatheItemFromInventory {
-public:virtual void FinishAction();
+public:
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNSHEATHEHASTE_CTOR
+ // Q19 opt-in (row 0x008CDD40 CCreatureAction_ReleaseTimeSpell::FinishAction): Ego_r.pdb
+ // ??0CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@QAE@PAXAAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+ // (out of line at 0x0069F1F0, landed). Declaration only.
+ CCreatureAction_UnsheatheItemFromInventoryWithHasteAction(void* haste_key, CThingCreatureBase& creature, const CCharString& animation,
+                                                           CThing& item, long, long, CCreatureActionBase* follow_up);   // 0x0069F1F0
+#endif
+virtual void FinishAction();
 private:void* HasteKey;
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction)==0xbc);

@@ -58,7 +58,7 @@ class CDisplayManager { public:
     void SetViewport(const C2DBoxF& box);             // 0x009BF490
     void SetViewport(const C2DBoxI& box);             // 0x009BEF80
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
 struct SCaptureEntry { void* Block; unsigned long State; };
 struct CCaptureStateManager {
@@ -200,12 +200,12 @@ void CEngineInternalPrimitive2DViewport::Render()
         desc.RotationMatrix.E22 = -1.0f;
         g_pEngineCamera_01436ea0->SetCameraDesc(desc, false, true);
     }
-    C2DBoxI oldViewport = g_pDisplayManager_01436e1c->Viewport;
-    C2DExtentsI dimensions = g_pDisplayManager_01436e1c->GetRenderTargetDimensions();
+    C2DBoxI oldViewport = NEngineInternal::GPDisplayManager->Viewport;
+    C2DExtentsI dimensions = NEngineInternal::GPDisplayManager->GetRenderTargetDimensions();
     if (Viewport.GetWidth() > 0.0f && Viewport.GetHeight() > 0.0f) {
         g_pRenderStateManager->OpenCaptureBlock();
         g_pRenderStateManager_01436e18->DisableFog();
-        g_pDisplayManager_01436e1c->SetViewport(Viewport);
+        NEngineInternal::GPDisplayManager->SetViewport(Viewport);
         unsigned long count = Primitives.GetCount();
         CEngineSubPrimitiveChain chain;
         for (unsigned long i = 0; i < count; ++i) {
@@ -217,7 +217,7 @@ void CEngineInternalPrimitive2DViewport::Render()
             }
         }
         g_pPrimitiveRenderer_01436e74->RenderType(3, true);
-        g_pDisplayManager_01436e1c->SetViewport(oldViewport);
+        NEngineInternal::GPDisplayManager->SetViewport(oldViewport);
         g_pRenderStateManager->RestoreCaptureBlock();
     }
     g_pEngineCamera_01436ea0->SetCameraDesc(savedDesc, false, true);

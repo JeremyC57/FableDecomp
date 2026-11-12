@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705190, 168 bytes (`ret 14h`, 0x18-byte frame: the dummy position and the difference temporary).
 // Callees: CTCGraphicAppearance::GetDummyObjectAssumingObjectAt(const CCharString&, const C3DVector&, const CRightHandedSet&,
 // long, unsigned long, C3DVector*, CRightHandedSet*) @ 0x004C0C80 (twice); the hand names are the global CCharString objects
-// PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME @ 0x013BAC30 and g_LeftHandAttachmentName @ 0x013BAC34 (names as the landed CTCFireballSpell
+// PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME @ 0x013BAC30 and SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME @ 0x013BAC34 (names as the landed CTCFireballSpell
 // SetWeaponState 0x007C8660).
 // Layout: CTCBase ParentThing +0x04; CThing PTCGraphicAppearance +0x64 (retail; PDB +0x74).
 // Shape: the dummy flags (0 when the bool is set, else 0x21) are chosen into edi before the first lookup; `||` of the two
@@ -12,11 +12,14 @@
 // which VC cross-jumps into one block; the `||` form recolours flags/position (esi/edi) and frames the dummy above the temporary; the difference is a C3DVector temporary built field by field (x first) by an inline
 // operator- and copied out through integer registers (no user copy ctor).
 // Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC34 SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME (global, const; initializer 0x0121E620), was g_LeftHandAttachmentName.
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;           // 0x013BAC30
-extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
+extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;            // 0x013BAC34
 #include "engine/C3DVector.h"
 class CRightHandedSet;
 namespace NGraphicAppearance {
@@ -46,6 +49,6 @@ void CTCCarryable::GetInterpolatedPickupOffsetAndOrientationAt(const C3DVector& 
         *outOffset = dummy - position;
         return;
     }
-    if (GetGraphicAppearance()->GetDummyObjectAssumingObjectAt(g_LeftHandAttachmentName, position, orientation, 0, flags, &dummy, outOrientation))
+    if (GetGraphicAppearance()->GetDummyObjectAssumingObjectAt(SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, position, orientation, 0, flags, &dummy, outOrientation))
         *outOffset = dummy - position;
 }

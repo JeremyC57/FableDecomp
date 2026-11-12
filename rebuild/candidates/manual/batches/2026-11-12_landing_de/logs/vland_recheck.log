@@ -1,0 +1,145 @@
+addr       parity           behav  name
+00caa410   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00caa410   RELOCATION_MATCH PASS   00caa410
+00caf480   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00caf480   RELOCATION_MATCH PASS   00caf480
+00cafce0   WARN RELOC_CONFLICT: ??0CUnknown@@QAE@PBGPAUIUnknown@@@Z -> 00cacc80 here, 00cacb80 in landed 00cab370
+00cafce0   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00cafce0   RELOCATION_MATCH PASS   00cafce0
+00cd3ec0   RELOCATION_MATCH PASS   00cd3ec0
+00cd4530   RELOCATION_MATCH PASS   00cd4530
+00cd4a90   RELOCATION_MATCH PASS   00cd4a90
+00cd4af0   RELOCATION_MATCH PASS   00cd4af0
+00cd4b50   RELOCATION_MATCH PASS   00cd4b50
+00cd4bb0   RELOCATION_MATCH PASS   00cd4bb0
+00cdb9e0   RELOCATION_MATCH PASS   00cdb9e0
+00cdd2f0   RELOCATION_MATCH PASS   00cdd2f0
+00cdd310   RELOCATION_MATCH PASS   00cdd310
+00cdd4a0   RELOCATION_MATCH PASS   00cdd4a0
+00cddb40   RELOCATION_MATCH PASS   00cddb40
+00ce1200   RELOCATION_MATCH PASS   00ce1200
+00d34f60   RELOCATION_MATCH PASS   00d34f60
+00d80c00   WARN RELOC_NAME: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ -> 00cbd510 labelled 'CScriptBase::~CScriptBase'
+00d80c00   RELOCATION_MATCH PASS   00d80c00
+00e0e970   MATCH            PASS   00e0e970
+00e54d60   RELOCATION_MATCH PASS   00e54d60
+00e7de10   RELOCATION_MATCH PASS   00e7de10
+00e9c300   RELOCATION_MATCH PASS   00e9c300
+00ee82a0   MATCH            PASS   00ee82a0
+00ef6ea0   WARN STANDIN_LEAF ??_G?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@UAEPAXI@Z (catalog NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>::`scalar deleting destructor'; names another function)
+00ef6ea0   RELOCATION_MATCH PASS   00ef6ea0
+00f25dd0   RELOCATION_MATCH PASS   00f25dd0
+00f280e0   RELOCATION_MATCH PASS   00f280e0
+00f28850   RELOCATION_MATCH PASS   00f28850
+00f33dc0   RELOCATION_MATCH PASS   00f33dc0
+00f34c30   RELOCATION_MATCH PASS   00f34c30
+00f35430   RELOCATION_MATCH PASS   00f35430
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+  WARN leaf '01216dc0' matches no symbol in 01216dc0.obj; graded the largest function
+01216dc0   DIFFER(60v8)     PASS   01216dc0
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+  WARN leaf '01217210' matches no symbol in 01217210.obj; graded the largest function
+01217210   DIFFER(45v8)     PASS   01217210
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+  WARN leaf '01217218' matches no symbol in 01217218.obj; graded the largest function
+01217218   DIFFER(45v11)    PASS   01217218
+
+WINS: 29
+  00caa410 RELOCATION_MATCH m::??1CMemAllocator@@UAE@XZ
+  00caf480 RELOCATION_MATCH m::??1CDeferredCommand@@UAE@XZ
+  00cafce0 RELOCATION_MATCH m::??0CRendererPosPassThru@@QAE@PBGPAUIUnknown@@PAJPAUIPin@@@Z
+  00cd3ec0 RELOCATION_MATCH m::??1CScriptDefinitionManager@@UAE@XZ
+  00cd4530 RELOCATION_MATCH m::??_GCScriptDataBase@@UAEPAXI@Z
+  00cd4a90 RELOCATION_MATCH m::??_GCalextestData@NScript@@UAEPAXI@Z
+  00cd4af0 RELOCATION_MATCH m::??_GCEmptyData@NScript@@UAEPAXI@Z
+  00cd4b50 RELOCATION_MATCH m::??_GCjoss_test_scriptsData@NScript@@UAEPAXI@Z
+  00cd4bb0 RELOCATION_MATCH m::??_GCDanyalTestScriptsData@NScript@@UAEPAXI@Z
+  00cdb9e0 RELOCATION_MATCH m::??0CQ_SunnyvaleMasterData@NScript@@QAE@XZ
+  00cdd2f0 RELOCATION_MATCH m::??0CLevelScriptNoMasterBase@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00cdd310 RELOCATION_MATCH m::??_GCLevelScriptNoMasterBase@@UAEPAXI@Z
+  00cdd4a0 RELOCATION_MATCH m::??_GCSpawnedFuncBase@@UAEPAXI@Z
+  00cddb40 RELOCATION_MATCH m::??_GCPredicateBase@NScript@@UAEPAXI@Z
+  00ce1200 RELOCATION_MATCH m::??_GCActiveEntityScriptBase@@UAEPAXI@Z
+  00d34f60 RELOCATION_MATCH m::??_GCFireHeartPatternDef@@UAEPAXI@Z
+  00d80c00 RELOCATION_MATCH m::??_GCQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00e0e970 MATCH m::?SuspendableProcess@?$CSpawnedFunc@VCQ_WaspBossScript@NScript@@@@UAEXXZ
+  00e54d60 RELOCATION_MATCH m::??_GCConversation@@UAEPAXI@Z
+  00e7de10 RELOCATION_MATCH m::??_GCIsVariableFalse@NScript@@UAEPAXI@Z
+  00e9c300 RELOCATION_MATCH m::?Alloc@CV_HeroDuelScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ee82a0 MATCH m::?SuspendableProcess@?$CSpawnedFunc@VCCS_OakValeRevisitedScript@NScript@@@@UAEXXZ
+  00ef6ea0 RELOCATION_MATCH m::??_G?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@UAEPAXI@Z
+  00f25dd0 RELOCATION_MATCH m::??0CArenaCreatureDef@@QAE@ABV0@@Z
+  00f280e0 RELOCATION_MATCH m::??0CArenaWaveDef@@QAE@XZ
+  00f28850 RELOCATION_MATCH m::??0CHeroSoulsWaveDef@@QAE@XZ
+  00f33dc0 RELOCATION_MATCH m::??0CFireHeartPatternDef@@QAE@XZ
+  00f34c30 RELOCATION_MATCH m::??0CArenaRoundDef@@QAE@XZ
+  00f35430 RELOCATION_MATCH m::??0CHeroSoulsRoundDef@@QAE@XZ

@@ -109,8 +109,8 @@ struct CTCLinkedThings {                                // component 0x21 (descr
     CLinkNode* Head;                                    // +0x0c (STLport list sentinel)
 };
 class CTCNamedUserActionPoints { public:
-    bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
-                                 long flags, bool reserve);   // 0x007FF190
+    bool GetFreeNamedActionPoint(CThing& user, C3DVector& pos, CRightHandedSet& rh, CCharString name, long& index,
+                                 long flags, bool reserve);   // 0x007FF190 ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z (Ego_r.pdb; NF28: references)
 };
 class CMainGameComponent { public: virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
                    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual bool IsEditorActive() const; };   // slot 9: 0x004197B0 FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ (was IsShowing)
@@ -160,8 +160,8 @@ void CTCTavernGameSpotTheAddition::OnInitialActivate()
     CThing* thing = ParentThing;
     CTCNamedUserActionPoints* points = 0;
     thing->GetInterface(&points, 46);
-    points->GetFreeNamedActionPoint(thing, &GamePositionPos, &GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
-                                    &GamePositionActionPointIndex, 0, true);
+    points->GetFreeNamedActionPoint(*thing, GamePositionPos, GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
+                                    GamePositionActionPointIndex, 0, true);
     GamePiece = CreateGamePiece(def->GamePieceType);
     CoverState = 0;
     Cover = 0;

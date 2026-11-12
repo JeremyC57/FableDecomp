@@ -11,11 +11,8 @@ class CMovableResource;
 class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, CMovableResource* owner);   // 0x00BD9AF0
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 
 class CLandscapeLayerMesh {
 public:
@@ -24,6 +21,6 @@ public:
 
 void* __fastcall CLandscapeLayerMesh::operator new(unsigned int size, CMovableResource* owner)
 {
-    CEngineLandscapeMemoryManager* manager = g_pEngine_01436ea8->m_pLandscapeMemory;
+    CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
     return manager->AllocVirtual(size, owner);
 }

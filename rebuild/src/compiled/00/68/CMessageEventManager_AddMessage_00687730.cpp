@@ -24,7 +24,8 @@ enum EReactionSpeechType { REACTION_SPEECH_NONE = 0, EReactionSpeechType_Force32
 class CBaseObject { public:
     virtual ~CBaseObject();                             // 0x0099A430
     CBaseObjectPointer* IntelligentPointer;             // +0x04
-    CBaseObject();                                      // 0x0099A380
+protected:
+    CBaseObject();                                      // 0x0099A380 ??0CBaseObject@@IAE@XZ (protected in both PDBs)
 };
 class CBaseIntelligentPointer { public:
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10

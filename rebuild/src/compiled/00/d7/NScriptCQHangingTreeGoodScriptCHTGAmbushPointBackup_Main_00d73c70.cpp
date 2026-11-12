@@ -15,6 +15,8 @@
 //   copy-assign.
 // Naming wave 35: identity reg 00d6f78b "HTG_AmbushPointBackup" in 00d6f4b0; Alloc 00d70010; vtable 012d2770 slot 1; PDB ?Main@CHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHTG_AmbushPointBackup::Main (wave3/labels_alloc.tsv); PDB ?Main@CHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHTG_AmbushPointBackup@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HangingTreeGoodScript moved into NScript); same bytes.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (?NullString@CScriptThing@@2VCCharString@@A, the
+//   engine/CScriptThing.h spelling; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); was g_EmptyString.
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -23,7 +25,6 @@ class CCharString { public:
  CCharString(const CCharString& other);             // 0x0099EC30
  ~CCharString();                                    // 0x0099EAE0
 };
-extern CCharString g_EmptyString;                   // 0x0143E8EC
 void operator delete(void* p);                      // 0x00BFE9BC (MSVCR71)
 struct CScriptThingImp {
  virtual void i0(); virtual void i1(); virtual void i2();
@@ -70,9 +71,11 @@ public:
  virtual ~CScriptThing();                                   // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
  virtual void v1(); virtual void v2();
- virtual CCharString GetDataString() const { if (PImp.Data == 0) return g_EmptyString; return PImp.Data->GetDataString(); }   // slot 3
+ virtual CCharString GetDataString() const { if (PImp.Data == 0) return CScriptThing::NullString; return PImp.Data->GetDataString(); }   // slot 3
  virtual void v4(); virtual void v5();
  virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }      // slot 6
+public:
+    static CCharString NullString;                  // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

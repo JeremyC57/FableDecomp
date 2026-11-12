@@ -10,7 +10,6 @@
 // global's BitDepth directly; a pointer-cursor loop compiles differently), it does not stop at the
 // first hit but keeps the first supported record (`best == 0` is part of the filter, and VC reuses that zero register as the
 // Usage argument); the result is `out.Initialise(best->D3DFormat)` + true, else false.
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9 slots up to CheckDeviceFormat
     virtual long __stdcall QueryInterface(const void* iid, void** object);
     virtual unsigned long __stdcall AddRef();
@@ -28,19 +27,8 @@ struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9
 
 enum { D3DRTYPE_TEXTURE = 3 };
 
-struct CD3DFormatInfo {                            // 36-byte entry of the format table (see the landed CPixelFormat::Initialise 0x009E3790)
-    _D3DFORMAT D3DFormat;                                // +0x00 _D3DFORMAT
-    long PFType;                                   // +0x04 EPixelFormatType (2 RGB, 6 signed)
-    long BitDepth;                                 // +0x08 (-1 terminates the table)
-    long AlphaBits;                                // +0x0c
-    long RBits;                                    // +0x10
-    long GBits;                                    // +0x14
-    long BBits;                                    // +0x18
-    long StencilBits;                              // +0x1c
-    bool Linear;                                   // +0x20
-};
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (NF28: was a local struct model and g_D3DFormatInfo)
 
-extern const CD3DFormatInfo g_D3DFormatInfo[];     // 0x0129BA40
 
 class CPixelFormat { public:
     long FormatIndex;                              // +0
@@ -61,8 +49,8 @@ class CDisplayManager { public:
 bool CDisplayManager::GetBestSignedTextureFormat(long bitDepth, CPixelFormat& out)
 {
     const CD3DFormatInfo* best = 0;
-    for (long i = 0; g_D3DFormatInfo[i].BitDepth != -1; ++i) {
-        const CD3DFormatInfo& info = g_D3DFormatInfo[i];
+    for (long i = 0; GD3DFormats[i].BitDepth != -1; ++i) {
+        const CD3DFormatInfo& info = GD3DFormats[i];
         if (info.PFType == 6 && info.BitDepth == bitDepth && best == 0
             && D3D->CheckDeviceFormat(AdapterOrdinal, DeviceType, CurrentModeFormat, 0, D3DRTYPE_TEXTURE, info.D3DFormat) >= 0)
             best = &info;

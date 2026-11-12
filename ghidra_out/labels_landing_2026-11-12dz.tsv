@@ -1,0 +1,5 @@
+address	name	evidence
+0098EC90	?RemoveObject@CThreadedFile@@QAE_NK@Z	chunk Q29 (landing dz): 
+0098EB20	?RemoveObject@CThreadedFileManager@@QAE_NK@Z	chunk Q29 (landing dz): 
+00A62ED0	?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z	chunk Q29 (landing dz): 
+00EB3BA0	?AttackHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ	chunk Q29 (landing dz): 

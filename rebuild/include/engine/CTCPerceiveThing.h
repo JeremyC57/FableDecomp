@@ -9,7 +9,11 @@
 class CPerceivedThingDef;
 class CTCPerceiveThing: public CTCBase {
 public:
+#if defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_CTCPERCEIVETHING_AWAREOFTHING)
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PERCEIVE_THING;}
+#else
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
+#endif
  virtual ETCInterfaceType GetInterfaceType() const;
  static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
  static CCharString FABLE_FASTCALL StatGetClassTypeName();
@@ -37,6 +41,12 @@ public:
 #ifdef FABLE_RETAIL_HEARING
  bool IsAwareOfThing()const{return AwarenessTimer!=0.0f;}
  bool IsAwarenessOfThingDirect()const{return DirectAwareness;}
+#elif defined(FABLE_RETAIL_CTCPERCEIVETHING_AWAREOFTHING)
+ // Opt-in (chunk Q16, row 0x00957DB0 CAIStateGroup_MinionBehaviourCrowdBase::Update): IsAwareOfThing expanded in retail (`fld [+0x18];
+ // fucompp` against 0.0f at 0x00957E30) while IsAwarenessOfThingDirect is called out of line (0x00744430 `mov al,[ecx+30h]; ret`,
+ // Ego_r.pdb ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ).
+ bool IsAwareOfThing()const{return AwarenessTimer!=0.0f;}
+ bool IsAwarenessOfThingDirect() const;
 #else
  bool IsAwareOfThing() const;
  bool IsAwarenessOfThingDirect() const;
@@ -129,6 +139,11 @@ FABLE_STATIC_ASSERT(sizeof(CTCPerceiveThing)==0x58);
 class CPerceivedThingDef;
 #endif
 class CTCPerceiveThing : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PERCEIVE_THING;}
+void OnHit(const CThing&);
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS
     virtual ETCInterfaceType GetInterfaceType() const;
@@ -162,6 +177,13 @@ public:
     float GetExtendedSightRadius()const;
 #endif
     const CThing* GetPerceivedThing() const;                             // 0x007446A0
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS_CALLS
+    // Nested opt-in (agentNF24, row 0x00935160): both awareness queries called out of line, as retail calls them there:
+    // 0x00643B3B Ego_r/FableWin ?IsAwareOfThing@CTCPerceiveThing@@QBE_NXZ (reloc_bindings first caller 0x00864700) and
+    // 0x00744430 ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ (`mov al,[ecx+30h]; ret`). Declarations only: no layout change.
+    bool IsAwareOfThing() const;                                         // 0x00643B3B
+    bool IsAwarenessOfThingDirect() const;                               // 0x00744430
+#endif
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS
 private:
 #else

@@ -61,6 +61,13 @@ protected:
  std::set<CThing *,std::less<CThing *>,std::allocator<CThing *> > AllowReactionAttackers;
 public:
  CTCPhysicalShieldSpell & operator=(const CTCPhysicalShieldSpell & p0);
+#ifdef FABLE_RETAIL_CTCPHYSICALSHIELDSPELL_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0079F500
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicalShieldSpell)==84);
 #endif
@@ -84,6 +91,13 @@ protected:
  long SpellLevel,ShieldFadeOutTimer,CurShieldFadeOutTimer,DurationTimer;float ShieldHealth,CurWobbleTimer,WobbleDelta;
  CRGBColour ShieldColor;CIntelligentPointer<CThing> ShieldEffect,SwirlyEffect;unsigned long LoopingSound;bool Pausable,Paused,CutSceneCancelled;
  unsigned char AllowReactionAttackers[12];
+#ifdef FABLE_RETAIL_CTCPHYSICALSHIELDSPELL_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0079F500
+public:
+#endif
 };
 #endif
 

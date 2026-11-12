@@ -15,7 +15,7 @@
 //   CurrentBanditVector +0xB8, AreasSpawnedIn +0xC4; size 0xD0 (Alloc). Master data CQ_SunnyvaleMasterData (the landed CHTE_*
 //   entity rows and the sibling Good script use CLevelScriptBase<CQ_SunnyvaleMasterData>).
 // Callees: ~CCharString 0x0099EAE0, vector<CScriptThing> elements through the virtual `push 0 ; call [vt]`, free 0x00BFEA14
-//   (STLport allocator<T>::deallocate), g_pGameScriptInterface->DeregisterTimer (slot 88, +0x160) from the inline ~CTimer,
+//   (STLport allocator<T>::deallocate), pDSTGame->DeregisterTimer (slot 88, +0x160) from the inline ~CTimer,
 //   ~CScriptThing inline (vtable 0x01238C8C store, engine/CCountedPointer.h PImp release: DeleteFunc, operator delete 0x00BFE9BC),
 //   CBaseClass::~CBaseClass 0x0099A2E0, ~CScriptBase 0x00CBD510.
 // Layout: engine/CLevelScriptBase.h declares `virtual ~CLevelScriptBase();` out of line; retail's is implicit (chunks 664/665),
@@ -27,13 +27,13 @@
 //   dtor; only the dtor is graded. Shape: the landed ~CQ_HangingTreeGoodScript 0x00D782E0 recipe plus the CTimer member.
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 inline CScriptThing::~CScriptThing() { }
 #include "engine/CScriptBase.h"
 #include "engine/CTimer.h"
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 namespace std {

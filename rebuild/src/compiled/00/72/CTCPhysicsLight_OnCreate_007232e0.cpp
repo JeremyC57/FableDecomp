@@ -7,13 +7,13 @@
 //   x ^= (x ^ v) & 1 sequence (`mov al,1` / `xor al,al` not folded).
 // Leaf: OnCreate
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+#define FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
 #include "engine/CTCPhysicsBase.h"
 
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0f)
 
 struct CTCPhysicsBase_Calls {
     void  OnCreate();                       // CTCPhysicsBase::OnCreate 0x006B0780
-    float GetMass();                        // 0x006AFE00 -> PhysicsDef->Mass
 };
 
 struct CTCPhysicsLight : CTCPhysicsBase {
@@ -25,5 +25,5 @@ struct CTCPhysicsLight : CTCPhysicsBase {
 void CTCPhysicsLight::OnCreate()
 {
     Base()->OnCreate();
-    AffectedByGravity = Base()->GetMass() > DELTA_NOTIONAL_ZERO;
+    AffectedByGravity = GetMass() > DELTA_NOTIONAL_ZERO;     // CTCPhysicsBase::GetMass 0x006AFE00 (?GetMass@CTCPhysicsBase@@QBEMXZ)
 }

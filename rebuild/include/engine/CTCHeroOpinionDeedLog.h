@@ -49,6 +49,16 @@ private:
     unsigned char DeedReactions[13248]; // COpinionDeedReaction[92],+e8; each has18 CCharString then18 ulong.
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x006C8D20
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x006C8D30
+public:
+#endif
 };
 #ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_COMPLETE
 FABLE_STATIC_ASSERT(sizeof(CTCHeroOpinionDeedLog)==0x34a8);

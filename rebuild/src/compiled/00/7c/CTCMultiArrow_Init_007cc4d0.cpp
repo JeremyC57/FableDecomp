@@ -241,7 +241,9 @@ public:
     long          CreateAmmoEffectDelay;               // +0x28
     long          CreateAmmoEffectTimer;               // +0x2c
     void ApplyEffectOnWeapon(CThing* weapon);          // 0x007CC060
-    void CreateAmmoEffect();                           // 0x007CC2B0
+protected:
+    void CreateAmmoEffect();                           // 0x007CC2B0 ?CreateAmmoEffect@CTCMultiArrow@@IAEXXZ (Ego_r/FableWin: protected)
+public:
     void Init();
 };
 

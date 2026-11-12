@@ -12,6 +12,8 @@
 // wide string at 0x013BCA24.
 // Frame-pointer body without spills: `#pragma optimize("y", off)` + `("s", on)`.
 // Leaf: GetExperienceStatName
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -19,8 +21,9 @@ class CWideString { public:
     void* m_pStringData;
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_EmptyWideString;              // 0x013BCA24
 
 struct SLongVector {
     long* _M_start;
@@ -62,5 +65,5 @@ CWideString CTCInventoryExperience::GetExperienceStatName(long stat)
     }
     if (textId)
         return GetInventoryText(textId);
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0099bf30   RELOCATION_MATCH PASS   0099bf30
+
+WINS: 1
+  0099bf30 RELOCATION_MATCH m::??H@YI?AVCWideString@@ABV0@PBG@Z

@@ -17,11 +17,16 @@
 //   ReleaseData QAEXXZ; Reset / reset QAEXPAV; ShareData QAEXPAV..PAVCCPPointerInfo@@@Z; Validate QBEXXZ (debug check);
 //   member template ??$SetStaticCast (63). Not modelled: the free __fastcall templates ??$?8 / ??$?9 (operator== / !=
 //   of two CCountedPointers, YI_NABV..0@Z) -- no landed includer compares two pointers.
-// Bodies (retail bytes; no ICF in retail: 732 separate /O2 dtor COMDATs, one per T):
+// Private source-call-graph restoration, Pass21: donor Movie02468220/Thing018F0A90 destructors call ReleaseData.
+// Runtime sol_donor_countedptr_lifetimes.disasm and sol_donor_countedptr_constructors.disasm retain actual bodies.
+// Both original PDB class/public records identify these existing members; no substitute helper is introduced.
+// The following retail machine patterns do not distinguish a direct release from an expanded ReleaseData call.
+// Retail bytes (no ICF: 732 separate /O2 dtor COMDATs, one per T):
 //   ~CCountedPointer = 0x006E7AB0 (MovieBase) / 0x00CE1000 (CEntityScriptBase) and the other 730: `if (Info) { dec [Info];
 //     reload Info; cmp [Info],0; jne; ecx = Info->Data; call Info->DeleteFunc; operator delete(Info) }`, then Data = 0
-//     and Info = 0 in that order. It is its own body, not a ReleaseData call (below).
-//   ReleaseData: the same release, then Info = 0 and Data = 0 in THAT order. Retail never emits it out of line (no
+//     and Info = 0 in that order. This private source spells the proven original ReleaseData call.
+//   Legacy shared baseline spells ReleaseData Info-first; the selected Data-first opt-in follows original donor02468530.
+//   Retail never emits ReleaseData out of line (no
 //     release COMDAT with the Info-first tail exists); expanded at 0x00A45330 / 0x00A5F250 / 0x006633A0 (`mov [x+4],edi;
 //     mov [x],edi`). Reset and ShareData are written over it (their dead zero stores vanish):
 //   Reset(T*) = 0x008AB2B0 (and 197 more): <ReleaseData> leaves only `mov [esi+4],0`, then Data = data; if (data)
@@ -34,7 +39,7 @@
 //   DeleteData = `delete static_cast<T*>(data)`: 0x00CDEE00 (polymorphic T: `test ecx,ecx; je; mov eax,[ecx]; push 1;
 //     call [eax]`), 0x00674E80 (CExpressionSet: the inline implicit dtor, then operator delete). Only its address is
 //     stored (the count block); the landed DeleteData rows explicitly instantiate it.
-// Model test (wave 9, 955 landed rows, logs/mc_cpvar_*.txt): this split (dtor own body, ReleaseData zeroing Info first)
+// Legacy baseline model test (wave 9, 955 landed rows, logs/mc_cpvar_*.txt): direct dtor release, Info-first ReleaseData
 //   gives 15 DIFFER; a dtor that calls a zeroing ReleaseData gives the same leaf bytes at more sites but names ReleaseData
 //   where retail calls the Data-first dtor COMDAT, and `ReleaseData(); Data = 0; Info = 0;` gives 20 DIFFER.
 // Inlining: every member is plain `inline` (in-class), never __forceinline / noinline. Retail calls the COMDAT copies at
@@ -186,8 +191,14 @@ public:
             ReleaseData();
             Data = data;
             Info = info;
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+            // Original donor027C8B40 reloads the stored Info; legacy default retained below.
+            if (Info)
+                ++Info->RefCount;
+#else
             if (info)
                 ++info->RefCount;
+#endif
         }
     }
 #ifdef FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL

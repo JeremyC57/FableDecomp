@@ -6,7 +6,7 @@
 //   the body is slot 1 of vtable 0x012F701C, built by the 0x1c-byte factory 0x00EFF3F0 (registered under the name "Dummy"
 //   at 0x00EFF14E). 28 bytes matches the PDB CEndGameScarletRobe, so the label is kept; the true class is unproven.
 // Callees: CScriptThing copy ctor 0x004ABE90 (the functor's member), the functor registration 0x00F35B10 and IsDone 0x00F35B30
-//   (on `this`), the functor's out-of-line dtor 0x00EF7AB0 (vtable 0x012C2FE8, landed as CScriptThingFunctor_00ef7ab0),
+//   (on `this`), the functor's out-of-line dtor 0x00EF7AB0 (vtable 0x012C2FE8: NScript::CIsThingConscious::~CIsThingConscious, Ego_r + FableWin; was CScriptThingFunctor_00ef7ab0),
 //   CBaseObject::CBaseObject() 0x0099A380, the handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0
 //   (vtable 0x0127094C = CScriptGameResourceObjectScriptedThingBase), game interface slots 7 NewScriptFrame, 8
 //   StartScriptingEntity, 360 SetThingHasInformation(thing, false, true, false).
@@ -23,18 +23,10 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
-}
-struct CScriptThingFunctor_00ef7ab0 : public NScript::CPredicateBase {                  // vtable 0x012C2FE8
-    CScriptThing m_thing;                              // +0x04
-    CScriptThingFunctor_00ef7ab0(const CScriptThing& thing) : m_thing(thing) { }
-    ~CScriptThingFunctor_00ef7ab0();                   // 0x00EF7AB0
-};
+// NScript::CIsThingConscious: the retail model (vtable 0x012C2FE8, Thing +0x04, 0x10); its dtor 0x00EF7AB0 is called out of line
+//   (agentNF25b: was the address-named local CScriptThingFunctor_00ef7ab0).
+#include "engine/CIsThingConscious.h"
+inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -83,7 +75,7 @@ public:
 
 void NScript::CTonyTestScriptsScript::CDummy::Main()
 {
-    SetPredicate(CScriptThingFunctor_00ef7ab0(Me));
+    SetPredicate(CIsThingConscious(Me));
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;

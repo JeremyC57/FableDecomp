@@ -12,10 +12,17 @@
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCombatAbility.h"
 #include "engine/CCombatAbilityData.h"
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#include "engine/ECombatAbilityDataType.h"
+#endif
 #include "engine/EUnsheatheWeaponType.h"
 #include "stlport/fable_map.h"
 class CCombatManager;class CThingCreatureBase;class CCombatTypeDef;class CMeleeCombatAbilityDef;
 class CTCCombat:public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void SetStruck(const NHitLocations::CHitLocation&,CHitParameters&);void OnHit(const CThing&);
+#endif
 public:
  static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_COMBAT; }
  bool IsAbleToBeKnockedDown() const;
@@ -43,6 +50,10 @@ public:
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
  CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const{return PCombatTypeDef;}
 #endif
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ // Both original PDBs; donor named accessor and native stores to +7c.
+ void SetShotTypeOverride(long type){ShotOverrideType=type;}
+#endif
  void SetCombatType(const CDefPointer<const CCombatTypeDef>&);
 private:
  long ComboChainPos;long ComboChainID;long ComboChainGracePeriodCountdown;long HandednessGracePeriodCountdown;long UnarmedCombatIdleCountdown;
@@ -69,6 +80,14 @@ private:
  std::vector<CIntelligentPointer<CThing> > FlourishParticles;bool IsInMiddleOfFlourishAction;
  CCombatManager& GetCombatManager(){return CombatManager;}
  CThingCreatureBase& GetParentCreature(){return *ParentCreature;}
+#ifdef FABLE_RETAIL_CTCCOMBAT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+private:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00739D10
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCombat)==0x98);
 #else

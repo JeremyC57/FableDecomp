@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00b39080   WARN RELOC_NAME: ??1?$CCountedPointer@$$CBVC3DMeshStats@@@@QAE@XZ -> 004c24c0 labelled '_global::CCountedPointer_Release_004c24c0'
+00b39080   RELOCATION_MATCH PASS   GetParentTransformAnimatedMesh
+
+WINS: 1
+  00b39080 RELOCATION_MATCH CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineInternalAttachedPrimitive_GetParentTransformAnimatedMesh_00b39080

@@ -2,7 +2,7 @@
 // Leaf: ??0CGraphicDataBank@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FEA20, length 337 bytes (`ret`).
 // Callees: CBankFileAsync::CBankFileAsync @ 0x009D5F80, CResourceBank::CResourceBank @ 0x009FC5F0, operator new @ 0x00BFEA1A,
-//   CTextureManager::CTextureManager @ 0x00A6A360, CCountedPointer<CTextureManager>::operator=(CTextureManager*) @ 0x00A002E0.
+//   CTextureManager::CTextureManager @ 0x00A6A360, CCountedPointer<CTextureManager>::Reset(CTextureManager*) @ 0x00A002E0.
 // Vtables: CGraphicDataBank 0x0129C8CC (primary) / 0x0129C938 (CResourceBank part, +0x164), CGraphicBankStateBlock 0x0129C888.
 // Layout: Ego_r.pdb members at the retail offsets (the landed ~CGraphicDataBank 0x009FEBC0 model: CBankFileAsync 0x164 bytes,
 //   CResourceBank 0x7C, 12-byte vectors): GraphicList +0x1E0, GraphicFrameBuffer +0x1EC, Initialised +0x1F8, StateBlock +0x1FC
@@ -28,13 +28,13 @@ template<class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CPointerInfo;
-struct CTextureManagerPointer {                 // CCountedPointer<CTextureManager>
-    CTextureManager* Data;
-    CPointerInfo*    Info;
-    CTextureManagerPointer() : Data(0), Info(0) {}
-    CTextureManagerPointer& operator=(CTextureManager* object);   // 0x00A002E0
-};
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the member is the shared CCountedPointer<CTextureManager> (Ego_r.pdb
+//   CGraphicDataBank::TextureManager) and the call at the end is its out-of-line Reset 0x00A002E0, FableWin.pdb
+//   ?Reset@?$CCountedPointer@VCTextureManager@@@@QAEXPAVCTextureManager@@@Z (void, `ret 4` with no return value; it stores
+//   DeleteData<CTextureManager> 0x009FFD20), was the stand-in ??4CTextureManagerPointer@@QAEAAU0@PAVCTextureManager@@@Z (no operator=
+//   taking a T* exists in either PDB; the ctor ignored its result). Declared only (FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"
 struct CPixelFormatSet {                        // the seven per-use formats of a bank state
     CPixelFormat NonAlpha, Alpha, BooleanAlpha, InterpolatedAlpha, BumpMap, BumpMapAlpha, Signed;
 };
@@ -74,7 +74,7 @@ class CGraphicDataBank : public CBankFileAsync, public CResourceBank { public:
     long                   MinAvailablePreloadMemory;        // +0x274
     long                   AvailableMemory;                  // +0x278
     bool                   FreezeGraphics;                   // +0x27C
-    CTextureManagerPointer TextureManager;                   // +0x280
+    CCountedPointer<CTextureManager> TextureManager;         // +0x280
     CPixelFormat           PixelFormats[11];                 // +0x288
     CTexture               BlankTextures[11];                // +0x2B4
     CGraphicDataBank();
@@ -83,5 +83,5 @@ class CGraphicDataBank : public CBankFileAsync, public CResourceBank { public:
 
 CGraphicDataBank::CGraphicDataBank() : Initialised(false)
 {
-    TextureManager = new CTextureManager;
+    TextureManager.Reset(new CTextureManager);
 }

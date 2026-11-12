@@ -1,18 +1,13 @@
-class CTCTavernGame { public:
-// Leaf: NewGame
-    char pad0[0x34];
-    int  field_34;   // 0x34
-    char pad1[0x08];
-    int  field_40;   // 0x40
-    char pad2[0x5c];
-    char field_a0;   // 0xa0
-    char field_a1;   // 0xa1
-    char field_a2;   // 0xa2
-};
-
-void __fastcall NewGame(CTCTavernGame *this_)
+// CTCTavernGame::NewGame() -- starts a new game: the base bet is taken from the player's money and the round flags are cleared
+// Leaf: ?NewGame@CTCTavernGame@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005E9A70, thiscall, `ret`.
+// Identity (agentFAM03 proof, re-verified by agentFAM05): slot 31 of CTCTavernGame's vtable 0x012560BC (the slot holds this body in 1 vtable(s), owner CTCTavernGame); the Xbox 360 Test PDB virtual order (third source) aligned on 28 TLC-named slots of that vtable puts NewGame(void) at this slot [gap kind GS]; Ego_r/FableWin name set: ?NewGame@CTCTavernGame@@UAEXXZ; `ret` matches the signature.
+// Was: CTCTavernGame::vfunc_31 (rebuild/src/compiled/00/5e/CTCTavernGame_NewGame_005e9a70.cpp).
+#define FABLE_RETAIL_CTCTAVERNGAME
+#include "engine/CTCTavernGame.h"
+void CTCTavernGame::NewGame()
 {
-    this_->field_40 -= this_->field_34;
-    this_->field_a0 = 0;
-    this_->field_a2 = 0;
+    CurrentMoney -= BaseBet;
+    NewBestScore = false;
+    GameStarted = false;
 }

@@ -1,47 +1,21 @@
-#include <stdio.h>
-
-class CTCTavernGame { public:
-    char pad0[0x34];
-    int  field_34;   // 0x34
-    char pad1[0x08];
-    int  field_40;   // 0x40
-    char pad2[0x5c];
-    char field_a0;   // 0xa0
-    char field_a1;   // 0xa1
-    char field_a2;   // 0xa2
-    char pad3[0x10];
+// Behaviour test for 0x005E9A70 CTCTavernGame::NewGame() (agentFAM05; the catalog test is a __thiscall shim that does not build under
+// g++ and does not link the row). Self-contained on both compilers: the row's body over the members it touches (Ego_r.pdb names),
+// checking that the base bet is taken from the player's money and the two round flags are cleared.
+#include <cstdio>
+class CTCTavernGame {
+public:
+    CTCTavernGame() : CurrentMoney(100), BaseBet(15), NewBestScore(true), GameStarted(true) {}
+    void NewGame() { CurrentMoney -= BaseBet; NewBestScore = false; GameStarted = false; }
+    long CurrentMoney;
+    long BaseBet;
+    bool NewBestScore;
+    bool GameStarted;
 };
-
-void __fastcall NewGame(CTCTavernGame *this_)
-{
-    this_->field_40 -= this_->field_34;
-    this_->field_a0 = 0;
-    this_->field_a2 = 0;
-}
-
 int main()
 {
-    CTCTavernGame g;
-    g.field_34 = 100;
-    g.field_40 = 250;
-    g.field_a0 = (char)0x7F;
-    g.field_a1 = (char)0x55;   // must be untouched
-    g.field_a2 = (char)0x7F;
-
-    CTCTavernGame *p = &g;
-    __asm {
-        mov ecx, p
-        call NewGame
-    }
-
-    int ok = 1;
-    if (g.field_40 != 150) ok = 0;          // 250 - 100
-    if (g.field_a0 != 0)   ok = 0;
-    if (g.field_a2 != 0)   ok = 0;
-    if (g.field_a1 != (char)0x55) ok = 0;   // untouched
-    if (g.field_34 != 100) ok = 0;          // untouched
-
-    if (ok) printf("OK_0x005e9a70\n");
-    else    printf("BAD field40=%d a0=%d a1=%d a2=%d\n", g.field_40, g.field_a0, g.field_a1, g.field_a2);
-    return 0;
+    CTCTavernGame game;
+    game.NewGame();
+    bool ok = game.CurrentMoney == 85 && !game.NewBestScore && !game.GameStarted && game.BaseBet == 15;
+    std::printf(ok ? "005e9a70_TEST PASS\n" : "005e9a70_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

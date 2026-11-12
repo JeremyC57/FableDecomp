@@ -25,7 +25,7 @@ class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);        // 0x009BF160
     void ClearRenderTarget(const CRGBColour* colour, unsigned long flags);   // 0x009BE420
 };
-extern CDisplayManager* g_pDisplayManager_01436e1c;              // 0x01436E1C
+namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 class CShaderRenderManager {
 public:
     void SetViewTransform(const CMatrix3x4& view);      // 0x00988350
@@ -139,14 +139,14 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
         g_pRenderStateManager->OpenCaptureBlock();
         SetState(g_pRenderManagerCore->m_state2b60, FloatBits(g_pShadowRenderer_01436e60->ShadowProjectionZOffset), g_pRenderManagerCore);
         SetState(g_pRenderManagerCore->m_state2b74, FloatBits(g_pShadowRenderer_01436e60->ShadowProjectionZSlopeOffset), g_pRenderManagerCore);
-        g_pDisplayManager_01436e1c->SetRenderTarget((CRenderTarget*)RenderTarget);
+        NEngineInternal::GPDisplayManager->SetRenderTarget((CRenderTarget*)RenderTarget);
         if (*(long*)RenderingTechnique == 1) {
             CRGBColour white;
             white.R = 0xff;
             white.G = 0xff;
             white.B = 0xff;
             white.A = 0xff;
-            g_pDisplayManager_01436e1c->ClearRenderTarget(&white, 1);
+            NEngineInternal::GPDisplayManager->ClearRenderTarget(&white, 1);
             SetState(g_pRenderManagerCore->m_state2840, 0, g_pRenderManagerCore);
         } else {
             CRGBColour white;
@@ -154,7 +154,7 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
             white.G = 0xff;
             white.B = 0xff;
             white.A = 0xff;
-            g_pDisplayManager_01436e1c->ClearRenderTarget(&white, 5);
+            NEngineInternal::GPDisplayManager->ClearRenderTarget(&white, 5);
         }
         C2DBoxF window;
         SetWindowSize(window, ((CTextureView*)ShadowBufferTexture)->GetDimensions(0).Width,

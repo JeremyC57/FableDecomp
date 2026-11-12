@@ -8,6 +8,11 @@
 class CThing;class CThingCreatureBase;
 class CAIStateGroup_RangedCombatUsePreferredFirePoint:public CAIStateGroupBase {
 protected:void GetFirePointList(std::vector<CThing*>&);
+#ifdef FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_STILLRUNNABLE
+ // Nested opt-in (chunk Q8, row 0x0095D0E0): Ego_r.pdb ?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ
+ // (protected, non-virtual), out of line at retail 0x0095D0E0. Declaration only: no layout change.
+ bool IsStillRunnable();                                             // 0x0095D0E0
+#endif
 private:CIntelligentPointer<CThingCreatureBase> PEnemy;CIntelligentPointer<CThing> PFirePoint;long TimeOutCounter;
 };
 #else

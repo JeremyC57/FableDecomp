@@ -41,6 +41,7 @@ public:
     CIntelligentPointer(T* item);                       // 0x004A96F0 (CThing instance: vtable 0x01238C6C)
 };
 class CThing;
+enum EPlayerMode;                                  // MS forward enum: CPlayer::GetCurrentMode 0x00633BE0 returns it
 struct CIntelligentPointerList {
     struct _Node {
         _Node* _M_next;
@@ -126,13 +127,13 @@ public:
     unsigned char Flags91;                              // +0x91
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
     const C3DVector& GetPos() const;               // 0x004C73D0
-    bool GetTCDriver(CTCDParticleEmitter** out);        // 0x004ACB50
+    template <class T> bool GetTCDriver(T** out);       // 0x004ACB50 ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 = IS_THING_ALIVE<CThing*> (FableWin ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z; agentNF16)
 class CThingPlayerCreature;
 class CPlayer {
 public:
-    long GetCurrentMode() const;                        // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                        // 0x00633BE0
     const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
 };
 struct CMovement {

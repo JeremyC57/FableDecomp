@@ -7,7 +7,6 @@
 // global float value. Model it as a __fastcall member with one 4-byte
 // parameter so the compiler emits 'ret 4'.
 
-extern float g_terrainDesirability; // ds:0x122ded8 (reloc-masked)
 
 class CObstacleNavigatorExternalInterface { public:
     float GetTerrainDesirabilityAt(void* pos);
@@ -16,5 +15,5 @@ class CObstacleNavigatorExternalInterface { public:
 float CObstacleNavigatorExternalInterface::GetTerrainDesirabilityAt(void* pos)
 {
     (void)pos;
-    return g_terrainDesirability;
+    return 1.0f;
 }

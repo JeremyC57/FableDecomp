@@ -120,6 +120,12 @@ public:
     // call 0x00492BAB`). Declaration only: no layout change.
     void Clear(bool);                                                    // 0x00492BAB
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_PAUSE
+    // Retail opt-in (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate): Ego_r.pdb ?Pause@CSubtitleRenderer@@QAEX_N@Z (Ego_r
+    // 0x00496E10), out of line in retail at 0x0048DD94 (manifest CSubtitleRenderer::Pause; the call `mov ecx,[0x013B8790] ; push 1 ;
+    // add ecx,18h ; call 0x0048DD94` at 0x006C1355). Declaration only: no layout change.
+    void Pause(bool pause);                                              // 0x0048DD94
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR
     // Pass 17: the two overloads in both PDBs and the calls at 0x00492ED1 / 0x00492973.
     void SetText(const CFontBank&, const CCharString&, unsigned long, float, bool, bool);

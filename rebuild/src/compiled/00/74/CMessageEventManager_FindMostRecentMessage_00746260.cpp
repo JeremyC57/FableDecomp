@@ -14,18 +14,18 @@ struct CMessageList {                              // list<CMessageEvent>: one s
 
 class CMessageEventFilter_IsOfType { public:
     long Type;
-    bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF1C0 Ego_r/FableWin ??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z
 };
 class CMessageEventFilter_CanBeSeenOrHeard { public:
     void* m_pThing;
-    bool operator()(CMessageEvent* event) const;   // 0x006AF220
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF220 Ego_r/FableWin ??RCMessageEventFilter_CanBeSeenOrHeard@@QBE_NABVCMessageEvent@@@Z
 };
 
 template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
-    bool operator()(CMessageEvent* event) const { return (*m_pFirst)(event) && (*m_pSecond)(event); }
+    bool operator()(CMessageEvent* event) const { return (*m_pFirst)(*event) && (*m_pSecond)(*event); }
 };
 
 class CWorld;

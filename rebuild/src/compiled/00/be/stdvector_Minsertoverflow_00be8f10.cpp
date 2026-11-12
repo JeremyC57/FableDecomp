@@ -1,7 +1,9 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CUnprovenElement_00be8f10*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PAVCUnprovenElement_00be8f10@@V?$allocator@PAVCUnprovenElement_00be8f10@@@std@@@std@@IAEX
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CEngineWaterBackgroundSubPatch*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@PAVCEngineWaterBackgroundSubPatch@@V?$allocator@PAVCEngineWaterBackgroundSubPatch@@@std@@@std@@IAEX
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE8F10, 216 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `CUnprovenElement_00be8f10*` -- DESCRIPTIVE element type: `CUnprovenElement_00be8f10*` is a placeholder for an unidentified 4-byte pointer element; evidence: callers are CLandscapeBackgroundPatch::Render 0x00BE7BE0 and its push_back 0x00BE8FF0; the element is not named.
+// Identity: element `CEngineWaterBackgroundSubPatch*` (name-fix pass 2026-11-12): retail calls 0x00BE8F10 from the expanded push_backs of
+//   CLandscapeBackgroundPatch::Render 0x00BE7BE0 on the CEngineWaterRenderer CArray<CEngineWaterBackgroundSubPatch*> render lists
+//   (the landed 0x00BE7BE0 binds this leaf) and from CArray<CEngineWaterBackgroundSubPatch*>::push_back 0x00BE8FF0 (FableWin.pdb).
 //   Family F005 (40 byte-identical bodies, each its own COMDAT next to the TU that first instantiated it): the manifest
 //   label "Vector_InsertN" is propagated and behavioural. STLport 4.6 `vector<_Tp>::_M_insert_overflow(pos, x,
 //   const __true_type&, fill_len, atend)` (the protected POD overload, defined in the class body) verbatim.
@@ -14,7 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-class CUnprovenElement_00be8f10;
+class CEngineWaterBackgroundSubPatch;
 
 namespace std {
 
@@ -89,6 +91,6 @@ protected:
     }
 };
 
-template void vector<CUnprovenElement_00be8f10* >::_M_insert_overflow(CUnprovenElement_00be8f10**, CUnprovenElement_00be8f10* const&, const __true_type&, unsigned int, bool);
+template void vector<CEngineWaterBackgroundSubPatch* >::_M_insert_overflow(CEngineWaterBackgroundSubPatch**, CEngineWaterBackgroundSubPatch* const&, const __true_type&, unsigned int, bool);
 
 } // namespace std

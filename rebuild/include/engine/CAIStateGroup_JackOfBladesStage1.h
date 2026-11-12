@@ -4,6 +4,12 @@
 class C3DVector;
 // Original complete Ego_r type, native base size4c and remaining original members.
 class CAIStateGroup_JackOfBladesStage1:public CAIStateGroup_JackOfBladesBase {
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+public:virtual void Update();
+protected:
+ void PowerUpSword();
+ EAIActionReturn MeleeCombat();
+#endif
 protected:
  bool HasAttacked;
  long ZigZagCounter;

@@ -131,12 +131,23 @@ class CObjectAugmentationsDef;
 class CThingBaseDef;
 #endif
 class CTCObjectAugmentations : public CTCBase {
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+long GetOnHitExplodingEffect()const;void StopTrailEffect();
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_OBJECT_AUGMENTATIONS; }
     long GetFreeSlot() const;                                        // 0x00765D50
     void AttachAugmentationToSlot(long augmentationDefIndex, long slot);   // 0x00768120
     static float __fastcall GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations);   // 0x007661C0
     static CWideString __fastcall GetAugmentationName(long augmentationDefIndex);   // 0x00765F90 ?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z
+#ifdef FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_GETAUGMENTATIONS
+    // Retail opt-in (row 0x00868CE0 CHitParameters::SetWeapon): Ego_r.pdb
+    // ?GetAugmentations@CTCObjectAugmentations@@QBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z, out of line in retail at 0x00766920 (landed).
+    // Declaration only.
+    void GetAugmentations(std::vector<long>& augmentations) const;   // 0x00766920
+#endif
 #ifdef FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_DAMAGEMULTIPLIER
     // Retail opt-in (agentNF10, CTCInventoryWeapons rows 0x005C7913 / 0x005C7B10 / 0x005C7D0D / 0x005C7F07): Ego_r.pdb / FableWin.pdb
     // ?GetDamageMultiplier@CTCObjectAugmentations@@QBEMXZ, out of line in retail at 0x00766140 (landed). Declaration only.

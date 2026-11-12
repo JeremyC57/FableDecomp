@@ -1,0 +1,80 @@
+RESULT 00406610 CUserProfileManager::GetManualSaveFileName RELOCATION_MATCH flags= [] leaf= GetManualSaveFileName | TEST PASS 00406610_TEST PASS | grades_used=3
+RESULT 00407370 CUserProfileManager::ApplyValues RELOCATION_MATCH flags= [] leaf= ?ApplyValues@CUserProfileManager@@IAEXXZ | TEST PASS 00407370_TEST PASS | grades_used=3
+RESULT 00408340 CUserProfileManager::SetSoundAsMuted RELOCATION_MATCH flags= [] leaf= SetSoundAsMuted | TEST PASS CUserProfileManager_00408340_TEST PASS | grades_used=3
+RESULT 004083b0 CUserProfileManager::SetDefaultValuesAudio RELOCATION_MATCH flags= [] leaf= ?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ | TEST PASS (rows test) | grades_used=4 (repair 2)
+RESULT 004b3a20 CQuestManager::DeactivateQuest RELOCATION_MATCH flags= [] leaf= DeactivateQuest | TEST PASS 004b3a20_TEST PASS | grades_used=3
+RESULT 004b4a10 CQuestManager::ActivateQuest RELOCATION_MATCH flags= [] leaf= ?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z | TEST PASS 004b4a10_TEST PASS | grades_used=3
+RESULT 00542330 CIconText::CIconText RELOCATION_MATCH flags= [] leaf= CIconText | TEST PASS 00542330_TEST PASS | grades_used=3
+RESULT 00543b30 NUISystem::CIconText::`vector deleting destructor'`adjustor{4}' RELOCATION_MATCH flags= ['none'] leaf= ??_ECIconText@NUISystem@@W3AEPAXI@Z | TEST PASS 00543b30_TEST PASS | grades_used=3
+RESULT 00669d30 CSpecialEffectsDef::GetEffectFromString RELOCATION_MATCH flags= [] leaf= ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z | TEST PASS 00669d30_TEST PASS | grades_used=4
+RESULT 00687a70 CInputProcessGameBase::AddToInterface RELOCATION_MATCH flags= [] leaf= ?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z | TEST PASS 00687a70_TEST PASS | grades_used=3
+RESULT 00688a60 CInputProcessTargetLockRightStickTargetSelect::AddToInterface RELOCATION_MATCH flags= [] leaf= ?AddToInterface@CInputProcessTargetLockRightStickTargetSelect@@UAE_NAAVCInputProcessManager@@@Z | TEST PASS 00688a60_TEST PASS | grades_used=3
+RESULT 00688eb0 CInputProcessZTarget::ProcessInput RELOCATION_MATCH flags= [] leaf= ProcessInput | TEST PASS 00688eb0_TEST PASS | grades_used=3
+RESULT 0068eaf0 CInputProcessWatchForWillChargeUpThirdPersonModeTermination::AddToInterface RELOCATION_MATCH flags= [] leaf= ?AddToInterface@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z | TEST PASS PASS_0068eaf0 | grades_used=4
+RESULT 00697f30 CGameCameraManager::GetRenderCamera RELOCATION_MATCH flags= [] leaf= ?GetRenderCamera@CGameCameraManager@@UBE?AVCCamera@@M@Z | TEST PASS PARITY_OK_697f30 | grades_used=3
+RESULT 006a7600 std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&> RELOCATION_MATCH flags= [] leaf= ??RCThingFilter_IsCreatureThreatTo@@QBE_NABVCThingCreatureBase@@@Z | TEST PASS 006a7600_TEST PASS | grades_used=4
+RESULT 006b08e0 CTCPhysicsBase::CreatePPhysicsMeshInfo RELOCATION_MATCH flags= [] leaf= ?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z | TEST PASS PASS_006b08e0 | grades_used=3
+RESULT 0078b2a0 _global::IsThingAlive_0078b2a0 RELOCATION_MATCH flags= [] leaf= ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@YI_NABV?$CIntelligentPointer@VCThingObject@@@@@Z | TEST PASS 0078b2a0_TEST PASS | grades_used=3
+RESULT 0078e820 CTCDivineWrath::SetPTarget RELOCATION_MATCH flags= [] leaf= SetPTarget | TEST PASS 0078e820_TEST PASS | grades_used=3
+RESULT 00799900 CTCShopKeeper::AcquireNewCustomer RELOCATION_MATCH flags= [] leaf= ?AcquireNewCustomer@CTCShopKeeper@@QAEXXZ | TEST PASS 00799900_TEST PASS | grades_used=3
+RESULT 007a69f0 NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::ReplaceMeshByIndex RELOCATION_MATCH flags= [] leaf= ReplaceMeshByIndex | TEST PASS 007a69f0_TEST PASS | grades_used=3
+RESULT 007ba3c0 CTCTavernBar::GetRandomBarSlot RELOCATION_MATCH flags= [] leaf= GetRandomBarSlot | TEST PASS 007ba3c0_TEST PASS | grades_used=3
+RESULT 007ba550 CTCTavernBar::OnInitialActivate RELOCATION_MATCH flags= [] leaf= OnInitialActivate | TEST PASS 007ba550_TEST PASS | grades_used=3
+RESULT 007be0f9 NThingShot::CTCShotDefinitionForcePushBall::OnCollision RELOCATION_MATCH flags= [] leaf= OnCollision | TEST PASS 007be0f9_TEST PASS | grades_used=3
+RESULT 007c3ea0 _global::SetMember_dword0x18_007c3ea0 MATCH flags= [] leaf= ?SetAICast@CTCHealLife@@QAEXJ@Z | TEST PASS OK_007c3ea0 | grades_used=3
+RESULT 007d83c0 CTCTavernGameSpotTheAddition::OnInitialActivate RELOCATION_MATCH flags= [] leaf= OnInitialActivate | TEST PASS 007d83c0_TEST PASS | grades_used=3
+RESULT 007e92d0 CTCAvoidRegionExit::RebuildStaticThingLists RELOCATION_MATCH flags= [] leaf= RebuildStaticThingLists | TEST PASS 007e92d0_TEST PASS | grades_used=3
+RESULT 007edee0 CTCCarriedActionUseTrophy::OnActionUseCommon RELOCATION_MATCH flags= [] leaf= ?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z | TEST PASS 007edee0_TEST PASS | grades_used=3
+RESULT 00801a50 CTCIdleScheduler::ChooseNewIdle RELOCATION_MATCH flags= [] leaf= ChooseNewIdle | TEST PASS 00801a50_TEST PASS | grades_used=3
+RESULT 00811760 NEntityEvents::CEventHitBase::CEventHitBase RELOCATION_MATCH flags= [] leaf= ??0CEventHitBase | TEST PASS 00811760_TEST PASS | grades_used=3
+RESULT 00838bc0 CThingGameObject::GetMeleeHitParameters RELOCATION_MATCH flags= [] leaf= GetMeleeHitParameters | TEST PASS 00838bc0_TEST PASS | grades_used=3
+RESULT 008685f0 CHitParameters::SetThingHitting RELOCATION_MATCH flags= [] leaf= ?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z | TEST PASS 008685f0_TEST PASS | grades_used=3
+RESULT 00878b60 NCameraModes::CProjectileWeapon::GetLookDirectionXYFromParams RELOCATION_MATCH flags= [] leaf= ?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@ | TEST PASS 00878b60_TEST PASS | grades_used=3
+RESULT 008ddd70 NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate RELOCATION_MATCH flags= [] leaf= ?OnActivate@CModeGuildmasterPowerUpHeal@NCreatureMode@@UAEXXZ | TEST PASS 008ddd70_TEST PASS | grades_used=3
+RESULT 008e0060 NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate RELOCATION_MATCH flags= [] leaf= ?OnActivate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ | TEST PASS 008e0060_TEST PASS | grades_used=3
+RESULT 008ec9c0 CTCDegradableBase::ChangeMesh RELOCATION_MATCH flags= [] leaf= ChangeMesh | TEST PASS 008ec9c0_TEST PASS | grades_used=3
+RESULT 008f1250 CTCTavernGameCardBase::OnInitialActivate RELOCATION_MATCH flags= [] leaf= ?OnInitialActivate@CTCTavernGameCardBase | TEST PASS 008f1250_TEST PASS | grades_used=3
+RESULT 009098e0 CCombatSequence_WillForcePush::IsValid RELOCATION_MATCH flags= [] leaf= IsValid | TEST PASS 009098e0_TEST PASS | grades_used=3
+RESULT 009236c0 CAIStateGroup_ServeFood::Update RELOCATION_MATCH flags= [] leaf= ?Update@CAIStateGroup_ServeFood@@UAEXXZ | TEST PASS 009236c0_TEST PASS | grades_used=4
+RESULT 009672c0 CAIStateGroup_TavernServer::GetOldJugPoint RELOCATION_MATCH flags= [] leaf= ?GetOldJugPoint@CAIStateGroup_TavernServer@@QAE_NXZ | TEST PASS 009672c0_TEST PASS | grades_used=3
+RESULT 00967650 CAIStateGroup_TavernServer::IsRunnable RELOCATION_MATCH flags= [] leaf= ?IsRunnable@CAIStateGroupTavernServerMethods@@QAE_NXZ | TEST PASS 00967650_TEST PASS | grades_used=4
+RESULT 00968860 CAIStateGroup_TavernKeeper::GetOldJugPoint RELOCATION_MATCH flags= [] leaf= ?GetOldJugPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ | TEST PASS 00968860_TEST PASS | grades_used=3
+RESULT 009b4bd0 std::vector::_M_insert_overflow RELOCATION_MATCH flags= [] leaf= ?_M_insert_overflow@?$vector@PAVCInstantiatedDefInfo@CDefinitionManager@@V?$allocator@PAVCInstantiatedDefInfo@CDefinitionManager@@@std@@@std@@IAEXPAPAVCInstantiatedDefInfo@CDefinitionManager@@ABQAV34@ABU__true_type@2@I_N@Z | TEST PASS 009b4bd0_TEST PASS | grades_used=4
+RESULT 009be590 CDisplayManager::GetBestSignedTextureFormat RELOCATION_MATCH flags= [] leaf= ?GetBestSignedTextureFormat@CDisplayManager@@QAE_NJAAVCPixelFormat@@@Z | TEST PASS 009be590_TEST PASS | grades_used=3
+RESULT 009be610 CDisplayManager::GetBestOpaqueTextureFormat RELOCATION_MATCH flags= [] leaf= GetBestOpaqueTextureFormat | TEST PASS 009be610_TEST PASS | grades_used=3
+RESULT 009be6c0 CDisplayManager::GetBestAlphaTextureFormat RELOCATION_MATCH flags= [] leaf= ?GetBestAlphaTextureFormat@CDisplayManager@@QAE_NJAAVCPixelFormat@@@Z | TEST PASS 009be6c0_TEST PASS | grades_used=3
+RESULT 009be750 CDisplayManager::GetBestBooleanAlphaTextureFormat RELOCATION_MATCH flags= [] leaf= GetBestBooleanAlphaTextureFormat | TEST PASS 009be750_TEST PASS | grades_used=3
+RESULT 009bebb0 CDisplayManager::GetClosestDepthBufferFormat RELOCATION_MATCH flags= [] leaf= ?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z | TEST PASS 009bebb0_TEST PASS | grades_used=4
+RESULT 009d5a90 CBankFileAsync::RestartReads RELOCATION_MATCH flags= [] leaf= ?RestartAbortedReads@CBankFileAsync@@AAEXXZ | TEST PASS 009d5a90_TEST PASS | grades_used=3
+RESULT 009d5b60 CBankFileAsyncData::WaitUntilFinished RELOCATION_MATCH flags= [] leaf= WaitUntilFinished | TEST PASS 009d5b60_TEST PASS | grades_used=3
+RESULT 009d61f0 CBankFileAsyncData::~CBankFileAsyncData RELOCATION_MATCH flags= [] leaf= ??1CBankFileAsyncData@@UAE@XZ | TEST PASS 009d61f0_TEST PASS | grades_used=4
+RESULT 009e3790 CPixelFormat::Initialise RELOCATION_MATCH flags= [] leaf= Initialise | TEST PASS 009e3790_TEST PASS | grades_used=3
+RESULT 009e3830 CPixelFormat::Initialise RELOCATION_MATCH flags= [] leaf= ?Initialise@CPixelFormat | TEST PASS FABLETLC_PIXEL_FORMAT_INITIALISE PASS | grades_used=3
+RESULT 009e3870 CPixelFormat::GetInit RELOCATION_MATCH flags= [] leaf= ?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ | TEST PASS 009e3870_TEST PASS | grades_used=3
+RESULT 009f0570 CCodeSectionManager::Contains RELOCATION_MATCH flags= [] leaf= ?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z | TEST PASS 009f0570_TEST PASS | grades_used=3
+RESULT 009fbbd0 CTexture::CalcAlphaHistogram RELOCATION_MATCH flags= [] leaf= ?CalcAlphaHistogram@CTexture | TEST PASS 009fbbd0_TEST PASS | grades_used=3
+RESULT 00a2f190 C3DMeshStats::~C3DMeshStats RELOCATION_MATCH flags= [] leaf= ??1C3DMeshStats | TEST PASS 00a2f190_TEST PASS | grades_used=6
+RESULT 00a68370 CVolumeTexture::Initialise RELOCATION_MATCH flags= [] leaf= ?Initialise@CVolumeTexture@@QAE_NABVC3DExtentsI@@JABVCPixelFormat@@KW4EVolumePool@@_N@Z | TEST PASS 00a68370_TEST PASS | grades_used=3
+RESULT 00ae9450 CCountedPointer_00ae91d0::CCountedPointer_00ae91d0 RELOCATION_MATCH flags= [] leaf= ??0?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z | TEST PASS 00ae9450_TEST PASS | grades_used=3
+RESULT 00bdd8e0 CObjectTypeCollection::OnPostRelocation RELOCATION_MATCH flags= [] leaf= DestroyProceduralTextureVertexBuffers | TEST PASS 00bdd8e0_TEST PASS | grades_used=3
+RESULT 00bdf9b0 CLocalDetailCacheMap::CObjectTypeCollection::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf= ??_GCObjectTypeCollection@CLocalDetailCacheMap@@UAEPAXI@Z | TEST PASS 00bdf9b0_TEST PASS | grades_used=3
+RESULT 00be5bb0 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CLandscapeBackgroundPatch | TEST PASS 00be5bb0_TEST PASS | grades_used=3
+RESULT 00bea7e0 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CWaterPatchMesh | TEST PASS 00bea7e0_TEST PASS | grades_used=3
+RESULT 00beaa00 CTextureOwner_00beaa00::void ClearBlock RELOCATION_MATCH flags= [] leaf= void ClearBlock | TEST PASS 00beaa00_TEST PASS | grades_used=3
+RESULT 00bf36c0 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??_UCEngineLandscapePatch | TEST PASS 00bf36c0_TEST PASS | grades_used=3
+RESULT 00bf3790 CEngineLandscapePatch::DeleteLayerMeshes RELOCATION_MATCH flags= [] leaf= DeleteLayerMeshes | TEST PASS 00bf3790_TEST PASS | grades_used=3
+RESULT 00bf6260 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CLandscapeBackgroundSubNodeSplitBranch | TEST PASS 00bf6260_TEST PASS | grades_used=3
+RESULT 00bf62e0 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CLandscapeBackgroundTreeNode | TEST PASS 00bf62e0_TEST PASS | grades_used=3
+RESULT 00bf8c10 CLandscapeBackgroundLoadTask::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf= ??_GCLandscapeBackgroundLoadTask@@QAEPAXI@Z | TEST PASS 00bf8c10_TEST PASS | grades_used=3
+RESULT 00bf8d10 CLandscapeBackgroundSubNodeSplitBranch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf= ??_GCLandscapeBackgroundSubNodeSplitBranch@@QAEPAXI@Z | TEST PASS 00bf8d10_TEST PASS | grades_used=3
+RESULT 00bf9900 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CLocalDetailPrimitiveMesh | TEST PASS 00bf9900_TEST PASS | grades_used=3
+RESULT 00bf9980 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CLocalDetailPrimitiveRepeatedMesh | TEST PASS 00bf9980_TEST PASS | grades_used=3
+RESULT 00bf9a00 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CLocalDetailPrimitiveMeshZSpriteBatch | TEST PASS 00bf9a00_TEST PASS | grades_used=3
+RESULT 00bf9b40 CLocalDetailPrimitiveRepeatedMesh::OnPostRelocation RELOCATION_MATCH flags= [] leaf= OnPostRelocation | TEST PASS 00bf9b40_TEST PASS | grades_used=3
+RESULT 00bfd160 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CEngineWaterBackgroundSubPatch | TEST PASS 00bfd160_TEST PASS | grades_used=3
+RESULT 00bfd3b0 CEngineWaterBackgroundSubPatch::OnPostRelocation RELOCATION_MATCH flags= [] leaf= OnPostRelocation | TEST PASS 00bfd3b0_TEST PASS | grades_used=3
+RESULT 00bfdc90 CEngineWaterBackgroundSubPatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf= ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z | TEST PASS 00bfdc90_TEST PASS | grades_used=3
+RESULT 00bfdcc0 std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&> RELOCATION_MATCH flags= [] leaf= ??2CLandscapeLayerMesh | TEST PASS 00bfdcc0_TEST PASS | grades_used=3
+RESULT 00bfdd40 CTextureOwner_00bfdd40::void ClearBlock RELOCATION_MATCH flags= [] leaf= void ClearBlock | TEST PASS 00bfdd40_TEST PASS | grades_used=3
+RESULT 00cd2770 CScriptGameResourceObjectScriptedThingBase::Release RELOCATION_MATCH flags= [] leaf= ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ | TEST PASS CLEAR_OK | grades_used=3
+RESULT 00eb53a0 CMurderTwistSheriff::Init RELOCATION_MATCH flags= [] leaf= ?AttackHero@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ | TEST PASS 00eb53a0_TEST PASS | grades_used=4

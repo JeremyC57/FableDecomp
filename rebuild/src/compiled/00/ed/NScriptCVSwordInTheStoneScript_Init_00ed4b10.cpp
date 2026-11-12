@@ -2,14 +2,14 @@
 // Leaf: ?Init@CV_SwordInTheStoneScript@NScript@@UAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED4B10, length 122 bytes (padded to 128).
-// Callees: g_pGameScriptInterface (0x0143E8F8) slot 89 (+0x164, SetTimer(long timer, long time)), the inline
+// Callees: pDSTGame (0x0143E8F8) slot 89 (+0x164, SetTimer(long timer, long time)), the inline
 // CScriptThing::operator= (CCountedPointer assignment as the landed 0x008AB980: the count block's destroy function at
 // block +4 with the object at block +8 in ecx, operator delete @ 0x00BFE9BC).
 // Layout (retail = PDB - 0x14) as the ctor 0x00ED4AA0: SwordRemovalAttemptCount +0x48, flags +0x4c..+0x53, +0x60/+0x61,
 // CrowdMemberPullingCurrent +0x64 (pimpl Data +0x68, Info +0x6c), CrowdMemberPullingNull +0x70, CrowdSwordTimer +0x7c.
 // Shape: the first three members (+0x48..+0x4d) are cleared through an inline Reset() of an unpadded sub-record: stores
 // through the record's `this` keep the timer's Index load (`mov edx,[esi+7Ch]`) AFTER them, right after the
-// g_pGameScriptInterface load as retail; three plain member stores let VC7.1 hoist the Index load above them.
+// pDSTGame load as retail; three plain member stores let VC7.1 hoist the Index load above them.
 // Naming wave 35: identity outer script vtable 012f301c slot 3 (slot 1 RegisterMain pushes "Main" 0x012C2F94); enclosing 00ed4d20 (slot 2) registers 2 entity scripts whose PDB Alloc outer is CV_SwordInTheStoneScript; PDB ?Init@CV_SwordInTheStoneScript@NScript@@; refs=1; was CV_SwordInTheStoneScript::Init (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Init@CV_SwordInTheStoneScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CV_SwordInTheStoneScript@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 #define GSI_V10(p) virtual void v##p##0(); virtual void v##p##1(); virtual void v##p##2(); virtual void v##p##3(); virtual void v##p##4(); virtual void v##p##5(); virtual void v##p##6(); virtual void v##p##7(); virtual void v##p##8(); virtual void v##p##9();
@@ -18,11 +18,11 @@ void __cdecl operator delete(void* p);             // 0x00BFE9BC
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { CGameScriptInterface* gsi = g_pGameScriptInterface; long index = TimerIndex; gsi->SetTimer(index, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { CGameScriptInterfaceBase* gsi = pDSTGame; long index = TimerIndex; gsi->SetTimer(index, time); return *this; }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

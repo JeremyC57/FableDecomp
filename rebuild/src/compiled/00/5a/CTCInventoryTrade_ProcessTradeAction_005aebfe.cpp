@@ -41,9 +41,12 @@ CDefPointer<CTattooCardDef> __fastcall GetTattooCardDef(long itemType);   // 0x0
 CDefPointer<CHairCardDef> __fastcall GetHairCardDef(long itemType);       // 0x005D9A10
 enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_BUY = 11, INVENTORY_CATEGORY_SELL = 12 };
 
+// agentNF20 (2026-11-11): NInventory::CCategory::GetCategoryIdentifier is the Ego_r.pdb spelling
+//   ?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ (const, the namespace enum; enumerators not in the name sets).
 namespace NInventory {
+enum EInventoryCategoryIdentifier { };
 class CCategory { public:
-    long GetCategoryIdentifier();                    // 0x005BD1B3
+    EInventoryCategoryIdentifier GetCategoryIdentifier() const;                    // 0x005BD1B3
 };
 struct CTCInventoryTrade {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

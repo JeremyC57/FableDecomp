@@ -10,7 +10,6 @@
 // header exists; members carry the PDB names (GameAction +0x00 .. ControlDirection +0x14).
 
 extern const float DELTA_NOTIONAL_ZERO;       // 0x0129BA3C (1e-4f)
-extern const float g_floatZero;                 // 0x0122DEDC (0.0f)
 
 class C2DVector { public:
     float X, Y;
@@ -31,13 +30,13 @@ long CActionInputControl::GetDirection() const
     if (ControlDirection.X * ControlDirection.X + ControlDirection.Y * ControlDirection.Y
             > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO
         && (GameAction == 0x3C || GameAction == 0x72)) {
-        if (ControlDirection.X > g_floatZero)
+        if (ControlDirection.X > 0.0f)
             return 4;
-        if (ControlDirection.X < g_floatZero)
+        if (ControlDirection.X < 0.0f)
             return 3;
-        if (ControlDirection.Y > g_floatZero)
+        if (ControlDirection.Y > 0.0f)
             return 1;
-        if (ControlDirection.Y < g_floatZero)
+        if (ControlDirection.Y < 0.0f)
             return 2;
     }
     return 0;

@@ -56,6 +56,10 @@ namespace NHeroInformationScreens { class CManager; }
 // bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
 // (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void AddDamageChange(float,bool);
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_CTOR
     // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): the first five members with their Ego_r.pdb names and
     // types (struct_layouts_egor.tsv: World +4, PlayerManager +8, InputInterface +0xC, Component +0x10, Graphics +0x14) and the
@@ -193,6 +197,13 @@ private:
 public:
     // Retail opt-in (Codex2026-11-10): settled00438010 and both PDB signatures.
     void Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,EEngine2DLayer,bool);
+#endif
+#if defined(FABLE_RETAIL_CPLAYERGUI_ISSHOWSPECIALABILITYBUTTONS) && defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
+public:
+    // Retail opt-in (wf3, row 0x00646580 NPlayerGui::CDrawMeleeActionButtonEffects::Draw): FableWin.pdb
+    // ?IsShowSpecialAbilityButtons@CPlayerGui@@QBE_NXZ (0x0180822F / 0x020F5B83), inline in retail: the row reads the flag in place
+    // (`mov eax,[esi+4] ; cmp byte ptr [eax+250h],bl` at 0x0064658D). Needs FABLE_RETAIL_CPLAYERGUI_MEMBERS (the named member). No layout change.
+    bool IsShowSpecialAbilityButtons() const { return ShowSpecialAbilityButtons; }
 #endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CPlayerGui@@QAEX_N@Z (retail 0x0043A080,

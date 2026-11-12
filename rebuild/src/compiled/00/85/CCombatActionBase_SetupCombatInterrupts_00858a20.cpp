@@ -22,6 +22,11 @@
 //   0x00856A20 / FrameUpdate 0x00859D80 models: TotalTime +0x10, PAnimEntry +0x74, the interrupt/reset-combo times +0xc4/+0xc8,
 //   movement-interrupt frame +0xcc, speed-variation start/end +0xd0/+0xd4, Has* flags +0xd8..+0xda. CThing +0x70 = PDef,
 //   CCreatureStatsDef +0x3c = Speed (Ego_r.pdb).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAC88 STRIKE_ACTION_FINISHED (global, const; initializer 0x0121E8C0), was g_combtActionFinishedEventName.
+//   0x013BAC74 STRIKE_EVENT_RESET_COMBO (global, const; initializer 0x0121E820), was g_strikeEventResetComboEventName.
+//   0x013BACE0 COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT (global, const; initializer 0x0121EB80), was g_allowMovementInterruptEventName.
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 class CMainGameComponent {
 protected:
@@ -35,9 +40,9 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-extern CCharString g_combtActionFinishedEventName;         // 0x013BAC88 ("COMBT_ACTION_FINISHED")
-extern CCharString g_strikeEventResetComboEventName;        // 0x013BAC74 ("STRIKE_EVENT_RESET_COMBO")
-extern CCharString g_allowMovementInterruptEventName;       // 0x013BACE0 ("ALLOW_MOVEMENT_INTERRUPT")
+extern const CCharString STRIKE_ACTION_FINISHED;         // 0x013BAC88 ("COMBT_ACTION_FINISHED")
+extern const CCharString STRIKE_EVENT_RESET_COMBO;        // 0x013BAC74 ("STRIKE_EVENT_RESET_COMBO")
+extern const CCharString COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT;       // 0x013BACE0 ("ALLOW_MOVEMENT_INTERRUPT")
 
 struct CAnimEvent {                                    // std::pair<CCharString, float>
     CCharString Name;
@@ -141,9 +146,9 @@ void CCombatActionBase::SetupCombatInterrupts()
     NAnimationEvents::CManager* manager = GetAnimManager();
     CAnimEventVector events;
     manager->GetEvents(animID, events);
-    if (manager->AnimHasEvent(animID, g_combtActionFinishedEventName)) {
+    if (manager->AnimHasEvent(animID, STRIKE_ACTION_FINISHED)) {
         HasStrikeEventInterrupt = true;
-        float eventTime = manager->GetEventTimeInSeconds(animID, g_combtActionFinishedEventName);
+        float eventTime = manager->GetEventTimeInSeconds(animID, STRIKE_ACTION_FINISHED);
         float totalTime = (TotalTime - GetAnimDelayTime()) / framesPerSecond;
         float speed = 1.0f;
         CDefPointer<CCreatureStatsDef> stats;
@@ -152,13 +157,13 @@ void CCombatActionBase::SetupCombatInterrupts()
             speed = stats->Speed;
         StrikeEventInterruptTime = eventTime + (totalTime - eventTime) * (1.0f - speed) * 0.5f;
     }
-    if (manager->AnimHasEvent(animID, g_strikeEventResetComboEventName)) {
+    if (manager->AnimHasEvent(animID, STRIKE_EVENT_RESET_COMBO)) {
         HasStrikeEventResetCombo = true;
-        StrikeEventResetComboTime = manager->GetEventTimeInSeconds(animID, g_strikeEventResetComboEventName);
+        StrikeEventResetComboTime = manager->GetEventTimeInSeconds(animID, STRIKE_EVENT_RESET_COMBO);
     }
-    if (manager->AnimHasEvent(animID, g_allowMovementInterruptEventName)) {
+    if (manager->AnimHasEvent(animID, COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT)) {
         HasMovementEventInterrupt = true;
-        MovementEventInterruptFrame = (long)(manager->GetEventTimeInSeconds(animID, g_allowMovementInterruptEventName) * framesPerSecond);
+        MovementEventInterruptFrame = (long)(manager->GetEventTimeInSeconds(animID, COMBAT_ACTION_EVENT_ALLOW_MOVEMENT_INTERRUPT) * framesPerSecond);
     }
     bool hasStart;
     {

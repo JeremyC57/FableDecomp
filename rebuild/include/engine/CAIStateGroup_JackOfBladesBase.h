@@ -17,6 +17,12 @@ class CThingCreatureBase;
 // Original Ego_r full base/fields; native STLport vector12 replaces donor16.
 class CAIStateGroup_JackOfBladesBase:public CAIStateGroupBase {
 protected:
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ bool IsStillRunnable();
+ void Summon(long,bool);
+ bool HasEnemyBeenKnockedDown();
+ EAIActionReturn RushToPos(const C3DVector&);
+#endif
  CIntelligentPointer<CThing> PSwordEmitter,PArenaCentre;
  CIntelligentPointer<CThingCreatureBase> PTargetThing;
  long EnemyKnockDownFrame,SpeechCounter;

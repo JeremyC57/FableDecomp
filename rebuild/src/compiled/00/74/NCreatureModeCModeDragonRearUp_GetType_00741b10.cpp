@@ -1,0 +1,14 @@
+// NCreatureMode::CModeDragonRearUp::GetType() const -- returns 0x4a
+// Leaf: ?GetType@CModeDragonRearUp@NCreatureMode@@UBEKXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00741B10, thiscall, `ret`.
+// Identity: slot 1 of NCreatureMode::CModeDragonRearUp's vtable 0x01268420 (defined here: the slot holds this body in 1 vtable(s), all of NCreatureMode::CModeDragonRearUp or derived); the Xbox 360 Test PDB virtual order (third source) aligned on 7 TLC-named slots of that vtable puts GetType(void) at this slot; Ego_r/FableWin name set: ?GetType@CModeDragonRearUp@NCreatureMode@@UBEKXZ; `ret` matches the signature.
+namespace NCreatureMode {
+class CModeDragonRearUp {
+public:
+    virtual unsigned long GetType() const;
+};
+unsigned long CModeDragonRearUp::GetType() const
+{
+    return 0x4a;
+}
+}

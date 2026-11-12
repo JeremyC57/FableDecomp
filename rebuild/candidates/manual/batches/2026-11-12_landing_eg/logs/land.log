@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00878be0   RELOCATION_MATCH PASS   GetPosFromParams
+00877720   RELOCATION_MATCH PASS   GetStandardThings
+009e3b60   RELOCATION_MATCH PASS   ConvertPFDToRGB
+00ad9770   RELOCATION_MATCH PASS   RemoveAllSubsets
+00bc2480   RELOCATION_MATCH PASS   Update
+00801920   RELOCATION_MATCH PASS   RegisterIdleStateGroup
+00407cd0   RELOCATION_MATCH PASS   RedefineControlPassive
+
+WINS: 7
+  00878be0 RELOCATION_MATCH NCameraModes::CProjectileWeapon::GetPosFromParams
+  00877720 RELOCATION_MATCH NCameraModes::CTools::GetStandardThings
+  009e3b60 RELOCATION_MATCH CPixelFormat::ConvertPFDToRGB
+  00ad9770 RELOCATION_MATCH CVertexGroupBlockList::RemoveAllSubsets
+  00bc2480 RELOCATION_MATCH CEngineInternalPrimitiveParticleMesh::Update
+  00801920 RELOCATION_MATCH CTCIdleScheduler::RegisterIdleStateGroup
+  00407cd0 RELOCATION_MATCH CUserProfileManager::RedefineControlPassive
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCProjectileWeapon_GetPosFromParams_00878be0
+  NCameraModesCTools_GetStandardThings_00877720
+  CPixelFormat_ConvertPFDToRGB_009e3b60
+  CVertexGroupBlockList_RemoveAllSubsets_00ad9770
+  CEngineInternalPrimitiveParticleMesh_Update_00bc2480
+  CTCIdleScheduler_RegisterIdleStateGroup_00801920
+  CUserProfileManager_RedefineControlPassive_00407cd0

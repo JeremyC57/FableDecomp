@@ -127,7 +127,6 @@ public:
 };
 }
 using NScript::CQ_OpeningGraveyardSecretPassageScript;
-extern const float g_fZero;                             // 0x0122DEDC (0.0f)
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -188,7 +187,7 @@ void NScript::CQ_OpeningGraveyardSecretPassageScript::CGraveyardDemon::Main()
             game->PauseAllNonScriptedEntities(true);
             switch (TimesSpoken++) {
             case 0:
-                if (Game->GetHealth(demon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(demon.GetScriptThing()) > 0.0f) {
                     demon.Speak(Game->GetHero(), "TEXT_QST_049_DEMON_DOOR_KEEPER_FIRST", (ETextGroupSelectionMethod)0, false, true, false);
                     while (demon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -206,7 +205,7 @@ void NScript::CQ_OpeningGraveyardSecretPassageScript::CGraveyardDemon::Main()
                 }
                 break;
             case 1:
-                if (Game->GetHealth(demon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(demon.GetScriptThing()) > 0.0f) {
                     demon.Speak(Game->GetHero(), "TEXT_QST_049_DEMON_DOOR_KEEPER_SECOND", (ETextGroupSelectionMethod)0, false, true, false);
                     while (demon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
@@ -224,7 +223,7 @@ void NScript::CQ_OpeningGraveyardSecretPassageScript::CGraveyardDemon::Main()
                 }
                 break;
             default:
-                if (Game->GetHealth(demon.GetScriptThing()) > g_fZero) {
+                if (Game->GetHealth(demon.GetScriptThing()) > 0.0f) {
                     demon.Speak(Game->GetHero(), "TEXT_QST_049_DEMON_DOOR_KEEPER_THIRD", (ETextGroupSelectionMethod)0, false, true, false);
                     while (demon.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();

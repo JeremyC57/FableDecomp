@@ -9,18 +9,18 @@
 // with a zero default built in a one-byte stack temporary. The member name is taken
 // from the persisted key. One of 44 bodies of this shape.
 class CPersistContext { public:
-    void Transfer(const char* name, signed char& value, const signed char& defaultValue);   // Transfer<signed char> @ 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 = Transfer<bool> (agentNF19: Ego_r/FableWin ??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z; CPersistTraits<bool> callee 0x00403EB0)
 };
 
 struct CPersistable_00eed030 {
     unsigned char _pad[0x40];        // after the vptr; members not touched here
-    signed char m_bTimeDisplayActive;                // +0x44
+    bool m_bTimeDisplayActive;                // +0x44
     virtual void v00();
     virtual void PersistTransfer_TimeDisplayActive_00eed030(CPersistContext* context);
 };
 
 void CPersistable_00eed030::PersistTransfer_TimeDisplayActive_00eed030(CPersistContext* context)
 {
-    signed char defaultValue = 0;
+    bool defaultValue = false;
     context->Transfer("TimeDisplayActive", m_bTimeDisplayActive, defaultValue);
 }

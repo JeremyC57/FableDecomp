@@ -1,0 +1,7 @@
+- (chunk Q21, 2026-11-12) A one-instruction scheduling residue on a local model (0x00B39080 `lea ecx` one store early) vanished on the port to the shared headers alone; port before probing.
+- (chunk Q21, 2026-11-12) CEngineInternalPrimitiveOcclusionBase has its own virtual ResetOcclusionInfo at slot 28: without it every mesh-base / animated-mesh virtual is called one slot low (+0x80 for CalcInterpolatedObjectTransform, retail +0x84).
+- (chunk Q21, 2026-11-12) CMatrix3x4::PostMultiply's internal copy flips VC7.1's row-2..4 product operand order (`fld b ; fmul a`); a named copy passed to SetMultiply(a, b) (FableWin.pdb) gives retail's `fld a ; fmul b`.
+- (chunk Q21, 2026-11-12) MSVC lays an overload pair in reverse declaration order: declare the one-state GetDummyObjectTransformAnimated before the two-state one to get retail's slot 8 = two-state.
+- (chunk Q21, 2026-11-12) engine/NUISystem_CText.h slots 147..150 are mis-ordered (GetTextWindow is 148, 0x0054FFE0); use FABLE_RETAIL_CTEXT_WINDOW_SLOTS until the default is fixed.
+- (chunk Q21, 2026-11-12) `add reg,-5` v `sub reg,5`: VC7.1 emits the add form only as a 3-address `lea r,[x-5]`; every in-place spelling of `i - len - 5` canonicalises to `sub` (0x00540320, unresolved).
+- (chunk Q21, 2026-11-12) A gcc `cpp -D_MSC_VER=1310` pre-pass plus a cl /Zs check before each q.py grade catches #error and syntax slips without spending a grade.

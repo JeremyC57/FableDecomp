@@ -31,9 +31,10 @@ public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
     void SetHandled();                             // 0x00A0D390
 };
+#include "engine/EPlayerMode.h"
 class CPlayer {
 public:
-    long GetCurrentMode() const;                   // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                   // 0x00633BE0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout

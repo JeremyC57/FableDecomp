@@ -14,6 +14,11 @@
 //   `value_type(type, instance)` is the right-most argument of insert and is built before the UpperBound call (`type` is a
 //   named local homed in the dead `enabled` slot); both the entry and the instance are destroyed inline (counted release
 //   re-reading the block after the decrement, both words zeroed, then ~CBaseClass).
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): CCountedPointer is a global template (FableWin.pdb
+//   ?Reset@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXPAVCPSCBase@NParticleEngine@@@Z for 0x00AF6010, storing
+//   DeleteData<NParticleEngine::CPSCBase> 0x00AF5CD0): the shared header is included at file scope here, so the later include inside
+//   namespace NParticleEngine is a no-op (it had declared NParticleEngine::CCountedPointer, ?Reset@?$CCountedPointer@...@NParticleEngine@@).
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine {
 
 class CParticleSystem;

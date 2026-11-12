@@ -20,6 +20,11 @@ class CThingSearchTools;                                        // chunk 765
 class CEnginePrimitivePrepareInfo;                              // chunk 734: PreparePrimitivesForEngine's parameter
 #endif
 class CThingManager : public CClassFactory {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+// Evidence: both original PDB type records and donor OnHit/helper disassembly.
+public:
+bool IsDrawCombatCollisionDebug()const{return DrawCombatCollisionDebug;}
+#endif
 #ifdef FABLE_RETAIL_STEALTH_DRAW
 private:static bool DrawPerceptionDebug;
 public:bool IsDrawingPerceptionDebug()const{return DrawPerceptionDebug;}

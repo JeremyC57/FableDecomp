@@ -1,0 +1,113 @@
+address	change	grade	test	grades_used	note
+0041C590	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?SetPAcceptButton@CComponent@NUISystem@@UAEXPAV12@@Z
+0042C300	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+004C2A40	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+004C6580	rename (CALLEE_FIXES)	MATCH	PASS catalog	3	leaf = CALLEE_FIXES symbol
+004D3F40	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDNone@@UBE_NJ@Z
+004D4222	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDNavigationSeed@@UBE_NJ@Z
+004D428E	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDInternalMarker@@UBE_NJ@Z
+004D42E2	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDRegionEntrance@@UBE_NJ@Z
+004D8164	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDCameraPoint@@UBE_NJ@Z
+004DB3CB	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDRumble@@UBE_NJ@Z
+004DF1BC	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDPhysicalObstruction@@UBE_NJ@Z
+004E07D6	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDHeroSuit@@UBE_NJ@Z
+004E3158	rename+respell (vfunc row)	MATCH	PASS catalog	3	leaf ?IsDriverType@CTCDExplosion@@UBE_NJ@Z
+004E3467	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDExplosiveTrail@@UBE_NJ@Z
+004E7D41	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ProcessButtonWhitePressed@CTCInventoryBase@NInventory@@UAEXXZ
+004E7D42	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ProcessButtonWhiteReleased@CTCInventoryBase@NInventory@@UAEXXZ
+004E7D44	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ProcessAugmentAction@CTCInventoryBase@NInventory@@UAEXXZ
+004E7D45	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ProcessQuestActivateAction@CTCInventoryBase@NInventory@@UAE_NXZ
+004E7D48	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IncrementQuestCardItemSelection@CTCInventoryBase@NInventory@@UAEXXZ
+004E7D49	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?DecrementQuestCardItemSelection@CTCInventoryBase@NInventory@@UAEXXZ
+004E7D4A	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetIsEnabled@CTCInventoryBase@NInventory@@UBE_NXZ
+004E7D62	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetComponents@CTCInventoryBase@NInventory@@UAEAAV?$vector@PAVCComponent@NUISystem@@V?$all
+0050DF80	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+00513880	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	3	leaf = CALLEE_FIXES symbol
+0052E720	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ChangeState@CComponent@NUISystem@@UAEXKM@Z
+0052E730	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ChangedState@CComponent@NUISystem@@UAE_NXZ
+0052E740	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ChangeState@CComponent@NUISystem@@UAEXAAVCUIState@2@@Z
+0052E7E0	rename+respell (vfunc row)	RELOCATION_MATCH	PASS catalog	1	leaf ?GetUpdateTime@CComponent@NUISystem@@UBEMXZ
+0052E940	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetRenderPosition@CComponent@NUISystem@@UBEABVC2DVector@@XZ
+0052E950	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetRenderZoom@CComponent@NUISystem@@UBEABVC2DVector@@XZ
+0052E960	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetRenderColour@CComponent@NUISystem@@UBEABVCRGBColour@@XZ
+0052F040	rename+respell (vfunc row)	MATCH	PASS catalog	2	leaf ?AddActionOnLeftClicked@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@
+0052F050	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnLeftUnclicked@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISyste
+0052F060	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnLeftHeld@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@
+0052F070	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnRightClicked@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem
+0052F080	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnDropped@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@
+0052F090	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnDroppedNowhere@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISyst
+0052F0A0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnDraggedUp@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@
+0052F0B0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnDraggedDown@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@
+0052F0C0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnHovered@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@
+0052F0D0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?AddActionOnUnhovered@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@
+0052F150	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?ClearHandle@CComponent@NUISystem@@UAEXXZ
+0052F160	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?SetParentViewport@CComponent@NUISystem@@UAEXPAV12@@Z
+0052F430	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?RemoveFromHoveredList@CComponent@NUISystem@@UAEXXZ
+0053E8A0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsClickable@CMenuEntry@NUISystem@@UBE_NXZ
+005419F0	rename+respell (vfunc row)	RELOCATION_MATCH	PASS catalog	2	leaf ?CanScroll@CIconText@NUISystem@@UAEM_NAAVC2DBoxF@@@Z
+0054A380	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?SetPAcceptButton@CTextSlider@NUISystem@@UAEXPAVCComponent@2@@Z
+0054C130	rename+respell (vfunc row)	MATCH	PASS catalog	2	leaf ?SetPAcceptButton@CSlider@NUISystem@@UAEXPAVCComponent@2@@Z
+0054E190	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsClickable@CClickable@NUISystem@@UBE_NXZ
+005532F0	rename (CALLEE_FIXES)	MATCH	PASS catalog	5	leaf = CALLEE_FIXES symbol
+00566260	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+0056CD10	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+0056E593	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventoryExperience@@UBE?AW4EPlayerMode@@XZ
+0056E597	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventoryExperience@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+0056F615	respell binder	RELOCATION_MATCH	PASS catalog	3	ReleaseData binder (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY)
+005791E5	respell binder	RELOCATION_MATCH	PASS catalog	3	ReleaseData binder: local CCountedPointer model -> shared header + DECL_ONLY
+0057A260	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsInventoryScreen@CTCInventoryExperience@@UBE_NXZ
+00581A0D	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventory@@UBE?AW4EPlayerMode@@XZ
+00581A11	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventory@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+005940EC	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+0059B35C	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+0059B6E0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventoryTrade@@UBE?AW4EPlayerMode@@XZ
+0059B6E4	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventoryTrade@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+005B2A37	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+005B3073	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsInventoryScreen@CTCInventoryTrade@@UBE_NXZ
+005B34CD	rename+respell (vfunc row)	MATCH	PASS catalog	2	leaf ?GetPlayerMode@CTCInventoryClothing@@UBE?AW4EPlayerMode@@XZ
+005B34D1	rename+respell (vfunc row)	MATCH	PASS catalog	2	leaf ?GetScreenType@CTCInventoryClothing@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+005BB5EF	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+005C2E1D	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventoryWeapons@@UBE?AW4EPlayerMode@@XZ
+005C2E21	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventoryWeapons@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+005CC6EB	rename+respell (vfunc row)	MATCH	PASS catalog	2	leaf ?GetPlayerMode@CTCInventoryStats@@UBE?AW4EPlayerMode@@XZ
+005CC6EF	rename+respell (vfunc row)	MATCH	PASS catalog	2	leaf ?GetScreenType@CTCInventoryStats@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+005CD074	respell binder	RELOCATION_MATCH	PASS catalog	3	ReleaseData binder (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY)
+005E8C40	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+005EDCE7	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventoryAbilities@@UBE?AW4EPlayerMode@@XZ
+005EDCEB	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventoryAbilities@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+005EE99D	respell binder	RELOCATION_MATCH	PASS catalog	1	queue 0x004460C0: local CGamePlayerInterface stand-in -> shared header (opt-in QUICKACCESSQUEUE)
+005F9853	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+005FA590	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsInventoryScreen@CTCInventoryMap@@UBE_NXZ
+005FA8E0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventoryMap@@UBE?AW4EPlayerMode@@XZ
+005FA8F0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventoryMap@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+00613EB0	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+00613F70	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+00619FD0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsInventoryScreen@CTCInventoryQuests@@UBE_NXZ
+0061A000	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventoryQuests@@UBE?AW4EPlayerMode@@XZ
+0061A010	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventoryQuests@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+0064B668	respell binder	RELOCATION_MATCH	PASS catalog	3	queue 0x0066AD90: stand-in CTCSound -> CTCSoundPlayer.h, ReleaseAttachedLoopingSound
+00687CB0	rename+respell	RELOCATION_MATCH	PASS changed	2	queue 0x004460C0: row renamed CInputProcessGameBase::IsQuickAccessEventInQueue; stand-ins -> shared headers; test respelled
+0068E450	respell binder	RELOCATION_MATCH	PASS catalog	2	queue 0x004460C0: existing local CInputProcessGameBase model respelled (protected const IsQuickAccessEventInQueue); not ported (polymorphic local model)
+006DFE50	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?CreateAdditionalTCs@CTCDParticleEmitter@@UAEXXZ
+006E1D30	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDParticleEmitter@@UBE_NJ@Z
+007120D0	rename+respell	RELOCATION_MATCH	PASS catalog	3	queue 0x007120D0: row renamed to the implicit ??1CCreatureAction_PickUpGenericBox; source = host TU 0x009658B0 with the COMDAT Leaf
+0072DAA0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetPlayerMode@CTCInventoryMagic@@UBE?AW4EPlayerMode@@XZ
+0072DAB0	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?GetScreenType@CTCInventoryMagic@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+00773C90	respell binder	RELOCATION_MATCH	PASS catalog	3	queue 0x0066AD90: local CTCSoundPlayer -> shared header, ReleaseAttachedLoopingSound
+00778D50	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?CreateAdditionalTCs@CTCDNavigationSeed@@UAEXXZ
+00778E60	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?CreateAdditionalTCs@CTCDRegionEntrance@@UAEXXZ
+00778F90	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?CreateAdditionalTCs@CTCDRegionExit@@UAEXXZ
+00779940	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?IsDriverType@CTCDRegionExit@@UBE_NJ@Z
+0077AB90	rename+respell (vfunc row)	MATCH	PASS catalog	2	leaf ?IsDriverType@CTCDExperienceOrb@@UBE_NJ@Z
+007E8860	rename+respell (vfunc row)	MATCH	PASS catalog	1	leaf ?CreateAdditionalTCs@CTCDCameraPoint@@UAEXXZ
+007E9020	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+007E9B40	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	3	leaf = CALLEE_FIXES symbol
+00847520	respell binder	RELOCATION_MATCH	PASS catalog	1	queue 0x004460C0: call respelled IsQuickAccessEventInQueue
+009A1090	respell binder	RELOCATION_MATCH	PASS catalog	1	queue 0x013BDA50: global respelled anonymous-namespace streamingFontBankList
+009C1FE0	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+009C2440	rename (CALLEE_FIXES)	RELOCATION_MATCH	PASS catalog	3	leaf = CALLEE_FIXES symbol
+009D74E0	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+00B26360	respell binder	RELOCATION_MATCH	PASS catalog	1	queue 0x01436E3C: global respelled NEngineInternal::GPScreenEffectOutlineGlow
+00B33010	respell binder	RELOCATION_MATCH	PASS catalog	2	queue 0x01436E3C: local CEngineWaterRenderer stand-in -> shared CEngineScreenEffectOutlineGlow.h (opt-in OUTLINERENDERING) + Begin/FinishOutlineRendering + PeekRenderEnabled; local CEngineComponent stand-in -> shared header
+00B96020	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol
+00B96070	rename (CALLEE_FIXES)	MATCH	PASS catalog	2	leaf = CALLEE_FIXES symbol

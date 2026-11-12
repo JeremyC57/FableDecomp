@@ -24,9 +24,9 @@ FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { 
 
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public: void* PStringData; };
-extern CCharString g_CCharString_013bac54;              // "EYE_SET_L"
-extern CCharString g_CCharString_013bac48;              // "focus_eye_01"
-extern CCharString g_CCharString_013bac50;              // "TARGET_CURSOR_POINT"
+extern const CCharString EYE_LEFT_DUMMY_OBJECT_NAME;              // "EYE_SET_L"
+extern const CCharString MAIN_FOCAL_POSITION_NAME;              // "focus_eye_01"
+extern const CCharString TARGETING_CURSOR_POSITION_NAME;              // "TARGET_CURSOR_POINT"
 
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
@@ -60,9 +60,9 @@ C3DVector CThingCreatureBase::GetHeadPos(bool recalculate) const
         flags = 0x21;
     C3DVector pos;
     CRightHandedSet set;
-    if (!GetGraphicAppearance()->GetDummyObject(g_CCharString_013bac54, 0, flags, pos, set, 1.0f)
-        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac48, 0, flags, pos, 1.0f)
-        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac50, 0, flags, pos, 1.0f)) {
+    if (!GetGraphicAppearance()->GetDummyObject(EYE_LEFT_DUMMY_OBJECT_NAME, 0, flags, pos, set, 1.0f)
+        && !GetGraphicAppearance()->GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, flags, pos, 1.0f)
+        && !GetGraphicAppearance()->GetHelperPoint(TARGETING_CURSOR_POSITION_NAME, 0, flags, pos, 1.0f)) {
         pos = GetPos();
         pos.Z += 1.5f;
     }

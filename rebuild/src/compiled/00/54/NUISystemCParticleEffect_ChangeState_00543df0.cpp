@@ -3,7 +3,7 @@
 // Retry 10: RELOCATION_MATCH -- GetInstance() called inline as the object expression of GetLayer (a named `frontEnd` local hoists the vtable load above the CRightHandedSet temporary stores).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543DF0, length 224 bytes. Virtual: slot 48 of NUISystem::CParticleEffect's
 // vtable 0x0124735C.
-// Callees: CChangingStateComponent::ChangeState @ 0x0052CF40, virtual slot 135 GetStateInfo (x4),
+// Callees: CChangingStateComponent::ChangeState @ 0x0052CF40, virtual slot 135 GetState (x4),
 //          CManager::GetInstance @ 0x0041E5F2 and its slot 36 GetLayer, CParticleEmitterManager::Get
 //          @ 0x00AEAAF0, Create2DEmitter @ 0x00AEB790.
 // Layout (no PDB record for NUISystem::CParticleEffect): +0x54 the component's 2D position, +0x12f its depth
@@ -223,7 +223,7 @@ public:
     virtual void v132();
     virtual void v133();
     virtual void v134();
-    virtual const CUIStateInfo* GetStateInfo(long state);                               // slot 135 (+0x21c)
+    virtual const CUIStateInfo* GetState(long state);                               // slot 135 (+0x21c) 0x0052CEB0 GetState (Ego_r.pdb / FableWin.pdb ?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z; name-fix 2026-11-12)
     unsigned char _body[0x50];                     // +0x04
     C2DVector     Position;                        // +0x54
     unsigned char _pad5c[0xd3];                    // +0x5c
@@ -250,8 +250,8 @@ public:
 void CParticleEffect::ChangeState(long state)
 {
     CChangingStateComponent::ChangeState(state);
-    if (GetStateInfo(state) == 0 || GetStateInfo(state)->HasParticleEffect) {
-        if (GetStateInfo(state) && GetStateInfo(state)->HasParticleEffect && Emitter == 0)
+    if (GetState(state) == 0 || GetState(state)->HasParticleEffect) {
+        if (GetState(state) && GetState(state)->HasParticleEffect && Emitter == 0)
             CreateEmitter();
     }
 }

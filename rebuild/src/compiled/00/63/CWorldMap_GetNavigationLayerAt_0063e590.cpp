@@ -14,7 +14,8 @@
 //   already carries CMap::GetNavigationLayerAt since chunk 256, the older _Cons_val label is gone); __ftol2 0x00BFEA70 (x3);
 //   CThingSearchTools::ForEachInRoughArea<CThingPhysical, CFilter_Bind2<CThingFilter_HasNavigationInformation,
 //   CThingFilter_OverlappingBoundingBox>, CThingFindNavigationLayerAt> const 0x0063F4B0 and the CFilter_Bind3<CThingFilter_IsNot,
-//   ...> twin 0x0063F7C0 (both Ego_r.pdb spellings, ghidra_out/naming_stragglers/ego_r.exe.signatures.tsv).
+//   ...> twin 0x0063F7C0 (both Ego_r.pdb spellings, ghidra_out/naming_stragglers/ego_r.exe.signatures.tsv). The functor is
+//   `const Proc&` (QBE ... ABVCThingFindNavigationLayerAt@@ in both Ego_r.pdb and FableWin.pdb; agentFAM11 respell, was `Proc&`).
 // Layout: shared headers -- CWorldMap::World (CWorld&, +0x08), CWorld::PThingSearchTools_ptr +0x20 through GetThingSearchTools();
 //   CThingFindNavigationLayerAt {Pos, Layer} 16 bytes, GetLayer() const returns float (PDB QBEMXZ: fild + ftol);
 //   CThingFilter_OverlappingBoundingBox {Pos, Radius}; CFilter_Bind2/3 hold pointers F1/F2/F3 to their filters (Ego_r.pdb
@@ -30,6 +31,7 @@
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA_CONSTPROC
 #define FABLE_RETAIL_CMAP_NAVIGATIONLAYER
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR

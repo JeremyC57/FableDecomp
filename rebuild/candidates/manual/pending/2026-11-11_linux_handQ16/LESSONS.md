@@ -1,0 +1,12 @@
+# Q16 lessons (GOTCHAS-ready one-liners)
+
+- 0x008378D0 CThingTrackNode::SetAsLinkedTo: this v other colouring was a one-reference c2 priority tie (211 v 210); writing the start-node arm's shared tail (`other->NextNode = this; other->IsEnd = false;`) in BOTH branches (retail cross-jumps them back into one tail) adds IL references to `other` and gives retail's other-esi / this-edi. Duplicated source tails are a free priority lever: the IL counts them before cross-jumping.
+- 0x008378D0: swapping operand order inside an `&&` (`IsStart && other->IsEnd`) also flips the this/other priorities, but changes which load is CSE'd into al. Use it as a probe only.
+- 0x00957DB0 CAIStateGroup_MinionBehaviourCrowdBase::Update: an uninitialised by-reference out flag (`bool nav_route_calculated;`) shares the GetTC presence-byte slot as retail; initialising it emits `mov al,1 / xor al,al`.
+- 0x00957DB0: a move loop that ends on lost perception should be `ret = AI_ACTION_FAILED; break;` followed by `if (ret != AI_ACTION_FINISHED) { Terminate(); return; }`; an `if (ret == FINISHED) {...}` arm moves the Terminate to the function end.
+- 0x00957DB0: FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN (the GetPointer/SetPointer copy-ctor chain) gives this-in-edi / argument-in-esi for a by-value CIntelligentPointer argument; the plain SetPItem(GetPItem()) body swaps them.
+- 0x00957DB0: when retail expands StatGetInterfaceType / IsAwareOfThing but calls IsAwarenessOfThingDirect (0x00744430), the inline opt-in must keep StatGetInterfaceType inline. Out of line it costs 314 v 266 bytes.
+- 0x00774730 CTCShop::SellItem: in a `list<CIntelligentPointer<CThing> >` loop, a named `const CIntelligentPointer<CThing>& thing = *it;` keeps &node->data in esi from the alive test to Kill (`mov ecx,esi`); `(*it)->` re-forms it (`lea ecx,[esi+8]`, 420 v 419).
+- 0x00A90260 C3DPrimitive2::CreateDegenerateTriangleIndexBuffer: `GetSize() / sizeof(unsigned short)` (unsigned) gives retail's `shr`, where `/ 2` on a signed size emits the cdq/sub/sar idiom.
+- 0x00F3ABF0 CRangeCompressor::CalcCompressionScript: `const unsigned char* source = data + i * stride;` inside the values loop gives retail's strength-reduced source pointer placement.
+- 0x00F3ABF0 (probe, not a match): a user counter in the for-init (`remaining = bytes`) is initialised before the loop guard; a guarded do-while (`if (bytes > 0) { ...; do ... while (offset < bytes); }`) moves it after the guard as retail, and so does the strength-reduced form (`bytes - offset`).

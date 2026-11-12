@@ -125,7 +125,6 @@ public:
 };
 }
 using NScript::CQ_WizardBattleScript;
-extern const float g_fZero;                             // 0x0122DEDC (0.0f)
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -186,7 +185,7 @@ void NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(villager.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(villager.GetScriptThing()) > 0.0f) {
                 villager.Speak(Game->GetHero(), "TEXT_QST_075_VILLAGER_HINT", (ETextGroupSelectionMethod)0, false, true, false);
                 while (villager.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();

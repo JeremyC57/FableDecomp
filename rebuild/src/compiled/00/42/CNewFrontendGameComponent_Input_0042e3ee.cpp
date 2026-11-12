@@ -46,7 +46,7 @@ public:
     void EventScanEnd(CInputEventScanInfo& scan) const;                         // 0x009F4AC0
     void ClearEvents();                                                   // 0x009F5540
 };
-extern CInputManager* PInputManager;             // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 namespace NUISystem {
 class CManager {
 public:
@@ -109,15 +109,15 @@ public:
 void CNewFrontendGameComponent::Input()
 {
     if (m_inputDelayTimer.IsRunning()) {
-        PInputManager->ClearEvents();
+        GPInputManager->ClearEvents();
         return;
     }
     CInputEventScanInfo scan;
     CInputEvent event;
     CInputEvent lastEvent;
-    PInputManager->Update();
+    GPInputManager->Update();
     unsigned long flags = 0;
-    for (bool more = PInputManager->EventScanStart(scan, event); more; more = PInputManager->EventScanNext(scan, event)) {
+    for (bool more = GPInputManager->EventScanStart(scan, event); more; more = GPInputManager->EventScanNext(scan, event)) {
         switch (event.GetType()) {
         case 1:
             CTBaseSingleton<CConsole>::Get().ProcessInput(event);
@@ -216,7 +216,7 @@ void CNewFrontendGameComponent::Input()
             break;
         }
     }
-    PInputManager->EventScanEnd(scan);
+    GPInputManager->EventScanEnd(scan);
     if (m_dwDPadTriggerState)
         flags |= m_dwDPadTriggerState;
     if (flags) {

@@ -22,6 +22,12 @@ class CPersistContext;
 class CWeaponDef : public CSubDefClassBase {
 public:
     static CCharString __fastcall StatGetTypeName() { return CCharString("CWeaponDef", -1); }   // inline (Ego_r name set)
+#ifdef FABLE_RETAIL_CWEAPONDEF_TOOHEAVY
+    // agentFAM09 opt-in (row 0x0121F610, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CWeaponDef::TooHeavyAnimationGroupName'' ("TOO_HEAVY" at 0x013BAF5C), public static const per Anniv360 Test PDB (third
+    // source) ?TooHeavyAnimationGroupName@CWeaponDef@@2VCCharString@@B. Static member: no layout change.
+    static const CCharString TooHeavyAnimationGroupName;                 // 0x013BAF5C
+#endif
     virtual void Transfer(CPersistContext&);                         // ?Transfer@CWeaponDef@@UAEXAAVCPersistContext@@@Z
     virtual void Copy(const CDefClassBase*);                         // ?Copy@CWeaponDef@@UAEXPBVCDefClassBase@@@Z
     virtual unsigned long GetSizeofClass();                          // ?GetSizeofClass@CWeaponDef@@UAEKXZ

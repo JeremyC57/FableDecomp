@@ -22,7 +22,7 @@ public:
     void GetBoundingInfo(C3DVector& centre, float& radius) const;   // 0x006AF640
 };
 
-float __fastcall GetSquaredDistanceToInfiniteLine(const C3DVector& start, const C3DVector& end,
+float __fastcall GFGetShortestDistanceSquaredBetweenPointAndLine(const C3DVector& start, const C3DVector& end,
                                                  const C3DVector& point, float& t);   // 0x00A442E0
 
 #include "engine/CThing.h"
@@ -41,7 +41,7 @@ bool CThingFilter_BoundingRadiusIntersectsInfiniteLine::operator()(const CThing&
         float radius;
         thing.GetPhysicsTC()->GetBoundingInfo(centre, radius);
         float t;
-        float distance_sq = GetSquaredDistanceToInfiniteLine(Start, End, centre, t);
+        float distance_sq = GFGetShortestDistanceSquaredBetweenPointAndLine(Start, End, centre, t);
         if (distance_sq < radius * radius)
             return true;
     }

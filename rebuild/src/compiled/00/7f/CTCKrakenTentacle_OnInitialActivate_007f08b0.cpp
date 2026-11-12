@@ -11,6 +11,7 @@
 // Model: the landed sibling CTCKrakenTentacle::DoDieFX 0x007F0B10 (its second half is this function's tail).
 // Data: 0x01271D0C "DRIP", 0x012651BC "TARGET_CURSOR_POINT", 0x01271D00 "MEETS_WATER", 0x01271CF0 "EFFECT_WATER".
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CTCBASE                                 // agentNF19: the virtual CTCBase model (slot 6 OnInitialActivate 0x00686870)
 #include "engine/CTCBase.h"
 
 class CCharStringData;
@@ -133,9 +134,6 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 #pragma pack(pop)
 
 class CKrakenTentacleDef;
-struct CTCBaseActivate : CTCBase {
-    void OnInitialActivate();                               // 0x00686870 (CTCBase, empty)
-};
 struct CDefClassBaseT : CDefClassBase {
     bool GetSubDef(CDefPointer<const CKrakenTentacleDef>* out) const;   // GetSubDef<CKrakenTentacleDef> 0x007F16B0
 };
@@ -149,7 +147,7 @@ struct CThingWithDef : CThing {
     CDefCopy<CDefClassBaseT> GetDef() const { return CDefCopy<CDefClassBaseT>((CDefClassBaseT*)PDef); }
 };
 
-class CTCKrakenTentacle : public CTCBaseActivate { public:
+class CTCKrakenTentacle : public CTCBase { public:
     CDefPointer<const CKrakenTentacleDef> PTentacleDef;     // +0x0c
     unsigned char _pad10[0x20 - 0x10];
     CIntelligentPointer<CThing> PRippleEffect;              // +0x20
@@ -179,5 +177,5 @@ void CTCKrakenTentacle::OnInitialActivate()
         PRippleEffect.GetPItem()->GetInterface(&emitter, 0x4b);
         emitter->AttachToThing(*ParentThing, 0x4a, "EFFECT_WATER", 0, 0.0f);
     }
-    CTCBaseActivate::OnInitialActivate();
+    CTCBase::OnInitialActivate();
 }

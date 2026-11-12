@@ -14,8 +14,9 @@
 // Shape: plain initialisers (the three `true` bytes share cl and are scheduled before the vtable store,
 // the zeroes share eax, the 1.0f radius is an immediate), the pointer member addressed once in edi,
 // the cutscene call is the constructor body.
+#include "engine/ECutsceneBehaviour.h"
 class CThing { public:
-    void SetCutscenePauseBehaviour(long behaviour);         // 0x004C78A0
+    void SetCutscenePauseBehaviour(ECutsceneBehaviour behaviour);   // 0x004C78A0 (Ego_r + FableWin: ECutsceneBehaviour)
 };
 
 #pragma pack(push, 1)
@@ -63,5 +64,5 @@ CTCDRegionExit::CTCDRegionExit(CThing* thing)
     , HiddenOnMiniMap(false)
     , PEntranceConnectedTo()
 {
-    ParentThing->SetCutscenePauseBehaviour(2);
+    ParentThing->SetCutscenePauseBehaviour(CUTSCENE_BEHAVIOUR_NOT_PAUSED);
 }

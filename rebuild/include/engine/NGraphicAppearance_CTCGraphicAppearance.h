@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_NGRAPHICAPPEARANCE_CTCGRAPHICAPPEARANCE_H
 #define FABLE_ENGINE_NGRAPHICAPPEARANCE_CTCGRAPHICAPPEARANCE_H
 // New shared header (chunk 732, row 0x006AA2E0 CThingPlayerCreature::DrawPreparePrimitivesForRendering): the retail
@@ -72,6 +73,10 @@ class CTCGraphicAppearance : public CTCBase {
 public:
     // Both original PDBs and native004c11f0: const owner, output reference.
     bool GetStaticFocalPosIfLoaded(C3DVector&) const;
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    C3DVector GetCameraFocalPos(float)const;
+    C3DVector GetStaticCameraFocalPos()const{return GetCameraFocalPos(1.0f);}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 protected:
@@ -127,6 +132,18 @@ public:
     void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
 #endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPERNAMES
+    // Retail opt-in (chunk Q3, row 0x0076EB00 CTCWeaponTrail::InitialiseTrails): Ego_r.pdb / FableWin.pdb spellings of the four
+    // out-of-line helper-point queries the row calls (declarations only, no layout change):
+    // ?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z 0x004BE3E0,
+    // ?HasHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z 0x004BE170,
+    // ?GetAllHelperPointNames@...@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z 0x004BDA30,
+    // ?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z 0x004BDE90.
+    bool IsResourcesLoaded(bool) const;
+    bool HasHelperPoint(const CCharString&) const;
+    void GetAllHelperPointNames(std::vector<CCharString>&) const;
+    long GetNoHelperPoints(const CCharString&, float) const;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_WASRENDERED
     // Opt-in (chunk 1024, row 0x006E2ED0): Ego_r.pdb / FableWin.pdb ?WasRenderedLastFrame@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ,
     // out of line in retail at 0x004BD200 (landed). Declaration only.
@@ -198,11 +215,24 @@ public:
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& orientation,
                         float scale) const;                  // 0x004C08C0
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_DUMMYOBJECTNAMES
+    // Retail opt-in (chunk Q23, row 0x00814260 CTCBoastingPodium::OnInitialActivate): Ego_r.pdb
+    // ?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z,
+    // out of line in retail at 0x004BDB40 (catalog name agrees; `lea ecx,[names] ; push ecx ; mov ecx,appearance ; call`). Needs
+    // std::vector (stlport/fable_containers.h) and CCharString at the point of use. Declaration only: no layout change.
+    void GetAllDummyObjectNames(std::vector<CCharString>& names) const;   // 0x004BDB40
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCALPOS
     // Nested opt-in (chunk 768, row 0x00753380 CTCLook::FrameUpdateHeadInterested): Ego_r.pdb / FableWin.pdb
     // ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z (out of line, retail 0x004C11D0). Declaration only.
     bool GetFocalPosIfLoaded(C3DVector& pos, float time) const;   // 0x004C11D0
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual this declaration lacks, declaration only (no layout change; the vtable exists). Slot 10 of the TLC vtable
+// (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual void BulletTimeFrameUpdate();                    // slot 10, 0x004C5D70
+#endif // FABLE_RETAIL_CTCGRAPHICAPPEARANCE_VSLOTS3
 };
 }
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT

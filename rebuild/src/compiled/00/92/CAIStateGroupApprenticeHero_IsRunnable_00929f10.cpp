@@ -10,9 +10,9 @@
 // Identity (proven): Ego_r.pdb ?IsRunnable@CAIStateGroup_ApprenticeHero@@MAE_NXZ (0x0094D0D0), vtable slot 11 of the class;
 //   the label agrees.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*,...>::LowerBound 0x0040F020 (the inlined component lookup),
-//   CTCVillageMember::GetPVillage() const 0x007EE540 (landed), CTCVillage::IsCookTime() const 0x00658B20.
+//   CTCVillageMember::GetPVillage() const 0x007EE540 (landed), CTCVillage::IsWorkTime() const 0x00658B20.
 // Shape: `if (!HasTC(0x23)) return false;` (early false block; `je` back to it for a null village), the component lookup,
-//   `if (village->IsCookTime()) return true; return false;` (folds to `test al,al ; setne al` as retail).
+//   `if (village->IsWorkTime()) return true; return false;` (folds to `test al,al ; setne al` as retail).
 // ---- shared AI state-group model (retail STLport layout; the generated engine headers are flat Ego_r layouts) ----
 // CAIStateGroupBase (RTTI: : CBaseClass): vptr +0, PBrain +4, ScriptAIPriority +8, Name +0xC, Terminated +0x10, Priority
 // +0x11, Enabled +0x12 (0x14 bytes). CAIBrain::Creature +0x18 (engine/CAIBrain.h agrees). CThing (retail): UsingComponents
@@ -126,7 +126,7 @@ protected:
 };
 class CTCVillage {
 public:
-    bool IsCookTime() const;                            // 0x00658B20
+    bool IsWorkTime() const;   // 0x00658B20 ?IsWorkTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin; agentNF25b)
 };
 class CTCVillageMember {                                // interface 0x23
 public:
@@ -147,7 +147,7 @@ bool CAIStateGroup_ApprenticeHero::IsRunnable()
     CTCVillage* village = member->GetPVillage();
     if (village == 0)
         return false;
-    if (village->IsCookTime())
+    if (village->IsWorkTime())
         return true;
     return false;
 }

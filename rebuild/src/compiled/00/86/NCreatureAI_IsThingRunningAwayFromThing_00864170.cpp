@@ -16,10 +16,13 @@
 // `if (a && b) return true; return false;` (a `return a && b;` widens to eax). The dot product is C2DVector::DotProduct's
 // `Y * o.Y + X * o.X` order (as the landed C3DVector::DotProduct, last component first).
 // CThing is modelled locally: rebuild/include/engine has no CThing.h.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BAF94 COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD (namespace NCreatureAI, const; initializer 0x0121F630), was g_RunningAwayDotThreshold.
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
-extern float g_RunningAwayDotThreshold;              // 0x013BAF94
+namespace NCreatureAI { extern const float COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD; }              // 0x013BAF94
 
 class C3DVector
 {
@@ -79,7 +82,7 @@ bool __fastcall NCreatureAI::IsThingRunningAwayFromThing(const CThing& thing, co
     float dx = now.X - pos.X;
     float dy = now.Y - pos.Y;
     bool farEnough = (float)sqrt(dx * dx + dy * dy) > 4.0f;
-    bool facingAway = facing.DotProduct(toOther) < g_RunningAwayDotThreshold;
+    bool facingAway = facing.DotProduct(toOther) < COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD;
     if (farEnough && facingAway)
         return true;
     return false;

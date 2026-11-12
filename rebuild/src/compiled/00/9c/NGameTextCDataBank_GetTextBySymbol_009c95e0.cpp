@@ -11,6 +11,8 @@
 // `mov esi,[esp+10h]`; reading the temporary's member uses the returned eax); the release is written by hand on the
 // pointer local through an inline guard after the text copy (`dec [esi+4] ; jne ; call [vtable+4]`): a destructor on the
 // counted-pointer object re-reads the slot at every use.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString_013bca24.
 #include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
@@ -27,8 +29,9 @@ class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, co
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);          // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_emptyWideString_013bca24;      // 0x013BCA24
 
 namespace NGameText {
 class CTextEntry { public:                                // NGameText::CGroupEntry (ref-counted, polymorphic)
@@ -75,6 +78,6 @@ const CWideString CDataBank::GetTextBySymbol(const CCharString& symbol) const
             return entry->m_text;
         }
     }
-    return g_emptyWideString_013bca24;
+    return CWideString::NullString;
 }
 }

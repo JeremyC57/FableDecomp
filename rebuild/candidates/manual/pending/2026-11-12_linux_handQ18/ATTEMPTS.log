@@ -1,0 +1,9 @@
+00:05 008bf500 008bf500.cpp RELOCATION_MATCH ported+named target local
+00:08 00555a90 00555a90.cpp RELOCATION_MATCH ported, Children[i].Get()
+00:17 00de3ce0 00de3ce0.cpp RELOCATION_MATCH ported onto CQ_RansomVictimScript.h + for(;;) top-return loop
+00:21 008886e0 008886e0.cpp RELOCATION_MATCH ported onto CEnvironmentThemePriorityStackEntry.h + operator= decl
+00:24 009644f0 009644f0.cpp RELOCATION_MATCH ported: sibling 00965640 spelling + scratchpad tail
+00:38 00ed94d0 00ed94d0.cpp RELOCATION_MATCH port to shared hdrs + new TalentlessBard header; IsAlive && form; inline CIsThingAlive ctor
+00:43 008780d0 008780d0.cpp DIFFER(680v680) ported differ record
+00:43 006fe7c0 006fe7c0.cpp DIFFER(680v680) ported differ record
+00:43 00837220 00837220.cpp DIFFER(716v716) ported differ record

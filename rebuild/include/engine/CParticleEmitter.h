@@ -6,21 +6,72 @@
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 class CPersistContext;class CSymbolMap;class CDataInputStream;
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_CREATE2D
+class C2DVector;class C3DOrientationInterpolator;
+#ifdef _MSC_VER
+enum EEngine2DLayer;
+#else
+enum EEngine2DLayer { };
+#endif
+#endif
 namespace NParticleEngine {
 class CParticleSystem;
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_GETPRIORITY
+#ifdef _MSC_VER
+enum EEmitterPriority;
+#else
+enum EEmitterPriority { };
+#endif
+#endif
 class CEmitterDatabaseSerialiseInfo {public:const CSymbolMap& GraphicSymbols;const CSymbolMap& MeshSymbols;};
 float __fastcall GetMaxSpawnDistance();float __fastcall GetMaxDrawDistance();
 float __fastcall GetFadeOutStartDistance();float __fastcall GetFadeInStartDistance();float __fastcall GetFadeInEndDistance();
 // Layout: Ego_r complete original fields, native vector12/update36; size0x16c.
 class CParticleEmitter:public CBaseObject {
 public:CParticleEmitter();virtual ~CParticleEmitter();
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_PEEKEMITTERTRANSFORM
+ // Opt-in (agentNF22, row 0x00AF3D80): CParticleSystem::PeekEmitterTransform 0x00AF3D80 / PeekEmitterVelocity 0x00AF3DB0 read the
+ // protected Transform (+0xb0) / Velocity (+0x52) straight off the parent emitter, and neither PDB names an emitter accessor for them.
+ friend class CParticleSystem;
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEEMITTER_KILL
  // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause): Ego_r.pdb ?IsDead@CParticleEmitter@NParticleEngine@@QBE_NXZ (inline: the
  // Dead bit, bit 5 of the +0x40 word: `mov cl,[eax+40h] ; shr cl,5 ; test cl,1` at 0x0079CF6F) and ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ (0x00AEE8C0).
  bool IsDead() const { return Dead; }
  void Kill();                                                          // 0x00AEE8C0
 #endif
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_UPDATE
+ bool IsEmitter2D()const{return Emitter2D;}
+ void Update();
+#endif
  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_CREATE2D
+ // Opt-in (chunk Q28, row 0x00AEB790 CParticleEmitterManager::Create2DEmitter): Ego_r.pdb / FableWin.pdb
+ // ?Is2DEmitter@CParticleEmitter@NParticleEngine@@QBE_NXZ (inline in retail: the Emitter2D bit, `mov dx,[eax+40h] ; shr edx,0Bh ;
+ // test dl,1` at 0x00AEB7B4), ?DatabaseClone@..@@QBEPAV12@XZ (0x00AF0650), ?Set2DPosition@..@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z
+ // (0x00AED090) and ?SetOrientation@..@@QAEXABVC3DOrientationInterpolator@@@Z (0x00AEDE60). No layout change.
+ bool Is2DEmitter() const { return Emitter2D; }
+ CParticleEmitter* DatabaseClone() const;                              // 0x00AF0650
+ void Set2DPosition(const C2DVector& position, EEngine2DLayer layer);  // 0x00AED090
+ void SetOrientation(const C3DOrientationInterpolator& orientation);   // 0x00AEDE60
+#endif
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_GETPRIORITY
+ // Opt-in (chunk Q28, the CParticleEmitterList::Insert 0x00AEB060 body in the 0x00AEB790 TU): FableWin.pdb
+ // ?GetPriority@CParticleEmitter@NParticleEngine@@QBE?AW4EEmitterPriority@2@XZ (inline in retail: the Priority:3 bits of the +0x40
+ // word, `mov cl,[ecx+40h] ; and cl,7` at 0x00AEB113). The enumerators are not on disk. No layout change.
+ EEmitterPriority GetPriority() const { return (EEmitterPriority)Priority; }
+#endif
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_INTERPOLATE
+ // Retail opt-in (chunk Q3, row 0x007CCF50 CTCMultiStrike::ApplyEffectOnWeapon): Ego_r.pdb / FableWin.pdb
+ // ?GetApproximateTotalSplineLength@CParticleEmitter@NParticleEngine@@QAEMXZ (out of line, retail 0x00AED050: sums the spline length of
+ // every particle system with flag 2), ?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z (0x00AED600), and the inline
+ // ?Sleep@..@@QAEXXZ (WaitingToSleep = true, `or byte ptr [edi+41h],2` at 0x007CD24D; the landed 0x006E0690 model spells the same body)
+ // and ?SetAlwaysUpdate@..@@QAEX_N@Z (`or al,10h` on +0x44 at 0x007CD2C6). No layout change.
+ float GetApproximateTotalSplineLength();                              // 0x00AED050
+ void InterpolateTo(const CParticleEmitter& other, float t);           // 0x00AED600
+ void Sleep() { WaitingToSleep = true; }
+ void SetAlwaysUpdate(bool always) { AlwaysUpdate = always; }
+#endif
  // Chunk 742 (0x00AEFAA0): FableWin.pdb / Ego_r.pdb ?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z.
  void ReadBinary(CDataInputStream&);
 protected:

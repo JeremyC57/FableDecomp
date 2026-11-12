@@ -1,0 +1,2 @@
+address	claim	reason
+# none: every queue claim held. Rows tried and given up (not claims) are in NOTES.md.

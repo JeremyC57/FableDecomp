@@ -13,6 +13,10 @@ class C3DVector;
 class CRightHandedSet;
 class CThing;
 class CThingObject;
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_SEATS
+#include "stlport/fable_containers.h"
+class CThingAICreature;
+#endif
 class CTCTavernTable : public CTCBase {
 public:
     enum ServingMode { SERVING_MODE_0 = 0, SERVING_MODE_1 = 1, SERVING_MODE_2 = 2 };
@@ -20,5 +24,38 @@ public:
     bool GetServingPoint(CThing& creature, C3DVector& pos, CRightHandedSet& rh_set, long& action_point_index, long& seat_index,
                          CThingObject** tankard, ServingMode mode, bool reserve);                  // 0x007B8CC0
     void FreeServingPoint(long action_point_index);                                               // 0x007B9090
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_SEATS
+    // Nested opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): Ego_r.pdb / FableWin.pdb
+    // ?SetSeatState@CTCTavernTable@@QAEXJ_N@Z (Ego_r 0x007B7610, retail 0x007B8530) and ?GetFood@CTCTavernTable@@QAEPAVCThingObject@@J@Z
+    // (Ego_r 0x007B7590, retail 0x007B85C0), out of line (the Ego_r order GetFood / SetFood / SetSeatState is retail's 0x007B85C0 /
+    // 0x007B85F0 / 0x007B8530 run). Members (Ego_r.pdb, retail offsets: the CTCBase is 0xC, no container before Occupants):
+    // BeingServed +0x0C, Occupants (vector<CThingAICreature*>) +0x10 -- the row stores the seated creature through Occupants'
+    // start word in place (`mov ecx,[ebp+10h] ; mov [ecx+edx*4],eax`, 0x0096CE63). The members after Occupants are not modelled.
+    void SetSeatState(long seat, bool used);                                                      // 0x007B8530
+    CThingObject* GetFood(long seat);                                                             // 0x007B85C0
+    bool BeingServed;                                                                             // +0x0C
+    std::vector<CThingAICreature*> Occupants;                                                     // +0x10
+#ifdef FABLE_RETAIL_CTCTAVERNTABLE_LAYOUT
+    // Nested opt-in (wf4, row 0x007B8B10 CTCTavernTable::GetEatingPoint): the members after Occupants (Ego_r.pdb
+    // struct_layouts_egor.tsv names and order; retail offsets with 12-byte STLport vectors, proven by the row: Food start/finish
+    // +0x28/+0x2C with 8-byte CIntelligentPointer elements, ActionPointSitStrlen +0x48, AvailableForUse +0x5C; SeatsCurrentlyUsed
+    // +0x34 / NumPeopleSeated +0x40 by the landed 0x007B8530 / 0x007B8AA0), and Ego_r.pdb / FableWin.pdb
+    // ?GetEatingPoint@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z (Ego_r 0x007B7AD0, retail 0x007B8B10).
+    // Define FABLE_RETAIL_CINTELLIGENTPOINTER and include engine/CIntelligentPointer.h before this header.
+    std::vector<CIntelligentPointer<CThingObject> > Tankards;                                     // +0x1C
+    std::vector<CIntelligentPointer<CThingObject> > Food;                                         // +0x28
+    unsigned char SeatsCurrentlyUsed[0xC];                 // +0x34 vector<bool> (retail: one byte per seat, 12-byte vector)
+    long NumPeopleSeated;                                                                         // +0x40
+    bool SomeoneTalking;                                                                          // +0x44
+    bool SomeoneLaughing;                                                                         // +0x45
+    long ActionPointSitStrlen;                                                                    // +0x48
+    long ActionPointGameMasterStrlen;                                                             // +0x4C
+    long ActionPointHeroStrlen;                                                                   // +0x50
+    long ActionPointTankardStrlen;                                                                // +0x54
+    long ActionPointMaidStrlen;                                                                   // +0x58
+    bool AvailableForUse;                                                                         // +0x5C
+    bool GetEatingPoint(CThing& creature, C3DVector& pos, CRightHandedSet& rh_set, long& action_point_index, long& seat_index);   // 0x007B8B10
+#endif
+#endif
 };
 #endif

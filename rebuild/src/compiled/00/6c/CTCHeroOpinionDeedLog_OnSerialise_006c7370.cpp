@@ -60,8 +60,7 @@ class CPersistContext { public:
     unsigned char _pad[0x18];
     long Mode;                                                     // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }   // engine/CPersistContext.h (MODE_SAVE_TEXT / MODE_SAVE_BINARY)
-    void Transfer(const char* name, long& value, const long& defaultValue);                 // 0x00410BE0
-    void Transfer(const char* name, bool& value, const bool& defaultValue);                 // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);  // 0x00410BE0 <long>, 0x004045C0 <bool> (agentNF19: Ego_r/FableWin ??$Transfer@J@.. / ??$Transfer@_N@..)
     void Transfer(const char* name, CIntelligentPointer<CThing>& value);                    // 0x006C9C60
     void Transfer(const char* name, CRecordVector& value);                                  // 0x006C9EE0
 };

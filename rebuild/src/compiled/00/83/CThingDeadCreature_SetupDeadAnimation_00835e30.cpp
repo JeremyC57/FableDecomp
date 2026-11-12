@@ -57,7 +57,7 @@
 #include "engine/CAnimInit.h"
 #include "engine/CAnimateThing.h"
 
-extern CCharString g_CCharString_013baf40;                   // 0x013BAF40 ("STANDARD_DEAD")
+namespace { extern CCharString DEAD_ANIM_NAME; }                   // 0x013BAF40 ("STANDARD_DEAD")
 
 void CThingDeadCreature::SetupDeadAnimation()
 {
@@ -68,10 +68,10 @@ void CThingDeadCreature::SetupDeadAnimation()
     PBaseDef->GetSubDef(&appearance);
     const CAnimationSet& animations = appearance->Animation;
     const CAnimationEntry* entry = 0;
-    if (animations.AnimExists(g_CCharString_013baf40, *PAnimFilter))
-        entry = &animations.GetRandomAnim(g_CCharString_013baf40, *GetPWorldSeed(), *PAnimFilter, -1);
-    else if (animations.AnimExists(g_CCharString_013baf40, CAnimFilterNoGroup()))
-        entry = &animations.GetRandomAnim(g_CCharString_013baf40, *GetPWorldSeed(), CAnimFilterNoGroup(), -1);
+    if (animations.AnimExists(DEAD_ANIM_NAME, *PAnimFilter))
+        entry = &animations.GetRandomAnim(DEAD_ANIM_NAME, *GetPWorldSeed(), *PAnimFilter, -1);
+    else if (animations.AnimExists(DEAD_ANIM_NAME, CAnimFilterNoGroup()))
+        entry = &animations.GetRandomAnim(DEAD_ANIM_NAME, *GetPWorldSeed(), CAnimFilterNoGroup(), -1);
     if (entry) {
         long anim = entry->BankIndex;
         animation.ClearAllAnims();

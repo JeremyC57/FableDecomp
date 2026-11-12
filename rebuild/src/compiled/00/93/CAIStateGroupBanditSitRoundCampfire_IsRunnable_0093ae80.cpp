@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0093AE80, 313 bytes (virtual, `ret`). Ego_r.pdb: ?IsRunnable@CAIStateGroup_BanditSitRoundCampfire@@UAE_NXZ.
 // Callees: CWorld::GetFrame 0x0049D870 (`__fastcall`, no arguments), CVectorMap::LowerBound 0x0040F020 (inlined
 // GetInterface 0x23), CTCVillageMember::GetVillage 0x007EE540 (twice; manifest "IS_THING_ALIVE<..>" is propagated),
-// CTCVillage::IsCurfewTime 0x00658D5D, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem
+// CTCVillage::IsSociableTime 0x00658D5D, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem
 // 0x00A01B50 / dtor 0x00A01C10, GetPNearCampfire 0x0093AB70; frames-per-second global 0x01375550.
 // Shape: the landed AI state-group model (0x00950A30): two `PCampfire = CIntelligentPointer<CThingObject>(p)`
 // temporaries (vtable 0x0125A858; ctor + SetPItem, operator= = SetPItem(GetPItem()), dtor), then IS_THING_ALIVE
 // into a named bool (bl preloaded with 1 serves as the dead-bit mask and the result, so the curfew `return false`
-// keeps IsCurfewTime's zero al); a failure re-arms the check 5 seconds later (the frame rate read into a named
+// keeps IsSociableTime's zero al); a failure re-arms the check 5 seconds later (the frame rate read into a named
 // local before the frame call, held in edi).
 // Layout: Ego_r.pdb CAIStateGroup_BanditSitRoundCampfire (PCampfire +0x14, SeatPosIndex +0x1c, GotSeatPos +0x20,
 // Sitting +0x21, FrameToNextCheckIsRunnable +0x28).
@@ -17,6 +17,7 @@
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF23): 0x00658D5D is ?IsSociableTime@CTCVillage@@QBE_NXZ (Ego_r 0x0069A63D / FableWin name sets; donor order IsNightTime / IsSociableTime / IsCurfewTime = retail 0x00658D07 / 0x00658D5D / 0x00658DB3, and the body reads CVillageDef SociableStartTime +0xD4 / SociableFinishTime +0xD8, retail STLport offsets of Ego_r 244 / 248); was IsCurfewTime() (non-const; the curfew test is 0x00658DB3).
 class CTCBase;
 class CThing;
 class CWorld;
@@ -77,7 +78,7 @@ class CAIStateGroupBase { public:
 };
 
 class CTCVillage { public:
-    bool IsCurfewTime();                        // 0x00658D5D
+    bool IsSociableTime() const;                // 0x00658D5D
 };
 class CTCVillageMember { public:
     CTCVillage* GetVillage();                   // 0x007EE540
@@ -124,7 +125,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::IsRunnable()
         return false;
     CTCVillageMember* member;
     if (creature->GetTC(TCI_VILLAGE_MEMBER, &member)) {
-        if (member->GetVillage() && !member->GetVillage()->IsCurfewTime())
+        if (member->GetVillage() && !member->GetVillage()->IsSociableTime())
             return false;
     }
     GotSeatPos = false;

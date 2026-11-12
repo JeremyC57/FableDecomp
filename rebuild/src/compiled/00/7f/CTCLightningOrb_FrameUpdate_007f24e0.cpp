@@ -26,7 +26,7 @@ class CTCPhysicsBase { public:
 };
 
 class CTCHitLocations { public:                                // interface 0x7F
-    void GetBoundingSphere(C3DVector* centre, float* radius, bool flag);   // 0x00815420
+    void GetBoundingSphere(C3DVector& centre, float& radius, bool flag) const;   // 0x00815420 Ego_r/FableWin ?GetBoundingSphere@CTCHitLocations@@QBEXAAVC3DVector@@AAM_N@Z
 };
 CThing* __fastcall CreateExplosion(long defIndex, const C3DVector* position);   // 0x0080C460
 
@@ -79,7 +79,7 @@ void CTCLightningOrb::FrameUpdate()
     float radius;
     if (IS_THING_ALIVE(PTarget) && ((CThing*)PTarget.GetPItem())->GetTC(TCI_HIT_LOCATIONS, &hitLocations)) {
         float range = PDef->ExplosionRange;
-        hitLocations->GetBoundingSphere(&centre, &radius, true);
+        hitLocations->GetBoundingSphere(centre, radius, true);
         if ((centre - ParentThing->GetPos()).GetSquaredMagnitude() < range * range)
             hit = true;
     }

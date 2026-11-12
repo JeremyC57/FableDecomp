@@ -67,7 +67,7 @@ struct CModeStandBase {                    // retail sizeof 0x68
     virtual void v00();
     CThing*       ParentThing;             // +0x04
     unsigned char _body[0x60];
-    void OnDeactivate();                   // 0x00861D00
+    virtual void OnDeactivate();           // 0x00861D00 ?OnDeactivate@CModeStandBase@@UAEXXZ (Ego_r/FableWin; vtable 0x01276D8C slot 6)
 };
 
 namespace NCreatureMode {

@@ -26,6 +26,16 @@ private:
 public:
     bool PlayingContinuous;                                              // +0x60
     bool StrikeAnimation;                                                // +0x61
+#ifdef FABLE_RETAIL_CTCMELEETRAP_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+protected:
+    virtual void UpdateTrap();                                           // 29 0x00788B0A ?UpdateTrap@CTCMeleeTrap@@MAEXXZ
+private:
+    void UpdateAnimation();                                              // 0x00788555 ?UpdateAnimation@CTCMeleeTrap@@AAEXXZ (Ego_r donor 0x0078FA39)
+    void UpdateStrikeAction();                                           // 0x00788AEF ?UpdateStrikeAction@CTCMeleeTrap@@AAEXXZ (Ego_r donor 0x0078FF16, 0x1B bytes before UpdateTrap in both)
+public:
+#endif // FABLE_RETAIL_CTCMELEETRAP_VSLOTS3
 };
 FABLE_STATIC_ASSERT(offsetof(CTCMeleeTrap, PlayingContinuous) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CTCMeleeTrap, StrikeAnimation) == 0x61);

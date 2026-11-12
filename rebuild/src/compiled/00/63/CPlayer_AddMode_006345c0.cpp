@@ -1,4 +1,5 @@
 // CPlayer::AddMode(EPlayerMode mode, bool clearOthers) -- push a player mode onto the mode stack of a local player: optionally uninitialise the active mode and reset the stack to the null mode first, then uninitialise the active mode, push the new one and initialise it (when no full mode change is already in progress); traced like RemoveMode under the player-mode debug switch
+// Leaf: ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006345C0, length 682 bytes (+ int3 padding), `ret 8`.
 // Callees: CPlayer::InitialiseIfUninitialised 0x00488A80; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 // 0x0099EAE0 / operator+=(const CCharString&) 0x0099F0A0 / operator+=(const char*) 0x0099F100, GFIntToCharString
@@ -11,7 +12,10 @@
 // DisallowModeChanges +0x215.
 // Shape: the sibling RemoveMode 0x00634190 trace block; the STLport insert is inline (node malloc, placement
 // construction with its null test, four link stores); the previous mode is kept in the dead `mode` argument slot.
-typedef long EPlayerMode;
+// Name fix (naming agent NF21, 2026-11-11): EPlayerMode is the PDB enum: Ego_r.pdb + FableWin.pdb ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z
+//   (the row was ?AddMode@CPlayer@@QAEXJ_N@Z through a long typedef); the mode hooks are private in Ego_r.pdb
+//   (?UnInitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z 0x00554610, ?InitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z 0x005546C0).
+enum EPlayerMode;                                       // MS forward enum (Ego_r.pdb)
 class CCharString {
 public:
     void* PStringData;
@@ -73,9 +77,10 @@ class CPlayer { public:
     bool           DisallowModeChanges;                 // +0x215
     void InitialiseIfUninitialised();                   // 0x00488A80
     EPlayerMode GetCurrentMode() { return PlayerModes.back(); }
+    void AddMode(EPlayerMode mode, bool clearOthers);
+private:
     void UnInitActiveMode(EPlayerMode mode);            // 0x00633BF0
     void InitActiveMode(EPlayerMode mode);              // 0x00633CB0
-    void AddMode(EPlayerMode mode, bool clearOthers);
 };
 
 void CPlayer::AddMode(EPlayerMode mode, bool clearOthers)
@@ -95,7 +100,7 @@ void CPlayer::AddMode(EPlayerMode mode, bool clearOthers)
         if (clearOthers) {
             UnInitActiveMode(mode);
             PlayerModes.clear();
-            PlayerModes.push_front(0);
+            PlayerModes.push_front((EPlayerMode)0);
         }
         if (!SuppressFullModeRemoval) {
             SuppressFullModeRemoval = true;

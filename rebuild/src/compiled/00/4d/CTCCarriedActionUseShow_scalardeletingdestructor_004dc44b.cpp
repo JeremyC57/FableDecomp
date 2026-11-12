@@ -1,9 +1,30 @@
+// CTCCarriedActionUseShow::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CTCCarriedActionUseShow (it only runs ~CTCActionUseBase 0x004DA967), then operator delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCTCCarriedActionUseShow@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004DC44B, 28 bytes, thiscall, `ret 4`; slot 0 of the CTCCarriedActionUseShow vtable 0x0123FC4C (rtti-vtables.tsv).
+// Names (agentNF20, 2026-11-11; was a free __fastcall stand-in calling a *_Destruct / C3DAnimationBlendState stand-in): the destructor it
+//   calls is ??1CTCActionUseBase@@UAE@XZ 0x004DA967 (FableWin.pdb; shared engine/CTCActionUseBase.h, opt-in FABLE_RETAIL_CTCACTIONUSEBASE_DTOR),
+//   operator delete 0x00BFE9BC. Hierarchy (ghidra_out/rtti_bases.tsv): CTCCarriedActionUseShow : CTCCarriedActionUseBase : CTCActionUseBase.
+// Shape: VC7.1 emits the deleting destructor with the vtable, i.e. in a TU that constructs the class: MakeOne is that construction.
+//   No class between it and CTCActionUseBase adds a member with a destructor; local models: no engine header.
 #pragma optimize("s", on)
-extern void __fastcall CTCCarriedActionUseShow_Destruct(void* show);
-void* __fastcall CTCCarriedActionUseShow_ScalarDeletingDestructor(void* show, int, unsigned int flags)
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCACTIONUSEBASE_DTOR
+#include "engine/CTCActionUseBase.h"
+
+class CTCCarriedActionUseBase : public CTCActionUseBase {                  // RTTI base of CTCCarriedActionUseShow (local model: no engine header)
+public:
+    CTCCarriedActionUseBase(CThing& thing);
+};
+
+class CTCCarriedActionUseShow : public CTCCarriedActionUseBase {
+public:
+    CTCCarriedActionUseShow(CThing& thing) : CTCCarriedActionUseBase(thing) { }
+    virtual ETCInterfaceType GetInterfaceType() const;                   // CTCBase slot 21 (declared: the vtable is emitted here)
+    virtual CCharString GetClassTypeName() const;                        // CTCBase slot 22
+};
+
+void* MakeOne(CThing& thing)
 {
-    CTCCarriedActionUseShow_Destruct(show);
-    if (flags & 1)
-        operator delete(show);
-    return show;
+    return new CTCCarriedActionUseShow(thing);
 }

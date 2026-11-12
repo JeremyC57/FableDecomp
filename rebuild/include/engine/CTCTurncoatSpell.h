@@ -14,7 +14,9 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCTurncoatSpell {
 public:
+#ifndef FABLE_RETAIL_CTCTURNCOATSPELL_VSLOTS
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
     unsigned char    Timer[0x34];                            // +0x0c CWillButtonHelperTimer
@@ -36,11 +38,20 @@ public:
     unsigned char    _pad_0x8d[0x3];                         // +0x8d
     long             CurXPFrameCounter;                      // +0x90
     long             XPFrameCounter;                         // +0x94
+#ifdef FABLE_RETAIL_CTCTURNCOATSPELL_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007C77C0
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCTurncoatSpell) == 0x98);
+#ifndef FABLE_RETAIL_CTCTURNCOATSPELL_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, Timer) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, PDef_Object) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, PTarget) == 0x44);

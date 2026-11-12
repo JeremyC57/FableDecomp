@@ -49,6 +49,18 @@ public:
     {
         if (Object) Object->AddRef();
     }
+#ifdef FABLE_RETAIL_CDEFPOINTER_POINTER_CTOR_ADOPT
+    // Opt-in (wf2, row 0x009ADC90 CDefinitionManager::InstantiateDef): FableWin.pdb ??0?$CDefPointer@VCDefClassBase@@@@QAE@PAVCDefClassBase@@@Z
+    // (0x030644A0), the constructor from a pointee. Inline in retail. It ADOPTS the pointer without counting it; two retail expansions
+    // on a freshly allocated def show it: InstantiateDef (`mov esi,eax` at 0x009ADCD6, no `inc [esi+4]`; the only increment is the
+    // record's copy at 0x009ADD4C, the handle's destructor is the decrement at 0x009ADDEA) and InstantiateSubDef 0x009ADAE0 (no
+    // increment after 0x009ADB22; copies at 0x009ADB64 and 0x009ADC16, destructor at 0x009ADC25). A def is born with IVRefCount 1:
+    // CResource::CResource 0x009FBEC0 stores 1 at +4 and the Alloc factories (CControlsDef::Alloc 0x00432180, CRegionScriptDef::Alloc
+    // 0x00F29FA0) add nothing. The FableWin debug body is 356 bytes (debug-only work this release build does not show), so its
+    // length proves nothing either way. A counted handle on an EXISTING pointee is the copy constructor, not this one: landed rows
+    // whose local CDefPointer models count in a raw-pointer constructor must use the copy constructor when they move here.
+    FABLE_DEFPTR_INLINE CDefPointer(T* object) : Object(object) { }
+#endif
     FABLE_DEFPTR_INLINE ~CDefPointer() { Release(); }
     // Copy assignment (Codex pass 11 consolidation 2): retail reads other.Object again after the Release call --
     // 0x007355F0 SetCombatType `PCombatTypeDef=pcombat_type` (a const reference that may alias) emits `cmp ecx,[ebp]`,

@@ -9,6 +9,11 @@ class CMovableResourceMemoryPool:public CHandleBasedMemoryPool{public:
 CMovableResourceMemoryPool(const CMovableResourceMemoryPool&);
 CMovableResourceMemoryPool();
 bool AllocateResource(long *,CMovableResource*,unsigned long,unsigned long);
+#ifdef FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL_FREERESOURCE
+// chunkQ29 (2026-11-12): ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z (retail 0x00A62ED0, a tail jump onto
+// CHandleBasedMemoryPool::Free 0x00A02B30). Declaration only.
+void FreeResource(long);
+#endif
 protected:
 virtual void MoveResource(void *,long,void *,void *,unsigned long);
 virtual bool CanMoveResource(void *,long);

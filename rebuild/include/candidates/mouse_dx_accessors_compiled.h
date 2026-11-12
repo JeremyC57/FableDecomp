@@ -27,12 +27,31 @@ public:
     CMousePrimitiveOwner* ResolvePrimitiveOwner();
 };
 
+#ifdef FABLE_RETAIL_CMOUSEDX_MOUSECURSOR
+// Retail opt-in (agentNF27, 2026-11-12, row 0x00AB5390 CMouseDX::SetMouseCursor): MouseCursor is Ego_r.pdb's
+// CCountedPointer<CSurface> (engine/CCountedPointer.h; Data +0, Info +4) and its out-of-line Reset 0x00AB5E80 is FableWin.pdb
+// ?Reset@?$CCountedPointer@VCSurface@@@@QAEXPAVCSurface@@@Z (declared only: FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL), in place of
+// the stand-in CCountedSurfacePointer; CSurface's words carry their Ego_r.pdb names (vptr slot +0, PD3DSurface +4, AllocationSource
+// +8, PAllocatedMemory +0xC; the row passes Data->PD3DSurface to the cursor primitive). Same size and offsets as the default.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"
+class CSurface
+{
+public:
+    void* _padding_;                                                     // +0x0 (the vptr word)
+    void* PD3DSurface;                                                   // +0x4 IDirect3DSurface9*
+    fable_u32 AllocationSource;                                          // +0x8
+    void* PAllocatedMemory;                                              // +0xC
+    CSurface(const CSurface& other);
+};
+#else
 class CSurface
 {
 public:
     fable_u8 Storage[0x10];
     CSurface(const CSurface& other);
 };
+#endif
 
 struct CCountedSurfaceRep
 {
@@ -123,7 +142,11 @@ public:
     bool RMBDown;
     bool MouseFiltering;
     fable_u8 Unknown484C[0x0C];
+#ifdef FABLE_RETAIL_CMOUSEDX_MOUSECURSOR
+    CCountedPointer<CSurface> MouseCursor;
+#else
     CCountedSurfacePointer MouseCursor;
+#endif
 };
 
 FABLE_STATIC_ASSERT(sizeof(C2DVector) == 8);

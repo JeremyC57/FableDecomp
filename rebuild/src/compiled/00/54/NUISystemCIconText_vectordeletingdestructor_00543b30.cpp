@@ -67,12 +67,12 @@ class CIconText : public CChangingStateComponent { public:
  fable_u8 NoRenderNextFrame;
  CIconText(long);
  virtual ~CIconText();
- void UpdateFont(); //00541FD0
+ void GetDataFromDef(); //00541FD0 ?GetDataFromDef@CIconText@NUISystem@@QAEXXZ (Ego_r.pdb 0x005BB900 / FableWin.pdb 0x02262EA0; NF28: was UpdateFont)
 };
 FABLE_STATIC_ASSERT(sizeof(CChangingStateComponent)==0x15c);
 CIconText::CIconText(long parent) : CChangingStateComponent(parent) {
  NoRenderNextFrame=0;
- UpdateFont();
+ GetDataFromDef();
  Unavailable=false;
 }
 }

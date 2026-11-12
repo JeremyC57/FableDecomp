@@ -14,7 +14,6 @@
 
 void* __cdecl operator new(size_t size);   // 0x00BFEA1A
 
-extern long g_CWideStringInstanceCount;    // 0x013BCA20
 extern char g_CCharStringEmptyText[];      // 0x0129AAF4 ("")
 
 struct CWideAllocator { CWideAllocator() {} };
@@ -46,11 +45,13 @@ class CCharString { public:
 class CWideString { public:
     CWideStringData* PStringData;   // +0x00
     explicit CWideString(const CCharString& text);
+protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
 };
 
 CWideString::CWideString(const CCharString& text)
 {
-    ++g_CWideStringInstanceCount;
+    ++NoStrings;
     long length = text.GetLength();
     PStringData = new CWideStringData(length, L' ');
     for (long i = 0; i < length; ++i)

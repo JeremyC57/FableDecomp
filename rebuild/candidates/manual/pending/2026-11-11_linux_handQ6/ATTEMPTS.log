@@ -1,0 +1,99 @@
+12:27 007bbb3b 007bbb3b_lastdraft.cpp DIFFER(268v268) regrade-as-is
+12:27 007da400 007da400_lastdraft.cpp DIFFER(280v280) regrade-as-is
+12:27 007da520 007da520_lastdraft.cpp DIFFER(286v286) regrade-as-is
+12:27 00747c70 00747c70_lastdraft.cpp DIFFER(303v303) regrade-as-is
+12:27 00b50370 00b50370_lastdraft.cpp ERROR regrade-as-is
+12:27 00ba50a0 00ba50a0_lastdraft.cpp DIFFER(441v441) regrade-as-is
+12:27 00753e90 00753e90_lastdraft.cpp ERROR regrade-as-is
+12:27 0087bd70 0087bd70_lastdraft.cpp DIFFER(451v451) regrade-as-is
+12:27 00537776 00537776_lastdraft.cpp ERROR regrade-as-is
+12:27 007e8a40 007e8a40_lastdraft.cpp ERROR regrade-as-is
+12:27 007e0f20 007e0f20_lastdraft.cpp ERROR regrade-as-is
+12:27 0087a7c0 0087a7c0_lastdraft.cpp ERROR regrade-as-is
+12:27 00954f40 00954f40_lastdraft.cpp ERROR regrade-as-is
+12:27 00a50c20 00a50c20_lastdraft.cpp DIFFER(611v611) regrade-as-is
+12:27 007b6810 007b6810_lastdraft.cpp DIFFER(615v615) regrade-as-is
+12:27 0066a9e0 0066a9e0_lastdraft.cpp DIFFER(626v626) regrade-as-is
+12:27 008bf280 008bf280_lastdraft.cpp ERROR regrade-as-is
+12:27 00b2bd80 00b2bd80_lastdraft.cpp DIFFER(641v641) regrade-as-is
+12:27 007dda30 007dda30_lastdraft.cpp DIFFER(642v642) regrade-as-is
+12:27 00911300 00911300_lastdraft.cpp ERROR regrade-as-is
+12:27 00542780 00542780_lastdraft.cpp DIFFER(682v682) regrade-as-is
+12:27 00837570 00837570_lastdraft.cpp DIFFER(697v697) regrade-as-is
+12:27 007993f0 007993f0_lastdraft.cpp DIFFER(698v698) regrade-as-is
+12:27 00b30610 00b30610_lastdraft.cpp DIFFER(710v710) regrade-as-is
+12:27 008f0bd0 008f0bd0_lastdraft.cpp DIFFER(722v722) regrade-as-is
+12:27 006c14d0 006c14d0_lastdraft.cpp DIFFER(734v734) regrade-as-is
+12:27 008dd7e0 008dd7e0_lastdraft.cpp DIFFER(744v744) regrade-as-is
+12:27 0085b2a0 0085b2a0_lastdraft.cpp ERROR regrade-as-is
+12:27 00912840 00912840_lastdraft.cpp ERROR regrade-as-is
+12:27 00915350 00915350_lastdraft.cpp ERROR regrade-as-is
+12:27 0057df85 0057df85_lastdraft.cpp ERROR regrade-as-is
+12:27 0079c880 0079c880_lastdraft.cpp DIFFER(933v933) regrade-as-is
+12:27 00a66fd0 00a66fd0_lastdraft.cpp DIFFER(963v963) regrade-as-is
+12:27 00b17030 00b17030_lastdraft.cpp DIFFER(991v991) regrade-as-is
+12:27 007d00f0 007d00f0_lastdraft.cpp DIFFER(1016v1016) regrade-as-is
+12:27 00972f30 00972f30_lastdraft.cpp SRC_FAIL regrade-as-is
+12:27 009482a0 009482a0_lastdraft.cpp ERROR regrade-as-is
+12:27 00683c10 00683c10_lastdraft.cpp DIFFER(1085v1085) regrade-as-is
+12:27 00befd90 00befd90_lastdraft.cpp DIFFER(1100v1100) regrade-as-is
+12:27 00e95770 00e95770_lastdraft.cpp DIFFER(1144v1144) regrade-as-is
+12:29 007993f0 007993f0.cpp DIFFER(698v698) noinline LowerBound body
+12:29 00a50c20 00a50c20.cpp DIFFER(611v611) return Locked = false
+12:30 00befd90 00befd90.cpp DIFFER(1096v1100) inline 1/scale
+12:30 008f0bd0 008f0bd0.cpp DIFFER(722v722) init-list ctor
+12:30 008f0bd0 008f0bd0.cpp DIFFER(722v722) paren Z
+12:31 008f0bd0 008f0bd0.cpp DIFFER(722v722) named target
+12:31 008f0bd0 008f0bd0.cpp DIFFER(735v722) copy target, set Z
+12:31 00911300 00911300.cpp DIFFER(666v666) const& flags temp
+12:32 00911300 00911300.cpp DIFFER(666v666) mask first, const& flags
+12:32 00911300 00911300.cpp DIFFER(654v666) StatGetTypeFlags + const& flags
+12:33 008dd7e0 008dd7e0.cpp DIFFER(744v744) C2DBoxI(coord,radius) Initialise
+12:33 008dd7e0 008dd7e0.cpp DIFFER(744v744) C2DBoxI(coord,radius) init-list
+12:35 00972f30 00972f30.cpp DIFFER(1026v1026) fix header pad names
+12:36 00ba50a0 00ba50a0.cpp DIFFER(441v441) decl first, assign after flag
+12:37 00e95770 00e95770.cpp DIFFER(1144v1144) switch rand%2
+12:40 00e95770 00e95770.cpp SRC_FAIL shared headers rewrite
+12:40 00e95770 00e95770.cpp DIFFER(1127v1144) shared headers rewrite +CCHARSTRING
+12:42 006c14d0 006c14d0.cpp DIFFER(734v734) GetTC(id,ptc) shared form
+12:42 006c14d0 006c14d0.cpp DIFFER(734v734) GetTC(id,ptc) id-compare + ParentThing->AddTC
+12:43 0066a9e0 0066a9e0.cpp SRC_FAIL shared CDefString/CCharString, conversion
+12:43 0066a9e0 0066a9e0.cpp DIFFER(664v626) shared CDefString/CCharString +CONCAT
+12:45 0087a7c0 0087a7c0.cpp DIFFER(587v590) end via maps
+12:46 00912840 00912840.cpp DIFFER(788v860) trivial C3DVector copy
+12:47 00912840 00912840.cpp DIFFER(860v860) assignment-body copy ctor
+12:47 00912840 00912840.cpp RELOCATION_MATCH same-TU _M_push_back_aux_v body
+12:50 00912840 00912840.cpp RELOCATION_MATCH std::deque + shared C3DVector + PDB spellings
+12:51 00912840 src/00912840.cpp RELOCATION_MATCH(gall, overlay) final src
+12:52 007dda30 007dda30.cpp DIFFER(642v642) same-TU _M_insert_overflow + __copy bodies
+12:52 007dda30 007dda30.cpp DIFFER(642v642) operator= named item
+12:52 007dda30 007dda30.cpp DIFFER(642v642) GetMagnitude via parenthesised GetSquaredMagnitude
+12:53 007dda30 007dda30.cpp DIFFER(642v642) GetMagnitude via GFRoot
+12:53 007dda30 007dda30.cpp DIFFER(642v642) operator- XY paren
+12:53 007dda30 007dda30.cpp DIFFER(642v642) operator- X paren
+12:53 007dda30 007dda30.cpp DIFFER(642v642) operator- Y paren
+12:53 007dda30 007dda30.cpp RELOCATION_MATCH X paren sub, unparen sqmag
+12:55 007dda30 007dda30.cpp RELOCATION_MATCH PDB names/keys/signature
+12:56 00a66fd0 00a66fd0.cpp RELOCATION_MATCH same-TU list insert/push_back/erase bodies
+12:57 00a66fd0 00a66fd0.cpp RELOCATION_MATCH PDB signature (pointer, protected, class keys)
+12:58 00542780 00542780.cpp DIFFER(682v682) same-TU push_back body
+12:58 00542780 00542780.cpp RELOCATION_MATCH same-TU push_back + _M_insert_overflow bodies
+12:59 00542780 00542780.cpp RELOCATION_MATCH virtual + NUISystem::EIconFlags (PDB spelling)
+13:00 00542780 00542780.cpp RELOCATION_MATCH src form FABLE_FORCEINLINE
+13:01 008dd7e0 008dd7e0.cpp DIFFER(234v744) probe: same-TU stub body for GetAllThingsInRoughArea (escape lever)
+13:02 008dd7e0 008dd7e0.cpp DIFFER(744v744) probe2: stub body writes out (escape lever)
+13:03 00747c70 00747c70.cpp DIFFER(303v303) same-TU erase body (+__copy decl, ~CBaseIntelligentPointer)
+13:04 00972f30 00972f30.cpp DIFFER(1026v1026) same-TU _M_insert_overflow + uninitialized_copy/fill_n bodies, virtual ~CBaseIntelligentPointer
+13:05 00753e90 00753e90.cpp DIFFER(447v447) same-TU noinline LowerBound body
+13:05 0087a7c0 0087a7c0.cpp DIFFER(590v590) real STLport POD _M_insert_overflow body (was a fake stand-in)
+13:06 0087a7c0 0087a7c0.cpp DIFFER(590v590) reversed loop-exit compare operands
+13:12 00a66fd0 00a66fd0.cpp SRC_FAIL shared headers: CMouse.h retail, CInputEvent/CMaintainedEvent, std::list noinline opt-ins
+13:13 00a66fd0 00a66fd0.cpp RELOCATION_MATCH shared headers (INSERT_DEFAULT_NOINLINE standalone)
+13:15 00542780 00542780.cpp DIFFER(682v682) v2: shared CIconText.h + std::vector push_back noinline; default ctor + assignments
+13:15 00542780 00542780.cpp RELOCATION_MATCH v2 + args ctor (inline) opt-in
+13:18 00912840 00912840.cpp RELOCATION_MATCH shared headers: CAIStateGroupBase retail, CThingAICreature, CWorldMap, new CBezierCurve/FlyingThingBase, deque aux opt-in
+13:18 00912840 00912840.cpp RELOCATION_MATCH fix: CCHARSTRING define on its own line
+13:19 00542780 00542780.cpp RELOCATION_MATCH v3: NUISystem::CManager::GetGraphicsBank + shared CCountedPointer
+13:19 00542780 00542780.cpp RELOCATION_MATCH v4: shared CCountedPointer<CTexture> in the frame data
+13:21 00a66fd0 00a66fd0.cpp RELOCATION_MATCH overlay: additive NOINLINE macro block (no edit of the existing #if)
+13:22 00542780 00542780.cpp RELOCATION_MATCH differ copy regrade (final overlay)

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0086bfb0   WARN RELOC_NAME: ?_M_fill_insert@?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@V?$allocator@VCBodyPartMesh@CRandomAppearanceMorph@@@std@@@std@@QAEXPAVCBodyPartMesh@CRandomAppearanceMorph@@IABV34@@Z -> 0086e5c0 labelled 'std::vector::std::vector::Resize_CSharerParserEntry_24byte'
+0086bfb0   RELOCATION_MATCH PASS   TransferBinaryIn
+
+WINS: 1
+  0086bfb0 RELOCATION_MATCH CRandomAppearanceMorph::?TransferBinaryIn@CRandomAppearanceMorph@@QAEXAAVCMemoryDataInputStream@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CRandomAppearanceMorph_TransferBinaryIn_0086bfb0

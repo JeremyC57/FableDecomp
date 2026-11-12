@@ -16,8 +16,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingCreatureBase;
 class CCombatActionBase;
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0 (Ego_r.pdb ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z; name fix NF21)
 };
 class CBaseObject;
 class CBaseObjectPointer;

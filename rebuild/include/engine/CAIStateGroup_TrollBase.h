@@ -8,6 +8,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TROLLBASE
+// Retail opt-in (wf5, row 0x0094D780 CAIStateGroup_TrollBase::Initialise): the polymorphic class on its real base
+// (RTTI CAIStateGroup_TrollBase : CAIStateGroupBase, vtable 0x0128C008 slot 1 = 0x0094D780 overriding CAIStateGroupBase::Initialise
+// 0x008FCEC0), with the Ego_r.pdb members at the same offsets as the flat default below. The includer includes
+// engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS) first. PEnemy stays opaque here (CIntelligentPointer<CThingCreatureBase>).
+class CAIStateGroup_TrollBase : public CAIStateGroupBase {
+public:
+    virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority,
+                            const CCharString& name);                    // slot 1  0x0094D780
+    unsigned char PEnemy[0x8];                               // +0x14 CIntelligentPointer<CThingCreatureBase>
+    long          EnemyKnockDownFrame;                       // +0x1c
+    long          ShotCounter;                               // +0x20
+    float         TROLL_MAX_THROWING_DISTANCE;               // +0x24
+    float         TROLL_MIN_THROWING_DISTANCE;               // +0x28
+    float         TROLL_STOP_POUNDING_DISTANCE;              // +0x2c
+    float         TROLL_STOP_THROWING_DISTANCE;              // +0x30
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TrollBase) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, PEnemy) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_MAX_THROWING_DISTANCE) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_STOP_THROWING_DISTANCE) == 0x30);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_TrollBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -34,5 +56,6 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_MAX_THROWING_DISTANC
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_MIN_THROWING_DISTANCE) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_STOP_POUNDING_DISTANCE) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_STOP_THROWING_DISTANCE) == 0x30);
+#endif // FABLE_RETAIL_CAISTATEGROUP_TROLLBASE
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_TROLLBASE_H

@@ -2,7 +2,7 @@
 // Leaf: GetRequiredScore
 // Retail: Fable.exe @ 0x007CF740, 156 bytes (`ret 4`, CWideString by hidden pointer); CTCTavernGameShoveHaPenny vtable
 //         0x0126F2F4 slot 45 (the catalog label CTCTavernGameCoinGolf is a byte-twin propagation from 0x007D2C20).
-// Callees: CTCTavernGame::GetTavernGameDef(CDefPointer*) 0x005EA000; GFIntToCharString(long) 0x0099F830 (__fastcall,
+// Callees: CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; GFIntToCharString(long) 0x0099F830 (__fastcall,
 //          CCharString by hidden pointer in ecx); CCharString::ToWideString() const 0x0099E480; CTCTavernGame::GetText(
 //          unsigned long) 0x005E9E70; operator+(const CWideString&, const CWideString&) 0x0099BE70 (__fastcall);
 //          CWideString::~CWideString 0x0099B510 (x2); CCharString::~CCharString 0x0099EAE0; the def's slot 1 on release.
@@ -41,7 +41,8 @@ class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
             Destroy();
     }
 };
-struct CDefPointer {
+template <class T> class CDefPointer;
+template <> class CDefPointer<const CTavernGameDef> { public:   // agentNF19: the retail class template (Ego_r ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z)
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -50,7 +51,7 @@ struct CDefPointer {
 
 class CTCTavernGame { public:
     virtual void v00();
-    void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
+    void GetDef(CDefPointer<const CTavernGameDef>* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70
     unsigned char _pad_0x04[0x98];
     long          TargetRound;                  // +0x9c
@@ -62,7 +63,7 @@ struct CTCTavernGameShoveHaPenny : CTCTavernGame {
 
 CWideString CTCTavernGameShoveHaPenny::GetRequiredScore()
 {
-    CDefPointer def;
-    GetTavernGameDef(&def);
+    CDefPointer<const CTavernGameDef> def;
+    GetDef(&def);
     return GetText(def->RequiredScore) + GFIntToCharString(TargetRound).ToWideString();
 }

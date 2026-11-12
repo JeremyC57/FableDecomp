@@ -30,7 +30,7 @@ class CRightHandedSet { public:                 // PDB 0x18
     C3DVector Forward;                          // +0x0c
     CRightHandedSet(const C3DVector& up, const C3DVector& forward);   // 0x00487050
 };
-enum EEngine2DLayer { ENGINE_2D_LAYER_HUD_EFFECTS = 0x43 };
+enum EEngine2DLayer { ENGINE_2D_LAYER_0 = 67 };   // PDB enumerator (engine/CEnginePrimitive2DSprite.h, NUISystem_CManager.h: ENGINE_2D_LAYER_0=67 = 0x43); name-fix 2026-11-12, was ENGINE_2D_LAYER_HUD_EFFECTS
 class CBaseObject;
 class CBaseIntelligentPointer {                 // vtable 0x0129C95C (vptr + PData)
 public:
@@ -73,7 +73,7 @@ void CDrawAbilityButtons::DrawEffects(long index, const C2DVector& position, con
     if (ability.IconEffectIndex > 0) {
         if (Effects[index].GetPItem() == 0) {
             CIntelligentPointer<CParticleEmitter> emitter(NParticleEngine::GetParticleEmitterManager().Create2DEmitter(
-                ability.IconEffectIndex, position + ability.IconEffectOffset, ENGINE_2D_LAYER_HUD_EFFECTS, true,
+                ability.IconEffectIndex, position + ability.IconEffectOffset, ENGINE_2D_LAYER_0, true,
                 CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f))));
             Effects[index] = emitter;
         }

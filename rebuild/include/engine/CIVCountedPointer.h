@@ -3,6 +3,7 @@
 // Retail declaration (Codex pass 11): Ego_r TPI0x33e8, class template V,
 // one private CIVCountedPointeeBase* Object at +0. Native release is inlined.
 #include "engine/CIVCountedPointeeBase.h"
+#include "fable_compiler.h"
 template<class T> class CIVCountedPointer {
 public:
     CIVCountedPointer() : Object(0) { }
@@ -49,7 +50,14 @@ public:
     // CMapFilenames (IVRefCount 1 from its constructor) is stored after the release with no AddRef (0x00AC5A86 / 0x00AC5F16:
     // `mov [edi+0x34],ebp` right after the release block, no `inc [ebp+4]`). The AddRef of the branch below is unproven
     // (its only landed users pass 0).
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_FORCEINLINE
+    // Nested opt-in (chunk Q31, row 0x00A69B70 CTextureManager::AllocateTexture): the same adopting body forced inline. Retail
+    // expands it there (0x00A69BDB..0x00A69BF3: release, then the store); VC7.1's inline budget leaves the plain body a call in that
+    // caller (a toy with the same body inlines it, the AllocateTexture shape does not). The caller AddRefs through operator->.
+    FABLE_FORCEINLINE void Reset(T* object) { Release(); Object = object; }
+#else
     void Reset(T* object) { Release(); Object = object; }
+#endif
 #else
     void Reset(T* object) { Release(); Object = object; if (Object) Object->AddRef(); }
 #endif

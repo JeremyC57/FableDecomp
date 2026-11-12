@@ -17,6 +17,12 @@ public:
     CSwappingStateComponent(const CSwappingStateComponent&);
     virtual ~CSwappingStateComponent();
     void GetDataFromDef();
+#ifdef FABLE_RETAIL_CSWAPPINGSTATECOMPONENT_VSLOTS
+// agentFAM04 (2026-11-11): retail virtual of vtable 0x012485AC the declarations above lack (Ego_r / FableWin
+// ?IsRandomSwap@CSwappingStateComponent@NUISystem@@UBE_NXZ, slot 142). Declaration only.
+public:
+    virtual bool IsRandomSwap() const;                              // slot 142, 0x00547970
+#endif // FABLE_RETAIL_CSWAPPINGSTATECOMPONENT_VSLOTS
 #ifdef FABLE_RETAIL_CSWAPPINGSTATECOMPONENT_MEMBERS
     // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x170 ; call operator new` before the
     // constructor 0x00547600): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),

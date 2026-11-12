@@ -18,6 +18,9 @@
 // expands them; other callers call the COMDAT copies).
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CDeviceResetCallback.h"
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PCLASS
+#include "engine/CCountedPointer.h"
+#endif
 class CConfigOptionsDefaultsDef;                                         // chunk 719: GetConfigOptionsDefaultsDef's def type
 template <class T> class CDefPointer;                                    // engine/CDefPointer.h (by-value return: complete at the definition)
 class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback
@@ -26,6 +29,15 @@ public:
     CUserProfileManager();
     virtual ~CUserProfileManager();
     static CUserProfileManager& FABLE_FASTCALL Get();                    // 0x0040D2A0
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PCLASS
+    // Nested opt-in (agentNF27, 2026-11-12, row 0x0040D2A0 CUserProfileManager::Get): the singleton's counted pointer at 0x013B7D4C,
+    // Ego_r.pdb / FableWin.pdb `dynamic initializer for 'CUserProfileManager::PClass'' (and its atexit destructor), private static per
+    // the Anniv360 Test PDB (third source) ?PClass@CUserProfileManager@@0V?$CCountedPointer@VCUserProfileManager@@@@A. Get tests its
+    // Data word (`mov eax,[013B7D4Ch] ; test eax,eax`) and resets it through Reset 0x0040F1B0 (`mov ecx,013B7D4Ch`). Declaration only.
+private:
+    static CCountedPointer<CUserProfileManager> PClass;                  // 0x013B7D4C
+public:
+#endif
     // Chunk 719: Ego_r.pdb + FableWin.pdb ?VerifySignature@CUserProfileManager@@SI_NABVCWideString@@@Z (public static __fastcall).
     static bool FABLE_FASTCALL VerifySignature(const CWideString& filename);   // 0x00409730
     void SetProfileName(const CWideString& profileName, bool loadProfile);

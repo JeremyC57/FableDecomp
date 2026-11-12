@@ -1,0 +1,11 @@
+00555a90   RELOCATION_MATCH PASS   UpdateVisibleList
+008886e0   RELOCATION_MATCH PASS   BlendInLevel
+008bf500   WARN RELOC_NAME: ?IsCreatureAttacking@CCombatManager@@QAE_NABVCThingCreatureBase@@@Z -> 006e92c0 labelled 'CCombatManager::IsAttacker'
+008bf500   WARN RELOC_NAME: ?ReadyProjectile@CTCWeapon@@QAEXXZ -> 005da4e0 labelled 'sub_005da4e0'
+008bf500   RELOCATION_MATCH PASS   FinishAction
+009644f0   WARN RELOC_NAME: ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z -> 007fef40 labelled 'CTCUserActionPointBase::FreeActionPoint'
+009644f0   RELOCATION_MATCH PASS   OnReplace
+00de3ce0   RELOCATION_MATCH PASS   Main
+00ed94d0   RELOCATION_MATCH PASS   WatchForResetWanderCentre
+WINS: 6
+LANDED 6 wins into src/compiled + tests + catalog + oracle

@@ -1,0 +1,22 @@
+address	name	evidence
+006345C0	?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (enum EPlayerMode parameter)
+006558CE	??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMW4EEnginePrimitiveBlendMode@@EEEEMW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z	agentNF21 (landing cv): Ego_r.pdb 0x005452F0 / FableWin.pdb 0x01D8E9A0 (enum parameters)
+006622A0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (const, bool)
+00681610	??0COpinionTransientOffset@@QAE@W4EOpinion@@MJJM@Z	agentNF21 (landing cv): Ego_r.pdb 0x0058F680 / FableWin.pdb 0x01F49A10 (EOpinion first parameter)
+00681A70	?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@AAEXXZ	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb private (AAE)
+00682140	?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb ?AdjustOpinionTransient@CTCCreatureOpinionOfHero@@QAEXW4EOpinion@@MJJM_N@Z; body builds COpinionTransientOffset
+006A76A0	??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb ??RCThingFilter_IsNot@@QBE_NABVCThing@@@Z; body compares &Thing != &thing
+006A76B0	??RCThingFilter_In2DRange@@QBE_NABVCThing@@@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb const CThing& parameter
+006AF1C0	??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb; body compares CMessageEvent::Type (+0x08) = IsOfType (HasExtraData would read +0x3C)
+006CFAA0	?FindMaritalHome@CTCWife@@ABEPAVCThingBuilding@@XZ	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb private const (ABE)
+006CFC90	?SetAttractionIcon@CTCWife@@AAEX_NME@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb private (AAE)
+006D03E0	?InitWifeNonpersistentState@CTCWife@@QAEXXZ	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb CTCWife member (was CTCWife_State stand-in)
+006D0800	?OnInitialActivate@CTCWife@@UAEXXZ	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb ?OnInitialActivate@CTCWife@@UAEXXZ (public virtual; was CTCWife_State stand-in)
+006D3C40	?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z	agentNF21 (landing cv): FableWin.pdb 0x0248B580 ?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z; Ego_r.pdb member WifeLivingHere +0x38 is the pointer the body assigns
+0078E900	?ResetCreatureHitState@CTCDivineWrath@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb private, CIntelligentPointer<CThingCreatureBase> by value
+00793E00	?ResetCreatureHitState@CTCUnholyPower@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb private, CIntelligentPointer<CThingCreatureBase> by value
+008023E0	?UpdateNearestInterestingThing@CTCTargetingPlayer@@MAEXXZ	agentNF21 (landing cv): Ego_r.pdb / FableWin.pdb protected virtual (MAE)
+0091A5B0	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	agentNF21 (landing cv): Ego_r.pdb 0x0093E080 / FableWin.pdb 0x02BC5800 Bind3<IsOfType,IsOriginatedByThing,IsTargettedAtThing> const instance; filter bodies 0x006AF200 (+0x20 OriginatorUID) / 0x006AF1E0 (+0x28 TargetUID)
+00993E30	?WriteEBOOL@CDataOutputStream@@QAEX_N@Z	agentNF21 (landing cv): Ego_r.pdb 0x00AFBE70 / FableWin.pdb; shared header names 0x00993E30 (was CDataOutputStream_Methods stand-in)
+00A8E6C0	?SaveBinary@CBaseBlock@N3DPrimitive@@QAEXAAVCDataOutputStream@@@Z	agentNF21 (landing cv): Ego_r.pdb 0x00BD0F70 / FableWin.pdb 0x032FECF0 ?SaveBinary@CBaseBlock@N3DPrimitive@@QAEXAAVCDataOutputStream@@@Z
+00AA3AF0	?ToMatrixTransposed@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z	agentNF21 (landing cv): FableWin.pdb 0x03382B40 (ToMatrix) / 0x03382B80 (ToMatrixTransposed); retail body puts the translation in the last column = transposed

@@ -44,6 +44,14 @@ public:
     public:
         long DefIndex;                                                   // +0x00
         long OriginalParentDefIndex;                                     // +0x04
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_SUBDEFINFO_CTOR
+        // Chunk Q28 (row 0x009B00D0 CParentDefClassBase::AddSubDef): FableWin.pdb ??0CSubDefInfo@CDefClassBase@@QAE@JJ@Z (inline in
+        // retail: the row stores the two parameters straight into the pair) and ??0CSubDefInfo@CDefClassBase@@QAE@XZ (its body is not
+        // in retail bytes this row reads: declared only). No layout change.
+        CSubDefInfo();
+        CSubDefInfo(long def_index, long original_parent_def_index)
+            : DefIndex(def_index), OriginalParentDefIndex(original_parent_def_index) { }
+#endif
     };
     CDefClassBase(const CDefClassBase&);                                 // 0x0046644C
 #ifndef FABLE_RETAIL_CDEFCLASSBASE_IMPLICIT_ASSIGN
@@ -97,6 +105,13 @@ public:
         GetPSubDefInfoMap();                                             // slot 24 0x0042DAA0
     CDefinitionManager* PDefManager;                                     // +0x1c
     unsigned long       GlobalIndex;                                     // +0x20
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_SETASTEMPLATE
+    // Retail opt-in (wf5, row 0x009ADAE0 CDefinitionManager::InstantiateSubDef): FableWin.pdb ?SetAsTemplate@CDefClassBase@@QAEX_N@Z
+    // (0x03060C40, 37 bytes, out of line in the debug build; inline in retail). The row calls it with a constant false: the
+    // inlined bool parameter is what makes VC7.1 emit `mov al,[esi+24h] ; and al,0FDh ; mov [esi+24h],al` instead of the
+    // `and byte ptr [esi+24h],0FDh` of a direct `Template = false`. The parameter name is descriptive. No layout change.
+    void SetAsTemplate(bool is_template) { Template = is_template; }
+#endif
     unsigned char       Setup : 1;                                       // +0x24
     unsigned char       Template : 1;
     unsigned char       DefaultValsApplied : 1;

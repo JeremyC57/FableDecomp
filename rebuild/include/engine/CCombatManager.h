@@ -11,11 +11,47 @@ class C3DVector; class CThing; enum ECombatZone;
 #endif
 class CCombatManager:public CBaseClassNonCopyable {
 public:
-#ifdef FABLE_RETAIL_LEADER_INITIALISE
+#if defined(FABLE_RETAIL_LEADER_INITIALISE) || defined(FABLE_RETAIL_CCOMBATMANAGER_DIALOGUE)
+ // FABLE_RETAIL_CCOMBATMANAGER_DIALOGUE (chunk Q17, row 0x0093C030): the same Ego_r.pdb inline accessor
+ // ?GetCombatDialogueManager@CCombatManager@@QAEAAVCombatDialogueManager@@XZ (`lea ecx,[eax+38h]`, 0x0093C11B) without the LEADER opt-in.
  CombatDialogueManager& GetCombatDialogueManager(){return DialogueManager;}
+#endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_ISATTACKING
+ // Retail opt-in (chunk Q17, row 0x008BF500): ?IsCreatureAttacking@CCombatManager@@QAE_NABVCThingCreatureBase@@@Z, out of line at
+ // 0x006E92C0 (the Combatants lookup of the creature's UID, then its AttackerInfo.Attacked). The name is the landed binding's (in neither
+ // PDB name set). Declaration only.
+ bool IsCreatureAttacking(const CThingCreatureBase& creature);           // 0x006E92C0
+#endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_ISATTACKER
+ // Opt-in (agentNF25b, 2026-11-12): Ego_r.pdb (0x00712500) + FableWin.pdb (0x02412A40) ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z,
+ // out of line at 0x006E92C0 (landed row; the Combatants lookup of the creature's UID, then its AttackerInfo.Attacked). Supersedes the
+ // FABLE_RETAIL_CCOMBATMANAGER_ISATTACKING spelling (in neither PDB). Declaration only.
+ bool IsAttacker(const CThingCreatureBase& creature) const;             // 0x006E92C0
+#endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_UNSHEATH
+ // Retail opt-in (chunk Q17, row 0x0093C030): Ego_r.pdb ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+ // (out of line at 0x006EBDD0). Declaration only; needs engine/EUnsheatheWeaponType.h.
+ void CreatureUnsheathWeapon(CThingCreatureBase& creature, EUnsheatheWeaponType type);   // 0x006EBDD0
 #endif
  void RegisterCombatant(CThingCreatureBase&,CThingCreatureBase&,bool);
  void DeregisterCombatant(CThingCreatureBase&);
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_PERFORMSEQUENCERESET
+ // Opt-in (agentNF22, row 0x006EA430 DeregisterCombatant): Ego_r.pdb + FableWin.pdb private
+ // ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z, out of line at 0x006EA2C0 (landed under that name).
+private:
+ void PerformSequenceReset(CThingCreatureBase&);
+public:
+#endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_DEFENDERATTACKPATTERN
+ // Opt-in (wf1, row 0x006EA0C0 UpdateDefenderAttackPattern): Ego_r.pdb + FableWin.pdb private
+ // ?UpdateDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z (out of line at 0x006EA0C0) and
+ // ?ResetDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@V?$CDefPointer@$$CBVCAttackPatternDef@@@@@Z (out of line at
+ // 0x006E8C30, landed under that name). Declarations only: no layout change.
+private:
+ void UpdateDefenderAttackPattern(CCombatantInfo& info);                                        // 0x006EA0C0
+ void ResetDefenderAttackPattern(CCombatantInfo& info, CDefPointer<const CAttackPatternDef> pattern);   // 0x006E8C30
+public:
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATANTINFO_INLINE
  // Per-TU opt-in (chunk 1020, row 0x006E94D0): the public const ?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z
  // (out of line at 0x006E9360) with its body visible: the UniqueID copied into a key temporary and looked up in Combatants (the tree's

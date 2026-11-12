@@ -39,6 +39,17 @@ public:
     class CM_UndeadHere : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&); // 0x00E95690
+#ifdef FABLE_RETAIL_CM_UNDEADHERE_MAIN
+        // Per-TU opt-in (chunk Q6, row 0x00E95770 CM_UndeadHere::Main): the Ego_r.pdb members (struct_layouts_egor.tsv CM_UndeadHere,
+        // 32 bytes: ParentClass +0x14, PMasterData +0x18, Counter +0x1c) and the private Main override (slot 1,
+        // ?Main@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ, both PDBs). Appends members after the base: no change elsewhere.
+        CV_HauntedHouseScript*  ParentClass;                             // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+        long                    Counter;                                 // +0x1c
+    private:
+        virtual void Main();                                             // 0x00E95770 (slot 1)
+    public:
+#endif
     };
     class CHHUndead : public CEntityScriptBase {
     public:

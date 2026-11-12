@@ -19,6 +19,14 @@ public:
     virtual ~CDynamicList();
 protected:
     void GetDataFromDef();                                          // ?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ
+#ifdef FABLE_RETAIL_CDYNAMICLIST_VSLOTS
+// agentFAM04 (2026-11-11): retail virtuals of vtable 0x01246E44 that the declarations above lack (Ego_r / FableWin
+// ?GetSelectedIndex@CDynamicList@NUISystem@@UAEKXZ slot 143, ?GetScrollingChildren@CDynamicList@NUISystem@@UAEAAV?$vector@PAVCComponent@NUISystem@@...@XZ
+// slot 149; slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots, agentFAM03). Declarations only.
+public:
+    virtual unsigned long GetSelectedIndex();                       // slot 143, 0x00540E30
+    virtual std::vector<CComponent*>& GetScrollingChildren();       // slot 149, 0x00540E40
+#endif // FABLE_RETAIL_CDYNAMICLIST_VSLOTS
 #ifdef FABLE_RETAIL_CDYNAMICLIST_MEMBERS
     // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x180 ; call operator new` before the
     // constructor 0x005415F0): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),

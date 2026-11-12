@@ -1,0 +1,305 @@
+addr       parity           behav  name
+00406610   WARN RELOC_NAME: _FmtWide_0099ba70 -> 0099ba70 labelled 'CWideString::Sprintf'
+00406610   WARN RELOC_NAME: ?combine@CWSraw@@QAEXABU1@@Z -> 0099b720 labelled 'CWideString::CWideString'
+00406610   WARN RELOC_NAME: ?fromLit@CWSraw@@QAEXPBG@Z -> 0099b6b0 labelled 'CWideString::CWideString'
+00406610   WARN RELOC_NAME: ?AddWide_0099be70@@YI?AVCWideString@@PAUCWSraw@@0@Z -> 0099be70 labelled 'operator+'
+00406610   RELOCATION_MATCH PASS   CUserProfileManager::GetManualSaveFileName
+00408340   RELOCATION_MATCH PASS   CUserProfileManager::SetSoundAsMuted
+0041c5e0   MATCH            PASS   CChangingStateComponent::ChangedStateLastUpdate
+00438230   WARN SHARED_HEADER_AVAILABLE CDrawMiniMap
+00438230   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00438230   WARN RELOC_NAME: ?ClearDisplay@CDrawHealth@NPlayerGui@@QAEXXZ -> 00644644 labelled '_unattributed::GetTarget_00644644'
+00438230   WARN RELOC_NAME: ?ClearDisplay@CDrawStamina@NPlayerGui@@QAEXXZ -> 0064464c labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+00438230   WARN RELOC_NAME: ?ClearDisplay@CDrawAbilityButtons@NPlayerGui@@QAEXXZ -> 0064528a labelled '_unattributed::GetTarget_0064528a'
+00438230   WARN RELOC_NAME: ?ClearDisplay@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ -> 00645821 labelled '_unattributed::GetTarget_00645821'
+00438230   WARN RELOC_NAME: ??_9@$BA@AE -> 0043e420 labelled 'NPlayerGui::CDrawBase::vcall{0}'
+00438230   RELOCATION_MATCH PASS   CPlayerGui::ClearGui
+004baef0   RELOCATION_MATCH PASS   CCountedPointer<CQuestManager::CActiveQuest>::DeleteData
+004bb200   RELOCATION_MATCH PASS   CCountedPointer<CQuestManager::CActiveQuest>::Reset
+0052c730   RELOCATION_MATCH PASS   NUISystem::CChangingStateComponent::Initialise
+0052c780   MATCH            PASS   NUISystem::CChangingStateComponent::vfunc_138
+0052cab0   RELOCATION_MATCH PASS   NUISystem::CChangingStateComponent::AddChildDynamically
+00543d30   WARN SHARED_HEADER_AVAILABLE C2DVector
+00543d30   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00543d30   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00543d30   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager
+00543d30   WARN SHARED_HEADER_AVAILABLE CManager
+00543d30   RELOCATION_MATCH PASS   NUISystem::CParticleEffect::Initialise
+00543df0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00543df0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00543df0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00543df0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager
+00543df0   WARN SHARED_HEADER_AVAILABLE CManager
+00543df0   RELOCATION_MATCH PASS   NUISystem::CParticleEffect::ChangeState
+00543ee0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00543ee0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00543ee0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00543ee0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager
+00543ee0   WARN SHARED_HEADER_AVAILABLE CManager
+00543ee0   RELOCATION_MATCH PASS   NUISystem::CParticleEffect::Draw
+00554110   WARN SHARED_HEADER_AVAILABLE CSprite
+00554110   WARN RELOC_NAME: ?InternalChanged@CSprite@NUISystem@@UAEXXZ -> 0052c780 labelled 'NUISystem::CChangingStateComponent::vfunc_138'
+00554110   RELOCATION_MATCH PASS   NUISystem::CMorphingSprite::InternalChanged
+005546f0   RELOCATION_MATCH PASS   NUISystem::CMorphingSprite::ProcessChangeState
+005e9b10   MATCH            PASS   CTCTavernGame::HideMesh
+0063dfd0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0063dfd0   WARN SHARED_HEADER_AVAILABLE CMap
+0063dfd0   WARN SHARED_HEADER_AVAILABLE CMapInfo
+0063dfd0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0063dfd0   RELOCATION_MATCH PASS   CWorldMap::UpdateAllEdges
+00643d5d   RELOCATION_MATCH PASS   NPlayerGui::CDrawBase::ScaleAlpha
+00643d8c   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00643d8c   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef
+00643d8c   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager
+00643d8c   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00643d8c   RELOCATION_MATCH PASS   CPlayerGui::AddHitByMelee
+00645099   RELOCATION_MATCH PASS   NPlayerGui::CDrawAbilityButtons::DrawButton
+006451dd   WARN SHARED_HEADER_AVAILABLE C2DVector
+006451dd   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+006451dd   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager
+006451dd   WARN SHARED_HEADER_AVAILABLE CHeroAbilityDef
+006451dd   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+006451dd   RELOCATION_MATCH PASS   NPlayerGui::CDrawAbilityButtons::DrawEffects
+00645605   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuickAccessIcons::ClearEffects
+0064be45   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0064be45   WARN SHARED_HEADER_AVAILABLE CThing
+0064be45   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064be45   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0064be45   WARN RELOC_NAME: ?IsShowingBaseAbility@CTCCombat@@QAE_NXZ -> 00733290 labelled 'CTCCombat::IsBreakBlockValid'
+0064be45   WARN RELOC_NAME: ?GetPBaseAbility@CTCCombat@@QAE?AV?$CDefPointer@VCAbilityDef@@@@XZ -> 007334b0 labelled 'CThing::GetPBaseDef'
+0064be45   RELOCATION_MATCH PASS   NPlayerGui::CDrawMeleeActionButtonEffects::Update
+00658ec3   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer
+00658ec3   WARN SHARED_HEADER_AVAILABLE CThingBuilding
+00658ec3   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00658ec3   WARN RELOC_DUPLICATE: retail 00a01b50 bound to ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ, ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ
+00658ec3   RELOCATION_MATCH PASS   CTCVillage::BuildingContainsCorrectVillagers
+0065d624   MATCH            PASS   IS_THING_ALIVE<CThingBuilding*>
+00760910   RELOCATION_MATCH PASS   CTCShapeManager::GetPrincipalVector
+007617a0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+007617a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+007617a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+007617a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+007617a0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+007617a0   WARN RELOC_NAME: ?EditorDrawSphere@@YIXPAVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z -> 00875fb0 labelled 'NCameraModes::DrawSquare'
+007617a0   WARN RELOC_NAME: ?EditorDrawCross@@YIXPAVCEnginePrimitivePrepareInfo@@ABVC3DVector@@M@Z -> 008764e0 labelled 'NCameraModes::DrawPyramid'
+007617a0   RELOCATION_MATCH PASS   NShape::CShape::EditorDrawHighlightPoints
+00761b10   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+00761b10   WARN SHARED_HEADER_AVAILABLE CTCBase
+00761b10   RELOCATION_MATCH PASS   CTCShapeManager::DrawPreparePrimitivesForRendering
+007b9090   WARN SHARED_HEADER_AVAILABLE CThing
+007b9090   RELOCATION_MATCH PASS   CTCTavernTable::FreeServingPoint
+007fefc0   WARN SHARED_HEADER_AVAILABLE CTCNamedUserActionPoints
+007fefc0   RELOCATION_MATCH PASS   CTCNamedUserActionPoints::GetName
+0081ef30   WARN SHARED_HEADER_AVAILABLE C2DCoordI
+0081ef30   WARN SHARED_HEADER_AVAILABLE CHeightMapCell
+0081ef30   WARN SHARED_HEADER_AVAILABLE CHeightMap
+0081ef30   RELOCATION_MATCH PASS   CMap::SetEngineThemeAtIncludingExtraCells
+00989b00   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+00989b00   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00989b00   WARN SHARED_HEADER_AVAILABLE C4DVector
+00989b00   MATCH            PASS   CShaderRenderManager::SetUserVertexShaderConstant
+009b4ff0   WARN RELOC_NAME: ??$fill@PAPAVCInstantiatedDefInfo@CDefinitionManager@@PAV12@@std@@YIXPAPAVCInstantiatedDefInfo@CDefinitionManager@@0ABQAV12@@Z -> 009b15f0 labelled 'std::fill<CDefinitionManager::CInstantiatedDefInfo**,CDefinitionManager::CInstantiatedDefInfo*>'
+009b4ff0   RELOCATION_MATCH PASS   std::vector<CDefinitionManager::CInstantiatedDefInfo *, std::allocator<CDefinitionManager::CInstantiatedDefInfo *>>::_M_fill_insert
+009be930   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009be930   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+009be930   RELOCATION_MATCH PASS   CDisplayManager::IsValidRenderTargetFormat
+009bebb0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009bebb0   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+009bebb0   RELOCATION_MATCH PASS   CDisplayManager::GetClosestDepthBufferFormat
+009bf600   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+009bf600   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009bf600   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009bf600   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+009bf600   RELOCATION_MATCH PASS   CDisplayManager::GetClosestMode
+009e3940   RELOCATION_MATCH PASS   CPixelFormat::IsCompressed
+009e3970   RELOCATION_MATCH PASS   CPixelFormat::IsSigned
+009f3230   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+009f3230   WARN SHARED_HEADER_AVAILABLE CSystemManager
+009f3230   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f3230   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009f3230   RELOCATION_MATCH PASS   CSurface::InitialiseAsImage
+009f32a0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+009f32a0   WARN SHARED_HEADER_AVAILABLE CSystemManager
+009f32a0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f32a0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009f32a0   RELOCATION_MATCH PASS   CSurface::InitialiseAsDepthBuffer
+009f3310   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+009f3310   WARN SHARED_HEADER_AVAILABLE CSystemManager
+009f3310   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f3310   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009f3310   RELOCATION_MATCH PASS   CSurface::InitialiseAsRenderTarget
+009fa280   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+009fa280   WARN SHARED_HEADER_AVAILABLE CSystemManager
+009fa280   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009fa280   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009fa280   RELOCATION_MATCH PASS   CTexture::Initialise
+009fa340   WARN SHARED_HEADER_AVAILABLE CSystemManager
+009fa340   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+009fa340   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009fa340   WARN SHARED_HEADER_AVAILABLE CTexture
+009fa340   WARN RELOC_NAME: ??BCWideString@N_0099af00@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009fa340   WARN RELOC_ALIAS: _D3DXCreateTextureFromFileExW@56 -> 00bfefd4 is the import thunk 'D3DX9_25.DLL::D3DXCreateTextureFromFileExW'
+009fa340   RELOCATION_MATCH PASS   CTexture::LoadFromBitmapFile
+00a68250   WARN SHARED_HEADER_AVAILABLE CSystemManager
+00a68250   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a68250   WARN RELOC_ALIAS: _D3DXCreateVolumeTexture@36 -> 00bfeff2 is the import thunk 'D3DX9_25.DLL::D3DXCreateVolumeTexture'
+00a68250   RELOCATION_MATCH PASS   CVolumeTexture::CreateTexture
+00a698f0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a698f0   WARN SHARED_HEADER_AVAILABLE CTextureManager
+00a698f0   RELOCATION_MATCH PASS   CTextureManager::CalculateTextureSize
+00a91180   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams
+00a91180   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2
+00a91180   WARN RELOC_NAME: ?GetVertexSize@CVertexFormat@@QBEKXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a91180   WARN RELOC_NAME: ?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a91180   RELOCATION_MATCH PASS   C3DPrimitive2::ConvertToVBFormatAnimated
+00aeaaf0   RELOCATION_MATCH PASS   NParticleEngine::GetParticleEmitterManager
+00bdda50   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00bdda50   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bdda50   MATCH            PASS   CLocalDetailCacheMap::CQuadTreeElement::RemoveObjectCollections
+00bddcb0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00bddcb0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bddcb0   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAUCQuadTreeElement@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bddcb0   RELOCATION_MATCH PASS   CLocalDetailCacheMap::CQuadTreeElement::OnPostRelocation
+00bde020   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00bde020   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bde020   RELOCATION_MATCH PASS   CLocalDetailCacheMap::CQuadTreeElement::UnloadStaticContents
+00bdf9e0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bdf9e0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bdf9e0   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap
+00bdf9e0   RELOCATION_MATCH PASS   CLocalDetailCacheMap::CObjectCacheGroupCollection::`scalar deleting destructor'
+00be8f10   RELOCATION_MATCH PASS   std::vector<CEngineWaterBackgroundSubPatch*>::_M_insert_overflow
+00be8ff0   RELOCATION_MATCH PASS   CArray<CEngineWaterBackgroundSubPatch*>::push_back
+00bf38f0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf38f0   RELOCATION_MATCH PASS   CEngineLandscapePatch::Clear
+00bf5d30   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf5d30   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf5d30   RELOCATION_MATCH PASS   CEngineLandscapePatch::`scalar deleting destructor'
+00bf6530   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf6530   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00bf6530   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode
+00bf6530   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::StartTreeLoadTask
+00bf65b0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf65b0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00bf65b0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode
+00bf65b0   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::StartPatchLoadTask
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf6a30   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::MarkTreeAsInvisibleLastFrame
+00bf6ac0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf6ac0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf6ac0   MATCH            PASS   CLandscapeBackgroundTreeNode::UpdateParentChainVisibilityFlag
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf6b70   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bf6b70   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::OnPostRelocation
+00bf6bf0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf6bf0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf6bf0   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::TreeHasLoadTasks
+00bf71d0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CPlane
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf71d0   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::Render
+00bf73a0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf73a0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00bf73a0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf73a0   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::~CLandscapeBackgroundTreeNode
+00bf8ce0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf8ce0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf8ce0   RELOCATION_MATCH PASS   CLandscapeBackgroundTreeNode::`scalar deleting destructor'
+00bf9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf9b90   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAUCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bf9b90   RELOCATION_MATCH PASS   CLocalDetailPrimitiveMeshZSpriteBatch::OnPostRelocation
+00bfbc50   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bfbc50   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bfbc50   RELOCATION_MATCH PASS   CLocalDetailPrimitiveRepeatedMesh::`scalar deleting destructor'
+00bfc410   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bfc410   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bfc410   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray
+00bfc410   RELOCATION_MATCH PASS   CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip
+00bfc510   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bfc510   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray
+00bfc510   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip
+00bfc510   RELOCATION_MATCH PASS   CPatchTesselationEdgeStrip::SetMovableResourceHandler
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bfdd70   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bfdd70   RELOCATION_MATCH PASS   CLandscapeLayerMesh::OnPostRelocation
+00bfde20   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bfde20   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bfde20   WARN RELOC_NAME: ?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda090 labelled 'CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy'
+00bfde20   WARN RELOC_NAME: ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda0d0 labelled 'CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy'
+00bfde20   RELOCATION_MATCH PASS   CLandscapeLayerMesh::~CLandscapeLayerMesh
+
+WINS: 69
+  00406610 RELOCATION_MATCH CUserProfileManager::?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z
+  00408340 RELOCATION_MATCH CUserProfileManager::?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z
+  0041c5e0 MATCH CChangingStateComponent::ChangedStateLastUpdate
+  00438230 RELOCATION_MATCH CPlayerGui::ClearGui
+  004baef0 RELOCATION_MATCH CCountedPointer<CQuestManager::CActiveQuest>::?DeleteData@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@SIXPAX@Z
+  004bb200 RELOCATION_MATCH CCountedPointer<CQuestManager::CActiveQuest>::?Reset@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@QAEXPAVCActiveQuest@CQuestManager@@@Z
+  0052c730 RELOCATION_MATCH NUISystem::CChangingStateComponent::?Initialise@CChangingStateComponent@NUISystem@@UAEXXZ
+  0052c780 MATCH NUISystem::CChangingStateComponent::InternalChanged
+  0052cab0 RELOCATION_MATCH NUISystem::CChangingStateComponent::?AddChildDynamically@CChangingStateComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  00543d30 RELOCATION_MATCH NUISystem::CParticleEffect::Initialise
+  00543df0 RELOCATION_MATCH NUISystem::CParticleEffect::ChangeState
+  00543ee0 RELOCATION_MATCH NUISystem::CParticleEffect::Draw
+  00554110 RELOCATION_MATCH NUISystem::CMorphingSprite::InternalChanged
+  005546f0 RELOCATION_MATCH NUISystem::CMorphingSprite::ProcessChangeState
+  005e9b10 MATCH CTCTavernGame::?HideMesh@CTCTavernGame@@SIXPAVCThing@@@Z
+  0063dfd0 RELOCATION_MATCH CWorldMap::?UpdateAllEdges@CWorldMap@@IAEXXZ
+  00643d5d RELOCATION_MATCH NPlayerGui::CDrawBase::?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z
+  00643d8c RELOCATION_MATCH CPlayerGui::?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+  00645099 RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::?DrawButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z
+  006451dd RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::?DrawEffects@CDrawAbilityButtons@NPlayerGui@@IAEXJABVC2DVector@@ABVCHeroAbilityDef@@@Z
+  00645605 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ
+  0064be45 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::Update
+  00658ec3 RELOCATION_MATCH CTCVillage::BuildingContainsCorrectVillagers
+  0065d624 MATCH _global::??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z
+  00760910 RELOCATION_MATCH CTCShapeManager::?GetPrincipalVector@CTCShapeManager@@QBE_NAAVC3DVector@@@Z
+  007617a0 RELOCATION_MATCH NShape::CShape::?EditorDrawHighlightPoints@CShape@NShape@@QAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z
+  00761b10 RELOCATION_MATCH CTCShapeManager::DrawPreparePrimitivesForRendering
+  007b9090 RELOCATION_MATCH CTCTavernTable::?FreeServingPoint@CTCTavernTable@@QAEXJ@Z
+  007fefc0 RELOCATION_MATCH CTCNamedUserActionPoints::?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z
+  0081ef30 RELOCATION_MATCH CMap::?SetEngineThemeAtIncludingExtraCells@CMap@@IAEXJJKK@Z
+  00989b00 MATCH CShaderRenderManager::?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z
+  009b4ff0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@PAVCInstantiatedDefInfo@CDefinitionManager@@V?$allocator@PAVCInstantiatedDefInfo@CDefinitionManager@@@std@@@std@@QAEXPAPAVCInstantiatedDefInfo@CDefinitionManager@@IABQAV34@@Z
+  009be930 RELOCATION_MATCH CDisplayManager::IsValidRenderTargetFormat
+  009bebb0 RELOCATION_MATCH CDisplayManager::?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z
+  009bf600 RELOCATION_MATCH CDisplayManager::GetClosestMode
+  009e3940 RELOCATION_MATCH CPixelFormat::IsCompressed
+  009e3970 RELOCATION_MATCH CPixelFormat::IsSigned
+  009f3230 RELOCATION_MATCH CSurface::InitialiseAsImage
+  009f32a0 RELOCATION_MATCH CSurface::InitialiseAsDepthBuffer
+  009f3310 RELOCATION_MATCH CSurface::InitialiseAsRenderTarget
+  009fa280 RELOCATION_MATCH CTexture::Initialise
+  009fa340 RELOCATION_MATCH CTexture::?LoadFromBitmapFile@CTexture
+  00a68250 RELOCATION_MATCH CVolumeTexture::CreateTexture
+  00a698f0 RELOCATION_MATCH CTextureManager::?CalculateTextureSize@CTextureManager@@SIKKK_NABVCPixelFormat@@@Z
+  00a91180 RELOCATION_MATCH C3DPrimitive2::ConvertToVBFormatAnimated
+  00aeaaf0 RELOCATION_MATCH NParticleEngine::?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ
+  00bdda50 MATCH CLocalDetailCacheMap::CQuadTreeElement::RemoveObjectCollections
+  00bddcb0 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::OnPostRelocation
+  00bde020 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::UnloadStaticContents
+  00bdf9e0 RELOCATION_MATCH CLocalDetailCacheMap::CObjectCacheGroupCollection::??_GCObjectCacheGroupCollection@CLocalDetailCacheMap@@UAEPAXI@Z
+  00be8f10 RELOCATION_MATCH std::vector<CEngineWaterBackgroundSubPatch*>::?_M_insert_overflow@?$vector@PAVCEngineWaterBackgroundSubPatch@@V?$allocator@PAVCEngineWaterBackgroundSubPatch@@@std@@@std@@IAEX
+  00be8ff0 RELOCATION_MATCH CArray<CEngineWaterBackgroundSubPatch*>::?push_back@?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@QAEXABQAVCEngineWaterBackgroundSubPatch@@@Z
+  00bf38f0 RELOCATION_MATCH CEngineLandscapePatch::Clear
+  00bf5d30 RELOCATION_MATCH CEngineLandscapePatch::??_G
+  00bf6530 RELOCATION_MATCH CLandscapeBackgroundTreeNode::StartTreeLoadTask
+  00bf65b0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::StartPatchLoadTask
+  00bf6a30 RELOCATION_MATCH CLandscapeBackgroundTreeNode::MarkTreeAsInvisibleLastFrame
+  00bf6ac0 MATCH CLandscapeBackgroundTreeNode::UpdateParentChainVisibilityFlag
+  00bf6b70 RELOCATION_MATCH CLandscapeBackgroundTreeNode::OnPostRelocation
+  00bf6bf0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::TreeHasLoadTasks
+  00bf71d0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::Render@CLandscapeBackgroundTreeNode
+  00bf73a0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::??1CLandscapeBackgroundTreeNode@@QAE@XZ
+  00bf8ce0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::??_GCLandscapeBackgroundTreeNode@@UAEPAXI@Z
+  00bf9b90 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::OnPostRelocation
+  00bfbc50 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??_GCLocalDetailPrimitiveRepeatedMesh@@UAEPAXI@Z
+  00bfc410 RELOCATION_MATCH CPatchTesselationEdgeStrip::??1CPatchTesselationEdgeStrip
+  00bfc510 RELOCATION_MATCH CPatchTesselationEdgeStrip::SetMovableResourceHandler
+  00bfdd70 RELOCATION_MATCH CLandscapeLayerMesh::OnPostRelocation
+  00bfde20 RELOCATION_MATCH CLandscapeLayerMesh::??1CLandscapeLayerMesh@@QAE@XZ
+rc=0

@@ -1,0 +1,137 @@
+09:39 00878be0 grade a.cpp DIFFER(220v244) hunks=9 -- result local / reach local / += chain
+09:39 00878be0 grade b.cpp DIFFER(228v244) hunks=5 -- result local / reach local / += chain
+09:39 00878be0 grade c.cpp DIFFER(244v244) hunks=16 -- result local / reach local / += chain
+09:41 00878be0 grade a.cpp DIFFER(220v244) hunks=8 -- pos += offset then return pos + reach (inline / named reach / (pos+=offset)+reach)
+09:41 00878be0 grade b.cpp DIFFER(234v244) hunks=12 -- pos += offset then return pos + reach (inline / named reach / (pos+=offset)+reach)
+09:41 00878be0 grade c.cpp DIFFER(234v244) hunks=12 -- pos += offset then return pos + reach (inline / named reach / (pos+=offset)+reach)
+09:41 00878be0 grade a.cpp DIFFER(220v244) hunks=9 -- second copy result = pos; result += offset; return result + reach (3 orders)
+09:41 00878be0 grade b.cpp DIFFER(228v244) hunks=4 -- second copy result = pos; result += offset; return result + reach (3 orders)
+09:41 00878be0 grade c.cpp DIFFER(234v244) hunks=7 -- second copy result = pos; result += offset; return result + reach (3 orders)
+09:42 00878be0 grade a.cpp DIFFER(228v244) hunks=5 -- C3DVector(pos)+offset+reach / result=pos+offset then named reach / reach then result
+09:42 00878be0 grade b.cpp DIFFER(220v244) hunks=9 -- C3DVector(pos)+offset+reach / result=pos+offset then named reach / reach then result
+09:42 00878be0 grade c.cpp DIFFER(228v244) hunks=5 -- C3DVector(pos)+offset+reach / result=pos+offset then named reach / reach then result
+09:43 00878be0 grade a.cpp DIFFER(219v244) hunks=16 -- inline by-value GetBaseOffset() (Ego_r 0x00862C30): unnamed / named pos / named pos+reach
+09:43 00878be0 grade b.cpp DIFFER(228v244) hunks=5 -- inline by-value GetBaseOffset() (Ego_r 0x00862C30): unnamed / named pos / named pos+reach
+09:43 00878be0 grade c.cpp DIFFER(228v244) hunks=5 -- inline by-value GetBaseOffset() (Ego_r 0x00862C30): unnamed / named pos / named pos+reach
+09:44 00878be0 grade a.cpp DIFFER(228v244) hunks=5 -- GetBaseOffset() bound to const ref / assigned / const local
+09:44 00878be0 grade c.cpp DIFFER(256v244) hunks=5 -- GetBaseOffset() bound to const ref / assigned / const local
+09:44 00878be0 grade d.cpp DIFFER(228v244) hunks=5 -- GetBaseOffset() bound to const ref / assigned / const local
+09:45 00878be0 grade a.cpp DIFFER(266v244) hunks=16 -- pos = pos + offset (named reach / inline reach)
+09:45 00878be0 grade c.cpp DIFFER(252v244) hunks=15 -- pos = pos + offset (named reach / inline reach)
+09:46 00878be0 grade a.cpp DIFFER(234v244) hunks=12 -- by-value GetBaseOffset() pos; pos += offset; + reach (3 forms)
+09:46 00878be0 grade c.cpp DIFFER(220v244) hunks=8 -- by-value GetBaseOffset() pos; pos += offset; + reach (3 forms)
+09:46 00878be0 grade d.cpp DIFFER(234v244) hunks=12 -- by-value GetBaseOffset() pos; pos += offset; + reach (3 forms)
+09:47 00878be0 grade a.cpp DIFFER(234v244) hunks=7 -- GetBaseOffset with a named local returned by value (extra copy): += named reach / plain sum / += inline reach
+09:47 00878be0 grade c.cpp DIFFER(228v244) hunks=5 -- GetBaseOffset with a named local returned by value (extra copy): += named reach / plain sum / += inline reach
+09:47 00878be0 grade d.cpp DIFFER(220v244) hunks=9 -- GetBaseOffset with a named local returned by value (extra copy): += named reach / plain sum / += inline reach
+09:49 00878be0 grade a.cpp DIFFER(228v244) hunks=5 -- explicit second copy: base(pos)+offset+reach / C3DVector(pos.X,pos.Y,pos.Z) / by-value param probe
+09:49 00878be0 grade c.cpp DIFFER(234v244) hunks=6 -- explicit second copy: base(pos)+offset+reach / C3DVector(pos.X,pos.Y,pos.Z) / by-value param probe
+09:49 00878be0 grade d.cpp DIFFER(228v244) hunks=5 -- explicit second copy: base(pos)+offset+reach / C3DVector(pos.X,pos.Y,pos.Z) / by-value param probe
+09:54 00878be0 grade a.cpp DIFFER(234v244) hunks=12 -- probe on the row: does a copy survive when pos is rewritten from it (member-wise / Initialise)
+09:54 00878be0 grade c.cpp DIFFER(234v244) hunks=12 -- probe on the row: does a copy survive when pos is rewritten from it (member-wise / Initialise)
+09:54 00878be0 grade d.cpp DIFFER(220v244) hunks=8 -- probe on the row: does a copy survive when pos is rewritten from it (member-wise / Initialise)
+09:56 00878be0 grade a.cpp DIFFER(256v244) hunks=5 -- probe on the row: trivial operator= block copy T = pos as the copy barrier (3 placements)
+09:56 00878be0 grade c.cpp DIFFER(256v244) hunks=5 -- probe on the row: trivial operator= block copy T = pos as the copy barrier (3 placements)
+09:56 00878be0 grade d.cpp DIFFER(256v244) hunks=5 -- probe on the row: trivial operator= block copy T = pos as the copy barrier (3 placements)
+09:59 00878be0 grade a.cpp DIFFER(238v244) hunks=8 -- probe on the row: XY sum via ctor with Z copied then Z += (retail loads Z first, adds off.Z last)
+09:59 00878be0 grade c.cpp DIFFER(218v244) hunks=11 -- probe on the row: XY sum via ctor with Z copied then Z += (retail loads Z first, adds off.Z last)
+09:59 00878be0 grade d.cpp DIFFER(234v244) hunks=6 -- probe on the row: XY sum via ctor with Z copied then Z += (retail loads Z first, adds off.Z last)
+10:00 00878be0 grade a.cpp DIFFER(228v244) hunks=5 -- probe on the row: sum through copy-then-+= / by-value-param += / named result local, returned by value
+10:00 00878be0 grade c.cpp DIFFER(228v244) hunks=5 -- probe on the row: sum through copy-then-+= / by-value-param += / named result local, returned by value
+10:00 00878be0 grade d.cpp DIFFER(234v244) hunks=7 -- probe on the row: sum through copy-then-+= / by-value-param += / named result local, returned by value
+10:01 00878be0 grade a.cpp DIFFER(228v244) hunks=5 -- probe on the row: late-folded identity (pos * 1.0f, pos / 1.0f) as the surviving copy stage
+10:01 00878be0 grade c.cpp DIFFER(228v244) hunks=5 -- probe on the row: late-folded identity (pos * 1.0f, pos / 1.0f) as the surviving copy stage
+10:01 00878be0 grade d.cpp RELOCATION_MATCH -- probe on the row: late-folded identity (pos * 1.0f, pos / 1.0f) as the surviving copy stage
+10:01 00878be0 grade 00878be0.cpp RELOCATION_MATCH -- final: pos / 1.0f + offset + ZAxis*h (strict headers)
+10:02 00877720 grade r2a.cpp SRC_FAIL -- first port: sibling 0x00878390 idiom, clear + one area + two Bind2(IsOfType, OverlappingSphere) searches
+10:02 00877720 grade r2a.cpp SRC_FAIL -- first port with header opt-in STANDARDTHINGS
+10:03 00877720 grade r2a.cpp RELOCATION_MATCH -- first port + CTHING_STATTYPEFLAGS
+10:03 00877720 grade 00877720.cpp RELOCATION_MATCH -- final src, strict headers
+10:05 009e3b60 grade r3a.cpp DIFFER(214v280) hunks=13 -- first port: PDB accessor chain (GetXMask/PosShift/ScaleShift), Initialise(r,g,b,a) direct / locals a,r,g,b / ctor assign
+10:05 009e3b60 grade r3b.cpp DIFFER(214v280) hunks=13 -- first port: PDB accessor chain (GetXMask/PosShift/ScaleShift), Initialise(r,g,b,a) direct / locals a,r,g,b / ctor assign
+10:05 009e3b60 grade r3c.cpp DIFFER(183v280) hunks=14 -- first port: PDB accessor chain (GetXMask/PosShift/ScaleShift), Initialise(r,g,b,a) direct / locals a,r,g,b / ctor assign
+10:07 009e3b60 grade r3a1.cpp DIFFER(280v280) hunks=13 -- PosShift bodies from the debug sizes: local format reference, field sums (B+G+R / R+G+B / ctor-assign)
+10:07 009e3b60 grade r3a2.cpp DIFFER(280v280) hunks=13 -- PosShift bodies from the debug sizes: local format reference, field sums (B+G+R / R+G+B / ctor-assign)
+10:07 009e3b60 grade r3c1.cpp DIFFER(243v280) hunks=16 -- PosShift bodies from the debug sizes: local format reference, field sums (B+G+R / R+G+B / ctor-assign)
+10:08 009e3b60 grade r3d.cpp RELOCATION_MATCH -- value read order: pfd.GetLong() inline per channel / mask & value / mask & pfd.GetLong()
+10:08 009e3b60 grade 009e3b60.cpp RELOCATION_MATCH -- final src, strict headers, overlay cleaned
+10:10 00ad9770 grade r4a.cpp DIFFER(302v280) hunks=27 -- first port onto CArray / STLport vector+map shared headers (out-of-line copy, assign, destroy_aux, overflow)
+10:11 00ad9770 grade r4b.cpp DIFFER(296v280) hunks=28 -- IsProperSubsetOf real body visible out of line in TU (CONSTFIND map find)
+10:11 00ad9770 grade r4c.cpp DIFFER(286v280) hunks=28 -- flag-free exit: bool flag + break / goto next / flag after count
+10:11 00ad9770 grade r4d.cpp DIFFER(286v280) hunks=28 -- flag-free exit: bool flag + break / goto next / flag after count
+10:11 00ad9770 grade r4e.cpp DIFFER(286v280) hunks=28 -- flag-free exit: bool flag + break / goto next / flag after count
+10:11 00ad9770 grade r4f.cpp DIFFER(286v280) hunks=28 -- operator= body visible (STLP_VECTOR_C): flag / goto
+10:11 00ad9770 grade r4g.cpp DIFFER(286v280) hunks=28 -- operator= body visible (STLP_VECTOR_C): flag / goto
+10:12 00ad9770 grade r4h.cpp RELOCATION_MATCH -- _M_insert_overflow body visible too (no escape of new_blocks): flag / goto
+10:12 00ad9770 grade 00ad9770.cpp RELOCATION_MATCH -- final src, strict headers
+10:15 00bc2480 grade r5a.cpp DIFFER(322v294) hunks=22 -- first port onto shared headers (class opt-in + new descriptor header): separate vectors *= / set copy + operator* locals / one Set expression
+10:15 00bc2480 grade r5b.cpp DIFFER(326v294) hunks=23 -- first port onto shared headers (class opt-in + new descriptor header): separate vectors *= / set copy + operator* locals / one Set expression
+10:15 00bc2480 grade r5c.cpp DIFFER(346v294) hunks=13 -- first port onto shared headers (class opt-in + new descriptor header): separate vectors *= / set copy + operator* locals / one Set expression
+10:15 00bc2480 grade r5a2.cpp DIFFER(314v294) hunks=31 -- 12-float Set with negated components: separate *= vectors / set copy + operator* / set copy + *=
+10:15 00bc2480 grade r5b2.cpp DIFFER(318v294) hunks=27 -- 12-float Set with negated components: separate *= vectors / set copy + operator* / set copy + *=
+10:15 00bc2480 grade r5d.cpp DIFFER(318v294) hunks=27 -- 12-float Set with negated components: separate *= vectors / set copy + operator* / set copy + *=
+10:16 00bc2480 grade r5a_C3DVECTOR_CROSS_XY_GROUP.cpp DIFFER(322v294) hunks=22 -- cross product operand order: CROSS_XY_GROUP / CROSS_X_GROUP / RIGHT_COMPONENTS
+10:16 00bc2480 grade r5a_C3DVECTOR_CROSS_X_GROUP.cpp DIFFER(322v294) hunks=23 -- cross product operand order: CROSS_XY_GROUP / CROSS_X_GROUP / RIGHT_COMPONENTS
+10:16 00bc2480 grade r5a_CRIGHTHANDEDSET_RIGHT_COMPONENTS.cpp DIFFER(322v294) hunks=21 -- cross product operand order: CROSS_XY_GROUP / CROSS_X_GROUP / RIGHT_COMPONENTS
+10:17 00bc2480 grade r5f.cpp DIFFER(322v294) hunks=20 -- forward copy before up (Set vectors) / + element-wise negated stores / element-wise with up first
+10:17 00bc2480 grade r5g.cpp DIFFER(294v294) hunks=6 -- forward copy before up (Set vectors) / + element-wise negated stores / element-wise with up first
+10:17 00bc2480 grade r5h.cpp DIFFER(294v294) hunks=12 -- forward copy before up (Set vectors) / + element-wise negated stores / element-wise with up first
+10:17 00bc2480 grade r5i.cpp DIFFER(294v294) hunks=4 -- GetRight all three components grouped / + three float scales instead of a C3DVector
+10:17 00bc2480 grade r5j.cpp RELOCATION_MATCH -- GetRight all three components grouped / + three float scales instead of a C3DVector
+10:18 00bc2480 grade r5k.cpp DIFFER(322v294) hunks=19 -- alternative spelling check: Set(-right,-forward,up,WorldPos) with float scales
+10:18 00bc2480 grade 00bc2480.cpp RELOCATION_MATCH -- final src, strict headers
+10:20 00801920 grade r6a.cpp SRC_FAIL -- first port onto shared headers (campfire_types CTCIdleScheduler, GetDef/GetSubDef bodies, GFRandom): map decl-only / STLP_MAP
+10:20 00801920 grade r6b.cpp SRC_FAIL -- first port onto shared headers (campfire_types CTCIdleScheduler, GetDef/GetSubDef bodies, GFRandom): map decl-only / STLP_MAP
+10:20 00801920 grade r6a.cpp SRC_FAIL -- CTCIdleScheduler in its own header (moved out of campfire_types.h): map decl-only / STLP_MAP
+10:20 00801920 grade r6b.cpp SRC_FAIL -- CTCIdleScheduler in its own header (moved out of campfire_types.h): map decl-only / STLP_MAP
+10:20 00801920 grade r6a.cpp DIFFER(312v297) hunks=20 -- with the GetPWorldSeed opt-in: map decl-only / STLP_MAP
+10:20 00801920 grade r6b.cpp DIFFER(312v297) hunks=20 -- with the GetPWorldSeed opt-in: map decl-only / STLP_MAP
+10:22 00801920 grade r6c.cpp DIFFER(303v297) hunks=17 -- named found iterator before the end() compare; then GetSubDef decl-only; then GetDef decl-only too
+10:22 00801920 grade r6d.cpp DIFFER(316v297) hunks=16 -- named found iterator before the end() compare; then GetSubDef decl-only; then GetDef decl-only too
+10:22 00801920 grade r6e.cpp DIFFER(340v297) hunks=25 -- named found iterator before the end() compare; then GetSubDef decl-only; then GetDef decl-only too
+10:23 00801920 grade r6f.cpp DIFFER(304v297) hunks=14 -- thing pointer named after the def pointers (index re-read) / + it->second / + first find in an inline helper scope
+10:23 00801920 grade r6g.cpp DIFFER(304v297) hunks=14 -- thing pointer named after the def pointers (index re-read) / + it->second / + first find in an inline helper scope
+10:23 00801920 grade r6h.cpp DIFFER(300v297) hunks=3 -- thing pointer named after the def pointers (index re-read) / + it->second / + first find in an inline helper scope
+10:24 00801920 grade r6i.cpp DIFFER(300v297) hunks=3 -- second lookup: find inside the GFRandom argument / named weight reference first / inline GetPeriod helper
+10:24 00801920 grade r6j.cpp DIFFER(300v297) hunks=3 -- second lookup: find inside the GFRandom argument / named weight reference first / inline GetPeriod helper
+10:24 00801920 grade r6k.cpp DIFFER(299v297) hunks=3 -- second lookup: find inside the GFRandom argument / named weight reference first / inline GetPeriod helper
+10:25 00801920 grade r6l.cpp RELOCATION_MATCH -- probe on the row: raw node member access / seed local first / const find body visible (CONSTFIND)
+10:25 00801920 grade r6k.cpp DIFFER(299v297) hunks=3 -- single view: r6k (GetPeriod helper / seed local / CONSTFIND body)
+10:25 00801920 grade r6m.cpp DIFFER(299v297) hunks=3 -- single view: r6m (GetPeriod helper / seed local / CONSTFIND body)
+10:25 00801920 grade r6n.cpp RELOCATION_MATCH -- single view: r6n (GetPeriod helper / seed local / CONSTFIND body)
+10:26 00801920 grade r6o.cpp DIFFER(297v297) hunks=1 -- no helper: r6o (end()!=find + named it / end()!=find + unnamed second / find!=end + unnamed second), CONSTFIND
+10:26 00801920 grade r6p.cpp DIFFER(297v297) hunks=1 -- no helper: r6p (end()!=find + named it / end()!=find + unnamed second / find!=end + unnamed second), CONSTFIND
+10:26 00801920 grade r6q.cpp RELOCATION_MATCH -- no helper: r6q (end()!=find + named it / end()!=find + unnamed second / find!=end + unnamed second), CONSTFIND
+10:26 00801920 grade 00801920.cpp RELOCATION_MATCH -- final src, strict headers
+10:29 00407cd0 grade r7a.cpp DIFFER(300v310) hunks=11 -- first port: new CActionInputControl header (inline IsSameActionAndButton / IsSameButton), profile manager opt-in; old.IsSame(control) / control.IsSame(old)
+10:29 00407cd0 grade r7b.cpp DIFFER(299v310) hunks=10 -- first port: new CActionInputControl header (inline IsSameActionAndButton / IsSameButton), profile manager opt-in; old.IsSame(control) / control.IsSame(old)
+10:29 00407cd0 grade r7a2.cpp DIFFER(309v310) hunks=10 -- old action read into a local before the same-test: old.IsSame(control) / control.IsSame(old)
+10:29 00407cd0 grade r7b2.cpp DIFFER(309v310) hunks=9 -- old action read into a local before the same-test: old.IsSame(control) / control.IsSame(old)
+10:31 00407cd0 grade r7c1.cpp DIFFER(330v310) hunks=13 -- IsSameActionAndButton body form: early returns / if-and then return IsSameButton / if-or return false
+10:31 00407cd0 grade r7c2.cpp DIFFER(346v310) hunks=14 -- IsSameActionAndButton body form: early returns / if-and then return IsSameButton / if-or return false
+10:31 00407cd0 grade r7c3.cpp DIFFER(346v310) hunks=14 -- IsSameActionAndButton body form: early returns / if-and then return IsSameButton / if-or return false
+10:31 00407cd0 grade r7c4.cpp DIFFER(309v310) hunks=6 -- probe on the row: flat same-test body (draft form, cases 1,2,3) / flat with cases 3,2,1
+10:31 00407cd0 grade r7c5.cpp DIFFER(309v310) hunks=6 -- probe on the row: flat same-test body (draft form, cases 1,2,3) / flat with cases 3,2,1
+10:32 00407cd0 grade r7d.cpp DIFFER(313v310) hunks=23 -- entry address: indexed call + reference after / old action first then reference / pointer local
+10:32 00407cd0 grade r7e.cpp DIFFER(309v310) hunks=6 -- entry address: indexed call + reference after / old action first then reference / pointer local
+10:32 00407cd0 grade r7f.cpp DIFFER(309v310) hunks=6 -- entry address: indexed call + reference after / old action first then reference / pointer local
+10:33 00407cd0 grade r7g.cpp DIFFER(309v310) hunks=6 -- GetDirection real body visible (noinline): as before / AssignedInputsPassive[i] spelled everywhere, no locals / reference only
+10:33 00407cd0 grade r7h.cpp RELOCATION_MATCH -- GetDirection real body visible (noinline): as before / AssignedInputsPassive[i] spelled everywhere, no locals / reference only
+10:33 00407cd0 grade r7j.cpp DIFFER(310v310) hunks=3 -- real nested bodies with the matched structure: r7j (&& chain + IsSameButton / if-or + return IsSameButton)
+10:33 00407cd0 grade r7k.cpp DIFFER(347v310) hunks=13 -- real nested bodies with the matched structure: r7k (&& chain + IsSameButton / if-or + return IsSameButton)
+10:33 00407cd0 grade r7l.cpp DIFFER(320v310) hunks=23 -- same-test written in the function body: r7l (flag true then cleared / flag from compares / flag true, cleared on any mismatch)
+10:33 00407cd0 grade r7m.cpp DIFFER(323v310) hunks=19 -- same-test written in the function body: r7m (flag true then cleared / flag from compares / flag true, cleared on any mismatch)
+10:33 00407cd0 grade r7n.cpp DIFFER(316v310) hunks=22 -- same-test written in the function body: r7n (flag true then cleared / flag from compares / flag true, cleared on any mismatch)
+10:34 00407cd0 grade r7o6.cpp DIFFER(310v310) hunks=3 -- nested real IsSameButton, outer forms: if-and return true / nested ifs / if-or-not return false
+10:34 00407cd0 grade r7o7.cpp DIFFER(310v310) hunks=3 -- nested real IsSameButton, outer forms: if-and return true / nested ifs / if-or-not return false
+10:34 00407cd0 grade r7o8.cpp DIFFER(310v310) hunks=3 -- nested real IsSameButton, outer forms: if-and return true / nested ifs / if-or-not return false
+10:34 00407cd0 grade r7p.cpp RELOCATION_MATCH -- file-local flat helper IsSameControl(entry, old): control dir != other dir / other dir != control dir
+10:35 00407cd0 grade 00407cd0.cpp RELOCATION_MATCH -- final src, strict headers, header cleaned (IsSameButton / IsSameActionAndButton declarations only)
+10:35 00878be0 grade 00878be0.cpp RELOCATION_MATCH -- final regression with the complete overlay (strict headers)
+10:35 00877720 grade 00877720.cpp RELOCATION_MATCH -- final regression with the complete overlay (strict headers)
+10:35 009e3b60 grade 009e3b60.cpp RELOCATION_MATCH -- final regression with the complete overlay (strict headers)
+10:35 00ad9770 grade 00ad9770.cpp RELOCATION_MATCH -- final regression with the complete overlay (strict headers)
+10:35 00bc2480 grade 00bc2480.cpp RELOCATION_MATCH -- final regression with the complete overlay (strict headers)
+10:35 00801920 grade 00801920.cpp RELOCATION_MATCH -- final regression with the complete overlay (strict headers)
+10:35 00407cd0 grade 00407cd0.cpp RELOCATION_MATCH -- final regression with the complete overlay (strict headers)
+handback: all 7 rows matched; 136 grade lines logged

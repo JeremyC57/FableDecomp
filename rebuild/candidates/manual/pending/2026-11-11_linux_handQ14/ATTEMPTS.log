@@ -1,0 +1,77 @@
+21:35 00a0c1b0 00a0c1b0.cpp DIFFER(158v152) asis-regrade
+21:35 00a0ca90 00a0ca90.cpp ERROR asis-regrade
+21:35 008ef200 008ef200.cpp DIFFER(223v231) asis-regrade
+21:35 00ac70f0 00ac70f0.cpp DIFFER(229v237) asis-regrade
+21:35 0083b6b0 0083b6b0.cpp DIFFER(308v309) asis-regrade
+21:35 0083dc80 0083dc80.cpp DIFFER(304v309) asis-regrade
+21:35 00837b30 00837b30.cpp DIFFER(309v314) asis-regrade
+21:35 00844740 00844740.cpp ERROR asis-regrade
+21:35 0066c900 0066c900.cpp ERROR asis-regrade
+21:35 008fa660 008fa660.cpp ERROR asis-regrade
+21:35 00876ca0 00876ca0.cpp DIFFER(360v368) asis-regrade
+21:35 00987040 00987040.cpp DIFFER(370v374) asis-regrade
+21:35 00b20ba0 00b20ba0.cpp ERROR asis-regrade
+21:35 00a898d0 00a898d0.cpp DIFFER(393v402) asis-regrade
+21:35 0092ea90 0092ea90.cpp ERROR asis-regrade
+21:35 0094fc00 0094fc00.cpp ERROR asis-regrade
+21:35 00b8ccf0 00b8ccf0.cpp ERROR asis-regrade
+21:35 008f45f0 008f45f0.cpp DIFFER(507v493) asis-regrade
+21:35 0091b570 0091b570.cpp DIFFER(499v498) asis-regrade
+21:35 00971cd0 00971cd0.cpp ERROR asis-regrade
+21:35 0085cbd0 0085cbd0.cpp ERROR asis-regrade
+21:35 007bca30 007bca30.cpp DIFFER(524v528) asis-regrade
+21:35 00bc6930 00bc6930.cpp DIFFER(522v530) asis-regrade
+21:35 0049c490 0049c490.cpp ERROR asis-regrade
+21:35 00a1e110 00a1e110.cpp DIFFER(596v601) asis-regrade
+21:35 0089ce70 0089ce70.cpp SRC_FAIL asis-regrade
+21:35 00650c1d 00650c1d.cpp DIFFER(643v635) asis-regrade
+21:35 00b08530 00b08530.cpp DIFFER(664v654) asis-regrade
+21:35 00b16aa0 00b16aa0.cpp DIFFER(673v681) asis-regrade
+21:35 00b80ce0 00b80ce0.cpp DIFFER(687v682) asis-regrade
+21:35 00a56270 00a56270.cpp DIFFER(720v693) asis-regrade
+21:35 00a58790 00a58790.cpp DIFFER(699v707) asis-regrade
+21:35 0098ecd0 0098ecd0.cpp DIFFER(777v786) asis-regrade
+21:35 0082a570 0082a570.cpp DIFFER(781v792) asis-regrade
+21:35 00a17f80 00a17f80.cpp DIFFER(818v818) asis-regrade
+21:35 007d04f0 007d04f0.cpp DIFFER(843v851) asis-regrade
+21:35 00950cf0 00950cf0.cpp ERROR asis-regrade
+21:35 006ebf70 006ebf70.cpp DIFFER(1022v1026) asis-regrade
+21:35 00936c70 00936c70.cpp ERROR asis-regrade
+21:35 00acd0e0 00acd0e0.cpp DIFFER(1048v1041) asis-regrade
+21:36 00a0c1b0 a0c1b0_v1.cpp SRC_FAIL shared hdr, right local before if
+21:36 00a0c1b0 a0c1b0_v1.cpp DIFFER(136v152) shared hdr, right local before if
+21:37 00a0c1b0 a0c1b0_v2.cpp SRC_FAIL free arm named right
+21:37 00a0c1b0 a0c1b0_v2.cpp DIFFER(158v152) free arm named right
+21:38 00a0c1b0 a0c1b0_v3.cpp DIFFER(158v152) RIGHT_COMPONENTS draft shape
+21:39 00a0ca90 a0ca90_v1.cpp DIFFER(172v187) shared header port of draft
+21:39 00a0ca90 a0ca90_v2.cpp DIFFER(172v187) digit + int*10f
+21:43 00ac70f0 ac70f0_v1.cpp DIFFER(229v237) shared hdr port
+21:43 00ac70f0 ac70f0_v2.cpp DIFFER(229v237) c23 AB*BC, E33 BB*AA
+21:45 00a58790 a58790_v1.cpp DIFFER(703v707) shared hdr, IsNonZero ZYX + GetSquaredMagnitude
+21:45 00a58790 a58790_v2.cpp DIFFER(703v707) SQUAREDMAGNITUDE_ZYX opt-in
+21:46 00a58790 a58790_v3.cpp DIFFER(699v707) named length_squared + a copy, running sums
+21:52 00987040 987040_v1.cpp DIFFER(370v374) shared hdr port, ternary return, Normalise().Dot
+21:54 008fa660 8fa660_v1.cpp DIFFER(356v366) shared hdr port (user copy ctor)
+21:54 008fa660 8fa660_v2.cpp DIFFER(386v366) assignment form first statement
+21:56 0049c490 0049c490.cpp DIFFER(573v583) asis-regrade-leaf
+21:56 0066c900 0066c900.cpp DIFFER(348v354) asis-regrade-leaf
+21:56 00844740 00844740.cpp DIFFER(342v350) asis-regrade-leaf
+21:56 0085cbd0 0085cbd0.cpp DIFFER(522v518) asis-regrade-leaf
+21:56 008fa660 008fa660.cpp DIFFER(356v366) asis-regrade-leaf
+21:56 0092ea90 0092ea90.cpp DIFFER(444v440) asis-regrade-leaf
+21:56 00936c70 00936c70.cpp DIFFER(1031v1037) asis-regrade-leaf
+21:56 0094fc00 0094fc00.cpp DIFFER(476v482) asis-regrade-leaf
+21:56 00950cf0 00950cf0.cpp DIFFER(892v886) asis-regrade-leaf
+21:56 00971cd0 00971cd0.cpp DIFFER(506v510) asis-regrade-leaf
+21:56 00b20ba0 00b20ba0.cpp DIFFER(397v391) asis-regrade-leaf
+21:56 00b8ccf0 00b8ccf0.cpp DIFFER(475v487) asis-regrade-leaf
+21:56 00a0ca90 00a0ca90.cpp DIFFER(172v187) asis-regrade-leaf
+21:58 0066c900 66c900_v1.cpp DIFFER(346v354) shared hdr port ZYX sums
+21:59 00a0c1b0 a0c1b0_v4.cpp DIFFER(158v152) shared hdr, draft shape default GetRight
+22:02 00876ca0 876ca0_v1.cpp RELOCATION_MATCH shared hdr port, divide-by-step return
+22:03 0083b6b0 83b6b0_m1.cpp DIFFER(296v309) probe: inline GetPosition(float) on local model
+22:05 00b80ce0 b80ce0_m1.cpp DIFFER(679v682) probe: header SetInverse + PostMultiply on local class
+22:05 00b80ce0 b80ce0_m2.cpp DIFFER(682v682) probe: SetInverse + PreMultiply(Last)
+22:06 00b80ce0 b80ce0_m3.cpp DIFFER(682v682) probe: PreMultiply natural l*a form
+22:07 00b80ce0 b80ce0_m4.cpp DIFFER(682v682) probe: PreMultiply all rows E1*l1+E3*l3+E2*l2
+22:07 00b80ce0 b80ce0_m5.cpp DIFFER(682v682) probe: E12/E13 rows E1*l1+E3*l3+E2*l2, rest header order

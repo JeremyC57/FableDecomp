@@ -73,6 +73,41 @@ public:
 #endif
     typedef std::vector<CThingGraphicArgPasser, std::allocator<CThingGraphicArgPasser> > ThingGraphicArgPassers;
     void ScreenFilterSetFlags(const ThingGraphicArgPassers& things, void* handle);   // 0x00881A40
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_PROCESSES
+// agentFAM05 (2026-11-11): the per-effect custom process interface and its three processes (Ego_r / FableWin
+// name sets: ??_EICustomProcessInterface@CScreenEffectPriorityStack@NScreenEffect@@, ?OnErase@CScreenFilterProcess@..@@UAEXPAUCStackEntry@23@@Z,
+// ?Process@..@@UAEXMPBUCStackEntry@23@@Z, ?ResetToDefault@..@@UAEXXZ; RTTI CDisplacementProcess / CRadialBlurProcess / CScreenFilterProcess :
+// ICustomProcessInterface). OnErase is slot 2 of each process vtable (agentFAM03 proof, re-verified by agentFAM05); the other slots'
+// order is not proven, so only leaf bodies may use these declarations. CStackEntry / CScreenFilterEntry as in the FULL branch (the
+// filter entry is the list element the filter stack erases; ?Reset@CScreenFilterEntry@..@@QAEXXZ is out of line at 0x00883AE0).
+    struct CStackEntry {
+        virtual ~CStackEntry();
+        long curdurationcount, durationcount;
+        bool fadingout;
+    };
+    struct CScreenFilterEntry : public CStackEntry {
+        void Reset();                                                    // 0x00883AE0
+    };
+    class ICustomProcessInterface {
+    public:
+        virtual ~ICustomProcessInterface();
+        virtual void Process(float, const CStackEntry*) = 0;
+        virtual void OnErase(CStackEntry*) = 0;                          // slot 2
+        virtual void ResetToDefault() = 0;
+    };
+    class CDisplacementProcess : public ICustomProcessInterface {
+    public:
+        virtual void OnErase(CStackEntry*);                              // slot 2 0x00882000
+    };
+    class CRadialBlurProcess : public ICustomProcessInterface {
+    public:
+        virtual void OnErase(CStackEntry*);                              // slot 2 0x008826E0
+    };
+    class CScreenFilterProcess : public ICustomProcessInterface {
+    public:
+        virtual void OnErase(CStackEntry*);                              // slot 2 0x00880F50
+    };
+#endif // FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_PROCESSES
 };
 }
 #endif // full original stack opt-in

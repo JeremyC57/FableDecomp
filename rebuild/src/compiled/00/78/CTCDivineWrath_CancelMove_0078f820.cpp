@@ -103,9 +103,10 @@ public:
     unsigned char    _pad00[0x78];
     CCreatureInfoMap LastFrameCreaturesHit;              // +0x78
 
-    void ResetCreatureHitState(CIntelligentPointer<CThingCreatureBase> creature);   // 0x0078E900
     void FinishMove();                                   // 0x0078F6E0
     void CancelMove();
+private:
+    void ResetCreatureHitState(CIntelligentPointer<CThingCreatureBase> creature);   // 0x0078E900 Ego_r/FableWin ?ResetCreatureHitState@CTCDivineWrath@@AAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z (private)
 };
 
 void CTCDivineWrath::CancelMove()

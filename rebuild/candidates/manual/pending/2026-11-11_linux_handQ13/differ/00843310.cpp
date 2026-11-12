@@ -1,0 +1,105 @@
+// CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended(CThingCreatureBase* owner, CThing* performTo, const CDefPointer<const CExpressionDef>& def, long itemDefIndex, bool emoteIconAdded, long extraData, unsigned long soundEffectID, long interruptionGroup) -- base CCreatureActionBase(owner, -1.0f, 0.0f, the owner's animation named by the expression def's AnimName string, zeroed sound, interruptionGroup, 0), copy the def and the members, then when performing to a thing swap in the targeted animation (TargetedAnimName if set, else the UntargetedAnimName) with SetAnimation(anim, -1.0f, 0.0f)
+// Grade: DIFFER(ours v retail) -- DIFFER(347v347) measured 2026-11-11 with FABLE_HDR_OVERLAY=agentQ13/hdr (no overlay header used): local-model probe: the base-ctor animation through the implicit CDefString -> CCharString conversion and the later one through GetCreature() with a CDefString local (sibling 0x008430B0's spelling) fix the prologue; left: the anim id loads into eax where retail uses edx, so the GetString hidden-pointer lea and the SetAnimation pushes schedule differently (0x00843400..0x00843451); not yet on shared headers (CCreatureAction_PerformExpressionExtended.h is flattened)
+// Q13: regraded as it sits (chunk Q13), not reworked.
+// Leaf: ??0CCreatureAction_PerformExpressionExtended@@QAE@PAUCThingCreatureBase@@PAUCThing@@ABUCDefPointer@@J_NJKJ@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00843310, length 347 bytes (+ int3 padding), `ret 20h`. Vtable 0x012744FC (RTTI:
+// CCreatureAction_PerformExpressionExtended; the manifest/PDB name "CCreatureAction_PerformExpression" is the base-class label).
+// Callees: CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable 0x013CA828 (CCharString by hidden pointer), the owner's
+// animation lookup by name @ 0x006924B0 (`__fastcall`), CCreatureActionBase::CCreatureActionBase @ 0x00693B30, ~CCharString @ 0x0099EAE0,
+// CBaseIntelligentPointer ctor @ 0x00A01B10 and SetPItem @ 0x00A01B90 (PPerformToThing, vtable 0x01238C6C), GetPItem @ 0x00A01B50,
+// CDefString::operator!=(const char*) const @ 0x005FA740 (the def's name handles at +0x54 and +0x44 against ""),
+// CCreatureActionBase::SetAnimation(CAnimationEntry*, float, float) @ 0x00693030.
+// Layout: retail CCreatureActionBase is 0xa8 bytes (the PDB header is 12 larger): PExpressionDef +0xa8, PPerformToThing +0xac,
+// ExpressionItemDefIndex +0xb4, EmoteIconAdded +0xb8, SoundEffectID +0xbc, ReplacedAction +0xc0 (false), ExtraData +0xc4.
+// Shape: the GetString temporary for the base argument lives in the dead `def` argument slot; the CDefPointer copy is the inline
+// add-ref; the animation id is a named long set in either branch of the if/else-if (an early return when neither name is set) and
+// the second GetString/lookup/SetAnimation sequence is shared.
+struct CCharString {
+    void* m_pData;
+    ~CCharString();                                    // 0x0099EAE0
+};
+struct CDefStringTable {
+    CCharString GetString(long id);                    // 0x009D49B0
+};
+extern CDefStringTable g_DefStringTable;              // 0x013CA828
+struct CDefString {                                    // 4-byte def-name handle
+    long m_tablePos;
+    bool operator!=(const char* text) const;           // 0x005FA740
+    operator CCharString() const { return g_DefStringTable.GetString(m_tablePos); }
+};
+struct CThingCreatureBase;
+struct CThing;
+struct CAnimationEntry;
+struct CSoundPair {
+    long FirstSound;
+    long LastSound;
+    CSoundPair() : FirstSound(0), LastSound(0) { }
+};
+CAnimationEntry* __fastcall GetRandomLoadedAnimation(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
+struct CExpressionDef {
+    virtual void v00();
+    long RefCount;                                     // +0x04
+    unsigned char _pad08[0x3c - 0x08];
+    CDefString AnimName;                               // +0x3c
+    unsigned char _pad40[0x44 - 0x40];
+    CDefString UntargetedAnimName;                     // +0x44
+    unsigned char _pad48[0x54 - 0x48];
+    CDefString TargetedAnimName;                       // +0x54
+};
+struct CDefPointer {                                   // CDefPointer<const CExpressionDef>
+    CExpressionDef* Object;
+    CDefPointer(const CDefPointer& other) : Object(other.Object)
+    {
+        if (Object)
+            ++Object->RefCount;
+    }
+    CExpressionDef* operator->() const { return Object; }
+};
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CThing* PItem;                                     // +4
+    CBaseIntelligentPointer();                         // 0x00A01B10
+    CThing* GetPItem() const;                          // 0x00A01B50
+    void SetPItem(CThing* item);                       // 0x00A01B90
+};
+struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+    CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+};
+struct CCreatureActionBase {                           // retail sizeof 0xa8
+    virtual void v00();
+    long _04;
+    CBaseIntelligentPointer PCreature;                 // +0x08
+    unsigned char _body[0xa8 - 0x10];
+    CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
+    CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
+    void SetAnimation(CAnimationEntry* animation, float a, float b);   // 0x00693030
+};
+struct CCreatureAction_PerformExpressionExtended : CCreatureActionBase {   // vtable 0x012744FC
+    CDefPointer              PExpressionDef;           // +0xa8
+    CIntelligentThingPointer PPerformToThing;          // +0xac
+    long                     ExpressionItemDefIndex;   // +0xb4
+    bool                     EmoteIconAdded;           // +0xb8
+    unsigned long            SoundEffectID;            // +0xbc
+    bool                     ReplacedAction;           // +0xc0
+    long                     ExtraData;                // +0xc4
+    CCreatureAction_PerformExpressionExtended(CThingCreatureBase* owner, CThing* performTo, const CDefPointer& def, long itemDefIndex,
+                                              bool emoteIconAdded, long extraData, unsigned long soundEffectID, long interruptionGroup);
+};
+
+CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended(CThingCreatureBase* owner, CThing* performTo,
+        const CDefPointer& def, long itemDefIndex, bool emoteIconAdded, long extraData, unsigned long soundEffectID, long interruptionGroup)
+    : CCreatureActionBase(owner, -1.0f, 0.0f, GetRandomLoadedAnimation(owner, def->AnimName), CSoundPair(), interruptionGroup, 0),
+      PExpressionDef(def), PPerformToThing(performTo), ExpressionItemDefIndex(itemDefIndex), EmoteIconAdded(emoteIconAdded),
+      SoundEffectID(soundEffectID), ReplacedAction(false), ExtraData(extraData)
+{
+    if (PPerformToThing.GetPItem()) {
+        CDefString animName;
+        if (PExpressionDef->TargetedAnimName != "")
+            animName = PExpressionDef->TargetedAnimName;
+        else if (PExpressionDef->UntargetedAnimName != "")
+            animName = PExpressionDef->UntargetedAnimName;
+        else
+            return;
+        SetAnimation(GetRandomLoadedAnimation(GetCreature(), animName), -1.0f, 0.0f);
+    }
+}

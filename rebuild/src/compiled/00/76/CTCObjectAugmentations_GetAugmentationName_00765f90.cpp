@@ -9,7 +9,7 @@
 // Callees: CGameDefinitionManager::Get() @ 0x0044C6B0, CDefinitionManager::GetDef<CThingBaseDef> @ 0x0042AF3C,
 //   CDefClassBase::GetSubDef<CAugmentationDef> @ 0x0042B248, NGameText::CDataBank::GetPGroupEntry(unsigned long, bool)
 //   const @ 0x009C9070 (the bank at CMainGameComponent::Get() 0x013B86A0 +0x14), the group entry's GetText() @ 0x009C7A40,
-//   CWideString::CWideString(const CWideString&) @ 0x0099B720 on g_CWideString_013bad98 (L"Missing augmentation name!",
+//   CWideString::CWideString(const CWideString&) @ 0x0099B720 on MISSING_AUGMENTATION_TEXT (was g_CWideString_013bad98) (L"Missing augmentation name!",
 //   dynamic initializer 0x0121EE90 / atexit 0x01229AD0).
 // Shape: the def lookups as GetDamageMultiplierFromAugmentationSet 0x007661C0 (GetDef's arguments pushed before Get(),
 //   each def-pointer local zeroed after its address is pushed, the thing def read once into edi); `if (Name > 0)`
@@ -26,7 +26,8 @@
 // bodies) onto the shared headers. 0x0042AF3C binds ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
 // (was the non-template ?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z) and 0x0042B248 binds
 // GetSubDef<CAugmentationDef> (was ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z). The text bank comes
-// through the inline CMainGameComponent::GetTextBank() (+0x14). g_CWideString_013bad98 keeps its established spelling (no name proven).
+// through the inline CMainGameComponent::GetTextBank() (+0x14). 0x013BAD98 is `anonymous namespace'::MISSING_AUGMENTATION_TEXT
+// (agentFAM09: Ego_r.pdb + FableWin.pdb dynamic-initializer names; was g_CWideString_013bad98).
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -56,7 +57,7 @@
 #include "engine/NGameText_CDataBank.h"
 #include "engine/CTCObjectAugmentations.h"
 
-extern CWideString g_CWideString_013bad98;       // 0x013BAD98 L"Missing augmentation name!"
+namespace { extern CWideString MISSING_AUGMENTATION_TEXT; }       // 0x013BAD98 L"Missing augmentation name!"
 
 CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long augmentation_def_index)
 {
@@ -66,5 +67,5 @@ CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long augmenta
     def->GetSubDef(&augmentation);
     if (augmentation->Name > 0)
         return CMainGameComponent::Get()->GetTextBank().GetPTextEntry(augmentation->Name, true)->GetText();
-    return g_CWideString_013bad98;
+    return MISSING_AUGMENTATION_TEXT;
 }

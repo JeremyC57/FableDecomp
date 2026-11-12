@@ -93,7 +93,7 @@ class CThing { public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
-    CTCBase* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const class CTCParamsBase* params);   // 0x004C9D60 (Ego_r.pdb; name fix NF21)
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     FABLE_FORCEINLINE bool LacksTC(long type) const
     {
@@ -260,7 +260,7 @@ void CCreatureActionBase::FrameUpdate()
         CThing* creature;
         while ((creature = ((CThing*)PCreature.GetPItem()))->LacksTC(0x8c)) {
             CCharString name("CTCHaste");
-            ((CThing*)PCreature.GetPItem())->AddTC(name, 0, 0);
+            ((CThing*)PCreature.GetPItem())->AddTC(name, false, 0);
         }
         CTCHaste* haste = (CTCHaste*)creature->m_interfaces.FindInline(0x8c);
         haste->Paused.Insert(SPausePair(this, 0));

@@ -10,11 +10,23 @@
 #include "rebuild_abi.h"
 
 class CDefPointeeBase;
+#ifdef FABLE_RETAIL_CTCHEROCENTRE_GETQUESTCARDS
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+#endif
 
 #pragma pack(push, 1)
 class CTCHeroCentre {
 public:
+#ifdef FABLE_RETAIL_CTCHEROCENTRE_GETQUESTCARDS
+    // Retail opt-in (chunk Q24, row 0x00622A00): FableWin.pdb ?GetQuestCards@CTCHeroCentre@@QBE_NAAV?$vector@V?$CIntelligentPointer@
+    // VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@Z (out of line at 0x0077DBC0, landed). Declaration only.
+    bool GetQuestCards(std::vector<CIntelligentPointer<CThing> >& cards) const;                  // 0x0077DBC0
+#endif
+#ifndef FABLE_RETAIL_CTCHEROCENTRE_VSLOTS
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
     CDefPointeeBase* PDef_Object;                            // +0x0c CDefPointer<CHeroCentreDef_const_>::Object
@@ -24,11 +36,20 @@ public:
     unsigned char    QuestCardPositions[0xc];                // +0x24 vector<C3DVector,std::allocator<C3DVector>_>
     bool             WaitingForTutorialToFinish;             // +0x30
     unsigned char    _pad_0x31[0x3];                         // +0x31
+#ifdef FABLE_RETAIL_CTCHEROCENTRE_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0077EB90
+public:
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCHeroCentre) == 0x34);
+#ifndef FABLE_RETAIL_CTCHEROCENTRE_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, PDef_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, CurrentGUIMode) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, FrameQuestCardListFrom) == 0x14);

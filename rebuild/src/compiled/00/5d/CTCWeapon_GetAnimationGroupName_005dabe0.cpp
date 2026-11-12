@@ -7,6 +7,10 @@
 // Shape: interface 0x47 (CTCCarryable, bitset word 2 bit 7 -> `mov cl,[eax+28h] ; test cl,cl ; jns`); a live carrier
 //        (Dead bit 0 of +0x91 clear) that fails IsUsableBy returns the global empty string, every other path returns the
 //        def's CCharString at +0x34 read straight through the CDefPointer (no add-ref).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BAF5C is the public static const CWeaponDef::TooHeavyAnimationGroupName ("TOO_HEAVY";
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWeaponDef::TooHeavyAnimationGroupName'', initializer 0x0121F610 landed by agentFAM09;
+//   Anniv360 ?TooHeavyAnimationGroupName@CWeaponDef@@2VCCharString@@B), declared on the row's CWeaponDef model; was g_emptyCharString
+//   (it is not empty: retail answers the too-heavy group while the carrier cannot use the weapon).
 // Layout: CTCWeapon ParentThing +0x04, WeaponDef +0x0C; retail CThing bitset +0x20, interface map +0x44, Dead +0x91.
 #include "fable_compiler.h"
 class CTCBase;
@@ -35,10 +39,10 @@ public:
     }
 };
 class CCharString { public: void* PStringData; };
-extern CCharString g_emptyCharString;            // 0x013BAF5C
 class CWeaponDef { public:
     unsigned char _pad_0x00[0x34];
     CCharString AnimationGroupName;              // +0x34
+    static const CCharString TooHeavyAnimationGroupName;   // 0x013BAF5C ?TooHeavyAnimationGroupName@CWeaponDef@@2VCCharString@@B ("TOO_HEAVY")
 };
 template <class T> class CDefPointer { public:
     T* Object;
@@ -63,7 +67,7 @@ const CCharString& CTCWeapon::GetAnimationGroupName() const
     if (ParentThing->GetInterface(&carryable, 0x47)) {
         CThing* carrier = ((CThing*)((CTCCarryable*)carryable)->GetPCarriedByThing());
         if (carrier && !(carrier->Flags91 & 1) && !IsUsableBy(carrier))
-            return g_emptyCharString;
+            return CWeaponDef::TooHeavyAnimationGroupName;
     }
     return WeaponDef->AnimationGroupName;
 }

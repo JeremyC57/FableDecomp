@@ -13,12 +13,8 @@
 // `return (a == b) ? true : false;` reproduces the retail `sete al` directly. RELOCATION_MATCH.
 #include "engine/CPixelFormat.h"
 
-struct CPixelFormatDescriptor {
-    long          ChannelType;      // +0x00 ; 6 == signed component format
-    unsigned char _rest[0x20];      // remaining 32 bytes of the 36-byte descriptor
-};
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local CPixelFormatDescriptor table g_PixelFormatDescriptors)
 
-extern CPixelFormatDescriptor g_PixelFormatDescriptors[];   // 0x0129BA44 (.rdata)
 
 struct CPixelFormat_Methods : CPixelFormat {
     bool IsSigned() const;
@@ -28,5 +24,5 @@ bool CPixelFormat_Methods::IsSigned() const
 {
     // `cmp mem,6 ; sete al` only comes out of the `?:` form; a bare `return x == 6;`
     // materialises the flag in a full register first (xor ecx,ecx ; sete cl ; mov al,cl).
-    return (g_PixelFormatDescriptors[this->FormatIndex].ChannelType == 6) ? true : false;
+    return (GD3DFormats[this->FormatIndex].PFType == 6) ? true : false;
 }

@@ -1,0 +1,18 @@
+address	name	module
+00405f00	GFIntToWideString	_global (?GFIntToWideString@@YI?AVCWideString@@J@Z: __fastcall, CWideString result, long argument; inline, this is its out-of-line copy)
+009d7cf0	insert_unique	std::_Rb_tree<CBankFileAsyncData*,CBankFileAsyncData*,std::_Identity<CBankFileAsyncData*>,std::less<CBankFileAsyncData*>,std::allocator<CBankFileAsyncData*> > (insert_unique(const V&), pair<iterator,bool> result)
+00be0bf0	insert_unique	std::_Rb_tree<long,std::pair<const long,CEngineStaticMapFileBlockManager::CFileBlock>,...> (insert_unique(const V&), called by AddRequest 0x00BE06B0 through map::insert)
+00be08e0	find	std::_Rb_tree<long,std::pair<const long,CEngineStaticMapFileBlockManager::CFileBlock>,...> (non-const find(const long&), hidden iterator result)
+009d5630	ChangeLoadingPriority	CBankFileAsyncData
+009d5410	FreeBuffer	CBankFileAsyncData
+009d6100	BeginReadDataAutoAlloc	CBankFileAsyncEntry
+00b936e0	CheckVisibilityResults	CEngineSceneGridCell
+00b92300	CreateOcclusionGroup	CEngineSceneGridCell
+0098b930	SetVSConstants	CShaderRenderManager
+00a058c0	RealiseRenderState	CRenderStateManager
+0099a2e0	~CBaseClass	CBaseClass
+00406610	GetManualSaveFileName	CUserProfileManager (const)
+009c95e0	GetTextBySymbol	NGameText::CDataBank
+01436e98	GPResourceManager	NEngineInternal (CEngineResourceManager*)
+01436e14	GPShaderRenderManager	NEngineInternal (CShaderRenderManager*)
+0139a728	g_HighLoadingPriority	_global (EThreadedFilePriority; reloc_bindings spelling)

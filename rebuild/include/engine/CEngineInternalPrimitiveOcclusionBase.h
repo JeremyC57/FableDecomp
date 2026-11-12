@@ -18,6 +18,14 @@ class CEngineInternalPrimitiveOcclusionBase:public CEngineInternalPrimitiveBase 
  CEngineInternalPrimitiveOcclusionBase(long type,unsigned long mask):CEngineInternalPrimitiveBase(type,mask){}
 #endif
  virtual ~CEngineInternalPrimitiveOcclusionBase();
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_RESETOCCLUSIONINFO
+ // Retail opt-in (chunk Q21, row 0x00B39080): the class's own virtual, Ego_r.pdb
+ // ?ResetOcclusionInfo@CEngineInternalPrimitiveOcclusionBase@@UAEXW4EEngineOcclusionLayer@@@Z = vtable 0x012A3ED4 slot 28 (0x00B90390),
+ // after the inherited GetAsOcclusionPrimitive (slot 27). It moves the mesh-base virtuals to retail's slots: PeekRenderInfoMeshBase
+ // 29, GetTransformFrameStart/End 30/31, CEngineInternalPrimitiveAnimatedMesh::CalcInterpolatedObjectTransform 33 (+0x84,
+ // 0x00B39151; vtable 0x012A79B4). Declaration only: no layout change.
+ virtual void ResetOcclusionInfo(EEngineOcclusionLayer layer);      // 0x00B90390
+#endif
  void SetupOcclusionInfo(EEngineOcclusionLayer layer){if(layer!=OCCLUSION_LAYER_NONE&&!(EnginePrimitiveFlags&0x4000)&&OcclusionInfo[layer].IsNull())OcclusionInfo[layer].Reset(new CEnginePrimitiveOcclusionInfo);}
  CEnginePrimitiveOcclusionInfo& GetOcclusionInfo(EEngineOcclusionLayer layer)const{return *OcclusionInfo[layer];}
  CIVCountedPointer<CEnginePrimitiveOcclusionInfo> OcclusionInfo[2];

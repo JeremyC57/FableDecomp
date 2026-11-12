@@ -9,6 +9,7 @@
 // advances to &PCreature; the new component rides in esi across the string destructor and is null-checked before the byte store
 // (the landed WaspQueenDiveAttack 0x008C4250 shape without the presence test).
 #include "fable_string.h"
+class CTCBase;
 class CTCParamsBase;
 class CTCHitOnCollision { public:                  // the component AddTC returns
     unsigned char _pad[0x19];
@@ -17,7 +18,7 @@ class CTCHitOnCollision { public:                  // the component AddTC return
 enum ETCInterfaceType { };
 class CThing { public:
     void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
-    CTCHitOnCollision* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -60,7 +61,7 @@ void CCreatureAction_WaspQueenLashOutAttack::Initialise()
     CTCHitOnCollision* pHit;
     {
         CCharString name("CTCHitOnCollision", -1);
-        pHit = PCreature.GetPItem()->AddTC(name, false, 0);
+        pHit = (CTCHitOnCollision*)PCreature.GetPItem()->AddTC(name, false, 0);
     }
     if (pHit)
         pHit->m_hitsObjects = 1;

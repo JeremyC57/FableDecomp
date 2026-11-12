@@ -19,7 +19,7 @@ class CInputManager {
 public:
     bool IsJoystickEventInQueue(long type, long device, CInputEvent* event, long player);   // 0x009F4C60
 };
-extern CInputManager* PInputManager;             // 0x013B8388
+extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 class CPlayer {
 public:
     long GetJoystickDeviceNumber() const;                  // 0x00487510 Ego_r/FableWin ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ (agentNF16: was GetPlayerNumber)
@@ -52,7 +52,7 @@ void CInputProcessCombat::ProcessInput(const CInputEvent& event, CProcessedInput
     if (m_lastJoystickFrame != CWorld::GetFrame()) {
         m_lastJoystickFrame = CWorld::GetFrame();
         CInputEvent joystickEvent;
-        if (PInputManager->IsJoystickEventInQueue(0x11, 0, &joystickEvent, MyPlayer->GetJoystickDeviceNumber()))
+        if (GPInputManager->IsJoystickEventInQueue(0x11, 0, &joystickEvent, MyPlayer->GetJoystickDeviceNumber()))
             m_joystickEvents.Push(joystickEvent);
     }
     ProcessCombatInput(event, processed);

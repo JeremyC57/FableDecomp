@@ -1,0 +1,93 @@
+address	old_catalog_name	reason
+0121f740	_static_init::g_CCharString_013bafcc	unknown: CCharString "%%%NULL" 0x013BAFCC; no PDB initializer name matches it in the TU run
+01219eb0	_static_init::g_CStatic_012288d0_012288d0	stand-in type: atexit-only CStatic; candidate CUserProfileManager::PClass (CCountedPointer), type not modelled
+0121a040	_static_init::g_CStatic_012289b0_012289b0	stand-in type: atexit-only; candidate GForcedStaticMapUpdateList (CArray<CCharString>), type not modelled
+0121a350	_static_init::g_CStatic_01228b30_01228b30	stand-in type: atexit-only; candidate CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, type not modelled
+0121a3a0	_static_init::g_CStatic_01228bb0_01228bb0	stand-in type: atexit-only; candidate CProgressDisplay::PFont, type not modelled
+0121a3b0	_static_init::g_CStatic_01228bf0_01228bf0	stand-in type: atexit-only; candidate CGameJoystickManager::PClass, type not modelled
+0121a420	_static_init::g_CStatic_01228c60_01228c60	stand-in type: atexit-only; candidate GOldAutoSaveProgressDisplay, type not modelled
+0121a430	_static_init::g_CStatic_01228ca0_01228ca0	stand-in type: atexit-only; candidate CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, type not modelled
+0121ae20	_static_init::g_CStatic_01229030_01229030	stand-in type: atexit-only; candidate CTCInventoryItem::MostRecentThingDef, type not modelled
+0121ae30	_static_init::g_CStatic_01229060_01229060	stand-in type: atexit-only; candidate CTCInventoryItem::MostRecentInventoryItemDef, type not modelled
+0121ae80	_static_init::g_CStatic_01229120_01229120	stand-in type: atexit-only; candidate CAnimationEntry::RegisteredComponentsByType, type not modelled
+0121dfb0	_static_init::g_CStatic_01229210_01229210	stand-in type: atexit-only; order ambiguous between two Ego_r candidates
+0121e000	_static_init::g_CStatic_00687180_013ba89c	stand-in type: candidate CTCBase::RegisteredTCs, type not modelled
+0121e0b0	_static_init::g_CStatic_01229340_01229340	stand-in type: atexit-only; order ambiguous
+0121e180	_static_init::g_CStatic_01229400_01229400	stand-in type: atexit-only; order ambiguous
+0121e3e0	_static_init::g_CStatic_012294f0_012294f0	stand-in type: atexit-only; candidate NSpeechGainManager::LayerCount, type not modelled
+0121e410	_static_init::g_CStatic_01229530_01229530	stand-in type: atexit-only; candidate NSpeechGainManager::LayerResponseTimes, type not modelled
+0121e440	_static_init::g_CStatic_01229560_01229560	stand-in type: atexit-only; unknown
+0121e450	_static_init::g_CStatic_012295a0_012295a0	stand-in type: atexit-only; unknown
+0121ec80	_static_init::g_CStatic_01229990_01229990	stand-in type: atexit-only; candidate NTCScriptedControl::CActionTalkBase::DefaultCameraTags, type not modelled
+0121ed70	_static_init::g_CStatic_01229a20_01229a20	stand-in type: atexit-only; candidate CTCCreatureModeManager::RegisteredModes, type not modelled
+0121ed80	_static_init::g_CStatic_01229a10_0122ffcc	stand-in type: atexit-only; candidate CTCCreatureModeManager::CModeBase::BaseFilter, type not modelled
+0121ee20	_static_init::g_CStatic_01229ab0_01229ab0	stand-in type: atexit-only; candidate CTCShapeManager::RegisteredInstantiations, type not modelled
+01223ee0	_static_init::g_CStatic_009f9f70_013c5a80	stand-in type: unknown object 0x013C5A80
+01223ef0	_static_init::g_CStatic_0122a660_0122a660	stand-in type: atexit-only; unknown
+01224070	_static_init::g_CStatic_0122a6c0_0122a6c0	stand-in type: atexit-only; candidate CTBaseSingleton<CFileInstaller>::PClass, type not modelled
+01224080	_static_init::g_CStatic_0122a700_0122a700	stand-in type: atexit-only; candidate CXMVPlayer::PlayerFont, type not modelled
+01224090	_static_init::g_CStatic_0122a740_0122a740	stand-in type: atexit-only; candidate CMovieSubtitles::PFont, type not modelled
+01224160	_static_init::g_CStatic_0122a830_0122a830	stand-in type: atexit-only; candidate CTBaseSingletonNoDefaultAlloc<CDriveManager>::PClass, type not modelled
+012241b0	_static_init::g_CStatic_0122a890_0122a890	stand-in type: atexit-only; candidate NProgressDisplay::PProgressDisplay, type not modelled
+012241c0	_static_init::g_CStatic_0122a900_0122a900	stand-in type: atexit-only; candidate CTBaseSingleton<CConsole>::PClass, type not modelled
+01224230	_static_init::g_CStatic_0122a960_0122a960	stand-in type: atexit-only; candidate CTBaseSingleton<CCodeSectionManager>::PClass, type not modelled
+01224240	_static_init::g_CStatic_0122a9a0_0122a9a0	stand-in type: atexit-only; candidate CMemoryAllocator::Deallocator, type not modelled
+01224290	_static_init::g_CStatic_0122aa00_0122aa00	stand-in type: atexit-only; candidate CPhysicsMesh::SingleInstanceCollisionSet, type not modelled
+012242a0	_static_init::g_CStatic_0122aa40_0122aa40	stand-in type: atexit-only; unknown
+01224310	_static_init::g_CStatic_0122aa80_0122aa80	stand-in type: atexit-only; candidate CSuspendableProcessMicrothread::ProcessStack, type not modelled
+012243c0	_static_init::g_CStatic_0122aab0_0122aab0	stand-in type: atexit-only; unknown
+01224420	_static_init::g_CStatic_0122aaf0_0122aaf0	stand-in type: atexit-only; unknown
+012244b0	_static_init::g_CStatic_0122ab70_0122ab70	stand-in type: atexit-only; unknown
+012244c0	_static_init::g_CStatic_0122abb0_0122abb0	stand-in type: atexit-only; unknown
+012244d0	_static_init::g_CStatic_0122abf0_0122abf0	stand-in type: atexit-only; unknown
+012244e0	_static_init::g_CStatic_0122ac30_0122ac30	stand-in type: atexit-only; unknown
+012248d0	_static_init::g_CStatic_0122ad80_0122ad80	stand-in type: atexit-only; unknown
+01224cd0	_static_init::g_CStatic_0122aeb0_0122aeb0	stand-in type: atexit-only; unknown
+0121a630	_static_init::g_CStatic_00a38500_013b8a54	stand-in type: candidate `anonymous namespace'::AttitudeSymbols (CCRCSymbolMap), class not modelled
+0121eca0	_static_init::g_CCharString_013bad28	unknown: default-constructed CCharString 0x013BAD28; no matching name in the TU run
+0121ef30	_static_init::g_CStatic_009e5200_013badb4	stand-in type: candidate DoorTypeSymbolMap (CSymbolMap), class not modelled in this row
+01223ce0	_static_init::g_CStatic_0098dd10_013bc444	stand-in type: candidate `anonymous namespace'::ShaderStats (CShaderStats), class not modelled
+01223d00	_static_init::g_CShaderRenderManager_013bc470	stand-in class: candidate CShaderRenderManager::SingletonInstance (private ?SingletonInstance@CShaderRenderManager@@0V1@A), not modelled
+01223d20	_static_init::g_CThreadedFileManager_013bc870	stand-in class: candidate CThreadedFile::Manager (?Manager@CThreadedFile@@0VCThreadedFileManager@@A), not modelled
+01224010	_static_init::g_CStatic_009a7ac0_013ca79c	stand-in type: candidate NBankFileManager::GBankFileManager (CBankFileManager), class not modelled
+01224b00	_static_init::g_CStatic_00c1c810_0143bafc	stand-in type: third-party library object (libpk), no PDB name
+01224b20	_static_init::g_CStatic_00c1c810_0143bb14	stand-in type: third-party library object (libpk), no PDB name
+01224b80	_static_init::g_CStatic_00c3c8a0_0143bc00	stand-in type: third-party library object (libpk), no PDB name
+01224ba0	_static_init::g_CStatic_00c3d7d0_0143bb58	stand-in type: third-party library object (libpk), no PDB name
+01224be0	_static_init::g_CStatic_00c5d0a0_0143bf88	stand-in type: third-party library object (libpk), no PDB name
+01224c00	_static_init::g_CStatic_00c5d0a0_0143bf68	stand-in type: third-party library object (libpk), no PDB name
+0121ee70	_static_init::g_CStatic_0099ec30_013bad94	stand-in type: candidate LEGACY_SHAPE_TYPE (a copy of CLOSED_STRING_NAME), built with stand-in type CStatic_0099ec30
+01224b60	_static_init::g_CStatic_00c0bfe0_0143bb3c	stand-in type: third-party library object (libpk), no PDB name
+0121a440	_static_init::g_list_013b8a24	list: candidate CThing::TCsToBeRemoved (list<pair<CIntelligentPointer<CThing>,CTCBase*>>), element type and class static not modelled
+0121a6d0	_static_init::g_list_013b8ad4	list: candidate NUISystem::CHoverable::GAlreadyHovered, not modelled
+0121e010	_static_init::g_list_013ba8ac	list: candidate CTCBase::GlobalUpdateTCs, not modelled
+0121e3f0	_static_init::g_list_013baba0	list: candidate NSpeechGainManager::ActiveDialogue, not modelled
+0121f3f0	_static_init::g_list_013baef8	list: candidate CTCAvoidRegionExit::ExitMarkers, not modelled
+0121f410	_static_init::g_list_013baefc	list: candidate CTCAvoidRegionExit::EntranceMarkers, not modelled
+0121f490	_static_init::g_list_013baf14	list: candidate CTCAISummon::AllSummonedCreatures, not modelled
+01221840	_static_init::g_list_013bb664	list: unknown
+01224320	_static_init::g_list_013d2834	list: candidate CNavigatorExternalInterface::AgentLists, not modelled
+0121ae40	_static_init::g_tree_013b8c1c	tree: candidate CAnimationEntry::RegisteredComponentsByToken, not modelled
+0121e030	_static_init::g_tree_013ba8bc	tree: candidate CCreatureActionBase::RegisteredActionEvents, not modelled
+0121e070	_static_init::g_tree_013ba8c8	tree: candidate CCreatureActionBase::RegisteredActions, not modelled
+0121f0e0	_static_init::g_tree_013bae2c	tree: unknown
+0121f120	_static_init::g_tree_013bae38	tree: unknown
+0121f160	_static_init::g_tree_013bae44	tree: unknown
+0121f1a0	_static_init::g_tree_013bae50	tree: unknown
+0121f1e0	_static_init::g_tree_013bae5c	tree: unknown
+0121f430	_static_init::g_tree_013baf00	tree: candidate CTCAvoidRegionExit::DistMap, not modelled
+0121f4f0	_static_init::g_tree_013baf2c	tree: candidate NHitLocations::CHitLocation::RegisteredHitLocationCodelets, not modelled
+0121f680	_static_init::g_tree_013bafa8	tree: unknown
+0121f6c0	_static_init::g_tree_013bafb4	tree: unknown
+0121f700	_static_init::g_tree_013bafc0	tree: unknown
+01223d40	_static_init::g_tree_013bca04	tree: candidate CAFile::DebugReadOnlyDrives, not modelled
+012240c0	_static_init::g_tree_013ca86c	tree: candidate NProfileTimer::ProfilingInfo, not modelled
+0121a110	_static_init::g_CStatic_01228a50_01228a50	stand-in type: atexit-only; candidate `error` (Ego_r name), type not modelled
+0121a360	_static_init::g_CStatic_01228b70_01228b70	stand-in type: atexit-only; candidate CPlayerGui::PGuiDef, type not modelled
+0121a8b5	_static_init::g_CStatic_01228f14_01228f14	stand-in type: atexit-only; candidate CTCInventory::ContextSensitivePreferredItems, type not modelled
+0121ae90	_static_init::g_CStatic_01229090_01229090	stand-in type: atexit-only; candidate CAnimationEntry::Defaults, type not modelled
+0121df10	_static_init::g_CStatic_01229190_01229190	stand-in type: atexit-only; order ambiguous
+01224c99	_static_init::g_CStatic_0122ae7e_0122ae7e	stand-in type: atexit-only; candidate pGlobalScriptDef, type not modelled
+0121ec90	_static_init::g_scaled_013bad24	unknown: long = FPS * 1 (0x013BAD24); no matching name in the TU run
+01224c30	_static_init::g_scaled_0143e8c4	unknown: float copy at 0x0143E8C4; no matching name proven
+01224c40	_static_init::g_scaled_0143e8c0	unknown: float copy at 0x0143E8C0; no matching name proven

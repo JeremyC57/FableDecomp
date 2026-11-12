@@ -17,6 +17,13 @@ class CThingCreatureBase;
 class CCreatureAction_ScorpionSummon : public CCombatActionBase {
 public:
     CCreatureAction_ScorpionSummon(CThingCreatureBase& creature, CThingCreatureBase& target);   // 0x008E46D0
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_CREATEBABIES
+    // Q19 opt-in (row 0x008C4FD0): Ego_r.pdb ?CreateBabies@CCreatureAction_ScorpionSummon@@AAEXXZ (private, out of line; called by the
+    // landed FinishAction 0x008C52B0). Declaration only.
+private:
+    void CreateBabies();                                                                      // 0x008C4FD0
+public:
+#endif
 };
 #else
 #pragma pack(push, 1)

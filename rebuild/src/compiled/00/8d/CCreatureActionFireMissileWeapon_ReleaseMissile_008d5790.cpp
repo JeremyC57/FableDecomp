@@ -198,7 +198,7 @@ template<class T>struct DefPointer {
 
 class CMeleeCombatAbilityDef:public NativeCountedDef { public:}; // borrowed native lifetime view, no definition fields accessed
 class CTCCarrying { public:
- void RemoveThing(CThing*); //006A19B0
+ void RemoveThing(CThing&); //006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
 public:
     CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
@@ -230,7 +230,7 @@ void CCreatureAction_FireMissileWeapon::ReleaseMissile(CThing** missileOut,CThin
   weapon->SetProjectileWeaponLoaded(false,0);
   *weaponOut=held;
   long slot=weapon->GetMissileLoadCarrySlot();
-  if(slot>=0){*missileOut=carrying->GetThingInCarrySlot(slot);if(*missileOut)carrying->RemoveThing(*missileOut);}
+  if(slot>=0){*missileOut=carrying->GetThingInCarrySlot(slot);if(*missileOut)carrying->RemoveThing(*(*missileOut));}
   CTCAnimatingObject* animation;
   if(held->GetInterface(&animation,131)){CCharString name("PROJECTILE_WEAPON_FIRE",-1);animation->PlayAnimation(name,5,false);}
   long shot=weapon->GetCreatedShotDefGlobalIndex();if(shot>=0)*shotOut=shot;

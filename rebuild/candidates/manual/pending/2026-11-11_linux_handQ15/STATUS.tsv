@@ -1,0 +1,25 @@
+address	name	grade	grades_used	note
+0092e130	CAIStateGroup_MinionSleep::IsRunnable	RELOCATION_MATCH	3	ported onto CAIStateGroup_GoToBed/MinionSleep/CTCSleep + expanded GetTC headers (fixed the this/CTCSleep register swap); two separate `return false` ifs for readiness and the base IsRunnable fix the return-block placement
+00713d50	NTCScriptedControl::CActionFollowCreature::SetAsSneaking	RELOCATION_MATCH	2	ported onto CTCScriptedControl::CActionBase (GetParentThing), expanded GetTC<T>, CTCStealth (new inline SetSneaking opt-in), new NTCScriptedControl_CActionFollowCreature.h: matched on the first grade of the port
+00738a80	CTCEntityEvents::GetEvent<const CEventHitBy, CFilter_Bind3<Melee, unary_negate<Blocked>, HitBy> >	DIFFER(177v177)	4	ported (retail CTCEntityEvents list, CCountedPointer, NEntityEvents headers, new CIsHitEventHitBy opt-in); Data/Info esi-edi swap left (c2prio Info 80 v Data 76)
+0090c900	CThingFilter_IsValidGossipee::operator()	DIFFER(345v345)	2	ported (new header, expanded PeekTC, GetHomeBuilding, GetPFaction); register swap fixed; one jne target (0x0090C952 -> second return-false copy) left
+00ac7cb0	QuadricOptimiserInternals::COptimisedPrimitive::GetFaceNormal	DIFFER(350v350)	4	ported (COptimisedPrimitive/QuadricOptimiserTypes/C3DVector); length fixed; IsNonZero sum order left
+0086b9d0	CRandomAppearanceMorph::GetRandomSkeletalMorph	DIFFER(389v389)	2	ported (CRandomAppearanceMorph, CVectorMap GetKeyList, GFRandom); same this/map ebp-ebx residue
+00ac7300	QuadricOptimiserInternals::COptimisedPrimitive::FindTextureTangent	DIFFER(1077v1091)	2	ported (C3DVector, COptimisedPrimitive); x87 tail scheduling residue unchanged
+00408820	CUserProfileManager::ResetAssignedInputsWASD	DIFFER(185v185)	1	regraded as-is; not ported (local model)
+0057aeb4	CTCHeroStats::GetFavouriteWeapon	DIFFER(427v427)	1	regraded as-is; not ported
+00644677	NPlayerGui::CDrawLetterBoxBlackBars::Draw	DIFFER(439v454)	1	regraded as-is; not ported
+0065c5bb	CTCVillage::UpdateMirroredCrimeData	DIFFER(421v421)	1	regraded as-is; not ported
+00726980	CTCPhysicsNavigator::PerformForcedMovement	DIFFER(609v595)	1	regraded as-is; not ported
+00774730	CTCShop::SellItem	DIFFER(419v419)	1	regraded as-is; not ported
+007ce7a0	CTCElectrocutedEffect::Reset	DIFFER(863v863)	2	regraded as-is (+ full leaf line); not ported
+007da640	CTCTavernGameCardBlackjack::GetBet	ERROR(leaf)	1	regraded as-is: draft leaf not in its object; not ported
+0083d2e0	CThingMarker::DrawPreparePrimitivesForRendering	DIFFER(356v372)	1	regraded as-is; not ported
+008bf500	CCreatureAction_GenericFireProjectileWeapon::FinishAction	DIFFER(412v412)	1	regraded as-is; not ported
+008cdd40	CCreatureAction_ReleaseTimeSpell::FinishAction	DIFFER(430v430)	1	regraded as-is; not ported
+009101c0	CAIStateGroup_MinionListenToStory::Update	ERROR(leaf)	2	local model declares Update QAE (PDB MAE); not ported
+00957db0	CAIStateGroup_MinionBehaviourCrowdBase::Update	DIFFER(266v266)	1	regraded as-is; not ported
+0095b820	CAIStateGroup_HoverHornetQueen::Spawn	DIFFER(445v445)	1	regraded as-is; not ported (draft has invented stand-ins)
+009faf70	CTexture::GenerateMipmapsWithGPU	DIFFER(407v407)	1	regraded as-is; not ported
+00acd960	QuadricOptimiserInternals::COptimisedPrimitive::Optimise	DIFFER(383v383)	1	regraded as-is; not ported (draft name SimplifyByVertexPairs is invented; PDB Optimise(float))
+00b81820	CEngineSimulationManager::FrameStart	DIFFER(433v433)	1	regraded as-is; not ported

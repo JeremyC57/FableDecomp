@@ -300,7 +300,7 @@ bool CDefLookup::GetTrollBattle(DefPointer<CTrollBattleDef>* out)const {
 }
 #pragma auto_inline(on)
 
-class CTCDExplosion { public:void AddImmuneThing(CThing*);}; //0080CBF0 pushes intelligent pointer to ImmuneThings native60 (PDB68)
+class CTCDExplosion { public:void SetThingAsImmune(CThing&);}; //0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z pushes intelligent pointer to ImmuneThings native60 (PDB68)
 CThing* __fastcall CreateExplosion(long,const C3DVector&); //0080C460
 class CCreatureAction_RockTrollFallToDeath:public CCombatActionBase { public:
     virtual ~CCreatureAction_RockTrollFallToDeath();
@@ -320,7 +320,7 @@ void CCreatureAction_RockTrollFallToDeath::FinishAction(){
  if(DefPointer<CDefLookup>(PCreature->PBaseDef)->GetTrollBattle(&battle)&&battle->FallDownExplosionIndex>0){
   CThing* explosion=CreateExplosion(battle->FallDownExplosionIndex,PCreature->GetPos());
   if(explosion&&(explosion->UsingComponents[2]&2)){
-   CTCDExplosion* driver=explosion->PTCDriver;driver->AddImmuneThing(PCreature);
+   CTCDExplosion* driver=explosion->PTCDriver;driver->SetThingAsImmune(*PCreature);
   }
  }
  CCombatActionBase::FinishAction();

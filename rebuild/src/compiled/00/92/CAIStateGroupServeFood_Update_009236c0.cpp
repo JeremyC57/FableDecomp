@@ -1,4 +1,5 @@
 // CAIStateGroup_ServeFood::Update() -- serve at a tavern table: mark the table's 0xB8 component occupied; state 1 walks to the table, makes a food object, puts it in the creature's carry slot (the food's CCarryableDef slot) and puts the tankard down, telling the table the food was served; state 2 walks to the table and, if the table's food for our task lives, takes it off the table, drops and destroys it and tells the table; then replace and terminate the state group
+// Leaf: ?Update@CAIStateGroup_ServeFood@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
@@ -26,69 +27,16 @@ class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-class CCarryableDef { public:
-    virtual void v00();
-    virtual void Destroy();                     // slot 1
-    long RefCount;                              // +0x04
-    unsigned char _pad08[0x28 - 0x08];
-    long CarrySlot;                             // +0x28
-};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    CDefPointer& operator=(const CDefPointer& other)
-    {
-        if (Object != other.Object) {
-            if (Object) {
-                if (--Object->RefCount == 0)
-                    Object->Destroy();
-                Object = 0;
-            }
-            Object = other.Object;
-            if (Object)
-                ++Object->RefCount;
-        }
-        return *this;
-    }
-};
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-class CDefinitionManager { public:
-    CDefPointer<CCarryableDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
-};
-class CDefClassBase { public:
-    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
-    virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
-    virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
-    virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
-    unsigned char _pad04[0x1c - 4];
-    CDefinitionManager* m_pManager;                   // +0x1c
-    bool GetSubDef(CDefPointer<CCarryableDef>* out);   // 0x005CC10E
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef<CCarryableDef> 0x005CC10E (the landed 0x00848500 copy): VC7.1 then knows the def
-// pointer's address does not escape, so the def stays in a register after the call.
-bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
-{
-    long* pIndex;
-    {
-        CCharString name("CCarryableDef");
-        pIndex = GetSubDefIndex(name);
-    }
-    if (pIndex) {
-        CDefPointer<CCarryableDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
-        *out = result;
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
@@ -132,11 +80,11 @@ class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject> (vtable 0x0125A858)
+struct CIntelligentPointerThingObject : CIntelligentPointer<CThingObject> {   // CIntelligentPointer<CThingObject> (vtable 0x0125A858); local CThing has no CBaseObject base, so the header (T*) ctor cannot be used
     virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerThingObject(CThingObject* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerThingObject(CThingObject* item) { SetPItem((CBaseObject*)item); }
 };
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThingObject& pointer);   // 0x0078B2A0
+template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // IS_THING_ALIVE<CIntelligentPointer<CThingObject> > 0x0078B2A0 (FableWin 0x01DE6D80)
 class CTCCarrying { public:                            // interface 0x46
     CThing* RemoveThingFromPrimarySlot(long flags);                     // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
@@ -205,9 +153,9 @@ void CAIStateGroup_ServeFood::Update()
             CThingObject* food = MakeFood(&PTable->GetPos(), PTable);
             CTCCarrying* carrying;
             GetCreature()->FindInterface(&carrying, 0x46);
-            CDefPointer<CCarryableDef> carryDef;
+            CDefPointer<const CCarryableDef> carryDef;
             food->m_pDef->GetSubDef(&carryDef);
-            carrying->PutThingInCarrySlot(*food, carryDef->CarrySlot, true);
+            carrying->PutThingInCarrySlot(*food, carryDef->ActiveCarrySlot, true);
             if (AIAction_PerformActionAndWait(CCreatureAction_PutDownTankard(GetCreature()), false) != 2)
                 break;
             table->NotifyFoodServed(TaskIndex, food);
@@ -222,7 +170,7 @@ void CAIStateGroup_ServeFood::Update()
                 CTCCarrying* carrying;
                 GetCreature()->GetInterface(&carrying, 0x46);
                 carrying->RemoveThingFromPrimarySlot(0);
-                if (IS_THING_ALIVE(food))
+                if (IS_THING_ALIVE<CIntelligentPointer<CThingObject> >(food))
                     ((CThing*)food.GetPItem())->Kill(true);
             }
             table->NotifyFoodServed(TaskIndex, 0);

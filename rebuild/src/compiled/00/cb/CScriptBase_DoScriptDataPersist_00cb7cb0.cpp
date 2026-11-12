@@ -44,7 +44,6 @@ class CPersistContext { public:                           // retail 0x2c bytes, 
     CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
                     const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #define FABLE_RETAIL_NSCRIPT
@@ -57,7 +56,7 @@ void CScriptBase::DoScriptDataPersist(CCharString& data, bool saving)
         OnPersist(context);
     }
     else {
-        CStringParser parser(data, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+        CStringParser parser(data, 0, CCharString("", -1), 0);
         CPersistContext context(parser, 0, true, 0, 0, &data);
         OnPersist(context);
     }

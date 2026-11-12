@@ -16,6 +16,7 @@
 #define CPlayer CPlayerDonor
 #include "engine/CPlayer.h"
 #undef CPlayer
+#include "engine/EPlayerMode.h"
 class CProcessedInput { public:
     void SetPriority(long priority);               // 0x00A0D330
 };
@@ -24,7 +25,7 @@ void __fastcall AddManualCameraEvent_0C(bool on, CProcessedInput& input);   // 0
 
 class CPlayer : public CPlayerDonor {
  public:
-    long GetCurrentMode();                         // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                         // 0x00633BE0
 };
 class CInputProcessMain { public:
     virtual void v00();

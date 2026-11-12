@@ -1,0 +1,26 @@
+address	status	binders_respelled	note
+00744430	done	3	self 0x00744430 renamed (was C_00744430::M) + binders 0x0093D800, 0x009576D0, 0x00935160 (00935160 ported to engine/CTCPerceiveThing.h via overlay opt-in FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS_CALLS)
+00658db3	done	3	binders 0x00658E73 (was ComputeB1, char), 0x0065C781, 0x00939060
+0097f3a0	done	1	self made protected (IAE) + binder 0x0095D200 (vtable 0x01237F1C now ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@)
+006621c0	done	5	self made const + binders 0x005BE119, 0x006E8400, 0x006EABB0, 0x0093C830, 0x0093D140
+0095a420	partial	3	self made protected + binders 0x0095B020, 0x0095B680, 0x0095C1F0; 0x0095A6C0 / 0x0095B6F0 reach it through the CQueenNative stand-in whose (long,float) signature differs from the PDB (long,EMovementType): rewrite, left
+0093bfa0	done	0	self made private const (ABE); no other landed binder
+009717a0	done	0	self ctor takes CThingCreatureBase&
+0095cb80	done	0	self ctor takes (CThingCreatureBase&, CThingCreatureBase&)
+005cc10e	partial	1	0x00705C30 respelled (const T GetSubDef member template); 19 binders left (local CDefPointer/CDefClassBase stand-ins, each needs a port to engine/CDefClassBase_GetSubDef.h); list in NOTES.md
+007fef40	done	0	self renamed CTCUserActionPointBase::SetActionPointAsFree(long) on fable_containers.h; 0x00440990 now binds STLport vector<long>::_M_insert_overflow; new test
+00f33dc0	done	1	0x00F33DC0 itself is BUSY (untouched); its free caller 0x00F33D90 renamed std::vector<CFireHeartPatternDef>::resize and binds ??0/??1CFireHeartPatternDef
+012c2ff4	done	3	0x00EF6E40, 0x00EF7AB0 (self-renamed ~CIsThingConscious), 0x00EF84D0 now bind ??_7CPredicateBase@NScript@@6B@ (0x00E241B0 already correct)
+012ea43c	done	1	0x00E8B020 binds ??_7CIsVariableFalse@NScript@@6B@ and CPredicate_And<CIsThingAlive,CIsVariableFalse>
+012fb358	done	1	0x00F263D0 self-renamed CArenaCreatureDef::CArenaCreatureDef, binds ??_7CArenaCreatureDef@@6B@
+012ccc50	partial	0	0x00D34EC0 (_Construct of CFireHeartPatternDef) left: needs the vector<bool> PadActive copy 0x00D34F00 modelled and no PDB _Construct spelling found
+012d3994	done	0	0x00D7C700 / 0x00D80BA0 already bind ??_7CQ_HeroSoulsArenaScript@NScript@@6B@
+012bf83c	done	1	0x00CAC9D0 -> static CMemAllocator::CreateInstance(IUnknown*,long*), binds ??_7CMemAllocator@@6BCUnknown@@@
+00cd4500	done	0	self CScriptDataBase::CScriptDataBase (FABLE_RETAIL_CSCRIPTDATABASE_CTOR)
+00cd4620	done	0	self NScript::CalextestData::CalextestData (overlay FABLE_RETAIL_NSCRIPT_DATA_CTOR)
+00cd4660	done	0	self NScript::CEmptyData::CEmptyData (overlay FABLE_RETAIL_NSCRIPT_DATA_CTOR)
+00cd46a0	done	0	self NScript::Cjoss_test_scriptsData::Cjoss_test_scriptsData (overlay FABLE_RETAIL_NSCRIPT_DATA_CTOR)
+00cd46e0	done	0	self NScript::CDanyalTestScriptsData::CDanyalTestScriptsData (overlay FABLE_RETAIL_NSCRIPT_DATA_CTOR)
+00cdbd70	done	0	self ??_GCQ_SunnyvaleMasterData@NScript@@UAEPAXI@Z
+00cdbd20	done	0	self NScript::CQ_SunnyvaleMasterData::Alloc (overlay FABLE_RETAIL_CQ_SUNNYVALEMASTERDATA_ALLOC)
+00caebb0	done	0	only free binders are funclets 0x012171E8 / 0x01217218, which include the BUSY 0x00CAF480 source (WATCH); nothing respelled

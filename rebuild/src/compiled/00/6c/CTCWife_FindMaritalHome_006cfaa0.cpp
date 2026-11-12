@@ -1,5 +1,5 @@
 // CTCWife::FindMaritalHome() const -- the wife's village (her own village membership, else the first thing found with a village component), then the first live building in it whose buyable house is owned by the player, not rented, not in use and has several dress levels; null when none
-// Leaf: FindMaritalHome
+// Leaf: ?FindMaritalHome@CTCWife@@ABEPAVCThingBuilding@@XZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CFAA0, length 348 bytes (plain `ret`, no frame pointer; Ego_r.pdb
 //   `?FindMaritalHome@CTCWife@@ABEPAVCThingBuilding@@XZ`).
@@ -103,6 +103,7 @@ protected:
 
 class CTCWife : public CTCBase { public:
     CThing* ParentThing;                        // +0x04
+private:
     CThingBuilding* FindMaritalHome() const;
 };
 

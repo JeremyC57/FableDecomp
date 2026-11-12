@@ -5,7 +5,7 @@
 // 0x004FF490), CCharString(const CCharString&) 0x0099EC30 / ~CCharString 0x0099EAE0,
 // GetDayOrNightOnlyStringFromFullSectionName 0x004AF350, Compare 0x00411570 (the landed body, auto_inline(off)),
 // the world's GetThingManager (slot 3, +0x0C), CThingManager::DeleteThingsWithSectionName 0x0051FC20.
-// Globals: g_DayOnlySuffix 0x013BAC18 "DayOnly", g_NightOnlySuffix 0x013BAC1C "NightOnly".
+// Globals: CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX 0x013BAC18 "DayOnly", g_NightOnlySuffix 0x013BAC1C "NightOnly".
 // Layout: engine/CQuestManager.h is the PDB layout (World +0xD8, DayActive +0xE8); retail sits 0x5C lower after its
 // narrower STLport containers (World +0x7C, DayActive +0x8C, NightActive +0x8D), hence a local model.
 // Shape: a local STLport set<CCharString> (the landed GetLoadableSections set model) walked with the inline
@@ -13,6 +13,9 @@
 // operator== VC folds both results straight into bl instead of retail's `xor al,al ; mov bl,al` / `inc al ; mov bl,al`.
 // Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the suffix globals are the public static consts of CTCDayOrNightOnlySupport (Ego_r.pdb +
+//   FableWin.pdb `dynamic initializer for 'CTCDayOrNightOnlySupport::...'', initializers landed by agentFAM09; Anniv360 @@2VCCharString@@B):
+//   0x013BAC18 CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX ("DayOnly", initializer 0x0121E5C0), was g_DayOnlySuffix.
 #define CQuestManager CQuestManagerDonor
 #include "engine/CQuestManager.h"
 #undef CQuestManager
@@ -58,7 +61,9 @@ class CCharString { public:
         return SameText(*other.PStringData);
     }
 };
-extern CCharString g_DayOnlySuffix;                  // 0x013BAC18 "DayOnly"
+class CTCDayOrNightOnlySupport { public:                   // the day/night-only suffix statics (class key V, both PDBs)
+    static const CCharString DAY_ONLY_SUFFIX;     // 0x013BAC18 ?DAY_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "DayOnly"
+};
 struct CSectionNode { unsigned char Color; CSectionNode* Parent; CSectionNode* Left; CSectionNode* Right; CCharString Value; };
 struct CSectionSet {                                 // STLport set<CCharString> (12 bytes)
     CSectionNode* Head;
@@ -127,7 +132,7 @@ void CQuestManager::UninitializeDaySection()
     BuildLoadSections(&sections);
     for (CSectionNode* node = sections.Head->Left; node != sections.Head; node = CSectionSet::Increment(node)) {
         CCharString section(node->Value);
-        bool dayOnly = GetDayOrNightOnlyStringFromFullSectionName(section) == g_DayOnlySuffix;
+        bool dayOnly = GetDayOrNightOnlyStringFromFullSectionName(section) == CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX;
         if (dayOnly)
             World->GetThingManager()->DeleteThingsWithSectionName(section);
     }

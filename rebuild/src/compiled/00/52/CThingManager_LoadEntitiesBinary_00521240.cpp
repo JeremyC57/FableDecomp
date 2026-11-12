@@ -280,10 +280,10 @@ namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 }
 extern unsigned long g_LoadTickInterval;                // 0x01375714
-extern CCharString g_CCharString_013bab08;              // 0x013BAB08 ("XXX_ALL")
 class CLevelLoader {
 public:
-    static CCharString __fastcall GetLoadAllSectionName() { return g_CCharString_013bab08; }
+    static CCharString LoadAllSectionName;                 // 0x013BAB08 ("XXX_ALL"; was g_CCharString_013bab08)
+    static CCharString __fastcall GetLoadAllSectionName() { return LoadAllSectionName; }
 };
 
 class CThingManager {

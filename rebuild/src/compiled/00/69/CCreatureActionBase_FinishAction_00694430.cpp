@@ -114,7 +114,7 @@ struct CThingVector {                       // vector<CThing*> over a malloc'd b
 };
 class CTCCarrying { public:                        // interface type 0x46
     void GetAllItems(CThingVector& items);  // 0x006A2220
-    void RemoveThing(CThing* thing);        // 0x006A19B0
+    void RemoveThing(CThing& thing);        // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
 };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
@@ -190,7 +190,7 @@ void CCreatureActionBase::FinishAction()
             carrying->GetAllItems(items);
             for (CThing** it = items._M_start; it != items._M_finish; ++it) {
                 if ((*it)->HasTC(0xfd)) {
-                    carrying->RemoveThing(*it);
+                    carrying->RemoveThing(*(*it));
                     (*it)->Kill(true);
                 }
             }

@@ -84,6 +84,7 @@ class CTCShop { public:
 
 class CTCBase { public:                             // the PDB base the accessor belongs to (its first virtual slot only: offset 0)
     virtual void v00();
+    virtual void OnInitialActivate();                       // 0x00686870 ?OnInitialActivate@CTCBase@@UAEXXZ (Ego_r; vtable slot 6)
 protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
 };
@@ -97,7 +98,6 @@ class CTCShopKeeper : public CTCBase { public:
     CIntelligentPointer<CThing> Shop;           // +0x14
     CTCShop* GetShopTC() const;                 // 0x00798F50
     CThing* GetCreature() const { return ParentThing; }
-    void CTCBase_OnInitialActivate();           // 0x00686870 (CTCBase::OnInitialActivate)
     void OnInitialActivate();
 };
 
@@ -122,5 +122,5 @@ void CTCShopKeeper::OnInitialActivate()
     }
     if (shop)
         shop->SetShopKeeper(ParentThing);
-    CTCBase_OnInitialActivate();
+    CTCBase::OnInitialActivate();
 }

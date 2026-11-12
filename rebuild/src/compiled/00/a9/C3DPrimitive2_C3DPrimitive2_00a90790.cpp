@@ -19,14 +19,17 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 class C3DClothPrimitive;
 class C3DMeshPartitionElement;
 struct CRetailAllocator { CRetailAllocator() {} };
-void __fastcall DestroyRange_CountedPointer_00a96940(CCountedPointer<C3DClothPrimitive>* first,
-    CCountedPointer<C3DClothPrimitive>* last, const CRetailAllocator& allocator);   // 0x00A96940
+namespace std {
+struct __false_type { __false_type() { } };
+template <class _ForwardIterator>
+void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x00A96940 (std::__destroy_aux<T*>)
+}
 
 inline void DestroyRange(unsigned short*, unsigned short*) {}
 inline void DestroyRange(unsigned long*, unsigned long*) {}
 inline void DestroyRange(CCountedPointer<C3DClothPrimitive>* first, CCountedPointer<C3DClothPrimitive>* last)
 {
-    DestroyRange_CountedPointer_00a96940(first, last, CRetailAllocator());
+    std::__destroy_aux(first, last, std::__false_type());
 }
 template<class T> class CArray { public:                        // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;

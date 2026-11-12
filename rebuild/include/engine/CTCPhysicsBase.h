@@ -214,6 +214,12 @@ public:
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING
     // Both raw donors: public non-virtual SetAsMoving(bool), native006b0130.
     void SetAsMoving(bool);
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+// Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
+public:
+void SetVelocity(const C3DVector& value){Velocity=value;SetAsMoving(true);}
+bool IsMoving()const{return Moving;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_COLLISION_RESPONSE
     float GetFriction() const {return PhysicsDef->Friction;}
@@ -244,6 +250,21 @@ public:
     const C3DVector& GetLastPosition() const { return OldPosition; }
 #endif
     CPhysicsMeshObject GetPhysicsMeshObject() const;
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
+// agentFAM04 (2026-11-11): Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ (public const, out of line in retail at 0x006AFE00: the
+// PhysicsDef Mass +0x38 read; CTCPhysicsStandard::EnableGravity 0x007235E0 calls it). Declaration only: no layout change.
+public:
+    float GetMass() const;                                             // 0x006AFE00
+#endif // FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
+// agentFAM04 (2026-11-11): the static right-handed set the base GetRHSet() / GetLastRHSet() return (0x006B1290 /
+// 0x006B12A0 `mov eax,0137F9B4h`, 0x006B1450 copies it): FableWin.pdb names its initializer `dynamic initializer for
+// 'CTCPhysicsBase::DummyRHSet'` (retail .data 0x0137F9B4 holds it statically: Up (0,0,1), Forward (0,1,0)). Access and
+// const-ness are not in either PDB extract (protected assumed, as the class data). Declaration only.
+protected:
+    static CRightHandedSet DummyRHSet;                                  // 0x0137F9B4
+public:
+#endif // FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_SEARCHTOOLS
     // Nested opt-in (chunk 758, row 0x00725B70 CTCPhysicsControlled::UpdateAdditionalImpulse): Ego_r.pdb
     // ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ, out of line in retail at 0x006AFD40 (`call PeekWorld
@@ -260,11 +281,32 @@ protected:
     CWorldMap& GetWorldMap();                                          // 0x006AF620
     const CWorldMap& GetWorldMap() const;                              // 0x006AF630
 #endif
+#if defined(FABLE_RETAIL_CTCPHYSICSBASE_SETVELOCITY_OUTOFLINE) && !(defined(FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING) && defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION))
+    // Retail opt-in (chunk Q20, rows 0x007BCF7F / 0x007BD845 InitMovement): Ego_r.pdb ?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+    // called out of line there (0x007BD188 `call 0x0066F9B0`, the landed body: store Velocity, then SetAsMoving(true)). Declaration
+    // only; the inline body under SETASMOVING + CTCSHOTDEFINITIONBASE_COLLISION is the 0x007C1000 TU's.
+public:
+    void SetVelocity(const C3DVector& velocity);                       // 0x0066F9B0
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_APPLYACCELERATION
     // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
     // (retail 0x006B0210, non-virtual). Declaration only: no layout change.
 public:
     void ApplyAcceleration(const C3DVector& acceleration);
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_CREATEPPHYSICSMESHINFO
+    // Chunk Q28 (row 0x006B05A0): Ego_r.pdb / FableWin.pdb ?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z
+    // (protected, non-virtual). Declaration only: no layout change.
+protected:
+    void CreatePPhysicsMeshInfo(const class CEngineGraphic& graphic);   // 0x006B05A0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_SETPHYSICSMESHINFOFROMGRAPHIC
+    // NF28 (2026-11-12, row 0x006B08E0): Ego_r.pdb 0x006ED880 / FableWin.pdb 0x02470D30
+    // ?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z (public, non-virtual), the 5-byte `jmp` onto
+    // CreatePPhysicsMeshInfo 0x006B05A0. Declaration only: no layout change.
+public:
+    void SetPhysicsMeshInfoFromGraphic(const class CEngineGraphic& graphic);   // 0x006B08E0
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
@@ -279,6 +321,9 @@ FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
 
 class CDefPointeeBase;
 
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
+class CRightHandedSet;
+#endif
 #pragma pack(push, 1)
 class CTCPhysicsBase {
 public:
@@ -298,6 +343,18 @@ public:
     float            Radius;                                 // +0x34
     CDefPointeeBase* PhysicsDef_Object;                      // +0x38 CDefPointer<CPhysicsDef_const_>::Object
     unsigned char    OldMoving[0x4];                         // +0x3c bitfield group: bool:1
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
+    // agentNF19: the same declaration as the retail branch's opt-in (Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ, 0x006AFE00),
+    // for rows on this layout view (0x007232E0 CTCPhysicsLight::OnCreate). Declaration only: no layout change.
+    float GetMass() const;                                   // 0x006AFE00
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_DUMMYRHSET
+    // agentNF19: the retail branch's static (FableWin.pdb `dynamic initializer for 'CTCPhysicsBase::DummyRHSet'`; access as
+    // that opt-in assumes), for rows on this layout view (0x006B1450 CTCPhysicsBase::GetRHSet). Declaration only.
+protected:
+    static CRightHandedSet DummyRHSet;                       // 0x0137F9B4
+public:
+#endif
 };
 #pragma pack(pop)
 

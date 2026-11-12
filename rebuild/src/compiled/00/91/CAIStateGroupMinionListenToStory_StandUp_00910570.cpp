@@ -24,7 +24,7 @@
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
-extern CCharString g_CCharString_013bb670;                  // 0x013BB670 "ST_STAND_UP_FROM_FLOOR"
+namespace { extern CCharString GET_UP_FROM_FLOOR_ANIM_NAME; }                  // 0x013BB670 "ST_STAND_UP_FROM_FLOOR"
 
 class CTCBase;
 
@@ -134,7 +134,7 @@ void CAIStateGroup_MinionListenToStory::StandUp()
     GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     if (modes->GetCurrentMode().GetType() == 10) {
         CBrainOutput output;
-        CCreatureAction_GetUpFromSitting action(*GetCreature(), g_CCharString_013bb670);
+        CCreatureAction_GetUpFromSitting action(*GetCreature(), GET_UP_FROM_FLOOR_ANIM_NAME);
         if (GetCreature()->IsFreeToPerformAction(action)) {
             output.SetAsPerformAction(action);
             PBrain->SetOutput(output);

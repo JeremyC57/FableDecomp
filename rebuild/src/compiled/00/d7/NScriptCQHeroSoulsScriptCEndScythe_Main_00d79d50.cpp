@@ -117,7 +117,6 @@ public:
 };
 }
 using NScript::CQ_HeroSoulsScript;
-extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -183,7 +182,7 @@ void NScript::CQ_HeroSoulsScript::CEndScythe::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                 face.Speak(Game->GetHero(), "TEXT_QST_B04_SCYTHE_ONTALK", (ETextGroupSelectionMethod)2, false, true, false);
                 while (face.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
@@ -208,7 +207,7 @@ void NScript::CQ_HeroSoulsScript::CEndScythe::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
+            if (Game->GetHealth(face.GetScriptThing()) > 0.0f) {
                 face.Speak(Game->GetHero(), "TEXT_QST_B04_SCYTHE_ONHIT", (ETextGroupSelectionMethod)2, false, true, false);
                 while (face.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();

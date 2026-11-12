@@ -6,6 +6,10 @@
 // Layout: engine/CDisplayEngine.h (PDB, fits the bytes): Engine3D +0x2c, InitialFadeReadynessCount +0xe8.
 // Shape: `--count == 0` inside the `> 0` test (the decremented value stored then tested), the count re-read for the second test;
 // the engine pointer is loaded and null-tested after esi is restored, the float result minus 1.0f stored to the global.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B89D8 GResetProgressTipText (global; initializer 0x0121A3E0), was g_progressTitle.
+//   0x013B89DC GResetProgressTipTitleText (global; initializer 0x0121A400), was g_progressText.
 #include "engine/CDisplayEngine.h"
 
 class CIEngine { public:
@@ -23,8 +27,8 @@ class CWideString { public:
 
 namespace NProgressDisplay { void __fastcall StopProgress(bool stopNow, bool keepScreen); }   // 0x009E9F20
 
-extern CWideString g_progressTitle;                // 0x013B89D8
-extern CWideString g_progressText;                 // 0x013B89DC
+extern CWideString GResetProgressTipText;                // 0x013B89D8
+extern CWideString GResetProgressTipTitleText;                 // 0x013B89DC
 extern float g_primitiveDrawDistanceScale;         // 0x013B8774
 
 struct CDisplayEngine_Methods : CDisplayEngine {
@@ -37,8 +41,8 @@ void CDisplayEngine_Methods::WorldUpdate()
     if (InitialFadeReadynessCount > 0) {
         if (--InitialFadeReadynessCount == 0) {
             NProgressDisplay::StopProgress(true, false);
-            g_progressTitle = (const unsigned short*)L"";
-            g_progressText = (const unsigned short*)L"";
+            GResetProgressTipText = (const unsigned short*)L"";
+            GResetProgressTipTitleText = (const unsigned short*)L"";
         }
     }
     if (InitialFadeReadynessCount > 0)

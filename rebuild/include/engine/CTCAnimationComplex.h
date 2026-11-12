@@ -25,6 +25,20 @@ public:
 #endif
 protected:
  CAnimateThing* PAnimation;
+#ifdef FABLE_RETAIL_CTCANIMATIONCOMPLEX_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0070B600
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCANIMATIONCOMPLEX_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void OnFrameUpdate();  // slot 31, 0x0070B480
+public:
+#endif // FABLE_RETAIL_CTCANIMATIONCOMPLEX_VSLOTS3
 };
 FABLE_STATIC_ASSERT(sizeof(CTCAnimationComplex)==16);
 #else
@@ -38,6 +52,13 @@ class CTCAnimationComplex : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ANIMATION; }
     CAnimateThing& GetAnimation();                           // 0x0070B460
+#ifdef FABLE_RETAIL_CTCANIMATIONCOMPLEX_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x0070B600
+public:
+#endif
 };
 #endif // FABLE_RETAIL_CTCANIMATIONCOMPLEX_FULL
 #endif // FABLE_ENGINE_CTCANIMATIONCOMPLEX_H

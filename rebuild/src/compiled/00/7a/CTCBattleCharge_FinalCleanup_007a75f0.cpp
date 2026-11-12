@@ -1,5 +1,6 @@
 // CTCBattleCharge::FinalCleanup() -- when the parent is alive: release its special-abilities lock if ability 12 (battle charge) is running, and unless the exit modes already ran resume an AI creature parent, drop creature mode 0x23 and end a player parent's special-move mode; finally kill the parent when it carries a CTCDestroyThingOnSpecialAbilityFinish (interface 0x109)
 // Leaf: ?FinalCleanup@CTCBattleCharge@@AAEXXZ
+// Respell (agentFAM10, 2026-11-12): the callee 0x00487150 was bound as ?EndSpecialMoveMode@CPlayer@@QAEXXZ; Ego_r.pdb and FableWin.pdb name it ?SpecialAbilityUnfreezeControls@CPlayer@@QAEXXZ (declared in engine/CPlayer.h under FABLE_RETAIL_PLAYER_FREEZECONTROLS).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A75F0, 243 bytes, thiscall, plain `ret`.
 // Identity (proven): Ego_r.pdb ?FinalCleanup@CTCBattleCharge@@AAEXXZ (private void()); its only references are the two
@@ -9,8 +10,8 @@
 //   CTCBattleCharge::FinalCleanup (it is OnRemove) and 0x007A7BD0 as vfunc_14 (OnKill); both are free-function forwarders.
 // Callees: CVectorMap LowerBound 0x0040F020 (inline GetInterface: 0xA7 CTCSpecialAbilities, 0x31 CTCCreatureModeManager),
 //   CThingAICreature::SuspendAI(bool, void*) 0x00833A10 (Ego_r.pdb), CTCCreatureModeManager::RemoveMode(unsigned long)
-//   0x0073ABA0, CThing::GetPlayer() 0x004C7A30 (Ego_r.pdb, CPlayer&), CPlayer::EndSpecialMoveMode() 0x00487150 (bound
-//   name; it removes player mode 0x12), CThing::Kill(bool) 0x004C9B80.
+//   0x0073ABA0, CThing::GetPlayer() 0x004C7A30 (Ego_r.pdb, CPlayer&), CPlayer::SpecialAbilityUnfreezeControls() 0x00487150 (Ego_r.pdb /
+//   FableWin.pdb; it removes player mode 0x12), CThing::Kill(bool) 0x004C9B80.
 // Layout: CTCBase ParentThing +4; CTCBattleCharge CompletedExitModes +0x90 (Ego_r +0x94 less the narrower PeopleHit
 //   vector); CThing State byte +0x10 (1 AI creature, 2 player creature), UsingComponents bitset +0x20 (bit 0x109 in the
 //   word at +0x40), interface map +0x44, dead bit +0x91; CTCSpecialAbilities AbilityMutexLock +0x0C, CurrentAbility +0x10.
@@ -24,10 +25,10 @@ class CTCBase;
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CPlayer {
-public:
-    void EndSpecialMoveMode();                          // 0x00487150
-};
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_REMOVEMODE
+#define FABLE_RETAIL_PLAYER_FREEZECONTROLS
+#include "engine/CPlayer.h"                             // agentFAM10: the shared CPlayer (SpecialAbilityUnfreezeControls 0x00487150)
 
 class CThingAICreature : public CThing {
 public:
@@ -70,7 +71,7 @@ void CTCBattleCharge::FinalCleanup()
             if (parent->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
                 modes->RemoveMode(0x23);
             if (!parent->IsDead() && parent->GetType() == 2)
-                parent->GetPlayer().EndSpecialMoveMode();
+                parent->GetPlayer().SpecialAbilityUnfreezeControls();
         }
     }
     if (parent->HasTC(TCI_DESTROY_THING_ON_SPECIAL_ABILITY_FINISH))

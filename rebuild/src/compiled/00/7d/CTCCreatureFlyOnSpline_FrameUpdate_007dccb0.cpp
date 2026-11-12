@@ -5,7 +5,7 @@
 // Grade: RELOCATION_MATCH -- the CrossProduct is the landed 0x007A1870 shape ((float)(double) per component through component pointers), which puts retail's Up.X fstp before the Forward.Y copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCCB0, 400 bytes (`ret`).
 // Callees: __ftol2 @ 0x00BFEA70, CCardinalSpline::GetSplinePosition(C3DVector*, float) @ 0x00A567A0 (twice), the physics
-// component's virtual slots 30 SetPosition (+0x78) and 75 SetRHSet (+0x12c, {up, forward}), C3DVector::Normalise() @ 0x00A14440.
+// component's virtual slots 30 SetPosition (+0x78) and 75 SetRHSet (+0x12c, {up, forward}), C3DVector::AccurateNormalise() @ 0x00A14440.
 // Globals: 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8, the epsilon 1e-4f @ 0x0129BA3C (variable, squared).
 // Layout: as the landed SetSpline 0x007DCFD0 (PSpline +0x0c, Progress +0x20, DeltaProgress +0x24, Looping +0x28; the thing's
 // physics component at +0x60).
@@ -20,7 +20,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                     // 0x00A14440 ?AccurateNormalise@C3DVector@@QAEAAV1@XZ
 };
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
@@ -85,7 +85,7 @@ void CTCCreatureFlyOnSpline::FrameUpdate()
     ParentThing->GetPhysicsTC()->SetPosition(pos);
     C3DVector dir = pos - lastPos;
     if (dir.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
-        dir.Normalise();
+        dir.AccurateNormalise();
         CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
         CRightHandedSet set(CrossProduct(C3DVector(dir.Y, -dir.X, 0.0f), dir), dir);
         physics->SetRHSet(set);

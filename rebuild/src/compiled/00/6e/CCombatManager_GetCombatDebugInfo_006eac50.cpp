@@ -19,9 +19,8 @@ namespace CombatDebug{
 #pragma pack(push,1)
 struct CBasicStringData{char*PData;unsigned StringLength,DataLength;bool UseFastExtend;int RefCount;};
 #pragma pack(pop)
-extern const char EmptyString[];
 } // (hoisted to global scope: naming wave 9)
-class CCharString{ public:CombatDebug::CBasicStringData*PData;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);const CCharString&operator=(const char*);FABLE_FORCEINLINE const char*c_str()const{return !PData?CombatDebug::EmptyString:PData->PData;}};
+class CCharString{ public:CombatDebug::CBasicStringData*PData;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);const CCharString&operator=(const char*);FABLE_FORCEINLINE const char*c_str()const{return !PData?"":PData->PData;}};
 namespace CombatDebug {
 struct C3DVector{float X,Y,Z;};
 namespace std{template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;FABLE_FORCEINLINE vector():_M_start(0),_M_finish(0),_M_end_of_storage(0){}vector(const vector&);FABLE_FORCEINLINE ~vector(){if(_M_start)free(_M_start);}};}

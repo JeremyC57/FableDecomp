@@ -1,0 +1,9 @@
+address	name	evidence
+00542780	?AddIcon@CIconText@NUISystem@@UAEXJJW4EIconFlags@2@@Z	chunk Q6 (landing ci): FableWin.pdb symbol; RELOCATION_MATCH with this signature (virtual, ret 0xc)
+007DDA30	?QueueSwoop@CTCCreatureFlyInCircles@@QAEXABVCThingCreatureBase@@ABVC3DVector@@11@Z	chunk Q6 (landing ci): FableWin.pdb symbol; RELOCATION_MATCH with this signature
+00912840	?AddRandomBezierCurveToPath@CAIStateGroup_FlyingThingBase@@IAE_NAAV?$deque@VCBezierCurve@@V?$allocator@VCBezierCurve@@@std@@@std@@@Z	chunk Q6 (landing ci): FableWin.pdb symbol; RELOCATION_MATCH with this signature
+00A66FD0	?ProcessMaintainedEventsFromEvent@CMouse@@IAEXPBVCInputEvent@@@Z	chunk Q6 (landing ci): FableWin.pdb symbol; RELOCATION_MATCH with this signature (protected, pointer parameter)
+00912700	?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z	chunk Q6 (landing ci): FableWin.pdb symbol; called by 0x00912840 with (const C3DVector&, float, C3DVector&, bool), const this
+004978A0	?GFFloatRandom@@YIMMPAK@Z	chunk Q6 (landing ci): FableWin.pdb symbol (__fastcall float(float range, unsigned long* seed)); call shape in 0x00912840
+00A03B40	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	chunk Q6 (landing ci): FableWin.pdb symbol; call shape in 0x00A66FD0 (manifest label "CWorld::DrawGetEnvironment" is propagated)
+00A04380	?GetMousePos@CInputEvent@@QBE?AVC2DVector@@XZ	chunk Q6 (landing ci): FableWin.pdb symbol; call shape in 0x00A66FD0 (manifest label "CMessageEventFilter_IsOriginatedByThing" is propagated)

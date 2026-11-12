@@ -83,24 +83,7 @@ public: virtual bool IsActionPointIndexBlocked(CThing&,C3DVector&,CRightHandedSe
 public: virtual ~CTCSingleUserActionPoints();
 public: CTCSingleUserActionPoints& operator=(const CTCSingleUserActionPoints&);
 };
-class CTCIdleScheduler : public CTCBase {
-public: static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_IDLE_SCHEDULER; }
-public: virtual ETCInterfaceType GetInterfaceType() const;
-public: static CTCBase* __fastcall Alloc(CThing&);
-public: static CCharString __fastcall StatGetClassTypeName();
-public: virtual CCharString GetClassTypeName() const;
-public: CTCIdleScheduler(CThing&);
-public: void RegisterIdleStateGroup(CAIStateGroupBase*,EIdleStateGroup);
-public: void ChooseNewIdle();
-public: bool IsPreferredIdle(CAIStateGroupBase*);
-public: void Clear();
-protected: std::map<enum EIdleStateGroup,CAIStateGroupBase *,std::less<enum EIdleStateGroup>,std::allocator<std::pair<enum EIdleStateGroup const ,CAIStateGroupBase *> > > IdleStates;
-protected: std::map<enum EIdleStateGroup,long,std::less<enum EIdleStateGroup>,std::allocator<std::pair<enum EIdleStateGroup const ,long> > > IdleStatesWeight;
-protected: EIdleStateGroup Preferred;
-protected: long FrameLastChecked;
-public: virtual ~CTCIdleScheduler();
-public: CTCIdleScheduler& operator=(const CTCIdleScheduler&);
-};
+#include "engine/CTCIdleScheduler.h"   // chunk F1: the class moved to its own header, text unchanged
 class CCreatureAction_GetUpFromSitting : public CCombatActionBase {
 public: CCreatureAction_GetUpFromSitting(CThingCreatureBase& owner,const CCharString& animName,long sittingMode,bool removeOnPerformAction) : CCombatActionBase(owner,50,
 #ifdef FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_SOUNDARG

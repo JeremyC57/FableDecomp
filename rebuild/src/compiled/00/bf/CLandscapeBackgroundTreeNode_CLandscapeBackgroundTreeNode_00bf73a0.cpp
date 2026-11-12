@@ -5,11 +5,10 @@
 class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
+//   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 struct CRequestOwner_00bf8c10 {                   // the owned object: a virtual deleting destructor in slot 0
     virtual ~CRequestOwner_00bf8c10();
 };
@@ -30,7 +29,7 @@ struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable: freed
         if (m_requested)
             m_pManager->ReleaseRequest(m_pRequest);
     }
-    static void operator delete(void* block) { g_pEngine_01436ea8->m_pLandscapeMemory->FreeVirtual(block); }
+    static void operator delete(void* block) { g_pLandscapeRenderer->MemoryManager->FreeVirtual(block); }
 };
 struct CPatch_00bf73a0 {
     virtual ~CPatch_00bf73a0();                    // slot 0: the deleting destructor

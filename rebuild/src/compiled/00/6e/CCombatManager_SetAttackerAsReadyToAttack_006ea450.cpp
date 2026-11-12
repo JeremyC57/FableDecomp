@@ -1,10 +1,10 @@
 // CCombatManager::SetAttackerAsReadyToAttack(const CThingCreatureBase& creature, bool keepSequence) -- for an attacking combatant, reload a carried projectile weapon (alive item with a CTCWeapon that is a projectile weapon), then reset its sequence unless told to keep it
-// Leaf: SetAttackerAsReadyToAttack
+// Leaf: ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA450, 238 bytes (240 with padding), `ret 8`.
 // Callees: the combatant map's find 0x006F0250 (twice), CVectorMap::LowerBound 0x0040F020 (inlined GetInterface for
 //   type 0x46 = CTCCarrying, bit 6 of +0x28, and 0x48 = CTCWeapon, bit 8 of +0x28), CTCCarrying::GetThingInPrimarySlot
-//   0x006A1440, CTCWeapon::IsProjectileWeapon 0x005DAA40, the weapon call 0x005DA4E0 (manifest "CGhostGrannySon::Init" is
+//   0x006A1440, CTCWeapon::IsProjectileWeapon 0x005DAA40, CTCWeapon::ResetAiming 0x005DA4E0 (manifest "CGhostGrannySon::Init" is
 //   propagated), CCombatManager::PerformSequenceReset 0x006EA2C0.
 // Layout: CCombatManager / UID map as the landed 0x006E9E40 (Combatants +0x10; value Parent +0, AttackerInfo.Attacked +4);
 //   the thing's interface bitset +0x20 / vector map +0x44 / dead bit +0x91 as the landed 0x0095D310.
@@ -48,7 +48,7 @@ public:
 };
 
 class CTCWeapon { public:                              // interface type 0x48
-    void ReadyProjectile();                     // 0x005DA4E0
+    void ResetAiming();                         // 0x005DA4E0 ?ResetAiming@CTCWeapon@@QAEXXZ (Ego_r + FableWin; was ReadyProjectile, agentNF25b)
 public:
     bool IsProjectileWeapon() const;   // 0x005DAA40
 };
@@ -100,7 +100,7 @@ void CCombatManager::SetAttackerAsReadyToAttack(const CThingCreatureBase& creatu
         CThing* item = carrying->GetThingInPrimarySlot();
         CTCWeapon* weapon;
         if (item && !(item->m_flags91 & 1) && item->GetInterface(&weapon, 0x48) && weapon->IsProjectileWeapon())
-            weapon->ReadyProjectile();
+            weapon->ResetAiming();
     }
     if (!keepSequence)
         PerformSequenceReset(attacker);

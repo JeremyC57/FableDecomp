@@ -1,0 +1,5 @@
+address	name	module
+00cd23b9	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	CScriptGameResourceObjectScriptedThingBase
+00958770	?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z	CAIStateGroup_MinionReactToCrime
+006821e0	?SetOpinionDeedMask@CTCCreatureOpinionOfHero@@QAEXJ@Z	CTCCreatureOpinionOfHero
+00bd2a90	?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z	CEngineInternalPrimitiveAnimatedMesh

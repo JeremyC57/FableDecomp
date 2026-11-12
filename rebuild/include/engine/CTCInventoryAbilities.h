@@ -173,6 +173,31 @@ private:
     long CurrentAssignedExpressionLevel;
     std::vector<long> ReceivedExpressionOrder;
     CVectorMap<long,long> ExpressionButtons;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x005FA3A2
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x005FA39F
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual override this declaration lacks, declaration only (no layout change; the vtable exists). Slot from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spelling from the Ego_r / FableWin name sets.
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005FA381
+public:
+#endif // FABLE_RETAIL_CTCINVENTORYABILITIES_VSLOTS3
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_HISCREEN
+// agentFAM13 (2026-11-12): the NHeroInformationScreens::CBase overrides this declaration lacks (the secondary vtable at +0x130,
+// slots 0 GetScreenName / 1 GetPlayerMode / 2 GetScreenType / 3 IsInventoryScreen, engine/NHeroInformationScreens_CBase.h);
+// spellings from the Ego_r / FableWin name sets. Declaration only (no layout change; the vtable exists).
+public:
+    virtual EPlayerMode GetPlayerMode() const;
+    virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+#endif // FABLE_RETAIL_CTCINVENTORYABILITIES_HISCREEN
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryAbilities)==0x1d8);
 #else // FABLE_RETAIL_CTCINVENTORYABILITIES

@@ -1,0 +1,64 @@
+006b05a0 grade 1 CTCPhysicsBase::CreatePPhysicsMeshInfo SRC_FAIL   -- port (+DEF_CLASS_BASE)
+006b05a0 grade 2 CTCPhysicsBase::CreatePPhysicsMeshInfo SRC_FAIL   -- port (+CWORLD/CMESHDATABANK opt-ins)
+006b05a0 grade 3 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(110v110)   -- port (+CBANKFILE_ENTRYQUERY)
+006b05a0 grade 4 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(110v110)   -- named index local
+006b05a0 grade 5 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(105v110)   -- pragma optimize s
+006b05a0 grade 6 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(110v110)   -- if/else-if tail instead of return
+006b05a0 grade 7 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(110v110)  /EHsc -- /EHsc
+006b05a0 grade 8 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(112v110)  /Oa -- /Oa
+006b05a0 grade 9 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(110v110)   -- def raw local
+006b05a0 grade 10 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(114v110)   -- pragma optimize y off (frame pointer)
+008031e0 grade 1 CTCTargetingPlayer::GetPBestThingForMeleeAttack SRC_FAIL   -- port onto CTCTargetingPlayer/CThing/CPlayer/CTCTargeted/CTCEnemy
+008031e0 grade 2 CTCTargetingPlayer::GetPBestThingForMeleeAttack SRC_FAIL   -- port (+CTHING, C3DVector)
+008031e0 grade 3 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(158v152)   -- port (+PLAYER)
+008031e0 grade 4 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(150v152)   -- !IsDead()
+008031e0 grade 5 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(152v152)   -- parent ref local in else block
+008031e0 grade 6 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(150v152)   -- parent ref local in inner block before the enemy test
+008031e0 grade 7 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(164v152)   -- early-return chain
+008031e0 grade 8 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(164v152)   -- early-return chain, != returns 0
+008031e0 grade 9 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(150v152)   -- early return for null/dead, nested rest
+008031e0 grade 10 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(150v152)   -- nested, separate early returns for targetable/smashable
+008031e0 grade 11 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(150v152)   -- + parent local before enemy test
+008031e0 grade 12 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(150v152)   -- *ParentThing direct
+008031e0 grade 13 CTCTargetingPlayer::GetPBestThingForMeleeAttack DIFFER(150v152)   -- bool result local
+008031e0 probe 1 does an inline 2-arg wrapper of AreThingsEnemies put the parent through ebx? -> no (same 150v152)
+009b00d0 grade 1 CParentDefClassBase::CParentDefClassBase::AddSubDef SRC_FAIL   -- port onto CParentDefClassBase/CVectorMap Insert+Update/GetCRC
+009b00d0 grade 2 CParentDefClassBase::CParentDefClassBase::AddSubDef RELOCATION_MATCH   -- port (+CSubDefInfo(long,long) ctor opt-in)
+008f70f0 grade 1 CMap::AddThemeDefIndexToPalette DIFFER(146v164)   -- port onto CMap THEMEPALETTE (no ZeroAll body)
+008f70f0 grade 2 CMap::AddThemeDefIndexToPalette DIFFER(146v164)   -- duplicated store tails
+008f70f0 grade 3 CMap::AddThemeDefIndexToPalette SRC_FAIL   -- + real ZeroAll body in TU (auto_inline off)
+008f70f0 grade 4 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- + real ZeroAll body in TU (+SCOPED_PTR)
+008f70f0 grade 5 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- nested single store, shared return index
+008f70f0 grade 6 CMap::AddThemeDefIndexToPalette DIFFER(149v164)   -- nested, store duplicated per arm
+008f70f0 grade 7 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- nested single store + non-const GetThemePaletteIndex (PDB IAEEK)
+008f70f0 grade 8 CMap::AddThemeDefIndexToPalette DIFFER(143v164)   -- nested, early store+return in first-free arm
+008f70f0 grade 9 CMap::AddThemeDefIndexToPalette DIFFER(149v164)   -- nested, separate variable for the after-zero search
+00997880 grade 1 NFile::GetItemFromPath RELOCATION_MATCH   -- landed CDriveManager twin body as NFile __fastcall
+00aeb790 grade 1 CParticleEmitterManager::Create2DEmitter SRC_FAIL   -- port onto CParticleEmitter/List/Manager/CCountedPointer headers
+00aeb790 grade 2 CParticleEmitterManager::Create2DEmitter DIFFER(198v171)   -- port (+BASE_OBJECT/CCHARSTRING/STLP_VECTOR)
+004be3e0 grade 1 CTCGraphicAppearance::IsResourcesLoaded RELOCATION_MATCH   -- port onto CTCGraphicAppearance header, GetAllMeshes + IsResourcesLoadedForMesh real bodies inline
+00a69b70 grade 1 CTextureManager::AllocateTexture DIFFER(149v176)   -- port onto CTextureManager/CManagedTexture/CIVCountedPointer Reset
+00a69b70 grade 2 CTextureManager::AllocateTexture DIFFER(170v176)   -- Reset forced inline (overlay opt-in)
+00a69b70 grade 3 CTextureManager::AllocateTexture DIFFER(170v176)   -- nested ifs
+00a69b70 grade 4 CTextureManager::AllocateTexture DIFFER(170v176)   -- pool ref local + data ref local
+00a69b70 grade 5 CTextureManager::AllocateTexture DIFFER(170v176)   -- Reset via CastToBase (FableWin private inline)
+00a69b70 grade 6 CTextureManager::AllocateTexture DIFFER(149v176)   -- RELEASE_INNER, natural inline Reset
+00aeb790 grade 3 CParticleEmitterManager::Create2DEmitter DIFFER(198v171)   -- database onto engine/CParticleEmitterDatabase.h (strict headers)
+009b00d0 grade 3 CParentDefClassBase::CParentDefClassBase::AddSubDef RELOCATION_MATCH   -- strict-headers regrade
+00997880 grade 2 NFile::GetItemFromPath RELOCATION_MATCH   -- strict-headers regrade
+004be3e0 grade 2 CTCGraphicAppearance::IsResourcesLoaded RELOCATION_MATCH   -- strict-headers regrade
+00aeb790 grade 4 CParticleEmitterManager::Create2DEmitter SRC_FAIL   -- real Insert body (landed 0x00AEB060) ported into the TU, out of line
+00aeb790 grade 5 CParticleEmitterManager::Create2DEmitter DIFFER(198v171)   -- real Insert body (landed 0x00AEB060) ported into the TU, out of line
+00aeb790 grade 6 CParticleEmitterManager::Create2DEmitter DIFFER(183v171)   -- + visible noinline CCountedPointer(T*) ctor (retail COMDAT 0x00AE9450 body)
+00aeb790 grade 7 CParticleEmitterManager::Create2DEmitter RELOCATION_MATCH   -- + implicit C3DOrientationInterpolator dtor (no vptr store)
+008f70f0 grade 10 CMap::AddThemeDefIndexToPalette DIFFER(138v164)   -- store guarded by if(index) after both searches, single return index
+008f70f0 grade 11 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- SetThemePaletteIndexUsed(true) (FableWin inline) for the used store
+008f70f0 grade 12 CMap::AddThemeDefIndexToPalette DIFFER(149v164)   -- per-arm stores, textually different (accessor in one arm) to stop early merging
+008f70f0 grade 13 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- FindUnused real body out of class in TU (auto-inline)
+008f70f0 grade 14 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- out-of-class FindUnused + flat early-return draft shape
+008f70f0 probe 1 does an &v[0] pointer for the first store split the IL tail? -> no: one IL join $L2769 after both paths, index*8 CSE (shl)
+008f70f0 probe 2 with separate IL tails (separate variable), does tail1 CSE the vector start into edi? -> no: tail1 reloads [esi+1A6C], cross-jumped at $L3050
+008f70f0 grade 15 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- iterator begin()+index for the def store
+008f70f0 grade 16 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- early return of the found index, then single store
+008f70f0 probe 3 does the QFE 13.10.4035 compiler (FABLE_VC71=$VC71_QFE) give retail's separate store tails? -> no, same 144v164
+008f70f0 grade 17 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- vector operator[] as _M_start[n] (overlay probe of the index form)

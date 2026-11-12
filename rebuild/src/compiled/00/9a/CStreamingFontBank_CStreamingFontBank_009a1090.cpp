@@ -11,7 +11,7 @@
 // Callees: operator delete[] 0x00BFEB1C (GlyphBankMemory), operator delete 0x00BFE9BC (glyphBankCache; PTexture after
 //   CTexture's inline dtor = Uninitialise 0x009F9F70, ?Uninitialise@CTexture@@QAEXXZ in both PDBs), ~CCharString 0x0099EAE0,
 //   ~CBaseClassNonCopyable 0x0099A300.
-// Globals (descriptive, no PDB data-symbol names): 0x013BDA50 = the 8 font-slot bank pointers indexed by fontIndex,
+// Globals: 0x013BDA50 = streamingFontBankList (Anniversary publics, anonymous namespace; FAM13), the 8 font-slot bank pointers indexed by fontIndex,
 //   0x013BDA70 = the 256 x 8 table of 16-byte glyph-cache entries whose first ushort carries the owning font slot in its low
 //   4 bits (cleared together with the second ushort). Ego_r's StreamingFontCacheEntry has a different layout (newer build),
 //   so the entry is modelled descriptively.
@@ -54,7 +54,8 @@ struct SStreamingGlyphCacheEntry_013bda70 {                                     
     unsigned short Glyph;
     unsigned long  Data[3];
 };
-extern CStreamingFontBank*       g_StreamingFontBanks_013bda50[8];                // 0x013BDA50
+namespace { extern CStreamingFontBank* streamingFontBankList[8]; }   // 0x013BDA50 (FAM13) Anniversary publics ?streamingFontBankList@?A0x..@@3PAPAVCStreamingFontBank@@A
+                                                                      // (the only CStreamingFontBank* array global, anonymous namespace of the font-bank TU)
 extern SStreamingGlyphCacheEntry_013bda70 g_StreamingGlyphCache_013bda70[256][8];          // 0x013BDA70
 class CStreamingFontBank : public CFontBank {                            // vtable 0x0129AB54
 public:
@@ -73,8 +74,8 @@ public:
 };
 CStreamingFontBank::~CStreamingFontBank()
 {
-    if (g_StreamingFontBanks_013bda50[fontIndex] == this)
-        g_StreamingFontBanks_013bda50[fontIndex] = 0;
+    if (streamingFontBankList[fontIndex] == this)
+        streamingFontBankList[fontIndex] = 0;
     SStreamingGlyphCacheEntry_013bda70* entry = &g_StreamingGlyphCache_013bda70[0][0];
     for (long i = 0; i < 256; ++i) {
         for (long j = 0; j < 8; ++j, ++entry) {

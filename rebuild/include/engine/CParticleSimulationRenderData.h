@@ -11,11 +11,19 @@
 #pragma pack(push, 1)
 class CParticleSimulationRenderData {
 public:
+#ifdef FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x00BB6330 CCountedPointer<CParticleSimulationRenderData>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CParticleSimulationRenderData();
+#else
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
+#endif
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CParticleSimulationRenderData) == 0x4);
+#ifndef FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CParticleSimulationRenderData, __vftable) == 0x0);
+#endif
 
 #endif // FABLE_ENGINE_CPARTICLESIMULATIONRENDERDATA_H

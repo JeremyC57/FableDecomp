@@ -1,7 +1,7 @@
 // NCreatureAction::CActionEventExplosion::Dispatch(const CCreatureActionBase&) -- resolve an effect point, create its thing, and add the source as an explosion exclusion
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +8.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail address 0x008717a0, 262 bytes. Captures SourceThing's appearance before the action helper-name callback; TC41 is CTCDExplosion and AddExcludedThing appends to ImmuneThings. PDB CThing uses UsingComponents/Components/PTCGraphicAppearance at +0x20/+0x48/+0x74; the local retail view adjusts Components to +0x44 and PTCGraphicAppearance to +0x64. CTCDExplosion::ImmuneThings is donor +0x68 and retail +0x60 after native vector widths differ.
+// Retail address 0x008717a0, 262 bytes. Captures SourceThing's appearance before the action helper-name callback; TC41 is CTCDExplosion and SetThingAsImmune appends to ImmuneThings. PDB CThing uses UsingComponents/Components/PTCGraphicAppearance at +0x20/+0x48/+0x74; the local retail view adjusts Components to +0x44 and PTCGraphicAppearance to +0x64. CTCDExplosion::ImmuneThings is donor +0x68 and retail +0x60 after native vector widths differ.
 // Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_string.h"
 #include "engine/CCreatureActionBase.h"
@@ -57,7 +57,7 @@ class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
 };
 class CTCDExplosion { public:
-    void AddExcludedThing(CThing* thing); // 0x0080CBF0
+    void SetThingAsImmune(CThing& thing); // 0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z
 };
 struct CActionEventExplosion {
     unsigned char _pad00[0x0c];
@@ -95,6 +95,6 @@ void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
                 found = components->end();
             explosion = (CTCDExplosion*)((void*)found->second);
         }
-        explosion->AddExcludedThing(SourceThing);
+        explosion->SetThingAsImmune(*SourceThing);
     }
 }

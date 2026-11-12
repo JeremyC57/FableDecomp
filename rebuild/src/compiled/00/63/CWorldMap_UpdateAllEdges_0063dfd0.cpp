@@ -24,7 +24,12 @@ class CMap
 public:
     bool IsPassableAt(const C2DCoordI& pos) const;                // 0x0081F3D0
     bool IsCameraPassableAt(const C2DCoordI& pos) const;          // 0x0081F460
-    void CopyPos(CMap& src, const C2DCoordI& srcPos, const C2DCoordI& dstPos); // 0x0081F240
+    friend class CWorldMap;
+protected:
+    // ?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z 0x0081F240 (Ego_r.pdb 0x00679E50 + FableWin.pdb 0x02238310: protected, const source map;
+    // CWorldMap reaches it as a friend). Name-fix pass 2026-11-12: was the public non-const CopyPos(CMap&, ...).
+    void CopyPos(const CMap& src, const C2DCoordI& srcPos, const C2DCoordI& dstPos); // 0x0081F240
+public:
     // theme/height TU callees (0x0063Axxx rows)
     float GetGroundSizeZAt(const C3DVector& localPos) const;      // 0x0081EA50
     float GetInterpolatedSizeZAt(const C3DVector& localPos) const; // 0x008200B0

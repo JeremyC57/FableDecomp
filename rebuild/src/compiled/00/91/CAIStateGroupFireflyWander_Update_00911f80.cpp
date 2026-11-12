@@ -119,7 +119,9 @@ struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {
     float MinHeightToKeepAboveGroundInFlight;   // +0x18
     float MaxHeightAboveGround;                 // +0x1c
     float FlightRange;                          // +0x20
-    bool GetRandomFlightPos(const C3DVector& centre, float range, C3DVector& out, bool flag) const;   // 0x00912700
+protected:
+    bool GetRandomFlightPos(const C3DVector& centre, float range, C3DVector& out, bool flag) const;   // 0x00912700 ?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z (Ego_r: protected const)
+public:
     void ExecuteFlyingPath(const C3DVector& destination);   // 0x009130D0
 };
 struct CAIStateGroup_FireflyWander : CAIStateGroup_FlyingThingBase {

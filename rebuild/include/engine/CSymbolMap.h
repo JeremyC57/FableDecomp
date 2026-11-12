@@ -18,6 +18,14 @@ class CSymbolMap : public CBaseClassNonCopyable {
 public:
     CSymbolMap();
     virtual ~CSymbolMap();
+#if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_CURRENTFILENAME)
+    // agentFAM09 opt-in (row 0x01224190, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CSymbolMap::CurrentFilename'' (default CWideString at 0x013CAA34, after the TU's GNullName); protected static per
+    // Anniv360 Test PDB (third source) ?CurrentFilename@CSymbolMap@@1VCWideString@@A. Static member: no layout change.
+protected:
+    static CWideString CurrentFilename;                                  // 0x013CAA34
+public:
+#endif
 #ifdef FABLE_RETAIL_CSYMBOLMAP
     // Chunk 740 (row 0x00B027D0 CPSCRenderMesh::DatabaseSerialise): the nested symbol record (Ego_r TPI CSymbolMap::CSymbolInfo,
     // 12 bytes: GroupName +0, EntryName +4, Val +8; FableWin.pdb mangles it `VCSymbolInfo@1@`, nested and class-keyed) and the
@@ -33,6 +41,13 @@ public:
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const;
     bool SymbolExists(const CCharString& name) const;
     long GetSymbolSLONG(const CCharString& name) const;
+#ifdef FABLE_RETAIL_CSYMBOLMAP_ADDSYMBOLDIRTY
+    // Nested opt-in (wf2, row 0x009ADC90 CDefinitionManager::InstantiateDef): Ego_r.pdb / FableWin.pdb
+    // ?AddSymbolDirty@CSymbolMap@@QAEXABVCCharString@@J@Z 0x009E5420 and ?AddSymbolDirty@CSymbolMap@@QAEXABVCCharString@@0J@Z
+    // 0x009E54E0 (group, entry, value), both out of line in retail (landed). Declarations only.
+    void AddSymbolDirty(const CCharString& name, long value);                                   // 0x009E5420
+    void AddSymbolDirty(const CCharString& group, const CCharString& name, long value);         // 0x009E54E0
+#endif
 #ifdef FABLE_RETAIL_CSYMBOLMAP_FINDSYMBOL
     // Nested opt-in (chunk 1020, row 0x009E81E0 via CPersistTraits<float>::TransferIn 0x0040F7E0): Ego_r.pdb / FableWin.pdb
     // ?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z = 0x009E5170 (Ego_r donor order GetSymbolSLONG 0x00B36AD0, FindSymbol 0x00B36B20,

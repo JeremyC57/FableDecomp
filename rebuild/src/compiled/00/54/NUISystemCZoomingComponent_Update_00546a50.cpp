@@ -32,7 +32,7 @@ class CChangingStateComponent : public CComponentRoot, public IComponentA, publi
     C2DVector Position;                            // +0x34
     C2DVector TargetPosition;                      // +0x3c
     unsigned char _body44[0x15c - 0x44];
-    void Update(float time);                       // 0x0052C7E0
+    virtual void Update(float time);               // 0x0052C7E0 ?Update@CChangingStateComponent@NUISystem@@UAEXM@Z (Ego_r: virtual, slot 1)
 };
 class CZoomingComponent : public CChangingStateComponent { public:
     unsigned char _body15c[0x178 - 0x15c];

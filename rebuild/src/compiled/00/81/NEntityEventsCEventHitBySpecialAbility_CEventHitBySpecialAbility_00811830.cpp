@@ -1,5 +1,7 @@
-// NEntityEvents::CEventHitBySpecialAbility::CEventHitBySpecialAbility(const CHitParameters& params, long ability) -- a hit event for a hero special ability: aggressive unless the ability's CHeroAbilityDef says otherwise
-// Leaf: ??0CEventHitBySpecialAbility
+// NEntityEvents::CEventHitBySpecialAbility::CEventHitBySpecialAbility(const CHitParameters& params, EHeroAbility ability) -- a hit event for a hero special ability: aggressive unless the ability's CHeroAbilityDef says otherwise
+// Leaf: ??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z
+// Name (agentNF22, Codex pass 21 queue): Ego_r.pdb + FableWin.pdb ??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z
+//   (the ability is the EHeroAbility enum, engine/EHeroAbility.h); it was spelled with a long.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00811830, 209 bytes (`ret 8`); vtable 0x012723F0
 // NEntityEvents::CEventHitBySpecialAbility.
 // Label: the catalog says CTCSinglePersonOccupiable::IsOfType (propagated); the vtable store is CEventHitBySpecialAbility's
@@ -35,9 +37,10 @@ template <class T> class CDefPointer { public:
     ~CDefPointer() { if (Object) Object->Release(); }
     typename CDefNonConst<T>::Type* operator->() const { return Object; }
 };
+#include "engine/EHeroAbility.h"
 class CHeroAbilityDef : public CDefBase { public:
     unsigned char _pad08[0x3c - 0x08];
-    long Ability;                                       // +0x3c EHeroAbility
+    EHeroAbility Ability;                               // +0x3c
     unsigned char _pad40[0x94 - 0x40];
     bool Aggressive;                                    // +0x94
 };
@@ -70,13 +73,13 @@ class CEventHitBase { public:
     CEventHitBase(const CHitParameters& params);        // 0x00811760
 };
 class CEventHitBySpecialAbility : public CEventHitBase { public:      // vtable 0x012723F0
-    long Ability;                                       // +0x10 EHeroAbility
+    EHeroAbility Ability;                               // +0x10
     bool Aggressive;                                    // +0x14
     virtual void v00();
-    CEventHitBySpecialAbility(const CHitParameters& params, long ability);
+    CEventHitBySpecialAbility(const CHitParameters& params, EHeroAbility ability);
 };
 
-CEventHitBySpecialAbility::CEventHitBySpecialAbility(const CHitParameters& params, long ability)
+CEventHitBySpecialAbility::CEventHitBySpecialAbility(const CHitParameters& params, EHeroAbility ability)
     : CEventHitBase(params), Ability(ability), Aggressive(true)
 {
     CDefinitionManager& manager = CGameDefinitionManager::Get();

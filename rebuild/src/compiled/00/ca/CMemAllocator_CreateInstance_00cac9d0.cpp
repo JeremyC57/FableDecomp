@@ -1,4 +1,9 @@
 // CMemAllocator::CreateInstance -- allocate DirectShow memory allocator, initialize lock/free-list/semaphore and buffer; retail00cac9d0 212bytes. Propagated engine label rejected: CUnknown00cacc80, criticalsection import0143fee4, CreateSemaphoreW0143fe54, vtables012bf83c/012bf810 match allocator destructor00caa410. This is no-RTTI strmbase; CMemAllocator owner inferred from allocator methods and buffer+60. No shared class header exists.
+// Leaf: ?CreateInstance@CMemAllocator@@SGPAVCUnknown@@PAUIUnknown@@PAJ@Z
+// Name fix (agentNF24, land1011de): the stand-ins CMemAllocatorNative / CBaseAllocatorNative / CUnknownAllocator respelled with the strmbase
+//   class names (vendor amfilter.cpp / combase.h): the static CMemAllocator::CreateInstance (was a free CreateInstance returning
+//   CMemAllocatorNative*), vtables 0x012BF83C / 0x012BF810 ??_7CMemAllocator@@6BCUnknown@@@ / ??_7CMemAllocator@@6BIMemAllocatorCallbackTemp@@@
+//   (agentFAM08, as the renamed ~CMemAllocator 0x00CAA410 binds them) and ??0CUnknown@@QAE@PBDPAUIUnknown@@@Z 0x00CACC80 (as 0x00CAC830 binds it).
 // Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?CreateInstance@CMemAllocator@@SGPAVCUnknown@@PAUIUnknown@@PAJ@Z -- 212 bytes verified against Fable.exe 0x00CAC9D0
 // Flags: /EHsc
 #include "fable_compiler.h"
@@ -20,10 +25,10 @@ struct __declspec(novtable) INonDelegatingUnknown {
  virtual unsigned long __stdcall NonDelegatingAddRef()=0;
  virtual unsigned long __stdcall NonDelegatingRelease()=0;
 };
-struct __declspec(novtable) CUnknownAllocator:INonDelegatingUnknown {
+class __declspec(novtable) CUnknown:public INonDelegatingUnknown { public:
  IUnknown* m_pUnknown;volatile long m_cRef;
- CUnknownAllocator(const char*,IUnknown*); //00cacc80
- virtual ~CUnknownAllocator();
+ CUnknown(const char*,IUnknown*); //00cacc80 (??0CUnknown@@QAE@PBDPAUIUnknown@@@Z, as the landed 0x00CAC830 binds it)
+ virtual ~CUnknown();
 };
 struct __declspec(novtable) IMemAllocatorCallbackTemp {
  virtual long __stdcall QueryInterface(const void*,void**)=0;
@@ -40,16 +45,17 @@ struct __declspec(novtable) IMemAllocatorCallbackTemp {
 };
 struct CCritSecAllocator {CRITICAL_SECTION_ m_CritSec;CCritSecAllocator(){InitializeCriticalSection(&m_CritSec);}};
 struct CAllocatorSampleList {void* First;long Count;CAllocatorSampleList():First(0),Count(0){}};
-struct __declspec(novtable) CBaseAllocatorNative:CUnknownAllocator,IMemAllocatorCallbackTemp,CCritSecAllocator {
+struct __declspec(novtable) CBaseAllocator:CUnknown,IMemAllocatorCallbackTemp,CCritSecAllocator {
  CAllocatorSampleList m_lFree;
  void* m_hSem;long m_lWaiting,m_lSize,m_lCount,m_lAllocated,m_lAlignment,m_lPrefix;
  long m_bChanged,m_bCommitted,m_bDecommitInProgress;
  void* m_pNotify;long m_fEnableReleaseCallback;
- FABLE_FORCEINLINE CBaseAllocatorNative(IUnknown* outer,long* result):CUnknownAllocator(0,outer),m_lFree(),m_hSem(0),m_lWaiting(0),m_lSize(0),m_lCount(0),m_lAllocated(0),m_lAlignment(0),m_lPrefix(0),m_bChanged(0),m_bCommitted(0),m_bDecommitInProgress(0),m_pNotify(0),m_fEnableReleaseCallback(1){m_hSem=CreateSemaphoreW(0,0,0x7fffffff,0);if(!m_hSem)*result=(long)0x8007000e;}
+ FABLE_FORCEINLINE CBaseAllocator(IUnknown* outer,long* result):CUnknown(0,outer),m_lFree(),m_hSem(0),m_lWaiting(0),m_lSize(0),m_lCount(0),m_lAllocated(0),m_lAlignment(0),m_lPrefix(0),m_bChanged(0),m_bCommitted(0),m_bDecommitInProgress(0),m_pNotify(0),m_fEnableReleaseCallback(1){m_hSem=CreateSemaphoreW(0,0,0x7fffffff,0);if(!m_hSem)*result=(long)0x8007000e;}
 };
-struct CMemAllocatorNative:CBaseAllocatorNative {
+struct CMemAllocator:CBaseAllocator {
  void* m_pBuffer;
- FABLE_FORCEINLINE CMemAllocatorNative(IUnknown* outer,long* result):CBaseAllocatorNative(outer,result),m_pBuffer(0){}
+ FABLE_FORCEINLINE CMemAllocator(IUnknown* outer,long* result):CBaseAllocator(outer,result),m_pBuffer(0){}
+ static CUnknown* __stdcall CreateInstance(IUnknown* outer,long* result);
  virtual long __stdcall NonDelegatingQueryInterface(const void*,void**);
  virtual unsigned long __stdcall NonDelegatingAddRef();
  virtual unsigned long __stdcall NonDelegatingRelease();
@@ -59,6 +65,6 @@ struct CMemAllocatorNative:CBaseAllocatorNative {
  virtual long __stdcall Commit();virtual long __stdcall Decommit();
  virtual long __stdcall GetBuffer(void**,const void*,const void*,unsigned long);virtual long __stdcall ReleaseBuffer(void*);
  virtual long __stdcall SetNotify(void*);virtual long __stdcall GetFreeCount(long*);
- virtual ~CMemAllocatorNative();
+ virtual ~CMemAllocator();
 };
-CMemAllocatorNative* __stdcall CreateInstance(IUnknown* outer,long* result){return new CMemAllocatorNative(outer,result);}
+CUnknown* __stdcall CMemAllocator::CreateInstance(IUnknown* outer,long* result){return new CMemAllocator(outer,result);}

@@ -24,6 +24,12 @@ public:
  virtual ~CSurface();
 #endif
  void Uninitialise();                                     // 0x009F2E20
+#ifdef FABLE_RETAIL_CSURFACE_READONLYLOCK
+ // Retail opt-in (chunk Q9, row 0x009F3010): Ego_r.pdb / FableWin.pdb ?ReadOnlyLock@CSurface@@QBE?AVCSurfaceLockedRect@@K@Z (hidden result,
+ // `ret 8`). Needs CSurfaceLockedRect complete (engine/CSurfaceLockedRect.h) before the include; GetDimensions comes from
+ // FABLE_RETAIL_CSURFACE_BITMAP. Declaration only.
+ CSurfaceLockedRect ReadOnlyLock(unsigned long flags) const;            // 0x009F3010
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_BITMAP
  // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
  // (0x00B46C70 = the landed retail 0x009F2F90, hidden result) and ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z
@@ -32,8 +38,26 @@ public:
  bool LoadFromBitmapFileToPreallocatedSurface(const class CWideString& filename, unsigned long filter);   // 0x009F2DD0
  // FableWin.pdb ?GetWidth@CSurface@@QBEKXZ / ?GetHeight@CSurface@@QBEKXZ (debug only, inline in release: Output 0x00494900 calls
  // GetDimensions 0x009F2F90 once per extent and keeps the one field). Needs C2DExtentsI complete before the include.
+#ifdef FABLE_RETAIL_CSURFACE_SIZE_OUTOFLINE
+ // Retail opt-in (agentNF20, 2026-11-11, rows 0x00415BD0 / 0x00415BF0): retail also keeps out-of-line copies (`sub esp,8 ; push
+ // the temporary ; call 0x009F2F90 ; mov eax,[eax] / [eax+4]`), Ego_r.pdb (0x00414F70 / 0x00414F90) + FableWin.pdb ?GetWidth@CSurface@@QBEKXZ / ?GetHeight@CSurface@@QBEKXZ;
+ // CMainGameComponent::AppReinitFunc 0x004167DA calls GetHeight 0x00415BF0. Declarations only; the rows define them.
+ unsigned long GetWidth() const;                          // 0x00415BD0
+ unsigned long GetHeight() const;                         // 0x00415BF0
+#else
+#ifdef FABLE_RETAIL_CSURFACE_GETWIDTH_FORCEINLINE
+ // Per-TU inline opt-in (agentNF20, 2026-11-11, row 0x004167DA CMainGameComponent::AppReinitFunc): the size-optimised TU expands
+ // GetWidth in place (its C2DExtentsI temporary keeps its own slot) while it calls the out-of-line GetHeight 0x00415BF0.
+ FABLE_FORCEINLINE
+#endif
  unsigned long GetWidth() const { return GetDimensions().X; }
+#ifdef FABLE_RETAIL_CSURFACE_GETHEIGHT_OUTOFLINE
+ // Per-TU opt-in (agentNF20, 2026-11-11, row 0x004167DA): the call to the out-of-line copy 0x00415BF0 (see SIZE_OUTOFLINE above).
+ unsigned long GetHeight() const;                         // 0x00415BF0
+#else
  unsigned long GetHeight() const { return GetDimensions().Y; }
+#endif
+#endif
 #endif
 #ifdef FABLE_RETAIL_CSURFACE_PIXELFORMAT
  // chunk 751 (row 0x009BEE40): Ego_r.pdb ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ (0x009F2F60, by value through the hidden
@@ -49,6 +73,13 @@ public:
   _D3DSURFACE_DESC desc;PD3DSurface->GetDesc(&desc);
   return GetPixelFormat().GetColourDepth()*desc.Width*desc.Height/8;
  }
+#endif
+#ifdef FABLE_RETAIL_CSURFACE_SWIZZLE
+ // Retail opt-in (agentNF20, 2026-11-11, rows 0x009F4330 / 0x009F4360): Ego_r.pdb (0x00B48030 / 0x00B48060, the order of retail) +
+ // FableWin.pdb ?Swizzle@CSurface@@QAEXK@Z / ?Unswizzle@CSurface@@QAEXK@Z; the PC bodies only lock (Lock 0x009F33E0) and Unlock.
+ // Needs FABLE_RETAIL_CSURFACE_CLEAR (Lock / Unlock). Declarations only.
+ void Swizzle(unsigned long lockFlags);                   // 0x009F4330
+ void Unswizzle(unsigned long lockFlags);                 // 0x009F4360
 #endif
 private:
  IDirect3DSurface9* PD3DSurface;

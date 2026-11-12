@@ -6,7 +6,7 @@
 // 0x004B2CA0, GetDayOrNightOnlyStringFromFullSectionName 0x004AF350 (on the node's value itself, no copy),
 // ~CCharString 0x0099EAE0, Compare 0x00411570 (the landed body, auto_inline(off)), the world's GetWorldMap (slot 12,
 // +0x30), CWorldMap::LoadThingsWithSectionNames 0x00500EB0 (its two arguments are pushed before the vcall).
-// Globals: g_DayOnlySuffix 0x013BAC18 "DayOnly".
+// Globals: CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX 0x013BAC18 "DayOnly".
 // Layout: engine/CQuestManager.h is the PDB layout (World +0xD8, DayActive +0xE8); retail sits 0x5C lower after its
 // narrower STLport containers (World +0x7C, DayActive +0x8C, NightActive +0x8D), hence the landed local model.
 // Shape: two local STLport set<CCharString> (the landed set model): the load sections, walked with the inline
@@ -14,6 +14,9 @@
 // operator== (SameText), whose `xor al,al ; mov bl,al` keeps `this` spilled and reloaded after the loop.
 // Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the suffix globals are the public static consts of CTCDayOrNightOnlySupport (Ego_r.pdb +
+//   FableWin.pdb `dynamic initializer for 'CTCDayOrNightOnlySupport::...'', initializers landed by agentFAM09; Anniv360 @@2VCCharString@@B):
+//   0x013BAC18 CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX ("DayOnly", initializer 0x0121E5C0), was g_DayOnlySuffix.
 #define CQuestManager CQuestManagerDonor
 #include "engine/CQuestManager.h"
 #undef CQuestManager
@@ -59,7 +62,9 @@ class CCharString { public:
         return SameText(*other.PStringData);
     }
 };
-extern CCharString g_DayOnlySuffix;                  // 0x013BAC18 "DayOnly"
+class CTCDayOrNightOnlySupport { public:                   // the day/night-only suffix statics (class key V, both PDBs)
+    static const CCharString DAY_ONLY_SUFFIX;     // 0x013BAC18 ?DAY_ONLY_SUFFIX@CTCDayOrNightOnlySupport@@2VCCharString@@B "DayOnly"
+};
 struct CSectionNode { unsigned char Color; CSectionNode* Parent; CSectionNode* Left; CSectionNode* Right; CCharString Value; };
 struct CSectionInsertResult { CSectionNode* Position; bool Inserted; CSectionInsertResult() {} };
 struct CSectionSet {                                 // STLport set<CCharString> (12 bytes)
@@ -132,7 +137,7 @@ void CQuestManager::InitializeDaySection()
     BuildLoadSections(&sections);
     CSectionSet daySections;
     for (CSectionNode* node = sections.Head->Left; node != sections.Head; node = CSectionSet::Increment(node)) {
-        bool dayOnly = GetDayOrNightOnlyStringFromFullSectionName(node->Value) == g_DayOnlySuffix;
+        bool dayOnly = GetDayOrNightOnlyStringFromFullSectionName(node->Value) == CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX;
         if (dayOnly)
             daySections.Insert(node->Value);
     }

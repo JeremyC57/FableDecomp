@@ -18,6 +18,14 @@ class CEngineScene;
 class CEngineInit;
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDSTATICMESH
+    // Opt-in (wf1 row 0x00BFA920): Ego_r.pdb / FableWin.pdb
+    // ?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z
+    // 0x00B32F20 (declaration only; no layout change).
+    class CEnginePrimitiveHandle AddStaticMesh(const class C3DMeshInfo*, const class C3DMeshInfo*, const class CMatrix3x4&, float,
+                                               const class CEngineFadeDistance&, long, const class CRGBColour&, long, float, bool,
+                                               unsigned long);
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
     bool GetBlockOnLoad() const {return BlockOnLoad;}
 #endif
@@ -77,6 +85,14 @@ class CEnginePrimitiveOcclusionGroupManager;
 #pragma pack(push, 1)
 class CEnginePrimitiveRenderer {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDSTATICMESH
+    // Opt-in (wf1 row 0x00BFA920): Ego_r.pdb / FableWin.pdb
+    // ?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z
+    // 0x00B32F20 (declaration only; no layout change).
+    class CEnginePrimitiveHandle AddStaticMesh(const class C3DMeshInfo*, const class C3DMeshInfo*, const class CMatrix3x4&, float,
+                                               const class CEngineFadeDistance&, long, const class CRGBColour&, long, float, bool,
+                                               unsigned long);
+#endif
     void*                                            __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                    _pad_0x04[0x4]; // +0x04
     unsigned char                                    _pad_0x08[0x4]; // +0x08

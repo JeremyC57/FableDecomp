@@ -1,3 +1,4 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_C3DVECTOR_H
 #define FABLE_ENGINE_C3DVECTOR_H
 #include "fable_compiler.h"
@@ -11,7 +12,10 @@
 #define FABLE_VECTOR_INLINE inline
 #endif
 #include <math.h>
-#if defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+#include "engine/GFAngles.h"
+#endif
+#if (defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) || defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D)) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
 inline float FABLE_FASTCALL GFFastSqrt(float value){return sqrt(value);}
 #endif
 #include "engine/C2DCoordI.h"
@@ -24,7 +28,22 @@ extern const float DELTA_NOTIONAL_ZERO;                                 // 0x012
 // exponent (0x17C - e) / 2, the 128-entry mantissa table 0x013CE558, one Newton step with 3.0f / 0.5f), the body the landed
 // 0x007AF0F0 / 0x006B3030 rows model locally.
 extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013CE558
-#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN
+#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_GROUPED
+// Retail opt-in (chunk Q8, row 0x006A4FB0 CThingPhysical::GetFirstCollision): the same body with the Newton step fully grouped,
+// `((3.0f-((r*r)*value))*r)*0.5f`. Same instructions; the three extra no-code PAREN tuples move VC7.1's scheduling-region cut so
+// that the epilogue pops interleave with the final Normalise as retail does (0x006A51F1 `pop edi` ahead of `fmul [eax]`, `pop
+// esi / pop ebp / pop ebx` ahead of its `fstp`). Body only: default path unchanged.
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return ((3.0f-((r*r)*value))*r)*0.5f;}
+#elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_SQUARE_PAREN)
+// Q19 opt-in (rows 0x0079B6F0 CTCSummonSpell::ResetMinionPos, 0x00837220 CThingTrackNode::UpdateFacingDirection): the same body with
+// the Newton step's square and product parenthesised, `(3.0f-((r*r)*value))`. Same instructions; two no-code PAREN tuples (one more
+// than NEWTON_PAREN, one fewer than NEWTON_GROUPED) put VC7.1's scheduling-region cut where retail has it. Body only: default path
+// unchanged.
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-((r*r)*value))*r*0.5f;}
+#elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_STEP_PAREN)
+// Q19 opt-in (same rows): the other two-tuple spelling, `((3.0f-(r*r*value))*r)*0.5f`. Body only: default path unchanged.
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return ((3.0f-(r*r*value))*r)*0.5f;}
+#elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN)
 // Retail opt-in (chunk 892, row 0x00963880 CAIStateGroup_VersusScorpionKing::IsScorpionChargingAtMe): the same body with the
 // Newton step's product parenthesised, `(3.0f-(r*r*value))`. Same instructions; the extra parenthesis is one more no-code PAREN tuple
 // in VC7.1's scheduling region (81-tuple cap, c2.dll 0x107B4E6A). It puts the region cut where retail has it in two rows: inside
@@ -41,7 +60,11 @@ FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long 
 #endif
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+inline float FABLE_FASTCALL GFSqr(float n){return n*n;}
+#else
 inline float FABLE_FASTCALL GFSqr(float value){return value*value;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQRTF
 inline float FABLE_FASTCALL GFRoot(float n){return sqrt(n);}
@@ -86,12 +109,29 @@ public:
 #ifdef FABLE_RETAIL_C3DVECTOR_TO2D
     C2DVector ToC2DVector()const{return C2DVector(X,Y);}
 #endif
+#ifdef FABLE_RETAIL_CPARTICLE_SPRITE
+    // Original PDB signature and donor01D09580: this + scaled displacement.
+    const C3DVector Interpolate(const C3DVector& vector,float interp)const{return *this+(vector-*this)*interp;}
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_CLEAR
+    // Retail opt-in (Codex pass21): original01D8BC00 Z/Y/X zero stores;
+    // called by original particle ClearAcceleration02F41010.
+    void Clear() { X=Y=Z=0.0f; }
+#endif
     C3DVector() {}
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
     #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    C3DVector(const C3DVector& p){X=p.X;Y=p.Y;Z=p.Z;}
+#else
     C3DVector(const C3DVector& other){X=other.X;Y=other.Y;Z=other.Z;}
+#endif
+#else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    C3DVector(const C3DVector& p){X=p.X;Y=p.Y;Z=p.Z;}
 #else
     C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}
+#endif
 #endif
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
 #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
@@ -99,7 +139,12 @@ public:
 #else
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP
+    // Original addition signature and scalar components, donor018C0B60.
+    FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector((X+other.X),(Y+other.Y),Z+other.Z);}
+#else
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector(X+other.X,Y+other.Y,Z+other.Z);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_SCALE_X_PAREN
     // Retail opt-in (Codex 2026-11-10,007bc6fa): grouping the X product adds one no-code
     // scheduler tuple. The81-tuple region boundary then places the physics reload at007bc824
@@ -108,11 +153,22 @@ public:
 #else
     FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{return C3DVector(X*scale,Y*scale,Z*scale);}
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_GETSCALED
+    // Retail opt-in (wf3, row 0x00A89740 C3DMesh2::GetHelperPointPositionAnimated): FableWin.pdb ?GetScaled@C3DVector@@QBE?BV1@ABV1@@Z
+    // (componentwise product; no out-of-line copy in retail, expanded at 0x00A8981C: `fld this.k ; fmul scale.k` per axis).
+    FABLE_VECTOR_INLINE const C3DVector GetScaled(const C3DVector& scale)const{return C3DVector(X*scale.X,Y*scale.Y,Z*scale.Z);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}
     // FableWin.pdb ??TC3DVector@@QBE?BV0@ABV0@@Z (cross product; debug copy 0x01B40A20 right after GetRight 0x01B409F0, expanded in 0x004A1CB0).
-#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XY_GROUP
+#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XYZ_GROUP
+    // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): every cross-product component parenthesised. Same
+    // instructions as the default; the three no-code PAREN tuples sit ahead of VC7.1's first scheduling-region cut (81-tuple cap) and
+    // put it where retail has it: between the load of position.Y and the load of position.X (0x00A11527 / 0x00A1152E), so the store
+    // of the cross product's Z (`fstp [esp+14h]`, 0x00A1152A) is the last instruction of the first region. Body only.
+    FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_XY_GROUP)
     // Retail opt-in (Codex pass18): grouping the first two cross expressions
     // preserves the native00a42170 copy-load schedule without extra instructions.
     FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),X*other.Y-Y*other.X);}
@@ -134,24 +190,52 @@ public:
     // order. There the inlined Normalise loads Z, Y, X (0x0079AE93 fld [esp+24h], 0x0079AEA0 fld [esp+20h], 0x0079AEAA fld
     // [esp+1Ch]); the X, Z, Y spelling loads Y, Z, X in that TU. Body only: no layout change, default path unchanged.
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (X*X+Y*Y+Z*Z);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_ZYX)
+    // Retail opt-in (chunk Q14, row 0x00A58790 NBBBMaths::CSphere::GetFirstIntersectionWithFiniteLine): the parenthesised one-line
+    // sum in Z, Y, X order. There both squared lengths sum Z*Z, Y*Y, X*X (0x00A587B2 `fst [esp+8] ; fmul [esp+8]` then Y, X;
+    // 0x00A58825 `fld st(2) ; fmul st(3)` on the offset's Z) and the first one is shared with IsNonZero's Z, Y, X sum. Body only:
+    // no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (Z*Z+Y*Y+X*X);}
+#else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (X*X+Y*Y+Z*Z);}
 #else
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (X*X+Z*Z+Y*Y);}
+#endif
 #endif
     // Chunk 732 (row 0x006AABE0 SetActionForMelee): FableWin.pdb ?GetSquaredMagnitude2D@C3DVector@@QBEMXZ (debug copy 0x01DAEC70; no
     // Ego_r.pdb copy, expanded in retail) as running statements: retail loads X then Y (0x006AACCF, 0x006AADB1, 0x006AAF97); the
     // one-line `X*X+Y*Y` lets VC7.1 load Y first there. No other FABLE_RETAIL_C3DVECTOR includer uses it.
     FABLE_VECTOR_INLINE float GetSquaredMagnitude2D()const{float squared=X*X;squared+=Y*Y;return squared;}
 #else
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return X*X+Y*Y+Z*Z;}
+#else
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return X*X+Z*Z+Y*Y;}
+#endif
     FABLE_VECTOR_INLINE float GetSquaredMagnitude2D()const{return X*X+Y*Y;}
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_DOT_GROUPED
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=(Y*other.Y);dot+=Z*other.Z;dot+=X*other.X;return dot;}
 #else
-#ifdef FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_XYZ
+#ifdef FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_YXZ
+    // Retail opt-in (chunk Q12, row 0x008B6AD0 CCreatureAction_MidAttackSide::Initialise): the dot product as running statements in
+    // Y, X, Z order. There retail forms the Y product first with this->Y on top (0x008B6BBC `fxch st(2) ; fmul st(2)`), then the X
+    // product (`fmul [other.X]`) added onto it, then Z; the one-line default forms the same order with the operand roles swapped and
+    // the X, Y, Z statements form X first. Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=Y*other.Y;dot+=X*other.X;dot+=Z*other.Z;return dot;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_ZYX)
+    // Retail opt-in (chunk Q14, row 0x0066C900 CRegionMinimap::IlluminateRegionMinimapTheme): the dot product as running statements in
+    // Z, Y, X order (0x0066CA43 `fmul st(1)` on the two Z, then Y, then X added). Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=Z*other.Z;dot+=Y*other.Y;dot+=X*other.X;return dot;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_XYZ)
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=X*other.X;dot+=Y*other.Y;dot+=Z*other.Z;return dot;}
 #else
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{return X*other.X+(Y*other.Y+Z*other.Z);}
+#else
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{return X*other.X+Y*other.Y+Z*other.Z;}
+#endif
 #endif
 #endif
 #if defined(FABLE_RETAIL_C3DVECTOR_LIBPK_OUTOFLINE)
@@ -161,6 +245,9 @@ public:
     const C3DVector Cross(const C3DVector& other) const;                 // 0x00C25860
     float DotProduct(const C3DVector& other) const;                      // 0x00C256A0
     C3DVector Copy() const;                                              // 0x00C1BFF0
+#elif defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION)
+    // Native007c14a3..14fb: retain the two component subtractions as source expression units.
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
 #elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_X_GROUP)
     // Cross expression grouping retains native00697d79..b2 scheduling.
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
@@ -189,6 +276,12 @@ public:
     // Original FableWin01d9faa0 GetMagnitude2D, calls single-precision sqrt helper.
     inline float GetMagnitude2D()const {float squared=X*X;squared+=Y*Y;return GFFastSqrt(squared);}
 #endif
+#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D) && !defined(FABLE_RETAIL_UPDATE_NEAREST_INTERESTING) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK)
+    // Retail opt-in (chunk Q9, row 0x0092ACE0 CAIStateGroup_ApprenticeHero::GoToLibrary): the same FableWin.pdb
+    // ?GetMagnitude2D@C3DVector@@QBEMXZ body as the FABLE_RETAIL_UPDATE_NEAREST_INTERESTING branch above, without that opt-in's
+    // CThingCreatureBase / CTCTargetingBase / C2DBoxI changes. Body only: default path unchanged.
+    inline float GetMagnitude2D()const {return GFFastSqrt(X*X+Y*Y);}
+#endif
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Retail branch (pass 12 header wave, 0x00AC2BE0 PartitionSpace): inline in retail; FableWin.pdb keeps out-of-line debug
@@ -202,6 +295,9 @@ public:
     // Retail opt-in (Codex 2026-11-09): FableWin 01acf1e0 GetAngleXY,
     // 01dcb530 InitialiseFromAngles, 01fa1780 CrossWithUp. The 00a22ca0
     // body expands angle wrapping, heading construction and the horizontal cross product.
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+    FABLE_VECTOR_INLINE float GetAngleXY()const{return GET_ROUNDED_ANGLE(GFArcTan(X,Y));}
+#else
     FABLE_VECTOR_INLINE float GetAngleXY() const {
         float angle=(float)atan2(X,Y)*0.15915494f;
         if(angle<0.0f || angle>=1.0f) {
@@ -210,6 +306,7 @@ public:
         }
         return angle;
     }
+#endif
     FABLE_VECTOR_INLINE C3DVector CrossWithUp() const {return C3DVector(Y,-X,0.0f);}
     FABLE_VECTOR_INLINE const C3DVector& InitialiseFromAngles(float angleXY,float angleYZ,float length) {
         float cosYZ=(float)cos(angleYZ*(double)6.2831855f);
@@ -237,6 +334,11 @@ public:
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z (0x00B81930),
     // out of line in retail at 0x00A14040 (395 bytes, the sin/cos rotation about Z). A declaration only.
     void RotateXY(float angle);                                          // 0x00A14040
+#ifdef FABLE_RETAIL_C3DVECTOR_ROTATE_ANGLES
+    // Retail opt-in (chunk Q18, row 0x00837220 CThingTrackNode::UpdateFacingDirection): Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z, out of
+    // line in retail at 0x00A14260 (landed; thiscall, two floats, `ret 8`). A declaration only.
+    void Rotate(float angle_xy, float angle_yz);                         // 0x00A14260
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ACCURATENORMALISE
     // Retail opt-in (chunk 1023, row 0x00B67270 CEngineLandscapeRenderer::BuildBlendingTables): Ego_r.pdb / FableWin.pdb
     // ?AccurateNormalise@C3DVector@@QAEAAV1@XZ, out of line in retail at 0x00A14440 (the landed bound spelling; called with ecx = the
@@ -246,7 +348,20 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS_XYZ)
+    // Retail opt-in (chunk Q20, row 0x008B7040 CCreatureAction_JumpOutFromCover::Initialise): the components read into locals first, then
+    // the squared length summed in X, Y, Z source order. There the inlined Normalise of the member JumpDirection loads X, Y, Z
+    // (0x008B7047..0x008B705E) and forms Z*Z, Y*Y, X*X with the three pops after the store (0x008B707E..0x008B7088); the one-line
+    // default / SQUAREDMAGNITUDE_XYZ bodies load Z, Y, X and pop once early there. Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float x=X;float y=Y;float z=Z;float one_on_magnitude=GFFastOneOverSqrt(x*x+y*y+z*z);X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_LOCALS)
+    // Retail opt-in (chunk Q9, row 0x0092B900 CAIStateGroup_OnHeroPush::Update): the components read into locals first, then the
+    // squared length summed Z, X, Y. There the inlined Normalise loads X, Y, Z (0x0092B95F..0x0092B969) and sums Z*Z, X*X, Y*Y
+    // (0x0092B96C `fld st(0) ; fmul st(1)`, 0x0092B970 `fld st(3) ; fmul st(4)`, 0x0092B976 `fld st(2) ; fmul st(3)`); every
+    // one-expression sum (GFSqr or plain, any order) loads the components in its own sum order there. Body only: no layout change,
+    // default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float x=X;float y=Y;float z=Z;float squared=z*z;squared+=x*x;squared+=y*y;float one_on_magnitude=GFFastOneOverSqrt(squared);X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER)
 #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_GROUPED_SUM
     FABLE_VECTOR_INLINE C3DVector& Normalise(){float one_on_magnitude=GFFastOneOverSqrt((GFSqr(X)+GFSqr(Y)+GFSqr(Z)));X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
 #else
@@ -273,10 +388,24 @@ public:
     // Original IsNonZero call FableWin02b9fe76; native009420cf..dd squares Z,Y,X.
     FABLE_VECTOR_INLINE bool IsNonZero()const{return Z*Z+Y*Y+X*X>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #elif defined(FABLE_RETAIL_C3DVECTOR_NONZERO_SQUARED_XYZ)
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+    // Original IsNonZero donor 0x01B4F100 reads Y, X, Z; native 0x007C1F58 preserves that order.
+    FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=Y*Y;squared+=X*X;squared+=Z*Z;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#else
     FABLE_VECTOR_INLINE bool IsNonZero()const{return X*X+Y*Y+Z*Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#endif
+#else
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+    FABLE_VECTOR_INLINE bool IsNonZero()const{const float& x=X;const float& y=Y;const float& z=Z;return y*y+x*x+z*z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #else
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z;squared+=Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #endif
+#endif
+#endif
+#endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+#ifndef FABLE_RETAIL_C3DVECTOR
+    C3DVector& Normalise();
 #endif
 #endif
     C3DVector& AccurateNormalise();

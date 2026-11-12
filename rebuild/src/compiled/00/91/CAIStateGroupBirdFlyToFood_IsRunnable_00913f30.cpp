@@ -112,7 +112,9 @@ public:
 struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {
     unsigned char _14[0x10];
     C3DVector FlightPos;                        // +0x24
-    bool GetRandomFlightPos(const C3DVector& from, float radius, C3DVector* out, bool allowGround);   // 0x00912700
+protected:
+    bool GetRandomFlightPos(const C3DVector& from, float radius, C3DVector& out, bool allowGround) const;   // 0x00912700 ?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z (Ego_r: protected const)
+public:
 };
 struct CAIStateGroup_BirdFlyToFood : CAIStateGroup_FlyingThingBase {
     unsigned long FrameLastAte;                 // +0x30
@@ -133,7 +135,7 @@ bool CAIStateGroup_BirdFlyToFood::IsRunnable()
                 CThingPhysical* creature = PBrain->Creature;
                 CThingPhysical* corpse = 0;
                 if (PeekThingSearchTools()->GetPBestThing(CThingFilter_None(), CThingCompare_Nearest(creature->PeekPos()), &corpse)
-                    && GetRandomFlightPos(corpse->PeekPos(), 0.5f, &FlightPos, true))
+                    && GetRandomFlightPos(corpse->PeekPos(), 0.5f, FlightPos, true))
                     return true;
             }
             CThingPhysical* food = 0;
@@ -142,7 +144,7 @@ bool CAIStateGroup_BirdFlyToFood::IsRunnable()
                 CCharString name("BIRD_FOOD");
                 found = PeekThingSearchTools()->GetPBestThing(CThingFilter_DefName(name), CThingCompare_Nearest(PBrain->Creature->PeekPos()), &food);
             }
-            if (found && GetRandomFlightPos(food->PeekPos(), 1.5f, &FlightPos, true))
+            if (found && GetRandomFlightPos(food->PeekPos(), 1.5f, FlightPos, true))
                 return true;
         }
     }

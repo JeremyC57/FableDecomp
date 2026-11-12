@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00bfaba0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00bfaba0   RELOCATION_MATCH PASS   CLocalDetailPrimitiveRepeatedMesh::AddObjectsToPrimitiveRenderer
+00bfacc0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00bfacc0   WARN RELOC_NAME: ?AddRepeatedZSprite@CLocalDetailRenderer@@QAE?AVCEnginePrimitiveHandle@@ABUCAddPrimitiveDesc@@@Z -> 00b32ff0 labelled 'NScript::GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00bfacc0   RELOCATION_MATCH PASS   CLocalDetailPrimitiveMeshZSpriteBatch::AddObjectsToPrimitiveRenderer
+
+WINS: 2
+  00bfaba0 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::AddObjectsToPrimitiveRenderer
+  00bfacc0 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::AddObjectsToPrimitiveRenderer

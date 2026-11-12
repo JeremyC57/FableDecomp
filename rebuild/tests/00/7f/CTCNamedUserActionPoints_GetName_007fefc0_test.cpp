@@ -8,13 +8,13 @@ const CCharString& CCharString::operator=(const CCharString& src){ captured_self
 class CTCNamedUserActionPoints { public:
     char pad[0x34];
     CCharString* arr;
-    void GetName(long index, CCharString* out);
+    void GetName(long index, CCharString& out);   // ?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z (both PDBs; name-fix NF29)
 };
 int main(){
   CCharString elems[4]; int i; for(i=0;i<4;i++) elems[i].p=(char*)(0x1000+i);
   CTCNamedUserActionPoints obj; obj.arr=elems;
   CCharString out; out.p=(char*)0xDEAD;
-  obj.GetName(2, &out);
+  obj.GetName(2, out);
   if(captured_src == &elems[2] && captured_self == &out) printf("OK_007fefc0\n");
   else printf("FAIL\n");
   return 0;

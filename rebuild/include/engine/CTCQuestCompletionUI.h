@@ -18,8 +18,13 @@
 #include "engine/NUISystem_CComponent.h"
 #include "stlport/fable_containers.h"
 #endif
-#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST
+#if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
 #include "fable_string.h"
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+#include "engine/CQuestCardDef.h"
+#include "engine/CQuestManager.h"
+#include "engine/CDefPointer.h"
 #endif
 class CCharString;
 class CWideString;
@@ -36,7 +41,7 @@ public:
     virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&);
 #endif
     void Activate(CompletionType completion, const CCharString& scriptName, bool b1, const CWideString& summary, bool b2);   // 0x005E4740
-#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST
+#if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
     // Retail opt-in (Codex pass20): original PDB accessor; native004b2a6b assigns ScriptName+0x50.
     void SetScriptName(const CCharString& script_name){ScriptName=script_name;}
 #endif
@@ -45,6 +50,10 @@ public:
     bool IsQuitting() const { return Quitting; }                         // FableWin ?IsQuitting@CTCQuestCompletionUI@@QBE_NXZ
     bool IsQuittingFadeOut() const { return QuittingFadeOut; }           // FableWin ?IsQuittingFadeOut@CTCQuestCompletionUI@@QBE_NXZ
 private:
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    // Both original PDBs; native005e7123 passes the component in the one stack argument.
+    void GetQuestDescription(NUISystem::CComponent* pcontainer);
+#endif
     bool          Active;                                                // +0x0c
     bool          ReallyActive;                                          // +0x0d
     unsigned char _pad_0x0e[0x2];                                        // +0x0e
@@ -60,20 +69,44 @@ private:
     long          Completion;                                            // +0x20 CompletionType
     unsigned long Frame;                                                 // +0x24
     long          FrameStartedBoastProcessing;                           // +0x28
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CDefPointer<const CQuestCardDef> PCardDef;
+#else
     unsigned char PCardDef[0x4];                                         // +0x2c CDefPointer<const CQuestCardDef>
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    std::list<CQuestManager::CBoast> Boasts;
+#else
     unsigned char Boasts[0x4];                                           // +0x30 std::list<CQuestManager::CBoast>
+#endif
     unsigned long RenderedObjectDef;                                     // +0x34
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString QuestSummary;
+#else
     unsigned char QuestSummary[0x4];                                     // +0x38 CWideString
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString SuccessSummary;
+#else
     unsigned char SuccessSummary[0x4];                                   // +0x3c CWideString
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString QuestObjective;
+#else
     unsigned char QuestObjective[0x4];                                   // +0x40 CWideString
+#endif
     unsigned char _pad_0x44[0x4];                                        // +0x44
     double        LastRenderTime;                                        // +0x48
-#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST
+#if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
     CCharString ScriptName;
 #else
     unsigned char ScriptName[0x4];                                       // +0x50 CCharString
 #endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
+    CWideString FailureReason;
+#else
     unsigned char FailureReason[0x4];                                    // +0x54 CWideString
+#endif
     long          GoldReward;                                            // +0x58
     long          RenownReward;                                          // +0x5c
     long          TargetGoldGained;                                      // +0x60
@@ -108,6 +141,13 @@ private:
     unsigned long GoldCountingSound;                                     // +0xcc
     unsigned long RenownCountingSound;                                   // +0xd0
     bool          CanTeleportToGuildMember;                              // +0xd4
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool IsComponentSerialisable() const;  // slot 23, 0x005E9750
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCQuestCompletionUI) == 0xd8);
 #endif // FABLE_ENGINE_CTCQUESTCOMPLETIONUI_H

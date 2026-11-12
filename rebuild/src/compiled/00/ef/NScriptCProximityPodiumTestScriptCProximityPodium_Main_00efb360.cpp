@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EFB360, length 256 bytes, plain `ret` (entity-script vtable slot at
 // 0x012F6B24).
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (the predicate's member), CEntityScriptBase::SetPredicate
-// 0x00F35B10 and IsActiveThreadTerminating 0x00F35B30 (both on `this`; manifest labels propagated), ~CIsThingAlive
+// 0x00F35B10 and IsActiveThreadTerminating 0x00F35B30 (both on `this`; manifest labels propagated), NScript::CIsThingConscious::~CIsThingConscious
 // 0x00EF7AB0 (out of line), IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float)
 // (`__fastcall`, 0x00CBE2FF), CScriptThing::SetActivationTriggerStatus (virtual slot 69, +0x114); through the entity's
 // game script interface (+4): NewScriptFrame (slot 7, +0x1c), GetHero (slot 70, +0x118), Pause(float) (slot 376, +0x5e0).
@@ -19,12 +19,12 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-namespace N_00ef7ab0 { struct CIsThingAlive {                                 // vtable 0x012C2FE8: a predicate holding a script thing
-    virtual void v00();
-    CScriptThing m_thing;                              // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive();                                  // 0x00EF7AB0
-}; } using N_00ef7ab0::CIsThingAlive;
+namespace NScript { class CPredicateBase; }
+// NScript::CIsThingConscious: the retail model (vtable 0x012C2FE8, Thing +0x04, 0x10); its dtor 0x00EF7AB0 is called out of line
+//   (agentNF25b: was the address-namespaced local N_00ef7ab0::CIsThingAlive; Ego_r + FableWin ??1CIsThingConscious@NScript@@UAE@XZ).
+#include "engine/CIsThingConscious.h"
+inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
+using NScript::CIsThingConscious;
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -32,11 +32,10 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CEntityScriptBase {
-    virtual ~CEntityScriptBase();   // retail slot 0 (the stand-in is polymorphic, as retail: the vptr moves here)
- public:   // the PDB base the accessor belongs to (empty here: offset 0)
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08;
+//   SetPredicate(const NScript::CPredicateBase&) 0x00F35B10, IsActiveThreadTerminating() const 0x00F35B30) (agentNF25b: was a local model
+//   whose derived class declared its own SetPredicate(CIsThingAlive&)).
+#include "engine/CEntityScriptBase.h"
 namespace NScript {
 class CProximityPodiumTestScript {    // the PDB owner script; only its nested entity class is modelled here
 public:
@@ -47,9 +46,6 @@ using NScript::CProximityPodiumTestScript;
 namespace NScript {
 class CProximityPodiumTestScript::CProximityPodium : public CEntityScriptBase {
 public:
-        CGameScriptInterface* Game;                      // +0x04
-    CScriptThing          Me;                        // +0x08
-    void SetPredicate(CIsThingAlive& predicate);     // 0x00F35B10
 private:
     virtual void Main();                          // PDB ?Main@CProximityPodium@CProximityPodiumTestScript@NScript@@EAEXXZ
 };
@@ -58,7 +54,7 @@ private:
 void NScript::CProximityPodiumTestScript::CProximityPodium::Main()
 {
     {
-        CIsThingAlive predicate(Me);
+        CIsThingConscious predicate(Me);
         SetPredicate(predicate);
     }
     Game->NewScriptFrame();

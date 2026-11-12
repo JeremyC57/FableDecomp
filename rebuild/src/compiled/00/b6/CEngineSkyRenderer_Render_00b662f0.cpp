@@ -37,7 +37,7 @@ class CEngineLightingManager { public:
     unsigned char _pad00[0x18];
     C3DVector     SunVector;                             // +0x18
 };
-extern CEngineLightingManager* g_pEngineLightingManager; // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 struct CEngineRendererView {
     void DrawDebugSphere(unsigned long flags, const C3DVector& pos, float radius, unsigned long colour);   // 0x00B8D040
 };
@@ -155,7 +155,7 @@ void CEngineSkyRenderer_Methods::Render(const CEngineComponentRenderParams& para
         SetState(g_pRenderManagerCore->m_state2868, 1, g_pRenderManagerCore);
         RenderSky(interpolate, &g_pEngineCamera->CameraDesc.WorldPosition, false);
         g_pEngineCamera->SetCameraState(&savedDesc, false, true);
-        C3DVector sun = g_pEngineLightingManager->SunVector;
+        C3DVector sun = NEngineInternal::GPLightingManager->SunVector;
         float distance = g_pEngineCamera->CameraDesc.FarZPlane * 0.099f;
         C3DVector pos = sun * distance + g_pEngineCamera->CameraDesc.WorldPosition;
         g_pRenderer_01436e5c->DrawDebugSphere(0x1000000, pos, distance * 0.15f, 0x20);

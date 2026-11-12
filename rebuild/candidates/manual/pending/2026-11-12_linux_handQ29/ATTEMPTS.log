@@ -1,0 +1,61 @@
+007cc710 grade 1 CTCMultiArrow::ReleaseShot DIFFER(180v180)   -- port onto CTCMultiArrow.h VSLOTS3 + std::vector
+007cc710 grade 2 CTCMultiArrow::ReleaseShot DIFFER(180v180)   -- separate decrement statement
+007cc710 grade 3 CTCMultiArrow::ReleaseShot DIFFER(181v180)   -- inverted if (!empty) arm order
+007cc710 grade 4 CTCMultiArrow::ReleaseShot RELOCATION_MATCH   -- COPY/GET_ORIGINAL_CHAIN (deeper inline chain)
+00eb3ba0 grade 1 CMurderTwistSheriff::Init SRC_FAIL   -- port onto CV_MurderTwistFinalScript.h, guard AttackHero, seh_Guards[ID]
+00eb3ba0 grade 2 CMurderTwistSheriff::Init DIFFER(196v187)   -- add CGameScriptInterfaceBase.h
+00eb3ba0 grade 3 CMurderTwistSheriff::Init DIFFER(186v187)   -- named reference to seh_Guards[ID]
+00eb3ba0 grade 4 CMurderTwistSheriff::Init DIFFER(186v187)   -- named pointer &seh_Guards[ID]
+00eb3ba0 grade 5 CMurderTwistSheriff::Init DIFFER(186v187)   -- begin()+ID
+00eb3ba0 grade 6 CMurderTwistSheriff::Init DIFFER(186v187)   -- named vector reference then &guards[ID]
+00eb3ba0 grade 7 CMurderTwistSheriff::Init DIFFER(190v187)   -- begin pointer local, guards[ID] twice
+00eb3ba0 grade 8 CMurderTwistSheriff::Init DIFFER(188v187)  -- /Oa -- named reference + /Oa
+009d6350 grade 1 CBankFileAsyncData::Abort SRC_FAIL   -- port onto CBankFileAsyncData/CBankFileAsync headers, goto form
+009d6350 grade 2 CBankFileAsyncData::Abort SRC_FAIL   -- headers + FreeResource, goto form
+009d6350 grade 3 CBankFileAsyncData::Abort DIFFER(195v196)   -- headers + FreeResource, goto form
+009d6350 grade 4 CBankFileAsyncData::Abort DIFFER(181v196)   -- result = true after Aborted
+009d6350 grade 5 CBankFileAsyncData::Abort RELOCATION_MATCH   -- result=true in both arms + if(result) block
+00eb3ba0 grade 9 CMurderTwistSheriff::Init DIFFER(186v187)   -- &seh_Guards[0] + ID
+00eb3ba0 grade 10 CMurderTwistSheriff::Init DIFFER(164v187)   -- pragma optimize s
+00eb3ba0 probe 1 which spelling of the guard-handle tail gives lea esi,[eax+edx] (RelIf helper / index local / pointer declared early / iterator += / pointer for both handles) -> see next grade
+00eb3ba0 probe 2 same question, single reused pointer / parent+index locals / (long)ID / const vector ref -> see output
+00eb3ba0 probe 3 does a signed difference_type index (STLport 4.6 operator[] spelling) give the lea -> see output
+00eb3ba0 grade 11 CMurderTwistSheriff::Init DIFFER(186v187)   -- index local before the handle pointer
+00eb3ba0 grade 12 CMurderTwistSheriff::Init DIFFER(186v187)   -- one handle pointer reused for both handles
+00eb3ba0 grade 13 CMurderTwistSheriff::Init DIFFER(185v187)  /G7 -- flag /G7
+00eb3ba0 grade 14 CMurderTwistSheriff::Init DIFFER(186v187)   -- probe-in-row: free inline accessor (parent, id)
+00eb3ba0 grade 15 CMurderTwistSheriff::Init DIFFER(186v187)   -- ID + begin() (index evaluated before ParentClass)
+00eb3ba0 grade 16 CMurderTwistSheriff::Init DIFFER(186v187)  /Ob1 -- flag /Ob1
+00eb3ba0 grade 17 CMurderTwistSheriff::Init DIFFER(186v187)   -- id local then parent local (ID read first)
+00eb3ba0 grade 18 CMurderTwistSheriff::Init DIFFER(186v187)   -- begin()[ID] array-index form, reference
+00eb3ba0 grade 19 CMurderTwistSheriff::Init DIFFER(186v187)   -- handle declared at function top
+00eb3ba0 grade 20 CMurderTwistSheriff::Init DIFFER(186v187)   -- Game as the PDB reference member (ORIGINAL_MEMBERS)
+00eb3ba0 probe 4 does keeping this live after the guard handle (trailing member store) give lea esi,[eax+edx] -> see output
+00eb3ba0 grade 21 CMurderTwistSheriff::Init DIFFER(188v187)  /Oa -- flag /Oa
+00eb3ba0 grade 22 CMurderTwistSheriff::Init DIFFER(186v187)  /Ow -- flag /Ow
+00eb3ba0 grade 23 DIFFER(186v187) -- QFE-4035 compiler
+00eb3ba0 grade 24 CMurderTwistSheriff::Init DIFFER(186v187)   -- early return when the guard handle is not valid
+00eb3ba0 probe 5 does an inline accessor taking the guard's this (copy of this) give the lea -> DIFFER(186v187)
+00eb3ba0 grade 25 CMurderTwistSheriff::Init DIFFER(186v187)   -- (int)ID index
+00eb3ba0 grade 26 CMurderTwistSheriff::Init DIFFER(186v187)   -- inline helper (parent,id) doing the IsValid/Release
+00eb3ba0 grade 27 CMurderTwistSheriff::Init DIFFER(186v187)   -- named references for both handles
+00eb3ba0 grade 28 CMurderTwistSheriff::Init DIFFER(186v187)   -- ID[begin()] (index operand first)
+00eb3ba0 grade 29 CMurderTwistSheriff::Init DIFFER(179v187)   -- real IsValid body noinline in TU + seh_Guards[ID] twice (c2 CSE across IsValid)
+00eb3ba0 grade 30 CMurderTwistSheriff::Init DIFFER(179v187)   -- IsValid real body after the row in the TU, seh_Guards[ID] twice
+00eb3ba0 grade 31 CMurderTwistSheriff::Init DIFFER(189v187)  /Oa -- twice-form, /Oa
+00eb3ba0 grade 32 CMurderTwistSheriff::Init DIFFER(186v187)   -- inline ReleaseIfValid(H&) helper for both handles
+00eb3ba0 grade 33 CMurderTwistSheriff::Init DIFFER(179v187)  /Gy- -- IsValid body + twice-form: does /Gy-less matter? flag /Gy-
+00eb3ba0 grade 34 CMurderTwistSheriff::Init DIFFER(196v187)   -- mechanism check: IsValid body visible but compiled /Od (no reg summary)
+00eb3ba0 grade 35 CMurderTwistSheriff::Init DIFFER(175v187)   -- IsValid real body defined after the row (plain, not noinline), twice-form
+00eb3ba0 grade 36 CMurderTwistSheriff::Init DIFFER(196v187)   -- mechanism: IsValid noinline body with optimize(g,off)
+00eb3ba0 grade 37 CMurderTwistSheriff::Init DIFFER(186v187)   -- iterator = begin(); it += ID
+00eb3ba0 grade 38 CMurderTwistSheriff::Init SRC_FAIL   -- *(_M_start + ID) direct member
+00eb3ba0 grade 39 CMurderTwistSheriff::Init DIFFER(186v187)   -- &front() + ID
+00eb3ba0 grade 40 CMurderTwistSheriff::Init DIFFER(195v187)  /EHsc -- /EHsc
+00eb3ba0 grade 41 CMurderTwistSheriff::Init DIFFER(186v187)   -- each release in its own block scope
+00eb3ba0 grade 42 CMurderTwistSheriff::Init DIFFER(186v187)   -- begin pointer local then reference guards[ID]
+007cc710 grade 5 CTCMultiArrow::ReleaseShot RELOCATION_MATCH   -- final strict regrade
+009d6350 grade 6 CBankFileAsyncData::Abort RELOCATION_MATCH   -- final strict regrade
+007cc710 grade 6 CTCMultiArrow::ReleaseShot RELOCATION_MATCH   -- final strict regrade after comment edit
+009d6350 grade 7 CBankFileAsyncData::Abort RELOCATION_MATCH   -- final strict regrade after comment edit
+00eb3ba0 grade 43 CMurderTwistSheriff::Init DIFFER(186v187)   -- final best-source regrade (strict headers)

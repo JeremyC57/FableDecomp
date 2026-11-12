@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00912700	?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z	FableWin.pdb symbol (protected const; centre by const&, out by C3DVector&); landed sibling 0x00911F80 already uses this spelling	FlyingMethods::GetRandomFlightPos(const C3DVector&,float,C3DVector*,bool) non-const (rebuild/src/compiled/00/91/CAIStateGroupFlyingThingBase_GetRandomFlightPos_00912700.cpp); (const C3DVector*,float,C3DVector*,bool) in rebuild/src/compiled/00/93/CAIStateGroupButterflyWander_Update_0093d030.cpp

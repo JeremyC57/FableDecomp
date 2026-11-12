@@ -1,0 +1,102 @@
+address	change	grade	test	grades_used	note
+0x00749880	self-row rename (stand-in -> CTCNoise::SetCreator over shared CTCNoise.h)	RELOCATION_MATCH	PASS	2	land1011cx
+0x00723A10	self-row rewrite (free stand-in -> CTCPhysicsStandard::SetRHSetAsFlushOnGround) + binders respelled (test changed)	RELOCATION_MATCH	PASS	3	land1011cy; also 0x00686D20 now PeekWorldMap (was ComputeFlushGround)
+0x006AFF00	binder respelled	RELOCATION_MATCH	PASS	2	land1011cy 0x0063AB10 via engine/CWorldMap.h; push 0 moved to OnCollision's 4th arg
+0x008751D0	binder respelled	RELOCATION_MATCH	PASS	2	land1011cy 0x0063AB10 via engine/CWorldMap.h
+0x00918900	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz (corrected): 0x00658D5D -> IsSociableTime const
+0x00919440	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz (corrected): 0x00658D5D -> IsSociableTime const
+0x00919510	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz (corrected): 0x00658D5D -> IsSociableTime const
+0x0093AE80	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz (corrected): 0x00658D5D -> IsSociableTime const
+0x00938F70	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz (corrected): 0x00658D5D -> IsSociableTime const
+0x007AFB90	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz 0x00810FC0 GetPThingHitting -> GetPHitBy
+0x007DE2E0	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz 0x00810FC0 GetPThingHitting -> GetPHitBy
+0x007FCE10	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz 0x00810FC0 GetPThingHitting -> GetPHitBy
+0x00970190	binder respelled	RELOCATION_MATCH	PASS	1	land1011cz 0x00810FC0 GetPThingHitting -> GetPHitBy
+0x0094E480	binder respelled (stand-in CEventHitByMethods -> NEntityEvents::CEventHitBase)	RELOCATION_MATCH	PASS	1	land1011cz 0x00810FC0 GetPHitBy; also 0x00810F00 IsKnockDown (was WasKnockedDown)
+0x005278A0	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x0056CB00	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x006F0DD0	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x00834FD0	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x0098FD80	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x009C1E00	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x00ADAE00	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x00B3E6E0	self-row rename (placeholder types -> proven types, agentFAM07 text) (test changed)	RELOCATION_MATCH	PASS	1	land1011da _M_erase
+0x00528440	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00528D30	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x0056CFD0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x0056D3D0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x006F1CB0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x006F2520	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00835140	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x008353F0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00990120	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00990580	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x009C22E0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x009C2720	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00ADB200	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00ADB5E0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00B3E750	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00B3E8D0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	1	land1011da: placeholder _Rb_tree member of the same instantiation
+0x00835440	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	2	land1011da: placeholder _Rb_tree::erase(first,last); 2nd grade for the full leaf
+0x009906E0	binder + own placeholder types respelled (test changed)	RELOCATION_MATCH	PASS	2	land1011da: placeholder _Rb_tree::erase(first,last); 2nd grade for the full leaf
+0x004C4490	self-row respell QAE -> AAE (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da
+0x00696900	self-row respell QAE -> AAE (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da
+0x00869BB0	self-row respell QAE -> AAE (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da
+0x009B40F0	self-row respell QAE -> AAE (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da
+0x009EF6E0	self-row respell QAE -> AAE (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da
+0x004C2950	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x0052DCA0	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x00534C60	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x005E8C00	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x00623560	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x00630A10	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x00776AA0	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x009C1DC0	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x00B95EE0	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da
+0x0056D440	self-row rewrite (stand-in -> STLport _Rb_tree::_M_erase over agentFAM07's proven types)	RELOCATION_MATCH	PASS	1	land1011da (test changed)
+0x00528EF0	binder respelled (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da QAE -> AAE
+0x0052D9A0	binder respelled (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da QAE -> AAE
+0x0061A500	binder respelled (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da QAE -> AAE
+0x009C05C0	binder respelled (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da QAE -> AAE
+0x009ED190	binder respelled (private _M_erase)	RELOCATION_MATCH	PASS	1	land1011da QAE -> AAE
+0x009ECF30	binders respelled (the model's _Rb_tree gains _KeyOfValue)	RELOCATION_MATCH	PASS	1	land1011da 0x009EF6E0 (+ 0x009EECC0 / 0x009AA830 now the landed rows' spellings)
+0x00B98350	self-row respell (3-arg _Rb_tree model -> STLport 5-arg)	RELOCATION_MATCH	PASS	1	land1011da; also 0x00B97580 now the landed 5-arg spelling
+0x00F25B70	self-row rename (stand-in -> std::vector<T>::~vector, shared STLport)	RELOCATION_MATCH	PASS	1	land1011da; binders already bind the PDB spelling
+0x00F26E20	self-row rename (stand-in -> std::vector<T>::~vector, shared STLport)	RELOCATION_MATCH	PASS	1	land1011da; binders already bind the PDB spelling
+0x00F26F70	self-row rename (stand-in -> std::vector<T>::~vector, shared STLport)	RELOCATION_MATCH	PASS	1	land1011da; binders already bind the PDB spelling
+0x004855A3	self-row rename (stand-in List::Clear -> std::_List_base<NUISystem::CList*>::clear, shared STLport)	RELOCATION_MATCH	PASS	2	land1011da; 2nd grade: the landed row's #pragma optimize("s",on) kept
+0x007EAF00	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	3	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x007EB990	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x007ED420	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x007EDFF0	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x007EE7A0	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x0085EDF0	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x00922EB0	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x00935970	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x00966890	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x00968150	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x00968170	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x0097D280	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x00440730	self-row rename + binder 00a01c10: element typed CMiniMapDisplay::CMarkerInfo (catalog + Ego_r.pdb) via shared STLport + engine/CMiniMapDisplay.h; old local CBaseIntelligentPointer element model dropped	RELOCATION_MATCH	PASS	3	land1011da; now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ); leaf respelled to the CMarkerInfo instantiation
+0x00646709	binder 00a01c10: local non-virtual CBaseIntelligentPointer + CIntelligentPointer<CThing> models -> engine/CIntelligentPointer.h (CTOR/ASSIGN_OUTOFLINE opt-ins)	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ; 0x004A96F0 / 0x004A9760 / 0x00A01B50 unchanged
+0x007699C0	binder 00a01c10: local non-virtual CBaseIntelligentPointer model -> engine/CIntelligentPointer.h, qualified explicit dtor call	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@@QAE@XZ)
+0x0076BDD0	binder 00a01c10: namespaced local CBaseIntelligentPointer model -> engine/CIntelligentPointer.h	RELOCATION_MATCH	PASS	1	now binds ??1CBaseIntelligentPointer@@UAE@XZ (was ??1CBaseIntelligentPointer@FableDestroy_0076bdd0@@QAE@XZ)
+0x006E5790	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z)
+0x008F3100	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z)
+0x008F3630	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z)
+0x0092AFE0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z)
+0x00935AD0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z)
+0x0094C900	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z)
+0x00770E80	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x007C21A0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x007FFDB0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x007FFEB0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x00929820	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x0092A8A0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x0092B3E0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x009352C0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z)
+0x007008C0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z)
+0x00771660	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z)
+0x007F3AD0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z)
+0x0093E8C0	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z)
+0x0091D190	binder 00a01b90: local CBaseIntelligentPointer::SetPItem parameter retyped to the PDB CBaseObject*, call arguments cast as CIntelligentPointer<T>::SetPointer does	RELOCATION_MATCH	PASS	1	now binds ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z (was ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z)

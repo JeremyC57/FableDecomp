@@ -8,7 +8,7 @@
 // Callees: CPlayerManager::GetMainPlayer() @ 0x00449970 and CPlayer::GetPControlledCreature() @ 0x00487DC0 (manifest labels on both are
 // propagated junk), IS_THING_ALIVE<CThing*>(CThing* const&) @ 0x0043DBD0 (`__fastcall`, by reference), std::bitset::test @ 0x00410DE0
 // and CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the inlined GetInterface, as the landed 0x007BEA08 family),
-// the component's StopSound(unsigned long) @ 0x0066AD90 (manifest "CGameScriptThing::SetToKillOnLevelUnload" is propagated).
+// the component's CTCSoundPlayer::ReleaseAttachedLoopingSound(unsigned long) @ 0x0066AD90 (manifest "CGameScriptThing::SetToKillOnLevelUnload" is propagated).
 // Layout: CDrawBase PlayerManager +8; CDrawQuickAccessIcons ChargingSoundID +0x28 (PDB +0x2c); CThing interface bitset +0x20,
 // interface map +0x44.
 // Shape: frame-pointer size TU; the sound ID test is `> 0` on an unsigned (`jbe`); the hero is a creature pointer kept in esi, and
@@ -57,9 +57,13 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 
-struct CTCSound {                                  // the thing's interface 0x10
-    void StopSound(unsigned long soundID);         // 0x0066AD90
-};
+// Binder respelling (agentFAM13, queue land1011dt): interface 0x10 is CTCSoundPlayer (engine/CTCSoundPlayer.h, was the stand-in
+//   CTCSound); 0x0066AD90 is ?ReleaseAttachedLoopingSound@CTCSoundPlayer@@QAEXK@Z (Ego_r.pdb / FableWin.pdb; was spelled StopSound).
+#define FABLE_RETAIL_CTCSOUNDPLAYER_RELEASELOOPINGSOUND
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#include "fable_string.h"
+#include "engine/CTCSoundPlayer.h"
 
 enum { TC_SOUND = 0x10 };
 
@@ -80,7 +84,7 @@ void CDrawQuickAccessIcons::ClearSoundEffects()
         CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
         if (IS_THING_ALIVE(hero)) {
             if (hero->HasInterface(TC_SOUND)) {
-                hero->GetInterfaceUnchecked<CTCSound>(TC_SOUND)->StopSound(ChargingSoundID);
+                hero->GetInterfaceUnchecked<CTCSoundPlayer>(TC_SOUND)->ReleaseAttachedLoopingSound(ChargingSoundID);
                 ChargingSoundID = 0;
             }
         }

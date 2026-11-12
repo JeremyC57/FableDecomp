@@ -1,0 +1,15 @@
+address	name	evidence
+0065C5BB	CTCVillage::UpdateMirroredCrimeData	chunk Q19 (landing di): Ego_r.pdb ?UpdateMirroredCrimeData@CTCVillage@@QAEXXZ; catalog name; RELOCATION_MATCH (Q19)
+0079B6F0	CTCSummonSpell::ResetMinionPos	chunk Q19 (landing di): Ego_r.pdb ?ResetMinionPos@CTCSummonSpell@@QAEXXZ (Ego_r 0x007A13F0, FableWin debug copy 0x026A3B50); RELOCATION_MATCH (Q19)
+008C4FD0	CCreatureAction_ScorpionSummon::CreateBabies	chunk Q19 (landing di): Ego_r.pdb ?CreateBabies@CCreatureAction_ScorpionSummon@@AAEXXZ; called by landed FinishAction 0x008C52B0; RELOCATION_MATCH (Q19)
+008CDD40	CCreatureAction_ReleaseTimeSpell::FinishAction	chunk Q19 (landing di): Ego_r.pdb ?FinishAction@CCreatureAction_ReleaseTimeSpell@@UAEXXZ; vtable slot; RELOCATION_MATCH (Q19)
+008E16A0	NCreatureMode::CModeScreamerSuperAttack::FrameUpdate	chunk Q19 (landing di): Ego_r.pdb ?FrameUpdate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ; vtable 0x01278338 slot 3; RELOCATION_MATCH (Q19)
+0079C740	CTCBulletTime::GetTimeMultiplier	chunk Q19 (landing di): Ego_r/FableWin ?GetTimeMultiplier@CTCBulletTime@@QBEMXZ; both callers (0x006A02B0 landed, 0x008CDD40) pass the TC-146 (TCI_BULLET_TIME) PeekTC result; CTCBulletTime.h already declares it
+008BD880	CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase&)	chunk Q19 (landing di): Ego_r.pdb ctor; the only ctor call in 0x008C4FD0 with one creature arg; RiseUp vtable store
+007AEEC0	CTCBoss::CountLivingHelpers	chunk Q19 (landing di): Ego_r.pdb ?CountLivingHelpers@CTCBoss@@; landed CTCBoss header opt-in LIVINGHELPERS; RELOCATION_MATCH caller 0x008C4FD0
+0074D220	CDefinitionManager::GetDef<CCreatureGenerationFamilyDef>	chunk Q19 (landing di): manifest + same-TU body reproduces the COMDAT; family index from KING_SCORPION_SUMMON_FAMILY
+0069F1F0	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction::CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	chunk Q19 (landing di): Ego_r.pdb ctor (PAX, CThingCreatureBase&, const CCharString&, CThing&, long, long, CCreatureActionBase*); manifest
+00698950	CGameCameraManager::ReleaseScriptedControl	chunk Q19 (landing di): Ego_r.pdb ?ReleaseScriptedControl@CGameCameraManager@@QAEXXZ; manifest; landed
+00686D20	CTCBase::PeekWorldMap	chunk Q19 (landing di): manifest + landed headers; called twice by 0x0065C5BB
+004FB150	CWorldMap::GetLoadedRegion	chunk Q19 (landing di): both PDBs ?GetLoadedRegion@CWorldMap@@QBEJXZ; CWorldMap.h
+0049D810	CWorld::GetWorldSeed	chunk Q19 (landing di): manifest + CWorld.h; GFRandom seed in 0x008C4FD0

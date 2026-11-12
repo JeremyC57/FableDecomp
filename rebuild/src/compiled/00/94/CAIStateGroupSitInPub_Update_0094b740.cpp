@@ -15,6 +15,9 @@
 // first; the natural store-then-read order matches too under --flags /Oa); the building component uses the
 // `if (HasTC) { T* p; GetInterfaceV(&p) }` form (eax then ecx) on a named building local.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BB730 TIME_TO_LEAVE_BETWEEN_SPEAKING (anonymous namespace, const; initializer 0x01221CC0), was g_pubFidgetInterval.
 class CTCBase;
 class CWorld;
 
@@ -100,7 +103,7 @@ public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-extern long g_pubFidgetInterval;                // 0x013BB730
+namespace { extern const long TIME_TO_LEAVE_BETWEEN_SPEAKING; }                // 0x013BB730
 struct CTCPub {                                 // interface 0x7B on the pub building
     void RemoveCustomer(CThing* customer);      // 0x007FFDB0
 };
@@ -128,7 +131,7 @@ void CAIStateGroup_SitInPub::Update()
                     unsigned long next = *seed * 0x24A1U + 0x24DFU;
                     *seed = next;
                     unsigned long rotated = GFROR13(next);
-                    long interval = g_pubFidgetInterval;
+                    long interval = TIME_TO_LEAVE_BETWEEN_SPEAKING;
                     *seed = rotated;
                     unsigned long r = interval ? rotated % interval : 0;
                     nextFidget = interval / 2 + r + now;

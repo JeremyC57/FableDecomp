@@ -107,6 +107,14 @@ public:
     void OracleSymbolPopFront();                                         // 0x006463F0
     void DisplayMiniGameInfo(bool, EMiniGameType, long);                 // 0x00654593
 #endif
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_UPDATEMINIGAME
+    // Retail opt-in (chunk Q22, row 0x00649E8B CDrawFishingGame::Draw): Ego_r.pdb / FableWin.pdb
+    // ?UpdateMiniGame@CDrawQuestInfo@NPlayerGui@@QAEXMJJ@Z (retail 0x00644EFD, landed) and ?UpdateMiniGame@..QAEXABVCRGBColour@@@Z
+    // (retail 0x00644F85, landed); parameter names as the landed bodies. Declarations only: no layout change.
+public:
+    void UpdateMiniGame(float percentage, long value, long maxValue);   // 0x00644EFD
+    void UpdateMiniGame(const CRGBColour& colour);                       // 0x00644F85
+#endif
 private:
 #ifdef FABLE_RETAIL_CDRAWQUESTINFO_ADDELEMENT
     void AddElement(CCountedPointer<CQuestInfoElement> pelement);

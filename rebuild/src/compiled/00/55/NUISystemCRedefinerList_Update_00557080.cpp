@@ -9,7 +9,6 @@
 // +0x180; the landed OnActivate 0x005570F0 uses the same offsets). 0x0122DEDC is the 0.0f pool constant.
 // Shape: `test ah,41h ; jne` = `FadeOutTime > 0.0f`; the decrement is `fst` reused by the `<= 0.0f` test (`test ah,41h ;
 // jp` skips); the timer is zeroed before the flag branch, each arm a call with its own `ret 4`.
-extern const float g_zero_0122dedc;              // 0x0122DEDC (0.0f)
 
 namespace NUISystem {
 class CScrollableList {
@@ -31,9 +30,9 @@ public:
 void CRedefinerList::Update(float deltaTime)
 {
     CScrollableList::Update(deltaTime);
-    if (FadeOutTime > g_zero_0122dedc) {
+    if (FadeOutTime > 0.0f) {
         FadeOutTime -= deltaTime;
-        if (FadeOutTime <= g_zero_0122dedc) {
+        if (FadeOutTime <= 0.0f) {
             FadeOutTime = 0.0f;
             if (RefreshAfterFade)
                 Refresh();

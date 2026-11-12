@@ -6,6 +6,21 @@
 // Retail evidence: 1 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+// Retail opt-in (chunk F2, row 0x00BCFB00): define FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTLIGHTSBONES for the polymorphic retail class,
+// RTTI CEngineVSConstantLayoutLightsBones : CVertexShaderConstantLayout (FableWin.pdb ??0CEngineVSConstantLayoutLightsBones@@QAE@XZ,
+// ??1..@@UAE@XZ, ?PeekName@..@@UBE?AVCCharString@@XZ); no members of its own (0x14C). Needs FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT.
+#ifdef FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTLIGHTSBONES
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/CVertexShaderConstantLayout.h"
+class CEngineVSConstantLayoutLightsBones : public CVertexShaderConstantLayout {
+public:
+    CEngineVSConstantLayoutLightsBones();
+    virtual ~CEngineVSConstantLayoutLightsBones();
+    virtual CCharString PeekName() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineVSConstantLayoutLightsBones) == 0x14c);
+#else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -20,5 +35,7 @@ public:
 
 FABLE_STATIC_ASSERT(sizeof(CEngineVSConstantLayoutLightsBones) == 0x14c);
 FABLE_STATIC_ASSERT(offsetof(CEngineVSConstantLayoutLightsBones, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_CENGINEVSCONSTANTLAYOUTLIGHTSBONES
 
 #endif // FABLE_ENGINE_CENGINEVSCONSTANTLAYOUTLIGHTSBONES_H

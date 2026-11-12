@@ -111,6 +111,9 @@ class CPlayerManager;
 enum EGameAction;                                            // MS forward enums (as engine/fable_nscript_forward.h)
 enum EInputButtonEventType;
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSQUEUE
+enum EInputButtonEventType;                                  // MS forward enum (FAM13 opt-in below)
+#endif
 #pragma pack(push, 1)
 class CGamePlayerInterface {
 public:
@@ -136,6 +139,13 @@ public:
     // vectors), out of line in retail at 0x00445940 (landed as CGamePlayerInterface::GetNumAssignableSpecialMoveButtons, a spelling
     // neither PDB has). Declaration only, the layout below is unchanged.
     long GetNumberOfAssignableSpecialMoveButtons() const;               // 0x00445940
+#endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSQUEUE
+    // Opt-in (FAM13, row 0x005EE99D CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue): Ego_r.pdb / FableWin.pdb
+    // ?IsQuickAccessEventInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z, retail 0x004460C0 (scans QuickAccessItemButtons
+    // +0x7c4; its twins 0x00445E90 IsAssignableSpecialMoveButtonInQueue +0x7b8 and 0x004461D0 IsContextSensitiveEventInQueue +0x7d0).
+    // Declaration only, the layout below is unchanged.
+    bool IsQuickAccessEventInQueue(long button, EInputButtonEventType type, long device) const;   // 0x004460C0
 #endif
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04

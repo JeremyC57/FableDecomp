@@ -6,20 +6,23 @@
 // Callees: CCharString::operator!=(const char*) @ 0x0099E960 ("" @ 0x0122D70E), CDataBank::GetTextBySymbol @ 0x009C95E0 on
 //   CMainGameComponent::Get() @ 0x013B86A0 ->TextBank (+0x14), CWideString::operator!=(const wchar_t*) @ 0x0099B150 (L"" @ 0x0122D70C),
 //   CWideString(const CWideString&) @ 0x0099B720, ~CWideString @ 0x0099B510, CCharString::ToWideString() @ 0x0099E480,
-//   CDataBank::GetPGroupEntry(unsigned long, bool) @ 0x009C9070, CGroupEntry::GetText() @ 0x009C7A40, g_EmptyWideString @ 0x013BCA24.
+//   CDataBank::GetPGroupEntry(unsigned long, bool) @ 0x009C9070, CGroupEntry::GetText() @ 0x009C7A40, CWideString::NullString @ 0x013BCA24.
 // Layout: Ego_r.pdb CTCQuestCard (QuestName 0x18), CQuestCardDef QuestName 0x28 (text index); NGameText::CGroupEntry ref count +0x04.
 // Shape: the looked-up text is a named local returned through the copy constructor (no NRVO), the widened symbol passes the
 //   hidden pointer straight through, each with its own ~CWideString; the def index is read twice (`PDef->QuestName > 0`, then
 //   as the argument) -- one load in ecx copied to eax for the push, where a named index local loads eax directly; the group
 //   entry's release is the pointee's long `DecRef(); if (GetRefCount() == 0) Delete();` (`dec edi ; mov edx,edi ; test edx,edx`).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
 #include <stddef.h>
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     bool operator!=(const wchar_t* text) const;         // 0x0099B150
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_EmptyWideString;             // 0x013BCA24
 class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;            // 0x0099E960
@@ -114,5 +117,5 @@ CWideString CTCQuestCard::GetQuestName() const
         if (entry.Object)
             return entry.Object->GetText();
     }
-    return g_EmptyWideString;
+    return CWideString::NullString;
 }

@@ -1,10 +1,11 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (map<unsigned long, CDefPointer<CDefClassBase> >) STLport 4.6 recursive subtree release: erase the right subtree, release the counted def/effect pointer, free the node, continue left
-// Leaf: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@@2@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@@2@@Z
+// Leaf: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKV?$CDefPointer@VCDefClassBase@@@@@std@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B40F0, 75 bytes, thiscall `ret 4`; recursive; speed TU.
 // Identity (proven): CDefinitionManager::~CDefinitionManager 0x009B02E0 and the tree's clear / destructors 0x009B4D20, 0x009B6010, 0x009B6F80 call it: Ego_r.pdb CDefinitionManager::RecompiledDefs is map<unsigned long, CDefPointer<CDefClassBase> > (the def pointer at node +0x14).
 // Callees: itself (right subtree), the pointee's vtable slot 1 (Destroy) on its last reference, free 0x00BFEA14.
 // Shape (family M090, representative 0x004C4490): the landed STLport 4.6 `_tree.c` _M_erase model (0x00AD5240); the value's
 //   implicit destructor is the intrusive pointer's `if (p) { if (--p->RefCount == 0) p->Destroy(); p = 0; }` at node +0x14.
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private, so VC7.1 mangles it AAE (the queue's spelling, agentFAM07's binders); was public (QAE).
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 class CDefClassBase {
 public:
@@ -76,6 +77,7 @@ public:
 
     static _Link_type& _S_left(_Base_ptr __x) { return (_Link_type&)(__x->_M_left); }
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
+private:                                            // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);
 };
 

@@ -1,5 +1,8 @@
 // NUISystem::CSpellContainer::UnAssignSpell(unsigned long slot) -- undoes a spell assignment in a slot: a pending new spell there is deleted and the slot's base spell restored; otherwise the slot's child is deleted and replaced (also as the base spell) by a fresh empty-slot component that copies the old child's per-state position and colour
 // Leaf: ?UnAssignSpell@CSpellContainer@NUISystem@@UAEXK@Z
+// Respell (FAM12, queue land1011dr RELOC_NAME 0x0042ABCA): the out-of-line list destructor call binds ~list<CComponent*> (the landed
+//   owner of 0x0042ABCA, 117 callers, as 0x005A887D binds it), not ~_List_base: the local model carries the release in ~list
+//   (clear + sentinel free) and leaves ~_List_base empty, so the first branch's out-of-line destructor is ~list. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00545B10, 730 bytes (0x2DA + int3 padding to 736), thiscall `ret 4`, /O2 esp frame
 //   (sub esp,18h). Slot 144 of the CSpellContainer vtable 0x0124786C (absolute ref 0x01247AAC). Identity: Ego_r.pdb
 //   ?UnAssignSpell@CSpellContainer@NUISystem@@UAEXK@Z (slot 145 is SetEmptySlotDef 0x00546060, 143 AssignSpell 0x005458A0,
@@ -82,11 +85,7 @@ public:
         __n->_M_prev = __n;
         _M_node._M_data = __n;
     }
-    ~_List_base()
-    {
-        clear();
-        _M_node.deallocate(_M_node._M_data, 1);
-    }
+    ~_List_base() { }
     void clear()
     {
         _List_node<_Tp>* __cur = (_List_node<_Tp>*)this->_M_node._M_data->_M_next;
@@ -110,7 +109,11 @@ public:
     {
         insert(begin(), __x.begin(), __x.end());
     }
-    ~list() { }
+    ~list()
+    {
+        this->clear();
+        this->_M_node.deallocate(this->_M_node._M_data, 1);
+    }
     iterator begin() { return iterator(this->_M_node._M_data->_M_next); }
     const_iterator begin() const { return const_iterator(this->_M_node._M_data->_M_next); }
     const_iterator end() const { return const_iterator(this->_M_node._M_data); }

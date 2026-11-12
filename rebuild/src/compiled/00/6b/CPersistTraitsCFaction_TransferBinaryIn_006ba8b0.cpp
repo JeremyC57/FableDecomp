@@ -53,7 +53,6 @@ class CPersistContext { public:                           // retail 0x2c bytes, 
     CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
                     const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceName);   // 0x009BADD0
 };
-extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
@@ -132,7 +131,7 @@ void CPersistTraits<CFaction>::TransferBinaryIn(CMemoryDataInputStream& stream, 
     stream.ReadBytes(buffer.GetData(), length);
     buffer[length] = 0;
     CCharString text(buffer.GetData(), -1);
-    CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
+    CStringParser parser(text, 0, CCharString("", -1), 0);
     CPersistContext context(parser, 0, true, 0, 0, 0);
     TransferIn(context, parser, value);
 }

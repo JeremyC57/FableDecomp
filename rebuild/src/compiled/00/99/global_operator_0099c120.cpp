@@ -17,13 +17,14 @@ template<class T,class A>class _String_base{public:T* _M_start;T* _M_finish;_STL
 template<class T,class Traits=char_traits<T>,class A=allocator<T> >class basic_string:protected _String_base<T,A>{public:typedef unsigned int size_type;basic_string(const T*,size_type,const A& = A());basic_string& append(size_type,T);const T* c_str()const{return this->_M_start;}};
 }
 class CWideStringData{public:std::basic_string<wchar_t> Data;long NoRefs;CWideStringData(const wchar_t* text,unsigned long n):Data(text,n),NoRefs(1){}};
-extern long g_CWideStringInstanceCount;
 class CWideString{public:CWideStringData* PStringData;
-CWideString():PStringData(0){++g_CWideStringInstanceCount;}
-CWideString(const CWideString& other):PStringData(0){++g_CWideStringInstanceCount;if(&other!=this && other.PStringData!=PStringData){if(PStringData)UnassignString();CWideStringData* data=other.PStringData;if(data){PStringData=data;++data->NoRefs;}}}
-~CWideString(){if(PStringData){if(--PStringData->NoRefs<=0)delete PStringData;PStringData=0;}--g_CWideStringInstanceCount;}
+CWideString():PStringData(0){++NoStrings;}
+CWideString(const CWideString& other):PStringData(0){++NoStrings;if(&other!=this && other.PStringData!=PStringData){if(PStringData)UnassignString();CWideStringData* data=other.PStringData;if(data){PStringData=data;++data->NoRefs;}}}
+~CWideString(){if(PStringData){if(--PStringData->NoRefs<=0)delete PStringData;PStringData=0;}--NoStrings;}
 protected:void UnassignString();void MakeOwnCopyOfData();CWideStringData* AllocStringData(const wchar_t*,long);
 public:const CWideString& operator+=(wchar_t);
+protected:
+    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
 };
 
 #pragma auto_inline(off)

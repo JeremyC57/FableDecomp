@@ -17,6 +17,8 @@
 // expression over a named thing local, so VC7.1 cross-jumps them with the component already in ecx (a joined pointer
 // copies it through eax, +2 bytes). The mode-manager lookup IS tested (out-parameter GetInterface).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF26, 2026-11-12): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ
+//   (Ego_r.pdb + FableWin.pdb; body GetCombatManager().IsAttacker(*this)); was IsRegisteredCombatant (in neither PDB).
 #include "fable_compiler.h"
 class CTCBase;
 class CWorld;
@@ -170,7 +172,7 @@ class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
 };
 class CThingCreatureBase : public CThing { public:
-    bool IsRegisteredCombatant();               // 0x00662410
+    bool IsInMeleeAsAttacker() const;         // 0x00662410
     CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
@@ -198,7 +200,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace()
     }
     CThingCreatureBase* creature = GetCreature();
     if (creature && !(creature->m_flags91 & 1)) {
-        if (creature->IsRegisteredCombatant())
+        if (creature->IsInMeleeAsAttacker())
             GetCreature()->GetCombatManager().DeregisterCombatant(GetCreature());
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetInterface(&modes, 0x31))

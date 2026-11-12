@@ -9,10 +9,16 @@
 // Retail: Fable.exe @ 0x00416953, 738 bytes, frame pointer, no EH frame (the TU has no unwind tables).
 // Layout: CMainGameComponent as in the landed ForceRender 0x004164E0 (retail offsets); InitStructure +0x161d0 holds
 //   (retail loads) a world name +0x0 and a second wide string +0x4, the initial quest CCharString +0x8 and the save name +0xc.
-// Names: GetMapPath / GetMapPath2 (0x0049DDD0 / 0x0049DEC0), PostLoad 0x0049F180, Register 0x004BBC00
-//   and the globals 0x013B89C0 / 0x013B8648 / 0x013B8616 / 0x013B8674 are descriptive (no PDB name); literals 0x0122EE48
+// Names: GetMapPath / GetMapPath2 (0x0049DDD0 / 0x0049DEC0), PostLoad 0x0049F180
+//   and the globals 0x013B89C0 / 0x013B8648 / 0x013B8616 are descriptive (no PDB name); literals 0x0122EE48
 //   "Loading save", 0x0122EE38 "Loading world", 0x0122EE14 L"updatedscenic.wld", 0x0122EDFC "Activate Initial Quests",
 //   0x0122D70E "", -1.0f 0x0122DEE0.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013B8668 GForceLevel (global; initializer 0x01219FC0), was g_WorldToLoad.
+//   0x013B866C GForceStartingHolySite (global; initializer 0x01219FE0), was g_WorldToLoad2.
+//   0x013B8674 GRunLUAScript (global CCharString; initializer 0x0121A020), was g_Registration (a CRegistration). It goes to the protected
+//   CMainGameComponent::InitLUA(const CCharString&) 0x004BBC00 (Ego_r.pdb + FableWin.pdb; empty `ret 4` in both builds), was Register.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CCharString { public:
@@ -57,12 +63,11 @@ public:
 };
 class CQuestManager { public: void ActivateQuest(const CCharString& name, bool a, bool b); };   // 0x004B4A10
 extern bool        g_bSaveLoadFailed;                  // 0x013B89C0
-extern CWideString g_WorldToLoad;                      // 0x013B8668
-extern CWideString g_WorldToLoad2;                     // 0x013B866C
+extern CWideString GForceLevel;                      // 0x013B8668
+extern CWideString GForceStartingHolySite;                     // 0x013B866C
 extern bool        g_bExportStaticMaps;                // 0x013B8648
 extern bool        g_b13B8616;                         // 0x013B8616
-struct CRegistration;
-extern CRegistration g_Registration;                   // 0x013B8674
+extern CCharString GRunLUAScript;                      // 0x013B8674
 class CDisplayEngine;
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -95,9 +100,9 @@ public:
     scoped_ptr<CDisplayEngine>     PDisplayEngine;     // +0x28
     unsigned char                  _pad02c[0x161d0 - 0x2c];
     CMainGameComponentInit         InitStructure;      // +0x161d0
-    void Register(CRegistration* registration);        // 0x004BBC00
 
 protected:
+    void InitLUA(const CCharString& script);           // 0x004BBC00
     virtual void PostInit();
 };
 
@@ -113,11 +118,11 @@ void CMainGameComponent::PostInit()
         CWideString path;
         if (InitStructure.WorldName.GetLength() > 0) {
             path = GetLevelsDirectory() + InitStructure.WorldName;
-            g_WorldToLoad = InitStructure.WorldName;
+            GForceLevel = InitStructure.WorldName;
             if (InitStructure.WorldName2.GetLength() > 0)
-                g_WorldToLoad2 = InitStructure.WorldName2;
-        } else if (g_WorldToLoad.GetLength() > 0) {
-            path = GetLevelsDirectory() + g_WorldToLoad;
+                GForceStartingHolySite = InitStructure.WorldName2;
+        } else if (GForceLevel.GetLength() > 0) {
+            path = GetLevelsDirectory() + GForceLevel;
         } else {
             path = GetLevelsDirectory() + L"updatedscenic.wld";
         }
@@ -141,5 +146,5 @@ void CMainGameComponent::PostInit()
             CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateQuest(InitStructure.InitialQuest, false, true);
         NProfileTimer::EndProfile(0);
     }
-    Register(&g_Registration);
+    InitLUA(GRunLUAScript);
 }

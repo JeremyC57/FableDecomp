@@ -5,13 +5,14 @@
 // otherwise place the creature within 2 units of an interesting thing on a 20% chance.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00919440, length 199 bytes (+ int3 padding). Vtable slot 3.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, 0x23 = CTCVillager), GFGetPVillageInterface
-// @ 0x007EE540 (twice), CTCVillage::IsCurfewTime @ 0x00658D5D, FindInterestingThing @ 0x00919240 (twice),
+// @ 0x007EE540 (twice), CTCVillage::IsSociableTime @ 0x00658D5D, FindInterestingThing @ 0x00919240 (twice),
 // GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CThing::GetPosition @ 0x004C73D0,
 // CThingCreatureBase::AutoPlaceNear(const C3DVector&, float) @ 0x00665DF0.
-// Shape: `if (villager && village && !IsCurfewTime()) return false;` returns the tested al; then one `&&` chain
+// Shape: `if (villager && village && !IsSociableTime()) return false;` returns the tested al; then one `&&` chain
 // returned through the full register: a thing exists, the inlined LCG `% 100 < 20` (unsigned `jae`), and the
 // placement with the creature read into esi before the argument pushes (inline helper).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF23): 0x00658D5D is ?IsSociableTime@CTCVillage@@QBE_NXZ (Ego_r 0x0069A63D / FableWin name sets; donor order IsNightTime / IsSociableTime / IsCurfewTime = retail 0x00658D07 / 0x00658D5D / 0x00658DB3, and the body reads CVillageDef SociableStartTime +0xD4 / SociableFinishTime +0xD8, retail STLport offsets of Ego_r 244 / 248); was IsCurfewTime() (non-const; the curfew test is 0x00658DB3).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -153,7 +154,7 @@ class CThingCreatureBase { public:
     bool AutoPlaceNear(const C3DVector& position, float radius);    // 0x00665DF0
 };
 class CTCVillage { public:
-    bool IsCurfewTime();                        // 0x00658D5D
+    bool IsSociableTime() const;                // 0x00658D5D
 };
 struct CTCVillager;
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
@@ -161,7 +162,9 @@ class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007E
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
     long FrameToLook;                           // +0x14 (engine header)
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
-    CThing* FindInterestingThing();             // 0x00919240
+private:
+    CThing* FindInterestingThing();             // 0x00919240 Ego_r/FableWin ?FindInterestingThing@CAIStateGroup_LookAtInterestingThings@@AAEPAVCThing@@XZ (private)
+public:
     virtual bool InitCreaturePosition();
     // the creature is a NAMED local read before the argument pushes (it rides in esi across the calls)
     FABLE_FORCEINLINE bool PlaceNearInterestingThing()
@@ -177,7 +180,7 @@ bool CAIStateGroup_LookAtInterestingThings::InitCreaturePosition()
     CTCVillager* villager;
     if (PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER, &villager)
         && ((CTCVillageMember*)villager)->GetPVillage() != 0
-        && !((CTCVillageMember*)villager)->GetPVillage()->IsCurfewTime())
+        && !((CTCVillageMember*)villager)->GetPVillage()->IsSociableTime())
         return false;
     return FindInterestingThing() != 0
         && WorldRandomRange(*GetPWorldSeed(), 100) < 20

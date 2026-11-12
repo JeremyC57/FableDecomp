@@ -7,7 +7,7 @@
 //   ?PeekGlobalDiffuseColour@CEngineLightingManager@@QBEABVCRGBFloatColour@@XZ; the global at 0x01436E9C is the lighting manager
 //   (landed users e.g. CEnginePrimitiveRenderer::InitialiseGlobalLights 0x00B32300); +0x3C is ThemeChannels (retail
 //   12-byte CArray<CEngineLightingManager::CThemeChannel>, 0x70-byte elements), DiffuseColour at +0x00 of a channel.
-// Shape: `return g_pEngineLightingManager->PeekGlobalDiffuseColour();` with the manager's inline accessor returning
+// Shape: `return NEngineInternal::GPLightingManager->PeekGlobalDiffuseColour();` with the manager's inline accessor returning
 //   ThemeChannels[0].DiffuseColour by reference; the 16-byte colour copied one dword at a time through esi.
 // Header debt: engine/CEngineLightingManager.h flattens ThemeChannels to bytes and the CThemeChannel / CRGBFloatColour
 //   types have no header, so the members used are modelled locally.
@@ -43,7 +43,7 @@ public:
     const CRGBFloatColour& PeekGlobalAmbientColour() const { return ThemeChannels[0].AmbientColour; }
 };
 
-extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
 class CIEngine {
 public:
@@ -56,5 +56,5 @@ public:
 
 const CRGBFloatColour CEngine::PeekGlobalDiffuseColour() const
 {
-    return g_pEngineLightingManager->PeekGlobalDiffuseColour();
+    return NEngineInternal::GPLightingManager->PeekGlobalDiffuseColour();
 }

@@ -71,8 +71,8 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 
-extern CCharString g_HeadTurnAnimVName;                    // 0x013BACE8
-extern CCharString g_HeadTurnAnimHName;                    // 0x013BACE4
+extern const CCharString ST_HEAD_TURN_V;                // 0x013BACE8 ?ST_HEAD_TURN_V@@3VCCharString@@B
+extern const CCharString ST_HEAD_TURN_H;                // 0x013BACE4 ?ST_HEAD_TURN_H@@3VCCharString@@B
 
 class CTCLook { public:
     void* __vftable;                                       // +0x00
@@ -90,14 +90,14 @@ class CTCLook { public:
 void CTCLook::InitialiseHeadAnims()
 {
     if (IS_THING_ALIVE(PParentCreature)) {
-        if (PParentCreature->HasAnimation(g_HeadTurnAnimVName, false))
-            PHeadTurnAnimV = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PParentCreature->GetAnimFromName(g_HeadTurnAnimVName, 0)));
-        if (PParentCreature->HasAnimation(g_HeadTurnAnimHName, false))
-            PHeadTurnAnimH = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PParentCreature->GetAnimFromName(g_HeadTurnAnimHName, 0)));
+        if (PParentCreature->HasAnimation(ST_HEAD_TURN_V, false))
+            PHeadTurnAnimV = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_V, 0)));
+        if (PParentCreature->HasAnimation(ST_HEAD_TURN_H, false))
+            PHeadTurnAnimH = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_H, 0)));
     } else {
-        if (PAppearanceDef->Animation.AnimExists(g_HeadTurnAnimVName, CAnimFilterNoGroup()))
-            PHeadTurnAnimV = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PAppearanceDef->Animation.GetAnimation(g_HeadTurnAnimVName, 0, CAnimFilterNoGroup())));
-        if (PAppearanceDef->Animation.AnimExists(g_HeadTurnAnimHName, CAnimFilterNoGroup()))
-            PHeadTurnAnimH = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PAppearanceDef->Animation.GetAnimation(g_HeadTurnAnimHName, 0, CAnimFilterNoGroup())));
+        if (PAppearanceDef->Animation.AnimExists(ST_HEAD_TURN_V, CAnimFilterNoGroup()))
+            PHeadTurnAnimV = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_V, 0, CAnimFilterNoGroup())));
+        if (PAppearanceDef->Animation.AnimExists(ST_HEAD_TURN_H, CAnimFilterNoGroup()))
+            PHeadTurnAnimH = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_H, 0, CAnimFilterNoGroup())));
     }
 }

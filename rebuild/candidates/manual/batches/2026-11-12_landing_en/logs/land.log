@@ -1,0 +1,9 @@
+addr       parity           behav  name
+004b4260   RELOCATION_MATCH PASS   ActivateMultipleQuests
+
+WINS: 1
+  004b4260 RELOCATION_MATCH CQuestManager::ActivateMultipleQuests
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CQuestManager_ActivateMultipleQuests_004b4260
+rc=0

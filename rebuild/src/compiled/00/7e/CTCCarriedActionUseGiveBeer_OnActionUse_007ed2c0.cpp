@@ -60,9 +60,11 @@ class CCreatureAction_Drink : public CCreatureActionBase { public:        // 0xb
     CBaseIntelligentPointer PDrink;                         // +0xb0
     CCreatureAction_Drink(CThingCreatureBase* drinker, CThing* drink);   // 0x00843510
 };
-class CThingAICreature : public CThing { public:
-    bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0 (CThingCreatureBase)
-    bool IsPerformingAnyAction();                           // 0x006622A0 (CThingCreatureBase)
+// Name fix (naming agent NF21, 2026-11-11): both callees are CThingCreatureBase members (Ego_r.pdb / FableWin.pdb):
+//   ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z and ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ.
+class CThingCreatureBase : public CThing { public:
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
+    bool IsPerformingAnyAction() const;                     // 0x006622A0
 };
 class CTCTargetingBase { public:                                   // interface 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -95,7 +97,7 @@ struct CTCCarriedActionUseGiveBeer : CTCCarriedActionUseBase {
 
 void CTCCarriedActionUseGiveBeer::OnActionUse(CThing& thing)
 {
-    CThingAICreature* user = (CThingAICreature*)&thing;
+    CThingCreatureBase* user = (CThingCreatureBase*)&thing;
     if (user->IsPerformingAnyAction())
         return;
     CTCCarriedActionUseBase::OnActionUse(thing);
@@ -105,7 +107,7 @@ void CTCCarriedActionUseGiveBeer::OnActionUse(CThing& thing)
             if (!targeting->GetTargetedThing()->HasTC(0xc3))
                 return;
             CThing* item = ParentThing;
-            user->SetCurrentAction(&CCreatureAction_GiveItemToThing((CThingCreatureBase*)user,
+            user->SetCurrentAction(CCreatureAction_GiveItemToThing(user,
                                                                     targeting->GetTargetedThing(), item));
             CTCDrinker* drinker = 0;
             CThing* target = targeting->GetTargetedThing();
@@ -116,5 +118,5 @@ void CTCCarriedActionUseGiveBeer::OnActionUse(CThing& thing)
         }
     }
     CThing* drink = ParentThing;
-    user->SetCurrentAction(&CCreatureAction_Drink((CThingCreatureBase*)user, drink));
+    user->SetCurrentAction(CCreatureAction_Drink(user, drink));
 }

@@ -21,7 +21,9 @@ class CDefPointeeBase;
 #pragma pack(push, 1)
 class CTCWillLightning {
 public:
+#ifndef FABLE_RETAIL_CTCWILLLIGHTNING_VSLOTS
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
     unsigned char    WeaponState[0x4];                       // +0x0c EWEAPON_STATE
@@ -74,11 +76,29 @@ private:
     void SetLevel(long level);                               // 0x0079F810
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+public:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007A4080
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_VSLOTS3
+// agentFAM05 (2026-11-11): retail virtual(s) this declaration lacks, declaration only (no layout change; the vtable exists). Slots from the TLC
+// vtable (agentFAM03 proof, re-verified by agentFAM05); spellings from the Ego_r / FableWin name sets.
+public:
+    virtual void OnKill();  // slot 14, 0x007A0D70
+private:
+    void FinalCleanup();    // 0x007A0950 ?FinalCleanup@CTCWillLightning@@AAEXXZ
+public:
+#endif // FABLE_RETAIL_CTCWILLLIGHTNING_VSLOTS3
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCWillLightning) == 0xe4);
+#ifndef FABLE_RETAIL_CTCWILLLIGHTNING_VSLOTS
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, WeaponState) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, LeftHandAnim) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PItemRemoved) == 0x11);

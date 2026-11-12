@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00a24d70   WARN RELOC_NAME: ?SetMemoryPool@C3DAnimation2@@QAEXPAVCMovableResourceMemoryPool@@@Z -> 00a4be00 labelled '_global::SetMember_dword0x38_00a4be00'
+00a24d70   RELOCATION_MATCH PASS   C3DAnimationInfo::CAnimationData::BuildSharedAnimation
+00a26ad0   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+00a26ad0   WARN RELOC_NAME: ?SetMemoryPool@C3DAnimation2@@QAEXPAVCMovableResourceMemoryPool@@@Z -> 00a4be00 labelled '_global::SetMember_dword0x38_00a4be00'
+00a26ad0   RELOCATION_MATCH PASS   C3DAnimationInfo::BuildAnimationInstance
+00a895f0   WARN SHARED_HEADER_AVAILABLE C3DMeshMaterial
+00a895f0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2
+00a895f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00a895f0   RELOCATION_MATCH PASS   C3DMesh2::~C3DMesh2
+00ba48f0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocksNoMorph
+00bd2a90   RELOCATION_MATCH PASS   CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings
+00bec680   RELOCATION_MATCH PASS   CEngineInternalPrimitiveMeshBase::CollectStats
+
+WINS: 6
+  00a24d70 RELOCATION_MATCH C3DAnimationInfo::CAnimationData::?BuildSharedAnimation@CAnimationData@C3DAnimationInfo@@QAEXXZ
+  00a26ad0 RELOCATION_MATCH C3DAnimationInfo::?BuildAnimationInstance@C3DAnimationInfo@@ABE?AV?$CCountedPointer@VC3DAnimation2@@@@ABVC3DMesh2@@@Z
+  00a895f0 RELOCATION_MATCH C3DMesh2::??1C3DMesh2@@UAE@XZ
+  00ba48f0 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?SetupStaticBlocksNoMorph@CEnginePrimitiveManagerStaticMeshesBase@@SI_NAAVC3DPrimitive2@@ABVC3DMesh2@@AAVC3DTextureStages@@JPBVCGraphicDataBank@@_N@Z
+  00bd2a90 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z
+  00bec680 RELOCATION_MATCH CEngineInternalPrimitiveMeshBase::?CollectStats@CEngineInternalPrimitiveMeshBase@@SIXABVC3DMeshInfo@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z

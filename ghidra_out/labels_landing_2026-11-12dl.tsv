@@ -1,0 +1,8 @@
+address	name	evidence
+004C24C0	~CCountedPointer	chunk Q21 (landing dl): 
+00A8A5F0	GetDummyObjectTransformAnimated	chunk Q21 (landing dl): 
+00B90390	ResetOcclusionInfo	chunk Q21 (landing dl): 
+00404C50	IsIMEActive	chunk Q21 (landing dl): 
+0054FFE0	GetTextWindow	chunk Q21 (landing dl): 
+006C1250	FrameUpdate	chunk Q21 (landing dl): 
+00B4A700	Render	chunk Q21 (landing dl): 

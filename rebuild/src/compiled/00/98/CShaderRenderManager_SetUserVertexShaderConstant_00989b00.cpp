@@ -1,6 +1,8 @@
-// CShaderRenderManager::SetUserVertexShaderConstant(long index, float x, float y, float z, float w) -- uploads (x, y, z, w) as one vector at the current layout's user-constant base (+0x14) plus index
+// CShaderRenderManager::SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w) -- uploads (x, y, z, w) as one vector at the current layout's user-constant base (+0x14) plus index
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00989B00, length 78 bytes.
-// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJMMMM@Z
+// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z
+// Name-fix pass (2026-11-12): Ego_r.pdb 0x00AE6350 + FableWin.pdb ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z (unsigned long index,
+//   as engine/CShaderRenderManager.h; the landed 0x00B99670 binds this symbol); was spelled with a long index (QAEXJMMMM).
 // Layout: engine/CVertexShaderConstantLayout.h (its CShaderConstantRange members viewed as {vptr, Offset, Count}).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, vtable +0x178, `__stdcall`, `this` pushed).
 // Shape: a 16-byte frame vector handed to the device as one constant. It reproduces only through an
@@ -36,7 +38,7 @@ class CShaderRenderManager { public:
     unsigned char                _pad008[0x1cc];
     IDirect3DDevice9*            D3DDevice;                 // +0x1d4
 
-    void SetUserVertexShaderConstant(long index, float x, float y, float z, float w);
+    void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);
 
     // inline upload of one vector: the four components arrive by value (right-to-left argument
     // evaluation puts the register expression last, which is what fixes retail's push schedule)
@@ -51,7 +53,7 @@ class CShaderRenderManager { public:
     }
 };
 
-void CShaderRenderManager::SetUserVertexShaderConstant(long index, float x, float y, float z, float w)
+void CShaderRenderManager::SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w)
 {
     SetVertexShaderConstant(ConstantRange(CurrentVSConstantLayout->User).Offset + index, x, y, z, w);
 }

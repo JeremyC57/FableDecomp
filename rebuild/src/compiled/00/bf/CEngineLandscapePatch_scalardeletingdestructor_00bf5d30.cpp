@@ -16,11 +16,10 @@
 class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
+//   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 struct SCountBlock {                               // the counted pointer's shared block
     long         m_count;                          // +0x00
@@ -54,7 +53,7 @@ class CEngineLandscapePatch : public CMovableResource { public:  // vtable 0x012
     CCountedResourcePointer m_resource;            // +0x40
     void Clear();                                  // 0x00BF38F0
     FABLE_FORCEINLINE virtual ~CEngineLandscapePatch() { Clear(); }
-    static void operator delete(void* block) { g_pEngine_01436ea8->m_pLandscapeMemory->FreeVirtual(block); }
+    static void operator delete(void* block) { g_pLandscapeRenderer->MemoryManager->FreeVirtual(block); }
 };
 
 // VC7.1 emits the class's vtable and scalar deleting destructor in a TU that constructs it; this helper is that construction.

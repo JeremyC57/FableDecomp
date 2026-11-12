@@ -4,6 +4,10 @@
 // Identity (naming wave 11): ?Main@CFollower@CPersonalScript_EmptyScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F646C slot 1 is stored by the factory 0x00EF4130 registered as "Follower"
 // Naming wave 35: identity reg 00ef020a "Follower" in 00ef0090; Alloc 00ef4130; vtable 012f646c slot 1; PDB ?Main@CFollower@CPersonalScript_EmptyScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); replaces CCham::Main: current name also held by 00ef3aa0,00f14770; CCham::Main is at 00f14770 (its own vtable slot) (wave3/labels_alloc.tsv); PDB ?Main@CFollower@CPersonalScript_EmptyScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+// Name fix (agentNF24, land1011de): the local NScript::CPredicateBase / CFilterBase / CIsThing / CAnd stand-ins replaced by the shared
+//   engine/CPredicateBase.h, CIsThingConscious.h and CPredicate_And.h: 0x012C2FF4 binds ??_7CPredicateBase@NScript@@6B@ (was ??_7CFilterBase@@6B@),
+//   0x012C2FE8 ??_7CIsThingConscious@NScript@@6B@ (was ??_7CIsThing@@6B@), 0x00EF7AB0 ??1CIsThingConscious@NScript@@UAE@XZ, 0x012F687C / 0x00EF8740
+//   the CPredicate_And<CIsThingConscious,CIsThingConscious> vtable / ctor; the by-value And(a, b) factory is NScript::operator&&.
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -50,29 +54,13 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
-}
-struct CFilterBase : public NScript::CPredicateBase {                                   // vtable 0x012C2FF4
-    ~CFilterBase() { }
-};
-struct CIsThing {                                      // vtable 0x012C2FE8
-    virtual void v00();
-    CScriptThing m_thing;                              // +0x04
-    CIsThing(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThing();                                       // 0x00EF7AB0
-};
-struct CAnd : CFilterBase {                            // vtable 0x012F687C, 0x24 bytes
-    CIsThing m_a;                                      // +0x04
-    CIsThing m_b;                                      // +0x14
-    CAnd(const CIsThing& a, const CIsThing& b);        // 0x00EF8740
-    ~CAnd() { }
-    virtual void v00();
-};
+// NScript predicates: the shared models (agentNF24). The And of two CIsThingConscious (vtable 0x012F687C, ctor 0x00EF8740) is built by
+// the inline NScript::operator&& and destroyed inline (opt-in FABLE_RETAIL_CPREDICATE_AND_INLINE_DTOR): ~CIsThingConscious 0x00EF7AB0
+// for each operand, then the CPredicateBase vtable 0x012C2FF4. The CIsThingConscious(const CScriptThing&) ctor is inline in retail.
+#define FABLE_RETAIL_CPREDICATE_AND_INLINE_DTOR
+#include "engine/CIsThingConscious.h"
+#include "engine/CPredicate_And.h"
+inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
@@ -93,12 +81,10 @@ public:
 };
 }
 
-inline CAnd And(const CIsThing& a, const CIsThing& b) { return CAnd(a, b); }
-
 void NScript::CPersonalScript_EmptyScript::CFollower::Main()
 {
     CScriptThing leader = Game->GetThingWithScriptName("Leader");
-    SetPredicate(And(CIsThing(Me), CIsThing(leader)));
+    SetPredicate(CIsThingConscious(Me) && CIsThingConscious(leader));
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;

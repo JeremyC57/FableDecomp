@@ -13,6 +13,8 @@
 // STLport map/vector/list shrink; landed AbortWithMessage 0x00563410 has ScoreboardState +0x50).
 // Shape: a switch on ScoreboardState (case 1 lowest); every case returns on its own and each case's message string gets
 // its own frame word (VC7.1 does not share slots between switch cases).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
@@ -22,8 +24,9 @@ class CCharString { public:
 class CWideString { public:
     void* PStringData;
     bool operator!=(const CWideString& other) const;   // 0x0099B0F0
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern const CWideString g_emptyWideString;          // 0x013BCA24
 extern bool g_bShowOnlineScoreboard;                 // 0x013B8AE1
 
 struct SListNodeBase {
@@ -111,7 +114,7 @@ void CTCHeroOnlineScoreboard::GlobalUpdate(bool paused)
     }
     case 5:
         ChooseAClan();
-        if (SelectedClan != g_emptyWideString)
+        if (SelectedClan != CWideString::NullString)
             ScoreboardState = 6;
         return;
     case 6: {

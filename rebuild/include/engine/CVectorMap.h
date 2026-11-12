@@ -33,6 +33,11 @@ public:
     // instance 0x009B1FF0). A declaration only.
     const_iterator UpperBound(const K&) const;
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_GETKEYLIST
+    // Retail opt-in (chunk Q15, row 0x0086B9D0): Ego_r.pdb ?GetKeyList@?$CVectorMap@J..@@QBEXAAV?$vector@J..@std@@@Z, out of line in
+    // retail (0x0086D240 for <long, CRandomAppearanceMorph::CSkeletalMorph>). Declaration only.
+    void GetKeyList(std::vector<K>& keys) const;
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
     // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
     // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under
@@ -83,6 +88,13 @@ public:
     // UpdateParticleAttachment local model): Ego_r.pdb CVectorMap::Insert (push_back, then mark Dirty) and Update (sort with the
     // stored Compare when Dirty, then clear it), both inline in retail (the push_backs and the guarded std::sort calls 0x0076C000 /
     // 0x0076C1A0 sit in the callers).
+#if defined(FABLE_RETAIL_CVECTORMAP_INSERT_FORCEINLINE) && defined(_MSC_VER)
+    // Q19 nested opt-in (row 0x008E16A0 CModeScreamerSuperAttack::FrameUpdate): the same Insert forced inline, as the
+    // INSERT_KEYVALUE overload below (Ego_r.pdb holds no out-of-line CVectorMap::Insert). In that TU a plain inline Insert is called
+    // out of line, while retail expands both push_backs in place (the first straight into _M_insert_overflow 0x0076ADA0 on the
+    // still-empty vector, 0x008E1832; then `mov byte ptr [Dirty],1`).
+    __forceinline
+#endif
     void Insert(const value_type& value) { this->push_back(value); Dirty=true; }
     void Update() { if(Dirty) { std::sort(this->begin(),this->end(),Compare); Dirty=false; } }
 #endif
@@ -122,6 +134,11 @@ public:
 #ifndef FABLE_RETAIL_CVECTORMAP_INSERT   // that opt-in's Update is the same body with Sort written out
     void Update() { if(Dirty) Sort(); }
 #endif
+#endif
+#ifdef FABLE_RETAIL_CVECTORMAP_SETDIRTY
+    // Opt-in (chunk Q7, row 0x0086BFB0 CRandomAppearanceMorph::TransferBinaryIn): Ego_r.pdb ?SetDirty@?$CVectorMap@..@@QAEX_N@Z
+    // (CSkeletalMorph, CSkeletalMorphs::CEntry, CAnimComponentBase instances), inline in retail (`mov byte ptr [map+0Dh],0`).
+    void SetDirty(bool dirty) { Dirty=dirty; }
 #endif
 private:
     CompareType Compare;

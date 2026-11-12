@@ -9,7 +9,7 @@
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("STORY_PLACE_MARKER" @ 0x0128F5F0),
 // CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x23 = CTCVillager, bit 3 of the bitset dword at
-// +0x24), GFGetPVillageInterface @ 0x007EE540 (twice), CTCVillage::IsCookTime @ 0x00658A80,
+// +0x24), GFGetPVillageInterface @ 0x007EE540 (twice), CTCVillage::IsStoryTime @ 0x00658A80,
 // CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::GetPFirstThing<CThingFilter_HasDefGlobalIndex>
 // @ 0x00910740 (filter {def index} and the out thing in the 8-byte frame).
 // Shape: the def index is looked up first through a CCharString temporary; the out-thing slot shares the key word.
@@ -138,7 +138,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsCookTime();                          // 0x00658A80
+    bool IsStoryTime() const;                   // 0x00658A80
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
@@ -166,7 +166,7 @@ bool CAIStateGroup_MinionListenToStory::IsRunnable()
     CThingFilter_HasDefGlobalIndex filter;
     CTCVillager* villager;
     return PBrain->PCreature->GetInterface(&villager, 0x23) && GFGetPVillageInterface(villager) != 0
-        && GFGetPVillageInterface(villager)->IsCookTime() && FindMarker(filter, markerIndex);
+        && GFGetPVillageInterface(villager)->IsStoryTime() && FindMarker(filter, markerIndex);
 }
 
 
@@ -186,7 +186,7 @@ static CGameDefinitionManager gdm;
 CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return gdm; }
 long CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) { ++idxCalls; return markerIdx; }
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* v) { ++villCalls; villArg = v; return villageRet; }
-bool CTCVillage::IsCookTime() { ++cookCalls; return cookTime; }
+bool CTCVillage::IsStoryTime() const { ++cookCalls; return cookTime; }
 CThingSearchTools* CAIStateGroup_MinionListenToStory::PeekThingSearchTools() { ++peekCalls; return &tools; }
 bool CThingSearchTools::GetPFirstThing(const CThingFilter_HasDefGlobalIndex& f, CThing** pp) { ++firstCalls; filterIdx = f.DefGlobalIndex; firstOut = pp; return found; }
 CAIStateGroupBase::~CAIStateGroupBase() { }

@@ -36,6 +36,16 @@ public:
 #endif
         CWorld& GetWorld() const;                                                                 // 0x0073A680
 #endif
+#ifdef FABLE_RETAIL_CMODEBASE_NOFRAMES
+    // agentFAM09 opt-in (rows 0x0121F7D0 / 0x0121F800, their dynamic initializers): Ego_r.pdb / FableWin.pdb `dynamic initializer for
+    // 'CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_{COMB_IDLE,IDLE,WAVE}_ANIMS'' (0x013BAFE4 / 0x013BAFE8 / 0x013BAFEC,
+    // FPS*6 / *12 / *3); private static const long per Anniv360 Test PDB (third source) ?NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS@
+    // CModeBase@CTCCreatureModeManager@@0JB. Static members: no layout change.
+    private:
+        static const long NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS;      // 0x013BAFE4
+        static const long NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS;           // 0x013BAFE8
+        static const long NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS;           // 0x013BAFEC
+#endif
     protected:
         CThing& ParentThing;
         unsigned char WeaponBasedFilter[12]; // Original CAnimFilterOfGroup.
@@ -57,6 +67,20 @@ private:
     std::list<CCountedPointer<CModeBase> > PModes;
     long TimeLeftForCurrentMode,TimeForNextIdleMode;
     unsigned char AvailableIdleModes[12]; // std::vector<NCreatureMode::EMode>.
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
+    // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
+protected:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x007442A0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_FRAMEUPDATE
+// agentFAM04 (2026-11-11): retail CTCBase slot 9 override (Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCCreatureModeManager@@MAEXXZ,
+// protected virtual; TLC vtable 0x01268854 slot 9 = 0x0073A880). Declaration only (no layout change).
+protected:
+    virtual void FrameUpdate();                                          // slot 9, 0x0073A880
+public:
+#endif // FABLE_RETAIL_CTCCREATUREMODEMANAGER_FRAMEUPDATE
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCreatureModeManager)==0x24);
 

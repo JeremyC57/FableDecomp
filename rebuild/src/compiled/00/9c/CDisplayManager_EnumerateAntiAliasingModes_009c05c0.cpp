@@ -16,6 +16,7 @@
 // Shape: types.clear() is inline here (STLport erase(first, last) with the counted __copy loop: an enum is not trivially
 //   assignable to STLport's type traits); push_back and its __false_type _M_insert_overflow are inline (`__forceinline`),
 //   as in EnumerateDisplayModes 0x009C02D0 from the same TU.
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private (mangled AAE, the landed _M_erase row's own spelling, queue land1011da); was public (QAE).
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                          // 0x00BFEA14
@@ -258,7 +259,9 @@ public:
     iterator end() { return iterator(this->_M_header._M_data); }
     unsigned int size() const { return _M_node_count; }
     pair<iterator, bool> insert_unique(const _Value& __x);      // 0x009C29B0 for ESurfaceMultisampleType
+private:                                                  // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);
+public:
     void clear()
     {
         if (_M_node_count != 0) {

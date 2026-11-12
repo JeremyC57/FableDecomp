@@ -1,0 +1,25 @@
+addr       parity           behav  name
+0076eb00   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+0076eb00   RELOCATION_MATCH PASS   InitialiseTrails
+008e20f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KVC3DVector@@@std@@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@0V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c000 labelled 'std::sort<std::pair<unsigned long, C3DVector> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareVector<unsigned long>>'
+008e20f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c1a0 labelled 'std::sort<std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareParamDesc<unsigned long>>'
+008e20f0   WARN RELOC_NAME: ?CountLivingHelpers@CTCBoss@@QAEJXZ -> 007aeec0 labelled 'CTCBoss::CountLivingHelperCreatures'
+008e20f0   RELOCATION_MATCH PASS   FrameUpdate
+008e24f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KVC3DVector@@@std@@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@0V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c000 labelled 'std::sort<std::pair<unsigned long, C3DVector> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareVector<unsigned long>>'
+008e24f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c1a0 labelled 'std::sort<std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareParamDesc<unsigned long>>'
+008e24f0   WARN RELOC_NAME: ?CountLivingHelpers@CTCBoss@@QAEJXZ -> 007aeec0 labelled 'CTCBoss::CountLivingHelperCreatures'
+008e24f0   RELOCATION_MATCH PASS   FrameUpdate
+00cdd6b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00cdd6b0   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  0076eb00 RELOCATION_MATCH CTCWeaponTrail::?InitialiseTrails@CTCWeaponTrail@@AAEXXZ
+  008e20f0 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpShield::?FrameUpdate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ
+  008e24f0 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpSpeed::?FrameUpdate@CModeGuildmasterPowerUpSpeed@NCreatureMode@@UAEXXZ
+  00cdd6b0 RELOCATION_MATCH NScript::CGlobal_TeleportToHeroGuildScript::?Main@CGlobal_TeleportToHeroGuildScript@NScript@@UAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCWeaponTrail_InitialiseTrails_0076eb00
+  NCreatureModeCModeGuildmasterPowerUpShield_FrameUpdate_008e20f0
+  NCreatureModeCModeGuildmasterPowerUpSpeed_FrameUpdate_008e24f0
+  NScriptCGlobalTeleportToHeroGuildScript_Main_00cdd6b0

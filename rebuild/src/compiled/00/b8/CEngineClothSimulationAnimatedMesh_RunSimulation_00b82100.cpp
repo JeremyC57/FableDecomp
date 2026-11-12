@@ -103,11 +103,13 @@ public:
     C3DVector* GetBoneScalings(C3DMesh2* mesh);         // 0x00B83750
 };
 extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
-struct CParticleSimPointer {                             // CCountedPointer<CParticleSimulation>
-    CParticleSimulation* Object;
-    SCountBlock* Info;
-    void Reset(CParticleSimulation* object);            // 0x00B82A50
-};
+// Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the elements are the shared CCountedPointer<CParticleSimulation> and their
+//   out-of-line Reset 0x00B82A50 is FableWin.pdb ?Reset@?$CCountedPointer@VCParticleSimulation@@@@QAEXPAVCParticleSimulation@@@Z
+//   (stores DeleteData<CParticleSimulation> 0x00B825D0), was the stand-in ?Reset@CParticleSimPointer@@. Declared only
+//   (FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"
+typedef CCountedPointer<CParticleSimulation> CParticleSimPointer;
 struct CParticleSimArray {                               // 12-byte STLport vector
     CParticleSimPointer* _M_start;
     CParticleSimPointer* _M_finish;
@@ -168,7 +170,7 @@ void CEngineClothSimulationAnimatedMesh::RunSimulation()
         ParticleSims.resize(count);
         for (unsigned long i = 0; i < count; ++i) {
             ParticleSims._M_start[i].Reset(new CParticleSimulation);
-            CParticleSimulation* sim = ParticleSims._M_start[i].Object;
+            CParticleSimulation* sim = ParticleSims._M_start[i].Data;
             CParticleProgram* program = primitive.ParticleSystemsStart[i].Object->Program;
             if (!program->SetupSimulation(sim, blend, manager,
                     boneScalings, mesh.Object, g_ParticleMemoryPool, GetContext())) {
@@ -179,7 +181,7 @@ void CEngineClothSimulationAnimatedMesh::RunSimulation()
     }
     for (unsigned long i = 0; i < ParticleSims.size(); ++i) {
         CMeshParticleSystem* system = primitive.ParticleSystemsStart[i].Object;
-        CParticleSimulation* sim = ParticleSims._M_start[i].Object;
+        CParticleSimulation* sim = ParticleSims._M_start[i].Data;
         system->Program->SavePositions(sim);
         system->Program->SimulationStep(sim, GetContext(), blend, manager, boneScalings, mesh.Object);
     }

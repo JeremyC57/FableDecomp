@@ -118,7 +118,7 @@ class CEngineLightingManager {
 public:
     void EnableFog();                                   // 0x00B46890
 };
-extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
+namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 extern unsigned long g_renderStateDefault_01396e70;    // 0x01396E70
 
 enum EEngineRenderLayer {
@@ -160,7 +160,7 @@ void CEnginePrimitiveRenderer::PreRenderLayer(EEngineRenderLayer layer)
         g_pShaderRenderManager->SetPixelShadersEnabled(true);
         if (layer == RENDER_LAYER_8 || layer == RENDER_LAYER_10 || layer == RENDER_LAYER_20 || layer == RENDER_LAYER_400 ||
             layer == RENDER_LAYER_40000 || layer == RENDER_LAYER_4 || layer == RENDER_LAYER_40)
-            g_pEngineLightingManager->EnableFog();
+            NEngineInternal::GPLightingManager->EnableFog();
     }
     InitialiseGlobalLights();
     LightIndexMode = (UseFixedLights != 0) - 1;

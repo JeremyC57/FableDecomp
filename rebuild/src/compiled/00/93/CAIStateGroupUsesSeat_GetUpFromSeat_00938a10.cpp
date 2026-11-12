@@ -9,17 +9,21 @@
 //   0x00858030 / SetCombatAnimation 0x008574D0 / ~CCombatActionBase 0x0062E900 (CCreatureAction_GetUpFromSitting's
 //   inline ctor and dtor, vtable 0x01276C2C), CAIStateGroupBase::AIAction_PerformActionAndWait 0x0097DB70,
 //   CTCCreatureModeManager::RemoveMode 0x0073ABA0.
-// Data: the get-up animation names g_GetUpName @ 0x013BB6E0 ("ST_STAND_UP_FROM_SEAT") and g_GetUpNameAlternate @ 0x013BB6E8
+// Data: the get-up animation names GET_UP_FROM_CHAIR_ANIM_NAME @ 0x013BB6E0 ("ST_STAND_UP_FROM_SEAT") and GET_UP_FROM_BENCH_ANIM_NAME @ 0x013BB6E8
 //   ("ST_STAND_UP_FROM_BENCH") -- descriptive names of the landed sibling OnReplace 0x009387F0.
 // Layout: Ego_r.pdb CAIStateGroup_UsesSeat (PSeat +0x14, GotSeatPos +0x1C, Sitting +0x1D, SeatPosIndex +0x20,
 //   SittingOnBench +0x30; no engine header carries the methods); CCreatureAction_GetUpFromSitting SittingMode +0x114 /
 //   RemoveOnPerformAction +0x118 (PDB +0x12C / +0x130 over the PDB's 0x18-larger CCombatActionBase).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
+//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
+//   0x013BB6E8 GET_UP_FROM_BENCH_ANIM_NAME (anonymous namespace; initializer 0x01221B00), was g_GetUpNameAlternate.
+//   0x013BB6E0 GET_UP_FROM_CHAIR_ANIM_NAME (anonymous namespace; initializer 0x01221AC0), was g_GetUpName.
 class CCharStringData;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
-extern CCharString g_GetUpName;                         // 0x013BB6E0 (descriptive)
-extern CCharString g_GetUpNameAlternate;                // 0x013BB6E8 (descriptive)
+namespace { extern CCharString GET_UP_FROM_CHAIR_ANIM_NAME; }                         // 0x013BB6E0 (descriptive)
+namespace { extern CCharString GET_UP_FROM_BENCH_ANIM_NAME; }                // 0x013BB6E8 (descriptive)
 
 class CTCBase;
 
@@ -94,10 +98,10 @@ bool CAIStateGroup_UsesSeat::GetUpFromSeat()
     CCharString animation;
     long sitting_mode;
     if (SittingOnBench) {
-        animation = g_GetUpNameAlternate;
+        animation = GET_UP_FROM_BENCH_ANIM_NAME;
         sitting_mode = 9;
     } else {
-        animation = g_GetUpName;
+        animation = GET_UP_FROM_CHAIR_ANIM_NAME;
         sitting_mode = 8;
     }
     Sitting = false;

@@ -1,7 +1,9 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CUnprovenElement_009b4bd0*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PAVCUnprovenElement_009b4bd0@@V?$allocator@PAVCUnprovenElement_009b4bd0@@@std@@@std@@IAEX
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CDefinitionManager::CInstantiatedDefInfo*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@PAVCInstantiatedDefInfo@CDefinitionManager@@V?$allocator@PAVCInstantiatedDefInfo@CDefinitionManager@@@std@@@std@@IAEXPAPAVCInstantiatedDefInfo@CDefinitionManager@@ABQAV34@ABU__true_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B4BD0, 216 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `CUnprovenElement_009b4bd0*` -- DESCRIPTIVE element type: `CUnprovenElement_009b4bd0*` is a placeholder for an unidentified 4-byte pointer element; evidence: callers are CDefinitionManager::InstantiateDef / InstantiateSubDef helpers; the element is not named.
+// Identity (proven): vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow; evidence: its only caller is _M_fill_insert 0x009B4FF0
+//   of the same vector (reached from resize 0x009B70D0 on CDefinitionManager+0xA4), and Ego_r.pdb's CDefinitionManager::InstantiatedDefs
+//   (+0xBC behind six 16-byte debug containers, 0xBC-6*4 = 0xA4) is CArray<CDefinitionManager::CInstantiatedDefInfo*>.
 //   Family F007 (32 byte-identical bodies; the same STLport source as family F005, split from it only by the int3 padding):
 //   the manifest label "Std_Vector_Insert_Range" is propagated and wrong (no range is inserted). STLport 4.6 `vector<_Tp>::_M_insert_overflow(pos, x,
 //   const __true_type&, fill_len, atend)` (the protected POD overload, defined in the class body) verbatim.
@@ -14,7 +16,8 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-class CUnprovenElement_009b4bd0;
+#define FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL
+#include "engine/CDefinitionManager.h"   // CDefinitionManager::CInstantiatedDefInfo (nested, declaration only)
 
 namespace std {
 
@@ -89,6 +92,6 @@ protected:
     }
 };
 
-template void vector<CUnprovenElement_009b4bd0* >::_M_insert_overflow(CUnprovenElement_009b4bd0**, CUnprovenElement_009b4bd0* const&, const __true_type&, unsigned int, bool);
+template void vector<CDefinitionManager::CInstantiatedDefInfo* >::_M_insert_overflow(CDefinitionManager::CInstantiatedDefInfo**, CDefinitionManager::CInstantiatedDefInfo* const&, const __true_type&, unsigned int, bool);
 
 } // namespace std

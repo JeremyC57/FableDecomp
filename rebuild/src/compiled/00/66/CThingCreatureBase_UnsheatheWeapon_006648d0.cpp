@@ -1,4 +1,5 @@
 // CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot) -- take the weapon of that def out of the carrying component (or create one at the creature's position) and put it in the carryable def's active or secondary-active carry slot
+// Leaf: ?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006648D0, length 233 bytes, `ret 8`.
@@ -16,55 +17,29 @@
 //   temporary (built before the other arguments); the def out pointer sits in the dead index slot and is released
 //   without a null test.
 #include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    ~CCharString();                                            // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // the template body kept out of line (0x005CC10E), visible to the TU
+#include "fable_string.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CDefPointeeBase { public:
-    virtual void Destroy0();
-    virtual void Destroy();                     // slot 1 (+0x04)
-    long RefCount;                              // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-class CCarryableDef : public CDefPointeeBase { public:
-    unsigned char _pad08[0x28 - 0x08];
-    long ActiveCarrySlot;                       // +0x28
-    long SecondaryActiveCarrySlot;              // +0x2c
-    long PassiveCarrySlot;                      // +0x30
-};
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<const CCarryableDef>* out);   // 0x005CC10E GetSubDef<CCarryableDef>
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CCarryableDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 
 class CThing;
 class CThingObject;
 class CTCCarrying { public:
     bool IsCarryingThing(long defIndex);                         // 0x006A10A0
     CThing* GetCarriedThing(long defIndex);                      // 0x006A1120
-    void RemoveThing(CThing* thing);                             // 0x006A19B0
+    void RemoveThing(CThing& thing);                             // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 
@@ -78,12 +53,6 @@ public:
     unsigned char _pad74[0x90 - 0x74];
     signed char PlayerNumber;                   // +0x90
     const C3DVector& GetPos() const;       // 0x004C73D0
-    FABLE_FORCEINLINE CCarryableDef* GetCarryableDef()
-    {
-        CDefPointer<const CCarryableDef> out;
-        PBaseDef->GetSubDef(&out);
-        return const_cast<CCarryableDef*>(out.Object);
-    }
     FABLE_FORCEINLINE CTCCarrying* GetCarrying()
     {
         CTCCarrying* carrying;
@@ -114,18 +83,14 @@ void CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot
     if (weaponDefIndex <= 0)
         return;
     CTCCarrying* carrying = GetCarrying();
-    CCarryableDef* def;
     CThing* weapon;
     if (carrying->IsCarryingThing(weaponDefIndex)) {
         weapon = carrying->GetCarriedThing(weaponDefIndex);
-        carrying->RemoveThing(weapon);
+        carrying->RemoveThing(*weapon);
     } else {
         weapon = (CThing*)CThingObject::Create(weaponDefIndex, *(const_cast<C3DVector*>(&GetPos())), PlayerNumber, 0, 0, "");
     }
-    CDefPointer<const CCarryableDef> out;
-    weapon->PBaseDef->GetSubDef(&out);
-    def = const_cast<CCarryableDef*>(out.Object);
+    CDefPointer<const CCarryableDef> def;
+    weapon->PBaseDef->GetSubDef(&def);
     carrying->PutThingInCarrySlot(*weapon, useActiveSlot ? def->ActiveCarrySlot : def->SecondaryActiveCarrySlot, true);
-    if (--def->RefCount == 0)
-        def->Destroy();
 }

@@ -13,6 +13,9 @@
 #error engine/CPredicateBase.h is the retail NScript model: define FABLE_RETAIL_NSCRIPT before including it
 #else
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CPREDICATEBASE_ORIGINAL_MEMBERS
+#include "stlport/fable_containers.h"
+#endif
 class CGameScriptInterfaceBase;
 
 namespace NScript {
@@ -22,16 +25,24 @@ namespace NScript {
 // site) has no `call CPredicateBase::CPredicateBase` left (first witness 0x00E5B3B0). It also drops the base vtable store
 // 0x012C2FF4 from expanded destructors: use it only in rows whose retail body has no such store. Other compilers see the plain class.
 #if defined(FABLE_RETAIL_CPREDICATEBASE_NOVTABLE) && defined(_MSC_VER)
-class __declspec(novtable) CPredicateBase {
+class __declspec(novtable) CPredicateBase
 #else
-class CPredicateBase {
+class CPredicateBase
 #endif
+#ifdef FABLE_RETAIL_CPREDICATEBASE_ORIGINAL_MEMBERS
+    : public std::unary_function<void,bool>
+#endif
+{
 public:
     CPredicateBase() { }
     virtual bool operator()() const = 0;                                 // slot 0
     virtual CPredicateBase* Clone() const = 0;                           // slot 1
     virtual ~CPredicateBase() { }                                        // slot 2  0x00CDDB40 (scalar deleting)
     static void FABLE_FASTCALL InitialiseGameInterface(const CGameScriptInterfaceBase&);
+#ifdef FABLE_RETAIL_CPREDICATEBASE_ORIGINAL_MEMBERS
+protected:
+    static const CGameScriptInterfaceBase* PGame; // Both complete original PDBs: protected static const pointee.
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CPredicateBase) == 0x4);

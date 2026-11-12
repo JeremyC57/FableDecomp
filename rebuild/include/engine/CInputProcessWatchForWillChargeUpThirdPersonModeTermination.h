@@ -11,6 +11,12 @@
 class CInputProcessWatchForWillChargeUpThirdPersonModeTermination : public CInputProcessGameBase {
 public:
     CInputProcessWatchForWillChargeUpThirdPersonModeTermination(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#if defined(FABLE_RETAIL_CINPUTPROCESSWATCHFORWILLCHARGEUPTHIRDPERSONMODETERMINATION_ADDTOINTERFACE) && defined(FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE)
+    // NF28 opt-in (row 0x0068EAF0): Ego_r.pdb 0x006BAD70 / FableWin.pdb 0x021E9A10
+    // ?AddToInterface@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z, the override of
+    // CInputProcessGameBase::AddToInterface 0x00687A70 (tail-called). Declaration only: no layout change.
+    virtual bool AddToInterface(CInputProcessManager& manager);          // 0x0068EAF0
+#endif
     long QuitModeTimer;                                             // +0x28
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessWatchForWillChargeUpThirdPersonModeTermination) == 0x2c);

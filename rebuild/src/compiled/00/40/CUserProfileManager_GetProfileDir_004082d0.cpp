@@ -7,7 +7,7 @@
 //
 // Retail bytes:  sub esp,8 ; push esi ; push edi ; mov edi,ecx ; lea esi,[edi+8] ; push esi ;
 //   lea ecx,[saved] ; call CWideString(copy) ; push name ; mov ecx,esi ; call operator= ;
-//   push create ; push &g_ProfileFileName ; lea edx,[path] ; push edx ; mov ecx,edi ;
+//   push create ; push &m_strProfileName ; lea edx,[path] ; push edx ; mov ecx,edi ;
 //   call GetPathNameFromFileName ; lea eax,[saved] ; push eax ; mov ecx,esi ; call operator= ;
 //   mov esi,[result] ; push &path ; mov ecx,esi ; call CWideString(copy) ; ~path ; ~saved ;
 //   pop edi ; mov eax,esi ; pop esi ; add esp,8 ; ret 0xc
@@ -16,6 +16,10 @@
 // CUserProfileManager: ProfileName (CWideString) +0x08, addressed once into esi (a member
 // reference). No NRVO in VC7.1: the named `path` is copied into the hidden result, then the two
 // locals die in reverse order. `create` is forwarded as the full argument dword.
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013B7D54 is the private static CUserProfileManager::m_strProfileName
+//   (Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CUserProfileManager::m_strProfileName'', initializer 0x01219EC0 landed by agentFAM09;
+//   Anniv360 Test PDB ?m_strProfileName@CUserProfileManager@@0VCWideString@@A); declared on the row's CUserProfileManager model. Was
+//   g_ProfileFileName.
 class CWideStringData;
 
 class CWideString {
@@ -27,8 +31,6 @@ private:
     CWideStringData* PStringData;
 };
 
-extern CWideString g_ProfileFileName;             // 0x013B7D54, L"Profile.bin"
-
 class CUserProfileManager {
 public:
     virtual void v00();
@@ -36,13 +38,15 @@ public:
     CWideString ProfileName;                      // +0x08
     CWideString GetPathNameFromFileName(const CWideString& fileName, bool create) const;   // 0x00408120
     CWideString GetProfileDir(const CWideString& name, bool create);
+private:
+    static CWideString m_strProfileName;          // 0x013B7D54 ?m_strProfileName@CUserProfileManager@@0VCWideString@@A, L"Profile.bin"
 };
 
 CWideString CUserProfileManager::GetProfileDir(const CWideString& name, bool create)
 {
     CWideString savedName = ProfileName;
     ProfileName = name;
-    CWideString path = GetPathNameFromFileName(g_ProfileFileName, create);
+    CWideString path = GetPathNameFromFileName(m_strProfileName, create);
     ProfileName = savedName;
     return path;
 }

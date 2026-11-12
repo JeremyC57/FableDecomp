@@ -14,6 +14,13 @@ class CDegradableDef;
 class CDegradableInfo;
 class CThingPhysical;
 class CTCDegradableBase : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_DEGRADABLE;}
+virtual void OnHitByMelee(const C3DVector&,const C3DVector&,CThing&);
+virtual void OnHitByShot(const C3DVector&,const C3DVector&,CThing&);
+virtual void OnHit(const C3DVector&,const C3DVector&);
+#endif
 protected:
     virtual void OnCreate();                                             // slot 4 0x008EC870
 private:

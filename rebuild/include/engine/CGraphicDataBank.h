@@ -5,7 +5,7 @@
 #include "engine/CResourceBank.h"
 #include "engine/CArray.h"
 #include "engine/CTexture.h"
-#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE)
+#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
 #include "engine/CPixelFormat.h"
 #endif
 class CGraphicInfo;class CGraphicInfoFrame;class CGraphicFrame;class CVolumeTexture;class CTextureManager;
@@ -57,7 +57,7 @@ private:
     CTexture BlankTextures[11];
 };
 FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank)==0x30c);
-#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE)
+#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE) || defined(FABLE_RETAIL_CGRAPHICINFO_SPRITE)
 // Layout: original PDB nested class,28 bytes; native009fd700 copies7 words.
 class CGraphicDataBank::CGraphicHeader {
 public:

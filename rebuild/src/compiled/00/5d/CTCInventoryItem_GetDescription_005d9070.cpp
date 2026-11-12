@@ -11,11 +11,14 @@
 // Shape: the text id is a const-reference local (loaded into edx before the bank chain, which VC evaluates after the arguments); the def is read twice through an inline by-value accessor (two add-ref/release pairs; the first release load/dec/stores the
 // count around the `seta bl` test of the UNSIGNED text id, the second is `dec [esi+4] ; jne`), the counted entry temporary is released
 // with the inlined DecRef/GetRefCount pair and nulled afterwards (the store survives because the def release follows).
+// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
+//   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
+public:
+    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
 };
-extern CWideString g_emptyWideString;              // 0x013BCA24
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
@@ -94,5 +97,5 @@ CWideString CTCInventoryItem::GetDescription()
         const unsigned long& textIndex = def->ItemDescription;
         return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }
-    return g_emptyWideString;
+    return CWideString::NullString;
 }

@@ -8,13 +8,14 @@
 // string's argument pushes; the new component rides in edi across the string destructor and is used without a null test.
 // The intelligent pointer at +0xa8 is the first CCombatActionBase member (retail CCreatureActionBase is 0xa8 bytes).
 #include "fable_string.h"
+class CTCBase;
 class CTCParamsBase;
 class CThing;
 class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing); // 0x00770FA0
 };
 class CThing { public:
-    CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -60,7 +61,7 @@ void CCreatureAction_WhisperSommersaultForward::Initialise()
     CTCSolidToThing* solid;
     {
         CCharString name("CTCSolidToThing", -1);
-        solid = PCreature.GetPItem()->AddTC(name, false, 0);
+        solid = (CTCSolidToThing*)PCreature.GetPItem()->AddTC(name, false, 0);
     }
     solid->AddThingNotSolidTo(PTarget.GetPItem());
 }

@@ -30,7 +30,7 @@ FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
 }
-extern const float g_NormaliseEpsilon;          // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;         // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (1e-4f)
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"
@@ -134,7 +134,7 @@ void CThingGameObject::GetShotHitParameters(NHitLocations::CHitLocation* hitLoca
     CTCPhysics* physics = shot.PhysicsTC;
     C3DVector direction = physics->Position - physics->OldPosition;
     float length = direction.X * direction.X + (direction.Y * direction.Y + direction.Z * direction.Z);
-    if (length > g_NormaliseEpsilon) {
+    if (length > DELTA_NOTIONAL_ZERO) {
         length = 1.0f / (float)sqrt(length);
         direction.X *= length;
         direction.Y *= length;

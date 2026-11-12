@@ -1,10 +1,11 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (map<void*, NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>) STLport 4.6 recursive subtree release: erase the right subtree, release the counted def/effect pointer, free the node, continue left
-// Leaf: ?_M_erase@?$_Rb_tree@PAXU?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@U?$_Select1st@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@Z
+// Leaf: ?_M_erase@?$_Rb_tree@PAXU?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@U?$_Select1st@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C4490, 75 bytes, thiscall `ret 4`; recursive; speed TU.
 // Identity (proven): the destructor of NGraphicAppearance::CTCGraphicAppearance 0x004C5DA0 and the tree's clear 0x004C4CD0 / destructors 0x004C53B0, 0x004C5840 call it: Ego_r.pdb CTCGraphicAppearance's first member (+12) is map<void*, CMeshEffectPriorityEntry>, whose CIVCountedPointer<CEngineMeshEffect> PEffect is the released word at node +0x14.
 // Callees: itself (right subtree), the pointee's vtable slot 1 (Destroy) on its last reference, free 0x00BFEA14.
 // Shape (family M090, representative 0x004C4490): the landed STLport 4.6 `_tree.c` _M_erase model (0x00AD5240); the value's
 //   implicit destructor is the intrusive pointer's `if (p) { if (--p->RefCount == 0) p->Destroy(); p = 0; }` at node +0x14.
+// Name fix (agentNF23): STLport 4.6 declares _Rb_tree::_M_erase private, so VC7.1 mangles it AAE (the queue's spelling, agentFAM07's binders); was public (QAE).
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 class CEngineMeshEffect {
 public:
@@ -90,6 +91,7 @@ public:
 
     static _Link_type& _S_left(_Base_ptr __x) { return (_Link_type&)(__x->_M_left); }
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
+private:                                            // STLport 4.6 _tree.h: _M_erase is private (mangled AAE)
     void _M_erase(_Link_type __x);
 };
 

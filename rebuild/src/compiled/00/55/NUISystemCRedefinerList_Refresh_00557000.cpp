@@ -1,6 +1,5 @@
 // NUISystem::CRedefinerList::Refresh() -- rebuild the control-redefinition list from the profile's assigned inputs, re-lay the visible rows and the undefined warning, then refresh three sound-system categories
 // Leaf: ?Refresh@CRedefinerList@NUISystem@@QAEXXZ
-// Leaf: Refresh@CRedefinerList
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00557000, length 123 bytes.
 // Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (RefreshCategory -> SetGainFader slot 46).
 // Callees: CRedefinerList::ClearList @ 0x005567B0, CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0 (static),
@@ -23,8 +22,8 @@ class CUserProfileManager { public:
 
 namespace NUISystem {
 
-class CScrollableList { public:
-    void UpdateVisibleList(float offset, float time);   // 0x00555A90
+class CScrollableList { protected:
+    void UpdateVisibleList(float move_time, float fade_time);   // 0x00555A90 ?UpdateVisibleList@CScrollableList@NUISystem@@IAEXMM@Z (protected, Ego_r + FableWin; agentNF25b)
 };
 
 class CRedefinerList : public CScrollableList { protected:

@@ -9,7 +9,6 @@
 // tail-duplicates the join (`mov eax,[esp+4] ; fstp [eax] ; mov al,1 ; ret 4`) into every arm. Separate if/return
 // arms copy the floats with integer moves instead. The fall-back is the retail 0.0f constant 0x0122DEDC (a global,
 // so `fld [mem]`, never `fldz`).
-extern const float Zero_0122dedc;   // 0x0122DEDC retail 0.0f constant
 
 namespace NParticleEngine {
 class CPSCUpdateNormal { public:
@@ -33,7 +32,7 @@ class CPSCUpdateNormal { public:
 bool CPSCUpdateNormal::GetParticleLifeSecs(float& lifeSecs)
 {
     lifeSecs = UseParticleLifeSecs ? ParticleLifeSecs
-             : (UseSystemLifeSecs ? SystemLifeSecs : Zero_0122dedc);
+             : (UseSystemLifeSecs ? SystemLifeSecs : 0.0f);
     return true;
 }
 }

@@ -96,7 +96,6 @@ class CEnginePrimitiveRenderer;
 extern CEnginePrimitiveRenderer* g_pEnginePrimitiveRenderer;   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local SViewRecord_01436E80 view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
-extern float g_fOne_0122DED8;                         // 0x0122DED8
 extern float g_fReciprocal255_01231724;               // 0x01231724
 
 struct CEnginePrimitiveManagerRepeatedStaticMeshes_Methods : CEnginePrimitiveManagerRepeatedStaticMeshes {
@@ -128,11 +127,11 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UpdateRepeatedStaticMe
     primitive->ObjectOffsets = desc.ObjectOffsets;
 
     primitive->AlphaTransformOffset = desc.FadeDist.FadeBeginDistance /
-        (desc.FadeDist.MaxDrawDistance - desc.FadeDist.FadeBeginDistance) + g_fOne_0122DED8;
-    primitive->AlphaTransformMult = g_fOne_0122DED8 /
+        (desc.FadeDist.MaxDrawDistance - desc.FadeDist.FadeBeginDistance) + 1.0f;
+    primitive->AlphaTransformMult = 1.0f /
         (desc.FadeDist.FadeBeginDistance - desc.FadeDist.MaxDrawDistance);
     float alpha = (float)desc.AlphaRef * g_fReciprocal255_01231724;
-    base->FadeDistance_MaxDrawDistance = (g_fOne_0122DED8 - alpha) * desc.FadeDist.MaxDrawDistance +
+    base->FadeDistance_MaxDrawDistance = (1.0f - alpha) * desc.FadeDist.MaxDrawDistance +
         alpha * desc.FadeDist.FadeBeginDistance;
     base->FadeDistance_FadeBeginDistance = desc.FadeDist.FadeBeginDistance;
 

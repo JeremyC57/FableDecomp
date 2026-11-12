@@ -78,6 +78,10 @@ public:
     unsigned char GetPreferabilityCostForNode(const CANavQuadTreeNode* node) const;   // 0x00A76E00 (chunk 747; Ego_r QBEEPBV..)
     bool IsAreaClear(const CANavQuadTreeNode* node, bool& switchable, std::vector<unsigned __int64>& ids) const;  // 0x00A78E20
     bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess& process);           // 0x00A7AF60
+#ifdef FABLE_RETAIL_CNAVQUADTREE_SAVETOFILE
+    // Nested opt-in (chunk Q22, row 0x00A78B20): Ego_r.pdb / FableWin.pdb ?SaveToFile@CNavQuadTree@@QBEXAAVCAFile@@@Z.
+    void SaveToFile(CAFile& file) const;                                 // 0x00A78B20
+#endif
 private:
     bool IsAreaBlockedByLines(const C2DBoxF& area, const std::vector<const std::list<C2DLineF>*>& lineLists) const;  // 0x00A76F30
     void SetUpRegions(long mapIndex);                                    // 0x00A7A0A0
