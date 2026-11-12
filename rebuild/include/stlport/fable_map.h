@@ -198,7 +198,18 @@ private:
     }
 #endif
 public:
-#ifdef FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE
+#if defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL)
+    // Row 0x00881A40 opt-in: the non-const member-template find declared only (retail calls the map<CThing*,
+    // CThingGraphicByPassFlagState> instance out of line, 0x00883860, through the hidden iterator result).
+    template<class KT> iterator find(const KT& key);
+#elif defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE) && defined(_MSC_VER)
+    // Row 0x00881A40 opt-in: the same STLport body, visible but kept out of line (compiler steering, justified by retail bytes).
+    // Retail calls the map<CThing*,CThingGraphicByPassFlagState> instance out of line at 0x00881ABB (call 0x00883860; the default
+    // inline spelling expands the walk: 609 vs 581 bytes). Its compiler still saw the body: after the call it keeps the node in edi
+    // (0x00881AC0 8B7C2410 mov edi,[esp+10h]; 0x00881AC4 3B3B cmp edi,[ebx]; 0x00881AC8 83C714 add edi,14h), where a declaration-only
+    // find (_DECL above, opaque call) gives mov eax,[esp+10h]; cmp eax,[ebx]; lea edi,[eax+14h]. Only body + noinline gives both.
+    template<class KT> __declspec(noinline) iterator find(const KT& key){return iterator(_M_find(key));}
+#elif defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE)
     // Retail opt-in (chunk 890, row 0x00551EA0 NUISystem::CTable::ConstructSpritesToDraw): owner decision D1 (2026-11-03) for the
     // non-const twin -- STLport 4.6.1 _tree.h 457-467 `template <class _KT> iterator find(const _KT& __k) { return iterator(_M_find(__k)); }`
     // under _STLP_MEMBER_TEMPLATES. Retail calls the map<ETableSprites,CCountedPointer<CComponent> > instance out of line (0x00553520,

@@ -394466,6 +394466,20 @@ $catalog = @(
         TestSource = '00/9c/CBankFile_FindIndicesByFilename_009ccef0_test.cpp'
         PassPattern = '009ccef0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00918640'
+        Module = 'CAIStateGroup_Gaze'
+        Source = '00/91/CAIStateGroupGaze_FindFreeParticularGazePos_00918640.cpp'
+        TestSource = '00/91/CAIStateGroupGaze_FindFreeParticularGazePos_00918640_test.cpp'
+        PassPattern = '00918640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00881a40'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStack_ScreenFilterSetFlags_00881a40.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStack_ScreenFilterSetFlags_00881a40_test.cpp'
+        PassPattern = '00881a40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -98,6 +98,12 @@ protected:
  signed char ByPassColorFilter;
 public:
  const CEngineGraphic& GetMainGraphic()const{return MainGraphic;}
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_BYPASSCOLORFILTER
+ // Row 0x00881A40 opt-in: Ego_r.pdb / FableWin.pdb ?GetByPassColorFilter@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ (inline in
+ // retail: `mov al,[ebp+5Bh] ; test al,al ; setg cl`, 0x00881BF3) and ?SetByPassColorFilter@..@@QAEX_N@Z (out of line 0x004BFB00).
+ bool GetByPassColorFilter()const{return ByPassColorFilter>0;}
+ void SetByPassColorFilter(bool bypass);                    // 0x004BFB00
+#endif
  float GetScale()const{return Scale;}
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETMAINGRAPHIC
  // Nested opt-in (agentNF9, row 0x0082D6F0 CThingBuilding::OnCreate): Ego_r.pdb / FableWin.pdb

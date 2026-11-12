@@ -37,6 +37,40 @@ private:
  std::set<CStackEntry*> ScreenFilterKeys;
  CEnvironmentSpellEffectInterface::CScreenFilterParams CurrentScreenFilterParam;
 };
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_SCREENFILTERENTRY
+// Row 0x00881A40 opt-in (ScreenFilterSetFlags): the screen-filter records. Ego_r.pdb struct_layouts: CThingGraphicArgPasser 9 bytes
+// {CIntelligentPointer<CThing> thing +0; bool bypassSet +8} (byte-packed: `imul 38E38E39h` /9); CScreenFilterEntry 64 bytes
+// {CStackEntry +0; CScreenFilterParams param +0x10; map<CThing*,CThingGraphicByPassFlagState> reset +0x30}; CThingGraphicByPassFlagState
+// 9 bytes {CIntelligentPointer<CThing> thing +0; bool bypassReset +8}. The includer supplies engine/CIntelligentPointer.h
+// (FABLE_RETAIL_CINTELLIGENTPOINTER) and a complete CThing / NGraphicAppearance::CTCGraphicAppearance first.
+#pragma pack(push, 1)
+struct CScreenEffectPriorityStack::CThingGraphicArgPasser {
+ CIntelligentPointer<CThing> thing;
+ bool bypassSet;
+};
+#pragma pack(pop)
+struct CScreenEffectPriorityStack::CScreenFilterEntry : public CStackEntry {
+#pragma pack(push, 1)
+ // class, not struct: Ego_r.pdb / FableWin.pdb mangle it VCThingGraphicByPassFlagState@CScreenFilterEntry@... (class key V).
+ class CThingGraphicByPassFlagState {
+ public:
+  CThingGraphicByPassFlagState():thing(0),bypassReset(false){}
+  void Reset(){
+   if(thing.GetPItem()!=0){
+    if(!static_cast<CThing*>(thing.GetPItem())->IsDead()){
+     NGraphicAppearance::CTCGraphicAppearance* graphic=static_cast<CThing*>(thing.GetPItem())->GetTCGraphicAppearance();
+     if(graphic) graphic->SetByPassColorFilter(bypassReset);
+    }
+   }
+  }
+  CIntelligentPointer<CThing> thing;
+  bool bypassReset;
+ };
+#pragma pack(pop)
+ CEnvironmentSpellEffectInterface::CScreenFilterParams param;
+ std::map<CThing*,CThingGraphicByPassFlagState> reset;
+};
+#endif
 }
 #else
 // NScreenEffect::CScreenEffectPriorityStack (new, chunk 765): only the ScreenFilterSetFlags entry row 0x006B83E0 forwards to is

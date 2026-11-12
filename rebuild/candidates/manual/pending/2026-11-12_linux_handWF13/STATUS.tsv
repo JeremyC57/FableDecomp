@@ -1,4 +1,1 @@
-006b08f0	CTCPhysicsBase::OnSerialise	RELOCATION_MATCH	75	const CThing& thing = GetParentThing() after a markerRegion local
-009341c0	CAIStateGroup_MinionKidGroupTag::TagTarget	RELOCATION_MATCH	25	single-exit nested ifs + float reach test + IP ctor FORCEINLINE opt-in
 00492973	CSubtitleRenderer::SetText	RELOCATION_MATCH	15	list base ctor/dtor + RemoveMessage/FindAllMessages bodies visible noinline
-00918640	CAIStateGroup_Gaze::FindFreeParticularGazePos	RELOCATION_MATCH	299	early-return failure paths (owner if/else return 0; village two if(!) return 0)
