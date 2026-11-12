@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/user/FableDecomp/tools/decomp_pipeline/linux_lane/lane_tools/recheck.py", line 49, in <module>
+    json.dump({"result": {"authored": auth}}, open(f"{out}/payload.json", "w"))
+                                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/landde/pfn/payload.json'

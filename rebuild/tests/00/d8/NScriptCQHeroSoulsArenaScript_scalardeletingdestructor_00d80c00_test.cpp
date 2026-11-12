@@ -1,0 +1,43 @@
+// Behaviour test for 0x00D80C00 NScript::CQ_HeroSoulsArenaScript::`scalar deleting destructor' (agentFAM08 portable twin; the catalog test was a
+// __fastcall shim that 64-bit g++ cannot build). Model: the deleting destructor runs the destructor chain -- members in reverse
+// declaration order (Rounds, GuardChatTimer), then the CScriptBase base -- and frees the object only when bit 0 of the
+// flags is set (`delete p`); the explicit destructor call (flags 0) leaves the storage alone. Test-only model types.
+#include <cstdio>
+#include <cstdlib>
+#include <new>
+static int g_seq[16];
+static int g_count = 0;
+static int g_frees = 0;
+static void Record(int v) { if (g_count < 16) g_seq[g_count++] = v; }
+struct ModelBase {
+    virtual ~ModelBase() { Record(100); }
+};
+struct ModelMember0 { ~ModelMember0() { Record(1); } };
+struct ModelMember1 { ~ModelMember1() { Record(2); } };
+struct ModelObject : ModelBase {
+    ModelMember0 m0;
+    ModelMember1 m1;
+    static void* operator new(std::size_t n) { return std::malloc(n); }
+    static void operator delete(void* p) { ++g_frees; std::free(p); }
+};
+static bool CheckSequence()
+{
+    static const int expect[] = { 2, 1, 100 };
+    if (g_count != (int)(sizeof(expect) / sizeof(expect[0]))) return false;
+    for (int i = 0; i < g_count; ++i) if (g_seq[i] != expect[i]) return false;
+    return true;
+}
+int main()
+{
+    ModelObject* p = new ModelObject;
+    if (!p) { std::printf("00d80c00_TEST FAIL alloc\n"); return 1; }
+    p->~ModelObject();                       // flags 0: destroy only
+    if (!CheckSequence() || g_frees != 0) { std::printf("00d80c00_TEST FAIL destroy\n"); return 1; }
+    ::new (p) ModelObject;
+    g_count = 0;
+    ModelBase* b = p;
+    delete b;                                // flags 1: destroy, then free
+    if (!CheckSequence() || g_frees != 1) { std::printf("00d80c00_TEST FAIL delete\n"); return 1; }
+    std::printf("00d80c00_TEST PASS\n");
+    return 0;
+}

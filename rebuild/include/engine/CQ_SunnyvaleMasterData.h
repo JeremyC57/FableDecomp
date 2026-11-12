@@ -219,6 +219,11 @@ public:
     bool HeroWoreMask; // +0x133
     std::vector<CCharString,std::allocator<CCharString> > BoastRegions; // +0x134
     bool SingingStonesInSync; // +0x140
+#ifdef FABLE_RETAIL_CQ_SUNNYVALEMASTERDATA_CTOR
+    // Retail opt-in (agentFAM08, row 0x00CDB9E0): FableWin.pdb ??0CQ_SunnyvaleMasterData@NScript@@QAE@XZ, out of line in retail at
+    // 0x00CDB9E0 (stores vtable 0x012C2748, whose slots 1/2 are the landed OnPersist 0x00CDC070 / Init 0x00CDBA10). Declaration only.
+    CQ_SunnyvaleMasterData();
+#endif
     void ModifyVillagerAngryRating(float);
     virtual void OnPersist(CPersistContext&);
     virtual void Init();
