@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00bdf100   WARN RELOC_CONFLICT: _$E2 -> 0122adb0 here, 01228930 in landed 01219f00
+00bdf100   RELOCATION_MATCH PASS   CalcBoundingSphereAndFadeDistanceFromChildren
+005f6bd6   WARN RELOC_NAME: ??$find@PAW4EHeroAbility@@W41@@std@@YIPAW4EHeroAbility@@PAW41@0ABW41@@Z -> 005f8150 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005f6bd6   RELOCATION_MATCH PASS   SetAbilityAsAvailable
+00a60d40   RELOCATION_MATCH PASS   Open
+0091ddd0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+0091ddd0   RELOCATION_MATCH PASS   Update
+008db810   WARN RELOC_NAME: ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008db810   RELOCATION_MATCH PASS   UpdateBeam
+005fbaa0   RELOCATION_MATCH PASS   GetRelativePosOnMiniMap
+007cd9a0   RELOCATION_MATCH PASS   FrameUpdate
+00b211b0   RELOCATION_MATCH PASS   InterpolateTo
+007bf510   RELOCATION_MATCH PASS   OnCollision
+
+WINS: 9
+  00bdf100 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren
+  005f6bd6 RELOCATION_MATCH CTCInventoryAbilities::SetAbilityAsAvailable
+  00a60d40 RELOCATION_MATCH CChecksumCacheFile::Open
+  0091ddd0 RELOCATION_MATCH CAIStateGroup_HoverAllAroundTest::Update
+  008db810 RELOCATION_MATCH NCreatureMode::CModeDragonFireBeam::UpdateBeam
+  005fbaa0 RELOCATION_MATCH CTCInventoryMap::GetRelativePosOnMiniMap
+  007cd9a0 RELOCATION_MATCH CTCBurntEffect::FrameUpdate
+  00b211b0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::InterpolateTo
+  007bf510 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::OnCollision
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CLocalDetailCacheMapCQuadTreeElement_CalcBoundingSphereAndFadeDistanceFromChildren_00bdf100
+  CTCInventoryAbilities_SetAbilityAsAvailable_005f6bd6
+  CChecksumCacheFile_Open_00a60d40
+  CAIStateGroupHoverAllAroundTest_Update_0091ddd0
+  NCreatureModeCModeDragonFireBeam_UpdateBeam_008db810
+  CTCInventoryMap_GetRelativePosOnMiniMap_005fbaa0
+  CTCBurntEffect_FrameUpdate_007cd9a0
+  NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_InterpolateTo_00b211b0
+  NThingShotCTCShotDefinitionBase_OnCollision_007bf510

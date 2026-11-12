@@ -394614,6 +394614,13 @@ $catalog = @(
         TestSource = '00/7b/NThingShotCTCShotDefinitionBase_OnCollision_007bf510_test.cpp'
         PassPattern = '007bf510_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00972cc0'
+        Module = 'CAIStateGroup_JackOfBladesStage1'
+        Source = '00/97/CAIStateGroupJackOfBladesStage1_MeleeCombat_00972cc0.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesStage1_MeleeCombat_00972cc0_test.cpp'
+        PassPattern = '00972cc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

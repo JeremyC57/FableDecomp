@@ -1,3 +1,0 @@
-0x0091DDD0	CAIStateGroup_HoverAllAroundTest::Update	RELOCATION_MATCH	147	loop exit continue/Terminate/return fixes slot ranking
-005fbaa0	CTCInventoryMap::GetRelativePosOnMiniMap	DIFFER(634v634)	62	scaleY slot + X-line fld order
-005fbaa0	CTCInventoryMap::GetRelativePosOnMiniMap	RELOCATION_MATCH	~105 (attempt1 ~60, attempt2 ~45)	scale as float[2] + 2-trip init loop declared after width/height

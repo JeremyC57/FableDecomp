@@ -34,6 +34,10 @@ public:
  void CreatureUnsheathWeapon(CThingCreatureBase& creature, EUnsheatheWeaponType type);   // 0x006EBDD0
 #endif
  void RegisterCombatant(CThingCreatureBase&,CThingCreatureBase&,bool);
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERREADY
+ // Opt-in (row 0x00972CC0): Ego_r.pdb + FableWin.pdb ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z (0x006EA450, landed).
+ void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450
+#endif
  void DeregisterCombatant(CThingCreatureBase&);
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_PERFORMSEQUENCERESET
  // Opt-in (agentNF22, row 0x006EA430 DeregisterCombatant): Ego_r.pdb + FableWin.pdb private

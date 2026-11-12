@@ -10,6 +10,12 @@ protected:
  void PowerUpSword();
  EAIActionReturn MeleeCombat();
 #endif
+#ifdef FABLE_RETAIL_JACK_STAGE1_HASHITSCAUSEDRUSH
+ // Opt-in (row 0x00972CC0 MeleeCombat): Ego_r.pdb / FableWin.pdb ?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@IAE_NXZ
+ // (protected; retail 0x00972340, landed), declaration only.
+protected:
+ bool HasHitsCausedRush();   // 0x00972340
+#endif
 protected:
  bool HasAttacked;
  long ZigZagCounter;

@@ -38944,3 +38944,5 @@ __imp__GetFileSizeEx@8	0143fd5c	009c4440
 ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z	005beb57	005fbaa0
 ??$__find@PAV?$CIntelligentPointer@$$CBVCThing@@@@V?$CIntelligentPointer@VCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PAV1@0ABV?$CIntelligentPointer@VCThing@@@@ABUrandom_access_iterator_tag@0@@Z	007c2980	007bf510
 ?HasWeaponTrailPoints@CTCWeaponTrail@@QBE_NXZ	0076e4a0	007bf510
+?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@IAE_NXZ	00972340	00972cc0
+?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z	006ea450	00972cc0
