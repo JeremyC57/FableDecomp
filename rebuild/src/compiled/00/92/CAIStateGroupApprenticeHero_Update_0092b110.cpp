@@ -1,12 +1,12 @@
 // CAIStateGroup_ApprenticeHero::Update() -- while the apprentice's village says it is cook time, keep doing random apprentice activities (practise skills, spar, library, leaderboard, map); stop when one fails or the group is stopping, else schedule the next practice a minute ahead; then terminate the current action
-// Leaf: ?Update@CAIStateGroup_ApprenticeHero
+// Leaf: ?Update@CAIStateGroup_ApprenticeHero@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0092B110, 276 bytes incl. the 5-entry jump table, `ret`. Vtable 0x0128AEC4 slot 12.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined GetInterface, interface 0x23 =
 //   CTCVillageMember: bitset word +0x24 bit 3), CTCVillageMember::GetPVillage 0x007EE540 (label "IS_THING_ALIVE<...>"
-//   propagated), CTCVillage::IsCookTime 0x00658B20, CAIStateGroupBase::GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890
+//   propagated), CTCVillage::IsWorkTime 0x00658B20, CAIStateGroupBase::GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890
 //   (__fastcall), the virtual PracticeSkills (slot 14, +0x38, 0x0092A8A0), PracticeAgainstApprentice 0x0092A3F0,
 //   GoToLibrary 0x0092ACE0, LookAtLeaderBoard 0x0092AE70, LookAtMap 0x0092AFE0, CAIStateGroupBase::IsStopping 0x008FD010,
 //   GFGetCurrentFrame 0x0049D870 (__fastcall), CAIStateGroupBase::Terminate 0x008FCF40 (label "CXMVPlaybackInfo" propagated).
@@ -52,7 +52,7 @@ class CThing { public:
 };
 
 class CTCVillage { public:
-    bool IsCookTime();                               // 0x00658B20
+    bool IsWorkTime() const;   // 0x00658B20 ?IsWorkTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin; agentNF25b)
 };
 class CTCVillageMember { public:
 public:
@@ -128,7 +128,7 @@ void CAIStateGroup_ApprenticeHero::Update()
     CTCVillage* village = GetVillageMember()->GetPVillage();
     if (village == 0)
         return;
-    while (village->IsCookTime()) {
+    while (village->IsWorkTime()) {
         bool ok = false;
         switch (Random(5)) {
         case 0: ok = PracticeSkills(); break;

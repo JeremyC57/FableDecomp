@@ -21,67 +21,16 @@
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-class CCarryableDef { public:
-    virtual void v00();
-    virtual void Destroy();                           // slot 1
-    long RefCount;                                    // +0x04
-    unsigned char _pad08[0x28 - 0x08];
-    long CarrySlot;                                   // +0x28
-};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    CDefPointer& operator=(const CDefPointer& other)
-    {
-        if (Object != other.Object) {
-            if (Object) {
-                if (--Object->RefCount == 0)
-                    Object->Destroy();
-                Object = 0;
-            }
-            Object = other.Object;
-            if (Object)
-                ++Object->RefCount;
-        }
-        return *this;
-    }
-};
-class CDefinitionManager { public:
-    CDefPointer<CCarryableDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
-};
-class CDefClassBase { public:
-    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
-    virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
-    virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
-    virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
-    unsigned char _pad04[0x1c - 4];
-    CDefinitionManager* m_pManager;                   // +0x1c
-    bool GetSubDef(CDefPointer<CCarryableDef>* out); // 0x005CC10E
-};
-#pragma auto_inline(off)
-bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
-{
-    long* pIndex;
-    {
-        CCharString name("CCarryableDef");
-        pIndex = GetSubDefIndex(name);
-    }
-    if (pIndex) {
-        CDefPointer<CCarryableDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
-        *out = result;
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -207,9 +156,9 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
         }
         if (carrying->IsCarryingThing(((CThing*)item.GetPItem())))
             carrying->RemoveThing(*((CThing*)item.GetPItem()));
-        CDefPointer<CCarryableDef> carryDef;
+        CDefPointer<const CCarryableDef> carryDef;
         ((CThing*)item.GetPItem())->GetDef()->GetSubDef(&carryDef);
-        carrying->PutThingInCarrySlot(*item, carryDef->CarrySlot, true);
+        carrying->PutThingInCarrySlot(*item, carryDef->ActiveCarrySlot, true);
         CTCInventoryWeapons* weapons;
         if (((CThing*)PCreature.GetPItem())->GetInterface(&weapons, 0x13))
             weapons->RefreshSheathedWeapons();

@@ -1,0 +1,271 @@
+addr       parity           behav  name
+00555cf0   WARN SHARED_HEADER_AVAILABLE CManager
+00555cf0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00555cf0   WARN RELOC_NAME: ?Game_013b86a0@NUISystem@@3PAXA -> 013b86a0 labelled 'CMainGameComponent::PMainGameComponent'
+00555cf0   WARN RELOC_NAME: ?MenuStack_013b8a98@NUISystem@@3UStack@1@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00555cf0   WARN RELOC_NAME: ?size@Stack@NUISystem@@QBEKXZ -> 0042b707 labelled 'CBasicString<char>::CalcStringLength'
+00555cf0   RELOCATION_MATCH PASS   NUISystem::CScrollableList::vfunc_1
+00555eb0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00555eb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00555eb0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00555eb0   WARN SHARED_HEADER_AVAILABLE CManager
+00555eb0   RELOCATION_MATCH PASS   NUISystem::CScrollableList::Initialise
+00556200   WARN SHARED_HEADER_AVAILABLE CManager
+00556200   RELOCATION_MATCH PASS   NUISystem::CScrollableList::OnActivate
+00557000   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00557000   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00557000   RELOCATION_MATCH PASS   NUISystem::CRedefinerList::Refresh
+005da4e0   MATCH            PASS   CTCWeapon::ResetAiming
+00658b20   RELOCATION_MATCH PASS   CTCVillage::IsWorkTime
+00658e73   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00658e73   RELOCATION_MATCH PASS   CTCVillage::ResetCrier
+0065c781   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0065c781   WARN SHARED_HEADER_AVAILABLE CThing
+0065c781   WARN SHARED_HEADER_AVAILABLE CASoundBank
+0065c781   WARN SHARED_HEADER_AVAILABLE CSoundInit
+0065c781   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0065c781   WARN SHARED_HEADER_AVAILABLE CGameTimeManager
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorld
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCLight
+0065c781   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065c781   WARN SHARED_HEADER_AVAILABLE CVillageDef
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065c781   WARN RELOC_NAME: ?ReleaseInvalidTasks@CTCVillage@@QAEXXZ -> 0065be32 labelled 'CGuiControlComboBox_0065be32::ReleaseMembers'
+0065c781   WARN RELOC_NAME: ?IS_THING_ALIVE_004cc340@@YI_NABUCBaseIntelligentPointer@@@Z -> 004cc340 labelled 'IS_THING_ALIVE<CIntelligentPointer<CThing> >'
+0065c781   WARN RELOC_NAME: ?IS_THING_ALIVE_Villager@@YI_NABUCBaseIntelligentPointer@@@Z -> 004ab8f0 labelled '_global::IsThingAlive_004ab8f0'
+0065c781   WARN RELOC_NAME: ?GetVillagerState@CThing@@QAEJXZ -> 00662010 labelled 'CThingCreatureBase::GetProperty'
+0065c781   WARN RELOC_NAME: ?GetString@CCharString@@QBEPBDXZ -> 00404310 labelled 'CCharString::GetCRC'
+0065c781   WARN RELOC_NAME: ?LookupValue@CTextBank@@QAEJPBD@Z -> 009cc410 labelled 'CBankFile::FindIndexBySymbolCRC'
+0065c781   WARN RELOC_NAME: ?GetPGroupEntry@CTextBank@@QAE?AUCGroupEntryRef@@J_N@Z -> 009c9070 labelled 'NGameText::CDataBank::GetPTextEntry'
+0065c781   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0065c781   RELOCATION_MATCH PASS   CTCVillage::FrameUpdate
+00663b10   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00663b10   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+00663b10   WARN SHARED_HEADER_AVAILABLE CCombatManager
+00663b10   WARN SHARED_HEADER_AVAILABLE CWorld
+00663b10   WARN SHARED_HEADER_AVAILABLE CThing
+00663b10   WARN RELOC_NAME: ?GetWorld@CThing@@QAEPAVCWorld@@XZ -> 004c7ab0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7ab0'
+00663b10   RELOCATION_MATCH PASS   CThingCreatureBase::GetShotAccuracyPercentage
+006648d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+006648d0   WARN SHARED_HEADER_AVAILABLE CThing
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingObject
+006648d0   RELOCATION_MATCH PASS   CThingCreatureBase::UnsheatheWeapon
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CThing
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0069f9e0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+0069f9e0   WARN RELOC_NAME: ?PrepareWeaponSheathing@CTCInventoryWeapons@@QAEXXZ -> 005c552c labelled 'CTCInventoryWeapons::RemoveWeaponsFromSheathes'
+0069f9e0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory::PerformAction
+006ea450   WARN SHARED_HEADER_AVAILABLE CThing
+006ea450   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+006ea450   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+006ea450   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+006ea450   WARN SHARED_HEADER_AVAILABLE CCombatManager
+006ea450   RELOCATION_MATCH PASS   CCombatManager::SetAttackerAsReadyToAttack
+007037d0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter
+007037d0   WARN SHARED_HEADER_AVAILABLE CThing
+007037d0   RELOCATION_MATCH PASS   CThingObject::OnCollision
+007153b0   WARN SHARED_HEADER_AVAILABLE CThing
+007153b0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+007153b0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+007153b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007153b0   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl
+007153b0   RELOCATION_MATCH PASS   NTCScriptedControl::CActionPickUpGenericBox::Update
+00773950   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00773950   WARN SHARED_HEADER_AVAILABLE CThing
+00773950   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00773950   RELOCATION_MATCH PASS   CTCShop::IsOpeningHours
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CThing
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCDivineWrath
+0078e9c0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+0078e9c0   RELOCATION_MATCH PASS   CTCDivineWrath::UnsheatheWeapon
+00793ec0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00793ec0   WARN SHARED_HEADER_AVAILABLE CThing
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCUnholyPower
+00793ec0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+00793ec0   RELOCATION_MATCH PASS   CTCUnholyPower::UnsheatheWeapon
+007eb110   WARN SHARED_HEADER_AVAILABLE CThing
+007eb110   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007eb110   WARN SHARED_HEADER_AVAILABLE CTCBase
+007eb110   WARN RELOC_NAME: ??0CCreatureAction_AddRealObjectToInventory@@QAE@PAVCThingCreatureBase@@PAVCThingObject@@@Z -> 007eb030 labelled 'CCreatureAction_PickupGameObject::CCreatureAction_PickupGameObject'
+007eb110   RELOCATION_MATCH PASS   CTCActionUsePickUp::OnActionUse
+007eb1a0   WARN SHARED_HEADER_AVAILABLE CThing
+007eb1a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007eb1a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007eb1a0   RELOCATION_MATCH PASS   CTCActionUsePickUpGenericBox::OnActionUse
+007fc820   WARN SHARED_HEADER_AVAILABLE CCombatManager
+007fc820   WARN SHARED_HEADER_AVAILABLE CWorld
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCBoss
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fc820   RELOCATION_MATCH PASS   CTCKraken::SetPhase
+00845ce0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00845ce0   WARN SHARED_HEADER_AVAILABLE CThing
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCSolidToThing
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+00845ce0   RELOCATION_MATCH PASS   CCreatureAction_DropWeapon::DropWeapon
+00847ac0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+00847ac0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+00847ac0   RELOCATION_MATCH PASS   CCreatureAction_Drink::Initialise
+00848500   WARN SHARED_HEADER_AVAILABLE CThing
+00848500   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+00848500   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+00848500   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00848500   RELOCATION_MATCH PASS   CCreatureAction_GetPlateFromCupboard::PerformAction
+00848730   WARN SHARED_HEADER_AVAILABLE CThing
+00848730   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+00848730   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+00848730   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00848730   RELOCATION_MATCH PASS   CCreatureAction_PickUpGoods::PerformAction
+0084a350   WARN SHARED_HEADER_AVAILABLE CThing
+0084a350   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0084a350   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0084a350   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0084a350   RELOCATION_MATCH PASS   CCreatureAction_PickUpJugToFill::PerformAction
+0084a4a0   WARN SHARED_HEADER_AVAILABLE CThing
+0084a4a0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0084a4a0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0084a4a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0084a4a0   RELOCATION_MATCH PASS   CCreatureAction_PutDownJugFromFilling::PerformAction
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CSoundPair
+0084a5f0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+0084a5f0   RELOCATION_MATCH PASS   CCreatureAction_PickupGameObject::PerformAction
+008889c0   RELOCATION_MATCH PASS   NEnvironmentInternal::CEnvironmentThemePriorityStack::CalculateTheme
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CThing
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008ba3c0   WARN RELOC_NAME: ?IsPrimarySlotEmpty@CTCCarrying@@QAE_NXZ -> 006a1270 labelled 'CTCCarrying::IsPrimarySlotFree'
+008ba3c0   WARN RELOC_NAME: ?OnShowEnded@CTCShowableItem@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+008ba3c0   WARN RELOC_NAME: ?UpdateFrontMode@CTCCreatureModeManager@@QAEXXZ -> 0073a840 labelled 'CTCCreatureModeManager::RestartCurrentMode'
+008ba3c0   WARN RELOC_NAME: ?ResetState@CTCEnflame@@QAEXXZ -> 007a44c0 labelled 'CTCWillEnflame::CancelMove'
+008ba3c0   RELOCATION_MATCH PASS   CCreatureAction_CastWillEnflameSpell::FinishAction
+008bf500   RELOCATION_MATCH PASS   CCreatureAction_GenericFireProjectileWeapon::FinishAction
+0091a6f0   WARN SHARED_HEADER_AVAILABLE CThing
+0091a6f0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+0091a6f0   WARN SHARED_HEADER_AVAILABLE CTCVillageMember
+0091a6f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091a6f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091a6f0   RELOCATION_MATCH PASS   CAIStateGroup_WorkBase::IsInWorkHours
+009236c0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+009236c0   WARN SHARED_HEADER_AVAILABLE CThing
+009236c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+009236c0   WARN SHARED_HEADER_AVAILABLE CTCTavernTable
+009236c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009236c0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009236c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009236c0   WARN RELOC_NAME: ?NotifyFoodServed@CTCTavernTable@@QAEXJPAVCThing@@@Z -> 007b85f0 labelled 'CSeatTable_007b85f0::SetOccupant'
+009236c0   WARN RELOC_NAME: ??0CCreatureAction_PutDownTankard@@QAE@PAVCThingCreatureBase@@@Z -> 00922f50 labelled 'CCreatureAction_AddFoodToTable::CCreatureAction_AddFoodToTable'
+009236c0   RELOCATION_MATCH PASS   CAIStateGroup_ServeFood::Update
+00929f10   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00929f10   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00929f10   WARN SHARED_HEADER_AVAILABLE CTCVillageMember
+00929f10   RELOCATION_MATCH PASS   CAIStateGroup_ApprenticeHero::IsRunnable
+0092b110   WARN SHARED_HEADER_AVAILABLE CThing
+0092b110   WARN SHARED_HEADER_AVAILABLE CTCVillage
+0092b110   WARN SHARED_HEADER_AVAILABLE CTCVillageMember
+0092b110   WARN SHARED_HEADER_AVAILABLE CWorld
+0092b110   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0092b110   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092b110   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0092b110   RELOCATION_MATCH PASS   CAIStateGroup_ApprenticeHero::Update
+009444e0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+009444e0   RELOCATION_MATCH PASS   CAIFilter_ShouldStillBeWorkingInWarehouse::operator()
+00966cf0   WARN SHARED_HEADER_AVAILABLE CThing
+00966cf0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00966cf0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00966cf0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00966cf0   RELOCATION_MATCH PASS   CAIStateGroup_TavernServer::IsCarryingJug
+009687b0   WARN SHARED_HEADER_AVAILABLE CThing
+009687b0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009687b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009687b0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+009687b0   RELOCATION_MATCH PASS   CAIStateGroup_TavernServer::IsCarryingJug
+0096edb0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096edb0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096edb0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+0096edb0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3
+0096edb0   WARN SHARED_HEADER_AVAILABLE CWorld
+0096edb0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0096edb0   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0096edb0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0096edb0   WARN RELOC_NAME: ?IsRegisteredCombatant@CThingCreatureBase@@QAE_NXZ -> 00662410 labelled 'CThingCreatureBase::IsInMeleeAsAttacker'
+0096edb0   WARN RELOC_NAME: ?IsInCombatMode@CThingCreatureBase@@QAE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+0096edb0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby::Cleanup
+00efb360   RELOCATION_MATCH PASS   NScript::CProximityPodiumTestScript::CProximityPodium::Main
+00efb8c0   RELOCATION_MATCH PASS   NScript::CHitSwitchTestScript::CHitSwitch::Main
+00efe700   RELOCATION_MATCH PASS   NScript::CBenTestScriptsScript::CDummy::Main
+00efe8d0   RELOCATION_MATCH PASS   NScript::CBenTestScriptsScript::CFader::Main
+00eff4d0   RELOCATION_MATCH PASS   NScript::CTonyTestScriptsScript::CDummy::Main
+00f01c50   RELOCATION_MATCH PASS   NScript::CQ_CinemaTestScript::CDummy::Main
+00f1b220   WARN SHARED_HEADER_AVAILABLE CQ_ArenaScript
+00f1b220   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00f1b220   RELOCATION_MATCH PASS   NScript::CQ_ArenaScript::CSUMMONED_CREATURE::Main
+
+WINS: 45
+  00555cf0 RELOCATION_MATCH NUISystem::CScrollableList::?ProcessEvent@CScrollableList@NUISystem@@UAEXH@Z
+  00555eb0 RELOCATION_MATCH NUISystem::CScrollableList::?Initialise@CScrollableList@NUISystem@@UAEXXZ
+  00556200 RELOCATION_MATCH NUISystem::CScrollableList::?OnActivate@CScrollableList@NUISystem@@QAEXXZ
+  00557000 RELOCATION_MATCH NUISystem::CRedefinerList::?Refresh@CRedefinerList@NUISystem@@QAEXXZ
+  005da4e0 MATCH CTCWeapon::?ResetAiming@CTCWeapon@@QAEXXZ
+  00658b20 RELOCATION_MATCH CTCVillage::?IsWorkTime@CTCVillage@@QBE_NXZ
+  00658e73 RELOCATION_MATCH CTCVillage::?ResetCrier@CTCVillage@@QAEXXZ
+  0065c781 RELOCATION_MATCH CTCVillage::?FrameUpdate@CTCVillage@@QAEXXZ
+  00663b10 RELOCATION_MATCH CThingCreatureBase::?GetShotAccuracyPercentage@CThingCreatureBase@@QAEJXZ
+  006648d0 RELOCATION_MATCH CThingCreatureBase::?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z
+  0069f9e0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ
+  006ea450 RELOCATION_MATCH CCombatManager::?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+  007037d0 RELOCATION_MATCH CThingObject::?OnCollision@CThingObject@@QAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z
+  007153b0 RELOCATION_MATCH NTCScriptedControl::CActionPickUpGenericBox::?Update@CActionPickUpGenericBox@NTCScriptedControl@@UAEXXZ
+  00773950 RELOCATION_MATCH CTCShop::?IsOpeningHours@CTCShop@@QBE_NXZ
+  0078e9c0 RELOCATION_MATCH CTCDivineWrath::?UnsheatheWeapon@CTCDivineWrath@@QAEXXZ
+  00793ec0 RELOCATION_MATCH CTCUnholyPower::?UnsheatheWeapon@CTCUnholyPower@@QAEXXZ
+  007eb110 RELOCATION_MATCH CTCActionUsePickUp::?OnActionUse@CTCActionUsePickUp@@UAEXAAVCThing@@@Z
+  007eb1a0 RELOCATION_MATCH CTCActionUsePickUpGenericBox::?OnActionUse@CTCActionUsePickUpGenericBox@@UAEXAAVCThing@@@Z
+  007fc820 RELOCATION_MATCH CTCKraken::?SetPhase@CTCKraken@@QAEXJ@Z
+  00845ce0 RELOCATION_MATCH CCreatureAction_DropWeapon::?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z
+  00847ac0 RELOCATION_MATCH CCreatureAction_Drink::?Initialise@CCreatureAction_Drink@@UAEXXZ
+  00848500 RELOCATION_MATCH CCreatureAction_GetPlateFromCupboard::?PerformAction@CCreatureAction_GetPlateFromCupboard@@QAEXXZ
+  00848730 RELOCATION_MATCH CCreatureAction_PickUpGoods::?PerformAction@CCreatureAction_PickUpGoods@@QAEXXZ
+  0084a350 RELOCATION_MATCH CCreatureAction_PickUpJugToFill::?PerformAction@CCreatureAction_PickUpJugToFill@@QAEXXZ
+  0084a4a0 RELOCATION_MATCH CCreatureAction_PutDownJugFromFilling::?PerformAction@CCreatureAction_PutDownJugFromFilling@@QAEXXZ
+  0084a5f0 RELOCATION_MATCH CCreatureAction_PickupGameObject::?PerformAction@CCreatureAction_PickupGameObject@@UAEXXZ
+  008889c0 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentThemePriorityStack::?CalculateTheme@CEnvironmentThemePriorityStack@NEnvironmentInternal@@QAEXAAVCBlendedEnvironmentTheme@2@MABVCEnvironmentThemeResourcePallette@2@@Z
+  008ba3c0 RELOCATION_MATCH CCreatureAction_CastWillEnflameSpell::?FinishAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
+  008bf500 RELOCATION_MATCH CCreatureAction_GenericFireProjectileWeapon::?FinishAction@CCreatureAction_GenericFireProjectileWeapon@@UAEXXZ
+  0091a6f0 RELOCATION_MATCH CAIStateGroup_WorkBase::?IsInWorkHours@CAIStateGroup_WorkBase@@QAE_NXZ
+  009236c0 RELOCATION_MATCH CAIStateGroup_ServeFood::?Update@CAIStateGroup_ServeFood@@UAEXXZ
+  00929f10 RELOCATION_MATCH CAIStateGroup_ApprenticeHero::?IsRunnable@CAIStateGroup_ApprenticeHero@@MAE_NXZ
+  0092b110 RELOCATION_MATCH CAIStateGroup_ApprenticeHero::?Update@CAIStateGroup_ApprenticeHero@@UAEXXZ
+  009444e0 RELOCATION_MATCH CAIFilter_ShouldStillBeWorkingInWarehouse::??RCAIFilter_ShouldStillBeWorkingInWarehouse@@UAE_NXZ
+  00966cf0 RELOCATION_MATCH CAIStateGroup_TavernServer::?IsCarryingJug@CAIStateGroup_TavernServer@@QAE_NXZ
+  009687b0 RELOCATION_MATCH CAIStateGroup_TavernServer::?IsCarryingJug@CAIStateGroup_TavernServer@@QAE_NXZ
+  0096edb0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?Cleanup@CAIStateGroup_MeleeCombatNearby@@UAEXXZ
+  00efb360 RELOCATION_MATCH NScript::CProximityPodiumTestScript::CProximityPodium::?Main@CProximityPodium@CProximityPodiumTestScript@NScript@@EAEXXZ
+  00efb8c0 RELOCATION_MATCH NScript::CHitSwitchTestScript::CHitSwitch::?Main@CHitSwitch@CHitSwitchTestScript@NScript@@EAEXXZ
+  00efe700 RELOCATION_MATCH NScript::CBenTestScriptsScript::CDummy::?Main@CDummy@CBenTestScriptsScript@NScript@@EAEXXZ
+  00efe8d0 RELOCATION_MATCH NScript::CBenTestScriptsScript::CFader::?Main@CFader@CBenTestScriptsScript@NScript@@EAEXXZ
+  00eff4d0 RELOCATION_MATCH NScript::CTonyTestScriptsScript::CDummy::?Main@CDummy@CTonyTestScriptsScript@NScript@@EAEXXZ
+  00f01c50 RELOCATION_MATCH NScript::CQ_CinemaTestScript::CDummy::?Main@CDummy@CQ_CinemaTestScript@NScript@@EAEXXZ
+  00f1b220 RELOCATION_MATCH NScript::CQ_ArenaScript::CSUMMONED_CREATURE::?Main@CSUMMONED_CREATURE@CQ_ArenaScript@NScript@@EAEXXZ

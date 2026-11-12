@@ -101,6 +101,15 @@ public:
 public:
     bool IsCurfewTime() const;                               // 0x00658D5D
 #endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_ISWORKTIME
+    // Opt-in (agentNF25b, 2026-11-12, row 0x00658B20 and its binders): Ego_r.pdb + FableWin.pdb ?IsWorkTime@CTCVillage@@QBE_NXZ (out of line at
+    // 0x00658B20: IsTimeBetween over CVillageDef::WorkStartTimes +0x64 / WorkDuration +0x70; Ego_r order IsWorkTime, IsCookTime = retail
+    // 0x00658B20, 0x00658B6B) and ?IsTimeBetween@CTCVillage@@QBE_NABV?$vector@JV?$allocator@J@std@@@std@@J@Z (0x00658620, landed).
+    // Declarations only.
+public:
+    bool IsTimeBetween(const std::vector<long>& start_times, long duration) const;   // 0x00658620
+    bool IsWorkTime() const;                                 // 0x00658B20
+#endif
 private:
 #ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
     // Ego_r/FableWin original private const member template; six retail instances 00660ae2..00660d49.

@@ -21,76 +21,23 @@
 // Shape: the action is a temporary bound to SetCurrentAction's const reference (its implicit destructor inlined, the
 //   result held in bl); the refused path follows the landed CCreatureAction_PickUpGoods::PerformAction 0x00848730
 //   model: unchecked GetInterface lookups (the miss path reads the shared frame word), the carryable def a CDefPointer
-//   local released at the end (null test folded after the dereference), and the same-TU GetSubDef / LowerBound
+//   local released at the end (null test folded after the dereference), and the same-TU GetSubDef (engine/CDefClassBase_GetSubDef.h no-inline opt-in, agentNF25b) / LowerBound
 //   stand-ins that carry retail's whole-program knowledge (def kept in ebp, key and def share one frame word); the box
 //   is taken into a local before GetSubDef (else &def is pushed before the GetPThing call); the mode manager comes from
 //   an inline accessor returning an unset local over the ternary GetTC (the out-pointer GetInterface form leaves the
 //   pointer in eax and adds `mov ecx,eax`).
 #include "fable_compiler.h"
 class CTCBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-class CCarryableDef { public:
-    virtual void v00();
-    virtual void Destroy();                             // slot 1
-    long RefCount;                                      // +0x04
-    unsigned char _pad08[0x28 - 0x08];
-    long CarrySlot;                                     // +0x28
-};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    CDefPointer& operator=(const CDefPointer& other)
-    {
-        if (Object != other.Object) {
-            if (Object) {
-                if (--Object->RefCount == 0)
-                    Object->Destroy();
-                Object = 0;
-            }
-            Object = other.Object;
-            if (Object)
-                ++Object->RefCount;
-        }
-        return *this;
-    }
-};
-class CDefinitionManager { public:
-    CDefPointer<CCarryableDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
-};
-class CDefClassBase { public:
-    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
-    virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
-    virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
-    virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
-    unsigned char _pad04[0x1c - 4];
-    CDefinitionManager* m_pManager;                     // +0x1c
-    bool GetSubDef(CDefPointer<CCarryableDef>* out);   // 0x005CC10E
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef<CCarryableDef> 0x005CC10E (the landed body, as in 0x00848730): VC7.1 then knows it
-// does not keep the def pointer's address.
-bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
-{
-    long* pIndex;
-    {
-        CCharString name("CCarryableDef");
-        pIndex = GetSubDefIndex(name);
-    }
-    if (pIndex) {
-        CDefPointer<CCarryableDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
-        *out = result;
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -221,10 +168,10 @@ void CActionPickUpGenericBox::Update()
     CTCCarrying* carrying;
     PTCScript->ParentThing->GetInterface(&carrying, 0x46);
     carrying->RemoveThingFromPrimarySlot(false);
-    CDefPointer<CCarryableDef> carryDef;
+    CDefPointer<const CCarryableDef> carryDef;
     CThing* box = PBox.GetPThing();
     box->m_pDef->GetSubDef(&carryDef);
-    carrying->PutThingInCarrySlot(PBox.GetPThing(), carryDef->CarrySlot, true);
+    carrying->PutThingInCarrySlot(PBox.GetPThing(), carryDef->ActiveCarrySlot, true);
     GetModeManager()->AddMode(CREATURE_MODE_CARRYING_GENERIC_BOX);
     Terminated = true;
 }

@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-11-12T00:55:22+00:00`
+Generated: `2026-11-12T03:43:19+00:00`
 
 ## Landed reconstruction (live)
 
@@ -30,7 +30,7 @@ Every known function is placed by `docs/pipeline/LIBRARY_MAP.tsv` (its `category
 | Third-party vendor code | 812 | 814 | 99.754% | 182,713 | 99.382% |
 | VC7.1 toolchain (CRT, import thunks) | 440 | 443 | 99.323% | 6,374 | 98.531% |
 
-## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-09-07)
+## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-11-11)
 
 Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux lane does not refresh it, so the compile, parity and match rows below stop at that date; use the live table above for landing progress.
 

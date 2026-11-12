@@ -8,6 +8,11 @@ class CEnvironmentThemePriorityStackEntry {
         float Weight;
         bool LockWeight;
     };
+#ifdef FABLE_RETAIL_CENVIRONMENTTHEMEPRIORITYSTACKENTRY_STACK_FRIEND
+    // Opt-in (agentNF25b, row 0x008889C0 CEnvironmentThemePriorityStack::CalculateTheme): the owning stack reads BaseWeight (+0x00)
+    // of each entry directly (0x00888A0B `fsub dword [ecx]`); access device only, no layout change.
+    friend class CEnvironmentThemePriorityStack;
+#endif
     float BaseWeight;
     bool BaseWeightLocked;
     CArray<CThemeWeight> Themes;

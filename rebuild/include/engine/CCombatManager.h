@@ -22,6 +22,12 @@ public:
  // PDB name set). Declaration only.
  bool IsCreatureAttacking(const CThingCreatureBase& creature);           // 0x006E92C0
 #endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_ISATTACKER
+ // Opt-in (agentNF25b, 2026-11-12): Ego_r.pdb (0x00712500) + FableWin.pdb (0x02412A40) ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z,
+ // out of line at 0x006E92C0 (landed row; the Combatants lookup of the creature's UID, then its AttackerInfo.Attacked). Supersedes the
+ // FABLE_RETAIL_CCOMBATMANAGER_ISATTACKING spelling (in neither PDB). Declaration only.
+ bool IsAttacker(const CThingCreatureBase& creature) const;             // 0x006E92C0
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_UNSHEATH
  // Retail opt-in (chunk Q17, row 0x0093C030): Ego_r.pdb ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
  // (out of line at 0x006EBDD0). Declaration only; needs engine/EUnsheatheWeaponType.h.

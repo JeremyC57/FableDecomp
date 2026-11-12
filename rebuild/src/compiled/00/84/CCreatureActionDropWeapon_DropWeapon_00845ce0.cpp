@@ -5,6 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00845CE0, 763 bytes (+ int3 padding), static __fastcall, `ret 4`.
 // Callees: CTCCarrying::RemoveThing 0x006A19B0, GetThingInCarrySlot 0x006A11F0 (manifest "CThing_Array_FindByID"),
 //   PutThingInCarrySlot 0x006A1F80; CDefClassBase::GetSubDef<CCarryableDef> 0x005CC10E / GetSubDef<CWeaponDef> 0x0042B1A6
+//   (agentNF25b: both from engine/CDefClassBase_GetSubDef.h under the per-TU no-inline opt-in, replacing the local stand-ins)
 //   (manifest "<CAbilityDef>" is propagated); CThing::SetInLimbo 0x004C8CF0, Kill 0x004C9B80, AddTC 0x004C9D60;
 //   CVectorMap::LowerBound 0x0040F020 (non-const) / 0x004365B0 (const); CTCWeapon::IsMeleeWeapon 0x005DAA00; the physics
 //   slots 63 (+0xfc, facing angle XY as a fraction of a turn) and 75 (+0x12c, SetRHSet); CTCSolidToThing::
@@ -28,96 +29,17 @@ class CRightHandedSet { public:
     C3DVector Forward;                                // +0x0c
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy();                           // slot 1
-    long RefCount;                                    // +0x04
-};
-class CCarryableDef : public CDefBase { public:
-    unsigned char _pad08[0x30 - 0x08];
-    long PassiveCarrySlot;                            // +0x30
-};
-class CWeaponDef : public CDefBase { public:
-    unsigned char _pad08[0x38 - 0x08];
-    long SheatheObject;                               // +0x38
-};
-// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
-//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
-template <class T> struct CDefNonConst { typedef T Type; };
-template <class T> struct CDefNonConst<const T> { typedef T Type; };
-template<class T> class CDefPointer { public:
-    typename CDefNonConst<T>::Type* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    typename CDefNonConst<T>::Type* operator->() const { return Object; }
-    CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
-    CDefPointer& operator=(const CDefPointer& other)
-    {
-        if (Object != other.Object) {
-            if (Object) {
-                if (--Object->RefCount == 0)
-                    Object->Destroy();
-                Object = 0;
-            }
-            Object = other.Object;
-            if (Object)
-                ++Object->RefCount;
-        }
-        return *this;
-    }
-};
-class CDefinitionManager { public:
-    template<class T> CDefPointer<T> GetPDefFromGlobalIndex(long index);   // 0x009ADA10
-};
-class CDefClassBase { public:
-    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
-    virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
-    virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
-    virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
-    unsigned char _pad04[0x1c - 4];
-    CDefinitionManager* m_pManager;                   // +0x1c
-    bool GetSubDef(CDefPointer<CCarryableDef>* out);  // 0x005CC10E
-    template <class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0042B1A6 GetSubDef<CWeaponDef> (Ego_r.pdb member template)
-};
-#pragma auto_inline(off)
-// Same-TU stand-ins for GetSubDef<CCarryableDef> 0x005CC10E and GetSubDef<CWeaponDef> 0x0042B1A6 (the landed GetSubDef
-// shape): VC7.1 then knows neither keeps the def pointer's address, so the weapon def stays in edi across the calls.
-bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
-{
-    long* pIndex;
-    {
-        CCharString name("CCarryableDef");
-        pIndex = GetSubDefIndex(name);
-    }
-    if (pIndex) {
-        CDefPointer<CCarryableDef> result = m_pManager->GetPDefFromGlobalIndex<CCarryableDef>(*pIndex);
-        *out = result;
-        return true;
-    }
-    return false;
-}
-template <> bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out) const
-{
-    CDefClassBase* self = const_cast<CDefClassBase*>(this);
-    long* pIndex;
-    {
-        CCharString name("CWeaponDef");
-        pIndex = self->GetSubDefIndex(name);
-    }
-    if (pIndex) {
-        CDefPointer<CWeaponDef> result = self->m_pManager->GetPDefFromGlobalIndex<CWeaponDef>(*pIndex);
-        *reinterpret_cast<CDefPointer<CWeaponDef>*>(out) = result;
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CWeaponDef.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -214,7 +136,7 @@ void __fastcall CCreatureAction_DropWeapon::DropWeapon(CThing& weapon, CTCCarryi
 {
     if (weapon.HasTC(0x1a)) {
         carrying.RemoveThing(weapon);
-        CDefPointer<CCarryableDef> carryableDef;
+        CDefPointer<const CCarryableDef> carryableDef;
         weapon.m_pDef->GetSubDef(&carryableDef);
         long passiveSlot = carryableDef->PassiveCarrySlot;
         CThing* sheathed = carrying.GetThingInCarrySlot(passiveSlot);

@@ -1,5 +1,5 @@
 // CTCUnholyPower::UnsheatheWeapon() -- when the item the spell took out of the hero's hand is still alive: clear the primary carry slot (dropping a weapon, letting a 0x1a component react when no longer carried), put the item back in its carry slot, refresh the sheathes, cancel the melee flourish, restart the current creature mode and put the player in aggressive mode
-// Leaf: UnsheatheWeapon
+// Leaf: ?UnsheatheWeapon@CTCUnholyPower@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x00793EC0, 545 bytes, plain `ret`. Catalog label CTCDivineWrath::UnsheatheWeapon is propagated: the callers are CTCUnholyPower::FrameUpdate (vtable 0x0126BFDC slot 9, 0x00795300); a byte-identical copy is CTCDivineWrath::UnsheatheWeapon at 0x0078E9C0.
@@ -23,32 +23,16 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CPlayer { public:
     void SetAggressiveMode(bool aggressive);                 // 0x00487EB0
 };
-class CCarryableDef { public:
-    virtual void v00();
-    virtual void Destroy();                                  // slot 1
-    long RefCount;                                           // +0x04
-    unsigned char _pad08[0x28 - 0x08];
-    long CarrySlot;                                          // +0x28
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CCarryableDef>* out);         // 0x005CC10E
-};
-CCarryableDef* FindCarryableDef(const CDefClassBase* def);   // stand-in: the sub def lookup (not graded here)
-#pragma auto_inline(off)
-// Same-TU body of GetSubDef<CCarryableDef> (VC7.1 then knows the def pointer's address does not escape).
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
-{
-    CCarryableDef* def = FindCarryableDef(this);
-    out->Object = def;
-    return def != 0;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];                         // +0x20
@@ -157,10 +141,10 @@ void CTCUnholyPower::UnsheatheWeapon()
     }
     if (carrying->IsCarryingThing(PItemRemoved.GetPItem()))
         carrying->RemoveThing(*(PItemRemoved.GetPItem()));
-    CDefPointer<CCarryableDef> carryDef;
+    CDefPointer<const CCarryableDef> carryDef;
     CThing* item = GetItemRemoved();
     item->m_pDef->GetSubDef(&carryDef);
-    carrying->PutThingInCarrySlot(*GetItemRemoved(), carryDef->CarrySlot, true);
+    carrying->PutThingInCarrySlot(*GetItemRemoved(), carryDef->ActiveCarrySlot, true);
     if (parent->HasTC(0x13))
         parent->GetTC<CTCInventoryWeapons>(0x13)->RefreshSheathedWeapons();
     CTCCombat* combat;

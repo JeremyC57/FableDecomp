@@ -35,18 +35,10 @@ enum EHeroAbility { HERO_ABILITY_14 = 14 };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
-namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
-}
-struct CIsThingConscious : public NScript::CPredicateBase {                             // vtable 0x012C2FE8: a filter holding a script thing
-    CScriptThing m_thing;                              // +0x04
-    CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingConscious();                              // 0x00EF7AB0
-};
+// NScript::CIsThingConscious: the retail model (vtable 0x012C2FE8, Thing +0x04, 0x10); its dtor 0x00EF7AB0 is called out of line
+//   (agentNF25b: was a global local model binding ??1CIsThingConscious@@QAE@XZ; Ego_r + FableWin ??1CIsThingConscious@NScript@@UAE@XZ).
+#include "engine/CIsThingConscious.h"
+inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)

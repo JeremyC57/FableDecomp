@@ -2,9 +2,8 @@
 // Leaf: ?Main@CDummy@CBenTestScriptsScript@NScript@@EAEXXZ
 // Identity (naming wave 11): ?Main@CDummy@CBenTestScriptsScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F6F14 slot 1 is stored by the factory 0x00EFE620 registered as "Dummy"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EFE700, length 226 bytes (+ int3 padding), `ret`.
-// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90 (the alive filter's member; filter vtable
-// 0x012C2FE8, its destructor called out of line @ 0x00EF7AB0 in this module; named CIsThingAliveEndGame to keep it apart from
-// the CIsThingAlive copy at 0x00E241B0), the filter registration @ 0x00F35B10 and
+// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90 (the filter's member; filter vtable 0x012C2FE8 =
+// NScript::CIsThingConscious, its destructor called out of line @ 0x00EF7AB0), the filter registration @ 0x00F35B10 and
 // IsDone @ 0x00F35B30 on `this` (labels propagated; see the landed CHTE_Prisoner::Main 0x00D69F50), CBaseObject::CBaseObject
 // @ 0x0099A380, CScriptGameResourceObjectScriptedThingBase (vtable 0x0127094C): IsValid @ 0x00CD23B9, Release
 // @ 0x00CD2770 (labels propagated; the landed CFH_BriarRose::Main 0x00D37330 names them) and its destructor @ 0x007E74D0
@@ -24,19 +23,11 @@ class CCPPointerInfo;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
-}
-struct CIsThingAliveEndGame : public NScript::CPredicateBase {                      // vtable 0x012C2FE8: the end-game module's alive filter (its own vtable and
-                                                   // out-of-line dtor; the landed 0x00E95E80 binds ~CIsThingAlive to 0x00E241B0)
-    CScriptThing m_thing;                          // +0x04
-    CIsThingAliveEndGame(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAliveEndGame();                       // 0x00EF7AB0
-};
+// NScript::CIsThingConscious: the retail model (vtable 0x012C2FE8, Thing +0x04, 0x10); its dtor 0x00EF7AB0 is called out of line
+//   (agentNF25b: was the local CIsThingAliveEndGame; the vtable 0x012C2FE8 and dtor 0x00EF7AB0 are NScript::CIsThingConscious's,
+//   Ego_r + FableWin ??1CIsThingConscious@NScript@@UAE@XZ, engine/CIsThingConscious.h).
+#include "engine/CIsThingConscious.h"
+inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct SCountedImp {
@@ -81,7 +72,7 @@ public:
 void NScript::CBenTestScriptsScript::CDummy::Main()
 {
     {
-        CIsThingAliveEndGame filter(Me);
+        CIsThingConscious filter(Me);
         SetPredicate(filter);
     }
     Game->NewScriptFrame();

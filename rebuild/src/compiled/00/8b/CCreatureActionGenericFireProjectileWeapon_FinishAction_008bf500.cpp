@@ -3,9 +3,9 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BF500, 412 bytes, plain `ret` (vtable 0x0127F384 slot 4; Ego_r.pdb name above).
 // Callees: CCreatureActionBase::HasPerformedAction 0x006925A0, PerformAction (vtable slot 3, 0x008BF280; the draft's "Abort" was this
 //   slot), CCreatureActionBase::GetDependentThings (inline) + GetPItem 0x00A01B50 + CThing::Kill 0x004C9B80,
-//   CThingCreatureBase::GetCombatManager 0x00661ED0, CCombatManager::IsCreatureAttacking 0x006E92C0 / GetCombatantInfo 0x006E9360,
+//   CThingCreatureBase::GetCombatManager 0x00661ED0, CCombatManager::IsAttacker 0x006E92C0 / GetCombatantInfo 0x006E9360,
 //   CThing::GetTC<CTCCarrying> / <CTCWeapon> (expanded; CVectorMap::LowerBound 0x0040F020), CTCCarrying::GetThingInPrimarySlot
-//   0x006A1440, CTCWeapon::IsProjectileWeapon 0x005DAA40 / ReadyProjectile 0x005DA4E0, CCombatActionBase::FinishAction 0x00859A20.
+//   0x006A1440, CTCWeapon::IsProjectileWeapon 0x005DAA40 / ResetAiming 0x005DA4E0, CCombatActionBase::FinishAction 0x00859A20.
 // Shape: on the shared headers (CCreatureActionBase FULL_MEMBERS, CCombatActionBase MELEE + FINISHACTION, CCombatantInfo's
 //   std::map Attackers walked with the STLport iterator). The port fixed the earlier esi/edi swap and the i*8 CSE.
 //   The attacked creature is a named local (`target`): it becomes a register candidate instead of an expression temporary, so
@@ -32,9 +32,9 @@
 #define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
 #define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
 #define FABLE_RETAIL_CCREATUREACTION_GENERICFIREPROJECTILEWEAPON
-#define FABLE_RETAIL_CCOMBATMANAGER_ISATTACKING
+#define FABLE_RETAIL_CCOMBATMANAGER_ISATTACKER   // hdr overlay (agentNF25b)
 #define FABLE_RETAIL_CTCWEAPON
-#define FABLE_RETAIL_CTCWEAPON_READYPROJECTILE
+#define FABLE_RETAIL_CTCWEAPON_RESETAIMING   // hdr overlay (agentNF25b)
 #include "rebuild_abi.h"
 #include "engine/ETCInterfaceType.h"
 #include "engine/C3DVector.h"
@@ -59,7 +59,7 @@ void CCreatureAction_GenericFireProjectileWeapon::FinishAction()
             GetDependentThings()[i]->Kill(true);
     }
     CCombatManager& combat_manager = PCreature->GetCombatManager();
-    if (combat_manager.IsCreatureAttacking(*PCreature)) {
+    if (combat_manager.IsAttacker(*PCreature)) {
         CThingCreatureBase* target =   // named: keeps the [eax+4] load out of the scratch rotation (see above)
             combat_manager.GetCombatantInfo(*PCreature).AttackerInfo.Attacked;
         const CCombatantInfo& target_info = combat_manager.GetCombatantInfo(*target);
@@ -70,7 +70,7 @@ void CCreatureAction_GenericFireProjectileWeapon::FinishAction()
                 CThing* item = carrying->GetThingInPrimarySlot();
                 CTCWeapon* weapon;
                 if (IS_THING_ALIVE(item) && item->GetTC(&weapon) && weapon->IsProjectileWeapon())
-                    weapon->ReadyProjectile();
+                    weapon->ResetAiming();
             }
         }
     }

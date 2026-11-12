@@ -1648,8 +1648,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00658b20'
         Module = 'CTCVillage'
-        Source = '00/65/CTCVillage_IsCookTime_00658b20.cpp'
-        TestSource = '00/65/CTCVillage_IsCookTime_00658b20_test.cpp'
+        Source = '00/65/CTCVillage_IsWorkTime_00658b20.cpp'
+        TestSource = '00/65/CTCVillage_IsWorkTime_00658b20_test.cpp'
         PassPattern = 'CTCVillage_00658b20_TEST PASS'
     }
     [pscustomobject]@{
@@ -31238,9 +31238,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005da4e0'
-        Module = 'CGhostGrannySon'
-        Source = '00/5d/CGhostGrannySon_Init_005da4e0.cpp'
-        TestSource = '00/5d/CGhostGrannySon_Init_005da4e0_test.cpp'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_ResetAiming_005da4e0.cpp'
+        TestSource = '00/5d/CTCWeapon_ResetAiming_005da4e0_test.cpp'
         PassPattern = 'OK_0x005da4e0'
     }
     [pscustomobject]@{
@@ -225437,9 +225437,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008889c0'
-        Module = 'CEnvironmentThemePriorityStack'
-        Source = '00/88/CEnvironmentThemePriorityStack_CalculateTheme_008889c0.cpp'
-        TestSource = '00/88/CEnvironmentThemePriorityStack_CalculateTheme_008889c0_test.cpp'
+        Module = 'NEnvironmentInternal::CEnvironmentThemePriorityStack'
+        Source = '00/88/NEnvironmentInternalCEnvironmentThemePriorityStack_CalculateTheme_008889c0.cpp'
+        TestSource = '00/88/NEnvironmentInternalCEnvironmentThemePriorityStack_CalculateTheme_008889c0_test.cpp'
         PassPattern = '008889c0_TEST PASS'
     }
     [pscustomobject]@{

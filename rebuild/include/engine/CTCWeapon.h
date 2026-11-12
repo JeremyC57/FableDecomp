@@ -36,6 +36,13 @@ public:
     // binding's (in neither PDB name set). Declaration only.
     void ReadyProjectile();                                  // 0x005DA4E0
 #endif
+#ifdef FABLE_RETAIL_CTCWEAPON_RESETAIMING
+    // Opt-in (agentNF25b, 2026-11-12): Ego_r.pdb + FableWin.pdb ?ResetAiming@CTCWeapon@@QAEXXZ, out of line at 0x005DA4E0 (AimingTime
+    // +0x14 = -1, AimingTimeOverride +0x18 = false; Ego_r donor order IsAimedForLongEnough / SetAimingTimeOverride / SetAiming /
+    // ResetAiming / FrameUpdate / IsMeleeWeaponClass = retail 0x005DA490 / 4C0 / 4D0 / 4E0 / 4F0 / 510). Supersedes the
+    // FABLE_RETAIL_CTCWEAPON_READYPROJECTILE spelling (in neither PDB). Declaration only.
+    void ResetAiming();                                      // 0x005DA4E0
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_TARGETINGRANGE
     // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): Ego_r.pdb ?GetTargetingRange@CTCWeapon@@QBEJXZ (Ego_r
     // 0x0063A6D0), out of line in retail at 0x005DA890 (Ego_r donor order GetTargetingRange / TargetingFOV / IsAnalogueLoading at a

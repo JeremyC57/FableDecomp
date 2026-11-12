@@ -3,8 +3,9 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EB110, length 138 bytes (+6 int3 padding). Vtable slot 28 of
 // CTCActionUsePickUp (FableWin.pdb: ?OnActionUse@CTCActionUsePickUp@@UAEXAAVCThing@@@Z). `ret 4`.
-// Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (qualified), CDefClassBase::GetSubDef(CDefPointer*) @ 0x005CC10E
-// (catalog: the <CAbilityDef> byte-twin), CCreatureAction_AddRealObjectToInventory::CCreatureAction_AddRealObjectToInventory
+// Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (qualified), CDefClassBase::GetSubDef<CCarryableDef> const @ 0x005CC10E
+// (agentNF25b: the body pushes the 'CCarryableDef' literal, so T is CCarryableDef, not the earlier local CPickUpDef; now on
+// engine/CDefClassBase_GetSubDef.h with the per-TU no-inline opt-in), CCreatureAction_AddRealObjectToInventory::CCreatureAction_AddRealObjectToInventory
 // (CThingCreatureBase*, CThingObject*) @ 0x007EB030, CThingCreatureBase::SetCurrentAction @ 0x006644F0 (result dropped),
 // CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10, ~CCreatureActionBase @ 0x00693EF0 (catalog
 // "CPhysicsMeshInfo::~CPhysicsMeshInfo"), the def's virtual slot 1 at count zero.
@@ -13,39 +14,15 @@
 // (CCreatureActionBase 0xA8 + PReceivedObject) is destroyed inline with no vtable store (a novtable leaf), the def released
 // with no zero store (dead local).
 // Layout: retail CThing (+0x20 component bitset, +0x70 PBaseDef object word, +0x91 bit 0 Dead); CTCBase +4 ParentThing.
-class CThing;
-class CDefClassBase;
-struct CPickUpDef {
-    virtual void v00();
-    virtual void Destroy();                        // slot 1 (+0x04)
-    long RefCount;                                 // +0x04
-    void ReleaseTemporary() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> class CDefPointer { public:
-    T* Data;
-    CDefPointer() : Data(0) {}
-    ~CDefPointer()
-    {
-        if (Data)
-            Data->ReleaseTemporary();
-    }
-};
-class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<CPickUpDef>* out) const;     // 0x005CC10E
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CPickUpDef>* out) const
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // the template body kept out of line (0x005CC10E), visible to the TU
+#include "engine/CDefPointer.h"
+#include "engine/CCarryableDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -102,7 +79,7 @@ void CTCActionUsePickUp::OnActionUse(CThing& user)
     CTCActionUseBase::OnActionUse(user);
     CThingCreatureBase* creature = CastToCreature(&user);
     if (creature && !creature->IsDead()) {
-        CDefPointer<CPickUpDef> def;
+        CDefPointer<const CCarryableDef> def;
         ParentThing->PBaseDef->GetSubDef(&def);
         if (creature->IsUsingComponent(70)) {
             creature->SetCurrentAction(CCreatureAction_AddRealObjectToInventory(creature, (CThingObject*)ParentThing));

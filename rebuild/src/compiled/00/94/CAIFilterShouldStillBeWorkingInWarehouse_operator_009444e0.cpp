@@ -1,8 +1,8 @@
 // CAIFilter_ShouldStillBeWorkingInWarehouse::operator()() -- true while the crate and the warehouse are live, a carried crate still has a put-down task, the crate accepts the warehouse and the village (if any) is in its work hours
-// Leaf: ??RCAIFilter_ShouldStillBeWorkingInWarehouse
+// Leaf: ??RCAIFilter_ShouldStillBeWorkingInWarehouse@@UAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009444E0, length 117 bytes (vtable 0x01292A8C slot 0).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (re-fetched at every use, five calls),
-// CTCVillage::IsThereACratePutDownTask @ 0x00658E09, CTCVillage::IsCookTime @ 0x00658B20 (manifest
+// CTCVillage::IsThereACratePutDownTask @ 0x00658E09, CTCVillage::IsWorkTime @ 0x00658B20 (manifest
 // labels, kept as hints), the crate's virtual slot 7 (+0x1c) taking the warehouse thing.
 // Shape: nested ifs with one `return true` and one shared `return false` (early `return false` tests
 // duplicate the tail and push ebx late); the crate pointer member's
@@ -20,7 +20,7 @@ class CCrateThing { public:
 
 class CTCVillage { public:
     bool IsThereACratePutDownTask();                    // 0x00658E09
-    bool IsCookTime_00658b20();                                  // 0x00658B20
+    bool IsWorkTime() const;   // 0x00658B20 ?IsWorkTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin; agentNF25b)
 };
 
 class CBaseObjectPointer;
@@ -51,7 +51,7 @@ bool CAIFilter_ShouldStillBeWorkingInWarehouse::operator()()
     if (m_pCrate.GetPItem() != 0 && m_pWarehouse.GetPItem() != 0) {
         if (!m_pCrate.GetPItem()->m_bCarried || m_pVillage->IsThereACratePutDownTask()) {
             if (m_pCrate.GetPItem()->CanBePutIn((CBaseObject*)m_pWarehouse.GetPItem())) {
-                if (m_pVillage == 0 || m_pVillage->IsCookTime_00658b20())
+                if (m_pVillage == 0 || m_pVillage->IsWorkTime())
                     return true;
             }
         }

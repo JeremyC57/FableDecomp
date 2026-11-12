@@ -1,0 +1,7 @@
+- Including engine/CDefClassBase_GetSubDef.h with FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE replaces every hand-written "same-TU GetSubDef stand-in"; all 19 ports graded first try, including the rows whose release had "no null test" (the visible noinline body is enough).
+- A made-up inline getter that only fixed scheduling (GetFillCarrySlot, GetItemID) is replaced by reading the field into a named local before the call: same bytes.
+- Rows with renamed-macro includes (`#define CCarryableDef CCarryableDefPdb` + include) must drop those includes before including the real header, or the guard leaves the Pdb copy.
+- A local `enum ETCInterfaceType { };` clashes with engine/ETCInterfaceType.h pulled in by CTCCarrying.h: include the header instead (same W4 mangling).
+- engine/CVillageDef.h needs FABLE_RETAIL_CDEFSTRINGTABLE + BASE_OBJECT + CINTELLIGENTPOINTER + CCOUNTEDPOINTER; without CDEFSTRINGTABLE wine cl hangs on the #error (kill by PID, run a gcc `cpp` pre-pass first).
+- A catalog byte scan for E8/E9 rel32 targets (rebuild/oracles/auto-re-candidates.tsv) finds every binder when no Fable.exe is on disk; reloc_bindings only lists the first caller per spelling.
+- Porting an entity-script Main onto engine/CEntityScriptBase.h needs `private: virtual void Main();` (PDB EAE); a public non-virtual Main hides the base and emits QAE.

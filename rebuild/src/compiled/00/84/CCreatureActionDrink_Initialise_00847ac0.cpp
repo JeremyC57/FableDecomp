@@ -1,14 +1,22 @@
 // CCreatureAction_Drink::Initialise -- restore drink from limbo, save held object, equip drink in its definition slot.
 // Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Start/Finish are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +4.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Leaf: ?Initialise@CCreatureAction_Drink@@UAEXXZ
+// agentNF25b (2026-11-12): the carryable lookup 0x005CC10E is CDefClassBase::GetSubDef<CCarryableDef> const (Ego_r + FableWin; was a
+//   local CDefLookup::GetCarryable stand-in with a hand-built DefPointer/NativeCountedDef model), now from engine/CDefClassBase_GetSubDef.h
+//   (per-TU no-inline opt-in), engine/CDefPointer.h and engine/CCarryableDef.h.
 // Retail00847AC0,283bytes. No Drink/CTCCarrying donor header available; nativeDrink baseA8 and two real intelligent pointers.
 #include "fable_compiler.h"
-#define CCarryableDef CCarryableDefPdb
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCARRYABLEDEF
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE   // agentNF25b: the GetSubDef<CCarryableDef> template body (0x005CC10E) kept out of line, visible to the TU
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
 #include "engine/CCarryableDef.h"
-#undef CCarryableDef
-#define CDefClassBase CDefClassBasePdb
-#include "engine/CDefClassBase.h"
-#undef CDefClassBase
+#include "engine/CDefClassBase_GetSubDef.h"
 // Native combat action projection: base70 genuine slots; combat adds11 =81 slots.
 // BaseA8 and Combat114; PDB baseB4/Combat12C. See actual headers and raw vtable audit.
 #define CCreatureActionBase CCreatureActionBasePdb
@@ -43,7 +51,7 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { publ
 };
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
-class CTCPhysicsBase;struct CDefLookup;
+class CTCPhysicsBase;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -59,7 +67,7 @@ class CThing:public CBaseObject { public:
     void* PTCGraphicAppearance;
     long WorldFrameCreatedAt;
     unsigned long ThingTypeFlags;
-    CDefLookup* PBaseDef;
+    CDefClassBase* PBaseDef;
     unsigned char LaterState[0x1d];
     unsigned char DeadFlags;
     void SetInLimbo(bool); //004C8CF0
@@ -187,53 +195,6 @@ struct __declspec(novtable) CCreatureActionBase {
     CCreatureActionBase(const CCreatureActionBase& other); // native copy ctor @0x0062EBC0
     CCreatureActionBase(CThingCreatureBase* creature, const CSoundPair& sounds, long first, long second); // native @0x00693C70
 };
-// Real native counted base prefix with Delete slot1; complete host PMF representation.
-struct NativeCountedDef {
- struct VTable;const VTable* VPtr;unsigned long IVRefCount;
- void DeletingDestructor(unsigned long);void Delete()const;
- FABLE_FORCEINLINE void Release(){if(!--IVRefCount)(this->*GetDelete())();}
- typedef void(NativeCountedDef::*DeleteMethod)()const;
- DeleteMethod GetDelete()const;
-};
-struct NativeCountedDef::VTable {void(NativeCountedDef::*Destructor)(unsigned long);DeleteMethod Delete;};
-inline NativeCountedDef::DeleteMethod NativeCountedDef::GetDelete()const{return VPtr->Delete;}
-template<class T>struct DefPointer {
- T* Object;DefPointer():Object(0){} explicit DefPointer(T* p):Object(p){if(p)++p->IVRefCount;}
- DefPointer(const DefPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
- FABLE_FORCEINLINE void Assign(const DefPointer& p){if(Object!=p.Object){if(Object){Object->Release();Object=0;}Object=p.Object;if(Object)++Object->IVRefCount;}}
- ~DefPointer(){T* p=Object;if(p)p->Release();}
- T* operator->()const{return Object;}
-};
-class CCarryableDef:public NativeCountedDef { public:
- unsigned char DefinitionBaseState[0x20];
- long ActiveCarrySlot,SecondaryActiveCarrySlot,PassiveCarrySlot,OnKillFX;
- C3DVector OffsetCoordRelativeToAttachToDummy;float OffsetAmountForThingsOnTopOfMe,PassiveCarrySlotScale;bool IncludeInThingScansWhenCarried;
-};
-struct DefinitionSubDefInfo {long GlobalIndex;long Flags;};
-struct DefinitionString {long TablePos;};
-struct CDefLookup:NativeCountedDef {
- unsigned char ResourceState[0x14];void* PDefManager;long GlobalIndex;bool DefaultValsApplied;
- bool GetCarryable(DefPointer<CCarryableDef>*)const; //005CC10E
- void DeletingDestructor(unsigned long);void Delete()const;bool UnloadResource();unsigned long GetUnloadableMemory()const;
- bool IsResourceLoaded()const;void OnResourceLoaded();bool CanAbortResourceLoad(long)const;void OnResourceLoadAborted();unsigned long GetDebugMemoryInUse()const;void ResetDebugMemoryInUse();
- DefinitionString GetInstantiationName()const;void SetInstantiationName(DefinitionString);void AddSubDef(const CCharString&,long,long);void RemoveSubDef(const CCharString&);
- const DefinitionSubDefInfo* GetPSubDefInfo(const CCharString&)const;
-};
-struct DefinitionVTable:NativeCountedDef::VTable {
- bool(CDefLookup::*UnloadResource)();unsigned long(CDefLookup::*GetUnloadableMemory)()const;
- bool(CDefLookup::*IsResourceLoaded)()const;void(CDefLookup::*OnResourceLoaded)();bool(CDefLookup::*CanAbortResourceLoad)(long)const;void(CDefLookup::*OnResourceLoadAborted)();unsigned long(CDefLookup::*GetDebugMemoryInUse)()const;void(CDefLookup::*ResetDebugMemoryInUse)();
- DefinitionString(CDefLookup::*GetInstantiationName)()const;void(CDefLookup::*SetInstantiationName)(DefinitionString);void(CDefLookup::*AddSubDef)(const CCharString&,long,long);void(CDefLookup::*RemoveSubDef)(const CCharString&);
- const DefinitionSubDefInfo*(CDefLookup::*GetPSubDefInfo)(const CCharString&)const;
-};
-struct DefinitionManagerAPI {DefPointer<CCarryableDef> GetPDefFromGlobalIndex(long);}; //009ADA10
-#pragma auto_inline(off)
-bool CDefLookup::GetCarryable(DefPointer<CCarryableDef>* out)const {
- const DefinitionSubDefInfo* info;
- {CCharString type("CCarryableDef",-1);info=(this->*static_cast<const DefinitionVTable*>(VPtr)->GetPSubDefInfo)(type);}
- if(info){DefPointer<CCarryableDef> def=static_cast<DefinitionManagerAPI*>(PDefManager)->GetPDefFromGlobalIndex(info->GlobalIndex);out->Assign(def);return true;}
- return false;
-}
-#pragma auto_inline(on)
 
 class CTCCarrying { public:
  CThing* RemoveThingFromPrimarySlot(bool); //006A1E00
@@ -254,7 +215,7 @@ void CCreatureAction_Drink::Initialise(){
  CCreatureActionBase::Initialise();
  if(PDrink.IsValid()){
   PDrink->SetInLimbo(false);
-  DefPointer<CCarryableDef> carryable;CThing* drink=PDrink;drink->PBaseDef->GetCarryable(&carryable);
+  CDefPointer<const CCarryableDef> carryable;CThing* drink=PDrink;drink->PBaseDef->GetSubDef(&carryable);
   CTCCarrying* carrying;PCreature->GetInterface(&carrying,70);
   {CIntelligentPointer<CThing> held(carrying->GetThingInPrimarySlot());PreviousHeldThing.SetPItem(held);}
   carrying->RemoveThingFromPrimarySlot(false);

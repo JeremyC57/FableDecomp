@@ -12207,7 +12207,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005da490	Comparison_Float_WithEpsilon	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\global_ComparisonFloatWithEpsilon_005da490.cpp
 005da4c0	Member_5da4c0	CTCWeapon	__thiscall	undefined	1	CXMVPlaybackInfo *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CXMVPlaybackInfo_CXMVPlaybackInfo_005da4c0.cpp
 005da4d0	SetAiming	CTCWeapon	__thiscall	void	1	CTCWeapon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCWeapon_SetAiming_005da4d0.cpp
-005da4e0	sub_005da4e0	_global	__thiscall	void	1	CGhostGrannySon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CGhostGrannySon_Init_005da4e0.cpp
+005da4e0	ResetAiming	CTCWeapon	__thiscall	void	1	CGhostGrannySon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CGhostGrannySon_Init_005da4e0.cpp
 005da4f0	FrameUpdate	CTCWeapon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005da510	IsMeleeWeaponClass	CTCWeapon	__fastcall	bool	1	EWeaponClass	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\global_IsMeleeWeaponClass_005da510.cpp
 005da530	IsProjectileWeaponClass	CTCWeapon	__thiscall	bool	2	CComponent *,ulong	1	yes	accepted									
@@ -14181,7 +14181,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00658a35	IsCookTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658a35.cpp
 00658a80	IsCookTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658a80.cpp
 00658acb	GetSchoolTimes	CTCVillage	__thiscall	bool	3	CTCVillage *,float *,float *	1	yes	accepted									
-00658b20	IsCookTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658b20.cpp
+00658b20	IsWorkTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CTCVillage_IsCookTime_00658b20.cpp
 00658b6b	IsCookTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted									
 00658bb9	IsEatTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted									
 00658c0a	IsTavernTime	CTCVillage	__thiscall	bool	1	CTCVillage *	1	yes	accepted									
@@ -26477,7 +26477,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00888410	Build	CEnvironmentThemeSetDay	__thiscall	void	5	CEnvironmentThemeSetDay *,CGameDefinitionManager *,CEnvironmentDef *,CEnvironmentLookupTexture *,CEnvironmentThemeDaySetDef *	1	yes	accepted									
 008884d0	GetLevelTheme	CEnvironmentThemePriorityStackEntry	__thiscall	void	4	CEnvironmentThemePriorityStackEntry *,CBlendedEnvironmentTheme *,float,CEnvironmentThemeResourcePallette *	1	yes	accepted									
 008886e0	BlendInLevel	CEnvironmentThemePriorityStackEntry	__thiscall	void	5	CEnvironmentThemePriorityStackEntry *,CBlendedEnvironmentTheme *,CBlendedEnvironmentTheme *,float,CEnvironmentThemeResourcePallette *	1	yes	accepted									
-008889c0	CalculateTheme	CEnvironmentThemePriorityStack	__thiscall	void	4	CEnvironmentThemePriorityStack *,CBlendedEnvironmentTheme *,float,CEnvironmentThemeResourcePallette *	1	yes	accepted									
+008889c0	CalculateTheme	NEnvironmentInternal::CEnvironmentThemePriorityStack	__thiscall	void	4	CEnvironmentThemePriorityStack *,CBlendedEnvironmentTheme *,float,CEnvironmentThemeResourcePallette *	1	yes	accepted									
 00888a60	CEnvironmentThemeSetDay_BuildDay	_global	unknown	undefined	0		0	yes	accepted									
 00888e60	GetDef<CEnvironmentThemeDaySetDef>	CDefinitionManager	__thiscall	bool	4	CDefinitionManager *,CCharString *,long,CDefPointer<CSoundThemeDef_const_> *	1	yes	accepted									
 00888ee0	operator=	std::vector	unknown	undefined	0		0	yes	accepted									
