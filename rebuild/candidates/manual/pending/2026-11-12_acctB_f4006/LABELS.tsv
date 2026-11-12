@@ -1,0 +1,28 @@
+address	name	evidence
+0x005D1F0C	?ConstructPersonalityListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r.pdb + FableWin.pdb name sets; vtable 0x01254ADC slot 89 after ConstructExperienceListPC (slot 88, landed 0x005D7081) in the class virtual order; strings PC_STATS_PERSONALITY_LIST / PC_UI_PERSONALITY_FRAME
+0x005CE0E6	?ConstructPersonalityList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r.pdb + FableWin.pdb name sets; vtable slot 86 before ConstructExperienceList (slot 87, landed 0x005D6748); same statistics text as 0x005D1F0C through CreateTitle 0x005CCF0E
+0x005CCFFC	?CreateTitlePC@CTCInventoryStats@@QAEXABVCWideString@@PAVCComponent@NUISystem@@_N@Z	PDB name set; called 26 times by ConstructPersonalityListPC with (text, container, bool) -- titles with true, text blocks with false
+0x005CCF0E	?CreateTitle@CTCInventoryStats@@QAEXABVCWideString@@PAVCComponent@NUISystem@@_N@Z	PDB name set ?CreateTitle@CTCInventoryStats@@QAEXABVCWideString@@PAVCComponent@NUISystem@@_N@Z; the console row 0x005CE0E6 calls it where the PC row calls CreateTitlePC
+0x005CD4C4	?BuildHeroClass@CTCInventoryStats@@QAE?AVCWideString@@XZ	PDB name set; second title part pushed after BuildRenownString 0x005CD433 at 0x005D29xx
+0x005CD433	?BuildRenownString@CTCInventoryStats@@QAE?AVCWideString@@XZ	PDB name set; first title part of the TITLE_BUILDER string
+0x005CCBBD	?GetHeroSexualityAsString@CTCInventoryStats@@QAE?AVCWideString@@W4EHeroSexuality@@@Z	PDB name set; takes the result of CTCHeroStats::GetHeroSexuality 0x0057ACC4 for the SEXUALITY line
+0x005CCC91	?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z	PDB name set (the only GetTimeSpentInGame mangling); static __fastcall called with (CWorld::GetFrame(), 0) at 0x005D2CED
+0x0057D23B	?UpdateAppearanceStats@CTCHeroStats@@QAEX_N@Z	PDB name set + reloc_bindings; called with true right after the hero-stats lookup (0x005D28C7)
+0x0057AEB4	?GetFavouriteWeapon@CTCHeroStats@@QBE?AVCWideString@@J@Z	PDB name set; called with 0 / 1 / 2 for the FAVWEAPON / FAVMELWEAPON / FAVRANGEWEAPON lines
+0x0057AA5B	?GetFavouriteAbility@CTCHeroStats@@QBEJXZ	PDB name set; result compared with -1 (NONE) else passed to GetExperienceAbilityName for the FAVABILITY line
+0x0057AAA8	?GetNumberOfAbilityCasts@CTCHeroStats@@QBEJXZ	PDB name set; NUMCASTS line
+0x0057B3E2	?GetNumberOfAvailableAbilities@CTCHeroStats@@QBEJXZ	PDB name set; NUMABILITIES line
+0x0057ACC4	?GetHeroSexuality@CTCHeroStats@@QBE?AW4EHeroSexuality@@XZ	PDB name set; SEXUALITY line through GetHeroSexualityAsString
+0x0057AD1D	?GetNumberOfCurrentSpouses@CTCHeroStats@@QBEJXZ	PDB name set; NUMSPOUSES line
+0x0057A989	?GetFavouriteRegion@CTCHeroStats@@QBE?AVCWideString@@AAJ@Z	PDB name set; FAVREGION line, takes a long by reference
+0x0057AA1B	?GetNumRegionsExplored@CTCHeroStats@@QBEJXZ	FableWin.pdb name set; EXPLORED_REGIONS line (the landed stand-in spelling GetNumberOfRegionsVisited is in neither PDB)
+0x0057A7B9	?GetDrinkResistance@CTCHeroStats@@QBE?AVCWideString@@XZ	PDB name set; DRINKERCLASS line
+0x0057A8AF	?GetHeroStatExperience@CTCHeroStats@@QBEJW4EHeroExperienceStatCategory@@@Z	PDB name set; eight calls for the EXPERTOTAL sum and the four EXPER* lines
+0x0057AAD9	?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ	PDB name set + reloc_bindings; added to the renown level for the renown tick slider
+0x007009D0	?GetHeroStatsInOpinionFormat@COpinionReactionManager@@QBEMW4EOpinion@@@Z	PDB name set; called with OPINION_MORALITY / ATTRACTIVENESS / SCARINESS for the three sliders
+0x0042819A	?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	PDB name set; attractiveness / scariness sliders at (285, 0) / (285, 30)
+0x0071CE80	?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	PDB name set; fills the vector the TATTOOS block prints
+0x005D84B6	??0?$_List_base@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCWideString@@J@std@@@1@@Z	STLport COMDAT emitted by the shared header for `std::list<std::pair<CWideString, long> > creatures;` (called with the allocator temporary at 0x005D2F5F); pairs one-to-one in tools/rel.py
+0x005D864B	??1?$_List_base@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAE@XZ	STLport COMDAT, the destructor of the same list (0x005D300B)
+0x005CD6B7	?ConvertMap@CTCInventoryStats@@QAEXABV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAV?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@3@@Z	Ego_r.pdb + FableWin.pdb name sets + the landed row; the same-TU body in src/005d1f0c.cpp (shared headers) grades RELOCATION_MATCH against it (q.py 005cd6b7 with the ConvertMap leaf)
+0x005CC9AD	?GetCreatureGroupAsString@CTCInventoryStats@@QAE?AVCWideString@@K@Z	FableWin.pdb name set + the landed row; called by the same-TU ConvertMap body (relocation of the ConvertMap copy pairs with 0x005CC9AD)
