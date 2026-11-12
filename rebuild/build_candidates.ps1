@@ -393460,6 +393460,20 @@ $catalog = @(
         TestSource = '00/ae/NParticleEngineCParticleEmitterManager_Create2DEmitter_00aeb790_test.cpp'
         PassPattern = '00aeb790_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007cc710'
+        Module = 'CTCMultiArrow'
+        Source = '00/7c/CTCMultiArrow_ReleaseShot_007cc710.cpp'
+        TestSource = '00/7c/CTCMultiArrow_ReleaseShot_007cc710_test.cpp'
+        PassPattern = '007cc710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d6350'
+        Module = 'CBankFileAsyncData'
+        Source = '00/9d/CBankFileAsyncData_Abort_009d6350.cpp'
+        TestSource = '00/9d/CBankFileAsyncData_Abort_009d6350_test.cpp'
+        PassPattern = '009d6350_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

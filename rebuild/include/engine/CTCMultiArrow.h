@@ -65,6 +65,11 @@ public:
     CIntelligentPointer<CThing> BowEffect;                   // +0x3c
     bool CutSceneCancelled;                                  // +0x44
 #endif // FABLE_RETAIL_CTCMULTIARROW_VSLOTS3
+#ifdef FABLE_RETAIL_CTCMULTIARROW_RELEASESHOT
+// chunkQ29 (2026-11-12): Ego_r.pdb ?ReleaseShot@CTCMultiArrow@@QAEXXZ (retail 0x007CC710). Declaration only.
+public:
+    void ReleaseShot();                                      // 0x007CC710
+#endif // FABLE_RETAIL_CTCMULTIARROW_RELEASESHOT
 };
 FABLE_STATIC_ASSERT(offsetof(CTCMultiArrow, NumberOfShots) == 0x10);
 #endif // FABLE_ENGINE_CTCMULTIARROW_H

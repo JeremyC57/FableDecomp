@@ -1,0 +1,6 @@
+- The shared-header port alone took 0x007CC710 from 185v180 to 180v180 and 0x009D6350 from 191v196 to 195v196: the old drafts' residues were model errors (vector empty test, volatile Finished, set erase key).
+- CIntelligentPointer copy/get through the ORIGINAL_CHAIN spellings (SetPointer(item.GetPointer())) can swap ebx/edi for a long-lived local in the caller (0x007CC710).
+- A bool result whose true value is later stored as an immediate is set in each arm and tested once (`if (result) {...}`); a single `result = true` before the shared tail makes VC7.1 store the register (0x009D6350).
+- VC7.1 uses a same-TU noinline callee's register summary (keeps ecx across IsValid) as well as its mod/ref; an /Od or optimize("g",off) body gives neither (0x00EB3BA0).
+- The manifest's propagated "CMurderTwistSheriff::Init" label covers several MurderTwist AttackHero bodies: check the caller (Main of the guard) and the indexed member before naming.
+- xdis.py piped into head raises BrokenPipe: send stderr to /dev/null.

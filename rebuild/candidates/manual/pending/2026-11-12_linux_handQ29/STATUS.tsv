@@ -1,0 +1,9 @@
+address	name	grade	grades_used	note
+007cc710	CTCMultiArrow::ReleaseShot	RELOCATION_MATCH	6	ported onto CTCMultiArrow.h VSLOTS2/3 (+RELEASESHOT overlay) and std::vector; CIntelligentPointer COPY/GET_ORIGINAL_CHAIN
+00eb3ba0	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::AttackHero	DIFFER(186v187)	43	in progress: index/handle register choice at the guard-handle tail (lea esi,[eax+edx] vs add); renamed from propagated CMurderTwistSheriff::Init
+009d6350	CBankFileAsyncData::Abort	RELOCATION_MATCH	7	ported onto CBankFileAsyncData/CBankFileAsync/CMovableResourceMemoryPool headers; result=true in both arms + if(result) block
+00bd2a90	CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings	untouched	0	not opened (one-row-at-a-time rule)
+00958b20	CAIStateGroup_MinionReactToCrime::OnReplace	untouched	0	not opened
+00465c54	CCombatAbilityBlockDefBase::Transfer	untouched	0	not opened
+00722740	CTCSmokeGenerator::FrameUpdate	untouched	0	not opened
+009fc950	CGraphicFrameData::InitialiseAsSurface	untouched	0	not opened

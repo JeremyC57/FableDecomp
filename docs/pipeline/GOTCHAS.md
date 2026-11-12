@@ -154,3 +154,9 @@
 - (chunk Q28, 2026-11-12) When an inline counted-pointer Reset is left as a call, the callee-saved colouring can match retail exactly; forcing it inline then moves the registers: the row's remaining residue is in how retail expanded the add-ref (0x00A69B70).
 - (chunk Q28, 2026-11-12) The xdis.py helper raises BrokenPipe when piped to head: send its stderr to /dev/null.
 - (chunk Q28 pass 2, 2026-11-12) When retail calls a counted-pointer `(T*)` ctor out of line but the caller's code shows the compiler saw its body, use FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR; a user-declared `{ }` dtor leaves an extra vptr store before the base dtor call that an implicit dtor does not.
+- (chunk Q29, 2026-11-12) The shared-header port alone took 0x007CC710 from 185v180 to 180v180 and 0x009D6350 from 191v196 to 195v196: the old drafts' residues were model errors (vector empty test, volatile Finished, set erase key).
+- (chunk Q29, 2026-11-12) CIntelligentPointer copy/get through the ORIGINAL_CHAIN spellings (SetPointer(item.GetPointer())) can swap ebx/edi for a long-lived local in the caller (0x007CC710).
+- (chunk Q29, 2026-11-12) A bool result whose true value is later stored as an immediate is set in each arm and tested once (`if (result) {...}`); a single `result = true` before the shared tail makes VC7.1 store the register (0x009D6350).
+- (chunk Q29, 2026-11-12) VC7.1 uses a same-TU noinline callee's register summary (keeps ecx across IsValid) as well as its mod/ref; an /Od or optimize("g",off) body gives neither (0x00EB3BA0).
+- (chunk Q29, 2026-11-12) The manifest's propagated "CMurderTwistSheriff::Init" label covers several MurderTwist AttackHero bodies: check the caller (Main of the guard) and the indexed member before naming.
+- (chunk Q29, 2026-11-12) xdis.py piped into head raises BrokenPipe: send stderr to /dev/null.

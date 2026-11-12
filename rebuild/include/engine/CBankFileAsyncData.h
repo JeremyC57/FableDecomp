@@ -17,6 +17,10 @@ public:
     unsigned long GetLength()const{return Length;}
 #endif
     virtual ~CBankFileAsyncData();
+#ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_ABORT
+    // chunkQ29 (2026-11-12): Ego_r.pdb ?Abort@CBankFileAsyncData@@QAE_NXZ (retail 0x009D6350). Declaration only.
+    bool Abort();                                                        // 0x009D6350
+#endif
     virtual bool OnFileReadBegin(void**, EThreadedFilePriority);
     virtual void OnFileReadCompletion(bool);
     virtual void RelocateData(long,void*,void*,long);

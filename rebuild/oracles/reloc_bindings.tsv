@@ -38725,3 +38725,5 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ??0?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	00ae9450	00aeb790
 ?Insert@CParticleEmitterList@NParticleEngine@@QAE_NAAV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z	00aeb060	00aeb790
 ?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z	00aed090	00aeb790
+?RemoveObject@CThreadedFile@@QAE_NK@Z	0098ec90	009d6350
+?erase@?$_Rb_tree@PAVCBankFileAsyncData@@PAV1@U?$_Identity@PAVCBankFileAsyncData@@@std@@U?$less@PAVCBankFileAsyncData@@@3@V?$allocator@PAVCBankFileAsyncData@@@3@@std@@QAEIABQAVCBankFileAsyncData@@@Z	009d7f40	009d6350

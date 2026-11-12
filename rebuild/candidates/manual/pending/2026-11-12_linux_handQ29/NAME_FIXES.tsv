@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0098ec90	?RemoveObject@CThreadedFile@@QAE_NK@Z	thunk `mov ecx,0x13BC870 ; jmp 0x0098EB20` (CThreadedFileManager::RemoveObject, PDB order RemoveObject/OnFinishObject = 0x98EB20/0x98EBC0); Ego_r.pdb CThreadedFile has RemoveObject(ulong)->bool; manifest label RemoveObject	HasReadFinished (landed ~CBankFileAsyncData 0x009D61F0)
+00a62ed0	?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z	PDB name list (ghidra_out) + landed ~C3DMesh2 0x00A895F0 naming; tail jmp onto CHandleBasedMemoryPool::Free 0x00A02B30	Free_00a62ed0 / CHandleBasedMemoryPool::Free (landed 0x009D61F0, 0x009D54A0)

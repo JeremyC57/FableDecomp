@@ -1,0 +1,5 @@
+address	name	module
+0098ec90	?RemoveObject@CThreadedFile@@QAE_NK@Z	CThreadedFile
+0098eb20	?RemoveObject@CThreadedFileManager@@QAE_NK@Z	CThreadedFileManager
+00a62ed0	?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z	CMovableResourceMemoryPool
+00eb3ba0	?AttackHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard
