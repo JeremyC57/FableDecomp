@@ -1,0 +1,5 @@
+address	name	evidence
+0x00A9E1E0	?ApplyParentTransformations@C3DAnimationManager@@ABEXPBVC3DKeyframe@@PAVCMatrix4x4@@ABVC3DMesh2@@_N@Z	Ego_r.pdb 0x00BE1D40 + FableWin.pdb 0x033825F0; callers 0x00A9FE01 / 0x00AA09B7 (CalcMeshTransformations / CalcBlendedMeshTransformations), ret 10h; RELOCATION_MATCH
+0x00AA3AF0	?ToMatrixTransposed@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z	FableWin.pdb 0x03382B40 (COMDAT after ApplyParentTransformations, 40 B / 16 instr = VC7.1 /Od of the overlay body); translation in column 4 (retail stores 0x00AA3C2F..0x00AA3C3D: E34 = pos.Z, row 4 = 0,0,0,1); overlay inline body RELOCATION_MATCH out of line (probe/ool/ooltf.cpp, no flag); row 0x00A9E1E0 expands it in its transposed loop
+0x00AA39A0	?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z	(already landed under this name) FableWin 0x0337FD30; translation in row 4; overlay inline body RELOCATION_MATCH out of line (probe/ool/oolmf.cpp, no flag)
+0x013D2880	?g_SSEAvailable@@3_NA	(bound) the two `mov dl|al,[13D2880h]` SSE tests 0x00A9E41F / 0x00A9E8B2
