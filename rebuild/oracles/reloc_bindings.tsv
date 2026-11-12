@@ -38742,3 +38742,13 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?CheckVisibilityResults@CEngineSceneGrid@@QAE_NW4EEngineOcclusionLayer@@KKKK_N@Z	00b939e0	00b939e0
 ?CheckVisibilityResults@CEngineSceneGridCell@@AAE_NW4EEngineOcclusionLayer@@KK_N@Z	00b936e0	00b939e0
 ?CreateOcclusionGroup@CEngineSceneGridCell@@AAEXW4EEngineOcclusionLayer@@PAVCEngineSceneGrid@@KK@Z	00b92300	00b939e0
+?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z	00878a80	00878be0
+??$GetAllThingsInRoughArea@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	00878430	00877720
+??4?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QAEAAV01@ABV01@@Z	00adca30	00ad9770
+?IsProperSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z	00ad8ca0	00ad9770
+?_M_insert_overflow@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@IAEXPAVCVertexGroupBlock@@ABV3@ABU__false_type@2@I_N@Z	00adce60	00ad9770
+??A?$map@W4EIdleStateGroup@@JU?$less@W4EIdleStateGroup@@@std@@V?$allocator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@@std@@QAEAAJABW4EIdleStateGroup@@@Z	00802190	00801920
+??A?$map@W4EIdleStateGroup@@PAVCAIStateGroupBase@@U?$less@W4EIdleStateGroup@@@std@@V?$allocator@U?$pair@$$CBW4EIdleStateGroup@@PAVCAIStateGroupBase@@@std@@@4@@std@@QAEAAPAVCAIStateGroupBase@@ABW4EIdleStateGroup@@@Z	00802110	00801920
+?GDefaultIdlePeriod@@3KA	013baf1c	00801920
+?find@?$_Rb_tree@W4EIdleStateGroup@@U?$pair@$$CBW4EIdleStateGroup@@J@std@@U?$_Select1st@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@U?$less@W4EIdleStateGroup@@@3@V?$allocator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@U?$_Const_traits@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@2@@2@ABW4EIdleStateGroup@@@Z	008014f0	00801920
+?GetDirection@CActionInputControl@@QBE?AW4EActionDirection@1@XZ	0040ed10	00407cd0

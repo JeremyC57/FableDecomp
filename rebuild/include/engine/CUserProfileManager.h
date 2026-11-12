@@ -9,6 +9,10 @@
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
 #include "fable_string.h"
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+#include "engine/CActionInputControl.h"
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
 #include "engine/CDisplayModeDesc.h"
 #include "stlport/fable_containers.h"
@@ -121,6 +125,18 @@ public:
     float SoundVolumeNewProfile;                                         // +0xe4
     float MusicVolumeNewProfile;                                         // +0xe8
     float DialogueVolumeNewProfile;                                      // +0xec
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+    // Retail opt-in (chunk F1, row 0x00407CD0): FableWin.pdb / Ego_r.pdb ?RedefineControlPassive@CUserProfileManager@@QAEXABVCActionInputControl@@0J@Z
+    // (0x00407CD0), ?ApplyValues@CUserProfileManager@@IAEXXZ (0x00407370, landed; PROTECTED in both PDBs) and the Ego_r.pdb member AssignedInputsPassive
+    // (vector<CActionInputControl>, +0x54 in both; retail reads its start / finish at [this+54h] / [this+58h]). Not combinable with the
+    // other layout blocks (own pad).
+protected:
+    void ApplyValues();                                                  // 0x00407370 (IAE: protected)
+public:
+    void RedefineControlPassive(const CActionInputControl& new_control,const CActionInputControl& old_control,long index);   // 0x00407CD0
+    unsigned char _pad_pi_0x00[0x54];                                    // vptr, CBaseClass, ProfileName .. the option values
+    std::vector<CActionInputControl> AssignedInputsPassive;              // +0x54
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_TARGETINGSTATUS
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the targeting-status pair the row

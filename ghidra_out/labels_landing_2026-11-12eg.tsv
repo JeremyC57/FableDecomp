@@ -1,0 +1,14 @@
+address	name	evidence
+00878430	??$GetAllThingsInRoughArea@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	chunk F1 (landing eg): 
+00877720	?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z	chunk F1 (landing eg): 
+00878BE0	?GetPosFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z	chunk F1 (landing eg): 
+009E3B60	?ConvertPFDToRGB@CPixelFormat@@QBEXABVCPFDColour@@AAVCRGBColour@@@Z	chunk F1 (landing eg): 
+00AD9770	?RemoveAllSubsets@CVertexGroupBlockList@@QAEXXZ	chunk F1 (landing eg): 
+00AD8CA0	?IsProperSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z	chunk F1 (landing eg): 
+00BC2480	?Update@CEngineInternalPrimitiveParticleMesh@@UAEXABVCEnginePrimitive@@K@Z	chunk F1 (landing eg): 
+00801920	?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@W4EIdleStateGroup@@@Z	chunk F1 (landing eg): 
+00686DA0	?GetPWorldSeed@CTCBase@@IBEPAKXZ	chunk F1 (landing eg): 
+00407CD0	?RedefineControlPassive@CUserProfileManager@@QAEXABVCActionInputControl@@0J@Z	chunk F1 (landing eg): 
+0040ED10	?GetDirection@CActionInputControl@@QBE?AW4EActionDirection@1@XZ	chunk F1 (landing eg): 
+0040EDA0	?IsSameActionAndButton@CActionInputControl@@QBE_NABV1@@Z	chunk F1 (landing eg): 
+013BAF1C	GDefaultIdlePeriod (descriptive; data, read only by 0x00801920)	chunk F1 (landing eg): 

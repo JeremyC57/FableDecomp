@@ -37,7 +37,15 @@ public:
  unsigned long GetNoRBits() const {return GD3DFormats[FormatIndex].RBits;}
  unsigned long GetNoGBits() const {return GD3DFormats[FormatIndex].GBits;}
  unsigned long GetNoBBits() const {return GD3DFormats[FormatIndex].BBits;}
-#ifdef FABLE_RETAIL_CPIXELFORMAT_CONVERT
+#if defined(FABLE_RETAIL_CPIXELFORMAT_POSSHIFT_FORMATREF)
+ // Retail opt-in (chunk F1, row 0x009E3B60 ConvertPFDToRGB): the FableWin.pdb debug bodies of ?GetGPosShift / ?GetRPosShift /
+ // ?GetAPosShift@CPixelFormat@@QBEKXZ (0x0308F0F0 36 bytes / 14 instructions, 0x0308F0B0 42 / 16, 0x0308F310 48 / 18) grow by exactly
+ // `mov reg,[ebp-8] ; add eax,[reg+disp8]` per channel: a local `const CD3DFormatInfo&` and one, two and three field reads summed,
+ // not a chain of accessor calls. Summed blue first (retail 0x009E3B78 `mov ebx,[eax+129BA58h] ; add ebx,[eax+129BA54h] ; add ebx,edx`).
+ unsigned long GetGPosShift() const {const CD3DFormatInfo& format=GD3DFormats[FormatIndex];return format.BBits;}
+ unsigned long GetRPosShift() const {const CD3DFormatInfo& format=GD3DFormats[FormatIndex];return format.BBits+format.GBits;}
+ unsigned long GetAPosShift() const {const CD3DFormatInfo& format=GD3DFormats[FormatIndex];return format.BBits+format.GBits+format.RBits;}
+#elif defined(FABLE_RETAIL_CPIXELFORMAT_CONVERT)
  // (chunk 1014) the FableWin.pdb chain: each position shift is the previous position plus that channel's bit count (blue at 0), every
  // count re-read from GD3DFormats[FormatIndex] (retail 0x009E3F60 adds blue + green + red for alpha, `[eax+129BA58h]` first).
  unsigned long GetRPosShift() const {return GetGPosShift()+GetNoGBits();}
@@ -56,10 +64,21 @@ public:
  unsigned long GetGScaleShift() const {return 8-GetNoGBits();}
  unsigned long GetBScaleShift() const {return 8-GetNoBBits();}
  unsigned long GetAScaleShift() const {return 8-GetNoABits();}
+#ifndef FABLE_RETAIL_CPIXELFORMAT_POSSHIFT_FORMATREF
  unsigned long GetGPosShift() const {return GetBPosShift()+GetNoBBits();}
+#endif
  unsigned long GetBPosShift() const {return 0;}
  unsigned long GetByteColourDepth() const {return GD3DFormats[FormatIndex].BitDepth/8;}
  void ConvertRGBToPFDData(const class CRGBColour& colour,unsigned char* data) const;   // 0x009E3F60
+#endif
+#ifdef FABLE_RETAIL_CPIXELFORMAT_PFDTORGB
+ // Retail opt-in (chunk F1, row 0x009E3B60 ConvertPFDToRGB; needs FABLE_RETAIL_CPIXELFORMAT_CONVERT): FableWin.pdb ?GetRMask / ?GetGMask /
+ // ?GetBMask@CPixelFormat@@QBEKXZ (debug bodies 0x0308EF30 / 0x0308EF70 / 0x0308EFB0, the GetAMask shape; inline in retail) and
+ // ?ConvertPFDToRGB@CPixelFormat@@QBEXABVCPFDColour@@AAVCRGBColour@@@Z (0x009E3B60). Declarations with bodies only: no layout change.
+ unsigned long GetRMask() const {return ((1UL<<GetNoRBits())-1)<<GetRPosShift();}
+ unsigned long GetGMask() const {return ((1UL<<GetNoGBits())-1)<<GetGPosShift();}
+ unsigned long GetBMask() const {return ((1UL<<GetNoBBits())-1)<<GetBPosShift();}
+ void ConvertPFDToRGB(const class CPFDColour& pfd,class CRGBColour& rgb) const;        // 0x009E3B60
 #endif
 };
 #endif

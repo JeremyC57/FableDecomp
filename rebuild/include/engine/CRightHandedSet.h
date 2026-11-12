@@ -11,7 +11,12 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
 // PreparePrimitivesForEngine (0x004A1D95..0x004A1E01). FableWin.pdb: GetRight (0x01B409F0) is followed by ??TC3DVector (0x01B40A20).
 class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector& GetForward() const { return Forward; }
     const C3DVector& GetUp() const { return Up; }
-#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS
+#if defined(FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS_GROUPED)
+    // Retail opt-in (chunk F1, row 0x00BC2480 CEngineInternalPrimitiveParticleMesh::Update): the component form with all three
+    // differences grouped; retail multiplies every Up component loaded first by the Forward one (0x00BC24D5..0x00BC24FD, `fld [eax+24h] ;
+    // fmul [eax+34h]` for the last product). Same arithmetic as the other two spellings.
+    C3DVector GetRight()const{return C3DVector((Forward.Y*Up.Z-Forward.Z*Up.Y),(Forward.Z*Up.X-Forward.X*Up.Z),(Forward.X*Up.Y-Forward.Y*Up.X));}
+#elif defined(FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS)
     C3DVector GetRight()const{return C3DVector((Forward.Y*Up.Z-Forward.Z*Up.Y),(Forward.Z*Up.X-Forward.X*Up.Z),Forward.X*Up.Y-Forward.Y*Up.X);}
 #else
     C3DVector GetRight() const { return Forward ^ Up; }

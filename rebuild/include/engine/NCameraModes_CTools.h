@@ -51,6 +51,11 @@ public:
     // chunk 751 (row 0x00878390): Ego_r.pdb / FableWin.pdb member template
     // ??$GetThingsOfType@VCThingBuilding@@@CTools@NCameraModes@@QBEXAAV?$list@PBVCThingBuilding@@...@std@@JABVC3DVector@@M@Z.
     template<class T> void GetThingsOfType(std::list<const T*>& things,long type,const C3DVector& pos,float radius) const;
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_STANDARDTHINGS
+    // Retail opt-in (chunk F1, row 0x00877720): FableWin.pdb / Ego_r.pdb
+    // ?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z.
+    void GetStandardThings(std::list<const CThing*>& things,const C3DVector& pos,float radius) const;
+#endif
     // Chunk 756 (row 0x00875F00): Ego_r.pdb ?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z.
     float GetMeshExtent(const CThing& thing) const;
 #endif

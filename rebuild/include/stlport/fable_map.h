@@ -385,6 +385,12 @@ private:
 public:
     typedef typename _Rep_type::const_iterator const_iterator;
     typedef typename _Rep_type::iterator iterator;
+#ifdef FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+    // Per-TU opt-in (chunk F1, row 0x00AD9770 CVertexGroupBlockList::RemoveAllSubsets; like FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE):
+    // STLport's map copy constructor is one inline body, which VC7.1 called as a COMDAT in that TU: map<unsigned long, long>::map(const
+    // map&) 0x00A96E40 (landed; call at 0x00AD97FB with ecx = &finish->GroupToIndexMap). Declaration only here.
+    map(const map& x);
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP
     // Retail branch (pass 12 header wave, 0x00E0A820): STLport 4.6 _map.h declares the no-argument constructor separately
     // (`map() : _M_t(_Compare(), allocator_type()) {}` and `explicit map(const _Compare&, const allocator_type& = ...)`), so a

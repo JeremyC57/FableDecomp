@@ -1,0 +1,8 @@
+address	name	grade	grades_used	note
+00878be0	NCameraModes::CProjectileWeapon::GetPosFromParams	RELOCATION_MATCH	45 here (+7 in Q30)	return expression is pos / 1.0f + offset + ZAxis * height_param: the unit divisor (C3DVector::operator/) is the late-folded stage retail keeps; current repo headers only
+00877720	NCameraModes::CTools::GetStandardThings	RELOCATION_MATCH	4	first compiling port: the sibling 0x00878390 idiom, one box, two Bind2(IsOfType, OverlappingSphere) searches; overlay NCameraModes_CTools.h
+009e3b60	CPixelFormat::ConvertPFDToRGB	RELOCATION_MATCH	8	PosShift accessors as local-reference field sums (debug body sizes) + pfd.GetLong() inside each channel expression; overlay CPixelFormat.h
+00ad9770	CVertexGroupBlockList::RemoveAllSubsets	RELOCATION_MATCH	9	callee visibility: IsProperSubsetOf real body in the TU, vector operator= (STLP_VECTOR_C) and _M_insert_overflow bodies visible; overlays CVertexGroupBlock.h, fable_map.h
+00bc2480	CEngineInternalPrimitiveParticleMesh::Update	RELOCATION_MATCH	16	three float scales, in-place *=, GetRight grouped, element-wise negated row stores; overlays CEngineInternalPrimitiveParticleMesh.h, CEnginePrimitiveParticleMesh.h (new), CRightHandedSet.h
+00801920	CTCIdleScheduler::RegisterIdleStateGroup	RELOCATION_MATCH	23	thing pointer named after the def pointers; GetDef / GetSubDef / const tree find bodies visible; period looked up twice as unnamed temporaries; overlays CTCIdleScheduler.h (new), campfire_types.h
+00407cd0	CUserProfileManager::RedefineControlPassive	RELOCATION_MATCH	24	AssignedInputsPassive[i] spelled everywhere (no locals), GetDirection real body visible (noinline), flat file-local same-test helper; overlays CActionInputControl.h (new), CUserProfileManager.h

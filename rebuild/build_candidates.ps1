@@ -393594,6 +393594,55 @@ $catalog = @(
         TestSource = '00/b9/CEngineSceneGrid_CheckVisibilityResults_00b939e0_test.cpp'
         PassPattern = '00b939e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00878be0'
+        Module = 'NCameraModes::CProjectileWeapon'
+        Source = '00/87/NCameraModesCProjectileWeapon_GetPosFromParams_00878be0.cpp'
+        TestSource = '00/87/NCameraModesCProjectileWeapon_GetPosFromParams_00878be0_test.cpp'
+        PassPattern = '00878be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00877720'
+        Module = 'NCameraModes::CTools'
+        Source = '00/87/NCameraModesCTools_GetStandardThings_00877720.cpp'
+        TestSource = '00/87/NCameraModesCTools_GetStandardThings_00877720_test.cpp'
+        PassPattern = '00877720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e3b60'
+        Module = 'CPixelFormat'
+        Source = '00/9e/CPixelFormat_ConvertPFDToRGB_009e3b60.cpp'
+        TestSource = '00/9e/CPixelFormat_ConvertPFDToRGB_009e3b60_test.cpp'
+        PassPattern = '009e3b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9770'
+        Module = 'CVertexGroupBlockList'
+        Source = '00/ad/CVertexGroupBlockList_RemoveAllSubsets_00ad9770.cpp'
+        TestSource = '00/ad/CVertexGroupBlockList_RemoveAllSubsets_00ad9770_test.cpp'
+        PassPattern = '00ad9770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc2480'
+        Module = 'CEngineInternalPrimitiveParticleMesh'
+        Source = '00/bc/CEngineInternalPrimitiveParticleMesh_Update_00bc2480.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveParticleMesh_Update_00bc2480_test.cpp'
+        PassPattern = '00bc2480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00801920'
+        Module = 'CTCIdleScheduler'
+        Source = '00/80/CTCIdleScheduler_RegisterIdleStateGroup_00801920.cpp'
+        TestSource = '00/80/CTCIdleScheduler_RegisterIdleStateGroup_00801920_test.cpp'
+        PassPattern = '00801920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00407cd0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_RedefineControlPassive_00407cd0.cpp'
+        TestSource = '00/40/CUserProfileManager_RedefineControlPassive_00407cd0_test.cpp'
+        PassPattern = '00407cd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
