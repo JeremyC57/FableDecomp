@@ -10,10 +10,20 @@
 #include "rebuild_abi.h"
 
 class CDefPointeeBase;
+#ifdef FABLE_RETAIL_CTCHEROCENTRE_GETQUESTCARDS
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+#endif
 
 #pragma pack(push, 1)
 class CTCHeroCentre {
 public:
+#ifdef FABLE_RETAIL_CTCHEROCENTRE_GETQUESTCARDS
+    // Retail opt-in (chunk Q24, row 0x00622A00): FableWin.pdb ?GetQuestCards@CTCHeroCentre@@QBE_NAAV?$vector@V?$CIntelligentPointer@
+    // VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@Z (out of line at 0x0077DBC0, landed). Declaration only.
+    bool GetQuestCards(std::vector<CIntelligentPointer<CThing> >& cards) const;                  // 0x0077DBC0
+#endif
 #ifndef FABLE_RETAIL_CTCHEROCENTRE_VSLOTS
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
 #endif

@@ -16,6 +16,10 @@ namespace NUISystem { class CComponent; class CList; }
 enum QuestScreenType { };
 #ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS
 #include "engine/CQuestCardItem.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY
+#include "stlport/fable_map.h"
+#include "engine/CIntelligentPointer.h"
+#endif
 class CEnginePrimitiveHandle;
 #endif
 class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
@@ -31,7 +35,30 @@ public:
     std::vector<CQuestCardItem> QuestCardItemList;                                                 // +0x140
     bool IsGuildValid;                                                                             // +0x14c
     bool InventoryScreen;                                                                          // +0x14d
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY
+    // Nested opt-in (chunk Q24, row 0x00622A00 OpenInventory; needs FABLE_RETAIL_CTCINVENTORYQUESTS_MEMBERS and
+    // FABLE_RETAIL_CTCINVENTORYBASE_VTABLE): the rest of the Ego_r.pdb member list at the retail offsets (PDB offset - 0x20 past
+    // QuestCardCount, as the landed ctor 0x0061A420 / ActivateSelectedTestQuest 0x0061AB30 read them; sizeof 0x188 = Alloc's
+    // operator new(0x188)), the slot-30 override ?OpenInventory@CTCInventoryQuests@@UAEXXZ (vtable 0x012585B4 slot 30) and
+    // ?InitialiseQuestCardList@CTCInventoryQuests@@QAEXXZ (out of line at 0x00621A20). Ego_r.pdb / FableWin.pdb spellings.
+    virtual void OpenInventory();                                                                  // 30 0x00622A00
+    void InitialiseQuestCardList();                                                                // 0x00621A20
+#endif
     long QuestCardCount;                                                                           // +0x150
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_OPENINVENTORY
+    bool Teleport;                                                                                 // +0x154
+    bool QuestCardActivatable;                                                                     // +0x155
+    bool EnableQuestCardListInitialise;                                                            // +0x156
+    bool ActiveTestQuestMode;                                                                      // +0x157
+    long TestQuestSelectedIndex;                                                                   // +0x158
+    long TestQuestTopIndex;                                                                        // +0x15c
+    bool TestQuestShowAll;                                                                         // +0x160
+    long TestQuestListSize;                                                                        // +0x164
+    NHeroInformationScreens::EScreenType PreviousScreenType;                                       // +0x168
+    std::map<CThing*, NUISystem::CComponent*> AvailableQuests;                                     // +0x16c
+    std::vector<CIntelligentPointer<CThing> > DisplayQuests;                                       // +0x178
+    float AccumFadeTime;                                                                           // +0x184
+#endif
 #endif
     // Ego_r.pdb / FableWin.pdb ?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z
     void ConstructQuestList(const std::vector<CThing*>& quests, NUISystem::CList* list, QuestScreenType type,

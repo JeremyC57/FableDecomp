@@ -38709,3 +38709,4 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?UpdateTransform@CEngineClothSimulationMeshBase@@QAEXXZ	00b81050	00b82100
 ?resize@CParticleSimArray@@QAEXK@Z	00b840a0	00b82100
 ?DeleteData@?$CCountedPointer@VCParticleSimulation@@@@SIXPAX@Z	00b825d0	00b82a50
+??$GetSubDef@VCAbilityDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAbilityDef@@@@@Z	005936c2	00584b86

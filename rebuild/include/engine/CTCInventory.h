@@ -295,6 +295,14 @@ public:
     void ConstructItemEntryPC(long defIndex, long count, NUISystem::CList* list, NUISystem::CComponent* owner,
                               CCountedPointer<NUISystem::CComponent>& actionsList);         // 0x0058E208
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_ASSIGNTHINGPC
+    // Nested opt-in (chunk Q24, row 0x00584B86): the PC quick-access slot assignment, Ego_r.pdb / FableWin.pdb spellings
+    //   ?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z                                             0x00584B86
+    //   ?SetThingAsQuickAccessItem@CTCInventory@@QAEXJJ_N@Z                                                      0x00584157
+    // (the second out of line in retail: `push 1 ; push slot ; push thing ; call 0x00584157`). Declarations only.
+    void SetThingAsQuickAccessItem(long thingIndex, long slot, bool assign);                     // 0x00584157
+    void AssignThingPC(long thingIndex, unsigned long slot, NUISystem::CComponent* container);    // 0x00584B86
+#endif
     void OpenInventoryShortcut(long screen);
     void DeleteMenuComponents();                                     // 0x00587A41
     void OpenPCInventoryMenu();                                      // 0x0058807D

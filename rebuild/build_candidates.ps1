@@ -393362,6 +393362,20 @@ $catalog = @(
         TestSource = '00/81/CTCBoastingPodium_OnInitialActivate_00814260_test.cpp'
         PassPattern = '00814260_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00584b86'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_AssignThingPC_00584b86.cpp'
+        TestSource = '00/58/CTCInventory_AssignThingPC_00584b86_test.cpp'
+        PassPattern = '00584b86_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009289b0'
+        Module = 'CAIStateGroup_BanditPlot'
+        Source = '00/92/CAIStateGroupBanditPlot_Act_009289b0.cpp'
+        TestSource = '00/92/CAIStateGroupBanditPlot_Act_009289b0_test.cpp'
+        PassPattern = '009289b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

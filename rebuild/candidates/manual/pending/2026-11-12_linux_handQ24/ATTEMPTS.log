@@ -1,0 +1,17 @@
+06:19 00584b86 00584b86_p1.cpp CTCInventory::AssignThingPC DIFFER(872v854)   -- p1 ported onto shared headers
+06:21 00584b86 00584b86_p3.cpp CTCInventory::AssignThingPC DIFFER(854v854)   -- p3 if/else FindChild + GetDef/GetSubDef bodies visible
+06:22 00584b86 00584b86_p4.cpp CTCInventory::AssignThingPC RELOCATION_MATCH   -- p4 slot push_back inside both swap arms
+06:28 00622a00 00622a00_p1.cpp CTCInventoryQuests::OpenInventory SRC_FAIL   -- p1 ported onto shared headers
+06:29 00622a00 00622a00_p1.cpp CTCInventoryQuests::OpenInventory DIFFER(876v877)   -- p1 ported onto shared headers (after SRC_FAIL fix)
+06:31 00622a00 00622a00_p2.cpp CTCInventoryQuests::OpenInventory RELOCATION_MATCH   -- p2 CList* list + same-TU ConstructQuestList stand-in body
+06:33 00b4a700 00b4a700_p0.cpp CEnginePrimitiveRenderer2D::?Render@CEnginePrimitiveRenderer2D@@UAEXABVCEngineComponentRenderParams@@@Z DIFFER(926v926)   -- p0 baseline regrade of the draft
+06:39 00b4a700 00b4a700_p1.cpp CEnginePrimitiveRenderer2D::?Render@CEnginePrimitiveRenderer2D@@UAEXABVCEngineComponentRenderParams@@@Z DIFFER(927v926)   -- p1 draft + Render2DPrimitive slot 10 with named manager/chain + Peek colour accessors
+06:41 009289b0 009289b0_p1.cpp CAIStateGroup_BanditPlot::?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ DIFFER(1133v1131)   -- p1 draft + sibling Random(range) spelling
+06:44 009289b0 009289b0_p2.cpp CAIStateGroup_BanditPlot::?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ RELOCATION_MATCH   -- p2 sibling BanditPlayDice structure: derive from BanditPlayDice, DiceGame, early returns, SetCurrentPlayer
+06:46 00ae1bc0 00ae1bc0_p1.cpp CParticleSimulation::ReadFromFile DIFFER(1158v1158)   -- p1 ported onto shared CDataInputStream/CParticleSimulation (ReadFloat/ReadSLONG/ReadEBOOL)
+06:48 009af7a0 009af7a0_p0.cpp CDefinitionManager::SaveBinaryDefinitions DIFFER(1007v1007)   -- p0 baseline regrade of the draft
+06:50 00584b86 00584b86.cpp CTCInventory::AssignThingPC RELOCATION_MATCH   -- final strict-headers regrade of src/
+06:50 00622a00 00622a00.cpp CTCInventoryQuests::OpenInventory RELOCATION_MATCH   -- final strict-headers regrade of src/
+06:50 009289b0 009289b0.cpp CAIStateGroup_BanditPlot::?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ RELOCATION_MATCH   -- final strict-headers regrade of src/
+06:53 009289b0 009289b0_p3.cpp CAIStateGroup_BanditPlot::?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ RELOCATION_MATCH   -- p3 ported onto shared headers (CAIStateGroupBase/CAIBrain/PlayAnimation/CSoundPair/CWorld/GFRandom + BanditPlayDice/BanditPlot overlays)
+06:54 009289b0 009289b0.cpp CAIStateGroup_BanditPlot::?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ RELOCATION_MATCH   -- final strict regrade of ported src/

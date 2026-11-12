@@ -137,6 +137,14 @@ protected:
  void SetNumberOfSelectedItemOwned(long itemDefIndex);
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDCATEGORYINDEX
+ // Retail opt-in (chunk Q24, row 0x00622A00 CTCInventoryQuests::OpenInventory): Ego_r.pdb / FableWin.pdb
+ // ?GetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QBEJXZ (out of line at 0x005BC4B2, `mov eax,[ecx+70h] ; ret`) and
+ // ?SetSelectedCategoryIndex@CTCInventoryBase@NInventory@@QAEXJ@Z (0x005BC4B6, `mov [ecx+70h],eax ; ret 4`): SelectedCategoryIndex
+ // (+0x70 retail). Declarations only.
+ long GetSelectedCategoryIndex() const;                                                       // 0x005BC4B2
+ void SetSelectedCategoryIndex(long index);                                                   // 0x005BC4B6
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTION
  // Retail opt-in (chunk 1003, row 0x005B48A2 CTCInventoryClothing::OnItemSelected): Ego_r.pdb ?DeselectAll@CTCInventoryBase@NInventory@@IAEXXZ
  // (protected, out of line at 0x005BCCF1) and ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z (protected, 0x005BDFB1). Declarations only.
