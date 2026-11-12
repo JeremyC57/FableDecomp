@@ -1,5 +1,8 @@
 // CTCInventoryExperience::AddSoundAction(NUISystem::CComponent* element, CCharString soundName) -- gives a UI element a "play sound" action (type 3003) carrying the sound name as a wide-string parameter
 // Leaf: ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z
+// Binder respelling (agentFAM13, FAM12 notes): the scope-end release of the local action pointer calls 0x00429160, which is
+//   ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ (FableWin.pdb; the destructor is the 5-byte jmp COMDAT 0x00429B72):
+//   per-TU opt-in FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (the inline destructor expands to the out-of-line ReleaseData).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F615, length 138 bytes (`ret 8`; `this` unused). Identity: Ego_r.pdb / FableWin.pdb
 //   ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z (private; landing 2026-11-03f respelled the
@@ -44,6 +47,7 @@ class CAction { public:                                                  // reta
 };
 }
 
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 
 namespace NUISystem {

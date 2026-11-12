@@ -1,0 +1,9 @@
+entry	address	status	binders_respelled	note
+land1011dt	0x0066AD90	done	2	ReleaseAttachedLoopingSound: 0x00773C90 (StopSample_0066ad90 stand-in) and 0x0064B668 (CTCSound::StopSound stand-in) respelled through CTCSoundPlayer.h; 0x00847520 already bound it
+land1011dt	0x01436E3C	done	2	NEngineInternal::GPScreenEffectOutlineGlow (Anniversary publics + ctor/RTTI type); 0x00B33010 BeginReflection/EndReflection -> BeginOutlineRendering/FinishOutlineRendering (Ego_r/FableWin) through the shared header; 0x00B26360 global respelled
+land1011dt	0x007120D0	done	0	name ??1CCreatureAction_PickUpGenericBox@@UAE@XZ (implicit dtor; all 3 retail callers pair it with ctor 0x00843700); row respelled as host TU with COMDAT Leaf; binders already bind it
+land1011dt	0x004460C0	done	4	claim reversed: 0x004460C0 is IsQuickAccessEventInQueue (+0x7c4); IsAssignableSpecialMoveButtonInQueue is 0x00445E90 (+0x7b8). Respelled 0x00847520, 0x005EE99D, 0x00687CB0 (also renamed itself to CInputProcessGameBase::IsQuickAccessEventInQueue), 0x0068E450
+land1011du	0x013BDA50	done	1	anonymous-namespace streamingFontBankList (Anniversary publics, CStreamingFontBank* array); 0x009A1090 respelled
+FAM12_NOTES	0x00429160	partial	3	ReleaseData: 0x0056F615, 0x005CD074, 0x005791E5 respelled; 12 others already bound ReleaseData (checked by compiling the landed source); stand-ins 0x0041DC9D / 0x0053B7F0 left (cascade); new debt 0x00570332 binds ??1<CComponent> to 0x004291DE
+CALLEE_FIXES	(31 lines)	partial	0	23 callee rows renamed to the STLport symbols the callers bind (operator-- x14, insert_unique x6, _M_insert x3); the rest left (see NOTES)
+BINDER_FIXES	(42 lines)	partial	3	only the 0x00429160 ReleaseData callers 0x0056F615 (and siblings above); TransferBinaryIn / map::operator[] / tree erase / SetGameMaster callers left (see NOTES)

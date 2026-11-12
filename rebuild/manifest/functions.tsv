@@ -653,7 +653,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041c4a0	~CEnginePrimitiveHandle	CEnginePrimitiveHandle	__thiscall	void	1	CObject *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CObject_CObject_0041c4a0.cpp
 0041c500	`scalar_deleting_destructor'	CEnginePrimitiveHandle	__thiscall	void *	2	CEnginePrimitiveHandle *,uint	1	yes	accepted									
 0041c580	vfunc_7	NUISystem::CObserver	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c590	vfunc_7	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c590	SetPAcceptButton	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c5a0	ChangeState	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c5c0	HasState	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c5e0	ChangedStateLastUpdate	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
@@ -978,7 +978,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042c058	equal_range	std::_Rb_tree<NUISystem::CComponent*,std::pair<NUISystem::CComponent* const,NUISystem::CComponent*>,std::_Select1st<std::pair<NUISystem::CComponent* const,NUISystem::CComponent*> >,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent* const,NUISystem::CComponent*> > >	__thiscall	bool	3	CompareDataOffset *,ulong,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CompareDataOffset_operator_0042c058.cpp
 0042c082	insert_unique	std::_Rb_tree<NUISystem::CComponent *, std::pair<NUISystem::CComponent *const, long>, std::_Select1st<std::pair<NUISystem::CComponent *const, long>>, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, long>>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C082_global_CMemoryAllocatorVariableSize_FindInsertPoint.cpp				
 0042c1c1	CMemoryAllocatorVariableSize_FindInsertPointLeft	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C1C1_global_CMemoryAllocatorVariableSize_FindInsertPointLeft.cpp				
-0042c300	CMemoryAllocatorVariableSize_FindInsertPointRight	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C300_global_CMemoryAllocatorVariableSize_FindInsertPointRight.cpp				
+0042c300	insert_unique	std::_Rb_tree<long, std::pair<long const, EEngine2DLayer>, std::_Select1st<std::pair<long const, EEngine2DLayer>>, std::less<long>, std::allocator<std::pair<long const, EEngine2DLayer>>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C300_global_CMemoryAllocatorVariableSize_FindInsertPointRight.cpp				
 0042c43f	CTC_FindInterface_0x10e	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C43F_global_CTC_FindInterface_0x10e.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_CTCFindInterface0x10e_0042c43f.cpp
 0042c48b	CTC_FindInterface_0x11	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C48B_global_CTC_FindInterface_0x11.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_CTCFindInterface0x11_0042c48b.cpp
 0042c4d6	CTC_FindInterface_0x17	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C4D6_global_CTC_FindInterface_0x17.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_CTCFindInterface0x17_0042c4d6.cpp
@@ -5080,7 +5080,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c2950	_M_erase	std::_Rb_tree<void *, std::pair<void *const, CRGBColour>, std::_Select1st<std::pair<void *const, CRGBColour>>, std::less<void *>, std::allocator<std::pair<void *const, CRGBColour>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 004c2990	StdList_Clear_004c2990	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CGuiControlTreePane_SortTreeRecursively_004c2990.cpp
 004c29f0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
-004c2a40	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+004c2a40	operator--	std::_Rb_tree_iterator<std::pair<void *const, CRGBColour>, std::_Nonconst_traits<std::pair<void *const, CRGBColour>>>	unknown	undefined	0		0	yes	accepted									
 004c2ad0	_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>	_global	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 004c2b60	GFToScreen	_global	__fastcall	C2DBoxF	1	C2DBoxF *	1	yes	accepted									
 004c2b90	__unguarded_insertion_sort_aux	std	__fastcall	CNavigationPosition *	3	CNavigationPosition *,CNavigationPosition *,CNavigationPosition *	1	yes	accepted									
@@ -5188,7 +5188,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c6140	RemoveRequest	CTimeMultiplierController_004c6140	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted									
 004c6170	SetBulletTimeSlowdownMultiplier	CBulletTimeManager	__thiscall	void	4	CBulletTimeManager *,long,void *,float	1	yes	accepted									
 004c63b0	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
-004c6580	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+004c6580	operator--	std::_Rb_tree_iterator<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>, std::_Nonconst_traits<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>>	unknown	undefined	0		0	yes	accepted									
 004c65d0	__distance<std::_Rb_tree_iterator<std::pair<void*const, CBulletTimeManager::CBulletTimeInfo>, std::_Nonconst_traits<std::pair<void*const, CBulletTimeManager::CBulletTimeInfo> > > >	std	unknown	undefined	0		0	yes	accepted									
 004c6680	_Rb_tree_base	std::_Rb_tree_base<node0x1c_004c6680>	unknown	undefined	0		0	yes	review-low									
 004c66a0	Remove_004c66a0	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -5741,7 +5741,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004d3f2b	CreateAdditionalTCs	CTCDriverBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d3f2c	GetInterfaceType	CTCDNone	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d3f30	GetClassTypeName	CTCDNone	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004d3f40	vfunc_28	CTCDNone	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004d3f40	IsDriverType	CTCDNone	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d3f4d	DrawPreparePrimitivesForRendering	CTCDNone	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d3f50	Alloc	CTCHeroOpinionDeedLog	unknown	undefined	0		0	unmeasured	accepted									
 004d3f70	StatGetClassTypeName	CTCHeroOpinionDeedLog	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActionDoCreatureAction_GetActionName_004d3f70.cpp
@@ -5780,19 +5780,19 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004d41f6	CTCDNavigationSeed	CTCDNavigationSeed	__thiscall	undefined	2	CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *	0	yes	accepted									
 004d420e	GetInterfaceType	CTCDNavigationSeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d4212	GetClassTypeName	CTCDNavigationSeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004d4222	vfunc_28	CTCDNavigationSeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004d4222	IsDriverType	CTCDNavigationSeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d422f	IsComponentSerialisable	CTCDNavigationSeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d4232	StatGetClassTypeName	CTCDHeroSuit	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActionDoCreatureAction_GetActionName_004d4232.cpp
 004d4249	StatGetClassTypeName	CTCDInternalMarker	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActionDoCreatureAction_GetActionName_004d4249.cpp
 004d4260	CTCDInternalMarker	CTCDInternalMarker	__thiscall	undefined	2	CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *	0	yes	accepted									
 004d4278	GetInterfaceType	CTCDInternalMarker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d427e	GetClassTypeName	CTCDInternalMarker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004d428e	vfunc_28	CTCDInternalMarker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004d428e	IsDriverType	CTCDInternalMarker	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d429b	StatGetClassTypeName	CTCDRegionEntrance	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActionDoCreatureAction_GetActionName_004d429b.cpp
 004d42b2	CTCDRegionEntrance	CTCDRegionEntrance	__thiscall	undefined	2	CTCShotDefinitionNymphFun *,CThing *	0	yes	accepted									
 004d42ce	GetInterfaceType	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d42d2	GetClassTypeName	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004d42e2	vfunc_28	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004d42e2	IsDriverType	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d42ef	IsComponentSerialisable	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d42f2	Alloc	CTCDRegionExit	unknown	undefined	0		0	unmeasured	accepted									
 004d430f	StatGetClassTypeName	CTCDRegionExit	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActionDoCreatureAction_GetActionName_004d430f.cpp
@@ -6376,7 +6376,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004d812a	CTCDCameraPoint	CTCDCameraPoint	__thiscall	undefined	2	CTCEditor *,CThing *	0	yes	accepted									
 004d8150	GetInterfaceType	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d8154	GetClassTypeName	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004d8164	vfunc_28	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004d8164	IsDriverType	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d8171	IsComponentSerialisable	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d8174	HasFrameUpdate	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004d8177	`scalar_deleting_destructor'	CTCDCameraPoint	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CLandscapeBackgroundPatch_vectordeletingdestructor_004d8177.cpp
@@ -6748,7 +6748,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004db399	CTCDRumble	CTCDRumble	__thiscall	undefined	2	CTCCameraCollision *,CThing *	0	yes	accepted									
 004db3b5	GetInterfaceType	CTCDRumble	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004db3bb	GetClassTypeName	CTCDRumble	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004db3cb	vfunc_28	CTCDRumble	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004db3cb	IsDriverType	CTCDRumble	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004db3d8	HasFrameUpdate	CTCDRumble	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004db3db	CTCDiceGame	CTCDiceGame	__thiscall	undefined	2	CTCDiceGame *,CThing *	0	yes	accepted									
 004db401	GetInterfaceType	CTCDiceGame	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -7175,7 +7175,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004df14b	CTCDPhysicalObstruction	CTCDPhysicalObstruction	__thiscall	undefined	2	CTCDPhysicalObstruction *,CThing *	0	yes	accepted									
 004df1a6	GetInterfaceType	CTCDPhysicalObstruction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df1ac	GetClassTypeName	CTCDPhysicalObstruction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004df1bc	vfunc_28	CTCDPhysicalObstruction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004df1bc	IsDriverType	CTCDPhysicalObstruction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df1c9	HasFrameUpdate	CTCDPhysicalObstruction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df1cc	Alloc	CTCSoundAtmosphereVillage	unknown	undefined	0		0	unmeasured	accepted									
 004df1e9	Transfer	CNymphDef	__fastcall	void	0		1	yes	accepted									
@@ -7327,7 +7327,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e079c	CTCDHeroSuit	CTCDHeroSuit	__thiscall	undefined	2	CTCDHeroSuit *,CThing *	0	yes	accepted									
 004e07c2	GetInterfaceType	CTCDHeroSuit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e07c6	GetClassTypeName	CTCDHeroSuit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e07d6	vfunc_28	CTCDHeroSuit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e07d6	IsDriverType	CTCDHeroSuit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e07e3	CTCActivationReceptorChest	CTCActivationReceptorChest	__thiscall	undefined	2	CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *	0	yes	accepted									
 004e07fb	GetClassTypeName	CTCActivationReceptorChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e080b	`scalar_deleting_destructor'	CTCActivationReceptorChest	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e080b.cpp
@@ -7579,7 +7579,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e30e7	CTCDExplosion	CTCDExplosion	__thiscall	undefined	2	CTCHeroRangedAttacks *,CThing *	0	yes	accepted									
 004e3144	GetInterfaceType	CTCDExplosion	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e3148	GetClassTypeName	CTCDExplosion	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e3158	vfunc_28	CTCDExplosion	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e3158	IsDriverType	CTCDExplosion	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e3165	HasFrameUpdate	CTCDExplosion	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e3168	Copy	CKrakenDef	__thiscall	void	2	CKrakenDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CKrakenDef_Copy_004e3168.cpp
 004e316d	operator=	CKrakenDef	unknown	undefined	0		0	yes	accepted									
@@ -7600,7 +7600,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e3401	CTCDExplosiveTrail	CTCDExplosiveTrail	__thiscall	undefined	2	CTCLightningOrb *,CThing *	0	yes	accepted									
 004e3451	GetInterfaceType	CTCDExplosiveTrail	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e3457	GetClassTypeName	CTCDExplosiveTrail	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e3467	vfunc_28	CTCDExplosiveTrail	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e3467	IsDriverType	CTCDExplosiveTrail	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e3474	HasFrameUpdate	CTCDExplosiveTrail	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e34b2	~vector	std::vector<std::pair<long, CCharString>, std::allocator<std::pair<long, CCharString>>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CActiveFile_OnReadFinished_004e34b2.cpp
 004e34ec	StdList_Dtor_004e34ec	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CActiveFile_OnReadFinished_004e34ec.cpp
@@ -7900,16 +7900,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e7cc3	CTCInventoryClothing	CTCInventoryClothing	__thiscall	undefined	2	CTCHero *,CThing *	0	yes	accepted									
 004e7d3b	IsComponentSerialisable	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e7d3e	OnItemSelectedInHand	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d41	vfunc_66	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d42	vfunc_67	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d41	ProcessButtonWhitePressed	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d42	ProcessButtonWhiteReleased	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e7d43	ProcessTradeAction	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d44	vfunc_69	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d45	vfunc_70	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d48	vfunc_71	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d49	vfunc_72	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d4a	vfunc_75	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d44	ProcessAugmentAction	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d45	ProcessQuestActivateAction	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d48	IncrementQuestCardItemSelection	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d49	DecrementQuestCardItemSelection	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d4a	GetIsEnabled	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e7d4d	GetEmptyItemText	CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004e7d62	vfunc_82	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004e7d62	GetComponents	NInventory::CTCInventoryBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e7d66	GetInterfaceType	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e7d6a	GetClassTypeName	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004e7d7a	OnChangeCategory	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -8420,7 +8420,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0050dd20	ShareData	CCountedPointer<CScriptThing>	__thiscall	void	3	CCountedPointer<CScriptThing> *,CScriptThing *,CCPPointerInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\50\CCountedPointerCScriptThing_ShareData_0050dd20.cpp
 0050dea0	operator++	std::_Rb_tree_iterator<std::pair<CCharString const, long>, std::_Nonconst_traits<std::pair<CCharString const, long>>>	unknown	undefined	0		0	yes	accepted									
 0050dee0	operator--	std::_Rb_tree_iterator<std::pair<CCharString const, long>, std::_Nonconst_traits<std::pair<CCharString const, long>>>	unknown	undefined	0		0	yes	accepted									
-0050df80	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+0050df80	operator--	std::_Rb_tree_iterator<char, std::_Nonconst_traits<char>>	unknown	undefined	0		0	yes	accepted									
 0050e0b0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 0050e130	operator--	std::_Rb_tree_iterator<unsigned long,std::_Nonconst_traits<unsigned long >>	unknown	undefined	0		0	yes	accepted									
 0050e190	operator--	std::_Rb_tree_iterator<long,std::_Nonconst_traits<long >>	unknown	undefined	0		0	yes	accepted									
@@ -8548,7 +8548,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00513700	set	std::set	unknown	undefined	0		0	yes	accepted									
 005137f0	_Rb_tree_base	std::_Rb_tree_base<node0x1c_005137f0>	unknown	undefined	0		0	yes	accepted									
 00513830	UninitCopy_CElement72_005110b0_00513830	_global	__fastcall	CFeatDef *	5	CFeatDef *,CFeatDef *,CFeatDef *,allocator<CFeatDef> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-00513880	InsertNode	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
+00513880	_M_insert	std::_Rb_tree<char, char, std::_Identity<char>, std::less<char>, std::allocator<char>>	unknown	undefined	0		0	yes	accepted									
 00513940	_M_insert	std::_Rb_tree<unsigned long, unsigned long, std::_Identity<unsigned long>, std::less<unsigned long>, std::allocator<unsigned long>>	unknown	undefined	0		0	yes	accepted									
 00513a00	__uninitialized_fill_n	std	__fastcall	void	2	CAnimatedBlock *,ulong	1	yes	accepted									
 00513a80	__uninitialized_fill_n<std::pair<long,long>*,unsigned int,std::pair<long,long> >	std	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
@@ -9154,15 +9154,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052e6b0	ResetState	NUISystem::CComponent	__thiscall	void	1	CComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_ResetState_0052e6b0.cpp
 0052e700	ForceState	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e710	ChangeState	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e720	vfunc_47	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e730	vfunc_49	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e740	vfunc_46	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e720	ChangeState	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e730	ChangedState	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e740	ChangeState	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e750	SetZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e780	GetZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e7a0	SetColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e7c0	GetParent	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e7d0	GetChildren	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e7e0	vfunc_54	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e7e0	GetUpdateTime	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e7f0	GetTargetPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e810	GetTargetZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e830	ProcessEvent	NUISystem::CComponent	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\E2_E2_0052e830.cpp
@@ -9175,9 +9175,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052e8f0	GetParentZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e910	SetParentZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e930	SetParentColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e940	vfunc_25	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e950	vfunc_26	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e960	vfunc_27	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e940	GetRenderPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e950	GetRenderZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e960	GetRenderColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e970	SetRenderPosition	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e990	SetRenderZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e9b0	SetRenderColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9196,31 +9196,31 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052f010	AddActionOnBack	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f020	AddPreAction	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f030	AddActionOnInactive	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f040	vfunc_71	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f050	vfunc_80	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f060	vfunc_72	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f070	vfunc_73	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f080	vfunc_74	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f090	vfunc_75	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f0a0	vfunc_76	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f0b0	vfunc_77	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f0c0	vfunc_78	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f0d0	vfunc_79	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f040	AddActionOnLeftClicked	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f050	AddActionOnLeftUnclicked	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f060	AddActionOnLeftHeld	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f070	AddActionOnRightClicked	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f080	AddActionOnDropped	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f090	AddActionOnDroppedNowhere	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f0a0	AddActionOnDraggedUp	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f0b0	AddActionOnDraggedDown	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f0c0	AddActionOnHovered	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f0d0	AddActionOnUnhovered	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f0e0	GetStates	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f0f0	SetName	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f100	GetName	NUISystem::CComponent	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CBankFile_GetBankHandle_0052f100.cpp
 0052f120	GetCurrentStateIndex	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f130	GetTargetStateIndex	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f140	RemoveChild	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f150	vfunc_91	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f160	vfunc_90	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f150	ClearHandle	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f160	SetParentViewport	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f170	GetParentViewport	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f180	IsBastardChild	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f190	IsIndependent	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f1a0	IsPositionIndependent	NUISystem::CComponent	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 0052f1b0	IsZoomIndependent	NUISystem::CComponent	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 0052f3e0	GetRenderLayer	CComponent	__thiscall	long	1	CComponent *	1	yes	accepted									
-0052f430	vfunc_133	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f430	RemoveFromHoveredList	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f440	CUIState	CUIState	__thiscall	undefined	2	CUIState *,CUIStateDef *	0	yes	accepted									
 0052f500	GetColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f540	GetTargetColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9456,7 +9456,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053e4e0	~CMenuEntry	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053e860	ScalarDeletingDtor_0053e860	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CLandscapeBackgroundPatch_vectordeletingdestructor_0053e860.cpp
 0053e880	ScalarDeletingDtor_0053e880	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CLandscapeBackgroundPatch_vectordeletingdestructor_0053e880.cpp
-0053e8a0	vfunc_132	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053e8a0	IsClickable	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e8b0	vfunc_154	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e8c0	`vector deleting destructor'	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e8d0	`vector deleting destructor'	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9523,7 +9523,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005419c0	Initialise	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005419d0	Update	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005419e0	ChangeState	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005419f0	vfunc_88	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005419f0	CanScroll	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00541a00	FitInWindow	CIconText	__thiscall	long	3	CIconText *,CWideString *,C2DBoxF *	1	yes	accepted									
 00541e60	SetValue	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00541f20	SetValue	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9690,7 +9690,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054a180	__uninitialized_fill_n<CCountedPointer<NUISystem::CAction>*,unsigned int,CCountedPointer<NUISystem::CAction> >	std	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0054a1c0	__destroy_aux<CCountedPointer<NUISystem::CAction>*>	std	__fastcall	void	4	pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0054a2a0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
-0054a380	vfunc_7	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054a380	SetPAcceptButton	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054a390	`vector deleting destructor'`adjustor{4}'	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054a3a0	`vector deleting destructor'`adjustor{24}'	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054a3b0	push_back	std::vector<CCountedPointer<NUISystem::CAction>, std::allocator<CCountedPointer<NUISystem::CAction>>>	unknown	undefined	0		0			discovered	gapscan							
@@ -9712,7 +9712,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054ba20	Update	NUISystem::CSlider	__thiscall	void	2	CSlider *,float	1	yes	accepted									
 0054bbb0	GetValueFromProfile	NUISystem::CSlider	__thiscall	void	1	CSlider *	1	yes	accepted									
 0054c050	CSlider	NUISystem::CSlider	__thiscall	undefined	2	CSlider *,long	0	yes	accepted									
-0054c130	vfunc_7	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054c130	SetPAcceptButton	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c140	`vector deleting destructor'`adjustor{4}'	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c150	`vector deleting destructor'`adjustor{24}'	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c160	AddAction	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9751,7 +9751,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054ded0	~CFrontEndButton	NUISystem::CFrontEndButton	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 0054df50	GetDataFromDef	NUISystem::CFrontEndButton	unknown	undefined	0		0	yes	accepted									
 0054e0b0	CFrontEndButton	NUISystem::CFrontEndButton	__thiscall	undefined	2	CDynamicList *,long	0	yes	accepted									
-0054e190	vfunc_132	NUISystem::CFrontEndButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054e190	IsClickable	NUISystem::CClickable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054e1a0	`vector deleting destructor'	NUISystem::CFrontEndButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054e1b0	`vector deleting destructor'	NUISystem::CFrontEndButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054e1c0	`scalar_deleting_destructor'	NUISystem::CFrontEndButton	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054e1c0.cpp
@@ -9845,7 +9845,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00553040	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 00553080	operator++	std::_Rb_tree_iterator<std::pair<unsigned long const, unsigned long>, std::_Nonconst_traits<std::pair<unsigned long const, unsigned long>>>	unknown	undefined	0		0	yes	accepted									
 005531c0	Dtor_CountedPtrAt0x8_005531c0	_global	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd_pairunsignedlongCCountedPointerCFaction_005531c0.cpp
-005532f0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+005532f0	operator--	std::_Rb_tree_iterator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>, std::_Nonconst_traits<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>	unknown	undefined	0		0	yes	accepted									
 00553340	operator--	std::_Rb_tree_iterator<std::pair<unsigned long const, unsigned long>, std::_Nonconst_traits<std::pair<unsigned long const, unsigned long>>>	unknown	undefined	0		0	yes	accepted									
 005533d0	ScalarDeletingDestructor_CPairCounted_005533d0	_unattributed	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted									
 00553490	_Rb_tree_base	std::_Rb_tree_base<node0x1c_00553490>	unknown	undefined	0		0	yes	review-low									
@@ -10185,7 +10185,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00566180	_Construct	std	__fastcall	void	3	allocator<CTCHeroOnlineScoreboard::CClanInfo> *,CClanInfo *,CClanInfo *	1	yes	accepted									
 005661c0	_Construct	std	__fastcall	void	3	allocator<CTCHeroOnlineScoreboard::CClanMember> *,CClanMember *,CClanMember *	1	yes	accepted									
 00566210	operator--	std::_Rb_tree_iterator<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float>, std::_Nonconst_traits<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float>>>	unknown	undefined	0		0	yes	accepted									
-00566260	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+00566260	operator--	std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CTexture>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CTexture>>>>	unknown	undefined	0		0	yes	accepted									
 005662b0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 00566320	vfunc_0	CPersistContext_TransferableVector<int>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00566330	TransferIn	CPersistContext_TransferableVector<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -10342,7 +10342,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0056cba0	`scalar deleting destructor'	SBoastMapEntry	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted									
 0056cc50	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 0056ccc0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
-0056cd10	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+0056cd10	operator--	std::_Rb_tree_iterator<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>, std::_Nonconst_traits<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>>>	unknown	undefined	0		0	yes	accepted									
 0056ce90	_Construct<CUnprovenPod8_0056ce90, CUnprovenPod8_0056ce90>	std	unknown	undefined	0		0			discovered	gapscan							
 0056cea0	CCountedPointer_Release_0056cea0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056cea0.cpp
 0056cf20	StdList_Clear_0056cf20	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CGuiControlTreePane_SortTreeRecursively_0056cf20.cpp
@@ -10419,8 +10419,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0056e4a0	map	std::map<long, std::vector<NUISystem::CMenuEntry*>>	unknown	undefined	0		0	yes	accepted									
 0056e4e0	~CRetailTree_erase0056de50	CRetailTree_erase0056de50	unknown	undefined	0		0	yes	accepted									
 0056e545	CSliderAnimator	CSliderAnimator	__thiscall	undefined	8	CDateAndTime *,long,ulong,ulong,ulong,ulong,ulong,ulong	0	yes	accepted									
-0056e593	vfunc_1	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0056e597	vfunc_2	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0056e593	GetPlayerMode	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0056e597	GetScreenType	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e59b	SetInventorySelectionState	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056e5ab	ResetStatIndicatorValues	CTCInventoryExperience	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CTCInventoryExperience_ResetStatIndicatorValues_0056e5ab.cpp
 0056e5ca	IncrementStatIndicator	CTCInventoryExperience	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CTCInventoryExperience_IncrementStatIndicator_0056e5ca.cpp
@@ -10617,7 +10617,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0057a23c	GetTypeAsString	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0057a253	OnItemSelected	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0057a25d	IsComponentSerialisable	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0057a260	vfunc_3	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0057a260	IsInventoryScreen	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0057a28b	`scalar_deleting_destructor'	CTCInventoryExperience	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CLandscapeBackgroundPatch_vectordeletingdestructor_0057a28b.cpp
 0057a2d0	ceil	_global	__cdecl	float	1	float	1	yes	accepted									
 0057a376	CHeroMarriageInfo	CHeroMarriageInfo	__thiscall	undefined	8	CDateAndTime *,long,ulong,ulong,ulong,ulong,ulong,ulong	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CDateAndTime_CDateAndTime_0057a376.cpp
@@ -10862,8 +10862,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005819aa	OnItemHighlighted	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005819dd	ConstructItemDescription	CTCInventory	__thiscall	void	3	CTCInventory *,CWideString *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\58\CTCInventory_ConstructItemDescription_005819dd.cpp
 005819f2	ValidateIndex	CTCInventory	__thiscall	undefined	1	CPersistContextReadSection *	0	yes	accepted									
-00581a0d	vfunc_1	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00581a11	vfunc_2	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00581a0d	GetPlayerMode	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00581a11	GetScreenType	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00581a14	SetQuickAccessAssign	CTCInventory	__thiscall	void	2	CTCInventory *,bool	1	yes	accepted									
 00581a3b	ProcessInventoryInputLeft	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00581a54	ProcessInventoryInputRight	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -11085,7 +11085,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00593f39	_M_insert_overflow	std::vector<CContextSensitiveItem>	unknown	undefined	0		0	yes	accepted									
 0059400c	_M_insert_overflow	std::vector<std::pair<long, long>, std::allocator<std::pair<long, long>>>	unknown	undefined	0		0	yes	accepted									
 005940d5	StdList_Dtor_005940d5	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CActiveFile_OnReadFinished_005940d5.cpp
-005940ec	CMemoryAllocatorVariableSize_TransferIn_Int	_global	unknown	undefined	0		0	yes	accepted									
+005940ec	insert_unique	std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent *>, std::_Select1st<std::pair<long const, NUISystem::CComponent *>>, std::less<long>, std::allocator<std::pair<long const, NUISystem::CComponent *>>>	unknown	undefined	0		0	yes	accepted									
 0059422b	GetInterface_0x46	_unattributed	unknown	undefined	0		0	yes	accepted									
 00594276	GetInterface_0x27	_unattributed	unknown	undefined	0		0	yes	accepted									
 005942c1	GetInterface_0xe	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -11233,7 +11233,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059b2cc	MoveToNavLineOfSightProximity	CNavigatorAStar_0059b2cc	__thiscall	ENavigatorReturn	13	CNavigatorAStar *,C3DVector *,C3DVector *,float,float,C3DVector *,bool,bool,bool,bool,bool,bool,float	1	yes	accepted									
 0059b310	AddUBYTE	CGameEvent	__thiscall	void	2	CGameEvent *,uchar	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CGameEvent_AddUBYTE_0059b310.cpp
 0059b32a	map	std::map<T_0059b32a>	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CDisplayManager_CopyBackBufferToTexture_0059b32a.cpp
-0059b35c	RBTree_TransferIn	_global	unknown	undefined	0		0	yes	accepted									
+0059b35c	insert_unique	std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>, std::less<FRONTEND_SCREEN>, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>>	unknown	undefined	0		0	yes	accepted									
 0059b49b	CStaticMeshPlacement_0059b49b	CStaticMeshPlacement_0059b49b	__thiscall	CEnginePrimitiveHandle	12	CEnginePrimitiveRenderer *,C3DMeshInfo *,C3DMeshInfo *,CMatrix3x4 *,float,CEngineFadeDistance *,long,CRGBColour *,long,float,bool,ulong	1	yes	accepted									
 0059b4d8	_M_reserve_map_at_back	std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	__thiscall	long	1	CTCUserActionPointBase *	1	yes	accepted									
 0059b4fe	PointerDeque	_unattributed::PointerDeque	__thiscall	void	3	CShaderRenderManager *,_D3DMATRIX *,CMatrix3x4 *	1	yes	accepted									
@@ -11250,8 +11250,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059b6ce	GetStaticAddr_013b8b80_0059b6ce	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\global_AddChildPrimitive_0059b6ce.cpp
 0059b6d4	GetStaticAddr_013b8b90_0059b6d4	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\global_AddChildPrimitive_0059b6d4.cpp
 0059b6da	GetStaticAddr_013b8b84_0059b6da	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\global_AddChildPrimitive_0059b6da.cpp
-0059b6e0	vfunc_1	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0059b6e4	vfunc_2	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0059b6e0	GetPlayerMode	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0059b6e4	GetScreenType	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0059b6e8	GetInventoryShoppingValidity	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0059b6ed	vfunc_75	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0059b6f4	GetCategoryIndexForTradeType	CTCInventoryTrade	__thiscall	long	1	CTCInventoryTrade *	1	yes	accepted									
@@ -11432,7 +11432,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005b2847	~list	std::list<T_005b2847>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CActiveFile_OnReadFinished_005b2847.cpp
 005b2872	insert	CRetailTree_ulongkey_ins005b2337	unknown	undefined	0		0	yes	accepted									
 005b28f8	insert_unique	std::_Rb_tree<NUISystem::CComponent *, std::pair<NUISystem::CComponent *const, NUISystem::CList *>, std::_Select1st<std::pair<NUISystem::CComponent *const, NUISystem::CList *>>, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, NUISystem::CList *>>>	unknown	undefined	0		0	yes	accepted									
-005b2a37	CMemoryAllocatorVariableSize_InsertOrFind_Int	_global	unknown	undefined	0		0	yes	accepted									
+005b2a37	insert_unique	std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>	unknown	undefined	0		0	yes	accepted									
 005b2b76	insert_unique	std::_Rb_tree<NUISystem::CComponent *, std::pair<NUISystem::CComponent *const, std::pair<CWideString, long>>, std::_Select1st<std::pair<NUISystem::CComponent *const, std::pair<CWideString, long>>>, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, std::pair<CWideString, long>>>>	unknown	undefined	0		0	yes	accepted									
 005b2cb5	insert_unique	std::_Rb_tree<NUISystem::CComponent *, std::pair<NUISystem::CComponent *const, NUISystem::CComponent *>, std::_Select1st<std::pair<NUISystem::CComponent *const, NUISystem::CComponent *>>, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, NUISystem::CComponent *>>>	unknown	undefined	0		0	yes	accepted									
 005b2df4	GetInterface_0x5e	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -11447,7 +11447,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005b3065	OnItemSelected	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005b306f	OnChangeCategory	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005b3070	IsComponentSerialisable	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005b3073	vfunc_3	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005b3073	IsInventoryScreen	CTCInventoryTrade	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005b3076	operator[]	std::map<NUISystem::CComponent *, NUISystem::CList *, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, NUISystem::CList *>>>	__thiscall	long *	2	map<NUISystem::CComponent*,long,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,long>_>_> *,CComponent * *	1	yes	accepted									
 005b30bb	operator[]	std::map<long, long, std::less<long>, std::allocator<std::pair<long const, long>>>	__thiscall	long *	2	map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_> *,EUsedKeys *	1	yes	accepted									
 005b3100	operator[]	std::map<CComponent*, pair<CWideString, long> >	unknown	undefined	0		0	yes	accepted									
@@ -11465,8 +11465,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005b34bb	GetStaticAddr_013b8ba0_005b34bb	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\global_AddChildPrimitive_005b34bb.cpp
 005b34c1	GetStaticAddr_013b8b9c_005b34c1	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\global_AddChildPrimitive_005b34c1.cpp
 005b34c7	GetStaticAddr_013b8b98_005b34c7	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\global_AddChildPrimitive_005b34c7.cpp
-005b34cd	vfunc_1	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005b34d1	vfunc_2	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005b34cd	GetPlayerMode	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005b34d1	GetScreenType	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005b34d5	ProcessButtonAReleased	CTCInventoryClothing	__thiscall	void	1	CTCInventoryClothing *	1	yes	accepted									
 005b3509	OnKill	CTCInventoryClothing	unknown	undefined	0		0	yes	accepted									
 005b3535	GetInitialItems	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -11642,7 +11642,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bb4e6	_M_insert_overflow	std::vector<SValue04>	unknown	undefined	0		0	yes	accepted									
 005bb5ae	StdList_Dtor_005bb5ae	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CActiveFile_OnReadFinished_005bb5ae.cpp
 005bb5c5	equal_range	std::_Rb_tree	__thiscall	bool	3	CompareDataOffset *,ulong,ulong	1	yes	accepted									
-005bb5ef	CMemoryAllocatorVariableSize_FindOrInsert_Wrapper	_global	unknown	undefined	0		0	yes	accepted									
+005bb5ef	insert_unique	std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long>>, std::less<EClothingSuitPart>, std::allocator<std::pair<EClothingSuitPart const, long>>>	unknown	undefined	0		0	yes	accepted									
 005bb72e	GetInterface_0x78	_unattributed	unknown	undefined	0		0	yes	accepted									
 005bb779	GetInterface_0x5c	_unattributed	unknown	undefined	0		0	yes	accepted									
 005bb7c4	GetInterface_0x78	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -11972,8 +11972,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005c2df5	Forward_IsThingCarryingMeleeWeapon_via0x4_005c2df5	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2df5.cpp
 005c2dfd	GlobalUpdate	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005c2e02	OnItemHighlighted	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005c2e1d	vfunc_1	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005c2e21	vfunc_2	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005c2e1d	GetPlayerMode	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005c2e21	GetScreenType	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005c2e25	ProcessButtonAHeld	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005c2e2a	ProcessButtonAReleased	CTCInventoryWeapons	__thiscall	void	1	CTCInventoryClothing *	1	yes	accepted									
 005c2e5e	vfunc_55	CTCInventoryWeapons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -12071,8 +12071,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005cc530	RoundToDecimalPlaces	_global	unknown	undefined	0		0	yes	accepted									
 005cc5e8	sub_005cc5e8	_global	unknown	undefined	0		0			discovered	gapscan							
 005cc6c0	TransferOut	CPersistTraits<long>	__thiscall	void	4	CPersistTraits<long> *,CPersistContext *,CCharString *,long *	1	yes	accepted									
-005cc6eb	vfunc_1	CTCInventoryStats	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005cc6ef	vfunc_2	CTCInventoryStats	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005cc6eb	GetPlayerMode	CTCInventoryStats	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005cc6ef	GetScreenType	CTCInventoryStats	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005cc6f3	CloseInventory	CTCInventoryStats	__thiscall	void	1	CTCInventoryStats *	1	yes	accepted									
 005cc772	GetXString	CTCInventoryStats	__fastcall	CWideString	0		1	yes	accepted									
 005cc862	GetFatnessAsString	CTCInventoryStats	__thiscall	CWideString	2	CTCInventoryStats *,float	1	yes	accepted									
@@ -12508,7 +12508,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005e8980	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 005e8ad0	CIVCountedPointer_Attach_005e8ad0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e8ad0.cpp
 005e8c00	_M_erase	std::_Rb_tree<long, std::pair<long const, unsigned long>, std::_Select1st<std::pair<long const, unsigned long>>, std::less<long>, std::allocator<std::pair<long const, unsigned long>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
-005e8c40	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+005e8c40	operator--	std::_Rb_tree_iterator<std::pair<long const, unsigned long>, std::_Nonconst_traits<std::pair<long const, unsigned long>>>	unknown	undefined	0		0	yes	accepted									
 005e8cb0	vfunc_0	CPersistContext_TransferableVector<unsigned_long>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005e8cc0	TransferIn	CPersistContext_TransferableVector<CUnprovenEnum4_005e8cc0>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005e8cf0	TransferOut	CPersistContext_TransferableVector<unsigned long>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -12624,8 +12624,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005eda50	~CTCTavernGame	CTCTavernGame	unknown	undefined	0		0	yes	accepted									
 005edc00	SetGame	CTCGamePlayer	__thiscall	void	2	CTCGamePlayer *,CTCTavernGame *	1	yes	accepted									
 005edc90	GetGame	CTCGamePlayer	__thiscall	CTCTavernGame *	1	CTCGamePlayer *	1	yes	accepted									
-005edce7	vfunc_1	CTCInventoryAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005edceb	vfunc_2	CTCInventoryAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005edce7	GetPlayerMode	CTCInventoryAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005edceb	GetScreenType	CTCInventoryAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005edcef	Nop_ret0_005edcef	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\E2_E2_005edcef.cpp
 005edcf0	GetNumAssignableSpecialMoveButtons	CTCInventoryAbilities	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\global_Destval_005edcf0.cpp
 005edd04	GetAbilityInventoryThingName	CTCInventoryAbilities	__thiscall	CCharString	2	CTCInventoryAbilities *,EHeroAbility	1	yes	accepted									
@@ -12829,7 +12829,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005f957e	_M_insert_overflow	std::vector<std::pair<long, EHeroAbility>, std::allocator<std::pair<long, EHeroAbility>>>	unknown	undefined	0		0	yes	accepted									
 005f9633	_M_fill_insert	std::vector<EHeroAbility>	unknown	undefined	0		0	yes	accepted									
 005f9714	CMemoryAllocatorVariableSize_TransferIn	_global	unknown	undefined	0		0	yes	accepted									
-005f9853	RBTree_FindInsertionPoint	_global	unknown	undefined	0		0	yes	accepted									
+005f9853	insert_unique	std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, NUISystem::CComponent *>, std::_Select1st<std::pair<EHeroAbility const, NUISystem::CComponent *>>, std::less<EHeroAbility>, std::allocator<std::pair<EHeroAbility const, NUISystem::CComponent *>>>	unknown	undefined	0		0	yes	accepted									
 005f9992	GetInterface_0x91	_unattributed	unknown	undefined	0		0	yes	accepted									
 005f99de	GetInterface_0x68	_unattributed	unknown	undefined	0		0	yes	accepted									
 005f9a29	_Umove<EWeaponClass*>	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\std_Umove_005f9a29.cpp
@@ -12879,11 +12879,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005fa47d	Sort	CVectorMap<long,EHeroAbility,CKeyPairCompareLess<long,EHeroAbility> >	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\CGuiVarTransferBool_TransferToGui_005fa47d.cpp
 005fa496	Sort	CVectorMap<long,long,CKeyPairCompareLess<long,long> >	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\CGuiVarTransferBool_TransferToGui_005fa496.cpp
 005fa530	CUIMiniMapMarker	CUIMiniMapMarker	__thiscall	undefined	1	CUIMiniMapMarker *	0	yes	accepted									
-005fa590	vfunc_3	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005fa590	IsInventoryScreen	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fa610	TransferBinaryOut	CPersistTraits<CTCInventoryMap::CUIRegionInfo>	__thiscall	void	3	CPersistTraits<CTCInventoryMap::CUIRegionInfo> *,CDataOutputStream *,CUIRegionInfo *	1	yes	accepted									
 005fa740	operator!=	CDefString	__thiscall	bool	2	CDefString *,char *	1	yes	accepted									
-005fa8e0	vfunc_1	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005fa8f0	vfunc_2	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005fa8e0	GetPlayerMode	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005fa8f0	GetScreenType	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fa900	SetMember_dword0x1a4_005fa900	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\AddExclusiveObserver_AddExclusiveObserver_005fa900.cpp
 005fa910	ProcessInventoryInputUp	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fa950	ProcessInventoryInputDown	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -12985,9 +12985,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00613d20	_Construct	std	__fastcall	void	3	allocator<CTCInventoryMap::CUIMiniMapMarker> *,CUIMiniMapMarker *,CUIMiniMapMarker *	1	yes	accepted									
 00613dd0	__uninitialized_copy	std	__fastcall	CExplosionRing *	4	CExplosionRing *,CExplosionRing *,CExplosionRing *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00613e30	__uninitialized_fill_n	std	__fastcall	void	3	pair<float,CSubtitledMessage::CCameraTag> *,pair<float,CSubtitledMessage::CCameraTag> *,pair<float,class_CSubtitledMessage::CCameraTag> *	1	yes	accepted									
-00613eb0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+00613eb0	operator--	std::_Rb_tree_iterator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>, std::_Nonconst_traits<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>>>	unknown	undefined	0		0	yes	accepted									
 00613f00	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
-00613f70	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+00613f70	operator--	std::_Rb_tree_iterator<std::pair<long const, std::pair<long, long>>, std::_Nonconst_traits<std::pair<long const, std::pair<long, long>>>>	unknown	undefined	0		0	yes	accepted									
 00613fe0	Size	CPersistContext_TransferableVector<CTCInventoryMap::CUIMiniMapMarker>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00614000	TransferOut	CPersistContext_TransferableVector<CTCInventoryMap::CUIMiniMapMarker>	__thiscall	void	4	CPersistContext_TransferableVector<std::pair<CCharString,long>_> *,CPersistContext *,CCharString *,long	1	yes	accepted									
 00614080	TransferOut	CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>	__thiscall	void	4	CPersistTraits<CTCInventoryMap::CUIMiniMapMarker> *,CPersistContext *,CCharString *,CUIMiniMapMarker *	1	yes	accepted									
@@ -13139,9 +13139,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00619f40	HasFrameUpdate	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00619f50	`scalar deleting destructor'	CTCInventoryMap	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\61\CLandscapeBackgroundPatch_vectordeletingdestructor_00619f50.cpp
 00619f70	CStringOwner_00619f70	_unattributed	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
-00619fd0	vfunc_3	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0061a000	vfunc_1	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0061a010	vfunc_2	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00619fd0	IsInventoryScreen	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0061a000	GetPlayerMode	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0061a010	GetScreenType	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0061a040	GetSelectedCategoryThing	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
 0061a0b0	GetInventoryGuildValidity	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0061a0c0	vfunc_75	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -15458,7 +15458,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00687c70	Forward_IsEventAssignableSpecialMoveButton_via0x24_00687c70	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687c70.cpp
 00687c80	Forward_IsEventContextSensitiveItemButton_via0x24_00687c80	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687c80.cpp
 00687c90	IsOtherQuickAccessItemButtonHeld	CInputProcessGameBase	__thiscall	bool	2	CInputProcessGameBase *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CInputProcessGameBase_IsOtherQuickAccessItemButtonHeld_00687c90.cpp
-00687cb0	IsAssignableSpecialMoveButtonInQueue	CInputProcessGameBase	__thiscall	void	3	CPersistContext *,char *,CEngineGraphic *	1	yes	accepted									
+00687cb0	IsQuickAccessEventInQueue	CInputProcessGameBase	__thiscall	void	3	CPersistContext *,char *,CEngineGraphic *	1	yes	accepted									
 00687ce0	Forward_IsEventContextSensitiveItemButton_via0x24_00687ce0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687ce0.cpp
 00687cf0	Forward_IsEventGameAction_via0x24_00687cf0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687cf0.cpp
 00687d00	GetEventGameActionVector	CInputProcessGameBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687d00.cpp
@@ -17410,7 +17410,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006dfcb0	Clone	CCreatureAction_ShowToSheatheTrophy	__thiscall	CCreatureActionBase *	1	CCreatureAction_ShowToSheatheTrophy *	1	yes	accepted									
 006dfce0	Clone	CCreatureAction_SheatheTrophy	__thiscall	CCreatureActionBase *	1	CCreatureAction_SheatheTrophy *	1	yes	accepted									
 006dfda0	SetParticleCreationDisabled	NParticleEngine::CParticleEmitter	unknown	undefined	0		0	yes	accepted									
-006dfe50	vfunc_29	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006dfe50	CreateAdditionalTCs	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006dfe70	Construct	CTCDParticleEmitter	__thiscall	void	5	CTCDParticleEmitter *,long,C3DVector *,bool,bool	1	yes	accepted									
 006dff30	CTCDParticleEmitter	CTCDParticleEmitter	__thiscall	undefined	2	CTCDParticleEmitter *,CThing *	0	yes	accepted									
 006dffb0	UpdateEmitterThingAttachment	CTCDParticleEmitter	__thiscall	void	3	CTCDParticleEmitter *,bool,float	1	yes	accepted									
@@ -17451,7 +17451,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e1cc0	ScalarDeletingDtor_006e1cc0	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\CLandscapeBackgroundPatch_vectordeletingdestructor_006e1cc0.cpp
 006e1d00	GetInterfaceType	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006e1d10	GetClassTypeName	CTCDParticleEmitter	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-006e1d30	vfunc_28	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006e1d30	IsDriverType	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006e1d40	HasFrameUpdate	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006e1d50	IsComponentSerialisable	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006e1d80	__uninitialized_copy	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -18500,7 +18500,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00711fd0	OnActivate	CTCScriptedControl::CActionBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00711fe0	OnAdd	CTCScriptedControl::CActionBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00712000	OnCleanup	CTCScriptedControl::CActionBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007120d0	Dtor_CCreatureActionBaseBase_007120d0	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007120d0.cpp
+007120d0	~CCreatureAction_PickUpGenericBox	CCreatureAction_PickUpGenericBox	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007120d0.cpp
 00712240	Update	NTCScriptedControl::CActionWait	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007122a0	OnAdd	NTCScriptedControl::CActionSummonerLightningAttackTarget	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007122b0	OnActivate	NTCScriptedControl::CActionSummonerLightningAttackTarget	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -19119,8 +19119,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0072da30	IsComponentSerialisable	CTCSpecialAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072da40	`scalar deleting destructor'	CTCSpecialAbilities	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_0072da40.cpp
 0072da60	~CTCSpecialAbilities	CTCSpecialAbilities	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
-0072daa0	vfunc_1	CTCInventoryMagic	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0072dab0	vfunc_2	CTCInventoryMagic	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0072daa0	GetPlayerMode	CTCInventoryMagic	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0072dab0	GetScreenType	CTCInventoryMagic	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072dac0	DrawPreparePrimitivesForRendering	CTCInventoryMagic	__thiscall	void	2	CTCInventoryMagic *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 0072db00	GetScreenName	CTCInventoryMagic	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072db70	OpenInventory	CTCInventoryMagic	__thiscall	void	1	CTCInventoryMagic *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CTCInventoryMagic_OpenInventory_0072db70.cpp
@@ -21017,12 +21017,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00778c00	operator=	std::vector	unknown	undefined	0		0	unmeasured	accepted									
 00778d00	`scalar_deleting_destructor'	CTCFamilyMember	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\CLandscapeBackgroundPatch_vectordeletingdestructor_00778d00.cpp
 00778d20	~CTCFamilyMember	CTCFamilyMember	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
-00778d50	vfunc_29	CTCDNavigationSeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00778d50	CreateAdditionalTCs	CTCDNavigationSeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00778d60	Construct	CTCDCameraPoint	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
-00778e60	vfunc_29	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00778e60	CreateAdditionalTCs	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00778e70	Construct	CTCDRegionEntrance	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
 00778ef0	OnSerialise	CTCDRegionEntrance	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00778f90	vfunc_29	CTCDRegionExit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00778f90	CreateAdditionalTCs	CTCDRegionExit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00778fa0	CTCDRegionExit	CTCDRegionExit	__thiscall	undefined	2	CTCChest *,CThing *	0	yes	accepted									
 00779000	Construct	CTCDRegionExit	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
 00779080	MoveHeroThroughExit	CTCDRegionExit	__thiscall	void	1	CTCDRegionExit *	1	yes	accepted									
@@ -21036,7 +21036,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007796b0	FrameUpdate	CTCDRegionExit	__thiscall	void	1	CTCDRegionExit *	1	yes	accepted									
 00779910	GetInterfaceType	CTCDRegionExit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00779920	GetClassTypeName	CTCDRegionExit	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-00779940	vfunc_28	CTCDRegionExit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00779940	IsDriverType	CTCDRegionExit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00779950	IsComponentSerialisable	CTCDRegionExit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00779960	HasFrameUpdate	CTCDRegionExit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00779990	`scalar_deleting_destructor'	CTCDRegionExit	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\77\CLandscapeBackgroundPatch_vectordeletingdestructor_00779990.cpp
@@ -21057,7 +21057,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0077a890	Create	CTCDExperienceOrb	__fastcall	void	1	CThing *	1	yes	accepted									
 0077ab60	GetInterfaceType	CTCDExperienceOrb	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077ab70	GetClassTypeName	CTCDExperienceOrb	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-0077ab90	vfunc_28	CTCDExperienceOrb	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0077ab90	IsDriverType	CTCDExperienceOrb	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077aba0	HasFrameUpdate	CTCDExperienceOrb	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077ac20	GetSubDef<CExperienceDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 0077ace0	`scalar deleting destructor'	CTCDExperienceOrb	__thiscall	void *	2	CTCDExperienceOrb *,uint	1	yes	accepted									
@@ -23258,7 +23258,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007e8460	OnSerialise	CTCOwnedEntity	__thiscall	void	3	CTCOwnedEntity *,CPersistContext *,bool	1	yes	accepted									
 007e8590	SetPOwner	CTCOwnedEntity	__thiscall	void	2	CTCOwnedEntity *,CThing *	1	yes	accepted									
 007e8820	InitialActivate	CTCOwnedEntity	__thiscall	void	1	CTCOwnedEntity *	1	yes	accepted									
-007e8860	vfunc_29	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007e8860	CreateAdditionalTCs	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007e8870	Construct	CTCDCameraPoint	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
 007e88f0	Persist	CTCDCameraPoint	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007e8a00	OnInitialActivate	CTCFlourishTarget	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -23266,7 +23266,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007e8a40	ProcessActionMovementDelta	CTCFlourishTarget	__thiscall	void	2	CTCFlourishTarget *,C3DVector *	1	yes	accepted									
 007e8ea0	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 007e8fe0	_M_erase	std::_Rb_tree<CThing*,std::pair<CThing* const,float>,std::_Select1st<std::pair<CThing* const,float>>,std::less<CThing*>,std::allocator<std::pair<CThing* const,float>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
-007e9020	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+007e9020	operator--	std::_Rb_tree_iterator<std::pair<CThing *const, float>, std::_Nonconst_traits<std::pair<CThing *const, float>>>	unknown	undefined	0		0	yes	accepted									
 007e9070	__distance<std::_Rb_tree_iterator<std::pair<CThing*const, float>, std::_Nonconst_traits<std::pair<CThing*const, float> > > >	std	unknown	undefined	0		0			discovered	gapscan							
 007e90f0	RbTree_Clear_007e90f0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CTCCarryable_OnKill_007e90f0.cpp
 007e9130	_Rb_tree_base	std::_Rb_tree_base<node0x18_007e9130>	unknown	undefined	0		0	yes	accepted									
@@ -23281,7 +23281,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007e99a0	~CRetailTree_erase007e8fe0	CRetailTree_erase007e8fe0	unknown	undefined	0		0	yes	accepted									
 007e99f0	erase	std::_Rb_tree<CThing*,std::pair<CThing* const,float>,std::_Select1st<std::pair<CThing* const,float>>,std::less<CThing*>,std::allocator<std::pair<CThing* const,float>>>	unknown	undefined	0		0	yes	accepted									
 007e9ae0	equal_range	std::_Rb_tree<CThing *, std::pair<CThing *const, float>, std::_Select1st<std::pair<CThing *const, float>>, std::less<CThing *>, std::allocator<std::pair<CThing *const, float>>>	unknown	undefined	0		0	yes	accepted									
-007e9b40	RBTree_Insert	_global	unknown	undefined	0		0	yes	accepted									
+007e9b40	_M_insert	std::_Rb_tree<CThing *, std::pair<CThing *const, float>, std::_Select1st<std::pair<CThing *const, float>>, std::less<CThing *>, std::allocator<std::pair<CThing *const, float>>>	unknown	undefined	0		0	yes	accepted									
 007e9c00	insert_unique	std::_Rb_tree<CThing*,std::pair<CThing* const,float>,std::_Select1st<std::pair<CThing* const,float>>,std::less<CThing*>,std::allocator<std::pair<CThing* const,float>>>	unknown	undefined	0		0	yes	accepted									
 007e9cc0	CUnprovenContainer_007e8fe0	CUnprovenContainer_007e8fe0	unknown	undefined	0		0	yes	accepted									
 007e9d00	~CRetailTree_erase007e8fe0	CRetailTree_erase007e8fe0	unknown	undefined	0		0	yes	accepted									
@@ -34274,7 +34274,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009c1e00	_M_erase	std::_Rb_tree<ESurfaceMultisampleType, ESurfaceMultisampleType, std::_Identity<ESurfaceMultisampleType>, std::less<ESurfaceMultisampleType>, std::allocator<ESurfaceMultisampleType>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009c1e70	DeleteObject_CPairedNodeLists_009c1e70	_global	__thiscall	void	1	CTCMapwho *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CTCMapwho_OnDie_009c1e70.cpp
 009c1f70	operator--	std::_Rb_tree_iterator<CDisplayModeDesc, std::_Nonconst_traits<CDisplayModeDesc> >	unknown	undefined	0		0	yes	accepted									
-009c1fe0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+009c1fe0	operator--	std::_Rb_tree_iterator<ESurfaceMultisampleType, std::_Nonconst_traits<ESurfaceMultisampleType>>	unknown	undefined	0		0	yes	accepted									
 009c20c0	`scalar deleting destructor'	CBufferAndString_009c20c0	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted									
 009c2200	ListSentinel_Ctor_szc_009c2200	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\global_ListSentinelCtorszc009c2200_009c2200.cpp
 009c2220	~_List_base	std::_List_base<CDeviceResetCallback*,std::allocator<CDeviceResetCallback*> >	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CGuiControlTreePane_SortTreeRecursively_009c2220.cpp
@@ -34283,7 +34283,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009c22e0	clear	std::_Rb_tree<ESurfaceMultisampleType, ESurfaceMultisampleType, std::_Identity<ESurfaceMultisampleType>, std::less<ESurfaceMultisampleType>, std::allocator<ESurfaceMultisampleType>>	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CTCCarryable_OnKill_009c22e0.cpp
 009c2320	_Rb_tree_base	std::_Rb_tree_base<node0x14_009c2320>	unknown	undefined	0		0	yes	review-low									
 009c2350	InsertNode_24byte	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
-009c2440	InsertNode_20byte	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
+009c2440	_M_insert	std::_Rb_tree<ESurfaceMultisampleType, ESurfaceMultisampleType, std::_Identity<ESurfaceMultisampleType>, std::less<ESurfaceMultisampleType>, std::allocator<ESurfaceMultisampleType>>	unknown	undefined	0		0	yes	accepted									
 009c2520	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\global_Destval_009c2520.cpp
 009c2540	ListSentinel_Ctor_szc_009c2540	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\global_ListSentinelCtorszc009c2540_009c2540.cpp
 009c25f0	_Rb_tree	std::_Rb_tree<CDisplayModeDesc, CDisplayModeDesc, std::_Identity<CDisplayModeDesc>, std::less<CDisplayModeDesc>, std::allocator<CDisplayModeDesc> >	unknown	undefined	0		0	yes	review-medium									
@@ -34718,7 +34718,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009d7070	CCountedPointer_Release_009d7070	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9d\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7070.cpp
 009d7430	_M_erase	std::set	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009d7490	ScalarDeletingDtor_009d7490	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9d\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7490.cpp
-009d74e0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+009d74e0	operator--	std::_Rb_tree_iterator<CBankFileAsyncData *, std::_Nonconst_traits<CBankFileAsyncData *>>	unknown	undefined	0		0	yes	accepted									
 009d7550	__distance<std::_Rb_tree_iterator<CBankFileAsyncData*, std::_Nonconst_traits<CBankFileAsyncData*> > >	std	unknown	undefined	0		0	yes	accepted									
 009d7630	Remove_009d7630	_unattributed	unknown	undefined	0		0	yes	accepted									
 009d7670	RbTree_Clear_009d7670	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9d\CTCCarryable_OnKill_009d7670.cpp
@@ -42248,8 +42248,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b95f60	_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>	std	__fastcall	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *	5	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b9\UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b95f60.cpp
 00b95fa0	UninitFillN_CCountedPointer_00b95fa0	_global	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00b95fd0	ScalarDeletingDtor_00b95fd0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b9\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95fd0.cpp
-00b96020	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
-00b96070	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
+00b96020	operator--	std::_Rb_tree_iterator<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>, std::_Nonconst_traits<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>>>	unknown	undefined	0		0	yes	accepted									
+00b96070	operator--	std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CEngineSceneMap>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>	unknown	undefined	0		0	yes	accepted									
 00b960c0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 00b96150	uninitialized_fill_n<CCountedPointer<CEngineSceneGrid>*,unsigned int,CCountedPointer<CEngineSceneGrid> >	std	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00b96280	__copy_backward<CCountedPointer<CEngineSceneGrid> *, CCountedPointer<CEngineSceneGrid> *, int>	std	__fastcall	CCountedPointer<C3DGroup2> *	4	CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									

@@ -1,29 +1,13 @@
-// CCountedPointer::Reset(T* object) -- release the old share then adopt a new raw object
-// Grade: pending owner naming preflight; historical exact grade2 preserved
+// CCountedPointer::Reset(T* object) -- release the old share (out-of-line ReleaseData) then adopt a new raw object
 // Leaf: ?Reset@?$CCountedPointer@VCAction@NUISystem@@@@QAEXPAVCAction@NUISystem@@@Z
-// Flags:
 // Retail: 005791e5, 59 bytes. PDB Reset/DeleteData, destructor-feed and callback targets prove NUISystem::CAction.
-// PDB complete member layout Data@0,Info@4 and no base fields; CCPPointerInfo ctor exact KP6IXPAX@Z0.
+// Binder respelling (agentFAM13, FAM12 notes): the release call targets 0x00429160, which is
+//   ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ (FableWin.pdb; the destructor is the 5-byte jmp COMDAT 0x00429B72),
+//   not ~CCountedPointer<NUISystem::CAction> as the local model spelled it. Ported onto the shared engine/CCountedPointer.h
+//   (Reset = ReleaseData(); Data = data; if (data) Info = new CCPPointerInfo(1, DeleteData, Data)) with the per-TU opt-in
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (ReleaseData out of line), replacing the local CCountedPointer model.
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CAction; }
-class CCPPointerInfo { public:
- unsigned long RefCount;
- void (__fastcall* DeleteFunc)(void*);
- void* Data;
- CCPPointerInfo(unsigned long n, void (__fastcall* fn)(void*), void* p)
- : RefCount(n), DeleteFunc(fn), Data(p) {}
-};
-template<class T> class CCountedPointer { public:
- T* Data;
- CCPPointerInfo* Info;
- ~CCountedPointer();
- static void __fastcall DeleteData(void*);
- void Reset(T* object);
-};
-template<class T> void CCountedPointer<T>::Reset(T* object)
-{
- this->~CCountedPointer<T>();
- Data=object;
- if (Data) Info=new CCPPointerInfo(1, DeleteData, Data);
-}
 template void CCountedPointer<NUISystem::CAction>::Reset(NUISystem::CAction*);

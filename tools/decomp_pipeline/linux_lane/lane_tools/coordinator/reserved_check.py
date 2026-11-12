@@ -14,6 +14,9 @@ import os
 import re
 import subprocess
 import sys
+import signal
+
+signal.signal(signal.SIGPIPE, signal.SIG_DFL)   # `| head` must not raise BrokenPipeError
 
 H8 = re.compile(r'^[0-9a-f]{8}$')
 

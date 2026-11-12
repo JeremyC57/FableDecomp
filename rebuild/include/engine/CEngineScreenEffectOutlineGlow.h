@@ -15,6 +15,11 @@ class CEngineScreenEffectOutlineGlow : public CEngineComponent {
 public:
     CEngineScreenEffectOutlineGlow(const CEngineInit&); // 0x00B891B0 ??0CEngineScreenEffectOutlineGlow@@QAE@ABVCEngineInit@@@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_OUTLINERENDERING
+    // FAM13 (CEnginePrimitiveRenderer::Render 0x00B33010, layer 0x80 around sub-primitive list 0xD): Ego_r.pdb / FableWin.pdb names.
+    void BeginOutlineRendering();                     // 0x00B89A20 ?BeginOutlineRendering@CEngineScreenEffectOutlineGlow@@QAEXXZ
+    void FinishOutlineRendering();                    // 0x00B89140 ?FinishOutlineRendering@CEngineScreenEffectOutlineGlow@@QAEXXZ
+#endif
 private:
     unsigned char _pad_0xc[0x1d8];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 };

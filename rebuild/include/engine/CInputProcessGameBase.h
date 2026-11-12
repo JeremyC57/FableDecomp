@@ -58,9 +58,20 @@ class CGamePlayerInterface;
 class CMainGameComponent;
 class CPlayer;
 class CWorld;
+#ifdef FABLE_RETAIL_INPUTPROCESS_QUICKACCESSQUEUE
+enum EInputButtonEventType;                                  // MS forward enum (FAM13 opt-in below)
+#endif
 
 #pragma pack(push, 1)
 struct CInputProcessGameBase {
+#ifdef FABLE_RETAIL_INPUTPROCESS_QUICKACCESSQUEUE
+    // Opt-in (FAM13, row 0x00687CB0): Ego_r.pdb / FableWin.pdb ?IsQuickAccessEventInQueue@CInputProcessGameBase@@IBE_NJW4EInputButtonEventType@@@Z
+    // (protected const; forwards to CGamePlayerInterface::IsQuickAccessEventInQueue 0x004460C0 with MyPlayer's joystick device).
+    // Declaration only, the layout below is unchanged.
+protected:
+    bool IsQuickAccessEventInQueue(long button, EInputButtonEventType type) const;   // 0x00687CB0
+public:
+#endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08

@@ -18,6 +18,13 @@ public:
 #ifdef FABLE_RETAIL_CTCD_STATGETDRIVERTYPE
     static unsigned long __fastcall StatGetDriverType() { return 21; }
 #endif
+#ifdef FABLE_RETAIL_CTCDNAVIGATIONSEED_DRIVERSLOTS
+// agentFAM13 (2026-11-12): CTCDriverBase virtuals this driver overrides but this declaration lacks (TLC vtable slot 28 IsDriverType,
+// slot 29 CreateAdditionalTCs, as engine/CTCDriverBase.h); spellings from the Ego_r / FableWin name sets. Declaration only.
+public:
+    virtual bool IsDriverType(long type) const;
+    virtual void CreateAdditionalTCs();
+#endif // FABLE_RETAIL_CTCDNAVIGATIONSEED_DRIVERSLOTS
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDNavigationSeed) == 0xc);
 #endif

@@ -75,5 +75,15 @@ public:
     virtual void OnChangeCategory();  // slot 37, 0x00624DA0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYQUESTS_HISCREEN
+// agentFAM13 (2026-11-12): the NHeroInformationScreens::CBase overrides this declaration lacks (the secondary vtable at +0x130,
+// slots 0 GetScreenName / 1 GetPlayerMode / 2 GetScreenType / 3 IsInventoryScreen, engine/NHeroInformationScreens_CBase.h);
+// spellings from the Ego_r / FableWin name sets. Declaration only (no layout change; the vtable exists).
+public:
+    virtual CWideString GetScreenName() const;
+    virtual EPlayerMode GetPlayerMode() const;
+    virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+    virtual bool IsInventoryScreen() const;
+#endif // FABLE_RETAIL_CTCINVENTORYQUESTS_HISCREEN
 };
 #endif

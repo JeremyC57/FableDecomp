@@ -7,8 +7,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00847520, length 1122 bytes.
 // Callees (Ego_r.pdb / FableWin.pdb spellings): CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap LowerBound 0x004365B0 (const)
 //   / 0x0040F020, CTCInventory::GetQuickAccessItemButtonIndex 0x00581FD1 / GetContextSensitiveItemButtonIndex 0x00581D4E,
-//   CThing::GetPlayer 0x004C7A30, CPlayer::GetJoystickDeviceNumber 0x00487510, CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue
-//   0x004460C0 / IsContextSensitiveEventInQueue 0x004461D0, IsToReplaceItemIfRemoved (vtable +0x94), IS_THING_ALIVE<CIntelligentPointer<CThing> >
+//   CThing::GetPlayer 0x004C7A30, CPlayer::GetJoystickDeviceNumber 0x00487510, CGamePlayerInterface::IsQuickAccessEventInQueue
+//   0x004460C0 / IsContextSensitiveEventInQueue 0x004461D0, IsToReplaceItemIfRemoved (vtable +0x94), IS_THING_ALIVE<CIntelligentPointer<CThing> > [FAM13: 0x004460C0 is IsQuickAccessEventInQueue -- it scans QuickAccessItemButtons +0x7c4 (Ego_r.pdb); IsAssignableSpecialMoveButtonInQueue is 0x00445E90 (+0x7b8)]
 //   0x004CC340, CIntelligentPointer<CThing>(CThing*) 0x004A96F0 / operator= 0x004A9760, CBaseIntelligentPointer dtor 0x00A01C10,
 //   CCreatureActionBase::GetFramesRunning 0x006925C0, the extended ctor 0x00843310 / dtor 0x0084ADC0,
 //   CCreatureActionBase::SetPItemRemoved 0x0072D360, CThingCreatureBase::SetCurrentAction 0x006644F0, CCreatureActionBase::FinishAction
@@ -80,7 +80,7 @@ void CCreatureAction_PerformExpressionExtended::FinishAction()
         if (PCreature->PeekTC(&ptc_inventory)) {
             long button_index = ptc_inventory->GetQuickAccessItemButtonIndex(ExpressionItemDefIndex);
             if (button_index != -1) {
-                if (PCreature->GetPlayer().GetPlayerInterface()->IsAssignableSpecialMoveButtonInQueue(button_index, (EInputButtonEventType)2, PCreature->GetPlayer().GetJoystickDeviceNumber()))
+                if (PCreature->GetPlayer().GetPlayerInterface()->IsQuickAccessEventInQueue(button_index, (EInputButtonEventType)2, PCreature->GetPlayer().GetJoystickDeviceNumber()))
                     ReplacedAction = true;
             }
             if (!ReplacedAction) {

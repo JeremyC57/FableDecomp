@@ -1,4 +1,7 @@
 // NInventory::CTCInventoryStats::ConstructScreen(NUISystem::CComponent* topLevel) -- creates the UI_STATS_LIST screen, touches its three entries, and wires the experience entry's select / back actions (type 3: go to the top-level menu screen in state 0 / 1); returns the screen
+// Binder respelling (agentFAM13, FAM12 notes): the scope-end releases of the two local action pointers call 0x00429160, which is
+//   ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ (FableWin.pdb; the destructor is the 5-byte jmp COMDAT 0x00429B72):
+//   per-TU opt-in FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (the inline destructor expands to the out-of-line ReleaseData).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CD074, 562 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CManager::GetInstance @ 0x0041E5F2 (called once with the result dropped, then again for CreateComponent
@@ -48,6 +51,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
     InsertParamNode(_M_node, value);
 }
 #pragma auto_inline(on)
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 namespace NUISystem {
 struct CComponentBase {

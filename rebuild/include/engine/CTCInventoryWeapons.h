@@ -138,6 +138,14 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;  // slot 21, 0x005CC4DD
 public:
 #endif // FABLE_RETAIL_CTCINVENTORYWEAPONS_VSLOTS3
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_HISCREEN
+// agentFAM13 (2026-11-12): the NHeroInformationScreens::CBase overrides this declaration lacks (the secondary vtable at +0x130,
+// slots 0 GetScreenName / 1 GetPlayerMode / 2 GetScreenType / 3 IsInventoryScreen, engine/NHeroInformationScreens_CBase.h);
+// spellings from the Ego_r / FableWin name sets. Declaration only (no layout change; the vtable exists).
+public:
+    virtual EPlayerMode GetPlayerMode() const;
+    virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+#endif // FABLE_RETAIL_CTCINVENTORYWEAPONS_HISCREEN
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryWeapons) == 0x1A0);   // 0x19C of members, rounded to the base's 8-byte alignment (double LastRenderTime)
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryWeapons, PActiveMeleeWeapon) == 0x134);

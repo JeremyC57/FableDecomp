@@ -1,4 +1,4 @@
-// CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params) -- render one layer when the camera allows it: inside a render-state capture block, prepare the layer, then per layer either render every scene, flush the matching sub-primitive lists (with the water/shadow renderers around them where enabled) or draw the occlusion pass; finally flush list 0 (and list 1 on request) and finish the layer
+// CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params) -- render one layer when the camera allows it: inside a render-state capture block, prepare the layer, then per layer either render every scene, flush the matching sub-primitive lists (with the outline-glow / shadow components around them where enabled) or draw the occlusion pass; finally flush list 0 (and list 1 on request) and finish the layer
 // Leaf: ?Render@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Layout: local model -- the method overrides the CEngineComponent base at +0x268 (this arrives adjusted, the body works on
@@ -46,13 +46,12 @@ struct CEngineOcclusionRenderer {                  // 0x01436E60
     SSceneRenderInfo GetRenderInfo();              // 0x00B38890
 };
 extern CEngineOcclusionRenderer* g_pOcclusionRenderer;   // 0x01436E60
-class CEngineWaterRenderer { public:                      // 0x01436E3C
-    unsigned char _pad00[8];
-    bool          Enabled;                         // +0x08
-    void BeginReflection();                        // 0x00B89A20
-    void EndReflection();                          // 0x00B89140
-};
-extern CEngineWaterRenderer* g_pWaterRenderer;     // 0x01436E3C
+// FAM13: 0x01436E3C is the outline-glow component (CEngine::Initialise 0x00B26360 stores `new CEngineScreenEffectOutlineGlow` there;
+// ctor 0x00B891B0, RTTI .?AVCEngineScreenEffectOutlineGlow@@), not a water renderer: shared header, PeekRenderEnabled (+0x08).
+#define FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW
+#define FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_OUTLINERENDERING
+#include "engine/CEngineScreenEffectOutlineGlow.h"
+namespace NEngineInternal { extern CEngineScreenEffectOutlineGlow* GPScreenEffectOutlineGlow; }   // 0x01436E3C ?GPScreenEffectOutlineGlow@NEngineInternal@@3PAVCEngineScreenEffectOutlineGlow@@A
 class CEngineShadowRenderer { public:                     // 0x01436E38
     bool BeginShadows();                           // 0x00B87680
     void EndShadows();                             // 0x00B869A0
@@ -94,12 +93,8 @@ struct CEngineRendererBase {                       // 0x268 bytes
     bool          SelfShadowing;                   // +0xbe
     unsigned char _pad0bf[0x268 - 0xbf];
 };
-class CEngineComponent { public:
-    virtual void c00();
-    virtual void Render(const CEngineComponentRenderParams& params);
-};
-class CEnginePrimitiveRenderer : public CEngineRendererBase, public CEngineComponent { public:
-    unsigned char         _pad26c[0x338 - 0x26c];
+class CEnginePrimitiveRenderer : public CEngineRendererBase, public CEngineComponent { public:   // CEngineComponent: shared header (12 bytes at +0x268)
+    unsigned char         _pad274[0x338 - 0x274];
     CArray<CEngineScene*> Scenes;                  // +0x338
     virtual void Render(const CEngineComponentRenderParams& params);
     void PreRenderLayer(long layer);               // 0x00B32AD0
@@ -126,12 +121,12 @@ void CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params
         }
         break;
     case 0x80:
-        if (g_pWaterRenderer->Enabled) {
+        if (NEngineInternal::GPScreenEffectOutlineGlow->PeekRenderEnabled()) {
             g_pEngineSubPrimitiveRenderer->RenderList(0xe, true);
             if (g_pEngineSubPrimitiveRenderer->GetListSize(0xd) > 0) {
-                g_pWaterRenderer->BeginReflection();
+                NEngineInternal::GPScreenEffectOutlineGlow->BeginOutlineRendering();
                 g_pEngineSubPrimitiveRenderer->RenderList(0xd, true);
-                g_pWaterRenderer->EndReflection();
+                NEngineInternal::GPScreenEffectOutlineGlow->FinishOutlineRendering();
             }
         } else {
             g_pEngineSubPrimitiveRenderer->ClearList(0xe);
@@ -139,7 +134,7 @@ void CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params
         }
         break;
     case 0x100:
-        if (g_pWaterRenderer->Enabled) {
+        if (NEngineInternal::GPScreenEffectOutlineGlow->PeekRenderEnabled()) {
             g_pEngineSubPrimitiveRenderer->RenderList(8, true);
             g_pEngineSubPrimitiveRenderer->RenderList(0xa, true);
         } else {
@@ -148,7 +143,7 @@ void CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params
         }
         break;
     case 0x200:
-        if (g_pWaterRenderer->Enabled)
+        if (NEngineInternal::GPScreenEffectOutlineGlow->PeekRenderEnabled())
             g_pEngineSubPrimitiveRenderer->RenderList(9, true);
         else
             g_pEngineSubPrimitiveRenderer->ClearList(9);

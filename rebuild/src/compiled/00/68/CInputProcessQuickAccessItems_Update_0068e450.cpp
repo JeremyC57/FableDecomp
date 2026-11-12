@@ -2,7 +2,8 @@
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E450, length 115 bytes.
 // Callees: CInputProcessGameBase::IsGameActionEventInQueue(long, long, float*) @ 0x00687D80 (landed),
-// IsAssignableSpecialMoveButtonInQueue(long, long) @ 0x00687CB0 (landed), CPlayer::HasMode @ 0x00634160 (MyPlayer +0x18),
+// IsQuickAccessEventInQueue(long, EInputButtonEventType) const @ 0x00687CB0 (FAM13: Ego_r.pdb / FableWin.pdb
+// ?IsQuickAccessEventInQueue@CInputProcessGameBase@@IBE_NJW4EInputButtonEventType@@@Z; the old spelling is in neither PDB), CPlayer::HasMode @ 0x00634160 (MyPlayer +0x18),
 // CInputProcessQuickAccessItems::CancelQuickAccessCharge @ 0x0068E3C0. Globals 0x0137EE78 (charging slot: -2 the special
 // move, -1 none) and 0x0137EE7C (the slot's button).
 // Model: as the landed CInputProcessQuickAccessItems::Cleanup 0x0068E4D0. Shape: the slot is read once into eax; the
@@ -15,6 +16,7 @@ class CPlayer {
 public:
     bool HasMode(EPlayerMode mode) const;          // 0x00634160 Ego_r/FableWin ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z
 };
+enum EInputButtonEventType;                         // MS forward enum (as engine/CGamePlayerInterface.h)
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
@@ -25,7 +27,9 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsAssignableSpecialMoveButtonInQueue(long button, long buttonEventType);    // 0x00687CB0
+protected:
+    bool IsQuickAccessEventInQueue(long button, EInputButtonEventType type) const;    // 0x00687CB0 (protected const, Ego_r.pdb)
+public:
     bool IsGameActionEventInQueue(long action, long buttonEventType, float* pTime);  // 0x00687D80
 };
 class CInputProcessQuickAccessItems : public CInputProcessGameBase {
@@ -42,7 +46,7 @@ void CInputProcessQuickAccessItems::Update(CProcessedInput& processed)
         if (!IsGameActionEventInQueue(0x4e, 2, &time))
             CancelQuickAccessCharge();
     } else if (slot != -1) {
-        if (!IsAssignableSpecialMoveButtonInQueue(g_QuickAccessChargeButton, 2))
+        if (!IsQuickAccessEventInQueue(g_QuickAccessChargeButton, (EInputButtonEventType)2))
             CancelQuickAccessCharge();
     } else if (MyPlayer->HasMode(PLAYER_MODE_CHARGE_QUICK_ACCESS)) {
         CancelQuickAccessCharge();

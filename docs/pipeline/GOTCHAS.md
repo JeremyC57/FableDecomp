@@ -160,3 +160,8 @@
 - (chunk Q29, 2026-11-12) VC7.1 uses a same-TU noinline callee's register summary (keeps ecx across IsValid) as well as its mod/ref; an /Od or optimize("g",off) body gives neither (0x00EB3BA0).
 - (chunk Q29, 2026-11-12) The manifest's propagated "CMurderTwistSheriff::Init" label covers several MurderTwist AttackHero bodies: check the caller (Main of the guard) and the indexed member before naming.
 - (chunk Q29, 2026-11-12) xdis.py piped into head raises BrokenPipe: send stderr to /dev/null.
+- (agentFAM13, 2026-11-12) A COMDAT that retail never defines out of line (an implicit dtor) can be graded from its caller's TU by pinning `// Leaf:` to the COMDAT symbol.
+- (agentFAM13, 2026-11-12) Fixing a wrong name on a twin function means reading the member offset each twin scans; the PDB member order names them.
+- (agentFAM13, 2026-11-12) Anniversary publics carry data globals (NEngineInternal::GP*, anonymous-namespace lists) that Ego_r/FableWin name sets lack.
+- (agentFAM13, 2026-11-12) `pinleaf` rewrites the row after grading, so a row newer than its log is not a sign of an ungraded change; regrade to be sure.
+- (agentFAM13, 2026-11-12) Guard every throwaway python with a try or plain prints; asserts and missing modules (pefile) print tracebacks.

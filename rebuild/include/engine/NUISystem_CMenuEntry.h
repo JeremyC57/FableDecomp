@@ -21,6 +21,12 @@ public:
 public:
     virtual void RemoveChild(unsigned long);                        // slot 64, 0x0053D120
 #endif // FABLE_RETAIL_CMENUENTRY_VSLOTS
+#ifdef FABLE_RETAIL_CMENUENTRY_ISCLICKABLE
+// agentFAM13 (2026-11-12): retail CComponent slot 132 override (vtable 0x0124662C slot 132 = 0x0053E8A0; Ego_r / FableWin
+// ?IsClickable@CMenuEntry@NUISystem@@UBE_NXZ). Declaration only.
+public:
+    virtual bool IsClickable() const;                               // slot 132, 0x0053E8A0
+#endif // FABLE_RETAIL_CMENUENTRY_ISCLICKABLE
 #ifdef FABLE_RETAIL_CMENUENTRY_UPDATE
     // Original PDB and native primary vtable slot1,0053d4b0.
     virtual void Update(float tick);

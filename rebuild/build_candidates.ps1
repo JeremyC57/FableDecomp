@@ -77245,9 +77245,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007120d0'
-        Module = '_global'
-        Source = '00/71/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007120d0.cpp'
-        TestSource = '00/71/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007120d0_test.cpp'
+        Module = 'CCreatureAction_PickUpGenericBox'
+        Source = '00/71/CCreatureActionPickUpGenericBox_CCreatureActionPickUpGenericBox_007120d0.cpp'
+        TestSource = '00/71/CCreatureActionPickUpGenericBox_CCreatureActionPickUpGenericBox_007120d0_test.cpp'
         PassPattern = 'PASS_007120d0'
     }
     [pscustomobject]@{
@@ -94938,8 +94938,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0041c590'
         Module = 'NUISystem::CComponent'
-        Source = '00/41/gapscan_sub0041c590_0041c590.cpp'
-        TestSource = '00/41/gapscan_sub0041c590_0041c590_test.cpp'
+        Source = '00/41/NUISystemCComponent_SetPAcceptButton_0041c590.cpp'
+        TestSource = '00/41/NUISystemCComponent_SetPAcceptButton_0041c590_test.cpp'
         PassPattern = 'PASS_0041c590'
     }
     [pscustomobject]@{
@@ -96477,16 +96477,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e7d41'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d41_004e7d41.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d41_004e7d41_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_ProcessButtonWhitePressed_004e7d41.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_ProcessButtonWhitePressed_004e7d41_test.cpp'
         PassPattern = 'PASS_004e7d41'
     }
     [pscustomobject]@{
         Address = '004e7d42'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d42_004e7d42.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d42_004e7d42_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_ProcessButtonWhiteReleased_004e7d42.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_ProcessButtonWhiteReleased_004e7d42_test.cpp'
         PassPattern = 'PASS_004e7d42'
     }
     [pscustomobject]@{
@@ -96498,44 +96498,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e7d44'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d44_004e7d44.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d44_004e7d44_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_ProcessAugmentAction_004e7d44.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_ProcessAugmentAction_004e7d44_test.cpp'
         PassPattern = 'PASS_004e7d44'
     }
     [pscustomobject]@{
         Address = '004e7d45'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d45_004e7d45.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d45_004e7d45_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_ProcessQuestActivateAction_004e7d45.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_ProcessQuestActivateAction_004e7d45_test.cpp'
         PassPattern = 'PASS_004e7d45'
     }
     [pscustomobject]@{
         Address = '004e7d48'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d48_004e7d48.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d48_004e7d48_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_IncrementQuestCardItemSelection_004e7d48.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_IncrementQuestCardItemSelection_004e7d48_test.cpp'
         PassPattern = 'PASS_004e7d48'
     }
     [pscustomobject]@{
         Address = '004e7d49'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d49_004e7d49.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d49_004e7d49_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_DecrementQuestCardItemSelection_004e7d49.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_DecrementQuestCardItemSelection_004e7d49_test.cpp'
         PassPattern = 'PASS_004e7d49'
     }
     [pscustomobject]@{
         Address = '004e7d4a'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d4a_004e7d4a.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d4a_004e7d4a_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_GetIsEnabled_004e7d4a.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_GetIsEnabled_004e7d4a_test.cpp'
         PassPattern = 'PASS_004e7d4a'
     }
     [pscustomobject]@{
         Address = '004e7d62'
-        Module = '_gapscan'
-        Source = '00/4e/gapscan_sub004e7d62_004e7d62.cpp'
-        TestSource = '00/4e/gapscan_sub004e7d62_004e7d62_test.cpp'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/4e/NInventoryCTCInventoryBase_GetComponents_004e7d62.cpp'
+        TestSource = '00/4e/NInventoryCTCInventoryBase_GetComponents_004e7d62_test.cpp'
         PassPattern = 'PASS_004e7d62'
     }
     [pscustomobject]@{
@@ -96869,23 +96869,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052e720'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052e720_0052e720.cpp'
-        TestSource = '00/52/gapscan_sub0052e720_0052e720_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ChangeState_0052e720.cpp'
+        TestSource = '00/52/NUISystemCComponent_ChangeState_0052e720_test.cpp'
         PassPattern = 'PASS_0052e720'
     }
     [pscustomobject]@{
         Address = '0052e730'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052e730_0052e730.cpp'
-        TestSource = '00/52/gapscan_sub0052e730_0052e730_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ChangedState_0052e730.cpp'
+        TestSource = '00/52/NUISystemCComponent_ChangedState_0052e730_test.cpp'
         PassPattern = 'PASS_0052e730'
     }
     [pscustomobject]@{
         Address = '0052e740'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052e740_0052e740.cpp'
-        TestSource = '00/52/gapscan_sub0052e740_0052e740_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ChangeState_0052e740.cpp'
+        TestSource = '00/52/NUISystemCComponent_ChangeState_0052e740_test.cpp'
         PassPattern = 'PASS_0052e740'
     }
     [pscustomobject]@{
@@ -96918,23 +96918,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052e940'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052e940_0052e940.cpp'
-        TestSource = '00/52/gapscan_sub0052e940_0052e940_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetRenderPosition_0052e940.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetRenderPosition_0052e940_test.cpp'
         PassPattern = 'PASS_0052e940'
     }
     [pscustomobject]@{
         Address = '0052e950'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052e950_0052e950.cpp'
-        TestSource = '00/52/gapscan_sub0052e950_0052e950_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetRenderZoom_0052e950.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetRenderZoom_0052e950_test.cpp'
         PassPattern = 'PASS_0052e950'
     }
     [pscustomobject]@{
         Address = '0052e960'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052e960_0052e960.cpp'
-        TestSource = '00/52/gapscan_sub0052e960_0052e960_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetRenderColour_0052e960.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetRenderColour_0052e960_test.cpp'
         PassPattern = 'PASS_0052e960'
     }
     [pscustomobject]@{
@@ -96974,72 +96974,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052f040'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f040_0052f040.cpp'
-        TestSource = '00/52/gapscan_sub0052f040_0052f040_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnLeftClicked_0052f040.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnLeftClicked_0052f040_test.cpp'
         PassPattern = 'PASS_0052f040'
     }
     [pscustomobject]@{
         Address = '0052f050'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f050_0052f050.cpp'
-        TestSource = '00/52/gapscan_sub0052f050_0052f050_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnLeftUnclicked_0052f050.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnLeftUnclicked_0052f050_test.cpp'
         PassPattern = 'PASS_0052f050'
     }
     [pscustomobject]@{
         Address = '0052f060'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f060_0052f060.cpp'
-        TestSource = '00/52/gapscan_sub0052f060_0052f060_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnLeftHeld_0052f060.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnLeftHeld_0052f060_test.cpp'
         PassPattern = 'PASS_0052f060'
     }
     [pscustomobject]@{
         Address = '0052f070'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f070_0052f070.cpp'
-        TestSource = '00/52/gapscan_sub0052f070_0052f070_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnRightClicked_0052f070.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnRightClicked_0052f070_test.cpp'
         PassPattern = 'PASS_0052f070'
     }
     [pscustomobject]@{
         Address = '0052f080'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f080_0052f080.cpp'
-        TestSource = '00/52/gapscan_sub0052f080_0052f080_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnDropped_0052f080.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnDropped_0052f080_test.cpp'
         PassPattern = 'PASS_0052f080'
     }
     [pscustomobject]@{
         Address = '0052f090'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f090_0052f090.cpp'
-        TestSource = '00/52/gapscan_sub0052f090_0052f090_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnDroppedNowhere_0052f090.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnDroppedNowhere_0052f090_test.cpp'
         PassPattern = 'PASS_0052f090'
     }
     [pscustomobject]@{
         Address = '0052f0a0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f0a0_0052f0a0.cpp'
-        TestSource = '00/52/gapscan_sub0052f0a0_0052f0a0_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnDraggedUp_0052f0a0.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnDraggedUp_0052f0a0_test.cpp'
         PassPattern = 'PASS_0052f0a0'
     }
     [pscustomobject]@{
         Address = '0052f0b0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f0b0_0052f0b0.cpp'
-        TestSource = '00/52/gapscan_sub0052f0b0_0052f0b0_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnDraggedDown_0052f0b0.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnDraggedDown_0052f0b0_test.cpp'
         PassPattern = 'PASS_0052f0b0'
     }
     [pscustomobject]@{
         Address = '0052f0c0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f0c0_0052f0c0.cpp'
-        TestSource = '00/52/gapscan_sub0052f0c0_0052f0c0_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnHovered_0052f0c0.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnHovered_0052f0c0_test.cpp'
         PassPattern = 'PASS_0052f0c0'
     }
     [pscustomobject]@{
         Address = '0052f0d0'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f0d0_0052f0d0.cpp'
-        TestSource = '00/52/gapscan_sub0052f0d0_0052f0d0_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_AddActionOnUnhovered_0052f0d0.cpp'
+        TestSource = '00/52/NUISystemCComponent_AddActionOnUnhovered_0052f0d0_test.cpp'
         PassPattern = 'PASS_0052f0d0'
     }
     [pscustomobject]@{
@@ -97072,16 +97072,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052f150'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f150_0052f150.cpp'
-        TestSource = '00/52/gapscan_sub0052f150_0052f150_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ClearHandle_0052f150.cpp'
+        TestSource = '00/52/NUISystemCComponent_ClearHandle_0052f150_test.cpp'
         PassPattern = 'PASS_0052f150'
     }
     [pscustomobject]@{
         Address = '0052f160'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f160_0052f160.cpp'
-        TestSource = '00/52/gapscan_sub0052f160_0052f160_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_SetParentViewport_0052f160.cpp'
+        TestSource = '00/52/NUISystemCComponent_SetParentViewport_0052f160_test.cpp'
         PassPattern = 'PASS_0052f160'
     }
     [pscustomobject]@{
@@ -97093,9 +97093,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052f430'
-        Module = '_gapscan'
-        Source = '00/52/gapscan_sub0052f430_0052f430.cpp'
-        TestSource = '00/52/gapscan_sub0052f430_0052f430_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_RemoveFromHoveredList_0052f430.cpp'
+        TestSource = '00/52/NUISystemCComponent_RemoveFromHoveredList_0052f430_test.cpp'
         PassPattern = 'PASS_0052f430'
     }
     [pscustomobject]@{
@@ -97191,9 +97191,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053e8a0'
-        Module = '_gapscan'
-        Source = '00/53/gapscan_sub0053e8a0_0053e8a0.cpp'
-        TestSource = '00/53/gapscan_sub0053e8a0_0053e8a0_test.cpp'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_IsClickable_0053e8a0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_IsClickable_0053e8a0_test.cpp'
         PassPattern = 'PASS_0053e8a0'
     }
     [pscustomobject]@{
@@ -97331,16 +97331,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0054a380'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub0054a380_0054a380.cpp'
-        TestSource = '00/54/gapscan_sub0054a380_0054a380_test.cpp'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_SetPAcceptButton_0054a380.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_SetPAcceptButton_0054a380_test.cpp'
         PassPattern = 'PASS_0054a380'
     }
     [pscustomobject]@{
         Address = '0054c130'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub0054c130_0054c130.cpp'
-        TestSource = '00/54/gapscan_sub0054c130_0054c130_test.cpp'
+        Module = 'NUISystem::CSlider'
+        Source = '00/54/NUISystemCSlider_SetPAcceptButton_0054c130.cpp'
+        TestSource = '00/54/NUISystemCSlider_SetPAcceptButton_0054c130_test.cpp'
         PassPattern = 'PASS_0054c130'
     }
     [pscustomobject]@{
@@ -97373,9 +97373,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0054e190'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub0054e190_0054e190.cpp'
-        TestSource = '00/54/gapscan_sub0054e190_0054e190_test.cpp'
+        Module = 'NUISystem::CClickable'
+        Source = '00/54/NUISystemCClickable_IsClickable_0054e190.cpp'
+        TestSource = '00/54/NUISystemCClickable_IsClickable_0054e190_test.cpp'
         PassPattern = 'PASS_0054e190'
     }
     [pscustomobject]@{
@@ -97849,9 +97849,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0057a260'
-        Module = '_gapscan'
-        Source = '00/57/gapscan_sub0057a260_0057a260.cpp'
-        TestSource = '00/57/gapscan_sub0057a260_0057a260_test.cpp'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_IsInventoryScreen_0057a260.cpp'
+        TestSource = '00/57/CTCInventoryExperience_IsInventoryScreen_0057a260_test.cpp'
         PassPattern = 'PASS_0057a260'
     }
     [pscustomobject]@{
@@ -97884,9 +97884,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00581a11'
-        Module = '_gapscan'
-        Source = '00/58/gapscan_sub00581a11_00581a11.cpp'
-        TestSource = '00/58/gapscan_sub00581a11_00581a11_test.cpp'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetScreenType_00581a11.cpp'
+        TestSource = '00/58/CTCInventory_GetScreenType_00581a11_test.cpp'
         PassPattern = 'PASS_00581a11'
     }
     [pscustomobject]@{
@@ -97968,9 +97968,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b3073'
-        Module = '_gapscan'
-        Source = '00/5b/gapscan_sub005b3073_005b3073.cpp'
-        TestSource = '00/5b/gapscan_sub005b3073_005b3073_test.cpp'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5b/CTCInventoryTrade_IsInventoryScreen_005b3073.cpp'
+        TestSource = '00/5b/CTCInventoryTrade_IsInventoryScreen_005b3073_test.cpp'
         PassPattern = 'PASS_005b3073'
     }
     [pscustomobject]@{
@@ -98276,23 +98276,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005fa590'
-        Module = '_gapscan'
-        Source = '00/5f/gapscan_sub005fa590_005fa590.cpp'
-        TestSource = '00/5f/gapscan_sub005fa590_005fa590_test.cpp'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_IsInventoryScreen_005fa590.cpp'
+        TestSource = '00/5f/CTCInventoryMap_IsInventoryScreen_005fa590_test.cpp'
         PassPattern = 'PASS_005fa590'
     }
     [pscustomobject]@{
         Address = '005fa8e0'
-        Module = '_gapscan'
-        Source = '00/5f/gapscan_sub005fa8e0_005fa8e0.cpp'
-        TestSource = '00/5f/gapscan_sub005fa8e0_005fa8e0_test.cpp'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_GetPlayerMode_005fa8e0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_GetPlayerMode_005fa8e0_test.cpp'
         PassPattern = 'PASS_005fa8e0'
     }
     [pscustomobject]@{
         Address = '005fa8f0'
-        Module = '_gapscan'
-        Source = '00/5f/gapscan_sub005fa8f0_005fa8f0.cpp'
-        TestSource = '00/5f/gapscan_sub005fa8f0_005fa8f0_test.cpp'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_GetScreenType_005fa8f0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_GetScreenType_005fa8f0_test.cpp'
         PassPattern = 'PASS_005fa8f0'
     }
     [pscustomobject]@{
@@ -98325,23 +98325,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00619fd0'
-        Module = '_gapscan'
-        Source = '00/61/gapscan_sub00619fd0_00619fd0.cpp'
-        TestSource = '00/61/gapscan_sub00619fd0_00619fd0_test.cpp'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_IsInventoryScreen_00619fd0.cpp'
+        TestSource = '00/61/CTCInventoryQuests_IsInventoryScreen_00619fd0_test.cpp'
         PassPattern = 'PASS_00619fd0'
     }
     [pscustomobject]@{
         Address = '0061a000'
-        Module = '_gapscan'
-        Source = '00/61/gapscan_sub0061a000_0061a000.cpp'
-        TestSource = '00/61/gapscan_sub0061a000_0061a000_test.cpp'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_GetPlayerMode_0061a000.cpp'
+        TestSource = '00/61/CTCInventoryQuests_GetPlayerMode_0061a000_test.cpp'
         PassPattern = 'PASS_0061a000'
     }
     [pscustomobject]@{
         Address = '0061a010'
-        Module = '_gapscan'
-        Source = '00/61/gapscan_sub0061a010_0061a010.cpp'
-        TestSource = '00/61/gapscan_sub0061a010_0061a010_test.cpp'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_GetScreenType_0061a010.cpp'
+        TestSource = '00/61/CTCInventoryQuests_GetScreenType_0061a010_test.cpp'
         PassPattern = 'PASS_0061a010'
     }
     [pscustomobject]@{
@@ -99732,9 +99732,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dfe50'
-        Module = '_gapscan'
-        Source = '00/6d/gapscan_sub006dfe50_006dfe50.cpp'
-        TestSource = '00/6d/gapscan_sub006dfe50_006dfe50_test.cpp'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6d/CTCDParticleEmitter_CreateAdditionalTCs_006dfe50.cpp'
+        TestSource = '00/6d/CTCDParticleEmitter_CreateAdditionalTCs_006dfe50_test.cpp'
         PassPattern = 'PASS_006dfe50'
     }
     [pscustomobject]@{
@@ -100145,16 +100145,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0072daa0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072daa0_0072daa0.cpp'
-        TestSource = '00/72/gapscan_sub0072daa0_0072daa0_test.cpp'
+        Module = 'CTCInventoryMagic'
+        Source = '00/72/CTCInventoryMagic_GetPlayerMode_0072daa0.cpp'
+        TestSource = '00/72/CTCInventoryMagic_GetPlayerMode_0072daa0_test.cpp'
         PassPattern = 'PASS_0072daa0'
     }
     [pscustomobject]@{
         Address = '0072dab0'
-        Module = '_gapscan'
-        Source = '00/72/gapscan_sub0072dab0_0072dab0.cpp'
-        TestSource = '00/72/gapscan_sub0072dab0_0072dab0_test.cpp'
+        Module = 'CTCInventoryMagic'
+        Source = '00/72/CTCInventoryMagic_GetScreenType_0072dab0.cpp'
+        TestSource = '00/72/CTCInventoryMagic_GetScreenType_0072dab0_test.cpp'
         PassPattern = 'PASS_0072dab0'
     }
     [pscustomobject]@{
@@ -102063,23 +102063,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00778d50'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00778d50_00778d50.cpp'
-        TestSource = '00/77/gapscan_sub00778d50_00778d50_test.cpp'
+        Module = 'CTCDNavigationSeed'
+        Source = '00/77/CTCDNavigationSeed_CreateAdditionalTCs_00778d50.cpp'
+        TestSource = '00/77/CTCDNavigationSeed_CreateAdditionalTCs_00778d50_test.cpp'
         PassPattern = 'PASS_00778d50'
     }
     [pscustomobject]@{
         Address = '00778e60'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00778e60_00778e60.cpp'
-        TestSource = '00/77/gapscan_sub00778e60_00778e60_test.cpp'
+        Module = 'CTCDRegionEntrance'
+        Source = '00/77/CTCDRegionEntrance_CreateAdditionalTCs_00778e60.cpp'
+        TestSource = '00/77/CTCDRegionEntrance_CreateAdditionalTCs_00778e60_test.cpp'
         PassPattern = 'PASS_00778e60'
     }
     [pscustomobject]@{
         Address = '00778f90'
-        Module = '_gapscan'
-        Source = '00/77/gapscan_sub00778f90_00778f90.cpp'
-        TestSource = '00/77/gapscan_sub00778f90_00778f90_test.cpp'
+        Module = 'CTCDRegionExit'
+        Source = '00/77/CTCDRegionExit_CreateAdditionalTCs_00778f90.cpp'
+        TestSource = '00/77/CTCDRegionExit_CreateAdditionalTCs_00778f90_test.cpp'
         PassPattern = 'PASS_00778f90'
     }
     [pscustomobject]@{
@@ -103771,9 +103771,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e8860'
-        Module = '_gapscan'
-        Source = '00/7e/gapscan_sub007e8860_007e8860.cpp'
-        TestSource = '00/7e/gapscan_sub007e8860_007e8860_test.cpp'
+        Module = 'CTCDCameraPoint'
+        Source = '00/7e/CTCDCameraPoint_CreateAdditionalTCs_007e8860.cpp'
+        TestSource = '00/7e/CTCDCameraPoint_CreateAdditionalTCs_007e8860_test.cpp'
         PassPattern = 'PASS_007e8860'
     }
     [pscustomobject]@{
@@ -120243,8 +120243,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0052e7e0'
         Module = 'NUISystem::CComponent'
-        Source = '00/52/NUISystemCComponent_vfunc54_0052e7e0.cpp'
-        TestSource = '00/52/NUISystemCComponent_vfunc54_0052e7e0_test.cpp'
+        Source = '00/52/NUISystemCComponent_GetUpdateTime_0052e7e0.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetUpdateTime_0052e7e0_test.cpp'
         PassPattern = 'PASS_0052e7e0'
     }
     [pscustomobject]@{
@@ -120292,15 +120292,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0056e593'
         Module = 'CTCInventoryExperience'
-        Source = '00/56/CTCInventoryExperience_vfunc1_0056e593.cpp'
-        TestSource = '00/56/CTCInventoryExperience_vfunc1_0056e593_test.cpp'
+        Source = '00/56/CTCInventoryExperience_GetPlayerMode_0056e593.cpp'
+        TestSource = '00/56/CTCInventoryExperience_GetPlayerMode_0056e593_test.cpp'
         PassPattern = 'PASS_0056e593'
     }
     [pscustomobject]@{
         Address = '0056e597'
         Module = 'CTCInventoryExperience'
-        Source = '00/56/CTCInventoryExperience_vfunc2_0056e597.cpp'
-        TestSource = '00/56/CTCInventoryExperience_vfunc2_0056e597_test.cpp'
+        Source = '00/56/CTCInventoryExperience_GetScreenType_0056e597.cpp'
+        TestSource = '00/56/CTCInventoryExperience_GetScreenType_0056e597_test.cpp'
         PassPattern = 'PASS_0056e597'
     }
     [pscustomobject]@{
@@ -120348,8 +120348,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00581a0d'
         Module = 'CTCInventory'
-        Source = '00/58/CTCInventory_vfunc1_00581a0d.cpp'
-        TestSource = '00/58/CTCInventory_vfunc1_00581a0d_test.cpp'
+        Source = '00/58/CTCInventory_GetPlayerMode_00581a0d.cpp'
+        TestSource = '00/58/CTCInventory_GetPlayerMode_00581a0d_test.cpp'
         PassPattern = 'PASS_00581a0d'
     }
     [pscustomobject]@{
@@ -120362,15 +120362,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0059b6e0'
         Module = 'CTCInventoryTrade'
-        Source = '00/59/CTCInventoryTrade_vfunc1_0059b6e0.cpp'
-        TestSource = '00/59/CTCInventoryTrade_vfunc1_0059b6e0_test.cpp'
+        Source = '00/59/CTCInventoryTrade_GetPlayerMode_0059b6e0.cpp'
+        TestSource = '00/59/CTCInventoryTrade_GetPlayerMode_0059b6e0_test.cpp'
         PassPattern = 'PASS_0059b6e0'
     }
     [pscustomobject]@{
         Address = '0059b6e4'
         Module = 'CTCInventoryTrade'
-        Source = '00/59/CTCInventoryTrade_vfunc2_0059b6e4.cpp'
-        TestSource = '00/59/CTCInventoryTrade_vfunc2_0059b6e4_test.cpp'
+        Source = '00/59/CTCInventoryTrade_GetScreenType_0059b6e4.cpp'
+        TestSource = '00/59/CTCInventoryTrade_GetScreenType_0059b6e4_test.cpp'
         PassPattern = 'PASS_0059b6e4'
     }
     [pscustomobject]@{
@@ -120390,15 +120390,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005b34cd'
         Module = 'CTCInventoryClothing'
-        Source = '00/5b/CTCInventoryClothing_vfunc1_005b34cd.cpp'
-        TestSource = '00/5b/CTCInventoryClothing_vfunc1_005b34cd_test.cpp'
+        Source = '00/5b/CTCInventoryClothing_GetPlayerMode_005b34cd.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_GetPlayerMode_005b34cd_test.cpp'
         PassPattern = 'PASS_005b34cd'
     }
     [pscustomobject]@{
         Address = '005b34d1'
         Module = 'CTCInventoryClothing'
-        Source = '00/5b/CTCInventoryClothing_vfunc2_005b34d1.cpp'
-        TestSource = '00/5b/CTCInventoryClothing_vfunc2_005b34d1_test.cpp'
+        Source = '00/5b/CTCInventoryClothing_GetScreenType_005b34d1.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_GetScreenType_005b34d1_test.cpp'
         PassPattern = 'PASS_005b34d1'
     }
     [pscustomobject]@{
@@ -120432,15 +120432,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005c2e1d'
         Module = 'CTCInventoryWeapons'
-        Source = '00/5c/CTCInventoryWeapons_vfunc1_005c2e1d.cpp'
-        TestSource = '00/5c/CTCInventoryWeapons_vfunc1_005c2e1d_test.cpp'
+        Source = '00/5c/CTCInventoryWeapons_GetPlayerMode_005c2e1d.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_GetPlayerMode_005c2e1d_test.cpp'
         PassPattern = 'PASS_005c2e1d'
     }
     [pscustomobject]@{
         Address = '005c2e21'
         Module = 'CTCInventoryWeapons'
-        Source = '00/5c/CTCInventoryWeapons_vfunc2_005c2e21.cpp'
-        TestSource = '00/5c/CTCInventoryWeapons_vfunc2_005c2e21_test.cpp'
+        Source = '00/5c/CTCInventoryWeapons_GetScreenType_005c2e21.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_GetScreenType_005c2e21_test.cpp'
         PassPattern = 'PASS_005c2e21'
     }
     [pscustomobject]@{
@@ -120453,15 +120453,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005cc6eb'
         Module = 'CTCInventoryStats'
-        Source = '00/5c/CTCInventoryStats_vfunc1_005cc6eb.cpp'
-        TestSource = '00/5c/CTCInventoryStats_vfunc1_005cc6eb_test.cpp'
+        Source = '00/5c/CTCInventoryStats_GetPlayerMode_005cc6eb.cpp'
+        TestSource = '00/5c/CTCInventoryStats_GetPlayerMode_005cc6eb_test.cpp'
         PassPattern = 'PASS_005cc6eb'
     }
     [pscustomobject]@{
         Address = '005cc6ef'
         Module = 'CTCInventoryStats'
-        Source = '00/5c/CTCInventoryStats_vfunc2_005cc6ef.cpp'
-        TestSource = '00/5c/CTCInventoryStats_vfunc2_005cc6ef_test.cpp'
+        Source = '00/5c/CTCInventoryStats_GetScreenType_005cc6ef.cpp'
+        TestSource = '00/5c/CTCInventoryStats_GetScreenType_005cc6ef_test.cpp'
         PassPattern = 'PASS_005cc6ef'
     }
     [pscustomobject]@{
@@ -120488,15 +120488,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005edce7'
         Module = 'CTCInventoryAbilities'
-        Source = '00/5e/CTCInventoryAbilities_vfunc1_005edce7.cpp'
-        TestSource = '00/5e/CTCInventoryAbilities_vfunc1_005edce7_test.cpp'
+        Source = '00/5e/CTCInventoryAbilities_GetPlayerMode_005edce7.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetPlayerMode_005edce7_test.cpp'
         PassPattern = 'PASS_005edce7'
     }
     [pscustomobject]@{
         Address = '005edceb'
         Module = 'CTCInventoryAbilities'
-        Source = '00/5e/CTCInventoryAbilities_vfunc2_005edceb.cpp'
-        TestSource = '00/5e/CTCInventoryAbilities_vfunc2_005edceb_test.cpp'
+        Source = '00/5e/CTCInventoryAbilities_GetScreenType_005edceb.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetScreenType_005edceb_test.cpp'
         PassPattern = 'PASS_005edceb'
     }
     [pscustomobject]@{
@@ -147741,71 +147741,71 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004d3f40'
         Module = 'CTCDNone'
-        Source = '00/4d/CTCDNone_vfunc28_004d3f40.cpp'
-        TestSource = '00/4d/CTCDNone_vfunc28_004d3f40_test.cpp'
+        Source = '00/4d/CTCDNone_IsDriverType_004d3f40.cpp'
+        TestSource = '00/4d/CTCDNone_IsDriverType_004d3f40_test.cpp'
         PassPattern = '004d3f40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004d4222'
         Module = 'CTCDNavigationSeed'
-        Source = '00/4d/CTCDNavigationSeed_vfunc28_004d4222.cpp'
-        TestSource = '00/4d/CTCDNavigationSeed_vfunc28_004d4222_test.cpp'
+        Source = '00/4d/CTCDNavigationSeed_IsDriverType_004d4222.cpp'
+        TestSource = '00/4d/CTCDNavigationSeed_IsDriverType_004d4222_test.cpp'
         PassPattern = '004d4222_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004d428e'
         Module = 'CTCDInternalMarker'
-        Source = '00/4d/CTCDInternalMarker_vfunc28_004d428e.cpp'
-        TestSource = '00/4d/CTCDInternalMarker_vfunc28_004d428e_test.cpp'
+        Source = '00/4d/CTCDInternalMarker_IsDriverType_004d428e.cpp'
+        TestSource = '00/4d/CTCDInternalMarker_IsDriverType_004d428e_test.cpp'
         PassPattern = '004d428e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004d42e2'
         Module = 'CTCDRegionEntrance'
-        Source = '00/4d/CTCDRegionEntrance_vfunc28_004d42e2.cpp'
-        TestSource = '00/4d/CTCDRegionEntrance_vfunc28_004d42e2_test.cpp'
+        Source = '00/4d/CTCDRegionEntrance_IsDriverType_004d42e2.cpp'
+        TestSource = '00/4d/CTCDRegionEntrance_IsDriverType_004d42e2_test.cpp'
         PassPattern = '004d42e2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004d8164'
         Module = 'CTCDCameraPoint'
-        Source = '00/4d/CTCDCameraPoint_vfunc28_004d8164.cpp'
-        TestSource = '00/4d/CTCDCameraPoint_vfunc28_004d8164_test.cpp'
+        Source = '00/4d/CTCDCameraPoint_IsDriverType_004d8164.cpp'
+        TestSource = '00/4d/CTCDCameraPoint_IsDriverType_004d8164_test.cpp'
         PassPattern = '004d8164_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004db3cb'
         Module = 'CTCDRumble'
-        Source = '00/4d/CTCDRumble_vfunc28_004db3cb.cpp'
-        TestSource = '00/4d/CTCDRumble_vfunc28_004db3cb_test.cpp'
+        Source = '00/4d/CTCDRumble_IsDriverType_004db3cb.cpp'
+        TestSource = '00/4d/CTCDRumble_IsDriverType_004db3cb_test.cpp'
         PassPattern = '004db3cb_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004df1bc'
         Module = 'CTCDPhysicalObstruction'
-        Source = '00/4d/CTCDPhysicalObstruction_vfunc28_004df1bc.cpp'
-        TestSource = '00/4d/CTCDPhysicalObstruction_vfunc28_004df1bc_test.cpp'
+        Source = '00/4d/CTCDPhysicalObstruction_IsDriverType_004df1bc.cpp'
+        TestSource = '00/4d/CTCDPhysicalObstruction_IsDriverType_004df1bc_test.cpp'
         PassPattern = '004df1bc_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e07d6'
         Module = 'CTCDHeroSuit'
-        Source = '00/4e/CTCDHeroSuit_vfunc28_004e07d6.cpp'
-        TestSource = '00/4e/CTCDHeroSuit_vfunc28_004e07d6_test.cpp'
+        Source = '00/4e/CTCDHeroSuit_IsDriverType_004e07d6.cpp'
+        TestSource = '00/4e/CTCDHeroSuit_IsDriverType_004e07d6_test.cpp'
         PassPattern = '004e07d6_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e3158'
         Module = 'CTCDExplosion'
-        Source = '00/4e/CTCDExplosion_vfunc28_004e3158.cpp'
-        TestSource = '00/4e/CTCDExplosion_vfunc28_004e3158_test.cpp'
+        Source = '00/4e/CTCDExplosion_IsDriverType_004e3158.cpp'
+        TestSource = '00/4e/CTCDExplosion_IsDriverType_004e3158_test.cpp'
         PassPattern = '004e3158_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004e3467'
         Module = 'CTCDExplosiveTrail'
-        Source = '00/4e/CTCDExplosiveTrail_vfunc28_004e3467.cpp'
-        TestSource = '00/4e/CTCDExplosiveTrail_vfunc28_004e3467_test.cpp'
+        Source = '00/4e/CTCDExplosiveTrail_IsDriverType_004e3467.cpp'
+        TestSource = '00/4e/CTCDExplosiveTrail_IsDriverType_004e3467_test.cpp'
         PassPattern = '004e3467_TEST PASS'
     }
     [pscustomobject]@{
@@ -152059,9 +152059,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c2a40'
-        Module = 'CRetailTreeIterator'
-        Source = '00/4c/CRetailTreeIterator_Decrement_004c2a40.cpp'
-        TestSource = '00/4c/CRetailTreeIterator_Decrement_004c2a40_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<void *const, CRGBColour>, std::_Nonconst_traits<std::pair<void *const, CRGBColour>>>'
+        Source = '00/4c/stdRbtreeiterator_operator_004c2a40.cpp'
+        TestSource = '00/4c/stdRbtreeiterator_operator_004c2a40_test.cpp'
         PassPattern = '004c2a40_TEST PASS'
     }
     [pscustomobject]@{
@@ -152073,9 +152073,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050df80'
-        Module = 'CRetailTreeIterator'
-        Source = '00/50/CRetailTreeIterator_Decrement_0050df80.cpp'
-        TestSource = '00/50/CRetailTreeIterator_Decrement_0050df80_test.cpp'
+        Module = 'std::_Rb_tree_iterator<char, std::_Nonconst_traits<char>>'
+        Source = '00/50/stdRbtreeiterator_operator_0050df80.cpp'
+        TestSource = '00/50/stdRbtreeiterator_operator_0050df80_test.cpp'
         PassPattern = '0050df80_TEST PASS'
     }
     [pscustomobject]@{
@@ -152129,9 +152129,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056cd10'
-        Module = 'CRetailTreeIterator'
-        Source = '00/56/CRetailTreeIterator_Decrement_0056cd10.cpp'
-        TestSource = '00/56/CRetailTreeIterator_Decrement_0056cd10_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>, std::_Nonconst_traits<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>>>'
+        Source = '00/56/stdRbtreeiterator_operator_0056cd10.cpp'
+        TestSource = '00/56/stdRbtreeiterator_operator_0056cd10_test.cpp'
         PassPattern = '0056cd10_TEST PASS'
     }
     [pscustomobject]@{
@@ -152143,9 +152143,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005e8c40'
-        Module = 'CRetailTreeIterator'
-        Source = '00/5e/CRetailTreeIterator_Decrement_005e8c40.cpp'
-        TestSource = '00/5e/CRetailTreeIterator_Decrement_005e8c40_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<long const, unsigned long>, std::_Nonconst_traits<std::pair<long const, unsigned long>>>'
+        Source = '00/5e/stdRbtreeiterator_operator_005e8c40.cpp'
+        TestSource = '00/5e/stdRbtreeiterator_operator_005e8c40_test.cpp'
         PassPattern = '005e8c40_TEST PASS'
     }
     [pscustomobject]@{
@@ -152157,9 +152157,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00613f70'
-        Module = 'CRetailTreeIterator'
-        Source = '00/61/CRetailTreeIterator_Decrement_00613f70.cpp'
-        TestSource = '00/61/CRetailTreeIterator_Decrement_00613f70_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<long const, std::pair<long, long>>, std::_Nonconst_traits<std::pair<long const, std::pair<long, long>>>>'
+        Source = '00/61/stdRbtreeiterator_operator_00613f70.cpp'
+        TestSource = '00/61/stdRbtreeiterator_operator_00613f70_test.cpp'
         PassPattern = '00613f70_TEST PASS'
     }
     [pscustomobject]@{
@@ -152451,16 +152451,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c1fe0'
-        Module = 'CRetailTreeIterator'
-        Source = '00/9c/CRetailTreeIterator_Decrement_009c1fe0.cpp'
-        TestSource = '00/9c/CRetailTreeIterator_Decrement_009c1fe0_test.cpp'
+        Module = 'std::_Rb_tree_iterator<ESurfaceMultisampleType, std::_Nonconst_traits<ESurfaceMultisampleType>>'
+        Source = '00/9c/stdRbtreeiterator_operator_009c1fe0.cpp'
+        TestSource = '00/9c/stdRbtreeiterator_operator_009c1fe0_test.cpp'
         PassPattern = '009c1fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009d74e0'
-        Module = 'CRetailTreeIterator'
-        Source = '00/9d/CRetailTreeIterator_Decrement_009d74e0.cpp'
-        TestSource = '00/9d/CRetailTreeIterator_Decrement_009d74e0_test.cpp'
+        Module = 'std::_Rb_tree_iterator<CBankFileAsyncData *, std::_Nonconst_traits<CBankFileAsyncData *>>'
+        Source = '00/9d/stdRbtreeiterator_operator_009d74e0.cpp'
+        TestSource = '00/9d/stdRbtreeiterator_operator_009d74e0_test.cpp'
         PassPattern = '009d74e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -152584,9 +152584,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c6580'
-        Module = 'CRetailTreeIterator'
-        Source = '00/4c/CRetailTreeIterator_Decrement_004c6580.cpp'
-        TestSource = '00/4c/CRetailTreeIterator_Decrement_004c6580_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>, std::_Nonconst_traits<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>>'
+        Source = '00/4c/stdRbtreeiterator_operator_004c6580.cpp'
+        TestSource = '00/4c/stdRbtreeiterator_operator_004c6580_test.cpp'
         PassPattern = '004c6580_TEST PASS'
     }
     [pscustomobject]@{
@@ -152619,9 +152619,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005532f0'
-        Module = 'CRetailTreeIterator'
-        Source = '00/55/CRetailTreeIterator_Decrement_005532f0.cpp'
-        TestSource = '00/55/CRetailTreeIterator_Decrement_005532f0_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>, std::_Nonconst_traits<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>'
+        Source = '00/55/stdRbtreeiterator_operator_005532f0.cpp'
+        TestSource = '00/55/stdRbtreeiterator_operator_005532f0_test.cpp'
         PassPattern = '005532f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -152633,9 +152633,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00566260'
-        Module = 'CRetailTreeIterator'
-        Source = '00/56/CRetailTreeIterator_Decrement_00566260.cpp'
-        TestSource = '00/56/CRetailTreeIterator_Decrement_00566260_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CTexture>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CTexture>>>>'
+        Source = '00/56/stdRbtreeiterator_operator_00566260.cpp'
+        TestSource = '00/56/stdRbtreeiterator_operator_00566260_test.cpp'
         PassPattern = '00566260_TEST PASS'
     }
     [pscustomobject]@{
@@ -152647,9 +152647,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00613eb0'
-        Module = 'CRetailTreeIterator'
-        Source = '00/61/CRetailTreeIterator_Decrement_00613eb0.cpp'
-        TestSource = '00/61/CRetailTreeIterator_Decrement_00613eb0_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>, std::_Nonconst_traits<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>>>'
+        Source = '00/61/stdRbtreeiterator_operator_00613eb0.cpp'
+        TestSource = '00/61/stdRbtreeiterator_operator_00613eb0_test.cpp'
         PassPattern = '00613eb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -152696,9 +152696,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e9020'
-        Module = 'CRetailTreeIterator'
-        Source = '00/7e/CRetailTreeIterator_Decrement_007e9020.cpp'
-        TestSource = '00/7e/CRetailTreeIterator_Decrement_007e9020_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<CThing *const, float>, std::_Nonconst_traits<std::pair<CThing *const, float>>>'
+        Source = '00/7e/stdRbtreeiterator_operator_007e9020.cpp'
+        TestSource = '00/7e/stdRbtreeiterator_operator_007e9020_test.cpp'
         PassPattern = '007e9020_TEST PASS'
     }
     [pscustomobject]@{
@@ -152808,16 +152808,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b96020'
-        Module = 'CRetailTreeIterator'
-        Source = '00/b9/CRetailTreeIterator_Decrement_00b96020.cpp'
-        TestSource = '00/b9/CRetailTreeIterator_Decrement_00b96020_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>, std::_Nonconst_traits<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>>>'
+        Source = '00/b9/stdRbtreeiterator_operator_00b96020.cpp'
+        TestSource = '00/b9/stdRbtreeiterator_operator_00b96020_test.cpp'
         PassPattern = '00b96020_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b96070'
-        Module = 'CRetailTreeIterator'
-        Source = '00/b9/CRetailTreeIterator_Decrement_00b96070.cpp'
-        TestSource = '00/b9/CRetailTreeIterator_Decrement_00b96070_test.cpp'
+        Module = 'std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CEngineSceneMap>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>'
+        Source = '00/b9/stdRbtreeiterator_operator_00b96070.cpp'
+        TestSource = '00/b9/stdRbtreeiterator_operator_00b96070_test.cpp'
         PassPattern = '00b96070_TEST PASS'
     }
     [pscustomobject]@{
@@ -182595,22 +182595,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006e1d30'
         Module = 'CTCDParticleEmitter'
-        Source = '00/6e/CTCDParticleEmitter_vfunc28_006e1d30.cpp'
-        TestSource = '00/6e/CTCDParticleEmitter_vfunc28_006e1d30_test.cpp'
+        Source = '00/6e/CTCDParticleEmitter_IsDriverType_006e1d30.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_IsDriverType_006e1d30_test.cpp'
         PassPattern = '006e1d30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00779940'
         Module = 'CTCDRegionExit'
-        Source = '00/77/CTCDRegionExit_vfunc28_00779940.cpp'
-        TestSource = '00/77/CTCDRegionExit_vfunc28_00779940_test.cpp'
+        Source = '00/77/CTCDRegionExit_IsDriverType_00779940.cpp'
+        TestSource = '00/77/CTCDRegionExit_IsDriverType_00779940_test.cpp'
         PassPattern = '00779940_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0077ab90'
         Module = 'CTCDExperienceOrb'
-        Source = '00/77/CTCDExperienceOrb_vfunc28_0077ab90.cpp'
-        TestSource = '00/77/CTCDExperienceOrb_vfunc28_0077ab90_test.cpp'
+        Source = '00/77/CTCDExperienceOrb_IsDriverType_0077ab90.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_IsDriverType_0077ab90_test.cpp'
         PassPattern = '0077ab90_TEST PASS'
     }
     [pscustomobject]@{
@@ -183174,9 +183174,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005419f0'
-        Module = '_unattributed'
-        Source = '00/54/unattributed_vfunc88_005419f0.cpp'
-        TestSource = '00/54/unattributed_vfunc88_005419f0_test.cpp'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_CanScroll_005419f0.cpp'
+        TestSource = '00/54/NUISystemCIconText_CanScroll_005419f0_test.cpp'
         PassPattern = '005419f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -207179,8 +207179,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00687cb0'
         Module = 'CInputProcessGameBase'
-        Source = '00/68/CInputProcessGameBase_IsAssignableSpecialMoveButtonInQueue_00687cb0.cpp'
-        TestSource = '00/68/CInputProcessGameBase_IsAssignableSpecialMoveButtonInQueue_00687cb0_test.cpp'
+        Source = '00/68/CInputProcessGameBase_IsQuickAccessEventInQueue_00687cb0.cpp'
+        TestSource = '00/68/CInputProcessGameBase_IsQuickAccessEventInQueue_00687cb0_test.cpp'
         PassPattern = '00687cb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -241122,9 +241122,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00513880'
-        Module = 'CMemoryAllocatorVariableSize'
-        Source = '00/51/CMemoryAllocatorVariableSize_InsertNode_00513880.cpp'
-        TestSource = '00/51/CMemoryAllocatorVariableSize_InsertNode_00513880_test.cpp'
+        Module = 'std::_Rb_tree<char, char, std::_Identity<char>, std::less<char>, std::allocator<char>>'
+        Source = '00/51/stdRbtree_Minsert_00513880.cpp'
+        TestSource = '00/51/stdRbtree_Minsert_00513880_test.cpp'
         PassPattern = '00513880_TEST PASS'
     }
     [pscustomobject]@{
@@ -241206,9 +241206,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c2440'
-        Module = 'CMemoryAllocatorVariableSize'
-        Source = '00/9c/CMemoryAllocatorVariableSize_InsertNode20byte_009c2440.cpp'
-        TestSource = '00/9c/CMemoryAllocatorVariableSize_InsertNode20byte_009c2440_test.cpp'
+        Module = 'std::_Rb_tree<ESurfaceMultisampleType, ESurfaceMultisampleType, std::_Identity<ESurfaceMultisampleType>, std::less<ESurfaceMultisampleType>, std::allocator<ESurfaceMultisampleType>>'
+        Source = '00/9c/stdRbtree_Minsert_009c2440.cpp'
+        TestSource = '00/9c/stdRbtree_Minsert_009c2440_test.cpp'
         PassPattern = '009c2440_TEST PASS'
     }
     [pscustomobject]@{
@@ -333887,9 +333887,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042c300'
-        Module = 'std::_Rb_tree<long, pair<const long, EEngine2DLayer>, ...>'
-        Source = '00/42/stdRbtreelongpairconstlongEEngine2DLayer_insertunique_0042c300.cpp'
-        TestSource = '00/42/stdRbtreelongpairconstlongEEngine2DLayer_insertunique_0042c300_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, EEngine2DLayer>, std::_Select1st<std::pair<long const, EEngine2DLayer>>, std::less<long>, std::allocator<std::pair<long const, EEngine2DLayer>>>'
+        Source = '00/42/stdRbtree_insertunique_0042c300.cpp'
+        TestSource = '00/42/stdRbtree_insertunique_0042c300_test.cpp'
         PassPattern = '0042c300_TEST PASS'
     }
     [pscustomobject]@{
@@ -334691,9 +334691,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005940ec'
-        Module = 'std::_Rb_tree<long, pair<const long, NUISystem::CComponent*>, ...>'
-        Source = '00/59/stdRbtreelongpairconstlongNUISystemCComponent_insertunique_005940ec.cpp'
-        TestSource = '00/59/stdRbtreelongpairconstlongNUISystemCComponent_insertunique_005940ec_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent *>, std::_Select1st<std::pair<long const, NUISystem::CComponent *>>, std::less<long>, std::allocator<std::pair<long const, NUISystem::CComponent *>>>'
+        Source = '00/59/stdRbtree_insertunique_005940ec.cpp'
+        TestSource = '00/59/stdRbtree_insertunique_005940ec_test.cpp'
         PassPattern = '005940ec_TEST PASS'
     }
     [pscustomobject]@{
@@ -334712,9 +334712,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059b35c'
-        Module = 'std::_Rb_tree<FRONTEND_SCREEN, pair<const FRONTEND_SCREEN, NUISystem::CComponent*>, ...>'
-        Source = '00/59/stdRbtreeFRONTENDSCREENpairconstFRONTENDSCREENNUISystemCComponent_insertunique_0059b35c.cpp'
-        TestSource = '00/59/stdRbtreeFRONTENDSCREENpairconstFRONTENDSCREENNUISystemCComponent_insertunique_0059b35c_test.cpp'
+        Module = 'std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>, std::less<FRONTEND_SCREEN>, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>>'
+        Source = '00/59/stdRbtree_insertunique_0059b35c.cpp'
+        TestSource = '00/59/stdRbtree_insertunique_0059b35c_test.cpp'
         PassPattern = '0059b35c_TEST PASS'
     }
     [pscustomobject]@{
@@ -334733,16 +334733,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005b2a37'
-        Module = 'std::_Rb_tree<long, pair<const long, long>, ...>'
-        Source = '00/5b/stdRbtreelongpairconstlonglong_insertunique_005b2a37.cpp'
-        TestSource = '00/5b/stdRbtreelongpairconstlonglong_insertunique_005b2a37_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>'
+        Source = '00/5b/stdRbtree_insertunique_005b2a37.cpp'
+        TestSource = '00/5b/stdRbtree_insertunique_005b2a37_test.cpp'
         PassPattern = '005b2a37_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005bb5ef'
-        Module = 'std::_Rb_tree<EClothingSuitPart, pair<const EClothingSuitPart, long>, ...>'
-        Source = '00/5b/stdRbtreeEClothingSuitPartpairconstEClothingSuitPartlong_insertunique_005bb5ef.cpp'
-        TestSource = '00/5b/stdRbtreeEClothingSuitPartpairconstEClothingSuitPartlong_insertunique_005bb5ef_test.cpp'
+        Module = 'std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long>>, std::less<EClothingSuitPart>, std::allocator<std::pair<EClothingSuitPart const, long>>>'
+        Source = '00/5b/stdRbtree_insertunique_005bb5ef.cpp'
+        TestSource = '00/5b/stdRbtree_insertunique_005bb5ef_test.cpp'
         PassPattern = '005bb5ef_TEST PASS'
     }
     [pscustomobject]@{
@@ -334852,9 +334852,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005f9853'
-        Module = 'std::_Rb_tree<EHeroAbility, pair<const EHeroAbility, NUISystem::CComponent*>, ...>'
-        Source = '00/5f/stdRbtreeEHeroAbilitypairconstEHeroAbilityNUISystemCComponent_insertunique_005f9853.cpp'
-        TestSource = '00/5f/stdRbtreeEHeroAbilitypairconstEHeroAbilityNUISystemCComponent_insertunique_005f9853_test.cpp'
+        Module = 'std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, NUISystem::CComponent *>, std::_Select1st<std::pair<EHeroAbility const, NUISystem::CComponent *>>, std::less<EHeroAbility>, std::allocator<std::pair<EHeroAbility const, NUISystem::CComponent *>>>'
+        Source = '00/5f/stdRbtree_insertunique_005f9853.cpp'
+        TestSource = '00/5f/stdRbtree_insertunique_005f9853_test.cpp'
         PassPattern = '005f9853_TEST PASS'
     }
     [pscustomobject]@{
@@ -335398,9 +335398,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e9b40'
-        Module = 'std::_Rb_tree<CThing*, pair<CThing* const, float>, _Select1st, less, allocator>'
-        Source = '00/7e/stdRbtreeCThingpairCThingconstfloatSelect1stlessallocator_Minsert_007e9b40.cpp'
-        TestSource = '00/7e/stdRbtreeCThingpairCThingconstfloatSelect1stlessallocator_Minsert_007e9b40_test.cpp'
+        Module = 'std::_Rb_tree<CThing *, std::pair<CThing *const, float>, std::_Select1st<std::pair<CThing *const, float>>, std::less<CThing *>, std::allocator<std::pair<CThing *const, float>>>'
+        Source = '00/7e/stdRbtree_Minsert_007e9b40.cpp'
+        TestSource = '00/7e/stdRbtree_Minsert_007e9b40_test.cpp'
         PassPattern = '007e9b40_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,0 +1,200 @@
+address	catalog_name	slot	candidate	why_left
+0x007F81C0	CTCActivationReceptorRelay::vfunc_28	28		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0074DDB0	CPersistContext_TransferableVector<CDefIndex>::vfunc_1	1		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00619470	CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::vfunc_1	1		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00404940	NUISystem::CIMEFont::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0041C580	NUISystem::CObserver::vfunc_7	7		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0042D4F0	NUISystem::CManager::vfunc_11	11		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0042D5AA	NUISystem::CManager::vfunc_39	39	PlayUiSound	candidate PlayUiSound from one source only (header slot or Anniversary order); no second source
+0x004CB770	NTCMessages::CMessageClearPrimitives::vfunc_1	1	GetType	candidate GetType (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x004DAC5E	CTCActionUseKickChicken::vfunc_31	31	IsToActuallyUseActionUseAsIntendedGoddammitWeReallyHaveGotOurselvesInAMess	candidate IsToActuallyUseActionUseAsIntendedGoddammitWeReallyHaveGotOurselvesInAMess (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x004DACAA	CTCCarriedActionUseLamp::vfunc_30	30	IsUsableWhileThingPerformingAction	candidate IsUsableWhileThingPerformingAction (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x004DADCA	CTCCarriedActionUseFood::vfunc_30	30	IsUsableWhileThingPerformingAction	candidate IsUsableWhileThingPerformingAction (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x004DAE1D	CTCCarriedActionUsePotion::vfunc_30	30	IsUsableWhileThingPerformingAction	candidate IsUsableWhileThingPerformingAction (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x004DE65D	CTCActivationReceptorCreatureGenerator::vfunc_30	30	SetSelfTriggeringIfTriggerPresent	candidate SetSelfTriggeringIfTriggerPresent (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x004DE6B3	CTCActivationReceptorRelay::vfunc_30	30	SetSelfTriggeringIfTriggerPresent	candidate SetSelfTriggeringIfTriggerPresent (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053CDC3	NUISystem::CList::vfunc_142	142	GetSelectedChild	candidate GetSelectedChild (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053CDE1	NUISystem::CList::vfunc_148	148	GetAlphaOffset	candidate GetAlphaOffset (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053CDF2	NUISystem::CList::vfunc_150	150	SetNextScrollingChildAlpha	candidate SetNextScrollingChildAlpha (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053CE17	NUISystem::CList::vfunc_158	158	SetDefaultChild	candidate SetDefaultChild (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053CE24	NUISystem::CList::vfunc_163	163	GetScrollingChildren	candidate GetScrollingChildren (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053CE2B	NUISystem::CList::vfunc_164	164	GetNonScrollingChildren	candidate GetNonScrollingChildren (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053CE5F	NUISystem::CList::vfunc_175	175		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0053CE66	NUISystem::CList::vfunc_176	176		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0053CE6D	NUISystem::CList::vfunc_177	177	ExecuteActions	candidate ExecuteActions (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053E8B0	NUISystem::CMenuEntry::vfunc_154	154	GetActions	candidate GetActions (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053FC00	NUISystem::CScrollingViewport::vfunc_144	144	GetScrollingSpeed	candidate GetScrollingSpeed (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0054E550	NUISystem::CFrontEndScreen::vfunc_142	142	__vecDelDtor	candidate __vecDelDtor from one source only (header slot or Anniversary order); no second source
+0x005590B0	NUISystem::CScrollBarOutside::vfunc_152	152		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0055A330	NUISystem::CScrollBar::vfunc_150	150	IsDragged	candidate IsDragged (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0055A360	NUISystem::CScrollBar::vfunc_152	152	SetSnapBackIfDroppedNowhere	candidate SetSnapBackIfDroppedNowhere (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0055A370	NUISystem::CScrollBar::vfunc_132	132		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0056E60A	CTCInventoryExperience::vfunc_55	55	ProcessButtonBHeld	candidate ProcessButtonBHeld (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0056E62D	CTCInventoryExperience::vfunc_57	57	ProcessButtonYHeld	candidate ProcessButtonYHeld (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0059B6ED	CTCInventoryTrade::vfunc_75	75	GetCategoryNameFromAssociation	Trade GetIsEnabled candidate (NInventory::CTCInventoryBase slot 75); not graded this pass
+0x005C2E5E	CTCInventoryWeapons::vfunc_55	55	ProcessButtonBHeld	candidate ProcessButtonBHeld (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x005D8CB0	NTCMessages::CMessageOnPickup::vfunc_1	1	GetType	candidate GetType (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x005FC610	CTCInventoryMap::vfunc_37	37	OnChangeCategory	candidate OnChangeCategory (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0061A0C0	CTCInventoryQuests::vfunc_75	75	GetCategoryNameFromAssociation	candidate GetCategoryNameFromAssociation (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0061A160	CTCInventoryQuests::vfunc_67	67	ProcessButtonWhiteReleased	candidate ProcessButtonWhiteReleased (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0062EAE0	?A0x13af75c9::CCreatureAction_HeroRangedWeaponUseDummy::vfunc_12	12		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x006571B7	NPlayerGui::CDrawAbilityButtons::vfunc_8	8	DrawExpressionButton	candidate DrawExpressionButton (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x006571F0	NPlayerGui::CDrawAbilityButtonsPC::vfunc_2	2	Draw	candidate Draw (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0069E830	NDisplayView::CViewBase::vfunc_0	0	OnUninit	candidate OnUninit (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0071B820	NTCMessages::CMessageOnMorphChanged::vfunc_1	1	GetType	candidate GetType (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007223A0	CTCHeroMorph::vfunc_29	29	GetMeshTextureMorphs	candidate GetMeshTextureMorphs from one source only (header slot or Anniversary order); no second source
+0x007275B0	CTCSimpleAppearanceMorph::vfunc_29	29	GetMeshTextureMorphs	candidate GetMeshTextureMorphs (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007284F0	CTCRandomAppearanceMorph::vfunc_29	29	GetMeshTextureMorphs	candidate GetMeshTextureMorphs (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0072A610	CTCActionUseBuyOrSteal::vfunc_28	28	OnActionUse	candidate OnActionUse (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00741FD0	NCreatureMode::CModeBriarRoseConcentrate::vfunc_11	11	IsRemoveOnDeactivate	candidate IsRemoveOnDeactivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00743CB0	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::vfunc_11	11	IsRemoveOnDeactivate	candidate IsRemoveOnDeactivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0077C3D0	NGraphicAppearance::CTCGraphicAppearanceSprite::vfunc_2	2	OnRemove	candidate OnRemove from one source only (header slot or Anniversary order); no second source
+0x0077C7D0	NGraphicAppearance::CTCGraphicAppearanceSprite::vfunc_4	4	OnCreate	candidate OnCreate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0077C860	CWorldMap::CThingFilterBase::vfunc_0	0	operator()	candidate operator() from one source only (header slot or Anniversary order); no second source
+0x007A5440	CTCForcePushPower::vfunc_14	14	OnKill	candidate OnKill (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007A6160	CTCForcePushPower::vfunc_8	8	HasFrameUpdate	candidate HasFrameUpdate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007A6670	NTCMessages::CMessageOnMeshReplaced::vfunc_1	1	GetType	candidate GetType (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007B5010	CTCGuard::vfunc_8	8	HasFrameUpdate	candidate HasFrameUpdate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007D7C30	CTCTavernGameSpotTheAddition::vfunc_50	50	DrawBetAndMoney	candidate DrawBetAndMoney (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007DA0A0	CTCTavernGameCardBlackjack::vfunc_61	61	UpdateHighlightedCard	candidate UpdateHighlightedCard (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007E8330	NTCMessages::CMessageOnSetThingOwner::vfunc_1	1	GetType	candidate GetType (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007EFF70	CTCCarriedActionUseFishingRod::vfunc_32	32	OnActionUseInHand	candidate OnActionUseInHand (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007F02F0	CTCCarriedActionUseSpade::vfunc_32	32	OnActionUseInHand	candidate OnActionUseInHand (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007F75B0	CTCActivationReceptorCreatureGenerator::vfunc_29	29	Deactivate	candidate Deactivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007FFD40	CTCGatherPointBuilding::vfunc_28	28	IsPointInside	candidate IsPointInside (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0084FBF0	NCameraModes::CSubComponentBase::vfunc_1	1	Reset	candidate Reset (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0084FD10	NCameraModes::CPhysicsTargetModelGoTo::vfunc_2	2	~CSubComponentBase	candidate ~CSubComponentBase from one source only (header slot or Anniversary order); no second source
+0x008C36A0	NCreatureMode::CModeBriarRoseTeleportInvulnerable::vfunc_11	11	IsRemoveOnDeactivate	candidate IsRemoveOnDeactivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x008C37B0	NCreatureMode::CModeBriarRoseTeleportIntangible::vfunc_11	11	IsRemoveOnDeactivate	candidate IsRemoveOnDeactivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00925390	?A0x29922355::CCreatureAction_KrakenRiseUp::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x009253A0	?A0x29922355::CCreatureAction_KrakenRiseUp::vfunc_74	74		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925420	?A0x29922355::CCreatureAction_KrakenReturnToWater::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x009254A0	?A0x29922355::CCreatureAction_KrakenLowPoseInto::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925540	?A0x29922355::CCreatureAction_KrakenLowChargeLoop::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x009255C0	?A0x29922355::CCreatureAction_KrakenLowAttackInto::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925660	?A0x29922355::CCreatureAction_KrakenLowAttackLoop::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x009256E0	?A0x29922355::CCreatureAction_KrakenLowAttackOutOf::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925760	?A0x29922355::CCreatureAction_KrakenHighAttackInto::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925800	?A0x29922355::CCreatureAction_KrakenHighAttackLoop::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925880	?A0x29922355::CCreatureAction_KrakenHighAttackOutOf::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925900	?A0x29922355::CCreatureAction_KrakenRoarInto::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925990	?A0x29922355::CCreatureAction_KrakenRoarLoop::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00925A10	?A0x29922355::CCreatureAction_KrakenRoarOutOf::vfunc_57	57		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x0096DBA0	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive::vfunc_74	74		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x0096DBB0	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive::vfunc_73	73		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00970310	?A0xe09fd86b::CCreatureAction_SummonerCharge::vfunc_74	74		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x009703B0	?A0xe09fd86b::CCreatureAction_SummonerChargeSuccess::vfunc_19	19		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x009703C0	?A0xe09fd86b::CCreatureAction_SummonerChargeSuccess::vfunc_29	29		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00970410	?A0xe09fd86b::CCreatureAction_SummonerChargeSuccess::vfunc_74	74		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00A0B8D0	CSoundBankLH::vfunc_5	5		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00A0B980	CSoundBankLH::vfunc_7	7		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00A0BD20	CASoundBank::vfunc_9	9	IsCriteriaRegistered	candidate IsCriteriaRegistered from one source only (header slot or Anniversary order); no second source
+0x00A0BD30	CASoundBank::vfunc_10	10	IsAtmosBank	candidate IsAtmosBank from one source only (header slot or Anniversary order); no second source
+0x00A0BDE0	CSoundBankLH::vfunc_10	10		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00AF1200	NParticleEngine::CParticleDataBank::vfunc_20	20	__vecDelDtor	candidate __vecDelDtor from one source only (header slot or Anniversary order); no second source
+0x00BCA100	CEngineDynamic3DResourceManager::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0040FB60	CPersistContext_TransferableVector<ETutorialCategory>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0049B060	CPersistContext_TransferableVector<CCharString>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x004DE73E	CTCCreatureItemLevitationNymph::vfunc_30	30	GetMaxNumItems	candidate GetMaxNumItems (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00566320	CPersistContext_TransferableVector<int>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x005663B0	CPersistContext_TransferableVector<float>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0057F6DD	CPersistContext_TransferableVector<long>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x005E8CB0	CPersistContext_TransferableVector<unsigned_long>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x006144B0	CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0074CD90	CPersistContext_TransferableVector<CDefIndex>::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0077B240	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_1	1	OnSerialise	candidate OnSerialise from one source only (header slot or Anniversary order); no second source
+0x0077B9A0	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_1	1	OnSerialise	candidate OnSerialise from one source only (header slot or Anniversary order); no second source
+0x0077BE30	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::vfunc_1	1	OnSerialise	candidate OnSerialise from one source only (header slot or Anniversary order); no second source
+0x0077C350	NGraphicAppearance::CTCGraphicAppearanceSprite::vfunc_1	1	OnSerialise	candidate OnSerialise from one source only (header slot or Anniversary order); no second source
+0x007A6690	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::vfunc_1	1	OnSerialise	candidate OnSerialise from one source only (header slot or Anniversary order); no second source
+0x008E3600	NCreatureMode::CModeCarryingWeaponStand::vfunc_12	12	GetHoldingAnimIndex	candidate GetHoldingAnimIndex (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x009D8630	_unattributed::vfunc_0	0	MarkAsDead	anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00A0B990	CSoundBankLH::vfunc_8	8		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x004DDAE5	CTCTargetingAI::vfunc_29	29	GetPBestEnemyCreatureForAttack	candidate GetPBestEnemyCreatureForAttack (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00529940	CThingGameObject::vfunc_38	38	GetThingStandingOn	candidate GetThingStandingOn (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00702D00	CThingObject::vfunc_40	40	GetFloorMaterial	candidate GetFloorMaterial (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007FFE80	CTCGatherPointRadialArea::vfunc_1	30	OnSerialiseLeaf	candidate OnSerialiseLeaf (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00614420	CPersistContext_TransferableVector::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x006D3800	CPersistContext_TransferableVector::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x007B4010	CPersistContext_TransferableVector::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x006C5080	CPersistContext_TransferableVector::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00A3F970	CBBBSoundAllocator::vfunc_2	2		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00A3F9A0	CBBBSoundPhysicalAllocator::vfunc_2	2		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0057F745	CPersistContext_TransferableVector::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x005C0923	CPersistContext_TransferableVector::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x006BBED0	CConsoleCommand::vfunc_5	5		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x009EFEB0	CConsoleCommand::vfunc_5	5		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00A3F960	CBBBSoundAllocator::vfunc_1	1		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00A3F990	CBBBSoundPhysicalAllocator::vfunc_1	1		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0053CDE8	_unattributed::vfunc_149	149	SetLastInputTimeToBeNow	anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x007FFD50	CTCGatherPointBuilding::vfunc_29	29	Init	candidate Init (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0052C780	NUISystem::CChangingStateComponent::vfunc_138	138	InternalChanged	candidate InternalChanged (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x005309B0	NUISystem::CComponent::vfunc_131	131	ExecuteActions	candidate ExecuteActions (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00536B22	NUISystem::CList::vfunc_131	131	ExecuteActions	candidate ExecuteActions (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053843B	NUISystem::CList::vfunc_145	145	AddNonScrollingChild	candidate AddNonScrollingChild (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00538465	NUISystem::CList::vfunc_146	146	AddNonScrollingChildDynamically	candidate AddNonScrollingChildDynamically (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00547BE0	NUISystem::CMovie::vfunc_23	23	GetSize	candidate GetSize (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0055C5B0	NUISystem::CMouseCursor::vfunc_151	151		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00A0B8E0	CSoundBankLH::vfunc_11	11		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00AAD060	CSoundReceiverLH::vfunc_1	1		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00AAD090	CSoundReceiverLH::vfunc_3	3		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x007EDFD0	CTCCarriedActionUseTrophy::vfunc_32	32	OnActionUseInHand	candidate OnActionUseInHand (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007FFD60	CTCGatherPointRadialArea::vfunc_28	28	IsPointInside	candidate IsPointInside (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00455FA0	CPersistContext_TransferableSubComponent::vfunc_0	0		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00AACF90	CSoundReceiverLH::vfunc_2	2		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00455FA8	CPersistContext_TransferableSubComponent::vfunc_1	1		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00455FB4	CPersistContext_TransferableSubComponent::vfunc_2	2		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x00AACFA0	CSoundReceiverLH::vfunc_4	4		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0059C710	CTCInventoryTrade::vfunc_81	81	AddItemToInventory	header CTCInventoryTrade slot 81 disagrees with the retail body (ret 24); unresolved conflict, left
+0x005C2E82	CTCInventoryWeapons::vfunc_83	83	OnItemReturnedToInventory	candidate OnItemReturnedToInventory (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x005FAF10	CTCInventoryMap::vfunc_0	0	~CTCBase	GetScreenName (NHeroInformationScreens::CBase slot order proves it); the row is a heavy CCharString-returning body in a TU of local models -- port needs CTCInventoryMap/CCharString header work beyond this pass
+0x0061A170	CTCInventoryQuests::vfunc_61	61	ProcessButtonYReleased	candidate ProcessButtonYReleased (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0061A1A0	CTCInventoryQuests::vfunc_71	71	IncrementQuestCardItemSelection	candidate IncrementQuestCardItemSelection (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0061A1D0	CTCInventoryQuests::vfunc_72	72	DecrementQuestCardItemSelection	candidate DecrementQuestCardItemSelection (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0061A220	CTCInventoryQuests::vfunc_0	0	~CTCBase	GetScreenName (as 005faf10) for CTCInventoryQuests; heavy local-model TU, not ported this pass
+0x008337B0	CThingAICreature::vfunc_14	14	OnSetInLimbo	candidate OnSetInLimbo (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00703470	CThingObject::vfunc_22	22	IsEntitySerialisable	candidate IsEntitySerialisable (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00703780	CThingObject::vfunc_64	64	IsCover	candidate IsCover (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x006635D0	CThingPlayerCreature::vfunc_69	69	ForceAnim	candidate ForceAnim (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00670A10	CTCCoopSpirit::vfunc_9	9	FrameUpdate	candidate FrameUpdate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00705C30	CTCCarryable::vfunc_6	6	OnInitialActivate	candidate OnInitialActivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007B6A80	CTCCrateStack::vfunc_6	6	OnInitialActivate	candidate OnInitialActivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007ECE60	CTCCarriedActionUseBase::vfunc_32	32	OnActionUseInHand	candidate OnActionUseInHand (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007EDCD0	CTCCarriedActionUseFish::vfunc_32	32	OnActionUseInHand	candidate OnActionUseInHand (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00541120	NUISystem::CDynamicList::vfunc_64	64	RemoveChild	candidate RemoveChild (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00541230	NUISystem::CDynamicList::vfunc_148	148	DeleteChild	candidate DeleteChild (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0073E1D0	CAnimFilterOf3Groups::CAnimFilterOf3Groups::vfunc_0	0	operator	candidate operator (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007B7A70	CTCOverheadDisplay::vfunc_9	9	FrameUpdate	candidate FrameUpdate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00702B10	CTCDayOrNightOnlySupport::vfunc_6	6	OnInitialActivate	candidate OnInitialActivate (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00663E90	CThingPlayerCreature::vfunc_68	68	ForceAnim	candidate ForceAnim (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x006A9D10	CThingPlayerCreature::vfunc_34	34	DrawGetThingDisplayInformation	candidate DrawGetThingDisplayInformation (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00666850	CThingPlayerCreature::vfunc_71	71	GetPhonemeAnim	candidate GetPhonemeAnim (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007E1EB0	CTCCarriedActionUseRead::vfunc_28	28	OnActionUse	candidate OnActionUse (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x006223C0	CTCInventoryQuests::vfunc_70	70	ProcessQuestActivateAction	candidate ProcessQuestActivateAction (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x007D3510	CTCTavernGameCoinGolf::vfunc_32	32	NewRound	candidate NewRound (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0057770A	CTCInventoryExperience::vfunc_89	89		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x005778CA	CTCInventoryExperience::vfunc_90	90	CloseInventoryInternal	candidate CloseInventoryInternal (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x005FCE60	CTCInventoryMap::vfunc_31	31	CloseInventory	candidate CloseInventory (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0052ECC0	NUISystem::CSprite::vfunc_123	123	GetTargetRelativeRenderZoom	candidate GetTargetRelativeRenderZoom (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0053DDD0	NUISystem::CMenuEntry::vfunc_156	156	GoBackwards	candidate GoBackwards (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x005414A0	NUISystem::CDynamicList::vfunc_147	147	InsertChild	candidate InsertChild (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00542140	NUISystem::CIconText::vfunc_143	143	SetValue	candidate SetValue (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00544350	NUISystem::CSpellContainerList::vfunc_48	48	ChangeState	candidate ChangeState (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x005466B0	NUISystem::CZoomingComponent::vfunc_142	142	Pan	candidate Pan (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00555CF0	NUISystem::CScrollableList::vfunc_1	1		no candidate: slot not named in the header, the Anniversary vtable or the PDB name sets for this class
+0x0069E980	NDisplayView::CView3DBase::vfunc_3	3	Render	candidate Render (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00713510	NTCScriptedControl::CActionPerformExpression::vfunc_1	1	Update	candidate Update (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00715560	NTCScriptedControl::CActionDropGenericBox::vfunc_1	1	Update	candidate Update (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00761620	NShape::CTrack::vfunc_3	3	EditorDrawPreparePrimitivesForRendering	candidate EditorDrawPreparePrimitivesForRendering (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00816000	NHitLocations::CPhysicalPrimitiveSphere::vfunc_4	4	Init	candidate Init (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00870FC0	NCreatureAction::CActionEventCameraShake::vfunc_4	4	SetDataFromString	candidate SetDataFromString (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00B05EA0	NParticleEngine::CPSCSingleSprite::vfunc_18	18	DatabaseCopy	candidate DatabaseCopy (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00B109B0	NParticleEngine::CPSCEmitterGeneric::vfunc_31	31	GetApproximateSplineLength	candidate GetApproximateSplineLength (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00B1B710	NParticleEngine::CPSCDecalRenderer::vfunc_28	28	Initialise	candidate Initialise (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00B209C0	NParticleEngine::CPSCSingleSprite::vfunc_31	31	GetApproximateSplineLength	candidate GetApproximateSplineLength (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0052CEB0	NUISystem::CChangingStateComponent::vfunc_135	135	GetState	candidate GetState (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x0052CEE0	NUISystem::CChangingStateComponent::vfunc_134	134	GetState	candidate GetState (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x00533B30	NUISystem::CComponent::vfunc_50	50	GetCurrentState	candidate GetCurrentState (PDB name set + slot guess) not yet graded or ported this pass (time); needs the slot confirmed against the class header
+0x009240C0	?A0x29922355::CCreatureAction_KrakenLowAttackInto::?A0x29922355::CCreatureAction_KrakenLowAttackInto::vfunc_12	12		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00924200	?A0x29922355::CCreatureAction_KrakenLowPoseInto::?A0x29922355::CCreatureAction_KrakenLowPoseInto::vfunc_12	12		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source
+0x00924350	?A0x29922355::CCreatureAction_KrakenHighAttackInto::?A0x29922355::CCreatureAction_KrakenHighAttackInto::vfunc_12	12		anonymous-namespace / unattributed class: the PDB name sets carry no member names for it; no second source

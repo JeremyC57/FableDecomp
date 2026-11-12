@@ -39,6 +39,12 @@ public:
     virtual bool HasFrameUpdate() const;  // slot 8, 0x004DF1C9
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_DRIVERSLOTS
+// agentFAM13 (2026-11-12): CTCDriverBase virtuals this driver overrides but this declaration lacks (TLC vtable slot 28 IsDriverType,
+// slot 29 CreateAdditionalTCs, as engine/CTCDriverBase.h); spellings from the Ego_r / FableWin name sets. Declaration only.
+public:
+    virtual bool IsDriverType(long type) const;
+#endif // FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_DRIVERSLOTS
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDPhysicalObstruction) == 0x50);
 #endif // FABLE_ENGINE_CTCDPHYSICALOBSTRUCTION_H

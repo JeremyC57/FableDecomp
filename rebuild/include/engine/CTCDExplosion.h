@@ -36,6 +36,12 @@ void SetThingAsImmune(CThing&);
 void SetSpecificThingToHit(CThing&);
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCDEXPLOSION_DRIVERSLOTS
+// agentFAM13 (2026-11-12): CTCDriverBase virtuals this driver overrides but this declaration lacks (TLC vtable slot 28 IsDriverType,
+// slot 29 CreateAdditionalTCs, as engine/CTCDriverBase.h); spellings from the Ego_r / FableWin name sets. Declaration only.
+public:
+    virtual bool IsDriverType(long type) const;
+#endif // FABLE_RETAIL_CTCDEXPLOSION_DRIVERSLOTS
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDExplosion)==0x78);
 #endif

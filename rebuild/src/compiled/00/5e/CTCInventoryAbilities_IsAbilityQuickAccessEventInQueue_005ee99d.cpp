@@ -8,7 +8,7 @@
 // argument slot), std::bitset::test 0x00410DE0 + the const CVectorMap::LowerBound 0x004365B0 (inline GetInterface for the
 // inventory component 0x11), CTCBase::PeekPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer() const
 // 0x00449960, CPlayer::GetJoystickDeviceNumber 0x00487510, the main game component's (0x013B86A0) game player interface
-// getter 0x00416359, CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue(long, EInputButtonEventType, long)
+// getter 0x00416359, CGamePlayerInterface::IsQuickAccessEventInQueue(long, EInputButtonEventType, long) const
 // 0x004460C0, the def's slot 1 on release.
 // Shape: the def's quick-access item id (+0x98) must be positive; the inventory's quick-access slot vector (+0x148,
 // size re-read every pass) is scanned for it and each hit asks the input queue; both exits release the def through
@@ -89,9 +89,10 @@ class CPlayer { public:
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
 };
-class CGamePlayerInterface { public:
-    bool IsAssignableSpecialMoveButtonInQueue(long button, long buttonEventType, long playerNumber);   // 0x004460C0
-};
+// FAM13: the local CGamePlayerInterface stand-in replaced by the shared header (generated layout + opt-in); 0x004460C0 is
+// IsQuickAccessEventInQueue (QuickAccessItemButtons +0x7c4, Ego_r.pdb), not IsAssignableSpecialMoveButtonInQueue (0x00445E90, +0x7b8).
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSQUEUE
+#include "engine/CGamePlayerInterface.h"
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
@@ -156,8 +157,8 @@ bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility abilit
                     if (i >= (unsigned long)(inventory->QuickAccessItems.last - data))
                         break;
                     if (data[i] == item &&
-                        GetMainGameComponent()->GetGamePlayerInterface()->IsAssignableSpecialMoveButtonInQueue(
-                            i, 2, PeekPlayerManager().GetMainPlayer()->GetJoystickDeviceNumber()))
+                        GetMainGameComponent()->GetGamePlayerInterface()->IsQuickAccessEventInQueue(
+                            i, (EInputButtonEventType)2, PeekPlayerManager().GetMainPlayer()->GetJoystickDeviceNumber()))
                         return true;
                 }
             }

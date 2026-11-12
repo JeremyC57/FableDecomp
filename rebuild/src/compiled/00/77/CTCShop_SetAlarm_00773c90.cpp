@@ -8,7 +8,7 @@
 //   @ 0x0099EBF0 ("SND_SHOPALARM_01" @ 0x0126A934), CASoundBank::GetSoundIndexFromSymbol(const CCharString&) @ 0x00A01920 (on
 //   CMainGameComponent::Get() @ 0x013B86A0 ->PSampleBank +0x10), ~CCharString @ 0x0099EAE0, CSoundInit ctor @ 0x0041C930,
 //   CTCSoundPlayer::PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, long, long) @ 0x0066B280,
-//   CTCSoundPlayer::StopSample(unsigned long) @ 0x0066AD90 (manifest "CGameScriptThing::SetToKillOnLevelUnload" is
+//   CTCSoundPlayer::ReleaseAttachedLoopingSound(unsigned long) @ 0x0066AD90 (manifest "CGameScriptThing::SetToKillOnLevelUnload" is
 //   propagated), CTCSoundPlayer::StopAllAttachedSounds @ 0x0066AEB0.
 // Layout: Ego_r.pdb CTCShop Alarm +0x60 -> retail +0x54 (12-byte vectors, 12-byte map); CThing interface bitset +0x20 (0x10 =
 //   bit 16), map +0x44; CSoundInit 0x20 bytes (the landed 0x0041C930 record: loop count +0x0C, flags +0x14).
@@ -49,12 +49,12 @@ class CSoundInit { public:                                     // 0x20 bytes (ct
     long  Id;                                           // +0x1c
     CSoundInit();                                       // 0x0041C930
 };
-class CTCSoundPlayer { public:
-    void StopSample_0066ad90(unsigned long sample);              // 0x0066AD90
-    void StopAllAttachedSounds();                       // 0x0066AEB0
-public:
-    unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool);   // 0x0066B280
-};
+// Binder respelling (agentFAM13, queue land1011dt): the local CTCSoundPlayer model replaced by the shared engine/CTCSoundPlayer.h;
+//   0x0066AD90 is ?ReleaseAttachedLoopingSound@CTCSoundPlayer@@QAEXK@Z (Ego_r.pdb / FableWin.pdb; was spelled StopSample_0066ad90).
+#define FABLE_RETAIL_CTCSOUNDPLAYER_RELEASELOOPINGSOUND
+#define FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE
+#define FABLE_RETAIL_CTCSOUNDPLAYER_STOPALLATTACHED
+#include "engine/CTCSoundPlayer.h"
 
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -84,7 +84,7 @@ void CTCShop::SetAlarm(bool on)
         unsigned long alarm = Alarm;
         if (alarm && ParentThing->HasTC(TCI_SOUND_PLAYER)) {
             CTCSoundPlayer* player = ((CTCSoundPlayer*)&ParentThing->GetTC(TCI_SOUND_PLAYER));
-            player->StopSample_0066ad90(alarm);
+            player->ReleaseAttachedLoopingSound(alarm);
             player->StopAllAttachedSounds();
         }
         Alarm = 0;

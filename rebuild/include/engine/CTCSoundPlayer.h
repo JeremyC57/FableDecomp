@@ -31,6 +31,11 @@ public:
     // line in retail at 0x0066AD90. Declaration only.
     void ReleaseAttachedLoopingSound(unsigned long soundID);             // 0x0066AD90
 #endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_STOPALLATTACHED
+    // agentFAM13 (2026-11-12, row 0x00773C90 CTCShop::SetAlarm): Ego_r.pdb / FableWin.pdb ?StopAllAttachedSounds@CTCSoundPlayer@@QAEXXZ,
+    // out of line in retail at 0x0066AEB0 (the landed caller 0x00773C90 binds it). Declaration only.
+    void StopAllAttachedSounds();                                        // 0x0066AEB0
+#endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSAMPLE
     // Opt-in (agentNF12, 2026-11-11, rows 0x0083DDC0 / 0x0083DF20): Ego_r.pdb / FableWin.pdb
     // ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z (retail 0x0066B280, out of line; the callers push the

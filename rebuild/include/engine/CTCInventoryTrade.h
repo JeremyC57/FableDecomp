@@ -216,6 +216,15 @@ public:
     virtual bool GetInventoryShoppingValidity();  // slot 48, 0x0059B6E8
 public:
 #endif // FABLE_RETAIL_CTCINVENTORYTRADE_VSLOTS3
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_HISCREEN
+// agentFAM13 (2026-11-12): the NHeroInformationScreens::CBase overrides this declaration lacks (the secondary vtable at +0x130,
+// slots 0 GetScreenName / 1 GetPlayerMode / 2 GetScreenType / 3 IsInventoryScreen, engine/NHeroInformationScreens_CBase.h);
+// spellings from the Ego_r / FableWin name sets. Declaration only (no layout change; the vtable exists).
+public:
+    virtual EPlayerMode GetPlayerMode() const;
+    virtual NHeroInformationScreens::EScreenType GetScreenType() const;
+    virtual bool IsInventoryScreen() const;
+#endif // FABLE_RETAIL_CTCINVENTORYTRADE_HISCREEN
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryTrade) == 0x230);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NotInStock) == 0x140);

@@ -11002,7 +11002,7 @@ address	name	length	bytes
 00677740	CReactionMatch_MRPyramid::GetMatchType	6	b803000000c3
 006c27d0	CLevelLoader::SuspendableProcess	5	e93bffffff
 006f8fc0	_global::Dtor_CCharStringBase_006f8fc0	19	568bf18d4e04e8155b2a008bce5ee90d5b2a00
-007120d0	_global::Dtor_CCreatureActionBaseBase_007120d0	22	568bf18d8ea8000000e832fb2e008bce5ee90a1ef8ff
+007120d0	CCreatureAction_PickUpGenericBox::~CCreatureAction_PickUpGenericBox	22	568bf18d8ea8000000e832fb2e008bce5ee90a1ef8ff
 0073cf70	_global::Dtor_CBaseIntelligentPointerBase_0073cf70	19	568bf18d4e08e8954c2c008bce5ee98d4c2c00
 0073dec0	_global::Dtor_CBaseIntelligentPointerBase_0073dec0	19	568bf18d4e08e8453d2c008bce5ee93d3d2c00
 00754b90	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	20	568bf18d4e0ce8459f24008d4e045ee93c9f2400
@@ -14517,7 +14517,7 @@ address	name	length	bytes
 00419086	CCountedPointer<NParticleEngine::CAEnvironmentInteraction>::DeleteData	11	85c974068b016a01ff10c3
 00419091	CCountedPointer<CPlayerGui>::DeleteData	11	85c974068b016a01ff10c3
 0041c580	NUISystem::CObserver::vfunc_7	10	8a442404884110c20400
-0041c590	NUISystem::CComponent::vfunc_7	3	c20400
+0041c590	NUISystem::CComponent::SetPAcceptButton	3	c20400
 0041c610	NUISystem::CChangingStateComponent::GetCurrentStateIndex	7	8b8144010000c3
 0041c620	NUISystem::CChangingStateComponent::GetTargetStateIndex	7	8b8148010000c3
 0041c630	NUISystem::CChangingStateComponent::GetUpdateTime	7	d98150010000c3
@@ -14737,15 +14737,15 @@ address	name	length	bytes
 004e7559	CTCBoastingPodium::HasFrameUpdate	3	b001c3
 004e7d3b	NInventory::CTCInventoryBase::IsComponentSerialisable	3	b001c3
 004e7d3e	NInventory::CTCInventoryBase::OnItemSelectedInHand	3	c20800
-004e7d41	CTCInventoryClothing::vfunc_66	1	c3
-004e7d42	CTCInventoryClothing::vfunc_67	1	c3
+004e7d41	NInventory::CTCInventoryBase::ProcessButtonWhitePressed	1	c3
+004e7d42	NInventory::CTCInventoryBase::ProcessButtonWhiteReleased	1	c3
 004e7d43	NInventory::CTCInventoryBase::ProcessTradeAction	1	c3
-004e7d44	CTCInventoryClothing::vfunc_69	1	c3
-004e7d45	CTCInventoryClothing::vfunc_70	3	32c0c3
-004e7d48	CTCInventoryClothing::vfunc_71	1	c3
-004e7d49	CTCInventoryClothing::vfunc_72	1	c3
-004e7d4a	CTCInventoryClothing::vfunc_75	3	b001c3
-004e7d62	CTCInventoryClothing::vfunc_82	4	8d410cc3
+004e7d44	NInventory::CTCInventoryBase::ProcessAugmentAction	1	c3
+004e7d45	NInventory::CTCInventoryBase::ProcessQuestActivateAction	3	32c0c3
+004e7d48	NInventory::CTCInventoryBase::IncrementQuestCardItemSelection	1	c3
+004e7d49	NInventory::CTCInventoryBase::DecrementQuestCardItemSelection	1	c3
+004e7d4a	NInventory::CTCInventoryBase::GetIsEnabled	3	b001c3
+004e7d62	NInventory::CTCInventoryBase::GetComponents	4	8d410cc3
 004e7d7a	CTCInventoryClothing::OnChangeCategory	1	c3
 004e7fc2	CTCCreatureHitNotification::GetInterfaceType	6	b8cd000000c3
 0050bcc0	CCountedPointer<CWADBank>::DeleteData	11	85c974068b016a01ff10c3
@@ -14793,39 +14793,39 @@ address	name	length	bytes
 0052abe0	CThingPlayerCreature::IsPlayerCharacter	3	b001c3
 0052e700	NUISystem::CComponent::ForceState	3	c20800
 0052e710	NUISystem::CComponent::ChangeState	3	c20400
-0052e720	NUISystem::CComponent::vfunc_47	3	c20800
-0052e730	NUISystem::CComponent::vfunc_49	3	b001c3
-0052e740	NUISystem::CSprite::vfunc_46	3	c20400
+0052e720	NUISystem::CComponent::ChangeState	3	c20800
+0052e730	NUISystem::CComponent::ChangedState	3	b001c3
+0052e740	NUISystem::CComponent::ChangeState	3	c20400
 0052e7c0	NUISystem::CComponent::GetParent	7	8b81c8000000c3
 0052e7d0	NUISystem::CComponent::GetChildren	7	8d81b0000000c3
 0052e840	NUISystem::CComponent::ProcessChangeState	1	c3
 0052e850	NUISystem::CComponent::GetDeletion	7	8d81d4000000c3
-0052e940	NUISystem::CSprite::vfunc_25	4	8d4154c3
-0052e950	NUISystem::CSprite::vfunc_26	4	8d417cc3
-0052e960	NUISystem::CSprite::vfunc_27	7	8d8194000000c3
+0052e940	NUISystem::CComponent::GetRenderPosition	4	8d4154c3
+0052e950	NUISystem::CComponent::GetRenderZoom	4	8d417cc3
+0052e960	NUISystem::CComponent::GetRenderColour	7	8d8194000000c3
 0052eff0	NUISystem::CComponent::AddAction	3	c20400
 0052f000	NUISystem::CComponent::AddActionOnSelected	3	c20400
 0052f010	NUISystem::CComponent::AddActionOnBack	3	c20400
 0052f020	NUISystem::CComponent::AddPreAction	3	c20400
 0052f030	NUISystem::CComponent::AddActionOnInactive	3	c20400
-0052f040	NUISystem::CSprite::vfunc_71	3	c20400
-0052f050	NUISystem::CSprite::vfunc_80	3	c20400
-0052f060	NUISystem::CSprite::vfunc_72	3	c20400
-0052f070	NUISystem::CSprite::vfunc_73	3	c20400
-0052f080	NUISystem::CSprite::vfunc_74	3	c20400
-0052f090	NUISystem::CSprite::vfunc_75	3	c20400
-0052f0a0	NUISystem::CSprite::vfunc_76	3	c20400
-0052f0b0	NUISystem::CSprite::vfunc_77	3	c20400
-0052f0c0	NUISystem::CSprite::vfunc_78	3	c20400
-0052f0d0	NUISystem::CSprite::vfunc_79	3	c20400
+0052f040	NUISystem::CComponent::AddActionOnLeftClicked	3	c20400
+0052f050	NUISystem::CComponent::AddActionOnLeftUnclicked	3	c20400
+0052f060	NUISystem::CComponent::AddActionOnLeftHeld	3	c20400
+0052f070	NUISystem::CComponent::AddActionOnRightClicked	3	c20400
+0052f080	NUISystem::CComponent::AddActionOnDropped	3	c20400
+0052f090	NUISystem::CComponent::AddActionOnDroppedNowhere	3	c20400
+0052f0a0	NUISystem::CComponent::AddActionOnDraggedUp	3	c20400
+0052f0b0	NUISystem::CComponent::AddActionOnDraggedDown	3	c20400
+0052f0c0	NUISystem::CComponent::AddActionOnHovered	3	c20400
+0052f0d0	NUISystem::CComponent::AddActionOnUnhovered	3	c20400
 0052f0e0	NUISystem::CComponent::GetStates	4	8d4124c3
 0052f120	NUISystem::CComponent::GetCurrentStateIndex	3	33c0c3
 0052f130	NUISystem::CComponent::GetTargetStateIndex	3	33c0c3
 0052f140	NUISystem::CComponent::RemoveChild	3	c20400
-0052f150	NUISystem::CSprite::vfunc_91	1	c3
-0052f160	NUISystem::CSprite::vfunc_90	13	8b4424048981dc000000c20400
+0052f150	NUISystem::CComponent::ClearHandle	1	c3
+0052f160	NUISystem::CComponent::SetParentViewport	13	8b4424048981dc000000c20400
 0052f170	NUISystem::CComponent::GetParentViewport	7	8b81dc000000c3
-0052f430	NUISystem::CSprite::vfunc_133	1	c3
+0052f430	NUISystem::CComponent::RemoveFromHoveredList	1	c3
 0053cdc3	NUISystem::CList::vfunc_142	7	8b815c010000c3
 0053cde1	NUISystem::CList::vfunc_148	7	d98198010000c3
 0053cdf2	NUISystem::CList::vfunc_150	13	8b4424048981a0010000c20400
@@ -14839,7 +14839,7 @@ address	name	length	bytes
 0053d120	NUISystem::CMenuEntry::RemoveChild	5	e99b6affff
 0053d130	NUISystem::CMenuEntry::OnLeftClicked	1	c3
 0053d140	NUISystem::CMenuEntry::OnRightUnclicked	1	c3
-0053e8a0	NUISystem::CMenuEntry::vfunc_132	3	b001c3
+0053e8a0	NUISystem::CMenuEntry::IsClickable	3	b001c3
 0053e8b0	NUISystem::CMenuEntry::vfunc_154	7	8b81a4010000c3
 0053fc00	NUISystem::CScrollingViewport::vfunc_144	7	d98174010000c3
 0053fe30	NUISystem::CEditBox::SetPasswordBox	13	8a442404888179010000c20400
@@ -14859,13 +14859,13 @@ address	name	length	bytes
 00545610	NUISystem::CSpellContainer::RemoveChild	5	e9abe5feff
 00546060	NUISystem::CSpellContainer::SetEmptySlotDef	13	8b442404898170010000c20400
 00546070	NUISystem::CSpellContainer::GetBaseSpells	7	8d815c010000c3
-0054a380	NUISystem::CTextSlider::vfunc_7	13	8b442404898198010000c20400
-0054c130	NUISystem::CSlider::vfunc_7	13	8b4424048981e8010000c20400
+0054a380	NUISystem::CTextSlider::SetPAcceptButton	13	8b442404898198010000c20400
+0054c130	NUISystem::CSlider::SetPAcceptButton	13	8b4424048981e8010000c20400
 0054c320	NUISystem::CListArrow::SetMinToDraw	13	8b442404898184010000c20400
 0054c330	NUISystem::CListArrow::SetMaxToDraw	13	8b442404898188010000c20400
 0054c420	NUISystem::CFrontEndList::ProcessEvent	3	c20400
 0054db40	NUISystem::CFrontEndButton::OnRightUnclicked	1	c3
-0054e190	NUISystem::CFrontEndButton::vfunc_132	3	b001c3
+0054e190	NUISystem::CClickable::IsClickable	3	b001c3
 0054e550	NUISystem::CFrontEndScreen::vfunc_142	7	8b8168010000c3
 0054ec90	NUISystem::CText::Initialise	5	e99bdafdff
 0054eca0	NUISystem::CText::Update	5	e93bdbfdff
@@ -14933,12 +14933,12 @@ address	name	length	bytes
 0057a230	NInventory::CTCInventoryBase::OnItemDeselected	3	c20800
 0057a233	NInventory::CTCInventoryBase::ConstructScreen	5	33c0c20400
 0057a25d	CTCInventoryExperience::IsComponentSerialisable	3	b001c3
-0057a260	CTCInventoryExperience::vfunc_3	3	32c0c3
+0057a260	CTCInventoryExperience::IsInventoryScreen	3	32c0c3
 0057a4fc	NEntityEvents::CEventBase::OnAdd	3	c20400
 0057a4ff	NEntityEvents::CEventBase::IsReadyToDie	3	b001c3
 005814c3	CTCHeroStats::HasFrameUpdate	3	b001c3
 005814c6	CTCHeroStats::IsComponentSerialisable	3	b001c3
-00581a11	CTCInventory::vfunc_2	3	33c0c3
+00581a11	CTCInventory::GetScreenType	3	33c0c3
 005907a6	CTCInventory::ConstructScreen	5	e98afaffff
 00594be4	CTCInventory::IsComponentSerialisable	3	b001c3
 00594be7	CTCInventory::OnChangeCategory	1	c3
@@ -14950,7 +14950,7 @@ address	name	length	bytes
 0059b795	CTCInventoryTrade::ProcessInventoryInputDown	5	e91e260200
 005b306f	CTCInventoryTrade::OnChangeCategory	1	c3
 005b3070	CTCInventoryTrade::IsComponentSerialisable	3	32c0c3
-005b3073	CTCInventoryTrade::vfunc_3	3	32c0c3
+005b3073	CTCInventoryTrade::IsInventoryScreen	3	32c0c3
 005bc4c3	NInventory::CTCInventoryBase::OnChangeCategory	1	c3
 005bc586	NInventory::CTCInventoryBase::SetInventorySelectionState	3	c20400
 005bc589	NInventory::CTCInventoryBase::UpdateMenuScrollButtonsCategory	1	c3
@@ -14993,16 +14993,16 @@ address	name	length	bytes
 005fa39c	CTCInventoryAbilities::OnItemSelected	3	c20800
 005fa39f	CTCInventoryAbilities::IsComponentSerialisable	3	b001c3
 005fa3a2	CTCInventoryAbilities::HasFrameUpdate	3	b001c3
-005fa590	CTCInventoryMap::vfunc_3	7	8a8110010000c3
-005fa8e0	CTCInventoryMap::vfunc_1	6	b808000000c3
-005fa8f0	CTCInventoryMap::vfunc_2	6	b808000000c3
+005fa590	CTCInventoryMap::IsInventoryScreen	7	8a8110010000c3
+005fa8e0	CTCInventoryMap::GetPlayerMode	6	b808000000c3
+005fa8f0	CTCInventoryMap::GetScreenType	6	b808000000c3
 005fc610	CTCInventoryMap::vfunc_37	5	e9fbfeffff
 00616870	sub_00616870	5	e9abebffff
 00619f00	CTCInventoryMap::GetInterfaceType	6	b81b000000c3
 00619f40	CTCInventoryMap::HasFrameUpdate	3	b001c3
-00619fd0	CTCInventoryQuests::vfunc_3	3	32c0c3
-0061a000	CTCInventoryQuests::vfunc_1	6	b80d000000c3
-0061a010	CTCInventoryQuests::vfunc_2	6	b801000000c3
+00619fd0	CTCInventoryQuests::IsInventoryScreen	3	32c0c3
+0061a000	CTCInventoryQuests::GetPlayerMode	6	b80d000000c3
+0061a010	CTCInventoryQuests::GetScreenType	6	b801000000c3
 0061a0b0	CTCInventoryQuests::GetInventoryGuildValidity	5	e9c23bfaff
 0061a0c0	CTCInventoryQuests::vfunc_75	7	8a814c010000c3
 0061a160	CTCInventoryQuests::vfunc_67	1	c3
@@ -15201,7 +15201,7 @@ address	name	length	bytes
 006dd750	CTCTrophy::IsComponentSerialisable	3	b001c3
 006dfa10	CTCTrophy::GetInterfaceType	6	b839000000c3
 006dfa40	CTCTrophy::HasFrameUpdate	3	b001c3
-006dfe50	CTCDParticleEmitter::vfunc_29	1	c3
+006dfe50	CTCDParticleEmitter::CreateAdditionalTCs	1	c3
 006e1d00	CTCDParticleEmitter::GetInterfaceType	6	b84b000000c3
 006e1d40	CTCDParticleEmitter::HasFrameUpdate	3	b001c3
 006e40d0	CTCTalk::GetInterfaceType	6	b80f000000c3
@@ -15260,8 +15260,8 @@ address	name	length	bytes
 0072d9f0	CTCSpecialAbilities::GetInterfaceType	6	b8a7000000c3
 0072da20	CTCSpecialAbilities::HasFrameUpdate	3	b001c3
 0072da30	CTCSpecialAbilities::IsComponentSerialisable	3	b001c3
-0072daa0	CTCInventoryMagic::vfunc_1	6	b809000000c3
-0072dab0	CTCInventoryMagic::vfunc_2	6	b80a000000c3
+0072daa0	CTCInventoryMagic::GetPlayerMode	6	b809000000c3
+0072dab0	CTCInventoryMagic::GetScreenType	6	b80a000000c3
 0072dce0	CTCInventoryMagic::GetInterfaceType	6	b815000000c3
 0072dd20	CTCInventoryMagic::OnChangeCategory	1	c3
 0072e550	CTCMeshAutomaticEntityCreator::OnInitialActivate	5	e93bfdffff
@@ -15534,9 +15534,9 @@ address	name	length	bytes
 007787f0	CTCTimeAppearanceFade::GetInterfaceType	6	b856000000c3
 00778820	CTCTimeAppearanceFade::HasFrameUpdate	3	b001c3
 00778bd0	CTCFamilyMember::GetInterfaceType	6	b857000000c3
-00778d50	CTCDNavigationSeed::vfunc_29	1	c3
-00778e60	CTCDRegionEntrance::vfunc_29	1	c3
-00778f90	CTCDRegionExit::vfunc_29	1	c3
+00778d50	CTCDNavigationSeed::CreateAdditionalTCs	1	c3
+00778e60	CTCDRegionEntrance::CreateAdditionalTCs	1	c3
+00778f90	CTCDRegionExit::CreateAdditionalTCs	1	c3
 00779910	CTCDRegionExit::GetInterfaceType	6	b864000000c3
 00779950	CTCDRegionExit::IsComponentSerialisable	3	b001c3
 00779960	CTCDRegionExit::HasFrameUpdate	3	b001c3
@@ -15778,7 +15778,7 @@ address	name	length	bytes
 007e7e70	CTCFireheartMinigame::GetInterfaceType	6	b808010000c3
 007e7ea0	CTCFireheartMinigame::HasFrameUpdate	3	b001c3
 007e8330	NTCMessages::CMessageOnSetThingOwner::vfunc_1	6	b804000000c3
-007e8860	CTCDCameraPoint::vfunc_29	1	c3
+007e8860	CTCDCameraPoint::CreateAdditionalTCs	1	c3
 007eff70	CTCCarriedActionUseFishingRod::vfunc_32	3	c20400
 007f02f0	CTCCarriedActionUseSpade::vfunc_32	3	c20400
 007f20c0	CTCLightningNode::OnInitialActivate	1	c3
@@ -17976,39 +17976,39 @@ address	name	length	bytes
 004e7d6a	CTCInventoryClothing::GetClassTypeName	16	8b4c2404e834b1feff8b442404c20400
 004e7fc8	CTCCreatureHitNotification::GetClassTypeName	16	8b4c2404e885d9feff8b442404c20400
 00529840	CThingGameObject::GetTriggerRadius	7	d905dcde2201c3
-0052e7e0	NUISystem::CComponent::vfunc_54	7	d905dcde2201c3
+0052e7e0	NUISystem::CComponent::GetUpdateTime	7	d905dcde2201c3
 00543aa0	NUISystem::CIconText::MakeAvailable	8	c6816c01000000c3
 00543ab0	NUISystem::CIconText::MakeAvailableDynamically	8	c6816c01000000c3
 0054ff90	NUISystem::CText::MakeAvailable	8	c6818901000000c3
 0054ffa0	NUISystem::CText::MakeAvailableDynamically	8	c6818901000000c3
 00566320	CPersistContext_TransferableVector<int>::vfunc_0	12	8b49048b41042b01c1f802c3
 005663b0	CPersistContext_TransferableVector<float>::vfunc_0	12	8b49048b41042b01c1f802c3
-0056e593	CTCInventoryExperience::vfunc_1	4	6a0b58c3
-0056e597	CTCInventoryExperience::vfunc_2	4	6a0258c3
+0056e593	CTCInventoryExperience::GetPlayerMode	4	6a0b58c3
+0056e597	CTCInventoryExperience::GetScreenType	4	6a0258c3
 0057a238	CTCInventoryExperience::GetInterfaceType	4	6a1658c3
 0057a253	CTCInventoryExperience::OnItemSelected	10	8b442408c60000c20800
 0057a535	NEntityEvents::CEventMoralityChanged::GetType	4	6a2358c3
 0057f6dd	CPersistContext_TransferableVector<long>::vfunc_0	12	8b49048b41042b01c1f802c3
 005814a8	CTCHeroStats::GetInterfaceType	4	6a0458c3
-00581a0d	CTCInventory::vfunc_1	4	6a0458c3
+00581a0d	CTCInventory::GetPlayerMode	4	6a0458c3
 00594bc9	CTCInventory::GetInterfaceType	4	6a1158c3
-0059b6e0	CTCInventoryTrade::vfunc_1	4	6a0c58c3
-0059b6e4	CTCInventoryTrade::vfunc_2	4	6a0658c3
+0059b6e0	CTCInventoryTrade::GetPlayerMode	4	6a0c58c3
+0059b6e4	CTCInventoryTrade::GetScreenType	4	6a0658c3
 005b304a	CTCInventoryTrade::GetInterfaceType	4	6a1758c3
 005b3065	CTCInventoryTrade::OnItemSelected	10	8b442408c60000c20800
-005b34cd	CTCInventoryClothing::vfunc_1	4	6a0558c3
-005b34d1	CTCInventoryClothing::vfunc_2	4	6a0558c3
+005b34cd	CTCInventoryClothing::GetPlayerMode	4	6a0558c3
+005b34d1	CTCInventoryClothing::GetScreenType	4	6a0558c3
 005bc3e3	NEntityEvents::CEventReceivedItemInInventory::GetType	4	6a2858c3
-005c2e1d	CTCInventoryWeapons::vfunc_1	4	6a0658c3
-005c2e21	CTCInventoryWeapons::vfunc_2	4	6a0458c3
+005c2e1d	CTCInventoryWeapons::GetPlayerMode	4	6a0658c3
+005c2e21	CTCInventoryWeapons::GetScreenType	4	6a0458c3
 005cc4dd	CTCInventoryWeapons::GetInterfaceType	4	6a1358c3
-005cc6eb	CTCInventoryStats::vfunc_1	4	6a0a58c3
-005cc6ef	CTCInventoryStats::vfunc_2	4	6a0958c3
+005cc6eb	CTCInventoryStats::GetPlayerMode	4	6a0a58c3
+005cc6ef	CTCInventoryStats::GetScreenType	4	6a0958c3
 005d8779	CTCInventoryStats::GetInterfaceType	4	6a1458c3
 005d8797	CTCInventoryStats::OnItemSelected	10	8b442408c60000c20800
 005e8cb0	CPersistContext_TransferableVector<unsigned_long>::vfunc_0	12	8b49048b41042b01c1f802c3
-005edce7	CTCInventoryAbilities::vfunc_1	4	6a0758c3
-005edceb	CTCInventoryAbilities::vfunc_2	4	6a0358c3
+005edce7	CTCInventoryAbilities::GetPlayerMode	4	6a0758c3
+005edceb	CTCInventoryAbilities::GetScreenType	4	6a0358c3
 005fa381	CTCInventoryAbilities::GetInterfaceType	4	6a6f58c3
 006144b0	CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::vfunc_0	12	8b49048b41042b01c1f802c3
 00619f30	CTCInventoryMap::OnItemSelected	10	8b442408c60000c20800
@@ -21114,16 +21114,16 @@ address	name	length	bytes
 00789397	CTCProjectileTrap::GetTypeAsString	23	8b4c24046aff6874c12301e8495821008b442404c20400
 007be5e0	CTCShotDefinitionMultiArrow::GetTypeAsString	23	8b4c24046aff6824cd2301e800061e008b442404c20400
 007be9d5	CTCShotDefinitionQueenHornetShot::GetTypeAsString	23	8b4c24046aff6884cd2301e80b021e008b442404c20400
-004d3f40	CTCDNone::vfunc_28	13	33c0837c2404170f94c0c20400
-004d4222	CTCDNavigationSeed::vfunc_28	13	33c0837c2404150f94c0c20400
-004d428e	CTCDInternalMarker::vfunc_28	13	33c0837c24040c0f94c0c20400
-004d42e2	CTCDRegionEntrance::vfunc_28	13	33c0837c2404180f94c0c20400
-004d8164	CTCDCameraPoint::vfunc_28	13	33c0837c2404140f94c0c20400
-004db3cb	CTCDRumble::vfunc_28	13	33c0837c24041c0f94c0c20400
-004df1bc	CTCDPhysicalObstruction::vfunc_28	13	33c0837c24041d0f94c0c20400
-004e07d6	CTCDHeroSuit::vfunc_28	13	33c0837c2404160f94c0c20400
-004e3158	CTCDExplosion::vfunc_28	13	33c0837c24041b0f94c0c20400
-004e3467	CTCDExplosiveTrail::vfunc_28	13	33c0837c24041e0f94c0c20400
+004d3f40	CTCDNone::IsDriverType	13	33c0837c2404170f94c0c20400
+004d4222	CTCDNavigationSeed::IsDriverType	13	33c0837c2404150f94c0c20400
+004d428e	CTCDInternalMarker::IsDriverType	13	33c0837c24040c0f94c0c20400
+004d42e2	CTCDRegionEntrance::IsDriverType	13	33c0837c2404180f94c0c20400
+004d8164	CTCDCameraPoint::IsDriverType	13	33c0837c2404140f94c0c20400
+004db3cb	CTCDRumble::IsDriverType	13	33c0837c24041c0f94c0c20400
+004df1bc	CTCDPhysicalObstruction::IsDriverType	13	33c0837c24041d0f94c0c20400
+004e07d6	CTCDHeroSuit::IsDriverType	13	33c0837c2404160f94c0c20400
+004e3158	CTCDExplosion::IsDriverType	13	33c0837c24041b0f94c0c20400
+004e3467	CTCDExplosiveTrail::IsDriverType	13	33c0837c24041e0f94c0c20400
 00543a80	NUISystem::CIconText::MakeUnavailable	8	c6816c01000001c3
 00543a90	NUISystem::CIconText::MakeUnavailableDynamically	8	c6816c01000001c3
 0054ff70	NUISystem::CText::MakeUnavailable	8	c6818901000001c3
@@ -21733,9 +21733,9 @@ address	name	length	bytes
 00b98040	CRetailTree_erase00b97580::~CRetailTree_erase00b97580	66	568bf18b460485c074278b068b4804518bcee829f5ffff8b068940088b16c74204000000008b0689400cc74604000000008b3685f6740956e89769060083c4045ec3
 00bd9010	CRetailTree_erase00bd8a10::~CRetailTree_erase00bd8a10	66	568bf18b460485c074278b068b4804518bcee8e9f9ffff8b068940088b16c74204000000008b0689400cc74604000000008b3685f6740956e8c759020083c4045ec3
 00cdbeb0	CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a	66	568bf18b460485c074278b068b4804518bcee88375ffff8b068940088b16c74204000000008b0689400cc74604000000008b3685f6740956e8272bf2ff83c4045ec3
-004c2a40	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+004c2a40	std::_Rb_tree_iterator<std::pair<void *const, CRGBColour>, std::_Nonconst_traits<std::pair<void *const, CRGBColour>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0050dee0	std::_Rb_tree_iterator<std::pair<CCharString const, long>, std::_Nonconst_traits<std::pair<CCharString const, long>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-0050df80	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+0050df80	std::_Rb_tree_iterator<char, std::_Nonconst_traits<char>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0050e0b0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0050e130	std::_Rb_tree_iterator<unsigned long,std::_Nonconst_traits<unsigned long >>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0050e190	std::_Rb_tree_iterator<long,std::_Nonconst_traits<long >>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
@@ -21743,11 +21743,11 @@ address	name	length	bytes
 00553340	std::_Rb_tree_iterator<std::pair<unsigned long const, unsigned long>, std::_Nonconst_traits<std::pair<unsigned long const, unsigned long>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 005662b0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0056cc50	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-0056cd10	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+0056cd10	std::_Rb_tree_iterator<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>, std::_Nonconst_traits<std::pair<long const, std::vector<NUISystem::CMenuEntry *, std::allocator<NUISystem::CMenuEntry *>>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 005dfce0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-005e8c40	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+005e8c40	std::_Rb_tree_iterator<std::pair<long const, unsigned long>, std::_Nonconst_traits<std::pair<long const, unsigned long>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00613f00	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-00613f70	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+00613f70	std::_Rb_tree_iterator<std::pair<long const, std::pair<long, long>>, std::_Nonconst_traits<std::pair<long const, std::pair<long, long>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 006235f0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0067acd0	std::_Rb_tree_iterator<std::pair<EOpinionReactionType const, EOpinionAttitudeType>, std::_Nonconst_traits<std::pair<EOpinionReactionType const, EOpinionAttitudeType>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0067ad40	std::_Rb_tree_iterator<std::pair<EOpinionReactionType const, EOpinionTargetingConditionType>, std::_Nonconst_traits<std::pair<EOpinionReactionType const, EOpinionTargetingConditionType>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
@@ -21789,8 +21789,8 @@ address	name	length	bytes
 009aa370	std::_Rb_tree_iterator<std::pair<CCharString const, CCharString>, std::_Nonconst_traits<std::pair<CCharString const, CCharString>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 009aa3e0	std::_Rb_tree_iterator<CWideString,std::_Nonconst_traits<CWideString >>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 009c1f70	std::_Rb_tree_iterator<CDisplayModeDesc, std::_Nonconst_traits<CDisplayModeDesc> >::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-009c1fe0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-009d74e0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+009c1fe0	std::_Rb_tree_iterator<ESurfaceMultisampleType, std::_Nonconst_traits<ESurfaceMultisampleType>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+009d74e0	std::_Rb_tree_iterator<CBankFileAsyncData *, std::_Nonconst_traits<CBankFileAsyncData *>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 009ee8a0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 009ee910	std::_Rb_tree_iterator<std::pair<char const, CCharString>, std::_Nonconst_traits<std::pair<char const, CCharString>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 009f0b50	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
@@ -21808,23 +21808,23 @@ address	name	length	bytes
 0047b760	std::_Rb_tree_iterator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, std::vector<CHeroLogBook::CHeroLogBookEntry, std::allocator<CHeroLogBook::CHeroLogBookEntry>>>, std::_Nonconst_traits<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, std::vector<CHeroLogBook::CHeroLogBookEntry, std::allocator<CHeroLogBook::CHeroLogBookEntry>>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 004aa220	std::_Rb_tree_iterator<CCharString,std::_Nonconst_traits<CCharString >>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 004c29f0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-004c6580	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+004c6580	std::_Rb_tree_iterator<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>, std::_Nonconst_traits<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00527ac0	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, std::pair<CCharString, CWideString> >, std::_Nonconst_traits<std::pair<unsigned __int64 const, std::pair<CCharString, CWideString> > > >::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00527b10	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, CThing*>, std::_Nonconst_traits<std::pair<unsigned __int64 const, CThing*> > >::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00527b60	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>, std::_Nonconst_traits<std::pair<unsigned __int64 const, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00534da0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-005532f0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+005532f0	std::_Rb_tree_iterator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>, std::_Nonconst_traits<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00566210	std::_Rb_tree_iterator<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float>, std::_Nonconst_traits<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-00566260	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+00566260	std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CTexture>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CTexture>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0056ccc0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-00613eb0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+00613eb0	std::_Rb_tree_iterator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>, std::_Nonconst_traits<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent *>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 006effe0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 006f0030	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, CCombatantInfo>, std::_Nonconst_traits<std::pair<unsigned __int64 const, CCombatantInfo> > >::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0071f290	std::_Rb_tree_iterator<std::pair<CCharString const, std::pair<long, CDateAndTime>>, std::_Nonconst_traits<std::pair<CCharString const, std::pair<long, CDateAndTime>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00782e40	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, CIntelligentPointer<CThing> >, std::_Nonconst_traits<std::pair<unsigned __int64 const, CIntelligentPointer<CThing> > > >::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00793bb0	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 007ac920	std::_Rb_tree_iterator<std::pair<CCharString const, bool>, std::_Nonconst_traits<std::pair<CCharString const, bool>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-007e9020	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+007e9020	std::_Rb_tree_iterator<std::pair<CThing *const, float>, std::_Nonconst_traits<std::pair<CThing *const, float>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 008012f0	std::_Rb_tree_iterator<std::pair<EIdleStateGroup const, CAIStateGroupBase *>, std::_Nonconst_traits<std::pair<EIdleStateGroup const, CAIStateGroupBase *>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0082ee10	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>, std::_Nonconst_traits<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0082ee60	std::_Rb_tree_iterator<unsigned __int64, std::_Nonconst_traits<unsigned __int64> >::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
@@ -21840,8 +21840,8 @@ address	name	length	bytes
 00ad1800	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00ad1850	std::_Rb_tree_iterator<std::pair<unsigned long const, float>, std::_Nonconst_traits<std::pair<unsigned long const, float>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 00b2e5e0	std::_Rb_tree_iterator<std::pair<std::pair<long, long> const, CEngineTextureMorph>, std::_Nonconst_traits<std::pair<std::pair<long, long> const, CEngineTextureMorph>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-00b96020	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
-00b96070	CRetailTreeIterator::Decrement	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+00b96020	std::_Rb_tree_iterator<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>, std::_Nonconst_traits<std::pair<long const, std::map<long, CCountedPointer<CEngineSceneMap>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
+00b96070	std::_Rb_tree_iterator<std::pair<long const, CCountedPointer<CEngineSceneMap>>, std::_Nonconst_traits<std::pair<long const, CCountedPointer<CEngineSceneMap>>>>::operator--	79	8bc1578b38803f00750f8b4f0439790475078b7f0c89385fc3568b770885f674158b560c85d274098bf28b560c85d275f789305e5fc38b57043b7a08750c8bff8bca8b52043b4a0874f65e89105fc3
 0047b3e0	std::_Rb_tree_iterator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, std::vector<CHeroLogBook::CHeroLogBookEntry, std::allocator<CHeroLogBook::CHeroLogBookEntry>>>, std::_Nonconst_traits<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, std::vector<CHeroLogBook::CHeroLogBookEntry, std::allocator<CHeroLogBook::CHeroLogBookEntry>>>>>::operator++	62	8bc18b108b4a0c85c974138b510885d274098bca8b510885d275f78908c3568b72043b560c750a8bd68b76043b560c74f639720c740489305ec389105ec3
 004c1c70	CRetailTreeIterator::Increment	62	8bc18b108b4a0c85c974138b510885d274098bca8b510885d275f78908c3568b72043b560c750a8bd68b76043b560c74f639720c740489305ec389105ec3
 004c2560	std::_Rb_tree_iterator<std::pair<void *const, NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>, std::_Nonconst_traits<std::pair<void *const, NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>>>::operator++	62	8bc18b108b4a0c85c974138b510885d274098bca8b510885d275f78908c3568b72043b560c750a8bd68b76043b560c74f639720c740489305ec389105ec3
@@ -26029,9 +26029,9 @@ address	name	length	bytes
 006e0470	CTCDParticleEmitter::DrawPreparePrimitivesForRendering	11	83c11ce8d8163200c20400
 00c34a40	_unattributed::GetItemOfMember_00c34a40	11	83c104e878e00000c20400
 00c34a80	_unattributed::GetItemOfMember_00c34a80	11	83c104e8e8df0000c20400
-006e1d30	CTCDParticleEmitter::vfunc_28	15	8b4c240433c083f9130f94c0c20400
-00779940	CTCDRegionExit::vfunc_28	15	8b4c240433c083f9190f94c0c20400
-0077ab90	CTCDExperienceOrb::vfunc_28	15	8b4c240433c083f91a0f94c0c20400
+006e1d30	CTCDParticleEmitter::IsDriverType	15	8b4c240433c083f9130f94c0c20400
+00779940	CTCDRegionExit::IsDriverType	15	8b4c240433c083f9190f94c0c20400
+0077ab90	CTCDExperienceOrb::IsDriverType	15	8b4c240433c083f91a0f94c0c20400
 006e4b80	_unattributed::CClass_006e4b80	14	8b0185c0740750e8889e510059c3
 0071efb0	_unattributed::CClass_0071efb0	14	8b0185c0740750e858fa4d0059c3
 00990180	_unattributed::CClass_00990180	14	8b0185c0740750e888e8260059c3
@@ -26111,7 +26111,7 @@ address	name	length	bytes
 00485d1a	_unattributed::ApplyPair_00485d1a	11	ff7104ff31e86ca8fbffc3
 00485d25	_unattributed::ApplyPair_00485d25	11	ff7104ff31e878fdffffc3
 00485fe8	_unattributed::ApplyPair_00485fe8	11	ff7104ff31e878d3faffc3
-005419f0	_unattributed::vfunc_88	9	d905dcde2201c20800
+005419f0	NUISystem::CIconText::CanScroll	9	d905dcde2201c20800
 006b12f0	CTCPhysicsBase::GetRenderZOffset	9	d905dcde2201c20400
 00739e70	CTCCreatureModeManager::CModeBase::GetMovementSpeed	9	d905dcde2201c20c00
 0056f497	CTCInventoryExperience::ProcessInventoryInputLeft	10	e8a1fbffffe997d10400
@@ -29414,7 +29414,7 @@ address	name	length	bytes
 004ed04d	std::vector<CShopItemDef>::resize	48	558bec83ec48568bf18d4db8e8fc6ffeff50ff75088bcee8140000008d4db8c745b8a00b2301e8d8f450005ec9c20400
 005c14c4	CPerItemData::CPerItemData	57	56578b7c240c578bf1e88e2cf5ff8b470c89460c8b47108946108b47148946148a47188846188b471c89461c8b47208946205f8bc65ec20400
 0066ccf0	CRegionMinimap::~CRegionMinimap	58	568bf18b465885c0740950e8141d590083c4048b464885c0740950e8041d590083c4048d4e34e855d238008d4e24c7014cf822015ee9f6603800
-00687cb0	CInputProcessGameBase::IsAssignableSpecialMoveButtonInQueue	34	568bf18b4e18e855f8dfff8b4c2408508b44241050518b4e24e8f2e3dbff5ec20800
+00687cb0	CInputProcessGameBase::IsQuickAccessEventInQueue	34	568bf18b4e18e855f8dfff8b4c2408508b44241050518b4e24e8f2e3dbff5ec20800
 00687d50	CInputProcessGameBase::IsGameActionEventInQueue	34	568bf18b4e18e8b5f7dfff8b4c2408508b44241050518b4e24e8a2eddbff5ec20800
 006e9270	CCombatManager::IsAttacked	65	83ec088b44240c8b50188b401c568d71108d4c2404518bce895424088944240ce8bb6f00003b065e740f8b485085c97408b00183c408c2040032c083c408c20400
 006e92c0	CCombatManager::IsAttacker	65	83ec088b44240c8b50188b401c568d71108d4c2404518bce895424088944240ce86b6f00003b065e740f8b481c85c97408b00183c408c2040032c083c408c20400
@@ -34263,7 +34263,7 @@ address	name	length	bytes
 0042971d	std::_Rb_global<bool>::_Rebalance	190	53568b74240c33db578b7c2414881ee9990000008b460438180f85960000008b50048b4a083bc175378b4a0c3bcb7404381974343b700c750b8bf05756e8bcfdffff59598b4604c600018b46048b400488188b460457ff7004e8e0fdffffeb4b3bcb741d381975198b4604c60001c601018b46048b400488188b46048b7004eb2c3b7008750b8bf05756e8affdffff59598b4604c600018b46048b400488188b460457ff7004e853fdffff59593b370f855fffffff8b075f5ec600015bc3
 004e80e3	CKrakenDef::Transfer	222	568bf1578b7c240c8d4628508bcfe86b8ff4ff8d462c508bcfe8608ff4ff8d4630508bcfe8558ff4ff8d4634508bcfe84a8ff4ff8d4638508bcfe8e08ff4ff8d463c508bcfe8d58ff4ff8d4640508bcfe8ca8ff4ff8d4644508bcfe8bf8ff4ff8d4648508bcfe8b48ff4ff8d464c508bcfe8088ff4ff8d4650508bcfe8fd8ef4ff8d4654508bcfe8f28ef4ff8d4658508bcfe8e78ef4ff8d465c508bcfe8dc8ef4ff8d4660508bcfe8d18ef4ff8d4664508bcfe8c68ef4ff8d4668508bcfe85c8ff4ff8d466c508bcfe896e8f7ff83c678568bcfe8a58ef4ff5f5ec20400
 00511430	CMemoryAllocatorVariableSize::InsertNode	179	538b5c2410568b742418578bf93b1f743d8b44242085c0750f8b44241485c0752d8b063b43107c266a14e8afd56e008d481083c40485c974048b16891189430c8b0f3b590c8bf0753789410ceb326a14e889d56e008d481083c40485c974048b1689118943088b0f3bd98bf0750a8941048b0f89410ceb083b59087503894108895e04c7460800000000c7460c000000008b1783c2045256e85082f1ff8b470483c408408947048b4424105f89305e5bc21400
-00513880	CMemoryAllocatorVariableSize::InsertNode	178	538b5c2410558b6c241856578bf93b1f743f8b44242485c075108b44241885c0752f8a45003a43107c276a14e85db16e008d701083c40485f674058a4d00880e89430c8b0f3b590c8bf0753889410ceb336a14e836b16e008d701083c40485f674058a550088168943088b0f3bd98bf0750a8941048b0f89410ceb083b5908750389410833c0895e0489460889460c8b1783c2045256e8025ef1ff8b470483c408408947048b4424145f89305e5d5bc21400
+00513880	std::_Rb_tree<char, char, std::_Identity<char>, std::less<char>, std::allocator<char>>::_M_insert	178	538b5c2410558b6c241856578bf93b1f743f8b44242485c075108b44241885c0752f8a45003a43107c276a14e85db16e008d701083c40485f674058a4d00880e89430c8b0f3b590c8bf0753889410ceb336a14e836b16e008d701083c40485f674058a550088168943088b0f3bd98bf0750a8941048b0f89410ceb083b5908750389410833c0895e0489460889460c8b1783c2045256e8025ef1ff8b470483c408408947048b4424145f89305e5d5bc21400
 005580b0	CKeyRedefiner::ClearDuplicateDefinitions	189	83ec1c568bf18b869c0100008b088b5108578b7c24288b0fe8d3f7ffff84c00f85900000008b86a80100003b47040f858100000048741c48740e4875218b96b40100003b5710eb148b86ac0100003b4708eb098b8eb00100003b4f0c75578b8eb40100008b96a40100008b86b0010000894c24186a008d4c240c8954240c8b96b8010000894424188b86bc010000518bce8954242489442428c744241402000000c744241800000000e8c2fbffff8bcee8abf8ffff5f5e83c41cc20400
 00642880	CMinimapData::InitialiseMinimapTexture	166	83ec2c568bf18b462485c0578d7e2474078bcfe8d8763b008b4e048b068d542408894c241083c614528bce89442410e8ac063b006a006a006a016a008d442418506a018d4c2424518bcfe8b1793b008b54240c8b4424106a008d4c24185156895424288bd152894424306a008d442438508bcfc744242c00000000c744243000000000e8f8743b008bc8e8d10e3b008d4c2424c74424244cf82201e800053b005f5e83c42cc3
 00642970	CMinimapData::BuildMinimapTGA	177	83ec18535556576a016a088bf98b77048b2f6a086a086a088d4c242489742430c7442424ffffffffe8f30d3a006a008d442414508d5424288d4f1452896c242c89742430894c2420e873083b0033db85f67e4233f685ed7e338da424000000008b078b4f080fafc303c68b14818b47308b0c908d5424185253894c24208b4c241c56e829173b00463bf57cd48b44241c433bd87cbe8b44242c8b4c24146a006a0050e8791b3b005f5e5d5b83c418c20400
@@ -34275,7 +34275,7 @@ address	name	length	bytes
 0090e2e0	CMessageEventManager::FindMostRecentMessage<CFilter_Bind4<CMessageEventFilter_IsOfType, CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee>, CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>, CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing> >>	225	83ec08535556578bf98b47048b303bf0897c2414897424100f84b70000008b6c241c8b4d008d5e0853e8b20edaff84c00f84830000008b7d048d73488bcee82d380f0085c0746a8bcee822380f008b406cf7d0a81f755a8bcee812380f0085c0744f8b0f50e8b6e5ffff84c074438b7d088bcee8f8370f0085c074358bcee8ed370f008b486cf7d1f6c11f75248bcee8dc370f0085c074198b0f50e83093d9ff84c0740d8b4d0c53e823fcffff84c075188b7424108b7c24148b363b7704897424107411e959ffffff5f5e5d8bc35b83c408c204005f5e5d33c05b83c408c20400
 0090e4a0	CMessageEventManager::FindMostRecentMessage<CFilter_Bind4<CMessageEventFilter_IsOfType, CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>, CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee>, CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing> >>	225	83ec08535556578bf98b47048b303bf0897c2414897424100f84b70000008b6c241c8b4d008d5e0853e8f20cdaff84c00f84830000008b7d048d73488bcee86d360f0085c0746a8bcee862360f008b406cf7d0a81f755a8bcee852360f0085c0744f8b0f50e8a691d9ff84c074438b7d088bcee838360f0085c074358bcee82d360f008b486cf7d1f6c11f75248bcee81c360f0085c074198b0f50e8c0e3ffff84c0740d8b4d0c53e863faffff84c075188b7424108b7c24148b363b7704897424107411e959ffffff5f5e5d8bc35b83c408c204005f5e5d33c05b83c408c20400
 009c2350	CMemoryAllocatorVariableSize::InsertNode_24byte	225	538b5c2410568b742418578bf93b1f74598b44242085c075198b44241485c075498d431050568d4f08e8e2f4ffff84c075386a20e885c623008d481083c40485c974168b1689118b56048951048b56088951088b560c89510c89430c8b0f3b590c8bf0754989410ceb446a20e84dc623008d481083c40485c974168b1689118b56048951048b56088951088b560c89510c8943088b0f3bd98bf0750a8941048b0f89410ceb083b59087503894108895e04c7460800000000c7460c000000008b1783c2045256e80273a6ff8b470483c408408947048b4424105f89305e5bc21400
-009c2440	CMemoryAllocatorVariableSize::InsertNode_20byte	179	538b5c2410568b742418578bf93b1f743d8b44242085c0750f8b44241485c0752d8b063b43107c266a14e89fc523008d481083c40485c974048b16891189430c8b0f3b590c8bf0753789410ceb326a14e879c523008d481083c40485c974048b1689118943088b0f3bd98bf0750a8941048b0f89410ceb083b59087503894108895e04c7460800000000c7460c000000008b1783c2045256e84072a6ff8b470483c408408947048b4424105f89305e5bc21400
+009c2440	std::_Rb_tree<ESurfaceMultisampleType, ESurfaceMultisampleType, std::_Identity<ESurfaceMultisampleType>, std::less<ESurfaceMultisampleType>, std::allocator<ESurfaceMultisampleType>>::_M_insert	179	538b5c2410568b742418578bf93b1f743d8b44242085c0750f8b44241485c0752d8b063b43107c266a14e89fc523008d481083c40485c974048b16891189430c8b0f3b590c8bf0753789410ceb326a14e879c523008d481083c40485c974048b1689118943088b0f3bd98bf0750a8941048b0f89410ceb083b59087503894108895e04c7460800000000c7460c000000008b1783c2045256e84072a6ff8b470483c408408947048b4424105f89305e5bc21400
 009e9140	CMemoryFile::MovePosition	219	8b41088b54240483ec0803c2795f68b8a829016aff680ed722018d4c2418e88d5afbff8bd08d4c2404e89264fbff8d4c240ce86959fbff8d0424508d4c2410e8ac5afbff8d4c240ce83353fbff8d4c240ce84a59fbff68809336018d4c240851c744240c0b000000e8d75921003b410c7e606898a829016aff680ed722018d4c2418e8295afbff8bd08d4c2408e82e64fbff8d4c240ce80559fbff8d542404528d4c2410e8475afbff8d4c240ce8ce52fbff8d4c240ce8e558fbff68809336018d44240450c74424080b000000e87259210089410883c408c20400
 00a26660	CMeshDataBank::NotifyBankSize	201	83ec0853558be98b4c24148d442408505133db8d8d80030000896c2414895c2410e85a6a0000389d8d0000000f848f0000008b4424188b088b4004562bc157c1f80333ff33f63bc376518be88d6424008b0183f8018b5104740f83f802740a83f804740583f805750403daeb2483f803750403faeb1b83f806741483f80a740f83f807740a83f808740583f809750203f283c1084d75b98b6c2414538d8d8c030000e8095b0000578d8d98030000e89d5b0000568d8da4030000e8415c00005f5e5d5b83c408c20800
 00a560a0	CMatrix3x4::IsIdentity	209	51d901d825d8de2201d94104d94108d9053cba2901d80d3cba2901d91c24d9c0d8c9d9c2d8cbdec1d9c3d8ccdec1d81c24ddd8dfe0ddd8f6c441ddd80f848b000000d9410cd94110d825d8de2201d94114d9c0d8c9d9c2d8cbdec1d9c3d8ccdec1d81c24ddd8dfe0ddd8f6c441ddd8745cd94118d9411cd94120d825d8de2201d9c0d8c9d9c2d8cbdec1d9c3d8ccdec1d81c24ddd8dfe0ddd8f6c441ddd8742dd94124d94128d9412cd9c0d8c9d9c2d8cbdec1d9c3d8ccdec1d81c24ddd8dfe0ddd8f6c441ddd87404b00159c332c059c3
@@ -47489,7 +47489,7 @@ address	name	length	bytes
 0042b467	std::_Rb_tree<CCharString, std::pair<CCharString const, long>, std::_Select1st<std::pair<CCharString const, long>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, long>>>::_M_find<CCharString>	92	558bec5153568bd9578b3b8b7704897dfceb1eff75088d4610508d4b08e82af6ffff84c075088975fc8b7608eb038b760c85f675de8b45fc3bc7741383c01050ff75088d4b08e801f6ffff84c07403897dfc8b45fc5f5e5bc9c20400
 0042b52b	_global::BinarySearchTree_LowerBound	92	558bec5153568bd9578b3b8b7704897dfceb1eff75088d4610508d4b08e866f5ffff84c075088975fc8b7608eb038b760c85f675de8b45fc3bc7741383c01050ff75088d4b08e83df5ffff84c07403897dfc8b45fc5f5e5bc9c20400
 0042c1c1	_global::CMemoryAllocatorVariableSize_FindInsertPointLeft	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe89ff8ffff8b4508e9f70000007c0a8b45088930e9eb00000056e8acd0ffff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e87ed2ffff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e827d0ffff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e82ff8ffff8b088b450889085f5e5bc9c20c00
-0042c300	_global::CMemoryAllocatorVariableSize_FindInsertPointRight	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe86ef8ffff8b4508e9f70000007c0a8b45088930e9eb00000056e86dcfffff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e83fd1ffff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8e8ceffff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e8fef7ffff8b088b450889085f5e5bc9c20c00
+0042c300	std::_Rb_tree<long, std::pair<long const, EEngine2DLayer>, std::_Select1st<std::pair<long const, EEngine2DLayer>>, std::less<long>, std::allocator<std::pair<long const, EEngine2DLayer>>>::insert_unique	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe86ef8ffff8b4508e9f70000007c0a8b45088930e9eb00000056e86dcfffff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e83fd1ffff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8e8ceffff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e8fef7ffff8b088b450889085f5e5bc9c20c00
 004427d0	std::deque<CSubtitleRenderer::CSetTextInfo, std::allocator<CSubtitleRenderer::CSetTextInfo>>::~deque	150	83ec145355568bf18d46108b10578b78048b58088b680c8bc68b08894c24148b4804894c24188b48088b400c8944242083ec108bc489108b54242489780489580889680c83ec108bc489108b5424388950048948088b4c244089480c8d4c2433e80be3ffff8b462085c074228b561c8b460c83c20452508bcee8c2ccffff8b762085f6740956e8b9c17b0083c4045f5e5d5b83c414c3
 004432b0	CBankFileAsyncData::FreeBuffer	150	83ec145355568bf18d46108b10578b78048b58088b680c8bc68b08894c24148b4804894c24188b48088b400c8944242083ec108bc489108b54242489780489580889680c83ec108bc489108b5424388950048948088b4c244089480c8d4c2433e8ebd8ffff8b462085c074228b561c8b460c83c20452508bcee832c2ffff8b762085f6740956e8d9b67b0083c4045f5e5d5b83c414c3
 00448e90	_global::Vector_InsertWithMove	113	568bf18b4c24083b0e7d246a008d4424188d4a0c50518bcee833f8ffff8d542408528bcee8c7f4ffff8b742410eb278b4424148b7424105083ec0c85f68bc489088b4c241c8948048970087402ff068bcae83af6ffff85f67413ff0e750f8b4e08ff560456e8c25a7b0083c4045ec21000
@@ -47602,14 +47602,14 @@ address	name	length	bytes
 00565b60	swap<NParticleEngine::swap<NParticleEngine::CRegisteredPSCInfo>	78	83ec085356578bf98b078d5f04538d4c24148bf289442410e8a35b43008b0e890f8d7e04578bcbe8445c43008b54240c8d442410508bcf8916e8325c43008d4c2410e8695943005f5e5b83c408c3
 00566330	CPersistContext_TransferableVector<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>::TransferIn	39	8b41048b542408568b308d4c240c518b4c240ce848c247008b5424108b44240c8904965ec20c00
 00593666	CDefinitionManager::GetDef<CExpressionDef>	92	558becff75088d450850e8cba341008b450885c07440568b750c8b0e3bc8742085c97410ff490475058b01ff50048326008b450885c089067417ff40048b45088bc883c004ff0883380075058b01ff5004b0015eeb0232c05dc20800
-005940ec	_global::CMemoryAllocatorVariableSize_TransferIn_Int	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe8b1faffff8b4508e9f70000007c0a8b45088930e9eb00000056e88151e9ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e85353e9ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8fc50e9ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e841faffff8b088b450889085f5e5bc9c20c00
+005940ec	std::_Rb_tree<long, std::pair<long const, NUISystem::CComponent *>, std::_Select1st<std::pair<long const, NUISystem::CComponent *>>, std::less<long>, std::allocator<std::pair<long const, NUISystem::CComponent *>>>::insert_unique	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe8b1faffff8b4508e9f70000007c0a8b45088930e9eb00000056e88151e9ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e85353e9ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8fc50e9ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e841faffff8b088b450889085f5e5bc9c20c00
 005946f1	CCombatAction_GenericResponseToDecapitation::CCombatAction_GenericResponseToDecapitation	21	558bec6a008d450b50ff7508e8c2e9ffff5dc20400
 00594b8d	_Sort_heap<std::_Sort_heap<std::pair<long,CDefPointer<CContextSensitiveItemDef_const_>_>*,CContextSensitivePriorityCompare>	60	568bf2578bf98bc62bc78bc883e1f883f9087e23538bd8ff7424108bd66a008bcfe89bfbffff83eb088bc383e0f883ee0883f8087fe15b5f5ec20400
-0059b35c	_global::RBTree_TransferIn	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe829feffff8b4508e9f70000007c0a8b45088930e9eb00000056e811dfe8ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e8e3e0e8ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e88cdee8ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e8b9fdffff8b088b450889085f5e5bc9c20c00
+0059b35c	std::_Rb_tree<FRONTEND_SCREEN, std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>, std::_Select1st<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>, std::less<FRONTEND_SCREEN>, std::allocator<std::pair<FRONTEND_SCREEN const, NUISystem::CComponent *>>>::insert_unique	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe829feffff8b4508e9f70000007c0a8b45088930e9eb00000056e811dfe8ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e8e3e0e8ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e88cdee8ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e8b9fdffff8b088b450889085f5e5bc9c20c00
 005b1d38	_global::BinarySearchTree_Find	37	8b018b480485c974198b5424048b1239511072078bc18b4908eb038b490c85c975edc20400
 005b1da0	_global::BinarySearchTree_Find	37	8b018b480485c974198b5424048b1239511072078bc18b4908eb038b490c85c975edc20400
-005b2a37	_global::CMemoryAllocatorVariableSize_InsertOrFind_Int	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe8b529f3ff8b4508e9f70000007c0a8b45088930e9eb00000056e83668e7ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e8086ae7ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8b167e7ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e83728f3ff8b088b450889085f5e5bc9c20c00
-005bb5ef	_global::CMemoryAllocatorVariableSize_FindOrInsert_Wrapper	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe884a1f2ff8b4508e9f70000007c0a8b45088930e9eb00000056e87edce6ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e850dee6ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8f9dbe6ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e806a0f2ff8b088b450889085f5e5bc9c20c00
+005b2a37	std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>::insert_unique	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe8b529f3ff8b4508e9f70000007c0a8b45088930e9eb00000056e83668e7ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e8086ae7ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8b167e7ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e83728f3ff8b088b450889085f5e5bc9c20c00
+005bb5ef	std::_Rb_tree<EClothingSuitPart, std::pair<EClothingSuitPart const, long>, std::_Select1st<std::pair<EClothingSuitPart const, long>>, std::less<EClothingSuitPart>, std::allocator<std::pair<EClothingSuitPart const, long>>>::insert_unique	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe884a1f2ff8b4508e9f70000007c0a8b45088930e9eb00000056e87edce6ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e850dee6ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8f9dbe6ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e806a0f2ff8b088b450889085f5e5bc9c20c00
 005bb85a	_global::CMemoryAllocatorVariableSize_InsertOrFind_24Byte	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe88df9ffff8b4508e9f70000007c0a8b45088930e9eb00000056e813dae6ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e8e5dbe6ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e88ed9e6ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e81df9ffff8b088b450889085f5e5bc9c20c00
 005bbe32	_global::CMemoryAllocatorVariableSize_InsertOrFind_ScriptRight	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe853feffff8b4508e9f70000007c0a8b45088930e9eb00000056e83bd4e6ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e80dd6e6ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8b6d3e6ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e8e3fdffff8b088b450889085f5e5bc9c20c00
 005d97f0	CTCInventoryItem::IsWeapon	64	51e8bafcffff84c074328b0d148c3b01538d44240450c744240800000000e89319e5ff8b4c240485c98ad8740aff490475058b11ff52048ac35b59c332c059c3
@@ -47625,7 +47625,7 @@ address	name	length	bytes
 005f93d1	CCombatAction_GenericResponseToDecapitation::CCombatAction_GenericResponseToDecapitation	21	558bec6a008d450b50ff7508e841eaffff5dc20400
 005f93f6	CCombatAction_GenericResponseToDecapitation::CCombatAction_GenericResponseToDecapitation	21	558bec6a008d450b50ff7508e84beaffff5dc20400
 005f9714	_global::CMemoryAllocatorVariableSize_TransferIn	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe810faffff8b4508e9f70000007c0a8b45088930e9eb00000056e859fbe2ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e82bfde2ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e8d4fae2ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e8a0f9ffff8b088b450889085f5e5bc9c20c00
-005f9853	_global::RBTree_FindInsertionPoint	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe8dff9ffff8b4508e9f70000007c0a8b45088930e9eb00000056e81afae2ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e8ecfbe2ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e895f9e2ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e86ff9ffff8b088b450889085f5e5bc9c20c00
+005f9853	std::_Rb_tree<EHeroAbility, std::pair<EHeroAbility const, NUISystem::CComponent *>, std::_Select1st<std::pair<EHeroAbility const, NUISystem::CComponent *>>, std::less<EHeroAbility>, std::allocator<std::pair<EHeroAbility const, NUISystem::CComponent *>>>::insert_unique	319	558bec515153568b750c8bd98b033b700857756b837b04000f86050100008b7d108b078b4e103bc87e176a00575656ff75088bcbe8dff9ffff8b4508e9f70000007c0a8b45088930e9eb00000056e81afae2ff3b03597505565756eb368b0f3b48107d1533c9394e0c75075657e9960000005157e99a00000057e9a70000003bf0751a8b400c8b50108b4d103b117d075651506a00eb9851e98900000056e8ecfbe2ff598b4d108b393b7e100f9c450f807d0f00741c3978107d1733d239500c750950515052e964ffffff5251e95bffffff56e895f9e2ff807d0f00590f94c1807d0f007534397e100f9cc184c90f844fffffff3b0374053b78107d1d33c9394e0c750b56ff75105651e920ffffff51ff75105050e915ffffff384d0f0f8420ffffffff75108d45f88bcb50e86ff9ffff8b088b450889085f5e5bc9c20c00
 005f9a3c	_global::std_allocate_array	50	558bec8b450885c056740ec1e00350e8be4f6000598bf0eb0233f68b55108b4d0c8d450b5056e8cbf6ffff8bc65e5dc20c00
 005f9b1e	_Sort_heap<std::_Sort_heap<std::pair<long,CDefPointer<CContextSensitiveItemDef_const_>_>*,CContextSensitivePriorityCompare>	60	568bf2578bf98bc62bc78bc883e1f883f9087e23538bd8ff7424108bd66a008bcfe829f3ffff83eb088bc383e0f883ee0883f8087fe15b5f5ec20400
 005f9b5a	_Sort_heap<std::_Sort_heap<std::pair<long,CDefPointer<CContextSensitiveItemDef_const_>_>*,CContextSensitivePriorityCompare>	60	568bf2578bf98bc62bc78bc883e1f883f9087e23538bd8ff7424108bd66a008bcfe80ff3ffff83eb088bc383e0f883ee0883f8087fe15b5f5ec20400
@@ -47702,7 +47702,7 @@ address	name	length	bytes
 007d7e10	CTCTavernGameSpotTheAddition::GetRequiredScore	167	83ec1056578d442408508bf1c744240c00000000e8d721e1ffd986980000008b7c24088d4c24105183ec08ba01000000dd1c248d4c2420e8648a1c008bc8e82d661c008b97bc00000050528d442414508bcee80920e1ff8b7424208bd08bcee8fc3f1c008d4c240ce893361c008d4c2410e88a361c008d4c2414e8516c1c008b44240885c074168b78048bc883c0044f8bd785d2893875058b11ff52045f8bc65e83c410c20400
 007e3020	CTCCameraCollision::CTCCameraCollision	32	8b44240456508bf1e8d337eaffc70694032701c7460c000000008bc65ec20400
 007e72a0	CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase	26	568bf1e8d8301b0033c0c7064c09270189460889460c8bc65ec3
-007e9b40	_global::RBTree_Insert	191	538b5c2410568b742418578bf93b1f74438b44242085c0750f8b44241485c075338b063b4310722c6a18e89f4e41008d481083c40485c9740a8b1689118b560489510489430c8b0f3b590c8bf0753d89410ceb386a18e8734e41008d481083c40485c9740a8b1689118b56048951048943088b0f3bd98bf0750a8941048b0f89410ceb083b59087503894108895e04c7460800000000c7460c000000008b1783c2045256e834fbc3ff8b470483c408408947048b4424105f89305e5bc21400
+007e9b40	std::_Rb_tree<CThing *, std::pair<CThing *const, float>, std::_Select1st<std::pair<CThing *const, float>>, std::less<CThing *>, std::allocator<std::pair<CThing *const, float>>>::_M_insert	191	538b5c2410568b742418578bf93b1f74438b44242085c0750f8b44241485c075338b063b4310722c6a18e89f4e41008d481083c40485c9740a8b1689118b560489510489430c8b0f3b590c8bf0753d89410ceb386a18e8734e41008d481083c40485c9740a8b1689118b56048951048943088b0f3bd98bf0750a8941048b0f89410ceb083b59087503894108895e04c7460800000000c7460c000000008b1783c2045256e834fbc3ff8b470483c408408947048b4424105f89305e5bc21400
 007eba20	CCreatureAction_LookThroughWindow::CCreatureAction_LookThroughWindow	99	83ec0c56576aff8bf168d41027018d4c2410e8b9311b008b7c241833c0505089442414894424188d442414508d5424148bcfe8596aeaff50680000003f68000080bf578bcee8c680eaff8d4c2408e86d301b005fc706bc0f27018bc65e83c40cc20400
 007eebe0	CTCSmashableBase::CTCSmashableBase	32	8b44240456508bf1e8137ce9ffc7065c182701c74614000000008bc65ec20400
 00808520	_global::NPlayerTargeting_CTargetPoint_Vector_Assign	76	535556578bf98b4c24148b57046a008d44241850518b4c2424e8d2e8ffff8b6f048bd83bdd8bf374158da424000000008bcee8b9961f0083c61c3bf575f28b442414895f045f5e5d5bc20800
