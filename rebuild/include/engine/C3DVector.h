@@ -166,6 +166,15 @@ public:
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}
     // FableWin.pdb ??TC3DVector@@QBE?BV0@ABV0@@Z (cross product; debug copy 0x01B40A20 right after GetRight 0x01B409F0, expanded in 0x004A1CB0).
+#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XZ_GROUP
+    // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): the X and Z cross-product components parenthesised, Y
+    // bare. Same arithmetic and instructions as the default; the two no-code PAREN tuples move VC7.1's scheduling-region cut so the
+    // argument set-up of the first CMatrix3x4::operator* call (`push ecx ; lea edx,[esp+78h] ; push edx ; lea ecx,[esi+6Ch]`,
+    // 0x0075A8CF..0x0075A8D5) stays after the r ^ n stores (`fstp [esp+2Ch]` / `fstp [esp+30h]`, 0x0075A8C3 / 0x0075A8C7). Without
+    // it the set-up is hoisted to 0x0075A81A, ahead of the w ^ r product, and the frame slots of the cross-product temporaries move by 8
+    // (725 v 726 bytes). Chosen by a sweep of the CROSS_* groupings (ATTEMPTS.log v23..v36). Body only: no layout change.
+    FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),Z*other.X-X*other.Z,(X*other.Y-Y*other.X));}
+#else
 #ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XYZ_GROUP
     // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): every cross-product component parenthesised. Same
     // instructions as the default; the three no-code PAREN tuples sit ahead of VC7.1's first scheduling-region cut (81-tuple cap) and
@@ -182,6 +191,7 @@ public:
 #else
     FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector(Y*other.Z-Z*other.Y,Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
 #endif
+#endif // FABLE_RETAIL_C3DVECTOR_CROSS_XZ_GROUP
 #endif
     FABLE_VECTOR_INLINE bool operator==(const C3DVector& other)const{return X==other.X&&Y==other.Y&&Z==other.Z;}
 #ifdef FABLE_RETAIL_C3DVECTOR

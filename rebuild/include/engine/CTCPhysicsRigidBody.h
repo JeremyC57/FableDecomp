@@ -99,6 +99,10 @@ protected:
 private:
     void InitialiseBody();                                          // 0x0075B000
     void CalculateVertices(CRigidBody::CRigidBodyConfig& config);   // 0x00759EC0
+#ifdef FABLE_RETAIL_CTCPHYSICSRIGIDBODY_RESOLVECOLLISIONS
+    // Nested opt-in (row 0x0075A7A0): Ego_r / FableWin ?ResolveCollisions@CTCPhysicsRigidBody@@AAEXAAVCRigidBodyConfig@CRigidBody@@@Z.
+    void ResolveCollisions(CRigidBody::CRigidBodyConfig& config);   // 0x0075A7A0
+#endif
 #else
     unsigned char Body[0x1b8];                                      // +0xa0 CRigidBody
 #endif

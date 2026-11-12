@@ -394749,6 +394749,13 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupGuildmaster_Update_00977e00_test.cpp'
         PassPattern = '00977e00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0075a7a0'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_ResolveCollisions_0075a7a0.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_ResolveCollisions_0075a7a0_test.cpp'
+        PassPattern = '0075a7a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

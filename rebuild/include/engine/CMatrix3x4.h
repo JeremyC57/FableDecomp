@@ -19,6 +19,12 @@ public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
 #endif
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_OPERATOR_MUL_VECTOR
+    // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): Ego_r.pdb / FableWin.pdb
+    // ??DCMatrix3x4@@QBE?AVC3DVector@@ABV1@@Z, out of line in retail at 0x00A56530 (landed: the 3x3 part times the vector, result by
+    // hidden pointer, `ret 8`); the row calls it twice. A declaration only: no layout change, default path unchanged.
+    C3DVector operator*(const C3DVector& v) const;                        // 0x00A56530
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETIDENTITY
     // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ (inline in
     // retail, no out-of-line copy): the nine zeros as one chained assignment (retail stores them last to first, E43..E12,

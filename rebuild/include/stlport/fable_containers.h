@@ -474,8 +474,17 @@ public:
     _Tp& back() { return *(end()-1); }
     const _Tp& back() const { return *(end()-1); }
     void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
+#ifdef FABLE_RETAIL_STLP_VECTOR_INDEX_START
+    // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): operator[] reads _M_start directly instead of through
+    // begin() (same address arithmetic, one inline level less). With begin() VC7.1 drops that row's second induction slot
+    // ([esp+14h] index, 0x0075A7BA / 0x0075A7E0, beside the [esp+10h] byte offset, 0x0075A7D4) and stops holding &config.AngularMomentum /
+    // &config.AngularVelocity in ebx / ebp (0x0075A7CB / 0x0075A7CE): 729 v 726 bytes. Body only: no layout change.
+    _Tp& operator[](size_type n) { return *(this->_M_start+n); }
+    const _Tp& operator[](size_type n) const { return *(this->_M_start+n); }
+#else
     _Tp& operator[](size_type n) { return *(begin()+n); }
     const _Tp& operator[](size_type n) const { return *(begin()+n); }
+#endif // FABLE_RETAIL_STLP_VECTOR_INDEX_START
 #if defined(FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE) && defined(_MSC_VER)
     // Per-TU opt-in (chunk Q6, row 0x00542780 NUISystem::CIconText::AddIcon): the STLport push_back body below, visible but kept out
     // of line, as the retail TU calls it (push_back<CEmbeddedIcon> 0x00543C90, whose body calls _M_insert_overflow 0x00543B70).
