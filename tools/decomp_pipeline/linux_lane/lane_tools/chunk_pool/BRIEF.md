@@ -66,7 +66,7 @@ Never run `cd` into the scratchpad; keep the repo as cwd. Never commit. Never mo
           std::printf("00724bf0_TEST PASS\n");
           return 0;
       }
-- Loop prevention: at most 4 grading attempts per function. If it still differs, keep the best source
+- Loop prevention: see "Stay on task" below for the grade budget. If it still differs, keep the best source
   (comment: `// Grade: DIFFER(ours v retail) -- <what still differs>`) and move on. Scheduling-only diffs
   (same instructions, different order; `pop ecx` vs `add esp,4`; `jmp` vs `call ; ret`) are usually
   compiler-version artefacts: don't burn attempts on them.
@@ -77,26 +77,28 @@ Never run `cd` into the scratchpad; keep the repo as cwd. Never commit. Never mo
   dtor + `operator delete`; VC evaluates call arguments right to left; a by-value class argument with a user
   copy constructor is built in its stack slot (`push ecx ; mov ecx,esp ; mov [ecx],eax`).
 
-## Stay on task: author and grade (user rule, 2026-11-12)
+## Stay on task: keep trying to match the real row (user rule, 2026-11-12)
 
-The user watches these chunks and has asked that authoring agents AUTHOR AND GRADE rather than run hundreds of side tests with no
-grades. Recent chunks made about 300 tool calls for about 17 grades, and one row took 96 toy compiles and still did not match. Work
-like this instead:
+The user watches these chunks. Their rule: keep trying to MATCH the row by editing and grading it; do not get stuck testing small
+bits over and over. Recent chunks made about 300 tool calls for about 17 grades, and one row took 96 toy compiles and still did not
+match. Work like this instead:
 
 1. **Per row, the loop is: read the draft and its residue note -> edit the source -> grade it with q.py -> read the diff -> edit ->
-   grade.** A real grade of the real row is the unit of work. Nothing else counts as progress.
+   grade.** A real grade of the real row is the unit of work. Try your ideas ON THE ROW, not on toys.
 2. **First grade early.** Grade each row within about 12 tool calls of starting it (read draft, read the headers you need, port,
    grade). Do not study a row for dozens of calls before the first grade.
-3. **Toy / probe compiles are capped at 5 per row** (toy functions, c2prio runs, spelling sweeps, `/FAs` listings of side files),
-   and only after the row has 2 real grades. Each probe must answer one stated question and be followed by a real grade that uses
-   the answer. Never sweep dozens of spellings in a toy: if 5 probes do not move the residue, it is a compiler tie -- write the
-   line-2 note and move on.
-4. **Row budget: about 40 tool calls and 10 grades.** When either runs out, record the best source with an honest line-2 residue note
-   and start the next row. Reach EVERY row in the chunk; a row with 0 grades at hand-back is a failure of this rule.
-5. **No side quests.** Do not build tooling, re-verify landed rows, survey the codebase, re-derive names that the brief or the notes
+3. **Grades are not rationed** (this replaces the old 10-per-row cap): spend up to about 30 grades on a row while each grade tries a
+   NEW idea. Stop a row when 6 grades in a row leave the residue unchanged or you are out of ideas: record the best source with an
+   honest line-2 residue note and start the next row.
+4. **Toy / probe compiles are capped at 5 per row** (toy functions, c2prio runs, spelling sweeps, `/FAs` listings of side files).
+   Each probe must answer one stated question and be followed by a real grade that uses the answer. Never sweep dozens of spellings
+   in a toy: if you want to try a spelling, try it in the row and grade the row.
+5. **Reach EVERY row in the chunk.** Keep an eye on the whole chunk: a row with 0 grades at hand-back breaks this rule.
+6. **No side quests.** Do not build tooling, re-verify landed rows, survey the codebase, re-derive names the brief or the notes
    already give, or polish documentation mid-chunk. Read only what the current row needs. Write NOTES / LESSONS once, at the end.
-6. **ATTEMPTS.log has one line per grade AND one line per probe** (`<addr> grade N <result>` / `<addr> probe N <question> -> <answer>`),
-   so the ratio is visible. The final report starts with: rows reached, grades, probes, tool calls.
+7. **ATTEMPTS.log has one line per grade AND one line per probe** (`<addr> grade N <result> <idea tried>` /
+   `<addr> probe N <question> -> <answer>`), so the ratio is visible. The final report starts with: rows reached, grades, probes,
+   tool calls.
 
 ## Output
 Write `$S/w22/<your-dir>/payload.json` as {"result":{"authored":[ {address, module, name, source_cpp, test_cpp, pass_pattern, flags(optional list)} ... ]}}
