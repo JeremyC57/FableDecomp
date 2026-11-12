@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_WILLSHIELDINTO
+// Retail opt-in (row 0x00977E00): RTTI .?AVCCombatAction_WillShieldInto@@ : CCombatActionBase (vtable 0x0129461C), Ego_r.pdb
+// ??0CCombatAction_WillShieldInto@@QAE@AAVCThingCreatureBase@@MM@Z (out of line, 0x00956760). Members ShieldUpTime +0x114,
+// ShieldHealth +0x118 (retail sizeof 0x11C). Needs the retail engine/CCombatActionBase.h.
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;
+class CCombatAction_WillShieldInto : public CCombatActionBase {
+public:
+    CCombatAction_WillShieldInto(CThingCreatureBase& owner, float shield_up_time, float shield_health);   // 0x00956760
+private:
+    float ShieldUpTime;                                                  // +0x114
+    float ShieldHealth;                                                  // +0x118
+};
+#else
+
 #pragma pack(push, 1)
 class CCombatAction_WillShieldInto {
 public:
@@ -83,4 +98,5 @@ FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, ShieldUpTime) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, ShieldHealth) == 0x118);
 
+#endif // FABLE_RETAIL_CCOMBATACTION_WILLSHIELDINTO
 #endif // FABLE_ENGINE_CCOMBATACTION_WILLSHIELDINTO_H

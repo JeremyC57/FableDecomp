@@ -63,6 +63,9 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, Body) == 0xa0);
 #include "engine/C2DVector.h"
 #include "engine/CRightHandedSet.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCPHYSICSRIGIDBODY_BODY
+#include "engine/CRigidBody.h"
+#endif
 class CThing;
 class CThingPhysicsMeshInfo;
 class CTCPhysicsRigidBody : public CTCPhysicsBase {
@@ -88,7 +91,17 @@ protected:
     CRightHandedSet RHSet;                                          // +0x68
     CRightHandedSet OldRHSet;                                       // +0x80
     C2DVector OffsetVector;                                         // +0x98
+#ifdef FABLE_RETAIL_CTCPHYSICSRIGIDBODY_BODY
+    // Nested opt-in (wf17, row 0x0075B000 InitialiseBody): Body's Ego_r.pdb type CRigidBody (engine/CRigidBody.h, retail 0x1b8) and
+    // FableWin.pdb's private ?InitialiseBody@CTCPhysicsRigidBody@@AAEXXZ (0x0075B000) /
+    // ?CalculateVertices@CTCPhysicsRigidBody@@AAEXAAVCRigidBodyConfig@CRigidBody@@@Z (0x00759EC0). No layout change.
+    CRigidBody Body;                                                // +0xa0
+private:
+    void InitialiseBody();                                          // 0x0075B000
+    void CalculateVertices(CRigidBody::CRigidBodyConfig& config);   // 0x00759EC0
+#else
     unsigned char Body[0x1b8];                                      // +0xa0 CRigidBody
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsRigidBody) == 0x258);
 #endif // FABLE_RETAIL_CTCPHYSICSRIGIDBODY

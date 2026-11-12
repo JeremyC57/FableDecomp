@@ -16,6 +16,11 @@ public:
  bool IsAnimated()const;
  C3DVector GetHelperPointPositionStatic(const CCharString&,long)const;
  C3DVector GetHelperPointPositionAnimated(const CCharString&,long,const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,C3DAnimationManager&)const;
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_POSITIONMATRIXFROMRHSET
+ // Retail opt-in (wf17, row 0x0075B000): FableWin.pdb ?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z
+ // (static __fastcall, landed at 0x00A358F0). Declaration only.
+ static CMatrix3x4 __fastcall GetPositionMatrixFromRHSet(const class CRightHandedSet& set);   // 0x00A358F0
+#endif
 protected:
  const C3DMeshInfo* MeshInfo;
  CCountedPointer<const C3DMeshStats> Mesh;

@@ -1,0 +1,32 @@
+addr       parity           behav  name
+007e2a60   WARN RELOC_NAME: ?EndSecuritySweep@CTCVillage@@QAEXXZ -> 006590bf labelled '_global::TailJmp_InvalidateAndClearAllSecuritySweepTasks_006590bf'
+007e2a60   RELOCATION_MATCH PASS   GlobalUpdate
+0075b000   RELOCATION_MATCH PASS   InitialiseBody
+008548b0   RELOCATION_MATCH PASS   CreateAttackEffect
+00958840   RELOCATION_MATCH PASS   Update
+00b08250   RELOCATION_MATCH PASS   SetTrailPositionsFromSpline
+006cf530   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Const_traits@U?$pair@$$CBJJ@std@@@2@@std@@QAEAAU01@XZ -> 005b16ff labelled '_global::RbTreeIterator_PreIncrement_005b16ff'
+006cf530   WARN RELOC_NAME: ??1?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE@XZ -> 004df885 labelled '_global::TailJmp_OnReadFinished_004df885'
+006cf530   RELOCATION_MATCH PASS   FindAppropriateGift
+0079d7e0   RELOCATION_MATCH PASS   UnPause
+00977e00   RELOCATION_MATCH PASS   Update
+
+WINS: 8
+  007e2a60 RELOCATION_MATCH CTCFineDialogue::GlobalUpdate
+  0075b000 RELOCATION_MATCH CTCPhysicsRigidBody::InitialiseBody
+  008548b0 RELOCATION_MATCH CCreatureAction_SpiritAttack::CreateAttackEffect
+  00958840 RELOCATION_MATCH CAIStateGroup_MinionReactToCrime::Update
+  00b08250 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::SetTrailPositionsFromSpline
+  006cf530 RELOCATION_MATCH CTCWife::FindAppropriateGift
+  0079d7e0 RELOCATION_MATCH CTCBulletTime::UnPause
+  00977e00 RELOCATION_MATCH CAIStateGroup_Guildmaster::Update
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CTCFineDialogue_GlobalUpdate_007e2a60
+  CTCPhysicsRigidBody_InitialiseBody_0075b000
+  CCreatureActionSpiritAttack_CreateAttackEffect_008548b0
+  CAIStateGroupMinionReactToCrime_Update_00958840
+  NParticleEngineCPSCSingleSprite_SetTrailPositionsFromSpline_00b08250
+  CTCWife_FindAppropriateGift_006cf530
+  CTCBulletTime_UnPause_0079d7e0
+  CAIStateGroupGuildmaster_Update_00977e00

@@ -71,6 +71,10 @@ public:
     // Retail opt-in (chunk Q32, row 0x00958B20 CAIStateGroup_MinionReactToCrime::OnReplace): Ego_r.pdb / FableWin.pdb
     // ?DecrementForceOpenCount@CThingBuilding@@QAEXXZ, inline in retail (`dec dword ptr [eax+0D0h]` on ForceOpenCount, 0x00958B4A).
     void DecrementForceOpenCount() { --ForceOpenCount; }
+#ifdef FABLE_RETAIL_CTHINGBUILDING_INCREMENTFORCEOPENCOUNT
+    // Nested opt-in (wf17, row 0x00958840): FableWin.pdb ?IncrementForceOpenCount@CThingBuilding@@QAEXXZ, inline in retail (`inc [eax+0D0h]`).
+    void IncrementForceOpenCount() { ++ForceOpenCount; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGBUILDING
     void SetOverrideAutomaticLocking(bool value) { OverrideAutomaticLocking = value; }   // FableWin ?SetOverrideAutomaticLocking@CThingBuilding@@QAEX_N@Z (inline)

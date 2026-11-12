@@ -293,7 +293,7 @@ public:
     // +0x91 run in place, `or al,2 ; mov [ecx],al` at 0x005B3C33). Body unproven beyond that store. No layout change.
     void SetAsCreatedByOwnerThingCreation(bool created) { CreatedByOwnerThingCreation = created; }
 #endif
-#ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
+#if defined(FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE) || defined(FABLE_RETAIL_CTHING_HASTC_MATERIALISED)   // FABLE_RETAIL_CTHING_HASTC_MATERIALISED (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): same body, own opt-in; retail `and cl,1 ; mov [esp+13h],cl` at 0x007E2AC1 / 0x007E2B9E / 0x007E2C27. No layout change.
     // Native0076efeb and0076f1d6 materialise the component-presence boolean.
     bool HasTC(ETCInterfaceType type) const { const bool& found=UsingComponents.test(type); return found; }
 #else

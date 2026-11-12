@@ -9,6 +9,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GUILDMASTER
+// Retail opt-in (row 0x00977E00 CAIStateGroup_Guildmaster::Update): the polymorphic retail class over CAIStateGroupBase
+// (RTTI .?AVCAIStateGroup_Guildmaster@@ : CAIStateGroupBase, vtable 0x0128D444; Ego_r.pdb members). FableWin.pdb names:
+// ?Update@CAIStateGroup_Guildmaster@@UAEXXZ (slot 12), ?IsStillRunnable@..@@IAE_NXZ 0x009779A0, ?GetBetterTeleportPos@..@@IAE_NAAVC3DVector@@@Z
+// 0x00977820, ?FindAndStoreBodyguards@..@@IAEXXZ 0x00977B10. Needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS, FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_containers.h"
+class CThing; class CThingCreatureBase; class C3DVector;
+class CAIStateGroup_Guildmaster : public CAIStateGroupBase {
+public:
+    virtual void Update();                                               // slot 12 0x00977E00
+protected:
+    bool GetBetterTeleportPos(C3DVector& pos);                           // 0x00977820
+    bool IsStillRunnable();                                              // 0x009779A0
+    void FindAndStoreBodyguards();                                       // 0x00977B10
+    long AttackNum;                                                      // +0x14
+    CIntelligentPointer<CThingCreatureBase> PEnemy;                      // +0x18
+    CIntelligentPointer<CThing> PLastTeleportMarker;                     // +0x20
+    std::vector<CIntelligentPointer<CThing> > TeleportMarkers;           // +0x28
+    long LastWillFrame;                                                  // +0x34
+    long LastTeleportFrame;                                              // +0x38
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_Guildmaster) == 0x3c);
+#else
+
 #pragma pack(push, 1)
 struct CAIStateGroup_Guildmaster {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -34,4 +60,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, TeleportMarkers) == 0x28
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, LastWillFrame) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, LastTeleportFrame) == 0x38);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_GUILDMASTER
 #endif // FABLE_ENGINE_CAISTATEGROUP_GUILDMASTER_H

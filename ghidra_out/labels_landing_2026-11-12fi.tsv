@@ -1,0 +1,9 @@
+address	name	evidence
+007E2A60	?GlobalUpdate@CTCFineDialogue@@UAEX_N@Z	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs
+0075B000	?InitialiseBody@CTCPhysicsRigidBody@@AAEXXZ	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs
+008548B0	?CreateAttackEffect@CCreatureAction_SpiritAttack@@AAEXXZ	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs
+00958840	?Update@CAIStateGroup_MinionReactToCrime@@UAEXXZ	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs
+00B08250	?SetTrailPositionsFromSpline@CPSCSingleSprite@NParticleEngine@@IAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@MM@Z	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs
+006CF530	?FindAppropriateGift@CTCWife@@AAEXXZ	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs
+0079D7E0	?UnPause@CTCBulletTime@@QAEXXZ	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs
+00977E00	?Update@CAIStateGroup_Guildmaster@@UAEXXZ	workflow wf17 (landing fi): RELOCATION_MATCH, two PDBs

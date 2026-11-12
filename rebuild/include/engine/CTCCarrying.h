@@ -16,6 +16,10 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CARRYING; }
     CThing* GetThingInPrimarySlot() const;                   // 0x006A1440
     CThing* RemoveThingFromPrimarySlot(bool);                // 0x006A1E00
+#ifdef FABLE_RETAIL_CTCCARRYING_SETBYPASSFILTER
+    // Opt-in (wf17 row 0x0079D7E0): Ego_r.pdb ?SetAllCarriedThingsAsBypassFilter@CTCCarrying@@QAEXPAX@Z (retail 0x006A2520, landed).
+    void SetAllCarriedThingsAsBypassFilter(void* key);       // 0x006A2520
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYING
     // Chunk 756 (row 0x006CA380 CTCHero::SetWeaponsAsUsable): Ego_r.pdb ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z (0x006A1540).
     static bool __fastcall IsThingCarryingWeapon(const CThing& thing);

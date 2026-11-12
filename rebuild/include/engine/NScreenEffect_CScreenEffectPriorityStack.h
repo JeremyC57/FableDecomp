@@ -89,7 +89,8 @@ namespace std { template <class T> class allocator; template <class T, class A> 
 // ScreenEffectPriority: the enum of the PDB's W4ScreenEffectPriority@NScreenEffect@@ parameters; the script interface passes 1
 // (enumerator names are not in the PDB dumps on disk: SCREEN_EFFECT_PRIORITY_SCRIPT is the landed 0x008901C0 spelling).
 namespace NScreenEffect {
-enum ScreenEffectPriority { SCREEN_EFFECT_PRIORITY_SCRIPT = 1, SCREEN_EFFECT_PRIORITY_FORCE_DWORD = 0x7fffffff };
+// SCREEN_EFFECT_PRIORITY_SPELL = 2: the FULL branch's enumerator (same enum, same value), passed by CTCBulletTime::UnPause 0x0079D7E0.
+enum ScreenEffectPriority { SCREEN_EFFECT_PRIORITY_SCRIPT = 1, SCREEN_EFFECT_PRIORITY_SPELL = 2, SCREEN_EFFECT_PRIORITY_FORCE_DWORD = 0x7fffffff };
 class CScreenEffectPriorityStack {
 public:
 #pragma pack(push, 1)

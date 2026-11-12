@@ -102,6 +102,11 @@ public:
     // the def-index overload; `push [[opinion+1Ch]+38h] ; call` from CAIStateGroup_MinionReactToCrime::OnReplace). Declaration only.
     void SetOpinionDeedMask(long deedMaskDef);                           // 0x006821E0
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_FINDAGUARD
+    // Nested opt-in (wf17, row 0x00958840): FableWin.pdb inline ?SetInFindAGuardAndYellForHelp@CTCCreatureOpinionOfHero@@QAEX_N@Z
+    // (`mov byte ptr [eax+343h],1/0`). No layout change.
+    void SetInFindAGuardAndYellForHelp(bool value) { InFindAGuardAndYellForHelp = value; }
+#endif
     bool IsWillingToAttackHeroOnOpinion() const;                         // 0x006817F0
     bool IsFactionEnemyToHeroOverriddenOnOpinion() const;                // 0x00681850
     bool IsWillingToStartFollowingHero() const;                          // 0x006818A0

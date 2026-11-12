@@ -32347,7 +32347,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00958760	InitStateGroup	CAIStateGroup_MinionReactToCrime	__thiscall	void	3	CAIStateGroup_MinionReactToCrime *,CWorld const &,CThingAICreature &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CAIStateGroupMinionReactToCrime_InitStateGroup_00958760.cpp
 00958770	GetSomeoneElseGettingHelpMessage	CAIStateGroup_MinionReactToCrime	__thiscall	CMessageEvent *	2	CAIStateGroup_MinionReactToCrime *,long	1	yes	accepted									
 009587d0	OnActivate	CAIStateGroup_MinionReactToCrime	__thiscall	void	1	CAIStateGroup_MinionReactToCrime *	1	yes	accepted									
-00958840	?Update@CAIStateGroup_MinionReactToCrime@@UAEXXZ	CAIStateGroup_MinionReactToCrime	__thiscall	void	1	CAIStateGroup_MinionReactToCrime *	1	yes	accepted									
+00958840	Update	CAIStateGroup_MinionReactToCrime	__thiscall	void	1	CAIStateGroup_MinionReactToCrime *	1	yes	accepted									
 00958b20	CAIStateGroup_MinionReactToCrime::OnReplace	CAIStateGroup_MinionReactToCrime	__thiscall	void	1	CAIStateGroup_MinionReactToCrime *	1	yes	accepted									
 00958c00	IsGuardOnLevel	CAIStateGroup_MinionReactToCrime	__thiscall	bool	1	CAIStateGroup_MinionReactToCrime *	1	yes	accepted									
 00958cb0	IsRunnable	CAIStateGroup_MinionReactToCrime	__thiscall	bool	1	CAIStateGroup_MinionReactToCrime *	1	yes	accepted									
@@ -32828,7 +32828,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00977a30	OnDeactivate	CAIStateGroup_Guildmaster	__thiscall	void	1	CAIStateGroup_Guildmaster *	1	yes	accepted									
 00977b10	FindAndStoreBodyguards	CAIStateGroup_Guildmaster	__thiscall	void	1	CAIStateGroup_Guildmaster *	1	yes	accepted									
 00977c40	OnActivate	CAIStateGroup_Guildmaster	__thiscall	void	1	CAIStateGroup_Guildmaster *	1	yes	accepted									
-00977e00	CAIStateGroup_Guildmaster::Update	CAIStateGroup_Guildmaster	__thiscall	void	1	CAIStateGroup_Guildmaster *	1	yes	accepted									
+00977e00	Update	CAIStateGroup_Guildmaster	__thiscall	void	1	CAIStateGroup_Guildmaster *	1	yes	accepted									
 00978100	CIVCountedPointer_Release_00978100	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\97\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978100.cpp
 00978130	CIVCountedPointer_Release_00978130	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\97\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978130.cpp
 00978190	GetSubDef<CGuildMasterDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									

@@ -1,0 +1,6 @@
+0075b000	CTCPhysicsRigidBody::InitialiseBody	RELOCATION_MATCH	75	parens tuple cuts
+008548b0	CCreatureAction_SpiritAttack::CreateAttackEffect	RELOCATION_MATCH	35	Insert + CArray::push_back split; overlay CVectorMap/CParticleUpdateParameters opt-ins
+00977e00	CAIStateGroup_Guildmaster::Update	RELOCATION_MATCH	6	ported onto shared headers; single GetTC shield cancel; {Terminate();return;} tail
+00854dd0	CCreatureAction_SpiritAttack::PerformAction	DIFFER(697v720)	50	see NOTES.md
+00854dd0	CCreatureAction_SpiritAttack::PerformAction	DIFFER(710v720)	~35	attempt 2: 9 hunks (fadd order + direction X-first)
+0075a7a0	CTCPhysicsRigidBody::ResolveCollisions	RELOCATION_MATCH	60	Hecker numerator spelling + CROSS_XZ_GROUP + DOT_ORDERED_ZYX

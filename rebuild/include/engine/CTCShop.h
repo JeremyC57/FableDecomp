@@ -31,6 +31,12 @@ public:
     bool CalcIsStallLike();
 #endif
     void SellItem(long);
+#ifdef FABLE_RETAIL_CTCSHOP_GETSTOCKLIST
+    // Retail opt-in (row 0x006CF530 CTCWife::FindAppropriateGift): Ego_r.pdb / FableWin.pdb
+    // ?GetStockList@CTCShop@@QBE?BV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@XZ, out of line at 0x00774610
+    // (landed). Declaration only.
+    const std::map<long,long> GetStockList() const;                    // 0x00774610
+#endif
     float GetCurrentBasicPrice(long,long) const;
     long GetCurrentBuyPrice(long,long) const;
 #ifdef FABLE_RETAIL_CTCSHOP_SELLPRICE

@@ -291,6 +291,22 @@ public:
     float            RotCounter;                                         // +0x1d0
     bool             IsInCutSceneFirstTime;                              // +0x1d4
     std::list<CHeroMarriageInfo> Marriages;                              // +0x1d8
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_FINEPAID)
+    // Retail opt-in (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z (0x0057B327),
+    // ?KickHeroToMostRecentSafeRegion@CTCHeroStats@@QAEXXZ (0x0057DF85, out of line), and the inline Ego_r.pdb accessors
+    // ?GetFinePaid@CTCHeroStats@@QBEJXZ / ?SetFinePaid@CTCHeroStats@@QAEXJ@Z / ?GetTimesThrownOut@CTCHeroStats@@QBEJXZ /
+    // ?SetTimesThrownOut@CTCHeroStats@@QAEXJ@Z over FinePaid +0x100 / TimesThrownOut +0x104 (the generated default branch's offsets;
+    // the row's `mov eax,[esi+100h]` / `mov [esi+104h],eax`).
+    void AddMoney(long amount, bool flag);                               // 0x0057B327
+    void KickHeroToMostRecentSafeRegion();                               // 0x0057DF85
+    long GetFinePaid() const { return FinePaid; }
+    void SetFinePaid(long fine_paid) { FinePaid = fine_paid; }
+    long GetTimesThrownOut() const { return TimesThrownOut; }
+    void SetTimesThrownOut(long times_thrown_out) { TimesThrownOut = times_thrown_out; }
+    unsigned char _pad_after_base[0x100 - sizeof(CTCBase)];
+    long FinePaid;                                                       // +0x100
+    long TimesThrownOut;                                                 // +0x104
+    unsigned char _pad_0x108[0x1dc - 0x108];
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_PROPERTYOWNED)
     // Retail opt-in (workflow wf8, row 0x0072EB40 CTCActionUseBuyHouse::ReceivedConfirmation): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z
     // (retail 0x0057B327, as the BOASTS branch) with NumberOfShopsOwned +0xE0 / NumberOfHousesOwned +0xE4 (the generated default

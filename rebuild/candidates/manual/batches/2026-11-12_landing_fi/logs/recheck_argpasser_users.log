@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006b83e0   RELOCATION_MATCH PASS   CEnvironmentSpellEffectInterpolator::ScreenFilterSetFlags
+0079cf30   WARN RELOC_NAME: ?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z -> 006b83f0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+0079cf30   RELOCATION_MATCH PASS   CTCBulletTime::Pause
+0079d7c0   RELOCATION_MATCH PASS   CTCBulletTime::OnKill
+0079dc80   MATCH            PASS   CTCBulletTime::HasFrameUpdate
+
+WINS: 4
+  006b83e0 RELOCATION_MATCH CEnvironmentSpellEffectInterpolator::?ScreenFilterSetFlags@CEnvironmentSpellEffectInterpolator@@QAEXABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@PAX@Z
+  0079cf30 RELOCATION_MATCH CTCBulletTime::?Pause@CTCBulletTime@@QAEXXZ
+  0079d7c0 RELOCATION_MATCH CTCBulletTime::?OnKill@CTCBulletTime@@UAEXXZ
+  0079dc80 MATCH CTCBulletTime::?HasFrameUpdate@CTCBulletTime@@UBE_NXZ

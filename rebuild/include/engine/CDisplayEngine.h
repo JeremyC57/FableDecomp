@@ -36,7 +36,9 @@ public:
     // inline in retail (the row tests the first byte of LetterBox +0x70 in place: `cmp byte ptr [eax+70h],0`, 0x0064C94F). No layout change.
     bool IsLetterBoxMode() const { return *reinterpret_cast<const bool*>(LetterBox); }
 #endif
-#ifdef FABLE_RETAIL_CTCWIFE_MARRY
+#if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CDISPLAYENGINE_STARTSCREENFADEOUT)
+    // FABLE_RETAIL_CDISPLAYENGINE_STARTSCREENFADEOUT (wf17, row 0x007E2A60): the same Ego_r.pdb declaration
+    // ?StartScreenFadeOut@CDisplayEngine@@QAEXMMVCRGBColour@@M@Z (0x00434C00) under its own opt-in name. No layout change.
     void StartScreenFadeOut(float,float,CRGBColour,float);
 #endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES

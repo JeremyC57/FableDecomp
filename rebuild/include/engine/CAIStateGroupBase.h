@@ -161,6 +161,13 @@ protected:
     EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker,
         CIntelligentPointer<const CThing> target, unsigned long speech, bool interrupt, long priority);            // 0x009812C0
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD_YELL
+protected:
+    // Nested opt-in (wf17, row 0x00958840 CAIStateGroup_MinionReactToCrime::Update): Ego_r.pdb
+    // ?AIAction_FindAGuardAndYellForHelp@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@VC3DVector@@K_N@Z (protected), out of line at 0x0097FEA0.
+    EAIActionReturn AIAction_FindAGuardAndYellForHelp(C3DVector pos, unsigned long deedHandle, bool yell);   // 0x0097FEA0
+public:
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FINDAGUARD
     // Opt-in (wf11, row 0x009810B0): Ego_r.pdb / FableWin.pdb nested ?CAIFilterBase@CAIStateGroupBase@@ (vptr only; the
     // filter test is the virtual operator() const) and the protected members

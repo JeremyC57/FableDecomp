@@ -11,6 +11,11 @@ public:
  void RemoveMessage(const CMessageEvent*);
 #endif
  CMessageEvent* AddMessage(EMessageEventType,unsigned long,const C3DVector&,CThing*,CThing*,float,float,long);
+#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_ADDFROMDEF
+ // Nested opt-in (wf17, row 0x00958840): Ego_r.pdb ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
+ // (landed 0x00687730). Declaration only.
+ CMessageEvent* AddMessage(const class CMessageEventDef& def,const C3DVector& pos,CThing* originator,CThing* target,long extraData);   // 0x00687730
+#endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT
  // Opt-in (w22 agent1016, row 0x00934E50): Ego_r.pdb / FableWin.pdb member template
  // ??$FindMostRecentMessage@<filter>@CMessageEventManager@@QBEPBVCMessageEvent@@ABV<filter>@@Z (one COMDAT per filter type in retail:
@@ -36,6 +41,11 @@ public:
   return 0;
  }
 #endif
+#endif
+#if defined(FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT_DECL) && !defined(FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT)
+ // Opt-in (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): the same member template, declaration only, for a TU that calls
+ // the COMDAT out of line (FindMostRecentMessage<CMessageEventFilter_IsOfType> 0x004AB8B0: `push filter ; mov ecx,manager ; call`).
+ template<class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const;
 #endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDALL
  // Opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): Ego_r.pdb member template

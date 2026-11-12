@@ -82,6 +82,15 @@ public:
     // the constructor 0x00A12CC0). Declaration only: no layout change.
     void SetPositionMatrix(const C3DVector& position,const class CRightHandedSet& axes,float scale);   // 0x00A114B0
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_RIGIDBODY
+    // Retail opt-in (wf17, row 0x0075B000 CTCPhysicsRigidBody::InitialiseBody): Ego_r.pdb / FableWin.pdb
+    // ?GetBoundingBoxZEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ, ?GetCentreOfGravity@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ and
+    // ?GetRigidBodyBoundingPoints@CPhysicsMeshObject@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z, out of line.
+    // Declarations only: no layout change. Needs the includer's std::vector (stlport/fable_containers.h) and C3DVector.
+    C3DVector GetBoundingBoxZEdge() const;                               // 0x00A11BA0
+    C3DVector GetCentreOfGravity() const;                                // 0x00A11EC0
+    void GetRigidBodyBoundingPoints(std::vector<C3DVector>& points) const;   // 0x00A12840
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_CENTRE
     // Nested opt-in (chunk 760, row 0x00A11AE0): Ego_r.pdb ?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ.
     C3DVector GetBoundingBoxCentre() const;                              // 0x00A11AE0

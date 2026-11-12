@@ -67,6 +67,19 @@ public:
     void DetachFromDummyVillager(CThing*);
 #endif
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+#ifdef FABLE_RETAIL_CTCVILLAGE_FINEDIALOGUE
+    // Retail opt-in (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): Ego_r.pdb ?IsHeroMurderer@CTCVillage@@QAE_NXZ (0x0065A1FD),
+    // ?ClearCrimes@CTCVillage@@QAEXXZ (0x0065C2D0) and ?EndSecuritySweep@CTCVillage@@QAEXXZ (0x006590BF, body `jmp 0x006590A0`: the
+    // tail call to the private ?InvalidateAndClearAllSecuritySweepTasks@CTCVillage@@AAEXXZ). Ego_r.pdb names the same 5-byte jmp
+    // 0x0069D8D1 EndSecuritySweep (strict signature f448c9f6d17c6e3f in both exes) and its target 0x0069D86E InvalidateAndClear...;
+    // FableWin.pdb has both (0x02161BAA / 0x021619D9). Declarations only.
+    bool IsHeroMurderer();                                   // 0x0065A1FD
+    void ClearCrimes();                                      // 0x0065C2D0
+    void EndSecuritySweep();                                 // 0x006590BF
+private:
+    void InvalidateAndClearAllSecuritySweepTasks();          // 0x006590A0
+public:
+#endif
     bool IsHeroCriminal();                                   // 0x0065BFCE ?IsHeroCriminal@CTCVillage@@QAE_NXZ (Ego_r; chunk 755 row 0x0091EA70)
 #ifdef FABLE_RETAIL_CTCVILLAGE_GUARDFOLLOW
     // Nested opt-in (chunk 755, row 0x0090C540): Ego_r.pdb ?SetGuardFollowingPlayer@CTCVillage@@QAEXPAVCThingAICreature@@@Z (retail

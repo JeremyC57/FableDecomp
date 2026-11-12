@@ -107,7 +107,11 @@ public:
     // still-empty vector, 0x008E1832; then `mov byte ptr [Dirty],1`).
     __forceinline
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_INSERT_VECTOR_PUSHBACK
+    void Insert(const value_type& value) { std::vector<value_type>::push_back(value); Dirty=true; }
+#else
     void Insert(const value_type& value) { this->push_back(value); Dirty=true; }
+#endif
     void Update() { if(Dirty) { std::sort(this->begin(),this->end(),Compare); Dirty=false; } }
 #endif
 #ifdef FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE

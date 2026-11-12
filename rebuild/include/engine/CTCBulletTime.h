@@ -33,6 +33,14 @@ public:
     void Pause();                                                        // 0x0079CF30
 private:
     void StopSound(unsigned long sound);                                 // 0x0079CEE0
+#ifdef FABLE_RETAIL_CTCBULLETTIME_UNPAUSE
+    // Opt-in (wf17 row 0x0079D7E0): Ego_r.pdb ?UnPause@CTCBulletTime@@QAEXXZ and the private
+    // ?PlaySoundW@CTCBulletTime@@AAEKABVCCharString@@_N@Z (retail 0x0079CE80).
+    unsigned long PlaySoundW(const CCharString& name, bool loop);        // 0x0079CE80
+public:
+    void UnPause();                                                      // 0x0079D7E0
+private:
+#endif
 public:                                                  // members public as in the generated branch
     long                      BulletTimeRemainingTicks;      // +0x0c
     long                      BulletTimeAbilityLevel;        // +0x10

@@ -26,7 +26,17 @@ public:
     };
     CVectorMap<K, C3DVector, CParticleUpdateCCompareVector<K> > VectorParams;                                 // +0x04
     CVectorMap<K, CParticleUpdateParamDesc<K, V>, CParticleUpdateCCompareParamDesc<K> > UpdateParams;        // +0x14
+#if defined(FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_CTOR_NOINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (row 0x008548B0): the same inline body, kept out of line as that TU calls the COMDAT 0x006E24D0; the visible
+    // body tells VC7.1 the call writes nothing but the object (retail keeps the LIGHTNING_START key in edi across it, 0x00854AD5).
+    __declspec(noinline) CParticleUpdateParameters() { }
+#elif defined(FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_CTOR_OUTOFLINE)
+    // Per-TU opt-in (row 0x008548B0 CCreatureAction_SpiritAttack::CreateAttackEffect): that TU calls the constructor COMDAT
+    // ??0?$CParticleUpdateParameters@KK@NParticleEngine@@QAE@XZ 0x006E24D0 (`lea ecx,[params] ; call 0x006E24D0`, 0x00854AD5).
+    CParticleUpdateParameters();                             // 0x006E24D0
+#else
     CParticleUpdateParameters() { }
+#endif
     virtual ~CParticleUpdateParameters();                    // 0x006E2500
     void Update() { VectorParams.Update(); UpdateParams.Update(); }
 };

@@ -394693,6 +394693,62 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT68'
         PassPattern = '00803d60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007e2a60'
+        Module = 'CTCFineDialogue'
+        Source = '00/7e/CTCFineDialogue_GlobalUpdate_007e2a60.cpp'
+        TestSource = '00/7e/CTCFineDialogue_GlobalUpdate_007e2a60_test.cpp'
+        PassPattern = '007e2a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075b000'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_InitialiseBody_0075b000.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_InitialiseBody_0075b000_test.cpp'
+        PassPattern = '0075b000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008548b0'
+        Module = 'CCreatureAction_SpiritAttack'
+        Source = '00/85/CCreatureActionSpiritAttack_CreateAttackEffect_008548b0.cpp'
+        TestSource = '00/85/CCreatureActionSpiritAttack_CreateAttackEffect_008548b0_test.cpp'
+        PassPattern = '008548b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00958840'
+        Module = 'CAIStateGroup_MinionReactToCrime'
+        Source = '00/95/CAIStateGroupMinionReactToCrime_Update_00958840.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToCrime_Update_00958840_test.cpp'
+        PassPattern = '00958840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b08250'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_SetTrailPositionsFromSpline_00b08250.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_SetTrailPositionsFromSpline_00b08250_test.cpp'
+        PassPattern = '00b08250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cf530'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_FindAppropriateGift_006cf530.cpp'
+        TestSource = '00/6c/CTCWife_FindAppropriateGift_006cf530_test.cpp'
+        PassPattern = '006cf530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079d7e0'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_UnPause_0079d7e0.cpp'
+        TestSource = '00/79/CTCBulletTime_UnPause_0079d7e0_test.cpp'
+        PassPattern = '0079d7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00977e00'
+        Module = 'CAIStateGroup_Guildmaster'
+        Source = '00/97/CAIStateGroupGuildmaster_Update_00977e00.cpp'
+        TestSource = '00/97/CAIStateGroupGuildmaster_Update_00977e00_test.cpp'
+        PassPattern = '00977e00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
