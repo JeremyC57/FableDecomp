@@ -1,0 +1,8 @@
+address	true_length	evidence
+00be9920	1886	confirmed: `ret` at 0x00BEA07D then int3 x2; the reservation estimate 2018 ran into the next functions (the oracle length 1886 is right)
+00bea080	47	uncatalogued function in the gap after the ctor: CEngineWaterSettings::WaterReflectBlendFactors (static __fastcall console command, ecx = settings, edx = args vector; CalcReflectToRefractBlendFactors(args[0], args[1]) expanded; `ret` at 0x00BEA0AE)
+00bea0b0	82	uncatalogued function: CEngineWaterSettings::WaterBumpmaps (static __fastcall console command: BumpMap1BankIndex / BumpMap2BankIndex = g_pEngineEnvironmentDef WaterBumpMap / WaterBumpMap2 chosen by the args; last `ret` at 0x00BEA101)
+00be9490	9	uncatalogued function before the TU rows: CEngineWaterSettings::EnableWaterWaves (`mov al,1 ; mov [ecx+0Eh],al ; mov [ecx+0Dh],al ; ret`)
+00be94a0	9	uncatalogued: CEngineWaterSettings::DisableWaterWaves (`xor al,al` then the same two stores)
+00be94b0	47	uncatalogued: ?CalcReflectToRefractBlendFactors@CEngineWaterSettings@@QAEXMM@Z (thiscall, `ret 8`); this chunk's two TUs emit it byte-identically
+00be94e0	74	uncatalogued: ?KeepHistoryInRange@CEngineWaterSettings@@QBEXPAMM@Z (ecx reloaded from the first argument, `ret 8`)

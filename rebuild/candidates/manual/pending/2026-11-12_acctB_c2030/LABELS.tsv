@@ -1,0 +1,16 @@
+address	name	evidence
+00bea110	?UpdateConstants@CEngineWaterSettings@@QAEXABVCEngineComponentRenderParams@@@Z	Ego_r.pdb + FableWin.pdb name sets; sole caller CEngineWaterRenderer::Render 0x00B7852A on Settings +0x280; reads the render params (Params +0x3C) and writes the shader-variable matrices; RELOCATION_MATCH
+00be9920	??0CEngineWaterSettings@@QAE@XZ	Ego_r.pdb + FableWin.pdb name sets; calls ??0CBaseClassNonCopyable@@IAE@XZ, stores vtable 0x012A8114 (RTTI .?AVCEngineWaterSettings@@), returns this; sole caller the CEngineWaterRenderer constructor 0x00B73A4F on Settings +0x280; RELOCATION_MATCH
+00be94b0	?CalcReflectToRefractBlendFactors@CEngineWaterSettings@@QAEXMM@Z	Ego_r.pdb + FableWin.pdb; body = this chunk's source definition (byte-identical out-of-line copy in both TUs); expanded in UpdateConstants 0x00BEA16A and WaterReflectBlendFactors 0x00BEA080
+00be94e0	?KeepHistoryInRange@CEngineWaterSettings@@QBEXPAMM@Z	Ego_r.pdb + FableWin.pdb overload set; float* body in the water TU next to the C2DVector overload 0x00BE9530
+00be9530	?KeepHistoryInRange@CEngineWaterSettings@@QBEXPAVC2DVector@@M@Z	see NAME_FIXES.tsv
+00be9490	?EnableWaterWaves@CEngineWaterSettings@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	Ego_r + FableWin name sets (static __fastcall console command); body sets EnableSwell / EnableBumpMap = true; Ego_r donor order Enable before Disable
+00be94a0	?DisableWaterWaves@CEngineWaterSettings@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	Ego_r + FableWin name sets; body clears the same two switches
+00bea080	?WaterReflectBlendFactors@CEngineWaterSettings@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	Ego_r + FableWin name sets; body = CalcReflectToRefractBlendFactors(args[0], args[1]) on the settings (ecx)
+00bea0b0	?WaterBumpmaps@CEngineWaterSettings@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	Ego_r + FableWin name sets; body picks BumpMap1BankIndex / BumpMap2BankIndex from the environment def's WaterBumpMap / WaterBumpMap2 (+0x180 / +0x184)
+012a8114	??_7CEngineWaterSettings@@6B@	RTTI vtable (slot 0 the landed ??_G 0x00BEA760); stored by the constructor at 0x00BE9936; not yet in reloc_bindings.tsv
+01436e24	?g_pEngineEnvironmentDef@@3PBVCEnvironmentDef@@B	existing descriptive spelling (landed CEngine::Initialise 0x00B26360, reloc_bindings)
+01436e8c	?g_pEngineWorldMap@@3PAVCEngineWorldMap@@A	existing spelling (CEngine::Initialise, CEngineWorldMap::SetWorld 0x00B42ED0)
+01436e98	?g_pResourceManager@@3PAVCEngineResourceManager@@A	existing spelling (CEngine::Initialise)
+01436e1c	?g_pDisplayManager_01436e1c@@3PAVCDisplayManager@@A	existing spelling (CEngine::Initialise)
+01436ea8	?g_LandscapeRenderer_01436EA8@@3PAVCEngineLandscapeRenderer@@A	existing spelling (CEngine::Initialise)
