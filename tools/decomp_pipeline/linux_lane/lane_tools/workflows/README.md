@@ -14,3 +14,16 @@ The coordinator still lands (three-way header merge, vland --land, records): the
 Model rule (owner, 2026-11-12): workflow agents are Opus 5.5 unless Fable 5.2 is needed; authoring is the stage that needs Fable.
 Before a run: put each row's draft in `$S/w22/<wf>/<addr>/differ/<addr>.cpp`, cut the oracle with chunk_pool/oracle_from_exe.py,
 copy `WF_BRIEF.md` to `$S/w22/WF_BRIEF.md` and lane_tools/fast/*.py to `$S/tools/`. Concurrency is capped at CPUs - 2.
+
+## Landing a finished author workflow (coordinator tools, added 2026-11-12)
+- `wfresult.py <task-output> <wf-dir>`: parse the workflow's result list, save RESULT.json, print status / open issues per row.
+- `land_prep.sh <wf> <base-commit> addr...`: reserved check, `combine_wf.py` (one payload + oracle), purity / local-model / stand-in
+  scans, per-row header overlays merged into `$S/land/<wf>/M` (superset copy, else three-way merge), hdrcheck2, users of changed macros.
+- then: copy `M/` over `rebuild/include`, `fixmove.py`, `keypayload.py`, `vland.py --land` (strict headers), bindings / funclet checks.
+- `land_records.py <wf> <letter> <landed,...> [<not-landed,...>]`: batch + pending record skeleton (notes, verdicts, labels).
+Rows with open issues: fix small findings at landing, or send the row back (one Fable repair agent, then two verifiers) before landing.
+A row that matches only with another function's unproven body visible is held back until that function lands.
+
+Other workflows here: `verify_handback_evidence.js` (one Opus evidence verifier per matched row of an agent hand-back; args
+scratch, dir, rows) and `name_fix_queue_pass.js` (short naming pass over the name-fix queue: apply, adversarial verify, one repair;
+args scratch, agent = the prepared `$S/w22/<agent>/` directory with BRIEF.md, QUEUE.tsv, BUSY.txt).
