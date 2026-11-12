@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091D510, 724 bytes (ret 18h). Sibling of CAIStateGroupBase::AIAction_MoveToPosProximity 0x0097E890.
 // Callees: IsStopping 0x008FD010, CTCCreatureNavigation::GetNextNavPosOnRoute 0x006CBAC0 (CCreatureNavOutput by hidden
 //   pointer), CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CBrainOutput::CBrainOutput 0x00835620,
-//   CThingCreatureBase::PeekPos 0x006A4D00, CAIBrain::SetBrainOutput 0x0088B8F0, ~CBaseIntelligentPointer 0x00A01C10,
+//   CThingCreatureBase::PeekPos 0x006A4D00, CAIBrain::SetOutput 0x0088B8F0, ~CBaseIntelligentPointer 0x00A01C10,
 //   operator delete 0x00BFE9BC, the brain's virtual slot 2 (+8, yield). Epsilon 0.0001f @ 0x0129BA3C.
 // Layout: CBrainOutput per the landed 0x0097DF60 / 0x0097E890 model (Types +0, LookFlags +4, NavigationInput +8, PAction
 // +0x20, MoveToPos +0x28, LookAtPos +0x34, LookAtThing +0x40); creature interface bitset +0x20, interface map +0x44.
@@ -173,10 +173,10 @@ class CBrainOutput { public:
 };
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x14];
     CThingCreatureBase* Creature;               // +0x18
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
@@ -229,13 +229,13 @@ EAIActionReturn CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndF
                     CBrainOutput brainOutput;
                     brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->PeekPos(), input);
                     brainOutput.SetAsLookAtPos(facePos, 0x11);
-                    PBrain->SetBrainOutput(brainOutput);
+                    PBrain->SetOutput(brainOutput);
                 }
                 result = AI_ACTION_RUNNING;
                 break;
             }
         }
-        PBrain->Yield();
+        PBrain->SuspendSuspendableProcess();
         if (IsStopping())
             return AI_ACTION_STOPPING;
     } while (repeat == AI_ACTION_REPEAT_UNTIL_DONE && result == AI_ACTION_RUNNING);

@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F6B47, 143 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
 // Callees: NInventory::CTCInventoryBase::OnInitialActivate() @ 0x005BD1EB (qualified base call), UpdateWillMorph()
-//          @ 0x005EE887, GetNumAssignableSpecialMoveButtons() @ 0x005EDCF0 (four times), CycleAssignedAbilities(long)
-//          @ 0x005F64DD, CycleAssignedExpressions(long) @ 0x005F6793.
+//          @ 0x005EE887, GetNumAssignableSpecialMoveButtons() @ 0x005EDCF0 (four times), CycleAssignedAbilities(bool)
+//          @ 0x005F64DD, CycleAssignedExpressions(bool) @ 0x005F6793.
 // Shape: each cursor is `level = Max(level - perRow, -perRow)` through an inline reference `Max(a, b)` returning
 // `a < b ? b : a` (both operands are frame temporaries, the right one built first; `lea eax,[...] ; jl ; lea ;
 // mov eax,[eax]`); the second clamp's temporaries land in the opposite slots.
@@ -29,8 +29,10 @@ class CTCInventoryAbilities : public CTCInventoryBase { public:
 
     long GetNumAssignableSpecialMoveButtons() const;              // 0x005EDCF0
     void UpdateWillMorph();                          // 0x005EE887
-    void CycleAssignedAbilities(long direction);     // 0x005F64DD
-    void CycleAssignedExpressions(long direction);   // 0x005F6793
+    // Name-fix 2026-11-12: Ego_r.pdb + FableWin.pdb ?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z /
+    //   ?CycleAssignedExpressions@CTCInventoryAbilities@@QAEX_N@Z (bool parameter; engine/CTCInventoryAbilities.h declares the same).
+    void CycleAssignedAbilities(bool forward);       // 0x005F64DD
+    void CycleAssignedExpressions(bool forward);     // 0x005F6793
     void OnInitialActivate();
 };
 
@@ -40,6 +42,6 @@ void CTCInventoryAbilities::OnInitialActivate()
     UpdateWillMorph();
     CurrentAssignedAbilityLevel = Max(CurrentAssignedAbilityLevel - GetNumAssignableSpecialMoveButtons(), -GetNumAssignableSpecialMoveButtons());
     CurrentAssignedExpressionLevel = Max(CurrentAssignedExpressionLevel - GetNumAssignableSpecialMoveButtons(), -GetNumAssignableSpecialMoveButtons());
-    CycleAssignedAbilities(1);
-    CycleAssignedExpressions(1);
+    CycleAssignedAbilities(true);
+    CycleAssignedExpressions(true);
 }

@@ -1,4 +1,4 @@
-// CDefinitionManager::ClearDefsForRecompile(const CCharString& name) -- for every def whose type name matches (case-insensitively; all defs when the name is empty): clear it (0x9AD6E0), then re-file its counted object in the recompile map (+0xc4, operator[] 0x9B7BC0) under {index, key from the object's vslot 0x48}
+// CDefinitionManager::ClearDefsForRecompile(const CCharString& name) -- for every def whose type name matches (case-insensitively; all defs when the name is empty): make sure it is loaded (LoadDef 0x9AD6E0), then re-file its counted object in the recompile map (+0xc4, operator[] 0x9B7BC0) under {index, key from the object's vslot 0x48}
 // Leaf: ClearDefsForRecompile
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009AE6B0, length 268 bytes (`ret 4`). Type-name table @ 0x013CA828 (GetName 0x9D49F0), _stricmp 0xBFEBA8, key-data ctor 0x9BAA70.
 // Note: the +1/+1/-1 refcount triple is a by-value pass-through copy (param copy, return copy, param dtor); the map-slot assignment keeps the old pointer in a local (short release form).
@@ -44,7 +44,9 @@ struct CDefMap { CCountedPointer* operator[](const CDefKey& key); };
 class CDefinitionManager {
 public:
     void ClearDefsForRecompile(const CCharString& name);
-    void ClearDef(unsigned long index);
+    protected:
+    void LoadDef(unsigned long index) const;   // 0x009AD6E0 ?LoadDef@CDefinitionManager@@IBEXK@Z (Ego_r.pdb + FableWin.pdb; was the stand-in ClearDef; name-fix 2026-11-12)
+public:
     unsigned char _pad00[0xa4];
     CDefEntry** DefsBegin;                                // +0xa4
     CDefEntry** DefsEnd;                                  // +0xa8
@@ -59,7 +61,7 @@ void CDefinitionManager::ClearDefsForRecompile(const CCharString& name)
         CDefEntry* def = DefsBegin[i];
         if (!name.IsEmpty() && _stricmp(GDefStringTable.GetStringAsCharArray(def->Type), name.c_str()) != 0)
             continue;
-        ClearDef(i);
+        LoadDef(i);
         CCountedPointer obj = CDefEntry::Pass(DefsBegin[i]->Obj);
         ((CDefSourceObj*)def->Obj.P)->GetKey(&key.Data);
         key.Index = i;

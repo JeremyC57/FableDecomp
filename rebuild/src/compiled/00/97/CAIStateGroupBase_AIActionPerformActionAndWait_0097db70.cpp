@@ -4,7 +4,7 @@
 // "CWorld::DrawGetEnvironment" is propagated), CThingCreatureBase::IsFreeToPerformAction 0x00662210, PBrain virtual
 // slot 2 (+0x08, yield), CBrainOutput::CBrainOutput 0x00835620 / ~CBrainOutput 0x006D60C0 (out of line here, shared
 // by both returns), the action's virtual slot 11 (+0x2c), CCountedPointer<..>::Reset 0x00668D90,
-// CAIBrain::SetBrainOutput 0x0088B8F0, CThingCreatureBase::IsPerformingAnyAction 0x006622A0.
+// CAIBrain::SetOutput 0x0088B8F0, CThingCreatureBase::IsPerformingAnyAction 0x006622A0.
 // Shape: the landed AIAction_PerformAction 0x0097D8B0 (free-to-perform wait loop, out-of-line ~CBrainOutput) followed
 // by the AIAction_CombatPerformActionAndWait wait loop (the bool hoisted into bl, `id == current->GetActionID()`).
 // Layout: the creature's current action at +0x100, the action id at +0x28.
@@ -57,10 +57,10 @@ class CBrainOutput                                 // 0x48 bytes
 class CAIBrain
 { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                           // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                           // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThing* Creature;                               // +0x18
-    void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0 (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated)
+    void SetOutput(const CBrainOutput& output);  // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12) (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated)
 };
 
 class CCreatureActionBase
@@ -101,17 +101,17 @@ EAIActionReturn CAIStateGroupBase::AIAction_PerformActionAndWait(const CCreature
         return AI_ACTION_STOPPING;
     long id = action->GetActionID();
     while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(action) && !IsStopping())
-        PBrain->Yield();
+        PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return AI_ACTION_STOPPING;
     CBrainOutput output;
     output.Flags |= 8;
     output.PAction.Reset(action->Clone());
-    PBrain->SetBrainOutput(output);
-    PBrain->Yield();
+    PBrain->SetOutput(output);
+    PBrain->SuspendSuspendableProcess();
     while (((CThingCreatureBase*)PBrain->Creature)->IsPerformingAnyAction() && !IsStopping() &&
            (!stopWhenReplaced || id == ((CThingCreatureBase*)PBrain->Creature)->CurrentAction->GetActionID()))
-        PBrain->Yield();
+        PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return AI_ACTION_STOPPING;
     return AI_ACTION_DONE;

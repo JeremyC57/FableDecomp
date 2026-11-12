@@ -46,7 +46,7 @@ struct CMeshPointer {                                   // CCountedPointer<const
     }
 };
 class CParticleProgram { public:
-    void SavePositions(CParticleSimulation* sim);       // 0x00ADF5B0
+    void SaveStateToInterpolateFrom(CParticleSimulation& simulation);   // 0x00ADF5B0 Ego_r.pdb + FableWin.pdb (name-fix 2026-11-12)
     bool SetupSimulation(CParticleSimulation* sim, C3DAnimationBlendState* blend, C3DAnimationManager* manager, C3DVector* boneScalings,
                          C3DMesh2* mesh, CMovableResourceMemoryPool* pool, CParticleContext* context);   // 0x00AE29D0
     void SimulationStep(CParticleSimulation* sim, CParticleContext* context, C3DAnimationBlendState* blend, C3DAnimationManager* manager,
@@ -110,14 +110,12 @@ extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
 #include "engine/CCountedPointer.h"
 typedef CCountedPointer<CParticleSimulation> CParticleSimPointer;
-struct CParticleSimArray {                               // 12-byte STLport vector
-    CParticleSimPointer* _M_start;
-    CParticleSimPointer* _M_finish;
-    CParticleSimPointer* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    bool empty() const { return _M_start == _M_finish; }
-    void resize(unsigned long n);                       // 0x00B840A0
-};
+// Name-fix 2026-11-12: the simulation vector is the STLport std::vector<CCountedPointer<CParticleSimulation> > (12 bytes) and
+//   0x00B840A0 is Ego_r.pdb 00bf9f40 + FableWin.pdb 02d7ef00 ?resize@?$vector@V?$CCountedPointer@VCParticleSimulation@@@@V?$allocator@V?$CCountedPointer@VCParticleSimulation@@@@@std@@@std@@QAEXI@Z
+//   (the one-argument resize, declared only; landed 0x00B81F30 binds it so). Was the stand-in CParticleSimArray::resize.
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+typedef std::vector<CParticleSimPointer> CParticleSimArray;
 class CEngineSimulationBase {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -169,8 +167,8 @@ void CEngineClothSimulationAnimatedMesh::RunSimulation()
         unsigned long count = primitive.ParticleSystemsFinish - primitive.ParticleSystemsStart;
         ParticleSims.resize(count);
         for (unsigned long i = 0; i < count; ++i) {
-            ParticleSims._M_start[i].Reset(new CParticleSimulation);
-            CParticleSimulation* sim = ParticleSims._M_start[i].Data;
+            ParticleSims[i].Reset(new CParticleSimulation);
+            CParticleSimulation* sim = ParticleSims[i].Data;
             CParticleProgram* program = primitive.ParticleSystemsStart[i].Object->Program;
             if (!program->SetupSimulation(sim, blend, manager,
                     boneScalings, mesh.Object, g_ParticleMemoryPool, GetContext())) {
@@ -181,8 +179,8 @@ void CEngineClothSimulationAnimatedMesh::RunSimulation()
     }
     for (unsigned long i = 0; i < ParticleSims.size(); ++i) {
         CMeshParticleSystem* system = primitive.ParticleSystemsStart[i].Object;
-        CParticleSimulation* sim = ParticleSims._M_start[i].Data;
-        system->Program->SavePositions(sim);
+        CParticleSimulation* sim = ParticleSims[i].Data;
+        system->Program->SaveStateToInterpolateFrom(*sim);
         system->Program->SimulationStep(sim, GetContext(), blend, manager, boneScalings, mesh.Object);
     }
     mesh.Release();

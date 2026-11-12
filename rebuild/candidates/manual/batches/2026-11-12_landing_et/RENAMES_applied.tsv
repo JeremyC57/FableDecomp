@@ -1,0 +1,129 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x009AD6E0	CDefinitionManager	LoadDef	?LoadDef@CDefinitionManager@@IBEXK@Z	CDefinitionManager::LoadDef	LoadDef (compiled ?LoadDef@CDefinitionManager@@QAEXK@Z)	Ego_r.pdb 00b05680 + FableWin.pdb 0305cb30 ?LoadDef@CDefinitionManager@@IBEXK@Z (protected const); row rebuilt const with const_cast for the non-const callees; RELOCATION_MATCH, test PASS
+0x00A0FDB0	_global	WordWrap_SetOption	?WordWrap_SetOption@@YIXII@Z	_global::WordWrap_SetOption	?WordWrap_SetOption@@YIXIK@Z	Ego_r.pdb 00b796a0 + FableWin.pdb 030d81b0 ?WordWrap_SetOption@@YIXII@Z; second parameter unsigned int; RELOCATION_MATCH /GS, test PASS
+0x00744460	CTCPerceiveThing	GetGiveUpChaseRadius	?GetGiveUpChaseRadius@CTCPerceiveThing@@QBEMXZ	_global::GetMember_float0x4c_00744460	?M@C00744460@@QAEMXZ	Ego_r.pdb + FableWin.pdb name; Ego_r layout GiveUpChaseRadius +0x4C = body `fld [ecx+4Ch]`; landed caller 0x0094D780 binds it; rewritten on engine/CTCPerceiveThing.h; MATCH, test PASS (OK_00744460)
+0x0069CE20	_global	IS_THING_ALIVE<CIntelligentPointer<const CThing> >	??$IS_THING_ALIVE@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z	IS_THING_ALIVE<CIntelligentPointer<const CThing> >	?IsThingAlive_0069ce20@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z	FableWin.pdb _fablewin_api.tsv 0x0184443C / 0x01F2F960; landed callers 0x00836AD0 / 0x0095E0B0 bind it; explicit instantiation of engine/ThingAlive.h; RELOCATION_MATCH, test PASS
+0x00ADF5B0	CParticleProgram	SaveStateToInterpolateFrom	?SaveStateToInterpolateFrom@CParticleProgram@@QAEXAAVCParticleSimulation@@@Z	CParticleSimulationUser_00adf5b0::SavePositions	SavePositions (?SavePositions@CParticleSimulationUser_00adf5b0@@QAEXPAVCParticleSimulation@@@Z)	Ego_r.pdb 00beb250 + FableWin.pdb 03337640; header engine/CParticleProgram.h UNSKINNED_SIMULATION; caller 0x00B81F30 binds it; MATCH, test PASS
+0x008C6390	CCreatureAction_TrollWhackGroundBase	PerformAction	?PerformAction@CCreatureAction_TrollWhackGroundBase@@UAEXXZ	CCreatureAction_TrollWhackGroundBase::PerformAction	_CCreatureAction_TrollWhackGroundBase_PerformAction (extern "C" forwarder)	Ego_r.pdb + FableWin.pdb; vtable 0x0128E0EC slot 3; header class opt-in; RELOCATION_MATCH (jmp WhackGround), test PASS (PASS_008c6390)
+0x009FD150	CGraphicDataBank	GetBlankTexture	?GetBlankTexture@CGraphicDataBank@@QBEPBVCTexture@@W4ETextureType@1@@Z	CGraphicDataBank::GetBlankTexture	(no Leaf line; compiled ?GetBlankTexture@CGraphicDataBank@@QAEPAVCTexture@@W4ETextureType@@@Z)	Ego_r.pdb 00b566f0 + FableWin.pdb 03117b60; engine/CGraphicDataBank.h TEXTURE_HELPERS; caller 0x00BA4A40 binds it; MATCH, test PASS
+0x004C7AB0	CThing	PeekWorld	?PeekWorld@CThing@@IBEABVCWorld@@XZ	_global::GetGlobal_013b8a1c_deref0x24_004c7ab0	GetDisplayEngine (?GetDisplayEngine@@YAPAVCDisplayEngine@@XZ)	Ego_r.pdb 004c9650 (after GetWorld 004c9640, retail order 0x4C7AA0/0x4C7AB0) + FableWin signatures 01cf6400; CThing.h declaration; RELOCATION_MATCH, test PASS (PASS_004c7ab0)
+0x00692950	CCreatureActionBase	PeekWorld	?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	Dest_val (?Dest_val@@YIXPAX@Z)	Ego_r.pdb 005192b0 + FableWin signatures 01db6490; header CCREATUREACTIONBASE_PEEKWORLD; caller 0x00867B40 binds it; overlay friend opt-in; RELOCATION_MATCH, test PASS
+0x00ABA370	C3DMeshFileTrianglesChunk	GetCount	?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ	CWorldMap::DrawGetNoMaps	?CWorldMap_DrawGetNoMaps@@YIJPAVCWorldMap@@@Z	Ego_r.pdb 00c0ef50 + FableWin.pdb 033dc540; header ACCESSORS; caller 0x00A90900 binds it; MATCH; test rewritten (links the object), PASS
+0x006F04C0	std	_S_merge<const CThingCreatureBase*,allocator<const CThingCreatureBase*>,CThingCompare_Nearest>	??$_S_merge@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@VCThingCompare_Nearest@@@std@@YIXAAV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@0@0VCThingCompare_Nearest@@@Z	_global::_S_merge	_S_merge (?_S_merge@@YIXAAUSMarkerList@@0VCThingCompare_Nearest@@@Z)	STLport 4.6 _list.c _S_merge; only caller is the landed _S_sort 0x006F3A30 which binds this constructed symbol (types from Ego_r 0x0071A120 + FableWin 0x02433550 list::sort); explicit instantiation of stlport/fable_containers.h; RELOCATION_MATCH, test PASS
+0x005D8E40	CTCInventoryItem	ConnectToInventory	?ConnectToInventory@CTCInventoryItem@@QAEXAAVCTCInventoryBase@NInventory@@@Z	_global::SetMember_dword0x10_005d8e40	AddExclusiveObserver (?AddExclusiveObserver@@YIXPAUCObservable@@PAXPAUCObserver@@@Z)	Ego_r.pdb 00559da0 + FableWin.pdb 01e00730; Ego_r PInventory +0x10; header CONNECTTOINVENTORY; caller 0x005BE8F3 binds it; MATCH; test rewritten (old one used __asm), PASS (OK_0x005d8e40)
+0x00663B10	CThingCreatureBase	GetShotAccuracyPercentage	?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ	CThingCreatureBase::GetShotAccuracyPercentage	?GetShotAccuracyPercentage@CThingCreatureBase@@QAEJXZ	Ego_r.pdb 0x0053E950 + FableWin.pdb (const); callee 0x004C7AB0 respelled CThing::PeekWorld; RELOCATION_MATCH, test PASS
+0x00853120	NCameraModes::CScriptModuleUseLamp	CScriptModuleUseLamp	??0CScriptModuleUseLamp@NCameraModes@@QAE@ABVCThing@@0J@Z	NCameraModes::CScriptModuleUseLamp::CScriptModuleUseLamp	??0CScriptModuleUseLamp (compiled QAE@PBVCThing@@0J@Z)	Ego_r.pdb 00828250 + FableWin.pdb 0283bd30 (const references); caller 0x00847DF0 binds it; RELOCATION_MATCH, test PASS
+0x006650E0	CThingCreatureBase	IsPosInViewAngle	?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z	CThingCreatureBase::CanSeeTarget	(no Leaf line; compiled ?CanSeeTarget@CThingCreatureBase@@QAE_NABVC3DVector@@M_N1@Z)	Ego_r.pdb 0x0053F1B0 + FableWin.pdb 01d9d6d0; caller 0x0097D6F0 binds it; RELOCATION_MATCH, test PASS
+0x00701840	COpinionReactionManager	GetThingAttitudeToPlayer	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z	COpinionReactionManager::GetThingAttitudeToPlayer	GetThingAttitudeToPlayer (compiled ?GetThingAttitudeToPlayer@COpinionReactionManager@@QAEJPBVCThing@@@Z)	Ego_r.pdb 0x00551920 + FableWin.pdb 01f15fa0; header FABLE_RETAIL_CTCWIFE_MARRY; caller 0x007735D0 binds it; callee 0x00701010 respelled to the PDB private const form; RELOCATION_MATCH, test PASS
+0x004DDAE5	CTCTargetingAI	GetPBestEnemyCreatureForAttack	?GetPBestEnemyCreatureForAttack@CTCTargetingAI@@UBEPAVCThingCreatureBase@@XZ	CTCTargetingAI::vfunc_29	(no Leaf line; compiled ?vfunc_29@CTCTargetingAI@@UAEPAVCBaseObject@@XZ)	vtable 0x012411FC slot 29 between landed slots 28/30; Ego_r.pdb + FableWin.pdb; Ego_r member PBestEnemyCreatureForAttack +0x38; engine/CTCTargetingAI.h ATTACK; RELOCATION_MATCH, test PASS
+0x006EF6F0	CCountedPointer<CCombatSequenceBase>	CCountedPointer	??0?$CCountedPointer@VCCombatSequenceBase@@@@QAE@PAVCCombatSequenceBase@@@Z	CCountedPointer_006ee3d0::CCountedPointer_006ee3d0	(no Leaf line; compiled ??0CCountedPointer_006ee3d0@@QAE@PAX@Z)	caller 0x008B0B60 (0x008B0BBC) binds this symbol on the PDB-typed creator result; FableWin.pdb CCountedPointer<CCombatSequenceBase> instantiation; explicit instantiation of engine/CCountedPointer.h as twin 0x00695880; RELOCATION_MATCH, test PASS
+# Section 2
+009b0ac0	?LoadDef@CDefinitionManager@@QAEXK@Z	?LoadDef@CDefinitionManager@@IBEXK@Z
+009ae150	?LoadDef@CDefinitionManager@@QAEXK@Z	?LoadDef@CDefinitionManager@@IBEXK@Z
+009ad9e0	?LoadDef@CDefinitionManager@@QAEXK@Z	?LoadDef@CDefinitionManager@@IBEXK@Z
+009ade10	?LoadDef@CDefinitionManager@@QAEXK@Z	?LoadDef@CDefinitionManager@@IBEXK@Z
+009ada10	?LoadDef@CDefinitionManager@@QAEXK@Z	?LoadDef@CDefinitionManager@@IBEXK@Z
+009ae6b0	?ClearDef@CDefinitionManager@@QAEXK@Z	?LoadDef@CDefinitionManager@@IBEXK@Z
+0054f8e0	?WordWrap_SetOption@@YIXJJ@Z	?WordWrap_SetOption@@YIXII@Z
+0048f50c	?WordWrap_SetOption@@YIXJJ@Z	?WordWrap_SetOption@@YIXII@Z
+0063efb0	?GetNavigationLevelAt@CPhysicsMeshObject@@QAEJABVC3DVector@@@Z	?GetNavigationLevelAt@CPhysicsMeshObject@@QBEJABVC3DVector@@@Z
+0093d3a0	?GetPerceptionRange@CTCPerceiveThing@@QAEMXZ	?GetGiveUpChaseRadius@CTCPerceiveThing@@QBEMXZ
+0095e260	member CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::PTargetThing (CBaseIntelligentPointer)	member PTarget (CIntelligentPointer<const CThing>)
+00b82100	?SavePositions@CParticleProgram@@QAEXPAVCParticleSimulation@@@Z	?SaveStateToInterpolateFrom@CParticleProgram@@QAEXAAVCParticleSimulation@@@Z
+00b82100	?resize@CParticleSimArray@@QAEXK@Z	?resize@?$vector@V?$CCountedPointer@VCParticleSimulation@@@@V?$allocator@V?$CCountedPointer@VCParticleSimulation@@@@@std@@@std@@QAEXI@Z
+0072ee30	?ReceivedConfirmation@CTCActionUseBuyHouse@@QAEXPAVCTCBuyableHouse@@@Z	?ReceivedConfirmation@CTCActionUseBuyHouse@@AAEXAAVCTCBuyableHouse@@@Z
+00ba9360	?GetBlankTexture@CGraphicDataBankFull@@QBEPBVCTexture@@W4ETextureType@@@Z	?GetBlankTexture@CGraphicDataBank@@QBEPBVCTexture@@W4ETextureType@1@@Z
+008597a0	?GetPCreatureAnimationOwner@CCreatureActionBase@@QBEPAUCAnimationOwner@@XZ	?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ
+008c0fb0	?CreateEffectThing@@YIPAVCThing@@JPBVC3DVector@@_N@Z	?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z
+008c4b80	?CreateEffectThing@@YIPAVCThing@@JPBVC3DVector@@_N@Z	?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z
+007eec50	?CreateEffectThing@@YIPAVCThing@@JPBVC3DVector@@_N@Z (unused declaration)	(declaration removed)
+00663b10	?GetWorld@CThing@@QAEPAVCWorld@@XZ (0x004C7AB0)	?PeekWorld@CThing@@IBEABVCWorld@@XZ
+008c6430	?GetShotAccuracyPercentage@CThingCreatureBase@@QAEJXZ	?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ
+008c0900	?GetShotAccuracyPercentage@CThingCreatureBase@@QAEJXZ	?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ
+005f6b47	?CycleAssignedAbilities@CTCInventoryAbilities@@QAEXJ@Z	?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z
+005f6b47	?CycleAssignedExpressions@CTCInventoryAbilities@@QAEXJ@Z	?CycleAssignedExpressions@CTCInventoryAbilities@@QAEX_N@Z
+0097d580	?IsLookingAtPos@CThingCreatureBase@@QAE_NABVC3DVector@@M_N1@Z	?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z
+0093e2d0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0093dde0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0085f6f0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0094dc40	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097da40	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097d580	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097d8b0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097ec00	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097d980	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097db70	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097dcb0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097df60	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0097e890	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0096ddb0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+009621f0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+00969ae0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+009624d0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+00969cb0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+00917bb0	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0091d510	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+00928e20	?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z
+0093e2d0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0093d580	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0093dde0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0095f6f0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0094dc40	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097da40	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097d580	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097d8b0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097ec00	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097d980	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097f870	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097db70	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097dcb0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097df60	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0097e890	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+009621f0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+009624d0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+00969760	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0091ccc0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0091c3d0	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0091a670	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+0091d510	CAIBrain vslot 2 (+0x08) Yield (virtual call, no relocation)	SuspendSuspendableProcess (?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ 0x00A44840)
+00701840	?GetAttitudeOrReactionType@COpinionReactionManager@@(QAEJPBVCThing@@_NPA_NPAVCTCOpinionSource@@ | QBE?AW4EOpinionReactionType@@PBVCThing@@_NPB_NPAVCTCOpinionSource@@)@Z	?GetAttitudeOrReactionType@COpinionReactionManager@@ABE?AW4EOpinionReactionType@@ABVCThing@@_NPB_NPBVCTCOpinionSource@@@Z
+00681500	?GetAttitudeOrReactionType@COpinionReactionManager@@(QAEJPBVCThing@@_NPA_NPAVCTCOpinionSource@@ | QBE?AW4EOpinionReactionType@@PBVCThing@@_NPB_NPAVCTCOpinionSource@@)@Z	?GetAttitudeOrReactionType@COpinionReactionManager@@ABE?AW4EOpinionReactionType@@ABVCThing@@_NPB_NPBVCTCOpinionSource@@@Z
+007018b0	?GetAttitudeOrReactionType@COpinionReactionManager@@(QAEJPBVCThing@@_NPA_NPAVCTCOpinionSource@@ | QBE?AW4EOpinionReactionType@@PBVCThing@@_NPB_NPAVCTCOpinionSource@@)@Z	?GetAttitudeOrReactionType@COpinionReactionManager@@ABE?AW4EOpinionReactionType@@ABVCThing@@_NPB_NPBVCTCOpinionSource@@@Z
+00681500	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@PBVCThing@@@Z	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z
+007018b0	?GetThingAttitudeToPlayer@COpinionReactionManager@@QAEJPBVCThing@@@Z	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z
+006d0410	?GetThingAttitudeToPlayer@COpinionReactionManager@@QAE?AW4EOpinionAttitudeType@@PAVCThing@@@Z	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z
+0094bca0	?GetThingAttitudeToPlayer@COpinionReactionManager@@QAEJPAVCThing@@@Z	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z
+00799350	?GetBasePriceMultiplier@CTCShop@@QBEMXZ	?GetAttitudeSellPriceMultiplier@CTCShop@@QBEMXZ
+0094d930	CTCTargetingAI vslot 29 (+0x74) GetPTargetedThing (virtual call)	GetPBestEnemyCreatureForAttack (?GetPBestEnemyCreatureForAttack@CTCTargetingAI@@UBEPAVCThingCreatureBase@@XZ 0x004DDAE5)
+006a78d0	?CanCreatureSeeCreature@@YI_NPBVCThingCreatureBase@@0_N@Z	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
+0093b8b0	?CanCreatureSeeCreature@@YI_NPAVCThingAICreature@@PAVCThing@@_N@Z	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
+0091db50	?CanEngageThing@@YI_NPAVCThing@@0J@Z	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
+0093b740	?CanCreatureSeeThing@@YI_NPAVCThing@@0_N@Z	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z
+008b0700	CCombatSequenceDef vslot 10 (+0x28) GetNameStringId -> CDefStringId (virtual call)	GetInstantiationName -> CDefString (?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ)
+00bfd480	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bde0c0	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bfc140	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A
+00bf6490	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A (unused declaration)	(declaration removed)
+00bf6750	?g_pEngine_01436ea8@@3PAUSEngine_01436ea8@@A (unused declaration)	(declaration removed)
+00658ec3	?IS_THING_ALIVE@@YI_NABV?$CIntelligentPointer@VCThingAICreature@@@@@Z (stand-in body)	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingAICreature@@@@@@YI_NABV?$CIntelligentPointer@VCThingAICreature@@@@@Z (engine/ThingAlive.h body)
+00658ec3	??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z (stand-in specialization body)	??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z (engine/ThingAlive.h body)
+0052c730	?Initialise@CComponent@NUISystem@@QAEXXZ	?Initialise@CComponent@NUISystem@@UAEXXZ
+0052cab0	?AddChild@CComponent@NUISystem@@QAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	?AddChildDynamically@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+00438230	?ClearDisplay@CDrawHealth@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ
+00438230	?ClearDisplay@CDrawStamina@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawStamina@NPlayerGui@@QAEXXZ
+00438230	?ClearDisplay@CDrawAbilityButtons@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawAbilityButtons@NPlayerGui@@QAEXXZ
+00438230	?ClearDisplay@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ
+0043e420	?ClearDisplay@CDrawHealth@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ
+0043e420	?ClearDisplay@CDrawStamina@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawStamina@NPlayerGui@@QAEXXZ
+0043e420	?ClearDisplay@CDrawAbilityButtons@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawAbilityButtons@NPlayerGui@@QAEXXZ
+0043e420	?ClearDisplay@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ
+0043e420	?ClearDisplay@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ
+00438460	?ClearDisplay@CDrawHealth@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ
+00438460	?ClearDisplay@CDrawStamina@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawStamina@NPlayerGui@@QAEXXZ
+00438460	?ClearDisplay@CDrawAbilityButtons@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawAbilityButtons@NPlayerGui@@QAEXXZ
+00438460	?ClearDisplay@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ
+00438460	?ClearDisplay@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ	?ClearEffects@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ
+006f04c0	??RCThingCompare_Nearest@@QAEJPAVCThingMarker@@0@Z	??$?R$$CBVCThingCreatureBase@@@CThingCompare_Nearest@@QBEPBVCThingCreatureBase@@PBV1@0@Z
+006ef6f0	?Destroy_006ee3d0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCCombatSequenceBase@@@@SIXPAX@Z
+008c6390	_ForwardTarget_008c61c0	?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ
+00692950	?dv_h2_004c7ab0@@YIXPAX@Z	?PeekWorld@CThing@@IBEABVCWorld@@XZ

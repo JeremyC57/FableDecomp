@@ -31210,9 +31210,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005d8e40'
-        Module = '_global'
-        Source = '00/5d/CObservable_AddExclusiveObserver_005d8e40.cpp'
-        TestSource = '00/5d/CObservable_AddExclusiveObserver_005d8e40_test.cpp'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_ConnectToInventory_005d8e40.cpp'
+        TestSource = '00/5d/CTCInventoryItem_ConnectToInventory_005d8e40_test.cpp'
         PassPattern = 'OK_0x005d8e40'
     }
     [pscustomobject]@{
@@ -33821,9 +33821,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00692950'
-        Module = '_global'
-        Source = '00/69/global_Destval_00692950.cpp'
-        TestSource = '00/69/global_Destval_00692950_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_PeekWorld_00692950.cpp'
+        TestSource = '00/69/CCreatureActionBase_PeekWorld_00692950_test.cpp'
         PassPattern = '00692950_TEST PASS'
     }
     [pscustomobject]@{
@@ -43322,9 +43322,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aba370'
-        Module = 'CWorldMap'
-        Source = '00/ab/CWorldMap_DrawGetNoMaps_00aba370.cpp'
-        TestSource = '00/ab/CWorldMap_DrawGetNoMaps_00aba370_test.cpp'
+        Module = 'C3DMeshFileTrianglesChunk'
+        Source = '00/ab/C3DMeshFileTrianglesChunk_GetCount_00aba370.cpp'
+        TestSource = '00/ab/C3DMeshFileTrianglesChunk_GetCount_00aba370_test.cpp'
         PassPattern = '00aba370_TEST PASS'
     }
     [pscustomobject]@{
@@ -68124,9 +68124,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00744460'
-        Module = '_global'
-        Source = '00/74/DrawGetSeaLevel_DrawGetSeaLevel_00744460.cpp'
-        TestSource = '00/74/DrawGetSeaLevel_DrawGetSeaLevel_00744460_test.cpp'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_GetGiveUpChaseRadius_00744460.cpp'
+        TestSource = '00/74/CTCPerceiveThing_GetGiveUpChaseRadius_00744460_test.cpp'
         PassPattern = 'OK_00744460'
     }
     [pscustomobject]@{
@@ -91225,9 +91225,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c7ab0'
-        Module = '_global'
-        Source = '00/4c/CViewBase_GetDisplayEngine_004c7ab0.cpp'
-        TestSource = '00/4c/CViewBase_GetDisplayEngine_004c7ab0_test.cpp'
+        Module = 'CThing'
+        Source = '00/4c/CThing_PeekWorld_004c7ab0.cpp'
+        TestSource = '00/4c/CThing_PeekWorld_004c7ab0_test.cpp'
         PassPattern = 'PASS_004c7ab0'
     }
     [pscustomobject]@{
@@ -150246,9 +150246,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006ef6f0'
-        Module = 'CCountedPointer_006ee3d0'
-        Source = '00/6e/CCountedPointer006ee3d0_CCountedPointer006ee3d0_006ef6f0.cpp'
-        TestSource = '00/6e/CCountedPointer006ee3d0_CCountedPointer006ee3d0_006ef6f0_test.cpp'
+        Module = 'CCountedPointer<CCombatSequenceBase>'
+        Source = '00/6e/CCountedPointer_CCountedPointer_006ef6f0.cpp'
+        TestSource = '00/6e/CCountedPointer_CCountedPointer_006ef6f0_test.cpp'
         PassPattern = '006ef6f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -158207,8 +158207,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004ddae5'
         Module = 'CTCTargetingAI'
-        Source = '00/4d/CTCTargetingAI_vfunc29_004ddae5.cpp'
-        TestSource = '00/4d/CTCTargetingAI_vfunc29_004ddae5_test.cpp'
+        Source = '00/4d/CTCTargetingAI_GetPBestEnemyCreatureForAttack_004ddae5.cpp'
+        TestSource = '00/4d/CTCTargetingAI_GetPBestEnemyCreatureForAttack_004ddae5_test.cpp'
         PassPattern = '004ddae5_TEST PASS'
     }
     [pscustomobject]@{
@@ -179573,8 +179573,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0069ce20'
         Module = '_global'
-        Source = '00/69/global_IsThingAlive0069ce20_0069ce20.cpp'
-        TestSource = '00/69/global_IsThingAlive0069ce20_0069ce20_test.cpp'
+        Source = '00/69/global_ISTHINGALIVE_0069ce20.cpp'
+        TestSource = '00/69/global_ISTHINGALIVE_0069ce20_test.cpp'
         PassPattern = '0069ce20_TEST PASS'
     }
     [pscustomobject]@{
@@ -206244,9 +206244,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00adf5b0'
-        Module = 'CParticleSimulationUser_00adf5b0'
-        Source = '00/ad/CParticleSimulationUser00adf5b0_SavePositions_00adf5b0.cpp'
-        TestSource = '00/ad/CParticleSimulationUser00adf5b0_SavePositions_00adf5b0_test.cpp'
+        Module = 'CParticleProgram'
+        Source = '00/ad/CParticleProgram_SaveStateToInterpolateFrom_00adf5b0.cpp'
+        TestSource = '00/ad/CParticleProgram_SaveStateToInterpolateFrom_00adf5b0_test.cpp'
         PassPattern = '00adf5b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -222501,9 +222501,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006f04c0'
-        Module = '_global'
-        Source = '00/6f/global_Smerge_006f04c0.cpp'
-        TestSource = '00/6f/global_Smerge_006f04c0_test.cpp'
+        Module = 'std'
+        Source = '00/6f/std_Smerge_006f04c0.cpp'
+        TestSource = '00/6f/std_Smerge_006f04c0_test.cpp'
         PassPattern = '006f04c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -244772,8 +244772,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006650e0'
         Module = 'CThingCreatureBase'
-        Source = '00/66/CThingCreatureBase_CanSeeTarget_006650e0.cpp'
-        TestSource = '00/66/CThingCreatureBase_CanSeeTarget_006650e0_test.cpp'
+        Source = '00/66/CThingCreatureBase_IsPosInViewAngle_006650e0.cpp'
+        TestSource = '00/66/CThingCreatureBase_IsPosInViewAngle_006650e0_test.cpp'
         PassPattern = '006650e0_TEST PASS'
     }
     [pscustomobject]@{

@@ -5,7 +5,7 @@
 // @ 0x00662210, PBrain virtual slot 2 (+0x08, yield), CBrainOutput::CBrainOutput @ 0x00835620, the action's virtual slot 11
 // (+0x2c, a counted copy of itself), CCountedPointer<..>::Reset @ 0x00668D90 (output +0x20; manifest label names the
 // CIPhysicsFacesSegmentBase instantiation), CAIBrain::SetOutput @ 0x0088B8F0, ~CBrainOutput @ 0x006D60C0.
-// Shape: `while (!free && !IsStopping()) Yield();` rotates into retail's loop; the CBrainOutput dtor is emitted out of
+// Shape: `while (!free && !IsStopping()) SuspendSuspendableProcess();` rotates into retail's loop; the CBrainOutput dtor is emitted out of
 // line here (the sibling 0x0097D980 inlines it) and shared by both returns (`lea ecx` before the `je`).
 // Fix (sweep 3): the callee 0x0088B8F0 is CAIBrain::SetOutput (PDB name; FINDINGS chunk 482), bound with the PDB class keys
 //   (class CAIBrain / CBrainOutput) instead of the invented SetBrainOutput. Same bytes.
@@ -58,7 +58,7 @@ class CAIBrain
 {
 public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                           // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                           // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThing* Creature;                               // +0x18
     void SetOutput(const CBrainOutput& output);     // 0x0088B8F0 (Ego_r/FableWin ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z; the
@@ -94,14 +94,14 @@ long CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase* action)
     if (IsStopping())
         return 1;
     while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(action) && !IsStopping())
-        PBrain->Yield();
+        PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return 1;
     CBrainOutput output;
     output.Flags |= 8;
     output.PAction.Reset(action->Clone());
     PBrain->SetOutput(output);
-    PBrain->Yield();
+    PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return 1;
     return 2;

@@ -2,7 +2,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097D980, length 177 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010 (twice), CBrainOutput::CBrainOutput @ 0x00835620,
-// CAIBrain::SetBrainOutput(const CBrainOutput&) @ 0x0088B8F0, PBrain virtual slot 2 (+0x08, yield),
+// CAIBrain::SetOutput(const CBrainOutput&) @ 0x0088B8F0, PBrain virtual slot 2 (+0x08, yield),
 // CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (output +0x40), operator delete @ 0x00BFE9BC.
 // Shape: the implicit ~CBrainOutput is inlined on both returns (member order reversed: +0x40 pointer, then the
 // CCountedPointer at +0x20 whose block {count, destroy, object} is released with the member re-read after each store;
@@ -56,10 +56,10 @@ class CBrainOutput                                 // 0x48 bytes
 class CAIBrain
 { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                           // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                           // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThing* Creature;                               // +0x18
-    void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0 (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated)
+    void SetOutput(const CBrainOutput& output);  // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12) (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated)
 };
 
 class CAIStateGroupBase
@@ -79,8 +79,8 @@ long CAIStateGroupBase::AIAction_PumpCombatActions()
         return 1;
     CBrainOutput output;
     output.Flags |= 0x20;
-    PBrain->SetBrainOutput(output);
-    PBrain->Yield();
+    PBrain->SetOutput(output);
+    PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return 1;
     return 4;

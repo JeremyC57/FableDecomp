@@ -1,9 +1,11 @@
 // CThingCreatureBase::GetShotAccuracyPercentage() -- a hero with its experience component asks the component; otherwise 100 while attacking a target that passes the 0x00864CB0 check, else the creature's own ShotAccuracyPercentage
-// Leaf: ?GetShotAccuracyPercentage@CThingCreatureBase@@QAEJXZ
+// Leaf: ?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ
+// Name-fix 2026-11-12: Ego_r.pdb 0x0053E950 + FableWin.pdb ?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ (const); the world
+//   accessor 0x004C7AB0 is ?PeekWorld@CThing@@IBEABVCWorld@@XZ (Ego_r.pdb, protected const; was the stand-in CThing::GetWorld()).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663B10, 132 bytes.
 // Callees: CInterfaceMap::LowerBound @ 0x004365B0, CTCHeroExperience::GetShotAccuracyPercentage @ 0x006D6EA0,
-//   CThing::GetWorld @ 0x004C7AB0 (label "CViewBase::GetDisplayEngine" is propagated),
+//   CThing::PeekWorld() const @ 0x004C7AB0 (label "CViewBase::GetDisplayEngine" is propagated),
 //   CCombatManager::IsAttacker(const CThingCreatureBase&) const @ 0x006E92C0 (landed; was the descriptive IsCreatureAttacking, agentNF25b),
 //   CCombatManager::GetCombatantInfo(const CThing&) @ 0x006E9360 (landed as CUIDMapOwner_006e9360::GetValueForThing;
 //   label "CSurface::GetHeight" is propagated), the `__fastcall` thing test @ 0x00864CB0 (label
@@ -44,8 +46,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x18];
     unsigned char m_flags6c;                    // +0x6c
-    CWorld* GetWorld();                         // 0x004C7AB0
-    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -60,21 +61,24 @@ class CThing { public:
             return true;
         return false;
     }
+protected:
+    const CWorld& PeekWorld() const;            // 0x004C7AB0
+public:
 };
 
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad70[0xe4 - 0x70];
     long ShotAccuracyPercentage;                // +0xe4
-    long GetShotAccuracyPercentage();
+    long GetShotAccuracyPercentage() const;
 };
 
-long CThingCreatureBase::GetShotAccuracyPercentage()
+long CThingCreatureBase::GetShotAccuracyPercentage() const
 {
     if ((m_flags6c & 0x20) && HasTC(0x68))
         return GetTC<CTCHeroExperience>(0x68)->GetShotAccuracyPercentage();
-    CCombatManager* combat = GetWorld()->PCombatManager;
+    CCombatManager* combat = PeekWorld().PCombatManager;
     if (combat->IsAttacker(*this)) {
-        CCombatManager* combat2 = GetWorld()->PCombatManager;
+        CCombatManager* combat2 = PeekWorld().PCombatManager;
         if (IsThingRunningAwayFromCombat(combat2->GetCombatantInfo(*this)->Attacked))
             return 100;
     }

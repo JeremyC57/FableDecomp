@@ -36,7 +36,7 @@ CWideString __fastcall operator+(const CWideString& left, const unsigned short* 
 
 typedef unsigned int (__fastcall* TWordWrapCharWidthCallback)(unsigned short c);
 typedef unsigned int (__fastcall* TWordWrapCallback2)();
-void __fastcall WordWrap_SetOption(long option, long value);                            // 0x00A0FDB0
+void __fastcall WordWrap_SetOption(unsigned int option, unsigned int value);   // ?WordWrap_SetOption@@YIXII@Z (Ego_r.pdb + FableWin.pdb; name-fix 2026-11-12)                            // 0x00A0FDB0
 void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback charWidth, TWordWrapCallback2 callback2);   // 0x00A0FD90
 const unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, unsigned int width, const unsigned short** lineEnd);   // 0x00A10390
 

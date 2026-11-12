@@ -609,6 +609,12 @@ public:
 #endif
 #endif
 protected:
+#ifdef FABLE_RETAIL_CTHING_PEEKWORLD_FRIEND_CREATUREACTIONBASE
+    // Name-fix pass NF30 (row 0x00692950 CCreatureActionBase::PeekWorld, Ego_r.pdb ?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ):
+    // the out-of-line accessor forwards to the protected CThing::PeekWorld 0x004C7AB0, as the landed twin GetWorld 0x00692940 does
+    // through its friend. Access only: no layout change.
+    friend class CCreatureActionBase;
+#endif
     CWorld& GetWorld();
     const CWorld& PeekWorld() const;
     unsigned long* GetPWorldSeed() const;

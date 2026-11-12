@@ -1,5 +1,10 @@
-// COpinionReactionManager::GetThingAttitudeToPlayer(const CThing* thing) const -- the thing's attitude towards the player: GetAttitudeOrReactionType in attitude mode, with the player creature's opinion-source component (if any) and the manager's attitude mask
-// Leaf: GetThingAttitudeToPlayer
+// COpinionReactionManager::GetThingAttitudeToPlayer(const CThing& thing) const -- the thing's attitude towards the player: GetAttitudeOrReactionType in attitude mode, with the player creature's opinion-source component (if any) and the manager's attitude mask
+// Leaf: ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z
+// Name-fix 2026-11-12 (was non-const, long result, const CThing* parameter): Ego_r.pdb 0x00551920 + FableWin.pdb 01f15fa0
+//   ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z; engine/COpinionReactionManager.h
+//   (FABLE_RETAIL_CTCWIFE_MARRY) declares the same form and the landed caller 0x007735D0 binds it. The callee 0x00701010 is
+//   Ego_r.pdb / FableWin.pdb ?GetAttitudeOrReactionType@COpinionReactionManager@@ABE?AW4EOpinionReactionType@@ABVCThing@@_NPB_NPBVCTCOpinionSource@@@Z
+//   (private const), respelled from the stand-in (const CThing*, bool, bool*, CTCOpinionSource*) -> long.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00701840, length 103 bytes (padded to 112).
 // Callees: CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature @ 0x00487DD0,
@@ -11,6 +16,8 @@
 // single `push ecx` frame word.
 class CTCBase;
 class CTCOpinionSource;
+enum EOpinionAttitudeType;                  // MS forward enums (Ego_r.pdb result types)
+enum EOpinionReactionType;
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
@@ -32,15 +39,16 @@ public:
     CWorld*       World;                    // +0x04
     unsigned char _pad008[0x54c];
     bool          AttitudeMask[79];         // +0x554 (PDB +0x55C)
-    long GetAttitudeOrReactionType(const CThing* thing, bool attitudeOnly, bool* mask, CTCOpinionSource* source);   // 0x00701010
-    long GetThingAttitudeToPlayer(const CThing* thing);
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;
+private:
+    EOpinionReactionType GetAttitudeOrReactionType(const CThing& thing, bool attitudeOnly, const bool* mask, const CTCOpinionSource* source) const;   // 0x00701010
 };
 
-long COpinionReactionManager::GetThingAttitudeToPlayer(const CThing* thing)
+EOpinionAttitudeType COpinionReactionManager::GetThingAttitudeToPlayer(const CThing& thing) const
 {
     const CThing* creature = ((CPlayer*)((CWorld*)World)->PeekMyPlayer())->PeekPControlledCreature();
-    CTCOpinionSource* source = 0;
+    const CTCOpinionSource* source = 0;
     if (creature && creature->HasTC(TCI_OPINION_SOURCE))
         source = (CTCOpinionSource*)((CTCOpinionSource*)&creature->GetTC(TCI_OPINION_SOURCE));
-    return GetAttitudeOrReactionType(thing, true, AttitudeMask, source);
+    return (EOpinionAttitudeType)GetAttitudeOrReactionType(thing, true, AttitudeMask, source);
 }

@@ -16,11 +16,8 @@ class CMovableResource { public:                          // landscape-memory re
 class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the unused stand-in engine global (SEngine_01436ea8 / g_pEngine_01436ea8, 0x01436EA8 = g_pLandscapeRenderer)
+//   declaration was removed; this function does not read it.
 struct SLandscapeMapHeader {
     unsigned char  _pad00[0x60];
     unsigned short OriginX;                        // +0x60

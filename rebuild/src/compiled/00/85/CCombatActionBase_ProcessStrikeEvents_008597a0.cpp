@@ -5,7 +5,7 @@
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008597A0, length 638 bytes (+ int3 padding), esp frame, plain `ret`; called from
 //   CCombatActionBase::FrameUpdate @ 0x00859D80.
-// Callees: CCreatureActionBase::GetPCreatureAnimationOwner @ 0x00692950 (result unused; manifest "_Dest_val<...>" label is
+// Callees: CCreatureActionBase::PeekWorld @ 0x00692950 (result unused; manifest "_Dest_val<...>" label is
 //   propagated), virtual IsStrikeEventActive (slot 14, +0x38) and GetAnimDelayTime (slot 6, +0x18),
 //   CCombatActionBase::PerformPossibleDamageAction(float) @ 0x008591E0, GetFirstActiveStrikeEvent @ 0x00856E50,
 //   GetWeaponUsedInStrikeAction @ 0x00857070, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10,
@@ -73,6 +73,7 @@ struct CStrikeEventList {                              // std::list<CCountedPoin
 };
 
 struct CAnimationOwner;
+#include "engine/CWorld.h"   // CWorld (complete: the unused PeekWorld() result)
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
@@ -94,7 +95,11 @@ class CCreatureActionBase { public:
     unsigned char           _pad10[0x1c - 0x10];
     long                    FramesRunning;             // +0x1c
     unsigned char           _pad20[0xa8 - 0x20];
-    CAnimationOwner* GetPCreatureAnimationOwner() const;   // 0x00692950
+protected:
+    // 0x00692950 Ego_r.pdb ?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ (protected const; name-fix 2026-11-12, was the stand-in
+    //   GetPCreatureAnimationOwner): `add ecx,8 ; call GetPItem ; jmp CThing::PeekWorld 0x004C7AB0`.
+    const CWorld& PeekWorld() const;
+public:
 };
 class CCombatActionBase : public CCreatureActionBase { public:      // retail sizeof 0x114
     CBaseIntelligentPointer PTarget;                   // +0xa8
@@ -125,7 +130,7 @@ class CCombatActionBase : public CCreatureActionBase { public:      // retail si
 void CCombatActionBase::ProcessStrikeEvents()
 {
     long framesPerSecond = CMainGameComponent::GetConstantFPS();
-    GetPCreatureAnimationOwner();
+    PeekWorld();                         // result unused
     if (StrikeEvents.HasEvents() && IsStrikeEventActive()) {
         PerformPossibleDamageAction(0.25f);
         CStrikeEvent* strikeEvent = GetFirstActiveStrikeEvent();

@@ -6,10 +6,10 @@
 //   PEnemy is the Ego_r.pdb CIntelligentPointer<CThingCreatureBase> at retail +0x14.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x3), CAIStateGroupBase::IsStopping 0x008FD010, CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound const 0x004365B0, the targeting component's virtual slot 29 (+0x74; CTCTargetingAI's returns its
-//   targeted-thing pointer -- named GetPTargetedThing, the Ego_r.pdb CTCTargetingBase virtual of that shape: probable).
+//   best-enemy pointer: GetPBestEnemyCreatureForAttack 0x004DDAE5, vtable slot evidence in that row).
 // Shape (family K047, representative 0x0094D930): IS_THING_ALIVE(PEnemy); `if (IsStopping()) return false;`; the GetTC<T>(T**)
 //   lookup with the bitset reference test (`mov ecx,[eax+20h] ; test ch,1`) and the const lower bound, its result ignored (a
-//   missing component reads the unset local, as the landed J018 GetTC rows); `if (PEnemy.GetPItem() == targeting->GetPTargetedThing()) return true; return false;` (the right operand -- the virtual
+//   missing component reads the unset local, as the landed J018 GetTC rows); `if (PEnemy.GetPItem() == targeting->GetPBestEnemyCreatureForAttack()) return true; return false;` (the right operand -- the virtual
 //   call -- is evaluated first; `sete`), the entry picked by the ternary so the component loads straight into ecx.
 #include <stddef.h>
 #define FABLE_RETAIL_STLP_BITSET_INDEX
@@ -40,7 +40,7 @@ public:
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
     virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
-    virtual CThing* GetPTargetedThing() const;                // slot 29 (+0x74)
+    virtual CThingCreatureBase* GetPBestEnemyCreatureForAttack() const;   // slot 29 (+0x74) 0x004DDAE5 ?GetPBestEnemyCreatureForAttack@CTCTargetingAI@@UBEPAVCThingCreatureBase@@XZ (Ego_r.pdb + FableWin.pdb, vtable 0x012411FC; was the probable GetPTargetedThing; name-fix 2026-11-12)
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -72,7 +72,7 @@ bool CAIStateGroup_TrollBase::IsStillRunnable()
         return false;
     const CTCTargetingBase* targeting;
     PBrain->PCreature->PeekTC(TCI_TARGETING, &targeting);
-    if (PEnemy.Get() == targeting->GetPTargetedThing())
+    if (PEnemy.Get() == targeting->GetPBestEnemyCreatureForAttack())
         return true;
     return false;
 }

@@ -10,12 +10,12 @@
 //          CBrainOutput ctor @ 0x00835620, CCombatActionBase(creature, target, 0x96, CSoundPair) @ 0x00857F30 then the
 //          derived vtable 0x01296F14 (CCreatureAction_ScreamerIntoAggressive, rtti), its Clone through the folded
 //          vtable slot [0x01296F40], CCountedPointer::Reset @ 0x00668D90, ~CCombatActionBase @ 0x0062E900,
-//          CAIBrain::SetBrainOutput @ 0x0088B8F0, operator delete @ 0x00BFE9BC (count block, inlined counted-pointer dtor).
+//          CAIBrain::SetOutput @ 0x0088B8F0, operator delete @ 0x00BFE9BC (count block, inlined counted-pointer dtor).
 // Layout: Ego_r.pdb CAIStateGroup_ScreamerPursueTarget (PTarget +0x14, TickToGetAggressive +0x1c); CBrainOutput as the
 //         landed 0x0097D8B0 / 0x00969AE0 model; CCombatActionBase sizeof 0x114 (landed Clone 0x0096E510).
 // Shape: the derived action ctor is an inline (forced) wrapper over the out-of-line base ctor so the vptr store is
 //         visible and the virtual Clone folds to [vtable+0x2c]; the action lives in its own block (destroyed before
-//         SetBrainOutput); CBrainOutput's dtor is inline (forced) -- implicit, it was emitted out of line here.
+//         SetOutput); CBrainOutput's dtor is inline (forced) -- implicit, it was emitted out of line here.
 #include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
@@ -113,7 +113,7 @@ struct CThingCreature : CThing {
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                      // +0x18
-    void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);  // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -148,6 +148,6 @@ void CAIStateGroup_ScreamerPursueTarget::OnReplace()
             output.Flags |= 8;
             output.PAction.Reset(pAction->Clone());
         }
-        PBrain->SetBrainOutput(output);
+        PBrain->SetOutput(output);
     }
 }

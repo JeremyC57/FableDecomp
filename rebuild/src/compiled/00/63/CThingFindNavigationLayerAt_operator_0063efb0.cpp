@@ -13,7 +13,7 @@ class CPhysicsMeshObject { public:
     unsigned char _body[0x40 - 4];
     CPhysicsMeshObject(const CPhysicsMeshObject& other);
     virtual ~CPhysicsMeshObject();                          // 0x00A127D0
-    long GetNavigationLevelAt(const C3DVector& pos);   // 0x00A11D10
+    long GetNavigationLevelAt(const C3DVector& pos) const;   // 0x00A11D10 ?GetNavigationLevelAt@CPhysicsMeshObject@@QBEJABVC3DVector@@@Z (Ego_r.pdb + FableWin.pdb; name-fix 2026-11-12)
 };
 
 class CTCPhysicsBase { public:

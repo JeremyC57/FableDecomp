@@ -70,7 +70,7 @@ public:
     virtual void VSlot40();
     virtual void VSlot41();
     virtual void VSlot42();
-    virtual void VSlot43();
+    virtual void Initialise();                  // slot 43 (+0xac) 0x005339B0 ?Initialise@CComponent@NUISystem@@UAEXXZ (Ego_r.pdb + FableWin.pdb, public virtual; vtable 0x0124608C slot 43; name-fix 2026-11-12)
     virtual void VSlot44();
     virtual void VSlot45();
     virtual void VSlot46();
@@ -173,7 +173,6 @@ public:
     float m_timer2;                             // +0x0a8
     float m_end2;                               // +0x0ac
     unsigned char _pad_0xb0[0x84];              // +0x0b0 .. +0x134 (the child array lives at +0xb0)
-    void Initialise();                          // 0x005339B0
     void AddChild(CCountedComponentPointer& child); // 0x00533CC0 (manifest: Vector_PushBack_Or_Reallocate)
 };
 class CChangingStateComponent : public CComponent {

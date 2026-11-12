@@ -67,6 +67,9 @@ struct CDefClassReference {                           // a counted CDefClassBase
 class CTCDParticleEmitter {
 public:
     void AttachToThing(class CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    // 0x006E0880 Ego_r.pdb + FableWin.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z (name-fix 2026-11-12, was the
+    //   free stand-in CreateEffectThing(long, const C3DVector*, bool); engine/CTCDParticleEmitter.h FULL declares the same form)
+    static class CThing* __fastcall Create(long type, const C3DVector& position, bool flag);
 };
 class CThing {
 public:
@@ -101,7 +104,6 @@ public:
         return false;
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 struct CTCAD {                                        // interface 0xAD
     void AddDependentThing(CThing* thing);            // 0x007AF6C0
 };
@@ -150,9 +152,9 @@ void CCreatureAction_JackFloatUp::PerformAction()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         if (effects->GetEffectFromString("RISE_EFFECT", effectType))
-            CreateEffectThing(effectType, &GetCreature()->GetPos(), false);
+            CTCDParticleEmitter::Create(effectType, GetCreature()->GetPos(), false);
         if (effects->GetEffectFromString("FLOAT_EFFECT", effectType)) {
-            CThing* effect = CreateEffectThing(effectType, &GetCreature()->GetPos(), false);
+            CThing* effect = CTCDParticleEmitter::Create(effectType, GetCreature()->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1)) {
                 CTCAD* dependents = 0;
                 GetCreature()->GetInterface(&dependents, 0xad);

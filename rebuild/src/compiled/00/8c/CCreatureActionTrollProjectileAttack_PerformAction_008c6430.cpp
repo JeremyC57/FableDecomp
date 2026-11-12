@@ -60,7 +60,7 @@ template <class T> class CDefPointer { public:
 
 class CThing { public: };
 class CThingCreatureBase : public CThing { public:
-    long GetShotAccuracyPercentage();                  // 0x00663B10
+    long GetShotAccuracyPercentage() const;            // 0x00663B10 ?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ (Ego_r.pdb + FableWin.pdb, const; name-fix 2026-11-12)
 };
 
 CThing* __fastcall CreateShot(long defIndex, CThing* shooter, CThing* origin, CThing* target, float accuracy, float a, float b,

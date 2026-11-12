@@ -1,0 +1,55 @@
+source	address	symbol	status	binders_respelled	note
+QUEUE land1011eo	0x009AD6E0	?LoadDef@CDefinitionManager@@IBEXK@Z	done	7	self row + 009b0ac0 009ae150 009ad9e0 009ade10 009ada10 + 009ae6b0 (stand-in ClearDef)
+QUEUE land1011eo	0x009ADAE0	?InstantiateSubDef@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@ABVCCharString@@K@Z	partial	0	claim holds (both PDBs, self row); binder 009ae150 needs its local non-template CDefPointer moved onto engine/CDefPointer.h (NOTES)
+QUEUE land1011eo	0x009B4BD0	std::vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow	done	1	self row already right; its test respelled off CUnprovenElement_009b4bd0 onto the header's nested declaration
+QUEUE land1011eo	0x00499AA0	?StartProgress@CProgressDisplay@@UAEX_N00000@Z	done	0	row, catalog and functions.tsv already right; nothing to respell
+QUEUE land1011eo	0x00A0FDB0	?WordWrap_SetOption@@YIXII@Z	done	3	self row (YIXIK) + 0054f8e0 + 0048f50c (YIXJJ); tests 00a0fdb0 / 0054f8e0 respelled
+QUEUE land1011eo	0x00A11D10	?GetNavigationLevelAt@CPhysicsMeshObject@@QBEJABVC3DVector@@@Z	done	1	0063efb0 (self row already right)
+QUEUE land1011eo	0x007F53B0	?FrameUpdate@CTCSoundAtmosphere@@UAEXXZ	done	0	row and catalog already right; only ghidra_out label files still say CTCSoundAtmosphereVillage::FrameUpdate (coordinator)
+QUEUE land1011eo	0x00744460	?GetGiveUpChaseRadius@CTCPerceiveThing@@QBEMXZ	done	2	self row (was C00744460::M) + 0093d3a0 (stand-in GetPerceptionRange)
+QUEUE land1011eo	0x0095E260	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::PTarget	done	1	member respelled in 0095e260
+QUEUE land1011eo	0x0069CE20	??$IS_THING_ALIVE@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z	done	1	self row (explicit instantiation of engine/ThingAlive.h); callers already right
+QUEUE land1011ep	0x01436EA8	g_pLandscapeRenderer	partial	5	00bfd480 00bde0c0 00bfc140 (+ unused decl removed in 00bf6490 00bf6750); rest as NF29 left it (NOTES)
+QUEUE land1011ep	0x0129BA40	?GD3DFormats@@3QBVCD3DFormatInfo@@B	partial	0	not advanced: the four rows left are non-mechanical (field types, C1001, DIFFER)
+QUEUE land1011ep	0x0052CEB0	?GetState@CChangingStateComponent@NUISystem@@UAEPAVCUIState@2@K@Z	partial	0	not advanced: 0052c870 / 0052c8b0 need their own const names first
+QUEUE land1011ep	0x00AEAAF0	?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ	partial	0	not advanced (header lacks CreateEmitter; static Get() stand-ins)
+QUEUE land1011ep	0x007B9090	?FreeServingPoint@CTCTavernTable@@QAEXJ@Z	partial	0	not advanced: 009239c0 local CTCTable needs engine/CTCTavernTable.h members
+QUEUE land1011ep	0x00669D30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	partial	0	not reached in this pass
+QUEUE land1011ep	0x00AE9450	??0?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	partial	0	not reached (local CEmitterPointer models)
+QUEUE land1011ep	0x00A0D2B0	?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z	partial	0	unchanged: slot-2 virtual unnamed in both PDBs
+QUEUE land1011ep	0x007F70D0	GetPBestThingInRoughArea<...>	partial	0	authoring
+QUEUE land1011ep	0x00658EC3	REWORK IS_THING_ALIVE stand-in bodies	done	1	real engine/ThingAlive.h bodies (FABLE_RETAIL_IS_THING_ALIVE + _NOINLINE), RELOCATION_MATCH in 1 grade
+QUEUE land1011ep	0x0052C730	?Initialise@CComponent@NUISystem@@UAEXXZ (+ AddChild claim)	done	2	0052c730 Initialise virtual slot 43; the AddChild half is corrected: 0x00533CC0 is CComponent vslot 60 AddChildDynamically, 0052cab0 respelled to that (REJECTED records the AddChild spelling)
+QUEUE land1011ep	0x00BD9AB0	CEngineLandscapeMemoryManager::SetVirtualBlockMovableResource (CANDIDATE)	rejected	0	see REJECTED.tsv
+QUEUE land1011ep	0x00438230	?ClearEffects@...@NPlayerGui@@ siblings	done	3	binders 00438230 + 0043e420 (same ClearGui TU, five calls) + 00438460 (declarations only): CDrawHealth / CDrawStamina / CDrawAbilityButtons / CDrawQuickAccessIcons / CDrawMeleeActionButtonEffects ClearDisplay -> ClearEffects (both PDBs); repair pass added 0043e420 and 00438460
+QUEUE land1011eq	0x00ADF5B0	?SaveStateToInterpolateFrom@CParticleProgram@@QAEXAAVCParticleSimulation@@@Z	done	2	self row (shared header) + 00b82100
+QUEUE land1011eq	0x00B840A0	?resize@?$vector@V?$CCountedPointer@VCParticleSimulation@@@@...@std@@QAEXI@Z	partial	1	binder 00b82100 moved onto stlport std::vector; self row is a stand-in body of another shape (authoring)
+QUEUE land1011eq	0x008C6390	?PerformAction@CCreatureAction_TrollWhackGroundBase@@UAEXXZ	done	1	self row on the shared header
+QUEUE land1011eq	0x0072EB40	?ReceivedConfirmation@CTCActionUseBuyHouse@@AAEXAAVCTCBuyableHouse@@@Z	done	1	0072ee30 (+test); self row already right
+QUEUE land1011eq	0x009FD150	?GetBlankTexture@CGraphicDataBank@@QBEPBVCTexture@@W4ETextureType@1@@Z	done	2	self row (shared header) + 00ba9360 (stand-in CGraphicDataBankFull)
+QUEUE land1011er	0x00692950	?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ	done	2	self row + 008597a0; 008cb940 / 00856dd0 left (stand-in CCombatActionBase / CAnimationOwner models, NOTES)
+QUEUE land1011er	0x004C7AB0	?PeekWorld@CThing@@IBEABVCWorld@@XZ	partial	2	self row + 00663b10; ten other binders with stand-in names left (NOTES)
+QUEUE land1011er	0x00ABA370	?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ	done	1	self row (+test rewritten to link the object)
+QUEUE land1011er	0x006E0880	?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z	done	3	008c0fb0 008c4b80 (+ unused declaration removed in 007eec50)
+QUEUE land1011er	0x006F3A30	??$_S_sort@...CThingCompare_Nearest@@@std@@...	done	0	self row already right; its stand-in caller 006eba60 is the separate entry below
+QUEUE land1011er	0x006F04C0	??$_S_merge@...CThingCompare_Nearest@@@Z	done	1	self row = explicit instantiation of stlport/fable_containers.h
+QUEUE land1011er	0x0085E6C0	std::vector<NThingMap::CThingMapCell>::_M_fill_insert	partial	0	self row's own std model conflicts with the stlport vector NThingMap_CThingMap.h pulls in (NOTES); binder 0085e8d0 already right
+QUEUE land1011er	0x005D8E40	?ConnectToInventory@CTCInventoryItem@@QAEXAAVCTCInventoryBase@NInventory@@@Z	done	1	self row (+test rewritten); caller 005be8f3 already right
+QUEUE land1011er	0x005BE8D3	?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z	partial	0	authoring: the self row's body ends in CCategory::GetBoughtPrice and needs re-authoring as the const per-item-data lookup
+QUEUE land1011er	0x00692940	?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ	partial	0	the four binders declare it on stand-in CCombatActionBase models with no CCreatureActionBase base (NOTES)
+QUEUE land1011er	0x00663B10	?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ	done	3	self row + 008c6430 + 008c0900; 008f3020 left (declared on a local CThing)
+QUEUE land1011er	0x006F2BB0	??_F?$list@PBVCThingCreatureBase@@...@std@@QAEXXZ (CLAIM)	partial	0	authoring: name supported (STLport _S_sort counter[64] + matched 0x006F3A30 binds it), but the self rename needs a compiler-generated closure match
+QUEUE land1011er	0x006EBA60	CThingCompare_Nearest / std::_S_sort spelling in the caller (CLAIM)	partial	0	row is a stand-in model (namespace CombatLists, fake list); respelling = moving it onto stlport list + engine/CThingCompare_Nearest.h
+QUEUE land1011es	0x006EF6F0	??0?$CCountedPointer@VCCombatSequenceBase@@@@QAE@PAVCCombatSequenceBase@@@Z	done	1	self row (explicit instantiation); caller 008b0b60 already right
+QUEUE land1011es	0x0042DA10	?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ	done	1	008b0700 vslot 10 respelled, moved onto fable_string.h / engine/CDefString.h
+QUEUE land1011es	0x008B0B10	?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z	partial	0	family: callers pass CCountedPointer stand-ins where retail passes CCombatAction&; needs CCombatAction modelled (NOTES)
+QUEUE land1011es	0x004DDAE5	?GetPBestEnemyCreatureForAttack@CTCTargetingAI@@UBEPAVCThingCreatureBase@@XZ	done	2	self row (shared header) + 0094d930 slot name
+QUEUE land1011es	0x008645E0	?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z	partial	4	binders 006a78d0 0093b8b0 0091db50 0093b740 done; self row is a stand-in body (authoring); 006a7610 shim stand-in left
+QUEUE land1011es	0x005F6793	?CycleAssignedExpressions@CTCInventoryAbilities@@QAEX_N@Z	done	1	005f6b47
+QUEUE land1011es	0x00853120	??0CScriptModuleUseLamp@NCameraModes@@QAE@ABVCThing@@0J@Z	done	1	self row
+QUEUE land1011es	0x006650E0	?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z	done	2	self row + 0097d580
+QUEUE land1011es	0x0088B8F0	?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z	done	21	all 21 listed rows
+QUEUE land1011es	0x00A44840	?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ	done	22	all 22 listed rows (virtual slot name; no relocation)
+QUEUE land1011es	0x00701840	?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z	done	5	self row + 00681500 007018b0 006d0410 0094bca0 (and GetAttitudeOrReactionType 0x00701010 to its PDB form in 00701840 / 00681500 / 007018b0)
+QUEUE land1011es	0x00773790	?GetAttitudeSellPriceMultiplier@CTCShop@@QBEMXZ	done	1	00799350
+QUEUE land1011es	0x005F64DD	?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z	done	1	binder 005f6b47 (self row 0x005F64DD is BUSY: untouched)

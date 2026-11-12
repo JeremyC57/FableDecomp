@@ -42,7 +42,7 @@ CWideString __fastcall operator+(const CWideString& left, const unsigned short* 
 
 typedef unsigned int (__fastcall* TWordWrapCharWidthCallback)(unsigned short c);
 typedef unsigned int (__fastcall* TWordWrapCallback2)();
-void __fastcall WordWrap_SetOption(long option, long value);                            // 0x00A0FDB0
+void __fastcall WordWrap_SetOption(unsigned int option, unsigned int value);                         // 0x00A0FDB0
 void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback charWidth, TWordWrapCallback2 callback2);   // 0x00A0FD90
 const unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, unsigned int width, const unsigned short** lineEnd);   // 0x00A10390
 
@@ -143,7 +143,7 @@ const CWideString& CWideString::operator+=(const CWideString& o) {
 }
 CWideString __fastcall operator+(const CWideString& l, const wch* r) { CWideString t; t = l; CWideString rr(r); t += rr; return t; }
 static int g_opt, g_cb;
-void __fastcall WordWrap_SetOption(long, long) { ++g_opt; }
+void __fastcall WordWrap_SetOption(unsigned int, unsigned int) { ++g_opt; }
 void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback, TWordWrapCallback2) { ++g_cb; }
 const wch* __fastcall WordWrap_FindNextLineW(const wch* t, unsigned int width, const wch** end) { const wch* n = wlen(t) > (long)width ? t + width : 0; *end = n; return n; }
 unsigned int __fastcall NUISystem::CText::GetCharWidthW(unsigned short) { return 1; }

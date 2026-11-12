@@ -119,8 +119,12 @@ class CManagedTexture { public:                               // Ego_r.pdb, 8 by
 };
 class CGraphicInfoFrame;
 class CGraphicDataBank { public:
+    enum ETextureType { TEXTURE_TYPE_OPAQUE = 0 };       // Ego_r.pdb CGraphicDataBank::ETextureType (nested)
     unsigned char _pad00[0x194];
     unsigned long CurrentFrame;                        // +0x194
+    // 0x009FD150 Ego_r.pdb + FableWin.pdb ?GetBlankTexture@CGraphicDataBank@@QBEPBVCTexture@@W4ETextureType@1@@Z (name-fix 2026-11-12:
+    //   declared on CGraphicDataBank itself, was on the stand-in derived CGraphicDataBankFull)
+    const CTexture* GetBlankTexture(ETextureType type) const;
 };
 template <class T> struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
     T* P;
@@ -182,7 +186,6 @@ class CGraphicDataBankFull : public CGraphicDataBank { public:   // the bank's g
     unsigned char      _pad01[0x1e0 - 0x198];
     SVector<CGraphicInfo> GraphicList;                 // +0x1e0
     unsigned char      _pad02[0x2b4 - 0x1ec];
-    const CTexture* GetBlankTexture(ETextureType type) const;   // 0x009FD150 ?GetBlankTexture@CGraphicDataBank@@QBEPBVCTexture@@W4ETextureType@1@@Z
     FABLE_FORCEINLINE unsigned long GetNoGraphics() const { return GraphicList.size(); }
     FABLE_FORCEINLINE const CGraphicInfo* GetGraphicInfo(unsigned long index) const { return index < GraphicList.size() ? &GraphicList[index] : 0; }
 };
@@ -257,7 +260,7 @@ const CTexture* __fastcall CEnginePrimitiveManagerMeshBase::GetDiffuseTexture(co
     const CGraphicDataBankFull* fullBank = static_cast<const CGraphicDataBankFull*>(bank);
     long index = material->DiffuseMapBankIndex;
     if (index == 0)
-        return fullBank->GetBlankTexture(TEXTURE_TYPE_0);
+        return bank->GetBlankTexture(CGraphicDataBank::TEXTURE_TYPE_OPAQUE);
     if (surfaces) {
         const CTexture* composed = GetComposedTexture(index, *surfaces, mipmap, false, bank);
         if (composed)

@@ -27,6 +27,8 @@ public:
 private:             // 0x0049D9D0
 };
 
+enum EOpinionAttitudeType;                  // MS forward enums (Ego_r.pdb result types)
+enum EOpinionReactionType;
 extern CCharString g_OpinionAttitudeNames[];    // 0x013BABD0
 
 class COpinionReactionManager {
@@ -35,9 +37,10 @@ public:
     CWorld*       World;                    // +0x04
     unsigned char _pad008[0x54c];
     bool          AttitudeMask[79];         // +0x554 (PDB +0x55C)
-    long GetAttitudeOrReactionType(const CThing* thing, bool attitudeOnly, bool* mask, CTCOpinionSource* source);   // 0x00701010
-    long GetThingAttitudeToPlayer(const CThing* thing);     // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 Ego_r.pdb + FableWin.pdb ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z (name-fix 2026-11-12)
     const CCharString& GetThingAttitudeToPlayerAsString(const CThing* thing);
+private:
+    EOpinionReactionType GetAttitudeOrReactionType(const CThing& thing, bool attitudeOnly, const bool* mask, const CTCOpinionSource* source) const;   // 0x00701010 Ego_r.pdb + FableWin.pdb ?GetAttitudeOrReactionType@COpinionReactionManager@@ABE?AW4EOpinionReactionType@@ABVCThing@@_NPB_NPBVCTCOpinionSource@@@Z (private const; name-fix 2026-11-12)
 };
 
 const CCharString& COpinionReactionManager::GetThingAttitudeToPlayerAsString(const CThing* thing)
@@ -47,7 +50,7 @@ const CCharString& COpinionReactionManager::GetThingAttitudeToPlayerAsString(con
     {
         CTCOpinionSource* source = (CTCOpinionSource*)((CTCOpinionSource*)&creature->GetTC(TCI_OPINION_SOURCE));
         if (source)
-            return g_OpinionAttitudeNames[GetAttitudeOrReactionType(thing, true, AttitudeMask, source)];
+            return g_OpinionAttitudeNames[GetAttitudeOrReactionType(*thing, true, AttitudeMask, source)];
     }
-    return g_OpinionAttitudeNames[GetThingAttitudeToPlayer(thing)];
+    return g_OpinionAttitudeNames[GetThingAttitudeToPlayer(*thing)];
 }

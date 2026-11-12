@@ -6,7 +6,7 @@
 //          GetFacingAngleXY) / 66 (+0x108, SetFacingAngleXY), CCombatAction_GenericStrikeResponseBase::Initialise 0x00865F40,
 //          CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580 (on a counted copy of the thing's def +0x70), CCharString
 //          0x0099EBF0 / ~ 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString 0x00669D30, CThing::GetPos 0x004C73D0,
-//          CreateEffectThing 0x006E0880 (__fastcall), CTCDParticleEmitter::AttachToThing 0x006E0BE0; def release slot 1.
+//          CTCDParticleEmitter::Create(long, const C3DVector&, bool) 0x006E0880 (__fastcall), CTCDParticleEmitter::AttachToThing 0x006E0BE0; def release slot 1.
 // Model: the landed CCreatureAction_UndeadReturnToEarth::Initialise (0x008EC320) and CTCResurrectionItem::OnItemUsed
 //          (0x007F04C0) models (the emitter is the effect thing's cached interface-0x4b component at +0x5c).
 // Shape: GetSubDef and GetEffectFromString are same-TU noinline stand-in bodies that write only their out slots, so the
@@ -83,6 +83,9 @@ struct CPhysicsBody {                           // the thing's physics body at +
 class CTCDParticleEmitter {
 public:
     void AttachToThing(class CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    // 0x006E0880 Ego_r.pdb + FableWin.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z (name-fix 2026-11-12, was the
+    //   free stand-in CreateEffectThing(long, const C3DVector*, bool); engine/CTCDParticleEmitter.h FULL declares the same form)
+    static class CThing* __fastcall Create(long type, const C3DVector& position, bool flag);
 };
 class CThing {
 public:
@@ -104,7 +107,6 @@ public:
         return false;
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -145,7 +147,7 @@ void CCombatAction_StrikeResponseScorpionKing::Initialise()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         if (effects->GetEffectFromString("EYE_GET_HIT", effectType)) {
-            CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
+            CThing* effect = CTCDParticleEmitter::Create(effectType, PCreature.GetPItem()->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1) && effect->HasTC(0x4b)) {
                 CTCDParticleEmitter* emitter = effect->PTCDriver;
                 emitter->AttachToThing(*PCreature.GetPItem(), 10, "EMITTER_EYE", 0, 0.0f);

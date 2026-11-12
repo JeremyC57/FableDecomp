@@ -8,7 +8,7 @@
 //          @ 0x00662210, action-queue current id @ 0x00692620 (manifest "CWorld::DrawGetEnvironment" is propagated),
 //          CBrainOutput @ 0x00835620 (implicit dtor inlined: counted pointer +0x20, ~CBaseIntelligentPointer @ 0x00A01C10 +0x40),
 //          CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCreatureAction_PlayAnimation @ 0x008424F0, ~CCreatureActionBase
-//          @ 0x00693EF0, CCountedPointer::Reset @ 0x00668D90, CAIBrain::SetBrainOutput @ 0x0088B8F0 (manifest
+//          @ 0x00693EF0, CCountedPointer::Reset @ 0x00668D90, CAIBrain::SetOutput @ 0x0088B8F0 (manifest
 //          "CQuestManager::RemoveAvailableQuestCardType" is propagated), CWorld::GetFrame @ 0x0049D870, CMainGameComponent::GetConstantFPS()
 //          @ 0x01375550, CVectorMap::LowerBound @ 0x0040F020 (0xd3), CTCIdleScheduler::ChooseNewIdle @ 0x00801A50,
 //          CAIStateGroupBase::DestroyItem @ 0x008FD1B0.
@@ -99,7 +99,7 @@ class CBrainOutput { public:                           // 0x48 bytes
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 class CCharString { public:
     void* m_pData;
@@ -166,7 +166,7 @@ void CAIStateGroup_Clean::OnReplace()
             output.Flags |= 8;
             CCreatureActionBase* performed = &action;
             output.PAction.Reset(performed->Clone());
-            PBrain->SetBrainOutput(output);
+            PBrain->SetOutput(output);
         }
     }
     CleanActionID = -1;

@@ -30,8 +30,9 @@ class CTCShopKeeper { public:                          // interface 0x90
     CTCShop* GetShopTC();                       // 0x00798F50
     CThing* GetShopThing();                     // 0x00798D80
 };
+enum EOpinionAttitudeType;                  // MS forward enum (Ego_r.pdb result type)
 class COpinionReactionManager { public:
-    long GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 Ego_r.pdb + FableWin.pdb ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z (name-fix 2026-11-12)
 };
 class CWorld { public:
     unsigned char _pad[0x74];
@@ -91,7 +92,7 @@ bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
                 if (!((CThing*)PStall.GetPItem()) && shop->OnTheSpot) {
                     PStall = GetCreature();
                     CThing* self = GetCreature();
-                    long attitude = PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(self);
+                    long attitude = PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(*self);
                     if (attitude == 3 || attitude == 4 || attitude == 8)
                         PStall = (CThing*)0;
                 }

@@ -20,11 +20,10 @@
 class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
+//   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 template <class T> inline void RelocatePointer(T*& p, void* oldBase, void* newBase)
 {
@@ -47,7 +46,7 @@ struct CObjectCacheGroupCollection : CMovableResource {   // CLocalDetailCacheMa
     CObjectTypeCollection*       ObjectTypeCollections; // +0x20
     void OnPostRelocation()
     {
-        CEngineLandscapeMemoryManager* manager = g_pEngine_01436ea8->m_pLandscapeMemory;
+        CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
         for (CObjectTypeCollection* collection = ObjectTypeCollections; collection; collection = collection->Next)
             manager->RebindBlockOwner(collection, this);
     }

@@ -51,7 +51,7 @@ FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* see
 class CThing;
 enum EOpinionAttitudeType { OPINION_ATTITUDE_IN_LOVE_COURTING = 12 };
 class COpinionReactionManager { public:
-    EOpinionAttitudeType GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 Ego_r.pdb + FableWin.pdb ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z (name-fix 2026-11-12)
 };
 class CWorld {
 public:
@@ -105,7 +105,7 @@ class CTCWife : public CTCBase { public:
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
     EOpinionAttitudeType GetAttitudeToPlayer(CThing* thing) const
     {
-        return PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(thing);
+        return PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(*thing);
     }
     bool IsOfferingSex() const;                             // 0x006CEEA0
     bool IsCourtingHero() const;                            // 0x006CF890

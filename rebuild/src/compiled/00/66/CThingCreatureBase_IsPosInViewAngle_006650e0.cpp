@@ -1,4 +1,4 @@
-// CThingCreatureBase::CanSeeTarget(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction) -- ask the look component (TC 0x43) when there is one, else test the angle from the head to the position against the facing: twice the angle difference within the field of view
+// CThingCreatureBase::IsPosInViewAngle(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction) const -- ask the look component (TC 0x43) when there is one, else test the angle from the head to the position against the facing: twice the angle difference within the field of view
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006650E0, length 171 bytes, `ret 10h`, bool in al.
@@ -10,6 +10,10 @@
 // Shape: HasTC is the raw bitset test and GetTC the inline const lookup forwarding all four arguments; the facing is a
 //   named float local parked in the dead last-argument slot across the head-position call; `2*|d| <= fov` with
 //   separate true/false exits (`test ah,41h ; jp`), the doubling as `fadd st,st`.
+// Leaf: ?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z
+// Name-fix 2026-11-12 (was the stand-in CanSeeTarget, non-const): Ego_r.pdb 0x0053F1B0 + FableWin.pdb 01d9d6d0
+//   ?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z (const); the landed caller AIActionLookAtPos 0x0097D6F0 binds this
+//   address under that symbol.
 #include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fabs)
@@ -46,7 +50,7 @@ public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
@@ -59,12 +63,12 @@ public:
 
 class CThingCreatureBase : public CThing {
 public:
-    bool CanSeeTarget(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction);
+    bool IsPosInViewAngle(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction) const;
 public:
     C3DVector GetHeadPos(bool) const;   // 0x00661B40
 };
 
-bool CThingCreatureBase::CanSeeTarget(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction)
+bool CThingCreatureBase::IsPosInViewAngle(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction) const
 {
     if (UsingComponents[0x43 >> 5] & (1UL << (0x43 & 31)))
         return GetTC<CTCLook>(0x43)->IsPosInViewRange(position, fieldOfView, checkRange, checkObstruction);

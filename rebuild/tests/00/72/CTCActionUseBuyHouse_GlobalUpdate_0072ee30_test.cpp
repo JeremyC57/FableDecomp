@@ -61,7 +61,7 @@ class CTCActionUseBuyHouse : public CTCActionUseBase {
 public:
     bool WaitingForConfirmation;
     long HouseQuestion;
-    void ReceivedConfirmation(CTCBuyableHouse*) { ++g_confirmed; }
+    void ReceivedConfirmation(CTCBuyableHouse&) { ++g_confirmed; }
     void OnActionUseRent(CTCBuyableHouse*) { ++g_rent; }
     void GlobalUpdate(long)
     {
@@ -78,7 +78,7 @@ public:
                         if (thing->HasTC(0xd5)) {
                             CTCBuyableHouse* house = thing->GetTC<CTCBuyableHouse>(0xd5);
                             if (answer->m_answer == 1)
-                                ReceivedConfirmation(house);
+                                ReceivedConfirmation(*house);
                             WaitingForConfirmation = false;
                             if (HouseQuestion == 1 && house->m_rentable)
                                 OnActionUseRent(house);

@@ -6,28 +6,18 @@
 // into the hidden result, CCharString::~CCharString @ 0x0099EAE0 on the temporary.
 // Vtable 0x01261D74 slot 2. The 8-byte frame holds the id (high dword) and the temporary string (low
 // dword); VC7.1 has no NRVO, so the named local is copied into the result and destroyed.
-class CCharString { public:
-    void* PStringData;                     // +0 the shared string block
-    CCharString(const CCharString& other); // 0x0099EC30
-    ~CCharString();                        // 0x0099EAE0
-};
-
-struct CDefStringId {                          // 4 bytes with a user constructor: returned through a hidden pointer
-    long m_id;
-    CDefStringId(long id) : m_id(id) { }
-};
-
-class CDefStringTable {
-public:
-    CCharString GetString(long) const;   // 0x009D49B0
-};
-
-extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)       // 0x013CA828
+// Name-fix 2026-11-12: vslot 10 is Ego_r.pdb ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ (engine/CDefClassBase.h vslot 10;
+//   was the stand-in GetNameStringId returning a local CDefStringId); CDefString / CCharString / GDefStringTable from the shared headers.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING
+#include "fable_string.h"
+#include "engine/CDefString.h"
 
 struct CCombatSequenceDef_Retail {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual CDefStringId GetNameStringId() const;   // slot 10
+    virtual CDefString GetInstantiationName() const;   // slot 10 (+0x28) CDefClassBase::GetInstantiationName
 };
 
 struct CCombatSequenceGeneric_Retail {
@@ -39,6 +29,6 @@ struct CCombatSequenceGeneric_Retail {
 
 CCharString CCombatSequenceGeneric_Retail::GetName()
 {
-    CCharString name = GDefStringTable.GetString(Def_Object->GetNameStringId().m_id);
+    CCharString name = Def_Object->GetInstantiationName().GetString();
     return name;
 }

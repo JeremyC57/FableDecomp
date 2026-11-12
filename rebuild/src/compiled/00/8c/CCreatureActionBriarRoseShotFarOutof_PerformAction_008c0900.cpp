@@ -158,7 +158,7 @@ FABLE_FORCEINLINE bool GetDummyObject(const CThing* thing, const CCharString& na
     return appearance->GetDummyObject(name, 0, 0, *position, *orientation, 1.0f);
 }
 class CThingCreatureBase : public CThing { public:
-    long GetShotAccuracyPercentage();                  // 0x00663B10
+    long GetShotAccuracyPercentage() const;            // 0x00663B10 ?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ (Ego_r.pdb + FableWin.pdb, const; name-fix 2026-11-12)
 };
 class CThingObject;
 class CThingObject { public:

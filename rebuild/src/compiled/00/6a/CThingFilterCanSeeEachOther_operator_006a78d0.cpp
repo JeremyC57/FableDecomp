@@ -25,11 +25,13 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
 };
 
-bool __fastcall CanCreatureSeeCreature(const CThingCreatureBase* viewer, const CThingCreatureBase* target, bool ignoreLight);   // 0x008645E0
+class CThingAICreature;
+// 0x008645E0 Ego_r.pdb + FableWin.pdb ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (name-fix 2026-11-12)
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* creature, const CThing* thing, bool flag); }
 
 inline bool CanSeeEachOther(const CThingCreatureBase* a, const CThingCreatureBase* b)
 {
-    return CanCreatureSeeCreature(a, b, false) && CanCreatureSeeCreature(b, a, false);
+    return NCreatureAI::IsAwareOfThing((const CThingAICreature*)a, b, false) && NCreatureAI::IsAwareOfThing((const CThingAICreature*)b, a, false);
 }
 
 class CThingFilter_CanSeeEachOther { public:

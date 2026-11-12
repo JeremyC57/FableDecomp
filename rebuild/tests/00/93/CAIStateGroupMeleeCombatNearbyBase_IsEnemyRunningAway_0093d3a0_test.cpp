@@ -19,7 +19,7 @@ class CThing;
 class CTCPerceiveThing { public:
     CThing* perceived; float range;
     CThing* GetPerceivedThing() { return perceived; }
-    float GetPerceptionRange() { return range; }
+    float GetGiveUpChaseRadius() const { return range; }
 };
 class CTCAIScratchpad { public: float CombatNearbyEnemyFleeingBreakOffRange; };
 class CThing { public:
@@ -63,7 +63,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway()
                     bool beyondBreakOff = false;
                     if (distSq > breakOff * breakOff)
                         beyondBreakOff = true;
-                    float range = perceive->GetPerceptionRange();
+                    float range = perceive->GetGiveUpChaseRadius();
                     if (distSq > range * range || beyondBreakOff)
                         return true;
                 }

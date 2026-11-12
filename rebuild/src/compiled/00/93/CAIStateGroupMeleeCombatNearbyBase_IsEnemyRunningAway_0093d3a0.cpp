@@ -78,7 +78,7 @@ public:
 
 class CTCPerceiveThing { public:                       // interface 0x34
     const CThing* GetPerceivedThing() const;                // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
-    float GetPerceptionRange();                 // 0x00744460
+    float GetGiveUpChaseRadius() const;         // 0x00744460 ?GetGiveUpChaseRadius@CTCPerceiveThing@@QBEMXZ (Ego_r.pdb + FableWin.pdb; reads GiveUpChaseRadius +0x4C; was the stand-in GetPerceptionRange; name-fix 2026-11-12)
 };
 class CTCAIScratchpad { public:                        // interface 0xAA
     unsigned char _pad[0x60];
@@ -127,7 +127,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway()
                     bool beyondBreakOff = false;
                     if (distSq > breakOff * breakOff)
                         beyondBreakOff = true;
-                    float range = perceive->GetPerceptionRange();
+                    float range = perceive->GetGiveUpChaseRadius();
                     if (distSq > range * range || beyondBreakOff)
                         return true;
                 }

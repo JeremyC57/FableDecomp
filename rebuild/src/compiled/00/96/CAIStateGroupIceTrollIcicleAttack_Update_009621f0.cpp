@@ -9,7 +9,7 @@
 // AIAction_LookAtThing @ 0x0097D6F0, IsStopping @ 0x008FD010, CCombatActionBase ctor @ 0x00857F30 (code 0x96; vtable
 // CCreatureAction_IceTrollIcicleAttack 0x012960C4), CThingCreatureBase::IsFreeToPerformAction @ 0x00662210 /
 // IsPerformingAnyAction @ 0x006622A0, CBrainOutput ctor @ 0x00835620, CCountedPointer::Reset @ 0x00668D90,
-// CAIBrain::SetBrainOutput @ 0x0088B8F0 / Yield (virtual slot 2), operator delete @ 0x00BFE9BC, AIAction_DoNothing
+// CAIBrain::SetOutput @ 0x0088B8F0 / SuspendSuspendableProcess (virtual slot 2), operator delete @ 0x00BFE9BC, AIAction_DoNothing
 // @ 0x0097E200, CCharString ctor @ 0x0099EBF0 / dtor @ 0x0099EAE0, CCreatureAction_PlayCombatAnimation ctor @ 0x008B7FF0,
 // AIAction_CombatPerformActionAndWait @ 0x0097DA40, Terminate @ 0x008FCF40.
 // Shape: the component tests are `bool has = HasTC()` locals (shr/and stored to a frame byte); the stealth lookup is a
@@ -120,10 +120,10 @@ inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action)
 }
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThingCreatureBase* PCreature;              // +0x18
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 enum EAIActionReturn { };
 class CAIStateGroupBase { public:
@@ -169,10 +169,10 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
                 if (GetCreature()->IsFreeToPerformAction(&action)) {
                     CBrainOutput output;
                     SetPerformAction(output, &action);
-                    PBrain->SetBrainOutput(output);
+                    PBrain->SetOutput(output);
                     --remaining;
                 }
-                PBrain->Yield();
+                PBrain->SuspendSuspendableProcess();
                 if (IsStopping()) {
                     Terminate();
                     return;

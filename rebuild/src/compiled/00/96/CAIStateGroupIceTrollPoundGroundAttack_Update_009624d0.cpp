@@ -140,10 +140,10 @@ inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action)
 }
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThingCreatureBase* PCreature;              // +0x18
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 enum EAIActionReturn { };
 class CAIStateGroupBase { public:

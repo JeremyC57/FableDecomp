@@ -37,7 +37,9 @@ class CDefinitionManager { public:
     unsigned char          _pad[0xa4];             // +0x00 vptr, maps, symbol tables, compressed data
     CInstantiatedDefInfo** InstantiatedDefs;       // +0xa4 CArray<CInstantiatedDefInfo*>::m_begin
     CDefClassInfo* FindClassInfo(const unsigned long& classKey);   // 0x009AD2E0
-    void LoadDef(unsigned long globalIndex);                       // 0x009AD6E0
+    protected:
+    void LoadDef(unsigned long globalIndex) const;   // 0x009AD6E0 ?LoadDef@CDefinitionManager@@IBEXK@Z (Ego_r.pdb + FableWin.pdb, protected const; name-fix 2026-11-12)
+public:                       // 0x009AD6E0
     CDefPointer GetPDefFromGlobalIndex(const unsigned long& classKey, long index);
 };
 

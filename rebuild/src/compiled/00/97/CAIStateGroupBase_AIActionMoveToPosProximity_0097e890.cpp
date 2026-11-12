@@ -8,7 +8,7 @@
 //   CTCCreatureNavigation::GetNextNavPosOnRoute 0x006CBAC0 (CCreatureNavOutput by hidden pointer),
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0, the current action's virtual slot 49 (+0xC4),
 //   CBrainOutput::CBrainOutput 0x00835620, CThingCreatureBase::PeekPos 0x006A4D00, CBrainOutput::SetAsLookAtThing
-//   0x0093E760, CAIBrain::SetBrainOutput 0x0088B8F0, ~CBaseIntelligentPointer 0x00A01C10, operator delete 0x00BFE9BC,
+//   0x0093E760, CAIBrain::SetOutput 0x0088B8F0, ~CBaseIntelligentPointer 0x00A01C10, operator delete 0x00BFE9BC,
 //   the brain's virtual slot 2 (+8, yield). Epsilon 0.0001f @ 0x0129BA3C.
 // Layout: state group per engine/CAIStateGroupBase.h (PBrain +4), brain creature +0x18; creature interface bitset +0x20
 // (CTCLook 0x43, CTCCreatureNavigation 7) and interface map +0x44; current action +0x100; CBrainOutput per the landed
@@ -174,10 +174,10 @@ class CBrainOutput { public:
 };
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x14];
     CThingCreatureBase* Creature;               // +0x18
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
@@ -239,13 +239,13 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat r
                     brainOutput.Types |= 0x10;
                     brainOutput.LookFlags = 0x51;
                 }
-                PBrain->SetBrainOutput(brainOutput);
+                PBrain->SetOutput(brainOutput);
             }
                 result = AI_ACTION_RUNNING;
                 break;
             }
         }
-        PBrain->Yield();
+        PBrain->SuspendSuspendableProcess();
         if (IsStopping())
             return AI_ACTION_STOPPING;
     } while (repeat == AI_ACTION_REPEAT_UNTIL_DONE && result == AI_ACTION_RUNNING);

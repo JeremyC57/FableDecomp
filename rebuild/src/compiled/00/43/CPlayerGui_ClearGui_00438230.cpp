@@ -17,11 +17,11 @@ class CDrawBase { public:                                          // PDB NPlaye
     void*         Bank;                                     // +0x14
     bool          Drawing;                                  // +0x18
 };
-class CDrawHealth            { public: void ClearDisplay(); };     // 0x00644644
-class CDrawStamina           { public: void ClearDisplay(); };     // 0x0064464C
-class CDrawAbilityButtons    { public: void ClearDisplay(); };     // 0x0064528A
+class CDrawHealth            { public: void ClearEffects(); };     // 0x00644644 ?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ (Ego_r.pdb + FableWin.pdb; was the stand-in ClearDisplay; name-fix 2026-11-12)
+class CDrawStamina           { public: void ClearEffects(); };     // 0x0064464C ?ClearEffects@CDrawStamina@NPlayerGui@@QAEXXZ (Ego_r.pdb + FableWin.pdb; was the stand-in ClearDisplay; name-fix 2026-11-12)
+class CDrawAbilityButtons    { public: void ClearEffects(); };     // 0x0064528A ?ClearEffects@CDrawAbilityButtons@NPlayerGui@@QAEXXZ (Ego_r.pdb + FableWin.pdb; was the stand-in ClearDisplay; name-fix 2026-11-12)
 class CDrawQuickAccessIcons  { public: void ClearEffects(); };     // 0x00645605 ?ClearEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ (Ego_r.pdb + FableWin.pdb; name-fix 2026-11-12)
-class CDrawMeleeActionButtonEffects { public: void ClearDisplay(); };   // 0x00645821
+class CDrawMeleeActionButtonEffects { public: void ClearEffects(); };   // 0x00645821 ?ClearEffects@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ (Ego_r.pdb + FableWin.pdb; was the stand-in ClearDisplay; name-fix 2026-11-12)
 class CDrawMiniMap           { public: void SetAsActive(bool active); };   // 0x00643E2E
 class CDrawQuestInfo         { public: void Clear(); };            // 0x00647319
 class CDrawGuildSeal         { public: void PrepareForLoad(); };   // 0x0064AE66 (manifest: CQuestInfoElement::Clear)
@@ -95,11 +95,11 @@ class CPlayerGui { public:
 
 void CPlayerGui::ClearGui()
 {
-    PDrawHealth->ClearDisplay();
-    PDrawStamina->ClearDisplay();
-    PDrawAbilityButtons->ClearDisplay();
+    PDrawHealth->ClearEffects();
+    PDrawStamina->ClearEffects();
+    PDrawAbilityButtons->ClearEffects();
     PDrawQuickAccessIcons->ClearEffects();
-    PDrawMeleeActionButtonEffects->ClearDisplay();
+    PDrawMeleeActionButtonEffects->ClearEffects();
     NPlayerGui::CDrawBase** last = Illustrators._M_finish;
     for (NPlayerGui::CDrawBase** it = Illustrators._M_start; it != last; ++it)
         (*it)->Drawing = false;

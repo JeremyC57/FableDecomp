@@ -1,0 +1,91 @@
+address	change	grade	test	grades_used	note
+0x00438230	four ClearDisplay -> ClearEffects	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0048F50C	WordWrap_SetOption YIXJJ -> YIXII	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x004C7AB0	self GetDisplayEngine -> CThing::PeekWorld const	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x004DDAE5	self vfunc_29 -> CTCTargetingAI::GetPBestEnemyCreatureForAttack (shared header)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0052C730	CComponent::Initialise virtual slot 43 (UAE)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0052CAB0	CComponent::AddChild (QAE) -> AddChildDynamically virtual slot 60 (UAE)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0054F8E0	WordWrap_SetOption YIXJJ -> YIXII (+test)	RELOCATION_MATCH	PASS	2	test respelled (rows/0054f8e0_test.cpp)
+0x005D8E40	self AddExclusiveObserver -> CTCInventoryItem::ConnectToInventory (+test rewritten, old used __asm)	MATCH	PASS	2	test respelled (rows/005d8e40_test.cpp)
+0x005F6B47	CycleAssignedAbilities / CycleAssignedExpressions (bool)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0063EFB0	GetNavigationLevelAt const	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00658EC3	REWORK: stand-in IS_THING_ALIVE bodies -> engine/ThingAlive.h (FABLE_RETAIL_IS_THING_ALIVE + _NOINLINE)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00663B10	self const QBEJXZ; callee 0x004C7AB0 -> CThing::PeekWorld	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x006650E0	self CanSeeTarget -> IsPosInViewAngle const	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00681500	GetThingAttitudeToPlayer + GetAttitudeOrReactionType PDB forms	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00692950	self Dest_val -> CCreatureActionBase::PeekWorld const (overlay friend opt-in)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0069CE20	self IsThingAlive_0069ce20 -> IS_THING_ALIVE<CIntelligentPointer<const CThing> > explicit instantiation	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x006A78D0	stand-in -> NCreatureAI::IsAwareOfThing	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x006D0410	GetThingAttitudeToPlayer PDB form	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x006EF6F0	self stand-in -> CCountedPointer<CCombatSequenceBase> ctor explicit instantiation	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x006F04C0	self _S_merge stand-in -> std::_S_merge<...> explicit instantiation (stlport header)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00701840	self const, enum result, const CThing&; callee GetAttitudeOrReactionType -> PDB ABE form	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x007018B0	GetThingAttitudeToPlayer + GetAttitudeOrReactionType PDB forms	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0072EE30	ReceivedConfirmation private, reference (+test)	RELOCATION_MATCH	PASS	2	test respelled (rows/0072ee30_test.cpp)
+0x00744460	self C00744460::M -> CTCPerceiveThing::GetGiveUpChaseRadius const (shared header)	MATCH	PASS	3	catalog test unchanged
+0x00799350	GetBasePriceMultiplier -> GetAttitudeSellPriceMultiplier	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x007EEC50	unused CreateEffectThing declaration removed	MATCH	PASS	2	catalog test unchanged
+0x00853120	self ctor const CThing& parameters	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x008597A0	GetPCreatureAnimationOwner -> PeekWorld (+engine/CWorld.h include)	RELOCATION_MATCH	PASS	4	catalog test unchanged
+0x0085F6F0	SetBrainOutput -> SetOutput	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x008B0700	vslot 10 GetNameStringId -> GetInstantiationName (CDefString; moved onto fable_string.h / engine/CDefString.h)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x008C0900	GetShotAccuracyPercentage const	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x008C0FB0	CreateEffectThing -> CTCDParticleEmitter::Create (on the existing local CTCDParticleEmitter)	RELOCATION_MATCH	PASS	3	catalog test unchanged
+0x008C4B80	CreateEffectThing -> CTCDParticleEmitter::Create (on the existing local CTCDParticleEmitter)	RELOCATION_MATCH	PASS	3	catalog test unchanged
+0x008C6390	self extern C forwarder -> CCreatureAction_TrollWhackGroundBase::PerformAction (shared header)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x008C6430	GetShotAccuracyPercentage const	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00917BB0	SetBrainOutput -> SetOutput	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0091A670	vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0091C3D0	vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0091CCC0	vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0091D510	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0091DB50	stand-in -> NCreatureAI::IsAwareOfThing	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00928E20	SetBrainOutput -> SetOutput	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0093B740	stand-in -> NCreatureAI::IsAwareOfThing	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0093B8B0	stand-in -> NCreatureAI::IsAwareOfThing	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0093D3A0	GetPerceptionRange -> GetGiveUpChaseRadius const (+test)	RELOCATION_MATCH	PASS	2	test respelled (rows/0093d3a0_test.cpp)
+0x0093D580	vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0093DDE0	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0093E2D0	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0094BCA0	GetThingAttitudeToPlayer PDB form	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0094D930	vslot 29 GetPTargetedThing -> GetPBestEnemyCreatureForAttack	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0094DC40	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0095E260	member PTargetThing -> PTarget CIntelligentPointer<const CThing>	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0095F6F0	vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009621F0	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009624D0	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00969760	vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00969AE0	SetBrainOutput -> SetOutput	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00969CB0	SetBrainOutput -> SetOutput	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0096DDB0	SetBrainOutput -> SetOutput	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097D580	IsLookingAtPos -> IsPosInViewAngle const; SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	3	catalog test unchanged
+0x0097D8B0	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097D980	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097DA40	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097DB70	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097DCB0	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097DF60	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097E890	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097EC00	SetBrainOutput -> SetOutput; vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0097F870	vslot 2 Yield -> SuspendSuspendableProcess	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009AD6E0	self LoadDef -> protected const IBEXK (const_cast for non-const callees)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009AD9E0	LoadDef binder -> IBEXK	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009ADA10	LoadDef binder -> IBEXK	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009ADE10	LoadDef binder -> IBEXK	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009AE150	LoadDef binder -> IBEXK	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009AE6B0	ClearDef -> LoadDef IBEXK	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009B0AC0	LoadDef binder -> IBEXK	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x009B4BD0	test only: CUnprovenElement_009b4bd0 -> CDefinitionManager::CInstantiatedDefInfo (row copied unchanged)	RELOCATION_MATCH	PASS	1	test respelled (rows/009b4bd0_test.cpp)
+0x009FD150	self stub -> const GetBlankTexture on engine/CGraphicDataBank.h	MATCH	PASS	2	catalog test unchanged
+0x00A0FDB0	self WordWrap_SetOption YIXIK -> YIXII (+test)	RELOCATION_MATCH	PASS	2	test respelled (rows/00a0fdb0_test.cpp)
+0x00ABA370	self CWorldMap_DrawGetNoMaps -> C3DMeshFileTrianglesChunk::GetCount const (+test rewritten)	MATCH	PASS	2	test respelled (rows/00aba370_test.cpp)
+0x00ADF5B0	self SavePositions -> CParticleProgram::SaveStateToInterpolateFrom (shared header)	MATCH	PASS	2	catalog test unchanged
+0x00B82100	SavePositions -> SaveStateToInterpolateFrom; CParticleSimArray::resize -> std::vector<CCountedPointer<CParticleSimulation> >::resize	RELOCATION_MATCH	PASS	4	catalog test unchanged
+0x00BA9360	GetBlankTexture declared on CGraphicDataBank (was stand-in CGraphicDataBankFull), nested ETextureType	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00BDE0C0	g_pEngine_01436ea8 -> g_pLandscapeRenderer (engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00BF6490	unused g_pEngine_01436ea8 declaration removed	MATCH	PASS	2	catalog test unchanged
+0x00BF6750	unused g_pEngine_01436ea8 declaration removed	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00BFC140	g_pEngine_01436ea8 -> g_pLandscapeRenderer (engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x00BFD480	g_pEngine_01436ea8 -> g_pLandscapeRenderer (engine/CEngineLandscapeRenderer.h)	RELOCATION_MATCH	PASS	2	catalog test unchanged
+0x0043E420	five ClearDisplay -> ClearEffects (the ClearGui TU body around the vcall{0} thunk)	MATCH	PASS	1	repair pass; catalog test unchanged
+0x00438460	five ClearDisplay -> ClearEffects declarations (unused, no relocation change)	RELOCATION_MATCH	PASS	1	repair pass; catalog test unchanged

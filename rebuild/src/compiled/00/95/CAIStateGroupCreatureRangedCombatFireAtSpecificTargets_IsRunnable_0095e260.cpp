@@ -1,4 +1,4 @@
-// CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable() -- the creature carries a projectile weapon and its interface-8 component holds a specific target: copy it into PTargetThing
+// CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable() -- the creature carries a projectile weapon and its interface-8 component holds a specific target: copy it into PTarget
 // Leaf: IsRunnable@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E260, length 199 bytes.
 // Callees: CAIStateGroupBase::GetWorld @ 0x008FCFC0, NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable
@@ -143,7 +143,7 @@ protected:
 
 struct CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets : CAIStateGroupBase
 {
-    CBaseIntelligentPointer PTargetThing;           // +0x14
+    CIntelligentPointer<const CThing> PTarget;      // +0x14 Ego_r.pdb CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::PTarget (name-fix 2026-11-12)
     bool IsRunnable();
 };
 
@@ -155,7 +155,7 @@ bool CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable()
         CTCTargetHolder* holder = (CTCTargetHolder*)PBrain->Creature->FindEntry(8)->second;
         if (holder->PSpecificTarget.GetPItem())
         {
-            PTargetThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<const CThing>(((CThing*)holder->PSpecificTarget.GetPItem())).GetPItem())));
+            PTarget.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<const CThing>(((CThing*)holder->PSpecificTarget.GetPItem())).GetPItem())));
             return true;
         }
     }

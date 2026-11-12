@@ -13,7 +13,6 @@ public:
     const C3DVector& GetPos() const;                // 0x004C73D0
 };
 
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 class CSmashableDef { public:
     virtual void v00();

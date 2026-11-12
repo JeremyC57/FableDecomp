@@ -106,7 +106,7 @@ struct CThingCreature : CThing {
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                      // +0x18
-    void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);  // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();

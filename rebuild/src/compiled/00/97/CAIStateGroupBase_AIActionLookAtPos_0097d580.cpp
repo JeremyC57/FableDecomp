@@ -5,7 +5,7 @@
 //          ?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z.
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010, the creature's look-at test @ 0x006650E0 (manifest
 //          "CThingCreatureBase::CanSeeTarget" placeholder; (const C3DVector&, float, bool, bool) -> bool),
-//          CBaseIntelligentPointer ctor @ 0x00A01B10 / dtor @ 0x00A01C10, CAIBrain::SetBrainOutput @ 0x0088B8F0
+//          CBaseIntelligentPointer ctor @ 0x00A01B10 / dtor @ 0x00A01C10, CAIBrain::SetOutput @ 0x0088B8F0
 //          (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated), the brain's virtual slot 2 (+8, yield),
 //          operator delete @ 0x00BFE9BC.
 // Shape: the two look flags are `(flags & N) > 0` bools written in the call; VC hoists them out of the loop with
@@ -84,15 +84,15 @@ class CBrainOutput { public:
 };
 
 class CThingCreatureBase { public:
-    bool IsLookingAtPos(const C3DVector& pos, float tolerance, bool alignBody, bool alignHead);   // 0x006650E0
+    bool IsPosInViewAngle(const C3DVector& pos, float tolerance, bool alignBody, bool alignHead) const;   // 0x006650E0 ?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z (Ego_r.pdb + FableWin.pdb; was the stand-in IsLookingAtPos; name-fix 2026-11-12)
 };
 
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThingCreatureBase* Creature;               // +0x18
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 
 enum EAIActionRepeat { AI_ACTION_ONCE = 0, AI_ACTION_REPEAT = 1 };
@@ -117,17 +117,17 @@ EAIActionReturn CAIStateGroupBase::AIAction_LookAtPos(EAIActionRepeat repeat, C3
     EAIActionReturn result;
     do {
         CThingCreatureBase* creature = PBrain->Creature;
-        if (creature->IsLookingAtPos(pos, tolerance, (lookFlags & 2) > 0, (lookFlags & 4) > 0))
+        if (creature->IsPosInViewAngle(pos, tolerance, (lookFlags & 2) > 0, (lookFlags & 4) > 0))
             result = AI_ACTION_DONE;
         else {
             CBrainOutput output;
             output.Types |= 2;
             output.LookAtPos = pos;
             output.LookFlags = lookFlags;
-            PBrain->SetBrainOutput(output);
+            PBrain->SetOutput(output);
             result = AI_ACTION_RUNNING;
         }
-        PBrain->Yield();
+        PBrain->SuspendSuspendableProcess();
         if (IsStopping())
             return AI_ACTION_STOPPING;
     } while (repeat == AI_ACTION_REPEAT && result == AI_ACTION_RUNNING);

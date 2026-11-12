@@ -15,7 +15,7 @@ class CCharString { public:
 extern const float g_shopLikesThreshold;            // 0x012305A0 (0.2f)
 extern const float g_shopNeutralThreshold;          // 0x0126663C (0.55f)
 class CTCShop { public:
-    float GetBasePriceMultiplier() const;           // 0x00773790
+    float GetAttitudeSellPriceMultiplier() const;   // 0x00773790 ?GetAttitudeSellPriceMultiplier@CTCShop@@QBEMXZ (Ego_r.pdb + FableWin.pdb; was the stand-in GetBasePriceMultiplier; name-fix 2026-11-12)
     float GetAttitudeBuyPriceMultiplier() const;    // 0x007735D0
 };
 class CTCShopKeeper { public:
@@ -27,7 +27,7 @@ CCharString CTCShopKeeper::GetFriendlynessIndicator() const
 {
     CTCShop* shop = GetShopTC();
     if (shop) {
-        float difference = shop->GetBasePriceMultiplier() - shop->GetAttitudeBuyPriceMultiplier();
+        float difference = shop->GetAttitudeSellPriceMultiplier() - shop->GetAttitudeBuyPriceMultiplier();
         if (difference < g_shopLikesThreshold)
             return CCharString("TEXT_AI_SHOP_KEEPER_SHOW_WARES_LIKES");
         if (difference < g_shopNeutralThreshold)

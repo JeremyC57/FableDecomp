@@ -178,7 +178,8 @@ struct CTCTargeting {                           // interface type 0x34
 };
 
 bool __fastcall IsIncapacitated(CThing* thing);                       // 0x0085F0C0
-bool __fastcall CanEngageThing(CThing* creature, CThing* thing, long flags);   // 0x008645E0
+// 0x008645E0 Ego_r.pdb + FableWin.pdb ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (name-fix 2026-11-12)
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* creature, const CThing* thing, bool flag); }
 
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
     CThing* GetEnemy();
@@ -196,7 +197,7 @@ CThing* CAIStateGroup_EnemyCreatureBase::GetEnemy()
                 if (enemy == targeting->GetPTarget()) {
                     if (UsesTargetLock() ? targeting->IsLockedFast() : targeting->IsLockedSlow())
                         result = enemy;
-                } else if (CanEngageThing(PBrain->PCreature, enemy, 0))
+                } else if (NCreatureAI::IsAwareOfThing((const CThingAICreature*)PBrain->PCreature, enemy, false))
                     result = enemy;
             }
         }

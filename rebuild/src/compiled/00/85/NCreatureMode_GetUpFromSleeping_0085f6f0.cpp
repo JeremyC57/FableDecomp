@@ -10,7 +10,7 @@
 //   0x00860060 (landed), CModeSleepBed::RemoveModeWithAction 0x008D7250, ~CBaseIntelligentPointer 0x00A01C10 (PBed, +0xa8),
 //   ~CCreatureActionBase 0x00693EF0, CThingCreatureBase::IsFreeToPerformAction 0x00662210 / SetCurrentAction 0x006644F0,
 //   CBrainOutput ctor 0x00835620 / dtor 0x006D60C0, the action's slot 11 (+0x2c) Clone, CCountedPointer::Reset 0x00668D90,
-//   CAIBrain::SetBrainOutput 0x0088B8F0.
+//   CAIBrain::SetOutput 0x0088B8F0.
 // Layout: CCreatureAction_GetOutOfBed = retail CCreatureActionBase (0xa8 bytes) + PBed CIntelligentPointer<CThing> +0xa8
 //   (the landed 0x00860060 model); CBrainOutput 0x48 bytes, Flags +0, PAction +0x20 (the landed 0x0097D8B0 model).
 // Shape: the mode manager is an unset local filled only when the creature has interface 0x31 (the absent path reads the
@@ -85,7 +85,7 @@ class CBrainOutput { public:                                   // 0x48 bytes
     ~CBrainOutput();                                    // 0x006D60C0
 };
 class CAIBrain { public:
-    void SetBrainOutput(const CBrainOutput& output);    // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);    // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 
 namespace NCreatureMode {
@@ -122,7 +122,7 @@ bool __fastcall GetUpFromSleeping(CThingCreatureBase& creature, CThing& bed, con
                 output.Flags |= 8;
                 const CCreatureActionBase& base = action;
                 output.PAction.Reset(base.Clone());
-                brain->SetBrainOutput(output);
+                brain->SetOutput(output);
             } else
                 creature.SetCurrentAction(action);
         }

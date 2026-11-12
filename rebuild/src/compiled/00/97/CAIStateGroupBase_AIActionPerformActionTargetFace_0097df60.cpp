@@ -6,7 +6,7 @@
 // Callees: IsStopping @ 0x008FD010, CBaseIntelligentPointer GetPItem @ 0x00A01B50 / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
 //          dtor @ 0x00A01C10 (CIntelligentPointer<const CThing> vtable 0x01237F1C), the action's virtual slot 11 (+0x2c, Clone),
 //          operator new @ 0x00BFEA1A / delete @ 0x00BFE9BC (the 12-byte count block, destroy routine @ 0x00668610),
-//          CAIBrain::SetBrainOutput @ 0x0088B8F0 (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated),
+//          CAIBrain::SetOutput @ 0x0088B8F0 (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated),
 //          the brain's virtual slot 2 (+8, yield).
 // Shape: the CBrainOutput ctor/dtor are inline (the landed 0x0097D580 model); SetAsLookAtThing inline (Types |= 4 after
 //          the thing argument, a temporary intelligent pointer assigned into LookAtThing, then the flags) and an inline
@@ -118,8 +118,8 @@ class CBrainOutput { public:
 };
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_RUNNING = 4 };
 class CAIStateGroupBase { public:
@@ -142,9 +142,9 @@ EAIActionReturn CAIStateGroupBase::AIAction_PerformActionTargetFace(CCreatureAct
         CBrainOutput output;
         output.SetAsLookAtThing(((CThing*)target.GetPItem()), 0x23);
         output.SetAsPerformAction(action);
-        PBrain->SetBrainOutput(output);
+        PBrain->SetOutput(output);
     }
-    PBrain->Yield();
+    PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return AI_ACTION_STOPPING;
     return AI_ACTION_DONE;

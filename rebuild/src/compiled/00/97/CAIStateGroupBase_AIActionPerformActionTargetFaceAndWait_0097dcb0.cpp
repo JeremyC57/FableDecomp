@@ -5,7 +5,7 @@
 //   ?AIAction_PerformActionTargetFaceAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@V?$CIntelligentPointer@$$CBVCThing@@@@_N@Z
 // Callees: IsStopping 0x008FD010, CCreatureActionBase::GetActionID 0x00692620, CBrainOutput::CBrainOutput 0x00835620 (the
 //   first output only), the action's virtual slot 11 (+0x2c, Clone), CCountedPointer<CCreatureActionBase>::operator=(T*)
-//   0x00668D90, CAIBrain::SetBrainOutput 0x0088B8F0, the brain's virtual slot 2 (+8, yield),
+//   0x00668D90, CAIBrain::SetOutput 0x0088B8F0, the brain's virtual slot 2 (+8, yield),
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CBaseIntelligentPointer GetPItem 0x00A01B50 / ctor 0x00A01B10 /
 //   SetPItem 0x00A01B90 / dtor 0x00A01C10, operator delete 0x00BFE9BC.
 // Layout: the landed AIAction_PerformActionTargetFace 0x0097DF60 model (CBrainOutput per Ego_r.pdb: Types +0, LookFlags +4,
@@ -117,8 +117,8 @@ class CBrainOutput { public:
 };
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 4];
     CThingCreatureBase* Creature;               // +0x18
 };
@@ -144,14 +144,14 @@ EAIActionReturn CAIStateGroupBase::AIAction_PerformActionTargetFaceAndWait(const
     long id = action.GetActionID();
     CBrainOutput output;
     output.SetAsPerformAction(&action);
-    PBrain->SetBrainOutput(output);
-    PBrain->Yield();
+    PBrain->SetOutput(output);
+    PBrain->SuspendSuspendableProcess();
     while (PBrain->Creature->IsPerformingAnyAction() && !IsStopping() && IS_THING_ALIVE(target)
            && (!stopWhenReplaced || id == PBrain->Creature->CurrentAction->GetActionID())) {
         CBrainOutput look;
         look.SetAsLookAtThing(((CThing*)target.GetPItem()), 0x11);
-        PBrain->SetBrainOutput(look);
-        PBrain->Yield();
+        PBrain->SetOutput(look);
+        PBrain->SuspendSuspendableProcess();
     }
     if (IsStopping())
         return AI_ACTION_STOPPING;

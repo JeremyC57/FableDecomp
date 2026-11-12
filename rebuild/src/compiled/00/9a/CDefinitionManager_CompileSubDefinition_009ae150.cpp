@@ -135,7 +135,9 @@ class CDefinitionManager { public:
     CInstantiatedDefInfo** InstantiatedDefs;                 // +0xa4
     unsigned char          _pada8[0xb0 - 0xa8];
     TErrorCallback         ErrorCallback;                    // +0xb0
-    void LoadDef(unsigned long globalIndex);                 // 0x009AD6E0
+    protected:
+    void LoadDef(unsigned long globalIndex) const;   // 0x009AD6E0 ?LoadDef@CDefinitionManager@@IBEXK@Z (Ego_r.pdb + FableWin.pdb, protected const; name-fix 2026-11-12)
+public:                 // 0x009AD6E0
     CDefPointer InstantiateSubDef(const CCharString& name, unsigned long parentIndex);   // 0x009ADAE0
     CDefPointer GetPDefFromGlobalIndex(long globalIndex)
     {

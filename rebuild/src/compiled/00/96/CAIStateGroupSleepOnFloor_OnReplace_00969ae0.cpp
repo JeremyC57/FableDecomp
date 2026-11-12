@@ -10,7 +10,7 @@
 //          CCreatureAction_PlayAnimation ctor @ 0x008424F0 / ~CCreatureActionBase @ 0x00693EF0, CBrainOutput ctor
 //          @ 0x00835620 (implicit dtor inlined: IP +0x40, then the counted pointer +0x20), CThingCreatureBase::
 //          IsFreeToPerformAction @ 0x00662210, the action's virtual slot 11 (+0x2C, Clone), CCountedPointer::Reset
-//          @ 0x00668D90, CAIBrain::SetBrainOutput @ 0x0088B8F0, CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, operator
+//          @ 0x00668D90, CAIBrain::SetOutput @ 0x0088B8F0, CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, operator
 //          delete @ 0x00BFE9BC.
 // Layout: Ego_r.pdb CAIStateGroup_SleepOnFloor (PSleepPoint +0x14, Asleep +0x1c) over the landed CAIStateGroupBase model
 //          (the generated header flattens the vptr); CBrainOutput as the landed AIAction_PerformAction 0x0097D8B0.
@@ -90,7 +90,7 @@ struct CThingCreature : CThing {
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                      // +0x18
-    void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);  // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -125,7 +125,7 @@ void CAIStateGroup_SleepOnFloor::OnReplace()
         if (GetCreatureThing()->IsFreeToPerformAction(pAction)) {
             output.Flags |= 8;
             output.PAction.Reset(pAction->Clone());
-            PBrain->SetBrainOutput(output);
+            PBrain->SetOutput(output);
         }
         CTCCreatureModeManager* modes;
         PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);

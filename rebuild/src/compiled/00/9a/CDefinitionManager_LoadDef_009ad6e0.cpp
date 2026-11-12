@@ -1,5 +1,5 @@
 // CDefinitionManager::LoadDef(unsigned long globalIndex) -- make sure instantiated def `globalIndex` is loaded: an already-loaded def is only touched in the resource list; otherwise decompress its data, create it through its class's factory, load and persist it from the stream, size it and add it to the resource list (with progress markers)
-// Leaf: LoadDef
+// Leaf: ?LoadDef@CDefinitionManager@@IBEXK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009AD6E0, length 524 bytes, `ret 4`.
 // Callees: CResource::ListRemove @ 0x009FBFB0, CResource::ListInsert @ 0x009FBF90, CCharString::CCharString(const char*,
 //          long) @ 0x0099EBF0, NProgressDisplay::DisplayProgress(const CCharString&, float, bool, bool) @ 0x009E9F40
@@ -134,10 +134,13 @@ class CDefinitionManager : public CResourceList { public:
     bool                   PersistFlag;                      // +0xc0
     void DecompressDefinitionData(CMemoryDataInputStream* stream, unsigned long globalIndex);   // 0x009AD5F0
     CDefClassInfo* FindClassInfo(const CCharString& className);   // 0x009AD2E0
-    void LoadDef(unsigned long globalIndex);
+    // Name-fix 2026-11-12: Ego_r.pdb 00b05680 + FableWin.pdb 0305cb30 ?LoadDef@CDefinitionManager@@IBEXK@Z (protected const); the
+    //   non-const callees go through const_cast<CDefinitionManager*>(this), which emits no code.
+protected:
+    void LoadDef(unsigned long globalIndex) const;
 };
 
-void CDefinitionManager::LoadDef(unsigned long globalIndex)
+void CDefinitionManager::LoadDef(unsigned long globalIndex) const
 {
     CInstantiatedDefInfo* info = InstantiatedDefs[globalIndex];
     CDefClassBase* def = info->PDef.Object;
@@ -147,20 +150,20 @@ void CDefinitionManager::LoadDef(unsigned long globalIndex)
     }
     NProgressDisplay::DisplayProgress("CDefinitionManager::LoadDef 1", -1.0f, false, false);
     CMemoryDataInputStream stream;
-    DecompressDefinitionData(&stream, globalIndex);
+    const_cast<CDefinitionManager*>(this)->DecompressDefinitionData(&stream, globalIndex);
     CDefClassInfo* classInfo;
     {
         CCharString className = GDefStringTable.GetString(info->ClassName);
-        classInfo = FindClassInfo(className);
+        classInfo = const_cast<CDefinitionManager*>(this)->FindClassInfo(className);
     }
     if (classInfo) {
         unsigned long size = stream.StreamSize + 0x25;
-        MakeFreeSpace(size);
-        FrameEnd();
+        const_cast<CDefinitionManager*>(this)->MakeFreeSpace(size);
+        const_cast<CDefinitionManager*>(this)->FrameEnd();
         CDefClassBase* created = classInfo->Create();
         info->PDef = created;
         created->SetInstantiationName(info->InstantiationName);
-        created->Owner = this;
+        created->Owner = const_cast<CDefinitionManager*>(this);
         created->GlobalIndex = globalIndex;
         created->Load(stream);
         NProgressDisplay::DisplayProgress("CDefinitionManager::LoadDef 2", -1.0f, false, false);
@@ -168,7 +171,7 @@ void CDefinitionManager::LoadDef(unsigned long globalIndex)
         context.Init(stream, PersistFlag);
         info->PDef->Persist(context);
         info->PDef->SetResourceSize(size);
-        AddResource(info->PDef.Object);
+        const_cast<CDefinitionManager*>(this)->AddResource(info->PDef.Object);
         info->PDef->Touch();
         NProgressDisplay::DisplayProgress("CDefinitionManager::LoadDef 3", -1.0f, false, false);
     }

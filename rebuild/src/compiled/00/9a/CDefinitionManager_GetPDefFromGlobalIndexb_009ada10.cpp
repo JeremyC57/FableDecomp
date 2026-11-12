@@ -47,7 +47,9 @@ class CDefinitionManager
     char pad[0xa4];
     CDefTableEntry** GlobalIndexTable; // +0xa4
 
-    void LoadDef(unsigned long globalIndex);
+    protected:
+    void LoadDef(unsigned long globalIndex) const;   // 0x009AD6E0 ?LoadDef@CDefinitionManager@@IBEXK@Z (Ego_r.pdb + FableWin.pdb, protected const; name-fix 2026-11-12)
+public:
     CDefPointer_CDefClassBase GetPDefFromGlobalIndex_b(long globalIndex);
 };
 

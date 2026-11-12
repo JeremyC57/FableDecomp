@@ -10,7 +10,7 @@
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C), CTCDiceGame::SetCurrentPlayer @ 0x00929550 (manifest
 //          "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //          CCreatureAction_PlayAnimation @ 0x008424F0, CBrainOutput @ 0x00835620, IsFreeToPerformAction @ 0x00662210,
-//          CCountedPointer::Reset @ 0x00668D90, SetBrainOutput @ 0x0088B8F0, ~CCreatureActionBase @ 0x00693EF0,
+//          CCountedPointer::Reset @ 0x00668D90, SetOutput @ 0x0088B8F0, ~CCreatureActionBase @ 0x00693EF0,
 //          UnsheatheDefaultWeapon @ 0x00664A50, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CWorld::GetFrame
 //          @ 0x0049D870, __ftol2 @ 0x00BFEA70.
 // Layout: PDB CAIStateGroup_BanditPlayDice: DiceGamePosition +0x14 (CTCExclusiveUse*, User +0xc), DiceGame +0x18 (CTCDiceGame*,
@@ -72,7 +72,7 @@ class CBrainOutput { public:                           // 0x48 bytes
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
-    void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 
 class CSoundPair { public:
@@ -147,7 +147,7 @@ void CAIStateGroup_BanditPlayDice::OnReplace()
             output.Flags |= 8;
             CCreatureActionBase* performed = &action;
             output.PAction.Reset(performed->Clone());
-            PBrain->SetBrainOutput(output);
+            PBrain->SetOutput(output);
         }
     }
     if (WasCarryingWeapon)

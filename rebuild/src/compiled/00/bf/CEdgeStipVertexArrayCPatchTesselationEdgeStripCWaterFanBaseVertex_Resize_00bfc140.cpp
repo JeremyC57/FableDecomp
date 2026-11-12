@@ -22,11 +22,10 @@ class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, CMovableResource* owner);   // 0x00BD9AF0
     void FreeVirtual(void* block);                            // 0x00BD9B90
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;        // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;                  // 0x01436EA8
+// Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
+//   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 struct CWaterFanBaseVertex {
     float          Z;                     // +0x00
@@ -46,18 +45,18 @@ bool EdgeArray_CWaterFanBaseVertex::Resize(int count, CMovableResource* resource
     if (Count != count) {
         if (count) {
             int copied = count < Count ? count : Count;
-            CEngineLandscapeMemoryManager* manager = g_pEngine_01436ea8->m_pLandscapeMemory;
+            CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
             CWaterFanBaseVertex* data = static_cast<CWaterFanBaseVertex*>(manager->AllocVirtual(count * sizeof(CWaterFanBaseVertex), resource));
             if (!data)
                 return false;
             if (copied > 0)
                 memcpy(data, Data, copied * sizeof(CWaterFanBaseVertex));
             if (Data)
-                g_pEngine_01436ea8->m_pLandscapeMemory->FreeVirtual(Data);
+                g_pLandscapeRenderer->MemoryManager->FreeVirtual(Data);
             Count = count;
             Data = data;
         } else {
-            g_pEngine_01436ea8->m_pLandscapeMemory->FreeVirtual(Data);
+            g_pLandscapeRenderer->MemoryManager->FreeVirtual(Data);
             Data = 0;
             Count = 0;
         }

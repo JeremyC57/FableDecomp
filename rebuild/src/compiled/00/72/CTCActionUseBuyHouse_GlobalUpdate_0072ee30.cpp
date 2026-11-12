@@ -122,9 +122,10 @@ public:
     CDefPointer<const CBuyHouseDef> PDef;       // +0x14
     bool           WaitingForConfirmation;      // +0x18
     EHouseQuestion HouseQuestion;               // +0x1c
-    void ReceivedConfirmation(CTCBuyableHouse* house);   // 0x0072EB40
     void OnActionUseRent(CTCBuyableHouse* house);        // 0x0072E810
     void GlobalUpdate(long frame);
+private:
+    void ReceivedConfirmation(CTCBuyableHouse& house);   // 0x0072EB40 ?ReceivedConfirmation@CTCActionUseBuyHouse@@AAEXAAVCTCBuyableHouse@@@Z (Ego_r.pdb + FableWin.pdb, private, reference; name-fix 2026-11-12)
 };
 
 void CTCActionUseBuyHouse::GlobalUpdate(long frame)
@@ -142,7 +143,7 @@ void CTCActionUseBuyHouse::GlobalUpdate(long frame)
                     if (thing->HasTC(0xd5)) {
                         CTCBuyableHouse* house = thing->GetTC<CTCBuyableHouse>(0xd5);
                         if (answer->m_answer == 1)
-                            ReceivedConfirmation(house);
+                            ReceivedConfirmation(*house);
                         WaitingForConfirmation = false;
                         if (HouseQuestion == HOUSE_QUESTION_BUY && house->OwnedByPlayer)
                             OnActionUseRent(house);

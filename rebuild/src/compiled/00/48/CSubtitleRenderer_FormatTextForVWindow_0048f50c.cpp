@@ -39,7 +39,7 @@ public:
 };
 extern const CFontBank* g_pWordWrapFont;                     // 0x013B87AC
 
-void __fastcall WordWrap_SetOption(long option, long value); // 0x00A0FDB0
+void __fastcall WordWrap_SetOption(unsigned int option, unsigned int value);   // ?WordWrap_SetOption@@YIXII@Z (Ego_r.pdb + FableWin.pdb; name-fix 2026-11-12) // 0x00A0FDB0
 void __fastcall WordWrap_SetCallback(unsigned int (__fastcall* charWidth)(wchar),
                                      unsigned int (__fastcall* lineHeight)());   // 0x00A0FD90
 

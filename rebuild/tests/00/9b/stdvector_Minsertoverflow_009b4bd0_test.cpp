@@ -1,9 +1,10 @@
-// behaviour test for 0x009B4BD0 std::vector<CUnprovenElement_009b4bd0*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
+// behaviour test for 0x009B4BD0 std::vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <stddef.h>
-class CUnprovenElement_009b4bd0;
+#define FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL
+#include "engine/CDefinitionManager.h"   // CDefinitionManager::CInstantiatedDefInfo (nested, declaration only; name-fix 2026-11-12)
 namespace stlp_test {
 struct __true_type { };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -51,7 +52,7 @@ protected:
     }
 };
 }
-typedef CUnprovenElement_009b4bd0* T;
+typedef CDefinitionManager::CInstantiatedDefInfo* T;
 static T mk(unsigned int v) { return (T)(size_t)v; }
 class CProbe : public stlp_test::vector<T> {
 public:

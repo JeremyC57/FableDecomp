@@ -20,14 +20,15 @@ public:
     unsigned char _pad5a3[0x1];
     long          DeedReactionSpeechPlaying[92];   // +0x5A4 (PDB +0x5AC)
 
-    EOpinionReactionType GetAttitudeOrReactionType(const CThing* thing, bool attitude, const bool* mask, CTCOpinionSource* source) const;   // 0x00701010
-    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing* thing) const;                                                            // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 Ego_r.pdb + FableWin.pdb ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z (name-fix 2026-11-12)
     EOpinionAttitudeType GetAttitudeType(const CThing* thing, CTCOpinionSource* source) const;
+private:
+    EOpinionReactionType GetAttitudeOrReactionType(const CThing& thing, bool attitude, const bool* mask, const CTCOpinionSource* source) const;   // 0x00701010 Ego_r.pdb + FableWin.pdb ?GetAttitudeOrReactionType@COpinionReactionManager@@ABE?AW4EOpinionReactionType@@ABVCThing@@_NPB_NPBVCTCOpinionSource@@@Z (private const; name-fix 2026-11-12)
 };
 
 EOpinionAttitudeType COpinionReactionManager::GetAttitudeType(const CThing* thing, CTCOpinionSource* source) const
 {
     if (source)
-        return (EOpinionAttitudeType)GetAttitudeOrReactionType(thing, true, AttitudeMask, source);
-    return GetThingAttitudeToPlayer(thing);
+        return (EOpinionAttitudeType)GetAttitudeOrReactionType(*thing, true, AttitudeMask, source);
+    return GetThingAttitudeToPlayer(*thing);
 }

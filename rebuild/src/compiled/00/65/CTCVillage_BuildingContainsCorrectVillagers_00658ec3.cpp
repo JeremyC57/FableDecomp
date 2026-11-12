@@ -23,6 +23,8 @@ template <class T> class CIntelligentPointer { public:   // 8 bytes: vptr + item
     void* _vfptr;
     T*    m_pItem;
     T* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
+    bool operator!=(int) const { return GetPItem() != 0; }   // the null test of IS_THING_ALIVE (inline, as engine/CIntelligentPointer.h)
+    T* operator->() const { return GetPItem(); }
 };
 
 #include "engine/CThing.h"
@@ -32,7 +34,7 @@ public:
     CIntelligentPointer<CThingBuilding> PHome;  // +0x168
     CThingBuilding* GetHome() const { return PHome.GetPItem(); }
 };
-class CThingBuilding {
+class CThingBuilding : public CThing {
 public:
     bool IsPointInside(const C3DVector& pos) const;   // 0x0082D000
 };
@@ -50,38 +52,14 @@ __declspec(noinline) bool CThingBuilding::IsPointInside(const C3DVector& pos) co
 }
 #pragma auto_inline(on)
 
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingAICreature>& thing);   // 0x004AB8F0
-void* FindRef_free_IS_THING_ALIVE_1();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
-// VC7.1 knows the caller's address-taken local does not escape the call.
-#pragma auto_inline(off)
-__declspec(noinline) bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingAICreature>& thing)
-{
-    void* p = FindRef_free_IS_THING_ALIVE_1();
-    if (!p)
-        return false;
-    *(void**)&thing = p;
-    return false;
-}
-#pragma auto_inline(on)
-// Name-fix pass (2026-11-12): 0x0065D624 is the template instance ??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z
-// (Ego_r.pdb 0x0069F330 + FableWin.pdb; landed row 0x0065D624), so the stand-in body below is the explicit specialization of the
-// IS_THING_ALIVE template (engine/ThingAlive.h's signature) rather than a non-template overload.
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
-template <> bool __fastcall IS_THING_ALIVE<CThingBuilding*>(CThingBuilding* const& thing);   // 0x0065D624
-void* FindRef_free_IS_THING_ALIVE_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
-// VC7.1 knows the caller's address-taken local does not escape the call.
-#pragma auto_inline(off)
-template <> __declspec(noinline) bool __fastcall IS_THING_ALIVE<CThingBuilding*>(CThingBuilding* const& thing)
-{
-    void* p = FindRef_free_IS_THING_ALIVE_0();
-    if (!p)
-        return false;
-    *(void**)&thing = p;
-    return false;
-}
-#pragma auto_inline(on)
+// REWORK (name-fix pass NF30, 2026-11-12): the two IS_THING_ALIVE callees are the real template bodies of engine/ThingAlive.h,
+//   kept out of line (FABLE_RETAIL_IS_THING_ALIVE + FABLE_RETAIL_IS_THING_ALIVE_NOINLINE) as the landed 0x0064C869 does:
+//   ??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z 0x0065D624 (Ego_r.pdb 0x0069F330 + FableWin.pdb; landed row) and
+//   IS_THING_ALIVE<CIntelligentPointer<CThingAICreature> > 0x004AB8F0 (the GetPItem-twice body). They replace the two stand-in
+//   bodies (FindRef_free_IS_THING_ALIVE_0 / _1) that only modelled "the reference does not escape".
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_IS_THING_ALIVE_NOINLINE
+#include "engine/ThingAlive.h"
 
 struct SVillagerNode {                          // STLport list node
     SVillagerNode* _M_next;

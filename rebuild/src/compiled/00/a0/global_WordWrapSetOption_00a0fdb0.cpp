@@ -1,4 +1,4 @@
-// WordWrap_SetOption(unsigned int codePage, unsigned long options) -- remember the code page and option bits, note whether the OS is NT, and cache the code page's default character in wide and multibyte form
+// WordWrap_SetOption(unsigned int codePage, unsigned int options) -- remember the code page and option bits, note whether the OS is NT, and cache the code page's default character in wide and multibyte form
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0FDB0, length 196 bytes (+ int3 padding), /GS frame (cookie 0x0139C8A8).
 // Callees: KERNEL32 GetVersionExA (IAT 0x0143FE70), GetCPInfoExA (IAT 0x0143FE6C), WideCharToMultiByte (IAT 0x0143FD98),
 // __security_check_cookie @ 0x00BFE9F9.
@@ -11,7 +11,8 @@
 // frame = the WideCharToMultiByte used-default flag at +0, OSVERSIONINFOA (0x94) at +4, CPINFOEXA (0x11C) at +0x98, cookie at
 // +0x1B4; the code page global is re-read for each API call; a failed GetCPInfoExA zeroes UnicodeDefaultChar; the
 // multibyte buffer is cleared by a chained `c[0] = c[1] = c[2] = 0` (stored +2, +1, +0 like retail).
-// Leaf: ?WordWrap_SetOption@@YIXIK@Z
+// Leaf: ?WordWrap_SetOption@@YIXII@Z
+// Name-fix 2026-11-12: Ego_r.pdb 00b796a0 + FableWin.pdb 030d81b0 ?WordWrap_SetOption@@YIXII@Z (both parameters unsigned int).
 // Flags: /GS
 struct _OSVERSIONINFOA {
     unsigned long dwOSVersionInfoSize;
@@ -41,7 +42,7 @@ extern int            g_WordWrapIsNT;                // 0x013CE764
 extern unsigned short g_WordWrapDefaultCharW[2];     // 0x013CE768
 extern char           g_WordWrapDefaultCharA[3];     // 0x013CE76C
 
-void __fastcall WordWrap_SetOption(unsigned int codePage, unsigned long options)
+void __fastcall WordWrap_SetOption(unsigned int codePage, unsigned int options)
 {
     int usedDefault;
     _OSVERSIONINFOA version;

@@ -7,7 +7,7 @@
 // @ 0x0040F020 (inlined lookups: 0xF3 = CTCFineDialogue on the hero, 0x23 = CTCVillager, interface 4 on the hero,
 // 8 = CTCTargetingAI), CTCFineDialogue::IsAllowed @ 0x007E2790, GFGetPVillageInterface @ 0x007EE540 (twice; manifest
 // "IS_THING_ALIVE<..>" propagated), CTCVillage::GetFineAmountForCurrentCrimes @ 0x0065A41C, CTCFineDialogue::Show @ 0x007E27F0,
-// the brain's virtual slot 2 (Yield), CTCTargetingAI::UpdatePBestEnemyCreatureForAttack @ 0x007F6200, own virtual slot 14
+// the brain's virtual slot 2 (SuspendSuspendableProcess), CTCTargetingAI::UpdatePBestEnemyCreatureForAttack @ 0x007F6200, own virtual slot 14
 // IsStillRunnable(bool), Terminate @ 0x008FCF40.
 // Shape: the fine dialogue, interface-4 and targeting lookups are the out-parameter GetInterface (component kept in eax;
 // the fine dialogue's out word in the frame), the villager lookup is HasTC + the ternary GetTC; the callee-saved pushes
@@ -57,7 +57,7 @@ class CTCTargetingAI { public:                         // interface 8
 
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad[0x14];
     CThing* PCreature;                          // +0x18
 };
@@ -104,7 +104,7 @@ void CAIStateGroup_MeleeCombatNearbyBase::RequestMoney()
                         if (hero->GetTC(TCI_HERO_STATS, &tc4))
                             heroAmount = tc4->m_amount;
                         fine->Show(amount, heroAmount, village);
-                        PBrain->Yield();
+                        PBrain->SuspendSuspendableProcess();
                         CTCTargetingAI* targeting;
                         if (PBrain->PCreature->GetTC(TCI_TARGETING, &targeting))
                             targeting->UpdatePBestEnemyCreatureForAttack(true);

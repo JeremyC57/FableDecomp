@@ -1,0 +1,8 @@
+- An "already right" self row can still have a test that spells the stand-in (009b4bd0): grep the tests too.
+- A `ret 8`-only body is ICF-folded: two same-shape PDB members can both own the address; reject rather than pick (0x00BD9AB0).
+- Check vtable slot numbers before trusting a callee claim: 0x00533CC0 was slot 60 AddChildDynamically, not AddChild (slot 59).
+- A virtual declared in the base model in place of its VSlotNN placeholder keeps every later slot index; a qualified Base::F() call stays direct.
+- VC7.1 refuses a discarded call whose return is a reference to an incomplete class (C2027); include the real header instead of a forward declaration.
+- rs.py-style literal replacement with unicode_escape turns `\&` into a literal backslash: never escape `&` in the replacement text.
+- Real engine/ThingAlive.h bodies (+_NOINLINE) replaced stand-in "non-escaping" bodies in one grade (00658ec3), as 0x0064C869 showed.
+- A respelled callee must be respelled in EVERY TU that carries a copy of the caller body (thunk rows built from the caller's TU too), and every changed relocation symbol (diff landed vs new obj) goes in RENAMES section 2.

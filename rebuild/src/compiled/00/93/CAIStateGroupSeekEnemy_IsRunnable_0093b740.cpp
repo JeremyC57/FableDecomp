@@ -67,7 +67,9 @@ public:
     bool IsAwareOfThing() const;   // 0x00643B3B
 };
 bool __fastcall IsWillingToAttackTarget(CThing* creature, CThing* target);           // 0x008648A0
-bool __fastcall CanCreatureSeeThing(CThing* creature, CThing* target, bool flag);    // 0x008645E0
+class CThingAICreature;
+// 0x008645E0 Ego_r.pdb + FableWin.pdb ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (name-fix 2026-11-12)
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* creature, const CThing* thing, bool flag); }
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -127,7 +129,7 @@ bool CAIStateGroupSeekEnemyMethods::IsRunnable()
                     return false;
                 }
             }
-            if (CanCreatureSeeThing(GetCreature(), enemy, true)) {
+            if (NCreatureAI::IsAwareOfThing((const CThingAICreature*)GetCreature(), enemy, true)) {
                 Enemy().AssignInline(enemy);
                 return true;
             }

@@ -47,7 +47,7 @@ int            g_WordWrapIsNT = 0;
 unsigned short g_WordWrapDefaultCharW[2];
 char           g_WordWrapDefaultCharA[3];
 
-void __fastcall WordWrap_SetOption(unsigned int codePage, unsigned long options)
+void __fastcall WordWrap_SetOption(unsigned int codePage, unsigned int options)
 {
     int usedDefault;
     _OSVERSIONINFOA version;

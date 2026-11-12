@@ -59,7 +59,7 @@ class CTCCreatureNavigation : public CTCBase { public:                  // inter
 class CAIBrain { public:
     virtual void v00();
     virtual void v01();
-    virtual void Yield();                       // slot 2 (+8)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+8) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThingAICreature* Creature;                 // +0x18
 };
@@ -110,7 +110,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MinionWander(EMovementType movement,
         bool reached;
         result = AIAction_MoveToPos(AI_ACTION_REPEAT, wanderPos, reached, movement, true, true, 0, true, 0.0f);
     } else
-        PBrain->Yield();
+        PBrain->SuspendSuspendableProcess();
     if (IsStopping())
         return AI_ACTION_STOPPING;
     return result;

@@ -80,7 +80,7 @@ public:
 
 struct CAIBrainV {
     virtual void v00(); virtual void v01();
-    virtual void Yield();                       // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
 };
 
 #pragma pointers_to_members(full_generality, multiple_inheritance)
@@ -121,7 +121,7 @@ void CAIStateGroup_OpinionReactionRoot::Update()
     while (talk->IsTalking()) {
         if (IsStopping())
             break;
-        ((CAIBrainV*)PBrain)->Yield();
+        ((CAIBrainV*)PBrain)->SuspendSuspendableProcess();
     }
     Terminate();
 }

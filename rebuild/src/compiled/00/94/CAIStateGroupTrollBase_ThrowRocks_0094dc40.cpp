@@ -9,7 +9,7 @@
 // GetPItem @ 0x00A01B50 (PEnemy), CCreatureAction_TrollThrowProjectile(CThingCreatureBase*, CThing*) @ 0x008C7400,
 // the action's virtual slot 11 (+0x2c, a counted clone), CCountedPointer::Reset @ 0x00668D90, ~CBaseIntelligentPointer
 // @ 0x00A01C10 (the action's projectile pointer, the output's target), ~CCombatActionBase @ 0x0062E900,
-// CAIBrain::SetBrainOutput @ 0x0088B8F0, the brain's virtual slot 2 (+0x08, yield), operator delete @ 0x00BFE9BC.
+// CAIBrain::SetOutput @ 0x0088B8F0, the brain's virtual slot 2 (+0x08, yield), operator delete @ 0x00BFE9BC.
 // Shape: the landed AIAction_CombatPerformActionAndWait (0x0097DA40) brain-output model inlined here: the output is
 // a function-scope local (its implicit destructor runs on return), the action a temporary passed by pointer to an
 // inline SetPerformAction (so Clone is a virtual call on the constructor's returned this; implicit destructor:
@@ -92,10 +92,10 @@ class CThingCreatureBase { public:
 
 class CAIBrain { public:
     virtual void v00(); virtual void v01();
-    virtual void Yield();                           // slot 2 (+0x08)
+    virtual bool SuspendSuspendableProcess();                           // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
     unsigned char _pad04[0x18 - 0x04];
     CThingCreatureBase* Creature;                   // +0x18
-    void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
+    void SetOutput(const CBrainOutput& output);  // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
 
 class CAIStateGroupBase { public:
@@ -119,8 +119,8 @@ long CAIStateGroup_TrollBase::ThrowRocks()
     CBrainOutput output;
     CThingCreatureBase* creature = PBrain->Creature;
     SetPerformAction(output, &CCreatureAction_TrollThrowProjectile(creature, ((CThing*)PEnemy.GetPItem())));
-    PBrain->SetBrainOutput(output);
-    PBrain->Yield();
+    PBrain->SetOutput(output);
+    PBrain->SuspendSuspendableProcess();
     if (PBrain->Creature->IsPerformingAnyAction() && PBrain->Creature->CurrentAction->GetActionID() != previousAction) {
         ++ShotCounter;
         result = 2;
