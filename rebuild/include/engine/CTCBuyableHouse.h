@@ -73,6 +73,21 @@ private:
 #else
     unsigned char _pad_0x13[0x4c - 0x13];                    // +0x13 DaySomeoneWillMoveIn .. IsResidential (opaque)
 #endif
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_RECEIVEDCONFIRMATION
+    // Retail opt-in (workflow wf8, row 0x0072EB40 ?ReceivedConfirmation@CTCActionUseBuyHouse@@AAEXAAVCTCBuyableHouse@@@Z): the public
+    // Ego_r.pdb / FableWin.pdb member functions that row calls out of line (?GetPrice@CTCBuyableHouse@@QBEJXZ 0x006C0120,
+    // ?SetRented@CTCBuyableHouse@@QAEX_N@Z 0x006C1150, ?SetOwnedByPlayer@CTCBuyableHouse@@QAEX_N@Z 0x006C17B0,
+    // ?IncrementDressLevel@CTCBuyableHouse@@QAEXXZ 0x006C04B0; ?GetPriceForNextDressLevel@CTCBuyableHouse@@QBEJXZ 0x006BF920 unless
+    // FABLE_RETAIL_CTCBUYABLEHOUSE_FRAMEUPDATE already declares it). Declarations only: no layout or vtable change.
+public:
+    long GetPrice() const;                                               // 0x006C0120
+    void SetRented(bool rented);                                         // 0x006C1150
+    void SetOwnedByPlayer(bool owned);                                   // 0x006C17B0
+    void IncrementDressLevel();                                          // 0x006C04B0
+#ifndef FABLE_RETAIL_CTCBUYABLEHOUSE_FRAMEUPDATE
+    long GetPriceForNextDressLevel() const;                              // 0x006BF920
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
     // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;

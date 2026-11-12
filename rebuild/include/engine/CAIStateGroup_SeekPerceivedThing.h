@@ -5,6 +5,26 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING
+// Retail opt-in (wf8, row 0x0091B3A0 RunToPerceivedThingPosition): the polymorphic class on its CAIStateGroupBase base (0x14 bytes),
+// FrameLastCaptured +0x14 (Ego_r.pdb layout, sizeof 0x18). Members: Ego_r.pdb / FableWin.pdb
+// ?RunToPerceivedThingPosition@CAIStateGroup_SeekPerceivedThing@@AAEXXZ (private) and ?CapturePerceivedThing@..@@AAEXXZ (private);
+// the virtual overrides OnActivate / Cleanup / IsRunnable / Update (UAE) are declared as the PDBs spell them.
+#include "rebuild_abi.h"
+#include "engine/CAIStateGroupBase.h"
+class CAIStateGroup_SeekPerceivedThing : public CAIStateGroupBase {
+public:
+    virtual void OnActivate();                                           // 0x0091B2F0
+    virtual void Cleanup();                                              // 0x0091B330
+    virtual bool IsRunnable();                                           // 0x0091B340
+    virtual void Update();                                               // 0x0091B570
+private:
+    void CapturePerceivedThing();
+    void RunToPerceivedThingPosition();                                  // 0x0091B3A0
+    long FrameLastCaptured;                                              // +0x14
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekPerceivedThing) == 0x18);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -23,4 +43,5 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekPerceivedThing) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SeekPerceivedThing, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SeekPerceivedThing, FrameLastCaptured) == 0x14);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING
 #endif // FABLE_ENGINE_CAISTATEGROUP_SEEKPERCEIVEDTHING_H

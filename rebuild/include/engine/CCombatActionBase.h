@@ -204,6 +204,24 @@ public: class CStrikeEvent;
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_OWN_VIRTUALS
+    // Retail opt-in (wf8, row 0x008C61C0 CCreatureAction_TrollWhackGroundBase::WhackGround): the eleven virtuals CCombatActionBase
+    // adds to CCreatureActionBase's seventy (Ego_r.pdb class record, the names and order of the PDB branch above), so a derived
+    // class's own virtuals land on their retail slots (vtable 0x0128E0EC: slot 81 InitAnimation, slot 82 GetEffectName, called as
+    // `call [edx+148h]` at 0x008C6202). Declarations only; no layout change.
+public:
+    virtual C3DVector GetNextPos() const;
+    virtual bool IsToUseRotationInAnimation() const;
+    virtual bool IsToAlignWithGroundNormal() const;
+    virtual bool IsToFaceTarget() const;
+    virtual bool IsToFaceTargetAtStart() const;
+    virtual C3DVector GetActionMovementVector() const;
+    virtual bool IsToPerformActionOnStrike() const;
+    virtual bool IsToHitProneThings() const;
+    virtual float GetIsToFaceTargetCone() const;
+    virtual float GetIsToFaceTargetMinDist() const;
+    virtual float GetDamageMultiplier() const;
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SETCOMBATANIMATION
     // Nested opt-in (chunk 854, row 0x00924C70: the inline CCreatureAction_KrakenReturnToWater ctor): Ego_r.pdb
     // ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z (0x008574D0), the declaration the MELEE branch has under _INITIALISE.

@@ -90,6 +90,11 @@ public:
     void Died();                                             // 0x006D0020 ?Died@CTCWife@@QAEXXZ
     void Murdered();                                         // 0x006D00A0 ?Murdered@CTCWife@@QAEXXZ
 #endif
+#ifdef FABLE_RETAIL_CTCWIFE_NICEGIFT
+    // Retail opt-in (wf8, row 0x006D0630): Ego_r.pdb / FableWin.pdb ?ReceivedNiceGiftIsOpinionReactionHappening@CTCWife@@QAE_NJ@Z
+    // (Ego_r 0x00704610). Declaration only: no layout or vtable change.
+    bool ReceivedNiceGiftIsOpinionReactionHappening(long object_def_index);   // 0x006D0630
+#endif
     CDefPointer<const CHeroMarriageDef> PHeroMarriageDef;    // +0x0c
     EOpinionAttitudeType OpinionAttitude;                    // +0x10
     unsigned char    AttitudeUpdateCounter;                  // +0x14

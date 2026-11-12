@@ -159,6 +159,16 @@ public:
     virtual ~CTCPerceiveThing();
     bool IsAwareOfThing() const { return AwarenessTimer!=0.0f; }
     bool IsThingLineOfSight() const { return LineOfSight; }
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_SEEKPERCEIVEDTHING_FRIEND
+    // Nested opt-in (wf8, row 0x0091B3A0 CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPosition): that function reads the
+    // private LastPerceivedPos (+0x20) directly (0x0091B452 `lea edi,[ebp+20h]`). No accessor existed in the source: FableWin.pdb
+    // emits this function's other trivial inline accessors out of line (IsThingLineOfSight 0x01DA32C0, IsAwareOfThing 0x01F43D20)
+    // and has its own copy of the function (0x02BD3B90), yet neither PDB has any GetLastPerceivedPos symbol; the only PDB accessor
+    // of that return type, GetAwarenessPosition (FableWin 0x02B80DF0, 236 bytes), is not a trivial return. The friend grant is the
+    // header's way of allowing that direct read of a member this branch keeps private (descriptive: the PDBs carry no friend
+    // records). No layout or code change.
+    friend class CAIStateGroup_SeekPerceivedThing;
+#endif
     bool IsAwarenessOfThingDirect() const;
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING_RADII
     // Nested opt-in (agentNF10, row 0x00744ED0 OnCreate): Ego_r.pdb / FableWin.pdb ?SetSoundRadius / SetSmellRadius / SetSightRadius /

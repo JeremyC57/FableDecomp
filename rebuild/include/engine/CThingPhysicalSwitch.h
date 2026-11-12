@@ -27,6 +27,13 @@ protected:
     void UntriggerMe();                                                  // 0x0083DF20
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_LEVELSCRIPT
+    // Nested opt-in (wf8, 2026-11-12, row 0x0083D990): FableWin.pdb ?ConstructFromLevelScript@CThingPhysicalSwitch@@UAE_NPBD@Z
+    // (public virtual, vtable 0x01245644 slot 4). Declaration only; needs FABLE_RETAIL_CTHINGGAMEOBJECT_LEVELSCRIPT.
+public:
+    virtual bool ConstructFromLevelScript(const char* script);          // 0x0083D990
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

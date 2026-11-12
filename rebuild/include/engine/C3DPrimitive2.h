@@ -3,8 +3,16 @@
 #include "engine/C3DTextureStages.h"
 #include "engine/N3DPrimitive_CStaticBlock.h"
 #include <stddef.h>
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+#include "engine/CCountedPointer.h"
+#include "engine/CArray.h"
+class C3DClothPrimitive;
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER
 #include "boost/scoped_ptr.h"
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_VERTEXBUFFER
+class CVertexBufferWin32;
+#endif
 #include "engine/CIndexBuffer.h"
 #endif
 #ifdef FABLE_RETAIL_CANIMATEDBLOCK_DATA
@@ -74,14 +82,28 @@ public:
     unsigned char UnmodelledBase[4];
 #endif
     long MaterialIndex,RepeatingMeshReps;unsigned char BoundingSphere[16];float AverageTextureStretch;
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_CLOTHPRIMITIVES
+    // Retail opt-in (wf8, row 0x00B81F30): Ego_r.pdb types ClothPrimitives (+0x20) as CArray<CCountedPointer<C3DClothPrimitive> >
+    // (the retail 12-byte STLport vector). Not combinable with FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER yet. No layout change.
+    CArray<CCountedPointer<C3DClothPrimitive> > ClothPrimitives;
+    unsigned char Data[4],VertexBuffer[4],IndexBuffer[4];
+#else
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_INDEXBUFFER
     // Opt-in (chunk Q16, row 0x00A90260 CreateDegenerateTriangleIndexBuffer): Ego_r.pdb IndexBuffer is scoped_ptr<CIndexBuffer> (+0x34
     // retail; the retail reset swaps the new buffer in and deletes the old one through its virtual destructor, 0x00A90423..0x00A90437).
     // Needs FABLE_RETAIL_SCOPED_PTR (+ _RESET) and FABLE_RETAIL_CINDEXBUFFER.
-    unsigned char ClothPrimitives[12],Data[4],VertexBuffer[4];
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_VERTEXBUFFER
+    // Opt-in (wf8, row 0x00B903D0): Ego_r.pdb VertexBuffer is scoped_ptr<CVertexBufferWin32> (+0x30 retail). No layout change.
+    unsigned char ClothPrimitives[12],Data[4];
+    boost::scoped_ptr<CVertexBufferWin32> VertexBuffer;
     boost::scoped_ptr<CIndexBuffer> IndexBuffer;
 #else
+    unsigned char ClothPrimitives[12],Data[4],VertexBuffer[4];
+    boost::scoped_ptr<CIndexBuffer> IndexBuffer;
+#endif
+#else
     unsigned char ClothPrimitives[12],Data[4],VertexBuffer[4],IndexBuffer[4];
+#endif
 #endif
     unsigned long VertexBufferStatus,IndexBufferStatus,StaticBlockCount;
     N3DPrimitive::CStaticBlock* StaticBlocks;
@@ -106,6 +128,14 @@ public:
 #endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
     void SetRecordedFrame(long frame){RecordedFrame=frame;}
+#endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_RECORDEDSTATE
+    // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetRecordedFrame@C3DPrimitive2@@QBEJXZ,
+    // ?PeekRecordedTextureStages@C3DPrimitive2@@QBE..., ?SetRecordedTextureStages@C3DPrimitive2@@QAEXABVC3DTextureStages@@@Z
+    // (inline in retail: +0x7C / +0x6C read and written in place). No layout change.
+    long GetRecordedFrame() const { return RecordedFrame; }
+    const C3DTextureStages& PeekRecordedTextureStages() const { return RecordedTextureStages; }
+    void SetRecordedTextureStages(const C3DTextureStages& stages) { RecordedTextureStages=stages; }
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(C3DPrimitive2)==0xa0);

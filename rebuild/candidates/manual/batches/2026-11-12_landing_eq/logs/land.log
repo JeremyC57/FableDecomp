@@ -1,0 +1,40 @@
+addr       parity           behav  name
+0091b3a0   RELOCATION_MATCH PASS   RunToPerceivedThingPosition
+00b81f30   WARN RELOC_NAME: ?resize@?$vector@V?$CCountedPointer@VCParticleSimulation@@@@V?$allocator@V?$CCountedPointer@VCParticleSimulation@@@@@std@@@std@@QAEXI@Z -> 00b840a0 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+00b81f30   WARN RELOC_NAME: ?SaveStateToInterpolateFrom@CParticleProgram@@QAEXAAVCParticleSimulation@@@Z -> 00adf5b0 labelled 'CParticleSimulationUser_00adf5b0::SavePositions'
+00b81f30   RELOCATION_MATCH PASS   RunSimulation
+008c61c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008c61c0   RELOCATION_MATCH PASS   WhackGround
+006d0630   RELOCATION_MATCH PASS   ReceivedNiceGiftIsOpinionReactionHappening
+0083d990   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+0083d990   RELOCATION_MATCH PASS   ConstructFromLevelScript
+0072eb40   RELOCATION_MATCH PASS   ReceivedConfirmation
+00ba4a40   RELOCATION_MATCH PASS   SetupStaticBlocksBlankTextures
+007bbe34   RELOCATION_MATCH PASS   InitMovement
+00a128e0   RELOCATION_MATCH PASS   IsInContainmentVolume
+00b903d0   RELOCATION_MATCH PASS   RenderUntexturedStaticMeshPrimitive
+
+WINS: 10
+  0091b3a0 RELOCATION_MATCH CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPosition
+  00b81f30 RELOCATION_MATCH CEngineClothSimulationStaticMesh::RunSimulation
+  008c61c0 RELOCATION_MATCH CCreatureAction_TrollWhackGroundBase::WhackGround
+  006d0630 RELOCATION_MATCH CTCWife::ReceivedNiceGiftIsOpinionReactionHappening
+  0083d990 RELOCATION_MATCH CThingPhysicalSwitch::ConstructFromLevelScript
+  0072eb40 RELOCATION_MATCH CTCActionUseBuyHouse::ReceivedConfirmation
+  00ba4a40 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocksBlankTextures
+  007bbe34 RELOCATION_MATCH NThingShot::CTCShotDefinitionSpreadShotProjectile::InitMovement
+  00a128e0 RELOCATION_MATCH CPhysicsMeshObject::IsInContainmentVolume
+  00b903d0 RELOCATION_MATCH CEnginePrimitiveManagerOcclusionBase::RenderUntexturedStaticMeshPrimitive
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupSeekPerceivedThing_RunToPerceivedThingPosition_0091b3a0
+  CEngineClothSimulationStaticMesh_RunSimulation_00b81f30
+  CCreatureActionTrollWhackGroundBase_WhackGround_008c61c0
+  CTCWife_ReceivedNiceGiftIsOpinionReactionHappening_006d0630
+  CThingPhysicalSwitch_ConstructFromLevelScript_0083d990
+  CTCActionUseBuyHouse_ReceivedConfirmation_0072eb40
+  CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocksBlankTextures_00ba4a40
+  NThingShotCTCShotDefinitionSpreadShotProjectile_InitMovement_007bbe34
+  CPhysicsMeshObject_IsInContainmentVolume_00a128e0
+  CEnginePrimitiveManagerOcclusionBase_RenderUntexturedStaticMeshPrimitive_00b903d0
+rc=0

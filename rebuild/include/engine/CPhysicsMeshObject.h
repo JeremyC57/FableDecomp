@@ -57,6 +57,13 @@ public:
     long GetNavigationLevelAt(const C3DVector& pos) const;               // 0x00A11D10
     bool IsPointContainedInBoundingBox(const C3DVector& pos) const;      // 0x00A12890
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_CONTAINMENTVOLUME
+    // Ego_r.pdb / FableWin.pdb ?IsInContainmentVolume@CPhysicsMeshObject@@QBE_NABVCCharString@@ABVC3DVector@@M@Z (retail 0x00A128E0)
+    // and ?PeekRoughProportionOfSphereContainedInVolume@CPhysicsMeshObject@@QBEMABVCCharString@@ABVC3DVector@@M@Z (retail 0x00A12AB0).
+    // Declarations only.
+    bool IsInContainmentVolume(const CCharString& name, const C3DVector& pos, float radius) const;   // 0x00A128E0
+    float PeekRoughProportionOfSphereContainedInVolume(const CCharString& name, const C3DVector& pos, float radius) const;   // 0x00A12AB0
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_BOUNDINGBOXCONTAINS
     // Retail opt-in (agentNF27, rows 0x00A12890 / 0x0063F150 / 0x0063F1E0): Ego_r.pdb / FableWin.pdb
     // ?IsSpherePartContainedInBoundingBox@CPhysicsMeshObject@@QBE_NABVC3DVector@@M@Z (retail 0x00A11F20: the radius scaled by OO_Scale

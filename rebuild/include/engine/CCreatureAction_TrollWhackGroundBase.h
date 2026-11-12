@@ -9,6 +9,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS
+// Retail opt-in (wf8, row 0x008C61C0 CCreatureAction_TrollWhackGroundBase::WhackGround): the polymorphic retail class on
+// CCombatActionBase (0x114, no own members). Vtable 0x0128E0EC: slot 3 PerformAction 0x008C6390, slot 12 Initialise 0x008C5FD0,
+// slot 81 InitAnimation 0x00907F90, slot 82 GetEffectName 0x00907FA0 (FableWin.pdb
+// ?GetEffectName@CCreatureAction_TrollWhackGroundBase@@MBE_NAAVCCharString@@@Z); WhackGround is Ego_r.pdb / FableWin.pdb
+// ?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ. Needs engine/CCombatActionBase.h (retail) first.
+class CCreatureAction_TrollWhackGroundBase : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                        // 0x008C6390
+    virtual void Initialise();                                           // 0x008C5FD0
+protected:
+    virtual void InitAnimation();                                        // slot 81, 0x00907F90
+    virtual bool GetEffectName(CCharString& name) const;                 // slot 82, 0x00907FA0
+private:
+    void WhackGround();                                                  // 0x008C61C0
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollWhackGroundBase) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_TrollWhackGroundBase {
 public:
@@ -29,5 +47,7 @@ public:
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollWhackGroundBase) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollWhackGroundBase, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_TROLLWHACKGROUNDBASE_H

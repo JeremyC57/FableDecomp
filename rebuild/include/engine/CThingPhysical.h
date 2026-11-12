@@ -51,6 +51,12 @@ public:
     CThingPhysical(unsigned long type);                                  // 0x005296B0
 #endif
     const C3DVector& PeekPos() const;
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_ISINRANGE
+    // Retail opt-in (wf8, row 0x0091B3A0 CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPosition): Ego_r.pdb / FableWin.pdb
+    // ?IsInRange@CThingPhysical@@QBE_NABVC3DVector@@M@Z (public const), out of line in retail at 0x006A4DF0 (landed row).
+    // Declaration only: no layout change.
+    bool IsInRange(const C3DVector& pos, float range) const;             // 0x006A4DF0
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_STATTYPEFLAGS
     // Retail opt-in (chunk Q23, row 0x0063F7C0 ForEachInRoughArea<CThingPhysical, ...>): FableWin.pdb ?StatGetTypeFlags@CThingPhysical@@SIKXZ
     // (static fastcall), inline in retail: the rough-area scan's type test `and edx,3 ; cmp dl,3` (0x0063F92B). Body only.

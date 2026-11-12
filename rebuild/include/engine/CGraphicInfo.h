@@ -6,6 +6,11 @@
 class CGraphicInfo {
 public:
     const CGraphicInfoFrame* PeekInfoFrame(unsigned long index) const {return Frames+index;}
+#ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+    // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetTextureType@CGraphicInfo@@QBE?AW4ETextureType@CGraphicDataBank@@XZ
+    // (inline in retail: +0x1C read in place, 0x00BA4B1C). No layout change.
+    CGraphicDataBank::ETextureType GetTextureType() const {return TextureType;}
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
     CGraphicInfo(unsigned long index,CGraphicDataBank* bank,const CGraphicDataBank::CGraphicHeader& header);
     bool IsBump() const {return Bank->GetEntryDataType(Index)==2;}
@@ -28,5 +33,9 @@ private:
     CGraphicInfoFrame* Frames;
 };
 FABLE_STATIC_ASSERT(sizeof(CGraphicInfo)==44);
+#ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+// FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ (inline: GraphicInfo +0xC, then +0x1C).
+inline CGraphicDataBank::ETextureType CGraphicInfoFrame::GetTextureType() const {return GraphicInfo->GetTextureType();}
+#endif
 #endif
 #endif

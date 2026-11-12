@@ -394003,6 +394003,76 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT28'
         PassPattern = '00ef4320_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0091b3a0'
+        Module = 'CAIStateGroup_SeekPerceivedThing'
+        Source = '00/91/CAIStateGroupSeekPerceivedThing_RunToPerceivedThingPosition_0091b3a0.cpp'
+        TestSource = '00/91/CAIStateGroupSeekPerceivedThing_RunToPerceivedThingPosition_0091b3a0_test.cpp'
+        PassPattern = '0091b3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b81f30'
+        Module = 'CEngineClothSimulationStaticMesh'
+        Source = '00/b8/CEngineClothSimulationStaticMesh_RunSimulation_00b81f30.cpp'
+        TestSource = '00/b8/CEngineClothSimulationStaticMesh_RunSimulation_00b81f30_test.cpp'
+        PassPattern = '00b81f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c61c0'
+        Module = 'CCreatureAction_TrollWhackGroundBase'
+        Source = '00/8c/CCreatureActionTrollWhackGroundBase_WhackGround_008c61c0.cpp'
+        TestSource = '00/8c/CCreatureActionTrollWhackGroundBase_WhackGround_008c61c0_test.cpp'
+        PassPattern = '008c61c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d0630'
+        Module = 'CTCWife'
+        Source = '00/6d/CTCWife_ReceivedNiceGiftIsOpinionReactionHappening_006d0630.cpp'
+        TestSource = '00/6d/CTCWife_ReceivedNiceGiftIsOpinionReactionHappening_006d0630_test.cpp'
+        PassPattern = '006d0630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d990'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/83/CThingPhysicalSwitch_ConstructFromLevelScript_0083d990.cpp'
+        TestSource = '00/83/CThingPhysicalSwitch_ConstructFromLevelScript_0083d990_test.cpp'
+        PassPattern = '0083d990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072eb40'
+        Module = 'CTCActionUseBuyHouse'
+        Source = '00/72/CTCActionUseBuyHouse_ReceivedConfirmation_0072eb40.cpp'
+        TestSource = '00/72/CTCActionUseBuyHouse_ReceivedConfirmation_0072eb40_test.cpp'
+        PassPattern = '0072eb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba4a40'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocksBlankTextures_00ba4a40.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocksBlankTextures_00ba4a40_test.cpp'
+        PassPattern = '00ba4a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bbe34'
+        Module = 'NThingShot::CTCShotDefinitionSpreadShotProjectile'
+        Source = '00/7b/NThingShotCTCShotDefinitionSpreadShotProjectile_InitMovement_007bbe34.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionSpreadShotProjectile_InitMovement_007bbe34_test.cpp'
+        PassPattern = '007bbe34_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a128e0'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_IsInContainmentVolume_00a128e0.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_IsInContainmentVolume_00a128e0_test.cpp'
+        PassPattern = '00a128e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b903d0'
+        Module = 'CEnginePrimitiveManagerOcclusionBase'
+        Source = '00/b9/CEnginePrimitiveManagerOcclusionBase_RenderUntexturedStaticMeshPrimitive_00b903d0.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerOcclusionBase_RenderUntexturedStaticMeshPrimitive_00b903d0_test.cpp'
+        PassPattern = '00b903d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -22345,7 +22345,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007bbc9f	CTCPhysicsRigidBody_ApplyForce	_global	unknown	undefined	0		0	yes	accepted									
 007bbdca	UpdateMovement	NThingShot::CTCShotDefinitionTearInGround	__thiscall	void	1	CTCShotDefinitionTearInGround *	1	yes	accepted									
 007bbe24	OnPassingTarget	NThingShot::CTCShotDefinitionTearInGround	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007bbe34	InitMovement	CTCShotDefinitionSpreadShotProjectile	__thiscall	void	1	CTCShotDefinitionSpreadShotProjectile *	1	yes	accepted									
+007bbe34	InitMovement	NThingShot::CTCShotDefinitionSpreadShotProjectile	__thiscall	void	1	CTCShotDefinitionSpreadShotProjectile *	1	yes	accepted									
 007bc004	InitMovement	CTCShotDefinitionNymphFun	__thiscall	void	1	CTCShotDefinitionNymphFun *	1	yes	accepted									
 007bc15a	UpdateMovement	CTCShotDefinitionMultiArrow	__thiscall	void	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
 007bc38a	CTCPhysicsRigidBody_ApplyForceToward	_global	unknown	undefined	0		0	yes	accepted									
@@ -41932,7 +41932,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b81ea0	CEngineClothSimulationStaticMesh	CEngineClothSimulationStaticMesh	__thiscall	undefined	4	CEngineClothSimulation2DAnimatedMesh *,C3DMeshInfo *,ulong,CEngineInternalPrimitiveAnimatedMesh *	0	yes	accepted									
 00b81ed0	CEngineClothSimulationAnimatedMesh	CEngineClothSimulationAnimatedMesh	__thiscall	undefined	4	CEngineClothSimulation2DAnimatedMesh *,C3DMeshInfo *,ulong,CEngineInternalPrimitiveAnimatedMesh *	0	yes	accepted									
 00b81f00	CEngineClothSimulation2DAnimatedMesh	CEngineClothSimulation2DAnimatedMesh	__thiscall	undefined	4	CEngineClothSimulation2DAnimatedMesh *,C3DMeshInfo *,ulong,CEngineInternalPrimitiveAnimatedMesh *	0	yes	accepted									
-00b81f30	?RunSimulation@CEngineClothSimulationStaticMesh@@UAEXXZ	CEngineClothSimulationStaticMesh	__thiscall	void	1	CEngineClothSimulationStaticMesh *	1	yes	accepted									
+00b81f30	RunSimulation	CEngineClothSimulationStaticMesh	__thiscall	void	1	CEngineClothSimulationStaticMesh *	1	yes	accepted									
 00b82100	RunSimulation	CEngineClothSimulationAnimatedMesh	__thiscall	void	1	CEngineClothSimulationAnimatedMesh *	1	yes	accepted									
 00b82330	AddSimulation	CEnginePrimitiveSimulationInfo	__thiscall	void	3	CEnginePrimitiveSimulationInfo *,ulong,CCountedPointer<CEngineSimulationBase> *	1	yes	accepted									
 00b825d0	DeleteData	CCountedPointer<CParticleSimulation>	unknown	undefined	0		0			discovered	gapscan							

@@ -1,0 +1,12 @@
+00adf5b0	SaveStateToInterpolateFrom	CParticleProgram
+00ae0050	SetupSimulation	CParticleProgram
+00ae2cb0	SimulationStep	CParticleProgram
+00b840a0	resize	vector<CCountedPointer<CParticleSimulation> >
+00a36ec0	~CCountedPointer<const C3DMesh2>	CCountedPointer
+00b81050	UpdateTransform	CEngineClothSimulationMeshBase
+00b81d60	ClearParticleSims	CEngineClothSimulationMeshBase
+009fd150	GetBlankTexture	CGraphicDataBank
+007bbe34	InitMovement	NThingShot::CTCShotDefinitionSpreadShotProjectile
+0126df24	SPREAD_SHOT_ANGLE_STEP (descriptive)	NThingShot (shot TU .rdata)
+0126df28	SPREAD_SHOT_TARGET_OFFSET (descriptive)	NThingShot (shot TU .rdata)
+013bae7c	s_SpreadShotAngle (descriptive)	NThingShot (shot TU .bss)

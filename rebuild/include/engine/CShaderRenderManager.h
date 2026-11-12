@@ -318,4 +318,29 @@ inline void CShaderRenderManager::DrawBuffersIndexed(unsigned long min_vertex_in
 }
 #endif
 
+#ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BUFFERDRAW
+// Retail opt-in (wf8, row 0x00B903D0 CEnginePrimitiveManagerOcclusionBase::RenderUntexturedStaticMeshPrimitive; needs
+// FABLE_RETAIL_CSHADERRENDERMANAGER_INLINE_BLOCKDRAW and FABLE_RETAIL_CVERTEXBUFFERWIN32): the bodies of three members retail expands
+// there. FableWin.pdb ?IsFixedFunctionVertexMode@CShaderRenderManager@@QBE_NXZ (the +0x395 accessor),
+// ?SelectVertexBuffer@CShaderRenderManager@@QAEXAAVCVertexBufferWin32@@@Z and the seven-argument
+// ?DrawBuffersIndexed@..@@QAEXAAVCVertexBufferWin32@@KKAAVCIndexBuffer@@KKW4EPrimitiveType@@@Z (bodies as the landed out-of-line
+// copy 0x00B8EB00: SetStreamSource, then the six-argument overload).
+#include "engine/CVertexBufferWin32.h"
+inline bool CShaderRenderManager::IsFixedFunctionVertexMode() const
+{
+    return FixedFunctionVertexMode;
+}
+inline void CShaderRenderManager::SelectVertexBuffer(CVertexBufferWin32& buffer)
+{
+    D3DDevice->SetStreamSource(0, buffer.PVertexBuffer, 0, buffer.Stride);
+}
+inline void CShaderRenderManager::DrawBuffersIndexed(CVertexBufferWin32& vertex_buffer, unsigned long min_vertex_index, unsigned long num_vertices,
+                                                     CIndexBuffer& index_buffer, unsigned long start_index, unsigned long primitive_count,
+                                                     EPrimitiveType primitive_type)
+{
+    SelectVertexBuffer(vertex_buffer);
+    DrawBuffersIndexed(min_vertex_index, num_vertices, index_buffer, start_index, primitive_count, primitive_type);
+}
+#endif
+
 #endif // FABLE_ENGINE_CSHADERRENDERMANAGER_H

@@ -1,0 +1,5 @@
+00b81f30	CEngineClothSimulationStaticMesh::RunSimulation	RELOCATION_MATCH	19	real CCountedPointer<const C3DMesh2> local + shared CArray/headers; 3 overlay opt-ins; no flags
+006d0630	CTCWife::ReceivedNiceGiftIsOpinionReactionHappening	RELOCATION_MATCH	64	one guarded FrameLastReceivedNiceGift store after the insert/update if-else; find<long> noinline opt-in; GetDef body visible; frame local
+0072eb40	CTCActionUseBuyHouse::ReceivedConfirmation	RELOCATION_MATCH	4	port onto shared headers; HasTC forceinline opt-in
+00ba4a40	CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocksBlankTextures	RELOCATION_MATCH	12	FABLE_FORCEINLINE PeekGraphicInfoFrame + texture_type declared before graphic_index
+007bbe34	NThingShot::CTCShotDefinitionSpreadShotProjectile::InitMovement	RELOCATION_MATCH	81	CTOR_INLINE + default operator* + CROSS_XY_GROUP; new class header in hdr/

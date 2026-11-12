@@ -23,6 +23,12 @@ public:
     const CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> >& GetNavigationContainmentVolumes() const { return NavigationContainmentVolumes; }
     long GetNavigationLevelAt(const C3DVector& position) const;   // 0x00A73D10
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_CONTAINMENTVOLUME
+    // ?IsInContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@ABVC3DVector@@M@Z, out of line at retail 0x00A6CA20 (landed), and
+    // ?PeekRoughProportionOfSphereContained@CPhysicsMesh@@QBEMABVCCharString@@ABVC3DVector@@M@Z at 0x00A6CA80. Declarations only.
+    bool IsInContainmentVolume(const CCharString& name, const C3DVector& position, float radius) const;   // 0x00A6CA20
+    float PeekRoughProportionOfSphereContained(const CCharString& name, const C3DVector& position, float radius) const;   // 0x00A6CA80
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDINGBOXINTERSECTED
     // Retail opt-in (wf5, row 0x00A11F20 CPhysicsMeshObject::IsSpherePartContainedInBoundingBox): Ego_r.pdb / FableWin.pdb
     // ?HasBoundingBoxIntersectedFromTo@CPhysicsMesh@@QBE_NMABVC3DVector@@0@Z, out of line at retail 0x00A17690 (landed). Declaration

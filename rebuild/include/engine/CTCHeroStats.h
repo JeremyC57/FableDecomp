@@ -285,6 +285,15 @@ public:
     float            RotCounter;                                         // +0x1d0
     bool             IsInCutSceneFirstTime;                              // +0x1d4
     std::list<CHeroMarriageInfo> Marriages;                              // +0x1d8
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_PROPERTYOWNED)
+    // Retail opt-in (workflow wf8, row 0x0072EB40 CTCActionUseBuyHouse::ReceivedConfirmation): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z
+    // (retail 0x0057B327, as the BOASTS branch) with NumberOfShopsOwned +0xE0 / NumberOfHousesOwned +0xE4 (the generated default
+    // branch's offsets and Ego_r.pdb names; the row's `inc dword ptr [edi+0E0h]` / `[edi+0E4h]`, 0x0072EC64 / 0x0072EC70).
+    void AddMoney(long amount, bool flag);                               // 0x0057B327
+    unsigned char _pad_after_base[0xe0 - sizeof(CTCBase)];
+    long NumberOfShopsOwned;                                             // +0xe0
+    long NumberOfHousesOwned;                                            // +0xe4
+    unsigned char _pad_0xe8[0x1dc - 0xe8];
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_STAMINA)
     // Retail opt-in (Codex pass 17): original fields at native58/5C/60; all remaining bytes retained.
 private:unsigned char _before_stamina[0x58-sizeof(CTCBase)];

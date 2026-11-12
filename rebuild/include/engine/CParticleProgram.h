@@ -51,6 +51,15 @@ public:
     // Chunk 748 (FableWin.pdb spellings; the skinned set-up / cling rows 0x00AE29D0 / 0x00AE1320 and their callees):
     bool SetupSimulation(CParticleSimulation& simulation, const C3DAnimationBlendState& blend_state, C3DAnimationManager& animation_manager,
                          const C3DVector* position, const C3DMesh2& mesh, CMovableResourceMemoryPool& pool, const CParticleContext& context) const;
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_UNSKINNED_SIMULATION
+    // Retail opt-in (wf8, row 0x00B81F30 CEngineClothSimulationStaticMesh::RunSimulation): the unskinned overloads and the state save
+    // (Ego_r.pdb / FableWin.pdb ?SetupSimulation@CParticleProgram@@QBE_NAAVCParticleSimulation@@AAVCMovableResourceMemoryPool@@@Z,
+    // ?SimulationStep@CParticleProgram@@QBEXAAVCParticleSimulation@@ABVCParticleContext@@@Z,
+    // ?SaveStateToInterpolateFrom@CParticleProgram@@QAEXAAVCParticleSimulation@@@Z). Declarations only: no layout change.
+    bool SetupSimulation(CParticleSimulation& simulation, CMovableResourceMemoryPool& pool) const;      // 0x00AE0050
+    void SimulationStep(CParticleSimulation& simulation, const CParticleContext& context) const;        // 0x00AE2CB0
+    void SaveStateToInterpolateFrom(CParticleSimulation& simulation);                                   // 0x00ADF5B0
+#endif
 private:
     static CMatrix4x4* __fastcall GetMatrixBuffer(unsigned long count);   // 0x00AE04E0 ?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z
     static C4DVector* __fastcall GetVectorBuffer(unsigned long count);    // 0x00AE0540 ?GetVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z

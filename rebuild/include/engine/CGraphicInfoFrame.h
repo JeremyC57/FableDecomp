@@ -17,6 +17,11 @@ public:
     bool GetTexture(const CTexture**,unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture() const; // native009fd3f0
     void TouchFrame(unsigned long) const;
+#ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+    // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ;
+    // the inline body is in engine/CGraphicInfo.h (needs the complete CGraphicInfo). No layout change.
+    CGraphicDataBank::ETextureType GetTextureType() const;
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     bool IsFlatSequence() const;
 #endif

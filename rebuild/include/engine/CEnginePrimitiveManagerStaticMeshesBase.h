@@ -25,6 +25,14 @@ public:
     CEnginePrimitiveManagerStaticMeshesBase(const CEnginePrimitiveManagerStaticMeshesBase&);
     CEnginePrimitiveManagerStaticMeshesBase(CArray<CEngineScene *>&);
     static bool FABLE_FASTCALL SetupStaticBlocksNoMorph(C3DPrimitive2&,const C3DMesh2&,C3DTextureStages&,long,const CGraphicDataBank*,bool);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_BLANKTEXTURES
+    // Retail opt-in (wf8, row 0x00BA4A40): Ego_r.pdb / FableWin.pdb
+    // ?SetupStaticBlocksBlankTextures@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PA_N@Z
+    // (private, `ret 14h`). Declaration only; no layout change.
+private:
+    bool SetupStaticBlocksBlankTextures(C3DPrimitive2& mesh_prim, class CEngineInternalPrimitiveStaticMesh& prim, C3DTextureStages& stages,
+        const class C3DMeshMaterial* material, bool* already_set_up);   // 0x00BA4A40
+#endif
 private:
     unsigned long PointLightShaderIndex[6];
     CVertexShader VertexShadersStaticSpotlight[4];
@@ -158,6 +166,14 @@ private:
 public:
     static bool FABLE_FASTCALL SetupStaticBlocksNoMorph(C3DPrimitive2& primitive, const C3DMesh2& mesh, C3DTextureStages& stages,
         long level, const CGraphicDataBank* bank, bool load);
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_BLANKTEXTURES
+    // Retail opt-in (wf8, row 0x00BA4A40): Ego_r.pdb / FableWin.pdb
+    // ?SetupStaticBlocksBlankTextures@CEnginePrimitiveManagerStaticMeshesBase@@AAE_NAAVC3DPrimitive2@@AAVCEngineInternalPrimitiveStaticMesh@@AAVC3DTextureStages@@PBVC3DMeshMaterial@@PA_N@Z
+    // (private, `ret 14h`). Declaration only; no layout change.
+private:
+    bool SetupStaticBlocksBlankTextures(C3DPrimitive2& mesh_prim, class CEngineInternalPrimitiveStaticMesh& prim, C3DTextureStages& stages,
+        const class C3DMeshMaterial* material, bool* already_set_up);   // 0x00BA4A40
 #endif
 };
 #pragma pack(pop)
