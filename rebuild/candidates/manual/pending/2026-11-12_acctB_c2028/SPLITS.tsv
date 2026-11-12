@@ -1,0 +1,2 @@
+address	true_length	evidence
+00b8df50	1626	ret 4 at 0x00B8E5A7, int3 0x00B8E5AA..AF; 0x00B8E5B0..0x00B8E680 are the TU's unreferenced inline COMDATs (vector<COccluderFlareEntry>::size / empty / begin / end, 0x00B8E600..0x00B8E680 four more tiny helpers; xref.py: no callers); the 1841-byte reservation ends at the last of them (0x00B8E681). The chunk oracle already uses 1626.
