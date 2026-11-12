@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a4e300   RELOCATION_MATCH PASS   GetDeltaMovement
+
+WINS: 1
+  00a4e300 RELOCATION_MATCH C3DAnimation2::?GetDeltaMovement@C3DAnimation2@@UBEXAAVCMatrix3x4@@MM@Z
