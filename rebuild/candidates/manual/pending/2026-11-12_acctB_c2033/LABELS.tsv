@@ -1,0 +1,23 @@
+address	name	evidence
+0069ae80	??0CGameCameraManager@@QAE@ABVCWorld@@@Z	Ego_r.pdb 0x006C1E60 + the CGameCameraManager vtable 0x0125C754 stored first; matched (RELOCATION_MATCH)
+00a4c5e0	?ReadCompressedFromFile@C3DAnimationSequenceData@@QAEXAAVCDataInputStream@@AAVCSimpleMemoryPool@@@Z	Ego_r.pdb + FableWin.pdb; called by the landed C3DAnimationSequence::ReadCompressedFromFile 0x00A4CDD0 with (stream, pool); matched
+00878a50	?StatRegisterMode@CProjectileWeapon@NCameraModes@@SIXXZ	see NAME_FIXES.tsv: Ego_r.pdb 0x00863160 and FableWin.pdb 0x029C8C60 (the only StatRegisterMode in either PDB: static __fastcall void()); retail body `mov byte ptr [0x013BAF98],0 ;
+0069bba0	?DeleteData@?$CCountedPointer@VCBaseInit@NCameraModes@@@@SIXPAX@Z	see NAME_FIXES.tsv: FableWin.pdb name; the camera manager constructor stores 0x0069BBA0 as the CCPPointerInfo DeleteFunc of every CCountedPointer<NCameraModes::CBaseInit> it builds
+0069d900	?insert_unique@?$_Rb_tree@W4EMode@NCameraModes@@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@4@U?$less@W4EMode@NCameraModes@@@4@V?$allocator@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@4@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4EMode@NCameraModes@@V?$CCountedPointer@VCBaseInit@NCameraModes@@@@@2@@Z	see NAME_FIXES.tsv: STLport 4.6 _tree.c insert_unique(const value_type&) of RegisteredModes (map<NCameraModes::EMode, CCountedPointer<NCameraModes::CBaseInit> >, Ego_r.pdb member t
+00637650	??$GetDef@VCCameraModeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	see NAME_FIXES.tsv: Ego_r.pdb / FableWin.pdb member template (both list the CCameraModeDef by-name instance; neither PDB has a CGameDefinitionManager::GetDef); called with &DEFAULT
+004ab990	??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	see NAME_FIXES.tsv: Ego_r.pdb / FableWin.pdb member template instance; called with a CDefPointer<const CCameraManagerSetDef> out slot by the constructor (0x0069B56B) and SetUpMainC
+0069ac90	?SetCameraManagerSetDef@CGameCameraManager@@QAEXABV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z	see NAME_FIXES.tsv: Ego_r.pdb 0x006C1C20 spelling (const T); FableWin.pdb has the same; the landed row 0x0069AC90 and its binders use the non-const T
+00877160	??0CTools@NCameraModes@@QAE@ABVCGameCameraManager@@@Z	see NAME_FIXES.tsv: Ego_r.pdb ctor name; retail body stores the reference at +0, zeroes the ScanThings vector +4..+0xC and sets the four offset floats +0x10..+0x1C (NCameraModes_CT
+00a0c130	??0CCamera@@QAE@ABVC3DVector@@00MM@Z	Ego_r.pdb / FableWin.pdb; already bound so in reloc_bindings (binder 0x006FD8C0)
+0049d380	??0CCamera@@QAE@ABV0@@Z	Ego_r.pdb / FableWin.pdb; already bound so (binder 0x0049DAA0)
+00a01b10	??0CBaseIntelligentPointer@@QAE@XZ	Ego_r.pdb / FableWin.pdb; engine/CIntelligentPointer.h
+013ba8d8	?DEFAULT_CAMERA_MODE_DEF@?A0x...@@3V?$CDefPointer@$$CBVCCameraModeDef@@@@A	anonymous-namespace static (both PDBs: dynamic initializer / atexit destructor names); the ?A0x hash is per TU
+013ba8d4	?g_PreloadScriptedCameras@@3_NA	DESCRIPTIVE (no data-symbol name source): byte cleared by the constructor; SetScriptedCameraMode 0x00699F0F tests it to force CameraPreload
+013ba8d5	?g_CameraManagerDebugFlag@@3_NA	DESCRIPTIVE (no data-symbol name source): byte cleared by the constructor, read nowhere in retail (xref: 1 site)
+0125c2a4	??_7CStringAndCageInit@CStringAndCage@NCameraModes@@6B@	RTTI rtti-vtables.tsv + FableWin ctor ??0CStringAndCageInit@..
+0125c274	??_7CFirstPersonInit@CFirstPerson@NCameraModes@@6B@	RTTI + FableWin ??0CFirstPersonInit@..
+0125c27c	??_7CLookAtFrontInit@CLookAtFront@NCameraModes@@6B@	RTTI + FableWin ??0CLookAtFrontInit@..
+0125c26c	??_7CSACCombatInit@CSACCombat@NCameraModes@@6B@	RTTI + FableWin ??0CSACCombatInit@..
+0125c284	??_7CPCMouseLookInit@CPCMouseLook@NCameraModes@@6B@	RTTI + FableWin ??0CPCMouseLookInit@..
+0125c264	??_7CZTargetNewInit@CZTargetNew@NCameraModes@@6B@	RTTI + FableWin ??0CZTargetNewInit@..
+00a4cd20	?IsScalingNonUniform@C3DAnimationSequenceData@@AAE_NABVC3DVector@@@Z (CANDIDATE, one source)	uncatalogued 71-byte function after 0x00A4C5E0 (SPLITS.tsv): thiscall, one const C3DVector& argument, bool from max(|Z-X|,|Y-X|) > DELTA_NOTIONAL_ZERO; Ego_r.pdb has this private member; unproven by a second source
