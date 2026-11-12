@@ -1,0 +1,28 @@
+baseline 00a78b20 00a78b20_v0.cpp DIFFER(678v678) -- regrade of the prior draft as handed over (differ/00a78b20.cpp)
+baseline 00540320 00540320_v0.cpp DIFFER(755v755) -- regrade of the prior draft as handed over (differ/00540320.cpp)
+baseline 00649e8b 00649e8b_v0.cpp DIFFER(469v469) (leaf warning: graded the largest function) -- regrade of the prior draft as handed over (differ/00649e8b.cpp)
+baseline 006c1250 006c1250_v0.cpp DIFFER(638v638) -- regrade of the prior draft as handed over (differ/006c1250.cpp)
+baseline 0096cd70 0096cd70_v0.cpp DIFFER(578v578) (leaf warning: graded the largest function) -- regrade of the prior draft as handed over (differ/0096cd70.cpp)
+baseline 0063f7c0 0063f7c0_v0.cpp DIFFER(785v785) (leaf warning: graded the largest function) -- regrade of the prior draft as handed over (differ/0063f7c0.cpp)
+baseline 00489d40 00489d40_v0.cpp DIFFER(815v815) -- regrade of the prior draft as handed over (differ/00489d40.cpp)
+baseline 00a1d290 00a1d290_v0.cpp DIFFER(817v817) -- regrade of the prior draft as handed over (differ/00a1d290.cpp)
+baseline 00814260 00814260_v0.cpp DIFFER(839v839) -- regrade of the prior draft as handed over (differ/00814260.cpp)
+baseline 00584b86 00584b86_v0.cpp DIFFER(854v854) -- regrade of the prior draft as handed over (differ/00584b86.cpp)
+baseline 00622a00 00622a00_v0.cpp DIFFER(877v877) -- regrade of the prior draft as handed over (differ/00622a00.cpp)
+baseline 007daef0 007daef0_v0.cpp DIFFER(904v904) -- regrade of the prior draft as handed over (differ/007daef0.cpp)
+baseline 00b4a700 00b4a700_v0.cpp DIFFER(926v926) -- regrade of the prior draft as handed over (differ/00b4a700.cpp)
+baseline 00b39080 00b39080_v0.cpp DIFFER(846v846) -- regrade of the prior draft as handed over (differ/00b39080.cpp)
+04:45 00b39080 00b39080_v1.cpp CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh SRC_FAIL   -- port onto shared headers
+04:45 00b39080 00b39080_v1.cpp CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh DIFFER(846v846)   -- port + CIVCOUNTEDPOINTER_CONVERT
+04:47 00b39080 00b39080_v2.cpp CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh RELOCATION_MATCH   -- ResetOcclusionInfo slot + SetMultiply over named copy
+04:49 007daef0 007daef0_v1.cpp CTCTavernGameCardBlackjack::DealCard DIFFER(904v904)   -- port onto card_sorting_types.h (CTCTavernGameCardBase/CCard) + CDefPointer/CTCTavernGame retail headers; same flip-branch register residue
+04:51 00540320 00540320_v1.cpp NUISystem::CEditBox::KeyPressed DIFFER(755v755)  -- /Zc:wchar_t -- port onto NUISystem_CEditBox.h; i-(len+5)
+04:52 00540320 00540320_v2.cpp NUISystem::CEditBox::KeyPressed DIFFER(755v755)  -- /Zc:wchar_t -- window slots opt-in; i -= len+5
+04:53 00540320 00540320_v3.cpp NUISystem::CEditBox::KeyPressed DIFFER(755v755)  -- /Zc:wchar_t -- -(len-i+5) local
+04:53 00540320 00540320_v4.cpp NUISystem::CEditBox::KeyPressed DIFFER(758v755)  -- /Zc:wchar_t -- no goto; (i-5)-len
+04:53 00540320 00540320_v5.cpp NUISystem::CEditBox::KeyPressed DIFFER(755v755)  -- /Zc:wchar_t -- local adjustment = i-(len+5)
+04:55 007daef0 007daef0_v2.cpp CTCTavernGameCardBlackjack::DealCard DIFFER(904v904)   -- v2 flip-test spelling
+04:55 007daef0 007daef0_v3.cpp CTCTavernGameCardBlackjack::DealCard DIFFER(904v904)   -- v3 flip-test spelling
+04:57 00540320 00540320_v6.cpp NUISystem::CEditBox::KeyPressed DIFFER(755v755)  -- /Zc:wchar_t -- width after GetTextComponent
+04:58 00b39080 src/00b39080.cpp RELOCATION_MATCH -- final re-grade of the hand-back source
+04:58 00b39080 src/00b39080.cpp SRC_FAIL -- sanity check without FABLE_HDR_OVERLAY (the row needs the overlay opt-ins)

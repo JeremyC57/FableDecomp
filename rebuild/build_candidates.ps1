@@ -393327,6 +393327,13 @@ $catalog = @(
         TestSource = '00/8b/CCreatureActionJumpOutFromCover_Initialise_008b7040_test.cpp'
         PassPattern = '008b7040_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b39080'
+        Module = 'CEngineInternalAttachedPrimitive'
+        Source = '00/b3/CEngineInternalAttachedPrimitive_GetParentTransformAnimatedMesh_00b39080.cpp'
+        TestSource = '00/b3/CEngineInternalAttachedPrimitive_GetParentTransformAnimatedMesh_00b39080_test.cpp'
+        PassPattern = '00b39080_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

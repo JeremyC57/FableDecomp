@@ -38757,3 +38757,5 @@ _CommonStaticMapHeaderEntryName	01436ecc	012246c0
 ?SDoorOpenAnim@?A0xf22b0a87@@3VCCharString@@B	013bad34	012299e0
 ?SDoorCloseAnim@?A0xea0ba4e8@@3VCCharString@@B	013bad38	012299f0
 ?SClockTurnAnim@?A0x1b028281@@3VCCharString@@A	013bad3c	01229a00
+??1?$CCountedPointer@$$CBVC3DMeshStats@@@@QAE@XZ	004c24c0	00b39080
+?BeginLoadingStats@C3DMeshInfo@@QBEX_N@Z	00a24a80	00b39080

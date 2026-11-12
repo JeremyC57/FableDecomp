@@ -22,9 +22,22 @@ public: float MoveFraction;
 public: bool Turning;
 public: bool FaceDown;
 public: bool Moving;
+#ifdef FABLE_RETAIL_CCARD_POSITIONS
+// Retail opt-in (chunk Q21, row 0x007DAEF0 CTCTavernGameCardBlackjack::DealCard): the three positions with their Ego_r.pdb type
+// (C3DVector at +0x27 / +0x33 / +0x3f, byte aligned: needs FABLE_RETAIL_C3DVECTOR_PACKED, the owner-approved alignment-1 C3DVector).
+// DealCard reads LocalPos.Z +0x2f, NewLocalPos X/Y/Z +0x33/+0x37/+0x3b and CurrentPos X/Y +0x3f/+0x43 (0x007DB0A4, 0x007DB1E5..0x007DB21A).
+// Same offsets and size as the opaque default below.
+#ifndef FABLE_RETAIL_C3DVECTOR_PACKED
+#error FABLE_RETAIL_CCARD_POSITIONS needs FABLE_RETAIL_C3DVECTOR_PACKED
+#endif
+public: C3DVector LocalPos;
+public: C3DVector NewLocalPos;
+public: C3DVector CurrentPos;
+#else
 public: unsigned char LocalPos[12]; // Original C3DVector, unaligned member storage.
 public: unsigned char NewLocalPos[12]; // Original C3DVector, unaligned member storage.
 public: unsigned char CurrentPos[12]; // Original C3DVector, unaligned member storage.
+#endif
 public: float Width;
 public: float Height;
 public: long Index;

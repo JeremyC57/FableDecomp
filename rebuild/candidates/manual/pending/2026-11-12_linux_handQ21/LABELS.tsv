@@ -1,0 +1,8 @@
+address	name	module
+004c24c0	~CCountedPointer	CCountedPointer<const C3DMeshStats>
+00a8a5f0	GetDummyObjectTransformAnimated	C3DMesh2
+00b90390	ResetOcclusionInfo	CEngineInternalPrimitiveOcclusionBase
+00404c50	IsIMEActive	NUISystem::CIME
+0054ffe0	GetTextWindow	NUISystem::CText
+006c1250	FrameUpdate	CTCBuyableHouse
+00b4a700	Render	CEnginePrimitiveRenderer2D

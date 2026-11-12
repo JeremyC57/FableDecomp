@@ -210,6 +210,26 @@ public:
         destination.Z+=E23*pSource.Y;
         destination.Z+=E43;
     }
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETMULTIPLY
+    // Retail opt-in (chunk Q21, row 0x00B39080 CEngineInternalAttachedPrimitive::GetParentTransformAnimatedMesh): FableWin.pdb
+    // ?SetMultiply@CMatrix3x4@@QAEXABV1@0@Z (this = a * b; no Ego_r.pdb or retail out-of-line copy: the row expands it over a named copy
+    // of the target, 0x00B3915B `rep movsd` then the k-order sums 0x00B39157..0x00B3930E). Same sums as PostMultiply below, with both
+    // operands as parameters: with the copy inside PostMultiply VC7.1 swaps the operand order of the row-2..4 products (`fld b ; fmul a`).
+    FABLE_FORCEINLINE void SetMultiply(const CMatrix3x4& a, const CMatrix3x4& b) {
+        E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
+        E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
+        E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
+        E21 = a.E21 * b.E11 + a.E22 * b.E21 + a.E23 * b.E31;
+        E22 = a.E21 * b.E12 + a.E22 * b.E22 + a.E23 * b.E32;
+        E23 = a.E21 * b.E13 + a.E22 * b.E23 + a.E23 * b.E33;
+        E31 = a.E31 * b.E11 + a.E32 * b.E21 + a.E33 * b.E31;
+        E32 = a.E31 * b.E12 + a.E32 * b.E22 + a.E33 * b.E32;
+        E33 = a.E31 * b.E13 + a.E32 * b.E23 + a.E33 * b.E33;
+        E41 = a.E41 * b.E11 + a.E42 * b.E21 + a.E43 * b.E31 + b.E41;
+        E42 = a.E41 * b.E12 + a.E42 * b.E22 + a.E43 * b.E32 + b.E42;
+        E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33 + b.E43;
+    }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
     // Retail opt-in (chunk 794, row 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb ?PostMultiply@CMatrix3x4@@QAEXABV1@@Z (this =
     // this * matrix; the landed out-of-line copy 0x00C1CF20 gives the k-order sums) and
