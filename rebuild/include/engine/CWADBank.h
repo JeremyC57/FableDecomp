@@ -12,7 +12,13 @@
 #pragma pack(push, 1)
 class CWADBank {
 public:
+#ifdef FABLE_RETAIL_CWADBANK_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x0050BCC0 CCountedPointer<CWADBank>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CWADBank();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _base_0x04[0x4];                           // +0x04 flattened base-class subobject(s)
     unsigned char _pad_0x08[0x30];                           // +0x08
     unsigned char _pad_0x38[0x5e];                           // +0x38
@@ -36,6 +42,8 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CWADBank) == 0x164);
+#ifndef FABLE_RETAIL_CWADBANK_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CWADBank, __vftable) == 0x0);
+#endif
 
 #endif // FABLE_ENGINE_CWADBANK_H

@@ -4,6 +4,7 @@
 // the donor PDB's later vector base is 16) adding no fields. Ego_r CArray<C3DVector> / CArray<long>: unsigned-int index
 // operators returning T& and const T&, the (n) and (n, value) constructors, GetAsCArray over a private zero-size array.
 #include "stlport/fable_containers.h"
+#include "fable_compiler.h"
 template<class T> class CArray : public std::vector<T> {
 public:
     CArray() : std::vector<T>() { }
@@ -20,6 +21,11 @@ public:
     // retry11a (row 0x00520670 CArray<unsigned char>(size)): the one-argument ctor forwards to STLport's vector(n) -- the
     // vector(n, T()) form changes LoadHeroStateBinary's register allocation (1 instruction).
     explicit CArray(unsigned int n) : std::vector<T>(n) { }
+#elif defined(FABLE_RETAIL_CARRAY_SIZE_CTOR_FORCEINLINE)
+    // Per-TU inline control (agentFAM10, 2026-11-12, row 0x004538EB COpinionSet::COpinionSet; owner decision 2026-11-08, inline
+    // budget): that size-optimised TU expands this wrapper (the 0.0f and allocator temporaries sit in the caller's frame, [ebp-8] /
+    // [ebp-1]) and calls only the vector fill constructor 0x004516E7; VC7.1's /Os heuristic otherwise calls the wrapper. Same body.
+    FABLE_FORCEINLINE explicit CArray(unsigned int n) : std::vector<T>(n,T()) { }
 #else
     explicit CArray(unsigned int n) : std::vector<T>(n,T()) { }
 #endif

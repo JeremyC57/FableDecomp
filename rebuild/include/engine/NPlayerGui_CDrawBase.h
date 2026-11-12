@@ -20,7 +20,14 @@ public:
     // out of line at 0x0064CC65 (the inline CDrawNPCName ctor calls it: `push illustrators ; push gui ; call`). Declaration only.
     CDrawBase(CPlayerGui& playerGui, std::vector<CDrawBase*>& illustrators);   // 0x0064CC65
 #endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_IMPLICIT_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, the CCountedPointer<NPlayerGui::CDraw*>::DeleteData rows 0x00443580..0x00443A60): retail
+    // expands the destruction inside each deleter with no vptr store -- only the PrimitiveHandles vector's teardown is left (every
+    // handle's virtual destructor, slot 0 flag 0, then free of the block) before operator delete: the implicit destructor, so none is
+    // declared here. Default unchanged.
+#else
     ~CDrawBase();
+#endif
     virtual void ClearPrimitives();
     virtual void ClearPrimitivesIfNecessary();
     bool IsDrawing() const { return Drawing; }

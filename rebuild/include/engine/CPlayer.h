@@ -181,6 +181,17 @@ public:
     // ...QAEXJ@Z are long-typed stand-ins, as AddMode above). Declaration only.
     void RemoveMode(EPlayerMode mode);                           // 0x00634190
 #endif
+#ifdef FABLE_RETAIL_PLAYER_FREEZECONTROLS
+    // Nested opt-in (agentFAM10, 2026-11-12): Ego_r.pdb (0x00492870 / 0x00492890 / 0x004928A0 / 0x004928C0) and FableWin.pdb
+    // (0x01ACA940 / 0x01ACAAC0 / 0x01ACAAE0 / 0x01ACAB10) ?UnfreezeControls / ?FreezeControls / ?SpecialAbilityUnfreezeControls /
+    // ?SpecialAbilityFreezeControls@CPlayer@@QAEXXZ, out of line in retail at 0x00487120 / 0x00487140 / 0x00487150 / 0x00487170
+    // (RemoveMode / AddMode of PLAYER_MODE_FREEZE_CONTROLS 17 and PLAYER_MODE_SPECIAL_ABILITY_FREEZE_CONTROLS 18). Needs
+    // FABLE_RETAIL_PLAYER_REMOVEMODE for the Unfreeze bodies. Declarations only.
+    void UnfreezeControls();                                     // 0x00487120
+    void FreezeControls();                                       // 0x00487140
+    void SpecialAbilityUnfreezeControls();                       // 0x00487150
+    void SpecialAbilityFreezeControls();                         // 0x00487170
+#endif
     // Retail opt-in (chunk 718): the three character getters, out of line in Ego_r.pdb and retail, in donor order (Ego_r
     // 0x004933F0 / 0x00493650 / 0x00493660 = retail 0x00487B70 / 0x00487DC0 / 0x00487DD0, the neighbours SetPlayerCharacter
     // 0x00493400 / SetControlledCreature 0x00493570 between them in both): ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ

@@ -12,7 +12,13 @@
 #pragma pack(push, 1)
 class CEnginePrimitiveManagerParticleLineGroup {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x00B36140 CCountedPointer<CEnginePrimitiveManagerParticleLineGroup>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CEnginePrimitiveManagerParticleLineGroup();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char VertexShadersLinePointLights[0xc];         // +0x0c CArray<CVertexShader>
@@ -27,7 +33,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleLineGroup) == 0x260);
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleLineGroup, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleLineGroup, VertexShadersLinePointLights) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleLineGroup, VertexShaderDisplacement) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleLineGroup, PixelShader) == 0x20);

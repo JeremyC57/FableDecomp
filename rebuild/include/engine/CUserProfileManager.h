@@ -20,6 +20,13 @@
 class CUserProfileManager {
 public:
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x0040D830 CCountedPointer<CUserProfileManager>::DeleteData): the class is polymorphic
+    // (RTTI vtable .?AVCUserProfileManager@@ stored by the ctor 0x0040CEC0) and vtable slot 0 is its scalar deleting destructor (the
+    // deleter's `push 1; call [eax]`). Declaration only, for a row that models no members: the VOLUME / SCOREBOARD layout opt-ins
+    // already count the vptr in their leading pad, so do not combine them with this one.
+    virtual ~CUserProfileManager();
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_UIBACKGROUND
     // Retail opt-in (Codex pass19): both PDBs and donor01885a90/native004075c0.
     void RenderUIBackground(float);

@@ -14,7 +14,13 @@ class CCharStringData;
 #pragma pack(push, 1)
 class CFontDataBank {
 public:
+#ifdef FABLE_RETAIL_CFONTDATABANK_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x009E2960 CCountedPointer<CFontDataBank>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CFontDataBank();
+#else
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x30];                        // +0x08
     unsigned char    _pad_0x38[0x4];                         // +0x38
@@ -64,7 +70,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CFontDataBank) == 0x130);
+#ifndef FABLE_RETAIL_CFONTDATABANK_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CFontDataBank, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CFontDataBank, StateBlock) == 0x110);
 FABLE_STATIC_ASSERT(offsetof(CFontDataBank, Fonts) == 0x120);
 FABLE_STATIC_ASSERT(offsetof(CFontDataBank, Filename_PStringData) == 0x12c);

@@ -371,9 +371,16 @@ public:
     typedef size_t size_type;
     typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _IsPODType;
     explicit vector(const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(a) { }
+#ifdef FABLE_RETAIL_STLP_VECTOR_FILL_OUTOFLINE
+    // Per-TU opt-in (agentFAM10, 2026-11-12, row 0x004538EB COpinionSet::COpinionSet; like FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE): that
+    // size-optimised TU calls the fill constructor's COMDAT (vector<float> 0x004516E7, `ret 0Ch`, with the value and allocator
+    // temporaries in the caller's frame) where the body below would be expanded. Declaration only.
+    vector(size_type n,const _Tp& value,const _Alloc& a=_Alloc());
+#else
     vector(size_type n,const _Tp& value,const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(n,a) {
         this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
     }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
     // Per-TU opt-in (chunk 779, row 0x00BEAE50 CWaterPatchMesh::Load; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
     // vector(size_type n) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls

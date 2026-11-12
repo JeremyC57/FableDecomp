@@ -3923,9 +3923,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004538eb'
-        Module = 'CApprenticeSpeedTest'
-        Source = '00/45/CApprenticeSpeedTest_OnPersist_004538eb.cpp'
-        TestSource = '00/45/CApprenticeSpeedTest_OnPersist_004538eb_test.cpp'
+        Module = 'COpinionSet'
+        Source = '00/45/COpinionSet_COpinionSet_004538eb.cpp'
+        TestSource = '00/45/COpinionSet_COpinionSet_004538eb_test.cpp'
         PassPattern = 'CApprenticeSpeedTest_004538eb_TEST PASS'
     }
     [pscustomobject]@{
@@ -42159,16 +42159,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00487120'
-        Module = 'CHTG_Executioner'
-        Source = '00/48/CHTGExecutioner_OnPredicateFail_00487120.cpp'
-        TestSource = '00/48/CHTGExecutioner_OnPredicateFail_00487120_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_UnfreezeControls_00487120.cpp'
+        TestSource = '00/48/CPlayer_UnfreezeControls_00487120_test.cpp'
         PassPattern = 'OK_00487120'
     }
     [pscustomobject]@{
         Address = '00487150'
-        Module = 'CHTG_Executioner'
-        Source = '00/48/CHTGExecutioner_OnPredicateFail_00487150.cpp'
-        TestSource = '00/48/CHTGExecutioner_OnPredicateFail_00487150_test.cpp'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_SpecialAbilityUnfreezeControls_00487150.cpp'
+        TestSource = '00/48/CPlayer_SpecialAbilityUnfreezeControls_00487150_test.cpp'
         PassPattern = 'OK_00487150'
     }
     [pscustomobject]@{
@@ -84498,9 +84498,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c24c0'
-        Module = '_global'
-        Source = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c24c0.cpp'
-        TestSource = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c24c0_test.cpp'
+        Module = 'CCountedPointer<const C3DMeshStats>'
+        Source = '00/4c/CCountedPointer_CCountedPointer_004c24c0.cpp'
+        TestSource = '00/4c/CCountedPointer_CCountedPointer_004c24c0_test.cpp'
         PassPattern = 'PASS_004c24c0'
     }
     [pscustomobject]@{
@@ -94818,23 +94818,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00403600'
-        Module = '_gapscan'
-        Source = '00/40/gapscan_sub00403600_00403600.cpp'
-        TestSource = '00/40/gapscan_sub00403600_00403600_test.cpp'
+        Module = 'CCountedPointer<CAProgressDisplay>'
+        Source = '00/40/CCountedPointer_DeleteData_00403600.cpp'
+        TestSource = '00/40/CCountedPointer_DeleteData_00403600_test.cpp'
         PassPattern = 'PASS_00403600'
     }
     [pscustomobject]@{
         Address = '00403630'
-        Module = '_gapscan'
-        Source = '00/40/gapscan_sub00403630_00403630.cpp'
-        TestSource = '00/40/gapscan_sub00403630_00403630_test.cpp'
+        Module = 'CCountedPointer<CFileInstaller>'
+        Source = '00/40/CCountedPointer_DeleteData_00403630.cpp'
+        TestSource = '00/40/CCountedPointer_DeleteData_00403630_test.cpp'
         PassPattern = 'PASS_00403630'
     }
     [pscustomobject]@{
         Address = '00403650'
-        Module = '_gapscan'
-        Source = '00/40/gapscan_sub00403650_00403650.cpp'
-        TestSource = '00/40/gapscan_sub00403650_00403650_test.cpp'
+        Module = 'CCountedPointer<NGameText::CDataBank>'
+        Source = '00/40/CCountedPointer_DeleteData_00403650.cpp'
+        TestSource = '00/40/CCountedPointer_DeleteData_00403650_test.cpp'
         PassPattern = 'PASS_00403650'
     }
     [pscustomobject]@{
@@ -94853,23 +94853,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040d830'
-        Module = '_gapscan'
-        Source = '00/40/gapscan_sub0040d830_0040d830.cpp'
-        TestSource = '00/40/gapscan_sub0040d830_0040d830_test.cpp'
+        Module = 'CCountedPointer<CUserProfileManager>'
+        Source = '00/40/CCountedPointer_DeleteData_0040d830.cpp'
+        TestSource = '00/40/CCountedPointer_DeleteData_0040d830_test.cpp'
         PassPattern = 'PASS_0040d830'
     }
     [pscustomobject]@{
         Address = '0040e240'
-        Module = '_gapscan'
-        Source = '00/40/gapscan_sub0040e240_0040e240.cpp'
-        TestSource = '00/40/gapscan_sub0040e240_0040e240_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/40/CPersistContext_GetDefaultVal_0040e240.cpp'
+        TestSource = '00/40/CPersistContext_GetDefaultVal_0040e240_test.cpp'
         PassPattern = 'PASS_0040e240'
     }
     [pscustomobject]@{
         Address = '0040e260'
-        Module = '_gapscan'
-        Source = '00/40/gapscan_sub0040e260_0040e260.cpp'
-        TestSource = '00/40/gapscan_sub0040e260_0040e260_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/40/CPersistContext_GetDefaultVal_0040e260.cpp'
+        TestSource = '00/40/CPersistContext_GetDefaultVal_0040e260_test.cpp'
         PassPattern = 'PASS_0040e260'
     }
     [pscustomobject]@{
@@ -94881,16 +94881,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004132f0'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub004132f0_004132f0.cpp'
-        TestSource = '00/41/gapscan_sub004132f0_004132f0_test.cpp'
+        Module = 'CCountedPointer<CConsole>'
+        Source = '00/41/CCountedPointer_DeleteData_004132f0.cpp'
+        TestSource = '00/41/CCountedPointer_DeleteData_004132f0_test.cpp'
         PassPattern = 'PASS_004132f0'
     }
     [pscustomobject]@{
         Address = '00413300'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub00413300_00413300.cpp'
-        TestSource = '00/41/gapscan_sub00413300_00413300_test.cpp'
+        Module = 'CCountedPointer<CCodeSectionManager>'
+        Source = '00/41/CCountedPointer_DeleteData_00413300.cpp'
+        TestSource = '00/41/CCountedPointer_DeleteData_00413300_test.cpp'
         PassPattern = 'PASS_00413300'
     }
     [pscustomobject]@{
@@ -94923,9 +94923,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00419091'
-        Module = '_gapscan'
-        Source = '00/41/gapscan_sub00419091_00419091.cpp'
-        TestSource = '00/41/gapscan_sub00419091_00419091_test.cpp'
+        Module = 'CCountedPointer<CPlayerGui>'
+        Source = '00/41/CCountedPointer_DeleteData_00419091.cpp'
+        TestSource = '00/41/CCountedPointer_DeleteData_00419091_test.cpp'
         PassPattern = 'PASS_00419091'
     }
     [pscustomobject]@{
@@ -95161,9 +95161,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042f8a4'
-        Module = '_gapscan'
-        Source = '00/42/gapscan_sub0042f8a4_0042f8a4.cpp'
-        TestSource = '00/42/gapscan_sub0042f8a4_0042f8a4_test.cpp'
+        Module = 'CCountedPointer<CASoundBank>'
+        Source = '00/42/CCountedPointer_DeleteData_0042f8a4.cpp'
+        TestSource = '00/42/CCountedPointer_DeleteData_0042f8a4_test.cpp'
         PassPattern = 'PASS_0042f8a4'
     }
     [pscustomobject]@{
@@ -95210,9 +95210,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004361e0'
-        Module = '_gapscan'
-        Source = '00/43/gapscan_sub004361e0_004361e0.cpp'
-        TestSource = '00/43/gapscan_sub004361e0_004361e0_test.cpp'
+        Module = 'CCountedPointer<CEngineManager>'
+        Source = '00/43/CCountedPointer_DeleteData_004361e0.cpp'
+        TestSource = '00/43/CCountedPointer_DeleteData_004361e0_test.cpp'
         PassPattern = 'PASS_004361e0'
     }
     [pscustomobject]@{
@@ -95364,9 +95364,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049bc20'
-        Module = '_gapscan'
-        Source = '00/49/gapscan_sub0049bc20_0049bc20.cpp'
-        TestSource = '00/49/gapscan_sub0049bc20_0049bc20_test.cpp'
+        Module = 'CCountedPointer<CGameJoystickManager>'
+        Source = '00/49/CCountedPointer_DeleteData_0049bc20.cpp'
+        TestSource = '00/49/CCountedPointer_DeleteData_0049bc20_test.cpp'
         PassPattern = 'PASS_0049bc20'
     }
     [pscustomobject]@{
@@ -95385,16 +95385,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004a8220'
-        Module = '_gapscan'
-        Source = '00/4a/gapscan_sub004a8220_004a8220.cpp'
-        TestSource = '00/4a/gapscan_sub004a8220_004a8220_test.cpp'
+        Module = 'CCountedPointer<CQuestManager>'
+        Source = '00/4a/CCountedPointer_DeleteData_004a8220.cpp'
+        TestSource = '00/4a/CCountedPointer_DeleteData_004a8220_test.cpp'
         PassPattern = 'PASS_004a8220'
     }
     [pscustomobject]@{
         Address = '004a8260'
-        Module = '_gapscan'
-        Source = '00/4a/gapscan_sub004a8260_004a8260.cpp'
-        TestSource = '00/4a/gapscan_sub004a8260_004a8260_test.cpp'
+        Module = 'CCountedPointer<CSkeletalMorphResourceManager>'
+        Source = '00/4a/CCountedPointer_DeleteData_004a8260.cpp'
+        TestSource = '00/4a/CCountedPointer_DeleteData_004a8260_test.cpp'
         PassPattern = 'PASS_004a8260'
     }
     [pscustomobject]@{
@@ -95420,9 +95420,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b6ad0'
-        Module = '_gapscan'
-        Source = '00/4b/gapscan_sub004b6ad0_004b6ad0.cpp'
-        TestSource = '00/4b/gapscan_sub004b6ad0_004b6ad0_test.cpp'
+        Module = 'CCountedPointer<CScriptBase>'
+        Source = '00/4b/CCountedPointer_DeleteData_004b6ad0.cpp'
+        TestSource = '00/4b/CCountedPointer_DeleteData_004b6ad0_test.cpp'
         PassPattern = 'PASS_004b6ad0'
     }
     [pscustomobject]@{
@@ -96554,9 +96554,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050bcc0'
-        Module = '_gapscan'
-        Source = '00/50/gapscan_sub0050bcc0_0050bcc0.cpp'
-        TestSource = '00/50/gapscan_sub0050bcc0_0050bcc0_test.cpp'
+        Module = 'CCountedPointer<CWADBank>'
+        Source = '00/50/CCountedPointer_DeleteData_0050bcc0.cpp'
+        TestSource = '00/50/CCountedPointer_DeleteData_0050bcc0_test.cpp'
         PassPattern = 'PASS_0050bcc0'
     }
     [pscustomobject]@{
@@ -96568,16 +96568,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050c210'
-        Module = '_gapscan'
-        Source = '00/50/gapscan_sub0050c210_0050c210.cpp'
-        TestSource = '00/50/gapscan_sub0050c210_0050c210_test.cpp'
+        Module = 'CCountedPointer<CMap>'
+        Source = '00/50/CCountedPointer_DeleteData_0050c210.cpp'
+        TestSource = '00/50/CCountedPointer_DeleteData_0050c210_test.cpp'
         PassPattern = 'PASS_0050c210'
     }
     [pscustomobject]@{
         Address = '0050c2e0'
-        Module = '_gapscan'
-        Source = '00/50/gapscan_sub0050c2e0_0050c2e0.cpp'
-        TestSource = '00/50/gapscan_sub0050c2e0_0050c2e0_test.cpp'
+        Module = 'CCountedPointer<CLevelLoader>'
+        Source = '00/50/CCountedPointer_DeleteData_0050c2e0.cpp'
+        TestSource = '00/50/CCountedPointer_DeleteData_0050c2e0_test.cpp'
         PassPattern = 'PASS_0050c2e0'
     }
     [pscustomobject]@{
@@ -97667,9 +97667,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0056c0f0'
-        Module = '_gapscan'
-        Source = '00/56/gapscan_sub0056c0f0_0056c0f0.cpp'
-        TestSource = '00/56/gapscan_sub0056c0f0_0056c0f0_test.cpp'
+        Module = 'CCountedPointer<NCameraModes::CBase>'
+        Source = '00/56/CCountedPointer_DeleteData_0056c0f0.cpp'
+        TestSource = '00/56/CCountedPointer_DeleteData_0056c0f0_test.cpp'
         PassPattern = 'PASS_0056c0f0'
     }
     [pscustomobject]@{
@@ -98199,9 +98199,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ecf50'
-        Module = '_gapscan'
-        Source = '00/5e/gapscan_sub005ecf50_005ecf50.cpp'
-        TestSource = '00/5e/gapscan_sub005ecf50_005ecf50_test.cpp'
+        Module = 'CCountedPointer<NCameraModes::CScriptModuleBase>'
+        Source = '00/5e/CCountedPointer_DeleteData_005ecf50.cpp'
+        TestSource = '00/5e/CCountedPointer_DeleteData_005ecf50_test.cpp'
         PassPattern = 'PASS_005ecf50'
     }
     [pscustomobject]@{
@@ -98563,16 +98563,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065d258'
-        Module = '_gapscan'
-        Source = '00/65/gapscan_sub0065d258_0065d258.cpp'
-        TestSource = '00/65/gapscan_sub0065d258_0065d258_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskPatrol>'
+        Source = '00/65/CCountedPointer_DeleteData_0065d258.cpp'
+        TestSource = '00/65/CCountedPointer_DeleteData_0065d258_test.cpp'
         PassPattern = 'PASS_0065d258'
     }
     [pscustomobject]@{
         Address = '0065d2b1'
-        Module = '_gapscan'
-        Source = '00/65/gapscan_sub0065d2b1_0065d2b1.cpp'
-        TestSource = '00/65/gapscan_sub0065d2b1_0065d2b1_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskSecuritySweep>'
+        Source = '00/65/CCountedPointer_DeleteData_0065d2b1.cpp'
+        TestSource = '00/65/CCountedPointer_DeleteData_0065d2b1_test.cpp'
         PassPattern = 'PASS_0065d2b1'
     }
     [pscustomobject]@{
@@ -98647,9 +98647,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00672aa0'
-        Module = '_gapscan'
-        Source = '00/67/gapscan_sub00672aa0_00672aa0.cpp'
-        TestSource = '00/67/gapscan_sub00672aa0_00672aa0_test.cpp'
+        Module = 'CCountedPointer<CCreatureStatsDef>'
+        Source = '00/67/CCountedPointer_DeleteData_00672aa0.cpp'
+        TestSource = '00/67/CCountedPointer_DeleteData_00672aa0_test.cpp'
         PassPattern = 'PASS_00672aa0'
     }
     [pscustomobject]@{
@@ -99900,9 +99900,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007180b0'
-        Module = '_gapscan'
-        Source = '00/71/gapscan_sub007180b0_007180b0.cpp'
-        TestSource = '00/71/gapscan_sub007180b0_007180b0_test.cpp'
+        Module = 'CCountedPointer<CTCCreatureModeManager::CModeBase>'
+        Source = '00/71/CCountedPointer_DeleteData_007180b0.cpp'
+        TestSource = '00/71/CCountedPointer_DeleteData_007180b0_test.cpp'
         PassPattern = 'PASS_007180b0'
     }
     [pscustomobject]@{
@@ -101846,9 +101846,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00763a10'
-        Module = '_gapscan'
-        Source = '00/76/gapscan_sub00763a10_00763a10.cpp'
-        TestSource = '00/76/gapscan_sub00763a10_00763a10_test.cpp'
+        Module = 'CCountedPointer<NShape::CShape>'
+        Source = '00/76/CCountedPointer_DeleteData_00763a10.cpp'
+        TestSource = '00/76/CCountedPointer_DeleteData_00763a10_test.cpp'
         PassPattern = 'PASS_00763a10'
     }
     [pscustomobject]@{
@@ -102413,9 +102413,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00786a20'
-        Module = '_gapscan'
-        Source = '00/78/gapscan_sub00786a20_00786a20.cpp'
-        TestSource = '00/78/gapscan_sub00786a20_00786a20_test.cpp'
+        Module = 'CCountedPointer<C3DSkeletalMorph>'
+        Source = '00/78/CCountedPointer_DeleteData_00786a20.cpp'
+        TestSource = '00/78/CCountedPointer_DeleteData_00786a20_test.cpp'
         PassPattern = 'PASS_00786a20'
     }
     [pscustomobject]@{
@@ -103974,9 +103974,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00834a10'
-        Module = '_gapscan'
-        Source = '00/83/gapscan_sub00834a10_00834a10.cpp'
-        TestSource = '00/83/gapscan_sub00834a10_00834a10_test.cpp'
+        Module = 'CCountedPointer<CAIBrain>'
+        Source = '00/83/CCountedPointer_DeleteData_00834a10.cpp'
+        TestSource = '00/83/CCountedPointer_DeleteData_00834a10_test.cpp'
         PassPattern = 'PASS_00834a10'
     }
     [pscustomobject]@{
@@ -104226,9 +104226,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085a5a0'
-        Module = '_gapscan'
-        Source = '00/85/gapscan_sub0085a5a0_0085a5a0.cpp'
-        TestSource = '00/85/gapscan_sub0085a5a0_0085a5a0_test.cpp'
+        Module = 'CCountedPointer<CCombatActionBase>'
+        Source = '00/85/CCountedPointer_DeleteData_0085a5a0.cpp'
+        TestSource = '00/85/CCountedPointer_DeleteData_0085a5a0_test.cpp'
         PassPattern = 'PASS_0085a5a0'
     }
     [pscustomobject]@{
@@ -104520,16 +104520,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008aa7e0'
-        Module = '_gapscan'
-        Source = '00/8a/gapscan_sub008aa7e0_008aa7e0.cpp'
-        TestSource = '00/8a/gapscan_sub008aa7e0_008aa7e0_test.cpp'
+        Module = 'CCountedPointer<CScriptGameResourceObjectScriptedThingBase>'
+        Source = '00/8a/CCountedPointer_DeleteData_008aa7e0.cpp'
+        TestSource = '00/8a/CCountedPointer_DeleteData_008aa7e0_test.cpp'
         PassPattern = 'PASS_008aa7e0'
     }
     [pscustomobject]@{
         Address = '008aa7f0'
-        Module = '_gapscan'
-        Source = '00/8a/gapscan_sub008aa7f0_008aa7f0.cpp'
-        TestSource = '00/8a/gapscan_sub008aa7f0_008aa7f0_test.cpp'
+        Module = 'CCountedPointer<CScriptGameResourceObjectMovieBase>'
+        Source = '00/8a/CCountedPointer_DeleteData_008aa7f0.cpp'
+        TestSource = '00/8a/CCountedPointer_DeleteData_008aa7f0_test.cpp'
         PassPattern = 'PASS_008aa7f0'
     }
     [pscustomobject]@{
@@ -105101,9 +105101,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00991e00'
-        Module = '_gapscan'
-        Source = '00/99/gapscan_sub00991e00_00991e00.cpp'
-        TestSource = '00/99/gapscan_sub00991e00_00991e00_test.cpp'
+        Module = 'CCountedPointer<CResourceBank>'
+        Source = '00/99/CCountedPointer_DeleteData_00991e00.cpp'
+        TestSource = '00/99/CCountedPointer_DeleteData_00991e00_test.cpp'
         PassPattern = 'PASS_00991e00'
     }
     [pscustomobject]@{
@@ -105150,30 +105150,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a6ba0'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a6ba0_009a6ba0.cpp'
-        TestSource = '00/9a/gapscan_sub009a6ba0_009a6ba0_test.cpp'
+        Module = 'CCountedPointer<CDisplayManager>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a6ba0.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a6ba0_test.cpp'
         PassPattern = 'PASS_009a6ba0'
     }
     [pscustomobject]@{
         Address = '009a6bd0'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a6bd0_009a6bd0.cpp'
-        TestSource = '00/9a/gapscan_sub009a6bd0_009a6bd0_test.cpp'
+        Module = 'CCountedPointer<CInputManager>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a6bd0.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a6bd0_test.cpp'
         PassPattern = 'PASS_009a6bd0'
     }
     [pscustomobject]@{
         Address = '009a6be0'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a6be0_009a6be0.cpp'
-        TestSource = '00/9a/gapscan_sub009a6be0_009a6be0_test.cpp'
+        Module = 'CCountedPointer<CGraphicBankManager>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a6be0.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a6be0_test.cpp'
         PassPattern = 'PASS_009a6be0'
     }
     [pscustomobject]@{
         Address = '009a6bf0'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a6bf0_009a6bf0.cpp'
-        TestSource = '00/9a/gapscan_sub009a6bf0_009a6bf0_test.cpp'
+        Module = 'CCountedPointer<CMeshBankManager>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a6bf0.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a6bf0_test.cpp'
         PassPattern = 'PASS_009a6bf0'
     }
     [pscustomobject]@{
@@ -105185,37 +105185,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a6c10'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a6c10_009a6c10.cpp'
-        TestSource = '00/9a/gapscan_sub009a6c10_009a6c10_test.cpp'
+        Module = 'CCountedPointer<CFontManager>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a6c10.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a6c10_test.cpp'
         PassPattern = 'PASS_009a6c10'
     }
     [pscustomobject]@{
         Address = '009a6c20'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a6c20_009a6c20.cpp'
-        TestSource = '00/9a/gapscan_sub009a6c20_009a6c20_test.cpp'
+        Module = 'CCountedPointer<CDriveManager>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a6c20.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a6c20_test.cpp'
         PassPattern = 'PASS_009a6c20'
     }
     [pscustomobject]@{
         Address = '009a9030'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a9030_009a9030.cpp'
-        TestSource = '00/9a/gapscan_sub009a9030_009a9030_test.cpp'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a9030.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a9030_test.cpp'
         PassPattern = 'PASS_009a9030'
     }
     [pscustomobject]@{
         Address = '009a9040'
-        Module = '_gapscan'
-        Source = '00/9a/gapscan_sub009a9040_009a9040.cpp'
-        TestSource = '00/9a/gapscan_sub009a9040_009a9040_test.cpp'
+        Module = 'CCountedPointer<CThreadedFile>'
+        Source = '00/9a/CCountedPointer_DeleteData_009a9040.cpp'
+        TestSource = '00/9a/CCountedPointer_DeleteData_009a9040_test.cpp'
         PassPattern = 'PASS_009a9040'
     }
     [pscustomobject]@{
         Address = '009b0e90'
-        Module = '_gapscan'
-        Source = '00/9b/gapscan_sub009b0e90_009b0e90.cpp'
-        TestSource = '00/9b/gapscan_sub009b0e90_009b0e90_test.cpp'
+        Module = 'CCountedPointer<CSymbolMap>'
+        Source = '00/9b/CCountedPointer_DeleteData_009b0e90.cpp'
+        TestSource = '00/9b/CCountedPointer_DeleteData_009b0e90_test.cpp'
         PassPattern = 'PASS_009b0e90'
     }
     [pscustomobject]@{
@@ -105248,16 +105248,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e2960'
-        Module = '_gapscan'
-        Source = '00/9e/gapscan_sub009e2960_009e2960.cpp'
-        TestSource = '00/9e/gapscan_sub009e2960_009e2960_test.cpp'
+        Module = 'CCountedPointer<CFontDataBank>'
+        Source = '00/9e/CCountedPointer_DeleteData_009e2960.cpp'
+        TestSource = '00/9e/CCountedPointer_DeleteData_009e2960_test.cpp'
         PassPattern = 'PASS_009e2960'
     }
     [pscustomobject]@{
         Address = '009e2970'
-        Module = '_gapscan'
-        Source = '00/9e/gapscan_sub009e2970_009e2970.cpp'
-        TestSource = '00/9e/gapscan_sub009e2970_009e2970_test.cpp'
+        Module = 'CCountedPointer<CStreamingFontDataBank>'
+        Source = '00/9e/CCountedPointer_DeleteData_009e2970.cpp'
+        TestSource = '00/9e/CCountedPointer_DeleteData_009e2970_test.cpp'
         PassPattern = 'PASS_009e2970'
     }
     [pscustomobject]@{
@@ -105269,16 +105269,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ffd20'
-        Module = '_gapscan'
-        Source = '00/9f/gapscan_sub009ffd20_009ffd20.cpp'
-        TestSource = '00/9f/gapscan_sub009ffd20_009ffd20_test.cpp'
+        Module = 'CCountedPointer<CTextureManager>'
+        Source = '00/9f/CCountedPointer_DeleteData_009ffd20.cpp'
+        TestSource = '00/9f/CCountedPointer_DeleteData_009ffd20_test.cpp'
         PassPattern = 'PASS_009ffd20'
     }
     [pscustomobject]@{
         Address = '00a018d0'
-        Module = '_gapscan'
-        Source = '00/a0/gapscan_sub00a018d0_00a018d0.cpp'
-        TestSource = '00/a0/gapscan_sub00a018d0_00a018d0_test.cpp'
+        Module = 'CCountedPointer<CCRCSymbolMap>'
+        Source = '00/a0/CCountedPointer_DeleteData_00a018d0.cpp'
+        TestSource = '00/a0/CCountedPointer_DeleteData_00a018d0_test.cpp'
         PassPattern = 'PASS_00a018d0'
     }
     [pscustomobject]@{
@@ -105346,16 +105346,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a16270'
-        Module = '_gapscan'
-        Source = '00/a1/gapscan_sub00a16270_00a16270.cpp'
-        TestSource = '00/a1/gapscan_sub00a16270_00a16270_test.cpp'
+        Module = 'CCountedPointer<CNavQuadTree>'
+        Source = '00/a1/CCountedPointer_DeleteData_00a16270.cpp'
+        TestSource = '00/a1/CCountedPointer_DeleteData_00a16270_test.cpp'
         PassPattern = 'PASS_00a16270'
     }
     [pscustomobject]@{
         Address = '00a281b0'
-        Module = '_gapscan'
-        Source = '00/a2/gapscan_sub00a281b0_00a281b0.cpp'
-        TestSource = '00/a2/gapscan_sub00a281b0_00a281b0_test.cpp'
+        Module = 'CCountedPointer<C3DAnimationManager>'
+        Source = '00/a2/CCountedPointer_DeleteData_00a281b0.cpp'
+        TestSource = '00/a2/CCountedPointer_DeleteData_00a281b0_test.cpp'
         PassPattern = 'PASS_00a281b0'
     }
     [pscustomobject]@{
@@ -105367,9 +105367,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a282f0'
-        Module = '_gapscan'
-        Source = '00/a2/gapscan_sub00a282f0_00a282f0.cpp'
-        TestSource = '00/a2/gapscan_sub00a282f0_00a282f0_test.cpp'
+        Module = 'CCountedPointer<C3DAnimation2>'
+        Source = '00/a2/CCountedPointer_DeleteData_00a282f0.cpp'
+        TestSource = '00/a2/CCountedPointer_DeleteData_00a282f0_test.cpp'
         PassPattern = 'PASS_00a282f0'
     }
     [pscustomobject]@{
@@ -105381,16 +105381,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a28510'
-        Module = '_gapscan'
-        Source = '00/a2/gapscan_sub00a28510_00a28510.cpp'
-        TestSource = '00/a2/gapscan_sub00a28510_00a28510_test.cpp'
+        Module = 'CCountedPointer<C3DQuadricBasedMeshOptimiser>'
+        Source = '00/a2/CCountedPointer_DeleteData_00a28510.cpp'
+        TestSource = '00/a2/CCountedPointer_DeleteData_00a28510_test.cpp'
         PassPattern = 'PASS_00a28510'
     }
     [pscustomobject]@{
         Address = '00a28520'
-        Module = '_gapscan'
-        Source = '00/a2/gapscan_sub00a28520_00a28520.cpp'
-        TestSource = '00/a2/gapscan_sub00a28520_00a28520_test.cpp'
+        Module = 'CCountedPointer<C3DMeshStripifier>'
+        Source = '00/a2/CCountedPointer_DeleteData_00a28520.cpp'
+        TestSource = '00/a2/CCountedPointer_DeleteData_00a28520_test.cpp'
         PassPattern = 'PASS_00a28520'
     }
     [pscustomobject]@{
@@ -105423,16 +105423,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a51180'
-        Module = '_gapscan'
-        Source = '00/a5/gapscan_sub00a51180_00a51180.cpp'
-        TestSource = '00/a5/gapscan_sub00a51180_00a51180_test.cpp'
+        Module = 'CCountedPointer<CSimpleMemoryPool>'
+        Source = '00/a5/CCountedPointer_DeleteData_00a51180.cpp'
+        TestSource = '00/a5/CCountedPointer_DeleteData_00a51180_test.cpp'
         PassPattern = 'PASS_00a51180'
     }
     [pscustomobject]@{
         Address = '00a6acb0'
-        Module = '_gapscan'
-        Source = '00/a6/gapscan_sub00a6acb0_00a6acb0.cpp'
-        TestSource = '00/a6/gapscan_sub00a6acb0_00a6acb0_test.cpp'
+        Module = 'CCountedPointer<CVolumeTexture>'
+        Source = '00/a6/CCountedPointer_DeleteData_00a6acb0.cpp'
+        TestSource = '00/a6/CCountedPointer_DeleteData_00a6acb0_test.cpp'
         PassPattern = 'PASS_00a6acb0'
     }
     [pscustomobject]@{
@@ -105465,16 +105465,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ab5df0'
-        Module = '_gapscan'
-        Source = '00/ab/gapscan_sub00ab5df0_00ab5df0.cpp'
-        TestSource = '00/ab/gapscan_sub00ab5df0_00ab5df0_test.cpp'
+        Module = 'CCountedPointer<CSurface>'
+        Source = '00/ab/CCountedPointer_DeleteData_00ab5df0.cpp'
+        TestSource = '00/ab/CCountedPointer_DeleteData_00ab5df0_test.cpp'
         PassPattern = 'PASS_00ab5df0'
     }
     [pscustomobject]@{
         Address = '00ac3fd0'
-        Module = '_gapscan'
-        Source = '00/ac/gapscan_sub00ac3fd0_00ac3fd0.cpp'
-        TestSource = '00/ac/gapscan_sub00ac3fd0_00ac3fd0_test.cpp'
+        Module = 'CCountedPointer<CParticleProgram>'
+        Source = '00/ac/CCountedPointer_DeleteData_00ac3fd0.cpp'
+        TestSource = '00/ac/CCountedPointer_DeleteData_00ac3fd0_test.cpp'
         PassPattern = 'PASS_00ac3fd0'
     }
     [pscustomobject]@{
@@ -105493,9 +105493,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ae91c0'
-        Module = '_gapscan'
-        Source = '00/ae/gapscan_sub00ae91c0_00ae91c0.cpp'
-        TestSource = '00/ae/gapscan_sub00ae91c0_00ae91c0_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CParticleDataBank>'
+        Source = '00/ae/CCountedPointer_DeleteData_00ae91c0.cpp'
+        TestSource = '00/ae/CCountedPointer_DeleteData_00ae91c0_test.cpp'
         PassPattern = 'PASS_00ae91c0'
     }
     [pscustomobject]@{
@@ -105850,170 +105850,170 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b2de20'
-        Module = '_gapscan'
-        Source = '00/b2/gapscan_sub00b2de20_00b2de20.cpp'
-        TestSource = '00/b2/gapscan_sub00b2de20_00b2de20_test.cpp'
+        Module = 'CCountedPointer<CCompositeSurfaceCache>'
+        Source = '00/b2/CCountedPointer_DeleteData_00b2de20.cpp'
+        TestSource = '00/b2/CCountedPointer_DeleteData_00b2de20_test.cpp'
         PassPattern = 'PASS_00b2de20'
     }
     [pscustomobject]@{
         Address = '00b36060'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36060_00b36060.cpp'
-        TestSource = '00/b3/gapscan_sub00b36060_00b36060_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerStaticMeshes>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36060.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36060_test.cpp'
         PassPattern = 'PASS_00b36060'
     }
     [pscustomobject]@{
         Address = '00b36070'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36070_00b36070.cpp'
-        TestSource = '00/b3/gapscan_sub00b36070_00b36070_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36070.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36070_test.cpp'
         PassPattern = 'PASS_00b36070'
     }
     [pscustomobject]@{
         Address = '00b36080'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36080_00b36080.cpp'
-        TestSource = '00/b3/gapscan_sub00b36080_00b36080_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36080.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36080_test.cpp'
         PassPattern = 'PASS_00b36080'
     }
     [pscustomobject]@{
         Address = '00b36090'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36090_00b36090.cpp'
-        TestSource = '00/b3/gapscan_sub00b36090_00b36090_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36090.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36090_test.cpp'
         PassPattern = 'PASS_00b36090'
     }
     [pscustomobject]@{
         Address = '00b360a0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b360a0_00b360a0.cpp'
-        TestSource = '00/b3/gapscan_sub00b360a0_00b360a0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerSprites>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b360a0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b360a0_test.cpp'
         PassPattern = 'PASS_00b360a0'
     }
     [pscustomobject]@{
         Address = '00b360b0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b360b0_00b360b0.cpp'
-        TestSource = '00/b3/gapscan_sub00b360b0_00b360b0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerFlareSprites>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b360b0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b360b0_test.cpp'
         PassPattern = 'PASS_00b360b0'
     }
     [pscustomobject]@{
         Address = '00b360c0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b360c0_00b360c0.cpp'
-        TestSource = '00/b3/gapscan_sub00b360c0_00b360c0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerWeaponTrails>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b360c0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b360c0_test.cpp'
         PassPattern = 'PASS_00b360c0'
     }
     [pscustomobject]@{
         Address = '00b360d0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b360d0_00b360d0.cpp'
-        TestSource = '00/b3/gapscan_sub00b360d0_00b360d0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerSpriteTrails>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b360d0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b360d0_test.cpp'
         PassPattern = 'PASS_00b360d0'
     }
     [pscustomobject]@{
         Address = '00b360e0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b360e0_00b360e0.cpp'
-        TestSource = '00/b3/gapscan_sub00b360e0_00b360e0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerLines>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b360e0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b360e0_test.cpp'
         PassPattern = 'PASS_00b360e0'
     }
     [pscustomobject]@{
         Address = '00b360f0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b360f0_00b360f0.cpp'
-        TestSource = '00/b3/gapscan_sub00b360f0_00b360f0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerText>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b360f0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b360f0_test.cpp'
         PassPattern = 'PASS_00b360f0'
     }
     [pscustomobject]@{
         Address = '00b36100'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36100_00b36100.cpp'
-        TestSource = '00/b3/gapscan_sub00b36100_00b36100_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveOcclusionGroupManager>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36100.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36100_test.cpp'
         PassPattern = 'PASS_00b36100'
     }
     [pscustomobject]@{
         Address = '00b36110'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36110_00b36110.cpp'
-        TestSource = '00/b3/gapscan_sub00b36110_00b36110_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveGroupManager>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36110.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36110_test.cpp'
         PassPattern = 'PASS_00b36110'
     }
     [pscustomobject]@{
         Address = '00b36120'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36120_00b36120.cpp'
-        TestSource = '00/b3/gapscan_sub00b36120_00b36120_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveChangerManager>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36120.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36120_test.cpp'
         PassPattern = 'PASS_00b36120'
     }
     [pscustomobject]@{
         Address = '00b36130'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36130_00b36130.cpp'
-        TestSource = '00/b3/gapscan_sub00b36130_00b36130_test.cpp'
+        Module = 'CCountedPointer<CEngineClothRenderer>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36130.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36130_test.cpp'
         PassPattern = 'PASS_00b36130'
     }
     [pscustomobject]@{
         Address = '00b36140'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36140_00b36140.cpp'
-        TestSource = '00/b3/gapscan_sub00b36140_00b36140_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerParticleLineGroup>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36140.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36140_test.cpp'
         PassPattern = 'PASS_00b36140'
     }
     [pscustomobject]@{
         Address = '00b36150'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36150_00b36150.cpp'
-        TestSource = '00/b3/gapscan_sub00b36150_00b36150_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerParticleMeshGroup>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36150.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36150_test.cpp'
         PassPattern = 'PASS_00b36150'
     }
     [pscustomobject]@{
         Address = '00b36160'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36160_00b36160.cpp'
-        TestSource = '00/b3/gapscan_sub00b36160_00b36160_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerParticleSpriteGroup>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36160.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36160_test.cpp'
         PassPattern = 'PASS_00b36160'
     }
     [pscustomobject]@{
         Address = '00b36170'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36170_00b36170.cpp'
-        TestSource = '00/b3/gapscan_sub00b36170_00b36170_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerParticleSpriteTrailGroup>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36170.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36170_test.cpp'
         PassPattern = 'PASS_00b36170'
     }
     [pscustomobject]@{
         Address = '00b36180'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36180_00b36180.cpp'
-        TestSource = '00/b3/gapscan_sub00b36180_00b36180_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerParticleGroup>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36180.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36180_test.cpp'
         PassPattern = 'PASS_00b36180'
     }
     [pscustomobject]@{
         Address = '00b36190'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b36190_00b36190.cpp'
-        TestSource = '00/b3/gapscan_sub00b36190_00b36190_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerDecal>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b36190.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b36190_test.cpp'
         PassPattern = 'PASS_00b36190'
     }
     [pscustomobject]@{
         Address = '00b361a0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b361a0_00b361a0.cpp'
-        TestSource = '00/b3/gapscan_sub00b361a0_00b361a0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b361a0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b361a0_test.cpp'
         PassPattern = 'PASS_00b361a0'
     }
     [pscustomobject]@{
         Address = '00b361b0'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b361b0_00b361b0.cpp'
-        TestSource = '00/b3/gapscan_sub00b361b0_00b361b0_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManagerWeatherMask>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b361b0.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b361b0_test.cpp'
         PassPattern = 'PASS_00b361b0'
     }
     [pscustomobject]@{
         Address = '00b3e070'
-        Module = '_gapscan'
-        Source = '00/b3/gapscan_sub00b3e070_00b3e070.cpp'
-        TestSource = '00/b3/gapscan_sub00b3e070_00b3e070_test.cpp'
+        Module = 'CCountedPointer<CMovableResourceMemoryPool>'
+        Source = '00/b3/CCountedPointer_DeleteData_00b3e070.cpp'
+        TestSource = '00/b3/CCountedPointer_DeleteData_00b3e070_test.cpp'
         PassPattern = 'PASS_00b3e070'
     }
     [pscustomobject]@{
@@ -106025,37 +106025,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b4b020'
-        Module = '_gapscan'
-        Source = '00/b4/gapscan_sub00b4b020_00b4b020.cpp'
-        TestSource = '00/b4/gapscan_sub00b4b020_00b4b020_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>'
+        Source = '00/b4/CCountedPointer_DeleteData_00b4b020.cpp'
+        TestSource = '00/b4/CCountedPointer_DeleteData_00b4b020_test.cpp'
         PassPattern = 'PASS_00b4b020'
     }
     [pscustomobject]@{
         Address = '00b4b030'
-        Module = '_gapscan'
-        Source = '00/b4/gapscan_sub00b4b030_00b4b030.cpp'
-        TestSource = '00/b4/gapscan_sub00b4b030_00b4b030_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>'
+        Source = '00/b4/CCountedPointer_DeleteData_00b4b030.cpp'
+        TestSource = '00/b4/CCountedPointer_DeleteData_00b4b030_test.cpp'
         PassPattern = 'PASS_00b4b030'
     }
     [pscustomobject]@{
         Address = '00b4b040'
-        Module = '_gapscan'
-        Source = '00/b4/gapscan_sub00b4b040_00b4b040.cpp'
-        TestSource = '00/b4/gapscan_sub00b4b040_00b4b040_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManager2DSprites>'
+        Source = '00/b4/CCountedPointer_DeleteData_00b4b040.cpp'
+        TestSource = '00/b4/CCountedPointer_DeleteData_00b4b040_test.cpp'
         PassPattern = 'PASS_00b4b040'
     }
     [pscustomobject]@{
         Address = '00b4b050'
-        Module = '_gapscan'
-        Source = '00/b4/gapscan_sub00b4b050_00b4b050.cpp'
-        TestSource = '00/b4/gapscan_sub00b4b050_00b4b050_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitive2DViewportManager>'
+        Source = '00/b4/CCountedPointer_DeleteData_00b4b050.cpp'
+        TestSource = '00/b4/CCountedPointer_DeleteData_00b4b050_test.cpp'
         PassPattern = 'PASS_00b4b050'
     }
     [pscustomobject]@{
         Address = '00b4b060'
-        Module = '_gapscan'
-        Source = '00/b4/gapscan_sub00b4b060_00b4b060.cpp'
-        TestSource = '00/b4/gapscan_sub00b4b060_00b4b060_test.cpp'
+        Module = 'CCountedPointer<CEnginePrimitiveManager2DParticleGroup>'
+        Source = '00/b4/CCountedPointer_DeleteData_00b4b060.cpp'
+        TestSource = '00/b4/CCountedPointer_DeleteData_00b4b060_test.cpp'
         PassPattern = 'PASS_00b4b060'
     }
     [pscustomobject]@{
@@ -106081,9 +106081,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b825d0'
-        Module = '_gapscan'
-        Source = '00/b8/gapscan_sub00b825d0_00b825d0.cpp'
-        TestSource = '00/b8/gapscan_sub00b825d0_00b825d0_test.cpp'
+        Module = 'CCountedPointer<CParticleSimulation>'
+        Source = '00/b8/CCountedPointer_DeleteData_00b825d0.cpp'
+        TestSource = '00/b8/CCountedPointer_DeleteData_00b825d0_test.cpp'
         PassPattern = 'PASS_00b825d0'
     }
     [pscustomobject]@{
@@ -106095,16 +106095,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b95000'
-        Module = '_gapscan'
-        Source = '00/b9/gapscan_sub00b95000_00b95000.cpp'
-        TestSource = '00/b9/gapscan_sub00b95000_00b95000_test.cpp'
+        Module = 'CCountedPointer<CEngineSceneMap>'
+        Source = '00/b9/CCountedPointer_DeleteData_00b95000.cpp'
+        TestSource = '00/b9/CCountedPointer_DeleteData_00b95000_test.cpp'
         PassPattern = 'PASS_00b95000'
     }
     [pscustomobject]@{
         Address = '00bb6330'
-        Module = '_gapscan'
-        Source = '00/bb/gapscan_sub00bb6330_00bb6330.cpp'
-        TestSource = '00/bb/gapscan_sub00bb6330_00bb6330_test.cpp'
+        Module = 'CCountedPointer<CParticleSimulationRenderData>'
+        Source = '00/bb/CCountedPointer_DeleteData_00bb6330.cpp'
+        TestSource = '00/bb/CCountedPointer_DeleteData_00bb6330_test.cpp'
         PassPattern = 'PASS_00bb6330'
     }
     [pscustomobject]@{
@@ -125269,86 +125269,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00443580'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443580_00443580.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443580_00443580_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawSpiritsHealth>'
+        Source = '00/44/CCountedPointer_DeleteData_00443580.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443580_test.cpp'
         PassPattern = 'POLYCLEAN_00443580_PASS'
     }
     [pscustomobject]@{
         Address = '004435c0'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup004435c0_004435c0.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup004435c0_004435c0_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawScreenFade>'
+        Source = '00/44/CCountedPointer_DeleteData_004435c0.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_004435c0_test.cpp'
         PassPattern = 'POLYCLEAN_004435c0_PASS'
     }
     [pscustomobject]@{
         Address = '00443600'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443600_00443600.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443600_00443600_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawMoney>'
+        Source = '00/44/CCountedPointer_DeleteData_00443600.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443600_test.cpp'
         PassPattern = 'POLYCLEAN_00443600_PASS'
     }
     [pscustomobject]@{
         Address = '00443640'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443640_00443640.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443640_00443640_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawRenown>'
+        Source = '00/44/CCountedPointer_DeleteData_00443640.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443640_test.cpp'
         PassPattern = 'POLYCLEAN_00443640_PASS'
     }
     [pscustomobject]@{
         Address = '00443680'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443680_00443680.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443680_00443680_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawMorality>'
+        Source = '00/44/CCountedPointer_DeleteData_00443680.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443680_test.cpp'
         PassPattern = 'POLYCLEAN_00443680_PASS'
     }
     [pscustomobject]@{
         Address = '004436c0'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup004436c0_004436c0.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup004436c0_004436c0_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawExperience>'
+        Source = '00/44/CCountedPointer_DeleteData_004436c0.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_004436c0_test.cpp'
         PassPattern = 'POLYCLEAN_004436c0_PASS'
     }
     [pscustomobject]@{
         Address = '00443700'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443700_00443700.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443700_00443700_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawCrime>'
+        Source = '00/44/CCountedPointer_DeleteData_00443700.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443700_test.cpp'
         PassPattern = 'POLYCLEAN_00443700_PASS'
     }
     [pscustomobject]@{
         Address = '00443740'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443740_00443740.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443740_00443740_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawReceivedItems>'
+        Source = '00/44/CCountedPointer_DeleteData_00443740.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443740_test.cpp'
         PassPattern = 'POLYCLEAN_00443740_PASS'
     }
     [pscustomobject]@{
         Address = '00443780'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443780_00443780.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443780_00443780_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawFishingGame>'
+        Source = '00/44/CCountedPointer_DeleteData_00443780.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443780_test.cpp'
         PassPattern = 'POLYCLEAN_00443780_PASS'
     }
     [pscustomobject]@{
         Address = '004438f0'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup004438f0_004438f0.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup004438f0_004438f0_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawTargetInfo>'
+        Source = '00/44/CCountedPointer_DeleteData_004438f0.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_004438f0_test.cpp'
         PassPattern = 'POLYCLEAN_004438f0_PASS'
     }
     [pscustomobject]@{
         Address = '00443a20'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443a20_00443a20.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443a20_00443a20_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawBettingHUD>'
+        Source = '00/44/CCountedPointer_DeleteData_00443a20.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443a20_test.cpp'
         PassPattern = 'POLYCLEAN_00443a20_PASS'
     }
     [pscustomobject]@{
         Address = '00443a60'
-        Module = '_gapscan'
-        Source = '00/44/gapscan_PolymorphicRangeCleanup00443a60_00443a60.cpp'
-        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443a60_00443a60_test.cpp'
+        Module = 'CCountedPointer<NPlayerGui::CDrawProjectileTargetingCentre>'
+        Source = '00/44/CCountedPointer_DeleteData_00443a60.cpp'
+        TestSource = '00/44/CCountedPointer_DeleteData_00443a60_test.cpp'
         PassPattern = 'POLYCLEAN_00443a60_PASS'
     }
     [pscustomobject]@{

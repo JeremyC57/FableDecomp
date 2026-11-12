@@ -1,12 +1,12 @@
 // CTCAssassinRush::CleanUpEffects() -- end the rush effects: drop the parent's rush creature mode (0x25), restore full alpha on the parent and on every living faded item, clear the faded-item list, and end the player's special-move mode when the parent is a living player-controlled thing
 // Leaf: ?CleanUpEffects@CTCAssassinRush
+// Respell (agentFAM10, 2026-11-12): the callee 0x00487150 was bound as ?EndSpecialMoveMode@CPlayer@@QAEXXZ; Ego_r.pdb and FableWin.pdb name it ?SpecialAbilityUnfreezeControls@CPlayer@@QAEXXZ (declared in engine/CPlayer.h under FABLE_RETAIL_PLAYER_FREEZECONTROLS).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AA370, 268 bytes (+4 int3 padding), `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCCreatureModeManager, type
 //   0x31), CTCCreatureModeManager::RemoveMode(unsigned long) 0x0073ABA0, CTCGraphicAppearance::SetAlpha(unsigned char)
-//   0x004BFAC0, CBaseIntelligentPointer::GetPItem 0x00A01B50 / SetPItem 0x00A01B90, CThing::GetPlayer 0x004C7A30, the
-//   player's mode-0x12 exit 0x00487150 (RemoveMode(0x12) plus a flag clear; descriptive name, manifest label
-//   CHTG_Executioner::OnPredicateFail is propagated).
+//   0x004BFAC0, CBaseIntelligentPointer::GetPItem 0x00A01B50 / SetPItem 0x00A01B90, CThing::GetPlayer 0x004C7A30,
+//   CPlayer::SpecialAbilityUnfreezeControls 0x00487150 (Ego_r.pdb / FableWin.pdb; RemoveMode(0x12) plus a flag clear).
 // Layout: CTCBase ParentThing +4; ItemAlphaList +0x64 (12-byte STLport vector of 8-byte CIntelligentPointer<CThing>;
 //   Ego_r.pdb +0x64); CThing state byte +0x10 (2 = player controlled), graphic appearance +0x64, dead bit +0x91 bit 0.
 // Shape: the parent is a named local (spilled for the final test); the mode lookup is the out-parameter GetInterface;
@@ -29,9 +29,10 @@ class CTCGraphicAppearance { public:
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;
-class CPlayer { public:
-    void EndSpecialMoveMode();                  // 0x00487150
-};
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_REMOVEMODE
+#define FABLE_RETAIL_PLAYER_FREEZECONTROLS
+#include "engine/CPlayer.h"                     // agentFAM10: the shared CPlayer (SpecialAbilityUnfreezeControls 0x00487150)
 class CThing {
 public:
     unsigned char _pad00[0x10];
@@ -154,5 +155,5 @@ void CTCAssassinRush::CleanUpEffects()
     }
     ItemAlphaList.clear();
     if (!(parent->m_stateFlags & 1) && parent->m_state == 2)
-        parent->GetPlayer().EndSpecialMoveMode();
+        parent->GetPlayer().SpecialAbilityUnfreezeControls();
 }

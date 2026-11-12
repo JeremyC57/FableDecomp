@@ -23,23 +23,19 @@ public:
     virtual void SetValue(const CWideString& value, bool a, bool b);               // slot 144 0x0054F410
     virtual void SetValue(unsigned long textId, const CWideString& value, bool a); // slot 143 0x0054FBC0
     virtual CCountedPointer<CFontBank>& GetFont();                                 // slot 146 0x0054FF20
-#ifdef FABLE_RETAIL_CTEXT_WINDOW_SLOTS
-    // Retail opt-in (chunk Q21, row 0x00540320 CEditBox::KeyPressed): the retail order of slots 147..150, read from the bodies in
-    // vtable 0x01249CCC: 147 0x0054FFB0 copies a 16-byte box to +0x178 (SetTextWindow(C2DBoxF&), `ret 4`), 148 0x0054FFE0 is
-    // `lea eax,[ecx+178h] ; ret` (GetTextWindow), 149 0x0054FB10 measures the text with GetCharWidthW (ForceWidth(float), the
-    // catalog's name), 150 0x0054FFF0 returns a value from the +0x12E flag byte (GetAlignment). KeyPressed calls slot 148 and reads
-    // the box's BRX (+8) from the result (0x00540564 `call [edx+250h]` ; `fcomp [eax+8]`). The default order below (Alignment,
-    // ForceWidth, Set/GetTextWindow) puts GetTextWindow at 150; no landed row calls any of the four. Declarations only.
+    // Retail order of slots 147..150 (default since agentFAM10, 2026-11-12, queue land1011dl; was the opt-in
+    // FABLE_RETAIL_CTEXT_WINDOW_SLOTS of chunk Q21, row 0x00540320 CEditBox::KeyPressed, which rows may still define: it no longer
+    // changes anything). Read from the bodies in vtable 0x01249CCC: 147 0x0054FFB0 copies a 16-byte box to +0x178
+    // (SetTextWindow(C2DBoxF&), `ret 4`), 148 0x0054FFE0 is `lea eax,[ecx+178h] ; ret` (GetTextWindow), 149 0x0054FB10 measures the
+    // text with GetCharWidthW (ForceWidth(float)), 150 0x0054FFF0 returns a value from the +0x12E flag byte (GetAlignment); the
+    // catalog names the four addresses the same way, and Ego_r.pdb / FableWin.pdb spell them ?SetTextWindow@CText@NUISystem@@UAEXAAVC2DBoxF@@@Z,
+    // ?GetTextWindow@CText@NUISystem@@UAEAAVC2DBoxF@@XZ, ?ForceWidth@CText@NUISystem@@UAEXM@Z, ?GetAlignment@CText@NUISystem@@UBE?AW4ETextAlignement@2@XZ.
+    // KeyPressed calls slot 148 and reads the box's BRX (+8) from the result (0x00540564 `call [edx+250h]` ; `fcomp [eax+8]`). The
+    // former default (Alignment, ForceWidth, Set/GetTextWindow) put GetTextWindow at 150. Declarations only.
     virtual void SetTextWindow(C2DBoxF& window);                                   // slot 147 0x0054FFB0
     virtual C2DBoxF& GetTextWindow();                                              // slot 148 0x0054FFE0
     virtual void ForceWidth(float width);                                          // slot 149 0x0054FB10
     virtual ETextAlignement GetAlignment() const;                                  // slot 150 0x0054FFF0
-#else
-    virtual ETextAlignement GetAlignment() const;                                  // slot 147 0x0054FFB0
-    virtual void ForceWidth(float width);                                          // slot 148 0x0054FFE0
-    virtual void SetTextWindow(C2DBoxF& window);                                   // slot 149 0x0054FB10
-    virtual C2DBoxF& GetTextWindow();                                              // slot 150 0x0054FFF0
-#endif
 #ifdef FABLE_RETAIL_CTEXT_GETCHARWIDTHW
     // Retail opt-in (chunk Q21, row 0x00540320 CEditBox::KeyPressed): Ego_r.pdb ?GetCharWidthW@CText@NUISystem@@SII_W@Z (static
     // __fastcall, landed at 0x0054F4B0; needs /Zc:wchar_t for the _W spelling). Declaration only.

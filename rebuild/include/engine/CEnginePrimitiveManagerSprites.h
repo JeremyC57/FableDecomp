@@ -11,7 +11,13 @@
 #pragma pack(push, 1)
 class CEnginePrimitiveManagerSprites {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSPRITES_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x00B360A0 CCountedPointer<CEnginePrimitiveManagerSprites>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CEnginePrimitiveManagerSprites();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char enabled;                                   // +0x08 retail-only unsigned char (previous header)
     unsigned char _pad_0x09[0x3];                            // +0x09
@@ -19,7 +25,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerSprites) == 0xc);
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSPRITES_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerSprites, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerSprites, enabled) == 0x8);
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERSPRITES_H

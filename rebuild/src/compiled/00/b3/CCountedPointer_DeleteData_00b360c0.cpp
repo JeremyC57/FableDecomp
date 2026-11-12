@@ -1,0 +1,14 @@
+// CCountedPointer::DeleteData(void* data) -- (CCountedPointer<CEnginePrimitiveManagerWeaponTrails>) the counted pointer's per-type deleter: `delete (T*)data`, null-guarded, through the object's virtual destructor (vtable slot 0, flag 1)
+// Leaf: ?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@SIXPAX@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00B360C0, 11 bytes: `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]; ret` -- a static __fastcall member (data in ecx);
+//   only its address is used: it is stored as the count block's DeleteFunc (`mov [eax+4], 0x00B360C0`).
+// Names (agentFAM10, 2026-11-12; was _gapscan::sub_00b360c0, the behavioural extern "C" DeleteIfSet): FableWin.pdb ?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@SIXPAX@Z; stored by Reset 0x00B37890, called at 0x00B33EE4 on `this+0x2B0` with a fresh CEnginePrimitiveManagerWeaponTrails (ctor 0x00BCC5F0, RTTI vtable); Ego_r.pdb CEnginePrimitiveRenderer::WeaponTrailManager (7th counted manager member).
+// Shape: engine/CCountedPointer.h DeleteData (`delete static_cast<T*>(data)`) on a polymorphic T; the explicit instantiation emits the COMDAT.
+class CEnginePrimitiveManagerWeaponTrails {
+public:
+    virtual ~CEnginePrimitiveManagerWeaponTrails();                                   // slot 0 (scalar deleting destructor)
+};
+
+#include "engine/CCountedPointer.h"
+
+template void FABLE_FASTCALL CCountedPointer<CEnginePrimitiveManagerWeaponTrails>::DeleteData(void*);

@@ -11,7 +11,13 @@
 #pragma pack(push, 1)
 class CEnginePrimitiveManagerParticleDecalGroup {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEDECALGROUP_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x00B361A0 CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CEnginePrimitiveManagerParticleDecalGroup();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned long PointLightShaderIndex[6];                  // +0x0c
@@ -33,7 +39,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleDecalGroup) == 0x124);
+#ifndef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEDECALGROUP_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleDecalGroup, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleDecalGroup, PointLightShaderIndex) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleDecalGroup, LandscapeDecalVertexShader) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleDecalGroup, MeshDecalVertexShader) == 0x3c);

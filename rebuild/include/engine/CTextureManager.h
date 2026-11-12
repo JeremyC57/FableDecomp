@@ -19,7 +19,13 @@ public:
     // Ego_r00b7d7f0/FableWin031876c0 and native009fe4d4 argument addresses.
     bool ReduceMipmapLevel(CGraphicFrame&,CManagedTexture&,unsigned long);
 #endif
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x009FFD20 CCountedPointer<CTextureManager>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CTextureManager();
+#else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     bool          Initialised;                               // +0x04
     unsigned char _pad_0x05[0x3];                            // +0x05
     unsigned long PoolCount;                                 // +0x08
@@ -32,7 +38,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTextureManager) == 0x5d4);
+#ifndef FABLE_RETAIL_CTEXTUREMANAGER_VIRTUAL_DTOR
 FABLE_STATIC_ASSERT(offsetof(CTextureManager, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTextureManager, Initialised) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CTextureManager, PoolCount) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CTextureManager, PreallocSizes) == 0xc);
