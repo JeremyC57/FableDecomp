@@ -1,0 +1,2 @@
+00b54890 CEngineWeatherRenderer::RenderRain RELOCATION_MATCH flags= []
+00b54e30 CEngineWeatherRenderer::RenderSnow RELOCATION_MATCH flags= []

@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00b54890   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b54890   WARN RELOC_NAME: ?ClipBoxToWeatherMaskSphere@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@@Z -> 00b52090 labelled 'CEngineWeatherRenderer::IsPointInPrecipitation'
+00b54890   RELOCATION_MATCH PASS   RenderRain
+00b54e30   WARN RELOC_NAME: ?ClipBoxToWeatherMaskSphere@CEngineWeatherRenderer@@ABE?AW4EWeatherBoxVisible@1@ABVC3DVector@@@Z -> 00b52090 labelled 'CEngineWeatherRenderer::IsPointInPrecipitation'
+00b54e30   RELOCATION_MATCH PASS   RenderSnow
+
+WINS: 2
+  00b54890 RELOCATION_MATCH CEngineWeatherRenderer::?RenderRain@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z
+  00b54e30 RELOCATION_MATCH CEngineWeatherRenderer::?RenderSnow@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z
