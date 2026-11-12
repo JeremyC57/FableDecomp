@@ -22,3 +22,12 @@ No root-dir header (fable_string.h) is overlaid, so the Q25 C2011 issue does not
 | engine/CManagedTextureData.h | FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE | inline `SetOwner` (FableWin), `CreateTexture(ulong,ulong,long,const CPixelFormat&)` 0x00A697A0 | 00a69b70 |
 | engine/CTextureManager.h | FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE | a CPreallocTexturePool class (0x54 bytes: opaque +0..0x3C, Count/MaxSize/PoolIndex, Textures CArray opaque; `Allocate()` 0x00A69830) and PreallocPools typed as `CPreallocTexturePool[16]` (old opaque array under `#else`); AllocateTexture, static __fastcall CalculateTextureSize 0x00A698F0, private GetPoolIndex 0x00A69730 | 00a69b70 |
 | engine/CIVCountedPointer.h | FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_FORCEINLINE (+ nested _CASTTOBASE) | the same Reset body forced inline (retail expands it in 0x00A69B70, VC7.1's budget leaves a call); _CASTTOBASE: the store through the FableWin private CastToBase | 00a69b70 |
+
+Round 2 additions:
+
+| File | Opt-in | What it adds | Used by |
+|---|---|---|---|
+| engine/CParticleEmitter.h | FABLE_RETAIL_CPARTICLEEMITTER_GETPRIORITY | `EEmitterPriority GetPriority() const` inline (FableWin QBE?AW4EEmitterPriority@2@XZ) + MS forward enum | 00aeb790 (MATCH, Insert body) |
+| engine/C3DOrientationInterpolator.h | FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_IMPLICIT_DTOR | drops the user-declared `virtual ~C3DOrientationInterpolator() { }` (old line under `#ifndef`): the implicit virtual dtor; the temporary dies by a direct ~CBaseClass call with no vptr store | 00aeb790 (MATCH) |
+| engine/CMap.h | FABLE_RETAIL_CTHEMEPALETTEENTRY_ACCESSORS | CThemePaletteEntry inline SetThemePaletteIndexUsed / IsThemeUsed (FableWin) | 008f70f0 trials |
+| engine/CMap.h | FABLE_RETAIL_CMAP_FINDUNUSED_OUTOFLINE | FindUnusedThemePaletteEntryIndex declared only (old in-class body under `#else`); the TU defines the landed body | 008f70f0 trials |

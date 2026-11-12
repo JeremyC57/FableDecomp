@@ -10,6 +10,11 @@ namespace NParticleEngine {
 class CParticleEmitter;class CParticleDataBank;
 class CParticleEmitterDatabase {
 public:long GetEmitterTemplateHandleFromName(const CCharString&)const;
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERDATABASE_GETEMITTERTEMPLATE
+ // Opt-in (chunk Q28, row 0x00AEB790): Ego_r.pdb / FableWin.pdb ?GetEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@
+ // QAEPAVCParticleEmitter@2@J_N@Z (retail 0x00AE89E0; the const overload QBEPBV..@J_N@Z also exists). Declaration only.
+ CParticleEmitter* GetEmitterTemplate(long handle,bool start);   // 0x00AE89E0
+#endif
 protected:
  CSymbolMap SymbolMap;bool UsingSymbolMap;
  CVectorMap<long,CCountedPointer<CParticleEmitter>,CKeyPairCompareLess<long,CCountedPointer<CParticleEmitter> > > Emitters;

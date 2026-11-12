@@ -7,6 +7,12 @@
 namespace NParticleEngine {
 class CParticleEmitter;
 class CParticleEmitterList {
+#ifdef FABLE_RETAIL_CPARTICLEEMITTERLIST_INSERT
+public:
+ // Opt-in (chunk Q28, row 0x00AEB790): Ego_r.pdb / FableWin.pdb
+ // ?Insert@CParticleEmitterList@NParticleEngine@@QAE_NAAV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z (0x00AEB060).
+ bool Insert(CCountedPointer<CParticleEmitter>& emitter);              // 0x00AEB060
+#endif
 private:std::list<CCountedPointer<CParticleEmitter> > Active;long MaxActiveEmitters;
 };
 }

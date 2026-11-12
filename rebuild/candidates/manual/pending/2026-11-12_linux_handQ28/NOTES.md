@@ -37,3 +37,19 @@ NParticleEngine_CParticleEmitterDatabase.h); CMap.h's GetThemePaletteIndexFromTh
 CHeightMap.h's GetIndexIntoCells body (`sizeX*y+x`) disagrees with the (SizeY - y)*(SizeX + 1) + x indexing 0x008F6FC0 expands.
 Probes: 1 (008031e0). Out-of-line real bodies in TUs: ZeroAllUnusedThemePaletteEntries (landed 0x008F6FC0) in 008f70f0 (DIFFER);
 GetAllMeshes (landed 0x004BD420) and IsResourcesLoadedForMesh (0x004BC090) inline in 004be3e0.
+
+## Round 2 (coordinator follow-up: one row at a time until it matches)
+- 0x00AEB790 Create2DEmitter: RELOCATION_MATCH (payload2.json / oracle2.tsv; VC7.1 + g++ test PASS; LANDVERIFY_STRICT_HEADERS=1).
+  Three source facts: (1) the real body of CParticleEmitterList::Insert (landed 0x00AEB060) ported onto engine/CParticleEmitterList.h +
+  the shared STLport list (STLP_LIST, STLP_LIST_SIZE_DISTANCE; GetPriority / IsDead accessors), out of line in the TU under
+  `#pragma auto_inline(off)`; (2) FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR: the (T*) constructor body visible but called (retail
+  COMDAT 0x00AE9450) -- this one fixed the registers and the dec/jne release; (3) C3DOrientationInterpolator's destructor is the implicit
+  one (no vptr store before ~CBaseClass). Out-of-line real body in the TU: Insert (landed 0x00AEB060).
+- 0x008F70F0 AddThemeDefIndexToPalette: in progress, still 144v164 (best = differ/008f70f0.cpp, residue and ideas on line 2). Probes:
+  &v[0] store pointer (one IL join), separate-variable tails (IL separate, but tail1 still reloads the vector start and the machine
+  tails cross-jump), QFE 4035 compiler (same). A toy with no call at all also reloads the start before the store: VC7.1 here never
+  reuses the start register for `v[index]` after the inline search, which retail does in its first tail. Next ideas not yet tried:
+  the store done inside an inline the PDB does not list (unprovable), the FindUnused inline written with a pointer-based loop (would
+  contradict the landed 0x008F6F90 body), checking the neighbouring TU rows (InitThemePalette 0x008F71A0) for how the vector is indexed.
+- Untouched in round 2: 0x00A69B70 AllocateTexture, 0x008031E0 GetPBestThingForMeleeAttack, 0x006B05A0 CreatePPhysicsMeshInfo
+  (round-1 best sources and residues stand in differ/).

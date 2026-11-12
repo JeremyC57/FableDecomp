@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00aeb790   RELOCATION_MATCH PASS   Create2DEmitter
+
+WINS: 1
+  00aeb790 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::Create2DEmitter
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCParticleEmitterManager_Create2DEmitter_00aeb790

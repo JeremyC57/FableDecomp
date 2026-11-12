@@ -7,3 +7,5 @@
 - `mov edx,[esi] ; mov ecx,esi ; push eax` before a virtual call is almost unique in Fable.exe (3 sites); VC7.1 RTM emits `push eax` first for every spelling tried (0x006B05A0): stop early.
 - When an inline counted-pointer Reset is left as a call, the callee-saved colouring can match retail exactly; forcing it inline then moves the registers: the row's remaining residue is in how retail expanded the add-ref (0x00A69B70).
 - The xdis.py helper raises BrokenPipe when piped to head: send its stderr to /dev/null.
+- A counted-pointer local whose (T*) ctor retail CALLS (a COMDAT): use FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR, not the declaration-only CALLED_CTOR; with the body visible VC7.1 keeps the local tracked, so the inline dtor's release becomes `dec [esi] ; jne` with the block in esi (0x00AEB790).
+- C3DOrientationInterpolator temporaries destroyed by a bare ~CBaseClass call (no vptr store) need the implicit destructor, not a user `{ }` (0x00AEB790).

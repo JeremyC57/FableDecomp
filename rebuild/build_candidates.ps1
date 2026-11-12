@@ -393453,6 +393453,13 @@ $catalog = @(
         TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_IsResourcesLoaded_004be3e0_test.cpp'
         PassPattern = '004be3e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aeb790'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_Create2DEmitter_00aeb790.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_Create2DEmitter_00aeb790_test.cpp'
+        PassPattern = '00aeb790_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

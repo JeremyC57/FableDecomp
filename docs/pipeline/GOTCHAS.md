@@ -153,3 +153,4 @@
 - (chunk Q28, 2026-11-12) `mov edx,[esi] ; mov ecx,esi ; push eax` before a virtual call is almost unique in Fable.exe (3 sites); VC7.1 RTM emits `push eax` first for every spelling tried (0x006B05A0): stop early.
 - (chunk Q28, 2026-11-12) When an inline counted-pointer Reset is left as a call, the callee-saved colouring can match retail exactly; forcing it inline then moves the registers: the row's remaining residue is in how retail expanded the add-ref (0x00A69B70).
 - (chunk Q28, 2026-11-12) The xdis.py helper raises BrokenPipe when piped to head: send its stderr to /dev/null.
+- (chunk Q28 pass 2, 2026-11-12) When retail calls a counted-pointer `(T*)` ctor out of line but the caller's code shows the compiler saw its body, use FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR; a user-declared `{ }` dtor leaves an extra vptr store before the base dtor call that an implicit dtor does not.

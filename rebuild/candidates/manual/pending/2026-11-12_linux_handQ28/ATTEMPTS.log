@@ -50,3 +50,15 @@
 00aeb790 grade 4 CParticleEmitterManager::Create2DEmitter SRC_FAIL   -- real Insert body (landed 0x00AEB060) ported into the TU, out of line
 00aeb790 grade 5 CParticleEmitterManager::Create2DEmitter DIFFER(198v171)   -- real Insert body (landed 0x00AEB060) ported into the TU, out of line
 00aeb790 grade 6 CParticleEmitterManager::Create2DEmitter DIFFER(183v171)   -- + visible noinline CCountedPointer(T*) ctor (retail COMDAT 0x00AE9450 body)
+00aeb790 grade 7 CParticleEmitterManager::Create2DEmitter RELOCATION_MATCH   -- + implicit C3DOrientationInterpolator dtor (no vptr store)
+008f70f0 grade 10 CMap::AddThemeDefIndexToPalette DIFFER(138v164)   -- store guarded by if(index) after both searches, single return index
+008f70f0 grade 11 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- SetThemePaletteIndexUsed(true) (FableWin inline) for the used store
+008f70f0 grade 12 CMap::AddThemeDefIndexToPalette DIFFER(149v164)   -- per-arm stores, textually different (accessor in one arm) to stop early merging
+008f70f0 grade 13 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- FindUnused real body out of class in TU (auto-inline)
+008f70f0 grade 14 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- out-of-class FindUnused + flat early-return draft shape
+008f70f0 probe 1 does an &v[0] pointer for the first store split the IL tail? -> no: one IL join $L2769 after both paths, index*8 CSE (shl)
+008f70f0 probe 2 with separate IL tails (separate variable), does tail1 CSE the vector start into edi? -> no: tail1 reloads [esi+1A6C], cross-jumped at $L3050
+008f70f0 grade 15 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- iterator begin()+index for the def store
+008f70f0 grade 16 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- early return of the found index, then single store
+008f70f0 probe 3 does the QFE 13.10.4035 compiler (FABLE_VC71=$VC71_QFE) give retail's separate store tails? -> no, same 144v164
+008f70f0 grade 17 CMap::AddThemeDefIndexToPalette DIFFER(144v164)   -- vector operator[] as _M_start[n] (overlay probe of the index form)

@@ -38722,3 +38722,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?IsFeelingThreatened@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAE_NXZ	00eb4710	00eb40c0
 ??$sort@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@std@@YIXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@0V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@Z	009b84c0	009b00d0
 ?reserve@?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@QAEXI@Z	004c46c0	004be3e0
+??0?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	00ae9450	00aeb790
+?Insert@CParticleEmitterList@NParticleEngine@@QAE_NAAV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z	00aeb060	00aeb790
+?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z	00aed090	00aeb790
