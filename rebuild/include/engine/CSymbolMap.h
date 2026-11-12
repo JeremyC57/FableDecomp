@@ -41,6 +41,13 @@ public:
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const;
     bool SymbolExists(const CCharString& name) const;
     long GetSymbolSLONG(const CCharString& name) const;
+#ifdef FABLE_RETAIL_CSYMBOLMAP_ADDSYMBOLDIRTY
+    // Nested opt-in (wf2, row 0x009ADC90 CDefinitionManager::InstantiateDef): Ego_r.pdb / FableWin.pdb
+    // ?AddSymbolDirty@CSymbolMap@@QAEXABVCCharString@@J@Z 0x009E5420 and ?AddSymbolDirty@CSymbolMap@@QAEXABVCCharString@@0J@Z
+    // 0x009E54E0 (group, entry, value), both out of line in retail (landed). Declarations only.
+    void AddSymbolDirty(const CCharString& name, long value);                                   // 0x009E5420
+    void AddSymbolDirty(const CCharString& group, const CCharString& name, long value);         // 0x009E54E0
+#endif
 #ifdef FABLE_RETAIL_CSYMBOLMAP_FINDSYMBOL
     // Nested opt-in (chunk 1020, row 0x009E81E0 via CPersistTraits<float>::TransferIn 0x0040F7E0): Ego_r.pdb / FableWin.pdb
     // ?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z = 0x009E5170 (Ego_r donor order GetSymbolSLONG 0x00B36AD0, FindSymbol 0x00B36B20,

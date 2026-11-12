@@ -38768,3 +38768,4 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?DoWatchingForTrouble@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ	00eb40c0	00eb3f40
 ?DoesAssassinTrustHero@CV_MurderTwistFinalScript@NScript@@QAE_NXZ	00eb03a0	00eb3f40
 ??4?$CIntelligentPointer@VCThingObject@@@@QAEAAV0@ABV0@@Z	007b82c0	008d5300
+?GetPDefClassInfo@CDefinitionManager@@IAEPAVCDefClassInfo@1@ABVCCharString@@@Z	009ad580	009adc90

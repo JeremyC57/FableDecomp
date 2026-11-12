@@ -393770,6 +393770,13 @@ $catalog = @(
         TestSource = '00/8d/CCreatureActionReloadMissileWeapon_PerformAction_008d5300_test.cpp'
         PassPattern = '008d5300_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009adc90'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_InstantiateDef_009adc90.cpp'
+        TestSource = '00/9a/CDefinitionManager_InstantiateDef_009adc90_test.cpp'
+        PassPattern = '009adc90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

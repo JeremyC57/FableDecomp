@@ -54,3 +54,12 @@ No header overlay needed for 0x008D5300: the row matches on the current repo hea
 - engine/CSymbolMap.h: `FABLE_RETAIL_CSYMBOLMAP_ADDSYMBOLDIRTY` (inside FABLE_RETAIL_CSYMBOLMAP) -- declarations of the two AddSymbolDirty overloads 0x009E5420 / 0x009E54E0.
 - engine/CDefPointer.h: `FABLE_RETAIL_CDEFPOINTER_POINTER_CTOR` -- the FableWin.pdb `CDefPointer(T*)` constructor, inline: stores the pointer and AddRefs it with no null test (the expansion at 0x009ADD49).
 
+
+## 0x009ADC90 (landing ej, after repair 2)
+
+# Header overlay for row 0x009ADC90 (CDefinitionManager::InstantiateDef) -- full copies of the current repo headers plus opt-ins only
+- engine/CDefinitionManager.h: `FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF` (inside FABLE_RETAIL_CDEFINITIONMANAGER) -- nested CDefClassInfo / CInstantiatedDefInfo (Ego_r TPI), typed PSymbolMap / PDefinitionSymbolMap (CCountedPointer<CSymbolMap>) and InstantiatedDefs (CArray<CInstantiatedDefInfo*>) at the same offsets, declarations of GetPDefClassInfo 0x009AD580 and InstantiateDef 0x009ADC90. Needs FABLE_RETAIL_CCHARSTRING, FABLE_RETAIL_CDEFSTRINGTABLE, FABLE_RETAIL_CSYMBOLMAP, FABLE_RETAIL_CDEFPOINTER_POINTER_CTOR. Repair 2: the record constructor has the FableWin.pdb signature (`const CDefPointer<CDefClassBase>&` 4th parameter, 0x03061650) and the default constructor (0x0305D840) is declared.
+- engine/CDefString.h: `FABLE_RETAIL_CDEFSTRING_CTOR_SETSTRING` -- inline `CDefString(const CCharString&) { SetString(text); }` and the declaration of SetString 0x009D5060 (default: the body-less ctor declaration, unchanged).
+- engine/CSymbolMap.h: `FABLE_RETAIL_CSYMBOLMAP_ADDSYMBOLDIRTY` (inside FABLE_RETAIL_CSYMBOLMAP) -- declarations of the two AddSymbolDirty overloads 0x009E5420 / 0x009E54E0.
+- engine/CDefPointer.h: `FABLE_RETAIL_CDEFPOINTER_POINTER_CTOR` -- the FableWin.pdb `CDefPointer(T*)` constructor (0x030644A0 for CDefClassBase), inline: stores the pointer WITHOUT counting it (adopts the creation reference; no `inc` after `mov esi,eax` at 0x009ADCD6). Repair 2 changed the body from store + AddRef.
+
