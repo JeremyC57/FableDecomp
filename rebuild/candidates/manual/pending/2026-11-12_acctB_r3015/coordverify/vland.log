@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00ba6ff0   WARN RELOC_NAME: ?GetSilhouetteColour@CEnginePrimitiveManagerOcclusionBase@@IAE_NAAVCEngineInternalPrimitiveOcclusionBase@@AAVCRGBColour@@@Z -> 00b90090 labelled '_global::ReturnFalse_ret8_00b90090'
+00ba6ff0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ba6ff0   RELOCATION_MATCH PASS   DrawSilhouette
+
+WINS: 1
+  00ba6ff0 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?DrawSilhouette@CEnginePrimitiveManagerStaticMeshesBase@@AAEXAAVCEngineInternalPrimitiveStaticMesh@@@Z
