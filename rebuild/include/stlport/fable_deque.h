@@ -59,6 +59,11 @@ public:
  typedef T value_type;typedef size_t size_type;typedef T& reference;typedef const T& const_reference;
  deque():_Deque_base<T,A>(A(),0){}
  ~deque(){std::_Destroy(this->_M_start,this->_M_finish);}
+#if defined(FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE) && !defined(FABLE_STLPORT_DEQUE_PUSH_BACK)
+ // Opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): STLport 4.6 push_back, declared only: retail calls the
+ // deque<CSubtitleRenderer::CSetTextInfo> instance out of line (0x004941C0, from the inline queue::push).
+ void push_back(const value_type& t);
+#endif
 #ifdef FABLE_STLPORT_DEQUE_PUSH_BACK
  // Opt-in (chunk Q6, row 0x00912840): STLport 4.6 _deque.h back() / push_back() / _M_reserve_map_at_back(), inline as in the
  // library; _M_push_back_aux_v (_deque.c) and _M_reallocate_map are out of line (retail 0x00913D60 for deque<CBezierCurve>):
@@ -92,6 +97,17 @@ template<class T,class A> void deque<T,A>::_M_push_back_aux_v(const value_type& 
  this->_M_finish._M_cur=this->_M_finish._M_first;
 }
 #pragma auto_inline(on)
+#endif
+#ifdef FABLE_RETAIL_STLP_QUEUE
+// Opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): STLport 4.6 _queue.h queue (the adaptor over its protected
+// sequence c), push only: `void push(const value_type& __x) { c.push_back(__x); }`.
+template<class T,class Sequence=deque<T> >class queue {
+public:
+ typedef typename Sequence::value_type value_type;
+ void push(const value_type& x){c.push_back(x);}
+protected:
+ Sequence c;
+};
 #endif
 template<class T,class Sequence=deque<T> >class stack {protected:Sequence c;public:stack():c(){}explicit stack(const Sequence& s):c(s){}};
 }

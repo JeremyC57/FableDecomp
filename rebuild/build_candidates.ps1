@@ -394544,6 +394544,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT120'
         PassPattern = '009c4440_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00492973'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_SetText_00492973.cpp'
+        TestSource = '00/49/CSubtitleRenderer_SetText_00492973_test.cpp'
+        PassPattern = '00492973_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

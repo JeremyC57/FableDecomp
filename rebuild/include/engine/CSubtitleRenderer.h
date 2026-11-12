@@ -120,6 +120,39 @@ public:
     // call 0x00492BAB`). Declaration only: no layout change.
     void Clear(bool);                                                    // 0x00492BAB
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXTINFO
+    // Retail opt-in (wf13, row 0x00492973 SetText, the full 4-caption wide overload): the nested CSetTextInfo (Ego_r.pdb
+    // ??0CSetTextInfo@CSubtitleRenderer@@QAE@ABVCWideString@@000KM_N1@Z 0x0048DDF6, ??1CSetTextInfo@CSubtitleRenderer@@QAE@XZ
+    // 0x0043E3D0; 0x1C bytes: four CWideStrings, DisplayFlags, DisplayTime, two bools -- the element of TextInfoQueue) and the members
+    // SetText calls out of line: ?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z 0x0048F6BD,
+    // ?ProcessEmbeddedGraphicTags@CSubtitleRenderer@@AAEXXZ 0x00492381, ?ProcessEmbeddedHighlightTags@CSubtitleRenderer@@AAEXXZ
+    // 0x00491AD2, ?InitPlayerMode@CSubtitleRenderer@@AAEXXZ 0x0048F939 (private), ?SetButton1OverrideText@CSubtitleRenderer@@QAEXABVCCharString@@@Z
+    // 0x0048F7C0. Needs a complete CWideString (fable_string.h) before the include. Declarations only: no layout change.
+#pragma pack(push, 8)
+    class CSetTextInfo {
+    public:
+        CSetTextInfo(const CWideString& text, const CWideString& button1_text, const CWideString& button2_text,
+                     const CWideString& button3_text, unsigned long display_flags, float display_time, bool update_while_paused,
+                     bool change_player_mode);                           // 0x0048DDF6
+        ~CSetTextInfo();                                                 // 0x0043E3D0
+        CWideString   Text;
+        CWideString   Button1Text;
+        CWideString   Button2Text;
+        CWideString   Button3Text;
+        unsigned long DisplayFlags;
+        float         DisplayTime;
+        bool          UpdateWhilePaused;
+        bool          ChangePlayerMode;
+    };
+#pragma pack(pop)
+    void SetButton1OverrideText(const CCharString&);                     // 0x0048F7C0
+private:
+    bool GetTextFromTextTag(const CWideString& tag, CWideString& text);  // 0x0048F6BD
+    void ProcessEmbeddedGraphicTags();                                   // 0x00492381
+    void ProcessEmbeddedHighlightTags();                                 // 0x00491AD2
+    void InitPlayerMode();                                               // 0x0048F939
+public:
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_PAUSE
     // Retail opt-in (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate): Ego_r.pdb ?Pause@CSubtitleRenderer@@QAEX_N@Z (Ego_r
     // 0x00496E10), out of line in retail at 0x0048DD94 (manifest CSubtitleRenderer::Pause; the call `mov ecx,[0x013B8790] ; push 1 ;

@@ -38923,3 +38923,11 @@ _D3DXLoadSurfaceFromMemory@40	00bfefc8	009f4390
 ??0CCreatureAction_PlayHopscotch@@QAE@AAVCThingCreatureBase@@@Z	00941b20	00941690
 ?SetDirtyDiscError@CFileInstaller@@KIX_N@Z	009c3530	009c4440
 __imp__GetFileSizeEx@8	0143fd5c	009c4440
+??$FindAllMessages@VCMessageEventFilter_IsOfType@@@CMessageEventManager@@QBE?BJABVCMessageEventFilter_IsOfType@@AAV?$list@PBVCMessageEvent@@V?$allocator@PBVCMessageEvent@@@std@@@std@@@Z	00493eab	00492973
+??0?$_List_base@PBVCMessageEvent@@V?$allocator@PBVCMessageEvent@@@std@@@std@@QAE@ABV?$allocator@PBVCMessageEvent@@@1@@Z	00493bc2	00492973
+??0CSetTextInfo@CSubtitleRenderer@@QAE@ABVCWideString@@000KM_N1@Z	0048ddf6	00492973
+??1?$_List_base@PBVCMessageEvent@@V?$allocator@PBVCMessageEvent@@@std@@@std@@QAE@XZ	00493bdd	00492973
+?InitPlayerMode@CSubtitleRenderer@@AAEXXZ	0048f939	00492973
+?ProcessEmbeddedGraphicTags@CSubtitleRenderer@@AAEXXZ	00492381	00492973
+?ProcessEmbeddedHighlightTags@CSubtitleRenderer@@AAEXXZ	00491ad2	00492973
+?push_back@?$deque@VCSetTextInfo@CSubtitleRenderer@@V?$allocator@VCSetTextInfo@CSubtitleRenderer@@@std@@@std@@QAEXABVCSetTextInfo@CSubtitleRenderer@@@Z	004941c0	00492973

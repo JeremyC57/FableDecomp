@@ -29,6 +29,16 @@ protected:
 public:
     std::list<std::pair<CIntelligentPointer<CThingObject>, bool> > Items;   // +0x0c
     std::vector<long> PickedUpItems;                                     // +0x10
+#ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_DISPLAYINGITEMS
+    // Nested opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): the next members in Ego_r.pdb order and names (Ego_r +0x28..+0x33,
+    // retail -0xC as for Items / PickedUpItems): SetText sets DisplayingItems (`mov byte ptr [eax+26h],1`), Clear 0x00492BAB sets
+    // ForceClear +0x27. Layout only.
+    CIntelligentPointer<CThingObject> PCurrentItem;                      // +0x1c
+    bool PersistCurrentItem;                                             // +0x24
+    bool ReceivingItems;                                                 // +0x25
+    bool DisplayingItems;                                                // +0x26
+    bool ForceClear;                                                     // +0x27
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCHERORECEIVEITEMS_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).

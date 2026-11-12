@@ -1,12 +1,5 @@
 # Workflow wf13 verdicts (two independent Opus lenses per row: mechanical + evidence; one Opus repair pass)
 
-## 00881a40 -- MATCH_WITH_OPEN_ISSUES, author attempts 1
-
-- What made it match: The match is unchanged. The block-scoped set-find iterator turned out to be needed and is now cited in the source by retail address and instruction. Overlay opt-ins from the original match are still needed, including FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE.
-- OPEN at hand-back: hdr/stlport/fable_map.h removes one line of the repo header: line 201 `#ifdef FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE` is rewritten into an `#if defined(..._DECL) / #elif defined(..._NOINLINE) && defined(_MSC_VER) / #elif defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE)` chain. hdrcheck2 reports default=same, so the default path is unchanged, but hdr/README.md never says the `#if` line was rewritten (it only describes the new opt-ins). Check 6 requires that explanation, so README.md must document the rewrite before landing.
-- OPEN at hand-back: The row source comment and the overlay hdr/stlport/fable_map.h comment for FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE justify only that 0x00883860 is out of line; neither cites the retail bytes that need the find body to be visible and then forced out of line with `__declspec(noinline)`. NOTES.md says this is the 'node in eax vs edi' difference in the last 2 hunks, but gives no address. That explanation, with the retail address and instructions, belongs in the source/overlay comment, because `__declspec(noinline)` on an STLport member is a compiler-steering construct that Lionhead/STLport did not write.
-- OPEN at hand-back: The correct-symbol column in NAME_FIXES.tsv for 0x00883860 is abbreviated as `std::_Rb_tree<CThing*,std::pair<CThing* const,...CThingGraphicByPassFlagState>,...>::find`, and its evidence column also cuts the FableWin.pdb/Ego_r.pdb mangled names short with '...'. The coordinator cannot respell callers from a truncated name, so the hand-back needs the full, exact STLport spelling (key, value, select1st, less and allocator arguments) and the full mangled names.
-
 ## 00492973 -- MATCH_WITH_OPEN_ISSUES, author attempts 1
 
 - What made it match: Unchanged from the original match: the row includes the callee bodies from the same source file under auto_inline(off). These are the _List_base ctor/dtor, RemoveMessage and FindAllMessages&lt;IsOfType&gt;. Pragmas y-off and s-on.

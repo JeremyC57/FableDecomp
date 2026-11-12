@@ -1,43 +1,4 @@
-==== 0x00881A40
-18:50 00881a40 grade v0.cpp DIFFER(591v581) hunks=32 -- baseline old draft
-18:52 00881a40 grade v1.cpp SRC_FAIL -- port to shared headers + overlay
-18:52 00881a40 grade v1.cpp DIFFER(615v581) hunks=34 -- port + set find opt-ins
-18:52 00881a40 grade v1.cpp DIFFER(615v581) hunks=34 -- map find decl-only; set find local / scoped
-18:52 00881a40 grade v2.cpp DIFFER(586v581) hunks=28 -- map find decl-only; set find local / scoped
-18:52 00881a40 grade v3.cpp DIFFER(586v581) hunks=6 -- map find decl-only; set find local / scoped
-18:53 00881a40 grade v3.cpp DIFFER(583v581) hunks=4 -- bool arg; thing ref in loop2; state ref in loop1
-18:53 00881a40 grade v4.cpp DIFFER(581v581) hunks=2 -- bool arg; thing ref in loop2; state ref in loop1
-18:53 00881a40 grade v5.cpp DIFFER(581v581) hunks=2 -- bool arg; thing ref in loop2; state ref in loop1
-18:53 00881a40 grade v6.cpp DIFFER(581v581) hunks=2 -- loop1 compare order / -> / entry local
-18:53 00881a40 grade v7.cpp DIFFER(581v581) hunks=2 -- loop1 compare order / -> / entry local
-18:53 00881a40 grade v8.cpp DIFFER(581v581) hunks=2 -- loop1 compare order / -> / entry local
-18:53 00881a40 grade v6.cpp DIFFER(581v581) hunks=2 -- continue / state ptr / erase(it++)
-18:53 00881a40 grade v7.cpp DIFFER(581v581) hunks=2 -- continue / state ptr / erase(it++)
-18:53 00881a40 grade v8.cpp DIFFER(647v581) hunks=23 -- continue / state ptr / erase(it++)
-18:53 00881a40 grade v6.cpp RELOCATION_MATCH -- map tree find body visible noinline
-18:54 00881a40 grade 00881a40.cpp RELOCATION_MATCH -- final strict
-19:21 00881a40 grade src.cpp RELOCATION_MATCH -- 
-19:21 00881a40 grade src.cpp SRC_FAIL -- 
-19:38 00881a40 grade r1.cpp DIFFER(581v581) hunks=4 -- repair: drop set-find block (inline / function-scope local)
-19:39 00881a40 grade r2.cpp DIFFER(581v581) hunks=22 -- repair: drop set-find block (inline / function-scope local)
-19:39 00881a40 grade 00881a40.cpp RELOCATION_MATCH -- repair: comment citing retail hunk for set-find block
-19:39 00881a40 grade 00881a40.cpp RELOCATION_MATCH -- repair: strict regrade
-19:50 00881a40 grade src.cpp RELOCATION_MATCH -- 
-19:50 00881a40 grade src.cpp SRC_FAIL -- 
-19:51 00881a40 grade src.cpp DIFFER(609v581) hunks=32 -- 
-19:51 00881a40 grade src.cpp SRC_FAIL -- 
-19:51 00881a40 grade src.cpp SRC_FAIL -- 
-20:06 00881a40 grade x_inl.cpp DIFFER(609v581) hunks=32 -- repair3: evidence for noinline
-20:06 00881a40 grade x_decl.cpp DIFFER(581v581) hunks=2 -- repair3: evidence for noinline
-20:06 00881a40 grade x_def.cpp DIFFER(609v581) hunks=32 -- repair3: evidence for noinline
-20:07 00881a40 grade 00881a40.cpp RELOCATION_MATCH -- repair3: baseline before edits
-20:07 00881a40 grade 00881a40.cpp RELOCATION_MATCH -- repair3: noinline evidence comments + class key for CThingGraphicByPassFlagState
-20:08 00881a40 grade 00881a40.cpp RELOCATION_MATCH -- repair3: strict regrade
-20:08 00881a40 grade 00881a40.cpp RELOCATION_MATCH -- repair3: overlay fable_map.h resynced to current repo + strict
-20:09 00881a40 grade src.cpp RELOCATION_MATCH -- 
-20:09 00881a40 grade src.cpp RELOCATION_MATCH -- 
-
-==== 0x00492973 (not landed)
+==== 0x00492973
 18:20 00492973 grade v0.cpp DIFFER(572v568) hunks=7 -- draft baseline
 18:22 00492973 grade v1.cpp DIFFER(571v568) hunks=9 -- probe: real STLport list + base outofline, 3 loop spellings
 18:22 00492973 grade v2.cpp DIFFER(571v568) hunks=9 -- probe: real STLport list + base outofline, 3 loop spellings
@@ -68,4 +29,17 @@
 00492973 repair3 RELOCATION_MATCH RemoveMessage inline noinline landed body; comments/provenance/pragmas
 20:10 00492973 grade src.cpp RELOCATION_MATCH -- 
 20:10 00492973 grade src.cpp RELOCATION_MATCH -- 
+20:13 00493eab grade r4a.cpp RELOCATION_MATCH -- repair4: STLP_LIST_SIZE_DISTANCE vs 493eab
+20:13 00492973 grade r4a.cpp RELOCATION_MATCH -- repair4: STLP_LIST_SIZE_DISTANCE
+20:14 00493eab grade r4b.cpp RELOCATION_MATCH -- repair4 final FindAllMessages
+20:14 00493b5b grade r4b.cpp RELOCATION_MATCH -- repair4 final RemoveMessage
+20:14 00493bc2 grade r4b.cpp DIFFER(39v27) hunks=4 -- repair4 final _List_base
+20:14 00493bdd grade r4b.cpp DIFFER(39v23) hunks=3 -- repair4 final _List_base
+20:14 00492973 grade r4b.cpp RELOCATION_MATCH -- repair4 final SetText
+20:14 00493eab grade r4b.cpp RELOCATION_MATCH -- repair4 strict FindAllMessages
+20:14 00492973 grade r4b.cpp RELOCATION_MATCH -- repair4 strict SetText
+20:14 00493bc2 grade r4b.cpp RELOCATION_MATCH -- repair4 ??0?$_List_base
+20:14 00493bdd grade r4b.cpp RELOCATION_MATCH -- repair4 ??1?$_List_base
+20:15 00492973 grade src.cpp RELOCATION_MATCH -- 
+20:15 00492973 grade src.cpp RELOCATION_MATCH -- 
 

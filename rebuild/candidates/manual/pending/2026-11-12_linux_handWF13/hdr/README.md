@@ -1,12 +1,4 @@
-## 0x00881A40
-
-engine/NScreenEffect_CScreenEffectPriorityStack.h: FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_SCREENFILTERENTRY (FULL branch) -- defines CThingGraphicArgPasser (pack 1), CScreenFilterEntry {param +0x10, reset map +0x30} and its CThingGraphicByPassFlagState (`class` + `public:`, the PDBs' class key V; ctor thing(0), inline Reset) (row 0x00881A40).
-engine/NGraphicAppearance_CTCGraphicAppearance.h: FABLE_RETAIL_CTCGRAPHICAPPEARANCE_BYPASSCOLORFILTER (MOVEMENT branch) -- inline GetByPassColorFilter() const, SetByPassColorFilter(bool) decl 0x004BFB00 (row 0x00881A40).
-stlport/fable_map.h: FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE -- tree member-template find with body visible but __declspec(noinline) (0x00883860); also _DECL (declaration only; not used by the match) (row 0x00881A40).
-stlport/fable_map.h, line 201 REWRITTEN (not only added to): the repo line `#ifdef FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE` becomes the chain `#if defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL)` / `#elif defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE) && defined(_MSC_VER)` / `#elif defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE)`, because the two new opt-ins are alternatives to the same non-const `find` declaration and a second `#ifdef` would declare it twice. The `#elif defined(FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE)` arm, its comment and body, the `#else` default `iterator find(const K& key){return iterator(_M_find(key));}` and the `#endif` are the repo's lines unchanged, so with neither new macro defined the default path and the existing FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE path are token-identical to the repo header (`diff rebuild/include/stlport/fable_map.h hdr/stlport/fable_map.h` shows only line 201 replaced by the new arms).
-stlport/fable_map.h NOINLINE evidence (repair 3): retail calls the find out of line at 0x00881ABB (call 0x00883860; default inline spelling = 609 bytes, 32 hunks) and keeps the result node in edi (0x00881AC0 mov edi,[esp+10h]; 0x00881AC4 cmp edi,[ebx]; 0x00881AC8 add edi,14h); _DECL (opaque call) gives mov eax / cmp eax / lea edi,[eax+14h] (2 hunks). Body visible + __declspec(noinline) reproduces both.
-
-## 0x00492973 (not landed)
+## 0x00492973
 
 engine/CSubtitleRenderer.h: FABLE_RETAIL_CSUBTITLERENDERER_SETTEXTINFO -- nested CSetTextInfo (ctor 0x0048DDF6 / dtor 0x0043E3D0) + GetTextFromTextTag / ProcessEmbeddedGraphicTags / ProcessEmbeddedHighlightTags / InitPlayerMode (private) + SetButton1OverrideText decls (row 0x00492973).
 engine/CMessageEventManager.h: FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDALL -- const member template FindAllMessages(const TFilter&, list<const CMessageEvent*>&) returning const long, decl only (0x00493EAB).
@@ -14,4 +6,5 @@ engine/CMessageEventFilters.h: FABLE_RETAIL_CMESSAGEEVENTFILTERS_ISOFTYPE_CTOR -
 engine/CTCHeroReceiveItems.h: FABLE_RETAIL_CTCHERORECEIVEITEMS_DISPLAYINGITEMS (inside _PICKEDUPITEMS) -- PCurrentItem +0x1C, PersistCurrentItem +0x24, ReceivingItems +0x25, DisplayingItems +0x26, ForceClear +0x27.
 stlport/fable_deque.h: FABLE_RETAIL_STLP_DEQUE_PUSH_BACK_OUTOFLINE -- deque::push_back declared only (0x004941C0); FABLE_RETAIL_STLP_QUEUE -- STLport queue with inline push().
 Repair 3: no header changes (overlay unchanged); RemoveMessage defined inline+noinline in the row against the existing FABLE_RETAIL_CMESSAGEEVENTMANAGER_REMOVE declaration.
+Repair 4: no overlay change; the row also defines the repo header's existing FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE (stlport/fable_containers.h, list::size() via STLport distance/__distance) so FindAllMessages byte-matches 0x00493EAB.
 

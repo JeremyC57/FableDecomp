@@ -37,6 +37,13 @@ public:
  }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDALL
+ // Opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): Ego_r.pdb member template
+ // ??$FindAllMessages@VCMessageEventFilter_IsOfType@@@CMessageEventManager@@QBE?BJABVCMessageEventFilter_IsOfType@@AAV?$list@PBVCMessageEvent@@V?$allocator@PBVCMessageEvent@@@std@@@std@@@Z
+ // (const member, `const long` result, the found events appended to a list<const CMessageEvent*>), COMDAT 0x00493EAB.
+ // Declaration only; a row whose retail TU compiled the body defines it.
+ template<class TFilter> const long FindAllMessages(const TFilter& filter, std::list<const CMessageEvent*>& found) const;
+#endif
 private:
  const CWorld& World;
  std::list<CMessageEvent> Messages;

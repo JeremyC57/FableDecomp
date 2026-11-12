@@ -23,6 +23,11 @@ public:
 #if defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT) || defined(FABLE_RETAIL_YELLFORHELP_UPDATE)
     CMessageEventFilter_IsOfType(EMessageEventType type):Type(type){}
 #endif
+#if defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_ISOFTYPE_CTOR) && !defined(FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT) && !defined(FABLE_RETAIL_YELLFORHELP_UPDATE)
+    // Opt-in (wf13, row 0x00492973 CSubtitleRenderer::SetText): the inline converting constructor alone (the filter built in a
+    // frame slot, `mov dword ptr [ebp+14h],11h`), with the out-of-line operator() below.
+    CMessageEventFilter_IsOfType(EMessageEventType type):Type(type){}
+#endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
     bool operator()(const CMessageEvent& event) const{return Type==event.Type;}
 #else

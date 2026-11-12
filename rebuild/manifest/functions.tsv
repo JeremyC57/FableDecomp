@@ -4114,7 +4114,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004917b5	FormatTextWithGameActionNames	CSubtitleRenderer	__fastcall	CWideString	2	CWideString *,vector<CWideString,std::allocator<CWideString>_> *	1	yes	accepted									
 00491ad2	ProcessEmbeddedHighlightTags	CSubtitleRenderer	__thiscall	void	1	CSubtitleRenderer *	1	yes	accepted									
 00492381	ProcessEmbeddedGraphicTags	CSubtitleRenderer	__thiscall	void	1	CSubtitleRenderer *	1	yes	accepted									
-00492973	CSubtitleRenderer::SetText	CSubtitleRenderer	unknown	undefined	0		0	yes	accepted									
+00492973	SetText	CSubtitleRenderer	unknown	undefined	0		0	yes	accepted									
 00492bab	Clear	CSubtitleRenderer	__thiscall	void	2	CSubtitleRenderer *,bool	1	yes	accepted									
 00492e4b	SetText	CSubtitleRenderer	__thiscall	void	7	CSubtitleRenderer *,CFontBank *,CWideString *,ulong,float,bool,bool	1	yes	accepted									
 00492ed1	SetText	CSubtitleRenderer	__thiscall	void	7	CSubtitleRenderer *,CFontBank *,CCharString *,ulong,float,bool,bool	1	yes	accepted									

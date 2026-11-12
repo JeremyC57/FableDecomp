@@ -1,0 +1,33 @@
+addr       parity           behav  name
+007f0f40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007f0f40   RELOCATION_MATCH PASS   ReturnToDesiredPos
+006b08f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006b08f0   RELOCATION_MATCH PASS   OnSerialise
+00731ea0   WARN RELOC_NAME: ??1CPrimitive@NGraphicAppearance@@QAE@XZ -> 004c4160 labelled 'SPrimitiveHandleHolder_004c4160::~SPrimitiveHandleHolder_004c4160'
+00731ea0   WARN RELOC_NAME: ??0CEnginePrimitiveShadowedSpotLight@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MMMW4EEngineInterpolationSet@@K@Z -> 007324a0 labelled 'CEnginePrimitiveLine::CEnginePrimitiveLine'
+00731ea0   RELOCATION_MATCH PASS   OnAppearanceDraw
+009341c0   RELOCATION_MATCH PASS   TagTarget
+00754050   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00754050   RELOCATION_MATCH PASS   UpdateTurningAnims
+00951d60   RELOCATION_MATCH PASS   IntoHover
+009ccef0   WARN RELOC_NAME: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ -> 0099ed10 labelled 'CCharString::ToLower'
+009ccef0   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+009ccef0   RELOCATION_MATCH PASS   FindIndicesByFilename
+
+WINS: 7
+  007f0f40 RELOCATION_MATCH CTCKrakenTentacle::ReturnToDesiredPos
+  006b08f0 RELOCATION_MATCH CTCPhysicsBase::OnSerialise
+  00731ea0 RELOCATION_MATCH CTCSpotLight::OnAppearanceDraw
+  009341c0 RELOCATION_MATCH CAIStateGroup_MinionKidGroupTag::TagTarget
+  00754050 RELOCATION_MATCH CTCLook::UpdateTurningAnims
+  00951d60 RELOCATION_MATCH CAIStateGroup_JackDragon::IntoHover
+  009ccef0 RELOCATION_MATCH CBankFile::FindIndicesByFilename
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CTCKrakenTentacle_ReturnToDesiredPos_007f0f40
+  CTCPhysicsBase_OnSerialise_006b08f0
+  CTCSpotLight_OnAppearanceDraw_00731ea0
+  CAIStateGroupMinionKidGroupTag_TagTarget_009341c0
+  CTCLook_UpdateTurningAnims_00754050
+  CAIStateGroupJackDragon_IntoHover_00951d60
+  CBankFile_FindIndicesByFilename_009ccef0
