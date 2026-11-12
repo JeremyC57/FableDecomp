@@ -1,5 +1,5 @@
 export const meta = {
-  name: 'author-rows-wf1',
+  name: 'author-rows',
   description: 'Byte-match ten parked rows: scout identities, author each row until it matches (fresh agent with notes if needed), verify with two independent lenses, repair once',
   phases: [
     { title: 'Scout', detail: 'prove each row\'s name, signature, callees and visible callee bodies', model: 'opus' },
@@ -10,9 +10,10 @@ export const meta = {
 }
 
 const S = args.scratch   // the lane scratch directory ($S)
+const WF = args.wf   // the run's directory name under $S/w22 (e.g. 'wf2')
 const ROWS = args.rows
 const MAX_ATTEMPTS = 3
-const ENV = `Start EVERY Bash call with exactly:\n  export S=${S}; source $S/wine/env.sh >/dev/null 2>&1; export S; export W=$S/w22/wf1/ADDR; cd /home/user/FableDecomp\n(with ADDR replaced by your row's 8-hex address). Every Bash call must exit 0 (end pipelines with \`; true\`) and must not print a Python traceback. The repo /home/user/FableDecomp is READ-ONLY for you: never run git, never write under it, never land anything. Write only under $W.`
+const ENV = `Start EVERY Bash call with exactly:\n  export S=${S}; source $S/wine/env.sh >/dev/null 2>&1; export S; export W=$S/w22/${WF}/ADDR; cd /home/user/FableDecomp\n(with ADDR replaced by your row's 8-hex address). Every Bash call must exit 0 (end pipelines with \`; true\`) and must not print a Python traceback. The repo /home/user/FableDecomp is READ-ONLY for you: never run git, never write under it, never land anything. Write only under $W.`
 
 const SCOUT_SCHEMA = { type: 'object', properties: {
   address: { type: 'string' }, module: { type: 'string' }, name: { type: 'string' }, mangled_leaf: { type: 'string' },
@@ -49,7 +50,7 @@ function authorPrompt(r, attempt, history) {
       history.map((h, i) => `  attempt ${i + 1}: ${h.grade}; residue: ${h.residue}; tried: ${h.ideas_tried}; their best next idea: ${h.next_idea}`).join('\n') +
       `\nRead $W/NOTES.md and $W/ATTEMPTS.log first and do NOT repeat those ideas. Start from $W/differ/${r.addr}.cpp (their best source) and change the LEVEL of the idea: callee-body visibility, the real structure re-derived from the disassembly, identities, the TU's flags.`
     : `This is the first authoring attempt on this row. Start from $W/differ/${r.addr}.cpp (the old parked draft).`
-  return `You are a rapid-fire AUTHOR agent for one row of the FableDecomp byte-matching lane (CLAUDE.md describes the project). Row: retail function 0x${r.addr.toUpperCase()}, ${r.length} bytes, manifest label \`${r.module}::${r.name}\` (a hint). Row directory: $W = ${S}/w22/wf1/${r.addr}.
+  return `You are a rapid-fire AUTHOR agent for one row of the FableDecomp byte-matching lane (CLAUDE.md describes the project). Row: retail function 0x${r.addr.toUpperCase()}, ${r.length} bytes, manifest label \`${r.module}::${r.name}\` (a hint). Row directory: $W = ${S}/w22/${WF}/${r.addr}.
 ${ENV.replace(/ADDR/g, r.addr)}
 Read ${S}/w22/WF_BRIEF.md once, quickly, and follow it exactly (above all "Rapid fire", "The lesson of chunk Q32" and "Stay on task"), then read $W/DOSSIER.md (the scout's proven facts for this row).
 ${prev}
@@ -61,7 +62,7 @@ Either way append a short section to $W/NOTES.md (what made it match or what blo
 }
 
 function verifyPrompt(r, lens, a) {
-  const common = `You are an independent VERIFIER (${lens} lens) for one matched row of the FableDecomp byte-matching lane (CLAUDE.md describes the project and its rules). Row 0x${r.addr.toUpperCase()}, directory $W = ${S}/w22/wf1/${r.addr}. An author agent reports it MATCHED as \`${a.module || r.module}::${a.name || r.name}\`${a.flags && a.flags.length ? ' with flags ' + a.flags.join(' ') : ''}; its hand-back is $W/payload.json + $W/oracle.tsv (+ $W/hdr/ overlay, $W/NOTES.md, $W/DOSSIER.md).
+  const common = `You are an independent VERIFIER (${lens} lens) for one matched row of the FableDecomp byte-matching lane (CLAUDE.md describes the project and its rules). Row 0x${r.addr.toUpperCase()}, directory $W = ${S}/w22/${WF}/${r.addr}. An author agent reports it MATCHED as \`${a.module || r.module}::${a.name || r.name}\`${a.flags && a.flags.length ? ' with flags ' + a.flags.join(' ') : ''}; its hand-back is $W/payload.json + $W/oracle.tsv (+ $W/hdr/ overlay, $W/NOTES.md, $W/DOSSIER.md).
 ${ENV.replace(/ADDR/g, r.addr)}
 Do not trust the author's report: check the hand-back yourself and try to REFUTE it. You must NOT edit the row, payload.json, oracle.tsv or hdr/; write scratch files only under $W/verify_${lens}/. Report every problem as one concrete sentence in \`issues\`; \`ok\` is true only if you found none that must be fixed before landing.`
   if (lens === 'mechanical') return common + `
@@ -85,7 +86,7 @@ Checks (read the evidence yourself):
 }
 
 function repairPrompt(r, a, issues) {
-  return `You are a REPAIR agent for one matched row of the FableDecomp byte-matching lane (CLAUDE.md describes the project). Row 0x${r.addr.toUpperCase()}, directory $W = ${S}/w22/wf1/${r.addr}; it grades MATCH as \`${a.module || r.module}::${a.name || r.name}\` and is in $W/payload.json, but independent verifiers found these problems that must be fixed before it can land:
+  return `You are a REPAIR agent for one matched row of the FableDecomp byte-matching lane (CLAUDE.md describes the project). Row 0x${r.addr.toUpperCase()}, directory $W = ${S}/w22/${WF}/${r.addr}; it grades MATCH as \`${a.module || r.module}::${a.name || r.name}\` and is in $W/payload.json, but independent verifiers found these problems that must be fixed before it can land:
 ${issues.map((x, i) => `  ${i + 1}. ${x}`).join('\n')}
 ${ENV.replace(/ADDR/g, r.addr)}
 Read ${S}/w22/WF_BRIEF.md ("Rapid fire" and the Rules / Output sections) and $W/NOTES.md. Fix every listed problem while KEEPING the byte match: edit the source / test / overlay, regrade after every edit with \`W=$W python3 $S/tools/fg.py ${r.addr} '<leaf>' <src.cpp> --note "repair: <what>"\` (it must stay MATCH / RELOCATION_MATCH, also with \`LANDVERIFY_STRICT_HEADERS=1\`), recheck the test with \`python3 $S/tools/vt.py ${r.addr} <test.cpp>\`, then rewrite the hand-back with \`python3 $S/tools/addmatch.py $W ${r.addr} '<module>' '<method only>' <src.cpp> <test.cpp> [--flags ...]\`. A problem you believe is not real: do not change the row for it, explain why in $W/NOTES.md under "Verifier findings not applied" with evidence. Same hard rules as the author (plain C++, no local model of a header class, no stand-in bodies, exact PDB names, nothing written under the repo, no git). Return the structured result; \`status\` is MATCH only if the final source still grades MATCH / RELOCATION_MATCH.`

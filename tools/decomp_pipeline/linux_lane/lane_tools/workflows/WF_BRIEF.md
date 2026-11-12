@@ -7,7 +7,7 @@ VC7.1 compiles to the retail bytes. Your prompt gives the row's address and its 
   retail's compiler could see, sibling landed rows, flags). Trust it as a starting point, verify what you rely on;
 - `NOTES.md`, `ATTEMPTS.log` -- what earlier agents on this row tried (do not repeat it);
 - `hdr/` -- your header overlay (copies of repo headers plus `#ifdef FABLE_RETAIL_*` opt-ins), graded automatically by fg.py.
-The oracle bytes are registered in $S/batch/wf1_oracle.tsv (fg.py / q.py find them by address).
+The oracle bytes are registered in $S/batch/<run>_oracle.tsv (fg.py / q.py find them by address).
 "Ported" means: the row uses the shared `rebuild/include/engine/<Class>.h` headers instead of stand-in structs in its own file, with
 callee names and signatures corrected from the PDB extracts. Do that first; every recent match came from it plus the check-list in
 "The lesson of chunk Q32" below.
