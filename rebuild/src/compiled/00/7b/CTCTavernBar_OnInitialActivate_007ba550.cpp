@@ -82,8 +82,8 @@ struct CGraphic {
 };
 class CThing;
 class CTCNamedUserActionPoints { public:
-    bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index, long flags,
-                                 bool reserve);         // 0x007FF190
+    bool GetFreeNamedActionPoint(CThing& user, C3DVector& pos, CRightHandedSet& rh, CCharString name, long& index, long flags,
+                                 bool reserve);   // 0x007FF190 ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z (Ego_r.pdb; NF28: references)
 };
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -222,7 +222,7 @@ void CTCTavernBar::OnInitialActivate()
     long index;
     for (;;) {
         CThing* parent = ParentThing;
-        if (!points->GetFreeNamedActionPoint(parent, &pos, &rh, "ACTION_POINT_JUGEMPTY", &index, 0, true))
+        if (!points->GetFreeNamedActionPoint(*parent, pos, rh, "ACTION_POINT_JUGEMPTY", index, 0, true))
             break;
         long defIndex = GetWorld().PeekDefinitionManager().GetDefGlobalIndexFromName("OBJECT_VILLAGE_TAVERN_JUG");
         long player = PeekPlayerManager().GetMainPlayer().GetNumber();

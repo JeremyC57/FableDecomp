@@ -197,7 +197,7 @@ class CWorld { public:
     CThingSearchTools* ThingSearchTools;              // +0x20
 };
 class CTCHealLife { public:
-    void SetState(long state);                        // 0x007C3EA0
+    void SetAICast(long spellLevel);                  // 0x007C3EA0 ?SetAICast@CTCHealLife@@QAEXJ@Z (Ego_r.pdb / FableWin.pdb; NF28: was SetState)
 };
 
 namespace NCreatureMode {
@@ -252,7 +252,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
             }
             if (!m_pThing->HasTC(0x99)) {
                 CTCHealLife* heal = (CTCHealLife*)m_pThing->AddTC("CTCHealLife", true, 0);
-                heal->SetState(1);
+                heal->SetAICast(1);
             }
         }
     }

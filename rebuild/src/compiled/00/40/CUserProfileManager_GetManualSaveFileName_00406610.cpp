@@ -30,11 +30,11 @@ struct ScopedWS {
 };
 
 class CUserProfileManager { public:
-    CWS GetManualSaveFileName(long slot);
+    CWS GetManualSaveFileName(long slot) const;   // const: Ego_r.pdb 0x00405270 / FableWin.pdb 0x0187B5B0 ?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z (NF28)
 };
 
 // member (thiscall): this in ECX, hidden return pointer as first stack arg.
-CWS CUserProfileManager::GetManualSaveFileName(long slot)
+CWS CUserProfileManager::GetManualSaveFileName(long slot) const
 {
     CWSraw a;
     WSctor_0099aed0(&a);

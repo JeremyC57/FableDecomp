@@ -43,21 +43,18 @@ struct CThingFilter_HasTCOfLeafType {       // CThingFilter_HasTCOfLeafType<CTCA
 };
 
 class CThingSearchTools { public:
-    void GetAllThings(const CFilter_Bind2& filter, CThingList& out);                  // 0x007EA040
-    void GetAllThings(const CThingFilter_HasTCOfLeafType& filter, CThingList& out);   // 0x007EA0E0
+    void GetAllThings(const CFilter_Bind2& filter, CThingList& out) const;            // 0x007EA040
+    void GetAllThings(const CThingFilter_HasTCOfLeafType& filter, CThingList& out) const;   // 0x007EA0E0
 };
 
 extern CThingList g_AvoidRegionThings;      // 0x013BAEFC (CTCAvoidRegionExit static)
 extern CThingList g_ScriptedHookThings;     // 0x013BAEF8 (CTCAvoidRegionExit static)
 
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                    // +0x04
-protected:
-    const CWorldMap& PeekWorldMap() const;  // 0x00686D20 Ego_r/FableWin ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (protected)
-public:
-    CThingSearchTools* GetThingSearchTools() const;   // 0x00686D90
-};
+// CTCBase: engine/CTCBase.h (FABLE_RETAIL_CTCBASE): PeekWorldMap 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ and
+//   PeekThingSearchTools 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r.pdb / FableWin.pdb; NF28: was
+//   spelled GetThingSearchTools() const returning a pointer).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
 class CTCAvoidRegionExit : public CTCBase { public:
     void RebuildStaticThingLists();
@@ -67,8 +64,8 @@ void CTCAvoidRegionExit::RebuildStaticThingLists()
 {
     g_AvoidRegionThings.clear();
     g_ScriptedHookThings.clear();
-    GetThingSearchTools()->GetAllThings(
+    PeekThingSearchTools().GetAllThings(
         CFilter_Bind2(CThingFilter_HasTC(99), CThingFilter_InMap(PeekWorldMap(), PeekWorldMap().GetLoadedRegion())),
         g_AvoidRegionThings);
-    GetThingSearchTools()->GetAllThings(CThingFilter_HasTCOfLeafType(100), g_ScriptedHookThings);
+    PeekThingSearchTools().GetAllThings(CThingFilter_HasTCOfLeafType(100), g_ScriptedHookThings);
 }

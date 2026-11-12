@@ -301,6 +301,13 @@ protected:
     void CreatePPhysicsMeshInfo(const class CEngineGraphic& graphic);   // 0x006B05A0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_SETPHYSICSMESHINFOFROMGRAPHIC
+    // NF28 (2026-11-12, row 0x006B08E0): Ego_r.pdb 0x006ED880 / FableWin.pdb 0x02470D30
+    // ?SetPhysicsMeshInfoFromGraphic@CTCPhysicsBase@@QAEXABVCEngineGraphic@@@Z (public, non-virtual), the 5-byte `jmp` onto
+    // CreatePPhysicsMeshInfo 0x006B05A0. Declaration only: no layout change.
+public:
+    void SetPhysicsMeshInfoFromGraphic(const class CEngineGraphic& graphic);   // 0x006B08E0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
 #else

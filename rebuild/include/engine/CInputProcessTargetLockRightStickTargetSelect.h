@@ -11,6 +11,11 @@
 class CInputProcessTargetLockRightStickTargetSelect : public CInputProcessGameBase {
 public:
     CInputProcessTargetLockRightStickTargetSelect(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#if defined(FABLE_RETAIL_CINPUTPROCESSTARGETLOCKRIGHTSTICKTARGETSELECT_ADDTOINTERFACE) && defined(FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE)
+    // NF28 opt-in (row 0x00688A60): Ego_r.pdb 0x006B41D0 ?AddToInterface@CInputProcessTargetLockRightStickTargetSelect@@UAE_NAAVCInputProcessManager@@@Z,
+    // the override of CInputProcessGameBase::AddToInterface 0x00687A70 (tail-called). Declaration only: no layout change.
+    virtual bool AddToInterface(CInputProcessManager& manager);          // 0x00688A60
+#endif
     bool ChangedTargetRight;                                        // +0x28
     bool ChangedTargetLeft;                                         // +0x29
 };

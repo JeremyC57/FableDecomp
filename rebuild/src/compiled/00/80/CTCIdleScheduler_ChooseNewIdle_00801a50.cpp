@@ -113,7 +113,7 @@ class CDefClassBase : public CDefPointeeBase { public:
 };
 class CIdleSchedulerDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
-    CWeightMap IdleWeights;                          // +0x3c
+    CWeightMap Period;                               // +0x3c (Ego_r.pdb CIdleSchedulerDef::Period, map<EIdleStateGroup,long>; NF28: was IdleWeights)
 };
 class CThingBaseDef : public CDefClassBase { public: };
 class CDefinitionManager { public:
@@ -124,8 +124,8 @@ class CGameDefinitionManager : public CDefinitionManager
 };
 class CThing { public:
     unsigned char _pad00[0x8c];
-    unsigned short DefIndex;                         // +0x8c
-    long GetDefIndex() const { return DefIndex; }
+    unsigned short DefGlobalIndex;                         // +0x8c
+    unsigned long GetDefGlobalIndex() const { return DefGlobalIndex; }   // FableWin.pdb ?GetDefGlobalIndex@CThing@@QBEKXZ (inline)
 };
 
 class CTCBase
@@ -173,13 +173,13 @@ template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CIdleSchedulerDef
 void CTCIdleScheduler::ChooseNewIdle()
 {
     FrameLastChecked = GetWorld().GetFrame();
-    if (Preferred != 0 && ParentThing->DefIndex != 0) {
+    if (Preferred != 0 && ParentThing->DefGlobalIndex != 0) {
         CDefPointer<const CIdleSchedulerDef> idleDef;
         CDefPointer<const CThingBaseDef> thingDef;
         CThing* thing = ParentThing;
-        GetDefinitionManager().GetDef(thing->GetDefIndex(), &thingDef);
+        GetDefinitionManager().GetDef(thing->GetDefGlobalIndex(), &thingDef);
         if (thingDef->GetSubDef(&idleDef)) {
-            const CWeightMap& weights = idleDef->IdleWeights;
+            const CWeightMap& weights = idleDef->Period;
             if (Contains(weights, Preferred)) {
                 long& total = IdleStatesWeight[Preferred];
                 CWeightMapIterator found = weights.find(Preferred);

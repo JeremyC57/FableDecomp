@@ -1,0 +1,81 @@
+address	change	grade	test	grades_used	note
+0x00406610	member respell	RELOCATION_MATCH	PASS (rows test)	3	made const (QBE) per the PDB; test respelled
+0x00407370	self rename	RELOCATION_MATCH	PASS (catalog test)	3	
+0x00408340	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	SoundMutedChanged->ApplyValues
+0x004083B0	self rename + callee respell	RELOCATION_MATCH	PASS (rows test)	4	CUserProfileManager_Helper->ApplyValues; own name SetDefaultValuesAudio (repair 2: was wrongly SetDefaultValuesGameplay, which is 0x00408360); shared header + AUDIODEFAULTS opt-in; test respelled
+0x004B3A20	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	Contains->IsSectionRegisteredLongName
+0x004B4A10	member respell	RELOCATION_MATCH	PASS (catalog test)	3	stand-in body GetActiveQuestInfo -> IsQuestRegistered(const CCharString&) const
+0x00542330	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	UpdateFont->GetDataFromDef
+0x00543B30	member respell	RELOCATION_MATCH	PASS (catalog test)	3	embedded 00542330 TU copy: UpdateFont -> GetDataFromDef
+0x00669D30	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	4	Find->find; g_EmptyString->NullChar
+0x00687A70	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	3	Helper->AddToInterface
+0x00688A60	self rename + callee respell	RELOCATION_MATCH	PASS (rows test)	3	base_ati->AddToInterface
+0x00688EB0	member respell	RELOCATION_MATCH	PASS (catalog test)	3	virtual slot-33 call GetTargetThing -> GetPTargetedThing() const (no relocation)
+0x0068EAF0	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	4	AddToInterface->AddToInterface; repair: on engine/CInputProcessWatchForWillChargeUpThirdPersonModeTermination.h (new _ADDTOINTERFACE opt-in), local model removed
+0x00697F30	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	3	Helper6978d0->GetInterpolatedCamera
+0x006A7600	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	4	cons_construct->AreThingsEnemies
+0x006B08E0	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	3	_ForwardTarget_006b05a0->CreatePPhysicsMeshInfo
+0x0078B2A0	self rename	RELOCATION_MATCH	PASS (catalog test)	3	
+0x0078E820	member respell	RELOCATION_MATCH	PASS (catalog test)	3	virtual slot-33 call GetTargetThing -> GetPTargetedThing() const (no relocation)
+0x00799900	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetThingSearchTools->PeekThingSearchTools; GetPBestThingInRoughArea->GetPBestThingInRoughArea; GetPFirstThingInRoughArea->GetPFirstThingInRoughArea
+0x007A69F0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	CreatePPhysicsMeshInfo->SetPhysicsMeshInfoFromGraphic
+0x007BA3C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetFreeNamedActionPoint->GetFreeNamedActionPoint
+0x007BA550	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetFreeNamedActionPoint->GetFreeNamedActionPoint
+0x007BE0F9	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	SetHitter->SetThingHitting
+0x007C3EA0	self rename	MATCH	PASS (catalog test)	3	
+0x007D83C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetFreeNamedActionPoint->GetFreeNamedActionPoint
+0x007E92D0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetThingSearchTools->PeekThingSearchTools; GetAllThings->GetAllThings
+0x007EDEE0	member respell	RELOCATION_MATCH	PASS (catalog test)	3	virtual slot-33 call GetTargetThing -> GetPTargetedThing() const (no relocation)
+0x00801A50	member respell	RELOCATION_MATCH	PASS (catalog test)	3	member respell (Period, DefGlobalIndex / GetDefGlobalIndex)
+0x00811760	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	SetWeapon->SetWeapon
+0x00838BC0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	SetWeapon->SetWeapon
+0x008685F0	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	3	_7CIntelligentPointer->_7?$CIntelligentPointer
+0x00878B60	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetCamPosOffsetXY->GetCamPosOffsetXY
+0x008DDD70	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	SetState->SetAICast
+0x008E0060	member respell	RELOCATION_MATCH	PASS (catalog test)	3	declaration SetState -> SetAICast (no call emitted)
+0x008EC9C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	CreatePPhysicsMeshInfo->SetPhysicsMeshInfoFromGraphic
+0x008F1250	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetFreeNamedActionPoint->GetFreeNamedActionPoint
+0x009098E0	member respell	RELOCATION_MATCH	PASS (catalog test)	3	member respell (PoweredUp / IsPoweredUp, Creature)
+0x009236C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	4	IS_THING_ALIVE->$IS_THING_ALIVE
+0x009672C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetFreeNamedActionPoint->GetFreeNamedActionPoint
+0x00967650	callee respell	RELOCATION_MATCH	PASS (catalog test)	4	IS_THING_ALIVE_Pointer_0078b2a0->$IS_THING_ALIVE
+0x00968860	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	GetFreeNamedActionPoint->GetFreeNamedActionPoint
+0x009B4BD0	self rename	RELOCATION_MATCH	PASS (catalog test)	4	repair: CInstantiatedDefInfo from engine/CDefinitionManager.h (new _CINSTANTIATEDEFINFO_DECL opt-in), local shell removed
+0x009BE590	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x009BE610	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x009BE6C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x009BE750	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x009BEBB0	callee respell	RELOCATION_MATCH	PASS (catalog test)	4	g_D3DFormatInfo->GD3DFormats
+0x009D5A90	self rename	RELOCATION_MATCH	PASS (catalog test)	3	
+0x009D5B60	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	KickPendingReads->RestartAbortedReads
+0x009D61F0	callee respell	RELOCATION_MATCH	PASS (catalog test)	4	HasReadFinished->RemoveObject; Free_00a62ed0->FreeResource
+0x009E3790	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x009E3830	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x009E3870	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x009F0570	self rename	RELOCATION_MATCH	PASS (catalog test)	3	
+0x009FBBD0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	ConvertPFDDataToRGB->ConvertPFDDataToRGB
+0x00A2F190	callee respell	RELOCATION_MATCH	PASS (catalog test)	6	Free_00a62ed0->FreeResource; repair: on engine/CMovableResourceMemoryPool.h (_FREERESOURCE opt-in, as 009d61f0), local pool and CCharString models removed
+0x00A68370	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_D3DFormatInfo->GD3DFormats
+0x00AE9450	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	3	Destroy_00ae91d0->DeleteData
+0x00BDD8E0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BDF9B0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BE5BB0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BEA7E0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BEAA00	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF36C0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF3790	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF6260	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF62E0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF8C10	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF8D10	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF9900	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF9980	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF9A00	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BF9B40	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BFD160	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BFD3B0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BFDC90	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BFDCC0	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00BFDD40	callee respell	RELOCATION_MATCH	PASS (catalog test)	3	g_pEngine_01436ea8->g_pLandscapeRenderer
+0x00CD2770	self rename + callee respell	RELOCATION_MATCH	PASS (catalog test)	3	->ReleaseData
+0x00EB53A0	self rename	RELOCATION_MATCH	PASS (catalog test)	4	

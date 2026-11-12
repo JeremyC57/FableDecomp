@@ -12,11 +12,8 @@ class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 
-struct CEngineGlobal_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemoryManager;   // +0x6b0
-};
-extern CEngineGlobal_01436ea8* g_pEngine_01436ea8;   // 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 
 class CEngineLandscapePatch { public:
     unsigned char        _pad[8];
@@ -35,7 +32,7 @@ void CEngineLandscapePatch::DeleteLayerMeshes()
         m_layerCount = 0;
     }
     if (m_pLayerBlock) {
-        g_pEngine_01436ea8->m_pLandscapeMemoryManager->FreeVirtual(m_pLayerBlock);
+        g_pLandscapeRenderer->MemoryManager->FreeVirtual(m_pLayerBlock);
         m_pLayerBlock = 0;
     }
 }

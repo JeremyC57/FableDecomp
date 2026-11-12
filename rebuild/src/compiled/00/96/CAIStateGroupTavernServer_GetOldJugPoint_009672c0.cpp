@@ -60,8 +60,8 @@ class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830 (hidden result in ecx)
 
 class CTCNamedUserActionPoints { public:               // interface 0x2E
-    bool GetFreeNamedActionPoint(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, CCharString name,
-                                 long* actionPointIndex, long slot, bool reserve);   // 0x007FF190
+    bool GetFreeNamedActionPoint(CThing& creature, C3DVector& pos, CRightHandedSet& rhSet, CCharString name,
+                                 long& actionPointIndex, long slot, bool reserve);   // 0x007FF190 ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z (Ego_r.pdb; NF28: references)
 };
 
 struct CAIStateGroup_TavernServer : CAIStateGroupBase {
@@ -90,5 +90,5 @@ bool CAIStateGroup_TavernServer::GetOldJugPoint()
     name += "_0";
     name += GFIntToCharString(JugIndex + 1);
     CThing* creature = PBrain->PCreature;
-    return points->GetFreeNamedActionPoint(creature, &BarPos, &BarRHSet, name, &BarActionPointIndex, 0, true);
+    return points->GetFreeNamedActionPoint(*creature, BarPos, BarRHSet, name, BarActionPointIndex, 0, true);
 }

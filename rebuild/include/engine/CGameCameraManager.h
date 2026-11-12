@@ -65,6 +65,11 @@ private:
  CCamera GetInterpolatedCamera(float interpolate, const CCamera& camera, const CCamera& old_camera) const;   // 0x006978D0
 #endif
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_GETRENDERCAMERA
+ // NF28 opt-in (row 0x00697F30): Ego_r.pdb 0x006BECB0 / FableWin.pdb ?GetRenderCamera@CGameCameraManager@@UBE?AVCCamera@@M@Z, the
+ // override of CAIGameCameraBase slot 1 (pure there). Declaration only: no layout change.
+ virtual CCamera GetRenderCamera(float interpolation) const;   // 0x00697F30
+#endif
  NCameraModes::CTools& GetCameraTools(){return CamTools;}
  NCameraModes::CBase* GetCameraMode(){return CurrentMode.Get();}
 };

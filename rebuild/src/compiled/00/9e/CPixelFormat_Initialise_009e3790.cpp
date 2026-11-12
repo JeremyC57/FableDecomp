@@ -12,19 +12,8 @@
 // `push ecx` slot and only written on the found path. `this` from engine/CPixelFormat.h.
 #include "engine/CPixelFormat.h"
 
-struct CD3DFormatInfo {
-    long          D3DFormat;                       // +0x00 _D3DFORMAT
-    long          PFType;                          // +0x04 EPixelFormatType (2 = RGB)
-    long          BitDepth;                        // +0x08 (-1 terminates the table)
-    long          AlphaBits;                       // +0x0c
-    long          RBits;                           // +0x10
-    long          GBits;                           // +0x14
-    long          BBits;                           // +0x18
-    long          StencilBits;                     // +0x1c
-    bool          Linear;                          // +0x20
-};
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (NF28: was a local struct model and g_D3DFormatInfo)
 
-extern const CD3DFormatInfo g_D3DFormatInfo[];     // 0x0129BA40
 
 struct CPixelFormat_Methods : CPixelFormat {
     void Initialise(long rBits, long gBits, long bBits, long aBits, bool linear);
@@ -33,7 +22,7 @@ struct CPixelFormat_Methods : CPixelFormat {
 void CPixelFormat_Methods::Initialise(long rBits, long gBits, long bBits, long aBits, bool linear)
 {
     long index = 0;
-    const CD3DFormatInfo* info = g_D3DFormatInfo;
+    const CD3DFormatInfo* info = GD3DFormats;
     do {
         if (info->PFType == 2 && info->RBits == rBits && info->GBits == gBits && info->BBits == bBits && info->AlphaBits == aBits) {
             FormatIndex = index;

@@ -63,7 +63,7 @@ public:
     CIntelligentPointer<CThing> PThingHitting;      // +0x58
     CHitParameters(const CHitParameters& other);    // 0x00812170
     bool HasDamageAttribute4() const;               // 0x008688C0
-    void SetWeapon(CThing* weapon);                 // 0x00868CE0
+    void SetWeapon(CThing& weapon);                 // 0x00868CE0 ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z (Ego_r.pdb / FableWin.pdb; NF28: reference, was CThing*)
 };
 
 #include "engine/CCountedPointer.h"
@@ -95,6 +95,6 @@ NEntityEvents::CEventHitBase::CEventHitBase(const CHitParameters& params)
         CTCWeaponHolder_77* holder = hitter->GetTC<CTCWeaponHolder_77>(0x77);
         CThing* weapon = holder->GetPWeapon();
         if (weapon && !weapon->m_dead)
-            PHitParams->SetWeapon(holder->GetPWeapon());
+            PHitParams->SetWeapon(*holder->GetPWeapon());
     } while (0);
 }

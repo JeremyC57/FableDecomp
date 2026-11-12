@@ -1,5 +1,6 @@
 // CUserProfileManager::ApplyValues() -- push the profile's live values (the new-profile set when UseNewProfileValues) to the engine: vibration flag, gamma (renderer or display manager), the five sound-category volumes (zero when muted) plus the headphones flag, then a main-player refresh
-// Leaf: ?ApplyValues@CUserProfileManager@@QAEXXZ
+// Leaf: ?ApplyValues@CUserProfileManager@@IAEXXZ
+// NF28 (2026-11-12, queue land1011eg): protected (IAE), as Ego_r.pdb 0x00405900 / FableWin.pdb 0x01882CF0 spell it (was public QAE).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -85,6 +86,7 @@ class CUserProfileManager { public:
     const float& GetMusicVolume() const { return UseNewProfileValues ? MusicVolumeNewProfile : MusicVolume; }
     const float& GetDialogueVolume() const { return UseNewProfileValues ? DialogueVolumeNewProfile : DialogueVolume; }
     bool  GetUsingHeadPhones() const { return UseNewProfileValues ? UsingHeadPhonesNewProfile : UsingHeadPhones; }
+protected:
     void ApplyValues();
 };
 

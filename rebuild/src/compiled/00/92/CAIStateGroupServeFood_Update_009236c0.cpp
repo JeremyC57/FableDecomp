@@ -80,11 +80,11 @@ class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject> (vtable 0x0125A858)
+struct CIntelligentPointerThingObject : CIntelligentPointer<CThingObject> {   // CIntelligentPointer<CThingObject> (vtable 0x0125A858); local CThing has no CBaseObject base, so the header (T*) ctor cannot be used
     virtual void v00();
-    FABLE_FORCEINLINE CIntelligentPointerThingObject(CThingObject* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerThingObject(CThingObject* item) { SetPItem((CBaseObject*)item); }
 };
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThingObject& pointer);   // 0x0078B2A0
+template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // IS_THING_ALIVE<CIntelligentPointer<CThingObject> > 0x0078B2A0 (FableWin 0x01DE6D80)
 class CTCCarrying { public:                            // interface 0x46
     CThing* RemoveThingFromPrimarySlot(long flags);                     // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
@@ -170,7 +170,7 @@ void CAIStateGroup_ServeFood::Update()
                 CTCCarrying* carrying;
                 GetCreature()->GetInterface(&carrying, 0x46);
                 carrying->RemoveThingFromPrimarySlot(0);
-                if (IS_THING_ALIVE(food))
+                if (IS_THING_ALIVE<CIntelligentPointer<CThingObject> >(food))
                     ((CThing*)food.GetPItem())->Kill(true);
             }
             table->NotifyFoodServed(TaskIndex, 0);

@@ -11,11 +11,8 @@
 class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, void* owner);   // 0x00BD9AB0
 };
-struct SEngine_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
-};
-extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 
 struct CEngineWaterBackgroundSubPatch_OnPostRelocation : CEngineWaterBackgroundSubPatch {
     void OnPostRelocation();
@@ -23,7 +20,7 @@ struct CEngineWaterBackgroundSubPatch_OnPostRelocation : CEngineWaterBackgroundS
 
 void CEngineWaterBackgroundSubPatch_OnPostRelocation::OnPostRelocation()
 {
-    CEngineLandscapeMemoryManager* memory = g_pEngine_01436ea8->m_pLandscapeMemory;
+    CEngineLandscapeMemoryManager* memory = g_pLandscapeRenderer->MemoryManager;
     for (long i = 0; i < 4; ++i) {
         if (BridgeIndexBuffers[i])
             memory->RebindBlockOwner(BridgeIndexBuffers[i], this);

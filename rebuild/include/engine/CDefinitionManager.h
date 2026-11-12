@@ -19,6 +19,12 @@ class CDefString;
 class CDefinitionManager : public CResourceList {
     friend class CDefClassBase;
 public:
+#if defined(FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL) && !defined(FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF)
+    // agentNF28 (row 0x009B4BD0 vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow): the nested record named
+    // only, for TUs that use pointers to it without its layout (Ego_r.pdb CDefinitionManager::CInstantiatedDefInfo; InstantiatedDefs
+    // +0xA4 is CArray<CInstantiatedDefInfo*>). Declaration only, no layout change.
+    class CInstantiatedDefInfo;
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
     // Retail opt-in (agentNF3, rows 0x006B3600 / 0x006B3680 / 0x006B37A0 / 0x006B3800 / 0x006B38D0, the CEnvironment theme setters):
     // Ego_r.pdb / FableWin.pdb ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z (const), out of line in retail at
@@ -236,6 +242,12 @@ struct _func___cdecl_void_CCharString_ptr;
 #pragma pack(push, 1)
 class CDefinitionManager {
 public:
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL
+    // agentNF28 (row 0x009B4BD0 vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow): the nested record named
+    // only, for TUs that use pointers to it without its layout (Ego_r.pdb CDefinitionManager::CInstantiatedDefInfo; InstantiatedDefs
+    // +0xA4 is CArray<CInstantiatedDefInfo*>). Declaration only, no layout change.
+    class CInstantiatedDefInfo;
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
     // Retail opt-in (agentNF3, rows 0x006B3600 / 0x006B3680 / 0x006B37A0 / 0x006B3800 / 0x006B38D0, the CEnvironment theme setters):
     // Ego_r.pdb / FableWin.pdb ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z (const), out of line in retail at

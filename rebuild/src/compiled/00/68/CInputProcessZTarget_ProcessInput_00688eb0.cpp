@@ -47,7 +47,8 @@ struct CTCHeroTargeting {                          // interface 8 (descriptive)
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
     virtual void v32();
-    virtual CThing* GetTargetThing();              // slot 33 (+0x84) (descriptive)
+    virtual CThing* GetPTargetedThing() const;     // slot 33 (+0x84) ?GetPTargetedThing@CTCTargetingBase@@UBEPAVCThing@@XZ (Ego_r.pdb 0x004FDE88;
+                                                   //   engine/CTCTargetingBase.h; NF28: was the descriptive GetTargetThing)
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -107,7 +108,7 @@ void CInputProcessZTarget::ProcessInput(const CInputEvent& event, CProcessedInpu
         CThing* target = 0;
         CTCHeroTargeting* targeting;
         if (IS_THING_ALIVE(PCreature) && ((CThing*)PCreature.GetPItem())->GetInterface(&targeting, 8))
-            target = targeting->GetTargetThing();
+            target = targeting->GetPTargetedThing();
         {
             CIntelligentPointer pointer;
             pointer.SetPItem((CBaseObject*)target);
@@ -119,7 +120,7 @@ void CInputProcessZTarget::ProcessInput(const CInputEvent& event, CProcessedInpu
     if (IsEventButtonHeld(event) && IsEventGameAction(0x4a, event)) {
         CTCHeroTargeting* targeting;
         if (IS_THING_ALIVE(PCreature) && ((CThing*)PCreature.GetPItem())->GetInterface(&targeting, 8)) {
-            if (!(PTarget != targeting->GetTargetThing()) && DeactivateHoldTimer != -1) {
+            if (!(PTarget != targeting->GetPTargetedThing()) && DeactivateHoldTimer != -1) {
                 DeactivateHoldTimer = -1;
                 DeactivateZTarget(processed);
             }

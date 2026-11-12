@@ -16,11 +16,8 @@ class CEngineLandscapeMemoryManager { public:
     void DisposeVertexBuffer(SVertexBufferNode_00bdd8e0* node, CVertexBufferChainOwner_00bdd8e0* owner);   // 0x00BD9AB0
 };
 
-struct CEngineGlobal_01436ea8 {
-    unsigned char                  _pad[0x6b0];
-    CEngineLandscapeMemoryManager* m_pLandscapeMemoryManager;   // +0x6b0
-};
-extern CEngineGlobal_01436ea8* g_pEngine_01436ea8;   // 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 
 struct CVertexBufferChainOwner_00bdd8e0 {
     unsigned char              _pad[8];
@@ -30,7 +27,7 @@ struct CVertexBufferChainOwner_00bdd8e0 {
 
 void CVertexBufferChainOwner_00bdd8e0::DestroyProceduralTextureVertexBuffers()
 {
-    CEngineLandscapeMemoryManager* manager = g_pEngine_01436ea8->m_pLandscapeMemoryManager;
+    CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
     for (SVertexBufferNode_00bdd8e0* node = m_pHead; node; node = node->m_pNext)
         manager->DisposeVertexBuffer(node, this);
 }

@@ -13,21 +13,9 @@
 // symbol ?Initialise@CPixelFormat@@).
 // Leaf: ?Initialise@CPixelFormat
 
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_FORCE_DWORD = 0x7fffffff };
 
-struct CD3DFormatInfo {                            // 36-byte entry of the format table
-    _D3DFORMAT D3DFormat;                          // +0x00
-    long PFType;                                   // +0x04 EPixelFormatType
-    long BitDepth;                                 // +0x08 (-1 terminates the table)
-    long AlphaBits;                                // +0x0c
-    long RBits;                                    // +0x10
-    long GBits;                                    // +0x14
-    long BBits;                                    // +0x18
-    long StencilBits;                              // +0x1c
-    bool Linear;                                   // +0x20
-};
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (NF28: was a local struct model and g_D3DFormatInfo)
 
-extern const CD3DFormatInfo g_D3DFormatInfo[];     // 0x0129BA40
 
 class CPixelFormat
 {
@@ -41,10 +29,10 @@ static inline long FindFormatIndex(_D3DFORMAT format)
     long index = 0;
     do
     {
-        if (g_D3DFormatInfo[index].D3DFormat == format)
+        if (GD3DFormats[index].D3DFormat == format)
             return index;
         ++index;
-    } while (g_D3DFormatInfo[index].BitDepth != -1);
+    } while (GD3DFormats[index].BitDepth != -1);
     return -1;
 }
 

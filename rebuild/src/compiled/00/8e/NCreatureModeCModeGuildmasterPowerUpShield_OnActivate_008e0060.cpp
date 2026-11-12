@@ -187,7 +187,7 @@ class CWorld { public:
     unsigned long* GetWorldSeed() const;                   // 0x0049D810
 };
 class CTCHealLife { public:
-    void SetState(long state);                        // 0x007C3EA0
+    void SetAICast(long spellLevel);                  // 0x007C3EA0 ?SetAICast@CTCHealLife@@QAEXJ@Z (Ego_r.pdb / FableWin.pdb; NF28: was SetState)
 };
 
 

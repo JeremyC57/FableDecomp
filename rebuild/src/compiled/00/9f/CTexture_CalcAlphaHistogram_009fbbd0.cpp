@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FBBD0, 250 bytes (+2 int3), `ret 4`.
 // Callees: IDirect3DTexture9::GetLevelDesc (COM slot 17, +0x44; twice), LockRect (slot 19, +0x4c) and UnlockRect (slot 20,
 //   +0x50); CPixelFormat::Initialise(D3DFORMAT) @ 0x009E3830 (through a converting constructor), CPixelFormat::
-//   ConvertPFDDataToRGB(unsigned char*, CRGBColour*) const @ 0x009E3DF0, CPixelFormat::GetByteColourDepth() const
+//   ConvertPFDDataToRGB(const unsigned char*, CRGBColour&) const @ 0x009E3DF0, CPixelFormat::GetByteColourDepth() const
 //   @ 0x009E3800; vector<unsigned long>::resize(size_t, const unsigned long&) @ 0x004428F0.
 // Layout: PDB CTexture (PD3DTexture +0) and CPixelFormat (FormatIndex); D3DSURFACE_DESC (Width +0x18, Height +0x1C),
 //   D3DLOCKED_RECT {Pitch, pBits}, RECT; CRGBColour {B, G, R, A} (alpha the fourth byte).
@@ -15,7 +15,7 @@
 //   word with the per-texel colour; the inner loop counts the width down; the row pointer is re-based as
 //   `pBits + Pitch * y` with the row just finished (retail's arithmetic, kept as is).
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
-class CRGBColour { public: unsigned char B, G, R, A; };
+#include "engine/CRGBColour.h"   // CRGBColour {B, G, R, A} (NF28: was a local model)
 struct D3DSURFACE_DESC {
     _D3DFORMAT          Format;                        // +0x00 D3DFORMAT
     long          Type;                          // +0x04
@@ -62,7 +62,7 @@ class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
     void Initialise(_D3DFORMAT d3dFormat);                                         // 0x009E3830
-    void ConvertPFDDataToRGB(unsigned char* data, CRGBColour* colour) const; // 0x009E3DF0
+    void ConvertPFDDataToRGB(const unsigned char* data, CRGBColour& colour) const; // 0x009E3DF0 ?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z (Ego_r.pdb / FableWin.pdb; NF28)
     unsigned long GetByteColourDepth() const;                                // 0x009E3800
 };
 template<class T> struct vector {               // STLport vector (12 bytes)
@@ -109,7 +109,7 @@ void CTexture::CalcAlphaHistogram(vector<unsigned long>& histogram) const
         for (long y = 0; y < size.Y; ++y) {
             for (long x = 0; x < size.X; ++x) {
                 CRGBColour colour;
-                format.ConvertPFDDataToRGB(texel, &colour);
+                format.ConvertPFDDataToRGB(texel, colour);
                 ++histogram[colour.A];
                 texel += format.GetByteColourDepth();
             }

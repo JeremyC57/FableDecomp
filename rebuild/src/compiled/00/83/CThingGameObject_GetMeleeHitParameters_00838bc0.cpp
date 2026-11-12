@@ -207,7 +207,7 @@ class CHitParameters { public:
     bool MoveBack;                                   // +0x22
     void SetThingHitting(CThing& thing);             // 0x008685F0
     void SetHitLocation(NHitLocations::CHitLocation* location);   // 0x00868590
-    void SetWeapon(CThing* weapon);                  // 0x00868CE0
+    void SetWeapon(CThing& weapon);                  // 0x00868CE0 ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z (Ego_r.pdb / FableWin.pdb; NF28: reference, was CThing*)
     void AddDamageWithAttribute(long attribute, float damage);    // 0x00868CA0
 };
 #pragma pack(pop)
@@ -231,7 +231,7 @@ void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* locati
 {
     params.SetThingHitting(hitter);
     if (weapon && !weapon->Dead)
-        params.SetWeapon(weapon);
+        params.SetWeapon(*weapon);
     if (location)
         params.SetHitLocation(location);
     params.Position = position;

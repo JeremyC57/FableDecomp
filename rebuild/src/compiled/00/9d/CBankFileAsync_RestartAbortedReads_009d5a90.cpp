@@ -1,5 +1,8 @@
-// CBankFileAsync::RestartReads() -- under the bank lock, re-queue every read in ReadsToRestart with the threaded file and empty the set
-// Leaf: RestartReads
+// CBankFileAsync::RestartAbortedReads() -- under the bank lock, re-queue every read in ReadsToRestart with the threaded file and empty the set
+// Leaf: ?RestartAbortedReads@CBankFileAsync@@AAEXXZ
+// NF28 (2026-11-12, queue land1011ef): was landed as CBankFileAsync::RestartReads. Ego_r.pdb 0x00B29C60 and FableWin.pdb 0x02FF6F90 both list
+//   ?RestartAbortedReads@CBankFileAsync@@AAEXXZ (private, void) next to HandleFailedAllocation (0x009D5BF0, which fills ReadsToRestart);
+//   neither PDB has a ?RestartReads@ symbol.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D5A90, 200 bytes (+ int3 padding). __fastcall, no arguments, `ret`.
 // Label correction: catalogued as "CMusicManager::UpdateRegistrations" (a forge auto-name). The lock is taken on the
@@ -104,10 +107,11 @@ class CBankFileAsync { public:                            // retail layout (PDB 
     bool NonCached;                                // +0x148
     bool DisableAsync;                             // +0x149
     _RTL_CRITICAL_SECTION CriticalSection;         // +0x14c
-    void RestartReads();
+private:
+    void RestartAbortedReads();
 };
 
-void CBankFileAsync::RestartReads()
+void CBankFileAsync::RestartAbortedReads()
 {
     CCriticalSectionLock lock(CriticalSection, false);
     for (CPointerSetIterator it = ReadsToRestart.begin(); it != ReadsToRestart.end(); ++it) {

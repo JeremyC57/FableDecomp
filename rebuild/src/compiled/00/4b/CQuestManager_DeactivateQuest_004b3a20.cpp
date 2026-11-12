@@ -12,7 +12,7 @@
 // CThingManager::DeleteThingsWithSectionName 0x0051FC20, operator+ 0x0099F600 / 0x0099F570 (`__fastcall`), "%"
 // 0x01239434, CTCDayOrNightOnlySupport::DAY_ONLY_SUFFIX 0x013BAC18 / CTCDayOrNightOnlySupport::NIGHT_ONLY_SUFFIX 0x013BAC1C, set<CCharString> ctor 0x004AD460 / insert
 // 0x004AC380 / dtor 0x004AD4A0, CWorldMap::UpdateNavMaps 0x00501990, the static counted manager pointer 0x013CAA68
-// (operator new 0x00BFEA1A, ctor 0x009F0320, Reset 0x00413590), its Contains(CCharString) 0x009F0570 / section handle
+// (operator new 0x00BFEA1A, ctor 0x009F0320, Reset 0x00413590), its IsSectionRegisteredLongName(CCharString) 0x009F0570 / section handle
 // lookup (CCharString) 0x009F0500 (name unconfirmed) / UnloadSection(unsigned long) 0x009F02F0.
 // Layout: retail STLport CQuestManager (ActiveQuests +0x38, BetweenStartAndEndScreenQuests +0x4c, World +0x7c,
 // PQuestCurrentlyRunning +0x88, DayActive +0x8c, NightActive +0x8d, NumberOfQuestsBetweenStartAndFinishScreens +0x98);
@@ -127,7 +127,7 @@ extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 class CCodeSectionManager { public:
     unsigned char _body[0x2c];
     CCodeSectionManager();                          // 0x009F0320
-    bool Contains(CCharString name);                // 0x009F0570
+    bool IsSectionRegisteredLongName(CCharString longName);   // 0x009F0570 ?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z (Ego_r.pdb; NF28: was Contains)
     unsigned long GetSectionHandle(CCharString name);   // 0x009F0500
     void UnloadSection(unsigned long handle);       // 0x009F02F0
 };
@@ -228,7 +228,7 @@ void CQuestManager::DeactivateQuest(CCountedPointer<CActiveQuest> quest, unsigne
         }
     }
     CCodeSectionManager* manager = GetCodeSectionManager();
-    if (manager->Contains(questName)) {
+    if (manager->IsSectionRegisteredLongName(questName)) {
         CCharString name = questName;
         manager->UnloadSection(manager->GetSectionHandle(name));
     }

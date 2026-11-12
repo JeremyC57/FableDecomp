@@ -150,6 +150,24 @@ public:
     unsigned char _pad_ts_0x6d[0x134 - 0x6d];                            // EffectsDetail .. CameraSensitivityNewProfile
     bool ShowTargetingStatusNewProfile;                                  // +0x134
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_AUDIODEFAULTS
+    // agentNF28 repair opt-in (row 0x004083B0 ?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ, Ego_r.pdb 0x00406350 / FableWin.pdb
+    // 0x01881DC0; declared in the SETTERS block): the audio option members the row writes, Ego_r.pdb names and offsets (before the
+    // first STLport vector, so the same offsets in retail: SoundVolume +0x24 .. DialogueVolume +0x2C, UsingHeadPhones +0x30,
+    // SoundsMuted +0x31; retail 0x004083B2..0x004083C9), and the protected ?ApplyValues@CUserProfileManager@@IAEXXZ (0x00407370)
+    // the row tail-calls. Not combinable with the other layout blocks (own pad).
+#ifndef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+protected:
+    void ApplyValues();                                                  // 0x00407370 (IAE: protected)
+public:
+#endif
+    unsigned char _pad_ad_0x00[0x24];                                    // vptr, CBaseClass, ProfileName .. HUDAlpha
+    float SoundVolume;                                                   // +0x24
+    float MusicVolume;                                                   // +0x28
+    float DialogueVolume;                                                // +0x2c
+    bool UsingHeadPhones;                                                // +0x30
+    bool SoundsMuted;                                                    // +0x31
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
     // Nested opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest): the scoreboard settings and
     // their FableWin.pdb accessors (?GetScoreboardUserName@CUserProfileManager@@QAE?AVCWideString@@XZ, ..ProxyIp.., ?GetScoreboardProxyPort

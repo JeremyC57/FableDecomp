@@ -26,8 +26,8 @@ class CRightHandedSet { public: float m[6]; };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCNamedUserActionPoints { public:
-    bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
-                                 long flags, bool reserve);   // 0x007FF190
+    bool GetFreeNamedActionPoint(CThing& user, C3DVector& pos, CRightHandedSet& rh, CCharString name, long& index,
+                                 long flags, bool reserve);   // 0x007FF190 ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z (Ego_r.pdb; NF28: references)
 };
 
 class CTCTavernGame { public:
@@ -49,7 +49,7 @@ void CTCTavernGameCardBase::OnInitialActivate()
     CThing* thing = ParentThing;
     CTCNamedUserActionPoints* points = 0;
     thing->GetTC(TCI_NAMED_USER_ACTION_POINTS, &points);
-    points->GetFreeNamedActionPoint(thing, &GamePositionPos, &GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
-                                    &GamePositionActionPointIndex, 0, true);
+    points->GetFreeNamedActionPoint(*thing, GamePositionPos, GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
+                                    GamePositionActionPointIndex, 0, true);
     CTCTavernGame::OnInitialActivate();
 }

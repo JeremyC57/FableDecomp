@@ -10,11 +10,10 @@
 // Globals: the 36-byte CD3DFormatInfo table 0x0129BA40 (BitDepth -1 terminates; PFType 3 = depth), as the landed siblings
 //   GetBestOpaqueTextureFormat 0x009BE610 / IsValidRenderTargetFormat 0x009BE930.
 // Shape: the siblings' indexed `for` over the table; the type, stencil and format reads go through the `info` reference
-//   but the depth reads re-index `g_D3DFormatInfo[i].BitDepth`, which VC7.1 shares with the loop test as a second pointer
+//   but the depth reads re-index `GD3DFormats[i].BitDepth`, which VC7.1 shares with the loop test as a second pointer
 //   (&BitDepth in ebx beside the entry in edi, so i, bestDifference and best live in the frame); the two device checks use
 //   usage 2 = D3DUSAGE_DEPTHSTENCIL, type 1 = D3DRTYPE_SURFACE; the distance is `abs()` (cdq/xor/sub); the result is
 //   constructed straight into the hidden return slot.
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include <stdlib.h>
 #pragma intrinsic(abs)
 
@@ -39,26 +38,9 @@ struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9
 
 enum { D3DUSAGE_DEPTHSTENCIL = 2, D3DRTYPE_SURFACE = 1 };
 
-struct _D3DDISPLAYMODE {
-    unsigned long Width;
-    unsigned long Height;
-    unsigned long RefreshRate;
-    _D3DFORMAT          Format;                          // +0x0c
-};
+// _D3DDISPLAYMODE {Width, Height, RefreshRate, Format +0x0c}: engine/Direct3D9Types.h (via CD3DFormatInfo.h).
+#include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (NF28: was a local struct model and g_D3DFormatInfo)
 
-struct CD3DFormatInfo {                            // 36-byte entry of the format table
-    _D3DFORMAT D3DFormat;                                // +0x00 _D3DFORMAT
-    long PFType;                                   // +0x04 EPixelFormatType (3 depth)
-    long BitDepth;                                 // +0x08 (-1 terminates the table)
-    long AlphaBits;                                // +0x0c
-    long RBits;                                    // +0x10
-    long GBits;                                    // +0x14
-    long BBits;                                    // +0x18
-    long StencilBits;                              // +0x1c
-    bool Linear;                                   // +0x20
-};
-
-extern const CD3DFormatInfo g_D3DFormatInfo[];     // 0x0129BA40
 
 class CPixelFormat { public:
     long FormatIndex;                              // +0
@@ -79,21 +61,21 @@ CPixelFormat CDisplayManager::GetClosestDepthBufferFormat(const _D3DDISPLAYMODE&
 {
     long best = -1;
     long bestDifference = 0x7fffffff;
-    for (long i = 0; g_D3DFormatInfo[i].BitDepth != -1; ++i) {
-        const CD3DFormatInfo& info = g_D3DFormatInfo[i];
+    for (long i = 0; GD3DFormats[i].BitDepth != -1; ++i) {
+        const CD3DFormatInfo& info = GD3DFormats[i];
         if (info.PFType == 3 && info.StencilBits >= 8
             && D3D->CheckDeviceFormat(AdapterOrdinal, DeviceType, mode.Format, D3DUSAGE_DEPTHSTENCIL, D3DRTYPE_SURFACE, info.D3DFormat) >= 0
             && D3D->CheckDepthStencilMatch(AdapterOrdinal, DeviceType, mode.Format, mode.Format, info.D3DFormat) >= 0) {
-            long difference = abs(bitDepth - g_D3DFormatInfo[i].BitDepth);
+            long difference = abs(bitDepth - GD3DFormats[i].BitDepth);
             if (difference < bestDifference) {
                 bestDifference = difference;
                 best = i;
             }
-            else if (difference == bestDifference && bitDepth < g_D3DFormatInfo[i].BitDepth) {
+            else if (difference == bestDifference && bitDepth < GD3DFormats[i].BitDepth) {
                 bestDifference = difference;
                 best = i;
             }
         }
     }
-    return CPixelFormat(g_D3DFormatInfo[best].D3DFormat);
+    return CPixelFormat(GD3DFormats[best].D3DFormat);
 }

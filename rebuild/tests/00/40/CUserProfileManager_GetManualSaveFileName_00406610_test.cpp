@@ -22,7 +22,7 @@ extern const unsigned short kFmtSave_0122de44[] = { 'S','a','v','e',' ','%','d',
 extern const unsigned short kSavePrefix_0122de90[] = { 'S','a','v','e',0 };
 
 class CUserProfileManager { public:
-    CWS GetManualSaveFileName(long slot);
+    CWS GetManualSaveFileName(long slot) const;   // QBE (Ego_r.pdb / FableWin.pdb)
 };
 
 // ---- fakes to observe modeled behavior ----
