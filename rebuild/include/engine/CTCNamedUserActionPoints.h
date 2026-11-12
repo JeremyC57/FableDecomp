@@ -8,6 +8,54 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS
+// Retail opt-in (row 0x007FF190 CTCNamedUserActionPoints::GetFreeNamedActionPoint): the real class chain instead of the flattened
+// pads. Define FABLE_RETAIL_CCHARSTRING, FABLE_RETAIL_CTCBASE, FABLE_RETAIL_CTHING (CThing complete: CIntelligentPointer<CThing>
+// converts to CBaseObject*), FABLE_RETAIL_CINTELLIGENTPOINTER and FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN before the include.
+// RTTI: CTCNamedUserActionPoints : CTCUserActionPointBase : CTCBase. CTCUserActionPointBase has no header of its own, so it lives
+// here (Ego_r.pdb struct_layouts_egor.tsv names, offsets with retail 12-byte STLport vectors): FreeActionPointIndexes +0x0c,
+// BlockedActionPointIndexes +0x18, NumberOfActionPoints +0x24, FrameOfNextCheck +0x28, PThing +0x2c; Names +0x34.
+// Methods (Ego_r.pdb / FableWin.pdb spellings):
+//   ?IsActionPointIndexBlocked@CTCUserActionPointBase@@IAE_NJ@Z 0x007FEC30 (protected, non-virtual);
+//   ?UpdateBlockedActionPoints@CTCUserActionPointBase@@IAEXXZ 0x007FECB0 (protected);
+//   ?GetFreeActionPoint@CTCUserActionPointBase@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z 0x007FEDE0;
+//   the virtual IsActionPointIndexBlocked(CThing&, C3DVector&, CRightHandedSet&, long) const, vtable slot 28 (+0x70, first slot
+//   after CTCBase's 28; CTCNamedUserActionPoints override 0x007FF0C0
+//   ?IsActionPointIndexBlocked@CTCNamedUserActionPoints@@UBE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@J@Z);
+//   ?GetFullNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@VCCharString@@AAJJ@Z 0x007FEFE0;
+//   ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z 0x007FF190.
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+class C3DVector;
+class CRightHandedSet;
+class CTCUserActionPointBase : public CTCBase {
+public:
+    bool GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long& index);      // 0x007FEDE0
+    virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const;   // slot 28 (+0x70)
+protected:
+    bool IsActionPointIndexBlocked(long index);                          // 0x007FEC30
+    void UpdateBlockedActionPoints();                                    // 0x007FECB0
+    std::vector<long> FreeActionPointIndexes;                            // +0x0c
+    std::vector<long> BlockedActionPointIndexes;                         // +0x18
+    long          NumberOfActionPoints;                                  // +0x24
+    long          FrameOfNextCheck;                                      // +0x28
+    CIntelligentPointer<CThing> PThing;                                  // +0x2c
+};
+class CTCNamedUserActionPoints : public CTCUserActionPointBase {
+public:
+    virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const;   // 0x007FF0C0
+    bool GetFullNamedActionPoint(CThing& thing, CCharString name, long& index, long start);                     // 0x007FEFE0
+    bool GetFreeNamedActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& orientation, CCharString name, long& index,
+                                 long start, bool checkBlocked);                                                // 0x007FF190
+protected:
+    std::vector<CCharString> Names;                                      // +0x34
+};
+FABLE_STATIC_ASSERT(sizeof(CTCUserActionPointBase) == 0x34);
+FABLE_STATIC_ASSERT(sizeof(CTCNamedUserActionPoints) == 0x40);
+#else
 
 #pragma pack(push, 1)
 class CTCNamedUserActionPoints {
@@ -27,5 +75,7 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CTCNamedUserActionPoints) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CTCNamedUserActionPoints, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCNamedUserActionPoints, Names) == 0x34);
+
+#endif // FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS
 
 #endif // FABLE_ENGINE_CTCNAMEDUSERACTIONPOINTS_H

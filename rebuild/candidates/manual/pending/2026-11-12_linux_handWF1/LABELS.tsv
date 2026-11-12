@@ -1,0 +1,27 @@
+0x00A114B0	CPhysicsMeshObject::SetPositionMatrix	CPhysicsMeshObject
+0x00B43720	CEngineMap::PeekThemeId	CEngineMap
+0x009ACCA0	CDefinitionManager::GetDefClassIndexFromGlobalIndex	CDefinitionManager
+0x00B43CE0	CEngineLandscapeRenderer::PeekTheme	CEngineLandscapeRenderer
+0x009E3DF0	?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z	CPixelFormat
+0x009E3C80	?ConvertPFDDataToRGBLong@CPixelFormat@@QBEXPBEPAK@Z (byte-identical twin; PDB order Ego_r 00b35af0 / FableWin 0308dc90, unverified beyond order)	CPixelFormat
+0x0129BA40	GD3DFormats (shared header + landed 0x009E3640 spelling)	_global
+004115a0	operator==	CBasicString<char>
+0040f020	LowerBound	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >
+00a01b50	GetPItem	CBaseIntelligentPointer
+0073a6e0	GetCurrentMode	CTCCreatureModeManager
+0x00688D40	AddToInterface	CInputProcessZTarget
+0x00687A70	AddToInterface	CInputProcessGameBase
+0x00A0D2B0	AddToInterface	CAInputProcess
+006ea0c0	UpdateDefenderAttackPattern	CCombatManager
+006e8c30	ResetDefenderAttackPattern	CCombatManager
+006f0e80	GetDef<CAttackPatternDef>	CDefinitionManager
+00666d10	GetCombatTypeDef	CThingCreatureBase
+009ad410	GetDefGlobalIndexFromName	CDefinitionManager
+009d49b0	GetString	CDefStringTable
+004b3ce0	?ActivateQuests@CQuestManager@@AAEXABV?$CArray@VCActivateQuestInfo@CQuestManager@@@@@Z	CQuestManager
+004b00c0	?IsQuestRegistered@CQuestManager@@QBE_NABVCCharString@@@Z	CQuestManager
+00cb5ad0	?GetPScriptInfo@CScriptInfoManager@@QAEPAVCScriptInfo@@ABVCCharString@@@Z	CScriptInfoManager
+004bb720	?push_back@?$vector@VCActivateQuestInfo@CQuestManager@@V?$allocator@VCActivateQuestInfo@CQuestManager@@@std@@@std@@QAEXABVCActivateQuestInfo@CQuestManager@@@Z	std::vector<CQuestManager::CActivateQuestInfo>
+004baef0	CCountedPointer<CQuestManager::CActiveQuest>::DeleteData (stored as the count block deleter at 0x004B3F94 / 0x004B40CD; manifest label CTCMapwho_OnDie is propagated)	CCountedPointer<CQuestManager::CActiveQuest>
+009f0570	CCodeSectionManager member (bool, by-value CCharString; candidate ?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z)	CCodeSectionManager
+01375454	g_QuestScriptsEnabled (descriptive; bool read once at 0x004B3EED)	_global

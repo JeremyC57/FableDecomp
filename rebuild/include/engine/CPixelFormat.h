@@ -80,6 +80,11 @@ public:
  unsigned long GetBMask() const {return ((1UL<<GetNoBBits())-1)<<GetBPosShift();}
  void ConvertPFDToRGB(const class CPFDColour& pfd,class CRGBColour& rgb) const;        // 0x009E3B60
 #endif
+#ifdef FABLE_RETAIL_CPIXELFORMAT_PFDDATATORGB
+ // Retail opt-in (workflow wf1, row 0x009E3DF0 ConvertPFDDataToRGB; needs FABLE_RETAIL_CPIXELFORMAT_CONVERT + _PFDTORGB): Ego_r.pdb /
+ // FableWin.pdb ?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z (0x009E3DF0). Declaration only: no layout change.
+ void ConvertPFDDataToRGB(const unsigned char* data,class CRGBColour& colour) const;   // 0x009E3DF0
+#endif
 };
 #endif
 #else

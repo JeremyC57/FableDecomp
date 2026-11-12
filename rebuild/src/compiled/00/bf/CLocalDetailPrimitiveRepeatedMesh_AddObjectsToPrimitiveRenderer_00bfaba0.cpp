@@ -56,7 +56,7 @@ class CMovableResource { public:
 class CEngineCamera; class CLocalDetailObjectCollectionType; class CDataInputStream;
 enum LOCAL_DETAIL_PRIMITIVE_TYPE { LocalDetailPrimitiveUnspecified = 0 };
 // Native VTs contain ten slots; donor's extra virtual APIs are not projected.
-struct __declspec(novtable) CLocalDetailPrimitiveBase : CMovableResource {
+struct CLocalDetailPrimitiveBase : CMovableResource {
  virtual void RenderUpdate(const CEngineCamera&,bool,unsigned long,const CLocalDetailObjectCollectionType*,float);
  virtual void AddObjectsToPrimitiveRenderer()=0;
  virtual bool NeedsRenderUpdate();

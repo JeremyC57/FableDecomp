@@ -17662,7 +17662,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e9ec0	GetCombatantInfo	CCombatManager	__thiscall	CCombatantInfo *	2	CCombatManager *,CThingCreatureBase *	1	yes	accepted									
 006e9f60	GetAttackerProngSelectionCurrentWeaponBaseCompareValue	_global	__fastcall	float	2	CThing *,bool	1	yes	accepted									
 006ea050	CheckSummonerChargeable	CCombatManager	unknown	undefined	0		0	yes	accepted									
-006ea0c0	CDefendingCombatantInfo::InitializeDefenderFromCreature	CDefendingCombatantInfo	unknown	undefined	0		0	yes	accepted									
+006ea0c0	UpdateDefenderAttackPattern	CCombatManager	unknown	undefined	0		0	yes	accepted									
 006ea2c0	PerformSequenceReset	CCombatManager	__thiscall	void	2	CCombatManager *,CThingCreatureBase *	1	yes	accepted									
 006ea430	DeregisterCombatant	CCombatManager	__thiscall	void	2	CCombatManager *,CThingCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\CCombatManager_DeregisterCombatant_006ea430.cpp
 006ea450	SetAttackerAsReadyToAttack	CCombatManager	__thiscall	void	3	CCombatManager *,CThingCreatureBase *,bool	1	yes	accepted									

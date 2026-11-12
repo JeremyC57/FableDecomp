@@ -1,0 +1,10 @@
+address	name	evidence
+00A114B0	?SetPositionMatrix@CPhysicsMeshObject@@QAEXABVC3DVector@@ABVCRightHandedSet@@M@Z	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+007FF190	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+00BEAB40	?GetWaterType@CWaterPatchMesh@@ABE?BW4EWaterType@@XZ	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+00BFA920	?AddObjectsToPrimitiveRenderer@CLocalDetailPrimitiveMesh@@UAEXXZ	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+009E3DF0	?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+007F5150	?GetGain@CTCSoundAtmosphereVillage@@UAEMABVCCharString@@@Z	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+00863CA0	?FillBodyReorientationPossibleIntersecting@CThingBodyReorienter@@AAEXXZ	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+00688D40	?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs
+006EA0C0	?UpdateDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	workflow wf1 (landing eh): RELOCATION_MATCH, two PDBs

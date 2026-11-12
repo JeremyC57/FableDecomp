@@ -69,6 +69,12 @@ public:
     bool IsPointContainedInBoundingBox(const C3DVector& pos) const;                      // 0x00A12890
 #endif
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_SETPOSITIONMATRIX
+    // Retail opt-in (wf1, row 0x00A114B0): Ego_r.pdb / FableWin.pdb
+    // ?SetPositionMatrix@CPhysicsMeshObject@@QAEXABVC3DVector@@ABVCRightHandedSet@@M@Z, out of line at retail 0x00A114B0 (sole caller
+    // the constructor 0x00A12CC0). Declaration only: no layout change.
+    void SetPositionMatrix(const C3DVector& position,const class CRightHandedSet& axes,float scale);   // 0x00A114B0
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_CENTRE
     // Nested opt-in (chunk 760, row 0x00A11AE0): Ego_r.pdb ?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ.
     C3DVector GetBoundingBoxCentre() const;                              // 0x00A11AE0

@@ -157,7 +157,13 @@ public:
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}
     // FableWin.pdb ??TC3DVector@@QBE?BV0@ABV0@@Z (cross product; debug copy 0x01B40A20 right after GetRight 0x01B409F0, expanded in 0x004A1CB0).
-#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XY_GROUP
+#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XYZ_GROUP
+    // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): every cross-product component parenthesised. Same
+    // instructions as the default; the three no-code PAREN tuples sit ahead of VC7.1's first scheduling-region cut (81-tuple cap) and
+    // put it where retail has it: between the load of position.Y and the load of position.X (0x00A11527 / 0x00A1152E), so the store
+    // of the cross product's Z (`fstp [esp+14h]`, 0x00A1152A) is the last instruction of the first region. Body only.
+    FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_XY_GROUP)
     // Retail opt-in (Codex pass18): grouping the first two cross expressions
     // preserves the native00a42170 copy-load schedule without extra instructions.
     FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),X*other.Y-Y*other.X);}

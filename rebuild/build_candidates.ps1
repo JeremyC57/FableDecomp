@@ -393643,6 +393643,70 @@ $catalog = @(
         TestSource = '00/40/CUserProfileManager_RedefineControlPassive_00407cd0_test.cpp'
         PassPattern = '00407cd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a114b0'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_SetPositionMatrix_00a114b0.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_SetPositionMatrix_00a114b0_test.cpp'
+        PassPattern = '00a114b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ff190'
+        Module = 'CTCNamedUserActionPoints'
+        Source = '00/7f/CTCNamedUserActionPoints_GetFreeNamedActionPoint_007ff190.cpp'
+        TestSource = '00/7f/CTCNamedUserActionPoints_GetFreeNamedActionPoint_007ff190_test.cpp'
+        PassPattern = '007ff190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beab40'
+        Module = 'CWaterPatchMesh'
+        Source = '00/be/CWaterPatchMesh_GetWaterType_00beab40.cpp'
+        TestSource = '00/be/CWaterPatchMesh_GetWaterType_00beab40_test.cpp'
+        PassPattern = '00beab40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfa920'
+        Module = 'CLocalDetailPrimitiveMesh'
+        Source = '00/bf/CLocalDetailPrimitiveMesh_AddObjectsToPrimitiveRenderer_00bfa920.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMesh_AddObjectsToPrimitiveRenderer_00bfa920_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT119'
+        PassPattern = '00bfa920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e3df0'
+        Module = 'CPixelFormat'
+        Source = '00/9e/CPixelFormat_ConvertPFDDataToRGB_009e3df0.cpp'
+        TestSource = '00/9e/CPixelFormat_ConvertPFDDataToRGB_009e3df0_test.cpp'
+        PassPattern = '009e3df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f5150'
+        Module = 'CTCSoundAtmosphereVillage'
+        Source = '00/7f/CTCSoundAtmosphereVillage_GetGain_007f5150.cpp'
+        TestSource = '00/7f/CTCSoundAtmosphereVillage_GetGain_007f5150_test.cpp'
+        PassPattern = '007f5150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00863ca0'
+        Module = 'CThingBodyReorienter'
+        Source = '00/86/CThingBodyReorienter_FillBodyReorientationPossibleIntersecting_00863ca0.cpp'
+        TestSource = '00/86/CThingBodyReorienter_FillBodyReorientationPossibleIntersecting_00863ca0_test.cpp'
+        PassPattern = '00863ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00688d40'
+        Module = 'CInputProcessZTarget'
+        Source = '00/68/CInputProcessZTarget_AddToInterface_00688d40.cpp'
+        TestSource = '00/68/CInputProcessZTarget_AddToInterface_00688d40_test.cpp'
+        PassPattern = '00688d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ea0c0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_UpdateDefenderAttackPattern_006ea0c0.cpp'
+        TestSource = '00/6e/CCombatManager_UpdateDefenderAttackPattern_006ea0c0_test.cpp'
+        PassPattern = '006ea0c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

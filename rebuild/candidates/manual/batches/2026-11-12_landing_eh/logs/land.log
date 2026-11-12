@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00a114b0   RELOCATION_MATCH PASS   SetPositionMatrix
+007ff190   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+007ff190   RELOCATION_MATCH PASS   GetFreeNamedActionPoint
+00beab40   RELOCATION_MATCH PASS   GetWaterType
+00bfa920   RELOCATION_MATCH PASS   AddObjectsToPrimitiveRenderer
+009e3df0   RELOCATION_MATCH PASS   ConvertPFDDataToRGB
+007f5150   RELOCATION_MATCH PASS   GetGain
+00863ca0   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 00863e70 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasPhysicsMesh>'
+00863ca0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00863ca0   RELOCATION_MATCH PASS   FillBodyReorientationPossibleIntersecting
+00688d40   RELOCATION_MATCH PASS   AddToInterface
+006ea0c0   RELOCATION_MATCH PASS   UpdateDefenderAttackPattern
+
+WINS: 9
+  00a114b0 RELOCATION_MATCH CPhysicsMeshObject::SetPositionMatrix
+  007ff190 RELOCATION_MATCH CTCNamedUserActionPoints::GetFreeNamedActionPoint
+  00beab40 RELOCATION_MATCH CWaterPatchMesh::GetWaterType
+  00bfa920 RELOCATION_MATCH CLocalDetailPrimitiveMesh::AddObjectsToPrimitiveRenderer
+  009e3df0 RELOCATION_MATCH CPixelFormat::ConvertPFDDataToRGB
+  007f5150 RELOCATION_MATCH CTCSoundAtmosphereVillage::GetGain
+  00863ca0 RELOCATION_MATCH CThingBodyReorienter::FillBodyReorientationPossibleIntersecting
+  00688d40 RELOCATION_MATCH CInputProcessZTarget::AddToInterface
+  006ea0c0 RELOCATION_MATCH CCombatManager::UpdateDefenderAttackPattern
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CPhysicsMeshObject_SetPositionMatrix_00a114b0
+  CTCNamedUserActionPoints_GetFreeNamedActionPoint_007ff190
+  CWaterPatchMesh_GetWaterType_00beab40
+  CLocalDetailPrimitiveMesh_AddObjectsToPrimitiveRenderer_00bfa920
+  CPixelFormat_ConvertPFDDataToRGB_009e3df0
+  CTCSoundAtmosphereVillage_GetGain_007f5150
+  CThingBodyReorienter_FillBodyReorientationPossibleIntersecting_00863ca0
+  CInputProcessZTarget_AddToInterface_00688d40
+  CCombatManager_UpdateDefenderAttackPattern_006ea0c0
+rc=0

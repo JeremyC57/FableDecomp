@@ -42,6 +42,16 @@ private:
  void PerformSequenceReset(CThingCreatureBase&);
 public:
 #endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_DEFENDERATTACKPATTERN
+ // Opt-in (wf1, row 0x006EA0C0 UpdateDefenderAttackPattern): Ego_r.pdb + FableWin.pdb private
+ // ?UpdateDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z (out of line at 0x006EA0C0) and
+ // ?ResetDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@V?$CDefPointer@$$CBVCAttackPatternDef@@@@@Z (out of line at
+ // 0x006E8C30, landed under that name). Declarations only: no layout change.
+private:
+ void UpdateDefenderAttackPattern(CCombatantInfo& info);                                        // 0x006EA0C0
+ void ResetDefenderAttackPattern(CCombatantInfo& info, CDefPointer<const CAttackPatternDef> pattern);   // 0x006E8C30
+public:
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATANTINFO_INLINE
  // Per-TU opt-in (chunk 1020, row 0x006E94D0): the public const ?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z
  // (out of line at 0x006E9360) with its body visible: the UniqueID copied into a key temporary and looked up in Combatants (the tree's

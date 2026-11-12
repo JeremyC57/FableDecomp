@@ -19,6 +19,11 @@ class C2DVector;
 class CInputProcessGameBase : public CAInputProcess {
 public:
     CInputProcessGameBase(const CInputProcessGameBaseInit& init);        // 0x00687A30
+#ifdef FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+    // Nested opt-in (wf1, row 0x00688D40): Ego_r.pdb ?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z, the override
+    // out of line at 0x00687A70 (called by name from the CInputProcessZTarget override). Declaration only.
+    virtual bool AddToInterface(CInputProcessManager& manager);          // 0x00687A70
+#endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_ZTARGET
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;
 protected:

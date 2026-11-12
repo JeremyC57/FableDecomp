@@ -19,6 +19,12 @@ public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
 #endif
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETIDENTITY
+    // Retail opt-in (wf1, row 0x00A114B0 CPhysicsMeshObject::SetPositionMatrix): FableWin.pdb ?SetIdentity@CMatrix3x4@@QAEXXZ (inline in
+    // retail, no out-of-line copy): the nine zeros as one chained assignment (retail stores them last to first, E43..E12,
+    // 0x00A114F8..0x00A11512), then the diagonal (E33, E22, E11, 0x00A1151A..0x00A11520). Body only: no layout change.
+    FABLE_FORCEINLINE void SetIdentity() { E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f; E11=E22=E33=1.0f; }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETFROMVECTORANDANGLE
     // Nested opt-in (chunk 1016, row 0x00A55F90): Ego_r.pdb / FableWin.pdb ?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z
     // (thiscall, out of line at 0x00A55F90; the landed C3DVector::Rotate 0x00A13C60 calls it). A declaration only: no layout change.

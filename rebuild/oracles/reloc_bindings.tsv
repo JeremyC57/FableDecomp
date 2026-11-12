@@ -38752,3 +38752,9 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?GDefaultIdlePeriod@@3KA	013baf1c	00801920
 ?find@?$_Rb_tree@W4EIdleStateGroup@@U?$pair@$$CBW4EIdleStateGroup@@J@std@@U?$_Select1st@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@U?$less@W4EIdleStateGroup@@@3@V?$allocator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@U?$_Const_traits@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@2@@2@ABW4EIdleStateGroup@@@Z	008014f0	00801920
 ?GetDirection@CActionInputControl@@QBE?AW4EActionDirection@1@XZ	0040ed10	00407cd0
+?IsActionPointIndexBlocked@CTCUserActionPointBase@@IAE_NJ@Z	007fec30	007ff190
+?PeekThemeId@CEngineMap@@QBEJJJJ@Z	00b43720	00beab40
+?AddStaticMesh@CEnginePrimitiveRenderer@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	00b32f20	00bfa920
+??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	00863e70	00863ca0
+??$GetDef@VCAttackPatternDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCAttackPatternDef@@@@@Z	006f0e80	006ea0c0
+?ResetDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@V?$CDefPointer@$$CBVCAttackPatternDef@@@@@Z	006e8c30	006ea0c0
