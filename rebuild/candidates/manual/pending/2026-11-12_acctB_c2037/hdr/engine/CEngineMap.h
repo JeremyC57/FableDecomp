@@ -140,8 +140,18 @@ inline long CEngineMap::PeekThemeId(long x, long y, long layer) const
         long worldX = PeekWorldX() - g_pEngineWorldMap->MapOffsetX + x;
         long worldY = PeekWorldY() - g_pEngineWorldMap->MapOffsetY + y;
         const CEngineMap* map = g_pEngineWorldMap->GetMap(worldX, worldY);
+#ifdef FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN
+        // The neighbour test written out as in PeekLandscapeHeight below (out-of-line copy: same object as the call form).
+        if (map) {
+            long mapY = PeekWorldY() - map->PeekWorldY() + y;
+            long mapX = PeekWorldX() - map->PeekWorldX() + x;
+            if (mapX < map->PeekWidth() && mapY < map->PeekHeight() && mapX >= 0 && mapY >= 0 && map->GameMap)
+                return map->PeekThemeId(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y, layer);
+        }
+#else
         if (map && map->MapHasDataAtPoint(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y))
             return map->PeekThemeId(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y, layer);
+#endif
         if (x < 0)
             x = 0;
         else if (x > PeekWidth() - 1)
@@ -162,8 +172,18 @@ inline unsigned char CEngineMap::PeekThemeBlend(long x, long y, long layer) cons
         long worldX = PeekWorldX() - g_pEngineWorldMap->MapOffsetX + x;
         long worldY = PeekWorldY() - g_pEngineWorldMap->MapOffsetY + y;
         const CEngineMap* map = g_pEngineWorldMap->GetMap(worldX, worldY);
+#ifdef FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN
+        // The neighbour test written out as in PeekLandscapeHeight below (out-of-line copy: same object as the call form).
+        if (map) {
+            long mapY = PeekWorldY() - map->PeekWorldY() + y;
+            long mapX = PeekWorldX() - map->PeekWorldX() + x;
+            if (mapX < map->PeekWidth() && mapY < map->PeekHeight() && mapX >= 0 && mapY >= 0 && map->GameMap)
+                return map->PeekThemeBlend(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y, layer);
+        }
+#else
         if (map && map->MapHasDataAtPoint(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y))
             return map->PeekThemeBlend(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y, layer);
+#endif
         if (x < 0)
             x = 0;
         else if (x > PeekWidth() - 1)
@@ -186,12 +206,17 @@ inline float CEngineMap::PeekLandscapeHeight(long x, long y) const
         const CEngineMap* map = g_pEngineWorldMap->GetMap(worldX, worldY);
 #ifdef FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN
         // With the if-return MapHasDataAtPoint body a call here would leave `setne al ; test al,al` behind; retail's neighbour test is
-        // pure branches with the neighbour's y cell formed first (COMDAT 0x00B566B0: 0x00B567AF..0x00B567E0, RELOCATION_MATCH).
+        // pure branches with the neighbour's y cell formed first (COMDAT 0x00B566B0: 0x00B567AF..0x00B567E0, RELOCATION_MATCH): the
+        // test is written out on named cells (mapY first), while the recursive call keeps its own argument expressions (call-argument
+        // temporaries that c2 CSEs with the cells). Passing the named cells to the call instead gives them the call's references too:
+        // ClipBoxToLandscape 0x00B52DD0's last expanded copy then keeps them in eax / edx (corner 4, 0x00B53E04..0x00B53F13) and
+        // the out-of-line 0x00B439C0 scores 84 / 132; with the expressions retail's spills come back (0x00B52DD0 RELOCATION_MATCH)
+        // and 0x00B439C0 / 0x00B43720 / 0x00B43870 compile to the same object as the c2021 call form below.
         if (map) {
             long mapY = PeekWorldY() - map->PeekWorldY() + y;
             long mapX = PeekWorldX() - map->PeekWorldX() + x;
             if (mapX < map->PeekWidth() && mapY < map->PeekHeight() && mapX >= 0 && mapY >= 0 && map->GameMap)
-                return map->PeekLandscapeHeight(mapX, mapY);
+                return map->PeekLandscapeHeight(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y);
         }
 #else
         if (map && map->MapHasDataAtPoint(PeekWorldX() - map->PeekWorldX() + x, PeekWorldY() - map->PeekWorldY() + y))

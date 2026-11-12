@@ -1,2 +1,3 @@
+00b52dd0 CEngineWeatherRenderer::ClipBoxToLandscape RELOCATION_MATCH flags= ['/d2inlT507']
 00b54890 CEngineWeatherRenderer::RenderRain RELOCATION_MATCH flags= []
 00b54e30 CEngineWeatherRenderer::RenderSnow RELOCATION_MATCH flags= []

@@ -2,7 +2,8 @@
 // Pair-landing (chunk 2037): the same TU now holds the three clip bodies retail calls -- ClipBoxToCamera 0x00B51F60 and
 //   ClipBoxToWeatherMaskSphere 0x00B52090 (ported onto the shared headers from the landed CWeatherRendererMethods::ClipBoxToCamera /
 //   CEngineWeatherRenderer::IsPointInPrecipitation; each compiled out of line grades RELOCATION_MATCH against its retail bytes) and
-//   ClipBoxToLandscape 0x00B52DD0 (this chunk) -- each __declspec(noinline) as retail calls them. With their side effects visible VC7.1
+//   ClipBoxToLandscape 0x00B52DD0 (this chunk; the same body text as the matched src/00b52dd0.cpp, which grades RELOCATION_MATCH at
+//   /d2inlT507; here it is compiled at the TU's default budget) -- each __declspec(noinline) as retail calls them. With their side effects visible VC7.1
 //   schedules the two inline push_back C3DVector copies load-ahead as retail (0x00B553BD..0x00B553CF, 0x00B55403..0x00B55414); the 2031/2008 hand-backs
 //   graded DIFFER only there without them.
 // Retail-asm: same-TU callee body only (this row's own leaf has no asm): ClipBoxToLandscape 0x00B52DD0 expands the shared helpers GFFloatToLongFloor (0x00B52E22 `fld [v] ; fsub [half] ; fistp dword ptr [r] ; fild [r] ; fadd [one] ; fstp [n] ; mov eax,[v] ; cmp eax,[n] ; jne ; inc dword ptr [r]`), GFFloatToLongCeil (0x00B532A3 `fld ; fadd ; fistp dword ptr ; fild ; fsub ; fstp ; mov ; cmp ; jne ; dec`) and GFFloatToLongNear (0x00B53231 `fld [v] ; fistp dword ptr [r]`); each helper header holds the proof that VC7.1 emits no bare dword fistp from C++.

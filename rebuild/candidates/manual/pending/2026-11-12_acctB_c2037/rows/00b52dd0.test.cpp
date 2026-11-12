@@ -85,8 +85,12 @@ float Map::PeekLandscapeHeight(long x, long y) const
 {
     if (x >= Width || y >= Height || x < 0 || y < 0 || !Game) {
         const Map* map = g_world->GetMap(WorldX - g_world->OffsetX + x, WorldY - g_world->OffsetY + y);
-        if (map && map->MapHasDataAtPoint(WorldX - map->WorldX + x, WorldY - map->WorldY + y))
-            return map->PeekLandscapeHeight(WorldX - map->WorldX + x, WorldY - map->WorldY + y);
+        if (map) {
+            long mapY = WorldY - map->WorldY + y;
+            long mapX = WorldX - map->WorldX + x;
+            if (mapX < map->Width && mapY < map->Height && mapX >= 0 && mapY >= 0 && map->Game)
+                return map->PeekLandscapeHeight(WorldX - map->WorldX + x, WorldY - map->WorldY + y);
+        }
         if (x < 0)
             x = 0;
         else if (x > Width - 1)

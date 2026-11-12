@@ -22,8 +22,21 @@
   the same (0x00B52DD0 corner 4: identical sums and reloads, other register / spill choices, in retail as in ours, but not the same ones);
   outer named-symbol counts k = 1..7 (r3004) do not move it.
 
+- (continuation) When only the LAST of N identical inline-expanded copies is allocated differently, read c2prio `--blocks` for that
+  copy's candidates first: in 0x00B52DD0 corner 4's neighbour cells had 8 references (priority 74 / 66) against 4 (32 / 24) in corners 1..3,
+  because the header's written-out test passed the named cells to the recursive call; writing the call's own argument expressions (c2 CSEs
+  them with the cells, which keep only the test's references) gave retail's corner-4 spills and the match. The equal-priority copies are
+  coloured last-copy-first (larger key), so a priority shift there shows only in the last copy.
+- A residue in a row that expands shared header inlines can be the header's fault even when the row's other copies match: grade the inline
+  bodies against every uncalled retail COMDAT (tools/qx.py with QLEN) under each candidate header before spending row grades.
+- An inline bool predicate's `if (range) return p != 0; return false;` keeps `test ; setne` when its value is returned or merged (0x00B56880,
+  0x00B52DD0 corners), and leaves `setne al ; test al,al` when the inline is a lone `if` condition (0x00B566B0); `? true : false`,
+  `(bool)(p != 0)` or a bool local written out in the caller give the same 0x00B56880 bytes but are jump-threaded in an expanded row.
+- A bare `fistp dword` has no VC7.1 C++ or intrinsic spelling (93 C++ spellings over Near / Floor / Ceil shapes x /O2, /O2 /QIfist: __ftol2
+  or `fistp qword`; 12 SSE / SSE2 / MMX intrinsics: cvt*): probe/asm/ in chunk 2037 is a reusable one-TU table generator.
+
 Review at landing:
-- engine/CEngineMap.h: two bodies of CEngineMap::MapHasDataAtPoint now exist -- the c2021 && chain (default; their rows 0x00B3F5E0 /
+- engine/CEngineMap.h (still open after the continuation session, see hdr/README.md): two bodies of CEngineMap::MapHasDataAtPoint exist -- the c2021 && chain (default; their rows 0x00B3F5E0 /
   0x00B40BD0 match with it and with PeekLandscapeHeight calling it) and this chunk's if-return opt-in
   `FABLE_RETAIL_CENGINEMAP_MAPHASDATA_IFRETURN` (with PeekLandscapeHeight's neighbour test written out). One retail function has one body:
   the coordinator must decide (evidence for if-return: 0x00B56880 MATCH, 0x00B52DD0 corners 1..3 exact with the setne value; evidence for
@@ -34,8 +47,10 @@ Review at landing:
 - The landed 0x00B51F60 (CWeatherRendererMethods::ClipBoxToCamera) and 0x00B52090 (CEngineWeatherRenderer::IsPointInPrecipitation) stand-in
   sources: their PDB names are ClipBoxToCamera / ClipBoxToWeatherMaskSphere (NAME_FIXES.tsv); this chunk's shared-header ports grade
   RELOCATION_MATCH (probe/pc.cpp) and could replace them.
-- RenderRain / RenderSnow sources contain this chunk's unmatched ClipBoxToLandscape body (see NOTES.md); if a later session changes that
-  body, regrade both.
+- RenderRain / RenderSnow sources contain the matched ClipBoxToLandscape body (same text as src/00b52dd0.cpp); if a later session changes
+  that body or engine/CEngineMap.h, regrade all three.
+- Under the IFRETURN opt-in, c2021 row 0x00B40BD0 (PeekWaterDepth) DIFFERs (1780v1736) while 0x00B3F5E0 still matches: the header needs one
+  text that also serves 0x00B40BD0 (NOTES.md continuation section ranks the next ideas).
 - purity.py grades the whole row TEXT: a row that is plain C++ itself but holds a same-TU callee body calling a shared asm helper
   (RenderRain / RenderSnow with ClipBoxToLandscape) is `naked_asm` / NOT_GENUINE in vland until it carries a `// Retail-asm:` line whose
   first line already names an address and a helper mnemonic (continuation lines without the tag are not read).
